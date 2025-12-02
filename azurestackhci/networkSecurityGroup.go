@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // NetworkSecurityGroup resource.
 //
-// Uses Azure REST API version 2025-02-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-02-01-preview.
+// Uses Azure REST API version 2024-02-01-preview.
 //
-// Other available API versions: 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01-preview, 2025-04-01-preview.
 type NetworkSecurityGroup struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
 	ETag pulumi.StringOutput `pulumi:"eTag"`
 	// The extendedLocation of the resource.
@@ -34,8 +32,6 @@ type NetworkSecurityGroup struct {
 	NetworkInterfaces NetworkInterfaceArmReferenceResponseArrayOutput `pulumi:"networkInterfaces"`
 	// The provisioning state of the network security group resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// The observed state of Network Security Group
-	Status NetworkSecurityGroupStatusResponseOutput `pulumi:"status"`
 	// A collection of references to logical networks that are currently using this NSG
 	Subnets LogicalNetworkArmReferenceResponseArrayOutput `pulumi:"subnets"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -77,9 +73,6 @@ func NewNetworkSecurityGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20250401preview:NetworkSecurityGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:azurestackhci/v20250601preview:NetworkSecurityGroup"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -179,11 +172,6 @@ func (o NetworkSecurityGroupOutput) ToNetworkSecurityGroupOutputWithContext(ctx 
 	return o
 }
 
-// The Azure API version of the resource.
-func (o NetworkSecurityGroupOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *NetworkSecurityGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
 func (o NetworkSecurityGroupOutput) ETag() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkSecurityGroup) pulumi.StringOutput { return v.ETag }).(pulumi.StringOutput)
@@ -214,11 +202,6 @@ func (o NetworkSecurityGroupOutput) NetworkInterfaces() NetworkInterfaceArmRefer
 // The provisioning state of the network security group resource.
 func (o NetworkSecurityGroupOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkSecurityGroup) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// The observed state of Network Security Group
-func (o NetworkSecurityGroupOutput) Status() NetworkSecurityGroupStatusResponseOutput {
-	return o.ApplyT(func(v *NetworkSecurityGroup) NetworkSecurityGroupStatusResponseOutput { return v.Status }).(NetworkSecurityGroupStatusResponseOutput)
 }
 
 // A collection of references to logical networks that are currently using this NSG

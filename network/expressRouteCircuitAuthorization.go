@@ -8,15 +8,15 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Authorization in an ExpressRouteCircuit resource.
 //
-// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
+// Uses Azure REST API version 2023-02-01. In version 1.x of the Azure Native provider, it used API version 2020-11-01.
 //
-// Other available API versions: 2018-06-01, 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2019-06-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
 type ExpressRouteCircuitAuthorization struct {
 	pulumi.CustomResourceState
 
@@ -24,10 +24,6 @@ type ExpressRouteCircuitAuthorization struct {
 	AuthorizationKey pulumi.StringPtrOutput `pulumi:"authorizationKey"`
 	// The authorization use status.
 	AuthorizationUseStatus pulumi.StringPtrOutput `pulumi:"authorizationUseStatus"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
-	// The reference to the ExpressRoute connection resource using the authorization.
-	ConnectionResourceUri pulumi.StringOutput `pulumi:"connectionResourceUri"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
@@ -214,12 +210,6 @@ func NewExpressRouteCircuitAuthorization(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20240501:ExpressRouteCircuitAuthorization"),
 		},
-		{
-			Type: pulumi.String("azure-native:network/v20240701:ExpressRouteCircuitAuthorization"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20241001:ExpressRouteCircuitAuthorization"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -334,16 +324,6 @@ func (o ExpressRouteCircuitAuthorizationOutput) AuthorizationKey() pulumi.String
 // The authorization use status.
 func (o ExpressRouteCircuitAuthorizationOutput) AuthorizationUseStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ExpressRouteCircuitAuthorization) pulumi.StringPtrOutput { return v.AuthorizationUseStatus }).(pulumi.StringPtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o ExpressRouteCircuitAuthorizationOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *ExpressRouteCircuitAuthorization) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// The reference to the ExpressRoute connection resource using the authorization.
-func (o ExpressRouteCircuitAuthorizationOutput) ConnectionResourceUri() pulumi.StringOutput {
-	return o.ApplyT(func(v *ExpressRouteCircuitAuthorization) pulumi.StringOutput { return v.ConnectionResourceUri }).(pulumi.StringOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.

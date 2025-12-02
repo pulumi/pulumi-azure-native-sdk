@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,9 +29,9 @@ type LookupServiceFabricArgs struct {
 	Expand *string `pulumi:"expand"`
 	// The name of the lab.
 	LabName string `pulumi:"labName"`
-	// The name of the ServiceFabric
+	// The name of the service fabric.
 	Name string `pulumi:"name"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the user profile.
 	UserName string `pulumi:"userName"`
@@ -41,8 +41,6 @@ type LookupServiceFabricArgs struct {
 type LookupServiceFabricResult struct {
 	// The applicable schedule for the virtual machine.
 	ApplicableSchedule ApplicableScheduleResponse `pulumi:"applicableSchedule"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The resource id of the environment under which the service fabric resource is present
 	EnvironmentId *string `pulumi:"environmentId"`
 	// The backing service fabric resource's id
@@ -87,9 +85,9 @@ type LookupServiceFabricOutputArgs struct {
 	Expand pulumi.StringPtrInput `pulumi:"expand"`
 	// The name of the lab.
 	LabName pulumi.StringInput `pulumi:"labName"`
-	// The name of the ServiceFabric
+	// The name of the service fabric.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the user profile.
 	UserName pulumi.StringInput `pulumi:"userName"`
@@ -117,11 +115,6 @@ func (o LookupServiceFabricResultOutput) ToLookupServiceFabricResultOutputWithCo
 // The applicable schedule for the virtual machine.
 func (o LookupServiceFabricResultOutput) ApplicableSchedule() ApplicableScheduleResponseOutput {
 	return o.ApplyT(func(v LookupServiceFabricResult) ApplicableScheduleResponse { return v.ApplicableSchedule }).(ApplicableScheduleResponseOutput)
-}
-
-// The Azure API version of the resource.
-func (o LookupServiceFabricResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupServiceFabricResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The resource id of the environment under which the service fabric resource is present

@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Linked storage accounts top level resource container.
 //
-// Uses Azure REST API version 2023-09-01. In version 2.x of the Azure Native provider, it used API version 2020-08-01.
+// Uses Azure REST API version 2020-08-01. In version 1.x of the Azure Native provider, it used API version 2020-08-01.
 //
-// Other available API versions: 2019-08-01-preview, 2020-03-01-preview, 2020-08-01, 2025-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-09-01, 2025-02-01.
 type LinkedStorageAccount struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Linked storage accounts type.
 	DataSourceType pulumi.StringOutput `pulumi:"dataSourceType"`
 	// The name of the resource
@@ -153,11 +151,6 @@ func (o LinkedStorageAccountOutput) ToLinkedStorageAccountOutput() LinkedStorage
 
 func (o LinkedStorageAccountOutput) ToLinkedStorageAccountOutputWithContext(ctx context.Context) LinkedStorageAccountOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LinkedStorageAccountOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *LinkedStorageAccount) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Linked storage accounts type.

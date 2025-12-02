@@ -8,27 +8,25 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Specifies information about the gallery inVMAccessControlProfile version that you want to create or update.
 //
-// Uses Azure REST API version 2024-03-03. In version 2.x of the Azure Native provider, it used API version 2024-03-03.
+// Uses Azure REST API version 2024-03-03.
 type GalleryInVMAccessControlProfileVersion struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// This property allows you to specify if the requests will be allowed to access the host endpoints. Possible values are: 'Allow', 'Deny'.
 	DefaultAccess pulumi.StringOutput `pulumi:"defaultAccess"`
 	// If set to true, Virtual Machines deployed from the latest version of the Resource Profile won't use this Profile version.
 	ExcludeFromLatest pulumi.BoolPtrOutput `pulumi:"excludeFromLatest"`
-	// The geo-location where the resource lives
+	// Resource location
 	Location pulumi.StringOutput `pulumi:"location"`
 	// This property allows you to specify whether the access control rules are in Audit mode, in Enforce mode or Disabled. Possible values are: 'Audit', 'Enforce' or 'Disabled'.
 	Mode pulumi.StringOutput `pulumi:"mode"`
-	// The name of the resource
+	// Resource name
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning state, which only appears in the response.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
@@ -38,13 +36,11 @@ type GalleryInVMAccessControlProfileVersion struct {
 	ReplicationStatus ReplicationStatusResponseOutput `pulumi:"replicationStatus"`
 	// This is the Access Control Rules specification for an inVMAccessControlProfile version.
 	Rules AccessControlRulesResponsePtrOutput `pulumi:"rules"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// Resource tags.
+	// Resource tags
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The target regions where the Resource Profile version is going to be replicated to. This property is updatable.
 	TargetLocations TargetRegionResponseArrayOutput `pulumi:"targetLocations"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// Resource type
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -113,21 +109,21 @@ type galleryInVMAccessControlProfileVersionArgs struct {
 	DefaultAccess string `pulumi:"defaultAccess"`
 	// If set to true, Virtual Machines deployed from the latest version of the Resource Profile won't use this Profile version.
 	ExcludeFromLatest *bool `pulumi:"excludeFromLatest"`
-	// The name of the Shared Image Gallery.
+	// The name of the Shared Image Gallery in which the inVMAccessControlProfile resides.
 	GalleryName string `pulumi:"galleryName"`
-	// The name of the gallery inVMAccessControlProfile to be retrieved.
+	// The name of the gallery inVMAccessControlProfile in which the inVMAccessControlProfile version is to be created.
 	InVMAccessControlProfileName string `pulumi:"inVMAccessControlProfileName"`
-	// The name of the gallery inVMAccessControlProfile version to be retrieved.
+	// The name of the gallery inVMAccessControlProfile version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
 	InVMAccessControlProfileVersionName *string `pulumi:"inVMAccessControlProfileVersionName"`
-	// The geo-location where the resource lives
+	// Resource location
 	Location *string `pulumi:"location"`
 	// This property allows you to specify whether the access control rules are in Audit mode, in Enforce mode or Disabled. Possible values are: 'Audit', 'Enforce' or 'Disabled'.
 	Mode string `pulumi:"mode"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// This is the Access Control Rules specification for an inVMAccessControlProfile version.
 	Rules *AccessControlRules `pulumi:"rules"`
-	// Resource tags.
+	// Resource tags
 	Tags map[string]string `pulumi:"tags"`
 	// The target regions where the Resource Profile version is going to be replicated to. This property is updatable.
 	TargetLocations []TargetRegion `pulumi:"targetLocations"`
@@ -139,21 +135,21 @@ type GalleryInVMAccessControlProfileVersionArgs struct {
 	DefaultAccess pulumi.StringInput
 	// If set to true, Virtual Machines deployed from the latest version of the Resource Profile won't use this Profile version.
 	ExcludeFromLatest pulumi.BoolPtrInput
-	// The name of the Shared Image Gallery.
+	// The name of the Shared Image Gallery in which the inVMAccessControlProfile resides.
 	GalleryName pulumi.StringInput
-	// The name of the gallery inVMAccessControlProfile to be retrieved.
+	// The name of the gallery inVMAccessControlProfile in which the inVMAccessControlProfile version is to be created.
 	InVMAccessControlProfileName pulumi.StringInput
-	// The name of the gallery inVMAccessControlProfile version to be retrieved.
+	// The name of the gallery inVMAccessControlProfile version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
 	InVMAccessControlProfileVersionName pulumi.StringPtrInput
-	// The geo-location where the resource lives
+	// Resource location
 	Location pulumi.StringPtrInput
 	// This property allows you to specify whether the access control rules are in Audit mode, in Enforce mode or Disabled. Possible values are: 'Audit', 'Enforce' or 'Disabled'.
 	Mode pulumi.StringInput
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
 	// This is the Access Control Rules specification for an inVMAccessControlProfile version.
 	Rules AccessControlRulesPtrInput
-	// Resource tags.
+	// Resource tags
 	Tags pulumi.StringMapInput
 	// The target regions where the Resource Profile version is going to be replicated to. This property is updatable.
 	TargetLocations TargetRegionArrayInput
@@ -196,11 +192,6 @@ func (o GalleryInVMAccessControlProfileVersionOutput) ToGalleryInVMAccessControl
 	return o
 }
 
-// The Azure API version of the resource.
-func (o GalleryInVMAccessControlProfileVersionOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *GalleryInVMAccessControlProfileVersion) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // This property allows you to specify if the requests will be allowed to access the host endpoints. Possible values are: 'Allow', 'Deny'.
 func (o GalleryInVMAccessControlProfileVersionOutput) DefaultAccess() pulumi.StringOutput {
 	return o.ApplyT(func(v *GalleryInVMAccessControlProfileVersion) pulumi.StringOutput { return v.DefaultAccess }).(pulumi.StringOutput)
@@ -211,7 +202,7 @@ func (o GalleryInVMAccessControlProfileVersionOutput) ExcludeFromLatest() pulumi
 	return o.ApplyT(func(v *GalleryInVMAccessControlProfileVersion) pulumi.BoolPtrOutput { return v.ExcludeFromLatest }).(pulumi.BoolPtrOutput)
 }
 
-// The geo-location where the resource lives
+// Resource location
 func (o GalleryInVMAccessControlProfileVersionOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *GalleryInVMAccessControlProfileVersion) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
@@ -221,7 +212,7 @@ func (o GalleryInVMAccessControlProfileVersionOutput) Mode() pulumi.StringOutput
 	return o.ApplyT(func(v *GalleryInVMAccessControlProfileVersion) pulumi.StringOutput { return v.Mode }).(pulumi.StringOutput)
 }
 
-// The name of the resource
+// Resource name
 func (o GalleryInVMAccessControlProfileVersionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *GalleryInVMAccessControlProfileVersion) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -248,12 +239,7 @@ func (o GalleryInVMAccessControlProfileVersionOutput) Rules() AccessControlRules
 	return o.ApplyT(func(v *GalleryInVMAccessControlProfileVersion) AccessControlRulesResponsePtrOutput { return v.Rules }).(AccessControlRulesResponsePtrOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o GalleryInVMAccessControlProfileVersionOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *GalleryInVMAccessControlProfileVersion) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
-}
-
-// Resource tags.
+// Resource tags
 func (o GalleryInVMAccessControlProfileVersionOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GalleryInVMAccessControlProfileVersion) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -265,7 +251,7 @@ func (o GalleryInVMAccessControlProfileVersionOutput) TargetLocations() TargetRe
 	}).(TargetRegionResponseArrayOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// Resource type
 func (o GalleryInVMAccessControlProfileVersionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *GalleryInVMAccessControlProfileVersion) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

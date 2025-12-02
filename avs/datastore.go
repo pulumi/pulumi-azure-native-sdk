@@ -8,25 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A datastore resource
 //
-// Uses Azure REST API version 2023-09-01. In version 2.x of the Azure Native provider, it used API version 2022-05-01.
+// Uses Azure REST API version 2022-05-01. In version 1.x of the Azure Native provider, it used API version 2021-01-01-preview.
 //
-// Other available API versions: 2022-05-01, 2023-03-01, 2024-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native avs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-03-01, 2023-09-01.
 type Datastore struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// An iSCSI volume
 	DiskPoolVolume DiskPoolVolumeResponsePtrOutput `pulumi:"diskPoolVolume"`
-	// An Elastic SAN volume
-	ElasticSanVolume ElasticSanVolumeResponsePtrOutput `pulumi:"elasticSanVolume"`
-	// The name of the resource
+	// Resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// An Azure NetApp Files volume
 	NetAppVolume NetAppVolumeResponsePtrOutput `pulumi:"netAppVolume"`
@@ -34,9 +30,7 @@ type Datastore struct {
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The operational status of the datastore
 	Status pulumi.StringOutput `pulumi:"status"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// Resource type.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -78,9 +72,6 @@ func NewDatastore(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:avs/v20230901:Datastore"),
 		},
-		{
-			Type: pulumi.String("azure-native:avs/v20240901:Datastore"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -116,14 +107,12 @@ func (DatastoreState) ElementType() reflect.Type {
 }
 
 type datastoreArgs struct {
-	// Name of the cluster
+	// Name of the cluster in the private cloud
 	ClusterName string `pulumi:"clusterName"`
-	// Name of the datastore
+	// Name of the datastore in the private cloud cluster
 	DatastoreName *string `pulumi:"datastoreName"`
 	// An iSCSI volume
 	DiskPoolVolume *DiskPoolVolume `pulumi:"diskPoolVolume"`
-	// An Elastic SAN volume
-	ElasticSanVolume *ElasticSanVolume `pulumi:"elasticSanVolume"`
 	// An Azure NetApp Files volume
 	NetAppVolume *NetAppVolume `pulumi:"netAppVolume"`
 	// Name of the private cloud
@@ -134,14 +123,12 @@ type datastoreArgs struct {
 
 // The set of arguments for constructing a Datastore resource.
 type DatastoreArgs struct {
-	// Name of the cluster
+	// Name of the cluster in the private cloud
 	ClusterName pulumi.StringInput
-	// Name of the datastore
+	// Name of the datastore in the private cloud cluster
 	DatastoreName pulumi.StringPtrInput
 	// An iSCSI volume
 	DiskPoolVolume DiskPoolVolumePtrInput
-	// An Elastic SAN volume
-	ElasticSanVolume ElasticSanVolumePtrInput
 	// An Azure NetApp Files volume
 	NetAppVolume NetAppVolumePtrInput
 	// Name of the private cloud
@@ -187,22 +174,12 @@ func (o DatastoreOutput) ToDatastoreOutputWithContext(ctx context.Context) Datas
 	return o
 }
 
-// The Azure API version of the resource.
-func (o DatastoreOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Datastore) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // An iSCSI volume
 func (o DatastoreOutput) DiskPoolVolume() DiskPoolVolumeResponsePtrOutput {
 	return o.ApplyT(func(v *Datastore) DiskPoolVolumeResponsePtrOutput { return v.DiskPoolVolume }).(DiskPoolVolumeResponsePtrOutput)
 }
 
-// An Elastic SAN volume
-func (o DatastoreOutput) ElasticSanVolume() ElasticSanVolumeResponsePtrOutput {
-	return o.ApplyT(func(v *Datastore) ElasticSanVolumeResponsePtrOutput { return v.ElasticSanVolume }).(ElasticSanVolumeResponsePtrOutput)
-}
-
-// The name of the resource
+// Resource name.
 func (o DatastoreOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Datastore) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -222,12 +199,7 @@ func (o DatastoreOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Datastore) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o DatastoreOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *Datastore) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
-}
-
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// Resource type.
 func (o DatastoreOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Datastore) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

@@ -8,24 +8,22 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A job step.
 //
-// Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2021-11-01.
+// Uses Azure REST API version 2021-11-01. In version 1.x of the Azure Native provider, it used API version 2020-11-01-preview.
 //
-// Other available API versions: 2017-03-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01, 2023-08-01-preview, 2024-05-01-preview.
 type JobStep struct {
 	pulumi.CustomResourceState
 
 	// The action payload of the job step.
 	Action JobStepActionResponseOutput `pulumi:"action"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The resource ID of the job credential that will be used to connect to the targets.
-	Credential pulumi.StringPtrOutput `pulumi:"credential"`
+	Credential pulumi.StringOutput `pulumi:"credential"`
 	// Execution options for the job step.
 	ExecutionOptions JobStepExecutionOptionsResponsePtrOutput `pulumi:"executionOptions"`
 	// Resource name.
@@ -49,6 +47,9 @@ func NewJobStep(ctx *pulumi.Context,
 
 	if args.Action == nil {
 		return nil, errors.New("invalid value for required argument 'Action'")
+	}
+	if args.Credential == nil {
+		return nil, errors.New("invalid value for required argument 'Credential'")
 	}
 	if args.JobAgentName == nil {
 		return nil, errors.New("invalid value for required argument 'JobAgentName'")
@@ -127,9 +128,6 @@ func NewJobStep(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:sql/v20240501preview:JobStep"),
 		},
-		{
-			Type: pulumi.String("azure-native:sql/v20241101preview:JobStep"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -168,7 +166,7 @@ type jobStepArgs struct {
 	// The action payload of the job step.
 	Action JobStepAction `pulumi:"action"`
 	// The resource ID of the job credential that will be used to connect to the targets.
-	Credential *string `pulumi:"credential"`
+	Credential string `pulumi:"credential"`
 	// Execution options for the job step.
 	ExecutionOptions *JobStepExecutionOptions `pulumi:"executionOptions"`
 	// The name of the job agent.
@@ -194,7 +192,7 @@ type JobStepArgs struct {
 	// The action payload of the job step.
 	Action JobStepActionInput
 	// The resource ID of the job credential that will be used to connect to the targets.
-	Credential pulumi.StringPtrInput
+	Credential pulumi.StringInput
 	// Execution options for the job step.
 	ExecutionOptions JobStepExecutionOptionsPtrInput
 	// The name of the job agent.
@@ -257,14 +255,9 @@ func (o JobStepOutput) Action() JobStepActionResponseOutput {
 	return o.ApplyT(func(v *JobStep) JobStepActionResponseOutput { return v.Action }).(JobStepActionResponseOutput)
 }
 
-// The Azure API version of the resource.
-func (o JobStepOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *JobStep) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // The resource ID of the job credential that will be used to connect to the targets.
-func (o JobStepOutput) Credential() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStep) pulumi.StringPtrOutput { return v.Credential }).(pulumi.StringPtrOutput)
+func (o JobStepOutput) Credential() pulumi.StringOutput {
+	return o.ApplyT(func(v *JobStep) pulumi.StringOutput { return v.Credential }).(pulumi.StringOutput)
 }
 
 // Execution options for the job step.

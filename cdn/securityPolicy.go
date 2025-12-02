@@ -8,22 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // SecurityPolicy association for AzureFrontDoor profile
 //
-// Uses Azure REST API version 2025-06-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
+// Uses Azure REST API version 2023-05-01. In version 1.x of the Azure Native provider, it used API version 2020-09-01.
 //
-// Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01.
 type SecurityPolicy struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion  pulumi.StringOutput `pulumi:"azureApiVersion"`
 	DeploymentStatus pulumi.StringOutput `pulumi:"deploymentStatus"`
-	// The name of the resource
+	// Resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// object which contains security policy parameters
 	Parameters SecurityPolicyWebApplicationFirewallParametersResponsePtrOutput `pulumi:"parameters"`
@@ -31,9 +29,9 @@ type SecurityPolicy struct {
 	ProfileName pulumi.StringOutput `pulumi:"profileName"`
 	// Provisioning status
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	// Read only system data
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// Resource type.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -81,21 +79,6 @@ func NewSecurityPolicy(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:cdn/v20240901:SecurityPolicy"),
 		},
-		{
-			Type: pulumi.String("azure-native:cdn/v20250101preview:SecurityPolicy"),
-		},
-		{
-			Type: pulumi.String("azure-native:cdn/v20250415:SecurityPolicy"),
-		},
-		{
-			Type: pulumi.String("azure-native:cdn/v20250601:SecurityPolicy"),
-		},
-		{
-			Type: pulumi.String("azure-native:cdn/v20250701preview:SecurityPolicy"),
-		},
-		{
-			Type: pulumi.String("azure-native:cdn/v20250901preview:SecurityPolicy"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -133,9 +116,9 @@ func (SecurityPolicyState) ElementType() reflect.Type {
 type securityPolicyArgs struct {
 	// object which contains security policy parameters
 	Parameters *SecurityPolicyWebApplicationFirewallParameters `pulumi:"parameters"`
-	// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+	// Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
 	ProfileName string `pulumi:"profileName"`
-	// The name of the resource group. The name is case insensitive.
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Name of the security policy under the profile.
 	SecurityPolicyName *string `pulumi:"securityPolicyName"`
@@ -145,9 +128,9 @@ type securityPolicyArgs struct {
 type SecurityPolicyArgs struct {
 	// object which contains security policy parameters
 	Parameters SecurityPolicyWebApplicationFirewallParametersPtrInput
-	// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+	// Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
 	ProfileName pulumi.StringInput
-	// The name of the resource group. The name is case insensitive.
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput
 	// Name of the security policy under the profile.
 	SecurityPolicyName pulumi.StringPtrInput
@@ -190,16 +173,11 @@ func (o SecurityPolicyOutput) ToSecurityPolicyOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The Azure API version of the resource.
-func (o SecurityPolicyOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *SecurityPolicy) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 func (o SecurityPolicyOutput) DeploymentStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityPolicy) pulumi.StringOutput { return v.DeploymentStatus }).(pulumi.StringOutput)
 }
 
-// The name of the resource
+// Resource name.
 func (o SecurityPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -221,12 +199,12 @@ func (o SecurityPolicyOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityPolicy) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+// Read only system data
 func (o SecurityPolicyOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *SecurityPolicy) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// Resource type.
 func (o SecurityPolicyOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityPolicy) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

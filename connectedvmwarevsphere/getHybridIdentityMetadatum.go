@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Implements HybridIdentityMetadata GET method.
 //
-// Uses Azure REST API version 2023-03-01-preview.
+// Uses Azure REST API version 2022-07-15-preview.
 //
-// Other available API versions: 2022-07-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native connectedvmwarevsphere [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-03-01-preview.
 func LookupHybridIdentityMetadatum(ctx *pulumi.Context, args *LookupHybridIdentityMetadatumArgs, opts ...pulumi.InvokeOption) (*LookupHybridIdentityMetadatumResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupHybridIdentityMetadatumResult
@@ -37,19 +37,17 @@ type LookupHybridIdentityMetadatumArgs struct {
 
 // Defines the HybridIdentityMetadata.
 type LookupHybridIdentityMetadatumResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The identity of the resource.
 	Identity IdentityResponse `pulumi:"identity"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// Gets the provisioning state.
+	// Gets or sets the provisioning state.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Gets or sets the Public Key.
 	PublicKey *string `pulumi:"publicKey"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	// The system data.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
@@ -94,12 +92,7 @@ func (o LookupHybridIdentityMetadatumResultOutput) ToLookupHybridIdentityMetadat
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupHybridIdentityMetadatumResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupHybridIdentityMetadatumResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupHybridIdentityMetadatumResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHybridIdentityMetadatumResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -114,7 +107,7 @@ func (o LookupHybridIdentityMetadatumResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHybridIdentityMetadatumResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Gets the provisioning state.
+// Gets or sets the provisioning state.
 func (o LookupHybridIdentityMetadatumResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHybridIdentityMetadatumResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
@@ -124,7 +117,7 @@ func (o LookupHybridIdentityMetadatumResultOutput) PublicKey() pulumi.StringPtrO
 	return o.ApplyT(func(v LookupHybridIdentityMetadatumResult) *string { return v.PublicKey }).(pulumi.StringPtrOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+// The system data.
 func (o LookupHybridIdentityMetadatumResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupHybridIdentityMetadatumResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }

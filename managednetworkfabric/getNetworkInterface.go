@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the Network Interface resource details.
 //
-// Uses Azure REST API version 2023-06-15.
+// Uses Azure REST API version 2023-02-01-preview.
 //
-// Other available API versions: 2023-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-06-15.
 func LookupNetworkInterface(ctx *pulumi.Context, args *LookupNetworkInterfaceArgs, opts ...pulumi.InvokeOption) (*LookupNetworkInterfaceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkInterfaceResult
@@ -27,9 +27,9 @@ func LookupNetworkInterface(ctx *pulumi.Context, args *LookupNetworkInterfaceArg
 }
 
 type LookupNetworkInterfaceArgs struct {
-	// Name of the Network Device.
+	// Name of the NetworkDevice
 	NetworkDeviceName string `pulumi:"networkDeviceName"`
-	// Name of the Network Interface.
+	// Name of the NetworkInterfaceName
 	NetworkInterfaceName string `pulumi:"networkInterfaceName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -37,27 +37,25 @@ type LookupNetworkInterfaceArgs struct {
 
 // Defines the NetworkInterface resource.
 type LookupNetworkInterfaceResult struct {
-	// Administrative state of the resource.
+	// administrativeState of the network interface. Example: Enabled | Disabled.
 	AdministrativeState string `pulumi:"administrativeState"`
 	// Switch configuration description.
 	Annotation *string `pulumi:"annotation"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// The ARM resource id of the interface or compute server its connected to.
+	// The arm resource id of the interface or compute server its connected to.
 	ConnectedTo string `pulumi:"connectedTo"`
-	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The Interface Type. Example: Management/Data
 	InterfaceType string `pulumi:"interfaceType"`
-	// IPv4Address of the interface.
+	// ipv4Address.
 	Ipv4Address string `pulumi:"ipv4Address"`
-	// IPv6Address of the interface.
+	// ipv6Address.
 	Ipv6Address string `pulumi:"ipv6Address"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// Physical Identifier of the network interface.
+	// physicalIdentifier of the network interface.
 	PhysicalIdentifier string `pulumi:"physicalIdentifier"`
-	// Provisioning state of the resource.
+	// Gets the provisioning state of the resource.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
@@ -75,9 +73,9 @@ func LookupNetworkInterfaceOutput(ctx *pulumi.Context, args LookupNetworkInterfa
 }
 
 type LookupNetworkInterfaceOutputArgs struct {
-	// Name of the Network Device.
+	// Name of the NetworkDevice
 	NetworkDeviceName pulumi.StringInput `pulumi:"networkDeviceName"`
-	// Name of the Network Interface.
+	// Name of the NetworkInterfaceName
 	NetworkInterfaceName pulumi.StringInput `pulumi:"networkInterfaceName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
@@ -102,7 +100,7 @@ func (o LookupNetworkInterfaceResultOutput) ToLookupNetworkInterfaceResultOutput
 	return o
 }
 
-// Administrative state of the resource.
+// administrativeState of the network interface. Example: Enabled | Disabled.
 func (o LookupNetworkInterfaceResultOutput) AdministrativeState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkInterfaceResult) string { return v.AdministrativeState }).(pulumi.StringOutput)
 }
@@ -112,17 +110,12 @@ func (o LookupNetworkInterfaceResultOutput) Annotation() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v LookupNetworkInterfaceResult) *string { return v.Annotation }).(pulumi.StringPtrOutput)
 }
 
-// The Azure API version of the resource.
-func (o LookupNetworkInterfaceResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupNetworkInterfaceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// The ARM resource id of the interface or compute server its connected to.
+// The arm resource id of the interface or compute server its connected to.
 func (o LookupNetworkInterfaceResultOutput) ConnectedTo() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkInterfaceResult) string { return v.ConnectedTo }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupNetworkInterfaceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkInterfaceResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -132,12 +125,12 @@ func (o LookupNetworkInterfaceResultOutput) InterfaceType() pulumi.StringOutput 
 	return o.ApplyT(func(v LookupNetworkInterfaceResult) string { return v.InterfaceType }).(pulumi.StringOutput)
 }
 
-// IPv4Address of the interface.
+// ipv4Address.
 func (o LookupNetworkInterfaceResultOutput) Ipv4Address() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkInterfaceResult) string { return v.Ipv4Address }).(pulumi.StringOutput)
 }
 
-// IPv6Address of the interface.
+// ipv6Address.
 func (o LookupNetworkInterfaceResultOutput) Ipv6Address() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkInterfaceResult) string { return v.Ipv6Address }).(pulumi.StringOutput)
 }
@@ -147,12 +140,12 @@ func (o LookupNetworkInterfaceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkInterfaceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Physical Identifier of the network interface.
+// physicalIdentifier of the network interface.
 func (o LookupNetworkInterfaceResultOutput) PhysicalIdentifier() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkInterfaceResult) string { return v.PhysicalIdentifier }).(pulumi.StringOutput)
 }
 
-// Provisioning state of the resource.
+// Gets the provisioning state of the resource.
 func (o LookupNetworkInterfaceResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkInterfaceResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }

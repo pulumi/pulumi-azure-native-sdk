@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Implements host GET method.
 //
-// Uses Azure REST API version 2023-12-01.
+// Uses Azure REST API version 2022-07-15-preview.
 //
-// Other available API versions: 2022-07-15-preview, 2023-03-01-preview, 2023-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native connectedvmwarevsphere [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-03-01-preview, 2023-10-01, 2023-12-01.
 func LookupHost(ctx *pulumi.Context, args *LookupHostArgs, opts ...pulumi.InvokeOption) (*LookupHostResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupHostResult
@@ -35,13 +35,9 @@ type LookupHostArgs struct {
 
 // Define the host.
 type LookupHostResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// Gets the max CPU usage across all cores in MHz.
-	CpuMhz float64 `pulumi:"cpuMhz"`
 	// Gets the name of the corresponding resource in Kubernetes.
 	CustomResourceName string `pulumi:"customResourceName"`
-	// Gets the datastore ARM ids.
+	// Gets or sets the datastore ARM ids.
 	DatastoreIds []string `pulumi:"datastoreIds"`
 	// Gets or sets the extended location.
 	ExtendedLocation *ExtendedLocationResponse `pulumi:"extendedLocation"`
@@ -53,21 +49,15 @@ type LookupHostResult struct {
 	Kind *string `pulumi:"kind"`
 	// Gets or sets the location.
 	Location string `pulumi:"location"`
-	// Gets the total amount of physical memory on the host in GB.
-	MemorySizeGB float64 `pulumi:"memorySizeGB"`
 	// Gets or sets the vCenter Managed Object name for the host.
 	MoName string `pulumi:"moName"`
 	// Gets or sets the vCenter MoRef (Managed Object Reference) ID for the host.
 	MoRefId *string `pulumi:"moRefId"`
 	// Gets or sets the name.
 	Name string `pulumi:"name"`
-	// Gets the network ARM ids.
+	// Gets or sets the network ARM ids.
 	NetworkIds []string `pulumi:"networkIds"`
-	// Gets the used CPU usage across all cores in MHz.
-	OverallCpuUsageMHz float64 `pulumi:"overallCpuUsageMHz"`
-	// Gets the used physical memory on the host in GB.
-	OverallMemoryUsageGB float64 `pulumi:"overallMemoryUsageGB"`
-	// Gets the provisioning state.
+	// Gets or sets the provisioning state.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The resource status information.
 	Statuses []ResourceStatusResponse `pulumi:"statuses"`
@@ -118,22 +108,12 @@ func (o LookupHostResultOutput) ToLookupHostResultOutputWithContext(ctx context.
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupHostResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupHostResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// Gets the max CPU usage across all cores in MHz.
-func (o LookupHostResultOutput) CpuMhz() pulumi.Float64Output {
-	return o.ApplyT(func(v LookupHostResult) float64 { return v.CpuMhz }).(pulumi.Float64Output)
-}
-
 // Gets the name of the corresponding resource in Kubernetes.
 func (o LookupHostResultOutput) CustomResourceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHostResult) string { return v.CustomResourceName }).(pulumi.StringOutput)
 }
 
-// Gets the datastore ARM ids.
+// Gets or sets the datastore ARM ids.
 func (o LookupHostResultOutput) DatastoreIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupHostResult) []string { return v.DatastoreIds }).(pulumi.StringArrayOutput)
 }
@@ -163,11 +143,6 @@ func (o LookupHostResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHostResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// Gets the total amount of physical memory on the host in GB.
-func (o LookupHostResultOutput) MemorySizeGB() pulumi.Float64Output {
-	return o.ApplyT(func(v LookupHostResult) float64 { return v.MemorySizeGB }).(pulumi.Float64Output)
-}
-
 // Gets or sets the vCenter Managed Object name for the host.
 func (o LookupHostResultOutput) MoName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHostResult) string { return v.MoName }).(pulumi.StringOutput)
@@ -183,22 +158,12 @@ func (o LookupHostResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHostResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Gets the network ARM ids.
+// Gets or sets the network ARM ids.
 func (o LookupHostResultOutput) NetworkIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupHostResult) []string { return v.NetworkIds }).(pulumi.StringArrayOutput)
 }
 
-// Gets the used CPU usage across all cores in MHz.
-func (o LookupHostResultOutput) OverallCpuUsageMHz() pulumi.Float64Output {
-	return o.ApplyT(func(v LookupHostResult) float64 { return v.OverallCpuUsageMHz }).(pulumi.Float64Output)
-}
-
-// Gets the used physical memory on the host in GB.
-func (o LookupHostResultOutput) OverallMemoryUsageGB() pulumi.Float64Output {
-	return o.ApplyT(func(v LookupHostResult) float64 { return v.OverallMemoryUsageGB }).(pulumi.Float64Output)
-}
-
-// Gets the provisioning state.
+// Gets or sets the provisioning state.
 func (o LookupHostResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHostResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }

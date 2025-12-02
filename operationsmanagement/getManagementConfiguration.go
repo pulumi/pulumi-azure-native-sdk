@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,8 +33,6 @@ type LookupManagementConfigurationArgs struct {
 
 // The container for solution.
 type LookupManagementConfigurationResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource ID.
 	Id string `pulumi:"id"`
 	// Resource location
@@ -80,11 +78,6 @@ func (o LookupManagementConfigurationResultOutput) ToLookupManagementConfigurati
 
 func (o LookupManagementConfigurationResultOutput) ToLookupManagementConfigurationResultOutputWithContext(ctx context.Context) LookupManagementConfigurationResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupManagementConfigurationResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupManagementConfigurationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource ID.

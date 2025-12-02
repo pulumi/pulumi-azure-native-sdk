@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -635,6 +635,10 @@ func (o InputLinuxParametersResponsePtrOutput) PackageNameMasksToInclude() pulum
 type InputPatchConfiguration struct {
 	// Input parameters specific to patching Linux machine. For Windows machines, do not pass this property.
 	LinuxParameters *InputLinuxParameters `pulumi:"linuxParameters"`
+	// List of post tasks. e.g. [{'source' :'runbook', 'taskScope': 'Resource', 'parameters': { 'arg1': 'value1'}}]
+	PostTasks []TaskProperties `pulumi:"postTasks"`
+	// List of pre tasks. e.g. [{'source' :'runbook', 'taskScope': 'Global', 'parameters': { 'arg1': 'value1'}}]
+	PreTasks []TaskProperties `pulumi:"preTasks"`
 	// Possible reboot preference as defined by the user based on which it would be decided to reboot the machine or not after the patch operation is completed.
 	RebootSetting *string `pulumi:"rebootSetting"`
 	// Input parameters specific to patching a Windows machine. For Linux machines, do not pass this property.
@@ -669,6 +673,10 @@ type InputPatchConfigurationInput interface {
 type InputPatchConfigurationArgs struct {
 	// Input parameters specific to patching Linux machine. For Windows machines, do not pass this property.
 	LinuxParameters InputLinuxParametersPtrInput `pulumi:"linuxParameters"`
+	// List of post tasks. e.g. [{'source' :'runbook', 'taskScope': 'Resource', 'parameters': { 'arg1': 'value1'}}]
+	PostTasks TaskPropertiesArrayInput `pulumi:"postTasks"`
+	// List of pre tasks. e.g. [{'source' :'runbook', 'taskScope': 'Global', 'parameters': { 'arg1': 'value1'}}]
+	PreTasks TaskPropertiesArrayInput `pulumi:"preTasks"`
 	// Possible reboot preference as defined by the user based on which it would be decided to reboot the machine or not after the patch operation is completed.
 	RebootSetting pulumi.StringPtrInput `pulumi:"rebootSetting"`
 	// Input parameters specific to patching a Windows machine. For Linux machines, do not pass this property.
@@ -769,6 +777,16 @@ func (o InputPatchConfigurationOutput) LinuxParameters() InputLinuxParametersPtr
 	return o.ApplyT(func(v InputPatchConfiguration) *InputLinuxParameters { return v.LinuxParameters }).(InputLinuxParametersPtrOutput)
 }
 
+// List of post tasks. e.g. [{'source' :'runbook', 'taskScope': 'Resource', 'parameters': { 'arg1': 'value1'}}]
+func (o InputPatchConfigurationOutput) PostTasks() TaskPropertiesArrayOutput {
+	return o.ApplyT(func(v InputPatchConfiguration) []TaskProperties { return v.PostTasks }).(TaskPropertiesArrayOutput)
+}
+
+// List of pre tasks. e.g. [{'source' :'runbook', 'taskScope': 'Global', 'parameters': { 'arg1': 'value1'}}]
+func (o InputPatchConfigurationOutput) PreTasks() TaskPropertiesArrayOutput {
+	return o.ApplyT(func(v InputPatchConfiguration) []TaskProperties { return v.PreTasks }).(TaskPropertiesArrayOutput)
+}
+
 // Possible reboot preference as defined by the user based on which it would be decided to reboot the machine or not after the patch operation is completed.
 func (o InputPatchConfigurationOutput) RebootSetting() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InputPatchConfiguration) *string { return v.RebootSetting }).(pulumi.StringPtrOutput)
@@ -813,6 +831,26 @@ func (o InputPatchConfigurationPtrOutput) LinuxParameters() InputLinuxParameters
 	}).(InputLinuxParametersPtrOutput)
 }
 
+// List of post tasks. e.g. [{'source' :'runbook', 'taskScope': 'Resource', 'parameters': { 'arg1': 'value1'}}]
+func (o InputPatchConfigurationPtrOutput) PostTasks() TaskPropertiesArrayOutput {
+	return o.ApplyT(func(v *InputPatchConfiguration) []TaskProperties {
+		if v == nil {
+			return nil
+		}
+		return v.PostTasks
+	}).(TaskPropertiesArrayOutput)
+}
+
+// List of pre tasks. e.g. [{'source' :'runbook', 'taskScope': 'Global', 'parameters': { 'arg1': 'value1'}}]
+func (o InputPatchConfigurationPtrOutput) PreTasks() TaskPropertiesArrayOutput {
+	return o.ApplyT(func(v *InputPatchConfiguration) []TaskProperties {
+		if v == nil {
+			return nil
+		}
+		return v.PreTasks
+	}).(TaskPropertiesArrayOutput)
+}
+
 // Possible reboot preference as defined by the user based on which it would be decided to reboot the machine or not after the patch operation is completed.
 func (o InputPatchConfigurationPtrOutput) RebootSetting() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InputPatchConfiguration) *string {
@@ -837,6 +875,10 @@ func (o InputPatchConfigurationPtrOutput) WindowsParameters() InputWindowsParame
 type InputPatchConfigurationResponse struct {
 	// Input parameters specific to patching Linux machine. For Windows machines, do not pass this property.
 	LinuxParameters *InputLinuxParametersResponse `pulumi:"linuxParameters"`
+	// List of post tasks. e.g. [{'source' :'runbook', 'taskScope': 'Resource', 'parameters': { 'arg1': 'value1'}}]
+	PostTasks []TaskPropertiesResponse `pulumi:"postTasks"`
+	// List of pre tasks. e.g. [{'source' :'runbook', 'taskScope': 'Global', 'parameters': { 'arg1': 'value1'}}]
+	PreTasks []TaskPropertiesResponse `pulumi:"preTasks"`
 	// Possible reboot preference as defined by the user based on which it would be decided to reboot the machine or not after the patch operation is completed.
 	RebootSetting *string `pulumi:"rebootSetting"`
 	// Input parameters specific to patching a Windows machine. For Linux machines, do not pass this property.
@@ -874,6 +916,16 @@ func (o InputPatchConfigurationResponseOutput) ToInputPatchConfigurationResponse
 // Input parameters specific to patching Linux machine. For Windows machines, do not pass this property.
 func (o InputPatchConfigurationResponseOutput) LinuxParameters() InputLinuxParametersResponsePtrOutput {
 	return o.ApplyT(func(v InputPatchConfigurationResponse) *InputLinuxParametersResponse { return v.LinuxParameters }).(InputLinuxParametersResponsePtrOutput)
+}
+
+// List of post tasks. e.g. [{'source' :'runbook', 'taskScope': 'Resource', 'parameters': { 'arg1': 'value1'}}]
+func (o InputPatchConfigurationResponseOutput) PostTasks() TaskPropertiesResponseArrayOutput {
+	return o.ApplyT(func(v InputPatchConfigurationResponse) []TaskPropertiesResponse { return v.PostTasks }).(TaskPropertiesResponseArrayOutput)
+}
+
+// List of pre tasks. e.g. [{'source' :'runbook', 'taskScope': 'Global', 'parameters': { 'arg1': 'value1'}}]
+func (o InputPatchConfigurationResponseOutput) PreTasks() TaskPropertiesResponseArrayOutput {
+	return o.ApplyT(func(v InputPatchConfigurationResponse) []TaskPropertiesResponse { return v.PreTasks }).(TaskPropertiesResponseArrayOutput)
 }
 
 // Possible reboot preference as defined by the user based on which it would be decided to reboot the machine or not after the patch operation is completed.
@@ -918,6 +970,26 @@ func (o InputPatchConfigurationResponsePtrOutput) LinuxParameters() InputLinuxPa
 		}
 		return v.LinuxParameters
 	}).(InputLinuxParametersResponsePtrOutput)
+}
+
+// List of post tasks. e.g. [{'source' :'runbook', 'taskScope': 'Resource', 'parameters': { 'arg1': 'value1'}}]
+func (o InputPatchConfigurationResponsePtrOutput) PostTasks() TaskPropertiesResponseArrayOutput {
+	return o.ApplyT(func(v *InputPatchConfigurationResponse) []TaskPropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.PostTasks
+	}).(TaskPropertiesResponseArrayOutput)
+}
+
+// List of pre tasks. e.g. [{'source' :'runbook', 'taskScope': 'Global', 'parameters': { 'arg1': 'value1'}}]
+func (o InputPatchConfigurationResponsePtrOutput) PreTasks() TaskPropertiesResponseArrayOutput {
+	return o.ApplyT(func(v *InputPatchConfigurationResponse) []TaskPropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.PreTasks
+	}).(TaskPropertiesResponseArrayOutput)
 }
 
 // Possible reboot preference as defined by the user based on which it would be decided to reboot the machine or not after the patch operation is completed.
@@ -1248,6 +1320,200 @@ func (o InputWindowsParametersResponsePtrOutput) KbNumbersToInclude() pulumi.Str
 	}).(pulumi.StringArrayOutput)
 }
 
+// Definition of a MaintenanceOverrideProperties
+type MaintenanceOverrideProperties struct {
+	// Effective end date of the maintenance override window in YYYY-MM-DD hh:mm format. The window will be created in the time zone provided and adjusted to daylight savings according to that time zone. Expiration date must be set to a future date. If not provided, it will be set to the maximum datetime 9999-12-31 23:59:59.
+	EndDateTime *string `pulumi:"endDateTime"`
+	// Gets or sets overrideProperties of the maintenanceConfiguration
+	OverrideProperties map[string]string `pulumi:"overrideProperties"`
+	// Effective start date of the maintenance override window in YYYY-MM-DD hh:mm format. The start date can be set to either the current date or future date. The window will be created in the time zone provided and adjusted to daylight savings according to that time zone.
+	StartDateTime *string `pulumi:"startDateTime"`
+	// Name of the timezone. List of timezones can be obtained by executing [System.TimeZoneInfo]::GetSystemTimeZones() in PowerShell. Example: Pacific Standard Time, UTC, W. Europe Standard Time, Korea Standard Time, Cen. Australia Standard Time.
+	TimeZone *string `pulumi:"timeZone"`
+}
+
+// MaintenanceOverridePropertiesInput is an input type that accepts MaintenanceOverridePropertiesArgs and MaintenanceOverridePropertiesOutput values.
+// You can construct a concrete instance of `MaintenanceOverridePropertiesInput` via:
+//
+//	MaintenanceOverridePropertiesArgs{...}
+type MaintenanceOverridePropertiesInput interface {
+	pulumi.Input
+
+	ToMaintenanceOverridePropertiesOutput() MaintenanceOverridePropertiesOutput
+	ToMaintenanceOverridePropertiesOutputWithContext(context.Context) MaintenanceOverridePropertiesOutput
+}
+
+// Definition of a MaintenanceOverrideProperties
+type MaintenanceOverridePropertiesArgs struct {
+	// Effective end date of the maintenance override window in YYYY-MM-DD hh:mm format. The window will be created in the time zone provided and adjusted to daylight savings according to that time zone. Expiration date must be set to a future date. If not provided, it will be set to the maximum datetime 9999-12-31 23:59:59.
+	EndDateTime pulumi.StringPtrInput `pulumi:"endDateTime"`
+	// Gets or sets overrideProperties of the maintenanceConfiguration
+	OverrideProperties pulumi.StringMapInput `pulumi:"overrideProperties"`
+	// Effective start date of the maintenance override window in YYYY-MM-DD hh:mm format. The start date can be set to either the current date or future date. The window will be created in the time zone provided and adjusted to daylight savings according to that time zone.
+	StartDateTime pulumi.StringPtrInput `pulumi:"startDateTime"`
+	// Name of the timezone. List of timezones can be obtained by executing [System.TimeZoneInfo]::GetSystemTimeZones() in PowerShell. Example: Pacific Standard Time, UTC, W. Europe Standard Time, Korea Standard Time, Cen. Australia Standard Time.
+	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
+}
+
+func (MaintenanceOverridePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaintenanceOverrideProperties)(nil)).Elem()
+}
+
+func (i MaintenanceOverridePropertiesArgs) ToMaintenanceOverridePropertiesOutput() MaintenanceOverridePropertiesOutput {
+	return i.ToMaintenanceOverridePropertiesOutputWithContext(context.Background())
+}
+
+func (i MaintenanceOverridePropertiesArgs) ToMaintenanceOverridePropertiesOutputWithContext(ctx context.Context) MaintenanceOverridePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceOverridePropertiesOutput)
+}
+
+// MaintenanceOverridePropertiesArrayInput is an input type that accepts MaintenanceOverridePropertiesArray and MaintenanceOverridePropertiesArrayOutput values.
+// You can construct a concrete instance of `MaintenanceOverridePropertiesArrayInput` via:
+//
+//	MaintenanceOverridePropertiesArray{ MaintenanceOverridePropertiesArgs{...} }
+type MaintenanceOverridePropertiesArrayInput interface {
+	pulumi.Input
+
+	ToMaintenanceOverridePropertiesArrayOutput() MaintenanceOverridePropertiesArrayOutput
+	ToMaintenanceOverridePropertiesArrayOutputWithContext(context.Context) MaintenanceOverridePropertiesArrayOutput
+}
+
+type MaintenanceOverridePropertiesArray []MaintenanceOverridePropertiesInput
+
+func (MaintenanceOverridePropertiesArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MaintenanceOverrideProperties)(nil)).Elem()
+}
+
+func (i MaintenanceOverridePropertiesArray) ToMaintenanceOverridePropertiesArrayOutput() MaintenanceOverridePropertiesArrayOutput {
+	return i.ToMaintenanceOverridePropertiesArrayOutputWithContext(context.Background())
+}
+
+func (i MaintenanceOverridePropertiesArray) ToMaintenanceOverridePropertiesArrayOutputWithContext(ctx context.Context) MaintenanceOverridePropertiesArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceOverridePropertiesArrayOutput)
+}
+
+// Definition of a MaintenanceOverrideProperties
+type MaintenanceOverridePropertiesOutput struct{ *pulumi.OutputState }
+
+func (MaintenanceOverridePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaintenanceOverrideProperties)(nil)).Elem()
+}
+
+func (o MaintenanceOverridePropertiesOutput) ToMaintenanceOverridePropertiesOutput() MaintenanceOverridePropertiesOutput {
+	return o
+}
+
+func (o MaintenanceOverridePropertiesOutput) ToMaintenanceOverridePropertiesOutputWithContext(ctx context.Context) MaintenanceOverridePropertiesOutput {
+	return o
+}
+
+// Effective end date of the maintenance override window in YYYY-MM-DD hh:mm format. The window will be created in the time zone provided and adjusted to daylight savings according to that time zone. Expiration date must be set to a future date. If not provided, it will be set to the maximum datetime 9999-12-31 23:59:59.
+func (o MaintenanceOverridePropertiesOutput) EndDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MaintenanceOverrideProperties) *string { return v.EndDateTime }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets overrideProperties of the maintenanceConfiguration
+func (o MaintenanceOverridePropertiesOutput) OverrideProperties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v MaintenanceOverrideProperties) map[string]string { return v.OverrideProperties }).(pulumi.StringMapOutput)
+}
+
+// Effective start date of the maintenance override window in YYYY-MM-DD hh:mm format. The start date can be set to either the current date or future date. The window will be created in the time zone provided and adjusted to daylight savings according to that time zone.
+func (o MaintenanceOverridePropertiesOutput) StartDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MaintenanceOverrideProperties) *string { return v.StartDateTime }).(pulumi.StringPtrOutput)
+}
+
+// Name of the timezone. List of timezones can be obtained by executing [System.TimeZoneInfo]::GetSystemTimeZones() in PowerShell. Example: Pacific Standard Time, UTC, W. Europe Standard Time, Korea Standard Time, Cen. Australia Standard Time.
+func (o MaintenanceOverridePropertiesOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MaintenanceOverrideProperties) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
+}
+
+type MaintenanceOverridePropertiesArrayOutput struct{ *pulumi.OutputState }
+
+func (MaintenanceOverridePropertiesArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MaintenanceOverrideProperties)(nil)).Elem()
+}
+
+func (o MaintenanceOverridePropertiesArrayOutput) ToMaintenanceOverridePropertiesArrayOutput() MaintenanceOverridePropertiesArrayOutput {
+	return o
+}
+
+func (o MaintenanceOverridePropertiesArrayOutput) ToMaintenanceOverridePropertiesArrayOutputWithContext(ctx context.Context) MaintenanceOverridePropertiesArrayOutput {
+	return o
+}
+
+func (o MaintenanceOverridePropertiesArrayOutput) Index(i pulumi.IntInput) MaintenanceOverridePropertiesOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MaintenanceOverrideProperties {
+		return vs[0].([]MaintenanceOverrideProperties)[vs[1].(int)]
+	}).(MaintenanceOverridePropertiesOutput)
+}
+
+// Definition of a MaintenanceOverrideProperties
+type MaintenanceOverridePropertiesResponse struct {
+	// Effective end date of the maintenance override window in YYYY-MM-DD hh:mm format. The window will be created in the time zone provided and adjusted to daylight savings according to that time zone. Expiration date must be set to a future date. If not provided, it will be set to the maximum datetime 9999-12-31 23:59:59.
+	EndDateTime *string `pulumi:"endDateTime"`
+	// Gets or sets overrideProperties of the maintenanceConfiguration
+	OverrideProperties map[string]string `pulumi:"overrideProperties"`
+	// Effective start date of the maintenance override window in YYYY-MM-DD hh:mm format. The start date can be set to either the current date or future date. The window will be created in the time zone provided and adjusted to daylight savings according to that time zone.
+	StartDateTime *string `pulumi:"startDateTime"`
+	// Name of the timezone. List of timezones can be obtained by executing [System.TimeZoneInfo]::GetSystemTimeZones() in PowerShell. Example: Pacific Standard Time, UTC, W. Europe Standard Time, Korea Standard Time, Cen. Australia Standard Time.
+	TimeZone *string `pulumi:"timeZone"`
+}
+
+// Definition of a MaintenanceOverrideProperties
+type MaintenanceOverridePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (MaintenanceOverridePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaintenanceOverridePropertiesResponse)(nil)).Elem()
+}
+
+func (o MaintenanceOverridePropertiesResponseOutput) ToMaintenanceOverridePropertiesResponseOutput() MaintenanceOverridePropertiesResponseOutput {
+	return o
+}
+
+func (o MaintenanceOverridePropertiesResponseOutput) ToMaintenanceOverridePropertiesResponseOutputWithContext(ctx context.Context) MaintenanceOverridePropertiesResponseOutput {
+	return o
+}
+
+// Effective end date of the maintenance override window in YYYY-MM-DD hh:mm format. The window will be created in the time zone provided and adjusted to daylight savings according to that time zone. Expiration date must be set to a future date. If not provided, it will be set to the maximum datetime 9999-12-31 23:59:59.
+func (o MaintenanceOverridePropertiesResponseOutput) EndDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MaintenanceOverridePropertiesResponse) *string { return v.EndDateTime }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets overrideProperties of the maintenanceConfiguration
+func (o MaintenanceOverridePropertiesResponseOutput) OverrideProperties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v MaintenanceOverridePropertiesResponse) map[string]string { return v.OverrideProperties }).(pulumi.StringMapOutput)
+}
+
+// Effective start date of the maintenance override window in YYYY-MM-DD hh:mm format. The start date can be set to either the current date or future date. The window will be created in the time zone provided and adjusted to daylight savings according to that time zone.
+func (o MaintenanceOverridePropertiesResponseOutput) StartDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MaintenanceOverridePropertiesResponse) *string { return v.StartDateTime }).(pulumi.StringPtrOutput)
+}
+
+// Name of the timezone. List of timezones can be obtained by executing [System.TimeZoneInfo]::GetSystemTimeZones() in PowerShell. Example: Pacific Standard Time, UTC, W. Europe Standard Time, Korea Standard Time, Cen. Australia Standard Time.
+func (o MaintenanceOverridePropertiesResponseOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MaintenanceOverridePropertiesResponse) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
+}
+
+type MaintenanceOverridePropertiesResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (MaintenanceOverridePropertiesResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MaintenanceOverridePropertiesResponse)(nil)).Elem()
+}
+
+func (o MaintenanceOverridePropertiesResponseArrayOutput) ToMaintenanceOverridePropertiesResponseArrayOutput() MaintenanceOverridePropertiesResponseArrayOutput {
+	return o
+}
+
+func (o MaintenanceOverridePropertiesResponseArrayOutput) ToMaintenanceOverridePropertiesResponseArrayOutputWithContext(ctx context.Context) MaintenanceOverridePropertiesResponseArrayOutput {
+	return o
+}
+
+func (o MaintenanceOverridePropertiesResponseArrayOutput) Index(i pulumi.IntInput) MaintenanceOverridePropertiesResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MaintenanceOverridePropertiesResponse {
+		return vs[0].([]MaintenanceOverridePropertiesResponse)[vs[1].(int)]
+	}).(MaintenanceOverridePropertiesResponseOutput)
+}
+
 // Metadata pertaining to creation and last modification of the resource.
 type SystemDataResponse struct {
 	// The timestamp of resource creation (UTC).
@@ -1545,6 +1811,221 @@ func (o TagSettingsPropertiesResponsePtrOutput) Tags() pulumi.StringArrayMapOutp
 	}).(pulumi.StringArrayMapOutput)
 }
 
+// Task properties of the software update configuration.
+type TaskProperties struct {
+	// Gets or sets the parameters of the task.
+	Parameters map[string]string `pulumi:"parameters"`
+	// Gets or sets the name of the runbook.
+	Source *string `pulumi:"source"`
+	// Global Task execute once when schedule trigger. Resource task execute for each VM.
+	TaskScope *string `pulumi:"taskScope"`
+}
+
+// Defaults sets the appropriate defaults for TaskProperties
+func (val *TaskProperties) Defaults() *TaskProperties {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.TaskScope == nil {
+		taskScope_ := "Global"
+		tmp.TaskScope = &taskScope_
+	}
+	return &tmp
+}
+
+// TaskPropertiesInput is an input type that accepts TaskPropertiesArgs and TaskPropertiesOutput values.
+// You can construct a concrete instance of `TaskPropertiesInput` via:
+//
+//	TaskPropertiesArgs{...}
+type TaskPropertiesInput interface {
+	pulumi.Input
+
+	ToTaskPropertiesOutput() TaskPropertiesOutput
+	ToTaskPropertiesOutputWithContext(context.Context) TaskPropertiesOutput
+}
+
+// Task properties of the software update configuration.
+type TaskPropertiesArgs struct {
+	// Gets or sets the parameters of the task.
+	Parameters pulumi.StringMapInput `pulumi:"parameters"`
+	// Gets or sets the name of the runbook.
+	Source pulumi.StringPtrInput `pulumi:"source"`
+	// Global Task execute once when schedule trigger. Resource task execute for each VM.
+	TaskScope pulumi.StringPtrInput `pulumi:"taskScope"`
+}
+
+// Defaults sets the appropriate defaults for TaskPropertiesArgs
+func (val *TaskPropertiesArgs) Defaults() *TaskPropertiesArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.TaskScope == nil {
+		tmp.TaskScope = pulumi.StringPtr("Global")
+	}
+	return &tmp
+}
+func (TaskPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskProperties)(nil)).Elem()
+}
+
+func (i TaskPropertiesArgs) ToTaskPropertiesOutput() TaskPropertiesOutput {
+	return i.ToTaskPropertiesOutputWithContext(context.Background())
+}
+
+func (i TaskPropertiesArgs) ToTaskPropertiesOutputWithContext(ctx context.Context) TaskPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskPropertiesOutput)
+}
+
+// TaskPropertiesArrayInput is an input type that accepts TaskPropertiesArray and TaskPropertiesArrayOutput values.
+// You can construct a concrete instance of `TaskPropertiesArrayInput` via:
+//
+//	TaskPropertiesArray{ TaskPropertiesArgs{...} }
+type TaskPropertiesArrayInput interface {
+	pulumi.Input
+
+	ToTaskPropertiesArrayOutput() TaskPropertiesArrayOutput
+	ToTaskPropertiesArrayOutputWithContext(context.Context) TaskPropertiesArrayOutput
+}
+
+type TaskPropertiesArray []TaskPropertiesInput
+
+func (TaskPropertiesArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TaskProperties)(nil)).Elem()
+}
+
+func (i TaskPropertiesArray) ToTaskPropertiesArrayOutput() TaskPropertiesArrayOutput {
+	return i.ToTaskPropertiesArrayOutputWithContext(context.Background())
+}
+
+func (i TaskPropertiesArray) ToTaskPropertiesArrayOutputWithContext(ctx context.Context) TaskPropertiesArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskPropertiesArrayOutput)
+}
+
+// Task properties of the software update configuration.
+type TaskPropertiesOutput struct{ *pulumi.OutputState }
+
+func (TaskPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskProperties)(nil)).Elem()
+}
+
+func (o TaskPropertiesOutput) ToTaskPropertiesOutput() TaskPropertiesOutput {
+	return o
+}
+
+func (o TaskPropertiesOutput) ToTaskPropertiesOutputWithContext(ctx context.Context) TaskPropertiesOutput {
+	return o
+}
+
+// Gets or sets the parameters of the task.
+func (o TaskPropertiesOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v TaskProperties) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
+}
+
+// Gets or sets the name of the runbook.
+func (o TaskPropertiesOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskProperties) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+// Global Task execute once when schedule trigger. Resource task execute for each VM.
+func (o TaskPropertiesOutput) TaskScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskProperties) *string { return v.TaskScope }).(pulumi.StringPtrOutput)
+}
+
+type TaskPropertiesArrayOutput struct{ *pulumi.OutputState }
+
+func (TaskPropertiesArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TaskProperties)(nil)).Elem()
+}
+
+func (o TaskPropertiesArrayOutput) ToTaskPropertiesArrayOutput() TaskPropertiesArrayOutput {
+	return o
+}
+
+func (o TaskPropertiesArrayOutput) ToTaskPropertiesArrayOutputWithContext(ctx context.Context) TaskPropertiesArrayOutput {
+	return o
+}
+
+func (o TaskPropertiesArrayOutput) Index(i pulumi.IntInput) TaskPropertiesOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TaskProperties {
+		return vs[0].([]TaskProperties)[vs[1].(int)]
+	}).(TaskPropertiesOutput)
+}
+
+// Task properties of the software update configuration.
+type TaskPropertiesResponse struct {
+	// Gets or sets the parameters of the task.
+	Parameters map[string]string `pulumi:"parameters"`
+	// Gets or sets the name of the runbook.
+	Source *string `pulumi:"source"`
+	// Global Task execute once when schedule trigger. Resource task execute for each VM.
+	TaskScope *string `pulumi:"taskScope"`
+}
+
+// Defaults sets the appropriate defaults for TaskPropertiesResponse
+func (val *TaskPropertiesResponse) Defaults() *TaskPropertiesResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.TaskScope == nil {
+		taskScope_ := "Global"
+		tmp.TaskScope = &taskScope_
+	}
+	return &tmp
+}
+
+// Task properties of the software update configuration.
+type TaskPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (TaskPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskPropertiesResponse)(nil)).Elem()
+}
+
+func (o TaskPropertiesResponseOutput) ToTaskPropertiesResponseOutput() TaskPropertiesResponseOutput {
+	return o
+}
+
+func (o TaskPropertiesResponseOutput) ToTaskPropertiesResponseOutputWithContext(ctx context.Context) TaskPropertiesResponseOutput {
+	return o
+}
+
+// Gets or sets the parameters of the task.
+func (o TaskPropertiesResponseOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v TaskPropertiesResponse) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
+}
+
+// Gets or sets the name of the runbook.
+func (o TaskPropertiesResponseOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskPropertiesResponse) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+// Global Task execute once when schedule trigger. Resource task execute for each VM.
+func (o TaskPropertiesResponseOutput) TaskScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskPropertiesResponse) *string { return v.TaskScope }).(pulumi.StringPtrOutput)
+}
+
+type TaskPropertiesResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (TaskPropertiesResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TaskPropertiesResponse)(nil)).Elem()
+}
+
+func (o TaskPropertiesResponseArrayOutput) ToTaskPropertiesResponseArrayOutput() TaskPropertiesResponseArrayOutput {
+	return o
+}
+
+func (o TaskPropertiesResponseArrayOutput) ToTaskPropertiesResponseArrayOutputWithContext(ctx context.Context) TaskPropertiesResponseArrayOutput {
+	return o
+}
+
+func (o TaskPropertiesResponseArrayOutput) Index(i pulumi.IntInput) TaskPropertiesResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TaskPropertiesResponse {
+		return vs[0].([]TaskPropertiesResponse)[vs[1].(int)]
+	}).(TaskPropertiesResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ConfigurationAssignmentFilterPropertiesOutput{})
 	pulumi.RegisterOutputType(ConfigurationAssignmentFilterPropertiesPtrOutput{})
@@ -1562,9 +2043,17 @@ func init() {
 	pulumi.RegisterOutputType(InputWindowsParametersPtrOutput{})
 	pulumi.RegisterOutputType(InputWindowsParametersResponseOutput{})
 	pulumi.RegisterOutputType(InputWindowsParametersResponsePtrOutput{})
+	pulumi.RegisterOutputType(MaintenanceOverridePropertiesOutput{})
+	pulumi.RegisterOutputType(MaintenanceOverridePropertiesArrayOutput{})
+	pulumi.RegisterOutputType(MaintenanceOverridePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(MaintenanceOverridePropertiesResponseArrayOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(TagSettingsPropertiesOutput{})
 	pulumi.RegisterOutputType(TagSettingsPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(TagSettingsPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(TagSettingsPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(TaskPropertiesOutput{})
+	pulumi.RegisterOutputType(TaskPropertiesArrayOutput{})
+	pulumi.RegisterOutputType(TaskPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(TaskPropertiesResponseArrayOutput{})
 }

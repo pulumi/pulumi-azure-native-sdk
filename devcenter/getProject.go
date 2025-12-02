@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a specific project.
 //
-// Uses Azure REST API version 2024-02-01.
+// Uses Azure REST API version 2023-04-01.
 //
-// Other available API versions: 2023-04-01, 2023-08-01-preview, 2023-10-01-preview, 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01, 2025-04-01-preview, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devcenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-08-01-preview, 2023-10-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01.
 func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.InvokeOption) (*LookupProjectResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProjectResult
@@ -35,22 +35,14 @@ type LookupProjectArgs struct {
 
 // Represents a project resource.
 type LookupProjectResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// Settings to be used when associating a project with a catalog.
-	CatalogSettings *ProjectCatalogSettingsResponse `pulumi:"catalogSettings"`
 	// Description of the project.
 	Description *string `pulumi:"description"`
 	// Resource Id of an associated DevCenter
 	DevCenterId *string `pulumi:"devCenterId"`
 	// The URI of the Dev Center resource this project is associated with.
 	DevCenterUri string `pulumi:"devCenterUri"`
-	// The display name of the project.
-	DisplayName *string `pulumi:"displayName"`
-	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// Managed identity properties
-	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// When specified, limits the maximum number of Dev Boxes a single user can create across all pools in the project. This will have no effect on existing Dev Boxes when reduced.
@@ -102,16 +94,6 @@ func (o LookupProjectResultOutput) ToLookupProjectResultOutputWithContext(ctx co
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupProjectResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupProjectResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// Settings to be used when associating a project with a catalog.
-func (o LookupProjectResultOutput) CatalogSettings() ProjectCatalogSettingsResponsePtrOutput {
-	return o.ApplyT(func(v LookupProjectResult) *ProjectCatalogSettingsResponse { return v.CatalogSettings }).(ProjectCatalogSettingsResponsePtrOutput)
-}
-
 // Description of the project.
 func (o LookupProjectResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupProjectResult) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -127,19 +109,9 @@ func (o LookupProjectResultOutput) DevCenterUri() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.DevCenterUri }).(pulumi.StringOutput)
 }
 
-// The display name of the project.
-func (o LookupProjectResultOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupProjectResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
-}
-
-// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupProjectResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// Managed identity properties
-func (o LookupProjectResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupProjectResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives

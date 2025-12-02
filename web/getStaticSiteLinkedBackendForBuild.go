@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Static Site Linked Backend ARM resource.
 //
-// Uses Azure REST API version 2024-04-01.
+// Uses Azure REST API version 2022-09-01.
 //
-// Other available API versions: 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-01-01, 2023-12-01, 2024-04-01.
 func LookupStaticSiteLinkedBackendForBuild(ctx *pulumi.Context, args *LookupStaticSiteLinkedBackendForBuildArgs, opts ...pulumi.InvokeOption) (*LookupStaticSiteLinkedBackendForBuildResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStaticSiteLinkedBackendForBuildResult
@@ -39,8 +39,6 @@ type LookupStaticSiteLinkedBackendForBuildArgs struct {
 
 // Static Site Linked Backend ARM resource.
 type LookupStaticSiteLinkedBackendForBuildResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The resource id of the backend linked to the static site
 	BackendResourceId *string `pulumi:"backendResourceId"`
 	// The date and time on which the backend was linked to the static site.
@@ -96,11 +94,6 @@ func (o LookupStaticSiteLinkedBackendForBuildResultOutput) ToLookupStaticSiteLin
 
 func (o LookupStaticSiteLinkedBackendForBuildResultOutput) ToLookupStaticSiteLinkedBackendForBuildResultOutputWithContext(ctx context.Context) LookupStaticSiteLinkedBackendForBuildResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupStaticSiteLinkedBackendForBuildResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupStaticSiteLinkedBackendForBuildResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The resource id of the backend linked to the static site

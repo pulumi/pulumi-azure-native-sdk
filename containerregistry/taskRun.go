@@ -8,21 +8,17 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The task run that has the ARM resource and properties.
 // The task run will have the information of request and result of a run.
 //
-// Uses Azure REST API version 2019-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2019-06-01-preview.
-//
-// Other available API versions: 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Uses Azure REST API version 2019-06-01-preview. In version 1.x of the Azure Native provider, it used API version 2019-06-01-preview.
 type TaskRun struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// How the run should be forced to rerun even if the run request configuration has not changed
 	ForceUpdateTag pulumi.StringPtrOutput `pulumi:"forceUpdateTag"`
 	// Identity for the resource.
@@ -59,9 +55,6 @@ func NewTaskRun(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:containerregistry/v20190601preview:TaskRun"),
-		},
-		{
-			Type: pulumi.String("azure-native:containerregistry/v20250301preview:TaskRun"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -167,11 +160,6 @@ func (o TaskRunOutput) ToTaskRunOutput() TaskRunOutput {
 
 func (o TaskRunOutput) ToTaskRunOutputWithContext(ctx context.Context) TaskRunOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o TaskRunOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *TaskRun) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // How the run should be forced to rerun even if the run request configuration has not changed

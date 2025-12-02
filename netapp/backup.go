@@ -8,24 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Backup under a Backup Vault
+// Backup of a Volume
 //
-// Uses Azure REST API version 2024-09-01. In version 2.x of the Azure Native provider, it used API version 2022-11-01.
+// Uses Azure REST API version 2022-11-01. In version 1.x of the Azure Native provider, it used API version 2020-12-01.
 //
-// Other available API versions: 2022-11-01-preview, 2023-05-01-preview, 2023-07-01-preview, 2023-11-01, 2023-11-01-preview, 2024-01-01, 2024-03-01, 2024-03-01-preview, 2024-05-01, 2024-05-01-preview, 2024-07-01, 2024-07-01-preview, 2024-09-01-preview, 2025-01-01, 2025-01-01-preview, 2025-03-01, 2025-03-01-preview, 2025-06-01, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native netapp [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-11-01-preview, 2023-05-01-preview, 2023-07-01-preview, 2023-11-01, 2023-11-01-preview, 2024-01-01, 2024-03-01, 2024-03-01-preview, 2024-05-01, 2024-05-01-preview, 2024-07-01, 2024-07-01-preview, 2024-09-01, 2024-09-01-preview.
 type Backup struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// UUID v4 used to identify the Backup
 	BackupId pulumi.StringOutput `pulumi:"backupId"`
-	// ResourceId used to identify the backup policy
-	BackupPolicyResourceId pulumi.StringOutput `pulumi:"backupPolicyResourceId"`
 	// Type of backup Manual or Scheduled
 	BackupType pulumi.StringOutput `pulumi:"backupType"`
 	// The creation date of the backup
@@ -34,22 +30,22 @@ type Backup struct {
 	FailureReason pulumi.StringOutput `pulumi:"failureReason"`
 	// Label for backup
 	Label pulumi.StringPtrOutput `pulumi:"label"`
+	// Resource location
+	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Azure lifecycle management
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// Size of backup in bytes
+	// Size of backup
 	Size pulumi.Float64Output `pulumi:"size"`
-	// The name of the snapshot
-	SnapshotName pulumi.StringPtrOutput `pulumi:"snapshotName"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Manual backup an already existing snapshot. This will always be false for scheduled backups and true/false for manual backups
 	UseExistingSnapshot pulumi.BoolPtrOutput `pulumi:"useExistingSnapshot"`
-	// ResourceId used to identify the Volume
-	VolumeResourceId pulumi.StringOutput `pulumi:"volumeResourceId"`
+	// Volume name
+	VolumeName pulumi.StringOutput `pulumi:"volumeName"`
 }
 
 // NewBackup registers a new resource with the given unique name, arguments, and options.
@@ -62,81 +58,72 @@ func NewBackup(ctx *pulumi.Context,
 	if args.AccountName == nil {
 		return nil, errors.New("invalid value for required argument 'AccountName'")
 	}
-	if args.BackupVaultName == nil {
-		return nil, errors.New("invalid value for required argument 'BackupVaultName'")
+	if args.PoolName == nil {
+		return nil, errors.New("invalid value for required argument 'PoolName'")
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if args.VolumeResourceId == nil {
-		return nil, errors.New("invalid value for required argument 'VolumeResourceId'")
+	if args.VolumeName == nil {
+		return nil, errors.New("invalid value for required argument 'VolumeName'")
 	}
 	if args.UseExistingSnapshot == nil {
 		args.UseExistingSnapshot = pulumi.BoolPtr(false)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:netapp/v20200501:Backup"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20200601:Backup"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20200701:Backup"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20200801:Backup"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20200901:Backup"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20201101:Backup"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20201201:Backup"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20210201:Backup"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20210401:Backup"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20210401preview:Backup"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20210601:Backup"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20210801:Backup"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20211001:Backup"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20220101:Backup"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20220301:Backup"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20220501:Backup"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20220901:Backup"),
+		},
+		{
 			Type: pulumi.String("azure-native:netapp/v20221101:Backup"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20221101preview:Backup"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20230501preview:Backup"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20230701preview:Backup"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20231101:Backup"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20231101preview:Backup"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20240101:Backup"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20240301:Backup"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20240301preview:Backup"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20240501:Backup"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20240501preview:Backup"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20240701:Backup"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20240701preview:Backup"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20240901:Backup"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20240901preview:Backup"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20250101:Backup"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20250101preview:Backup"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20250301:Backup"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20250301preview:Backup"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20250601:Backup"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20250701preview:Backup"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -177,18 +164,18 @@ type backupArgs struct {
 	AccountName string `pulumi:"accountName"`
 	// The name of the backup
 	BackupName *string `pulumi:"backupName"`
-	// The name of the Backup Vault
-	BackupVaultName string `pulumi:"backupVaultName"`
 	// Label for backup
 	Label *string `pulumi:"label"`
+	// Resource location
+	Location *string `pulumi:"location"`
+	// The name of the capacity pool
+	PoolName string `pulumi:"poolName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// The name of the snapshot
-	SnapshotName *string `pulumi:"snapshotName"`
 	// Manual backup an already existing snapshot. This will always be false for scheduled backups and true/false for manual backups
 	UseExistingSnapshot *bool `pulumi:"useExistingSnapshot"`
-	// ResourceId used to identify the Volume
-	VolumeResourceId string `pulumi:"volumeResourceId"`
+	// The name of the volume
+	VolumeName string `pulumi:"volumeName"`
 }
 
 // The set of arguments for constructing a Backup resource.
@@ -197,18 +184,18 @@ type BackupArgs struct {
 	AccountName pulumi.StringInput
 	// The name of the backup
 	BackupName pulumi.StringPtrInput
-	// The name of the Backup Vault
-	BackupVaultName pulumi.StringInput
 	// Label for backup
 	Label pulumi.StringPtrInput
+	// Resource location
+	Location pulumi.StringPtrInput
+	// The name of the capacity pool
+	PoolName pulumi.StringInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// The name of the snapshot
-	SnapshotName pulumi.StringPtrInput
 	// Manual backup an already existing snapshot. This will always be false for scheduled backups and true/false for manual backups
 	UseExistingSnapshot pulumi.BoolPtrInput
-	// ResourceId used to identify the Volume
-	VolumeResourceId pulumi.StringInput
+	// The name of the volume
+	VolumeName pulumi.StringInput
 }
 
 func (BackupArgs) ElementType() reflect.Type {
@@ -248,19 +235,9 @@ func (o BackupOutput) ToBackupOutputWithContext(ctx context.Context) BackupOutpu
 	return o
 }
 
-// The Azure API version of the resource.
-func (o BackupOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // UUID v4 used to identify the Backup
 func (o BackupOutput) BackupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.BackupId }).(pulumi.StringOutput)
-}
-
-// ResourceId used to identify the backup policy
-func (o BackupOutput) BackupPolicyResourceId() pulumi.StringOutput {
-	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.BackupPolicyResourceId }).(pulumi.StringOutput)
 }
 
 // Type of backup Manual or Scheduled
@@ -283,6 +260,11 @@ func (o BackupOutput) Label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringPtrOutput { return v.Label }).(pulumi.StringPtrOutput)
 }
 
+// Resource location
+func (o BackupOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The name of the resource
 func (o BackupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -293,14 +275,9 @@ func (o BackupOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Size of backup in bytes
+// Size of backup
 func (o BackupOutput) Size() pulumi.Float64Output {
 	return o.ApplyT(func(v *Backup) pulumi.Float64Output { return v.Size }).(pulumi.Float64Output)
-}
-
-// The name of the snapshot
-func (o BackupOutput) SnapshotName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Backup) pulumi.StringPtrOutput { return v.SnapshotName }).(pulumi.StringPtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -318,9 +295,9 @@ func (o BackupOutput) UseExistingSnapshot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Backup) pulumi.BoolPtrOutput { return v.UseExistingSnapshot }).(pulumi.BoolPtrOutput)
 }
 
-// ResourceId used to identify the Volume
-func (o BackupOutput) VolumeResourceId() pulumi.StringOutput {
-	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.VolumeResourceId }).(pulumi.StringOutput)
+// Volume name
+func (o BackupOutput) VolumeName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.VolumeName }).(pulumi.StringOutput)
 }
 
 func init() {

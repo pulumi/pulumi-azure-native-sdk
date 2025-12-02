@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An input object, containing all information associated with the named input. All inputs are contained under a streaming job.
 //
-// Uses Azure REST API version 2020-03-01. In version 2.x of the Azure Native provider, it used API version 2020-03-01.
+// Uses Azure REST API version 2020-03-01. In version 1.x of the Azure Native provider, it used API version 2016-03-01.
 //
-// Other available API versions: 2021-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native streamanalytics [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-10-01-preview.
 type Input struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Resource name
 	Name pulumi.StringPtrOutput `pulumi:"name"`
 	// The properties that are associated with an input. Required on PUT (CreateOrReplace) requests.
@@ -152,11 +150,6 @@ func (o InputOutput) ToInputOutput() InputOutput {
 
 func (o InputOutput) ToInputOutputWithContext(ctx context.Context) InputOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o InputOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Input) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource name

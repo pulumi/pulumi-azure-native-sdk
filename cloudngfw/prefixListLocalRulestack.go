@@ -8,22 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // LocalRulestack prefixList
 //
-// Uses Azure REST API version 2025-05-23. In version 2.x of the Azure Native provider, it used API version 2023-09-01.
+// Uses Azure REST API version 2023-09-01.
 //
-// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-08-29, 2022-08-29-preview, 2023-09-01-preview, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview.
 type PrefixListLocalRulestack struct {
 	pulumi.CustomResourceState
 
 	// comment for this object
 	AuditComment pulumi.StringPtrOutput `pulumi:"auditComment"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// prefix description
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// etag info
@@ -80,12 +78,6 @@ func NewPrefixListLocalRulestack(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cloudngfw/v20250206preview:PrefixListLocalRulestack"),
-		},
-		{
-			Type: pulumi.String("azure-native:cloudngfw/v20250523:PrefixListLocalRulestack"),
-		},
-		{
-			Type: pulumi.String("azure-native:cloudngfw/v20250707preview:PrefixListLocalRulestack"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -192,11 +184,6 @@ func (o PrefixListLocalRulestackOutput) ToPrefixListLocalRulestackOutputWithCont
 // comment for this object
 func (o PrefixListLocalRulestackOutput) AuditComment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PrefixListLocalRulestack) pulumi.StringPtrOutput { return v.AuditComment }).(pulumi.StringPtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o PrefixListLocalRulestackOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *PrefixListLocalRulestack) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // prefix description

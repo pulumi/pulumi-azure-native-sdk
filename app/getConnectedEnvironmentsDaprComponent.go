@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Dapr Component.
 //
-// Uses Azure REST API version 2025-02-02-preview.
+// Uses Azure REST API version 2022-10-01.
 //
-// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01.
 func LookupConnectedEnvironmentsDaprComponent(ctx *pulumi.Context, args *LookupConnectedEnvironmentsDaprComponentArgs, opts ...pulumi.InvokeOption) (*LookupConnectedEnvironmentsDaprComponentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConnectedEnvironmentsDaprComponentResult
@@ -37,13 +37,9 @@ type LookupConnectedEnvironmentsDaprComponentArgs struct {
 
 // Dapr Component.
 type LookupConnectedEnvironmentsDaprComponentResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Component type
 	ComponentType *string `pulumi:"componentType"`
-	// Any errors that occurred during deployment or deployment validation
-	DeploymentErrors string `pulumi:"deploymentErrors"`
-	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Boolean describing if the component errors are ignores
 	IgnoreErrors *bool `pulumi:"ignoreErrors"`
@@ -53,16 +49,12 @@ type LookupConnectedEnvironmentsDaprComponentResult struct {
 	Metadata []DaprMetadataResponse `pulumi:"metadata"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// Provisioning state of the Connected Environment Dapr Component.
-	ProvisioningState string `pulumi:"provisioningState"`
 	// Names of container apps that can use this Dapr component
 	Scopes []string `pulumi:"scopes"`
 	// Name of a Dapr component to retrieve component secrets from
 	SecretStoreComponent *string `pulumi:"secretStoreComponent"`
 	// Collection of secrets used by a Dapr component
 	Secrets []SecretResponse `pulumi:"secrets"`
-	// List of container app services that are bound to the Dapr component
-	ServiceComponentBind []DaprComponentServiceBindingResponse `pulumi:"serviceComponentBind"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -120,22 +112,12 @@ func (o LookupConnectedEnvironmentsDaprComponentResultOutput) ToLookupConnectedE
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupConnectedEnvironmentsDaprComponentResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupConnectedEnvironmentsDaprComponentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Component type
 func (o LookupConnectedEnvironmentsDaprComponentResultOutput) ComponentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupConnectedEnvironmentsDaprComponentResult) *string { return v.ComponentType }).(pulumi.StringPtrOutput)
 }
 
-// Any errors that occurred during deployment or deployment validation
-func (o LookupConnectedEnvironmentsDaprComponentResultOutput) DeploymentErrors() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupConnectedEnvironmentsDaprComponentResult) string { return v.DeploymentErrors }).(pulumi.StringOutput)
-}
-
-// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupConnectedEnvironmentsDaprComponentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectedEnvironmentsDaprComponentResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -160,11 +142,6 @@ func (o LookupConnectedEnvironmentsDaprComponentResultOutput) Name() pulumi.Stri
 	return o.ApplyT(func(v LookupConnectedEnvironmentsDaprComponentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Provisioning state of the Connected Environment Dapr Component.
-func (o LookupConnectedEnvironmentsDaprComponentResultOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupConnectedEnvironmentsDaprComponentResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
 // Names of container apps that can use this Dapr component
 func (o LookupConnectedEnvironmentsDaprComponentResultOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupConnectedEnvironmentsDaprComponentResult) []string { return v.Scopes }).(pulumi.StringArrayOutput)
@@ -178,13 +155,6 @@ func (o LookupConnectedEnvironmentsDaprComponentResultOutput) SecretStoreCompone
 // Collection of secrets used by a Dapr component
 func (o LookupConnectedEnvironmentsDaprComponentResultOutput) Secrets() SecretResponseArrayOutput {
 	return o.ApplyT(func(v LookupConnectedEnvironmentsDaprComponentResult) []SecretResponse { return v.Secrets }).(SecretResponseArrayOutput)
-}
-
-// List of container app services that are bound to the Dapr component
-func (o LookupConnectedEnvironmentsDaprComponentResultOutput) ServiceComponentBind() DaprComponentServiceBindingResponseArrayOutput {
-	return o.ApplyT(func(v LookupConnectedEnvironmentsDaprComponentResult) []DaprComponentServiceBindingResponse {
-		return v.ServiceComponentBind
-	}).(DaprComponentServiceBindingResponseArrayOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

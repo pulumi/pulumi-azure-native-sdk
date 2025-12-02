@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves the details of a Virtual Hub Bgp Connection.
 //
-// Uses Azure REST API version 2024-05-01.
+// Uses Azure REST API version 2023-02-01.
 //
-// Other available API versions: 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
 func LookupVirtualHubBgpConnection(ctx *pulumi.Context, args *LookupVirtualHubBgpConnectionArgs, opts ...pulumi.InvokeOption) (*LookupVirtualHubBgpConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVirtualHubBgpConnectionResult
@@ -37,8 +37,6 @@ type LookupVirtualHubBgpConnectionArgs struct {
 
 // Virtual Appliance Site resource.
 type LookupVirtualHubBgpConnectionResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The current state of the VirtualHub to Peer.
 	ConnectionState string `pulumi:"connectionState"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -94,11 +92,6 @@ func (o LookupVirtualHubBgpConnectionResultOutput) ToLookupVirtualHubBgpConnecti
 
 func (o LookupVirtualHubBgpConnectionResultOutput) ToLookupVirtualHubBgpConnectionResultOutputWithContext(ctx context.Context) LookupVirtualHubBgpConnectionResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupVirtualHubBgpConnectionResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupVirtualHubBgpConnectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The current state of the VirtualHub to Peer.

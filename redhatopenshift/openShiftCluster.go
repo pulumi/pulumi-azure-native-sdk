@@ -8,22 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // OpenShiftCluster represents an Azure Red Hat OpenShift cluster.
 //
-// Uses Azure REST API version 2023-11-22. In version 2.x of the Azure Native provider, it used API version 2022-09-04.
+// Uses Azure REST API version 2022-09-04. In version 1.x of the Azure Native provider, it used API version 2020-04-30.
 //
-// Other available API versions: 2022-09-04, 2023-04-01, 2023-07-01-preview, 2023-09-04, 2024-08-12-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native redhatopenshift [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-04-01, 2023-07-01-preview, 2023-09-04, 2023-11-22, 2024-08-12-preview.
 type OpenShiftCluster struct {
 	pulumi.CustomResourceState
 
 	// The cluster API server profile.
 	ApiserverProfile APIServerProfileResponsePtrOutput `pulumi:"apiserverProfile"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The cluster profile.
 	ClusterProfile ClusterProfileResponsePtrOutput `pulumi:"clusterProfile"`
 	// The console profile.
@@ -50,8 +48,6 @@ type OpenShiftCluster struct {
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The cluster worker profiles.
 	WorkerProfiles WorkerProfileResponseArrayOutput `pulumi:"workerProfiles"`
-	// The cluster worker profiles status.
-	WorkerProfilesStatus WorkerProfileResponseArrayOutput `pulumi:"workerProfilesStatus"`
 }
 
 // NewOpenShiftCluster registers a new resource with the given unique name, arguments, and options.
@@ -131,6 +127,8 @@ type openShiftClusterArgs struct {
 	ApiserverProfile *APIServerProfile `pulumi:"apiserverProfile"`
 	// The cluster profile.
 	ClusterProfile *ClusterProfile `pulumi:"clusterProfile"`
+	// The console profile.
+	ConsoleProfile *ConsoleProfile `pulumi:"consoleProfile"`
 	// The cluster ingress profiles.
 	IngressProfiles []IngressProfile `pulumi:"ingressProfiles"`
 	// The geo-location where the resource lives
@@ -159,6 +157,8 @@ type OpenShiftClusterArgs struct {
 	ApiserverProfile APIServerProfilePtrInput
 	// The cluster profile.
 	ClusterProfile ClusterProfilePtrInput
+	// The console profile.
+	ConsoleProfile ConsoleProfilePtrInput
 	// The cluster ingress profiles.
 	IngressProfiles IngressProfileArrayInput
 	// The geo-location where the resource lives
@@ -221,11 +221,6 @@ func (o OpenShiftClusterOutput) ToOpenShiftClusterOutputWithContext(ctx context.
 // The cluster API server profile.
 func (o OpenShiftClusterOutput) ApiserverProfile() APIServerProfileResponsePtrOutput {
 	return o.ApplyT(func(v *OpenShiftCluster) APIServerProfileResponsePtrOutput { return v.ApiserverProfile }).(APIServerProfileResponsePtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o OpenShiftClusterOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *OpenShiftCluster) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The cluster profile.
@@ -291,11 +286,6 @@ func (o OpenShiftClusterOutput) Type() pulumi.StringOutput {
 // The cluster worker profiles.
 func (o OpenShiftClusterOutput) WorkerProfiles() WorkerProfileResponseArrayOutput {
 	return o.ApplyT(func(v *OpenShiftCluster) WorkerProfileResponseArrayOutput { return v.WorkerProfiles }).(WorkerProfileResponseArrayOutput)
-}
-
-// The cluster worker profiles status.
-func (o OpenShiftClusterOutput) WorkerProfilesStatus() WorkerProfileResponseArrayOutput {
-	return o.ApplyT(func(v *OpenShiftCluster) WorkerProfileResponseArrayOutput { return v.WorkerProfilesStatus }).(WorkerProfileResponseArrayOutput)
 }
 
 func init() {

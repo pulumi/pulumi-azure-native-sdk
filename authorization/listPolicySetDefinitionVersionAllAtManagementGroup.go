@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // This operation lists all the policy set definition versions for all policy set definitions at the management group scope.
 //
-// Uses Azure REST API version 2025-01-01.
+// Uses Azure REST API version 2023-04-01.
 //
-// Other available API versions: 2023-04-01, 2024-05-01, 2025-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-05-01, 2025-01-01, 2025-03-01.
 func ListPolicySetDefinitionVersionAllAtManagementGroup(ctx *pulumi.Context, args *ListPolicySetDefinitionVersionAllAtManagementGroupArgs, opts ...pulumi.InvokeOption) (*ListPolicySetDefinitionVersionAllAtManagementGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListPolicySetDefinitionVersionAllAtManagementGroupResult

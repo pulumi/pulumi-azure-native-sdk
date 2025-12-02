@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // SIM resource.
 //
-// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2023-06-01.
+// Uses Azure REST API version 2023-06-01. In version 1.x of the Azure Native provider, it used API version 2022-04-01-preview.
 //
-// Other available API versions: 2022-04-01-preview, 2022-11-01, 2023-06-01, 2023-09-01, 2024-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native mobilenetwork [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-03-01-preview, 2022-04-01-preview, 2022-11-01, 2023-09-01, 2024-02-01, 2024-04-01.
 type Sim struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// An optional free-form text field that can be used to record the device type this SIM is associated with, for example 'Video camera'. The Azure portal allows SIMs to be grouped and filtered based on this value.
 	DeviceType pulumi.StringPtrOutput `pulumi:"deviceType"`
 	// The integrated circuit card ID (ICCID) for the SIM.
@@ -67,9 +65,6 @@ func NewSim(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'SimGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:mobilenetwork/v20220301preview:Sim"),
-		},
 		{
 			Type: pulumi.String("azure-native:mobilenetwork/v20220401preview:Sim"),
 		},
@@ -204,11 +199,6 @@ func (o SimOutput) ToSimOutput() SimOutput {
 
 func (o SimOutput) ToSimOutputWithContext(ctx context.Context) SimOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o SimOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Sim) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // An optional free-form text field that can be used to record the device type this SIM is associated with, for example 'Video camera'. The Azure portal allows SIMs to be grouped and filtered based on this value.

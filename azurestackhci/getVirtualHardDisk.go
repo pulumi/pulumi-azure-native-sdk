@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a virtual hard disk
 //
-// Uses Azure REST API version 2025-02-01-preview.
+// Uses Azure REST API version 2022-12-15-preview.
 //
-// Other available API versions: 2022-12-15-preview, 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01-preview, 2025-04-01-preview.
 func LookupVirtualHardDisk(ctx *pulumi.Context, args *LookupVirtualHardDiskArgs, opts ...pulumi.InvokeOption) (*LookupVirtualHardDiskResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVirtualHardDiskResult
@@ -23,7 +23,7 @@ func LookupVirtualHardDisk(ctx *pulumi.Context, args *LookupVirtualHardDiskArgs,
 	if err != nil {
 		return nil, err
 	}
-	return rv.Defaults(), nil
+	return &rv, nil
 }
 
 type LookupVirtualHardDiskArgs struct {
@@ -35,36 +35,27 @@ type LookupVirtualHardDiskArgs struct {
 
 // The virtual hard disk resource definition.
 type LookupVirtualHardDiskResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// Block size in bytes
 	BlockSizeBytes *int `pulumi:"blockSizeBytes"`
 	// Storage ContainerID of the storage container to be used for VHD
 	ContainerId *string `pulumi:"containerId"`
-	// Boolean indicating whether it is an existing local hard disk or if one should be created.
-	CreateFromLocal *bool `pulumi:"createFromLocal"`
 	// The format of the actual VHD file [vhd, vhdx]
 	DiskFileFormat *string `pulumi:"diskFileFormat"`
 	// Size of the disk in GB
 	DiskSizeGB *float64 `pulumi:"diskSizeGB"`
-	// URL for downloading or accessing the virtual hard disk. This URL points to a secure link from where the VHD can be downloaded or accessed directly.
-	DownloadUrl *string `pulumi:"downloadUrl"`
 	// Boolean for enabling dynamic sizing on the virtual hard disk
 	Dynamic *bool `pulumi:"dynamic"`
 	// The extendedLocation of the resource.
 	ExtendedLocation *ExtendedLocationResponse `pulumi:"extendedLocation"`
 	// The hypervisor generation of the Virtual Machine [V1, V2]
 	HyperVGeneration *string `pulumi:"hyperVGeneration"`
-	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
-	Location string `pulumi:"location"`
-	// Logical sector in bytes
-	LogicalSectorBytes *int `pulumi:"logicalSectorBytes"`
+	Location           string `pulumi:"location"`
+	LogicalSectorBytes *int   `pulumi:"logicalSectorBytes"`
 	// The name of the resource
-	Name string `pulumi:"name"`
-	// Physical sector in bytes
-	PhysicalSectorBytes *int `pulumi:"physicalSectorBytes"`
+	Name                string `pulumi:"name"`
+	PhysicalSectorBytes *int   `pulumi:"physicalSectorBytes"`
 	// Provisioning state of the virtual hard disk.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The observed state of virtual hard disks
@@ -77,18 +68,6 @@ type LookupVirtualHardDiskResult struct {
 	Type string `pulumi:"type"`
 }
 
-// Defaults sets the appropriate defaults for LookupVirtualHardDiskResult
-func (val *LookupVirtualHardDiskResult) Defaults() *LookupVirtualHardDiskResult {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.CreateFromLocal == nil {
-		createFromLocal_ := false
-		tmp.CreateFromLocal = &createFromLocal_
-	}
-	return &tmp
-}
 func LookupVirtualHardDiskOutput(ctx *pulumi.Context, args LookupVirtualHardDiskOutputArgs, opts ...pulumi.InvokeOption) LookupVirtualHardDiskResultOutput {
 	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupVirtualHardDiskResultOutput, error) {
@@ -124,12 +103,6 @@ func (o LookupVirtualHardDiskResultOutput) ToLookupVirtualHardDiskResultOutputWi
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupVirtualHardDiskResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupVirtualHardDiskResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// Block size in bytes
 func (o LookupVirtualHardDiskResultOutput) BlockSizeBytes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupVirtualHardDiskResult) *int { return v.BlockSizeBytes }).(pulumi.IntPtrOutput)
 }
@@ -137,11 +110,6 @@ func (o LookupVirtualHardDiskResultOutput) BlockSizeBytes() pulumi.IntPtrOutput 
 // Storage ContainerID of the storage container to be used for VHD
 func (o LookupVirtualHardDiskResultOutput) ContainerId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVirtualHardDiskResult) *string { return v.ContainerId }).(pulumi.StringPtrOutput)
-}
-
-// Boolean indicating whether it is an existing local hard disk or if one should be created.
-func (o LookupVirtualHardDiskResultOutput) CreateFromLocal() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LookupVirtualHardDiskResult) *bool { return v.CreateFromLocal }).(pulumi.BoolPtrOutput)
 }
 
 // The format of the actual VHD file [vhd, vhdx]
@@ -152,11 +120,6 @@ func (o LookupVirtualHardDiskResultOutput) DiskFileFormat() pulumi.StringPtrOutp
 // Size of the disk in GB
 func (o LookupVirtualHardDiskResultOutput) DiskSizeGB() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v LookupVirtualHardDiskResult) *float64 { return v.DiskSizeGB }).(pulumi.Float64PtrOutput)
-}
-
-// URL for downloading or accessing the virtual hard disk. This URL points to a secure link from where the VHD can be downloaded or accessed directly.
-func (o LookupVirtualHardDiskResultOutput) DownloadUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupVirtualHardDiskResult) *string { return v.DownloadUrl }).(pulumi.StringPtrOutput)
 }
 
 // Boolean for enabling dynamic sizing on the virtual hard disk
@@ -174,7 +137,7 @@ func (o LookupVirtualHardDiskResultOutput) HyperVGeneration() pulumi.StringPtrOu
 	return o.ApplyT(func(v LookupVirtualHardDiskResult) *string { return v.HyperVGeneration }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupVirtualHardDiskResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualHardDiskResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -184,7 +147,6 @@ func (o LookupVirtualHardDiskResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualHardDiskResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// Logical sector in bytes
 func (o LookupVirtualHardDiskResultOutput) LogicalSectorBytes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupVirtualHardDiskResult) *int { return v.LogicalSectorBytes }).(pulumi.IntPtrOutput)
 }
@@ -194,7 +156,6 @@ func (o LookupVirtualHardDiskResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualHardDiskResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Physical sector in bytes
 func (o LookupVirtualHardDiskResultOutput) PhysicalSectorBytes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupVirtualHardDiskResult) *int { return v.PhysicalSectorBytes }).(pulumi.IntPtrOutput)
 }

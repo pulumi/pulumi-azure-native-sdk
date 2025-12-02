@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a PreRulesResource
 //
-// Uses Azure REST API version 2025-05-23.
+// Uses Azure REST API version 2023-09-01.
 //
-// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-08-29, 2022-08-29-preview, 2023-09-01-preview, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview.
 func LookupPreRule(ctx *pulumi.Context, args *LookupPreRuleArgs, opts ...pulumi.InvokeOption) (*LookupPreRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPreRuleResult
@@ -41,8 +41,6 @@ type LookupPreRuleResult struct {
 	Applications []string `pulumi:"applications"`
 	// rule comment
 	AuditComment *string `pulumi:"auditComment"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// rule category
 	Category *CategoryResponse `pulumi:"category"`
 	// enable or disable decryption
@@ -146,11 +144,6 @@ func (o LookupPreRuleResultOutput) Applications() pulumi.StringArrayOutput {
 // rule comment
 func (o LookupPreRuleResultOutput) AuditComment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPreRuleResult) *string { return v.AuditComment }).(pulumi.StringPtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o LookupPreRuleResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupPreRuleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // rule category

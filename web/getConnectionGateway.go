@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,8 +35,6 @@ type LookupConnectionGatewayArgs struct {
 
 // The gateway definition
 type LookupConnectionGatewayResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource ETag
 	Etag *string `pulumi:"etag"`
 	// Resource id
@@ -87,11 +85,6 @@ func (o LookupConnectionGatewayResultOutput) ToLookupConnectionGatewayResultOutp
 
 func (o LookupConnectionGatewayResultOutput) ToLookupConnectionGatewayResultOutputWithContext(ctx context.Context) LookupConnectionGatewayResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupConnectionGatewayResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupConnectionGatewayResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource ETag

@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets information about the specified attached data network.
 //
-// Uses Azure REST API version 2024-04-01.
+// Uses Azure REST API version 2023-06-01.
 //
-// Other available API versions: 2022-04-01-preview, 2022-11-01, 2023-06-01, 2023-09-01, 2024-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native mobilenetwork [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-04-01-preview, 2022-11-01, 2023-09-01, 2024-02-01, 2024-04-01.
 func LookupAttachedDataNetwork(ctx *pulumi.Context, args *LookupAttachedDataNetworkArgs, opts ...pulumi.InvokeOption) (*LookupAttachedDataNetworkResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAttachedDataNetworkResult
@@ -39,8 +39,6 @@ type LookupAttachedDataNetworkArgs struct {
 
 // Attached data network resource. Must be created in the same location as its parent packet core data plane.
 type LookupAttachedDataNetworkResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The DNS servers to signal to UEs to use for this attached data network. This configuration is mandatory - if you don't want DNS servers, you must provide an empty array.
 	DnsAddresses []string `pulumi:"dnsAddresses"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -119,11 +117,6 @@ func (o LookupAttachedDataNetworkResultOutput) ToLookupAttachedDataNetworkResult
 
 func (o LookupAttachedDataNetworkResultOutput) ToLookupAttachedDataNetworkResultOutputWithContext(ctx context.Context) LookupAttachedDataNetworkResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupAttachedDataNetworkResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAttachedDataNetworkResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The DNS servers to signal to UEs to use for this attached data network. This configuration is mandatory - if you don't want DNS servers, you must provide an empty array.

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -165,7 +165,7 @@ func (o DatadogHostMetadataResponsePtrOutput) LogsAgent() DatadogLogsAgentRespon
 }
 
 type DatadogHostResponse struct {
-	// The aliases for the host installed via the Datadog agent.
+	// The aliases for the host.
 	Aliases []string `pulumi:"aliases"`
 	// The Datadog integrations reporting metrics for the host.
 	Apps []string                     `pulumi:"apps"`
@@ -188,7 +188,7 @@ func (o DatadogHostResponseOutput) ToDatadogHostResponseOutputWithContext(ctx co
 	return o
 }
 
-// The aliases for the host installed via the Datadog agent.
+// The aliases for the host.
 func (o DatadogHostResponseOutput) Aliases() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DatadogHostResponse) []string { return v.Aliases }).(pulumi.StringArrayOutput)
 }
@@ -377,25 +377,23 @@ func (o DatadogLogsAgentResponsePtrOutput) Transport() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specify the Datadog organization name. In the case of linking to existing organizations, Id, ApiKey, and Applicationkey is required as well.
+// Datadog organization properties
 type DatadogOrganizationProperties struct {
 	// Api key associated to the Datadog organization.
 	ApiKey *string `pulumi:"apiKey"`
 	// Application key associated to the Datadog organization.
 	ApplicationKey *string `pulumi:"applicationKey"`
-	// The configuration which describes the state of cloud security posture management. This collects configuration information for all resources in a subscription and track conformance to industry benchmarks.
-	Cspm *bool `pulumi:"cspm"`
 	// The Id of the Enterprise App used for Single sign on.
 	EnterpriseAppId *string `pulumi:"enterpriseAppId"`
 	// Id of the Datadog organization.
 	Id *string `pulumi:"id"`
-	// The auth code used to linking to an existing Datadog organization.
+	// The auth code used to linking to an existing datadog organization.
 	LinkingAuthCode *string `pulumi:"linkingAuthCode"`
 	// The client_id from an existing in exchange for an auth token to link organization.
 	LinkingClientId *string `pulumi:"linkingClientId"`
 	// Name of the Datadog organization.
 	Name *string `pulumi:"name"`
-	// The redirect URI for linking.
+	// The redirect uri for linking.
 	RedirectUri *string `pulumi:"redirectUri"`
 }
 
@@ -410,25 +408,23 @@ type DatadogOrganizationPropertiesInput interface {
 	ToDatadogOrganizationPropertiesOutputWithContext(context.Context) DatadogOrganizationPropertiesOutput
 }
 
-// Specify the Datadog organization name. In the case of linking to existing organizations, Id, ApiKey, and Applicationkey is required as well.
+// Datadog organization properties
 type DatadogOrganizationPropertiesArgs struct {
 	// Api key associated to the Datadog organization.
 	ApiKey pulumi.StringPtrInput `pulumi:"apiKey"`
 	// Application key associated to the Datadog organization.
 	ApplicationKey pulumi.StringPtrInput `pulumi:"applicationKey"`
-	// The configuration which describes the state of cloud security posture management. This collects configuration information for all resources in a subscription and track conformance to industry benchmarks.
-	Cspm pulumi.BoolPtrInput `pulumi:"cspm"`
 	// The Id of the Enterprise App used for Single sign on.
 	EnterpriseAppId pulumi.StringPtrInput `pulumi:"enterpriseAppId"`
 	// Id of the Datadog organization.
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// The auth code used to linking to an existing Datadog organization.
+	// The auth code used to linking to an existing datadog organization.
 	LinkingAuthCode pulumi.StringPtrInput `pulumi:"linkingAuthCode"`
 	// The client_id from an existing in exchange for an auth token to link organization.
 	LinkingClientId pulumi.StringPtrInput `pulumi:"linkingClientId"`
 	// Name of the Datadog organization.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The redirect URI for linking.
+	// The redirect uri for linking.
 	RedirectUri pulumi.StringPtrInput `pulumi:"redirectUri"`
 }
 
@@ -485,7 +481,7 @@ func (i *datadogOrganizationPropertiesPtrType) ToDatadogOrganizationPropertiesPt
 	return pulumi.ToOutputWithContext(ctx, i).(DatadogOrganizationPropertiesPtrOutput)
 }
 
-// Specify the Datadog organization name. In the case of linking to existing organizations, Id, ApiKey, and Applicationkey is required as well.
+// Datadog organization properties
 type DatadogOrganizationPropertiesOutput struct{ *pulumi.OutputState }
 
 func (DatadogOrganizationPropertiesOutput) ElementType() reflect.Type {
@@ -520,11 +516,6 @@ func (o DatadogOrganizationPropertiesOutput) ApplicationKey() pulumi.StringPtrOu
 	return o.ApplyT(func(v DatadogOrganizationProperties) *string { return v.ApplicationKey }).(pulumi.StringPtrOutput)
 }
 
-// The configuration which describes the state of cloud security posture management. This collects configuration information for all resources in a subscription and track conformance to industry benchmarks.
-func (o DatadogOrganizationPropertiesOutput) Cspm() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v DatadogOrganizationProperties) *bool { return v.Cspm }).(pulumi.BoolPtrOutput)
-}
-
 // The Id of the Enterprise App used for Single sign on.
 func (o DatadogOrganizationPropertiesOutput) EnterpriseAppId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatadogOrganizationProperties) *string { return v.EnterpriseAppId }).(pulumi.StringPtrOutput)
@@ -535,7 +526,7 @@ func (o DatadogOrganizationPropertiesOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatadogOrganizationProperties) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// The auth code used to linking to an existing Datadog organization.
+// The auth code used to linking to an existing datadog organization.
 func (o DatadogOrganizationPropertiesOutput) LinkingAuthCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatadogOrganizationProperties) *string { return v.LinkingAuthCode }).(pulumi.StringPtrOutput)
 }
@@ -550,7 +541,7 @@ func (o DatadogOrganizationPropertiesOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatadogOrganizationProperties) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The redirect URI for linking.
+// The redirect uri for linking.
 func (o DatadogOrganizationPropertiesOutput) RedirectUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatadogOrganizationProperties) *string { return v.RedirectUri }).(pulumi.StringPtrOutput)
 }
@@ -599,16 +590,6 @@ func (o DatadogOrganizationPropertiesPtrOutput) ApplicationKey() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// The configuration which describes the state of cloud security posture management. This collects configuration information for all resources in a subscription and track conformance to industry benchmarks.
-func (o DatadogOrganizationPropertiesPtrOutput) Cspm() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *DatadogOrganizationProperties) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Cspm
-	}).(pulumi.BoolPtrOutput)
-}
-
 // The Id of the Enterprise App used for Single sign on.
 func (o DatadogOrganizationPropertiesPtrOutput) EnterpriseAppId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatadogOrganizationProperties) *string {
@@ -629,7 +610,7 @@ func (o DatadogOrganizationPropertiesPtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The auth code used to linking to an existing Datadog organization.
+// The auth code used to linking to an existing datadog organization.
 func (o DatadogOrganizationPropertiesPtrOutput) LinkingAuthCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatadogOrganizationProperties) *string {
 		if v == nil {
@@ -659,7 +640,7 @@ func (o DatadogOrganizationPropertiesPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The redirect URI for linking.
+// The redirect uri for linking.
 func (o DatadogOrganizationPropertiesPtrOutput) RedirectUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatadogOrganizationProperties) *string {
 		if v == nil {
@@ -669,17 +650,15 @@ func (o DatadogOrganizationPropertiesPtrOutput) RedirectUri() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specify the Datadog organization name. In the case of linking to existing organizations, Id, ApiKey, and Applicationkey is required as well.
+// Datadog organization properties
 type DatadogOrganizationPropertiesResponse struct {
-	// The configuration which describes the state of cloud security posture management. This collects configuration information for all resources in a subscription and track conformance to industry benchmarks.
-	Cspm *bool `pulumi:"cspm"`
 	// Id of the Datadog organization.
 	Id *string `pulumi:"id"`
 	// Name of the Datadog organization.
 	Name *string `pulumi:"name"`
 }
 
-// Specify the Datadog organization name. In the case of linking to existing organizations, Id, ApiKey, and Applicationkey is required as well.
+// Datadog organization properties
 type DatadogOrganizationPropertiesResponseOutput struct{ *pulumi.OutputState }
 
 func (DatadogOrganizationPropertiesResponseOutput) ElementType() reflect.Type {
@@ -692,11 +671,6 @@ func (o DatadogOrganizationPropertiesResponseOutput) ToDatadogOrganizationProper
 
 func (o DatadogOrganizationPropertiesResponseOutput) ToDatadogOrganizationPropertiesResponseOutputWithContext(ctx context.Context) DatadogOrganizationPropertiesResponseOutput {
 	return o
-}
-
-// The configuration which describes the state of cloud security posture management. This collects configuration information for all resources in a subscription and track conformance to industry benchmarks.
-func (o DatadogOrganizationPropertiesResponseOutput) Cspm() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v DatadogOrganizationPropertiesResponse) *bool { return v.Cspm }).(pulumi.BoolPtrOutput)
 }
 
 // Id of the Datadog organization.
@@ -731,16 +705,6 @@ func (o DatadogOrganizationPropertiesResponsePtrOutput) Elem() DatadogOrganizati
 		var ret DatadogOrganizationPropertiesResponse
 		return ret
 	}).(DatadogOrganizationPropertiesResponseOutput)
-}
-
-// The configuration which describes the state of cloud security posture management. This collects configuration information for all resources in a subscription and track conformance to industry benchmarks.
-func (o DatadogOrganizationPropertiesResponsePtrOutput) Cspm() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *DatadogOrganizationPropertiesResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Cspm
-	}).(pulumi.BoolPtrOutput)
 }
 
 // Id of the Datadog organization.
@@ -942,7 +906,7 @@ func (o FilteringTagResponseArrayOutput) Index(i pulumi.IntInput) FilteringTagRe
 }
 
 type IdentityProperties struct {
-	// Specifies the identity type of the Datadog Monitor. At this time the only allowed value is 'SystemAssigned'.
+	// Identity type
 	Type *string `pulumi:"type"`
 }
 
@@ -958,7 +922,7 @@ type IdentityPropertiesInput interface {
 }
 
 type IdentityPropertiesArgs struct {
-	// Specifies the identity type of the Datadog Monitor. At this time the only allowed value is 'SystemAssigned'.
+	// Identity type
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -1039,7 +1003,7 @@ func (o IdentityPropertiesOutput) ToIdentityPropertiesPtrOutputWithContext(ctx c
 	}).(IdentityPropertiesPtrOutput)
 }
 
-// Specifies the identity type of the Datadog Monitor. At this time the only allowed value is 'SystemAssigned'.
+// Identity type
 func (o IdentityPropertiesOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IdentityProperties) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -1068,7 +1032,7 @@ func (o IdentityPropertiesPtrOutput) Elem() IdentityPropertiesOutput {
 	}).(IdentityPropertiesOutput)
 }
 
-// Specifies the identity type of the Datadog Monitor. At this time the only allowed value is 'SystemAssigned'.
+// Identity type
 func (o IdentityPropertiesPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IdentityProperties) *string {
 		if v == nil {
@@ -1083,7 +1047,7 @@ type IdentityPropertiesResponse struct {
 	PrincipalId string `pulumi:"principalId"`
 	// The tenant ID of resource.
 	TenantId string `pulumi:"tenantId"`
-	// Specifies the identity type of the Datadog Monitor. At this time the only allowed value is 'SystemAssigned'.
+	// Identity type
 	Type *string `pulumi:"type"`
 }
 
@@ -1111,7 +1075,7 @@ func (o IdentityPropertiesResponseOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentityPropertiesResponse) string { return v.TenantId }).(pulumi.StringOutput)
 }
 
-// Specifies the identity type of the Datadog Monitor. At this time the only allowed value is 'SystemAssigned'.
+// Identity type
 func (o IdentityPropertiesResponseOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IdentityPropertiesResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -1160,7 +1124,7 @@ func (o IdentityPropertiesResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the identity type of the Datadog Monitor. At this time the only allowed value is 'SystemAssigned'.
+// Identity type
 func (o IdentityPropertiesResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IdentityPropertiesResponse) *string {
 		if v == nil {
@@ -1174,8 +1138,6 @@ func (o IdentityPropertiesResponsePtrOutput) Type() pulumi.StringPtrOutput {
 type LinkedResourceResponse struct {
 	// The ARM id of the linked resource.
 	Id *string `pulumi:"id"`
-	// The location of the linked resource.
-	Location *string `pulumi:"location"`
 }
 
 // The definition of a linked resource.
@@ -1196,11 +1158,6 @@ func (o LinkedResourceResponseOutput) ToLinkedResourceResponseOutputWithContext(
 // The ARM id of the linked resource.
 func (o LinkedResourceResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LinkedResourceResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// The location of the linked resource.
-func (o LinkedResourceResponseOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LinkedResourceResponse) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
 type LinkedResourceResponseArrayOutput struct{ *pulumi.OutputState }
@@ -1861,11 +1818,11 @@ func (o MetricRulesResponsePtrOutput) FilteringTags() FilteringTagResponseArrayO
 
 // Properties specific to the monitor resource.
 type MonitorProperties struct {
-	// Specify the Datadog organization name. In the case of linking to existing organizations, Id, ApiKey, and Applicationkey is required as well.
+	// Datadog organization properties
 	DatadogOrganizationProperties *DatadogOrganizationProperties `pulumi:"datadogOrganizationProperties"`
 	// Flag specifying if the resource monitoring is enabled or disabled.
 	MonitoringStatus *string `pulumi:"monitoringStatus"`
-	// Includes name, email and optionally, phone number. User Information can't be null.
+	// User info
 	UserInfo *UserInfo `pulumi:"userInfo"`
 }
 
@@ -1882,11 +1839,11 @@ type MonitorPropertiesInput interface {
 
 // Properties specific to the monitor resource.
 type MonitorPropertiesArgs struct {
-	// Specify the Datadog organization name. In the case of linking to existing organizations, Id, ApiKey, and Applicationkey is required as well.
+	// Datadog organization properties
 	DatadogOrganizationProperties DatadogOrganizationPropertiesPtrInput `pulumi:"datadogOrganizationProperties"`
 	// Flag specifying if the resource monitoring is enabled or disabled.
 	MonitoringStatus pulumi.StringPtrInput `pulumi:"monitoringStatus"`
-	// Includes name, email and optionally, phone number. User Information can't be null.
+	// User info
 	UserInfo UserInfoPtrInput `pulumi:"userInfo"`
 }
 
@@ -1968,7 +1925,7 @@ func (o MonitorPropertiesOutput) ToMonitorPropertiesPtrOutputWithContext(ctx con
 	}).(MonitorPropertiesPtrOutput)
 }
 
-// Specify the Datadog organization name. In the case of linking to existing organizations, Id, ApiKey, and Applicationkey is required as well.
+// Datadog organization properties
 func (o MonitorPropertiesOutput) DatadogOrganizationProperties() DatadogOrganizationPropertiesPtrOutput {
 	return o.ApplyT(func(v MonitorProperties) *DatadogOrganizationProperties { return v.DatadogOrganizationProperties }).(DatadogOrganizationPropertiesPtrOutput)
 }
@@ -1978,7 +1935,7 @@ func (o MonitorPropertiesOutput) MonitoringStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MonitorProperties) *string { return v.MonitoringStatus }).(pulumi.StringPtrOutput)
 }
 
-// Includes name, email and optionally, phone number. User Information can't be null.
+// User info
 func (o MonitorPropertiesOutput) UserInfo() UserInfoPtrOutput {
 	return o.ApplyT(func(v MonitorProperties) *UserInfo { return v.UserInfo }).(UserInfoPtrOutput)
 }
@@ -2007,7 +1964,7 @@ func (o MonitorPropertiesPtrOutput) Elem() MonitorPropertiesOutput {
 	}).(MonitorPropertiesOutput)
 }
 
-// Specify the Datadog organization name. In the case of linking to existing organizations, Id, ApiKey, and Applicationkey is required as well.
+// Datadog organization properties
 func (o MonitorPropertiesPtrOutput) DatadogOrganizationProperties() DatadogOrganizationPropertiesPtrOutput {
 	return o.ApplyT(func(v *MonitorProperties) *DatadogOrganizationProperties {
 		if v == nil {
@@ -2027,7 +1984,7 @@ func (o MonitorPropertiesPtrOutput) MonitoringStatus() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Includes name, email and optionally, phone number. User Information can't be null.
+// User info
 func (o MonitorPropertiesPtrOutput) UserInfo() UserInfoPtrOutput {
 	return o.ApplyT(func(v *MonitorProperties) *UserInfo {
 		if v == nil {
@@ -2039,7 +1996,7 @@ func (o MonitorPropertiesPtrOutput) UserInfo() UserInfoPtrOutput {
 
 // Properties specific to the monitor resource.
 type MonitorPropertiesResponse struct {
-	// Specify the Datadog organization name. In the case of linking to existing organizations, Id, ApiKey, and Applicationkey is required as well.
+	// Datadog organization properties
 	DatadogOrganizationProperties *DatadogOrganizationPropertiesResponse `pulumi:"datadogOrganizationProperties"`
 	LiftrResourceCategory         string                                 `pulumi:"liftrResourceCategory"`
 	// The priority of the resource.
@@ -2049,7 +2006,7 @@ type MonitorPropertiesResponse struct {
 	// Flag specifying if the resource monitoring is enabled or disabled.
 	MonitoringStatus  *string `pulumi:"monitoringStatus"`
 	ProvisioningState string  `pulumi:"provisioningState"`
-	// Includes name, email and optionally, phone number. User Information can't be null.
+	// User info
 	UserInfo *UserInfoResponse `pulumi:"userInfo"`
 }
 
@@ -2068,7 +2025,7 @@ func (o MonitorPropertiesResponseOutput) ToMonitorPropertiesResponseOutputWithCo
 	return o
 }
 
-// Specify the Datadog organization name. In the case of linking to existing organizations, Id, ApiKey, and Applicationkey is required as well.
+// Datadog organization properties
 func (o MonitorPropertiesResponseOutput) DatadogOrganizationProperties() DatadogOrganizationPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v MonitorPropertiesResponse) *DatadogOrganizationPropertiesResponse {
 		return v.DatadogOrganizationProperties
@@ -2098,7 +2055,7 @@ func (o MonitorPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput
 	return o.ApplyT(func(v MonitorPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Includes name, email and optionally, phone number. User Information can't be null.
+// User info
 func (o MonitorPropertiesResponseOutput) UserInfo() UserInfoResponsePtrOutput {
 	return o.ApplyT(func(v MonitorPropertiesResponse) *UserInfoResponse { return v.UserInfo }).(UserInfoResponsePtrOutput)
 }
@@ -2375,8 +2332,6 @@ func (o MonitoredSubscriptionResponseArrayOutput) Index(i pulumi.IntInput) Monit
 type MonitoringTagRulesProperties struct {
 	// Configuration to enable/disable auto-muting flag
 	Automuting *bool `pulumi:"automuting"`
-	// Configuration to enable/disable custom metrics. If enabled, custom metrics from app insights will be sent.
-	CustomMetrics *bool `pulumi:"customMetrics"`
 	// Set of rules for sending logs for the Monitor resource.
 	LogRules *LogRules `pulumi:"logRules"`
 	// Set of rules for sending metrics for the Monitor resource.
@@ -2398,8 +2353,6 @@ type MonitoringTagRulesPropertiesInput interface {
 type MonitoringTagRulesPropertiesArgs struct {
 	// Configuration to enable/disable auto-muting flag
 	Automuting pulumi.BoolPtrInput `pulumi:"automuting"`
-	// Configuration to enable/disable custom metrics. If enabled, custom metrics from app insights will be sent.
-	CustomMetrics pulumi.BoolPtrInput `pulumi:"customMetrics"`
 	// Set of rules for sending logs for the Monitor resource.
 	LogRules LogRulesPtrInput `pulumi:"logRules"`
 	// Set of rules for sending metrics for the Monitor resource.
@@ -2489,11 +2442,6 @@ func (o MonitoringTagRulesPropertiesOutput) Automuting() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v MonitoringTagRulesProperties) *bool { return v.Automuting }).(pulumi.BoolPtrOutput)
 }
 
-// Configuration to enable/disable custom metrics. If enabled, custom metrics from app insights will be sent.
-func (o MonitoringTagRulesPropertiesOutput) CustomMetrics() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v MonitoringTagRulesProperties) *bool { return v.CustomMetrics }).(pulumi.BoolPtrOutput)
-}
-
 // Set of rules for sending logs for the Monitor resource.
 func (o MonitoringTagRulesPropertiesOutput) LogRules() LogRulesPtrOutput {
 	return o.ApplyT(func(v MonitoringTagRulesProperties) *LogRules { return v.LogRules }).(LogRulesPtrOutput)
@@ -2538,16 +2486,6 @@ func (o MonitoringTagRulesPropertiesPtrOutput) Automuting() pulumi.BoolPtrOutput
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Configuration to enable/disable custom metrics. If enabled, custom metrics from app insights will be sent.
-func (o MonitoringTagRulesPropertiesPtrOutput) CustomMetrics() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *MonitoringTagRulesProperties) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.CustomMetrics
-	}).(pulumi.BoolPtrOutput)
-}
-
 // Set of rules for sending logs for the Monitor resource.
 func (o MonitoringTagRulesPropertiesPtrOutput) LogRules() LogRulesPtrOutput {
 	return o.ApplyT(func(v *MonitoringTagRulesProperties) *LogRules {
@@ -2572,8 +2510,6 @@ func (o MonitoringTagRulesPropertiesPtrOutput) MetricRules() MetricRulesPtrOutpu
 type MonitoringTagRulesPropertiesResponse struct {
 	// Configuration to enable/disable auto-muting flag
 	Automuting *bool `pulumi:"automuting"`
-	// Configuration to enable/disable custom metrics. If enabled, custom metrics from app insights will be sent.
-	CustomMetrics *bool `pulumi:"customMetrics"`
 	// Set of rules for sending logs for the Monitor resource.
 	LogRules *LogRulesResponse `pulumi:"logRules"`
 	// Set of rules for sending metrics for the Monitor resource.
@@ -2599,11 +2535,6 @@ func (o MonitoringTagRulesPropertiesResponseOutput) ToMonitoringTagRulesProperti
 // Configuration to enable/disable auto-muting flag
 func (o MonitoringTagRulesPropertiesResponseOutput) Automuting() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v MonitoringTagRulesPropertiesResponse) *bool { return v.Automuting }).(pulumi.BoolPtrOutput)
-}
-
-// Configuration to enable/disable custom metrics. If enabled, custom metrics from app insights will be sent.
-func (o MonitoringTagRulesPropertiesResponseOutput) CustomMetrics() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v MonitoringTagRulesPropertiesResponse) *bool { return v.CustomMetrics }).(pulumi.BoolPtrOutput)
 }
 
 // Set of rules for sending logs for the Monitor resource.
@@ -2651,16 +2582,6 @@ func (o MonitoringTagRulesPropertiesResponsePtrOutput) Automuting() pulumi.BoolP
 			return nil
 		}
 		return v.Automuting
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Configuration to enable/disable custom metrics. If enabled, custom metrics from app insights will be sent.
-func (o MonitoringTagRulesPropertiesResponsePtrOutput) CustomMetrics() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *MonitoringTagRulesPropertiesResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.CustomMetrics
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -2788,7 +2709,7 @@ func (o PartnerBillingEntityResponsePtrOutput) PartnerEntityUri() pulumi.StringP
 }
 
 type ResourceSku struct {
-	// Name of the SKU in {PlanId} format. For Terraform, the only allowed value is 'Linked'.
+	// Name of the SKU.
 	Name string `pulumi:"name"`
 }
 
@@ -2804,7 +2725,7 @@ type ResourceSkuInput interface {
 }
 
 type ResourceSkuArgs struct {
-	// Name of the SKU in {PlanId} format. For Terraform, the only allowed value is 'Linked'.
+	// Name of the SKU.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -2885,7 +2806,7 @@ func (o ResourceSkuOutput) ToResourceSkuPtrOutputWithContext(ctx context.Context
 	}).(ResourceSkuPtrOutput)
 }
 
-// Name of the SKU in {PlanId} format. For Terraform, the only allowed value is 'Linked'.
+// Name of the SKU.
 func (o ResourceSkuOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceSku) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -2914,7 +2835,7 @@ func (o ResourceSkuPtrOutput) Elem() ResourceSkuOutput {
 	}).(ResourceSkuOutput)
 }
 
-// Name of the SKU in {PlanId} format. For Terraform, the only allowed value is 'Linked'.
+// Name of the SKU.
 func (o ResourceSkuPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceSku) *string {
 		if v == nil {
@@ -2925,7 +2846,7 @@ func (o ResourceSkuPtrOutput) Name() pulumi.StringPtrOutput {
 }
 
 type ResourceSkuResponse struct {
-	// Name of the SKU in {PlanId} format. For Terraform, the only allowed value is 'Linked'.
+	// Name of the SKU.
 	Name string `pulumi:"name"`
 }
 
@@ -2943,7 +2864,7 @@ func (o ResourceSkuResponseOutput) ToResourceSkuResponseOutputWithContext(ctx co
 	return o
 }
 
-// Name of the SKU in {PlanId} format. For Terraform, the only allowed value is 'Linked'.
+// Name of the SKU.
 func (o ResourceSkuResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceSkuResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -2972,7 +2893,7 @@ func (o ResourceSkuResponsePtrOutput) Elem() ResourceSkuResponseOutput {
 	}).(ResourceSkuResponseOutput)
 }
 
-// Name of the SKU in {PlanId} format. For Terraform, the only allowed value is 'Linked'.
+// Name of the SKU.
 func (o ResourceSkuResponsePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceSkuResponse) *string {
 		if v == nil {
@@ -3228,7 +3149,7 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
 
-// Includes name, email and optionally, phone number. User Information can't be null.
+// User info
 type UserInfo struct {
 	// Email of the user used by Datadog for contacting them if needed
 	EmailAddress *string `pulumi:"emailAddress"`
@@ -3249,7 +3170,7 @@ type UserInfoInput interface {
 	ToUserInfoOutputWithContext(context.Context) UserInfoOutput
 }
 
-// Includes name, email and optionally, phone number. User Information can't be null.
+// User info
 type UserInfoArgs struct {
 	// Email of the user used by Datadog for contacting them if needed
 	EmailAddress pulumi.StringPtrInput `pulumi:"emailAddress"`
@@ -3312,7 +3233,7 @@ func (i *userInfoPtrType) ToUserInfoPtrOutputWithContext(ctx context.Context) Us
 	return pulumi.ToOutputWithContext(ctx, i).(UserInfoPtrOutput)
 }
 
-// Includes name, email and optionally, phone number. User Information can't be null.
+// User info
 type UserInfoOutput struct{ *pulumi.OutputState }
 
 func (UserInfoOutput) ElementType() reflect.Type {
@@ -3406,7 +3327,7 @@ func (o UserInfoPtrOutput) PhoneNumber() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Includes name, email and optionally, phone number. User Information can't be null.
+// User info
 type UserInfoResponse struct {
 	// Email of the user used by Datadog for contacting them if needed
 	EmailAddress *string `pulumi:"emailAddress"`
@@ -3416,7 +3337,7 @@ type UserInfoResponse struct {
 	PhoneNumber *string `pulumi:"phoneNumber"`
 }
 
-// Includes name, email and optionally, phone number. User Information can't be null.
+// User info
 type UserInfoResponseOutput struct{ *pulumi.OutputState }
 
 func (UserInfoResponseOutput) ElementType() reflect.Type {

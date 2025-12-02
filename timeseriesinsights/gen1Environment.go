@@ -8,18 +8,16 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An environment is a set of time-series data available for query, and is the top level Azure Time Series Insights resource. Gen1 environments have data retention limits.
 //
-// Uses Azure REST API version 2020-05-15. In version 2.x of the Azure Native provider, it used API version 2020-05-15.
+// Uses Azure REST API version 2020-05-15. In version 1.x of the Azure Native provider, it used API version 2020-05-15.
 type Gen1Environment struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The time the resource was created.
 	CreationTime pulumi.StringOutput `pulumi:"creationTime"`
 	// The fully qualified domain name used to access the environment data, e.g. to query the environment's events or upload reference data for the environment.
@@ -88,16 +86,7 @@ func NewGen1Environment(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:timeseriesinsights/v20210331preview:Gen1Environment"),
 		},
 		{
-			Type: pulumi.String("azure-native:timeseriesinsights/v20210331preview:Gen2Environment"),
-		},
-		{
 			Type: pulumi.String("azure-native:timeseriesinsights/v20210630preview:Gen1Environment"),
-		},
-		{
-			Type: pulumi.String("azure-native:timeseriesinsights/v20210630preview:Gen2Environment"),
-		},
-		{
-			Type: pulumi.String("azure-native:timeseriesinsights:Gen2Environment"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -213,11 +202,6 @@ func (o Gen1EnvironmentOutput) ToGen1EnvironmentOutput() Gen1EnvironmentOutput {
 
 func (o Gen1EnvironmentOutput) ToGen1EnvironmentOutputWithContext(ctx context.Context) Gen1EnvironmentOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o Gen1EnvironmentOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Gen1Environment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The time the resource was created.

@@ -8,22 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Diagnostic details.
 //
-// Uses Azure REST API version 2022-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
+// Uses Azure REST API version 2022-08-01. In version 1.x of the Azure Native provider, it used API version 2020-12-01.
 //
-// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2018-01-01, 2019-01-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
 type Diagnostic struct {
 	pulumi.CustomResourceState
 
 	// Specifies for what type of messages sampling settings should not apply.
 	AlwaysLog pulumi.StringPtrOutput `pulumi:"alwaysLog"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Diagnostic settings for incoming/outgoing HTTP messages to the Backend
 	Backend PipelineDiagnosticSettingsResponsePtrOutput `pulumi:"backend"`
 	// Diagnostic settings for incoming/outgoing HTTP messages to the Gateway.
@@ -124,9 +122,6 @@ func NewDiagnostic(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240601preview:Diagnostic"),
-		},
-		{
-			Type: pulumi.String("azure-native:apimanagement/v20241001preview:Diagnostic"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -261,11 +256,6 @@ func (o DiagnosticOutput) ToDiagnosticOutputWithContext(ctx context.Context) Dia
 // Specifies for what type of messages sampling settings should not apply.
 func (o DiagnosticOutput) AlwaysLog() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Diagnostic) pulumi.StringPtrOutput { return v.AlwaysLog }).(pulumi.StringPtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o DiagnosticOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Diagnostic) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Diagnostic settings for incoming/outgoing HTTP messages to the Backend

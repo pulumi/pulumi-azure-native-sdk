@@ -8,18 +8,16 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Edge device job for Azure Stack HCI solution.
 //
-// Uses Azure REST API version 2024-12-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-09-01-preview.
+// Uses Azure REST API version 2024-09-01-preview.
 type HciEdgeDeviceJob struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Edge device kind.
 	// Expected value is 'HCI'.
 	Kind pulumi.StringOutput `pulumi:"kind"`
@@ -59,15 +57,6 @@ func NewHciEdgeDeviceJob(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20241201preview:HciEdgeDeviceJob"),
-		},
-		{
-			Type: pulumi.String("azure-native:azurestackhci/v20250201preview:HciEdgeDeviceJob"),
-		},
-		{
-			Type: pulumi.String("azure-native:azurestackhci/v20250915preview:HciEdgeDeviceJob"),
-		},
-		{
-			Type: pulumi.String("azure-native:azurestackhci/v20251001:HciEdgeDeviceJob"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -167,11 +156,6 @@ func (o HciEdgeDeviceJobOutput) ToHciEdgeDeviceJobOutput() HciEdgeDeviceJobOutpu
 
 func (o HciEdgeDeviceJobOutput) ToHciEdgeDeviceJobOutputWithContext(ctx context.Context) HciEdgeDeviceJobOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o HciEdgeDeviceJobOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *HciEdgeDeviceJob) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Edge device kind.

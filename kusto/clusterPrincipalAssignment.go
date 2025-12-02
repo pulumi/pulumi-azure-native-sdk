@@ -8,22 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Class representing a cluster principal assignment.
 //
-// Uses Azure REST API version 2024-04-13. In version 2.x of the Azure Native provider, it used API version 2022-12-29.
+// Uses Azure REST API version 2022-12-29. In version 1.x of the Azure Native provider, it used API version 2021-01-01.
 //
-// Other available API versions: 2019-11-09, 2020-02-15, 2020-06-14, 2020-09-18, 2021-01-01, 2021-08-27, 2022-02-01, 2022-07-07, 2022-11-11, 2022-12-29, 2023-05-02, 2023-08-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native kusto [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-05-02, 2023-08-15, 2024-04-13.
 type ClusterPrincipalAssignment struct {
 	pulumi.CustomResourceState
 
 	// The service principal object id in AAD (Azure active directory)
 	AadObjectId pulumi.StringOutput `pulumi:"aadObjectId"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The principal ID assigned to the cluster principal. It can be a user email, application ID, or security group name.
@@ -149,7 +147,7 @@ type clusterPrincipalAssignmentArgs struct {
 	PrincipalId string `pulumi:"principalId"`
 	// Principal type.
 	PrincipalType string `pulumi:"principalType"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group containing the Kusto cluster.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Cluster principal role.
 	Role string `pulumi:"role"`
@@ -167,7 +165,7 @@ type ClusterPrincipalAssignmentArgs struct {
 	PrincipalId pulumi.StringInput
 	// Principal type.
 	PrincipalType pulumi.StringInput
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group containing the Kusto cluster.
 	ResourceGroupName pulumi.StringInput
 	// Cluster principal role.
 	Role pulumi.StringInput
@@ -215,11 +213,6 @@ func (o ClusterPrincipalAssignmentOutput) ToClusterPrincipalAssignmentOutputWith
 // The service principal object id in AAD (Azure active directory)
 func (o ClusterPrincipalAssignmentOutput) AadObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClusterPrincipalAssignment) pulumi.StringOutput { return v.AadObjectId }).(pulumi.StringOutput)
-}
-
-// The Azure API version of the resource.
-func (o ClusterPrincipalAssignmentOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *ClusterPrincipalAssignment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

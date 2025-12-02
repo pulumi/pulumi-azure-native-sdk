@@ -8,37 +8,25 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The RoutePolicy resource definition.
 //
-// Uses Azure REST API version 2023-06-15. In version 2.x of the Azure Native provider, it used API version 2023-02-01-preview.
+// Uses Azure REST API version 2023-02-01-preview. In version 1.x of the Azure Native provider, it used API version 2023-02-01-preview.
 //
-// Other available API versions: 2023-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-06-15.
 type RoutePolicy struct {
 	pulumi.CustomResourceState
 
-	// AddressFamilyType. This parameter decides whether the given ipv4 or ipv6 route policy.
-	AddressFamilyType pulumi.StringPtrOutput `pulumi:"addressFamilyType"`
-	// Administrative state of the resource.
-	AdministrativeState pulumi.StringOutput `pulumi:"administrativeState"`
 	// Switch configuration description.
 	Annotation pulumi.StringPtrOutput `pulumi:"annotation"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
-	// Configuration state of the resource.
-	ConfigurationState pulumi.StringOutput `pulumi:"configurationState"`
-	// Default action that needs to be applied when no condition is matched. Example: Permit | Deny.
-	DefaultAction pulumi.StringPtrOutput `pulumi:"defaultAction"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Arm Resource ID of Network Fabric.
-	NetworkFabricId pulumi.StringOutput `pulumi:"networkFabricId"`
-	// Provisioning state of the resource.
+	// Gets the provisioning state of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Route Policy statements.
 	Statements RoutePolicyStatementPropertiesResponseArrayOutput `pulumi:"statements"`
@@ -57,20 +45,11 @@ func NewRoutePolicy(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.NetworkFabricId == nil {
-		return nil, errors.New("invalid value for required argument 'NetworkFabricId'")
-	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	if args.Statements == nil {
 		return nil, errors.New("invalid value for required argument 'Statements'")
-	}
-	if args.AddressFamilyType == nil {
-		args.AddressFamilyType = pulumi.StringPtr("IPv4")
-	}
-	if args.DefaultAction == nil {
-		args.DefaultAction = pulumi.StringPtr("Deny")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -114,19 +93,13 @@ func (RoutePolicyState) ElementType() reflect.Type {
 }
 
 type routePolicyArgs struct {
-	// AddressFamilyType. This parameter decides whether the given ipv4 or ipv6 route policy.
-	AddressFamilyType *string `pulumi:"addressFamilyType"`
 	// Switch configuration description.
 	Annotation *string `pulumi:"annotation"`
-	// Default action that needs to be applied when no condition is matched. Example: Permit | Deny.
-	DefaultAction *string `pulumi:"defaultAction"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// Arm Resource ID of Network Fabric.
-	NetworkFabricId string `pulumi:"networkFabricId"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Name of the Route Policy.
+	// Name of the Route Policy
 	RoutePolicyName *string `pulumi:"routePolicyName"`
 	// Route Policy statements.
 	Statements []RoutePolicyStatementProperties `pulumi:"statements"`
@@ -136,19 +109,13 @@ type routePolicyArgs struct {
 
 // The set of arguments for constructing a RoutePolicy resource.
 type RoutePolicyArgs struct {
-	// AddressFamilyType. This parameter decides whether the given ipv4 or ipv6 route policy.
-	AddressFamilyType pulumi.StringPtrInput
 	// Switch configuration description.
 	Annotation pulumi.StringPtrInput
-	// Default action that needs to be applied when no condition is matched. Example: Permit | Deny.
-	DefaultAction pulumi.StringPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
-	// Arm Resource ID of Network Fabric.
-	NetworkFabricId pulumi.StringInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// Name of the Route Policy.
+	// Name of the Route Policy
 	RoutePolicyName pulumi.StringPtrInput
 	// Route Policy statements.
 	Statements RoutePolicyStatementPropertiesArrayInput
@@ -193,34 +160,9 @@ func (o RoutePolicyOutput) ToRoutePolicyOutputWithContext(ctx context.Context) R
 	return o
 }
 
-// AddressFamilyType. This parameter decides whether the given ipv4 or ipv6 route policy.
-func (o RoutePolicyOutput) AddressFamilyType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RoutePolicy) pulumi.StringPtrOutput { return v.AddressFamilyType }).(pulumi.StringPtrOutput)
-}
-
-// Administrative state of the resource.
-func (o RoutePolicyOutput) AdministrativeState() pulumi.StringOutput {
-	return o.ApplyT(func(v *RoutePolicy) pulumi.StringOutput { return v.AdministrativeState }).(pulumi.StringOutput)
-}
-
 // Switch configuration description.
 func (o RoutePolicyOutput) Annotation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RoutePolicy) pulumi.StringPtrOutput { return v.Annotation }).(pulumi.StringPtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o RoutePolicyOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *RoutePolicy) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// Configuration state of the resource.
-func (o RoutePolicyOutput) ConfigurationState() pulumi.StringOutput {
-	return o.ApplyT(func(v *RoutePolicy) pulumi.StringOutput { return v.ConfigurationState }).(pulumi.StringOutput)
-}
-
-// Default action that needs to be applied when no condition is matched. Example: Permit | Deny.
-func (o RoutePolicyOutput) DefaultAction() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RoutePolicy) pulumi.StringPtrOutput { return v.DefaultAction }).(pulumi.StringPtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -233,12 +175,7 @@ func (o RoutePolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RoutePolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Arm Resource ID of Network Fabric.
-func (o RoutePolicyOutput) NetworkFabricId() pulumi.StringOutput {
-	return o.ApplyT(func(v *RoutePolicy) pulumi.StringOutput { return v.NetworkFabricId }).(pulumi.StringOutput)
-}
-
-// Provisioning state of the resource.
+// Gets the provisioning state of the resource.
 func (o RoutePolicyOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *RoutePolicy) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }

@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the details of the customLocation with a specified resource group and name.
 //
-// Uses Azure REST API version 2021-08-31-preview.
+// Uses Azure REST API version 2021-08-15.
 //
-// Other available API versions: 2021-08-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native extendedlocation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-08-31-preview.
 func LookupCustomLocation(ctx *pulumi.Context, args *LookupCustomLocationArgs, opts ...pulumi.InvokeOption) (*LookupCustomLocationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCustomLocationResult
@@ -37,8 +37,6 @@ type LookupCustomLocationArgs struct {
 type LookupCustomLocationResult struct {
 	// This is optional input that contains the authentication that should be used to generate the namespace.
 	Authentication *CustomLocationPropertiesResponseAuthentication `pulumi:"authentication"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Contains the reference to the add-on that contains charts to deploy CRDs and operators.
 	ClusterExtensionIds []string `pulumi:"clusterExtensionIds"`
 	// Display name for the Custom Locations location.
@@ -107,11 +105,6 @@ func (o LookupCustomLocationResultOutput) Authentication() CustomLocationPropert
 	return o.ApplyT(func(v LookupCustomLocationResult) *CustomLocationPropertiesResponseAuthentication {
 		return v.Authentication
 	}).(CustomLocationPropertiesResponseAuthenticationPtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o LookupCustomLocationResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCustomLocationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Contains the reference to the add-on that contains charts to deploy CRDs and operators.

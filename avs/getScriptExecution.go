@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Get a ScriptExecution
+// An instance of a script executed by a user - custom or AVS
 //
-// Uses Azure REST API version 2023-09-01.
+// Uses Azure REST API version 2022-05-01.
 //
-// Other available API versions: 2022-05-01, 2023-03-01, 2024-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native avs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-03-01, 2023-09-01.
 func LookupScriptExecution(ctx *pulumi.Context, args *LookupScriptExecutionArgs, opts ...pulumi.InvokeOption) (*LookupScriptExecutionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupScriptExecutionResult
@@ -31,29 +31,25 @@ type LookupScriptExecutionArgs struct {
 	PrivateCloudName string `pulumi:"privateCloudName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Name of the script cmdlet.
+	// Name of the user-invoked script execution resource
 	ScriptExecutionName string `pulumi:"scriptExecutionName"`
 }
 
 // An instance of a script executed by a user - custom or AVS
 type LookupScriptExecutionResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Standard error output stream from the powershell execution
 	Errors []string `pulumi:"errors"`
-	// Error message if the script was able to run, but if the script itself had
-	// errors or powershell threw an exception
+	// Error message if the script was able to run, but if the script itself had errors or powershell threw an exception
 	FailureReason *string `pulumi:"failureReason"`
 	// Time the script execution was finished
 	FinishedAt string `pulumi:"finishedAt"`
-	// Parameters that will be hidden/not visible to ARM, such as passwords and
-	// credentials
+	// Parameters that will be hidden/not visible to ARM, such as passwords and credentials
 	HiddenParameters []interface{} `pulumi:"hiddenParameters"`
-	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	// Resource ID.
 	Id string `pulumi:"id"`
 	// Standard information out stream from the powershell execution
 	Information []string `pulumi:"information"`
-	// The name of the resource
+	// Resource name.
 	Name string `pulumi:"name"`
 	// User-defined dictionary.
 	NamedOutputs map[string]interface{} `pulumi:"namedOutputs"`
@@ -71,11 +67,9 @@ type LookupScriptExecutionResult struct {
 	StartedAt string `pulumi:"startedAt"`
 	// Time the script execution was submitted
 	SubmittedAt string `pulumi:"submittedAt"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Time limit for execution
 	Timeout string `pulumi:"timeout"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// Resource type.
 	Type string `pulumi:"type"`
 	// Standard warning out stream from the powershell execution
 	Warnings []string `pulumi:"warnings"`
@@ -95,7 +89,7 @@ type LookupScriptExecutionOutputArgs struct {
 	PrivateCloudName pulumi.StringInput `pulumi:"privateCloudName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	// Name of the script cmdlet.
+	// Name of the user-invoked script execution resource
 	ScriptExecutionName pulumi.StringInput `pulumi:"scriptExecutionName"`
 }
 
@@ -118,18 +112,12 @@ func (o LookupScriptExecutionResultOutput) ToLookupScriptExecutionResultOutputWi
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupScriptExecutionResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupScriptExecutionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Standard error output stream from the powershell execution
 func (o LookupScriptExecutionResultOutput) Errors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupScriptExecutionResult) []string { return v.Errors }).(pulumi.StringArrayOutput)
 }
 
-// Error message if the script was able to run, but if the script itself had
-// errors or powershell threw an exception
+// Error message if the script was able to run, but if the script itself had errors or powershell threw an exception
 func (o LookupScriptExecutionResultOutput) FailureReason() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupScriptExecutionResult) *string { return v.FailureReason }).(pulumi.StringPtrOutput)
 }
@@ -139,13 +127,12 @@ func (o LookupScriptExecutionResultOutput) FinishedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScriptExecutionResult) string { return v.FinishedAt }).(pulumi.StringOutput)
 }
 
-// Parameters that will be hidden/not visible to ARM, such as passwords and
-// credentials
+// Parameters that will be hidden/not visible to ARM, such as passwords and credentials
 func (o LookupScriptExecutionResultOutput) HiddenParameters() pulumi.ArrayOutput {
 	return o.ApplyT(func(v LookupScriptExecutionResult) []interface{} { return v.HiddenParameters }).(pulumi.ArrayOutput)
 }
 
-// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+// Resource ID.
 func (o LookupScriptExecutionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScriptExecutionResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -155,7 +142,7 @@ func (o LookupScriptExecutionResultOutput) Information() pulumi.StringArrayOutpu
 	return o.ApplyT(func(v LookupScriptExecutionResult) []string { return v.Information }).(pulumi.StringArrayOutput)
 }
 
-// The name of the resource
+// Resource name.
 func (o LookupScriptExecutionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScriptExecutionResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -200,17 +187,12 @@ func (o LookupScriptExecutionResultOutput) SubmittedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScriptExecutionResult) string { return v.SubmittedAt }).(pulumi.StringOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupScriptExecutionResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupScriptExecutionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
-}
-
 // Time limit for execution
 func (o LookupScriptExecutionResultOutput) Timeout() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScriptExecutionResult) string { return v.Timeout }).(pulumi.StringOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// Resource type.
 func (o LookupScriptExecutionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScriptExecutionResult) string { return v.Type }).(pulumi.StringOutput)
 }

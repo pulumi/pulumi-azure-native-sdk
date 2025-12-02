@@ -8,30 +8,26 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Diagnostic details.
 //
-// Uses Azure REST API version 2024-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-09-01-preview.
+// Uses Azure REST API version 2023-09-01-preview.
 //
-// Other available API versions: 2023-09-01-preview, 2024-05-01, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-05-01, 2024-06-01-preview.
 type WorkspaceApiDiagnostic struct {
 	pulumi.CustomResourceState
 
 	// Specifies for what type of messages sampling settings should not apply.
 	AlwaysLog pulumi.StringPtrOutput `pulumi:"alwaysLog"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Diagnostic settings for incoming/outgoing HTTP messages to the Backend
 	Backend PipelineDiagnosticSettingsResponsePtrOutput `pulumi:"backend"`
 	// Diagnostic settings for incoming/outgoing HTTP messages to the Gateway.
 	Frontend PipelineDiagnosticSettingsResponsePtrOutput `pulumi:"frontend"`
 	// Sets correlation protocol to use for Application Insights diagnostics.
 	HttpCorrelationProtocol pulumi.StringPtrOutput `pulumi:"httpCorrelationProtocol"`
-	// Large Language Models diagnostic settings
-	LargeLanguageModel LLMDiagnosticSettingsResponsePtrOutput `pulumi:"largeLanguageModel"`
 	// Log the ClientIP. Default is false.
 	LogClientIp pulumi.BoolPtrOutput `pulumi:"logClientIp"`
 	// Resource Id of a target logger.
@@ -82,9 +78,6 @@ func NewWorkspaceApiDiagnostic(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240601preview:WorkspaceApiDiagnostic"),
 		},
-		{
-			Type: pulumi.String("azure-native:apimanagement/v20241001preview:WorkspaceApiDiagnostic"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -132,8 +125,6 @@ type workspaceApiDiagnosticArgs struct {
 	Frontend *PipelineDiagnosticSettings `pulumi:"frontend"`
 	// Sets correlation protocol to use for Application Insights diagnostics.
 	HttpCorrelationProtocol *string `pulumi:"httpCorrelationProtocol"`
-	// Large Language Models diagnostic settings
-	LargeLanguageModel *LLMDiagnosticSettings `pulumi:"largeLanguageModel"`
 	// Log the ClientIP. Default is false.
 	LogClientIp *bool `pulumi:"logClientIp"`
 	// Resource Id of a target logger.
@@ -168,8 +159,6 @@ type WorkspaceApiDiagnosticArgs struct {
 	Frontend PipelineDiagnosticSettingsPtrInput
 	// Sets correlation protocol to use for Application Insights diagnostics.
 	HttpCorrelationProtocol pulumi.StringPtrInput
-	// Large Language Models diagnostic settings
-	LargeLanguageModel LLMDiagnosticSettingsPtrInput
 	// Log the ClientIP. Default is false.
 	LogClientIp pulumi.BoolPtrInput
 	// Resource Id of a target logger.
@@ -232,11 +221,6 @@ func (o WorkspaceApiDiagnosticOutput) AlwaysLog() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkspaceApiDiagnostic) pulumi.StringPtrOutput { return v.AlwaysLog }).(pulumi.StringPtrOutput)
 }
 
-// The Azure API version of the resource.
-func (o WorkspaceApiDiagnosticOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *WorkspaceApiDiagnostic) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Diagnostic settings for incoming/outgoing HTTP messages to the Backend
 func (o WorkspaceApiDiagnosticOutput) Backend() PipelineDiagnosticSettingsResponsePtrOutput {
 	return o.ApplyT(func(v *WorkspaceApiDiagnostic) PipelineDiagnosticSettingsResponsePtrOutput { return v.Backend }).(PipelineDiagnosticSettingsResponsePtrOutput)
@@ -250,11 +234,6 @@ func (o WorkspaceApiDiagnosticOutput) Frontend() PipelineDiagnosticSettingsRespo
 // Sets correlation protocol to use for Application Insights diagnostics.
 func (o WorkspaceApiDiagnosticOutput) HttpCorrelationProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkspaceApiDiagnostic) pulumi.StringPtrOutput { return v.HttpCorrelationProtocol }).(pulumi.StringPtrOutput)
-}
-
-// Large Language Models diagnostic settings
-func (o WorkspaceApiDiagnosticOutput) LargeLanguageModel() LLMDiagnosticSettingsResponsePtrOutput {
-	return o.ApplyT(func(v *WorkspaceApiDiagnostic) LLMDiagnosticSettingsResponsePtrOutput { return v.LargeLanguageModel }).(LLMDiagnosticSettingsResponsePtrOutput)
 }
 
 // Log the ClientIP. Default is false.

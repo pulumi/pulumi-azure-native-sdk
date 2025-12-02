@@ -8,28 +8,24 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // AFDOrigin group comprising of origins is used for load balancing to origins when the content cannot be served from Azure Front Door.
 //
-// Uses Azure REST API version 2025-06-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
+// Uses Azure REST API version 2023-05-01. In version 1.x of the Azure Native provider, it used API version 2020-09-01.
 //
-// Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2020-09-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01.
 type AFDOriginGroup struct {
 	pulumi.CustomResourceState
 
-	// Authentication settings for origin in origin group.
-	Authentication OriginAuthenticationPropertiesResponsePtrOutput `pulumi:"authentication"`
-	// The Azure API version of the resource.
-	AzureApiVersion  pulumi.StringOutput `pulumi:"azureApiVersion"`
 	DeploymentStatus pulumi.StringOutput `pulumi:"deploymentStatus"`
 	// Health probe settings to the origin that is used to determine the health of the origin.
 	HealthProbeSettings HealthProbeParametersResponsePtrOutput `pulumi:"healthProbeSettings"`
 	// Load balancing settings for a backend pool
 	LoadBalancingSettings LoadBalancingSettingsParametersResponsePtrOutput `pulumi:"loadBalancingSettings"`
-	// The name of the resource
+	// Resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name of the profile which holds the origin group.
 	ProfileName pulumi.StringOutput `pulumi:"profileName"`
@@ -37,11 +33,11 @@ type AFDOriginGroup struct {
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled'
 	SessionAffinityState pulumi.StringPtrOutput `pulumi:"sessionAffinityState"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	// Read only system data
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Time in minutes to shift the traffic to the endpoint gradually when an unhealthy endpoint comes healthy or a new endpoint is added. Default is 10 mins. This property is currently not supported.
 	TrafficRestorationTimeToHealedOrNewEndpointsInMinutes pulumi.IntPtrOutput `pulumi:"trafficRestorationTimeToHealedOrNewEndpointsInMinutes"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// Resource type.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -89,21 +85,6 @@ func NewAFDOriginGroup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:cdn/v20240901:AFDOriginGroup"),
 		},
-		{
-			Type: pulumi.String("azure-native:cdn/v20250101preview:AFDOriginGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:cdn/v20250415:AFDOriginGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:cdn/v20250601:AFDOriginGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:cdn/v20250701preview:AFDOriginGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:cdn/v20250901preview:AFDOriginGroup"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -139,17 +120,15 @@ func (AFDOriginGroupState) ElementType() reflect.Type {
 }
 
 type afdoriginGroupArgs struct {
-	// Authentication settings for origin in origin group.
-	Authentication *OriginAuthenticationProperties `pulumi:"authentication"`
 	// Health probe settings to the origin that is used to determine the health of the origin.
 	HealthProbeSettings *HealthProbeParameters `pulumi:"healthProbeSettings"`
 	// Load balancing settings for a backend pool
 	LoadBalancingSettings *LoadBalancingSettingsParameters `pulumi:"loadBalancingSettings"`
 	// Name of the origin group which is unique within the endpoint.
 	OriginGroupName *string `pulumi:"originGroupName"`
-	// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+	// Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
 	ProfileName string `pulumi:"profileName"`
-	// The name of the resource group. The name is case insensitive.
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled'
 	SessionAffinityState *string `pulumi:"sessionAffinityState"`
@@ -159,17 +138,15 @@ type afdoriginGroupArgs struct {
 
 // The set of arguments for constructing a AFDOriginGroup resource.
 type AFDOriginGroupArgs struct {
-	// Authentication settings for origin in origin group.
-	Authentication OriginAuthenticationPropertiesPtrInput
 	// Health probe settings to the origin that is used to determine the health of the origin.
 	HealthProbeSettings HealthProbeParametersPtrInput
 	// Load balancing settings for a backend pool
 	LoadBalancingSettings LoadBalancingSettingsParametersPtrInput
 	// Name of the origin group which is unique within the endpoint.
 	OriginGroupName pulumi.StringPtrInput
-	// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+	// Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
 	ProfileName pulumi.StringInput
-	// The name of the resource group. The name is case insensitive.
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput
 	// Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled'
 	SessionAffinityState pulumi.StringPtrInput
@@ -214,16 +191,6 @@ func (o AFDOriginGroupOutput) ToAFDOriginGroupOutputWithContext(ctx context.Cont
 	return o
 }
 
-// Authentication settings for origin in origin group.
-func (o AFDOriginGroupOutput) Authentication() OriginAuthenticationPropertiesResponsePtrOutput {
-	return o.ApplyT(func(v *AFDOriginGroup) OriginAuthenticationPropertiesResponsePtrOutput { return v.Authentication }).(OriginAuthenticationPropertiesResponsePtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o AFDOriginGroupOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *AFDOriginGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 func (o AFDOriginGroupOutput) DeploymentStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *AFDOriginGroup) pulumi.StringOutput { return v.DeploymentStatus }).(pulumi.StringOutput)
 }
@@ -240,7 +207,7 @@ func (o AFDOriginGroupOutput) LoadBalancingSettings() LoadBalancingSettingsParam
 	}).(LoadBalancingSettingsParametersResponsePtrOutput)
 }
 
-// The name of the resource
+// Resource name.
 func (o AFDOriginGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AFDOriginGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -260,7 +227,7 @@ func (o AFDOriginGroupOutput) SessionAffinityState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AFDOriginGroup) pulumi.StringPtrOutput { return v.SessionAffinityState }).(pulumi.StringPtrOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+// Read only system data
 func (o AFDOriginGroupOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *AFDOriginGroup) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
@@ -272,7 +239,7 @@ func (o AFDOriginGroupOutput) TrafficRestorationTimeToHealedOrNewEndpointsInMinu
 	}).(pulumi.IntPtrOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// Resource type.
 func (o AFDOriginGroupOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *AFDOriginGroup) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

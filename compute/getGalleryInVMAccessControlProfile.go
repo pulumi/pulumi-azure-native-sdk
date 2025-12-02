@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,31 +25,27 @@ func LookupGalleryInVMAccessControlProfile(ctx *pulumi.Context, args *LookupGall
 }
 
 type LookupGalleryInVMAccessControlProfileArgs struct {
-	// The name of the Shared Image Gallery.
+	// The name of the Shared Image Gallery from which the InVMAccessControlProfiles are to be retrieved.
 	GalleryName string `pulumi:"galleryName"`
 	// The name of the gallery inVMAccessControlProfile to be retrieved.
 	InVMAccessControlProfileName string `pulumi:"inVMAccessControlProfileName"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Specifies information about the gallery inVMAccessControlProfile that you want to create or update.
 type LookupGalleryInVMAccessControlProfileResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Resource Id
 	Id string `pulumi:"id"`
-	// The geo-location where the resource lives
+	// Resource location
 	Location string `pulumi:"location"`
-	// The name of the resource
+	// Resource name
 	Name string `pulumi:"name"`
 	// Describes the properties of a gallery inVMAccessControlProfile.
 	Properties GalleryInVMAccessControlProfilePropertiesResponse `pulumi:"properties"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
-	// Resource tags.
+	// Resource tags
 	Tags map[string]string `pulumi:"tags"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// Resource type
 	Type string `pulumi:"type"`
 }
 
@@ -63,11 +59,11 @@ func LookupGalleryInVMAccessControlProfileOutput(ctx *pulumi.Context, args Looku
 }
 
 type LookupGalleryInVMAccessControlProfileOutputArgs struct {
-	// The name of the Shared Image Gallery.
+	// The name of the Shared Image Gallery from which the InVMAccessControlProfiles are to be retrieved.
 	GalleryName pulumi.StringInput `pulumi:"galleryName"`
 	// The name of the gallery inVMAccessControlProfile to be retrieved.
 	InVMAccessControlProfileName pulumi.StringInput `pulumi:"inVMAccessControlProfileName"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -90,22 +86,17 @@ func (o LookupGalleryInVMAccessControlProfileResultOutput) ToLookupGalleryInVMAc
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupGalleryInVMAccessControlProfileResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupGalleryInVMAccessControlProfileResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Resource Id
 func (o LookupGalleryInVMAccessControlProfileResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGalleryInVMAccessControlProfileResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The geo-location where the resource lives
+// Resource location
 func (o LookupGalleryInVMAccessControlProfileResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGalleryInVMAccessControlProfileResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// The name of the resource
+// Resource name
 func (o LookupGalleryInVMAccessControlProfileResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGalleryInVMAccessControlProfileResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -117,17 +108,12 @@ func (o LookupGalleryInVMAccessControlProfileResultOutput) Properties() GalleryI
 	}).(GalleryInVMAccessControlProfilePropertiesResponseOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupGalleryInVMAccessControlProfileResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupGalleryInVMAccessControlProfileResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
-}
-
-// Resource tags.
+// Resource tags
 func (o LookupGalleryInVMAccessControlProfileResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupGalleryInVMAccessControlProfileResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// Resource type
 func (o LookupGalleryInVMAccessControlProfileResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGalleryInVMAccessControlProfileResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the Update run for a specified update
 //
-// Uses Azure REST API version 2024-04-01.
+// Uses Azure REST API version 2023-03-01.
 //
-// Other available API versions: 2022-12-15-preview, 2023-02-01, 2023-03-01, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview, 2025-02-01-preview, 2025-09-15-preview, 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-12-15-preview, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-04-01, 2024-09-01-preview, 2024-12-01-preview.
 func LookupUpdateRun(ctx *pulumi.Context, args *LookupUpdateRunArgs, opts ...pulumi.InvokeOption) (*LookupUpdateRunResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupUpdateRunResult
@@ -39,8 +39,6 @@ type LookupUpdateRunArgs struct {
 
 // Details of an Update run
 type LookupUpdateRunResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// More detailed description of the step.
 	Description *string `pulumi:"description"`
 	// Duration of the update run.
@@ -49,8 +47,6 @@ type LookupUpdateRunResult struct {
 	EndTimeUtc *string `pulumi:"endTimeUtc"`
 	// Error message, specified if the step is in a failed state.
 	ErrorMessage *string `pulumi:"errorMessage"`
-	// Expected execution time of a given step. This is optionally authored in the update action plan and can be empty.
-	ExpectedExecutionTime *string `pulumi:"expectedExecutionTime"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Timestamp of the most recently completed step in the update run.
@@ -118,11 +114,6 @@ func (o LookupUpdateRunResultOutput) ToLookupUpdateRunResultOutputWithContext(ct
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupUpdateRunResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupUpdateRunResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // More detailed description of the step.
 func (o LookupUpdateRunResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupUpdateRunResult) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -141,11 +132,6 @@ func (o LookupUpdateRunResultOutput) EndTimeUtc() pulumi.StringPtrOutput {
 // Error message, specified if the step is in a failed state.
 func (o LookupUpdateRunResultOutput) ErrorMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupUpdateRunResult) *string { return v.ErrorMessage }).(pulumi.StringPtrOutput)
-}
-
-// Expected execution time of a given step. This is optionally authored in the update action plan and can be empty.
-func (o LookupUpdateRunResultOutput) ExpectedExecutionTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupUpdateRunResult) *string { return v.ExpectedExecutionTime }).(pulumi.StringPtrOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

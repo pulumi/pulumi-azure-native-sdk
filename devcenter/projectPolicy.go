@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents an project policy resource.
 //
-// Uses Azure REST API version 2024-10-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-10-01-preview.
+// Uses Azure REST API version 2024-10-01-preview.
 //
-// Other available API versions: 2025-02-01, 2025-04-01-preview, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devcenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2025-02-01.
 type ProjectPolicy struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning state of the resource.
@@ -55,12 +53,6 @@ func NewProjectPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:devcenter/v20250201:ProjectPolicy"),
-		},
-		{
-			Type: pulumi.String("azure-native:devcenter/v20250401preview:ProjectPolicy"),
-		},
-		{
-			Type: pulumi.String("azure-native:devcenter/v20250701preview:ProjectPolicy"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -158,11 +150,6 @@ func (o ProjectPolicyOutput) ToProjectPolicyOutput() ProjectPolicyOutput {
 
 func (o ProjectPolicyOutput) ToProjectPolicyOutputWithContext(ctx context.Context) ProjectPolicyOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o ProjectPolicyOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *ProjectPolicy) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

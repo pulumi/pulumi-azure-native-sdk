@@ -8,29 +8,25 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Specifies information about the Shared Image Gallery that you want to create or update.
 //
-// Uses Azure REST API version 2024-03-03. In version 2.x of the Azure Native provider, it used API version 2022-03-03.
+// Uses Azure REST API version 2022-03-03. In version 1.x of the Azure Native provider, it used API version 2020-09-30.
 //
-// Other available API versions: 2022-03-03, 2022-08-03, 2023-07-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-08-03, 2023-07-03, 2024-03-03.
 type Gallery struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The description of this Shared Image Gallery resource. This property is updatable.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Describes the gallery unique name.
 	Identifier GalleryIdentifierResponsePtrOutput `pulumi:"identifier"`
-	// The identity of the gallery, if configured.
-	Identity GalleryIdentityResponsePtrOutput `pulumi:"identity"`
-	// The geo-location where the resource lives
+	// Resource location
 	Location pulumi.StringOutput `pulumi:"location"`
-	// The name of the resource
+	// Resource name
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning state, which only appears in the response.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
@@ -40,11 +36,9 @@ type Gallery struct {
 	SharingStatus SharingStatusResponseOutput `pulumi:"sharingStatus"`
 	// Contains information about the soft deletion policy of the gallery.
 	SoftDeletePolicy SoftDeletePolicyResponsePtrOutput `pulumi:"softDeletePolicy"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// Resource tags.
+	// Resource tags
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// Resource type
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -132,19 +126,17 @@ func (GalleryState) ElementType() reflect.Type {
 type galleryArgs struct {
 	// The description of this Shared Image Gallery resource. This property is updatable.
 	Description *string `pulumi:"description"`
-	// The name of the Shared Image Gallery.
+	// The name of the Shared Image Gallery. The allowed characters are alphabets and numbers with dots and periods allowed in the middle. The maximum length is 80 characters.
 	GalleryName *string `pulumi:"galleryName"`
-	// The identity of the gallery, if configured.
-	Identity *GalleryIdentity `pulumi:"identity"`
-	// The geo-location where the resource lives
+	// Resource location
 	Location *string `pulumi:"location"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Profile for gallery sharing to subscription or tenant
 	SharingProfile *SharingProfile `pulumi:"sharingProfile"`
 	// Contains information about the soft deletion policy of the gallery.
 	SoftDeletePolicy *SoftDeletePolicy `pulumi:"softDeletePolicy"`
-	// Resource tags.
+	// Resource tags
 	Tags map[string]string `pulumi:"tags"`
 }
 
@@ -152,19 +144,17 @@ type galleryArgs struct {
 type GalleryArgs struct {
 	// The description of this Shared Image Gallery resource. This property is updatable.
 	Description pulumi.StringPtrInput
-	// The name of the Shared Image Gallery.
+	// The name of the Shared Image Gallery. The allowed characters are alphabets and numbers with dots and periods allowed in the middle. The maximum length is 80 characters.
 	GalleryName pulumi.StringPtrInput
-	// The identity of the gallery, if configured.
-	Identity GalleryIdentityPtrInput
-	// The geo-location where the resource lives
+	// Resource location
 	Location pulumi.StringPtrInput
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
 	// Profile for gallery sharing to subscription or tenant
 	SharingProfile SharingProfilePtrInput
 	// Contains information about the soft deletion policy of the gallery.
 	SoftDeletePolicy SoftDeletePolicyPtrInput
-	// Resource tags.
+	// Resource tags
 	Tags pulumi.StringMapInput
 }
 
@@ -205,11 +195,6 @@ func (o GalleryOutput) ToGalleryOutputWithContext(ctx context.Context) GalleryOu
 	return o
 }
 
-// The Azure API version of the resource.
-func (o GalleryOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Gallery) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // The description of this Shared Image Gallery resource. This property is updatable.
 func (o GalleryOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Gallery) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -220,17 +205,12 @@ func (o GalleryOutput) Identifier() GalleryIdentifierResponsePtrOutput {
 	return o.ApplyT(func(v *Gallery) GalleryIdentifierResponsePtrOutput { return v.Identifier }).(GalleryIdentifierResponsePtrOutput)
 }
 
-// The identity of the gallery, if configured.
-func (o GalleryOutput) Identity() GalleryIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *Gallery) GalleryIdentityResponsePtrOutput { return v.Identity }).(GalleryIdentityResponsePtrOutput)
-}
-
-// The geo-location where the resource lives
+// Resource location
 func (o GalleryOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gallery) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// The name of the resource
+// Resource name
 func (o GalleryOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gallery) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -255,17 +235,12 @@ func (o GalleryOutput) SoftDeletePolicy() SoftDeletePolicyResponsePtrOutput {
 	return o.ApplyT(func(v *Gallery) SoftDeletePolicyResponsePtrOutput { return v.SoftDeletePolicy }).(SoftDeletePolicyResponsePtrOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o GalleryOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *Gallery) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
-}
-
-// Resource tags.
+// Resource tags
 func (o GalleryOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Gallery) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// Resource type
 func (o GalleryOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gallery) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

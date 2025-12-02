@@ -14,7 +14,6 @@ import (
 type AssociationType string
 
 const (
-	// Association of Type Subnet
 	AssociationTypeSubnets = AssociationType("subnets")
 )
 

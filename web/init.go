@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,14 +37,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Connection{}
 	case "azure-native:web:ConnectionGateway":
 		r = &ConnectionGateway{}
+	case "azure-native:web:ContainerApp":
+		r = &ContainerApp{}
 	case "azure-native:web:CustomApi":
 		r = &CustomApi{}
 	case "azure-native:web:KubeEnvironment":
 		r = &KubeEnvironment{}
-	case "azure-native:web:SiteCertificate":
-		r = &SiteCertificate{}
-	case "azure-native:web:SiteCertificateSlot":
-		r = &SiteCertificateSlot{}
 	case "azure-native:web:StaticSite":
 		r = &StaticSite{}
 	case "azure-native:web:StaticSiteBuildDatabaseConnection":

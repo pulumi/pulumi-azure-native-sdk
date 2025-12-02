@@ -8,18 +8,16 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents a blueprint assignment.
 //
-// Uses Azure REST API version 2018-11-01-preview. In version 2.x of the Azure Native provider, it used API version 2018-11-01-preview.
+// Uses Azure REST API version 2018-11-01-preview. In version 1.x of the Azure Native provider, it used API version 2018-11-01-preview.
 type Assignment struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// ID of the published version of a blueprint definition.
 	BlueprintId pulumi.StringPtrOutput `pulumi:"blueprintId"`
 	// Multi-line explain this resource.
@@ -191,11 +189,6 @@ func (o AssignmentOutput) ToAssignmentOutput() AssignmentOutput {
 
 func (o AssignmentOutput) ToAssignmentOutputWithContext(ctx context.Context) AssignmentOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o AssignmentOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Assignment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // ID of the published version of a blueprint definition.

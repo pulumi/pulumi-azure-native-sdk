@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Schema for MSIX Package properties.
 //
-// Uses Azure REST API version 2024-04-03. In version 2.x of the Azure Native provider, it used API version 2022-09-09.
+// Uses Azure REST API version 2022-09-09. In version 1.x of the Azure Native provider, it used API version 2021-02-01-preview.
 //
-// Other available API versions: 2022-09-09, 2022-10-14-preview, 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-08-preview, 2024-08-08-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native desktopvirtualization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-10-14-preview, 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-03, 2024-04-08-preview, 2024-08-08-preview, 2024-11-01-preview.
 type MSIXPackage struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// User friendly Name to be displayed in the portal.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// VHD/CIM image path on Network Share.
@@ -44,11 +42,11 @@ type MSIXPackage struct {
 	PackageName pulumi.StringPtrOutput `pulumi:"packageName"`
 	// Relative Path to the package inside the image.
 	PackageRelativePath pulumi.StringPtrOutput `pulumi:"packageRelativePath"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	// Metadata pertaining to creation and last modification of the resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
-	// Package version found in the appxmanifest.xml.
+	// Package Version found in the appxmanifest.xml.
 	Version pulumi.StringPtrOutput `pulumi:"version"`
 }
 
@@ -109,9 +107,6 @@ func NewMSIXPackage(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:desktopvirtualization/v20221014preview:MSIXPackage"),
 		},
 		{
-			Type: pulumi.String("azure-native:desktopvirtualization/v20230707preview:MSIXPackage"),
-		},
-		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20230905:MSIXPackage"),
 		},
 		{
@@ -137,12 +132,6 @@ func NewMSIXPackage(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20241101preview:MSIXPackage"),
-		},
-		{
-			Type: pulumi.String("azure-native:desktopvirtualization/v20250301preview:MSIXPackage"),
-		},
-		{
-			Type: pulumi.String("azure-native:desktopvirtualization/v20250401preview:MSIXPackage"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -205,7 +194,7 @@ type msixpackageArgs struct {
 	PackageRelativePath *string `pulumi:"packageRelativePath"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Package version found in the appxmanifest.xml.
+	// Package Version found in the appxmanifest.xml.
 	Version *string `pulumi:"version"`
 }
 
@@ -237,7 +226,7 @@ type MSIXPackageArgs struct {
 	PackageRelativePath pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// Package version found in the appxmanifest.xml.
+	// Package Version found in the appxmanifest.xml.
 	Version pulumi.StringPtrInput
 }
 
@@ -276,11 +265,6 @@ func (o MSIXPackageOutput) ToMSIXPackageOutput() MSIXPackageOutput {
 
 func (o MSIXPackageOutput) ToMSIXPackageOutputWithContext(ctx context.Context) MSIXPackageOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o MSIXPackageOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *MSIXPackage) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // User friendly Name to be displayed in the portal.
@@ -338,7 +322,7 @@ func (o MSIXPackageOutput) PackageRelativePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MSIXPackage) pulumi.StringPtrOutput { return v.PackageRelativePath }).(pulumi.StringPtrOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+// Metadata pertaining to creation and last modification of the resource.
 func (o MSIXPackageOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *MSIXPackage) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
@@ -348,7 +332,7 @@ func (o MSIXPackageOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *MSIXPackage) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// Package version found in the appxmanifest.xml.
+// Package Version found in the appxmanifest.xml.
 func (o MSIXPackageOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MSIXPackage) pulumi.StringPtrOutput { return v.Version }).(pulumi.StringPtrOutput)
 }

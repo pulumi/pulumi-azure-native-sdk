@@ -8,13 +8,13 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A lab.
 //
-// Uses Azure REST API version 2018-09-15. In version 2.x of the Azure Native provider, it used API version 2018-09-15.
+// Uses Azure REST API version 2018-09-15. In version 1.x of the Azure Native provider, it used API version 2018-09-15.
 type Lab struct {
 	pulumi.CustomResourceState
 
@@ -22,8 +22,6 @@ type Lab struct {
 	Announcement LabAnnouncementPropertiesResponsePtrOutput `pulumi:"announcement"`
 	// The lab's artifact storage account.
 	ArtifactsStorageAccount pulumi.StringOutput `pulumi:"artifactsStorageAccount"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The creation date of the lab.
 	CreatedDate pulumi.StringOutput `pulumi:"createdDate"`
 	// The lab's default premium storage account.
@@ -150,7 +148,7 @@ type labArgs struct {
 	// When its value is 'Enabled', creation of standard or premium data disks is allowed.
 	// When its value is 'Disabled', only creation of standard data disks is allowed.
 	PremiumDataDisks *string `pulumi:"premiumDataDisks"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The properties of any lab support message associated with this lab
 	Support *LabSupportProperties `pulumi:"support"`
@@ -180,7 +178,7 @@ type LabArgs struct {
 	// When its value is 'Enabled', creation of standard or premium data disks is allowed.
 	// When its value is 'Disabled', only creation of standard data disks is allowed.
 	PremiumDataDisks pulumi.StringPtrInput
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
 	// The properties of any lab support message associated with this lab
 	Support LabSupportPropertiesPtrInput
@@ -233,11 +231,6 @@ func (o LabOutput) Announcement() LabAnnouncementPropertiesResponsePtrOutput {
 // The lab's artifact storage account.
 func (o LabOutput) ArtifactsStorageAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v *Lab) pulumi.StringOutput { return v.ArtifactsStorageAccount }).(pulumi.StringOutput)
-}
-
-// The Azure API version of the resource.
-func (o LabOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Lab) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of the lab.

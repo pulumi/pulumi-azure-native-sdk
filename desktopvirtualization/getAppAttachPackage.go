@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get an app attach package.
 //
-// Uses Azure REST API version 2024-04-03.
+// Uses Azure REST API version 2023-10-04-preview.
 //
-// Other available API versions: 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-08-preview, 2024-08-08-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native desktopvirtualization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-03, 2024-04-08-preview, 2024-08-08-preview, 2024-11-01-preview.
 func LookupAppAttachPackage(ctx *pulumi.Context, args *LookupAppAttachPackageArgs, opts ...pulumi.InvokeOption) (*LookupAppAttachPackageResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAppAttachPackageResult
@@ -27,7 +27,7 @@ func LookupAppAttachPackage(ctx *pulumi.Context, args *LookupAppAttachPackageArg
 }
 
 type LookupAppAttachPackageArgs struct {
-	// The name of the App Attach package
+	// The name of the App Attach package arm object
 	AppAttachPackageName string `pulumi:"appAttachPackageName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -35,17 +35,24 @@ type LookupAppAttachPackageArgs struct {
 
 // Schema for App Attach Package properties.
 type LookupAppAttachPackageResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-	Id string `pulumi:"id"`
+	// The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
+	Etag string `pulumi:"etag"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id       string                                               `pulumi:"id"`
+	Identity *ResourceModelWithAllowedPropertySetResponseIdentity `pulumi:"identity"`
+	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
+	Kind *string `pulumi:"kind"`
 	// The geo-location where the resource lives
-	Location string `pulumi:"location"`
+	Location *string `pulumi:"location"`
+	// The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
+	ManagedBy *string `pulumi:"managedBy"`
 	// The name of the resource
-	Name string `pulumi:"name"`
+	Name string                                           `pulumi:"name"`
+	Plan *ResourceModelWithAllowedPropertySetResponsePlan `pulumi:"plan"`
 	// Detailed properties for App Attach Package
-	Properties AppAttachPackagePropertiesResponse `pulumi:"properties"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	Properties AppAttachPackagePropertiesResponse              `pulumi:"properties"`
+	Sku        *ResourceModelWithAllowedPropertySetResponseSku `pulumi:"sku"`
+	// Metadata pertaining to creation and last modification of the resource.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
@@ -63,7 +70,7 @@ func LookupAppAttachPackageOutput(ctx *pulumi.Context, args LookupAppAttachPacka
 }
 
 type LookupAppAttachPackageOutputArgs struct {
-	// The name of the App Attach package
+	// The name of the App Attach package arm object
 	AppAttachPackageName pulumi.StringInput `pulumi:"appAttachPackageName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
@@ -88,19 +95,35 @@ func (o LookupAppAttachPackageResultOutput) ToLookupAppAttachPackageResultOutput
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupAppAttachPackageResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAppAttachPackageResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+// The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
+func (o LookupAppAttachPackageResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAppAttachPackageResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupAppAttachPackageResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppAttachPackageResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+func (o LookupAppAttachPackageResultOutput) Identity() ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput {
+	return o.ApplyT(func(v LookupAppAttachPackageResult) *ResourceModelWithAllowedPropertySetResponseIdentity {
+		return v.Identity
+	}).(ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput)
+}
+
+// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
+func (o LookupAppAttachPackageResultOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAppAttachPackageResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
 // The geo-location where the resource lives
-func (o LookupAppAttachPackageResultOutput) Location() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAppAttachPackageResult) string { return v.Location }).(pulumi.StringOutput)
+func (o LookupAppAttachPackageResultOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAppAttachPackageResult) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
+func (o LookupAppAttachPackageResultOutput) ManagedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAppAttachPackageResult) *string { return v.ManagedBy }).(pulumi.StringPtrOutput)
 }
 
 // The name of the resource
@@ -108,12 +131,20 @@ func (o LookupAppAttachPackageResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppAttachPackageResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o LookupAppAttachPackageResultOutput) Plan() ResourceModelWithAllowedPropertySetResponsePlanPtrOutput {
+	return o.ApplyT(func(v LookupAppAttachPackageResult) *ResourceModelWithAllowedPropertySetResponsePlan { return v.Plan }).(ResourceModelWithAllowedPropertySetResponsePlanPtrOutput)
+}
+
 // Detailed properties for App Attach Package
 func (o LookupAppAttachPackageResultOutput) Properties() AppAttachPackagePropertiesResponseOutput {
 	return o.ApplyT(func(v LookupAppAttachPackageResult) AppAttachPackagePropertiesResponse { return v.Properties }).(AppAttachPackagePropertiesResponseOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupAppAttachPackageResultOutput) Sku() ResourceModelWithAllowedPropertySetResponseSkuPtrOutput {
+	return o.ApplyT(func(v LookupAppAttachPackageResult) *ResourceModelWithAllowedPropertySetResponseSku { return v.Sku }).(ResourceModelWithAllowedPropertySetResponseSkuPtrOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
 func (o LookupAppAttachPackageResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupAppAttachPackageResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }

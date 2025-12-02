@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,9 +29,9 @@ type LookupArtifactSourceArgs struct {
 	Expand *string `pulumi:"expand"`
 	// The name of the lab.
 	LabName string `pulumi:"labName"`
-	// The name of the ArtifactSource
+	// The name of the artifact source.
 	Name string `pulumi:"name"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -39,8 +39,6 @@ type LookupArtifactSourceArgs struct {
 type LookupArtifactSourceResult struct {
 	// The folder containing Azure Resource Manager templates.
 	ArmTemplateFolderPath *string `pulumi:"armTemplateFolderPath"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The artifact source's branch reference.
 	BranchRef *string `pulumi:"branchRef"`
 	// The artifact source's creation date.
@@ -87,9 +85,9 @@ type LookupArtifactSourceOutputArgs struct {
 	Expand pulumi.StringPtrInput `pulumi:"expand"`
 	// The name of the lab.
 	LabName pulumi.StringInput `pulumi:"labName"`
-	// The name of the ArtifactSource
+	// The name of the artifact source.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -115,11 +113,6 @@ func (o LookupArtifactSourceResultOutput) ToLookupArtifactSourceResultOutputWith
 // The folder containing Azure Resource Manager templates.
 func (o LookupArtifactSourceResultOutput) ArmTemplateFolderPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupArtifactSourceResult) *string { return v.ArmTemplateFolderPath }).(pulumi.StringPtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o LookupArtifactSourceResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupArtifactSourceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The artifact source's branch reference.

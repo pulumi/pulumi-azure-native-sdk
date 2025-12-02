@@ -7,15 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified NSP profile.
 //
 // Uses Azure REST API version 2024-06-01-preview.
-//
-// Other available API versions: 2024-07-01, 2024-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupNetworkSecurityPerimeterProfile(ctx *pulumi.Context, args *LookupNetworkSecurityPerimeterProfileArgs, opts ...pulumi.InvokeOption) (*LookupNetworkSecurityPerimeterProfileResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkSecurityPerimeterProfileResult
@@ -39,8 +37,6 @@ type LookupNetworkSecurityPerimeterProfileArgs struct {
 type LookupNetworkSecurityPerimeterProfileResult struct {
 	// Version number that increases with every update to access rules within the profile.
 	AccessRulesVersion string `pulumi:"accessRulesVersion"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Version number that increases with every update to diagnostic settings within the profile.
 	DiagnosticSettingsVersion string `pulumi:"diagnosticSettingsVersion"`
 	// Resource ID.
@@ -95,11 +91,6 @@ func (o LookupNetworkSecurityPerimeterProfileResultOutput) ToLookupNetworkSecuri
 // Version number that increases with every update to access rules within the profile.
 func (o LookupNetworkSecurityPerimeterProfileResultOutput) AccessRulesVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkSecurityPerimeterProfileResult) string { return v.AccessRulesVersion }).(pulumi.StringOutput)
-}
-
-// The Azure API version of the resource.
-func (o LookupNetworkSecurityPerimeterProfileResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupNetworkSecurityPerimeterProfileResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Version number that increases with every update to diagnostic settings within the profile.

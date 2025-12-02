@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Base class for backup items.
 //
-// Uses Azure REST API version 2024-10-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
+// Uses Azure REST API version 2023-04-01. In version 1.x of the Azure Native provider, it used API version 2021-02-01.
 //
-// Other available API versions: 2023-02-01, 2023-04-01, 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01, 2024-04-30-preview, 2024-07-30-preview, 2024-11-01-preview, 2025-01-01, 2025-02-01, 2025-02-28-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native recoveryservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01, 2024-04-30-preview, 2024-07-30-preview, 2024-10-01, 2024-11-01-preview.
 type ProtectedItem struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Optional ETag.
 	ETag pulumi.StringPtrOutput `pulumi:"eTag"`
 	// Resource location.
@@ -164,15 +162,6 @@ func NewProtectedItem(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:recoveryservices/v20241101preview:ProtectedItem"),
 		},
-		{
-			Type: pulumi.String("azure-native:recoveryservices/v20250101:ProtectedItem"),
-		},
-		{
-			Type: pulumi.String("azure-native:recoveryservices/v20250201:ProtectedItem"),
-		},
-		{
-			Type: pulumi.String("azure-native:recoveryservices/v20250228preview:ProtectedItem"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -285,11 +274,6 @@ func (o ProtectedItemOutput) ToProtectedItemOutput() ProtectedItemOutput {
 
 func (o ProtectedItemOutput) ToProtectedItemOutputWithContext(ctx context.Context) ProtectedItemOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o ProtectedItemOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *ProtectedItem) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Optional ETag.

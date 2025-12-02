@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a TestLine
 //
-// Uses Azure REST API version 2023-09-01.
+// Uses Azure REST API version 2023-04-03.
 //
-// Other available API versions: 2022-12-01-preview, 2023-01-31, 2023-04-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native voiceservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-12-01-preview, 2023-09-01.
 func LookupTestLine(ctx *pulumi.Context, args *LookupTestLineArgs, opts ...pulumi.InvokeOption) (*LookupTestLineResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTestLineResult
@@ -37,8 +37,6 @@ type LookupTestLineArgs struct {
 
 // A TestLine resource
 type LookupTestLineResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -94,11 +92,6 @@ func (o LookupTestLineResultOutput) ToLookupTestLineResultOutput() LookupTestLin
 
 func (o LookupTestLineResultOutput) ToLookupTestLineResultOutputWithContext(ctx context.Context) LookupTestLineResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupTestLineResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupTestLineResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

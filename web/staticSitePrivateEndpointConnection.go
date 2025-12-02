@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Remote Private Endpoint Connection ARM resource.
 //
-// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
+// Uses Azure REST API version 2022-09-01. In version 1.x of the Azure Native provider, it used API version 2020-12-01.
 //
-// Other available API versions: 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-01-01, 2023-12-01, 2024-04-01.
 type StaticSitePrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Private IPAddresses mapped to the remote private endpoint
 	IpAddresses pulumi.StringArrayOutput `pulumi:"ipAddresses"`
 	// Kind of resource.
@@ -80,9 +78,6 @@ func NewStaticSitePrivateEndpointConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20240401:StaticSitePrivateEndpointConnection"),
-		},
-		{
-			Type: pulumi.String("azure-native:web/v20241101:StaticSitePrivateEndpointConnection"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -184,11 +179,6 @@ func (o StaticSitePrivateEndpointConnectionOutput) ToStaticSitePrivateEndpointCo
 
 func (o StaticSitePrivateEndpointConnectionOutput) ToStaticSitePrivateEndpointConnectionOutputWithContext(ctx context.Context) StaticSitePrivateEndpointConnectionOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o StaticSitePrivateEndpointConnectionOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *StaticSitePrivateEndpointConnection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Private IPAddresses mapped to the remote private endpoint

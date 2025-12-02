@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -16,12 +16,10 @@ import (
 //
 // Uses Azure REST API version 2024-04-01.
 //
-// Other available API versions: 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01.
 type WebAppAuthSettingsV2WithoutSecretsSlot struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The configuration settings that determines the validation flow of users using App Service Authentication/Authorization.
 	GlobalValidation GlobalValidationResponsePtrOutput `pulumi:"globalValidation"`
 	// The configuration settings of the HTTP requests for authentication and authorization requests made against App Service Authentication/Authorization.
@@ -64,9 +62,6 @@ func NewWebAppAuthSettingsV2WithoutSecretsSlot(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:web/v20200901:WebAppAuthSettingsV2WithoutSecretsSlot"),
 		},
 		{
-			Type: pulumi.String("azure-native:web/v20201001:WebAppAuthSettingsV2Slot"),
-		},
-		{
 			Type: pulumi.String("azure-native:web/v20201001:WebAppAuthSettingsV2WithoutSecretsSlot"),
 		},
 		{
@@ -77,9 +72,6 @@ func NewWebAppAuthSettingsV2WithoutSecretsSlot(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20210115:WebAppAuthSettingsV2WithoutSecretsSlot"),
-		},
-		{
-			Type: pulumi.String("azure-native:web/v20210201:WebAppAuthSettingsV2Slot"),
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20210201:WebAppAuthSettingsV2WithoutSecretsSlot"),
@@ -101,12 +93,6 @@ func NewWebAppAuthSettingsV2WithoutSecretsSlot(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20240401:WebAppAuthSettingsV2WithoutSecretsSlot"),
-		},
-		{
-			Type: pulumi.String("azure-native:web/v20241101:WebAppAuthSettingsV2WithoutSecretsSlot"),
-		},
-		{
-			Type: pulumi.String("azure-native:web:WebAppAuthSettingsV2Slot"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -220,11 +206,6 @@ func (o WebAppAuthSettingsV2WithoutSecretsSlotOutput) ToWebAppAuthSettingsV2With
 
 func (o WebAppAuthSettingsV2WithoutSecretsSlotOutput) ToWebAppAuthSettingsV2WithoutSecretsSlotOutputWithContext(ctx context.Context) WebAppAuthSettingsV2WithoutSecretsSlotOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o WebAppAuthSettingsV2WithoutSecretsSlotOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *WebAppAuthSettingsV2WithoutSecretsSlot) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The configuration settings that determines the validation flow of users using App Service Authentication/Authorization.

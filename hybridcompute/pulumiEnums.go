@@ -10,182 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Indicates which kind of Arc machine placement on-premises, such as HCI, SCVMM or VMware etc.
-type ArcKindEnum string
-
-const (
-	ArcKindEnumAVS    = ArcKindEnum("AVS")
-	ArcKindEnumHCI    = ArcKindEnum("HCI")
-	ArcKindEnumSCVMM  = ArcKindEnum("SCVMM")
-	ArcKindEnumVMware = ArcKindEnum("VMware")
-	ArcKindEnumEPS    = ArcKindEnum("EPS")
-	ArcKindEnumGCP    = ArcKindEnum("GCP")
-	ArcKindEnumAWS    = ArcKindEnum("AWS")
-)
-
-func (ArcKindEnum) ElementType() reflect.Type {
-	return reflect.TypeOf((*ArcKindEnum)(nil)).Elem()
-}
-
-func (e ArcKindEnum) ToArcKindEnumOutput() ArcKindEnumOutput {
-	return pulumi.ToOutput(e).(ArcKindEnumOutput)
-}
-
-func (e ArcKindEnum) ToArcKindEnumOutputWithContext(ctx context.Context) ArcKindEnumOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(ArcKindEnumOutput)
-}
-
-func (e ArcKindEnum) ToArcKindEnumPtrOutput() ArcKindEnumPtrOutput {
-	return e.ToArcKindEnumPtrOutputWithContext(context.Background())
-}
-
-func (e ArcKindEnum) ToArcKindEnumPtrOutputWithContext(ctx context.Context) ArcKindEnumPtrOutput {
-	return ArcKindEnum(e).ToArcKindEnumOutputWithContext(ctx).ToArcKindEnumPtrOutputWithContext(ctx)
-}
-
-func (e ArcKindEnum) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e ArcKindEnum) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e ArcKindEnum) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e ArcKindEnum) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type ArcKindEnumOutput struct{ *pulumi.OutputState }
-
-func (ArcKindEnumOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ArcKindEnum)(nil)).Elem()
-}
-
-func (o ArcKindEnumOutput) ToArcKindEnumOutput() ArcKindEnumOutput {
-	return o
-}
-
-func (o ArcKindEnumOutput) ToArcKindEnumOutputWithContext(ctx context.Context) ArcKindEnumOutput {
-	return o
-}
-
-func (o ArcKindEnumOutput) ToArcKindEnumPtrOutput() ArcKindEnumPtrOutput {
-	return o.ToArcKindEnumPtrOutputWithContext(context.Background())
-}
-
-func (o ArcKindEnumOutput) ToArcKindEnumPtrOutputWithContext(ctx context.Context) ArcKindEnumPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ArcKindEnum) *ArcKindEnum {
-		return &v
-	}).(ArcKindEnumPtrOutput)
-}
-
-func (o ArcKindEnumOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o ArcKindEnumOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e ArcKindEnum) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o ArcKindEnumOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o ArcKindEnumOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e ArcKindEnum) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type ArcKindEnumPtrOutput struct{ *pulumi.OutputState }
-
-func (ArcKindEnumPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ArcKindEnum)(nil)).Elem()
-}
-
-func (o ArcKindEnumPtrOutput) ToArcKindEnumPtrOutput() ArcKindEnumPtrOutput {
-	return o
-}
-
-func (o ArcKindEnumPtrOutput) ToArcKindEnumPtrOutputWithContext(ctx context.Context) ArcKindEnumPtrOutput {
-	return o
-}
-
-func (o ArcKindEnumPtrOutput) Elem() ArcKindEnumOutput {
-	return o.ApplyT(func(v *ArcKindEnum) ArcKindEnum {
-		if v != nil {
-			return *v
-		}
-		var ret ArcKindEnum
-		return ret
-	}).(ArcKindEnumOutput)
-}
-
-func (o ArcKindEnumPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o ArcKindEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ArcKindEnum) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// ArcKindEnumInput is an input type that accepts values of the ArcKindEnum enum
-// A concrete instance of `ArcKindEnumInput` can be one of the following:
-//
-//	ArcKindEnumAVS
-//	ArcKindEnumHCI
-//	ArcKindEnumSCVMM
-//	ArcKindEnumVMware
-//	ArcKindEnumEPS
-//	ArcKindEnumGCP
-//	ArcKindEnumAWS
-type ArcKindEnumInput interface {
-	pulumi.Input
-
-	ToArcKindEnumOutput() ArcKindEnumOutput
-	ToArcKindEnumOutputWithContext(context.Context) ArcKindEnumOutput
-}
-
-var arcKindEnumPtrType = reflect.TypeOf((**ArcKindEnum)(nil)).Elem()
-
-type ArcKindEnumPtrInput interface {
-	pulumi.Input
-
-	ToArcKindEnumPtrOutput() ArcKindEnumPtrOutput
-	ToArcKindEnumPtrOutputWithContext(context.Context) ArcKindEnumPtrOutput
-}
-
-type arcKindEnumPtr string
-
-func ArcKindEnumPtr(v string) ArcKindEnumPtrInput {
-	return (*arcKindEnumPtr)(&v)
-}
-
-func (*arcKindEnumPtr) ElementType() reflect.Type {
-	return arcKindEnumPtrType
-}
-
-func (in *arcKindEnumPtr) ToArcKindEnumPtrOutput() ArcKindEnumPtrOutput {
-	return pulumi.ToOutput(in).(ArcKindEnumPtrOutput)
-}
-
-func (in *arcKindEnumPtr) ToArcKindEnumPtrOutputWithContext(ctx context.Context) ArcKindEnumPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(ArcKindEnumPtrOutput)
-}
-
 // Specifies the assessment mode.
 type AssessmentModeTypes string
 
@@ -514,172 +338,6 @@ func (in *gatewayTypePtr) ToGatewayTypePtrOutput() GatewayTypePtrOutput {
 
 func (in *gatewayTypePtr) ToGatewayTypePtrOutputWithContext(ctx context.Context) GatewayTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GatewayTypePtrOutput)
-}
-
-// Describes the license assignment state (Assigned or NotAssigned).
-type LicenseAssignmentState string
-
-const (
-	LicenseAssignmentStateAssigned    = LicenseAssignmentState("Assigned")
-	LicenseAssignmentStateNotAssigned = LicenseAssignmentState("NotAssigned")
-)
-
-func (LicenseAssignmentState) ElementType() reflect.Type {
-	return reflect.TypeOf((*LicenseAssignmentState)(nil)).Elem()
-}
-
-func (e LicenseAssignmentState) ToLicenseAssignmentStateOutput() LicenseAssignmentStateOutput {
-	return pulumi.ToOutput(e).(LicenseAssignmentStateOutput)
-}
-
-func (e LicenseAssignmentState) ToLicenseAssignmentStateOutputWithContext(ctx context.Context) LicenseAssignmentStateOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(LicenseAssignmentStateOutput)
-}
-
-func (e LicenseAssignmentState) ToLicenseAssignmentStatePtrOutput() LicenseAssignmentStatePtrOutput {
-	return e.ToLicenseAssignmentStatePtrOutputWithContext(context.Background())
-}
-
-func (e LicenseAssignmentState) ToLicenseAssignmentStatePtrOutputWithContext(ctx context.Context) LicenseAssignmentStatePtrOutput {
-	return LicenseAssignmentState(e).ToLicenseAssignmentStateOutputWithContext(ctx).ToLicenseAssignmentStatePtrOutputWithContext(ctx)
-}
-
-func (e LicenseAssignmentState) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e LicenseAssignmentState) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e LicenseAssignmentState) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e LicenseAssignmentState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type LicenseAssignmentStateOutput struct{ *pulumi.OutputState }
-
-func (LicenseAssignmentStateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LicenseAssignmentState)(nil)).Elem()
-}
-
-func (o LicenseAssignmentStateOutput) ToLicenseAssignmentStateOutput() LicenseAssignmentStateOutput {
-	return o
-}
-
-func (o LicenseAssignmentStateOutput) ToLicenseAssignmentStateOutputWithContext(ctx context.Context) LicenseAssignmentStateOutput {
-	return o
-}
-
-func (o LicenseAssignmentStateOutput) ToLicenseAssignmentStatePtrOutput() LicenseAssignmentStatePtrOutput {
-	return o.ToLicenseAssignmentStatePtrOutputWithContext(context.Background())
-}
-
-func (o LicenseAssignmentStateOutput) ToLicenseAssignmentStatePtrOutputWithContext(ctx context.Context) LicenseAssignmentStatePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v LicenseAssignmentState) *LicenseAssignmentState {
-		return &v
-	}).(LicenseAssignmentStatePtrOutput)
-}
-
-func (o LicenseAssignmentStateOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o LicenseAssignmentStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e LicenseAssignmentState) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o LicenseAssignmentStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o LicenseAssignmentStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e LicenseAssignmentState) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type LicenseAssignmentStatePtrOutput struct{ *pulumi.OutputState }
-
-func (LicenseAssignmentStatePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LicenseAssignmentState)(nil)).Elem()
-}
-
-func (o LicenseAssignmentStatePtrOutput) ToLicenseAssignmentStatePtrOutput() LicenseAssignmentStatePtrOutput {
-	return o
-}
-
-func (o LicenseAssignmentStatePtrOutput) ToLicenseAssignmentStatePtrOutputWithContext(ctx context.Context) LicenseAssignmentStatePtrOutput {
-	return o
-}
-
-func (o LicenseAssignmentStatePtrOutput) Elem() LicenseAssignmentStateOutput {
-	return o.ApplyT(func(v *LicenseAssignmentState) LicenseAssignmentState {
-		if v != nil {
-			return *v
-		}
-		var ret LicenseAssignmentState
-		return ret
-	}).(LicenseAssignmentStateOutput)
-}
-
-func (o LicenseAssignmentStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o LicenseAssignmentStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *LicenseAssignmentState) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// LicenseAssignmentStateInput is an input type that accepts values of the LicenseAssignmentState enum
-// A concrete instance of `LicenseAssignmentStateInput` can be one of the following:
-//
-//	LicenseAssignmentStateAssigned
-//	LicenseAssignmentStateNotAssigned
-type LicenseAssignmentStateInput interface {
-	pulumi.Input
-
-	ToLicenseAssignmentStateOutput() LicenseAssignmentStateOutput
-	ToLicenseAssignmentStateOutputWithContext(context.Context) LicenseAssignmentStateOutput
-}
-
-var licenseAssignmentStatePtrType = reflect.TypeOf((**LicenseAssignmentState)(nil)).Elem()
-
-type LicenseAssignmentStatePtrInput interface {
-	pulumi.Input
-
-	ToLicenseAssignmentStatePtrOutput() LicenseAssignmentStatePtrOutput
-	ToLicenseAssignmentStatePtrOutputWithContext(context.Context) LicenseAssignmentStatePtrOutput
-}
-
-type licenseAssignmentStatePtr string
-
-func LicenseAssignmentStatePtr(v string) LicenseAssignmentStatePtrInput {
-	return (*licenseAssignmentStatePtr)(&v)
-}
-
-func (*licenseAssignmentStatePtr) ElementType() reflect.Type {
-	return licenseAssignmentStatePtrType
-}
-
-func (in *licenseAssignmentStatePtr) ToLicenseAssignmentStatePtrOutput() LicenseAssignmentStatePtrOutput {
-	return pulumi.ToOutput(in).(LicenseAssignmentStatePtrOutput)
-}
-
-func (in *licenseAssignmentStatePtr) ToLicenseAssignmentStatePtrOutputWithContext(ctx context.Context) LicenseAssignmentStatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(LicenseAssignmentStatePtrOutput)
 }
 
 // Describes the license core type (pCore or vCore).
@@ -1012,346 +670,6 @@ func (in *licenseEditionPtr) ToLicenseEditionPtrOutput() LicenseEditionPtrOutput
 
 func (in *licenseEditionPtr) ToLicenseEditionPtrOutputWithContext(ctx context.Context) LicenseEditionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LicenseEditionPtrOutput)
-}
-
-// Indicates the product type of the license.
-type LicenseProfileProductType string
-
-const (
-	LicenseProfileProductTypeWindowsServer        = LicenseProfileProductType("WindowsServer")
-	LicenseProfileProductTypeWindowsIoTEnterprise = LicenseProfileProductType("WindowsIoTEnterprise")
-)
-
-func (LicenseProfileProductType) ElementType() reflect.Type {
-	return reflect.TypeOf((*LicenseProfileProductType)(nil)).Elem()
-}
-
-func (e LicenseProfileProductType) ToLicenseProfileProductTypeOutput() LicenseProfileProductTypeOutput {
-	return pulumi.ToOutput(e).(LicenseProfileProductTypeOutput)
-}
-
-func (e LicenseProfileProductType) ToLicenseProfileProductTypeOutputWithContext(ctx context.Context) LicenseProfileProductTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(LicenseProfileProductTypeOutput)
-}
-
-func (e LicenseProfileProductType) ToLicenseProfileProductTypePtrOutput() LicenseProfileProductTypePtrOutput {
-	return e.ToLicenseProfileProductTypePtrOutputWithContext(context.Background())
-}
-
-func (e LicenseProfileProductType) ToLicenseProfileProductTypePtrOutputWithContext(ctx context.Context) LicenseProfileProductTypePtrOutput {
-	return LicenseProfileProductType(e).ToLicenseProfileProductTypeOutputWithContext(ctx).ToLicenseProfileProductTypePtrOutputWithContext(ctx)
-}
-
-func (e LicenseProfileProductType) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e LicenseProfileProductType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e LicenseProfileProductType) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e LicenseProfileProductType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type LicenseProfileProductTypeOutput struct{ *pulumi.OutputState }
-
-func (LicenseProfileProductTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LicenseProfileProductType)(nil)).Elem()
-}
-
-func (o LicenseProfileProductTypeOutput) ToLicenseProfileProductTypeOutput() LicenseProfileProductTypeOutput {
-	return o
-}
-
-func (o LicenseProfileProductTypeOutput) ToLicenseProfileProductTypeOutputWithContext(ctx context.Context) LicenseProfileProductTypeOutput {
-	return o
-}
-
-func (o LicenseProfileProductTypeOutput) ToLicenseProfileProductTypePtrOutput() LicenseProfileProductTypePtrOutput {
-	return o.ToLicenseProfileProductTypePtrOutputWithContext(context.Background())
-}
-
-func (o LicenseProfileProductTypeOutput) ToLicenseProfileProductTypePtrOutputWithContext(ctx context.Context) LicenseProfileProductTypePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v LicenseProfileProductType) *LicenseProfileProductType {
-		return &v
-	}).(LicenseProfileProductTypePtrOutput)
-}
-
-func (o LicenseProfileProductTypeOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o LicenseProfileProductTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e LicenseProfileProductType) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o LicenseProfileProductTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o LicenseProfileProductTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e LicenseProfileProductType) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type LicenseProfileProductTypePtrOutput struct{ *pulumi.OutputState }
-
-func (LicenseProfileProductTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LicenseProfileProductType)(nil)).Elem()
-}
-
-func (o LicenseProfileProductTypePtrOutput) ToLicenseProfileProductTypePtrOutput() LicenseProfileProductTypePtrOutput {
-	return o
-}
-
-func (o LicenseProfileProductTypePtrOutput) ToLicenseProfileProductTypePtrOutputWithContext(ctx context.Context) LicenseProfileProductTypePtrOutput {
-	return o
-}
-
-func (o LicenseProfileProductTypePtrOutput) Elem() LicenseProfileProductTypeOutput {
-	return o.ApplyT(func(v *LicenseProfileProductType) LicenseProfileProductType {
-		if v != nil {
-			return *v
-		}
-		var ret LicenseProfileProductType
-		return ret
-	}).(LicenseProfileProductTypeOutput)
-}
-
-func (o LicenseProfileProductTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o LicenseProfileProductTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *LicenseProfileProductType) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// LicenseProfileProductTypeInput is an input type that accepts values of the LicenseProfileProductType enum
-// A concrete instance of `LicenseProfileProductTypeInput` can be one of the following:
-//
-//	LicenseProfileProductTypeWindowsServer
-//	LicenseProfileProductTypeWindowsIoTEnterprise
-type LicenseProfileProductTypeInput interface {
-	pulumi.Input
-
-	ToLicenseProfileProductTypeOutput() LicenseProfileProductTypeOutput
-	ToLicenseProfileProductTypeOutputWithContext(context.Context) LicenseProfileProductTypeOutput
-}
-
-var licenseProfileProductTypePtrType = reflect.TypeOf((**LicenseProfileProductType)(nil)).Elem()
-
-type LicenseProfileProductTypePtrInput interface {
-	pulumi.Input
-
-	ToLicenseProfileProductTypePtrOutput() LicenseProfileProductTypePtrOutput
-	ToLicenseProfileProductTypePtrOutputWithContext(context.Context) LicenseProfileProductTypePtrOutput
-}
-
-type licenseProfileProductTypePtr string
-
-func LicenseProfileProductTypePtr(v string) LicenseProfileProductTypePtrInput {
-	return (*licenseProfileProductTypePtr)(&v)
-}
-
-func (*licenseProfileProductTypePtr) ElementType() reflect.Type {
-	return licenseProfileProductTypePtrType
-}
-
-func (in *licenseProfileProductTypePtr) ToLicenseProfileProductTypePtrOutput() LicenseProfileProductTypePtrOutput {
-	return pulumi.ToOutput(in).(LicenseProfileProductTypePtrOutput)
-}
-
-func (in *licenseProfileProductTypePtr) ToLicenseProfileProductTypePtrOutputWithContext(ctx context.Context) LicenseProfileProductTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(LicenseProfileProductTypePtrOutput)
-}
-
-// Indicates the subscription status of the product.
-type LicenseProfileSubscriptionStatus string
-
-const (
-	LicenseProfileSubscriptionStatusUnknown   = LicenseProfileSubscriptionStatus("Unknown")
-	LicenseProfileSubscriptionStatusEnabling  = LicenseProfileSubscriptionStatus("Enabling")
-	LicenseProfileSubscriptionStatusEnabled   = LicenseProfileSubscriptionStatus("Enabled")
-	LicenseProfileSubscriptionStatusDisabled  = LicenseProfileSubscriptionStatus("Disabled")
-	LicenseProfileSubscriptionStatusDisabling = LicenseProfileSubscriptionStatus("Disabling")
-	LicenseProfileSubscriptionStatusFailed    = LicenseProfileSubscriptionStatus("Failed")
-)
-
-func (LicenseProfileSubscriptionStatus) ElementType() reflect.Type {
-	return reflect.TypeOf((*LicenseProfileSubscriptionStatus)(nil)).Elem()
-}
-
-func (e LicenseProfileSubscriptionStatus) ToLicenseProfileSubscriptionStatusOutput() LicenseProfileSubscriptionStatusOutput {
-	return pulumi.ToOutput(e).(LicenseProfileSubscriptionStatusOutput)
-}
-
-func (e LicenseProfileSubscriptionStatus) ToLicenseProfileSubscriptionStatusOutputWithContext(ctx context.Context) LicenseProfileSubscriptionStatusOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(LicenseProfileSubscriptionStatusOutput)
-}
-
-func (e LicenseProfileSubscriptionStatus) ToLicenseProfileSubscriptionStatusPtrOutput() LicenseProfileSubscriptionStatusPtrOutput {
-	return e.ToLicenseProfileSubscriptionStatusPtrOutputWithContext(context.Background())
-}
-
-func (e LicenseProfileSubscriptionStatus) ToLicenseProfileSubscriptionStatusPtrOutputWithContext(ctx context.Context) LicenseProfileSubscriptionStatusPtrOutput {
-	return LicenseProfileSubscriptionStatus(e).ToLicenseProfileSubscriptionStatusOutputWithContext(ctx).ToLicenseProfileSubscriptionStatusPtrOutputWithContext(ctx)
-}
-
-func (e LicenseProfileSubscriptionStatus) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e LicenseProfileSubscriptionStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e LicenseProfileSubscriptionStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e LicenseProfileSubscriptionStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type LicenseProfileSubscriptionStatusOutput struct{ *pulumi.OutputState }
-
-func (LicenseProfileSubscriptionStatusOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LicenseProfileSubscriptionStatus)(nil)).Elem()
-}
-
-func (o LicenseProfileSubscriptionStatusOutput) ToLicenseProfileSubscriptionStatusOutput() LicenseProfileSubscriptionStatusOutput {
-	return o
-}
-
-func (o LicenseProfileSubscriptionStatusOutput) ToLicenseProfileSubscriptionStatusOutputWithContext(ctx context.Context) LicenseProfileSubscriptionStatusOutput {
-	return o
-}
-
-func (o LicenseProfileSubscriptionStatusOutput) ToLicenseProfileSubscriptionStatusPtrOutput() LicenseProfileSubscriptionStatusPtrOutput {
-	return o.ToLicenseProfileSubscriptionStatusPtrOutputWithContext(context.Background())
-}
-
-func (o LicenseProfileSubscriptionStatusOutput) ToLicenseProfileSubscriptionStatusPtrOutputWithContext(ctx context.Context) LicenseProfileSubscriptionStatusPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v LicenseProfileSubscriptionStatus) *LicenseProfileSubscriptionStatus {
-		return &v
-	}).(LicenseProfileSubscriptionStatusPtrOutput)
-}
-
-func (o LicenseProfileSubscriptionStatusOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o LicenseProfileSubscriptionStatusOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e LicenseProfileSubscriptionStatus) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o LicenseProfileSubscriptionStatusOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o LicenseProfileSubscriptionStatusOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e LicenseProfileSubscriptionStatus) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type LicenseProfileSubscriptionStatusPtrOutput struct{ *pulumi.OutputState }
-
-func (LicenseProfileSubscriptionStatusPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LicenseProfileSubscriptionStatus)(nil)).Elem()
-}
-
-func (o LicenseProfileSubscriptionStatusPtrOutput) ToLicenseProfileSubscriptionStatusPtrOutput() LicenseProfileSubscriptionStatusPtrOutput {
-	return o
-}
-
-func (o LicenseProfileSubscriptionStatusPtrOutput) ToLicenseProfileSubscriptionStatusPtrOutputWithContext(ctx context.Context) LicenseProfileSubscriptionStatusPtrOutput {
-	return o
-}
-
-func (o LicenseProfileSubscriptionStatusPtrOutput) Elem() LicenseProfileSubscriptionStatusOutput {
-	return o.ApplyT(func(v *LicenseProfileSubscriptionStatus) LicenseProfileSubscriptionStatus {
-		if v != nil {
-			return *v
-		}
-		var ret LicenseProfileSubscriptionStatus
-		return ret
-	}).(LicenseProfileSubscriptionStatusOutput)
-}
-
-func (o LicenseProfileSubscriptionStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o LicenseProfileSubscriptionStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *LicenseProfileSubscriptionStatus) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// LicenseProfileSubscriptionStatusInput is an input type that accepts values of the LicenseProfileSubscriptionStatus enum
-// A concrete instance of `LicenseProfileSubscriptionStatusInput` can be one of the following:
-//
-//	LicenseProfileSubscriptionStatusUnknown
-//	LicenseProfileSubscriptionStatusEnabling
-//	LicenseProfileSubscriptionStatusEnabled
-//	LicenseProfileSubscriptionStatusDisabled
-//	LicenseProfileSubscriptionStatusDisabling
-//	LicenseProfileSubscriptionStatusFailed
-type LicenseProfileSubscriptionStatusInput interface {
-	pulumi.Input
-
-	ToLicenseProfileSubscriptionStatusOutput() LicenseProfileSubscriptionStatusOutput
-	ToLicenseProfileSubscriptionStatusOutputWithContext(context.Context) LicenseProfileSubscriptionStatusOutput
-}
-
-var licenseProfileSubscriptionStatusPtrType = reflect.TypeOf((**LicenseProfileSubscriptionStatus)(nil)).Elem()
-
-type LicenseProfileSubscriptionStatusPtrInput interface {
-	pulumi.Input
-
-	ToLicenseProfileSubscriptionStatusPtrOutput() LicenseProfileSubscriptionStatusPtrOutput
-	ToLicenseProfileSubscriptionStatusPtrOutputWithContext(context.Context) LicenseProfileSubscriptionStatusPtrOutput
-}
-
-type licenseProfileSubscriptionStatusPtr string
-
-func LicenseProfileSubscriptionStatusPtr(v string) LicenseProfileSubscriptionStatusPtrInput {
-	return (*licenseProfileSubscriptionStatusPtr)(&v)
-}
-
-func (*licenseProfileSubscriptionStatusPtr) ElementType() reflect.Type {
-	return licenseProfileSubscriptionStatusPtrType
-}
-
-func (in *licenseProfileSubscriptionStatusPtr) ToLicenseProfileSubscriptionStatusPtrOutput() LicenseProfileSubscriptionStatusPtrOutput {
-	return pulumi.ToOutput(in).(LicenseProfileSubscriptionStatusPtrOutput)
-}
-
-func (in *licenseProfileSubscriptionStatusPtr) ToLicenseProfileSubscriptionStatusPtrOutputWithContext(ctx context.Context) LicenseProfileSubscriptionStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(LicenseProfileSubscriptionStatusPtrOutput)
 }
 
 // Describes the state of the license.
@@ -1687,123 +1005,123 @@ func (in *licenseTargetPtr) ToLicenseTargetPtrOutputWithContext(ctx context.Cont
 }
 
 // The type of the license resource.
-type LicenseTypeEnum string
+type LicenseType string
 
 const (
-	LicenseTypeEnumESU = LicenseTypeEnum("ESU")
+	LicenseTypeESU = LicenseType("ESU")
 )
 
-func (LicenseTypeEnum) ElementType() reflect.Type {
-	return reflect.TypeOf((*LicenseTypeEnum)(nil)).Elem()
+func (LicenseType) ElementType() reflect.Type {
+	return reflect.TypeOf((*LicenseType)(nil)).Elem()
 }
 
-func (e LicenseTypeEnum) ToLicenseTypeEnumOutput() LicenseTypeEnumOutput {
-	return pulumi.ToOutput(e).(LicenseTypeEnumOutput)
+func (e LicenseType) ToLicenseTypeOutput() LicenseTypeOutput {
+	return pulumi.ToOutput(e).(LicenseTypeOutput)
 }
 
-func (e LicenseTypeEnum) ToLicenseTypeEnumOutputWithContext(ctx context.Context) LicenseTypeEnumOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(LicenseTypeEnumOutput)
+func (e LicenseType) ToLicenseTypeOutputWithContext(ctx context.Context) LicenseTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(LicenseTypeOutput)
 }
 
-func (e LicenseTypeEnum) ToLicenseTypeEnumPtrOutput() LicenseTypeEnumPtrOutput {
-	return e.ToLicenseTypeEnumPtrOutputWithContext(context.Background())
+func (e LicenseType) ToLicenseTypePtrOutput() LicenseTypePtrOutput {
+	return e.ToLicenseTypePtrOutputWithContext(context.Background())
 }
 
-func (e LicenseTypeEnum) ToLicenseTypeEnumPtrOutputWithContext(ctx context.Context) LicenseTypeEnumPtrOutput {
-	return LicenseTypeEnum(e).ToLicenseTypeEnumOutputWithContext(ctx).ToLicenseTypeEnumPtrOutputWithContext(ctx)
+func (e LicenseType) ToLicenseTypePtrOutputWithContext(ctx context.Context) LicenseTypePtrOutput {
+	return LicenseType(e).ToLicenseTypeOutputWithContext(ctx).ToLicenseTypePtrOutputWithContext(ctx)
 }
 
-func (e LicenseTypeEnum) ToStringOutput() pulumi.StringOutput {
+func (e LicenseType) ToStringOutput() pulumi.StringOutput {
 	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e LicenseTypeEnum) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+func (e LicenseType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
 	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e LicenseTypeEnum) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (e LicenseType) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
 }
 
-func (e LicenseTypeEnum) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+func (e LicenseType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-type LicenseTypeEnumOutput struct{ *pulumi.OutputState }
+type LicenseTypeOutput struct{ *pulumi.OutputState }
 
-func (LicenseTypeEnumOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LicenseTypeEnum)(nil)).Elem()
+func (LicenseTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LicenseType)(nil)).Elem()
 }
 
-func (o LicenseTypeEnumOutput) ToLicenseTypeEnumOutput() LicenseTypeEnumOutput {
+func (o LicenseTypeOutput) ToLicenseTypeOutput() LicenseTypeOutput {
 	return o
 }
 
-func (o LicenseTypeEnumOutput) ToLicenseTypeEnumOutputWithContext(ctx context.Context) LicenseTypeEnumOutput {
+func (o LicenseTypeOutput) ToLicenseTypeOutputWithContext(ctx context.Context) LicenseTypeOutput {
 	return o
 }
 
-func (o LicenseTypeEnumOutput) ToLicenseTypeEnumPtrOutput() LicenseTypeEnumPtrOutput {
-	return o.ToLicenseTypeEnumPtrOutputWithContext(context.Background())
+func (o LicenseTypeOutput) ToLicenseTypePtrOutput() LicenseTypePtrOutput {
+	return o.ToLicenseTypePtrOutputWithContext(context.Background())
 }
 
-func (o LicenseTypeEnumOutput) ToLicenseTypeEnumPtrOutputWithContext(ctx context.Context) LicenseTypeEnumPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v LicenseTypeEnum) *LicenseTypeEnum {
+func (o LicenseTypeOutput) ToLicenseTypePtrOutputWithContext(ctx context.Context) LicenseTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LicenseType) *LicenseType {
 		return &v
-	}).(LicenseTypeEnumPtrOutput)
+	}).(LicenseTypePtrOutput)
 }
 
-func (o LicenseTypeEnumOutput) ToStringOutput() pulumi.StringOutput {
+func (o LicenseTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
 
-func (o LicenseTypeEnumOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e LicenseTypeEnum) string {
+func (o LicenseTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LicenseType) string {
 		return string(e)
 	}).(pulumi.StringOutput)
 }
 
-func (o LicenseTypeEnumOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (o LicenseTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return o.ToStringPtrOutputWithContext(context.Background())
 }
 
-func (o LicenseTypeEnumOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e LicenseTypeEnum) *string {
+func (o LicenseTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LicenseType) *string {
 		v := string(e)
 		return &v
 	}).(pulumi.StringPtrOutput)
 }
 
-type LicenseTypeEnumPtrOutput struct{ *pulumi.OutputState }
+type LicenseTypePtrOutput struct{ *pulumi.OutputState }
 
-func (LicenseTypeEnumPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LicenseTypeEnum)(nil)).Elem()
+func (LicenseTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LicenseType)(nil)).Elem()
 }
 
-func (o LicenseTypeEnumPtrOutput) ToLicenseTypeEnumPtrOutput() LicenseTypeEnumPtrOutput {
+func (o LicenseTypePtrOutput) ToLicenseTypePtrOutput() LicenseTypePtrOutput {
 	return o
 }
 
-func (o LicenseTypeEnumPtrOutput) ToLicenseTypeEnumPtrOutputWithContext(ctx context.Context) LicenseTypeEnumPtrOutput {
+func (o LicenseTypePtrOutput) ToLicenseTypePtrOutputWithContext(ctx context.Context) LicenseTypePtrOutput {
 	return o
 }
 
-func (o LicenseTypeEnumPtrOutput) Elem() LicenseTypeEnumOutput {
-	return o.ApplyT(func(v *LicenseTypeEnum) LicenseTypeEnum {
+func (o LicenseTypePtrOutput) Elem() LicenseTypeOutput {
+	return o.ApplyT(func(v *LicenseType) LicenseType {
 		if v != nil {
 			return *v
 		}
-		var ret LicenseTypeEnum
+		var ret LicenseType
 		return ret
-	}).(LicenseTypeEnumOutput)
+	}).(LicenseTypeOutput)
 }
 
-func (o LicenseTypeEnumPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (o LicenseTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return o.ToStringPtrOutputWithContext(context.Background())
 }
 
-func (o LicenseTypeEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *LicenseTypeEnum) *string {
+func (o LicenseTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *LicenseType) *string {
 		if e == nil {
 			return nil
 		}
@@ -1812,42 +1130,42 @@ func (o LicenseTypeEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// LicenseTypeEnumInput is an input type that accepts values of the LicenseTypeEnum enum
-// A concrete instance of `LicenseTypeEnumInput` can be one of the following:
+// LicenseTypeInput is an input type that accepts values of the LicenseType enum
+// A concrete instance of `LicenseTypeInput` can be one of the following:
 //
-//	LicenseTypeEnumESU
-type LicenseTypeEnumInput interface {
+//	LicenseTypeESU
+type LicenseTypeInput interface {
 	pulumi.Input
 
-	ToLicenseTypeEnumOutput() LicenseTypeEnumOutput
-	ToLicenseTypeEnumOutputWithContext(context.Context) LicenseTypeEnumOutput
+	ToLicenseTypeOutput() LicenseTypeOutput
+	ToLicenseTypeOutputWithContext(context.Context) LicenseTypeOutput
 }
 
-var licenseTypeEnumPtrType = reflect.TypeOf((**LicenseTypeEnum)(nil)).Elem()
+var licenseTypePtrType = reflect.TypeOf((**LicenseType)(nil)).Elem()
 
-type LicenseTypeEnumPtrInput interface {
+type LicenseTypePtrInput interface {
 	pulumi.Input
 
-	ToLicenseTypeEnumPtrOutput() LicenseTypeEnumPtrOutput
-	ToLicenseTypeEnumPtrOutputWithContext(context.Context) LicenseTypeEnumPtrOutput
+	ToLicenseTypePtrOutput() LicenseTypePtrOutput
+	ToLicenseTypePtrOutputWithContext(context.Context) LicenseTypePtrOutput
 }
 
-type licenseTypeEnumPtr string
+type licenseTypePtr string
 
-func LicenseTypeEnumPtr(v string) LicenseTypeEnumPtrInput {
-	return (*licenseTypeEnumPtr)(&v)
+func LicenseTypePtr(v string) LicenseTypePtrInput {
+	return (*licenseTypePtr)(&v)
 }
 
-func (*licenseTypeEnumPtr) ElementType() reflect.Type {
-	return licenseTypeEnumPtrType
+func (*licenseTypePtr) ElementType() reflect.Type {
+	return licenseTypePtrType
 }
 
-func (in *licenseTypeEnumPtr) ToLicenseTypeEnumPtrOutput() LicenseTypeEnumPtrOutput {
-	return pulumi.ToOutput(in).(LicenseTypeEnumPtrOutput)
+func (in *licenseTypePtr) ToLicenseTypePtrOutput() LicenseTypePtrOutput {
+	return pulumi.ToOutput(in).(LicenseTypePtrOutput)
 }
 
-func (in *licenseTypeEnumPtr) ToLicenseTypeEnumPtrOutputWithContext(ctx context.Context) LicenseTypeEnumPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(LicenseTypeEnumPtrOutput)
+func (in *licenseTypePtr) ToLicenseTypePtrOutputWithContext(ctx context.Context) LicenseTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(LicenseTypePtrOutput)
 }
 
 // Specifies the patch mode.
@@ -2020,174 +1338,6 @@ func (in *patchModeTypesPtr) ToPatchModeTypesPtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(PatchModeTypesPtrOutput)
 }
 
-// Describes the program year the volume license is for.
-type ProgramYear string
-
-const (
-	ProgramYear_Year_1 = ProgramYear("Year 1")
-	ProgramYear_Year_2 = ProgramYear("Year 2")
-	ProgramYear_Year_3 = ProgramYear("Year 3")
-)
-
-func (ProgramYear) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProgramYear)(nil)).Elem()
-}
-
-func (e ProgramYear) ToProgramYearOutput() ProgramYearOutput {
-	return pulumi.ToOutput(e).(ProgramYearOutput)
-}
-
-func (e ProgramYear) ToProgramYearOutputWithContext(ctx context.Context) ProgramYearOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(ProgramYearOutput)
-}
-
-func (e ProgramYear) ToProgramYearPtrOutput() ProgramYearPtrOutput {
-	return e.ToProgramYearPtrOutputWithContext(context.Background())
-}
-
-func (e ProgramYear) ToProgramYearPtrOutputWithContext(ctx context.Context) ProgramYearPtrOutput {
-	return ProgramYear(e).ToProgramYearOutputWithContext(ctx).ToProgramYearPtrOutputWithContext(ctx)
-}
-
-func (e ProgramYear) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e ProgramYear) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e ProgramYear) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e ProgramYear) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type ProgramYearOutput struct{ *pulumi.OutputState }
-
-func (ProgramYearOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProgramYear)(nil)).Elem()
-}
-
-func (o ProgramYearOutput) ToProgramYearOutput() ProgramYearOutput {
-	return o
-}
-
-func (o ProgramYearOutput) ToProgramYearOutputWithContext(ctx context.Context) ProgramYearOutput {
-	return o
-}
-
-func (o ProgramYearOutput) ToProgramYearPtrOutput() ProgramYearPtrOutput {
-	return o.ToProgramYearPtrOutputWithContext(context.Background())
-}
-
-func (o ProgramYearOutput) ToProgramYearPtrOutputWithContext(ctx context.Context) ProgramYearPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProgramYear) *ProgramYear {
-		return &v
-	}).(ProgramYearPtrOutput)
-}
-
-func (o ProgramYearOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o ProgramYearOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e ProgramYear) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o ProgramYearOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o ProgramYearOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e ProgramYear) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type ProgramYearPtrOutput struct{ *pulumi.OutputState }
-
-func (ProgramYearPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProgramYear)(nil)).Elem()
-}
-
-func (o ProgramYearPtrOutput) ToProgramYearPtrOutput() ProgramYearPtrOutput {
-	return o
-}
-
-func (o ProgramYearPtrOutput) ToProgramYearPtrOutputWithContext(ctx context.Context) ProgramYearPtrOutput {
-	return o
-}
-
-func (o ProgramYearPtrOutput) Elem() ProgramYearOutput {
-	return o.ApplyT(func(v *ProgramYear) ProgramYear {
-		if v != nil {
-			return *v
-		}
-		var ret ProgramYear
-		return ret
-	}).(ProgramYearOutput)
-}
-
-func (o ProgramYearPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o ProgramYearPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ProgramYear) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// ProgramYearInput is an input type that accepts values of the ProgramYear enum
-// A concrete instance of `ProgramYearInput` can be one of the following:
-//
-//	ProgramYear_Year_1
-//	ProgramYear_Year_2
-//	ProgramYear_Year_3
-type ProgramYearInput interface {
-	pulumi.Input
-
-	ToProgramYearOutput() ProgramYearOutput
-	ToProgramYearOutputWithContext(context.Context) ProgramYearOutput
-}
-
-var programYearPtrType = reflect.TypeOf((**ProgramYear)(nil)).Elem()
-
-type ProgramYearPtrInput interface {
-	pulumi.Input
-
-	ToProgramYearPtrOutput() ProgramYearPtrOutput
-	ToProgramYearPtrOutputWithContext(context.Context) ProgramYearPtrOutput
-}
-
-type programYearPtr string
-
-func ProgramYearPtr(v string) ProgramYearPtrInput {
-	return (*programYearPtr)(&v)
-}
-
-func (*programYearPtr) ElementType() reflect.Type {
-	return programYearPtrType
-}
-
-func (in *programYearPtr) ToProgramYearPtrOutput() ProgramYearPtrOutput {
-	return pulumi.ToOutput(in).(ProgramYearPtrOutput)
-}
-
-func (in *programYearPtr) ToProgramYearPtrOutputWithContext(ctx context.Context) ProgramYearPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(ProgramYearPtrOutput)
-}
-
 // Indicates whether machines associated with the private link scope can also use public Azure Arc service endpoints.
 type PublicNetworkAccessType string
 
@@ -2196,8 +1346,6 @@ const (
 	PublicNetworkAccessTypeEnabled = PublicNetworkAccessType("Enabled")
 	// Does not allow Azure Arc agents to communicate with Azure Arc services over public (internet) endpoints. The agents must use the private link.
 	PublicNetworkAccessTypeDisabled = PublicNetworkAccessType("Disabled")
-	// Azure Arc agent communication with Azure Arc services over public (internet) is enforced by Network Security Perimeter (NSP)
-	PublicNetworkAccessTypeSecuredByPerimeter = PublicNetworkAccessType("SecuredByPerimeter")
 )
 
 func (PublicNetworkAccessType) ElementType() reflect.Type {
@@ -2324,7 +1472,6 @@ func (o PublicNetworkAccessTypePtrOutput) ToStringPtrOutputWithContext(ctx conte
 //
 //	PublicNetworkAccessTypeEnabled
 //	PublicNetworkAccessTypeDisabled
-//	PublicNetworkAccessTypeSecuredByPerimeter
 type PublicNetworkAccessTypeInput interface {
 	pulumi.Input
 
@@ -2692,32 +1839,22 @@ func (in *statusLevelTypesPtr) ToStatusLevelTypesPtrOutputWithContext(ctx contex
 }
 
 func init() {
-	pulumi.RegisterOutputType(ArcKindEnumOutput{})
-	pulumi.RegisterOutputType(ArcKindEnumPtrOutput{})
 	pulumi.RegisterOutputType(AssessmentModeTypesOutput{})
 	pulumi.RegisterOutputType(AssessmentModeTypesPtrOutput{})
 	pulumi.RegisterOutputType(GatewayTypeOutput{})
 	pulumi.RegisterOutputType(GatewayTypePtrOutput{})
-	pulumi.RegisterOutputType(LicenseAssignmentStateOutput{})
-	pulumi.RegisterOutputType(LicenseAssignmentStatePtrOutput{})
 	pulumi.RegisterOutputType(LicenseCoreTypeOutput{})
 	pulumi.RegisterOutputType(LicenseCoreTypePtrOutput{})
 	pulumi.RegisterOutputType(LicenseEditionOutput{})
 	pulumi.RegisterOutputType(LicenseEditionPtrOutput{})
-	pulumi.RegisterOutputType(LicenseProfileProductTypeOutput{})
-	pulumi.RegisterOutputType(LicenseProfileProductTypePtrOutput{})
-	pulumi.RegisterOutputType(LicenseProfileSubscriptionStatusOutput{})
-	pulumi.RegisterOutputType(LicenseProfileSubscriptionStatusPtrOutput{})
 	pulumi.RegisterOutputType(LicenseStateEnumOutput{})
 	pulumi.RegisterOutputType(LicenseStateEnumPtrOutput{})
 	pulumi.RegisterOutputType(LicenseTargetOutput{})
 	pulumi.RegisterOutputType(LicenseTargetPtrOutput{})
-	pulumi.RegisterOutputType(LicenseTypeEnumOutput{})
-	pulumi.RegisterOutputType(LicenseTypeEnumPtrOutput{})
+	pulumi.RegisterOutputType(LicenseTypeOutput{})
+	pulumi.RegisterOutputType(LicenseTypePtrOutput{})
 	pulumi.RegisterOutputType(PatchModeTypesOutput{})
 	pulumi.RegisterOutputType(PatchModeTypesPtrOutput{})
-	pulumi.RegisterOutputType(ProgramYearOutput{})
-	pulumi.RegisterOutputType(ProgramYearPtrOutput{})
 	pulumi.RegisterOutputType(PublicNetworkAccessTypeOutput{})
 	pulumi.RegisterOutputType(PublicNetworkAccessTypePtrOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityTypeOutput{})

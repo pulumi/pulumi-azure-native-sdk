@@ -8,32 +8,24 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Packet core control plane resource.
 //
-// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2023-06-01.
+// Uses Azure REST API version 2023-06-01. In version 1.x of the Azure Native provider, it used API version 2022-04-01-preview.
 //
-// Other available API versions: 2022-04-01-preview, 2022-11-01, 2023-06-01, 2023-09-01, 2024-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native mobilenetwork [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-03-01-preview, 2022-04-01-preview, 2022-11-01, 2023-09-01, 2024-02-01, 2024-04-01.
 type PacketCoreControlPlane struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The control plane interface on the access network. For 5G networks, this is the N2 interface. For 4G networks, this is the S1-MME interface.
 	ControlPlaneAccessInterface InterfacePropertiesResponseOutput `pulumi:"controlPlaneAccessInterface"`
-	// The virtual IP address(es) for the control plane on the access network in a High Availability (HA) system. In an HA deployment the access network router should be configured to anycast traffic for this address to the control plane access interfaces on the active and standby nodes. In non-HA system this list should be omitted or empty.
-	ControlPlaneAccessVirtualIpv4Addresses pulumi.StringArrayOutput `pulumi:"controlPlaneAccessVirtualIpv4Addresses"`
 	// The core network technology generation (5G core or EPC / 4G core).
 	CoreNetworkTechnology pulumi.StringPtrOutput `pulumi:"coreNetworkTechnology"`
 	// Configuration for uploading packet core diagnostics
 	DiagnosticsUpload DiagnosticsUploadConfigurationResponsePtrOutput `pulumi:"diagnosticsUpload"`
-	// Configuration for sending packet core events to an Azure Event Hub.
-	EventHub EventHubConfigurationResponsePtrOutput `pulumi:"eventHub"`
-	// The provisioning state of the secret containing private keys and keyIds for SUPI concealment.
-	HomeNetworkPrivateKeysProvisioning HomeNetworkPrivateKeysProvisioningResponseOutput `pulumi:"homeNetworkPrivateKeysProvisioning"`
 	// The identity used to retrieve the ingress certificate from Azure key vault.
 	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The installation state of the packet core control plane resource.
@@ -54,8 +46,6 @@ type PacketCoreControlPlane struct {
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The previous version of the packet core software that was deployed. Used when performing the rollback action.
 	RollbackVersion pulumi.StringOutput `pulumi:"rollbackVersion"`
-	// Signaling configuration for the packet core.
-	Signaling SignalingConfigurationResponsePtrOutput `pulumi:"signaling"`
 	// Site(s) under which this packet core control plane should be deployed. The sites must be in the same location as the packet core control plane.
 	Sites SiteResourceIdResponseArrayOutput `pulumi:"sites"`
 	// The SKU defining the throughput and SIM allowances for this packet core control plane deployment.
@@ -68,8 +58,6 @@ type PacketCoreControlPlane struct {
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The MTU (in bytes) signaled to the UE. The same MTU is set on the user plane data links for all data networks. The MTU set on the user plane access link is calculated to be 60 bytes greater than this value to allow for GTP encapsulation.
 	UeMtu pulumi.IntPtrOutput `pulumi:"ueMtu"`
-	// The user consent configuration for the packet core.
-	UserConsent UserConsentConfigurationResponsePtrOutput `pulumi:"userConsent"`
 	// The desired version of the packet core software.
 	Version pulumi.StringPtrOutput `pulumi:"version"`
 }
@@ -98,9 +86,6 @@ func NewPacketCoreControlPlane(ctx *pulumi.Context,
 	}
 	if args.Sku == nil {
 		return nil, errors.New("invalid value for required argument 'Sku'")
-	}
-	if args.EventHub != nil {
-		args.EventHub = args.EventHub.ToEventHubConfigurationPtrOutput().ApplyT(func(v *EventHubConfiguration) *EventHubConfiguration { return v.Defaults() }).(EventHubConfigurationPtrOutput)
 	}
 	if args.Installation != nil {
 		args.Installation = args.Installation.ToInstallationPtrOutput().ApplyT(func(v *Installation) *Installation { return v.Defaults() }).(InstallationPtrOutput)
@@ -167,14 +152,10 @@ func (PacketCoreControlPlaneState) ElementType() reflect.Type {
 type packetCoreControlPlaneArgs struct {
 	// The control plane interface on the access network. For 5G networks, this is the N2 interface. For 4G networks, this is the S1-MME interface.
 	ControlPlaneAccessInterface InterfaceProperties `pulumi:"controlPlaneAccessInterface"`
-	// The virtual IP address(es) for the control plane on the access network in a High Availability (HA) system. In an HA deployment the access network router should be configured to anycast traffic for this address to the control plane access interfaces on the active and standby nodes. In non-HA system this list should be omitted or empty.
-	ControlPlaneAccessVirtualIpv4Addresses []string `pulumi:"controlPlaneAccessVirtualIpv4Addresses"`
 	// The core network technology generation (5G core or EPC / 4G core).
 	CoreNetworkTechnology *string `pulumi:"coreNetworkTechnology"`
 	// Configuration for uploading packet core diagnostics
 	DiagnosticsUpload *DiagnosticsUploadConfiguration `pulumi:"diagnosticsUpload"`
-	// Configuration for sending packet core events to an Azure Event Hub.
-	EventHub *EventHubConfiguration `pulumi:"eventHub"`
 	// The identity used to retrieve the ingress certificate from Azure key vault.
 	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// The installation state of the packet core control plane resource.
@@ -191,8 +172,6 @@ type packetCoreControlPlaneArgs struct {
 	Platform PlatformConfiguration `pulumi:"platform"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Signaling configuration for the packet core.
-	Signaling *SignalingConfiguration `pulumi:"signaling"`
 	// Site(s) under which this packet core control plane should be deployed. The sites must be in the same location as the packet core control plane.
 	Sites []SiteResourceId `pulumi:"sites"`
 	// The SKU defining the throughput and SIM allowances for this packet core control plane deployment.
@@ -201,8 +180,6 @@ type packetCoreControlPlaneArgs struct {
 	Tags map[string]string `pulumi:"tags"`
 	// The MTU (in bytes) signaled to the UE. The same MTU is set on the user plane data links for all data networks. The MTU set on the user plane access link is calculated to be 60 bytes greater than this value to allow for GTP encapsulation.
 	UeMtu *int `pulumi:"ueMtu"`
-	// The user consent configuration for the packet core.
-	UserConsent *UserConsentConfiguration `pulumi:"userConsent"`
 	// The desired version of the packet core software.
 	Version *string `pulumi:"version"`
 }
@@ -211,14 +188,10 @@ type packetCoreControlPlaneArgs struct {
 type PacketCoreControlPlaneArgs struct {
 	// The control plane interface on the access network. For 5G networks, this is the N2 interface. For 4G networks, this is the S1-MME interface.
 	ControlPlaneAccessInterface InterfacePropertiesInput
-	// The virtual IP address(es) for the control plane on the access network in a High Availability (HA) system. In an HA deployment the access network router should be configured to anycast traffic for this address to the control plane access interfaces on the active and standby nodes. In non-HA system this list should be omitted or empty.
-	ControlPlaneAccessVirtualIpv4Addresses pulumi.StringArrayInput
 	// The core network technology generation (5G core or EPC / 4G core).
 	CoreNetworkTechnology pulumi.StringPtrInput
 	// Configuration for uploading packet core diagnostics
 	DiagnosticsUpload DiagnosticsUploadConfigurationPtrInput
-	// Configuration for sending packet core events to an Azure Event Hub.
-	EventHub EventHubConfigurationPtrInput
 	// The identity used to retrieve the ingress certificate from Azure key vault.
 	Identity ManagedServiceIdentityPtrInput
 	// The installation state of the packet core control plane resource.
@@ -235,8 +208,6 @@ type PacketCoreControlPlaneArgs struct {
 	Platform PlatformConfigurationInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// Signaling configuration for the packet core.
-	Signaling SignalingConfigurationPtrInput
 	// Site(s) under which this packet core control plane should be deployed. The sites must be in the same location as the packet core control plane.
 	Sites SiteResourceIdArrayInput
 	// The SKU defining the throughput and SIM allowances for this packet core control plane deployment.
@@ -245,8 +216,6 @@ type PacketCoreControlPlaneArgs struct {
 	Tags pulumi.StringMapInput
 	// The MTU (in bytes) signaled to the UE. The same MTU is set on the user plane data links for all data networks. The MTU set on the user plane access link is calculated to be 60 bytes greater than this value to allow for GTP encapsulation.
 	UeMtu pulumi.IntPtrInput
-	// The user consent configuration for the packet core.
-	UserConsent UserConsentConfigurationPtrInput
 	// The desired version of the packet core software.
 	Version pulumi.StringPtrInput
 }
@@ -288,23 +257,11 @@ func (o PacketCoreControlPlaneOutput) ToPacketCoreControlPlaneOutputWithContext(
 	return o
 }
 
-// The Azure API version of the resource.
-func (o PacketCoreControlPlaneOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *PacketCoreControlPlane) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // The control plane interface on the access network. For 5G networks, this is the N2 interface. For 4G networks, this is the S1-MME interface.
 func (o PacketCoreControlPlaneOutput) ControlPlaneAccessInterface() InterfacePropertiesResponseOutput {
 	return o.ApplyT(func(v *PacketCoreControlPlane) InterfacePropertiesResponseOutput {
 		return v.ControlPlaneAccessInterface
 	}).(InterfacePropertiesResponseOutput)
-}
-
-// The virtual IP address(es) for the control plane on the access network in a High Availability (HA) system. In an HA deployment the access network router should be configured to anycast traffic for this address to the control plane access interfaces on the active and standby nodes. In non-HA system this list should be omitted or empty.
-func (o PacketCoreControlPlaneOutput) ControlPlaneAccessVirtualIpv4Addresses() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *PacketCoreControlPlane) pulumi.StringArrayOutput {
-		return v.ControlPlaneAccessVirtualIpv4Addresses
-	}).(pulumi.StringArrayOutput)
 }
 
 // The core network technology generation (5G core or EPC / 4G core).
@@ -317,18 +274,6 @@ func (o PacketCoreControlPlaneOutput) DiagnosticsUpload() DiagnosticsUploadConfi
 	return o.ApplyT(func(v *PacketCoreControlPlane) DiagnosticsUploadConfigurationResponsePtrOutput {
 		return v.DiagnosticsUpload
 	}).(DiagnosticsUploadConfigurationResponsePtrOutput)
-}
-
-// Configuration for sending packet core events to an Azure Event Hub.
-func (o PacketCoreControlPlaneOutput) EventHub() EventHubConfigurationResponsePtrOutput {
-	return o.ApplyT(func(v *PacketCoreControlPlane) EventHubConfigurationResponsePtrOutput { return v.EventHub }).(EventHubConfigurationResponsePtrOutput)
-}
-
-// The provisioning state of the secret containing private keys and keyIds for SUPI concealment.
-func (o PacketCoreControlPlaneOutput) HomeNetworkPrivateKeysProvisioning() HomeNetworkPrivateKeysProvisioningResponseOutput {
-	return o.ApplyT(func(v *PacketCoreControlPlane) HomeNetworkPrivateKeysProvisioningResponseOutput {
-		return v.HomeNetworkPrivateKeysProvisioning
-	}).(HomeNetworkPrivateKeysProvisioningResponseOutput)
 }
 
 // The identity used to retrieve the ingress certificate from Azure key vault.
@@ -383,11 +328,6 @@ func (o PacketCoreControlPlaneOutput) RollbackVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *PacketCoreControlPlane) pulumi.StringOutput { return v.RollbackVersion }).(pulumi.StringOutput)
 }
 
-// Signaling configuration for the packet core.
-func (o PacketCoreControlPlaneOutput) Signaling() SignalingConfigurationResponsePtrOutput {
-	return o.ApplyT(func(v *PacketCoreControlPlane) SignalingConfigurationResponsePtrOutput { return v.Signaling }).(SignalingConfigurationResponsePtrOutput)
-}
-
 // Site(s) under which this packet core control plane should be deployed. The sites must be in the same location as the packet core control plane.
 func (o PacketCoreControlPlaneOutput) Sites() SiteResourceIdResponseArrayOutput {
 	return o.ApplyT(func(v *PacketCoreControlPlane) SiteResourceIdResponseArrayOutput { return v.Sites }).(SiteResourceIdResponseArrayOutput)
@@ -416,11 +356,6 @@ func (o PacketCoreControlPlaneOutput) Type() pulumi.StringOutput {
 // The MTU (in bytes) signaled to the UE. The same MTU is set on the user plane data links for all data networks. The MTU set on the user plane access link is calculated to be 60 bytes greater than this value to allow for GTP encapsulation.
 func (o PacketCoreControlPlaneOutput) UeMtu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PacketCoreControlPlane) pulumi.IntPtrOutput { return v.UeMtu }).(pulumi.IntPtrOutput)
-}
-
-// The user consent configuration for the packet core.
-func (o PacketCoreControlPlaneOutput) UserConsent() UserConsentConfigurationResponsePtrOutput {
-	return o.ApplyT(func(v *PacketCoreControlPlane) UserConsentConfigurationResponsePtrOutput { return v.UserConsent }).(UserConsentConfigurationResponsePtrOutput)
 }
 
 // The desired version of the packet core software.

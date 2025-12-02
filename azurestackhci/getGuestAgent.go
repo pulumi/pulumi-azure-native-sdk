@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Implements GuestAgent GET method.
 //
-// Uses Azure REST API version 2025-02-01-preview.
+// Uses Azure REST API version 2022-12-15-preview.
 //
-// Other available API versions: 2022-12-15-preview, 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01-preview, 2025-04-01-preview.
 func LookupGuestAgent(ctx *pulumi.Context, args *LookupGuestAgentArgs, opts ...pulumi.InvokeOption) (*LookupGuestAgentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGuestAgentResult
@@ -27,23 +27,27 @@ func LookupGuestAgent(ctx *pulumi.Context, args *LookupGuestAgentArgs, opts ...p
 }
 
 type LookupGuestAgentArgs struct {
-	// The fully qualified Azure Resource manager identifier of the resource.
-	ResourceUri string `pulumi:"resourceUri"`
+	// Name of the GuestAgent.
+	Name string `pulumi:"name"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Name of the vm.
+	VirtualMachineName string `pulumi:"virtualMachineName"`
 }
 
 // Defines the GuestAgent.
 type LookupGuestAgentResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Username / Password Credentials to provision guest agent.
 	Credentials *GuestCredentialResponse `pulumi:"credentials"`
-	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	// HTTP Proxy configuration for the VM.
+	HttpProxyConfig *HttpProxyConfigurationResponse `pulumi:"httpProxyConfig"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// The guest agent provisioning action.
 	ProvisioningAction *string `pulumi:"provisioningAction"`
-	// Provisioning state of the virtual machine instance.
+	// The provisioning state.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The guest agent status.
 	Status string `pulumi:"status"`
@@ -63,8 +67,12 @@ func LookupGuestAgentOutput(ctx *pulumi.Context, args LookupGuestAgentOutputArgs
 }
 
 type LookupGuestAgentOutputArgs struct {
-	// The fully qualified Azure Resource manager identifier of the resource.
-	ResourceUri pulumi.StringInput `pulumi:"resourceUri"`
+	// Name of the GuestAgent.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the resource group. The name is case insensitive.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of the vm.
+	VirtualMachineName pulumi.StringInput `pulumi:"virtualMachineName"`
 }
 
 func (LookupGuestAgentOutputArgs) ElementType() reflect.Type {
@@ -86,17 +94,17 @@ func (o LookupGuestAgentResultOutput) ToLookupGuestAgentResultOutputWithContext(
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupGuestAgentResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupGuestAgentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Username / Password Credentials to provision guest agent.
 func (o LookupGuestAgentResultOutput) Credentials() GuestCredentialResponsePtrOutput {
 	return o.ApplyT(func(v LookupGuestAgentResult) *GuestCredentialResponse { return v.Credentials }).(GuestCredentialResponsePtrOutput)
 }
 
-// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+// HTTP Proxy configuration for the VM.
+func (o LookupGuestAgentResultOutput) HttpProxyConfig() HttpProxyConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v LookupGuestAgentResult) *HttpProxyConfigurationResponse { return v.HttpProxyConfig }).(HttpProxyConfigurationResponsePtrOutput)
+}
+
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupGuestAgentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGuestAgentResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -111,7 +119,7 @@ func (o LookupGuestAgentResultOutput) ProvisioningAction() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v LookupGuestAgentResult) *string { return v.ProvisioningAction }).(pulumi.StringPtrOutput)
 }
 
-// Provisioning state of the virtual machine instance.
+// The provisioning state.
 func (o LookupGuestAgentResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGuestAgentResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }

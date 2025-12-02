@@ -8,27 +8,25 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A hub setting
 //
-// Uses Azure REST API version 2024-03-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
+// Uses Azure REST API version 2023-02-01. In version 1.x of the Azure Native provider, it used API version 2021-10-01.
 //
-// Other available API versions: 2023-02-01, 2023-03-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview, 2024-04-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native webpubsub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-03-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-08-01-preview, 2024-10-01-preview.
 type WebPubSubHub struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
-	// The name of the resource
+	// The name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Properties of a hub.
 	Properties WebPubSubHubPropertiesResponseOutput `pulumi:"properties"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	// Metadata pertaining to creation and last modification of the resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -83,9 +81,6 @@ func NewWebPubSubHub(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:webpubsub/v20241001preview:WebPubSubHub"),
 		},
-		{
-			Type: pulumi.String("azure-native:webpubsub/v20250101preview:WebPubSubHub"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -125,7 +120,7 @@ type webPubSubHubArgs struct {
 	HubName *string `pulumi:"hubName"`
 	// Properties of a hub.
 	Properties WebPubSubHubProperties `pulumi:"properties"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the resource.
 	ResourceName string `pulumi:"resourceName"`
@@ -137,7 +132,7 @@ type WebPubSubHubArgs struct {
 	HubName pulumi.StringPtrInput
 	// Properties of a hub.
 	Properties WebPubSubHubPropertiesInput
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput
 	// The name of the resource.
 	ResourceName pulumi.StringInput
@@ -180,12 +175,7 @@ func (o WebPubSubHubOutput) ToWebPubSubHubOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The Azure API version of the resource.
-func (o WebPubSubHubOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *WebPubSubHub) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// The name of the resource
+// The name of the resource.
 func (o WebPubSubHubOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebPubSubHub) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -195,12 +185,12 @@ func (o WebPubSubHubOutput) Properties() WebPubSubHubPropertiesResponseOutput {
 	return o.ApplyT(func(v *WebPubSubHub) WebPubSubHubPropertiesResponseOutput { return v.Properties }).(WebPubSubHubPropertiesResponseOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+// Metadata pertaining to creation and last modification of the resource.
 func (o WebPubSubHubOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *WebPubSubHub) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
 func (o WebPubSubHubOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebPubSubHub) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an existing remediation at resource group scope.
 //
-// Uses Azure REST API version 2024-10-01.
+// Uses Azure REST API version 2021-10-01.
 //
-// Other available API versions: 2021-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native policyinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-10-01.
 func LookupRemediationAtResourceGroup(ctx *pulumi.Context, args *LookupRemediationAtResourceGroupArgs, opts ...pulumi.InvokeOption) (*LookupRemediationAtResourceGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRemediationAtResourceGroupResult
@@ -35,8 +35,6 @@ type LookupRemediationAtResourceGroupArgs struct {
 
 // The remediation definition.
 type LookupRemediationAtResourceGroupResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The remediation correlation Id. Can be used to find events related to the remediation in the activity log.
 	CorrelationId string `pulumi:"correlationId"`
 	// The time at which the remediation was created.
@@ -106,11 +104,6 @@ func (o LookupRemediationAtResourceGroupResultOutput) ToLookupRemediationAtResou
 
 func (o LookupRemediationAtResourceGroupResultOutput) ToLookupRemediationAtResourceGroupResultOutputWithContext(ctx context.Context) LookupRemediationAtResourceGroupResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupRemediationAtResourceGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupRemediationAtResourceGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The remediation correlation Id. Can be used to find events related to the remediation in the activity log.

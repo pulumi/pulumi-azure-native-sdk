@@ -8,34 +8,30 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The IP Extended Community resource definition.
+// The IpExtendedCommunity resource definition.
 //
-// Uses Azure REST API version 2023-06-15. In version 2.x of the Azure Native provider, it used API version 2023-02-01-preview.
+// Uses Azure REST API version 2023-02-01-preview.
 //
-// Other available API versions: 2023-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-06-15.
 type IpExtendedCommunity struct {
 	pulumi.CustomResourceState
 
-	// Administrative state of the resource.
-	AdministrativeState pulumi.StringOutput `pulumi:"administrativeState"`
+	// Action to be taken on the configuration. Example: Permit | Deny.
+	Action pulumi.StringOutput `pulumi:"action"`
 	// Switch configuration description.
 	Annotation pulumi.StringPtrOutput `pulumi:"annotation"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
-	// Configuration state of the resource.
-	ConfigurationState pulumi.StringOutput `pulumi:"configurationState"`
-	// List of IP Extended Community Rules.
-	IpExtendedCommunityRules IpExtendedCommunityRuleResponseArrayOutput `pulumi:"ipExtendedCommunityRules"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Provisioning state of the resource.
+	// Gets the provisioning state of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// Route Target List.The expected formats are ASN(plain):NN >> example 4294967294:50, ASN.ASN:NN >> example 65533.65333:40, IP-address:NN >> example 10.10.10.10:65535. The possible values of ASN,NN are in range of 0-65535, ASN(plain) is in range of 0-4294967295.
+	RouteTargets pulumi.StringArrayOutput `pulumi:"routeTargets"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
@@ -51,11 +47,14 @@ func NewIpExtendedCommunity(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.IpExtendedCommunityRules == nil {
-		return nil, errors.New("invalid value for required argument 'IpExtendedCommunityRules'")
+	if args.Action == nil {
+		return nil, errors.New("invalid value for required argument 'Action'")
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.RouteTargets == nil {
+		return nil, errors.New("invalid value for required argument 'RouteTargets'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -99,32 +98,36 @@ func (IpExtendedCommunityState) ElementType() reflect.Type {
 }
 
 type ipExtendedCommunityArgs struct {
+	// Action to be taken on the configuration. Example: Permit | Deny.
+	Action string `pulumi:"action"`
 	// Switch configuration description.
 	Annotation *string `pulumi:"annotation"`
-	// Name of the IP Extended Community.
+	// Name of the IP Extended Community
 	IpExtendedCommunityName *string `pulumi:"ipExtendedCommunityName"`
-	// List of IP Extended Community Rules.
-	IpExtendedCommunityRules []IpExtendedCommunityRule `pulumi:"ipExtendedCommunityRules"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Route Target List.The expected formats are ASN(plain):NN >> example 4294967294:50, ASN.ASN:NN >> example 65533.65333:40, IP-address:NN >> example 10.10.10.10:65535. The possible values of ASN,NN are in range of 0-65535, ASN(plain) is in range of 0-4294967295.
+	RouteTargets []string `pulumi:"routeTargets"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a IpExtendedCommunity resource.
 type IpExtendedCommunityArgs struct {
+	// Action to be taken on the configuration. Example: Permit | Deny.
+	Action pulumi.StringInput
 	// Switch configuration description.
 	Annotation pulumi.StringPtrInput
-	// Name of the IP Extended Community.
+	// Name of the IP Extended Community
 	IpExtendedCommunityName pulumi.StringPtrInput
-	// List of IP Extended Community Rules.
-	IpExtendedCommunityRules IpExtendedCommunityRuleArrayInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
+	// Route Target List.The expected formats are ASN(plain):NN >> example 4294967294:50, ASN.ASN:NN >> example 65533.65333:40, IP-address:NN >> example 10.10.10.10:65535. The possible values of ASN,NN are in range of 0-65535, ASN(plain) is in range of 0-4294967295.
+	RouteTargets pulumi.StringArrayInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 }
@@ -166,31 +169,14 @@ func (o IpExtendedCommunityOutput) ToIpExtendedCommunityOutputWithContext(ctx co
 	return o
 }
 
-// Administrative state of the resource.
-func (o IpExtendedCommunityOutput) AdministrativeState() pulumi.StringOutput {
-	return o.ApplyT(func(v *IpExtendedCommunity) pulumi.StringOutput { return v.AdministrativeState }).(pulumi.StringOutput)
+// Action to be taken on the configuration. Example: Permit | Deny.
+func (o IpExtendedCommunityOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v *IpExtendedCommunity) pulumi.StringOutput { return v.Action }).(pulumi.StringOutput)
 }
 
 // Switch configuration description.
 func (o IpExtendedCommunityOutput) Annotation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IpExtendedCommunity) pulumi.StringPtrOutput { return v.Annotation }).(pulumi.StringPtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o IpExtendedCommunityOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *IpExtendedCommunity) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// Configuration state of the resource.
-func (o IpExtendedCommunityOutput) ConfigurationState() pulumi.StringOutput {
-	return o.ApplyT(func(v *IpExtendedCommunity) pulumi.StringOutput { return v.ConfigurationState }).(pulumi.StringOutput)
-}
-
-// List of IP Extended Community Rules.
-func (o IpExtendedCommunityOutput) IpExtendedCommunityRules() IpExtendedCommunityRuleResponseArrayOutput {
-	return o.ApplyT(func(v *IpExtendedCommunity) IpExtendedCommunityRuleResponseArrayOutput {
-		return v.IpExtendedCommunityRules
-	}).(IpExtendedCommunityRuleResponseArrayOutput)
 }
 
 // The geo-location where the resource lives
@@ -203,9 +189,14 @@ func (o IpExtendedCommunityOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *IpExtendedCommunity) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Provisioning state of the resource.
+// Gets the provisioning state of the resource.
 func (o IpExtendedCommunityOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *IpExtendedCommunity) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Route Target List.The expected formats are ASN(plain):NN >> example 4294967294:50, ASN.ASN:NN >> example 65533.65333:40, IP-address:NN >> example 10.10.10.10:65535. The possible values of ASN,NN are in range of 0-65535, ASN(plain) is in range of 0-4294967295.
+func (o IpExtendedCommunityOutput) RouteTargets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *IpExtendedCommunity) pulumi.StringArrayOutput { return v.RouteTargets }).(pulumi.StringArrayOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

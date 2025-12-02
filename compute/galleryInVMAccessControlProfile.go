@@ -8,29 +8,25 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Specifies information about the gallery inVMAccessControlProfile that you want to create or update.
 //
-// Uses Azure REST API version 2024-03-03. In version 2.x of the Azure Native provider, it used API version 2024-03-03.
+// Uses Azure REST API version 2024-03-03.
 type GalleryInVMAccessControlProfile struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
-	// The geo-location where the resource lives
+	// Resource location
 	Location pulumi.StringOutput `pulumi:"location"`
-	// The name of the resource
+	// Resource name
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Describes the properties of a gallery inVMAccessControlProfile.
 	Properties GalleryInVMAccessControlProfilePropertiesResponseOutput `pulumi:"properties"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// Resource tags.
+	// Resource tags
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// Resource type
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -86,33 +82,33 @@ func (GalleryInVMAccessControlProfileState) ElementType() reflect.Type {
 }
 
 type galleryInVMAccessControlProfileArgs struct {
-	// The name of the Shared Image Gallery.
+	// The name of the Shared Image Gallery in which the InVMAccessControlProfile is to be created.
 	GalleryName string `pulumi:"galleryName"`
-	// The name of the gallery inVMAccessControlProfile to be retrieved.
+	// The name of the gallery inVMAccessControlProfile to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
 	InVMAccessControlProfileName *string `pulumi:"inVMAccessControlProfileName"`
-	// The geo-location where the resource lives
+	// Resource location
 	Location *string `pulumi:"location"`
 	// Describes the properties of a gallery inVMAccessControlProfile.
 	Properties *GalleryInVMAccessControlProfileProperties `pulumi:"properties"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Resource tags.
+	// Resource tags
 	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a GalleryInVMAccessControlProfile resource.
 type GalleryInVMAccessControlProfileArgs struct {
-	// The name of the Shared Image Gallery.
+	// The name of the Shared Image Gallery in which the InVMAccessControlProfile is to be created.
 	GalleryName pulumi.StringInput
-	// The name of the gallery inVMAccessControlProfile to be retrieved.
+	// The name of the gallery inVMAccessControlProfile to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
 	InVMAccessControlProfileName pulumi.StringPtrInput
-	// The geo-location where the resource lives
+	// Resource location
 	Location pulumi.StringPtrInput
 	// Describes the properties of a gallery inVMAccessControlProfile.
 	Properties GalleryInVMAccessControlProfilePropertiesPtrInput
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
-	// Resource tags.
+	// Resource tags
 	Tags pulumi.StringMapInput
 }
 
@@ -153,17 +149,12 @@ func (o GalleryInVMAccessControlProfileOutput) ToGalleryInVMAccessControlProfile
 	return o
 }
 
-// The Azure API version of the resource.
-func (o GalleryInVMAccessControlProfileOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *GalleryInVMAccessControlProfile) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// The geo-location where the resource lives
+// Resource location
 func (o GalleryInVMAccessControlProfileOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *GalleryInVMAccessControlProfile) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// The name of the resource
+// Resource name
 func (o GalleryInVMAccessControlProfileOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *GalleryInVMAccessControlProfile) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -175,17 +166,12 @@ func (o GalleryInVMAccessControlProfileOutput) Properties() GalleryInVMAccessCon
 	}).(GalleryInVMAccessControlProfilePropertiesResponseOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o GalleryInVMAccessControlProfileOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *GalleryInVMAccessControlProfile) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
-}
-
-// Resource tags.
+// Resource tags
 func (o GalleryInVMAccessControlProfileOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GalleryInVMAccessControlProfile) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// Resource type
 func (o GalleryInVMAccessControlProfileOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *GalleryInVMAccessControlProfile) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

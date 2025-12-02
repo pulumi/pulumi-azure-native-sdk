@@ -15,7 +15,6 @@ type ApplicationType string
 
 const (
 	ApplicationType_SAP_HANA = ApplicationType("SAP-HANA")
-	ApplicationTypeORACLE    = ApplicationType("ORACLE")
 )
 
 func (ApplicationType) ElementType() reflect.Type {
@@ -141,7 +140,6 @@ func (o ApplicationTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 // A concrete instance of `ApplicationTypeInput` can be one of the following:
 //
 //	ApplicationType_SAP_HANA
-//	ApplicationTypeORACLE
 type ApplicationTypeInput interface {
 	pulumi.Input
 
@@ -508,344 +506,6 @@ func (in *chownModePtr) ToChownModePtrOutput() ChownModePtrOutput {
 
 func (in *chownModePtr) ToChownModePtrOutputWithContext(ctx context.Context) ChownModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ChownModePtrOutput)
-}
-
-// coolAccessRetrievalPolicy determines the data retrieval behavior from the cool tier to standard storage based on the read pattern for cool access enabled volumes. The possible values for this field are:
-//
-//	Default - Data will be pulled from cool tier to standard storage on random reads. This policy is the default.
-//	OnRead - All client-driven data read is pulled from cool tier to standard storage on both sequential and random reads.
-//	Never - No client-driven data is pulled from cool tier to standard storage.
-type CoolAccessRetrievalPolicy string
-
-const (
-	CoolAccessRetrievalPolicyDefault = CoolAccessRetrievalPolicy("Default")
-	CoolAccessRetrievalPolicyOnRead  = CoolAccessRetrievalPolicy("OnRead")
-	CoolAccessRetrievalPolicyNever   = CoolAccessRetrievalPolicy("Never")
-)
-
-func (CoolAccessRetrievalPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*CoolAccessRetrievalPolicy)(nil)).Elem()
-}
-
-func (e CoolAccessRetrievalPolicy) ToCoolAccessRetrievalPolicyOutput() CoolAccessRetrievalPolicyOutput {
-	return pulumi.ToOutput(e).(CoolAccessRetrievalPolicyOutput)
-}
-
-func (e CoolAccessRetrievalPolicy) ToCoolAccessRetrievalPolicyOutputWithContext(ctx context.Context) CoolAccessRetrievalPolicyOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(CoolAccessRetrievalPolicyOutput)
-}
-
-func (e CoolAccessRetrievalPolicy) ToCoolAccessRetrievalPolicyPtrOutput() CoolAccessRetrievalPolicyPtrOutput {
-	return e.ToCoolAccessRetrievalPolicyPtrOutputWithContext(context.Background())
-}
-
-func (e CoolAccessRetrievalPolicy) ToCoolAccessRetrievalPolicyPtrOutputWithContext(ctx context.Context) CoolAccessRetrievalPolicyPtrOutput {
-	return CoolAccessRetrievalPolicy(e).ToCoolAccessRetrievalPolicyOutputWithContext(ctx).ToCoolAccessRetrievalPolicyPtrOutputWithContext(ctx)
-}
-
-func (e CoolAccessRetrievalPolicy) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e CoolAccessRetrievalPolicy) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e CoolAccessRetrievalPolicy) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e CoolAccessRetrievalPolicy) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type CoolAccessRetrievalPolicyOutput struct{ *pulumi.OutputState }
-
-func (CoolAccessRetrievalPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CoolAccessRetrievalPolicy)(nil)).Elem()
-}
-
-func (o CoolAccessRetrievalPolicyOutput) ToCoolAccessRetrievalPolicyOutput() CoolAccessRetrievalPolicyOutput {
-	return o
-}
-
-func (o CoolAccessRetrievalPolicyOutput) ToCoolAccessRetrievalPolicyOutputWithContext(ctx context.Context) CoolAccessRetrievalPolicyOutput {
-	return o
-}
-
-func (o CoolAccessRetrievalPolicyOutput) ToCoolAccessRetrievalPolicyPtrOutput() CoolAccessRetrievalPolicyPtrOutput {
-	return o.ToCoolAccessRetrievalPolicyPtrOutputWithContext(context.Background())
-}
-
-func (o CoolAccessRetrievalPolicyOutput) ToCoolAccessRetrievalPolicyPtrOutputWithContext(ctx context.Context) CoolAccessRetrievalPolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CoolAccessRetrievalPolicy) *CoolAccessRetrievalPolicy {
-		return &v
-	}).(CoolAccessRetrievalPolicyPtrOutput)
-}
-
-func (o CoolAccessRetrievalPolicyOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o CoolAccessRetrievalPolicyOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e CoolAccessRetrievalPolicy) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o CoolAccessRetrievalPolicyOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o CoolAccessRetrievalPolicyOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e CoolAccessRetrievalPolicy) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type CoolAccessRetrievalPolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (CoolAccessRetrievalPolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CoolAccessRetrievalPolicy)(nil)).Elem()
-}
-
-func (o CoolAccessRetrievalPolicyPtrOutput) ToCoolAccessRetrievalPolicyPtrOutput() CoolAccessRetrievalPolicyPtrOutput {
-	return o
-}
-
-func (o CoolAccessRetrievalPolicyPtrOutput) ToCoolAccessRetrievalPolicyPtrOutputWithContext(ctx context.Context) CoolAccessRetrievalPolicyPtrOutput {
-	return o
-}
-
-func (o CoolAccessRetrievalPolicyPtrOutput) Elem() CoolAccessRetrievalPolicyOutput {
-	return o.ApplyT(func(v *CoolAccessRetrievalPolicy) CoolAccessRetrievalPolicy {
-		if v != nil {
-			return *v
-		}
-		var ret CoolAccessRetrievalPolicy
-		return ret
-	}).(CoolAccessRetrievalPolicyOutput)
-}
-
-func (o CoolAccessRetrievalPolicyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o CoolAccessRetrievalPolicyPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CoolAccessRetrievalPolicy) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// CoolAccessRetrievalPolicyInput is an input type that accepts values of the CoolAccessRetrievalPolicy enum
-// A concrete instance of `CoolAccessRetrievalPolicyInput` can be one of the following:
-//
-//	CoolAccessRetrievalPolicyDefault
-//	CoolAccessRetrievalPolicyOnRead
-//	CoolAccessRetrievalPolicyNever
-type CoolAccessRetrievalPolicyInput interface {
-	pulumi.Input
-
-	ToCoolAccessRetrievalPolicyOutput() CoolAccessRetrievalPolicyOutput
-	ToCoolAccessRetrievalPolicyOutputWithContext(context.Context) CoolAccessRetrievalPolicyOutput
-}
-
-var coolAccessRetrievalPolicyPtrType = reflect.TypeOf((**CoolAccessRetrievalPolicy)(nil)).Elem()
-
-type CoolAccessRetrievalPolicyPtrInput interface {
-	pulumi.Input
-
-	ToCoolAccessRetrievalPolicyPtrOutput() CoolAccessRetrievalPolicyPtrOutput
-	ToCoolAccessRetrievalPolicyPtrOutputWithContext(context.Context) CoolAccessRetrievalPolicyPtrOutput
-}
-
-type coolAccessRetrievalPolicyPtr string
-
-func CoolAccessRetrievalPolicyPtr(v string) CoolAccessRetrievalPolicyPtrInput {
-	return (*coolAccessRetrievalPolicyPtr)(&v)
-}
-
-func (*coolAccessRetrievalPolicyPtr) ElementType() reflect.Type {
-	return coolAccessRetrievalPolicyPtrType
-}
-
-func (in *coolAccessRetrievalPolicyPtr) ToCoolAccessRetrievalPolicyPtrOutput() CoolAccessRetrievalPolicyPtrOutput {
-	return pulumi.ToOutput(in).(CoolAccessRetrievalPolicyPtrOutput)
-}
-
-func (in *coolAccessRetrievalPolicyPtr) ToCoolAccessRetrievalPolicyPtrOutputWithContext(ctx context.Context) CoolAccessRetrievalPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(CoolAccessRetrievalPolicyPtrOutput)
-}
-
-// coolAccessTieringPolicy determines which cold data blocks are moved to cool tier. The possible values for this field are: Auto - Moves cold user data blocks in both the Snapshot copies and the active file system to the cool tier tier. This policy is the default. SnapshotOnly - Moves user data blocks of the Volume Snapshot copies that are not associated with the active file system to the cool tier.
-type CoolAccessTieringPolicy string
-
-const (
-	CoolAccessTieringPolicyAuto         = CoolAccessTieringPolicy("Auto")
-	CoolAccessTieringPolicySnapshotOnly = CoolAccessTieringPolicy("SnapshotOnly")
-)
-
-func (CoolAccessTieringPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*CoolAccessTieringPolicy)(nil)).Elem()
-}
-
-func (e CoolAccessTieringPolicy) ToCoolAccessTieringPolicyOutput() CoolAccessTieringPolicyOutput {
-	return pulumi.ToOutput(e).(CoolAccessTieringPolicyOutput)
-}
-
-func (e CoolAccessTieringPolicy) ToCoolAccessTieringPolicyOutputWithContext(ctx context.Context) CoolAccessTieringPolicyOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(CoolAccessTieringPolicyOutput)
-}
-
-func (e CoolAccessTieringPolicy) ToCoolAccessTieringPolicyPtrOutput() CoolAccessTieringPolicyPtrOutput {
-	return e.ToCoolAccessTieringPolicyPtrOutputWithContext(context.Background())
-}
-
-func (e CoolAccessTieringPolicy) ToCoolAccessTieringPolicyPtrOutputWithContext(ctx context.Context) CoolAccessTieringPolicyPtrOutput {
-	return CoolAccessTieringPolicy(e).ToCoolAccessTieringPolicyOutputWithContext(ctx).ToCoolAccessTieringPolicyPtrOutputWithContext(ctx)
-}
-
-func (e CoolAccessTieringPolicy) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e CoolAccessTieringPolicy) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e CoolAccessTieringPolicy) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e CoolAccessTieringPolicy) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type CoolAccessTieringPolicyOutput struct{ *pulumi.OutputState }
-
-func (CoolAccessTieringPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CoolAccessTieringPolicy)(nil)).Elem()
-}
-
-func (o CoolAccessTieringPolicyOutput) ToCoolAccessTieringPolicyOutput() CoolAccessTieringPolicyOutput {
-	return o
-}
-
-func (o CoolAccessTieringPolicyOutput) ToCoolAccessTieringPolicyOutputWithContext(ctx context.Context) CoolAccessTieringPolicyOutput {
-	return o
-}
-
-func (o CoolAccessTieringPolicyOutput) ToCoolAccessTieringPolicyPtrOutput() CoolAccessTieringPolicyPtrOutput {
-	return o.ToCoolAccessTieringPolicyPtrOutputWithContext(context.Background())
-}
-
-func (o CoolAccessTieringPolicyOutput) ToCoolAccessTieringPolicyPtrOutputWithContext(ctx context.Context) CoolAccessTieringPolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CoolAccessTieringPolicy) *CoolAccessTieringPolicy {
-		return &v
-	}).(CoolAccessTieringPolicyPtrOutput)
-}
-
-func (o CoolAccessTieringPolicyOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o CoolAccessTieringPolicyOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e CoolAccessTieringPolicy) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o CoolAccessTieringPolicyOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o CoolAccessTieringPolicyOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e CoolAccessTieringPolicy) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type CoolAccessTieringPolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (CoolAccessTieringPolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CoolAccessTieringPolicy)(nil)).Elem()
-}
-
-func (o CoolAccessTieringPolicyPtrOutput) ToCoolAccessTieringPolicyPtrOutput() CoolAccessTieringPolicyPtrOutput {
-	return o
-}
-
-func (o CoolAccessTieringPolicyPtrOutput) ToCoolAccessTieringPolicyPtrOutputWithContext(ctx context.Context) CoolAccessTieringPolicyPtrOutput {
-	return o
-}
-
-func (o CoolAccessTieringPolicyPtrOutput) Elem() CoolAccessTieringPolicyOutput {
-	return o.ApplyT(func(v *CoolAccessTieringPolicy) CoolAccessTieringPolicy {
-		if v != nil {
-			return *v
-		}
-		var ret CoolAccessTieringPolicy
-		return ret
-	}).(CoolAccessTieringPolicyOutput)
-}
-
-func (o CoolAccessTieringPolicyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o CoolAccessTieringPolicyPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CoolAccessTieringPolicy) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// CoolAccessTieringPolicyInput is an input type that accepts values of the CoolAccessTieringPolicy enum
-// A concrete instance of `CoolAccessTieringPolicyInput` can be one of the following:
-//
-//	CoolAccessTieringPolicyAuto
-//	CoolAccessTieringPolicySnapshotOnly
-type CoolAccessTieringPolicyInput interface {
-	pulumi.Input
-
-	ToCoolAccessTieringPolicyOutput() CoolAccessTieringPolicyOutput
-	ToCoolAccessTieringPolicyOutputWithContext(context.Context) CoolAccessTieringPolicyOutput
-}
-
-var coolAccessTieringPolicyPtrType = reflect.TypeOf((**CoolAccessTieringPolicy)(nil)).Elem()
-
-type CoolAccessTieringPolicyPtrInput interface {
-	pulumi.Input
-
-	ToCoolAccessTieringPolicyPtrOutput() CoolAccessTieringPolicyPtrOutput
-	ToCoolAccessTieringPolicyPtrOutputWithContext(context.Context) CoolAccessTieringPolicyPtrOutput
-}
-
-type coolAccessTieringPolicyPtr string
-
-func CoolAccessTieringPolicyPtr(v string) CoolAccessTieringPolicyPtrInput {
-	return (*coolAccessTieringPolicyPtr)(&v)
-}
-
-func (*coolAccessTieringPolicyPtr) ElementType() reflect.Type {
-	return coolAccessTieringPolicyPtrType
-}
-
-func (in *coolAccessTieringPolicyPtr) ToCoolAccessTieringPolicyPtrOutput() CoolAccessTieringPolicyPtrOutput {
-	return pulumi.ToOutput(in).(CoolAccessTieringPolicyPtrOutput)
-}
-
-func (in *coolAccessTieringPolicyPtr) ToCoolAccessTieringPolicyPtrOutputWithContext(ctx context.Context) CoolAccessTieringPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(CoolAccessTieringPolicyPtrOutput)
 }
 
 // Flag indicating whether subvolume operations are enabled on the volume
@@ -1856,18 +1516,14 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
 }
 
-// The original value of the network features type available to the volume at the time it was created.
+// Basic network, or Standard features available to the volume.
 type NetworkFeatures string
 
 const (
-	// Basic network features.
+	// Basic network feature.
 	NetworkFeaturesBasic = NetworkFeatures("Basic")
-	// Standard network features.
+	// Standard network feature.
 	NetworkFeaturesStandard = NetworkFeatures("Standard")
-	// Updating from Basic to Standard network features.
-	NetworkFeatures_Basic_Standard = NetworkFeatures("Basic_Standard")
-	// Updating from Standard to Basic network features.
-	NetworkFeatures_Standard_Basic = NetworkFeatures("Standard_Basic")
 )
 
 func (NetworkFeatures) ElementType() reflect.Type {
@@ -1994,8 +1650,6 @@ func (o NetworkFeaturesPtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 //
 //	NetworkFeaturesBasic
 //	NetworkFeaturesStandard
-//	NetworkFeatures_Basic_Standard
-//	NetworkFeatures_Standard_Basic
 type NetworkFeaturesInput interface {
 	pulumi.Input
 
@@ -2706,7 +2360,7 @@ func (in *serviceLevelPtr) ToServiceLevelPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(ServiceLevelPtrOutput)
 }
 
-// Enables access-based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume
+// Enables access based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume
 type SmbAccessBasedEnumeration string
 
 const (
@@ -2874,7 +2528,7 @@ func (in *smbAccessBasedEnumerationPtr) ToSmbAccessBasedEnumerationPtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(SmbAccessBasedEnumerationPtrOutput)
 }
 
-// Enables non-browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume
+// Enables non browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume
 type SmbNonBrowsable string
 
 const (
@@ -3223,10 +2877,6 @@ func init() {
 	pulumi.RegisterOutputType(AvsDataStorePtrOutput{})
 	pulumi.RegisterOutputType(ChownModeOutput{})
 	pulumi.RegisterOutputType(ChownModePtrOutput{})
-	pulumi.RegisterOutputType(CoolAccessRetrievalPolicyOutput{})
-	pulumi.RegisterOutputType(CoolAccessRetrievalPolicyPtrOutput{})
-	pulumi.RegisterOutputType(CoolAccessTieringPolicyOutput{})
-	pulumi.RegisterOutputType(CoolAccessTieringPolicyPtrOutput{})
 	pulumi.RegisterOutputType(EnableSubvolumesOutput{})
 	pulumi.RegisterOutputType(EnableSubvolumesPtrOutput{})
 	pulumi.RegisterOutputType(EncryptionKeySourceOutput{})

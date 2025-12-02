@@ -8,27 +8,25 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Topic space resource.
 //
-// Uses Azure REST API version 2025-02-15. In version 2.x of the Azure Native provider, it used API version 2023-06-01-preview.
+// Uses Azure REST API version 2023-06-01-preview.
 //
-// Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
 type TopicSpace struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Description for the Topic Space resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Provisioning state of the TopicSpace resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// The system metadata relating to the Event Grid resource.
+	// The system metadata relating to the TopicSpace resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The topic filters in the topic space.
 	// Example: "topicTemplates": [
@@ -68,9 +66,6 @@ func NewTopicSpace(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20250215:TopicSpace"),
-		},
-		{
-			Type: pulumi.String("azure-native:eventgrid/v20250401preview:TopicSpace"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -178,11 +173,6 @@ func (o TopicSpaceOutput) ToTopicSpaceOutputWithContext(ctx context.Context) Top
 	return o
 }
 
-// The Azure API version of the resource.
-func (o TopicSpaceOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *TopicSpace) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Description for the Topic Space resource.
 func (o TopicSpaceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TopicSpace) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -198,7 +188,7 @@ func (o TopicSpaceOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *TopicSpace) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// The system metadata relating to the Event Grid resource.
+// The system metadata relating to the TopicSpace resource.
 func (o TopicSpaceOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *TopicSpace) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

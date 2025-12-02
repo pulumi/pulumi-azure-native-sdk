@@ -8,25 +8,23 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // NSX Segment
 //
-// Uses Azure REST API version 2023-09-01. In version 2.x of the Azure Native provider, it used API version 2022-05-01.
+// Uses Azure REST API version 2022-05-01. In version 1.x of the Azure Native provider, it used API version 2020-07-17-preview.
 //
-// Other available API versions: 2022-05-01, 2023-03-01, 2024-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native avs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-03-01, 2023-09-01.
 type WorkloadNetworkSegment struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gateway which to connect segment to.
 	ConnectedGateway pulumi.StringPtrOutput `pulumi:"connectedGateway"`
 	// Display name of the segment.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// The name of the resource
+	// Resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Port Vif which segment is associated with.
 	PortVif WorkloadNetworkSegmentPortVifResponseArrayOutput `pulumi:"portVif"`
@@ -38,9 +36,7 @@ type WorkloadNetworkSegment struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Subnet which to connect segment to.
 	Subnet WorkloadNetworkSegmentSubnetResponsePtrOutput `pulumi:"subnet"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// Resource type.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -78,9 +74,6 @@ func NewWorkloadNetworkSegment(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:avs/v20230901:WorkloadNetworkSegment"),
-		},
-		{
-			Type: pulumi.String("azure-native:avs/v20240901:WorkloadNetworkSegment"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -127,7 +120,7 @@ type workloadNetworkSegmentArgs struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// NSX revision number.
 	Revision *float64 `pulumi:"revision"`
-	// The ID of the NSX Segment
+	// NSX Segment identifier. Generally the same as the Segment's display name
 	SegmentId *string `pulumi:"segmentId"`
 	// Subnet which to connect segment to.
 	Subnet *WorkloadNetworkSegmentSubnet `pulumi:"subnet"`
@@ -145,7 +138,7 @@ type WorkloadNetworkSegmentArgs struct {
 	ResourceGroupName pulumi.StringInput
 	// NSX revision number.
 	Revision pulumi.Float64PtrInput
-	// The ID of the NSX Segment
+	// NSX Segment identifier. Generally the same as the Segment's display name
 	SegmentId pulumi.StringPtrInput
 	// Subnet which to connect segment to.
 	Subnet WorkloadNetworkSegmentSubnetPtrInput
@@ -188,11 +181,6 @@ func (o WorkloadNetworkSegmentOutput) ToWorkloadNetworkSegmentOutputWithContext(
 	return o
 }
 
-// The Azure API version of the resource.
-func (o WorkloadNetworkSegmentOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *WorkloadNetworkSegment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Gateway which to connect segment to.
 func (o WorkloadNetworkSegmentOutput) ConnectedGateway() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkloadNetworkSegment) pulumi.StringPtrOutput { return v.ConnectedGateway }).(pulumi.StringPtrOutput)
@@ -203,7 +191,7 @@ func (o WorkloadNetworkSegmentOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkloadNetworkSegment) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// The name of the resource
+// Resource name.
 func (o WorkloadNetworkSegmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkloadNetworkSegment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -233,12 +221,7 @@ func (o WorkloadNetworkSegmentOutput) Subnet() WorkloadNetworkSegmentSubnetRespo
 	return o.ApplyT(func(v *WorkloadNetworkSegment) WorkloadNetworkSegmentSubnetResponsePtrOutput { return v.Subnet }).(WorkloadNetworkSegmentSubnetResponsePtrOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o WorkloadNetworkSegmentOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *WorkloadNetworkSegment) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
-}
-
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// Resource type.
 func (o WorkloadNetworkSegmentOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkloadNetworkSegment) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

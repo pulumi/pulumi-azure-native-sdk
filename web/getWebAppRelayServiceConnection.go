@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Description for Gets a hybrid connection configuration by its name.
 //
-// Uses Azure REST API version 2024-04-01.
+// Uses Azure REST API version 2022-09-01.
 //
-// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
 func LookupWebAppRelayServiceConnection(ctx *pulumi.Context, args *LookupWebAppRelayServiceConnectionArgs, opts ...pulumi.InvokeOption) (*LookupWebAppRelayServiceConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppRelayServiceConnectionResult
@@ -37,8 +37,6 @@ type LookupWebAppRelayServiceConnectionArgs struct {
 
 // Hybrid Connection for an App Service app.
 type LookupWebAppRelayServiceConnectionResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion        string  `pulumi:"azureApiVersion"`
 	BiztalkUri             *string `pulumi:"biztalkUri"`
 	EntityConnectionString *string `pulumi:"entityConnectionString"`
 	EntityName             *string `pulumi:"entityName"`
@@ -91,11 +89,6 @@ func (o LookupWebAppRelayServiceConnectionResultOutput) ToLookupWebAppRelayServi
 
 func (o LookupWebAppRelayServiceConnectionResultOutput) ToLookupWebAppRelayServiceConnectionResultOutputWithContext(ctx context.Context) LookupWebAppRelayServiceConnectionResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupWebAppRelayServiceConnectionResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWebAppRelayServiceConnectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 func (o LookupWebAppRelayServiceConnectionResultOutput) BiztalkUri() pulumi.StringPtrOutput {

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -342,7 +342,7 @@ type ActiveDirectory struct {
 	Domain *string `pulumi:"domain"`
 	// If enabled, Traffic between the SMB server to Domain Controller (DC) will be encrypted.
 	EncryptDCConnections *bool `pulumi:"encryptDCConnections"`
-	// kdc server IP address for the active directory machine. This optional parameter is used only while creating kerberos volume.
+	// kdc server IP addresses for the active directory machine. This optional parameter is used only while creating kerberos volume.
 	KdcIP *string `pulumi:"kdcIP"`
 	// Specifies whether or not the LDAP traffic needs to be secured via TLS.
 	LdapOverTLS *bool `pulumi:"ldapOverTLS"`
@@ -412,7 +412,7 @@ type ActiveDirectoryArgs struct {
 	Domain pulumi.StringPtrInput `pulumi:"domain"`
 	// If enabled, Traffic between the SMB server to Domain Controller (DC) will be encrypted.
 	EncryptDCConnections pulumi.BoolPtrInput `pulumi:"encryptDCConnections"`
-	// kdc server IP address for the active directory machine. This optional parameter is used only while creating kerberos volume.
+	// kdc server IP addresses for the active directory machine. This optional parameter is used only while creating kerberos volume.
 	KdcIP pulumi.StringPtrInput `pulumi:"kdcIP"`
 	// Specifies whether or not the LDAP traffic needs to be secured via TLS.
 	LdapOverTLS pulumi.BoolPtrInput `pulumi:"ldapOverTLS"`
@@ -546,7 +546,7 @@ func (o ActiveDirectoryOutput) EncryptDCConnections() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ActiveDirectory) *bool { return v.EncryptDCConnections }).(pulumi.BoolPtrOutput)
 }
 
-// kdc server IP address for the active directory machine. This optional parameter is used only while creating kerberos volume.
+// kdc server IP addresses for the active directory machine. This optional parameter is used only while creating kerberos volume.
 func (o ActiveDirectoryOutput) KdcIP() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActiveDirectory) *string { return v.KdcIP }).(pulumi.StringPtrOutput)
 }
@@ -646,7 +646,7 @@ type ActiveDirectoryResponse struct {
 	Domain *string `pulumi:"domain"`
 	// If enabled, Traffic between the SMB server to Domain Controller (DC) will be encrypted.
 	EncryptDCConnections *bool `pulumi:"encryptDCConnections"`
-	// kdc server IP address for the active directory machine. This optional parameter is used only while creating kerberos volume.
+	// kdc server IP addresses for the active directory machine. This optional parameter is used only while creating kerberos volume.
 	KdcIP *string `pulumi:"kdcIP"`
 	// Specifies whether or not the LDAP traffic needs to be secured via TLS.
 	LdapOverTLS *bool `pulumi:"ldapOverTLS"`
@@ -749,7 +749,7 @@ func (o ActiveDirectoryResponseOutput) EncryptDCConnections() pulumi.BoolPtrOutp
 	return o.ApplyT(func(v ActiveDirectoryResponse) *bool { return v.EncryptDCConnections }).(pulumi.BoolPtrOutput)
 }
 
-// kdc server IP address for the active directory machine. This optional parameter is used only while creating kerberos volume.
+// kdc server IP addresses for the active directory machine. This optional parameter is used only while creating kerberos volume.
 func (o ActiveDirectoryResponseOutput) KdcIP() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActiveDirectoryResponse) *string { return v.KdcIP }).(pulumi.StringPtrOutput)
 }
@@ -837,476 +837,6 @@ func (o ActiveDirectoryResponseArrayOutput) Index(i pulumi.IntInput) ActiveDirec
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ActiveDirectoryResponse {
 		return vs[0].([]ActiveDirectoryResponse)[vs[1].(int)]
 	}).(ActiveDirectoryResponseOutput)
-}
-
-// Properties of the server managing the lifecycle of volume buckets
-type BucketServerProperties struct {
-	// A base64-encoded PEM file, which includes both the bucket server's certificate and private key. It is used to authenticate the user and allows access to volume data in a read-only manner.
-	CertificateObject *string `pulumi:"certificateObject"`
-	// The host part of the bucket URL, resolving to the bucket IP address and allowed by the server certificate.
-	Fqdn *string `pulumi:"fqdn"`
-}
-
-// BucketServerPropertiesInput is an input type that accepts BucketServerPropertiesArgs and BucketServerPropertiesOutput values.
-// You can construct a concrete instance of `BucketServerPropertiesInput` via:
-//
-//	BucketServerPropertiesArgs{...}
-type BucketServerPropertiesInput interface {
-	pulumi.Input
-
-	ToBucketServerPropertiesOutput() BucketServerPropertiesOutput
-	ToBucketServerPropertiesOutputWithContext(context.Context) BucketServerPropertiesOutput
-}
-
-// Properties of the server managing the lifecycle of volume buckets
-type BucketServerPropertiesArgs struct {
-	// A base64-encoded PEM file, which includes both the bucket server's certificate and private key. It is used to authenticate the user and allows access to volume data in a read-only manner.
-	CertificateObject pulumi.StringPtrInput `pulumi:"certificateObject"`
-	// The host part of the bucket URL, resolving to the bucket IP address and allowed by the server certificate.
-	Fqdn pulumi.StringPtrInput `pulumi:"fqdn"`
-}
-
-func (BucketServerPropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketServerProperties)(nil)).Elem()
-}
-
-func (i BucketServerPropertiesArgs) ToBucketServerPropertiesOutput() BucketServerPropertiesOutput {
-	return i.ToBucketServerPropertiesOutputWithContext(context.Background())
-}
-
-func (i BucketServerPropertiesArgs) ToBucketServerPropertiesOutputWithContext(ctx context.Context) BucketServerPropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketServerPropertiesOutput)
-}
-
-func (i BucketServerPropertiesArgs) ToBucketServerPropertiesPtrOutput() BucketServerPropertiesPtrOutput {
-	return i.ToBucketServerPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i BucketServerPropertiesArgs) ToBucketServerPropertiesPtrOutputWithContext(ctx context.Context) BucketServerPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketServerPropertiesOutput).ToBucketServerPropertiesPtrOutputWithContext(ctx)
-}
-
-// BucketServerPropertiesPtrInput is an input type that accepts BucketServerPropertiesArgs, BucketServerPropertiesPtr and BucketServerPropertiesPtrOutput values.
-// You can construct a concrete instance of `BucketServerPropertiesPtrInput` via:
-//
-//	        BucketServerPropertiesArgs{...}
-//
-//	or:
-//
-//	        nil
-type BucketServerPropertiesPtrInput interface {
-	pulumi.Input
-
-	ToBucketServerPropertiesPtrOutput() BucketServerPropertiesPtrOutput
-	ToBucketServerPropertiesPtrOutputWithContext(context.Context) BucketServerPropertiesPtrOutput
-}
-
-type bucketServerPropertiesPtrType BucketServerPropertiesArgs
-
-func BucketServerPropertiesPtr(v *BucketServerPropertiesArgs) BucketServerPropertiesPtrInput {
-	return (*bucketServerPropertiesPtrType)(v)
-}
-
-func (*bucketServerPropertiesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketServerProperties)(nil)).Elem()
-}
-
-func (i *bucketServerPropertiesPtrType) ToBucketServerPropertiesPtrOutput() BucketServerPropertiesPtrOutput {
-	return i.ToBucketServerPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i *bucketServerPropertiesPtrType) ToBucketServerPropertiesPtrOutputWithContext(ctx context.Context) BucketServerPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketServerPropertiesPtrOutput)
-}
-
-// Properties of the server managing the lifecycle of volume buckets
-type BucketServerPropertiesOutput struct{ *pulumi.OutputState }
-
-func (BucketServerPropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketServerProperties)(nil)).Elem()
-}
-
-func (o BucketServerPropertiesOutput) ToBucketServerPropertiesOutput() BucketServerPropertiesOutput {
-	return o
-}
-
-func (o BucketServerPropertiesOutput) ToBucketServerPropertiesOutputWithContext(ctx context.Context) BucketServerPropertiesOutput {
-	return o
-}
-
-func (o BucketServerPropertiesOutput) ToBucketServerPropertiesPtrOutput() BucketServerPropertiesPtrOutput {
-	return o.ToBucketServerPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (o BucketServerPropertiesOutput) ToBucketServerPropertiesPtrOutputWithContext(ctx context.Context) BucketServerPropertiesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketServerProperties) *BucketServerProperties {
-		return &v
-	}).(BucketServerPropertiesPtrOutput)
-}
-
-// A base64-encoded PEM file, which includes both the bucket server's certificate and private key. It is used to authenticate the user and allows access to volume data in a read-only manner.
-func (o BucketServerPropertiesOutput) CertificateObject() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BucketServerProperties) *string { return v.CertificateObject }).(pulumi.StringPtrOutput)
-}
-
-// The host part of the bucket URL, resolving to the bucket IP address and allowed by the server certificate.
-func (o BucketServerPropertiesOutput) Fqdn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BucketServerProperties) *string { return v.Fqdn }).(pulumi.StringPtrOutput)
-}
-
-type BucketServerPropertiesPtrOutput struct{ *pulumi.OutputState }
-
-func (BucketServerPropertiesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketServerProperties)(nil)).Elem()
-}
-
-func (o BucketServerPropertiesPtrOutput) ToBucketServerPropertiesPtrOutput() BucketServerPropertiesPtrOutput {
-	return o
-}
-
-func (o BucketServerPropertiesPtrOutput) ToBucketServerPropertiesPtrOutputWithContext(ctx context.Context) BucketServerPropertiesPtrOutput {
-	return o
-}
-
-func (o BucketServerPropertiesPtrOutput) Elem() BucketServerPropertiesOutput {
-	return o.ApplyT(func(v *BucketServerProperties) BucketServerProperties {
-		if v != nil {
-			return *v
-		}
-		var ret BucketServerProperties
-		return ret
-	}).(BucketServerPropertiesOutput)
-}
-
-// A base64-encoded PEM file, which includes both the bucket server's certificate and private key. It is used to authenticate the user and allows access to volume data in a read-only manner.
-func (o BucketServerPropertiesPtrOutput) CertificateObject() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BucketServerProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CertificateObject
-	}).(pulumi.StringPtrOutput)
-}
-
-// The host part of the bucket URL, resolving to the bucket IP address and allowed by the server certificate.
-func (o BucketServerPropertiesPtrOutput) Fqdn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BucketServerProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Fqdn
-	}).(pulumi.StringPtrOutput)
-}
-
-// Properties of the server managing the lifecycle of volume buckets
-type BucketServerPropertiesResponse struct {
-	// Certificate Common Name taken from the certificate installed on the bucket server
-	CertificateCommonName string `pulumi:"certificateCommonName"`
-	// The bucket server's certificate expiry date.
-	CertificateExpiryDate string `pulumi:"certificateExpiryDate"`
-	// The host part of the bucket URL, resolving to the bucket IP address and allowed by the server certificate.
-	Fqdn *string `pulumi:"fqdn"`
-	// The bucket server's IPv4 address
-	IpAddress string `pulumi:"ipAddress"`
-}
-
-// Properties of the server managing the lifecycle of volume buckets
-type BucketServerPropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (BucketServerPropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketServerPropertiesResponse)(nil)).Elem()
-}
-
-func (o BucketServerPropertiesResponseOutput) ToBucketServerPropertiesResponseOutput() BucketServerPropertiesResponseOutput {
-	return o
-}
-
-func (o BucketServerPropertiesResponseOutput) ToBucketServerPropertiesResponseOutputWithContext(ctx context.Context) BucketServerPropertiesResponseOutput {
-	return o
-}
-
-// Certificate Common Name taken from the certificate installed on the bucket server
-func (o BucketServerPropertiesResponseOutput) CertificateCommonName() pulumi.StringOutput {
-	return o.ApplyT(func(v BucketServerPropertiesResponse) string { return v.CertificateCommonName }).(pulumi.StringOutput)
-}
-
-// The bucket server's certificate expiry date.
-func (o BucketServerPropertiesResponseOutput) CertificateExpiryDate() pulumi.StringOutput {
-	return o.ApplyT(func(v BucketServerPropertiesResponse) string { return v.CertificateExpiryDate }).(pulumi.StringOutput)
-}
-
-// The host part of the bucket URL, resolving to the bucket IP address and allowed by the server certificate.
-func (o BucketServerPropertiesResponseOutput) Fqdn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BucketServerPropertiesResponse) *string { return v.Fqdn }).(pulumi.StringPtrOutput)
-}
-
-// The bucket server's IPv4 address
-func (o BucketServerPropertiesResponseOutput) IpAddress() pulumi.StringOutput {
-	return o.ApplyT(func(v BucketServerPropertiesResponse) string { return v.IpAddress }).(pulumi.StringOutput)
-}
-
-type BucketServerPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (BucketServerPropertiesResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketServerPropertiesResponse)(nil)).Elem()
-}
-
-func (o BucketServerPropertiesResponsePtrOutput) ToBucketServerPropertiesResponsePtrOutput() BucketServerPropertiesResponsePtrOutput {
-	return o
-}
-
-func (o BucketServerPropertiesResponsePtrOutput) ToBucketServerPropertiesResponsePtrOutputWithContext(ctx context.Context) BucketServerPropertiesResponsePtrOutput {
-	return o
-}
-
-func (o BucketServerPropertiesResponsePtrOutput) Elem() BucketServerPropertiesResponseOutput {
-	return o.ApplyT(func(v *BucketServerPropertiesResponse) BucketServerPropertiesResponse {
-		if v != nil {
-			return *v
-		}
-		var ret BucketServerPropertiesResponse
-		return ret
-	}).(BucketServerPropertiesResponseOutput)
-}
-
-// Certificate Common Name taken from the certificate installed on the bucket server
-func (o BucketServerPropertiesResponsePtrOutput) CertificateCommonName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BucketServerPropertiesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CertificateCommonName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The bucket server's certificate expiry date.
-func (o BucketServerPropertiesResponsePtrOutput) CertificateExpiryDate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BucketServerPropertiesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CertificateExpiryDate
-	}).(pulumi.StringPtrOutput)
-}
-
-// The host part of the bucket URL, resolving to the bucket IP address and allowed by the server certificate.
-func (o BucketServerPropertiesResponsePtrOutput) Fqdn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BucketServerPropertiesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Fqdn
-	}).(pulumi.StringPtrOutput)
-}
-
-// The bucket server's IPv4 address
-func (o BucketServerPropertiesResponsePtrOutput) IpAddress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BucketServerPropertiesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.IpAddress
-	}).(pulumi.StringPtrOutput)
-}
-
-// The effective CIFS username when accessing the volume data.
-type CifsUser struct {
-	// The CIFS user's username
-	Username *string `pulumi:"username"`
-}
-
-// CifsUserInput is an input type that accepts CifsUserArgs and CifsUserOutput values.
-// You can construct a concrete instance of `CifsUserInput` via:
-//
-//	CifsUserArgs{...}
-type CifsUserInput interface {
-	pulumi.Input
-
-	ToCifsUserOutput() CifsUserOutput
-	ToCifsUserOutputWithContext(context.Context) CifsUserOutput
-}
-
-// The effective CIFS username when accessing the volume data.
-type CifsUserArgs struct {
-	// The CIFS user's username
-	Username pulumi.StringPtrInput `pulumi:"username"`
-}
-
-func (CifsUserArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CifsUser)(nil)).Elem()
-}
-
-func (i CifsUserArgs) ToCifsUserOutput() CifsUserOutput {
-	return i.ToCifsUserOutputWithContext(context.Background())
-}
-
-func (i CifsUserArgs) ToCifsUserOutputWithContext(ctx context.Context) CifsUserOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CifsUserOutput)
-}
-
-func (i CifsUserArgs) ToCifsUserPtrOutput() CifsUserPtrOutput {
-	return i.ToCifsUserPtrOutputWithContext(context.Background())
-}
-
-func (i CifsUserArgs) ToCifsUserPtrOutputWithContext(ctx context.Context) CifsUserPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CifsUserOutput).ToCifsUserPtrOutputWithContext(ctx)
-}
-
-// CifsUserPtrInput is an input type that accepts CifsUserArgs, CifsUserPtr and CifsUserPtrOutput values.
-// You can construct a concrete instance of `CifsUserPtrInput` via:
-//
-//	        CifsUserArgs{...}
-//
-//	or:
-//
-//	        nil
-type CifsUserPtrInput interface {
-	pulumi.Input
-
-	ToCifsUserPtrOutput() CifsUserPtrOutput
-	ToCifsUserPtrOutputWithContext(context.Context) CifsUserPtrOutput
-}
-
-type cifsUserPtrType CifsUserArgs
-
-func CifsUserPtr(v *CifsUserArgs) CifsUserPtrInput {
-	return (*cifsUserPtrType)(v)
-}
-
-func (*cifsUserPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CifsUser)(nil)).Elem()
-}
-
-func (i *cifsUserPtrType) ToCifsUserPtrOutput() CifsUserPtrOutput {
-	return i.ToCifsUserPtrOutputWithContext(context.Background())
-}
-
-func (i *cifsUserPtrType) ToCifsUserPtrOutputWithContext(ctx context.Context) CifsUserPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CifsUserPtrOutput)
-}
-
-// The effective CIFS username when accessing the volume data.
-type CifsUserOutput struct{ *pulumi.OutputState }
-
-func (CifsUserOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CifsUser)(nil)).Elem()
-}
-
-func (o CifsUserOutput) ToCifsUserOutput() CifsUserOutput {
-	return o
-}
-
-func (o CifsUserOutput) ToCifsUserOutputWithContext(ctx context.Context) CifsUserOutput {
-	return o
-}
-
-func (o CifsUserOutput) ToCifsUserPtrOutput() CifsUserPtrOutput {
-	return o.ToCifsUserPtrOutputWithContext(context.Background())
-}
-
-func (o CifsUserOutput) ToCifsUserPtrOutputWithContext(ctx context.Context) CifsUserPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CifsUser) *CifsUser {
-		return &v
-	}).(CifsUserPtrOutput)
-}
-
-// The CIFS user's username
-func (o CifsUserOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CifsUser) *string { return v.Username }).(pulumi.StringPtrOutput)
-}
-
-type CifsUserPtrOutput struct{ *pulumi.OutputState }
-
-func (CifsUserPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CifsUser)(nil)).Elem()
-}
-
-func (o CifsUserPtrOutput) ToCifsUserPtrOutput() CifsUserPtrOutput {
-	return o
-}
-
-func (o CifsUserPtrOutput) ToCifsUserPtrOutputWithContext(ctx context.Context) CifsUserPtrOutput {
-	return o
-}
-
-func (o CifsUserPtrOutput) Elem() CifsUserOutput {
-	return o.ApplyT(func(v *CifsUser) CifsUser {
-		if v != nil {
-			return *v
-		}
-		var ret CifsUser
-		return ret
-	}).(CifsUserOutput)
-}
-
-// The CIFS user's username
-func (o CifsUserPtrOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CifsUser) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Username
-	}).(pulumi.StringPtrOutput)
-}
-
-// The effective CIFS username when accessing the volume data.
-type CifsUserResponse struct {
-	// The CIFS user's username
-	Username *string `pulumi:"username"`
-}
-
-// The effective CIFS username when accessing the volume data.
-type CifsUserResponseOutput struct{ *pulumi.OutputState }
-
-func (CifsUserResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CifsUserResponse)(nil)).Elem()
-}
-
-func (o CifsUserResponseOutput) ToCifsUserResponseOutput() CifsUserResponseOutput {
-	return o
-}
-
-func (o CifsUserResponseOutput) ToCifsUserResponseOutputWithContext(ctx context.Context) CifsUserResponseOutput {
-	return o
-}
-
-// The CIFS user's username
-func (o CifsUserResponseOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CifsUserResponse) *string { return v.Username }).(pulumi.StringPtrOutput)
-}
-
-type CifsUserResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (CifsUserResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CifsUserResponse)(nil)).Elem()
-}
-
-func (o CifsUserResponsePtrOutput) ToCifsUserResponsePtrOutput() CifsUserResponsePtrOutput {
-	return o
-}
-
-func (o CifsUserResponsePtrOutput) ToCifsUserResponsePtrOutputWithContext(ctx context.Context) CifsUserResponsePtrOutput {
-	return o
-}
-
-func (o CifsUserResponsePtrOutput) Elem() CifsUserResponseOutput {
-	return o.ApplyT(func(v *CifsUserResponse) CifsUserResponse {
-		if v != nil {
-			return *v
-		}
-		var ret CifsUserResponse
-		return ret
-	}).(CifsUserResponseOutput)
-}
-
-// The CIFS user's username
-func (o CifsUserResponsePtrOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CifsUserResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Username
-	}).(pulumi.StringPtrOutput)
 }
 
 // Daily Schedule properties
@@ -2318,242 +1848,6 @@ func (o ExportPolicyRuleResponseArrayOutput) Index(i pulumi.IntInput) ExportPoli
 	}).(ExportPolicyRuleResponseOutput)
 }
 
-// File System user having access to volume data. For Unix, this is the user's uid and gid. For Windows, this is the user's username. Note that the Unix and Windows user details are mutually exclusive, meaning one or other must be supplied, but not both.
-type FileSystemUser struct {
-	// The effective CIFS username when accessing the volume data.
-	CifsUser *CifsUser `pulumi:"cifsUser"`
-	// The effective NFS User ID and Group ID when accessing the volume data.
-	NfsUser *NfsUser `pulumi:"nfsUser"`
-}
-
-// FileSystemUserInput is an input type that accepts FileSystemUserArgs and FileSystemUserOutput values.
-// You can construct a concrete instance of `FileSystemUserInput` via:
-//
-//	FileSystemUserArgs{...}
-type FileSystemUserInput interface {
-	pulumi.Input
-
-	ToFileSystemUserOutput() FileSystemUserOutput
-	ToFileSystemUserOutputWithContext(context.Context) FileSystemUserOutput
-}
-
-// File System user having access to volume data. For Unix, this is the user's uid and gid. For Windows, this is the user's username. Note that the Unix and Windows user details are mutually exclusive, meaning one or other must be supplied, but not both.
-type FileSystemUserArgs struct {
-	// The effective CIFS username when accessing the volume data.
-	CifsUser CifsUserPtrInput `pulumi:"cifsUser"`
-	// The effective NFS User ID and Group ID when accessing the volume data.
-	NfsUser NfsUserPtrInput `pulumi:"nfsUser"`
-}
-
-func (FileSystemUserArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*FileSystemUser)(nil)).Elem()
-}
-
-func (i FileSystemUserArgs) ToFileSystemUserOutput() FileSystemUserOutput {
-	return i.ToFileSystemUserOutputWithContext(context.Background())
-}
-
-func (i FileSystemUserArgs) ToFileSystemUserOutputWithContext(ctx context.Context) FileSystemUserOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FileSystemUserOutput)
-}
-
-func (i FileSystemUserArgs) ToFileSystemUserPtrOutput() FileSystemUserPtrOutput {
-	return i.ToFileSystemUserPtrOutputWithContext(context.Background())
-}
-
-func (i FileSystemUserArgs) ToFileSystemUserPtrOutputWithContext(ctx context.Context) FileSystemUserPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FileSystemUserOutput).ToFileSystemUserPtrOutputWithContext(ctx)
-}
-
-// FileSystemUserPtrInput is an input type that accepts FileSystemUserArgs, FileSystemUserPtr and FileSystemUserPtrOutput values.
-// You can construct a concrete instance of `FileSystemUserPtrInput` via:
-//
-//	        FileSystemUserArgs{...}
-//
-//	or:
-//
-//	        nil
-type FileSystemUserPtrInput interface {
-	pulumi.Input
-
-	ToFileSystemUserPtrOutput() FileSystemUserPtrOutput
-	ToFileSystemUserPtrOutputWithContext(context.Context) FileSystemUserPtrOutput
-}
-
-type fileSystemUserPtrType FileSystemUserArgs
-
-func FileSystemUserPtr(v *FileSystemUserArgs) FileSystemUserPtrInput {
-	return (*fileSystemUserPtrType)(v)
-}
-
-func (*fileSystemUserPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**FileSystemUser)(nil)).Elem()
-}
-
-func (i *fileSystemUserPtrType) ToFileSystemUserPtrOutput() FileSystemUserPtrOutput {
-	return i.ToFileSystemUserPtrOutputWithContext(context.Background())
-}
-
-func (i *fileSystemUserPtrType) ToFileSystemUserPtrOutputWithContext(ctx context.Context) FileSystemUserPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FileSystemUserPtrOutput)
-}
-
-// File System user having access to volume data. For Unix, this is the user's uid and gid. For Windows, this is the user's username. Note that the Unix and Windows user details are mutually exclusive, meaning one or other must be supplied, but not both.
-type FileSystemUserOutput struct{ *pulumi.OutputState }
-
-func (FileSystemUserOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FileSystemUser)(nil)).Elem()
-}
-
-func (o FileSystemUserOutput) ToFileSystemUserOutput() FileSystemUserOutput {
-	return o
-}
-
-func (o FileSystemUserOutput) ToFileSystemUserOutputWithContext(ctx context.Context) FileSystemUserOutput {
-	return o
-}
-
-func (o FileSystemUserOutput) ToFileSystemUserPtrOutput() FileSystemUserPtrOutput {
-	return o.ToFileSystemUserPtrOutputWithContext(context.Background())
-}
-
-func (o FileSystemUserOutput) ToFileSystemUserPtrOutputWithContext(ctx context.Context) FileSystemUserPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v FileSystemUser) *FileSystemUser {
-		return &v
-	}).(FileSystemUserPtrOutput)
-}
-
-// The effective CIFS username when accessing the volume data.
-func (o FileSystemUserOutput) CifsUser() CifsUserPtrOutput {
-	return o.ApplyT(func(v FileSystemUser) *CifsUser { return v.CifsUser }).(CifsUserPtrOutput)
-}
-
-// The effective NFS User ID and Group ID when accessing the volume data.
-func (o FileSystemUserOutput) NfsUser() NfsUserPtrOutput {
-	return o.ApplyT(func(v FileSystemUser) *NfsUser { return v.NfsUser }).(NfsUserPtrOutput)
-}
-
-type FileSystemUserPtrOutput struct{ *pulumi.OutputState }
-
-func (FileSystemUserPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**FileSystemUser)(nil)).Elem()
-}
-
-func (o FileSystemUserPtrOutput) ToFileSystemUserPtrOutput() FileSystemUserPtrOutput {
-	return o
-}
-
-func (o FileSystemUserPtrOutput) ToFileSystemUserPtrOutputWithContext(ctx context.Context) FileSystemUserPtrOutput {
-	return o
-}
-
-func (o FileSystemUserPtrOutput) Elem() FileSystemUserOutput {
-	return o.ApplyT(func(v *FileSystemUser) FileSystemUser {
-		if v != nil {
-			return *v
-		}
-		var ret FileSystemUser
-		return ret
-	}).(FileSystemUserOutput)
-}
-
-// The effective CIFS username when accessing the volume data.
-func (o FileSystemUserPtrOutput) CifsUser() CifsUserPtrOutput {
-	return o.ApplyT(func(v *FileSystemUser) *CifsUser {
-		if v == nil {
-			return nil
-		}
-		return v.CifsUser
-	}).(CifsUserPtrOutput)
-}
-
-// The effective NFS User ID and Group ID when accessing the volume data.
-func (o FileSystemUserPtrOutput) NfsUser() NfsUserPtrOutput {
-	return o.ApplyT(func(v *FileSystemUser) *NfsUser {
-		if v == nil {
-			return nil
-		}
-		return v.NfsUser
-	}).(NfsUserPtrOutput)
-}
-
-// File System user having access to volume data. For Unix, this is the user's uid and gid. For Windows, this is the user's username. Note that the Unix and Windows user details are mutually exclusive, meaning one or other must be supplied, but not both.
-type FileSystemUserResponse struct {
-	// The effective CIFS username when accessing the volume data.
-	CifsUser *CifsUserResponse `pulumi:"cifsUser"`
-	// The effective NFS User ID and Group ID when accessing the volume data.
-	NfsUser *NfsUserResponse `pulumi:"nfsUser"`
-}
-
-// File System user having access to volume data. For Unix, this is the user's uid and gid. For Windows, this is the user's username. Note that the Unix and Windows user details are mutually exclusive, meaning one or other must be supplied, but not both.
-type FileSystemUserResponseOutput struct{ *pulumi.OutputState }
-
-func (FileSystemUserResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FileSystemUserResponse)(nil)).Elem()
-}
-
-func (o FileSystemUserResponseOutput) ToFileSystemUserResponseOutput() FileSystemUserResponseOutput {
-	return o
-}
-
-func (o FileSystemUserResponseOutput) ToFileSystemUserResponseOutputWithContext(ctx context.Context) FileSystemUserResponseOutput {
-	return o
-}
-
-// The effective CIFS username when accessing the volume data.
-func (o FileSystemUserResponseOutput) CifsUser() CifsUserResponsePtrOutput {
-	return o.ApplyT(func(v FileSystemUserResponse) *CifsUserResponse { return v.CifsUser }).(CifsUserResponsePtrOutput)
-}
-
-// The effective NFS User ID and Group ID when accessing the volume data.
-func (o FileSystemUserResponseOutput) NfsUser() NfsUserResponsePtrOutput {
-	return o.ApplyT(func(v FileSystemUserResponse) *NfsUserResponse { return v.NfsUser }).(NfsUserResponsePtrOutput)
-}
-
-type FileSystemUserResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (FileSystemUserResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**FileSystemUserResponse)(nil)).Elem()
-}
-
-func (o FileSystemUserResponsePtrOutput) ToFileSystemUserResponsePtrOutput() FileSystemUserResponsePtrOutput {
-	return o
-}
-
-func (o FileSystemUserResponsePtrOutput) ToFileSystemUserResponsePtrOutputWithContext(ctx context.Context) FileSystemUserResponsePtrOutput {
-	return o
-}
-
-func (o FileSystemUserResponsePtrOutput) Elem() FileSystemUserResponseOutput {
-	return o.ApplyT(func(v *FileSystemUserResponse) FileSystemUserResponse {
-		if v != nil {
-			return *v
-		}
-		var ret FileSystemUserResponse
-		return ret
-	}).(FileSystemUserResponseOutput)
-}
-
-// The effective CIFS username when accessing the volume data.
-func (o FileSystemUserResponsePtrOutput) CifsUser() CifsUserResponsePtrOutput {
-	return o.ApplyT(func(v *FileSystemUserResponse) *CifsUserResponse {
-		if v == nil {
-			return nil
-		}
-		return v.CifsUser
-	}).(CifsUserResponsePtrOutput)
-}
-
-// The effective NFS User ID and Group ID when accessing the volume data.
-func (o FileSystemUserResponsePtrOutput) NfsUser() NfsUserResponsePtrOutput {
-	return o.ApplyT(func(v *FileSystemUserResponse) *NfsUserResponse {
-		if v == nil {
-			return nil
-		}
-		return v.NfsUser
-	}).(NfsUserResponsePtrOutput)
-}
-
 // Hourly Schedule properties
 type HourlySchedule struct {
 	// Indicates which minute snapshot should be taken
@@ -2884,7 +2178,7 @@ type KeyVaultProperties struct {
 	// The name of KeyVault key.
 	KeyName string `pulumi:"keyName"`
 	// The resource ID of KeyVault.
-	KeyVaultResourceId *string `pulumi:"keyVaultResourceId"`
+	KeyVaultResourceId string `pulumi:"keyVaultResourceId"`
 	// The Uri of KeyVault.
 	KeyVaultUri string `pulumi:"keyVaultUri"`
 }
@@ -2905,7 +2199,7 @@ type KeyVaultPropertiesArgs struct {
 	// The name of KeyVault key.
 	KeyName pulumi.StringInput `pulumi:"keyName"`
 	// The resource ID of KeyVault.
-	KeyVaultResourceId pulumi.StringPtrInput `pulumi:"keyVaultResourceId"`
+	KeyVaultResourceId pulumi.StringInput `pulumi:"keyVaultResourceId"`
 	// The Uri of KeyVault.
 	KeyVaultUri pulumi.StringInput `pulumi:"keyVaultUri"`
 }
@@ -2994,8 +2288,8 @@ func (o KeyVaultPropertiesOutput) KeyName() pulumi.StringOutput {
 }
 
 // The resource ID of KeyVault.
-func (o KeyVaultPropertiesOutput) KeyVaultResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KeyVaultProperties) *string { return v.KeyVaultResourceId }).(pulumi.StringPtrOutput)
+func (o KeyVaultPropertiesOutput) KeyVaultResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyVaultProperties) string { return v.KeyVaultResourceId }).(pulumi.StringOutput)
 }
 
 // The Uri of KeyVault.
@@ -3043,7 +2337,7 @@ func (o KeyVaultPropertiesPtrOutput) KeyVaultResourceId() pulumi.StringPtrOutput
 		if v == nil {
 			return nil
 		}
-		return v.KeyVaultResourceId
+		return &v.KeyVaultResourceId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3064,7 +2358,7 @@ type KeyVaultPropertiesResponse struct {
 	// UUID v4 used to identify the Azure Key Vault configuration
 	KeyVaultId string `pulumi:"keyVaultId"`
 	// The resource ID of KeyVault.
-	KeyVaultResourceId *string `pulumi:"keyVaultResourceId"`
+	KeyVaultResourceId string `pulumi:"keyVaultResourceId"`
 	// The Uri of KeyVault.
 	KeyVaultUri string `pulumi:"keyVaultUri"`
 	// Status of the KeyVault connection.
@@ -3097,8 +2391,8 @@ func (o KeyVaultPropertiesResponseOutput) KeyVaultId() pulumi.StringOutput {
 }
 
 // The resource ID of KeyVault.
-func (o KeyVaultPropertiesResponseOutput) KeyVaultResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KeyVaultPropertiesResponse) *string { return v.KeyVaultResourceId }).(pulumi.StringPtrOutput)
+func (o KeyVaultPropertiesResponseOutput) KeyVaultResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyVaultPropertiesResponse) string { return v.KeyVaultResourceId }).(pulumi.StringOutput)
 }
 
 // The Uri of KeyVault.
@@ -3161,7 +2455,7 @@ func (o KeyVaultPropertiesResponsePtrOutput) KeyVaultResourceId() pulumi.StringP
 		if v == nil {
 			return nil
 		}
-		return v.KeyVaultResourceId
+		return &v.KeyVaultResourceId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4140,242 +3434,6 @@ func (o MountTargetPropertiesResponseArrayOutput) Index(i pulumi.IntInput) Mount
 	}).(MountTargetPropertiesResponseOutput)
 }
 
-// The effective NFS User ID and Group ID when accessing the volume data.
-type NfsUser struct {
-	// The NFS user's GID
-	GroupId *float64 `pulumi:"groupId"`
-	// The NFS user's UID
-	UserId *float64 `pulumi:"userId"`
-}
-
-// NfsUserInput is an input type that accepts NfsUserArgs and NfsUserOutput values.
-// You can construct a concrete instance of `NfsUserInput` via:
-//
-//	NfsUserArgs{...}
-type NfsUserInput interface {
-	pulumi.Input
-
-	ToNfsUserOutput() NfsUserOutput
-	ToNfsUserOutputWithContext(context.Context) NfsUserOutput
-}
-
-// The effective NFS User ID and Group ID when accessing the volume data.
-type NfsUserArgs struct {
-	// The NFS user's GID
-	GroupId pulumi.Float64PtrInput `pulumi:"groupId"`
-	// The NFS user's UID
-	UserId pulumi.Float64PtrInput `pulumi:"userId"`
-}
-
-func (NfsUserArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*NfsUser)(nil)).Elem()
-}
-
-func (i NfsUserArgs) ToNfsUserOutput() NfsUserOutput {
-	return i.ToNfsUserOutputWithContext(context.Background())
-}
-
-func (i NfsUserArgs) ToNfsUserOutputWithContext(ctx context.Context) NfsUserOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NfsUserOutput)
-}
-
-func (i NfsUserArgs) ToNfsUserPtrOutput() NfsUserPtrOutput {
-	return i.ToNfsUserPtrOutputWithContext(context.Background())
-}
-
-func (i NfsUserArgs) ToNfsUserPtrOutputWithContext(ctx context.Context) NfsUserPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NfsUserOutput).ToNfsUserPtrOutputWithContext(ctx)
-}
-
-// NfsUserPtrInput is an input type that accepts NfsUserArgs, NfsUserPtr and NfsUserPtrOutput values.
-// You can construct a concrete instance of `NfsUserPtrInput` via:
-//
-//	        NfsUserArgs{...}
-//
-//	or:
-//
-//	        nil
-type NfsUserPtrInput interface {
-	pulumi.Input
-
-	ToNfsUserPtrOutput() NfsUserPtrOutput
-	ToNfsUserPtrOutputWithContext(context.Context) NfsUserPtrOutput
-}
-
-type nfsUserPtrType NfsUserArgs
-
-func NfsUserPtr(v *NfsUserArgs) NfsUserPtrInput {
-	return (*nfsUserPtrType)(v)
-}
-
-func (*nfsUserPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**NfsUser)(nil)).Elem()
-}
-
-func (i *nfsUserPtrType) ToNfsUserPtrOutput() NfsUserPtrOutput {
-	return i.ToNfsUserPtrOutputWithContext(context.Background())
-}
-
-func (i *nfsUserPtrType) ToNfsUserPtrOutputWithContext(ctx context.Context) NfsUserPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NfsUserPtrOutput)
-}
-
-// The effective NFS User ID and Group ID when accessing the volume data.
-type NfsUserOutput struct{ *pulumi.OutputState }
-
-func (NfsUserOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NfsUser)(nil)).Elem()
-}
-
-func (o NfsUserOutput) ToNfsUserOutput() NfsUserOutput {
-	return o
-}
-
-func (o NfsUserOutput) ToNfsUserOutputWithContext(ctx context.Context) NfsUserOutput {
-	return o
-}
-
-func (o NfsUserOutput) ToNfsUserPtrOutput() NfsUserPtrOutput {
-	return o.ToNfsUserPtrOutputWithContext(context.Background())
-}
-
-func (o NfsUserOutput) ToNfsUserPtrOutputWithContext(ctx context.Context) NfsUserPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v NfsUser) *NfsUser {
-		return &v
-	}).(NfsUserPtrOutput)
-}
-
-// The NFS user's GID
-func (o NfsUserOutput) GroupId() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v NfsUser) *float64 { return v.GroupId }).(pulumi.Float64PtrOutput)
-}
-
-// The NFS user's UID
-func (o NfsUserOutput) UserId() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v NfsUser) *float64 { return v.UserId }).(pulumi.Float64PtrOutput)
-}
-
-type NfsUserPtrOutput struct{ *pulumi.OutputState }
-
-func (NfsUserPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NfsUser)(nil)).Elem()
-}
-
-func (o NfsUserPtrOutput) ToNfsUserPtrOutput() NfsUserPtrOutput {
-	return o
-}
-
-func (o NfsUserPtrOutput) ToNfsUserPtrOutputWithContext(ctx context.Context) NfsUserPtrOutput {
-	return o
-}
-
-func (o NfsUserPtrOutput) Elem() NfsUserOutput {
-	return o.ApplyT(func(v *NfsUser) NfsUser {
-		if v != nil {
-			return *v
-		}
-		var ret NfsUser
-		return ret
-	}).(NfsUserOutput)
-}
-
-// The NFS user's GID
-func (o NfsUserPtrOutput) GroupId() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *NfsUser) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.GroupId
-	}).(pulumi.Float64PtrOutput)
-}
-
-// The NFS user's UID
-func (o NfsUserPtrOutput) UserId() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *NfsUser) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.UserId
-	}).(pulumi.Float64PtrOutput)
-}
-
-// The effective NFS User ID and Group ID when accessing the volume data.
-type NfsUserResponse struct {
-	// The NFS user's GID
-	GroupId *float64 `pulumi:"groupId"`
-	// The NFS user's UID
-	UserId *float64 `pulumi:"userId"`
-}
-
-// The effective NFS User ID and Group ID when accessing the volume data.
-type NfsUserResponseOutput struct{ *pulumi.OutputState }
-
-func (NfsUserResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NfsUserResponse)(nil)).Elem()
-}
-
-func (o NfsUserResponseOutput) ToNfsUserResponseOutput() NfsUserResponseOutput {
-	return o
-}
-
-func (o NfsUserResponseOutput) ToNfsUserResponseOutputWithContext(ctx context.Context) NfsUserResponseOutput {
-	return o
-}
-
-// The NFS user's GID
-func (o NfsUserResponseOutput) GroupId() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v NfsUserResponse) *float64 { return v.GroupId }).(pulumi.Float64PtrOutput)
-}
-
-// The NFS user's UID
-func (o NfsUserResponseOutput) UserId() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v NfsUserResponse) *float64 { return v.UserId }).(pulumi.Float64PtrOutput)
-}
-
-type NfsUserResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (NfsUserResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NfsUserResponse)(nil)).Elem()
-}
-
-func (o NfsUserResponsePtrOutput) ToNfsUserResponsePtrOutput() NfsUserResponsePtrOutput {
-	return o
-}
-
-func (o NfsUserResponsePtrOutput) ToNfsUserResponsePtrOutputWithContext(ctx context.Context) NfsUserResponsePtrOutput {
-	return o
-}
-
-func (o NfsUserResponsePtrOutput) Elem() NfsUserResponseOutput {
-	return o.ApplyT(func(v *NfsUserResponse) NfsUserResponse {
-		if v != nil {
-			return *v
-		}
-		var ret NfsUserResponse
-		return ret
-	}).(NfsUserResponseOutput)
-}
-
-// The NFS user's GID
-func (o NfsUserResponsePtrOutput) GroupId() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *NfsUserResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.GroupId
-	}).(pulumi.Float64PtrOutput)
-}
-
-// The NFS user's UID
-func (o NfsUserResponsePtrOutput) UserId() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *NfsUserResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.UserId
-	}).(pulumi.Float64PtrOutput)
-}
-
 // Application specific parameters for the placement of volumes in the volume group
 type PlacementKeyValuePairs struct {
 	// Key for an application specific parameter for the placement of volumes in the volume group
@@ -4619,288 +3677,16 @@ func (o QuotaReportResponseArrayOutput) Index(i pulumi.IntInput) QuotaReportResp
 	}).(QuotaReportResponseOutput)
 }
 
-// The full path to a volume that is to be migrated into ANF. Required for Migration volumes
-type RemotePath struct {
-	// The Path to a ONTAP Host
-	ExternalHostName string `pulumi:"externalHostName"`
-	// The name of a server on the ONTAP Host
-	ServerName string `pulumi:"serverName"`
-	// The name of a volume on the server
-	VolumeName string `pulumi:"volumeName"`
-}
-
-// RemotePathInput is an input type that accepts RemotePathArgs and RemotePathOutput values.
-// You can construct a concrete instance of `RemotePathInput` via:
-//
-//	RemotePathArgs{...}
-type RemotePathInput interface {
-	pulumi.Input
-
-	ToRemotePathOutput() RemotePathOutput
-	ToRemotePathOutputWithContext(context.Context) RemotePathOutput
-}
-
-// The full path to a volume that is to be migrated into ANF. Required for Migration volumes
-type RemotePathArgs struct {
-	// The Path to a ONTAP Host
-	ExternalHostName pulumi.StringInput `pulumi:"externalHostName"`
-	// The name of a server on the ONTAP Host
-	ServerName pulumi.StringInput `pulumi:"serverName"`
-	// The name of a volume on the server
-	VolumeName pulumi.StringInput `pulumi:"volumeName"`
-}
-
-func (RemotePathArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RemotePath)(nil)).Elem()
-}
-
-func (i RemotePathArgs) ToRemotePathOutput() RemotePathOutput {
-	return i.ToRemotePathOutputWithContext(context.Background())
-}
-
-func (i RemotePathArgs) ToRemotePathOutputWithContext(ctx context.Context) RemotePathOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RemotePathOutput)
-}
-
-func (i RemotePathArgs) ToRemotePathPtrOutput() RemotePathPtrOutput {
-	return i.ToRemotePathPtrOutputWithContext(context.Background())
-}
-
-func (i RemotePathArgs) ToRemotePathPtrOutputWithContext(ctx context.Context) RemotePathPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RemotePathOutput).ToRemotePathPtrOutputWithContext(ctx)
-}
-
-// RemotePathPtrInput is an input type that accepts RemotePathArgs, RemotePathPtr and RemotePathPtrOutput values.
-// You can construct a concrete instance of `RemotePathPtrInput` via:
-//
-//	        RemotePathArgs{...}
-//
-//	or:
-//
-//	        nil
-type RemotePathPtrInput interface {
-	pulumi.Input
-
-	ToRemotePathPtrOutput() RemotePathPtrOutput
-	ToRemotePathPtrOutputWithContext(context.Context) RemotePathPtrOutput
-}
-
-type remotePathPtrType RemotePathArgs
-
-func RemotePathPtr(v *RemotePathArgs) RemotePathPtrInput {
-	return (*remotePathPtrType)(v)
-}
-
-func (*remotePathPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RemotePath)(nil)).Elem()
-}
-
-func (i *remotePathPtrType) ToRemotePathPtrOutput() RemotePathPtrOutput {
-	return i.ToRemotePathPtrOutputWithContext(context.Background())
-}
-
-func (i *remotePathPtrType) ToRemotePathPtrOutputWithContext(ctx context.Context) RemotePathPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RemotePathPtrOutput)
-}
-
-// The full path to a volume that is to be migrated into ANF. Required for Migration volumes
-type RemotePathOutput struct{ *pulumi.OutputState }
-
-func (RemotePathOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RemotePath)(nil)).Elem()
-}
-
-func (o RemotePathOutput) ToRemotePathOutput() RemotePathOutput {
-	return o
-}
-
-func (o RemotePathOutput) ToRemotePathOutputWithContext(ctx context.Context) RemotePathOutput {
-	return o
-}
-
-func (o RemotePathOutput) ToRemotePathPtrOutput() RemotePathPtrOutput {
-	return o.ToRemotePathPtrOutputWithContext(context.Background())
-}
-
-func (o RemotePathOutput) ToRemotePathPtrOutputWithContext(ctx context.Context) RemotePathPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RemotePath) *RemotePath {
-		return &v
-	}).(RemotePathPtrOutput)
-}
-
-// The Path to a ONTAP Host
-func (o RemotePathOutput) ExternalHostName() pulumi.StringOutput {
-	return o.ApplyT(func(v RemotePath) string { return v.ExternalHostName }).(pulumi.StringOutput)
-}
-
-// The name of a server on the ONTAP Host
-func (o RemotePathOutput) ServerName() pulumi.StringOutput {
-	return o.ApplyT(func(v RemotePath) string { return v.ServerName }).(pulumi.StringOutput)
-}
-
-// The name of a volume on the server
-func (o RemotePathOutput) VolumeName() pulumi.StringOutput {
-	return o.ApplyT(func(v RemotePath) string { return v.VolumeName }).(pulumi.StringOutput)
-}
-
-type RemotePathPtrOutput struct{ *pulumi.OutputState }
-
-func (RemotePathPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RemotePath)(nil)).Elem()
-}
-
-func (o RemotePathPtrOutput) ToRemotePathPtrOutput() RemotePathPtrOutput {
-	return o
-}
-
-func (o RemotePathPtrOutput) ToRemotePathPtrOutputWithContext(ctx context.Context) RemotePathPtrOutput {
-	return o
-}
-
-func (o RemotePathPtrOutput) Elem() RemotePathOutput {
-	return o.ApplyT(func(v *RemotePath) RemotePath {
-		if v != nil {
-			return *v
-		}
-		var ret RemotePath
-		return ret
-	}).(RemotePathOutput)
-}
-
-// The Path to a ONTAP Host
-func (o RemotePathPtrOutput) ExternalHostName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RemotePath) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ExternalHostName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The name of a server on the ONTAP Host
-func (o RemotePathPtrOutput) ServerName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RemotePath) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ServerName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The name of a volume on the server
-func (o RemotePathPtrOutput) VolumeName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RemotePath) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.VolumeName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The full path to a volume that is to be migrated into ANF. Required for Migration volumes
-type RemotePathResponse struct {
-	// The Path to a ONTAP Host
-	ExternalHostName string `pulumi:"externalHostName"`
-	// The name of a server on the ONTAP Host
-	ServerName string `pulumi:"serverName"`
-	// The name of a volume on the server
-	VolumeName string `pulumi:"volumeName"`
-}
-
-// The full path to a volume that is to be migrated into ANF. Required for Migration volumes
-type RemotePathResponseOutput struct{ *pulumi.OutputState }
-
-func (RemotePathResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RemotePathResponse)(nil)).Elem()
-}
-
-func (o RemotePathResponseOutput) ToRemotePathResponseOutput() RemotePathResponseOutput {
-	return o
-}
-
-func (o RemotePathResponseOutput) ToRemotePathResponseOutputWithContext(ctx context.Context) RemotePathResponseOutput {
-	return o
-}
-
-// The Path to a ONTAP Host
-func (o RemotePathResponseOutput) ExternalHostName() pulumi.StringOutput {
-	return o.ApplyT(func(v RemotePathResponse) string { return v.ExternalHostName }).(pulumi.StringOutput)
-}
-
-// The name of a server on the ONTAP Host
-func (o RemotePathResponseOutput) ServerName() pulumi.StringOutput {
-	return o.ApplyT(func(v RemotePathResponse) string { return v.ServerName }).(pulumi.StringOutput)
-}
-
-// The name of a volume on the server
-func (o RemotePathResponseOutput) VolumeName() pulumi.StringOutput {
-	return o.ApplyT(func(v RemotePathResponse) string { return v.VolumeName }).(pulumi.StringOutput)
-}
-
-type RemotePathResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (RemotePathResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RemotePathResponse)(nil)).Elem()
-}
-
-func (o RemotePathResponsePtrOutput) ToRemotePathResponsePtrOutput() RemotePathResponsePtrOutput {
-	return o
-}
-
-func (o RemotePathResponsePtrOutput) ToRemotePathResponsePtrOutputWithContext(ctx context.Context) RemotePathResponsePtrOutput {
-	return o
-}
-
-func (o RemotePathResponsePtrOutput) Elem() RemotePathResponseOutput {
-	return o.ApplyT(func(v *RemotePathResponse) RemotePathResponse {
-		if v != nil {
-			return *v
-		}
-		var ret RemotePathResponse
-		return ret
-	}).(RemotePathResponseOutput)
-}
-
-// The Path to a ONTAP Host
-func (o RemotePathResponsePtrOutput) ExternalHostName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RemotePathResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ExternalHostName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The name of a server on the ONTAP Host
-func (o RemotePathResponsePtrOutput) ServerName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RemotePathResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ServerName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The name of a volume on the server
-func (o RemotePathResponsePtrOutput) VolumeName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RemotePathResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.VolumeName
-	}).(pulumi.StringPtrOutput)
-}
-
 // Replication properties
 type ReplicationObject struct {
 	// Indicates whether the local volume is the source or destination for the Volume Replication
 	EndpointType *string `pulumi:"endpointType"`
-	// The full path to a volume that is to be migrated into ANF. Required for Migration volumes
-	RemotePath *RemotePath `pulumi:"remotePath"`
 	// The remote region for the other end of the Volume Replication.
 	RemoteVolumeRegion *string `pulumi:"remoteVolumeRegion"`
-	// The resource ID of the remote volume. Required for cross region and cross zone replication
-	RemoteVolumeResourceId *string `pulumi:"remoteVolumeResourceId"`
+	// The resource ID of the remote volume.
+	RemoteVolumeResourceId string `pulumi:"remoteVolumeResourceId"`
+	// Id
+	ReplicationId *string `pulumi:"replicationId"`
 	// Schedule
 	ReplicationSchedule *string `pulumi:"replicationSchedule"`
 }
@@ -4920,12 +3706,12 @@ type ReplicationObjectInput interface {
 type ReplicationObjectArgs struct {
 	// Indicates whether the local volume is the source or destination for the Volume Replication
 	EndpointType pulumi.StringPtrInput `pulumi:"endpointType"`
-	// The full path to a volume that is to be migrated into ANF. Required for Migration volumes
-	RemotePath RemotePathPtrInput `pulumi:"remotePath"`
 	// The remote region for the other end of the Volume Replication.
 	RemoteVolumeRegion pulumi.StringPtrInput `pulumi:"remoteVolumeRegion"`
-	// The resource ID of the remote volume. Required for cross region and cross zone replication
-	RemoteVolumeResourceId pulumi.StringPtrInput `pulumi:"remoteVolumeResourceId"`
+	// The resource ID of the remote volume.
+	RemoteVolumeResourceId pulumi.StringInput `pulumi:"remoteVolumeResourceId"`
+	// Id
+	ReplicationId pulumi.StringPtrInput `pulumi:"replicationId"`
 	// Schedule
 	ReplicationSchedule pulumi.StringPtrInput `pulumi:"replicationSchedule"`
 }
@@ -5013,19 +3799,19 @@ func (o ReplicationObjectOutput) EndpointType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReplicationObject) *string { return v.EndpointType }).(pulumi.StringPtrOutput)
 }
 
-// The full path to a volume that is to be migrated into ANF. Required for Migration volumes
-func (o ReplicationObjectOutput) RemotePath() RemotePathPtrOutput {
-	return o.ApplyT(func(v ReplicationObject) *RemotePath { return v.RemotePath }).(RemotePathPtrOutput)
-}
-
 // The remote region for the other end of the Volume Replication.
 func (o ReplicationObjectOutput) RemoteVolumeRegion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReplicationObject) *string { return v.RemoteVolumeRegion }).(pulumi.StringPtrOutput)
 }
 
-// The resource ID of the remote volume. Required for cross region and cross zone replication
-func (o ReplicationObjectOutput) RemoteVolumeResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ReplicationObject) *string { return v.RemoteVolumeResourceId }).(pulumi.StringPtrOutput)
+// The resource ID of the remote volume.
+func (o ReplicationObjectOutput) RemoteVolumeResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v ReplicationObject) string { return v.RemoteVolumeResourceId }).(pulumi.StringOutput)
+}
+
+// Id
+func (o ReplicationObjectOutput) ReplicationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationObject) *string { return v.ReplicationId }).(pulumi.StringPtrOutput)
 }
 
 // Schedule
@@ -5067,16 +3853,6 @@ func (o ReplicationObjectPtrOutput) EndpointType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The full path to a volume that is to be migrated into ANF. Required for Migration volumes
-func (o ReplicationObjectPtrOutput) RemotePath() RemotePathPtrOutput {
-	return o.ApplyT(func(v *ReplicationObject) *RemotePath {
-		if v == nil {
-			return nil
-		}
-		return v.RemotePath
-	}).(RemotePathPtrOutput)
-}
-
 // The remote region for the other end of the Volume Replication.
 func (o ReplicationObjectPtrOutput) RemoteVolumeRegion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReplicationObject) *string {
@@ -5087,13 +3863,23 @@ func (o ReplicationObjectPtrOutput) RemoteVolumeRegion() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// The resource ID of the remote volume. Required for cross region and cross zone replication
+// The resource ID of the remote volume.
 func (o ReplicationObjectPtrOutput) RemoteVolumeResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReplicationObject) *string {
 		if v == nil {
 			return nil
 		}
-		return v.RemoteVolumeResourceId
+		return &v.RemoteVolumeResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Id
+func (o ReplicationObjectPtrOutput) ReplicationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReplicationObject) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReplicationId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5111,14 +3897,12 @@ func (o ReplicationObjectPtrOutput) ReplicationSchedule() pulumi.StringPtrOutput
 type ReplicationObjectResponse struct {
 	// Indicates whether the local volume is the source or destination for the Volume Replication
 	EndpointType *string `pulumi:"endpointType"`
-	// The full path to a volume that is to be migrated into ANF. Required for Migration volumes
-	RemotePath *RemotePathResponse `pulumi:"remotePath"`
 	// The remote region for the other end of the Volume Replication.
 	RemoteVolumeRegion *string `pulumi:"remoteVolumeRegion"`
-	// The resource ID of the remote volume. Required for cross region and cross zone replication
-	RemoteVolumeResourceId *string `pulumi:"remoteVolumeResourceId"`
+	// The resource ID of the remote volume.
+	RemoteVolumeResourceId string `pulumi:"remoteVolumeResourceId"`
 	// Id
-	ReplicationId string `pulumi:"replicationId"`
+	ReplicationId *string `pulumi:"replicationId"`
 	// Schedule
 	ReplicationSchedule *string `pulumi:"replicationSchedule"`
 }
@@ -5143,24 +3927,19 @@ func (o ReplicationObjectResponseOutput) EndpointType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReplicationObjectResponse) *string { return v.EndpointType }).(pulumi.StringPtrOutput)
 }
 
-// The full path to a volume that is to be migrated into ANF. Required for Migration volumes
-func (o ReplicationObjectResponseOutput) RemotePath() RemotePathResponsePtrOutput {
-	return o.ApplyT(func(v ReplicationObjectResponse) *RemotePathResponse { return v.RemotePath }).(RemotePathResponsePtrOutput)
-}
-
 // The remote region for the other end of the Volume Replication.
 func (o ReplicationObjectResponseOutput) RemoteVolumeRegion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReplicationObjectResponse) *string { return v.RemoteVolumeRegion }).(pulumi.StringPtrOutput)
 }
 
-// The resource ID of the remote volume. Required for cross region and cross zone replication
-func (o ReplicationObjectResponseOutput) RemoteVolumeResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ReplicationObjectResponse) *string { return v.RemoteVolumeResourceId }).(pulumi.StringPtrOutput)
+// The resource ID of the remote volume.
+func (o ReplicationObjectResponseOutput) RemoteVolumeResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v ReplicationObjectResponse) string { return v.RemoteVolumeResourceId }).(pulumi.StringOutput)
 }
 
 // Id
-func (o ReplicationObjectResponseOutput) ReplicationId() pulumi.StringOutput {
-	return o.ApplyT(func(v ReplicationObjectResponse) string { return v.ReplicationId }).(pulumi.StringOutput)
+func (o ReplicationObjectResponseOutput) ReplicationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationObjectResponse) *string { return v.ReplicationId }).(pulumi.StringPtrOutput)
 }
 
 // Schedule
@@ -5202,16 +3981,6 @@ func (o ReplicationObjectResponsePtrOutput) EndpointType() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The full path to a volume that is to be migrated into ANF. Required for Migration volumes
-func (o ReplicationObjectResponsePtrOutput) RemotePath() RemotePathResponsePtrOutput {
-	return o.ApplyT(func(v *ReplicationObjectResponse) *RemotePathResponse {
-		if v == nil {
-			return nil
-		}
-		return v.RemotePath
-	}).(RemotePathResponsePtrOutput)
-}
-
 // The remote region for the other end of the Volume Replication.
 func (o ReplicationObjectResponsePtrOutput) RemoteVolumeRegion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReplicationObjectResponse) *string {
@@ -5222,13 +3991,13 @@ func (o ReplicationObjectResponsePtrOutput) RemoteVolumeRegion() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// The resource ID of the remote volume. Required for cross region and cross zone replication
+// The resource ID of the remote volume.
 func (o ReplicationObjectResponsePtrOutput) RemoteVolumeResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReplicationObjectResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return v.RemoteVolumeResourceId
+		return &v.RemoteVolumeResourceId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5238,7 +4007,7 @@ func (o ReplicationObjectResponsePtrOutput) ReplicationId() pulumi.StringPtrOutp
 		if v == nil {
 			return nil
 		}
-		return &v.ReplicationId
+		return v.ReplicationId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5260,8 +4029,6 @@ type ReplicationResponse struct {
 	RemoteVolumeRegion *string `pulumi:"remoteVolumeRegion"`
 	// The resource ID of the remote volume.
 	RemoteVolumeResourceId string `pulumi:"remoteVolumeResourceId"`
-	// UUID v4 used to identify the replication.
-	ReplicationId string `pulumi:"replicationId"`
 	// Schedule
 	ReplicationSchedule *string `pulumi:"replicationSchedule"`
 }
@@ -5294,11 +4061,6 @@ func (o ReplicationResponseOutput) RemoteVolumeRegion() pulumi.StringPtrOutput {
 // The resource ID of the remote volume.
 func (o ReplicationResponseOutput) RemoteVolumeResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v ReplicationResponse) string { return v.RemoteVolumeResourceId }).(pulumi.StringOutput)
-}
-
-// UUID v4 used to identify the replication.
-func (o ReplicationResponseOutput) ReplicationId() pulumi.StringOutput {
-	return o.ApplyT(func(v ReplicationResponse) string { return v.ReplicationId }).(pulumi.StringOutput)
 }
 
 // Schedule
@@ -5442,10 +4204,10 @@ func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) Us
 
 // Volume Backup Properties
 type VolumeBackupProperties struct {
+	// Backup Enabled
+	BackupEnabled *bool `pulumi:"backupEnabled"`
 	// Backup Policy Resource ID
 	BackupPolicyId *string `pulumi:"backupPolicyId"`
-	// Backup Vault Resource ID
-	BackupVaultId *string `pulumi:"backupVaultId"`
 	// Policy Enforced
 	PolicyEnforced *bool `pulumi:"policyEnforced"`
 }
@@ -5463,10 +4225,10 @@ type VolumeBackupPropertiesInput interface {
 
 // Volume Backup Properties
 type VolumeBackupPropertiesArgs struct {
+	// Backup Enabled
+	BackupEnabled pulumi.BoolPtrInput `pulumi:"backupEnabled"`
 	// Backup Policy Resource ID
 	BackupPolicyId pulumi.StringPtrInput `pulumi:"backupPolicyId"`
-	// Backup Vault Resource ID
-	BackupVaultId pulumi.StringPtrInput `pulumi:"backupVaultId"`
 	// Policy Enforced
 	PolicyEnforced pulumi.BoolPtrInput `pulumi:"policyEnforced"`
 }
@@ -5549,14 +4311,14 @@ func (o VolumeBackupPropertiesOutput) ToVolumeBackupPropertiesPtrOutputWithConte
 	}).(VolumeBackupPropertiesPtrOutput)
 }
 
+// Backup Enabled
+func (o VolumeBackupPropertiesOutput) BackupEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VolumeBackupProperties) *bool { return v.BackupEnabled }).(pulumi.BoolPtrOutput)
+}
+
 // Backup Policy Resource ID
 func (o VolumeBackupPropertiesOutput) BackupPolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeBackupProperties) *string { return v.BackupPolicyId }).(pulumi.StringPtrOutput)
-}
-
-// Backup Vault Resource ID
-func (o VolumeBackupPropertiesOutput) BackupVaultId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VolumeBackupProperties) *string { return v.BackupVaultId }).(pulumi.StringPtrOutput)
 }
 
 // Policy Enforced
@@ -5588,6 +4350,16 @@ func (o VolumeBackupPropertiesPtrOutput) Elem() VolumeBackupPropertiesOutput {
 	}).(VolumeBackupPropertiesOutput)
 }
 
+// Backup Enabled
+func (o VolumeBackupPropertiesPtrOutput) BackupEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VolumeBackupProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BackupEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Backup Policy Resource ID
 func (o VolumeBackupPropertiesPtrOutput) BackupPolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VolumeBackupProperties) *string {
@@ -5595,16 +4367,6 @@ func (o VolumeBackupPropertiesPtrOutput) BackupPolicyId() pulumi.StringPtrOutput
 			return nil
 		}
 		return v.BackupPolicyId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Backup Vault Resource ID
-func (o VolumeBackupPropertiesPtrOutput) BackupVaultId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VolumeBackupProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.BackupVaultId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5620,10 +4382,10 @@ func (o VolumeBackupPropertiesPtrOutput) PolicyEnforced() pulumi.BoolPtrOutput {
 
 // Volume Backup Properties
 type VolumeBackupPropertiesResponse struct {
+	// Backup Enabled
+	BackupEnabled *bool `pulumi:"backupEnabled"`
 	// Backup Policy Resource ID
 	BackupPolicyId *string `pulumi:"backupPolicyId"`
-	// Backup Vault Resource ID
-	BackupVaultId *string `pulumi:"backupVaultId"`
 	// Policy Enforced
 	PolicyEnforced *bool `pulumi:"policyEnforced"`
 }
@@ -5643,14 +4405,14 @@ func (o VolumeBackupPropertiesResponseOutput) ToVolumeBackupPropertiesResponseOu
 	return o
 }
 
+// Backup Enabled
+func (o VolumeBackupPropertiesResponseOutput) BackupEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VolumeBackupPropertiesResponse) *bool { return v.BackupEnabled }).(pulumi.BoolPtrOutput)
+}
+
 // Backup Policy Resource ID
 func (o VolumeBackupPropertiesResponseOutput) BackupPolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeBackupPropertiesResponse) *string { return v.BackupPolicyId }).(pulumi.StringPtrOutput)
-}
-
-// Backup Vault Resource ID
-func (o VolumeBackupPropertiesResponseOutput) BackupVaultId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VolumeBackupPropertiesResponse) *string { return v.BackupVaultId }).(pulumi.StringPtrOutput)
 }
 
 // Policy Enforced
@@ -5682,6 +4444,16 @@ func (o VolumeBackupPropertiesResponsePtrOutput) Elem() VolumeBackupPropertiesRe
 	}).(VolumeBackupPropertiesResponseOutput)
 }
 
+// Backup Enabled
+func (o VolumeBackupPropertiesResponsePtrOutput) BackupEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VolumeBackupPropertiesResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BackupEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Backup Policy Resource ID
 func (o VolumeBackupPropertiesResponsePtrOutput) BackupPolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VolumeBackupPropertiesResponse) *string {
@@ -5689,16 +4461,6 @@ func (o VolumeBackupPropertiesResponsePtrOutput) BackupPolicyId() pulumi.StringP
 			return nil
 		}
 		return v.BackupPolicyId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Backup Vault Resource ID
-func (o VolumeBackupPropertiesResponsePtrOutput) BackupVaultId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VolumeBackupPropertiesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.BackupVaultId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5720,8 +4482,6 @@ type VolumeBackupsResponse struct {
 	PolicyEnabled *bool `pulumi:"policyEnabled"`
 	// Volume name
 	VolumeName *string `pulumi:"volumeName"`
-	// ResourceId used to identify the Volume
-	VolumeResourceId *string `pulumi:"volumeResourceId"`
 }
 
 // Volume details using the backup policy
@@ -5754,11 +4514,6 @@ func (o VolumeBackupsResponseOutput) VolumeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeBackupsResponse) *string { return v.VolumeName }).(pulumi.StringPtrOutput)
 }
 
-// ResourceId used to identify the Volume
-func (o VolumeBackupsResponseOutput) VolumeResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VolumeBackupsResponse) *string { return v.VolumeResourceId }).(pulumi.StringPtrOutput)
-}
-
 type VolumeBackupsResponseArrayOutput struct{ *pulumi.OutputState }
 
 func (VolumeBackupsResponseArrayOutput) ElementType() reflect.Type {
@@ -5785,6 +4540,8 @@ type VolumeGroupMetaData struct {
 	ApplicationIdentifier *string `pulumi:"applicationIdentifier"`
 	// Application Type
 	ApplicationType *string `pulumi:"applicationType"`
+	// Application specific identifier of deployment rules for the volume group
+	DeploymentSpecId *string `pulumi:"deploymentSpecId"`
 	// Application specific placement rules for the volume group
 	GlobalPlacementRules []PlacementKeyValuePairs `pulumi:"globalPlacementRules"`
 	// Group Description
@@ -5808,6 +4565,8 @@ type VolumeGroupMetaDataArgs struct {
 	ApplicationIdentifier pulumi.StringPtrInput `pulumi:"applicationIdentifier"`
 	// Application Type
 	ApplicationType pulumi.StringPtrInput `pulumi:"applicationType"`
+	// Application specific identifier of deployment rules for the volume group
+	DeploymentSpecId pulumi.StringPtrInput `pulumi:"deploymentSpecId"`
 	// Application specific placement rules for the volume group
 	GlobalPlacementRules PlacementKeyValuePairsArrayInput `pulumi:"globalPlacementRules"`
 	// Group Description
@@ -5902,6 +4661,11 @@ func (o VolumeGroupMetaDataOutput) ApplicationType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeGroupMetaData) *string { return v.ApplicationType }).(pulumi.StringPtrOutput)
 }
 
+// Application specific identifier of deployment rules for the volume group
+func (o VolumeGroupMetaDataOutput) DeploymentSpecId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeGroupMetaData) *string { return v.DeploymentSpecId }).(pulumi.StringPtrOutput)
+}
+
 // Application specific placement rules for the volume group
 func (o VolumeGroupMetaDataOutput) GlobalPlacementRules() PlacementKeyValuePairsArrayOutput {
 	return o.ApplyT(func(v VolumeGroupMetaData) []PlacementKeyValuePairs { return v.GlobalPlacementRules }).(PlacementKeyValuePairsArrayOutput)
@@ -5956,6 +4720,16 @@ func (o VolumeGroupMetaDataPtrOutput) ApplicationType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Application specific identifier of deployment rules for the volume group
+func (o VolumeGroupMetaDataPtrOutput) DeploymentSpecId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VolumeGroupMetaData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeploymentSpecId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Application specific placement rules for the volume group
 func (o VolumeGroupMetaDataPtrOutput) GlobalPlacementRules() PlacementKeyValuePairsArrayOutput {
 	return o.ApplyT(func(v *VolumeGroupMetaData) []PlacementKeyValuePairs {
@@ -5982,6 +4756,8 @@ type VolumeGroupMetaDataResponse struct {
 	ApplicationIdentifier *string `pulumi:"applicationIdentifier"`
 	// Application Type
 	ApplicationType *string `pulumi:"applicationType"`
+	// Application specific identifier of deployment rules for the volume group
+	DeploymentSpecId *string `pulumi:"deploymentSpecId"`
 	// Application specific placement rules for the volume group
 	GlobalPlacementRules []PlacementKeyValuePairsResponse `pulumi:"globalPlacementRules"`
 	// Group Description
@@ -6013,6 +4789,11 @@ func (o VolumeGroupMetaDataResponseOutput) ApplicationIdentifier() pulumi.String
 // Application Type
 func (o VolumeGroupMetaDataResponseOutput) ApplicationType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeGroupMetaDataResponse) *string { return v.ApplicationType }).(pulumi.StringPtrOutput)
+}
+
+// Application specific identifier of deployment rules for the volume group
+func (o VolumeGroupMetaDataResponseOutput) DeploymentSpecId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeGroupMetaDataResponse) *string { return v.DeploymentSpecId }).(pulumi.StringPtrOutput)
 }
 
 // Application specific placement rules for the volume group
@@ -6074,6 +4855,16 @@ func (o VolumeGroupMetaDataResponsePtrOutput) ApplicationType() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// Application specific identifier of deployment rules for the volume group
+func (o VolumeGroupMetaDataResponsePtrOutput) DeploymentSpecId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VolumeGroupMetaDataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeploymentSpecId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Application specific placement rules for the volume group
 func (o VolumeGroupMetaDataResponsePtrOutput) GlobalPlacementRules() PlacementKeyValuePairsResponseArrayOutput {
 	return o.ApplyT(func(v *VolumeGroupMetaDataResponse) []PlacementKeyValuePairsResponse {
@@ -6108,19 +4899,12 @@ func (o VolumeGroupMetaDataResponsePtrOutput) VolumesCount() pulumi.Float64PtrOu
 type VolumeGroupVolumeProperties struct {
 	// Specifies whether the volume is enabled for Azure VMware Solution (AVS) datastore purpose
 	AvsDataStore *string `pulumi:"avsDataStore"`
-	// Resource identifier used to identify the Backup.
+	// UUID v4 or resource identifier used to identify the Backup.
 	BackupId *string `pulumi:"backupId"`
 	// Pool Resource Id used in case of creating a volume through volume group
 	CapacityPoolResourceId *string `pulumi:"capacityPoolResourceId"`
 	// Specifies whether Cool Access(tiering) is enabled for the volume.
 	CoolAccess *bool `pulumi:"coolAccess"`
-	// coolAccessRetrievalPolicy determines the data retrieval behavior from the cool tier to standard storage based on the read pattern for cool access enabled volumes. The possible values for this field are:
-	//  Default - Data will be pulled from cool tier to standard storage on random reads. This policy is the default.
-	//  OnRead - All client-driven data read is pulled from cool tier to standard storage on both sequential and random reads.
-	//  Never - No client-driven data is pulled from cool tier to standard storage.
-	CoolAccessRetrievalPolicy *string `pulumi:"coolAccessRetrievalPolicy"`
-	// coolAccessTieringPolicy determines which cold data blocks are moved to cool tier. The possible values for this field are: Auto - Moves cold user data blocks in both the Snapshot copies and the active file system to the cool tier tier. This policy is the default. SnapshotOnly - Moves user data blocks of the Volume Snapshot copies that are not associated with the active file system to the cool tier.
-	CoolAccessTieringPolicy *string `pulumi:"coolAccessTieringPolicy"`
 	// Specifies the number of days after which data that is not accessed by clients will be tiered.
 	CoolnessPeriod *int `pulumi:"coolnessPeriod"`
 	// A unique file path for the volume. Used when creating mount targets
@@ -6153,7 +4937,7 @@ type VolumeGroupVolumeProperties struct {
 	LdapEnabled *bool `pulumi:"ldapEnabled"`
 	// Resource name
 	Name *string `pulumi:"name"`
-	// The original value of the network features type available to the volume at the time it was created.
+	// Basic network, or Standard features available to the volume.
 	NetworkFeatures *string `pulumi:"networkFeatures"`
 	// Application specific placement rules for the particular volume
 	PlacementRules []PlacementKeyValuePairs `pulumi:"placementRules"`
@@ -6165,17 +4949,17 @@ type VolumeGroupVolumeProperties struct {
 	SecurityStyle *string `pulumi:"securityStyle"`
 	// The service level of the file system
 	ServiceLevel *string `pulumi:"serviceLevel"`
-	// Enables access-based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume
+	// Enables access based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume
 	SmbAccessBasedEnumeration *string `pulumi:"smbAccessBasedEnumeration"`
 	// Enables continuously available share property for smb volume. Only applicable for SMB volume
 	SmbContinuouslyAvailable *bool `pulumi:"smbContinuouslyAvailable"`
 	// Enables encryption for in-flight smb3 data. Only applicable for SMB/DualProtocol volume. To be used with swagger version 2020-08-01 or later
 	SmbEncryption *bool `pulumi:"smbEncryption"`
-	// Enables non-browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume
+	// Enables non browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume
 	SmbNonBrowsable *string `pulumi:"smbNonBrowsable"`
 	// If enabled (true) the volume will contain a read-only snapshot directory which provides access to each of the volume's snapshots (defaults to true).
 	SnapshotDirectoryVisible *bool `pulumi:"snapshotDirectoryVisible"`
-	// Resource identifier used to identify the Snapshot.
+	// UUID v4 or resource identifier used to identify the Snapshot.
 	SnapshotId *string `pulumi:"snapshotId"`
 	// The Azure Resource URI for a delegated subnet. Must have the delegation Microsoft.NetApp/volumes
 	SubnetId string `pulumi:"subnetId"`
@@ -6184,14 +4968,12 @@ type VolumeGroupVolumeProperties struct {
 	ThroughputMibps *float64          `pulumi:"throughputMibps"`
 	// UNIX permissions for NFS volume accepted in octal 4 digit format. First digit selects the set user ID(4), set group ID (2) and sticky (1) attributes. Second digit selects permission for the owner of the file: read (4), write (2) and execute (1). Third selects permissions for other users in the same group. the fourth for other users not in the group. 0755 - gives read/write/execute permissions to owner and read/execute to group and other users.
 	UnixPermissions *string `pulumi:"unixPermissions"`
-	// Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. For regular volumes, valid values are in the range 50GiB to 100TiB. For large volumes, valid values are in the range 100TiB to 500TiB, and on an exceptional basis, from to 2400GiB to 2400TiB. Values expressed in bytes as multiples of 1 GiB.
+	// Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 100 GiB. Upper limit is 100TiB, 500Tib for LargeVolume. Specified in bytes.
 	UsageThreshold float64 `pulumi:"usageThreshold"`
 	// Volume spec name is the application specific designation or identifier for the particular volume in a volume group for e.g. data, log
 	VolumeSpecName *string `pulumi:"volumeSpecName"`
 	// What type of volume is this. For destination volumes in Cross Region Replication, set type to DataProtection
 	VolumeType *string `pulumi:"volumeType"`
-	// Availability Zone
-	Zones []string `pulumi:"zones"`
 }
 
 // Defaults sets the appropriate defaults for VolumeGroupVolumeProperties
@@ -6240,6 +5022,10 @@ func (val *VolumeGroupVolumeProperties) Defaults() *VolumeGroupVolumeProperties 
 		ldapEnabled_ := false
 		tmp.LdapEnabled = &ldapEnabled_
 	}
+	if tmp.NetworkFeatures == nil {
+		networkFeatures_ := "Basic"
+		tmp.NetworkFeatures = &networkFeatures_
+	}
 	if tmp.SecurityStyle == nil {
 		securityStyle_ := "unix"
 		tmp.SecurityStyle = &securityStyle_
@@ -6255,6 +5041,10 @@ func (val *VolumeGroupVolumeProperties) Defaults() *VolumeGroupVolumeProperties 
 	if tmp.SnapshotDirectoryVisible == nil {
 		snapshotDirectoryVisible_ := true
 		tmp.SnapshotDirectoryVisible = &snapshotDirectoryVisible_
+	}
+	if tmp.UnixPermissions == nil {
+		unixPermissions_ := "0770"
+		tmp.UnixPermissions = &unixPermissions_
 	}
 	if utilities.IsZero(tmp.UsageThreshold) {
 		tmp.UsageThreshold = 107374182400.0
@@ -6277,19 +5067,12 @@ type VolumeGroupVolumePropertiesInput interface {
 type VolumeGroupVolumePropertiesArgs struct {
 	// Specifies whether the volume is enabled for Azure VMware Solution (AVS) datastore purpose
 	AvsDataStore pulumi.StringPtrInput `pulumi:"avsDataStore"`
-	// Resource identifier used to identify the Backup.
+	// UUID v4 or resource identifier used to identify the Backup.
 	BackupId pulumi.StringPtrInput `pulumi:"backupId"`
 	// Pool Resource Id used in case of creating a volume through volume group
 	CapacityPoolResourceId pulumi.StringPtrInput `pulumi:"capacityPoolResourceId"`
 	// Specifies whether Cool Access(tiering) is enabled for the volume.
 	CoolAccess pulumi.BoolPtrInput `pulumi:"coolAccess"`
-	// coolAccessRetrievalPolicy determines the data retrieval behavior from the cool tier to standard storage based on the read pattern for cool access enabled volumes. The possible values for this field are:
-	//  Default - Data will be pulled from cool tier to standard storage on random reads. This policy is the default.
-	//  OnRead - All client-driven data read is pulled from cool tier to standard storage on both sequential and random reads.
-	//  Never - No client-driven data is pulled from cool tier to standard storage.
-	CoolAccessRetrievalPolicy pulumi.StringPtrInput `pulumi:"coolAccessRetrievalPolicy"`
-	// coolAccessTieringPolicy determines which cold data blocks are moved to cool tier. The possible values for this field are: Auto - Moves cold user data blocks in both the Snapshot copies and the active file system to the cool tier tier. This policy is the default. SnapshotOnly - Moves user data blocks of the Volume Snapshot copies that are not associated with the active file system to the cool tier.
-	CoolAccessTieringPolicy pulumi.StringPtrInput `pulumi:"coolAccessTieringPolicy"`
 	// Specifies the number of days after which data that is not accessed by clients will be tiered.
 	CoolnessPeriod pulumi.IntPtrInput `pulumi:"coolnessPeriod"`
 	// A unique file path for the volume. Used when creating mount targets
@@ -6322,7 +5105,7 @@ type VolumeGroupVolumePropertiesArgs struct {
 	LdapEnabled pulumi.BoolPtrInput `pulumi:"ldapEnabled"`
 	// Resource name
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The original value of the network features type available to the volume at the time it was created.
+	// Basic network, or Standard features available to the volume.
 	NetworkFeatures pulumi.StringPtrInput `pulumi:"networkFeatures"`
 	// Application specific placement rules for the particular volume
 	PlacementRules PlacementKeyValuePairsArrayInput `pulumi:"placementRules"`
@@ -6334,17 +5117,17 @@ type VolumeGroupVolumePropertiesArgs struct {
 	SecurityStyle pulumi.StringPtrInput `pulumi:"securityStyle"`
 	// The service level of the file system
 	ServiceLevel pulumi.StringPtrInput `pulumi:"serviceLevel"`
-	// Enables access-based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume
+	// Enables access based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume
 	SmbAccessBasedEnumeration pulumi.StringPtrInput `pulumi:"smbAccessBasedEnumeration"`
 	// Enables continuously available share property for smb volume. Only applicable for SMB volume
 	SmbContinuouslyAvailable pulumi.BoolPtrInput `pulumi:"smbContinuouslyAvailable"`
 	// Enables encryption for in-flight smb3 data. Only applicable for SMB/DualProtocol volume. To be used with swagger version 2020-08-01 or later
 	SmbEncryption pulumi.BoolPtrInput `pulumi:"smbEncryption"`
-	// Enables non-browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume
+	// Enables non browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume
 	SmbNonBrowsable pulumi.StringPtrInput `pulumi:"smbNonBrowsable"`
 	// If enabled (true) the volume will contain a read-only snapshot directory which provides access to each of the volume's snapshots (defaults to true).
 	SnapshotDirectoryVisible pulumi.BoolPtrInput `pulumi:"snapshotDirectoryVisible"`
-	// Resource identifier used to identify the Snapshot.
+	// UUID v4 or resource identifier used to identify the Snapshot.
 	SnapshotId pulumi.StringPtrInput `pulumi:"snapshotId"`
 	// The Azure Resource URI for a delegated subnet. Must have the delegation Microsoft.NetApp/volumes
 	SubnetId pulumi.StringInput `pulumi:"subnetId"`
@@ -6353,14 +5136,12 @@ type VolumeGroupVolumePropertiesArgs struct {
 	ThroughputMibps pulumi.Float64PtrInput `pulumi:"throughputMibps"`
 	// UNIX permissions for NFS volume accepted in octal 4 digit format. First digit selects the set user ID(4), set group ID (2) and sticky (1) attributes. Second digit selects permission for the owner of the file: read (4), write (2) and execute (1). Third selects permissions for other users in the same group. the fourth for other users not in the group. 0755 - gives read/write/execute permissions to owner and read/execute to group and other users.
 	UnixPermissions pulumi.StringPtrInput `pulumi:"unixPermissions"`
-	// Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. For regular volumes, valid values are in the range 50GiB to 100TiB. For large volumes, valid values are in the range 100TiB to 500TiB, and on an exceptional basis, from to 2400GiB to 2400TiB. Values expressed in bytes as multiples of 1 GiB.
+	// Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 100 GiB. Upper limit is 100TiB, 500Tib for LargeVolume. Specified in bytes.
 	UsageThreshold pulumi.Float64Input `pulumi:"usageThreshold"`
 	// Volume spec name is the application specific designation or identifier for the particular volume in a volume group for e.g. data, log
 	VolumeSpecName pulumi.StringPtrInput `pulumi:"volumeSpecName"`
 	// What type of volume is this. For destination volumes in Cross Region Replication, set type to DataProtection
 	VolumeType pulumi.StringPtrInput `pulumi:"volumeType"`
-	// Availability Zone
-	Zones pulumi.StringArrayInput `pulumi:"zones"`
 }
 
 // Defaults sets the appropriate defaults for VolumeGroupVolumePropertiesArgs
@@ -6399,6 +5180,9 @@ func (val *VolumeGroupVolumePropertiesArgs) Defaults() *VolumeGroupVolumePropert
 	if tmp.LdapEnabled == nil {
 		tmp.LdapEnabled = pulumi.BoolPtr(false)
 	}
+	if tmp.NetworkFeatures == nil {
+		tmp.NetworkFeatures = pulumi.StringPtr("Basic")
+	}
 	if tmp.SecurityStyle == nil {
 		tmp.SecurityStyle = pulumi.StringPtr("unix")
 	}
@@ -6410,6 +5194,9 @@ func (val *VolumeGroupVolumePropertiesArgs) Defaults() *VolumeGroupVolumePropert
 	}
 	if tmp.SnapshotDirectoryVisible == nil {
 		tmp.SnapshotDirectoryVisible = pulumi.BoolPtr(true)
+	}
+	if tmp.UnixPermissions == nil {
+		tmp.UnixPermissions = pulumi.StringPtr("0770")
 	}
 	if tmp.UsageThreshold == nil {
 		tmp.UsageThreshold = pulumi.Float64(107374182400.0)
@@ -6473,7 +5260,7 @@ func (o VolumeGroupVolumePropertiesOutput) AvsDataStore() pulumi.StringPtrOutput
 	return o.ApplyT(func(v VolumeGroupVolumeProperties) *string { return v.AvsDataStore }).(pulumi.StringPtrOutput)
 }
 
-// Resource identifier used to identify the Backup.
+// UUID v4 or resource identifier used to identify the Backup.
 func (o VolumeGroupVolumePropertiesOutput) BackupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeGroupVolumeProperties) *string { return v.BackupId }).(pulumi.StringPtrOutput)
 }
@@ -6486,20 +5273,6 @@ func (o VolumeGroupVolumePropertiesOutput) CapacityPoolResourceId() pulumi.Strin
 // Specifies whether Cool Access(tiering) is enabled for the volume.
 func (o VolumeGroupVolumePropertiesOutput) CoolAccess() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VolumeGroupVolumeProperties) *bool { return v.CoolAccess }).(pulumi.BoolPtrOutput)
-}
-
-// coolAccessRetrievalPolicy determines the data retrieval behavior from the cool tier to standard storage based on the read pattern for cool access enabled volumes. The possible values for this field are:
-//
-//	Default - Data will be pulled from cool tier to standard storage on random reads. This policy is the default.
-//	OnRead - All client-driven data read is pulled from cool tier to standard storage on both sequential and random reads.
-//	Never - No client-driven data is pulled from cool tier to standard storage.
-func (o VolumeGroupVolumePropertiesOutput) CoolAccessRetrievalPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VolumeGroupVolumeProperties) *string { return v.CoolAccessRetrievalPolicy }).(pulumi.StringPtrOutput)
-}
-
-// coolAccessTieringPolicy determines which cold data blocks are moved to cool tier. The possible values for this field are: Auto - Moves cold user data blocks in both the Snapshot copies and the active file system to the cool tier tier. This policy is the default. SnapshotOnly - Moves user data blocks of the Volume Snapshot copies that are not associated with the active file system to the cool tier.
-func (o VolumeGroupVolumePropertiesOutput) CoolAccessTieringPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VolumeGroupVolumeProperties) *string { return v.CoolAccessTieringPolicy }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the number of days after which data that is not accessed by clients will be tiered.
@@ -6582,7 +5355,7 @@ func (o VolumeGroupVolumePropertiesOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeGroupVolumeProperties) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The original value of the network features type available to the volume at the time it was created.
+// Basic network, or Standard features available to the volume.
 func (o VolumeGroupVolumePropertiesOutput) NetworkFeatures() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeGroupVolumeProperties) *string { return v.NetworkFeatures }).(pulumi.StringPtrOutput)
 }
@@ -6612,7 +5385,7 @@ func (o VolumeGroupVolumePropertiesOutput) ServiceLevel() pulumi.StringPtrOutput
 	return o.ApplyT(func(v VolumeGroupVolumeProperties) *string { return v.ServiceLevel }).(pulumi.StringPtrOutput)
 }
 
-// Enables access-based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume
+// Enables access based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume
 func (o VolumeGroupVolumePropertiesOutput) SmbAccessBasedEnumeration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeGroupVolumeProperties) *string { return v.SmbAccessBasedEnumeration }).(pulumi.StringPtrOutput)
 }
@@ -6627,7 +5400,7 @@ func (o VolumeGroupVolumePropertiesOutput) SmbEncryption() pulumi.BoolPtrOutput 
 	return o.ApplyT(func(v VolumeGroupVolumeProperties) *bool { return v.SmbEncryption }).(pulumi.BoolPtrOutput)
 }
 
-// Enables non-browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume
+// Enables non browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume
 func (o VolumeGroupVolumePropertiesOutput) SmbNonBrowsable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeGroupVolumeProperties) *string { return v.SmbNonBrowsable }).(pulumi.StringPtrOutput)
 }
@@ -6637,7 +5410,7 @@ func (o VolumeGroupVolumePropertiesOutput) SnapshotDirectoryVisible() pulumi.Boo
 	return o.ApplyT(func(v VolumeGroupVolumeProperties) *bool { return v.SnapshotDirectoryVisible }).(pulumi.BoolPtrOutput)
 }
 
-// Resource identifier used to identify the Snapshot.
+// UUID v4 or resource identifier used to identify the Snapshot.
 func (o VolumeGroupVolumePropertiesOutput) SnapshotId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeGroupVolumeProperties) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
 }
@@ -6661,7 +5434,7 @@ func (o VolumeGroupVolumePropertiesOutput) UnixPermissions() pulumi.StringPtrOut
 	return o.ApplyT(func(v VolumeGroupVolumeProperties) *string { return v.UnixPermissions }).(pulumi.StringPtrOutput)
 }
 
-// Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. For regular volumes, valid values are in the range 50GiB to 100TiB. For large volumes, valid values are in the range 100TiB to 500TiB, and on an exceptional basis, from to 2400GiB to 2400TiB. Values expressed in bytes as multiples of 1 GiB.
+// Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 100 GiB. Upper limit is 100TiB, 500Tib for LargeVolume. Specified in bytes.
 func (o VolumeGroupVolumePropertiesOutput) UsageThreshold() pulumi.Float64Output {
 	return o.ApplyT(func(v VolumeGroupVolumeProperties) float64 { return v.UsageThreshold }).(pulumi.Float64Output)
 }
@@ -6674,11 +5447,6 @@ func (o VolumeGroupVolumePropertiesOutput) VolumeSpecName() pulumi.StringPtrOutp
 // What type of volume is this. For destination volumes in Cross Region Replication, set type to DataProtection
 func (o VolumeGroupVolumePropertiesOutput) VolumeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeGroupVolumeProperties) *string { return v.VolumeType }).(pulumi.StringPtrOutput)
-}
-
-// Availability Zone
-func (o VolumeGroupVolumePropertiesOutput) Zones() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v VolumeGroupVolumeProperties) []string { return v.Zones }).(pulumi.StringArrayOutput)
 }
 
 type VolumeGroupVolumePropertiesArrayOutput struct{ *pulumi.OutputState }
@@ -6707,7 +5475,7 @@ type VolumeGroupVolumePropertiesResponse struct {
 	ActualThroughputMibps float64 `pulumi:"actualThroughputMibps"`
 	// Specifies whether the volume is enabled for Azure VMware Solution (AVS) datastore purpose
 	AvsDataStore *string `pulumi:"avsDataStore"`
-	// Resource identifier used to identify the Backup.
+	// UUID v4 or resource identifier used to identify the Backup.
 	BackupId *string `pulumi:"backupId"`
 	// Unique Baremetal Tenant Identifier.
 	BaremetalTenantId string `pulumi:"baremetalTenantId"`
@@ -6717,13 +5485,6 @@ type VolumeGroupVolumePropertiesResponse struct {
 	CloneProgress int `pulumi:"cloneProgress"`
 	// Specifies whether Cool Access(tiering) is enabled for the volume.
 	CoolAccess *bool `pulumi:"coolAccess"`
-	// coolAccessRetrievalPolicy determines the data retrieval behavior from the cool tier to standard storage based on the read pattern for cool access enabled volumes. The possible values for this field are:
-	//  Default - Data will be pulled from cool tier to standard storage on random reads. This policy is the default.
-	//  OnRead - All client-driven data read is pulled from cool tier to standard storage on both sequential and random reads.
-	//  Never - No client-driven data is pulled from cool tier to standard storage.
-	CoolAccessRetrievalPolicy *string `pulumi:"coolAccessRetrievalPolicy"`
-	// coolAccessTieringPolicy determines which cold data blocks are moved to cool tier. The possible values for this field are: Auto - Moves cold user data blocks in both the Snapshot copies and the active file system to the cool tier tier. This policy is the default. SnapshotOnly - Moves user data blocks of the Volume Snapshot copies that are not associated with the active file system to the cool tier.
-	CoolAccessTieringPolicy *string `pulumi:"coolAccessTieringPolicy"`
 	// Specifies the number of days after which data that is not accessed by clients will be tiered.
 	CoolnessPeriod *int `pulumi:"coolnessPeriod"`
 	// A unique file path for the volume. Used when creating mount targets
@@ -6738,8 +5499,6 @@ type VolumeGroupVolumePropertiesResponse struct {
 	DefaultUserQuotaInKiBs *float64 `pulumi:"defaultUserQuotaInKiBs"`
 	// If enabled (true) the snapshot the volume was created from will be automatically deleted after the volume create operation has finished.  Defaults to false
 	DeleteBaseSnapshot *bool `pulumi:"deleteBaseSnapshot"`
-	// The effective value of the network features type available to the volume, or current effective state of update.
-	EffectiveNetworkFeatures string `pulumi:"effectiveNetworkFeatures"`
 	// Flag indicating whether subvolume operations are enabled on the volume
 	EnableSubvolumes *string `pulumi:"enableSubvolumes"`
 	// Specifies if the volume is encrypted or not. Only available on volumes created or updated after 2022-01-01.
@@ -6772,7 +5531,7 @@ type VolumeGroupVolumePropertiesResponse struct {
 	MountTargets []MountTargetPropertiesResponse `pulumi:"mountTargets"`
 	// Resource name
 	Name *string `pulumi:"name"`
-	// The original value of the network features type available to the volume at the time it was created.
+	// Basic network, or Standard features available to the volume.
 	NetworkFeatures *string `pulumi:"networkFeatures"`
 	// Network Sibling Set ID for the the group of volumes sharing networking resources.
 	NetworkSiblingSetId string `pulumi:"networkSiblingSetId"`
@@ -6792,17 +5551,17 @@ type VolumeGroupVolumePropertiesResponse struct {
 	SecurityStyle *string `pulumi:"securityStyle"`
 	// The service level of the file system
 	ServiceLevel *string `pulumi:"serviceLevel"`
-	// Enables access-based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume
+	// Enables access based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume
 	SmbAccessBasedEnumeration *string `pulumi:"smbAccessBasedEnumeration"`
 	// Enables continuously available share property for smb volume. Only applicable for SMB volume
 	SmbContinuouslyAvailable *bool `pulumi:"smbContinuouslyAvailable"`
 	// Enables encryption for in-flight smb3 data. Only applicable for SMB/DualProtocol volume. To be used with swagger version 2020-08-01 or later
 	SmbEncryption *bool `pulumi:"smbEncryption"`
-	// Enables non-browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume
+	// Enables non browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume
 	SmbNonBrowsable *string `pulumi:"smbNonBrowsable"`
 	// If enabled (true) the volume will contain a read-only snapshot directory which provides access to each of the volume's snapshots (defaults to true).
 	SnapshotDirectoryVisible *bool `pulumi:"snapshotDirectoryVisible"`
-	// Resource identifier used to identify the Snapshot.
+	// UUID v4 or resource identifier used to identify the Snapshot.
 	SnapshotId *string `pulumi:"snapshotId"`
 	// Provides storage to network proximity information for the volume.
 	StorageToNetworkProximity string `pulumi:"storageToNetworkProximity"`
@@ -6817,7 +5576,7 @@ type VolumeGroupVolumePropertiesResponse struct {
 	Type string `pulumi:"type"`
 	// UNIX permissions for NFS volume accepted in octal 4 digit format. First digit selects the set user ID(4), set group ID (2) and sticky (1) attributes. Second digit selects permission for the owner of the file: read (4), write (2) and execute (1). Third selects permissions for other users in the same group. the fourth for other users not in the group. 0755 - gives read/write/execute permissions to owner and read/execute to group and other users.
 	UnixPermissions *string `pulumi:"unixPermissions"`
-	// Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. For regular volumes, valid values are in the range 50GiB to 100TiB. For large volumes, valid values are in the range 100TiB to 500TiB, and on an exceptional basis, from to 2400GiB to 2400TiB. Values expressed in bytes as multiples of 1 GiB.
+	// Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 100 GiB. Upper limit is 100TiB, 500Tib for LargeVolume. Specified in bytes.
 	UsageThreshold float64 `pulumi:"usageThreshold"`
 	// Volume Group Name
 	VolumeGroupName string `pulumi:"volumeGroupName"`
@@ -6825,8 +5584,6 @@ type VolumeGroupVolumePropertiesResponse struct {
 	VolumeSpecName *string `pulumi:"volumeSpecName"`
 	// What type of volume is this. For destination volumes in Cross Region Replication, set type to DataProtection
 	VolumeType *string `pulumi:"volumeType"`
-	// Availability Zone
-	Zones []string `pulumi:"zones"`
 }
 
 // Defaults sets the appropriate defaults for VolumeGroupVolumePropertiesResponse
@@ -6878,6 +5635,10 @@ func (val *VolumeGroupVolumePropertiesResponse) Defaults() *VolumeGroupVolumePro
 		ldapEnabled_ := false
 		tmp.LdapEnabled = &ldapEnabled_
 	}
+	if tmp.NetworkFeatures == nil {
+		networkFeatures_ := "Basic"
+		tmp.NetworkFeatures = &networkFeatures_
+	}
 	if tmp.SecurityStyle == nil {
 		securityStyle_ := "unix"
 		tmp.SecurityStyle = &securityStyle_
@@ -6893,6 +5654,10 @@ func (val *VolumeGroupVolumePropertiesResponse) Defaults() *VolumeGroupVolumePro
 	if tmp.SnapshotDirectoryVisible == nil {
 		snapshotDirectoryVisible_ := true
 		tmp.SnapshotDirectoryVisible = &snapshotDirectoryVisible_
+	}
+	if tmp.UnixPermissions == nil {
+		unixPermissions_ := "0770"
+		tmp.UnixPermissions = &unixPermissions_
 	}
 	if utilities.IsZero(tmp.UsageThreshold) {
 		tmp.UsageThreshold = 107374182400.0
@@ -6925,7 +5690,7 @@ func (o VolumeGroupVolumePropertiesResponseOutput) AvsDataStore() pulumi.StringP
 	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) *string { return v.AvsDataStore }).(pulumi.StringPtrOutput)
 }
 
-// Resource identifier used to identify the Backup.
+// UUID v4 or resource identifier used to identify the Backup.
 func (o VolumeGroupVolumePropertiesResponseOutput) BackupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) *string { return v.BackupId }).(pulumi.StringPtrOutput)
 }
@@ -6948,20 +5713,6 @@ func (o VolumeGroupVolumePropertiesResponseOutput) CloneProgress() pulumi.IntOut
 // Specifies whether Cool Access(tiering) is enabled for the volume.
 func (o VolumeGroupVolumePropertiesResponseOutput) CoolAccess() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) *bool { return v.CoolAccess }).(pulumi.BoolPtrOutput)
-}
-
-// coolAccessRetrievalPolicy determines the data retrieval behavior from the cool tier to standard storage based on the read pattern for cool access enabled volumes. The possible values for this field are:
-//
-//	Default - Data will be pulled from cool tier to standard storage on random reads. This policy is the default.
-//	OnRead - All client-driven data read is pulled from cool tier to standard storage on both sequential and random reads.
-//	Never - No client-driven data is pulled from cool tier to standard storage.
-func (o VolumeGroupVolumePropertiesResponseOutput) CoolAccessRetrievalPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) *string { return v.CoolAccessRetrievalPolicy }).(pulumi.StringPtrOutput)
-}
-
-// coolAccessTieringPolicy determines which cold data blocks are moved to cool tier. The possible values for this field are: Auto - Moves cold user data blocks in both the Snapshot copies and the active file system to the cool tier tier. This policy is the default. SnapshotOnly - Moves user data blocks of the Volume Snapshot copies that are not associated with the active file system to the cool tier.
-func (o VolumeGroupVolumePropertiesResponseOutput) CoolAccessTieringPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) *string { return v.CoolAccessTieringPolicy }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the number of days after which data that is not accessed by clients will be tiered.
@@ -6999,11 +5750,6 @@ func (o VolumeGroupVolumePropertiesResponseOutput) DefaultUserQuotaInKiBs() pulu
 // If enabled (true) the snapshot the volume was created from will be automatically deleted after the volume create operation has finished.  Defaults to false
 func (o VolumeGroupVolumePropertiesResponseOutput) DeleteBaseSnapshot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) *bool { return v.DeleteBaseSnapshot }).(pulumi.BoolPtrOutput)
-}
-
-// The effective value of the network features type available to the volume, or current effective state of update.
-func (o VolumeGroupVolumePropertiesResponseOutput) EffectiveNetworkFeatures() pulumi.StringOutput {
-	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) string { return v.EffectiveNetworkFeatures }).(pulumi.StringOutput)
 }
 
 // Flag indicating whether subvolume operations are enabled on the volume
@@ -7088,7 +5834,7 @@ func (o VolumeGroupVolumePropertiesResponseOutput) Name() pulumi.StringPtrOutput
 	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The original value of the network features type available to the volume at the time it was created.
+// Basic network, or Standard features available to the volume.
 func (o VolumeGroupVolumePropertiesResponseOutput) NetworkFeatures() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) *string { return v.NetworkFeatures }).(pulumi.StringPtrOutput)
 }
@@ -7138,7 +5884,7 @@ func (o VolumeGroupVolumePropertiesResponseOutput) ServiceLevel() pulumi.StringP
 	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) *string { return v.ServiceLevel }).(pulumi.StringPtrOutput)
 }
 
-// Enables access-based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume
+// Enables access based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume
 func (o VolumeGroupVolumePropertiesResponseOutput) SmbAccessBasedEnumeration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) *string { return v.SmbAccessBasedEnumeration }).(pulumi.StringPtrOutput)
 }
@@ -7153,7 +5899,7 @@ func (o VolumeGroupVolumePropertiesResponseOutput) SmbEncryption() pulumi.BoolPt
 	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) *bool { return v.SmbEncryption }).(pulumi.BoolPtrOutput)
 }
 
-// Enables non-browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume
+// Enables non browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume
 func (o VolumeGroupVolumePropertiesResponseOutput) SmbNonBrowsable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) *string { return v.SmbNonBrowsable }).(pulumi.StringPtrOutput)
 }
@@ -7163,7 +5909,7 @@ func (o VolumeGroupVolumePropertiesResponseOutput) SnapshotDirectoryVisible() pu
 	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) *bool { return v.SnapshotDirectoryVisible }).(pulumi.BoolPtrOutput)
 }
 
-// Resource identifier used to identify the Snapshot.
+// UUID v4 or resource identifier used to identify the Snapshot.
 func (o VolumeGroupVolumePropertiesResponseOutput) SnapshotId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
 }
@@ -7202,7 +5948,7 @@ func (o VolumeGroupVolumePropertiesResponseOutput) UnixPermissions() pulumi.Stri
 	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) *string { return v.UnixPermissions }).(pulumi.StringPtrOutput)
 }
 
-// Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. For regular volumes, valid values are in the range 50GiB to 100TiB. For large volumes, valid values are in the range 100TiB to 500TiB, and on an exceptional basis, from to 2400GiB to 2400TiB. Values expressed in bytes as multiples of 1 GiB.
+// Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 100 GiB. Upper limit is 100TiB, 500Tib for LargeVolume. Specified in bytes.
 func (o VolumeGroupVolumePropertiesResponseOutput) UsageThreshold() pulumi.Float64Output {
 	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) float64 { return v.UsageThreshold }).(pulumi.Float64Output)
 }
@@ -7220,11 +5966,6 @@ func (o VolumeGroupVolumePropertiesResponseOutput) VolumeSpecName() pulumi.Strin
 // What type of volume is this. For destination volumes in Cross Region Replication, set type to DataProtection
 func (o VolumeGroupVolumePropertiesResponseOutput) VolumeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) *string { return v.VolumeType }).(pulumi.StringPtrOutput)
-}
-
-// Availability Zone
-func (o VolumeGroupVolumePropertiesResponseOutput) Zones() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) []string { return v.Zones }).(pulumi.StringArrayOutput)
 }
 
 type VolumeGroupVolumePropertiesResponseArrayOutput struct{ *pulumi.OutputState }
@@ -8527,14 +7268,6 @@ func init() {
 	pulumi.RegisterOutputType(ActiveDirectoryArrayOutput{})
 	pulumi.RegisterOutputType(ActiveDirectoryResponseOutput{})
 	pulumi.RegisterOutputType(ActiveDirectoryResponseArrayOutput{})
-	pulumi.RegisterOutputType(BucketServerPropertiesOutput{})
-	pulumi.RegisterOutputType(BucketServerPropertiesPtrOutput{})
-	pulumi.RegisterOutputType(BucketServerPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(BucketServerPropertiesResponsePtrOutput{})
-	pulumi.RegisterOutputType(CifsUserOutput{})
-	pulumi.RegisterOutputType(CifsUserPtrOutput{})
-	pulumi.RegisterOutputType(CifsUserResponseOutput{})
-	pulumi.RegisterOutputType(CifsUserResponsePtrOutput{})
 	pulumi.RegisterOutputType(DailyScheduleOutput{})
 	pulumi.RegisterOutputType(DailySchedulePtrOutput{})
 	pulumi.RegisterOutputType(DailyScheduleResponseOutput{})
@@ -8547,10 +7280,6 @@ func init() {
 	pulumi.RegisterOutputType(ExportPolicyRuleArrayOutput{})
 	pulumi.RegisterOutputType(ExportPolicyRuleResponseOutput{})
 	pulumi.RegisterOutputType(ExportPolicyRuleResponseArrayOutput{})
-	pulumi.RegisterOutputType(FileSystemUserOutput{})
-	pulumi.RegisterOutputType(FileSystemUserPtrOutput{})
-	pulumi.RegisterOutputType(FileSystemUserResponseOutput{})
-	pulumi.RegisterOutputType(FileSystemUserResponsePtrOutput{})
 	pulumi.RegisterOutputType(HourlyScheduleOutput{})
 	pulumi.RegisterOutputType(HourlySchedulePtrOutput{})
 	pulumi.RegisterOutputType(HourlyScheduleResponseOutput{})
@@ -8575,20 +7304,12 @@ func init() {
 	pulumi.RegisterOutputType(MonthlyScheduleResponsePtrOutput{})
 	pulumi.RegisterOutputType(MountTargetPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(MountTargetPropertiesResponseArrayOutput{})
-	pulumi.RegisterOutputType(NfsUserOutput{})
-	pulumi.RegisterOutputType(NfsUserPtrOutput{})
-	pulumi.RegisterOutputType(NfsUserResponseOutput{})
-	pulumi.RegisterOutputType(NfsUserResponsePtrOutput{})
 	pulumi.RegisterOutputType(PlacementKeyValuePairsOutput{})
 	pulumi.RegisterOutputType(PlacementKeyValuePairsArrayOutput{})
 	pulumi.RegisterOutputType(PlacementKeyValuePairsResponseOutput{})
 	pulumi.RegisterOutputType(PlacementKeyValuePairsResponseArrayOutput{})
 	pulumi.RegisterOutputType(QuotaReportResponseOutput{})
 	pulumi.RegisterOutputType(QuotaReportResponseArrayOutput{})
-	pulumi.RegisterOutputType(RemotePathOutput{})
-	pulumi.RegisterOutputType(RemotePathPtrOutput{})
-	pulumi.RegisterOutputType(RemotePathResponseOutput{})
-	pulumi.RegisterOutputType(RemotePathResponsePtrOutput{})
 	pulumi.RegisterOutputType(ReplicationObjectOutput{})
 	pulumi.RegisterOutputType(ReplicationObjectPtrOutput{})
 	pulumi.RegisterOutputType(ReplicationObjectResponseOutput{})

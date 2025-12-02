@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Properties of the blob container, including Id, resource name, resource type, Etag.
 //
-// Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
+// Uses Azure REST API version 2022-09-01. In version 1.x of the Azure Native provider, it used API version 2021-02-01.
 //
-// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-01-01, 2023-04-01, 2023-05-01, 2024-01-01.
 type BlobContainer struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Default the container to use specified encryption scope for all writes.
 	DefaultEncryptionScope pulumi.StringPtrOutput `pulumi:"defaultEncryptionScope"`
 	// Indicates whether the blob container was deleted.
@@ -139,9 +137,6 @@ func NewBlobContainer(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:storage/v20240101:BlobContainer"),
 		},
-		{
-			Type: pulumi.String("azure-native:storage/v20250101:BlobContainer"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -258,11 +253,6 @@ func (o BlobContainerOutput) ToBlobContainerOutput() BlobContainerOutput {
 
 func (o BlobContainerOutput) ToBlobContainerOutputWithContext(ctx context.Context) BlobContainerOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o BlobContainerOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *BlobContainer) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Default the container to use specified encryption scope for all writes.

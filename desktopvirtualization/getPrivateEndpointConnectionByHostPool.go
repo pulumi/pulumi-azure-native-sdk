@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a private endpoint connection.
 //
-// Uses Azure REST API version 2024-04-03.
+// Uses Azure REST API version 2022-10-14-preview.
 //
-// Other available API versions: 2022-10-14-preview, 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-08-preview, 2024-08-08-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native desktopvirtualization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-03, 2024-04-08-preview, 2024-08-08-preview, 2024-11-01-preview.
 func LookupPrivateEndpointConnectionByHostPool(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionByHostPoolArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionByHostPoolResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateEndpointConnectionByHostPoolResult
@@ -29,7 +29,7 @@ func LookupPrivateEndpointConnectionByHostPool(ctx *pulumi.Context, args *Lookup
 type LookupPrivateEndpointConnectionByHostPoolArgs struct {
 	// The name of the host pool within the specified resource group
 	HostPoolName string `pulumi:"hostPoolName"`
-	// The name of the private endpoint connection associated with the Azure resource.
+	// The name of the private endpoint connection associated with the Azure resource
 	PrivateEndpointConnectionName string `pulumi:"privateEndpointConnectionName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -37,21 +37,17 @@ type LookupPrivateEndpointConnectionByHostPoolArgs struct {
 
 // The Private Endpoint Connection resource.
 type LookupPrivateEndpointConnectionByHostPoolResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// The group ids for the private endpoint resource.
-	GroupIds []string `pulumi:"groupIds"`
-	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// The private endpoint resource.
+	// The resource of private end point.
 	PrivateEndpoint *PrivateEndpointResponse `pulumi:"privateEndpoint"`
 	// A collection of information about the state of the connection between service consumer and provider.
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
 	// The provisioning state of the private endpoint connection resource.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	// Metadata pertaining to creation and last modification of the resource.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
@@ -69,7 +65,7 @@ func LookupPrivateEndpointConnectionByHostPoolOutput(ctx *pulumi.Context, args L
 type LookupPrivateEndpointConnectionByHostPoolOutputArgs struct {
 	// The name of the host pool within the specified resource group
 	HostPoolName pulumi.StringInput `pulumi:"hostPoolName"`
-	// The name of the private endpoint connection associated with the Azure resource.
+	// The name of the private endpoint connection associated with the Azure resource
 	PrivateEndpointConnectionName pulumi.StringInput `pulumi:"privateEndpointConnectionName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
@@ -94,17 +90,7 @@ func (o LookupPrivateEndpointConnectionByHostPoolResultOutput) ToLookupPrivateEn
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupPrivateEndpointConnectionByHostPoolResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupPrivateEndpointConnectionByHostPoolResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// The group ids for the private endpoint resource.
-func (o LookupPrivateEndpointConnectionByHostPoolResultOutput) GroupIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupPrivateEndpointConnectionByHostPoolResult) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
-}
-
-// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupPrivateEndpointConnectionByHostPoolResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionByHostPoolResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -114,7 +100,7 @@ func (o LookupPrivateEndpointConnectionByHostPoolResultOutput) Name() pulumi.Str
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionByHostPoolResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The private endpoint resource.
+// The resource of private end point.
 func (o LookupPrivateEndpointConnectionByHostPoolResultOutput) PrivateEndpoint() PrivateEndpointResponsePtrOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionByHostPoolResult) *PrivateEndpointResponse {
 		return v.PrivateEndpoint
@@ -133,7 +119,7 @@ func (o LookupPrivateEndpointConnectionByHostPoolResultOutput) ProvisioningState
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionByHostPoolResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+// Metadata pertaining to creation and last modification of the resource.
 func (o LookupPrivateEndpointConnectionByHostPoolResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionByHostPoolResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }

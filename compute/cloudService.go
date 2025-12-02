@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Describes the cloud service.
 //
-// Uses Azure REST API version 2022-09-04. In version 2.x of the Azure Native provider, it used API version 2022-09-04.
+// Uses Azure REST API version 2022-09-04. In version 1.x of the Azure Native provider, it used API version 2021-03-01.
 //
-// Other available API versions: 2022-04-04, 2024-11-04. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-11-04.
 type CloudService struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Resource location.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Resource name.
@@ -164,11 +162,6 @@ func (o CloudServiceOutput) ToCloudServiceOutput() CloudServiceOutput {
 
 func (o CloudServiceOutput) ToCloudServiceOutputWithContext(ctx context.Context) CloudServiceOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o CloudServiceOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *CloudService) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource location.

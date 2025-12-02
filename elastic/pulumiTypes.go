@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -1871,18 +1871,8 @@ type MonitorProperties struct {
 	GenerateApiKey *bool `pulumi:"generateApiKey"`
 	// Flag specifying if the resource monitoring is enabled or disabled.
 	MonitoringStatus *string `pulumi:"monitoringStatus"`
-	// Plan details of the monitor resource.
-	PlanDetails *PlanDetails `pulumi:"planDetails"`
 	// Provisioning state of the monitor resource.
 	ProvisioningState *string `pulumi:"provisioningState"`
-	// Status of Azure Subscription where Marketplace SaaS is located.
-	SaaSAzureSubscriptionStatus *string `pulumi:"saaSAzureSubscriptionStatus"`
-	// A unique identifier associated with the campaign.
-	SourceCampaignId *string `pulumi:"sourceCampaignId"`
-	// Name of the marketing campaign.
-	SourceCampaignName *string `pulumi:"sourceCampaignName"`
-	// State of the Azure Subscription containing the monitor resource
-	SubscriptionState *string `pulumi:"subscriptionState"`
 	// User information.
 	UserInfo *UserInfo `pulumi:"userInfo"`
 	// Version of elastic of the monitor resource
@@ -1906,18 +1896,8 @@ type MonitorPropertiesArgs struct {
 	GenerateApiKey pulumi.BoolPtrInput `pulumi:"generateApiKey"`
 	// Flag specifying if the resource monitoring is enabled or disabled.
 	MonitoringStatus pulumi.StringPtrInput `pulumi:"monitoringStatus"`
-	// Plan details of the monitor resource.
-	PlanDetails PlanDetailsPtrInput `pulumi:"planDetails"`
 	// Provisioning state of the monitor resource.
 	ProvisioningState pulumi.StringPtrInput `pulumi:"provisioningState"`
-	// Status of Azure Subscription where Marketplace SaaS is located.
-	SaaSAzureSubscriptionStatus pulumi.StringPtrInput `pulumi:"saaSAzureSubscriptionStatus"`
-	// A unique identifier associated with the campaign.
-	SourceCampaignId pulumi.StringPtrInput `pulumi:"sourceCampaignId"`
-	// Name of the marketing campaign.
-	SourceCampaignName pulumi.StringPtrInput `pulumi:"sourceCampaignName"`
-	// State of the Azure Subscription containing the monitor resource
-	SubscriptionState pulumi.StringPtrInput `pulumi:"subscriptionState"`
 	// User information.
 	UserInfo UserInfoPtrInput `pulumi:"userInfo"`
 	// Version of elastic of the monitor resource
@@ -2012,34 +1992,9 @@ func (o MonitorPropertiesOutput) MonitoringStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MonitorProperties) *string { return v.MonitoringStatus }).(pulumi.StringPtrOutput)
 }
 
-// Plan details of the monitor resource.
-func (o MonitorPropertiesOutput) PlanDetails() PlanDetailsPtrOutput {
-	return o.ApplyT(func(v MonitorProperties) *PlanDetails { return v.PlanDetails }).(PlanDetailsPtrOutput)
-}
-
 // Provisioning state of the monitor resource.
 func (o MonitorPropertiesOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MonitorProperties) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
-}
-
-// Status of Azure Subscription where Marketplace SaaS is located.
-func (o MonitorPropertiesOutput) SaaSAzureSubscriptionStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MonitorProperties) *string { return v.SaaSAzureSubscriptionStatus }).(pulumi.StringPtrOutput)
-}
-
-// A unique identifier associated with the campaign.
-func (o MonitorPropertiesOutput) SourceCampaignId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MonitorProperties) *string { return v.SourceCampaignId }).(pulumi.StringPtrOutput)
-}
-
-// Name of the marketing campaign.
-func (o MonitorPropertiesOutput) SourceCampaignName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MonitorProperties) *string { return v.SourceCampaignName }).(pulumi.StringPtrOutput)
-}
-
-// State of the Azure Subscription containing the monitor resource
-func (o MonitorPropertiesOutput) SubscriptionState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MonitorProperties) *string { return v.SubscriptionState }).(pulumi.StringPtrOutput)
 }
 
 // User information.
@@ -2096,16 +2051,6 @@ func (o MonitorPropertiesPtrOutput) MonitoringStatus() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Plan details of the monitor resource.
-func (o MonitorPropertiesPtrOutput) PlanDetails() PlanDetailsPtrOutput {
-	return o.ApplyT(func(v *MonitorProperties) *PlanDetails {
-		if v == nil {
-			return nil
-		}
-		return v.PlanDetails
-	}).(PlanDetailsPtrOutput)
-}
-
 // Provisioning state of the monitor resource.
 func (o MonitorPropertiesPtrOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MonitorProperties) *string {
@@ -2113,46 +2058,6 @@ func (o MonitorPropertiesPtrOutput) ProvisioningState() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.ProvisioningState
-	}).(pulumi.StringPtrOutput)
-}
-
-// Status of Azure Subscription where Marketplace SaaS is located.
-func (o MonitorPropertiesPtrOutput) SaaSAzureSubscriptionStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MonitorProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SaaSAzureSubscriptionStatus
-	}).(pulumi.StringPtrOutput)
-}
-
-// A unique identifier associated with the campaign.
-func (o MonitorPropertiesPtrOutput) SourceCampaignId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MonitorProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SourceCampaignId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Name of the marketing campaign.
-func (o MonitorPropertiesPtrOutput) SourceCampaignName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MonitorProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SourceCampaignName
-	}).(pulumi.StringPtrOutput)
-}
-
-// State of the Azure Subscription containing the monitor resource
-func (o MonitorPropertiesPtrOutput) SubscriptionState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MonitorProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SubscriptionState
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2187,18 +2092,8 @@ type MonitorPropertiesResponse struct {
 	LiftrResourcePreference int `pulumi:"liftrResourcePreference"`
 	// Flag specifying if the resource monitoring is enabled or disabled.
 	MonitoringStatus *string `pulumi:"monitoringStatus"`
-	// Plan details of the monitor resource.
-	PlanDetails *PlanDetailsResponse `pulumi:"planDetails"`
 	// Provisioning state of the monitor resource.
 	ProvisioningState *string `pulumi:"provisioningState"`
-	// Status of Azure Subscription where Marketplace SaaS is located.
-	SaaSAzureSubscriptionStatus *string `pulumi:"saaSAzureSubscriptionStatus"`
-	// A unique identifier associated with the campaign.
-	SourceCampaignId *string `pulumi:"sourceCampaignId"`
-	// Name of the marketing campaign.
-	SourceCampaignName *string `pulumi:"sourceCampaignName"`
-	// State of the Azure Subscription containing the monitor resource
-	SubscriptionState *string `pulumi:"subscriptionState"`
 	// Version of elastic of the monitor resource
 	Version *string `pulumi:"version"`
 }
@@ -2242,34 +2137,9 @@ func (o MonitorPropertiesResponseOutput) MonitoringStatus() pulumi.StringPtrOutp
 	return o.ApplyT(func(v MonitorPropertiesResponse) *string { return v.MonitoringStatus }).(pulumi.StringPtrOutput)
 }
 
-// Plan details of the monitor resource.
-func (o MonitorPropertiesResponseOutput) PlanDetails() PlanDetailsResponsePtrOutput {
-	return o.ApplyT(func(v MonitorPropertiesResponse) *PlanDetailsResponse { return v.PlanDetails }).(PlanDetailsResponsePtrOutput)
-}
-
 // Provisioning state of the monitor resource.
 func (o MonitorPropertiesResponseOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MonitorPropertiesResponse) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
-}
-
-// Status of Azure Subscription where Marketplace SaaS is located.
-func (o MonitorPropertiesResponseOutput) SaaSAzureSubscriptionStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MonitorPropertiesResponse) *string { return v.SaaSAzureSubscriptionStatus }).(pulumi.StringPtrOutput)
-}
-
-// A unique identifier associated with the campaign.
-func (o MonitorPropertiesResponseOutput) SourceCampaignId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MonitorPropertiesResponse) *string { return v.SourceCampaignId }).(pulumi.StringPtrOutput)
-}
-
-// Name of the marketing campaign.
-func (o MonitorPropertiesResponseOutput) SourceCampaignName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MonitorPropertiesResponse) *string { return v.SourceCampaignName }).(pulumi.StringPtrOutput)
-}
-
-// State of the Azure Subscription containing the monitor resource
-func (o MonitorPropertiesResponseOutput) SubscriptionState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MonitorPropertiesResponse) *string { return v.SubscriptionState }).(pulumi.StringPtrOutput)
 }
 
 // Version of elastic of the monitor resource
@@ -3112,350 +2982,6 @@ func (o PartnerBillingEntityResponsePtrOutput) PartnerEntityUri() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// Plan details of the monitor resource.
-type PlanDetails struct {
-	// Offer ID of the plan
-	OfferID *string `pulumi:"offerID"`
-	// Plan ID
-	PlanID *string `pulumi:"planID"`
-	// Plan Name
-	PlanName *string `pulumi:"planName"`
-	// Publisher ID of the plan
-	PublisherID *string `pulumi:"publisherID"`
-	// Term ID of the plan
-	TermID *string `pulumi:"termID"`
-}
-
-// PlanDetailsInput is an input type that accepts PlanDetailsArgs and PlanDetailsOutput values.
-// You can construct a concrete instance of `PlanDetailsInput` via:
-//
-//	PlanDetailsArgs{...}
-type PlanDetailsInput interface {
-	pulumi.Input
-
-	ToPlanDetailsOutput() PlanDetailsOutput
-	ToPlanDetailsOutputWithContext(context.Context) PlanDetailsOutput
-}
-
-// Plan details of the monitor resource.
-type PlanDetailsArgs struct {
-	// Offer ID of the plan
-	OfferID pulumi.StringPtrInput `pulumi:"offerID"`
-	// Plan ID
-	PlanID pulumi.StringPtrInput `pulumi:"planID"`
-	// Plan Name
-	PlanName pulumi.StringPtrInput `pulumi:"planName"`
-	// Publisher ID of the plan
-	PublisherID pulumi.StringPtrInput `pulumi:"publisherID"`
-	// Term ID of the plan
-	TermID pulumi.StringPtrInput `pulumi:"termID"`
-}
-
-func (PlanDetailsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PlanDetails)(nil)).Elem()
-}
-
-func (i PlanDetailsArgs) ToPlanDetailsOutput() PlanDetailsOutput {
-	return i.ToPlanDetailsOutputWithContext(context.Background())
-}
-
-func (i PlanDetailsArgs) ToPlanDetailsOutputWithContext(ctx context.Context) PlanDetailsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PlanDetailsOutput)
-}
-
-func (i PlanDetailsArgs) ToPlanDetailsPtrOutput() PlanDetailsPtrOutput {
-	return i.ToPlanDetailsPtrOutputWithContext(context.Background())
-}
-
-func (i PlanDetailsArgs) ToPlanDetailsPtrOutputWithContext(ctx context.Context) PlanDetailsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PlanDetailsOutput).ToPlanDetailsPtrOutputWithContext(ctx)
-}
-
-// PlanDetailsPtrInput is an input type that accepts PlanDetailsArgs, PlanDetailsPtr and PlanDetailsPtrOutput values.
-// You can construct a concrete instance of `PlanDetailsPtrInput` via:
-//
-//	        PlanDetailsArgs{...}
-//
-//	or:
-//
-//	        nil
-type PlanDetailsPtrInput interface {
-	pulumi.Input
-
-	ToPlanDetailsPtrOutput() PlanDetailsPtrOutput
-	ToPlanDetailsPtrOutputWithContext(context.Context) PlanDetailsPtrOutput
-}
-
-type planDetailsPtrType PlanDetailsArgs
-
-func PlanDetailsPtr(v *PlanDetailsArgs) PlanDetailsPtrInput {
-	return (*planDetailsPtrType)(v)
-}
-
-func (*planDetailsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PlanDetails)(nil)).Elem()
-}
-
-func (i *planDetailsPtrType) ToPlanDetailsPtrOutput() PlanDetailsPtrOutput {
-	return i.ToPlanDetailsPtrOutputWithContext(context.Background())
-}
-
-func (i *planDetailsPtrType) ToPlanDetailsPtrOutputWithContext(ctx context.Context) PlanDetailsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PlanDetailsPtrOutput)
-}
-
-// Plan details of the monitor resource.
-type PlanDetailsOutput struct{ *pulumi.OutputState }
-
-func (PlanDetailsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PlanDetails)(nil)).Elem()
-}
-
-func (o PlanDetailsOutput) ToPlanDetailsOutput() PlanDetailsOutput {
-	return o
-}
-
-func (o PlanDetailsOutput) ToPlanDetailsOutputWithContext(ctx context.Context) PlanDetailsOutput {
-	return o
-}
-
-func (o PlanDetailsOutput) ToPlanDetailsPtrOutput() PlanDetailsPtrOutput {
-	return o.ToPlanDetailsPtrOutputWithContext(context.Background())
-}
-
-func (o PlanDetailsOutput) ToPlanDetailsPtrOutputWithContext(ctx context.Context) PlanDetailsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PlanDetails) *PlanDetails {
-		return &v
-	}).(PlanDetailsPtrOutput)
-}
-
-// Offer ID of the plan
-func (o PlanDetailsOutput) OfferID() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PlanDetails) *string { return v.OfferID }).(pulumi.StringPtrOutput)
-}
-
-// Plan ID
-func (o PlanDetailsOutput) PlanID() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PlanDetails) *string { return v.PlanID }).(pulumi.StringPtrOutput)
-}
-
-// Plan Name
-func (o PlanDetailsOutput) PlanName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PlanDetails) *string { return v.PlanName }).(pulumi.StringPtrOutput)
-}
-
-// Publisher ID of the plan
-func (o PlanDetailsOutput) PublisherID() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PlanDetails) *string { return v.PublisherID }).(pulumi.StringPtrOutput)
-}
-
-// Term ID of the plan
-func (o PlanDetailsOutput) TermID() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PlanDetails) *string { return v.TermID }).(pulumi.StringPtrOutput)
-}
-
-type PlanDetailsPtrOutput struct{ *pulumi.OutputState }
-
-func (PlanDetailsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PlanDetails)(nil)).Elem()
-}
-
-func (o PlanDetailsPtrOutput) ToPlanDetailsPtrOutput() PlanDetailsPtrOutput {
-	return o
-}
-
-func (o PlanDetailsPtrOutput) ToPlanDetailsPtrOutputWithContext(ctx context.Context) PlanDetailsPtrOutput {
-	return o
-}
-
-func (o PlanDetailsPtrOutput) Elem() PlanDetailsOutput {
-	return o.ApplyT(func(v *PlanDetails) PlanDetails {
-		if v != nil {
-			return *v
-		}
-		var ret PlanDetails
-		return ret
-	}).(PlanDetailsOutput)
-}
-
-// Offer ID of the plan
-func (o PlanDetailsPtrOutput) OfferID() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PlanDetails) *string {
-		if v == nil {
-			return nil
-		}
-		return v.OfferID
-	}).(pulumi.StringPtrOutput)
-}
-
-// Plan ID
-func (o PlanDetailsPtrOutput) PlanID() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PlanDetails) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PlanID
-	}).(pulumi.StringPtrOutput)
-}
-
-// Plan Name
-func (o PlanDetailsPtrOutput) PlanName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PlanDetails) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PlanName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Publisher ID of the plan
-func (o PlanDetailsPtrOutput) PublisherID() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PlanDetails) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PublisherID
-	}).(pulumi.StringPtrOutput)
-}
-
-// Term ID of the plan
-func (o PlanDetailsPtrOutput) TermID() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PlanDetails) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TermID
-	}).(pulumi.StringPtrOutput)
-}
-
-// Plan details of the monitor resource.
-type PlanDetailsResponse struct {
-	// Offer ID of the plan
-	OfferID *string `pulumi:"offerID"`
-	// Plan ID
-	PlanID *string `pulumi:"planID"`
-	// Plan Name
-	PlanName *string `pulumi:"planName"`
-	// Publisher ID of the plan
-	PublisherID *string `pulumi:"publisherID"`
-	// Term ID of the plan
-	TermID *string `pulumi:"termID"`
-}
-
-// Plan details of the monitor resource.
-type PlanDetailsResponseOutput struct{ *pulumi.OutputState }
-
-func (PlanDetailsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PlanDetailsResponse)(nil)).Elem()
-}
-
-func (o PlanDetailsResponseOutput) ToPlanDetailsResponseOutput() PlanDetailsResponseOutput {
-	return o
-}
-
-func (o PlanDetailsResponseOutput) ToPlanDetailsResponseOutputWithContext(ctx context.Context) PlanDetailsResponseOutput {
-	return o
-}
-
-// Offer ID of the plan
-func (o PlanDetailsResponseOutput) OfferID() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PlanDetailsResponse) *string { return v.OfferID }).(pulumi.StringPtrOutput)
-}
-
-// Plan ID
-func (o PlanDetailsResponseOutput) PlanID() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PlanDetailsResponse) *string { return v.PlanID }).(pulumi.StringPtrOutput)
-}
-
-// Plan Name
-func (o PlanDetailsResponseOutput) PlanName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PlanDetailsResponse) *string { return v.PlanName }).(pulumi.StringPtrOutput)
-}
-
-// Publisher ID of the plan
-func (o PlanDetailsResponseOutput) PublisherID() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PlanDetailsResponse) *string { return v.PublisherID }).(pulumi.StringPtrOutput)
-}
-
-// Term ID of the plan
-func (o PlanDetailsResponseOutput) TermID() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PlanDetailsResponse) *string { return v.TermID }).(pulumi.StringPtrOutput)
-}
-
-type PlanDetailsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PlanDetailsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PlanDetailsResponse)(nil)).Elem()
-}
-
-func (o PlanDetailsResponsePtrOutput) ToPlanDetailsResponsePtrOutput() PlanDetailsResponsePtrOutput {
-	return o
-}
-
-func (o PlanDetailsResponsePtrOutput) ToPlanDetailsResponsePtrOutputWithContext(ctx context.Context) PlanDetailsResponsePtrOutput {
-	return o
-}
-
-func (o PlanDetailsResponsePtrOutput) Elem() PlanDetailsResponseOutput {
-	return o.ApplyT(func(v *PlanDetailsResponse) PlanDetailsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PlanDetailsResponse
-		return ret
-	}).(PlanDetailsResponseOutput)
-}
-
-// Offer ID of the plan
-func (o PlanDetailsResponsePtrOutput) OfferID() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PlanDetailsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.OfferID
-	}).(pulumi.StringPtrOutput)
-}
-
-// Plan ID
-func (o PlanDetailsResponsePtrOutput) PlanID() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PlanDetailsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PlanID
-	}).(pulumi.StringPtrOutput)
-}
-
-// Plan Name
-func (o PlanDetailsResponsePtrOutput) PlanName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PlanDetailsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PlanName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Publisher ID of the plan
-func (o PlanDetailsResponsePtrOutput) PublisherID() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PlanDetailsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PublisherID
-	}).(pulumi.StringPtrOutput)
-}
-
-// Term ID of the plan
-func (o PlanDetailsResponsePtrOutput) TermID() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PlanDetailsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TermID
-	}).(pulumi.StringPtrOutput)
-}
-
 // Microsoft.Elastic SKU.
 type ResourceSku struct {
 	// Name of the SKU.
@@ -4248,10 +3774,6 @@ func init() {
 	pulumi.RegisterOutputType(OpenAIIntegrationStatusResponsePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(PartnerBillingEntityResponseOutput{})
 	pulumi.RegisterOutputType(PartnerBillingEntityResponsePtrOutput{})
-	pulumi.RegisterOutputType(PlanDetailsOutput{})
-	pulumi.RegisterOutputType(PlanDetailsPtrOutput{})
-	pulumi.RegisterOutputType(PlanDetailsResponseOutput{})
-	pulumi.RegisterOutputType(PlanDetailsResponsePtrOutput{})
 	pulumi.RegisterOutputType(ResourceSkuOutput{})
 	pulumi.RegisterOutputType(ResourceSkuPtrOutput{})
 	pulumi.RegisterOutputType(ResourceSkuResponseOutput{})

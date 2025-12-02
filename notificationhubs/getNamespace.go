@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Returns the given namespace.
+// Notification Hubs Namespace Resource.
 //
-// Uses Azure REST API version 2023-10-01-preview.
+// Uses Azure REST API version 2023-01-01-preview.
 //
-// Other available API versions: 2023-01-01-preview, 2023-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native notificationhubs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2017-04-01, 2023-09-01, 2023-10-01-preview.
 func LookupNamespace(ctx *pulumi.Context, args *LookupNamespaceArgs, opts ...pulumi.InvokeOption) (*LookupNamespaceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNamespaceResult
@@ -23,7 +23,7 @@ func LookupNamespace(ctx *pulumi.Context, args *LookupNamespaceArgs, opts ...pul
 	if err != nil {
 		return nil, err
 	}
-	return rv.Defaults(), nil
+	return &rv, nil
 }
 
 type LookupNamespaceArgs struct {
@@ -35,80 +35,24 @@ type LookupNamespaceArgs struct {
 
 // Notification Hubs Namespace Resource.
 type LookupNamespaceResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// Time when the namespace was created.
-	CreatedAt string `pulumi:"createdAt"`
-	// Gets or sets whether or not the namespace is set as Critical.
-	Critical bool `pulumi:"critical"`
-	// Deprecated.
-	DataCenter *string `pulumi:"dataCenter"`
-	// Gets or sets whether or not the namespace is currently enabled.
-	Enabled bool `pulumi:"enabled"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
-	// Azure Insights Metrics id.
-	MetricId string `pulumi:"metricId"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// Defines values for NamespaceType.
-	NamespaceType *string `pulumi:"namespaceType"`
-	// A collection of network authorization rules.
-	NetworkAcls *NetworkAclsResponse `pulumi:"networkAcls"`
-	// Collection of Notification Hub or Notification Hub Namespace PNS credentials.
-	PnsCredentials *PnsCredentialsResponse `pulumi:"pnsCredentials"`
-	// Private Endpoint Connections for namespace
-	PrivateEndpointConnections []PrivateEndpointConnectionResourceResponse `pulumi:"privateEndpointConnections"`
-	// Defines values for OperationProvisioningState.
-	ProvisioningState *string `pulumi:"provisioningState"`
-	// Type of public network access.
-	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
-	// Region. The value is always set to the same value as Namespace.Location, so we are deprecating
-	// this property.
-	Region string `pulumi:"region"`
-	// Allowed replication region
-	ReplicationRegion *string `pulumi:"replicationRegion"`
-	// Gets or sets scaleUnit where the namespace gets created
-	ScaleUnit *string `pulumi:"scaleUnit"`
-	// Gets or sets endpoint you can use to perform NotificationHub
-	// operations.
-	ServiceBusEndpoint string `pulumi:"serviceBusEndpoint"`
+	// Represents namespace properties.
+	Properties NamespacePropertiesResponse `pulumi:"properties"`
 	// The Sku description for a namespace
 	Sku SkuResponse `pulumi:"sku"`
-	// Namespace status.
-	Status *string `pulumi:"status"`
-	// Namespace subscription id.
-	SubscriptionId string `pulumi:"subscriptionId"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
-	// Time when the namespace was updated.
-	UpdatedAt string `pulumi:"updatedAt"`
-	// Namespace SKU name.
-	ZoneRedundancy *string `pulumi:"zoneRedundancy"`
 }
 
-// Defaults sets the appropriate defaults for LookupNamespaceResult
-func (val *LookupNamespaceResult) Defaults() *LookupNamespaceResult {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.PublicNetworkAccess == nil {
-		publicNetworkAccess_ := "Enabled"
-		tmp.PublicNetworkAccess = &publicNetworkAccess_
-	}
-	if tmp.ZoneRedundancy == nil {
-		zoneRedundancy_ := "Disabled"
-		tmp.ZoneRedundancy = &zoneRedundancy_
-	}
-	return &tmp
-}
 func LookupNamespaceOutput(ctx *pulumi.Context, args LookupNamespaceOutputArgs, opts ...pulumi.InvokeOption) LookupNamespaceResultOutput {
 	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupNamespaceResultOutput, error) {
@@ -144,31 +88,6 @@ func (o LookupNamespaceResultOutput) ToLookupNamespaceResultOutputWithContext(ct
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupNamespaceResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupNamespaceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// Time when the namespace was created.
-func (o LookupNamespaceResultOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupNamespaceResult) string { return v.CreatedAt }).(pulumi.StringOutput)
-}
-
-// Gets or sets whether or not the namespace is set as Critical.
-func (o LookupNamespaceResultOutput) Critical() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupNamespaceResult) bool { return v.Critical }).(pulumi.BoolOutput)
-}
-
-// Deprecated.
-func (o LookupNamespaceResultOutput) DataCenter() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupNamespaceResult) *string { return v.DataCenter }).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets whether or not the namespace is currently enabled.
-func (o LookupNamespaceResultOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupNamespaceResult) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupNamespaceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) string { return v.Id }).(pulumi.StringOutput)
@@ -179,83 +98,19 @@ func (o LookupNamespaceResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// Azure Insights Metrics id.
-func (o LookupNamespaceResultOutput) MetricId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupNamespaceResult) string { return v.MetricId }).(pulumi.StringOutput)
-}
-
 // The name of the resource
 func (o LookupNamespaceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Defines values for NamespaceType.
-func (o LookupNamespaceResultOutput) NamespaceType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupNamespaceResult) *string { return v.NamespaceType }).(pulumi.StringPtrOutput)
-}
-
-// A collection of network authorization rules.
-func (o LookupNamespaceResultOutput) NetworkAcls() NetworkAclsResponsePtrOutput {
-	return o.ApplyT(func(v LookupNamespaceResult) *NetworkAclsResponse { return v.NetworkAcls }).(NetworkAclsResponsePtrOutput)
-}
-
-// Collection of Notification Hub or Notification Hub Namespace PNS credentials.
-func (o LookupNamespaceResultOutput) PnsCredentials() PnsCredentialsResponsePtrOutput {
-	return o.ApplyT(func(v LookupNamespaceResult) *PnsCredentialsResponse { return v.PnsCredentials }).(PnsCredentialsResponsePtrOutput)
-}
-
-// Private Endpoint Connections for namespace
-func (o LookupNamespaceResultOutput) PrivateEndpointConnections() PrivateEndpointConnectionResourceResponseArrayOutput {
-	return o.ApplyT(func(v LookupNamespaceResult) []PrivateEndpointConnectionResourceResponse {
-		return v.PrivateEndpointConnections
-	}).(PrivateEndpointConnectionResourceResponseArrayOutput)
-}
-
-// Defines values for OperationProvisioningState.
-func (o LookupNamespaceResultOutput) ProvisioningState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupNamespaceResult) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
-}
-
-// Type of public network access.
-func (o LookupNamespaceResultOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupNamespaceResult) *string { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
-}
-
-// Region. The value is always set to the same value as Namespace.Location, so we are deprecating
-// this property.
-func (o LookupNamespaceResultOutput) Region() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupNamespaceResult) string { return v.Region }).(pulumi.StringOutput)
-}
-
-// Allowed replication region
-func (o LookupNamespaceResultOutput) ReplicationRegion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupNamespaceResult) *string { return v.ReplicationRegion }).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets scaleUnit where the namespace gets created
-func (o LookupNamespaceResultOutput) ScaleUnit() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupNamespaceResult) *string { return v.ScaleUnit }).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets endpoint you can use to perform NotificationHub
-// operations.
-func (o LookupNamespaceResultOutput) ServiceBusEndpoint() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupNamespaceResult) string { return v.ServiceBusEndpoint }).(pulumi.StringOutput)
+// Represents namespace properties.
+func (o LookupNamespaceResultOutput) Properties() NamespacePropertiesResponseOutput {
+	return o.ApplyT(func(v LookupNamespaceResult) NamespacePropertiesResponse { return v.Properties }).(NamespacePropertiesResponseOutput)
 }
 
 // The Sku description for a namespace
 func (o LookupNamespaceResultOutput) Sku() SkuResponseOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) SkuResponse { return v.Sku }).(SkuResponseOutput)
-}
-
-// Namespace status.
-func (o LookupNamespaceResultOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupNamespaceResult) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
-// Namespace subscription id.
-func (o LookupNamespaceResultOutput) SubscriptionId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupNamespaceResult) string { return v.SubscriptionId }).(pulumi.StringOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -271,16 +126,6 @@ func (o LookupNamespaceResultOutput) Tags() pulumi.StringMapOutput {
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupNamespaceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Time when the namespace was updated.
-func (o LookupNamespaceResultOutput) UpdatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupNamespaceResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
-}
-
-// Namespace SKU name.
-func (o LookupNamespaceResultOutput) ZoneRedundancy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupNamespaceResult) *string { return v.ZoneRedundancy }).(pulumi.StringPtrOutput)
 }
 
 func init() {

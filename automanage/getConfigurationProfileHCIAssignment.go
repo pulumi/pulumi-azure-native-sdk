@@ -7,15 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get information about a configuration profile assignment
 //
 // Uses Azure REST API version 2022-05-04.
-//
-// Other available API versions: 2021-04-30-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automanage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupConfigurationProfileHCIAssignment(ctx *pulumi.Context, args *LookupConfigurationProfileHCIAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationProfileHCIAssignmentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConfigurationProfileHCIAssignmentResult
@@ -37,8 +35,6 @@ type LookupConfigurationProfileHCIAssignmentArgs struct {
 
 // Configuration profile assignment is an association between a VM and automanage profile configuration.
 type LookupConfigurationProfileHCIAssignmentResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Azure resource id. Indicates if this resource is managed by another Azure resource.
@@ -88,11 +84,6 @@ func (o LookupConfigurationProfileHCIAssignmentResultOutput) ToLookupConfigurati
 
 func (o LookupConfigurationProfileHCIAssignmentResultOutput) ToLookupConfigurationProfileHCIAssignmentResultOutputWithContext(ctx context.Context) LookupConfigurationProfileHCIAssignmentResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupConfigurationProfileHCIAssignmentResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupConfigurationProfileHCIAssignmentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

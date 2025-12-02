@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Network security user rule.
 //
-// Uses Azure REST API version 2022-04-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-04-01-preview.
+// Uses Azure REST API version 2022-04-01-preview. In version 1.x of the Azure Native provider, it used API version 2021-02-01-preview.
 //
-// Other available API versions: 2021-02-01-preview, 2022-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-05-01-preview.
 type UserRule struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A description for this rule.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The destination port ranges.
@@ -85,43 +83,19 @@ func NewUserRule(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:network/v20210201preview:UserRule"),
 		},
 		{
-			Type: pulumi.String("azure-native:network/v20210501preview:DefaultUserRule"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20210501preview:UserRule"),
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220201preview:UserRule"),
 		},
 		{
-			Type: pulumi.String("azure-native:network/v20220401preview:DefaultUserRule"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20220401preview:UserRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20240301:SecurityUserRule"),
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240301:UserRule"),
 		},
 		{
-			Type: pulumi.String("azure-native:network/v20240501:SecurityUserRule"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20240501:UserRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20240701:UserRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20241001:UserRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:network:DefaultUserRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:network:SecurityUserRule"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -253,11 +227,6 @@ func (o UserRuleOutput) ToUserRuleOutput() UserRuleOutput {
 
 func (o UserRuleOutput) ToUserRuleOutputWithContext(ctx context.Context) UserRuleOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o UserRuleOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *UserRule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A description for this rule.

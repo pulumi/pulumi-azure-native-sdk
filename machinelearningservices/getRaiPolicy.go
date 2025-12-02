@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Azure OpenAI Content Filters resource.
 //
-// Uses Azure REST API version 2025-01-01-preview.
+// Uses Azure REST API version 2024-04-01-preview.
 //
-// Other available API versions: 2024-04-01-preview, 2024-07-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-07-01-preview, 2024-10-01-preview, 2025-01-01-preview.
 func LookupRaiPolicy(ctx *pulumi.Context, args *LookupRaiPolicyArgs, opts ...pulumi.InvokeOption) (*LookupRaiPolicyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRaiPolicyResult
@@ -39,8 +39,6 @@ type LookupRaiPolicyArgs struct {
 
 // Azure OpenAI Content Filters resource.
 type LookupRaiPolicyResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -90,11 +88,6 @@ func (o LookupRaiPolicyResultOutput) ToLookupRaiPolicyResultOutput() LookupRaiPo
 
 func (o LookupRaiPolicyResultOutput) ToLookupRaiPolicyResultOutputWithContext(ctx context.Context) LookupRaiPolicyResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupRaiPolicyResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupRaiPolicyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

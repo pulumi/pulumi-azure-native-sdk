@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -1635,8 +1635,6 @@ type SpringbootserversProperties struct {
 	Errors []Error `pulumi:"errors"`
 	// The alternative FQDN or IP addresses to discover for this server
 	FqdnAndIpAddressList []string `pulumi:"fqdnAndIpAddressList"`
-	// Resource labels
-	Labels map[string]string `pulumi:"labels"`
 	// The machine Id from ARM
 	MachineArmId *string `pulumi:"machineArmId"`
 	// Target server port for remote login
@@ -1668,8 +1666,6 @@ type SpringbootserversPropertiesArgs struct {
 	Errors ErrorArrayInput `pulumi:"errors"`
 	// The alternative FQDN or IP addresses to discover for this server
 	FqdnAndIpAddressList pulumi.StringArrayInput `pulumi:"fqdnAndIpAddressList"`
-	// Resource labels
-	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// The machine Id from ARM
 	MachineArmId pulumi.StringPtrInput `pulumi:"machineArmId"`
 	// Target server port for remote login
@@ -1772,11 +1768,6 @@ func (o SpringbootserversPropertiesOutput) FqdnAndIpAddressList() pulumi.StringA
 	return o.ApplyT(func(v SpringbootserversProperties) []string { return v.FqdnAndIpAddressList }).(pulumi.StringArrayOutput)
 }
 
-// Resource labels
-func (o SpringbootserversPropertiesOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v SpringbootserversProperties) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
-}
-
 // The machine Id from ARM
 func (o SpringbootserversPropertiesOutput) MachineArmId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SpringbootserversProperties) *string { return v.MachineArmId }).(pulumi.StringPtrOutput)
@@ -1851,16 +1842,6 @@ func (o SpringbootserversPropertiesPtrOutput) FqdnAndIpAddressList() pulumi.Stri
 	}).(pulumi.StringArrayOutput)
 }
 
-// Resource labels
-func (o SpringbootserversPropertiesPtrOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *SpringbootserversProperties) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Labels
-	}).(pulumi.StringMapOutput)
-}
-
 // The machine Id from ARM
 func (o SpringbootserversPropertiesPtrOutput) MachineArmId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SpringbootserversProperties) *string {
@@ -1927,8 +1908,6 @@ type SpringbootserversPropertiesResponse struct {
 	Errors []ErrorResponse `pulumi:"errors"`
 	// The alternative FQDN or IP addresses to discover for this server
 	FqdnAndIpAddressList []string `pulumi:"fqdnAndIpAddressList"`
-	// Resource labels
-	Labels map[string]string `pulumi:"labels"`
 	// The machine Id from ARM
 	MachineArmId *string `pulumi:"machineArmId"`
 	// Target server port for remote login
@@ -1966,11 +1945,6 @@ func (o SpringbootserversPropertiesResponseOutput) Errors() ErrorResponseArrayOu
 // The alternative FQDN or IP addresses to discover for this server
 func (o SpringbootserversPropertiesResponseOutput) FqdnAndIpAddressList() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SpringbootserversPropertiesResponse) []string { return v.FqdnAndIpAddressList }).(pulumi.StringArrayOutput)
-}
-
-// Resource labels
-func (o SpringbootserversPropertiesResponseOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v SpringbootserversPropertiesResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The machine Id from ARM

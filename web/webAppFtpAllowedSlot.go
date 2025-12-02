@@ -8,22 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Publishing Credentials Policies parameters.
 //
-// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2023-12-01.
+// Uses Azure REST API version 2023-12-01.
 //
-// Other available API versions: 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2024-04-01.
 type WebAppFtpAllowedSlot struct {
 	pulumi.CustomResourceState
 
 	// <code>true</code> to allow access to a publishing method; otherwise, <code>false</code>.
 	Allow pulumi.BoolOutput `pulumi:"allow"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Kind of resource.
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Resource Name.
@@ -81,9 +79,6 @@ func NewWebAppFtpAllowedSlot(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20240401:WebAppFtpAllowedSlot"),
-		},
-		{
-			Type: pulumi.String("azure-native:web/v20241101:WebAppFtpAllowedSlot"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -184,11 +179,6 @@ func (o WebAppFtpAllowedSlotOutput) ToWebAppFtpAllowedSlotOutputWithContext(ctx 
 // <code>true</code> to allow access to a publishing method; otherwise, <code>false</code>.
 func (o WebAppFtpAllowedSlotOutput) Allow() pulumi.BoolOutput {
 	return o.ApplyT(func(v *WebAppFtpAllowedSlot) pulumi.BoolOutput { return v.Allow }).(pulumi.BoolOutput)
-}
-
-// The Azure API version of the resource.
-func (o WebAppFtpAllowedSlotOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *WebAppFtpAllowedSlot) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Kind of resource.

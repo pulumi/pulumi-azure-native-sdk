@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -67,10 +67,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Cache{}
 	case "azure-native:apimanagement:Certificate":
 		r = &Certificate{}
-	case "azure-native:apimanagement:ClientApplication":
-		r = &ClientApplication{}
-	case "azure-native:apimanagement:ClientApplicationProductLink":
-		r = &ClientApplicationProductLink{}
 	case "azure-native:apimanagement:ContentItem":
 		r = &ContentItem{}
 	case "azure-native:apimanagement:ContentType":

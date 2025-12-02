@@ -8,25 +8,23 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Firewall rule.
+// Represents a server firewall rule.
 //
-// Uses Azure REST API version 2024-08-01. In version 2.x of the Azure Native provider, it used API version 2022-12-01.
+// Uses Azure REST API version 2022-12-01. In version 1.x of the Azure Native provider, it used API version 2017-12-01.
 //
-// Other available API versions: 2022-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-11-01-preview, 2025-01-01-preview, 2025-06-01-preview, 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2017-12-01, 2020-10-05-privatepreview, 2022-11-08, 2023-03-01-preview, 2023-03-02-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-08-01, 2024-11-01-preview.
 type FirewallRule struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
-	// IP address defining the end of the range of addresses of a firewall rule. Must be expressed in IPv4 format.
+	// The end IP address of the server firewall rule. Must be IPv4 format.
 	EndIpAddress pulumi.StringOutput `pulumi:"endIpAddress"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// IP address defining the start of the range of addresses of a firewall rule. Must be expressed in IPv4 format.
+	// The start IP address of the server firewall rule. Must be IPv4 format.
 	StartIpAddress pulumi.StringOutput `pulumi:"startIpAddress"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
@@ -55,16 +53,10 @@ func NewFirewallRule(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:dbforpostgresql/v20171201:FirewallRule"),
-		},
-		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20200214preview:FirewallRule"),
 		},
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20200214privatepreview:FirewallRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:dbforpostgresql/v20201005privatepreview:FirewallRule"),
 		},
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20210410privatepreview:FirewallRule"),
@@ -85,16 +77,10 @@ func NewFirewallRule(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:dbforpostgresql/v20220308preview:FirewallRule"),
 		},
 		{
-			Type: pulumi.String("azure-native:dbforpostgresql/v20221108:FirewallRule"),
-		},
-		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20221201:FirewallRule"),
 		},
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20230301preview:FirewallRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:dbforpostgresql/v20230302preview:FirewallRule"),
 		},
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20230601preview:FirewallRule"),
@@ -110,15 +96,6 @@ func NewFirewallRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20241101preview:FirewallRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:dbforpostgresql/v20250101preview:FirewallRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:dbforpostgresql/v20250601preview:FirewallRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:dbforpostgresql/v20250801:FirewallRule"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -155,29 +132,29 @@ func (FirewallRuleState) ElementType() reflect.Type {
 }
 
 type firewallRuleArgs struct {
-	// IP address defining the end of the range of addresses of a firewall rule. Must be expressed in IPv4 format.
+	// The end IP address of the server firewall rule. Must be IPv4 format.
 	EndIpAddress string `pulumi:"endIpAddress"`
-	// Name of the firewall rule.
+	// The name of the server firewall rule.
 	FirewallRuleName *string `pulumi:"firewallRuleName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the server.
 	ServerName string `pulumi:"serverName"`
-	// IP address defining the start of the range of addresses of a firewall rule. Must be expressed in IPv4 format.
+	// The start IP address of the server firewall rule. Must be IPv4 format.
 	StartIpAddress string `pulumi:"startIpAddress"`
 }
 
 // The set of arguments for constructing a FirewallRule resource.
 type FirewallRuleArgs struct {
-	// IP address defining the end of the range of addresses of a firewall rule. Must be expressed in IPv4 format.
+	// The end IP address of the server firewall rule. Must be IPv4 format.
 	EndIpAddress pulumi.StringInput
-	// Name of the firewall rule.
+	// The name of the server firewall rule.
 	FirewallRuleName pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of the server.
 	ServerName pulumi.StringInput
-	// IP address defining the start of the range of addresses of a firewall rule. Must be expressed in IPv4 format.
+	// The start IP address of the server firewall rule. Must be IPv4 format.
 	StartIpAddress pulumi.StringInput
 }
 
@@ -218,12 +195,7 @@ func (o FirewallRuleOutput) ToFirewallRuleOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The Azure API version of the resource.
-func (o FirewallRuleOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *FirewallRule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// IP address defining the end of the range of addresses of a firewall rule. Must be expressed in IPv4 format.
+// The end IP address of the server firewall rule. Must be IPv4 format.
 func (o FirewallRuleOutput) EndIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallRule) pulumi.StringOutput { return v.EndIpAddress }).(pulumi.StringOutput)
 }
@@ -233,7 +205,7 @@ func (o FirewallRuleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallRule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// IP address defining the start of the range of addresses of a firewall rule. Must be expressed in IPv4 format.
+// The start IP address of the server firewall rule. Must be IPv4 format.
 func (o FirewallRuleOutput) StartIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallRule) pulumi.StringOutput { return v.StartIpAddress }).(pulumi.StringOutput)
 }

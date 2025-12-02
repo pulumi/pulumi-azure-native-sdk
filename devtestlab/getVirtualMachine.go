@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,9 +29,9 @@ type LookupVirtualMachineArgs struct {
 	Expand *string `pulumi:"expand"`
 	// The name of the lab.
 	LabName string `pulumi:"labName"`
-	// The name of the LabVirtualMachine
+	// The name of the virtual machine.
 	Name string `pulumi:"name"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -45,8 +45,6 @@ type LookupVirtualMachineResult struct {
 	ArtifactDeploymentStatus ArtifactDeploymentStatusPropertiesResponse `pulumi:"artifactDeploymentStatus"`
 	// The artifacts to be installed on the virtual machine.
 	Artifacts []ArtifactInstallPropertiesResponse `pulumi:"artifacts"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The resource identifier (Microsoft.Compute) of the virtual machine.
 	ComputeId string `pulumi:"computeId"`
 	// The compute virtual machine properties.
@@ -161,9 +159,9 @@ type LookupVirtualMachineOutputArgs struct {
 	Expand pulumi.StringPtrInput `pulumi:"expand"`
 	// The name of the lab.
 	LabName pulumi.StringInput `pulumi:"labName"`
-	// The name of the LabVirtualMachine
+	// The name of the virtual machine.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -206,11 +204,6 @@ func (o LookupVirtualMachineResultOutput) ArtifactDeploymentStatus() ArtifactDep
 // The artifacts to be installed on the virtual machine.
 func (o LookupVirtualMachineResultOutput) Artifacts() ArtifactInstallPropertiesResponseArrayOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) []ArtifactInstallPropertiesResponse { return v.Artifacts }).(ArtifactInstallPropertiesResponseArrayOutput)
-}
-
-// The Azure API version of the resource.
-func (o LookupVirtualMachineResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The resource identifier (Microsoft.Compute) of the virtual machine.

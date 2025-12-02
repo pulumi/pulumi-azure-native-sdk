@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Get a WorkloadNetworkPublicIP
+// NSX Public IP Block
 //
-// Uses Azure REST API version 2023-09-01.
+// Uses Azure REST API version 2022-05-01.
 //
-// Other available API versions: 2022-05-01, 2023-03-01, 2024-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native avs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-03-01, 2023-09-01.
 func LookupWorkloadNetworkPublicIP(ctx *pulumi.Context, args *LookupWorkloadNetworkPublicIPArgs, opts ...pulumi.InvokeOption) (*LookupWorkloadNetworkPublicIPResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkloadNetworkPublicIPResult
@@ -29,7 +29,7 @@ func LookupWorkloadNetworkPublicIP(ctx *pulumi.Context, args *LookupWorkloadNetw
 type LookupWorkloadNetworkPublicIPArgs struct {
 	// Name of the private cloud
 	PrivateCloudName string `pulumi:"privateCloudName"`
-	// ID of the DNS zone.
+	// NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
 	PublicIPId string `pulumi:"publicIPId"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -37,13 +37,11 @@ type LookupWorkloadNetworkPublicIPArgs struct {
 
 // NSX Public IP Block
 type LookupWorkloadNetworkPublicIPResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Display name of the Public IP Block.
 	DisplayName *string `pulumi:"displayName"`
-	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	// Resource ID.
 	Id string `pulumi:"id"`
-	// The name of the resource
+	// Resource name.
 	Name string `pulumi:"name"`
 	// Number of Public IPs requested.
 	NumberOfPublicIPs *float64 `pulumi:"numberOfPublicIPs"`
@@ -51,9 +49,7 @@ type LookupWorkloadNetworkPublicIPResult struct {
 	ProvisioningState string `pulumi:"provisioningState"`
 	// CIDR Block of the Public IP Block.
 	PublicIPBlock string `pulumi:"publicIPBlock"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// Resource type.
 	Type string `pulumi:"type"`
 }
 
@@ -69,7 +65,7 @@ func LookupWorkloadNetworkPublicIPOutput(ctx *pulumi.Context, args LookupWorkloa
 type LookupWorkloadNetworkPublicIPOutputArgs struct {
 	// Name of the private cloud
 	PrivateCloudName pulumi.StringInput `pulumi:"privateCloudName"`
-	// ID of the DNS zone.
+	// NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
 	PublicIPId pulumi.StringInput `pulumi:"publicIPId"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
@@ -94,22 +90,17 @@ func (o LookupWorkloadNetworkPublicIPResultOutput) ToLookupWorkloadNetworkPublic
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupWorkloadNetworkPublicIPResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWorkloadNetworkPublicIPResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Display name of the Public IP Block.
 func (o LookupWorkloadNetworkPublicIPResultOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkPublicIPResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+// Resource ID.
 func (o LookupWorkloadNetworkPublicIPResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkPublicIPResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The name of the resource
+// Resource name.
 func (o LookupWorkloadNetworkPublicIPResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkPublicIPResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -129,12 +120,7 @@ func (o LookupWorkloadNetworkPublicIPResultOutput) PublicIPBlock() pulumi.String
 	return o.ApplyT(func(v LookupWorkloadNetworkPublicIPResult) string { return v.PublicIPBlock }).(pulumi.StringOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupWorkloadNetworkPublicIPResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupWorkloadNetworkPublicIPResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
-}
-
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// Resource type.
 func (o LookupWorkloadNetworkPublicIPResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkPublicIPResult) string { return v.Type }).(pulumi.StringOutput)
 }

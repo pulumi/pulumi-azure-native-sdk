@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Defender for Storage resource.
 //
-// Uses Azure REST API version 2024-10-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-12-01-preview.
+// Uses Azure REST API version 2022-12-01-preview.
 //
-// Other available API versions: 2022-12-01-preview, 2024-08-01-preview, 2025-01-01, 2025-02-01-preview, 2025-06-01, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-10-01-preview.
 type DefenderForStorage struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Resource name
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Defender for Storage resource properties.
@@ -45,22 +43,7 @@ func NewDefenderForStorage(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:security/v20221201preview:DefenderForStorage"),
 		},
 		{
-			Type: pulumi.String("azure-native:security/v20240801preview:DefenderForStorage"),
-		},
-		{
 			Type: pulumi.String("azure-native:security/v20241001preview:DefenderForStorage"),
-		},
-		{
-			Type: pulumi.String("azure-native:security/v20250101:DefenderForStorage"),
-		},
-		{
-			Type: pulumi.String("azure-native:security/v20250201preview:DefenderForStorage"),
-		},
-		{
-			Type: pulumi.String("azure-native:security/v20250601:DefenderForStorage"),
-		},
-		{
-			Type: pulumi.String("azure-native:security/v20250701preview:DefenderForStorage"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -150,11 +133,6 @@ func (o DefenderForStorageOutput) ToDefenderForStorageOutput() DefenderForStorag
 
 func (o DefenderForStorageOutput) ToDefenderForStorageOutputWithContext(ctx context.Context) DefenderForStorageOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o DefenderForStorageOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *DefenderForStorage) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource name

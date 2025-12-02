@@ -8,18 +8,16 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Pipeline job represents a unique instance of a batch topology, used for offline processing of selected portions of archived content.
 //
-// Uses Azure REST API version 2021-11-01-preview. In version 2.x of the Azure Native provider, it used API version 2021-11-01-preview.
+// Uses Azure REST API version 2021-11-01-preview. In version 1.x of the Azure Native provider, it used API version 2021-11-01-preview.
 type PipelineJob struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// An optional description for the pipeline.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Details about the error, in case the pipeline job fails.
@@ -160,11 +158,6 @@ func (o PipelineJobOutput) ToPipelineJobOutput() PipelineJobOutput {
 
 func (o PipelineJobOutput) ToPipelineJobOutputWithContext(ctx context.Context) PipelineJobOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o PipelineJobOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *PipelineJob) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // An optional description for the pipeline.

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,8 +41,6 @@ type LookupKustoPoolDatabasePrincipalAssignmentArgs struct {
 type LookupKustoPoolDatabasePrincipalAssignmentResult struct {
 	// The service principal object id in AAD (Azure active directory)
 	AadObjectId string `pulumi:"aadObjectId"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -111,11 +109,6 @@ func (o LookupKustoPoolDatabasePrincipalAssignmentResultOutput) ToLookupKustoPoo
 // The service principal object id in AAD (Azure active directory)
 func (o LookupKustoPoolDatabasePrincipalAssignmentResultOutput) AadObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKustoPoolDatabasePrincipalAssignmentResult) string { return v.AadObjectId }).(pulumi.StringOutput)
-}
-
-// The Azure API version of the resource.
-func (o LookupKustoPoolDatabasePrincipalAssignmentResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupKustoPoolDatabasePrincipalAssignmentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

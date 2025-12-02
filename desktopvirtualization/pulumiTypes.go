@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -355,7 +355,7 @@ type AppAttachPackageInfoProperties struct {
 	PackageName *string `pulumi:"packageName"`
 	// Relative Path to the package inside the image.
 	PackageRelativePath *string `pulumi:"packageRelativePath"`
-	// Package version found in the appxmanifest.xml.
+	// Package Version found in the appxmanifest.xml.
 	Version *string `pulumi:"version"`
 }
 
@@ -402,7 +402,7 @@ type AppAttachPackageInfoPropertiesArgs struct {
 	PackageName pulumi.StringPtrInput `pulumi:"packageName"`
 	// Relative Path to the package inside the image.
 	PackageRelativePath pulumi.StringPtrInput `pulumi:"packageRelativePath"`
-	// Package version found in the appxmanifest.xml.
+	// Package Version found in the appxmanifest.xml.
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
@@ -559,7 +559,7 @@ func (o AppAttachPackageInfoPropertiesOutput) PackageRelativePath() pulumi.Strin
 	return o.ApplyT(func(v AppAttachPackageInfoProperties) *string { return v.PackageRelativePath }).(pulumi.StringPtrOutput)
 }
 
-// Package version found in the appxmanifest.xml.
+// Package Version found in the appxmanifest.xml.
 func (o AppAttachPackageInfoPropertiesOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppAttachPackageInfoProperties) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -738,7 +738,7 @@ func (o AppAttachPackageInfoPropertiesPtrOutput) PackageRelativePath() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-// Package version found in the appxmanifest.xml.
+// Package Version found in the appxmanifest.xml.
 func (o AppAttachPackageInfoPropertiesPtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppAttachPackageInfoProperties) *string {
 		if v == nil {
@@ -780,7 +780,7 @@ type AppAttachPackageInfoPropertiesResponse struct {
 	PackageName *string `pulumi:"packageName"`
 	// Relative Path to the package inside the image.
 	PackageRelativePath *string `pulumi:"packageRelativePath"`
-	// Package version found in the appxmanifest.xml.
+	// Package Version found in the appxmanifest.xml.
 	Version *string `pulumi:"version"`
 }
 
@@ -878,7 +878,7 @@ func (o AppAttachPackageInfoPropertiesResponseOutput) PackageRelativePath() pulu
 	return o.ApplyT(func(v AppAttachPackageInfoPropertiesResponse) *string { return v.PackageRelativePath }).(pulumi.StringPtrOutput)
 }
 
-// Package version found in the appxmanifest.xml.
+// Package Version found in the appxmanifest.xml.
 func (o AppAttachPackageInfoPropertiesResponseOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppAttachPackageInfoPropertiesResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -1057,7 +1057,7 @@ func (o AppAttachPackageInfoPropertiesResponsePtrOutput) PackageRelativePath() p
 	}).(pulumi.StringPtrOutput)
 }
 
-// Package version found in the appxmanifest.xml.
+// Package Version found in the appxmanifest.xml.
 func (o AppAttachPackageInfoPropertiesResponsePtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppAttachPackageInfoPropertiesResponse) *string {
 		if v == nil {
@@ -1075,7 +1075,7 @@ type AppAttachPackageProperties struct {
 	HostPoolReferences []string `pulumi:"hostPoolReferences"`
 	// Detailed properties for App Attach Package
 	Image *AppAttachPackageInfoProperties `pulumi:"image"`
-	// URL path to certificate name located in keyVault
+	// URL of keyvault location to store certificate
 	KeyVaultURL *string `pulumi:"keyVaultURL"`
 }
 
@@ -1098,7 +1098,7 @@ type AppAttachPackagePropertiesArgs struct {
 	HostPoolReferences pulumi.StringArrayInput `pulumi:"hostPoolReferences"`
 	// Detailed properties for App Attach Package
 	Image AppAttachPackageInfoPropertiesPtrInput `pulumi:"image"`
-	// URL path to certificate name located in keyVault
+	// URL of keyvault location to store certificate
 	KeyVaultURL pulumi.StringPtrInput `pulumi:"keyVaultURL"`
 }
 
@@ -1144,7 +1144,7 @@ func (o AppAttachPackagePropertiesOutput) Image() AppAttachPackageInfoProperties
 	return o.ApplyT(func(v AppAttachPackageProperties) *AppAttachPackageInfoProperties { return v.Image }).(AppAttachPackageInfoPropertiesPtrOutput)
 }
 
-// URL path to certificate name located in keyVault
+// URL of keyvault location to store certificate
 func (o AppAttachPackagePropertiesOutput) KeyVaultURL() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppAttachPackageProperties) *string { return v.KeyVaultURL }).(pulumi.StringPtrOutput)
 }
@@ -1157,7 +1157,7 @@ type AppAttachPackagePropertiesResponse struct {
 	HostPoolReferences []string `pulumi:"hostPoolReferences"`
 	// Detailed properties for App Attach Package
 	Image *AppAttachPackageInfoPropertiesResponse `pulumi:"image"`
-	// URL path to certificate name located in keyVault
+	// URL of keyvault location to store certificate
 	KeyVaultURL *string `pulumi:"keyVaultURL"`
 	// The provisioning state of the App Attach Package.
 	ProvisioningState string `pulumi:"provisioningState"`
@@ -1193,7 +1193,7 @@ func (o AppAttachPackagePropertiesResponseOutput) Image() AppAttachPackageInfoPr
 	return o.ApplyT(func(v AppAttachPackagePropertiesResponse) *AppAttachPackageInfoPropertiesResponse { return v.Image }).(AppAttachPackageInfoPropertiesResponsePtrOutput)
 }
 
-// URL path to certificate name located in keyVault
+// URL of keyvault location to store certificate
 func (o AppAttachPackagePropertiesResponseOutput) KeyVaultURL() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppAttachPackagePropertiesResponse) *string { return v.KeyVaultURL }).(pulumi.StringPtrOutput)
 }
@@ -1785,110 +1785,13 @@ func (o MsixPackageDependenciesResponseArrayOutput) Index(i pulumi.IntInput) Msi
 	}).(MsixPackageDependenciesResponseOutput)
 }
 
-// The private endpoint connection resource.
-type PrivateEndpointConnectionResponse struct {
-	// The group ids for the private endpoint resource.
-	GroupIds []string `pulumi:"groupIds"`
-	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-	Id string `pulumi:"id"`
-	// The name of the resource
-	Name string `pulumi:"name"`
-	// The private endpoint resource.
-	PrivateEndpoint *PrivateEndpointResponse `pulumi:"privateEndpoint"`
-	// A collection of information about the state of the connection between service consumer and provider.
-	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
-	// The provisioning state of the private endpoint connection resource.
-	ProvisioningState string `pulumi:"provisioningState"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-	Type string `pulumi:"type"`
-}
-
-// The private endpoint connection resource.
-type PrivateEndpointConnectionResponseOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointConnectionResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointConnectionResponse)(nil)).Elem()
-}
-
-func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResponseOutput() PrivateEndpointConnectionResponseOutput {
-	return o
-}
-
-func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResponseOutputWithContext(ctx context.Context) PrivateEndpointConnectionResponseOutput {
-	return o
-}
-
-// The group ids for the private endpoint resource.
-func (o PrivateEndpointConnectionResponseOutput) GroupIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
-}
-
-// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-func (o PrivateEndpointConnectionResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// The name of the resource
-func (o PrivateEndpointConnectionResponseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// The private endpoint resource.
-func (o PrivateEndpointConnectionResponseOutput) PrivateEndpoint() PrivateEndpointResponsePtrOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) *PrivateEndpointResponse { return v.PrivateEndpoint }).(PrivateEndpointResponsePtrOutput)
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-func (o PrivateEndpointConnectionResponseOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStateResponseOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) PrivateLinkServiceConnectionStateResponse {
-		return v.PrivateLinkServiceConnectionState
-	}).(PrivateLinkServiceConnectionStateResponseOutput)
-}
-
-// The provisioning state of the private endpoint connection resource.
-func (o PrivateEndpointConnectionResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o PrivateEndpointConnectionResponseOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
-}
-
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-func (o PrivateEndpointConnectionResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type PrivateEndpointConnectionResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointConnectionResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PrivateEndpointConnectionResponse)(nil)).Elem()
-}
-
-func (o PrivateEndpointConnectionResponseArrayOutput) ToPrivateEndpointConnectionResponseArrayOutput() PrivateEndpointConnectionResponseArrayOutput {
-	return o
-}
-
-func (o PrivateEndpointConnectionResponseArrayOutput) ToPrivateEndpointConnectionResponseArrayOutputWithContext(ctx context.Context) PrivateEndpointConnectionResponseArrayOutput {
-	return o
-}
-
-func (o PrivateEndpointConnectionResponseArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnectionResponse {
-		return vs[0].([]PrivateEndpointConnectionResponse)[vs[1].(int)]
-	}).(PrivateEndpointConnectionResponseOutput)
-}
-
-// The private endpoint resource.
+// The Private Endpoint resource.
 type PrivateEndpointResponse struct {
-	// The ARM identifier for private endpoint.
+	// The ARM identifier for Private Endpoint
 	Id string `pulumi:"id"`
 }
 
-// The private endpoint resource.
+// The Private Endpoint resource.
 type PrivateEndpointResponseOutput struct{ *pulumi.OutputState }
 
 func (PrivateEndpointResponseOutput) ElementType() reflect.Type {
@@ -1903,7 +1806,7 @@ func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutputWithContex
 	return o
 }
 
-// The ARM identifier for private endpoint.
+// The ARM identifier for Private Endpoint
 func (o PrivateEndpointResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointResponse) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -1932,7 +1835,7 @@ func (o PrivateEndpointResponsePtrOutput) Elem() PrivateEndpointResponseOutput {
 	}).(PrivateEndpointResponseOutput)
 }
 
-// The ARM identifier for private endpoint.
+// The ARM identifier for Private Endpoint
 func (o PrivateEndpointResponsePtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PrivateEndpointResponse) *string {
 		if v == nil {
@@ -2731,9 +2634,9 @@ func (o ResourceModelWithAllowedPropertySetPlanPtrOutput) Version() pulumi.Strin
 }
 
 type ResourceModelWithAllowedPropertySetResponseIdentity struct {
-	// The principal ID of resource identity. The value must be an UUID.
+	// The principal ID of resource identity.
 	PrincipalId string `pulumi:"principalId"`
-	// The tenant ID of resource. The value must be an UUID.
+	// The tenant ID of resource.
 	TenantId string `pulumi:"tenantId"`
 	// The identity type.
 	Type *string `pulumi:"type"`
@@ -2753,12 +2656,12 @@ func (o ResourceModelWithAllowedPropertySetResponseIdentityOutput) ToResourceMod
 	return o
 }
 
-// The principal ID of resource identity. The value must be an UUID.
+// The principal ID of resource identity.
 func (o ResourceModelWithAllowedPropertySetResponseIdentityOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceModelWithAllowedPropertySetResponseIdentity) string { return v.PrincipalId }).(pulumi.StringOutput)
 }
 
-// The tenant ID of resource. The value must be an UUID.
+// The tenant ID of resource.
 func (o ResourceModelWithAllowedPropertySetResponseIdentityOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceModelWithAllowedPropertySetResponseIdentity) string { return v.TenantId }).(pulumi.StringOutput)
 }
@@ -2792,7 +2695,7 @@ func (o ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput) Elem() Res
 	}).(ResourceModelWithAllowedPropertySetResponseIdentityOutput)
 }
 
-// The principal ID of resource identity. The value must be an UUID.
+// The principal ID of resource identity.
 func (o ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput) PrincipalId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceModelWithAllowedPropertySetResponseIdentity) *string {
 		if v == nil {
@@ -2802,7 +2705,7 @@ func (o ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput) PrincipalI
 	}).(pulumi.StringPtrOutput)
 }
 
-// The tenant ID of resource. The value must be an UUID.
+// The tenant ID of resource.
 func (o ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput) TenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceModelWithAllowedPropertySetResponseIdentity) *string {
 		if v == nil {
@@ -2953,7 +2856,7 @@ type ResourceModelWithAllowedPropertySetResponseSku struct {
 	Capacity *int `pulumi:"capacity"`
 	// If the service has different generations of hardware, for the same SKU, then that can be captured here.
 	Family *string `pulumi:"family"`
-	// The name of the SKU. E.g. P3. It is typically a letter+number code
+	// The name of the SKU. Ex - P3. It is typically a letter+number code
 	Name string `pulumi:"name"`
 	// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
 	Size *string `pulumi:"size"`
@@ -2985,7 +2888,7 @@ func (o ResourceModelWithAllowedPropertySetResponseSkuOutput) Family() pulumi.St
 	return o.ApplyT(func(v ResourceModelWithAllowedPropertySetResponseSku) *string { return v.Family }).(pulumi.StringPtrOutput)
 }
 
-// The name of the SKU. E.g. P3. It is typically a letter+number code
+// The name of the SKU. Ex - P3. It is typically a letter+number code
 func (o ResourceModelWithAllowedPropertySetResponseSkuOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceModelWithAllowedPropertySetResponseSku) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -3044,7 +2947,7 @@ func (o ResourceModelWithAllowedPropertySetResponseSkuPtrOutput) Family() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
-// The name of the SKU. E.g. P3. It is typically a letter+number code
+// The name of the SKU. Ex - P3. It is typically a letter+number code
 func (o ResourceModelWithAllowedPropertySetResponseSkuPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceModelWithAllowedPropertySetResponseSku) *string {
 		if v == nil {
@@ -3079,7 +2982,7 @@ type ResourceModelWithAllowedPropertySetSku struct {
 	Capacity *int `pulumi:"capacity"`
 	// If the service has different generations of hardware, for the same SKU, then that can be captured here.
 	Family *string `pulumi:"family"`
-	// The name of the SKU. E.g. P3. It is typically a letter+number code
+	// The name of the SKU. Ex - P3. It is typically a letter+number code
 	Name string `pulumi:"name"`
 	// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
 	Size *string `pulumi:"size"`
@@ -3103,7 +3006,7 @@ type ResourceModelWithAllowedPropertySetSkuArgs struct {
 	Capacity pulumi.IntPtrInput `pulumi:"capacity"`
 	// If the service has different generations of hardware, for the same SKU, then that can be captured here.
 	Family pulumi.StringPtrInput `pulumi:"family"`
-	// The name of the SKU. E.g. P3. It is typically a letter+number code
+	// The name of the SKU. Ex - P3. It is typically a letter+number code
 	Name pulumi.StringInput `pulumi:"name"`
 	// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
 	Size pulumi.StringPtrInput `pulumi:"size"`
@@ -3198,7 +3101,7 @@ func (o ResourceModelWithAllowedPropertySetSkuOutput) Family() pulumi.StringPtrO
 	return o.ApplyT(func(v ResourceModelWithAllowedPropertySetSku) *string { return v.Family }).(pulumi.StringPtrOutput)
 }
 
-// The name of the SKU. E.g. P3. It is typically a letter+number code
+// The name of the SKU. Ex - P3. It is typically a letter+number code
 func (o ResourceModelWithAllowedPropertySetSkuOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceModelWithAllowedPropertySetSku) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -3257,7 +3160,7 @@ func (o ResourceModelWithAllowedPropertySetSkuPtrOutput) Family() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// The name of the SKU. E.g. P3. It is typically a letter+number code
+// The name of the SKU. Ex - P3. It is typically a letter+number code
 func (o ResourceModelWithAllowedPropertySetSkuPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceModelWithAllowedPropertySetSku) *string {
 		if v == nil {
@@ -4187,8 +4090,6 @@ func init() {
 	pulumi.RegisterOutputType(MsixPackageDependenciesArrayOutput{})
 	pulumi.RegisterOutputType(MsixPackageDependenciesResponseOutput{})
 	pulumi.RegisterOutputType(MsixPackageDependenciesResponseArrayOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseArrayOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointResponsePtrOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateOutput{})

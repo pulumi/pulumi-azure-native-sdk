@@ -8,22 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Resource for OuContainer.
 //
-// Uses Azure REST API version 2022-12-01. In version 2.x of the Azure Native provider, it used API version 2022-12-01.
-//
-// Other available API versions: 2025-05-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native aad [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Uses Azure REST API version 2022-12-01. In version 1.x of the Azure Native provider, it used API version 2021-03-01.
 type OuContainer struct {
 	pulumi.CustomResourceState
 
 	// The list of container accounts
 	Accounts ContainerAccountResponseArrayOutput `pulumi:"accounts"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The OuContainer name
 	ContainerId pulumi.StringOutput `pulumi:"containerId"`
 	// The Deployment id
@@ -83,12 +79,6 @@ func NewOuContainer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:aad/v20221201:OuContainer"),
-		},
-		{
-			Type: pulumi.String("azure-native:aad/v20250501:OuContainer"),
-		},
-		{
-			Type: pulumi.String("azure-native:aad/v20250601:OuContainer"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -195,11 +185,6 @@ func (o OuContainerOutput) ToOuContainerOutputWithContext(ctx context.Context) O
 // The list of container accounts
 func (o OuContainerOutput) Accounts() ContainerAccountResponseArrayOutput {
 	return o.ApplyT(func(v *OuContainer) ContainerAccountResponseArrayOutput { return v.Accounts }).(ContainerAccountResponseArrayOutput)
-}
-
-// The Azure API version of the resource.
-func (o OuContainerOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *OuContainer) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The OuContainer name

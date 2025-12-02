@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get container app resiliency policy.
 //
-// Uses Azure REST API version 2025-02-02-preview.
+// Uses Azure REST API version 2023-08-01-preview.
 //
-// Other available API versions: 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview.
 func LookupAppResiliency(ctx *pulumi.Context, args *LookupAppResiliencyArgs, opts ...pulumi.InvokeOption) (*LookupAppResiliencyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAppResiliencyResult
@@ -37,15 +37,13 @@ type LookupAppResiliencyArgs struct {
 
 // Configuration to setup App Resiliency
 type LookupAppResiliencyResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Policy that defines circuit breaker conditions
 	CircuitBreakerPolicy *CircuitBreakerPolicyResponse `pulumi:"circuitBreakerPolicy"`
 	// Defines parameters for http connection pooling
 	HttpConnectionPool *HttpConnectionPoolResponse `pulumi:"httpConnectionPool"`
 	// Policy that defines http request retry conditions
 	HttpRetryPolicy *HttpRetryPolicyResponse `pulumi:"httpRetryPolicy"`
-	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name string `pulumi:"name"`
@@ -98,11 +96,6 @@ func (o LookupAppResiliencyResultOutput) ToLookupAppResiliencyResultOutputWithCo
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupAppResiliencyResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAppResiliencyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Policy that defines circuit breaker conditions
 func (o LookupAppResiliencyResultOutput) CircuitBreakerPolicy() CircuitBreakerPolicyResponsePtrOutput {
 	return o.ApplyT(func(v LookupAppResiliencyResult) *CircuitBreakerPolicyResponse { return v.CircuitBreakerPolicy }).(CircuitBreakerPolicyResponsePtrOutput)
@@ -118,7 +111,7 @@ func (o LookupAppResiliencyResultOutput) HttpRetryPolicy() HttpRetryPolicyRespon
 	return o.ApplyT(func(v LookupAppResiliencyResult) *HttpRetryPolicyResponse { return v.HttpRetryPolicy }).(HttpRetryPolicyResponsePtrOutput)
 }
 
-// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupAppResiliencyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppResiliencyResult) string { return v.Id }).(pulumi.StringOutput)
 }

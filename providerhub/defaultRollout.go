@@ -8,23 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Uses Azure REST API version 2024-09-01. In version 2.x of the Azure Native provider, it used API version 2021-09-01-preview.
+// Default rollout definition.
 //
-// Other available API versions: 2021-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native providerhub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Uses Azure REST API version 2021-09-01-preview. In version 1.x of the Azure Native provider, it used API version 2020-11-20.
 type DefaultRollout struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Properties of the rollout.
-	Properties DefaultRolloutPropertiesResponseOutput `pulumi:"properties"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	Properties DefaultRolloutResponsePropertiesOutput `pulumi:"properties"`
+	// Metadata pertaining to creation and last modification of the resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -40,9 +38,6 @@ func NewDefaultRollout(ctx *pulumi.Context,
 	if args.ProviderNamespace == nil {
 		return nil, errors.New("invalid value for required argument 'ProviderNamespace'")
 	}
-	if args.Properties != nil {
-		args.Properties = args.Properties.ToDefaultRolloutPropertiesPtrOutput().ApplyT(func(v *DefaultRolloutProperties) *DefaultRolloutProperties { return v.Defaults() }).(DefaultRolloutPropertiesPtrOutput)
-	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:providerhub/v20201120:DefaultRollout"),
@@ -55,9 +50,6 @@ func NewDefaultRollout(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:providerhub/v20210901preview:DefaultRollout"),
-		},
-		{
-			Type: pulumi.String("azure-native:providerhub/v20240901:DefaultRollout"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -149,22 +141,17 @@ func (o DefaultRolloutOutput) ToDefaultRolloutOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The Azure API version of the resource.
-func (o DefaultRolloutOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *DefaultRollout) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // The name of the resource
 func (o DefaultRolloutOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DefaultRollout) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
 // Properties of the rollout.
-func (o DefaultRolloutOutput) Properties() DefaultRolloutPropertiesResponseOutput {
-	return o.ApplyT(func(v *DefaultRollout) DefaultRolloutPropertiesResponseOutput { return v.Properties }).(DefaultRolloutPropertiesResponseOutput)
+func (o DefaultRolloutOutput) Properties() DefaultRolloutResponsePropertiesOutput {
+	return o.ApplyT(func(v *DefaultRollout) DefaultRolloutResponsePropertiesOutput { return v.Properties }).(DefaultRolloutResponsePropertiesOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+// Metadata pertaining to creation and last modification of the resource.
 func (o DefaultRolloutOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *DefaultRollout) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

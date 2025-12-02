@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // API Operation details.
 //
-// Uses Azure REST API version 2022-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-09-01-preview.
+// Uses Azure REST API version 2022-09-01-preview.
 //
-// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
 type WorkspaceApiOperation struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Description of the operation. May include HTML formatting tags.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Operation Name.
@@ -90,9 +88,6 @@ func NewWorkspaceApiOperation(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240601preview:WorkspaceApiOperation"),
-		},
-		{
-			Type: pulumi.String("azure-native:apimanagement/v20241001preview:WorkspaceApiOperation"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -222,11 +217,6 @@ func (o WorkspaceApiOperationOutput) ToWorkspaceApiOperationOutput() WorkspaceAp
 
 func (o WorkspaceApiOperationOutput) ToWorkspaceApiOperationOutputWithContext(ctx context.Context) WorkspaceApiOperationOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o WorkspaceApiOperationOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *WorkspaceApiOperation) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Description of the operation. May include HTML formatting tags.

@@ -8,51 +8,37 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Network To Network Interconnect resource definition.
+// The NetworkToNetworkInterconnect resource definition.
 //
-// Uses Azure REST API version 2023-06-15. In version 2.x of the Azure Native provider, it used API version 2023-02-01-preview.
+// Uses Azure REST API version 2023-02-01-preview. In version 1.x of the Azure Native provider, it used API version 2023-02-01-preview.
 //
-// Other available API versions: 2023-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-06-15.
 type NetworkToNetworkInterconnect struct {
 	pulumi.CustomResourceState
 
-	// Administrative state of the resource.
+	// Gets the administrativeState of the resource. Example -Enabled/Disabled
 	AdministrativeState pulumi.StringOutput `pulumi:"administrativeState"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
-	// Configuration state of the resource.
-	ConfigurationState pulumi.StringOutput `pulumi:"configurationState"`
-	// Egress Acl. ARM resource ID of Access Control Lists.
-	EgressAclId pulumi.StringPtrOutput `pulumi:"egressAclId"`
-	// Export Route Policy configuration.
-	ExportRoutePolicy ExportRoutePolicyInformationResponsePtrOutput `pulumi:"exportRoutePolicy"`
-	// Import Route Policy configuration.
-	ImportRoutePolicy ImportRoutePolicyInformationResponsePtrOutput `pulumi:"importRoutePolicy"`
-	// Ingress Acl. ARM resource ID of Access Control Lists.
-	IngressAclId pulumi.StringPtrOutput `pulumi:"ingressAclId"`
 	// Configuration to use NNI for Infrastructure Management. Example: True/False.
-	IsManagementType pulumi.StringPtrOutput `pulumi:"isManagementType"`
-	// Common properties for Layer2 Configuration.
+	IsManagementType pulumi.StringOutput `pulumi:"isManagementType"`
+	// Common properties for Layer2Configuration.
 	Layer2Configuration Layer2ConfigurationResponsePtrOutput `pulumi:"layer2Configuration"`
+	// Common properties for Layer3Configuration.
+	Layer3Configuration Layer3ConfigurationResponsePtrOutput `pulumi:"layer3Configuration"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Type of NNI used. Example: CE | NPB
 	NniType pulumi.StringPtrOutput `pulumi:"nniType"`
-	// NPB Static Route Configuration properties.
-	NpbStaticRouteConfiguration NpbStaticRouteConfigurationResponsePtrOutput `pulumi:"npbStaticRouteConfiguration"`
-	// Common properties for Layer3Configuration.
-	OptionBLayer3Configuration NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3ConfigurationPtrOutput `pulumi:"optionBLayer3Configuration"`
-	// Provisioning state of the resource.
+	// Gets the provisioning state of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
-	// Based on this option layer3 parameters are mandatory. Example: True/False
+	// Based on this parameter the layer2/layer3 is made as mandatory. Example: True/False
 	UseOptionB pulumi.StringOutput `pulumi:"useOptionB"`
 }
 
@@ -63,6 +49,9 @@ func NewNetworkToNetworkInterconnect(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.IsManagementType == nil {
+		return nil, errors.New("invalid value for required argument 'IsManagementType'")
+	}
 	if args.NetworkFabricName == nil {
 		return nil, errors.New("invalid value for required argument 'NetworkFabricName'")
 	}
@@ -72,17 +61,11 @@ func NewNetworkToNetworkInterconnect(ctx *pulumi.Context,
 	if args.UseOptionB == nil {
 		return nil, errors.New("invalid value for required argument 'UseOptionB'")
 	}
-	if args.IsManagementType == nil {
-		args.IsManagementType = pulumi.StringPtr("True")
-	}
 	if args.Layer2Configuration != nil {
 		args.Layer2Configuration = args.Layer2Configuration.ToLayer2ConfigurationPtrOutput().ApplyT(func(v *Layer2Configuration) *Layer2Configuration { return v.Defaults() }).(Layer2ConfigurationPtrOutput)
 	}
 	if args.NniType == nil {
 		args.NniType = pulumi.StringPtr("CE")
-	}
-	if args.NpbStaticRouteConfiguration != nil {
-		args.NpbStaticRouteConfiguration = args.NpbStaticRouteConfiguration.ToNpbStaticRouteConfigurationPtrOutput().ApplyT(func(v *NpbStaticRouteConfiguration) *NpbStaticRouteConfiguration { return v.Defaults() }).(NpbStaticRouteConfigurationPtrOutput)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -126,61 +109,41 @@ func (NetworkToNetworkInterconnectState) ElementType() reflect.Type {
 }
 
 type networkToNetworkInterconnectArgs struct {
-	// Egress Acl. ARM resource ID of Access Control Lists.
-	EgressAclId *string `pulumi:"egressAclId"`
-	// Export Route Policy configuration.
-	ExportRoutePolicy *ExportRoutePolicyInformation `pulumi:"exportRoutePolicy"`
-	// Import Route Policy configuration.
-	ImportRoutePolicy *ImportRoutePolicyInformation `pulumi:"importRoutePolicy"`
-	// Ingress Acl. ARM resource ID of Access Control Lists.
-	IngressAclId *string `pulumi:"ingressAclId"`
 	// Configuration to use NNI for Infrastructure Management. Example: True/False.
-	IsManagementType *string `pulumi:"isManagementType"`
-	// Common properties for Layer2 Configuration.
+	IsManagementType string `pulumi:"isManagementType"`
+	// Common properties for Layer2Configuration.
 	Layer2Configuration *Layer2Configuration `pulumi:"layer2Configuration"`
-	// Name of the Network Fabric.
+	// Common properties for Layer3Configuration.
+	Layer3Configuration *Layer3Configuration `pulumi:"layer3Configuration"`
+	// Name of the NetworkFabric.
 	NetworkFabricName string `pulumi:"networkFabricName"`
-	// Name of the Network to Network Interconnect.
+	// Name of the NetworkToNetworkInterconnectName
 	NetworkToNetworkInterconnectName *string `pulumi:"networkToNetworkInterconnectName"`
 	// Type of NNI used. Example: CE | NPB
 	NniType *string `pulumi:"nniType"`
-	// NPB Static Route Configuration properties.
-	NpbStaticRouteConfiguration *NpbStaticRouteConfiguration `pulumi:"npbStaticRouteConfiguration"`
-	// Common properties for Layer3Configuration.
-	OptionBLayer3Configuration *NetworkToNetworkInterconnectPropertiesOptionBLayer3Configuration `pulumi:"optionBLayer3Configuration"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Based on this option layer3 parameters are mandatory. Example: True/False
+	// Based on this parameter the layer2/layer3 is made as mandatory. Example: True/False
 	UseOptionB string `pulumi:"useOptionB"`
 }
 
 // The set of arguments for constructing a NetworkToNetworkInterconnect resource.
 type NetworkToNetworkInterconnectArgs struct {
-	// Egress Acl. ARM resource ID of Access Control Lists.
-	EgressAclId pulumi.StringPtrInput
-	// Export Route Policy configuration.
-	ExportRoutePolicy ExportRoutePolicyInformationPtrInput
-	// Import Route Policy configuration.
-	ImportRoutePolicy ImportRoutePolicyInformationPtrInput
-	// Ingress Acl. ARM resource ID of Access Control Lists.
-	IngressAclId pulumi.StringPtrInput
 	// Configuration to use NNI for Infrastructure Management. Example: True/False.
-	IsManagementType pulumi.StringPtrInput
-	// Common properties for Layer2 Configuration.
+	IsManagementType pulumi.StringInput
+	// Common properties for Layer2Configuration.
 	Layer2Configuration Layer2ConfigurationPtrInput
-	// Name of the Network Fabric.
+	// Common properties for Layer3Configuration.
+	Layer3Configuration Layer3ConfigurationPtrInput
+	// Name of the NetworkFabric.
 	NetworkFabricName pulumi.StringInput
-	// Name of the Network to Network Interconnect.
+	// Name of the NetworkToNetworkInterconnectName
 	NetworkToNetworkInterconnectName pulumi.StringPtrInput
 	// Type of NNI used. Example: CE | NPB
 	NniType pulumi.StringPtrInput
-	// NPB Static Route Configuration properties.
-	NpbStaticRouteConfiguration NpbStaticRouteConfigurationPtrInput
-	// Common properties for Layer3Configuration.
-	OptionBLayer3Configuration NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// Based on this option layer3 parameters are mandatory. Example: True/False
+	// Based on this parameter the layer2/layer3 is made as mandatory. Example: True/False
 	UseOptionB pulumi.StringInput
 }
 
@@ -221,55 +184,28 @@ func (o NetworkToNetworkInterconnectOutput) ToNetworkToNetworkInterconnectOutput
 	return o
 }
 
-// Administrative state of the resource.
+// Gets the administrativeState of the resource. Example -Enabled/Disabled
 func (o NetworkToNetworkInterconnectOutput) AdministrativeState() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkToNetworkInterconnect) pulumi.StringOutput { return v.AdministrativeState }).(pulumi.StringOutput)
 }
 
-// The Azure API version of the resource.
-func (o NetworkToNetworkInterconnectOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *NetworkToNetworkInterconnect) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// Configuration state of the resource.
-func (o NetworkToNetworkInterconnectOutput) ConfigurationState() pulumi.StringOutput {
-	return o.ApplyT(func(v *NetworkToNetworkInterconnect) pulumi.StringOutput { return v.ConfigurationState }).(pulumi.StringOutput)
-}
-
-// Egress Acl. ARM resource ID of Access Control Lists.
-func (o NetworkToNetworkInterconnectOutput) EgressAclId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkToNetworkInterconnect) pulumi.StringPtrOutput { return v.EgressAclId }).(pulumi.StringPtrOutput)
-}
-
-// Export Route Policy configuration.
-func (o NetworkToNetworkInterconnectOutput) ExportRoutePolicy() ExportRoutePolicyInformationResponsePtrOutput {
-	return o.ApplyT(func(v *NetworkToNetworkInterconnect) ExportRoutePolicyInformationResponsePtrOutput {
-		return v.ExportRoutePolicy
-	}).(ExportRoutePolicyInformationResponsePtrOutput)
-}
-
-// Import Route Policy configuration.
-func (o NetworkToNetworkInterconnectOutput) ImportRoutePolicy() ImportRoutePolicyInformationResponsePtrOutput {
-	return o.ApplyT(func(v *NetworkToNetworkInterconnect) ImportRoutePolicyInformationResponsePtrOutput {
-		return v.ImportRoutePolicy
-	}).(ImportRoutePolicyInformationResponsePtrOutput)
-}
-
-// Ingress Acl. ARM resource ID of Access Control Lists.
-func (o NetworkToNetworkInterconnectOutput) IngressAclId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkToNetworkInterconnect) pulumi.StringPtrOutput { return v.IngressAclId }).(pulumi.StringPtrOutput)
-}
-
 // Configuration to use NNI for Infrastructure Management. Example: True/False.
-func (o NetworkToNetworkInterconnectOutput) IsManagementType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkToNetworkInterconnect) pulumi.StringPtrOutput { return v.IsManagementType }).(pulumi.StringPtrOutput)
+func (o NetworkToNetworkInterconnectOutput) IsManagementType() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkToNetworkInterconnect) pulumi.StringOutput { return v.IsManagementType }).(pulumi.StringOutput)
 }
 
-// Common properties for Layer2 Configuration.
+// Common properties for Layer2Configuration.
 func (o NetworkToNetworkInterconnectOutput) Layer2Configuration() Layer2ConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v *NetworkToNetworkInterconnect) Layer2ConfigurationResponsePtrOutput {
 		return v.Layer2Configuration
 	}).(Layer2ConfigurationResponsePtrOutput)
+}
+
+// Common properties for Layer3Configuration.
+func (o NetworkToNetworkInterconnectOutput) Layer3Configuration() Layer3ConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *NetworkToNetworkInterconnect) Layer3ConfigurationResponsePtrOutput {
+		return v.Layer3Configuration
+	}).(Layer3ConfigurationResponsePtrOutput)
 }
 
 // The name of the resource
@@ -282,21 +218,7 @@ func (o NetworkToNetworkInterconnectOutput) NniType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkToNetworkInterconnect) pulumi.StringPtrOutput { return v.NniType }).(pulumi.StringPtrOutput)
 }
 
-// NPB Static Route Configuration properties.
-func (o NetworkToNetworkInterconnectOutput) NpbStaticRouteConfiguration() NpbStaticRouteConfigurationResponsePtrOutput {
-	return o.ApplyT(func(v *NetworkToNetworkInterconnect) NpbStaticRouteConfigurationResponsePtrOutput {
-		return v.NpbStaticRouteConfiguration
-	}).(NpbStaticRouteConfigurationResponsePtrOutput)
-}
-
-// Common properties for Layer3Configuration.
-func (o NetworkToNetworkInterconnectOutput) OptionBLayer3Configuration() NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3ConfigurationPtrOutput {
-	return o.ApplyT(func(v *NetworkToNetworkInterconnect) NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3ConfigurationPtrOutput {
-		return v.OptionBLayer3Configuration
-	}).(NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3ConfigurationPtrOutput)
-}
-
-// Provisioning state of the resource.
+// Gets the provisioning state of the resource.
 func (o NetworkToNetworkInterconnectOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkToNetworkInterconnect) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
@@ -311,7 +233,7 @@ func (o NetworkToNetworkInterconnectOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkToNetworkInterconnect) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// Based on this option layer3 parameters are mandatory. Example: True/False
+// Based on this parameter the layer2/layer3 is made as mandatory. Example: True/False
 func (o NetworkToNetworkInterconnectOutput) UseOptionB() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkToNetworkInterconnect) pulumi.StringOutput { return v.UseOptionB }).(pulumi.StringOutput)
 }

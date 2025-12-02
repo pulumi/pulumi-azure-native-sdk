@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,9 +29,9 @@ type LookupCustomImageArgs struct {
 	Expand *string `pulumi:"expand"`
 	// The name of the lab.
 	LabName string `pulumi:"labName"`
-	// The name of the CustomImage
+	// The name of the custom image.
 	Name string `pulumi:"name"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -39,8 +39,6 @@ type LookupCustomImageArgs struct {
 type LookupCustomImageResult struct {
 	// The author of the custom image.
 	Author *string `pulumi:"author"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The creation date of the custom image.
 	CreationDate string `pulumi:"creationDate"`
 	// Storage information about the plan related to this custom image
@@ -89,9 +87,9 @@ type LookupCustomImageOutputArgs struct {
 	Expand pulumi.StringPtrInput `pulumi:"expand"`
 	// The name of the lab.
 	LabName pulumi.StringInput `pulumi:"labName"`
-	// The name of the CustomImage
+	// The name of the custom image.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -117,11 +115,6 @@ func (o LookupCustomImageResultOutput) ToLookupCustomImageResultOutputWithContex
 // The author of the custom image.
 func (o LookupCustomImageResultOutput) Author() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCustomImageResult) *string { return v.Author }).(pulumi.StringPtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o LookupCustomImageResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCustomImageResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of the custom image.

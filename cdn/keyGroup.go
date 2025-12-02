@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Contains a list of references of UrlSigningKey type secret objects.
 //
-// Uses Azure REST API version 2024-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-07-01-preview.
+// Uses Azure REST API version 2023-07-01-preview.
 //
-// Other available API versions: 2023-07-01-preview, 2024-05-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-05-01-preview, 2024-06-01-preview.
 type KeyGroup struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion  pulumi.StringOutput `pulumi:"azureApiVersion"`
 	DeploymentStatus pulumi.StringOutput `pulumi:"deploymentStatus"`
 	// Names of UrlSigningKey type secret objects
 	KeyReferences ResourceReferenceResponseArrayOutput `pulumi:"keyReferences"`
@@ -57,9 +55,6 @@ func NewKeyGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cdn/v20240601preview:KeyGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:cdn/v20250901preview:KeyGroup"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -102,7 +97,7 @@ type keyGroupArgs struct {
 	KeyReferences []ResourceReference `pulumi:"keyReferences"`
 	// Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
 	ProfileName string `pulumi:"profileName"`
-	// The name of the resource group. The name is case insensitive.
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -114,7 +109,7 @@ type KeyGroupArgs struct {
 	KeyReferences ResourceReferenceArrayInput
 	// Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
 	ProfileName pulumi.StringInput
-	// The name of the resource group. The name is case insensitive.
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput
 }
 
@@ -153,11 +148,6 @@ func (o KeyGroupOutput) ToKeyGroupOutput() KeyGroupOutput {
 
 func (o KeyGroupOutput) ToKeyGroupOutputWithContext(ctx context.Context) KeyGroupOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o KeyGroupOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *KeyGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 func (o KeyGroupOutput) DeploymentStatus() pulumi.StringOutput {

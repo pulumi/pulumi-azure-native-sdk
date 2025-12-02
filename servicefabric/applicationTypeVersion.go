@@ -8,22 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An application type version resource for the specified application type name resource.
 //
-// Uses Azure REST API version 2024-11-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-11-01-preview.
+// Uses Azure REST API version 2024-11-01-preview. In version 1.x of the Azure Native provider, it used API version 2020-03-01.
 //
-// Other available API versions: 2025-03-01-preview, 2025-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicefabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-06-01.
 type ApplicationTypeVersion struct {
 	pulumi.CustomResourceState
 
 	// The URL to the application package
 	AppPackageUrl pulumi.StringOutput `pulumi:"appPackageUrl"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The name of the resource
@@ -65,9 +63,6 @@ func NewApplicationTypeVersion(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:servicefabric/v20210501:ApplicationTypeVersion"),
 		},
 		{
-			Type: pulumi.String("azure-native:servicefabric/v20210601:ApplicationTypeVersion"),
-		},
-		{
 			Type: pulumi.String("azure-native:servicefabric/v20210701preview:ApplicationTypeVersion"),
 		},
 		{
@@ -98,67 +93,31 @@ func NewApplicationTypeVersion(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:servicefabric/v20230301preview:ApplicationTypeVersion"),
 		},
 		{
-			Type: pulumi.String("azure-native:servicefabric/v20230301preview:ManagedClusterApplicationTypeVersion"),
-		},
-		{
 			Type: pulumi.String("azure-native:servicefabric/v20230701preview:ApplicationTypeVersion"),
-		},
-		{
-			Type: pulumi.String("azure-native:servicefabric/v20230701preview:ManagedClusterApplicationTypeVersion"),
 		},
 		{
 			Type: pulumi.String("azure-native:servicefabric/v20230901preview:ApplicationTypeVersion"),
 		},
 		{
-			Type: pulumi.String("azure-native:servicefabric/v20230901preview:ManagedClusterApplicationTypeVersion"),
-		},
-		{
 			Type: pulumi.String("azure-native:servicefabric/v20231101preview:ApplicationTypeVersion"),
-		},
-		{
-			Type: pulumi.String("azure-native:servicefabric/v20231101preview:ManagedClusterApplicationTypeVersion"),
 		},
 		{
 			Type: pulumi.String("azure-native:servicefabric/v20231201preview:ApplicationTypeVersion"),
 		},
 		{
-			Type: pulumi.String("azure-native:servicefabric/v20231201preview:ManagedClusterApplicationTypeVersion"),
-		},
-		{
 			Type: pulumi.String("azure-native:servicefabric/v20240201preview:ApplicationTypeVersion"),
-		},
-		{
-			Type: pulumi.String("azure-native:servicefabric/v20240201preview:ManagedClusterApplicationTypeVersion"),
 		},
 		{
 			Type: pulumi.String("azure-native:servicefabric/v20240401:ApplicationTypeVersion"),
 		},
 		{
-			Type: pulumi.String("azure-native:servicefabric/v20240401:ManagedClusterApplicationTypeVersion"),
-		},
-		{
 			Type: pulumi.String("azure-native:servicefabric/v20240601preview:ApplicationTypeVersion"),
-		},
-		{
-			Type: pulumi.String("azure-native:servicefabric/v20240601preview:ManagedClusterApplicationTypeVersion"),
 		},
 		{
 			Type: pulumi.String("azure-native:servicefabric/v20240901preview:ApplicationTypeVersion"),
 		},
 		{
-			Type: pulumi.String("azure-native:servicefabric/v20240901preview:ManagedClusterApplicationTypeVersion"),
-		},
-		{
 			Type: pulumi.String("azure-native:servicefabric/v20241101preview:ApplicationTypeVersion"),
-		},
-		{
-			Type: pulumi.String("azure-native:servicefabric/v20250301preview:ApplicationTypeVersion"),
-		},
-		{
-			Type: pulumi.String("azure-native:servicefabric/v20250601preview:ApplicationTypeVersion"),
-		},
-		{
-			Type: pulumi.String("azure-native:servicefabric:ManagedClusterApplicationTypeVersion"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -269,11 +228,6 @@ func (o ApplicationTypeVersionOutput) ToApplicationTypeVersionOutputWithContext(
 // The URL to the application package
 func (o ApplicationTypeVersionOutput) AppPackageUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationTypeVersion) pulumi.StringOutput { return v.AppPackageUrl }).(pulumi.StringOutput)
-}
-
-// The Azure API version of the resource.
-func (o ApplicationTypeVersionOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *ApplicationTypeVersion) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The geo-location where the resource lives

@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified saved search for a given workspace.
 //
-// Uses Azure REST API version 2023-09-01.
+// Uses Azure REST API version 2020-08-01.
 //
-// Other available API versions: 2020-03-01-preview, 2020-08-01, 2025-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-09-01, 2025-02-01.
 func LookupSavedSearch(ctx *pulumi.Context, args *LookupSavedSearchArgs, opts ...pulumi.InvokeOption) (*LookupSavedSearchResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSavedSearchResult
@@ -37,8 +37,6 @@ type LookupSavedSearchArgs struct {
 
 // Value object for saved search results.
 type LookupSavedSearchResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The category of the saved search. This helps the user to find a saved search faster.
 	Category string `pulumi:"category"`
 	// Saved search display name.
@@ -98,11 +96,6 @@ func (o LookupSavedSearchResultOutput) ToLookupSavedSearchResultOutput() LookupS
 
 func (o LookupSavedSearchResultOutput) ToLookupSavedSearchResultOutputWithContext(ctx context.Context) LookupSavedSearchResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupSavedSearchResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSavedSearchResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The category of the saved search. This helps the user to find a saved search faster.

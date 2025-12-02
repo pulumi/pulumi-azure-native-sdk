@@ -7,124 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 var _ = utilities.GetEnvOrDefault
-
-// Defines the behavior of resources that are no longer managed after the stack is updated or deleted.
-type ActionOnUnmanage struct {
-	// Specifies an action for a newly unmanaged resource. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
-	ManagementGroups *string `pulumi:"managementGroups"`
-	// Specifies an action for a newly unmanaged resource. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
-	ResourceGroups *string `pulumi:"resourceGroups"`
-	// Specifies an action for a newly unmanaged resource. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
-	Resources string `pulumi:"resources"`
-}
-
-// ActionOnUnmanageInput is an input type that accepts ActionOnUnmanageArgs and ActionOnUnmanageOutput values.
-// You can construct a concrete instance of `ActionOnUnmanageInput` via:
-//
-//	ActionOnUnmanageArgs{...}
-type ActionOnUnmanageInput interface {
-	pulumi.Input
-
-	ToActionOnUnmanageOutput() ActionOnUnmanageOutput
-	ToActionOnUnmanageOutputWithContext(context.Context) ActionOnUnmanageOutput
-}
-
-// Defines the behavior of resources that are no longer managed after the stack is updated or deleted.
-type ActionOnUnmanageArgs struct {
-	// Specifies an action for a newly unmanaged resource. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
-	ManagementGroups pulumi.StringPtrInput `pulumi:"managementGroups"`
-	// Specifies an action for a newly unmanaged resource. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
-	ResourceGroups pulumi.StringPtrInput `pulumi:"resourceGroups"`
-	// Specifies an action for a newly unmanaged resource. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
-	Resources pulumi.StringInput `pulumi:"resources"`
-}
-
-func (ActionOnUnmanageArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionOnUnmanage)(nil)).Elem()
-}
-
-func (i ActionOnUnmanageArgs) ToActionOnUnmanageOutput() ActionOnUnmanageOutput {
-	return i.ToActionOnUnmanageOutputWithContext(context.Background())
-}
-
-func (i ActionOnUnmanageArgs) ToActionOnUnmanageOutputWithContext(ctx context.Context) ActionOnUnmanageOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionOnUnmanageOutput)
-}
-
-// Defines the behavior of resources that are no longer managed after the stack is updated or deleted.
-type ActionOnUnmanageOutput struct{ *pulumi.OutputState }
-
-func (ActionOnUnmanageOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionOnUnmanage)(nil)).Elem()
-}
-
-func (o ActionOnUnmanageOutput) ToActionOnUnmanageOutput() ActionOnUnmanageOutput {
-	return o
-}
-
-func (o ActionOnUnmanageOutput) ToActionOnUnmanageOutputWithContext(ctx context.Context) ActionOnUnmanageOutput {
-	return o
-}
-
-// Specifies an action for a newly unmanaged resource. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
-func (o ActionOnUnmanageOutput) ManagementGroups() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionOnUnmanage) *string { return v.ManagementGroups }).(pulumi.StringPtrOutput)
-}
-
-// Specifies an action for a newly unmanaged resource. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
-func (o ActionOnUnmanageOutput) ResourceGroups() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionOnUnmanage) *string { return v.ResourceGroups }).(pulumi.StringPtrOutput)
-}
-
-// Specifies an action for a newly unmanaged resource. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
-func (o ActionOnUnmanageOutput) Resources() pulumi.StringOutput {
-	return o.ApplyT(func(v ActionOnUnmanage) string { return v.Resources }).(pulumi.StringOutput)
-}
-
-// Defines the behavior of resources that are no longer managed after the stack is updated or deleted.
-type ActionOnUnmanageResponse struct {
-	// Specifies an action for a newly unmanaged resource. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
-	ManagementGroups *string `pulumi:"managementGroups"`
-	// Specifies an action for a newly unmanaged resource. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
-	ResourceGroups *string `pulumi:"resourceGroups"`
-	// Specifies an action for a newly unmanaged resource. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
-	Resources string `pulumi:"resources"`
-}
-
-// Defines the behavior of resources that are no longer managed after the stack is updated or deleted.
-type ActionOnUnmanageResponseOutput struct{ *pulumi.OutputState }
-
-func (ActionOnUnmanageResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionOnUnmanageResponse)(nil)).Elem()
-}
-
-func (o ActionOnUnmanageResponseOutput) ToActionOnUnmanageResponseOutput() ActionOnUnmanageResponseOutput {
-	return o
-}
-
-func (o ActionOnUnmanageResponseOutput) ToActionOnUnmanageResponseOutputWithContext(ctx context.Context) ActionOnUnmanageResponseOutput {
-	return o
-}
-
-// Specifies an action for a newly unmanaged resource. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
-func (o ActionOnUnmanageResponseOutput) ManagementGroups() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionOnUnmanageResponse) *string { return v.ManagementGroups }).(pulumi.StringPtrOutput)
-}
-
-// Specifies an action for a newly unmanaged resource. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
-func (o ActionOnUnmanageResponseOutput) ResourceGroups() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionOnUnmanageResponse) *string { return v.ResourceGroups }).(pulumi.StringPtrOutput)
-}
-
-// Specifies an action for a newly unmanaged resource. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
-func (o ActionOnUnmanageResponseOutput) Resources() pulumi.StringOutput {
-	return o.ApplyT(func(v ActionOnUnmanageResponse) string { return v.Resources }).(pulumi.StringOutput)
-}
 
 type AliasPathMetadataResponse struct {
 	// The attributes of the token that the alias path is referring to.
@@ -514,8 +401,6 @@ func (o BasicDependencyResponseArrayOutput) Index(i pulumi.IntInput) BasicDepend
 type ContainerConfiguration struct {
 	// Container group name, if not specified then the name will get auto-generated. Not specifying a 'containerGroupName' indicates the system to generate a unique name which might end up flagging an Azure Policy as non-compliant. Use 'containerGroupName' when you have an Azure Policy that expects a specific naming convention or when you want to fully control the name. 'containerGroupName' property must be between 1 and 63 characters long, must contain only lowercase letters, numbers, and dashes and it cannot start or end with a dash and consecutive dashes are not allowed. To specify a 'containerGroupName', add the following object to properties: { "containerSettings": { "containerGroupName": "contoso-container" } }. If you do not want to specify a 'containerGroupName' then do not add 'containerSettings' property.
 	ContainerGroupName *string `pulumi:"containerGroupName"`
-	// The subnet resource IDs for a container group.
-	SubnetIds []ContainerGroupSubnetId `pulumi:"subnetIds"`
 }
 
 // ContainerConfigurationInput is an input type that accepts ContainerConfigurationArgs and ContainerConfigurationOutput values.
@@ -533,8 +418,6 @@ type ContainerConfigurationInput interface {
 type ContainerConfigurationArgs struct {
 	// Container group name, if not specified then the name will get auto-generated. Not specifying a 'containerGroupName' indicates the system to generate a unique name which might end up flagging an Azure Policy as non-compliant. Use 'containerGroupName' when you have an Azure Policy that expects a specific naming convention or when you want to fully control the name. 'containerGroupName' property must be between 1 and 63 characters long, must contain only lowercase letters, numbers, and dashes and it cannot start or end with a dash and consecutive dashes are not allowed. To specify a 'containerGroupName', add the following object to properties: { "containerSettings": { "containerGroupName": "contoso-container" } }. If you do not want to specify a 'containerGroupName' then do not add 'containerSettings' property.
 	ContainerGroupName pulumi.StringPtrInput `pulumi:"containerGroupName"`
-	// The subnet resource IDs for a container group.
-	SubnetIds ContainerGroupSubnetIdArrayInput `pulumi:"subnetIds"`
 }
 
 func (ContainerConfigurationArgs) ElementType() reflect.Type {
@@ -620,11 +503,6 @@ func (o ContainerConfigurationOutput) ContainerGroupName() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v ContainerConfiguration) *string { return v.ContainerGroupName }).(pulumi.StringPtrOutput)
 }
 
-// The subnet resource IDs for a container group.
-func (o ContainerConfigurationOutput) SubnetIds() ContainerGroupSubnetIdArrayOutput {
-	return o.ApplyT(func(v ContainerConfiguration) []ContainerGroupSubnetId { return v.SubnetIds }).(ContainerGroupSubnetIdArrayOutput)
-}
-
 type ContainerConfigurationPtrOutput struct{ *pulumi.OutputState }
 
 func (ContainerConfigurationPtrOutput) ElementType() reflect.Type {
@@ -659,22 +537,10 @@ func (o ContainerConfigurationPtrOutput) ContainerGroupName() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The subnet resource IDs for a container group.
-func (o ContainerConfigurationPtrOutput) SubnetIds() ContainerGroupSubnetIdArrayOutput {
-	return o.ApplyT(func(v *ContainerConfiguration) []ContainerGroupSubnetId {
-		if v == nil {
-			return nil
-		}
-		return v.SubnetIds
-	}).(ContainerGroupSubnetIdArrayOutput)
-}
-
 // Settings to customize ACI container instance.
 type ContainerConfigurationResponse struct {
 	// Container group name, if not specified then the name will get auto-generated. Not specifying a 'containerGroupName' indicates the system to generate a unique name which might end up flagging an Azure Policy as non-compliant. Use 'containerGroupName' when you have an Azure Policy that expects a specific naming convention or when you want to fully control the name. 'containerGroupName' property must be between 1 and 63 characters long, must contain only lowercase letters, numbers, and dashes and it cannot start or end with a dash and consecutive dashes are not allowed. To specify a 'containerGroupName', add the following object to properties: { "containerSettings": { "containerGroupName": "contoso-container" } }. If you do not want to specify a 'containerGroupName' then do not add 'containerSettings' property.
 	ContainerGroupName *string `pulumi:"containerGroupName"`
-	// The subnet resource IDs for a container group.
-	SubnetIds []ContainerGroupSubnetIdResponse `pulumi:"subnetIds"`
 }
 
 // Settings to customize ACI container instance.
@@ -695,11 +561,6 @@ func (o ContainerConfigurationResponseOutput) ToContainerConfigurationResponseOu
 // Container group name, if not specified then the name will get auto-generated. Not specifying a 'containerGroupName' indicates the system to generate a unique name which might end up flagging an Azure Policy as non-compliant. Use 'containerGroupName' when you have an Azure Policy that expects a specific naming convention or when you want to fully control the name. 'containerGroupName' property must be between 1 and 63 characters long, must contain only lowercase letters, numbers, and dashes and it cannot start or end with a dash and consecutive dashes are not allowed. To specify a 'containerGroupName', add the following object to properties: { "containerSettings": { "containerGroupName": "contoso-container" } }. If you do not want to specify a 'containerGroupName' then do not add 'containerSettings' property.
 func (o ContainerConfigurationResponseOutput) ContainerGroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerConfigurationResponse) *string { return v.ContainerGroupName }).(pulumi.StringPtrOutput)
-}
-
-// The subnet resource IDs for a container group.
-func (o ContainerConfigurationResponseOutput) SubnetIds() ContainerGroupSubnetIdResponseArrayOutput {
-	return o.ApplyT(func(v ContainerConfigurationResponse) []ContainerGroupSubnetIdResponse { return v.SubnetIds }).(ContainerGroupSubnetIdResponseArrayOutput)
 }
 
 type ContainerConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
@@ -734,178 +595,6 @@ func (o ContainerConfigurationResponsePtrOutput) ContainerGroupName() pulumi.Str
 		}
 		return v.ContainerGroupName
 	}).(pulumi.StringPtrOutput)
-}
-
-// The subnet resource IDs for a container group.
-func (o ContainerConfigurationResponsePtrOutput) SubnetIds() ContainerGroupSubnetIdResponseArrayOutput {
-	return o.ApplyT(func(v *ContainerConfigurationResponse) []ContainerGroupSubnetIdResponse {
-		if v == nil {
-			return nil
-		}
-		return v.SubnetIds
-	}).(ContainerGroupSubnetIdResponseArrayOutput)
-}
-
-// Container group subnet information.
-type ContainerGroupSubnetId struct {
-	// Resource ID of subnet.
-	Id string `pulumi:"id"`
-	// Friendly name for the subnet.
-	Name *string `pulumi:"name"`
-}
-
-// ContainerGroupSubnetIdInput is an input type that accepts ContainerGroupSubnetIdArgs and ContainerGroupSubnetIdOutput values.
-// You can construct a concrete instance of `ContainerGroupSubnetIdInput` via:
-//
-//	ContainerGroupSubnetIdArgs{...}
-type ContainerGroupSubnetIdInput interface {
-	pulumi.Input
-
-	ToContainerGroupSubnetIdOutput() ContainerGroupSubnetIdOutput
-	ToContainerGroupSubnetIdOutputWithContext(context.Context) ContainerGroupSubnetIdOutput
-}
-
-// Container group subnet information.
-type ContainerGroupSubnetIdArgs struct {
-	// Resource ID of subnet.
-	Id pulumi.StringInput `pulumi:"id"`
-	// Friendly name for the subnet.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-}
-
-func (ContainerGroupSubnetIdArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ContainerGroupSubnetId)(nil)).Elem()
-}
-
-func (i ContainerGroupSubnetIdArgs) ToContainerGroupSubnetIdOutput() ContainerGroupSubnetIdOutput {
-	return i.ToContainerGroupSubnetIdOutputWithContext(context.Background())
-}
-
-func (i ContainerGroupSubnetIdArgs) ToContainerGroupSubnetIdOutputWithContext(ctx context.Context) ContainerGroupSubnetIdOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupSubnetIdOutput)
-}
-
-// ContainerGroupSubnetIdArrayInput is an input type that accepts ContainerGroupSubnetIdArray and ContainerGroupSubnetIdArrayOutput values.
-// You can construct a concrete instance of `ContainerGroupSubnetIdArrayInput` via:
-//
-//	ContainerGroupSubnetIdArray{ ContainerGroupSubnetIdArgs{...} }
-type ContainerGroupSubnetIdArrayInput interface {
-	pulumi.Input
-
-	ToContainerGroupSubnetIdArrayOutput() ContainerGroupSubnetIdArrayOutput
-	ToContainerGroupSubnetIdArrayOutputWithContext(context.Context) ContainerGroupSubnetIdArrayOutput
-}
-
-type ContainerGroupSubnetIdArray []ContainerGroupSubnetIdInput
-
-func (ContainerGroupSubnetIdArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ContainerGroupSubnetId)(nil)).Elem()
-}
-
-func (i ContainerGroupSubnetIdArray) ToContainerGroupSubnetIdArrayOutput() ContainerGroupSubnetIdArrayOutput {
-	return i.ToContainerGroupSubnetIdArrayOutputWithContext(context.Background())
-}
-
-func (i ContainerGroupSubnetIdArray) ToContainerGroupSubnetIdArrayOutputWithContext(ctx context.Context) ContainerGroupSubnetIdArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupSubnetIdArrayOutput)
-}
-
-// Container group subnet information.
-type ContainerGroupSubnetIdOutput struct{ *pulumi.OutputState }
-
-func (ContainerGroupSubnetIdOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ContainerGroupSubnetId)(nil)).Elem()
-}
-
-func (o ContainerGroupSubnetIdOutput) ToContainerGroupSubnetIdOutput() ContainerGroupSubnetIdOutput {
-	return o
-}
-
-func (o ContainerGroupSubnetIdOutput) ToContainerGroupSubnetIdOutputWithContext(ctx context.Context) ContainerGroupSubnetIdOutput {
-	return o
-}
-
-// Resource ID of subnet.
-func (o ContainerGroupSubnetIdOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v ContainerGroupSubnetId) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// Friendly name for the subnet.
-func (o ContainerGroupSubnetIdOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ContainerGroupSubnetId) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-type ContainerGroupSubnetIdArrayOutput struct{ *pulumi.OutputState }
-
-func (ContainerGroupSubnetIdArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ContainerGroupSubnetId)(nil)).Elem()
-}
-
-func (o ContainerGroupSubnetIdArrayOutput) ToContainerGroupSubnetIdArrayOutput() ContainerGroupSubnetIdArrayOutput {
-	return o
-}
-
-func (o ContainerGroupSubnetIdArrayOutput) ToContainerGroupSubnetIdArrayOutputWithContext(ctx context.Context) ContainerGroupSubnetIdArrayOutput {
-	return o
-}
-
-func (o ContainerGroupSubnetIdArrayOutput) Index(i pulumi.IntInput) ContainerGroupSubnetIdOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerGroupSubnetId {
-		return vs[0].([]ContainerGroupSubnetId)[vs[1].(int)]
-	}).(ContainerGroupSubnetIdOutput)
-}
-
-// Container group subnet information.
-type ContainerGroupSubnetIdResponse struct {
-	// Resource ID of subnet.
-	Id string `pulumi:"id"`
-	// Friendly name for the subnet.
-	Name *string `pulumi:"name"`
-}
-
-// Container group subnet information.
-type ContainerGroupSubnetIdResponseOutput struct{ *pulumi.OutputState }
-
-func (ContainerGroupSubnetIdResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ContainerGroupSubnetIdResponse)(nil)).Elem()
-}
-
-func (o ContainerGroupSubnetIdResponseOutput) ToContainerGroupSubnetIdResponseOutput() ContainerGroupSubnetIdResponseOutput {
-	return o
-}
-
-func (o ContainerGroupSubnetIdResponseOutput) ToContainerGroupSubnetIdResponseOutputWithContext(ctx context.Context) ContainerGroupSubnetIdResponseOutput {
-	return o
-}
-
-// Resource ID of subnet.
-func (o ContainerGroupSubnetIdResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v ContainerGroupSubnetIdResponse) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// Friendly name for the subnet.
-func (o ContainerGroupSubnetIdResponseOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ContainerGroupSubnetIdResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-type ContainerGroupSubnetIdResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (ContainerGroupSubnetIdResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ContainerGroupSubnetIdResponse)(nil)).Elem()
-}
-
-func (o ContainerGroupSubnetIdResponseArrayOutput) ToContainerGroupSubnetIdResponseArrayOutput() ContainerGroupSubnetIdResponseArrayOutput {
-	return o
-}
-
-func (o ContainerGroupSubnetIdResponseArrayOutput) ToContainerGroupSubnetIdResponseArrayOutputWithContext(ctx context.Context) ContainerGroupSubnetIdResponseArrayOutput {
-	return o
-}
-
-func (o ContainerGroupSubnetIdResponseArrayOutput) Index(i pulumi.IntInput) ContainerGroupSubnetIdResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerGroupSubnetIdResponse {
-		return vs[0].([]ContainerGroupSubnetIdResponse)[vs[1].(int)]
-	}).(ContainerGroupSubnetIdResponseOutput)
 }
 
 // The debug setting.
@@ -1074,15 +763,15 @@ func (o DebugSettingResponseOutput) DetailLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DebugSettingResponse) *string { return v.DetailLevel }).(pulumi.StringPtrOutput)
 }
 
-// Defines how resources deployed by the Deployment stack are locked.
+// Defines how resources deployed by the deployment stack are locked.
 type DenySettings struct {
-	// DenySettings will be applied to child resource scopes of every managed resource with a deny assignment.
+	// DenySettings will be applied to child scopes.
 	ApplyToChildScopes *bool `pulumi:"applyToChildScopes"`
 	// List of role-based management operations that are excluded from the denySettings. Up to 200 actions are permitted. If the denySetting mode is set to 'denyWriteAndDelete', then the following actions are automatically appended to 'excludedActions': '*\/read' and 'Microsoft.Authorization/locks/delete'. If the denySetting mode is set to 'denyDelete', then the following actions are automatically appended to 'excludedActions': 'Microsoft.Authorization/locks/delete'. Duplicate actions will be removed.
 	ExcludedActions []string `pulumi:"excludedActions"`
 	// List of AAD principal IDs excluded from the lock. Up to 5 principals are permitted.
 	ExcludedPrincipals []string `pulumi:"excludedPrincipals"`
-	// denySettings Mode that defines denied actions.
+	// denySettings Mode.
 	Mode string `pulumi:"mode"`
 }
 
@@ -1097,15 +786,15 @@ type DenySettingsInput interface {
 	ToDenySettingsOutputWithContext(context.Context) DenySettingsOutput
 }
 
-// Defines how resources deployed by the Deployment stack are locked.
+// Defines how resources deployed by the deployment stack are locked.
 type DenySettingsArgs struct {
-	// DenySettings will be applied to child resource scopes of every managed resource with a deny assignment.
+	// DenySettings will be applied to child scopes.
 	ApplyToChildScopes pulumi.BoolPtrInput `pulumi:"applyToChildScopes"`
 	// List of role-based management operations that are excluded from the denySettings. Up to 200 actions are permitted. If the denySetting mode is set to 'denyWriteAndDelete', then the following actions are automatically appended to 'excludedActions': '*\/read' and 'Microsoft.Authorization/locks/delete'. If the denySetting mode is set to 'denyDelete', then the following actions are automatically appended to 'excludedActions': 'Microsoft.Authorization/locks/delete'. Duplicate actions will be removed.
 	ExcludedActions pulumi.StringArrayInput `pulumi:"excludedActions"`
 	// List of AAD principal IDs excluded from the lock. Up to 5 principals are permitted.
 	ExcludedPrincipals pulumi.StringArrayInput `pulumi:"excludedPrincipals"`
-	// denySettings Mode that defines denied actions.
+	// denySettings Mode.
 	Mode pulumi.StringInput `pulumi:"mode"`
 }
 
@@ -1121,7 +810,7 @@ func (i DenySettingsArgs) ToDenySettingsOutputWithContext(ctx context.Context) D
 	return pulumi.ToOutputWithContext(ctx, i).(DenySettingsOutput)
 }
 
-// Defines how resources deployed by the Deployment stack are locked.
+// Defines how resources deployed by the deployment stack are locked.
 type DenySettingsOutput struct{ *pulumi.OutputState }
 
 func (DenySettingsOutput) ElementType() reflect.Type {
@@ -1136,7 +825,7 @@ func (o DenySettingsOutput) ToDenySettingsOutputWithContext(ctx context.Context)
 	return o
 }
 
-// DenySettings will be applied to child resource scopes of every managed resource with a deny assignment.
+// DenySettings will be applied to child scopes.
 func (o DenySettingsOutput) ApplyToChildScopes() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DenySettings) *bool { return v.ApplyToChildScopes }).(pulumi.BoolPtrOutput)
 }
@@ -1151,24 +840,24 @@ func (o DenySettingsOutput) ExcludedPrincipals() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DenySettings) []string { return v.ExcludedPrincipals }).(pulumi.StringArrayOutput)
 }
 
-// denySettings Mode that defines denied actions.
+// denySettings Mode.
 func (o DenySettingsOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v DenySettings) string { return v.Mode }).(pulumi.StringOutput)
 }
 
-// Defines how resources deployed by the Deployment stack are locked.
+// Defines how resources deployed by the deployment stack are locked.
 type DenySettingsResponse struct {
-	// DenySettings will be applied to child resource scopes of every managed resource with a deny assignment.
+	// DenySettings will be applied to child scopes.
 	ApplyToChildScopes *bool `pulumi:"applyToChildScopes"`
 	// List of role-based management operations that are excluded from the denySettings. Up to 200 actions are permitted. If the denySetting mode is set to 'denyWriteAndDelete', then the following actions are automatically appended to 'excludedActions': '*\/read' and 'Microsoft.Authorization/locks/delete'. If the denySetting mode is set to 'denyDelete', then the following actions are automatically appended to 'excludedActions': 'Microsoft.Authorization/locks/delete'. Duplicate actions will be removed.
 	ExcludedActions []string `pulumi:"excludedActions"`
 	// List of AAD principal IDs excluded from the lock. Up to 5 principals are permitted.
 	ExcludedPrincipals []string `pulumi:"excludedPrincipals"`
-	// denySettings Mode that defines denied actions.
+	// denySettings Mode.
 	Mode string `pulumi:"mode"`
 }
 
-// Defines how resources deployed by the Deployment stack are locked.
+// Defines how resources deployed by the deployment stack are locked.
 type DenySettingsResponseOutput struct{ *pulumi.OutputState }
 
 func (DenySettingsResponseOutput) ElementType() reflect.Type {
@@ -1183,7 +872,7 @@ func (o DenySettingsResponseOutput) ToDenySettingsResponseOutputWithContext(ctx 
 	return o
 }
 
-// DenySettings will be applied to child resource scopes of every managed resource with a deny assignment.
+// DenySettings will be applied to child scopes.
 func (o DenySettingsResponseOutput) ApplyToChildScopes() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DenySettingsResponse) *bool { return v.ApplyToChildScopes }).(pulumi.BoolPtrOutput)
 }
@@ -1198,7 +887,7 @@ func (o DenySettingsResponseOutput) ExcludedPrincipals() pulumi.StringArrayOutpu
 	return o.ApplyT(func(v DenySettingsResponse) []string { return v.ExcludedPrincipals }).(pulumi.StringArrayOutput)
 }
 
-// denySettings Mode that defines denied actions.
+// denySettings Mode.
 func (o DenySettingsResponseOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v DenySettingsResponse) string { return v.Mode }).(pulumi.StringOutput)
 }
@@ -1274,9 +963,7 @@ func (o DependencyResponseArrayOutput) Index(i pulumi.IntInput) DependencyRespon
 type DeploymentParameter struct {
 	// Azure Key Vault parameter reference.
 	Reference *KeyVaultParameterReference `pulumi:"reference"`
-	// Type of the value.
-	Type *string `pulumi:"type"`
-	// Input value to the parameter.
+	// Input value to the parameter .
 	Value interface{} `pulumi:"value"`
 }
 
@@ -1295,9 +982,7 @@ type DeploymentParameterInput interface {
 type DeploymentParameterArgs struct {
 	// Azure Key Vault parameter reference.
 	Reference KeyVaultParameterReferencePtrInput `pulumi:"reference"`
-	// Type of the value.
-	Type pulumi.StringPtrInput `pulumi:"type"`
-	// Input value to the parameter.
+	// Input value to the parameter .
 	Value pulumi.Input `pulumi:"value"`
 }
 
@@ -1358,12 +1043,7 @@ func (o DeploymentParameterOutput) Reference() KeyVaultParameterReferencePtrOutp
 	return o.ApplyT(func(v DeploymentParameter) *KeyVaultParameterReference { return v.Reference }).(KeyVaultParameterReferencePtrOutput)
 }
 
-// Type of the value.
-func (o DeploymentParameterOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DeploymentParameter) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-// Input value to the parameter.
+// Input value to the parameter .
 func (o DeploymentParameterOutput) Value() pulumi.AnyOutput {
 	return o.ApplyT(func(v DeploymentParameter) interface{} { return v.Value }).(pulumi.AnyOutput)
 }
@@ -1386,66 +1066,6 @@ func (o DeploymentParameterMapOutput) MapIndex(k pulumi.StringInput) DeploymentP
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DeploymentParameter {
 		return vs[0].(map[string]DeploymentParameter)[vs[1].(string)]
 	}).(DeploymentParameterOutput)
-}
-
-// Deployment parameter for the template.
-type DeploymentParameterResponse struct {
-	// Azure Key Vault parameter reference.
-	Reference *KeyVaultParameterReferenceResponse `pulumi:"reference"`
-	// Type of the value.
-	Type *string `pulumi:"type"`
-	// Input value to the parameter.
-	Value interface{} `pulumi:"value"`
-}
-
-// Deployment parameter for the template.
-type DeploymentParameterResponseOutput struct{ *pulumi.OutputState }
-
-func (DeploymentParameterResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeploymentParameterResponse)(nil)).Elem()
-}
-
-func (o DeploymentParameterResponseOutput) ToDeploymentParameterResponseOutput() DeploymentParameterResponseOutput {
-	return o
-}
-
-func (o DeploymentParameterResponseOutput) ToDeploymentParameterResponseOutputWithContext(ctx context.Context) DeploymentParameterResponseOutput {
-	return o
-}
-
-// Azure Key Vault parameter reference.
-func (o DeploymentParameterResponseOutput) Reference() KeyVaultParameterReferenceResponsePtrOutput {
-	return o.ApplyT(func(v DeploymentParameterResponse) *KeyVaultParameterReferenceResponse { return v.Reference }).(KeyVaultParameterReferenceResponsePtrOutput)
-}
-
-// Type of the value.
-func (o DeploymentParameterResponseOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DeploymentParameterResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-// Input value to the parameter.
-func (o DeploymentParameterResponseOutput) Value() pulumi.AnyOutput {
-	return o.ApplyT(func(v DeploymentParameterResponse) interface{} { return v.Value }).(pulumi.AnyOutput)
-}
-
-type DeploymentParameterResponseMapOutput struct{ *pulumi.OutputState }
-
-func (DeploymentParameterResponseMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DeploymentParameterResponse)(nil)).Elem()
-}
-
-func (o DeploymentParameterResponseMapOutput) ToDeploymentParameterResponseMapOutput() DeploymentParameterResponseMapOutput {
-	return o
-}
-
-func (o DeploymentParameterResponseMapOutput) ToDeploymentParameterResponseMapOutputWithContext(ctx context.Context) DeploymentParameterResponseMapOutput {
-	return o
-}
-
-func (o DeploymentParameterResponseMapOutput) MapIndex(k pulumi.StringInput) DeploymentParameterResponseOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DeploymentParameterResponse {
-		return vs[0].(map[string]DeploymentParameterResponse)[vs[1].(string)]
-	}).(DeploymentParameterResponseOutput)
 }
 
 // Deployment properties.
@@ -1704,6 +1324,119 @@ func (o DeploymentPropertiesExtendedResponseOutput) Timestamp() pulumi.StringOut
 // Array of validated resources.
 func (o DeploymentPropertiesExtendedResponseOutput) ValidatedResources() ResourceReferenceResponseArrayOutput {
 	return o.ApplyT(func(v DeploymentPropertiesExtendedResponse) []ResourceReferenceResponse { return v.ValidatedResources }).(ResourceReferenceResponseArrayOutput)
+}
+
+// Defines the behavior of resources that are not managed immediately after the stack is updated.
+type DeploymentStackPropertiesActionOnUnmanage struct {
+	// Specifies the action that should be taken on the resource when the deployment stack is deleted. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
+	ManagementGroups *string `pulumi:"managementGroups"`
+	// Specifies the action that should be taken on the resource when the deployment stack is deleted. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
+	ResourceGroups *string `pulumi:"resourceGroups"`
+	// Specifies the action that should be taken on the resource when the deployment stack is deleted. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
+	Resources string `pulumi:"resources"`
+}
+
+// DeploymentStackPropertiesActionOnUnmanageInput is an input type that accepts DeploymentStackPropertiesActionOnUnmanageArgs and DeploymentStackPropertiesActionOnUnmanageOutput values.
+// You can construct a concrete instance of `DeploymentStackPropertiesActionOnUnmanageInput` via:
+//
+//	DeploymentStackPropertiesActionOnUnmanageArgs{...}
+type DeploymentStackPropertiesActionOnUnmanageInput interface {
+	pulumi.Input
+
+	ToDeploymentStackPropertiesActionOnUnmanageOutput() DeploymentStackPropertiesActionOnUnmanageOutput
+	ToDeploymentStackPropertiesActionOnUnmanageOutputWithContext(context.Context) DeploymentStackPropertiesActionOnUnmanageOutput
+}
+
+// Defines the behavior of resources that are not managed immediately after the stack is updated.
+type DeploymentStackPropertiesActionOnUnmanageArgs struct {
+	// Specifies the action that should be taken on the resource when the deployment stack is deleted. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
+	ManagementGroups pulumi.StringPtrInput `pulumi:"managementGroups"`
+	// Specifies the action that should be taken on the resource when the deployment stack is deleted. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
+	ResourceGroups pulumi.StringPtrInput `pulumi:"resourceGroups"`
+	// Specifies the action that should be taken on the resource when the deployment stack is deleted. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
+	Resources pulumi.StringInput `pulumi:"resources"`
+}
+
+func (DeploymentStackPropertiesActionOnUnmanageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentStackPropertiesActionOnUnmanage)(nil)).Elem()
+}
+
+func (i DeploymentStackPropertiesActionOnUnmanageArgs) ToDeploymentStackPropertiesActionOnUnmanageOutput() DeploymentStackPropertiesActionOnUnmanageOutput {
+	return i.ToDeploymentStackPropertiesActionOnUnmanageOutputWithContext(context.Background())
+}
+
+func (i DeploymentStackPropertiesActionOnUnmanageArgs) ToDeploymentStackPropertiesActionOnUnmanageOutputWithContext(ctx context.Context) DeploymentStackPropertiesActionOnUnmanageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentStackPropertiesActionOnUnmanageOutput)
+}
+
+// Defines the behavior of resources that are not managed immediately after the stack is updated.
+type DeploymentStackPropertiesActionOnUnmanageOutput struct{ *pulumi.OutputState }
+
+func (DeploymentStackPropertiesActionOnUnmanageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentStackPropertiesActionOnUnmanage)(nil)).Elem()
+}
+
+func (o DeploymentStackPropertiesActionOnUnmanageOutput) ToDeploymentStackPropertiesActionOnUnmanageOutput() DeploymentStackPropertiesActionOnUnmanageOutput {
+	return o
+}
+
+func (o DeploymentStackPropertiesActionOnUnmanageOutput) ToDeploymentStackPropertiesActionOnUnmanageOutputWithContext(ctx context.Context) DeploymentStackPropertiesActionOnUnmanageOutput {
+	return o
+}
+
+// Specifies the action that should be taken on the resource when the deployment stack is deleted. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
+func (o DeploymentStackPropertiesActionOnUnmanageOutput) ManagementGroups() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentStackPropertiesActionOnUnmanage) *string { return v.ManagementGroups }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the action that should be taken on the resource when the deployment stack is deleted. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
+func (o DeploymentStackPropertiesActionOnUnmanageOutput) ResourceGroups() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentStackPropertiesActionOnUnmanage) *string { return v.ResourceGroups }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the action that should be taken on the resource when the deployment stack is deleted. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
+func (o DeploymentStackPropertiesActionOnUnmanageOutput) Resources() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentStackPropertiesActionOnUnmanage) string { return v.Resources }).(pulumi.StringOutput)
+}
+
+// Defines the behavior of resources that are not managed immediately after the stack is updated.
+type DeploymentStackPropertiesResponseActionOnUnmanage struct {
+	// Specifies the action that should be taken on the resource when the deployment stack is deleted. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
+	ManagementGroups *string `pulumi:"managementGroups"`
+	// Specifies the action that should be taken on the resource when the deployment stack is deleted. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
+	ResourceGroups *string `pulumi:"resourceGroups"`
+	// Specifies the action that should be taken on the resource when the deployment stack is deleted. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
+	Resources string `pulumi:"resources"`
+}
+
+// Defines the behavior of resources that are not managed immediately after the stack is updated.
+type DeploymentStackPropertiesResponseActionOnUnmanageOutput struct{ *pulumi.OutputState }
+
+func (DeploymentStackPropertiesResponseActionOnUnmanageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentStackPropertiesResponseActionOnUnmanage)(nil)).Elem()
+}
+
+func (o DeploymentStackPropertiesResponseActionOnUnmanageOutput) ToDeploymentStackPropertiesResponseActionOnUnmanageOutput() DeploymentStackPropertiesResponseActionOnUnmanageOutput {
+	return o
+}
+
+func (o DeploymentStackPropertiesResponseActionOnUnmanageOutput) ToDeploymentStackPropertiesResponseActionOnUnmanageOutputWithContext(ctx context.Context) DeploymentStackPropertiesResponseActionOnUnmanageOutput {
+	return o
+}
+
+// Specifies the action that should be taken on the resource when the deployment stack is deleted. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
+func (o DeploymentStackPropertiesResponseActionOnUnmanageOutput) ManagementGroups() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentStackPropertiesResponseActionOnUnmanage) *string { return v.ManagementGroups }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the action that should be taken on the resource when the deployment stack is deleted. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
+func (o DeploymentStackPropertiesResponseActionOnUnmanageOutput) ResourceGroups() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentStackPropertiesResponseActionOnUnmanage) *string { return v.ResourceGroups }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the action that should be taken on the resource when the deployment stack is deleted. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
+func (o DeploymentStackPropertiesResponseActionOnUnmanageOutput) Resources() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentStackPropertiesResponseActionOnUnmanage) string { return v.Resources }).(pulumi.StringOutput)
 }
 
 // The debug setting.
@@ -2146,11 +1879,11 @@ func (o DeploymentStacksParametersLinkResponsePtrOutput) Uri() pulumi.StringPtrO
 type DeploymentStacksTemplateLink struct {
 	// If included, must match the ContentVersion in the template.
 	ContentVersion *string `pulumi:"contentVersion"`
-	// The resourceId of a Template Spec. Use either the id or uri property, but not both.
+	// The resource id of a Template Spec. Use either the id or uri property, but not both.
 	Id *string `pulumi:"id"`
 	// The query string (for example, a SAS token) to be used with the templateLink URI.
 	QueryString *string `pulumi:"queryString"`
-	// The relativePath property can be used to deploy a linked template at a location relative to the parent. If the parent template was linked with a TemplateSpec, this will reference an artifact in the TemplateSpec.  If the parent was linked with a URI, the child deployment will be a combination of the parent and relativePath URIs.
+	// The relativePath property can be used to deploy a linked template at a location relative to the parent. If the parent template was linked with a TemplateSpec, this will reference an artifact in the TemplateSpec.  If the parent was linked with a URI, the child deployment will be a combination of the parent and relativePath URIs
 	RelativePath *string `pulumi:"relativePath"`
 	// The URI of the template to deploy. Use either the uri or id property, but not both.
 	Uri *string `pulumi:"uri"`
@@ -2171,11 +1904,11 @@ type DeploymentStacksTemplateLinkInput interface {
 type DeploymentStacksTemplateLinkArgs struct {
 	// If included, must match the ContentVersion in the template.
 	ContentVersion pulumi.StringPtrInput `pulumi:"contentVersion"`
-	// The resourceId of a Template Spec. Use either the id or uri property, but not both.
+	// The resource id of a Template Spec. Use either the id or uri property, but not both.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// The query string (for example, a SAS token) to be used with the templateLink URI.
 	QueryString pulumi.StringPtrInput `pulumi:"queryString"`
-	// The relativePath property can be used to deploy a linked template at a location relative to the parent. If the parent template was linked with a TemplateSpec, this will reference an artifact in the TemplateSpec.  If the parent was linked with a URI, the child deployment will be a combination of the parent and relativePath URIs.
+	// The relativePath property can be used to deploy a linked template at a location relative to the parent. If the parent template was linked with a TemplateSpec, this will reference an artifact in the TemplateSpec.  If the parent was linked with a URI, the child deployment will be a combination of the parent and relativePath URIs
 	RelativePath pulumi.StringPtrInput `pulumi:"relativePath"`
 	// The URI of the template to deploy. Use either the uri or id property, but not both.
 	Uri pulumi.StringPtrInput `pulumi:"uri"`
@@ -2264,7 +1997,7 @@ func (o DeploymentStacksTemplateLinkOutput) ContentVersion() pulumi.StringPtrOut
 	return o.ApplyT(func(v DeploymentStacksTemplateLink) *string { return v.ContentVersion }).(pulumi.StringPtrOutput)
 }
 
-// The resourceId of a Template Spec. Use either the id or uri property, but not both.
+// The resource id of a Template Spec. Use either the id or uri property, but not both.
 func (o DeploymentStacksTemplateLinkOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeploymentStacksTemplateLink) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -2274,7 +2007,7 @@ func (o DeploymentStacksTemplateLinkOutput) QueryString() pulumi.StringPtrOutput
 	return o.ApplyT(func(v DeploymentStacksTemplateLink) *string { return v.QueryString }).(pulumi.StringPtrOutput)
 }
 
-// The relativePath property can be used to deploy a linked template at a location relative to the parent. If the parent template was linked with a TemplateSpec, this will reference an artifact in the TemplateSpec.  If the parent was linked with a URI, the child deployment will be a combination of the parent and relativePath URIs.
+// The relativePath property can be used to deploy a linked template at a location relative to the parent. If the parent template was linked with a TemplateSpec, this will reference an artifact in the TemplateSpec.  If the parent was linked with a URI, the child deployment will be a combination of the parent and relativePath URIs
 func (o DeploymentStacksTemplateLinkOutput) RelativePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeploymentStacksTemplateLink) *string { return v.RelativePath }).(pulumi.StringPtrOutput)
 }
@@ -2318,7 +2051,7 @@ func (o DeploymentStacksTemplateLinkPtrOutput) ContentVersion() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// The resourceId of a Template Spec. Use either the id or uri property, but not both.
+// The resource id of a Template Spec. Use either the id or uri property, but not both.
 func (o DeploymentStacksTemplateLinkPtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeploymentStacksTemplateLink) *string {
 		if v == nil {
@@ -2338,7 +2071,7 @@ func (o DeploymentStacksTemplateLinkPtrOutput) QueryString() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// The relativePath property can be used to deploy a linked template at a location relative to the parent. If the parent template was linked with a TemplateSpec, this will reference an artifact in the TemplateSpec.  If the parent was linked with a URI, the child deployment will be a combination of the parent and relativePath URIs.
+// The relativePath property can be used to deploy a linked template at a location relative to the parent. If the parent template was linked with a TemplateSpec, this will reference an artifact in the TemplateSpec.  If the parent was linked with a URI, the child deployment will be a combination of the parent and relativePath URIs
 func (o DeploymentStacksTemplateLinkPtrOutput) RelativePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeploymentStacksTemplateLink) *string {
 		if v == nil {
@@ -2737,21 +2470,23 @@ func (o ErrorDetailResponseArrayOutput) Index(i pulumi.IntInput) ErrorDetailResp
 	}).(ErrorDetailResponseOutput)
 }
 
-// Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows the OData error response format.)
+// Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows the OData error response format.).
 type ErrorResponseResponse struct {
 	// The error additional info.
 	AdditionalInfo []ErrorAdditionalInfoResponse `pulumi:"additionalInfo"`
 	// The error code.
-	Code string `pulumi:"code"`
+	Code *string `pulumi:"code"`
 	// The error details.
 	Details []ErrorResponseResponse `pulumi:"details"`
+	// The error object.
+	Error *ErrorDetailResponse `pulumi:"error"`
 	// The error message.
-	Message string `pulumi:"message"`
+	Message *string `pulumi:"message"`
 	// The error target.
-	Target string `pulumi:"target"`
+	Target *string `pulumi:"target"`
 }
 
-// Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows the OData error response format.)
+// Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows the OData error response format.).
 type ErrorResponseResponseOutput struct{ *pulumi.OutputState }
 
 func (ErrorResponseResponseOutput) ElementType() reflect.Type {
@@ -2772,8 +2507,8 @@ func (o ErrorResponseResponseOutput) AdditionalInfo() ErrorAdditionalInfoRespons
 }
 
 // The error code.
-func (o ErrorResponseResponseOutput) Code() pulumi.StringOutput {
-	return o.ApplyT(func(v ErrorResponseResponse) string { return v.Code }).(pulumi.StringOutput)
+func (o ErrorResponseResponseOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErrorResponseResponse) *string { return v.Code }).(pulumi.StringPtrOutput)
 }
 
 // The error details.
@@ -2781,14 +2516,19 @@ func (o ErrorResponseResponseOutput) Details() ErrorResponseResponseArrayOutput 
 	return o.ApplyT(func(v ErrorResponseResponse) []ErrorResponseResponse { return v.Details }).(ErrorResponseResponseArrayOutput)
 }
 
+// The error object.
+func (o ErrorResponseResponseOutput) Error() ErrorDetailResponsePtrOutput {
+	return o.ApplyT(func(v ErrorResponseResponse) *ErrorDetailResponse { return v.Error }).(ErrorDetailResponsePtrOutput)
+}
+
 // The error message.
-func (o ErrorResponseResponseOutput) Message() pulumi.StringOutput {
-	return o.ApplyT(func(v ErrorResponseResponse) string { return v.Message }).(pulumi.StringOutput)
+func (o ErrorResponseResponseOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErrorResponseResponse) *string { return v.Message }).(pulumi.StringPtrOutput)
 }
 
 // The error target.
-func (o ErrorResponseResponseOutput) Target() pulumi.StringOutput {
-	return o.ApplyT(func(v ErrorResponseResponse) string { return v.Target }).(pulumi.StringOutput)
+func (o ErrorResponseResponseOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErrorResponseResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
 
 type ErrorResponseResponsePtrOutput struct{ *pulumi.OutputState }
@@ -2831,7 +2571,7 @@ func (o ErrorResponseResponsePtrOutput) Code() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Code
+		return v.Code
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2845,13 +2585,23 @@ func (o ErrorResponseResponsePtrOutput) Details() ErrorResponseResponseArrayOutp
 	}).(ErrorResponseResponseArrayOutput)
 }
 
+// The error object.
+func (o ErrorResponseResponsePtrOutput) Error() ErrorDetailResponsePtrOutput {
+	return o.ApplyT(func(v *ErrorResponseResponse) *ErrorDetailResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Error
+	}).(ErrorDetailResponsePtrOutput)
+}
+
 // The error message.
 func (o ErrorResponseResponsePtrOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErrorResponseResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.Message
+		return v.Message
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2861,7 +2611,7 @@ func (o ErrorResponseResponsePtrOutput) Target() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Target
+		return v.Target
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3762,103 +3512,9 @@ func (o KeyVaultParameterReferencePtrOutput) SecretVersion() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Azure Key Vault parameter reference.
-type KeyVaultParameterReferenceResponse struct {
-	// Azure Key Vault reference.
-	KeyVault KeyVaultReferenceResponse `pulumi:"keyVault"`
-	// Azure Key Vault secret name.
-	SecretName string `pulumi:"secretName"`
-	// Azure Key Vault secret version.
-	SecretVersion *string `pulumi:"secretVersion"`
-}
-
-// Azure Key Vault parameter reference.
-type KeyVaultParameterReferenceResponseOutput struct{ *pulumi.OutputState }
-
-func (KeyVaultParameterReferenceResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KeyVaultParameterReferenceResponse)(nil)).Elem()
-}
-
-func (o KeyVaultParameterReferenceResponseOutput) ToKeyVaultParameterReferenceResponseOutput() KeyVaultParameterReferenceResponseOutput {
-	return o
-}
-
-func (o KeyVaultParameterReferenceResponseOutput) ToKeyVaultParameterReferenceResponseOutputWithContext(ctx context.Context) KeyVaultParameterReferenceResponseOutput {
-	return o
-}
-
-// Azure Key Vault reference.
-func (o KeyVaultParameterReferenceResponseOutput) KeyVault() KeyVaultReferenceResponseOutput {
-	return o.ApplyT(func(v KeyVaultParameterReferenceResponse) KeyVaultReferenceResponse { return v.KeyVault }).(KeyVaultReferenceResponseOutput)
-}
-
-// Azure Key Vault secret name.
-func (o KeyVaultParameterReferenceResponseOutput) SecretName() pulumi.StringOutput {
-	return o.ApplyT(func(v KeyVaultParameterReferenceResponse) string { return v.SecretName }).(pulumi.StringOutput)
-}
-
-// Azure Key Vault secret version.
-func (o KeyVaultParameterReferenceResponseOutput) SecretVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KeyVaultParameterReferenceResponse) *string { return v.SecretVersion }).(pulumi.StringPtrOutput)
-}
-
-type KeyVaultParameterReferenceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (KeyVaultParameterReferenceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**KeyVaultParameterReferenceResponse)(nil)).Elem()
-}
-
-func (o KeyVaultParameterReferenceResponsePtrOutput) ToKeyVaultParameterReferenceResponsePtrOutput() KeyVaultParameterReferenceResponsePtrOutput {
-	return o
-}
-
-func (o KeyVaultParameterReferenceResponsePtrOutput) ToKeyVaultParameterReferenceResponsePtrOutputWithContext(ctx context.Context) KeyVaultParameterReferenceResponsePtrOutput {
-	return o
-}
-
-func (o KeyVaultParameterReferenceResponsePtrOutput) Elem() KeyVaultParameterReferenceResponseOutput {
-	return o.ApplyT(func(v *KeyVaultParameterReferenceResponse) KeyVaultParameterReferenceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret KeyVaultParameterReferenceResponse
-		return ret
-	}).(KeyVaultParameterReferenceResponseOutput)
-}
-
-// Azure Key Vault reference.
-func (o KeyVaultParameterReferenceResponsePtrOutput) KeyVault() KeyVaultReferenceResponsePtrOutput {
-	return o.ApplyT(func(v *KeyVaultParameterReferenceResponse) *KeyVaultReferenceResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.KeyVault
-	}).(KeyVaultReferenceResponsePtrOutput)
-}
-
-// Azure Key Vault secret name.
-func (o KeyVaultParameterReferenceResponsePtrOutput) SecretName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KeyVaultParameterReferenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SecretName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Azure Key Vault secret version.
-func (o KeyVaultParameterReferenceResponsePtrOutput) SecretVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KeyVaultParameterReferenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretVersion
-	}).(pulumi.StringPtrOutput)
-}
-
 // Azure Key Vault reference.
 type KeyVaultReference struct {
-	// Azure Key Vault resourceId.
+	// Azure Key Vault resource id.
 	Id string `pulumi:"id"`
 }
 
@@ -3875,7 +3531,7 @@ type KeyVaultReferenceInput interface {
 
 // Azure Key Vault reference.
 type KeyVaultReferenceArgs struct {
-	// Azure Key Vault resourceId.
+	// Azure Key Vault resource id.
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -3957,7 +3613,7 @@ func (o KeyVaultReferenceOutput) ToKeyVaultReferencePtrOutputWithContext(ctx con
 	}).(KeyVaultReferencePtrOutput)
 }
 
-// Azure Key Vault resourceId.
+// Azure Key Vault resource id.
 func (o KeyVaultReferenceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyVaultReference) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -3986,69 +3642,9 @@ func (o KeyVaultReferencePtrOutput) Elem() KeyVaultReferenceOutput {
 	}).(KeyVaultReferenceOutput)
 }
 
-// Azure Key Vault resourceId.
+// Azure Key Vault resource id.
 func (o KeyVaultReferencePtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KeyVaultReference) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-// Azure Key Vault reference.
-type KeyVaultReferenceResponse struct {
-	// Azure Key Vault resourceId.
-	Id string `pulumi:"id"`
-}
-
-// Azure Key Vault reference.
-type KeyVaultReferenceResponseOutput struct{ *pulumi.OutputState }
-
-func (KeyVaultReferenceResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KeyVaultReferenceResponse)(nil)).Elem()
-}
-
-func (o KeyVaultReferenceResponseOutput) ToKeyVaultReferenceResponseOutput() KeyVaultReferenceResponseOutput {
-	return o
-}
-
-func (o KeyVaultReferenceResponseOutput) ToKeyVaultReferenceResponseOutputWithContext(ctx context.Context) KeyVaultReferenceResponseOutput {
-	return o
-}
-
-// Azure Key Vault resourceId.
-func (o KeyVaultReferenceResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v KeyVaultReferenceResponse) string { return v.Id }).(pulumi.StringOutput)
-}
-
-type KeyVaultReferenceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (KeyVaultReferenceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**KeyVaultReferenceResponse)(nil)).Elem()
-}
-
-func (o KeyVaultReferenceResponsePtrOutput) ToKeyVaultReferenceResponsePtrOutput() KeyVaultReferenceResponsePtrOutput {
-	return o
-}
-
-func (o KeyVaultReferenceResponsePtrOutput) ToKeyVaultReferenceResponsePtrOutputWithContext(ctx context.Context) KeyVaultReferenceResponsePtrOutput {
-	return o
-}
-
-func (o KeyVaultReferenceResponsePtrOutput) Elem() KeyVaultReferenceResponseOutput {
-	return o.ApplyT(func(v *KeyVaultReferenceResponse) KeyVaultReferenceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret KeyVaultReferenceResponse
-		return ret
-	}).(KeyVaultReferenceResponseOutput)
-}
-
-// Azure Key Vault resourceId.
-func (o KeyVaultReferenceResponsePtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KeyVaultReferenceResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -4222,7 +3818,7 @@ func (o LinkedTemplateArtifactResponseArrayOutput) Index(i pulumi.IntInput) Link
 type ManagedResourceReferenceResponse struct {
 	// denyAssignment settings applied to the resource.
 	DenyStatus *string `pulumi:"denyStatus"`
-	// The ARM Resource ID of a resource managed by the deployment stack.
+	// The resourceId of a resource managed by the deployment stack.
 	Id string `pulumi:"id"`
 	// Current management state of the resource in the deployment stack.
 	Status *string `pulumi:"status"`
@@ -4235,8 +3831,12 @@ func (val *ManagedResourceReferenceResponse) Defaults() *ManagedResourceReferenc
 	}
 	tmp := *val
 	if tmp.DenyStatus == nil {
-		denyStatus_ := "none"
+		denyStatus_ := "None"
 		tmp.DenyStatus = &denyStatus_
+	}
+	if tmp.Status == nil {
+		status_ := "None"
+		tmp.Status = &status_
 	}
 	return &tmp
 }
@@ -4261,7 +3861,7 @@ func (o ManagedResourceReferenceResponseOutput) DenyStatus() pulumi.StringPtrOut
 	return o.ApplyT(func(v ManagedResourceReferenceResponse) *string { return v.DenyStatus }).(pulumi.StringPtrOutput)
 }
 
-// The ARM Resource ID of a resource managed by the deployment stack.
+// The resourceId of a resource managed by the deployment stack.
 func (o ManagedResourceReferenceResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedResourceReferenceResponse) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -5555,15 +5155,15 @@ func (o ResourceGroupPropertiesResponseOutput) ProvisioningState() pulumi.String
 	return o.ApplyT(func(v ResourceGroupPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// The resourceId extended model. This is used to document failed resources with a resourceId and a corresponding error.
+// The resource Id extended model.
 type ResourceReferenceExtendedResponse struct {
-	// The error detail.
-	Error *ErrorDetailResponse `pulumi:"error"`
-	// The ARM Resource ID of a resource managed by the deployment stack.
+	// Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows the OData error response format.).
+	Error *ErrorResponseResponse `pulumi:"error"`
+	// The resourceId of a resource managed by the deployment stack.
 	Id string `pulumi:"id"`
 }
 
-// The resourceId extended model. This is used to document failed resources with a resourceId and a corresponding error.
+// The resource Id extended model.
 type ResourceReferenceExtendedResponseOutput struct{ *pulumi.OutputState }
 
 func (ResourceReferenceExtendedResponseOutput) ElementType() reflect.Type {
@@ -5578,12 +5178,12 @@ func (o ResourceReferenceExtendedResponseOutput) ToResourceReferenceExtendedResp
 	return o
 }
 
-// The error detail.
-func (o ResourceReferenceExtendedResponseOutput) Error() ErrorDetailResponsePtrOutput {
-	return o.ApplyT(func(v ResourceReferenceExtendedResponse) *ErrorDetailResponse { return v.Error }).(ErrorDetailResponsePtrOutput)
+// Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows the OData error response format.).
+func (o ResourceReferenceExtendedResponseOutput) Error() ErrorResponseResponsePtrOutput {
+	return o.ApplyT(func(v ResourceReferenceExtendedResponse) *ErrorResponseResponse { return v.Error }).(ErrorResponseResponsePtrOutput)
 }
 
-// The ARM Resource ID of a resource managed by the deployment stack.
+// The resourceId of a resource managed by the deployment stack.
 func (o ResourceReferenceExtendedResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceReferenceExtendedResponse) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -5608,13 +5208,13 @@ func (o ResourceReferenceExtendedResponseArrayOutput) Index(i pulumi.IntInput) R
 	}).(ResourceReferenceExtendedResponseOutput)
 }
 
-// The resourceId model.
+// The resource Id model.
 type ResourceReferenceResponse struct {
-	// The ARM Resource ID of a resource managed by the deployment stack.
+	// The resourceId of a resource managed by the deployment stack.
 	Id string `pulumi:"id"`
 }
 
-// The resourceId model.
+// The resource Id model.
 type ResourceReferenceResponseOutput struct{ *pulumi.OutputState }
 
 func (ResourceReferenceResponseOutput) ElementType() reflect.Type {
@@ -5629,7 +5229,7 @@ func (o ResourceReferenceResponseOutput) ToResourceReferenceResponseOutputWithCo
 	return o
 }
 
-// The ARM Resource ID of a resource managed by the deployment stack.
+// The resourceId of a resource managed by the deployment stack.
 func (o ResourceReferenceResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceReferenceResponse) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -6901,8 +6501,6 @@ func (o ZoneMappingResponseArrayOutput) Index(i pulumi.IntInput) ZoneMappingResp
 }
 
 func init() {
-	pulumi.RegisterOutputType(ActionOnUnmanageOutput{})
-	pulumi.RegisterOutputType(ActionOnUnmanageResponseOutput{})
 	pulumi.RegisterOutputType(AliasPathMetadataResponseOutput{})
 	pulumi.RegisterOutputType(AliasPathResponseOutput{})
 	pulumi.RegisterOutputType(AliasPathResponseArrayOutput{})
@@ -6918,10 +6516,6 @@ func init() {
 	pulumi.RegisterOutputType(ContainerConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(ContainerConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(ContainerConfigurationResponsePtrOutput{})
-	pulumi.RegisterOutputType(ContainerGroupSubnetIdOutput{})
-	pulumi.RegisterOutputType(ContainerGroupSubnetIdArrayOutput{})
-	pulumi.RegisterOutputType(ContainerGroupSubnetIdResponseOutput{})
-	pulumi.RegisterOutputType(ContainerGroupSubnetIdResponseArrayOutput{})
 	pulumi.RegisterOutputType(DebugSettingOutput{})
 	pulumi.RegisterOutputType(DebugSettingPtrOutput{})
 	pulumi.RegisterOutputType(DebugSettingResponseOutput{})
@@ -6931,10 +6525,10 @@ func init() {
 	pulumi.RegisterOutputType(DependencyResponseArrayOutput{})
 	pulumi.RegisterOutputType(DeploymentParameterOutput{})
 	pulumi.RegisterOutputType(DeploymentParameterMapOutput{})
-	pulumi.RegisterOutputType(DeploymentParameterResponseOutput{})
-	pulumi.RegisterOutputType(DeploymentParameterResponseMapOutput{})
 	pulumi.RegisterOutputType(DeploymentPropertiesOutput{})
 	pulumi.RegisterOutputType(DeploymentPropertiesExtendedResponseOutput{})
+	pulumi.RegisterOutputType(DeploymentStackPropertiesActionOnUnmanageOutput{})
+	pulumi.RegisterOutputType(DeploymentStackPropertiesResponseActionOnUnmanageOutput{})
 	pulumi.RegisterOutputType(DeploymentStacksDebugSettingOutput{})
 	pulumi.RegisterOutputType(DeploymentStacksDebugSettingPtrOutput{})
 	pulumi.RegisterOutputType(DeploymentStacksDebugSettingResponseOutput{})
@@ -6971,12 +6565,8 @@ func init() {
 	pulumi.RegisterOutputType(IdentityResponseUserAssignedIdentitiesMapOutput{})
 	pulumi.RegisterOutputType(KeyVaultParameterReferenceOutput{})
 	pulumi.RegisterOutputType(KeyVaultParameterReferencePtrOutput{})
-	pulumi.RegisterOutputType(KeyVaultParameterReferenceResponseOutput{})
-	pulumi.RegisterOutputType(KeyVaultParameterReferenceResponsePtrOutput{})
 	pulumi.RegisterOutputType(KeyVaultReferenceOutput{})
 	pulumi.RegisterOutputType(KeyVaultReferencePtrOutput{})
-	pulumi.RegisterOutputType(KeyVaultReferenceResponseOutput{})
-	pulumi.RegisterOutputType(KeyVaultReferenceResponsePtrOutput{})
 	pulumi.RegisterOutputType(LinkedTemplateArtifactOutput{})
 	pulumi.RegisterOutputType(LinkedTemplateArtifactArrayOutput{})
 	pulumi.RegisterOutputType(LinkedTemplateArtifactResponseOutput{})

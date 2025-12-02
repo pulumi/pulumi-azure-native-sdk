@@ -8,15 +8,15 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Managed cluster.
 //
-// Uses Azure REST API version 2024-10-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
+// Uses Azure REST API version 2023-04-01. In version 1.x of the Azure Native provider, it used API version 2021-03-01.
 //
-// Other available API versions: 2019-11-01, 2020-01-01, 2020-02-01, 2020-03-01, 2020-04-01, 2020-06-01, 2020-07-01, 2020-09-01, 2020-11-01, 2020-12-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-07-01, 2021-08-01, 2021-09-01, 2021-10-01, 2021-11-01-preview, 2022-01-01, 2022-01-02-preview, 2022-02-01, 2022-02-02-preview, 2022-03-01, 2022-03-02-preview, 2022-04-01, 2022-04-02-preview, 2022-05-02-preview, 2022-06-01, 2022-06-02-preview, 2022-07-01, 2022-07-02-preview, 2022-08-02-preview, 2022-08-03-preview, 2022-09-01, 2022-09-02-preview, 2022-10-02-preview, 2022-11-01, 2022-11-02-preview, 2023-01-01, 2023-01-02-preview, 2023-02-01, 2023-02-02-preview, 2023-03-01, 2023-03-02-preview, 2023-04-01, 2023-04-02-preview, 2023-05-01, 2023-05-02-preview, 2023-06-01, 2023-06-02-preview, 2023-07-01, 2023-07-02-preview, 2023-08-01, 2023-08-02-preview, 2023-09-01, 2023-09-02-preview, 2023-10-01, 2023-10-02-preview, 2023-11-01, 2023-11-02-preview, 2024-01-01, 2024-01-02-preview, 2024-02-01, 2024-02-02-preview, 2024-03-02-preview, 2024-04-02-preview, 2024-05-01, 2024-05-02-preview, 2024-06-02-preview, 2024-07-01, 2024-07-02-preview, 2024-08-01, 2024-09-01, 2024-09-02-preview, 2024-10-02-preview, 2025-01-01, 2025-01-02-preview, 2025-02-01, 2025-02-02-preview, 2025-03-01, 2025-03-02-preview, 2025-04-01, 2025-04-02-preview, 2025-05-01, 2025-05-02-preview, 2025-06-02-preview, 2025-07-01, 2025-07-02-preview, 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2019-06-01, 2021-05-01, 2023-05-02-preview, 2023-06-01, 2023-06-02-preview, 2023-07-01, 2023-07-02-preview, 2023-08-01, 2023-08-02-preview, 2023-09-01, 2023-09-02-preview, 2023-10-01, 2023-10-02-preview, 2023-11-01, 2023-11-02-preview, 2024-01-01, 2024-01-02-preview, 2024-02-01, 2024-02-02-preview, 2024-03-02-preview, 2024-04-02-preview, 2024-05-01, 2024-05-02-preview, 2024-06-02-preview, 2024-07-01, 2024-07-02-preview, 2024-08-01, 2024-09-01, 2024-09-02-preview, 2024-10-01, 2024-10-02-preview, 2025-01-01.
 //
 // When creating a managed cluster you must define at least one agent pool inline via the `agentPoolProfiles` property. The Azure API does not currently allow this property to be updated directly. Instead, additional agent pools can be defined via the `AgentPool` resource. If needing to change the initial agent pool profile property, you can either trigger the whole cluster to be re-created by using the [replaceOnChanges resource option](https://www.pulumi.com/docs/concepts/options/replaceonchanges/), or make the change directly in Azure then use `pulumi refresh` to update the stack's stack to match.
 type ManagedCluster struct {
@@ -34,8 +34,6 @@ type ManagedCluster struct {
 	AutoScalerProfile ManagedClusterPropertiesResponseAutoScalerProfilePtrOutput `pulumi:"autoScalerProfile"`
 	// The auto upgrade configuration.
 	AutoUpgradeProfile ManagedClusterAutoUpgradeProfileResponsePtrOutput `pulumi:"autoUpgradeProfile"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Azure Monitor addon profiles for monitoring the managed cluster.
 	AzureMonitorProfile ManagedClusterAzureMonitorProfileResponsePtrOutput `pulumi:"azureMonitorProfile"`
 	// The Azure Portal requires certain Cross-Origin Resource Sharing (CORS) headers to be sent in some responses, which Kubernetes APIServer doesn't handle by default. This special FQDN supports CORS, allowing the Azure Portal to function properly.
@@ -48,8 +46,6 @@ type ManagedCluster struct {
 	DiskEncryptionSetID pulumi.StringPtrOutput `pulumi:"diskEncryptionSetID"`
 	// This cannot be updated once the Managed Cluster has been created.
 	DnsPrefix pulumi.StringPtrOutput `pulumi:"dnsPrefix"`
-	// Unique read-only string used to implement optimistic concurrency. The eTag value will change when the resource is updated. Specify an if-match or if-none-match header with the eTag value for a subsequent request to enable optimistic concurrency per the normal etag convention.
-	ETag pulumi.StringOutput `pulumi:"eTag"`
 	// (DEPRECATED) Whether to enable Kubernetes pod security policy (preview). PodSecurityPolicy was deprecated in Kubernetes v1.21, and removed from Kubernetes in v1.25. Learn more at https://aka.ms/k8s/psp and https://aka.ms/aks/psp.
 	EnablePodSecurityPolicy pulumi.BoolPtrOutput `pulumi:"enablePodSecurityPolicy"`
 	// Whether to enable Kubernetes Role-Based Access Control.
@@ -64,10 +60,8 @@ type ManagedCluster struct {
 	HttpProxyConfig ManagedClusterHTTPProxyConfigResponsePtrOutput `pulumi:"httpProxyConfig"`
 	// The identity of the managed cluster, if configured.
 	Identity ManagedClusterIdentityResponsePtrOutput `pulumi:"identity"`
-	// The user identity associated with the managed cluster. This identity will be used by the kubelet. Only one user assigned identity is allowed. The only accepted key is "kubeletidentity", with value of "resourceId": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}".
+	// Identities associated with the cluster.
 	IdentityProfile UserAssignedIdentityResponseMapOutput `pulumi:"identityProfile"`
-	// Ingress profile for the managed cluster.
-	IngressProfile ManagedClusterIngressProfileResponsePtrOutput `pulumi:"ingressProfile"`
 	// Both patch version <major.minor.patch> (e.g. 1.20.13) and <major.minor> (e.g. 1.20) are supported. When <major.minor> is specified, the latest supported GA patch version is chosen automatically. Updating the cluster with the same <major.minor> once it has been created (e.g. 1.14.x -> 1.14) will not trigger an upgrade, even if a newer patch version is available. When you upgrade a supported AKS cluster, Kubernetes minor versions cannot be skipped. All upgrades must be performed sequentially by major version number. For example, upgrades between 1.14.x -> 1.15.x or 1.15.x -> 1.16.x are allowed, however 1.14.x -> 1.16.x is not allowed. See [upgrading an AKS cluster](https://docs.microsoft.com/azure/aks/upgrade-cluster) for more details.
 	KubernetesVersion pulumi.StringPtrOutput `pulumi:"kubernetesVersion"`
 	// The profile for Linux VMs in the Managed Cluster.
@@ -76,16 +70,12 @@ type ManagedCluster struct {
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The max number of agent pools for the managed cluster.
 	MaxAgentPools pulumi.IntOutput `pulumi:"maxAgentPools"`
-	// Optional cluster metrics configuration.
-	MetricsProfile ManagedClusterMetricsProfileResponsePtrOutput `pulumi:"metricsProfile"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The network configuration profile.
 	NetworkProfile ContainerServiceNetworkProfileResponsePtrOutput `pulumi:"networkProfile"`
 	// The name of the resource group containing agent pool nodes.
 	NodeResourceGroup pulumi.StringPtrOutput `pulumi:"nodeResourceGroup"`
-	// Profile of the node resource group configuration.
-	NodeResourceGroupProfile ManagedClusterNodeResourceGroupProfileResponsePtrOutput `pulumi:"nodeResourceGroupProfile"`
 	// The OIDC issuer profile of the Managed Cluster.
 	OidcIssuerProfile ManagedClusterOIDCIssuerProfileResponsePtrOutput `pulumi:"oidcIssuerProfile"`
 	// See [use AAD pod identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity) for more details on AAD pod identity integration.
@@ -100,12 +90,8 @@ type ManagedCluster struct {
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Allow or deny public network access for AKS
 	PublicNetworkAccess pulumi.StringPtrOutput `pulumi:"publicNetworkAccess"`
-	// The resourceUID uniquely identifies ManagedClusters that reuse ARM ResourceIds (i.e: create, delete, create sequence)
-	ResourceUID pulumi.StringOutput `pulumi:"resourceUID"`
 	// Security profile for the managed cluster.
 	SecurityProfile ManagedClusterSecurityProfileResponsePtrOutput `pulumi:"securityProfile"`
-	// Service mesh profile for a managed cluster.
-	ServiceMeshProfile ServiceMeshProfileResponsePtrOutput `pulumi:"serviceMeshProfile"`
 	// Information about a service principal identity for the cluster to use for manipulating Azure APIs.
 	ServicePrincipalProfile ManagedClusterServicePrincipalProfileResponsePtrOutput `pulumi:"servicePrincipalProfile"`
 	// The managed cluster SKU.
@@ -120,8 +106,6 @@ type ManagedCluster struct {
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
-	// Settings for upgrading a cluster.
-	UpgradeSettings ClusterUpgradeSettingsResponsePtrOutput `pulumi:"upgradeSettings"`
 	// The profile for Windows VMs in the Managed Cluster.
 	WindowsProfile ManagedClusterWindowsProfileResponsePtrOutput `pulumi:"windowsProfile"`
 	// Workload Auto-scaler profile for the managed cluster.
@@ -143,11 +127,6 @@ func NewManagedCluster(ctx *pulumi.Context,
 	}
 	if args.SecurityProfile != nil {
 		args.SecurityProfile = args.SecurityProfile.ToManagedClusterSecurityProfilePtrOutput().ApplyT(func(v *ManagedClusterSecurityProfile) *ManagedClusterSecurityProfile { return v.Defaults() }).(ManagedClusterSecurityProfilePtrOutput)
-	}
-	if args.WorkloadAutoScalerProfile != nil {
-		args.WorkloadAutoScalerProfile = args.WorkloadAutoScalerProfile.ToManagedClusterWorkloadAutoScalerProfilePtrOutput().ApplyT(func(v *ManagedClusterWorkloadAutoScalerProfile) *ManagedClusterWorkloadAutoScalerProfile {
-			return v.Defaults()
-		}).(ManagedClusterWorkloadAutoScalerProfilePtrOutput)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -405,45 +384,6 @@ func NewManagedCluster(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:containerservice/v20250101:ManagedCluster"),
 		},
-		{
-			Type: pulumi.String("azure-native:containerservice/v20250102preview:ManagedCluster"),
-		},
-		{
-			Type: pulumi.String("azure-native:containerservice/v20250201:ManagedCluster"),
-		},
-		{
-			Type: pulumi.String("azure-native:containerservice/v20250202preview:ManagedCluster"),
-		},
-		{
-			Type: pulumi.String("azure-native:containerservice/v20250301:ManagedCluster"),
-		},
-		{
-			Type: pulumi.String("azure-native:containerservice/v20250302preview:ManagedCluster"),
-		},
-		{
-			Type: pulumi.String("azure-native:containerservice/v20250401:ManagedCluster"),
-		},
-		{
-			Type: pulumi.String("azure-native:containerservice/v20250402preview:ManagedCluster"),
-		},
-		{
-			Type: pulumi.String("azure-native:containerservice/v20250501:ManagedCluster"),
-		},
-		{
-			Type: pulumi.String("azure-native:containerservice/v20250502preview:ManagedCluster"),
-		},
-		{
-			Type: pulumi.String("azure-native:containerservice/v20250602preview:ManagedCluster"),
-		},
-		{
-			Type: pulumi.String("azure-native:containerservice/v20250701:ManagedCluster"),
-		},
-		{
-			Type: pulumi.String("azure-native:containerservice/v20250702preview:ManagedCluster"),
-		},
-		{
-			Type: pulumi.String("azure-native:containerservice/v20250801:ManagedCluster"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -511,24 +451,18 @@ type managedClusterArgs struct {
 	HttpProxyConfig *ManagedClusterHTTPProxyConfig `pulumi:"httpProxyConfig"`
 	// The identity of the managed cluster, if configured.
 	Identity *ManagedClusterIdentity `pulumi:"identity"`
-	// The user identity associated with the managed cluster. This identity will be used by the kubelet. Only one user assigned identity is allowed. The only accepted key is "kubeletidentity", with value of "resourceId": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}".
+	// Identities associated with the cluster.
 	IdentityProfile map[string]UserAssignedIdentity `pulumi:"identityProfile"`
-	// Ingress profile for the managed cluster.
-	IngressProfile *ManagedClusterIngressProfile `pulumi:"ingressProfile"`
 	// Both patch version <major.minor.patch> (e.g. 1.20.13) and <major.minor> (e.g. 1.20) are supported. When <major.minor> is specified, the latest supported GA patch version is chosen automatically. Updating the cluster with the same <major.minor> once it has been created (e.g. 1.14.x -> 1.14) will not trigger an upgrade, even if a newer patch version is available. When you upgrade a supported AKS cluster, Kubernetes minor versions cannot be skipped. All upgrades must be performed sequentially by major version number. For example, upgrades between 1.14.x -> 1.15.x or 1.15.x -> 1.16.x are allowed, however 1.14.x -> 1.16.x is not allowed. See [upgrading an AKS cluster](https://docs.microsoft.com/azure/aks/upgrade-cluster) for more details.
 	KubernetesVersion *string `pulumi:"kubernetesVersion"`
 	// The profile for Linux VMs in the Managed Cluster.
 	LinuxProfile *ContainerServiceLinuxProfile `pulumi:"linuxProfile"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// Optional cluster metrics configuration.
-	MetricsProfile *ManagedClusterMetricsProfile `pulumi:"metricsProfile"`
 	// The network configuration profile.
 	NetworkProfile *ContainerServiceNetworkProfile `pulumi:"networkProfile"`
 	// The name of the resource group containing agent pool nodes.
 	NodeResourceGroup *string `pulumi:"nodeResourceGroup"`
-	// Profile of the node resource group configuration.
-	NodeResourceGroupProfile *ManagedClusterNodeResourceGroupProfile `pulumi:"nodeResourceGroupProfile"`
 	// The OIDC issuer profile of the Managed Cluster.
 	OidcIssuerProfile *ManagedClusterOIDCIssuerProfile `pulumi:"oidcIssuerProfile"`
 	// See [use AAD pod identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity) for more details on AAD pod identity integration.
@@ -543,8 +477,6 @@ type managedClusterArgs struct {
 	ResourceName *string `pulumi:"resourceName"`
 	// Security profile for the managed cluster.
 	SecurityProfile *ManagedClusterSecurityProfile `pulumi:"securityProfile"`
-	// Service mesh profile for a managed cluster.
-	ServiceMeshProfile *ServiceMeshProfile `pulumi:"serviceMeshProfile"`
 	// Information about a service principal identity for the cluster to use for manipulating Azure APIs.
 	ServicePrincipalProfile *ManagedClusterServicePrincipalProfile `pulumi:"servicePrincipalProfile"`
 	// The managed cluster SKU.
@@ -555,8 +487,6 @@ type managedClusterArgs struct {
 	SupportPlan *string `pulumi:"supportPlan"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// Settings for upgrading a cluster.
-	UpgradeSettings *ClusterUpgradeSettings `pulumi:"upgradeSettings"`
 	// The profile for Windows VMs in the Managed Cluster.
 	WindowsProfile *ManagedClusterWindowsProfile `pulumi:"windowsProfile"`
 	// Workload Auto-scaler profile for the managed cluster.
@@ -597,24 +527,18 @@ type ManagedClusterArgs struct {
 	HttpProxyConfig ManagedClusterHTTPProxyConfigPtrInput
 	// The identity of the managed cluster, if configured.
 	Identity ManagedClusterIdentityPtrInput
-	// The user identity associated with the managed cluster. This identity will be used by the kubelet. Only one user assigned identity is allowed. The only accepted key is "kubeletidentity", with value of "resourceId": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}".
+	// Identities associated with the cluster.
 	IdentityProfile UserAssignedIdentityMapInput
-	// Ingress profile for the managed cluster.
-	IngressProfile ManagedClusterIngressProfilePtrInput
 	// Both patch version <major.minor.patch> (e.g. 1.20.13) and <major.minor> (e.g. 1.20) are supported. When <major.minor> is specified, the latest supported GA patch version is chosen automatically. Updating the cluster with the same <major.minor> once it has been created (e.g. 1.14.x -> 1.14) will not trigger an upgrade, even if a newer patch version is available. When you upgrade a supported AKS cluster, Kubernetes minor versions cannot be skipped. All upgrades must be performed sequentially by major version number. For example, upgrades between 1.14.x -> 1.15.x or 1.15.x -> 1.16.x are allowed, however 1.14.x -> 1.16.x is not allowed. See [upgrading an AKS cluster](https://docs.microsoft.com/azure/aks/upgrade-cluster) for more details.
 	KubernetesVersion pulumi.StringPtrInput
 	// The profile for Linux VMs in the Managed Cluster.
 	LinuxProfile ContainerServiceLinuxProfilePtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
-	// Optional cluster metrics configuration.
-	MetricsProfile ManagedClusterMetricsProfilePtrInput
 	// The network configuration profile.
 	NetworkProfile ContainerServiceNetworkProfilePtrInput
 	// The name of the resource group containing agent pool nodes.
 	NodeResourceGroup pulumi.StringPtrInput
-	// Profile of the node resource group configuration.
-	NodeResourceGroupProfile ManagedClusterNodeResourceGroupProfilePtrInput
 	// The OIDC issuer profile of the Managed Cluster.
 	OidcIssuerProfile ManagedClusterOIDCIssuerProfilePtrInput
 	// See [use AAD pod identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity) for more details on AAD pod identity integration.
@@ -629,8 +553,6 @@ type ManagedClusterArgs struct {
 	ResourceName pulumi.StringPtrInput
 	// Security profile for the managed cluster.
 	SecurityProfile ManagedClusterSecurityProfilePtrInput
-	// Service mesh profile for a managed cluster.
-	ServiceMeshProfile ServiceMeshProfilePtrInput
 	// Information about a service principal identity for the cluster to use for manipulating Azure APIs.
 	ServicePrincipalProfile ManagedClusterServicePrincipalProfilePtrInput
 	// The managed cluster SKU.
@@ -641,8 +563,6 @@ type ManagedClusterArgs struct {
 	SupportPlan pulumi.StringPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
-	// Settings for upgrading a cluster.
-	UpgradeSettings ClusterUpgradeSettingsPtrInput
 	// The profile for Windows VMs in the Managed Cluster.
 	WindowsProfile ManagedClusterWindowsProfilePtrInput
 	// Workload Auto-scaler profile for the managed cluster.
@@ -720,11 +640,6 @@ func (o ManagedClusterOutput) AutoUpgradeProfile() ManagedClusterAutoUpgradeProf
 	return o.ApplyT(func(v *ManagedCluster) ManagedClusterAutoUpgradeProfileResponsePtrOutput { return v.AutoUpgradeProfile }).(ManagedClusterAutoUpgradeProfileResponsePtrOutput)
 }
 
-// The Azure API version of the resource.
-func (o ManagedClusterOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *ManagedCluster) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Azure Monitor addon profiles for monitoring the managed cluster.
 func (o ManagedClusterOutput) AzureMonitorProfile() ManagedClusterAzureMonitorProfileResponsePtrOutput {
 	return o.ApplyT(func(v *ManagedCluster) ManagedClusterAzureMonitorProfileResponsePtrOutput {
@@ -755,11 +670,6 @@ func (o ManagedClusterOutput) DiskEncryptionSetID() pulumi.StringPtrOutput {
 // This cannot be updated once the Managed Cluster has been created.
 func (o ManagedClusterOutput) DnsPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedCluster) pulumi.StringPtrOutput { return v.DnsPrefix }).(pulumi.StringPtrOutput)
-}
-
-// Unique read-only string used to implement optimistic concurrency. The eTag value will change when the resource is updated. Specify an if-match or if-none-match header with the eTag value for a subsequent request to enable optimistic concurrency per the normal etag convention.
-func (o ManagedClusterOutput) ETag() pulumi.StringOutput {
-	return o.ApplyT(func(v *ManagedCluster) pulumi.StringOutput { return v.ETag }).(pulumi.StringOutput)
 }
 
 // (DEPRECATED) Whether to enable Kubernetes pod security policy (preview). PodSecurityPolicy was deprecated in Kubernetes v1.21, and removed from Kubernetes in v1.25. Learn more at https://aka.ms/k8s/psp and https://aka.ms/aks/psp.
@@ -797,14 +707,9 @@ func (o ManagedClusterOutput) Identity() ManagedClusterIdentityResponsePtrOutput
 	return o.ApplyT(func(v *ManagedCluster) ManagedClusterIdentityResponsePtrOutput { return v.Identity }).(ManagedClusterIdentityResponsePtrOutput)
 }
 
-// The user identity associated with the managed cluster. This identity will be used by the kubelet. Only one user assigned identity is allowed. The only accepted key is "kubeletidentity", with value of "resourceId": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}".
+// Identities associated with the cluster.
 func (o ManagedClusterOutput) IdentityProfile() UserAssignedIdentityResponseMapOutput {
 	return o.ApplyT(func(v *ManagedCluster) UserAssignedIdentityResponseMapOutput { return v.IdentityProfile }).(UserAssignedIdentityResponseMapOutput)
-}
-
-// Ingress profile for the managed cluster.
-func (o ManagedClusterOutput) IngressProfile() ManagedClusterIngressProfileResponsePtrOutput {
-	return o.ApplyT(func(v *ManagedCluster) ManagedClusterIngressProfileResponsePtrOutput { return v.IngressProfile }).(ManagedClusterIngressProfileResponsePtrOutput)
 }
 
 // Both patch version <major.minor.patch> (e.g. 1.20.13) and <major.minor> (e.g. 1.20) are supported. When <major.minor> is specified, the latest supported GA patch version is chosen automatically. Updating the cluster with the same <major.minor> once it has been created (e.g. 1.14.x -> 1.14) will not trigger an upgrade, even if a newer patch version is available. When you upgrade a supported AKS cluster, Kubernetes minor versions cannot be skipped. All upgrades must be performed sequentially by major version number. For example, upgrades between 1.14.x -> 1.15.x or 1.15.x -> 1.16.x are allowed, however 1.14.x -> 1.16.x is not allowed. See [upgrading an AKS cluster](https://docs.microsoft.com/azure/aks/upgrade-cluster) for more details.
@@ -827,11 +732,6 @@ func (o ManagedClusterOutput) MaxAgentPools() pulumi.IntOutput {
 	return o.ApplyT(func(v *ManagedCluster) pulumi.IntOutput { return v.MaxAgentPools }).(pulumi.IntOutput)
 }
 
-// Optional cluster metrics configuration.
-func (o ManagedClusterOutput) MetricsProfile() ManagedClusterMetricsProfileResponsePtrOutput {
-	return o.ApplyT(func(v *ManagedCluster) ManagedClusterMetricsProfileResponsePtrOutput { return v.MetricsProfile }).(ManagedClusterMetricsProfileResponsePtrOutput)
-}
-
 // The name of the resource
 func (o ManagedClusterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedCluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -845,13 +745,6 @@ func (o ManagedClusterOutput) NetworkProfile() ContainerServiceNetworkProfileRes
 // The name of the resource group containing agent pool nodes.
 func (o ManagedClusterOutput) NodeResourceGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedCluster) pulumi.StringPtrOutput { return v.NodeResourceGroup }).(pulumi.StringPtrOutput)
-}
-
-// Profile of the node resource group configuration.
-func (o ManagedClusterOutput) NodeResourceGroupProfile() ManagedClusterNodeResourceGroupProfileResponsePtrOutput {
-	return o.ApplyT(func(v *ManagedCluster) ManagedClusterNodeResourceGroupProfileResponsePtrOutput {
-		return v.NodeResourceGroupProfile
-	}).(ManagedClusterNodeResourceGroupProfileResponsePtrOutput)
 }
 
 // The OIDC issuer profile of the Managed Cluster.
@@ -889,19 +782,9 @@ func (o ManagedClusterOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedCluster) pulumi.StringPtrOutput { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
 }
 
-// The resourceUID uniquely identifies ManagedClusters that reuse ARM ResourceIds (i.e: create, delete, create sequence)
-func (o ManagedClusterOutput) ResourceUID() pulumi.StringOutput {
-	return o.ApplyT(func(v *ManagedCluster) pulumi.StringOutput { return v.ResourceUID }).(pulumi.StringOutput)
-}
-
 // Security profile for the managed cluster.
 func (o ManagedClusterOutput) SecurityProfile() ManagedClusterSecurityProfileResponsePtrOutput {
 	return o.ApplyT(func(v *ManagedCluster) ManagedClusterSecurityProfileResponsePtrOutput { return v.SecurityProfile }).(ManagedClusterSecurityProfileResponsePtrOutput)
-}
-
-// Service mesh profile for a managed cluster.
-func (o ManagedClusterOutput) ServiceMeshProfile() ServiceMeshProfileResponsePtrOutput {
-	return o.ApplyT(func(v *ManagedCluster) ServiceMeshProfileResponsePtrOutput { return v.ServiceMeshProfile }).(ServiceMeshProfileResponsePtrOutput)
 }
 
 // Information about a service principal identity for the cluster to use for manipulating Azure APIs.
@@ -939,11 +822,6 @@ func (o ManagedClusterOutput) Tags() pulumi.StringMapOutput {
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o ManagedClusterOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedCluster) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
-}
-
-// Settings for upgrading a cluster.
-func (o ManagedClusterOutput) UpgradeSettings() ClusterUpgradeSettingsResponsePtrOutput {
-	return o.ApplyT(func(v *ManagedCluster) ClusterUpgradeSettingsResponsePtrOutput { return v.UpgradeSettings }).(ClusterUpgradeSettingsResponsePtrOutput)
 }
 
 // The profile for Windows VMs in the Managed Cluster.

@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Organization role bindings
+// List cluster success response
 //
-// Uses Azure REST API version 2024-07-01.
+// Uses Azure REST API version 2023-08-22.
 //
-// Other available API versions: 2023-08-22, 2024-02-13, 2025-07-17-preview, 2025-08-18-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-02-13, 2024-07-01.
 func ListAccessRoleBindings(ctx *pulumi.Context, args *ListAccessRoleBindingsArgs, opts ...pulumi.InvokeOption) (*ListAccessRoleBindingsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListAccessRoleBindingsResult
@@ -35,9 +35,9 @@ type ListAccessRoleBindingsArgs struct {
 	SearchFilters map[string]string `pulumi:"searchFilters"`
 }
 
-// Details of the role bindings returned on successful response
+// List cluster success response
 type ListAccessRoleBindingsResult struct {
-	// List of role binding
+	// Data of the environments list
 	Data []RoleBindingRecordResponse `pulumi:"data"`
 	// Type of response
 	Kind *string `pulumi:"kind"`
@@ -67,7 +67,7 @@ func (ListAccessRoleBindingsOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*ListAccessRoleBindingsArgs)(nil)).Elem()
 }
 
-// Details of the role bindings returned on successful response
+// List cluster success response
 type ListAccessRoleBindingsResultOutput struct{ *pulumi.OutputState }
 
 func (ListAccessRoleBindingsResultOutput) ElementType() reflect.Type {
@@ -82,7 +82,7 @@ func (o ListAccessRoleBindingsResultOutput) ToListAccessRoleBindingsResultOutput
 	return o
 }
 
-// List of role binding
+// Data of the environments list
 func (o ListAccessRoleBindingsResultOutput) Data() RoleBindingRecordResponseArrayOutput {
 	return o.ApplyT(func(v ListAccessRoleBindingsResult) []RoleBindingRecordResponse { return v.Data }).(RoleBindingRecordResponseArrayOutput)
 }

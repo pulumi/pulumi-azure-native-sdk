@@ -7,15 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Get Domain Service operation retrieves a json representation of the Domain Service.
 //
 // Uses Azure REST API version 2022-12-01.
-//
-// Other available API versions: 2025-05-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native aad [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupDomainService(ctx *pulumi.Context, args *LookupDomainServiceArgs, opts ...pulumi.InvokeOption) (*LookupDomainServiceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDomainServiceResult
@@ -35,8 +33,6 @@ type LookupDomainServiceArgs struct {
 
 // Domain service.
 type LookupDomainServiceResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Configuration diagnostics data containing latest execution from client.
 	ConfigDiagnostics *ConfigDiagnosticsResponse `pulumi:"configDiagnostics"`
 	// Deployment Id
@@ -138,11 +134,6 @@ func (o LookupDomainServiceResultOutput) ToLookupDomainServiceResultOutput() Loo
 
 func (o LookupDomainServiceResultOutput) ToLookupDomainServiceResultOutputWithContext(ctx context.Context) LookupDomainServiceResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupDomainServiceResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDomainServiceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Configuration diagnostics data containing latest execution from client.

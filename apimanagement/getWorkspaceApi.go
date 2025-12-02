@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2022-09-01-preview.
 //
-// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
 func LookupWorkspaceApi(ctx *pulumi.Context, args *LookupWorkspaceApiArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceApiResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceApiResult
@@ -55,8 +55,6 @@ type LookupWorkspaceApiResult struct {
 	ApiVersionSetId *string `pulumi:"apiVersionSetId"`
 	// Collection of authentication settings included into this API.
 	AuthenticationSettings *AuthenticationSettingsContractResponse `pulumi:"authenticationSettings"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Contact information for the API.
 	Contact *ApiContactInformationResponse `pulumi:"contact"`
 	// Description of the API. May include HTML formatting tags.
@@ -170,11 +168,6 @@ func (o LookupWorkspaceApiResultOutput) AuthenticationSettings() AuthenticationS
 	return o.ApplyT(func(v LookupWorkspaceApiResult) *AuthenticationSettingsContractResponse {
 		return v.AuthenticationSettings
 	}).(AuthenticationSettingsContractResponsePtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o LookupWorkspaceApiResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWorkspaceApiResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Contact information for the API.

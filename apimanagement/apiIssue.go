@@ -8,22 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Issue Contract details.
 //
-// Uses Azure REST API version 2022-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
+// Uses Azure REST API version 2022-08-01. In version 1.x of the Azure Native provider, it used API version 2020-12-01.
 //
-// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
 type ApiIssue struct {
 	pulumi.CustomResourceState
 
 	// A resource identifier for the API the issue was created for.
 	ApiId pulumi.StringPtrOutput `pulumi:"apiId"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Date and time when the issue was created.
 	CreatedDate pulumi.StringPtrOutput `pulumi:"createdDate"`
 	// Text describing the issue.
@@ -125,9 +123,6 @@ func NewApiIssue(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240601preview:ApiIssue"),
-		},
-		{
-			Type: pulumi.String("azure-native:apimanagement/v20241001preview:ApiIssue"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -246,11 +241,6 @@ func (o ApiIssueOutput) ToApiIssueOutputWithContext(ctx context.Context) ApiIssu
 // A resource identifier for the API the issue was created for.
 func (o ApiIssueOutput) ApiId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiIssue) pulumi.StringPtrOutput { return v.ApiId }).(pulumi.StringPtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o ApiIssueOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *ApiIssue) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Date and time when the issue was created.

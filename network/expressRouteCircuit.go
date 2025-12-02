@@ -8,15 +8,15 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // ExpressRouteCircuit resource.
 //
-// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
+// Uses Azure REST API version 2023-02-01. In version 1.x of the Azure Native provider, it used API version 2020-11-01.
 //
-// Other available API versions: 2018-06-01, 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2018-12-01, 2019-06-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
 type ExpressRouteCircuit struct {
 	pulumi.CustomResourceState
 
@@ -28,14 +28,10 @@ type ExpressRouteCircuit struct {
 	AuthorizationStatus pulumi.StringOutput `pulumi:"authorizationStatus"`
 	// The list of authorizations.
 	Authorizations ExpressRouteCircuitAuthorizationResponseArrayOutput `pulumi:"authorizations"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The bandwidth of the circuit when the circuit is provisioned on an ExpressRoutePort resource.
 	BandwidthInGbps pulumi.Float64PtrOutput `pulumi:"bandwidthInGbps"`
 	// The CircuitProvisioningState state of the resource.
 	CircuitProvisioningState pulumi.StringPtrOutput `pulumi:"circuitProvisioningState"`
-	// Flag denoting rate-limiting status of the ExpressRoute direct-port circuit.
-	EnableDirectPortRateLimit pulumi.BoolPtrOutput `pulumi:"enableDirectPortRateLimit"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The reference to the ExpressRoutePort resource when the circuit is provisioned on an ExpressRoutePort resource.
@@ -243,12 +239,6 @@ func NewExpressRouteCircuit(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20240501:ExpressRouteCircuit"),
 		},
-		{
-			Type: pulumi.String("azure-native:network/v20240701:ExpressRouteCircuit"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20241001:ExpressRouteCircuit"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -297,8 +287,6 @@ type expressRouteCircuitArgs struct {
 	CircuitName *string `pulumi:"circuitName"`
 	// The CircuitProvisioningState state of the resource.
 	CircuitProvisioningState *string `pulumi:"circuitProvisioningState"`
-	// Flag denoting rate-limiting status of the ExpressRoute direct-port circuit.
-	EnableDirectPortRateLimit *bool `pulumi:"enableDirectPortRateLimit"`
 	// The reference to the ExpressRoutePort resource when the circuit is provisioned on an ExpressRoutePort resource.
 	ExpressRoutePort *SubResource `pulumi:"expressRoutePort"`
 	// The GatewayManager Etag.
@@ -343,8 +331,6 @@ type ExpressRouteCircuitArgs struct {
 	CircuitName pulumi.StringPtrInput
 	// The CircuitProvisioningState state of the resource.
 	CircuitProvisioningState pulumi.StringPtrInput
-	// Flag denoting rate-limiting status of the ExpressRoute direct-port circuit.
-	EnableDirectPortRateLimit pulumi.BoolPtrInput
 	// The reference to the ExpressRoutePort resource when the circuit is provisioned on an ExpressRoutePort resource.
 	ExpressRoutePort SubResourcePtrInput
 	// The GatewayManager Etag.
@@ -433,11 +419,6 @@ func (o ExpressRouteCircuitOutput) Authorizations() ExpressRouteCircuitAuthoriza
 	}).(ExpressRouteCircuitAuthorizationResponseArrayOutput)
 }
 
-// The Azure API version of the resource.
-func (o ExpressRouteCircuitOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *ExpressRouteCircuit) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // The bandwidth of the circuit when the circuit is provisioned on an ExpressRoutePort resource.
 func (o ExpressRouteCircuitOutput) BandwidthInGbps() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *ExpressRouteCircuit) pulumi.Float64PtrOutput { return v.BandwidthInGbps }).(pulumi.Float64PtrOutput)
@@ -446,11 +427,6 @@ func (o ExpressRouteCircuitOutput) BandwidthInGbps() pulumi.Float64PtrOutput {
 // The CircuitProvisioningState state of the resource.
 func (o ExpressRouteCircuitOutput) CircuitProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ExpressRouteCircuit) pulumi.StringPtrOutput { return v.CircuitProvisioningState }).(pulumi.StringPtrOutput)
-}
-
-// Flag denoting rate-limiting status of the ExpressRoute direct-port circuit.
-func (o ExpressRouteCircuitOutput) EnableDirectPortRateLimit() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ExpressRouteCircuit) pulumi.BoolPtrOutput { return v.EnableDirectPortRateLimit }).(pulumi.BoolPtrOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.

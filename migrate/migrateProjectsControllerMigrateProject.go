@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Migrate project.
 //
-// Uses Azure REST API version 2020-05-01. In version 2.x of the Azure Native provider, it used API version 2020-05-01.
+// Uses Azure REST API version 2020-05-01.
 //
-// Other available API versions: 2023-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native migrate [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-01-01.
 type MigrateProjectsControllerMigrateProject struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// For optimistic concurrency control.
 	ETag pulumi.StringPtrOutput `pulumi:"eTag"`
 	// Azure location in which project is created.
@@ -48,9 +46,6 @@ func NewMigrateProjectsControllerMigrateProject(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:migrate/v20180901preview:MigrateProject"),
-		},
-		{
 			Type: pulumi.String("azure-native:migrate/v20180901preview:MigrateProjectsControllerMigrateProject"),
 		},
 		{
@@ -58,9 +53,6 @@ func NewMigrateProjectsControllerMigrateProject(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:migrate/v20230101:MigrateProjectsControllerMigrateProject"),
-		},
-		{
-			Type: pulumi.String("azure-native:migrate:MigrateProject"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -158,11 +150,6 @@ func (o MigrateProjectsControllerMigrateProjectOutput) ToMigrateProjectsControll
 
 func (o MigrateProjectsControllerMigrateProjectOutput) ToMigrateProjectsControllerMigrateProjectOutputWithContext(ctx context.Context) MigrateProjectsControllerMigrateProjectOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o MigrateProjectsControllerMigrateProjectOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *MigrateProjectsControllerMigrateProject) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // For optimistic concurrency control.

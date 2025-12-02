@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The managed private endpoint resource type.
 //
-// Uses Azure REST API version 2024-10-01.
+// Uses Azure REST API version 2022-10-01-preview.
 //
-// Other available API versions: 2022-10-01-preview, 2023-09-01, 2023-10-01-preview, 2024-11-01-preview, 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dashboard [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-09-01, 2023-10-01-preview, 2024-10-01.
 func LookupManagedPrivateEndpoint(ctx *pulumi.Context, args *LookupManagedPrivateEndpointArgs, opts ...pulumi.InvokeOption) (*LookupManagedPrivateEndpointResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagedPrivateEndpointResult
@@ -37,8 +37,6 @@ type LookupManagedPrivateEndpointArgs struct {
 
 // The managed private endpoint resource type.
 type LookupManagedPrivateEndpointResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The state of managed private endpoint connection.
 	ConnectionState ManagedPrivateEndpointConnectionStateResponse `pulumi:"connectionState"`
 	// The group Ids of the managed private endpoint.
@@ -104,11 +102,6 @@ func (o LookupManagedPrivateEndpointResultOutput) ToLookupManagedPrivateEndpoint
 
 func (o LookupManagedPrivateEndpointResultOutput) ToLookupManagedPrivateEndpointResultOutputWithContext(ctx context.Context) LookupManagedPrivateEndpointResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupManagedPrivateEndpointResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupManagedPrivateEndpointResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The state of managed private endpoint connection.

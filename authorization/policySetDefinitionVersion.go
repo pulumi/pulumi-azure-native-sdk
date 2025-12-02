@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The policy set definition version.
 //
-// Uses Azure REST API version 2025-01-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
+// Uses Azure REST API version 2023-04-01.
 //
-// Other available API versions: 2023-04-01, 2024-05-01, 2025-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-05-01, 2025-01-01, 2025-03-01.
 type PolicySetDefinitionVersion struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The policy set definition description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The display name of the policy set definition.
@@ -188,11 +186,6 @@ func (o PolicySetDefinitionVersionOutput) ToPolicySetDefinitionVersionOutput() P
 
 func (o PolicySetDefinitionVersionOutput) ToPolicySetDefinitionVersionOutputWithContext(ctx context.Context) PolicySetDefinitionVersionOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o PolicySetDefinitionVersionOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *PolicySetDefinitionVersion) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The policy set definition description.

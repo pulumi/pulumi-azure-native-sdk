@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,8 +39,6 @@ type LookupReadOnlyFollowingDatabaseArgs struct {
 type LookupReadOnlyFollowingDatabaseResult struct {
 	// The name of the attached database configuration cluster
 	AttachedDatabaseConfigurationName string `pulumi:"attachedDatabaseConfigurationName"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The time the data should be kept in cache for fast queries in TimeSpan.
 	HotCachePeriod *string `pulumi:"hotCachePeriod"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -110,11 +108,6 @@ func (o LookupReadOnlyFollowingDatabaseResultOutput) ToLookupReadOnlyFollowingDa
 // The name of the attached database configuration cluster
 func (o LookupReadOnlyFollowingDatabaseResultOutput) AttachedDatabaseConfigurationName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReadOnlyFollowingDatabaseResult) string { return v.AttachedDatabaseConfigurationName }).(pulumi.StringOutput)
-}
-
-// The Azure API version of the resource.
-func (o LookupReadOnlyFollowingDatabaseResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupReadOnlyFollowingDatabaseResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The time the data should be kept in cache for fast queries in TimeSpan.

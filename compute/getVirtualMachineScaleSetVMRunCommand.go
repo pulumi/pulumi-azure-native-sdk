@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The operation to get the VMSS VM run command.
 //
-// Uses Azure REST API version 2024-11-01.
+// Uses Azure REST API version 2023-03-01.
 //
-// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2024-11-01.
 func LookupVirtualMachineScaleSetVMRunCommand(ctx *pulumi.Context, args *LookupVirtualMachineScaleSetVMRunCommandArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineScaleSetVMRunCommandResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVirtualMachineScaleSetVMRunCommandResult
@@ -23,19 +23,19 @@ func LookupVirtualMachineScaleSetVMRunCommand(ctx *pulumi.Context, args *LookupV
 	if err != nil {
 		return nil, err
 	}
-	return &rv, nil
+	return rv.Defaults(), nil
 }
 
 type LookupVirtualMachineScaleSetVMRunCommandArgs struct {
 	// The expand expression to apply on the operation.
 	Expand *string `pulumi:"expand"`
-	// The name of the VirtualMachineScaleSetVM
+	// The instance ID of the virtual machine.
 	InstanceId string `pulumi:"instanceId"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// The name of the VirtualMachineRunCommand
+	// The name of the virtual machine run command.
 	RunCommandName string `pulumi:"runCommandName"`
-	// The name of the VirtualMachineScaleSet
+	// The name of the VM scale set.
 	VmScaleSetName string `pulumi:"vmScaleSetName"`
 }
 
@@ -43,19 +43,17 @@ type LookupVirtualMachineScaleSetVMRunCommandArgs struct {
 type LookupVirtualMachineScaleSetVMRunCommandResult struct {
 	// Optional. If set to true, provisioning will complete as soon as the script starts and will not wait for script to complete.
 	AsyncExecution *bool `pulumi:"asyncExecution"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// User-assigned managed identity that has access to errorBlobUri storage blob. Use an empty object in case of system-assigned identity. Make sure managed identity has been given access to blob's container with 'Storage Blob Data Contributor' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged
 	ErrorBlobManagedIdentity *RunCommandManagedIdentityResponse `pulumi:"errorBlobManagedIdentity"`
 	// Specifies the Azure storage blob where script error stream will be uploaded. Use a SAS URI with read, append, create, write access OR use managed identity to provide the VM access to the blob. Refer errorBlobManagedIdentity parameter.
 	ErrorBlobUri *string `pulumi:"errorBlobUri"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Resource Id
 	Id string `pulumi:"id"`
 	// The virtual machine run command instance view.
 	InstanceView VirtualMachineRunCommandInstanceViewResponse `pulumi:"instanceView"`
-	// The geo-location where the resource lives
+	// Resource location
 	Location string `pulumi:"location"`
-	// The name of the resource
+	// Resource name
 	Name string `pulumi:"name"`
 	// User-assigned managed identity that has access to outputBlobUri storage blob. Use an empty object in case of system-assigned identity. Make sure managed identity has been given access to blob's container with 'Storage Blob Data Contributor' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged
 	OutputBlobManagedIdentity *RunCommandManagedIdentityResponse `pulumi:"outputBlobManagedIdentity"`
@@ -73,18 +71,32 @@ type LookupVirtualMachineScaleSetVMRunCommandResult struct {
 	RunAsUser *string `pulumi:"runAsUser"`
 	// The source of the run command script.
 	Source *VirtualMachineRunCommandScriptSourceResponse `pulumi:"source"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
-	// Resource tags.
+	// Resource tags
 	Tags map[string]string `pulumi:"tags"`
 	// The timeout in seconds to execute the run command.
 	TimeoutInSeconds *int `pulumi:"timeoutInSeconds"`
 	// Optional. If set to true, any failure in the script will fail the deployment and ProvisioningState will be marked as Failed. If set to false, ProvisioningState would only reflect whether the run command was run or not by the extensions platform, it would not indicate whether script failed in case of script failures. See instance view of run command in case of script failures to see executionMessage, output, error: https://aka.ms/runcommandmanaged#get-execution-status-and-results
 	TreatFailureAsDeploymentFailure *bool `pulumi:"treatFailureAsDeploymentFailure"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// Resource type
 	Type string `pulumi:"type"`
 }
 
+// Defaults sets the appropriate defaults for LookupVirtualMachineScaleSetVMRunCommandResult
+func (val *LookupVirtualMachineScaleSetVMRunCommandResult) Defaults() *LookupVirtualMachineScaleSetVMRunCommandResult {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.AsyncExecution == nil {
+		asyncExecution_ := false
+		tmp.AsyncExecution = &asyncExecution_
+	}
+	if tmp.TreatFailureAsDeploymentFailure == nil {
+		treatFailureAsDeploymentFailure_ := false
+		tmp.TreatFailureAsDeploymentFailure = &treatFailureAsDeploymentFailure_
+	}
+	return &tmp
+}
 func LookupVirtualMachineScaleSetVMRunCommandOutput(ctx *pulumi.Context, args LookupVirtualMachineScaleSetVMRunCommandOutputArgs, opts ...pulumi.InvokeOption) LookupVirtualMachineScaleSetVMRunCommandResultOutput {
 	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupVirtualMachineScaleSetVMRunCommandResultOutput, error) {
@@ -97,13 +109,13 @@ func LookupVirtualMachineScaleSetVMRunCommandOutput(ctx *pulumi.Context, args Lo
 type LookupVirtualMachineScaleSetVMRunCommandOutputArgs struct {
 	// The expand expression to apply on the operation.
 	Expand pulumi.StringPtrInput `pulumi:"expand"`
-	// The name of the VirtualMachineScaleSetVM
+	// The instance ID of the virtual machine.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	// The name of the VirtualMachineRunCommand
+	// The name of the virtual machine run command.
 	RunCommandName pulumi.StringInput `pulumi:"runCommandName"`
-	// The name of the VirtualMachineScaleSet
+	// The name of the VM scale set.
 	VmScaleSetName pulumi.StringInput `pulumi:"vmScaleSetName"`
 }
 
@@ -131,11 +143,6 @@ func (o LookupVirtualMachineScaleSetVMRunCommandResultOutput) AsyncExecution() p
 	return o.ApplyT(func(v LookupVirtualMachineScaleSetVMRunCommandResult) *bool { return v.AsyncExecution }).(pulumi.BoolPtrOutput)
 }
 
-// The Azure API version of the resource.
-func (o LookupVirtualMachineScaleSetVMRunCommandResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupVirtualMachineScaleSetVMRunCommandResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // User-assigned managed identity that has access to errorBlobUri storage blob. Use an empty object in case of system-assigned identity. Make sure managed identity has been given access to blob's container with 'Storage Blob Data Contributor' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged
 func (o LookupVirtualMachineScaleSetVMRunCommandResultOutput) ErrorBlobManagedIdentity() RunCommandManagedIdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineScaleSetVMRunCommandResult) *RunCommandManagedIdentityResponse {
@@ -148,7 +155,7 @@ func (o LookupVirtualMachineScaleSetVMRunCommandResultOutput) ErrorBlobUri() pul
 	return o.ApplyT(func(v LookupVirtualMachineScaleSetVMRunCommandResult) *string { return v.ErrorBlobUri }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Resource Id
 func (o LookupVirtualMachineScaleSetVMRunCommandResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualMachineScaleSetVMRunCommandResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -160,12 +167,12 @@ func (o LookupVirtualMachineScaleSetVMRunCommandResultOutput) InstanceView() Vir
 	}).(VirtualMachineRunCommandInstanceViewResponseOutput)
 }
 
-// The geo-location where the resource lives
+// Resource location
 func (o LookupVirtualMachineScaleSetVMRunCommandResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualMachineScaleSetVMRunCommandResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// The name of the resource
+// Resource name
 func (o LookupVirtualMachineScaleSetVMRunCommandResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualMachineScaleSetVMRunCommandResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -218,12 +225,7 @@ func (o LookupVirtualMachineScaleSetVMRunCommandResultOutput) Source() VirtualMa
 	}).(VirtualMachineRunCommandScriptSourceResponsePtrOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupVirtualMachineScaleSetVMRunCommandResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupVirtualMachineScaleSetVMRunCommandResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
-}
-
-// Resource tags.
+// Resource tags
 func (o LookupVirtualMachineScaleSetVMRunCommandResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupVirtualMachineScaleSetVMRunCommandResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -238,7 +240,7 @@ func (o LookupVirtualMachineScaleSetVMRunCommandResultOutput) TreatFailureAsDepl
 	return o.ApplyT(func(v LookupVirtualMachineScaleSetVMRunCommandResult) *bool { return v.TreatFailureAsDeploymentFailure }).(pulumi.BoolPtrOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// Resource type
 func (o LookupVirtualMachineScaleSetVMRunCommandResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualMachineScaleSetVMRunCommandResult) string { return v.Type }).(pulumi.StringOutput)
 }

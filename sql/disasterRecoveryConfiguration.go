@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents a disaster recovery configuration.
 //
-// Uses Azure REST API version 2014-04-01. In version 2.x of the Azure Native provider, it used API version 2014-04-01.
+// Uses Azure REST API version 2014-04-01. In version 1.x of the Azure Native provider, it used API version 2014-04-01.
 type DisasterRecoveryConfiguration struct {
 	pulumi.CustomResourceState
 
 	// Whether or not failover can be done automatically.
 	AutoFailover pulumi.StringOutput `pulumi:"autoFailover"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// How aggressive the automatic failover should be.
 	FailoverPolicy pulumi.StringOutput `pulumi:"failoverPolicy"`
 	// Location of the server that contains this disaster recovery configuration.
@@ -152,11 +150,6 @@ func (o DisasterRecoveryConfigurationOutput) ToDisasterRecoveryConfigurationOutp
 // Whether or not failover can be done automatically.
 func (o DisasterRecoveryConfigurationOutput) AutoFailover() pulumi.StringOutput {
 	return o.ApplyT(func(v *DisasterRecoveryConfiguration) pulumi.StringOutput { return v.AutoFailover }).(pulumi.StringOutput)
-}
-
-// The Azure API version of the resource.
-func (o DisasterRecoveryConfigurationOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *DisasterRecoveryConfiguration) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // How aggressive the automatic failover should be.

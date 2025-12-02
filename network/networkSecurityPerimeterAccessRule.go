@@ -8,22 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The NSP access rule resource
 //
-// Uses Azure REST API version 2024-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-06-01-preview.
-//
-// Other available API versions: 2024-07-01, 2024-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Uses Azure REST API version 2024-06-01-preview.
 type NetworkSecurityPerimeterAccessRule struct {
 	pulumi.CustomResourceState
 
 	// Inbound address prefixes (IPv4/IPv6)
 	AddressPrefixes pulumi.StringArrayOutput `pulumi:"addressPrefixes"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Direction that specifies whether the access rules is inbound/outbound.
 	Direction pulumi.StringPtrOutput `pulumi:"direction"`
 	// Outbound rules email address format.
@@ -71,31 +67,13 @@ func NewNetworkSecurityPerimeterAccessRule(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:network/v20210201preview:NetworkSecurityPerimeterAccessRule"),
 		},
 		{
-			Type: pulumi.String("azure-native:network/v20210201preview:NspAccessRule"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20230701preview:NetworkSecurityPerimeterAccessRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20230701preview:NspAccessRule"),
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20230801preview:NetworkSecurityPerimeterAccessRule"),
 		},
 		{
-			Type: pulumi.String("azure-native:network/v20230801preview:NspAccessRule"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20240601preview:NetworkSecurityPerimeterAccessRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20240701:NetworkSecurityPerimeterAccessRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20241001:NetworkSecurityPerimeterAccessRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:network:NspAccessRule"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -234,11 +212,6 @@ func (o NetworkSecurityPerimeterAccessRuleOutput) ToNetworkSecurityPerimeterAcce
 // Inbound address prefixes (IPv4/IPv6)
 func (o NetworkSecurityPerimeterAccessRuleOutput) AddressPrefixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NetworkSecurityPerimeterAccessRule) pulumi.StringArrayOutput { return v.AddressPrefixes }).(pulumi.StringArrayOutput)
-}
-
-// The Azure API version of the resource.
-func (o NetworkSecurityPerimeterAccessRuleOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *NetworkSecurityPerimeterAccessRule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Direction that specifies whether the access rules is inbound/outbound.

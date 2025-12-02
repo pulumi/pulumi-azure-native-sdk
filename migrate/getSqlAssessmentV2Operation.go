@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a SqlAssessmentV2
 //
-// Uses Azure REST API version 2024-01-01-preview.
+// Uses Azure REST API version 2023-03-15.
 //
-// Other available API versions: 2023-03-15, 2023-04-01-preview, 2023-05-01-preview, 2023-09-09-preview, 2024-01-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native migrate [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-04-01-preview, 2023-05-01-preview, 2023-09-09-preview, 2024-01-01-preview.
 func LookupSqlAssessmentV2Operation(ctx *pulumi.Context, args *LookupSqlAssessmentV2OperationArgs, opts ...pulumi.InvokeOption) (*LookupSqlAssessmentV2OperationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSqlAssessmentV2OperationResult
@@ -43,8 +43,6 @@ type LookupSqlAssessmentV2OperationResult struct {
 	AssessmentType *string `pulumi:"assessmentType"`
 	// Gets or sets user preference indicating intent of async commit mode.
 	AsyncCommitModeIntent *string `pulumi:"asyncCommitModeIntent"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Azure Location or Azure region where to which the machines will be migrated.
 	AzureLocation *string `pulumi:"azureLocation"`
 	// Azure Offer Code.
@@ -81,7 +79,7 @@ type LookupSqlAssessmentV2OperationResult struct {
 	EnvironmentType *string `pulumi:"environmentType"`
 	// Gets the group type for the assessment.
 	GroupType *string `pulumi:"groupType"`
-	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Gets or sets a value indicating whether internet access is available.
 	IsInternetAccessAvailable *bool `pulumi:"isInternetAccessAvailable"`
@@ -181,11 +179,6 @@ func (o LookupSqlAssessmentV2OperationResultOutput) AsyncCommitModeIntent() pulu
 	return o.ApplyT(func(v LookupSqlAssessmentV2OperationResult) *string { return v.AsyncCommitModeIntent }).(pulumi.StringPtrOutput)
 }
 
-// The Azure API version of the resource.
-func (o LookupSqlAssessmentV2OperationResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSqlAssessmentV2OperationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Azure Location or Azure region where to which the machines will be migrated.
 func (o LookupSqlAssessmentV2OperationResultOutput) AzureLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSqlAssessmentV2OperationResult) *string { return v.AzureLocation }).(pulumi.StringPtrOutput)
@@ -275,7 +268,7 @@ func (o LookupSqlAssessmentV2OperationResultOutput) GroupType() pulumi.StringPtr
 	return o.ApplyT(func(v LookupSqlAssessmentV2OperationResult) *string { return v.GroupType }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupSqlAssessmentV2OperationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlAssessmentV2OperationResult) string { return v.Id }).(pulumi.StringOutput)
 }

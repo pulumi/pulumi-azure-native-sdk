@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets the private DNS zone suffix.
+// Get private DNS zone suffix in the cloud
 //
-// Uses Azure REST API version 2024-08-01.
+// Uses Azure REST API version 2022-12-01.
 //
-// Other available API versions: 2022-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-11-01-preview, 2025-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-03-31-privatepreview, 2021-06-01, 2022-01-20-preview, 2022-03-08-preview, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-08-01, 2024-11-01-preview.
 func GetGetPrivateDnsZoneSuffixExecute(ctx *pulumi.Context, args *GetGetPrivateDnsZoneSuffixExecuteArgs, opts ...pulumi.InvokeOption) (*GetGetPrivateDnsZoneSuffixExecuteResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetGetPrivateDnsZoneSuffixExecuteResult
@@ -29,7 +29,7 @@ func GetGetPrivateDnsZoneSuffixExecute(ctx *pulumi.Context, args *GetGetPrivateD
 type GetGetPrivateDnsZoneSuffixExecuteArgs struct {
 }
 
-// Private DNS suffix.
+// Represents a resource name availability.
 type GetGetPrivateDnsZoneSuffixExecuteResult struct {
 	Value *string `pulumi:"value"`
 }
@@ -50,7 +50,7 @@ func (GetGetPrivateDnsZoneSuffixExecuteOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetGetPrivateDnsZoneSuffixExecuteArgs)(nil)).Elem()
 }
 
-// Private DNS suffix.
+// Represents a resource name availability.
 type GetGetPrivateDnsZoneSuffixExecuteResultOutput struct{ *pulumi.OutputState }
 
 func (GetGetPrivateDnsZoneSuffixExecuteResultOutput) ElementType() reflect.Type {

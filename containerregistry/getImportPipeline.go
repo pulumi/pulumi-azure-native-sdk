@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2023-01-01-preview.
 //
-// Other available API versions: 2019-12-01-preview, 2020-11-01-preview, 2021-06-01-preview, 2021-08-01-preview, 2021-12-01-preview, 2022-02-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-11-01-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-06-01-preview, 2023-08-01-preview, 2023-11-01-preview, 2024-11-01-preview.
 func LookupImportPipeline(ctx *pulumi.Context, args *LookupImportPipelineArgs, opts ...pulumi.InvokeOption) (*LookupImportPipelineResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupImportPipelineResult
@@ -37,8 +37,6 @@ type LookupImportPipelineArgs struct {
 
 // An object that represents an import pipeline for a container registry.
 type LookupImportPipelineResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The resource ID.
 	Id string `pulumi:"id"`
 	// The identity of the import pipeline.
@@ -108,11 +106,6 @@ func (o LookupImportPipelineResultOutput) ToLookupImportPipelineResultOutput() L
 
 func (o LookupImportPipelineResultOutput) ToLookupImportPipelineResultOutputWithContext(ctx context.Context) LookupImportPipelineResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupImportPipelineResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupImportPipelineResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The resource ID.

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,11 +15,11 @@ import (
 //
 // Prerequisites:
 // 1. Create or have an existing User Assigned Managed Identity in the same Azure region as the account.
-// 2. Create or update an Azure Maps account with the same Azure region as the User Assigned Managed Identity is placed.
+// 2. Create or update an Azure Map account with the same Azure region as the User Assigned Managed Identity is placed.
 //
-// Uses Azure REST API version 2024-07-01-preview.
+// Uses Azure REST API version 2021-12-01-preview.
 //
-// Other available API versions: 2021-12-01-preview, 2023-06-01, 2023-08-01-preview, 2023-12-01-preview, 2024-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native maps [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-06-01, 2023-08-01-preview, 2023-12-01-preview, 2024-01-01-preview, 2024-07-01-preview.
 func ListAccountSas(ctx *pulumi.Context, args *ListAccountSasArgs, opts ...pulumi.InvokeOption) (*ListAccountSasResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListAccountSasResult
@@ -33,19 +33,19 @@ func ListAccountSas(ctx *pulumi.Context, args *ListAccountSasArgs, opts ...pulum
 type ListAccountSasArgs struct {
 	// The name of the Maps Account.
 	AccountName string `pulumi:"accountName"`
-	// The date time offset of when the token validity expires. For example "2017-05-24T10:42:03.1567373Z". Maximum duration allowed is 24 hours between `start` and `expiry`.
+	// The date time offset of when the token validity expires. For example "2017-05-24T10:42:03.1567373Z"
 	Expiry string `pulumi:"expiry"`
 	// Required parameter which represents the desired maximum request per second to allowed for the given SAS token. This does not guarantee perfect accuracy in measurements but provides application safe guards of abuse with eventual enforcement.
 	MaxRatePerSecond int `pulumi:"maxRatePerSecond"`
-	// The principal Id also known as the object Id of a User Assigned Managed Identity currently assigned to the Maps Account. To assign a Managed Identity of the account, use operation Create or Update an assign a User Assigned Identity resource Id.
+	// The principal Id also known as the object Id of a User Assigned Managed Identity currently assigned to the Map Account. To assign a Managed Identity of the account, use operation Create or Update an assign a User Assigned Identity resource Id.
 	PrincipalId string `pulumi:"principalId"`
 	// Optional, allows control of which region locations are permitted access to Azure Maps REST APIs with the SAS token. Example: "eastus", "westus2". Omitting this parameter will allow all region locations to be accessible.
 	Regions []string `pulumi:"regions"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// The Maps account key to use for signing. Picking `primaryKey` or `secondaryKey` will use the Maps account Shared Keys, and using `managedIdentity` will use the auto-renewed private key to sign the SAS.
+	// The Map account key to use for signing.
 	SigningKey string `pulumi:"signingKey"`
-	// The date time offset of when the token validity begins. For example "2017-05-24T10:42:03.1567373Z". Maximum duration allowed is 24 hours between `start` and `expiry`.
+	// The date time offset of when the token validity begins. For example "2017-05-24T10:42:03.1567373Z".
 	Start string `pulumi:"start"`
 }
 
@@ -79,19 +79,19 @@ func ListAccountSasOutput(ctx *pulumi.Context, args ListAccountSasOutputArgs, op
 type ListAccountSasOutputArgs struct {
 	// The name of the Maps Account.
 	AccountName pulumi.StringInput `pulumi:"accountName"`
-	// The date time offset of when the token validity expires. For example "2017-05-24T10:42:03.1567373Z". Maximum duration allowed is 24 hours between `start` and `expiry`.
+	// The date time offset of when the token validity expires. For example "2017-05-24T10:42:03.1567373Z"
 	Expiry pulumi.StringInput `pulumi:"expiry"`
 	// Required parameter which represents the desired maximum request per second to allowed for the given SAS token. This does not guarantee perfect accuracy in measurements but provides application safe guards of abuse with eventual enforcement.
 	MaxRatePerSecond pulumi.IntInput `pulumi:"maxRatePerSecond"`
-	// The principal Id also known as the object Id of a User Assigned Managed Identity currently assigned to the Maps Account. To assign a Managed Identity of the account, use operation Create or Update an assign a User Assigned Identity resource Id.
+	// The principal Id also known as the object Id of a User Assigned Managed Identity currently assigned to the Map Account. To assign a Managed Identity of the account, use operation Create or Update an assign a User Assigned Identity resource Id.
 	PrincipalId pulumi.StringInput `pulumi:"principalId"`
 	// Optional, allows control of which region locations are permitted access to Azure Maps REST APIs with the SAS token. Example: "eastus", "westus2". Omitting this parameter will allow all region locations to be accessible.
 	Regions pulumi.StringArrayInput `pulumi:"regions"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	// The Maps account key to use for signing. Picking `primaryKey` or `secondaryKey` will use the Maps account Shared Keys, and using `managedIdentity` will use the auto-renewed private key to sign the SAS.
+	// The Map account key to use for signing.
 	SigningKey pulumi.StringInput `pulumi:"signingKey"`
-	// The date time offset of when the token validity begins. For example "2017-05-24T10:42:03.1567373Z". Maximum duration allowed is 24 hours between `start` and `expiry`.
+	// The date time offset of when the token validity begins. For example "2017-05-24T10:42:03.1567373Z".
 	Start pulumi.StringInput `pulumi:"start"`
 }
 

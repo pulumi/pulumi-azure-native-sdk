@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,8 +35,6 @@ type LookupRelationshipArgs struct {
 
 // The relationship resource format.
 type LookupRelationshipResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The Relationship Cardinality.
 	Cardinality *string `pulumi:"cardinality"`
 	// Localized descriptions for the Relationship.
@@ -104,11 +102,6 @@ func (o LookupRelationshipResultOutput) ToLookupRelationshipResultOutput() Looku
 
 func (o LookupRelationshipResultOutput) ToLookupRelationshipResultOutputWithContext(ctx context.Context) LookupRelationshipResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupRelationshipResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupRelationshipResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The Relationship Cardinality.

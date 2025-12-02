@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // List the device groups for the catalog.
 //
-// Uses Azure REST API version 2024-04-01.
+// Uses Azure REST API version 2022-09-01-preview.
 //
-// Other available API versions: 2022-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuresphere [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-04-01.
 func ListCatalogDeviceGroups(ctx *pulumi.Context, args *ListCatalogDeviceGroupsArgs, opts ...pulumi.InvokeOption) (*ListCatalogDeviceGroupsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListCatalogDeviceGroupsResult
@@ -46,7 +46,7 @@ type ListCatalogDeviceGroupsArgs struct {
 // The response of a DeviceGroup list operation.
 type ListCatalogDeviceGroupsResult struct {
 	// The link to the next page of items
-	NextLink *string `pulumi:"nextLink"`
+	NextLink string `pulumi:"nextLink"`
 	// The DeviceGroup items on this page
 	Value []DeviceGroupResponse `pulumi:"value"`
 }
@@ -97,8 +97,8 @@ func (o ListCatalogDeviceGroupsResultOutput) ToListCatalogDeviceGroupsResultOutp
 }
 
 // The link to the next page of items
-func (o ListCatalogDeviceGroupsResultOutput) NextLink() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ListCatalogDeviceGroupsResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
+func (o ListCatalogDeviceGroupsResultOutput) NextLink() pulumi.StringOutput {
+	return o.ApplyT(func(v ListCatalogDeviceGroupsResult) string { return v.NextLink }).(pulumi.StringOutput)
 }
 
 // The DeviceGroup items on this page

@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the system.
 //
-// Uses Azure REST API version 2025-01-01-preview.
+// Uses Azure REST API version 2024-04-01-preview.
 //
-// Other available API versions: 2024-04-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-10-01-preview, 2025-01-01-preview.
 func LookupSystem(ctx *pulumi.Context, args *LookupSystemArgs, opts ...pulumi.InvokeOption) (*LookupSystemResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSystemResult
@@ -39,8 +39,6 @@ type LookupSystemArgs struct {
 
 // Describes the system within the agent.
 type LookupSystemResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The configuration of the system.
 	Configuration SapSystemsConfigurationResponse `pulumi:"configuration"`
 	DisplayName   string                          `pulumi:"displayName"`
@@ -96,11 +94,6 @@ func (o LookupSystemResultOutput) ToLookupSystemResultOutput() LookupSystemResul
 
 func (o LookupSystemResultOutput) ToLookupSystemResultOutputWithContext(ctx context.Context) LookupSystemResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupSystemResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSystemResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The configuration of the system.

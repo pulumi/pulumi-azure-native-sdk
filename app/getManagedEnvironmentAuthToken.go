@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Checks if resource name is available.
 //
-// Uses Azure REST API version 2025-02-02-preview.
+// Uses Azure REST API version 2022-10-01.
 //
-// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01.
 func GetManagedEnvironmentAuthToken(ctx *pulumi.Context, args *GetManagedEnvironmentAuthTokenArgs, opts ...pulumi.InvokeOption) (*GetManagedEnvironmentAuthTokenResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetManagedEnvironmentAuthTokenResult
@@ -37,7 +37,7 @@ type GetManagedEnvironmentAuthTokenArgs struct {
 type GetManagedEnvironmentAuthTokenResult struct {
 	// Token expiration date.
 	Expires string `pulumi:"expires"`
-	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
@@ -93,7 +93,7 @@ func (o GetManagedEnvironmentAuthTokenResultOutput) Expires() pulumi.StringOutpu
 	return o.ApplyT(func(v GetManagedEnvironmentAuthTokenResult) string { return v.Expires }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o GetManagedEnvironmentAuthTokenResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetManagedEnvironmentAuthTokenResult) string { return v.Id }).(pulumi.StringOutput)
 }

@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // WebApp site web model.
 //
-// Uses Azure REST API version 2023-10-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-06-06.
+// Uses Azure REST API version 2023-06-06.
 //
-// Other available API versions: 2023-06-06, 2024-05-01-preview, 2024-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native offazure [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-10-01-preview, 2024-05-01-preview.
 type WebAppSitesController struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets or sets the discovery scenario.
 	DiscoveryScenario pulumi.StringPtrOutput `pulumi:"discoveryScenario"`
 	// The name of the resource
@@ -62,9 +60,6 @@ func NewWebAppSitesController(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:offazure/v20240501preview:WebAppSitesController"),
-		},
-		{
-			Type: pulumi.String("azure-native:offazure/v20240701preview:WebAppSitesController"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -166,11 +161,6 @@ func (o WebAppSitesControllerOutput) ToWebAppSitesControllerOutput() WebAppSites
 
 func (o WebAppSitesControllerOutput) ToWebAppSitesControllerOutputWithContext(ctx context.Context) WebAppSitesControllerOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o WebAppSitesControllerOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *WebAppSitesController) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the discovery scenario.

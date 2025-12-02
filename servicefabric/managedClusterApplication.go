@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The application resource.
 //
-// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01-preview.
+// Uses Azure REST API version 2023-03-01-preview.
 //
-// Other available API versions: 2023-03-01-preview, 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01-preview, 2024-02-01-preview, 2024-06-01-preview, 2024-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicefabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01-preview, 2024-02-01-preview, 2024-04-01, 2024-06-01-preview, 2024-09-01-preview.
 type ManagedClusterApplication struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Describes the managed identities for an Azure resource.
 	Identity ManagedIdentityResponsePtrOutput `pulumi:"identity"`
 	// Resource location depends on the parent resource.
@@ -123,12 +121,6 @@ func NewManagedClusterApplication(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:servicefabric/v20241101preview:ManagedClusterApplication"),
-		},
-		{
-			Type: pulumi.String("azure-native:servicefabric/v20250301preview:ManagedClusterApplication"),
-		},
-		{
-			Type: pulumi.String("azure-native:servicefabric/v20250601preview:ManagedClusterApplication"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -248,11 +240,6 @@ func (o ManagedClusterApplicationOutput) ToManagedClusterApplicationOutput() Man
 
 func (o ManagedClusterApplicationOutput) ToManagedClusterApplicationOutputWithContext(ctx context.Context) ManagedClusterApplicationOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o ManagedClusterApplicationOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *ManagedClusterApplication) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Describes the managed identities for an Azure resource.

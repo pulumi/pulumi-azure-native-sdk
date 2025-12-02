@@ -7,13 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a setting.
 //
-// Uses Azure REST API version 2025-01-01-preview.
+// Uses Azure REST API version 2023-06-01-preview.
 func LookupEyesOn(ctx *pulumi.Context, args *LookupEyesOnArgs, opts ...pulumi.InvokeOption) (*LookupEyesOnResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEyesOnResult
@@ -35,8 +35,6 @@ type LookupEyesOnArgs struct {
 
 // Settings with single toggle.
 type LookupEyesOnResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Etag of the azure resource
 	Etag *string `pulumi:"etag"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -89,11 +87,6 @@ func (o LookupEyesOnResultOutput) ToLookupEyesOnResultOutput() LookupEyesOnResul
 
 func (o LookupEyesOnResultOutput) ToLookupEyesOnResultOutputWithContext(ctx context.Context) LookupEyesOnResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupEyesOnResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupEyesOnResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Etag of the azure resource

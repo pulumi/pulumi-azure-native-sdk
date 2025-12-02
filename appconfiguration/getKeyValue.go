@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the properties of the specified key-value. NOTE: This operation is intended for use in ARM Template deployments. For all other scenarios involving App Configuration key-values the data plane API should be used instead.
 //
-// Uses Azure REST API version 2024-05-01.
+// Uses Azure REST API version 2023-03-01.
 //
-// Other available API versions: 2023-03-01, 2023-08-01-preview, 2023-09-01-preview, 2024-06-01, 2024-06-15-preview, 2025-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native appconfiguration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-08-01-preview, 2023-09-01-preview, 2024-05-01.
 func LookupKeyValue(ctx *pulumi.Context, args *LookupKeyValueArgs, opts ...pulumi.InvokeOption) (*LookupKeyValueResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupKeyValueResult
@@ -37,8 +37,6 @@ type LookupKeyValueArgs struct {
 
 // The key-value resource along with all resource properties.
 type LookupKeyValueResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The content type of the key-value's value.
 	// Providing a proper content-type can enable transformations of values when they are retrieved by applications.
 	ContentType *string `pulumi:"contentType"`
@@ -102,11 +100,6 @@ func (o LookupKeyValueResultOutput) ToLookupKeyValueResultOutput() LookupKeyValu
 
 func (o LookupKeyValueResultOutput) ToLookupKeyValueResultOutputWithContext(ctx context.Context) LookupKeyValueResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupKeyValueResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupKeyValueResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The content type of the key-value's value.

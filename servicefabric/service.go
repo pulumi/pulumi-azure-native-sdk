@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The service resource.
 //
-// Uses Azure REST API version 2024-11-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-11-01-preview.
+// Uses Azure REST API version 2024-11-01-preview. In version 1.x of the Azure Native provider, it used API version 2020-03-01.
 //
-// Other available API versions: 2025-03-01-preview, 2025-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicefabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-06-01.
 type Service struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The name of the resource
@@ -60,9 +58,6 @@ func NewService(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:servicefabric/v20210501:Service"),
 		},
 		{
-			Type: pulumi.String("azure-native:servicefabric/v20210601:Service"),
-		},
-		{
 			Type: pulumi.String("azure-native:servicefabric/v20210701preview:Service"),
 		},
 		{
@@ -90,70 +85,34 @@ func NewService(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:servicefabric/v20230201preview:Service"),
 		},
 		{
-			Type: pulumi.String("azure-native:servicefabric/v20230301preview:ManagedClusterService"),
-		},
-		{
 			Type: pulumi.String("azure-native:servicefabric/v20230301preview:Service"),
-		},
-		{
-			Type: pulumi.String("azure-native:servicefabric/v20230701preview:ManagedClusterService"),
 		},
 		{
 			Type: pulumi.String("azure-native:servicefabric/v20230701preview:Service"),
 		},
 		{
-			Type: pulumi.String("azure-native:servicefabric/v20230901preview:ManagedClusterService"),
-		},
-		{
 			Type: pulumi.String("azure-native:servicefabric/v20230901preview:Service"),
-		},
-		{
-			Type: pulumi.String("azure-native:servicefabric/v20231101preview:ManagedClusterService"),
 		},
 		{
 			Type: pulumi.String("azure-native:servicefabric/v20231101preview:Service"),
 		},
 		{
-			Type: pulumi.String("azure-native:servicefabric/v20231201preview:ManagedClusterService"),
-		},
-		{
 			Type: pulumi.String("azure-native:servicefabric/v20231201preview:Service"),
-		},
-		{
-			Type: pulumi.String("azure-native:servicefabric/v20240201preview:ManagedClusterService"),
 		},
 		{
 			Type: pulumi.String("azure-native:servicefabric/v20240201preview:Service"),
 		},
 		{
-			Type: pulumi.String("azure-native:servicefabric/v20240401:ManagedClusterService"),
-		},
-		{
 			Type: pulumi.String("azure-native:servicefabric/v20240401:Service"),
 		},
 		{
-			Type: pulumi.String("azure-native:servicefabric/v20240601preview:ManagedClusterService"),
-		},
-		{
 			Type: pulumi.String("azure-native:servicefabric/v20240601preview:Service"),
-		},
-		{
-			Type: pulumi.String("azure-native:servicefabric/v20240901preview:ManagedClusterService"),
 		},
 		{
 			Type: pulumi.String("azure-native:servicefabric/v20240901preview:Service"),
 		},
 		{
 			Type: pulumi.String("azure-native:servicefabric/v20241101preview:Service"),
-		},
-		{
-			Type: pulumi.String("azure-native:servicefabric/v20250301preview:Service"),
-		},
-		{
-			Type: pulumi.String("azure-native:servicefabric/v20250601preview:Service"),
-		},
-		{
-			Type: pulumi.String("azure-native:servicefabric:ManagedClusterService"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -259,11 +218,6 @@ func (o ServiceOutput) ToServiceOutput() ServiceOutput {
 
 func (o ServiceOutput) ToServiceOutputWithContext(ctx context.Context) ServiceOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o ServiceOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The geo-location where the resource lives

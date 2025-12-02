@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get Network Rack resource details.
 //
-// Uses Azure REST API version 2023-06-15.
+// Uses Azure REST API version 2023-02-01-preview.
 //
-// Other available API versions: 2023-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-06-15.
 func LookupNetworkRack(ctx *pulumi.Context, args *LookupNetworkRackArgs, opts ...pulumi.InvokeOption) (*LookupNetworkRackResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkRackResult
@@ -27,31 +27,29 @@ func LookupNetworkRack(ctx *pulumi.Context, args *LookupNetworkRackArgs, opts ..
 }
 
 type LookupNetworkRackArgs struct {
-	// Name of the Network Rack.
+	// Name of the Network Rack
 	NetworkRackName string `pulumi:"networkRackName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
-// The Network Rack resource definition.
+// The NetworkRack resource definition.
 type LookupNetworkRackResult struct {
 	// Switch configuration description.
 	Annotation *string `pulumi:"annotation"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// List of network device ARM resource IDs.
+	// List of network device ARM resource ids.
 	NetworkDevices []string `pulumi:"networkDevices"`
-	// ARM resource ID of the Network Fabric.
+	// Network Fabric ARM resource id.
 	NetworkFabricId string `pulumi:"networkFabricId"`
 	// Network Rack SKU name.
-	NetworkRackType *string `pulumi:"networkRackType"`
-	// Provisioning state of the resource.
+	NetworkRackSku string `pulumi:"networkRackSku"`
+	// Gets the provisioning state of the resource.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
@@ -71,7 +69,7 @@ func LookupNetworkRackOutput(ctx *pulumi.Context, args LookupNetworkRackOutputAr
 }
 
 type LookupNetworkRackOutputArgs struct {
-	// Name of the Network Rack.
+	// Name of the Network Rack
 	NetworkRackName pulumi.StringInput `pulumi:"networkRackName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
@@ -81,7 +79,7 @@ func (LookupNetworkRackOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupNetworkRackArgs)(nil)).Elem()
 }
 
-// The Network Rack resource definition.
+// The NetworkRack resource definition.
 type LookupNetworkRackResultOutput struct{ *pulumi.OutputState }
 
 func (LookupNetworkRackResultOutput) ElementType() reflect.Type {
@@ -101,12 +99,7 @@ func (o LookupNetworkRackResultOutput) Annotation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNetworkRackResult) *string { return v.Annotation }).(pulumi.StringPtrOutput)
 }
 
-// The Azure API version of the resource.
-func (o LookupNetworkRackResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupNetworkRackResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupNetworkRackResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkRackResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -121,22 +114,22 @@ func (o LookupNetworkRackResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkRackResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// List of network device ARM resource IDs.
+// List of network device ARM resource ids.
 func (o LookupNetworkRackResultOutput) NetworkDevices() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupNetworkRackResult) []string { return v.NetworkDevices }).(pulumi.StringArrayOutput)
 }
 
-// ARM resource ID of the Network Fabric.
+// Network Fabric ARM resource id.
 func (o LookupNetworkRackResultOutput) NetworkFabricId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkRackResult) string { return v.NetworkFabricId }).(pulumi.StringOutput)
 }
 
 // Network Rack SKU name.
-func (o LookupNetworkRackResultOutput) NetworkRackType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupNetworkRackResult) *string { return v.NetworkRackType }).(pulumi.StringPtrOutput)
+func (o LookupNetworkRackResultOutput) NetworkRackSku() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkRackResult) string { return v.NetworkRackSku }).(pulumi.StringOutput)
 }
 
-// Provisioning state of the resource.
+// Gets the provisioning state of the resource.
 func (o LookupNetworkRackResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkRackResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }

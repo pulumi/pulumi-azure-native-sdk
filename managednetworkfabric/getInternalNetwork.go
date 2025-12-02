@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a InternalNetworks.
 //
-// Uses Azure REST API version 2023-06-15.
+// Uses Azure REST API version 2023-02-01-preview.
 //
-// Other available API versions: 2023-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-06-15.
 func LookupInternalNetwork(ctx *pulumi.Context, args *LookupInternalNetworkArgs, opts ...pulumi.InvokeOption) (*LookupInternalNetworkResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupInternalNetworkResult
@@ -27,56 +27,48 @@ func LookupInternalNetwork(ctx *pulumi.Context, args *LookupInternalNetworkArgs,
 }
 
 type LookupInternalNetworkArgs struct {
-	// Name of the Internal Network.
+	// Name of the InternalNetwork
 	InternalNetworkName string `pulumi:"internalNetworkName"`
-	// Name of the L3 Isolation Domain.
+	// Name of the L3IsolationDomain
 	L3IsolationDomainName string `pulumi:"l3IsolationDomainName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
-// Defines the Internal Network resource.
+// Defines the InternalNetwork item.
 type LookupInternalNetworkResult struct {
-	// Administrative state of the resource.
+	// Administrative state of the InternalNetwork. Example: Enabled | Disabled.
 	AdministrativeState string `pulumi:"administrativeState"`
 	// Switch configuration description.
 	Annotation *string `pulumi:"annotation"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// BGP configuration properties.
-	BgpConfiguration *InternalNetworkPropertiesResponseBgpConfiguration `pulumi:"bgpConfiguration"`
-	// Configuration state of the resource.
-	ConfigurationState string `pulumi:"configurationState"`
-	// List of Connected IPv4 Subnets.
+	// List of resources the BFD for BGP is disabled on. Can be either entire NetworkFabric or NetworkRack.
+	BfdDisabledOnResources []string `pulumi:"bfdDisabledOnResources"`
+	// List of resources the BFD of StaticRoutes is disabled on. Can be either entire NetworkFabric or NetworkRack.
+	BfdForStaticRoutesDisabledOnResources []string `pulumi:"bfdForStaticRoutesDisabledOnResources"`
+	// BGP configuration properties
+	BgpConfiguration *BgpConfigurationResponse `pulumi:"bgpConfiguration"`
+	// List of resources the BGP is disabled on. Can be either entire NetworkFabric or NetworkRack.
+	BgpDisabledOnResources []string `pulumi:"bgpDisabledOnResources"`
+	// List with object connected IPv4 Subnets.
 	ConnectedIPv4Subnets []ConnectedSubnetResponse `pulumi:"connectedIPv4Subnets"`
-	// List of connected IPv6 Subnets.
+	// List with object connected IPv6 Subnets.
 	ConnectedIPv6Subnets []ConnectedSubnetResponse `pulumi:"connectedIPv6Subnets"`
-	// Egress Acl. ARM resource ID of Access Control Lists.
-	EgressAclId *string `pulumi:"egressAclId"`
-	// Export Route Policy either IPv4 or IPv6.
-	ExportRoutePolicy *ExportRoutePolicyResponse `pulumi:"exportRoutePolicy"`
-	// ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.
+	// List of resources the InternalNetwork is disabled on. Can be either entire NetworkFabric or NetworkRack.
+	DisabledOnResources []string `pulumi:"disabledOnResources"`
+	// ARM resource ID of importRoutePolicy.
 	ExportRoutePolicyId *string `pulumi:"exportRoutePolicyId"`
-	// Extension. Example: NoExtension | NPB.
-	Extension *string `pulumi:"extension"`
-	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// Import Route Policy either IPv4 or IPv6.
-	ImportRoutePolicy *ImportRoutePolicyResponse `pulumi:"importRoutePolicy"`
-	// ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.
+	// ARM resource ID of importRoutePolicy.
 	ImportRoutePolicyId *string `pulumi:"importRoutePolicyId"`
-	// Ingress Acl. ARM resource ID of Access Control Lists.
-	IngressAclId *string `pulumi:"ingressAclId"`
-	// To check whether monitoring of internal network is enabled or not.
-	IsMonitoringEnabled *string `pulumi:"isMonitoringEnabled"`
 	// Maximum transmission unit. Default value is 1500.
 	Mtu *int `pulumi:"mtu"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// Provisioning state of the resource.
+	// Gets the provisioning state of the resource.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Static Route Configuration properties.
-	StaticRouteConfiguration *InternalNetworkPropertiesResponseStaticRouteConfiguration `pulumi:"staticRouteConfiguration"`
+	StaticRouteConfiguration *StaticRouteConfigurationResponse `pulumi:"staticRouteConfiguration"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -93,20 +85,10 @@ func (val *LookupInternalNetworkResult) Defaults() *LookupInternalNetworkResult 
 	tmp := *val
 	tmp.BgpConfiguration = tmp.BgpConfiguration.Defaults()
 
-	if tmp.Extension == nil {
-		extension_ := "NoExtension"
-		tmp.Extension = &extension_
-	}
-	if tmp.IsMonitoringEnabled == nil {
-		isMonitoringEnabled_ := "False"
-		tmp.IsMonitoringEnabled = &isMonitoringEnabled_
-	}
 	if tmp.Mtu == nil {
 		mtu_ := 1500
 		tmp.Mtu = &mtu_
 	}
-	tmp.StaticRouteConfiguration = tmp.StaticRouteConfiguration.Defaults()
-
 	return &tmp
 }
 func LookupInternalNetworkOutput(ctx *pulumi.Context, args LookupInternalNetworkOutputArgs, opts ...pulumi.InvokeOption) LookupInternalNetworkResultOutput {
@@ -119,9 +101,9 @@ func LookupInternalNetworkOutput(ctx *pulumi.Context, args LookupInternalNetwork
 }
 
 type LookupInternalNetworkOutputArgs struct {
-	// Name of the Internal Network.
+	// Name of the InternalNetwork
 	InternalNetworkName pulumi.StringInput `pulumi:"internalNetworkName"`
-	// Name of the L3 Isolation Domain.
+	// Name of the L3IsolationDomain
 	L3IsolationDomainName pulumi.StringInput `pulumi:"l3IsolationDomainName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
@@ -131,7 +113,7 @@ func (LookupInternalNetworkOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupInternalNetworkArgs)(nil)).Elem()
 }
 
-// Defines the Internal Network resource.
+// Defines the InternalNetwork item.
 type LookupInternalNetworkResultOutput struct{ *pulumi.OutputState }
 
 func (LookupInternalNetworkResultOutput) ElementType() reflect.Type {
@@ -146,7 +128,7 @@ func (o LookupInternalNetworkResultOutput) ToLookupInternalNetworkResultOutputWi
 	return o
 }
 
-// Administrative state of the resource.
+// Administrative state of the InternalNetwork. Example: Enabled | Disabled.
 func (o LookupInternalNetworkResultOutput) AdministrativeState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInternalNetworkResult) string { return v.AdministrativeState }).(pulumi.StringOutput)
 }
@@ -156,76 +138,54 @@ func (o LookupInternalNetworkResultOutput) Annotation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupInternalNetworkResult) *string { return v.Annotation }).(pulumi.StringPtrOutput)
 }
 
-// The Azure API version of the resource.
-func (o LookupInternalNetworkResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupInternalNetworkResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+// List of resources the BFD for BGP is disabled on. Can be either entire NetworkFabric or NetworkRack.
+func (o LookupInternalNetworkResultOutput) BfdDisabledOnResources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupInternalNetworkResult) []string { return v.BfdDisabledOnResources }).(pulumi.StringArrayOutput)
 }
 
-// BGP configuration properties.
-func (o LookupInternalNetworkResultOutput) BgpConfiguration() InternalNetworkPropertiesResponseBgpConfigurationPtrOutput {
-	return o.ApplyT(func(v LookupInternalNetworkResult) *InternalNetworkPropertiesResponseBgpConfiguration {
-		return v.BgpConfiguration
-	}).(InternalNetworkPropertiesResponseBgpConfigurationPtrOutput)
+// List of resources the BFD of StaticRoutes is disabled on. Can be either entire NetworkFabric or NetworkRack.
+func (o LookupInternalNetworkResultOutput) BfdForStaticRoutesDisabledOnResources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupInternalNetworkResult) []string { return v.BfdForStaticRoutesDisabledOnResources }).(pulumi.StringArrayOutput)
 }
 
-// Configuration state of the resource.
-func (o LookupInternalNetworkResultOutput) ConfigurationState() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupInternalNetworkResult) string { return v.ConfigurationState }).(pulumi.StringOutput)
+// BGP configuration properties
+func (o LookupInternalNetworkResultOutput) BgpConfiguration() BgpConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v LookupInternalNetworkResult) *BgpConfigurationResponse { return v.BgpConfiguration }).(BgpConfigurationResponsePtrOutput)
 }
 
-// List of Connected IPv4 Subnets.
+// List of resources the BGP is disabled on. Can be either entire NetworkFabric or NetworkRack.
+func (o LookupInternalNetworkResultOutput) BgpDisabledOnResources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupInternalNetworkResult) []string { return v.BgpDisabledOnResources }).(pulumi.StringArrayOutput)
+}
+
+// List with object connected IPv4 Subnets.
 func (o LookupInternalNetworkResultOutput) ConnectedIPv4Subnets() ConnectedSubnetResponseArrayOutput {
 	return o.ApplyT(func(v LookupInternalNetworkResult) []ConnectedSubnetResponse { return v.ConnectedIPv4Subnets }).(ConnectedSubnetResponseArrayOutput)
 }
 
-// List of connected IPv6 Subnets.
+// List with object connected IPv6 Subnets.
 func (o LookupInternalNetworkResultOutput) ConnectedIPv6Subnets() ConnectedSubnetResponseArrayOutput {
 	return o.ApplyT(func(v LookupInternalNetworkResult) []ConnectedSubnetResponse { return v.ConnectedIPv6Subnets }).(ConnectedSubnetResponseArrayOutput)
 }
 
-// Egress Acl. ARM resource ID of Access Control Lists.
-func (o LookupInternalNetworkResultOutput) EgressAclId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupInternalNetworkResult) *string { return v.EgressAclId }).(pulumi.StringPtrOutput)
+// List of resources the InternalNetwork is disabled on. Can be either entire NetworkFabric or NetworkRack.
+func (o LookupInternalNetworkResultOutput) DisabledOnResources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupInternalNetworkResult) []string { return v.DisabledOnResources }).(pulumi.StringArrayOutput)
 }
 
-// Export Route Policy either IPv4 or IPv6.
-func (o LookupInternalNetworkResultOutput) ExportRoutePolicy() ExportRoutePolicyResponsePtrOutput {
-	return o.ApplyT(func(v LookupInternalNetworkResult) *ExportRoutePolicyResponse { return v.ExportRoutePolicy }).(ExportRoutePolicyResponsePtrOutput)
-}
-
-// ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.
+// ARM resource ID of importRoutePolicy.
 func (o LookupInternalNetworkResultOutput) ExportRoutePolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupInternalNetworkResult) *string { return v.ExportRoutePolicyId }).(pulumi.StringPtrOutput)
 }
 
-// Extension. Example: NoExtension | NPB.
-func (o LookupInternalNetworkResultOutput) Extension() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupInternalNetworkResult) *string { return v.Extension }).(pulumi.StringPtrOutput)
-}
-
-// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupInternalNetworkResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInternalNetworkResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Import Route Policy either IPv4 or IPv6.
-func (o LookupInternalNetworkResultOutput) ImportRoutePolicy() ImportRoutePolicyResponsePtrOutput {
-	return o.ApplyT(func(v LookupInternalNetworkResult) *ImportRoutePolicyResponse { return v.ImportRoutePolicy }).(ImportRoutePolicyResponsePtrOutput)
-}
-
-// ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.
+// ARM resource ID of importRoutePolicy.
 func (o LookupInternalNetworkResultOutput) ImportRoutePolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupInternalNetworkResult) *string { return v.ImportRoutePolicyId }).(pulumi.StringPtrOutput)
-}
-
-// Ingress Acl. ARM resource ID of Access Control Lists.
-func (o LookupInternalNetworkResultOutput) IngressAclId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupInternalNetworkResult) *string { return v.IngressAclId }).(pulumi.StringPtrOutput)
-}
-
-// To check whether monitoring of internal network is enabled or not.
-func (o LookupInternalNetworkResultOutput) IsMonitoringEnabled() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupInternalNetworkResult) *string { return v.IsMonitoringEnabled }).(pulumi.StringPtrOutput)
 }
 
 // Maximum transmission unit. Default value is 1500.
@@ -238,16 +198,16 @@ func (o LookupInternalNetworkResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInternalNetworkResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Provisioning state of the resource.
+// Gets the provisioning state of the resource.
 func (o LookupInternalNetworkResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInternalNetworkResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // Static Route Configuration properties.
-func (o LookupInternalNetworkResultOutput) StaticRouteConfiguration() InternalNetworkPropertiesResponseStaticRouteConfigurationPtrOutput {
-	return o.ApplyT(func(v LookupInternalNetworkResult) *InternalNetworkPropertiesResponseStaticRouteConfiguration {
+func (o LookupInternalNetworkResultOutput) StaticRouteConfiguration() StaticRouteConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v LookupInternalNetworkResult) *StaticRouteConfigurationResponse {
 		return v.StaticRouteConfiguration
-	}).(InternalNetworkPropertiesResponseStaticRouteConfigurationPtrOutput)
+	}).(StaticRouteConfigurationResponsePtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

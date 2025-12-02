@@ -8,21 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A sensitivity label.
 //
-// Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2021-11-01.
+// Uses Azure REST API version 2021-11-01. In version 1.x of the Azure Native provider, it used API version 2020-11-01-preview.
 //
-// Other available API versions: 2018-06-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01, 2023-08-01-preview, 2024-05-01-preview.
 type ManagedDatabaseSensitivityLabel struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion            pulumi.StringOutput    `pulumi:"azureApiVersion"`
-	ClientClassificationSource pulumi.StringPtrOutput `pulumi:"clientClassificationSource"`
 	// The column name.
 	ColumnName pulumi.StringOutput `pulumi:"columnName"`
 	// The information type.
@@ -128,9 +125,6 @@ func NewManagedDatabaseSensitivityLabel(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:sql/v20240501preview:ManagedDatabaseSensitivityLabel"),
 		},
-		{
-			Type: pulumi.String("azure-native:sql/v20241101preview:ManagedDatabaseSensitivityLabel"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -166,7 +160,6 @@ func (ManagedDatabaseSensitivityLabelState) ElementType() reflect.Type {
 }
 
 type managedDatabaseSensitivityLabelArgs struct {
-	ClientClassificationSource *string `pulumi:"clientClassificationSource"`
 	// The name of the column.
 	ColumnName string `pulumi:"columnName"`
 	// The name of the database.
@@ -194,7 +187,6 @@ type managedDatabaseSensitivityLabelArgs struct {
 
 // The set of arguments for constructing a ManagedDatabaseSensitivityLabel resource.
 type ManagedDatabaseSensitivityLabelArgs struct {
-	ClientClassificationSource pulumi.StringPtrInput
 	// The name of the column.
 	ColumnName pulumi.StringInput
 	// The name of the database.
@@ -255,15 +247,6 @@ func (o ManagedDatabaseSensitivityLabelOutput) ToManagedDatabaseSensitivityLabel
 
 func (o ManagedDatabaseSensitivityLabelOutput) ToManagedDatabaseSensitivityLabelOutputWithContext(ctx context.Context) ManagedDatabaseSensitivityLabelOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o ManagedDatabaseSensitivityLabelOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *ManagedDatabaseSensitivityLabel) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-func (o ManagedDatabaseSensitivityLabelOutput) ClientClassificationSource() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedDatabaseSensitivityLabel) pulumi.StringPtrOutput { return v.ClientClassificationSource }).(pulumi.StringPtrOutput)
 }
 
 // The column name.

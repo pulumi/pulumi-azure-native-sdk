@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get specified Update
 //
-// Uses Azure REST API version 2024-04-01.
+// Uses Azure REST API version 2023-03-01.
 //
-// Other available API versions: 2022-12-15-preview, 2023-02-01, 2023-03-01, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview, 2025-02-01-preview, 2025-09-15-preview, 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-12-15-preview, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-04-01, 2024-09-01-preview, 2024-12-01-preview.
 func LookupUpdate(ctx *pulumi.Context, args *LookupUpdateArgs, opts ...pulumi.InvokeOption) (*LookupUpdateResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupUpdateResult
@@ -41,8 +41,6 @@ type LookupUpdateResult struct {
 	AdditionalProperties *string `pulumi:"additionalProperties"`
 	// Indicates the way the update content can be downloaded.
 	AvailabilityType *string `pulumi:"availabilityType"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Description of the update.
 	Description *string `pulumi:"description"`
 	// Display name of the Update
@@ -55,8 +53,6 @@ type LookupUpdateResult struct {
 	InstalledDate *string `pulumi:"installedDate"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// Minimum Sbe Version of the update.
-	MinSbeVersionRequired *string `pulumi:"minSbeVersionRequired"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// Brief message with instructions for updates of AvailabilityType Notify.
@@ -134,11 +130,6 @@ func (o LookupUpdateResultOutput) AvailabilityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupUpdateResult) *string { return v.AvailabilityType }).(pulumi.StringPtrOutput)
 }
 
-// The Azure API version of the resource.
-func (o LookupUpdateResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupUpdateResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Description of the update.
 func (o LookupUpdateResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupUpdateResult) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -167,11 +158,6 @@ func (o LookupUpdateResultOutput) InstalledDate() pulumi.StringPtrOutput {
 // The geo-location where the resource lives
 func (o LookupUpdateResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupUpdateResult) *string { return v.Location }).(pulumi.StringPtrOutput)
-}
-
-// Minimum Sbe Version of the update.
-func (o LookupUpdateResultOutput) MinSbeVersionRequired() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupUpdateResult) *string { return v.MinSbeVersionRequired }).(pulumi.StringPtrOutput)
 }
 
 // The name of the resource

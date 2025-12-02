@@ -8,37 +8,39 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The L3 Isolation Domain resource definition.
+// The L3IsolationDomain resource definition.
 //
-// Uses Azure REST API version 2023-06-15. In version 2.x of the Azure Native provider, it used API version 2023-02-01-preview.
+// Uses Azure REST API version 2023-02-01-preview. In version 1.x of the Azure Native provider, it used API version 2023-02-01-preview.
 //
-// Other available API versions: 2023-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-06-15.
 type L3IsolationDomain struct {
 	pulumi.CustomResourceState
 
-	// Administrative state of the resource.
+	// Administrative state of the IsolationDomain. Example: Enabled | Disabled.
 	AdministrativeState pulumi.StringOutput `pulumi:"administrativeState"`
-	// Aggregate route configurations.
+	// List of Ipv4 and Ipv6 route configurations.
 	AggregateRouteConfiguration AggregateRouteConfigurationResponsePtrOutput `pulumi:"aggregateRouteConfiguration"`
 	// Switch configuration description.
 	Annotation pulumi.StringPtrOutput `pulumi:"annotation"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
-	// Configuration state of the resource.
-	ConfigurationState pulumi.StringOutput `pulumi:"configurationState"`
 	// Connected Subnet RoutePolicy
-	ConnectedSubnetRoutePolicy ConnectedSubnetRoutePolicyResponsePtrOutput `pulumi:"connectedSubnetRoutePolicy"`
+	ConnectedSubnetRoutePolicy L3IsolationDomainPatchPropertiesResponseConnectedSubnetRoutePolicyPtrOutput `pulumi:"connectedSubnetRoutePolicy"`
+	// L3 Isolation Domain description.
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// List of resources the L3 Isolation Domain is disabled on. Can be either entire NetworkFabric or NetworkRack.
+	DisabledOnResources pulumi.StringArrayOutput `pulumi:"disabledOnResources"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// ARM Resource ID of the Network Fabric.
+	// Network Fabric ARM resource id.
 	NetworkFabricId pulumi.StringOutput `pulumi:"networkFabricId"`
-	// Provisioning state of the resource.
+	// List of resources the OptionB is disabled on. Can be either entire NetworkFabric or NetworkRack.
+	OptionBDisabledOnResources pulumi.StringArrayOutput `pulumi:"optionBDisabledOnResources"`
+	// Gets the provisioning state of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Advertise Connected Subnets. Ex: "True" | "False".
 	RedistributeConnectedSubnets pulumi.StringPtrOutput `pulumi:"redistributeConnectedSubnets"`
@@ -113,17 +115,19 @@ func (L3IsolationDomainState) ElementType() reflect.Type {
 }
 
 type l3isolationDomainArgs struct {
-	// Aggregate route configurations.
+	// List of Ipv4 and Ipv6 route configurations.
 	AggregateRouteConfiguration *AggregateRouteConfiguration `pulumi:"aggregateRouteConfiguration"`
 	// Switch configuration description.
 	Annotation *string `pulumi:"annotation"`
 	// Connected Subnet RoutePolicy
-	ConnectedSubnetRoutePolicy *ConnectedSubnetRoutePolicy `pulumi:"connectedSubnetRoutePolicy"`
-	// Name of the L3 Isolation Domain.
+	ConnectedSubnetRoutePolicy *L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicy `pulumi:"connectedSubnetRoutePolicy"`
+	// L3 Isolation Domain description.
+	Description *string `pulumi:"description"`
+	// Name of the L3 Isolation Domain
 	L3IsolationDomainName *string `pulumi:"l3IsolationDomainName"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// ARM Resource ID of the Network Fabric.
+	// Network Fabric ARM resource id.
 	NetworkFabricId string `pulumi:"networkFabricId"`
 	// Advertise Connected Subnets. Ex: "True" | "False".
 	RedistributeConnectedSubnets *string `pulumi:"redistributeConnectedSubnets"`
@@ -137,17 +141,19 @@ type l3isolationDomainArgs struct {
 
 // The set of arguments for constructing a L3IsolationDomain resource.
 type L3IsolationDomainArgs struct {
-	// Aggregate route configurations.
+	// List of Ipv4 and Ipv6 route configurations.
 	AggregateRouteConfiguration AggregateRouteConfigurationPtrInput
 	// Switch configuration description.
 	Annotation pulumi.StringPtrInput
 	// Connected Subnet RoutePolicy
-	ConnectedSubnetRoutePolicy ConnectedSubnetRoutePolicyPtrInput
-	// Name of the L3 Isolation Domain.
+	ConnectedSubnetRoutePolicy L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyPtrInput
+	// L3 Isolation Domain description.
+	Description pulumi.StringPtrInput
+	// Name of the L3 Isolation Domain
 	L3IsolationDomainName pulumi.StringPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
-	// ARM Resource ID of the Network Fabric.
+	// Network Fabric ARM resource id.
 	NetworkFabricId pulumi.StringInput
 	// Advertise Connected Subnets. Ex: "True" | "False".
 	RedistributeConnectedSubnets pulumi.StringPtrInput
@@ -196,12 +202,12 @@ func (o L3IsolationDomainOutput) ToL3IsolationDomainOutputWithContext(ctx contex
 	return o
 }
 
-// Administrative state of the resource.
+// Administrative state of the IsolationDomain. Example: Enabled | Disabled.
 func (o L3IsolationDomainOutput) AdministrativeState() pulumi.StringOutput {
 	return o.ApplyT(func(v *L3IsolationDomain) pulumi.StringOutput { return v.AdministrativeState }).(pulumi.StringOutput)
 }
 
-// Aggregate route configurations.
+// List of Ipv4 and Ipv6 route configurations.
 func (o L3IsolationDomainOutput) AggregateRouteConfiguration() AggregateRouteConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v *L3IsolationDomain) AggregateRouteConfigurationResponsePtrOutput {
 		return v.AggregateRouteConfiguration
@@ -213,21 +219,21 @@ func (o L3IsolationDomainOutput) Annotation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *L3IsolationDomain) pulumi.StringPtrOutput { return v.Annotation }).(pulumi.StringPtrOutput)
 }
 
-// The Azure API version of the resource.
-func (o L3IsolationDomainOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *L3IsolationDomain) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// Configuration state of the resource.
-func (o L3IsolationDomainOutput) ConfigurationState() pulumi.StringOutput {
-	return o.ApplyT(func(v *L3IsolationDomain) pulumi.StringOutput { return v.ConfigurationState }).(pulumi.StringOutput)
-}
-
 // Connected Subnet RoutePolicy
-func (o L3IsolationDomainOutput) ConnectedSubnetRoutePolicy() ConnectedSubnetRoutePolicyResponsePtrOutput {
-	return o.ApplyT(func(v *L3IsolationDomain) ConnectedSubnetRoutePolicyResponsePtrOutput {
+func (o L3IsolationDomainOutput) ConnectedSubnetRoutePolicy() L3IsolationDomainPatchPropertiesResponseConnectedSubnetRoutePolicyPtrOutput {
+	return o.ApplyT(func(v *L3IsolationDomain) L3IsolationDomainPatchPropertiesResponseConnectedSubnetRoutePolicyPtrOutput {
 		return v.ConnectedSubnetRoutePolicy
-	}).(ConnectedSubnetRoutePolicyResponsePtrOutput)
+	}).(L3IsolationDomainPatchPropertiesResponseConnectedSubnetRoutePolicyPtrOutput)
+}
+
+// L3 Isolation Domain description.
+func (o L3IsolationDomainOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *L3IsolationDomain) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// List of resources the L3 Isolation Domain is disabled on. Can be either entire NetworkFabric or NetworkRack.
+func (o L3IsolationDomainOutput) DisabledOnResources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *L3IsolationDomain) pulumi.StringArrayOutput { return v.DisabledOnResources }).(pulumi.StringArrayOutput)
 }
 
 // The geo-location where the resource lives
@@ -240,12 +246,17 @@ func (o L3IsolationDomainOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *L3IsolationDomain) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// ARM Resource ID of the Network Fabric.
+// Network Fabric ARM resource id.
 func (o L3IsolationDomainOutput) NetworkFabricId() pulumi.StringOutput {
 	return o.ApplyT(func(v *L3IsolationDomain) pulumi.StringOutput { return v.NetworkFabricId }).(pulumi.StringOutput)
 }
 
-// Provisioning state of the resource.
+// List of resources the OptionB is disabled on. Can be either entire NetworkFabric or NetworkRack.
+func (o L3IsolationDomainOutput) OptionBDisabledOnResources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *L3IsolationDomain) pulumi.StringArrayOutput { return v.OptionBDisabledOnResources }).(pulumi.StringArrayOutput)
+}
+
+// Gets the provisioning state of the resource.
 func (o L3IsolationDomainOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *L3IsolationDomain) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }

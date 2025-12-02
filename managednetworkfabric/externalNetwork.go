@@ -8,45 +8,39 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Defines the External Network resource.
+// Defines the ExternalNetwork item.
 //
-// Uses Azure REST API version 2023-06-15. In version 2.x of the Azure Native provider, it used API version 2023-02-01-preview.
+// Uses Azure REST API version 2023-02-01-preview. In version 1.x of the Azure Native provider, it used API version 2023-02-01-preview.
 //
-// Other available API versions: 2023-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-06-15.
 type ExternalNetwork struct {
 	pulumi.CustomResourceState
 
-	// Administrative state of the resource.
+	// AdministrativeState of the externalNetwork. Example: Enabled | Disabled.
 	AdministrativeState pulumi.StringOutput `pulumi:"administrativeState"`
 	// Switch configuration description.
 	Annotation pulumi.StringPtrOutput `pulumi:"annotation"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
-	// Configuration state of the resource.
-	ConfigurationState pulumi.StringOutput `pulumi:"configurationState"`
-	// Export Route Policy either IPv4 or IPv6.
-	ExportRoutePolicy ExportRoutePolicyResponsePtrOutput `pulumi:"exportRoutePolicy"`
-	// ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.
+	// List of resources the externalNetwork is disabled on. Can be either entire NetworkFabric or NetworkRack.
+	DisabledOnResources pulumi.StringArrayOutput `pulumi:"disabledOnResources"`
+	// ARM resource ID of exportRoutePolicy.
 	ExportRoutePolicyId pulumi.StringPtrOutput `pulumi:"exportRoutePolicyId"`
-	// Import Route Policy either IPv4 or IPv6.
-	ImportRoutePolicy ImportRoutePolicyResponsePtrOutput `pulumi:"importRoutePolicy"`
-	// ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.
+	// ARM resource ID of importRoutePolicy.
 	ImportRoutePolicyId pulumi.StringPtrOutput `pulumi:"importRoutePolicyId"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// ARM Resource ID of the networkToNetworkInterconnectId of the ExternalNetwork resource.
-	NetworkToNetworkInterconnectId pulumi.StringPtrOutput `pulumi:"networkToNetworkInterconnectId"`
+	// Gets the networkToNetworkInterconnectId of the resource.
+	NetworkToNetworkInterconnectId pulumi.StringOutput `pulumi:"networkToNetworkInterconnectId"`
 	// option A properties object
 	OptionAProperties ExternalNetworkPropertiesResponseOptionAPropertiesPtrOutput `pulumi:"optionAProperties"`
 	// option B properties object
-	OptionBProperties L3OptionBPropertiesResponsePtrOutput `pulumi:"optionBProperties"`
+	OptionBProperties OptionBPropertiesResponsePtrOutput `pulumi:"optionBProperties"`
 	// Peering option list.
 	PeeringOption pulumi.StringOutput `pulumi:"peeringOption"`
-	// Provisioning state of the resource.
+	// Gets the provisioning state of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
@@ -119,24 +113,18 @@ func (ExternalNetworkState) ElementType() reflect.Type {
 type externalNetworkArgs struct {
 	// Switch configuration description.
 	Annotation *string `pulumi:"annotation"`
-	// Export Route Policy either IPv4 or IPv6.
-	ExportRoutePolicy *ExportRoutePolicy `pulumi:"exportRoutePolicy"`
-	// ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.
+	// ARM resource ID of exportRoutePolicy.
 	ExportRoutePolicyId *string `pulumi:"exportRoutePolicyId"`
-	// Name of the External Network.
+	// Name of the ExternalNetwork
 	ExternalNetworkName *string `pulumi:"externalNetworkName"`
-	// Import Route Policy either IPv4 or IPv6.
-	ImportRoutePolicy *ImportRoutePolicy `pulumi:"importRoutePolicy"`
-	// ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.
+	// ARM resource ID of importRoutePolicy.
 	ImportRoutePolicyId *string `pulumi:"importRoutePolicyId"`
-	// Name of the L3 Isolation Domain.
+	// Name of the L3IsolationDomain
 	L3IsolationDomainName string `pulumi:"l3IsolationDomainName"`
-	// ARM Resource ID of the networkToNetworkInterconnectId of the ExternalNetwork resource.
-	NetworkToNetworkInterconnectId *string `pulumi:"networkToNetworkInterconnectId"`
 	// option A properties object
 	OptionAProperties *ExternalNetworkPropertiesOptionAProperties `pulumi:"optionAProperties"`
 	// option B properties object
-	OptionBProperties *L3OptionBProperties `pulumi:"optionBProperties"`
+	OptionBProperties *OptionBProperties `pulumi:"optionBProperties"`
 	// Peering option list.
 	PeeringOption string `pulumi:"peeringOption"`
 	// The name of the resource group. The name is case insensitive.
@@ -147,24 +135,18 @@ type externalNetworkArgs struct {
 type ExternalNetworkArgs struct {
 	// Switch configuration description.
 	Annotation pulumi.StringPtrInput
-	// Export Route Policy either IPv4 or IPv6.
-	ExportRoutePolicy ExportRoutePolicyPtrInput
-	// ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.
+	// ARM resource ID of exportRoutePolicy.
 	ExportRoutePolicyId pulumi.StringPtrInput
-	// Name of the External Network.
+	// Name of the ExternalNetwork
 	ExternalNetworkName pulumi.StringPtrInput
-	// Import Route Policy either IPv4 or IPv6.
-	ImportRoutePolicy ImportRoutePolicyPtrInput
-	// ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.
+	// ARM resource ID of importRoutePolicy.
 	ImportRoutePolicyId pulumi.StringPtrInput
-	// Name of the L3 Isolation Domain.
+	// Name of the L3IsolationDomain
 	L3IsolationDomainName pulumi.StringInput
-	// ARM Resource ID of the networkToNetworkInterconnectId of the ExternalNetwork resource.
-	NetworkToNetworkInterconnectId pulumi.StringPtrInput
 	// option A properties object
 	OptionAProperties ExternalNetworkPropertiesOptionAPropertiesPtrInput
 	// option B properties object
-	OptionBProperties L3OptionBPropertiesPtrInput
+	OptionBProperties OptionBPropertiesPtrInput
 	// Peering option list.
 	PeeringOption pulumi.StringInput
 	// The name of the resource group. The name is case insensitive.
@@ -208,7 +190,7 @@ func (o ExternalNetworkOutput) ToExternalNetworkOutputWithContext(ctx context.Co
 	return o
 }
 
-// Administrative state of the resource.
+// AdministrativeState of the externalNetwork. Example: Enabled | Disabled.
 func (o ExternalNetworkOutput) AdministrativeState() pulumi.StringOutput {
 	return o.ApplyT(func(v *ExternalNetwork) pulumi.StringOutput { return v.AdministrativeState }).(pulumi.StringOutput)
 }
@@ -218,32 +200,17 @@ func (o ExternalNetworkOutput) Annotation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ExternalNetwork) pulumi.StringPtrOutput { return v.Annotation }).(pulumi.StringPtrOutput)
 }
 
-// The Azure API version of the resource.
-func (o ExternalNetworkOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *ExternalNetwork) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+// List of resources the externalNetwork is disabled on. Can be either entire NetworkFabric or NetworkRack.
+func (o ExternalNetworkOutput) DisabledOnResources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ExternalNetwork) pulumi.StringArrayOutput { return v.DisabledOnResources }).(pulumi.StringArrayOutput)
 }
 
-// Configuration state of the resource.
-func (o ExternalNetworkOutput) ConfigurationState() pulumi.StringOutput {
-	return o.ApplyT(func(v *ExternalNetwork) pulumi.StringOutput { return v.ConfigurationState }).(pulumi.StringOutput)
-}
-
-// Export Route Policy either IPv4 or IPv6.
-func (o ExternalNetworkOutput) ExportRoutePolicy() ExportRoutePolicyResponsePtrOutput {
-	return o.ApplyT(func(v *ExternalNetwork) ExportRoutePolicyResponsePtrOutput { return v.ExportRoutePolicy }).(ExportRoutePolicyResponsePtrOutput)
-}
-
-// ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.
+// ARM resource ID of exportRoutePolicy.
 func (o ExternalNetworkOutput) ExportRoutePolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ExternalNetwork) pulumi.StringPtrOutput { return v.ExportRoutePolicyId }).(pulumi.StringPtrOutput)
 }
 
-// Import Route Policy either IPv4 or IPv6.
-func (o ExternalNetworkOutput) ImportRoutePolicy() ImportRoutePolicyResponsePtrOutput {
-	return o.ApplyT(func(v *ExternalNetwork) ImportRoutePolicyResponsePtrOutput { return v.ImportRoutePolicy }).(ImportRoutePolicyResponsePtrOutput)
-}
-
-// ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.
+// ARM resource ID of importRoutePolicy.
 func (o ExternalNetworkOutput) ImportRoutePolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ExternalNetwork) pulumi.StringPtrOutput { return v.ImportRoutePolicyId }).(pulumi.StringPtrOutput)
 }
@@ -253,9 +220,9 @@ func (o ExternalNetworkOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ExternalNetwork) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// ARM Resource ID of the networkToNetworkInterconnectId of the ExternalNetwork resource.
-func (o ExternalNetworkOutput) NetworkToNetworkInterconnectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ExternalNetwork) pulumi.StringPtrOutput { return v.NetworkToNetworkInterconnectId }).(pulumi.StringPtrOutput)
+// Gets the networkToNetworkInterconnectId of the resource.
+func (o ExternalNetworkOutput) NetworkToNetworkInterconnectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ExternalNetwork) pulumi.StringOutput { return v.NetworkToNetworkInterconnectId }).(pulumi.StringOutput)
 }
 
 // option A properties object
@@ -266,8 +233,8 @@ func (o ExternalNetworkOutput) OptionAProperties() ExternalNetworkPropertiesResp
 }
 
 // option B properties object
-func (o ExternalNetworkOutput) OptionBProperties() L3OptionBPropertiesResponsePtrOutput {
-	return o.ApplyT(func(v *ExternalNetwork) L3OptionBPropertiesResponsePtrOutput { return v.OptionBProperties }).(L3OptionBPropertiesResponsePtrOutput)
+func (o ExternalNetworkOutput) OptionBProperties() OptionBPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *ExternalNetwork) OptionBPropertiesResponsePtrOutput { return v.OptionBProperties }).(OptionBPropertiesResponsePtrOutput)
 }
 
 // Peering option list.
@@ -275,7 +242,7 @@ func (o ExternalNetworkOutput) PeeringOption() pulumi.StringOutput {
 	return o.ApplyT(func(v *ExternalNetwork) pulumi.StringOutput { return v.PeeringOption }).(pulumi.StringOutput)
 }
 
-// Provisioning state of the resource.
+// Gets the provisioning state of the resource.
 func (o ExternalNetworkOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *ExternalNetwork) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }

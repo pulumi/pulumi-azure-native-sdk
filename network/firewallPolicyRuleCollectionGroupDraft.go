@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Rule Collection Group resource.
 //
-// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-11-01.
+// Uses Azure REST API version 2023-11-01.
 //
-// Other available API versions: 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-01-01, 2024-03-01, 2024-05-01.
 type FirewallPolicyRuleCollectionGroupDraft struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
 	Name pulumi.StringPtrOutput `pulumi:"name"`
 	// Priority of the Firewall Policy Rule Collection Group resource.
@@ -62,12 +60,6 @@ func NewFirewallPolicyRuleCollectionGroupDraft(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240501:FirewallPolicyRuleCollectionGroupDraft"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20240701:FirewallPolicyRuleCollectionGroupDraft"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20241001:FirewallPolicyRuleCollectionGroupDraft"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -173,11 +165,6 @@ func (o FirewallPolicyRuleCollectionGroupDraftOutput) ToFirewallPolicyRuleCollec
 
 func (o FirewallPolicyRuleCollectionGroupDraftOutput) ToFirewallPolicyRuleCollectionGroupDraftOutputWithContext(ctx context.Context) FirewallPolicyRuleCollectionGroupDraftOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o FirewallPolicyRuleCollectionGroupDraftOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *FirewallPolicyRuleCollectionGroupDraft) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource that is unique within a resource group. This name can be used to access the resource.

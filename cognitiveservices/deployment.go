@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Cognitive Services account deployment.
 //
-// Uses Azure REST API version 2024-10-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
+// Uses Azure REST API version 2023-05-01. In version 1.x of the Azure Native provider, it used API version 2021-10-01.
 //
-// Other available API versions: 2023-05-01, 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2024-10-01, 2025-04-01-preview.
 type Deployment struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Resource Etag.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The name of the resource
@@ -32,8 +30,6 @@ type Deployment struct {
 	Sku SkuResponsePtrOutput `pulumi:"sku"`
 	// Metadata pertaining to creation and last modification of the resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// Resource tags.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -82,15 +78,6 @@ func NewDeployment(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:cognitiveservices/v20250401preview:Deployment"),
 		},
-		{
-			Type: pulumi.String("azure-native:cognitiveservices/v20250601:Deployment"),
-		},
-		{
-			Type: pulumi.String("azure-native:cognitiveservices/v20250701preview:Deployment"),
-		},
-		{
-			Type: pulumi.String("azure-native:cognitiveservices/v20250901:Deployment"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -136,8 +123,6 @@ type deploymentArgs struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The resource model definition representing SKU
 	Sku *Sku `pulumi:"sku"`
-	// Resource tags.
-	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Deployment resource.
@@ -152,8 +137,6 @@ type DeploymentArgs struct {
 	ResourceGroupName pulumi.StringInput
 	// The resource model definition representing SKU
 	Sku SkuPtrInput
-	// Resource tags.
-	Tags pulumi.StringMapInput
 }
 
 func (DeploymentArgs) ElementType() reflect.Type {
@@ -193,11 +176,6 @@ func (o DeploymentOutput) ToDeploymentOutputWithContext(ctx context.Context) Dep
 	return o
 }
 
-// The Azure API version of the resource.
-func (o DeploymentOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Deployment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Resource Etag.
 func (o DeploymentOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *Deployment) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
@@ -221,11 +199,6 @@ func (o DeploymentOutput) Sku() SkuResponsePtrOutput {
 // Metadata pertaining to creation and last modification of the resource.
 func (o DeploymentOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Deployment) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
-}
-
-// Resource tags.
-func (o DeploymentOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Deployment) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

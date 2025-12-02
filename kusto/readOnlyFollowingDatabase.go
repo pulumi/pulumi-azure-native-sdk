@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Class representing a read only following database.
 //
-// Uses Azure REST API version 2024-04-13. In version 2.x of the Azure Native provider, it used API version 2022-12-29.
+// Uses Azure REST API version 2022-12-29. In version 1.x of the Azure Native provider, it used API version 2021-01-01.
 type ReadOnlyFollowingDatabase struct {
 	pulumi.CustomResourceState
 
 	// The name of the attached database configuration cluster
 	AttachedDatabaseConfigurationName pulumi.StringOutput `pulumi:"attachedDatabaseConfigurationName"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The origin of the following setup.
 	DatabaseShareOrigin pulumi.StringOutput `pulumi:"databaseShareOrigin"`
 	// The time the data should be kept in cache for fast queries in TimeSpan.
@@ -45,8 +43,6 @@ type ReadOnlyFollowingDatabase struct {
 	SoftDeletePeriod pulumi.StringOutput `pulumi:"softDeletePeriod"`
 	// The statistics of the database.
 	Statistics DatabaseStatisticsResponseOutput `pulumi:"statistics"`
-	// The database suspension details. If the database is suspended, this object contains information related to the database's suspension state.
-	SuspensionDetails SuspensionDetailsResponseOutput `pulumi:"suspensionDetails"`
 	// Table level sharing specifications
 	TableLevelSharingProperties TableLevelSharingPropertiesResponseOutput `pulumi:"tableLevelSharingProperties"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -75,16 +71,10 @@ func NewReadOnlyFollowingDatabase(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:kusto/v20170907privatepreview:ReadOnlyFollowingDatabase"),
 		},
 		{
-			Type: pulumi.String("azure-native:kusto/v20180907preview:Database"),
-		},
-		{
 			Type: pulumi.String("azure-native:kusto/v20180907preview:ReadOnlyFollowingDatabase"),
 		},
 		{
 			Type: pulumi.String("azure-native:kusto/v20190121:ReadOnlyFollowingDatabase"),
-		},
-		{
-			Type: pulumi.String("azure-native:kusto/v20190515:Database"),
 		},
 		{
 			Type: pulumi.String("azure-native:kusto/v20190515:ReadOnlyFollowingDatabase"),
@@ -93,13 +83,7 @@ func NewReadOnlyFollowingDatabase(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:kusto/v20190907:ReadOnlyFollowingDatabase"),
 		},
 		{
-			Type: pulumi.String("azure-native:kusto/v20190907:ReadWriteDatabase"),
-		},
-		{
 			Type: pulumi.String("azure-native:kusto/v20191109:ReadOnlyFollowingDatabase"),
-		},
-		{
-			Type: pulumi.String("azure-native:kusto/v20191109:ReadWriteDatabase"),
 		},
 		{
 			Type: pulumi.String("azure-native:kusto/v20200215:ReadOnlyFollowingDatabase"),
@@ -129,28 +113,13 @@ func NewReadOnlyFollowingDatabase(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:kusto/v20221229:ReadOnlyFollowingDatabase"),
 		},
 		{
-			Type: pulumi.String("azure-native:kusto/v20221229:ReadWriteDatabase"),
-		},
-		{
 			Type: pulumi.String("azure-native:kusto/v20230502:ReadOnlyFollowingDatabase"),
-		},
-		{
-			Type: pulumi.String("azure-native:kusto/v20230502:ReadWriteDatabase"),
 		},
 		{
 			Type: pulumi.String("azure-native:kusto/v20230815:ReadOnlyFollowingDatabase"),
 		},
 		{
-			Type: pulumi.String("azure-native:kusto/v20230815:ReadWriteDatabase"),
-		},
-		{
 			Type: pulumi.String("azure-native:kusto/v20240413:ReadOnlyFollowingDatabase"),
-		},
-		{
-			Type: pulumi.String("azure-native:kusto/v20240413:ReadWriteDatabase"),
-		},
-		{
-			Type: pulumi.String("azure-native:kusto:ReadWriteDatabase"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -200,7 +169,7 @@ type readOnlyFollowingDatabaseArgs struct {
 	Kind string `pulumi:"kind"`
 	// Resource location.
 	Location *string `pulumi:"location"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group containing the Kusto cluster.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -219,7 +188,7 @@ type ReadOnlyFollowingDatabaseArgs struct {
 	Kind pulumi.StringInput
 	// Resource location.
 	Location pulumi.StringPtrInput
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group containing the Kusto cluster.
 	ResourceGroupName pulumi.StringInput
 }
 
@@ -263,11 +232,6 @@ func (o ReadOnlyFollowingDatabaseOutput) ToReadOnlyFollowingDatabaseOutputWithCo
 // The name of the attached database configuration cluster
 func (o ReadOnlyFollowingDatabaseOutput) AttachedDatabaseConfigurationName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReadOnlyFollowingDatabase) pulumi.StringOutput { return v.AttachedDatabaseConfigurationName }).(pulumi.StringOutput)
-}
-
-// The Azure API version of the resource.
-func (o ReadOnlyFollowingDatabaseOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *ReadOnlyFollowingDatabase) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The origin of the following setup.
@@ -324,11 +288,6 @@ func (o ReadOnlyFollowingDatabaseOutput) SoftDeletePeriod() pulumi.StringOutput 
 // The statistics of the database.
 func (o ReadOnlyFollowingDatabaseOutput) Statistics() DatabaseStatisticsResponseOutput {
 	return o.ApplyT(func(v *ReadOnlyFollowingDatabase) DatabaseStatisticsResponseOutput { return v.Statistics }).(DatabaseStatisticsResponseOutput)
-}
-
-// The database suspension details. If the database is suspended, this object contains information related to the database's suspension state.
-func (o ReadOnlyFollowingDatabaseOutput) SuspensionDetails() SuspensionDetailsResponseOutput {
-	return o.ApplyT(func(v *ReadOnlyFollowingDatabase) SuspensionDetailsResponseOutput { return v.SuspensionDetails }).(SuspensionDetailsResponseOutput)
 }
 
 // Table level sharing specifications

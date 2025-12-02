@@ -8,20 +8,16 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Site as ARM Resource
 //
-// Uses Azure REST API version 2024-02-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-02-01-preview.
-//
-// Other available API versions: 2025-03-01-preview, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Uses Azure REST API version 2024-02-01-preview.
 type Site struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The resource-specific properties for this resource.
@@ -45,12 +41,6 @@ func NewSite(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:edge/v20240201preview:Site"),
-		},
-		{
-			Type: pulumi.String("azure-native:edge/v20250301preview:Site"),
-		},
-		{
-			Type: pulumi.String("azure-native:edge/v20250601:Site"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -91,7 +81,7 @@ type siteArgs struct {
 	Properties *SiteProperties `pulumi:"properties"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// The name of the Site
+	// Name of Site resource
 	SiteName *string `pulumi:"siteName"`
 }
 
@@ -101,7 +91,7 @@ type SiteArgs struct {
 	Properties SitePropertiesPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// The name of the Site
+	// Name of Site resource
 	SiteName pulumi.StringPtrInput
 }
 
@@ -140,11 +130,6 @@ func (o SiteOutput) ToSiteOutput() SiteOutput {
 
 func (o SiteOutput) ToSiteOutputWithContext(ctx context.Context) SiteOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o SiteOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Site) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

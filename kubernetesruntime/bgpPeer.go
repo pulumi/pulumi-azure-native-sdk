@@ -8,18 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A BgpPeer resource for an Arc connected cluster (Microsoft.Kubernetes/connectedClusters)
 //
-// Uses Azure REST API version 2024-03-01. In version 2.x of the Azure Native provider, it used API version 2024-03-01.
+// Uses Azure REST API version 2024-03-01.
+//
+// Other available API versions: 2023-10-01-preview.
 type BgpPeer struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// My ASN
 	MyAsn pulumi.IntOutput `pulumi:"myAsn"`
 	// The name of the resource
@@ -158,11 +158,6 @@ func (o BgpPeerOutput) ToBgpPeerOutput() BgpPeerOutput {
 
 func (o BgpPeerOutput) ToBgpPeerOutputWithContext(ctx context.Context) BgpPeerOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o BgpPeerOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *BgpPeer) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // My ASN

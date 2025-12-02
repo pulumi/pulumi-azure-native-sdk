@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Implements L2 Isolation Domain GET method.
 //
-// Uses Azure REST API version 2023-06-15.
+// Uses Azure REST API version 2023-02-01-preview.
 //
-// Other available API versions: 2023-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-06-15.
 func LookupL2IsolationDomain(ctx *pulumi.Context, args *LookupL2IsolationDomainArgs, opts ...pulumi.InvokeOption) (*LookupL2IsolationDomainResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupL2IsolationDomainResult
@@ -23,37 +23,35 @@ func LookupL2IsolationDomain(ctx *pulumi.Context, args *LookupL2IsolationDomainA
 	if err != nil {
 		return nil, err
 	}
-	return rv.Defaults(), nil
+	return &rv, nil
 }
 
 type LookupL2IsolationDomainArgs struct {
-	// Name of the L2 Isolation Domain.
+	// Name of the L2 Isolation Domain
 	L2IsolationDomainName string `pulumi:"l2IsolationDomainName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
-// The L2 Isolation Domain resource definition.
+// The L2IsolationDomain resource definition.
 type LookupL2IsolationDomainResult struct {
-	// Administrative state of the resource.
+	// state. Example: Enabled | Disabled. It indicates administrative state of the isolationDomain, whether it is enabled or disabled. If enabled, the configuration is applied on the devices. If disabled, the configuration is removed from the devices
 	AdministrativeState string `pulumi:"administrativeState"`
 	// Switch configuration description.
 	Annotation *string `pulumi:"annotation"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// Configuration state of the resource.
-	ConfigurationState string `pulumi:"configurationState"`
-	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	// List of resources the L2 Isolation Domain is disabled on. Can be either entire NetworkFabric or NetworkRack.
+	DisabledOnResources []string `pulumi:"disabledOnResources"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
-	// Maximum transmission unit. Default value is 1500.
+	// maximum transmission unit. Default value is 1500.
 	Mtu *int `pulumi:"mtu"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// ARM Resource ID of the Network Fabric.
+	// Network Fabric ARM resource id.
 	NetworkFabricId string `pulumi:"networkFabricId"`
-	// Provisioning state of the resource.
+	// Gets the provisioning state of the resource.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
@@ -61,22 +59,10 @@ type LookupL2IsolationDomainResult struct {
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
-	// Vlan Identifier of the Network Fabric. Example: 501.
+	// vlanId. Example: 501.
 	VlanId int `pulumi:"vlanId"`
 }
 
-// Defaults sets the appropriate defaults for LookupL2IsolationDomainResult
-func (val *LookupL2IsolationDomainResult) Defaults() *LookupL2IsolationDomainResult {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.Mtu == nil {
-		mtu_ := 1500
-		tmp.Mtu = &mtu_
-	}
-	return &tmp
-}
 func LookupL2IsolationDomainOutput(ctx *pulumi.Context, args LookupL2IsolationDomainOutputArgs, opts ...pulumi.InvokeOption) LookupL2IsolationDomainResultOutput {
 	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupL2IsolationDomainResultOutput, error) {
@@ -87,7 +73,7 @@ func LookupL2IsolationDomainOutput(ctx *pulumi.Context, args LookupL2IsolationDo
 }
 
 type LookupL2IsolationDomainOutputArgs struct {
-	// Name of the L2 Isolation Domain.
+	// Name of the L2 Isolation Domain
 	L2IsolationDomainName pulumi.StringInput `pulumi:"l2IsolationDomainName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
@@ -97,7 +83,7 @@ func (LookupL2IsolationDomainOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupL2IsolationDomainArgs)(nil)).Elem()
 }
 
-// The L2 Isolation Domain resource definition.
+// The L2IsolationDomain resource definition.
 type LookupL2IsolationDomainResultOutput struct{ *pulumi.OutputState }
 
 func (LookupL2IsolationDomainResultOutput) ElementType() reflect.Type {
@@ -112,7 +98,7 @@ func (o LookupL2IsolationDomainResultOutput) ToLookupL2IsolationDomainResultOutp
 	return o
 }
 
-// Administrative state of the resource.
+// state. Example: Enabled | Disabled. It indicates administrative state of the isolationDomain, whether it is enabled or disabled. If enabled, the configuration is applied on the devices. If disabled, the configuration is removed from the devices
 func (o LookupL2IsolationDomainResultOutput) AdministrativeState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupL2IsolationDomainResult) string { return v.AdministrativeState }).(pulumi.StringOutput)
 }
@@ -122,17 +108,12 @@ func (o LookupL2IsolationDomainResultOutput) Annotation() pulumi.StringPtrOutput
 	return o.ApplyT(func(v LookupL2IsolationDomainResult) *string { return v.Annotation }).(pulumi.StringPtrOutput)
 }
 
-// The Azure API version of the resource.
-func (o LookupL2IsolationDomainResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupL2IsolationDomainResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+// List of resources the L2 Isolation Domain is disabled on. Can be either entire NetworkFabric or NetworkRack.
+func (o LookupL2IsolationDomainResultOutput) DisabledOnResources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupL2IsolationDomainResult) []string { return v.DisabledOnResources }).(pulumi.StringArrayOutput)
 }
 
-// Configuration state of the resource.
-func (o LookupL2IsolationDomainResultOutput) ConfigurationState() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupL2IsolationDomainResult) string { return v.ConfigurationState }).(pulumi.StringOutput)
-}
-
-// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupL2IsolationDomainResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupL2IsolationDomainResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -142,7 +123,7 @@ func (o LookupL2IsolationDomainResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupL2IsolationDomainResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// Maximum transmission unit. Default value is 1500.
+// maximum transmission unit. Default value is 1500.
 func (o LookupL2IsolationDomainResultOutput) Mtu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupL2IsolationDomainResult) *int { return v.Mtu }).(pulumi.IntPtrOutput)
 }
@@ -152,12 +133,12 @@ func (o LookupL2IsolationDomainResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupL2IsolationDomainResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// ARM Resource ID of the Network Fabric.
+// Network Fabric ARM resource id.
 func (o LookupL2IsolationDomainResultOutput) NetworkFabricId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupL2IsolationDomainResult) string { return v.NetworkFabricId }).(pulumi.StringOutput)
 }
 
-// Provisioning state of the resource.
+// Gets the provisioning state of the resource.
 func (o LookupL2IsolationDomainResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupL2IsolationDomainResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
@@ -177,7 +158,7 @@ func (o LookupL2IsolationDomainResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupL2IsolationDomainResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Vlan Identifier of the Network Fabric. Example: 501.
+// vlanId. Example: 501.
 func (o LookupL2IsolationDomainResultOutput) VlanId() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupL2IsolationDomainResult) int { return v.VlanId }).(pulumi.IntOutput)
 }

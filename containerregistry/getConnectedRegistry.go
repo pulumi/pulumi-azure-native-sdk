@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the properties of the connected registry.
 //
-// Uses Azure REST API version 2024-11-01-preview.
+// Uses Azure REST API version 2023-01-01-preview.
 //
-// Other available API versions: 2020-11-01-preview, 2021-06-01-preview, 2021-08-01-preview, 2021-12-01-preview, 2022-02-01-preview, 2023-01-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-11-01-preview, 2025-03-01-preview, 2025-04-01, 2025-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-06-01-preview, 2023-08-01-preview, 2023-11-01-preview, 2024-11-01-preview.
 func LookupConnectedRegistry(ctx *pulumi.Context, args *LookupConnectedRegistryArgs, opts ...pulumi.InvokeOption) (*LookupConnectedRegistryResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConnectedRegistryResult
@@ -39,14 +39,10 @@ type LookupConnectedRegistryArgs struct {
 type LookupConnectedRegistryResult struct {
 	// The activation properties of the connected registry.
 	Activation ActivationPropertiesResponse `pulumi:"activation"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The list of the ACR token resource IDs used to authenticate clients to the connected registry.
 	ClientTokenIds []string `pulumi:"clientTokenIds"`
 	// The current connection state of the connected registry.
 	ConnectionState string `pulumi:"connectionState"`
-	// The garbage collection properties of the connected registry.
-	GarbageCollection *GarbageCollectionPropertiesResponse `pulumi:"garbageCollection"`
 	// The resource ID.
 	Id string `pulumi:"id"`
 	// The last activity time of the connected registry.
@@ -127,11 +123,6 @@ func (o LookupConnectedRegistryResultOutput) Activation() ActivationPropertiesRe
 	return o.ApplyT(func(v LookupConnectedRegistryResult) ActivationPropertiesResponse { return v.Activation }).(ActivationPropertiesResponseOutput)
 }
 
-// The Azure API version of the resource.
-func (o LookupConnectedRegistryResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupConnectedRegistryResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // The list of the ACR token resource IDs used to authenticate clients to the connected registry.
 func (o LookupConnectedRegistryResultOutput) ClientTokenIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupConnectedRegistryResult) []string { return v.ClientTokenIds }).(pulumi.StringArrayOutput)
@@ -140,11 +131,6 @@ func (o LookupConnectedRegistryResultOutput) ClientTokenIds() pulumi.StringArray
 // The current connection state of the connected registry.
 func (o LookupConnectedRegistryResultOutput) ConnectionState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectedRegistryResult) string { return v.ConnectionState }).(pulumi.StringOutput)
-}
-
-// The garbage collection properties of the connected registry.
-func (o LookupConnectedRegistryResultOutput) GarbageCollection() GarbageCollectionPropertiesResponsePtrOutput {
-	return o.ApplyT(func(v LookupConnectedRegistryResult) *GarbageCollectionPropertiesResponse { return v.GarbageCollection }).(GarbageCollectionPropertiesResponsePtrOutput)
 }
 
 // The resource ID.

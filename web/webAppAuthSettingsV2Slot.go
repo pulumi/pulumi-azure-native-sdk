@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Configuration settings for the Azure App Service Authentication / Authorization V2 feature.
 //
-// Uses Azure REST API version 2021-02-01. In version 2.x of the Azure Native provider, it used API version 2021-02-01.
+// Uses Azure REST API version 2021-02-01. In version 1.x of the Azure Native provider, it used API version 2020-12-01.
 //
-// Other available API versions: 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2020-10-01.
 type WebAppAuthSettingsV2Slot struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The configuration settings that determines the validation flow of users using App Service Authentication/Authorization.
 	GlobalValidation GlobalValidationResponsePtrOutput `pulumi:"globalValidation"`
 	// The configuration settings of the HTTP requests for authentication and authorization requests made against App Service Authentication/Authorization.
@@ -95,9 +93,6 @@ func NewWebAppAuthSettingsV2Slot(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20240401:WebAppAuthSettingsV2Slot"),
-		},
-		{
-			Type: pulumi.String("azure-native:web/v20241101:WebAppAuthSettingsV2Slot"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -211,11 +206,6 @@ func (o WebAppAuthSettingsV2SlotOutput) ToWebAppAuthSettingsV2SlotOutput() WebAp
 
 func (o WebAppAuthSettingsV2SlotOutput) ToWebAppAuthSettingsV2SlotOutputWithContext(ctx context.Context) WebAppAuthSettingsV2SlotOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o WebAppAuthSettingsV2SlotOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *WebAppAuthSettingsV2Slot) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The configuration settings that determines the validation flow of users using App Service Authentication/Authorization.

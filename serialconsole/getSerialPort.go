@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,8 +39,6 @@ type LookupSerialPortArgs struct {
 
 // Represents the serial port of the parent resource.
 type LookupSerialPortResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource Id
 	Id string `pulumi:"id"`
 	// Resource name
@@ -90,11 +88,6 @@ func (o LookupSerialPortResultOutput) ToLookupSerialPortResultOutput() LookupSer
 
 func (o LookupSerialPortResultOutput) ToLookupSerialPortResultOutputWithContext(ctx context.Context) LookupSerialPortResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupSerialPortResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSerialPortResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource Id

@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets information about a artifact manifest resource.
 //
-// Uses Azure REST API version 2024-04-15.
+// Uses Azure REST API version 2023-09-01.
 //
-// Other available API versions: 2023-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hybridnetwork [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-04-15.
 func LookupArtifactManifest(ctx *pulumi.Context, args *LookupArtifactManifestArgs, opts ...pulumi.InvokeOption) (*LookupArtifactManifestResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupArtifactManifestResult
@@ -39,8 +39,6 @@ type LookupArtifactManifestArgs struct {
 
 // Artifact manifest properties.
 type LookupArtifactManifestResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -94,11 +92,6 @@ func (o LookupArtifactManifestResultOutput) ToLookupArtifactManifestResultOutput
 
 func (o LookupArtifactManifestResultOutput) ToLookupArtifactManifestResultOutputWithContext(ctx context.Context) LookupArtifactManifestResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupArtifactManifestResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupArtifactManifestResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

@@ -8,42 +8,34 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Uses Azure REST API version 2025-02-01. In version 2.x of the Azure Native provider, it used API version 2023-10-01-preview.
+// Uses Azure REST API version 2023-10-01-preview. In version 1.x of the Azure Native provider, it used API version 2022-12-12-preview.
 //
-// Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-07-01, 2024-06-01-preview, 2024-07-01, 2024-10-01-preview, 2025-02-01.
 type StorageAppliance struct {
 	pulumi.CustomResourceState
 
 	// The credentials of the administrative interface on this storage appliance.
 	AdministratorCredentials AdministrativeCredentialsResponseOutput `pulumi:"administratorCredentials"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
-	// The total capacity of the storage appliance. Measured in GiB.
+	// The total capacity of the storage appliance.
 	Capacity pulumi.Float64Output `pulumi:"capacity"`
 	// The amount of storage consumed.
 	CapacityUsed pulumi.Float64Output `pulumi:"capacityUsed"`
-	// The resource ID of the cluster this storage appliance is associated with. Measured in GiB.
+	// The resource ID of the cluster this storage appliance is associated with.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// The detailed status of the storage appliance.
 	DetailedStatus pulumi.StringOutput `pulumi:"detailedStatus"`
 	// The descriptive message about the current detailed status.
 	DetailedStatusMessage pulumi.StringOutput `pulumi:"detailedStatusMessage"`
-	// Resource ETag.
-	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The extended location of the cluster associated with the resource.
 	ExtendedLocation ExtendedLocationResponseOutput `pulumi:"extendedLocation"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The endpoint for the management interface of the storage appliance.
 	ManagementIpv4Address pulumi.StringOutput `pulumi:"managementIpv4Address"`
-	// The manufacturer of the storage appliance.
-	Manufacturer pulumi.StringOutput `pulumi:"manufacturer"`
-	// The model of the storage appliance.
-	Model pulumi.StringOutput `pulumi:"model"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning state of the storage appliance.
@@ -56,8 +48,6 @@ type StorageAppliance struct {
 	RemoteVendorManagementFeature pulumi.StringOutput `pulumi:"remoteVendorManagementFeature"`
 	// The indicator of whether the remote vendor management feature is enabled or disabled, or unsupported if it is an unsupported feature.
 	RemoteVendorManagementStatus pulumi.StringOutput `pulumi:"remoteVendorManagementStatus"`
-	// The list of statuses that represent secret rotation activity.
-	SecretRotationStatus SecretRotationStatusResponseArrayOutput `pulumi:"secretRotationStatus"`
 	// The serial number for the storage appliance.
 	SerialNumber pulumi.StringOutput `pulumi:"serialNumber"`
 	// The SKU for the storage appliance.
@@ -68,8 +58,6 @@ type StorageAppliance struct {
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
-	// The version of the storage appliance.
-	Version pulumi.StringOutput `pulumi:"version"`
 }
 
 // NewStorageAppliance registers a new resource with the given unique name, arguments, and options.
@@ -118,12 +106,6 @@ func NewStorageAppliance(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20250201:StorageAppliance"),
-		},
-		{
-			Type: pulumi.String("azure-native:networkcloud/v20250701preview:StorageAppliance"),
-		},
-		{
-			Type: pulumi.String("azure-native:networkcloud/v20250901:StorageAppliance"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -248,12 +230,7 @@ func (o StorageApplianceOutput) AdministratorCredentials() AdministrativeCredent
 	return o.ApplyT(func(v *StorageAppliance) AdministrativeCredentialsResponseOutput { return v.AdministratorCredentials }).(AdministrativeCredentialsResponseOutput)
 }
 
-// The Azure API version of the resource.
-func (o StorageApplianceOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *StorageAppliance) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// The total capacity of the storage appliance. Measured in GiB.
+// The total capacity of the storage appliance.
 func (o StorageApplianceOutput) Capacity() pulumi.Float64Output {
 	return o.ApplyT(func(v *StorageAppliance) pulumi.Float64Output { return v.Capacity }).(pulumi.Float64Output)
 }
@@ -263,7 +240,7 @@ func (o StorageApplianceOutput) CapacityUsed() pulumi.Float64Output {
 	return o.ApplyT(func(v *StorageAppliance) pulumi.Float64Output { return v.CapacityUsed }).(pulumi.Float64Output)
 }
 
-// The resource ID of the cluster this storage appliance is associated with. Measured in GiB.
+// The resource ID of the cluster this storage appliance is associated with.
 func (o StorageApplianceOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *StorageAppliance) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
 }
@@ -276,11 +253,6 @@ func (o StorageApplianceOutput) DetailedStatus() pulumi.StringOutput {
 // The descriptive message about the current detailed status.
 func (o StorageApplianceOutput) DetailedStatusMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v *StorageAppliance) pulumi.StringOutput { return v.DetailedStatusMessage }).(pulumi.StringOutput)
-}
-
-// Resource ETag.
-func (o StorageApplianceOutput) Etag() pulumi.StringOutput {
-	return o.ApplyT(func(v *StorageAppliance) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The extended location of the cluster associated with the resource.
@@ -296,16 +268,6 @@ func (o StorageApplianceOutput) Location() pulumi.StringOutput {
 // The endpoint for the management interface of the storage appliance.
 func (o StorageApplianceOutput) ManagementIpv4Address() pulumi.StringOutput {
 	return o.ApplyT(func(v *StorageAppliance) pulumi.StringOutput { return v.ManagementIpv4Address }).(pulumi.StringOutput)
-}
-
-// The manufacturer of the storage appliance.
-func (o StorageApplianceOutput) Manufacturer() pulumi.StringOutput {
-	return o.ApplyT(func(v *StorageAppliance) pulumi.StringOutput { return v.Manufacturer }).(pulumi.StringOutput)
-}
-
-// The model of the storage appliance.
-func (o StorageApplianceOutput) Model() pulumi.StringOutput {
-	return o.ApplyT(func(v *StorageAppliance) pulumi.StringOutput { return v.Model }).(pulumi.StringOutput)
 }
 
 // The name of the resource
@@ -338,11 +300,6 @@ func (o StorageApplianceOutput) RemoteVendorManagementStatus() pulumi.StringOutp
 	return o.ApplyT(func(v *StorageAppliance) pulumi.StringOutput { return v.RemoteVendorManagementStatus }).(pulumi.StringOutput)
 }
 
-// The list of statuses that represent secret rotation activity.
-func (o StorageApplianceOutput) SecretRotationStatus() SecretRotationStatusResponseArrayOutput {
-	return o.ApplyT(func(v *StorageAppliance) SecretRotationStatusResponseArrayOutput { return v.SecretRotationStatus }).(SecretRotationStatusResponseArrayOutput)
-}
-
 // The serial number for the storage appliance.
 func (o StorageApplianceOutput) SerialNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v *StorageAppliance) pulumi.StringOutput { return v.SerialNumber }).(pulumi.StringOutput)
@@ -366,11 +323,6 @@ func (o StorageApplianceOutput) Tags() pulumi.StringMapOutput {
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o StorageApplianceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *StorageAppliance) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
-}
-
-// The version of the storage appliance.
-func (o StorageApplianceOutput) Version() pulumi.StringOutput {
-	return o.ApplyT(func(v *StorageAppliance) pulumi.StringOutput { return v.Version }).(pulumi.StringOutput)
 }
 
 func init() {

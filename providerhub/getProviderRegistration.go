@@ -7,15 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the provider registration details.
 //
-// Uses Azure REST API version 2024-09-01.
-//
-// Other available API versions: 2021-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native providerhub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Uses Azure REST API version 2021-09-01-preview.
 func LookupProviderRegistration(ctx *pulumi.Context, args *LookupProviderRegistrationArgs, opts ...pulumi.InvokeOption) (*LookupProviderRegistrationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProviderRegistrationResult
@@ -23,7 +21,7 @@ func LookupProviderRegistration(ctx *pulumi.Context, args *LookupProviderRegistr
 	if err != nil {
 		return nil, err
 	}
-	return rv.Defaults(), nil
+	return &rv, nil
 }
 
 type LookupProviderRegistrationArgs struct {
@@ -32,33 +30,17 @@ type LookupProviderRegistrationArgs struct {
 }
 
 type LookupProviderRegistrationResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// Provider registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type.
-	Kind *string `pulumi:"kind"`
 	// The name of the resource
 	Name       string                                 `pulumi:"name"`
-	Properties ProviderRegistrationPropertiesResponse `pulumi:"properties"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	Properties ProviderRegistrationResponseProperties `pulumi:"properties"`
+	// Metadata pertaining to creation and last modification of the resource.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
-// Defaults sets the appropriate defaults for LookupProviderRegistrationResult
-func (val *LookupProviderRegistrationResult) Defaults() *LookupProviderRegistrationResult {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.Kind == nil {
-		kind_ := "Managed"
-		tmp.Kind = &kind_
-	}
-	return &tmp
-}
 func LookupProviderRegistrationOutput(ctx *pulumi.Context, args LookupProviderRegistrationOutputArgs, opts ...pulumi.InvokeOption) LookupProviderRegistrationResultOutput {
 	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupProviderRegistrationResultOutput, error) {
@@ -91,19 +73,9 @@ func (o LookupProviderRegistrationResultOutput) ToLookupProviderRegistrationResu
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupProviderRegistrationResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupProviderRegistrationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupProviderRegistrationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProviderRegistrationResult) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// Provider registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type.
-func (o LookupProviderRegistrationResultOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupProviderRegistrationResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
 // The name of the resource
@@ -111,11 +83,11 @@ func (o LookupProviderRegistrationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProviderRegistrationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o LookupProviderRegistrationResultOutput) Properties() ProviderRegistrationPropertiesResponseOutput {
-	return o.ApplyT(func(v LookupProviderRegistrationResult) ProviderRegistrationPropertiesResponse { return v.Properties }).(ProviderRegistrationPropertiesResponseOutput)
+func (o LookupProviderRegistrationResultOutput) Properties() ProviderRegistrationResponsePropertiesOutput {
+	return o.ApplyT(func(v LookupProviderRegistrationResult) ProviderRegistrationResponseProperties { return v.Properties }).(ProviderRegistrationResponsePropertiesOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+// Metadata pertaining to creation and last modification of the resource.
 func (o LookupProviderRegistrationResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupProviderRegistrationResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }

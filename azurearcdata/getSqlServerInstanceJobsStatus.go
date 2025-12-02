@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets jobs status details for sql arc resource
 //
-// Uses Azure REST API version 2025-03-01-preview.
+// Uses Azure REST API version 2024-05-01-preview.
 //
-// Other available API versions: 2024-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2025-03-01-preview.
 func GetSqlServerInstanceJobsStatus(ctx *pulumi.Context, args *GetSqlServerInstanceJobsStatusArgs, opts ...pulumi.InvokeOption) (*GetSqlServerInstanceJobsStatusResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetSqlServerInstanceJobsStatusResult

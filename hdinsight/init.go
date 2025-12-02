@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,8 +27,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Cluster{}
 	case "azure-native:hdinsight:ClusterPool":
 		r = &ClusterPool{}
-	case "azure-native:hdinsight:ClusterPoolCluster":
-		r = &ClusterPoolCluster{}
 	case "azure-native:hdinsight:PrivateEndpointConnection":
 		r = &PrivateEndpointConnection{}
 	default:

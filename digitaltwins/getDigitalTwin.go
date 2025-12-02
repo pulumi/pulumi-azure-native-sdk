@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,8 +33,6 @@ type LookupDigitalTwinArgs struct {
 
 // The description of the DigitalTwins service.
 type LookupDigitalTwinResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Time when DigitalTwinsInstance was created.
 	CreatedTime string `pulumi:"createdTime"`
 	// Api endpoint to work with DigitalTwinsInstance.
@@ -96,11 +94,6 @@ func (o LookupDigitalTwinResultOutput) ToLookupDigitalTwinResultOutput() LookupD
 
 func (o LookupDigitalTwinResultOutput) ToLookupDigitalTwinResultOutputWithContext(ctx context.Context) LookupDigitalTwinResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupDigitalTwinResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDigitalTwinResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Time when DigitalTwinsInstance was created.
