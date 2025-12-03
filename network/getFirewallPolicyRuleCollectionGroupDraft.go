@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get Rule Collection Group Draft.
 //
-// Uses Azure REST API version 2023-11-01.
+// Uses Azure REST API version 2024-05-01.
 //
-// Other available API versions: 2024-01-01, 2024-03-01, 2024-05-01.
+// Other available API versions: 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupFirewallPolicyRuleCollectionGroupDraft(ctx *pulumi.Context, args *LookupFirewallPolicyRuleCollectionGroupDraftArgs, opts ...pulumi.InvokeOption) (*LookupFirewallPolicyRuleCollectionGroupDraftResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFirewallPolicyRuleCollectionGroupDraftResult
@@ -37,6 +37,8 @@ type LookupFirewallPolicyRuleCollectionGroupDraftArgs struct {
 
 // Rule Collection Group resource.
 type LookupFirewallPolicyRuleCollectionGroupDraftResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource ID.
 	Id *string `pulumi:"id"`
 	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
@@ -86,6 +88,11 @@ func (o LookupFirewallPolicyRuleCollectionGroupDraftResultOutput) ToLookupFirewa
 
 func (o LookupFirewallPolicyRuleCollectionGroupDraftResultOutput) ToLookupFirewallPolicyRuleCollectionGroupDraftResultOutputWithContext(ctx context.Context) LookupFirewallPolicyRuleCollectionGroupDraftResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupFirewallPolicyRuleCollectionGroupDraftResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFirewallPolicyRuleCollectionGroupDraftResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource ID.

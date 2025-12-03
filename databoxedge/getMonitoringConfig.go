@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The metric setting details for the role
 //
-// Uses Azure REST API version 2022-03-01.
+// Uses Azure REST API version 2023-07-01.
 //
-// Other available API versions: 2023-01-01-preview, 2023-07-01, 2023-12-01.
+// Other available API versions: 2022-03-01, 2022-04-01-preview, 2022-12-01-preview, 2023-01-01-preview, 2023-12-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native databoxedge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupMonitoringConfig(ctx *pulumi.Context, args *LookupMonitoringConfigArgs, opts ...pulumi.InvokeOption) (*LookupMonitoringConfigResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMonitoringConfigResult
@@ -37,6 +37,8 @@ type LookupMonitoringConfigArgs struct {
 
 // The metric setting details for the role
 type LookupMonitoringConfigResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The path ID that uniquely identifies the object.
 	Id string `pulumi:"id"`
 	// The metrics configuration details
@@ -84,6 +86,11 @@ func (o LookupMonitoringConfigResultOutput) ToLookupMonitoringConfigResultOutput
 
 func (o LookupMonitoringConfigResultOutput) ToLookupMonitoringConfigResultOutputWithContext(ctx context.Context) LookupMonitoringConfigResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupMonitoringConfigResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMonitoringConfigResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The path ID that uniquely identifies the object.

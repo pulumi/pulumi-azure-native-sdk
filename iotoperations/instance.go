@@ -8,20 +8,24 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A Instance resource is a logical container for a set of child resources.
 //
-// Uses Azure REST API version 2024-07-01-preview.
+// Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2024-07-01-preview.
 //
-// Other available API versions: 2024-08-15-preview, 2024-09-15-preview, 2024-11-01, 2025-04-01.
+// Other available API versions: 2024-07-01-preview, 2024-08-15-preview, 2024-09-15-preview, 2025-04-01, 2025-07-01-preview, 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Instance struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Edge location of the resource.
 	ExtendedLocation ExtendedLocationResponseOutput `pulumi:"extendedLocation"`
+	// The managed service identities assigned to this resource.
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -65,6 +69,12 @@ func NewInstance(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:iotoperations/v20250401:Instance"),
 		},
+		{
+			Type: pulumi.String("azure-native:iotoperations/v20250701preview:Instance"),
+		},
+		{
+			Type: pulumi.String("azure-native:iotoperations/v20251001:Instance"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -102,6 +112,8 @@ func (InstanceState) ElementType() reflect.Type {
 type instanceArgs struct {
 	// Edge location of the resource.
 	ExtendedLocation ExtendedLocation `pulumi:"extendedLocation"`
+	// The managed service identities assigned to this resource.
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// Name of instance.
 	InstanceName *string `pulumi:"instanceName"`
 	// The geo-location where the resource lives
@@ -118,6 +130,8 @@ type instanceArgs struct {
 type InstanceArgs struct {
 	// Edge location of the resource.
 	ExtendedLocation ExtendedLocationInput
+	// The managed service identities assigned to this resource.
+	Identity ManagedServiceIdentityPtrInput
 	// Name of instance.
 	InstanceName pulumi.StringPtrInput
 	// The geo-location where the resource lives
@@ -167,9 +181,19 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
+// The Azure API version of the resource.
+func (o InstanceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Edge location of the resource.
 func (o InstanceOutput) ExtendedLocation() ExtendedLocationResponseOutput {
 	return o.ApplyT(func(v *Instance) ExtendedLocationResponseOutput { return v.ExtendedLocation }).(ExtendedLocationResponseOutput)
+}
+
+// The managed service identities assigned to this resource.
+func (o InstanceOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *Instance) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives

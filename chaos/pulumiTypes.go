@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -96,7 +96,7 @@ func (o ActionStatusResponseArrayOutput) Index(i pulumi.IntInput) ActionStatusRe
 	}).(ActionStatusResponseOutput)
 }
 
-// Model that represents a branch in the step.
+// Model that represents a branch in the step. 9 total per experiment.
 type Branch struct {
 	// List of actions.
 	Actions []interface{} `pulumi:"actions"`
@@ -115,7 +115,7 @@ type BranchInput interface {
 	ToBranchOutputWithContext(context.Context) BranchOutput
 }
 
-// Model that represents a branch in the step.
+// Model that represents a branch in the step. 9 total per experiment.
 type BranchArgs struct {
 	// List of actions.
 	Actions pulumi.ArrayInput `pulumi:"actions"`
@@ -160,7 +160,7 @@ func (i BranchArray) ToBranchArrayOutputWithContext(ctx context.Context) BranchA
 	return pulumi.ToOutputWithContext(ctx, i).(BranchArrayOutput)
 }
 
-// Model that represents a branch in the step.
+// Model that represents a branch in the step. 9 total per experiment.
 type BranchOutput struct{ *pulumi.OutputState }
 
 func (BranchOutput) ElementType() reflect.Type {
@@ -205,7 +205,7 @@ func (o BranchArrayOutput) Index(i pulumi.IntInput) BranchOutput {
 	}).(BranchOutput)
 }
 
-// Model that represents a branch in the step.
+// Model that represents a branch in the step. 9 total per experiment.
 type BranchResponse struct {
 	// List of actions.
 	Actions []interface{} `pulumi:"actions"`
@@ -213,7 +213,7 @@ type BranchResponse struct {
 	Name string `pulumi:"name"`
 }
 
-// Model that represents a branch in the step.
+// Model that represents a branch in the step. 9 total per experiment.
 type BranchResponseOutput struct{ *pulumi.OutputState }
 
 func (BranchResponseOutput) ElementType() reflect.Type {
@@ -527,6 +527,242 @@ func (o ContinuousActionResponseOutput) SelectorId() pulumi.StringOutput {
 // Expected value is 'continuous'.
 func (o ContinuousActionResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ContinuousActionResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Model that represents the Customer Managed Storage for an Experiment.
+type CustomerDataStorageProperties struct {
+	// Name of the Azure Blob Storage container to use or create.
+	BlobContainerName *string `pulumi:"blobContainerName"`
+	// ARM Resource ID of the Storage account to use for Customer Data storage.
+	StorageAccountResourceId *string `pulumi:"storageAccountResourceId"`
+}
+
+// CustomerDataStoragePropertiesInput is an input type that accepts CustomerDataStoragePropertiesArgs and CustomerDataStoragePropertiesOutput values.
+// You can construct a concrete instance of `CustomerDataStoragePropertiesInput` via:
+//
+//	CustomerDataStoragePropertiesArgs{...}
+type CustomerDataStoragePropertiesInput interface {
+	pulumi.Input
+
+	ToCustomerDataStoragePropertiesOutput() CustomerDataStoragePropertiesOutput
+	ToCustomerDataStoragePropertiesOutputWithContext(context.Context) CustomerDataStoragePropertiesOutput
+}
+
+// Model that represents the Customer Managed Storage for an Experiment.
+type CustomerDataStoragePropertiesArgs struct {
+	// Name of the Azure Blob Storage container to use or create.
+	BlobContainerName pulumi.StringPtrInput `pulumi:"blobContainerName"`
+	// ARM Resource ID of the Storage account to use for Customer Data storage.
+	StorageAccountResourceId pulumi.StringPtrInput `pulumi:"storageAccountResourceId"`
+}
+
+func (CustomerDataStoragePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomerDataStorageProperties)(nil)).Elem()
+}
+
+func (i CustomerDataStoragePropertiesArgs) ToCustomerDataStoragePropertiesOutput() CustomerDataStoragePropertiesOutput {
+	return i.ToCustomerDataStoragePropertiesOutputWithContext(context.Background())
+}
+
+func (i CustomerDataStoragePropertiesArgs) ToCustomerDataStoragePropertiesOutputWithContext(ctx context.Context) CustomerDataStoragePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomerDataStoragePropertiesOutput)
+}
+
+func (i CustomerDataStoragePropertiesArgs) ToCustomerDataStoragePropertiesPtrOutput() CustomerDataStoragePropertiesPtrOutput {
+	return i.ToCustomerDataStoragePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i CustomerDataStoragePropertiesArgs) ToCustomerDataStoragePropertiesPtrOutputWithContext(ctx context.Context) CustomerDataStoragePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomerDataStoragePropertiesOutput).ToCustomerDataStoragePropertiesPtrOutputWithContext(ctx)
+}
+
+// CustomerDataStoragePropertiesPtrInput is an input type that accepts CustomerDataStoragePropertiesArgs, CustomerDataStoragePropertiesPtr and CustomerDataStoragePropertiesPtrOutput values.
+// You can construct a concrete instance of `CustomerDataStoragePropertiesPtrInput` via:
+//
+//	        CustomerDataStoragePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type CustomerDataStoragePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToCustomerDataStoragePropertiesPtrOutput() CustomerDataStoragePropertiesPtrOutput
+	ToCustomerDataStoragePropertiesPtrOutputWithContext(context.Context) CustomerDataStoragePropertiesPtrOutput
+}
+
+type customerDataStoragePropertiesPtrType CustomerDataStoragePropertiesArgs
+
+func CustomerDataStoragePropertiesPtr(v *CustomerDataStoragePropertiesArgs) CustomerDataStoragePropertiesPtrInput {
+	return (*customerDataStoragePropertiesPtrType)(v)
+}
+
+func (*customerDataStoragePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomerDataStorageProperties)(nil)).Elem()
+}
+
+func (i *customerDataStoragePropertiesPtrType) ToCustomerDataStoragePropertiesPtrOutput() CustomerDataStoragePropertiesPtrOutput {
+	return i.ToCustomerDataStoragePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *customerDataStoragePropertiesPtrType) ToCustomerDataStoragePropertiesPtrOutputWithContext(ctx context.Context) CustomerDataStoragePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomerDataStoragePropertiesPtrOutput)
+}
+
+// Model that represents the Customer Managed Storage for an Experiment.
+type CustomerDataStoragePropertiesOutput struct{ *pulumi.OutputState }
+
+func (CustomerDataStoragePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomerDataStorageProperties)(nil)).Elem()
+}
+
+func (o CustomerDataStoragePropertiesOutput) ToCustomerDataStoragePropertiesOutput() CustomerDataStoragePropertiesOutput {
+	return o
+}
+
+func (o CustomerDataStoragePropertiesOutput) ToCustomerDataStoragePropertiesOutputWithContext(ctx context.Context) CustomerDataStoragePropertiesOutput {
+	return o
+}
+
+func (o CustomerDataStoragePropertiesOutput) ToCustomerDataStoragePropertiesPtrOutput() CustomerDataStoragePropertiesPtrOutput {
+	return o.ToCustomerDataStoragePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o CustomerDataStoragePropertiesOutput) ToCustomerDataStoragePropertiesPtrOutputWithContext(ctx context.Context) CustomerDataStoragePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomerDataStorageProperties) *CustomerDataStorageProperties {
+		return &v
+	}).(CustomerDataStoragePropertiesPtrOutput)
+}
+
+// Name of the Azure Blob Storage container to use or create.
+func (o CustomerDataStoragePropertiesOutput) BlobContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomerDataStorageProperties) *string { return v.BlobContainerName }).(pulumi.StringPtrOutput)
+}
+
+// ARM Resource ID of the Storage account to use for Customer Data storage.
+func (o CustomerDataStoragePropertiesOutput) StorageAccountResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomerDataStorageProperties) *string { return v.StorageAccountResourceId }).(pulumi.StringPtrOutput)
+}
+
+type CustomerDataStoragePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (CustomerDataStoragePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomerDataStorageProperties)(nil)).Elem()
+}
+
+func (o CustomerDataStoragePropertiesPtrOutput) ToCustomerDataStoragePropertiesPtrOutput() CustomerDataStoragePropertiesPtrOutput {
+	return o
+}
+
+func (o CustomerDataStoragePropertiesPtrOutput) ToCustomerDataStoragePropertiesPtrOutputWithContext(ctx context.Context) CustomerDataStoragePropertiesPtrOutput {
+	return o
+}
+
+func (o CustomerDataStoragePropertiesPtrOutput) Elem() CustomerDataStoragePropertiesOutput {
+	return o.ApplyT(func(v *CustomerDataStorageProperties) CustomerDataStorageProperties {
+		if v != nil {
+			return *v
+		}
+		var ret CustomerDataStorageProperties
+		return ret
+	}).(CustomerDataStoragePropertiesOutput)
+}
+
+// Name of the Azure Blob Storage container to use or create.
+func (o CustomerDataStoragePropertiesPtrOutput) BlobContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomerDataStorageProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BlobContainerName
+	}).(pulumi.StringPtrOutput)
+}
+
+// ARM Resource ID of the Storage account to use for Customer Data storage.
+func (o CustomerDataStoragePropertiesPtrOutput) StorageAccountResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomerDataStorageProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageAccountResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Model that represents the Customer Managed Storage for an Experiment.
+type CustomerDataStoragePropertiesResponse struct {
+	// Name of the Azure Blob Storage container to use or create.
+	BlobContainerName *string `pulumi:"blobContainerName"`
+	// ARM Resource ID of the Storage account to use for Customer Data storage.
+	StorageAccountResourceId *string `pulumi:"storageAccountResourceId"`
+}
+
+// Model that represents the Customer Managed Storage for an Experiment.
+type CustomerDataStoragePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (CustomerDataStoragePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomerDataStoragePropertiesResponse)(nil)).Elem()
+}
+
+func (o CustomerDataStoragePropertiesResponseOutput) ToCustomerDataStoragePropertiesResponseOutput() CustomerDataStoragePropertiesResponseOutput {
+	return o
+}
+
+func (o CustomerDataStoragePropertiesResponseOutput) ToCustomerDataStoragePropertiesResponseOutputWithContext(ctx context.Context) CustomerDataStoragePropertiesResponseOutput {
+	return o
+}
+
+// Name of the Azure Blob Storage container to use or create.
+func (o CustomerDataStoragePropertiesResponseOutput) BlobContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomerDataStoragePropertiesResponse) *string { return v.BlobContainerName }).(pulumi.StringPtrOutput)
+}
+
+// ARM Resource ID of the Storage account to use for Customer Data storage.
+func (o CustomerDataStoragePropertiesResponseOutput) StorageAccountResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomerDataStoragePropertiesResponse) *string { return v.StorageAccountResourceId }).(pulumi.StringPtrOutput)
+}
+
+type CustomerDataStoragePropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CustomerDataStoragePropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomerDataStoragePropertiesResponse)(nil)).Elem()
+}
+
+func (o CustomerDataStoragePropertiesResponsePtrOutput) ToCustomerDataStoragePropertiesResponsePtrOutput() CustomerDataStoragePropertiesResponsePtrOutput {
+	return o
+}
+
+func (o CustomerDataStoragePropertiesResponsePtrOutput) ToCustomerDataStoragePropertiesResponsePtrOutputWithContext(ctx context.Context) CustomerDataStoragePropertiesResponsePtrOutput {
+	return o
+}
+
+func (o CustomerDataStoragePropertiesResponsePtrOutput) Elem() CustomerDataStoragePropertiesResponseOutput {
+	return o.ApplyT(func(v *CustomerDataStoragePropertiesResponse) CustomerDataStoragePropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CustomerDataStoragePropertiesResponse
+		return ret
+	}).(CustomerDataStoragePropertiesResponseOutput)
+}
+
+// Name of the Azure Blob Storage container to use or create.
+func (o CustomerDataStoragePropertiesResponsePtrOutput) BlobContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomerDataStoragePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BlobContainerName
+	}).(pulumi.StringPtrOutput)
+}
+
+// ARM Resource ID of the Storage account to use for Customer Data storage.
+func (o CustomerDataStoragePropertiesResponsePtrOutput) StorageAccountResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomerDataStoragePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageAccountResourceId
+	}).(pulumi.StringPtrOutput)
 }
 
 // Model that represents a delay action.
@@ -918,12 +1154,284 @@ func (o ExperimentExecutionDetailsPropertiesResponseRunInformationOutput) Steps(
 	}).(StepStatusResponseArrayOutput)
 }
 
+// The identity of the experiment resource.
+type ExperimentIdentity struct {
+	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+	Type string `pulumi:"type"`
+	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
+}
+
+// ExperimentIdentityInput is an input type that accepts ExperimentIdentityArgs and ExperimentIdentityOutput values.
+// You can construct a concrete instance of `ExperimentIdentityInput` via:
+//
+//	ExperimentIdentityArgs{...}
+type ExperimentIdentityInput interface {
+	pulumi.Input
+
+	ToExperimentIdentityOutput() ExperimentIdentityOutput
+	ToExperimentIdentityOutputWithContext(context.Context) ExperimentIdentityOutput
+}
+
+// The identity of the experiment resource.
+type ExperimentIdentityArgs struct {
+	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+	Type pulumi.StringInput `pulumi:"type"`
+	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
+}
+
+func (ExperimentIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExperimentIdentity)(nil)).Elem()
+}
+
+func (i ExperimentIdentityArgs) ToExperimentIdentityOutput() ExperimentIdentityOutput {
+	return i.ToExperimentIdentityOutputWithContext(context.Background())
+}
+
+func (i ExperimentIdentityArgs) ToExperimentIdentityOutputWithContext(ctx context.Context) ExperimentIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExperimentIdentityOutput)
+}
+
+func (i ExperimentIdentityArgs) ToExperimentIdentityPtrOutput() ExperimentIdentityPtrOutput {
+	return i.ToExperimentIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i ExperimentIdentityArgs) ToExperimentIdentityPtrOutputWithContext(ctx context.Context) ExperimentIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExperimentIdentityOutput).ToExperimentIdentityPtrOutputWithContext(ctx)
+}
+
+// ExperimentIdentityPtrInput is an input type that accepts ExperimentIdentityArgs, ExperimentIdentityPtr and ExperimentIdentityPtrOutput values.
+// You can construct a concrete instance of `ExperimentIdentityPtrInput` via:
+//
+//	        ExperimentIdentityArgs{...}
+//
+//	or:
+//
+//	        nil
+type ExperimentIdentityPtrInput interface {
+	pulumi.Input
+
+	ToExperimentIdentityPtrOutput() ExperimentIdentityPtrOutput
+	ToExperimentIdentityPtrOutputWithContext(context.Context) ExperimentIdentityPtrOutput
+}
+
+type experimentIdentityPtrType ExperimentIdentityArgs
+
+func ExperimentIdentityPtr(v *ExperimentIdentityArgs) ExperimentIdentityPtrInput {
+	return (*experimentIdentityPtrType)(v)
+}
+
+func (*experimentIdentityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExperimentIdentity)(nil)).Elem()
+}
+
+func (i *experimentIdentityPtrType) ToExperimentIdentityPtrOutput() ExperimentIdentityPtrOutput {
+	return i.ToExperimentIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i *experimentIdentityPtrType) ToExperimentIdentityPtrOutputWithContext(ctx context.Context) ExperimentIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExperimentIdentityPtrOutput)
+}
+
+// The identity of the experiment resource.
+type ExperimentIdentityOutput struct{ *pulumi.OutputState }
+
+func (ExperimentIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExperimentIdentity)(nil)).Elem()
+}
+
+func (o ExperimentIdentityOutput) ToExperimentIdentityOutput() ExperimentIdentityOutput {
+	return o
+}
+
+func (o ExperimentIdentityOutput) ToExperimentIdentityOutputWithContext(ctx context.Context) ExperimentIdentityOutput {
+	return o
+}
+
+func (o ExperimentIdentityOutput) ToExperimentIdentityPtrOutput() ExperimentIdentityPtrOutput {
+	return o.ToExperimentIdentityPtrOutputWithContext(context.Background())
+}
+
+func (o ExperimentIdentityOutput) ToExperimentIdentityPtrOutputWithContext(ctx context.Context) ExperimentIdentityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExperimentIdentity) *ExperimentIdentity {
+		return &v
+	}).(ExperimentIdentityPtrOutput)
+}
+
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+func (o ExperimentIdentityOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ExperimentIdentity) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o ExperimentIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ExperimentIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
+}
+
+type ExperimentIdentityPtrOutput struct{ *pulumi.OutputState }
+
+func (ExperimentIdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExperimentIdentity)(nil)).Elem()
+}
+
+func (o ExperimentIdentityPtrOutput) ToExperimentIdentityPtrOutput() ExperimentIdentityPtrOutput {
+	return o
+}
+
+func (o ExperimentIdentityPtrOutput) ToExperimentIdentityPtrOutputWithContext(ctx context.Context) ExperimentIdentityPtrOutput {
+	return o
+}
+
+func (o ExperimentIdentityPtrOutput) Elem() ExperimentIdentityOutput {
+	return o.ApplyT(func(v *ExperimentIdentity) ExperimentIdentity {
+		if v != nil {
+			return *v
+		}
+		var ret ExperimentIdentity
+		return ret
+	}).(ExperimentIdentityOutput)
+}
+
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+func (o ExperimentIdentityPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExperimentIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o ExperimentIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ExperimentIdentity) []string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(pulumi.StringArrayOutput)
+}
+
+// The identity of the experiment resource.
+type ExperimentIdentityResponse struct {
+	// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+	PrincipalId string `pulumi:"principalId"`
+	// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+	TenantId string `pulumi:"tenantId"`
+	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+	Type string `pulumi:"type"`
+	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+	UserAssignedIdentities map[string]UserAssignedIdentityResponse `pulumi:"userAssignedIdentities"`
+}
+
+// The identity of the experiment resource.
+type ExperimentIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (ExperimentIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExperimentIdentityResponse)(nil)).Elem()
+}
+
+func (o ExperimentIdentityResponseOutput) ToExperimentIdentityResponseOutput() ExperimentIdentityResponseOutput {
+	return o
+}
+
+func (o ExperimentIdentityResponseOutput) ToExperimentIdentityResponseOutputWithContext(ctx context.Context) ExperimentIdentityResponseOutput {
+	return o
+}
+
+// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+func (o ExperimentIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v ExperimentIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+func (o ExperimentIdentityResponseOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v ExperimentIdentityResponse) string { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+func (o ExperimentIdentityResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ExperimentIdentityResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o ExperimentIdentityResponseOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v ExperimentIdentityResponse) map[string]UserAssignedIdentityResponse {
+		return v.UserAssignedIdentities
+	}).(UserAssignedIdentityResponseMapOutput)
+}
+
+type ExperimentIdentityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ExperimentIdentityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExperimentIdentityResponse)(nil)).Elem()
+}
+
+func (o ExperimentIdentityResponsePtrOutput) ToExperimentIdentityResponsePtrOutput() ExperimentIdentityResponsePtrOutput {
+	return o
+}
+
+func (o ExperimentIdentityResponsePtrOutput) ToExperimentIdentityResponsePtrOutputWithContext(ctx context.Context) ExperimentIdentityResponsePtrOutput {
+	return o
+}
+
+func (o ExperimentIdentityResponsePtrOutput) Elem() ExperimentIdentityResponseOutput {
+	return o.ApplyT(func(v *ExperimentIdentityResponse) ExperimentIdentityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ExperimentIdentityResponse
+		return ret
+	}).(ExperimentIdentityResponseOutput)
+}
+
+// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+func (o ExperimentIdentityResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExperimentIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrincipalId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+func (o ExperimentIdentityResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExperimentIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+func (o ExperimentIdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExperimentIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o ExperimentIdentityResponsePtrOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v *ExperimentIdentityResponse) map[string]UserAssignedIdentityResponse {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(UserAssignedIdentityResponseMapOutput)
+}
+
 // Model that represents the Experiment properties model.
 type ExperimentProperties struct {
+	// Optional customer-managed Storage account where Experiment schema will be stored.
+	CustomerDataStorage *CustomerDataStorageProperties `pulumi:"customerDataStorage"`
 	// List of selectors.
 	Selectors []interface{} `pulumi:"selectors"`
-	// A boolean value that indicates if experiment should be started on creation or not.
-	StartOnCreation *bool `pulumi:"startOnCreation"`
 	// List of steps.
 	Steps []Step `pulumi:"steps"`
 }
@@ -941,10 +1449,10 @@ type ExperimentPropertiesInput interface {
 
 // Model that represents the Experiment properties model.
 type ExperimentPropertiesArgs struct {
+	// Optional customer-managed Storage account where Experiment schema will be stored.
+	CustomerDataStorage CustomerDataStoragePropertiesPtrInput `pulumi:"customerDataStorage"`
 	// List of selectors.
 	Selectors pulumi.ArrayInput `pulumi:"selectors"`
-	// A boolean value that indicates if experiment should be started on creation or not.
-	StartOnCreation pulumi.BoolPtrInput `pulumi:"startOnCreation"`
 	// List of steps.
 	Steps StepArrayInput `pulumi:"steps"`
 }
@@ -976,14 +1484,14 @@ func (o ExperimentPropertiesOutput) ToExperimentPropertiesOutputWithContext(ctx 
 	return o
 }
 
+// Optional customer-managed Storage account where Experiment schema will be stored.
+func (o ExperimentPropertiesOutput) CustomerDataStorage() CustomerDataStoragePropertiesPtrOutput {
+	return o.ApplyT(func(v ExperimentProperties) *CustomerDataStorageProperties { return v.CustomerDataStorage }).(CustomerDataStoragePropertiesPtrOutput)
+}
+
 // List of selectors.
 func (o ExperimentPropertiesOutput) Selectors() pulumi.ArrayOutput {
 	return o.ApplyT(func(v ExperimentProperties) []interface{} { return v.Selectors }).(pulumi.ArrayOutput)
-}
-
-// A boolean value that indicates if experiment should be started on creation or not.
-func (o ExperimentPropertiesOutput) StartOnCreation() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ExperimentProperties) *bool { return v.StartOnCreation }).(pulumi.BoolPtrOutput)
 }
 
 // List of steps.
@@ -993,10 +1501,12 @@ func (o ExperimentPropertiesOutput) Steps() StepArrayOutput {
 
 // Model that represents the Experiment properties model.
 type ExperimentPropertiesResponse struct {
+	// Optional customer-managed Storage account where Experiment schema will be stored.
+	CustomerDataStorage *CustomerDataStoragePropertiesResponse `pulumi:"customerDataStorage"`
+	// Most recent provisioning state for the given experiment resource.
+	ProvisioningState string `pulumi:"provisioningState"`
 	// List of selectors.
 	Selectors []interface{} `pulumi:"selectors"`
-	// A boolean value that indicates if experiment should be started on creation or not.
-	StartOnCreation *bool `pulumi:"startOnCreation"`
 	// List of steps.
 	Steps []StepResponse `pulumi:"steps"`
 }
@@ -1016,14 +1526,21 @@ func (o ExperimentPropertiesResponseOutput) ToExperimentPropertiesResponseOutput
 	return o
 }
 
+// Optional customer-managed Storage account where Experiment schema will be stored.
+func (o ExperimentPropertiesResponseOutput) CustomerDataStorage() CustomerDataStoragePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v ExperimentPropertiesResponse) *CustomerDataStoragePropertiesResponse {
+		return v.CustomerDataStorage
+	}).(CustomerDataStoragePropertiesResponsePtrOutput)
+}
+
+// Most recent provisioning state for the given experiment resource.
+func (o ExperimentPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v ExperimentPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
 // List of selectors.
 func (o ExperimentPropertiesResponseOutput) Selectors() pulumi.ArrayOutput {
 	return o.ApplyT(func(v ExperimentPropertiesResponse) []interface{} { return v.Selectors }).(pulumi.ArrayOutput)
-}
-
-// A boolean value that indicates if experiment should be started on creation or not.
-func (o ExperimentPropertiesResponseOutput) StartOnCreation() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ExperimentPropertiesResponse) *bool { return v.StartOnCreation }).(pulumi.BoolPtrOutput)
 }
 
 // List of steps.
@@ -1672,278 +2189,6 @@ func (o QuerySelectorResponseOutput) SubscriptionIds() pulumi.StringArrayOutput 
 // Expected value is 'Query'.
 func (o QuerySelectorResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v QuerySelectorResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// The identity of a resource.
-type ResourceIdentity struct {
-	// String of the resource identity type.
-	Type ResourceIdentityType `pulumi:"type"`
-	// The list of user identities associated with the Experiment. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
-}
-
-// ResourceIdentityInput is an input type that accepts ResourceIdentityArgs and ResourceIdentityOutput values.
-// You can construct a concrete instance of `ResourceIdentityInput` via:
-//
-//	ResourceIdentityArgs{...}
-type ResourceIdentityInput interface {
-	pulumi.Input
-
-	ToResourceIdentityOutput() ResourceIdentityOutput
-	ToResourceIdentityOutputWithContext(context.Context) ResourceIdentityOutput
-}
-
-// The identity of a resource.
-type ResourceIdentityArgs struct {
-	// String of the resource identity type.
-	Type ResourceIdentityTypeInput `pulumi:"type"`
-	// The list of user identities associated with the Experiment. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
-}
-
-func (ResourceIdentityArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourceIdentity)(nil)).Elem()
-}
-
-func (i ResourceIdentityArgs) ToResourceIdentityOutput() ResourceIdentityOutput {
-	return i.ToResourceIdentityOutputWithContext(context.Background())
-}
-
-func (i ResourceIdentityArgs) ToResourceIdentityOutputWithContext(ctx context.Context) ResourceIdentityOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResourceIdentityOutput)
-}
-
-func (i ResourceIdentityArgs) ToResourceIdentityPtrOutput() ResourceIdentityPtrOutput {
-	return i.ToResourceIdentityPtrOutputWithContext(context.Background())
-}
-
-func (i ResourceIdentityArgs) ToResourceIdentityPtrOutputWithContext(ctx context.Context) ResourceIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResourceIdentityOutput).ToResourceIdentityPtrOutputWithContext(ctx)
-}
-
-// ResourceIdentityPtrInput is an input type that accepts ResourceIdentityArgs, ResourceIdentityPtr and ResourceIdentityPtrOutput values.
-// You can construct a concrete instance of `ResourceIdentityPtrInput` via:
-//
-//	        ResourceIdentityArgs{...}
-//
-//	or:
-//
-//	        nil
-type ResourceIdentityPtrInput interface {
-	pulumi.Input
-
-	ToResourceIdentityPtrOutput() ResourceIdentityPtrOutput
-	ToResourceIdentityPtrOutputWithContext(context.Context) ResourceIdentityPtrOutput
-}
-
-type resourceIdentityPtrType ResourceIdentityArgs
-
-func ResourceIdentityPtr(v *ResourceIdentityArgs) ResourceIdentityPtrInput {
-	return (*resourceIdentityPtrType)(v)
-}
-
-func (*resourceIdentityPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ResourceIdentity)(nil)).Elem()
-}
-
-func (i *resourceIdentityPtrType) ToResourceIdentityPtrOutput() ResourceIdentityPtrOutput {
-	return i.ToResourceIdentityPtrOutputWithContext(context.Background())
-}
-
-func (i *resourceIdentityPtrType) ToResourceIdentityPtrOutputWithContext(ctx context.Context) ResourceIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResourceIdentityPtrOutput)
-}
-
-// The identity of a resource.
-type ResourceIdentityOutput struct{ *pulumi.OutputState }
-
-func (ResourceIdentityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourceIdentity)(nil)).Elem()
-}
-
-func (o ResourceIdentityOutput) ToResourceIdentityOutput() ResourceIdentityOutput {
-	return o
-}
-
-func (o ResourceIdentityOutput) ToResourceIdentityOutputWithContext(ctx context.Context) ResourceIdentityOutput {
-	return o
-}
-
-func (o ResourceIdentityOutput) ToResourceIdentityPtrOutput() ResourceIdentityPtrOutput {
-	return o.ToResourceIdentityPtrOutputWithContext(context.Background())
-}
-
-func (o ResourceIdentityOutput) ToResourceIdentityPtrOutputWithContext(ctx context.Context) ResourceIdentityPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceIdentity) *ResourceIdentity {
-		return &v
-	}).(ResourceIdentityPtrOutput)
-}
-
-// String of the resource identity type.
-func (o ResourceIdentityOutput) Type() ResourceIdentityTypeOutput {
-	return o.ApplyT(func(v ResourceIdentity) ResourceIdentityType { return v.Type }).(ResourceIdentityTypeOutput)
-}
-
-// The list of user identities associated with the Experiment. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-func (o ResourceIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ResourceIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
-}
-
-type ResourceIdentityPtrOutput struct{ *pulumi.OutputState }
-
-func (ResourceIdentityPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ResourceIdentity)(nil)).Elem()
-}
-
-func (o ResourceIdentityPtrOutput) ToResourceIdentityPtrOutput() ResourceIdentityPtrOutput {
-	return o
-}
-
-func (o ResourceIdentityPtrOutput) ToResourceIdentityPtrOutputWithContext(ctx context.Context) ResourceIdentityPtrOutput {
-	return o
-}
-
-func (o ResourceIdentityPtrOutput) Elem() ResourceIdentityOutput {
-	return o.ApplyT(func(v *ResourceIdentity) ResourceIdentity {
-		if v != nil {
-			return *v
-		}
-		var ret ResourceIdentity
-		return ret
-	}).(ResourceIdentityOutput)
-}
-
-// String of the resource identity type.
-func (o ResourceIdentityPtrOutput) Type() ResourceIdentityTypePtrOutput {
-	return o.ApplyT(func(v *ResourceIdentity) *ResourceIdentityType {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(ResourceIdentityTypePtrOutput)
-}
-
-// The list of user identities associated with the Experiment. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-func (o ResourceIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ResourceIdentity) []string {
-		if v == nil {
-			return nil
-		}
-		return v.UserAssignedIdentities
-	}).(pulumi.StringArrayOutput)
-}
-
-// The identity of a resource.
-type ResourceIdentityResponse struct {
-	// GUID that represents the principal ID of this resource identity.
-	PrincipalId string `pulumi:"principalId"`
-	// GUID that represents the tenant ID of this resource identity.
-	TenantId string `pulumi:"tenantId"`
-	// String of the resource identity type.
-	Type string `pulumi:"type"`
-	// The list of user identities associated with the Experiment. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-	UserAssignedIdentities map[string]UserAssignedIdentityResponse `pulumi:"userAssignedIdentities"`
-}
-
-// The identity of a resource.
-type ResourceIdentityResponseOutput struct{ *pulumi.OutputState }
-
-func (ResourceIdentityResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourceIdentityResponse)(nil)).Elem()
-}
-
-func (o ResourceIdentityResponseOutput) ToResourceIdentityResponseOutput() ResourceIdentityResponseOutput {
-	return o
-}
-
-func (o ResourceIdentityResponseOutput) ToResourceIdentityResponseOutputWithContext(ctx context.Context) ResourceIdentityResponseOutput {
-	return o
-}
-
-// GUID that represents the principal ID of this resource identity.
-func (o ResourceIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
-	return o.ApplyT(func(v ResourceIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
-}
-
-// GUID that represents the tenant ID of this resource identity.
-func (o ResourceIdentityResponseOutput) TenantId() pulumi.StringOutput {
-	return o.ApplyT(func(v ResourceIdentityResponse) string { return v.TenantId }).(pulumi.StringOutput)
-}
-
-// String of the resource identity type.
-func (o ResourceIdentityResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v ResourceIdentityResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// The list of user identities associated with the Experiment. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-func (o ResourceIdentityResponseOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
-	return o.ApplyT(func(v ResourceIdentityResponse) map[string]UserAssignedIdentityResponse {
-		return v.UserAssignedIdentities
-	}).(UserAssignedIdentityResponseMapOutput)
-}
-
-type ResourceIdentityResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ResourceIdentityResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ResourceIdentityResponse)(nil)).Elem()
-}
-
-func (o ResourceIdentityResponsePtrOutput) ToResourceIdentityResponsePtrOutput() ResourceIdentityResponsePtrOutput {
-	return o
-}
-
-func (o ResourceIdentityResponsePtrOutput) ToResourceIdentityResponsePtrOutputWithContext(ctx context.Context) ResourceIdentityResponsePtrOutput {
-	return o
-}
-
-func (o ResourceIdentityResponsePtrOutput) Elem() ResourceIdentityResponseOutput {
-	return o.ApplyT(func(v *ResourceIdentityResponse) ResourceIdentityResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ResourceIdentityResponse
-		return ret
-	}).(ResourceIdentityResponseOutput)
-}
-
-// GUID that represents the principal ID of this resource identity.
-func (o ResourceIdentityResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceIdentityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PrincipalId
-	}).(pulumi.StringPtrOutput)
-}
-
-// GUID that represents the tenant ID of this resource identity.
-func (o ResourceIdentityResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceIdentityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TenantId
-	}).(pulumi.StringPtrOutput)
-}
-
-// String of the resource identity type.
-func (o ResourceIdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceIdentityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-// The list of user identities associated with the Experiment. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-func (o ResourceIdentityResponsePtrOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
-	return o.ApplyT(func(v *ResourceIdentityResponse) map[string]UserAssignedIdentityResponse {
-		if v == nil {
-			return nil
-		}
-		return v.UserAssignedIdentities
-	}).(UserAssignedIdentityResponseMapOutput)
 }
 
 // Model that represents a simple target filter.
@@ -2906,6 +3151,10 @@ func init() {
 	pulumi.RegisterOutputType(CapabilityPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ContinuousActionOutput{})
 	pulumi.RegisterOutputType(ContinuousActionResponseOutput{})
+	pulumi.RegisterOutputType(CustomerDataStoragePropertiesOutput{})
+	pulumi.RegisterOutputType(CustomerDataStoragePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(CustomerDataStoragePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(CustomerDataStoragePropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(DelayActionOutput{})
 	pulumi.RegisterOutputType(DelayActionResponseOutput{})
 	pulumi.RegisterOutputType(DiscreteActionOutput{})
@@ -2914,6 +3163,10 @@ func init() {
 	pulumi.RegisterOutputType(ExperimentExecutionActionTargetDetailsPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ExperimentExecutionActionTargetDetailsPropertiesResponseArrayOutput{})
 	pulumi.RegisterOutputType(ExperimentExecutionDetailsPropertiesResponseRunInformationOutput{})
+	pulumi.RegisterOutputType(ExperimentIdentityOutput{})
+	pulumi.RegisterOutputType(ExperimentIdentityPtrOutput{})
+	pulumi.RegisterOutputType(ExperimentIdentityResponseOutput{})
+	pulumi.RegisterOutputType(ExperimentIdentityResponsePtrOutput{})
 	pulumi.RegisterOutputType(ExperimentPropertiesOutput{})
 	pulumi.RegisterOutputType(ExperimentPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(KeyValuePairOutput{})
@@ -2929,10 +3182,6 @@ func init() {
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateResponseOutput{})
 	pulumi.RegisterOutputType(QuerySelectorOutput{})
 	pulumi.RegisterOutputType(QuerySelectorResponseOutput{})
-	pulumi.RegisterOutputType(ResourceIdentityOutput{})
-	pulumi.RegisterOutputType(ResourceIdentityPtrOutput{})
-	pulumi.RegisterOutputType(ResourceIdentityResponseOutput{})
-	pulumi.RegisterOutputType(ResourceIdentityResponsePtrOutput{})
 	pulumi.RegisterOutputType(SimpleFilterOutput{})
 	pulumi.RegisterOutputType(SimpleFilterPtrOutput{})
 	pulumi.RegisterOutputType(SimpleFilterParametersOutput{})

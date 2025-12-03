@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the details of the authorization specified by its identifier.
 //
-// Uses Azure REST API version 2022-08-01.
+// Uses Azure REST API version 2022-09-01-preview.
 //
-// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Other available API versions: 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupAuthorization(ctx *pulumi.Context, args *LookupAuthorizationArgs, opts ...pulumi.InvokeOption) (*LookupAuthorizationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAuthorizationResult
@@ -41,6 +41,8 @@ type LookupAuthorizationArgs struct {
 type LookupAuthorizationResult struct {
 	// Authorization type options
 	AuthorizationType *string `pulumi:"authorizationType"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Authorization error details.
 	Error *AuthorizationErrorResponse `pulumi:"error"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -99,6 +101,11 @@ func (o LookupAuthorizationResultOutput) ToLookupAuthorizationResultOutputWithCo
 // Authorization type options
 func (o LookupAuthorizationResultOutput) AuthorizationType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAuthorizationResult) *string { return v.AuthorizationType }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupAuthorizationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAuthorizationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Authorization error details.

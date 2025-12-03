@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Description for Gets the names of app settings and connection strings that stick to the slot (not swapped).
 //
-// Uses Azure REST API version 2022-09-01.
+// Uses Azure REST API version 2024-04-01.
 //
-// Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
+// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupWebAppSlotConfigurationNames(ctx *pulumi.Context, args *LookupWebAppSlotConfigurationNamesArgs, opts ...pulumi.InvokeOption) (*LookupWebAppSlotConfigurationNamesResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppSlotConfigurationNamesResult
@@ -37,6 +37,8 @@ type LookupWebAppSlotConfigurationNamesArgs struct {
 type LookupWebAppSlotConfigurationNamesResult struct {
 	// List of application settings names.
 	AppSettingNames []string `pulumi:"appSettingNames"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// List of external Azure storage account identifiers.
 	AzureStorageConfigNames []string `pulumi:"azureStorageConfigNames"`
 	// List of connection string names.
@@ -89,6 +91,11 @@ func (o LookupWebAppSlotConfigurationNamesResultOutput) ToLookupWebAppSlotConfig
 // List of application settings names.
 func (o LookupWebAppSlotConfigurationNamesResultOutput) AppSettingNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupWebAppSlotConfigurationNamesResult) []string { return v.AppSettingNames }).(pulumi.StringArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupWebAppSlotConfigurationNamesResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebAppSlotConfigurationNamesResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // List of external Azure storage account identifiers.

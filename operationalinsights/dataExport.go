@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The top level data export resource container.
 //
-// Uses Azure REST API version 2020-08-01. In version 1.x of the Azure Native provider, it used API version 2020-08-01.
+// Uses Azure REST API version 2023-09-01. In version 2.x of the Azure Native provider, it used API version 2020-08-01.
 //
-// Other available API versions: 2023-09-01, 2025-02-01.
+// Other available API versions: 2019-08-01-preview, 2020-03-01-preview, 2020-08-01, 2025-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type DataExport struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The latest data export rule modification time.
 	CreatedDate pulumi.StringPtrOutput `pulumi:"createdDate"`
 	// The data export rule ID.
@@ -191,6 +193,11 @@ func (o DataExportOutput) ToDataExportOutput() DataExportOutput {
 
 func (o DataExportOutput) ToDataExportOutputWithContext(ctx context.Context) DataExportOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o DataExportOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataExport) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The latest data export rule modification time.

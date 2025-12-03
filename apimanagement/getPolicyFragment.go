@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a policy fragment.
 //
-// Uses Azure REST API version 2022-08-01.
+// Uses Azure REST API version 2022-09-01-preview.
 //
-// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Other available API versions: 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupPolicyFragment(ctx *pulumi.Context, args *LookupPolicyFragmentArgs, opts ...pulumi.InvokeOption) (*LookupPolicyFragmentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPolicyFragmentResult
@@ -39,6 +39,8 @@ type LookupPolicyFragmentArgs struct {
 
 // Policy fragment contract details.
 type LookupPolicyFragmentResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Policy fragment description.
 	Description *string `pulumi:"description"`
 	// Format of the policy fragment content.
@@ -102,6 +104,11 @@ func (o LookupPolicyFragmentResultOutput) ToLookupPolicyFragmentResultOutput() L
 
 func (o LookupPolicyFragmentResultOutput) ToLookupPolicyFragmentResultOutputWithContext(ctx context.Context) LookupPolicyFragmentResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupPolicyFragmentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPolicyFragmentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Policy fragment description.

@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Single item in List or Get Migration Config operation
 //
-// Uses Azure REST API version 2022-01-01-preview. In version 1.x of the Azure Native provider, it used API version 2017-04-01.
+// Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2022-01-01-preview.
 //
-// Other available API versions: 2022-10-01-preview, 2023-01-01-preview, 2024-01-01.
+// Other available API versions: 2018-01-01-preview, 2021-01-01-preview, 2021-06-01-preview, 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2025-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicebus [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type MigrationConfig struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// State in which Standard to Premium Migration is, possible values : Unknown, Reverting, Completing, Initiating, Syncing, Active
@@ -87,6 +89,9 @@ func NewMigrationConfig(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:servicebus/v20240101:MigrationConfig"),
 		},
+		{
+			Type: pulumi.String("azure-native:servicebus/v20250501preview:MigrationConfig"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -128,7 +133,7 @@ type migrationConfigArgs struct {
 	NamespaceName string `pulumi:"namespaceName"`
 	// Name to access Standard Namespace after migration
 	PostMigrationName string `pulumi:"postMigrationName"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Existing premium Namespace ARM Id name which has no entities, will be used for migration
 	TargetNamespace string `pulumi:"targetNamespace"`
@@ -142,7 +147,7 @@ type MigrationConfigArgs struct {
 	NamespaceName pulumi.StringInput
 	// Name to access Standard Namespace after migration
 	PostMigrationName pulumi.StringInput
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Existing premium Namespace ARM Id name which has no entities, will be used for migration
 	TargetNamespace pulumi.StringInput
@@ -183,6 +188,11 @@ func (o MigrationConfigOutput) ToMigrationConfigOutput() MigrationConfigOutput {
 
 func (o MigrationConfigOutput) ToMigrationConfigOutputWithContext(ctx context.Context) MigrationConfigOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o MigrationConfigOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigrationConfig) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The geo-location where the resource lives

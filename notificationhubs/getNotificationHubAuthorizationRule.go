@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Response for POST requests that return single SharedAccessAuthorizationRule.
+// Gets an authorization rule for a NotificationHub by name.
 //
-// Uses Azure REST API version 2023-01-01-preview.
+// Uses Azure REST API version 2023-10-01-preview.
 //
-// Other available API versions: 2017-04-01, 2023-09-01, 2023-10-01-preview.
+// Other available API versions: 2023-01-01-preview, 2023-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native notificationhubs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupNotificationHubAuthorizationRule(ctx *pulumi.Context, args *LookupNotificationHubAuthorizationRuleArgs, opts ...pulumi.InvokeOption) (*LookupNotificationHubAuthorizationRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNotificationHubAuthorizationRuleResult
@@ -39,18 +39,36 @@ type LookupNotificationHubAuthorizationRuleArgs struct {
 
 // Response for POST requests that return single SharedAccessAuthorizationRule.
 type LookupNotificationHubAuthorizationRuleResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// Gets a string that describes the claim type
+	ClaimType string `pulumi:"claimType"`
+	// Gets a string that describes the claim value
+	ClaimValue string `pulumi:"claimValue"`
+	// Gets the created time for this rule
+	CreatedTime string `pulumi:"createdTime"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
-	// Deprecated - only for compatibility.
+	// Gets a string that describes the authorization rule.
+	KeyName  string  `pulumi:"keyName"`
 	Location *string `pulumi:"location"`
+	// Gets the last modified time for this rule
+	ModifiedTime string `pulumi:"modifiedTime"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// SharedAccessAuthorizationRule properties.
-	Properties SharedAccessAuthorizationRulePropertiesResponse `pulumi:"properties"`
+	// Gets a base64-encoded 256-bit primary key for signing and
+	// validating the SAS token.
+	PrimaryKey *string `pulumi:"primaryKey"`
+	// Gets the revision number for the rule
+	Revision int `pulumi:"revision"`
+	// Gets or sets the rights associated with the rule.
+	Rights []string `pulumi:"rights"`
+	// Gets a base64-encoded 256-bit primary key for signing and
+	// validating the SAS token.
+	SecondaryKey *string `pulumi:"secondaryKey"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// Deprecated - only for compatibility.
-	Tags map[string]string `pulumi:"tags"`
+	Tags       map[string]string  `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -94,14 +112,43 @@ func (o LookupNotificationHubAuthorizationRuleResultOutput) ToLookupNotification
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupNotificationHubAuthorizationRuleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNotificationHubAuthorizationRuleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Gets a string that describes the claim type
+func (o LookupNotificationHubAuthorizationRuleResultOutput) ClaimType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNotificationHubAuthorizationRuleResult) string { return v.ClaimType }).(pulumi.StringOutput)
+}
+
+// Gets a string that describes the claim value
+func (o LookupNotificationHubAuthorizationRuleResultOutput) ClaimValue() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNotificationHubAuthorizationRuleResult) string { return v.ClaimValue }).(pulumi.StringOutput)
+}
+
+// Gets the created time for this rule
+func (o LookupNotificationHubAuthorizationRuleResultOutput) CreatedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNotificationHubAuthorizationRuleResult) string { return v.CreatedTime }).(pulumi.StringOutput)
+}
+
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupNotificationHubAuthorizationRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNotificationHubAuthorizationRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Deprecated - only for compatibility.
+// Gets a string that describes the authorization rule.
+func (o LookupNotificationHubAuthorizationRuleResultOutput) KeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNotificationHubAuthorizationRuleResult) string { return v.KeyName }).(pulumi.StringOutput)
+}
+
 func (o LookupNotificationHubAuthorizationRuleResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNotificationHubAuthorizationRuleResult) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// Gets the last modified time for this rule
+func (o LookupNotificationHubAuthorizationRuleResultOutput) ModifiedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNotificationHubAuthorizationRuleResult) string { return v.ModifiedTime }).(pulumi.StringOutput)
 }
 
 // The name of the resource
@@ -109,11 +156,26 @@ func (o LookupNotificationHubAuthorizationRuleResultOutput) Name() pulumi.String
 	return o.ApplyT(func(v LookupNotificationHubAuthorizationRuleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// SharedAccessAuthorizationRule properties.
-func (o LookupNotificationHubAuthorizationRuleResultOutput) Properties() SharedAccessAuthorizationRulePropertiesResponseOutput {
-	return o.ApplyT(func(v LookupNotificationHubAuthorizationRuleResult) SharedAccessAuthorizationRulePropertiesResponse {
-		return v.Properties
-	}).(SharedAccessAuthorizationRulePropertiesResponseOutput)
+// Gets a base64-encoded 256-bit primary key for signing and
+// validating the SAS token.
+func (o LookupNotificationHubAuthorizationRuleResultOutput) PrimaryKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupNotificationHubAuthorizationRuleResult) *string { return v.PrimaryKey }).(pulumi.StringPtrOutput)
+}
+
+// Gets the revision number for the rule
+func (o LookupNotificationHubAuthorizationRuleResultOutput) Revision() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupNotificationHubAuthorizationRuleResult) int { return v.Revision }).(pulumi.IntOutput)
+}
+
+// Gets or sets the rights associated with the rule.
+func (o LookupNotificationHubAuthorizationRuleResultOutput) Rights() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupNotificationHubAuthorizationRuleResult) []string { return v.Rights }).(pulumi.StringArrayOutput)
+}
+
+// Gets a base64-encoded 256-bit primary key for signing and
+// validating the SAS token.
+func (o LookupNotificationHubAuthorizationRuleResultOutput) SecondaryKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupNotificationHubAuthorizationRuleResult) *string { return v.SecondaryKey }).(pulumi.StringPtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -121,7 +183,6 @@ func (o LookupNotificationHubAuthorizationRuleResultOutput) SystemData() SystemD
 	return o.ApplyT(func(v LookupNotificationHubAuthorizationRuleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Deprecated - only for compatibility.
 func (o LookupNotificationHubAuthorizationRuleResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupNotificationHubAuthorizationRuleResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }

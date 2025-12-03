@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents a devcenter encryption set resource.
 //
-// Uses Azure REST API version 2024-05-01-preview.
+// Uses Azure REST API version 2024-10-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-05-01-preview.
 //
-// Other available API versions: 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview.
+// Other available API versions: 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2025-04-01-preview, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devcenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type EncryptionSet struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Devbox disk encryption enable or disable status. Indicates if Devbox disks encryption using DevCenter CMK is enabled or not.
 	DevboxDisksEncryptionEnableStatus pulumi.StringPtrOutput `pulumi:"devboxDisksEncryptionEnableStatus"`
 	// Managed identity properties
@@ -68,6 +70,12 @@ func NewEncryptionSet(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:devcenter/v20241001preview:EncryptionSet"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20250401preview:EncryptionSet"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20250701preview:EncryptionSet"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -177,6 +185,11 @@ func (o EncryptionSetOutput) ToEncryptionSetOutput() EncryptionSetOutput {
 
 func (o EncryptionSetOutput) ToEncryptionSetOutputWithContext(ctx context.Context) EncryptionSetOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o EncryptionSetOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *EncryptionSet) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Devbox disk encryption enable or disable status. Indicates if Devbox disks encryption using DevCenter CMK is enabled or not.

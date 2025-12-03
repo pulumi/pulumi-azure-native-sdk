@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Capture logs and metrics of Azure resources based on ARM tags.
 //
-// Uses Azure REST API version 2023-06-01. In version 1.x of the Azure Native provider, it used API version 2020-07-01.
+// Uses Azure REST API version 2024-03-01. In version 2.x of the Azure Native provider, it used API version 2023-06-01.
 //
-// Other available API versions: 2023-06-15-preview, 2023-07-01-preview, 2023-10-01-preview, 2023-11-01-preview, 2024-01-01-preview, 2024-03-01, 2024-05-01-preview, 2024-06-15-preview, 2024-10-01-preview, 2025-01-15-preview.
+// Other available API versions: 2023-06-01, 2023-06-15-preview, 2023-07-01-preview, 2023-10-01-preview, 2023-11-01-preview, 2024-01-01-preview, 2024-05-01-preview, 2024-06-15-preview, 2024-10-01-preview, 2025-01-15-preview, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native elastic [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type TagRule struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Name of the rule set.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Properties of the monitoring tag rules.
@@ -104,6 +106,9 @@ func NewTagRule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:elastic/v20250115preview:TagRule"),
 		},
+		{
+			Type: pulumi.String("azure-native:elastic/v20250601:TagRule"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -143,7 +148,7 @@ type tagRuleArgs struct {
 	MonitorName string `pulumi:"monitorName"`
 	// Properties of the monitoring tag rules.
 	Properties *MonitoringTagRulesProperties `pulumi:"properties"`
-	// The name of the resource group to which the Elastic resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Tag Rule Set resource name
 	RuleSetName *string `pulumi:"ruleSetName"`
@@ -155,7 +160,7 @@ type TagRuleArgs struct {
 	MonitorName pulumi.StringInput
 	// Properties of the monitoring tag rules.
 	Properties MonitoringTagRulesPropertiesPtrInput
-	// The name of the resource group to which the Elastic resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Tag Rule Set resource name
 	RuleSetName pulumi.StringPtrInput
@@ -196,6 +201,11 @@ func (o TagRuleOutput) ToTagRuleOutput() TagRuleOutput {
 
 func (o TagRuleOutput) ToTagRuleOutputWithContext(ctx context.Context) TagRuleOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o TagRuleOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *TagRule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Name of the rule set.

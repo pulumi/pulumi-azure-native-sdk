@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Implements HybridIdentityMetadata GET method.
 //
-// Uses Azure REST API version 2022-05-21-preview.
+// Uses Azure REST API version 2023-04-01-preview.
 //
-// Other available API versions: 2023-04-01-preview.
+// Other available API versions: 2022-05-21-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native scvmm [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupHybridIdentityMetadata(ctx *pulumi.Context, args *LookupHybridIdentityMetadataArgs, opts ...pulumi.InvokeOption) (*LookupHybridIdentityMetadataResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupHybridIdentityMetadataResult
@@ -37,6 +37,8 @@ type LookupHybridIdentityMetadataArgs struct {
 
 // Defines the HybridIdentityMetadata.
 type LookupHybridIdentityMetadataResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The identity of the resource.
@@ -90,6 +92,11 @@ func (o LookupHybridIdentityMetadataResultOutput) ToLookupHybridIdentityMetadata
 
 func (o LookupHybridIdentityMetadataResultOutput) ToLookupHybridIdentityMetadataResultOutputWithContext(ctx context.Context) LookupHybridIdentityMetadataResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupHybridIdentityMetadataResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHybridIdentityMetadataResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

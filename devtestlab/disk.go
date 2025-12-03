@@ -8,16 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A Disk.
 //
-// Uses Azure REST API version 2018-09-15. In version 1.x of the Azure Native provider, it used API version 2018-09-15.
+// Uses Azure REST API version 2018-09-15. In version 2.x of the Azure Native provider, it used API version 2018-09-15.
 type Disk struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The creation date of the disk.
 	CreatedDate pulumi.StringOutput `pulumi:"createdDate"`
 	// When backed by a blob, the name of the VHD blob without extension.
@@ -126,9 +128,9 @@ type diskArgs struct {
 	Location *string `pulumi:"location"`
 	// When backed by managed disk, this is the ID of the compute disk resource.
 	ManagedDiskId *string `pulumi:"managedDiskId"`
-	// The name of the disk.
+	// The name of the Disk
 	Name *string `pulumi:"name"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// When backed by a blob, the storage account where the blob is.
 	StorageAccountId *string `pulumi:"storageAccountId"`
@@ -158,9 +160,9 @@ type DiskArgs struct {
 	Location pulumi.StringPtrInput
 	// When backed by managed disk, this is the ID of the compute disk resource.
 	ManagedDiskId pulumi.StringPtrInput
-	// The name of the disk.
+	// The name of the Disk
 	Name pulumi.StringPtrInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// When backed by a blob, the storage account where the blob is.
 	StorageAccountId pulumi.StringPtrInput
@@ -205,6 +207,11 @@ func (o DiskOutput) ToDiskOutput() DiskOutput {
 
 func (o DiskOutput) ToDiskOutputWithContext(ctx context.Context) DiskOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o DiskOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of the disk.

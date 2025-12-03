@@ -8,21 +8,23 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Origin group comprising of origins is used for load balancing to origins when the content cannot be served from CDN.
 //
-// Uses Azure REST API version 2023-05-01. In version 1.x of the Azure Native provider, it used API version 2020-09-01.
+// Uses Azure REST API version 2025-06-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
 //
-// Other available API versions: 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01.
+// Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type OriginGroup struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Health probe settings to the origin that is used to determine the health of the origin.
 	HealthProbeSettings HealthProbeParametersResponsePtrOutput `pulumi:"healthProbeSettings"`
-	// Resource name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The source of the content being delivered via CDN within given origin group.
 	Origins ResourceReferenceResponseArrayOutput `pulumi:"origins"`
@@ -32,11 +34,11 @@ type OriginGroup struct {
 	ResourceState pulumi.StringOutput `pulumi:"resourceState"`
 	// The JSON object that contains the properties to determine origin health using real requests/responses. This property is currently not supported.
 	ResponseBasedOriginErrorDetectionSettings ResponseBasedOriginErrorDetectionParametersResponsePtrOutput `pulumi:"responseBasedOriginErrorDetectionSettings"`
-	// Read only system data
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Time in minutes to shift the traffic to the endpoint gradually when an unhealthy endpoint comes healthy or a new endpoint is added. Default is 10 mins. This property is currently not supported.
 	TrafficRestorationTimeToHealedOrNewEndpointsInMinutes pulumi.IntPtrOutput `pulumi:"trafficRestorationTimeToHealedOrNewEndpointsInMinutes"`
-	// Resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -49,9 +51,6 @@ func NewOriginGroup(ctx *pulumi.Context,
 
 	if args.EndpointName == nil {
 		return nil, errors.New("invalid value for required argument 'EndpointName'")
-	}
-	if args.Origins == nil {
-		return nil, errors.New("invalid value for required argument 'Origins'")
 	}
 	if args.ProfileName == nil {
 		return nil, errors.New("invalid value for required argument 'ProfileName'")
@@ -99,6 +98,21 @@ func NewOriginGroup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:cdn/v20240901:OriginGroup"),
 		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20250101preview:OriginGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20250415:OriginGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20250601:OriginGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20250701preview:OriginGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20250901preview:OriginGroup"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -142,9 +156,9 @@ type originGroupArgs struct {
 	OriginGroupName *string `pulumi:"originGroupName"`
 	// The source of the content being delivered via CDN within given origin group.
 	Origins []ResourceReference `pulumi:"origins"`
-	// Name of the CDN profile which is unique within the resource group.
+	// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
 	ProfileName string `pulumi:"profileName"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The JSON object that contains the properties to determine origin health using real requests/responses. This property is currently not supported.
 	ResponseBasedOriginErrorDetectionSettings *ResponseBasedOriginErrorDetectionParameters `pulumi:"responseBasedOriginErrorDetectionSettings"`
@@ -162,9 +176,9 @@ type OriginGroupArgs struct {
 	OriginGroupName pulumi.StringPtrInput
 	// The source of the content being delivered via CDN within given origin group.
 	Origins ResourceReferenceArrayInput
-	// Name of the CDN profile which is unique within the resource group.
+	// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
 	ProfileName pulumi.StringInput
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The JSON object that contains the properties to determine origin health using real requests/responses. This property is currently not supported.
 	ResponseBasedOriginErrorDetectionSettings ResponseBasedOriginErrorDetectionParametersPtrInput
@@ -209,12 +223,17 @@ func (o OriginGroupOutput) ToOriginGroupOutputWithContext(ctx context.Context) O
 	return o
 }
 
+// The Azure API version of the resource.
+func (o OriginGroupOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *OriginGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Health probe settings to the origin that is used to determine the health of the origin.
 func (o OriginGroupOutput) HealthProbeSettings() HealthProbeParametersResponsePtrOutput {
 	return o.ApplyT(func(v *OriginGroup) HealthProbeParametersResponsePtrOutput { return v.HealthProbeSettings }).(HealthProbeParametersResponsePtrOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o OriginGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *OriginGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -241,7 +260,7 @@ func (o OriginGroupOutput) ResponseBasedOriginErrorDetectionSettings() ResponseB
 	}).(ResponseBasedOriginErrorDetectionParametersResponsePtrOutput)
 }
 
-// Read only system data
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o OriginGroupOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *OriginGroup) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
@@ -253,7 +272,7 @@ func (o OriginGroupOutput) TrafficRestorationTimeToHealedOrNewEndpointsInMinutes
 	}).(pulumi.IntPtrOutput)
 }
 
-// Resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o OriginGroupOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *OriginGroup) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

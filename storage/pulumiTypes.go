@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -1282,6 +1282,206 @@ func (o AzureFilesIdentityBasedAuthenticationResponsePtrOutput) DirectoryService
 	}).(pulumi.StringPtrOutput)
 }
 
+// This property defines the creation time based filtering condition. Blob Inventory schema parameter 'Creation-Time' is mandatory with this filter.
+type BlobInventoryCreationTime struct {
+	// When set the policy filters the objects that are created in the last N days. Where N is an integer value between 1 to 36500.
+	LastNDays *int `pulumi:"lastNDays"`
+}
+
+// BlobInventoryCreationTimeInput is an input type that accepts BlobInventoryCreationTimeArgs and BlobInventoryCreationTimeOutput values.
+// You can construct a concrete instance of `BlobInventoryCreationTimeInput` via:
+//
+//	BlobInventoryCreationTimeArgs{...}
+type BlobInventoryCreationTimeInput interface {
+	pulumi.Input
+
+	ToBlobInventoryCreationTimeOutput() BlobInventoryCreationTimeOutput
+	ToBlobInventoryCreationTimeOutputWithContext(context.Context) BlobInventoryCreationTimeOutput
+}
+
+// This property defines the creation time based filtering condition. Blob Inventory schema parameter 'Creation-Time' is mandatory with this filter.
+type BlobInventoryCreationTimeArgs struct {
+	// When set the policy filters the objects that are created in the last N days. Where N is an integer value between 1 to 36500.
+	LastNDays pulumi.IntPtrInput `pulumi:"lastNDays"`
+}
+
+func (BlobInventoryCreationTimeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlobInventoryCreationTime)(nil)).Elem()
+}
+
+func (i BlobInventoryCreationTimeArgs) ToBlobInventoryCreationTimeOutput() BlobInventoryCreationTimeOutput {
+	return i.ToBlobInventoryCreationTimeOutputWithContext(context.Background())
+}
+
+func (i BlobInventoryCreationTimeArgs) ToBlobInventoryCreationTimeOutputWithContext(ctx context.Context) BlobInventoryCreationTimeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlobInventoryCreationTimeOutput)
+}
+
+func (i BlobInventoryCreationTimeArgs) ToBlobInventoryCreationTimePtrOutput() BlobInventoryCreationTimePtrOutput {
+	return i.ToBlobInventoryCreationTimePtrOutputWithContext(context.Background())
+}
+
+func (i BlobInventoryCreationTimeArgs) ToBlobInventoryCreationTimePtrOutputWithContext(ctx context.Context) BlobInventoryCreationTimePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlobInventoryCreationTimeOutput).ToBlobInventoryCreationTimePtrOutputWithContext(ctx)
+}
+
+// BlobInventoryCreationTimePtrInput is an input type that accepts BlobInventoryCreationTimeArgs, BlobInventoryCreationTimePtr and BlobInventoryCreationTimePtrOutput values.
+// You can construct a concrete instance of `BlobInventoryCreationTimePtrInput` via:
+//
+//	        BlobInventoryCreationTimeArgs{...}
+//
+//	or:
+//
+//	        nil
+type BlobInventoryCreationTimePtrInput interface {
+	pulumi.Input
+
+	ToBlobInventoryCreationTimePtrOutput() BlobInventoryCreationTimePtrOutput
+	ToBlobInventoryCreationTimePtrOutputWithContext(context.Context) BlobInventoryCreationTimePtrOutput
+}
+
+type blobInventoryCreationTimePtrType BlobInventoryCreationTimeArgs
+
+func BlobInventoryCreationTimePtr(v *BlobInventoryCreationTimeArgs) BlobInventoryCreationTimePtrInput {
+	return (*blobInventoryCreationTimePtrType)(v)
+}
+
+func (*blobInventoryCreationTimePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BlobInventoryCreationTime)(nil)).Elem()
+}
+
+func (i *blobInventoryCreationTimePtrType) ToBlobInventoryCreationTimePtrOutput() BlobInventoryCreationTimePtrOutput {
+	return i.ToBlobInventoryCreationTimePtrOutputWithContext(context.Background())
+}
+
+func (i *blobInventoryCreationTimePtrType) ToBlobInventoryCreationTimePtrOutputWithContext(ctx context.Context) BlobInventoryCreationTimePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlobInventoryCreationTimePtrOutput)
+}
+
+// This property defines the creation time based filtering condition. Blob Inventory schema parameter 'Creation-Time' is mandatory with this filter.
+type BlobInventoryCreationTimeOutput struct{ *pulumi.OutputState }
+
+func (BlobInventoryCreationTimeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlobInventoryCreationTime)(nil)).Elem()
+}
+
+func (o BlobInventoryCreationTimeOutput) ToBlobInventoryCreationTimeOutput() BlobInventoryCreationTimeOutput {
+	return o
+}
+
+func (o BlobInventoryCreationTimeOutput) ToBlobInventoryCreationTimeOutputWithContext(ctx context.Context) BlobInventoryCreationTimeOutput {
+	return o
+}
+
+func (o BlobInventoryCreationTimeOutput) ToBlobInventoryCreationTimePtrOutput() BlobInventoryCreationTimePtrOutput {
+	return o.ToBlobInventoryCreationTimePtrOutputWithContext(context.Background())
+}
+
+func (o BlobInventoryCreationTimeOutput) ToBlobInventoryCreationTimePtrOutputWithContext(ctx context.Context) BlobInventoryCreationTimePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BlobInventoryCreationTime) *BlobInventoryCreationTime {
+		return &v
+	}).(BlobInventoryCreationTimePtrOutput)
+}
+
+// When set the policy filters the objects that are created in the last N days. Where N is an integer value between 1 to 36500.
+func (o BlobInventoryCreationTimeOutput) LastNDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BlobInventoryCreationTime) *int { return v.LastNDays }).(pulumi.IntPtrOutput)
+}
+
+type BlobInventoryCreationTimePtrOutput struct{ *pulumi.OutputState }
+
+func (BlobInventoryCreationTimePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BlobInventoryCreationTime)(nil)).Elem()
+}
+
+func (o BlobInventoryCreationTimePtrOutput) ToBlobInventoryCreationTimePtrOutput() BlobInventoryCreationTimePtrOutput {
+	return o
+}
+
+func (o BlobInventoryCreationTimePtrOutput) ToBlobInventoryCreationTimePtrOutputWithContext(ctx context.Context) BlobInventoryCreationTimePtrOutput {
+	return o
+}
+
+func (o BlobInventoryCreationTimePtrOutput) Elem() BlobInventoryCreationTimeOutput {
+	return o.ApplyT(func(v *BlobInventoryCreationTime) BlobInventoryCreationTime {
+		if v != nil {
+			return *v
+		}
+		var ret BlobInventoryCreationTime
+		return ret
+	}).(BlobInventoryCreationTimeOutput)
+}
+
+// When set the policy filters the objects that are created in the last N days. Where N is an integer value between 1 to 36500.
+func (o BlobInventoryCreationTimePtrOutput) LastNDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BlobInventoryCreationTime) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LastNDays
+	}).(pulumi.IntPtrOutput)
+}
+
+// This property defines the creation time based filtering condition. Blob Inventory schema parameter 'Creation-Time' is mandatory with this filter.
+type BlobInventoryCreationTimeResponse struct {
+	// When set the policy filters the objects that are created in the last N days. Where N is an integer value between 1 to 36500.
+	LastNDays *int `pulumi:"lastNDays"`
+}
+
+// This property defines the creation time based filtering condition. Blob Inventory schema parameter 'Creation-Time' is mandatory with this filter.
+type BlobInventoryCreationTimeResponseOutput struct{ *pulumi.OutputState }
+
+func (BlobInventoryCreationTimeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlobInventoryCreationTimeResponse)(nil)).Elem()
+}
+
+func (o BlobInventoryCreationTimeResponseOutput) ToBlobInventoryCreationTimeResponseOutput() BlobInventoryCreationTimeResponseOutput {
+	return o
+}
+
+func (o BlobInventoryCreationTimeResponseOutput) ToBlobInventoryCreationTimeResponseOutputWithContext(ctx context.Context) BlobInventoryCreationTimeResponseOutput {
+	return o
+}
+
+// When set the policy filters the objects that are created in the last N days. Where N is an integer value between 1 to 36500.
+func (o BlobInventoryCreationTimeResponseOutput) LastNDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BlobInventoryCreationTimeResponse) *int { return v.LastNDays }).(pulumi.IntPtrOutput)
+}
+
+type BlobInventoryCreationTimeResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (BlobInventoryCreationTimeResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BlobInventoryCreationTimeResponse)(nil)).Elem()
+}
+
+func (o BlobInventoryCreationTimeResponsePtrOutput) ToBlobInventoryCreationTimeResponsePtrOutput() BlobInventoryCreationTimeResponsePtrOutput {
+	return o
+}
+
+func (o BlobInventoryCreationTimeResponsePtrOutput) ToBlobInventoryCreationTimeResponsePtrOutputWithContext(ctx context.Context) BlobInventoryCreationTimeResponsePtrOutput {
+	return o
+}
+
+func (o BlobInventoryCreationTimeResponsePtrOutput) Elem() BlobInventoryCreationTimeResponseOutput {
+	return o.ApplyT(func(v *BlobInventoryCreationTimeResponse) BlobInventoryCreationTimeResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BlobInventoryCreationTimeResponse
+		return ret
+	}).(BlobInventoryCreationTimeResponseOutput)
+}
+
+// When set the policy filters the objects that are created in the last N days. Where N is an integer value between 1 to 36500.
+func (o BlobInventoryCreationTimeResponsePtrOutput) LastNDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BlobInventoryCreationTimeResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LastNDays
+	}).(pulumi.IntPtrOutput)
+}
+
 // An object that defines the blob inventory rule.
 type BlobInventoryPolicyDefinition struct {
 	// An object that defines the filter set.
@@ -1431,6 +1631,8 @@ func (o BlobInventoryPolicyDefinitionResponseOutput) SchemaFields() pulumi.Strin
 type BlobInventoryPolicyFilter struct {
 	// An array of predefined enum values. Valid values include blockBlob, appendBlob, pageBlob. Hns accounts does not support pageBlobs. This field is required when definition.objectType property is set to 'Blob'.
 	BlobTypes []string `pulumi:"blobTypes"`
+	// This property is used to filter objects based on the object creation time
+	CreationTime *BlobInventoryCreationTime `pulumi:"creationTime"`
 	// An array of strings with maximum 10 blob prefixes to be excluded from the inventory.
 	ExcludePrefix []string `pulumi:"excludePrefix"`
 	// Includes blob versions in blob inventory when value is set to true. The definition.schemaFields values 'VersionId and IsCurrentVersion' are required if this property is set to true, else they must be excluded.
@@ -1458,6 +1660,8 @@ type BlobInventoryPolicyFilterInput interface {
 type BlobInventoryPolicyFilterArgs struct {
 	// An array of predefined enum values. Valid values include blockBlob, appendBlob, pageBlob. Hns accounts does not support pageBlobs. This field is required when definition.objectType property is set to 'Blob'.
 	BlobTypes pulumi.StringArrayInput `pulumi:"blobTypes"`
+	// This property is used to filter objects based on the object creation time
+	CreationTime BlobInventoryCreationTimePtrInput `pulumi:"creationTime"`
 	// An array of strings with maximum 10 blob prefixes to be excluded from the inventory.
 	ExcludePrefix pulumi.StringArrayInput `pulumi:"excludePrefix"`
 	// Includes blob versions in blob inventory when value is set to true. The definition.schemaFields values 'VersionId and IsCurrentVersion' are required if this property is set to true, else they must be excluded.
@@ -1553,6 +1757,11 @@ func (o BlobInventoryPolicyFilterOutput) BlobTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BlobInventoryPolicyFilter) []string { return v.BlobTypes }).(pulumi.StringArrayOutput)
 }
 
+// This property is used to filter objects based on the object creation time
+func (o BlobInventoryPolicyFilterOutput) CreationTime() BlobInventoryCreationTimePtrOutput {
+	return o.ApplyT(func(v BlobInventoryPolicyFilter) *BlobInventoryCreationTime { return v.CreationTime }).(BlobInventoryCreationTimePtrOutput)
+}
+
 // An array of strings with maximum 10 blob prefixes to be excluded from the inventory.
 func (o BlobInventoryPolicyFilterOutput) ExcludePrefix() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BlobInventoryPolicyFilter) []string { return v.ExcludePrefix }).(pulumi.StringArrayOutput)
@@ -1612,6 +1821,16 @@ func (o BlobInventoryPolicyFilterPtrOutput) BlobTypes() pulumi.StringArrayOutput
 	}).(pulumi.StringArrayOutput)
 }
 
+// This property is used to filter objects based on the object creation time
+func (o BlobInventoryPolicyFilterPtrOutput) CreationTime() BlobInventoryCreationTimePtrOutput {
+	return o.ApplyT(func(v *BlobInventoryPolicyFilter) *BlobInventoryCreationTime {
+		if v == nil {
+			return nil
+		}
+		return v.CreationTime
+	}).(BlobInventoryCreationTimePtrOutput)
+}
+
 // An array of strings with maximum 10 blob prefixes to be excluded from the inventory.
 func (o BlobInventoryPolicyFilterPtrOutput) ExcludePrefix() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *BlobInventoryPolicyFilter) []string {
@@ -1666,6 +1885,8 @@ func (o BlobInventoryPolicyFilterPtrOutput) PrefixMatch() pulumi.StringArrayOutp
 type BlobInventoryPolicyFilterResponse struct {
 	// An array of predefined enum values. Valid values include blockBlob, appendBlob, pageBlob. Hns accounts does not support pageBlobs. This field is required when definition.objectType property is set to 'Blob'.
 	BlobTypes []string `pulumi:"blobTypes"`
+	// This property is used to filter objects based on the object creation time
+	CreationTime *BlobInventoryCreationTimeResponse `pulumi:"creationTime"`
 	// An array of strings with maximum 10 blob prefixes to be excluded from the inventory.
 	ExcludePrefix []string `pulumi:"excludePrefix"`
 	// Includes blob versions in blob inventory when value is set to true. The definition.schemaFields values 'VersionId and IsCurrentVersion' are required if this property is set to true, else they must be excluded.
@@ -1696,6 +1917,11 @@ func (o BlobInventoryPolicyFilterResponseOutput) ToBlobInventoryPolicyFilterResp
 // An array of predefined enum values. Valid values include blockBlob, appendBlob, pageBlob. Hns accounts does not support pageBlobs. This field is required when definition.objectType property is set to 'Blob'.
 func (o BlobInventoryPolicyFilterResponseOutput) BlobTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BlobInventoryPolicyFilterResponse) []string { return v.BlobTypes }).(pulumi.StringArrayOutput)
+}
+
+// This property is used to filter objects based on the object creation time
+func (o BlobInventoryPolicyFilterResponseOutput) CreationTime() BlobInventoryCreationTimeResponsePtrOutput {
+	return o.ApplyT(func(v BlobInventoryPolicyFilterResponse) *BlobInventoryCreationTimeResponse { return v.CreationTime }).(BlobInventoryCreationTimeResponsePtrOutput)
 }
 
 // An array of strings with maximum 10 blob prefixes to be excluded from the inventory.
@@ -1755,6 +1981,16 @@ func (o BlobInventoryPolicyFilterResponsePtrOutput) BlobTypes() pulumi.StringArr
 		}
 		return v.BlobTypes
 	}).(pulumi.StringArrayOutput)
+}
+
+// This property is used to filter objects based on the object creation time
+func (o BlobInventoryPolicyFilterResponsePtrOutput) CreationTime() BlobInventoryCreationTimeResponsePtrOutput {
+	return o.ApplyT(func(v *BlobInventoryPolicyFilterResponse) *BlobInventoryCreationTimeResponse {
+		if v == nil {
+			return nil
+		}
+		return v.CreationTime
+	}).(BlobInventoryCreationTimeResponsePtrOutput)
 }
 
 // An array of strings with maximum 10 blob prefixes to be excluded from the inventory.
@@ -5890,12 +6126,290 @@ func (o ExtendedLocationResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// File Share Paid Bursting properties.
+type FileSharePropertiesFileSharePaidBursting struct {
+	// Indicates whether paid bursting is enabled for the share. This property is only for file shares created under Files Provisioned v1 SSD account type.
+	PaidBurstingEnabled *bool `pulumi:"paidBurstingEnabled"`
+	// The maximum paid bursting bandwidth for the share, in mebibytes per second. This property is only for file shares created under Files Provisioned v1 SSD account type. The maximum allowed value is 10340 which is the maximum allowed bandwidth for a share.
+	PaidBurstingMaxBandwidthMibps *int `pulumi:"paidBurstingMaxBandwidthMibps"`
+	// The maximum paid bursting IOPS for the share. This property is only for file shares created under Files Provisioned v1 SSD account type. The maximum allowed value is 102400 which is the maximum allowed IOPS for a share.
+	PaidBurstingMaxIops *int `pulumi:"paidBurstingMaxIops"`
+}
+
+// FileSharePropertiesFileSharePaidBurstingInput is an input type that accepts FileSharePropertiesFileSharePaidBurstingArgs and FileSharePropertiesFileSharePaidBurstingOutput values.
+// You can construct a concrete instance of `FileSharePropertiesFileSharePaidBurstingInput` via:
+//
+//	FileSharePropertiesFileSharePaidBurstingArgs{...}
+type FileSharePropertiesFileSharePaidBurstingInput interface {
+	pulumi.Input
+
+	ToFileSharePropertiesFileSharePaidBurstingOutput() FileSharePropertiesFileSharePaidBurstingOutput
+	ToFileSharePropertiesFileSharePaidBurstingOutputWithContext(context.Context) FileSharePropertiesFileSharePaidBurstingOutput
+}
+
+// File Share Paid Bursting properties.
+type FileSharePropertiesFileSharePaidBurstingArgs struct {
+	// Indicates whether paid bursting is enabled for the share. This property is only for file shares created under Files Provisioned v1 SSD account type.
+	PaidBurstingEnabled pulumi.BoolPtrInput `pulumi:"paidBurstingEnabled"`
+	// The maximum paid bursting bandwidth for the share, in mebibytes per second. This property is only for file shares created under Files Provisioned v1 SSD account type. The maximum allowed value is 10340 which is the maximum allowed bandwidth for a share.
+	PaidBurstingMaxBandwidthMibps pulumi.IntPtrInput `pulumi:"paidBurstingMaxBandwidthMibps"`
+	// The maximum paid bursting IOPS for the share. This property is only for file shares created under Files Provisioned v1 SSD account type. The maximum allowed value is 102400 which is the maximum allowed IOPS for a share.
+	PaidBurstingMaxIops pulumi.IntPtrInput `pulumi:"paidBurstingMaxIops"`
+}
+
+func (FileSharePropertiesFileSharePaidBurstingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileSharePropertiesFileSharePaidBursting)(nil)).Elem()
+}
+
+func (i FileSharePropertiesFileSharePaidBurstingArgs) ToFileSharePropertiesFileSharePaidBurstingOutput() FileSharePropertiesFileSharePaidBurstingOutput {
+	return i.ToFileSharePropertiesFileSharePaidBurstingOutputWithContext(context.Background())
+}
+
+func (i FileSharePropertiesFileSharePaidBurstingArgs) ToFileSharePropertiesFileSharePaidBurstingOutputWithContext(ctx context.Context) FileSharePropertiesFileSharePaidBurstingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileSharePropertiesFileSharePaidBurstingOutput)
+}
+
+func (i FileSharePropertiesFileSharePaidBurstingArgs) ToFileSharePropertiesFileSharePaidBurstingPtrOutput() FileSharePropertiesFileSharePaidBurstingPtrOutput {
+	return i.ToFileSharePropertiesFileSharePaidBurstingPtrOutputWithContext(context.Background())
+}
+
+func (i FileSharePropertiesFileSharePaidBurstingArgs) ToFileSharePropertiesFileSharePaidBurstingPtrOutputWithContext(ctx context.Context) FileSharePropertiesFileSharePaidBurstingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileSharePropertiesFileSharePaidBurstingOutput).ToFileSharePropertiesFileSharePaidBurstingPtrOutputWithContext(ctx)
+}
+
+// FileSharePropertiesFileSharePaidBurstingPtrInput is an input type that accepts FileSharePropertiesFileSharePaidBurstingArgs, FileSharePropertiesFileSharePaidBurstingPtr and FileSharePropertiesFileSharePaidBurstingPtrOutput values.
+// You can construct a concrete instance of `FileSharePropertiesFileSharePaidBurstingPtrInput` via:
+//
+//	        FileSharePropertiesFileSharePaidBurstingArgs{...}
+//
+//	or:
+//
+//	        nil
+type FileSharePropertiesFileSharePaidBurstingPtrInput interface {
+	pulumi.Input
+
+	ToFileSharePropertiesFileSharePaidBurstingPtrOutput() FileSharePropertiesFileSharePaidBurstingPtrOutput
+	ToFileSharePropertiesFileSharePaidBurstingPtrOutputWithContext(context.Context) FileSharePropertiesFileSharePaidBurstingPtrOutput
+}
+
+type fileSharePropertiesFileSharePaidBurstingPtrType FileSharePropertiesFileSharePaidBurstingArgs
+
+func FileSharePropertiesFileSharePaidBurstingPtr(v *FileSharePropertiesFileSharePaidBurstingArgs) FileSharePropertiesFileSharePaidBurstingPtrInput {
+	return (*fileSharePropertiesFileSharePaidBurstingPtrType)(v)
+}
+
+func (*fileSharePropertiesFileSharePaidBurstingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FileSharePropertiesFileSharePaidBursting)(nil)).Elem()
+}
+
+func (i *fileSharePropertiesFileSharePaidBurstingPtrType) ToFileSharePropertiesFileSharePaidBurstingPtrOutput() FileSharePropertiesFileSharePaidBurstingPtrOutput {
+	return i.ToFileSharePropertiesFileSharePaidBurstingPtrOutputWithContext(context.Background())
+}
+
+func (i *fileSharePropertiesFileSharePaidBurstingPtrType) ToFileSharePropertiesFileSharePaidBurstingPtrOutputWithContext(ctx context.Context) FileSharePropertiesFileSharePaidBurstingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileSharePropertiesFileSharePaidBurstingPtrOutput)
+}
+
+// File Share Paid Bursting properties.
+type FileSharePropertiesFileSharePaidBurstingOutput struct{ *pulumi.OutputState }
+
+func (FileSharePropertiesFileSharePaidBurstingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileSharePropertiesFileSharePaidBursting)(nil)).Elem()
+}
+
+func (o FileSharePropertiesFileSharePaidBurstingOutput) ToFileSharePropertiesFileSharePaidBurstingOutput() FileSharePropertiesFileSharePaidBurstingOutput {
+	return o
+}
+
+func (o FileSharePropertiesFileSharePaidBurstingOutput) ToFileSharePropertiesFileSharePaidBurstingOutputWithContext(ctx context.Context) FileSharePropertiesFileSharePaidBurstingOutput {
+	return o
+}
+
+func (o FileSharePropertiesFileSharePaidBurstingOutput) ToFileSharePropertiesFileSharePaidBurstingPtrOutput() FileSharePropertiesFileSharePaidBurstingPtrOutput {
+	return o.ToFileSharePropertiesFileSharePaidBurstingPtrOutputWithContext(context.Background())
+}
+
+func (o FileSharePropertiesFileSharePaidBurstingOutput) ToFileSharePropertiesFileSharePaidBurstingPtrOutputWithContext(ctx context.Context) FileSharePropertiesFileSharePaidBurstingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FileSharePropertiesFileSharePaidBursting) *FileSharePropertiesFileSharePaidBursting {
+		return &v
+	}).(FileSharePropertiesFileSharePaidBurstingPtrOutput)
+}
+
+// Indicates whether paid bursting is enabled for the share. This property is only for file shares created under Files Provisioned v1 SSD account type.
+func (o FileSharePropertiesFileSharePaidBurstingOutput) PaidBurstingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FileSharePropertiesFileSharePaidBursting) *bool { return v.PaidBurstingEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The maximum paid bursting bandwidth for the share, in mebibytes per second. This property is only for file shares created under Files Provisioned v1 SSD account type. The maximum allowed value is 10340 which is the maximum allowed bandwidth for a share.
+func (o FileSharePropertiesFileSharePaidBurstingOutput) PaidBurstingMaxBandwidthMibps() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FileSharePropertiesFileSharePaidBursting) *int { return v.PaidBurstingMaxBandwidthMibps }).(pulumi.IntPtrOutput)
+}
+
+// The maximum paid bursting IOPS for the share. This property is only for file shares created under Files Provisioned v1 SSD account type. The maximum allowed value is 102400 which is the maximum allowed IOPS for a share.
+func (o FileSharePropertiesFileSharePaidBurstingOutput) PaidBurstingMaxIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FileSharePropertiesFileSharePaidBursting) *int { return v.PaidBurstingMaxIops }).(pulumi.IntPtrOutput)
+}
+
+type FileSharePropertiesFileSharePaidBurstingPtrOutput struct{ *pulumi.OutputState }
+
+func (FileSharePropertiesFileSharePaidBurstingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FileSharePropertiesFileSharePaidBursting)(nil)).Elem()
+}
+
+func (o FileSharePropertiesFileSharePaidBurstingPtrOutput) ToFileSharePropertiesFileSharePaidBurstingPtrOutput() FileSharePropertiesFileSharePaidBurstingPtrOutput {
+	return o
+}
+
+func (o FileSharePropertiesFileSharePaidBurstingPtrOutput) ToFileSharePropertiesFileSharePaidBurstingPtrOutputWithContext(ctx context.Context) FileSharePropertiesFileSharePaidBurstingPtrOutput {
+	return o
+}
+
+func (o FileSharePropertiesFileSharePaidBurstingPtrOutput) Elem() FileSharePropertiesFileSharePaidBurstingOutput {
+	return o.ApplyT(func(v *FileSharePropertiesFileSharePaidBursting) FileSharePropertiesFileSharePaidBursting {
+		if v != nil {
+			return *v
+		}
+		var ret FileSharePropertiesFileSharePaidBursting
+		return ret
+	}).(FileSharePropertiesFileSharePaidBurstingOutput)
+}
+
+// Indicates whether paid bursting is enabled for the share. This property is only for file shares created under Files Provisioned v1 SSD account type.
+func (o FileSharePropertiesFileSharePaidBurstingPtrOutput) PaidBurstingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FileSharePropertiesFileSharePaidBursting) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PaidBurstingEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The maximum paid bursting bandwidth for the share, in mebibytes per second. This property is only for file shares created under Files Provisioned v1 SSD account type. The maximum allowed value is 10340 which is the maximum allowed bandwidth for a share.
+func (o FileSharePropertiesFileSharePaidBurstingPtrOutput) PaidBurstingMaxBandwidthMibps() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FileSharePropertiesFileSharePaidBursting) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PaidBurstingMaxBandwidthMibps
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum paid bursting IOPS for the share. This property is only for file shares created under Files Provisioned v1 SSD account type. The maximum allowed value is 102400 which is the maximum allowed IOPS for a share.
+func (o FileSharePropertiesFileSharePaidBurstingPtrOutput) PaidBurstingMaxIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FileSharePropertiesFileSharePaidBursting) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PaidBurstingMaxIops
+	}).(pulumi.IntPtrOutput)
+}
+
+// File Share Paid Bursting properties.
+type FileSharePropertiesResponseFileSharePaidBursting struct {
+	// Indicates whether paid bursting is enabled for the share. This property is only for file shares created under Files Provisioned v1 SSD account type.
+	PaidBurstingEnabled *bool `pulumi:"paidBurstingEnabled"`
+	// The maximum paid bursting bandwidth for the share, in mebibytes per second. This property is only for file shares created under Files Provisioned v1 SSD account type. The maximum allowed value is 10340 which is the maximum allowed bandwidth for a share.
+	PaidBurstingMaxBandwidthMibps *int `pulumi:"paidBurstingMaxBandwidthMibps"`
+	// The maximum paid bursting IOPS for the share. This property is only for file shares created under Files Provisioned v1 SSD account type. The maximum allowed value is 102400 which is the maximum allowed IOPS for a share.
+	PaidBurstingMaxIops *int `pulumi:"paidBurstingMaxIops"`
+}
+
+// File Share Paid Bursting properties.
+type FileSharePropertiesResponseFileSharePaidBurstingOutput struct{ *pulumi.OutputState }
+
+func (FileSharePropertiesResponseFileSharePaidBurstingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileSharePropertiesResponseFileSharePaidBursting)(nil)).Elem()
+}
+
+func (o FileSharePropertiesResponseFileSharePaidBurstingOutput) ToFileSharePropertiesResponseFileSharePaidBurstingOutput() FileSharePropertiesResponseFileSharePaidBurstingOutput {
+	return o
+}
+
+func (o FileSharePropertiesResponseFileSharePaidBurstingOutput) ToFileSharePropertiesResponseFileSharePaidBurstingOutputWithContext(ctx context.Context) FileSharePropertiesResponseFileSharePaidBurstingOutput {
+	return o
+}
+
+// Indicates whether paid bursting is enabled for the share. This property is only for file shares created under Files Provisioned v1 SSD account type.
+func (o FileSharePropertiesResponseFileSharePaidBurstingOutput) PaidBurstingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FileSharePropertiesResponseFileSharePaidBursting) *bool { return v.PaidBurstingEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The maximum paid bursting bandwidth for the share, in mebibytes per second. This property is only for file shares created under Files Provisioned v1 SSD account type. The maximum allowed value is 10340 which is the maximum allowed bandwidth for a share.
+func (o FileSharePropertiesResponseFileSharePaidBurstingOutput) PaidBurstingMaxBandwidthMibps() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FileSharePropertiesResponseFileSharePaidBursting) *int { return v.PaidBurstingMaxBandwidthMibps }).(pulumi.IntPtrOutput)
+}
+
+// The maximum paid bursting IOPS for the share. This property is only for file shares created under Files Provisioned v1 SSD account type. The maximum allowed value is 102400 which is the maximum allowed IOPS for a share.
+func (o FileSharePropertiesResponseFileSharePaidBurstingOutput) PaidBurstingMaxIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FileSharePropertiesResponseFileSharePaidBursting) *int { return v.PaidBurstingMaxIops }).(pulumi.IntPtrOutput)
+}
+
+type FileSharePropertiesResponseFileSharePaidBurstingPtrOutput struct{ *pulumi.OutputState }
+
+func (FileSharePropertiesResponseFileSharePaidBurstingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FileSharePropertiesResponseFileSharePaidBursting)(nil)).Elem()
+}
+
+func (o FileSharePropertiesResponseFileSharePaidBurstingPtrOutput) ToFileSharePropertiesResponseFileSharePaidBurstingPtrOutput() FileSharePropertiesResponseFileSharePaidBurstingPtrOutput {
+	return o
+}
+
+func (o FileSharePropertiesResponseFileSharePaidBurstingPtrOutput) ToFileSharePropertiesResponseFileSharePaidBurstingPtrOutputWithContext(ctx context.Context) FileSharePropertiesResponseFileSharePaidBurstingPtrOutput {
+	return o
+}
+
+func (o FileSharePropertiesResponseFileSharePaidBurstingPtrOutput) Elem() FileSharePropertiesResponseFileSharePaidBurstingOutput {
+	return o.ApplyT(func(v *FileSharePropertiesResponseFileSharePaidBursting) FileSharePropertiesResponseFileSharePaidBursting {
+		if v != nil {
+			return *v
+		}
+		var ret FileSharePropertiesResponseFileSharePaidBursting
+		return ret
+	}).(FileSharePropertiesResponseFileSharePaidBurstingOutput)
+}
+
+// Indicates whether paid bursting is enabled for the share. This property is only for file shares created under Files Provisioned v1 SSD account type.
+func (o FileSharePropertiesResponseFileSharePaidBurstingPtrOutput) PaidBurstingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FileSharePropertiesResponseFileSharePaidBursting) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PaidBurstingEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The maximum paid bursting bandwidth for the share, in mebibytes per second. This property is only for file shares created under Files Provisioned v1 SSD account type. The maximum allowed value is 10340 which is the maximum allowed bandwidth for a share.
+func (o FileSharePropertiesResponseFileSharePaidBurstingPtrOutput) PaidBurstingMaxBandwidthMibps() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FileSharePropertiesResponseFileSharePaidBursting) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PaidBurstingMaxBandwidthMibps
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum paid bursting IOPS for the share. This property is only for file shares created under Files Provisioned v1 SSD account type. The maximum allowed value is 102400 which is the maximum allowed IOPS for a share.
+func (o FileSharePropertiesResponseFileSharePaidBurstingPtrOutput) PaidBurstingMaxIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FileSharePropertiesResponseFileSharePaidBursting) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PaidBurstingMaxIops
+	}).(pulumi.IntPtrOutput)
+}
+
 // Statistics related to replication for storage account's Blob, Table, Queue and File services. It is only available when geo-redundant replication is enabled for the storage account.
 type GeoReplicationStatsResponse struct {
 	// A boolean flag which indicates whether or not account failover is supported for the account.
 	CanFailover bool `pulumi:"canFailover"`
+	// A boolean flag which indicates whether or not planned account failover is supported for the account.
+	CanPlannedFailover bool `pulumi:"canPlannedFailover"`
 	// All primary writes preceding this UTC date/time value are guaranteed to be available for read operations. Primary writes following this point in time may or may not be available for reads. Element may be default value if value of LastSyncTime is not available, this can happen if secondary is offline or we are in bootstrap.
 	LastSyncTime string `pulumi:"lastSyncTime"`
+	// The redundancy type of the account after an account failover is performed.
+	PostFailoverRedundancy string `pulumi:"postFailoverRedundancy"`
+	// The redundancy type of the account after a planned account failover is performed.
+	PostPlannedFailoverRedundancy string `pulumi:"postPlannedFailoverRedundancy"`
 	// The status of the secondary location. Possible values are: - Live: Indicates that the secondary location is active and operational. - Bootstrap: Indicates initial synchronization from the primary location to the secondary location is in progress.This typically occurs when replication is first enabled. - Unavailable: Indicates that the secondary location is temporarily unavailable.
 	Status string `pulumi:"status"`
 }
@@ -5920,9 +6434,24 @@ func (o GeoReplicationStatsResponseOutput) CanFailover() pulumi.BoolOutput {
 	return o.ApplyT(func(v GeoReplicationStatsResponse) bool { return v.CanFailover }).(pulumi.BoolOutput)
 }
 
+// A boolean flag which indicates whether or not planned account failover is supported for the account.
+func (o GeoReplicationStatsResponseOutput) CanPlannedFailover() pulumi.BoolOutput {
+	return o.ApplyT(func(v GeoReplicationStatsResponse) bool { return v.CanPlannedFailover }).(pulumi.BoolOutput)
+}
+
 // All primary writes preceding this UTC date/time value are guaranteed to be available for read operations. Primary writes following this point in time may or may not be available for reads. Element may be default value if value of LastSyncTime is not available, this can happen if secondary is offline or we are in bootstrap.
 func (o GeoReplicationStatsResponseOutput) LastSyncTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GeoReplicationStatsResponse) string { return v.LastSyncTime }).(pulumi.StringOutput)
+}
+
+// The redundancy type of the account after an account failover is performed.
+func (o GeoReplicationStatsResponseOutput) PostFailoverRedundancy() pulumi.StringOutput {
+	return o.ApplyT(func(v GeoReplicationStatsResponse) string { return v.PostFailoverRedundancy }).(pulumi.StringOutput)
+}
+
+// The redundancy type of the account after a planned account failover is performed.
+func (o GeoReplicationStatsResponseOutput) PostPlannedFailoverRedundancy() pulumi.StringOutput {
+	return o.ApplyT(func(v GeoReplicationStatsResponse) string { return v.PostPlannedFailoverRedundancy }).(pulumi.StringOutput)
 }
 
 // The status of the secondary location. Possible values are: - Live: Indicates that the secondary location is active and operational. - Bootstrap: Indicates initial synchronization from the primary location to the secondary location is in progress.This typically occurs when replication is first enabled. - Unavailable: Indicates that the secondary location is temporarily unavailable.
@@ -8856,9 +9385,9 @@ func (o ManagementPolicyRuleResponseArrayOutput) Index(i pulumi.IntInput) Manage
 	}).(ManagementPolicyRuleResponseOutput)
 }
 
-// The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+// The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
 type ManagementPolicySchema struct {
-	// The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+	// The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
 	Rules []ManagementPolicyRule `pulumi:"rules"`
 }
 
@@ -8873,9 +9402,9 @@ type ManagementPolicySchemaInput interface {
 	ToManagementPolicySchemaOutputWithContext(context.Context) ManagementPolicySchemaOutput
 }
 
-// The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+// The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
 type ManagementPolicySchemaArgs struct {
-	// The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+	// The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
 	Rules ManagementPolicyRuleArrayInput `pulumi:"rules"`
 }
 
@@ -8891,7 +9420,7 @@ func (i ManagementPolicySchemaArgs) ToManagementPolicySchemaOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ManagementPolicySchemaOutput)
 }
 
-// The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+// The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
 type ManagementPolicySchemaOutput struct{ *pulumi.OutputState }
 
 func (ManagementPolicySchemaOutput) ElementType() reflect.Type {
@@ -8906,18 +9435,18 @@ func (o ManagementPolicySchemaOutput) ToManagementPolicySchemaOutputWithContext(
 	return o
 }
 
-// The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+// The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
 func (o ManagementPolicySchemaOutput) Rules() ManagementPolicyRuleArrayOutput {
 	return o.ApplyT(func(v ManagementPolicySchema) []ManagementPolicyRule { return v.Rules }).(ManagementPolicyRuleArrayOutput)
 }
 
-// The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+// The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
 type ManagementPolicySchemaResponse struct {
-	// The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+	// The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
 	Rules []ManagementPolicyRuleResponse `pulumi:"rules"`
 }
 
-// The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+// The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
 type ManagementPolicySchemaResponseOutput struct{ *pulumi.OutputState }
 
 func (ManagementPolicySchemaResponseOutput) ElementType() reflect.Type {
@@ -8932,7 +9461,7 @@ func (o ManagementPolicySchemaResponseOutput) ToManagementPolicySchemaResponseOu
 	return o
 }
 
-// The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+// The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
 func (o ManagementPolicySchemaResponseOutput) Rules() ManagementPolicyRuleResponseArrayOutput {
 	return o.ApplyT(func(v ManagementPolicySchemaResponse) []ManagementPolicyRuleResponse { return v.Rules }).(ManagementPolicyRuleResponseArrayOutput)
 }
@@ -10377,6 +10906,206 @@ func (o ObjectReplicationPolicyFilterResponsePtrOutput) PrefixMatch() pulumi.Str
 	}).(pulumi.StringArrayOutput)
 }
 
+// Optional. The object replication policy metrics feature options.
+type ObjectReplicationPolicyPropertiesMetrics struct {
+	// Indicates whether object replication metrics feature is enabled for the policy.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// ObjectReplicationPolicyPropertiesMetricsInput is an input type that accepts ObjectReplicationPolicyPropertiesMetricsArgs and ObjectReplicationPolicyPropertiesMetricsOutput values.
+// You can construct a concrete instance of `ObjectReplicationPolicyPropertiesMetricsInput` via:
+//
+//	ObjectReplicationPolicyPropertiesMetricsArgs{...}
+type ObjectReplicationPolicyPropertiesMetricsInput interface {
+	pulumi.Input
+
+	ToObjectReplicationPolicyPropertiesMetricsOutput() ObjectReplicationPolicyPropertiesMetricsOutput
+	ToObjectReplicationPolicyPropertiesMetricsOutputWithContext(context.Context) ObjectReplicationPolicyPropertiesMetricsOutput
+}
+
+// Optional. The object replication policy metrics feature options.
+type ObjectReplicationPolicyPropertiesMetricsArgs struct {
+	// Indicates whether object replication metrics feature is enabled for the policy.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (ObjectReplicationPolicyPropertiesMetricsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ObjectReplicationPolicyPropertiesMetrics)(nil)).Elem()
+}
+
+func (i ObjectReplicationPolicyPropertiesMetricsArgs) ToObjectReplicationPolicyPropertiesMetricsOutput() ObjectReplicationPolicyPropertiesMetricsOutput {
+	return i.ToObjectReplicationPolicyPropertiesMetricsOutputWithContext(context.Background())
+}
+
+func (i ObjectReplicationPolicyPropertiesMetricsArgs) ToObjectReplicationPolicyPropertiesMetricsOutputWithContext(ctx context.Context) ObjectReplicationPolicyPropertiesMetricsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ObjectReplicationPolicyPropertiesMetricsOutput)
+}
+
+func (i ObjectReplicationPolicyPropertiesMetricsArgs) ToObjectReplicationPolicyPropertiesMetricsPtrOutput() ObjectReplicationPolicyPropertiesMetricsPtrOutput {
+	return i.ToObjectReplicationPolicyPropertiesMetricsPtrOutputWithContext(context.Background())
+}
+
+func (i ObjectReplicationPolicyPropertiesMetricsArgs) ToObjectReplicationPolicyPropertiesMetricsPtrOutputWithContext(ctx context.Context) ObjectReplicationPolicyPropertiesMetricsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ObjectReplicationPolicyPropertiesMetricsOutput).ToObjectReplicationPolicyPropertiesMetricsPtrOutputWithContext(ctx)
+}
+
+// ObjectReplicationPolicyPropertiesMetricsPtrInput is an input type that accepts ObjectReplicationPolicyPropertiesMetricsArgs, ObjectReplicationPolicyPropertiesMetricsPtr and ObjectReplicationPolicyPropertiesMetricsPtrOutput values.
+// You can construct a concrete instance of `ObjectReplicationPolicyPropertiesMetricsPtrInput` via:
+//
+//	        ObjectReplicationPolicyPropertiesMetricsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ObjectReplicationPolicyPropertiesMetricsPtrInput interface {
+	pulumi.Input
+
+	ToObjectReplicationPolicyPropertiesMetricsPtrOutput() ObjectReplicationPolicyPropertiesMetricsPtrOutput
+	ToObjectReplicationPolicyPropertiesMetricsPtrOutputWithContext(context.Context) ObjectReplicationPolicyPropertiesMetricsPtrOutput
+}
+
+type objectReplicationPolicyPropertiesMetricsPtrType ObjectReplicationPolicyPropertiesMetricsArgs
+
+func ObjectReplicationPolicyPropertiesMetricsPtr(v *ObjectReplicationPolicyPropertiesMetricsArgs) ObjectReplicationPolicyPropertiesMetricsPtrInput {
+	return (*objectReplicationPolicyPropertiesMetricsPtrType)(v)
+}
+
+func (*objectReplicationPolicyPropertiesMetricsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ObjectReplicationPolicyPropertiesMetrics)(nil)).Elem()
+}
+
+func (i *objectReplicationPolicyPropertiesMetricsPtrType) ToObjectReplicationPolicyPropertiesMetricsPtrOutput() ObjectReplicationPolicyPropertiesMetricsPtrOutput {
+	return i.ToObjectReplicationPolicyPropertiesMetricsPtrOutputWithContext(context.Background())
+}
+
+func (i *objectReplicationPolicyPropertiesMetricsPtrType) ToObjectReplicationPolicyPropertiesMetricsPtrOutputWithContext(ctx context.Context) ObjectReplicationPolicyPropertiesMetricsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ObjectReplicationPolicyPropertiesMetricsPtrOutput)
+}
+
+// Optional. The object replication policy metrics feature options.
+type ObjectReplicationPolicyPropertiesMetricsOutput struct{ *pulumi.OutputState }
+
+func (ObjectReplicationPolicyPropertiesMetricsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ObjectReplicationPolicyPropertiesMetrics)(nil)).Elem()
+}
+
+func (o ObjectReplicationPolicyPropertiesMetricsOutput) ToObjectReplicationPolicyPropertiesMetricsOutput() ObjectReplicationPolicyPropertiesMetricsOutput {
+	return o
+}
+
+func (o ObjectReplicationPolicyPropertiesMetricsOutput) ToObjectReplicationPolicyPropertiesMetricsOutputWithContext(ctx context.Context) ObjectReplicationPolicyPropertiesMetricsOutput {
+	return o
+}
+
+func (o ObjectReplicationPolicyPropertiesMetricsOutput) ToObjectReplicationPolicyPropertiesMetricsPtrOutput() ObjectReplicationPolicyPropertiesMetricsPtrOutput {
+	return o.ToObjectReplicationPolicyPropertiesMetricsPtrOutputWithContext(context.Background())
+}
+
+func (o ObjectReplicationPolicyPropertiesMetricsOutput) ToObjectReplicationPolicyPropertiesMetricsPtrOutputWithContext(ctx context.Context) ObjectReplicationPolicyPropertiesMetricsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ObjectReplicationPolicyPropertiesMetrics) *ObjectReplicationPolicyPropertiesMetrics {
+		return &v
+	}).(ObjectReplicationPolicyPropertiesMetricsPtrOutput)
+}
+
+// Indicates whether object replication metrics feature is enabled for the policy.
+func (o ObjectReplicationPolicyPropertiesMetricsOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ObjectReplicationPolicyPropertiesMetrics) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ObjectReplicationPolicyPropertiesMetricsPtrOutput struct{ *pulumi.OutputState }
+
+func (ObjectReplicationPolicyPropertiesMetricsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ObjectReplicationPolicyPropertiesMetrics)(nil)).Elem()
+}
+
+func (o ObjectReplicationPolicyPropertiesMetricsPtrOutput) ToObjectReplicationPolicyPropertiesMetricsPtrOutput() ObjectReplicationPolicyPropertiesMetricsPtrOutput {
+	return o
+}
+
+func (o ObjectReplicationPolicyPropertiesMetricsPtrOutput) ToObjectReplicationPolicyPropertiesMetricsPtrOutputWithContext(ctx context.Context) ObjectReplicationPolicyPropertiesMetricsPtrOutput {
+	return o
+}
+
+func (o ObjectReplicationPolicyPropertiesMetricsPtrOutput) Elem() ObjectReplicationPolicyPropertiesMetricsOutput {
+	return o.ApplyT(func(v *ObjectReplicationPolicyPropertiesMetrics) ObjectReplicationPolicyPropertiesMetrics {
+		if v != nil {
+			return *v
+		}
+		var ret ObjectReplicationPolicyPropertiesMetrics
+		return ret
+	}).(ObjectReplicationPolicyPropertiesMetricsOutput)
+}
+
+// Indicates whether object replication metrics feature is enabled for the policy.
+func (o ObjectReplicationPolicyPropertiesMetricsPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ObjectReplicationPolicyPropertiesMetrics) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. The object replication policy metrics feature options.
+type ObjectReplicationPolicyPropertiesResponseMetrics struct {
+	// Indicates whether object replication metrics feature is enabled for the policy.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// Optional. The object replication policy metrics feature options.
+type ObjectReplicationPolicyPropertiesResponseMetricsOutput struct{ *pulumi.OutputState }
+
+func (ObjectReplicationPolicyPropertiesResponseMetricsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ObjectReplicationPolicyPropertiesResponseMetrics)(nil)).Elem()
+}
+
+func (o ObjectReplicationPolicyPropertiesResponseMetricsOutput) ToObjectReplicationPolicyPropertiesResponseMetricsOutput() ObjectReplicationPolicyPropertiesResponseMetricsOutput {
+	return o
+}
+
+func (o ObjectReplicationPolicyPropertiesResponseMetricsOutput) ToObjectReplicationPolicyPropertiesResponseMetricsOutputWithContext(ctx context.Context) ObjectReplicationPolicyPropertiesResponseMetricsOutput {
+	return o
+}
+
+// Indicates whether object replication metrics feature is enabled for the policy.
+func (o ObjectReplicationPolicyPropertiesResponseMetricsOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ObjectReplicationPolicyPropertiesResponseMetrics) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ObjectReplicationPolicyPropertiesResponseMetricsPtrOutput struct{ *pulumi.OutputState }
+
+func (ObjectReplicationPolicyPropertiesResponseMetricsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ObjectReplicationPolicyPropertiesResponseMetrics)(nil)).Elem()
+}
+
+func (o ObjectReplicationPolicyPropertiesResponseMetricsPtrOutput) ToObjectReplicationPolicyPropertiesResponseMetricsPtrOutput() ObjectReplicationPolicyPropertiesResponseMetricsPtrOutput {
+	return o
+}
+
+func (o ObjectReplicationPolicyPropertiesResponseMetricsPtrOutput) ToObjectReplicationPolicyPropertiesResponseMetricsPtrOutputWithContext(ctx context.Context) ObjectReplicationPolicyPropertiesResponseMetricsPtrOutput {
+	return o
+}
+
+func (o ObjectReplicationPolicyPropertiesResponseMetricsPtrOutput) Elem() ObjectReplicationPolicyPropertiesResponseMetricsOutput {
+	return o.ApplyT(func(v *ObjectReplicationPolicyPropertiesResponseMetrics) ObjectReplicationPolicyPropertiesResponseMetrics {
+		if v != nil {
+			return *v
+		}
+		var ret ObjectReplicationPolicyPropertiesResponseMetrics
+		return ret
+	}).(ObjectReplicationPolicyPropertiesResponseMetricsOutput)
+}
+
+// Indicates whether object replication metrics feature is enabled for the policy.
+func (o ObjectReplicationPolicyPropertiesResponseMetricsPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ObjectReplicationPolicyPropertiesResponseMetrics) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 // The replication policy rule between two containers.
 type ObjectReplicationPolicyRule struct {
 	// Required. Destination container name.
@@ -10572,7 +11301,7 @@ func (o ObjectReplicationPolicyRuleResponseArrayOutput) Index(i pulumi.IntInput)
 }
 
 type PermissionScope struct {
-	// The permissions for the local user. Possible values include: Read (r), Write (w), Delete (d), List (l), and Create (c).
+	// The permissions for the local user. Possible values include: Read (r), Write (w), Delete (d), List (l), Create (c), Modify Ownership (o), and Modify Permissions (p).
 	Permissions string `pulumi:"permissions"`
 	// The name of resource, normally the container name or the file share name, used by the local user.
 	ResourceName string `pulumi:"resourceName"`
@@ -10592,7 +11321,7 @@ type PermissionScopeInput interface {
 }
 
 type PermissionScopeArgs struct {
-	// The permissions for the local user. Possible values include: Read (r), Write (w), Delete (d), List (l), and Create (c).
+	// The permissions for the local user. Possible values include: Read (r), Write (w), Delete (d), List (l), Create (c), Modify Ownership (o), and Modify Permissions (p).
 	Permissions pulumi.StringInput `pulumi:"permissions"`
 	// The name of resource, normally the container name or the file share name, used by the local user.
 	ResourceName pulumi.StringInput `pulumi:"resourceName"`
@@ -10651,7 +11380,7 @@ func (o PermissionScopeOutput) ToPermissionScopeOutputWithContext(ctx context.Co
 	return o
 }
 
-// The permissions for the local user. Possible values include: Read (r), Write (w), Delete (d), List (l), and Create (c).
+// The permissions for the local user. Possible values include: Read (r), Write (w), Delete (d), List (l), Create (c), Modify Ownership (o), and Modify Permissions (p).
 func (o PermissionScopeOutput) Permissions() pulumi.StringOutput {
 	return o.ApplyT(func(v PermissionScope) string { return v.Permissions }).(pulumi.StringOutput)
 }
@@ -10687,7 +11416,7 @@ func (o PermissionScopeArrayOutput) Index(i pulumi.IntInput) PermissionScopeOutp
 }
 
 type PermissionScopeResponse struct {
-	// The permissions for the local user. Possible values include: Read (r), Write (w), Delete (d), List (l), and Create (c).
+	// The permissions for the local user. Possible values include: Read (r), Write (w), Delete (d), List (l), Create (c), Modify Ownership (o), and Modify Permissions (p).
 	Permissions string `pulumi:"permissions"`
 	// The name of resource, normally the container name or the file share name, used by the local user.
 	ResourceName string `pulumi:"resourceName"`
@@ -10709,7 +11438,7 @@ func (o PermissionScopeResponseOutput) ToPermissionScopeResponseOutputWithContex
 	return o
 }
 
-// The permissions for the local user. Possible values include: Read (r), Write (w), Delete (d), List (l), and Create (c).
+// The permissions for the local user. Possible values include: Read (r), Write (w), Delete (d), List (l), Create (c), Modify Ownership (o), and Modify Permissions (p).
 func (o PermissionScopeResponseOutput) Permissions() pulumi.StringOutput {
 	return o.ApplyT(func(v PermissionScopeResponse) string { return v.Permissions }).(pulumi.StringOutput)
 }
@@ -11983,7 +12712,7 @@ func (o RoutingPreferenceResponsePtrOutput) RoutingChoice() pulumi.StringPtrOutp
 
 // SasPolicy assigned to the storage account.
 type SasPolicy struct {
-	// The SAS expiration action. Can only be Log.
+	// The SAS Expiration Action defines the action to be performed when sasPolicy.sasExpirationPeriod is violated. The 'Log' action can be used for audit purposes and the 'Block' action can be used to block and deny the usage of SAS tokens that do not adhere to the sas policy expiration period.
 	ExpirationAction string `pulumi:"expirationAction"`
 	// The SAS expiration period, DD.HH:MM:SS.
 	SasExpirationPeriod string `pulumi:"sasExpirationPeriod"`
@@ -12014,7 +12743,7 @@ type SasPolicyInput interface {
 
 // SasPolicy assigned to the storage account.
 type SasPolicyArgs struct {
-	// The SAS expiration action. Can only be Log.
+	// The SAS Expiration Action defines the action to be performed when sasPolicy.sasExpirationPeriod is violated. The 'Log' action can be used for audit purposes and the 'Block' action can be used to block and deny the usage of SAS tokens that do not adhere to the sas policy expiration period.
 	ExpirationAction pulumi.StringInput `pulumi:"expirationAction"`
 	// The SAS expiration period, DD.HH:MM:SS.
 	SasExpirationPeriod pulumi.StringInput `pulumi:"sasExpirationPeriod"`
@@ -12109,7 +12838,7 @@ func (o SasPolicyOutput) ToSasPolicyPtrOutputWithContext(ctx context.Context) Sa
 	}).(SasPolicyPtrOutput)
 }
 
-// The SAS expiration action. Can only be Log.
+// The SAS Expiration Action defines the action to be performed when sasPolicy.sasExpirationPeriod is violated. The 'Log' action can be used for audit purposes and the 'Block' action can be used to block and deny the usage of SAS tokens that do not adhere to the sas policy expiration period.
 func (o SasPolicyOutput) ExpirationAction() pulumi.StringOutput {
 	return o.ApplyT(func(v SasPolicy) string { return v.ExpirationAction }).(pulumi.StringOutput)
 }
@@ -12143,7 +12872,7 @@ func (o SasPolicyPtrOutput) Elem() SasPolicyOutput {
 	}).(SasPolicyOutput)
 }
 
-// The SAS expiration action. Can only be Log.
+// The SAS Expiration Action defines the action to be performed when sasPolicy.sasExpirationPeriod is violated. The 'Log' action can be used for audit purposes and the 'Block' action can be used to block and deny the usage of SAS tokens that do not adhere to the sas policy expiration period.
 func (o SasPolicyPtrOutput) ExpirationAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SasPolicy) *string {
 		if v == nil {
@@ -12165,7 +12894,7 @@ func (o SasPolicyPtrOutput) SasExpirationPeriod() pulumi.StringPtrOutput {
 
 // SasPolicy assigned to the storage account.
 type SasPolicyResponse struct {
-	// The SAS expiration action. Can only be Log.
+	// The SAS Expiration Action defines the action to be performed when sasPolicy.sasExpirationPeriod is violated. The 'Log' action can be used for audit purposes and the 'Block' action can be used to block and deny the usage of SAS tokens that do not adhere to the sas policy expiration period.
 	ExpirationAction string `pulumi:"expirationAction"`
 	// The SAS expiration period, DD.HH:MM:SS.
 	SasExpirationPeriod string `pulumi:"sasExpirationPeriod"`
@@ -12198,7 +12927,7 @@ func (o SasPolicyResponseOutput) ToSasPolicyResponseOutputWithContext(ctx contex
 	return o
 }
 
-// The SAS expiration action. Can only be Log.
+// The SAS Expiration Action defines the action to be performed when sasPolicy.sasExpirationPeriod is violated. The 'Log' action can be used for audit purposes and the 'Block' action can be used to block and deny the usage of SAS tokens that do not adhere to the sas policy expiration period.
 func (o SasPolicyResponseOutput) ExpirationAction() pulumi.StringOutput {
 	return o.ApplyT(func(v SasPolicyResponse) string { return v.ExpirationAction }).(pulumi.StringOutput)
 }
@@ -13733,15 +14462,15 @@ func (o StorageTaskAssignmentReportResponseOutput) Prefix() pulumi.StringOutput 
 
 // Storage task execution report for a run instance.
 type StorageTaskReportPropertiesResponse struct {
-	// End time of the run instance. Filter options such as startTime gt '2023-06-26T20:51:24.4494016Z' and other comparison operators can be used as described for DateTime properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+	// End time of the run instance. Filter options such as startTime gt '2023-06-26T20:51:24.4494016Z' and other comparison operators can be used as described for DateTime properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
 	FinishTime string `pulumi:"finishTime"`
-	// Total number of objects where task operation failed when was attempted. Filter options such as objectFailedCount eq 0 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+	// Total number of objects where task operation failed when was attempted. Filter options such as objectFailedCount eq 0 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
 	ObjectFailedCount string `pulumi:"objectFailedCount"`
-	// Total number of objects that meet the storage tasks condition and were operated upon. Filter options such as objectsOperatedOnCount ge 100 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+	// Total number of objects that meet the storage tasks condition and were operated upon. Filter options such as objectsOperatedOnCount ge 100 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
 	ObjectsOperatedOnCount string `pulumi:"objectsOperatedOnCount"`
-	// Total number of objects where task operation succeeded when was attempted.Filter options such as objectsSucceededCount gt 150 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+	// Total number of objects where task operation succeeded when was attempted.Filter options such as objectsSucceededCount gt 150 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
 	ObjectsSucceededCount string `pulumi:"objectsSucceededCount"`
-	// Total number of objects that meet the condition as defined in the storage task assignment execution context. Filter options such as objectsTargetedCount gt 50 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+	// Total number of objects that meet the condition as defined in the storage task assignment execution context. Filter options such as objectsTargetedCount gt 50 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
 	ObjectsTargetedCount string `pulumi:"objectsTargetedCount"`
 	// Represents the overall result of the execution for the run instance
 	RunResult string `pulumi:"runResult"`
@@ -13749,7 +14478,7 @@ type StorageTaskReportPropertiesResponse struct {
 	RunStatusEnum string `pulumi:"runStatusEnum"`
 	// Well known Azure Storage error code that represents the error encountered during execution of the run instance.
 	RunStatusError string `pulumi:"runStatusError"`
-	// Start time of the run instance. Filter options such as startTime gt '2023-06-26T20:51:24.4494016Z' and other comparison operators can be used as described for DateTime properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+	// Start time of the run instance. Filter options such as startTime gt '2023-06-26T20:51:24.4494016Z' and other comparison operators can be used as described for DateTime properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
 	StartTime string `pulumi:"startTime"`
 	// Represents the Storage Account Id where the storage task definition was applied and executed.
 	StorageAccountId string `pulumi:"storageAccountId"`
@@ -13778,27 +14507,27 @@ func (o StorageTaskReportPropertiesResponseOutput) ToStorageTaskReportProperties
 	return o
 }
 
-// End time of the run instance. Filter options such as startTime gt '2023-06-26T20:51:24.4494016Z' and other comparison operators can be used as described for DateTime properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+// End time of the run instance. Filter options such as startTime gt '2023-06-26T20:51:24.4494016Z' and other comparison operators can be used as described for DateTime properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
 func (o StorageTaskReportPropertiesResponseOutput) FinishTime() pulumi.StringOutput {
 	return o.ApplyT(func(v StorageTaskReportPropertiesResponse) string { return v.FinishTime }).(pulumi.StringOutput)
 }
 
-// Total number of objects where task operation failed when was attempted. Filter options such as objectFailedCount eq 0 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+// Total number of objects where task operation failed when was attempted. Filter options such as objectFailedCount eq 0 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
 func (o StorageTaskReportPropertiesResponseOutput) ObjectFailedCount() pulumi.StringOutput {
 	return o.ApplyT(func(v StorageTaskReportPropertiesResponse) string { return v.ObjectFailedCount }).(pulumi.StringOutput)
 }
 
-// Total number of objects that meet the storage tasks condition and were operated upon. Filter options such as objectsOperatedOnCount ge 100 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+// Total number of objects that meet the storage tasks condition and were operated upon. Filter options such as objectsOperatedOnCount ge 100 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
 func (o StorageTaskReportPropertiesResponseOutput) ObjectsOperatedOnCount() pulumi.StringOutput {
 	return o.ApplyT(func(v StorageTaskReportPropertiesResponse) string { return v.ObjectsOperatedOnCount }).(pulumi.StringOutput)
 }
 
-// Total number of objects where task operation succeeded when was attempted.Filter options such as objectsSucceededCount gt 150 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+// Total number of objects where task operation succeeded when was attempted.Filter options such as objectsSucceededCount gt 150 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
 func (o StorageTaskReportPropertiesResponseOutput) ObjectsSucceededCount() pulumi.StringOutput {
 	return o.ApplyT(func(v StorageTaskReportPropertiesResponse) string { return v.ObjectsSucceededCount }).(pulumi.StringOutput)
 }
 
-// Total number of objects that meet the condition as defined in the storage task assignment execution context. Filter options such as objectsTargetedCount gt 50 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+// Total number of objects that meet the condition as defined in the storage task assignment execution context. Filter options such as objectsTargetedCount gt 50 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
 func (o StorageTaskReportPropertiesResponseOutput) ObjectsTargetedCount() pulumi.StringOutput {
 	return o.ApplyT(func(v StorageTaskReportPropertiesResponse) string { return v.ObjectsTargetedCount }).(pulumi.StringOutput)
 }
@@ -13818,7 +14547,7 @@ func (o StorageTaskReportPropertiesResponseOutput) RunStatusError() pulumi.Strin
 	return o.ApplyT(func(v StorageTaskReportPropertiesResponse) string { return v.RunStatusError }).(pulumi.StringOutput)
 }
 
-// Start time of the run instance. Filter options such as startTime gt '2023-06-26T20:51:24.4494016Z' and other comparison operators can be used as described for DateTime properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+// Start time of the run instance. Filter options such as startTime gt '2023-06-26T20:51:24.4494016Z' and other comparison operators can be used as described for DateTime properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
 func (o StorageTaskReportPropertiesResponseOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v StorageTaskReportPropertiesResponse) string { return v.StartTime }).(pulumi.StringOutput)
 }
@@ -13872,7 +14601,7 @@ func (o StorageTaskReportPropertiesResponsePtrOutput) Elem() StorageTaskReportPr
 	}).(StorageTaskReportPropertiesResponseOutput)
 }
 
-// End time of the run instance. Filter options such as startTime gt '2023-06-26T20:51:24.4494016Z' and other comparison operators can be used as described for DateTime properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+// End time of the run instance. Filter options such as startTime gt '2023-06-26T20:51:24.4494016Z' and other comparison operators can be used as described for DateTime properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
 func (o StorageTaskReportPropertiesResponsePtrOutput) FinishTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StorageTaskReportPropertiesResponse) *string {
 		if v == nil {
@@ -13882,7 +14611,7 @@ func (o StorageTaskReportPropertiesResponsePtrOutput) FinishTime() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// Total number of objects where task operation failed when was attempted. Filter options such as objectFailedCount eq 0 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+// Total number of objects where task operation failed when was attempted. Filter options such as objectFailedCount eq 0 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
 func (o StorageTaskReportPropertiesResponsePtrOutput) ObjectFailedCount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StorageTaskReportPropertiesResponse) *string {
 		if v == nil {
@@ -13892,7 +14621,7 @@ func (o StorageTaskReportPropertiesResponsePtrOutput) ObjectFailedCount() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
-// Total number of objects that meet the storage tasks condition and were operated upon. Filter options such as objectsOperatedOnCount ge 100 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+// Total number of objects that meet the storage tasks condition and were operated upon. Filter options such as objectsOperatedOnCount ge 100 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
 func (o StorageTaskReportPropertiesResponsePtrOutput) ObjectsOperatedOnCount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StorageTaskReportPropertiesResponse) *string {
 		if v == nil {
@@ -13902,7 +14631,7 @@ func (o StorageTaskReportPropertiesResponsePtrOutput) ObjectsOperatedOnCount() p
 	}).(pulumi.StringPtrOutput)
 }
 
-// Total number of objects where task operation succeeded when was attempted.Filter options such as objectsSucceededCount gt 150 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+// Total number of objects where task operation succeeded when was attempted.Filter options such as objectsSucceededCount gt 150 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
 func (o StorageTaskReportPropertiesResponsePtrOutput) ObjectsSucceededCount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StorageTaskReportPropertiesResponse) *string {
 		if v == nil {
@@ -13912,7 +14641,7 @@ func (o StorageTaskReportPropertiesResponsePtrOutput) ObjectsSucceededCount() pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Total number of objects that meet the condition as defined in the storage task assignment execution context. Filter options such as objectsTargetedCount gt 50 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+// Total number of objects that meet the condition as defined in the storage task assignment execution context. Filter options such as objectsTargetedCount gt 50 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
 func (o StorageTaskReportPropertiesResponsePtrOutput) ObjectsTargetedCount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StorageTaskReportPropertiesResponse) *string {
 		if v == nil {
@@ -13952,7 +14681,7 @@ func (o StorageTaskReportPropertiesResponsePtrOutput) RunStatusError() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-// Start time of the run instance. Filter options such as startTime gt '2023-06-26T20:51:24.4494016Z' and other comparison operators can be used as described for DateTime properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+// Start time of the run instance. Filter options such as startTime gt '2023-06-26T20:51:24.4494016Z' and other comparison operators can be used as described for DateTime properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
 func (o StorageTaskReportPropertiesResponsePtrOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StorageTaskReportPropertiesResponse) *string {
 		if v == nil {
@@ -14769,7 +15498,7 @@ type TriggerParameters struct {
 	IntervalUnit *IntervalUnit `pulumi:"intervalUnit"`
 	// When to start task execution. This is a required field when ExecutionTrigger.properties.type is 'OnSchedule'; this property should not be present when ExecutionTrigger.properties.type is 'RunOnce'
 	StartFrom *string `pulumi:"startFrom"`
-	// When to start task execution. This is an optional field when ExecutionTrigger.properties.type is 'RunOnce'; this property should not be present when ExecutionTrigger.properties.type is 'OnSchedule'
+	// When to start task execution. This is a required field when ExecutionTrigger.properties.type is 'RunOnce'; this property should not be present when ExecutionTrigger.properties.type is 'OnSchedule'
 	StartOn *string `pulumi:"startOn"`
 }
 
@@ -14794,7 +15523,7 @@ type TriggerParametersArgs struct {
 	IntervalUnit IntervalUnitPtrInput `pulumi:"intervalUnit"`
 	// When to start task execution. This is a required field when ExecutionTrigger.properties.type is 'OnSchedule'; this property should not be present when ExecutionTrigger.properties.type is 'RunOnce'
 	StartFrom pulumi.StringPtrInput `pulumi:"startFrom"`
-	// When to start task execution. This is an optional field when ExecutionTrigger.properties.type is 'RunOnce'; this property should not be present when ExecutionTrigger.properties.type is 'OnSchedule'
+	// When to start task execution. This is a required field when ExecutionTrigger.properties.type is 'RunOnce'; this property should not be present when ExecutionTrigger.properties.type is 'OnSchedule'
 	StartOn pulumi.StringPtrInput `pulumi:"startOn"`
 }
 
@@ -14845,7 +15574,7 @@ func (o TriggerParametersOutput) StartFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerParameters) *string { return v.StartFrom }).(pulumi.StringPtrOutput)
 }
 
-// When to start task execution. This is an optional field when ExecutionTrigger.properties.type is 'RunOnce'; this property should not be present when ExecutionTrigger.properties.type is 'OnSchedule'
+// When to start task execution. This is a required field when ExecutionTrigger.properties.type is 'RunOnce'; this property should not be present when ExecutionTrigger.properties.type is 'OnSchedule'
 func (o TriggerParametersOutput) StartOn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerParameters) *string { return v.StartOn }).(pulumi.StringPtrOutput)
 }
@@ -14860,7 +15589,7 @@ type TriggerParametersResponse struct {
 	IntervalUnit *string `pulumi:"intervalUnit"`
 	// When to start task execution. This is a required field when ExecutionTrigger.properties.type is 'OnSchedule'; this property should not be present when ExecutionTrigger.properties.type is 'RunOnce'
 	StartFrom *string `pulumi:"startFrom"`
-	// When to start task execution. This is an optional field when ExecutionTrigger.properties.type is 'RunOnce'; this property should not be present when ExecutionTrigger.properties.type is 'OnSchedule'
+	// When to start task execution. This is a required field when ExecutionTrigger.properties.type is 'RunOnce'; this property should not be present when ExecutionTrigger.properties.type is 'OnSchedule'
 	StartOn *string `pulumi:"startOn"`
 }
 
@@ -14899,7 +15628,7 @@ func (o TriggerParametersResponseOutput) StartFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerParametersResponse) *string { return v.StartFrom }).(pulumi.StringPtrOutput)
 }
 
-// When to start task execution. This is an optional field when ExecutionTrigger.properties.type is 'RunOnce'; this property should not be present when ExecutionTrigger.properties.type is 'OnSchedule'
+// When to start task execution. This is a required field when ExecutionTrigger.properties.type is 'RunOnce'; this property should not be present when ExecutionTrigger.properties.type is 'OnSchedule'
 func (o TriggerParametersResponseOutput) StartOn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerParametersResponse) *string { return v.StartOn }).(pulumi.StringPtrOutput)
 }
@@ -15284,6 +16013,10 @@ func init() {
 	pulumi.RegisterOutputType(AzureFilesIdentityBasedAuthenticationPtrOutput{})
 	pulumi.RegisterOutputType(AzureFilesIdentityBasedAuthenticationResponseOutput{})
 	pulumi.RegisterOutputType(AzureFilesIdentityBasedAuthenticationResponsePtrOutput{})
+	pulumi.RegisterOutputType(BlobInventoryCreationTimeOutput{})
+	pulumi.RegisterOutputType(BlobInventoryCreationTimePtrOutput{})
+	pulumi.RegisterOutputType(BlobInventoryCreationTimeResponseOutput{})
+	pulumi.RegisterOutputType(BlobInventoryCreationTimeResponsePtrOutput{})
 	pulumi.RegisterOutputType(BlobInventoryPolicyDefinitionOutput{})
 	pulumi.RegisterOutputType(BlobInventoryPolicyDefinitionResponseOutput{})
 	pulumi.RegisterOutputType(BlobInventoryPolicyFilterOutput{})
@@ -15357,6 +16090,10 @@ func init() {
 	pulumi.RegisterOutputType(ExtendedLocationPtrOutput{})
 	pulumi.RegisterOutputType(ExtendedLocationResponseOutput{})
 	pulumi.RegisterOutputType(ExtendedLocationResponsePtrOutput{})
+	pulumi.RegisterOutputType(FileSharePropertiesFileSharePaidBurstingOutput{})
+	pulumi.RegisterOutputType(FileSharePropertiesFileSharePaidBurstingPtrOutput{})
+	pulumi.RegisterOutputType(FileSharePropertiesResponseFileSharePaidBurstingOutput{})
+	pulumi.RegisterOutputType(FileSharePropertiesResponseFileSharePaidBurstingPtrOutput{})
 	pulumi.RegisterOutputType(GeoReplicationStatsResponseOutput{})
 	pulumi.RegisterOutputType(IPRuleOutput{})
 	pulumi.RegisterOutputType(IPRuleArrayOutput{})
@@ -15425,6 +16162,10 @@ func init() {
 	pulumi.RegisterOutputType(ObjectReplicationPolicyFilterPtrOutput{})
 	pulumi.RegisterOutputType(ObjectReplicationPolicyFilterResponseOutput{})
 	pulumi.RegisterOutputType(ObjectReplicationPolicyFilterResponsePtrOutput{})
+	pulumi.RegisterOutputType(ObjectReplicationPolicyPropertiesMetricsOutput{})
+	pulumi.RegisterOutputType(ObjectReplicationPolicyPropertiesMetricsPtrOutput{})
+	pulumi.RegisterOutputType(ObjectReplicationPolicyPropertiesResponseMetricsOutput{})
+	pulumi.RegisterOutputType(ObjectReplicationPolicyPropertiesResponseMetricsPtrOutput{})
 	pulumi.RegisterOutputType(ObjectReplicationPolicyRuleOutput{})
 	pulumi.RegisterOutputType(ObjectReplicationPolicyRuleArrayOutput{})
 	pulumi.RegisterOutputType(ObjectReplicationPolicyRuleResponseOutput{})

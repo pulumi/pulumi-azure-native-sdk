@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a distributed availability group info.
 //
-// Uses Azure REST API version 2021-11-01.
+// Uses Azure REST API version 2023-08-01.
 //
-// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01, 2023-08-01-preview, 2024-05-01-preview.
+// Other available API versions: 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupDistributedAvailabilityGroup(ctx *pulumi.Context, args *LookupDistributedAvailabilityGroupArgs, opts ...pulumi.InvokeOption) (*LookupDistributedAvailabilityGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDistributedAvailabilityGroupResult
@@ -37,30 +37,34 @@ type LookupDistributedAvailabilityGroupArgs struct {
 
 // Distributed availability group between box and Sql Managed Instance.
 type LookupDistributedAvailabilityGroupResult struct {
-	// The distributed availability group id
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// Databases in the distributed availability group
+	Databases []DistributedAvailabilityGroupDatabaseResponse `pulumi:"databases"`
+	// ID of the distributed availability group
 	DistributedAvailabilityGroupId string `pulumi:"distributedAvailabilityGroupId"`
+	// Name of the distributed availability group
+	DistributedAvailabilityGroupName string `pulumi:"distributedAvailabilityGroupName"`
+	// The link failover mode - can be Manual if intended to be used for two-way failover with a supported SQL Server, or None for one-way failover to Azure.
+	FailoverMode *string `pulumi:"failoverMode"`
 	// Resource ID.
 	Id string `pulumi:"id"`
-	// The last hardened lsn
-	LastHardenedLsn string `pulumi:"lastHardenedLsn"`
-	// The link state
-	LinkState string `pulumi:"linkState"`
+	// Managed instance side availability group name
+	InstanceAvailabilityGroupName *string `pulumi:"instanceAvailabilityGroupName"`
+	// Managed instance side link role
+	InstanceLinkRole *string `pulumi:"instanceLinkRole"`
 	// Resource name.
 	Name string `pulumi:"name"`
-	// The primary availability group name
-	PrimaryAvailabilityGroupName *string `pulumi:"primaryAvailabilityGroupName"`
-	// The replication mode of a distributed availability group. Parameter will be ignored during link creation.
+	// SQL server side availability group name
+	PartnerAvailabilityGroupName *string `pulumi:"partnerAvailabilityGroupName"`
+	// SQL server side endpoint - IP or DNS resolvable name
+	PartnerEndpoint *string `pulumi:"partnerEndpoint"`
+	// SQL server side link role
+	PartnerLinkRole string `pulumi:"partnerLinkRole"`
+	// Replication mode of the link
 	ReplicationMode *string `pulumi:"replicationMode"`
-	// The secondary availability group name
-	SecondaryAvailabilityGroupName *string `pulumi:"secondaryAvailabilityGroupName"`
-	// The source endpoint
-	SourceEndpoint *string `pulumi:"sourceEndpoint"`
-	// The source replica id
-	SourceReplicaId string `pulumi:"sourceReplicaId"`
-	// The name of the target database
-	TargetDatabase *string `pulumi:"targetDatabase"`
-	// The target replica id
-	TargetReplicaId string `pulumi:"targetReplicaId"`
+	// Database seeding mode – can be Automatic (default), or Manual for supported scenarios.
+	SeedingMode *string `pulumi:"seedingMode"`
 	// Resource type.
 	Type string `pulumi:"type"`
 }
@@ -102,9 +106,31 @@ func (o LookupDistributedAvailabilityGroupResultOutput) ToLookupDistributedAvail
 	return o
 }
 
-// The distributed availability group id
+// The Azure API version of the resource.
+func (o LookupDistributedAvailabilityGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDistributedAvailabilityGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Databases in the distributed availability group
+func (o LookupDistributedAvailabilityGroupResultOutput) Databases() DistributedAvailabilityGroupDatabaseResponseArrayOutput {
+	return o.ApplyT(func(v LookupDistributedAvailabilityGroupResult) []DistributedAvailabilityGroupDatabaseResponse {
+		return v.Databases
+	}).(DistributedAvailabilityGroupDatabaseResponseArrayOutput)
+}
+
+// ID of the distributed availability group
 func (o LookupDistributedAvailabilityGroupResultOutput) DistributedAvailabilityGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDistributedAvailabilityGroupResult) string { return v.DistributedAvailabilityGroupId }).(pulumi.StringOutput)
+}
+
+// Name of the distributed availability group
+func (o LookupDistributedAvailabilityGroupResultOutput) DistributedAvailabilityGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDistributedAvailabilityGroupResult) string { return v.DistributedAvailabilityGroupName }).(pulumi.StringOutput)
+}
+
+// The link failover mode - can be Manual if intended to be used for two-way failover with a supported SQL Server, or None for one-way failover to Azure.
+func (o LookupDistributedAvailabilityGroupResultOutput) FailoverMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDistributedAvailabilityGroupResult) *string { return v.FailoverMode }).(pulumi.StringPtrOutput)
 }
 
 // Resource ID.
@@ -112,14 +138,14 @@ func (o LookupDistributedAvailabilityGroupResultOutput) Id() pulumi.StringOutput
 	return o.ApplyT(func(v LookupDistributedAvailabilityGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The last hardened lsn
-func (o LookupDistributedAvailabilityGroupResultOutput) LastHardenedLsn() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDistributedAvailabilityGroupResult) string { return v.LastHardenedLsn }).(pulumi.StringOutput)
+// Managed instance side availability group name
+func (o LookupDistributedAvailabilityGroupResultOutput) InstanceAvailabilityGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDistributedAvailabilityGroupResult) *string { return v.InstanceAvailabilityGroupName }).(pulumi.StringPtrOutput)
 }
 
-// The link state
-func (o LookupDistributedAvailabilityGroupResultOutput) LinkState() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDistributedAvailabilityGroupResult) string { return v.LinkState }).(pulumi.StringOutput)
+// Managed instance side link role
+func (o LookupDistributedAvailabilityGroupResultOutput) InstanceLinkRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDistributedAvailabilityGroupResult) *string { return v.InstanceLinkRole }).(pulumi.StringPtrOutput)
 }
 
 // Resource name.
@@ -127,39 +153,29 @@ func (o LookupDistributedAvailabilityGroupResultOutput) Name() pulumi.StringOutp
 	return o.ApplyT(func(v LookupDistributedAvailabilityGroupResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The primary availability group name
-func (o LookupDistributedAvailabilityGroupResultOutput) PrimaryAvailabilityGroupName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupDistributedAvailabilityGroupResult) *string { return v.PrimaryAvailabilityGroupName }).(pulumi.StringPtrOutput)
+// SQL server side availability group name
+func (o LookupDistributedAvailabilityGroupResultOutput) PartnerAvailabilityGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDistributedAvailabilityGroupResult) *string { return v.PartnerAvailabilityGroupName }).(pulumi.StringPtrOutput)
 }
 
-// The replication mode of a distributed availability group. Parameter will be ignored during link creation.
+// SQL server side endpoint - IP or DNS resolvable name
+func (o LookupDistributedAvailabilityGroupResultOutput) PartnerEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDistributedAvailabilityGroupResult) *string { return v.PartnerEndpoint }).(pulumi.StringPtrOutput)
+}
+
+// SQL server side link role
+func (o LookupDistributedAvailabilityGroupResultOutput) PartnerLinkRole() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDistributedAvailabilityGroupResult) string { return v.PartnerLinkRole }).(pulumi.StringOutput)
+}
+
+// Replication mode of the link
 func (o LookupDistributedAvailabilityGroupResultOutput) ReplicationMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDistributedAvailabilityGroupResult) *string { return v.ReplicationMode }).(pulumi.StringPtrOutput)
 }
 
-// The secondary availability group name
-func (o LookupDistributedAvailabilityGroupResultOutput) SecondaryAvailabilityGroupName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupDistributedAvailabilityGroupResult) *string { return v.SecondaryAvailabilityGroupName }).(pulumi.StringPtrOutput)
-}
-
-// The source endpoint
-func (o LookupDistributedAvailabilityGroupResultOutput) SourceEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupDistributedAvailabilityGroupResult) *string { return v.SourceEndpoint }).(pulumi.StringPtrOutput)
-}
-
-// The source replica id
-func (o LookupDistributedAvailabilityGroupResultOutput) SourceReplicaId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDistributedAvailabilityGroupResult) string { return v.SourceReplicaId }).(pulumi.StringOutput)
-}
-
-// The name of the target database
-func (o LookupDistributedAvailabilityGroupResultOutput) TargetDatabase() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupDistributedAvailabilityGroupResult) *string { return v.TargetDatabase }).(pulumi.StringPtrOutput)
-}
-
-// The target replica id
-func (o LookupDistributedAvailabilityGroupResultOutput) TargetReplicaId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDistributedAvailabilityGroupResult) string { return v.TargetReplicaId }).(pulumi.StringOutput)
+// Database seeding mode – can be Automatic (default), or Manual for supported scenarios.
+func (o LookupDistributedAvailabilityGroupResultOutput) SeedingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDistributedAvailabilityGroupResult) *string { return v.SeedingMode }).(pulumi.StringPtrOutput)
 }
 
 // Resource type.

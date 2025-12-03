@@ -7,13 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified NSP access rule by name.
 //
 // Uses Azure REST API version 2024-06-01-preview.
+//
+// Other available API versions: 2024-07-01, 2024-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupNetworkSecurityPerimeterAccessRule(ctx *pulumi.Context, args *LookupNetworkSecurityPerimeterAccessRuleArgs, opts ...pulumi.InvokeOption) (*LookupNetworkSecurityPerimeterAccessRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkSecurityPerimeterAccessRuleResult
@@ -39,6 +41,8 @@ type LookupNetworkSecurityPerimeterAccessRuleArgs struct {
 type LookupNetworkSecurityPerimeterAccessRuleResult struct {
 	// Inbound address prefixes (IPv4/IPv6)
 	AddressPrefixes []string `pulumi:"addressPrefixes"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Direction that specifies whether the access rules is inbound/outbound.
 	Direction *string `pulumi:"direction"`
 	// Outbound rules email address format.
@@ -109,6 +113,11 @@ func (o LookupNetworkSecurityPerimeterAccessRuleResultOutput) ToLookupNetworkSec
 // Inbound address prefixes (IPv4/IPv6)
 func (o LookupNetworkSecurityPerimeterAccessRuleResultOutput) AddressPrefixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupNetworkSecurityPerimeterAccessRuleResult) []string { return v.AddressPrefixes }).(pulumi.StringArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupNetworkSecurityPerimeterAccessRuleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkSecurityPerimeterAccessRuleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Direction that specifies whether the access rules is inbound/outbound.

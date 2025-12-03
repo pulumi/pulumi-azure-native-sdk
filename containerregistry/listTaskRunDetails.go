@@ -7,13 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the detailed information for a given task run that includes all secrets.
 //
 // Uses Azure REST API version 2019-06-01-preview.
+//
+// Other available API versions: 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func ListTaskRunDetails(ctx *pulumi.Context, args *ListTaskRunDetailsArgs, opts ...pulumi.InvokeOption) (*ListTaskRunDetailsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListTaskRunDetailsResult

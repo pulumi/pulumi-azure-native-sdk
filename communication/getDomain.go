@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the Domains resource and its properties.
 //
-// Uses Azure REST API version 2023-03-31.
+// Uses Azure REST API version 2023-06-01-preview.
 //
-// Other available API versions: 2022-07-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2024-09-01-preview.
+// Other available API versions: 2023-03-31, 2023-04-01, 2023-04-01-preview, 2024-09-01-preview, 2025-05-01, 2025-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native communication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupDomain(ctx *pulumi.Context, args *LookupDomainArgs, opts ...pulumi.InvokeOption) (*LookupDomainResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDomainResult
@@ -37,6 +37,8 @@ type LookupDomainArgs struct {
 
 // A class representing a Domains resource.
 type LookupDomainResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The location where the Domains resource data is stored at rest.
 	DataLocation string `pulumi:"dataLocation"`
 	// Describes how a Domains resource is being managed.
@@ -102,6 +104,11 @@ func (o LookupDomainResultOutput) ToLookupDomainResultOutput() LookupDomainResul
 
 func (o LookupDomainResultOutput) ToLookupDomainResultOutputWithContext(ctx context.Context) LookupDomainResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupDomainResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDomainResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The location where the Domains resource data is stored at rest.

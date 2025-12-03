@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieve the webhook identified by webhook name.
 //
-// Uses Azure REST API version 2015-10-31.
+// Uses Azure REST API version 2023-05-15-preview.
 //
-// Other available API versions: 2023-05-15-preview, 2024-10-23.
+// Other available API versions: 2015-10-31, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupWebhook(ctx *pulumi.Context, args *LookupWebhookArgs, opts ...pulumi.InvokeOption) (*LookupWebhookResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebhookResult
@@ -37,13 +37,15 @@ type LookupWebhookArgs struct {
 
 // Definition of the webhook type.
 type LookupWebhookResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets or sets the creation time.
 	CreationTime *string `pulumi:"creationTime"`
 	// Gets or sets the description.
 	Description *string `pulumi:"description"`
 	// Gets or sets the expiry time.
 	ExpiryTime *string `pulumi:"expiryTime"`
-	// Fully qualified resource Id for the resource
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Gets or sets the value of the enabled flag of the webhook.
 	IsEnabled *bool `pulumi:"isEnabled"`
@@ -61,7 +63,9 @@ type LookupWebhookResult struct {
 	RunOn *string `pulumi:"runOn"`
 	// Gets or sets the runbook the webhook is associated with.
 	Runbook *RunbookAssociationPropertyResponse `pulumi:"runbook"`
-	// The type of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// Gets or sets the webhook uri.
 	Uri *string `pulumi:"uri"`
@@ -116,6 +120,11 @@ func (o LookupWebhookResultOutput) ToLookupWebhookResultOutputWithContext(ctx co
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupWebhookResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebhookResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Gets or sets the creation time.
 func (o LookupWebhookResultOutput) CreationTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebhookResult) *string { return v.CreationTime }).(pulumi.StringPtrOutput)
@@ -131,7 +140,7 @@ func (o LookupWebhookResultOutput) ExpiryTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebhookResult) *string { return v.ExpiryTime }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource Id for the resource
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupWebhookResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebhookResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -176,7 +185,12 @@ func (o LookupWebhookResultOutput) Runbook() RunbookAssociationPropertyResponseP
 	return o.ApplyT(func(v LookupWebhookResult) *RunbookAssociationPropertyResponse { return v.Runbook }).(RunbookAssociationPropertyResponsePtrOutput)
 }
 
-// The type of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupWebhookResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupWebhookResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupWebhookResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebhookResult) string { return v.Type }).(pulumi.StringOutput)
 }

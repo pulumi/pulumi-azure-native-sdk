@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ExpressRoute Circuit Authorization
+// Get a ExpressRouteAuthorization
 //
-// Uses Azure REST API version 2022-05-01.
+// Uses Azure REST API version 2023-09-01.
 //
-// Other available API versions: 2023-03-01, 2023-09-01.
+// Other available API versions: 2022-05-01, 2023-03-01, 2024-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native avs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupAuthorization(ctx *pulumi.Context, args *LookupAuthorizationArgs, opts ...pulumi.InvokeOption) (*LookupAuthorizationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAuthorizationResult
@@ -27,7 +27,7 @@ func LookupAuthorization(ctx *pulumi.Context, args *LookupAuthorizationArgs, opt
 }
 
 type LookupAuthorizationArgs struct {
-	// Name of the ExpressRoute Circuit Authorization in the private cloud
+	// Name of the ExpressRoute Circuit Authorization
 	AuthorizationName string `pulumi:"authorizationName"`
 	// Name of the private cloud
 	PrivateCloudName string `pulumi:"privateCloudName"`
@@ -37,19 +37,23 @@ type LookupAuthorizationArgs struct {
 
 // ExpressRoute Circuit Authorization
 type LookupAuthorizationResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The ID of the ExpressRoute Circuit Authorization
 	ExpressRouteAuthorizationId string `pulumi:"expressRouteAuthorizationId"`
 	// The key of the ExpressRoute Circuit Authorization
 	ExpressRouteAuthorizationKey string `pulumi:"expressRouteAuthorizationKey"`
 	// The ID of the ExpressRoute Circuit
 	ExpressRouteId *string `pulumi:"expressRouteId"`
-	// Resource ID.
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
-	// Resource name.
+	// The name of the resource
 	Name string `pulumi:"name"`
-	// The state of the  ExpressRoute Circuit Authorization provisioning
+	// The state of the ExpressRoute Circuit Authorization provisioning
 	ProvisioningState string `pulumi:"provisioningState"`
-	// Resource type.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -63,7 +67,7 @@ func LookupAuthorizationOutput(ctx *pulumi.Context, args LookupAuthorizationOutp
 }
 
 type LookupAuthorizationOutputArgs struct {
-	// Name of the ExpressRoute Circuit Authorization in the private cloud
+	// Name of the ExpressRoute Circuit Authorization
 	AuthorizationName pulumi.StringInput `pulumi:"authorizationName"`
 	// Name of the private cloud
 	PrivateCloudName pulumi.StringInput `pulumi:"privateCloudName"`
@@ -90,6 +94,11 @@ func (o LookupAuthorizationResultOutput) ToLookupAuthorizationResultOutputWithCo
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupAuthorizationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAuthorizationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The ID of the ExpressRoute Circuit Authorization
 func (o LookupAuthorizationResultOutput) ExpressRouteAuthorizationId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAuthorizationResult) string { return v.ExpressRouteAuthorizationId }).(pulumi.StringOutput)
@@ -105,22 +114,27 @@ func (o LookupAuthorizationResultOutput) ExpressRouteId() pulumi.StringPtrOutput
 	return o.ApplyT(func(v LookupAuthorizationResult) *string { return v.ExpressRouteId }).(pulumi.StringPtrOutput)
 }
 
-// Resource ID.
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupAuthorizationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAuthorizationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o LookupAuthorizationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAuthorizationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The state of the  ExpressRoute Circuit Authorization provisioning
+// The state of the ExpressRoute Circuit Authorization provisioning
 func (o LookupAuthorizationResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAuthorizationResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Resource type.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupAuthorizationResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupAuthorizationResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupAuthorizationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAuthorizationResult) string { return v.Type }).(pulumi.StringOutput)
 }

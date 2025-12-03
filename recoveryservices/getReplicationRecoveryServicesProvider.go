@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the details of registered recovery services provider.
 //
-// Uses Azure REST API version 2023-04-01.
+// Uses Azure REST API version 2024-10-01.
 //
-// Other available API versions: 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01, 2024-10-01.
+// Other available API versions: 2023-02-01, 2023-04-01, 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01, 2025-01-01, 2025-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native recoveryservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupReplicationRecoveryServicesProvider(ctx *pulumi.Context, args *LookupReplicationRecoveryServicesProviderArgs, opts ...pulumi.InvokeOption) (*LookupReplicationRecoveryServicesProviderResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupReplicationRecoveryServicesProviderResult
@@ -39,6 +39,8 @@ type LookupReplicationRecoveryServicesProviderArgs struct {
 
 // Provider details.
 type LookupReplicationRecoveryServicesProviderResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource Id
 	Id string `pulumi:"id"`
 	// Resource Location
@@ -88,6 +90,11 @@ func (o LookupReplicationRecoveryServicesProviderResultOutput) ToLookupReplicati
 
 func (o LookupReplicationRecoveryServicesProviderResultOutput) ToLookupReplicationRecoveryServicesProviderResultOutputWithContext(ctx context.Context) LookupReplicationRecoveryServicesProviderResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupReplicationRecoveryServicesProviderResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupReplicationRecoveryServicesProviderResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource Id

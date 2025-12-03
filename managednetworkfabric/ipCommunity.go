@@ -8,29 +8,33 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The IpCommunity resource definition.
+// The IP Community resource definition.
 //
-// Uses Azure REST API version 2023-02-01-preview.
+// Uses Azure REST API version 2023-06-15. In version 2.x of the Azure Native provider, it used API version 2023-02-01-preview.
 //
-// Other available API versions: 2023-06-15.
+// Other available API versions: 2023-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type IpCommunity struct {
 	pulumi.CustomResourceState
 
-	// Action to be taken on the configuration. Example: Permit | Deny.
-	Action pulumi.StringOutput `pulumi:"action"`
+	// Administrative state of the resource.
+	AdministrativeState pulumi.StringOutput `pulumi:"administrativeState"`
 	// Switch configuration description.
 	Annotation pulumi.StringPtrOutput `pulumi:"annotation"`
-	// List the communityMembers of IP Community .
-	CommunityMembers pulumi.StringArrayOutput `pulumi:"communityMembers"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// Configuration state of the resource.
+	ConfigurationState pulumi.StringOutput `pulumi:"configurationState"`
+	// List of IP Community Rules.
+	IpCommunityRules IpCommunityRuleResponseArrayOutput `pulumi:"ipCommunityRules"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Gets the provisioning state of the resource.
+	// Provisioning state of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
@@ -38,8 +42,6 @@ type IpCommunity struct {
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
-	// Supported well known Community List.
-	WellKnownCommunities pulumi.StringArrayOutput `pulumi:"wellKnownCommunities"`
 }
 
 // NewIpCommunity registers a new resource with the given unique name, arguments, and options.
@@ -49,11 +51,8 @@ func NewIpCommunity(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Action == nil {
-		return nil, errors.New("invalid value for required argument 'Action'")
-	}
-	if args.CommunityMembers == nil {
-		return nil, errors.New("invalid value for required argument 'CommunityMembers'")
+	if args.IpCommunityRules == nil {
+		return nil, errors.New("invalid value for required argument 'IpCommunityRules'")
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
@@ -100,42 +99,34 @@ func (IpCommunityState) ElementType() reflect.Type {
 }
 
 type ipCommunityArgs struct {
-	// Action to be taken on the configuration. Example: Permit | Deny.
-	Action string `pulumi:"action"`
 	// Switch configuration description.
 	Annotation *string `pulumi:"annotation"`
-	// List the communityMembers of IP Community .
-	CommunityMembers []string `pulumi:"communityMembers"`
-	// Name of the IP Community
+	// Name of the IP Community.
 	IpCommunityName *string `pulumi:"ipCommunityName"`
+	// List of IP Community Rules.
+	IpCommunityRules []IpCommunityRule `pulumi:"ipCommunityRules"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// Supported well known Community List.
-	WellKnownCommunities []string `pulumi:"wellKnownCommunities"`
 }
 
 // The set of arguments for constructing a IpCommunity resource.
 type IpCommunityArgs struct {
-	// Action to be taken on the configuration. Example: Permit | Deny.
-	Action pulumi.StringInput
 	// Switch configuration description.
 	Annotation pulumi.StringPtrInput
-	// List the communityMembers of IP Community .
-	CommunityMembers pulumi.StringArrayInput
-	// Name of the IP Community
+	// Name of the IP Community.
 	IpCommunityName pulumi.StringPtrInput
+	// List of IP Community Rules.
+	IpCommunityRules IpCommunityRuleArrayInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
-	// Supported well known Community List.
-	WellKnownCommunities pulumi.StringArrayInput
 }
 
 func (IpCommunityArgs) ElementType() reflect.Type {
@@ -175,9 +166,9 @@ func (o IpCommunityOutput) ToIpCommunityOutputWithContext(ctx context.Context) I
 	return o
 }
 
-// Action to be taken on the configuration. Example: Permit | Deny.
-func (o IpCommunityOutput) Action() pulumi.StringOutput {
-	return o.ApplyT(func(v *IpCommunity) pulumi.StringOutput { return v.Action }).(pulumi.StringOutput)
+// Administrative state of the resource.
+func (o IpCommunityOutput) AdministrativeState() pulumi.StringOutput {
+	return o.ApplyT(func(v *IpCommunity) pulumi.StringOutput { return v.AdministrativeState }).(pulumi.StringOutput)
 }
 
 // Switch configuration description.
@@ -185,9 +176,19 @@ func (o IpCommunityOutput) Annotation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IpCommunity) pulumi.StringPtrOutput { return v.Annotation }).(pulumi.StringPtrOutput)
 }
 
-// List the communityMembers of IP Community .
-func (o IpCommunityOutput) CommunityMembers() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *IpCommunity) pulumi.StringArrayOutput { return v.CommunityMembers }).(pulumi.StringArrayOutput)
+// The Azure API version of the resource.
+func (o IpCommunityOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *IpCommunity) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Configuration state of the resource.
+func (o IpCommunityOutput) ConfigurationState() pulumi.StringOutput {
+	return o.ApplyT(func(v *IpCommunity) pulumi.StringOutput { return v.ConfigurationState }).(pulumi.StringOutput)
+}
+
+// List of IP Community Rules.
+func (o IpCommunityOutput) IpCommunityRules() IpCommunityRuleResponseArrayOutput {
+	return o.ApplyT(func(v *IpCommunity) IpCommunityRuleResponseArrayOutput { return v.IpCommunityRules }).(IpCommunityRuleResponseArrayOutput)
 }
 
 // The geo-location where the resource lives
@@ -200,7 +201,7 @@ func (o IpCommunityOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *IpCommunity) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Gets the provisioning state of the resource.
+// Provisioning state of the resource.
 func (o IpCommunityOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *IpCommunity) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
@@ -218,11 +219,6 @@ func (o IpCommunityOutput) Tags() pulumi.StringMapOutput {
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o IpCommunityOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *IpCommunity) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
-}
-
-// Supported well known Community List.
-func (o IpCommunityOutput) WellKnownCommunities() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *IpCommunity) pulumi.StringArrayOutput { return v.WellKnownCommunities }).(pulumi.StringArrayOutput)
 }
 
 func init() {

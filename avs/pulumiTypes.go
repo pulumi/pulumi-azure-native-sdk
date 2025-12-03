@@ -7,831 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 var _ = utilities.GetEnvOrDefault
-
-// The properties of an Arc addon
-type AddonArcProperties struct {
-	// The type of private cloud addon
-	// Expected value is 'Arc'.
-	AddonType string `pulumi:"addonType"`
-	// The VMware vCenter resource ID
-	VCenter *string `pulumi:"vCenter"`
-}
-
-// AddonArcPropertiesInput is an input type that accepts AddonArcPropertiesArgs and AddonArcPropertiesOutput values.
-// You can construct a concrete instance of `AddonArcPropertiesInput` via:
-//
-//	AddonArcPropertiesArgs{...}
-type AddonArcPropertiesInput interface {
-	pulumi.Input
-
-	ToAddonArcPropertiesOutput() AddonArcPropertiesOutput
-	ToAddonArcPropertiesOutputWithContext(context.Context) AddonArcPropertiesOutput
-}
-
-// The properties of an Arc addon
-type AddonArcPropertiesArgs struct {
-	// The type of private cloud addon
-	// Expected value is 'Arc'.
-	AddonType pulumi.StringInput `pulumi:"addonType"`
-	// The VMware vCenter resource ID
-	VCenter pulumi.StringPtrInput `pulumi:"vCenter"`
-}
-
-func (AddonArcPropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AddonArcProperties)(nil)).Elem()
-}
-
-func (i AddonArcPropertiesArgs) ToAddonArcPropertiesOutput() AddonArcPropertiesOutput {
-	return i.ToAddonArcPropertiesOutputWithContext(context.Background())
-}
-
-func (i AddonArcPropertiesArgs) ToAddonArcPropertiesOutputWithContext(ctx context.Context) AddonArcPropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AddonArcPropertiesOutput)
-}
-
-func (i AddonArcPropertiesArgs) ToAddonArcPropertiesPtrOutput() AddonArcPropertiesPtrOutput {
-	return i.ToAddonArcPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i AddonArcPropertiesArgs) ToAddonArcPropertiesPtrOutputWithContext(ctx context.Context) AddonArcPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AddonArcPropertiesOutput).ToAddonArcPropertiesPtrOutputWithContext(ctx)
-}
-
-// AddonArcPropertiesPtrInput is an input type that accepts AddonArcPropertiesArgs, AddonArcPropertiesPtr and AddonArcPropertiesPtrOutput values.
-// You can construct a concrete instance of `AddonArcPropertiesPtrInput` via:
-//
-//	        AddonArcPropertiesArgs{...}
-//
-//	or:
-//
-//	        nil
-type AddonArcPropertiesPtrInput interface {
-	pulumi.Input
-
-	ToAddonArcPropertiesPtrOutput() AddonArcPropertiesPtrOutput
-	ToAddonArcPropertiesPtrOutputWithContext(context.Context) AddonArcPropertiesPtrOutput
-}
-
-type addonArcPropertiesPtrType AddonArcPropertiesArgs
-
-func AddonArcPropertiesPtr(v *AddonArcPropertiesArgs) AddonArcPropertiesPtrInput {
-	return (*addonArcPropertiesPtrType)(v)
-}
-
-func (*addonArcPropertiesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AddonArcProperties)(nil)).Elem()
-}
-
-func (i *addonArcPropertiesPtrType) ToAddonArcPropertiesPtrOutput() AddonArcPropertiesPtrOutput {
-	return i.ToAddonArcPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i *addonArcPropertiesPtrType) ToAddonArcPropertiesPtrOutputWithContext(ctx context.Context) AddonArcPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AddonArcPropertiesPtrOutput)
-}
-
-// The properties of an Arc addon
-type AddonArcPropertiesOutput struct{ *pulumi.OutputState }
-
-func (AddonArcPropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AddonArcProperties)(nil)).Elem()
-}
-
-func (o AddonArcPropertiesOutput) ToAddonArcPropertiesOutput() AddonArcPropertiesOutput {
-	return o
-}
-
-func (o AddonArcPropertiesOutput) ToAddonArcPropertiesOutputWithContext(ctx context.Context) AddonArcPropertiesOutput {
-	return o
-}
-
-func (o AddonArcPropertiesOutput) ToAddonArcPropertiesPtrOutput() AddonArcPropertiesPtrOutput {
-	return o.ToAddonArcPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (o AddonArcPropertiesOutput) ToAddonArcPropertiesPtrOutputWithContext(ctx context.Context) AddonArcPropertiesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AddonArcProperties) *AddonArcProperties {
-		return &v
-	}).(AddonArcPropertiesPtrOutput)
-}
-
-// The type of private cloud addon
-// Expected value is 'Arc'.
-func (o AddonArcPropertiesOutput) AddonType() pulumi.StringOutput {
-	return o.ApplyT(func(v AddonArcProperties) string { return v.AddonType }).(pulumi.StringOutput)
-}
-
-// The VMware vCenter resource ID
-func (o AddonArcPropertiesOutput) VCenter() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AddonArcProperties) *string { return v.VCenter }).(pulumi.StringPtrOutput)
-}
-
-type AddonArcPropertiesPtrOutput struct{ *pulumi.OutputState }
-
-func (AddonArcPropertiesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AddonArcProperties)(nil)).Elem()
-}
-
-func (o AddonArcPropertiesPtrOutput) ToAddonArcPropertiesPtrOutput() AddonArcPropertiesPtrOutput {
-	return o
-}
-
-func (o AddonArcPropertiesPtrOutput) ToAddonArcPropertiesPtrOutputWithContext(ctx context.Context) AddonArcPropertiesPtrOutput {
-	return o
-}
-
-func (o AddonArcPropertiesPtrOutput) Elem() AddonArcPropertiesOutput {
-	return o.ApplyT(func(v *AddonArcProperties) AddonArcProperties {
-		if v != nil {
-			return *v
-		}
-		var ret AddonArcProperties
-		return ret
-	}).(AddonArcPropertiesOutput)
-}
-
-// The type of private cloud addon
-// Expected value is 'Arc'.
-func (o AddonArcPropertiesPtrOutput) AddonType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AddonArcProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AddonType
-	}).(pulumi.StringPtrOutput)
-}
-
-// The VMware vCenter resource ID
-func (o AddonArcPropertiesPtrOutput) VCenter() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AddonArcProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.VCenter
-	}).(pulumi.StringPtrOutput)
-}
-
-// The properties of an Arc addon
-type AddonArcPropertiesResponse struct {
-	// The type of private cloud addon
-	// Expected value is 'Arc'.
-	AddonType string `pulumi:"addonType"`
-	// The state of the addon provisioning
-	ProvisioningState string `pulumi:"provisioningState"`
-	// The VMware vCenter resource ID
-	VCenter *string `pulumi:"vCenter"`
-}
-
-// The properties of an Arc addon
-type AddonArcPropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (AddonArcPropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AddonArcPropertiesResponse)(nil)).Elem()
-}
-
-func (o AddonArcPropertiesResponseOutput) ToAddonArcPropertiesResponseOutput() AddonArcPropertiesResponseOutput {
-	return o
-}
-
-func (o AddonArcPropertiesResponseOutput) ToAddonArcPropertiesResponseOutputWithContext(ctx context.Context) AddonArcPropertiesResponseOutput {
-	return o
-}
-
-// The type of private cloud addon
-// Expected value is 'Arc'.
-func (o AddonArcPropertiesResponseOutput) AddonType() pulumi.StringOutput {
-	return o.ApplyT(func(v AddonArcPropertiesResponse) string { return v.AddonType }).(pulumi.StringOutput)
-}
-
-// The state of the addon provisioning
-func (o AddonArcPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v AddonArcPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// The VMware vCenter resource ID
-func (o AddonArcPropertiesResponseOutput) VCenter() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AddonArcPropertiesResponse) *string { return v.VCenter }).(pulumi.StringPtrOutput)
-}
-
-// The properties of an HCX addon
-type AddonHcxProperties struct {
-	// The type of private cloud addon
-	// Expected value is 'HCX'.
-	AddonType string `pulumi:"addonType"`
-	// The HCX offer, example VMware MaaS Cloud Provider (Enterprise)
-	Offer string `pulumi:"offer"`
-}
-
-// AddonHcxPropertiesInput is an input type that accepts AddonHcxPropertiesArgs and AddonHcxPropertiesOutput values.
-// You can construct a concrete instance of `AddonHcxPropertiesInput` via:
-//
-//	AddonHcxPropertiesArgs{...}
-type AddonHcxPropertiesInput interface {
-	pulumi.Input
-
-	ToAddonHcxPropertiesOutput() AddonHcxPropertiesOutput
-	ToAddonHcxPropertiesOutputWithContext(context.Context) AddonHcxPropertiesOutput
-}
-
-// The properties of an HCX addon
-type AddonHcxPropertiesArgs struct {
-	// The type of private cloud addon
-	// Expected value is 'HCX'.
-	AddonType pulumi.StringInput `pulumi:"addonType"`
-	// The HCX offer, example VMware MaaS Cloud Provider (Enterprise)
-	Offer pulumi.StringInput `pulumi:"offer"`
-}
-
-func (AddonHcxPropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AddonHcxProperties)(nil)).Elem()
-}
-
-func (i AddonHcxPropertiesArgs) ToAddonHcxPropertiesOutput() AddonHcxPropertiesOutput {
-	return i.ToAddonHcxPropertiesOutputWithContext(context.Background())
-}
-
-func (i AddonHcxPropertiesArgs) ToAddonHcxPropertiesOutputWithContext(ctx context.Context) AddonHcxPropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AddonHcxPropertiesOutput)
-}
-
-func (i AddonHcxPropertiesArgs) ToAddonHcxPropertiesPtrOutput() AddonHcxPropertiesPtrOutput {
-	return i.ToAddonHcxPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i AddonHcxPropertiesArgs) ToAddonHcxPropertiesPtrOutputWithContext(ctx context.Context) AddonHcxPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AddonHcxPropertiesOutput).ToAddonHcxPropertiesPtrOutputWithContext(ctx)
-}
-
-// AddonHcxPropertiesPtrInput is an input type that accepts AddonHcxPropertiesArgs, AddonHcxPropertiesPtr and AddonHcxPropertiesPtrOutput values.
-// You can construct a concrete instance of `AddonHcxPropertiesPtrInput` via:
-//
-//	        AddonHcxPropertiesArgs{...}
-//
-//	or:
-//
-//	        nil
-type AddonHcxPropertiesPtrInput interface {
-	pulumi.Input
-
-	ToAddonHcxPropertiesPtrOutput() AddonHcxPropertiesPtrOutput
-	ToAddonHcxPropertiesPtrOutputWithContext(context.Context) AddonHcxPropertiesPtrOutput
-}
-
-type addonHcxPropertiesPtrType AddonHcxPropertiesArgs
-
-func AddonHcxPropertiesPtr(v *AddonHcxPropertiesArgs) AddonHcxPropertiesPtrInput {
-	return (*addonHcxPropertiesPtrType)(v)
-}
-
-func (*addonHcxPropertiesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AddonHcxProperties)(nil)).Elem()
-}
-
-func (i *addonHcxPropertiesPtrType) ToAddonHcxPropertiesPtrOutput() AddonHcxPropertiesPtrOutput {
-	return i.ToAddonHcxPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i *addonHcxPropertiesPtrType) ToAddonHcxPropertiesPtrOutputWithContext(ctx context.Context) AddonHcxPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AddonHcxPropertiesPtrOutput)
-}
-
-// The properties of an HCX addon
-type AddonHcxPropertiesOutput struct{ *pulumi.OutputState }
-
-func (AddonHcxPropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AddonHcxProperties)(nil)).Elem()
-}
-
-func (o AddonHcxPropertiesOutput) ToAddonHcxPropertiesOutput() AddonHcxPropertiesOutput {
-	return o
-}
-
-func (o AddonHcxPropertiesOutput) ToAddonHcxPropertiesOutputWithContext(ctx context.Context) AddonHcxPropertiesOutput {
-	return o
-}
-
-func (o AddonHcxPropertiesOutput) ToAddonHcxPropertiesPtrOutput() AddonHcxPropertiesPtrOutput {
-	return o.ToAddonHcxPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (o AddonHcxPropertiesOutput) ToAddonHcxPropertiesPtrOutputWithContext(ctx context.Context) AddonHcxPropertiesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AddonHcxProperties) *AddonHcxProperties {
-		return &v
-	}).(AddonHcxPropertiesPtrOutput)
-}
-
-// The type of private cloud addon
-// Expected value is 'HCX'.
-func (o AddonHcxPropertiesOutput) AddonType() pulumi.StringOutput {
-	return o.ApplyT(func(v AddonHcxProperties) string { return v.AddonType }).(pulumi.StringOutput)
-}
-
-// The HCX offer, example VMware MaaS Cloud Provider (Enterprise)
-func (o AddonHcxPropertiesOutput) Offer() pulumi.StringOutput {
-	return o.ApplyT(func(v AddonHcxProperties) string { return v.Offer }).(pulumi.StringOutput)
-}
-
-type AddonHcxPropertiesPtrOutput struct{ *pulumi.OutputState }
-
-func (AddonHcxPropertiesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AddonHcxProperties)(nil)).Elem()
-}
-
-func (o AddonHcxPropertiesPtrOutput) ToAddonHcxPropertiesPtrOutput() AddonHcxPropertiesPtrOutput {
-	return o
-}
-
-func (o AddonHcxPropertiesPtrOutput) ToAddonHcxPropertiesPtrOutputWithContext(ctx context.Context) AddonHcxPropertiesPtrOutput {
-	return o
-}
-
-func (o AddonHcxPropertiesPtrOutput) Elem() AddonHcxPropertiesOutput {
-	return o.ApplyT(func(v *AddonHcxProperties) AddonHcxProperties {
-		if v != nil {
-			return *v
-		}
-		var ret AddonHcxProperties
-		return ret
-	}).(AddonHcxPropertiesOutput)
-}
-
-// The type of private cloud addon
-// Expected value is 'HCX'.
-func (o AddonHcxPropertiesPtrOutput) AddonType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AddonHcxProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AddonType
-	}).(pulumi.StringPtrOutput)
-}
-
-// The HCX offer, example VMware MaaS Cloud Provider (Enterprise)
-func (o AddonHcxPropertiesPtrOutput) Offer() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AddonHcxProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Offer
-	}).(pulumi.StringPtrOutput)
-}
-
-// The properties of an HCX addon
-type AddonHcxPropertiesResponse struct {
-	// The type of private cloud addon
-	// Expected value is 'HCX'.
-	AddonType string `pulumi:"addonType"`
-	// The HCX offer, example VMware MaaS Cloud Provider (Enterprise)
-	Offer string `pulumi:"offer"`
-	// The state of the addon provisioning
-	ProvisioningState string `pulumi:"provisioningState"`
-}
-
-// The properties of an HCX addon
-type AddonHcxPropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (AddonHcxPropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AddonHcxPropertiesResponse)(nil)).Elem()
-}
-
-func (o AddonHcxPropertiesResponseOutput) ToAddonHcxPropertiesResponseOutput() AddonHcxPropertiesResponseOutput {
-	return o
-}
-
-func (o AddonHcxPropertiesResponseOutput) ToAddonHcxPropertiesResponseOutputWithContext(ctx context.Context) AddonHcxPropertiesResponseOutput {
-	return o
-}
-
-// The type of private cloud addon
-// Expected value is 'HCX'.
-func (o AddonHcxPropertiesResponseOutput) AddonType() pulumi.StringOutput {
-	return o.ApplyT(func(v AddonHcxPropertiesResponse) string { return v.AddonType }).(pulumi.StringOutput)
-}
-
-// The HCX offer, example VMware MaaS Cloud Provider (Enterprise)
-func (o AddonHcxPropertiesResponseOutput) Offer() pulumi.StringOutput {
-	return o.ApplyT(func(v AddonHcxPropertiesResponse) string { return v.Offer }).(pulumi.StringOutput)
-}
-
-// The state of the addon provisioning
-func (o AddonHcxPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v AddonHcxPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// The properties of a Site Recovery Manager (SRM) addon
-type AddonSrmProperties struct {
-	// The type of private cloud addon
-	// Expected value is 'SRM'.
-	AddonType string `pulumi:"addonType"`
-	// The Site Recovery Manager (SRM) license
-	LicenseKey *string `pulumi:"licenseKey"`
-}
-
-// AddonSrmPropertiesInput is an input type that accepts AddonSrmPropertiesArgs and AddonSrmPropertiesOutput values.
-// You can construct a concrete instance of `AddonSrmPropertiesInput` via:
-//
-//	AddonSrmPropertiesArgs{...}
-type AddonSrmPropertiesInput interface {
-	pulumi.Input
-
-	ToAddonSrmPropertiesOutput() AddonSrmPropertiesOutput
-	ToAddonSrmPropertiesOutputWithContext(context.Context) AddonSrmPropertiesOutput
-}
-
-// The properties of a Site Recovery Manager (SRM) addon
-type AddonSrmPropertiesArgs struct {
-	// The type of private cloud addon
-	// Expected value is 'SRM'.
-	AddonType pulumi.StringInput `pulumi:"addonType"`
-	// The Site Recovery Manager (SRM) license
-	LicenseKey pulumi.StringPtrInput `pulumi:"licenseKey"`
-}
-
-func (AddonSrmPropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AddonSrmProperties)(nil)).Elem()
-}
-
-func (i AddonSrmPropertiesArgs) ToAddonSrmPropertiesOutput() AddonSrmPropertiesOutput {
-	return i.ToAddonSrmPropertiesOutputWithContext(context.Background())
-}
-
-func (i AddonSrmPropertiesArgs) ToAddonSrmPropertiesOutputWithContext(ctx context.Context) AddonSrmPropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AddonSrmPropertiesOutput)
-}
-
-func (i AddonSrmPropertiesArgs) ToAddonSrmPropertiesPtrOutput() AddonSrmPropertiesPtrOutput {
-	return i.ToAddonSrmPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i AddonSrmPropertiesArgs) ToAddonSrmPropertiesPtrOutputWithContext(ctx context.Context) AddonSrmPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AddonSrmPropertiesOutput).ToAddonSrmPropertiesPtrOutputWithContext(ctx)
-}
-
-// AddonSrmPropertiesPtrInput is an input type that accepts AddonSrmPropertiesArgs, AddonSrmPropertiesPtr and AddonSrmPropertiesPtrOutput values.
-// You can construct a concrete instance of `AddonSrmPropertiesPtrInput` via:
-//
-//	        AddonSrmPropertiesArgs{...}
-//
-//	or:
-//
-//	        nil
-type AddonSrmPropertiesPtrInput interface {
-	pulumi.Input
-
-	ToAddonSrmPropertiesPtrOutput() AddonSrmPropertiesPtrOutput
-	ToAddonSrmPropertiesPtrOutputWithContext(context.Context) AddonSrmPropertiesPtrOutput
-}
-
-type addonSrmPropertiesPtrType AddonSrmPropertiesArgs
-
-func AddonSrmPropertiesPtr(v *AddonSrmPropertiesArgs) AddonSrmPropertiesPtrInput {
-	return (*addonSrmPropertiesPtrType)(v)
-}
-
-func (*addonSrmPropertiesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AddonSrmProperties)(nil)).Elem()
-}
-
-func (i *addonSrmPropertiesPtrType) ToAddonSrmPropertiesPtrOutput() AddonSrmPropertiesPtrOutput {
-	return i.ToAddonSrmPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i *addonSrmPropertiesPtrType) ToAddonSrmPropertiesPtrOutputWithContext(ctx context.Context) AddonSrmPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AddonSrmPropertiesPtrOutput)
-}
-
-// The properties of a Site Recovery Manager (SRM) addon
-type AddonSrmPropertiesOutput struct{ *pulumi.OutputState }
-
-func (AddonSrmPropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AddonSrmProperties)(nil)).Elem()
-}
-
-func (o AddonSrmPropertiesOutput) ToAddonSrmPropertiesOutput() AddonSrmPropertiesOutput {
-	return o
-}
-
-func (o AddonSrmPropertiesOutput) ToAddonSrmPropertiesOutputWithContext(ctx context.Context) AddonSrmPropertiesOutput {
-	return o
-}
-
-func (o AddonSrmPropertiesOutput) ToAddonSrmPropertiesPtrOutput() AddonSrmPropertiesPtrOutput {
-	return o.ToAddonSrmPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (o AddonSrmPropertiesOutput) ToAddonSrmPropertiesPtrOutputWithContext(ctx context.Context) AddonSrmPropertiesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AddonSrmProperties) *AddonSrmProperties {
-		return &v
-	}).(AddonSrmPropertiesPtrOutput)
-}
-
-// The type of private cloud addon
-// Expected value is 'SRM'.
-func (o AddonSrmPropertiesOutput) AddonType() pulumi.StringOutput {
-	return o.ApplyT(func(v AddonSrmProperties) string { return v.AddonType }).(pulumi.StringOutput)
-}
-
-// The Site Recovery Manager (SRM) license
-func (o AddonSrmPropertiesOutput) LicenseKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AddonSrmProperties) *string { return v.LicenseKey }).(pulumi.StringPtrOutput)
-}
-
-type AddonSrmPropertiesPtrOutput struct{ *pulumi.OutputState }
-
-func (AddonSrmPropertiesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AddonSrmProperties)(nil)).Elem()
-}
-
-func (o AddonSrmPropertiesPtrOutput) ToAddonSrmPropertiesPtrOutput() AddonSrmPropertiesPtrOutput {
-	return o
-}
-
-func (o AddonSrmPropertiesPtrOutput) ToAddonSrmPropertiesPtrOutputWithContext(ctx context.Context) AddonSrmPropertiesPtrOutput {
-	return o
-}
-
-func (o AddonSrmPropertiesPtrOutput) Elem() AddonSrmPropertiesOutput {
-	return o.ApplyT(func(v *AddonSrmProperties) AddonSrmProperties {
-		if v != nil {
-			return *v
-		}
-		var ret AddonSrmProperties
-		return ret
-	}).(AddonSrmPropertiesOutput)
-}
-
-// The type of private cloud addon
-// Expected value is 'SRM'.
-func (o AddonSrmPropertiesPtrOutput) AddonType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AddonSrmProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AddonType
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Site Recovery Manager (SRM) license
-func (o AddonSrmPropertiesPtrOutput) LicenseKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AddonSrmProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LicenseKey
-	}).(pulumi.StringPtrOutput)
-}
-
-// The properties of a Site Recovery Manager (SRM) addon
-type AddonSrmPropertiesResponse struct {
-	// The type of private cloud addon
-	// Expected value is 'SRM'.
-	AddonType string `pulumi:"addonType"`
-	// The Site Recovery Manager (SRM) license
-	LicenseKey *string `pulumi:"licenseKey"`
-	// The state of the addon provisioning
-	ProvisioningState string `pulumi:"provisioningState"`
-}
-
-// The properties of a Site Recovery Manager (SRM) addon
-type AddonSrmPropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (AddonSrmPropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AddonSrmPropertiesResponse)(nil)).Elem()
-}
-
-func (o AddonSrmPropertiesResponseOutput) ToAddonSrmPropertiesResponseOutput() AddonSrmPropertiesResponseOutput {
-	return o
-}
-
-func (o AddonSrmPropertiesResponseOutput) ToAddonSrmPropertiesResponseOutputWithContext(ctx context.Context) AddonSrmPropertiesResponseOutput {
-	return o
-}
-
-// The type of private cloud addon
-// Expected value is 'SRM'.
-func (o AddonSrmPropertiesResponseOutput) AddonType() pulumi.StringOutput {
-	return o.ApplyT(func(v AddonSrmPropertiesResponse) string { return v.AddonType }).(pulumi.StringOutput)
-}
-
-// The Site Recovery Manager (SRM) license
-func (o AddonSrmPropertiesResponseOutput) LicenseKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AddonSrmPropertiesResponse) *string { return v.LicenseKey }).(pulumi.StringPtrOutput)
-}
-
-// The state of the addon provisioning
-func (o AddonSrmPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v AddonSrmPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// The properties of a vSphere Replication (VR) addon
-type AddonVrProperties struct {
-	// The type of private cloud addon
-	// Expected value is 'VR'.
-	AddonType string `pulumi:"addonType"`
-	// The vSphere Replication Server (VRS) count
-	VrsCount int `pulumi:"vrsCount"`
-}
-
-// AddonVrPropertiesInput is an input type that accepts AddonVrPropertiesArgs and AddonVrPropertiesOutput values.
-// You can construct a concrete instance of `AddonVrPropertiesInput` via:
-//
-//	AddonVrPropertiesArgs{...}
-type AddonVrPropertiesInput interface {
-	pulumi.Input
-
-	ToAddonVrPropertiesOutput() AddonVrPropertiesOutput
-	ToAddonVrPropertiesOutputWithContext(context.Context) AddonVrPropertiesOutput
-}
-
-// The properties of a vSphere Replication (VR) addon
-type AddonVrPropertiesArgs struct {
-	// The type of private cloud addon
-	// Expected value is 'VR'.
-	AddonType pulumi.StringInput `pulumi:"addonType"`
-	// The vSphere Replication Server (VRS) count
-	VrsCount pulumi.IntInput `pulumi:"vrsCount"`
-}
-
-func (AddonVrPropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AddonVrProperties)(nil)).Elem()
-}
-
-func (i AddonVrPropertiesArgs) ToAddonVrPropertiesOutput() AddonVrPropertiesOutput {
-	return i.ToAddonVrPropertiesOutputWithContext(context.Background())
-}
-
-func (i AddonVrPropertiesArgs) ToAddonVrPropertiesOutputWithContext(ctx context.Context) AddonVrPropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AddonVrPropertiesOutput)
-}
-
-func (i AddonVrPropertiesArgs) ToAddonVrPropertiesPtrOutput() AddonVrPropertiesPtrOutput {
-	return i.ToAddonVrPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i AddonVrPropertiesArgs) ToAddonVrPropertiesPtrOutputWithContext(ctx context.Context) AddonVrPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AddonVrPropertiesOutput).ToAddonVrPropertiesPtrOutputWithContext(ctx)
-}
-
-// AddonVrPropertiesPtrInput is an input type that accepts AddonVrPropertiesArgs, AddonVrPropertiesPtr and AddonVrPropertiesPtrOutput values.
-// You can construct a concrete instance of `AddonVrPropertiesPtrInput` via:
-//
-//	        AddonVrPropertiesArgs{...}
-//
-//	or:
-//
-//	        nil
-type AddonVrPropertiesPtrInput interface {
-	pulumi.Input
-
-	ToAddonVrPropertiesPtrOutput() AddonVrPropertiesPtrOutput
-	ToAddonVrPropertiesPtrOutputWithContext(context.Context) AddonVrPropertiesPtrOutput
-}
-
-type addonVrPropertiesPtrType AddonVrPropertiesArgs
-
-func AddonVrPropertiesPtr(v *AddonVrPropertiesArgs) AddonVrPropertiesPtrInput {
-	return (*addonVrPropertiesPtrType)(v)
-}
-
-func (*addonVrPropertiesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AddonVrProperties)(nil)).Elem()
-}
-
-func (i *addonVrPropertiesPtrType) ToAddonVrPropertiesPtrOutput() AddonVrPropertiesPtrOutput {
-	return i.ToAddonVrPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i *addonVrPropertiesPtrType) ToAddonVrPropertiesPtrOutputWithContext(ctx context.Context) AddonVrPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AddonVrPropertiesPtrOutput)
-}
-
-// The properties of a vSphere Replication (VR) addon
-type AddonVrPropertiesOutput struct{ *pulumi.OutputState }
-
-func (AddonVrPropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AddonVrProperties)(nil)).Elem()
-}
-
-func (o AddonVrPropertiesOutput) ToAddonVrPropertiesOutput() AddonVrPropertiesOutput {
-	return o
-}
-
-func (o AddonVrPropertiesOutput) ToAddonVrPropertiesOutputWithContext(ctx context.Context) AddonVrPropertiesOutput {
-	return o
-}
-
-func (o AddonVrPropertiesOutput) ToAddonVrPropertiesPtrOutput() AddonVrPropertiesPtrOutput {
-	return o.ToAddonVrPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (o AddonVrPropertiesOutput) ToAddonVrPropertiesPtrOutputWithContext(ctx context.Context) AddonVrPropertiesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AddonVrProperties) *AddonVrProperties {
-		return &v
-	}).(AddonVrPropertiesPtrOutput)
-}
-
-// The type of private cloud addon
-// Expected value is 'VR'.
-func (o AddonVrPropertiesOutput) AddonType() pulumi.StringOutput {
-	return o.ApplyT(func(v AddonVrProperties) string { return v.AddonType }).(pulumi.StringOutput)
-}
-
-// The vSphere Replication Server (VRS) count
-func (o AddonVrPropertiesOutput) VrsCount() pulumi.IntOutput {
-	return o.ApplyT(func(v AddonVrProperties) int { return v.VrsCount }).(pulumi.IntOutput)
-}
-
-type AddonVrPropertiesPtrOutput struct{ *pulumi.OutputState }
-
-func (AddonVrPropertiesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AddonVrProperties)(nil)).Elem()
-}
-
-func (o AddonVrPropertiesPtrOutput) ToAddonVrPropertiesPtrOutput() AddonVrPropertiesPtrOutput {
-	return o
-}
-
-func (o AddonVrPropertiesPtrOutput) ToAddonVrPropertiesPtrOutputWithContext(ctx context.Context) AddonVrPropertiesPtrOutput {
-	return o
-}
-
-func (o AddonVrPropertiesPtrOutput) Elem() AddonVrPropertiesOutput {
-	return o.ApplyT(func(v *AddonVrProperties) AddonVrProperties {
-		if v != nil {
-			return *v
-		}
-		var ret AddonVrProperties
-		return ret
-	}).(AddonVrPropertiesOutput)
-}
-
-// The type of private cloud addon
-// Expected value is 'VR'.
-func (o AddonVrPropertiesPtrOutput) AddonType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AddonVrProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AddonType
-	}).(pulumi.StringPtrOutput)
-}
-
-// The vSphere Replication Server (VRS) count
-func (o AddonVrPropertiesPtrOutput) VrsCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *AddonVrProperties) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.VrsCount
-	}).(pulumi.IntPtrOutput)
-}
-
-// The properties of a vSphere Replication (VR) addon
-type AddonVrPropertiesResponse struct {
-	// The type of private cloud addon
-	// Expected value is 'VR'.
-	AddonType string `pulumi:"addonType"`
-	// The state of the addon provisioning
-	ProvisioningState string `pulumi:"provisioningState"`
-	// The vSphere Replication Server (VRS) count
-	VrsCount int `pulumi:"vrsCount"`
-}
-
-// The properties of a vSphere Replication (VR) addon
-type AddonVrPropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (AddonVrPropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AddonVrPropertiesResponse)(nil)).Elem()
-}
-
-func (o AddonVrPropertiesResponseOutput) ToAddonVrPropertiesResponseOutput() AddonVrPropertiesResponseOutput {
-	return o
-}
-
-func (o AddonVrPropertiesResponseOutput) ToAddonVrPropertiesResponseOutputWithContext(ctx context.Context) AddonVrPropertiesResponseOutput {
-	return o
-}
-
-// The type of private cloud addon
-// Expected value is 'VR'.
-func (o AddonVrPropertiesResponseOutput) AddonType() pulumi.StringOutput {
-	return o.ApplyT(func(v AddonVrPropertiesResponse) string { return v.AddonType }).(pulumi.StringOutput)
-}
-
-// The state of the addon provisioning
-func (o AddonVrPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v AddonVrPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// The vSphere Replication Server (VRS) count
-func (o AddonVrPropertiesResponseOutput) VrsCount() pulumi.IntOutput {
-	return o.ApplyT(func(v AddonVrPropertiesResponse) int { return v.VrsCount }).(pulumi.IntOutput)
-}
 
 // The properties describing private cloud availability zone distribution
 type AvailabilityProperties struct {
@@ -1273,7 +453,8 @@ func (o ClusterZoneResponseArrayOutput) Index(i pulumi.IntInput) ClusterZoneResp
 type DiskPoolVolume struct {
 	// Name of the LUN to be used for datastore
 	LunName string `pulumi:"lunName"`
-	// Mode that describes whether the LUN has to be mounted as a datastore or attached as a LUN
+	// Mode that describes whether the LUN has to be mounted as a datastore or
+	// attached as a LUN
 	MountOption *string `pulumi:"mountOption"`
 	// Azure resource ID of the iSCSI target
 	TargetId string `pulumi:"targetId"`
@@ -1307,7 +488,8 @@ type DiskPoolVolumeInput interface {
 type DiskPoolVolumeArgs struct {
 	// Name of the LUN to be used for datastore
 	LunName pulumi.StringInput `pulumi:"lunName"`
-	// Mode that describes whether the LUN has to be mounted as a datastore or attached as a LUN
+	// Mode that describes whether the LUN has to be mounted as a datastore or
+	// attached as a LUN
 	MountOption pulumi.StringPtrInput `pulumi:"mountOption"`
 	// Azure resource ID of the iSCSI target
 	TargetId pulumi.StringInput `pulumi:"targetId"`
@@ -1407,7 +589,8 @@ func (o DiskPoolVolumeOutput) LunName() pulumi.StringOutput {
 	return o.ApplyT(func(v DiskPoolVolume) string { return v.LunName }).(pulumi.StringOutput)
 }
 
-// Mode that describes whether the LUN has to be mounted as a datastore or attached as a LUN
+// Mode that describes whether the LUN has to be mounted as a datastore or
+// attached as a LUN
 func (o DiskPoolVolumeOutput) MountOption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DiskPoolVolume) *string { return v.MountOption }).(pulumi.StringPtrOutput)
 }
@@ -1451,7 +634,8 @@ func (o DiskPoolVolumePtrOutput) LunName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Mode that describes whether the LUN has to be mounted as a datastore or attached as a LUN
+// Mode that describes whether the LUN has to be mounted as a datastore or
+// attached as a LUN
 func (o DiskPoolVolumePtrOutput) MountOption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DiskPoolVolume) *string {
 		if v == nil {
@@ -1475,7 +659,8 @@ func (o DiskPoolVolumePtrOutput) TargetId() pulumi.StringPtrOutput {
 type DiskPoolVolumeResponse struct {
 	// Name of the LUN to be used for datastore
 	LunName string `pulumi:"lunName"`
-	// Mode that describes whether the LUN has to be mounted as a datastore or attached as a LUN
+	// Mode that describes whether the LUN has to be mounted as a datastore or
+	// attached as a LUN
 	MountOption *string `pulumi:"mountOption"`
 	// Device path
 	Path string `pulumi:"path"`
@@ -1516,7 +701,8 @@ func (o DiskPoolVolumeResponseOutput) LunName() pulumi.StringOutput {
 	return o.ApplyT(func(v DiskPoolVolumeResponse) string { return v.LunName }).(pulumi.StringOutput)
 }
 
-// Mode that describes whether the LUN has to be mounted as a datastore or attached as a LUN
+// Mode that describes whether the LUN has to be mounted as a datastore or
+// attached as a LUN
 func (o DiskPoolVolumeResponseOutput) MountOption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DiskPoolVolumeResponse) *string { return v.MountOption }).(pulumi.StringPtrOutput)
 }
@@ -1565,7 +751,8 @@ func (o DiskPoolVolumeResponsePtrOutput) LunName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Mode that describes whether the LUN has to be mounted as a datastore or attached as a LUN
+// Mode that describes whether the LUN has to be mounted as a datastore or
+// attached as a LUN
 func (o DiskPoolVolumeResponsePtrOutput) MountOption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DiskPoolVolumeResponse) *string {
 		if v == nil {
@@ -1588,6 +775,206 @@ func (o DiskPoolVolumeResponsePtrOutput) Path() pulumi.StringPtrOutput {
 // Azure resource ID of the iSCSI target
 func (o DiskPoolVolumeResponsePtrOutput) TargetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DiskPoolVolumeResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TargetId
+	}).(pulumi.StringPtrOutput)
+}
+
+// An Elastic SAN volume from Microsoft.ElasticSan provider
+type ElasticSanVolume struct {
+	// Azure resource ID of the Elastic SAN Volume
+	TargetId string `pulumi:"targetId"`
+}
+
+// ElasticSanVolumeInput is an input type that accepts ElasticSanVolumeArgs and ElasticSanVolumeOutput values.
+// You can construct a concrete instance of `ElasticSanVolumeInput` via:
+//
+//	ElasticSanVolumeArgs{...}
+type ElasticSanVolumeInput interface {
+	pulumi.Input
+
+	ToElasticSanVolumeOutput() ElasticSanVolumeOutput
+	ToElasticSanVolumeOutputWithContext(context.Context) ElasticSanVolumeOutput
+}
+
+// An Elastic SAN volume from Microsoft.ElasticSan provider
+type ElasticSanVolumeArgs struct {
+	// Azure resource ID of the Elastic SAN Volume
+	TargetId pulumi.StringInput `pulumi:"targetId"`
+}
+
+func (ElasticSanVolumeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticSanVolume)(nil)).Elem()
+}
+
+func (i ElasticSanVolumeArgs) ToElasticSanVolumeOutput() ElasticSanVolumeOutput {
+	return i.ToElasticSanVolumeOutputWithContext(context.Background())
+}
+
+func (i ElasticSanVolumeArgs) ToElasticSanVolumeOutputWithContext(ctx context.Context) ElasticSanVolumeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticSanVolumeOutput)
+}
+
+func (i ElasticSanVolumeArgs) ToElasticSanVolumePtrOutput() ElasticSanVolumePtrOutput {
+	return i.ToElasticSanVolumePtrOutputWithContext(context.Background())
+}
+
+func (i ElasticSanVolumeArgs) ToElasticSanVolumePtrOutputWithContext(ctx context.Context) ElasticSanVolumePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticSanVolumeOutput).ToElasticSanVolumePtrOutputWithContext(ctx)
+}
+
+// ElasticSanVolumePtrInput is an input type that accepts ElasticSanVolumeArgs, ElasticSanVolumePtr and ElasticSanVolumePtrOutput values.
+// You can construct a concrete instance of `ElasticSanVolumePtrInput` via:
+//
+//	        ElasticSanVolumeArgs{...}
+//
+//	or:
+//
+//	        nil
+type ElasticSanVolumePtrInput interface {
+	pulumi.Input
+
+	ToElasticSanVolumePtrOutput() ElasticSanVolumePtrOutput
+	ToElasticSanVolumePtrOutputWithContext(context.Context) ElasticSanVolumePtrOutput
+}
+
+type elasticSanVolumePtrType ElasticSanVolumeArgs
+
+func ElasticSanVolumePtr(v *ElasticSanVolumeArgs) ElasticSanVolumePtrInput {
+	return (*elasticSanVolumePtrType)(v)
+}
+
+func (*elasticSanVolumePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticSanVolume)(nil)).Elem()
+}
+
+func (i *elasticSanVolumePtrType) ToElasticSanVolumePtrOutput() ElasticSanVolumePtrOutput {
+	return i.ToElasticSanVolumePtrOutputWithContext(context.Background())
+}
+
+func (i *elasticSanVolumePtrType) ToElasticSanVolumePtrOutputWithContext(ctx context.Context) ElasticSanVolumePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticSanVolumePtrOutput)
+}
+
+// An Elastic SAN volume from Microsoft.ElasticSan provider
+type ElasticSanVolumeOutput struct{ *pulumi.OutputState }
+
+func (ElasticSanVolumeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticSanVolume)(nil)).Elem()
+}
+
+func (o ElasticSanVolumeOutput) ToElasticSanVolumeOutput() ElasticSanVolumeOutput {
+	return o
+}
+
+func (o ElasticSanVolumeOutput) ToElasticSanVolumeOutputWithContext(ctx context.Context) ElasticSanVolumeOutput {
+	return o
+}
+
+func (o ElasticSanVolumeOutput) ToElasticSanVolumePtrOutput() ElasticSanVolumePtrOutput {
+	return o.ToElasticSanVolumePtrOutputWithContext(context.Background())
+}
+
+func (o ElasticSanVolumeOutput) ToElasticSanVolumePtrOutputWithContext(ctx context.Context) ElasticSanVolumePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElasticSanVolume) *ElasticSanVolume {
+		return &v
+	}).(ElasticSanVolumePtrOutput)
+}
+
+// Azure resource ID of the Elastic SAN Volume
+func (o ElasticSanVolumeOutput) TargetId() pulumi.StringOutput {
+	return o.ApplyT(func(v ElasticSanVolume) string { return v.TargetId }).(pulumi.StringOutput)
+}
+
+type ElasticSanVolumePtrOutput struct{ *pulumi.OutputState }
+
+func (ElasticSanVolumePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticSanVolume)(nil)).Elem()
+}
+
+func (o ElasticSanVolumePtrOutput) ToElasticSanVolumePtrOutput() ElasticSanVolumePtrOutput {
+	return o
+}
+
+func (o ElasticSanVolumePtrOutput) ToElasticSanVolumePtrOutputWithContext(ctx context.Context) ElasticSanVolumePtrOutput {
+	return o
+}
+
+func (o ElasticSanVolumePtrOutput) Elem() ElasticSanVolumeOutput {
+	return o.ApplyT(func(v *ElasticSanVolume) ElasticSanVolume {
+		if v != nil {
+			return *v
+		}
+		var ret ElasticSanVolume
+		return ret
+	}).(ElasticSanVolumeOutput)
+}
+
+// Azure resource ID of the Elastic SAN Volume
+func (o ElasticSanVolumePtrOutput) TargetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticSanVolume) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TargetId
+	}).(pulumi.StringPtrOutput)
+}
+
+// An Elastic SAN volume from Microsoft.ElasticSan provider
+type ElasticSanVolumeResponse struct {
+	// Azure resource ID of the Elastic SAN Volume
+	TargetId string `pulumi:"targetId"`
+}
+
+// An Elastic SAN volume from Microsoft.ElasticSan provider
+type ElasticSanVolumeResponseOutput struct{ *pulumi.OutputState }
+
+func (ElasticSanVolumeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticSanVolumeResponse)(nil)).Elem()
+}
+
+func (o ElasticSanVolumeResponseOutput) ToElasticSanVolumeResponseOutput() ElasticSanVolumeResponseOutput {
+	return o
+}
+
+func (o ElasticSanVolumeResponseOutput) ToElasticSanVolumeResponseOutputWithContext(ctx context.Context) ElasticSanVolumeResponseOutput {
+	return o
+}
+
+// Azure resource ID of the Elastic SAN Volume
+func (o ElasticSanVolumeResponseOutput) TargetId() pulumi.StringOutput {
+	return o.ApplyT(func(v ElasticSanVolumeResponse) string { return v.TargetId }).(pulumi.StringOutput)
+}
+
+type ElasticSanVolumeResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ElasticSanVolumeResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticSanVolumeResponse)(nil)).Elem()
+}
+
+func (o ElasticSanVolumeResponsePtrOutput) ToElasticSanVolumeResponsePtrOutput() ElasticSanVolumeResponsePtrOutput {
+	return o
+}
+
+func (o ElasticSanVolumeResponsePtrOutput) ToElasticSanVolumeResponsePtrOutputWithContext(ctx context.Context) ElasticSanVolumeResponsePtrOutput {
+	return o
+}
+
+func (o ElasticSanVolumeResponsePtrOutput) Elem() ElasticSanVolumeResponseOutput {
+	return o.ApplyT(func(v *ElasticSanVolumeResponse) ElasticSanVolumeResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ElasticSanVolumeResponse
+		return ret
+	}).(ElasticSanVolumeResponseOutput)
+}
+
+// Azure resource ID of the Elastic SAN Volume
+func (o ElasticSanVolumeResponsePtrOutput) TargetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticSanVolumeResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -2156,11 +1543,17 @@ func (o EncryptionResponsePtrOutput) Status() pulumi.StringPtrOutput {
 
 // Endpoint addresses
 type EndpointsResponse struct {
-	// Endpoint for the HCX Cloud Manager
+	// Endpoint FQDN for the HCX Cloud Manager
 	HcxCloudManager string `pulumi:"hcxCloudManager"`
-	// Endpoint for the NSX-T Data Center manager
+	// Endpoint IP for the HCX Cloud Manager
+	HcxCloudManagerIp string `pulumi:"hcxCloudManagerIp"`
+	// Endpoint FQDN for the NSX-T Data Center manager
 	NsxtManager string `pulumi:"nsxtManager"`
-	// Endpoint for Virtual Center Server Appliance
+	// Endpoint IP for the NSX-T Data Center manager
+	NsxtManagerIp string `pulumi:"nsxtManagerIp"`
+	// Endpoint IP for Virtual Center Server Appliance
+	VcenterIp string `pulumi:"vcenterIp"`
+	// Endpoint FQDN for Virtual Center Server Appliance
 	Vcsa string `pulumi:"vcsa"`
 }
 
@@ -2179,17 +1572,32 @@ func (o EndpointsResponseOutput) ToEndpointsResponseOutputWithContext(ctx contex
 	return o
 }
 
-// Endpoint for the HCX Cloud Manager
+// Endpoint FQDN for the HCX Cloud Manager
 func (o EndpointsResponseOutput) HcxCloudManager() pulumi.StringOutput {
 	return o.ApplyT(func(v EndpointsResponse) string { return v.HcxCloudManager }).(pulumi.StringOutput)
 }
 
-// Endpoint for the NSX-T Data Center manager
+// Endpoint IP for the HCX Cloud Manager
+func (o EndpointsResponseOutput) HcxCloudManagerIp() pulumi.StringOutput {
+	return o.ApplyT(func(v EndpointsResponse) string { return v.HcxCloudManagerIp }).(pulumi.StringOutput)
+}
+
+// Endpoint FQDN for the NSX-T Data Center manager
 func (o EndpointsResponseOutput) NsxtManager() pulumi.StringOutput {
 	return o.ApplyT(func(v EndpointsResponse) string { return v.NsxtManager }).(pulumi.StringOutput)
 }
 
-// Endpoint for Virtual Center Server Appliance
+// Endpoint IP for the NSX-T Data Center manager
+func (o EndpointsResponseOutput) NsxtManagerIp() pulumi.StringOutput {
+	return o.ApplyT(func(v EndpointsResponse) string { return v.NsxtManagerIp }).(pulumi.StringOutput)
+}
+
+// Endpoint IP for Virtual Center Server Appliance
+func (o EndpointsResponseOutput) VcenterIp() pulumi.StringOutput {
+	return o.ApplyT(func(v EndpointsResponse) string { return v.VcenterIp }).(pulumi.StringOutput)
+}
+
+// Endpoint FQDN for Virtual Center Server Appliance
 func (o EndpointsResponseOutput) Vcsa() pulumi.StringOutput {
 	return o.ApplyT(func(v EndpointsResponse) string { return v.Vcsa }).(pulumi.StringOutput)
 }
@@ -2202,11 +1610,12 @@ type IdentitySource struct {
 	BaseGroupDN *string `pulumi:"baseGroupDN"`
 	// The base distinguished name for users
 	BaseUserDN *string `pulumi:"baseUserDN"`
-	// The domain's dns name
+	// The domain's DNS name
 	Domain *string `pulumi:"domain"`
 	// The name of the identity source
 	Name *string `pulumi:"name"`
-	// The password of the Active Directory user with a minimum of read-only access to Base DN for users and groups.
+	// The password of the Active Directory user with a minimum of read-only access to
+	// Base DN for users and groups.
 	Password *string `pulumi:"password"`
 	// Primary server URL
 	PrimaryServer *string `pulumi:"primaryServer"`
@@ -2214,7 +1623,8 @@ type IdentitySource struct {
 	SecondaryServer *string `pulumi:"secondaryServer"`
 	// Protect LDAP communication using SSL certificate (LDAPS)
 	Ssl *string `pulumi:"ssl"`
-	// The ID of an Active Directory user with a minimum of read-only access to Base DN for users and group
+	// The ID of an Active Directory user with a minimum of read-only access to Base
+	// DN for users and group
 	Username *string `pulumi:"username"`
 }
 
@@ -2237,11 +1647,12 @@ type IdentitySourceArgs struct {
 	BaseGroupDN pulumi.StringPtrInput `pulumi:"baseGroupDN"`
 	// The base distinguished name for users
 	BaseUserDN pulumi.StringPtrInput `pulumi:"baseUserDN"`
-	// The domain's dns name
+	// The domain's DNS name
 	Domain pulumi.StringPtrInput `pulumi:"domain"`
 	// The name of the identity source
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The password of the Active Directory user with a minimum of read-only access to Base DN for users and groups.
+	// The password of the Active Directory user with a minimum of read-only access to
+	// Base DN for users and groups.
 	Password pulumi.StringPtrInput `pulumi:"password"`
 	// Primary server URL
 	PrimaryServer pulumi.StringPtrInput `pulumi:"primaryServer"`
@@ -2249,7 +1660,8 @@ type IdentitySourceArgs struct {
 	SecondaryServer pulumi.StringPtrInput `pulumi:"secondaryServer"`
 	// Protect LDAP communication using SSL certificate (LDAPS)
 	Ssl pulumi.StringPtrInput `pulumi:"ssl"`
-	// The ID of an Active Directory user with a minimum of read-only access to Base DN for users and group
+	// The ID of an Active Directory user with a minimum of read-only access to Base
+	// DN for users and group
 	Username pulumi.StringPtrInput `pulumi:"username"`
 }
 
@@ -2320,7 +1732,7 @@ func (o IdentitySourceOutput) BaseUserDN() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IdentitySource) *string { return v.BaseUserDN }).(pulumi.StringPtrOutput)
 }
 
-// The domain's dns name
+// The domain's DNS name
 func (o IdentitySourceOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IdentitySource) *string { return v.Domain }).(pulumi.StringPtrOutput)
 }
@@ -2330,7 +1742,8 @@ func (o IdentitySourceOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IdentitySource) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The password of the Active Directory user with a minimum of read-only access to Base DN for users and groups.
+// The password of the Active Directory user with a minimum of read-only access to
+// Base DN for users and groups.
 func (o IdentitySourceOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IdentitySource) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
@@ -2350,7 +1763,8 @@ func (o IdentitySourceOutput) Ssl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IdentitySource) *string { return v.Ssl }).(pulumi.StringPtrOutput)
 }
 
-// The ID of an Active Directory user with a minimum of read-only access to Base DN for users and group
+// The ID of an Active Directory user with a minimum of read-only access to Base
+// DN for users and group
 func (o IdentitySourceOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IdentitySource) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
@@ -2383,11 +1797,12 @@ type IdentitySourceResponse struct {
 	BaseGroupDN *string `pulumi:"baseGroupDN"`
 	// The base distinguished name for users
 	BaseUserDN *string `pulumi:"baseUserDN"`
-	// The domain's dns name
+	// The domain's DNS name
 	Domain *string `pulumi:"domain"`
 	// The name of the identity source
 	Name *string `pulumi:"name"`
-	// The password of the Active Directory user with a minimum of read-only access to Base DN for users and groups.
+	// The password of the Active Directory user with a minimum of read-only access to
+	// Base DN for users and groups.
 	Password *string `pulumi:"password"`
 	// Primary server URL
 	PrimaryServer *string `pulumi:"primaryServer"`
@@ -2395,7 +1810,8 @@ type IdentitySourceResponse struct {
 	SecondaryServer *string `pulumi:"secondaryServer"`
 	// Protect LDAP communication using SSL certificate (LDAPS)
 	Ssl *string `pulumi:"ssl"`
-	// The ID of an Active Directory user with a minimum of read-only access to Base DN for users and group
+	// The ID of an Active Directory user with a minimum of read-only access to Base
+	// DN for users and group
 	Username *string `pulumi:"username"`
 }
 
@@ -2429,7 +1845,7 @@ func (o IdentitySourceResponseOutput) BaseUserDN() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IdentitySourceResponse) *string { return v.BaseUserDN }).(pulumi.StringPtrOutput)
 }
 
-// The domain's dns name
+// The domain's DNS name
 func (o IdentitySourceResponseOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IdentitySourceResponse) *string { return v.Domain }).(pulumi.StringPtrOutput)
 }
@@ -2439,7 +1855,8 @@ func (o IdentitySourceResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IdentitySourceResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The password of the Active Directory user with a minimum of read-only access to Base DN for users and groups.
+// The password of the Active Directory user with a minimum of read-only access to
+// Base DN for users and groups.
 func (o IdentitySourceResponseOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IdentitySourceResponse) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
@@ -2459,7 +1876,8 @@ func (o IdentitySourceResponseOutput) Ssl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IdentitySourceResponse) *string { return v.Ssl }).(pulumi.StringPtrOutput)
 }
 
-// The ID of an Active Directory user with a minimum of read-only access to Base DN for users and group
+// The ID of an Active Directory user with a minimum of read-only access to Base
+// DN for users and group
 func (o IdentitySourceResponseOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IdentitySourceResponse) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
@@ -2487,9 +1905,11 @@ func (o IdentitySourceResponseArrayOutput) Index(i pulumi.IntInput) IdentitySour
 // The properties of a management cluster
 type ManagementCluster struct {
 	// The cluster size
-	ClusterSize int `pulumi:"clusterSize"`
+	ClusterSize *int `pulumi:"clusterSize"`
 	// The hosts
 	Hosts []string `pulumi:"hosts"`
+	// Name of the vsan datastore associated with the cluster
+	VsanDatastoreName *string `pulumi:"vsanDatastoreName"`
 }
 
 // ManagementClusterInput is an input type that accepts ManagementClusterArgs and ManagementClusterOutput values.
@@ -2506,9 +1926,11 @@ type ManagementClusterInput interface {
 // The properties of a management cluster
 type ManagementClusterArgs struct {
 	// The cluster size
-	ClusterSize pulumi.IntInput `pulumi:"clusterSize"`
+	ClusterSize pulumi.IntPtrInput `pulumi:"clusterSize"`
 	// The hosts
 	Hosts pulumi.StringArrayInput `pulumi:"hosts"`
+	// Name of the vsan datastore associated with the cluster
+	VsanDatastoreName pulumi.StringPtrInput `pulumi:"vsanDatastoreName"`
 }
 
 func (ManagementClusterArgs) ElementType() reflect.Type {
@@ -2539,8 +1961,8 @@ func (o ManagementClusterOutput) ToManagementClusterOutputWithContext(ctx contex
 }
 
 // The cluster size
-func (o ManagementClusterOutput) ClusterSize() pulumi.IntOutput {
-	return o.ApplyT(func(v ManagementCluster) int { return v.ClusterSize }).(pulumi.IntOutput)
+func (o ManagementClusterOutput) ClusterSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ManagementCluster) *int { return v.ClusterSize }).(pulumi.IntPtrOutput)
 }
 
 // The hosts
@@ -2548,16 +1970,23 @@ func (o ManagementClusterOutput) Hosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ManagementCluster) []string { return v.Hosts }).(pulumi.StringArrayOutput)
 }
 
+// Name of the vsan datastore associated with the cluster
+func (o ManagementClusterOutput) VsanDatastoreName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagementCluster) *string { return v.VsanDatastoreName }).(pulumi.StringPtrOutput)
+}
+
 // The properties of a management cluster
 type ManagementClusterResponse struct {
 	// The identity
 	ClusterId int `pulumi:"clusterId"`
 	// The cluster size
-	ClusterSize int `pulumi:"clusterSize"`
+	ClusterSize *int `pulumi:"clusterSize"`
 	// The hosts
 	Hosts []string `pulumi:"hosts"`
 	// The state of the cluster provisioning
 	ProvisioningState string `pulumi:"provisioningState"`
+	// Name of the vsan datastore associated with the cluster
+	VsanDatastoreName *string `pulumi:"vsanDatastoreName"`
 }
 
 // The properties of a management cluster
@@ -2581,8 +2010,8 @@ func (o ManagementClusterResponseOutput) ClusterId() pulumi.IntOutput {
 }
 
 // The cluster size
-func (o ManagementClusterResponseOutput) ClusterSize() pulumi.IntOutput {
-	return o.ApplyT(func(v ManagementClusterResponse) int { return v.ClusterSize }).(pulumi.IntOutput)
+func (o ManagementClusterResponseOutput) ClusterSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ManagementClusterResponse) *int { return v.ClusterSize }).(pulumi.IntPtrOutput)
 }
 
 // The hosts
@@ -2593,6 +2022,11 @@ func (o ManagementClusterResponseOutput) Hosts() pulumi.StringArrayOutput {
 // The state of the cluster provisioning
 func (o ManagementClusterResponseOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagementClusterResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Name of the vsan datastore associated with the cluster
+func (o ManagementClusterResponseOutput) VsanDatastoreName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagementClusterResponse) *string { return v.VsanDatastoreName }).(pulumi.StringPtrOutput)
 }
 
 // An Azure NetApp Files volume from Microsoft.NetApp provider
@@ -2801,7 +2235,7 @@ type PSCredentialExecutionParameter struct {
 	Name string `pulumi:"name"`
 	// password for login
 	Password *string `pulumi:"password"`
-	// The type of execution parameter
+	// script execution parameter type
 	// Expected value is 'Credential'.
 	Type string `pulumi:"type"`
 	// username for login
@@ -2825,7 +2259,7 @@ type PSCredentialExecutionParameterArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// password for login
 	Password pulumi.StringPtrInput `pulumi:"password"`
-	// The type of execution parameter
+	// script execution parameter type
 	// Expected value is 'Credential'.
 	Type pulumi.StringInput `pulumi:"type"`
 	// username for login
@@ -2869,7 +2303,7 @@ func (o PSCredentialExecutionParameterOutput) Password() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v PSCredentialExecutionParameter) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-// The type of execution parameter
+// script execution parameter type
 // Expected value is 'Credential'.
 func (o PSCredentialExecutionParameterOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v PSCredentialExecutionParameter) string { return v.Type }).(pulumi.StringOutput)
@@ -2886,7 +2320,7 @@ type PSCredentialExecutionParameterResponse struct {
 	Name string `pulumi:"name"`
 	// password for login
 	Password *string `pulumi:"password"`
-	// The type of execution parameter
+	// script execution parameter type
 	// Expected value is 'Credential'.
 	Type string `pulumi:"type"`
 	// username for login
@@ -2918,7 +2352,7 @@ func (o PSCredentialExecutionParameterResponseOutput) Password() pulumi.StringPt
 	return o.ApplyT(func(v PSCredentialExecutionParameterResponse) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-// The type of execution parameter
+// script execution parameter type
 // Expected value is 'Credential'.
 func (o PSCredentialExecutionParameterResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v PSCredentialExecutionParameterResponse) string { return v.Type }).(pulumi.StringOutput)
@@ -2929,247 +2363,13 @@ func (o PSCredentialExecutionParameterResponseOutput) Username() pulumi.StringPt
 	return o.ApplyT(func(v PSCredentialExecutionParameterResponse) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
 
-// Identity for the virtual machine.
-type PrivateCloudIdentity struct {
-	// The type of identity used for the private cloud. The type 'SystemAssigned' refers to an implicitly created identity. The type 'None' will remove any identities from the Private Cloud.
-	Type *string `pulumi:"type"`
-}
-
-// PrivateCloudIdentityInput is an input type that accepts PrivateCloudIdentityArgs and PrivateCloudIdentityOutput values.
-// You can construct a concrete instance of `PrivateCloudIdentityInput` via:
-//
-//	PrivateCloudIdentityArgs{...}
-type PrivateCloudIdentityInput interface {
-	pulumi.Input
-
-	ToPrivateCloudIdentityOutput() PrivateCloudIdentityOutput
-	ToPrivateCloudIdentityOutputWithContext(context.Context) PrivateCloudIdentityOutput
-}
-
-// Identity for the virtual machine.
-type PrivateCloudIdentityArgs struct {
-	// The type of identity used for the private cloud. The type 'SystemAssigned' refers to an implicitly created identity. The type 'None' will remove any identities from the Private Cloud.
-	Type pulumi.StringPtrInput `pulumi:"type"`
-}
-
-func (PrivateCloudIdentityArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateCloudIdentity)(nil)).Elem()
-}
-
-func (i PrivateCloudIdentityArgs) ToPrivateCloudIdentityOutput() PrivateCloudIdentityOutput {
-	return i.ToPrivateCloudIdentityOutputWithContext(context.Background())
-}
-
-func (i PrivateCloudIdentityArgs) ToPrivateCloudIdentityOutputWithContext(ctx context.Context) PrivateCloudIdentityOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudIdentityOutput)
-}
-
-func (i PrivateCloudIdentityArgs) ToPrivateCloudIdentityPtrOutput() PrivateCloudIdentityPtrOutput {
-	return i.ToPrivateCloudIdentityPtrOutputWithContext(context.Background())
-}
-
-func (i PrivateCloudIdentityArgs) ToPrivateCloudIdentityPtrOutputWithContext(ctx context.Context) PrivateCloudIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudIdentityOutput).ToPrivateCloudIdentityPtrOutputWithContext(ctx)
-}
-
-// PrivateCloudIdentityPtrInput is an input type that accepts PrivateCloudIdentityArgs, PrivateCloudIdentityPtr and PrivateCloudIdentityPtrOutput values.
-// You can construct a concrete instance of `PrivateCloudIdentityPtrInput` via:
-//
-//	        PrivateCloudIdentityArgs{...}
-//
-//	or:
-//
-//	        nil
-type PrivateCloudIdentityPtrInput interface {
-	pulumi.Input
-
-	ToPrivateCloudIdentityPtrOutput() PrivateCloudIdentityPtrOutput
-	ToPrivateCloudIdentityPtrOutputWithContext(context.Context) PrivateCloudIdentityPtrOutput
-}
-
-type privateCloudIdentityPtrType PrivateCloudIdentityArgs
-
-func PrivateCloudIdentityPtr(v *PrivateCloudIdentityArgs) PrivateCloudIdentityPtrInput {
-	return (*privateCloudIdentityPtrType)(v)
-}
-
-func (*privateCloudIdentityPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PrivateCloudIdentity)(nil)).Elem()
-}
-
-func (i *privateCloudIdentityPtrType) ToPrivateCloudIdentityPtrOutput() PrivateCloudIdentityPtrOutput {
-	return i.ToPrivateCloudIdentityPtrOutputWithContext(context.Background())
-}
-
-func (i *privateCloudIdentityPtrType) ToPrivateCloudIdentityPtrOutputWithContext(ctx context.Context) PrivateCloudIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudIdentityPtrOutput)
-}
-
-// Identity for the virtual machine.
-type PrivateCloudIdentityOutput struct{ *pulumi.OutputState }
-
-func (PrivateCloudIdentityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateCloudIdentity)(nil)).Elem()
-}
-
-func (o PrivateCloudIdentityOutput) ToPrivateCloudIdentityOutput() PrivateCloudIdentityOutput {
-	return o
-}
-
-func (o PrivateCloudIdentityOutput) ToPrivateCloudIdentityOutputWithContext(ctx context.Context) PrivateCloudIdentityOutput {
-	return o
-}
-
-func (o PrivateCloudIdentityOutput) ToPrivateCloudIdentityPtrOutput() PrivateCloudIdentityPtrOutput {
-	return o.ToPrivateCloudIdentityPtrOutputWithContext(context.Background())
-}
-
-func (o PrivateCloudIdentityOutput) ToPrivateCloudIdentityPtrOutputWithContext(ctx context.Context) PrivateCloudIdentityPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateCloudIdentity) *PrivateCloudIdentity {
-		return &v
-	}).(PrivateCloudIdentityPtrOutput)
-}
-
-// The type of identity used for the private cloud. The type 'SystemAssigned' refers to an implicitly created identity. The type 'None' will remove any identities from the Private Cloud.
-func (o PrivateCloudIdentityOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateCloudIdentity) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-type PrivateCloudIdentityPtrOutput struct{ *pulumi.OutputState }
-
-func (PrivateCloudIdentityPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PrivateCloudIdentity)(nil)).Elem()
-}
-
-func (o PrivateCloudIdentityPtrOutput) ToPrivateCloudIdentityPtrOutput() PrivateCloudIdentityPtrOutput {
-	return o
-}
-
-func (o PrivateCloudIdentityPtrOutput) ToPrivateCloudIdentityPtrOutputWithContext(ctx context.Context) PrivateCloudIdentityPtrOutput {
-	return o
-}
-
-func (o PrivateCloudIdentityPtrOutput) Elem() PrivateCloudIdentityOutput {
-	return o.ApplyT(func(v *PrivateCloudIdentity) PrivateCloudIdentity {
-		if v != nil {
-			return *v
-		}
-		var ret PrivateCloudIdentity
-		return ret
-	}).(PrivateCloudIdentityOutput)
-}
-
-// The type of identity used for the private cloud. The type 'SystemAssigned' refers to an implicitly created identity. The type 'None' will remove any identities from the Private Cloud.
-func (o PrivateCloudIdentityPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateCloudIdentity) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-// Identity for the virtual machine.
-type PrivateCloudIdentityResponse struct {
-	// The principal ID of private cloud identity. This property will only be provided for a system assigned identity.
-	PrincipalId string `pulumi:"principalId"`
-	// The tenant ID associated with the private cloud. This property will only be provided for a system assigned identity.
-	TenantId string `pulumi:"tenantId"`
-	// The type of identity used for the private cloud. The type 'SystemAssigned' refers to an implicitly created identity. The type 'None' will remove any identities from the Private Cloud.
-	Type *string `pulumi:"type"`
-}
-
-// Identity for the virtual machine.
-type PrivateCloudIdentityResponseOutput struct{ *pulumi.OutputState }
-
-func (PrivateCloudIdentityResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateCloudIdentityResponse)(nil)).Elem()
-}
-
-func (o PrivateCloudIdentityResponseOutput) ToPrivateCloudIdentityResponseOutput() PrivateCloudIdentityResponseOutput {
-	return o
-}
-
-func (o PrivateCloudIdentityResponseOutput) ToPrivateCloudIdentityResponseOutputWithContext(ctx context.Context) PrivateCloudIdentityResponseOutput {
-	return o
-}
-
-// The principal ID of private cloud identity. This property will only be provided for a system assigned identity.
-func (o PrivateCloudIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateCloudIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
-}
-
-// The tenant ID associated with the private cloud. This property will only be provided for a system assigned identity.
-func (o PrivateCloudIdentityResponseOutput) TenantId() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateCloudIdentityResponse) string { return v.TenantId }).(pulumi.StringOutput)
-}
-
-// The type of identity used for the private cloud. The type 'SystemAssigned' refers to an implicitly created identity. The type 'None' will remove any identities from the Private Cloud.
-func (o PrivateCloudIdentityResponseOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateCloudIdentityResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-type PrivateCloudIdentityResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PrivateCloudIdentityResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PrivateCloudIdentityResponse)(nil)).Elem()
-}
-
-func (o PrivateCloudIdentityResponsePtrOutput) ToPrivateCloudIdentityResponsePtrOutput() PrivateCloudIdentityResponsePtrOutput {
-	return o
-}
-
-func (o PrivateCloudIdentityResponsePtrOutput) ToPrivateCloudIdentityResponsePtrOutputWithContext(ctx context.Context) PrivateCloudIdentityResponsePtrOutput {
-	return o
-}
-
-func (o PrivateCloudIdentityResponsePtrOutput) Elem() PrivateCloudIdentityResponseOutput {
-	return o.ApplyT(func(v *PrivateCloudIdentityResponse) PrivateCloudIdentityResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PrivateCloudIdentityResponse
-		return ret
-	}).(PrivateCloudIdentityResponseOutput)
-}
-
-// The principal ID of private cloud identity. This property will only be provided for a system assigned identity.
-func (o PrivateCloudIdentityResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateCloudIdentityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PrincipalId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The tenant ID associated with the private cloud. This property will only be provided for a system assigned identity.
-func (o PrivateCloudIdentityResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateCloudIdentityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TenantId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The type of identity used for the private cloud. The type 'SystemAssigned' refers to an implicitly created identity. The type 'None' will remove any identities from the Private Cloud.
-func (o PrivateCloudIdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateCloudIdentityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
 // a plain text value execution parameter
 type ScriptSecureStringExecutionParameter struct {
 	// The parameter name
 	Name string `pulumi:"name"`
 	// A secure value for the passed parameter, not to be stored in logs
 	SecureValue *string `pulumi:"secureValue"`
-	// The type of execution parameter
+	// script execution parameter type
 	// Expected value is 'SecureValue'.
 	Type string `pulumi:"type"`
 }
@@ -3191,7 +2391,7 @@ type ScriptSecureStringExecutionParameterArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// A secure value for the passed parameter, not to be stored in logs
 	SecureValue pulumi.StringPtrInput `pulumi:"secureValue"`
-	// The type of execution parameter
+	// script execution parameter type
 	// Expected value is 'SecureValue'.
 	Type pulumi.StringInput `pulumi:"type"`
 }
@@ -3233,7 +2433,7 @@ func (o ScriptSecureStringExecutionParameterOutput) SecureValue() pulumi.StringP
 	return o.ApplyT(func(v ScriptSecureStringExecutionParameter) *string { return v.SecureValue }).(pulumi.StringPtrOutput)
 }
 
-// The type of execution parameter
+// script execution parameter type
 // Expected value is 'SecureValue'.
 func (o ScriptSecureStringExecutionParameterOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ScriptSecureStringExecutionParameter) string { return v.Type }).(pulumi.StringOutput)
@@ -3245,7 +2445,7 @@ type ScriptSecureStringExecutionParameterResponse struct {
 	Name string `pulumi:"name"`
 	// A secure value for the passed parameter, not to be stored in logs
 	SecureValue *string `pulumi:"secureValue"`
-	// The type of execution parameter
+	// script execution parameter type
 	// Expected value is 'SecureValue'.
 	Type string `pulumi:"type"`
 }
@@ -3275,7 +2475,7 @@ func (o ScriptSecureStringExecutionParameterResponseOutput) SecureValue() pulumi
 	return o.ApplyT(func(v ScriptSecureStringExecutionParameterResponse) *string { return v.SecureValue }).(pulumi.StringPtrOutput)
 }
 
-// The type of execution parameter
+// script execution parameter type
 // Expected value is 'SecureValue'.
 func (o ScriptSecureStringExecutionParameterResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ScriptSecureStringExecutionParameterResponse) string { return v.Type }).(pulumi.StringOutput)
@@ -3285,7 +2485,7 @@ func (o ScriptSecureStringExecutionParameterResponseOutput) Type() pulumi.String
 type ScriptStringExecutionParameter struct {
 	// The parameter name
 	Name string `pulumi:"name"`
-	// The type of execution parameter
+	// script execution parameter type
 	// Expected value is 'Value'.
 	Type string `pulumi:"type"`
 	// The value for the passed parameter
@@ -3307,7 +2507,7 @@ type ScriptStringExecutionParameterInput interface {
 type ScriptStringExecutionParameterArgs struct {
 	// The parameter name
 	Name pulumi.StringInput `pulumi:"name"`
-	// The type of execution parameter
+	// script execution parameter type
 	// Expected value is 'Value'.
 	Type pulumi.StringInput `pulumi:"type"`
 	// The value for the passed parameter
@@ -3346,7 +2546,7 @@ func (o ScriptStringExecutionParameterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ScriptStringExecutionParameter) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The type of execution parameter
+// script execution parameter type
 // Expected value is 'Value'.
 func (o ScriptStringExecutionParameterOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ScriptStringExecutionParameter) string { return v.Type }).(pulumi.StringOutput)
@@ -3361,7 +2561,7 @@ func (o ScriptStringExecutionParameterOutput) Value() pulumi.StringPtrOutput {
 type ScriptStringExecutionParameterResponse struct {
 	// The parameter name
 	Name string `pulumi:"name"`
-	// The type of execution parameter
+	// script execution parameter type
 	// Expected value is 'Value'.
 	Type string `pulumi:"type"`
 	// The value for the passed parameter
@@ -3388,7 +2588,7 @@ func (o ScriptStringExecutionParameterResponseOutput) Name() pulumi.StringOutput
 	return o.ApplyT(func(v ScriptStringExecutionParameterResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The type of execution parameter
+// script execution parameter type
 // Expected value is 'Value'.
 func (o ScriptStringExecutionParameterResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ScriptStringExecutionParameterResponse) string { return v.Type }).(pulumi.StringOutput)
@@ -3401,8 +2601,16 @@ func (o ScriptStringExecutionParameterResponseOutput) Value() pulumi.StringPtrOu
 
 // The resource model definition representing SKU
 type Sku struct {
-	// The name of the SKU.
+	// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+	Capacity *int `pulumi:"capacity"`
+	// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+	Family *string `pulumi:"family"`
+	// The name of the SKU. E.g. P3. It is typically a letter+number code
 	Name string `pulumi:"name"`
+	// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
+	Size *string `pulumi:"size"`
+	// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+	Tier *SkuTier `pulumi:"tier"`
 }
 
 // SkuInput is an input type that accepts SkuArgs and SkuOutput values.
@@ -3418,8 +2626,16 @@ type SkuInput interface {
 
 // The resource model definition representing SKU
 type SkuArgs struct {
-	// The name of the SKU.
+	// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+	Capacity pulumi.IntPtrInput `pulumi:"capacity"`
+	// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+	Family pulumi.StringPtrInput `pulumi:"family"`
+	// The name of the SKU. E.g. P3. It is typically a letter+number code
 	Name pulumi.StringInput `pulumi:"name"`
+	// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
+	Size pulumi.StringPtrInput `pulumi:"size"`
+	// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+	Tier SkuTierPtrInput `pulumi:"tier"`
 }
 
 func (SkuArgs) ElementType() reflect.Type {
@@ -3449,15 +2665,43 @@ func (o SkuOutput) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
 	return o
 }
 
-// The name of the SKU.
+// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+func (o SkuOutput) Capacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Sku) *int { return v.Capacity }).(pulumi.IntPtrOutput)
+}
+
+// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+func (o SkuOutput) Family() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Sku) *string { return v.Family }).(pulumi.StringPtrOutput)
+}
+
+// The name of the SKU. E.g. P3. It is typically a letter+number code
 func (o SkuOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v Sku) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
+func (o SkuOutput) Size() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Sku) *string { return v.Size }).(pulumi.StringPtrOutput)
+}
+
+// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+func (o SkuOutput) Tier() SkuTierPtrOutput {
+	return o.ApplyT(func(v Sku) *SkuTier { return v.Tier }).(SkuTierPtrOutput)
+}
+
 // The resource model definition representing SKU
 type SkuResponse struct {
-	// The name of the SKU.
+	// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+	Capacity *int `pulumi:"capacity"`
+	// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+	Family *string `pulumi:"family"`
+	// The name of the SKU. E.g. P3. It is typically a letter+number code
 	Name string `pulumi:"name"`
+	// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
+	Size *string `pulumi:"size"`
+	// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+	Tier *string `pulumi:"tier"`
 }
 
 // The resource model definition representing SKU
@@ -3475,9 +2719,263 @@ func (o SkuResponseOutput) ToSkuResponseOutputWithContext(ctx context.Context) S
 	return o
 }
 
-// The name of the SKU.
+// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+func (o SkuResponseOutput) Capacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SkuResponse) *int { return v.Capacity }).(pulumi.IntPtrOutput)
+}
+
+// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+func (o SkuResponseOutput) Family() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SkuResponse) *string { return v.Family }).(pulumi.StringPtrOutput)
+}
+
+// The name of the SKU. E.g. P3. It is typically a letter+number code
 func (o SkuResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v SkuResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
+func (o SkuResponseOutput) Size() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SkuResponse) *string { return v.Size }).(pulumi.StringPtrOutput)
+}
+
+// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+func (o SkuResponseOutput) Tier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SkuResponse) *string { return v.Tier }).(pulumi.StringPtrOutput)
+}
+
+// Managed service identity (either system assigned, or none)
+type SystemAssignedServiceIdentity struct {
+	// Type of managed service identity (either system assigned, or none).
+	Type string `pulumi:"type"`
+}
+
+// SystemAssignedServiceIdentityInput is an input type that accepts SystemAssignedServiceIdentityArgs and SystemAssignedServiceIdentityOutput values.
+// You can construct a concrete instance of `SystemAssignedServiceIdentityInput` via:
+//
+//	SystemAssignedServiceIdentityArgs{...}
+type SystemAssignedServiceIdentityInput interface {
+	pulumi.Input
+
+	ToSystemAssignedServiceIdentityOutput() SystemAssignedServiceIdentityOutput
+	ToSystemAssignedServiceIdentityOutputWithContext(context.Context) SystemAssignedServiceIdentityOutput
+}
+
+// Managed service identity (either system assigned, or none)
+type SystemAssignedServiceIdentityArgs struct {
+	// Type of managed service identity (either system assigned, or none).
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (SystemAssignedServiceIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemAssignedServiceIdentity)(nil)).Elem()
+}
+
+func (i SystemAssignedServiceIdentityArgs) ToSystemAssignedServiceIdentityOutput() SystemAssignedServiceIdentityOutput {
+	return i.ToSystemAssignedServiceIdentityOutputWithContext(context.Background())
+}
+
+func (i SystemAssignedServiceIdentityArgs) ToSystemAssignedServiceIdentityOutputWithContext(ctx context.Context) SystemAssignedServiceIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemAssignedServiceIdentityOutput)
+}
+
+func (i SystemAssignedServiceIdentityArgs) ToSystemAssignedServiceIdentityPtrOutput() SystemAssignedServiceIdentityPtrOutput {
+	return i.ToSystemAssignedServiceIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i SystemAssignedServiceIdentityArgs) ToSystemAssignedServiceIdentityPtrOutputWithContext(ctx context.Context) SystemAssignedServiceIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemAssignedServiceIdentityOutput).ToSystemAssignedServiceIdentityPtrOutputWithContext(ctx)
+}
+
+// SystemAssignedServiceIdentityPtrInput is an input type that accepts SystemAssignedServiceIdentityArgs, SystemAssignedServiceIdentityPtr and SystemAssignedServiceIdentityPtrOutput values.
+// You can construct a concrete instance of `SystemAssignedServiceIdentityPtrInput` via:
+//
+//	        SystemAssignedServiceIdentityArgs{...}
+//
+//	or:
+//
+//	        nil
+type SystemAssignedServiceIdentityPtrInput interface {
+	pulumi.Input
+
+	ToSystemAssignedServiceIdentityPtrOutput() SystemAssignedServiceIdentityPtrOutput
+	ToSystemAssignedServiceIdentityPtrOutputWithContext(context.Context) SystemAssignedServiceIdentityPtrOutput
+}
+
+type systemAssignedServiceIdentityPtrType SystemAssignedServiceIdentityArgs
+
+func SystemAssignedServiceIdentityPtr(v *SystemAssignedServiceIdentityArgs) SystemAssignedServiceIdentityPtrInput {
+	return (*systemAssignedServiceIdentityPtrType)(v)
+}
+
+func (*systemAssignedServiceIdentityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SystemAssignedServiceIdentity)(nil)).Elem()
+}
+
+func (i *systemAssignedServiceIdentityPtrType) ToSystemAssignedServiceIdentityPtrOutput() SystemAssignedServiceIdentityPtrOutput {
+	return i.ToSystemAssignedServiceIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i *systemAssignedServiceIdentityPtrType) ToSystemAssignedServiceIdentityPtrOutputWithContext(ctx context.Context) SystemAssignedServiceIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemAssignedServiceIdentityPtrOutput)
+}
+
+// Managed service identity (either system assigned, or none)
+type SystemAssignedServiceIdentityOutput struct{ *pulumi.OutputState }
+
+func (SystemAssignedServiceIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemAssignedServiceIdentity)(nil)).Elem()
+}
+
+func (o SystemAssignedServiceIdentityOutput) ToSystemAssignedServiceIdentityOutput() SystemAssignedServiceIdentityOutput {
+	return o
+}
+
+func (o SystemAssignedServiceIdentityOutput) ToSystemAssignedServiceIdentityOutputWithContext(ctx context.Context) SystemAssignedServiceIdentityOutput {
+	return o
+}
+
+func (o SystemAssignedServiceIdentityOutput) ToSystemAssignedServiceIdentityPtrOutput() SystemAssignedServiceIdentityPtrOutput {
+	return o.ToSystemAssignedServiceIdentityPtrOutputWithContext(context.Background())
+}
+
+func (o SystemAssignedServiceIdentityOutput) ToSystemAssignedServiceIdentityPtrOutputWithContext(ctx context.Context) SystemAssignedServiceIdentityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SystemAssignedServiceIdentity) *SystemAssignedServiceIdentity {
+		return &v
+	}).(SystemAssignedServiceIdentityPtrOutput)
+}
+
+// Type of managed service identity (either system assigned, or none).
+func (o SystemAssignedServiceIdentityOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SystemAssignedServiceIdentity) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type SystemAssignedServiceIdentityPtrOutput struct{ *pulumi.OutputState }
+
+func (SystemAssignedServiceIdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SystemAssignedServiceIdentity)(nil)).Elem()
+}
+
+func (o SystemAssignedServiceIdentityPtrOutput) ToSystemAssignedServiceIdentityPtrOutput() SystemAssignedServiceIdentityPtrOutput {
+	return o
+}
+
+func (o SystemAssignedServiceIdentityPtrOutput) ToSystemAssignedServiceIdentityPtrOutputWithContext(ctx context.Context) SystemAssignedServiceIdentityPtrOutput {
+	return o
+}
+
+func (o SystemAssignedServiceIdentityPtrOutput) Elem() SystemAssignedServiceIdentityOutput {
+	return o.ApplyT(func(v *SystemAssignedServiceIdentity) SystemAssignedServiceIdentity {
+		if v != nil {
+			return *v
+		}
+		var ret SystemAssignedServiceIdentity
+		return ret
+	}).(SystemAssignedServiceIdentityOutput)
+}
+
+// Type of managed service identity (either system assigned, or none).
+func (o SystemAssignedServiceIdentityPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemAssignedServiceIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Managed service identity (either system assigned, or none)
+type SystemAssignedServiceIdentityResponse struct {
+	// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+	PrincipalId string `pulumi:"principalId"`
+	// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+	TenantId string `pulumi:"tenantId"`
+	// Type of managed service identity (either system assigned, or none).
+	Type string `pulumi:"type"`
+}
+
+// Managed service identity (either system assigned, or none)
+type SystemAssignedServiceIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (SystemAssignedServiceIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemAssignedServiceIdentityResponse)(nil)).Elem()
+}
+
+func (o SystemAssignedServiceIdentityResponseOutput) ToSystemAssignedServiceIdentityResponseOutput() SystemAssignedServiceIdentityResponseOutput {
+	return o
+}
+
+func (o SystemAssignedServiceIdentityResponseOutput) ToSystemAssignedServiceIdentityResponseOutputWithContext(ctx context.Context) SystemAssignedServiceIdentityResponseOutput {
+	return o
+}
+
+// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+func (o SystemAssignedServiceIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v SystemAssignedServiceIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+func (o SystemAssignedServiceIdentityResponseOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v SystemAssignedServiceIdentityResponse) string { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// Type of managed service identity (either system assigned, or none).
+func (o SystemAssignedServiceIdentityResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SystemAssignedServiceIdentityResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type SystemAssignedServiceIdentityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SystemAssignedServiceIdentityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SystemAssignedServiceIdentityResponse)(nil)).Elem()
+}
+
+func (o SystemAssignedServiceIdentityResponsePtrOutput) ToSystemAssignedServiceIdentityResponsePtrOutput() SystemAssignedServiceIdentityResponsePtrOutput {
+	return o
+}
+
+func (o SystemAssignedServiceIdentityResponsePtrOutput) ToSystemAssignedServiceIdentityResponsePtrOutputWithContext(ctx context.Context) SystemAssignedServiceIdentityResponsePtrOutput {
+	return o
+}
+
+func (o SystemAssignedServiceIdentityResponsePtrOutput) Elem() SystemAssignedServiceIdentityResponseOutput {
+	return o.ApplyT(func(v *SystemAssignedServiceIdentityResponse) SystemAssignedServiceIdentityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SystemAssignedServiceIdentityResponse
+		return ret
+	}).(SystemAssignedServiceIdentityResponseOutput)
+}
+
+// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+func (o SystemAssignedServiceIdentityResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemAssignedServiceIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrincipalId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+func (o SystemAssignedServiceIdentityResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemAssignedServiceIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of managed service identity (either system assigned, or none).
+func (o SystemAssignedServiceIdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemAssignedServiceIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 // Metadata pertaining to creation and last modification of the resource.
@@ -3539,1204 +3037,6 @@ func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
 // The type of identity that last modified the resource.
 func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
-}
-
-// VM-Host placement policy properties
-type VmHostPlacementPolicyProperties struct {
-	// vm-host placement policy affinity strength (should/must)
-	AffinityStrength *string `pulumi:"affinityStrength"`
-	// placement policy affinity type
-	AffinityType string `pulumi:"affinityType"`
-	// placement policy azure hybrid benefit opt-in type
-	AzureHybridBenefitType *string `pulumi:"azureHybridBenefitType"`
-	// Display name of the placement policy
-	DisplayName *string `pulumi:"displayName"`
-	// Host members list
-	HostMembers []string `pulumi:"hostMembers"`
-	// Whether the placement policy is enabled or disabled
-	State *string `pulumi:"state"`
-	// placement policy type
-	// Expected value is 'VmHost'.
-	Type string `pulumi:"type"`
-	// Virtual machine members list
-	VmMembers []string `pulumi:"vmMembers"`
-}
-
-// VmHostPlacementPolicyPropertiesInput is an input type that accepts VmHostPlacementPolicyPropertiesArgs and VmHostPlacementPolicyPropertiesOutput values.
-// You can construct a concrete instance of `VmHostPlacementPolicyPropertiesInput` via:
-//
-//	VmHostPlacementPolicyPropertiesArgs{...}
-type VmHostPlacementPolicyPropertiesInput interface {
-	pulumi.Input
-
-	ToVmHostPlacementPolicyPropertiesOutput() VmHostPlacementPolicyPropertiesOutput
-	ToVmHostPlacementPolicyPropertiesOutputWithContext(context.Context) VmHostPlacementPolicyPropertiesOutput
-}
-
-// VM-Host placement policy properties
-type VmHostPlacementPolicyPropertiesArgs struct {
-	// vm-host placement policy affinity strength (should/must)
-	AffinityStrength pulumi.StringPtrInput `pulumi:"affinityStrength"`
-	// placement policy affinity type
-	AffinityType pulumi.StringInput `pulumi:"affinityType"`
-	// placement policy azure hybrid benefit opt-in type
-	AzureHybridBenefitType pulumi.StringPtrInput `pulumi:"azureHybridBenefitType"`
-	// Display name of the placement policy
-	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	// Host members list
-	HostMembers pulumi.StringArrayInput `pulumi:"hostMembers"`
-	// Whether the placement policy is enabled or disabled
-	State pulumi.StringPtrInput `pulumi:"state"`
-	// placement policy type
-	// Expected value is 'VmHost'.
-	Type pulumi.StringInput `pulumi:"type"`
-	// Virtual machine members list
-	VmMembers pulumi.StringArrayInput `pulumi:"vmMembers"`
-}
-
-func (VmHostPlacementPolicyPropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*VmHostPlacementPolicyProperties)(nil)).Elem()
-}
-
-func (i VmHostPlacementPolicyPropertiesArgs) ToVmHostPlacementPolicyPropertiesOutput() VmHostPlacementPolicyPropertiesOutput {
-	return i.ToVmHostPlacementPolicyPropertiesOutputWithContext(context.Background())
-}
-
-func (i VmHostPlacementPolicyPropertiesArgs) ToVmHostPlacementPolicyPropertiesOutputWithContext(ctx context.Context) VmHostPlacementPolicyPropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VmHostPlacementPolicyPropertiesOutput)
-}
-
-func (i VmHostPlacementPolicyPropertiesArgs) ToVmHostPlacementPolicyPropertiesPtrOutput() VmHostPlacementPolicyPropertiesPtrOutput {
-	return i.ToVmHostPlacementPolicyPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i VmHostPlacementPolicyPropertiesArgs) ToVmHostPlacementPolicyPropertiesPtrOutputWithContext(ctx context.Context) VmHostPlacementPolicyPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VmHostPlacementPolicyPropertiesOutput).ToVmHostPlacementPolicyPropertiesPtrOutputWithContext(ctx)
-}
-
-// VmHostPlacementPolicyPropertiesPtrInput is an input type that accepts VmHostPlacementPolicyPropertiesArgs, VmHostPlacementPolicyPropertiesPtr and VmHostPlacementPolicyPropertiesPtrOutput values.
-// You can construct a concrete instance of `VmHostPlacementPolicyPropertiesPtrInput` via:
-//
-//	        VmHostPlacementPolicyPropertiesArgs{...}
-//
-//	or:
-//
-//	        nil
-type VmHostPlacementPolicyPropertiesPtrInput interface {
-	pulumi.Input
-
-	ToVmHostPlacementPolicyPropertiesPtrOutput() VmHostPlacementPolicyPropertiesPtrOutput
-	ToVmHostPlacementPolicyPropertiesPtrOutputWithContext(context.Context) VmHostPlacementPolicyPropertiesPtrOutput
-}
-
-type vmHostPlacementPolicyPropertiesPtrType VmHostPlacementPolicyPropertiesArgs
-
-func VmHostPlacementPolicyPropertiesPtr(v *VmHostPlacementPolicyPropertiesArgs) VmHostPlacementPolicyPropertiesPtrInput {
-	return (*vmHostPlacementPolicyPropertiesPtrType)(v)
-}
-
-func (*vmHostPlacementPolicyPropertiesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**VmHostPlacementPolicyProperties)(nil)).Elem()
-}
-
-func (i *vmHostPlacementPolicyPropertiesPtrType) ToVmHostPlacementPolicyPropertiesPtrOutput() VmHostPlacementPolicyPropertiesPtrOutput {
-	return i.ToVmHostPlacementPolicyPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i *vmHostPlacementPolicyPropertiesPtrType) ToVmHostPlacementPolicyPropertiesPtrOutputWithContext(ctx context.Context) VmHostPlacementPolicyPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VmHostPlacementPolicyPropertiesPtrOutput)
-}
-
-// VM-Host placement policy properties
-type VmHostPlacementPolicyPropertiesOutput struct{ *pulumi.OutputState }
-
-func (VmHostPlacementPolicyPropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VmHostPlacementPolicyProperties)(nil)).Elem()
-}
-
-func (o VmHostPlacementPolicyPropertiesOutput) ToVmHostPlacementPolicyPropertiesOutput() VmHostPlacementPolicyPropertiesOutput {
-	return o
-}
-
-func (o VmHostPlacementPolicyPropertiesOutput) ToVmHostPlacementPolicyPropertiesOutputWithContext(ctx context.Context) VmHostPlacementPolicyPropertiesOutput {
-	return o
-}
-
-func (o VmHostPlacementPolicyPropertiesOutput) ToVmHostPlacementPolicyPropertiesPtrOutput() VmHostPlacementPolicyPropertiesPtrOutput {
-	return o.ToVmHostPlacementPolicyPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (o VmHostPlacementPolicyPropertiesOutput) ToVmHostPlacementPolicyPropertiesPtrOutputWithContext(ctx context.Context) VmHostPlacementPolicyPropertiesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmHostPlacementPolicyProperties) *VmHostPlacementPolicyProperties {
-		return &v
-	}).(VmHostPlacementPolicyPropertiesPtrOutput)
-}
-
-// vm-host placement policy affinity strength (should/must)
-func (o VmHostPlacementPolicyPropertiesOutput) AffinityStrength() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VmHostPlacementPolicyProperties) *string { return v.AffinityStrength }).(pulumi.StringPtrOutput)
-}
-
-// placement policy affinity type
-func (o VmHostPlacementPolicyPropertiesOutput) AffinityType() pulumi.StringOutput {
-	return o.ApplyT(func(v VmHostPlacementPolicyProperties) string { return v.AffinityType }).(pulumi.StringOutput)
-}
-
-// placement policy azure hybrid benefit opt-in type
-func (o VmHostPlacementPolicyPropertiesOutput) AzureHybridBenefitType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VmHostPlacementPolicyProperties) *string { return v.AzureHybridBenefitType }).(pulumi.StringPtrOutput)
-}
-
-// Display name of the placement policy
-func (o VmHostPlacementPolicyPropertiesOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VmHostPlacementPolicyProperties) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
-}
-
-// Host members list
-func (o VmHostPlacementPolicyPropertiesOutput) HostMembers() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v VmHostPlacementPolicyProperties) []string { return v.HostMembers }).(pulumi.StringArrayOutput)
-}
-
-// Whether the placement policy is enabled or disabled
-func (o VmHostPlacementPolicyPropertiesOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VmHostPlacementPolicyProperties) *string { return v.State }).(pulumi.StringPtrOutput)
-}
-
-// placement policy type
-// Expected value is 'VmHost'.
-func (o VmHostPlacementPolicyPropertiesOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v VmHostPlacementPolicyProperties) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Virtual machine members list
-func (o VmHostPlacementPolicyPropertiesOutput) VmMembers() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v VmHostPlacementPolicyProperties) []string { return v.VmMembers }).(pulumi.StringArrayOutput)
-}
-
-type VmHostPlacementPolicyPropertiesPtrOutput struct{ *pulumi.OutputState }
-
-func (VmHostPlacementPolicyPropertiesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**VmHostPlacementPolicyProperties)(nil)).Elem()
-}
-
-func (o VmHostPlacementPolicyPropertiesPtrOutput) ToVmHostPlacementPolicyPropertiesPtrOutput() VmHostPlacementPolicyPropertiesPtrOutput {
-	return o
-}
-
-func (o VmHostPlacementPolicyPropertiesPtrOutput) ToVmHostPlacementPolicyPropertiesPtrOutputWithContext(ctx context.Context) VmHostPlacementPolicyPropertiesPtrOutput {
-	return o
-}
-
-func (o VmHostPlacementPolicyPropertiesPtrOutput) Elem() VmHostPlacementPolicyPropertiesOutput {
-	return o.ApplyT(func(v *VmHostPlacementPolicyProperties) VmHostPlacementPolicyProperties {
-		if v != nil {
-			return *v
-		}
-		var ret VmHostPlacementPolicyProperties
-		return ret
-	}).(VmHostPlacementPolicyPropertiesOutput)
-}
-
-// vm-host placement policy affinity strength (should/must)
-func (o VmHostPlacementPolicyPropertiesPtrOutput) AffinityStrength() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VmHostPlacementPolicyProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AffinityStrength
-	}).(pulumi.StringPtrOutput)
-}
-
-// placement policy affinity type
-func (o VmHostPlacementPolicyPropertiesPtrOutput) AffinityType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VmHostPlacementPolicyProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AffinityType
-	}).(pulumi.StringPtrOutput)
-}
-
-// placement policy azure hybrid benefit opt-in type
-func (o VmHostPlacementPolicyPropertiesPtrOutput) AzureHybridBenefitType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VmHostPlacementPolicyProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AzureHybridBenefitType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Display name of the placement policy
-func (o VmHostPlacementPolicyPropertiesPtrOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VmHostPlacementPolicyProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DisplayName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Host members list
-func (o VmHostPlacementPolicyPropertiesPtrOutput) HostMembers() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *VmHostPlacementPolicyProperties) []string {
-		if v == nil {
-			return nil
-		}
-		return v.HostMembers
-	}).(pulumi.StringArrayOutput)
-}
-
-// Whether the placement policy is enabled or disabled
-func (o VmHostPlacementPolicyPropertiesPtrOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VmHostPlacementPolicyProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.State
-	}).(pulumi.StringPtrOutput)
-}
-
-// placement policy type
-// Expected value is 'VmHost'.
-func (o VmHostPlacementPolicyPropertiesPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VmHostPlacementPolicyProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-// Virtual machine members list
-func (o VmHostPlacementPolicyPropertiesPtrOutput) VmMembers() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *VmHostPlacementPolicyProperties) []string {
-		if v == nil {
-			return nil
-		}
-		return v.VmMembers
-	}).(pulumi.StringArrayOutput)
-}
-
-// VM-Host placement policy properties
-type VmHostPlacementPolicyPropertiesResponse struct {
-	// vm-host placement policy affinity strength (should/must)
-	AffinityStrength *string `pulumi:"affinityStrength"`
-	// placement policy affinity type
-	AffinityType string `pulumi:"affinityType"`
-	// placement policy azure hybrid benefit opt-in type
-	AzureHybridBenefitType *string `pulumi:"azureHybridBenefitType"`
-	// Display name of the placement policy
-	DisplayName *string `pulumi:"displayName"`
-	// Host members list
-	HostMembers []string `pulumi:"hostMembers"`
-	// The provisioning state
-	ProvisioningState string `pulumi:"provisioningState"`
-	// Whether the placement policy is enabled or disabled
-	State *string `pulumi:"state"`
-	// placement policy type
-	// Expected value is 'VmHost'.
-	Type string `pulumi:"type"`
-	// Virtual machine members list
-	VmMembers []string `pulumi:"vmMembers"`
-}
-
-// VM-Host placement policy properties
-type VmHostPlacementPolicyPropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (VmHostPlacementPolicyPropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VmHostPlacementPolicyPropertiesResponse)(nil)).Elem()
-}
-
-func (o VmHostPlacementPolicyPropertiesResponseOutput) ToVmHostPlacementPolicyPropertiesResponseOutput() VmHostPlacementPolicyPropertiesResponseOutput {
-	return o
-}
-
-func (o VmHostPlacementPolicyPropertiesResponseOutput) ToVmHostPlacementPolicyPropertiesResponseOutputWithContext(ctx context.Context) VmHostPlacementPolicyPropertiesResponseOutput {
-	return o
-}
-
-// vm-host placement policy affinity strength (should/must)
-func (o VmHostPlacementPolicyPropertiesResponseOutput) AffinityStrength() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VmHostPlacementPolicyPropertiesResponse) *string { return v.AffinityStrength }).(pulumi.StringPtrOutput)
-}
-
-// placement policy affinity type
-func (o VmHostPlacementPolicyPropertiesResponseOutput) AffinityType() pulumi.StringOutput {
-	return o.ApplyT(func(v VmHostPlacementPolicyPropertiesResponse) string { return v.AffinityType }).(pulumi.StringOutput)
-}
-
-// placement policy azure hybrid benefit opt-in type
-func (o VmHostPlacementPolicyPropertiesResponseOutput) AzureHybridBenefitType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VmHostPlacementPolicyPropertiesResponse) *string { return v.AzureHybridBenefitType }).(pulumi.StringPtrOutput)
-}
-
-// Display name of the placement policy
-func (o VmHostPlacementPolicyPropertiesResponseOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VmHostPlacementPolicyPropertiesResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
-}
-
-// Host members list
-func (o VmHostPlacementPolicyPropertiesResponseOutput) HostMembers() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v VmHostPlacementPolicyPropertiesResponse) []string { return v.HostMembers }).(pulumi.StringArrayOutput)
-}
-
-// The provisioning state
-func (o VmHostPlacementPolicyPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v VmHostPlacementPolicyPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// Whether the placement policy is enabled or disabled
-func (o VmHostPlacementPolicyPropertiesResponseOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VmHostPlacementPolicyPropertiesResponse) *string { return v.State }).(pulumi.StringPtrOutput)
-}
-
-// placement policy type
-// Expected value is 'VmHost'.
-func (o VmHostPlacementPolicyPropertiesResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v VmHostPlacementPolicyPropertiesResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Virtual machine members list
-func (o VmHostPlacementPolicyPropertiesResponseOutput) VmMembers() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v VmHostPlacementPolicyPropertiesResponse) []string { return v.VmMembers }).(pulumi.StringArrayOutput)
-}
-
-// VM-VM placement policy properties
-type VmVmPlacementPolicyProperties struct {
-	// placement policy affinity type
-	AffinityType string `pulumi:"affinityType"`
-	// Display name of the placement policy
-	DisplayName *string `pulumi:"displayName"`
-	// Whether the placement policy is enabled or disabled
-	State *string `pulumi:"state"`
-	// placement policy type
-	// Expected value is 'VmVm'.
-	Type string `pulumi:"type"`
-	// Virtual machine members list
-	VmMembers []string `pulumi:"vmMembers"`
-}
-
-// VmVmPlacementPolicyPropertiesInput is an input type that accepts VmVmPlacementPolicyPropertiesArgs and VmVmPlacementPolicyPropertiesOutput values.
-// You can construct a concrete instance of `VmVmPlacementPolicyPropertiesInput` via:
-//
-//	VmVmPlacementPolicyPropertiesArgs{...}
-type VmVmPlacementPolicyPropertiesInput interface {
-	pulumi.Input
-
-	ToVmVmPlacementPolicyPropertiesOutput() VmVmPlacementPolicyPropertiesOutput
-	ToVmVmPlacementPolicyPropertiesOutputWithContext(context.Context) VmVmPlacementPolicyPropertiesOutput
-}
-
-// VM-VM placement policy properties
-type VmVmPlacementPolicyPropertiesArgs struct {
-	// placement policy affinity type
-	AffinityType pulumi.StringInput `pulumi:"affinityType"`
-	// Display name of the placement policy
-	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	// Whether the placement policy is enabled or disabled
-	State pulumi.StringPtrInput `pulumi:"state"`
-	// placement policy type
-	// Expected value is 'VmVm'.
-	Type pulumi.StringInput `pulumi:"type"`
-	// Virtual machine members list
-	VmMembers pulumi.StringArrayInput `pulumi:"vmMembers"`
-}
-
-func (VmVmPlacementPolicyPropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*VmVmPlacementPolicyProperties)(nil)).Elem()
-}
-
-func (i VmVmPlacementPolicyPropertiesArgs) ToVmVmPlacementPolicyPropertiesOutput() VmVmPlacementPolicyPropertiesOutput {
-	return i.ToVmVmPlacementPolicyPropertiesOutputWithContext(context.Background())
-}
-
-func (i VmVmPlacementPolicyPropertiesArgs) ToVmVmPlacementPolicyPropertiesOutputWithContext(ctx context.Context) VmVmPlacementPolicyPropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VmVmPlacementPolicyPropertiesOutput)
-}
-
-func (i VmVmPlacementPolicyPropertiesArgs) ToVmVmPlacementPolicyPropertiesPtrOutput() VmVmPlacementPolicyPropertiesPtrOutput {
-	return i.ToVmVmPlacementPolicyPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i VmVmPlacementPolicyPropertiesArgs) ToVmVmPlacementPolicyPropertiesPtrOutputWithContext(ctx context.Context) VmVmPlacementPolicyPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VmVmPlacementPolicyPropertiesOutput).ToVmVmPlacementPolicyPropertiesPtrOutputWithContext(ctx)
-}
-
-// VmVmPlacementPolicyPropertiesPtrInput is an input type that accepts VmVmPlacementPolicyPropertiesArgs, VmVmPlacementPolicyPropertiesPtr and VmVmPlacementPolicyPropertiesPtrOutput values.
-// You can construct a concrete instance of `VmVmPlacementPolicyPropertiesPtrInput` via:
-//
-//	        VmVmPlacementPolicyPropertiesArgs{...}
-//
-//	or:
-//
-//	        nil
-type VmVmPlacementPolicyPropertiesPtrInput interface {
-	pulumi.Input
-
-	ToVmVmPlacementPolicyPropertiesPtrOutput() VmVmPlacementPolicyPropertiesPtrOutput
-	ToVmVmPlacementPolicyPropertiesPtrOutputWithContext(context.Context) VmVmPlacementPolicyPropertiesPtrOutput
-}
-
-type vmVmPlacementPolicyPropertiesPtrType VmVmPlacementPolicyPropertiesArgs
-
-func VmVmPlacementPolicyPropertiesPtr(v *VmVmPlacementPolicyPropertiesArgs) VmVmPlacementPolicyPropertiesPtrInput {
-	return (*vmVmPlacementPolicyPropertiesPtrType)(v)
-}
-
-func (*vmVmPlacementPolicyPropertiesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**VmVmPlacementPolicyProperties)(nil)).Elem()
-}
-
-func (i *vmVmPlacementPolicyPropertiesPtrType) ToVmVmPlacementPolicyPropertiesPtrOutput() VmVmPlacementPolicyPropertiesPtrOutput {
-	return i.ToVmVmPlacementPolicyPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i *vmVmPlacementPolicyPropertiesPtrType) ToVmVmPlacementPolicyPropertiesPtrOutputWithContext(ctx context.Context) VmVmPlacementPolicyPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VmVmPlacementPolicyPropertiesPtrOutput)
-}
-
-// VM-VM placement policy properties
-type VmVmPlacementPolicyPropertiesOutput struct{ *pulumi.OutputState }
-
-func (VmVmPlacementPolicyPropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VmVmPlacementPolicyProperties)(nil)).Elem()
-}
-
-func (o VmVmPlacementPolicyPropertiesOutput) ToVmVmPlacementPolicyPropertiesOutput() VmVmPlacementPolicyPropertiesOutput {
-	return o
-}
-
-func (o VmVmPlacementPolicyPropertiesOutput) ToVmVmPlacementPolicyPropertiesOutputWithContext(ctx context.Context) VmVmPlacementPolicyPropertiesOutput {
-	return o
-}
-
-func (o VmVmPlacementPolicyPropertiesOutput) ToVmVmPlacementPolicyPropertiesPtrOutput() VmVmPlacementPolicyPropertiesPtrOutput {
-	return o.ToVmVmPlacementPolicyPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (o VmVmPlacementPolicyPropertiesOutput) ToVmVmPlacementPolicyPropertiesPtrOutputWithContext(ctx context.Context) VmVmPlacementPolicyPropertiesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmVmPlacementPolicyProperties) *VmVmPlacementPolicyProperties {
-		return &v
-	}).(VmVmPlacementPolicyPropertiesPtrOutput)
-}
-
-// placement policy affinity type
-func (o VmVmPlacementPolicyPropertiesOutput) AffinityType() pulumi.StringOutput {
-	return o.ApplyT(func(v VmVmPlacementPolicyProperties) string { return v.AffinityType }).(pulumi.StringOutput)
-}
-
-// Display name of the placement policy
-func (o VmVmPlacementPolicyPropertiesOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VmVmPlacementPolicyProperties) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
-}
-
-// Whether the placement policy is enabled or disabled
-func (o VmVmPlacementPolicyPropertiesOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VmVmPlacementPolicyProperties) *string { return v.State }).(pulumi.StringPtrOutput)
-}
-
-// placement policy type
-// Expected value is 'VmVm'.
-func (o VmVmPlacementPolicyPropertiesOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v VmVmPlacementPolicyProperties) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Virtual machine members list
-func (o VmVmPlacementPolicyPropertiesOutput) VmMembers() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v VmVmPlacementPolicyProperties) []string { return v.VmMembers }).(pulumi.StringArrayOutput)
-}
-
-type VmVmPlacementPolicyPropertiesPtrOutput struct{ *pulumi.OutputState }
-
-func (VmVmPlacementPolicyPropertiesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**VmVmPlacementPolicyProperties)(nil)).Elem()
-}
-
-func (o VmVmPlacementPolicyPropertiesPtrOutput) ToVmVmPlacementPolicyPropertiesPtrOutput() VmVmPlacementPolicyPropertiesPtrOutput {
-	return o
-}
-
-func (o VmVmPlacementPolicyPropertiesPtrOutput) ToVmVmPlacementPolicyPropertiesPtrOutputWithContext(ctx context.Context) VmVmPlacementPolicyPropertiesPtrOutput {
-	return o
-}
-
-func (o VmVmPlacementPolicyPropertiesPtrOutput) Elem() VmVmPlacementPolicyPropertiesOutput {
-	return o.ApplyT(func(v *VmVmPlacementPolicyProperties) VmVmPlacementPolicyProperties {
-		if v != nil {
-			return *v
-		}
-		var ret VmVmPlacementPolicyProperties
-		return ret
-	}).(VmVmPlacementPolicyPropertiesOutput)
-}
-
-// placement policy affinity type
-func (o VmVmPlacementPolicyPropertiesPtrOutput) AffinityType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VmVmPlacementPolicyProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AffinityType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Display name of the placement policy
-func (o VmVmPlacementPolicyPropertiesPtrOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VmVmPlacementPolicyProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DisplayName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Whether the placement policy is enabled or disabled
-func (o VmVmPlacementPolicyPropertiesPtrOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VmVmPlacementPolicyProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.State
-	}).(pulumi.StringPtrOutput)
-}
-
-// placement policy type
-// Expected value is 'VmVm'.
-func (o VmVmPlacementPolicyPropertiesPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VmVmPlacementPolicyProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-// Virtual machine members list
-func (o VmVmPlacementPolicyPropertiesPtrOutput) VmMembers() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *VmVmPlacementPolicyProperties) []string {
-		if v == nil {
-			return nil
-		}
-		return v.VmMembers
-	}).(pulumi.StringArrayOutput)
-}
-
-// VM-VM placement policy properties
-type VmVmPlacementPolicyPropertiesResponse struct {
-	// placement policy affinity type
-	AffinityType string `pulumi:"affinityType"`
-	// Display name of the placement policy
-	DisplayName *string `pulumi:"displayName"`
-	// The provisioning state
-	ProvisioningState string `pulumi:"provisioningState"`
-	// Whether the placement policy is enabled or disabled
-	State *string `pulumi:"state"`
-	// placement policy type
-	// Expected value is 'VmVm'.
-	Type string `pulumi:"type"`
-	// Virtual machine members list
-	VmMembers []string `pulumi:"vmMembers"`
-}
-
-// VM-VM placement policy properties
-type VmVmPlacementPolicyPropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (VmVmPlacementPolicyPropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VmVmPlacementPolicyPropertiesResponse)(nil)).Elem()
-}
-
-func (o VmVmPlacementPolicyPropertiesResponseOutput) ToVmVmPlacementPolicyPropertiesResponseOutput() VmVmPlacementPolicyPropertiesResponseOutput {
-	return o
-}
-
-func (o VmVmPlacementPolicyPropertiesResponseOutput) ToVmVmPlacementPolicyPropertiesResponseOutputWithContext(ctx context.Context) VmVmPlacementPolicyPropertiesResponseOutput {
-	return o
-}
-
-// placement policy affinity type
-func (o VmVmPlacementPolicyPropertiesResponseOutput) AffinityType() pulumi.StringOutput {
-	return o.ApplyT(func(v VmVmPlacementPolicyPropertiesResponse) string { return v.AffinityType }).(pulumi.StringOutput)
-}
-
-// Display name of the placement policy
-func (o VmVmPlacementPolicyPropertiesResponseOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VmVmPlacementPolicyPropertiesResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
-}
-
-// The provisioning state
-func (o VmVmPlacementPolicyPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v VmVmPlacementPolicyPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// Whether the placement policy is enabled or disabled
-func (o VmVmPlacementPolicyPropertiesResponseOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VmVmPlacementPolicyPropertiesResponse) *string { return v.State }).(pulumi.StringPtrOutput)
-}
-
-// placement policy type
-// Expected value is 'VmVm'.
-func (o VmVmPlacementPolicyPropertiesResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v VmVmPlacementPolicyPropertiesResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Virtual machine members list
-func (o VmVmPlacementPolicyPropertiesResponseOutput) VmMembers() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v VmVmPlacementPolicyPropertiesResponse) []string { return v.VmMembers }).(pulumi.StringArrayOutput)
-}
-
-// NSX DHCP Relay
-type WorkloadNetworkDhcpRelay struct {
-	// Type of DHCP: SERVER or RELAY.
-	// Expected value is 'RELAY'.
-	DhcpType string `pulumi:"dhcpType"`
-	// Display name of the DHCP entity.
-	DisplayName *string `pulumi:"displayName"`
-	// NSX revision number.
-	Revision *float64 `pulumi:"revision"`
-	// DHCP Relay Addresses. Max 3.
-	ServerAddresses []string `pulumi:"serverAddresses"`
-}
-
-// WorkloadNetworkDhcpRelayInput is an input type that accepts WorkloadNetworkDhcpRelayArgs and WorkloadNetworkDhcpRelayOutput values.
-// You can construct a concrete instance of `WorkloadNetworkDhcpRelayInput` via:
-//
-//	WorkloadNetworkDhcpRelayArgs{...}
-type WorkloadNetworkDhcpRelayInput interface {
-	pulumi.Input
-
-	ToWorkloadNetworkDhcpRelayOutput() WorkloadNetworkDhcpRelayOutput
-	ToWorkloadNetworkDhcpRelayOutputWithContext(context.Context) WorkloadNetworkDhcpRelayOutput
-}
-
-// NSX DHCP Relay
-type WorkloadNetworkDhcpRelayArgs struct {
-	// Type of DHCP: SERVER or RELAY.
-	// Expected value is 'RELAY'.
-	DhcpType pulumi.StringInput `pulumi:"dhcpType"`
-	// Display name of the DHCP entity.
-	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	// NSX revision number.
-	Revision pulumi.Float64PtrInput `pulumi:"revision"`
-	// DHCP Relay Addresses. Max 3.
-	ServerAddresses pulumi.StringArrayInput `pulumi:"serverAddresses"`
-}
-
-func (WorkloadNetworkDhcpRelayArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkloadNetworkDhcpRelay)(nil)).Elem()
-}
-
-func (i WorkloadNetworkDhcpRelayArgs) ToWorkloadNetworkDhcpRelayOutput() WorkloadNetworkDhcpRelayOutput {
-	return i.ToWorkloadNetworkDhcpRelayOutputWithContext(context.Background())
-}
-
-func (i WorkloadNetworkDhcpRelayArgs) ToWorkloadNetworkDhcpRelayOutputWithContext(ctx context.Context) WorkloadNetworkDhcpRelayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkloadNetworkDhcpRelayOutput)
-}
-
-func (i WorkloadNetworkDhcpRelayArgs) ToWorkloadNetworkDhcpRelayPtrOutput() WorkloadNetworkDhcpRelayPtrOutput {
-	return i.ToWorkloadNetworkDhcpRelayPtrOutputWithContext(context.Background())
-}
-
-func (i WorkloadNetworkDhcpRelayArgs) ToWorkloadNetworkDhcpRelayPtrOutputWithContext(ctx context.Context) WorkloadNetworkDhcpRelayPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkloadNetworkDhcpRelayOutput).ToWorkloadNetworkDhcpRelayPtrOutputWithContext(ctx)
-}
-
-// WorkloadNetworkDhcpRelayPtrInput is an input type that accepts WorkloadNetworkDhcpRelayArgs, WorkloadNetworkDhcpRelayPtr and WorkloadNetworkDhcpRelayPtrOutput values.
-// You can construct a concrete instance of `WorkloadNetworkDhcpRelayPtrInput` via:
-//
-//	        WorkloadNetworkDhcpRelayArgs{...}
-//
-//	or:
-//
-//	        nil
-type WorkloadNetworkDhcpRelayPtrInput interface {
-	pulumi.Input
-
-	ToWorkloadNetworkDhcpRelayPtrOutput() WorkloadNetworkDhcpRelayPtrOutput
-	ToWorkloadNetworkDhcpRelayPtrOutputWithContext(context.Context) WorkloadNetworkDhcpRelayPtrOutput
-}
-
-type workloadNetworkDhcpRelayPtrType WorkloadNetworkDhcpRelayArgs
-
-func WorkloadNetworkDhcpRelayPtr(v *WorkloadNetworkDhcpRelayArgs) WorkloadNetworkDhcpRelayPtrInput {
-	return (*workloadNetworkDhcpRelayPtrType)(v)
-}
-
-func (*workloadNetworkDhcpRelayPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkloadNetworkDhcpRelay)(nil)).Elem()
-}
-
-func (i *workloadNetworkDhcpRelayPtrType) ToWorkloadNetworkDhcpRelayPtrOutput() WorkloadNetworkDhcpRelayPtrOutput {
-	return i.ToWorkloadNetworkDhcpRelayPtrOutputWithContext(context.Background())
-}
-
-func (i *workloadNetworkDhcpRelayPtrType) ToWorkloadNetworkDhcpRelayPtrOutputWithContext(ctx context.Context) WorkloadNetworkDhcpRelayPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkloadNetworkDhcpRelayPtrOutput)
-}
-
-// NSX DHCP Relay
-type WorkloadNetworkDhcpRelayOutput struct{ *pulumi.OutputState }
-
-func (WorkloadNetworkDhcpRelayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkloadNetworkDhcpRelay)(nil)).Elem()
-}
-
-func (o WorkloadNetworkDhcpRelayOutput) ToWorkloadNetworkDhcpRelayOutput() WorkloadNetworkDhcpRelayOutput {
-	return o
-}
-
-func (o WorkloadNetworkDhcpRelayOutput) ToWorkloadNetworkDhcpRelayOutputWithContext(ctx context.Context) WorkloadNetworkDhcpRelayOutput {
-	return o
-}
-
-func (o WorkloadNetworkDhcpRelayOutput) ToWorkloadNetworkDhcpRelayPtrOutput() WorkloadNetworkDhcpRelayPtrOutput {
-	return o.ToWorkloadNetworkDhcpRelayPtrOutputWithContext(context.Background())
-}
-
-func (o WorkloadNetworkDhcpRelayOutput) ToWorkloadNetworkDhcpRelayPtrOutputWithContext(ctx context.Context) WorkloadNetworkDhcpRelayPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkloadNetworkDhcpRelay) *WorkloadNetworkDhcpRelay {
-		return &v
-	}).(WorkloadNetworkDhcpRelayPtrOutput)
-}
-
-// Type of DHCP: SERVER or RELAY.
-// Expected value is 'RELAY'.
-func (o WorkloadNetworkDhcpRelayOutput) DhcpType() pulumi.StringOutput {
-	return o.ApplyT(func(v WorkloadNetworkDhcpRelay) string { return v.DhcpType }).(pulumi.StringOutput)
-}
-
-// Display name of the DHCP entity.
-func (o WorkloadNetworkDhcpRelayOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkloadNetworkDhcpRelay) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
-}
-
-// NSX revision number.
-func (o WorkloadNetworkDhcpRelayOutput) Revision() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v WorkloadNetworkDhcpRelay) *float64 { return v.Revision }).(pulumi.Float64PtrOutput)
-}
-
-// DHCP Relay Addresses. Max 3.
-func (o WorkloadNetworkDhcpRelayOutput) ServerAddresses() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v WorkloadNetworkDhcpRelay) []string { return v.ServerAddresses }).(pulumi.StringArrayOutput)
-}
-
-type WorkloadNetworkDhcpRelayPtrOutput struct{ *pulumi.OutputState }
-
-func (WorkloadNetworkDhcpRelayPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkloadNetworkDhcpRelay)(nil)).Elem()
-}
-
-func (o WorkloadNetworkDhcpRelayPtrOutput) ToWorkloadNetworkDhcpRelayPtrOutput() WorkloadNetworkDhcpRelayPtrOutput {
-	return o
-}
-
-func (o WorkloadNetworkDhcpRelayPtrOutput) ToWorkloadNetworkDhcpRelayPtrOutputWithContext(ctx context.Context) WorkloadNetworkDhcpRelayPtrOutput {
-	return o
-}
-
-func (o WorkloadNetworkDhcpRelayPtrOutput) Elem() WorkloadNetworkDhcpRelayOutput {
-	return o.ApplyT(func(v *WorkloadNetworkDhcpRelay) WorkloadNetworkDhcpRelay {
-		if v != nil {
-			return *v
-		}
-		var ret WorkloadNetworkDhcpRelay
-		return ret
-	}).(WorkloadNetworkDhcpRelayOutput)
-}
-
-// Type of DHCP: SERVER or RELAY.
-// Expected value is 'RELAY'.
-func (o WorkloadNetworkDhcpRelayPtrOutput) DhcpType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkloadNetworkDhcpRelay) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DhcpType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Display name of the DHCP entity.
-func (o WorkloadNetworkDhcpRelayPtrOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkloadNetworkDhcpRelay) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DisplayName
-	}).(pulumi.StringPtrOutput)
-}
-
-// NSX revision number.
-func (o WorkloadNetworkDhcpRelayPtrOutput) Revision() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *WorkloadNetworkDhcpRelay) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.Revision
-	}).(pulumi.Float64PtrOutput)
-}
-
-// DHCP Relay Addresses. Max 3.
-func (o WorkloadNetworkDhcpRelayPtrOutput) ServerAddresses() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *WorkloadNetworkDhcpRelay) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ServerAddresses
-	}).(pulumi.StringArrayOutput)
-}
-
-// NSX DHCP Relay
-type WorkloadNetworkDhcpRelayResponse struct {
-	// Type of DHCP: SERVER or RELAY.
-	// Expected value is 'RELAY'.
-	DhcpType string `pulumi:"dhcpType"`
-	// Display name of the DHCP entity.
-	DisplayName *string `pulumi:"displayName"`
-	// The provisioning state
-	ProvisioningState string `pulumi:"provisioningState"`
-	// NSX revision number.
-	Revision *float64 `pulumi:"revision"`
-	// NSX Segments consuming DHCP.
-	Segments []string `pulumi:"segments"`
-	// DHCP Relay Addresses. Max 3.
-	ServerAddresses []string `pulumi:"serverAddresses"`
-}
-
-// NSX DHCP Relay
-type WorkloadNetworkDhcpRelayResponseOutput struct{ *pulumi.OutputState }
-
-func (WorkloadNetworkDhcpRelayResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkloadNetworkDhcpRelayResponse)(nil)).Elem()
-}
-
-func (o WorkloadNetworkDhcpRelayResponseOutput) ToWorkloadNetworkDhcpRelayResponseOutput() WorkloadNetworkDhcpRelayResponseOutput {
-	return o
-}
-
-func (o WorkloadNetworkDhcpRelayResponseOutput) ToWorkloadNetworkDhcpRelayResponseOutputWithContext(ctx context.Context) WorkloadNetworkDhcpRelayResponseOutput {
-	return o
-}
-
-// Type of DHCP: SERVER or RELAY.
-// Expected value is 'RELAY'.
-func (o WorkloadNetworkDhcpRelayResponseOutput) DhcpType() pulumi.StringOutput {
-	return o.ApplyT(func(v WorkloadNetworkDhcpRelayResponse) string { return v.DhcpType }).(pulumi.StringOutput)
-}
-
-// Display name of the DHCP entity.
-func (o WorkloadNetworkDhcpRelayResponseOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkloadNetworkDhcpRelayResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
-}
-
-// The provisioning state
-func (o WorkloadNetworkDhcpRelayResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v WorkloadNetworkDhcpRelayResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// NSX revision number.
-func (o WorkloadNetworkDhcpRelayResponseOutput) Revision() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v WorkloadNetworkDhcpRelayResponse) *float64 { return v.Revision }).(pulumi.Float64PtrOutput)
-}
-
-// NSX Segments consuming DHCP.
-func (o WorkloadNetworkDhcpRelayResponseOutput) Segments() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v WorkloadNetworkDhcpRelayResponse) []string { return v.Segments }).(pulumi.StringArrayOutput)
-}
-
-// DHCP Relay Addresses. Max 3.
-func (o WorkloadNetworkDhcpRelayResponseOutput) ServerAddresses() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v WorkloadNetworkDhcpRelayResponse) []string { return v.ServerAddresses }).(pulumi.StringArrayOutput)
-}
-
-// NSX DHCP Server
-type WorkloadNetworkDhcpServer struct {
-	// Type of DHCP: SERVER or RELAY.
-	// Expected value is 'SERVER'.
-	DhcpType string `pulumi:"dhcpType"`
-	// Display name of the DHCP entity.
-	DisplayName *string `pulumi:"displayName"`
-	// DHCP Server Lease Time.
-	LeaseTime *float64 `pulumi:"leaseTime"`
-	// NSX revision number.
-	Revision *float64 `pulumi:"revision"`
-	// DHCP Server Address.
-	ServerAddress *string `pulumi:"serverAddress"`
-}
-
-// WorkloadNetworkDhcpServerInput is an input type that accepts WorkloadNetworkDhcpServerArgs and WorkloadNetworkDhcpServerOutput values.
-// You can construct a concrete instance of `WorkloadNetworkDhcpServerInput` via:
-//
-//	WorkloadNetworkDhcpServerArgs{...}
-type WorkloadNetworkDhcpServerInput interface {
-	pulumi.Input
-
-	ToWorkloadNetworkDhcpServerOutput() WorkloadNetworkDhcpServerOutput
-	ToWorkloadNetworkDhcpServerOutputWithContext(context.Context) WorkloadNetworkDhcpServerOutput
-}
-
-// NSX DHCP Server
-type WorkloadNetworkDhcpServerArgs struct {
-	// Type of DHCP: SERVER or RELAY.
-	// Expected value is 'SERVER'.
-	DhcpType pulumi.StringInput `pulumi:"dhcpType"`
-	// Display name of the DHCP entity.
-	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	// DHCP Server Lease Time.
-	LeaseTime pulumi.Float64PtrInput `pulumi:"leaseTime"`
-	// NSX revision number.
-	Revision pulumi.Float64PtrInput `pulumi:"revision"`
-	// DHCP Server Address.
-	ServerAddress pulumi.StringPtrInput `pulumi:"serverAddress"`
-}
-
-func (WorkloadNetworkDhcpServerArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkloadNetworkDhcpServer)(nil)).Elem()
-}
-
-func (i WorkloadNetworkDhcpServerArgs) ToWorkloadNetworkDhcpServerOutput() WorkloadNetworkDhcpServerOutput {
-	return i.ToWorkloadNetworkDhcpServerOutputWithContext(context.Background())
-}
-
-func (i WorkloadNetworkDhcpServerArgs) ToWorkloadNetworkDhcpServerOutputWithContext(ctx context.Context) WorkloadNetworkDhcpServerOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkloadNetworkDhcpServerOutput)
-}
-
-func (i WorkloadNetworkDhcpServerArgs) ToWorkloadNetworkDhcpServerPtrOutput() WorkloadNetworkDhcpServerPtrOutput {
-	return i.ToWorkloadNetworkDhcpServerPtrOutputWithContext(context.Background())
-}
-
-func (i WorkloadNetworkDhcpServerArgs) ToWorkloadNetworkDhcpServerPtrOutputWithContext(ctx context.Context) WorkloadNetworkDhcpServerPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkloadNetworkDhcpServerOutput).ToWorkloadNetworkDhcpServerPtrOutputWithContext(ctx)
-}
-
-// WorkloadNetworkDhcpServerPtrInput is an input type that accepts WorkloadNetworkDhcpServerArgs, WorkloadNetworkDhcpServerPtr and WorkloadNetworkDhcpServerPtrOutput values.
-// You can construct a concrete instance of `WorkloadNetworkDhcpServerPtrInput` via:
-//
-//	        WorkloadNetworkDhcpServerArgs{...}
-//
-//	or:
-//
-//	        nil
-type WorkloadNetworkDhcpServerPtrInput interface {
-	pulumi.Input
-
-	ToWorkloadNetworkDhcpServerPtrOutput() WorkloadNetworkDhcpServerPtrOutput
-	ToWorkloadNetworkDhcpServerPtrOutputWithContext(context.Context) WorkloadNetworkDhcpServerPtrOutput
-}
-
-type workloadNetworkDhcpServerPtrType WorkloadNetworkDhcpServerArgs
-
-func WorkloadNetworkDhcpServerPtr(v *WorkloadNetworkDhcpServerArgs) WorkloadNetworkDhcpServerPtrInput {
-	return (*workloadNetworkDhcpServerPtrType)(v)
-}
-
-func (*workloadNetworkDhcpServerPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkloadNetworkDhcpServer)(nil)).Elem()
-}
-
-func (i *workloadNetworkDhcpServerPtrType) ToWorkloadNetworkDhcpServerPtrOutput() WorkloadNetworkDhcpServerPtrOutput {
-	return i.ToWorkloadNetworkDhcpServerPtrOutputWithContext(context.Background())
-}
-
-func (i *workloadNetworkDhcpServerPtrType) ToWorkloadNetworkDhcpServerPtrOutputWithContext(ctx context.Context) WorkloadNetworkDhcpServerPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkloadNetworkDhcpServerPtrOutput)
-}
-
-// NSX DHCP Server
-type WorkloadNetworkDhcpServerOutput struct{ *pulumi.OutputState }
-
-func (WorkloadNetworkDhcpServerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkloadNetworkDhcpServer)(nil)).Elem()
-}
-
-func (o WorkloadNetworkDhcpServerOutput) ToWorkloadNetworkDhcpServerOutput() WorkloadNetworkDhcpServerOutput {
-	return o
-}
-
-func (o WorkloadNetworkDhcpServerOutput) ToWorkloadNetworkDhcpServerOutputWithContext(ctx context.Context) WorkloadNetworkDhcpServerOutput {
-	return o
-}
-
-func (o WorkloadNetworkDhcpServerOutput) ToWorkloadNetworkDhcpServerPtrOutput() WorkloadNetworkDhcpServerPtrOutput {
-	return o.ToWorkloadNetworkDhcpServerPtrOutputWithContext(context.Background())
-}
-
-func (o WorkloadNetworkDhcpServerOutput) ToWorkloadNetworkDhcpServerPtrOutputWithContext(ctx context.Context) WorkloadNetworkDhcpServerPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkloadNetworkDhcpServer) *WorkloadNetworkDhcpServer {
-		return &v
-	}).(WorkloadNetworkDhcpServerPtrOutput)
-}
-
-// Type of DHCP: SERVER or RELAY.
-// Expected value is 'SERVER'.
-func (o WorkloadNetworkDhcpServerOutput) DhcpType() pulumi.StringOutput {
-	return o.ApplyT(func(v WorkloadNetworkDhcpServer) string { return v.DhcpType }).(pulumi.StringOutput)
-}
-
-// Display name of the DHCP entity.
-func (o WorkloadNetworkDhcpServerOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkloadNetworkDhcpServer) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
-}
-
-// DHCP Server Lease Time.
-func (o WorkloadNetworkDhcpServerOutput) LeaseTime() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v WorkloadNetworkDhcpServer) *float64 { return v.LeaseTime }).(pulumi.Float64PtrOutput)
-}
-
-// NSX revision number.
-func (o WorkloadNetworkDhcpServerOutput) Revision() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v WorkloadNetworkDhcpServer) *float64 { return v.Revision }).(pulumi.Float64PtrOutput)
-}
-
-// DHCP Server Address.
-func (o WorkloadNetworkDhcpServerOutput) ServerAddress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkloadNetworkDhcpServer) *string { return v.ServerAddress }).(pulumi.StringPtrOutput)
-}
-
-type WorkloadNetworkDhcpServerPtrOutput struct{ *pulumi.OutputState }
-
-func (WorkloadNetworkDhcpServerPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkloadNetworkDhcpServer)(nil)).Elem()
-}
-
-func (o WorkloadNetworkDhcpServerPtrOutput) ToWorkloadNetworkDhcpServerPtrOutput() WorkloadNetworkDhcpServerPtrOutput {
-	return o
-}
-
-func (o WorkloadNetworkDhcpServerPtrOutput) ToWorkloadNetworkDhcpServerPtrOutputWithContext(ctx context.Context) WorkloadNetworkDhcpServerPtrOutput {
-	return o
-}
-
-func (o WorkloadNetworkDhcpServerPtrOutput) Elem() WorkloadNetworkDhcpServerOutput {
-	return o.ApplyT(func(v *WorkloadNetworkDhcpServer) WorkloadNetworkDhcpServer {
-		if v != nil {
-			return *v
-		}
-		var ret WorkloadNetworkDhcpServer
-		return ret
-	}).(WorkloadNetworkDhcpServerOutput)
-}
-
-// Type of DHCP: SERVER or RELAY.
-// Expected value is 'SERVER'.
-func (o WorkloadNetworkDhcpServerPtrOutput) DhcpType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkloadNetworkDhcpServer) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DhcpType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Display name of the DHCP entity.
-func (o WorkloadNetworkDhcpServerPtrOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkloadNetworkDhcpServer) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DisplayName
-	}).(pulumi.StringPtrOutput)
-}
-
-// DHCP Server Lease Time.
-func (o WorkloadNetworkDhcpServerPtrOutput) LeaseTime() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *WorkloadNetworkDhcpServer) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.LeaseTime
-	}).(pulumi.Float64PtrOutput)
-}
-
-// NSX revision number.
-func (o WorkloadNetworkDhcpServerPtrOutput) Revision() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *WorkloadNetworkDhcpServer) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.Revision
-	}).(pulumi.Float64PtrOutput)
-}
-
-// DHCP Server Address.
-func (o WorkloadNetworkDhcpServerPtrOutput) ServerAddress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkloadNetworkDhcpServer) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ServerAddress
-	}).(pulumi.StringPtrOutput)
-}
-
-// NSX DHCP Server
-type WorkloadNetworkDhcpServerResponse struct {
-	// Type of DHCP: SERVER or RELAY.
-	// Expected value is 'SERVER'.
-	DhcpType string `pulumi:"dhcpType"`
-	// Display name of the DHCP entity.
-	DisplayName *string `pulumi:"displayName"`
-	// DHCP Server Lease Time.
-	LeaseTime *float64 `pulumi:"leaseTime"`
-	// The provisioning state
-	ProvisioningState string `pulumi:"provisioningState"`
-	// NSX revision number.
-	Revision *float64 `pulumi:"revision"`
-	// NSX Segments consuming DHCP.
-	Segments []string `pulumi:"segments"`
-	// DHCP Server Address.
-	ServerAddress *string `pulumi:"serverAddress"`
-}
-
-// NSX DHCP Server
-type WorkloadNetworkDhcpServerResponseOutput struct{ *pulumi.OutputState }
-
-func (WorkloadNetworkDhcpServerResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkloadNetworkDhcpServerResponse)(nil)).Elem()
-}
-
-func (o WorkloadNetworkDhcpServerResponseOutput) ToWorkloadNetworkDhcpServerResponseOutput() WorkloadNetworkDhcpServerResponseOutput {
-	return o
-}
-
-func (o WorkloadNetworkDhcpServerResponseOutput) ToWorkloadNetworkDhcpServerResponseOutputWithContext(ctx context.Context) WorkloadNetworkDhcpServerResponseOutput {
-	return o
-}
-
-// Type of DHCP: SERVER or RELAY.
-// Expected value is 'SERVER'.
-func (o WorkloadNetworkDhcpServerResponseOutput) DhcpType() pulumi.StringOutput {
-	return o.ApplyT(func(v WorkloadNetworkDhcpServerResponse) string { return v.DhcpType }).(pulumi.StringOutput)
-}
-
-// Display name of the DHCP entity.
-func (o WorkloadNetworkDhcpServerResponseOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkloadNetworkDhcpServerResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
-}
-
-// DHCP Server Lease Time.
-func (o WorkloadNetworkDhcpServerResponseOutput) LeaseTime() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v WorkloadNetworkDhcpServerResponse) *float64 { return v.LeaseTime }).(pulumi.Float64PtrOutput)
-}
-
-// The provisioning state
-func (o WorkloadNetworkDhcpServerResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v WorkloadNetworkDhcpServerResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// NSX revision number.
-func (o WorkloadNetworkDhcpServerResponseOutput) Revision() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v WorkloadNetworkDhcpServerResponse) *float64 { return v.Revision }).(pulumi.Float64PtrOutput)
-}
-
-// NSX Segments consuming DHCP.
-func (o WorkloadNetworkDhcpServerResponseOutput) Segments() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v WorkloadNetworkDhcpServerResponse) []string { return v.Segments }).(pulumi.StringArrayOutput)
-}
-
-// DHCP Server Address.
-func (o WorkloadNetworkDhcpServerResponseOutput) ServerAddress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkloadNetworkDhcpServerResponse) *string { return v.ServerAddress }).(pulumi.StringPtrOutput)
 }
 
 // Ports and any VIF attached to segment.
@@ -5022,18 +3322,6 @@ func (o WorkloadNetworkSegmentSubnetResponsePtrOutput) GatewayAddress() pulumi.S
 }
 
 func init() {
-	pulumi.RegisterOutputType(AddonArcPropertiesOutput{})
-	pulumi.RegisterOutputType(AddonArcPropertiesPtrOutput{})
-	pulumi.RegisterOutputType(AddonArcPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(AddonHcxPropertiesOutput{})
-	pulumi.RegisterOutputType(AddonHcxPropertiesPtrOutput{})
-	pulumi.RegisterOutputType(AddonHcxPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(AddonSrmPropertiesOutput{})
-	pulumi.RegisterOutputType(AddonSrmPropertiesPtrOutput{})
-	pulumi.RegisterOutputType(AddonSrmPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(AddonVrPropertiesOutput{})
-	pulumi.RegisterOutputType(AddonVrPropertiesPtrOutput{})
-	pulumi.RegisterOutputType(AddonVrPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(AvailabilityPropertiesOutput{})
 	pulumi.RegisterOutputType(AvailabilityPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(AvailabilityPropertiesResponseOutput{})
@@ -5046,6 +3334,10 @@ func init() {
 	pulumi.RegisterOutputType(DiskPoolVolumePtrOutput{})
 	pulumi.RegisterOutputType(DiskPoolVolumeResponseOutput{})
 	pulumi.RegisterOutputType(DiskPoolVolumeResponsePtrOutput{})
+	pulumi.RegisterOutputType(ElasticSanVolumeOutput{})
+	pulumi.RegisterOutputType(ElasticSanVolumePtrOutput{})
+	pulumi.RegisterOutputType(ElasticSanVolumeResponseOutput{})
+	pulumi.RegisterOutputType(ElasticSanVolumeResponsePtrOutput{})
 	pulumi.RegisterOutputType(EncryptionOutput{})
 	pulumi.RegisterOutputType(EncryptionPtrOutput{})
 	pulumi.RegisterOutputType(EncryptionKeyVaultPropertiesOutput{})
@@ -5067,29 +3359,17 @@ func init() {
 	pulumi.RegisterOutputType(NetAppVolumeResponsePtrOutput{})
 	pulumi.RegisterOutputType(PSCredentialExecutionParameterOutput{})
 	pulumi.RegisterOutputType(PSCredentialExecutionParameterResponseOutput{})
-	pulumi.RegisterOutputType(PrivateCloudIdentityOutput{})
-	pulumi.RegisterOutputType(PrivateCloudIdentityPtrOutput{})
-	pulumi.RegisterOutputType(PrivateCloudIdentityResponseOutput{})
-	pulumi.RegisterOutputType(PrivateCloudIdentityResponsePtrOutput{})
 	pulumi.RegisterOutputType(ScriptSecureStringExecutionParameterOutput{})
 	pulumi.RegisterOutputType(ScriptSecureStringExecutionParameterResponseOutput{})
 	pulumi.RegisterOutputType(ScriptStringExecutionParameterOutput{})
 	pulumi.RegisterOutputType(ScriptStringExecutionParameterResponseOutput{})
 	pulumi.RegisterOutputType(SkuOutput{})
 	pulumi.RegisterOutputType(SkuResponseOutput{})
+	pulumi.RegisterOutputType(SystemAssignedServiceIdentityOutput{})
+	pulumi.RegisterOutputType(SystemAssignedServiceIdentityPtrOutput{})
+	pulumi.RegisterOutputType(SystemAssignedServiceIdentityResponseOutput{})
+	pulumi.RegisterOutputType(SystemAssignedServiceIdentityResponsePtrOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
-	pulumi.RegisterOutputType(VmHostPlacementPolicyPropertiesOutput{})
-	pulumi.RegisterOutputType(VmHostPlacementPolicyPropertiesPtrOutput{})
-	pulumi.RegisterOutputType(VmHostPlacementPolicyPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(VmVmPlacementPolicyPropertiesOutput{})
-	pulumi.RegisterOutputType(VmVmPlacementPolicyPropertiesPtrOutput{})
-	pulumi.RegisterOutputType(VmVmPlacementPolicyPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(WorkloadNetworkDhcpRelayOutput{})
-	pulumi.RegisterOutputType(WorkloadNetworkDhcpRelayPtrOutput{})
-	pulumi.RegisterOutputType(WorkloadNetworkDhcpRelayResponseOutput{})
-	pulumi.RegisterOutputType(WorkloadNetworkDhcpServerOutput{})
-	pulumi.RegisterOutputType(WorkloadNetworkDhcpServerPtrOutput{})
-	pulumi.RegisterOutputType(WorkloadNetworkDhcpServerResponseOutput{})
 	pulumi.RegisterOutputType(WorkloadNetworkSegmentPortVifResponseOutput{})
 	pulumi.RegisterOutputType(WorkloadNetworkSegmentPortVifResponseArrayOutput{})
 	pulumi.RegisterOutputType(WorkloadNetworkSegmentSubnetOutput{})

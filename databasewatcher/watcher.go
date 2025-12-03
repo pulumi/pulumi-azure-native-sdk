@@ -8,20 +8,24 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The DatabaseWatcherProviderHub resource.
 //
-// Uses Azure REST API version 2023-09-01-preview.
+// Uses Azure REST API version 2024-10-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-09-01-preview.
 //
-// Other available API versions: 2024-07-19-preview, 2024-10-01-preview, 2025-01-02.
+// Other available API versions: 2023-09-01-preview, 2024-07-19-preview, 2025-01-02. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native databasewatcher [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Watcher struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The data store for collected monitoring data.
 	Datastore DatastoreResponsePtrOutput `pulumi:"datastore"`
+	// The resource ID of a user-assigned managed identity that will be assigned to a new alert rule.
+	DefaultAlertRuleIdentityResourceId pulumi.StringPtrOutput `pulumi:"defaultAlertRuleIdentityResourceId"`
 	// The managed service identities assigned to this resource.
 	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
@@ -100,6 +104,8 @@ func (WatcherState) ElementType() reflect.Type {
 type watcherArgs struct {
 	// The data store for collected monitoring data.
 	Datastore *Datastore `pulumi:"datastore"`
+	// The resource ID of a user-assigned managed identity that will be assigned to a new alert rule.
+	DefaultAlertRuleIdentityResourceId *string `pulumi:"defaultAlertRuleIdentityResourceId"`
 	// The managed service identities assigned to this resource.
 	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
@@ -116,6 +122,8 @@ type watcherArgs struct {
 type WatcherArgs struct {
 	// The data store for collected monitoring data.
 	Datastore DatastorePtrInput
+	// The resource ID of a user-assigned managed identity that will be assigned to a new alert rule.
+	DefaultAlertRuleIdentityResourceId pulumi.StringPtrInput
 	// The managed service identities assigned to this resource.
 	Identity ManagedServiceIdentityPtrInput
 	// The geo-location where the resource lives
@@ -165,9 +173,19 @@ func (o WatcherOutput) ToWatcherOutputWithContext(ctx context.Context) WatcherOu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o WatcherOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Watcher) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The data store for collected monitoring data.
 func (o WatcherOutput) Datastore() DatastoreResponsePtrOutput {
 	return o.ApplyT(func(v *Watcher) DatastoreResponsePtrOutput { return v.Datastore }).(DatastoreResponsePtrOutput)
+}
+
+// The resource ID of a user-assigned managed identity that will be assigned to a new alert rule.
+func (o WatcherOutput) DefaultAlertRuleIdentityResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Watcher) pulumi.StringPtrOutput { return v.DefaultAlertRuleIdentityResourceId }).(pulumi.StringPtrOutput)
 }
 
 // The managed service identities assigned to this resource.

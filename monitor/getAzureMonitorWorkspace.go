@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2023-04-03.
 //
-// Other available API versions: 2023-10-01-preview.
+// Other available API versions: 2023-10-01-preview, 2025-05-03-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native monitor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupAzureMonitorWorkspace(ctx *pulumi.Context, args *LookupAzureMonitorWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupAzureMonitorWorkspaceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAzureMonitorWorkspaceResult
@@ -37,6 +37,8 @@ type LookupAzureMonitorWorkspaceArgs struct {
 type LookupAzureMonitorWorkspaceResult struct {
 	// The immutable Id of the Azure Monitor Workspace. This property is read-only.
 	AccountId string `pulumi:"accountId"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The Data Collection Rule and Endpoint used for ingestion by default.
 	DefaultIngestionSettings AzureMonitorWorkspaceResponseDefaultIngestionSettings `pulumi:"defaultIngestionSettings"`
 	// Resource entity tag (ETag)
@@ -101,6 +103,11 @@ func (o LookupAzureMonitorWorkspaceResultOutput) ToLookupAzureMonitorWorkspaceRe
 // The immutable Id of the Azure Monitor Workspace. This property is read-only.
 func (o LookupAzureMonitorWorkspaceResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzureMonitorWorkspaceResult) string { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupAzureMonitorWorkspaceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAzureMonitorWorkspaceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The Data Collection Rule and Endpoint used for ingestion by default.

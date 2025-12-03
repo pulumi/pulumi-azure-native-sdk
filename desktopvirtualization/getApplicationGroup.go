@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get an application group.
 //
-// Uses Azure REST API version 2022-09-09.
+// Uses Azure REST API version 2024-04-03.
 //
-// Other available API versions: 2022-04-01-preview, 2022-10-14-preview, 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-03, 2024-04-08-preview, 2024-08-08-preview, 2024-11-01-preview.
+// Other available API versions: 2022-09-09, 2022-10-14-preview, 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-08-preview, 2024-08-08-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native desktopvirtualization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupApplicationGroup(ctx *pulumi.Context, args *LookupApplicationGroupArgs, opts ...pulumi.InvokeOption) (*LookupApplicationGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupApplicationGroupResult
@@ -37,6 +37,8 @@ type LookupApplicationGroupArgs struct {
 type LookupApplicationGroupResult struct {
 	// Resource Type of ApplicationGroup.
 	ApplicationGroupType string `pulumi:"applicationGroupType"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Is cloud pc resource.
 	CloudPcResource bool `pulumi:"cloudPcResource"`
 	// Description of ApplicationGroup.
@@ -47,13 +49,13 @@ type LookupApplicationGroupResult struct {
 	FriendlyName *string `pulumi:"friendlyName"`
 	// HostPool arm path of ApplicationGroup.
 	HostPoolArmPath string `pulumi:"hostPoolArmPath"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id       string                                               `pulumi:"id"`
 	Identity *ResourceModelWithAllowedPropertySetResponseIdentity `pulumi:"identity"`
-	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
+	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
 	Kind *string `pulumi:"kind"`
 	// The geo-location where the resource lives
-	Location *string `pulumi:"location"`
+	Location string `pulumi:"location"`
 	// The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
 	ManagedBy *string `pulumi:"managedBy"`
 	// The name of the resource
@@ -61,8 +63,10 @@ type LookupApplicationGroupResult struct {
 	// ObjectId of ApplicationGroup. (internal use)
 	ObjectId string                                           `pulumi:"objectId"`
 	Plan     *ResourceModelWithAllowedPropertySetResponsePlan `pulumi:"plan"`
-	Sku      *ResourceModelWithAllowedPropertySetResponseSku  `pulumi:"sku"`
-	// Metadata pertaining to creation and last modification of the resource.
+	// Boolean representing whether the applicationGroup is show in the feed.
+	ShowInFeed *bool                                           `pulumi:"showInFeed"`
+	Sku        *ResourceModelWithAllowedPropertySetResponseSku `pulumi:"sku"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
@@ -112,6 +116,11 @@ func (o LookupApplicationGroupResultOutput) ApplicationGroupType() pulumi.String
 	return o.ApplyT(func(v LookupApplicationGroupResult) string { return v.ApplicationGroupType }).(pulumi.StringOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupApplicationGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApplicationGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Is cloud pc resource.
 func (o LookupApplicationGroupResultOutput) CloudPcResource() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupApplicationGroupResult) bool { return v.CloudPcResource }).(pulumi.BoolOutput)
@@ -137,7 +146,7 @@ func (o LookupApplicationGroupResultOutput) HostPoolArmPath() pulumi.StringOutpu
 	return o.ApplyT(func(v LookupApplicationGroupResult) string { return v.HostPoolArmPath }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupApplicationGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -148,14 +157,14 @@ func (o LookupApplicationGroupResultOutput) Identity() ResourceModelWithAllowedP
 	}).(ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput)
 }
 
-// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
+// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
 func (o LookupApplicationGroupResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApplicationGroupResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
 // The geo-location where the resource lives
-func (o LookupApplicationGroupResultOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupApplicationGroupResult) *string { return v.Location }).(pulumi.StringPtrOutput)
+func (o LookupApplicationGroupResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApplicationGroupResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
 // The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
@@ -177,11 +186,16 @@ func (o LookupApplicationGroupResultOutput) Plan() ResourceModelWithAllowedPrope
 	return o.ApplyT(func(v LookupApplicationGroupResult) *ResourceModelWithAllowedPropertySetResponsePlan { return v.Plan }).(ResourceModelWithAllowedPropertySetResponsePlanPtrOutput)
 }
 
+// Boolean representing whether the applicationGroup is show in the feed.
+func (o LookupApplicationGroupResultOutput) ShowInFeed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupApplicationGroupResult) *bool { return v.ShowInFeed }).(pulumi.BoolPtrOutput)
+}
+
 func (o LookupApplicationGroupResultOutput) Sku() ResourceModelWithAllowedPropertySetResponseSkuPtrOutput {
 	return o.ApplyT(func(v LookupApplicationGroupResult) *ResourceModelWithAllowedPropertySetResponseSku { return v.Sku }).(ResourceModelWithAllowedPropertySetResponseSkuPtrOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupApplicationGroupResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupApplicationGroupResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }

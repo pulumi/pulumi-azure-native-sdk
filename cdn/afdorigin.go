@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Azure Front Door origin is the source of the content being delivered via Azure Front Door. When the edge nodes represented by an endpoint do not have the requested content cached, they attempt to fetch it from one or more of the configured origins.
 //
-// Uses Azure REST API version 2023-05-01. In version 1.x of the Azure Native provider, it used API version 2020-09-01.
+// Uses Azure REST API version 2025-06-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
 //
-// Other available API versions: 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01.
+// Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type AFDOrigin struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Resource reference to the Azure origin resource.
 	AzureOrigin      ResourceReferenceResponsePtrOutput `pulumi:"azureOrigin"`
 	DeploymentStatus pulumi.StringOutput                `pulumi:"deploymentStatus"`
@@ -28,12 +30,12 @@ type AFDOrigin struct {
 	// Whether to enable certificate name check at origin level
 	EnforceCertificateNameCheck pulumi.BoolPtrOutput `pulumi:"enforceCertificateNameCheck"`
 	// The address of the origin. Domain names, IPv4 addresses, and IPv6 addresses are supported.This should be unique across all origins in an endpoint.
-	HostName pulumi.StringOutput `pulumi:"hostName"`
+	HostName pulumi.StringPtrOutput `pulumi:"hostName"`
 	// The value of the HTTP port. Must be between 1 and 65535.
 	HttpPort pulumi.IntPtrOutput `pulumi:"httpPort"`
 	// The value of the HTTPS port. Must be between 1 and 65535.
 	HttpsPort pulumi.IntPtrOutput `pulumi:"httpsPort"`
-	// Resource name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name of the origin group which contains this origin.
 	OriginGroupName pulumi.StringOutput `pulumi:"originGroupName"`
@@ -45,9 +47,9 @@ type AFDOrigin struct {
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The properties of the private link resource for private origin.
 	SharedPrivateLinkResource SharedPrivateLinkResourcePropertiesResponsePtrOutput `pulumi:"sharedPrivateLinkResource"`
-	// Read only system data
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// Resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Weight of the origin in given origin group for load balancing. Must be between 1 and 1000
 	Weight pulumi.IntPtrOutput `pulumi:"weight"`
@@ -60,9 +62,6 @@ func NewAFDOrigin(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.HostName == nil {
-		return nil, errors.New("invalid value for required argument 'HostName'")
-	}
 	if args.OriginGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'OriginGroupName'")
 	}
@@ -112,6 +111,21 @@ func NewAFDOrigin(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:cdn/v20240901:AFDOrigin"),
 		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20250101preview:AFDOrigin"),
+		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20250415:AFDOrigin"),
+		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20250601:AFDOrigin"),
+		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20250701preview:AFDOrigin"),
+		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20250901preview:AFDOrigin"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -154,22 +168,22 @@ type afdoriginArgs struct {
 	// Whether to enable certificate name check at origin level
 	EnforceCertificateNameCheck *bool `pulumi:"enforceCertificateNameCheck"`
 	// The address of the origin. Domain names, IPv4 addresses, and IPv6 addresses are supported.This should be unique across all origins in an endpoint.
-	HostName string `pulumi:"hostName"`
+	HostName *string `pulumi:"hostName"`
 	// The value of the HTTP port. Must be between 1 and 65535.
 	HttpPort *int `pulumi:"httpPort"`
 	// The value of the HTTPS port. Must be between 1 and 65535.
 	HttpsPort *int `pulumi:"httpsPort"`
-	// Name of the origin group which is unique within the profile.
+	// Name of the origin group which is unique within the endpoint.
 	OriginGroupName string `pulumi:"originGroupName"`
 	// The host header value sent to the origin with each request. If you leave this blank, the request hostname determines this value. Azure Front Door origins, such as Web Apps, Blob Storage, and Cloud Services require this host header value to match the origin hostname by default. This overrides the host header defined at Endpoint
 	OriginHostHeader *string `pulumi:"originHostHeader"`
-	// Name of the origin that is unique within the profile.
+	// Name of the origin which is unique within the profile.
 	OriginName *string `pulumi:"originName"`
 	// Priority of origin in given origin group for load balancing. Higher priorities will not be used for load balancing if any lower priority origin is healthy.Must be between 1 and 5
 	Priority *int `pulumi:"priority"`
-	// Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+	// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
 	ProfileName string `pulumi:"profileName"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The properties of the private link resource for private origin.
 	SharedPrivateLinkResource *SharedPrivateLinkResourceProperties `pulumi:"sharedPrivateLinkResource"`
@@ -186,22 +200,22 @@ type AFDOriginArgs struct {
 	// Whether to enable certificate name check at origin level
 	EnforceCertificateNameCheck pulumi.BoolPtrInput
 	// The address of the origin. Domain names, IPv4 addresses, and IPv6 addresses are supported.This should be unique across all origins in an endpoint.
-	HostName pulumi.StringInput
+	HostName pulumi.StringPtrInput
 	// The value of the HTTP port. Must be between 1 and 65535.
 	HttpPort pulumi.IntPtrInput
 	// The value of the HTTPS port. Must be between 1 and 65535.
 	HttpsPort pulumi.IntPtrInput
-	// Name of the origin group which is unique within the profile.
+	// Name of the origin group which is unique within the endpoint.
 	OriginGroupName pulumi.StringInput
 	// The host header value sent to the origin with each request. If you leave this blank, the request hostname determines this value. Azure Front Door origins, such as Web Apps, Blob Storage, and Cloud Services require this host header value to match the origin hostname by default. This overrides the host header defined at Endpoint
 	OriginHostHeader pulumi.StringPtrInput
-	// Name of the origin that is unique within the profile.
+	// Name of the origin which is unique within the profile.
 	OriginName pulumi.StringPtrInput
 	// Priority of origin in given origin group for load balancing. Higher priorities will not be used for load balancing if any lower priority origin is healthy.Must be between 1 and 5
 	Priority pulumi.IntPtrInput
-	// Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+	// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
 	ProfileName pulumi.StringInput
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The properties of the private link resource for private origin.
 	SharedPrivateLinkResource SharedPrivateLinkResourcePropertiesPtrInput
@@ -246,6 +260,11 @@ func (o AFDOriginOutput) ToAFDOriginOutputWithContext(ctx context.Context) AFDOr
 	return o
 }
 
+// The Azure API version of the resource.
+func (o AFDOriginOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AFDOrigin) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Resource reference to the Azure origin resource.
 func (o AFDOriginOutput) AzureOrigin() ResourceReferenceResponsePtrOutput {
 	return o.ApplyT(func(v *AFDOrigin) ResourceReferenceResponsePtrOutput { return v.AzureOrigin }).(ResourceReferenceResponsePtrOutput)
@@ -266,8 +285,8 @@ func (o AFDOriginOutput) EnforceCertificateNameCheck() pulumi.BoolPtrOutput {
 }
 
 // The address of the origin. Domain names, IPv4 addresses, and IPv6 addresses are supported.This should be unique across all origins in an endpoint.
-func (o AFDOriginOutput) HostName() pulumi.StringOutput {
-	return o.ApplyT(func(v *AFDOrigin) pulumi.StringOutput { return v.HostName }).(pulumi.StringOutput)
+func (o AFDOriginOutput) HostName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AFDOrigin) pulumi.StringPtrOutput { return v.HostName }).(pulumi.StringPtrOutput)
 }
 
 // The value of the HTTP port. Must be between 1 and 65535.
@@ -280,7 +299,7 @@ func (o AFDOriginOutput) HttpsPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AFDOrigin) pulumi.IntPtrOutput { return v.HttpsPort }).(pulumi.IntPtrOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o AFDOriginOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AFDOrigin) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -312,12 +331,12 @@ func (o AFDOriginOutput) SharedPrivateLinkResource() SharedPrivateLinkResourcePr
 	}).(SharedPrivateLinkResourcePropertiesResponsePtrOutput)
 }
 
-// Read only system data
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o AFDOriginOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *AFDOrigin) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o AFDOriginOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *AFDOrigin) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

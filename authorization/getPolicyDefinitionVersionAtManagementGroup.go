@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // This operation retrieves the policy definition version in the given management group with the given name.
 //
-// Uses Azure REST API version 2023-04-01.
+// Uses Azure REST API version 2025-01-01.
 //
-// Other available API versions: 2024-05-01, 2025-01-01, 2025-03-01.
+// Other available API versions: 2023-04-01, 2024-05-01, 2025-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupPolicyDefinitionVersionAtManagementGroup(ctx *pulumi.Context, args *LookupPolicyDefinitionVersionAtManagementGroupArgs, opts ...pulumi.InvokeOption) (*LookupPolicyDefinitionVersionAtManagementGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPolicyDefinitionVersionAtManagementGroupResult
@@ -37,6 +37,8 @@ type LookupPolicyDefinitionVersionAtManagementGroupArgs struct {
 
 // The ID of the policy definition version.
 type LookupPolicyDefinitionVersionAtManagementGroupResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The policy definition description.
 	Description *string `pulumi:"description"`
 	// The display name of the policy definition.
@@ -110,6 +112,11 @@ func (o LookupPolicyDefinitionVersionAtManagementGroupResultOutput) ToLookupPoli
 
 func (o LookupPolicyDefinitionVersionAtManagementGroupResultOutput) ToLookupPolicyDefinitionVersionAtManagementGroupResultOutputWithContext(ctx context.Context) LookupPolicyDefinitionVersionAtManagementGroupResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupPolicyDefinitionVersionAtManagementGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPolicyDefinitionVersionAtManagementGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The policy definition description.

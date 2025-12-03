@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2023-05-15-preview.
 //
-// Other available API versions: 2024-10-23.
+// Other available API versions: 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupRuntimeEnvironment(ctx *pulumi.Context, args *LookupRuntimeEnvironmentArgs, opts ...pulumi.InvokeOption) (*LookupRuntimeEnvironmentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRuntimeEnvironmentResult
@@ -37,6 +37,8 @@ type LookupRuntimeEnvironmentArgs struct {
 
 // Definition of the Runtime Environment type.
 type LookupRuntimeEnvironmentResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// List of Default packages for Environment
 	DefaultPackages map[string]string `pulumi:"defaultPackages"`
 	// Gets or sets the description.
@@ -94,6 +96,11 @@ func (o LookupRuntimeEnvironmentResultOutput) ToLookupRuntimeEnvironmentResultOu
 
 func (o LookupRuntimeEnvironmentResultOutput) ToLookupRuntimeEnvironmentResultOutputWithContext(ctx context.Context) LookupRuntimeEnvironmentResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupRuntimeEnvironmentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRuntimeEnvironmentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // List of Default packages for Environment

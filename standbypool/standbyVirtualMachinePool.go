@@ -8,20 +8,22 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A StandbyVirtualMachinePoolResource.
 //
-// Uses Azure REST API version 2023-12-01-preview.
+// Uses Azure REST API version 2024-03-01. In version 2.x of the Azure Native provider, it used API version 2023-12-01-preview.
 //
-// Other available API versions: 2024-03-01, 2024-03-01-preview, 2025-03-01.
+// Other available API versions: 2023-12-01-preview, 2024-03-01-preview, 2025-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native standbypool [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type StandbyVirtualMachinePool struct {
 	pulumi.CustomResourceState
 
 	// Specifies the fully qualified resource ID of a virtual machine scale set the pool is attached to.
 	AttachedVirtualMachineScaleSetId pulumi.StringPtrOutput `pulumi:"attachedVirtualMachineScaleSetId"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Specifies the elasticity profile of the standby virtual machine pools.
 	ElasticityProfile StandbyVirtualMachinePoolElasticityProfileResponsePtrOutput `pulumi:"elasticityProfile"`
 	// The geo-location where the resource lives
@@ -175,6 +177,11 @@ func (o StandbyVirtualMachinePoolOutput) ToStandbyVirtualMachinePoolOutputWithCo
 // Specifies the fully qualified resource ID of a virtual machine scale set the pool is attached to.
 func (o StandbyVirtualMachinePoolOutput) AttachedVirtualMachineScaleSetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StandbyVirtualMachinePool) pulumi.StringPtrOutput { return v.AttachedVirtualMachineScaleSetId }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o StandbyVirtualMachinePoolOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *StandbyVirtualMachinePool) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Specifies the elasticity profile of the standby virtual machine pools.

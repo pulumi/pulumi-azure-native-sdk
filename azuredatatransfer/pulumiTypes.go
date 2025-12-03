@@ -7,11 +7,718 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 var _ = utilities.GetEnvOrDefault
+
+// Antivirus scanning rules for replicating data. By default, all antivirus scanning solutions are disabled.
+type AntivirusRuleset struct {
+	// Optional. The list of antiviruses to be used as a scanning solution for replicating data.
+	AvSolutions []string `pulumi:"avSolutions"`
+}
+
+// AntivirusRulesetInput is an input type that accepts AntivirusRulesetArgs and AntivirusRulesetOutput values.
+// You can construct a concrete instance of `AntivirusRulesetInput` via:
+//
+//	AntivirusRulesetArgs{...}
+type AntivirusRulesetInput interface {
+	pulumi.Input
+
+	ToAntivirusRulesetOutput() AntivirusRulesetOutput
+	ToAntivirusRulesetOutputWithContext(context.Context) AntivirusRulesetOutput
+}
+
+// Antivirus scanning rules for replicating data. By default, all antivirus scanning solutions are disabled.
+type AntivirusRulesetArgs struct {
+	// Optional. The list of antiviruses to be used as a scanning solution for replicating data.
+	AvSolutions pulumi.StringArrayInput `pulumi:"avSolutions"`
+}
+
+func (AntivirusRulesetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AntivirusRuleset)(nil)).Elem()
+}
+
+func (i AntivirusRulesetArgs) ToAntivirusRulesetOutput() AntivirusRulesetOutput {
+	return i.ToAntivirusRulesetOutputWithContext(context.Background())
+}
+
+func (i AntivirusRulesetArgs) ToAntivirusRulesetOutputWithContext(ctx context.Context) AntivirusRulesetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AntivirusRulesetOutput)
+}
+
+func (i AntivirusRulesetArgs) ToAntivirusRulesetPtrOutput() AntivirusRulesetPtrOutput {
+	return i.ToAntivirusRulesetPtrOutputWithContext(context.Background())
+}
+
+func (i AntivirusRulesetArgs) ToAntivirusRulesetPtrOutputWithContext(ctx context.Context) AntivirusRulesetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AntivirusRulesetOutput).ToAntivirusRulesetPtrOutputWithContext(ctx)
+}
+
+// AntivirusRulesetPtrInput is an input type that accepts AntivirusRulesetArgs, AntivirusRulesetPtr and AntivirusRulesetPtrOutput values.
+// You can construct a concrete instance of `AntivirusRulesetPtrInput` via:
+//
+//	        AntivirusRulesetArgs{...}
+//
+//	or:
+//
+//	        nil
+type AntivirusRulesetPtrInput interface {
+	pulumi.Input
+
+	ToAntivirusRulesetPtrOutput() AntivirusRulesetPtrOutput
+	ToAntivirusRulesetPtrOutputWithContext(context.Context) AntivirusRulesetPtrOutput
+}
+
+type antivirusRulesetPtrType AntivirusRulesetArgs
+
+func AntivirusRulesetPtr(v *AntivirusRulesetArgs) AntivirusRulesetPtrInput {
+	return (*antivirusRulesetPtrType)(v)
+}
+
+func (*antivirusRulesetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AntivirusRuleset)(nil)).Elem()
+}
+
+func (i *antivirusRulesetPtrType) ToAntivirusRulesetPtrOutput() AntivirusRulesetPtrOutput {
+	return i.ToAntivirusRulesetPtrOutputWithContext(context.Background())
+}
+
+func (i *antivirusRulesetPtrType) ToAntivirusRulesetPtrOutputWithContext(ctx context.Context) AntivirusRulesetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AntivirusRulesetPtrOutput)
+}
+
+// Antivirus scanning rules for replicating data. By default, all antivirus scanning solutions are disabled.
+type AntivirusRulesetOutput struct{ *pulumi.OutputState }
+
+func (AntivirusRulesetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AntivirusRuleset)(nil)).Elem()
+}
+
+func (o AntivirusRulesetOutput) ToAntivirusRulesetOutput() AntivirusRulesetOutput {
+	return o
+}
+
+func (o AntivirusRulesetOutput) ToAntivirusRulesetOutputWithContext(ctx context.Context) AntivirusRulesetOutput {
+	return o
+}
+
+func (o AntivirusRulesetOutput) ToAntivirusRulesetPtrOutput() AntivirusRulesetPtrOutput {
+	return o.ToAntivirusRulesetPtrOutputWithContext(context.Background())
+}
+
+func (o AntivirusRulesetOutput) ToAntivirusRulesetPtrOutputWithContext(ctx context.Context) AntivirusRulesetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AntivirusRuleset) *AntivirusRuleset {
+		return &v
+	}).(AntivirusRulesetPtrOutput)
+}
+
+// Optional. The list of antiviruses to be used as a scanning solution for replicating data.
+func (o AntivirusRulesetOutput) AvSolutions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AntivirusRuleset) []string { return v.AvSolutions }).(pulumi.StringArrayOutput)
+}
+
+type AntivirusRulesetPtrOutput struct{ *pulumi.OutputState }
+
+func (AntivirusRulesetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AntivirusRuleset)(nil)).Elem()
+}
+
+func (o AntivirusRulesetPtrOutput) ToAntivirusRulesetPtrOutput() AntivirusRulesetPtrOutput {
+	return o
+}
+
+func (o AntivirusRulesetPtrOutput) ToAntivirusRulesetPtrOutputWithContext(ctx context.Context) AntivirusRulesetPtrOutput {
+	return o
+}
+
+func (o AntivirusRulesetPtrOutput) Elem() AntivirusRulesetOutput {
+	return o.ApplyT(func(v *AntivirusRuleset) AntivirusRuleset {
+		if v != nil {
+			return *v
+		}
+		var ret AntivirusRuleset
+		return ret
+	}).(AntivirusRulesetOutput)
+}
+
+// Optional. The list of antiviruses to be used as a scanning solution for replicating data.
+func (o AntivirusRulesetPtrOutput) AvSolutions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AntivirusRuleset) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AvSolutions
+	}).(pulumi.StringArrayOutput)
+}
+
+// Antivirus scanning rules for replicating data. By default, all antivirus scanning solutions are disabled.
+type AntivirusRulesetResponse struct {
+	// Optional. The list of antiviruses to be used as a scanning solution for replicating data.
+	AvSolutions []string `pulumi:"avSolutions"`
+}
+
+// Antivirus scanning rules for replicating data. By default, all antivirus scanning solutions are disabled.
+type AntivirusRulesetResponseOutput struct{ *pulumi.OutputState }
+
+func (AntivirusRulesetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AntivirusRulesetResponse)(nil)).Elem()
+}
+
+func (o AntivirusRulesetResponseOutput) ToAntivirusRulesetResponseOutput() AntivirusRulesetResponseOutput {
+	return o
+}
+
+func (o AntivirusRulesetResponseOutput) ToAntivirusRulesetResponseOutputWithContext(ctx context.Context) AntivirusRulesetResponseOutput {
+	return o
+}
+
+// Optional. The list of antiviruses to be used as a scanning solution for replicating data.
+func (o AntivirusRulesetResponseOutput) AvSolutions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AntivirusRulesetResponse) []string { return v.AvSolutions }).(pulumi.StringArrayOutput)
+}
+
+type AntivirusRulesetResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AntivirusRulesetResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AntivirusRulesetResponse)(nil)).Elem()
+}
+
+func (o AntivirusRulesetResponsePtrOutput) ToAntivirusRulesetResponsePtrOutput() AntivirusRulesetResponsePtrOutput {
+	return o
+}
+
+func (o AntivirusRulesetResponsePtrOutput) ToAntivirusRulesetResponsePtrOutputWithContext(ctx context.Context) AntivirusRulesetResponsePtrOutput {
+	return o
+}
+
+func (o AntivirusRulesetResponsePtrOutput) Elem() AntivirusRulesetResponseOutput {
+	return o.ApplyT(func(v *AntivirusRulesetResponse) AntivirusRulesetResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AntivirusRulesetResponse
+		return ret
+	}).(AntivirusRulesetResponseOutput)
+}
+
+// Optional. The list of antiviruses to be used as a scanning solution for replicating data.
+func (o AntivirusRulesetResponsePtrOutput) AvSolutions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AntivirusRulesetResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AvSolutions
+	}).(pulumi.StringArrayOutput)
+}
+
+// Properties specific to API Flow Type
+type ApiFlowOptionsResponse struct {
+	// Remote Calling Mode in the Azure Data Transfer API Flow, which describes how the API Flow will be invoked
+	ApiMode *string `pulumi:"apiMode"`
+	// Optional field to override the audience of the remote endpoint. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the authentication property instead.
+	AudienceOverride *string `pulumi:"audienceOverride"`
+	// Unique CNAME to represent the Azure Data Transfer API Flow instance
+	Cname *string `pulumi:"cname"`
+	// Determines which identity to use for extracting the user token for Azure Data Transfer API Flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the authentication property instead.
+	IdentityTranslation *string `pulumi:"identityTranslation"`
+	// Remote stub app registration Client ID. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the authentication property instead.
+	RemoteCallingModeClientId *string `pulumi:"remoteCallingModeClientId"`
+	// Remote host to which communication needs to be made. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the remoteEndpointSettings.endpoint property instead.
+	RemoteEndpoint *string `pulumi:"remoteEndpoint"`
+	// Sender's app user assigned Manage Identity client ID. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the authentication property instead.
+	SenderClientId *string `pulumi:"senderClientId"`
+}
+
+// Properties specific to API Flow Type
+type ApiFlowOptionsResponseOutput struct{ *pulumi.OutputState }
+
+func (ApiFlowOptionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiFlowOptionsResponse)(nil)).Elem()
+}
+
+func (o ApiFlowOptionsResponseOutput) ToApiFlowOptionsResponseOutput() ApiFlowOptionsResponseOutput {
+	return o
+}
+
+func (o ApiFlowOptionsResponseOutput) ToApiFlowOptionsResponseOutputWithContext(ctx context.Context) ApiFlowOptionsResponseOutput {
+	return o
+}
+
+// Remote Calling Mode in the Azure Data Transfer API Flow, which describes how the API Flow will be invoked
+func (o ApiFlowOptionsResponseOutput) ApiMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiFlowOptionsResponse) *string { return v.ApiMode }).(pulumi.StringPtrOutput)
+}
+
+// Optional field to override the audience of the remote endpoint. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the authentication property instead.
+func (o ApiFlowOptionsResponseOutput) AudienceOverride() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiFlowOptionsResponse) *string { return v.AudienceOverride }).(pulumi.StringPtrOutput)
+}
+
+// Unique CNAME to represent the Azure Data Transfer API Flow instance
+func (o ApiFlowOptionsResponseOutput) Cname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiFlowOptionsResponse) *string { return v.Cname }).(pulumi.StringPtrOutput)
+}
+
+// Determines which identity to use for extracting the user token for Azure Data Transfer API Flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the authentication property instead.
+func (o ApiFlowOptionsResponseOutput) IdentityTranslation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiFlowOptionsResponse) *string { return v.IdentityTranslation }).(pulumi.StringPtrOutput)
+}
+
+// Remote stub app registration Client ID. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the authentication property instead.
+func (o ApiFlowOptionsResponseOutput) RemoteCallingModeClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiFlowOptionsResponse) *string { return v.RemoteCallingModeClientId }).(pulumi.StringPtrOutput)
+}
+
+// Remote host to which communication needs to be made. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the remoteEndpointSettings.endpoint property instead.
+func (o ApiFlowOptionsResponseOutput) RemoteEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiFlowOptionsResponse) *string { return v.RemoteEndpoint }).(pulumi.StringPtrOutput)
+}
+
+// Sender's app user assigned Manage Identity client ID. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the authentication property instead.
+func (o ApiFlowOptionsResponseOutput) SenderClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiFlowOptionsResponse) *string { return v.SenderClientId }).(pulumi.StringPtrOutput)
+}
+
+type ApiFlowOptionsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ApiFlowOptionsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiFlowOptionsResponse)(nil)).Elem()
+}
+
+func (o ApiFlowOptionsResponsePtrOutput) ToApiFlowOptionsResponsePtrOutput() ApiFlowOptionsResponsePtrOutput {
+	return o
+}
+
+func (o ApiFlowOptionsResponsePtrOutput) ToApiFlowOptionsResponsePtrOutputWithContext(ctx context.Context) ApiFlowOptionsResponsePtrOutput {
+	return o
+}
+
+func (o ApiFlowOptionsResponsePtrOutput) Elem() ApiFlowOptionsResponseOutput {
+	return o.ApplyT(func(v *ApiFlowOptionsResponse) ApiFlowOptionsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ApiFlowOptionsResponse
+		return ret
+	}).(ApiFlowOptionsResponseOutput)
+}
+
+// Remote Calling Mode in the Azure Data Transfer API Flow, which describes how the API Flow will be invoked
+func (o ApiFlowOptionsResponsePtrOutput) ApiMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiFlowOptionsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional field to override the audience of the remote endpoint. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the authentication property instead.
+func (o ApiFlowOptionsResponsePtrOutput) AudienceOverride() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiFlowOptionsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AudienceOverride
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique CNAME to represent the Azure Data Transfer API Flow instance
+func (o ApiFlowOptionsResponsePtrOutput) Cname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiFlowOptionsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Cname
+	}).(pulumi.StringPtrOutput)
+}
+
+// Determines which identity to use for extracting the user token for Azure Data Transfer API Flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the authentication property instead.
+func (o ApiFlowOptionsResponsePtrOutput) IdentityTranslation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiFlowOptionsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityTranslation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Remote stub app registration Client ID. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the authentication property instead.
+func (o ApiFlowOptionsResponsePtrOutput) RemoteCallingModeClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiFlowOptionsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RemoteCallingModeClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Remote host to which communication needs to be made. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the remoteEndpointSettings.endpoint property instead.
+func (o ApiFlowOptionsResponsePtrOutput) RemoteEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiFlowOptionsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RemoteEndpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// Sender's app user assigned Manage Identity client ID. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the authentication property instead.
+func (o ApiFlowOptionsResponsePtrOutput) SenderClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiFlowOptionsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SenderClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Rules for regulating supported archive files (BZip2, Cpio, Deb, GZip, Rpm, Tar, Zip) during data replication. All properties are optional and only the configured options will be applied against archives. As an example, suppose minimumSizeForExpansion is 10 MiB and maximumExpansionSizeLimit is 1 GiB. Then all archives smaller than 10 MiB will be treated as though the archive ruleset is disabled, although other rulesets will apply as usual. Furthermore, all archives at least 10 MiB in size but with a decompressed size greater than 1 GiB will fail the ruleset. All other archives will have their contents extracted and each extracted element will be applied to all rulesets.
+type ArchiveRuleset struct {
+	// Optional. Provides the multiplication value for an archive in total based on the initial object being validated. This value takes the root object size and multiplies it by this value to create a maximum. Once this maximum is exceeded, the archive is failed. Used to detect and block archives with suspiciously high compression (e.g., zip bombs).
+	MaximumCompressionRatioLimit *float64 `pulumi:"maximumCompressionRatioLimit"`
+	// Optional. The maximum depth of nested archives that can be expanded. Limits how many layers of embedded archives will be processed. Archives exceeding the max limit will be denied for replication.
+	MaximumDepthLimit *float64 `pulumi:"maximumDepthLimit"`
+	// Optional. The combined maximum size (in bytes) of all extracted files that an expanded archive is allowed to reach. Archives exceeding the max limit will be denied for replication.
+	MaximumExpansionSizeLimit *float64 `pulumi:"maximumExpansionSizeLimit"`
+	// Optional. Default is 0. The minimum archive file size (in bytes) required to trigger expansion during replication. Any archive file size below the configured threshold will skip the rest of the configured rulesets for archives.
+	MinimumSizeForExpansion *float64 `pulumi:"minimumSizeForExpansion"`
+}
+
+// Defaults sets the appropriate defaults for ArchiveRuleset
+func (val *ArchiveRuleset) Defaults() *ArchiveRuleset {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.MinimumSizeForExpansion == nil {
+		minimumSizeForExpansion_ := 0.0
+		tmp.MinimumSizeForExpansion = &minimumSizeForExpansion_
+	}
+	return &tmp
+}
+
+// ArchiveRulesetInput is an input type that accepts ArchiveRulesetArgs and ArchiveRulesetOutput values.
+// You can construct a concrete instance of `ArchiveRulesetInput` via:
+//
+//	ArchiveRulesetArgs{...}
+type ArchiveRulesetInput interface {
+	pulumi.Input
+
+	ToArchiveRulesetOutput() ArchiveRulesetOutput
+	ToArchiveRulesetOutputWithContext(context.Context) ArchiveRulesetOutput
+}
+
+// Rules for regulating supported archive files (BZip2, Cpio, Deb, GZip, Rpm, Tar, Zip) during data replication. All properties are optional and only the configured options will be applied against archives. As an example, suppose minimumSizeForExpansion is 10 MiB and maximumExpansionSizeLimit is 1 GiB. Then all archives smaller than 10 MiB will be treated as though the archive ruleset is disabled, although other rulesets will apply as usual. Furthermore, all archives at least 10 MiB in size but with a decompressed size greater than 1 GiB will fail the ruleset. All other archives will have their contents extracted and each extracted element will be applied to all rulesets.
+type ArchiveRulesetArgs struct {
+	// Optional. Provides the multiplication value for an archive in total based on the initial object being validated. This value takes the root object size and multiplies it by this value to create a maximum. Once this maximum is exceeded, the archive is failed. Used to detect and block archives with suspiciously high compression (e.g., zip bombs).
+	MaximumCompressionRatioLimit pulumi.Float64PtrInput `pulumi:"maximumCompressionRatioLimit"`
+	// Optional. The maximum depth of nested archives that can be expanded. Limits how many layers of embedded archives will be processed. Archives exceeding the max limit will be denied for replication.
+	MaximumDepthLimit pulumi.Float64PtrInput `pulumi:"maximumDepthLimit"`
+	// Optional. The combined maximum size (in bytes) of all extracted files that an expanded archive is allowed to reach. Archives exceeding the max limit will be denied for replication.
+	MaximumExpansionSizeLimit pulumi.Float64PtrInput `pulumi:"maximumExpansionSizeLimit"`
+	// Optional. Default is 0. The minimum archive file size (in bytes) required to trigger expansion during replication. Any archive file size below the configured threshold will skip the rest of the configured rulesets for archives.
+	MinimumSizeForExpansion pulumi.Float64PtrInput `pulumi:"minimumSizeForExpansion"`
+}
+
+// Defaults sets the appropriate defaults for ArchiveRulesetArgs
+func (val *ArchiveRulesetArgs) Defaults() *ArchiveRulesetArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.MinimumSizeForExpansion == nil {
+		tmp.MinimumSizeForExpansion = pulumi.Float64Ptr(0.0)
+	}
+	return &tmp
+}
+func (ArchiveRulesetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ArchiveRuleset)(nil)).Elem()
+}
+
+func (i ArchiveRulesetArgs) ToArchiveRulesetOutput() ArchiveRulesetOutput {
+	return i.ToArchiveRulesetOutputWithContext(context.Background())
+}
+
+func (i ArchiveRulesetArgs) ToArchiveRulesetOutputWithContext(ctx context.Context) ArchiveRulesetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ArchiveRulesetOutput)
+}
+
+func (i ArchiveRulesetArgs) ToArchiveRulesetPtrOutput() ArchiveRulesetPtrOutput {
+	return i.ToArchiveRulesetPtrOutputWithContext(context.Background())
+}
+
+func (i ArchiveRulesetArgs) ToArchiveRulesetPtrOutputWithContext(ctx context.Context) ArchiveRulesetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ArchiveRulesetOutput).ToArchiveRulesetPtrOutputWithContext(ctx)
+}
+
+// ArchiveRulesetPtrInput is an input type that accepts ArchiveRulesetArgs, ArchiveRulesetPtr and ArchiveRulesetPtrOutput values.
+// You can construct a concrete instance of `ArchiveRulesetPtrInput` via:
+//
+//	        ArchiveRulesetArgs{...}
+//
+//	or:
+//
+//	        nil
+type ArchiveRulesetPtrInput interface {
+	pulumi.Input
+
+	ToArchiveRulesetPtrOutput() ArchiveRulesetPtrOutput
+	ToArchiveRulesetPtrOutputWithContext(context.Context) ArchiveRulesetPtrOutput
+}
+
+type archiveRulesetPtrType ArchiveRulesetArgs
+
+func ArchiveRulesetPtr(v *ArchiveRulesetArgs) ArchiveRulesetPtrInput {
+	return (*archiveRulesetPtrType)(v)
+}
+
+func (*archiveRulesetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ArchiveRuleset)(nil)).Elem()
+}
+
+func (i *archiveRulesetPtrType) ToArchiveRulesetPtrOutput() ArchiveRulesetPtrOutput {
+	return i.ToArchiveRulesetPtrOutputWithContext(context.Background())
+}
+
+func (i *archiveRulesetPtrType) ToArchiveRulesetPtrOutputWithContext(ctx context.Context) ArchiveRulesetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ArchiveRulesetPtrOutput)
+}
+
+// Rules for regulating supported archive files (BZip2, Cpio, Deb, GZip, Rpm, Tar, Zip) during data replication. All properties are optional and only the configured options will be applied against archives. As an example, suppose minimumSizeForExpansion is 10 MiB and maximumExpansionSizeLimit is 1 GiB. Then all archives smaller than 10 MiB will be treated as though the archive ruleset is disabled, although other rulesets will apply as usual. Furthermore, all archives at least 10 MiB in size but with a decompressed size greater than 1 GiB will fail the ruleset. All other archives will have their contents extracted and each extracted element will be applied to all rulesets.
+type ArchiveRulesetOutput struct{ *pulumi.OutputState }
+
+func (ArchiveRulesetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ArchiveRuleset)(nil)).Elem()
+}
+
+func (o ArchiveRulesetOutput) ToArchiveRulesetOutput() ArchiveRulesetOutput {
+	return o
+}
+
+func (o ArchiveRulesetOutput) ToArchiveRulesetOutputWithContext(ctx context.Context) ArchiveRulesetOutput {
+	return o
+}
+
+func (o ArchiveRulesetOutput) ToArchiveRulesetPtrOutput() ArchiveRulesetPtrOutput {
+	return o.ToArchiveRulesetPtrOutputWithContext(context.Background())
+}
+
+func (o ArchiveRulesetOutput) ToArchiveRulesetPtrOutputWithContext(ctx context.Context) ArchiveRulesetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ArchiveRuleset) *ArchiveRuleset {
+		return &v
+	}).(ArchiveRulesetPtrOutput)
+}
+
+// Optional. Provides the multiplication value for an archive in total based on the initial object being validated. This value takes the root object size and multiplies it by this value to create a maximum. Once this maximum is exceeded, the archive is failed. Used to detect and block archives with suspiciously high compression (e.g., zip bombs).
+func (o ArchiveRulesetOutput) MaximumCompressionRatioLimit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ArchiveRuleset) *float64 { return v.MaximumCompressionRatioLimit }).(pulumi.Float64PtrOutput)
+}
+
+// Optional. The maximum depth of nested archives that can be expanded. Limits how many layers of embedded archives will be processed. Archives exceeding the max limit will be denied for replication.
+func (o ArchiveRulesetOutput) MaximumDepthLimit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ArchiveRuleset) *float64 { return v.MaximumDepthLimit }).(pulumi.Float64PtrOutput)
+}
+
+// Optional. The combined maximum size (in bytes) of all extracted files that an expanded archive is allowed to reach. Archives exceeding the max limit will be denied for replication.
+func (o ArchiveRulesetOutput) MaximumExpansionSizeLimit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ArchiveRuleset) *float64 { return v.MaximumExpansionSizeLimit }).(pulumi.Float64PtrOutput)
+}
+
+// Optional. Default is 0. The minimum archive file size (in bytes) required to trigger expansion during replication. Any archive file size below the configured threshold will skip the rest of the configured rulesets for archives.
+func (o ArchiveRulesetOutput) MinimumSizeForExpansion() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ArchiveRuleset) *float64 { return v.MinimumSizeForExpansion }).(pulumi.Float64PtrOutput)
+}
+
+type ArchiveRulesetPtrOutput struct{ *pulumi.OutputState }
+
+func (ArchiveRulesetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ArchiveRuleset)(nil)).Elem()
+}
+
+func (o ArchiveRulesetPtrOutput) ToArchiveRulesetPtrOutput() ArchiveRulesetPtrOutput {
+	return o
+}
+
+func (o ArchiveRulesetPtrOutput) ToArchiveRulesetPtrOutputWithContext(ctx context.Context) ArchiveRulesetPtrOutput {
+	return o
+}
+
+func (o ArchiveRulesetPtrOutput) Elem() ArchiveRulesetOutput {
+	return o.ApplyT(func(v *ArchiveRuleset) ArchiveRuleset {
+		if v != nil {
+			return *v
+		}
+		var ret ArchiveRuleset
+		return ret
+	}).(ArchiveRulesetOutput)
+}
+
+// Optional. Provides the multiplication value for an archive in total based on the initial object being validated. This value takes the root object size and multiplies it by this value to create a maximum. Once this maximum is exceeded, the archive is failed. Used to detect and block archives with suspiciously high compression (e.g., zip bombs).
+func (o ArchiveRulesetPtrOutput) MaximumCompressionRatioLimit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ArchiveRuleset) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MaximumCompressionRatioLimit
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Optional. The maximum depth of nested archives that can be expanded. Limits how many layers of embedded archives will be processed. Archives exceeding the max limit will be denied for replication.
+func (o ArchiveRulesetPtrOutput) MaximumDepthLimit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ArchiveRuleset) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MaximumDepthLimit
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Optional. The combined maximum size (in bytes) of all extracted files that an expanded archive is allowed to reach. Archives exceeding the max limit will be denied for replication.
+func (o ArchiveRulesetPtrOutput) MaximumExpansionSizeLimit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ArchiveRuleset) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MaximumExpansionSizeLimit
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Optional. Default is 0. The minimum archive file size (in bytes) required to trigger expansion during replication. Any archive file size below the configured threshold will skip the rest of the configured rulesets for archives.
+func (o ArchiveRulesetPtrOutput) MinimumSizeForExpansion() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ArchiveRuleset) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MinimumSizeForExpansion
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Rules for regulating supported archive files (BZip2, Cpio, Deb, GZip, Rpm, Tar, Zip) during data replication. All properties are optional and only the configured options will be applied against archives. As an example, suppose minimumSizeForExpansion is 10 MiB and maximumExpansionSizeLimit is 1 GiB. Then all archives smaller than 10 MiB will be treated as though the archive ruleset is disabled, although other rulesets will apply as usual. Furthermore, all archives at least 10 MiB in size but with a decompressed size greater than 1 GiB will fail the ruleset. All other archives will have their contents extracted and each extracted element will be applied to all rulesets.
+type ArchiveRulesetResponse struct {
+	// Optional. Provides the multiplication value for an archive in total based on the initial object being validated. This value takes the root object size and multiplies it by this value to create a maximum. Once this maximum is exceeded, the archive is failed. Used to detect and block archives with suspiciously high compression (e.g., zip bombs).
+	MaximumCompressionRatioLimit *float64 `pulumi:"maximumCompressionRatioLimit"`
+	// Optional. The maximum depth of nested archives that can be expanded. Limits how many layers of embedded archives will be processed. Archives exceeding the max limit will be denied for replication.
+	MaximumDepthLimit *float64 `pulumi:"maximumDepthLimit"`
+	// Optional. The combined maximum size (in bytes) of all extracted files that an expanded archive is allowed to reach. Archives exceeding the max limit will be denied for replication.
+	MaximumExpansionSizeLimit *float64 `pulumi:"maximumExpansionSizeLimit"`
+	// Optional. Default is 0. The minimum archive file size (in bytes) required to trigger expansion during replication. Any archive file size below the configured threshold will skip the rest of the configured rulesets for archives.
+	MinimumSizeForExpansion *float64 `pulumi:"minimumSizeForExpansion"`
+}
+
+// Defaults sets the appropriate defaults for ArchiveRulesetResponse
+func (val *ArchiveRulesetResponse) Defaults() *ArchiveRulesetResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.MinimumSizeForExpansion == nil {
+		minimumSizeForExpansion_ := 0.0
+		tmp.MinimumSizeForExpansion = &minimumSizeForExpansion_
+	}
+	return &tmp
+}
+
+// Rules for regulating supported archive files (BZip2, Cpio, Deb, GZip, Rpm, Tar, Zip) during data replication. All properties are optional and only the configured options will be applied against archives. As an example, suppose minimumSizeForExpansion is 10 MiB and maximumExpansionSizeLimit is 1 GiB. Then all archives smaller than 10 MiB will be treated as though the archive ruleset is disabled, although other rulesets will apply as usual. Furthermore, all archives at least 10 MiB in size but with a decompressed size greater than 1 GiB will fail the ruleset. All other archives will have their contents extracted and each extracted element will be applied to all rulesets.
+type ArchiveRulesetResponseOutput struct{ *pulumi.OutputState }
+
+func (ArchiveRulesetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ArchiveRulesetResponse)(nil)).Elem()
+}
+
+func (o ArchiveRulesetResponseOutput) ToArchiveRulesetResponseOutput() ArchiveRulesetResponseOutput {
+	return o
+}
+
+func (o ArchiveRulesetResponseOutput) ToArchiveRulesetResponseOutputWithContext(ctx context.Context) ArchiveRulesetResponseOutput {
+	return o
+}
+
+// Optional. Provides the multiplication value for an archive in total based on the initial object being validated. This value takes the root object size and multiplies it by this value to create a maximum. Once this maximum is exceeded, the archive is failed. Used to detect and block archives with suspiciously high compression (e.g., zip bombs).
+func (o ArchiveRulesetResponseOutput) MaximumCompressionRatioLimit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ArchiveRulesetResponse) *float64 { return v.MaximumCompressionRatioLimit }).(pulumi.Float64PtrOutput)
+}
+
+// Optional. The maximum depth of nested archives that can be expanded. Limits how many layers of embedded archives will be processed. Archives exceeding the max limit will be denied for replication.
+func (o ArchiveRulesetResponseOutput) MaximumDepthLimit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ArchiveRulesetResponse) *float64 { return v.MaximumDepthLimit }).(pulumi.Float64PtrOutput)
+}
+
+// Optional. The combined maximum size (in bytes) of all extracted files that an expanded archive is allowed to reach. Archives exceeding the max limit will be denied for replication.
+func (o ArchiveRulesetResponseOutput) MaximumExpansionSizeLimit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ArchiveRulesetResponse) *float64 { return v.MaximumExpansionSizeLimit }).(pulumi.Float64PtrOutput)
+}
+
+// Optional. Default is 0. The minimum archive file size (in bytes) required to trigger expansion during replication. Any archive file size below the configured threshold will skip the rest of the configured rulesets for archives.
+func (o ArchiveRulesetResponseOutput) MinimumSizeForExpansion() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ArchiveRulesetResponse) *float64 { return v.MinimumSizeForExpansion }).(pulumi.Float64PtrOutput)
+}
+
+type ArchiveRulesetResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ArchiveRulesetResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ArchiveRulesetResponse)(nil)).Elem()
+}
+
+func (o ArchiveRulesetResponsePtrOutput) ToArchiveRulesetResponsePtrOutput() ArchiveRulesetResponsePtrOutput {
+	return o
+}
+
+func (o ArchiveRulesetResponsePtrOutput) ToArchiveRulesetResponsePtrOutputWithContext(ctx context.Context) ArchiveRulesetResponsePtrOutput {
+	return o
+}
+
+func (o ArchiveRulesetResponsePtrOutput) Elem() ArchiveRulesetResponseOutput {
+	return o.ApplyT(func(v *ArchiveRulesetResponse) ArchiveRulesetResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ArchiveRulesetResponse
+		return ret
+	}).(ArchiveRulesetResponseOutput)
+}
+
+// Optional. Provides the multiplication value for an archive in total based on the initial object being validated. This value takes the root object size and multiplies it by this value to create a maximum. Once this maximum is exceeded, the archive is failed. Used to detect and block archives with suspiciously high compression (e.g., zip bombs).
+func (o ArchiveRulesetResponsePtrOutput) MaximumCompressionRatioLimit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ArchiveRulesetResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MaximumCompressionRatioLimit
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Optional. The maximum depth of nested archives that can be expanded. Limits how many layers of embedded archives will be processed. Archives exceeding the max limit will be denied for replication.
+func (o ArchiveRulesetResponsePtrOutput) MaximumDepthLimit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ArchiveRulesetResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MaximumDepthLimit
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Optional. The combined maximum size (in bytes) of all extracted files that an expanded archive is allowed to reach. Archives exceeding the max limit will be denied for replication.
+func (o ArchiveRulesetResponsePtrOutput) MaximumExpansionSizeLimit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ArchiveRulesetResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MaximumExpansionSizeLimit
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Optional. Default is 0. The minimum archive file size (in bytes) required to trigger expansion during replication. Any archive file size below the configured threshold will skip the rest of the configured rulesets for archives.
+func (o ArchiveRulesetResponsePtrOutput) MinimumSizeForExpansion() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ArchiveRulesetResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MinimumSizeForExpansion
+	}).(pulumi.Float64PtrOutput)
+}
 
 // Properties of connection
 type ConnectionProperties struct {
@@ -33,6 +740,8 @@ type ConnectionProperties struct {
 	RemoteSubscriptionId *string `pulumi:"remoteSubscriptionId"`
 	// Requirement ID of the connection
 	RequirementId *string `pulumi:"requirementId"`
+	// The schema URIs for this connection
+	SchemaUris []string `pulumi:"schemaUris"`
 	// The schemas for this connection
 	Schemas []Schema `pulumi:"schemas"`
 	// The secondary contacts for this connection request
@@ -70,6 +779,8 @@ type ConnectionPropertiesArgs struct {
 	RemoteSubscriptionId pulumi.StringPtrInput `pulumi:"remoteSubscriptionId"`
 	// Requirement ID of the connection
 	RequirementId pulumi.StringPtrInput `pulumi:"requirementId"`
+	// The schema URIs for this connection
+	SchemaUris pulumi.StringArrayInput `pulumi:"schemaUris"`
 	// The schemas for this connection
 	Schemas SchemaArrayInput `pulumi:"schemas"`
 	// The secondary contacts for this connection request
@@ -199,6 +910,11 @@ func (o ConnectionPropertiesOutput) RequirementId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionProperties) *string { return v.RequirementId }).(pulumi.StringPtrOutput)
 }
 
+// The schema URIs for this connection
+func (o ConnectionPropertiesOutput) SchemaUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectionProperties) []string { return v.SchemaUris }).(pulumi.StringArrayOutput)
+}
+
 // The schemas for this connection
 func (o ConnectionPropertiesOutput) Schemas() SchemaArrayOutput {
 	return o.ApplyT(func(v ConnectionProperties) []Schema { return v.Schemas }).(SchemaArrayOutput)
@@ -323,6 +1039,16 @@ func (o ConnectionPropertiesPtrOutput) RequirementId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The schema URIs for this connection
+func (o ConnectionPropertiesPtrOutput) SchemaUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectionProperties) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SchemaUris
+	}).(pulumi.StringArrayOutput)
+}
+
 // The schemas for this connection
 func (o ConnectionPropertiesPtrOutput) Schemas() SchemaArrayOutput {
 	return o.ApplyT(func(v *ConnectionProperties) []Schema {
@@ -373,6 +1099,8 @@ type ConnectionPropertiesResponse struct {
 	RemoteSubscriptionId *string `pulumi:"remoteSubscriptionId"`
 	// Requirement ID of the connection
 	RequirementId *string `pulumi:"requirementId"`
+	// The schema URIs for this connection
+	SchemaUris []string `pulumi:"schemaUris"`
 	// The schemas for this connection
 	Schemas []SchemaResponse `pulumi:"schemas"`
 	// The secondary contacts for this connection request
@@ -468,6 +1196,11 @@ func (o ConnectionPropertiesResponseOutput) RequirementId() pulumi.StringPtrOutp
 	return o.ApplyT(func(v ConnectionPropertiesResponse) *string { return v.RequirementId }).(pulumi.StringPtrOutput)
 }
 
+// The schema URIs for this connection
+func (o ConnectionPropertiesResponseOutput) SchemaUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectionPropertiesResponse) []string { return v.SchemaUris }).(pulumi.StringArrayOutput)
+}
+
 // The schemas for this connection
 func (o ConnectionPropertiesResponseOutput) Schemas() SchemaResponseArrayOutput {
 	return o.ApplyT(func(v ConnectionPropertiesResponse) []SchemaResponse { return v.Schemas }).(SchemaResponseArrayOutput)
@@ -488,22 +1221,1011 @@ func (o ConnectionPropertiesResponseOutput) StatusReason() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionPropertiesResponse) string { return v.StatusReason }).(pulumi.StringOutput)
 }
 
+// Defines rules that enforce minimum and maximum file size limits for data replication.
+type DataSizeRuleset struct {
+	// Optional. Specifies the maximum allowed size (in bytes) for files to be replicated. Any file size greater than maximum will be denied replication.
+	Maximum *float64 `pulumi:"maximum"`
+	// Optional. Default is 0. Specifies the minimum required size (in bytes) for a file to be eligible for replication. Any file size less than minimum will be denied replication.
+	Minimum *float64 `pulumi:"minimum"`
+}
+
+// Defaults sets the appropriate defaults for DataSizeRuleset
+func (val *DataSizeRuleset) Defaults() *DataSizeRuleset {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Minimum == nil {
+		minimum_ := 0.0
+		tmp.Minimum = &minimum_
+	}
+	return &tmp
+}
+
+// DataSizeRulesetInput is an input type that accepts DataSizeRulesetArgs and DataSizeRulesetOutput values.
+// You can construct a concrete instance of `DataSizeRulesetInput` via:
+//
+//	DataSizeRulesetArgs{...}
+type DataSizeRulesetInput interface {
+	pulumi.Input
+
+	ToDataSizeRulesetOutput() DataSizeRulesetOutput
+	ToDataSizeRulesetOutputWithContext(context.Context) DataSizeRulesetOutput
+}
+
+// Defines rules that enforce minimum and maximum file size limits for data replication.
+type DataSizeRulesetArgs struct {
+	// Optional. Specifies the maximum allowed size (in bytes) for files to be replicated. Any file size greater than maximum will be denied replication.
+	Maximum pulumi.Float64PtrInput `pulumi:"maximum"`
+	// Optional. Default is 0. Specifies the minimum required size (in bytes) for a file to be eligible for replication. Any file size less than minimum will be denied replication.
+	Minimum pulumi.Float64PtrInput `pulumi:"minimum"`
+}
+
+// Defaults sets the appropriate defaults for DataSizeRulesetArgs
+func (val *DataSizeRulesetArgs) Defaults() *DataSizeRulesetArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Minimum == nil {
+		tmp.Minimum = pulumi.Float64Ptr(0.0)
+	}
+	return &tmp
+}
+func (DataSizeRulesetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataSizeRuleset)(nil)).Elem()
+}
+
+func (i DataSizeRulesetArgs) ToDataSizeRulesetOutput() DataSizeRulesetOutput {
+	return i.ToDataSizeRulesetOutputWithContext(context.Background())
+}
+
+func (i DataSizeRulesetArgs) ToDataSizeRulesetOutputWithContext(ctx context.Context) DataSizeRulesetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataSizeRulesetOutput)
+}
+
+func (i DataSizeRulesetArgs) ToDataSizeRulesetPtrOutput() DataSizeRulesetPtrOutput {
+	return i.ToDataSizeRulesetPtrOutputWithContext(context.Background())
+}
+
+func (i DataSizeRulesetArgs) ToDataSizeRulesetPtrOutputWithContext(ctx context.Context) DataSizeRulesetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataSizeRulesetOutput).ToDataSizeRulesetPtrOutputWithContext(ctx)
+}
+
+// DataSizeRulesetPtrInput is an input type that accepts DataSizeRulesetArgs, DataSizeRulesetPtr and DataSizeRulesetPtrOutput values.
+// You can construct a concrete instance of `DataSizeRulesetPtrInput` via:
+//
+//	        DataSizeRulesetArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataSizeRulesetPtrInput interface {
+	pulumi.Input
+
+	ToDataSizeRulesetPtrOutput() DataSizeRulesetPtrOutput
+	ToDataSizeRulesetPtrOutputWithContext(context.Context) DataSizeRulesetPtrOutput
+}
+
+type dataSizeRulesetPtrType DataSizeRulesetArgs
+
+func DataSizeRulesetPtr(v *DataSizeRulesetArgs) DataSizeRulesetPtrInput {
+	return (*dataSizeRulesetPtrType)(v)
+}
+
+func (*dataSizeRulesetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataSizeRuleset)(nil)).Elem()
+}
+
+func (i *dataSizeRulesetPtrType) ToDataSizeRulesetPtrOutput() DataSizeRulesetPtrOutput {
+	return i.ToDataSizeRulesetPtrOutputWithContext(context.Background())
+}
+
+func (i *dataSizeRulesetPtrType) ToDataSizeRulesetPtrOutputWithContext(ctx context.Context) DataSizeRulesetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataSizeRulesetPtrOutput)
+}
+
+// Defines rules that enforce minimum and maximum file size limits for data replication.
+type DataSizeRulesetOutput struct{ *pulumi.OutputState }
+
+func (DataSizeRulesetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataSizeRuleset)(nil)).Elem()
+}
+
+func (o DataSizeRulesetOutput) ToDataSizeRulesetOutput() DataSizeRulesetOutput {
+	return o
+}
+
+func (o DataSizeRulesetOutput) ToDataSizeRulesetOutputWithContext(ctx context.Context) DataSizeRulesetOutput {
+	return o
+}
+
+func (o DataSizeRulesetOutput) ToDataSizeRulesetPtrOutput() DataSizeRulesetPtrOutput {
+	return o.ToDataSizeRulesetPtrOutputWithContext(context.Background())
+}
+
+func (o DataSizeRulesetOutput) ToDataSizeRulesetPtrOutputWithContext(ctx context.Context) DataSizeRulesetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataSizeRuleset) *DataSizeRuleset {
+		return &v
+	}).(DataSizeRulesetPtrOutput)
+}
+
+// Optional. Specifies the maximum allowed size (in bytes) for files to be replicated. Any file size greater than maximum will be denied replication.
+func (o DataSizeRulesetOutput) Maximum() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DataSizeRuleset) *float64 { return v.Maximum }).(pulumi.Float64PtrOutput)
+}
+
+// Optional. Default is 0. Specifies the minimum required size (in bytes) for a file to be eligible for replication. Any file size less than minimum will be denied replication.
+func (o DataSizeRulesetOutput) Minimum() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DataSizeRuleset) *float64 { return v.Minimum }).(pulumi.Float64PtrOutput)
+}
+
+type DataSizeRulesetPtrOutput struct{ *pulumi.OutputState }
+
+func (DataSizeRulesetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataSizeRuleset)(nil)).Elem()
+}
+
+func (o DataSizeRulesetPtrOutput) ToDataSizeRulesetPtrOutput() DataSizeRulesetPtrOutput {
+	return o
+}
+
+func (o DataSizeRulesetPtrOutput) ToDataSizeRulesetPtrOutputWithContext(ctx context.Context) DataSizeRulesetPtrOutput {
+	return o
+}
+
+func (o DataSizeRulesetPtrOutput) Elem() DataSizeRulesetOutput {
+	return o.ApplyT(func(v *DataSizeRuleset) DataSizeRuleset {
+		if v != nil {
+			return *v
+		}
+		var ret DataSizeRuleset
+		return ret
+	}).(DataSizeRulesetOutput)
+}
+
+// Optional. Specifies the maximum allowed size (in bytes) for files to be replicated. Any file size greater than maximum will be denied replication.
+func (o DataSizeRulesetPtrOutput) Maximum() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *DataSizeRuleset) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Maximum
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Optional. Default is 0. Specifies the minimum required size (in bytes) for a file to be eligible for replication. Any file size less than minimum will be denied replication.
+func (o DataSizeRulesetPtrOutput) Minimum() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *DataSizeRuleset) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Minimum
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Defines rules that enforce minimum and maximum file size limits for data replication.
+type DataSizeRulesetResponse struct {
+	// Optional. Specifies the maximum allowed size (in bytes) for files to be replicated. Any file size greater than maximum will be denied replication.
+	Maximum *float64 `pulumi:"maximum"`
+	// Optional. Default is 0. Specifies the minimum required size (in bytes) for a file to be eligible for replication. Any file size less than minimum will be denied replication.
+	Minimum *float64 `pulumi:"minimum"`
+}
+
+// Defaults sets the appropriate defaults for DataSizeRulesetResponse
+func (val *DataSizeRulesetResponse) Defaults() *DataSizeRulesetResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Minimum == nil {
+		minimum_ := 0.0
+		tmp.Minimum = &minimum_
+	}
+	return &tmp
+}
+
+// Defines rules that enforce minimum and maximum file size limits for data replication.
+type DataSizeRulesetResponseOutput struct{ *pulumi.OutputState }
+
+func (DataSizeRulesetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataSizeRulesetResponse)(nil)).Elem()
+}
+
+func (o DataSizeRulesetResponseOutput) ToDataSizeRulesetResponseOutput() DataSizeRulesetResponseOutput {
+	return o
+}
+
+func (o DataSizeRulesetResponseOutput) ToDataSizeRulesetResponseOutputWithContext(ctx context.Context) DataSizeRulesetResponseOutput {
+	return o
+}
+
+// Optional. Specifies the maximum allowed size (in bytes) for files to be replicated. Any file size greater than maximum will be denied replication.
+func (o DataSizeRulesetResponseOutput) Maximum() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DataSizeRulesetResponse) *float64 { return v.Maximum }).(pulumi.Float64PtrOutput)
+}
+
+// Optional. Default is 0. Specifies the minimum required size (in bytes) for a file to be eligible for replication. Any file size less than minimum will be denied replication.
+func (o DataSizeRulesetResponseOutput) Minimum() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DataSizeRulesetResponse) *float64 { return v.Minimum }).(pulumi.Float64PtrOutput)
+}
+
+type DataSizeRulesetResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DataSizeRulesetResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataSizeRulesetResponse)(nil)).Elem()
+}
+
+func (o DataSizeRulesetResponsePtrOutput) ToDataSizeRulesetResponsePtrOutput() DataSizeRulesetResponsePtrOutput {
+	return o
+}
+
+func (o DataSizeRulesetResponsePtrOutput) ToDataSizeRulesetResponsePtrOutputWithContext(ctx context.Context) DataSizeRulesetResponsePtrOutput {
+	return o
+}
+
+func (o DataSizeRulesetResponsePtrOutput) Elem() DataSizeRulesetResponseOutput {
+	return o.ApplyT(func(v *DataSizeRulesetResponse) DataSizeRulesetResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DataSizeRulesetResponse
+		return ret
+	}).(DataSizeRulesetResponseOutput)
+}
+
+// Optional. Specifies the maximum allowed size (in bytes) for files to be replicated. Any file size greater than maximum will be denied replication.
+func (o DataSizeRulesetResponsePtrOutput) Maximum() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *DataSizeRulesetResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Maximum
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Optional. Default is 0. Specifies the minimum required size (in bytes) for a file to be eligible for replication. Any file size less than minimum will be denied replication.
+func (o DataSizeRulesetResponsePtrOutput) Minimum() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *DataSizeRulesetResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Minimum
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Defines the full set of properties for a FlowProfile resource.
+type FlowProfileProperties struct {
+	// A user-defined description of the FlowProfile.
+	Description string `pulumi:"description"`
+	// The data replication scenario handled by this FlowProfile. Please not, that this value cannot be updated after creation.
+	ReplicationScenario string `pulumi:"replicationScenario"`
+	// A set of configurable rulesets applied to this FlowProfile.
+	Rulesets *FlowProfileRulesets `pulumi:"rulesets"`
+	// The operational status of the FlowProfile.
+	Status string `pulumi:"status"`
+}
+
+// Defaults sets the appropriate defaults for FlowProfileProperties
+func (val *FlowProfileProperties) Defaults() *FlowProfileProperties {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Rulesets = tmp.Rulesets.Defaults()
+
+	return &tmp
+}
+
+// FlowProfilePropertiesInput is an input type that accepts FlowProfilePropertiesArgs and FlowProfilePropertiesOutput values.
+// You can construct a concrete instance of `FlowProfilePropertiesInput` via:
+//
+//	FlowProfilePropertiesArgs{...}
+type FlowProfilePropertiesInput interface {
+	pulumi.Input
+
+	ToFlowProfilePropertiesOutput() FlowProfilePropertiesOutput
+	ToFlowProfilePropertiesOutputWithContext(context.Context) FlowProfilePropertiesOutput
+}
+
+// Defines the full set of properties for a FlowProfile resource.
+type FlowProfilePropertiesArgs struct {
+	// A user-defined description of the FlowProfile.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The data replication scenario handled by this FlowProfile. Please not, that this value cannot be updated after creation.
+	ReplicationScenario pulumi.StringInput `pulumi:"replicationScenario"`
+	// A set of configurable rulesets applied to this FlowProfile.
+	Rulesets FlowProfileRulesetsPtrInput `pulumi:"rulesets"`
+	// The operational status of the FlowProfile.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+// Defaults sets the appropriate defaults for FlowProfilePropertiesArgs
+func (val *FlowProfilePropertiesArgs) Defaults() *FlowProfilePropertiesArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	return &tmp
+}
+func (FlowProfilePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlowProfileProperties)(nil)).Elem()
+}
+
+func (i FlowProfilePropertiesArgs) ToFlowProfilePropertiesOutput() FlowProfilePropertiesOutput {
+	return i.ToFlowProfilePropertiesOutputWithContext(context.Background())
+}
+
+func (i FlowProfilePropertiesArgs) ToFlowProfilePropertiesOutputWithContext(ctx context.Context) FlowProfilePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlowProfilePropertiesOutput)
+}
+
+func (i FlowProfilePropertiesArgs) ToFlowProfilePropertiesPtrOutput() FlowProfilePropertiesPtrOutput {
+	return i.ToFlowProfilePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i FlowProfilePropertiesArgs) ToFlowProfilePropertiesPtrOutputWithContext(ctx context.Context) FlowProfilePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlowProfilePropertiesOutput).ToFlowProfilePropertiesPtrOutputWithContext(ctx)
+}
+
+// FlowProfilePropertiesPtrInput is an input type that accepts FlowProfilePropertiesArgs, FlowProfilePropertiesPtr and FlowProfilePropertiesPtrOutput values.
+// You can construct a concrete instance of `FlowProfilePropertiesPtrInput` via:
+//
+//	        FlowProfilePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type FlowProfilePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToFlowProfilePropertiesPtrOutput() FlowProfilePropertiesPtrOutput
+	ToFlowProfilePropertiesPtrOutputWithContext(context.Context) FlowProfilePropertiesPtrOutput
+}
+
+type flowProfilePropertiesPtrType FlowProfilePropertiesArgs
+
+func FlowProfilePropertiesPtr(v *FlowProfilePropertiesArgs) FlowProfilePropertiesPtrInput {
+	return (*flowProfilePropertiesPtrType)(v)
+}
+
+func (*flowProfilePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlowProfileProperties)(nil)).Elem()
+}
+
+func (i *flowProfilePropertiesPtrType) ToFlowProfilePropertiesPtrOutput() FlowProfilePropertiesPtrOutput {
+	return i.ToFlowProfilePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *flowProfilePropertiesPtrType) ToFlowProfilePropertiesPtrOutputWithContext(ctx context.Context) FlowProfilePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlowProfilePropertiesPtrOutput)
+}
+
+// Defines the full set of properties for a FlowProfile resource.
+type FlowProfilePropertiesOutput struct{ *pulumi.OutputState }
+
+func (FlowProfilePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlowProfileProperties)(nil)).Elem()
+}
+
+func (o FlowProfilePropertiesOutput) ToFlowProfilePropertiesOutput() FlowProfilePropertiesOutput {
+	return o
+}
+
+func (o FlowProfilePropertiesOutput) ToFlowProfilePropertiesOutputWithContext(ctx context.Context) FlowProfilePropertiesOutput {
+	return o
+}
+
+func (o FlowProfilePropertiesOutput) ToFlowProfilePropertiesPtrOutput() FlowProfilePropertiesPtrOutput {
+	return o.ToFlowProfilePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o FlowProfilePropertiesOutput) ToFlowProfilePropertiesPtrOutputWithContext(ctx context.Context) FlowProfilePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlowProfileProperties) *FlowProfileProperties {
+		return &v
+	}).(FlowProfilePropertiesPtrOutput)
+}
+
+// A user-defined description of the FlowProfile.
+func (o FlowProfilePropertiesOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v FlowProfileProperties) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The data replication scenario handled by this FlowProfile. Please not, that this value cannot be updated after creation.
+func (o FlowProfilePropertiesOutput) ReplicationScenario() pulumi.StringOutput {
+	return o.ApplyT(func(v FlowProfileProperties) string { return v.ReplicationScenario }).(pulumi.StringOutput)
+}
+
+// A set of configurable rulesets applied to this FlowProfile.
+func (o FlowProfilePropertiesOutput) Rulesets() FlowProfileRulesetsPtrOutput {
+	return o.ApplyT(func(v FlowProfileProperties) *FlowProfileRulesets { return v.Rulesets }).(FlowProfileRulesetsPtrOutput)
+}
+
+// The operational status of the FlowProfile.
+func (o FlowProfilePropertiesOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v FlowProfileProperties) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type FlowProfilePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (FlowProfilePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlowProfileProperties)(nil)).Elem()
+}
+
+func (o FlowProfilePropertiesPtrOutput) ToFlowProfilePropertiesPtrOutput() FlowProfilePropertiesPtrOutput {
+	return o
+}
+
+func (o FlowProfilePropertiesPtrOutput) ToFlowProfilePropertiesPtrOutputWithContext(ctx context.Context) FlowProfilePropertiesPtrOutput {
+	return o
+}
+
+func (o FlowProfilePropertiesPtrOutput) Elem() FlowProfilePropertiesOutput {
+	return o.ApplyT(func(v *FlowProfileProperties) FlowProfileProperties {
+		if v != nil {
+			return *v
+		}
+		var ret FlowProfileProperties
+		return ret
+	}).(FlowProfilePropertiesOutput)
+}
+
+// A user-defined description of the FlowProfile.
+func (o FlowProfilePropertiesPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowProfileProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// The data replication scenario handled by this FlowProfile. Please not, that this value cannot be updated after creation.
+func (o FlowProfilePropertiesPtrOutput) ReplicationScenario() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowProfileProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ReplicationScenario
+	}).(pulumi.StringPtrOutput)
+}
+
+// A set of configurable rulesets applied to this FlowProfile.
+func (o FlowProfilePropertiesPtrOutput) Rulesets() FlowProfileRulesetsPtrOutput {
+	return o.ApplyT(func(v *FlowProfileProperties) *FlowProfileRulesets {
+		if v == nil {
+			return nil
+		}
+		return v.Rulesets
+	}).(FlowProfileRulesetsPtrOutput)
+}
+
+// The operational status of the FlowProfile.
+func (o FlowProfilePropertiesPtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowProfileProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines the full set of properties for a FlowProfile resource.
+type FlowProfilePropertiesResponse struct {
+	// A user-defined description of the FlowProfile.
+	Description string `pulumi:"description"`
+	// A guid represented as a string for the FlowProfile resource, assigned by the system.
+	FlowProfileId string `pulumi:"flowProfileId"`
+	// The current provisioning state of the FlowProfile.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The data replication scenario handled by this FlowProfile. Please not, that this value cannot be updated after creation.
+	ReplicationScenario string `pulumi:"replicationScenario"`
+	// A set of configurable rulesets applied to this FlowProfile.
+	Rulesets *FlowProfileRulesetsResponse `pulumi:"rulesets"`
+	// The operational status of the FlowProfile.
+	Status string `pulumi:"status"`
+}
+
+// Defaults sets the appropriate defaults for FlowProfilePropertiesResponse
+func (val *FlowProfilePropertiesResponse) Defaults() *FlowProfilePropertiesResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Rulesets = tmp.Rulesets.Defaults()
+
+	return &tmp
+}
+
+// Defines the full set of properties for a FlowProfile resource.
+type FlowProfilePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (FlowProfilePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlowProfilePropertiesResponse)(nil)).Elem()
+}
+
+func (o FlowProfilePropertiesResponseOutput) ToFlowProfilePropertiesResponseOutput() FlowProfilePropertiesResponseOutput {
+	return o
+}
+
+func (o FlowProfilePropertiesResponseOutput) ToFlowProfilePropertiesResponseOutputWithContext(ctx context.Context) FlowProfilePropertiesResponseOutput {
+	return o
+}
+
+// A user-defined description of the FlowProfile.
+func (o FlowProfilePropertiesResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v FlowProfilePropertiesResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// A guid represented as a string for the FlowProfile resource, assigned by the system.
+func (o FlowProfilePropertiesResponseOutput) FlowProfileId() pulumi.StringOutput {
+	return o.ApplyT(func(v FlowProfilePropertiesResponse) string { return v.FlowProfileId }).(pulumi.StringOutput)
+}
+
+// The current provisioning state of the FlowProfile.
+func (o FlowProfilePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v FlowProfilePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The data replication scenario handled by this FlowProfile. Please not, that this value cannot be updated after creation.
+func (o FlowProfilePropertiesResponseOutput) ReplicationScenario() pulumi.StringOutput {
+	return o.ApplyT(func(v FlowProfilePropertiesResponse) string { return v.ReplicationScenario }).(pulumi.StringOutput)
+}
+
+// A set of configurable rulesets applied to this FlowProfile.
+func (o FlowProfilePropertiesResponseOutput) Rulesets() FlowProfileRulesetsResponsePtrOutput {
+	return o.ApplyT(func(v FlowProfilePropertiesResponse) *FlowProfileRulesetsResponse { return v.Rulesets }).(FlowProfileRulesetsResponsePtrOutput)
+}
+
+// The operational status of the FlowProfile.
+func (o FlowProfilePropertiesResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v FlowProfilePropertiesResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The allowed set of configurable rulesets for a FlowProfile resource, used during data replication. All rulesets are optional, and any ruleset configured will be applied to every applicable replicating data. Any data that fails a ruleset will be denied replication. If a ruleset is not configured then the ruleset is considered disabled and will not apply towards replicating data.
+type FlowProfileRulesets struct {
+	// Antivirus scanning rules for replicated data.
+	Antivirus *AntivirusRuleset `pulumi:"antivirus"`
+	// Rules for handling archive files during replication.
+	Archives *ArchiveRuleset `pulumi:"archives"`
+	// Rules that enforce minimum and maximum data size limits.
+	DataSize *DataSizeRuleset `pulumi:"dataSize"`
+	// Rules for filtering files based on MIME types.
+	MimeFilters *MimeFilterRuleset `pulumi:"mimeFilters"`
+	// Rules for detecting and blocking specific text patterns.
+	TextMatching *TextMatchingRuleset `pulumi:"textMatching"`
+	// Rules for filtering XML content using XSD schemas.
+	XmlFilters *XmlFilterRuleset `pulumi:"xmlFilters"`
+}
+
+// Defaults sets the appropriate defaults for FlowProfileRulesets
+func (val *FlowProfileRulesets) Defaults() *FlowProfileRulesets {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Archives = tmp.Archives.Defaults()
+
+	tmp.DataSize = tmp.DataSize.Defaults()
+
+	return &tmp
+}
+
+// FlowProfileRulesetsInput is an input type that accepts FlowProfileRulesetsArgs and FlowProfileRulesetsOutput values.
+// You can construct a concrete instance of `FlowProfileRulesetsInput` via:
+//
+//	FlowProfileRulesetsArgs{...}
+type FlowProfileRulesetsInput interface {
+	pulumi.Input
+
+	ToFlowProfileRulesetsOutput() FlowProfileRulesetsOutput
+	ToFlowProfileRulesetsOutputWithContext(context.Context) FlowProfileRulesetsOutput
+}
+
+// The allowed set of configurable rulesets for a FlowProfile resource, used during data replication. All rulesets are optional, and any ruleset configured will be applied to every applicable replicating data. Any data that fails a ruleset will be denied replication. If a ruleset is not configured then the ruleset is considered disabled and will not apply towards replicating data.
+type FlowProfileRulesetsArgs struct {
+	// Antivirus scanning rules for replicated data.
+	Antivirus AntivirusRulesetPtrInput `pulumi:"antivirus"`
+	// Rules for handling archive files during replication.
+	Archives ArchiveRulesetPtrInput `pulumi:"archives"`
+	// Rules that enforce minimum and maximum data size limits.
+	DataSize DataSizeRulesetPtrInput `pulumi:"dataSize"`
+	// Rules for filtering files based on MIME types.
+	MimeFilters MimeFilterRulesetPtrInput `pulumi:"mimeFilters"`
+	// Rules for detecting and blocking specific text patterns.
+	TextMatching TextMatchingRulesetPtrInput `pulumi:"textMatching"`
+	// Rules for filtering XML content using XSD schemas.
+	XmlFilters XmlFilterRulesetPtrInput `pulumi:"xmlFilters"`
+}
+
+// Defaults sets the appropriate defaults for FlowProfileRulesetsArgs
+func (val *FlowProfileRulesetsArgs) Defaults() *FlowProfileRulesetsArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	return &tmp
+}
+func (FlowProfileRulesetsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlowProfileRulesets)(nil)).Elem()
+}
+
+func (i FlowProfileRulesetsArgs) ToFlowProfileRulesetsOutput() FlowProfileRulesetsOutput {
+	return i.ToFlowProfileRulesetsOutputWithContext(context.Background())
+}
+
+func (i FlowProfileRulesetsArgs) ToFlowProfileRulesetsOutputWithContext(ctx context.Context) FlowProfileRulesetsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlowProfileRulesetsOutput)
+}
+
+func (i FlowProfileRulesetsArgs) ToFlowProfileRulesetsPtrOutput() FlowProfileRulesetsPtrOutput {
+	return i.ToFlowProfileRulesetsPtrOutputWithContext(context.Background())
+}
+
+func (i FlowProfileRulesetsArgs) ToFlowProfileRulesetsPtrOutputWithContext(ctx context.Context) FlowProfileRulesetsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlowProfileRulesetsOutput).ToFlowProfileRulesetsPtrOutputWithContext(ctx)
+}
+
+// FlowProfileRulesetsPtrInput is an input type that accepts FlowProfileRulesetsArgs, FlowProfileRulesetsPtr and FlowProfileRulesetsPtrOutput values.
+// You can construct a concrete instance of `FlowProfileRulesetsPtrInput` via:
+//
+//	        FlowProfileRulesetsArgs{...}
+//
+//	or:
+//
+//	        nil
+type FlowProfileRulesetsPtrInput interface {
+	pulumi.Input
+
+	ToFlowProfileRulesetsPtrOutput() FlowProfileRulesetsPtrOutput
+	ToFlowProfileRulesetsPtrOutputWithContext(context.Context) FlowProfileRulesetsPtrOutput
+}
+
+type flowProfileRulesetsPtrType FlowProfileRulesetsArgs
+
+func FlowProfileRulesetsPtr(v *FlowProfileRulesetsArgs) FlowProfileRulesetsPtrInput {
+	return (*flowProfileRulesetsPtrType)(v)
+}
+
+func (*flowProfileRulesetsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlowProfileRulesets)(nil)).Elem()
+}
+
+func (i *flowProfileRulesetsPtrType) ToFlowProfileRulesetsPtrOutput() FlowProfileRulesetsPtrOutput {
+	return i.ToFlowProfileRulesetsPtrOutputWithContext(context.Background())
+}
+
+func (i *flowProfileRulesetsPtrType) ToFlowProfileRulesetsPtrOutputWithContext(ctx context.Context) FlowProfileRulesetsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlowProfileRulesetsPtrOutput)
+}
+
+// The allowed set of configurable rulesets for a FlowProfile resource, used during data replication. All rulesets are optional, and any ruleset configured will be applied to every applicable replicating data. Any data that fails a ruleset will be denied replication. If a ruleset is not configured then the ruleset is considered disabled and will not apply towards replicating data.
+type FlowProfileRulesetsOutput struct{ *pulumi.OutputState }
+
+func (FlowProfileRulesetsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlowProfileRulesets)(nil)).Elem()
+}
+
+func (o FlowProfileRulesetsOutput) ToFlowProfileRulesetsOutput() FlowProfileRulesetsOutput {
+	return o
+}
+
+func (o FlowProfileRulesetsOutput) ToFlowProfileRulesetsOutputWithContext(ctx context.Context) FlowProfileRulesetsOutput {
+	return o
+}
+
+func (o FlowProfileRulesetsOutput) ToFlowProfileRulesetsPtrOutput() FlowProfileRulesetsPtrOutput {
+	return o.ToFlowProfileRulesetsPtrOutputWithContext(context.Background())
+}
+
+func (o FlowProfileRulesetsOutput) ToFlowProfileRulesetsPtrOutputWithContext(ctx context.Context) FlowProfileRulesetsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlowProfileRulesets) *FlowProfileRulesets {
+		return &v
+	}).(FlowProfileRulesetsPtrOutput)
+}
+
+// Antivirus scanning rules for replicated data.
+func (o FlowProfileRulesetsOutput) Antivirus() AntivirusRulesetPtrOutput {
+	return o.ApplyT(func(v FlowProfileRulesets) *AntivirusRuleset { return v.Antivirus }).(AntivirusRulesetPtrOutput)
+}
+
+// Rules for handling archive files during replication.
+func (o FlowProfileRulesetsOutput) Archives() ArchiveRulesetPtrOutput {
+	return o.ApplyT(func(v FlowProfileRulesets) *ArchiveRuleset { return v.Archives }).(ArchiveRulesetPtrOutput)
+}
+
+// Rules that enforce minimum and maximum data size limits.
+func (o FlowProfileRulesetsOutput) DataSize() DataSizeRulesetPtrOutput {
+	return o.ApplyT(func(v FlowProfileRulesets) *DataSizeRuleset { return v.DataSize }).(DataSizeRulesetPtrOutput)
+}
+
+// Rules for filtering files based on MIME types.
+func (o FlowProfileRulesetsOutput) MimeFilters() MimeFilterRulesetPtrOutput {
+	return o.ApplyT(func(v FlowProfileRulesets) *MimeFilterRuleset { return v.MimeFilters }).(MimeFilterRulesetPtrOutput)
+}
+
+// Rules for detecting and blocking specific text patterns.
+func (o FlowProfileRulesetsOutput) TextMatching() TextMatchingRulesetPtrOutput {
+	return o.ApplyT(func(v FlowProfileRulesets) *TextMatchingRuleset { return v.TextMatching }).(TextMatchingRulesetPtrOutput)
+}
+
+// Rules for filtering XML content using XSD schemas.
+func (o FlowProfileRulesetsOutput) XmlFilters() XmlFilterRulesetPtrOutput {
+	return o.ApplyT(func(v FlowProfileRulesets) *XmlFilterRuleset { return v.XmlFilters }).(XmlFilterRulesetPtrOutput)
+}
+
+type FlowProfileRulesetsPtrOutput struct{ *pulumi.OutputState }
+
+func (FlowProfileRulesetsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlowProfileRulesets)(nil)).Elem()
+}
+
+func (o FlowProfileRulesetsPtrOutput) ToFlowProfileRulesetsPtrOutput() FlowProfileRulesetsPtrOutput {
+	return o
+}
+
+func (o FlowProfileRulesetsPtrOutput) ToFlowProfileRulesetsPtrOutputWithContext(ctx context.Context) FlowProfileRulesetsPtrOutput {
+	return o
+}
+
+func (o FlowProfileRulesetsPtrOutput) Elem() FlowProfileRulesetsOutput {
+	return o.ApplyT(func(v *FlowProfileRulesets) FlowProfileRulesets {
+		if v != nil {
+			return *v
+		}
+		var ret FlowProfileRulesets
+		return ret
+	}).(FlowProfileRulesetsOutput)
+}
+
+// Antivirus scanning rules for replicated data.
+func (o FlowProfileRulesetsPtrOutput) Antivirus() AntivirusRulesetPtrOutput {
+	return o.ApplyT(func(v *FlowProfileRulesets) *AntivirusRuleset {
+		if v == nil {
+			return nil
+		}
+		return v.Antivirus
+	}).(AntivirusRulesetPtrOutput)
+}
+
+// Rules for handling archive files during replication.
+func (o FlowProfileRulesetsPtrOutput) Archives() ArchiveRulesetPtrOutput {
+	return o.ApplyT(func(v *FlowProfileRulesets) *ArchiveRuleset {
+		if v == nil {
+			return nil
+		}
+		return v.Archives
+	}).(ArchiveRulesetPtrOutput)
+}
+
+// Rules that enforce minimum and maximum data size limits.
+func (o FlowProfileRulesetsPtrOutput) DataSize() DataSizeRulesetPtrOutput {
+	return o.ApplyT(func(v *FlowProfileRulesets) *DataSizeRuleset {
+		if v == nil {
+			return nil
+		}
+		return v.DataSize
+	}).(DataSizeRulesetPtrOutput)
+}
+
+// Rules for filtering files based on MIME types.
+func (o FlowProfileRulesetsPtrOutput) MimeFilters() MimeFilterRulesetPtrOutput {
+	return o.ApplyT(func(v *FlowProfileRulesets) *MimeFilterRuleset {
+		if v == nil {
+			return nil
+		}
+		return v.MimeFilters
+	}).(MimeFilterRulesetPtrOutput)
+}
+
+// Rules for detecting and blocking specific text patterns.
+func (o FlowProfileRulesetsPtrOutput) TextMatching() TextMatchingRulesetPtrOutput {
+	return o.ApplyT(func(v *FlowProfileRulesets) *TextMatchingRuleset {
+		if v == nil {
+			return nil
+		}
+		return v.TextMatching
+	}).(TextMatchingRulesetPtrOutput)
+}
+
+// Rules for filtering XML content using XSD schemas.
+func (o FlowProfileRulesetsPtrOutput) XmlFilters() XmlFilterRulesetPtrOutput {
+	return o.ApplyT(func(v *FlowProfileRulesets) *XmlFilterRuleset {
+		if v == nil {
+			return nil
+		}
+		return v.XmlFilters
+	}).(XmlFilterRulesetPtrOutput)
+}
+
+// The allowed set of configurable rulesets for a FlowProfile resource, used during data replication. All rulesets are optional, and any ruleset configured will be applied to every applicable replicating data. Any data that fails a ruleset will be denied replication. If a ruleset is not configured then the ruleset is considered disabled and will not apply towards replicating data.
+type FlowProfileRulesetsResponse struct {
+	// Antivirus scanning rules for replicated data.
+	Antivirus *AntivirusRulesetResponse `pulumi:"antivirus"`
+	// Rules for handling archive files during replication.
+	Archives *ArchiveRulesetResponse `pulumi:"archives"`
+	// Rules that enforce minimum and maximum data size limits.
+	DataSize *DataSizeRulesetResponse `pulumi:"dataSize"`
+	// Rules for filtering files based on MIME types.
+	MimeFilters *MimeFilterRulesetResponse `pulumi:"mimeFilters"`
+	// Rules for detecting and blocking specific text patterns.
+	TextMatching *TextMatchingRulesetResponse `pulumi:"textMatching"`
+	// Rules for filtering XML content using XSD schemas.
+	XmlFilters *XmlFilterRulesetResponse `pulumi:"xmlFilters"`
+}
+
+// Defaults sets the appropriate defaults for FlowProfileRulesetsResponse
+func (val *FlowProfileRulesetsResponse) Defaults() *FlowProfileRulesetsResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Archives = tmp.Archives.Defaults()
+
+	tmp.DataSize = tmp.DataSize.Defaults()
+
+	return &tmp
+}
+
+// The allowed set of configurable rulesets for a FlowProfile resource, used during data replication. All rulesets are optional, and any ruleset configured will be applied to every applicable replicating data. Any data that fails a ruleset will be denied replication. If a ruleset is not configured then the ruleset is considered disabled and will not apply towards replicating data.
+type FlowProfileRulesetsResponseOutput struct{ *pulumi.OutputState }
+
+func (FlowProfileRulesetsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlowProfileRulesetsResponse)(nil)).Elem()
+}
+
+func (o FlowProfileRulesetsResponseOutput) ToFlowProfileRulesetsResponseOutput() FlowProfileRulesetsResponseOutput {
+	return o
+}
+
+func (o FlowProfileRulesetsResponseOutput) ToFlowProfileRulesetsResponseOutputWithContext(ctx context.Context) FlowProfileRulesetsResponseOutput {
+	return o
+}
+
+// Antivirus scanning rules for replicated data.
+func (o FlowProfileRulesetsResponseOutput) Antivirus() AntivirusRulesetResponsePtrOutput {
+	return o.ApplyT(func(v FlowProfileRulesetsResponse) *AntivirusRulesetResponse { return v.Antivirus }).(AntivirusRulesetResponsePtrOutput)
+}
+
+// Rules for handling archive files during replication.
+func (o FlowProfileRulesetsResponseOutput) Archives() ArchiveRulesetResponsePtrOutput {
+	return o.ApplyT(func(v FlowProfileRulesetsResponse) *ArchiveRulesetResponse { return v.Archives }).(ArchiveRulesetResponsePtrOutput)
+}
+
+// Rules that enforce minimum and maximum data size limits.
+func (o FlowProfileRulesetsResponseOutput) DataSize() DataSizeRulesetResponsePtrOutput {
+	return o.ApplyT(func(v FlowProfileRulesetsResponse) *DataSizeRulesetResponse { return v.DataSize }).(DataSizeRulesetResponsePtrOutput)
+}
+
+// Rules for filtering files based on MIME types.
+func (o FlowProfileRulesetsResponseOutput) MimeFilters() MimeFilterRulesetResponsePtrOutput {
+	return o.ApplyT(func(v FlowProfileRulesetsResponse) *MimeFilterRulesetResponse { return v.MimeFilters }).(MimeFilterRulesetResponsePtrOutput)
+}
+
+// Rules for detecting and blocking specific text patterns.
+func (o FlowProfileRulesetsResponseOutput) TextMatching() TextMatchingRulesetResponsePtrOutput {
+	return o.ApplyT(func(v FlowProfileRulesetsResponse) *TextMatchingRulesetResponse { return v.TextMatching }).(TextMatchingRulesetResponsePtrOutput)
+}
+
+// Rules for filtering XML content using XSD schemas.
+func (o FlowProfileRulesetsResponseOutput) XmlFilters() XmlFilterRulesetResponsePtrOutput {
+	return o.ApplyT(func(v FlowProfileRulesetsResponse) *XmlFilterRulesetResponse { return v.XmlFilters }).(XmlFilterRulesetResponsePtrOutput)
+}
+
+type FlowProfileRulesetsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (FlowProfileRulesetsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlowProfileRulesetsResponse)(nil)).Elem()
+}
+
+func (o FlowProfileRulesetsResponsePtrOutput) ToFlowProfileRulesetsResponsePtrOutput() FlowProfileRulesetsResponsePtrOutput {
+	return o
+}
+
+func (o FlowProfileRulesetsResponsePtrOutput) ToFlowProfileRulesetsResponsePtrOutputWithContext(ctx context.Context) FlowProfileRulesetsResponsePtrOutput {
+	return o
+}
+
+func (o FlowProfileRulesetsResponsePtrOutput) Elem() FlowProfileRulesetsResponseOutput {
+	return o.ApplyT(func(v *FlowProfileRulesetsResponse) FlowProfileRulesetsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret FlowProfileRulesetsResponse
+		return ret
+	}).(FlowProfileRulesetsResponseOutput)
+}
+
+// Antivirus scanning rules for replicated data.
+func (o FlowProfileRulesetsResponsePtrOutput) Antivirus() AntivirusRulesetResponsePtrOutput {
+	return o.ApplyT(func(v *FlowProfileRulesetsResponse) *AntivirusRulesetResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Antivirus
+	}).(AntivirusRulesetResponsePtrOutput)
+}
+
+// Rules for handling archive files during replication.
+func (o FlowProfileRulesetsResponsePtrOutput) Archives() ArchiveRulesetResponsePtrOutput {
+	return o.ApplyT(func(v *FlowProfileRulesetsResponse) *ArchiveRulesetResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Archives
+	}).(ArchiveRulesetResponsePtrOutput)
+}
+
+// Rules that enforce minimum and maximum data size limits.
+func (o FlowProfileRulesetsResponsePtrOutput) DataSize() DataSizeRulesetResponsePtrOutput {
+	return o.ApplyT(func(v *FlowProfileRulesetsResponse) *DataSizeRulesetResponse {
+		if v == nil {
+			return nil
+		}
+		return v.DataSize
+	}).(DataSizeRulesetResponsePtrOutput)
+}
+
+// Rules for filtering files based on MIME types.
+func (o FlowProfileRulesetsResponsePtrOutput) MimeFilters() MimeFilterRulesetResponsePtrOutput {
+	return o.ApplyT(func(v *FlowProfileRulesetsResponse) *MimeFilterRulesetResponse {
+		if v == nil {
+			return nil
+		}
+		return v.MimeFilters
+	}).(MimeFilterRulesetResponsePtrOutput)
+}
+
+// Rules for detecting and blocking specific text patterns.
+func (o FlowProfileRulesetsResponsePtrOutput) TextMatching() TextMatchingRulesetResponsePtrOutput {
+	return o.ApplyT(func(v *FlowProfileRulesetsResponse) *TextMatchingRulesetResponse {
+		if v == nil {
+			return nil
+		}
+		return v.TextMatching
+	}).(TextMatchingRulesetResponsePtrOutput)
+}
+
+// Rules for filtering XML content using XSD schemas.
+func (o FlowProfileRulesetsResponsePtrOutput) XmlFilters() XmlFilterRulesetResponsePtrOutput {
+	return o.ApplyT(func(v *FlowProfileRulesetsResponse) *XmlFilterRulesetResponse {
+		if v == nil {
+			return nil
+		}
+		return v.XmlFilters
+	}).(XmlFilterRulesetResponsePtrOutput)
+}
+
 // Properties of flow
 type FlowProperties struct {
 	// The connection associated with this flow
 	Connection *SelectedResource `pulumi:"connection"`
+	// The URI to the customer managed key for this flow
+	CustomerManagedKeyVaultUri *string `pulumi:"customerManagedKeyVaultUri"`
 	// Transfer Storage Blobs or Tables
 	DataType *string `pulumi:"dataType"`
+	// The destination endpoint ports of the stream
+	DestinationEndpointPorts []float64 `pulumi:"destinationEndpointPorts"`
+	// The destination endpoints of the stream
+	DestinationEndpoints []string `pulumi:"destinationEndpoints"`
 	// The flow type for this flow
 	FlowType *string `pulumi:"flowType"`
 	// AME, PME, or TORUS only! AKV Chain Containing SAS Token
 	KeyVaultUri *string `pulumi:"keyVaultUri"`
+	// The messaging options for this flow
+	MessagingOptions *MessagingOptions `pulumi:"messagingOptions"`
+	// The passphrase used for SRT streams
+	Passphrase *string `pulumi:"passphrase"`
 	// The policies for this flow
 	Policies []string `pulumi:"policies"`
 	// The selected schema for this flow
 	Schema *Schema `pulumi:"schema"`
 	// Service Bus Queue ID
 	ServiceBusQueueId *string `pulumi:"serviceBusQueueId"`
+	// The source IP address and CIDR ranges of the stream
+	SourceAddresses *StreamSourceAddresses `pulumi:"sourceAddresses"`
 	// Status of the current flow
 	Status *string `pulumi:"status"`
 	// Storage Account ID
@@ -512,6 +2234,12 @@ type FlowProperties struct {
 	StorageAccountName *string `pulumi:"storageAccountName"`
 	// Storage Container Name
 	StorageContainerName *string `pulumi:"storageContainerName"`
+	// The flow stream identifier
+	StreamId *string `pulumi:"streamId"`
+	// The latency of the stream in milliseconds
+	StreamLatency *float64 `pulumi:"streamLatency"`
+	// The protocol of the stream
+	StreamProtocol *string `pulumi:"streamProtocol"`
 }
 
 // FlowPropertiesInput is an input type that accepts FlowPropertiesArgs and FlowPropertiesOutput values.
@@ -529,18 +2257,30 @@ type FlowPropertiesInput interface {
 type FlowPropertiesArgs struct {
 	// The connection associated with this flow
 	Connection SelectedResourcePtrInput `pulumi:"connection"`
+	// The URI to the customer managed key for this flow
+	CustomerManagedKeyVaultUri pulumi.StringPtrInput `pulumi:"customerManagedKeyVaultUri"`
 	// Transfer Storage Blobs or Tables
 	DataType pulumi.StringPtrInput `pulumi:"dataType"`
+	// The destination endpoint ports of the stream
+	DestinationEndpointPorts pulumi.Float64ArrayInput `pulumi:"destinationEndpointPorts"`
+	// The destination endpoints of the stream
+	DestinationEndpoints pulumi.StringArrayInput `pulumi:"destinationEndpoints"`
 	// The flow type for this flow
 	FlowType pulumi.StringPtrInput `pulumi:"flowType"`
 	// AME, PME, or TORUS only! AKV Chain Containing SAS Token
 	KeyVaultUri pulumi.StringPtrInput `pulumi:"keyVaultUri"`
+	// The messaging options for this flow
+	MessagingOptions MessagingOptionsPtrInput `pulumi:"messagingOptions"`
+	// The passphrase used for SRT streams
+	Passphrase pulumi.StringPtrInput `pulumi:"passphrase"`
 	// The policies for this flow
 	Policies pulumi.StringArrayInput `pulumi:"policies"`
 	// The selected schema for this flow
 	Schema SchemaPtrInput `pulumi:"schema"`
 	// Service Bus Queue ID
 	ServiceBusQueueId pulumi.StringPtrInput `pulumi:"serviceBusQueueId"`
+	// The source IP address and CIDR ranges of the stream
+	SourceAddresses StreamSourceAddressesPtrInput `pulumi:"sourceAddresses"`
 	// Status of the current flow
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// Storage Account ID
@@ -549,6 +2289,12 @@ type FlowPropertiesArgs struct {
 	StorageAccountName pulumi.StringPtrInput `pulumi:"storageAccountName"`
 	// Storage Container Name
 	StorageContainerName pulumi.StringPtrInput `pulumi:"storageContainerName"`
+	// The flow stream identifier
+	StreamId pulumi.StringPtrInput `pulumi:"streamId"`
+	// The latency of the stream in milliseconds
+	StreamLatency pulumi.Float64PtrInput `pulumi:"streamLatency"`
+	// The protocol of the stream
+	StreamProtocol pulumi.StringPtrInput `pulumi:"streamProtocol"`
 }
 
 func (FlowPropertiesArgs) ElementType() reflect.Type {
@@ -634,9 +2380,24 @@ func (o FlowPropertiesOutput) Connection() SelectedResourcePtrOutput {
 	return o.ApplyT(func(v FlowProperties) *SelectedResource { return v.Connection }).(SelectedResourcePtrOutput)
 }
 
+// The URI to the customer managed key for this flow
+func (o FlowPropertiesOutput) CustomerManagedKeyVaultUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlowProperties) *string { return v.CustomerManagedKeyVaultUri }).(pulumi.StringPtrOutput)
+}
+
 // Transfer Storage Blobs or Tables
 func (o FlowPropertiesOutput) DataType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlowProperties) *string { return v.DataType }).(pulumi.StringPtrOutput)
+}
+
+// The destination endpoint ports of the stream
+func (o FlowPropertiesOutput) DestinationEndpointPorts() pulumi.Float64ArrayOutput {
+	return o.ApplyT(func(v FlowProperties) []float64 { return v.DestinationEndpointPorts }).(pulumi.Float64ArrayOutput)
+}
+
+// The destination endpoints of the stream
+func (o FlowPropertiesOutput) DestinationEndpoints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FlowProperties) []string { return v.DestinationEndpoints }).(pulumi.StringArrayOutput)
 }
 
 // The flow type for this flow
@@ -647,6 +2408,16 @@ func (o FlowPropertiesOutput) FlowType() pulumi.StringPtrOutput {
 // AME, PME, or TORUS only! AKV Chain Containing SAS Token
 func (o FlowPropertiesOutput) KeyVaultUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlowProperties) *string { return v.KeyVaultUri }).(pulumi.StringPtrOutput)
+}
+
+// The messaging options for this flow
+func (o FlowPropertiesOutput) MessagingOptions() MessagingOptionsPtrOutput {
+	return o.ApplyT(func(v FlowProperties) *MessagingOptions { return v.MessagingOptions }).(MessagingOptionsPtrOutput)
+}
+
+// The passphrase used for SRT streams
+func (o FlowPropertiesOutput) Passphrase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlowProperties) *string { return v.Passphrase }).(pulumi.StringPtrOutput)
 }
 
 // The policies for this flow
@@ -662,6 +2433,11 @@ func (o FlowPropertiesOutput) Schema() SchemaPtrOutput {
 // Service Bus Queue ID
 func (o FlowPropertiesOutput) ServiceBusQueueId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlowProperties) *string { return v.ServiceBusQueueId }).(pulumi.StringPtrOutput)
+}
+
+// The source IP address and CIDR ranges of the stream
+func (o FlowPropertiesOutput) SourceAddresses() StreamSourceAddressesPtrOutput {
+	return o.ApplyT(func(v FlowProperties) *StreamSourceAddresses { return v.SourceAddresses }).(StreamSourceAddressesPtrOutput)
 }
 
 // Status of the current flow
@@ -682,6 +2458,21 @@ func (o FlowPropertiesOutput) StorageAccountName() pulumi.StringPtrOutput {
 // Storage Container Name
 func (o FlowPropertiesOutput) StorageContainerName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlowProperties) *string { return v.StorageContainerName }).(pulumi.StringPtrOutput)
+}
+
+// The flow stream identifier
+func (o FlowPropertiesOutput) StreamId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlowProperties) *string { return v.StreamId }).(pulumi.StringPtrOutput)
+}
+
+// The latency of the stream in milliseconds
+func (o FlowPropertiesOutput) StreamLatency() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v FlowProperties) *float64 { return v.StreamLatency }).(pulumi.Float64PtrOutput)
+}
+
+// The protocol of the stream
+func (o FlowPropertiesOutput) StreamProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlowProperties) *string { return v.StreamProtocol }).(pulumi.StringPtrOutput)
 }
 
 type FlowPropertiesPtrOutput struct{ *pulumi.OutputState }
@@ -718,6 +2509,16 @@ func (o FlowPropertiesPtrOutput) Connection() SelectedResourcePtrOutput {
 	}).(SelectedResourcePtrOutput)
 }
 
+// The URI to the customer managed key for this flow
+func (o FlowPropertiesPtrOutput) CustomerManagedKeyVaultUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomerManagedKeyVaultUri
+	}).(pulumi.StringPtrOutput)
+}
+
 // Transfer Storage Blobs or Tables
 func (o FlowPropertiesPtrOutput) DataType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlowProperties) *string {
@@ -726,6 +2527,26 @@ func (o FlowPropertiesPtrOutput) DataType() pulumi.StringPtrOutput {
 		}
 		return v.DataType
 	}).(pulumi.StringPtrOutput)
+}
+
+// The destination endpoint ports of the stream
+func (o FlowPropertiesPtrOutput) DestinationEndpointPorts() pulumi.Float64ArrayOutput {
+	return o.ApplyT(func(v *FlowProperties) []float64 {
+		if v == nil {
+			return nil
+		}
+		return v.DestinationEndpointPorts
+	}).(pulumi.Float64ArrayOutput)
+}
+
+// The destination endpoints of the stream
+func (o FlowPropertiesPtrOutput) DestinationEndpoints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FlowProperties) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DestinationEndpoints
+	}).(pulumi.StringArrayOutput)
 }
 
 // The flow type for this flow
@@ -745,6 +2566,26 @@ func (o FlowPropertiesPtrOutput) KeyVaultUri() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.KeyVaultUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The messaging options for this flow
+func (o FlowPropertiesPtrOutput) MessagingOptions() MessagingOptionsPtrOutput {
+	return o.ApplyT(func(v *FlowProperties) *MessagingOptions {
+		if v == nil {
+			return nil
+		}
+		return v.MessagingOptions
+	}).(MessagingOptionsPtrOutput)
+}
+
+// The passphrase used for SRT streams
+func (o FlowPropertiesPtrOutput) Passphrase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Passphrase
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -776,6 +2617,16 @@ func (o FlowPropertiesPtrOutput) ServiceBusQueueId() pulumi.StringPtrOutput {
 		}
 		return v.ServiceBusQueueId
 	}).(pulumi.StringPtrOutput)
+}
+
+// The source IP address and CIDR ranges of the stream
+func (o FlowPropertiesPtrOutput) SourceAddresses() StreamSourceAddressesPtrOutput {
+	return o.ApplyT(func(v *FlowProperties) *StreamSourceAddresses {
+		if v == nil {
+			return nil
+		}
+		return v.SourceAddresses
+	}).(StreamSourceAddressesPtrOutput)
 }
 
 // Status of the current flow
@@ -818,30 +2669,80 @@ func (o FlowPropertiesPtrOutput) StorageContainerName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The flow stream identifier
+func (o FlowPropertiesPtrOutput) StreamId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StreamId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The latency of the stream in milliseconds
+func (o FlowPropertiesPtrOutput) StreamLatency() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *FlowProperties) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.StreamLatency
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The protocol of the stream
+func (o FlowPropertiesPtrOutput) StreamProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StreamProtocol
+	}).(pulumi.StringPtrOutput)
+}
+
 // Properties of flow
 type FlowPropertiesResponse struct {
+	// The API Flow configuration options for Azure Data Transfer API Flow type.
+	ApiFlowOptions *ApiFlowOptionsResponse `pulumi:"apiFlowOptions"`
 	// The connection associated with this flow
 	Connection *SelectedResourceResponse `pulumi:"connection"`
-	// Transfer Storage Blobs or Tables
+	// Event Hub Consumer Group
+	ConsumerGroup *string `pulumi:"consumerGroup"`
+	// The URI to the customer managed key for this flow
+	CustomerManagedKeyVaultUri *string `pulumi:"customerManagedKeyVaultUri"`
+	// Type of data to transfer via the flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.
 	DataType *string `pulumi:"dataType"`
+	// The destination endpoint ports of the stream
+	DestinationEndpointPorts []float64 `pulumi:"destinationEndpointPorts"`
+	// The destination endpoints of the stream
+	DestinationEndpoints []string `pulumi:"destinationEndpoints"`
+	// Event Hub ID
+	EventHubId *string `pulumi:"eventHubId"`
 	// Dataflow GUID associated with this flow
 	FlowId string `pulumi:"flowId"`
-	// The flow type for this flow
+	// The flow type for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.
 	FlowType *string `pulumi:"flowType"`
-	// AME, PME, or TORUS only! AKV Chain Containing SAS Token
+	// Force disablement status of the current flow
+	ForceDisabledStatus []string `pulumi:"forceDisabledStatus"`
+	// URI to a Key Vault Secret containing a SAS token.
 	KeyVaultUri *string `pulumi:"keyVaultUri"`
 	// Link status of the current flow
 	LinkStatus string `pulumi:"linkStatus"`
 	// Resource ID of the linked flow
 	LinkedFlowId string `pulumi:"linkedFlowId"`
-	// The policies for this flow
+	// The messaging options for this flow
+	MessagingOptions *MessagingOptionsResponse `pulumi:"messagingOptions"`
+	// The passphrase used for SRT streams
+	Passphrase *string `pulumi:"passphrase"`
+	// The policies for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.
 	Policies []string `pulumi:"policies"`
 	// Provisioning state of the flow
 	ProvisioningState string `pulumi:"provisioningState"`
-	// The selected schema for this flow
+	// The selected schema for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.
 	Schema *SchemaResponse `pulumi:"schema"`
 	// Service Bus Queue ID
 	ServiceBusQueueId *string `pulumi:"serviceBusQueueId"`
+	// The source IP address and CIDR ranges of the stream
+	SourceAddresses *StreamSourceAddressesResponse `pulumi:"sourceAddresses"`
 	// Status of the current flow
 	Status *string `pulumi:"status"`
 	// Storage Account ID
@@ -850,6 +2751,14 @@ type FlowPropertiesResponse struct {
 	StorageAccountName *string `pulumi:"storageAccountName"`
 	// Storage Container Name
 	StorageContainerName *string `pulumi:"storageContainerName"`
+	// Storage Table Name
+	StorageTableName *string `pulumi:"storageTableName"`
+	// The flow stream identifier
+	StreamId *string `pulumi:"streamId"`
+	// The latency of the stream in milliseconds
+	StreamLatency *float64 `pulumi:"streamLatency"`
+	// The protocol of the stream
+	StreamProtocol *string `pulumi:"streamProtocol"`
 }
 
 // Properties of flow
@@ -867,14 +2776,44 @@ func (o FlowPropertiesResponseOutput) ToFlowPropertiesResponseOutputWithContext(
 	return o
 }
 
+// The API Flow configuration options for Azure Data Transfer API Flow type.
+func (o FlowPropertiesResponseOutput) ApiFlowOptions() ApiFlowOptionsResponsePtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponse) *ApiFlowOptionsResponse { return v.ApiFlowOptions }).(ApiFlowOptionsResponsePtrOutput)
+}
+
 // The connection associated with this flow
 func (o FlowPropertiesResponseOutput) Connection() SelectedResourceResponsePtrOutput {
 	return o.ApplyT(func(v FlowPropertiesResponse) *SelectedResourceResponse { return v.Connection }).(SelectedResourceResponsePtrOutput)
 }
 
-// Transfer Storage Blobs or Tables
+// Event Hub Consumer Group
+func (o FlowPropertiesResponseOutput) ConsumerGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.ConsumerGroup }).(pulumi.StringPtrOutput)
+}
+
+// The URI to the customer managed key for this flow
+func (o FlowPropertiesResponseOutput) CustomerManagedKeyVaultUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.CustomerManagedKeyVaultUri }).(pulumi.StringPtrOutput)
+}
+
+// Type of data to transfer via the flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.
 func (o FlowPropertiesResponseOutput) DataType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.DataType }).(pulumi.StringPtrOutput)
+}
+
+// The destination endpoint ports of the stream
+func (o FlowPropertiesResponseOutput) DestinationEndpointPorts() pulumi.Float64ArrayOutput {
+	return o.ApplyT(func(v FlowPropertiesResponse) []float64 { return v.DestinationEndpointPorts }).(pulumi.Float64ArrayOutput)
+}
+
+// The destination endpoints of the stream
+func (o FlowPropertiesResponseOutput) DestinationEndpoints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FlowPropertiesResponse) []string { return v.DestinationEndpoints }).(pulumi.StringArrayOutput)
+}
+
+// Event Hub ID
+func (o FlowPropertiesResponseOutput) EventHubId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.EventHubId }).(pulumi.StringPtrOutput)
 }
 
 // Dataflow GUID associated with this flow
@@ -882,12 +2821,17 @@ func (o FlowPropertiesResponseOutput) FlowId() pulumi.StringOutput {
 	return o.ApplyT(func(v FlowPropertiesResponse) string { return v.FlowId }).(pulumi.StringOutput)
 }
 
-// The flow type for this flow
+// The flow type for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.
 func (o FlowPropertiesResponseOutput) FlowType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.FlowType }).(pulumi.StringPtrOutput)
 }
 
-// AME, PME, or TORUS only! AKV Chain Containing SAS Token
+// Force disablement status of the current flow
+func (o FlowPropertiesResponseOutput) ForceDisabledStatus() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FlowPropertiesResponse) []string { return v.ForceDisabledStatus }).(pulumi.StringArrayOutput)
+}
+
+// URI to a Key Vault Secret containing a SAS token.
 func (o FlowPropertiesResponseOutput) KeyVaultUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.KeyVaultUri }).(pulumi.StringPtrOutput)
 }
@@ -902,7 +2846,17 @@ func (o FlowPropertiesResponseOutput) LinkedFlowId() pulumi.StringOutput {
 	return o.ApplyT(func(v FlowPropertiesResponse) string { return v.LinkedFlowId }).(pulumi.StringOutput)
 }
 
-// The policies for this flow
+// The messaging options for this flow
+func (o FlowPropertiesResponseOutput) MessagingOptions() MessagingOptionsResponsePtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponse) *MessagingOptionsResponse { return v.MessagingOptions }).(MessagingOptionsResponsePtrOutput)
+}
+
+// The passphrase used for SRT streams
+func (o FlowPropertiesResponseOutput) Passphrase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.Passphrase }).(pulumi.StringPtrOutput)
+}
+
+// The policies for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.
 func (o FlowPropertiesResponseOutput) Policies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FlowPropertiesResponse) []string { return v.Policies }).(pulumi.StringArrayOutput)
 }
@@ -912,7 +2866,7 @@ func (o FlowPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v FlowPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// The selected schema for this flow
+// The selected schema for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.
 func (o FlowPropertiesResponseOutput) Schema() SchemaResponsePtrOutput {
 	return o.ApplyT(func(v FlowPropertiesResponse) *SchemaResponse { return v.Schema }).(SchemaResponsePtrOutput)
 }
@@ -920,6 +2874,11 @@ func (o FlowPropertiesResponseOutput) Schema() SchemaResponsePtrOutput {
 // Service Bus Queue ID
 func (o FlowPropertiesResponseOutput) ServiceBusQueueId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.ServiceBusQueueId }).(pulumi.StringPtrOutput)
+}
+
+// The source IP address and CIDR ranges of the stream
+func (o FlowPropertiesResponseOutput) SourceAddresses() StreamSourceAddressesResponsePtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponse) *StreamSourceAddressesResponse { return v.SourceAddresses }).(StreamSourceAddressesResponsePtrOutput)
 }
 
 // Status of the current flow
@@ -940,6 +2899,442 @@ func (o FlowPropertiesResponseOutput) StorageAccountName() pulumi.StringPtrOutpu
 // Storage Container Name
 func (o FlowPropertiesResponseOutput) StorageContainerName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.StorageContainerName }).(pulumi.StringPtrOutput)
+}
+
+// Storage Table Name
+func (o FlowPropertiesResponseOutput) StorageTableName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.StorageTableName }).(pulumi.StringPtrOutput)
+}
+
+// The flow stream identifier
+func (o FlowPropertiesResponseOutput) StreamId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.StreamId }).(pulumi.StringPtrOutput)
+}
+
+// The latency of the stream in milliseconds
+func (o FlowPropertiesResponseOutput) StreamLatency() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponse) *float64 { return v.StreamLatency }).(pulumi.Float64PtrOutput)
+}
+
+// The protocol of the stream
+func (o FlowPropertiesResponseOutput) StreamProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.StreamProtocol }).(pulumi.StringPtrOutput)
+}
+
+type FlowPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (FlowPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlowPropertiesResponse)(nil)).Elem()
+}
+
+func (o FlowPropertiesResponsePtrOutput) ToFlowPropertiesResponsePtrOutput() FlowPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o FlowPropertiesResponsePtrOutput) ToFlowPropertiesResponsePtrOutputWithContext(ctx context.Context) FlowPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o FlowPropertiesResponsePtrOutput) Elem() FlowPropertiesResponseOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) FlowPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret FlowPropertiesResponse
+		return ret
+	}).(FlowPropertiesResponseOutput)
+}
+
+// The API Flow configuration options for Azure Data Transfer API Flow type.
+func (o FlowPropertiesResponsePtrOutput) ApiFlowOptions() ApiFlowOptionsResponsePtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) *ApiFlowOptionsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ApiFlowOptions
+	}).(ApiFlowOptionsResponsePtrOutput)
+}
+
+// The connection associated with this flow
+func (o FlowPropertiesResponsePtrOutput) Connection() SelectedResourceResponsePtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) *SelectedResourceResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Connection
+	}).(SelectedResourceResponsePtrOutput)
+}
+
+// Event Hub Consumer Group
+func (o FlowPropertiesResponsePtrOutput) ConsumerGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumerGroup
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URI to the customer managed key for this flow
+func (o FlowPropertiesResponsePtrOutput) CustomerManagedKeyVaultUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomerManagedKeyVaultUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of data to transfer via the flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.
+func (o FlowPropertiesResponsePtrOutput) DataType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DataType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The destination endpoint ports of the stream
+func (o FlowPropertiesResponsePtrOutput) DestinationEndpointPorts() pulumi.Float64ArrayOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) []float64 {
+		if v == nil {
+			return nil
+		}
+		return v.DestinationEndpointPorts
+	}).(pulumi.Float64ArrayOutput)
+}
+
+// The destination endpoints of the stream
+func (o FlowPropertiesResponsePtrOutput) DestinationEndpoints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DestinationEndpoints
+	}).(pulumi.StringArrayOutput)
+}
+
+// Event Hub ID
+func (o FlowPropertiesResponsePtrOutput) EventHubId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EventHubId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Dataflow GUID associated with this flow
+func (o FlowPropertiesResponsePtrOutput) FlowId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.FlowId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The flow type for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.
+func (o FlowPropertiesResponsePtrOutput) FlowType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FlowType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Force disablement status of the current flow
+func (o FlowPropertiesResponsePtrOutput) ForceDisabledStatus() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ForceDisabledStatus
+	}).(pulumi.StringArrayOutput)
+}
+
+// URI to a Key Vault Secret containing a SAS token.
+func (o FlowPropertiesResponsePtrOutput) KeyVaultUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyVaultUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Link status of the current flow
+func (o FlowPropertiesResponsePtrOutput) LinkStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LinkStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource ID of the linked flow
+func (o FlowPropertiesResponsePtrOutput) LinkedFlowId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LinkedFlowId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The messaging options for this flow
+func (o FlowPropertiesResponsePtrOutput) MessagingOptions() MessagingOptionsResponsePtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) *MessagingOptionsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.MessagingOptions
+	}).(MessagingOptionsResponsePtrOutput)
+}
+
+// The passphrase used for SRT streams
+func (o FlowPropertiesResponsePtrOutput) Passphrase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Passphrase
+	}).(pulumi.StringPtrOutput)
+}
+
+// The policies for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.
+func (o FlowPropertiesResponsePtrOutput) Policies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Policies
+	}).(pulumi.StringArrayOutput)
+}
+
+// Provisioning state of the flow
+func (o FlowPropertiesResponsePtrOutput) ProvisioningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProvisioningState
+	}).(pulumi.StringPtrOutput)
+}
+
+// The selected schema for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.
+func (o FlowPropertiesResponsePtrOutput) Schema() SchemaResponsePtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) *SchemaResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Schema
+	}).(SchemaResponsePtrOutput)
+}
+
+// Service Bus Queue ID
+func (o FlowPropertiesResponsePtrOutput) ServiceBusQueueId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceBusQueueId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The source IP address and CIDR ranges of the stream
+func (o FlowPropertiesResponsePtrOutput) SourceAddresses() StreamSourceAddressesResponsePtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) *StreamSourceAddressesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.SourceAddresses
+	}).(StreamSourceAddressesResponsePtrOutput)
+}
+
+// Status of the current flow
+func (o FlowPropertiesResponsePtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+// Storage Account ID
+func (o FlowPropertiesResponsePtrOutput) StorageAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageAccountId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Storage Account
+func (o FlowPropertiesResponsePtrOutput) StorageAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageAccountName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Storage Container Name
+func (o FlowPropertiesResponsePtrOutput) StorageContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageContainerName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Storage Table Name
+func (o FlowPropertiesResponsePtrOutput) StorageTableName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageTableName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The flow stream identifier
+func (o FlowPropertiesResponsePtrOutput) StreamId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StreamId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The latency of the stream in milliseconds
+func (o FlowPropertiesResponsePtrOutput) StreamLatency() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.StreamLatency
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The protocol of the stream
+func (o FlowPropertiesResponsePtrOutput) StreamProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StreamProtocol
+	}).(pulumi.StringPtrOutput)
+}
+
+// The flow resource definition.
+type FlowResponse struct {
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	Id string `pulumi:"id"`
+	// The managed service identities assigned to this resource.
+	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Details of the resource plan.
+	Plan *PlanResponse `pulumi:"plan"`
+	// Properties of flow
+	Properties *FlowPropertiesResponse `pulumi:"properties"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
+}
+
+// The flow resource definition.
+type FlowResponseOutput struct{ *pulumi.OutputState }
+
+func (FlowResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlowResponse)(nil)).Elem()
+}
+
+func (o FlowResponseOutput) ToFlowResponseOutput() FlowResponseOutput {
+	return o
+}
+
+func (o FlowResponseOutput) ToFlowResponseOutputWithContext(ctx context.Context) FlowResponseOutput {
+	return o
+}
+
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+func (o FlowResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v FlowResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The managed service identities assigned to this resource.
+func (o FlowResponseOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v FlowResponse) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+}
+
+// The geo-location where the resource lives
+func (o FlowResponseOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v FlowResponse) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// The name of the resource
+func (o FlowResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v FlowResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Details of the resource plan.
+func (o FlowResponseOutput) Plan() PlanResponsePtrOutput {
+	return o.ApplyT(func(v FlowResponse) *PlanResponse { return v.Plan }).(PlanResponsePtrOutput)
+}
+
+// Properties of flow
+func (o FlowResponseOutput) Properties() FlowPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v FlowResponse) *FlowPropertiesResponse { return v.Properties }).(FlowPropertiesResponsePtrOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o FlowResponseOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v FlowResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// Resource tags.
+func (o FlowResponseOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v FlowResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+func (o FlowResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v FlowResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type FlowResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (FlowResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FlowResponse)(nil)).Elem()
+}
+
+func (o FlowResponseArrayOutput) ToFlowResponseArrayOutput() FlowResponseArrayOutput {
+	return o
+}
+
+func (o FlowResponseArrayOutput) ToFlowResponseArrayOutputWithContext(ctx context.Context) FlowResponseArrayOutput {
+	return o
+}
+
+func (o FlowResponseArrayOutput) Index(i pulumi.IntInput) FlowResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FlowResponse {
+		return vs[0].([]FlowResponse)[vs[1].(int)]
+	}).(FlowResponseOutput)
 }
 
 // Internal metadata of the connection inside pipeline.
@@ -1019,6 +3414,59 @@ func (o InternalMetadataPropertiesResponsePtrOutput) StatusSetBy() pulumi.String
 		}
 		return &v.StatusSetBy
 	}).(pulumi.StringPtrOutput)
+}
+
+// A connection resource id in addition to all child flow resources under this connection.
+type ListFlowsByPipelineConnectionResponse struct {
+	// List of flows associated with the connection.
+	Flows []FlowResponse `pulumi:"flows"`
+	// ID of the connection.
+	Id *string `pulumi:"id"`
+}
+
+// A connection resource id in addition to all child flow resources under this connection.
+type ListFlowsByPipelineConnectionResponseOutput struct{ *pulumi.OutputState }
+
+func (ListFlowsByPipelineConnectionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListFlowsByPipelineConnectionResponse)(nil)).Elem()
+}
+
+func (o ListFlowsByPipelineConnectionResponseOutput) ToListFlowsByPipelineConnectionResponseOutput() ListFlowsByPipelineConnectionResponseOutput {
+	return o
+}
+
+func (o ListFlowsByPipelineConnectionResponseOutput) ToListFlowsByPipelineConnectionResponseOutputWithContext(ctx context.Context) ListFlowsByPipelineConnectionResponseOutput {
+	return o
+}
+
+// List of flows associated with the connection.
+func (o ListFlowsByPipelineConnectionResponseOutput) Flows() FlowResponseArrayOutput {
+	return o.ApplyT(func(v ListFlowsByPipelineConnectionResponse) []FlowResponse { return v.Flows }).(FlowResponseArrayOutput)
+}
+
+// ID of the connection.
+func (o ListFlowsByPipelineConnectionResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListFlowsByPipelineConnectionResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type ListFlowsByPipelineConnectionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ListFlowsByPipelineConnectionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ListFlowsByPipelineConnectionResponse)(nil)).Elem()
+}
+
+func (o ListFlowsByPipelineConnectionResponseArrayOutput) ToListFlowsByPipelineConnectionResponseArrayOutput() ListFlowsByPipelineConnectionResponseArrayOutput {
+	return o
+}
+
+func (o ListFlowsByPipelineConnectionResponseArrayOutput) ToListFlowsByPipelineConnectionResponseArrayOutputWithContext(ctx context.Context) ListFlowsByPipelineConnectionResponseArrayOutput {
+	return o
+}
+
+func (o ListFlowsByPipelineConnectionResponseArrayOutput) Index(i pulumi.IntInput) ListFlowsByPipelineConnectionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ListFlowsByPipelineConnectionResponse {
+		return vs[0].([]ListFlowsByPipelineConnectionResponse)[vs[1].(int)]
+	}).(ListFlowsByPipelineConnectionResponseOutput)
 }
 
 // Managed service identity (system assigned and/or user assigned identities)
@@ -1293,6 +3741,604 @@ func (o ManagedServiceIdentityResponsePtrOutput) UserAssignedIdentities() UserAs
 	}).(UserAssignedIdentityResponseMapOutput)
 }
 
+// The option associated with messaging flows.
+type MessagingOptions struct {
+	// Billing tier for this messaging flow
+	BillingTier *string `pulumi:"billingTier"`
+}
+
+// MessagingOptionsInput is an input type that accepts MessagingOptionsArgs and MessagingOptionsOutput values.
+// You can construct a concrete instance of `MessagingOptionsInput` via:
+//
+//	MessagingOptionsArgs{...}
+type MessagingOptionsInput interface {
+	pulumi.Input
+
+	ToMessagingOptionsOutput() MessagingOptionsOutput
+	ToMessagingOptionsOutputWithContext(context.Context) MessagingOptionsOutput
+}
+
+// The option associated with messaging flows.
+type MessagingOptionsArgs struct {
+	// Billing tier for this messaging flow
+	BillingTier pulumi.StringPtrInput `pulumi:"billingTier"`
+}
+
+func (MessagingOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MessagingOptions)(nil)).Elem()
+}
+
+func (i MessagingOptionsArgs) ToMessagingOptionsOutput() MessagingOptionsOutput {
+	return i.ToMessagingOptionsOutputWithContext(context.Background())
+}
+
+func (i MessagingOptionsArgs) ToMessagingOptionsOutputWithContext(ctx context.Context) MessagingOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MessagingOptionsOutput)
+}
+
+func (i MessagingOptionsArgs) ToMessagingOptionsPtrOutput() MessagingOptionsPtrOutput {
+	return i.ToMessagingOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i MessagingOptionsArgs) ToMessagingOptionsPtrOutputWithContext(ctx context.Context) MessagingOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MessagingOptionsOutput).ToMessagingOptionsPtrOutputWithContext(ctx)
+}
+
+// MessagingOptionsPtrInput is an input type that accepts MessagingOptionsArgs, MessagingOptionsPtr and MessagingOptionsPtrOutput values.
+// You can construct a concrete instance of `MessagingOptionsPtrInput` via:
+//
+//	        MessagingOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type MessagingOptionsPtrInput interface {
+	pulumi.Input
+
+	ToMessagingOptionsPtrOutput() MessagingOptionsPtrOutput
+	ToMessagingOptionsPtrOutputWithContext(context.Context) MessagingOptionsPtrOutput
+}
+
+type messagingOptionsPtrType MessagingOptionsArgs
+
+func MessagingOptionsPtr(v *MessagingOptionsArgs) MessagingOptionsPtrInput {
+	return (*messagingOptionsPtrType)(v)
+}
+
+func (*messagingOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MessagingOptions)(nil)).Elem()
+}
+
+func (i *messagingOptionsPtrType) ToMessagingOptionsPtrOutput() MessagingOptionsPtrOutput {
+	return i.ToMessagingOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *messagingOptionsPtrType) ToMessagingOptionsPtrOutputWithContext(ctx context.Context) MessagingOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MessagingOptionsPtrOutput)
+}
+
+// The option associated with messaging flows.
+type MessagingOptionsOutput struct{ *pulumi.OutputState }
+
+func (MessagingOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MessagingOptions)(nil)).Elem()
+}
+
+func (o MessagingOptionsOutput) ToMessagingOptionsOutput() MessagingOptionsOutput {
+	return o
+}
+
+func (o MessagingOptionsOutput) ToMessagingOptionsOutputWithContext(ctx context.Context) MessagingOptionsOutput {
+	return o
+}
+
+func (o MessagingOptionsOutput) ToMessagingOptionsPtrOutput() MessagingOptionsPtrOutput {
+	return o.ToMessagingOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o MessagingOptionsOutput) ToMessagingOptionsPtrOutputWithContext(ctx context.Context) MessagingOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MessagingOptions) *MessagingOptions {
+		return &v
+	}).(MessagingOptionsPtrOutput)
+}
+
+// Billing tier for this messaging flow
+func (o MessagingOptionsOutput) BillingTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MessagingOptions) *string { return v.BillingTier }).(pulumi.StringPtrOutput)
+}
+
+type MessagingOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (MessagingOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MessagingOptions)(nil)).Elem()
+}
+
+func (o MessagingOptionsPtrOutput) ToMessagingOptionsPtrOutput() MessagingOptionsPtrOutput {
+	return o
+}
+
+func (o MessagingOptionsPtrOutput) ToMessagingOptionsPtrOutputWithContext(ctx context.Context) MessagingOptionsPtrOutput {
+	return o
+}
+
+func (o MessagingOptionsPtrOutput) Elem() MessagingOptionsOutput {
+	return o.ApplyT(func(v *MessagingOptions) MessagingOptions {
+		if v != nil {
+			return *v
+		}
+		var ret MessagingOptions
+		return ret
+	}).(MessagingOptionsOutput)
+}
+
+// Billing tier for this messaging flow
+func (o MessagingOptionsPtrOutput) BillingTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MessagingOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BillingTier
+	}).(pulumi.StringPtrOutput)
+}
+
+// The option associated with messaging flows.
+type MessagingOptionsResponse struct {
+	// Billing tier for this messaging flow
+	BillingTier *string `pulumi:"billingTier"`
+}
+
+// The option associated with messaging flows.
+type MessagingOptionsResponseOutput struct{ *pulumi.OutputState }
+
+func (MessagingOptionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MessagingOptionsResponse)(nil)).Elem()
+}
+
+func (o MessagingOptionsResponseOutput) ToMessagingOptionsResponseOutput() MessagingOptionsResponseOutput {
+	return o
+}
+
+func (o MessagingOptionsResponseOutput) ToMessagingOptionsResponseOutputWithContext(ctx context.Context) MessagingOptionsResponseOutput {
+	return o
+}
+
+// Billing tier for this messaging flow
+func (o MessagingOptionsResponseOutput) BillingTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MessagingOptionsResponse) *string { return v.BillingTier }).(pulumi.StringPtrOutput)
+}
+
+type MessagingOptionsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MessagingOptionsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MessagingOptionsResponse)(nil)).Elem()
+}
+
+func (o MessagingOptionsResponsePtrOutput) ToMessagingOptionsResponsePtrOutput() MessagingOptionsResponsePtrOutput {
+	return o
+}
+
+func (o MessagingOptionsResponsePtrOutput) ToMessagingOptionsResponsePtrOutputWithContext(ctx context.Context) MessagingOptionsResponsePtrOutput {
+	return o
+}
+
+func (o MessagingOptionsResponsePtrOutput) Elem() MessagingOptionsResponseOutput {
+	return o.ApplyT(func(v *MessagingOptionsResponse) MessagingOptionsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MessagingOptionsResponse
+		return ret
+	}).(MessagingOptionsResponseOutput)
+}
+
+// Billing tier for this messaging flow
+func (o MessagingOptionsResponsePtrOutput) BillingTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MessagingOptionsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BillingTier
+	}).(pulumi.StringPtrOutput)
+}
+
+// Rules for filtering files based on Media types (f.k.a MIME types).
+type MimeFilterRuleset struct {
+	// Defines the Media types (f.k.a MIME types) and associated file extensions to be filtered. For more detail, please refer to the MimeTypeFiler model.
+	Filters []MimeTypeFilter `pulumi:"filters"`
+	// Specifies whether the filter is an allow list or deny list. For more detail, please refer to the FilterType model.
+	Type *string `pulumi:"type"`
+}
+
+// MimeFilterRulesetInput is an input type that accepts MimeFilterRulesetArgs and MimeFilterRulesetOutput values.
+// You can construct a concrete instance of `MimeFilterRulesetInput` via:
+//
+//	MimeFilterRulesetArgs{...}
+type MimeFilterRulesetInput interface {
+	pulumi.Input
+
+	ToMimeFilterRulesetOutput() MimeFilterRulesetOutput
+	ToMimeFilterRulesetOutputWithContext(context.Context) MimeFilterRulesetOutput
+}
+
+// Rules for filtering files based on Media types (f.k.a MIME types).
+type MimeFilterRulesetArgs struct {
+	// Defines the Media types (f.k.a MIME types) and associated file extensions to be filtered. For more detail, please refer to the MimeTypeFiler model.
+	Filters MimeTypeFilterArrayInput `pulumi:"filters"`
+	// Specifies whether the filter is an allow list or deny list. For more detail, please refer to the FilterType model.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (MimeFilterRulesetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MimeFilterRuleset)(nil)).Elem()
+}
+
+func (i MimeFilterRulesetArgs) ToMimeFilterRulesetOutput() MimeFilterRulesetOutput {
+	return i.ToMimeFilterRulesetOutputWithContext(context.Background())
+}
+
+func (i MimeFilterRulesetArgs) ToMimeFilterRulesetOutputWithContext(ctx context.Context) MimeFilterRulesetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MimeFilterRulesetOutput)
+}
+
+func (i MimeFilterRulesetArgs) ToMimeFilterRulesetPtrOutput() MimeFilterRulesetPtrOutput {
+	return i.ToMimeFilterRulesetPtrOutputWithContext(context.Background())
+}
+
+func (i MimeFilterRulesetArgs) ToMimeFilterRulesetPtrOutputWithContext(ctx context.Context) MimeFilterRulesetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MimeFilterRulesetOutput).ToMimeFilterRulesetPtrOutputWithContext(ctx)
+}
+
+// MimeFilterRulesetPtrInput is an input type that accepts MimeFilterRulesetArgs, MimeFilterRulesetPtr and MimeFilterRulesetPtrOutput values.
+// You can construct a concrete instance of `MimeFilterRulesetPtrInput` via:
+//
+//	        MimeFilterRulesetArgs{...}
+//
+//	or:
+//
+//	        nil
+type MimeFilterRulesetPtrInput interface {
+	pulumi.Input
+
+	ToMimeFilterRulesetPtrOutput() MimeFilterRulesetPtrOutput
+	ToMimeFilterRulesetPtrOutputWithContext(context.Context) MimeFilterRulesetPtrOutput
+}
+
+type mimeFilterRulesetPtrType MimeFilterRulesetArgs
+
+func MimeFilterRulesetPtr(v *MimeFilterRulesetArgs) MimeFilterRulesetPtrInput {
+	return (*mimeFilterRulesetPtrType)(v)
+}
+
+func (*mimeFilterRulesetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MimeFilterRuleset)(nil)).Elem()
+}
+
+func (i *mimeFilterRulesetPtrType) ToMimeFilterRulesetPtrOutput() MimeFilterRulesetPtrOutput {
+	return i.ToMimeFilterRulesetPtrOutputWithContext(context.Background())
+}
+
+func (i *mimeFilterRulesetPtrType) ToMimeFilterRulesetPtrOutputWithContext(ctx context.Context) MimeFilterRulesetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MimeFilterRulesetPtrOutput)
+}
+
+// Rules for filtering files based on Media types (f.k.a MIME types).
+type MimeFilterRulesetOutput struct{ *pulumi.OutputState }
+
+func (MimeFilterRulesetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MimeFilterRuleset)(nil)).Elem()
+}
+
+func (o MimeFilterRulesetOutput) ToMimeFilterRulesetOutput() MimeFilterRulesetOutput {
+	return o
+}
+
+func (o MimeFilterRulesetOutput) ToMimeFilterRulesetOutputWithContext(ctx context.Context) MimeFilterRulesetOutput {
+	return o
+}
+
+func (o MimeFilterRulesetOutput) ToMimeFilterRulesetPtrOutput() MimeFilterRulesetPtrOutput {
+	return o.ToMimeFilterRulesetPtrOutputWithContext(context.Background())
+}
+
+func (o MimeFilterRulesetOutput) ToMimeFilterRulesetPtrOutputWithContext(ctx context.Context) MimeFilterRulesetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MimeFilterRuleset) *MimeFilterRuleset {
+		return &v
+	}).(MimeFilterRulesetPtrOutput)
+}
+
+// Defines the Media types (f.k.a MIME types) and associated file extensions to be filtered. For more detail, please refer to the MimeTypeFiler model.
+func (o MimeFilterRulesetOutput) Filters() MimeTypeFilterArrayOutput {
+	return o.ApplyT(func(v MimeFilterRuleset) []MimeTypeFilter { return v.Filters }).(MimeTypeFilterArrayOutput)
+}
+
+// Specifies whether the filter is an allow list or deny list. For more detail, please refer to the FilterType model.
+func (o MimeFilterRulesetOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MimeFilterRuleset) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type MimeFilterRulesetPtrOutput struct{ *pulumi.OutputState }
+
+func (MimeFilterRulesetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MimeFilterRuleset)(nil)).Elem()
+}
+
+func (o MimeFilterRulesetPtrOutput) ToMimeFilterRulesetPtrOutput() MimeFilterRulesetPtrOutput {
+	return o
+}
+
+func (o MimeFilterRulesetPtrOutput) ToMimeFilterRulesetPtrOutputWithContext(ctx context.Context) MimeFilterRulesetPtrOutput {
+	return o
+}
+
+func (o MimeFilterRulesetPtrOutput) Elem() MimeFilterRulesetOutput {
+	return o.ApplyT(func(v *MimeFilterRuleset) MimeFilterRuleset {
+		if v != nil {
+			return *v
+		}
+		var ret MimeFilterRuleset
+		return ret
+	}).(MimeFilterRulesetOutput)
+}
+
+// Defines the Media types (f.k.a MIME types) and associated file extensions to be filtered. For more detail, please refer to the MimeTypeFiler model.
+func (o MimeFilterRulesetPtrOutput) Filters() MimeTypeFilterArrayOutput {
+	return o.ApplyT(func(v *MimeFilterRuleset) []MimeTypeFilter {
+		if v == nil {
+			return nil
+		}
+		return v.Filters
+	}).(MimeTypeFilterArrayOutput)
+}
+
+// Specifies whether the filter is an allow list or deny list. For more detail, please refer to the FilterType model.
+func (o MimeFilterRulesetPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MimeFilterRuleset) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Rules for filtering files based on Media types (f.k.a MIME types).
+type MimeFilterRulesetResponse struct {
+	// Defines the Media types (f.k.a MIME types) and associated file extensions to be filtered. For more detail, please refer to the MimeTypeFiler model.
+	Filters []MimeTypeFilterResponse `pulumi:"filters"`
+	// Specifies whether the filter is an allow list or deny list. For more detail, please refer to the FilterType model.
+	Type *string `pulumi:"type"`
+}
+
+// Rules for filtering files based on Media types (f.k.a MIME types).
+type MimeFilterRulesetResponseOutput struct{ *pulumi.OutputState }
+
+func (MimeFilterRulesetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MimeFilterRulesetResponse)(nil)).Elem()
+}
+
+func (o MimeFilterRulesetResponseOutput) ToMimeFilterRulesetResponseOutput() MimeFilterRulesetResponseOutput {
+	return o
+}
+
+func (o MimeFilterRulesetResponseOutput) ToMimeFilterRulesetResponseOutputWithContext(ctx context.Context) MimeFilterRulesetResponseOutput {
+	return o
+}
+
+// Defines the Media types (f.k.a MIME types) and associated file extensions to be filtered. For more detail, please refer to the MimeTypeFiler model.
+func (o MimeFilterRulesetResponseOutput) Filters() MimeTypeFilterResponseArrayOutput {
+	return o.ApplyT(func(v MimeFilterRulesetResponse) []MimeTypeFilterResponse { return v.Filters }).(MimeTypeFilterResponseArrayOutput)
+}
+
+// Specifies whether the filter is an allow list or deny list. For more detail, please refer to the FilterType model.
+func (o MimeFilterRulesetResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MimeFilterRulesetResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type MimeFilterRulesetResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MimeFilterRulesetResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MimeFilterRulesetResponse)(nil)).Elem()
+}
+
+func (o MimeFilterRulesetResponsePtrOutput) ToMimeFilterRulesetResponsePtrOutput() MimeFilterRulesetResponsePtrOutput {
+	return o
+}
+
+func (o MimeFilterRulesetResponsePtrOutput) ToMimeFilterRulesetResponsePtrOutputWithContext(ctx context.Context) MimeFilterRulesetResponsePtrOutput {
+	return o
+}
+
+func (o MimeFilterRulesetResponsePtrOutput) Elem() MimeFilterRulesetResponseOutput {
+	return o.ApplyT(func(v *MimeFilterRulesetResponse) MimeFilterRulesetResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MimeFilterRulesetResponse
+		return ret
+	}).(MimeFilterRulesetResponseOutput)
+}
+
+// Defines the Media types (f.k.a MIME types) and associated file extensions to be filtered. For more detail, please refer to the MimeTypeFiler model.
+func (o MimeFilterRulesetResponsePtrOutput) Filters() MimeTypeFilterResponseArrayOutput {
+	return o.ApplyT(func(v *MimeFilterRulesetResponse) []MimeTypeFilterResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Filters
+	}).(MimeTypeFilterResponseArrayOutput)
+}
+
+// Specifies whether the filter is an allow list or deny list. For more detail, please refer to the FilterType model.
+func (o MimeFilterRulesetResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MimeFilterRulesetResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines a list of Media types (f.k.a MIME Types) and associated file extensions subject to filtering.
+type MimeTypeFilter struct {
+	// A list of file extensions associated with the specified Media type (e.g., .json, .png). To specify files with no extension, use an empty string ""."
+	Extensions []string `pulumi:"extensions"`
+	// The Media Types (f.k.a MIME types), following IANA standards (e.g., application/json, image/png). For a more detailed list of allowed media types please refer to the Tika documentation: https://github.com/apache/tika/blob/main/tika-core/src/main/resources/org/apache/tika/mime/tika-mimetypes.xml
+	Media *string `pulumi:"media"`
+}
+
+// MimeTypeFilterInput is an input type that accepts MimeTypeFilterArgs and MimeTypeFilterOutput values.
+// You can construct a concrete instance of `MimeTypeFilterInput` via:
+//
+//	MimeTypeFilterArgs{...}
+type MimeTypeFilterInput interface {
+	pulumi.Input
+
+	ToMimeTypeFilterOutput() MimeTypeFilterOutput
+	ToMimeTypeFilterOutputWithContext(context.Context) MimeTypeFilterOutput
+}
+
+// Defines a list of Media types (f.k.a MIME Types) and associated file extensions subject to filtering.
+type MimeTypeFilterArgs struct {
+	// A list of file extensions associated with the specified Media type (e.g., .json, .png). To specify files with no extension, use an empty string ""."
+	Extensions pulumi.StringArrayInput `pulumi:"extensions"`
+	// The Media Types (f.k.a MIME types), following IANA standards (e.g., application/json, image/png). For a more detailed list of allowed media types please refer to the Tika documentation: https://github.com/apache/tika/blob/main/tika-core/src/main/resources/org/apache/tika/mime/tika-mimetypes.xml
+	Media pulumi.StringPtrInput `pulumi:"media"`
+}
+
+func (MimeTypeFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MimeTypeFilter)(nil)).Elem()
+}
+
+func (i MimeTypeFilterArgs) ToMimeTypeFilterOutput() MimeTypeFilterOutput {
+	return i.ToMimeTypeFilterOutputWithContext(context.Background())
+}
+
+func (i MimeTypeFilterArgs) ToMimeTypeFilterOutputWithContext(ctx context.Context) MimeTypeFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MimeTypeFilterOutput)
+}
+
+// MimeTypeFilterArrayInput is an input type that accepts MimeTypeFilterArray and MimeTypeFilterArrayOutput values.
+// You can construct a concrete instance of `MimeTypeFilterArrayInput` via:
+//
+//	MimeTypeFilterArray{ MimeTypeFilterArgs{...} }
+type MimeTypeFilterArrayInput interface {
+	pulumi.Input
+
+	ToMimeTypeFilterArrayOutput() MimeTypeFilterArrayOutput
+	ToMimeTypeFilterArrayOutputWithContext(context.Context) MimeTypeFilterArrayOutput
+}
+
+type MimeTypeFilterArray []MimeTypeFilterInput
+
+func (MimeTypeFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MimeTypeFilter)(nil)).Elem()
+}
+
+func (i MimeTypeFilterArray) ToMimeTypeFilterArrayOutput() MimeTypeFilterArrayOutput {
+	return i.ToMimeTypeFilterArrayOutputWithContext(context.Background())
+}
+
+func (i MimeTypeFilterArray) ToMimeTypeFilterArrayOutputWithContext(ctx context.Context) MimeTypeFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MimeTypeFilterArrayOutput)
+}
+
+// Defines a list of Media types (f.k.a MIME Types) and associated file extensions subject to filtering.
+type MimeTypeFilterOutput struct{ *pulumi.OutputState }
+
+func (MimeTypeFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MimeTypeFilter)(nil)).Elem()
+}
+
+func (o MimeTypeFilterOutput) ToMimeTypeFilterOutput() MimeTypeFilterOutput {
+	return o
+}
+
+func (o MimeTypeFilterOutput) ToMimeTypeFilterOutputWithContext(ctx context.Context) MimeTypeFilterOutput {
+	return o
+}
+
+// A list of file extensions associated with the specified Media type (e.g., .json, .png). To specify files with no extension, use an empty string ""."
+func (o MimeTypeFilterOutput) Extensions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MimeTypeFilter) []string { return v.Extensions }).(pulumi.StringArrayOutput)
+}
+
+// The Media Types (f.k.a MIME types), following IANA standards (e.g., application/json, image/png). For a more detailed list of allowed media types please refer to the Tika documentation: https://github.com/apache/tika/blob/main/tika-core/src/main/resources/org/apache/tika/mime/tika-mimetypes.xml
+func (o MimeTypeFilterOutput) Media() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MimeTypeFilter) *string { return v.Media }).(pulumi.StringPtrOutput)
+}
+
+type MimeTypeFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (MimeTypeFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MimeTypeFilter)(nil)).Elem()
+}
+
+func (o MimeTypeFilterArrayOutput) ToMimeTypeFilterArrayOutput() MimeTypeFilterArrayOutput {
+	return o
+}
+
+func (o MimeTypeFilterArrayOutput) ToMimeTypeFilterArrayOutputWithContext(ctx context.Context) MimeTypeFilterArrayOutput {
+	return o
+}
+
+func (o MimeTypeFilterArrayOutput) Index(i pulumi.IntInput) MimeTypeFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MimeTypeFilter {
+		return vs[0].([]MimeTypeFilter)[vs[1].(int)]
+	}).(MimeTypeFilterOutput)
+}
+
+// Defines a list of Media types (f.k.a MIME Types) and associated file extensions subject to filtering.
+type MimeTypeFilterResponse struct {
+	// A list of file extensions associated with the specified Media type (e.g., .json, .png). To specify files with no extension, use an empty string ""."
+	Extensions []string `pulumi:"extensions"`
+	// The Media Types (f.k.a MIME types), following IANA standards (e.g., application/json, image/png). For a more detailed list of allowed media types please refer to the Tika documentation: https://github.com/apache/tika/blob/main/tika-core/src/main/resources/org/apache/tika/mime/tika-mimetypes.xml
+	Media *string `pulumi:"media"`
+}
+
+// Defines a list of Media types (f.k.a MIME Types) and associated file extensions subject to filtering.
+type MimeTypeFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (MimeTypeFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MimeTypeFilterResponse)(nil)).Elem()
+}
+
+func (o MimeTypeFilterResponseOutput) ToMimeTypeFilterResponseOutput() MimeTypeFilterResponseOutput {
+	return o
+}
+
+func (o MimeTypeFilterResponseOutput) ToMimeTypeFilterResponseOutputWithContext(ctx context.Context) MimeTypeFilterResponseOutput {
+	return o
+}
+
+// A list of file extensions associated with the specified Media type (e.g., .json, .png). To specify files with no extension, use an empty string ""."
+func (o MimeTypeFilterResponseOutput) Extensions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MimeTypeFilterResponse) []string { return v.Extensions }).(pulumi.StringArrayOutput)
+}
+
+// The Media Types (f.k.a MIME types), following IANA standards (e.g., application/json, image/png). For a more detailed list of allowed media types please refer to the Tika documentation: https://github.com/apache/tika/blob/main/tika-core/src/main/resources/org/apache/tika/mime/tika-mimetypes.xml
+func (o MimeTypeFilterResponseOutput) Media() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MimeTypeFilterResponse) *string { return v.Media }).(pulumi.StringPtrOutput)
+}
+
+type MimeTypeFilterResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (MimeTypeFilterResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MimeTypeFilterResponse)(nil)).Elem()
+}
+
+func (o MimeTypeFilterResponseArrayOutput) ToMimeTypeFilterResponseArrayOutput() MimeTypeFilterResponseArrayOutput {
+	return o
+}
+
+func (o MimeTypeFilterResponseArrayOutput) ToMimeTypeFilterResponseArrayOutputWithContext(ctx context.Context) MimeTypeFilterResponseArrayOutput {
+	return o
+}
+
+func (o MimeTypeFilterResponseArrayOutput) Index(i pulumi.IntInput) MimeTypeFilterResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MimeTypeFilterResponse {
+		return vs[0].([]MimeTypeFilterResponse)[vs[1].(int)]
+	}).(MimeTypeFilterResponseOutput)
+}
+
 // Operation status associated with the last patch request
 type OperationStatusPropertiesResponse struct {
 	// Operation status ID of the last patch request for this connection.
@@ -1423,6 +4469,8 @@ type PendingConnectionResponse struct {
 	RemoteSubscriptionId *string `pulumi:"remoteSubscriptionId"`
 	// Requirement ID of the connection
 	RequirementId *string `pulumi:"requirementId"`
+	// The schema URIs for this connection
+	SchemaUris []string `pulumi:"schemaUris"`
 	// The schemas for this connection
 	Schemas []SchemaResponse `pulumi:"schemas"`
 	// The secondary contacts for this connection request
@@ -1541,6 +4589,11 @@ func (o PendingConnectionResponseOutput) RequirementId() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v PendingConnectionResponse) *string { return v.RequirementId }).(pulumi.StringPtrOutput)
 }
 
+// The schema URIs for this connection
+func (o PendingConnectionResponseOutput) SchemaUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PendingConnectionResponse) []string { return v.SchemaUris }).(pulumi.StringArrayOutput)
+}
+
 // The schemas for this connection
 func (o PendingConnectionResponseOutput) Schemas() SchemaResponseArrayOutput {
 	return o.ApplyT(func(v PendingConnectionResponse) []SchemaResponse { return v.Schemas }).(SchemaResponseArrayOutput)
@@ -1607,8 +4660,14 @@ type PendingFlowResponse struct {
 	Connection *SelectedResourceResponse `pulumi:"connection"`
 	// Connection ID of the pending flow.
 	ConnectionId string `pulumi:"connectionId"`
+	// The URI to the customer managed key for this flow
+	CustomerManagedKeyVaultUri *string `pulumi:"customerManagedKeyVaultUri"`
 	// Transfer Storage Blobs or Tables
 	DataType *string `pulumi:"dataType"`
+	// The destination endpoint ports of the stream
+	DestinationEndpointPorts []float64 `pulumi:"destinationEndpointPorts"`
+	// The destination endpoints of the stream
+	DestinationEndpoints []string `pulumi:"destinationEndpoints"`
 	// Dataflow GUID associated with this flow
 	FlowId string `pulumi:"flowId"`
 	// The flow type for this flow
@@ -1623,8 +4682,12 @@ type PendingFlowResponse struct {
 	LinkedFlowId string `pulumi:"linkedFlowId"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
+	// The messaging options for this flow
+	MessagingOptions *MessagingOptionsResponse `pulumi:"messagingOptions"`
 	// The name of the resource
 	Name string `pulumi:"name"`
+	// The passphrase used for SRT streams
+	Passphrase *string `pulumi:"passphrase"`
 	// The policies for this flow
 	Policies []string `pulumi:"policies"`
 	// Provisioning state of the flow
@@ -1633,6 +4696,8 @@ type PendingFlowResponse struct {
 	Schema *SchemaResponse `pulumi:"schema"`
 	// Service Bus Queue ID
 	ServiceBusQueueId *string `pulumi:"serviceBusQueueId"`
+	// The source IP address and CIDR ranges of the stream
+	SourceAddresses *StreamSourceAddressesResponse `pulumi:"sourceAddresses"`
 	// Status of the current flow
 	Status *string `pulumi:"status"`
 	// Storage Account ID
@@ -1641,6 +4706,12 @@ type PendingFlowResponse struct {
 	StorageAccountName *string `pulumi:"storageAccountName"`
 	// Storage Container Name
 	StorageContainerName *string `pulumi:"storageContainerName"`
+	// The flow stream identifier
+	StreamId *string `pulumi:"streamId"`
+	// The latency of the stream in milliseconds
+	StreamLatency *float64 `pulumi:"streamLatency"`
+	// The protocol of the stream
+	StreamProtocol *string `pulumi:"streamProtocol"`
 	// Subscription ID of the pending flow.
 	SubscriptionId string `pulumi:"subscriptionId"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -1676,9 +4747,24 @@ func (o PendingFlowResponseOutput) ConnectionId() pulumi.StringOutput {
 	return o.ApplyT(func(v PendingFlowResponse) string { return v.ConnectionId }).(pulumi.StringOutput)
 }
 
+// The URI to the customer managed key for this flow
+func (o PendingFlowResponseOutput) CustomerManagedKeyVaultUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PendingFlowResponse) *string { return v.CustomerManagedKeyVaultUri }).(pulumi.StringPtrOutput)
+}
+
 // Transfer Storage Blobs or Tables
 func (o PendingFlowResponseOutput) DataType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PendingFlowResponse) *string { return v.DataType }).(pulumi.StringPtrOutput)
+}
+
+// The destination endpoint ports of the stream
+func (o PendingFlowResponseOutput) DestinationEndpointPorts() pulumi.Float64ArrayOutput {
+	return o.ApplyT(func(v PendingFlowResponse) []float64 { return v.DestinationEndpointPorts }).(pulumi.Float64ArrayOutput)
+}
+
+// The destination endpoints of the stream
+func (o PendingFlowResponseOutput) DestinationEndpoints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PendingFlowResponse) []string { return v.DestinationEndpoints }).(pulumi.StringArrayOutput)
 }
 
 // Dataflow GUID associated with this flow
@@ -1716,9 +4802,19 @@ func (o PendingFlowResponseOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v PendingFlowResponse) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The messaging options for this flow
+func (o PendingFlowResponseOutput) MessagingOptions() MessagingOptionsResponsePtrOutput {
+	return o.ApplyT(func(v PendingFlowResponse) *MessagingOptionsResponse { return v.MessagingOptions }).(MessagingOptionsResponsePtrOutput)
+}
+
 // The name of the resource
 func (o PendingFlowResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PendingFlowResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The passphrase used for SRT streams
+func (o PendingFlowResponseOutput) Passphrase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PendingFlowResponse) *string { return v.Passphrase }).(pulumi.StringPtrOutput)
 }
 
 // The policies for this flow
@@ -1741,6 +4837,11 @@ func (o PendingFlowResponseOutput) ServiceBusQueueId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PendingFlowResponse) *string { return v.ServiceBusQueueId }).(pulumi.StringPtrOutput)
 }
 
+// The source IP address and CIDR ranges of the stream
+func (o PendingFlowResponseOutput) SourceAddresses() StreamSourceAddressesResponsePtrOutput {
+	return o.ApplyT(func(v PendingFlowResponse) *StreamSourceAddressesResponse { return v.SourceAddresses }).(StreamSourceAddressesResponsePtrOutput)
+}
+
 // Status of the current flow
 func (o PendingFlowResponseOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PendingFlowResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
@@ -1759,6 +4860,21 @@ func (o PendingFlowResponseOutput) StorageAccountName() pulumi.StringPtrOutput {
 // Storage Container Name
 func (o PendingFlowResponseOutput) StorageContainerName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PendingFlowResponse) *string { return v.StorageContainerName }).(pulumi.StringPtrOutput)
+}
+
+// The flow stream identifier
+func (o PendingFlowResponseOutput) StreamId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PendingFlowResponse) *string { return v.StreamId }).(pulumi.StringPtrOutput)
+}
+
+// The latency of the stream in milliseconds
+func (o PendingFlowResponseOutput) StreamLatency() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v PendingFlowResponse) *float64 { return v.StreamLatency }).(pulumi.Float64PtrOutput)
+}
+
+// The protocol of the stream
+func (o PendingFlowResponseOutput) StreamProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PendingFlowResponse) *string { return v.StreamProtocol }).(pulumi.StringPtrOutput)
 }
 
 // Subscription ID of the pending flow.
@@ -2585,10 +5701,16 @@ type Schema struct {
 	ConnectionId *string `pulumi:"connectionId"`
 	// Content of the schema
 	Content *string `pulumi:"content"`
+	// The direction of the schema.
+	Direction *string `pulumi:"direction"`
 	// ID associated with this schema
 	Id *string `pulumi:"id"`
 	// Name of the schema
 	Name *string `pulumi:"name"`
+	// The Schema Type
+	SchemaType *string `pulumi:"schemaType"`
+	// Uri containing SAS token for the zipped schema
+	SchemaUri *string `pulumi:"schemaUri"`
 	// Status of the schema
 	Status *string `pulumi:"status"`
 }
@@ -2610,10 +5732,16 @@ type SchemaArgs struct {
 	ConnectionId pulumi.StringPtrInput `pulumi:"connectionId"`
 	// Content of the schema
 	Content pulumi.StringPtrInput `pulumi:"content"`
+	// The direction of the schema.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// ID associated with this schema
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Name of the schema
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The Schema Type
+	SchemaType pulumi.StringPtrInput `pulumi:"schemaType"`
+	// Uri containing SAS token for the zipped schema
+	SchemaUri pulumi.StringPtrInput `pulumi:"schemaUri"`
 	// Status of the schema
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
@@ -2731,6 +5859,11 @@ func (o SchemaOutput) Content() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Schema) *string { return v.Content }).(pulumi.StringPtrOutput)
 }
 
+// The direction of the schema.
+func (o SchemaOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Schema) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
 // ID associated with this schema
 func (o SchemaOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Schema) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -2739,6 +5872,16 @@ func (o SchemaOutput) Id() pulumi.StringPtrOutput {
 // Name of the schema
 func (o SchemaOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Schema) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The Schema Type
+func (o SchemaOutput) SchemaType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Schema) *string { return v.SchemaType }).(pulumi.StringPtrOutput)
+}
+
+// Uri containing SAS token for the zipped schema
+func (o SchemaOutput) SchemaUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Schema) *string { return v.SchemaUri }).(pulumi.StringPtrOutput)
 }
 
 // Status of the schema
@@ -2790,6 +5933,16 @@ func (o SchemaPtrOutput) Content() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The direction of the schema.
+func (o SchemaPtrOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Schema) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Direction
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID associated with this schema
 func (o SchemaPtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Schema) *string {
@@ -2807,6 +5960,26 @@ func (o SchemaPtrOutput) Name() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Schema Type
+func (o SchemaPtrOutput) SchemaType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Schema) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SchemaType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Uri containing SAS token for the zipped schema
+func (o SchemaPtrOutput) SchemaUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Schema) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SchemaUri
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2846,10 +6019,16 @@ type SchemaResponse struct {
 	ConnectionId *string `pulumi:"connectionId"`
 	// Content of the schema
 	Content *string `pulumi:"content"`
+	// The direction of the schema.
+	Direction *string `pulumi:"direction"`
 	// ID associated with this schema
 	Id *string `pulumi:"id"`
 	// Name of the schema
 	Name *string `pulumi:"name"`
+	// The Schema Type
+	SchemaType *string `pulumi:"schemaType"`
+	// Uri containing SAS token for the zipped schema
+	SchemaUri *string `pulumi:"schemaUri"`
 	// Status of the schema
 	Status *string `pulumi:"status"`
 }
@@ -2879,6 +6058,11 @@ func (o SchemaResponseOutput) Content() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SchemaResponse) *string { return v.Content }).(pulumi.StringPtrOutput)
 }
 
+// The direction of the schema.
+func (o SchemaResponseOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SchemaResponse) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
 // ID associated with this schema
 func (o SchemaResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SchemaResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -2887,6 +6071,16 @@ func (o SchemaResponseOutput) Id() pulumi.StringPtrOutput {
 // Name of the schema
 func (o SchemaResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SchemaResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The Schema Type
+func (o SchemaResponseOutput) SchemaType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SchemaResponse) *string { return v.SchemaType }).(pulumi.StringPtrOutput)
+}
+
+// Uri containing SAS token for the zipped schema
+func (o SchemaResponseOutput) SchemaUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SchemaResponse) *string { return v.SchemaUri }).(pulumi.StringPtrOutput)
 }
 
 // Status of the schema
@@ -2938,6 +6132,16 @@ func (o SchemaResponsePtrOutput) Content() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The direction of the schema.
+func (o SchemaResponsePtrOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SchemaResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Direction
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID associated with this schema
 func (o SchemaResponsePtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SchemaResponse) *string {
@@ -2955,6 +6159,26 @@ func (o SchemaResponsePtrOutput) Name() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Schema Type
+func (o SchemaResponsePtrOutput) SchemaType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SchemaResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SchemaType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Uri containing SAS token for the zipped schema
+func (o SchemaResponsePtrOutput) SchemaUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SchemaResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SchemaUri
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3296,6 +6520,206 @@ func (o SelectedResourceResponsePtrOutput) SubscriptionName() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The source IP address and CIDR ranges of the stream
+type StreamSourceAddresses struct {
+	// A source IP address or CIDR range
+	SourceAddresses []string `pulumi:"sourceAddresses"`
+}
+
+// StreamSourceAddressesInput is an input type that accepts StreamSourceAddressesArgs and StreamSourceAddressesOutput values.
+// You can construct a concrete instance of `StreamSourceAddressesInput` via:
+//
+//	StreamSourceAddressesArgs{...}
+type StreamSourceAddressesInput interface {
+	pulumi.Input
+
+	ToStreamSourceAddressesOutput() StreamSourceAddressesOutput
+	ToStreamSourceAddressesOutputWithContext(context.Context) StreamSourceAddressesOutput
+}
+
+// The source IP address and CIDR ranges of the stream
+type StreamSourceAddressesArgs struct {
+	// A source IP address or CIDR range
+	SourceAddresses pulumi.StringArrayInput `pulumi:"sourceAddresses"`
+}
+
+func (StreamSourceAddressesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceAddresses)(nil)).Elem()
+}
+
+func (i StreamSourceAddressesArgs) ToStreamSourceAddressesOutput() StreamSourceAddressesOutput {
+	return i.ToStreamSourceAddressesOutputWithContext(context.Background())
+}
+
+func (i StreamSourceAddressesArgs) ToStreamSourceAddressesOutputWithContext(ctx context.Context) StreamSourceAddressesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceAddressesOutput)
+}
+
+func (i StreamSourceAddressesArgs) ToStreamSourceAddressesPtrOutput() StreamSourceAddressesPtrOutput {
+	return i.ToStreamSourceAddressesPtrOutputWithContext(context.Background())
+}
+
+func (i StreamSourceAddressesArgs) ToStreamSourceAddressesPtrOutputWithContext(ctx context.Context) StreamSourceAddressesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceAddressesOutput).ToStreamSourceAddressesPtrOutputWithContext(ctx)
+}
+
+// StreamSourceAddressesPtrInput is an input type that accepts StreamSourceAddressesArgs, StreamSourceAddressesPtr and StreamSourceAddressesPtrOutput values.
+// You can construct a concrete instance of `StreamSourceAddressesPtrInput` via:
+//
+//	        StreamSourceAddressesArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamSourceAddressesPtrInput interface {
+	pulumi.Input
+
+	ToStreamSourceAddressesPtrOutput() StreamSourceAddressesPtrOutput
+	ToStreamSourceAddressesPtrOutputWithContext(context.Context) StreamSourceAddressesPtrOutput
+}
+
+type streamSourceAddressesPtrType StreamSourceAddressesArgs
+
+func StreamSourceAddressesPtr(v *StreamSourceAddressesArgs) StreamSourceAddressesPtrInput {
+	return (*streamSourceAddressesPtrType)(v)
+}
+
+func (*streamSourceAddressesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceAddresses)(nil)).Elem()
+}
+
+func (i *streamSourceAddressesPtrType) ToStreamSourceAddressesPtrOutput() StreamSourceAddressesPtrOutput {
+	return i.ToStreamSourceAddressesPtrOutputWithContext(context.Background())
+}
+
+func (i *streamSourceAddressesPtrType) ToStreamSourceAddressesPtrOutputWithContext(ctx context.Context) StreamSourceAddressesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceAddressesPtrOutput)
+}
+
+// The source IP address and CIDR ranges of the stream
+type StreamSourceAddressesOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceAddressesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceAddresses)(nil)).Elem()
+}
+
+func (o StreamSourceAddressesOutput) ToStreamSourceAddressesOutput() StreamSourceAddressesOutput {
+	return o
+}
+
+func (o StreamSourceAddressesOutput) ToStreamSourceAddressesOutputWithContext(ctx context.Context) StreamSourceAddressesOutput {
+	return o
+}
+
+func (o StreamSourceAddressesOutput) ToStreamSourceAddressesPtrOutput() StreamSourceAddressesPtrOutput {
+	return o.ToStreamSourceAddressesPtrOutputWithContext(context.Background())
+}
+
+func (o StreamSourceAddressesOutput) ToStreamSourceAddressesPtrOutputWithContext(ctx context.Context) StreamSourceAddressesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamSourceAddresses) *StreamSourceAddresses {
+		return &v
+	}).(StreamSourceAddressesPtrOutput)
+}
+
+// A source IP address or CIDR range
+func (o StreamSourceAddressesOutput) SourceAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StreamSourceAddresses) []string { return v.SourceAddresses }).(pulumi.StringArrayOutput)
+}
+
+type StreamSourceAddressesPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceAddressesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceAddresses)(nil)).Elem()
+}
+
+func (o StreamSourceAddressesPtrOutput) ToStreamSourceAddressesPtrOutput() StreamSourceAddressesPtrOutput {
+	return o
+}
+
+func (o StreamSourceAddressesPtrOutput) ToStreamSourceAddressesPtrOutputWithContext(ctx context.Context) StreamSourceAddressesPtrOutput {
+	return o
+}
+
+func (o StreamSourceAddressesPtrOutput) Elem() StreamSourceAddressesOutput {
+	return o.ApplyT(func(v *StreamSourceAddresses) StreamSourceAddresses {
+		if v != nil {
+			return *v
+		}
+		var ret StreamSourceAddresses
+		return ret
+	}).(StreamSourceAddressesOutput)
+}
+
+// A source IP address or CIDR range
+func (o StreamSourceAddressesPtrOutput) SourceAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *StreamSourceAddresses) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceAddresses
+	}).(pulumi.StringArrayOutput)
+}
+
+// The source IP address and CIDR ranges of the stream
+type StreamSourceAddressesResponse struct {
+	// A source IP address or CIDR range
+	SourceAddresses []string `pulumi:"sourceAddresses"`
+}
+
+// The source IP address and CIDR ranges of the stream
+type StreamSourceAddressesResponseOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceAddressesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceAddressesResponse)(nil)).Elem()
+}
+
+func (o StreamSourceAddressesResponseOutput) ToStreamSourceAddressesResponseOutput() StreamSourceAddressesResponseOutput {
+	return o
+}
+
+func (o StreamSourceAddressesResponseOutput) ToStreamSourceAddressesResponseOutputWithContext(ctx context.Context) StreamSourceAddressesResponseOutput {
+	return o
+}
+
+// A source IP address or CIDR range
+func (o StreamSourceAddressesResponseOutput) SourceAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StreamSourceAddressesResponse) []string { return v.SourceAddresses }).(pulumi.StringArrayOutput)
+}
+
+type StreamSourceAddressesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceAddressesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceAddressesResponse)(nil)).Elem()
+}
+
+func (o StreamSourceAddressesResponsePtrOutput) ToStreamSourceAddressesResponsePtrOutput() StreamSourceAddressesResponsePtrOutput {
+	return o
+}
+
+func (o StreamSourceAddressesResponsePtrOutput) ToStreamSourceAddressesResponsePtrOutputWithContext(ctx context.Context) StreamSourceAddressesResponsePtrOutput {
+	return o
+}
+
+func (o StreamSourceAddressesResponsePtrOutput) Elem() StreamSourceAddressesResponseOutput {
+	return o.ApplyT(func(v *StreamSourceAddressesResponse) StreamSourceAddressesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret StreamSourceAddressesResponse
+		return ret
+	}).(StreamSourceAddressesResponseOutput)
+}
+
+// A source IP address or CIDR range
+func (o StreamSourceAddressesResponsePtrOutput) SourceAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *StreamSourceAddressesResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceAddresses
+	}).(pulumi.StringArrayOutput)
+}
+
 type Subscriber struct {
 	// Email of the subscriber
 	Email *string `pulumi:"email"`
@@ -3514,6 +6938,428 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
 
+// Configuration options for the text matching ruleset. For example, if the configuration is to deny "hello world" for partial case-insensitive words then "chello worlds" would get detected and the resulting file would be denied.
+type TextMatch struct {
+	// Specifies the text matching conditions based on casing. For more detail please refer to the Casing model.
+	CaseSensitivity string `pulumi:"caseSensitivity"`
+	// Specifies the text matching condition for text comparison. For more detail please refer to the MatchType model.
+	MatchType string `pulumi:"matchType"`
+	// The word or phrase to match against replicated content. A phrase with spaces will be considered a single substring.
+	Text string `pulumi:"text"`
+}
+
+// Defaults sets the appropriate defaults for TextMatch
+func (val *TextMatch) Defaults() *TextMatch {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if utilities.IsZero(tmp.CaseSensitivity) {
+		tmp.CaseSensitivity = "Insensitive"
+	}
+	if utilities.IsZero(tmp.MatchType) {
+		tmp.MatchType = "Partial"
+	}
+	return &tmp
+}
+
+// TextMatchInput is an input type that accepts TextMatchArgs and TextMatchOutput values.
+// You can construct a concrete instance of `TextMatchInput` via:
+//
+//	TextMatchArgs{...}
+type TextMatchInput interface {
+	pulumi.Input
+
+	ToTextMatchOutput() TextMatchOutput
+	ToTextMatchOutputWithContext(context.Context) TextMatchOutput
+}
+
+// Configuration options for the text matching ruleset. For example, if the configuration is to deny "hello world" for partial case-insensitive words then "chello worlds" would get detected and the resulting file would be denied.
+type TextMatchArgs struct {
+	// Specifies the text matching conditions based on casing. For more detail please refer to the Casing model.
+	CaseSensitivity pulumi.StringInput `pulumi:"caseSensitivity"`
+	// Specifies the text matching condition for text comparison. For more detail please refer to the MatchType model.
+	MatchType pulumi.StringInput `pulumi:"matchType"`
+	// The word or phrase to match against replicated content. A phrase with spaces will be considered a single substring.
+	Text pulumi.StringInput `pulumi:"text"`
+}
+
+// Defaults sets the appropriate defaults for TextMatchArgs
+func (val *TextMatchArgs) Defaults() *TextMatchArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.CaseSensitivity == nil {
+		tmp.CaseSensitivity = pulumi.String("Insensitive")
+	}
+	if tmp.MatchType == nil {
+		tmp.MatchType = pulumi.String("Partial")
+	}
+	return &tmp
+}
+func (TextMatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TextMatch)(nil)).Elem()
+}
+
+func (i TextMatchArgs) ToTextMatchOutput() TextMatchOutput {
+	return i.ToTextMatchOutputWithContext(context.Background())
+}
+
+func (i TextMatchArgs) ToTextMatchOutputWithContext(ctx context.Context) TextMatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TextMatchOutput)
+}
+
+// TextMatchArrayInput is an input type that accepts TextMatchArray and TextMatchArrayOutput values.
+// You can construct a concrete instance of `TextMatchArrayInput` via:
+//
+//	TextMatchArray{ TextMatchArgs{...} }
+type TextMatchArrayInput interface {
+	pulumi.Input
+
+	ToTextMatchArrayOutput() TextMatchArrayOutput
+	ToTextMatchArrayOutputWithContext(context.Context) TextMatchArrayOutput
+}
+
+type TextMatchArray []TextMatchInput
+
+func (TextMatchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TextMatch)(nil)).Elem()
+}
+
+func (i TextMatchArray) ToTextMatchArrayOutput() TextMatchArrayOutput {
+	return i.ToTextMatchArrayOutputWithContext(context.Background())
+}
+
+func (i TextMatchArray) ToTextMatchArrayOutputWithContext(ctx context.Context) TextMatchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TextMatchArrayOutput)
+}
+
+// Configuration options for the text matching ruleset. For example, if the configuration is to deny "hello world" for partial case-insensitive words then "chello worlds" would get detected and the resulting file would be denied.
+type TextMatchOutput struct{ *pulumi.OutputState }
+
+func (TextMatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TextMatch)(nil)).Elem()
+}
+
+func (o TextMatchOutput) ToTextMatchOutput() TextMatchOutput {
+	return o
+}
+
+func (o TextMatchOutput) ToTextMatchOutputWithContext(ctx context.Context) TextMatchOutput {
+	return o
+}
+
+// Specifies the text matching conditions based on casing. For more detail please refer to the Casing model.
+func (o TextMatchOutput) CaseSensitivity() pulumi.StringOutput {
+	return o.ApplyT(func(v TextMatch) string { return v.CaseSensitivity }).(pulumi.StringOutput)
+}
+
+// Specifies the text matching condition for text comparison. For more detail please refer to the MatchType model.
+func (o TextMatchOutput) MatchType() pulumi.StringOutput {
+	return o.ApplyT(func(v TextMatch) string { return v.MatchType }).(pulumi.StringOutput)
+}
+
+// The word or phrase to match against replicated content. A phrase with spaces will be considered a single substring.
+func (o TextMatchOutput) Text() pulumi.StringOutput {
+	return o.ApplyT(func(v TextMatch) string { return v.Text }).(pulumi.StringOutput)
+}
+
+type TextMatchArrayOutput struct{ *pulumi.OutputState }
+
+func (TextMatchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TextMatch)(nil)).Elem()
+}
+
+func (o TextMatchArrayOutput) ToTextMatchArrayOutput() TextMatchArrayOutput {
+	return o
+}
+
+func (o TextMatchArrayOutput) ToTextMatchArrayOutputWithContext(ctx context.Context) TextMatchArrayOutput {
+	return o
+}
+
+func (o TextMatchArrayOutput) Index(i pulumi.IntInput) TextMatchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TextMatch {
+		return vs[0].([]TextMatch)[vs[1].(int)]
+	}).(TextMatchOutput)
+}
+
+// Configuration options for the text matching ruleset. For example, if the configuration is to deny "hello world" for partial case-insensitive words then "chello worlds" would get detected and the resulting file would be denied.
+type TextMatchResponse struct {
+	// Specifies the text matching conditions based on casing. For more detail please refer to the Casing model.
+	CaseSensitivity string `pulumi:"caseSensitivity"`
+	// Specifies the text matching condition for text comparison. For more detail please refer to the MatchType model.
+	MatchType string `pulumi:"matchType"`
+	// The word or phrase to match against replicated content. A phrase with spaces will be considered a single substring.
+	Text string `pulumi:"text"`
+}
+
+// Defaults sets the appropriate defaults for TextMatchResponse
+func (val *TextMatchResponse) Defaults() *TextMatchResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if utilities.IsZero(tmp.CaseSensitivity) {
+		tmp.CaseSensitivity = "Insensitive"
+	}
+	if utilities.IsZero(tmp.MatchType) {
+		tmp.MatchType = "Partial"
+	}
+	return &tmp
+}
+
+// Configuration options for the text matching ruleset. For example, if the configuration is to deny "hello world" for partial case-insensitive words then "chello worlds" would get detected and the resulting file would be denied.
+type TextMatchResponseOutput struct{ *pulumi.OutputState }
+
+func (TextMatchResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TextMatchResponse)(nil)).Elem()
+}
+
+func (o TextMatchResponseOutput) ToTextMatchResponseOutput() TextMatchResponseOutput {
+	return o
+}
+
+func (o TextMatchResponseOutput) ToTextMatchResponseOutputWithContext(ctx context.Context) TextMatchResponseOutput {
+	return o
+}
+
+// Specifies the text matching conditions based on casing. For more detail please refer to the Casing model.
+func (o TextMatchResponseOutput) CaseSensitivity() pulumi.StringOutput {
+	return o.ApplyT(func(v TextMatchResponse) string { return v.CaseSensitivity }).(pulumi.StringOutput)
+}
+
+// Specifies the text matching condition for text comparison. For more detail please refer to the MatchType model.
+func (o TextMatchResponseOutput) MatchType() pulumi.StringOutput {
+	return o.ApplyT(func(v TextMatchResponse) string { return v.MatchType }).(pulumi.StringOutput)
+}
+
+// The word or phrase to match against replicated content. A phrase with spaces will be considered a single substring.
+func (o TextMatchResponseOutput) Text() pulumi.StringOutput {
+	return o.ApplyT(func(v TextMatchResponse) string { return v.Text }).(pulumi.StringOutput)
+}
+
+type TextMatchResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (TextMatchResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TextMatchResponse)(nil)).Elem()
+}
+
+func (o TextMatchResponseArrayOutput) ToTextMatchResponseArrayOutput() TextMatchResponseArrayOutput {
+	return o
+}
+
+func (o TextMatchResponseArrayOutput) ToTextMatchResponseArrayOutputWithContext(ctx context.Context) TextMatchResponseArrayOutput {
+	return o
+}
+
+func (o TextMatchResponseArrayOutput) Index(i pulumi.IntInput) TextMatchResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TextMatchResponse {
+		return vs[0].([]TextMatchResponse)[vs[1].(int)]
+	}).(TextMatchResponseOutput)
+}
+
+// Rules for detecting and blocking specific text patterns. If a file contains a text pattern that is part of the configured deny list, the file will be denied.
+type TextMatchingRuleset struct {
+	// A list of text patterns to block, each with matching rules and case sensitivity options.
+	Deny []TextMatch `pulumi:"deny"`
+}
+
+// TextMatchingRulesetInput is an input type that accepts TextMatchingRulesetArgs and TextMatchingRulesetOutput values.
+// You can construct a concrete instance of `TextMatchingRulesetInput` via:
+//
+//	TextMatchingRulesetArgs{...}
+type TextMatchingRulesetInput interface {
+	pulumi.Input
+
+	ToTextMatchingRulesetOutput() TextMatchingRulesetOutput
+	ToTextMatchingRulesetOutputWithContext(context.Context) TextMatchingRulesetOutput
+}
+
+// Rules for detecting and blocking specific text patterns. If a file contains a text pattern that is part of the configured deny list, the file will be denied.
+type TextMatchingRulesetArgs struct {
+	// A list of text patterns to block, each with matching rules and case sensitivity options.
+	Deny TextMatchArrayInput `pulumi:"deny"`
+}
+
+func (TextMatchingRulesetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TextMatchingRuleset)(nil)).Elem()
+}
+
+func (i TextMatchingRulesetArgs) ToTextMatchingRulesetOutput() TextMatchingRulesetOutput {
+	return i.ToTextMatchingRulesetOutputWithContext(context.Background())
+}
+
+func (i TextMatchingRulesetArgs) ToTextMatchingRulesetOutputWithContext(ctx context.Context) TextMatchingRulesetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TextMatchingRulesetOutput)
+}
+
+func (i TextMatchingRulesetArgs) ToTextMatchingRulesetPtrOutput() TextMatchingRulesetPtrOutput {
+	return i.ToTextMatchingRulesetPtrOutputWithContext(context.Background())
+}
+
+func (i TextMatchingRulesetArgs) ToTextMatchingRulesetPtrOutputWithContext(ctx context.Context) TextMatchingRulesetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TextMatchingRulesetOutput).ToTextMatchingRulesetPtrOutputWithContext(ctx)
+}
+
+// TextMatchingRulesetPtrInput is an input type that accepts TextMatchingRulesetArgs, TextMatchingRulesetPtr and TextMatchingRulesetPtrOutput values.
+// You can construct a concrete instance of `TextMatchingRulesetPtrInput` via:
+//
+//	        TextMatchingRulesetArgs{...}
+//
+//	or:
+//
+//	        nil
+type TextMatchingRulesetPtrInput interface {
+	pulumi.Input
+
+	ToTextMatchingRulesetPtrOutput() TextMatchingRulesetPtrOutput
+	ToTextMatchingRulesetPtrOutputWithContext(context.Context) TextMatchingRulesetPtrOutput
+}
+
+type textMatchingRulesetPtrType TextMatchingRulesetArgs
+
+func TextMatchingRulesetPtr(v *TextMatchingRulesetArgs) TextMatchingRulesetPtrInput {
+	return (*textMatchingRulesetPtrType)(v)
+}
+
+func (*textMatchingRulesetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TextMatchingRuleset)(nil)).Elem()
+}
+
+func (i *textMatchingRulesetPtrType) ToTextMatchingRulesetPtrOutput() TextMatchingRulesetPtrOutput {
+	return i.ToTextMatchingRulesetPtrOutputWithContext(context.Background())
+}
+
+func (i *textMatchingRulesetPtrType) ToTextMatchingRulesetPtrOutputWithContext(ctx context.Context) TextMatchingRulesetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TextMatchingRulesetPtrOutput)
+}
+
+// Rules for detecting and blocking specific text patterns. If a file contains a text pattern that is part of the configured deny list, the file will be denied.
+type TextMatchingRulesetOutput struct{ *pulumi.OutputState }
+
+func (TextMatchingRulesetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TextMatchingRuleset)(nil)).Elem()
+}
+
+func (o TextMatchingRulesetOutput) ToTextMatchingRulesetOutput() TextMatchingRulesetOutput {
+	return o
+}
+
+func (o TextMatchingRulesetOutput) ToTextMatchingRulesetOutputWithContext(ctx context.Context) TextMatchingRulesetOutput {
+	return o
+}
+
+func (o TextMatchingRulesetOutput) ToTextMatchingRulesetPtrOutput() TextMatchingRulesetPtrOutput {
+	return o.ToTextMatchingRulesetPtrOutputWithContext(context.Background())
+}
+
+func (o TextMatchingRulesetOutput) ToTextMatchingRulesetPtrOutputWithContext(ctx context.Context) TextMatchingRulesetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TextMatchingRuleset) *TextMatchingRuleset {
+		return &v
+	}).(TextMatchingRulesetPtrOutput)
+}
+
+// A list of text patterns to block, each with matching rules and case sensitivity options.
+func (o TextMatchingRulesetOutput) Deny() TextMatchArrayOutput {
+	return o.ApplyT(func(v TextMatchingRuleset) []TextMatch { return v.Deny }).(TextMatchArrayOutput)
+}
+
+type TextMatchingRulesetPtrOutput struct{ *pulumi.OutputState }
+
+func (TextMatchingRulesetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TextMatchingRuleset)(nil)).Elem()
+}
+
+func (o TextMatchingRulesetPtrOutput) ToTextMatchingRulesetPtrOutput() TextMatchingRulesetPtrOutput {
+	return o
+}
+
+func (o TextMatchingRulesetPtrOutput) ToTextMatchingRulesetPtrOutputWithContext(ctx context.Context) TextMatchingRulesetPtrOutput {
+	return o
+}
+
+func (o TextMatchingRulesetPtrOutput) Elem() TextMatchingRulesetOutput {
+	return o.ApplyT(func(v *TextMatchingRuleset) TextMatchingRuleset {
+		if v != nil {
+			return *v
+		}
+		var ret TextMatchingRuleset
+		return ret
+	}).(TextMatchingRulesetOutput)
+}
+
+// A list of text patterns to block, each with matching rules and case sensitivity options.
+func (o TextMatchingRulesetPtrOutput) Deny() TextMatchArrayOutput {
+	return o.ApplyT(func(v *TextMatchingRuleset) []TextMatch {
+		if v == nil {
+			return nil
+		}
+		return v.Deny
+	}).(TextMatchArrayOutput)
+}
+
+// Rules for detecting and blocking specific text patterns. If a file contains a text pattern that is part of the configured deny list, the file will be denied.
+type TextMatchingRulesetResponse struct {
+	// A list of text patterns to block, each with matching rules and case sensitivity options.
+	Deny []TextMatchResponse `pulumi:"deny"`
+}
+
+// Rules for detecting and blocking specific text patterns. If a file contains a text pattern that is part of the configured deny list, the file will be denied.
+type TextMatchingRulesetResponseOutput struct{ *pulumi.OutputState }
+
+func (TextMatchingRulesetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TextMatchingRulesetResponse)(nil)).Elem()
+}
+
+func (o TextMatchingRulesetResponseOutput) ToTextMatchingRulesetResponseOutput() TextMatchingRulesetResponseOutput {
+	return o
+}
+
+func (o TextMatchingRulesetResponseOutput) ToTextMatchingRulesetResponseOutputWithContext(ctx context.Context) TextMatchingRulesetResponseOutput {
+	return o
+}
+
+// A list of text patterns to block, each with matching rules and case sensitivity options.
+func (o TextMatchingRulesetResponseOutput) Deny() TextMatchResponseArrayOutput {
+	return o.ApplyT(func(v TextMatchingRulesetResponse) []TextMatchResponse { return v.Deny }).(TextMatchResponseArrayOutput)
+}
+
+type TextMatchingRulesetResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (TextMatchingRulesetResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TextMatchingRulesetResponse)(nil)).Elem()
+}
+
+func (o TextMatchingRulesetResponsePtrOutput) ToTextMatchingRulesetResponsePtrOutput() TextMatchingRulesetResponsePtrOutput {
+	return o
+}
+
+func (o TextMatchingRulesetResponsePtrOutput) ToTextMatchingRulesetResponsePtrOutputWithContext(ctx context.Context) TextMatchingRulesetResponsePtrOutput {
+	return o
+}
+
+func (o TextMatchingRulesetResponsePtrOutput) Elem() TextMatchingRulesetResponseOutput {
+	return o.ApplyT(func(v *TextMatchingRulesetResponse) TextMatchingRulesetResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TextMatchingRulesetResponse
+		return ret
+	}).(TextMatchingRulesetResponseOutput)
+}
+
+// A list of text patterns to block, each with matching rules and case sensitivity options.
+func (o TextMatchingRulesetResponsePtrOutput) Deny() TextMatchResponseArrayOutput {
+	return o.ApplyT(func(v *TextMatchingRulesetResponse) []TextMatchResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Deny
+	}).(TextMatchResponseArrayOutput)
+}
+
 // User assigned identity properties
 type UserAssignedIdentityResponse struct {
 	// The client ID of the assigned identity.
@@ -3567,19 +7413,329 @@ func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) Us
 	}).(UserAssignedIdentityResponseOutput)
 }
 
+// Rules for filtering XML content using XSD schemas.
+type XmlFilterRuleset struct {
+	// The default XML namespace used for schema validation.
+	DefaultNamespace *string `pulumi:"defaultNamespace"`
+	// Defines the method for referencing the xml schema.
+	Reference *string `pulumi:"reference"`
+	// The inline XSD schema to be used for validation.
+	Schema *string `pulumi:"schema"`
+}
+
+// XmlFilterRulesetInput is an input type that accepts XmlFilterRulesetArgs and XmlFilterRulesetOutput values.
+// You can construct a concrete instance of `XmlFilterRulesetInput` via:
+//
+//	XmlFilterRulesetArgs{...}
+type XmlFilterRulesetInput interface {
+	pulumi.Input
+
+	ToXmlFilterRulesetOutput() XmlFilterRulesetOutput
+	ToXmlFilterRulesetOutputWithContext(context.Context) XmlFilterRulesetOutput
+}
+
+// Rules for filtering XML content using XSD schemas.
+type XmlFilterRulesetArgs struct {
+	// The default XML namespace used for schema validation.
+	DefaultNamespace pulumi.StringPtrInput `pulumi:"defaultNamespace"`
+	// Defines the method for referencing the xml schema.
+	Reference pulumi.StringPtrInput `pulumi:"reference"`
+	// The inline XSD schema to be used for validation.
+	Schema pulumi.StringPtrInput `pulumi:"schema"`
+}
+
+func (XmlFilterRulesetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*XmlFilterRuleset)(nil)).Elem()
+}
+
+func (i XmlFilterRulesetArgs) ToXmlFilterRulesetOutput() XmlFilterRulesetOutput {
+	return i.ToXmlFilterRulesetOutputWithContext(context.Background())
+}
+
+func (i XmlFilterRulesetArgs) ToXmlFilterRulesetOutputWithContext(ctx context.Context) XmlFilterRulesetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(XmlFilterRulesetOutput)
+}
+
+func (i XmlFilterRulesetArgs) ToXmlFilterRulesetPtrOutput() XmlFilterRulesetPtrOutput {
+	return i.ToXmlFilterRulesetPtrOutputWithContext(context.Background())
+}
+
+func (i XmlFilterRulesetArgs) ToXmlFilterRulesetPtrOutputWithContext(ctx context.Context) XmlFilterRulesetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(XmlFilterRulesetOutput).ToXmlFilterRulesetPtrOutputWithContext(ctx)
+}
+
+// XmlFilterRulesetPtrInput is an input type that accepts XmlFilterRulesetArgs, XmlFilterRulesetPtr and XmlFilterRulesetPtrOutput values.
+// You can construct a concrete instance of `XmlFilterRulesetPtrInput` via:
+//
+//	        XmlFilterRulesetArgs{...}
+//
+//	or:
+//
+//	        nil
+type XmlFilterRulesetPtrInput interface {
+	pulumi.Input
+
+	ToXmlFilterRulesetPtrOutput() XmlFilterRulesetPtrOutput
+	ToXmlFilterRulesetPtrOutputWithContext(context.Context) XmlFilterRulesetPtrOutput
+}
+
+type xmlFilterRulesetPtrType XmlFilterRulesetArgs
+
+func XmlFilterRulesetPtr(v *XmlFilterRulesetArgs) XmlFilterRulesetPtrInput {
+	return (*xmlFilterRulesetPtrType)(v)
+}
+
+func (*xmlFilterRulesetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**XmlFilterRuleset)(nil)).Elem()
+}
+
+func (i *xmlFilterRulesetPtrType) ToXmlFilterRulesetPtrOutput() XmlFilterRulesetPtrOutput {
+	return i.ToXmlFilterRulesetPtrOutputWithContext(context.Background())
+}
+
+func (i *xmlFilterRulesetPtrType) ToXmlFilterRulesetPtrOutputWithContext(ctx context.Context) XmlFilterRulesetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(XmlFilterRulesetPtrOutput)
+}
+
+// Rules for filtering XML content using XSD schemas.
+type XmlFilterRulesetOutput struct{ *pulumi.OutputState }
+
+func (XmlFilterRulesetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*XmlFilterRuleset)(nil)).Elem()
+}
+
+func (o XmlFilterRulesetOutput) ToXmlFilterRulesetOutput() XmlFilterRulesetOutput {
+	return o
+}
+
+func (o XmlFilterRulesetOutput) ToXmlFilterRulesetOutputWithContext(ctx context.Context) XmlFilterRulesetOutput {
+	return o
+}
+
+func (o XmlFilterRulesetOutput) ToXmlFilterRulesetPtrOutput() XmlFilterRulesetPtrOutput {
+	return o.ToXmlFilterRulesetPtrOutputWithContext(context.Background())
+}
+
+func (o XmlFilterRulesetOutput) ToXmlFilterRulesetPtrOutputWithContext(ctx context.Context) XmlFilterRulesetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v XmlFilterRuleset) *XmlFilterRuleset {
+		return &v
+	}).(XmlFilterRulesetPtrOutput)
+}
+
+// The default XML namespace used for schema validation.
+func (o XmlFilterRulesetOutput) DefaultNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v XmlFilterRuleset) *string { return v.DefaultNamespace }).(pulumi.StringPtrOutput)
+}
+
+// Defines the method for referencing the xml schema.
+func (o XmlFilterRulesetOutput) Reference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v XmlFilterRuleset) *string { return v.Reference }).(pulumi.StringPtrOutput)
+}
+
+// The inline XSD schema to be used for validation.
+func (o XmlFilterRulesetOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v XmlFilterRuleset) *string { return v.Schema }).(pulumi.StringPtrOutput)
+}
+
+type XmlFilterRulesetPtrOutput struct{ *pulumi.OutputState }
+
+func (XmlFilterRulesetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**XmlFilterRuleset)(nil)).Elem()
+}
+
+func (o XmlFilterRulesetPtrOutput) ToXmlFilterRulesetPtrOutput() XmlFilterRulesetPtrOutput {
+	return o
+}
+
+func (o XmlFilterRulesetPtrOutput) ToXmlFilterRulesetPtrOutputWithContext(ctx context.Context) XmlFilterRulesetPtrOutput {
+	return o
+}
+
+func (o XmlFilterRulesetPtrOutput) Elem() XmlFilterRulesetOutput {
+	return o.ApplyT(func(v *XmlFilterRuleset) XmlFilterRuleset {
+		if v != nil {
+			return *v
+		}
+		var ret XmlFilterRuleset
+		return ret
+	}).(XmlFilterRulesetOutput)
+}
+
+// The default XML namespace used for schema validation.
+func (o XmlFilterRulesetPtrOutput) DefaultNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *XmlFilterRuleset) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultNamespace
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines the method for referencing the xml schema.
+func (o XmlFilterRulesetPtrOutput) Reference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *XmlFilterRuleset) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Reference
+	}).(pulumi.StringPtrOutput)
+}
+
+// The inline XSD schema to be used for validation.
+func (o XmlFilterRulesetPtrOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *XmlFilterRuleset) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Schema
+	}).(pulumi.StringPtrOutput)
+}
+
+// Rules for filtering XML content using XSD schemas.
+type XmlFilterRulesetResponse struct {
+	// The default XML namespace used for schema validation.
+	DefaultNamespace *string `pulumi:"defaultNamespace"`
+	// Defines the method for referencing the xml schema.
+	Reference *string `pulumi:"reference"`
+	// The inline XSD schema to be used for validation.
+	Schema *string `pulumi:"schema"`
+}
+
+// Rules for filtering XML content using XSD schemas.
+type XmlFilterRulesetResponseOutput struct{ *pulumi.OutputState }
+
+func (XmlFilterRulesetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*XmlFilterRulesetResponse)(nil)).Elem()
+}
+
+func (o XmlFilterRulesetResponseOutput) ToXmlFilterRulesetResponseOutput() XmlFilterRulesetResponseOutput {
+	return o
+}
+
+func (o XmlFilterRulesetResponseOutput) ToXmlFilterRulesetResponseOutputWithContext(ctx context.Context) XmlFilterRulesetResponseOutput {
+	return o
+}
+
+// The default XML namespace used for schema validation.
+func (o XmlFilterRulesetResponseOutput) DefaultNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v XmlFilterRulesetResponse) *string { return v.DefaultNamespace }).(pulumi.StringPtrOutput)
+}
+
+// Defines the method for referencing the xml schema.
+func (o XmlFilterRulesetResponseOutput) Reference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v XmlFilterRulesetResponse) *string { return v.Reference }).(pulumi.StringPtrOutput)
+}
+
+// The inline XSD schema to be used for validation.
+func (o XmlFilterRulesetResponseOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v XmlFilterRulesetResponse) *string { return v.Schema }).(pulumi.StringPtrOutput)
+}
+
+type XmlFilterRulesetResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (XmlFilterRulesetResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**XmlFilterRulesetResponse)(nil)).Elem()
+}
+
+func (o XmlFilterRulesetResponsePtrOutput) ToXmlFilterRulesetResponsePtrOutput() XmlFilterRulesetResponsePtrOutput {
+	return o
+}
+
+func (o XmlFilterRulesetResponsePtrOutput) ToXmlFilterRulesetResponsePtrOutputWithContext(ctx context.Context) XmlFilterRulesetResponsePtrOutput {
+	return o
+}
+
+func (o XmlFilterRulesetResponsePtrOutput) Elem() XmlFilterRulesetResponseOutput {
+	return o.ApplyT(func(v *XmlFilterRulesetResponse) XmlFilterRulesetResponse {
+		if v != nil {
+			return *v
+		}
+		var ret XmlFilterRulesetResponse
+		return ret
+	}).(XmlFilterRulesetResponseOutput)
+}
+
+// The default XML namespace used for schema validation.
+func (o XmlFilterRulesetResponsePtrOutput) DefaultNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *XmlFilterRulesetResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultNamespace
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines the method for referencing the xml schema.
+func (o XmlFilterRulesetResponsePtrOutput) Reference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *XmlFilterRulesetResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Reference
+	}).(pulumi.StringPtrOutput)
+}
+
+// The inline XSD schema to be used for validation.
+func (o XmlFilterRulesetResponsePtrOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *XmlFilterRulesetResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Schema
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
+	pulumi.RegisterOutputType(AntivirusRulesetOutput{})
+	pulumi.RegisterOutputType(AntivirusRulesetPtrOutput{})
+	pulumi.RegisterOutputType(AntivirusRulesetResponseOutput{})
+	pulumi.RegisterOutputType(AntivirusRulesetResponsePtrOutput{})
+	pulumi.RegisterOutputType(ApiFlowOptionsResponseOutput{})
+	pulumi.RegisterOutputType(ApiFlowOptionsResponsePtrOutput{})
+	pulumi.RegisterOutputType(ArchiveRulesetOutput{})
+	pulumi.RegisterOutputType(ArchiveRulesetPtrOutput{})
+	pulumi.RegisterOutputType(ArchiveRulesetResponseOutput{})
+	pulumi.RegisterOutputType(ArchiveRulesetResponsePtrOutput{})
 	pulumi.RegisterOutputType(ConnectionPropertiesOutput{})
 	pulumi.RegisterOutputType(ConnectionPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(DataSizeRulesetOutput{})
+	pulumi.RegisterOutputType(DataSizeRulesetPtrOutput{})
+	pulumi.RegisterOutputType(DataSizeRulesetResponseOutput{})
+	pulumi.RegisterOutputType(DataSizeRulesetResponsePtrOutput{})
+	pulumi.RegisterOutputType(FlowProfilePropertiesOutput{})
+	pulumi.RegisterOutputType(FlowProfilePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(FlowProfilePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(FlowProfileRulesetsOutput{})
+	pulumi.RegisterOutputType(FlowProfileRulesetsPtrOutput{})
+	pulumi.RegisterOutputType(FlowProfileRulesetsResponseOutput{})
+	pulumi.RegisterOutputType(FlowProfileRulesetsResponsePtrOutput{})
 	pulumi.RegisterOutputType(FlowPropertiesOutput{})
 	pulumi.RegisterOutputType(FlowPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(FlowPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(FlowPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(FlowResponseOutput{})
+	pulumi.RegisterOutputType(FlowResponseArrayOutput{})
 	pulumi.RegisterOutputType(InternalMetadataPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(InternalMetadataPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(ListFlowsByPipelineConnectionResponseOutput{})
+	pulumi.RegisterOutputType(ListFlowsByPipelineConnectionResponseArrayOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityPtrOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityResponseOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityResponsePtrOutput{})
+	pulumi.RegisterOutputType(MessagingOptionsOutput{})
+	pulumi.RegisterOutputType(MessagingOptionsPtrOutput{})
+	pulumi.RegisterOutputType(MessagingOptionsResponseOutput{})
+	pulumi.RegisterOutputType(MessagingOptionsResponsePtrOutput{})
+	pulumi.RegisterOutputType(MimeFilterRulesetOutput{})
+	pulumi.RegisterOutputType(MimeFilterRulesetPtrOutput{})
+	pulumi.RegisterOutputType(MimeFilterRulesetResponseOutput{})
+	pulumi.RegisterOutputType(MimeFilterRulesetResponsePtrOutput{})
+	pulumi.RegisterOutputType(MimeTypeFilterOutput{})
+	pulumi.RegisterOutputType(MimeTypeFilterArrayOutput{})
+	pulumi.RegisterOutputType(MimeTypeFilterResponseOutput{})
+	pulumi.RegisterOutputType(MimeTypeFilterResponseArrayOutput{})
 	pulumi.RegisterOutputType(OperationStatusPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(OperationStatusPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(PendingConnectionResponseOutput{})
@@ -3607,11 +7763,27 @@ func init() {
 	pulumi.RegisterOutputType(SelectedResourcePtrOutput{})
 	pulumi.RegisterOutputType(SelectedResourceResponseOutput{})
 	pulumi.RegisterOutputType(SelectedResourceResponsePtrOutput{})
+	pulumi.RegisterOutputType(StreamSourceAddressesOutput{})
+	pulumi.RegisterOutputType(StreamSourceAddressesPtrOutput{})
+	pulumi.RegisterOutputType(StreamSourceAddressesResponseOutput{})
+	pulumi.RegisterOutputType(StreamSourceAddressesResponsePtrOutput{})
 	pulumi.RegisterOutputType(SubscriberOutput{})
 	pulumi.RegisterOutputType(SubscriberArrayOutput{})
 	pulumi.RegisterOutputType(SubscriberResponseOutput{})
 	pulumi.RegisterOutputType(SubscriberResponseArrayOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(TextMatchOutput{})
+	pulumi.RegisterOutputType(TextMatchArrayOutput{})
+	pulumi.RegisterOutputType(TextMatchResponseOutput{})
+	pulumi.RegisterOutputType(TextMatchResponseArrayOutput{})
+	pulumi.RegisterOutputType(TextMatchingRulesetOutput{})
+	pulumi.RegisterOutputType(TextMatchingRulesetPtrOutput{})
+	pulumi.RegisterOutputType(TextMatchingRulesetResponseOutput{})
+	pulumi.RegisterOutputType(TextMatchingRulesetResponsePtrOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})
+	pulumi.RegisterOutputType(XmlFilterRulesetOutput{})
+	pulumi.RegisterOutputType(XmlFilterRulesetPtrOutput{})
+	pulumi.RegisterOutputType(XmlFilterRulesetResponseOutput{})
+	pulumi.RegisterOutputType(XmlFilterRulesetResponsePtrOutput{})
 }

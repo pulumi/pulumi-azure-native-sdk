@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -174,7 +174,7 @@ func (o EncryptionPropertiesPtrOutput) KeyUrl() pulumi.StringPtrOutput {
 
 // All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
 type EncryptionPropertiesIdentity struct {
-	// User assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId.
+	// User assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/a0a0a0a0-bbbb-cccd-dddd-e1e1e1e1e1e1/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId.
 	ResourceId *string `pulumi:"resourceId"`
 	// Managed identity type to use for accessing encryption key Url.
 	Type *string `pulumi:"type"`
@@ -193,7 +193,7 @@ type EncryptionPropertiesIdentityInput interface {
 
 // All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
 type EncryptionPropertiesIdentityArgs struct {
-	// User assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId.
+	// User assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/a0a0a0a0-bbbb-cccd-dddd-e1e1e1e1e1e1/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId.
 	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
 	// Managed identity type to use for accessing encryption key Url.
 	Type pulumi.StringPtrInput `pulumi:"type"`
@@ -277,7 +277,7 @@ func (o EncryptionPropertiesIdentityOutput) ToEncryptionPropertiesIdentityPtrOut
 	}).(EncryptionPropertiesIdentityPtrOutput)
 }
 
-// User assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId.
+// User assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/a0a0a0a0-bbbb-cccd-dddd-e1e1e1e1e1e1/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId.
 func (o EncryptionPropertiesIdentityOutput) ResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EncryptionPropertiesIdentity) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
 }
@@ -311,7 +311,7 @@ func (o EncryptionPropertiesIdentityPtrOutput) Elem() EncryptionPropertiesIdenti
 	}).(EncryptionPropertiesIdentityOutput)
 }
 
-// User assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId.
+// User assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/a0a0a0a0-bbbb-cccd-dddd-e1e1e1e1e1e1/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId.
 func (o EncryptionPropertiesIdentityPtrOutput) ResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EncryptionPropertiesIdentity) *string {
 		if v == nil {
@@ -333,7 +333,7 @@ func (o EncryptionPropertiesIdentityPtrOutput) Type() pulumi.StringPtrOutput {
 
 // All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
 type EncryptionPropertiesIdentityResponse struct {
-	// User assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId.
+	// User assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/a0a0a0a0-bbbb-cccd-dddd-e1e1e1e1e1e1/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId.
 	ResourceId *string `pulumi:"resourceId"`
 	// Managed identity type to use for accessing encryption key Url.
 	Type *string `pulumi:"type"`
@@ -354,7 +354,7 @@ func (o EncryptionPropertiesIdentityResponseOutput) ToEncryptionPropertiesIdenti
 	return o
 }
 
-// User assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId.
+// User assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/a0a0a0a0-bbbb-cccd-dddd-e1e1e1e1e1e1/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId.
 func (o EncryptionPropertiesIdentityResponseOutput) ResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EncryptionPropertiesIdentityResponse) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
 }
@@ -388,7 +388,7 @@ func (o EncryptionPropertiesIdentityResponsePtrOutput) Elem() EncryptionProperti
 	}).(EncryptionPropertiesIdentityResponseOutput)
 }
 
-// User assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId.
+// User assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/a0a0a0a0-bbbb-cccd-dddd-e1e1e1e1e1e1/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId.
 func (o EncryptionPropertiesIdentityResponsePtrOutput) ResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EncryptionPropertiesIdentityResponse) *string {
 		if v == nil {

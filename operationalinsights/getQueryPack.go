@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns a Log Analytics QueryPack.
 //
-// Uses Azure REST API version 2019-09-01.
+// Uses Azure REST API version 2023-09-01.
 //
-// Other available API versions: 2019-09-01-preview, 2023-09-01, 2025-02-01.
+// Other available API versions: 2019-09-01, 2019-09-01-preview, 2025-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupQueryPack(ctx *pulumi.Context, args *LookupQueryPackArgs, opts ...pulumi.InvokeOption) (*LookupQueryPackResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupQueryPackResult
@@ -35,23 +35,27 @@ type LookupQueryPackArgs struct {
 
 // An Log Analytics QueryPack definition.
 type LookupQueryPackResult struct {
-	// Azure resource Id
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
-	// Resource location
+	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
-	// Azure resource name
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Current state of this QueryPack: whether or not is has been provisioned within the resource group it is defined. Users cannot change this value but are able to read from it. Values will include Succeeded, Deploying, Canceled, and Failed.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The unique ID of your application. This field cannot be changed.
 	QueryPackId string `pulumi:"queryPackId"`
-	// Resource tags
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Creation Date for the Log Analytics QueryPack, in ISO 8601 format.
 	TimeCreated string `pulumi:"timeCreated"`
 	// Last modified date of the Log Analytics QueryPack, in ISO 8601 format.
 	TimeModified string `pulumi:"timeModified"`
-	// Azure resource type
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -90,17 +94,22 @@ func (o LookupQueryPackResultOutput) ToLookupQueryPackResultOutputWithContext(ct
 	return o
 }
 
-// Azure resource Id
+// The Azure API version of the resource.
+func (o LookupQueryPackResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupQueryPackResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupQueryPackResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupQueryPackResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Resource location
+// The geo-location where the resource lives
 func (o LookupQueryPackResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupQueryPackResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// Azure resource name
+// The name of the resource
 func (o LookupQueryPackResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupQueryPackResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -115,7 +124,12 @@ func (o LookupQueryPackResultOutput) QueryPackId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupQueryPackResult) string { return v.QueryPackId }).(pulumi.StringOutput)
 }
 
-// Resource tags
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupQueryPackResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupQueryPackResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// Resource tags.
 func (o LookupQueryPackResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupQueryPackResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -130,7 +144,7 @@ func (o LookupQueryPackResultOutput) TimeModified() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupQueryPackResult) string { return v.TimeModified }).(pulumi.StringOutput)
 }
 
-// Azure resource type
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupQueryPackResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupQueryPackResult) string { return v.Type }).(pulumi.StringOutput)
 }

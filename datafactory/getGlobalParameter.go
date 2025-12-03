@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,6 +35,8 @@ type LookupGlobalParameterArgs struct {
 
 // Global parameters resource type.
 type LookupGlobalParameterResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Etag identifies change in the resource.
 	Etag string `pulumi:"etag"`
 	// The resource identifier.
@@ -82,6 +84,11 @@ func (o LookupGlobalParameterResultOutput) ToLookupGlobalParameterResultOutput()
 
 func (o LookupGlobalParameterResultOutput) ToLookupGlobalParameterResultOutputWithContext(ctx context.Context) LookupGlobalParameterResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupGlobalParameterResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGlobalParameterResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Etag identifies change in the resource.

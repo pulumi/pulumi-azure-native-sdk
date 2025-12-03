@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the resource and its properties.
 //
-// Uses Azure REST API version 2023-02-01.
+// Uses Azure REST API version 2024-03-01.
 //
-// Other available API versions: 2021-04-01-preview, 2021-06-01-preview, 2021-09-01-preview, 2023-03-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-08-01-preview, 2024-10-01-preview.
+// Other available API versions: 2023-02-01, 2023-03-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview, 2024-04-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native webpubsub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupWebPubSub(ctx *pulumi.Context, args *LookupWebPubSubArgs, opts ...pulumi.InvokeOption) (*LookupWebPubSubResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebPubSubResult
@@ -27,7 +27,7 @@ func LookupWebPubSub(ctx *pulumi.Context, args *LookupWebPubSubArgs, opts ...pul
 }
 
 type LookupWebPubSubArgs struct {
-	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the resource.
 	ResourceName string `pulumi:"resourceName"`
@@ -35,6 +35,8 @@ type LookupWebPubSubArgs struct {
 
 // A class represent a resource.
 type LookupWebPubSubResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// DisableLocalAuth
 	// Enable or disable aad auth
 	// When set as true, connection with AuthType=aad won't work.
@@ -49,15 +51,17 @@ type LookupWebPubSubResult struct {
 	HostName string `pulumi:"hostName"`
 	// Deprecated.
 	HostNamePrefix string `pulumi:"hostNamePrefix"`
-	// Fully qualified resource Id for the resource.
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// A class represent managed identities used for request and response
 	Identity *ManagedIdentityResponse `pulumi:"identity"`
+	// The kind of the service
+	Kind *string `pulumi:"kind"`
 	// Live trace configuration of a Microsoft.SignalRService resource.
 	LiveTraceConfiguration *LiveTraceConfigurationResponse `pulumi:"liveTraceConfiguration"`
-	// The GEO location of the resource. e.g. West US | East US | North Central US | South Central US.
-	Location *string `pulumi:"location"`
-	// The name of the resource.
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Network ACLs for the resource
 	NetworkACLs *WebPubSubNetworkACLsResponse `pulumi:"networkACLs"`
@@ -71,21 +75,31 @@ type LookupWebPubSubResult struct {
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// The publicly accessible port of the resource which is designed for browser/client side usage.
 	PublicPort int `pulumi:"publicPort"`
+	// Enable or disable the regional endpoint. Default to "Enabled".
+	// When it's Disabled, new connections will not be routed to this endpoint, however existing connections will not be affected.
+	// This property is replica specific. Disable the regional endpoint without replica is not allowed.
+	RegionEndpointEnabled *string `pulumi:"regionEndpointEnabled"`
 	// Resource log configuration of a Microsoft.SignalRService resource.
 	ResourceLogConfiguration *ResourceLogConfigurationResponse `pulumi:"resourceLogConfiguration"`
+	// Stop or start the resource.  Default to "False".
+	// When it's true, the data plane of the resource is shutdown.
+	// When it's false, the data plane of the resource is started.
+	ResourceStopped *string `pulumi:"resourceStopped"`
 	// The publicly accessible port of the resource which is designed for customer server side usage.
 	ServerPort int `pulumi:"serverPort"`
 	// The list of shared private link resources.
 	SharedPrivateLinkResources []SharedPrivateLinkResourceResponse `pulumi:"sharedPrivateLinkResources"`
 	// The billing information of the resource.
 	Sku *ResourceSkuResponse `pulumi:"sku"`
-	// Metadata pertaining to creation and last modification of the resource.
+	// SocketIO settings for the resource
+	SocketIO *WebPubSubSocketIOSettingsResponse `pulumi:"socketIO"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// Tags of the service which is a list of key value pairs that describe the resource.
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// TLS settings for the resource
 	Tls *WebPubSubTlsSettingsResponse `pulumi:"tls"`
-	// The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// Version of the resource. Probably you need the same or higher version of client SDKs.
 	Version string `pulumi:"version"`
@@ -111,6 +125,14 @@ func (val *LookupWebPubSubResult) Defaults() *LookupWebPubSubResult {
 		publicNetworkAccess_ := "Enabled"
 		tmp.PublicNetworkAccess = &publicNetworkAccess_
 	}
+	if tmp.RegionEndpointEnabled == nil {
+		regionEndpointEnabled_ := "Enabled"
+		tmp.RegionEndpointEnabled = &regionEndpointEnabled_
+	}
+	if tmp.ResourceStopped == nil {
+		resourceStopped_ := "false"
+		tmp.ResourceStopped = &resourceStopped_
+	}
 	tmp.Tls = tmp.Tls.Defaults()
 
 	return &tmp
@@ -125,7 +147,7 @@ func LookupWebPubSubOutput(ctx *pulumi.Context, args LookupWebPubSubOutputArgs, 
 }
 
 type LookupWebPubSubOutputArgs struct {
-	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the resource.
 	ResourceName pulumi.StringInput `pulumi:"resourceName"`
@@ -148,6 +170,11 @@ func (o LookupWebPubSubResultOutput) ToLookupWebPubSubResultOutput() LookupWebPu
 
 func (o LookupWebPubSubResultOutput) ToLookupWebPubSubResultOutputWithContext(ctx context.Context) LookupWebPubSubResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupWebPubSubResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebPubSubResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // DisableLocalAuth
@@ -179,7 +206,7 @@ func (o LookupWebPubSubResultOutput) HostNamePrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebPubSubResult) string { return v.HostNamePrefix }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource Id for the resource.
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupWebPubSubResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebPubSubResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -189,17 +216,22 @@ func (o LookupWebPubSubResultOutput) Identity() ManagedIdentityResponsePtrOutput
 	return o.ApplyT(func(v LookupWebPubSubResult) *ManagedIdentityResponse { return v.Identity }).(ManagedIdentityResponsePtrOutput)
 }
 
+// The kind of the service
+func (o LookupWebPubSubResultOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWebPubSubResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
 // Live trace configuration of a Microsoft.SignalRService resource.
 func (o LookupWebPubSubResultOutput) LiveTraceConfiguration() LiveTraceConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v LookupWebPubSubResult) *LiveTraceConfigurationResponse { return v.LiveTraceConfiguration }).(LiveTraceConfigurationResponsePtrOutput)
 }
 
-// The GEO location of the resource. e.g. West US | East US | North Central US | South Central US.
-func (o LookupWebPubSubResultOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupWebPubSubResult) *string { return v.Location }).(pulumi.StringPtrOutput)
+// The geo-location where the resource lives
+func (o LookupWebPubSubResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebPubSubResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// The name of the resource.
+// The name of the resource
 func (o LookupWebPubSubResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebPubSubResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -231,9 +263,23 @@ func (o LookupWebPubSubResultOutput) PublicPort() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupWebPubSubResult) int { return v.PublicPort }).(pulumi.IntOutput)
 }
 
+// Enable or disable the regional endpoint. Default to "Enabled".
+// When it's Disabled, new connections will not be routed to this endpoint, however existing connections will not be affected.
+// This property is replica specific. Disable the regional endpoint without replica is not allowed.
+func (o LookupWebPubSubResultOutput) RegionEndpointEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWebPubSubResult) *string { return v.RegionEndpointEnabled }).(pulumi.StringPtrOutput)
+}
+
 // Resource log configuration of a Microsoft.SignalRService resource.
 func (o LookupWebPubSubResultOutput) ResourceLogConfiguration() ResourceLogConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v LookupWebPubSubResult) *ResourceLogConfigurationResponse { return v.ResourceLogConfiguration }).(ResourceLogConfigurationResponsePtrOutput)
+}
+
+// Stop or start the resource.  Default to "False".
+// When it's true, the data plane of the resource is shutdown.
+// When it's false, the data plane of the resource is started.
+func (o LookupWebPubSubResultOutput) ResourceStopped() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWebPubSubResult) *string { return v.ResourceStopped }).(pulumi.StringPtrOutput)
 }
 
 // The publicly accessible port of the resource which is designed for customer server side usage.
@@ -251,12 +297,17 @@ func (o LookupWebPubSubResultOutput) Sku() ResourceSkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupWebPubSubResult) *ResourceSkuResponse { return v.Sku }).(ResourceSkuResponsePtrOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
+// SocketIO settings for the resource
+func (o LookupWebPubSubResultOutput) SocketIO() WebPubSubSocketIOSettingsResponsePtrOutput {
+	return o.ApplyT(func(v LookupWebPubSubResult) *WebPubSubSocketIOSettingsResponse { return v.SocketIO }).(WebPubSubSocketIOSettingsResponsePtrOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupWebPubSubResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupWebPubSubResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Tags of the service which is a list of key value pairs that describe the resource.
+// Resource tags.
 func (o LookupWebPubSubResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupWebPubSubResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -266,7 +317,7 @@ func (o LookupWebPubSubResultOutput) Tls() WebPubSubTlsSettingsResponsePtrOutput
 	return o.ApplyT(func(v LookupWebPubSubResult) *WebPubSubTlsSettingsResponse { return v.Tls }).(WebPubSubTlsSettingsResponsePtrOutput)
 }
 
-// The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupWebPubSubResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebPubSubResult) string { return v.Type }).(pulumi.StringOutput)
 }

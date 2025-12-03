@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,6 +35,8 @@ type LookupInternetGatewayRuleArgs struct {
 type LookupInternetGatewayRuleResult struct {
 	// Switch configuration description.
 	Annotation *string `pulumi:"annotation"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// List of Internet Gateway resource Id.
@@ -93,6 +95,11 @@ func (o LookupInternetGatewayRuleResultOutput) ToLookupInternetGatewayRuleResult
 // Switch configuration description.
 func (o LookupInternetGatewayRuleResultOutput) Annotation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupInternetGatewayRuleResult) *string { return v.Annotation }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupInternetGatewayRuleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInternetGatewayRuleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

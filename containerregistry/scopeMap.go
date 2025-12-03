@@ -8,15 +8,15 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An object that represents a scope map for a container registry.
 //
-// Uses Azure REST API version 2022-12-01. In version 1.x of the Azure Native provider, it used API version 2020-11-01-preview.
+// Uses Azure REST API version 2024-11-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-12-01.
 //
-// Other available API versions: 2023-01-01-preview, 2023-06-01-preview, 2023-07-01, 2023-08-01-preview, 2023-11-01-preview, 2024-11-01-preview.
+// Other available API versions: 2020-11-01-preview, 2021-06-01-preview, 2021-08-01-preview, 2021-12-01-preview, 2022-02-01-preview, 2022-12-01, 2023-01-01-preview, 2023-06-01-preview, 2023-07-01, 2023-08-01-preview, 2023-11-01-preview, 2025-03-01-preview, 2025-04-01, 2025-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ScopeMap struct {
 	pulumi.CustomResourceState
 
@@ -24,6 +24,8 @@ type ScopeMap struct {
 	// E.g. repositories/repository-name/content/read,
 	// repositories/repository-name/metadata/write
 	Actions pulumi.StringArrayOutput `pulumi:"actions"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The creation date of scope map.
 	CreationDate pulumi.StringOutput `pulumi:"creationDate"`
 	// The user friendly description of the scope map.
@@ -93,6 +95,15 @@ func NewScopeMap(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:containerregistry/v20241101preview:ScopeMap"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerregistry/v20250301preview:ScopeMap"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerregistry/v20250401:ScopeMap"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerregistry/v20250501preview:ScopeMap"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -201,6 +212,11 @@ func (o ScopeMapOutput) ToScopeMapOutputWithContext(ctx context.Context) ScopeMa
 // repositories/repository-name/metadata/write
 func (o ScopeMapOutput) Actions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ScopeMap) pulumi.StringArrayOutput { return v.Actions }).(pulumi.StringArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o ScopeMapOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ScopeMap) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of scope map.

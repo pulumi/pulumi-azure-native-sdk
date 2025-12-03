@@ -8,29 +8,33 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An instance of a script executed by a user - custom or AVS
 //
-// Uses Azure REST API version 2022-05-01. In version 1.x of the Azure Native provider, it used API version 2021-06-01.
+// Uses Azure REST API version 2023-09-01. In version 2.x of the Azure Native provider, it used API version 2022-05-01.
 //
-// Other available API versions: 2023-03-01, 2023-09-01.
+// Other available API versions: 2022-05-01, 2023-03-01, 2024-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native avs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ScriptExecution struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Standard error output stream from the powershell execution
 	Errors pulumi.StringArrayOutput `pulumi:"errors"`
-	// Error message if the script was able to run, but if the script itself had errors or powershell threw an exception
+	// Error message if the script was able to run, but if the script itself had
+	// errors or powershell threw an exception
 	FailureReason pulumi.StringPtrOutput `pulumi:"failureReason"`
 	// Time the script execution was finished
 	FinishedAt pulumi.StringOutput `pulumi:"finishedAt"`
-	// Parameters that will be hidden/not visible to ARM, such as passwords and credentials
+	// Parameters that will be hidden/not visible to ARM, such as passwords and
+	// credentials
 	HiddenParameters pulumi.ArrayOutput `pulumi:"hiddenParameters"`
 	// Standard information out stream from the powershell execution
 	Information pulumi.StringArrayOutput `pulumi:"information"`
-	// Resource name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// User-defined dictionary.
 	NamedOutputs pulumi.MapOutput `pulumi:"namedOutputs"`
@@ -48,9 +52,11 @@ type ScriptExecution struct {
 	StartedAt pulumi.StringOutput `pulumi:"startedAt"`
 	// Time the script execution was submitted
 	SubmittedAt pulumi.StringOutput `pulumi:"submittedAt"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Time limit for execution
 	Timeout pulumi.StringOutput `pulumi:"timeout"`
-	// Resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Standard warning out stream from the powershell execution
 	Warnings pulumi.StringArrayOutput `pulumi:"warnings"`
@@ -88,6 +94,9 @@ func NewScriptExecution(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:avs/v20230901:ScriptExecution"),
 		},
+		{
+			Type: pulumi.String("azure-native:avs/v20240901:ScriptExecution"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -123,9 +132,11 @@ func (ScriptExecutionState) ElementType() reflect.Type {
 }
 
 type scriptExecutionArgs struct {
-	// Error message if the script was able to run, but if the script itself had errors or powershell threw an exception
+	// Error message if the script was able to run, but if the script itself had
+	// errors or powershell threw an exception
 	FailureReason *string `pulumi:"failureReason"`
-	// Parameters that will be hidden/not visible to ARM, such as passwords and credentials
+	// Parameters that will be hidden/not visible to ARM, such as passwords and
+	// credentials
 	HiddenParameters []interface{} `pulumi:"hiddenParameters"`
 	// User-defined dictionary.
 	NamedOutputs map[string]interface{} `pulumi:"namedOutputs"`
@@ -133,7 +144,7 @@ type scriptExecutionArgs struct {
 	Output []string `pulumi:"output"`
 	// Parameters the script will accept
 	Parameters []interface{} `pulumi:"parameters"`
-	// The name of the private cloud.
+	// Name of the private cloud
 	PrivateCloudName string `pulumi:"privateCloudName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -141,7 +152,7 @@ type scriptExecutionArgs struct {
 	Retention *string `pulumi:"retention"`
 	// A reference to the script cmdlet resource if user is running a AVS script
 	ScriptCmdletId *string `pulumi:"scriptCmdletId"`
-	// Name of the user-invoked script execution resource
+	// Name of the script cmdlet.
 	ScriptExecutionName *string `pulumi:"scriptExecutionName"`
 	// Time limit for execution
 	Timeout string `pulumi:"timeout"`
@@ -149,9 +160,11 @@ type scriptExecutionArgs struct {
 
 // The set of arguments for constructing a ScriptExecution resource.
 type ScriptExecutionArgs struct {
-	// Error message if the script was able to run, but if the script itself had errors or powershell threw an exception
+	// Error message if the script was able to run, but if the script itself had
+	// errors or powershell threw an exception
 	FailureReason pulumi.StringPtrInput
-	// Parameters that will be hidden/not visible to ARM, such as passwords and credentials
+	// Parameters that will be hidden/not visible to ARM, such as passwords and
+	// credentials
 	HiddenParameters pulumi.ArrayInput
 	// User-defined dictionary.
 	NamedOutputs pulumi.MapInput
@@ -159,7 +172,7 @@ type ScriptExecutionArgs struct {
 	Output pulumi.StringArrayInput
 	// Parameters the script will accept
 	Parameters pulumi.ArrayInput
-	// The name of the private cloud.
+	// Name of the private cloud
 	PrivateCloudName pulumi.StringInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
@@ -167,7 +180,7 @@ type ScriptExecutionArgs struct {
 	Retention pulumi.StringPtrInput
 	// A reference to the script cmdlet resource if user is running a AVS script
 	ScriptCmdletId pulumi.StringPtrInput
-	// Name of the user-invoked script execution resource
+	// Name of the script cmdlet.
 	ScriptExecutionName pulumi.StringPtrInput
 	// Time limit for execution
 	Timeout pulumi.StringInput
@@ -210,12 +223,18 @@ func (o ScriptExecutionOutput) ToScriptExecutionOutputWithContext(ctx context.Co
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ScriptExecutionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ScriptExecution) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Standard error output stream from the powershell execution
 func (o ScriptExecutionOutput) Errors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ScriptExecution) pulumi.StringArrayOutput { return v.Errors }).(pulumi.StringArrayOutput)
 }
 
-// Error message if the script was able to run, but if the script itself had errors or powershell threw an exception
+// Error message if the script was able to run, but if the script itself had
+// errors or powershell threw an exception
 func (o ScriptExecutionOutput) FailureReason() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScriptExecution) pulumi.StringPtrOutput { return v.FailureReason }).(pulumi.StringPtrOutput)
 }
@@ -225,7 +244,8 @@ func (o ScriptExecutionOutput) FinishedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ScriptExecution) pulumi.StringOutput { return v.FinishedAt }).(pulumi.StringOutput)
 }
 
-// Parameters that will be hidden/not visible to ARM, such as passwords and credentials
+// Parameters that will be hidden/not visible to ARM, such as passwords and
+// credentials
 func (o ScriptExecutionOutput) HiddenParameters() pulumi.ArrayOutput {
 	return o.ApplyT(func(v *ScriptExecution) pulumi.ArrayOutput { return v.HiddenParameters }).(pulumi.ArrayOutput)
 }
@@ -235,7 +255,7 @@ func (o ScriptExecutionOutput) Information() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ScriptExecution) pulumi.StringArrayOutput { return v.Information }).(pulumi.StringArrayOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o ScriptExecutionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ScriptExecution) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -280,12 +300,17 @@ func (o ScriptExecutionOutput) SubmittedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ScriptExecution) pulumi.StringOutput { return v.SubmittedAt }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o ScriptExecutionOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *ScriptExecution) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
 // Time limit for execution
 func (o ScriptExecutionOutput) Timeout() pulumi.StringOutput {
 	return o.ApplyT(func(v *ScriptExecution) pulumi.StringOutput { return v.Timeout }).(pulumi.StringOutput)
 }
 
-// Resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o ScriptExecutionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ScriptExecution) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

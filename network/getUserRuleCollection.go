@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2022-04-01-preview.
 //
-// Other available API versions: 2021-02-01-preview, 2021-05-01-preview.
+// Other available API versions: 2021-02-01-preview, 2022-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupUserRuleCollection(ctx *pulumi.Context, args *LookupUserRuleCollectionArgs, opts ...pulumi.InvokeOption) (*LookupUserRuleCollectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupUserRuleCollectionResult
@@ -41,6 +41,8 @@ type LookupUserRuleCollectionArgs struct {
 type LookupUserRuleCollectionResult struct {
 	// Groups for configuration
 	AppliesToGroups []NetworkManagerSecurityGroupItemResponse `pulumi:"appliesToGroups"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A description of the user rule collection.
 	Description *string `pulumi:"description"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -101,6 +103,11 @@ func (o LookupUserRuleCollectionResultOutput) AppliesToGroups() NetworkManagerSe
 	return o.ApplyT(func(v LookupUserRuleCollectionResult) []NetworkManagerSecurityGroupItemResponse {
 		return v.AppliesToGroups
 	}).(NetworkManagerSecurityGroupItemResponseArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupUserRuleCollectionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserRuleCollectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A description of the user rule collection.

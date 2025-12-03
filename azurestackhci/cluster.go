@@ -8,15 +8,15 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Cluster details.
 //
-// Uses Azure REST API version 2023-03-01. In version 1.x of the Azure Native provider, it used API version 2020-10-01.
+// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
 //
-// Other available API versions: 2022-01-01, 2022-09-01, 2022-12-15-preview, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-04-01, 2024-09-01-preview, 2024-12-01-preview.
+// Other available API versions: 2022-12-15-preview, 2023-02-01, 2023-03-01, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview, 2025-02-01-preview, 2025-09-15-preview, 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Cluster struct {
 	pulumi.CustomResourceState
 
@@ -28,20 +28,28 @@ type Cluster struct {
 	AadServicePrincipalObjectId pulumi.StringPtrOutput `pulumi:"aadServicePrincipalObjectId"`
 	// Tenant id of cluster AAD identity.
 	AadTenantId pulumi.StringPtrOutput `pulumi:"aadTenantId"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Type of billing applied to the resource.
 	BillingModel pulumi.StringOutput `pulumi:"billingModel"`
 	// Unique, immutable resource id.
 	CloudId pulumi.StringOutput `pulumi:"cloudId"`
 	// Endpoint configured for management from the Azure portal.
 	CloudManagementEndpoint pulumi.StringPtrOutput `pulumi:"cloudManagementEndpoint"`
+	// Overall connectivity status for the cluster resource.
+	ConnectivityStatus pulumi.StringOutput `pulumi:"connectivityStatus"`
 	// Desired properties of the cluster.
 	DesiredProperties ClusterDesiredPropertiesResponsePtrOutput `pulumi:"desiredProperties"`
+	// Attestation configurations for isolated VM (e.g. TVM, CVM) of the cluster.
+	IsolatedVmAttestationConfiguration IsolatedVmAttestationConfigurationResponseOutput `pulumi:"isolatedVmAttestationConfiguration"`
 	// Most recent billing meter timestamp.
 	LastBillingTimestamp pulumi.StringOutput `pulumi:"lastBillingTimestamp"`
 	// Most recent cluster sync timestamp.
 	LastSyncTimestamp pulumi.StringOutput `pulumi:"lastSyncTimestamp"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
+	// Log Collection properties of the cluster.
+	LogCollectionProperties LogCollectionPropertiesResponsePtrOutput `pulumi:"logCollectionProperties"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
@@ -50,6 +58,8 @@ type Cluster struct {
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// First cluster sync timestamp.
 	RegistrationTimestamp pulumi.StringOutput `pulumi:"registrationTimestamp"`
+	// RemoteSupport properties of the cluster.
+	RemoteSupportProperties RemoteSupportPropertiesResponsePtrOutput `pulumi:"remoteSupportProperties"`
 	// Properties reported by cluster agent.
 	ReportedProperties ClusterReportedPropertiesResponseOutput `pulumi:"reportedProperties"`
 	// Object id of RP Service Principal
@@ -156,6 +166,15 @@ func NewCluster(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20241201preview:Cluster"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20250201preview:Cluster"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20250915preview:Cluster"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20251001:Cluster"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -307,6 +326,11 @@ func (o ClusterOutput) AadTenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.AadTenantId }).(pulumi.StringPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o ClusterOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Type of billing applied to the resource.
 func (o ClusterOutput) BillingModel() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.BillingModel }).(pulumi.StringOutput)
@@ -322,9 +346,21 @@ func (o ClusterOutput) CloudManagementEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.CloudManagementEndpoint }).(pulumi.StringPtrOutput)
 }
 
+// Overall connectivity status for the cluster resource.
+func (o ClusterOutput) ConnectivityStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ConnectivityStatus }).(pulumi.StringOutput)
+}
+
 // Desired properties of the cluster.
 func (o ClusterOutput) DesiredProperties() ClusterDesiredPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v *Cluster) ClusterDesiredPropertiesResponsePtrOutput { return v.DesiredProperties }).(ClusterDesiredPropertiesResponsePtrOutput)
+}
+
+// Attestation configurations for isolated VM (e.g. TVM, CVM) of the cluster.
+func (o ClusterOutput) IsolatedVmAttestationConfiguration() IsolatedVmAttestationConfigurationResponseOutput {
+	return o.ApplyT(func(v *Cluster) IsolatedVmAttestationConfigurationResponseOutput {
+		return v.IsolatedVmAttestationConfiguration
+	}).(IsolatedVmAttestationConfigurationResponseOutput)
 }
 
 // Most recent billing meter timestamp.
@@ -340,6 +376,11 @@ func (o ClusterOutput) LastSyncTimestamp() pulumi.StringOutput {
 // The geo-location where the resource lives
 func (o ClusterOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// Log Collection properties of the cluster.
+func (o ClusterOutput) LogCollectionProperties() LogCollectionPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *Cluster) LogCollectionPropertiesResponsePtrOutput { return v.LogCollectionProperties }).(LogCollectionPropertiesResponsePtrOutput)
 }
 
 // The name of the resource
@@ -360,6 +401,11 @@ func (o ClusterOutput) ProvisioningState() pulumi.StringOutput {
 // First cluster sync timestamp.
 func (o ClusterOutput) RegistrationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.RegistrationTimestamp }).(pulumi.StringOutput)
+}
+
+// RemoteSupport properties of the cluster.
+func (o ClusterOutput) RemoteSupportProperties() RemoteSupportPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *Cluster) RemoteSupportPropertiesResponsePtrOutput { return v.RemoteSupportProperties }).(RemoteSupportPropertiesResponsePtrOutput)
 }
 
 // Properties reported by cluster agent.

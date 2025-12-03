@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2022-09-01-preview.
 //
-// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupWorkspaceNamedValue(ctx *pulumi.Context, args *LookupWorkspaceNamedValueArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceNamedValueResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceNamedValueResult
@@ -39,6 +39,8 @@ type LookupWorkspaceNamedValueArgs struct {
 
 // NamedValue details.
 type LookupWorkspaceNamedValueResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Unique name of NamedValue. It may contain only letters, digits, period, dash, and underscore characters.
 	DisplayName string `pulumi:"displayName"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -94,6 +96,11 @@ func (o LookupWorkspaceNamedValueResultOutput) ToLookupWorkspaceNamedValueResult
 
 func (o LookupWorkspaceNamedValueResultOutput) ToLookupWorkspaceNamedValueResultOutputWithContext(ctx context.Context) LookupWorkspaceNamedValueResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupWorkspaceNamedValueResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkspaceNamedValueResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Unique name of NamedValue. It may contain only letters, digits, period, dash, and underscore characters.

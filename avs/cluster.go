@@ -8,32 +8,38 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A cluster resource
 //
-// Uses Azure REST API version 2022-05-01. In version 1.x of the Azure Native provider, it used API version 2020-03-20.
+// Uses Azure REST API version 2023-09-01. In version 2.x of the Azure Native provider, it used API version 2022-05-01.
 //
-// Other available API versions: 2020-03-20, 2021-06-01, 2023-03-01, 2023-09-01.
+// Other available API versions: 2022-05-01, 2023-03-01, 2024-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native avs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Cluster struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The identity
 	ClusterId pulumi.IntOutput `pulumi:"clusterId"`
 	// The cluster size
 	ClusterSize pulumi.IntPtrOutput `pulumi:"clusterSize"`
 	// The hosts
 	Hosts pulumi.StringArrayOutput `pulumi:"hosts"`
-	// Resource name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The state of the cluster provisioning
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// The cluster SKU
+	// The SKU (Stock Keeping Unit) assigned to this resource.
 	Sku SkuResponseOutput `pulumi:"sku"`
-	// Resource type.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
+	// Name of the vsan datastore associated with the cluster
+	VsanDatastoreName pulumi.StringPtrOutput `pulumi:"vsanDatastoreName"`
 }
 
 // NewCluster registers a new resource with the given unique name, arguments, and options.
@@ -77,6 +83,9 @@ func NewCluster(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:avs/v20230901:Cluster"),
 		},
+		{
+			Type: pulumi.String("azure-native:avs/v20240901:Cluster"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -112,34 +121,38 @@ func (ClusterState) ElementType() reflect.Type {
 }
 
 type clusterArgs struct {
-	// Name of the cluster in the private cloud
+	// Name of the cluster
 	ClusterName *string `pulumi:"clusterName"`
 	// The cluster size
 	ClusterSize *int `pulumi:"clusterSize"`
 	// The hosts
 	Hosts []string `pulumi:"hosts"`
-	// The name of the private cloud.
+	// Name of the private cloud
 	PrivateCloudName string `pulumi:"privateCloudName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// The cluster SKU
+	// The SKU (Stock Keeping Unit) assigned to this resource.
 	Sku Sku `pulumi:"sku"`
+	// Name of the vsan datastore associated with the cluster
+	VsanDatastoreName *string `pulumi:"vsanDatastoreName"`
 }
 
 // The set of arguments for constructing a Cluster resource.
 type ClusterArgs struct {
-	// Name of the cluster in the private cloud
+	// Name of the cluster
 	ClusterName pulumi.StringPtrInput
 	// The cluster size
 	ClusterSize pulumi.IntPtrInput
 	// The hosts
 	Hosts pulumi.StringArrayInput
-	// The name of the private cloud.
+	// Name of the private cloud
 	PrivateCloudName pulumi.StringInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// The cluster SKU
+	// The SKU (Stock Keeping Unit) assigned to this resource.
 	Sku SkuInput
+	// Name of the vsan datastore associated with the cluster
+	VsanDatastoreName pulumi.StringPtrInput
 }
 
 func (ClusterArgs) ElementType() reflect.Type {
@@ -179,6 +192,11 @@ func (o ClusterOutput) ToClusterOutputWithContext(ctx context.Context) ClusterOu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ClusterOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The identity
 func (o ClusterOutput) ClusterId() pulumi.IntOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.IntOutput { return v.ClusterId }).(pulumi.IntOutput)
@@ -194,7 +212,7 @@ func (o ClusterOutput) Hosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringArrayOutput { return v.Hosts }).(pulumi.StringArrayOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o ClusterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -204,14 +222,24 @@ func (o ClusterOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// The cluster SKU
+// The SKU (Stock Keeping Unit) assigned to this resource.
 func (o ClusterOutput) Sku() SkuResponseOutput {
 	return o.ApplyT(func(v *Cluster) SkuResponseOutput { return v.Sku }).(SkuResponseOutput)
 }
 
-// Resource type.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o ClusterOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Cluster) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o ClusterOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// Name of the vsan datastore associated with the cluster
+func (o ClusterOutput) VsanDatastoreName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.VsanDatastoreName }).(pulumi.StringPtrOutput)
 }
 
 func init() {

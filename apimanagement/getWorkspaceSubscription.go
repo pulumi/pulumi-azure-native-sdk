@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2022-09-01-preview.
 //
-// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupWorkspaceSubscription(ctx *pulumi.Context, args *LookupWorkspaceSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceSubscriptionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceSubscriptionResult
@@ -41,6 +41,8 @@ type LookupWorkspaceSubscriptionArgs struct {
 type LookupWorkspaceSubscriptionResult struct {
 	// Determines whether tracing is enabled
 	AllowTracing *bool `pulumi:"allowTracing"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Subscription creation date. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
 	CreatedDate string `pulumi:"createdDate"`
 	// The name of the subscription, or null if the subscription has no name.
@@ -115,6 +117,11 @@ func (o LookupWorkspaceSubscriptionResultOutput) ToLookupWorkspaceSubscriptionRe
 // Determines whether tracing is enabled
 func (o LookupWorkspaceSubscriptionResultOutput) AllowTracing() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupWorkspaceSubscriptionResult) *bool { return v.AllowTracing }).(pulumi.BoolPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupWorkspaceSubscriptionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkspaceSubscriptionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Subscription creation date. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.

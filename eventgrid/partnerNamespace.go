@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // EventGrid Partner Namespace.
 //
-// Uses Azure REST API version 2022-06-15. In version 1.x of the Azure Native provider, it used API version 2021-06-01-preview.
+// Uses Azure REST API version 2025-02-15. In version 2.x of the Azure Native provider, it used API version 2022-06-15.
 //
-// Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
+// Other available API versions: 2022-06-15, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type PartnerNamespace struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// This boolean is used to enable or disable local auth. Default value is false. When the property is set to true, only AAD token will be used to authenticate if user is allowed to publish to the partner namespace.
 	DisableLocalAuth pulumi.BoolPtrOutput `pulumi:"disableLocalAuth"`
 	// Endpoint for the partner namespace.
@@ -28,6 +30,8 @@ type PartnerNamespace struct {
 	InboundIpRules InboundIpRuleResponseArrayOutput `pulumi:"inboundIpRules"`
 	// Location of the resource.
 	Location pulumi.StringOutput `pulumi:"location"`
+	// Minimum TLS version of the publisher allowed to publish to this partner namespace
+	MinimumTlsVersionAllowed pulumi.StringPtrOutput `pulumi:"minimumTlsVersionAllowed"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The fully qualified ARM Id of the partner registration that should be associated with this partner namespace. This takes the following format:
@@ -35,14 +39,15 @@ type PartnerNamespace struct {
 	PartnerRegistrationFullyQualifiedId pulumi.StringPtrOutput `pulumi:"partnerRegistrationFullyQualifiedId"`
 	// This determines if events published to this partner namespace should use the source attribute in the event payload
 	// or use the channel name in the header when matching to the partner topic. If none is specified, source attribute routing will be used to match the partner topic.
-	PartnerTopicRoutingMode    pulumi.StringPtrOutput                       `pulumi:"partnerTopicRoutingMode"`
+	PartnerTopicRoutingMode pulumi.StringPtrOutput `pulumi:"partnerTopicRoutingMode"`
+	// List of private endpoint connections.
 	PrivateEndpointConnections PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
 	// Provisioning state of the partner namespace.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// This determines if traffic is allowed over public network. By default it is enabled.
 	// You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.PartnerNamespaceProperties.InboundIpRules" />
 	PublicNetworkAccess pulumi.StringPtrOutput `pulumi:"publicNetworkAccess"`
-	// The system metadata relating to Partner Namespace resource.
+	// The system metadata relating to the Event Grid resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Tags of the resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
@@ -100,6 +105,9 @@ func NewPartnerNamespace(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20250215:PartnerNamespace"),
 		},
+		{
+			Type: pulumi.String("azure-native:eventgrid/v20250401preview:PartnerNamespace"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -141,6 +149,8 @@ type partnerNamespaceArgs struct {
 	InboundIpRules []InboundIpRule `pulumi:"inboundIpRules"`
 	// Location of the resource.
 	Location *string `pulumi:"location"`
+	// Minimum TLS version of the publisher allowed to publish to this partner namespace
+	MinimumTlsVersionAllowed *string `pulumi:"minimumTlsVersionAllowed"`
 	// Name of the partner namespace.
 	PartnerNamespaceName *string `pulumi:"partnerNamespaceName"`
 	// The fully qualified ARM Id of the partner registration that should be associated with this partner namespace. This takes the following format:
@@ -166,6 +176,8 @@ type PartnerNamespaceArgs struct {
 	InboundIpRules InboundIpRuleArrayInput
 	// Location of the resource.
 	Location pulumi.StringPtrInput
+	// Minimum TLS version of the publisher allowed to publish to this partner namespace
+	MinimumTlsVersionAllowed pulumi.StringPtrInput
 	// Name of the partner namespace.
 	PartnerNamespaceName pulumi.StringPtrInput
 	// The fully qualified ARM Id of the partner registration that should be associated with this partner namespace. This takes the following format:
@@ -220,6 +232,11 @@ func (o PartnerNamespaceOutput) ToPartnerNamespaceOutputWithContext(ctx context.
 	return o
 }
 
+// The Azure API version of the resource.
+func (o PartnerNamespaceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PartnerNamespace) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // This boolean is used to enable or disable local auth. Default value is false. When the property is set to true, only AAD token will be used to authenticate if user is allowed to publish to the partner namespace.
 func (o PartnerNamespaceOutput) DisableLocalAuth() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *PartnerNamespace) pulumi.BoolPtrOutput { return v.DisableLocalAuth }).(pulumi.BoolPtrOutput)
@@ -240,6 +257,11 @@ func (o PartnerNamespaceOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *PartnerNamespace) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
+// Minimum TLS version of the publisher allowed to publish to this partner namespace
+func (o PartnerNamespaceOutput) MinimumTlsVersionAllowed() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PartnerNamespace) pulumi.StringPtrOutput { return v.MinimumTlsVersionAllowed }).(pulumi.StringPtrOutput)
+}
+
 // Name of the resource.
 func (o PartnerNamespaceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PartnerNamespace) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -257,6 +279,7 @@ func (o PartnerNamespaceOutput) PartnerTopicRoutingMode() pulumi.StringPtrOutput
 	return o.ApplyT(func(v *PartnerNamespace) pulumi.StringPtrOutput { return v.PartnerTopicRoutingMode }).(pulumi.StringPtrOutput)
 }
 
+// List of private endpoint connections.
 func (o PartnerNamespaceOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
 	return o.ApplyT(func(v *PartnerNamespace) PrivateEndpointConnectionResponseArrayOutput {
 		return v.PrivateEndpointConnections
@@ -274,7 +297,7 @@ func (o PartnerNamespaceOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PartnerNamespace) pulumi.StringPtrOutput { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
 }
 
-// The system metadata relating to Partner Namespace resource.
+// The system metadata relating to the Event Grid resource.
 func (o PartnerNamespaceOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *PartnerNamespace) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

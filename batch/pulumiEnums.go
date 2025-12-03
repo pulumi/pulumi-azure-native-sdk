@@ -16,7 +16,7 @@ type AuthenticationMode string
 const (
 	// The authentication mode using shared keys.
 	AuthenticationModeSharedKey = AuthenticationMode("SharedKey")
-	// The authentication mode using Azure Active Directory.
+	// The authentication mode using Microsoft Entra ID.
 	AuthenticationModeAAD = AuthenticationMode("AAD")
 	// The authentication mode using task authentication tokens.
 	AuthenticationModeTaskAuthenticationToken = AuthenticationMode("TaskAuthenticationToken")
@@ -562,13 +562,6 @@ func (in *autoUserScopePtr) ToAutoUserScopePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(AutoUserScopePtrOutput)
 }
 
-// Values are:
-//
-//	none - The caching mode for the disk is not enabled.
-//	readOnly - The caching mode for the disk is read only.
-//	readWrite - The caching mode for the disk is read and write.
-//
-//	The default value for caching is none. For information about the caching options see: https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
 type CachingType string
 
 const (
@@ -739,7 +732,7 @@ func (in *cachingTypePtr) ToCachingTypePtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(CachingTypePtrOutput)
 }
 
-// The default value is currentUser. This property is applicable only for pools configured with Windows nodes (that is, created with cloudServiceConfiguration, or with virtualMachineConfiguration using a Windows image reference). For Linux compute nodes, the certificates are stored in a directory inside the task working directory and an environment variable AZ_BATCH_CERTIFICATES_DIR is supplied to the task to query for this location. For certificates with visibility of 'remoteUser', a 'certs' directory is created in the user's home directory (e.g., /home/{user-name}/certs) and certificates are placed in that directory.
+// The default value is currentUser. This property is applicable only for pools configured with Windows compute nodes. For Linux compute nodes, the certificates are stored in a directory inside the task working directory and an environment variable AZ_BATCH_CERTIFICATES_DIR is supplied to the task to query for this location. For certificates with visibility of 'remoteUser', a 'certs' directory is created in the user's home directory (e.g., /home/{user-name}/certs) and certificates are placed in that directory.
 type CertificateStoreLocation string
 
 const (
@@ -1132,7 +1125,7 @@ const (
 	ComputeNodeDeallocationOptionTerminate = ComputeNodeDeallocationOption("Terminate")
 	// Allow currently running tasks to complete. Schedule no new tasks while waiting. Remove nodes when all tasks have completed.
 	ComputeNodeDeallocationOptionTaskCompletion = ComputeNodeDeallocationOption("TaskCompletion")
-	// Allow currently running tasks to complete, then wait for all task data retention periods to expire. Schedule no new tasks while waiting. Remove nodes when all task retention periods have expired.
+	// Deprecated, we encourage you to upload task data to Azure Storage in your task and use `TaskCompletion` instead. Allow currently running tasks to complete, then wait for all task data retention periods to expire. Schedule no new tasks while waiting. Remove nodes when all task retention periods have expired.
 	ComputeNodeDeallocationOptionRetainedData = ComputeNodeDeallocationOption("RetainedData")
 )
 
@@ -1461,6 +1454,185 @@ func (in *computeNodeFillTypePtr) ToComputeNodeFillTypePtrOutput() ComputeNodeFi
 
 func (in *computeNodeFillTypePtr) ToComputeNodeFillTypePtrOutputWithContext(ctx context.Context) ComputeNodeFillTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ComputeNodeFillTypePtrOutput)
+}
+
+type ContainerHostDataPath string
+
+const (
+	// The path for multi-instances task to shared their files.
+	ContainerHostDataPathShared = ContainerHostDataPath("Shared")
+	// The path for start task.
+	ContainerHostDataPathStartup = ContainerHostDataPath("Startup")
+	// The path contains all virtual file systems are mounted on this node.
+	ContainerHostDataPathVfsMounts = ContainerHostDataPath("VfsMounts")
+	// The task path.
+	ContainerHostDataPathTask = ContainerHostDataPath("Task")
+	// The job-prep task path.
+	ContainerHostDataPathJobPrep = ContainerHostDataPath("JobPrep")
+	// The applications path.
+	ContainerHostDataPathApplications = ContainerHostDataPath("Applications")
+)
+
+func (ContainerHostDataPath) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerHostDataPath)(nil)).Elem()
+}
+
+func (e ContainerHostDataPath) ToContainerHostDataPathOutput() ContainerHostDataPathOutput {
+	return pulumi.ToOutput(e).(ContainerHostDataPathOutput)
+}
+
+func (e ContainerHostDataPath) ToContainerHostDataPathOutputWithContext(ctx context.Context) ContainerHostDataPathOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ContainerHostDataPathOutput)
+}
+
+func (e ContainerHostDataPath) ToContainerHostDataPathPtrOutput() ContainerHostDataPathPtrOutput {
+	return e.ToContainerHostDataPathPtrOutputWithContext(context.Background())
+}
+
+func (e ContainerHostDataPath) ToContainerHostDataPathPtrOutputWithContext(ctx context.Context) ContainerHostDataPathPtrOutput {
+	return ContainerHostDataPath(e).ToContainerHostDataPathOutputWithContext(ctx).ToContainerHostDataPathPtrOutputWithContext(ctx)
+}
+
+func (e ContainerHostDataPath) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ContainerHostDataPath) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ContainerHostDataPath) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ContainerHostDataPath) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ContainerHostDataPathOutput struct{ *pulumi.OutputState }
+
+func (ContainerHostDataPathOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerHostDataPath)(nil)).Elem()
+}
+
+func (o ContainerHostDataPathOutput) ToContainerHostDataPathOutput() ContainerHostDataPathOutput {
+	return o
+}
+
+func (o ContainerHostDataPathOutput) ToContainerHostDataPathOutputWithContext(ctx context.Context) ContainerHostDataPathOutput {
+	return o
+}
+
+func (o ContainerHostDataPathOutput) ToContainerHostDataPathPtrOutput() ContainerHostDataPathPtrOutput {
+	return o.ToContainerHostDataPathPtrOutputWithContext(context.Background())
+}
+
+func (o ContainerHostDataPathOutput) ToContainerHostDataPathPtrOutputWithContext(ctx context.Context) ContainerHostDataPathPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerHostDataPath) *ContainerHostDataPath {
+		return &v
+	}).(ContainerHostDataPathPtrOutput)
+}
+
+func (o ContainerHostDataPathOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ContainerHostDataPathOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ContainerHostDataPath) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ContainerHostDataPathOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ContainerHostDataPathOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ContainerHostDataPath) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ContainerHostDataPathPtrOutput struct{ *pulumi.OutputState }
+
+func (ContainerHostDataPathPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerHostDataPath)(nil)).Elem()
+}
+
+func (o ContainerHostDataPathPtrOutput) ToContainerHostDataPathPtrOutput() ContainerHostDataPathPtrOutput {
+	return o
+}
+
+func (o ContainerHostDataPathPtrOutput) ToContainerHostDataPathPtrOutputWithContext(ctx context.Context) ContainerHostDataPathPtrOutput {
+	return o
+}
+
+func (o ContainerHostDataPathPtrOutput) Elem() ContainerHostDataPathOutput {
+	return o.ApplyT(func(v *ContainerHostDataPath) ContainerHostDataPath {
+		if v != nil {
+			return *v
+		}
+		var ret ContainerHostDataPath
+		return ret
+	}).(ContainerHostDataPathOutput)
+}
+
+func (o ContainerHostDataPathPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ContainerHostDataPathPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ContainerHostDataPath) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ContainerHostDataPathInput is an input type that accepts values of the ContainerHostDataPath enum
+// A concrete instance of `ContainerHostDataPathInput` can be one of the following:
+//
+//	ContainerHostDataPathShared
+//	ContainerHostDataPathStartup
+//	ContainerHostDataPathVfsMounts
+//	ContainerHostDataPathTask
+//	ContainerHostDataPathJobPrep
+//	ContainerHostDataPathApplications
+type ContainerHostDataPathInput interface {
+	pulumi.Input
+
+	ToContainerHostDataPathOutput() ContainerHostDataPathOutput
+	ToContainerHostDataPathOutputWithContext(context.Context) ContainerHostDataPathOutput
+}
+
+var containerHostDataPathPtrType = reflect.TypeOf((**ContainerHostDataPath)(nil)).Elem()
+
+type ContainerHostDataPathPtrInput interface {
+	pulumi.Input
+
+	ToContainerHostDataPathPtrOutput() ContainerHostDataPathPtrOutput
+	ToContainerHostDataPathPtrOutputWithContext(context.Context) ContainerHostDataPathPtrOutput
+}
+
+type containerHostDataPathPtr string
+
+func ContainerHostDataPathPtr(v string) ContainerHostDataPathPtrInput {
+	return (*containerHostDataPathPtr)(&v)
+}
+
+func (*containerHostDataPathPtr) ElementType() reflect.Type {
+	return containerHostDataPathPtrType
+}
+
+func (in *containerHostDataPathPtr) ToContainerHostDataPathPtrOutput() ContainerHostDataPathPtrOutput {
+	return pulumi.ToOutput(in).(ContainerHostDataPathPtrOutput)
+}
+
+func (in *containerHostDataPathPtr) ToContainerHostDataPathPtrOutputWithContext(ctx context.Context) ContainerHostDataPathPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ContainerHostDataPathPtrOutput)
 }
 
 type ContainerType string
@@ -1797,7 +1969,7 @@ func (in *containerWorkingDirectoryPtr) ToContainerWorkingDirectoryPtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(ContainerWorkingDirectoryPtrOutput)
 }
 
-// This property can be used by user in the request to choose which location the operating system should be in. e.g., cache disk space for Ephemeral OS disk provisioning. For more information on Ephemeral OS disk size requirements, please refer to Ephemeral OS disk size requirements for Windows VMs at https://docs.microsoft.com/en-us/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements and Linux VMs at https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements.
+// This property can be used by user in the request to choose which location the operating system should be in. e.g., cache disk space for Ephemeral OS disk provisioning. For more information on Ephemeral OS disk size requirements, please refer to Ephemeral OS disk size requirements for Windows VMs at https://learn.microsoft.com/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements and Linux VMs at https://learn.microsoft.com/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements.
 type DiffDiskPlacement string
 
 const (
@@ -3517,7 +3689,7 @@ func (in *keySourcePtr) ToKeySourcePtrOutputWithContext(ctx context.Context) Key
 	return pulumi.ToOutputWithContext(ctx, in).(KeySourcePtrOutput)
 }
 
-// Specifies login mode for the user. The default value for VirtualMachineConfiguration pools is interactive mode and for CloudServiceConfiguration pools is batch mode.
+// Specifies login mode for the user. The default value is Interactive.
 type LoginMode string
 
 const (
@@ -4191,7 +4363,7 @@ func (in *nodePlacementPolicyTypePtr) ToNodePlacementPolicyTypePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(NodePlacementPolicyTypePtrOutput)
 }
 
-// The pool allocation mode also affects how clients may authenticate to the Batch Service API. If the mode is BatchService, clients may authenticate using access keys or Azure Active Directory. If the mode is UserSubscription, clients must use Azure Active Directory. The default is BatchService.
+// The pool allocation mode also affects how clients may authenticate to the Batch Service API. If the mode is BatchService, clients may authenticate using access keys or Microsoft Entra ID. If the mode is UserSubscription, clients must use Microsoft Entra ID. The default is BatchService.
 type PoolAllocationMode string
 
 const (
@@ -4535,6 +4707,8 @@ const (
 	PublicNetworkAccessTypeEnabled = PublicNetworkAccessType("Enabled")
 	// Disables public connectivity and enables private connectivity to Azure Batch Service through private endpoint resource.
 	PublicNetworkAccessTypeDisabled = PublicNetworkAccessType("Disabled")
+	// Secures connectivity to Azure Batch through NSP configuration.
+	PublicNetworkAccessTypeSecuredByPerimeter = PublicNetworkAccessType("SecuredByPerimeter")
 )
 
 func (PublicNetworkAccessType) ElementType() reflect.Type {
@@ -4661,6 +4835,7 @@ func (o PublicNetworkAccessTypePtrOutput) ToStringPtrOutputWithContext(ctx conte
 //
 //	PublicNetworkAccessTypeEnabled
 //	PublicNetworkAccessTypeDisabled
+//	PublicNetworkAccessTypeSecuredByPerimeter
 type PublicNetworkAccessTypeInput interface {
 	pulumi.Input
 
@@ -4866,17 +5041,347 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
 }
 
-// If omitted, the default is "Standard_LRS". Values are:
+type SecurityEncryptionTypes string
+
+const (
+	SecurityEncryptionTypesNonPersistedTPM  = SecurityEncryptionTypes("NonPersistedTPM")
+	SecurityEncryptionTypesVMGuestStateOnly = SecurityEncryptionTypes("VMGuestStateOnly")
+)
+
+func (SecurityEncryptionTypes) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityEncryptionTypes)(nil)).Elem()
+}
+
+func (e SecurityEncryptionTypes) ToSecurityEncryptionTypesOutput() SecurityEncryptionTypesOutput {
+	return pulumi.ToOutput(e).(SecurityEncryptionTypesOutput)
+}
+
+func (e SecurityEncryptionTypes) ToSecurityEncryptionTypesOutputWithContext(ctx context.Context) SecurityEncryptionTypesOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SecurityEncryptionTypesOutput)
+}
+
+func (e SecurityEncryptionTypes) ToSecurityEncryptionTypesPtrOutput() SecurityEncryptionTypesPtrOutput {
+	return e.ToSecurityEncryptionTypesPtrOutputWithContext(context.Background())
+}
+
+func (e SecurityEncryptionTypes) ToSecurityEncryptionTypesPtrOutputWithContext(ctx context.Context) SecurityEncryptionTypesPtrOutput {
+	return SecurityEncryptionTypes(e).ToSecurityEncryptionTypesOutputWithContext(ctx).ToSecurityEncryptionTypesPtrOutputWithContext(ctx)
+}
+
+func (e SecurityEncryptionTypes) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SecurityEncryptionTypes) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SecurityEncryptionTypes) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SecurityEncryptionTypes) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SecurityEncryptionTypesOutput struct{ *pulumi.OutputState }
+
+func (SecurityEncryptionTypesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityEncryptionTypes)(nil)).Elem()
+}
+
+func (o SecurityEncryptionTypesOutput) ToSecurityEncryptionTypesOutput() SecurityEncryptionTypesOutput {
+	return o
+}
+
+func (o SecurityEncryptionTypesOutput) ToSecurityEncryptionTypesOutputWithContext(ctx context.Context) SecurityEncryptionTypesOutput {
+	return o
+}
+
+func (o SecurityEncryptionTypesOutput) ToSecurityEncryptionTypesPtrOutput() SecurityEncryptionTypesPtrOutput {
+	return o.ToSecurityEncryptionTypesPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityEncryptionTypesOutput) ToSecurityEncryptionTypesPtrOutputWithContext(ctx context.Context) SecurityEncryptionTypesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityEncryptionTypes) *SecurityEncryptionTypes {
+		return &v
+	}).(SecurityEncryptionTypesPtrOutput)
+}
+
+func (o SecurityEncryptionTypesOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SecurityEncryptionTypesOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SecurityEncryptionTypes) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SecurityEncryptionTypesOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityEncryptionTypesOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SecurityEncryptionTypes) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecurityEncryptionTypesPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityEncryptionTypesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityEncryptionTypes)(nil)).Elem()
+}
+
+func (o SecurityEncryptionTypesPtrOutput) ToSecurityEncryptionTypesPtrOutput() SecurityEncryptionTypesPtrOutput {
+	return o
+}
+
+func (o SecurityEncryptionTypesPtrOutput) ToSecurityEncryptionTypesPtrOutputWithContext(ctx context.Context) SecurityEncryptionTypesPtrOutput {
+	return o
+}
+
+func (o SecurityEncryptionTypesPtrOutput) Elem() SecurityEncryptionTypesOutput {
+	return o.ApplyT(func(v *SecurityEncryptionTypes) SecurityEncryptionTypes {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityEncryptionTypes
+		return ret
+	}).(SecurityEncryptionTypesOutput)
+}
+
+func (o SecurityEncryptionTypesPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityEncryptionTypesPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SecurityEncryptionTypes) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SecurityEncryptionTypesInput is an input type that accepts values of the SecurityEncryptionTypes enum
+// A concrete instance of `SecurityEncryptionTypesInput` can be one of the following:
 //
-//	Standard_LRS - The data disk should use standard locally redundant storage.
-//	Premium_LRS - The data disk should use premium locally redundant storage.
+//	SecurityEncryptionTypesNonPersistedTPM
+//	SecurityEncryptionTypesVMGuestStateOnly
+type SecurityEncryptionTypesInput interface {
+	pulumi.Input
+
+	ToSecurityEncryptionTypesOutput() SecurityEncryptionTypesOutput
+	ToSecurityEncryptionTypesOutputWithContext(context.Context) SecurityEncryptionTypesOutput
+}
+
+var securityEncryptionTypesPtrType = reflect.TypeOf((**SecurityEncryptionTypes)(nil)).Elem()
+
+type SecurityEncryptionTypesPtrInput interface {
+	pulumi.Input
+
+	ToSecurityEncryptionTypesPtrOutput() SecurityEncryptionTypesPtrOutput
+	ToSecurityEncryptionTypesPtrOutputWithContext(context.Context) SecurityEncryptionTypesPtrOutput
+}
+
+type securityEncryptionTypesPtr string
+
+func SecurityEncryptionTypesPtr(v string) SecurityEncryptionTypesPtrInput {
+	return (*securityEncryptionTypesPtr)(&v)
+}
+
+func (*securityEncryptionTypesPtr) ElementType() reflect.Type {
+	return securityEncryptionTypesPtrType
+}
+
+func (in *securityEncryptionTypesPtr) ToSecurityEncryptionTypesPtrOutput() SecurityEncryptionTypesPtrOutput {
+	return pulumi.ToOutput(in).(SecurityEncryptionTypesPtrOutput)
+}
+
+func (in *securityEncryptionTypesPtr) ToSecurityEncryptionTypesPtrOutputWithContext(ctx context.Context) SecurityEncryptionTypesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SecurityEncryptionTypesPtrOutput)
+}
+
+type SecurityTypes string
+
+const (
+	// Trusted launch protects against advanced and persistent attack techniques.
+	SecurityTypesTrustedLaunch = SecurityTypes("trustedLaunch")
+	// Azure confidential computing offers confidential VMs are for tenants with high security and confidentiality requirements. These VMs provide a strong, hardware-enforced boundary to help meet your security needs. You can use confidential VMs for migrations without making changes to your code, with the platform protecting your VM's state from being read or modified.
+	SecurityTypesConfidentialVM = SecurityTypes("confidentialVM")
+)
+
+func (SecurityTypes) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityTypes)(nil)).Elem()
+}
+
+func (e SecurityTypes) ToSecurityTypesOutput() SecurityTypesOutput {
+	return pulumi.ToOutput(e).(SecurityTypesOutput)
+}
+
+func (e SecurityTypes) ToSecurityTypesOutputWithContext(ctx context.Context) SecurityTypesOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SecurityTypesOutput)
+}
+
+func (e SecurityTypes) ToSecurityTypesPtrOutput() SecurityTypesPtrOutput {
+	return e.ToSecurityTypesPtrOutputWithContext(context.Background())
+}
+
+func (e SecurityTypes) ToSecurityTypesPtrOutputWithContext(ctx context.Context) SecurityTypesPtrOutput {
+	return SecurityTypes(e).ToSecurityTypesOutputWithContext(ctx).ToSecurityTypesPtrOutputWithContext(ctx)
+}
+
+func (e SecurityTypes) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SecurityTypes) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SecurityTypes) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SecurityTypes) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SecurityTypesOutput struct{ *pulumi.OutputState }
+
+func (SecurityTypesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityTypes)(nil)).Elem()
+}
+
+func (o SecurityTypesOutput) ToSecurityTypesOutput() SecurityTypesOutput {
+	return o
+}
+
+func (o SecurityTypesOutput) ToSecurityTypesOutputWithContext(ctx context.Context) SecurityTypesOutput {
+	return o
+}
+
+func (o SecurityTypesOutput) ToSecurityTypesPtrOutput() SecurityTypesPtrOutput {
+	return o.ToSecurityTypesPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityTypesOutput) ToSecurityTypesPtrOutputWithContext(ctx context.Context) SecurityTypesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityTypes) *SecurityTypes {
+		return &v
+	}).(SecurityTypesPtrOutput)
+}
+
+func (o SecurityTypesOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SecurityTypesOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SecurityTypes) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SecurityTypesOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityTypesOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SecurityTypes) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecurityTypesPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityTypesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityTypes)(nil)).Elem()
+}
+
+func (o SecurityTypesPtrOutput) ToSecurityTypesPtrOutput() SecurityTypesPtrOutput {
+	return o
+}
+
+func (o SecurityTypesPtrOutput) ToSecurityTypesPtrOutputWithContext(ctx context.Context) SecurityTypesPtrOutput {
+	return o
+}
+
+func (o SecurityTypesPtrOutput) Elem() SecurityTypesOutput {
+	return o.ApplyT(func(v *SecurityTypes) SecurityTypes {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityTypes
+		return ret
+	}).(SecurityTypesOutput)
+}
+
+func (o SecurityTypesPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityTypesPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SecurityTypes) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SecurityTypesInput is an input type that accepts values of the SecurityTypes enum
+// A concrete instance of `SecurityTypesInput` can be one of the following:
+//
+//	SecurityTypesTrustedLaunch
+//	SecurityTypesConfidentialVM
+type SecurityTypesInput interface {
+	pulumi.Input
+
+	ToSecurityTypesOutput() SecurityTypesOutput
+	ToSecurityTypesOutputWithContext(context.Context) SecurityTypesOutput
+}
+
+var securityTypesPtrType = reflect.TypeOf((**SecurityTypes)(nil)).Elem()
+
+type SecurityTypesPtrInput interface {
+	pulumi.Input
+
+	ToSecurityTypesPtrOutput() SecurityTypesPtrOutput
+	ToSecurityTypesPtrOutputWithContext(context.Context) SecurityTypesPtrOutput
+}
+
+type securityTypesPtr string
+
+func SecurityTypesPtr(v string) SecurityTypesPtrInput {
+	return (*securityTypesPtr)(&v)
+}
+
+func (*securityTypesPtr) ElementType() reflect.Type {
+	return securityTypesPtrType
+}
+
+func (in *securityTypesPtr) ToSecurityTypesPtrOutput() SecurityTypesPtrOutput {
+	return pulumi.ToOutput(in).(SecurityTypesPtrOutput)
+}
+
+func (in *securityTypesPtr) ToSecurityTypesPtrOutputWithContext(ctx context.Context) SecurityTypesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SecurityTypesPtrOutput)
+}
+
 type StorageAccountType string
 
 const (
-	// The data disk should use standard locally redundant storage.
+	// The data disk / OS disk should use standard locally redundant storage.
 	StorageAccountType_Standard_LRS = StorageAccountType("Standard_LRS")
-	// The data disk should use premium locally redundant storage.
+	// The data disk / OS disk should use premium locally redundant storage.
 	StorageAccountType_Premium_LRS = StorageAccountType("Premium_LRS")
+	// The data disk / OS disk should use standard SSD locally redundant storage.
+	StorageAccountType_StandardSSD_LRS = StorageAccountType("StandardSSD_LRS")
 )
 
 func (StorageAccountType) ElementType() reflect.Type {
@@ -5003,6 +5508,7 @@ func (o StorageAccountTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 //
 //	StorageAccountType_Standard_LRS
 //	StorageAccountType_Premium_LRS
+//	StorageAccountType_StandardSSD_LRS
 type StorageAccountTypeInput interface {
 	pulumi.Input
 
@@ -5037,6 +5543,176 @@ func (in *storageAccountTypePtr) ToStorageAccountTypePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(StorageAccountTypePtrOutput)
 }
 
+type UpgradeMode string
+
+const (
+	// All virtual machines in the scale set are automatically updated at the same time.
+	UpgradeModeAutomatic = UpgradeMode("automatic")
+	// You control the application of updates to virtual machines in the scale set. You do this by using the manualUpgrade action.
+	UpgradeModeManual = UpgradeMode("manual")
+	// The existing instances in a scale set are brought down in batches to be upgraded. Once the upgraded batch is complete, the instances will begin taking traffic again and the next batch will begin. This continues until all instances brought up-to-date.
+	UpgradeModeRolling = UpgradeMode("rolling")
+)
+
+func (UpgradeMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpgradeMode)(nil)).Elem()
+}
+
+func (e UpgradeMode) ToUpgradeModeOutput() UpgradeModeOutput {
+	return pulumi.ToOutput(e).(UpgradeModeOutput)
+}
+
+func (e UpgradeMode) ToUpgradeModeOutputWithContext(ctx context.Context) UpgradeModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(UpgradeModeOutput)
+}
+
+func (e UpgradeMode) ToUpgradeModePtrOutput() UpgradeModePtrOutput {
+	return e.ToUpgradeModePtrOutputWithContext(context.Background())
+}
+
+func (e UpgradeMode) ToUpgradeModePtrOutputWithContext(ctx context.Context) UpgradeModePtrOutput {
+	return UpgradeMode(e).ToUpgradeModeOutputWithContext(ctx).ToUpgradeModePtrOutputWithContext(ctx)
+}
+
+func (e UpgradeMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e UpgradeMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e UpgradeMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e UpgradeMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type UpgradeModeOutput struct{ *pulumi.OutputState }
+
+func (UpgradeModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpgradeMode)(nil)).Elem()
+}
+
+func (o UpgradeModeOutput) ToUpgradeModeOutput() UpgradeModeOutput {
+	return o
+}
+
+func (o UpgradeModeOutput) ToUpgradeModeOutputWithContext(ctx context.Context) UpgradeModeOutput {
+	return o
+}
+
+func (o UpgradeModeOutput) ToUpgradeModePtrOutput() UpgradeModePtrOutput {
+	return o.ToUpgradeModePtrOutputWithContext(context.Background())
+}
+
+func (o UpgradeModeOutput) ToUpgradeModePtrOutputWithContext(ctx context.Context) UpgradeModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UpgradeMode) *UpgradeMode {
+		return &v
+	}).(UpgradeModePtrOutput)
+}
+
+func (o UpgradeModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o UpgradeModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e UpgradeMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o UpgradeModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o UpgradeModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e UpgradeMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type UpgradeModePtrOutput struct{ *pulumi.OutputState }
+
+func (UpgradeModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UpgradeMode)(nil)).Elem()
+}
+
+func (o UpgradeModePtrOutput) ToUpgradeModePtrOutput() UpgradeModePtrOutput {
+	return o
+}
+
+func (o UpgradeModePtrOutput) ToUpgradeModePtrOutputWithContext(ctx context.Context) UpgradeModePtrOutput {
+	return o
+}
+
+func (o UpgradeModePtrOutput) Elem() UpgradeModeOutput {
+	return o.ApplyT(func(v *UpgradeMode) UpgradeMode {
+		if v != nil {
+			return *v
+		}
+		var ret UpgradeMode
+		return ret
+	}).(UpgradeModeOutput)
+}
+
+func (o UpgradeModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o UpgradeModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *UpgradeMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// UpgradeModeInput is an input type that accepts values of the UpgradeMode enum
+// A concrete instance of `UpgradeModeInput` can be one of the following:
+//
+//	UpgradeModeAutomatic
+//	UpgradeModeManual
+//	UpgradeModeRolling
+type UpgradeModeInput interface {
+	pulumi.Input
+
+	ToUpgradeModeOutput() UpgradeModeOutput
+	ToUpgradeModeOutputWithContext(context.Context) UpgradeModeOutput
+}
+
+var upgradeModePtrType = reflect.TypeOf((**UpgradeMode)(nil)).Elem()
+
+type UpgradeModePtrInput interface {
+	pulumi.Input
+
+	ToUpgradeModePtrOutput() UpgradeModePtrOutput
+	ToUpgradeModePtrOutputWithContext(context.Context) UpgradeModePtrOutput
+}
+
+type upgradeModePtr string
+
+func UpgradeModePtr(v string) UpgradeModePtrInput {
+	return (*upgradeModePtr)(&v)
+}
+
+func (*upgradeModePtr) ElementType() reflect.Type {
+	return upgradeModePtrType
+}
+
+func (in *upgradeModePtr) ToUpgradeModePtrOutput() UpgradeModePtrOutput {
+	return pulumi.ToOutput(in).(UpgradeModePtrOutput)
+}
+
+func (in *upgradeModePtr) ToUpgradeModePtrOutputWithContext(ctx context.Context) UpgradeModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(UpgradeModePtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AuthenticationModeOutput{})
 	pulumi.RegisterOutputType(AuthenticationModePtrOutput{})
@@ -5056,6 +5732,8 @@ func init() {
 	pulumi.RegisterOutputType(ComputeNodeDeallocationOptionPtrOutput{})
 	pulumi.RegisterOutputType(ComputeNodeFillTypeOutput{})
 	pulumi.RegisterOutputType(ComputeNodeFillTypePtrOutput{})
+	pulumi.RegisterOutputType(ContainerHostDataPathOutput{})
+	pulumi.RegisterOutputType(ContainerHostDataPathPtrOutput{})
 	pulumi.RegisterOutputType(ContainerTypeOutput{})
 	pulumi.RegisterOutputType(ContainerTypePtrOutput{})
 	pulumi.RegisterOutputType(ContainerWorkingDirectoryOutput{})
@@ -5097,6 +5775,12 @@ func init() {
 	pulumi.RegisterOutputType(PublicNetworkAccessTypePtrOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityTypeOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityTypePtrOutput{})
+	pulumi.RegisterOutputType(SecurityEncryptionTypesOutput{})
+	pulumi.RegisterOutputType(SecurityEncryptionTypesPtrOutput{})
+	pulumi.RegisterOutputType(SecurityTypesOutput{})
+	pulumi.RegisterOutputType(SecurityTypesPtrOutput{})
 	pulumi.RegisterOutputType(StorageAccountTypeOutput{})
 	pulumi.RegisterOutputType(StorageAccountTypePtrOutput{})
+	pulumi.RegisterOutputType(UpgradeModeOutput{})
+	pulumi.RegisterOutputType(UpgradeModePtrOutput{})
 }

@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the properties of the specified scope map.
 //
-// Uses Azure REST API version 2022-12-01.
+// Uses Azure REST API version 2024-11-01-preview.
 //
-// Other available API versions: 2023-01-01-preview, 2023-06-01-preview, 2023-07-01, 2023-08-01-preview, 2023-11-01-preview, 2024-11-01-preview.
+// Other available API versions: 2020-11-01-preview, 2021-06-01-preview, 2021-08-01-preview, 2021-12-01-preview, 2022-02-01-preview, 2022-12-01, 2023-01-01-preview, 2023-06-01-preview, 2023-07-01, 2023-08-01-preview, 2023-11-01-preview, 2025-03-01-preview, 2025-04-01, 2025-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupScopeMap(ctx *pulumi.Context, args *LookupScopeMapArgs, opts ...pulumi.InvokeOption) (*LookupScopeMapResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupScopeMapResult
@@ -41,6 +41,8 @@ type LookupScopeMapResult struct {
 	// E.g. repositories/repository-name/content/read,
 	// repositories/repository-name/metadata/write
 	Actions []string `pulumi:"actions"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The creation date of scope map.
 	CreationDate string `pulumi:"creationDate"`
 	// The user friendly description of the scope map.
@@ -99,6 +101,11 @@ func (o LookupScopeMapResultOutput) ToLookupScopeMapResultOutputWithContext(ctx 
 // repositories/repository-name/metadata/write
 func (o LookupScopeMapResultOutput) Actions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupScopeMapResult) []string { return v.Actions }).(pulumi.StringArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupScopeMapResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupScopeMapResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of scope map.

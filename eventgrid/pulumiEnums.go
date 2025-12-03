@@ -35,177 +35,6 @@ const (
 	AdvancedFilterOperatorTypeIsNotNull                 = AdvancedFilterOperatorType("IsNotNull")
 )
 
-type AlternativeAuthenticationNameSource string
-
-const (
-	AlternativeAuthenticationNameSourceClientCertificateSubject = AlternativeAuthenticationNameSource("ClientCertificateSubject")
-	AlternativeAuthenticationNameSourceClientCertificateDns     = AlternativeAuthenticationNameSource("ClientCertificateDns")
-	AlternativeAuthenticationNameSourceClientCertificateUri     = AlternativeAuthenticationNameSource("ClientCertificateUri")
-	AlternativeAuthenticationNameSourceClientCertificateIp      = AlternativeAuthenticationNameSource("ClientCertificateIp")
-	AlternativeAuthenticationNameSourceClientCertificateEmail   = AlternativeAuthenticationNameSource("ClientCertificateEmail")
-)
-
-func (AlternativeAuthenticationNameSource) ElementType() reflect.Type {
-	return reflect.TypeOf((*AlternativeAuthenticationNameSource)(nil)).Elem()
-}
-
-func (e AlternativeAuthenticationNameSource) ToAlternativeAuthenticationNameSourceOutput() AlternativeAuthenticationNameSourceOutput {
-	return pulumi.ToOutput(e).(AlternativeAuthenticationNameSourceOutput)
-}
-
-func (e AlternativeAuthenticationNameSource) ToAlternativeAuthenticationNameSourceOutputWithContext(ctx context.Context) AlternativeAuthenticationNameSourceOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(AlternativeAuthenticationNameSourceOutput)
-}
-
-func (e AlternativeAuthenticationNameSource) ToAlternativeAuthenticationNameSourcePtrOutput() AlternativeAuthenticationNameSourcePtrOutput {
-	return e.ToAlternativeAuthenticationNameSourcePtrOutputWithContext(context.Background())
-}
-
-func (e AlternativeAuthenticationNameSource) ToAlternativeAuthenticationNameSourcePtrOutputWithContext(ctx context.Context) AlternativeAuthenticationNameSourcePtrOutput {
-	return AlternativeAuthenticationNameSource(e).ToAlternativeAuthenticationNameSourceOutputWithContext(ctx).ToAlternativeAuthenticationNameSourcePtrOutputWithContext(ctx)
-}
-
-func (e AlternativeAuthenticationNameSource) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e AlternativeAuthenticationNameSource) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e AlternativeAuthenticationNameSource) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e AlternativeAuthenticationNameSource) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type AlternativeAuthenticationNameSourceOutput struct{ *pulumi.OutputState }
-
-func (AlternativeAuthenticationNameSourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AlternativeAuthenticationNameSource)(nil)).Elem()
-}
-
-func (o AlternativeAuthenticationNameSourceOutput) ToAlternativeAuthenticationNameSourceOutput() AlternativeAuthenticationNameSourceOutput {
-	return o
-}
-
-func (o AlternativeAuthenticationNameSourceOutput) ToAlternativeAuthenticationNameSourceOutputWithContext(ctx context.Context) AlternativeAuthenticationNameSourceOutput {
-	return o
-}
-
-func (o AlternativeAuthenticationNameSourceOutput) ToAlternativeAuthenticationNameSourcePtrOutput() AlternativeAuthenticationNameSourcePtrOutput {
-	return o.ToAlternativeAuthenticationNameSourcePtrOutputWithContext(context.Background())
-}
-
-func (o AlternativeAuthenticationNameSourceOutput) ToAlternativeAuthenticationNameSourcePtrOutputWithContext(ctx context.Context) AlternativeAuthenticationNameSourcePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlternativeAuthenticationNameSource) *AlternativeAuthenticationNameSource {
-		return &v
-	}).(AlternativeAuthenticationNameSourcePtrOutput)
-}
-
-func (o AlternativeAuthenticationNameSourceOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o AlternativeAuthenticationNameSourceOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e AlternativeAuthenticationNameSource) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o AlternativeAuthenticationNameSourceOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o AlternativeAuthenticationNameSourceOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e AlternativeAuthenticationNameSource) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type AlternativeAuthenticationNameSourcePtrOutput struct{ *pulumi.OutputState }
-
-func (AlternativeAuthenticationNameSourcePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AlternativeAuthenticationNameSource)(nil)).Elem()
-}
-
-func (o AlternativeAuthenticationNameSourcePtrOutput) ToAlternativeAuthenticationNameSourcePtrOutput() AlternativeAuthenticationNameSourcePtrOutput {
-	return o
-}
-
-func (o AlternativeAuthenticationNameSourcePtrOutput) ToAlternativeAuthenticationNameSourcePtrOutputWithContext(ctx context.Context) AlternativeAuthenticationNameSourcePtrOutput {
-	return o
-}
-
-func (o AlternativeAuthenticationNameSourcePtrOutput) Elem() AlternativeAuthenticationNameSourceOutput {
-	return o.ApplyT(func(v *AlternativeAuthenticationNameSource) AlternativeAuthenticationNameSource {
-		if v != nil {
-			return *v
-		}
-		var ret AlternativeAuthenticationNameSource
-		return ret
-	}).(AlternativeAuthenticationNameSourceOutput)
-}
-
-func (o AlternativeAuthenticationNameSourcePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o AlternativeAuthenticationNameSourcePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AlternativeAuthenticationNameSource) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// AlternativeAuthenticationNameSourceInput is an input type that accepts values of the AlternativeAuthenticationNameSource enum
-// A concrete instance of `AlternativeAuthenticationNameSourceInput` can be one of the following:
-//
-//	AlternativeAuthenticationNameSourceClientCertificateSubject
-//	AlternativeAuthenticationNameSourceClientCertificateDns
-//	AlternativeAuthenticationNameSourceClientCertificateUri
-//	AlternativeAuthenticationNameSourceClientCertificateIp
-//	AlternativeAuthenticationNameSourceClientCertificateEmail
-type AlternativeAuthenticationNameSourceInput interface {
-	pulumi.Input
-
-	ToAlternativeAuthenticationNameSourceOutput() AlternativeAuthenticationNameSourceOutput
-	ToAlternativeAuthenticationNameSourceOutputWithContext(context.Context) AlternativeAuthenticationNameSourceOutput
-}
-
-var alternativeAuthenticationNameSourcePtrType = reflect.TypeOf((**AlternativeAuthenticationNameSource)(nil)).Elem()
-
-type AlternativeAuthenticationNameSourcePtrInput interface {
-	pulumi.Input
-
-	ToAlternativeAuthenticationNameSourcePtrOutput() AlternativeAuthenticationNameSourcePtrOutput
-	ToAlternativeAuthenticationNameSourcePtrOutputWithContext(context.Context) AlternativeAuthenticationNameSourcePtrOutput
-}
-
-type alternativeAuthenticationNameSourcePtr string
-
-func AlternativeAuthenticationNameSourcePtr(v string) AlternativeAuthenticationNameSourcePtrInput {
-	return (*alternativeAuthenticationNameSourcePtr)(&v)
-}
-
-func (*alternativeAuthenticationNameSourcePtr) ElementType() reflect.Type {
-	return alternativeAuthenticationNameSourcePtrType
-}
-
-func (in *alternativeAuthenticationNameSourcePtr) ToAlternativeAuthenticationNameSourcePtrOutput() AlternativeAuthenticationNameSourcePtrOutput {
-	return pulumi.ToOutput(in).(AlternativeAuthenticationNameSourcePtrOutput)
-}
-
-func (in *alternativeAuthenticationNameSourcePtr) ToAlternativeAuthenticationNameSourcePtrOutputWithContext(ctx context.Context) AlternativeAuthenticationNameSourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(AlternativeAuthenticationNameSourcePtrOutput)
-}
-
 // Provisioning state of the channel.
 type ChannelProvisioningState string
 
@@ -886,6 +715,340 @@ func (in *clientStateEnumPtr) ToClientStateEnumPtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(ClientStateEnumPtrOutput)
 }
 
+// The type of managed identity used. Can be either 'SystemAssigned' or 'UserAssigned'.
+type CustomDomainIdentityType string
+
+const (
+	CustomDomainIdentityTypeSystemAssigned = CustomDomainIdentityType("SystemAssigned")
+	CustomDomainIdentityTypeUserAssigned   = CustomDomainIdentityType("UserAssigned")
+)
+
+func (CustomDomainIdentityType) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomDomainIdentityType)(nil)).Elem()
+}
+
+func (e CustomDomainIdentityType) ToCustomDomainIdentityTypeOutput() CustomDomainIdentityTypeOutput {
+	return pulumi.ToOutput(e).(CustomDomainIdentityTypeOutput)
+}
+
+func (e CustomDomainIdentityType) ToCustomDomainIdentityTypeOutputWithContext(ctx context.Context) CustomDomainIdentityTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(CustomDomainIdentityTypeOutput)
+}
+
+func (e CustomDomainIdentityType) ToCustomDomainIdentityTypePtrOutput() CustomDomainIdentityTypePtrOutput {
+	return e.ToCustomDomainIdentityTypePtrOutputWithContext(context.Background())
+}
+
+func (e CustomDomainIdentityType) ToCustomDomainIdentityTypePtrOutputWithContext(ctx context.Context) CustomDomainIdentityTypePtrOutput {
+	return CustomDomainIdentityType(e).ToCustomDomainIdentityTypeOutputWithContext(ctx).ToCustomDomainIdentityTypePtrOutputWithContext(ctx)
+}
+
+func (e CustomDomainIdentityType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CustomDomainIdentityType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CustomDomainIdentityType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e CustomDomainIdentityType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type CustomDomainIdentityTypeOutput struct{ *pulumi.OutputState }
+
+func (CustomDomainIdentityTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomDomainIdentityType)(nil)).Elem()
+}
+
+func (o CustomDomainIdentityTypeOutput) ToCustomDomainIdentityTypeOutput() CustomDomainIdentityTypeOutput {
+	return o
+}
+
+func (o CustomDomainIdentityTypeOutput) ToCustomDomainIdentityTypeOutputWithContext(ctx context.Context) CustomDomainIdentityTypeOutput {
+	return o
+}
+
+func (o CustomDomainIdentityTypeOutput) ToCustomDomainIdentityTypePtrOutput() CustomDomainIdentityTypePtrOutput {
+	return o.ToCustomDomainIdentityTypePtrOutputWithContext(context.Background())
+}
+
+func (o CustomDomainIdentityTypeOutput) ToCustomDomainIdentityTypePtrOutputWithContext(ctx context.Context) CustomDomainIdentityTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomDomainIdentityType) *CustomDomainIdentityType {
+		return &v
+	}).(CustomDomainIdentityTypePtrOutput)
+}
+
+func (o CustomDomainIdentityTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o CustomDomainIdentityTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CustomDomainIdentityType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o CustomDomainIdentityTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CustomDomainIdentityTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CustomDomainIdentityType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type CustomDomainIdentityTypePtrOutput struct{ *pulumi.OutputState }
+
+func (CustomDomainIdentityTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomDomainIdentityType)(nil)).Elem()
+}
+
+func (o CustomDomainIdentityTypePtrOutput) ToCustomDomainIdentityTypePtrOutput() CustomDomainIdentityTypePtrOutput {
+	return o
+}
+
+func (o CustomDomainIdentityTypePtrOutput) ToCustomDomainIdentityTypePtrOutputWithContext(ctx context.Context) CustomDomainIdentityTypePtrOutput {
+	return o
+}
+
+func (o CustomDomainIdentityTypePtrOutput) Elem() CustomDomainIdentityTypeOutput {
+	return o.ApplyT(func(v *CustomDomainIdentityType) CustomDomainIdentityType {
+		if v != nil {
+			return *v
+		}
+		var ret CustomDomainIdentityType
+		return ret
+	}).(CustomDomainIdentityTypeOutput)
+}
+
+func (o CustomDomainIdentityTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CustomDomainIdentityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CustomDomainIdentityType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// CustomDomainIdentityTypeInput is an input type that accepts values of the CustomDomainIdentityType enum
+// A concrete instance of `CustomDomainIdentityTypeInput` can be one of the following:
+//
+//	CustomDomainIdentityTypeSystemAssigned
+//	CustomDomainIdentityTypeUserAssigned
+type CustomDomainIdentityTypeInput interface {
+	pulumi.Input
+
+	ToCustomDomainIdentityTypeOutput() CustomDomainIdentityTypeOutput
+	ToCustomDomainIdentityTypeOutputWithContext(context.Context) CustomDomainIdentityTypeOutput
+}
+
+var customDomainIdentityTypePtrType = reflect.TypeOf((**CustomDomainIdentityType)(nil)).Elem()
+
+type CustomDomainIdentityTypePtrInput interface {
+	pulumi.Input
+
+	ToCustomDomainIdentityTypePtrOutput() CustomDomainIdentityTypePtrOutput
+	ToCustomDomainIdentityTypePtrOutputWithContext(context.Context) CustomDomainIdentityTypePtrOutput
+}
+
+type customDomainIdentityTypePtr string
+
+func CustomDomainIdentityTypePtr(v string) CustomDomainIdentityTypePtrInput {
+	return (*customDomainIdentityTypePtr)(&v)
+}
+
+func (*customDomainIdentityTypePtr) ElementType() reflect.Type {
+	return customDomainIdentityTypePtrType
+}
+
+func (in *customDomainIdentityTypePtr) ToCustomDomainIdentityTypePtrOutput() CustomDomainIdentityTypePtrOutput {
+	return pulumi.ToOutput(in).(CustomDomainIdentityTypePtrOutput)
+}
+
+func (in *customDomainIdentityTypePtr) ToCustomDomainIdentityTypePtrOutputWithContext(ctx context.Context) CustomDomainIdentityTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(CustomDomainIdentityTypePtrOutput)
+}
+
+// Validation state for the custom domain. This is a read only property and is initially set to 'Pending' and will be updated to 'Approved' by Event Grid only after ownership of the domain name has been successfully validated.
+type CustomDomainValidationState string
+
+const (
+	CustomDomainValidationStatePending                  = CustomDomainValidationState("Pending")
+	CustomDomainValidationStateApproved                 = CustomDomainValidationState("Approved")
+	CustomDomainValidationStateErrorRetrievingDnsRecord = CustomDomainValidationState("ErrorRetrievingDnsRecord")
+)
+
+func (CustomDomainValidationState) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomDomainValidationState)(nil)).Elem()
+}
+
+func (e CustomDomainValidationState) ToCustomDomainValidationStateOutput() CustomDomainValidationStateOutput {
+	return pulumi.ToOutput(e).(CustomDomainValidationStateOutput)
+}
+
+func (e CustomDomainValidationState) ToCustomDomainValidationStateOutputWithContext(ctx context.Context) CustomDomainValidationStateOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(CustomDomainValidationStateOutput)
+}
+
+func (e CustomDomainValidationState) ToCustomDomainValidationStatePtrOutput() CustomDomainValidationStatePtrOutput {
+	return e.ToCustomDomainValidationStatePtrOutputWithContext(context.Background())
+}
+
+func (e CustomDomainValidationState) ToCustomDomainValidationStatePtrOutputWithContext(ctx context.Context) CustomDomainValidationStatePtrOutput {
+	return CustomDomainValidationState(e).ToCustomDomainValidationStateOutputWithContext(ctx).ToCustomDomainValidationStatePtrOutputWithContext(ctx)
+}
+
+func (e CustomDomainValidationState) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CustomDomainValidationState) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CustomDomainValidationState) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e CustomDomainValidationState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type CustomDomainValidationStateOutput struct{ *pulumi.OutputState }
+
+func (CustomDomainValidationStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomDomainValidationState)(nil)).Elem()
+}
+
+func (o CustomDomainValidationStateOutput) ToCustomDomainValidationStateOutput() CustomDomainValidationStateOutput {
+	return o
+}
+
+func (o CustomDomainValidationStateOutput) ToCustomDomainValidationStateOutputWithContext(ctx context.Context) CustomDomainValidationStateOutput {
+	return o
+}
+
+func (o CustomDomainValidationStateOutput) ToCustomDomainValidationStatePtrOutput() CustomDomainValidationStatePtrOutput {
+	return o.ToCustomDomainValidationStatePtrOutputWithContext(context.Background())
+}
+
+func (o CustomDomainValidationStateOutput) ToCustomDomainValidationStatePtrOutputWithContext(ctx context.Context) CustomDomainValidationStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomDomainValidationState) *CustomDomainValidationState {
+		return &v
+	}).(CustomDomainValidationStatePtrOutput)
+}
+
+func (o CustomDomainValidationStateOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o CustomDomainValidationStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CustomDomainValidationState) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o CustomDomainValidationStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CustomDomainValidationStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CustomDomainValidationState) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type CustomDomainValidationStatePtrOutput struct{ *pulumi.OutputState }
+
+func (CustomDomainValidationStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomDomainValidationState)(nil)).Elem()
+}
+
+func (o CustomDomainValidationStatePtrOutput) ToCustomDomainValidationStatePtrOutput() CustomDomainValidationStatePtrOutput {
+	return o
+}
+
+func (o CustomDomainValidationStatePtrOutput) ToCustomDomainValidationStatePtrOutputWithContext(ctx context.Context) CustomDomainValidationStatePtrOutput {
+	return o
+}
+
+func (o CustomDomainValidationStatePtrOutput) Elem() CustomDomainValidationStateOutput {
+	return o.ApplyT(func(v *CustomDomainValidationState) CustomDomainValidationState {
+		if v != nil {
+			return *v
+		}
+		var ret CustomDomainValidationState
+		return ret
+	}).(CustomDomainValidationStateOutput)
+}
+
+func (o CustomDomainValidationStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CustomDomainValidationStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CustomDomainValidationState) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// CustomDomainValidationStateInput is an input type that accepts values of the CustomDomainValidationState enum
+// A concrete instance of `CustomDomainValidationStateInput` can be one of the following:
+//
+//	CustomDomainValidationStatePending
+//	CustomDomainValidationStateApproved
+//	CustomDomainValidationStateErrorRetrievingDnsRecord
+type CustomDomainValidationStateInput interface {
+	pulumi.Input
+
+	ToCustomDomainValidationStateOutput() CustomDomainValidationStateOutput
+	ToCustomDomainValidationStateOutputWithContext(context.Context) CustomDomainValidationStateOutput
+}
+
+var customDomainValidationStatePtrType = reflect.TypeOf((**CustomDomainValidationState)(nil)).Elem()
+
+type CustomDomainValidationStatePtrInput interface {
+	pulumi.Input
+
+	ToCustomDomainValidationStatePtrOutput() CustomDomainValidationStatePtrOutput
+	ToCustomDomainValidationStatePtrOutputWithContext(context.Context) CustomDomainValidationStatePtrOutput
+}
+
+type customDomainValidationStatePtr string
+
+func CustomDomainValidationStatePtr(v string) CustomDomainValidationStatePtrInput {
+	return (*customDomainValidationStatePtr)(&v)
+}
+
+func (*customDomainValidationStatePtr) ElementType() reflect.Type {
+	return customDomainValidationStatePtrType
+}
+
+func (in *customDomainValidationStatePtr) ToCustomDomainValidationStatePtrOutput() CustomDomainValidationStatePtrOutput {
+	return pulumi.ToOutput(in).(CustomDomainValidationStatePtrOutput)
+}
+
+func (in *customDomainValidationStatePtr) ToCustomDomainValidationStatePtrOutputWithContext(ctx context.Context) CustomDomainValidationStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(CustomDomainValidationStatePtrOutput)
+}
+
 // Data Residency Boundary of the resource.
 type DataResidencyBoundary string
 
@@ -1072,6 +1235,7 @@ type DeliveryMode string
 
 const (
 	DeliveryModeQueue = DeliveryMode("Queue")
+	DeliveryModePush  = DeliveryMode("Push")
 )
 
 func (DeliveryMode) ElementType() reflect.Type {
@@ -1197,6 +1361,7 @@ func (o DeliveryModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 // A concrete instance of `DeliveryModeInput` can be one of the following:
 //
 //	DeliveryModeQueue
+//	DeliveryModePush
 type DeliveryModeInput interface {
 	pulumi.Input
 
@@ -1406,6 +1571,8 @@ const (
 	EndpointTypeServiceBusQueue  = EndpointType("ServiceBusQueue")
 	EndpointTypeServiceBusTopic  = EndpointType("ServiceBusTopic")
 	EndpointTypeAzureFunction    = EndpointType("AzureFunction")
+	EndpointTypeMonitorAlert     = EndpointType("MonitorAlert")
+	EndpointTypeNamespaceTopic   = EndpointType("NamespaceTopic")
 )
 
 // The kind of event type used.
@@ -1904,7 +2071,7 @@ func (in *eventInputSchemaPtr) ToEventInputSchemaPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(EventInputSchemaPtrOutput)
 }
 
-// The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identity.
+// The type of managed identity used. Can be either 'SystemAssigned' or 'UserAssigned'.
 type EventSubscriptionIdentityType string
 
 const (
@@ -2602,6 +2769,179 @@ func (in *ipActionTypePtr) ToIpActionTypePtrOutput() IpActionTypePtrOutput {
 
 func (in *ipActionTypePtr) ToIpActionTypePtrOutputWithContext(ctx context.Context) IpActionTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IpActionTypePtrOutput)
+}
+
+// The severity that will be attached to every Alert fired through this event subscription.
+// This field must be provided.
+type MonitorAlertSeverity string
+
+const (
+	MonitorAlertSeveritySev0 = MonitorAlertSeverity("Sev0")
+	MonitorAlertSeveritySev1 = MonitorAlertSeverity("Sev1")
+	MonitorAlertSeveritySev2 = MonitorAlertSeverity("Sev2")
+	MonitorAlertSeveritySev3 = MonitorAlertSeverity("Sev3")
+	MonitorAlertSeveritySev4 = MonitorAlertSeverity("Sev4")
+)
+
+func (MonitorAlertSeverity) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorAlertSeverity)(nil)).Elem()
+}
+
+func (e MonitorAlertSeverity) ToMonitorAlertSeverityOutput() MonitorAlertSeverityOutput {
+	return pulumi.ToOutput(e).(MonitorAlertSeverityOutput)
+}
+
+func (e MonitorAlertSeverity) ToMonitorAlertSeverityOutputWithContext(ctx context.Context) MonitorAlertSeverityOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(MonitorAlertSeverityOutput)
+}
+
+func (e MonitorAlertSeverity) ToMonitorAlertSeverityPtrOutput() MonitorAlertSeverityPtrOutput {
+	return e.ToMonitorAlertSeverityPtrOutputWithContext(context.Background())
+}
+
+func (e MonitorAlertSeverity) ToMonitorAlertSeverityPtrOutputWithContext(ctx context.Context) MonitorAlertSeverityPtrOutput {
+	return MonitorAlertSeverity(e).ToMonitorAlertSeverityOutputWithContext(ctx).ToMonitorAlertSeverityPtrOutputWithContext(ctx)
+}
+
+func (e MonitorAlertSeverity) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MonitorAlertSeverity) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MonitorAlertSeverity) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e MonitorAlertSeverity) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type MonitorAlertSeverityOutput struct{ *pulumi.OutputState }
+
+func (MonitorAlertSeverityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorAlertSeverity)(nil)).Elem()
+}
+
+func (o MonitorAlertSeverityOutput) ToMonitorAlertSeverityOutput() MonitorAlertSeverityOutput {
+	return o
+}
+
+func (o MonitorAlertSeverityOutput) ToMonitorAlertSeverityOutputWithContext(ctx context.Context) MonitorAlertSeverityOutput {
+	return o
+}
+
+func (o MonitorAlertSeverityOutput) ToMonitorAlertSeverityPtrOutput() MonitorAlertSeverityPtrOutput {
+	return o.ToMonitorAlertSeverityPtrOutputWithContext(context.Background())
+}
+
+func (o MonitorAlertSeverityOutput) ToMonitorAlertSeverityPtrOutputWithContext(ctx context.Context) MonitorAlertSeverityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitorAlertSeverity) *MonitorAlertSeverity {
+		return &v
+	}).(MonitorAlertSeverityPtrOutput)
+}
+
+func (o MonitorAlertSeverityOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o MonitorAlertSeverityOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MonitorAlertSeverity) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o MonitorAlertSeverityOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MonitorAlertSeverityOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MonitorAlertSeverity) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type MonitorAlertSeverityPtrOutput struct{ *pulumi.OutputState }
+
+func (MonitorAlertSeverityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonitorAlertSeverity)(nil)).Elem()
+}
+
+func (o MonitorAlertSeverityPtrOutput) ToMonitorAlertSeverityPtrOutput() MonitorAlertSeverityPtrOutput {
+	return o
+}
+
+func (o MonitorAlertSeverityPtrOutput) ToMonitorAlertSeverityPtrOutputWithContext(ctx context.Context) MonitorAlertSeverityPtrOutput {
+	return o
+}
+
+func (o MonitorAlertSeverityPtrOutput) Elem() MonitorAlertSeverityOutput {
+	return o.ApplyT(func(v *MonitorAlertSeverity) MonitorAlertSeverity {
+		if v != nil {
+			return *v
+		}
+		var ret MonitorAlertSeverity
+		return ret
+	}).(MonitorAlertSeverityOutput)
+}
+
+func (o MonitorAlertSeverityPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MonitorAlertSeverityPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *MonitorAlertSeverity) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// MonitorAlertSeverityInput is an input type that accepts values of the MonitorAlertSeverity enum
+// A concrete instance of `MonitorAlertSeverityInput` can be one of the following:
+//
+//	MonitorAlertSeveritySev0
+//	MonitorAlertSeveritySev1
+//	MonitorAlertSeveritySev2
+//	MonitorAlertSeveritySev3
+//	MonitorAlertSeveritySev4
+type MonitorAlertSeverityInput interface {
+	pulumi.Input
+
+	ToMonitorAlertSeverityOutput() MonitorAlertSeverityOutput
+	ToMonitorAlertSeverityOutputWithContext(context.Context) MonitorAlertSeverityOutput
+}
+
+var monitorAlertSeverityPtrType = reflect.TypeOf((**MonitorAlertSeverity)(nil)).Elem()
+
+type MonitorAlertSeverityPtrInput interface {
+	pulumi.Input
+
+	ToMonitorAlertSeverityPtrOutput() MonitorAlertSeverityPtrOutput
+	ToMonitorAlertSeverityPtrOutputWithContext(context.Context) MonitorAlertSeverityPtrOutput
+}
+
+type monitorAlertSeverityPtr string
+
+func MonitorAlertSeverityPtr(v string) MonitorAlertSeverityPtrInput {
+	return (*monitorAlertSeverityPtr)(&v)
+}
+
+func (*monitorAlertSeverityPtr) ElementType() reflect.Type {
+	return monitorAlertSeverityPtrType
+}
+
+func (in *monitorAlertSeverityPtr) ToMonitorAlertSeverityPtrOutput() MonitorAlertSeverityPtrOutput {
+	return pulumi.ToOutput(in).(MonitorAlertSeverityPtrOutput)
+}
+
+func (in *monitorAlertSeverityPtr) ToMonitorAlertSeverityPtrOutputWithContext(ctx context.Context) MonitorAlertSeverityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(MonitorAlertSeverityPtrOutput)
 }
 
 // Provisioning state of the partner configuration.
@@ -4286,6 +4626,7 @@ func (in *resourceProvisioningStatePtr) ToResourceProvisioningStatePtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceProvisioningStatePtrOutput)
 }
 
+// Routing identity type for topic spaces configuration.
 type RoutingIdentityType string
 
 const (
@@ -4624,164 +4965,7 @@ const (
 	StaticRoutingEnrichmentTypeString = StaticRoutingEnrichmentType("String")
 )
 
-func (StaticRoutingEnrichmentType) ElementType() reflect.Type {
-	return reflect.TypeOf((*StaticRoutingEnrichmentType)(nil)).Elem()
-}
-
-func (e StaticRoutingEnrichmentType) ToStaticRoutingEnrichmentTypeOutput() StaticRoutingEnrichmentTypeOutput {
-	return pulumi.ToOutput(e).(StaticRoutingEnrichmentTypeOutput)
-}
-
-func (e StaticRoutingEnrichmentType) ToStaticRoutingEnrichmentTypeOutputWithContext(ctx context.Context) StaticRoutingEnrichmentTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(StaticRoutingEnrichmentTypeOutput)
-}
-
-func (e StaticRoutingEnrichmentType) ToStaticRoutingEnrichmentTypePtrOutput() StaticRoutingEnrichmentTypePtrOutput {
-	return e.ToStaticRoutingEnrichmentTypePtrOutputWithContext(context.Background())
-}
-
-func (e StaticRoutingEnrichmentType) ToStaticRoutingEnrichmentTypePtrOutputWithContext(ctx context.Context) StaticRoutingEnrichmentTypePtrOutput {
-	return StaticRoutingEnrichmentType(e).ToStaticRoutingEnrichmentTypeOutputWithContext(ctx).ToStaticRoutingEnrichmentTypePtrOutputWithContext(ctx)
-}
-
-func (e StaticRoutingEnrichmentType) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e StaticRoutingEnrichmentType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e StaticRoutingEnrichmentType) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e StaticRoutingEnrichmentType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type StaticRoutingEnrichmentTypeOutput struct{ *pulumi.OutputState }
-
-func (StaticRoutingEnrichmentTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StaticRoutingEnrichmentType)(nil)).Elem()
-}
-
-func (o StaticRoutingEnrichmentTypeOutput) ToStaticRoutingEnrichmentTypeOutput() StaticRoutingEnrichmentTypeOutput {
-	return o
-}
-
-func (o StaticRoutingEnrichmentTypeOutput) ToStaticRoutingEnrichmentTypeOutputWithContext(ctx context.Context) StaticRoutingEnrichmentTypeOutput {
-	return o
-}
-
-func (o StaticRoutingEnrichmentTypeOutput) ToStaticRoutingEnrichmentTypePtrOutput() StaticRoutingEnrichmentTypePtrOutput {
-	return o.ToStaticRoutingEnrichmentTypePtrOutputWithContext(context.Background())
-}
-
-func (o StaticRoutingEnrichmentTypeOutput) ToStaticRoutingEnrichmentTypePtrOutputWithContext(ctx context.Context) StaticRoutingEnrichmentTypePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v StaticRoutingEnrichmentType) *StaticRoutingEnrichmentType {
-		return &v
-	}).(StaticRoutingEnrichmentTypePtrOutput)
-}
-
-func (o StaticRoutingEnrichmentTypeOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o StaticRoutingEnrichmentTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e StaticRoutingEnrichmentType) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o StaticRoutingEnrichmentTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o StaticRoutingEnrichmentTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e StaticRoutingEnrichmentType) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type StaticRoutingEnrichmentTypePtrOutput struct{ *pulumi.OutputState }
-
-func (StaticRoutingEnrichmentTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**StaticRoutingEnrichmentType)(nil)).Elem()
-}
-
-func (o StaticRoutingEnrichmentTypePtrOutput) ToStaticRoutingEnrichmentTypePtrOutput() StaticRoutingEnrichmentTypePtrOutput {
-	return o
-}
-
-func (o StaticRoutingEnrichmentTypePtrOutput) ToStaticRoutingEnrichmentTypePtrOutputWithContext(ctx context.Context) StaticRoutingEnrichmentTypePtrOutput {
-	return o
-}
-
-func (o StaticRoutingEnrichmentTypePtrOutput) Elem() StaticRoutingEnrichmentTypeOutput {
-	return o.ApplyT(func(v *StaticRoutingEnrichmentType) StaticRoutingEnrichmentType {
-		if v != nil {
-			return *v
-		}
-		var ret StaticRoutingEnrichmentType
-		return ret
-	}).(StaticRoutingEnrichmentTypeOutput)
-}
-
-func (o StaticRoutingEnrichmentTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o StaticRoutingEnrichmentTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *StaticRoutingEnrichmentType) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// StaticRoutingEnrichmentTypeInput is an input type that accepts values of the StaticRoutingEnrichmentType enum
-// A concrete instance of `StaticRoutingEnrichmentTypeInput` can be one of the following:
-//
-//	StaticRoutingEnrichmentTypeString
-type StaticRoutingEnrichmentTypeInput interface {
-	pulumi.Input
-
-	ToStaticRoutingEnrichmentTypeOutput() StaticRoutingEnrichmentTypeOutput
-	ToStaticRoutingEnrichmentTypeOutputWithContext(context.Context) StaticRoutingEnrichmentTypeOutput
-}
-
-var staticRoutingEnrichmentTypePtrType = reflect.TypeOf((**StaticRoutingEnrichmentType)(nil)).Elem()
-
-type StaticRoutingEnrichmentTypePtrInput interface {
-	pulumi.Input
-
-	ToStaticRoutingEnrichmentTypePtrOutput() StaticRoutingEnrichmentTypePtrOutput
-	ToStaticRoutingEnrichmentTypePtrOutputWithContext(context.Context) StaticRoutingEnrichmentTypePtrOutput
-}
-
-type staticRoutingEnrichmentTypePtr string
-
-func StaticRoutingEnrichmentTypePtr(v string) StaticRoutingEnrichmentTypePtrInput {
-	return (*staticRoutingEnrichmentTypePtr)(&v)
-}
-
-func (*staticRoutingEnrichmentTypePtr) ElementType() reflect.Type {
-	return staticRoutingEnrichmentTypePtrType
-}
-
-func (in *staticRoutingEnrichmentTypePtr) ToStaticRoutingEnrichmentTypePtrOutput() StaticRoutingEnrichmentTypePtrOutput {
-	return pulumi.ToOutput(in).(StaticRoutingEnrichmentTypePtrOutput)
-}
-
-func (in *staticRoutingEnrichmentTypePtr) ToStaticRoutingEnrichmentTypePtrOutputWithContext(ctx context.Context) StaticRoutingEnrichmentTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(StaticRoutingEnrichmentTypePtrOutput)
-}
-
-// Minimum TLS version of the publisher allowed to publish to this namespace. Only TLS version 1.2 is supported.
+// Minimum TLS version that should be supported by webhook endpoint
 type TlsVersion string
 
 const (
@@ -5116,8 +5300,6 @@ func (in *topicSpacesConfigurationStatePtr) ToTopicSpacesConfigurationStatePtrOu
 }
 
 func init() {
-	pulumi.RegisterOutputType(AlternativeAuthenticationNameSourceOutput{})
-	pulumi.RegisterOutputType(AlternativeAuthenticationNameSourcePtrOutput{})
 	pulumi.RegisterOutputType(ChannelProvisioningStateOutput{})
 	pulumi.RegisterOutputType(ChannelProvisioningStatePtrOutput{})
 	pulumi.RegisterOutputType(ChannelTypeOutput{})
@@ -5126,6 +5308,10 @@ func init() {
 	pulumi.RegisterOutputType(ClientCertificateValidationSchemePtrOutput{})
 	pulumi.RegisterOutputType(ClientStateEnumOutput{})
 	pulumi.RegisterOutputType(ClientStateEnumPtrOutput{})
+	pulumi.RegisterOutputType(CustomDomainIdentityTypeOutput{})
+	pulumi.RegisterOutputType(CustomDomainIdentityTypePtrOutput{})
+	pulumi.RegisterOutputType(CustomDomainValidationStateOutput{})
+	pulumi.RegisterOutputType(CustomDomainValidationStatePtrOutput{})
 	pulumi.RegisterOutputType(DataResidencyBoundaryOutput{})
 	pulumi.RegisterOutputType(DataResidencyBoundaryPtrOutput{})
 	pulumi.RegisterOutputType(DeliveryModeOutput{})
@@ -5146,6 +5332,8 @@ func init() {
 	pulumi.RegisterOutputType(InputSchemaPtrOutput{})
 	pulumi.RegisterOutputType(IpActionTypeOutput{})
 	pulumi.RegisterOutputType(IpActionTypePtrOutput{})
+	pulumi.RegisterOutputType(MonitorAlertSeverityOutput{})
+	pulumi.RegisterOutputType(MonitorAlertSeverityPtrOutput{})
 	pulumi.RegisterOutputType(PartnerConfigurationProvisioningStateOutput{})
 	pulumi.RegisterOutputType(PartnerConfigurationProvisioningStatePtrOutput{})
 	pulumi.RegisterOutputType(PartnerDestinationActivationStateOutput{})
@@ -5170,8 +5358,6 @@ func init() {
 	pulumi.RegisterOutputType(RoutingIdentityTypePtrOutput{})
 	pulumi.RegisterOutputType(SkuNameOutput{})
 	pulumi.RegisterOutputType(SkuNamePtrOutput{})
-	pulumi.RegisterOutputType(StaticRoutingEnrichmentTypeOutput{})
-	pulumi.RegisterOutputType(StaticRoutingEnrichmentTypePtrOutput{})
 	pulumi.RegisterOutputType(TlsVersionOutput{})
 	pulumi.RegisterOutputType(TlsVersionPtrOutput{})
 	pulumi.RegisterOutputType(TopicSpacesConfigurationStateOutput{})
