@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves the properties of a Managed CCF app.
 //
-// Uses Azure REST API version 2023-01-26-preview.
+// Uses Azure REST API version 2023-06-28-preview.
 //
-// Other available API versions: 2023-06-28-preview, 2024-07-09-preview, 2024-09-19-preview.
+// Other available API versions: 2022-09-08-preview, 2023-01-26-preview, 2024-07-09-preview, 2024-09-19-preview, 2025-06-10-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confidentialledger [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupManagedCCF(ctx *pulumi.Context, args *LookupManagedCCFArgs, opts ...pulumi.InvokeOption) (*LookupManagedCCFResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagedCCFResult
@@ -35,6 +35,8 @@ type LookupManagedCCFArgs struct {
 
 // Managed CCF. Contains the properties of Managed CCF Resource.
 type LookupManagedCCFResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -84,6 +86,11 @@ func (o LookupManagedCCFResultOutput) ToLookupManagedCCFResultOutput() LookupMan
 
 func (o LookupManagedCCFResultOutput) ToLookupManagedCCFResultOutputWithContext(ctx context.Context) LookupManagedCCFResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupManagedCCFResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupManagedCCFResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

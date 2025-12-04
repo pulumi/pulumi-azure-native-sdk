@@ -8,16 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Workload deployment model.
 //
-// Uses Azure REST API version 2022-05-01-preview.
+// Uses Azure REST API version 2022-05-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-05-01-preview.
 type WorkloadDeployment struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets or sets the name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Workload deployment model properties.
@@ -146,6 +148,11 @@ func (o WorkloadDeploymentOutput) ToWorkloadDeploymentOutput() WorkloadDeploymen
 
 func (o WorkloadDeploymentOutput) ToWorkloadDeploymentOutputWithContext(ctx context.Context) WorkloadDeploymentOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o WorkloadDeploymentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkloadDeployment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the name of the resource.

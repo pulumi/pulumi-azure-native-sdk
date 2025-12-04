@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,6 +35,8 @@ type LookupACSSBackupConnectionArgs struct {
 
 // Define the backup connection resource of virtual instance for SAP..
 type LookupACSSBackupConnectionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Information about the recovery services vault and backup policy used for backup.
 	BackupData interface{} `pulumi:"backupData"`
 	// Defines the errors related to backup connection resource of virtual instance for SAP.
@@ -90,6 +92,11 @@ func (o LookupACSSBackupConnectionResultOutput) ToLookupACSSBackupConnectionResu
 
 func (o LookupACSSBackupConnectionResultOutput) ToLookupACSSBackupConnectionResultOutputWithContext(ctx context.Context) LookupACSSBackupConnectionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupACSSBackupConnectionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupACSSBackupConnectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Information about the recovery services vault and backup policy used for backup.

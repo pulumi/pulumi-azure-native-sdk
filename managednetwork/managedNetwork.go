@@ -8,16 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Managed Network resource
 //
-// Uses Azure REST API version 2019-06-01-preview. In version 1.x of the Azure Native provider, it used API version 2019-06-01-preview.
+// Uses Azure REST API version 2019-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2019-06-01-preview.
 type ManagedNetwork struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The collection of groups and policies concerned with connectivity
 	Connectivity ConnectivityCollectionResponseOutput `pulumi:"connectivity"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -146,6 +148,11 @@ func (o ManagedNetworkOutput) ToManagedNetworkOutput() ManagedNetworkOutput {
 
 func (o ManagedNetworkOutput) ToManagedNetworkOutputWithContext(ctx context.Context) ManagedNetworkOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ManagedNetworkOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagedNetwork) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The collection of groups and policies concerned with connectivity

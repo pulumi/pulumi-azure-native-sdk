@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets information about the specified job.
 //
-// Uses Azure REST API version 2022-12-01.
+// Uses Azure REST API version 2024-03-01-preview.
 //
-// Other available API versions: 2023-03-01, 2023-12-01, 2024-02-01-preview, 2024-03-01-preview, 2025-02-01.
+// Other available API versions: 2022-12-01, 2023-03-01, 2023-12-01, 2024-02-01-preview, 2025-02-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native databox [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupJob(ctx *pulumi.Context, args *LookupJobArgs, opts ...pulumi.InvokeOption) (*LookupJobResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupJobResult
@@ -37,8 +37,14 @@ type LookupJobArgs struct {
 
 // Job Resource.
 type LookupJobResult struct {
+	// Flag to indicate if all devices associated with the job are lost.
+	AllDevicesLost bool `pulumi:"allDevicesLost"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Reason for cancellation.
 	CancellationReason string `pulumi:"cancellationReason"`
+	// Name of the stage where delay might be present.
+	DelayedStage string `pulumi:"delayedStage"`
 	// Delivery Info of Job.
 	DeliveryInfo *JobDeliveryInfoResponse `pulumi:"deliveryInfo"`
 	// Delivery type of Job.
@@ -136,9 +142,24 @@ func (o LookupJobResultOutput) ToLookupJobResultOutputWithContext(ctx context.Co
 	return o
 }
 
+// Flag to indicate if all devices associated with the job are lost.
+func (o LookupJobResultOutput) AllDevicesLost() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupJobResult) bool { return v.AllDevicesLost }).(pulumi.BoolOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupJobResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupJobResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Reason for cancellation.
 func (o LookupJobResultOutput) CancellationReason() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobResult) string { return v.CancellationReason }).(pulumi.StringOutput)
+}
+
+// Name of the stage where delay might be present.
+func (o LookupJobResultOutput) DelayedStage() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupJobResult) string { return v.DelayedStage }).(pulumi.StringOutput)
 }
 
 // Delivery Info of Job.

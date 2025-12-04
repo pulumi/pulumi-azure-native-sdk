@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -55,8 +55,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DefenderForStorage{}
 	case "azure-native:security:DevOpsConfiguration":
 		r = &DevOpsConfiguration{}
-	case "azure-native:security:DevOpsPolicyAssignment":
-		r = &DevOpsPolicyAssignment{}
 	case "azure-native:security:DeviceSecurityGroup":
 		r = &DeviceSecurityGroup{}
 	case "azure-native:security:GovernanceAssignment":
@@ -69,6 +67,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &JitNetworkAccessPolicy{}
 	case "azure-native:security:Pricing":
 		r = &Pricing{}
+	case "azure-native:security:PrivateEndpointConnection":
+		r = &PrivateEndpointConnection{}
+	case "azure-native:security:PrivateLink":
+		r = &PrivateLink{}
 	case "azure-native:security:SecurityConnector":
 		r = &SecurityConnector{}
 	case "azure-native:security:SecurityConnectorApplication":

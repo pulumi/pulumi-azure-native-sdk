@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,6 +37,8 @@ type LookupBlobFolderDataSetArgs struct {
 
 // An Azure storage blob folder data set.
 type LookupBlobFolderDataSetResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Container that has the file path.
 	ContainerName string `pulumi:"containerName"`
 	// Unique id for identifying a data set resource
@@ -99,6 +101,11 @@ func (o LookupBlobFolderDataSetResultOutput) ToLookupBlobFolderDataSetResultOutp
 
 func (o LookupBlobFolderDataSetResultOutput) ToLookupBlobFolderDataSetResultOutputWithContext(ctx context.Context) LookupBlobFolderDataSetResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupBlobFolderDataSetResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBlobFolderDataSetResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Container that has the file path.

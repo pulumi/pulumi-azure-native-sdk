@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,9 +29,9 @@ type LookupDiskArgs struct {
 	Expand *string `pulumi:"expand"`
 	// The name of the lab.
 	LabName string `pulumi:"labName"`
-	// The name of the disk.
+	// The name of the Disk
 	Name string `pulumi:"name"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the user profile.
 	UserName string `pulumi:"userName"`
@@ -39,6 +39,8 @@ type LookupDiskArgs struct {
 
 // A Disk.
 type LookupDiskResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The creation date of the disk.
 	CreatedDate string `pulumi:"createdDate"`
 	// When backed by a blob, the name of the VHD blob without extension.
@@ -87,9 +89,9 @@ type LookupDiskOutputArgs struct {
 	Expand pulumi.StringPtrInput `pulumi:"expand"`
 	// The name of the lab.
 	LabName pulumi.StringInput `pulumi:"labName"`
-	// The name of the disk.
+	// The name of the Disk
 	Name pulumi.StringInput `pulumi:"name"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the user profile.
 	UserName pulumi.StringInput `pulumi:"userName"`
@@ -112,6 +114,11 @@ func (o LookupDiskResultOutput) ToLookupDiskResultOutput() LookupDiskResultOutpu
 
 func (o LookupDiskResultOutput) ToLookupDiskResultOutputWithContext(ctx context.Context) LookupDiskResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupDiskResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDiskResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of the disk.

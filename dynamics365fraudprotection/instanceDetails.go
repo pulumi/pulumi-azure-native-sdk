@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents an instance of a DFP instance resource.
 //
-// Uses Azure REST API version 2021-02-01-preview. In version 1.x of the Azure Native provider, it used API version 2021-02-01-preview.
+// Uses Azure REST API version 2021-02-01-preview. In version 2.x of the Azure Native provider, it used API version 2021-02-01-preview.
 type InstanceDetails struct {
 	pulumi.CustomResourceState
 
 	// A collection of DFP instance administrators
 	Administration DFPInstanceAdministratorsResponsePtrOutput `pulumi:"administration"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Location of the DFP resource.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -149,6 +151,11 @@ func (o InstanceDetailsOutput) ToInstanceDetailsOutputWithContext(ctx context.Co
 // A collection of DFP instance administrators
 func (o InstanceDetailsOutput) Administration() DFPInstanceAdministratorsResponsePtrOutput {
 	return o.ApplyT(func(v *InstanceDetails) DFPInstanceAdministratorsResponsePtrOutput { return v.Administration }).(DFPInstanceAdministratorsResponsePtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o InstanceDetailsOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceDetails) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Location of the DFP resource.

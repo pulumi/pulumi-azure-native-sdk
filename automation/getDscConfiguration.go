@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieve the configuration identified by configuration name.
 //
-// Uses Azure REST API version 2022-08-08.
+// Uses Azure REST API version 2023-11-01.
 //
-// Other available API versions: 2023-05-15-preview, 2023-11-01, 2024-10-23.
+// Other available API versions: 2015-10-31, 2019-06-01, 2022-08-08, 2023-05-15-preview, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupDscConfiguration(ctx *pulumi.Context, args *LookupDscConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupDscConfigurationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDscConfigurationResult
@@ -37,6 +37,8 @@ type LookupDscConfigurationArgs struct {
 
 // Definition of the configuration type.
 type LookupDscConfigurationResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets or sets the creation time.
 	CreationTime *string `pulumi:"creationTime"`
 	// Gets or sets the description.
@@ -106,6 +108,11 @@ func (o LookupDscConfigurationResultOutput) ToLookupDscConfigurationResultOutput
 
 func (o LookupDscConfigurationResultOutput) ToLookupDscConfigurationResultOutputWithContext(ctx context.Context) LookupDscConfigurationResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupDscConfigurationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDscConfigurationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the creation time.

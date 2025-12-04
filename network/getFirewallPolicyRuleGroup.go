@@ -7,13 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified FirewallPolicyRuleGroup.
 //
 // Uses Azure REST API version 2020-04-01.
+//
+// Other available API versions: 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupFirewallPolicyRuleGroup(ctx *pulumi.Context, args *LookupFirewallPolicyRuleGroupArgs, opts ...pulumi.InvokeOption) (*LookupFirewallPolicyRuleGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFirewallPolicyRuleGroupResult
@@ -35,6 +37,8 @@ type LookupFirewallPolicyRuleGroupArgs struct {
 
 // Rule Group resource.
 type LookupFirewallPolicyRuleGroupResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag string `pulumi:"etag"`
 	// Resource ID.
@@ -86,6 +90,11 @@ func (o LookupFirewallPolicyRuleGroupResultOutput) ToLookupFirewallPolicyRuleGro
 
 func (o LookupFirewallPolicyRuleGroupResultOutput) ToLookupFirewallPolicyRuleGroupResultOutputWithContext(ctx context.Context) LookupFirewallPolicyRuleGroupResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupFirewallPolicyRuleGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFirewallPolicyRuleGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.

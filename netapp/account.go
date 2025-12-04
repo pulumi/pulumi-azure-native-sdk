@@ -8,20 +8,22 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // NetApp account resource
 //
-// Uses Azure REST API version 2022-11-01. In version 1.x of the Azure Native provider, it used API version 2020-12-01.
+// Uses Azure REST API version 2024-09-01. In version 2.x of the Azure Native provider, it used API version 2022-11-01.
 //
-// Other available API versions: 2022-05-01, 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01, 2023-07-01-preview, 2023-11-01, 2023-11-01-preview, 2024-01-01, 2024-03-01, 2024-03-01-preview, 2024-05-01, 2024-05-01-preview, 2024-07-01, 2024-07-01-preview, 2024-09-01, 2024-09-01-preview.
+// Other available API versions: 2022-11-01, 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01, 2023-07-01-preview, 2023-11-01, 2023-11-01-preview, 2024-01-01, 2024-03-01, 2024-03-01-preview, 2024-05-01, 2024-05-01-preview, 2024-07-01, 2024-07-01-preview, 2024-09-01-preview, 2025-01-01, 2025-01-01-preview, 2025-03-01, 2025-03-01-preview, 2025-06-01, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native netapp [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Account struct {
 	pulumi.CustomResourceState
 
 	// Active Directories
 	ActiveDirectories ActiveDirectoryResponseArrayOutput `pulumi:"activeDirectories"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Shows the status of disableShowmount for all volumes under the subscription, null equals false
 	DisableShowmount pulumi.BoolOutput `pulumi:"disableShowmount"`
 	// Encryption settings
@@ -187,6 +189,24 @@ func NewAccount(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:netapp/v20240901preview:Account"),
 		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20250101:Account"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20250101preview:Account"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20250301:Account"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20250301preview:Account"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20250601:Account"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20250701preview:Account"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -296,6 +316,11 @@ func (o AccountOutput) ToAccountOutputWithContext(ctx context.Context) AccountOu
 // Active Directories
 func (o AccountOutput) ActiveDirectories() ActiveDirectoryResponseArrayOutput {
 	return o.ApplyT(func(v *Account) ActiveDirectoryResponseArrayOutput { return v.ActiveDirectories }).(ActiveDirectoryResponseArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o AccountOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Shows the status of disableShowmount for all volumes under the subscription, null equals false

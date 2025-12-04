@@ -8,16 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Workspace details.
 //
-// Uses Azure REST API version 2023-04-01-preview. In version 1.x of the Azure Native provider, it used API version 2022-04-01-preview.
+// Uses Azure REST API version 2023-04-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-04-01-preview.
 type Workspace struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Data plane endpoint.
 	DataPlaneEndpoint pulumi.StringOutput `pulumi:"dataPlaneEndpoint"`
 	// The geo-location where the resource lives
@@ -143,6 +145,11 @@ func (o WorkspaceOutput) ToWorkspaceOutput() WorkspaceOutput {
 
 func (o WorkspaceOutput) ToWorkspaceOutputWithContext(ctx context.Context) WorkspaceOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o WorkspaceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Workspace) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Data plane endpoint.

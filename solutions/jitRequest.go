@@ -8,20 +8,22 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Information about JIT request definition.
 //
-// Uses Azure REST API version 2021-07-01. In version 1.x of the Azure Native provider, it used API version 2019-07-01.
+// Uses Azure REST API version 2021-07-01. In version 2.x of the Azure Native provider, it used API version 2021-07-01.
 //
-// Other available API versions: 2023-12-01-preview.
+// Other available API versions: 2023-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native solutions [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type JitRequest struct {
 	pulumi.CustomResourceState
 
 	// The parent application id.
 	ApplicationResourceId pulumi.StringOutput `pulumi:"applicationResourceId"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The client entity that created the JIT request.
 	CreatedBy ApplicationClientDetailsResponseOutput `pulumi:"createdBy"`
 	// The JIT authorization policies.
@@ -201,6 +203,11 @@ func (o JitRequestOutput) ToJitRequestOutputWithContext(ctx context.Context) Jit
 // The parent application id.
 func (o JitRequestOutput) ApplicationResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *JitRequest) pulumi.StringOutput { return v.ApplicationResourceId }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o JitRequestOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *JitRequest) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The client entity that created the JIT request.

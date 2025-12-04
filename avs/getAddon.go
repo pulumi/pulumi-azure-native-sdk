@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An addon resource
+// Get a Addon
 //
-// Uses Azure REST API version 2022-05-01.
+// Uses Azure REST API version 2023-09-01.
 //
-// Other available API versions: 2021-01-01-preview, 2023-03-01, 2023-09-01.
+// Other available API versions: 2022-05-01, 2023-03-01, 2024-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native avs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupAddon(ctx *pulumi.Context, args *LookupAddonArgs, opts ...pulumi.InvokeOption) (*LookupAddonResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAddonResult
@@ -27,7 +27,7 @@ func LookupAddon(ctx *pulumi.Context, args *LookupAddonArgs, opts ...pulumi.Invo
 }
 
 type LookupAddonArgs struct {
-	// Name of the addon for the private cloud
+	// Name of the addon.
 	AddonName string `pulumi:"addonName"`
 	// Name of the private cloud
 	PrivateCloudName string `pulumi:"privateCloudName"`
@@ -37,13 +37,19 @@ type LookupAddonArgs struct {
 
 // An addon resource
 type LookupAddonResult struct {
-	// Resource ID.
+	// Addon type
+	AddonType string `pulumi:"addonType"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
-	// Resource name.
+	// The name of the resource
 	Name string `pulumi:"name"`
-	// The properties of an addon resource
-	Properties interface{} `pulumi:"properties"`
-	// Resource type.
+	// The state of the addon provisioning
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -57,7 +63,7 @@ func LookupAddonOutput(ctx *pulumi.Context, args LookupAddonOutputArgs, opts ...
 }
 
 type LookupAddonOutputArgs struct {
-	// Name of the addon for the private cloud
+	// Name of the addon.
 	AddonName pulumi.StringInput `pulumi:"addonName"`
 	// Name of the private cloud
 	PrivateCloudName pulumi.StringInput `pulumi:"privateCloudName"`
@@ -84,22 +90,37 @@ func (o LookupAddonResultOutput) ToLookupAddonResultOutputWithContext(ctx contex
 	return o
 }
 
-// Resource ID.
+// Addon type
+func (o LookupAddonResultOutput) AddonType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAddonResult) string { return v.AddonType }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupAddonResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAddonResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupAddonResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAddonResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o LookupAddonResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAddonResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The properties of an addon resource
-func (o LookupAddonResultOutput) Properties() pulumi.AnyOutput {
-	return o.ApplyT(func(v LookupAddonResult) interface{} { return v.Properties }).(pulumi.AnyOutput)
+// The state of the addon provisioning
+func (o LookupAddonResultOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAddonResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Resource type.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupAddonResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupAddonResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupAddonResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAddonResult) string { return v.Type }).(pulumi.StringOutput)
 }

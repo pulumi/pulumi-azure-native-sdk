@@ -8,15 +8,15 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Describes a virtual machine scale set virtual machine.
 //
-// Uses Azure REST API version 2023-03-01. In version 1.x of the Azure Native provider, it used API version 2021-03-01.
+// Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
 //
-// Other available API versions: 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2024-11-01.
+// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type VirtualMachineScaleSetVM struct {
 	pulumi.CustomResourceState
 
@@ -24,8 +24,12 @@ type VirtualMachineScaleSetVM struct {
 	AdditionalCapabilities AdditionalCapabilitiesResponsePtrOutput `pulumi:"additionalCapabilities"`
 	// Specifies information about the availability set that the virtual machine should be assigned to. Virtual machines specified in the same availability set are allocated to different nodes to maximize availability. For more information about availability sets, see [Availability sets overview](https://docs.microsoft.com/azure/virtual-machines/availability-set-overview). For more information on Azure planned maintenance, see [Maintenance and updates for Virtual Machines in Azure](https://docs.microsoft.com/azure/virtual-machines/maintenance-and-updates). Currently, a VM can only be added to availability set at creation time. An existing VM cannot be added to an availability set.
 	AvailabilitySet SubResourceResponsePtrOutput `pulumi:"availabilitySet"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Specifies the boot diagnostic settings state. Minimum api-version: 2015-06-15.
 	DiagnosticsProfile DiagnosticsProfileResponsePtrOutput `pulumi:"diagnosticsProfile"`
+	// Etag is property returned in Update/Get response of the VMSS VM, so that customer can supply it in the header to ensure optimistic updates.
+	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Specifies the hardware settings for the virtual machine.
 	HardwareProfile HardwareProfileResponsePtrOutput `pulumi:"hardwareProfile"`
 	// The identity of the virtual machine, if configured.
@@ -38,11 +42,11 @@ type VirtualMachineScaleSetVM struct {
 	LatestModelApplied pulumi.BoolOutput `pulumi:"latestModelApplied"`
 	// Specifies that the image or disk that is being used was licensed on-premises. <br><br> Possible values for Windows Server operating system are: <br><br> Windows_Client <br><br> Windows_Server <br><br> Possible values for Linux Server operating system are: <br><br> RHEL_BYOS (for RHEL) <br><br> SLES_BYOS (for SUSE) <br><br> For more information, see [Azure Hybrid Use Benefit for Windows Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) <br><br> [Azure Hybrid Use Benefit for Linux Server](https://docs.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux) <br><br> Minimum api-version: 2015-06-15
 	LicenseType pulumi.StringPtrOutput `pulumi:"licenseType"`
-	// Resource location
+	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Specifies whether the model applied to the virtual machine is the model of the virtual machine scale set or the customized model for the virtual machine.
 	ModelDefinitionApplied pulumi.StringOutput `pulumi:"modelDefinitionApplied"`
-	// Resource name
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Specifies the network interfaces of the virtual machine.
 	NetworkProfile NetworkProfileResponsePtrOutput `pulumi:"networkProfile"`
@@ -56,6 +60,8 @@ type VirtualMachineScaleSetVM struct {
 	ProtectionPolicy VirtualMachineScaleSetVMProtectionPolicyResponsePtrOutput `pulumi:"protectionPolicy"`
 	// The provisioning state, which only appears in the response.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// Specifies the resilient VM deletion status for the virtual machine.
+	ResilientVMDeletionStatus pulumi.StringPtrOutput `pulumi:"resilientVMDeletionStatus"`
 	// The virtual machine child extension resources.
 	Resources VirtualMachineExtensionResponseArrayOutput `pulumi:"resources"`
 	// Specifies the Security related profile settings for the virtual machine.
@@ -64,11 +70,15 @@ type VirtualMachineScaleSetVM struct {
 	Sku SkuResponseOutput `pulumi:"sku"`
 	// Specifies the storage settings for the virtual machine disks.
 	StorageProfile StorageProfileResponsePtrOutput `pulumi:"storageProfile"`
-	// Resource tags
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Resource type
+	// Specifies the time at which the Virtual Machine resource was created. Minimum api-version: 2021-11-01.
+	TimeCreated pulumi.StringOutput `pulumi:"timeCreated"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
-	// UserData for the VM, which must be base-64 encoded. Customer should not pass any secrets in here. <br><br>Minimum api-version: 2021-03-01
+	// UserData for the VM, which must be base-64 encoded. Customer should not pass any secrets in here. Minimum api-version: 2021-03-01
 	UserData pulumi.StringPtrOutput `pulumi:"userData"`
 	// Azure VM unique ID.
 	VmId pulumi.StringOutput `pulumi:"vmId"`
@@ -156,6 +166,9 @@ func NewVirtualMachineScaleSetVM(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:compute/v20241101:VirtualMachineScaleSetVM"),
 		},
+		{
+			Type: pulumi.String("azure-native:compute/v20250401:VirtualMachineScaleSetVM"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -205,7 +218,7 @@ type virtualMachineScaleSetVMArgs struct {
 	InstanceId *string `pulumi:"instanceId"`
 	// Specifies that the image or disk that is being used was licensed on-premises. <br><br> Possible values for Windows Server operating system are: <br><br> Windows_Client <br><br> Windows_Server <br><br> Possible values for Linux Server operating system are: <br><br> RHEL_BYOS (for RHEL) <br><br> SLES_BYOS (for SUSE) <br><br> For more information, see [Azure Hybrid Use Benefit for Windows Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) <br><br> [Azure Hybrid Use Benefit for Linux Server](https://docs.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux) <br><br> Minimum api-version: 2015-06-15
 	LicenseType *string `pulumi:"licenseType"`
-	// Resource location
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// Specifies the network interfaces of the virtual machine.
 	NetworkProfile *NetworkProfile `pulumi:"networkProfile"`
@@ -217,17 +230,19 @@ type virtualMachineScaleSetVMArgs struct {
 	Plan *Plan `pulumi:"plan"`
 	// Specifies the protection policy of the virtual machine.
 	ProtectionPolicy *VirtualMachineScaleSetVMProtectionPolicy `pulumi:"protectionPolicy"`
-	// The name of the resource group.
+	// Specifies the resilient VM deletion status for the virtual machine.
+	ResilientVMDeletionStatus *string `pulumi:"resilientVMDeletionStatus"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Specifies the Security related profile settings for the virtual machine.
 	SecurityProfile *SecurityProfile `pulumi:"securityProfile"`
 	// Specifies the storage settings for the virtual machine disks.
 	StorageProfile *StorageProfile `pulumi:"storageProfile"`
-	// Resource tags
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// UserData for the VM, which must be base-64 encoded. Customer should not pass any secrets in here. <br><br>Minimum api-version: 2021-03-01
+	// UserData for the VM, which must be base-64 encoded. Customer should not pass any secrets in here. Minimum api-version: 2021-03-01
 	UserData *string `pulumi:"userData"`
-	// The name of the VM scale set where the extension should be create or updated.
+	// The name of the VM scale set.
 	VmScaleSetName string `pulumi:"vmScaleSetName"`
 }
 
@@ -247,7 +262,7 @@ type VirtualMachineScaleSetVMArgs struct {
 	InstanceId pulumi.StringPtrInput
 	// Specifies that the image or disk that is being used was licensed on-premises. <br><br> Possible values for Windows Server operating system are: <br><br> Windows_Client <br><br> Windows_Server <br><br> Possible values for Linux Server operating system are: <br><br> RHEL_BYOS (for RHEL) <br><br> SLES_BYOS (for SUSE) <br><br> For more information, see [Azure Hybrid Use Benefit for Windows Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) <br><br> [Azure Hybrid Use Benefit for Linux Server](https://docs.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux) <br><br> Minimum api-version: 2015-06-15
 	LicenseType pulumi.StringPtrInput
-	// Resource location
+	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// Specifies the network interfaces of the virtual machine.
 	NetworkProfile NetworkProfilePtrInput
@@ -259,17 +274,19 @@ type VirtualMachineScaleSetVMArgs struct {
 	Plan PlanPtrInput
 	// Specifies the protection policy of the virtual machine.
 	ProtectionPolicy VirtualMachineScaleSetVMProtectionPolicyPtrInput
-	// The name of the resource group.
+	// Specifies the resilient VM deletion status for the virtual machine.
+	ResilientVMDeletionStatus pulumi.StringPtrInput
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Specifies the Security related profile settings for the virtual machine.
 	SecurityProfile SecurityProfilePtrInput
 	// Specifies the storage settings for the virtual machine disks.
 	StorageProfile StorageProfilePtrInput
-	// Resource tags
+	// Resource tags.
 	Tags pulumi.StringMapInput
-	// UserData for the VM, which must be base-64 encoded. Customer should not pass any secrets in here. <br><br>Minimum api-version: 2021-03-01
+	// UserData for the VM, which must be base-64 encoded. Customer should not pass any secrets in here. Minimum api-version: 2021-03-01
 	UserData pulumi.StringPtrInput
-	// The name of the VM scale set where the extension should be create or updated.
+	// The name of the VM scale set.
 	VmScaleSetName pulumi.StringInput
 }
 
@@ -322,9 +339,19 @@ func (o VirtualMachineScaleSetVMOutput) AvailabilitySet() SubResourceResponsePtr
 	return o.ApplyT(func(v *VirtualMachineScaleSetVM) SubResourceResponsePtrOutput { return v.AvailabilitySet }).(SubResourceResponsePtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o VirtualMachineScaleSetVMOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetVM) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Specifies the boot diagnostic settings state. Minimum api-version: 2015-06-15.
 func (o VirtualMachineScaleSetVMOutput) DiagnosticsProfile() DiagnosticsProfileResponsePtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetVM) DiagnosticsProfileResponsePtrOutput { return v.DiagnosticsProfile }).(DiagnosticsProfileResponsePtrOutput)
+}
+
+// Etag is property returned in Update/Get response of the VMSS VM, so that customer can supply it in the header to ensure optimistic updates.
+func (o VirtualMachineScaleSetVMOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetVM) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
 // Specifies the hardware settings for the virtual machine.
@@ -359,7 +386,7 @@ func (o VirtualMachineScaleSetVMOutput) LicenseType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetVM) pulumi.StringPtrOutput { return v.LicenseType }).(pulumi.StringPtrOutput)
 }
 
-// Resource location
+// The geo-location where the resource lives
 func (o VirtualMachineScaleSetVMOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetVM) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
@@ -369,7 +396,7 @@ func (o VirtualMachineScaleSetVMOutput) ModelDefinitionApplied() pulumi.StringOu
 	return o.ApplyT(func(v *VirtualMachineScaleSetVM) pulumi.StringOutput { return v.ModelDefinitionApplied }).(pulumi.StringOutput)
 }
 
-// Resource name
+// The name of the resource
 func (o VirtualMachineScaleSetVMOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetVM) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -408,6 +435,11 @@ func (o VirtualMachineScaleSetVMOutput) ProvisioningState() pulumi.StringOutput 
 	return o.ApplyT(func(v *VirtualMachineScaleSetVM) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Specifies the resilient VM deletion status for the virtual machine.
+func (o VirtualMachineScaleSetVMOutput) ResilientVMDeletionStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetVM) pulumi.StringPtrOutput { return v.ResilientVMDeletionStatus }).(pulumi.StringPtrOutput)
+}
+
 // The virtual machine child extension resources.
 func (o VirtualMachineScaleSetVMOutput) Resources() VirtualMachineExtensionResponseArrayOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetVM) VirtualMachineExtensionResponseArrayOutput { return v.Resources }).(VirtualMachineExtensionResponseArrayOutput)
@@ -428,17 +460,27 @@ func (o VirtualMachineScaleSetVMOutput) StorageProfile() StorageProfileResponseP
 	return o.ApplyT(func(v *VirtualMachineScaleSetVM) StorageProfileResponsePtrOutput { return v.StorageProfile }).(StorageProfileResponsePtrOutput)
 }
 
-// Resource tags
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o VirtualMachineScaleSetVMOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetVM) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// Resource tags.
 func (o VirtualMachineScaleSetVMOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetVM) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Resource type
+// Specifies the time at which the Virtual Machine resource was created. Minimum api-version: 2021-11-01.
+func (o VirtualMachineScaleSetVMOutput) TimeCreated() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetVM) pulumi.StringOutput { return v.TimeCreated }).(pulumi.StringOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o VirtualMachineScaleSetVMOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetVM) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// UserData for the VM, which must be base-64 encoded. Customer should not pass any secrets in here. <br><br>Minimum api-version: 2021-03-01
+// UserData for the VM, which must be base-64 encoded. Customer should not pass any secrets in here. Minimum api-version: 2021-03-01
 func (o VirtualMachineScaleSetVMOutput) UserData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetVM) pulumi.StringPtrOutput { return v.UserData }).(pulumi.StringPtrOutput)
 }

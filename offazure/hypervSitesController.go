@@ -8,15 +8,15 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A HyperV SiteResource
 //
-// Uses Azure REST API version 2023-06-06.
+// Uses Azure REST API version 2023-10-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-06-06.
 //
-// Other available API versions: 2023-10-01-preview, 2024-05-01-preview.
+// Other available API versions: 2023-06-06, 2024-05-01-preview, 2024-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native offazure [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type HypervSitesController struct {
 	pulumi.CustomResourceState
 
@@ -24,6 +24,8 @@ type HypervSitesController struct {
 	AgentDetails SiteAgentPropertiesResponsePtrOutput `pulumi:"agentDetails"`
 	// Gets or sets the Appliance Name.
 	ApplianceName pulumi.StringPtrOutput `pulumi:"applianceName"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets or sets the ARM ID of migration hub solution for SDS.
 	DiscoverySolutionId pulumi.StringPtrOutput `pulumi:"discoverySolutionId"`
 	// The geo-location where the resource lives
@@ -63,6 +65,9 @@ func NewHypervSitesController(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:offazure/v20200101:HypervSitesController"),
 		},
 		{
+			Type: pulumi.String("azure-native:offazure/v20200707:HyperVSite"),
+		},
+		{
 			Type: pulumi.String("azure-native:offazure/v20200707:HypervSitesController"),
 		},
 		{
@@ -73,6 +78,12 @@ func NewHypervSitesController(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:offazure/v20240501preview:HypervSitesController"),
+		},
+		{
+			Type: pulumi.String("azure-native:offazure/v20240701preview:HypervSitesController"),
+		},
+		{
+			Type: pulumi.String("azure-native:offazure:HyperVSite"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -200,6 +211,11 @@ func (o HypervSitesControllerOutput) AgentDetails() SiteAgentPropertiesResponseP
 // Gets or sets the Appliance Name.
 func (o HypervSitesControllerOutput) ApplianceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HypervSitesController) pulumi.StringPtrOutput { return v.ApplianceName }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o HypervSitesControllerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *HypervSitesController) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the ARM ID of migration hub solution for SDS.

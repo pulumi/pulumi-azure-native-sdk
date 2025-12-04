@@ -10,6 +10,172 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Indicates whether the API try-out feature is enabled or disabled. When enabled, users can try out the API by sending requests and viewing responses in API portal. When disabled, users cannot try out the API.
+type ApiPortalApiTryOutEnabledState string
+
+const (
+	ApiPortalApiTryOutEnabledStateEnabled  = ApiPortalApiTryOutEnabledState("Enabled")
+	ApiPortalApiTryOutEnabledStateDisabled = ApiPortalApiTryOutEnabledState("Disabled")
+)
+
+func (ApiPortalApiTryOutEnabledState) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiPortalApiTryOutEnabledState)(nil)).Elem()
+}
+
+func (e ApiPortalApiTryOutEnabledState) ToApiPortalApiTryOutEnabledStateOutput() ApiPortalApiTryOutEnabledStateOutput {
+	return pulumi.ToOutput(e).(ApiPortalApiTryOutEnabledStateOutput)
+}
+
+func (e ApiPortalApiTryOutEnabledState) ToApiPortalApiTryOutEnabledStateOutputWithContext(ctx context.Context) ApiPortalApiTryOutEnabledStateOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ApiPortalApiTryOutEnabledStateOutput)
+}
+
+func (e ApiPortalApiTryOutEnabledState) ToApiPortalApiTryOutEnabledStatePtrOutput() ApiPortalApiTryOutEnabledStatePtrOutput {
+	return e.ToApiPortalApiTryOutEnabledStatePtrOutputWithContext(context.Background())
+}
+
+func (e ApiPortalApiTryOutEnabledState) ToApiPortalApiTryOutEnabledStatePtrOutputWithContext(ctx context.Context) ApiPortalApiTryOutEnabledStatePtrOutput {
+	return ApiPortalApiTryOutEnabledState(e).ToApiPortalApiTryOutEnabledStateOutputWithContext(ctx).ToApiPortalApiTryOutEnabledStatePtrOutputWithContext(ctx)
+}
+
+func (e ApiPortalApiTryOutEnabledState) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ApiPortalApiTryOutEnabledState) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ApiPortalApiTryOutEnabledState) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ApiPortalApiTryOutEnabledState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ApiPortalApiTryOutEnabledStateOutput struct{ *pulumi.OutputState }
+
+func (ApiPortalApiTryOutEnabledStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiPortalApiTryOutEnabledState)(nil)).Elem()
+}
+
+func (o ApiPortalApiTryOutEnabledStateOutput) ToApiPortalApiTryOutEnabledStateOutput() ApiPortalApiTryOutEnabledStateOutput {
+	return o
+}
+
+func (o ApiPortalApiTryOutEnabledStateOutput) ToApiPortalApiTryOutEnabledStateOutputWithContext(ctx context.Context) ApiPortalApiTryOutEnabledStateOutput {
+	return o
+}
+
+func (o ApiPortalApiTryOutEnabledStateOutput) ToApiPortalApiTryOutEnabledStatePtrOutput() ApiPortalApiTryOutEnabledStatePtrOutput {
+	return o.ToApiPortalApiTryOutEnabledStatePtrOutputWithContext(context.Background())
+}
+
+func (o ApiPortalApiTryOutEnabledStateOutput) ToApiPortalApiTryOutEnabledStatePtrOutputWithContext(ctx context.Context) ApiPortalApiTryOutEnabledStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiPortalApiTryOutEnabledState) *ApiPortalApiTryOutEnabledState {
+		return &v
+	}).(ApiPortalApiTryOutEnabledStatePtrOutput)
+}
+
+func (o ApiPortalApiTryOutEnabledStateOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ApiPortalApiTryOutEnabledStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ApiPortalApiTryOutEnabledState) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ApiPortalApiTryOutEnabledStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ApiPortalApiTryOutEnabledStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ApiPortalApiTryOutEnabledState) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ApiPortalApiTryOutEnabledStatePtrOutput struct{ *pulumi.OutputState }
+
+func (ApiPortalApiTryOutEnabledStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiPortalApiTryOutEnabledState)(nil)).Elem()
+}
+
+func (o ApiPortalApiTryOutEnabledStatePtrOutput) ToApiPortalApiTryOutEnabledStatePtrOutput() ApiPortalApiTryOutEnabledStatePtrOutput {
+	return o
+}
+
+func (o ApiPortalApiTryOutEnabledStatePtrOutput) ToApiPortalApiTryOutEnabledStatePtrOutputWithContext(ctx context.Context) ApiPortalApiTryOutEnabledStatePtrOutput {
+	return o
+}
+
+func (o ApiPortalApiTryOutEnabledStatePtrOutput) Elem() ApiPortalApiTryOutEnabledStateOutput {
+	return o.ApplyT(func(v *ApiPortalApiTryOutEnabledState) ApiPortalApiTryOutEnabledState {
+		if v != nil {
+			return *v
+		}
+		var ret ApiPortalApiTryOutEnabledState
+		return ret
+	}).(ApiPortalApiTryOutEnabledStateOutput)
+}
+
+func (o ApiPortalApiTryOutEnabledStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ApiPortalApiTryOutEnabledStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ApiPortalApiTryOutEnabledState) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ApiPortalApiTryOutEnabledStateInput is an input type that accepts values of the ApiPortalApiTryOutEnabledState enum
+// A concrete instance of `ApiPortalApiTryOutEnabledStateInput` can be one of the following:
+//
+//	ApiPortalApiTryOutEnabledStateEnabled
+//	ApiPortalApiTryOutEnabledStateDisabled
+type ApiPortalApiTryOutEnabledStateInput interface {
+	pulumi.Input
+
+	ToApiPortalApiTryOutEnabledStateOutput() ApiPortalApiTryOutEnabledStateOutput
+	ToApiPortalApiTryOutEnabledStateOutputWithContext(context.Context) ApiPortalApiTryOutEnabledStateOutput
+}
+
+var apiPortalApiTryOutEnabledStatePtrType = reflect.TypeOf((**ApiPortalApiTryOutEnabledState)(nil)).Elem()
+
+type ApiPortalApiTryOutEnabledStatePtrInput interface {
+	pulumi.Input
+
+	ToApiPortalApiTryOutEnabledStatePtrOutput() ApiPortalApiTryOutEnabledStatePtrOutput
+	ToApiPortalApiTryOutEnabledStatePtrOutputWithContext(context.Context) ApiPortalApiTryOutEnabledStatePtrOutput
+}
+
+type apiPortalApiTryOutEnabledStatePtr string
+
+func ApiPortalApiTryOutEnabledStatePtr(v string) ApiPortalApiTryOutEnabledStatePtrInput {
+	return (*apiPortalApiTryOutEnabledStatePtr)(&v)
+}
+
+func (*apiPortalApiTryOutEnabledStatePtr) ElementType() reflect.Type {
+	return apiPortalApiTryOutEnabledStatePtrType
+}
+
+func (in *apiPortalApiTryOutEnabledStatePtr) ToApiPortalApiTryOutEnabledStatePtrOutput() ApiPortalApiTryOutEnabledStatePtrOutput {
+	return pulumi.ToOutput(in).(ApiPortalApiTryOutEnabledStatePtrOutput)
+}
+
+func (in *apiPortalApiTryOutEnabledStatePtr) ToApiPortalApiTryOutEnabledStatePtrOutputWithContext(ctx context.Context) ApiPortalApiTryOutEnabledStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ApiPortalApiTryOutEnabledStatePtrOutput)
+}
+
 // Type of application performance monitoring
 type ApmType string
 
@@ -858,6 +1024,172 @@ func (in *configurationServiceGenerationPtr) ToConfigurationServiceGenerationPtr
 	return pulumi.ToOutputWithContext(ctx, in).(ConfigurationServiceGenerationPtrOutput)
 }
 
+// Type of the customized accelerator.
+type CustomizedAcceleratorType string
+
+const (
+	CustomizedAcceleratorTypeAccelerator = CustomizedAcceleratorType("Accelerator")
+	CustomizedAcceleratorTypeFragment    = CustomizedAcceleratorType("Fragment")
+)
+
+func (CustomizedAcceleratorType) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomizedAcceleratorType)(nil)).Elem()
+}
+
+func (e CustomizedAcceleratorType) ToCustomizedAcceleratorTypeOutput() CustomizedAcceleratorTypeOutput {
+	return pulumi.ToOutput(e).(CustomizedAcceleratorTypeOutput)
+}
+
+func (e CustomizedAcceleratorType) ToCustomizedAcceleratorTypeOutputWithContext(ctx context.Context) CustomizedAcceleratorTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(CustomizedAcceleratorTypeOutput)
+}
+
+func (e CustomizedAcceleratorType) ToCustomizedAcceleratorTypePtrOutput() CustomizedAcceleratorTypePtrOutput {
+	return e.ToCustomizedAcceleratorTypePtrOutputWithContext(context.Background())
+}
+
+func (e CustomizedAcceleratorType) ToCustomizedAcceleratorTypePtrOutputWithContext(ctx context.Context) CustomizedAcceleratorTypePtrOutput {
+	return CustomizedAcceleratorType(e).ToCustomizedAcceleratorTypeOutputWithContext(ctx).ToCustomizedAcceleratorTypePtrOutputWithContext(ctx)
+}
+
+func (e CustomizedAcceleratorType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CustomizedAcceleratorType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CustomizedAcceleratorType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e CustomizedAcceleratorType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type CustomizedAcceleratorTypeOutput struct{ *pulumi.OutputState }
+
+func (CustomizedAcceleratorTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomizedAcceleratorType)(nil)).Elem()
+}
+
+func (o CustomizedAcceleratorTypeOutput) ToCustomizedAcceleratorTypeOutput() CustomizedAcceleratorTypeOutput {
+	return o
+}
+
+func (o CustomizedAcceleratorTypeOutput) ToCustomizedAcceleratorTypeOutputWithContext(ctx context.Context) CustomizedAcceleratorTypeOutput {
+	return o
+}
+
+func (o CustomizedAcceleratorTypeOutput) ToCustomizedAcceleratorTypePtrOutput() CustomizedAcceleratorTypePtrOutput {
+	return o.ToCustomizedAcceleratorTypePtrOutputWithContext(context.Background())
+}
+
+func (o CustomizedAcceleratorTypeOutput) ToCustomizedAcceleratorTypePtrOutputWithContext(ctx context.Context) CustomizedAcceleratorTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomizedAcceleratorType) *CustomizedAcceleratorType {
+		return &v
+	}).(CustomizedAcceleratorTypePtrOutput)
+}
+
+func (o CustomizedAcceleratorTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o CustomizedAcceleratorTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CustomizedAcceleratorType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o CustomizedAcceleratorTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CustomizedAcceleratorTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CustomizedAcceleratorType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type CustomizedAcceleratorTypePtrOutput struct{ *pulumi.OutputState }
+
+func (CustomizedAcceleratorTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomizedAcceleratorType)(nil)).Elem()
+}
+
+func (o CustomizedAcceleratorTypePtrOutput) ToCustomizedAcceleratorTypePtrOutput() CustomizedAcceleratorTypePtrOutput {
+	return o
+}
+
+func (o CustomizedAcceleratorTypePtrOutput) ToCustomizedAcceleratorTypePtrOutputWithContext(ctx context.Context) CustomizedAcceleratorTypePtrOutput {
+	return o
+}
+
+func (o CustomizedAcceleratorTypePtrOutput) Elem() CustomizedAcceleratorTypeOutput {
+	return o.ApplyT(func(v *CustomizedAcceleratorType) CustomizedAcceleratorType {
+		if v != nil {
+			return *v
+		}
+		var ret CustomizedAcceleratorType
+		return ret
+	}).(CustomizedAcceleratorTypeOutput)
+}
+
+func (o CustomizedAcceleratorTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CustomizedAcceleratorTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CustomizedAcceleratorType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// CustomizedAcceleratorTypeInput is an input type that accepts values of the CustomizedAcceleratorType enum
+// A concrete instance of `CustomizedAcceleratorTypeInput` can be one of the following:
+//
+//	CustomizedAcceleratorTypeAccelerator
+//	CustomizedAcceleratorTypeFragment
+type CustomizedAcceleratorTypeInput interface {
+	pulumi.Input
+
+	ToCustomizedAcceleratorTypeOutput() CustomizedAcceleratorTypeOutput
+	ToCustomizedAcceleratorTypeOutputWithContext(context.Context) CustomizedAcceleratorTypeOutput
+}
+
+var customizedAcceleratorTypePtrType = reflect.TypeOf((**CustomizedAcceleratorType)(nil)).Elem()
+
+type CustomizedAcceleratorTypePtrInput interface {
+	pulumi.Input
+
+	ToCustomizedAcceleratorTypePtrOutput() CustomizedAcceleratorTypePtrOutput
+	ToCustomizedAcceleratorTypePtrOutputWithContext(context.Context) CustomizedAcceleratorTypePtrOutput
+}
+
+type customizedAcceleratorTypePtr string
+
+func CustomizedAcceleratorTypePtr(v string) CustomizedAcceleratorTypePtrInput {
+	return (*customizedAcceleratorTypePtr)(&v)
+}
+
+func (*customizedAcceleratorTypePtr) ElementType() reflect.Type {
+	return customizedAcceleratorTypePtrType
+}
+
+func (in *customizedAcceleratorTypePtr) ToCustomizedAcceleratorTypePtrOutput() CustomizedAcceleratorTypePtrOutput {
+	return pulumi.ToOutput(in).(CustomizedAcceleratorTypePtrOutput)
+}
+
+func (in *customizedAcceleratorTypePtr) ToCustomizedAcceleratorTypePtrOutputWithContext(ctx context.Context) CustomizedAcceleratorTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(CustomizedAcceleratorTypePtrOutput)
+}
+
 // State of the plugin
 type DevToolPortalFeatureState string
 
@@ -1025,6 +1357,13 @@ func (in *devToolPortalFeatureStatePtr) ToDevToolPortalFeatureStatePtrOutput() D
 func (in *devToolPortalFeatureStatePtr) ToDevToolPortalFeatureStatePtrOutputWithContext(ctx context.Context) DevToolPortalFeatureStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DevToolPortalFeatureStatePtrOutput)
 }
+
+// The frequency to run the maintenance job
+type Frequency string
+
+const (
+	FrequencyWeekly = Frequency("Weekly")
+)
 
 // Whether to enable certificate verification or not
 type GatewayCertificateVerification string
@@ -1696,6 +2035,172 @@ func (in *httpschemeTypePtr) ToHTTPSchemeTypePtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(HTTPSchemeTypePtrOutput)
 }
 
+// Indicates whether to automatically synchronize certificate from key vault or not.
+type KeyVaultCertificateAutoSync string
+
+const (
+	KeyVaultCertificateAutoSyncDisabled = KeyVaultCertificateAutoSync("Disabled")
+	KeyVaultCertificateAutoSyncEnabled  = KeyVaultCertificateAutoSync("Enabled")
+)
+
+func (KeyVaultCertificateAutoSync) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyVaultCertificateAutoSync)(nil)).Elem()
+}
+
+func (e KeyVaultCertificateAutoSync) ToKeyVaultCertificateAutoSyncOutput() KeyVaultCertificateAutoSyncOutput {
+	return pulumi.ToOutput(e).(KeyVaultCertificateAutoSyncOutput)
+}
+
+func (e KeyVaultCertificateAutoSync) ToKeyVaultCertificateAutoSyncOutputWithContext(ctx context.Context) KeyVaultCertificateAutoSyncOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(KeyVaultCertificateAutoSyncOutput)
+}
+
+func (e KeyVaultCertificateAutoSync) ToKeyVaultCertificateAutoSyncPtrOutput() KeyVaultCertificateAutoSyncPtrOutput {
+	return e.ToKeyVaultCertificateAutoSyncPtrOutputWithContext(context.Background())
+}
+
+func (e KeyVaultCertificateAutoSync) ToKeyVaultCertificateAutoSyncPtrOutputWithContext(ctx context.Context) KeyVaultCertificateAutoSyncPtrOutput {
+	return KeyVaultCertificateAutoSync(e).ToKeyVaultCertificateAutoSyncOutputWithContext(ctx).ToKeyVaultCertificateAutoSyncPtrOutputWithContext(ctx)
+}
+
+func (e KeyVaultCertificateAutoSync) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e KeyVaultCertificateAutoSync) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e KeyVaultCertificateAutoSync) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e KeyVaultCertificateAutoSync) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type KeyVaultCertificateAutoSyncOutput struct{ *pulumi.OutputState }
+
+func (KeyVaultCertificateAutoSyncOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyVaultCertificateAutoSync)(nil)).Elem()
+}
+
+func (o KeyVaultCertificateAutoSyncOutput) ToKeyVaultCertificateAutoSyncOutput() KeyVaultCertificateAutoSyncOutput {
+	return o
+}
+
+func (o KeyVaultCertificateAutoSyncOutput) ToKeyVaultCertificateAutoSyncOutputWithContext(ctx context.Context) KeyVaultCertificateAutoSyncOutput {
+	return o
+}
+
+func (o KeyVaultCertificateAutoSyncOutput) ToKeyVaultCertificateAutoSyncPtrOutput() KeyVaultCertificateAutoSyncPtrOutput {
+	return o.ToKeyVaultCertificateAutoSyncPtrOutputWithContext(context.Background())
+}
+
+func (o KeyVaultCertificateAutoSyncOutput) ToKeyVaultCertificateAutoSyncPtrOutputWithContext(ctx context.Context) KeyVaultCertificateAutoSyncPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyVaultCertificateAutoSync) *KeyVaultCertificateAutoSync {
+		return &v
+	}).(KeyVaultCertificateAutoSyncPtrOutput)
+}
+
+func (o KeyVaultCertificateAutoSyncOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o KeyVaultCertificateAutoSyncOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e KeyVaultCertificateAutoSync) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o KeyVaultCertificateAutoSyncOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o KeyVaultCertificateAutoSyncOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e KeyVaultCertificateAutoSync) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type KeyVaultCertificateAutoSyncPtrOutput struct{ *pulumi.OutputState }
+
+func (KeyVaultCertificateAutoSyncPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyVaultCertificateAutoSync)(nil)).Elem()
+}
+
+func (o KeyVaultCertificateAutoSyncPtrOutput) ToKeyVaultCertificateAutoSyncPtrOutput() KeyVaultCertificateAutoSyncPtrOutput {
+	return o
+}
+
+func (o KeyVaultCertificateAutoSyncPtrOutput) ToKeyVaultCertificateAutoSyncPtrOutputWithContext(ctx context.Context) KeyVaultCertificateAutoSyncPtrOutput {
+	return o
+}
+
+func (o KeyVaultCertificateAutoSyncPtrOutput) Elem() KeyVaultCertificateAutoSyncOutput {
+	return o.ApplyT(func(v *KeyVaultCertificateAutoSync) KeyVaultCertificateAutoSync {
+		if v != nil {
+			return *v
+		}
+		var ret KeyVaultCertificateAutoSync
+		return ret
+	}).(KeyVaultCertificateAutoSyncOutput)
+}
+
+func (o KeyVaultCertificateAutoSyncPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o KeyVaultCertificateAutoSyncPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *KeyVaultCertificateAutoSync) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// KeyVaultCertificateAutoSyncInput is an input type that accepts values of the KeyVaultCertificateAutoSync enum
+// A concrete instance of `KeyVaultCertificateAutoSyncInput` can be one of the following:
+//
+//	KeyVaultCertificateAutoSyncDisabled
+//	KeyVaultCertificateAutoSyncEnabled
+type KeyVaultCertificateAutoSyncInput interface {
+	pulumi.Input
+
+	ToKeyVaultCertificateAutoSyncOutput() KeyVaultCertificateAutoSyncOutput
+	ToKeyVaultCertificateAutoSyncOutputWithContext(context.Context) KeyVaultCertificateAutoSyncOutput
+}
+
+var keyVaultCertificateAutoSyncPtrType = reflect.TypeOf((**KeyVaultCertificateAutoSync)(nil)).Elem()
+
+type KeyVaultCertificateAutoSyncPtrInput interface {
+	pulumi.Input
+
+	ToKeyVaultCertificateAutoSyncPtrOutput() KeyVaultCertificateAutoSyncPtrOutput
+	ToKeyVaultCertificateAutoSyncPtrOutputWithContext(context.Context) KeyVaultCertificateAutoSyncPtrOutput
+}
+
+type keyVaultCertificateAutoSyncPtr string
+
+func KeyVaultCertificateAutoSyncPtr(v string) KeyVaultCertificateAutoSyncPtrInput {
+	return (*keyVaultCertificateAutoSyncPtr)(&v)
+}
+
+func (*keyVaultCertificateAutoSyncPtr) ElementType() reflect.Type {
+	return keyVaultCertificateAutoSyncPtrType
+}
+
+func (in *keyVaultCertificateAutoSyncPtr) ToKeyVaultCertificateAutoSyncPtrOutput() KeyVaultCertificateAutoSyncPtrOutput {
+	return pulumi.ToOutput(in).(KeyVaultCertificateAutoSyncPtrOutput)
+}
+
+func (in *keyVaultCertificateAutoSyncPtr) ToKeyVaultCertificateAutoSyncPtrOutputWithContext(ctx context.Context) KeyVaultCertificateAutoSyncPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(KeyVaultCertificateAutoSyncPtrOutput)
+}
+
 // Type of the managed identity
 type ManagedIdentityType string
 
@@ -2048,6 +2553,174 @@ const (
 	StorageTypeStorageAccount = StorageType("StorageAccount")
 )
 
+// State of test endpoint auth.
+type TestEndpointAuthState string
+
+const (
+	// Enable test endpoint auth.
+	TestEndpointAuthStateEnabled = TestEndpointAuthState("Enabled")
+	// Disable test endpoint auth
+	TestEndpointAuthStateDisabled = TestEndpointAuthState("Disabled")
+)
+
+func (TestEndpointAuthState) ElementType() reflect.Type {
+	return reflect.TypeOf((*TestEndpointAuthState)(nil)).Elem()
+}
+
+func (e TestEndpointAuthState) ToTestEndpointAuthStateOutput() TestEndpointAuthStateOutput {
+	return pulumi.ToOutput(e).(TestEndpointAuthStateOutput)
+}
+
+func (e TestEndpointAuthState) ToTestEndpointAuthStateOutputWithContext(ctx context.Context) TestEndpointAuthStateOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(TestEndpointAuthStateOutput)
+}
+
+func (e TestEndpointAuthState) ToTestEndpointAuthStatePtrOutput() TestEndpointAuthStatePtrOutput {
+	return e.ToTestEndpointAuthStatePtrOutputWithContext(context.Background())
+}
+
+func (e TestEndpointAuthState) ToTestEndpointAuthStatePtrOutputWithContext(ctx context.Context) TestEndpointAuthStatePtrOutput {
+	return TestEndpointAuthState(e).ToTestEndpointAuthStateOutputWithContext(ctx).ToTestEndpointAuthStatePtrOutputWithContext(ctx)
+}
+
+func (e TestEndpointAuthState) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TestEndpointAuthState) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TestEndpointAuthState) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e TestEndpointAuthState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type TestEndpointAuthStateOutput struct{ *pulumi.OutputState }
+
+func (TestEndpointAuthStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TestEndpointAuthState)(nil)).Elem()
+}
+
+func (o TestEndpointAuthStateOutput) ToTestEndpointAuthStateOutput() TestEndpointAuthStateOutput {
+	return o
+}
+
+func (o TestEndpointAuthStateOutput) ToTestEndpointAuthStateOutputWithContext(ctx context.Context) TestEndpointAuthStateOutput {
+	return o
+}
+
+func (o TestEndpointAuthStateOutput) ToTestEndpointAuthStatePtrOutput() TestEndpointAuthStatePtrOutput {
+	return o.ToTestEndpointAuthStatePtrOutputWithContext(context.Background())
+}
+
+func (o TestEndpointAuthStateOutput) ToTestEndpointAuthStatePtrOutputWithContext(ctx context.Context) TestEndpointAuthStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TestEndpointAuthState) *TestEndpointAuthState {
+		return &v
+	}).(TestEndpointAuthStatePtrOutput)
+}
+
+func (o TestEndpointAuthStateOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o TestEndpointAuthStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TestEndpointAuthState) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o TestEndpointAuthStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TestEndpointAuthStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TestEndpointAuthState) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type TestEndpointAuthStatePtrOutput struct{ *pulumi.OutputState }
+
+func (TestEndpointAuthStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TestEndpointAuthState)(nil)).Elem()
+}
+
+func (o TestEndpointAuthStatePtrOutput) ToTestEndpointAuthStatePtrOutput() TestEndpointAuthStatePtrOutput {
+	return o
+}
+
+func (o TestEndpointAuthStatePtrOutput) ToTestEndpointAuthStatePtrOutputWithContext(ctx context.Context) TestEndpointAuthStatePtrOutput {
+	return o
+}
+
+func (o TestEndpointAuthStatePtrOutput) Elem() TestEndpointAuthStateOutput {
+	return o.ApplyT(func(v *TestEndpointAuthState) TestEndpointAuthState {
+		if v != nil {
+			return *v
+		}
+		var ret TestEndpointAuthState
+		return ret
+	}).(TestEndpointAuthStateOutput)
+}
+
+func (o TestEndpointAuthStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TestEndpointAuthStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *TestEndpointAuthState) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// TestEndpointAuthStateInput is an input type that accepts values of the TestEndpointAuthState enum
+// A concrete instance of `TestEndpointAuthStateInput` can be one of the following:
+//
+//	TestEndpointAuthStateEnabled
+//	TestEndpointAuthStateDisabled
+type TestEndpointAuthStateInput interface {
+	pulumi.Input
+
+	ToTestEndpointAuthStateOutput() TestEndpointAuthStateOutput
+	ToTestEndpointAuthStateOutputWithContext(context.Context) TestEndpointAuthStateOutput
+}
+
+var testEndpointAuthStatePtrType = reflect.TypeOf((**TestEndpointAuthState)(nil)).Elem()
+
+type TestEndpointAuthStatePtrInput interface {
+	pulumi.Input
+
+	ToTestEndpointAuthStatePtrOutput() TestEndpointAuthStatePtrOutput
+	ToTestEndpointAuthStatePtrOutputWithContext(context.Context) TestEndpointAuthStatePtrOutput
+}
+
+type testEndpointAuthStatePtr string
+
+func TestEndpointAuthStatePtr(v string) TestEndpointAuthStatePtrInput {
+	return (*testEndpointAuthStatePtr)(&v)
+}
+
+func (*testEndpointAuthStatePtr) ElementType() reflect.Type {
+	return testEndpointAuthStatePtrType
+}
+
+func (in *testEndpointAuthStatePtr) ToTestEndpointAuthStatePtrOutput() TestEndpointAuthStatePtrOutput {
+	return pulumi.ToOutput(in).(TestEndpointAuthStatePtrOutput)
+}
+
+func (in *testEndpointAuthStatePtr) ToTestEndpointAuthStatePtrOutputWithContext(ctx context.Context) TestEndpointAuthStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(TestEndpointAuthStatePtrOutput)
+}
+
 // Type of job trigger
 type TriggerType string
 
@@ -2062,7 +2735,185 @@ const (
 	TypeAzureFileVolume = Type("AzureFileVolume")
 )
 
+// The day to run the maintenance job
+type WeekDay string
+
+const (
+	WeekDayMonday    = WeekDay("Monday")
+	WeekDayTuesday   = WeekDay("Tuesday")
+	WeekDayWednesday = WeekDay("Wednesday")
+	WeekDayThursday  = WeekDay("Thursday")
+	WeekDayFriday    = WeekDay("Friday")
+	WeekDaySaturday  = WeekDay("Saturday")
+	WeekDaySunday    = WeekDay("Sunday")
+)
+
+func (WeekDay) ElementType() reflect.Type {
+	return reflect.TypeOf((*WeekDay)(nil)).Elem()
+}
+
+func (e WeekDay) ToWeekDayOutput() WeekDayOutput {
+	return pulumi.ToOutput(e).(WeekDayOutput)
+}
+
+func (e WeekDay) ToWeekDayOutputWithContext(ctx context.Context) WeekDayOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(WeekDayOutput)
+}
+
+func (e WeekDay) ToWeekDayPtrOutput() WeekDayPtrOutput {
+	return e.ToWeekDayPtrOutputWithContext(context.Background())
+}
+
+func (e WeekDay) ToWeekDayPtrOutputWithContext(ctx context.Context) WeekDayPtrOutput {
+	return WeekDay(e).ToWeekDayOutputWithContext(ctx).ToWeekDayPtrOutputWithContext(ctx)
+}
+
+func (e WeekDay) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e WeekDay) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e WeekDay) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e WeekDay) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type WeekDayOutput struct{ *pulumi.OutputState }
+
+func (WeekDayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WeekDay)(nil)).Elem()
+}
+
+func (o WeekDayOutput) ToWeekDayOutput() WeekDayOutput {
+	return o
+}
+
+func (o WeekDayOutput) ToWeekDayOutputWithContext(ctx context.Context) WeekDayOutput {
+	return o
+}
+
+func (o WeekDayOutput) ToWeekDayPtrOutput() WeekDayPtrOutput {
+	return o.ToWeekDayPtrOutputWithContext(context.Background())
+}
+
+func (o WeekDayOutput) ToWeekDayPtrOutputWithContext(ctx context.Context) WeekDayPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WeekDay) *WeekDay {
+		return &v
+	}).(WeekDayPtrOutput)
+}
+
+func (o WeekDayOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o WeekDayOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e WeekDay) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o WeekDayOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o WeekDayOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e WeekDay) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type WeekDayPtrOutput struct{ *pulumi.OutputState }
+
+func (WeekDayPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WeekDay)(nil)).Elem()
+}
+
+func (o WeekDayPtrOutput) ToWeekDayPtrOutput() WeekDayPtrOutput {
+	return o
+}
+
+func (o WeekDayPtrOutput) ToWeekDayPtrOutputWithContext(ctx context.Context) WeekDayPtrOutput {
+	return o
+}
+
+func (o WeekDayPtrOutput) Elem() WeekDayOutput {
+	return o.ApplyT(func(v *WeekDay) WeekDay {
+		if v != nil {
+			return *v
+		}
+		var ret WeekDay
+		return ret
+	}).(WeekDayOutput)
+}
+
+func (o WeekDayPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o WeekDayPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *WeekDay) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// WeekDayInput is an input type that accepts values of the WeekDay enum
+// A concrete instance of `WeekDayInput` can be one of the following:
+//
+//	WeekDayMonday
+//	WeekDayTuesday
+//	WeekDayWednesday
+//	WeekDayThursday
+//	WeekDayFriday
+//	WeekDaySaturday
+//	WeekDaySunday
+type WeekDayInput interface {
+	pulumi.Input
+
+	ToWeekDayOutput() WeekDayOutput
+	ToWeekDayOutputWithContext(context.Context) WeekDayOutput
+}
+
+var weekDayPtrType = reflect.TypeOf((**WeekDay)(nil)).Elem()
+
+type WeekDayPtrInput interface {
+	pulumi.Input
+
+	ToWeekDayPtrOutput() WeekDayPtrOutput
+	ToWeekDayPtrOutputWithContext(context.Context) WeekDayPtrOutput
+}
+
+type weekDayPtr string
+
+func WeekDayPtr(v string) WeekDayPtrInput {
+	return (*weekDayPtr)(&v)
+}
+
+func (*weekDayPtr) ElementType() reflect.Type {
+	return weekDayPtrType
+}
+
+func (in *weekDayPtr) ToWeekDayPtrOutput() WeekDayPtrOutput {
+	return pulumi.ToOutput(in).(WeekDayPtrOutput)
+}
+
+func (in *weekDayPtr) ToWeekDayPtrOutputWithContext(ctx context.Context) WeekDayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(WeekDayPtrOutput)
+}
+
 func init() {
+	pulumi.RegisterOutputType(ApiPortalApiTryOutEnabledStateOutput{})
+	pulumi.RegisterOutputType(ApiPortalApiTryOutEnabledStatePtrOutput{})
 	pulumi.RegisterOutputType(ApmTypeOutput{})
 	pulumi.RegisterOutputType(ApmTypePtrOutput{})
 	pulumi.RegisterOutputType(BackendProtocolOutput{})
@@ -2073,6 +2924,8 @@ func init() {
 	pulumi.RegisterOutputType(ConfigServerEnabledStatePtrOutput{})
 	pulumi.RegisterOutputType(ConfigurationServiceGenerationOutput{})
 	pulumi.RegisterOutputType(ConfigurationServiceGenerationPtrOutput{})
+	pulumi.RegisterOutputType(CustomizedAcceleratorTypeOutput{})
+	pulumi.RegisterOutputType(CustomizedAcceleratorTypePtrOutput{})
 	pulumi.RegisterOutputType(DevToolPortalFeatureStateOutput{})
 	pulumi.RegisterOutputType(DevToolPortalFeatureStatePtrOutput{})
 	pulumi.RegisterOutputType(GatewayCertificateVerificationOutput{})
@@ -2083,8 +2936,14 @@ func init() {
 	pulumi.RegisterOutputType(GitImplementationPtrOutput{})
 	pulumi.RegisterOutputType(HTTPSchemeTypeOutput{})
 	pulumi.RegisterOutputType(HTTPSchemeTypePtrOutput{})
+	pulumi.RegisterOutputType(KeyVaultCertificateAutoSyncOutput{})
+	pulumi.RegisterOutputType(KeyVaultCertificateAutoSyncPtrOutput{})
 	pulumi.RegisterOutputType(ManagedIdentityTypeOutput{})
 	pulumi.RegisterOutputType(ManagedIdentityTypePtrOutput{})
 	pulumi.RegisterOutputType(SessionAffinityOutput{})
 	pulumi.RegisterOutputType(SessionAffinityPtrOutput{})
+	pulumi.RegisterOutputType(TestEndpointAuthStateOutput{})
+	pulumi.RegisterOutputType(TestEndpointAuthStatePtrOutput{})
+	pulumi.RegisterOutputType(WeekDayOutput{})
+	pulumi.RegisterOutputType(WeekDayPtrOutput{})
 }

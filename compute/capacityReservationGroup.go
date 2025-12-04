@@ -8,33 +8,39 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Specifies information about the capacity reservation group that the capacity reservations should be assigned to. Currently, a capacity reservation can only be added to a capacity reservation group at creation time. An existing capacity reservation cannot be added or moved to another capacity reservation group.
 //
-// Uses Azure REST API version 2023-03-01. In version 1.x of the Azure Native provider, it used API version 2021-04-01.
+// Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
 //
-// Other available API versions: 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2024-11-01.
+// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type CapacityReservationGroup struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A list of all capacity reservation resource ids that belong to capacity reservation group.
 	CapacityReservations SubResourceReadOnlyResponseArrayOutput `pulumi:"capacityReservations"`
 	// The capacity reservation group instance view which has the list of instance views for all the capacity reservations that belong to the capacity reservation group.
 	InstanceView CapacityReservationGroupInstanceViewResponseOutput `pulumi:"instanceView"`
-	// Resource location
+	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Resource name
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Resource tags
+	// Specifies the settings to enable sharing across subscriptions for the capacity reservation group resource. The capacity reservation group resource can generally be shared across subscriptions belonging to a single Azure AAD tenant or across AAD tenants if there is a trust relationship established between the tenants.  Block capacity reservation does not support sharing across subscriptions. **Note:** Minimum api-version: 2023-09-01. Please refer to https://aka.ms/computereservationsharing for more details.
+	SharingProfile ResourceSharingProfileResponsePtrOutput `pulumi:"sharingProfile"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Resource type
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// A list of references to all virtual machines associated to the capacity reservation group.
 	VirtualMachinesAssociated SubResourceReadOnlyResponseArrayOutput `pulumi:"virtualMachinesAssociated"`
-	// Availability Zones to use for this capacity reservation group. The zones can be assigned only during creation. If not provided, the group supports only regional resources in the region. If provided, enforces each capacity reservation in the group to be in one of the zones.
+	// The availability zones.
 	Zones pulumi.StringArrayOutput `pulumi:"zones"`
 }
 
@@ -85,6 +91,9 @@ func NewCapacityReservationGroup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:compute/v20241101:CapacityReservationGroup"),
 		},
+		{
+			Type: pulumi.String("azure-native:compute/v20250401:CapacityReservationGroup"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -122,13 +131,15 @@ func (CapacityReservationGroupState) ElementType() reflect.Type {
 type capacityReservationGroupArgs struct {
 	// The name of the capacity reservation group.
 	CapacityReservationGroupName *string `pulumi:"capacityReservationGroupName"`
-	// Resource location
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Resource tags
+	// Specifies the settings to enable sharing across subscriptions for the capacity reservation group resource. The capacity reservation group resource can generally be shared across subscriptions belonging to a single Azure AAD tenant or across AAD tenants if there is a trust relationship established between the tenants.  Block capacity reservation does not support sharing across subscriptions. **Note:** Minimum api-version: 2023-09-01. Please refer to https://aka.ms/computereservationsharing for more details.
+	SharingProfile *ResourceSharingProfile `pulumi:"sharingProfile"`
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// Availability Zones to use for this capacity reservation group. The zones can be assigned only during creation. If not provided, the group supports only regional resources in the region. If provided, enforces each capacity reservation in the group to be in one of the zones.
+	// The availability zones.
 	Zones []string `pulumi:"zones"`
 }
 
@@ -136,13 +147,15 @@ type capacityReservationGroupArgs struct {
 type CapacityReservationGroupArgs struct {
 	// The name of the capacity reservation group.
 	CapacityReservationGroupName pulumi.StringPtrInput
-	// Resource location
+	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// Resource tags
+	// Specifies the settings to enable sharing across subscriptions for the capacity reservation group resource. The capacity reservation group resource can generally be shared across subscriptions belonging to a single Azure AAD tenant or across AAD tenants if there is a trust relationship established between the tenants.  Block capacity reservation does not support sharing across subscriptions. **Note:** Minimum api-version: 2023-09-01. Please refer to https://aka.ms/computereservationsharing for more details.
+	SharingProfile ResourceSharingProfilePtrInput
+	// Resource tags.
 	Tags pulumi.StringMapInput
-	// Availability Zones to use for this capacity reservation group. The zones can be assigned only during creation. If not provided, the group supports only regional resources in the region. If provided, enforces each capacity reservation in the group to be in one of the zones.
+	// The availability zones.
 	Zones pulumi.StringArrayInput
 }
 
@@ -183,6 +196,11 @@ func (o CapacityReservationGroupOutput) ToCapacityReservationGroupOutputWithCont
 	return o
 }
 
+// The Azure API version of the resource.
+func (o CapacityReservationGroupOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *CapacityReservationGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // A list of all capacity reservation resource ids that belong to capacity reservation group.
 func (o CapacityReservationGroupOutput) CapacityReservations() SubResourceReadOnlyResponseArrayOutput {
 	return o.ApplyT(func(v *CapacityReservationGroup) SubResourceReadOnlyResponseArrayOutput {
@@ -197,22 +215,32 @@ func (o CapacityReservationGroupOutput) InstanceView() CapacityReservationGroupI
 	}).(CapacityReservationGroupInstanceViewResponseOutput)
 }
 
-// Resource location
+// The geo-location where the resource lives
 func (o CapacityReservationGroupOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *CapacityReservationGroup) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Resource name
+// The name of the resource
 func (o CapacityReservationGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CapacityReservationGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Resource tags
+// Specifies the settings to enable sharing across subscriptions for the capacity reservation group resource. The capacity reservation group resource can generally be shared across subscriptions belonging to a single Azure AAD tenant or across AAD tenants if there is a trust relationship established between the tenants.  Block capacity reservation does not support sharing across subscriptions. **Note:** Minimum api-version: 2023-09-01. Please refer to https://aka.ms/computereservationsharing for more details.
+func (o CapacityReservationGroupOutput) SharingProfile() ResourceSharingProfileResponsePtrOutput {
+	return o.ApplyT(func(v *CapacityReservationGroup) ResourceSharingProfileResponsePtrOutput { return v.SharingProfile }).(ResourceSharingProfileResponsePtrOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o CapacityReservationGroupOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *CapacityReservationGroup) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// Resource tags.
 func (o CapacityReservationGroupOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CapacityReservationGroup) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Resource type
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o CapacityReservationGroupOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *CapacityReservationGroup) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
@@ -224,7 +252,7 @@ func (o CapacityReservationGroupOutput) VirtualMachinesAssociated() SubResourceR
 	}).(SubResourceReadOnlyResponseArrayOutput)
 }
 
-// Availability Zones to use for this capacity reservation group. The zones can be assigned only during creation. If not provided, the group supports only regional resources in the region. If provided, enforces each capacity reservation in the group to be in one of the zones.
+// The availability zones.
 func (o CapacityReservationGroupOutput) Zones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CapacityReservationGroup) pulumi.StringArrayOutput { return v.Zones }).(pulumi.StringArrayOutput)
 }

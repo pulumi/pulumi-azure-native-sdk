@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -1588,16 +1588,270 @@ func (o ActiveDirectoryInformationPtrOutput) KeytabInformation() KeytabInformati
 	}).(KeytabInformationPtrOutput)
 }
 
+// Authentication related configuration for the SQL Server Instance.
+type Authentication struct {
+	// Mode of authentication in SqlServer.
+	Mode *string `pulumi:"mode"`
+	// Entra Authentication configuration for the SQL Server Instance.
+	SqlServerEntraIdentity []EntraAuthentication `pulumi:"sqlServerEntraIdentity"`
+}
+
+// AuthenticationInput is an input type that accepts AuthenticationArgs and AuthenticationOutput values.
+// You can construct a concrete instance of `AuthenticationInput` via:
+//
+//	AuthenticationArgs{...}
+type AuthenticationInput interface {
+	pulumi.Input
+
+	ToAuthenticationOutput() AuthenticationOutput
+	ToAuthenticationOutputWithContext(context.Context) AuthenticationOutput
+}
+
+// Authentication related configuration for the SQL Server Instance.
+type AuthenticationArgs struct {
+	// Mode of authentication in SqlServer.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// Entra Authentication configuration for the SQL Server Instance.
+	SqlServerEntraIdentity EntraAuthenticationArrayInput `pulumi:"sqlServerEntraIdentity"`
+}
+
+func (AuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Authentication)(nil)).Elem()
+}
+
+func (i AuthenticationArgs) ToAuthenticationOutput() AuthenticationOutput {
+	return i.ToAuthenticationOutputWithContext(context.Background())
+}
+
+func (i AuthenticationArgs) ToAuthenticationOutputWithContext(ctx context.Context) AuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthenticationOutput)
+}
+
+func (i AuthenticationArgs) ToAuthenticationPtrOutput() AuthenticationPtrOutput {
+	return i.ToAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i AuthenticationArgs) ToAuthenticationPtrOutputWithContext(ctx context.Context) AuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthenticationOutput).ToAuthenticationPtrOutputWithContext(ctx)
+}
+
+// AuthenticationPtrInput is an input type that accepts AuthenticationArgs, AuthenticationPtr and AuthenticationPtrOutput values.
+// You can construct a concrete instance of `AuthenticationPtrInput` via:
+//
+//	        AuthenticationArgs{...}
+//
+//	or:
+//
+//	        nil
+type AuthenticationPtrInput interface {
+	pulumi.Input
+
+	ToAuthenticationPtrOutput() AuthenticationPtrOutput
+	ToAuthenticationPtrOutputWithContext(context.Context) AuthenticationPtrOutput
+}
+
+type authenticationPtrType AuthenticationArgs
+
+func AuthenticationPtr(v *AuthenticationArgs) AuthenticationPtrInput {
+	return (*authenticationPtrType)(v)
+}
+
+func (*authenticationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Authentication)(nil)).Elem()
+}
+
+func (i *authenticationPtrType) ToAuthenticationPtrOutput() AuthenticationPtrOutput {
+	return i.ToAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i *authenticationPtrType) ToAuthenticationPtrOutputWithContext(ctx context.Context) AuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthenticationPtrOutput)
+}
+
+// Authentication related configuration for the SQL Server Instance.
+type AuthenticationOutput struct{ *pulumi.OutputState }
+
+func (AuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Authentication)(nil)).Elem()
+}
+
+func (o AuthenticationOutput) ToAuthenticationOutput() AuthenticationOutput {
+	return o
+}
+
+func (o AuthenticationOutput) ToAuthenticationOutputWithContext(ctx context.Context) AuthenticationOutput {
+	return o
+}
+
+func (o AuthenticationOutput) ToAuthenticationPtrOutput() AuthenticationPtrOutput {
+	return o.ToAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (o AuthenticationOutput) ToAuthenticationPtrOutputWithContext(ctx context.Context) AuthenticationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Authentication) *Authentication {
+		return &v
+	}).(AuthenticationPtrOutput)
+}
+
+// Mode of authentication in SqlServer.
+func (o AuthenticationOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Authentication) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// Entra Authentication configuration for the SQL Server Instance.
+func (o AuthenticationOutput) SqlServerEntraIdentity() EntraAuthenticationArrayOutput {
+	return o.ApplyT(func(v Authentication) []EntraAuthentication { return v.SqlServerEntraIdentity }).(EntraAuthenticationArrayOutput)
+}
+
+type AuthenticationPtrOutput struct{ *pulumi.OutputState }
+
+func (AuthenticationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Authentication)(nil)).Elem()
+}
+
+func (o AuthenticationPtrOutput) ToAuthenticationPtrOutput() AuthenticationPtrOutput {
+	return o
+}
+
+func (o AuthenticationPtrOutput) ToAuthenticationPtrOutputWithContext(ctx context.Context) AuthenticationPtrOutput {
+	return o
+}
+
+func (o AuthenticationPtrOutput) Elem() AuthenticationOutput {
+	return o.ApplyT(func(v *Authentication) Authentication {
+		if v != nil {
+			return *v
+		}
+		var ret Authentication
+		return ret
+	}).(AuthenticationOutput)
+}
+
+// Mode of authentication in SqlServer.
+func (o AuthenticationPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Authentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Entra Authentication configuration for the SQL Server Instance.
+func (o AuthenticationPtrOutput) SqlServerEntraIdentity() EntraAuthenticationArrayOutput {
+	return o.ApplyT(func(v *Authentication) []EntraAuthentication {
+		if v == nil {
+			return nil
+		}
+		return v.SqlServerEntraIdentity
+	}).(EntraAuthenticationArrayOutput)
+}
+
+// Authentication related configuration for the SQL Server Instance.
+type AuthenticationResponse struct {
+	// Mode of authentication in SqlServer.
+	Mode *string `pulumi:"mode"`
+	// Entra Authentication configuration for the SQL Server Instance.
+	SqlServerEntraIdentity []EntraAuthenticationResponse `pulumi:"sqlServerEntraIdentity"`
+}
+
+// Authentication related configuration for the SQL Server Instance.
+type AuthenticationResponseOutput struct{ *pulumi.OutputState }
+
+func (AuthenticationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthenticationResponse)(nil)).Elem()
+}
+
+func (o AuthenticationResponseOutput) ToAuthenticationResponseOutput() AuthenticationResponseOutput {
+	return o
+}
+
+func (o AuthenticationResponseOutput) ToAuthenticationResponseOutputWithContext(ctx context.Context) AuthenticationResponseOutput {
+	return o
+}
+
+// Mode of authentication in SqlServer.
+func (o AuthenticationResponseOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthenticationResponse) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// Entra Authentication configuration for the SQL Server Instance.
+func (o AuthenticationResponseOutput) SqlServerEntraIdentity() EntraAuthenticationResponseArrayOutput {
+	return o.ApplyT(func(v AuthenticationResponse) []EntraAuthenticationResponse { return v.SqlServerEntraIdentity }).(EntraAuthenticationResponseArrayOutput)
+}
+
+type AuthenticationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AuthenticationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthenticationResponse)(nil)).Elem()
+}
+
+func (o AuthenticationResponsePtrOutput) ToAuthenticationResponsePtrOutput() AuthenticationResponsePtrOutput {
+	return o
+}
+
+func (o AuthenticationResponsePtrOutput) ToAuthenticationResponsePtrOutputWithContext(ctx context.Context) AuthenticationResponsePtrOutput {
+	return o
+}
+
+func (o AuthenticationResponsePtrOutput) Elem() AuthenticationResponseOutput {
+	return o.ApplyT(func(v *AuthenticationResponse) AuthenticationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AuthenticationResponse
+		return ret
+	}).(AuthenticationResponseOutput)
+}
+
+// Mode of authentication in SqlServer.
+func (o AuthenticationResponsePtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthenticationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Entra Authentication configuration for the SQL Server Instance.
+func (o AuthenticationResponsePtrOutput) SqlServerEntraIdentity() EntraAuthenticationResponseArrayOutput {
+	return o.ApplyT(func(v *AuthenticationResponse) []EntraAuthenticationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.SqlServerEntraIdentity
+	}).(EntraAuthenticationResponseArrayOutput)
+}
+
 // The specifications of the availability group replica configuration
 type AvailabilityGroupConfigure struct {
+	// Property that determines whether a given availability replica can run in synchronous-commit mode
+	AvailabilityMode *string `pulumi:"availabilityMode"`
 	// Represents the user-specified priority for performing backups on this replica relative to the other replicas in the same availability group.
 	BackupPriority *int `pulumi:"backupPriority"`
+	// Name of certificate to use for authentication. Required if any CERTIFICATE authentication modes are specified.
+	CertificateName *string `pulumi:"certificateName"`
+	// Permitted authentication modes for the mirroring endpoint.
+	EndpointAuthenticationMode *string `pulumi:"endpointAuthenticationMode"`
+	// The login which will connect to the mirroring endpoint.
+	EndpointConnectLogin *string `pulumi:"endpointConnectLogin"`
+	// Name of the mirroring endpoint URL
+	EndpointName *string `pulumi:"endpointName"`
 	// Mirroring endpoint URL of availability group replica
 	EndpointUrl *string `pulumi:"endpointUrl"`
+	// Property to set the failover mode of the availability group replica
+	FailoverMode *string `pulumi:"failoverMode"`
+	// Whether the primary replica should allow all connections or only READ_WRITE connections (disallowing ReadOnly connections)
+	PrimaryAllowConnections *PrimaryAllowConnections `pulumi:"primaryAllowConnections"`
 	// Connectivity endpoint (URL) of the read only availability replica.
 	ReadOnlyRoutingUrl *string `pulumi:"readOnlyRoutingUrl"`
 	// Connectivity endpoint (URL) of the read write availability replica.
 	ReadWriteRoutingUrl *string `pulumi:"readWriteRoutingUrl"`
+	// Whether the secondary replica should allow all connections, no connections, or only ReadOnly connections.
+	SecondaryAllowConnections *SecondaryAllowConnections `pulumi:"secondaryAllowConnections"`
+	// Specifies how the secondary replica will be initially seeded. AUTOMATIC enables direct seeding. This method will seed the secondary replica over the network. This method does not require you to backup and restore a copy of the primary database on the replica. MANUAL specifies manual seeding (default). This method requires you to create a backup of the database on the primary replica and manually restore that backup on the secondary replica.
+	SeedingMode *SeedingMode `pulumi:"seedingMode"`
 	// The time-out period of availability group session replica, in seconds.
 	SessionTimeout *int `pulumi:"sessionTimeout"`
 }
@@ -1615,14 +1869,32 @@ type AvailabilityGroupConfigureInput interface {
 
 // The specifications of the availability group replica configuration
 type AvailabilityGroupConfigureArgs struct {
+	// Property that determines whether a given availability replica can run in synchronous-commit mode
+	AvailabilityMode pulumi.StringPtrInput `pulumi:"availabilityMode"`
 	// Represents the user-specified priority for performing backups on this replica relative to the other replicas in the same availability group.
 	BackupPriority pulumi.IntPtrInput `pulumi:"backupPriority"`
+	// Name of certificate to use for authentication. Required if any CERTIFICATE authentication modes are specified.
+	CertificateName pulumi.StringPtrInput `pulumi:"certificateName"`
+	// Permitted authentication modes for the mirroring endpoint.
+	EndpointAuthenticationMode pulumi.StringPtrInput `pulumi:"endpointAuthenticationMode"`
+	// The login which will connect to the mirroring endpoint.
+	EndpointConnectLogin pulumi.StringPtrInput `pulumi:"endpointConnectLogin"`
+	// Name of the mirroring endpoint URL
+	EndpointName pulumi.StringPtrInput `pulumi:"endpointName"`
 	// Mirroring endpoint URL of availability group replica
 	EndpointUrl pulumi.StringPtrInput `pulumi:"endpointUrl"`
+	// Property to set the failover mode of the availability group replica
+	FailoverMode pulumi.StringPtrInput `pulumi:"failoverMode"`
+	// Whether the primary replica should allow all connections or only READ_WRITE connections (disallowing ReadOnly connections)
+	PrimaryAllowConnections PrimaryAllowConnectionsPtrInput `pulumi:"primaryAllowConnections"`
 	// Connectivity endpoint (URL) of the read only availability replica.
 	ReadOnlyRoutingUrl pulumi.StringPtrInput `pulumi:"readOnlyRoutingUrl"`
 	// Connectivity endpoint (URL) of the read write availability replica.
 	ReadWriteRoutingUrl pulumi.StringPtrInput `pulumi:"readWriteRoutingUrl"`
+	// Whether the secondary replica should allow all connections, no connections, or only ReadOnly connections.
+	SecondaryAllowConnections SecondaryAllowConnectionsPtrInput `pulumi:"secondaryAllowConnections"`
+	// Specifies how the secondary replica will be initially seeded. AUTOMATIC enables direct seeding. This method will seed the secondary replica over the network. This method does not require you to backup and restore a copy of the primary database on the replica. MANUAL specifies manual seeding (default). This method requires you to create a backup of the database on the primary replica and manually restore that backup on the secondary replica.
+	SeedingMode SeedingModePtrInput `pulumi:"seedingMode"`
 	// The time-out period of availability group session replica, in seconds.
 	SessionTimeout pulumi.IntPtrInput `pulumi:"sessionTimeout"`
 }
@@ -1705,14 +1977,49 @@ func (o AvailabilityGroupConfigureOutput) ToAvailabilityGroupConfigurePtrOutputW
 	}).(AvailabilityGroupConfigurePtrOutput)
 }
 
+// Property that determines whether a given availability replica can run in synchronous-commit mode
+func (o AvailabilityGroupConfigureOutput) AvailabilityMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigure) *string { return v.AvailabilityMode }).(pulumi.StringPtrOutput)
+}
+
 // Represents the user-specified priority for performing backups on this replica relative to the other replicas in the same availability group.
 func (o AvailabilityGroupConfigureOutput) BackupPriority() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AvailabilityGroupConfigure) *int { return v.BackupPriority }).(pulumi.IntPtrOutput)
 }
 
+// Name of certificate to use for authentication. Required if any CERTIFICATE authentication modes are specified.
+func (o AvailabilityGroupConfigureOutput) CertificateName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigure) *string { return v.CertificateName }).(pulumi.StringPtrOutput)
+}
+
+// Permitted authentication modes for the mirroring endpoint.
+func (o AvailabilityGroupConfigureOutput) EndpointAuthenticationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigure) *string { return v.EndpointAuthenticationMode }).(pulumi.StringPtrOutput)
+}
+
+// The login which will connect to the mirroring endpoint.
+func (o AvailabilityGroupConfigureOutput) EndpointConnectLogin() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigure) *string { return v.EndpointConnectLogin }).(pulumi.StringPtrOutput)
+}
+
+// Name of the mirroring endpoint URL
+func (o AvailabilityGroupConfigureOutput) EndpointName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigure) *string { return v.EndpointName }).(pulumi.StringPtrOutput)
+}
+
 // Mirroring endpoint URL of availability group replica
 func (o AvailabilityGroupConfigureOutput) EndpointUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AvailabilityGroupConfigure) *string { return v.EndpointUrl }).(pulumi.StringPtrOutput)
+}
+
+// Property to set the failover mode of the availability group replica
+func (o AvailabilityGroupConfigureOutput) FailoverMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigure) *string { return v.FailoverMode }).(pulumi.StringPtrOutput)
+}
+
+// Whether the primary replica should allow all connections or only READ_WRITE connections (disallowing ReadOnly connections)
+func (o AvailabilityGroupConfigureOutput) PrimaryAllowConnections() PrimaryAllowConnectionsPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigure) *PrimaryAllowConnections { return v.PrimaryAllowConnections }).(PrimaryAllowConnectionsPtrOutput)
 }
 
 // Connectivity endpoint (URL) of the read only availability replica.
@@ -1723,6 +2030,16 @@ func (o AvailabilityGroupConfigureOutput) ReadOnlyRoutingUrl() pulumi.StringPtrO
 // Connectivity endpoint (URL) of the read write availability replica.
 func (o AvailabilityGroupConfigureOutput) ReadWriteRoutingUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AvailabilityGroupConfigure) *string { return v.ReadWriteRoutingUrl }).(pulumi.StringPtrOutput)
+}
+
+// Whether the secondary replica should allow all connections, no connections, or only ReadOnly connections.
+func (o AvailabilityGroupConfigureOutput) SecondaryAllowConnections() SecondaryAllowConnectionsPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigure) *SecondaryAllowConnections { return v.SecondaryAllowConnections }).(SecondaryAllowConnectionsPtrOutput)
+}
+
+// Specifies how the secondary replica will be initially seeded. AUTOMATIC enables direct seeding. This method will seed the secondary replica over the network. This method does not require you to backup and restore a copy of the primary database on the replica. MANUAL specifies manual seeding (default). This method requires you to create a backup of the database on the primary replica and manually restore that backup on the secondary replica.
+func (o AvailabilityGroupConfigureOutput) SeedingMode() SeedingModePtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigure) *SeedingMode { return v.SeedingMode }).(SeedingModePtrOutput)
 }
 
 // The time-out period of availability group session replica, in seconds.
@@ -1754,6 +2071,16 @@ func (o AvailabilityGroupConfigurePtrOutput) Elem() AvailabilityGroupConfigureOu
 	}).(AvailabilityGroupConfigureOutput)
 }
 
+// Property that determines whether a given availability replica can run in synchronous-commit mode
+func (o AvailabilityGroupConfigurePtrOutput) AvailabilityMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigure) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AvailabilityMode
+	}).(pulumi.StringPtrOutput)
+}
+
 // Represents the user-specified priority for performing backups on this replica relative to the other replicas in the same availability group.
 func (o AvailabilityGroupConfigurePtrOutput) BackupPriority() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AvailabilityGroupConfigure) *int {
@@ -1764,6 +2091,46 @@ func (o AvailabilityGroupConfigurePtrOutput) BackupPriority() pulumi.IntPtrOutpu
 	}).(pulumi.IntPtrOutput)
 }
 
+// Name of certificate to use for authentication. Required if any CERTIFICATE authentication modes are specified.
+func (o AvailabilityGroupConfigurePtrOutput) CertificateName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigure) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CertificateName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Permitted authentication modes for the mirroring endpoint.
+func (o AvailabilityGroupConfigurePtrOutput) EndpointAuthenticationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigure) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndpointAuthenticationMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The login which will connect to the mirroring endpoint.
+func (o AvailabilityGroupConfigurePtrOutput) EndpointConnectLogin() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigure) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndpointConnectLogin
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the mirroring endpoint URL
+func (o AvailabilityGroupConfigurePtrOutput) EndpointName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigure) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndpointName
+	}).(pulumi.StringPtrOutput)
+}
+
 // Mirroring endpoint URL of availability group replica
 func (o AvailabilityGroupConfigurePtrOutput) EndpointUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AvailabilityGroupConfigure) *string {
@@ -1772,6 +2139,26 @@ func (o AvailabilityGroupConfigurePtrOutput) EndpointUrl() pulumi.StringPtrOutpu
 		}
 		return v.EndpointUrl
 	}).(pulumi.StringPtrOutput)
+}
+
+// Property to set the failover mode of the availability group replica
+func (o AvailabilityGroupConfigurePtrOutput) FailoverMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigure) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FailoverMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether the primary replica should allow all connections or only READ_WRITE connections (disallowing ReadOnly connections)
+func (o AvailabilityGroupConfigurePtrOutput) PrimaryAllowConnections() PrimaryAllowConnectionsPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigure) *PrimaryAllowConnections {
+		if v == nil {
+			return nil
+		}
+		return v.PrimaryAllowConnections
+	}).(PrimaryAllowConnectionsPtrOutput)
 }
 
 // Connectivity endpoint (URL) of the read only availability replica.
@@ -1794,6 +2181,26 @@ func (o AvailabilityGroupConfigurePtrOutput) ReadWriteRoutingUrl() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// Whether the secondary replica should allow all connections, no connections, or only ReadOnly connections.
+func (o AvailabilityGroupConfigurePtrOutput) SecondaryAllowConnections() SecondaryAllowConnectionsPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigure) *SecondaryAllowConnections {
+		if v == nil {
+			return nil
+		}
+		return v.SecondaryAllowConnections
+	}).(SecondaryAllowConnectionsPtrOutput)
+}
+
+// Specifies how the secondary replica will be initially seeded. AUTOMATIC enables direct seeding. This method will seed the secondary replica over the network. This method does not require you to backup and restore a copy of the primary database on the replica. MANUAL specifies manual seeding (default). This method requires you to create a backup of the database on the primary replica and manually restore that backup on the secondary replica.
+func (o AvailabilityGroupConfigurePtrOutput) SeedingMode() SeedingModePtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigure) *SeedingMode {
+		if v == nil {
+			return nil
+		}
+		return v.SeedingMode
+	}).(SeedingModePtrOutput)
+}
+
 // The time-out period of availability group session replica, in seconds.
 func (o AvailabilityGroupConfigurePtrOutput) SessionTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AvailabilityGroupConfigure) *int {
@@ -1806,14 +2213,28 @@ func (o AvailabilityGroupConfigurePtrOutput) SessionTimeout() pulumi.IntPtrOutpu
 
 // The specifications of the availability group replica configuration
 type AvailabilityGroupConfigureResponse struct {
+	// Property that determines whether a given availability replica can run in synchronous-commit mode
+	AvailabilityMode *string `pulumi:"availabilityMode"`
 	// The Availability Synchronization mode of the availability group replica.
 	AvailabilityModeDescription string `pulumi:"availabilityModeDescription"`
 	// Represents the user-specified priority for performing backups on this replica relative to the other replicas in the same availability group.
 	BackupPriority *int `pulumi:"backupPriority"`
+	// Name of certificate to use for authentication. Required if any CERTIFICATE authentication modes are specified.
+	CertificateName *string `pulumi:"certificateName"`
+	// Permitted authentication modes for the mirroring endpoint.
+	EndpointAuthenticationMode *string `pulumi:"endpointAuthenticationMode"`
+	// The login which will connect to the mirroring endpoint.
+	EndpointConnectLogin *string `pulumi:"endpointConnectLogin"`
+	// Name of the mirroring endpoint URL
+	EndpointName *string `pulumi:"endpointName"`
 	// Mirroring endpoint URL of availability group replica
 	EndpointUrl *string `pulumi:"endpointUrl"`
+	// Property to set the failover mode of the availability group replica
+	FailoverMode *string `pulumi:"failoverMode"`
 	// The failover mode of the availability group replica.
 	FailoverModeDescription string `pulumi:"failoverModeDescription"`
+	// Whether the primary replica should allow all connections or only READ_WRITE connections (disallowing ReadOnly connections)
+	PrimaryAllowConnections *string `pulumi:"primaryAllowConnections"`
 	// Whether the availability allows all connections or only read-write connections.
 	PrimaryRoleAllowConnectionsDescription string `pulumi:"primaryRoleAllowConnectionsDescription"`
 	// Connectivity endpoint (URL) of the read only availability replica.
@@ -1824,8 +2245,12 @@ type AvailabilityGroupConfigureResponse struct {
 	ReplicaCreateDate string `pulumi:"replicaCreateDate"`
 	// Date that the replica was modified.
 	ReplicaModifyDate string `pulumi:"replicaModifyDate"`
+	// Whether the secondary replica should allow all connections, no connections, or only ReadOnly connections.
+	SecondaryAllowConnections *string `pulumi:"secondaryAllowConnections"`
 	// Whether an availability replica that is performing the secondary role (that is, a secondary replica) can accept connections from clients.
 	SecondaryRoleAllowConnectionsDescription string `pulumi:"secondaryRoleAllowConnectionsDescription"`
+	// Specifies how the secondary replica will be initially seeded. AUTOMATIC enables direct seeding. This method will seed the secondary replica over the network. This method does not require you to backup and restore a copy of the primary database on the replica. MANUAL specifies manual seeding (default). This method requires you to create a backup of the database on the primary replica and manually restore that backup on the secondary replica.
+	SeedingMode *string `pulumi:"seedingMode"`
 	// Describes seeding mode.
 	SeedingModeDescription string `pulumi:"seedingModeDescription"`
 	// The time-out period of availability group session replica, in seconds.
@@ -1847,6 +2272,11 @@ func (o AvailabilityGroupConfigureResponseOutput) ToAvailabilityGroupConfigureRe
 	return o
 }
 
+// Property that determines whether a given availability replica can run in synchronous-commit mode
+func (o AvailabilityGroupConfigureResponseOutput) AvailabilityMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigureResponse) *string { return v.AvailabilityMode }).(pulumi.StringPtrOutput)
+}
+
 // The Availability Synchronization mode of the availability group replica.
 func (o AvailabilityGroupConfigureResponseOutput) AvailabilityModeDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v AvailabilityGroupConfigureResponse) string { return v.AvailabilityModeDescription }).(pulumi.StringOutput)
@@ -1857,14 +2287,44 @@ func (o AvailabilityGroupConfigureResponseOutput) BackupPriority() pulumi.IntPtr
 	return o.ApplyT(func(v AvailabilityGroupConfigureResponse) *int { return v.BackupPriority }).(pulumi.IntPtrOutput)
 }
 
+// Name of certificate to use for authentication. Required if any CERTIFICATE authentication modes are specified.
+func (o AvailabilityGroupConfigureResponseOutput) CertificateName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigureResponse) *string { return v.CertificateName }).(pulumi.StringPtrOutput)
+}
+
+// Permitted authentication modes for the mirroring endpoint.
+func (o AvailabilityGroupConfigureResponseOutput) EndpointAuthenticationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigureResponse) *string { return v.EndpointAuthenticationMode }).(pulumi.StringPtrOutput)
+}
+
+// The login which will connect to the mirroring endpoint.
+func (o AvailabilityGroupConfigureResponseOutput) EndpointConnectLogin() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigureResponse) *string { return v.EndpointConnectLogin }).(pulumi.StringPtrOutput)
+}
+
+// Name of the mirroring endpoint URL
+func (o AvailabilityGroupConfigureResponseOutput) EndpointName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigureResponse) *string { return v.EndpointName }).(pulumi.StringPtrOutput)
+}
+
 // Mirroring endpoint URL of availability group replica
 func (o AvailabilityGroupConfigureResponseOutput) EndpointUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AvailabilityGroupConfigureResponse) *string { return v.EndpointUrl }).(pulumi.StringPtrOutput)
 }
 
+// Property to set the failover mode of the availability group replica
+func (o AvailabilityGroupConfigureResponseOutput) FailoverMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigureResponse) *string { return v.FailoverMode }).(pulumi.StringPtrOutput)
+}
+
 // The failover mode of the availability group replica.
 func (o AvailabilityGroupConfigureResponseOutput) FailoverModeDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v AvailabilityGroupConfigureResponse) string { return v.FailoverModeDescription }).(pulumi.StringOutput)
+}
+
+// Whether the primary replica should allow all connections or only READ_WRITE connections (disallowing ReadOnly connections)
+func (o AvailabilityGroupConfigureResponseOutput) PrimaryAllowConnections() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigureResponse) *string { return v.PrimaryAllowConnections }).(pulumi.StringPtrOutput)
 }
 
 // Whether the availability allows all connections or only read-write connections.
@@ -1892,9 +2352,19 @@ func (o AvailabilityGroupConfigureResponseOutput) ReplicaModifyDate() pulumi.Str
 	return o.ApplyT(func(v AvailabilityGroupConfigureResponse) string { return v.ReplicaModifyDate }).(pulumi.StringOutput)
 }
 
+// Whether the secondary replica should allow all connections, no connections, or only ReadOnly connections.
+func (o AvailabilityGroupConfigureResponseOutput) SecondaryAllowConnections() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigureResponse) *string { return v.SecondaryAllowConnections }).(pulumi.StringPtrOutput)
+}
+
 // Whether an availability replica that is performing the secondary role (that is, a secondary replica) can accept connections from clients.
 func (o AvailabilityGroupConfigureResponseOutput) SecondaryRoleAllowConnectionsDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v AvailabilityGroupConfigureResponse) string { return v.SecondaryRoleAllowConnectionsDescription }).(pulumi.StringOutput)
+}
+
+// Specifies how the secondary replica will be initially seeded. AUTOMATIC enables direct seeding. This method will seed the secondary replica over the network. This method does not require you to backup and restore a copy of the primary database on the replica. MANUAL specifies manual seeding (default). This method requires you to create a backup of the database on the primary replica and manually restore that backup on the secondary replica.
+func (o AvailabilityGroupConfigureResponseOutput) SeedingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigureResponse) *string { return v.SeedingMode }).(pulumi.StringPtrOutput)
 }
 
 // Describes seeding mode.
@@ -1931,6 +2401,16 @@ func (o AvailabilityGroupConfigureResponsePtrOutput) Elem() AvailabilityGroupCon
 	}).(AvailabilityGroupConfigureResponseOutput)
 }
 
+// Property that determines whether a given availability replica can run in synchronous-commit mode
+func (o AvailabilityGroupConfigureResponsePtrOutput) AvailabilityMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigureResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AvailabilityMode
+	}).(pulumi.StringPtrOutput)
+}
+
 // The Availability Synchronization mode of the availability group replica.
 func (o AvailabilityGroupConfigureResponsePtrOutput) AvailabilityModeDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AvailabilityGroupConfigureResponse) *string {
@@ -1951,6 +2431,46 @@ func (o AvailabilityGroupConfigureResponsePtrOutput) BackupPriority() pulumi.Int
 	}).(pulumi.IntPtrOutput)
 }
 
+// Name of certificate to use for authentication. Required if any CERTIFICATE authentication modes are specified.
+func (o AvailabilityGroupConfigureResponsePtrOutput) CertificateName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigureResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CertificateName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Permitted authentication modes for the mirroring endpoint.
+func (o AvailabilityGroupConfigureResponsePtrOutput) EndpointAuthenticationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigureResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndpointAuthenticationMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The login which will connect to the mirroring endpoint.
+func (o AvailabilityGroupConfigureResponsePtrOutput) EndpointConnectLogin() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigureResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndpointConnectLogin
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the mirroring endpoint URL
+func (o AvailabilityGroupConfigureResponsePtrOutput) EndpointName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigureResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndpointName
+	}).(pulumi.StringPtrOutput)
+}
+
 // Mirroring endpoint URL of availability group replica
 func (o AvailabilityGroupConfigureResponsePtrOutput) EndpointUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AvailabilityGroupConfigureResponse) *string {
@@ -1961,6 +2481,16 @@ func (o AvailabilityGroupConfigureResponsePtrOutput) EndpointUrl() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// Property to set the failover mode of the availability group replica
+func (o AvailabilityGroupConfigureResponsePtrOutput) FailoverMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigureResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FailoverMode
+	}).(pulumi.StringPtrOutput)
+}
+
 // The failover mode of the availability group replica.
 func (o AvailabilityGroupConfigureResponsePtrOutput) FailoverModeDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AvailabilityGroupConfigureResponse) *string {
@@ -1968,6 +2498,16 @@ func (o AvailabilityGroupConfigureResponsePtrOutput) FailoverModeDescription() p
 			return nil
 		}
 		return &v.FailoverModeDescription
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether the primary replica should allow all connections or only READ_WRITE connections (disallowing ReadOnly connections)
+func (o AvailabilityGroupConfigureResponsePtrOutput) PrimaryAllowConnections() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigureResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrimaryAllowConnections
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2021,6 +2561,16 @@ func (o AvailabilityGroupConfigureResponsePtrOutput) ReplicaModifyDate() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+// Whether the secondary replica should allow all connections, no connections, or only ReadOnly connections.
+func (o AvailabilityGroupConfigureResponsePtrOutput) SecondaryAllowConnections() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigureResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecondaryAllowConnections
+	}).(pulumi.StringPtrOutput)
+}
+
 // Whether an availability replica that is performing the secondary role (that is, a secondary replica) can accept connections from clients.
 func (o AvailabilityGroupConfigureResponsePtrOutput) SecondaryRoleAllowConnectionsDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AvailabilityGroupConfigureResponse) *string {
@@ -2028,6 +2578,16 @@ func (o AvailabilityGroupConfigureResponsePtrOutput) SecondaryRoleAllowConnectio
 			return nil
 		}
 		return &v.SecondaryRoleAllowConnectionsDescription
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies how the secondary replica will be initially seeded. AUTOMATIC enables direct seeding. This method will seed the secondary replica over the network. This method does not require you to backup and restore a copy of the primary database on the replica. MANUAL specifies manual seeding (default). This method requires you to create a backup of the database on the primary replica and manually restore that backup on the secondary replica.
+func (o AvailabilityGroupConfigureResponsePtrOutput) SeedingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigureResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SeedingMode
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2067,6 +2627,8 @@ type AvailabilityGroupInfo struct {
 	IsContained *bool `pulumi:"isContained"`
 	// Specifies whether this is a distributed availability group.
 	IsDistributed *bool `pulumi:"isDistributed"`
+	// The listener for the sql server availability group
+	Listener *SqlAvailabilityGroupStaticIPListenerProperties `pulumi:"listener"`
 	// The number of secondary replicas that must be in a synchronized state for a commit to complete.
 	RequiredSynchronizedSecondariesToCommit *int `pulumi:"requiredSynchronizedSecondariesToCommit"`
 }
@@ -2098,6 +2660,8 @@ type AvailabilityGroupInfoArgs struct {
 	IsContained pulumi.BoolPtrInput `pulumi:"isContained"`
 	// Specifies whether this is a distributed availability group.
 	IsDistributed pulumi.BoolPtrInput `pulumi:"isDistributed"`
+	// The listener for the sql server availability group
+	Listener SqlAvailabilityGroupStaticIPListenerPropertiesPtrInput `pulumi:"listener"`
 	// The number of secondary replicas that must be in a synchronized state for a commit to complete.
 	RequiredSynchronizedSecondariesToCommit pulumi.IntPtrInput `pulumi:"requiredSynchronizedSecondariesToCommit"`
 }
@@ -2215,6 +2779,11 @@ func (o AvailabilityGroupInfoOutput) IsDistributed() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AvailabilityGroupInfo) *bool { return v.IsDistributed }).(pulumi.BoolPtrOutput)
 }
 
+// The listener for the sql server availability group
+func (o AvailabilityGroupInfoOutput) Listener() SqlAvailabilityGroupStaticIPListenerPropertiesPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupInfo) *SqlAvailabilityGroupStaticIPListenerProperties { return v.Listener }).(SqlAvailabilityGroupStaticIPListenerPropertiesPtrOutput)
+}
+
 // The number of secondary replicas that must be in a synchronized state for a commit to complete.
 func (o AvailabilityGroupInfoOutput) RequiredSynchronizedSecondariesToCommit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AvailabilityGroupInfo) *int { return v.RequiredSynchronizedSecondariesToCommit }).(pulumi.IntPtrOutput)
@@ -2314,6 +2883,16 @@ func (o AvailabilityGroupInfoPtrOutput) IsDistributed() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The listener for the sql server availability group
+func (o AvailabilityGroupInfoPtrOutput) Listener() SqlAvailabilityGroupStaticIPListenerPropertiesPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupInfo) *SqlAvailabilityGroupStaticIPListenerProperties {
+		if v == nil {
+			return nil
+		}
+		return v.Listener
+	}).(SqlAvailabilityGroupStaticIPListenerPropertiesPtrOutput)
+}
+
 // The number of secondary replicas that must be in a synchronized state for a commit to complete.
 func (o AvailabilityGroupInfoPtrOutput) RequiredSynchronizedSecondariesToCommit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AvailabilityGroupInfo) *int {
@@ -2344,6 +2923,8 @@ type AvailabilityGroupInfoResponse struct {
 	IsContained *bool `pulumi:"isContained"`
 	// Specifies whether this is a distributed availability group.
 	IsDistributed *bool `pulumi:"isDistributed"`
+	// The listener for the sql server availability group
+	Listener *SqlAvailabilityGroupStaticIPListenerPropertiesResponse `pulumi:"listener"`
 	// Indicates the recovery health of the primary replica.
 	PrimaryRecoveryHealthDescription string `pulumi:"primaryRecoveryHealthDescription"`
 	// Name of the server instance that is hosting the current primary replica.
@@ -2417,6 +2998,13 @@ func (o AvailabilityGroupInfoResponseOutput) IsContained() pulumi.BoolPtrOutput 
 // Specifies whether this is a distributed availability group.
 func (o AvailabilityGroupInfoResponseOutput) IsDistributed() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AvailabilityGroupInfoResponse) *bool { return v.IsDistributed }).(pulumi.BoolPtrOutput)
+}
+
+// The listener for the sql server availability group
+func (o AvailabilityGroupInfoResponseOutput) Listener() SqlAvailabilityGroupStaticIPListenerPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupInfoResponse) *SqlAvailabilityGroupStaticIPListenerPropertiesResponse {
+		return v.Listener
+	}).(SqlAvailabilityGroupStaticIPListenerPropertiesResponsePtrOutput)
 }
 
 // Indicates the recovery health of the primary replica.
@@ -2565,6 +3153,16 @@ func (o AvailabilityGroupInfoResponsePtrOutput) IsDistributed() pulumi.BoolPtrOu
 		}
 		return v.IsDistributed
 	}).(pulumi.BoolPtrOutput)
+}
+
+// The listener for the sql server availability group
+func (o AvailabilityGroupInfoResponsePtrOutput) Listener() SqlAvailabilityGroupStaticIPListenerPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupInfoResponse) *SqlAvailabilityGroupStaticIPListenerPropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Listener
+	}).(SqlAvailabilityGroupStaticIPListenerPropertiesResponsePtrOutput)
 }
 
 // Indicates the recovery health of the primary replica.
@@ -2943,6 +3541,314 @@ func (o BackgroundJobResponsePtrOutput) State() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The backup profile for the SQL server.
+type BackupPolicy struct {
+	// The differential backup interval in hours.
+	DifferentialBackupHours *int `pulumi:"differentialBackupHours"`
+	// The value indicating days between full backups.
+	FullBackupDays *int `pulumi:"fullBackupDays"`
+	// The retention period for all the databases in this managed instance.
+	RetentionPeriodDays *int `pulumi:"retentionPeriodDays"`
+	// The value indicating minutes between transaction log backups.
+	TransactionLogBackupMinutes *int `pulumi:"transactionLogBackupMinutes"`
+}
+
+// BackupPolicyInput is an input type that accepts BackupPolicyArgs and BackupPolicyOutput values.
+// You can construct a concrete instance of `BackupPolicyInput` via:
+//
+//	BackupPolicyArgs{...}
+type BackupPolicyInput interface {
+	pulumi.Input
+
+	ToBackupPolicyOutput() BackupPolicyOutput
+	ToBackupPolicyOutputWithContext(context.Context) BackupPolicyOutput
+}
+
+// The backup profile for the SQL server.
+type BackupPolicyArgs struct {
+	// The differential backup interval in hours.
+	DifferentialBackupHours pulumi.IntPtrInput `pulumi:"differentialBackupHours"`
+	// The value indicating days between full backups.
+	FullBackupDays pulumi.IntPtrInput `pulumi:"fullBackupDays"`
+	// The retention period for all the databases in this managed instance.
+	RetentionPeriodDays pulumi.IntPtrInput `pulumi:"retentionPeriodDays"`
+	// The value indicating minutes between transaction log backups.
+	TransactionLogBackupMinutes pulumi.IntPtrInput `pulumi:"transactionLogBackupMinutes"`
+}
+
+func (BackupPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupPolicy)(nil)).Elem()
+}
+
+func (i BackupPolicyArgs) ToBackupPolicyOutput() BackupPolicyOutput {
+	return i.ToBackupPolicyOutputWithContext(context.Background())
+}
+
+func (i BackupPolicyArgs) ToBackupPolicyOutputWithContext(ctx context.Context) BackupPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPolicyOutput)
+}
+
+func (i BackupPolicyArgs) ToBackupPolicyPtrOutput() BackupPolicyPtrOutput {
+	return i.ToBackupPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i BackupPolicyArgs) ToBackupPolicyPtrOutputWithContext(ctx context.Context) BackupPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPolicyOutput).ToBackupPolicyPtrOutputWithContext(ctx)
+}
+
+// BackupPolicyPtrInput is an input type that accepts BackupPolicyArgs, BackupPolicyPtr and BackupPolicyPtrOutput values.
+// You can construct a concrete instance of `BackupPolicyPtrInput` via:
+//
+//	        BackupPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type BackupPolicyPtrInput interface {
+	pulumi.Input
+
+	ToBackupPolicyPtrOutput() BackupPolicyPtrOutput
+	ToBackupPolicyPtrOutputWithContext(context.Context) BackupPolicyPtrOutput
+}
+
+type backupPolicyPtrType BackupPolicyArgs
+
+func BackupPolicyPtr(v *BackupPolicyArgs) BackupPolicyPtrInput {
+	return (*backupPolicyPtrType)(v)
+}
+
+func (*backupPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupPolicy)(nil)).Elem()
+}
+
+func (i *backupPolicyPtrType) ToBackupPolicyPtrOutput() BackupPolicyPtrOutput {
+	return i.ToBackupPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *backupPolicyPtrType) ToBackupPolicyPtrOutputWithContext(ctx context.Context) BackupPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPolicyPtrOutput)
+}
+
+// The backup profile for the SQL server.
+type BackupPolicyOutput struct{ *pulumi.OutputState }
+
+func (BackupPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupPolicy)(nil)).Elem()
+}
+
+func (o BackupPolicyOutput) ToBackupPolicyOutput() BackupPolicyOutput {
+	return o
+}
+
+func (o BackupPolicyOutput) ToBackupPolicyOutputWithContext(ctx context.Context) BackupPolicyOutput {
+	return o
+}
+
+func (o BackupPolicyOutput) ToBackupPolicyPtrOutput() BackupPolicyPtrOutput {
+	return o.ToBackupPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o BackupPolicyOutput) ToBackupPolicyPtrOutputWithContext(ctx context.Context) BackupPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackupPolicy) *BackupPolicy {
+		return &v
+	}).(BackupPolicyPtrOutput)
+}
+
+// The differential backup interval in hours.
+func (o BackupPolicyOutput) DifferentialBackupHours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BackupPolicy) *int { return v.DifferentialBackupHours }).(pulumi.IntPtrOutput)
+}
+
+// The value indicating days between full backups.
+func (o BackupPolicyOutput) FullBackupDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BackupPolicy) *int { return v.FullBackupDays }).(pulumi.IntPtrOutput)
+}
+
+// The retention period for all the databases in this managed instance.
+func (o BackupPolicyOutput) RetentionPeriodDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BackupPolicy) *int { return v.RetentionPeriodDays }).(pulumi.IntPtrOutput)
+}
+
+// The value indicating minutes between transaction log backups.
+func (o BackupPolicyOutput) TransactionLogBackupMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BackupPolicy) *int { return v.TransactionLogBackupMinutes }).(pulumi.IntPtrOutput)
+}
+
+type BackupPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (BackupPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupPolicy)(nil)).Elem()
+}
+
+func (o BackupPolicyPtrOutput) ToBackupPolicyPtrOutput() BackupPolicyPtrOutput {
+	return o
+}
+
+func (o BackupPolicyPtrOutput) ToBackupPolicyPtrOutputWithContext(ctx context.Context) BackupPolicyPtrOutput {
+	return o
+}
+
+func (o BackupPolicyPtrOutput) Elem() BackupPolicyOutput {
+	return o.ApplyT(func(v *BackupPolicy) BackupPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret BackupPolicy
+		return ret
+	}).(BackupPolicyOutput)
+}
+
+// The differential backup interval in hours.
+func (o BackupPolicyPtrOutput) DifferentialBackupHours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BackupPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DifferentialBackupHours
+	}).(pulumi.IntPtrOutput)
+}
+
+// The value indicating days between full backups.
+func (o BackupPolicyPtrOutput) FullBackupDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BackupPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FullBackupDays
+	}).(pulumi.IntPtrOutput)
+}
+
+// The retention period for all the databases in this managed instance.
+func (o BackupPolicyPtrOutput) RetentionPeriodDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BackupPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RetentionPeriodDays
+	}).(pulumi.IntPtrOutput)
+}
+
+// The value indicating minutes between transaction log backups.
+func (o BackupPolicyPtrOutput) TransactionLogBackupMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BackupPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TransactionLogBackupMinutes
+	}).(pulumi.IntPtrOutput)
+}
+
+// The backup profile for the SQL server.
+type BackupPolicyResponse struct {
+	// The differential backup interval in hours.
+	DifferentialBackupHours *int `pulumi:"differentialBackupHours"`
+	// The value indicating days between full backups.
+	FullBackupDays *int `pulumi:"fullBackupDays"`
+	// The retention period for all the databases in this managed instance.
+	RetentionPeriodDays *int `pulumi:"retentionPeriodDays"`
+	// The value indicating minutes between transaction log backups.
+	TransactionLogBackupMinutes *int `pulumi:"transactionLogBackupMinutes"`
+}
+
+// The backup profile for the SQL server.
+type BackupPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (BackupPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupPolicyResponse)(nil)).Elem()
+}
+
+func (o BackupPolicyResponseOutput) ToBackupPolicyResponseOutput() BackupPolicyResponseOutput {
+	return o
+}
+
+func (o BackupPolicyResponseOutput) ToBackupPolicyResponseOutputWithContext(ctx context.Context) BackupPolicyResponseOutput {
+	return o
+}
+
+// The differential backup interval in hours.
+func (o BackupPolicyResponseOutput) DifferentialBackupHours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BackupPolicyResponse) *int { return v.DifferentialBackupHours }).(pulumi.IntPtrOutput)
+}
+
+// The value indicating days between full backups.
+func (o BackupPolicyResponseOutput) FullBackupDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BackupPolicyResponse) *int { return v.FullBackupDays }).(pulumi.IntPtrOutput)
+}
+
+// The retention period for all the databases in this managed instance.
+func (o BackupPolicyResponseOutput) RetentionPeriodDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BackupPolicyResponse) *int { return v.RetentionPeriodDays }).(pulumi.IntPtrOutput)
+}
+
+// The value indicating minutes between transaction log backups.
+func (o BackupPolicyResponseOutput) TransactionLogBackupMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BackupPolicyResponse) *int { return v.TransactionLogBackupMinutes }).(pulumi.IntPtrOutput)
+}
+
+type BackupPolicyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (BackupPolicyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupPolicyResponse)(nil)).Elem()
+}
+
+func (o BackupPolicyResponsePtrOutput) ToBackupPolicyResponsePtrOutput() BackupPolicyResponsePtrOutput {
+	return o
+}
+
+func (o BackupPolicyResponsePtrOutput) ToBackupPolicyResponsePtrOutputWithContext(ctx context.Context) BackupPolicyResponsePtrOutput {
+	return o
+}
+
+func (o BackupPolicyResponsePtrOutput) Elem() BackupPolicyResponseOutput {
+	return o.ApplyT(func(v *BackupPolicyResponse) BackupPolicyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BackupPolicyResponse
+		return ret
+	}).(BackupPolicyResponseOutput)
+}
+
+// The differential backup interval in hours.
+func (o BackupPolicyResponsePtrOutput) DifferentialBackupHours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BackupPolicyResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DifferentialBackupHours
+	}).(pulumi.IntPtrOutput)
+}
+
+// The value indicating days between full backups.
+func (o BackupPolicyResponsePtrOutput) FullBackupDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BackupPolicyResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FullBackupDays
+	}).(pulumi.IntPtrOutput)
+}
+
+// The retention period for all the databases in this managed instance.
+func (o BackupPolicyResponsePtrOutput) RetentionPeriodDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BackupPolicyResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RetentionPeriodDays
+	}).(pulumi.IntPtrOutput)
+}
+
+// The value indicating minutes between transaction log backups.
+func (o BackupPolicyResponsePtrOutput) TransactionLogBackupMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BackupPolicyResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TransactionLogBackupMinutes
+	}).(pulumi.IntPtrOutput)
+}
+
 // Username and password for basic login authentication.
 type BasicLoginInformation struct {
 	// Login password.
@@ -3160,6 +4066,617 @@ func (o BasicLoginInformationResponsePtrOutput) Username() pulumi.StringPtrOutpu
 		}
 		return v.Username
 	}).(pulumi.StringPtrOutput)
+}
+
+// Client connection related configuration.
+type ClientConnection struct {
+	// Indicates if client connection is enabled for this SQL Server instance.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// ClientConnectionInput is an input type that accepts ClientConnectionArgs and ClientConnectionOutput values.
+// You can construct a concrete instance of `ClientConnectionInput` via:
+//
+//	ClientConnectionArgs{...}
+type ClientConnectionInput interface {
+	pulumi.Input
+
+	ToClientConnectionOutput() ClientConnectionOutput
+	ToClientConnectionOutputWithContext(context.Context) ClientConnectionOutput
+}
+
+// Client connection related configuration.
+type ClientConnectionArgs struct {
+	// Indicates if client connection is enabled for this SQL Server instance.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (ClientConnectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientConnection)(nil)).Elem()
+}
+
+func (i ClientConnectionArgs) ToClientConnectionOutput() ClientConnectionOutput {
+	return i.ToClientConnectionOutputWithContext(context.Background())
+}
+
+func (i ClientConnectionArgs) ToClientConnectionOutputWithContext(ctx context.Context) ClientConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientConnectionOutput)
+}
+
+func (i ClientConnectionArgs) ToClientConnectionPtrOutput() ClientConnectionPtrOutput {
+	return i.ToClientConnectionPtrOutputWithContext(context.Background())
+}
+
+func (i ClientConnectionArgs) ToClientConnectionPtrOutputWithContext(ctx context.Context) ClientConnectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientConnectionOutput).ToClientConnectionPtrOutputWithContext(ctx)
+}
+
+// ClientConnectionPtrInput is an input type that accepts ClientConnectionArgs, ClientConnectionPtr and ClientConnectionPtrOutput values.
+// You can construct a concrete instance of `ClientConnectionPtrInput` via:
+//
+//	        ClientConnectionArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientConnectionPtrInput interface {
+	pulumi.Input
+
+	ToClientConnectionPtrOutput() ClientConnectionPtrOutput
+	ToClientConnectionPtrOutputWithContext(context.Context) ClientConnectionPtrOutput
+}
+
+type clientConnectionPtrType ClientConnectionArgs
+
+func ClientConnectionPtr(v *ClientConnectionArgs) ClientConnectionPtrInput {
+	return (*clientConnectionPtrType)(v)
+}
+
+func (*clientConnectionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientConnection)(nil)).Elem()
+}
+
+func (i *clientConnectionPtrType) ToClientConnectionPtrOutput() ClientConnectionPtrOutput {
+	return i.ToClientConnectionPtrOutputWithContext(context.Background())
+}
+
+func (i *clientConnectionPtrType) ToClientConnectionPtrOutputWithContext(ctx context.Context) ClientConnectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientConnectionPtrOutput)
+}
+
+// Client connection related configuration.
+type ClientConnectionOutput struct{ *pulumi.OutputState }
+
+func (ClientConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientConnection)(nil)).Elem()
+}
+
+func (o ClientConnectionOutput) ToClientConnectionOutput() ClientConnectionOutput {
+	return o
+}
+
+func (o ClientConnectionOutput) ToClientConnectionOutputWithContext(ctx context.Context) ClientConnectionOutput {
+	return o
+}
+
+func (o ClientConnectionOutput) ToClientConnectionPtrOutput() ClientConnectionPtrOutput {
+	return o.ToClientConnectionPtrOutputWithContext(context.Background())
+}
+
+func (o ClientConnectionOutput) ToClientConnectionPtrOutputWithContext(ctx context.Context) ClientConnectionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientConnection) *ClientConnection {
+		return &v
+	}).(ClientConnectionPtrOutput)
+}
+
+// Indicates if client connection is enabled for this SQL Server instance.
+func (o ClientConnectionOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClientConnection) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ClientConnectionPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientConnectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientConnection)(nil)).Elem()
+}
+
+func (o ClientConnectionPtrOutput) ToClientConnectionPtrOutput() ClientConnectionPtrOutput {
+	return o
+}
+
+func (o ClientConnectionPtrOutput) ToClientConnectionPtrOutputWithContext(ctx context.Context) ClientConnectionPtrOutput {
+	return o
+}
+
+func (o ClientConnectionPtrOutput) Elem() ClientConnectionOutput {
+	return o.ApplyT(func(v *ClientConnection) ClientConnection {
+		if v != nil {
+			return *v
+		}
+		var ret ClientConnection
+		return ret
+	}).(ClientConnectionOutput)
+}
+
+// Indicates if client connection is enabled for this SQL Server instance.
+func (o ClientConnectionPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClientConnection) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Client connection related configuration.
+type ClientConnectionResponse struct {
+	// Indicates if client connection is enabled for this SQL Server instance.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// Client connection related configuration.
+type ClientConnectionResponseOutput struct{ *pulumi.OutputState }
+
+func (ClientConnectionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientConnectionResponse)(nil)).Elem()
+}
+
+func (o ClientConnectionResponseOutput) ToClientConnectionResponseOutput() ClientConnectionResponseOutput {
+	return o
+}
+
+func (o ClientConnectionResponseOutput) ToClientConnectionResponseOutputWithContext(ctx context.Context) ClientConnectionResponseOutput {
+	return o
+}
+
+// Indicates if client connection is enabled for this SQL Server instance.
+func (o ClientConnectionResponseOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClientConnectionResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ClientConnectionResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ClientConnectionResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientConnectionResponse)(nil)).Elem()
+}
+
+func (o ClientConnectionResponsePtrOutput) ToClientConnectionResponsePtrOutput() ClientConnectionResponsePtrOutput {
+	return o
+}
+
+func (o ClientConnectionResponsePtrOutput) ToClientConnectionResponsePtrOutputWithContext(ctx context.Context) ClientConnectionResponsePtrOutput {
+	return o
+}
+
+func (o ClientConnectionResponsePtrOutput) Elem() ClientConnectionResponseOutput {
+	return o.ApplyT(func(v *ClientConnectionResponse) ClientConnectionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ClientConnectionResponse
+		return ret
+	}).(ClientConnectionResponseOutput)
+}
+
+// Indicates if client connection is enabled for this SQL Server instance.
+func (o ClientConnectionResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClientConnectionResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Database mirroring endpoint related properties.
+type DBMEndpointResponse struct {
+	// Name of the certificate.
+	CertificateName string `pulumi:"certificateName"`
+	// The type of connection authentication required for connections to this endpoint
+	ConnectionAuth string `pulumi:"connectionAuth"`
+	// Encryption Algorithm
+	EncryptionAlgorithm string `pulumi:"encryptionAlgorithm"`
+	// Name of the database mirroring endpoint.
+	EndpointName string `pulumi:"endpointName"`
+	// Listener IP address.
+	IpAddress string `pulumi:"ipAddress"`
+	// Is the port number dynamically assigned.
+	IsDynamicPort bool `pulumi:"isDynamicPort"`
+	// Is Encryption enabled
+	IsEncryptionEnabled bool `pulumi:"isEncryptionEnabled"`
+	// The port number that the endpoint is listening on.
+	Port int `pulumi:"port"`
+	// Mirroring Role
+	Role string `pulumi:"role"`
+}
+
+// Database mirroring endpoint related properties.
+type DBMEndpointResponseOutput struct{ *pulumi.OutputState }
+
+func (DBMEndpointResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DBMEndpointResponse)(nil)).Elem()
+}
+
+func (o DBMEndpointResponseOutput) ToDBMEndpointResponseOutput() DBMEndpointResponseOutput {
+	return o
+}
+
+func (o DBMEndpointResponseOutput) ToDBMEndpointResponseOutputWithContext(ctx context.Context) DBMEndpointResponseOutput {
+	return o
+}
+
+// Name of the certificate.
+func (o DBMEndpointResponseOutput) CertificateName() pulumi.StringOutput {
+	return o.ApplyT(func(v DBMEndpointResponse) string { return v.CertificateName }).(pulumi.StringOutput)
+}
+
+// The type of connection authentication required for connections to this endpoint
+func (o DBMEndpointResponseOutput) ConnectionAuth() pulumi.StringOutput {
+	return o.ApplyT(func(v DBMEndpointResponse) string { return v.ConnectionAuth }).(pulumi.StringOutput)
+}
+
+// Encryption Algorithm
+func (o DBMEndpointResponseOutput) EncryptionAlgorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v DBMEndpointResponse) string { return v.EncryptionAlgorithm }).(pulumi.StringOutput)
+}
+
+// Name of the database mirroring endpoint.
+func (o DBMEndpointResponseOutput) EndpointName() pulumi.StringOutput {
+	return o.ApplyT(func(v DBMEndpointResponse) string { return v.EndpointName }).(pulumi.StringOutput)
+}
+
+// Listener IP address.
+func (o DBMEndpointResponseOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v DBMEndpointResponse) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// Is the port number dynamically assigned.
+func (o DBMEndpointResponseOutput) IsDynamicPort() pulumi.BoolOutput {
+	return o.ApplyT(func(v DBMEndpointResponse) bool { return v.IsDynamicPort }).(pulumi.BoolOutput)
+}
+
+// Is Encryption enabled
+func (o DBMEndpointResponseOutput) IsEncryptionEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v DBMEndpointResponse) bool { return v.IsEncryptionEnabled }).(pulumi.BoolOutput)
+}
+
+// The port number that the endpoint is listening on.
+func (o DBMEndpointResponseOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v DBMEndpointResponse) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Mirroring Role
+func (o DBMEndpointResponseOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v DBMEndpointResponse) string { return v.Role }).(pulumi.StringOutput)
+}
+
+type DBMEndpointResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DBMEndpointResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DBMEndpointResponse)(nil)).Elem()
+}
+
+func (o DBMEndpointResponsePtrOutput) ToDBMEndpointResponsePtrOutput() DBMEndpointResponsePtrOutput {
+	return o
+}
+
+func (o DBMEndpointResponsePtrOutput) ToDBMEndpointResponsePtrOutputWithContext(ctx context.Context) DBMEndpointResponsePtrOutput {
+	return o
+}
+
+func (o DBMEndpointResponsePtrOutput) Elem() DBMEndpointResponseOutput {
+	return o.ApplyT(func(v *DBMEndpointResponse) DBMEndpointResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DBMEndpointResponse
+		return ret
+	}).(DBMEndpointResponseOutput)
+}
+
+// Name of the certificate.
+func (o DBMEndpointResponsePtrOutput) CertificateName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DBMEndpointResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CertificateName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of connection authentication required for connections to this endpoint
+func (o DBMEndpointResponsePtrOutput) ConnectionAuth() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DBMEndpointResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConnectionAuth
+	}).(pulumi.StringPtrOutput)
+}
+
+// Encryption Algorithm
+func (o DBMEndpointResponsePtrOutput) EncryptionAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DBMEndpointResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EncryptionAlgorithm
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the database mirroring endpoint.
+func (o DBMEndpointResponsePtrOutput) EndpointName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DBMEndpointResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EndpointName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Listener IP address.
+func (o DBMEndpointResponsePtrOutput) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DBMEndpointResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IpAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// Is the port number dynamically assigned.
+func (o DBMEndpointResponsePtrOutput) IsDynamicPort() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DBMEndpointResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.IsDynamicPort
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Is Encryption enabled
+func (o DBMEndpointResponsePtrOutput) IsEncryptionEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DBMEndpointResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.IsEncryptionEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The port number that the endpoint is listening on.
+func (o DBMEndpointResponsePtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DBMEndpointResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// Mirroring Role
+func (o DBMEndpointResponsePtrOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DBMEndpointResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Role
+	}).(pulumi.StringPtrOutput)
+}
+
+// The migration assessment related configuration.
+type DataBaseMigrationAssessmentResponse struct {
+	// The time when Migration Assessment Report upload was last performed.
+	AssessmentUploadTime string `pulumi:"assessmentUploadTime"`
+	// Issues and warnings impacting the migration of Database to particular Azure Migration Target.
+	DatabaseAssessments []DataBaseMigrationAssessmentResponseDatabaseAssessments `pulumi:"databaseAssessments"`
+	// The target readiness for migration for this database.
+	TargetReadiness TargetReadinessResponse `pulumi:"targetReadiness"`
+}
+
+// The migration assessment related configuration.
+type DataBaseMigrationAssessmentResponseOutput struct{ *pulumi.OutputState }
+
+func (DataBaseMigrationAssessmentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataBaseMigrationAssessmentResponse)(nil)).Elem()
+}
+
+func (o DataBaseMigrationAssessmentResponseOutput) ToDataBaseMigrationAssessmentResponseOutput() DataBaseMigrationAssessmentResponseOutput {
+	return o
+}
+
+func (o DataBaseMigrationAssessmentResponseOutput) ToDataBaseMigrationAssessmentResponseOutputWithContext(ctx context.Context) DataBaseMigrationAssessmentResponseOutput {
+	return o
+}
+
+// The time when Migration Assessment Report upload was last performed.
+func (o DataBaseMigrationAssessmentResponseOutput) AssessmentUploadTime() pulumi.StringOutput {
+	return o.ApplyT(func(v DataBaseMigrationAssessmentResponse) string { return v.AssessmentUploadTime }).(pulumi.StringOutput)
+}
+
+// Issues and warnings impacting the migration of Database to particular Azure Migration Target.
+func (o DataBaseMigrationAssessmentResponseOutput) DatabaseAssessments() DataBaseMigrationAssessmentResponseDatabaseAssessmentsArrayOutput {
+	return o.ApplyT(func(v DataBaseMigrationAssessmentResponse) []DataBaseMigrationAssessmentResponseDatabaseAssessments {
+		return v.DatabaseAssessments
+	}).(DataBaseMigrationAssessmentResponseDatabaseAssessmentsArrayOutput)
+}
+
+// The target readiness for migration for this database.
+func (o DataBaseMigrationAssessmentResponseOutput) TargetReadiness() TargetReadinessResponseOutput {
+	return o.ApplyT(func(v DataBaseMigrationAssessmentResponse) TargetReadinessResponse { return v.TargetReadiness }).(TargetReadinessResponseOutput)
+}
+
+type DataBaseMigrationAssessmentResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DataBaseMigrationAssessmentResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataBaseMigrationAssessmentResponse)(nil)).Elem()
+}
+
+func (o DataBaseMigrationAssessmentResponsePtrOutput) ToDataBaseMigrationAssessmentResponsePtrOutput() DataBaseMigrationAssessmentResponsePtrOutput {
+	return o
+}
+
+func (o DataBaseMigrationAssessmentResponsePtrOutput) ToDataBaseMigrationAssessmentResponsePtrOutputWithContext(ctx context.Context) DataBaseMigrationAssessmentResponsePtrOutput {
+	return o
+}
+
+func (o DataBaseMigrationAssessmentResponsePtrOutput) Elem() DataBaseMigrationAssessmentResponseOutput {
+	return o.ApplyT(func(v *DataBaseMigrationAssessmentResponse) DataBaseMigrationAssessmentResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DataBaseMigrationAssessmentResponse
+		return ret
+	}).(DataBaseMigrationAssessmentResponseOutput)
+}
+
+// The time when Migration Assessment Report upload was last performed.
+func (o DataBaseMigrationAssessmentResponsePtrOutput) AssessmentUploadTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataBaseMigrationAssessmentResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AssessmentUploadTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Issues and warnings impacting the migration of Database to particular Azure Migration Target.
+func (o DataBaseMigrationAssessmentResponsePtrOutput) DatabaseAssessments() DataBaseMigrationAssessmentResponseDatabaseAssessmentsArrayOutput {
+	return o.ApplyT(func(v *DataBaseMigrationAssessmentResponse) []DataBaseMigrationAssessmentResponseDatabaseAssessments {
+		if v == nil {
+			return nil
+		}
+		return v.DatabaseAssessments
+	}).(DataBaseMigrationAssessmentResponseDatabaseAssessmentsArrayOutput)
+}
+
+// The target readiness for migration for this database.
+func (o DataBaseMigrationAssessmentResponsePtrOutput) TargetReadiness() TargetReadinessResponsePtrOutput {
+	return o.ApplyT(func(v *DataBaseMigrationAssessmentResponse) *TargetReadinessResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.TargetReadiness
+	}).(TargetReadinessResponsePtrOutput)
+}
+
+type DataBaseMigrationAssessmentResponseDatabaseAssessments struct {
+	AppliesToMigrationTargetPlatform *string `pulumi:"appliesToMigrationTargetPlatform"`
+	FeatureId                        *string `pulumi:"featureId"`
+	IssueCategory                    *string `pulumi:"issueCategory"`
+	MoreInformation                  *string `pulumi:"moreInformation"`
+}
+
+type DataBaseMigrationAssessmentResponseDatabaseAssessmentsOutput struct{ *pulumi.OutputState }
+
+func (DataBaseMigrationAssessmentResponseDatabaseAssessmentsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataBaseMigrationAssessmentResponseDatabaseAssessments)(nil)).Elem()
+}
+
+func (o DataBaseMigrationAssessmentResponseDatabaseAssessmentsOutput) ToDataBaseMigrationAssessmentResponseDatabaseAssessmentsOutput() DataBaseMigrationAssessmentResponseDatabaseAssessmentsOutput {
+	return o
+}
+
+func (o DataBaseMigrationAssessmentResponseDatabaseAssessmentsOutput) ToDataBaseMigrationAssessmentResponseDatabaseAssessmentsOutputWithContext(ctx context.Context) DataBaseMigrationAssessmentResponseDatabaseAssessmentsOutput {
+	return o
+}
+
+func (o DataBaseMigrationAssessmentResponseDatabaseAssessmentsOutput) AppliesToMigrationTargetPlatform() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataBaseMigrationAssessmentResponseDatabaseAssessments) *string {
+		return v.AppliesToMigrationTargetPlatform
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DataBaseMigrationAssessmentResponseDatabaseAssessmentsOutput) FeatureId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataBaseMigrationAssessmentResponseDatabaseAssessments) *string { return v.FeatureId }).(pulumi.StringPtrOutput)
+}
+
+func (o DataBaseMigrationAssessmentResponseDatabaseAssessmentsOutput) IssueCategory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataBaseMigrationAssessmentResponseDatabaseAssessments) *string { return v.IssueCategory }).(pulumi.StringPtrOutput)
+}
+
+func (o DataBaseMigrationAssessmentResponseDatabaseAssessmentsOutput) MoreInformation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataBaseMigrationAssessmentResponseDatabaseAssessments) *string { return v.MoreInformation }).(pulumi.StringPtrOutput)
+}
+
+type DataBaseMigrationAssessmentResponseDatabaseAssessmentsArrayOutput struct{ *pulumi.OutputState }
+
+func (DataBaseMigrationAssessmentResponseDatabaseAssessmentsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataBaseMigrationAssessmentResponseDatabaseAssessments)(nil)).Elem()
+}
+
+func (o DataBaseMigrationAssessmentResponseDatabaseAssessmentsArrayOutput) ToDataBaseMigrationAssessmentResponseDatabaseAssessmentsArrayOutput() DataBaseMigrationAssessmentResponseDatabaseAssessmentsArrayOutput {
+	return o
+}
+
+func (o DataBaseMigrationAssessmentResponseDatabaseAssessmentsArrayOutput) ToDataBaseMigrationAssessmentResponseDatabaseAssessmentsArrayOutputWithContext(ctx context.Context) DataBaseMigrationAssessmentResponseDatabaseAssessmentsArrayOutput {
+	return o
+}
+
+func (o DataBaseMigrationAssessmentResponseDatabaseAssessmentsArrayOutput) Index(i pulumi.IntInput) DataBaseMigrationAssessmentResponseDatabaseAssessmentsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataBaseMigrationAssessmentResponseDatabaseAssessments {
+		return vs[0].([]DataBaseMigrationAssessmentResponseDatabaseAssessments)[vs[1].(int)]
+	}).(DataBaseMigrationAssessmentResponseDatabaseAssessmentsOutput)
+}
+
+// Migration related configuration.
+type DataBaseMigrationResponse struct {
+	// Migration assessments related configuration.
+	Assessment *DataBaseMigrationAssessmentResponse `pulumi:"assessment"`
+}
+
+// Migration related configuration.
+type DataBaseMigrationResponseOutput struct{ *pulumi.OutputState }
+
+func (DataBaseMigrationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataBaseMigrationResponse)(nil)).Elem()
+}
+
+func (o DataBaseMigrationResponseOutput) ToDataBaseMigrationResponseOutput() DataBaseMigrationResponseOutput {
+	return o
+}
+
+func (o DataBaseMigrationResponseOutput) ToDataBaseMigrationResponseOutputWithContext(ctx context.Context) DataBaseMigrationResponseOutput {
+	return o
+}
+
+// Migration assessments related configuration.
+func (o DataBaseMigrationResponseOutput) Assessment() DataBaseMigrationAssessmentResponsePtrOutput {
+	return o.ApplyT(func(v DataBaseMigrationResponse) *DataBaseMigrationAssessmentResponse { return v.Assessment }).(DataBaseMigrationAssessmentResponsePtrOutput)
+}
+
+type DataBaseMigrationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DataBaseMigrationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataBaseMigrationResponse)(nil)).Elem()
+}
+
+func (o DataBaseMigrationResponsePtrOutput) ToDataBaseMigrationResponsePtrOutput() DataBaseMigrationResponsePtrOutput {
+	return o
+}
+
+func (o DataBaseMigrationResponsePtrOutput) ToDataBaseMigrationResponsePtrOutputWithContext(ctx context.Context) DataBaseMigrationResponsePtrOutput {
+	return o
+}
+
+func (o DataBaseMigrationResponsePtrOutput) Elem() DataBaseMigrationResponseOutput {
+	return o.ApplyT(func(v *DataBaseMigrationResponse) DataBaseMigrationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DataBaseMigrationResponse
+		return ret
+	}).(DataBaseMigrationResponseOutput)
+}
+
+// Migration assessments related configuration.
+func (o DataBaseMigrationResponsePtrOutput) Assessment() DataBaseMigrationAssessmentResponsePtrOutput {
+	return o.ApplyT(func(v *DataBaseMigrationResponse) *DataBaseMigrationAssessmentResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Assessment
+	}).(DataBaseMigrationAssessmentResponsePtrOutput)
 }
 
 // The data controller properties.
@@ -3473,6 +4990,168 @@ func (o DataControllerPropertiesResponseOutput) UploadWatermark() UploadWatermar
 	return o.ApplyT(func(v DataControllerPropertiesResponse) *UploadWatermarkResponse { return v.UploadWatermark }).(UploadWatermarkResponsePtrOutput)
 }
 
+// Entra Authentication configuration.
+type EntraAuthentication struct {
+	// The client Id of the Managed Identity to query Microsoft Graph API. An empty string must be used for the system assigned Managed Identity.
+	ClientId *string `pulumi:"clientId"`
+	// The method used for Entra authentication
+	IdentityType *string `pulumi:"identityType"`
+}
+
+// EntraAuthenticationInput is an input type that accepts EntraAuthenticationArgs and EntraAuthenticationOutput values.
+// You can construct a concrete instance of `EntraAuthenticationInput` via:
+//
+//	EntraAuthenticationArgs{...}
+type EntraAuthenticationInput interface {
+	pulumi.Input
+
+	ToEntraAuthenticationOutput() EntraAuthenticationOutput
+	ToEntraAuthenticationOutputWithContext(context.Context) EntraAuthenticationOutput
+}
+
+// Entra Authentication configuration.
+type EntraAuthenticationArgs struct {
+	// The client Id of the Managed Identity to query Microsoft Graph API. An empty string must be used for the system assigned Managed Identity.
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// The method used for Entra authentication
+	IdentityType pulumi.StringPtrInput `pulumi:"identityType"`
+}
+
+func (EntraAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntraAuthentication)(nil)).Elem()
+}
+
+func (i EntraAuthenticationArgs) ToEntraAuthenticationOutput() EntraAuthenticationOutput {
+	return i.ToEntraAuthenticationOutputWithContext(context.Background())
+}
+
+func (i EntraAuthenticationArgs) ToEntraAuthenticationOutputWithContext(ctx context.Context) EntraAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntraAuthenticationOutput)
+}
+
+// EntraAuthenticationArrayInput is an input type that accepts EntraAuthenticationArray and EntraAuthenticationArrayOutput values.
+// You can construct a concrete instance of `EntraAuthenticationArrayInput` via:
+//
+//	EntraAuthenticationArray{ EntraAuthenticationArgs{...} }
+type EntraAuthenticationArrayInput interface {
+	pulumi.Input
+
+	ToEntraAuthenticationArrayOutput() EntraAuthenticationArrayOutput
+	ToEntraAuthenticationArrayOutputWithContext(context.Context) EntraAuthenticationArrayOutput
+}
+
+type EntraAuthenticationArray []EntraAuthenticationInput
+
+func (EntraAuthenticationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EntraAuthentication)(nil)).Elem()
+}
+
+func (i EntraAuthenticationArray) ToEntraAuthenticationArrayOutput() EntraAuthenticationArrayOutput {
+	return i.ToEntraAuthenticationArrayOutputWithContext(context.Background())
+}
+
+func (i EntraAuthenticationArray) ToEntraAuthenticationArrayOutputWithContext(ctx context.Context) EntraAuthenticationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntraAuthenticationArrayOutput)
+}
+
+// Entra Authentication configuration.
+type EntraAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (EntraAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntraAuthentication)(nil)).Elem()
+}
+
+func (o EntraAuthenticationOutput) ToEntraAuthenticationOutput() EntraAuthenticationOutput {
+	return o
+}
+
+func (o EntraAuthenticationOutput) ToEntraAuthenticationOutputWithContext(ctx context.Context) EntraAuthenticationOutput {
+	return o
+}
+
+// The client Id of the Managed Identity to query Microsoft Graph API. An empty string must be used for the system assigned Managed Identity.
+func (o EntraAuthenticationOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EntraAuthentication) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// The method used for Entra authentication
+func (o EntraAuthenticationOutput) IdentityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EntraAuthentication) *string { return v.IdentityType }).(pulumi.StringPtrOutput)
+}
+
+type EntraAuthenticationArrayOutput struct{ *pulumi.OutputState }
+
+func (EntraAuthenticationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EntraAuthentication)(nil)).Elem()
+}
+
+func (o EntraAuthenticationArrayOutput) ToEntraAuthenticationArrayOutput() EntraAuthenticationArrayOutput {
+	return o
+}
+
+func (o EntraAuthenticationArrayOutput) ToEntraAuthenticationArrayOutputWithContext(ctx context.Context) EntraAuthenticationArrayOutput {
+	return o
+}
+
+func (o EntraAuthenticationArrayOutput) Index(i pulumi.IntInput) EntraAuthenticationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EntraAuthentication {
+		return vs[0].([]EntraAuthentication)[vs[1].(int)]
+	}).(EntraAuthenticationOutput)
+}
+
+// Entra Authentication configuration.
+type EntraAuthenticationResponse struct {
+	// The client Id of the Managed Identity to query Microsoft Graph API. An empty string must be used for the system assigned Managed Identity.
+	ClientId *string `pulumi:"clientId"`
+	// The method used for Entra authentication
+	IdentityType *string `pulumi:"identityType"`
+}
+
+// Entra Authentication configuration.
+type EntraAuthenticationResponseOutput struct{ *pulumi.OutputState }
+
+func (EntraAuthenticationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntraAuthenticationResponse)(nil)).Elem()
+}
+
+func (o EntraAuthenticationResponseOutput) ToEntraAuthenticationResponseOutput() EntraAuthenticationResponseOutput {
+	return o
+}
+
+func (o EntraAuthenticationResponseOutput) ToEntraAuthenticationResponseOutputWithContext(ctx context.Context) EntraAuthenticationResponseOutput {
+	return o
+}
+
+// The client Id of the Managed Identity to query Microsoft Graph API. An empty string must be used for the system assigned Managed Identity.
+func (o EntraAuthenticationResponseOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EntraAuthenticationResponse) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// The method used for Entra authentication
+func (o EntraAuthenticationResponseOutput) IdentityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EntraAuthenticationResponse) *string { return v.IdentityType }).(pulumi.StringPtrOutput)
+}
+
+type EntraAuthenticationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (EntraAuthenticationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EntraAuthenticationResponse)(nil)).Elem()
+}
+
+func (o EntraAuthenticationResponseArrayOutput) ToEntraAuthenticationResponseArrayOutput() EntraAuthenticationResponseArrayOutput {
+	return o
+}
+
+func (o EntraAuthenticationResponseArrayOutput) ToEntraAuthenticationResponseArrayOutputWithContext(ctx context.Context) EntraAuthenticationResponseArrayOutput {
+	return o
+}
+
+func (o EntraAuthenticationResponseArrayOutput) Index(i pulumi.IntInput) EntraAuthenticationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EntraAuthenticationResponse {
+		return vs[0].([]EntraAuthenticationResponse)[vs[1].(int)]
+	}).(EntraAuthenticationResponseOutput)
+}
+
 // The complex type of the extended location.
 type ExtendedLocation struct {
 	// The name of the extended location.
@@ -3707,6 +5386,134 @@ func (o ExtendedLocationResponsePtrOutput) Type() pulumi.StringPtrOutput {
 		}
 		return v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+// Failover Cluster Instance properties.
+type FailoverClusterResponse struct {
+	// The IP addresses and subnet masks associated with the SQL Failover Cluster Instance on this host.
+	HostIPAddresses []HostIPAddressInformationResponse `pulumi:"hostIPAddresses"`
+	// The host names which are part of the SQL FCI resource group.
+	HostNames []string `pulumi:"hostNames"`
+	// The GUID of the SQL Server's underlying Failover Cluster.
+	Id string `pulumi:"id"`
+	// The network name to connect to the SQL FCI.
+	NetworkName string `pulumi:"networkName"`
+	// The ARM IDs of the Arc SQL Server resources, belonging to the current server's Failover cluster.
+	SqlInstanceIds []string `pulumi:"sqlInstanceIds"`
+}
+
+// Failover Cluster Instance properties.
+type FailoverClusterResponseOutput struct{ *pulumi.OutputState }
+
+func (FailoverClusterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FailoverClusterResponse)(nil)).Elem()
+}
+
+func (o FailoverClusterResponseOutput) ToFailoverClusterResponseOutput() FailoverClusterResponseOutput {
+	return o
+}
+
+func (o FailoverClusterResponseOutput) ToFailoverClusterResponseOutputWithContext(ctx context.Context) FailoverClusterResponseOutput {
+	return o
+}
+
+// The IP addresses and subnet masks associated with the SQL Failover Cluster Instance on this host.
+func (o FailoverClusterResponseOutput) HostIPAddresses() HostIPAddressInformationResponseArrayOutput {
+	return o.ApplyT(func(v FailoverClusterResponse) []HostIPAddressInformationResponse { return v.HostIPAddresses }).(HostIPAddressInformationResponseArrayOutput)
+}
+
+// The host names which are part of the SQL FCI resource group.
+func (o FailoverClusterResponseOutput) HostNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FailoverClusterResponse) []string { return v.HostNames }).(pulumi.StringArrayOutput)
+}
+
+// The GUID of the SQL Server's underlying Failover Cluster.
+func (o FailoverClusterResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v FailoverClusterResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The network name to connect to the SQL FCI.
+func (o FailoverClusterResponseOutput) NetworkName() pulumi.StringOutput {
+	return o.ApplyT(func(v FailoverClusterResponse) string { return v.NetworkName }).(pulumi.StringOutput)
+}
+
+// The ARM IDs of the Arc SQL Server resources, belonging to the current server's Failover cluster.
+func (o FailoverClusterResponseOutput) SqlInstanceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FailoverClusterResponse) []string { return v.SqlInstanceIds }).(pulumi.StringArrayOutput)
+}
+
+type FailoverClusterResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (FailoverClusterResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FailoverClusterResponse)(nil)).Elem()
+}
+
+func (o FailoverClusterResponsePtrOutput) ToFailoverClusterResponsePtrOutput() FailoverClusterResponsePtrOutput {
+	return o
+}
+
+func (o FailoverClusterResponsePtrOutput) ToFailoverClusterResponsePtrOutputWithContext(ctx context.Context) FailoverClusterResponsePtrOutput {
+	return o
+}
+
+func (o FailoverClusterResponsePtrOutput) Elem() FailoverClusterResponseOutput {
+	return o.ApplyT(func(v *FailoverClusterResponse) FailoverClusterResponse {
+		if v != nil {
+			return *v
+		}
+		var ret FailoverClusterResponse
+		return ret
+	}).(FailoverClusterResponseOutput)
+}
+
+// The IP addresses and subnet masks associated with the SQL Failover Cluster Instance on this host.
+func (o FailoverClusterResponsePtrOutput) HostIPAddresses() HostIPAddressInformationResponseArrayOutput {
+	return o.ApplyT(func(v *FailoverClusterResponse) []HostIPAddressInformationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.HostIPAddresses
+	}).(HostIPAddressInformationResponseArrayOutput)
+}
+
+// The host names which are part of the SQL FCI resource group.
+func (o FailoverClusterResponsePtrOutput) HostNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FailoverClusterResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.HostNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// The GUID of the SQL Server's underlying Failover Cluster.
+func (o FailoverClusterResponsePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FailoverClusterResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// The network name to connect to the SQL FCI.
+func (o FailoverClusterResponsePtrOutput) NetworkName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FailoverClusterResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.NetworkName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ARM IDs of the Arc SQL Server resources, belonging to the current server's Failover cluster.
+func (o FailoverClusterResponsePtrOutput) SqlInstanceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FailoverClusterResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SqlInstanceIds
+	}).(pulumi.StringArrayOutput)
 }
 
 // The properties of a failover group resource.
@@ -4081,6 +5888,59 @@ func (o FailoverGroupSpecResponseOutput) SharedName() pulumi.StringPtrOutput {
 // The name of the SQL managed instance with this failover group role.
 func (o FailoverGroupSpecResponseOutput) SourceMI() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FailoverGroupSpecResponse) *string { return v.SourceMI }).(pulumi.StringPtrOutput)
+}
+
+// IP address and subnet mask.
+type HostIPAddressInformationResponse struct {
+	// IP address
+	IpAddress string `pulumi:"ipAddress"`
+	// Subnet mask
+	SubnetMask string `pulumi:"subnetMask"`
+}
+
+// IP address and subnet mask.
+type HostIPAddressInformationResponseOutput struct{ *pulumi.OutputState }
+
+func (HostIPAddressInformationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostIPAddressInformationResponse)(nil)).Elem()
+}
+
+func (o HostIPAddressInformationResponseOutput) ToHostIPAddressInformationResponseOutput() HostIPAddressInformationResponseOutput {
+	return o
+}
+
+func (o HostIPAddressInformationResponseOutput) ToHostIPAddressInformationResponseOutputWithContext(ctx context.Context) HostIPAddressInformationResponseOutput {
+	return o
+}
+
+// IP address
+func (o HostIPAddressInformationResponseOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v HostIPAddressInformationResponse) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// Subnet mask
+func (o HostIPAddressInformationResponseOutput) SubnetMask() pulumi.StringOutput {
+	return o.ApplyT(func(v HostIPAddressInformationResponse) string { return v.SubnetMask }).(pulumi.StringOutput)
+}
+
+type HostIPAddressInformationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (HostIPAddressInformationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HostIPAddressInformationResponse)(nil)).Elem()
+}
+
+func (o HostIPAddressInformationResponseArrayOutput) ToHostIPAddressInformationResponseArrayOutput() HostIPAddressInformationResponseArrayOutput {
+	return o
+}
+
+func (o HostIPAddressInformationResponseArrayOutput) ToHostIPAddressInformationResponseArrayOutputWithContext(ctx context.Context) HostIPAddressInformationResponseArrayOutput {
+	return o
+}
+
+func (o HostIPAddressInformationResponseArrayOutput) Index(i pulumi.IntInput) HostIPAddressInformationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HostIPAddressInformationResponse {
+		return vs[0].([]HostIPAddressInformationResponse)[vs[1].(int)]
+	}).(HostIPAddressInformationResponseOutput)
 }
 
 // The kubernetes active directory information.
@@ -6626,6 +8486,779 @@ func (o LogAnalyticsWorkspaceConfigResponsePtrOutput) WorkspaceId() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// Migration related configuration.
+type Migration struct {
+	// Migration assessments related configuration.
+	Assessment *MigrationAssessment `pulumi:"assessment"`
+}
+
+// MigrationInput is an input type that accepts MigrationArgs and MigrationOutput values.
+// You can construct a concrete instance of `MigrationInput` via:
+//
+//	MigrationArgs{...}
+type MigrationInput interface {
+	pulumi.Input
+
+	ToMigrationOutput() MigrationOutput
+	ToMigrationOutputWithContext(context.Context) MigrationOutput
+}
+
+// Migration related configuration.
+type MigrationArgs struct {
+	// Migration assessments related configuration.
+	Assessment MigrationAssessmentPtrInput `pulumi:"assessment"`
+}
+
+func (MigrationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Migration)(nil)).Elem()
+}
+
+func (i MigrationArgs) ToMigrationOutput() MigrationOutput {
+	return i.ToMigrationOutputWithContext(context.Background())
+}
+
+func (i MigrationArgs) ToMigrationOutputWithContext(ctx context.Context) MigrationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MigrationOutput)
+}
+
+func (i MigrationArgs) ToMigrationPtrOutput() MigrationPtrOutput {
+	return i.ToMigrationPtrOutputWithContext(context.Background())
+}
+
+func (i MigrationArgs) ToMigrationPtrOutputWithContext(ctx context.Context) MigrationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MigrationOutput).ToMigrationPtrOutputWithContext(ctx)
+}
+
+// MigrationPtrInput is an input type that accepts MigrationArgs, MigrationPtr and MigrationPtrOutput values.
+// You can construct a concrete instance of `MigrationPtrInput` via:
+//
+//	        MigrationArgs{...}
+//
+//	or:
+//
+//	        nil
+type MigrationPtrInput interface {
+	pulumi.Input
+
+	ToMigrationPtrOutput() MigrationPtrOutput
+	ToMigrationPtrOutputWithContext(context.Context) MigrationPtrOutput
+}
+
+type migrationPtrType MigrationArgs
+
+func MigrationPtr(v *MigrationArgs) MigrationPtrInput {
+	return (*migrationPtrType)(v)
+}
+
+func (*migrationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Migration)(nil)).Elem()
+}
+
+func (i *migrationPtrType) ToMigrationPtrOutput() MigrationPtrOutput {
+	return i.ToMigrationPtrOutputWithContext(context.Background())
+}
+
+func (i *migrationPtrType) ToMigrationPtrOutputWithContext(ctx context.Context) MigrationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MigrationPtrOutput)
+}
+
+// Migration related configuration.
+type MigrationOutput struct{ *pulumi.OutputState }
+
+func (MigrationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Migration)(nil)).Elem()
+}
+
+func (o MigrationOutput) ToMigrationOutput() MigrationOutput {
+	return o
+}
+
+func (o MigrationOutput) ToMigrationOutputWithContext(ctx context.Context) MigrationOutput {
+	return o
+}
+
+func (o MigrationOutput) ToMigrationPtrOutput() MigrationPtrOutput {
+	return o.ToMigrationPtrOutputWithContext(context.Background())
+}
+
+func (o MigrationOutput) ToMigrationPtrOutputWithContext(ctx context.Context) MigrationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Migration) *Migration {
+		return &v
+	}).(MigrationPtrOutput)
+}
+
+// Migration assessments related configuration.
+func (o MigrationOutput) Assessment() MigrationAssessmentPtrOutput {
+	return o.ApplyT(func(v Migration) *MigrationAssessment { return v.Assessment }).(MigrationAssessmentPtrOutput)
+}
+
+type MigrationPtrOutput struct{ *pulumi.OutputState }
+
+func (MigrationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Migration)(nil)).Elem()
+}
+
+func (o MigrationPtrOutput) ToMigrationPtrOutput() MigrationPtrOutput {
+	return o
+}
+
+func (o MigrationPtrOutput) ToMigrationPtrOutputWithContext(ctx context.Context) MigrationPtrOutput {
+	return o
+}
+
+func (o MigrationPtrOutput) Elem() MigrationOutput {
+	return o.ApplyT(func(v *Migration) Migration {
+		if v != nil {
+			return *v
+		}
+		var ret Migration
+		return ret
+	}).(MigrationOutput)
+}
+
+// Migration assessments related configuration.
+func (o MigrationPtrOutput) Assessment() MigrationAssessmentPtrOutput {
+	return o.ApplyT(func(v *Migration) *MigrationAssessment {
+		if v == nil {
+			return nil
+		}
+		return v.Assessment
+	}).(MigrationAssessmentPtrOutput)
+}
+
+// The migration assessment related configuration.
+type MigrationAssessment struct {
+	// Indicates if migration assessment is enabled for this SQL Server instance.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// MigrationAssessmentInput is an input type that accepts MigrationAssessmentArgs and MigrationAssessmentOutput values.
+// You can construct a concrete instance of `MigrationAssessmentInput` via:
+//
+//	MigrationAssessmentArgs{...}
+type MigrationAssessmentInput interface {
+	pulumi.Input
+
+	ToMigrationAssessmentOutput() MigrationAssessmentOutput
+	ToMigrationAssessmentOutputWithContext(context.Context) MigrationAssessmentOutput
+}
+
+// The migration assessment related configuration.
+type MigrationAssessmentArgs struct {
+	// Indicates if migration assessment is enabled for this SQL Server instance.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (MigrationAssessmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MigrationAssessment)(nil)).Elem()
+}
+
+func (i MigrationAssessmentArgs) ToMigrationAssessmentOutput() MigrationAssessmentOutput {
+	return i.ToMigrationAssessmentOutputWithContext(context.Background())
+}
+
+func (i MigrationAssessmentArgs) ToMigrationAssessmentOutputWithContext(ctx context.Context) MigrationAssessmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MigrationAssessmentOutput)
+}
+
+func (i MigrationAssessmentArgs) ToMigrationAssessmentPtrOutput() MigrationAssessmentPtrOutput {
+	return i.ToMigrationAssessmentPtrOutputWithContext(context.Background())
+}
+
+func (i MigrationAssessmentArgs) ToMigrationAssessmentPtrOutputWithContext(ctx context.Context) MigrationAssessmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MigrationAssessmentOutput).ToMigrationAssessmentPtrOutputWithContext(ctx)
+}
+
+// MigrationAssessmentPtrInput is an input type that accepts MigrationAssessmentArgs, MigrationAssessmentPtr and MigrationAssessmentPtrOutput values.
+// You can construct a concrete instance of `MigrationAssessmentPtrInput` via:
+//
+//	        MigrationAssessmentArgs{...}
+//
+//	or:
+//
+//	        nil
+type MigrationAssessmentPtrInput interface {
+	pulumi.Input
+
+	ToMigrationAssessmentPtrOutput() MigrationAssessmentPtrOutput
+	ToMigrationAssessmentPtrOutputWithContext(context.Context) MigrationAssessmentPtrOutput
+}
+
+type migrationAssessmentPtrType MigrationAssessmentArgs
+
+func MigrationAssessmentPtr(v *MigrationAssessmentArgs) MigrationAssessmentPtrInput {
+	return (*migrationAssessmentPtrType)(v)
+}
+
+func (*migrationAssessmentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MigrationAssessment)(nil)).Elem()
+}
+
+func (i *migrationAssessmentPtrType) ToMigrationAssessmentPtrOutput() MigrationAssessmentPtrOutput {
+	return i.ToMigrationAssessmentPtrOutputWithContext(context.Background())
+}
+
+func (i *migrationAssessmentPtrType) ToMigrationAssessmentPtrOutputWithContext(ctx context.Context) MigrationAssessmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MigrationAssessmentPtrOutput)
+}
+
+// The migration assessment related configuration.
+type MigrationAssessmentOutput struct{ *pulumi.OutputState }
+
+func (MigrationAssessmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MigrationAssessment)(nil)).Elem()
+}
+
+func (o MigrationAssessmentOutput) ToMigrationAssessmentOutput() MigrationAssessmentOutput {
+	return o
+}
+
+func (o MigrationAssessmentOutput) ToMigrationAssessmentOutputWithContext(ctx context.Context) MigrationAssessmentOutput {
+	return o
+}
+
+func (o MigrationAssessmentOutput) ToMigrationAssessmentPtrOutput() MigrationAssessmentPtrOutput {
+	return o.ToMigrationAssessmentPtrOutputWithContext(context.Background())
+}
+
+func (o MigrationAssessmentOutput) ToMigrationAssessmentPtrOutputWithContext(ctx context.Context) MigrationAssessmentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MigrationAssessment) *MigrationAssessment {
+		return &v
+	}).(MigrationAssessmentPtrOutput)
+}
+
+// Indicates if migration assessment is enabled for this SQL Server instance.
+func (o MigrationAssessmentOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MigrationAssessment) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type MigrationAssessmentPtrOutput struct{ *pulumi.OutputState }
+
+func (MigrationAssessmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MigrationAssessment)(nil)).Elem()
+}
+
+func (o MigrationAssessmentPtrOutput) ToMigrationAssessmentPtrOutput() MigrationAssessmentPtrOutput {
+	return o
+}
+
+func (o MigrationAssessmentPtrOutput) ToMigrationAssessmentPtrOutputWithContext(ctx context.Context) MigrationAssessmentPtrOutput {
+	return o
+}
+
+func (o MigrationAssessmentPtrOutput) Elem() MigrationAssessmentOutput {
+	return o.ApplyT(func(v *MigrationAssessment) MigrationAssessment {
+		if v != nil {
+			return *v
+		}
+		var ret MigrationAssessment
+		return ret
+	}).(MigrationAssessmentOutput)
+}
+
+// Indicates if migration assessment is enabled for this SQL Server instance.
+func (o MigrationAssessmentPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MigrationAssessment) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The migration assessment related configuration.
+type MigrationAssessmentResponse struct {
+	// The time when Migration Assessment Report upload was last performed.
+	AssessmentUploadTime string `pulumi:"assessmentUploadTime"`
+	// Indicates if migration assessment is enabled for this SQL Server instance.
+	Enabled *bool `pulumi:"enabled"`
+	// Issues and warnings impacting the migration of SQL Server instance to particular Azure Migration Target.
+	ServerAssessments []MigrationAssessmentResponseServerAssessments `pulumi:"serverAssessments"`
+	// SKU Recommendation results for Azure migration targets for SQL Server.
+	SkuRecommendationResults SkuRecommendationResultsResponse `pulumi:"skuRecommendationResults"`
+}
+
+// The migration assessment related configuration.
+type MigrationAssessmentResponseOutput struct{ *pulumi.OutputState }
+
+func (MigrationAssessmentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MigrationAssessmentResponse)(nil)).Elem()
+}
+
+func (o MigrationAssessmentResponseOutput) ToMigrationAssessmentResponseOutput() MigrationAssessmentResponseOutput {
+	return o
+}
+
+func (o MigrationAssessmentResponseOutput) ToMigrationAssessmentResponseOutputWithContext(ctx context.Context) MigrationAssessmentResponseOutput {
+	return o
+}
+
+// The time when Migration Assessment Report upload was last performed.
+func (o MigrationAssessmentResponseOutput) AssessmentUploadTime() pulumi.StringOutput {
+	return o.ApplyT(func(v MigrationAssessmentResponse) string { return v.AssessmentUploadTime }).(pulumi.StringOutput)
+}
+
+// Indicates if migration assessment is enabled for this SQL Server instance.
+func (o MigrationAssessmentResponseOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MigrationAssessmentResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Issues and warnings impacting the migration of SQL Server instance to particular Azure Migration Target.
+func (o MigrationAssessmentResponseOutput) ServerAssessments() MigrationAssessmentResponseServerAssessmentsArrayOutput {
+	return o.ApplyT(func(v MigrationAssessmentResponse) []MigrationAssessmentResponseServerAssessments {
+		return v.ServerAssessments
+	}).(MigrationAssessmentResponseServerAssessmentsArrayOutput)
+}
+
+// SKU Recommendation results for Azure migration targets for SQL Server.
+func (o MigrationAssessmentResponseOutput) SkuRecommendationResults() SkuRecommendationResultsResponseOutput {
+	return o.ApplyT(func(v MigrationAssessmentResponse) SkuRecommendationResultsResponse {
+		return v.SkuRecommendationResults
+	}).(SkuRecommendationResultsResponseOutput)
+}
+
+type MigrationAssessmentResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MigrationAssessmentResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MigrationAssessmentResponse)(nil)).Elem()
+}
+
+func (o MigrationAssessmentResponsePtrOutput) ToMigrationAssessmentResponsePtrOutput() MigrationAssessmentResponsePtrOutput {
+	return o
+}
+
+func (o MigrationAssessmentResponsePtrOutput) ToMigrationAssessmentResponsePtrOutputWithContext(ctx context.Context) MigrationAssessmentResponsePtrOutput {
+	return o
+}
+
+func (o MigrationAssessmentResponsePtrOutput) Elem() MigrationAssessmentResponseOutput {
+	return o.ApplyT(func(v *MigrationAssessmentResponse) MigrationAssessmentResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MigrationAssessmentResponse
+		return ret
+	}).(MigrationAssessmentResponseOutput)
+}
+
+// The time when Migration Assessment Report upload was last performed.
+func (o MigrationAssessmentResponsePtrOutput) AssessmentUploadTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrationAssessmentResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AssessmentUploadTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates if migration assessment is enabled for this SQL Server instance.
+func (o MigrationAssessmentResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MigrationAssessmentResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Issues and warnings impacting the migration of SQL Server instance to particular Azure Migration Target.
+func (o MigrationAssessmentResponsePtrOutput) ServerAssessments() MigrationAssessmentResponseServerAssessmentsArrayOutput {
+	return o.ApplyT(func(v *MigrationAssessmentResponse) []MigrationAssessmentResponseServerAssessments {
+		if v == nil {
+			return nil
+		}
+		return v.ServerAssessments
+	}).(MigrationAssessmentResponseServerAssessmentsArrayOutput)
+}
+
+// SKU Recommendation results for Azure migration targets for SQL Server.
+func (o MigrationAssessmentResponsePtrOutput) SkuRecommendationResults() SkuRecommendationResultsResponsePtrOutput {
+	return o.ApplyT(func(v *MigrationAssessmentResponse) *SkuRecommendationResultsResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.SkuRecommendationResults
+	}).(SkuRecommendationResultsResponsePtrOutput)
+}
+
+type MigrationAssessmentResponseImpactedObjects struct {
+	ImpactDetail *string `pulumi:"impactDetail"`
+	Name         *string `pulumi:"name"`
+	ObjectType   *string `pulumi:"objectType"`
+}
+
+type MigrationAssessmentResponseImpactedObjectsOutput struct{ *pulumi.OutputState }
+
+func (MigrationAssessmentResponseImpactedObjectsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MigrationAssessmentResponseImpactedObjects)(nil)).Elem()
+}
+
+func (o MigrationAssessmentResponseImpactedObjectsOutput) ToMigrationAssessmentResponseImpactedObjectsOutput() MigrationAssessmentResponseImpactedObjectsOutput {
+	return o
+}
+
+func (o MigrationAssessmentResponseImpactedObjectsOutput) ToMigrationAssessmentResponseImpactedObjectsOutputWithContext(ctx context.Context) MigrationAssessmentResponseImpactedObjectsOutput {
+	return o
+}
+
+func (o MigrationAssessmentResponseImpactedObjectsOutput) ImpactDetail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrationAssessmentResponseImpactedObjects) *string { return v.ImpactDetail }).(pulumi.StringPtrOutput)
+}
+
+func (o MigrationAssessmentResponseImpactedObjectsOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrationAssessmentResponseImpactedObjects) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o MigrationAssessmentResponseImpactedObjectsOutput) ObjectType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrationAssessmentResponseImpactedObjects) *string { return v.ObjectType }).(pulumi.StringPtrOutput)
+}
+
+type MigrationAssessmentResponseImpactedObjectsArrayOutput struct{ *pulumi.OutputState }
+
+func (MigrationAssessmentResponseImpactedObjectsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MigrationAssessmentResponseImpactedObjects)(nil)).Elem()
+}
+
+func (o MigrationAssessmentResponseImpactedObjectsArrayOutput) ToMigrationAssessmentResponseImpactedObjectsArrayOutput() MigrationAssessmentResponseImpactedObjectsArrayOutput {
+	return o
+}
+
+func (o MigrationAssessmentResponseImpactedObjectsArrayOutput) ToMigrationAssessmentResponseImpactedObjectsArrayOutputWithContext(ctx context.Context) MigrationAssessmentResponseImpactedObjectsArrayOutput {
+	return o
+}
+
+func (o MigrationAssessmentResponseImpactedObjectsArrayOutput) Index(i pulumi.IntInput) MigrationAssessmentResponseImpactedObjectsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MigrationAssessmentResponseImpactedObjects {
+		return vs[0].([]MigrationAssessmentResponseImpactedObjects)[vs[1].(int)]
+	}).(MigrationAssessmentResponseImpactedObjectsOutput)
+}
+
+type MigrationAssessmentResponseServerAssessments struct {
+	AppliesToMigrationTargetPlatform *string                                      `pulumi:"appliesToMigrationTargetPlatform"`
+	FeatureId                        *string                                      `pulumi:"featureId"`
+	ImpactedObjects                  []MigrationAssessmentResponseImpactedObjects `pulumi:"impactedObjects"`
+	IssueCategory                    *string                                      `pulumi:"issueCategory"`
+	MoreInformation                  *string                                      `pulumi:"moreInformation"`
+}
+
+type MigrationAssessmentResponseServerAssessmentsOutput struct{ *pulumi.OutputState }
+
+func (MigrationAssessmentResponseServerAssessmentsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MigrationAssessmentResponseServerAssessments)(nil)).Elem()
+}
+
+func (o MigrationAssessmentResponseServerAssessmentsOutput) ToMigrationAssessmentResponseServerAssessmentsOutput() MigrationAssessmentResponseServerAssessmentsOutput {
+	return o
+}
+
+func (o MigrationAssessmentResponseServerAssessmentsOutput) ToMigrationAssessmentResponseServerAssessmentsOutputWithContext(ctx context.Context) MigrationAssessmentResponseServerAssessmentsOutput {
+	return o
+}
+
+func (o MigrationAssessmentResponseServerAssessmentsOutput) AppliesToMigrationTargetPlatform() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrationAssessmentResponseServerAssessments) *string {
+		return v.AppliesToMigrationTargetPlatform
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MigrationAssessmentResponseServerAssessmentsOutput) FeatureId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrationAssessmentResponseServerAssessments) *string { return v.FeatureId }).(pulumi.StringPtrOutput)
+}
+
+func (o MigrationAssessmentResponseServerAssessmentsOutput) ImpactedObjects() MigrationAssessmentResponseImpactedObjectsArrayOutput {
+	return o.ApplyT(func(v MigrationAssessmentResponseServerAssessments) []MigrationAssessmentResponseImpactedObjects {
+		return v.ImpactedObjects
+	}).(MigrationAssessmentResponseImpactedObjectsArrayOutput)
+}
+
+func (o MigrationAssessmentResponseServerAssessmentsOutput) IssueCategory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrationAssessmentResponseServerAssessments) *string { return v.IssueCategory }).(pulumi.StringPtrOutput)
+}
+
+func (o MigrationAssessmentResponseServerAssessmentsOutput) MoreInformation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrationAssessmentResponseServerAssessments) *string { return v.MoreInformation }).(pulumi.StringPtrOutput)
+}
+
+type MigrationAssessmentResponseServerAssessmentsArrayOutput struct{ *pulumi.OutputState }
+
+func (MigrationAssessmentResponseServerAssessmentsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MigrationAssessmentResponseServerAssessments)(nil)).Elem()
+}
+
+func (o MigrationAssessmentResponseServerAssessmentsArrayOutput) ToMigrationAssessmentResponseServerAssessmentsArrayOutput() MigrationAssessmentResponseServerAssessmentsArrayOutput {
+	return o
+}
+
+func (o MigrationAssessmentResponseServerAssessmentsArrayOutput) ToMigrationAssessmentResponseServerAssessmentsArrayOutputWithContext(ctx context.Context) MigrationAssessmentResponseServerAssessmentsArrayOutput {
+	return o
+}
+
+func (o MigrationAssessmentResponseServerAssessmentsArrayOutput) Index(i pulumi.IntInput) MigrationAssessmentResponseServerAssessmentsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MigrationAssessmentResponseServerAssessments {
+		return vs[0].([]MigrationAssessmentResponseServerAssessments)[vs[1].(int)]
+	}).(MigrationAssessmentResponseServerAssessmentsOutput)
+}
+
+// Migration related configuration.
+type MigrationResponse struct {
+	// Migration assessments related configuration.
+	Assessment *MigrationAssessmentResponse `pulumi:"assessment"`
+}
+
+// Migration related configuration.
+type MigrationResponseOutput struct{ *pulumi.OutputState }
+
+func (MigrationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MigrationResponse)(nil)).Elem()
+}
+
+func (o MigrationResponseOutput) ToMigrationResponseOutput() MigrationResponseOutput {
+	return o
+}
+
+func (o MigrationResponseOutput) ToMigrationResponseOutputWithContext(ctx context.Context) MigrationResponseOutput {
+	return o
+}
+
+// Migration assessments related configuration.
+func (o MigrationResponseOutput) Assessment() MigrationAssessmentResponsePtrOutput {
+	return o.ApplyT(func(v MigrationResponse) *MigrationAssessmentResponse { return v.Assessment }).(MigrationAssessmentResponsePtrOutput)
+}
+
+type MigrationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MigrationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MigrationResponse)(nil)).Elem()
+}
+
+func (o MigrationResponsePtrOutput) ToMigrationResponsePtrOutput() MigrationResponsePtrOutput {
+	return o
+}
+
+func (o MigrationResponsePtrOutput) ToMigrationResponsePtrOutputWithContext(ctx context.Context) MigrationResponsePtrOutput {
+	return o
+}
+
+func (o MigrationResponsePtrOutput) Elem() MigrationResponseOutput {
+	return o.ApplyT(func(v *MigrationResponse) MigrationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MigrationResponse
+		return ret
+	}).(MigrationResponseOutput)
+}
+
+// Migration assessments related configuration.
+func (o MigrationResponsePtrOutput) Assessment() MigrationAssessmentResponsePtrOutput {
+	return o.ApplyT(func(v *MigrationResponse) *MigrationAssessmentResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Assessment
+	}).(MigrationAssessmentResponsePtrOutput)
+}
+
+// The monitoring configuration.
+type Monitoring struct {
+	// Indicates if monitoring is enabled for this SQL Server instance.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// MonitoringInput is an input type that accepts MonitoringArgs and MonitoringOutput values.
+// You can construct a concrete instance of `MonitoringInput` via:
+//
+//	MonitoringArgs{...}
+type MonitoringInput interface {
+	pulumi.Input
+
+	ToMonitoringOutput() MonitoringOutput
+	ToMonitoringOutputWithContext(context.Context) MonitoringOutput
+}
+
+// The monitoring configuration.
+type MonitoringArgs struct {
+	// Indicates if monitoring is enabled for this SQL Server instance.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (MonitoringArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Monitoring)(nil)).Elem()
+}
+
+func (i MonitoringArgs) ToMonitoringOutput() MonitoringOutput {
+	return i.ToMonitoringOutputWithContext(context.Background())
+}
+
+func (i MonitoringArgs) ToMonitoringOutputWithContext(ctx context.Context) MonitoringOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitoringOutput)
+}
+
+func (i MonitoringArgs) ToMonitoringPtrOutput() MonitoringPtrOutput {
+	return i.ToMonitoringPtrOutputWithContext(context.Background())
+}
+
+func (i MonitoringArgs) ToMonitoringPtrOutputWithContext(ctx context.Context) MonitoringPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitoringOutput).ToMonitoringPtrOutputWithContext(ctx)
+}
+
+// MonitoringPtrInput is an input type that accepts MonitoringArgs, MonitoringPtr and MonitoringPtrOutput values.
+// You can construct a concrete instance of `MonitoringPtrInput` via:
+//
+//	        MonitoringArgs{...}
+//
+//	or:
+//
+//	        nil
+type MonitoringPtrInput interface {
+	pulumi.Input
+
+	ToMonitoringPtrOutput() MonitoringPtrOutput
+	ToMonitoringPtrOutputWithContext(context.Context) MonitoringPtrOutput
+}
+
+type monitoringPtrType MonitoringArgs
+
+func MonitoringPtr(v *MonitoringArgs) MonitoringPtrInput {
+	return (*monitoringPtrType)(v)
+}
+
+func (*monitoringPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Monitoring)(nil)).Elem()
+}
+
+func (i *monitoringPtrType) ToMonitoringPtrOutput() MonitoringPtrOutput {
+	return i.ToMonitoringPtrOutputWithContext(context.Background())
+}
+
+func (i *monitoringPtrType) ToMonitoringPtrOutputWithContext(ctx context.Context) MonitoringPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitoringPtrOutput)
+}
+
+// The monitoring configuration.
+type MonitoringOutput struct{ *pulumi.OutputState }
+
+func (MonitoringOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Monitoring)(nil)).Elem()
+}
+
+func (o MonitoringOutput) ToMonitoringOutput() MonitoringOutput {
+	return o
+}
+
+func (o MonitoringOutput) ToMonitoringOutputWithContext(ctx context.Context) MonitoringOutput {
+	return o
+}
+
+func (o MonitoringOutput) ToMonitoringPtrOutput() MonitoringPtrOutput {
+	return o.ToMonitoringPtrOutputWithContext(context.Background())
+}
+
+func (o MonitoringOutput) ToMonitoringPtrOutputWithContext(ctx context.Context) MonitoringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Monitoring) *Monitoring {
+		return &v
+	}).(MonitoringPtrOutput)
+}
+
+// Indicates if monitoring is enabled for this SQL Server instance.
+func (o MonitoringOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Monitoring) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type MonitoringPtrOutput struct{ *pulumi.OutputState }
+
+func (MonitoringPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Monitoring)(nil)).Elem()
+}
+
+func (o MonitoringPtrOutput) ToMonitoringPtrOutput() MonitoringPtrOutput {
+	return o
+}
+
+func (o MonitoringPtrOutput) ToMonitoringPtrOutputWithContext(ctx context.Context) MonitoringPtrOutput {
+	return o
+}
+
+func (o MonitoringPtrOutput) Elem() MonitoringOutput {
+	return o.ApplyT(func(v *Monitoring) Monitoring {
+		if v != nil {
+			return *v
+		}
+		var ret Monitoring
+		return ret
+	}).(MonitoringOutput)
+}
+
+// Indicates if monitoring is enabled for this SQL Server instance.
+func (o MonitoringPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Monitoring) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The monitoring configuration.
+type MonitoringResponse struct {
+	// Indicates if monitoring is enabled for this SQL Server instance.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// The monitoring configuration.
+type MonitoringResponseOutput struct{ *pulumi.OutputState }
+
+func (MonitoringResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitoringResponse)(nil)).Elem()
+}
+
+func (o MonitoringResponseOutput) ToMonitoringResponseOutput() MonitoringResponseOutput {
+	return o
+}
+
+func (o MonitoringResponseOutput) ToMonitoringResponseOutputWithContext(ctx context.Context) MonitoringResponseOutput {
+	return o
+}
+
+// Indicates if monitoring is enabled for this SQL Server instance.
+func (o MonitoringResponseOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MonitoringResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type MonitoringResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MonitoringResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonitoringResponse)(nil)).Elem()
+}
+
+func (o MonitoringResponsePtrOutput) ToMonitoringResponsePtrOutput() MonitoringResponsePtrOutput {
+	return o
+}
+
+func (o MonitoringResponsePtrOutput) ToMonitoringResponsePtrOutputWithContext(ctx context.Context) MonitoringResponsePtrOutput {
+	return o
+}
+
+func (o MonitoringResponsePtrOutput) Elem() MonitoringResponseOutput {
+	return o.ApplyT(func(v *MonitoringResponse) MonitoringResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MonitoringResponse
+		return ret
+	}).(MonitoringResponseOutput)
+}
+
+// Indicates if monitoring is enabled for this SQL Server instance.
+func (o MonitoringResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MonitoringResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Properties from the Kubernetes data controller
 type OnPremiseProperty struct {
 	// A globally unique ID identifying the associated Kubernetes cluster
@@ -7540,6 +10173,1127 @@ func (o SequencerActionResponseArrayOutput) Index(i pulumi.IntInput) SequencerAc
 	}).(SequencerActionResponseOutput)
 }
 
+// SKU Recommendation results for Azure SQL Database.
+type SkuRecommendationResultsAzureSqlDatabaseResponse struct {
+	// The Monthly cost of the particular SKU.
+	MonthlyCost *SkuRecommendationResultsMonthlyCostResponse `pulumi:"monthlyCost"`
+	// Number of blocker issues to fix before migrating to the target platform.
+	NumberOfServerBlockerIssues *int `pulumi:"numberOfServerBlockerIssues"`
+	// The target recommendation Status for this database.
+	RecommendationStatus *string                                                    `pulumi:"recommendationStatus"`
+	TargetSku            *SkuRecommendationResultsAzureSqlDatabaseResponseTargetSku `pulumi:"targetSku"`
+}
+
+// SKU Recommendation results for Azure SQL Database.
+type SkuRecommendationResultsAzureSqlDatabaseResponseOutput struct{ *pulumi.OutputState }
+
+func (SkuRecommendationResultsAzureSqlDatabaseResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SkuRecommendationResultsAzureSqlDatabaseResponse)(nil)).Elem()
+}
+
+func (o SkuRecommendationResultsAzureSqlDatabaseResponseOutput) ToSkuRecommendationResultsAzureSqlDatabaseResponseOutput() SkuRecommendationResultsAzureSqlDatabaseResponseOutput {
+	return o
+}
+
+func (o SkuRecommendationResultsAzureSqlDatabaseResponseOutput) ToSkuRecommendationResultsAzureSqlDatabaseResponseOutputWithContext(ctx context.Context) SkuRecommendationResultsAzureSqlDatabaseResponseOutput {
+	return o
+}
+
+// The Monthly cost of the particular SKU.
+func (o SkuRecommendationResultsAzureSqlDatabaseResponseOutput) MonthlyCost() SkuRecommendationResultsMonthlyCostResponsePtrOutput {
+	return o.ApplyT(func(v SkuRecommendationResultsAzureSqlDatabaseResponse) *SkuRecommendationResultsMonthlyCostResponse {
+		return v.MonthlyCost
+	}).(SkuRecommendationResultsMonthlyCostResponsePtrOutput)
+}
+
+// Number of blocker issues to fix before migrating to the target platform.
+func (o SkuRecommendationResultsAzureSqlDatabaseResponseOutput) NumberOfServerBlockerIssues() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SkuRecommendationResultsAzureSqlDatabaseResponse) *int { return v.NumberOfServerBlockerIssues }).(pulumi.IntPtrOutput)
+}
+
+// The target recommendation Status for this database.
+func (o SkuRecommendationResultsAzureSqlDatabaseResponseOutput) RecommendationStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SkuRecommendationResultsAzureSqlDatabaseResponse) *string { return v.RecommendationStatus }).(pulumi.StringPtrOutput)
+}
+
+func (o SkuRecommendationResultsAzureSqlDatabaseResponseOutput) TargetSku() SkuRecommendationResultsAzureSqlDatabaseResponseTargetSkuPtrOutput {
+	return o.ApplyT(func(v SkuRecommendationResultsAzureSqlDatabaseResponse) *SkuRecommendationResultsAzureSqlDatabaseResponseTargetSku {
+		return v.TargetSku
+	}).(SkuRecommendationResultsAzureSqlDatabaseResponseTargetSkuPtrOutput)
+}
+
+type SkuRecommendationResultsAzureSqlDatabaseResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SkuRecommendationResultsAzureSqlDatabaseResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SkuRecommendationResultsAzureSqlDatabaseResponse)(nil)).Elem()
+}
+
+func (o SkuRecommendationResultsAzureSqlDatabaseResponsePtrOutput) ToSkuRecommendationResultsAzureSqlDatabaseResponsePtrOutput() SkuRecommendationResultsAzureSqlDatabaseResponsePtrOutput {
+	return o
+}
+
+func (o SkuRecommendationResultsAzureSqlDatabaseResponsePtrOutput) ToSkuRecommendationResultsAzureSqlDatabaseResponsePtrOutputWithContext(ctx context.Context) SkuRecommendationResultsAzureSqlDatabaseResponsePtrOutput {
+	return o
+}
+
+func (o SkuRecommendationResultsAzureSqlDatabaseResponsePtrOutput) Elem() SkuRecommendationResultsAzureSqlDatabaseResponseOutput {
+	return o.ApplyT(func(v *SkuRecommendationResultsAzureSqlDatabaseResponse) SkuRecommendationResultsAzureSqlDatabaseResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SkuRecommendationResultsAzureSqlDatabaseResponse
+		return ret
+	}).(SkuRecommendationResultsAzureSqlDatabaseResponseOutput)
+}
+
+// The Monthly cost of the particular SKU.
+func (o SkuRecommendationResultsAzureSqlDatabaseResponsePtrOutput) MonthlyCost() SkuRecommendationResultsMonthlyCostResponsePtrOutput {
+	return o.ApplyT(func(v *SkuRecommendationResultsAzureSqlDatabaseResponse) *SkuRecommendationResultsMonthlyCostResponse {
+		if v == nil {
+			return nil
+		}
+		return v.MonthlyCost
+	}).(SkuRecommendationResultsMonthlyCostResponsePtrOutput)
+}
+
+// Number of blocker issues to fix before migrating to the target platform.
+func (o SkuRecommendationResultsAzureSqlDatabaseResponsePtrOutput) NumberOfServerBlockerIssues() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SkuRecommendationResultsAzureSqlDatabaseResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumberOfServerBlockerIssues
+	}).(pulumi.IntPtrOutput)
+}
+
+// The target recommendation Status for this database.
+func (o SkuRecommendationResultsAzureSqlDatabaseResponsePtrOutput) RecommendationStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SkuRecommendationResultsAzureSqlDatabaseResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RecommendationStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SkuRecommendationResultsAzureSqlDatabaseResponsePtrOutput) TargetSku() SkuRecommendationResultsAzureSqlDatabaseResponseTargetSkuPtrOutput {
+	return o.ApplyT(func(v *SkuRecommendationResultsAzureSqlDatabaseResponse) *SkuRecommendationResultsAzureSqlDatabaseResponseTargetSku {
+		if v == nil {
+			return nil
+		}
+		return v.TargetSku
+	}).(SkuRecommendationResultsAzureSqlDatabaseResponseTargetSkuPtrOutput)
+}
+
+type SkuRecommendationResultsAzureSqlDatabaseResponseCategory struct {
+	// The compute tier of the target SKU.
+	ComputeTier *string `pulumi:"computeTier"`
+	// The hardware type of the target SKU.
+	HardwareType *string `pulumi:"hardwareType"`
+	// The SQL purchasing model of the target SKU.
+	SqlPurchasingModel *string `pulumi:"sqlPurchasingModel"`
+	// The SQL service tier of the target SKU.
+	SqlServiceTier *string `pulumi:"sqlServiceTier"`
+	// Indicates if zone redundancy is available for the target SKU.
+	ZoneRedundancyAvailable *bool `pulumi:"zoneRedundancyAvailable"`
+}
+
+type SkuRecommendationResultsAzureSqlDatabaseResponseCategoryOutput struct{ *pulumi.OutputState }
+
+func (SkuRecommendationResultsAzureSqlDatabaseResponseCategoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SkuRecommendationResultsAzureSqlDatabaseResponseCategory)(nil)).Elem()
+}
+
+func (o SkuRecommendationResultsAzureSqlDatabaseResponseCategoryOutput) ToSkuRecommendationResultsAzureSqlDatabaseResponseCategoryOutput() SkuRecommendationResultsAzureSqlDatabaseResponseCategoryOutput {
+	return o
+}
+
+func (o SkuRecommendationResultsAzureSqlDatabaseResponseCategoryOutput) ToSkuRecommendationResultsAzureSqlDatabaseResponseCategoryOutputWithContext(ctx context.Context) SkuRecommendationResultsAzureSqlDatabaseResponseCategoryOutput {
+	return o
+}
+
+// The compute tier of the target SKU.
+func (o SkuRecommendationResultsAzureSqlDatabaseResponseCategoryOutput) ComputeTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SkuRecommendationResultsAzureSqlDatabaseResponseCategory) *string { return v.ComputeTier }).(pulumi.StringPtrOutput)
+}
+
+// The hardware type of the target SKU.
+func (o SkuRecommendationResultsAzureSqlDatabaseResponseCategoryOutput) HardwareType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SkuRecommendationResultsAzureSqlDatabaseResponseCategory) *string { return v.HardwareType }).(pulumi.StringPtrOutput)
+}
+
+// The SQL purchasing model of the target SKU.
+func (o SkuRecommendationResultsAzureSqlDatabaseResponseCategoryOutput) SqlPurchasingModel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SkuRecommendationResultsAzureSqlDatabaseResponseCategory) *string { return v.SqlPurchasingModel }).(pulumi.StringPtrOutput)
+}
+
+// The SQL service tier of the target SKU.
+func (o SkuRecommendationResultsAzureSqlDatabaseResponseCategoryOutput) SqlServiceTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SkuRecommendationResultsAzureSqlDatabaseResponseCategory) *string { return v.SqlServiceTier }).(pulumi.StringPtrOutput)
+}
+
+// Indicates if zone redundancy is available for the target SKU.
+func (o SkuRecommendationResultsAzureSqlDatabaseResponseCategoryOutput) ZoneRedundancyAvailable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SkuRecommendationResultsAzureSqlDatabaseResponseCategory) *bool {
+		return v.ZoneRedundancyAvailable
+	}).(pulumi.BoolPtrOutput)
+}
+
+type SkuRecommendationResultsAzureSqlDatabaseResponseCategoryPtrOutput struct{ *pulumi.OutputState }
+
+func (SkuRecommendationResultsAzureSqlDatabaseResponseCategoryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SkuRecommendationResultsAzureSqlDatabaseResponseCategory)(nil)).Elem()
+}
+
+func (o SkuRecommendationResultsAzureSqlDatabaseResponseCategoryPtrOutput) ToSkuRecommendationResultsAzureSqlDatabaseResponseCategoryPtrOutput() SkuRecommendationResultsAzureSqlDatabaseResponseCategoryPtrOutput {
+	return o
+}
+
+func (o SkuRecommendationResultsAzureSqlDatabaseResponseCategoryPtrOutput) ToSkuRecommendationResultsAzureSqlDatabaseResponseCategoryPtrOutputWithContext(ctx context.Context) SkuRecommendationResultsAzureSqlDatabaseResponseCategoryPtrOutput {
+	return o
+}
+
+func (o SkuRecommendationResultsAzureSqlDatabaseResponseCategoryPtrOutput) Elem() SkuRecommendationResultsAzureSqlDatabaseResponseCategoryOutput {
+	return o.ApplyT(func(v *SkuRecommendationResultsAzureSqlDatabaseResponseCategory) SkuRecommendationResultsAzureSqlDatabaseResponseCategory {
+		if v != nil {
+			return *v
+		}
+		var ret SkuRecommendationResultsAzureSqlDatabaseResponseCategory
+		return ret
+	}).(SkuRecommendationResultsAzureSqlDatabaseResponseCategoryOutput)
+}
+
+// The compute tier of the target SKU.
+func (o SkuRecommendationResultsAzureSqlDatabaseResponseCategoryPtrOutput) ComputeTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SkuRecommendationResultsAzureSqlDatabaseResponseCategory) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ComputeTier
+	}).(pulumi.StringPtrOutput)
+}
+
+// The hardware type of the target SKU.
+func (o SkuRecommendationResultsAzureSqlDatabaseResponseCategoryPtrOutput) HardwareType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SkuRecommendationResultsAzureSqlDatabaseResponseCategory) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HardwareType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The SQL purchasing model of the target SKU.
+func (o SkuRecommendationResultsAzureSqlDatabaseResponseCategoryPtrOutput) SqlPurchasingModel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SkuRecommendationResultsAzureSqlDatabaseResponseCategory) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SqlPurchasingModel
+	}).(pulumi.StringPtrOutput)
+}
+
+// The SQL service tier of the target SKU.
+func (o SkuRecommendationResultsAzureSqlDatabaseResponseCategoryPtrOutput) SqlServiceTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SkuRecommendationResultsAzureSqlDatabaseResponseCategory) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SqlServiceTier
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates if zone redundancy is available for the target SKU.
+func (o SkuRecommendationResultsAzureSqlDatabaseResponseCategoryPtrOutput) ZoneRedundancyAvailable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SkuRecommendationResultsAzureSqlDatabaseResponseCategory) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ZoneRedundancyAvailable
+	}).(pulumi.BoolPtrOutput)
+}
+
+type SkuRecommendationResultsAzureSqlDatabaseResponseTargetSku struct {
+	Category *SkuRecommendationResultsAzureSqlDatabaseResponseCategory `pulumi:"category"`
+}
+
+type SkuRecommendationResultsAzureSqlDatabaseResponseTargetSkuOutput struct{ *pulumi.OutputState }
+
+func (SkuRecommendationResultsAzureSqlDatabaseResponseTargetSkuOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SkuRecommendationResultsAzureSqlDatabaseResponseTargetSku)(nil)).Elem()
+}
+
+func (o SkuRecommendationResultsAzureSqlDatabaseResponseTargetSkuOutput) ToSkuRecommendationResultsAzureSqlDatabaseResponseTargetSkuOutput() SkuRecommendationResultsAzureSqlDatabaseResponseTargetSkuOutput {
+	return o
+}
+
+func (o SkuRecommendationResultsAzureSqlDatabaseResponseTargetSkuOutput) ToSkuRecommendationResultsAzureSqlDatabaseResponseTargetSkuOutputWithContext(ctx context.Context) SkuRecommendationResultsAzureSqlDatabaseResponseTargetSkuOutput {
+	return o
+}
+
+func (o SkuRecommendationResultsAzureSqlDatabaseResponseTargetSkuOutput) Category() SkuRecommendationResultsAzureSqlDatabaseResponseCategoryPtrOutput {
+	return o.ApplyT(func(v SkuRecommendationResultsAzureSqlDatabaseResponseTargetSku) *SkuRecommendationResultsAzureSqlDatabaseResponseCategory {
+		return v.Category
+	}).(SkuRecommendationResultsAzureSqlDatabaseResponseCategoryPtrOutput)
+}
+
+type SkuRecommendationResultsAzureSqlDatabaseResponseTargetSkuPtrOutput struct{ *pulumi.OutputState }
+
+func (SkuRecommendationResultsAzureSqlDatabaseResponseTargetSkuPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SkuRecommendationResultsAzureSqlDatabaseResponseTargetSku)(nil)).Elem()
+}
+
+func (o SkuRecommendationResultsAzureSqlDatabaseResponseTargetSkuPtrOutput) ToSkuRecommendationResultsAzureSqlDatabaseResponseTargetSkuPtrOutput() SkuRecommendationResultsAzureSqlDatabaseResponseTargetSkuPtrOutput {
+	return o
+}
+
+func (o SkuRecommendationResultsAzureSqlDatabaseResponseTargetSkuPtrOutput) ToSkuRecommendationResultsAzureSqlDatabaseResponseTargetSkuPtrOutputWithContext(ctx context.Context) SkuRecommendationResultsAzureSqlDatabaseResponseTargetSkuPtrOutput {
+	return o
+}
+
+func (o SkuRecommendationResultsAzureSqlDatabaseResponseTargetSkuPtrOutput) Elem() SkuRecommendationResultsAzureSqlDatabaseResponseTargetSkuOutput {
+	return o.ApplyT(func(v *SkuRecommendationResultsAzureSqlDatabaseResponseTargetSku) SkuRecommendationResultsAzureSqlDatabaseResponseTargetSku {
+		if v != nil {
+			return *v
+		}
+		var ret SkuRecommendationResultsAzureSqlDatabaseResponseTargetSku
+		return ret
+	}).(SkuRecommendationResultsAzureSqlDatabaseResponseTargetSkuOutput)
+}
+
+func (o SkuRecommendationResultsAzureSqlDatabaseResponseTargetSkuPtrOutput) Category() SkuRecommendationResultsAzureSqlDatabaseResponseCategoryPtrOutput {
+	return o.ApplyT(func(v *SkuRecommendationResultsAzureSqlDatabaseResponseTargetSku) *SkuRecommendationResultsAzureSqlDatabaseResponseCategory {
+		if v == nil {
+			return nil
+		}
+		return v.Category
+	}).(SkuRecommendationResultsAzureSqlDatabaseResponseCategoryPtrOutput)
+}
+
+// SKU Recommendation results for Azure SQL Managed Instance.
+type SkuRecommendationResultsAzureSqlManagedInstanceResponse struct {
+	// The Monthly cost of the particular SKU.
+	MonthlyCost *SkuRecommendationResultsMonthlyCostResponse `pulumi:"monthlyCost"`
+	// Number of blocker issues to fix before migrating to the target platform.
+	NumberOfServerBlockerIssues *int `pulumi:"numberOfServerBlockerIssues"`
+	// The target recommendation Status for this database.
+	RecommendationStatus *string                                                           `pulumi:"recommendationStatus"`
+	TargetSku            *SkuRecommendationResultsAzureSqlManagedInstanceResponseTargetSku `pulumi:"targetSku"`
+}
+
+// SKU Recommendation results for Azure SQL Managed Instance.
+type SkuRecommendationResultsAzureSqlManagedInstanceResponseOutput struct{ *pulumi.OutputState }
+
+func (SkuRecommendationResultsAzureSqlManagedInstanceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SkuRecommendationResultsAzureSqlManagedInstanceResponse)(nil)).Elem()
+}
+
+func (o SkuRecommendationResultsAzureSqlManagedInstanceResponseOutput) ToSkuRecommendationResultsAzureSqlManagedInstanceResponseOutput() SkuRecommendationResultsAzureSqlManagedInstanceResponseOutput {
+	return o
+}
+
+func (o SkuRecommendationResultsAzureSqlManagedInstanceResponseOutput) ToSkuRecommendationResultsAzureSqlManagedInstanceResponseOutputWithContext(ctx context.Context) SkuRecommendationResultsAzureSqlManagedInstanceResponseOutput {
+	return o
+}
+
+// The Monthly cost of the particular SKU.
+func (o SkuRecommendationResultsAzureSqlManagedInstanceResponseOutput) MonthlyCost() SkuRecommendationResultsMonthlyCostResponsePtrOutput {
+	return o.ApplyT(func(v SkuRecommendationResultsAzureSqlManagedInstanceResponse) *SkuRecommendationResultsMonthlyCostResponse {
+		return v.MonthlyCost
+	}).(SkuRecommendationResultsMonthlyCostResponsePtrOutput)
+}
+
+// Number of blocker issues to fix before migrating to the target platform.
+func (o SkuRecommendationResultsAzureSqlManagedInstanceResponseOutput) NumberOfServerBlockerIssues() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SkuRecommendationResultsAzureSqlManagedInstanceResponse) *int {
+		return v.NumberOfServerBlockerIssues
+	}).(pulumi.IntPtrOutput)
+}
+
+// The target recommendation Status for this database.
+func (o SkuRecommendationResultsAzureSqlManagedInstanceResponseOutput) RecommendationStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SkuRecommendationResultsAzureSqlManagedInstanceResponse) *string { return v.RecommendationStatus }).(pulumi.StringPtrOutput)
+}
+
+func (o SkuRecommendationResultsAzureSqlManagedInstanceResponseOutput) TargetSku() SkuRecommendationResultsAzureSqlManagedInstanceResponseTargetSkuPtrOutput {
+	return o.ApplyT(func(v SkuRecommendationResultsAzureSqlManagedInstanceResponse) *SkuRecommendationResultsAzureSqlManagedInstanceResponseTargetSku {
+		return v.TargetSku
+	}).(SkuRecommendationResultsAzureSqlManagedInstanceResponseTargetSkuPtrOutput)
+}
+
+type SkuRecommendationResultsAzureSqlManagedInstanceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SkuRecommendationResultsAzureSqlManagedInstanceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SkuRecommendationResultsAzureSqlManagedInstanceResponse)(nil)).Elem()
+}
+
+func (o SkuRecommendationResultsAzureSqlManagedInstanceResponsePtrOutput) ToSkuRecommendationResultsAzureSqlManagedInstanceResponsePtrOutput() SkuRecommendationResultsAzureSqlManagedInstanceResponsePtrOutput {
+	return o
+}
+
+func (o SkuRecommendationResultsAzureSqlManagedInstanceResponsePtrOutput) ToSkuRecommendationResultsAzureSqlManagedInstanceResponsePtrOutputWithContext(ctx context.Context) SkuRecommendationResultsAzureSqlManagedInstanceResponsePtrOutput {
+	return o
+}
+
+func (o SkuRecommendationResultsAzureSqlManagedInstanceResponsePtrOutput) Elem() SkuRecommendationResultsAzureSqlManagedInstanceResponseOutput {
+	return o.ApplyT(func(v *SkuRecommendationResultsAzureSqlManagedInstanceResponse) SkuRecommendationResultsAzureSqlManagedInstanceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SkuRecommendationResultsAzureSqlManagedInstanceResponse
+		return ret
+	}).(SkuRecommendationResultsAzureSqlManagedInstanceResponseOutput)
+}
+
+// The Monthly cost of the particular SKU.
+func (o SkuRecommendationResultsAzureSqlManagedInstanceResponsePtrOutput) MonthlyCost() SkuRecommendationResultsMonthlyCostResponsePtrOutput {
+	return o.ApplyT(func(v *SkuRecommendationResultsAzureSqlManagedInstanceResponse) *SkuRecommendationResultsMonthlyCostResponse {
+		if v == nil {
+			return nil
+		}
+		return v.MonthlyCost
+	}).(SkuRecommendationResultsMonthlyCostResponsePtrOutput)
+}
+
+// Number of blocker issues to fix before migrating to the target platform.
+func (o SkuRecommendationResultsAzureSqlManagedInstanceResponsePtrOutput) NumberOfServerBlockerIssues() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SkuRecommendationResultsAzureSqlManagedInstanceResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumberOfServerBlockerIssues
+	}).(pulumi.IntPtrOutput)
+}
+
+// The target recommendation Status for this database.
+func (o SkuRecommendationResultsAzureSqlManagedInstanceResponsePtrOutput) RecommendationStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SkuRecommendationResultsAzureSqlManagedInstanceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RecommendationStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SkuRecommendationResultsAzureSqlManagedInstanceResponsePtrOutput) TargetSku() SkuRecommendationResultsAzureSqlManagedInstanceResponseTargetSkuPtrOutput {
+	return o.ApplyT(func(v *SkuRecommendationResultsAzureSqlManagedInstanceResponse) *SkuRecommendationResultsAzureSqlManagedInstanceResponseTargetSku {
+		if v == nil {
+			return nil
+		}
+		return v.TargetSku
+	}).(SkuRecommendationResultsAzureSqlManagedInstanceResponseTargetSkuPtrOutput)
+}
+
+type SkuRecommendationResultsAzureSqlManagedInstanceResponseCategory struct {
+	// The compute tier of the target SKU.
+	ComputeTier *string `pulumi:"computeTier"`
+	// The hardware type of the target SKU.
+	HardwareType *string `pulumi:"hardwareType"`
+	// The SQL purchasing model of the target SKU.
+	SqlPurchasingModel *string `pulumi:"sqlPurchasingModel"`
+	// The SQL service tier of the target SKU.
+	SqlServiceTier *string `pulumi:"sqlServiceTier"`
+	// Indicates if zone redundancy is available for the target SKU.
+	ZoneRedundancyAvailable *bool `pulumi:"zoneRedundancyAvailable"`
+}
+
+type SkuRecommendationResultsAzureSqlManagedInstanceResponseCategoryOutput struct{ *pulumi.OutputState }
+
+func (SkuRecommendationResultsAzureSqlManagedInstanceResponseCategoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SkuRecommendationResultsAzureSqlManagedInstanceResponseCategory)(nil)).Elem()
+}
+
+func (o SkuRecommendationResultsAzureSqlManagedInstanceResponseCategoryOutput) ToSkuRecommendationResultsAzureSqlManagedInstanceResponseCategoryOutput() SkuRecommendationResultsAzureSqlManagedInstanceResponseCategoryOutput {
+	return o
+}
+
+func (o SkuRecommendationResultsAzureSqlManagedInstanceResponseCategoryOutput) ToSkuRecommendationResultsAzureSqlManagedInstanceResponseCategoryOutputWithContext(ctx context.Context) SkuRecommendationResultsAzureSqlManagedInstanceResponseCategoryOutput {
+	return o
+}
+
+// The compute tier of the target SKU.
+func (o SkuRecommendationResultsAzureSqlManagedInstanceResponseCategoryOutput) ComputeTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SkuRecommendationResultsAzureSqlManagedInstanceResponseCategory) *string { return v.ComputeTier }).(pulumi.StringPtrOutput)
+}
+
+// The hardware type of the target SKU.
+func (o SkuRecommendationResultsAzureSqlManagedInstanceResponseCategoryOutput) HardwareType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SkuRecommendationResultsAzureSqlManagedInstanceResponseCategory) *string { return v.HardwareType }).(pulumi.StringPtrOutput)
+}
+
+// The SQL purchasing model of the target SKU.
+func (o SkuRecommendationResultsAzureSqlManagedInstanceResponseCategoryOutput) SqlPurchasingModel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SkuRecommendationResultsAzureSqlManagedInstanceResponseCategory) *string {
+		return v.SqlPurchasingModel
+	}).(pulumi.StringPtrOutput)
+}
+
+// The SQL service tier of the target SKU.
+func (o SkuRecommendationResultsAzureSqlManagedInstanceResponseCategoryOutput) SqlServiceTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SkuRecommendationResultsAzureSqlManagedInstanceResponseCategory) *string {
+		return v.SqlServiceTier
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates if zone redundancy is available for the target SKU.
+func (o SkuRecommendationResultsAzureSqlManagedInstanceResponseCategoryOutput) ZoneRedundancyAvailable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SkuRecommendationResultsAzureSqlManagedInstanceResponseCategory) *bool {
+		return v.ZoneRedundancyAvailable
+	}).(pulumi.BoolPtrOutput)
+}
+
+type SkuRecommendationResultsAzureSqlManagedInstanceResponseCategoryPtrOutput struct{ *pulumi.OutputState }
+
+func (SkuRecommendationResultsAzureSqlManagedInstanceResponseCategoryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SkuRecommendationResultsAzureSqlManagedInstanceResponseCategory)(nil)).Elem()
+}
+
+func (o SkuRecommendationResultsAzureSqlManagedInstanceResponseCategoryPtrOutput) ToSkuRecommendationResultsAzureSqlManagedInstanceResponseCategoryPtrOutput() SkuRecommendationResultsAzureSqlManagedInstanceResponseCategoryPtrOutput {
+	return o
+}
+
+func (o SkuRecommendationResultsAzureSqlManagedInstanceResponseCategoryPtrOutput) ToSkuRecommendationResultsAzureSqlManagedInstanceResponseCategoryPtrOutputWithContext(ctx context.Context) SkuRecommendationResultsAzureSqlManagedInstanceResponseCategoryPtrOutput {
+	return o
+}
+
+func (o SkuRecommendationResultsAzureSqlManagedInstanceResponseCategoryPtrOutput) Elem() SkuRecommendationResultsAzureSqlManagedInstanceResponseCategoryOutput {
+	return o.ApplyT(func(v *SkuRecommendationResultsAzureSqlManagedInstanceResponseCategory) SkuRecommendationResultsAzureSqlManagedInstanceResponseCategory {
+		if v != nil {
+			return *v
+		}
+		var ret SkuRecommendationResultsAzureSqlManagedInstanceResponseCategory
+		return ret
+	}).(SkuRecommendationResultsAzureSqlManagedInstanceResponseCategoryOutput)
+}
+
+// The compute tier of the target SKU.
+func (o SkuRecommendationResultsAzureSqlManagedInstanceResponseCategoryPtrOutput) ComputeTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SkuRecommendationResultsAzureSqlManagedInstanceResponseCategory) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ComputeTier
+	}).(pulumi.StringPtrOutput)
+}
+
+// The hardware type of the target SKU.
+func (o SkuRecommendationResultsAzureSqlManagedInstanceResponseCategoryPtrOutput) HardwareType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SkuRecommendationResultsAzureSqlManagedInstanceResponseCategory) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HardwareType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The SQL purchasing model of the target SKU.
+func (o SkuRecommendationResultsAzureSqlManagedInstanceResponseCategoryPtrOutput) SqlPurchasingModel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SkuRecommendationResultsAzureSqlManagedInstanceResponseCategory) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SqlPurchasingModel
+	}).(pulumi.StringPtrOutput)
+}
+
+// The SQL service tier of the target SKU.
+func (o SkuRecommendationResultsAzureSqlManagedInstanceResponseCategoryPtrOutput) SqlServiceTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SkuRecommendationResultsAzureSqlManagedInstanceResponseCategory) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SqlServiceTier
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates if zone redundancy is available for the target SKU.
+func (o SkuRecommendationResultsAzureSqlManagedInstanceResponseCategoryPtrOutput) ZoneRedundancyAvailable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SkuRecommendationResultsAzureSqlManagedInstanceResponseCategory) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ZoneRedundancyAvailable
+	}).(pulumi.BoolPtrOutput)
+}
+
+type SkuRecommendationResultsAzureSqlManagedInstanceResponseTargetSku struct {
+	Category *SkuRecommendationResultsAzureSqlManagedInstanceResponseCategory `pulumi:"category"`
+}
+
+type SkuRecommendationResultsAzureSqlManagedInstanceResponseTargetSkuOutput struct{ *pulumi.OutputState }
+
+func (SkuRecommendationResultsAzureSqlManagedInstanceResponseTargetSkuOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SkuRecommendationResultsAzureSqlManagedInstanceResponseTargetSku)(nil)).Elem()
+}
+
+func (o SkuRecommendationResultsAzureSqlManagedInstanceResponseTargetSkuOutput) ToSkuRecommendationResultsAzureSqlManagedInstanceResponseTargetSkuOutput() SkuRecommendationResultsAzureSqlManagedInstanceResponseTargetSkuOutput {
+	return o
+}
+
+func (o SkuRecommendationResultsAzureSqlManagedInstanceResponseTargetSkuOutput) ToSkuRecommendationResultsAzureSqlManagedInstanceResponseTargetSkuOutputWithContext(ctx context.Context) SkuRecommendationResultsAzureSqlManagedInstanceResponseTargetSkuOutput {
+	return o
+}
+
+func (o SkuRecommendationResultsAzureSqlManagedInstanceResponseTargetSkuOutput) Category() SkuRecommendationResultsAzureSqlManagedInstanceResponseCategoryPtrOutput {
+	return o.ApplyT(func(v SkuRecommendationResultsAzureSqlManagedInstanceResponseTargetSku) *SkuRecommendationResultsAzureSqlManagedInstanceResponseCategory {
+		return v.Category
+	}).(SkuRecommendationResultsAzureSqlManagedInstanceResponseCategoryPtrOutput)
+}
+
+type SkuRecommendationResultsAzureSqlManagedInstanceResponseTargetSkuPtrOutput struct{ *pulumi.OutputState }
+
+func (SkuRecommendationResultsAzureSqlManagedInstanceResponseTargetSkuPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SkuRecommendationResultsAzureSqlManagedInstanceResponseTargetSku)(nil)).Elem()
+}
+
+func (o SkuRecommendationResultsAzureSqlManagedInstanceResponseTargetSkuPtrOutput) ToSkuRecommendationResultsAzureSqlManagedInstanceResponseTargetSkuPtrOutput() SkuRecommendationResultsAzureSqlManagedInstanceResponseTargetSkuPtrOutput {
+	return o
+}
+
+func (o SkuRecommendationResultsAzureSqlManagedInstanceResponseTargetSkuPtrOutput) ToSkuRecommendationResultsAzureSqlManagedInstanceResponseTargetSkuPtrOutputWithContext(ctx context.Context) SkuRecommendationResultsAzureSqlManagedInstanceResponseTargetSkuPtrOutput {
+	return o
+}
+
+func (o SkuRecommendationResultsAzureSqlManagedInstanceResponseTargetSkuPtrOutput) Elem() SkuRecommendationResultsAzureSqlManagedInstanceResponseTargetSkuOutput {
+	return o.ApplyT(func(v *SkuRecommendationResultsAzureSqlManagedInstanceResponseTargetSku) SkuRecommendationResultsAzureSqlManagedInstanceResponseTargetSku {
+		if v != nil {
+			return *v
+		}
+		var ret SkuRecommendationResultsAzureSqlManagedInstanceResponseTargetSku
+		return ret
+	}).(SkuRecommendationResultsAzureSqlManagedInstanceResponseTargetSkuOutput)
+}
+
+func (o SkuRecommendationResultsAzureSqlManagedInstanceResponseTargetSkuPtrOutput) Category() SkuRecommendationResultsAzureSqlManagedInstanceResponseCategoryPtrOutput {
+	return o.ApplyT(func(v *SkuRecommendationResultsAzureSqlManagedInstanceResponseTargetSku) *SkuRecommendationResultsAzureSqlManagedInstanceResponseCategory {
+		if v == nil {
+			return nil
+		}
+		return v.Category
+	}).(SkuRecommendationResultsAzureSqlManagedInstanceResponseCategoryPtrOutput)
+}
+
+// SKU Recommendation results for Azure SQL Virtual Machine.
+type SkuRecommendationResultsAzureSqlVirtualMachineResponse struct {
+	// The Monthly cost of the particular SKU.
+	MonthlyCost *SkuRecommendationResultsMonthlyCostResponse `pulumi:"monthlyCost"`
+	// Number of blocker issues to fix before migrating to the target platform.
+	NumberOfServerBlockerIssues *int `pulumi:"numberOfServerBlockerIssues"`
+	// The target recommendation Status for this database.
+	RecommendationStatus *string                                                          `pulumi:"recommendationStatus"`
+	TargetSku            *SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSku `pulumi:"targetSku"`
+}
+
+// SKU Recommendation results for Azure SQL Virtual Machine.
+type SkuRecommendationResultsAzureSqlVirtualMachineResponseOutput struct{ *pulumi.OutputState }
+
+func (SkuRecommendationResultsAzureSqlVirtualMachineResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SkuRecommendationResultsAzureSqlVirtualMachineResponse)(nil)).Elem()
+}
+
+func (o SkuRecommendationResultsAzureSqlVirtualMachineResponseOutput) ToSkuRecommendationResultsAzureSqlVirtualMachineResponseOutput() SkuRecommendationResultsAzureSqlVirtualMachineResponseOutput {
+	return o
+}
+
+func (o SkuRecommendationResultsAzureSqlVirtualMachineResponseOutput) ToSkuRecommendationResultsAzureSqlVirtualMachineResponseOutputWithContext(ctx context.Context) SkuRecommendationResultsAzureSqlVirtualMachineResponseOutput {
+	return o
+}
+
+// The Monthly cost of the particular SKU.
+func (o SkuRecommendationResultsAzureSqlVirtualMachineResponseOutput) MonthlyCost() SkuRecommendationResultsMonthlyCostResponsePtrOutput {
+	return o.ApplyT(func(v SkuRecommendationResultsAzureSqlVirtualMachineResponse) *SkuRecommendationResultsMonthlyCostResponse {
+		return v.MonthlyCost
+	}).(SkuRecommendationResultsMonthlyCostResponsePtrOutput)
+}
+
+// Number of blocker issues to fix before migrating to the target platform.
+func (o SkuRecommendationResultsAzureSqlVirtualMachineResponseOutput) NumberOfServerBlockerIssues() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SkuRecommendationResultsAzureSqlVirtualMachineResponse) *int {
+		return v.NumberOfServerBlockerIssues
+	}).(pulumi.IntPtrOutput)
+}
+
+// The target recommendation Status for this database.
+func (o SkuRecommendationResultsAzureSqlVirtualMachineResponseOutput) RecommendationStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SkuRecommendationResultsAzureSqlVirtualMachineResponse) *string { return v.RecommendationStatus }).(pulumi.StringPtrOutput)
+}
+
+func (o SkuRecommendationResultsAzureSqlVirtualMachineResponseOutput) TargetSku() SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSkuPtrOutput {
+	return o.ApplyT(func(v SkuRecommendationResultsAzureSqlVirtualMachineResponse) *SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSku {
+		return v.TargetSku
+	}).(SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSkuPtrOutput)
+}
+
+type SkuRecommendationResultsAzureSqlVirtualMachineResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SkuRecommendationResultsAzureSqlVirtualMachineResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SkuRecommendationResultsAzureSqlVirtualMachineResponse)(nil)).Elem()
+}
+
+func (o SkuRecommendationResultsAzureSqlVirtualMachineResponsePtrOutput) ToSkuRecommendationResultsAzureSqlVirtualMachineResponsePtrOutput() SkuRecommendationResultsAzureSqlVirtualMachineResponsePtrOutput {
+	return o
+}
+
+func (o SkuRecommendationResultsAzureSqlVirtualMachineResponsePtrOutput) ToSkuRecommendationResultsAzureSqlVirtualMachineResponsePtrOutputWithContext(ctx context.Context) SkuRecommendationResultsAzureSqlVirtualMachineResponsePtrOutput {
+	return o
+}
+
+func (o SkuRecommendationResultsAzureSqlVirtualMachineResponsePtrOutput) Elem() SkuRecommendationResultsAzureSqlVirtualMachineResponseOutput {
+	return o.ApplyT(func(v *SkuRecommendationResultsAzureSqlVirtualMachineResponse) SkuRecommendationResultsAzureSqlVirtualMachineResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SkuRecommendationResultsAzureSqlVirtualMachineResponse
+		return ret
+	}).(SkuRecommendationResultsAzureSqlVirtualMachineResponseOutput)
+}
+
+// The Monthly cost of the particular SKU.
+func (o SkuRecommendationResultsAzureSqlVirtualMachineResponsePtrOutput) MonthlyCost() SkuRecommendationResultsMonthlyCostResponsePtrOutput {
+	return o.ApplyT(func(v *SkuRecommendationResultsAzureSqlVirtualMachineResponse) *SkuRecommendationResultsMonthlyCostResponse {
+		if v == nil {
+			return nil
+		}
+		return v.MonthlyCost
+	}).(SkuRecommendationResultsMonthlyCostResponsePtrOutput)
+}
+
+// Number of blocker issues to fix before migrating to the target platform.
+func (o SkuRecommendationResultsAzureSqlVirtualMachineResponsePtrOutput) NumberOfServerBlockerIssues() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SkuRecommendationResultsAzureSqlVirtualMachineResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumberOfServerBlockerIssues
+	}).(pulumi.IntPtrOutput)
+}
+
+// The target recommendation Status for this database.
+func (o SkuRecommendationResultsAzureSqlVirtualMachineResponsePtrOutput) RecommendationStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SkuRecommendationResultsAzureSqlVirtualMachineResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RecommendationStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SkuRecommendationResultsAzureSqlVirtualMachineResponsePtrOutput) TargetSku() SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSkuPtrOutput {
+	return o.ApplyT(func(v *SkuRecommendationResultsAzureSqlVirtualMachineResponse) *SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSku {
+		if v == nil {
+			return nil
+		}
+		return v.TargetSku
+	}).(SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSkuPtrOutput)
+}
+
+type SkuRecommendationResultsAzureSqlVirtualMachineResponseCategory struct {
+	// Available VM SKUs for the Azure SQL Virtual Machine.
+	AvailableVmSkus []string `pulumi:"availableVmSkus"`
+	// The virtual machine family of the target SKU.
+	VirtualMachineFamily *string `pulumi:"virtualMachineFamily"`
+}
+
+type SkuRecommendationResultsAzureSqlVirtualMachineResponseCategoryOutput struct{ *pulumi.OutputState }
+
+func (SkuRecommendationResultsAzureSqlVirtualMachineResponseCategoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SkuRecommendationResultsAzureSqlVirtualMachineResponseCategory)(nil)).Elem()
+}
+
+func (o SkuRecommendationResultsAzureSqlVirtualMachineResponseCategoryOutput) ToSkuRecommendationResultsAzureSqlVirtualMachineResponseCategoryOutput() SkuRecommendationResultsAzureSqlVirtualMachineResponseCategoryOutput {
+	return o
+}
+
+func (o SkuRecommendationResultsAzureSqlVirtualMachineResponseCategoryOutput) ToSkuRecommendationResultsAzureSqlVirtualMachineResponseCategoryOutputWithContext(ctx context.Context) SkuRecommendationResultsAzureSqlVirtualMachineResponseCategoryOutput {
+	return o
+}
+
+// Available VM SKUs for the Azure SQL Virtual Machine.
+func (o SkuRecommendationResultsAzureSqlVirtualMachineResponseCategoryOutput) AvailableVmSkus() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SkuRecommendationResultsAzureSqlVirtualMachineResponseCategory) []string {
+		return v.AvailableVmSkus
+	}).(pulumi.StringArrayOutput)
+}
+
+// The virtual machine family of the target SKU.
+func (o SkuRecommendationResultsAzureSqlVirtualMachineResponseCategoryOutput) VirtualMachineFamily() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SkuRecommendationResultsAzureSqlVirtualMachineResponseCategory) *string {
+		return v.VirtualMachineFamily
+	}).(pulumi.StringPtrOutput)
+}
+
+type SkuRecommendationResultsAzureSqlVirtualMachineResponseCategoryPtrOutput struct{ *pulumi.OutputState }
+
+func (SkuRecommendationResultsAzureSqlVirtualMachineResponseCategoryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SkuRecommendationResultsAzureSqlVirtualMachineResponseCategory)(nil)).Elem()
+}
+
+func (o SkuRecommendationResultsAzureSqlVirtualMachineResponseCategoryPtrOutput) ToSkuRecommendationResultsAzureSqlVirtualMachineResponseCategoryPtrOutput() SkuRecommendationResultsAzureSqlVirtualMachineResponseCategoryPtrOutput {
+	return o
+}
+
+func (o SkuRecommendationResultsAzureSqlVirtualMachineResponseCategoryPtrOutput) ToSkuRecommendationResultsAzureSqlVirtualMachineResponseCategoryPtrOutputWithContext(ctx context.Context) SkuRecommendationResultsAzureSqlVirtualMachineResponseCategoryPtrOutput {
+	return o
+}
+
+func (o SkuRecommendationResultsAzureSqlVirtualMachineResponseCategoryPtrOutput) Elem() SkuRecommendationResultsAzureSqlVirtualMachineResponseCategoryOutput {
+	return o.ApplyT(func(v *SkuRecommendationResultsAzureSqlVirtualMachineResponseCategory) SkuRecommendationResultsAzureSqlVirtualMachineResponseCategory {
+		if v != nil {
+			return *v
+		}
+		var ret SkuRecommendationResultsAzureSqlVirtualMachineResponseCategory
+		return ret
+	}).(SkuRecommendationResultsAzureSqlVirtualMachineResponseCategoryOutput)
+}
+
+// Available VM SKUs for the Azure SQL Virtual Machine.
+func (o SkuRecommendationResultsAzureSqlVirtualMachineResponseCategoryPtrOutput) AvailableVmSkus() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SkuRecommendationResultsAzureSqlVirtualMachineResponseCategory) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AvailableVmSkus
+	}).(pulumi.StringArrayOutput)
+}
+
+// The virtual machine family of the target SKU.
+func (o SkuRecommendationResultsAzureSqlVirtualMachineResponseCategoryPtrOutput) VirtualMachineFamily() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SkuRecommendationResultsAzureSqlVirtualMachineResponseCategory) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VirtualMachineFamily
+	}).(pulumi.StringPtrOutput)
+}
+
+type SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSku struct {
+	Category *SkuRecommendationResultsAzureSqlVirtualMachineResponseCategory `pulumi:"category"`
+}
+
+type SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSkuOutput struct{ *pulumi.OutputState }
+
+func (SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSkuOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSku)(nil)).Elem()
+}
+
+func (o SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSkuOutput) ToSkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSkuOutput() SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSkuOutput {
+	return o
+}
+
+func (o SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSkuOutput) ToSkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSkuOutputWithContext(ctx context.Context) SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSkuOutput {
+	return o
+}
+
+func (o SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSkuOutput) Category() SkuRecommendationResultsAzureSqlVirtualMachineResponseCategoryPtrOutput {
+	return o.ApplyT(func(v SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSku) *SkuRecommendationResultsAzureSqlVirtualMachineResponseCategory {
+		return v.Category
+	}).(SkuRecommendationResultsAzureSqlVirtualMachineResponseCategoryPtrOutput)
+}
+
+type SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSkuPtrOutput struct{ *pulumi.OutputState }
+
+func (SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSkuPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSku)(nil)).Elem()
+}
+
+func (o SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSkuPtrOutput) ToSkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSkuPtrOutput() SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSkuPtrOutput {
+	return o
+}
+
+func (o SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSkuPtrOutput) ToSkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSkuPtrOutputWithContext(ctx context.Context) SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSkuPtrOutput {
+	return o
+}
+
+func (o SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSkuPtrOutput) Elem() SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSkuOutput {
+	return o.ApplyT(func(v *SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSku) SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSku {
+		if v != nil {
+			return *v
+		}
+		var ret SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSku
+		return ret
+	}).(SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSkuOutput)
+}
+
+func (o SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSkuPtrOutput) Category() SkuRecommendationResultsAzureSqlVirtualMachineResponseCategoryPtrOutput {
+	return o.ApplyT(func(v *SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSku) *SkuRecommendationResultsAzureSqlVirtualMachineResponseCategory {
+		if v == nil {
+			return nil
+		}
+		return v.Category
+	}).(SkuRecommendationResultsAzureSqlVirtualMachineResponseCategoryPtrOutput)
+}
+
+// The Monthly cost of the particular SKU.
+type SkuRecommendationResultsMonthlyCostResponse struct {
+	// Represents the Cost of Compute.
+	ComputeCost *float64 `pulumi:"computeCost"`
+	// Represents the Cost of Storage.
+	StorageCost *float64 `pulumi:"storageCost"`
+	// Represents the Total Cost.
+	TotalCost *float64 `pulumi:"totalCost"`
+}
+
+// The Monthly cost of the particular SKU.
+type SkuRecommendationResultsMonthlyCostResponseOutput struct{ *pulumi.OutputState }
+
+func (SkuRecommendationResultsMonthlyCostResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SkuRecommendationResultsMonthlyCostResponse)(nil)).Elem()
+}
+
+func (o SkuRecommendationResultsMonthlyCostResponseOutput) ToSkuRecommendationResultsMonthlyCostResponseOutput() SkuRecommendationResultsMonthlyCostResponseOutput {
+	return o
+}
+
+func (o SkuRecommendationResultsMonthlyCostResponseOutput) ToSkuRecommendationResultsMonthlyCostResponseOutputWithContext(ctx context.Context) SkuRecommendationResultsMonthlyCostResponseOutput {
+	return o
+}
+
+// Represents the Cost of Compute.
+func (o SkuRecommendationResultsMonthlyCostResponseOutput) ComputeCost() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SkuRecommendationResultsMonthlyCostResponse) *float64 { return v.ComputeCost }).(pulumi.Float64PtrOutput)
+}
+
+// Represents the Cost of Storage.
+func (o SkuRecommendationResultsMonthlyCostResponseOutput) StorageCost() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SkuRecommendationResultsMonthlyCostResponse) *float64 { return v.StorageCost }).(pulumi.Float64PtrOutput)
+}
+
+// Represents the Total Cost.
+func (o SkuRecommendationResultsMonthlyCostResponseOutput) TotalCost() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SkuRecommendationResultsMonthlyCostResponse) *float64 { return v.TotalCost }).(pulumi.Float64PtrOutput)
+}
+
+type SkuRecommendationResultsMonthlyCostResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SkuRecommendationResultsMonthlyCostResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SkuRecommendationResultsMonthlyCostResponse)(nil)).Elem()
+}
+
+func (o SkuRecommendationResultsMonthlyCostResponsePtrOutput) ToSkuRecommendationResultsMonthlyCostResponsePtrOutput() SkuRecommendationResultsMonthlyCostResponsePtrOutput {
+	return o
+}
+
+func (o SkuRecommendationResultsMonthlyCostResponsePtrOutput) ToSkuRecommendationResultsMonthlyCostResponsePtrOutputWithContext(ctx context.Context) SkuRecommendationResultsMonthlyCostResponsePtrOutput {
+	return o
+}
+
+func (o SkuRecommendationResultsMonthlyCostResponsePtrOutput) Elem() SkuRecommendationResultsMonthlyCostResponseOutput {
+	return o.ApplyT(func(v *SkuRecommendationResultsMonthlyCostResponse) SkuRecommendationResultsMonthlyCostResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SkuRecommendationResultsMonthlyCostResponse
+		return ret
+	}).(SkuRecommendationResultsMonthlyCostResponseOutput)
+}
+
+// Represents the Cost of Compute.
+func (o SkuRecommendationResultsMonthlyCostResponsePtrOutput) ComputeCost() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *SkuRecommendationResultsMonthlyCostResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.ComputeCost
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Represents the Cost of Storage.
+func (o SkuRecommendationResultsMonthlyCostResponsePtrOutput) StorageCost() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *SkuRecommendationResultsMonthlyCostResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.StorageCost
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Represents the Total Cost.
+func (o SkuRecommendationResultsMonthlyCostResponsePtrOutput) TotalCost() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *SkuRecommendationResultsMonthlyCostResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.TotalCost
+	}).(pulumi.Float64PtrOutput)
+}
+
+// SKU Recommendation results for Azure migration targets for SQL Server.
+type SkuRecommendationResultsResponse struct {
+	// SKU Recommendation results for Azure SQL Database.
+	AzureSqlDatabase *SkuRecommendationResultsAzureSqlDatabaseResponse `pulumi:"azureSqlDatabase"`
+	// SKU Recommendation results for Azure SQL Managed Instance.
+	AzureSqlManagedInstance *SkuRecommendationResultsAzureSqlManagedInstanceResponse `pulumi:"azureSqlManagedInstance"`
+	// SKU Recommendation results for Azure SQL Virtual Machine.
+	AzureSqlVirtualMachine *SkuRecommendationResultsAzureSqlVirtualMachineResponse `pulumi:"azureSqlVirtualMachine"`
+}
+
+// SKU Recommendation results for Azure migration targets for SQL Server.
+type SkuRecommendationResultsResponseOutput struct{ *pulumi.OutputState }
+
+func (SkuRecommendationResultsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SkuRecommendationResultsResponse)(nil)).Elem()
+}
+
+func (o SkuRecommendationResultsResponseOutput) ToSkuRecommendationResultsResponseOutput() SkuRecommendationResultsResponseOutput {
+	return o
+}
+
+func (o SkuRecommendationResultsResponseOutput) ToSkuRecommendationResultsResponseOutputWithContext(ctx context.Context) SkuRecommendationResultsResponseOutput {
+	return o
+}
+
+// SKU Recommendation results for Azure SQL Database.
+func (o SkuRecommendationResultsResponseOutput) AzureSqlDatabase() SkuRecommendationResultsAzureSqlDatabaseResponsePtrOutput {
+	return o.ApplyT(func(v SkuRecommendationResultsResponse) *SkuRecommendationResultsAzureSqlDatabaseResponse {
+		return v.AzureSqlDatabase
+	}).(SkuRecommendationResultsAzureSqlDatabaseResponsePtrOutput)
+}
+
+// SKU Recommendation results for Azure SQL Managed Instance.
+func (o SkuRecommendationResultsResponseOutput) AzureSqlManagedInstance() SkuRecommendationResultsAzureSqlManagedInstanceResponsePtrOutput {
+	return o.ApplyT(func(v SkuRecommendationResultsResponse) *SkuRecommendationResultsAzureSqlManagedInstanceResponse {
+		return v.AzureSqlManagedInstance
+	}).(SkuRecommendationResultsAzureSqlManagedInstanceResponsePtrOutput)
+}
+
+// SKU Recommendation results for Azure SQL Virtual Machine.
+func (o SkuRecommendationResultsResponseOutput) AzureSqlVirtualMachine() SkuRecommendationResultsAzureSqlVirtualMachineResponsePtrOutput {
+	return o.ApplyT(func(v SkuRecommendationResultsResponse) *SkuRecommendationResultsAzureSqlVirtualMachineResponse {
+		return v.AzureSqlVirtualMachine
+	}).(SkuRecommendationResultsAzureSqlVirtualMachineResponsePtrOutput)
+}
+
+type SkuRecommendationResultsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SkuRecommendationResultsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SkuRecommendationResultsResponse)(nil)).Elem()
+}
+
+func (o SkuRecommendationResultsResponsePtrOutput) ToSkuRecommendationResultsResponsePtrOutput() SkuRecommendationResultsResponsePtrOutput {
+	return o
+}
+
+func (o SkuRecommendationResultsResponsePtrOutput) ToSkuRecommendationResultsResponsePtrOutputWithContext(ctx context.Context) SkuRecommendationResultsResponsePtrOutput {
+	return o
+}
+
+func (o SkuRecommendationResultsResponsePtrOutput) Elem() SkuRecommendationResultsResponseOutput {
+	return o.ApplyT(func(v *SkuRecommendationResultsResponse) SkuRecommendationResultsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SkuRecommendationResultsResponse
+		return ret
+	}).(SkuRecommendationResultsResponseOutput)
+}
+
+// SKU Recommendation results for Azure SQL Database.
+func (o SkuRecommendationResultsResponsePtrOutput) AzureSqlDatabase() SkuRecommendationResultsAzureSqlDatabaseResponsePtrOutput {
+	return o.ApplyT(func(v *SkuRecommendationResultsResponse) *SkuRecommendationResultsAzureSqlDatabaseResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AzureSqlDatabase
+	}).(SkuRecommendationResultsAzureSqlDatabaseResponsePtrOutput)
+}
+
+// SKU Recommendation results for Azure SQL Managed Instance.
+func (o SkuRecommendationResultsResponsePtrOutput) AzureSqlManagedInstance() SkuRecommendationResultsAzureSqlManagedInstanceResponsePtrOutput {
+	return o.ApplyT(func(v *SkuRecommendationResultsResponse) *SkuRecommendationResultsAzureSqlManagedInstanceResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AzureSqlManagedInstance
+	}).(SkuRecommendationResultsAzureSqlManagedInstanceResponsePtrOutput)
+}
+
+// SKU Recommendation results for Azure SQL Virtual Machine.
+func (o SkuRecommendationResultsResponsePtrOutput) AzureSqlVirtualMachine() SkuRecommendationResultsAzureSqlVirtualMachineResponsePtrOutput {
+	return o.ApplyT(func(v *SkuRecommendationResultsResponse) *SkuRecommendationResultsAzureSqlVirtualMachineResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AzureSqlVirtualMachine
+	}).(SkuRecommendationResultsAzureSqlVirtualMachineResponsePtrOutput)
+}
+
+// The SKU recommendation summary.
+type SkuRecommendationSummaryResponse struct {
+	// Number of blocker issues to fix before migrating this database to the target platform.
+	NumOfBlockerIssues *int `pulumi:"numOfBlockerIssues"`
+	// The target recommendation Status for this database.
+	RecommendationStatus *string `pulumi:"recommendationStatus"`
+}
+
+// The SKU recommendation summary.
+type SkuRecommendationSummaryResponseOutput struct{ *pulumi.OutputState }
+
+func (SkuRecommendationSummaryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SkuRecommendationSummaryResponse)(nil)).Elem()
+}
+
+func (o SkuRecommendationSummaryResponseOutput) ToSkuRecommendationSummaryResponseOutput() SkuRecommendationSummaryResponseOutput {
+	return o
+}
+
+func (o SkuRecommendationSummaryResponseOutput) ToSkuRecommendationSummaryResponseOutputWithContext(ctx context.Context) SkuRecommendationSummaryResponseOutput {
+	return o
+}
+
+// Number of blocker issues to fix before migrating this database to the target platform.
+func (o SkuRecommendationSummaryResponseOutput) NumOfBlockerIssues() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SkuRecommendationSummaryResponse) *int { return v.NumOfBlockerIssues }).(pulumi.IntPtrOutput)
+}
+
+// The target recommendation Status for this database.
+func (o SkuRecommendationSummaryResponseOutput) RecommendationStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SkuRecommendationSummaryResponse) *string { return v.RecommendationStatus }).(pulumi.StringPtrOutput)
+}
+
+type SkuRecommendationSummaryResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SkuRecommendationSummaryResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SkuRecommendationSummaryResponse)(nil)).Elem()
+}
+
+func (o SkuRecommendationSummaryResponsePtrOutput) ToSkuRecommendationSummaryResponsePtrOutput() SkuRecommendationSummaryResponsePtrOutput {
+	return o
+}
+
+func (o SkuRecommendationSummaryResponsePtrOutput) ToSkuRecommendationSummaryResponsePtrOutputWithContext(ctx context.Context) SkuRecommendationSummaryResponsePtrOutput {
+	return o
+}
+
+func (o SkuRecommendationSummaryResponsePtrOutput) Elem() SkuRecommendationSummaryResponseOutput {
+	return o.ApplyT(func(v *SkuRecommendationSummaryResponse) SkuRecommendationSummaryResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SkuRecommendationSummaryResponse
+		return ret
+	}).(SkuRecommendationSummaryResponseOutput)
+}
+
+// Number of blocker issues to fix before migrating this database to the target platform.
+func (o SkuRecommendationSummaryResponsePtrOutput) NumOfBlockerIssues() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SkuRecommendationSummaryResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumOfBlockerIssues
+	}).(pulumi.IntPtrOutput)
+}
+
+// The target recommendation Status for this database.
+func (o SkuRecommendationSummaryResponsePtrOutput) RecommendationStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SkuRecommendationSummaryResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RecommendationStatus
+	}).(pulumi.StringPtrOutput)
+}
+
 // The properties of Arc Sql availability group database replica resource
 type SqlAvailabilityGroupDatabaseReplicaResourceProperties struct {
 	// the database name.
@@ -7763,8 +11517,10 @@ func (o SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseArrayOutput
 type SqlAvailabilityGroupReplicaResourceProperties struct {
 	// null
 	Configure *AvailabilityGroupConfigure `pulumi:"configure"`
-	// the replica name.
+	// The replica name.
 	ReplicaName *string `pulumi:"replicaName"`
+	// Resource id of this replica. This is required for a distributed availability group, in which case it describes the location of the availability group that hosts one replica in the DAG. In a non-distributed availability group this field is optional but can be used to store the Azure resource id for AG.
+	ReplicaResourceId *string `pulumi:"replicaResourceId"`
 }
 
 // SqlAvailabilityGroupReplicaResourcePropertiesInput is an input type that accepts SqlAvailabilityGroupReplicaResourcePropertiesArgs and SqlAvailabilityGroupReplicaResourcePropertiesOutput values.
@@ -7782,8 +11538,10 @@ type SqlAvailabilityGroupReplicaResourcePropertiesInput interface {
 type SqlAvailabilityGroupReplicaResourcePropertiesArgs struct {
 	// null
 	Configure AvailabilityGroupConfigurePtrInput `pulumi:"configure"`
-	// the replica name.
+	// The replica name.
 	ReplicaName pulumi.StringPtrInput `pulumi:"replicaName"`
+	// Resource id of this replica. This is required for a distributed availability group, in which case it describes the location of the availability group that hosts one replica in the DAG. In a non-distributed availability group this field is optional but can be used to store the Azure resource id for AG.
+	ReplicaResourceId pulumi.StringPtrInput `pulumi:"replicaResourceId"`
 }
 
 func (SqlAvailabilityGroupReplicaResourcePropertiesArgs) ElementType() reflect.Type {
@@ -7843,9 +11601,14 @@ func (o SqlAvailabilityGroupReplicaResourcePropertiesOutput) Configure() Availab
 	return o.ApplyT(func(v SqlAvailabilityGroupReplicaResourceProperties) *AvailabilityGroupConfigure { return v.Configure }).(AvailabilityGroupConfigurePtrOutput)
 }
 
-// the replica name.
+// The replica name.
 func (o SqlAvailabilityGroupReplicaResourcePropertiesOutput) ReplicaName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlAvailabilityGroupReplicaResourceProperties) *string { return v.ReplicaName }).(pulumi.StringPtrOutput)
+}
+
+// Resource id of this replica. This is required for a distributed availability group, in which case it describes the location of the availability group that hosts one replica in the DAG. In a non-distributed availability group this field is optional but can be used to store the Azure resource id for AG.
+func (o SqlAvailabilityGroupReplicaResourcePropertiesOutput) ReplicaResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupReplicaResourceProperties) *string { return v.ReplicaResourceId }).(pulumi.StringPtrOutput)
 }
 
 type SqlAvailabilityGroupReplicaResourcePropertiesArrayOutput struct{ *pulumi.OutputState }
@@ -7874,8 +11637,10 @@ type SqlAvailabilityGroupReplicaResourcePropertiesResponse struct {
 	Configure *AvailabilityGroupConfigureResponse `pulumi:"configure"`
 	// ID GUID of the availability group.
 	ReplicaId string `pulumi:"replicaId"`
-	// the replica name.
+	// The replica name.
 	ReplicaName *string `pulumi:"replicaName"`
+	// Resource id of this replica. This is required for a distributed availability group, in which case it describes the location of the availability group that hosts one replica in the DAG. In a non-distributed availability group this field is optional but can be used to store the Azure resource id for AG.
+	ReplicaResourceId *string `pulumi:"replicaResourceId"`
 	// null
 	State *AvailabilityGroupStateResponse `pulumi:"state"`
 }
@@ -7907,9 +11672,14 @@ func (o SqlAvailabilityGroupReplicaResourcePropertiesResponseOutput) ReplicaId()
 	return o.ApplyT(func(v SqlAvailabilityGroupReplicaResourcePropertiesResponse) string { return v.ReplicaId }).(pulumi.StringOutput)
 }
 
-// the replica name.
+// The replica name.
 func (o SqlAvailabilityGroupReplicaResourcePropertiesResponseOutput) ReplicaName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlAvailabilityGroupReplicaResourcePropertiesResponse) *string { return v.ReplicaName }).(pulumi.StringPtrOutput)
+}
+
+// Resource id of this replica. This is required for a distributed availability group, in which case it describes the location of the availability group that hosts one replica in the DAG. In a non-distributed availability group this field is optional but can be used to store the Azure resource id for AG.
+func (o SqlAvailabilityGroupReplicaResourcePropertiesResponseOutput) ReplicaResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupReplicaResourcePropertiesResponse) *string { return v.ReplicaResourceId }).(pulumi.StringPtrOutput)
 }
 
 // null
@@ -7937,6 +11707,481 @@ func (o SqlAvailabilityGroupReplicaResourcePropertiesResponseArrayOutput) Index(
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SqlAvailabilityGroupReplicaResourcePropertiesResponse {
 		return vs[0].([]SqlAvailabilityGroupReplicaResourcePropertiesResponse)[vs[1].(int)]
 	}).(SqlAvailabilityGroupReplicaResourcePropertiesResponseOutput)
+}
+
+// The properties of a static IP Arc Sql availability group listener
+type SqlAvailabilityGroupStaticIPListenerProperties struct {
+	// the DNS name for the listener.
+	DnsName *string `pulumi:"dnsName"`
+	// IP V4 Addresses and masks for the listener.
+	IpV4AddressesAndMasks []SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasks `pulumi:"ipV4AddressesAndMasks"`
+	// IP V6 Addresses for the listener
+	IpV6Addresses []string `pulumi:"ipV6Addresses"`
+	// Network port for the listener. Default is 1433.
+	Port *int `pulumi:"port"`
+}
+
+// SqlAvailabilityGroupStaticIPListenerPropertiesInput is an input type that accepts SqlAvailabilityGroupStaticIPListenerPropertiesArgs and SqlAvailabilityGroupStaticIPListenerPropertiesOutput values.
+// You can construct a concrete instance of `SqlAvailabilityGroupStaticIPListenerPropertiesInput` via:
+//
+//	SqlAvailabilityGroupStaticIPListenerPropertiesArgs{...}
+type SqlAvailabilityGroupStaticIPListenerPropertiesInput interface {
+	pulumi.Input
+
+	ToSqlAvailabilityGroupStaticIPListenerPropertiesOutput() SqlAvailabilityGroupStaticIPListenerPropertiesOutput
+	ToSqlAvailabilityGroupStaticIPListenerPropertiesOutputWithContext(context.Context) SqlAvailabilityGroupStaticIPListenerPropertiesOutput
+}
+
+// The properties of a static IP Arc Sql availability group listener
+type SqlAvailabilityGroupStaticIPListenerPropertiesArgs struct {
+	// the DNS name for the listener.
+	DnsName pulumi.StringPtrInput `pulumi:"dnsName"`
+	// IP V4 Addresses and masks for the listener.
+	IpV4AddressesAndMasks SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksArrayInput `pulumi:"ipV4AddressesAndMasks"`
+	// IP V6 Addresses for the listener
+	IpV6Addresses pulumi.StringArrayInput `pulumi:"ipV6Addresses"`
+	// Network port for the listener. Default is 1433.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+}
+
+func (SqlAvailabilityGroupStaticIPListenerPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlAvailabilityGroupStaticIPListenerProperties)(nil)).Elem()
+}
+
+func (i SqlAvailabilityGroupStaticIPListenerPropertiesArgs) ToSqlAvailabilityGroupStaticIPListenerPropertiesOutput() SqlAvailabilityGroupStaticIPListenerPropertiesOutput {
+	return i.ToSqlAvailabilityGroupStaticIPListenerPropertiesOutputWithContext(context.Background())
+}
+
+func (i SqlAvailabilityGroupStaticIPListenerPropertiesArgs) ToSqlAvailabilityGroupStaticIPListenerPropertiesOutputWithContext(ctx context.Context) SqlAvailabilityGroupStaticIPListenerPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlAvailabilityGroupStaticIPListenerPropertiesOutput)
+}
+
+func (i SqlAvailabilityGroupStaticIPListenerPropertiesArgs) ToSqlAvailabilityGroupStaticIPListenerPropertiesPtrOutput() SqlAvailabilityGroupStaticIPListenerPropertiesPtrOutput {
+	return i.ToSqlAvailabilityGroupStaticIPListenerPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i SqlAvailabilityGroupStaticIPListenerPropertiesArgs) ToSqlAvailabilityGroupStaticIPListenerPropertiesPtrOutputWithContext(ctx context.Context) SqlAvailabilityGroupStaticIPListenerPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlAvailabilityGroupStaticIPListenerPropertiesOutput).ToSqlAvailabilityGroupStaticIPListenerPropertiesPtrOutputWithContext(ctx)
+}
+
+// SqlAvailabilityGroupStaticIPListenerPropertiesPtrInput is an input type that accepts SqlAvailabilityGroupStaticIPListenerPropertiesArgs, SqlAvailabilityGroupStaticIPListenerPropertiesPtr and SqlAvailabilityGroupStaticIPListenerPropertiesPtrOutput values.
+// You can construct a concrete instance of `SqlAvailabilityGroupStaticIPListenerPropertiesPtrInput` via:
+//
+//	        SqlAvailabilityGroupStaticIPListenerPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type SqlAvailabilityGroupStaticIPListenerPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToSqlAvailabilityGroupStaticIPListenerPropertiesPtrOutput() SqlAvailabilityGroupStaticIPListenerPropertiesPtrOutput
+	ToSqlAvailabilityGroupStaticIPListenerPropertiesPtrOutputWithContext(context.Context) SqlAvailabilityGroupStaticIPListenerPropertiesPtrOutput
+}
+
+type sqlAvailabilityGroupStaticIPListenerPropertiesPtrType SqlAvailabilityGroupStaticIPListenerPropertiesArgs
+
+func SqlAvailabilityGroupStaticIPListenerPropertiesPtr(v *SqlAvailabilityGroupStaticIPListenerPropertiesArgs) SqlAvailabilityGroupStaticIPListenerPropertiesPtrInput {
+	return (*sqlAvailabilityGroupStaticIPListenerPropertiesPtrType)(v)
+}
+
+func (*sqlAvailabilityGroupStaticIPListenerPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlAvailabilityGroupStaticIPListenerProperties)(nil)).Elem()
+}
+
+func (i *sqlAvailabilityGroupStaticIPListenerPropertiesPtrType) ToSqlAvailabilityGroupStaticIPListenerPropertiesPtrOutput() SqlAvailabilityGroupStaticIPListenerPropertiesPtrOutput {
+	return i.ToSqlAvailabilityGroupStaticIPListenerPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *sqlAvailabilityGroupStaticIPListenerPropertiesPtrType) ToSqlAvailabilityGroupStaticIPListenerPropertiesPtrOutputWithContext(ctx context.Context) SqlAvailabilityGroupStaticIPListenerPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlAvailabilityGroupStaticIPListenerPropertiesPtrOutput)
+}
+
+// The properties of a static IP Arc Sql availability group listener
+type SqlAvailabilityGroupStaticIPListenerPropertiesOutput struct{ *pulumi.OutputState }
+
+func (SqlAvailabilityGroupStaticIPListenerPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlAvailabilityGroupStaticIPListenerProperties)(nil)).Elem()
+}
+
+func (o SqlAvailabilityGroupStaticIPListenerPropertiesOutput) ToSqlAvailabilityGroupStaticIPListenerPropertiesOutput() SqlAvailabilityGroupStaticIPListenerPropertiesOutput {
+	return o
+}
+
+func (o SqlAvailabilityGroupStaticIPListenerPropertiesOutput) ToSqlAvailabilityGroupStaticIPListenerPropertiesOutputWithContext(ctx context.Context) SqlAvailabilityGroupStaticIPListenerPropertiesOutput {
+	return o
+}
+
+func (o SqlAvailabilityGroupStaticIPListenerPropertiesOutput) ToSqlAvailabilityGroupStaticIPListenerPropertiesPtrOutput() SqlAvailabilityGroupStaticIPListenerPropertiesPtrOutput {
+	return o.ToSqlAvailabilityGroupStaticIPListenerPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o SqlAvailabilityGroupStaticIPListenerPropertiesOutput) ToSqlAvailabilityGroupStaticIPListenerPropertiesPtrOutputWithContext(ctx context.Context) SqlAvailabilityGroupStaticIPListenerPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlAvailabilityGroupStaticIPListenerProperties) *SqlAvailabilityGroupStaticIPListenerProperties {
+		return &v
+	}).(SqlAvailabilityGroupStaticIPListenerPropertiesPtrOutput)
+}
+
+// the DNS name for the listener.
+func (o SqlAvailabilityGroupStaticIPListenerPropertiesOutput) DnsName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupStaticIPListenerProperties) *string { return v.DnsName }).(pulumi.StringPtrOutput)
+}
+
+// IP V4 Addresses and masks for the listener.
+func (o SqlAvailabilityGroupStaticIPListenerPropertiesOutput) IpV4AddressesAndMasks() SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksArrayOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupStaticIPListenerProperties) []SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasks {
+		return v.IpV4AddressesAndMasks
+	}).(SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksArrayOutput)
+}
+
+// IP V6 Addresses for the listener
+func (o SqlAvailabilityGroupStaticIPListenerPropertiesOutput) IpV6Addresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupStaticIPListenerProperties) []string { return v.IpV6Addresses }).(pulumi.StringArrayOutput)
+}
+
+// Network port for the listener. Default is 1433.
+func (o SqlAvailabilityGroupStaticIPListenerPropertiesOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupStaticIPListenerProperties) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+type SqlAvailabilityGroupStaticIPListenerPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (SqlAvailabilityGroupStaticIPListenerPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlAvailabilityGroupStaticIPListenerProperties)(nil)).Elem()
+}
+
+func (o SqlAvailabilityGroupStaticIPListenerPropertiesPtrOutput) ToSqlAvailabilityGroupStaticIPListenerPropertiesPtrOutput() SqlAvailabilityGroupStaticIPListenerPropertiesPtrOutput {
+	return o
+}
+
+func (o SqlAvailabilityGroupStaticIPListenerPropertiesPtrOutput) ToSqlAvailabilityGroupStaticIPListenerPropertiesPtrOutputWithContext(ctx context.Context) SqlAvailabilityGroupStaticIPListenerPropertiesPtrOutput {
+	return o
+}
+
+func (o SqlAvailabilityGroupStaticIPListenerPropertiesPtrOutput) Elem() SqlAvailabilityGroupStaticIPListenerPropertiesOutput {
+	return o.ApplyT(func(v *SqlAvailabilityGroupStaticIPListenerProperties) SqlAvailabilityGroupStaticIPListenerProperties {
+		if v != nil {
+			return *v
+		}
+		var ret SqlAvailabilityGroupStaticIPListenerProperties
+		return ret
+	}).(SqlAvailabilityGroupStaticIPListenerPropertiesOutput)
+}
+
+// the DNS name for the listener.
+func (o SqlAvailabilityGroupStaticIPListenerPropertiesPtrOutput) DnsName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlAvailabilityGroupStaticIPListenerProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DnsName
+	}).(pulumi.StringPtrOutput)
+}
+
+// IP V4 Addresses and masks for the listener.
+func (o SqlAvailabilityGroupStaticIPListenerPropertiesPtrOutput) IpV4AddressesAndMasks() SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksArrayOutput {
+	return o.ApplyT(func(v *SqlAvailabilityGroupStaticIPListenerProperties) []SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasks {
+		if v == nil {
+			return nil
+		}
+		return v.IpV4AddressesAndMasks
+	}).(SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksArrayOutput)
+}
+
+// IP V6 Addresses for the listener
+func (o SqlAvailabilityGroupStaticIPListenerPropertiesPtrOutput) IpV6Addresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SqlAvailabilityGroupStaticIPListenerProperties) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IpV6Addresses
+	}).(pulumi.StringArrayOutput)
+}
+
+// Network port for the listener. Default is 1433.
+func (o SqlAvailabilityGroupStaticIPListenerPropertiesPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SqlAvailabilityGroupStaticIPListenerProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+type SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasks struct {
+	// IPV4 address
+	IpAddress *string `pulumi:"ipAddress"`
+	// IPV4 netmask
+	Mask *string `pulumi:"mask"`
+}
+
+// SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksInput is an input type that accepts SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksArgs and SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksOutput values.
+// You can construct a concrete instance of `SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksInput` via:
+//
+//	SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksArgs{...}
+type SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksInput interface {
+	pulumi.Input
+
+	ToSqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksOutput() SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksOutput
+	ToSqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksOutputWithContext(context.Context) SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksOutput
+}
+
+type SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksArgs struct {
+	// IPV4 address
+	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
+	// IPV4 netmask
+	Mask pulumi.StringPtrInput `pulumi:"mask"`
+}
+
+func (SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasks)(nil)).Elem()
+}
+
+func (i SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksArgs) ToSqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksOutput() SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksOutput {
+	return i.ToSqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksOutputWithContext(context.Background())
+}
+
+func (i SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksArgs) ToSqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksOutputWithContext(ctx context.Context) SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksOutput)
+}
+
+// SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksArrayInput is an input type that accepts SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksArray and SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksArrayOutput values.
+// You can construct a concrete instance of `SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksArrayInput` via:
+//
+//	SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksArray{ SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksArgs{...} }
+type SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksArrayInput interface {
+	pulumi.Input
+
+	ToSqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksArrayOutput() SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksArrayOutput
+	ToSqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksArrayOutputWithContext(context.Context) SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksArrayOutput
+}
+
+type SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksArray []SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksInput
+
+func (SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasks)(nil)).Elem()
+}
+
+func (i SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksArray) ToSqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksArrayOutput() SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksArrayOutput {
+	return i.ToSqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksArrayOutputWithContext(context.Background())
+}
+
+func (i SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksArray) ToSqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksArrayOutputWithContext(ctx context.Context) SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksArrayOutput)
+}
+
+type SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksOutput struct{ *pulumi.OutputState }
+
+func (SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasks)(nil)).Elem()
+}
+
+func (o SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksOutput) ToSqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksOutput() SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksOutput {
+	return o
+}
+
+func (o SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksOutput) ToSqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksOutputWithContext(ctx context.Context) SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksOutput {
+	return o
+}
+
+// IPV4 address
+func (o SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksOutput) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasks) *string {
+		return v.IpAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// IPV4 netmask
+func (o SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksOutput) Mask() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasks) *string { return v.Mask }).(pulumi.StringPtrOutput)
+}
+
+type SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksArrayOutput struct{ *pulumi.OutputState }
+
+func (SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasks)(nil)).Elem()
+}
+
+func (o SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksArrayOutput) ToSqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksArrayOutput() SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksArrayOutput {
+	return o
+}
+
+func (o SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksArrayOutput) ToSqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksArrayOutputWithContext(ctx context.Context) SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksArrayOutput {
+	return o
+}
+
+func (o SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksArrayOutput) Index(i pulumi.IntInput) SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasks {
+		return vs[0].([]SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasks)[vs[1].(int)]
+	}).(SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksOutput)
+}
+
+// The properties of a static IP Arc Sql availability group listener
+type SqlAvailabilityGroupStaticIPListenerPropertiesResponse struct {
+	// the DNS name for the listener.
+	DnsName *string `pulumi:"dnsName"`
+	// IP V4 Addresses and masks for the listener.
+	IpV4AddressesAndMasks []SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasks `pulumi:"ipV4AddressesAndMasks"`
+	// IP V6 Addresses for the listener
+	IpV6Addresses []string `pulumi:"ipV6Addresses"`
+	// Network port for the listener. Default is 1433.
+	Port *int `pulumi:"port"`
+}
+
+// The properties of a static IP Arc Sql availability group listener
+type SqlAvailabilityGroupStaticIPListenerPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (SqlAvailabilityGroupStaticIPListenerPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlAvailabilityGroupStaticIPListenerPropertiesResponse)(nil)).Elem()
+}
+
+func (o SqlAvailabilityGroupStaticIPListenerPropertiesResponseOutput) ToSqlAvailabilityGroupStaticIPListenerPropertiesResponseOutput() SqlAvailabilityGroupStaticIPListenerPropertiesResponseOutput {
+	return o
+}
+
+func (o SqlAvailabilityGroupStaticIPListenerPropertiesResponseOutput) ToSqlAvailabilityGroupStaticIPListenerPropertiesResponseOutputWithContext(ctx context.Context) SqlAvailabilityGroupStaticIPListenerPropertiesResponseOutput {
+	return o
+}
+
+// the DNS name for the listener.
+func (o SqlAvailabilityGroupStaticIPListenerPropertiesResponseOutput) DnsName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupStaticIPListenerPropertiesResponse) *string { return v.DnsName }).(pulumi.StringPtrOutput)
+}
+
+// IP V4 Addresses and masks for the listener.
+func (o SqlAvailabilityGroupStaticIPListenerPropertiesResponseOutput) IpV4AddressesAndMasks() SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasksArrayOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupStaticIPListenerPropertiesResponse) []SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasks {
+		return v.IpV4AddressesAndMasks
+	}).(SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasksArrayOutput)
+}
+
+// IP V6 Addresses for the listener
+func (o SqlAvailabilityGroupStaticIPListenerPropertiesResponseOutput) IpV6Addresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupStaticIPListenerPropertiesResponse) []string { return v.IpV6Addresses }).(pulumi.StringArrayOutput)
+}
+
+// Network port for the listener. Default is 1433.
+func (o SqlAvailabilityGroupStaticIPListenerPropertiesResponseOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupStaticIPListenerPropertiesResponse) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+type SqlAvailabilityGroupStaticIPListenerPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SqlAvailabilityGroupStaticIPListenerPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlAvailabilityGroupStaticIPListenerPropertiesResponse)(nil)).Elem()
+}
+
+func (o SqlAvailabilityGroupStaticIPListenerPropertiesResponsePtrOutput) ToSqlAvailabilityGroupStaticIPListenerPropertiesResponsePtrOutput() SqlAvailabilityGroupStaticIPListenerPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o SqlAvailabilityGroupStaticIPListenerPropertiesResponsePtrOutput) ToSqlAvailabilityGroupStaticIPListenerPropertiesResponsePtrOutputWithContext(ctx context.Context) SqlAvailabilityGroupStaticIPListenerPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o SqlAvailabilityGroupStaticIPListenerPropertiesResponsePtrOutput) Elem() SqlAvailabilityGroupStaticIPListenerPropertiesResponseOutput {
+	return o.ApplyT(func(v *SqlAvailabilityGroupStaticIPListenerPropertiesResponse) SqlAvailabilityGroupStaticIPListenerPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SqlAvailabilityGroupStaticIPListenerPropertiesResponse
+		return ret
+	}).(SqlAvailabilityGroupStaticIPListenerPropertiesResponseOutput)
+}
+
+// the DNS name for the listener.
+func (o SqlAvailabilityGroupStaticIPListenerPropertiesResponsePtrOutput) DnsName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlAvailabilityGroupStaticIPListenerPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DnsName
+	}).(pulumi.StringPtrOutput)
+}
+
+// IP V4 Addresses and masks for the listener.
+func (o SqlAvailabilityGroupStaticIPListenerPropertiesResponsePtrOutput) IpV4AddressesAndMasks() SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasksArrayOutput {
+	return o.ApplyT(func(v *SqlAvailabilityGroupStaticIPListenerPropertiesResponse) []SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasks {
+		if v == nil {
+			return nil
+		}
+		return v.IpV4AddressesAndMasks
+	}).(SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasksArrayOutput)
+}
+
+// IP V6 Addresses for the listener
+func (o SqlAvailabilityGroupStaticIPListenerPropertiesResponsePtrOutput) IpV6Addresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SqlAvailabilityGroupStaticIPListenerPropertiesResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IpV6Addresses
+	}).(pulumi.StringArrayOutput)
+}
+
+// Network port for the listener. Default is 1433.
+func (o SqlAvailabilityGroupStaticIPListenerPropertiesResponsePtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SqlAvailabilityGroupStaticIPListenerPropertiesResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+type SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasks struct {
+	// IPV4 address
+	IpAddress *string `pulumi:"ipAddress"`
+	// IPV4 netmask
+	Mask *string `pulumi:"mask"`
+}
+
+type SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasksOutput struct{ *pulumi.OutputState }
+
+func (SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasksOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasks)(nil)).Elem()
+}
+
+func (o SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasksOutput) ToSqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasksOutput() SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasksOutput {
+	return o
+}
+
+func (o SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasksOutput) ToSqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasksOutputWithContext(ctx context.Context) SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasksOutput {
+	return o
+}
+
+// IPV4 address
+func (o SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasksOutput) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasks) *string {
+		return v.IpAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// IPV4 netmask
+func (o SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasksOutput) Mask() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasks) *string {
+		return v.Mask
+	}).(pulumi.StringPtrOutput)
+}
+
+type SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasksArrayOutput struct{ *pulumi.OutputState }
+
+func (SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasksArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasks)(nil)).Elem()
+}
+
+func (o SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasksArrayOutput) ToSqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasksArrayOutput() SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasksArrayOutput {
+	return o
+}
+
+func (o SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasksArrayOutput) ToSqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasksArrayOutputWithContext(ctx context.Context) SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasksArrayOutput {
+	return o
+}
+
+func (o SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasksArrayOutput) Index(i pulumi.IntInput) SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasksOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasks {
+		return vs[0].([]SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasks)[vs[1].(int)]
+	}).(SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasksOutput)
 }
 
 // The raw kubernetes information.
@@ -9534,6 +13779,8 @@ type SqlServerAvailabilityGroupResourcePropertiesResponse struct {
 	Replicas *SqlServerAvailabilityGroupResourcePropertiesResponseReplicas `pulumi:"replicas"`
 	// the SQL server name.
 	ServerName string `pulumi:"serverName"`
+	// The unique ID of the hybrid machine that this resource belongs to.
+	VmId string `pulumi:"vmId"`
 }
 
 // The properties of Arc Sql Server availability group resource
@@ -9595,6 +13842,11 @@ func (o SqlServerAvailabilityGroupResourcePropertiesResponseOutput) Replicas() S
 // the SQL server name.
 func (o SqlServerAvailabilityGroupResourcePropertiesResponseOutput) ServerName() pulumi.StringOutput {
 	return o.ApplyT(func(v SqlServerAvailabilityGroupResourcePropertiesResponse) string { return v.ServerName }).(pulumi.StringOutput)
+}
+
+// The unique ID of the hybrid machine that this resource belongs to.
+func (o SqlServerAvailabilityGroupResourcePropertiesResponseOutput) VmId() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerAvailabilityGroupResourcePropertiesResponse) string { return v.VmId }).(pulumi.StringOutput)
 }
 
 // A list of Availability Group Database Replicas.
@@ -9758,20 +14010,32 @@ func (o SqlServerAvailabilityGroupResourcePropertiesResponseReplicasPtrOutput) V
 // The properties of Arc Sql Server database resource
 type SqlServerDatabaseResourceProperties struct {
 	BackupInformation *SqlServerDatabaseResourcePropertiesBackupInformation `pulumi:"backupInformation"`
+	// The backup profile for the SQL server.
+	BackupPolicy *BackupPolicy `pulumi:"backupPolicy"`
 	// Collation of the database.
 	CollationName *string `pulumi:"collationName"`
 	// Compatibility level of the database
 	CompatibilityLevel *int `pulumi:"compatibilityLevel"`
+	// Database create mode. PointInTimeRestore: Create a database by restoring a point in time backup of an existing database. sourceDatabaseId and restorePointInTime must be specified.
+	CreateMode *string `pulumi:"createMode"`
+	// Total size in MB for the data (mdf and ndf) files for this database.
+	DataFileSizeMB *float64 `pulumi:"dataFileSizeMB"`
 	// Creation date of the database.
 	DatabaseCreationDate *string `pulumi:"databaseCreationDate"`
 	// List of features that are enabled for the database
 	DatabaseOptions *SqlServerDatabaseResourcePropertiesDatabaseOptions `pulumi:"databaseOptions"`
 	// Whether the database is read only or not.
 	IsReadOnly *bool `pulumi:"isReadOnly"`
+	// Total size in MB for the log (ldf) files for this database.
+	LogFileSizeMB *float64 `pulumi:"logFileSizeMB"`
 	// Status of the database.
 	RecoveryMode *string `pulumi:"recoveryMode"`
+	// Conditional. If createMode is PointInTimeRestore, this value is required. Specifies the point in time (ISO8601 format) of the source database that will be restored to create the new database.
+	RestorePointInTime *string `pulumi:"restorePointInTime"`
 	// Size of the database.
 	SizeMB *float64 `pulumi:"sizeMB"`
+	// The name of the source database associated with create operation of this database.
+	SourceDatabaseId *string `pulumi:"sourceDatabaseId"`
 	// Space left of the database.
 	SpaceAvailableMB *float64 `pulumi:"spaceAvailableMB"`
 	// State of the database.
@@ -9792,20 +14056,32 @@ type SqlServerDatabaseResourcePropertiesInput interface {
 // The properties of Arc Sql Server database resource
 type SqlServerDatabaseResourcePropertiesArgs struct {
 	BackupInformation SqlServerDatabaseResourcePropertiesBackupInformationPtrInput `pulumi:"backupInformation"`
+	// The backup profile for the SQL server.
+	BackupPolicy BackupPolicyPtrInput `pulumi:"backupPolicy"`
 	// Collation of the database.
 	CollationName pulumi.StringPtrInput `pulumi:"collationName"`
 	// Compatibility level of the database
 	CompatibilityLevel pulumi.IntPtrInput `pulumi:"compatibilityLevel"`
+	// Database create mode. PointInTimeRestore: Create a database by restoring a point in time backup of an existing database. sourceDatabaseId and restorePointInTime must be specified.
+	CreateMode pulumi.StringPtrInput `pulumi:"createMode"`
+	// Total size in MB for the data (mdf and ndf) files for this database.
+	DataFileSizeMB pulumi.Float64PtrInput `pulumi:"dataFileSizeMB"`
 	// Creation date of the database.
 	DatabaseCreationDate pulumi.StringPtrInput `pulumi:"databaseCreationDate"`
 	// List of features that are enabled for the database
 	DatabaseOptions SqlServerDatabaseResourcePropertiesDatabaseOptionsPtrInput `pulumi:"databaseOptions"`
 	// Whether the database is read only or not.
 	IsReadOnly pulumi.BoolPtrInput `pulumi:"isReadOnly"`
+	// Total size in MB for the log (ldf) files for this database.
+	LogFileSizeMB pulumi.Float64PtrInput `pulumi:"logFileSizeMB"`
 	// Status of the database.
 	RecoveryMode pulumi.StringPtrInput `pulumi:"recoveryMode"`
+	// Conditional. If createMode is PointInTimeRestore, this value is required. Specifies the point in time (ISO8601 format) of the source database that will be restored to create the new database.
+	RestorePointInTime pulumi.StringPtrInput `pulumi:"restorePointInTime"`
 	// Size of the database.
 	SizeMB pulumi.Float64PtrInput `pulumi:"sizeMB"`
+	// The name of the source database associated with create operation of this database.
+	SourceDatabaseId pulumi.StringPtrInput `pulumi:"sourceDatabaseId"`
 	// Space left of the database.
 	SpaceAvailableMB pulumi.Float64PtrInput `pulumi:"spaceAvailableMB"`
 	// State of the database.
@@ -9845,6 +14121,11 @@ func (o SqlServerDatabaseResourcePropertiesOutput) BackupInformation() SqlServer
 	}).(SqlServerDatabaseResourcePropertiesBackupInformationPtrOutput)
 }
 
+// The backup profile for the SQL server.
+func (o SqlServerDatabaseResourcePropertiesOutput) BackupPolicy() BackupPolicyPtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourceProperties) *BackupPolicy { return v.BackupPolicy }).(BackupPolicyPtrOutput)
+}
+
 // Collation of the database.
 func (o SqlServerDatabaseResourcePropertiesOutput) CollationName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlServerDatabaseResourceProperties) *string { return v.CollationName }).(pulumi.StringPtrOutput)
@@ -9853,6 +14134,16 @@ func (o SqlServerDatabaseResourcePropertiesOutput) CollationName() pulumi.String
 // Compatibility level of the database
 func (o SqlServerDatabaseResourcePropertiesOutput) CompatibilityLevel() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SqlServerDatabaseResourceProperties) *int { return v.CompatibilityLevel }).(pulumi.IntPtrOutput)
+}
+
+// Database create mode. PointInTimeRestore: Create a database by restoring a point in time backup of an existing database. sourceDatabaseId and restorePointInTime must be specified.
+func (o SqlServerDatabaseResourcePropertiesOutput) CreateMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourceProperties) *string { return v.CreateMode }).(pulumi.StringPtrOutput)
+}
+
+// Total size in MB for the data (mdf and ndf) files for this database.
+func (o SqlServerDatabaseResourcePropertiesOutput) DataFileSizeMB() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourceProperties) *float64 { return v.DataFileSizeMB }).(pulumi.Float64PtrOutput)
 }
 
 // Creation date of the database.
@@ -9872,14 +14163,29 @@ func (o SqlServerDatabaseResourcePropertiesOutput) IsReadOnly() pulumi.BoolPtrOu
 	return o.ApplyT(func(v SqlServerDatabaseResourceProperties) *bool { return v.IsReadOnly }).(pulumi.BoolPtrOutput)
 }
 
+// Total size in MB for the log (ldf) files for this database.
+func (o SqlServerDatabaseResourcePropertiesOutput) LogFileSizeMB() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourceProperties) *float64 { return v.LogFileSizeMB }).(pulumi.Float64PtrOutput)
+}
+
 // Status of the database.
 func (o SqlServerDatabaseResourcePropertiesOutput) RecoveryMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlServerDatabaseResourceProperties) *string { return v.RecoveryMode }).(pulumi.StringPtrOutput)
 }
 
+// Conditional. If createMode is PointInTimeRestore, this value is required. Specifies the point in time (ISO8601 format) of the source database that will be restored to create the new database.
+func (o SqlServerDatabaseResourcePropertiesOutput) RestorePointInTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourceProperties) *string { return v.RestorePointInTime }).(pulumi.StringPtrOutput)
+}
+
 // Size of the database.
 func (o SqlServerDatabaseResourcePropertiesOutput) SizeMB() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v SqlServerDatabaseResourceProperties) *float64 { return v.SizeMB }).(pulumi.Float64PtrOutput)
+}
+
+// The name of the source database associated with create operation of this database.
+func (o SqlServerDatabaseResourcePropertiesOutput) SourceDatabaseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourceProperties) *string { return v.SourceDatabaseId }).(pulumi.StringPtrOutput)
 }
 
 // Space left of the database.
@@ -10292,26 +14598,46 @@ func (o SqlServerDatabaseResourcePropertiesDatabaseOptionsPtrOutput) IsTrustwort
 // The properties of Arc Sql Server database resource
 type SqlServerDatabaseResourcePropertiesResponse struct {
 	BackupInformation *SqlServerDatabaseResourcePropertiesResponseBackupInformation `pulumi:"backupInformation"`
+	// The backup profile for the SQL server.
+	BackupPolicy *BackupPolicyResponse `pulumi:"backupPolicy"`
 	// Collation of the database.
 	CollationName *string `pulumi:"collationName"`
 	// Compatibility level of the database
 	CompatibilityLevel *int `pulumi:"compatibilityLevel"`
+	// Database create mode. PointInTimeRestore: Create a database by restoring a point in time backup of an existing database. sourceDatabaseId and restorePointInTime must be specified.
+	CreateMode *string `pulumi:"createMode"`
+	// Total size in MB for the data (mdf and ndf) files for this database.
+	DataFileSizeMB *float64 `pulumi:"dataFileSizeMB"`
 	// Creation date of the database.
 	DatabaseCreationDate *string `pulumi:"databaseCreationDate"`
 	// List of features that are enabled for the database
 	DatabaseOptions *SqlServerDatabaseResourcePropertiesResponseDatabaseOptions `pulumi:"databaseOptions"`
+	// This records the earliest start date and time that restore is available for this database (ISO8601 format).
+	EarliestRestoreDate string `pulumi:"earliestRestoreDate"`
 	// Whether the database is read only or not.
 	IsReadOnly *bool `pulumi:"isReadOnly"`
+	// The time when last successful database upload was performed.
+	LastDatabaseUploadTime string `pulumi:"lastDatabaseUploadTime"`
+	// Total size in MB for the log (ldf) files for this database.
+	LogFileSizeMB *float64 `pulumi:"logFileSizeMB"`
+	// Migration related configuration.
+	Migration *DataBaseMigrationResponse `pulumi:"migration"`
 	// The provisioning state of the Arc-enabled SQL Server database resource.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Status of the database.
 	RecoveryMode *string `pulumi:"recoveryMode"`
+	// Conditional. If createMode is PointInTimeRestore, this value is required. Specifies the point in time (ISO8601 format) of the source database that will be restored to create the new database.
+	RestorePointInTime *string `pulumi:"restorePointInTime"`
 	// Size of the database.
 	SizeMB *float64 `pulumi:"sizeMB"`
+	// The name of the source database associated with create operation of this database.
+	SourceDatabaseId *string `pulumi:"sourceDatabaseId"`
 	// Space left of the database.
 	SpaceAvailableMB *float64 `pulumi:"spaceAvailableMB"`
 	// State of the database.
 	State *string `pulumi:"state"`
+	// The unique ID of the hybrid machine that this resource belongs to.
+	VmId string `pulumi:"vmId"`
 }
 
 // The properties of Arc Sql Server database resource
@@ -10335,6 +14661,11 @@ func (o SqlServerDatabaseResourcePropertiesResponseOutput) BackupInformation() S
 	}).(SqlServerDatabaseResourcePropertiesResponseBackupInformationPtrOutput)
 }
 
+// The backup profile for the SQL server.
+func (o SqlServerDatabaseResourcePropertiesResponseOutput) BackupPolicy() BackupPolicyResponsePtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesResponse) *BackupPolicyResponse { return v.BackupPolicy }).(BackupPolicyResponsePtrOutput)
+}
+
 // Collation of the database.
 func (o SqlServerDatabaseResourcePropertiesResponseOutput) CollationName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesResponse) *string { return v.CollationName }).(pulumi.StringPtrOutput)
@@ -10343,6 +14674,16 @@ func (o SqlServerDatabaseResourcePropertiesResponseOutput) CollationName() pulum
 // Compatibility level of the database
 func (o SqlServerDatabaseResourcePropertiesResponseOutput) CompatibilityLevel() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesResponse) *int { return v.CompatibilityLevel }).(pulumi.IntPtrOutput)
+}
+
+// Database create mode. PointInTimeRestore: Create a database by restoring a point in time backup of an existing database. sourceDatabaseId and restorePointInTime must be specified.
+func (o SqlServerDatabaseResourcePropertiesResponseOutput) CreateMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesResponse) *string { return v.CreateMode }).(pulumi.StringPtrOutput)
+}
+
+// Total size in MB for the data (mdf and ndf) files for this database.
+func (o SqlServerDatabaseResourcePropertiesResponseOutput) DataFileSizeMB() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesResponse) *float64 { return v.DataFileSizeMB }).(pulumi.Float64PtrOutput)
 }
 
 // Creation date of the database.
@@ -10357,9 +14698,29 @@ func (o SqlServerDatabaseResourcePropertiesResponseOutput) DatabaseOptions() Sql
 	}).(SqlServerDatabaseResourcePropertiesResponseDatabaseOptionsPtrOutput)
 }
 
+// This records the earliest start date and time that restore is available for this database (ISO8601 format).
+func (o SqlServerDatabaseResourcePropertiesResponseOutput) EarliestRestoreDate() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesResponse) string { return v.EarliestRestoreDate }).(pulumi.StringOutput)
+}
+
 // Whether the database is read only or not.
 func (o SqlServerDatabaseResourcePropertiesResponseOutput) IsReadOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesResponse) *bool { return v.IsReadOnly }).(pulumi.BoolPtrOutput)
+}
+
+// The time when last successful database upload was performed.
+func (o SqlServerDatabaseResourcePropertiesResponseOutput) LastDatabaseUploadTime() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesResponse) string { return v.LastDatabaseUploadTime }).(pulumi.StringOutput)
+}
+
+// Total size in MB for the log (ldf) files for this database.
+func (o SqlServerDatabaseResourcePropertiesResponseOutput) LogFileSizeMB() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesResponse) *float64 { return v.LogFileSizeMB }).(pulumi.Float64PtrOutput)
+}
+
+// Migration related configuration.
+func (o SqlServerDatabaseResourcePropertiesResponseOutput) Migration() DataBaseMigrationResponsePtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesResponse) *DataBaseMigrationResponse { return v.Migration }).(DataBaseMigrationResponsePtrOutput)
 }
 
 // The provisioning state of the Arc-enabled SQL Server database resource.
@@ -10372,9 +14733,19 @@ func (o SqlServerDatabaseResourcePropertiesResponseOutput) RecoveryMode() pulumi
 	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesResponse) *string { return v.RecoveryMode }).(pulumi.StringPtrOutput)
 }
 
+// Conditional. If createMode is PointInTimeRestore, this value is required. Specifies the point in time (ISO8601 format) of the source database that will be restored to create the new database.
+func (o SqlServerDatabaseResourcePropertiesResponseOutput) RestorePointInTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesResponse) *string { return v.RestorePointInTime }).(pulumi.StringPtrOutput)
+}
+
 // Size of the database.
 func (o SqlServerDatabaseResourcePropertiesResponseOutput) SizeMB() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesResponse) *float64 { return v.SizeMB }).(pulumi.Float64PtrOutput)
+}
+
+// The name of the source database associated with create operation of this database.
+func (o SqlServerDatabaseResourcePropertiesResponseOutput) SourceDatabaseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesResponse) *string { return v.SourceDatabaseId }).(pulumi.StringPtrOutput)
 }
 
 // Space left of the database.
@@ -10385,6 +14756,11 @@ func (o SqlServerDatabaseResourcePropertiesResponseOutput) SpaceAvailableMB() pu
 // State of the database.
 func (o SqlServerDatabaseResourcePropertiesResponseOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesResponse) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// The unique ID of the hybrid machine that this resource belongs to.
+func (o SqlServerDatabaseResourcePropertiesResponseOutput) VmId() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesResponse) string { return v.VmId }).(pulumi.StringOutput)
 }
 
 type SqlServerDatabaseResourcePropertiesResponseBackupInformation struct {
@@ -10877,38 +15253,28 @@ func (o SqlServerInstanceJobStatusResponseArrayOutput) Index(i pulumi.IntInput) 
 
 // Properties of SqlServerInstance.
 type SqlServerInstanceProperties struct {
-	// Status of Azure Defender.
-	AzureDefenderStatus *string `pulumi:"azureDefenderStatus"`
-	// Timestamp of last Azure Defender status update.
-	AzureDefenderStatusLastUpdated *string `pulumi:"azureDefenderStatusLastUpdated"`
-	// SQL Server collation.
-	Collation *string `pulumi:"collation"`
-	// ARM Resource id of the container resource (Azure Arc for Servers).
-	ContainerResourceId string `pulumi:"containerResourceId"`
+	// Authentication related configuration for the SQL Server Instance.
+	Authentication *Authentication `pulumi:"authentication"`
+	// The backup profile for the SQL server.
+	BackupPolicy *BackupPolicy `pulumi:"backupPolicy"`
+	// Client connection related configuration.
+	ClientConnection *ClientConnection `pulumi:"clientConnection"`
 	// The number of total cores of the Operating System Environment (OSE) hosting the SQL Server instance.
 	Cores *string `pulumi:"cores"`
-	// SQL Server current version.
-	CurrentVersion *string `pulumi:"currentVersion"`
 	// SQL Server edition.
 	Edition *string `pulumi:"edition"`
 	// Type of host for Azure Arc SQL Server
 	HostType *string `pulumi:"hostType"`
 	// SQL Server instance name.
 	InstanceName *string `pulumi:"instanceName"`
-	// SQL Server license type.
-	LicenseType *string `pulumi:"licenseType"`
-	// SQL Server update level.
-	PatchLevel *string `pulumi:"patchLevel"`
-	// SQL Server product ID.
-	ProductId *string `pulumi:"productId"`
-	// The cloud connectivity status.
-	Status string `pulumi:"status"`
-	// Dynamic TCP ports used by SQL Server.
-	TcpDynamicPorts *string `pulumi:"tcpDynamicPorts"`
-	// Static TCP ports used by SQL Server.
-	TcpStaticPorts *string `pulumi:"tcpStaticPorts"`
-	// The number of logical processors used by the SQL Server instance.
-	VCore *string `pulumi:"vCore"`
+	// Migration related configuration.
+	Migration *Migration `pulumi:"migration"`
+	// The monitoring configuration.
+	Monitoring *Monitoring `pulumi:"monitoring"`
+	// Indicates if the resource represents a SQL Server engine or a SQL Server component service installed on the host.
+	ServiceType *string `pulumi:"serviceType"`
+	// Upgrade Action for this resource is locked until it expires. The Expiration time indicated by this value. It is not locked when it is empty.
+	UpgradeLockedUntil *string `pulumi:"upgradeLockedUntil"`
 	// SQL Server version.
 	Version *string `pulumi:"version"`
 }
@@ -10926,38 +15292,28 @@ type SqlServerInstancePropertiesInput interface {
 
 // Properties of SqlServerInstance.
 type SqlServerInstancePropertiesArgs struct {
-	// Status of Azure Defender.
-	AzureDefenderStatus pulumi.StringPtrInput `pulumi:"azureDefenderStatus"`
-	// Timestamp of last Azure Defender status update.
-	AzureDefenderStatusLastUpdated pulumi.StringPtrInput `pulumi:"azureDefenderStatusLastUpdated"`
-	// SQL Server collation.
-	Collation pulumi.StringPtrInput `pulumi:"collation"`
-	// ARM Resource id of the container resource (Azure Arc for Servers).
-	ContainerResourceId pulumi.StringInput `pulumi:"containerResourceId"`
+	// Authentication related configuration for the SQL Server Instance.
+	Authentication AuthenticationPtrInput `pulumi:"authentication"`
+	// The backup profile for the SQL server.
+	BackupPolicy BackupPolicyPtrInput `pulumi:"backupPolicy"`
+	// Client connection related configuration.
+	ClientConnection ClientConnectionPtrInput `pulumi:"clientConnection"`
 	// The number of total cores of the Operating System Environment (OSE) hosting the SQL Server instance.
 	Cores pulumi.StringPtrInput `pulumi:"cores"`
-	// SQL Server current version.
-	CurrentVersion pulumi.StringPtrInput `pulumi:"currentVersion"`
 	// SQL Server edition.
 	Edition pulumi.StringPtrInput `pulumi:"edition"`
 	// Type of host for Azure Arc SQL Server
 	HostType pulumi.StringPtrInput `pulumi:"hostType"`
 	// SQL Server instance name.
 	InstanceName pulumi.StringPtrInput `pulumi:"instanceName"`
-	// SQL Server license type.
-	LicenseType pulumi.StringPtrInput `pulumi:"licenseType"`
-	// SQL Server update level.
-	PatchLevel pulumi.StringPtrInput `pulumi:"patchLevel"`
-	// SQL Server product ID.
-	ProductId pulumi.StringPtrInput `pulumi:"productId"`
-	// The cloud connectivity status.
-	Status pulumi.StringInput `pulumi:"status"`
-	// Dynamic TCP ports used by SQL Server.
-	TcpDynamicPorts pulumi.StringPtrInput `pulumi:"tcpDynamicPorts"`
-	// Static TCP ports used by SQL Server.
-	TcpStaticPorts pulumi.StringPtrInput `pulumi:"tcpStaticPorts"`
-	// The number of logical processors used by the SQL Server instance.
-	VCore pulumi.StringPtrInput `pulumi:"vCore"`
+	// Migration related configuration.
+	Migration MigrationPtrInput `pulumi:"migration"`
+	// The monitoring configuration.
+	Monitoring MonitoringPtrInput `pulumi:"monitoring"`
+	// Indicates if the resource represents a SQL Server engine or a SQL Server component service installed on the host.
+	ServiceType pulumi.StringPtrInput `pulumi:"serviceType"`
+	// Upgrade Action for this resource is locked until it expires. The Expiration time indicated by this value. It is not locked when it is empty.
+	UpgradeLockedUntil pulumi.StringPtrInput `pulumi:"upgradeLockedUntil"`
 	// SQL Server version.
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
@@ -11040,34 +15396,24 @@ func (o SqlServerInstancePropertiesOutput) ToSqlServerInstancePropertiesPtrOutpu
 	}).(SqlServerInstancePropertiesPtrOutput)
 }
 
-// Status of Azure Defender.
-func (o SqlServerInstancePropertiesOutput) AzureDefenderStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlServerInstanceProperties) *string { return v.AzureDefenderStatus }).(pulumi.StringPtrOutput)
+// Authentication related configuration for the SQL Server Instance.
+func (o SqlServerInstancePropertiesOutput) Authentication() AuthenticationPtrOutput {
+	return o.ApplyT(func(v SqlServerInstanceProperties) *Authentication { return v.Authentication }).(AuthenticationPtrOutput)
 }
 
-// Timestamp of last Azure Defender status update.
-func (o SqlServerInstancePropertiesOutput) AzureDefenderStatusLastUpdated() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlServerInstanceProperties) *string { return v.AzureDefenderStatusLastUpdated }).(pulumi.StringPtrOutput)
+// The backup profile for the SQL server.
+func (o SqlServerInstancePropertiesOutput) BackupPolicy() BackupPolicyPtrOutput {
+	return o.ApplyT(func(v SqlServerInstanceProperties) *BackupPolicy { return v.BackupPolicy }).(BackupPolicyPtrOutput)
 }
 
-// SQL Server collation.
-func (o SqlServerInstancePropertiesOutput) Collation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlServerInstanceProperties) *string { return v.Collation }).(pulumi.StringPtrOutput)
-}
-
-// ARM Resource id of the container resource (Azure Arc for Servers).
-func (o SqlServerInstancePropertiesOutput) ContainerResourceId() pulumi.StringOutput {
-	return o.ApplyT(func(v SqlServerInstanceProperties) string { return v.ContainerResourceId }).(pulumi.StringOutput)
+// Client connection related configuration.
+func (o SqlServerInstancePropertiesOutput) ClientConnection() ClientConnectionPtrOutput {
+	return o.ApplyT(func(v SqlServerInstanceProperties) *ClientConnection { return v.ClientConnection }).(ClientConnectionPtrOutput)
 }
 
 // The number of total cores of the Operating System Environment (OSE) hosting the SQL Server instance.
 func (o SqlServerInstancePropertiesOutput) Cores() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlServerInstanceProperties) *string { return v.Cores }).(pulumi.StringPtrOutput)
-}
-
-// SQL Server current version.
-func (o SqlServerInstancePropertiesOutput) CurrentVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlServerInstanceProperties) *string { return v.CurrentVersion }).(pulumi.StringPtrOutput)
 }
 
 // SQL Server edition.
@@ -11085,39 +15431,24 @@ func (o SqlServerInstancePropertiesOutput) InstanceName() pulumi.StringPtrOutput
 	return o.ApplyT(func(v SqlServerInstanceProperties) *string { return v.InstanceName }).(pulumi.StringPtrOutput)
 }
 
-// SQL Server license type.
-func (o SqlServerInstancePropertiesOutput) LicenseType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlServerInstanceProperties) *string { return v.LicenseType }).(pulumi.StringPtrOutput)
+// Migration related configuration.
+func (o SqlServerInstancePropertiesOutput) Migration() MigrationPtrOutput {
+	return o.ApplyT(func(v SqlServerInstanceProperties) *Migration { return v.Migration }).(MigrationPtrOutput)
 }
 
-// SQL Server update level.
-func (o SqlServerInstancePropertiesOutput) PatchLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlServerInstanceProperties) *string { return v.PatchLevel }).(pulumi.StringPtrOutput)
+// The monitoring configuration.
+func (o SqlServerInstancePropertiesOutput) Monitoring() MonitoringPtrOutput {
+	return o.ApplyT(func(v SqlServerInstanceProperties) *Monitoring { return v.Monitoring }).(MonitoringPtrOutput)
 }
 
-// SQL Server product ID.
-func (o SqlServerInstancePropertiesOutput) ProductId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlServerInstanceProperties) *string { return v.ProductId }).(pulumi.StringPtrOutput)
+// Indicates if the resource represents a SQL Server engine or a SQL Server component service installed on the host.
+func (o SqlServerInstancePropertiesOutput) ServiceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerInstanceProperties) *string { return v.ServiceType }).(pulumi.StringPtrOutput)
 }
 
-// The cloud connectivity status.
-func (o SqlServerInstancePropertiesOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v SqlServerInstanceProperties) string { return v.Status }).(pulumi.StringOutput)
-}
-
-// Dynamic TCP ports used by SQL Server.
-func (o SqlServerInstancePropertiesOutput) TcpDynamicPorts() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlServerInstanceProperties) *string { return v.TcpDynamicPorts }).(pulumi.StringPtrOutput)
-}
-
-// Static TCP ports used by SQL Server.
-func (o SqlServerInstancePropertiesOutput) TcpStaticPorts() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlServerInstanceProperties) *string { return v.TcpStaticPorts }).(pulumi.StringPtrOutput)
-}
-
-// The number of logical processors used by the SQL Server instance.
-func (o SqlServerInstancePropertiesOutput) VCore() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlServerInstanceProperties) *string { return v.VCore }).(pulumi.StringPtrOutput)
+// Upgrade Action for this resource is locked until it expires. The Expiration time indicated by this value. It is not locked when it is empty.
+func (o SqlServerInstancePropertiesOutput) UpgradeLockedUntil() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerInstanceProperties) *string { return v.UpgradeLockedUntil }).(pulumi.StringPtrOutput)
 }
 
 // SQL Server version.
@@ -11149,44 +15480,34 @@ func (o SqlServerInstancePropertiesPtrOutput) Elem() SqlServerInstanceProperties
 	}).(SqlServerInstancePropertiesOutput)
 }
 
-// Status of Azure Defender.
-func (o SqlServerInstancePropertiesPtrOutput) AzureDefenderStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlServerInstanceProperties) *string {
+// Authentication related configuration for the SQL Server Instance.
+func (o SqlServerInstancePropertiesPtrOutput) Authentication() AuthenticationPtrOutput {
+	return o.ApplyT(func(v *SqlServerInstanceProperties) *Authentication {
 		if v == nil {
 			return nil
 		}
-		return v.AzureDefenderStatus
-	}).(pulumi.StringPtrOutput)
+		return v.Authentication
+	}).(AuthenticationPtrOutput)
 }
 
-// Timestamp of last Azure Defender status update.
-func (o SqlServerInstancePropertiesPtrOutput) AzureDefenderStatusLastUpdated() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlServerInstanceProperties) *string {
+// The backup profile for the SQL server.
+func (o SqlServerInstancePropertiesPtrOutput) BackupPolicy() BackupPolicyPtrOutput {
+	return o.ApplyT(func(v *SqlServerInstanceProperties) *BackupPolicy {
 		if v == nil {
 			return nil
 		}
-		return v.AzureDefenderStatusLastUpdated
-	}).(pulumi.StringPtrOutput)
+		return v.BackupPolicy
+	}).(BackupPolicyPtrOutput)
 }
 
-// SQL Server collation.
-func (o SqlServerInstancePropertiesPtrOutput) Collation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlServerInstanceProperties) *string {
+// Client connection related configuration.
+func (o SqlServerInstancePropertiesPtrOutput) ClientConnection() ClientConnectionPtrOutput {
+	return o.ApplyT(func(v *SqlServerInstanceProperties) *ClientConnection {
 		if v == nil {
 			return nil
 		}
-		return v.Collation
-	}).(pulumi.StringPtrOutput)
-}
-
-// ARM Resource id of the container resource (Azure Arc for Servers).
-func (o SqlServerInstancePropertiesPtrOutput) ContainerResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlServerInstanceProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ContainerResourceId
-	}).(pulumi.StringPtrOutput)
+		return v.ClientConnection
+	}).(ClientConnectionPtrOutput)
 }
 
 // The number of total cores of the Operating System Environment (OSE) hosting the SQL Server instance.
@@ -11196,16 +15517,6 @@ func (o SqlServerInstancePropertiesPtrOutput) Cores() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Cores
-	}).(pulumi.StringPtrOutput)
-}
-
-// SQL Server current version.
-func (o SqlServerInstancePropertiesPtrOutput) CurrentVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlServerInstanceProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CurrentVersion
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -11239,73 +15550,43 @@ func (o SqlServerInstancePropertiesPtrOutput) InstanceName() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// SQL Server license type.
-func (o SqlServerInstancePropertiesPtrOutput) LicenseType() pulumi.StringPtrOutput {
+// Migration related configuration.
+func (o SqlServerInstancePropertiesPtrOutput) Migration() MigrationPtrOutput {
+	return o.ApplyT(func(v *SqlServerInstanceProperties) *Migration {
+		if v == nil {
+			return nil
+		}
+		return v.Migration
+	}).(MigrationPtrOutput)
+}
+
+// The monitoring configuration.
+func (o SqlServerInstancePropertiesPtrOutput) Monitoring() MonitoringPtrOutput {
+	return o.ApplyT(func(v *SqlServerInstanceProperties) *Monitoring {
+		if v == nil {
+			return nil
+		}
+		return v.Monitoring
+	}).(MonitoringPtrOutput)
+}
+
+// Indicates if the resource represents a SQL Server engine or a SQL Server component service installed on the host.
+func (o SqlServerInstancePropertiesPtrOutput) ServiceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlServerInstanceProperties) *string {
 		if v == nil {
 			return nil
 		}
-		return v.LicenseType
+		return v.ServiceType
 	}).(pulumi.StringPtrOutput)
 }
 
-// SQL Server update level.
-func (o SqlServerInstancePropertiesPtrOutput) PatchLevel() pulumi.StringPtrOutput {
+// Upgrade Action for this resource is locked until it expires. The Expiration time indicated by this value. It is not locked when it is empty.
+func (o SqlServerInstancePropertiesPtrOutput) UpgradeLockedUntil() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlServerInstanceProperties) *string {
 		if v == nil {
 			return nil
 		}
-		return v.PatchLevel
-	}).(pulumi.StringPtrOutput)
-}
-
-// SQL Server product ID.
-func (o SqlServerInstancePropertiesPtrOutput) ProductId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlServerInstanceProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ProductId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The cloud connectivity status.
-func (o SqlServerInstancePropertiesPtrOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlServerInstanceProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Status
-	}).(pulumi.StringPtrOutput)
-}
-
-// Dynamic TCP ports used by SQL Server.
-func (o SqlServerInstancePropertiesPtrOutput) TcpDynamicPorts() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlServerInstanceProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TcpDynamicPorts
-	}).(pulumi.StringPtrOutput)
-}
-
-// Static TCP ports used by SQL Server.
-func (o SqlServerInstancePropertiesPtrOutput) TcpStaticPorts() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlServerInstanceProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TcpStaticPorts
-	}).(pulumi.StringPtrOutput)
-}
-
-// The number of logical processors used by the SQL Server instance.
-func (o SqlServerInstancePropertiesPtrOutput) VCore() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlServerInstanceProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.VCore
+		return v.UpgradeLockedUntil
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -11321,12 +15602,20 @@ func (o SqlServerInstancePropertiesPtrOutput) Version() pulumi.StringPtrOutput {
 
 // Properties of SqlServerInstance.
 type SqlServerInstancePropertiesResponse struct {
+	// The role of the SQL Server, based on availability.
+	AlwaysOnRole string `pulumi:"alwaysOnRole"`
+	// Authentication related configuration for the SQL Server Instance.
+	Authentication *AuthenticationResponse `pulumi:"authentication"`
 	// Status of Azure Defender.
-	AzureDefenderStatus *string `pulumi:"azureDefenderStatus"`
+	AzureDefenderStatus string `pulumi:"azureDefenderStatus"`
 	// Timestamp of last Azure Defender status update.
-	AzureDefenderStatusLastUpdated *string `pulumi:"azureDefenderStatusLastUpdated"`
+	AzureDefenderStatusLastUpdated string `pulumi:"azureDefenderStatusLastUpdated"`
+	// The backup profile for the SQL server.
+	BackupPolicy *BackupPolicyResponse `pulumi:"backupPolicy"`
+	// Client connection related configuration.
+	ClientConnection *ClientConnectionResponse `pulumi:"clientConnection"`
 	// SQL Server collation.
-	Collation *string `pulumi:"collation"`
+	Collation string `pulumi:"collation"`
 	// ARM Resource id of the container resource (Azure Arc for Servers).
 	ContainerResourceId string `pulumi:"containerResourceId"`
 	// The number of total cores of the Operating System Environment (OSE) hosting the SQL Server instance.
@@ -11334,31 +15623,61 @@ type SqlServerInstancePropertiesResponse struct {
 	// The time when the resource was created.
 	CreateTime string `pulumi:"createTime"`
 	// SQL Server current version.
-	CurrentVersion *string `pulumi:"currentVersion"`
+	CurrentVersion string `pulumi:"currentVersion"`
+	// Database mirroring endpoint related properties.
+	DatabaseMirroringEndpoint *DBMEndpointResponse `pulumi:"databaseMirroringEndpoint"`
+	// Indicates whether database master key exists in SQL Server.
+	DbMasterKeyExists bool `pulumi:"dbMasterKeyExists"`
 	// SQL Server edition.
 	Edition *string `pulumi:"edition"`
+	// Failover Cluster Instance properties.
+	FailoverCluster *FailoverClusterResponse `pulumi:"failoverCluster"`
 	// Type of host for Azure Arc SQL Server
 	HostType *string `pulumi:"hostType"`
 	// SQL Server instance name.
 	InstanceName *string `pulumi:"instanceName"`
+	// Indicates whether DigiCert PKI root-authority certificate (trusted by Azure) exists in SQL Server and trusted for Azure database.windows.net domains.
+	IsDigiCertPkiCertTrustConfigured bool `pulumi:"isDigiCertPkiCertTrustConfigured"`
+	// Indicates whether always On availability groups is enabled in SQL Server.
+	IsHadrEnabled bool `pulumi:"isHadrEnabled"`
+	// Indicates whether Microsoft PKI root-authority certificate (trusted by Azure) exists in SQL Server and trusted for Azure database.windows.net domains.
+	IsMicrosoftPkiCertTrustConfigured bool `pulumi:"isMicrosoftPkiCertTrustConfigured"`
+	// The time when last successful inventory upload was performed.
+	LastInventoryUploadTime string `pulumi:"lastInventoryUploadTime"`
+	// The time when last successful usage upload was performed.
+	LastUsageUploadTime string `pulumi:"lastUsageUploadTime"`
 	// SQL Server license type.
-	LicenseType *string `pulumi:"licenseType"`
+	LicenseType string `pulumi:"licenseType"`
+	// max server memory (MB) value configured for this instance.
+	MaxServerMemoryMB float64 `pulumi:"maxServerMemoryMB"`
+	// Migration related configuration.
+	Migration *MigrationResponse `pulumi:"migration"`
+	// The monitoring configuration.
+	Monitoring *MonitoringResponse `pulumi:"monitoring"`
 	// SQL Server update level.
-	PatchLevel *string `pulumi:"patchLevel"`
+	PatchLevel string `pulumi:"patchLevel"`
 	// SQL Server product ID.
-	ProductId *string `pulumi:"productId"`
+	ProductId string `pulumi:"productId"`
 	// The provisioning state of the Arc-enabled SQL Server resource.
 	ProvisioningState string `pulumi:"provisioningState"`
+	// Indicates if the resource represents a SQL Server engine or a SQL Server component service installed on the host.
+	ServiceType *string `pulumi:"serviceType"`
 	// The cloud connectivity status.
 	Status string `pulumi:"status"`
 	// Dynamic TCP ports used by SQL Server.
-	TcpDynamicPorts *string `pulumi:"tcpDynamicPorts"`
+	TcpDynamicPorts string `pulumi:"tcpDynamicPorts"`
 	// Static TCP ports used by SQL Server.
-	TcpStaticPorts *string `pulumi:"tcpStaticPorts"`
+	TcpStaticPorts string `pulumi:"tcpStaticPorts"`
+	// An array of integers, where each value represents the enabled trace flags in SQL Server.
+	TraceFlags []int `pulumi:"traceFlags"`
+	// Upgrade Action for this resource is locked until it expires. The Expiration time indicated by this value. It is not locked when it is empty.
+	UpgradeLockedUntil *string `pulumi:"upgradeLockedUntil"`
 	// The number of logical processors used by the SQL Server instance.
-	VCore *string `pulumi:"vCore"`
+	VCore string `pulumi:"vCore"`
 	// SQL Server version.
 	Version *string `pulumi:"version"`
+	// The unique ID of the hybrid machine that this resource belongs to.
+	VmId string `pulumi:"vmId"`
 }
 
 // Properties of SqlServerInstance.
@@ -11376,19 +15695,39 @@ func (o SqlServerInstancePropertiesResponseOutput) ToSqlServerInstanceProperties
 	return o
 }
 
+// The role of the SQL Server, based on availability.
+func (o SqlServerInstancePropertiesResponseOutput) AlwaysOnRole() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) string { return v.AlwaysOnRole }).(pulumi.StringOutput)
+}
+
+// Authentication related configuration for the SQL Server Instance.
+func (o SqlServerInstancePropertiesResponseOutput) Authentication() AuthenticationResponsePtrOutput {
+	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) *AuthenticationResponse { return v.Authentication }).(AuthenticationResponsePtrOutput)
+}
+
 // Status of Azure Defender.
-func (o SqlServerInstancePropertiesResponseOutput) AzureDefenderStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) *string { return v.AzureDefenderStatus }).(pulumi.StringPtrOutput)
+func (o SqlServerInstancePropertiesResponseOutput) AzureDefenderStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) string { return v.AzureDefenderStatus }).(pulumi.StringOutput)
 }
 
 // Timestamp of last Azure Defender status update.
-func (o SqlServerInstancePropertiesResponseOutput) AzureDefenderStatusLastUpdated() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) *string { return v.AzureDefenderStatusLastUpdated }).(pulumi.StringPtrOutput)
+func (o SqlServerInstancePropertiesResponseOutput) AzureDefenderStatusLastUpdated() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) string { return v.AzureDefenderStatusLastUpdated }).(pulumi.StringOutput)
+}
+
+// The backup profile for the SQL server.
+func (o SqlServerInstancePropertiesResponseOutput) BackupPolicy() BackupPolicyResponsePtrOutput {
+	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) *BackupPolicyResponse { return v.BackupPolicy }).(BackupPolicyResponsePtrOutput)
+}
+
+// Client connection related configuration.
+func (o SqlServerInstancePropertiesResponseOutput) ClientConnection() ClientConnectionResponsePtrOutput {
+	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) *ClientConnectionResponse { return v.ClientConnection }).(ClientConnectionResponsePtrOutput)
 }
 
 // SQL Server collation.
-func (o SqlServerInstancePropertiesResponseOutput) Collation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) *string { return v.Collation }).(pulumi.StringPtrOutput)
+func (o SqlServerInstancePropertiesResponseOutput) Collation() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) string { return v.Collation }).(pulumi.StringOutput)
 }
 
 // ARM Resource id of the container resource (Azure Arc for Servers).
@@ -11407,13 +15746,28 @@ func (o SqlServerInstancePropertiesResponseOutput) CreateTime() pulumi.StringOut
 }
 
 // SQL Server current version.
-func (o SqlServerInstancePropertiesResponseOutput) CurrentVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) *string { return v.CurrentVersion }).(pulumi.StringPtrOutput)
+func (o SqlServerInstancePropertiesResponseOutput) CurrentVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) string { return v.CurrentVersion }).(pulumi.StringOutput)
+}
+
+// Database mirroring endpoint related properties.
+func (o SqlServerInstancePropertiesResponseOutput) DatabaseMirroringEndpoint() DBMEndpointResponsePtrOutput {
+	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) *DBMEndpointResponse { return v.DatabaseMirroringEndpoint }).(DBMEndpointResponsePtrOutput)
+}
+
+// Indicates whether database master key exists in SQL Server.
+func (o SqlServerInstancePropertiesResponseOutput) DbMasterKeyExists() pulumi.BoolOutput {
+	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) bool { return v.DbMasterKeyExists }).(pulumi.BoolOutput)
 }
 
 // SQL Server edition.
 func (o SqlServerInstancePropertiesResponseOutput) Edition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) *string { return v.Edition }).(pulumi.StringPtrOutput)
+}
+
+// Failover Cluster Instance properties.
+func (o SqlServerInstancePropertiesResponseOutput) FailoverCluster() FailoverClusterResponsePtrOutput {
+	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) *FailoverClusterResponse { return v.FailoverCluster }).(FailoverClusterResponsePtrOutput)
 }
 
 // Type of host for Azure Arc SQL Server
@@ -11426,24 +15780,69 @@ func (o SqlServerInstancePropertiesResponseOutput) InstanceName() pulumi.StringP
 	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) *string { return v.InstanceName }).(pulumi.StringPtrOutput)
 }
 
+// Indicates whether DigiCert PKI root-authority certificate (trusted by Azure) exists in SQL Server and trusted for Azure database.windows.net domains.
+func (o SqlServerInstancePropertiesResponseOutput) IsDigiCertPkiCertTrustConfigured() pulumi.BoolOutput {
+	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) bool { return v.IsDigiCertPkiCertTrustConfigured }).(pulumi.BoolOutput)
+}
+
+// Indicates whether always On availability groups is enabled in SQL Server.
+func (o SqlServerInstancePropertiesResponseOutput) IsHadrEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) bool { return v.IsHadrEnabled }).(pulumi.BoolOutput)
+}
+
+// Indicates whether Microsoft PKI root-authority certificate (trusted by Azure) exists in SQL Server and trusted for Azure database.windows.net domains.
+func (o SqlServerInstancePropertiesResponseOutput) IsMicrosoftPkiCertTrustConfigured() pulumi.BoolOutput {
+	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) bool { return v.IsMicrosoftPkiCertTrustConfigured }).(pulumi.BoolOutput)
+}
+
+// The time when last successful inventory upload was performed.
+func (o SqlServerInstancePropertiesResponseOutput) LastInventoryUploadTime() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) string { return v.LastInventoryUploadTime }).(pulumi.StringOutput)
+}
+
+// The time when last successful usage upload was performed.
+func (o SqlServerInstancePropertiesResponseOutput) LastUsageUploadTime() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) string { return v.LastUsageUploadTime }).(pulumi.StringOutput)
+}
+
 // SQL Server license type.
-func (o SqlServerInstancePropertiesResponseOutput) LicenseType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) *string { return v.LicenseType }).(pulumi.StringPtrOutput)
+func (o SqlServerInstancePropertiesResponseOutput) LicenseType() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) string { return v.LicenseType }).(pulumi.StringOutput)
+}
+
+// max server memory (MB) value configured for this instance.
+func (o SqlServerInstancePropertiesResponseOutput) MaxServerMemoryMB() pulumi.Float64Output {
+	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) float64 { return v.MaxServerMemoryMB }).(pulumi.Float64Output)
+}
+
+// Migration related configuration.
+func (o SqlServerInstancePropertiesResponseOutput) Migration() MigrationResponsePtrOutput {
+	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) *MigrationResponse { return v.Migration }).(MigrationResponsePtrOutput)
+}
+
+// The monitoring configuration.
+func (o SqlServerInstancePropertiesResponseOutput) Monitoring() MonitoringResponsePtrOutput {
+	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) *MonitoringResponse { return v.Monitoring }).(MonitoringResponsePtrOutput)
 }
 
 // SQL Server update level.
-func (o SqlServerInstancePropertiesResponseOutput) PatchLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) *string { return v.PatchLevel }).(pulumi.StringPtrOutput)
+func (o SqlServerInstancePropertiesResponseOutput) PatchLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) string { return v.PatchLevel }).(pulumi.StringOutput)
 }
 
 // SQL Server product ID.
-func (o SqlServerInstancePropertiesResponseOutput) ProductId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) *string { return v.ProductId }).(pulumi.StringPtrOutput)
+func (o SqlServerInstancePropertiesResponseOutput) ProductId() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) string { return v.ProductId }).(pulumi.StringOutput)
 }
 
 // The provisioning state of the Arc-enabled SQL Server resource.
 func (o SqlServerInstancePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Indicates if the resource represents a SQL Server engine or a SQL Server component service installed on the host.
+func (o SqlServerInstancePropertiesResponseOutput) ServiceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) *string { return v.ServiceType }).(pulumi.StringPtrOutput)
 }
 
 // The cloud connectivity status.
@@ -11452,23 +15851,38 @@ func (o SqlServerInstancePropertiesResponseOutput) Status() pulumi.StringOutput 
 }
 
 // Dynamic TCP ports used by SQL Server.
-func (o SqlServerInstancePropertiesResponseOutput) TcpDynamicPorts() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) *string { return v.TcpDynamicPorts }).(pulumi.StringPtrOutput)
+func (o SqlServerInstancePropertiesResponseOutput) TcpDynamicPorts() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) string { return v.TcpDynamicPorts }).(pulumi.StringOutput)
 }
 
 // Static TCP ports used by SQL Server.
-func (o SqlServerInstancePropertiesResponseOutput) TcpStaticPorts() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) *string { return v.TcpStaticPorts }).(pulumi.StringPtrOutput)
+func (o SqlServerInstancePropertiesResponseOutput) TcpStaticPorts() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) string { return v.TcpStaticPorts }).(pulumi.StringOutput)
+}
+
+// An array of integers, where each value represents the enabled trace flags in SQL Server.
+func (o SqlServerInstancePropertiesResponseOutput) TraceFlags() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) []int { return v.TraceFlags }).(pulumi.IntArrayOutput)
+}
+
+// Upgrade Action for this resource is locked until it expires. The Expiration time indicated by this value. It is not locked when it is empty.
+func (o SqlServerInstancePropertiesResponseOutput) UpgradeLockedUntil() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) *string { return v.UpgradeLockedUntil }).(pulumi.StringPtrOutput)
 }
 
 // The number of logical processors used by the SQL Server instance.
-func (o SqlServerInstancePropertiesResponseOutput) VCore() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) *string { return v.VCore }).(pulumi.StringPtrOutput)
+func (o SqlServerInstancePropertiesResponseOutput) VCore() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) string { return v.VCore }).(pulumi.StringOutput)
 }
 
 // SQL Server version.
 func (o SqlServerInstancePropertiesResponseOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+// The unique ID of the hybrid machine that this resource belongs to.
+func (o SqlServerInstancePropertiesResponseOutput) VmId() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) string { return v.VmId }).(pulumi.StringOutput)
 }
 
 // The telemetry column for the SQL Server instance.
@@ -11749,6 +16163,100 @@ func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
 // The type of identity that last modified the resource.
 func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
+}
+
+// The target readiness for migration for this database.
+type TargetReadinessResponse struct {
+	// The SKU recommendation summary.
+	AzureSqlDatabase *SkuRecommendationSummaryResponse `pulumi:"azureSqlDatabase"`
+	// The SKU recommendation summary.
+	AzureSqlManagedInstance *SkuRecommendationSummaryResponse `pulumi:"azureSqlManagedInstance"`
+	// The SKU recommendation summary.
+	AzureSqlVirtualMachine *SkuRecommendationSummaryResponse `pulumi:"azureSqlVirtualMachine"`
+}
+
+// The target readiness for migration for this database.
+type TargetReadinessResponseOutput struct{ *pulumi.OutputState }
+
+func (TargetReadinessResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetReadinessResponse)(nil)).Elem()
+}
+
+func (o TargetReadinessResponseOutput) ToTargetReadinessResponseOutput() TargetReadinessResponseOutput {
+	return o
+}
+
+func (o TargetReadinessResponseOutput) ToTargetReadinessResponseOutputWithContext(ctx context.Context) TargetReadinessResponseOutput {
+	return o
+}
+
+// The SKU recommendation summary.
+func (o TargetReadinessResponseOutput) AzureSqlDatabase() SkuRecommendationSummaryResponsePtrOutput {
+	return o.ApplyT(func(v TargetReadinessResponse) *SkuRecommendationSummaryResponse { return v.AzureSqlDatabase }).(SkuRecommendationSummaryResponsePtrOutput)
+}
+
+// The SKU recommendation summary.
+func (o TargetReadinessResponseOutput) AzureSqlManagedInstance() SkuRecommendationSummaryResponsePtrOutput {
+	return o.ApplyT(func(v TargetReadinessResponse) *SkuRecommendationSummaryResponse { return v.AzureSqlManagedInstance }).(SkuRecommendationSummaryResponsePtrOutput)
+}
+
+// The SKU recommendation summary.
+func (o TargetReadinessResponseOutput) AzureSqlVirtualMachine() SkuRecommendationSummaryResponsePtrOutput {
+	return o.ApplyT(func(v TargetReadinessResponse) *SkuRecommendationSummaryResponse { return v.AzureSqlVirtualMachine }).(SkuRecommendationSummaryResponsePtrOutput)
+}
+
+type TargetReadinessResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (TargetReadinessResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TargetReadinessResponse)(nil)).Elem()
+}
+
+func (o TargetReadinessResponsePtrOutput) ToTargetReadinessResponsePtrOutput() TargetReadinessResponsePtrOutput {
+	return o
+}
+
+func (o TargetReadinessResponsePtrOutput) ToTargetReadinessResponsePtrOutputWithContext(ctx context.Context) TargetReadinessResponsePtrOutput {
+	return o
+}
+
+func (o TargetReadinessResponsePtrOutput) Elem() TargetReadinessResponseOutput {
+	return o.ApplyT(func(v *TargetReadinessResponse) TargetReadinessResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TargetReadinessResponse
+		return ret
+	}).(TargetReadinessResponseOutput)
+}
+
+// The SKU recommendation summary.
+func (o TargetReadinessResponsePtrOutput) AzureSqlDatabase() SkuRecommendationSummaryResponsePtrOutput {
+	return o.ApplyT(func(v *TargetReadinessResponse) *SkuRecommendationSummaryResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AzureSqlDatabase
+	}).(SkuRecommendationSummaryResponsePtrOutput)
+}
+
+// The SKU recommendation summary.
+func (o TargetReadinessResponsePtrOutput) AzureSqlManagedInstance() SkuRecommendationSummaryResponsePtrOutput {
+	return o.ApplyT(func(v *TargetReadinessResponse) *SkuRecommendationSummaryResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AzureSqlManagedInstance
+	}).(SkuRecommendationSummaryResponsePtrOutput)
+}
+
+// The SKU recommendation summary.
+func (o TargetReadinessResponsePtrOutput) AzureSqlVirtualMachine() SkuRecommendationSummaryResponsePtrOutput {
+	return o.ApplyT(func(v *TargetReadinessResponse) *SkuRecommendationSummaryResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AzureSqlVirtualMachine
+	}).(SkuRecommendationSummaryResponsePtrOutput)
 }
 
 // Service principal for uploading billing, metrics and logs.
@@ -12339,6 +16847,10 @@ func init() {
 	pulumi.RegisterOutputType(ActiveDirectoryDomainControllersResponsePtrOutput{})
 	pulumi.RegisterOutputType(ActiveDirectoryInformationOutput{})
 	pulumi.RegisterOutputType(ActiveDirectoryInformationPtrOutput{})
+	pulumi.RegisterOutputType(AuthenticationOutput{})
+	pulumi.RegisterOutputType(AuthenticationPtrOutput{})
+	pulumi.RegisterOutputType(AuthenticationResponseOutput{})
+	pulumi.RegisterOutputType(AuthenticationResponsePtrOutput{})
 	pulumi.RegisterOutputType(AvailabilityGroupConfigureOutput{})
 	pulumi.RegisterOutputType(AvailabilityGroupConfigurePtrOutput{})
 	pulumi.RegisterOutputType(AvailabilityGroupConfigureResponseOutput{})
@@ -12351,20 +16863,44 @@ func init() {
 	pulumi.RegisterOutputType(AvailabilityGroupStateResponsePtrOutput{})
 	pulumi.RegisterOutputType(BackgroundJobResponseOutput{})
 	pulumi.RegisterOutputType(BackgroundJobResponsePtrOutput{})
+	pulumi.RegisterOutputType(BackupPolicyOutput{})
+	pulumi.RegisterOutputType(BackupPolicyPtrOutput{})
+	pulumi.RegisterOutputType(BackupPolicyResponseOutput{})
+	pulumi.RegisterOutputType(BackupPolicyResponsePtrOutput{})
 	pulumi.RegisterOutputType(BasicLoginInformationOutput{})
 	pulumi.RegisterOutputType(BasicLoginInformationPtrOutput{})
 	pulumi.RegisterOutputType(BasicLoginInformationResponseOutput{})
 	pulumi.RegisterOutputType(BasicLoginInformationResponsePtrOutput{})
+	pulumi.RegisterOutputType(ClientConnectionOutput{})
+	pulumi.RegisterOutputType(ClientConnectionPtrOutput{})
+	pulumi.RegisterOutputType(ClientConnectionResponseOutput{})
+	pulumi.RegisterOutputType(ClientConnectionResponsePtrOutput{})
+	pulumi.RegisterOutputType(DBMEndpointResponseOutput{})
+	pulumi.RegisterOutputType(DBMEndpointResponsePtrOutput{})
+	pulumi.RegisterOutputType(DataBaseMigrationAssessmentResponseOutput{})
+	pulumi.RegisterOutputType(DataBaseMigrationAssessmentResponsePtrOutput{})
+	pulumi.RegisterOutputType(DataBaseMigrationAssessmentResponseDatabaseAssessmentsOutput{})
+	pulumi.RegisterOutputType(DataBaseMigrationAssessmentResponseDatabaseAssessmentsArrayOutput{})
+	pulumi.RegisterOutputType(DataBaseMigrationResponseOutput{})
+	pulumi.RegisterOutputType(DataBaseMigrationResponsePtrOutput{})
 	pulumi.RegisterOutputType(DataControllerPropertiesOutput{})
 	pulumi.RegisterOutputType(DataControllerPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(EntraAuthenticationOutput{})
+	pulumi.RegisterOutputType(EntraAuthenticationArrayOutput{})
+	pulumi.RegisterOutputType(EntraAuthenticationResponseOutput{})
+	pulumi.RegisterOutputType(EntraAuthenticationResponseArrayOutput{})
 	pulumi.RegisterOutputType(ExtendedLocationOutput{})
 	pulumi.RegisterOutputType(ExtendedLocationPtrOutput{})
 	pulumi.RegisterOutputType(ExtendedLocationResponseOutput{})
 	pulumi.RegisterOutputType(ExtendedLocationResponsePtrOutput{})
+	pulumi.RegisterOutputType(FailoverClusterResponseOutput{})
+	pulumi.RegisterOutputType(FailoverClusterResponsePtrOutput{})
 	pulumi.RegisterOutputType(FailoverGroupPropertiesOutput{})
 	pulumi.RegisterOutputType(FailoverGroupPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(FailoverGroupSpecOutput{})
 	pulumi.RegisterOutputType(FailoverGroupSpecResponseOutput{})
+	pulumi.RegisterOutputType(HostIPAddressInformationResponseOutput{})
+	pulumi.RegisterOutputType(HostIPAddressInformationResponseArrayOutput{})
 	pulumi.RegisterOutputType(K8sActiveDirectoryOutput{})
 	pulumi.RegisterOutputType(K8sActiveDirectoryPtrOutput{})
 	pulumi.RegisterOutputType(K8sActiveDirectoryConnectorOutput{})
@@ -12407,6 +16943,22 @@ func init() {
 	pulumi.RegisterOutputType(LogAnalyticsWorkspaceConfigPtrOutput{})
 	pulumi.RegisterOutputType(LogAnalyticsWorkspaceConfigResponseOutput{})
 	pulumi.RegisterOutputType(LogAnalyticsWorkspaceConfigResponsePtrOutput{})
+	pulumi.RegisterOutputType(MigrationOutput{})
+	pulumi.RegisterOutputType(MigrationPtrOutput{})
+	pulumi.RegisterOutputType(MigrationAssessmentOutput{})
+	pulumi.RegisterOutputType(MigrationAssessmentPtrOutput{})
+	pulumi.RegisterOutputType(MigrationAssessmentResponseOutput{})
+	pulumi.RegisterOutputType(MigrationAssessmentResponsePtrOutput{})
+	pulumi.RegisterOutputType(MigrationAssessmentResponseImpactedObjectsOutput{})
+	pulumi.RegisterOutputType(MigrationAssessmentResponseImpactedObjectsArrayOutput{})
+	pulumi.RegisterOutputType(MigrationAssessmentResponseServerAssessmentsOutput{})
+	pulumi.RegisterOutputType(MigrationAssessmentResponseServerAssessmentsArrayOutput{})
+	pulumi.RegisterOutputType(MigrationResponseOutput{})
+	pulumi.RegisterOutputType(MigrationResponsePtrOutput{})
+	pulumi.RegisterOutputType(MonitoringOutput{})
+	pulumi.RegisterOutputType(MonitoringPtrOutput{})
+	pulumi.RegisterOutputType(MonitoringResponseOutput{})
+	pulumi.RegisterOutputType(MonitoringResponsePtrOutput{})
 	pulumi.RegisterOutputType(OnPremisePropertyOutput{})
 	pulumi.RegisterOutputType(OnPremisePropertyPtrOutput{})
 	pulumi.RegisterOutputType(OnPremisePropertyResponseOutput{})
@@ -12419,6 +16971,30 @@ func init() {
 	pulumi.RegisterOutputType(PostgresInstanceSkuResponsePtrOutput{})
 	pulumi.RegisterOutputType(SequencerActionResponseOutput{})
 	pulumi.RegisterOutputType(SequencerActionResponseArrayOutput{})
+	pulumi.RegisterOutputType(SkuRecommendationResultsAzureSqlDatabaseResponseOutput{})
+	pulumi.RegisterOutputType(SkuRecommendationResultsAzureSqlDatabaseResponsePtrOutput{})
+	pulumi.RegisterOutputType(SkuRecommendationResultsAzureSqlDatabaseResponseCategoryOutput{})
+	pulumi.RegisterOutputType(SkuRecommendationResultsAzureSqlDatabaseResponseCategoryPtrOutput{})
+	pulumi.RegisterOutputType(SkuRecommendationResultsAzureSqlDatabaseResponseTargetSkuOutput{})
+	pulumi.RegisterOutputType(SkuRecommendationResultsAzureSqlDatabaseResponseTargetSkuPtrOutput{})
+	pulumi.RegisterOutputType(SkuRecommendationResultsAzureSqlManagedInstanceResponseOutput{})
+	pulumi.RegisterOutputType(SkuRecommendationResultsAzureSqlManagedInstanceResponsePtrOutput{})
+	pulumi.RegisterOutputType(SkuRecommendationResultsAzureSqlManagedInstanceResponseCategoryOutput{})
+	pulumi.RegisterOutputType(SkuRecommendationResultsAzureSqlManagedInstanceResponseCategoryPtrOutput{})
+	pulumi.RegisterOutputType(SkuRecommendationResultsAzureSqlManagedInstanceResponseTargetSkuOutput{})
+	pulumi.RegisterOutputType(SkuRecommendationResultsAzureSqlManagedInstanceResponseTargetSkuPtrOutput{})
+	pulumi.RegisterOutputType(SkuRecommendationResultsAzureSqlVirtualMachineResponseOutput{})
+	pulumi.RegisterOutputType(SkuRecommendationResultsAzureSqlVirtualMachineResponsePtrOutput{})
+	pulumi.RegisterOutputType(SkuRecommendationResultsAzureSqlVirtualMachineResponseCategoryOutput{})
+	pulumi.RegisterOutputType(SkuRecommendationResultsAzureSqlVirtualMachineResponseCategoryPtrOutput{})
+	pulumi.RegisterOutputType(SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSkuOutput{})
+	pulumi.RegisterOutputType(SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSkuPtrOutput{})
+	pulumi.RegisterOutputType(SkuRecommendationResultsMonthlyCostResponseOutput{})
+	pulumi.RegisterOutputType(SkuRecommendationResultsMonthlyCostResponsePtrOutput{})
+	pulumi.RegisterOutputType(SkuRecommendationResultsResponseOutput{})
+	pulumi.RegisterOutputType(SkuRecommendationResultsResponsePtrOutput{})
+	pulumi.RegisterOutputType(SkuRecommendationSummaryResponseOutput{})
+	pulumi.RegisterOutputType(SkuRecommendationSummaryResponsePtrOutput{})
 	pulumi.RegisterOutputType(SqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutput{})
 	pulumi.RegisterOutputType(SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayOutput{})
 	pulumi.RegisterOutputType(SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseOutput{})
@@ -12427,6 +17003,14 @@ func init() {
 	pulumi.RegisterOutputType(SqlAvailabilityGroupReplicaResourcePropertiesArrayOutput{})
 	pulumi.RegisterOutputType(SqlAvailabilityGroupReplicaResourcePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(SqlAvailabilityGroupReplicaResourcePropertiesResponseArrayOutput{})
+	pulumi.RegisterOutputType(SqlAvailabilityGroupStaticIPListenerPropertiesOutput{})
+	pulumi.RegisterOutputType(SqlAvailabilityGroupStaticIPListenerPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksOutput{})
+	pulumi.RegisterOutputType(SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksArrayOutput{})
+	pulumi.RegisterOutputType(SqlAvailabilityGroupStaticIPListenerPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(SqlAvailabilityGroupStaticIPListenerPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasksOutput{})
+	pulumi.RegisterOutputType(SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasksArrayOutput{})
 	pulumi.RegisterOutputType(SqlManagedInstanceK8sRawOutput{})
 	pulumi.RegisterOutputType(SqlManagedInstanceK8sRawPtrOutput{})
 	pulumi.RegisterOutputType(SqlManagedInstanceK8sRawResponseOutput{})
@@ -12473,6 +17057,8 @@ func init() {
 	pulumi.RegisterOutputType(SqlServerLicensePropertiesOutput{})
 	pulumi.RegisterOutputType(SqlServerLicensePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(TargetReadinessResponseOutput{})
+	pulumi.RegisterOutputType(TargetReadinessResponsePtrOutput{})
 	pulumi.RegisterOutputType(UploadServicePrincipalOutput{})
 	pulumi.RegisterOutputType(UploadServicePrincipalPtrOutput{})
 	pulumi.RegisterOutputType(UploadServicePrincipalResponseOutput{})

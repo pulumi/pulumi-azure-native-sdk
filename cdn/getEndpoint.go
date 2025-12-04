@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 //
-// Uses Azure REST API version 2023-05-01.
+// Uses Azure REST API version 2025-06-01.
 //
-// Other available API versions: 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01.
+// Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupEndpoint(ctx *pulumi.Context, args *LookupEndpointArgs, opts ...pulumi.InvokeOption) (*LookupEndpointResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEndpointResult
@@ -29,14 +29,16 @@ func LookupEndpoint(ctx *pulumi.Context, args *LookupEndpointArgs, opts ...pulum
 type LookupEndpointArgs struct {
 	// Name of the endpoint under the profile which is unique globally.
 	EndpointName string `pulumi:"endpointName"`
-	// Name of the CDN profile which is unique within the resource group.
+	// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
 	ProfileName string `pulumi:"profileName"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // CDN endpoint is the entity within a CDN profile containing configuration information such as origin, protocol, content caching and delivery behavior. The CDN endpoint uses the URL format <endpointname>.azureedge.net.
 type LookupEndpointResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// List of content types on which compression applies. The value should be a valid MIME type.
 	ContentTypesToCompress []string `pulumi:"contentTypesToCompress"`
 	// The custom domains under the endpoint.
@@ -44,12 +46,12 @@ type LookupEndpointResult struct {
 	// A reference to the origin group.
 	DefaultOriginGroup *ResourceReferenceResponse `pulumi:"defaultOriginGroup"`
 	// A policy that specifies the delivery rules to be used for an endpoint.
-	DeliveryPolicy *EndpointPropertiesUpdateParametersResponseDeliveryPolicy `pulumi:"deliveryPolicy"`
+	DeliveryPolicy *EndpointPropertiesUpdateParametersDeliveryPolicyResponse `pulumi:"deliveryPolicy"`
 	// List of rules defining the user's geo access within a CDN endpoint. Each geo filter defines an access rule to a specified path or content, e.g. block APAC for path /pictures/
 	GeoFilters []GeoFilterResponse `pulumi:"geoFilters"`
 	// The host name of the endpoint structured as {endpointName}.{DNSZone}, e.g. contoso.azureedge.net
 	HostName string `pulumi:"hostName"`
-	// Resource ID.
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Indicates whether content compression is enabled on CDN. Default value is false. If compression is enabled, content will be served as compressed if user requests for a compressed version. Content won't be compressed on CDN when requested content is smaller than 1 byte or larger than 1 MB.
 	IsCompressionEnabled *bool `pulumi:"isCompressionEnabled"`
@@ -57,9 +59,9 @@ type LookupEndpointResult struct {
 	IsHttpAllowed *bool `pulumi:"isHttpAllowed"`
 	// Indicates whether HTTPS traffic is allowed on the endpoint. Default value is true. At least one protocol (HTTP or HTTPS) must be allowed.
 	IsHttpsAllowed *bool `pulumi:"isHttpsAllowed"`
-	// Resource location.
+	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
-	// Resource name.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Specifies what scenario the customer wants this CDN endpoint to optimize for, e.g. Download, Media services. With this information, CDN can apply scenario driven optimization.
 	OptimizationType *string `pulumi:"optimizationType"`
@@ -79,16 +81,16 @@ type LookupEndpointResult struct {
 	QueryStringCachingBehavior *string `pulumi:"queryStringCachingBehavior"`
 	// Resource status of the endpoint.
 	ResourceState string `pulumi:"resourceState"`
-	// Read only system data
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// Resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// List of keys used to validate the signed URL hashes.
 	UrlSigningKeys []UrlSigningKeyResponse `pulumi:"urlSigningKeys"`
 	// Defines the Web Application Firewall policy for the endpoint (if applicable)
-	WebApplicationFirewallPolicyLink *EndpointPropertiesUpdateParametersResponseWebApplicationFirewallPolicyLink `pulumi:"webApplicationFirewallPolicyLink"`
+	WebApplicationFirewallPolicyLink *EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponse `pulumi:"webApplicationFirewallPolicyLink"`
 }
 
 // Defaults sets the appropriate defaults for LookupEndpointResult
@@ -123,9 +125,9 @@ func LookupEndpointOutput(ctx *pulumi.Context, args LookupEndpointOutputArgs, op
 type LookupEndpointOutputArgs struct {
 	// Name of the endpoint under the profile which is unique globally.
 	EndpointName pulumi.StringInput `pulumi:"endpointName"`
-	// Name of the CDN profile which is unique within the resource group.
+	// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
 	ProfileName pulumi.StringInput `pulumi:"profileName"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -148,6 +150,11 @@ func (o LookupEndpointResultOutput) ToLookupEndpointResultOutputWithContext(ctx 
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupEndpointResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEndpointResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // List of content types on which compression applies. The value should be a valid MIME type.
 func (o LookupEndpointResultOutput) ContentTypesToCompress() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupEndpointResult) []string { return v.ContentTypesToCompress }).(pulumi.StringArrayOutput)
@@ -164,10 +171,10 @@ func (o LookupEndpointResultOutput) DefaultOriginGroup() ResourceReferenceRespon
 }
 
 // A policy that specifies the delivery rules to be used for an endpoint.
-func (o LookupEndpointResultOutput) DeliveryPolicy() EndpointPropertiesUpdateParametersResponseDeliveryPolicyPtrOutput {
-	return o.ApplyT(func(v LookupEndpointResult) *EndpointPropertiesUpdateParametersResponseDeliveryPolicy {
+func (o LookupEndpointResultOutput) DeliveryPolicy() EndpointPropertiesUpdateParametersDeliveryPolicyResponsePtrOutput {
+	return o.ApplyT(func(v LookupEndpointResult) *EndpointPropertiesUpdateParametersDeliveryPolicyResponse {
 		return v.DeliveryPolicy
-	}).(EndpointPropertiesUpdateParametersResponseDeliveryPolicyPtrOutput)
+	}).(EndpointPropertiesUpdateParametersDeliveryPolicyResponsePtrOutput)
 }
 
 // List of rules defining the user's geo access within a CDN endpoint. Each geo filter defines an access rule to a specified path or content, e.g. block APAC for path /pictures/
@@ -180,7 +187,7 @@ func (o LookupEndpointResultOutput) HostName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEndpointResult) string { return v.HostName }).(pulumi.StringOutput)
 }
 
-// Resource ID.
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupEndpointResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEndpointResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -200,12 +207,12 @@ func (o LookupEndpointResultOutput) IsHttpsAllowed() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupEndpointResult) *bool { return v.IsHttpsAllowed }).(pulumi.BoolPtrOutput)
 }
 
-// Resource location.
+// The geo-location where the resource lives
 func (o LookupEndpointResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEndpointResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o LookupEndpointResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEndpointResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -255,7 +262,7 @@ func (o LookupEndpointResultOutput) ResourceState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEndpointResult) string { return v.ResourceState }).(pulumi.StringOutput)
 }
 
-// Read only system data
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupEndpointResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupEndpointResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
@@ -265,7 +272,7 @@ func (o LookupEndpointResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupEndpointResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupEndpointResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEndpointResult) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -276,10 +283,10 @@ func (o LookupEndpointResultOutput) UrlSigningKeys() UrlSigningKeyResponseArrayO
 }
 
 // Defines the Web Application Firewall policy for the endpoint (if applicable)
-func (o LookupEndpointResultOutput) WebApplicationFirewallPolicyLink() EndpointPropertiesUpdateParametersResponseWebApplicationFirewallPolicyLinkPtrOutput {
-	return o.ApplyT(func(v LookupEndpointResult) *EndpointPropertiesUpdateParametersResponseWebApplicationFirewallPolicyLink {
+func (o LookupEndpointResultOutput) WebApplicationFirewallPolicyLink() EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponsePtrOutput {
+	return o.ApplyT(func(v LookupEndpointResult) *EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponse {
 		return v.WebApplicationFirewallPolicyLink
-	}).(EndpointPropertiesUpdateParametersResponseWebApplicationFirewallPolicyLinkPtrOutput)
+	}).(EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponsePtrOutput)
 }
 
 func init() {

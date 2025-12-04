@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A formula for creating a VM, specifying an image base and other parameters
 //
-// Uses Azure REST API version 2018-09-15. In version 1.x of the Azure Native provider, it used API version 2018-09-15.
+// Uses Azure REST API version 2018-09-15. In version 2.x of the Azure Native provider, it used API version 2018-09-15.
 type Formula struct {
 	pulumi.CustomResourceState
 
 	// The author of the formula.
 	Author pulumi.StringOutput `pulumi:"author"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The creation date of the formula.
 	CreationDate pulumi.StringOutput `pulumi:"creationDate"`
 	// The description of the formula.
@@ -113,11 +115,11 @@ type formulaArgs struct {
 	LabName string `pulumi:"labName"`
 	// The location of the resource.
 	Location *string `pulumi:"location"`
-	// The name of the formula.
+	// The name of the Formula
 	Name *string `pulumi:"name"`
 	// The OS type of the formula.
 	OsType *string `pulumi:"osType"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The tags of the resource.
 	Tags map[string]string `pulumi:"tags"`
@@ -135,11 +137,11 @@ type FormulaArgs struct {
 	LabName pulumi.StringInput
 	// The location of the resource.
 	Location pulumi.StringPtrInput
-	// The name of the formula.
+	// The name of the Formula
 	Name pulumi.StringPtrInput
 	// The OS type of the formula.
 	OsType pulumi.StringPtrInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The tags of the resource.
 	Tags pulumi.StringMapInput
@@ -187,6 +189,11 @@ func (o FormulaOutput) ToFormulaOutputWithContext(ctx context.Context) FormulaOu
 // The author of the formula.
 func (o FormulaOutput) Author() pulumi.StringOutput {
 	return o.ApplyT(func(v *Formula) pulumi.StringOutput { return v.Author }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o FormulaOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Formula) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of the formula.

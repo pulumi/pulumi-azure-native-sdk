@@ -8,26 +8,28 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The description of Fhir Service
 //
-// Uses Azure REST API version 2023-02-28. In version 1.x of the Azure Native provider, it used API version 2022-05-15.
+// Uses Azure REST API version 2024-03-31. In version 2.x of the Azure Native provider, it used API version 2023-02-28.
 //
-// Other available API versions: 2023-09-06, 2023-11-01, 2023-12-01, 2024-03-01, 2024-03-31, 2025-03-01-preview.
+// Other available API versions: 2022-10-01-preview, 2022-12-01, 2023-02-28, 2023-09-06, 2023-11-01, 2023-12-01, 2024-03-01, 2025-03-01-preview, 2025-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native healthcareapis [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type FhirService struct {
 	pulumi.CustomResourceState
 
-	// Fhir Service access policies.
-	AccessPolicies FhirServiceAccessPolicyEntryResponseArrayOutput `pulumi:"accessPolicies"`
 	// Fhir Service Azure container registry configuration.
 	AcrConfiguration FhirServiceAcrConfigurationResponsePtrOutput `pulumi:"acrConfiguration"`
 	// Fhir Service authentication configuration.
 	AuthenticationConfiguration FhirServiceAuthenticationConfigurationResponsePtrOutput `pulumi:"authenticationConfiguration"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Fhir Service Cors configuration.
 	CorsConfiguration FhirServiceCorsConfigurationResponsePtrOutput `pulumi:"corsConfiguration"`
+	// The encryption settings of the FHIR service
+	Encryption EncryptionResponsePtrOutput `pulumi:"encryption"`
 	// An etag associated with the resource, used for optimistic concurrency when editing it.
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// Fhir Service event support status.
@@ -118,6 +120,9 @@ func NewFhirService(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:healthcareapis/v20250301preview:FhirService"),
 		},
+		{
+			Type: pulumi.String("azure-native:healthcareapis/v20250401preview:FhirService"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -153,14 +158,14 @@ func (FhirServiceState) ElementType() reflect.Type {
 }
 
 type fhirServiceArgs struct {
-	// Fhir Service access policies.
-	AccessPolicies []FhirServiceAccessPolicyEntry `pulumi:"accessPolicies"`
 	// Fhir Service Azure container registry configuration.
 	AcrConfiguration *FhirServiceAcrConfiguration `pulumi:"acrConfiguration"`
 	// Fhir Service authentication configuration.
 	AuthenticationConfiguration *FhirServiceAuthenticationConfiguration `pulumi:"authenticationConfiguration"`
 	// Fhir Service Cors configuration.
 	CorsConfiguration *FhirServiceCorsConfiguration `pulumi:"corsConfiguration"`
+	// The encryption settings of the FHIR service
+	Encryption *Encryption `pulumi:"encryption"`
 	// Fhir Service export configuration.
 	ExportConfiguration *FhirServiceExportConfiguration `pulumi:"exportConfiguration"`
 	// The name of FHIR Service resource.
@@ -187,14 +192,14 @@ type fhirServiceArgs struct {
 
 // The set of arguments for constructing a FhirService resource.
 type FhirServiceArgs struct {
-	// Fhir Service access policies.
-	AccessPolicies FhirServiceAccessPolicyEntryArrayInput
 	// Fhir Service Azure container registry configuration.
 	AcrConfiguration FhirServiceAcrConfigurationPtrInput
 	// Fhir Service authentication configuration.
 	AuthenticationConfiguration FhirServiceAuthenticationConfigurationPtrInput
 	// Fhir Service Cors configuration.
 	CorsConfiguration FhirServiceCorsConfigurationPtrInput
+	// The encryption settings of the FHIR service
+	Encryption EncryptionPtrInput
 	// Fhir Service export configuration.
 	ExportConfiguration FhirServiceExportConfigurationPtrInput
 	// The name of FHIR Service resource.
@@ -256,11 +261,6 @@ func (o FhirServiceOutput) ToFhirServiceOutputWithContext(ctx context.Context) F
 	return o
 }
 
-// Fhir Service access policies.
-func (o FhirServiceOutput) AccessPolicies() FhirServiceAccessPolicyEntryResponseArrayOutput {
-	return o.ApplyT(func(v *FhirService) FhirServiceAccessPolicyEntryResponseArrayOutput { return v.AccessPolicies }).(FhirServiceAccessPolicyEntryResponseArrayOutput)
-}
-
 // Fhir Service Azure container registry configuration.
 func (o FhirServiceOutput) AcrConfiguration() FhirServiceAcrConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v *FhirService) FhirServiceAcrConfigurationResponsePtrOutput { return v.AcrConfiguration }).(FhirServiceAcrConfigurationResponsePtrOutput)
@@ -273,9 +273,19 @@ func (o FhirServiceOutput) AuthenticationConfiguration() FhirServiceAuthenticati
 	}).(FhirServiceAuthenticationConfigurationResponsePtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o FhirServiceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *FhirService) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Fhir Service Cors configuration.
 func (o FhirServiceOutput) CorsConfiguration() FhirServiceCorsConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v *FhirService) FhirServiceCorsConfigurationResponsePtrOutput { return v.CorsConfiguration }).(FhirServiceCorsConfigurationResponsePtrOutput)
+}
+
+// The encryption settings of the FHIR service
+func (o FhirServiceOutput) Encryption() EncryptionResponsePtrOutput {
+	return o.ApplyT(func(v *FhirService) EncryptionResponsePtrOutput { return v.Encryption }).(EncryptionResponsePtrOutput)
 }
 
 // An etag associated with the resource, used for optimistic concurrency when editing it.

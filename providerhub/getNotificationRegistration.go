@@ -7,13 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the notification registration details.
 //
-// Uses Azure REST API version 2021-09-01-preview.
+// Uses Azure REST API version 2024-09-01.
+//
+// Other available API versions: 2021-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native providerhub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupNotificationRegistration(ctx *pulumi.Context, args *LookupNotificationRegistrationArgs, opts ...pulumi.InvokeOption) (*LookupNotificationRegistrationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNotificationRegistrationResult
@@ -31,14 +33,15 @@ type LookupNotificationRegistrationArgs struct {
 	ProviderNamespace string `pulumi:"providerNamespace"`
 }
 
-// The notification registration definition.
 type LookupNotificationRegistrationResult struct {
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name       string                                     `pulumi:"name"`
-	Properties NotificationRegistrationResponseProperties `pulumi:"properties"`
-	// Metadata pertaining to creation and last modification of the resource.
+	Properties NotificationRegistrationPropertiesResponse `pulumi:"properties"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
@@ -64,7 +67,6 @@ func (LookupNotificationRegistrationOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupNotificationRegistrationArgs)(nil)).Elem()
 }
 
-// The notification registration definition.
 type LookupNotificationRegistrationResultOutput struct{ *pulumi.OutputState }
 
 func (LookupNotificationRegistrationResultOutput) ElementType() reflect.Type {
@@ -79,7 +81,12 @@ func (o LookupNotificationRegistrationResultOutput) ToLookupNotificationRegistra
 	return o
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// The Azure API version of the resource.
+func (o LookupNotificationRegistrationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNotificationRegistrationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupNotificationRegistrationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNotificationRegistrationResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -89,13 +96,13 @@ func (o LookupNotificationRegistrationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNotificationRegistrationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o LookupNotificationRegistrationResultOutput) Properties() NotificationRegistrationResponsePropertiesOutput {
-	return o.ApplyT(func(v LookupNotificationRegistrationResult) NotificationRegistrationResponseProperties {
+func (o LookupNotificationRegistrationResultOutput) Properties() NotificationRegistrationPropertiesResponseOutput {
+	return o.ApplyT(func(v LookupNotificationRegistrationResult) NotificationRegistrationPropertiesResponse {
 		return v.Properties
-	}).(NotificationRegistrationResponsePropertiesOutput)
+	}).(NotificationRegistrationPropertiesResponseOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupNotificationRegistrationResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupNotificationRegistrationResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }

@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Method to get a site.
 //
-// Uses Azure REST API version 2023-06-06.
+// Uses Azure REST API version 2023-10-01-preview.
 //
-// Other available API versions: 2023-10-01-preview, 2024-05-01-preview.
+// Other available API versions: 2023-06-06, 2024-05-01-preview, 2024-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native offazure [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupSqlSitesController(ctx *pulumi.Context, args *LookupSqlSitesControllerArgs, opts ...pulumi.InvokeOption) (*LookupSqlSitesControllerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSqlSitesControllerResult
@@ -37,6 +37,8 @@ type LookupSqlSitesControllerArgs struct {
 
 // SQL site web model.
 type LookupSqlSitesControllerResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets or sets the discovery scenario.
 	DiscoveryScenario *string `pulumi:"discoveryScenario"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -92,6 +94,11 @@ func (o LookupSqlSitesControllerResultOutput) ToLookupSqlSitesControllerResultOu
 
 func (o LookupSqlSitesControllerResultOutput) ToLookupSqlSitesControllerResultOutputWithContext(ctx context.Context) LookupSqlSitesControllerResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSqlSitesControllerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSqlSitesControllerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the discovery scenario.

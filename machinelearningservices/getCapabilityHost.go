@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Azure Resource Manager resource envelope.
 //
-// Uses Azure REST API version 2024-10-01-preview.
+// Uses Azure REST API version 2025-09-01.
 //
-// Other available API versions: 2025-01-01-preview.
+// Other available API versions: 2024-10-01-preview, 2025-01-01-preview, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupCapabilityHost(ctx *pulumi.Context, args *LookupCapabilityHostArgs, opts ...pulumi.InvokeOption) (*LookupCapabilityHostResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCapabilityHostResult
@@ -37,6 +37,8 @@ type LookupCapabilityHostArgs struct {
 
 // Azure Resource Manager resource envelope.
 type LookupCapabilityHostResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// [Required] Additional attributes of the entity.
 	CapabilityHostProperties CapabilityHostResponse `pulumi:"capabilityHostProperties"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -94,6 +96,11 @@ func (o LookupCapabilityHostResultOutput) ToLookupCapabilityHostResultOutput() L
 
 func (o LookupCapabilityHostResultOutput) ToLookupCapabilityHostResultOutputWithContext(ctx context.Context) LookupCapabilityHostResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupCapabilityHostResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCapabilityHostResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // [Required] Additional attributes of the entity.

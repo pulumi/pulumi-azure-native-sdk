@@ -8,16 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Details of topic record
 //
-// Uses Azure REST API version 2024-07-01.
+// Uses Azure REST API version 2024-07-01. In version 2.x of the Azure Native provider, it used API version 2024-07-01.
+//
+// Other available API versions: 2025-07-17-preview, 2025-08-18-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Topic struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Config Specification of the topic
 	Configs TopicsRelatedLinkResponsePtrOutput `pulumi:"configs"`
 	// Input Config Specification of the topic
@@ -26,7 +30,7 @@ type Topic struct {
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Metadata of the record
 	Metadata TopicMetadataEntityResponsePtrOutput `pulumi:"metadata"`
-	// Display name of the topic
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Partition Specification of the topic
 	Partitions TopicsRelatedLinkResponsePtrOutput `pulumi:"partitions"`
@@ -36,9 +40,11 @@ type Topic struct {
 	PartitionsReassignments TopicsRelatedLinkResponsePtrOutput `pulumi:"partitionsReassignments"`
 	// Replication factor of the topic
 	ReplicationFactor pulumi.StringPtrOutput `pulumi:"replicationFactor"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Topic Id returned by Confluent
 	TopicId pulumi.StringPtrOutput `pulumi:"topicId"`
-	// The type of the resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -64,6 +70,12 @@ func NewTopic(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:confluent/v20240701:Topic"),
+		},
+		{
+			Type: pulumi.String("azure-native:confluent/v20250717preview:Topic"),
+		},
+		{
+			Type: pulumi.String("azure-native:confluent/v20250818preview:Topic"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -199,6 +211,11 @@ func (o TopicOutput) ToTopicOutputWithContext(ctx context.Context) TopicOutput {
 	return o
 }
 
+// The Azure API version of the resource.
+func (o TopicOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Topic) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Config Specification of the topic
 func (o TopicOutput) Configs() TopicsRelatedLinkResponsePtrOutput {
 	return o.ApplyT(func(v *Topic) TopicsRelatedLinkResponsePtrOutput { return v.Configs }).(TopicsRelatedLinkResponsePtrOutput)
@@ -219,7 +236,7 @@ func (o TopicOutput) Metadata() TopicMetadataEntityResponsePtrOutput {
 	return o.ApplyT(func(v *Topic) TopicMetadataEntityResponsePtrOutput { return v.Metadata }).(TopicMetadataEntityResponsePtrOutput)
 }
 
-// Display name of the topic
+// The name of the resource
 func (o TopicOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Topic) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -244,12 +261,17 @@ func (o TopicOutput) ReplicationFactor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Topic) pulumi.StringPtrOutput { return v.ReplicationFactor }).(pulumi.StringPtrOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o TopicOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Topic) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
 // Topic Id returned by Confluent
 func (o TopicOutput) TopicId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Topic) pulumi.StringPtrOutput { return v.TopicId }).(pulumi.StringPtrOutput)
 }
 
-// The type of the resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o TopicOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Topic) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

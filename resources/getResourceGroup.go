@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a resource group.
 //
-// Uses Azure REST API version 2022-09-01.
+// Uses Azure REST API version 2024-03-01.
 //
-// Other available API versions: 2023-07-01, 2024-03-01, 2024-07-01, 2024-11-01.
+// Other available API versions: 2020-10-01, 2021-01-01, 2021-04-01, 2022-09-01, 2023-07-01, 2024-07-01, 2024-11-01, 2025-03-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native resources [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupResourceGroup(ctx *pulumi.Context, args *LookupResourceGroupArgs, opts ...pulumi.InvokeOption) (*LookupResourceGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupResourceGroupResult
@@ -33,6 +33,8 @@ type LookupResourceGroupArgs struct {
 
 // Resource group information.
 type LookupResourceGroupResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The ID of the resource group.
 	Id string `pulumi:"id"`
 	// The location of the resource group. It cannot be changed after the resource group has been created. It must be one of the supported Azure locations.
@@ -80,6 +82,11 @@ func (o LookupResourceGroupResultOutput) ToLookupResourceGroupResultOutput() Loo
 
 func (o LookupResourceGroupResultOutput) ToLookupResourceGroupResultOutputWithContext(ctx context.Context) LookupResourceGroupResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupResourceGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupResourceGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The ID of the resource group.

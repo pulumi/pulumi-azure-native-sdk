@@ -8,20 +8,22 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Defines the user rule collection.
 //
-// Uses Azure REST API version 2022-04-01-preview. In version 1.x of the Azure Native provider, it used API version 2021-02-01-preview.
+// Uses Azure REST API version 2022-04-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-04-01-preview.
 //
-// Other available API versions: 2021-02-01-preview, 2021-05-01-preview.
+// Other available API versions: 2021-02-01-preview, 2022-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type UserRuleCollection struct {
 	pulumi.CustomResourceState
 
 	// Groups for configuration
 	AppliesToGroups NetworkManagerSecurityGroupItemResponseArrayOutput `pulumi:"appliesToGroups"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A description of the user rule collection.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -69,10 +71,25 @@ func NewUserRuleCollection(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:network/v20220401preview:UserRuleCollection"),
 		},
 		{
+			Type: pulumi.String("azure-native:network/v20240301:SecurityUserRuleCollection"),
+		},
+		{
 			Type: pulumi.String("azure-native:network/v20240301:UserRuleCollection"),
 		},
 		{
+			Type: pulumi.String("azure-native:network/v20240501:SecurityUserRuleCollection"),
+		},
+		{
 			Type: pulumi.String("azure-native:network/v20240501:UserRuleCollection"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20240701:UserRuleCollection"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20241001:UserRuleCollection"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:SecurityUserRuleCollection"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -181,6 +198,11 @@ func (o UserRuleCollectionOutput) AppliesToGroups() NetworkManagerSecurityGroupI
 	return o.ApplyT(func(v *UserRuleCollection) NetworkManagerSecurityGroupItemResponseArrayOutput {
 		return v.AppliesToGroups
 	}).(NetworkManagerSecurityGroupItemResponseArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o UserRuleCollectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *UserRuleCollection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A description of the user rule collection.

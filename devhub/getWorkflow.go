@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Resource representation of a workflow
 //
-// Uses Azure REST API version 2022-10-11-preview.
+// Uses Azure REST API version 2023-08-01.
 //
-// Other available API versions: 2023-08-01, 2024-05-01-preview, 2024-08-01-preview, 2025-03-01-preview.
+// Other available API versions: 2022-10-11-preview, 2024-05-01-preview, 2024-08-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devhub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupWorkflow(ctx *pulumi.Context, args *LookupWorkflowArgs, opts ...pulumi.InvokeOption) (*LookupWorkflowResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkflowResult
@@ -35,29 +35,20 @@ type LookupWorkflowArgs struct {
 
 // Resource representation of a workflow
 type LookupWorkflowResult struct {
-	// Information on the azure container registry
-	Acr *ACRResponse `pulumi:"acr"`
-	// The Azure Kubernetes Cluster Resource the application will be deployed to.
-	AksResourceId *string `pulumi:"aksResourceId"`
 	// The name of the app.
 	AppName *string `pulumi:"appName"`
-	// Determines the authorization status of requests.
-	AuthStatus string `pulumi:"authStatus"`
-	// Repository Branch Name
-	BranchName *string `pulumi:"branchName"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The version of the language image used for building the code in the generated dockerfile.
-	BuilderVersion       *string                       `pulumi:"builderVersion"`
-	DeploymentProperties *DeploymentPropertiesResponse `pulumi:"deploymentProperties"`
-	// Path to Dockerfile Build Context within the repository.
-	DockerBuildContext *string `pulumi:"dockerBuildContext"`
-	// Path to the Dockerfile within the repository.
-	Dockerfile *string `pulumi:"dockerfile"`
+	BuilderVersion *string `pulumi:"builderVersion"`
 	// The mode of generation to be used for generating Dockerfiles.
 	DockerfileGenerationMode *string `pulumi:"dockerfileGenerationMode"`
 	// The directory to output the generated Dockerfile to.
 	DockerfileOutputDirectory *string `pulumi:"dockerfileOutputDirectory"`
 	// The programming language used.
 	GenerationLanguage *string `pulumi:"generationLanguage"`
+	// Profile of a github workflow.
+	GithubWorkflowProfile *GitHubWorkflowProfileResponse `pulumi:"githubWorkflowProfile"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the image to be generated.
@@ -65,8 +56,7 @@ type LookupWorkflowResult struct {
 	// The tag to apply to the generated image.
 	ImageTag *string `pulumi:"imageTag"`
 	// The version of the language image used for execution in the generated dockerfile.
-	LanguageVersion *string              `pulumi:"languageVersion"`
-	LastWorkflowRun *WorkflowRunResponse `pulumi:"lastWorkflowRun"`
+	LanguageVersion *string `pulumi:"languageVersion"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// The mode of generation to be used for generating Manifest.
@@ -77,22 +67,10 @@ type LookupWorkflowResult struct {
 	ManifestType *string `pulumi:"manifestType"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// Kubernetes namespace the application is deployed to.
+	// The namespace to deploy the application to.
 	Namespace *string `pulumi:"namespace"`
-	// The fields needed for OIDC with GitHub.
-	OidcCredentials *GitHubWorkflowProfileResponseOidcCredentials `pulumi:"oidcCredentials"`
 	// The port the application is exposed on.
 	Port *string `pulumi:"port"`
-	// The status of the Pull Request submitted against the users repository.
-	PrStatus string `pulumi:"prStatus"`
-	// The URL to the Pull Request submitted against the users repository.
-	PrURL string `pulumi:"prURL"`
-	// The number associated with the submitted pull request.
-	PullNumber int `pulumi:"pullNumber"`
-	// Repository Name
-	RepositoryName *string `pulumi:"repositoryName"`
-	// Repository Owner
-	RepositoryOwner *string `pulumi:"repositoryOwner"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
@@ -136,48 +114,19 @@ func (o LookupWorkflowResultOutput) ToLookupWorkflowResultOutputWithContext(ctx 
 	return o
 }
 
-// Information on the azure container registry
-func (o LookupWorkflowResultOutput) Acr() ACRResponsePtrOutput {
-	return o.ApplyT(func(v LookupWorkflowResult) *ACRResponse { return v.Acr }).(ACRResponsePtrOutput)
-}
-
-// The Azure Kubernetes Cluster Resource the application will be deployed to.
-func (o LookupWorkflowResultOutput) AksResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupWorkflowResult) *string { return v.AksResourceId }).(pulumi.StringPtrOutput)
-}
-
 // The name of the app.
 func (o LookupWorkflowResultOutput) AppName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) *string { return v.AppName }).(pulumi.StringPtrOutput)
 }
 
-// Determines the authorization status of requests.
-func (o LookupWorkflowResultOutput) AuthStatus() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWorkflowResult) string { return v.AuthStatus }).(pulumi.StringOutput)
-}
-
-// Repository Branch Name
-func (o LookupWorkflowResultOutput) BranchName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupWorkflowResult) *string { return v.BranchName }).(pulumi.StringPtrOutput)
+// The Azure API version of the resource.
+func (o LookupWorkflowResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkflowResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The version of the language image used for building the code in the generated dockerfile.
 func (o LookupWorkflowResultOutput) BuilderVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) *string { return v.BuilderVersion }).(pulumi.StringPtrOutput)
-}
-
-func (o LookupWorkflowResultOutput) DeploymentProperties() DeploymentPropertiesResponsePtrOutput {
-	return o.ApplyT(func(v LookupWorkflowResult) *DeploymentPropertiesResponse { return v.DeploymentProperties }).(DeploymentPropertiesResponsePtrOutput)
-}
-
-// Path to Dockerfile Build Context within the repository.
-func (o LookupWorkflowResultOutput) DockerBuildContext() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupWorkflowResult) *string { return v.DockerBuildContext }).(pulumi.StringPtrOutput)
-}
-
-// Path to the Dockerfile within the repository.
-func (o LookupWorkflowResultOutput) Dockerfile() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupWorkflowResult) *string { return v.Dockerfile }).(pulumi.StringPtrOutput)
 }
 
 // The mode of generation to be used for generating Dockerfiles.
@@ -193,6 +142,11 @@ func (o LookupWorkflowResultOutput) DockerfileOutputDirectory() pulumi.StringPtr
 // The programming language used.
 func (o LookupWorkflowResultOutput) GenerationLanguage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) *string { return v.GenerationLanguage }).(pulumi.StringPtrOutput)
+}
+
+// Profile of a github workflow.
+func (o LookupWorkflowResultOutput) GithubWorkflowProfile() GitHubWorkflowProfileResponsePtrOutput {
+	return o.ApplyT(func(v LookupWorkflowResult) *GitHubWorkflowProfileResponse { return v.GithubWorkflowProfile }).(GitHubWorkflowProfileResponsePtrOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -213,10 +167,6 @@ func (o LookupWorkflowResultOutput) ImageTag() pulumi.StringPtrOutput {
 // The version of the language image used for execution in the generated dockerfile.
 func (o LookupWorkflowResultOutput) LanguageVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) *string { return v.LanguageVersion }).(pulumi.StringPtrOutput)
-}
-
-func (o LookupWorkflowResultOutput) LastWorkflowRun() WorkflowRunResponsePtrOutput {
-	return o.ApplyT(func(v LookupWorkflowResult) *WorkflowRunResponse { return v.LastWorkflowRun }).(WorkflowRunResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -244,44 +194,14 @@ func (o LookupWorkflowResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Kubernetes namespace the application is deployed to.
+// The namespace to deploy the application to.
 func (o LookupWorkflowResultOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) *string { return v.Namespace }).(pulumi.StringPtrOutput)
-}
-
-// The fields needed for OIDC with GitHub.
-func (o LookupWorkflowResultOutput) OidcCredentials() GitHubWorkflowProfileResponseOidcCredentialsPtrOutput {
-	return o.ApplyT(func(v LookupWorkflowResult) *GitHubWorkflowProfileResponseOidcCredentials { return v.OidcCredentials }).(GitHubWorkflowProfileResponseOidcCredentialsPtrOutput)
 }
 
 // The port the application is exposed on.
 func (o LookupWorkflowResultOutput) Port() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) *string { return v.Port }).(pulumi.StringPtrOutput)
-}
-
-// The status of the Pull Request submitted against the users repository.
-func (o LookupWorkflowResultOutput) PrStatus() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWorkflowResult) string { return v.PrStatus }).(pulumi.StringOutput)
-}
-
-// The URL to the Pull Request submitted against the users repository.
-func (o LookupWorkflowResultOutput) PrURL() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWorkflowResult) string { return v.PrURL }).(pulumi.StringOutput)
-}
-
-// The number associated with the submitted pull request.
-func (o LookupWorkflowResultOutput) PullNumber() pulumi.IntOutput {
-	return o.ApplyT(func(v LookupWorkflowResult) int { return v.PullNumber }).(pulumi.IntOutput)
-}
-
-// Repository Name
-func (o LookupWorkflowResultOutput) RepositoryName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupWorkflowResult) *string { return v.RepositoryName }).(pulumi.StringPtrOutput)
-}
-
-// Repository Owner
-func (o LookupWorkflowResultOutput) RepositoryOwner() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupWorkflowResult) *string { return v.RepositoryOwner }).(pulumi.StringPtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

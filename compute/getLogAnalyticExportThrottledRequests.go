@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Export logs that show total throttled Api requests for this subscription in the given time window.
 //
-// Uses Azure REST API version 2023-03-01.
+// Uses Azure REST API version 2024-11-01.
 //
-// Other available API versions: 2020-12-01, 2021-03-01, 2021-04-01, 2021-07-01, 2021-11-01, 2022-03-01, 2022-08-01, 2022-11-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2024-11-01.
+// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func GetLogAnalyticExportThrottledRequests(ctx *pulumi.Context, args *GetLogAnalyticExportThrottledRequestsArgs, opts ...pulumi.InvokeOption) (*GetLogAnalyticExportThrottledRequestsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetLogAnalyticExportThrottledRequestsResult
@@ -41,7 +41,7 @@ type GetLogAnalyticExportThrottledRequestsArgs struct {
 	GroupByThrottlePolicy *bool `pulumi:"groupByThrottlePolicy"`
 	// Group query result by User Agent.
 	GroupByUserAgent *bool `pulumi:"groupByUserAgent"`
-	// The location upon which virtual-machine-sizes is queried.
+	// The name of Azure region.
 	Location string `pulumi:"location"`
 	// To time of the query
 	ToTime string `pulumi:"toTime"`
@@ -77,7 +77,7 @@ type GetLogAnalyticExportThrottledRequestsOutputArgs struct {
 	GroupByThrottlePolicy pulumi.BoolPtrInput `pulumi:"groupByThrottlePolicy"`
 	// Group query result by User Agent.
 	GroupByUserAgent pulumi.BoolPtrInput `pulumi:"groupByUserAgent"`
-	// The location upon which virtual-machine-sizes is queried.
+	// The name of Azure region.
 	Location pulumi.StringInput `pulumi:"location"`
 	// To time of the query
 	ToTime pulumi.StringInput `pulumi:"toTime"`

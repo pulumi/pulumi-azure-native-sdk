@@ -7,15 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get an iSCSI Target.
 //
 // Uses Azure REST API version 2021-08-01.
-//
-// Other available API versions: 2020-03-15-preview.
 func LookupIscsiTarget(ctx *pulumi.Context, args *LookupIscsiTargetArgs, opts ...pulumi.InvokeOption) (*LookupIscsiTargetResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIscsiTargetResult
@@ -39,6 +37,8 @@ type LookupIscsiTargetArgs struct {
 type LookupIscsiTargetResult struct {
 	// Mode for Target connectivity.
 	AclMode string `pulumi:"aclMode"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// List of private IPv4 addresses to connect to the iSCSI Target.
 	Endpoints []string `pulumi:"endpoints"`
 	// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -109,6 +109,11 @@ func (o LookupIscsiTargetResultOutput) ToLookupIscsiTargetResultOutputWithContex
 // Mode for Target connectivity.
 func (o LookupIscsiTargetResultOutput) AclMode() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIscsiTargetResult) string { return v.AclMode }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupIscsiTargetResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIscsiTargetResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // List of private IPv4 addresses to connect to the iSCSI Target.

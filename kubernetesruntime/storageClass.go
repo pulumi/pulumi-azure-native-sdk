@@ -8,15 +8,13 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A StorageClass resource for an Arc connected cluster (Microsoft.Kubernetes/connectedClusters)
 //
-// Uses Azure REST API version 2024-03-01.
-//
-// Other available API versions: 2023-10-01-preview.
+// Uses Azure REST API version 2024-03-01. In version 2.x of the Azure Native provider, it used API version 2024-03-01.
 type StorageClass struct {
 	pulumi.CustomResourceState
 
@@ -24,6 +22,8 @@ type StorageClass struct {
 	AccessModes pulumi.StringArrayOutput `pulumi:"accessModes"`
 	// Volume can be expanded or not
 	AllowVolumeExpansion pulumi.StringPtrOutput `pulumi:"allowVolumeExpansion"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Allow single data node failure
 	DataResilience pulumi.StringPtrOutput `pulumi:"dataResilience"`
 	// Failover speed: NA, Slow, Fast
@@ -210,6 +210,11 @@ func (o StorageClassOutput) AccessModes() pulumi.StringArrayOutput {
 // Volume can be expanded or not
 func (o StorageClassOutput) AllowVolumeExpansion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StorageClass) pulumi.StringPtrOutput { return v.AllowVolumeExpansion }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o StorageClassOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *StorageClass) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Allow single data node failure

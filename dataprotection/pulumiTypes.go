@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -1181,9 +1181,14 @@ type BackupInstanceType struct {
 	DatasourceAuthCredentials *SecretStoreBasedAuthCredentials `pulumi:"datasourceAuthCredentials"`
 	// Gets or sets the Backup Instance friendly name.
 	FriendlyName *string `pulumi:"friendlyName"`
-	ObjectType   string  `pulumi:"objectType"`
+	// Contains information of the Identity Details for the BI.
+	// If it is null, default will be considered as System Assigned.
+	IdentityDetails *IdentityDetails `pulumi:"identityDetails"`
+	ObjectType      string           `pulumi:"objectType"`
 	// Gets or sets the policy information.
 	PolicyInfo PolicyInfo `pulumi:"policyInfo"`
+	// ResourceGuardOperationRequests on which LAC check will be performed
+	ResourceGuardOperationRequests []string `pulumi:"resourceGuardOperationRequests"`
 	// Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again.
 	ValidationType *string `pulumi:"validationType"`
 }
@@ -1209,9 +1214,14 @@ type BackupInstanceTypeArgs struct {
 	DatasourceAuthCredentials SecretStoreBasedAuthCredentialsPtrInput `pulumi:"datasourceAuthCredentials"`
 	// Gets or sets the Backup Instance friendly name.
 	FriendlyName pulumi.StringPtrInput `pulumi:"friendlyName"`
-	ObjectType   pulumi.StringInput    `pulumi:"objectType"`
+	// Contains information of the Identity Details for the BI.
+	// If it is null, default will be considered as System Assigned.
+	IdentityDetails IdentityDetailsPtrInput `pulumi:"identityDetails"`
+	ObjectType      pulumi.StringInput      `pulumi:"objectType"`
 	// Gets or sets the policy information.
 	PolicyInfo PolicyInfoInput `pulumi:"policyInfo"`
+	// ResourceGuardOperationRequests on which LAC check will be performed
+	ResourceGuardOperationRequests pulumi.StringArrayInput `pulumi:"resourceGuardOperationRequests"`
 	// Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again.
 	ValidationType pulumi.StringPtrInput `pulumi:"validationType"`
 }
@@ -1314,6 +1324,12 @@ func (o BackupInstanceTypeOutput) FriendlyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BackupInstanceType) *string { return v.FriendlyName }).(pulumi.StringPtrOutput)
 }
 
+// Contains information of the Identity Details for the BI.
+// If it is null, default will be considered as System Assigned.
+func (o BackupInstanceTypeOutput) IdentityDetails() IdentityDetailsPtrOutput {
+	return o.ApplyT(func(v BackupInstanceType) *IdentityDetails { return v.IdentityDetails }).(IdentityDetailsPtrOutput)
+}
+
 func (o BackupInstanceTypeOutput) ObjectType() pulumi.StringOutput {
 	return o.ApplyT(func(v BackupInstanceType) string { return v.ObjectType }).(pulumi.StringOutput)
 }
@@ -1321,6 +1337,11 @@ func (o BackupInstanceTypeOutput) ObjectType() pulumi.StringOutput {
 // Gets or sets the policy information.
 func (o BackupInstanceTypeOutput) PolicyInfo() PolicyInfoOutput {
 	return o.ApplyT(func(v BackupInstanceType) PolicyInfo { return v.PolicyInfo }).(PolicyInfoOutput)
+}
+
+// ResourceGuardOperationRequests on which LAC check will be performed
+func (o BackupInstanceTypeOutput) ResourceGuardOperationRequests() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BackupInstanceType) []string { return v.ResourceGuardOperationRequests }).(pulumi.StringArrayOutput)
 }
 
 // Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again.
@@ -1392,6 +1413,17 @@ func (o BackupInstanceTypePtrOutput) FriendlyName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Contains information of the Identity Details for the BI.
+// If it is null, default will be considered as System Assigned.
+func (o BackupInstanceTypePtrOutput) IdentityDetails() IdentityDetailsPtrOutput {
+	return o.ApplyT(func(v *BackupInstanceType) *IdentityDetails {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityDetails
+	}).(IdentityDetailsPtrOutput)
+}
+
 func (o BackupInstanceTypePtrOutput) ObjectType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BackupInstanceType) *string {
 		if v == nil {
@@ -1409,6 +1441,16 @@ func (o BackupInstanceTypePtrOutput) PolicyInfo() PolicyInfoPtrOutput {
 		}
 		return &v.PolicyInfo
 	}).(PolicyInfoPtrOutput)
+}
+
+// ResourceGuardOperationRequests on which LAC check will be performed
+func (o BackupInstanceTypePtrOutput) ResourceGuardOperationRequests() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BackupInstanceType) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceGuardOperationRequests
+	}).(pulumi.StringArrayOutput)
 }
 
 // Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again.
@@ -1433,7 +1475,10 @@ type BackupInstanceResponse struct {
 	DatasourceAuthCredentials *SecretStoreBasedAuthCredentialsResponse `pulumi:"datasourceAuthCredentials"`
 	// Gets or sets the Backup Instance friendly name.
 	FriendlyName *string `pulumi:"friendlyName"`
-	ObjectType   string  `pulumi:"objectType"`
+	// Contains information of the Identity Details for the BI.
+	// If it is null, default will be considered as System Assigned.
+	IdentityDetails *IdentityDetailsResponse `pulumi:"identityDetails"`
+	ObjectType      string                   `pulumi:"objectType"`
 	// Gets or sets the policy information.
 	PolicyInfo PolicyInfoResponse `pulumi:"policyInfo"`
 	// Specifies the protection error of the resource
@@ -1442,6 +1487,8 @@ type BackupInstanceResponse struct {
 	ProtectionStatus ProtectionStatusDetailsResponse `pulumi:"protectionStatus"`
 	// Specifies the provisioning state of the resource i.e. provisioning/updating/Succeeded/Failed
 	ProvisioningState string `pulumi:"provisioningState"`
+	// ResourceGuardOperationRequests on which LAC check will be performed
+	ResourceGuardOperationRequests []string `pulumi:"resourceGuardOperationRequests"`
 	// Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again.
 	ValidationType *string `pulumi:"validationType"`
 }
@@ -1488,6 +1535,12 @@ func (o BackupInstanceResponseOutput) FriendlyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BackupInstanceResponse) *string { return v.FriendlyName }).(pulumi.StringPtrOutput)
 }
 
+// Contains information of the Identity Details for the BI.
+// If it is null, default will be considered as System Assigned.
+func (o BackupInstanceResponseOutput) IdentityDetails() IdentityDetailsResponsePtrOutput {
+	return o.ApplyT(func(v BackupInstanceResponse) *IdentityDetailsResponse { return v.IdentityDetails }).(IdentityDetailsResponsePtrOutput)
+}
+
 func (o BackupInstanceResponseOutput) ObjectType() pulumi.StringOutput {
 	return o.ApplyT(func(v BackupInstanceResponse) string { return v.ObjectType }).(pulumi.StringOutput)
 }
@@ -1510,6 +1563,11 @@ func (o BackupInstanceResponseOutput) ProtectionStatus() ProtectionStatusDetails
 // Specifies the provisioning state of the resource i.e. provisioning/updating/Succeeded/Failed
 func (o BackupInstanceResponseOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v BackupInstanceResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// ResourceGuardOperationRequests on which LAC check will be performed
+func (o BackupInstanceResponseOutput) ResourceGuardOperationRequests() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BackupInstanceResponse) []string { return v.ResourceGuardOperationRequests }).(pulumi.StringArrayOutput)
 }
 
 // Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again.
@@ -1737,7 +1795,7 @@ func (o BackupPolicyResponseOutput) PolicyRules() pulumi.ArrayOutput {
 
 // Schedule for backup
 type BackupSchedule struct {
-	// ISO 8601 repeating time interval format
+	// Repeating time interval which only support the following ISO 8601 format [R/startDateTime/Duration]. Example: R/2007-03-01T13:00:00Z/P1Y2M10DT2H30M
 	RepeatingTimeIntervals []string `pulumi:"repeatingTimeIntervals"`
 	// Time zone for a schedule. Example: Pacific Standard Time
 	TimeZone *string `pulumi:"timeZone"`
@@ -1756,7 +1814,7 @@ type BackupScheduleInput interface {
 
 // Schedule for backup
 type BackupScheduleArgs struct {
-	// ISO 8601 repeating time interval format
+	// Repeating time interval which only support the following ISO 8601 format [R/startDateTime/Duration]. Example: R/2007-03-01T13:00:00Z/P1Y2M10DT2H30M
 	RepeatingTimeIntervals pulumi.StringArrayInput `pulumi:"repeatingTimeIntervals"`
 	// Time zone for a schedule. Example: Pacific Standard Time
 	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
@@ -1789,7 +1847,7 @@ func (o BackupScheduleOutput) ToBackupScheduleOutputWithContext(ctx context.Cont
 	return o
 }
 
-// ISO 8601 repeating time interval format
+// Repeating time interval which only support the following ISO 8601 format [R/startDateTime/Duration]. Example: R/2007-03-01T13:00:00Z/P1Y2M10DT2H30M
 func (o BackupScheduleOutput) RepeatingTimeIntervals() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BackupSchedule) []string { return v.RepeatingTimeIntervals }).(pulumi.StringArrayOutput)
 }
@@ -1801,7 +1859,7 @@ func (o BackupScheduleOutput) TimeZone() pulumi.StringPtrOutput {
 
 // Schedule for backup
 type BackupScheduleResponse struct {
-	// ISO 8601 repeating time interval format
+	// Repeating time interval which only support the following ISO 8601 format [R/startDateTime/Duration]. Example: R/2007-03-01T13:00:00Z/P1Y2M10DT2H30M
 	RepeatingTimeIntervals []string `pulumi:"repeatingTimeIntervals"`
 	// Time zone for a schedule. Example: Pacific Standard Time
 	TimeZone *string `pulumi:"timeZone"`
@@ -1822,7 +1880,7 @@ func (o BackupScheduleResponseOutput) ToBackupScheduleResponseOutputWithContext(
 	return o
 }
 
-// ISO 8601 repeating time interval format
+// Repeating time interval which only support the following ISO 8601 format [R/startDateTime/Duration]. Example: R/2007-03-01T13:00:00Z/P1Y2M10DT2H30M
 func (o BackupScheduleResponseOutput) RepeatingTimeIntervals() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BackupScheduleResponse) []string { return v.RepeatingTimeIntervals }).(pulumi.StringArrayOutput)
 }
@@ -1838,6 +1896,10 @@ type BackupVaultType struct {
 	FeatureSettings *FeatureSettings `pulumi:"featureSettings"`
 	// Monitoring Settings
 	MonitoringSettings *MonitoringSettings `pulumi:"monitoringSettings"`
+	// List of replicated regions for Backup Vault
+	ReplicatedRegions []string `pulumi:"replicatedRegions"`
+	// ResourceGuardOperationRequests on which LAC check will be performed
+	ResourceGuardOperationRequests []string `pulumi:"resourceGuardOperationRequests"`
 	// Security Settings
 	SecuritySettings *SecuritySettings `pulumi:"securitySettings"`
 	// Storage Settings
@@ -1861,6 +1923,10 @@ type BackupVaultTypeArgs struct {
 	FeatureSettings FeatureSettingsPtrInput `pulumi:"featureSettings"`
 	// Monitoring Settings
 	MonitoringSettings MonitoringSettingsPtrInput `pulumi:"monitoringSettings"`
+	// List of replicated regions for Backup Vault
+	ReplicatedRegions pulumi.StringArrayInput `pulumi:"replicatedRegions"`
+	// ResourceGuardOperationRequests on which LAC check will be performed
+	ResourceGuardOperationRequests pulumi.StringArrayInput `pulumi:"resourceGuardOperationRequests"`
 	// Security Settings
 	SecuritySettings SecuritySettingsPtrInput `pulumi:"securitySettings"`
 	// Storage Settings
@@ -1904,6 +1970,16 @@ func (o BackupVaultTypeOutput) MonitoringSettings() MonitoringSettingsPtrOutput 
 	return o.ApplyT(func(v BackupVaultType) *MonitoringSettings { return v.MonitoringSettings }).(MonitoringSettingsPtrOutput)
 }
 
+// List of replicated regions for Backup Vault
+func (o BackupVaultTypeOutput) ReplicatedRegions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BackupVaultType) []string { return v.ReplicatedRegions }).(pulumi.StringArrayOutput)
+}
+
+// ResourceGuardOperationRequests on which LAC check will be performed
+func (o BackupVaultTypeOutput) ResourceGuardOperationRequests() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BackupVaultType) []string { return v.ResourceGuardOperationRequests }).(pulumi.StringArrayOutput)
+}
+
 // Security Settings
 func (o BackupVaultTypeOutput) SecuritySettings() SecuritySettingsPtrOutput {
 	return o.ApplyT(func(v BackupVaultType) *SecuritySettings { return v.SecuritySettings }).(SecuritySettingsPtrOutput)
@@ -1916,6 +1992,8 @@ func (o BackupVaultTypeOutput) StorageSettings() StorageSettingArrayOutput {
 
 // Backup Vault
 type BackupVaultResponse struct {
+	// Security Level of Backup Vault
+	BcdrSecurityLevel string `pulumi:"bcdrSecurityLevel"`
 	// Feature Settings
 	FeatureSettings *FeatureSettingsResponse `pulumi:"featureSettings"`
 	// Is vault protected by resource guard
@@ -1924,10 +2002,16 @@ type BackupVaultResponse struct {
 	MonitoringSettings *MonitoringSettingsResponse `pulumi:"monitoringSettings"`
 	// Provisioning state of the BackupVault resource
 	ProvisioningState string `pulumi:"provisioningState"`
+	// List of replicated regions for Backup Vault
+	ReplicatedRegions []string `pulumi:"replicatedRegions"`
+	// ResourceGuardOperationRequests on which LAC check will be performed
+	ResourceGuardOperationRequests []string `pulumi:"resourceGuardOperationRequests"`
 	// Resource move details for backup vault
 	ResourceMoveDetails ResourceMoveDetailsResponse `pulumi:"resourceMoveDetails"`
 	// Resource move state for backup vault
 	ResourceMoveState string `pulumi:"resourceMoveState"`
+	// Secure Score of Backup Vault
+	SecureScore string `pulumi:"secureScore"`
 	// Security Settings
 	SecuritySettings *SecuritySettingsResponse `pulumi:"securitySettings"`
 	// Storage Settings
@@ -1947,6 +2031,11 @@ func (o BackupVaultResponseOutput) ToBackupVaultResponseOutput() BackupVaultResp
 
 func (o BackupVaultResponseOutput) ToBackupVaultResponseOutputWithContext(ctx context.Context) BackupVaultResponseOutput {
 	return o
+}
+
+// Security Level of Backup Vault
+func (o BackupVaultResponseOutput) BcdrSecurityLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v BackupVaultResponse) string { return v.BcdrSecurityLevel }).(pulumi.StringOutput)
 }
 
 // Feature Settings
@@ -1969,6 +2058,16 @@ func (o BackupVaultResponseOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v BackupVaultResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// List of replicated regions for Backup Vault
+func (o BackupVaultResponseOutput) ReplicatedRegions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BackupVaultResponse) []string { return v.ReplicatedRegions }).(pulumi.StringArrayOutput)
+}
+
+// ResourceGuardOperationRequests on which LAC check will be performed
+func (o BackupVaultResponseOutput) ResourceGuardOperationRequests() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BackupVaultResponse) []string { return v.ResourceGuardOperationRequests }).(pulumi.StringArrayOutput)
+}
+
 // Resource move details for backup vault
 func (o BackupVaultResponseOutput) ResourceMoveDetails() ResourceMoveDetailsResponseOutput {
 	return o.ApplyT(func(v BackupVaultResponse) ResourceMoveDetailsResponse { return v.ResourceMoveDetails }).(ResourceMoveDetailsResponseOutput)
@@ -1977,6 +2076,11 @@ func (o BackupVaultResponseOutput) ResourceMoveDetails() ResourceMoveDetailsResp
 // Resource move state for backup vault
 func (o BackupVaultResponseOutput) ResourceMoveState() pulumi.StringOutput {
 	return o.ApplyT(func(v BackupVaultResponse) string { return v.ResourceMoveState }).(pulumi.StringOutput)
+}
+
+// Secure Score of Backup Vault
+func (o BackupVaultResponseOutput) SecureScore() pulumi.StringOutput {
+	return o.ApplyT(func(v BackupVaultResponse) string { return v.SecureScore }).(pulumi.StringOutput)
 }
 
 // Security Settings
@@ -2091,6 +2195,442 @@ func (o BlobBackupDatasourceParametersResponseOutput) ObjectType() pulumi.String
 	return o.ApplyT(func(v BlobBackupDatasourceParametersResponse) string { return v.ObjectType }).(pulumi.StringOutput)
 }
 
+// The details of the managed identity used for CMK
+type CmkKekIdentity struct {
+	// The managed identity to be used which has access permissions to the Key Vault. Provide a value here in case identity types: 'UserAssigned' only.
+	IdentityId *string `pulumi:"identityId"`
+	// The identity type. 'SystemAssigned' and 'UserAssigned' are mutually exclusive. 'SystemAssigned' will use implicitly created managed identity.
+	IdentityType *string `pulumi:"identityType"`
+}
+
+// CmkKekIdentityInput is an input type that accepts CmkKekIdentityArgs and CmkKekIdentityOutput values.
+// You can construct a concrete instance of `CmkKekIdentityInput` via:
+//
+//	CmkKekIdentityArgs{...}
+type CmkKekIdentityInput interface {
+	pulumi.Input
+
+	ToCmkKekIdentityOutput() CmkKekIdentityOutput
+	ToCmkKekIdentityOutputWithContext(context.Context) CmkKekIdentityOutput
+}
+
+// The details of the managed identity used for CMK
+type CmkKekIdentityArgs struct {
+	// The managed identity to be used which has access permissions to the Key Vault. Provide a value here in case identity types: 'UserAssigned' only.
+	IdentityId pulumi.StringPtrInput `pulumi:"identityId"`
+	// The identity type. 'SystemAssigned' and 'UserAssigned' are mutually exclusive. 'SystemAssigned' will use implicitly created managed identity.
+	IdentityType pulumi.StringPtrInput `pulumi:"identityType"`
+}
+
+func (CmkKekIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CmkKekIdentity)(nil)).Elem()
+}
+
+func (i CmkKekIdentityArgs) ToCmkKekIdentityOutput() CmkKekIdentityOutput {
+	return i.ToCmkKekIdentityOutputWithContext(context.Background())
+}
+
+func (i CmkKekIdentityArgs) ToCmkKekIdentityOutputWithContext(ctx context.Context) CmkKekIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CmkKekIdentityOutput)
+}
+
+func (i CmkKekIdentityArgs) ToCmkKekIdentityPtrOutput() CmkKekIdentityPtrOutput {
+	return i.ToCmkKekIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i CmkKekIdentityArgs) ToCmkKekIdentityPtrOutputWithContext(ctx context.Context) CmkKekIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CmkKekIdentityOutput).ToCmkKekIdentityPtrOutputWithContext(ctx)
+}
+
+// CmkKekIdentityPtrInput is an input type that accepts CmkKekIdentityArgs, CmkKekIdentityPtr and CmkKekIdentityPtrOutput values.
+// You can construct a concrete instance of `CmkKekIdentityPtrInput` via:
+//
+//	        CmkKekIdentityArgs{...}
+//
+//	or:
+//
+//	        nil
+type CmkKekIdentityPtrInput interface {
+	pulumi.Input
+
+	ToCmkKekIdentityPtrOutput() CmkKekIdentityPtrOutput
+	ToCmkKekIdentityPtrOutputWithContext(context.Context) CmkKekIdentityPtrOutput
+}
+
+type cmkKekIdentityPtrType CmkKekIdentityArgs
+
+func CmkKekIdentityPtr(v *CmkKekIdentityArgs) CmkKekIdentityPtrInput {
+	return (*cmkKekIdentityPtrType)(v)
+}
+
+func (*cmkKekIdentityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CmkKekIdentity)(nil)).Elem()
+}
+
+func (i *cmkKekIdentityPtrType) ToCmkKekIdentityPtrOutput() CmkKekIdentityPtrOutput {
+	return i.ToCmkKekIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i *cmkKekIdentityPtrType) ToCmkKekIdentityPtrOutputWithContext(ctx context.Context) CmkKekIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CmkKekIdentityPtrOutput)
+}
+
+// The details of the managed identity used for CMK
+type CmkKekIdentityOutput struct{ *pulumi.OutputState }
+
+func (CmkKekIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CmkKekIdentity)(nil)).Elem()
+}
+
+func (o CmkKekIdentityOutput) ToCmkKekIdentityOutput() CmkKekIdentityOutput {
+	return o
+}
+
+func (o CmkKekIdentityOutput) ToCmkKekIdentityOutputWithContext(ctx context.Context) CmkKekIdentityOutput {
+	return o
+}
+
+func (o CmkKekIdentityOutput) ToCmkKekIdentityPtrOutput() CmkKekIdentityPtrOutput {
+	return o.ToCmkKekIdentityPtrOutputWithContext(context.Background())
+}
+
+func (o CmkKekIdentityOutput) ToCmkKekIdentityPtrOutputWithContext(ctx context.Context) CmkKekIdentityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CmkKekIdentity) *CmkKekIdentity {
+		return &v
+	}).(CmkKekIdentityPtrOutput)
+}
+
+// The managed identity to be used which has access permissions to the Key Vault. Provide a value here in case identity types: 'UserAssigned' only.
+func (o CmkKekIdentityOutput) IdentityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CmkKekIdentity) *string { return v.IdentityId }).(pulumi.StringPtrOutput)
+}
+
+// The identity type. 'SystemAssigned' and 'UserAssigned' are mutually exclusive. 'SystemAssigned' will use implicitly created managed identity.
+func (o CmkKekIdentityOutput) IdentityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CmkKekIdentity) *string { return v.IdentityType }).(pulumi.StringPtrOutput)
+}
+
+type CmkKekIdentityPtrOutput struct{ *pulumi.OutputState }
+
+func (CmkKekIdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CmkKekIdentity)(nil)).Elem()
+}
+
+func (o CmkKekIdentityPtrOutput) ToCmkKekIdentityPtrOutput() CmkKekIdentityPtrOutput {
+	return o
+}
+
+func (o CmkKekIdentityPtrOutput) ToCmkKekIdentityPtrOutputWithContext(ctx context.Context) CmkKekIdentityPtrOutput {
+	return o
+}
+
+func (o CmkKekIdentityPtrOutput) Elem() CmkKekIdentityOutput {
+	return o.ApplyT(func(v *CmkKekIdentity) CmkKekIdentity {
+		if v != nil {
+			return *v
+		}
+		var ret CmkKekIdentity
+		return ret
+	}).(CmkKekIdentityOutput)
+}
+
+// The managed identity to be used which has access permissions to the Key Vault. Provide a value here in case identity types: 'UserAssigned' only.
+func (o CmkKekIdentityPtrOutput) IdentityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CmkKekIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The identity type. 'SystemAssigned' and 'UserAssigned' are mutually exclusive. 'SystemAssigned' will use implicitly created managed identity.
+func (o CmkKekIdentityPtrOutput) IdentityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CmkKekIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The details of the managed identity used for CMK
+type CmkKekIdentityResponse struct {
+	// The managed identity to be used which has access permissions to the Key Vault. Provide a value here in case identity types: 'UserAssigned' only.
+	IdentityId *string `pulumi:"identityId"`
+	// The identity type. 'SystemAssigned' and 'UserAssigned' are mutually exclusive. 'SystemAssigned' will use implicitly created managed identity.
+	IdentityType *string `pulumi:"identityType"`
+}
+
+// The details of the managed identity used for CMK
+type CmkKekIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (CmkKekIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CmkKekIdentityResponse)(nil)).Elem()
+}
+
+func (o CmkKekIdentityResponseOutput) ToCmkKekIdentityResponseOutput() CmkKekIdentityResponseOutput {
+	return o
+}
+
+func (o CmkKekIdentityResponseOutput) ToCmkKekIdentityResponseOutputWithContext(ctx context.Context) CmkKekIdentityResponseOutput {
+	return o
+}
+
+// The managed identity to be used which has access permissions to the Key Vault. Provide a value here in case identity types: 'UserAssigned' only.
+func (o CmkKekIdentityResponseOutput) IdentityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CmkKekIdentityResponse) *string { return v.IdentityId }).(pulumi.StringPtrOutput)
+}
+
+// The identity type. 'SystemAssigned' and 'UserAssigned' are mutually exclusive. 'SystemAssigned' will use implicitly created managed identity.
+func (o CmkKekIdentityResponseOutput) IdentityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CmkKekIdentityResponse) *string { return v.IdentityType }).(pulumi.StringPtrOutput)
+}
+
+type CmkKekIdentityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CmkKekIdentityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CmkKekIdentityResponse)(nil)).Elem()
+}
+
+func (o CmkKekIdentityResponsePtrOutput) ToCmkKekIdentityResponsePtrOutput() CmkKekIdentityResponsePtrOutput {
+	return o
+}
+
+func (o CmkKekIdentityResponsePtrOutput) ToCmkKekIdentityResponsePtrOutputWithContext(ctx context.Context) CmkKekIdentityResponsePtrOutput {
+	return o
+}
+
+func (o CmkKekIdentityResponsePtrOutput) Elem() CmkKekIdentityResponseOutput {
+	return o.ApplyT(func(v *CmkKekIdentityResponse) CmkKekIdentityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CmkKekIdentityResponse
+		return ret
+	}).(CmkKekIdentityResponseOutput)
+}
+
+// The managed identity to be used which has access permissions to the Key Vault. Provide a value here in case identity types: 'UserAssigned' only.
+func (o CmkKekIdentityResponsePtrOutput) IdentityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CmkKekIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The identity type. 'SystemAssigned' and 'UserAssigned' are mutually exclusive. 'SystemAssigned' will use implicitly created managed identity.
+func (o CmkKekIdentityResponsePtrOutput) IdentityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CmkKekIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The properties of the Key Vault which hosts CMK
+type CmkKeyVaultProperties struct {
+	// The key uri of the Customer Managed Key
+	KeyUri *string `pulumi:"keyUri"`
+}
+
+// CmkKeyVaultPropertiesInput is an input type that accepts CmkKeyVaultPropertiesArgs and CmkKeyVaultPropertiesOutput values.
+// You can construct a concrete instance of `CmkKeyVaultPropertiesInput` via:
+//
+//	CmkKeyVaultPropertiesArgs{...}
+type CmkKeyVaultPropertiesInput interface {
+	pulumi.Input
+
+	ToCmkKeyVaultPropertiesOutput() CmkKeyVaultPropertiesOutput
+	ToCmkKeyVaultPropertiesOutputWithContext(context.Context) CmkKeyVaultPropertiesOutput
+}
+
+// The properties of the Key Vault which hosts CMK
+type CmkKeyVaultPropertiesArgs struct {
+	// The key uri of the Customer Managed Key
+	KeyUri pulumi.StringPtrInput `pulumi:"keyUri"`
+}
+
+func (CmkKeyVaultPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CmkKeyVaultProperties)(nil)).Elem()
+}
+
+func (i CmkKeyVaultPropertiesArgs) ToCmkKeyVaultPropertiesOutput() CmkKeyVaultPropertiesOutput {
+	return i.ToCmkKeyVaultPropertiesOutputWithContext(context.Background())
+}
+
+func (i CmkKeyVaultPropertiesArgs) ToCmkKeyVaultPropertiesOutputWithContext(ctx context.Context) CmkKeyVaultPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CmkKeyVaultPropertiesOutput)
+}
+
+func (i CmkKeyVaultPropertiesArgs) ToCmkKeyVaultPropertiesPtrOutput() CmkKeyVaultPropertiesPtrOutput {
+	return i.ToCmkKeyVaultPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i CmkKeyVaultPropertiesArgs) ToCmkKeyVaultPropertiesPtrOutputWithContext(ctx context.Context) CmkKeyVaultPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CmkKeyVaultPropertiesOutput).ToCmkKeyVaultPropertiesPtrOutputWithContext(ctx)
+}
+
+// CmkKeyVaultPropertiesPtrInput is an input type that accepts CmkKeyVaultPropertiesArgs, CmkKeyVaultPropertiesPtr and CmkKeyVaultPropertiesPtrOutput values.
+// You can construct a concrete instance of `CmkKeyVaultPropertiesPtrInput` via:
+//
+//	        CmkKeyVaultPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type CmkKeyVaultPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToCmkKeyVaultPropertiesPtrOutput() CmkKeyVaultPropertiesPtrOutput
+	ToCmkKeyVaultPropertiesPtrOutputWithContext(context.Context) CmkKeyVaultPropertiesPtrOutput
+}
+
+type cmkKeyVaultPropertiesPtrType CmkKeyVaultPropertiesArgs
+
+func CmkKeyVaultPropertiesPtr(v *CmkKeyVaultPropertiesArgs) CmkKeyVaultPropertiesPtrInput {
+	return (*cmkKeyVaultPropertiesPtrType)(v)
+}
+
+func (*cmkKeyVaultPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CmkKeyVaultProperties)(nil)).Elem()
+}
+
+func (i *cmkKeyVaultPropertiesPtrType) ToCmkKeyVaultPropertiesPtrOutput() CmkKeyVaultPropertiesPtrOutput {
+	return i.ToCmkKeyVaultPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *cmkKeyVaultPropertiesPtrType) ToCmkKeyVaultPropertiesPtrOutputWithContext(ctx context.Context) CmkKeyVaultPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CmkKeyVaultPropertiesPtrOutput)
+}
+
+// The properties of the Key Vault which hosts CMK
+type CmkKeyVaultPropertiesOutput struct{ *pulumi.OutputState }
+
+func (CmkKeyVaultPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CmkKeyVaultProperties)(nil)).Elem()
+}
+
+func (o CmkKeyVaultPropertiesOutput) ToCmkKeyVaultPropertiesOutput() CmkKeyVaultPropertiesOutput {
+	return o
+}
+
+func (o CmkKeyVaultPropertiesOutput) ToCmkKeyVaultPropertiesOutputWithContext(ctx context.Context) CmkKeyVaultPropertiesOutput {
+	return o
+}
+
+func (o CmkKeyVaultPropertiesOutput) ToCmkKeyVaultPropertiesPtrOutput() CmkKeyVaultPropertiesPtrOutput {
+	return o.ToCmkKeyVaultPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o CmkKeyVaultPropertiesOutput) ToCmkKeyVaultPropertiesPtrOutputWithContext(ctx context.Context) CmkKeyVaultPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CmkKeyVaultProperties) *CmkKeyVaultProperties {
+		return &v
+	}).(CmkKeyVaultPropertiesPtrOutput)
+}
+
+// The key uri of the Customer Managed Key
+func (o CmkKeyVaultPropertiesOutput) KeyUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CmkKeyVaultProperties) *string { return v.KeyUri }).(pulumi.StringPtrOutput)
+}
+
+type CmkKeyVaultPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (CmkKeyVaultPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CmkKeyVaultProperties)(nil)).Elem()
+}
+
+func (o CmkKeyVaultPropertiesPtrOutput) ToCmkKeyVaultPropertiesPtrOutput() CmkKeyVaultPropertiesPtrOutput {
+	return o
+}
+
+func (o CmkKeyVaultPropertiesPtrOutput) ToCmkKeyVaultPropertiesPtrOutputWithContext(ctx context.Context) CmkKeyVaultPropertiesPtrOutput {
+	return o
+}
+
+func (o CmkKeyVaultPropertiesPtrOutput) Elem() CmkKeyVaultPropertiesOutput {
+	return o.ApplyT(func(v *CmkKeyVaultProperties) CmkKeyVaultProperties {
+		if v != nil {
+			return *v
+		}
+		var ret CmkKeyVaultProperties
+		return ret
+	}).(CmkKeyVaultPropertiesOutput)
+}
+
+// The key uri of the Customer Managed Key
+func (o CmkKeyVaultPropertiesPtrOutput) KeyUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CmkKeyVaultProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The properties of the Key Vault which hosts CMK
+type CmkKeyVaultPropertiesResponse struct {
+	// The key uri of the Customer Managed Key
+	KeyUri *string `pulumi:"keyUri"`
+}
+
+// The properties of the Key Vault which hosts CMK
+type CmkKeyVaultPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (CmkKeyVaultPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CmkKeyVaultPropertiesResponse)(nil)).Elem()
+}
+
+func (o CmkKeyVaultPropertiesResponseOutput) ToCmkKeyVaultPropertiesResponseOutput() CmkKeyVaultPropertiesResponseOutput {
+	return o
+}
+
+func (o CmkKeyVaultPropertiesResponseOutput) ToCmkKeyVaultPropertiesResponseOutputWithContext(ctx context.Context) CmkKeyVaultPropertiesResponseOutput {
+	return o
+}
+
+// The key uri of the Customer Managed Key
+func (o CmkKeyVaultPropertiesResponseOutput) KeyUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CmkKeyVaultPropertiesResponse) *string { return v.KeyUri }).(pulumi.StringPtrOutput)
+}
+
+type CmkKeyVaultPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CmkKeyVaultPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CmkKeyVaultPropertiesResponse)(nil)).Elem()
+}
+
+func (o CmkKeyVaultPropertiesResponsePtrOutput) ToCmkKeyVaultPropertiesResponsePtrOutput() CmkKeyVaultPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o CmkKeyVaultPropertiesResponsePtrOutput) ToCmkKeyVaultPropertiesResponsePtrOutputWithContext(ctx context.Context) CmkKeyVaultPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o CmkKeyVaultPropertiesResponsePtrOutput) Elem() CmkKeyVaultPropertiesResponseOutput {
+	return o.ApplyT(func(v *CmkKeyVaultPropertiesResponse) CmkKeyVaultPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CmkKeyVaultPropertiesResponse
+		return ret
+	}).(CmkKeyVaultPropertiesResponseOutput)
+}
+
+// The key uri of the Customer Managed Key
+func (o CmkKeyVaultPropertiesResponsePtrOutput) KeyUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CmkKeyVaultPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyUri
+	}).(pulumi.StringPtrOutput)
+}
+
 // Copy on Expiry Option
 type CopyOnExpiryOption struct {
 	// Type of the specific object - used for deserializing
@@ -2175,6 +2715,201 @@ func (o CopyOnExpiryOptionResponseOutput) ToCopyOnExpiryOptionResponseOutputWith
 // Expected value is 'CopyOnExpiryOption'.
 func (o CopyOnExpiryOptionResponseOutput) ObjectType() pulumi.StringOutput {
 	return o.ApplyT(func(v CopyOnExpiryOptionResponse) string { return v.ObjectType }).(pulumi.StringOutput)
+}
+
+type CrossRegionRestoreSettings struct {
+	// CrossRegionRestore state
+	State *string `pulumi:"state"`
+}
+
+// CrossRegionRestoreSettingsInput is an input type that accepts CrossRegionRestoreSettingsArgs and CrossRegionRestoreSettingsOutput values.
+// You can construct a concrete instance of `CrossRegionRestoreSettingsInput` via:
+//
+//	CrossRegionRestoreSettingsArgs{...}
+type CrossRegionRestoreSettingsInput interface {
+	pulumi.Input
+
+	ToCrossRegionRestoreSettingsOutput() CrossRegionRestoreSettingsOutput
+	ToCrossRegionRestoreSettingsOutputWithContext(context.Context) CrossRegionRestoreSettingsOutput
+}
+
+type CrossRegionRestoreSettingsArgs struct {
+	// CrossRegionRestore state
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (CrossRegionRestoreSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CrossRegionRestoreSettings)(nil)).Elem()
+}
+
+func (i CrossRegionRestoreSettingsArgs) ToCrossRegionRestoreSettingsOutput() CrossRegionRestoreSettingsOutput {
+	return i.ToCrossRegionRestoreSettingsOutputWithContext(context.Background())
+}
+
+func (i CrossRegionRestoreSettingsArgs) ToCrossRegionRestoreSettingsOutputWithContext(ctx context.Context) CrossRegionRestoreSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CrossRegionRestoreSettingsOutput)
+}
+
+func (i CrossRegionRestoreSettingsArgs) ToCrossRegionRestoreSettingsPtrOutput() CrossRegionRestoreSettingsPtrOutput {
+	return i.ToCrossRegionRestoreSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i CrossRegionRestoreSettingsArgs) ToCrossRegionRestoreSettingsPtrOutputWithContext(ctx context.Context) CrossRegionRestoreSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CrossRegionRestoreSettingsOutput).ToCrossRegionRestoreSettingsPtrOutputWithContext(ctx)
+}
+
+// CrossRegionRestoreSettingsPtrInput is an input type that accepts CrossRegionRestoreSettingsArgs, CrossRegionRestoreSettingsPtr and CrossRegionRestoreSettingsPtrOutput values.
+// You can construct a concrete instance of `CrossRegionRestoreSettingsPtrInput` via:
+//
+//	        CrossRegionRestoreSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CrossRegionRestoreSettingsPtrInput interface {
+	pulumi.Input
+
+	ToCrossRegionRestoreSettingsPtrOutput() CrossRegionRestoreSettingsPtrOutput
+	ToCrossRegionRestoreSettingsPtrOutputWithContext(context.Context) CrossRegionRestoreSettingsPtrOutput
+}
+
+type crossRegionRestoreSettingsPtrType CrossRegionRestoreSettingsArgs
+
+func CrossRegionRestoreSettingsPtr(v *CrossRegionRestoreSettingsArgs) CrossRegionRestoreSettingsPtrInput {
+	return (*crossRegionRestoreSettingsPtrType)(v)
+}
+
+func (*crossRegionRestoreSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CrossRegionRestoreSettings)(nil)).Elem()
+}
+
+func (i *crossRegionRestoreSettingsPtrType) ToCrossRegionRestoreSettingsPtrOutput() CrossRegionRestoreSettingsPtrOutput {
+	return i.ToCrossRegionRestoreSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *crossRegionRestoreSettingsPtrType) ToCrossRegionRestoreSettingsPtrOutputWithContext(ctx context.Context) CrossRegionRestoreSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CrossRegionRestoreSettingsPtrOutput)
+}
+
+type CrossRegionRestoreSettingsOutput struct{ *pulumi.OutputState }
+
+func (CrossRegionRestoreSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CrossRegionRestoreSettings)(nil)).Elem()
+}
+
+func (o CrossRegionRestoreSettingsOutput) ToCrossRegionRestoreSettingsOutput() CrossRegionRestoreSettingsOutput {
+	return o
+}
+
+func (o CrossRegionRestoreSettingsOutput) ToCrossRegionRestoreSettingsOutputWithContext(ctx context.Context) CrossRegionRestoreSettingsOutput {
+	return o
+}
+
+func (o CrossRegionRestoreSettingsOutput) ToCrossRegionRestoreSettingsPtrOutput() CrossRegionRestoreSettingsPtrOutput {
+	return o.ToCrossRegionRestoreSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o CrossRegionRestoreSettingsOutput) ToCrossRegionRestoreSettingsPtrOutputWithContext(ctx context.Context) CrossRegionRestoreSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CrossRegionRestoreSettings) *CrossRegionRestoreSettings {
+		return &v
+	}).(CrossRegionRestoreSettingsPtrOutput)
+}
+
+// CrossRegionRestore state
+func (o CrossRegionRestoreSettingsOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CrossRegionRestoreSettings) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type CrossRegionRestoreSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (CrossRegionRestoreSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CrossRegionRestoreSettings)(nil)).Elem()
+}
+
+func (o CrossRegionRestoreSettingsPtrOutput) ToCrossRegionRestoreSettingsPtrOutput() CrossRegionRestoreSettingsPtrOutput {
+	return o
+}
+
+func (o CrossRegionRestoreSettingsPtrOutput) ToCrossRegionRestoreSettingsPtrOutputWithContext(ctx context.Context) CrossRegionRestoreSettingsPtrOutput {
+	return o
+}
+
+func (o CrossRegionRestoreSettingsPtrOutput) Elem() CrossRegionRestoreSettingsOutput {
+	return o.ApplyT(func(v *CrossRegionRestoreSettings) CrossRegionRestoreSettings {
+		if v != nil {
+			return *v
+		}
+		var ret CrossRegionRestoreSettings
+		return ret
+	}).(CrossRegionRestoreSettingsOutput)
+}
+
+// CrossRegionRestore state
+func (o CrossRegionRestoreSettingsPtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CrossRegionRestoreSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(pulumi.StringPtrOutput)
+}
+
+type CrossRegionRestoreSettingsResponse struct {
+	// CrossRegionRestore state
+	State *string `pulumi:"state"`
+}
+
+type CrossRegionRestoreSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (CrossRegionRestoreSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CrossRegionRestoreSettingsResponse)(nil)).Elem()
+}
+
+func (o CrossRegionRestoreSettingsResponseOutput) ToCrossRegionRestoreSettingsResponseOutput() CrossRegionRestoreSettingsResponseOutput {
+	return o
+}
+
+func (o CrossRegionRestoreSettingsResponseOutput) ToCrossRegionRestoreSettingsResponseOutputWithContext(ctx context.Context) CrossRegionRestoreSettingsResponseOutput {
+	return o
+}
+
+// CrossRegionRestore state
+func (o CrossRegionRestoreSettingsResponseOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CrossRegionRestoreSettingsResponse) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type CrossRegionRestoreSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CrossRegionRestoreSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CrossRegionRestoreSettingsResponse)(nil)).Elem()
+}
+
+func (o CrossRegionRestoreSettingsResponsePtrOutput) ToCrossRegionRestoreSettingsResponsePtrOutput() CrossRegionRestoreSettingsResponsePtrOutput {
+	return o
+}
+
+func (o CrossRegionRestoreSettingsResponsePtrOutput) ToCrossRegionRestoreSettingsResponsePtrOutputWithContext(ctx context.Context) CrossRegionRestoreSettingsResponsePtrOutput {
+	return o
+}
+
+func (o CrossRegionRestoreSettingsResponsePtrOutput) Elem() CrossRegionRestoreSettingsResponseOutput {
+	return o.ApplyT(func(v *CrossRegionRestoreSettingsResponse) CrossRegionRestoreSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CrossRegionRestoreSettingsResponse
+		return ret
+	}).(CrossRegionRestoreSettingsResponseOutput)
+}
+
+// CrossRegionRestore state
+func (o CrossRegionRestoreSettingsResponsePtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CrossRegionRestoreSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(pulumi.StringPtrOutput)
 }
 
 // CrossSubscriptionRestore Settings
@@ -2588,6 +3323,8 @@ type Datasource struct {
 	ResourceLocation *string `pulumi:"resourceLocation"`
 	// Unique identifier of the resource in the context of parent.
 	ResourceName *string `pulumi:"resourceName"`
+	// Properties specific to data source
+	ResourceProperties *DefaultResourceProperties `pulumi:"resourceProperties"`
 	// Resource Type of Datasource.
 	ResourceType *string `pulumi:"resourceType"`
 	// Uri of the resource.
@@ -2617,6 +3354,8 @@ type DatasourceArgs struct {
 	ResourceLocation pulumi.StringPtrInput `pulumi:"resourceLocation"`
 	// Unique identifier of the resource in the context of parent.
 	ResourceName pulumi.StringPtrInput `pulumi:"resourceName"`
+	// Properties specific to data source
+	ResourceProperties DefaultResourcePropertiesPtrInput `pulumi:"resourceProperties"`
 	// Resource Type of Datasource.
 	ResourceType pulumi.StringPtrInput `pulumi:"resourceType"`
 	// Uri of the resource.
@@ -2726,6 +3465,11 @@ func (o DatasourceOutput) ResourceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Datasource) *string { return v.ResourceName }).(pulumi.StringPtrOutput)
 }
 
+// Properties specific to data source
+func (o DatasourceOutput) ResourceProperties() DefaultResourcePropertiesPtrOutput {
+	return o.ApplyT(func(v Datasource) *DefaultResourceProperties { return v.ResourceProperties }).(DefaultResourcePropertiesPtrOutput)
+}
+
 // Resource Type of Datasource.
 func (o DatasourceOutput) ResourceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Datasource) *string { return v.ResourceType }).(pulumi.StringPtrOutput)
@@ -2810,6 +3554,16 @@ func (o DatasourcePtrOutput) ResourceName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Properties specific to data source
+func (o DatasourcePtrOutput) ResourceProperties() DefaultResourcePropertiesPtrOutput {
+	return o.ApplyT(func(v *Datasource) *DefaultResourceProperties {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceProperties
+	}).(DefaultResourcePropertiesPtrOutput)
+}
+
 // Resource Type of Datasource.
 func (o DatasourcePtrOutput) ResourceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Datasource) *string {
@@ -2842,6 +3596,8 @@ type DatasourceResponse struct {
 	ResourceLocation *string `pulumi:"resourceLocation"`
 	// Unique identifier of the resource in the context of parent.
 	ResourceName *string `pulumi:"resourceName"`
+	// Properties specific to data source
+	ResourceProperties *DefaultResourcePropertiesResponse `pulumi:"resourceProperties"`
 	// Resource Type of Datasource.
 	ResourceType *string `pulumi:"resourceType"`
 	// Uri of the resource.
@@ -2888,6 +3644,11 @@ func (o DatasourceResponseOutput) ResourceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatasourceResponse) *string { return v.ResourceName }).(pulumi.StringPtrOutput)
 }
 
+// Properties specific to data source
+func (o DatasourceResponseOutput) ResourceProperties() DefaultResourcePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v DatasourceResponse) *DefaultResourcePropertiesResponse { return v.ResourceProperties }).(DefaultResourcePropertiesResponsePtrOutput)
+}
+
 // Resource Type of Datasource.
 func (o DatasourceResponseOutput) ResourceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatasourceResponse) *string { return v.ResourceType }).(pulumi.StringPtrOutput)
@@ -2910,6 +3671,8 @@ type DatasourceSet struct {
 	ResourceLocation *string `pulumi:"resourceLocation"`
 	// Unique identifier of the resource in the context of parent.
 	ResourceName *string `pulumi:"resourceName"`
+	// Properties specific to data source set
+	ResourceProperties *DefaultResourceProperties `pulumi:"resourceProperties"`
 	// Resource Type of Datasource.
 	ResourceType *string `pulumi:"resourceType"`
 	// Uri of the resource.
@@ -2939,6 +3702,8 @@ type DatasourceSetArgs struct {
 	ResourceLocation pulumi.StringPtrInput `pulumi:"resourceLocation"`
 	// Unique identifier of the resource in the context of parent.
 	ResourceName pulumi.StringPtrInput `pulumi:"resourceName"`
+	// Properties specific to data source set
+	ResourceProperties DefaultResourcePropertiesPtrInput `pulumi:"resourceProperties"`
 	// Resource Type of Datasource.
 	ResourceType pulumi.StringPtrInput `pulumi:"resourceType"`
 	// Uri of the resource.
@@ -3048,6 +3813,11 @@ func (o DatasourceSetOutput) ResourceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatasourceSet) *string { return v.ResourceName }).(pulumi.StringPtrOutput)
 }
 
+// Properties specific to data source set
+func (o DatasourceSetOutput) ResourceProperties() DefaultResourcePropertiesPtrOutput {
+	return o.ApplyT(func(v DatasourceSet) *DefaultResourceProperties { return v.ResourceProperties }).(DefaultResourcePropertiesPtrOutput)
+}
+
 // Resource Type of Datasource.
 func (o DatasourceSetOutput) ResourceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatasourceSet) *string { return v.ResourceType }).(pulumi.StringPtrOutput)
@@ -3132,6 +3902,16 @@ func (o DatasourceSetPtrOutput) ResourceName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Properties specific to data source set
+func (o DatasourceSetPtrOutput) ResourceProperties() DefaultResourcePropertiesPtrOutput {
+	return o.ApplyT(func(v *DatasourceSet) *DefaultResourceProperties {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceProperties
+	}).(DefaultResourcePropertiesPtrOutput)
+}
+
 // Resource Type of Datasource.
 func (o DatasourceSetPtrOutput) ResourceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatasourceSet) *string {
@@ -3164,6 +3944,8 @@ type DatasourceSetResponse struct {
 	ResourceLocation *string `pulumi:"resourceLocation"`
 	// Unique identifier of the resource in the context of parent.
 	ResourceName *string `pulumi:"resourceName"`
+	// Properties specific to data source set
+	ResourceProperties *DefaultResourcePropertiesResponse `pulumi:"resourceProperties"`
 	// Resource Type of Datasource.
 	ResourceType *string `pulumi:"resourceType"`
 	// Uri of the resource.
@@ -3208,6 +3990,11 @@ func (o DatasourceSetResponseOutput) ResourceLocation() pulumi.StringPtrOutput {
 // Unique identifier of the resource in the context of parent.
 func (o DatasourceSetResponseOutput) ResourceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatasourceSetResponse) *string { return v.ResourceName }).(pulumi.StringPtrOutput)
+}
+
+// Properties specific to data source set
+func (o DatasourceSetResponseOutput) ResourceProperties() DefaultResourcePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v DatasourceSetResponse) *DefaultResourcePropertiesResponse { return v.ResourceProperties }).(DefaultResourcePropertiesResponsePtrOutput)
 }
 
 // Resource Type of Datasource.
@@ -3292,6 +4079,16 @@ func (o DatasourceSetResponsePtrOutput) ResourceName() pulumi.StringPtrOutput {
 		}
 		return v.ResourceName
 	}).(pulumi.StringPtrOutput)
+}
+
+// Properties specific to data source set
+func (o DatasourceSetResponsePtrOutput) ResourceProperties() DefaultResourcePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *DatasourceSetResponse) *DefaultResourcePropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceProperties
+	}).(DefaultResourcePropertiesResponsePtrOutput)
 }
 
 // Resource Type of Datasource.
@@ -3476,10 +4273,219 @@ func (o DayResponseArrayOutput) Index(i pulumi.IntInput) DayResponseOutput {
 	}).(DayResponseOutput)
 }
 
+// Default source properties
+type DefaultResourceProperties struct {
+	// Type of the specific object - used for deserializing
+	// Expected value is 'DefaultResourceProperties'.
+	ObjectType string `pulumi:"objectType"`
+}
+
+// DefaultResourcePropertiesInput is an input type that accepts DefaultResourcePropertiesArgs and DefaultResourcePropertiesOutput values.
+// You can construct a concrete instance of `DefaultResourcePropertiesInput` via:
+//
+//	DefaultResourcePropertiesArgs{...}
+type DefaultResourcePropertiesInput interface {
+	pulumi.Input
+
+	ToDefaultResourcePropertiesOutput() DefaultResourcePropertiesOutput
+	ToDefaultResourcePropertiesOutputWithContext(context.Context) DefaultResourcePropertiesOutput
+}
+
+// Default source properties
+type DefaultResourcePropertiesArgs struct {
+	// Type of the specific object - used for deserializing
+	// Expected value is 'DefaultResourceProperties'.
+	ObjectType pulumi.StringInput `pulumi:"objectType"`
+}
+
+func (DefaultResourcePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultResourceProperties)(nil)).Elem()
+}
+
+func (i DefaultResourcePropertiesArgs) ToDefaultResourcePropertiesOutput() DefaultResourcePropertiesOutput {
+	return i.ToDefaultResourcePropertiesOutputWithContext(context.Background())
+}
+
+func (i DefaultResourcePropertiesArgs) ToDefaultResourcePropertiesOutputWithContext(ctx context.Context) DefaultResourcePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultResourcePropertiesOutput)
+}
+
+func (i DefaultResourcePropertiesArgs) ToDefaultResourcePropertiesPtrOutput() DefaultResourcePropertiesPtrOutput {
+	return i.ToDefaultResourcePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i DefaultResourcePropertiesArgs) ToDefaultResourcePropertiesPtrOutputWithContext(ctx context.Context) DefaultResourcePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultResourcePropertiesOutput).ToDefaultResourcePropertiesPtrOutputWithContext(ctx)
+}
+
+// DefaultResourcePropertiesPtrInput is an input type that accepts DefaultResourcePropertiesArgs, DefaultResourcePropertiesPtr and DefaultResourcePropertiesPtrOutput values.
+// You can construct a concrete instance of `DefaultResourcePropertiesPtrInput` via:
+//
+//	        DefaultResourcePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type DefaultResourcePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToDefaultResourcePropertiesPtrOutput() DefaultResourcePropertiesPtrOutput
+	ToDefaultResourcePropertiesPtrOutputWithContext(context.Context) DefaultResourcePropertiesPtrOutput
+}
+
+type defaultResourcePropertiesPtrType DefaultResourcePropertiesArgs
+
+func DefaultResourcePropertiesPtr(v *DefaultResourcePropertiesArgs) DefaultResourcePropertiesPtrInput {
+	return (*defaultResourcePropertiesPtrType)(v)
+}
+
+func (*defaultResourcePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultResourceProperties)(nil)).Elem()
+}
+
+func (i *defaultResourcePropertiesPtrType) ToDefaultResourcePropertiesPtrOutput() DefaultResourcePropertiesPtrOutput {
+	return i.ToDefaultResourcePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *defaultResourcePropertiesPtrType) ToDefaultResourcePropertiesPtrOutputWithContext(ctx context.Context) DefaultResourcePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultResourcePropertiesPtrOutput)
+}
+
+// Default source properties
+type DefaultResourcePropertiesOutput struct{ *pulumi.OutputState }
+
+func (DefaultResourcePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultResourceProperties)(nil)).Elem()
+}
+
+func (o DefaultResourcePropertiesOutput) ToDefaultResourcePropertiesOutput() DefaultResourcePropertiesOutput {
+	return o
+}
+
+func (o DefaultResourcePropertiesOutput) ToDefaultResourcePropertiesOutputWithContext(ctx context.Context) DefaultResourcePropertiesOutput {
+	return o
+}
+
+func (o DefaultResourcePropertiesOutput) ToDefaultResourcePropertiesPtrOutput() DefaultResourcePropertiesPtrOutput {
+	return o.ToDefaultResourcePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o DefaultResourcePropertiesOutput) ToDefaultResourcePropertiesPtrOutputWithContext(ctx context.Context) DefaultResourcePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefaultResourceProperties) *DefaultResourceProperties {
+		return &v
+	}).(DefaultResourcePropertiesPtrOutput)
+}
+
+// Type of the specific object - used for deserializing
+// Expected value is 'DefaultResourceProperties'.
+func (o DefaultResourcePropertiesOutput) ObjectType() pulumi.StringOutput {
+	return o.ApplyT(func(v DefaultResourceProperties) string { return v.ObjectType }).(pulumi.StringOutput)
+}
+
+type DefaultResourcePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (DefaultResourcePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultResourceProperties)(nil)).Elem()
+}
+
+func (o DefaultResourcePropertiesPtrOutput) ToDefaultResourcePropertiesPtrOutput() DefaultResourcePropertiesPtrOutput {
+	return o
+}
+
+func (o DefaultResourcePropertiesPtrOutput) ToDefaultResourcePropertiesPtrOutputWithContext(ctx context.Context) DefaultResourcePropertiesPtrOutput {
+	return o
+}
+
+func (o DefaultResourcePropertiesPtrOutput) Elem() DefaultResourcePropertiesOutput {
+	return o.ApplyT(func(v *DefaultResourceProperties) DefaultResourceProperties {
+		if v != nil {
+			return *v
+		}
+		var ret DefaultResourceProperties
+		return ret
+	}).(DefaultResourcePropertiesOutput)
+}
+
+// Type of the specific object - used for deserializing
+// Expected value is 'DefaultResourceProperties'.
+func (o DefaultResourcePropertiesPtrOutput) ObjectType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefaultResourceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ObjectType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Default source properties
+type DefaultResourcePropertiesResponse struct {
+	// Type of the specific object - used for deserializing
+	// Expected value is 'DefaultResourceProperties'.
+	ObjectType string `pulumi:"objectType"`
+}
+
+// Default source properties
+type DefaultResourcePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (DefaultResourcePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultResourcePropertiesResponse)(nil)).Elem()
+}
+
+func (o DefaultResourcePropertiesResponseOutput) ToDefaultResourcePropertiesResponseOutput() DefaultResourcePropertiesResponseOutput {
+	return o
+}
+
+func (o DefaultResourcePropertiesResponseOutput) ToDefaultResourcePropertiesResponseOutputWithContext(ctx context.Context) DefaultResourcePropertiesResponseOutput {
+	return o
+}
+
+// Type of the specific object - used for deserializing
+// Expected value is 'DefaultResourceProperties'.
+func (o DefaultResourcePropertiesResponseOutput) ObjectType() pulumi.StringOutput {
+	return o.ApplyT(func(v DefaultResourcePropertiesResponse) string { return v.ObjectType }).(pulumi.StringOutput)
+}
+
+type DefaultResourcePropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DefaultResourcePropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultResourcePropertiesResponse)(nil)).Elem()
+}
+
+func (o DefaultResourcePropertiesResponsePtrOutput) ToDefaultResourcePropertiesResponsePtrOutput() DefaultResourcePropertiesResponsePtrOutput {
+	return o
+}
+
+func (o DefaultResourcePropertiesResponsePtrOutput) ToDefaultResourcePropertiesResponsePtrOutputWithContext(ctx context.Context) DefaultResourcePropertiesResponsePtrOutput {
+	return o
+}
+
+func (o DefaultResourcePropertiesResponsePtrOutput) Elem() DefaultResourcePropertiesResponseOutput {
+	return o.ApplyT(func(v *DefaultResourcePropertiesResponse) DefaultResourcePropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DefaultResourcePropertiesResponse
+		return ret
+	}).(DefaultResourcePropertiesResponseOutput)
+}
+
+// Type of the specific object - used for deserializing
+// Expected value is 'DefaultResourceProperties'.
+func (o DefaultResourcePropertiesResponsePtrOutput) ObjectType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefaultResourcePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ObjectType
+	}).(pulumi.StringPtrOutput)
+}
+
 // Identity details
 type DppIdentityDetails struct {
-	// The identityType which can be either SystemAssigned or None
+	// The identityType which can be either SystemAssigned, UserAssigned, 'SystemAssigned,UserAssigned' or None
 	Type *string `pulumi:"type"`
+	// Gets or sets the user assigned identities.
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
 }
 
 // DppIdentityDetailsInput is an input type that accepts DppIdentityDetailsArgs and DppIdentityDetailsOutput values.
@@ -3495,8 +4501,10 @@ type DppIdentityDetailsInput interface {
 
 // Identity details
 type DppIdentityDetailsArgs struct {
-	// The identityType which can be either SystemAssigned or None
+	// The identityType which can be either SystemAssigned, UserAssigned, 'SystemAssigned,UserAssigned' or None
 	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Gets or sets the user assigned identities.
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
 }
 
 func (DppIdentityDetailsArgs) ElementType() reflect.Type {
@@ -3577,9 +4585,14 @@ func (o DppIdentityDetailsOutput) ToDppIdentityDetailsPtrOutputWithContext(ctx c
 	}).(DppIdentityDetailsPtrOutput)
 }
 
-// The identityType which can be either SystemAssigned or None
+// The identityType which can be either SystemAssigned, UserAssigned, 'SystemAssigned,UserAssigned' or None
 func (o DppIdentityDetailsOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DppIdentityDetails) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the user assigned identities.
+func (o DppIdentityDetailsOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DppIdentityDetails) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
 }
 
 type DppIdentityDetailsPtrOutput struct{ *pulumi.OutputState }
@@ -3606,7 +4619,7 @@ func (o DppIdentityDetailsPtrOutput) Elem() DppIdentityDetailsOutput {
 	}).(DppIdentityDetailsOutput)
 }
 
-// The identityType which can be either SystemAssigned or None
+// The identityType which can be either SystemAssigned, UserAssigned, 'SystemAssigned,UserAssigned' or None
 func (o DppIdentityDetailsPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DppIdentityDetails) *string {
 		if v == nil {
@@ -3616,14 +4629,26 @@ func (o DppIdentityDetailsPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets the user assigned identities.
+func (o DppIdentityDetailsPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DppIdentityDetails) []string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(pulumi.StringArrayOutput)
+}
+
 // Identity details
 type DppIdentityDetailsResponse struct {
 	// The object ID of the service principal object for the managed identity that is used to grant role-based access to an Azure resource.
 	PrincipalId string `pulumi:"principalId"`
 	// A Globally Unique Identifier (GUID) that represents the Azure AD tenant where the resource is now a member.
 	TenantId string `pulumi:"tenantId"`
-	// The identityType which can be either SystemAssigned or None
+	// The identityType which can be either SystemAssigned, UserAssigned, 'SystemAssigned,UserAssigned' or None
 	Type *string `pulumi:"type"`
+	// Gets or sets the user assigned identities.
+	UserAssignedIdentities map[string]UserAssignedIdentityResponse `pulumi:"userAssignedIdentities"`
 }
 
 // Identity details
@@ -3651,9 +4676,16 @@ func (o DppIdentityDetailsResponseOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v DppIdentityDetailsResponse) string { return v.TenantId }).(pulumi.StringOutput)
 }
 
-// The identityType which can be either SystemAssigned or None
+// The identityType which can be either SystemAssigned, UserAssigned, 'SystemAssigned,UserAssigned' or None
 func (o DppIdentityDetailsResponseOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DppIdentityDetailsResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the user assigned identities.
+func (o DppIdentityDetailsResponseOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v DppIdentityDetailsResponse) map[string]UserAssignedIdentityResponse {
+		return v.UserAssignedIdentities
+	}).(UserAssignedIdentityResponseMapOutput)
 }
 
 type DppIdentityDetailsResponsePtrOutput struct{ *pulumi.OutputState }
@@ -3700,7 +4732,7 @@ func (o DppIdentityDetailsResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The identityType which can be either SystemAssigned or None
+// The identityType which can be either SystemAssigned, UserAssigned, 'SystemAssigned,UserAssigned' or None
 func (o DppIdentityDetailsResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DppIdentityDetailsResponse) *string {
 		if v == nil {
@@ -3710,8 +4742,327 @@ func (o DppIdentityDetailsResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets the user assigned identities.
+func (o DppIdentityDetailsResponsePtrOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v *DppIdentityDetailsResponse) map[string]UserAssignedIdentityResponse {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(UserAssignedIdentityResponseMapOutput)
+}
+
+// Customer Managed Key details of the resource.
+type EncryptionSettings struct {
+	// Enabling/Disabling the Double Encryption state
+	InfrastructureEncryption *string `pulumi:"infrastructureEncryption"`
+	// The details of the managed identity used for CMK
+	KekIdentity *CmkKekIdentity `pulumi:"kekIdentity"`
+	// The properties of the Key Vault which hosts CMK
+	KeyVaultProperties *CmkKeyVaultProperties `pulumi:"keyVaultProperties"`
+	// Encryption state of the Backup Vault.
+	State *string `pulumi:"state"`
+}
+
+// EncryptionSettingsInput is an input type that accepts EncryptionSettingsArgs and EncryptionSettingsOutput values.
+// You can construct a concrete instance of `EncryptionSettingsInput` via:
+//
+//	EncryptionSettingsArgs{...}
+type EncryptionSettingsInput interface {
+	pulumi.Input
+
+	ToEncryptionSettingsOutput() EncryptionSettingsOutput
+	ToEncryptionSettingsOutputWithContext(context.Context) EncryptionSettingsOutput
+}
+
+// Customer Managed Key details of the resource.
+type EncryptionSettingsArgs struct {
+	// Enabling/Disabling the Double Encryption state
+	InfrastructureEncryption pulumi.StringPtrInput `pulumi:"infrastructureEncryption"`
+	// The details of the managed identity used for CMK
+	KekIdentity CmkKekIdentityPtrInput `pulumi:"kekIdentity"`
+	// The properties of the Key Vault which hosts CMK
+	KeyVaultProperties CmkKeyVaultPropertiesPtrInput `pulumi:"keyVaultProperties"`
+	// Encryption state of the Backup Vault.
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (EncryptionSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionSettings)(nil)).Elem()
+}
+
+func (i EncryptionSettingsArgs) ToEncryptionSettingsOutput() EncryptionSettingsOutput {
+	return i.ToEncryptionSettingsOutputWithContext(context.Background())
+}
+
+func (i EncryptionSettingsArgs) ToEncryptionSettingsOutputWithContext(ctx context.Context) EncryptionSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionSettingsOutput)
+}
+
+func (i EncryptionSettingsArgs) ToEncryptionSettingsPtrOutput() EncryptionSettingsPtrOutput {
+	return i.ToEncryptionSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i EncryptionSettingsArgs) ToEncryptionSettingsPtrOutputWithContext(ctx context.Context) EncryptionSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionSettingsOutput).ToEncryptionSettingsPtrOutputWithContext(ctx)
+}
+
+// EncryptionSettingsPtrInput is an input type that accepts EncryptionSettingsArgs, EncryptionSettingsPtr and EncryptionSettingsPtrOutput values.
+// You can construct a concrete instance of `EncryptionSettingsPtrInput` via:
+//
+//	        EncryptionSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type EncryptionSettingsPtrInput interface {
+	pulumi.Input
+
+	ToEncryptionSettingsPtrOutput() EncryptionSettingsPtrOutput
+	ToEncryptionSettingsPtrOutputWithContext(context.Context) EncryptionSettingsPtrOutput
+}
+
+type encryptionSettingsPtrType EncryptionSettingsArgs
+
+func EncryptionSettingsPtr(v *EncryptionSettingsArgs) EncryptionSettingsPtrInput {
+	return (*encryptionSettingsPtrType)(v)
+}
+
+func (*encryptionSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncryptionSettings)(nil)).Elem()
+}
+
+func (i *encryptionSettingsPtrType) ToEncryptionSettingsPtrOutput() EncryptionSettingsPtrOutput {
+	return i.ToEncryptionSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *encryptionSettingsPtrType) ToEncryptionSettingsPtrOutputWithContext(ctx context.Context) EncryptionSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionSettingsPtrOutput)
+}
+
+// Customer Managed Key details of the resource.
+type EncryptionSettingsOutput struct{ *pulumi.OutputState }
+
+func (EncryptionSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionSettings)(nil)).Elem()
+}
+
+func (o EncryptionSettingsOutput) ToEncryptionSettingsOutput() EncryptionSettingsOutput {
+	return o
+}
+
+func (o EncryptionSettingsOutput) ToEncryptionSettingsOutputWithContext(ctx context.Context) EncryptionSettingsOutput {
+	return o
+}
+
+func (o EncryptionSettingsOutput) ToEncryptionSettingsPtrOutput() EncryptionSettingsPtrOutput {
+	return o.ToEncryptionSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o EncryptionSettingsOutput) ToEncryptionSettingsPtrOutputWithContext(ctx context.Context) EncryptionSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EncryptionSettings) *EncryptionSettings {
+		return &v
+	}).(EncryptionSettingsPtrOutput)
+}
+
+// Enabling/Disabling the Double Encryption state
+func (o EncryptionSettingsOutput) InfrastructureEncryption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncryptionSettings) *string { return v.InfrastructureEncryption }).(pulumi.StringPtrOutput)
+}
+
+// The details of the managed identity used for CMK
+func (o EncryptionSettingsOutput) KekIdentity() CmkKekIdentityPtrOutput {
+	return o.ApplyT(func(v EncryptionSettings) *CmkKekIdentity { return v.KekIdentity }).(CmkKekIdentityPtrOutput)
+}
+
+// The properties of the Key Vault which hosts CMK
+func (o EncryptionSettingsOutput) KeyVaultProperties() CmkKeyVaultPropertiesPtrOutput {
+	return o.ApplyT(func(v EncryptionSettings) *CmkKeyVaultProperties { return v.KeyVaultProperties }).(CmkKeyVaultPropertiesPtrOutput)
+}
+
+// Encryption state of the Backup Vault.
+func (o EncryptionSettingsOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncryptionSettings) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type EncryptionSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (EncryptionSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncryptionSettings)(nil)).Elem()
+}
+
+func (o EncryptionSettingsPtrOutput) ToEncryptionSettingsPtrOutput() EncryptionSettingsPtrOutput {
+	return o
+}
+
+func (o EncryptionSettingsPtrOutput) ToEncryptionSettingsPtrOutputWithContext(ctx context.Context) EncryptionSettingsPtrOutput {
+	return o
+}
+
+func (o EncryptionSettingsPtrOutput) Elem() EncryptionSettingsOutput {
+	return o.ApplyT(func(v *EncryptionSettings) EncryptionSettings {
+		if v != nil {
+			return *v
+		}
+		var ret EncryptionSettings
+		return ret
+	}).(EncryptionSettingsOutput)
+}
+
+// Enabling/Disabling the Double Encryption state
+func (o EncryptionSettingsPtrOutput) InfrastructureEncryption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncryptionSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InfrastructureEncryption
+	}).(pulumi.StringPtrOutput)
+}
+
+// The details of the managed identity used for CMK
+func (o EncryptionSettingsPtrOutput) KekIdentity() CmkKekIdentityPtrOutput {
+	return o.ApplyT(func(v *EncryptionSettings) *CmkKekIdentity {
+		if v == nil {
+			return nil
+		}
+		return v.KekIdentity
+	}).(CmkKekIdentityPtrOutput)
+}
+
+// The properties of the Key Vault which hosts CMK
+func (o EncryptionSettingsPtrOutput) KeyVaultProperties() CmkKeyVaultPropertiesPtrOutput {
+	return o.ApplyT(func(v *EncryptionSettings) *CmkKeyVaultProperties {
+		if v == nil {
+			return nil
+		}
+		return v.KeyVaultProperties
+	}).(CmkKeyVaultPropertiesPtrOutput)
+}
+
+// Encryption state of the Backup Vault.
+func (o EncryptionSettingsPtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncryptionSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(pulumi.StringPtrOutput)
+}
+
+// Customer Managed Key details of the resource.
+type EncryptionSettingsResponse struct {
+	// Enabling/Disabling the Double Encryption state
+	InfrastructureEncryption *string `pulumi:"infrastructureEncryption"`
+	// The details of the managed identity used for CMK
+	KekIdentity *CmkKekIdentityResponse `pulumi:"kekIdentity"`
+	// The properties of the Key Vault which hosts CMK
+	KeyVaultProperties *CmkKeyVaultPropertiesResponse `pulumi:"keyVaultProperties"`
+	// Encryption state of the Backup Vault.
+	State *string `pulumi:"state"`
+}
+
+// Customer Managed Key details of the resource.
+type EncryptionSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (EncryptionSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionSettingsResponse)(nil)).Elem()
+}
+
+func (o EncryptionSettingsResponseOutput) ToEncryptionSettingsResponseOutput() EncryptionSettingsResponseOutput {
+	return o
+}
+
+func (o EncryptionSettingsResponseOutput) ToEncryptionSettingsResponseOutputWithContext(ctx context.Context) EncryptionSettingsResponseOutput {
+	return o
+}
+
+// Enabling/Disabling the Double Encryption state
+func (o EncryptionSettingsResponseOutput) InfrastructureEncryption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncryptionSettingsResponse) *string { return v.InfrastructureEncryption }).(pulumi.StringPtrOutput)
+}
+
+// The details of the managed identity used for CMK
+func (o EncryptionSettingsResponseOutput) KekIdentity() CmkKekIdentityResponsePtrOutput {
+	return o.ApplyT(func(v EncryptionSettingsResponse) *CmkKekIdentityResponse { return v.KekIdentity }).(CmkKekIdentityResponsePtrOutput)
+}
+
+// The properties of the Key Vault which hosts CMK
+func (o EncryptionSettingsResponseOutput) KeyVaultProperties() CmkKeyVaultPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v EncryptionSettingsResponse) *CmkKeyVaultPropertiesResponse { return v.KeyVaultProperties }).(CmkKeyVaultPropertiesResponsePtrOutput)
+}
+
+// Encryption state of the Backup Vault.
+func (o EncryptionSettingsResponseOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncryptionSettingsResponse) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type EncryptionSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (EncryptionSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncryptionSettingsResponse)(nil)).Elem()
+}
+
+func (o EncryptionSettingsResponsePtrOutput) ToEncryptionSettingsResponsePtrOutput() EncryptionSettingsResponsePtrOutput {
+	return o
+}
+
+func (o EncryptionSettingsResponsePtrOutput) ToEncryptionSettingsResponsePtrOutputWithContext(ctx context.Context) EncryptionSettingsResponsePtrOutput {
+	return o
+}
+
+func (o EncryptionSettingsResponsePtrOutput) Elem() EncryptionSettingsResponseOutput {
+	return o.ApplyT(func(v *EncryptionSettingsResponse) EncryptionSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EncryptionSettingsResponse
+		return ret
+	}).(EncryptionSettingsResponseOutput)
+}
+
+// Enabling/Disabling the Double Encryption state
+func (o EncryptionSettingsResponsePtrOutput) InfrastructureEncryption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncryptionSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InfrastructureEncryption
+	}).(pulumi.StringPtrOutput)
+}
+
+// The details of the managed identity used for CMK
+func (o EncryptionSettingsResponsePtrOutput) KekIdentity() CmkKekIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *EncryptionSettingsResponse) *CmkKekIdentityResponse {
+		if v == nil {
+			return nil
+		}
+		return v.KekIdentity
+	}).(CmkKekIdentityResponsePtrOutput)
+}
+
+// The properties of the Key Vault which hosts CMK
+func (o EncryptionSettingsResponsePtrOutput) KeyVaultProperties() CmkKeyVaultPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *EncryptionSettingsResponse) *CmkKeyVaultPropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.KeyVaultProperties
+	}).(CmkKeyVaultPropertiesResponsePtrOutput)
+}
+
+// Encryption state of the Backup Vault.
+func (o EncryptionSettingsResponsePtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncryptionSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(pulumi.StringPtrOutput)
+}
+
 // Class containing feature settings of vault
 type FeatureSettings struct {
+	CrossRegionRestoreSettings *CrossRegionRestoreSettings `pulumi:"crossRegionRestoreSettings"`
 	// CrossSubscriptionRestore Settings
 	CrossSubscriptionRestoreSettings *CrossSubscriptionRestoreSettings `pulumi:"crossSubscriptionRestoreSettings"`
 }
@@ -3729,6 +5080,7 @@ type FeatureSettingsInput interface {
 
 // Class containing feature settings of vault
 type FeatureSettingsArgs struct {
+	CrossRegionRestoreSettings CrossRegionRestoreSettingsPtrInput `pulumi:"crossRegionRestoreSettings"`
 	// CrossSubscriptionRestore Settings
 	CrossSubscriptionRestoreSettings CrossSubscriptionRestoreSettingsPtrInput `pulumi:"crossSubscriptionRestoreSettings"`
 }
@@ -3811,6 +5163,10 @@ func (o FeatureSettingsOutput) ToFeatureSettingsPtrOutputWithContext(ctx context
 	}).(FeatureSettingsPtrOutput)
 }
 
+func (o FeatureSettingsOutput) CrossRegionRestoreSettings() CrossRegionRestoreSettingsPtrOutput {
+	return o.ApplyT(func(v FeatureSettings) *CrossRegionRestoreSettings { return v.CrossRegionRestoreSettings }).(CrossRegionRestoreSettingsPtrOutput)
+}
+
 // CrossSubscriptionRestore Settings
 func (o FeatureSettingsOutput) CrossSubscriptionRestoreSettings() CrossSubscriptionRestoreSettingsPtrOutput {
 	return o.ApplyT(func(v FeatureSettings) *CrossSubscriptionRestoreSettings { return v.CrossSubscriptionRestoreSettings }).(CrossSubscriptionRestoreSettingsPtrOutput)
@@ -3840,6 +5196,15 @@ func (o FeatureSettingsPtrOutput) Elem() FeatureSettingsOutput {
 	}).(FeatureSettingsOutput)
 }
 
+func (o FeatureSettingsPtrOutput) CrossRegionRestoreSettings() CrossRegionRestoreSettingsPtrOutput {
+	return o.ApplyT(func(v *FeatureSettings) *CrossRegionRestoreSettings {
+		if v == nil {
+			return nil
+		}
+		return v.CrossRegionRestoreSettings
+	}).(CrossRegionRestoreSettingsPtrOutput)
+}
+
 // CrossSubscriptionRestore Settings
 func (o FeatureSettingsPtrOutput) CrossSubscriptionRestoreSettings() CrossSubscriptionRestoreSettingsPtrOutput {
 	return o.ApplyT(func(v *FeatureSettings) *CrossSubscriptionRestoreSettings {
@@ -3852,6 +5217,7 @@ func (o FeatureSettingsPtrOutput) CrossSubscriptionRestoreSettings() CrossSubscr
 
 // Class containing feature settings of vault
 type FeatureSettingsResponse struct {
+	CrossRegionRestoreSettings *CrossRegionRestoreSettingsResponse `pulumi:"crossRegionRestoreSettings"`
 	// CrossSubscriptionRestore Settings
 	CrossSubscriptionRestoreSettings *CrossSubscriptionRestoreSettingsResponse `pulumi:"crossSubscriptionRestoreSettings"`
 }
@@ -3869,6 +5235,12 @@ func (o FeatureSettingsResponseOutput) ToFeatureSettingsResponseOutput() Feature
 
 func (o FeatureSettingsResponseOutput) ToFeatureSettingsResponseOutputWithContext(ctx context.Context) FeatureSettingsResponseOutput {
 	return o
+}
+
+func (o FeatureSettingsResponseOutput) CrossRegionRestoreSettings() CrossRegionRestoreSettingsResponsePtrOutput {
+	return o.ApplyT(func(v FeatureSettingsResponse) *CrossRegionRestoreSettingsResponse {
+		return v.CrossRegionRestoreSettings
+	}).(CrossRegionRestoreSettingsResponsePtrOutput)
 }
 
 // CrossSubscriptionRestore Settings
@@ -3902,6 +5274,15 @@ func (o FeatureSettingsResponsePtrOutput) Elem() FeatureSettingsResponseOutput {
 	}).(FeatureSettingsResponseOutput)
 }
 
+func (o FeatureSettingsResponsePtrOutput) CrossRegionRestoreSettings() CrossRegionRestoreSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *FeatureSettingsResponse) *CrossRegionRestoreSettingsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.CrossRegionRestoreSettings
+	}).(CrossRegionRestoreSettingsResponsePtrOutput)
+}
+
 // CrossSubscriptionRestore Settings
 func (o FeatureSettingsResponsePtrOutput) CrossSubscriptionRestoreSettings() CrossSubscriptionRestoreSettingsResponsePtrOutput {
 	return o.ApplyT(func(v *FeatureSettingsResponse) *CrossSubscriptionRestoreSettingsResponse {
@@ -3910,6 +5291,237 @@ func (o FeatureSettingsResponsePtrOutput) CrossSubscriptionRestoreSettings() Cro
 		}
 		return v.CrossSubscriptionRestoreSettings
 	}).(CrossSubscriptionRestoreSettingsResponsePtrOutput)
+}
+
+type IdentityDetails struct {
+	// Specifies if the BI is protected by System Identity.
+	UseSystemAssignedIdentity *bool `pulumi:"useSystemAssignedIdentity"`
+	// ARM URL for User Assigned Identity.
+	UserAssignedIdentityArmUrl *string `pulumi:"userAssignedIdentityArmUrl"`
+}
+
+// IdentityDetailsInput is an input type that accepts IdentityDetailsArgs and IdentityDetailsOutput values.
+// You can construct a concrete instance of `IdentityDetailsInput` via:
+//
+//	IdentityDetailsArgs{...}
+type IdentityDetailsInput interface {
+	pulumi.Input
+
+	ToIdentityDetailsOutput() IdentityDetailsOutput
+	ToIdentityDetailsOutputWithContext(context.Context) IdentityDetailsOutput
+}
+
+type IdentityDetailsArgs struct {
+	// Specifies if the BI is protected by System Identity.
+	UseSystemAssignedIdentity pulumi.BoolPtrInput `pulumi:"useSystemAssignedIdentity"`
+	// ARM URL for User Assigned Identity.
+	UserAssignedIdentityArmUrl pulumi.StringPtrInput `pulumi:"userAssignedIdentityArmUrl"`
+}
+
+func (IdentityDetailsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityDetails)(nil)).Elem()
+}
+
+func (i IdentityDetailsArgs) ToIdentityDetailsOutput() IdentityDetailsOutput {
+	return i.ToIdentityDetailsOutputWithContext(context.Background())
+}
+
+func (i IdentityDetailsArgs) ToIdentityDetailsOutputWithContext(ctx context.Context) IdentityDetailsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityDetailsOutput)
+}
+
+func (i IdentityDetailsArgs) ToIdentityDetailsPtrOutput() IdentityDetailsPtrOutput {
+	return i.ToIdentityDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i IdentityDetailsArgs) ToIdentityDetailsPtrOutputWithContext(ctx context.Context) IdentityDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityDetailsOutput).ToIdentityDetailsPtrOutputWithContext(ctx)
+}
+
+// IdentityDetailsPtrInput is an input type that accepts IdentityDetailsArgs, IdentityDetailsPtr and IdentityDetailsPtrOutput values.
+// You can construct a concrete instance of `IdentityDetailsPtrInput` via:
+//
+//	        IdentityDetailsArgs{...}
+//
+//	or:
+//
+//	        nil
+type IdentityDetailsPtrInput interface {
+	pulumi.Input
+
+	ToIdentityDetailsPtrOutput() IdentityDetailsPtrOutput
+	ToIdentityDetailsPtrOutputWithContext(context.Context) IdentityDetailsPtrOutput
+}
+
+type identityDetailsPtrType IdentityDetailsArgs
+
+func IdentityDetailsPtr(v *IdentityDetailsArgs) IdentityDetailsPtrInput {
+	return (*identityDetailsPtrType)(v)
+}
+
+func (*identityDetailsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityDetails)(nil)).Elem()
+}
+
+func (i *identityDetailsPtrType) ToIdentityDetailsPtrOutput() IdentityDetailsPtrOutput {
+	return i.ToIdentityDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i *identityDetailsPtrType) ToIdentityDetailsPtrOutputWithContext(ctx context.Context) IdentityDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityDetailsPtrOutput)
+}
+
+type IdentityDetailsOutput struct{ *pulumi.OutputState }
+
+func (IdentityDetailsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityDetails)(nil)).Elem()
+}
+
+func (o IdentityDetailsOutput) ToIdentityDetailsOutput() IdentityDetailsOutput {
+	return o
+}
+
+func (o IdentityDetailsOutput) ToIdentityDetailsOutputWithContext(ctx context.Context) IdentityDetailsOutput {
+	return o
+}
+
+func (o IdentityDetailsOutput) ToIdentityDetailsPtrOutput() IdentityDetailsPtrOutput {
+	return o.ToIdentityDetailsPtrOutputWithContext(context.Background())
+}
+
+func (o IdentityDetailsOutput) ToIdentityDetailsPtrOutputWithContext(ctx context.Context) IdentityDetailsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdentityDetails) *IdentityDetails {
+		return &v
+	}).(IdentityDetailsPtrOutput)
+}
+
+// Specifies if the BI is protected by System Identity.
+func (o IdentityDetailsOutput) UseSystemAssignedIdentity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v IdentityDetails) *bool { return v.UseSystemAssignedIdentity }).(pulumi.BoolPtrOutput)
+}
+
+// ARM URL for User Assigned Identity.
+func (o IdentityDetailsOutput) UserAssignedIdentityArmUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentityDetails) *string { return v.UserAssignedIdentityArmUrl }).(pulumi.StringPtrOutput)
+}
+
+type IdentityDetailsPtrOutput struct{ *pulumi.OutputState }
+
+func (IdentityDetailsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityDetails)(nil)).Elem()
+}
+
+func (o IdentityDetailsPtrOutput) ToIdentityDetailsPtrOutput() IdentityDetailsPtrOutput {
+	return o
+}
+
+func (o IdentityDetailsPtrOutput) ToIdentityDetailsPtrOutputWithContext(ctx context.Context) IdentityDetailsPtrOutput {
+	return o
+}
+
+func (o IdentityDetailsPtrOutput) Elem() IdentityDetailsOutput {
+	return o.ApplyT(func(v *IdentityDetails) IdentityDetails {
+		if v != nil {
+			return *v
+		}
+		var ret IdentityDetails
+		return ret
+	}).(IdentityDetailsOutput)
+}
+
+// Specifies if the BI is protected by System Identity.
+func (o IdentityDetailsPtrOutput) UseSystemAssignedIdentity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *IdentityDetails) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseSystemAssignedIdentity
+	}).(pulumi.BoolPtrOutput)
+}
+
+// ARM URL for User Assigned Identity.
+func (o IdentityDetailsPtrOutput) UserAssignedIdentityArmUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentityArmUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+type IdentityDetailsResponse struct {
+	// Specifies if the BI is protected by System Identity.
+	UseSystemAssignedIdentity *bool `pulumi:"useSystemAssignedIdentity"`
+	// ARM URL for User Assigned Identity.
+	UserAssignedIdentityArmUrl *string `pulumi:"userAssignedIdentityArmUrl"`
+}
+
+type IdentityDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (IdentityDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityDetailsResponse)(nil)).Elem()
+}
+
+func (o IdentityDetailsResponseOutput) ToIdentityDetailsResponseOutput() IdentityDetailsResponseOutput {
+	return o
+}
+
+func (o IdentityDetailsResponseOutput) ToIdentityDetailsResponseOutputWithContext(ctx context.Context) IdentityDetailsResponseOutput {
+	return o
+}
+
+// Specifies if the BI is protected by System Identity.
+func (o IdentityDetailsResponseOutput) UseSystemAssignedIdentity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v IdentityDetailsResponse) *bool { return v.UseSystemAssignedIdentity }).(pulumi.BoolPtrOutput)
+}
+
+// ARM URL for User Assigned Identity.
+func (o IdentityDetailsResponseOutput) UserAssignedIdentityArmUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentityDetailsResponse) *string { return v.UserAssignedIdentityArmUrl }).(pulumi.StringPtrOutput)
+}
+
+type IdentityDetailsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (IdentityDetailsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityDetailsResponse)(nil)).Elem()
+}
+
+func (o IdentityDetailsResponsePtrOutput) ToIdentityDetailsResponsePtrOutput() IdentityDetailsResponsePtrOutput {
+	return o
+}
+
+func (o IdentityDetailsResponsePtrOutput) ToIdentityDetailsResponsePtrOutputWithContext(ctx context.Context) IdentityDetailsResponsePtrOutput {
+	return o
+}
+
+func (o IdentityDetailsResponsePtrOutput) Elem() IdentityDetailsResponseOutput {
+	return o.ApplyT(func(v *IdentityDetailsResponse) IdentityDetailsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret IdentityDetailsResponse
+		return ret
+	}).(IdentityDetailsResponseOutput)
+}
+
+// Specifies if the BI is protected by System Identity.
+func (o IdentityDetailsResponsePtrOutput) UseSystemAssignedIdentity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *IdentityDetailsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseSystemAssignedIdentity
+	}).(pulumi.BoolPtrOutput)
+}
+
+// ARM URL for User Assigned Identity.
+func (o IdentityDetailsResponsePtrOutput) UserAssignedIdentityArmUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityDetailsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentityArmUrl
+	}).(pulumi.StringPtrOutput)
 }
 
 // Immediate copy Option
@@ -4294,22 +5906,26 @@ func (o InnerErrorResponsePtrOutput) EmbeddedInnerError() InnerErrorResponsePtrO
 
 // Parameters for Kubernetes Cluster Backup Datasource
 type KubernetesClusterBackupDatasourceParameters struct {
-	// Gets or sets the exclude namespaces property. This property sets the namespaces to be excluded during restore.
+	// Gets or sets the backup hook references. This property sets the hook reference to be executed during backup.
+	BackupHookReferences []NamespacedNameResource `pulumi:"backupHookReferences"`
+	// Gets or sets the exclude namespaces property. This property sets the namespaces to be excluded during backup.
 	ExcludedNamespaces []string `pulumi:"excludedNamespaces"`
-	// Gets or sets the exclude resource types property. This property sets the resource types to be excluded during restore.
+	// Gets or sets the exclude resource types property. This property sets the resource types to be excluded during backup.
 	ExcludedResourceTypes []string `pulumi:"excludedResourceTypes"`
-	// Gets or sets the include cluster resources property. This property if enabled will include cluster scope resources during restore.
+	// Gets or sets the include cluster resources property. This property if enabled will include cluster scope resources during backup.
 	IncludeClusterScopeResources bool `pulumi:"includeClusterScopeResources"`
-	// Gets or sets the include namespaces property. This property sets the namespaces to be included during restore.
+	// Gets or sets the include namespaces property. This property sets the namespaces to be included during backup.
 	IncludedNamespaces []string `pulumi:"includedNamespaces"`
-	// Gets or sets the include resource types property. This property sets the resource types to be included during restore.
+	// Gets or sets the include resource types property. This property sets the resource types to be included during backup.
 	IncludedResourceTypes []string `pulumi:"includedResourceTypes"`
-	// Gets or sets the LabelSelectors property. This property sets the resource with such label selectors to be included during restore.
+	// Gets or sets the include volume types property. This property sets the volume types to be included during backup.
+	IncludedVolumeTypes []string `pulumi:"includedVolumeTypes"`
+	// Gets or sets the LabelSelectors property. This property sets the resource with such label selectors to be included during backup.
 	LabelSelectors []string `pulumi:"labelSelectors"`
 	// Type of the specific object - used for deserializing
 	// Expected value is 'KubernetesClusterBackupDatasourceParameters'.
 	ObjectType string `pulumi:"objectType"`
-	// Gets or sets the volume snapshot property. This property if enabled will take volume snapshots during restore.
+	// Gets or sets the volume snapshot property. This property if enabled will take volume snapshots during backup.
 	SnapshotVolumes bool `pulumi:"snapshotVolumes"`
 }
 
@@ -4326,22 +5942,26 @@ type KubernetesClusterBackupDatasourceParametersInput interface {
 
 // Parameters for Kubernetes Cluster Backup Datasource
 type KubernetesClusterBackupDatasourceParametersArgs struct {
-	// Gets or sets the exclude namespaces property. This property sets the namespaces to be excluded during restore.
+	// Gets or sets the backup hook references. This property sets the hook reference to be executed during backup.
+	BackupHookReferences NamespacedNameResourceArrayInput `pulumi:"backupHookReferences"`
+	// Gets or sets the exclude namespaces property. This property sets the namespaces to be excluded during backup.
 	ExcludedNamespaces pulumi.StringArrayInput `pulumi:"excludedNamespaces"`
-	// Gets or sets the exclude resource types property. This property sets the resource types to be excluded during restore.
+	// Gets or sets the exclude resource types property. This property sets the resource types to be excluded during backup.
 	ExcludedResourceTypes pulumi.StringArrayInput `pulumi:"excludedResourceTypes"`
-	// Gets or sets the include cluster resources property. This property if enabled will include cluster scope resources during restore.
+	// Gets or sets the include cluster resources property. This property if enabled will include cluster scope resources during backup.
 	IncludeClusterScopeResources pulumi.BoolInput `pulumi:"includeClusterScopeResources"`
-	// Gets or sets the include namespaces property. This property sets the namespaces to be included during restore.
+	// Gets or sets the include namespaces property. This property sets the namespaces to be included during backup.
 	IncludedNamespaces pulumi.StringArrayInput `pulumi:"includedNamespaces"`
-	// Gets or sets the include resource types property. This property sets the resource types to be included during restore.
+	// Gets or sets the include resource types property. This property sets the resource types to be included during backup.
 	IncludedResourceTypes pulumi.StringArrayInput `pulumi:"includedResourceTypes"`
-	// Gets or sets the LabelSelectors property. This property sets the resource with such label selectors to be included during restore.
+	// Gets or sets the include volume types property. This property sets the volume types to be included during backup.
+	IncludedVolumeTypes pulumi.StringArrayInput `pulumi:"includedVolumeTypes"`
+	// Gets or sets the LabelSelectors property. This property sets the resource with such label selectors to be included during backup.
 	LabelSelectors pulumi.StringArrayInput `pulumi:"labelSelectors"`
 	// Type of the specific object - used for deserializing
 	// Expected value is 'KubernetesClusterBackupDatasourceParameters'.
 	ObjectType pulumi.StringInput `pulumi:"objectType"`
-	// Gets or sets the volume snapshot property. This property if enabled will take volume snapshots during restore.
+	// Gets or sets the volume snapshot property. This property if enabled will take volume snapshots during backup.
 	SnapshotVolumes pulumi.BoolInput `pulumi:"snapshotVolumes"`
 }
 
@@ -4372,32 +5992,44 @@ func (o KubernetesClusterBackupDatasourceParametersOutput) ToKubernetesClusterBa
 	return o
 }
 
-// Gets or sets the exclude namespaces property. This property sets the namespaces to be excluded during restore.
+// Gets or sets the backup hook references. This property sets the hook reference to be executed during backup.
+func (o KubernetesClusterBackupDatasourceParametersOutput) BackupHookReferences() NamespacedNameResourceArrayOutput {
+	return o.ApplyT(func(v KubernetesClusterBackupDatasourceParameters) []NamespacedNameResource {
+		return v.BackupHookReferences
+	}).(NamespacedNameResourceArrayOutput)
+}
+
+// Gets or sets the exclude namespaces property. This property sets the namespaces to be excluded during backup.
 func (o KubernetesClusterBackupDatasourceParametersOutput) ExcludedNamespaces() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v KubernetesClusterBackupDatasourceParameters) []string { return v.ExcludedNamespaces }).(pulumi.StringArrayOutput)
 }
 
-// Gets or sets the exclude resource types property. This property sets the resource types to be excluded during restore.
+// Gets or sets the exclude resource types property. This property sets the resource types to be excluded during backup.
 func (o KubernetesClusterBackupDatasourceParametersOutput) ExcludedResourceTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v KubernetesClusterBackupDatasourceParameters) []string { return v.ExcludedResourceTypes }).(pulumi.StringArrayOutput)
 }
 
-// Gets or sets the include cluster resources property. This property if enabled will include cluster scope resources during restore.
+// Gets or sets the include cluster resources property. This property if enabled will include cluster scope resources during backup.
 func (o KubernetesClusterBackupDatasourceParametersOutput) IncludeClusterScopeResources() pulumi.BoolOutput {
 	return o.ApplyT(func(v KubernetesClusterBackupDatasourceParameters) bool { return v.IncludeClusterScopeResources }).(pulumi.BoolOutput)
 }
 
-// Gets or sets the include namespaces property. This property sets the namespaces to be included during restore.
+// Gets or sets the include namespaces property. This property sets the namespaces to be included during backup.
 func (o KubernetesClusterBackupDatasourceParametersOutput) IncludedNamespaces() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v KubernetesClusterBackupDatasourceParameters) []string { return v.IncludedNamespaces }).(pulumi.StringArrayOutput)
 }
 
-// Gets or sets the include resource types property. This property sets the resource types to be included during restore.
+// Gets or sets the include resource types property. This property sets the resource types to be included during backup.
 func (o KubernetesClusterBackupDatasourceParametersOutput) IncludedResourceTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v KubernetesClusterBackupDatasourceParameters) []string { return v.IncludedResourceTypes }).(pulumi.StringArrayOutput)
 }
 
-// Gets or sets the LabelSelectors property. This property sets the resource with such label selectors to be included during restore.
+// Gets or sets the include volume types property. This property sets the volume types to be included during backup.
+func (o KubernetesClusterBackupDatasourceParametersOutput) IncludedVolumeTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v KubernetesClusterBackupDatasourceParameters) []string { return v.IncludedVolumeTypes }).(pulumi.StringArrayOutput)
+}
+
+// Gets or sets the LabelSelectors property. This property sets the resource with such label selectors to be included during backup.
 func (o KubernetesClusterBackupDatasourceParametersOutput) LabelSelectors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v KubernetesClusterBackupDatasourceParameters) []string { return v.LabelSelectors }).(pulumi.StringArrayOutput)
 }
@@ -4408,29 +6040,33 @@ func (o KubernetesClusterBackupDatasourceParametersOutput) ObjectType() pulumi.S
 	return o.ApplyT(func(v KubernetesClusterBackupDatasourceParameters) string { return v.ObjectType }).(pulumi.StringOutput)
 }
 
-// Gets or sets the volume snapshot property. This property if enabled will take volume snapshots during restore.
+// Gets or sets the volume snapshot property. This property if enabled will take volume snapshots during backup.
 func (o KubernetesClusterBackupDatasourceParametersOutput) SnapshotVolumes() pulumi.BoolOutput {
 	return o.ApplyT(func(v KubernetesClusterBackupDatasourceParameters) bool { return v.SnapshotVolumes }).(pulumi.BoolOutput)
 }
 
 // Parameters for Kubernetes Cluster Backup Datasource
 type KubernetesClusterBackupDatasourceParametersResponse struct {
-	// Gets or sets the exclude namespaces property. This property sets the namespaces to be excluded during restore.
+	// Gets or sets the backup hook references. This property sets the hook reference to be executed during backup.
+	BackupHookReferences []NamespacedNameResourceResponse `pulumi:"backupHookReferences"`
+	// Gets or sets the exclude namespaces property. This property sets the namespaces to be excluded during backup.
 	ExcludedNamespaces []string `pulumi:"excludedNamespaces"`
-	// Gets or sets the exclude resource types property. This property sets the resource types to be excluded during restore.
+	// Gets or sets the exclude resource types property. This property sets the resource types to be excluded during backup.
 	ExcludedResourceTypes []string `pulumi:"excludedResourceTypes"`
-	// Gets or sets the include cluster resources property. This property if enabled will include cluster scope resources during restore.
+	// Gets or sets the include cluster resources property. This property if enabled will include cluster scope resources during backup.
 	IncludeClusterScopeResources bool `pulumi:"includeClusterScopeResources"`
-	// Gets or sets the include namespaces property. This property sets the namespaces to be included during restore.
+	// Gets or sets the include namespaces property. This property sets the namespaces to be included during backup.
 	IncludedNamespaces []string `pulumi:"includedNamespaces"`
-	// Gets or sets the include resource types property. This property sets the resource types to be included during restore.
+	// Gets or sets the include resource types property. This property sets the resource types to be included during backup.
 	IncludedResourceTypes []string `pulumi:"includedResourceTypes"`
-	// Gets or sets the LabelSelectors property. This property sets the resource with such label selectors to be included during restore.
+	// Gets or sets the include volume types property. This property sets the volume types to be included during backup.
+	IncludedVolumeTypes []string `pulumi:"includedVolumeTypes"`
+	// Gets or sets the LabelSelectors property. This property sets the resource with such label selectors to be included during backup.
 	LabelSelectors []string `pulumi:"labelSelectors"`
 	// Type of the specific object - used for deserializing
 	// Expected value is 'KubernetesClusterBackupDatasourceParameters'.
 	ObjectType string `pulumi:"objectType"`
-	// Gets or sets the volume snapshot property. This property if enabled will take volume snapshots during restore.
+	// Gets or sets the volume snapshot property. This property if enabled will take volume snapshots during backup.
 	SnapshotVolumes bool `pulumi:"snapshotVolumes"`
 }
 
@@ -4449,34 +6085,46 @@ func (o KubernetesClusterBackupDatasourceParametersResponseOutput) ToKubernetesC
 	return o
 }
 
-// Gets or sets the exclude namespaces property. This property sets the namespaces to be excluded during restore.
+// Gets or sets the backup hook references. This property sets the hook reference to be executed during backup.
+func (o KubernetesClusterBackupDatasourceParametersResponseOutput) BackupHookReferences() NamespacedNameResourceResponseArrayOutput {
+	return o.ApplyT(func(v KubernetesClusterBackupDatasourceParametersResponse) []NamespacedNameResourceResponse {
+		return v.BackupHookReferences
+	}).(NamespacedNameResourceResponseArrayOutput)
+}
+
+// Gets or sets the exclude namespaces property. This property sets the namespaces to be excluded during backup.
 func (o KubernetesClusterBackupDatasourceParametersResponseOutput) ExcludedNamespaces() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v KubernetesClusterBackupDatasourceParametersResponse) []string { return v.ExcludedNamespaces }).(pulumi.StringArrayOutput)
 }
 
-// Gets or sets the exclude resource types property. This property sets the resource types to be excluded during restore.
+// Gets or sets the exclude resource types property. This property sets the resource types to be excluded during backup.
 func (o KubernetesClusterBackupDatasourceParametersResponseOutput) ExcludedResourceTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v KubernetesClusterBackupDatasourceParametersResponse) []string { return v.ExcludedResourceTypes }).(pulumi.StringArrayOutput)
 }
 
-// Gets or sets the include cluster resources property. This property if enabled will include cluster scope resources during restore.
+// Gets or sets the include cluster resources property. This property if enabled will include cluster scope resources during backup.
 func (o KubernetesClusterBackupDatasourceParametersResponseOutput) IncludeClusterScopeResources() pulumi.BoolOutput {
 	return o.ApplyT(func(v KubernetesClusterBackupDatasourceParametersResponse) bool {
 		return v.IncludeClusterScopeResources
 	}).(pulumi.BoolOutput)
 }
 
-// Gets or sets the include namespaces property. This property sets the namespaces to be included during restore.
+// Gets or sets the include namespaces property. This property sets the namespaces to be included during backup.
 func (o KubernetesClusterBackupDatasourceParametersResponseOutput) IncludedNamespaces() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v KubernetesClusterBackupDatasourceParametersResponse) []string { return v.IncludedNamespaces }).(pulumi.StringArrayOutput)
 }
 
-// Gets or sets the include resource types property. This property sets the resource types to be included during restore.
+// Gets or sets the include resource types property. This property sets the resource types to be included during backup.
 func (o KubernetesClusterBackupDatasourceParametersResponseOutput) IncludedResourceTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v KubernetesClusterBackupDatasourceParametersResponse) []string { return v.IncludedResourceTypes }).(pulumi.StringArrayOutput)
 }
 
-// Gets or sets the LabelSelectors property. This property sets the resource with such label selectors to be included during restore.
+// Gets or sets the include volume types property. This property sets the volume types to be included during backup.
+func (o KubernetesClusterBackupDatasourceParametersResponseOutput) IncludedVolumeTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v KubernetesClusterBackupDatasourceParametersResponse) []string { return v.IncludedVolumeTypes }).(pulumi.StringArrayOutput)
+}
+
+// Gets or sets the LabelSelectors property. This property sets the resource with such label selectors to be included during backup.
 func (o KubernetesClusterBackupDatasourceParametersResponseOutput) LabelSelectors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v KubernetesClusterBackupDatasourceParametersResponse) []string { return v.LabelSelectors }).(pulumi.StringArrayOutput)
 }
@@ -4487,7 +6135,7 @@ func (o KubernetesClusterBackupDatasourceParametersResponseOutput) ObjectType() 
 	return o.ApplyT(func(v KubernetesClusterBackupDatasourceParametersResponse) string { return v.ObjectType }).(pulumi.StringOutput)
 }
 
-// Gets or sets the volume snapshot property. This property if enabled will take volume snapshots during restore.
+// Gets or sets the volume snapshot property. This property if enabled will take volume snapshots during backup.
 func (o KubernetesClusterBackupDatasourceParametersResponseOutput) SnapshotVolumes() pulumi.BoolOutput {
 	return o.ApplyT(func(v KubernetesClusterBackupDatasourceParametersResponse) bool { return v.SnapshotVolumes }).(pulumi.BoolOutput)
 }
@@ -4692,6 +6340,168 @@ func (o MonitoringSettingsResponsePtrOutput) AzureMonitorAlertSettings() AzureMo
 		}
 		return v.AzureMonitorAlertSettings
 	}).(AzureMonitorAlertSettingsResponsePtrOutput)
+}
+
+// Class to refer resources which contains namespace and name
+type NamespacedNameResource struct {
+	// Name of the resource
+	Name *string `pulumi:"name"`
+	// Namespace in which the resource exists
+	Namespace *string `pulumi:"namespace"`
+}
+
+// NamespacedNameResourceInput is an input type that accepts NamespacedNameResourceArgs and NamespacedNameResourceOutput values.
+// You can construct a concrete instance of `NamespacedNameResourceInput` via:
+//
+//	NamespacedNameResourceArgs{...}
+type NamespacedNameResourceInput interface {
+	pulumi.Input
+
+	ToNamespacedNameResourceOutput() NamespacedNameResourceOutput
+	ToNamespacedNameResourceOutputWithContext(context.Context) NamespacedNameResourceOutput
+}
+
+// Class to refer resources which contains namespace and name
+type NamespacedNameResourceArgs struct {
+	// Name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Namespace in which the resource exists
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+}
+
+func (NamespacedNameResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespacedNameResource)(nil)).Elem()
+}
+
+func (i NamespacedNameResourceArgs) ToNamespacedNameResourceOutput() NamespacedNameResourceOutput {
+	return i.ToNamespacedNameResourceOutputWithContext(context.Background())
+}
+
+func (i NamespacedNameResourceArgs) ToNamespacedNameResourceOutputWithContext(ctx context.Context) NamespacedNameResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespacedNameResourceOutput)
+}
+
+// NamespacedNameResourceArrayInput is an input type that accepts NamespacedNameResourceArray and NamespacedNameResourceArrayOutput values.
+// You can construct a concrete instance of `NamespacedNameResourceArrayInput` via:
+//
+//	NamespacedNameResourceArray{ NamespacedNameResourceArgs{...} }
+type NamespacedNameResourceArrayInput interface {
+	pulumi.Input
+
+	ToNamespacedNameResourceArrayOutput() NamespacedNameResourceArrayOutput
+	ToNamespacedNameResourceArrayOutputWithContext(context.Context) NamespacedNameResourceArrayOutput
+}
+
+type NamespacedNameResourceArray []NamespacedNameResourceInput
+
+func (NamespacedNameResourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespacedNameResource)(nil)).Elem()
+}
+
+func (i NamespacedNameResourceArray) ToNamespacedNameResourceArrayOutput() NamespacedNameResourceArrayOutput {
+	return i.ToNamespacedNameResourceArrayOutputWithContext(context.Background())
+}
+
+func (i NamespacedNameResourceArray) ToNamespacedNameResourceArrayOutputWithContext(ctx context.Context) NamespacedNameResourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespacedNameResourceArrayOutput)
+}
+
+// Class to refer resources which contains namespace and name
+type NamespacedNameResourceOutput struct{ *pulumi.OutputState }
+
+func (NamespacedNameResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespacedNameResource)(nil)).Elem()
+}
+
+func (o NamespacedNameResourceOutput) ToNamespacedNameResourceOutput() NamespacedNameResourceOutput {
+	return o
+}
+
+func (o NamespacedNameResourceOutput) ToNamespacedNameResourceOutputWithContext(ctx context.Context) NamespacedNameResourceOutput {
+	return o
+}
+
+// Name of the resource
+func (o NamespacedNameResourceOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespacedNameResource) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Namespace in which the resource exists
+func (o NamespacedNameResourceOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespacedNameResource) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+type NamespacedNameResourceArrayOutput struct{ *pulumi.OutputState }
+
+func (NamespacedNameResourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespacedNameResource)(nil)).Elem()
+}
+
+func (o NamespacedNameResourceArrayOutput) ToNamespacedNameResourceArrayOutput() NamespacedNameResourceArrayOutput {
+	return o
+}
+
+func (o NamespacedNameResourceArrayOutput) ToNamespacedNameResourceArrayOutputWithContext(ctx context.Context) NamespacedNameResourceArrayOutput {
+	return o
+}
+
+func (o NamespacedNameResourceArrayOutput) Index(i pulumi.IntInput) NamespacedNameResourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamespacedNameResource {
+		return vs[0].([]NamespacedNameResource)[vs[1].(int)]
+	}).(NamespacedNameResourceOutput)
+}
+
+// Class to refer resources which contains namespace and name
+type NamespacedNameResourceResponse struct {
+	// Name of the resource
+	Name *string `pulumi:"name"`
+	// Namespace in which the resource exists
+	Namespace *string `pulumi:"namespace"`
+}
+
+// Class to refer resources which contains namespace and name
+type NamespacedNameResourceResponseOutput struct{ *pulumi.OutputState }
+
+func (NamespacedNameResourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespacedNameResourceResponse)(nil)).Elem()
+}
+
+func (o NamespacedNameResourceResponseOutput) ToNamespacedNameResourceResponseOutput() NamespacedNameResourceResponseOutput {
+	return o
+}
+
+func (o NamespacedNameResourceResponseOutput) ToNamespacedNameResourceResponseOutputWithContext(ctx context.Context) NamespacedNameResourceResponseOutput {
+	return o
+}
+
+// Name of the resource
+func (o NamespacedNameResourceResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespacedNameResourceResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Namespace in which the resource exists
+func (o NamespacedNameResourceResponseOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespacedNameResourceResponse) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+type NamespacedNameResourceResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (NamespacedNameResourceResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespacedNameResourceResponse)(nil)).Elem()
+}
+
+func (o NamespacedNameResourceResponseArrayOutput) ToNamespacedNameResourceResponseArrayOutput() NamespacedNameResourceResponseArrayOutput {
+	return o
+}
+
+func (o NamespacedNameResourceResponseArrayOutput) ToNamespacedNameResourceResponseArrayOutputWithContext(ctx context.Context) NamespacedNameResourceResponseArrayOutput {
+	return o
+}
+
+func (o NamespacedNameResourceResponseArrayOutput) Index(i pulumi.IntInput) NamespacedNameResourceResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamespacedNameResourceResponse {
+		return vs[0].([]NamespacedNameResourceResponse)[vs[1].(int)]
+	}).(NamespacedNameResourceResponseOutput)
 }
 
 // Policy Info in backupInstance
@@ -6949,6 +8759,8 @@ func (o SecretStoreResourceResponsePtrOutput) Value() pulumi.StringPtrOutput {
 
 // Class containing security settings of vault
 type SecuritySettings struct {
+	// Customer Managed Key details of the resource.
+	EncryptionSettings *EncryptionSettings `pulumi:"encryptionSettings"`
 	// Immutability Settings at vault level
 	ImmutabilitySettings *ImmutabilitySettings `pulumi:"immutabilitySettings"`
 	// Soft delete related settings
@@ -6968,6 +8780,8 @@ type SecuritySettingsInput interface {
 
 // Class containing security settings of vault
 type SecuritySettingsArgs struct {
+	// Customer Managed Key details of the resource.
+	EncryptionSettings EncryptionSettingsPtrInput `pulumi:"encryptionSettings"`
 	// Immutability Settings at vault level
 	ImmutabilitySettings ImmutabilitySettingsPtrInput `pulumi:"immutabilitySettings"`
 	// Soft delete related settings
@@ -7052,6 +8866,11 @@ func (o SecuritySettingsOutput) ToSecuritySettingsPtrOutputWithContext(ctx conte
 	}).(SecuritySettingsPtrOutput)
 }
 
+// Customer Managed Key details of the resource.
+func (o SecuritySettingsOutput) EncryptionSettings() EncryptionSettingsPtrOutput {
+	return o.ApplyT(func(v SecuritySettings) *EncryptionSettings { return v.EncryptionSettings }).(EncryptionSettingsPtrOutput)
+}
+
 // Immutability Settings at vault level
 func (o SecuritySettingsOutput) ImmutabilitySettings() ImmutabilitySettingsPtrOutput {
 	return o.ApplyT(func(v SecuritySettings) *ImmutabilitySettings { return v.ImmutabilitySettings }).(ImmutabilitySettingsPtrOutput)
@@ -7086,6 +8905,16 @@ func (o SecuritySettingsPtrOutput) Elem() SecuritySettingsOutput {
 	}).(SecuritySettingsOutput)
 }
 
+// Customer Managed Key details of the resource.
+func (o SecuritySettingsPtrOutput) EncryptionSettings() EncryptionSettingsPtrOutput {
+	return o.ApplyT(func(v *SecuritySettings) *EncryptionSettings {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptionSettings
+	}).(EncryptionSettingsPtrOutput)
+}
+
 // Immutability Settings at vault level
 func (o SecuritySettingsPtrOutput) ImmutabilitySettings() ImmutabilitySettingsPtrOutput {
 	return o.ApplyT(func(v *SecuritySettings) *ImmutabilitySettings {
@@ -7108,6 +8937,8 @@ func (o SecuritySettingsPtrOutput) SoftDeleteSettings() SoftDeleteSettingsPtrOut
 
 // Class containing security settings of vault
 type SecuritySettingsResponse struct {
+	// Customer Managed Key details of the resource.
+	EncryptionSettings *EncryptionSettingsResponse `pulumi:"encryptionSettings"`
 	// Immutability Settings at vault level
 	ImmutabilitySettings *ImmutabilitySettingsResponse `pulumi:"immutabilitySettings"`
 	// Soft delete related settings
@@ -7127,6 +8958,11 @@ func (o SecuritySettingsResponseOutput) ToSecuritySettingsResponseOutput() Secur
 
 func (o SecuritySettingsResponseOutput) ToSecuritySettingsResponseOutputWithContext(ctx context.Context) SecuritySettingsResponseOutput {
 	return o
+}
+
+// Customer Managed Key details of the resource.
+func (o SecuritySettingsResponseOutput) EncryptionSettings() EncryptionSettingsResponsePtrOutput {
+	return o.ApplyT(func(v SecuritySettingsResponse) *EncryptionSettingsResponse { return v.EncryptionSettings }).(EncryptionSettingsResponsePtrOutput)
 }
 
 // Immutability Settings at vault level
@@ -7161,6 +8997,16 @@ func (o SecuritySettingsResponsePtrOutput) Elem() SecuritySettingsResponseOutput
 		var ret SecuritySettingsResponse
 		return ret
 	}).(SecuritySettingsResponseOutput)
+}
+
+// Customer Managed Key details of the resource.
+func (o SecuritySettingsResponsePtrOutput) EncryptionSettings() EncryptionSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *SecuritySettingsResponse) *EncryptionSettingsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptionSettings
+	}).(EncryptionSettingsResponsePtrOutput)
 }
 
 // Immutability Settings at vault level
@@ -8171,6 +10017,59 @@ func (o TargetCopySettingResponseArrayOutput) Index(i pulumi.IntInput) TargetCop
 	}).(TargetCopySettingResponseOutput)
 }
 
+// User assigned identity properties
+type UserAssignedIdentityResponse struct {
+	// The client ID of the assigned identity.
+	ClientId string `pulumi:"clientId"`
+	// The principal ID of the assigned identity.
+	PrincipalId string `pulumi:"principalId"`
+}
+
+// User assigned identity properties
+type UserAssignedIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (UserAssignedIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAssignedIdentityResponse)(nil)).Elem()
+}
+
+func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput() UserAssignedIdentityResponseOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutputWithContext(ctx context.Context) UserAssignedIdentityResponseOutput {
+	return o
+}
+
+// The client ID of the assigned identity.
+func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// The principal ID of the assigned identity.
+func (o UserAssignedIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+type UserAssignedIdentityResponseMapOutput struct{ *pulumi.OutputState }
+
+func (UserAssignedIdentityResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]UserAssignedIdentityResponse)(nil)).Elem()
+}
+
+func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutput() UserAssignedIdentityResponseMapOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseMapOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) UserAssignedIdentityResponse {
+		return vs[0].(map[string]UserAssignedIdentityResponse)[vs[1].(string)]
+	}).(UserAssignedIdentityResponseOutput)
+}
+
 // Error object used by layers that have access to localized content, and propagate that to user
 type UserFacingErrorResponse struct {
 	// Unique code for this error
@@ -8419,8 +10318,20 @@ func init() {
 	pulumi.RegisterOutputType(BackupVaultResponseOutput{})
 	pulumi.RegisterOutputType(BlobBackupDatasourceParametersOutput{})
 	pulumi.RegisterOutputType(BlobBackupDatasourceParametersResponseOutput{})
+	pulumi.RegisterOutputType(CmkKekIdentityOutput{})
+	pulumi.RegisterOutputType(CmkKekIdentityPtrOutput{})
+	pulumi.RegisterOutputType(CmkKekIdentityResponseOutput{})
+	pulumi.RegisterOutputType(CmkKekIdentityResponsePtrOutput{})
+	pulumi.RegisterOutputType(CmkKeyVaultPropertiesOutput{})
+	pulumi.RegisterOutputType(CmkKeyVaultPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(CmkKeyVaultPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(CmkKeyVaultPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(CopyOnExpiryOptionOutput{})
 	pulumi.RegisterOutputType(CopyOnExpiryOptionResponseOutput{})
+	pulumi.RegisterOutputType(CrossRegionRestoreSettingsOutput{})
+	pulumi.RegisterOutputType(CrossRegionRestoreSettingsPtrOutput{})
+	pulumi.RegisterOutputType(CrossRegionRestoreSettingsResponseOutput{})
+	pulumi.RegisterOutputType(CrossRegionRestoreSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(CrossSubscriptionRestoreSettingsOutput{})
 	pulumi.RegisterOutputType(CrossSubscriptionRestoreSettingsPtrOutput{})
 	pulumi.RegisterOutputType(CrossSubscriptionRestoreSettingsResponseOutput{})
@@ -8440,14 +10351,26 @@ func init() {
 	pulumi.RegisterOutputType(DayArrayOutput{})
 	pulumi.RegisterOutputType(DayResponseOutput{})
 	pulumi.RegisterOutputType(DayResponseArrayOutput{})
+	pulumi.RegisterOutputType(DefaultResourcePropertiesOutput{})
+	pulumi.RegisterOutputType(DefaultResourcePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(DefaultResourcePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(DefaultResourcePropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(DppIdentityDetailsOutput{})
 	pulumi.RegisterOutputType(DppIdentityDetailsPtrOutput{})
 	pulumi.RegisterOutputType(DppIdentityDetailsResponseOutput{})
 	pulumi.RegisterOutputType(DppIdentityDetailsResponsePtrOutput{})
+	pulumi.RegisterOutputType(EncryptionSettingsOutput{})
+	pulumi.RegisterOutputType(EncryptionSettingsPtrOutput{})
+	pulumi.RegisterOutputType(EncryptionSettingsResponseOutput{})
+	pulumi.RegisterOutputType(EncryptionSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(FeatureSettingsOutput{})
 	pulumi.RegisterOutputType(FeatureSettingsPtrOutput{})
 	pulumi.RegisterOutputType(FeatureSettingsResponseOutput{})
 	pulumi.RegisterOutputType(FeatureSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(IdentityDetailsOutput{})
+	pulumi.RegisterOutputType(IdentityDetailsPtrOutput{})
+	pulumi.RegisterOutputType(IdentityDetailsResponseOutput{})
+	pulumi.RegisterOutputType(IdentityDetailsResponsePtrOutput{})
 	pulumi.RegisterOutputType(ImmediateCopyOptionOutput{})
 	pulumi.RegisterOutputType(ImmediateCopyOptionResponseOutput{})
 	pulumi.RegisterOutputType(ImmutabilitySettingsOutput{})
@@ -8462,6 +10385,10 @@ func init() {
 	pulumi.RegisterOutputType(MonitoringSettingsPtrOutput{})
 	pulumi.RegisterOutputType(MonitoringSettingsResponseOutput{})
 	pulumi.RegisterOutputType(MonitoringSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(NamespacedNameResourceOutput{})
+	pulumi.RegisterOutputType(NamespacedNameResourceArrayOutput{})
+	pulumi.RegisterOutputType(NamespacedNameResourceResponseOutput{})
+	pulumi.RegisterOutputType(NamespacedNameResourceResponseArrayOutput{})
 	pulumi.RegisterOutputType(PolicyInfoOutput{})
 	pulumi.RegisterOutputType(PolicyInfoPtrOutput{})
 	pulumi.RegisterOutputType(PolicyInfoResponseOutput{})
@@ -8526,6 +10453,8 @@ func init() {
 	pulumi.RegisterOutputType(TargetCopySettingArrayOutput{})
 	pulumi.RegisterOutputType(TargetCopySettingResponseOutput{})
 	pulumi.RegisterOutputType(TargetCopySettingResponseArrayOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})
 	pulumi.RegisterOutputType(UserFacingErrorResponseOutput{})
 	pulumi.RegisterOutputType(UserFacingErrorResponsePtrOutput{})
 	pulumi.RegisterOutputType(UserFacingErrorResponseArrayOutput{})

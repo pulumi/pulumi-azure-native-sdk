@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,9 +29,9 @@ type LookupVirtualNetworkArgs struct {
 	Expand *string `pulumi:"expand"`
 	// The name of the lab.
 	LabName string `pulumi:"labName"`
-	// The name of the virtual network.
+	// The name of the VirtualNetwork
 	Name string `pulumi:"name"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -39,6 +39,8 @@ type LookupVirtualNetworkArgs struct {
 type LookupVirtualNetworkResult struct {
 	// The allowed subnets of the virtual network.
 	AllowedSubnets []SubnetResponse `pulumi:"allowedSubnets"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The creation date of the virtual network.
 	CreatedDate string `pulumi:"createdDate"`
 	// The description of the virtual network.
@@ -79,9 +81,9 @@ type LookupVirtualNetworkOutputArgs struct {
 	Expand pulumi.StringPtrInput `pulumi:"expand"`
 	// The name of the lab.
 	LabName pulumi.StringInput `pulumi:"labName"`
-	// The name of the virtual network.
+	// The name of the VirtualNetwork
 	Name pulumi.StringInput `pulumi:"name"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -107,6 +109,11 @@ func (o LookupVirtualNetworkResultOutput) ToLookupVirtualNetworkResultOutputWith
 // The allowed subnets of the virtual network.
 func (o LookupVirtualNetworkResultOutput) AllowedSubnets() SubnetResponseArrayOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkResult) []SubnetResponse { return v.AllowedSubnets }).(SubnetResponseArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupVirtualNetworkResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualNetworkResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of the virtual network.

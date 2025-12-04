@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Description for Get function information by its ID for web site, or a deployment slot.
 //
-// Uses Azure REST API version 2022-09-01.
+// Uses Azure REST API version 2024-04-01.
 //
-// Other available API versions: 2016-08-01, 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
+// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupWebAppFunction(ctx *pulumi.Context, args *LookupWebAppFunctionArgs, opts ...pulumi.InvokeOption) (*LookupWebAppFunctionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppFunctionResult
@@ -37,6 +37,8 @@ type LookupWebAppFunctionArgs struct {
 
 // Function information.
 type LookupWebAppFunctionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Config information.
 	Config interface{} `pulumi:"config"`
 	// Config URI.
@@ -108,6 +110,11 @@ func (o LookupWebAppFunctionResultOutput) ToLookupWebAppFunctionResultOutput() L
 
 func (o LookupWebAppFunctionResultOutput) ToLookupWebAppFunctionResultOutputWithContext(ctx context.Context) LookupWebAppFunctionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupWebAppFunctionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebAppFunctionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Config information.

@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a Kusto cluster database principalAssignment.
 //
-// Uses Azure REST API version 2022-12-29.
+// Uses Azure REST API version 2024-04-13.
 //
-// Other available API versions: 2023-05-02, 2023-08-15, 2024-04-13.
+// Other available API versions: 2019-11-09, 2020-02-15, 2020-06-14, 2020-09-18, 2021-01-01, 2021-08-27, 2022-02-01, 2022-07-07, 2022-11-11, 2022-12-29, 2023-05-02, 2023-08-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native kusto [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupDatabasePrincipalAssignment(ctx *pulumi.Context, args *LookupDatabasePrincipalAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupDatabasePrincipalAssignmentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDatabasePrincipalAssignmentResult
@@ -33,7 +33,7 @@ type LookupDatabasePrincipalAssignmentArgs struct {
 	DatabaseName string `pulumi:"databaseName"`
 	// The name of the Kusto principalAssignment.
 	PrincipalAssignmentName string `pulumi:"principalAssignmentName"`
-	// The name of the resource group containing the Kusto cluster.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -41,6 +41,8 @@ type LookupDatabasePrincipalAssignmentArgs struct {
 type LookupDatabasePrincipalAssignmentResult struct {
 	// The service principal object id in AAD (Azure active directory)
 	AadObjectId string `pulumi:"aadObjectId"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -79,7 +81,7 @@ type LookupDatabasePrincipalAssignmentOutputArgs struct {
 	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
 	// The name of the Kusto principalAssignment.
 	PrincipalAssignmentName pulumi.StringInput `pulumi:"principalAssignmentName"`
-	// The name of the resource group containing the Kusto cluster.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -105,6 +107,11 @@ func (o LookupDatabasePrincipalAssignmentResultOutput) ToLookupDatabasePrincipal
 // The service principal object id in AAD (Azure active directory)
 func (o LookupDatabasePrincipalAssignmentResultOutput) AadObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabasePrincipalAssignmentResult) string { return v.AadObjectId }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupDatabasePrincipalAssignmentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabasePrincipalAssignmentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

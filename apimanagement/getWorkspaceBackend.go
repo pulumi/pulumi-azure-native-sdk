@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the details of the backend specified by its identifier.
 //
-// Uses Azure REST API version 2023-09-01-preview.
+// Uses Azure REST API version 2024-06-01-preview.
 //
-// Other available API versions: 2024-05-01, 2024-06-01-preview.
+// Other available API versions: 2023-09-01-preview, 2024-05-01, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupWorkspaceBackend(ctx *pulumi.Context, args *LookupWorkspaceBackendArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceBackendResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceBackendResult
@@ -39,6 +39,8 @@ type LookupWorkspaceBackendArgs struct {
 
 // Backend details.
 type LookupWorkspaceBackendResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Backend Circuit Breaker Configuration
 	CircuitBreaker *BackendCircuitBreakerResponse `pulumi:"circuitBreaker"`
 	// Backend Credentials Contract Properties
@@ -52,8 +54,8 @@ type LookupWorkspaceBackendResult struct {
 	Pool *BackendBaseParametersResponsePool `pulumi:"pool"`
 	// Backend Properties contract
 	Properties BackendPropertiesResponse `pulumi:"properties"`
-	// Backend communication protocol.
-	Protocol string `pulumi:"protocol"`
+	// Backend communication protocol. Required when backend type is 'Single'.
+	Protocol *string `pulumi:"protocol"`
 	// Backend gateway Contract Properties
 	Proxy *BackendProxyContractResponse `pulumi:"proxy"`
 	// Management Uri of the Resource in External System. This URL can be the Arm Resource Id of Logic Apps, Function Apps or API Apps.
@@ -64,8 +66,8 @@ type LookupWorkspaceBackendResult struct {
 	Tls *BackendTlsPropertiesResponse `pulumi:"tls"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
-	// Runtime Url of the Backend.
-	Url string `pulumi:"url"`
+	// Runtime Url of the Backend. Required when backend type is 'Single'.
+	Url *string `pulumi:"url"`
 }
 
 // Defaults sets the appropriate defaults for LookupWorkspaceBackendResult
@@ -117,6 +119,11 @@ func (o LookupWorkspaceBackendResultOutput) ToLookupWorkspaceBackendResultOutput
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupWorkspaceBackendResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkspaceBackendResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Backend Circuit Breaker Configuration
 func (o LookupWorkspaceBackendResultOutput) CircuitBreaker() BackendCircuitBreakerResponsePtrOutput {
 	return o.ApplyT(func(v LookupWorkspaceBackendResult) *BackendCircuitBreakerResponse { return v.CircuitBreaker }).(BackendCircuitBreakerResponsePtrOutput)
@@ -151,9 +158,9 @@ func (o LookupWorkspaceBackendResultOutput) Properties() BackendPropertiesRespon
 	return o.ApplyT(func(v LookupWorkspaceBackendResult) BackendPropertiesResponse { return v.Properties }).(BackendPropertiesResponseOutput)
 }
 
-// Backend communication protocol.
-func (o LookupWorkspaceBackendResultOutput) Protocol() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWorkspaceBackendResult) string { return v.Protocol }).(pulumi.StringOutput)
+// Backend communication protocol. Required when backend type is 'Single'.
+func (o LookupWorkspaceBackendResultOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWorkspaceBackendResult) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
 
 // Backend gateway Contract Properties
@@ -181,9 +188,9 @@ func (o LookupWorkspaceBackendResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceBackendResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Runtime Url of the Backend.
-func (o LookupWorkspaceBackendResultOutput) Url() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWorkspaceBackendResult) string { return v.Url }).(pulumi.StringOutput)
+// Runtime Url of the Backend. Required when backend type is 'Single'.
+func (o LookupWorkspaceBackendResultOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWorkspaceBackendResult) *string { return v.Url }).(pulumi.StringPtrOutput)
 }
 
 func init() {

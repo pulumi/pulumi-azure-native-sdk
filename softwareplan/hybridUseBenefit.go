@@ -8,16 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Response on GET of a hybrid use benefit
 //
-// Uses Azure REST API version 2019-12-01. In version 1.x of the Azure Native provider, it used API version 2019-06-01-preview.
+// Uses Azure REST API version 2019-12-01. In version 2.x of the Azure Native provider, it used API version 2019-12-01.
 type HybridUseBenefit struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Created date
 	CreatedDate pulumi.StringOutput `pulumi:"createdDate"`
 	// Indicates the revision of the hybrid use benefit
@@ -142,6 +144,11 @@ func (o HybridUseBenefitOutput) ToHybridUseBenefitOutput() HybridUseBenefitOutpu
 
 func (o HybridUseBenefitOutput) ToHybridUseBenefitOutputWithContext(ctx context.Context) HybridUseBenefitOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o HybridUseBenefitOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *HybridUseBenefit) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Created date

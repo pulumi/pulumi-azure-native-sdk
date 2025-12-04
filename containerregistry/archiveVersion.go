@@ -8,20 +8,22 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An object that represents an export pipeline for a container registry.
 //
-// Uses Azure REST API version 2023-06-01-preview.
+// Uses Azure REST API version 2024-11-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-06-01-preview.
 //
-// Other available API versions: 2023-08-01-preview, 2023-11-01-preview, 2024-11-01-preview.
+// Other available API versions: 2023-06-01-preview, 2023-08-01-preview, 2023-11-01-preview, 2025-03-01-preview, 2025-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ArchiveVersion struct {
 	pulumi.CustomResourceState
 
 	// The detailed error message for the archive version in the case of failure.
 	ArchiveVersionErrorMessage pulumi.StringPtrOutput `pulumi:"archiveVersionErrorMessage"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning state of the archive at the time the operation was called.
@@ -63,6 +65,12 @@ func NewArchiveVersion(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:containerregistry/v20241101preview:ArchiveVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerregistry/v20250301preview:ArchiveVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerregistry/v20250501preview:ArchiveVersion"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -165,6 +173,11 @@ func (o ArchiveVersionOutput) ToArchiveVersionOutputWithContext(ctx context.Cont
 // The detailed error message for the archive version in the case of failure.
 func (o ArchiveVersionOutput) ArchiveVersionErrorMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ArchiveVersion) pulumi.StringPtrOutput { return v.ArchiveVersionErrorMessage }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o ArchiveVersionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ArchiveVersion) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource.

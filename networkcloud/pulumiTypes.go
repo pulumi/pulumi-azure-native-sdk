@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -800,21 +800,12 @@ func (o AgentOptionsResponsePtrOutput) HugepagesSize() pulumi.StringPtrOutput {
 }
 
 type AgentPoolUpgradeSettings struct {
-	// The maximum number or percentage of nodes that are surged during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 1.
+	// The maximum time in seconds that is allowed for a node drain to complete before proceeding with the upgrade of the agent pool. If not specified during creation, a value of 1800 seconds is used.
+	DrainTimeout *float64 `pulumi:"drainTimeout"`
+	// The maximum number or percentage of nodes that are surged during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified during creation, a value of 1 is used. One of MaxSurge and MaxUnavailable must be greater than 0.
 	MaxSurge *string `pulumi:"maxSurge"`
-}
-
-// Defaults sets the appropriate defaults for AgentPoolUpgradeSettings
-func (val *AgentPoolUpgradeSettings) Defaults() *AgentPoolUpgradeSettings {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.MaxSurge == nil {
-		maxSurge_ := "1"
-		tmp.MaxSurge = &maxSurge_
-	}
-	return &tmp
+	// The maximum number or percentage of nodes that can be unavailable during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified during creation, a value of 0 is used. One of MaxSurge and MaxUnavailable must be greater than 0.
+	MaxUnavailable *string `pulumi:"maxUnavailable"`
 }
 
 // AgentPoolUpgradeSettingsInput is an input type that accepts AgentPoolUpgradeSettingsArgs and AgentPoolUpgradeSettingsOutput values.
@@ -829,21 +820,14 @@ type AgentPoolUpgradeSettingsInput interface {
 }
 
 type AgentPoolUpgradeSettingsArgs struct {
-	// The maximum number or percentage of nodes that are surged during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 1.
+	// The maximum time in seconds that is allowed for a node drain to complete before proceeding with the upgrade of the agent pool. If not specified during creation, a value of 1800 seconds is used.
+	DrainTimeout pulumi.Float64PtrInput `pulumi:"drainTimeout"`
+	// The maximum number or percentage of nodes that are surged during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified during creation, a value of 1 is used. One of MaxSurge and MaxUnavailable must be greater than 0.
 	MaxSurge pulumi.StringPtrInput `pulumi:"maxSurge"`
+	// The maximum number or percentage of nodes that can be unavailable during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified during creation, a value of 0 is used. One of MaxSurge and MaxUnavailable must be greater than 0.
+	MaxUnavailable pulumi.StringPtrInput `pulumi:"maxUnavailable"`
 }
 
-// Defaults sets the appropriate defaults for AgentPoolUpgradeSettingsArgs
-func (val *AgentPoolUpgradeSettingsArgs) Defaults() *AgentPoolUpgradeSettingsArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.MaxSurge == nil {
-		tmp.MaxSurge = pulumi.StringPtr("1")
-	}
-	return &tmp
-}
 func (AgentPoolUpgradeSettingsArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*AgentPoolUpgradeSettings)(nil)).Elem()
 }
@@ -921,9 +905,19 @@ func (o AgentPoolUpgradeSettingsOutput) ToAgentPoolUpgradeSettingsPtrOutputWithC
 	}).(AgentPoolUpgradeSettingsPtrOutput)
 }
 
-// The maximum number or percentage of nodes that are surged during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 1.
+// The maximum time in seconds that is allowed for a node drain to complete before proceeding with the upgrade of the agent pool. If not specified during creation, a value of 1800 seconds is used.
+func (o AgentPoolUpgradeSettingsOutput) DrainTimeout() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AgentPoolUpgradeSettings) *float64 { return v.DrainTimeout }).(pulumi.Float64PtrOutput)
+}
+
+// The maximum number or percentage of nodes that are surged during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified during creation, a value of 1 is used. One of MaxSurge and MaxUnavailable must be greater than 0.
 func (o AgentPoolUpgradeSettingsOutput) MaxSurge() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AgentPoolUpgradeSettings) *string { return v.MaxSurge }).(pulumi.StringPtrOutput)
+}
+
+// The maximum number or percentage of nodes that can be unavailable during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified during creation, a value of 0 is used. One of MaxSurge and MaxUnavailable must be greater than 0.
+func (o AgentPoolUpgradeSettingsOutput) MaxUnavailable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentPoolUpgradeSettings) *string { return v.MaxUnavailable }).(pulumi.StringPtrOutput)
 }
 
 type AgentPoolUpgradeSettingsPtrOutput struct{ *pulumi.OutputState }
@@ -950,7 +944,17 @@ func (o AgentPoolUpgradeSettingsPtrOutput) Elem() AgentPoolUpgradeSettingsOutput
 	}).(AgentPoolUpgradeSettingsOutput)
 }
 
-// The maximum number or percentage of nodes that are surged during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 1.
+// The maximum time in seconds that is allowed for a node drain to complete before proceeding with the upgrade of the agent pool. If not specified during creation, a value of 1800 seconds is used.
+func (o AgentPoolUpgradeSettingsPtrOutput) DrainTimeout() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AgentPoolUpgradeSettings) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.DrainTimeout
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The maximum number or percentage of nodes that are surged during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified during creation, a value of 1 is used. One of MaxSurge and MaxUnavailable must be greater than 0.
 func (o AgentPoolUpgradeSettingsPtrOutput) MaxSurge() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AgentPoolUpgradeSettings) *string {
 		if v == nil {
@@ -960,22 +964,23 @@ func (o AgentPoolUpgradeSettingsPtrOutput) MaxSurge() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type AgentPoolUpgradeSettingsResponse struct {
-	// The maximum number or percentage of nodes that are surged during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 1.
-	MaxSurge *string `pulumi:"maxSurge"`
+// The maximum number or percentage of nodes that can be unavailable during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified during creation, a value of 0 is used. One of MaxSurge and MaxUnavailable must be greater than 0.
+func (o AgentPoolUpgradeSettingsPtrOutput) MaxUnavailable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AgentPoolUpgradeSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxUnavailable
+	}).(pulumi.StringPtrOutput)
 }
 
-// Defaults sets the appropriate defaults for AgentPoolUpgradeSettingsResponse
-func (val *AgentPoolUpgradeSettingsResponse) Defaults() *AgentPoolUpgradeSettingsResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.MaxSurge == nil {
-		maxSurge_ := "1"
-		tmp.MaxSurge = &maxSurge_
-	}
-	return &tmp
+type AgentPoolUpgradeSettingsResponse struct {
+	// The maximum time in seconds that is allowed for a node drain to complete before proceeding with the upgrade of the agent pool. If not specified during creation, a value of 1800 seconds is used.
+	DrainTimeout *float64 `pulumi:"drainTimeout"`
+	// The maximum number or percentage of nodes that are surged during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified during creation, a value of 1 is used. One of MaxSurge and MaxUnavailable must be greater than 0.
+	MaxSurge *string `pulumi:"maxSurge"`
+	// The maximum number or percentage of nodes that can be unavailable during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified during creation, a value of 0 is used. One of MaxSurge and MaxUnavailable must be greater than 0.
+	MaxUnavailable *string `pulumi:"maxUnavailable"`
 }
 
 type AgentPoolUpgradeSettingsResponseOutput struct{ *pulumi.OutputState }
@@ -992,9 +997,19 @@ func (o AgentPoolUpgradeSettingsResponseOutput) ToAgentPoolUpgradeSettingsRespon
 	return o
 }
 
-// The maximum number or percentage of nodes that are surged during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 1.
+// The maximum time in seconds that is allowed for a node drain to complete before proceeding with the upgrade of the agent pool. If not specified during creation, a value of 1800 seconds is used.
+func (o AgentPoolUpgradeSettingsResponseOutput) DrainTimeout() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AgentPoolUpgradeSettingsResponse) *float64 { return v.DrainTimeout }).(pulumi.Float64PtrOutput)
+}
+
+// The maximum number or percentage of nodes that are surged during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified during creation, a value of 1 is used. One of MaxSurge and MaxUnavailable must be greater than 0.
 func (o AgentPoolUpgradeSettingsResponseOutput) MaxSurge() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AgentPoolUpgradeSettingsResponse) *string { return v.MaxSurge }).(pulumi.StringPtrOutput)
+}
+
+// The maximum number or percentage of nodes that can be unavailable during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified during creation, a value of 0 is used. One of MaxSurge and MaxUnavailable must be greater than 0.
+func (o AgentPoolUpgradeSettingsResponseOutput) MaxUnavailable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentPoolUpgradeSettingsResponse) *string { return v.MaxUnavailable }).(pulumi.StringPtrOutput)
 }
 
 type AgentPoolUpgradeSettingsResponsePtrOutput struct{ *pulumi.OutputState }
@@ -1021,7 +1036,17 @@ func (o AgentPoolUpgradeSettingsResponsePtrOutput) Elem() AgentPoolUpgradeSettin
 	}).(AgentPoolUpgradeSettingsResponseOutput)
 }
 
-// The maximum number or percentage of nodes that are surged during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 1.
+// The maximum time in seconds that is allowed for a node drain to complete before proceeding with the upgrade of the agent pool. If not specified during creation, a value of 1800 seconds is used.
+func (o AgentPoolUpgradeSettingsResponsePtrOutput) DrainTimeout() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AgentPoolUpgradeSettingsResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.DrainTimeout
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The maximum number or percentage of nodes that are surged during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified during creation, a value of 1 is used. One of MaxSurge and MaxUnavailable must be greater than 0.
 func (o AgentPoolUpgradeSettingsResponsePtrOutput) MaxSurge() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AgentPoolUpgradeSettingsResponse) *string {
 		if v == nil {
@@ -1029,6 +1054,247 @@ func (o AgentPoolUpgradeSettingsResponsePtrOutput) MaxSurge() pulumi.StringPtrOu
 		}
 		return v.MaxSurge
 	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum number or percentage of nodes that can be unavailable during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified during creation, a value of 0 is used. One of MaxSurge and MaxUnavailable must be greater than 0.
+func (o AgentPoolUpgradeSettingsResponsePtrOutput) MaxUnavailable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AgentPoolUpgradeSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxUnavailable
+	}).(pulumi.StringPtrOutput)
+}
+
+type AnalyticsOutputSettings struct {
+	// The resource ID of the analytics workspace that is to be used by the specified identity.
+	AnalyticsWorkspaceId *string `pulumi:"analyticsWorkspaceId"`
+	// The selection of the managed identity to use with this analytics workspace. The identity type must be either system assigned or user assigned.
+	AssociatedIdentity *IdentitySelector `pulumi:"associatedIdentity"`
+}
+
+// AnalyticsOutputSettingsInput is an input type that accepts AnalyticsOutputSettingsArgs and AnalyticsOutputSettingsOutput values.
+// You can construct a concrete instance of `AnalyticsOutputSettingsInput` via:
+//
+//	AnalyticsOutputSettingsArgs{...}
+type AnalyticsOutputSettingsInput interface {
+	pulumi.Input
+
+	ToAnalyticsOutputSettingsOutput() AnalyticsOutputSettingsOutput
+	ToAnalyticsOutputSettingsOutputWithContext(context.Context) AnalyticsOutputSettingsOutput
+}
+
+type AnalyticsOutputSettingsArgs struct {
+	// The resource ID of the analytics workspace that is to be used by the specified identity.
+	AnalyticsWorkspaceId pulumi.StringPtrInput `pulumi:"analyticsWorkspaceId"`
+	// The selection of the managed identity to use with this analytics workspace. The identity type must be either system assigned or user assigned.
+	AssociatedIdentity IdentitySelectorPtrInput `pulumi:"associatedIdentity"`
+}
+
+func (AnalyticsOutputSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AnalyticsOutputSettings)(nil)).Elem()
+}
+
+func (i AnalyticsOutputSettingsArgs) ToAnalyticsOutputSettingsOutput() AnalyticsOutputSettingsOutput {
+	return i.ToAnalyticsOutputSettingsOutputWithContext(context.Background())
+}
+
+func (i AnalyticsOutputSettingsArgs) ToAnalyticsOutputSettingsOutputWithContext(ctx context.Context) AnalyticsOutputSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsOutputSettingsOutput)
+}
+
+func (i AnalyticsOutputSettingsArgs) ToAnalyticsOutputSettingsPtrOutput() AnalyticsOutputSettingsPtrOutput {
+	return i.ToAnalyticsOutputSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i AnalyticsOutputSettingsArgs) ToAnalyticsOutputSettingsPtrOutputWithContext(ctx context.Context) AnalyticsOutputSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsOutputSettingsOutput).ToAnalyticsOutputSettingsPtrOutputWithContext(ctx)
+}
+
+// AnalyticsOutputSettingsPtrInput is an input type that accepts AnalyticsOutputSettingsArgs, AnalyticsOutputSettingsPtr and AnalyticsOutputSettingsPtrOutput values.
+// You can construct a concrete instance of `AnalyticsOutputSettingsPtrInput` via:
+//
+//	        AnalyticsOutputSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AnalyticsOutputSettingsPtrInput interface {
+	pulumi.Input
+
+	ToAnalyticsOutputSettingsPtrOutput() AnalyticsOutputSettingsPtrOutput
+	ToAnalyticsOutputSettingsPtrOutputWithContext(context.Context) AnalyticsOutputSettingsPtrOutput
+}
+
+type analyticsOutputSettingsPtrType AnalyticsOutputSettingsArgs
+
+func AnalyticsOutputSettingsPtr(v *AnalyticsOutputSettingsArgs) AnalyticsOutputSettingsPtrInput {
+	return (*analyticsOutputSettingsPtrType)(v)
+}
+
+func (*analyticsOutputSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AnalyticsOutputSettings)(nil)).Elem()
+}
+
+func (i *analyticsOutputSettingsPtrType) ToAnalyticsOutputSettingsPtrOutput() AnalyticsOutputSettingsPtrOutput {
+	return i.ToAnalyticsOutputSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *analyticsOutputSettingsPtrType) ToAnalyticsOutputSettingsPtrOutputWithContext(ctx context.Context) AnalyticsOutputSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsOutputSettingsPtrOutput)
+}
+
+type AnalyticsOutputSettingsOutput struct{ *pulumi.OutputState }
+
+func (AnalyticsOutputSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AnalyticsOutputSettings)(nil)).Elem()
+}
+
+func (o AnalyticsOutputSettingsOutput) ToAnalyticsOutputSettingsOutput() AnalyticsOutputSettingsOutput {
+	return o
+}
+
+func (o AnalyticsOutputSettingsOutput) ToAnalyticsOutputSettingsOutputWithContext(ctx context.Context) AnalyticsOutputSettingsOutput {
+	return o
+}
+
+func (o AnalyticsOutputSettingsOutput) ToAnalyticsOutputSettingsPtrOutput() AnalyticsOutputSettingsPtrOutput {
+	return o.ToAnalyticsOutputSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o AnalyticsOutputSettingsOutput) ToAnalyticsOutputSettingsPtrOutputWithContext(ctx context.Context) AnalyticsOutputSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AnalyticsOutputSettings) *AnalyticsOutputSettings {
+		return &v
+	}).(AnalyticsOutputSettingsPtrOutput)
+}
+
+// The resource ID of the analytics workspace that is to be used by the specified identity.
+func (o AnalyticsOutputSettingsOutput) AnalyticsWorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AnalyticsOutputSettings) *string { return v.AnalyticsWorkspaceId }).(pulumi.StringPtrOutput)
+}
+
+// The selection of the managed identity to use with this analytics workspace. The identity type must be either system assigned or user assigned.
+func (o AnalyticsOutputSettingsOutput) AssociatedIdentity() IdentitySelectorPtrOutput {
+	return o.ApplyT(func(v AnalyticsOutputSettings) *IdentitySelector { return v.AssociatedIdentity }).(IdentitySelectorPtrOutput)
+}
+
+type AnalyticsOutputSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (AnalyticsOutputSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AnalyticsOutputSettings)(nil)).Elem()
+}
+
+func (o AnalyticsOutputSettingsPtrOutput) ToAnalyticsOutputSettingsPtrOutput() AnalyticsOutputSettingsPtrOutput {
+	return o
+}
+
+func (o AnalyticsOutputSettingsPtrOutput) ToAnalyticsOutputSettingsPtrOutputWithContext(ctx context.Context) AnalyticsOutputSettingsPtrOutput {
+	return o
+}
+
+func (o AnalyticsOutputSettingsPtrOutput) Elem() AnalyticsOutputSettingsOutput {
+	return o.ApplyT(func(v *AnalyticsOutputSettings) AnalyticsOutputSettings {
+		if v != nil {
+			return *v
+		}
+		var ret AnalyticsOutputSettings
+		return ret
+	}).(AnalyticsOutputSettingsOutput)
+}
+
+// The resource ID of the analytics workspace that is to be used by the specified identity.
+func (o AnalyticsOutputSettingsPtrOutput) AnalyticsWorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AnalyticsOutputSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AnalyticsWorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The selection of the managed identity to use with this analytics workspace. The identity type must be either system assigned or user assigned.
+func (o AnalyticsOutputSettingsPtrOutput) AssociatedIdentity() IdentitySelectorPtrOutput {
+	return o.ApplyT(func(v *AnalyticsOutputSettings) *IdentitySelector {
+		if v == nil {
+			return nil
+		}
+		return v.AssociatedIdentity
+	}).(IdentitySelectorPtrOutput)
+}
+
+type AnalyticsOutputSettingsResponse struct {
+	// The resource ID of the analytics workspace that is to be used by the specified identity.
+	AnalyticsWorkspaceId *string `pulumi:"analyticsWorkspaceId"`
+	// The selection of the managed identity to use with this analytics workspace. The identity type must be either system assigned or user assigned.
+	AssociatedIdentity *IdentitySelectorResponse `pulumi:"associatedIdentity"`
+}
+
+type AnalyticsOutputSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (AnalyticsOutputSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AnalyticsOutputSettingsResponse)(nil)).Elem()
+}
+
+func (o AnalyticsOutputSettingsResponseOutput) ToAnalyticsOutputSettingsResponseOutput() AnalyticsOutputSettingsResponseOutput {
+	return o
+}
+
+func (o AnalyticsOutputSettingsResponseOutput) ToAnalyticsOutputSettingsResponseOutputWithContext(ctx context.Context) AnalyticsOutputSettingsResponseOutput {
+	return o
+}
+
+// The resource ID of the analytics workspace that is to be used by the specified identity.
+func (o AnalyticsOutputSettingsResponseOutput) AnalyticsWorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AnalyticsOutputSettingsResponse) *string { return v.AnalyticsWorkspaceId }).(pulumi.StringPtrOutput)
+}
+
+// The selection of the managed identity to use with this analytics workspace. The identity type must be either system assigned or user assigned.
+func (o AnalyticsOutputSettingsResponseOutput) AssociatedIdentity() IdentitySelectorResponsePtrOutput {
+	return o.ApplyT(func(v AnalyticsOutputSettingsResponse) *IdentitySelectorResponse { return v.AssociatedIdentity }).(IdentitySelectorResponsePtrOutput)
+}
+
+type AnalyticsOutputSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AnalyticsOutputSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AnalyticsOutputSettingsResponse)(nil)).Elem()
+}
+
+func (o AnalyticsOutputSettingsResponsePtrOutput) ToAnalyticsOutputSettingsResponsePtrOutput() AnalyticsOutputSettingsResponsePtrOutput {
+	return o
+}
+
+func (o AnalyticsOutputSettingsResponsePtrOutput) ToAnalyticsOutputSettingsResponsePtrOutputWithContext(ctx context.Context) AnalyticsOutputSettingsResponsePtrOutput {
+	return o
+}
+
+func (o AnalyticsOutputSettingsResponsePtrOutput) Elem() AnalyticsOutputSettingsResponseOutput {
+	return o.ApplyT(func(v *AnalyticsOutputSettingsResponse) AnalyticsOutputSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AnalyticsOutputSettingsResponse
+		return ret
+	}).(AnalyticsOutputSettingsResponseOutput)
+}
+
+// The resource ID of the analytics workspace that is to be used by the specified identity.
+func (o AnalyticsOutputSettingsResponsePtrOutput) AnalyticsWorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AnalyticsOutputSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AnalyticsWorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The selection of the managed identity to use with this analytics workspace. The identity type must be either system assigned or user assigned.
+func (o AnalyticsOutputSettingsResponsePtrOutput) AssociatedIdentity() IdentitySelectorResponsePtrOutput {
+	return o.ApplyT(func(v *AnalyticsOutputSettingsResponse) *IdentitySelectorResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AssociatedIdentity
+	}).(IdentitySelectorResponsePtrOutput)
 }
 
 type AttachedNetworkConfiguration struct {
@@ -1356,7 +1622,7 @@ func (o AvailableUpgradeResponseArrayOutput) Index(i pulumi.IntInput) AvailableU
 }
 
 type BareMetalMachineConfigurationData struct {
-	// The credentials of the baseboard management controller on this bare metal machine.
+	// The credentials of the baseboard management controller on this bare metal machine. The password field is expected to be an Azure Key Vault key URL. Until the cluster is converted to utilize managed identity by setting the secret archive settings, the actual password value should be provided instead.
 	BmcCredentials AdministrativeCredentials `pulumi:"bmcCredentials"`
 	// The MAC address of the BMC for this machine.
 	BmcMacAddress string `pulumi:"bmcMacAddress"`
@@ -1385,7 +1651,7 @@ type BareMetalMachineConfigurationDataInput interface {
 }
 
 type BareMetalMachineConfigurationDataArgs struct {
-	// The credentials of the baseboard management controller on this bare metal machine.
+	// The credentials of the baseboard management controller on this bare metal machine. The password field is expected to be an Azure Key Vault key URL. Until the cluster is converted to utilize managed identity by setting the secret archive settings, the actual password value should be provided instead.
 	BmcCredentials AdministrativeCredentialsInput `pulumi:"bmcCredentials"`
 	// The MAC address of the BMC for this machine.
 	BmcMacAddress pulumi.StringInput `pulumi:"bmcMacAddress"`
@@ -1453,7 +1719,7 @@ func (o BareMetalMachineConfigurationDataOutput) ToBareMetalMachineConfiguration
 	return o
 }
 
-// The credentials of the baseboard management controller on this bare metal machine.
+// The credentials of the baseboard management controller on this bare metal machine. The password field is expected to be an Azure Key Vault key URL. Until the cluster is converted to utilize managed identity by setting the secret archive settings, the actual password value should be provided instead.
 func (o BareMetalMachineConfigurationDataOutput) BmcCredentials() AdministrativeCredentialsOutput {
 	return o.ApplyT(func(v BareMetalMachineConfigurationData) AdministrativeCredentials { return v.BmcCredentials }).(AdministrativeCredentialsOutput)
 }
@@ -1512,7 +1778,7 @@ func (o BareMetalMachineConfigurationDataArrayOutput) Index(i pulumi.IntInput) B
 type BareMetalMachineConfigurationDataResponse struct {
 	// The connection string for the baseboard management controller including IP address and protocol.
 	BmcConnectionString string `pulumi:"bmcConnectionString"`
-	// The credentials of the baseboard management controller on this bare metal machine.
+	// The credentials of the baseboard management controller on this bare metal machine. The password field is expected to be an Azure Key Vault key URL. Until the cluster is converted to utilize managed identity by setting the secret archive settings, the actual password value should be provided instead.
 	BmcCredentials AdministrativeCredentialsResponse `pulumi:"bmcCredentials"`
 	// The MAC address of the BMC for this machine.
 	BmcMacAddress string `pulumi:"bmcMacAddress"`
@@ -1548,7 +1814,7 @@ func (o BareMetalMachineConfigurationDataResponseOutput) BmcConnectionString() p
 	return o.ApplyT(func(v BareMetalMachineConfigurationDataResponse) string { return v.BmcConnectionString }).(pulumi.StringOutput)
 }
 
-// The credentials of the baseboard management controller on this bare metal machine.
+// The credentials of the baseboard management controller on this bare metal machine. The password field is expected to be an Azure Key Vault key URL. Until the cluster is converted to utilize managed identity by setting the secret archive settings, the actual password value should be provided instead.
 func (o BareMetalMachineConfigurationDataResponseOutput) BmcCredentials() AdministrativeCredentialsResponseOutput {
 	return o.ApplyT(func(v BareMetalMachineConfigurationDataResponse) AdministrativeCredentialsResponse {
 		return v.BmcCredentials
@@ -1839,7 +2105,7 @@ type BgpServiceLoadBalancerConfiguration struct {
 	BgpPeers []ServiceLoadBalancerBgpPeer `pulumi:"bgpPeers"`
 	// The indicator to specify if the load balancer peers with the network fabric.
 	FabricPeeringEnabled *string `pulumi:"fabricPeeringEnabled"`
-	// The list of pools of IP addresses that can be allocated to Load Balancer services.
+	// The list of pools of IP addresses that can be allocated to load balancer services.
 	IpAddressPools []IpAddressPool `pulumi:"ipAddressPools"`
 }
 
@@ -1874,7 +2140,7 @@ type BgpServiceLoadBalancerConfigurationArgs struct {
 	BgpPeers ServiceLoadBalancerBgpPeerArrayInput `pulumi:"bgpPeers"`
 	// The indicator to specify if the load balancer peers with the network fabric.
 	FabricPeeringEnabled pulumi.StringPtrInput `pulumi:"fabricPeeringEnabled"`
-	// The list of pools of IP addresses that can be allocated to Load Balancer services.
+	// The list of pools of IP addresses that can be allocated to load balancer services.
 	IpAddressPools IpAddressPoolArrayInput `pulumi:"ipAddressPools"`
 }
 
@@ -1981,7 +2247,7 @@ func (o BgpServiceLoadBalancerConfigurationOutput) FabricPeeringEnabled() pulumi
 	return o.ApplyT(func(v BgpServiceLoadBalancerConfiguration) *string { return v.FabricPeeringEnabled }).(pulumi.StringPtrOutput)
 }
 
-// The list of pools of IP addresses that can be allocated to Load Balancer services.
+// The list of pools of IP addresses that can be allocated to load balancer services.
 func (o BgpServiceLoadBalancerConfigurationOutput) IpAddressPools() IpAddressPoolArrayOutput {
 	return o.ApplyT(func(v BgpServiceLoadBalancerConfiguration) []IpAddressPool { return v.IpAddressPools }).(IpAddressPoolArrayOutput)
 }
@@ -2040,7 +2306,7 @@ func (o BgpServiceLoadBalancerConfigurationPtrOutput) FabricPeeringEnabled() pul
 	}).(pulumi.StringPtrOutput)
 }
 
-// The list of pools of IP addresses that can be allocated to Load Balancer services.
+// The list of pools of IP addresses that can be allocated to load balancer services.
 func (o BgpServiceLoadBalancerConfigurationPtrOutput) IpAddressPools() IpAddressPoolArrayOutput {
 	return o.ApplyT(func(v *BgpServiceLoadBalancerConfiguration) []IpAddressPool {
 		if v == nil {
@@ -2057,7 +2323,7 @@ type BgpServiceLoadBalancerConfigurationResponse struct {
 	BgpPeers []ServiceLoadBalancerBgpPeerResponse `pulumi:"bgpPeers"`
 	// The indicator to specify if the load balancer peers with the network fabric.
 	FabricPeeringEnabled *string `pulumi:"fabricPeeringEnabled"`
-	// The list of pools of IP addresses that can be allocated to Load Balancer services.
+	// The list of pools of IP addresses that can be allocated to load balancer services.
 	IpAddressPools []IpAddressPoolResponse `pulumi:"ipAddressPools"`
 }
 
@@ -2107,7 +2373,7 @@ func (o BgpServiceLoadBalancerConfigurationResponseOutput) FabricPeeringEnabled(
 	return o.ApplyT(func(v BgpServiceLoadBalancerConfigurationResponse) *string { return v.FabricPeeringEnabled }).(pulumi.StringPtrOutput)
 }
 
-// The list of pools of IP addresses that can be allocated to Load Balancer services.
+// The list of pools of IP addresses that can be allocated to load balancer services.
 func (o BgpServiceLoadBalancerConfigurationResponseOutput) IpAddressPools() IpAddressPoolResponseArrayOutput {
 	return o.ApplyT(func(v BgpServiceLoadBalancerConfigurationResponse) []IpAddressPoolResponse { return v.IpAddressPools }).(IpAddressPoolResponseArrayOutput)
 }
@@ -2166,7 +2432,7 @@ func (o BgpServiceLoadBalancerConfigurationResponsePtrOutput) FabricPeeringEnabl
 	}).(pulumi.StringPtrOutput)
 }
 
-// The list of pools of IP addresses that can be allocated to Load Balancer services.
+// The list of pools of IP addresses that can be allocated to load balancer services.
 func (o BgpServiceLoadBalancerConfigurationResponsePtrOutput) IpAddressPools() IpAddressPoolResponseArrayOutput {
 	return o.ApplyT(func(v *BgpServiceLoadBalancerConfigurationResponse) []IpAddressPoolResponse {
 		if v == nil {
@@ -2307,21 +2573,21 @@ func (o ClusterAvailableVersionResponseArrayOutput) Index(i pulumi.IntInput) Clu
 }
 
 type ClusterCapacityResponse struct {
-	// The remaining appliance-based storage in GB available for workload use.
+	// The remaining appliance-based storage in GB available for workload use. Measured in gibibytes.
 	AvailableApplianceStorageGB *float64 `pulumi:"availableApplianceStorageGB"`
 	// The remaining number of cores that are available in this cluster for workload use.
 	AvailableCoreCount *float64 `pulumi:"availableCoreCount"`
-	// The remaining machine or host-based storage in GB available for workload use.
+	// The remaining machine or host-based storage in GB available for workload use. Measured in gibibytes.
 	AvailableHostStorageGB *float64 `pulumi:"availableHostStorageGB"`
-	// The remaining memory in GB that are available in this cluster for workload use.
+	// The remaining memory in GB that are available in this cluster for workload use. Measured in gibibytes.
 	AvailableMemoryGB *float64 `pulumi:"availableMemoryGB"`
-	// The total appliance-based storage in GB supported by this cluster for workload use.
+	// The total appliance-based storage in GB supported by this cluster for workload use. Measured in gibibytes.
 	TotalApplianceStorageGB *float64 `pulumi:"totalApplianceStorageGB"`
 	// The total number of cores that are supported by this cluster for workload use.
 	TotalCoreCount *float64 `pulumi:"totalCoreCount"`
-	// The total machine or host-based storage in GB supported by this cluster for workload use.
+	// The total machine or host-based storage in GB supported by this cluster for workload use. Measured in gibibytes.
 	TotalHostStorageGB *float64 `pulumi:"totalHostStorageGB"`
-	// The total memory supported by this cluster for workload use.
+	// The total memory supported by this cluster for workload use. Measured in gibibytes.
 	TotalMemoryGB *float64 `pulumi:"totalMemoryGB"`
 }
 
@@ -2339,7 +2605,7 @@ func (o ClusterCapacityResponseOutput) ToClusterCapacityResponseOutputWithContex
 	return o
 }
 
-// The remaining appliance-based storage in GB available for workload use.
+// The remaining appliance-based storage in GB available for workload use. Measured in gibibytes.
 func (o ClusterCapacityResponseOutput) AvailableApplianceStorageGB() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v ClusterCapacityResponse) *float64 { return v.AvailableApplianceStorageGB }).(pulumi.Float64PtrOutput)
 }
@@ -2349,17 +2615,17 @@ func (o ClusterCapacityResponseOutput) AvailableCoreCount() pulumi.Float64PtrOut
 	return o.ApplyT(func(v ClusterCapacityResponse) *float64 { return v.AvailableCoreCount }).(pulumi.Float64PtrOutput)
 }
 
-// The remaining machine or host-based storage in GB available for workload use.
+// The remaining machine or host-based storage in GB available for workload use. Measured in gibibytes.
 func (o ClusterCapacityResponseOutput) AvailableHostStorageGB() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v ClusterCapacityResponse) *float64 { return v.AvailableHostStorageGB }).(pulumi.Float64PtrOutput)
 }
 
-// The remaining memory in GB that are available in this cluster for workload use.
+// The remaining memory in GB that are available in this cluster for workload use. Measured in gibibytes.
 func (o ClusterCapacityResponseOutput) AvailableMemoryGB() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v ClusterCapacityResponse) *float64 { return v.AvailableMemoryGB }).(pulumi.Float64PtrOutput)
 }
 
-// The total appliance-based storage in GB supported by this cluster for workload use.
+// The total appliance-based storage in GB supported by this cluster for workload use. Measured in gibibytes.
 func (o ClusterCapacityResponseOutput) TotalApplianceStorageGB() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v ClusterCapacityResponse) *float64 { return v.TotalApplianceStorageGB }).(pulumi.Float64PtrOutput)
 }
@@ -2369,12 +2635,12 @@ func (o ClusterCapacityResponseOutput) TotalCoreCount() pulumi.Float64PtrOutput 
 	return o.ApplyT(func(v ClusterCapacityResponse) *float64 { return v.TotalCoreCount }).(pulumi.Float64PtrOutput)
 }
 
-// The total machine or host-based storage in GB supported by this cluster for workload use.
+// The total machine or host-based storage in GB supported by this cluster for workload use. Measured in gibibytes.
 func (o ClusterCapacityResponseOutput) TotalHostStorageGB() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v ClusterCapacityResponse) *float64 { return v.TotalHostStorageGB }).(pulumi.Float64PtrOutput)
 }
 
-// The total memory supported by this cluster for workload use.
+// The total memory supported by this cluster for workload use. Measured in gibibytes.
 func (o ClusterCapacityResponseOutput) TotalMemoryGB() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v ClusterCapacityResponse) *float64 { return v.TotalMemoryGB }).(pulumi.Float64PtrOutput)
 }
@@ -3028,6 +3294,237 @@ func (o ClusterUpdateStrategyResponsePtrOutput) WaitTimeMinutes() pulumi.Float64
 		}
 		return v.WaitTimeMinutes
 	}).(pulumi.Float64PtrOutput)
+}
+
+type CommandOutputSettings struct {
+	// The selection of the managed identity to use with this storage account container. The identity type must be either system assigned or user assigned.
+	AssociatedIdentity *IdentitySelector `pulumi:"associatedIdentity"`
+	// The URL of the storage account container that is to be used by the specified identities.
+	ContainerUrl *string `pulumi:"containerUrl"`
+}
+
+// CommandOutputSettingsInput is an input type that accepts CommandOutputSettingsArgs and CommandOutputSettingsOutput values.
+// You can construct a concrete instance of `CommandOutputSettingsInput` via:
+//
+//	CommandOutputSettingsArgs{...}
+type CommandOutputSettingsInput interface {
+	pulumi.Input
+
+	ToCommandOutputSettingsOutput() CommandOutputSettingsOutput
+	ToCommandOutputSettingsOutputWithContext(context.Context) CommandOutputSettingsOutput
+}
+
+type CommandOutputSettingsArgs struct {
+	// The selection of the managed identity to use with this storage account container. The identity type must be either system assigned or user assigned.
+	AssociatedIdentity IdentitySelectorPtrInput `pulumi:"associatedIdentity"`
+	// The URL of the storage account container that is to be used by the specified identities.
+	ContainerUrl pulumi.StringPtrInput `pulumi:"containerUrl"`
+}
+
+func (CommandOutputSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommandOutputSettings)(nil)).Elem()
+}
+
+func (i CommandOutputSettingsArgs) ToCommandOutputSettingsOutput() CommandOutputSettingsOutput {
+	return i.ToCommandOutputSettingsOutputWithContext(context.Background())
+}
+
+func (i CommandOutputSettingsArgs) ToCommandOutputSettingsOutputWithContext(ctx context.Context) CommandOutputSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommandOutputSettingsOutput)
+}
+
+func (i CommandOutputSettingsArgs) ToCommandOutputSettingsPtrOutput() CommandOutputSettingsPtrOutput {
+	return i.ToCommandOutputSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i CommandOutputSettingsArgs) ToCommandOutputSettingsPtrOutputWithContext(ctx context.Context) CommandOutputSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommandOutputSettingsOutput).ToCommandOutputSettingsPtrOutputWithContext(ctx)
+}
+
+// CommandOutputSettingsPtrInput is an input type that accepts CommandOutputSettingsArgs, CommandOutputSettingsPtr and CommandOutputSettingsPtrOutput values.
+// You can construct a concrete instance of `CommandOutputSettingsPtrInput` via:
+//
+//	        CommandOutputSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CommandOutputSettingsPtrInput interface {
+	pulumi.Input
+
+	ToCommandOutputSettingsPtrOutput() CommandOutputSettingsPtrOutput
+	ToCommandOutputSettingsPtrOutputWithContext(context.Context) CommandOutputSettingsPtrOutput
+}
+
+type commandOutputSettingsPtrType CommandOutputSettingsArgs
+
+func CommandOutputSettingsPtr(v *CommandOutputSettingsArgs) CommandOutputSettingsPtrInput {
+	return (*commandOutputSettingsPtrType)(v)
+}
+
+func (*commandOutputSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CommandOutputSettings)(nil)).Elem()
+}
+
+func (i *commandOutputSettingsPtrType) ToCommandOutputSettingsPtrOutput() CommandOutputSettingsPtrOutput {
+	return i.ToCommandOutputSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *commandOutputSettingsPtrType) ToCommandOutputSettingsPtrOutputWithContext(ctx context.Context) CommandOutputSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommandOutputSettingsPtrOutput)
+}
+
+type CommandOutputSettingsOutput struct{ *pulumi.OutputState }
+
+func (CommandOutputSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommandOutputSettings)(nil)).Elem()
+}
+
+func (o CommandOutputSettingsOutput) ToCommandOutputSettingsOutput() CommandOutputSettingsOutput {
+	return o
+}
+
+func (o CommandOutputSettingsOutput) ToCommandOutputSettingsOutputWithContext(ctx context.Context) CommandOutputSettingsOutput {
+	return o
+}
+
+func (o CommandOutputSettingsOutput) ToCommandOutputSettingsPtrOutput() CommandOutputSettingsPtrOutput {
+	return o.ToCommandOutputSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o CommandOutputSettingsOutput) ToCommandOutputSettingsPtrOutputWithContext(ctx context.Context) CommandOutputSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CommandOutputSettings) *CommandOutputSettings {
+		return &v
+	}).(CommandOutputSettingsPtrOutput)
+}
+
+// The selection of the managed identity to use with this storage account container. The identity type must be either system assigned or user assigned.
+func (o CommandOutputSettingsOutput) AssociatedIdentity() IdentitySelectorPtrOutput {
+	return o.ApplyT(func(v CommandOutputSettings) *IdentitySelector { return v.AssociatedIdentity }).(IdentitySelectorPtrOutput)
+}
+
+// The URL of the storage account container that is to be used by the specified identities.
+func (o CommandOutputSettingsOutput) ContainerUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CommandOutputSettings) *string { return v.ContainerUrl }).(pulumi.StringPtrOutput)
+}
+
+type CommandOutputSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (CommandOutputSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CommandOutputSettings)(nil)).Elem()
+}
+
+func (o CommandOutputSettingsPtrOutput) ToCommandOutputSettingsPtrOutput() CommandOutputSettingsPtrOutput {
+	return o
+}
+
+func (o CommandOutputSettingsPtrOutput) ToCommandOutputSettingsPtrOutputWithContext(ctx context.Context) CommandOutputSettingsPtrOutput {
+	return o
+}
+
+func (o CommandOutputSettingsPtrOutput) Elem() CommandOutputSettingsOutput {
+	return o.ApplyT(func(v *CommandOutputSettings) CommandOutputSettings {
+		if v != nil {
+			return *v
+		}
+		var ret CommandOutputSettings
+		return ret
+	}).(CommandOutputSettingsOutput)
+}
+
+// The selection of the managed identity to use with this storage account container. The identity type must be either system assigned or user assigned.
+func (o CommandOutputSettingsPtrOutput) AssociatedIdentity() IdentitySelectorPtrOutput {
+	return o.ApplyT(func(v *CommandOutputSettings) *IdentitySelector {
+		if v == nil {
+			return nil
+		}
+		return v.AssociatedIdentity
+	}).(IdentitySelectorPtrOutput)
+}
+
+// The URL of the storage account container that is to be used by the specified identities.
+func (o CommandOutputSettingsPtrOutput) ContainerUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CommandOutputSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+type CommandOutputSettingsResponse struct {
+	// The selection of the managed identity to use with this storage account container. The identity type must be either system assigned or user assigned.
+	AssociatedIdentity *IdentitySelectorResponse `pulumi:"associatedIdentity"`
+	// The URL of the storage account container that is to be used by the specified identities.
+	ContainerUrl *string `pulumi:"containerUrl"`
+}
+
+type CommandOutputSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (CommandOutputSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommandOutputSettingsResponse)(nil)).Elem()
+}
+
+func (o CommandOutputSettingsResponseOutput) ToCommandOutputSettingsResponseOutput() CommandOutputSettingsResponseOutput {
+	return o
+}
+
+func (o CommandOutputSettingsResponseOutput) ToCommandOutputSettingsResponseOutputWithContext(ctx context.Context) CommandOutputSettingsResponseOutput {
+	return o
+}
+
+// The selection of the managed identity to use with this storage account container. The identity type must be either system assigned or user assigned.
+func (o CommandOutputSettingsResponseOutput) AssociatedIdentity() IdentitySelectorResponsePtrOutput {
+	return o.ApplyT(func(v CommandOutputSettingsResponse) *IdentitySelectorResponse { return v.AssociatedIdentity }).(IdentitySelectorResponsePtrOutput)
+}
+
+// The URL of the storage account container that is to be used by the specified identities.
+func (o CommandOutputSettingsResponseOutput) ContainerUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CommandOutputSettingsResponse) *string { return v.ContainerUrl }).(pulumi.StringPtrOutput)
+}
+
+type CommandOutputSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CommandOutputSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CommandOutputSettingsResponse)(nil)).Elem()
+}
+
+func (o CommandOutputSettingsResponsePtrOutput) ToCommandOutputSettingsResponsePtrOutput() CommandOutputSettingsResponsePtrOutput {
+	return o
+}
+
+func (o CommandOutputSettingsResponsePtrOutput) ToCommandOutputSettingsResponsePtrOutputWithContext(ctx context.Context) CommandOutputSettingsResponsePtrOutput {
+	return o
+}
+
+func (o CommandOutputSettingsResponsePtrOutput) Elem() CommandOutputSettingsResponseOutput {
+	return o.ApplyT(func(v *CommandOutputSettingsResponse) CommandOutputSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CommandOutputSettingsResponse
+		return ret
+	}).(CommandOutputSettingsResponseOutput)
+}
+
+// The selection of the managed identity to use with this storage account container. The identity type must be either system assigned or user assigned.
+func (o CommandOutputSettingsResponsePtrOutput) AssociatedIdentity() IdentitySelectorResponsePtrOutput {
+	return o.ApplyT(func(v *CommandOutputSettingsResponse) *IdentitySelectorResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AssociatedIdentity
+	}).(IdentitySelectorResponsePtrOutput)
+}
+
+// The URL of the storage account container that is to be used by the specified identities.
+func (o CommandOutputSettingsResponsePtrOutput) ContainerUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CommandOutputSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerUrl
+	}).(pulumi.StringPtrOutput)
 }
 
 type ControlPlaneNodeConfiguration struct {
@@ -3900,6 +4397,237 @@ func (o HardwareValidationStatusResponseOutput) Result() pulumi.StringOutput {
 	return o.ApplyT(func(v HardwareValidationStatusResponse) string { return v.Result }).(pulumi.StringOutput)
 }
 
+type IdentitySelector struct {
+	// The type of managed identity that is being selected.
+	IdentityType *string `pulumi:"identityType"`
+	// The user assigned managed identity resource ID to use. Mutually exclusive with a system assigned identity type.
+	UserAssignedIdentityResourceId *string `pulumi:"userAssignedIdentityResourceId"`
+}
+
+// IdentitySelectorInput is an input type that accepts IdentitySelectorArgs and IdentitySelectorOutput values.
+// You can construct a concrete instance of `IdentitySelectorInput` via:
+//
+//	IdentitySelectorArgs{...}
+type IdentitySelectorInput interface {
+	pulumi.Input
+
+	ToIdentitySelectorOutput() IdentitySelectorOutput
+	ToIdentitySelectorOutputWithContext(context.Context) IdentitySelectorOutput
+}
+
+type IdentitySelectorArgs struct {
+	// The type of managed identity that is being selected.
+	IdentityType pulumi.StringPtrInput `pulumi:"identityType"`
+	// The user assigned managed identity resource ID to use. Mutually exclusive with a system assigned identity type.
+	UserAssignedIdentityResourceId pulumi.StringPtrInput `pulumi:"userAssignedIdentityResourceId"`
+}
+
+func (IdentitySelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentitySelector)(nil)).Elem()
+}
+
+func (i IdentitySelectorArgs) ToIdentitySelectorOutput() IdentitySelectorOutput {
+	return i.ToIdentitySelectorOutputWithContext(context.Background())
+}
+
+func (i IdentitySelectorArgs) ToIdentitySelectorOutputWithContext(ctx context.Context) IdentitySelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentitySelectorOutput)
+}
+
+func (i IdentitySelectorArgs) ToIdentitySelectorPtrOutput() IdentitySelectorPtrOutput {
+	return i.ToIdentitySelectorPtrOutputWithContext(context.Background())
+}
+
+func (i IdentitySelectorArgs) ToIdentitySelectorPtrOutputWithContext(ctx context.Context) IdentitySelectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentitySelectorOutput).ToIdentitySelectorPtrOutputWithContext(ctx)
+}
+
+// IdentitySelectorPtrInput is an input type that accepts IdentitySelectorArgs, IdentitySelectorPtr and IdentitySelectorPtrOutput values.
+// You can construct a concrete instance of `IdentitySelectorPtrInput` via:
+//
+//	        IdentitySelectorArgs{...}
+//
+//	or:
+//
+//	        nil
+type IdentitySelectorPtrInput interface {
+	pulumi.Input
+
+	ToIdentitySelectorPtrOutput() IdentitySelectorPtrOutput
+	ToIdentitySelectorPtrOutputWithContext(context.Context) IdentitySelectorPtrOutput
+}
+
+type identitySelectorPtrType IdentitySelectorArgs
+
+func IdentitySelectorPtr(v *IdentitySelectorArgs) IdentitySelectorPtrInput {
+	return (*identitySelectorPtrType)(v)
+}
+
+func (*identitySelectorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentitySelector)(nil)).Elem()
+}
+
+func (i *identitySelectorPtrType) ToIdentitySelectorPtrOutput() IdentitySelectorPtrOutput {
+	return i.ToIdentitySelectorPtrOutputWithContext(context.Background())
+}
+
+func (i *identitySelectorPtrType) ToIdentitySelectorPtrOutputWithContext(ctx context.Context) IdentitySelectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentitySelectorPtrOutput)
+}
+
+type IdentitySelectorOutput struct{ *pulumi.OutputState }
+
+func (IdentitySelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentitySelector)(nil)).Elem()
+}
+
+func (o IdentitySelectorOutput) ToIdentitySelectorOutput() IdentitySelectorOutput {
+	return o
+}
+
+func (o IdentitySelectorOutput) ToIdentitySelectorOutputWithContext(ctx context.Context) IdentitySelectorOutput {
+	return o
+}
+
+func (o IdentitySelectorOutput) ToIdentitySelectorPtrOutput() IdentitySelectorPtrOutput {
+	return o.ToIdentitySelectorPtrOutputWithContext(context.Background())
+}
+
+func (o IdentitySelectorOutput) ToIdentitySelectorPtrOutputWithContext(ctx context.Context) IdentitySelectorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdentitySelector) *IdentitySelector {
+		return &v
+	}).(IdentitySelectorPtrOutput)
+}
+
+// The type of managed identity that is being selected.
+func (o IdentitySelectorOutput) IdentityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentitySelector) *string { return v.IdentityType }).(pulumi.StringPtrOutput)
+}
+
+// The user assigned managed identity resource ID to use. Mutually exclusive with a system assigned identity type.
+func (o IdentitySelectorOutput) UserAssignedIdentityResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentitySelector) *string { return v.UserAssignedIdentityResourceId }).(pulumi.StringPtrOutput)
+}
+
+type IdentitySelectorPtrOutput struct{ *pulumi.OutputState }
+
+func (IdentitySelectorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentitySelector)(nil)).Elem()
+}
+
+func (o IdentitySelectorPtrOutput) ToIdentitySelectorPtrOutput() IdentitySelectorPtrOutput {
+	return o
+}
+
+func (o IdentitySelectorPtrOutput) ToIdentitySelectorPtrOutputWithContext(ctx context.Context) IdentitySelectorPtrOutput {
+	return o
+}
+
+func (o IdentitySelectorPtrOutput) Elem() IdentitySelectorOutput {
+	return o.ApplyT(func(v *IdentitySelector) IdentitySelector {
+		if v != nil {
+			return *v
+		}
+		var ret IdentitySelector
+		return ret
+	}).(IdentitySelectorOutput)
+}
+
+// The type of managed identity that is being selected.
+func (o IdentitySelectorPtrOutput) IdentityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentitySelector) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The user assigned managed identity resource ID to use. Mutually exclusive with a system assigned identity type.
+func (o IdentitySelectorPtrOutput) UserAssignedIdentityResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentitySelector) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentityResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type IdentitySelectorResponse struct {
+	// The type of managed identity that is being selected.
+	IdentityType *string `pulumi:"identityType"`
+	// The user assigned managed identity resource ID to use. Mutually exclusive with a system assigned identity type.
+	UserAssignedIdentityResourceId *string `pulumi:"userAssignedIdentityResourceId"`
+}
+
+type IdentitySelectorResponseOutput struct{ *pulumi.OutputState }
+
+func (IdentitySelectorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentitySelectorResponse)(nil)).Elem()
+}
+
+func (o IdentitySelectorResponseOutput) ToIdentitySelectorResponseOutput() IdentitySelectorResponseOutput {
+	return o
+}
+
+func (o IdentitySelectorResponseOutput) ToIdentitySelectorResponseOutputWithContext(ctx context.Context) IdentitySelectorResponseOutput {
+	return o
+}
+
+// The type of managed identity that is being selected.
+func (o IdentitySelectorResponseOutput) IdentityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentitySelectorResponse) *string { return v.IdentityType }).(pulumi.StringPtrOutput)
+}
+
+// The user assigned managed identity resource ID to use. Mutually exclusive with a system assigned identity type.
+func (o IdentitySelectorResponseOutput) UserAssignedIdentityResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentitySelectorResponse) *string { return v.UserAssignedIdentityResourceId }).(pulumi.StringPtrOutput)
+}
+
+type IdentitySelectorResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (IdentitySelectorResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentitySelectorResponse)(nil)).Elem()
+}
+
+func (o IdentitySelectorResponsePtrOutput) ToIdentitySelectorResponsePtrOutput() IdentitySelectorResponsePtrOutput {
+	return o
+}
+
+func (o IdentitySelectorResponsePtrOutput) ToIdentitySelectorResponsePtrOutputWithContext(ctx context.Context) IdentitySelectorResponsePtrOutput {
+	return o
+}
+
+func (o IdentitySelectorResponsePtrOutput) Elem() IdentitySelectorResponseOutput {
+	return o.ApplyT(func(v *IdentitySelectorResponse) IdentitySelectorResponse {
+		if v != nil {
+			return *v
+		}
+		var ret IdentitySelectorResponse
+		return ret
+	}).(IdentitySelectorResponseOutput)
+}
+
+// The type of managed identity that is being selected.
+func (o IdentitySelectorResponsePtrOutput) IdentityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentitySelectorResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The user assigned managed identity resource ID to use. Mutually exclusive with a system assigned identity type.
+func (o IdentitySelectorResponsePtrOutput) UserAssignedIdentityResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentitySelectorResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentityResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
 type ImageRepositoryCredentials struct {
 	// The password or token used to access an image in the target repository.
 	Password string `pulumi:"password"`
@@ -4200,8 +4928,6 @@ func (val *InitialAgentPoolConfiguration) Defaults() *InitialAgentPoolConfigurat
 	tmp := *val
 	tmp.AgentOptions = tmp.AgentOptions.Defaults()
 
-	tmp.UpgradeSettings = tmp.UpgradeSettings.Defaults()
-
 	return &tmp
 }
 
@@ -4411,8 +5137,6 @@ func (val *InitialAgentPoolConfigurationResponse) Defaults() *InitialAgentPoolCo
 	tmp := *val
 	tmp.AgentOptions = tmp.AgentOptions.Defaults()
 
-	tmp.UpgradeSettings = tmp.UpgradeSettings.Defaults()
-
 	return &tmp
 }
 
@@ -4512,7 +5236,7 @@ func (o InitialAgentPoolConfigurationResponseArrayOutput) Index(i pulumi.IntInpu
 }
 
 type IpAddressPool struct {
-	// The list of IP address ranges. Each range can be a either a subnet in CIDR format or an explicit start-end range of IP addresses.
+	// The list of IP address ranges. Each range can be a either a subnet in CIDR format or an explicit start-end range of IP addresses. For a BGP service load balancer configuration, only CIDR format is supported and excludes /32 (IPv4) and /128 (IPv6) prefixes.
 	Addresses []string `pulumi:"addresses"`
 	// The indicator to determine if automatic allocation from the pool should occur.
 	AutoAssign *string `pulumi:"autoAssign"`
@@ -4551,7 +5275,7 @@ type IpAddressPoolInput interface {
 }
 
 type IpAddressPoolArgs struct {
-	// The list of IP address ranges. Each range can be a either a subnet in CIDR format or an explicit start-end range of IP addresses.
+	// The list of IP address ranges. Each range can be a either a subnet in CIDR format or an explicit start-end range of IP addresses. For a BGP service load balancer configuration, only CIDR format is supported and excludes /32 (IPv4) and /128 (IPv6) prefixes.
 	Addresses pulumi.StringArrayInput `pulumi:"addresses"`
 	// The indicator to determine if automatic allocation from the pool should occur.
 	AutoAssign pulumi.StringPtrInput `pulumi:"autoAssign"`
@@ -4626,7 +5350,7 @@ func (o IpAddressPoolOutput) ToIpAddressPoolOutputWithContext(ctx context.Contex
 	return o
 }
 
-// The list of IP address ranges. Each range can be a either a subnet in CIDR format or an explicit start-end range of IP addresses.
+// The list of IP address ranges. Each range can be a either a subnet in CIDR format or an explicit start-end range of IP addresses. For a BGP service load balancer configuration, only CIDR format is supported and excludes /32 (IPv4) and /128 (IPv6) prefixes.
 func (o IpAddressPoolOutput) Addresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v IpAddressPool) []string { return v.Addresses }).(pulumi.StringArrayOutput)
 }
@@ -4667,7 +5391,7 @@ func (o IpAddressPoolArrayOutput) Index(i pulumi.IntInput) IpAddressPoolOutput {
 }
 
 type IpAddressPoolResponse struct {
-	// The list of IP address ranges. Each range can be a either a subnet in CIDR format or an explicit start-end range of IP addresses.
+	// The list of IP address ranges. Each range can be a either a subnet in CIDR format or an explicit start-end range of IP addresses. For a BGP service load balancer configuration, only CIDR format is supported and excludes /32 (IPv4) and /128 (IPv6) prefixes.
 	Addresses []string `pulumi:"addresses"`
 	// The indicator to determine if automatic allocation from the pool should occur.
 	AutoAssign *string `pulumi:"autoAssign"`
@@ -4708,7 +5432,7 @@ func (o IpAddressPoolResponseOutput) ToIpAddressPoolResponseOutputWithContext(ct
 	return o
 }
 
-// The list of IP address ranges. Each range can be a either a subnet in CIDR format or an explicit start-end range of IP addresses.
+// The list of IP address ranges. Each range can be a either a subnet in CIDR format or an explicit start-end range of IP addresses. For a BGP service load balancer configuration, only CIDR format is supported and excludes /32 (IPv4) and /128 (IPv6) prefixes.
 func (o IpAddressPoolResponseOutput) Addresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v IpAddressPoolResponse) []string { return v.Addresses }).(pulumi.StringArrayOutput)
 }
@@ -5008,7 +5732,7 @@ type KubernetesClusterNodeResponse struct {
 	DetailedStatus string `pulumi:"detailedStatus"`
 	// The descriptive message about the current detailed status.
 	DetailedStatusMessage string `pulumi:"detailedStatusMessage"`
-	// The size of the disk configured for this node.
+	// The size of the disk configured for this node. Allocations are measured in gibibytes.
 	DiskSizeGB float64 `pulumi:"diskSizeGB"`
 	// The machine image used to deploy this node.
 	Image string `pulumi:"image"`
@@ -5016,7 +5740,7 @@ type KubernetesClusterNodeResponse struct {
 	KubernetesVersion string `pulumi:"kubernetesVersion"`
 	// The list of labels on this node that have been assigned to the agent pool containing this node.
 	Labels []KubernetesLabelResponse `pulumi:"labels"`
-	// The amount of memory configured for this node, derived from the vm SKU specified.
+	// The amount of memory configured for this node, derived from the vm SKU specified. Allocations are measured in gibibytes.
 	MemorySizeGB float64 `pulumi:"memorySizeGB"`
 	// The mode of the agent pool containing this node. Not applicable for control plane nodes.
 	Mode string `pulumi:"mode"`
@@ -5078,7 +5802,7 @@ func (o KubernetesClusterNodeResponseOutput) DetailedStatusMessage() pulumi.Stri
 	return o.ApplyT(func(v KubernetesClusterNodeResponse) string { return v.DetailedStatusMessage }).(pulumi.StringOutput)
 }
 
-// The size of the disk configured for this node.
+// The size of the disk configured for this node. Allocations are measured in gibibytes.
 func (o KubernetesClusterNodeResponseOutput) DiskSizeGB() pulumi.Float64Output {
 	return o.ApplyT(func(v KubernetesClusterNodeResponse) float64 { return v.DiskSizeGB }).(pulumi.Float64Output)
 }
@@ -5098,7 +5822,7 @@ func (o KubernetesClusterNodeResponseOutput) Labels() KubernetesLabelResponseArr
 	return o.ApplyT(func(v KubernetesClusterNodeResponse) []KubernetesLabelResponse { return v.Labels }).(KubernetesLabelResponseArrayOutput)
 }
 
-// The amount of memory configured for this node, derived from the vm SKU specified.
+// The amount of memory configured for this node, derived from the vm SKU specified. Allocations are measured in gibibytes.
 func (o KubernetesClusterNodeResponseOutput) MemorySizeGB() pulumi.Float64Output {
 	return o.ApplyT(func(v KubernetesClusterNodeResponse) float64 { return v.MemorySizeGB }).(pulumi.Float64Output)
 }
@@ -5507,6 +6231,201 @@ func (o L2NetworkAttachmentConfigurationResponseArrayOutput) Index(i pulumi.IntI
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) L2NetworkAttachmentConfigurationResponse {
 		return vs[0].([]L2NetworkAttachmentConfigurationResponse)[vs[1].(int)]
 	}).(L2NetworkAttachmentConfigurationResponseOutput)
+}
+
+type L2ServiceLoadBalancerConfiguration struct {
+	// The list of pools of IP addresses that can be allocated to load balancer services.
+	IpAddressPools []IpAddressPool `pulumi:"ipAddressPools"`
+}
+
+// L2ServiceLoadBalancerConfigurationInput is an input type that accepts L2ServiceLoadBalancerConfigurationArgs and L2ServiceLoadBalancerConfigurationOutput values.
+// You can construct a concrete instance of `L2ServiceLoadBalancerConfigurationInput` via:
+//
+//	L2ServiceLoadBalancerConfigurationArgs{...}
+type L2ServiceLoadBalancerConfigurationInput interface {
+	pulumi.Input
+
+	ToL2ServiceLoadBalancerConfigurationOutput() L2ServiceLoadBalancerConfigurationOutput
+	ToL2ServiceLoadBalancerConfigurationOutputWithContext(context.Context) L2ServiceLoadBalancerConfigurationOutput
+}
+
+type L2ServiceLoadBalancerConfigurationArgs struct {
+	// The list of pools of IP addresses that can be allocated to load balancer services.
+	IpAddressPools IpAddressPoolArrayInput `pulumi:"ipAddressPools"`
+}
+
+func (L2ServiceLoadBalancerConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*L2ServiceLoadBalancerConfiguration)(nil)).Elem()
+}
+
+func (i L2ServiceLoadBalancerConfigurationArgs) ToL2ServiceLoadBalancerConfigurationOutput() L2ServiceLoadBalancerConfigurationOutput {
+	return i.ToL2ServiceLoadBalancerConfigurationOutputWithContext(context.Background())
+}
+
+func (i L2ServiceLoadBalancerConfigurationArgs) ToL2ServiceLoadBalancerConfigurationOutputWithContext(ctx context.Context) L2ServiceLoadBalancerConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(L2ServiceLoadBalancerConfigurationOutput)
+}
+
+func (i L2ServiceLoadBalancerConfigurationArgs) ToL2ServiceLoadBalancerConfigurationPtrOutput() L2ServiceLoadBalancerConfigurationPtrOutput {
+	return i.ToL2ServiceLoadBalancerConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i L2ServiceLoadBalancerConfigurationArgs) ToL2ServiceLoadBalancerConfigurationPtrOutputWithContext(ctx context.Context) L2ServiceLoadBalancerConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(L2ServiceLoadBalancerConfigurationOutput).ToL2ServiceLoadBalancerConfigurationPtrOutputWithContext(ctx)
+}
+
+// L2ServiceLoadBalancerConfigurationPtrInput is an input type that accepts L2ServiceLoadBalancerConfigurationArgs, L2ServiceLoadBalancerConfigurationPtr and L2ServiceLoadBalancerConfigurationPtrOutput values.
+// You can construct a concrete instance of `L2ServiceLoadBalancerConfigurationPtrInput` via:
+//
+//	        L2ServiceLoadBalancerConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type L2ServiceLoadBalancerConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToL2ServiceLoadBalancerConfigurationPtrOutput() L2ServiceLoadBalancerConfigurationPtrOutput
+	ToL2ServiceLoadBalancerConfigurationPtrOutputWithContext(context.Context) L2ServiceLoadBalancerConfigurationPtrOutput
+}
+
+type l2serviceLoadBalancerConfigurationPtrType L2ServiceLoadBalancerConfigurationArgs
+
+func L2ServiceLoadBalancerConfigurationPtr(v *L2ServiceLoadBalancerConfigurationArgs) L2ServiceLoadBalancerConfigurationPtrInput {
+	return (*l2serviceLoadBalancerConfigurationPtrType)(v)
+}
+
+func (*l2serviceLoadBalancerConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**L2ServiceLoadBalancerConfiguration)(nil)).Elem()
+}
+
+func (i *l2serviceLoadBalancerConfigurationPtrType) ToL2ServiceLoadBalancerConfigurationPtrOutput() L2ServiceLoadBalancerConfigurationPtrOutput {
+	return i.ToL2ServiceLoadBalancerConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *l2serviceLoadBalancerConfigurationPtrType) ToL2ServiceLoadBalancerConfigurationPtrOutputWithContext(ctx context.Context) L2ServiceLoadBalancerConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(L2ServiceLoadBalancerConfigurationPtrOutput)
+}
+
+type L2ServiceLoadBalancerConfigurationOutput struct{ *pulumi.OutputState }
+
+func (L2ServiceLoadBalancerConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*L2ServiceLoadBalancerConfiguration)(nil)).Elem()
+}
+
+func (o L2ServiceLoadBalancerConfigurationOutput) ToL2ServiceLoadBalancerConfigurationOutput() L2ServiceLoadBalancerConfigurationOutput {
+	return o
+}
+
+func (o L2ServiceLoadBalancerConfigurationOutput) ToL2ServiceLoadBalancerConfigurationOutputWithContext(ctx context.Context) L2ServiceLoadBalancerConfigurationOutput {
+	return o
+}
+
+func (o L2ServiceLoadBalancerConfigurationOutput) ToL2ServiceLoadBalancerConfigurationPtrOutput() L2ServiceLoadBalancerConfigurationPtrOutput {
+	return o.ToL2ServiceLoadBalancerConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o L2ServiceLoadBalancerConfigurationOutput) ToL2ServiceLoadBalancerConfigurationPtrOutputWithContext(ctx context.Context) L2ServiceLoadBalancerConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v L2ServiceLoadBalancerConfiguration) *L2ServiceLoadBalancerConfiguration {
+		return &v
+	}).(L2ServiceLoadBalancerConfigurationPtrOutput)
+}
+
+// The list of pools of IP addresses that can be allocated to load balancer services.
+func (o L2ServiceLoadBalancerConfigurationOutput) IpAddressPools() IpAddressPoolArrayOutput {
+	return o.ApplyT(func(v L2ServiceLoadBalancerConfiguration) []IpAddressPool { return v.IpAddressPools }).(IpAddressPoolArrayOutput)
+}
+
+type L2ServiceLoadBalancerConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (L2ServiceLoadBalancerConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**L2ServiceLoadBalancerConfiguration)(nil)).Elem()
+}
+
+func (o L2ServiceLoadBalancerConfigurationPtrOutput) ToL2ServiceLoadBalancerConfigurationPtrOutput() L2ServiceLoadBalancerConfigurationPtrOutput {
+	return o
+}
+
+func (o L2ServiceLoadBalancerConfigurationPtrOutput) ToL2ServiceLoadBalancerConfigurationPtrOutputWithContext(ctx context.Context) L2ServiceLoadBalancerConfigurationPtrOutput {
+	return o
+}
+
+func (o L2ServiceLoadBalancerConfigurationPtrOutput) Elem() L2ServiceLoadBalancerConfigurationOutput {
+	return o.ApplyT(func(v *L2ServiceLoadBalancerConfiguration) L2ServiceLoadBalancerConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret L2ServiceLoadBalancerConfiguration
+		return ret
+	}).(L2ServiceLoadBalancerConfigurationOutput)
+}
+
+// The list of pools of IP addresses that can be allocated to load balancer services.
+func (o L2ServiceLoadBalancerConfigurationPtrOutput) IpAddressPools() IpAddressPoolArrayOutput {
+	return o.ApplyT(func(v *L2ServiceLoadBalancerConfiguration) []IpAddressPool {
+		if v == nil {
+			return nil
+		}
+		return v.IpAddressPools
+	}).(IpAddressPoolArrayOutput)
+}
+
+type L2ServiceLoadBalancerConfigurationResponse struct {
+	// The list of pools of IP addresses that can be allocated to load balancer services.
+	IpAddressPools []IpAddressPoolResponse `pulumi:"ipAddressPools"`
+}
+
+type L2ServiceLoadBalancerConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (L2ServiceLoadBalancerConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*L2ServiceLoadBalancerConfigurationResponse)(nil)).Elem()
+}
+
+func (o L2ServiceLoadBalancerConfigurationResponseOutput) ToL2ServiceLoadBalancerConfigurationResponseOutput() L2ServiceLoadBalancerConfigurationResponseOutput {
+	return o
+}
+
+func (o L2ServiceLoadBalancerConfigurationResponseOutput) ToL2ServiceLoadBalancerConfigurationResponseOutputWithContext(ctx context.Context) L2ServiceLoadBalancerConfigurationResponseOutput {
+	return o
+}
+
+// The list of pools of IP addresses that can be allocated to load balancer services.
+func (o L2ServiceLoadBalancerConfigurationResponseOutput) IpAddressPools() IpAddressPoolResponseArrayOutput {
+	return o.ApplyT(func(v L2ServiceLoadBalancerConfigurationResponse) []IpAddressPoolResponse { return v.IpAddressPools }).(IpAddressPoolResponseArrayOutput)
+}
+
+type L2ServiceLoadBalancerConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (L2ServiceLoadBalancerConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**L2ServiceLoadBalancerConfigurationResponse)(nil)).Elem()
+}
+
+func (o L2ServiceLoadBalancerConfigurationResponsePtrOutput) ToL2ServiceLoadBalancerConfigurationResponsePtrOutput() L2ServiceLoadBalancerConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o L2ServiceLoadBalancerConfigurationResponsePtrOutput) ToL2ServiceLoadBalancerConfigurationResponsePtrOutputWithContext(ctx context.Context) L2ServiceLoadBalancerConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o L2ServiceLoadBalancerConfigurationResponsePtrOutput) Elem() L2ServiceLoadBalancerConfigurationResponseOutput {
+	return o.ApplyT(func(v *L2ServiceLoadBalancerConfigurationResponse) L2ServiceLoadBalancerConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret L2ServiceLoadBalancerConfigurationResponse
+		return ret
+	}).(L2ServiceLoadBalancerConfigurationResponseOutput)
+}
+
+// The list of pools of IP addresses that can be allocated to load balancer services.
+func (o L2ServiceLoadBalancerConfigurationResponsePtrOutput) IpAddressPools() IpAddressPoolResponseArrayOutput {
+	return o.ApplyT(func(v *L2ServiceLoadBalancerConfigurationResponse) []IpAddressPoolResponse {
+		if v == nil {
+			return nil
+		}
+		return v.IpAddressPools
+	}).(IpAddressPoolResponseArrayOutput)
 }
 
 type L3NetworkAttachmentConfiguration struct {
@@ -6006,6 +6925,278 @@ func (o ManagedResourceGroupConfigurationResponsePtrOutput) Name() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// Managed service identity (system assigned and/or user assigned identities)
+type ManagedServiceIdentity struct {
+	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+	Type string `pulumi:"type"`
+	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
+}
+
+// ManagedServiceIdentityInput is an input type that accepts ManagedServiceIdentityArgs and ManagedServiceIdentityOutput values.
+// You can construct a concrete instance of `ManagedServiceIdentityInput` via:
+//
+//	ManagedServiceIdentityArgs{...}
+type ManagedServiceIdentityInput interface {
+	pulumi.Input
+
+	ToManagedServiceIdentityOutput() ManagedServiceIdentityOutput
+	ToManagedServiceIdentityOutputWithContext(context.Context) ManagedServiceIdentityOutput
+}
+
+// Managed service identity (system assigned and/or user assigned identities)
+type ManagedServiceIdentityArgs struct {
+	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+	Type pulumi.StringInput `pulumi:"type"`
+	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
+}
+
+func (ManagedServiceIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedServiceIdentity)(nil)).Elem()
+}
+
+func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityOutput() ManagedServiceIdentityOutput {
+	return i.ToManagedServiceIdentityOutputWithContext(context.Background())
+}
+
+func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityOutputWithContext(ctx context.Context) ManagedServiceIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityOutput)
+}
+
+func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
+	return i.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityOutput).ToManagedServiceIdentityPtrOutputWithContext(ctx)
+}
+
+// ManagedServiceIdentityPtrInput is an input type that accepts ManagedServiceIdentityArgs, ManagedServiceIdentityPtr and ManagedServiceIdentityPtrOutput values.
+// You can construct a concrete instance of `ManagedServiceIdentityPtrInput` via:
+//
+//	        ManagedServiceIdentityArgs{...}
+//
+//	or:
+//
+//	        nil
+type ManagedServiceIdentityPtrInput interface {
+	pulumi.Input
+
+	ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput
+	ToManagedServiceIdentityPtrOutputWithContext(context.Context) ManagedServiceIdentityPtrOutput
+}
+
+type managedServiceIdentityPtrType ManagedServiceIdentityArgs
+
+func ManagedServiceIdentityPtr(v *ManagedServiceIdentityArgs) ManagedServiceIdentityPtrInput {
+	return (*managedServiceIdentityPtrType)(v)
+}
+
+func (*managedServiceIdentityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedServiceIdentity)(nil)).Elem()
+}
+
+func (i *managedServiceIdentityPtrType) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
+	return i.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i *managedServiceIdentityPtrType) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityPtrOutput)
+}
+
+// Managed service identity (system assigned and/or user assigned identities)
+type ManagedServiceIdentityOutput struct{ *pulumi.OutputState }
+
+func (ManagedServiceIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedServiceIdentity)(nil)).Elem()
+}
+
+func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityOutput() ManagedServiceIdentityOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityOutputWithContext(ctx context.Context) ManagedServiceIdentityOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
+	return o.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedServiceIdentity) *ManagedServiceIdentity {
+		return &v
+	}).(ManagedServiceIdentityPtrOutput)
+}
+
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+func (o ManagedServiceIdentityOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedServiceIdentity) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o ManagedServiceIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ManagedServiceIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
+}
+
+type ManagedServiceIdentityPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedServiceIdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedServiceIdentity)(nil)).Elem()
+}
+
+func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityPtrOutput) Elem() ManagedServiceIdentityOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentity) ManagedServiceIdentity {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedServiceIdentity
+		return ret
+	}).(ManagedServiceIdentityOutput)
+}
+
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+func (o ManagedServiceIdentityPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o ManagedServiceIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentity) []string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(pulumi.StringArrayOutput)
+}
+
+// Managed service identity (system assigned and/or user assigned identities)
+type ManagedServiceIdentityResponse struct {
+	// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+	PrincipalId string `pulumi:"principalId"`
+	// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+	TenantId string `pulumi:"tenantId"`
+	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+	Type string `pulumi:"type"`
+	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+	UserAssignedIdentities map[string]UserAssignedIdentityResponse `pulumi:"userAssignedIdentities"`
+}
+
+// Managed service identity (system assigned and/or user assigned identities)
+type ManagedServiceIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedServiceIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedServiceIdentityResponse)(nil)).Elem()
+}
+
+func (o ManagedServiceIdentityResponseOutput) ToManagedServiceIdentityResponseOutput() ManagedServiceIdentityResponseOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityResponseOutput) ToManagedServiceIdentityResponseOutputWithContext(ctx context.Context) ManagedServiceIdentityResponseOutput {
+	return o
+}
+
+// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+func (o ManagedServiceIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+func (o ManagedServiceIdentityResponseOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+func (o ManagedServiceIdentityResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o ManagedServiceIdentityResponseOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v ManagedServiceIdentityResponse) map[string]UserAssignedIdentityResponse {
+		return v.UserAssignedIdentities
+	}).(UserAssignedIdentityResponseMapOutput)
+}
+
+type ManagedServiceIdentityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedServiceIdentityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedServiceIdentityResponse)(nil)).Elem()
+}
+
+func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityResponsePtrOutput() ManagedServiceIdentityResponsePtrOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityResponsePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityResponsePtrOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityResponsePtrOutput) Elem() ManagedServiceIdentityResponseOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) ManagedServiceIdentityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedServiceIdentityResponse
+		return ret
+	}).(ManagedServiceIdentityResponseOutput)
+}
+
+// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+func (o ManagedServiceIdentityResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrincipalId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+func (o ManagedServiceIdentityResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+func (o ManagedServiceIdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o ManagedServiceIdentityResponsePtrOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) map[string]UserAssignedIdentityResponse {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(UserAssignedIdentityResponseMapOutput)
+}
+
 type NetworkAttachment struct {
 	// The resource ID of the associated network attached to the virtual machine.
 	// It can be one of cloudServicesNetwork, l3Network, l2Network or trunkedNetwork resources.
@@ -6342,7 +7533,7 @@ func (o NetworkAttachmentResponseArrayOutput) Index(i pulumi.IntInput) NetworkAt
 type NetworkConfiguration struct {
 	// The configuration of networks being attached to the cluster for use by the workloads that run on this Kubernetes cluster.
 	AttachedNetworkConfiguration *AttachedNetworkConfiguration `pulumi:"attachedNetworkConfiguration"`
-	// The configuration of the BGP service load balancer for this Kubernetes cluster.
+	// The configuration of the BGP service load balancer for this Kubernetes cluster. A maximum of one service load balancer may be specified, either Layer 2 or BGP.
 	BgpServiceLoadBalancerConfiguration *BgpServiceLoadBalancerConfiguration `pulumi:"bgpServiceLoadBalancerConfiguration"`
 	// The resource ID of the associated Cloud Services network.
 	CloudServicesNetworkId string `pulumi:"cloudServicesNetworkId"`
@@ -6350,6 +7541,8 @@ type NetworkConfiguration struct {
 	CniNetworkId string `pulumi:"cniNetworkId"`
 	// The IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified in service CIDR.
 	DnsServiceIp *string `pulumi:"dnsServiceIp"`
+	// The configuration of the Layer 2 service load balancer for this Kubernetes cluster. A maximum of one service load balancer may be specified, either Layer 2 or BGP.
+	L2ServiceLoadBalancerConfiguration *L2ServiceLoadBalancerConfiguration `pulumi:"l2ServiceLoadBalancerConfiguration"`
 	// The CIDR notation IP ranges from which to assign pod IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking.
 	PodCidrs []string `pulumi:"podCidrs"`
 	// The CIDR notation IP ranges from which to assign service IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking.
@@ -6381,7 +7574,7 @@ type NetworkConfigurationInput interface {
 type NetworkConfigurationArgs struct {
 	// The configuration of networks being attached to the cluster for use by the workloads that run on this Kubernetes cluster.
 	AttachedNetworkConfiguration AttachedNetworkConfigurationPtrInput `pulumi:"attachedNetworkConfiguration"`
-	// The configuration of the BGP service load balancer for this Kubernetes cluster.
+	// The configuration of the BGP service load balancer for this Kubernetes cluster. A maximum of one service load balancer may be specified, either Layer 2 or BGP.
 	BgpServiceLoadBalancerConfiguration BgpServiceLoadBalancerConfigurationPtrInput `pulumi:"bgpServiceLoadBalancerConfiguration"`
 	// The resource ID of the associated Cloud Services network.
 	CloudServicesNetworkId pulumi.StringInput `pulumi:"cloudServicesNetworkId"`
@@ -6389,6 +7582,8 @@ type NetworkConfigurationArgs struct {
 	CniNetworkId pulumi.StringInput `pulumi:"cniNetworkId"`
 	// The IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified in service CIDR.
 	DnsServiceIp pulumi.StringPtrInput `pulumi:"dnsServiceIp"`
+	// The configuration of the Layer 2 service load balancer for this Kubernetes cluster. A maximum of one service load balancer may be specified, either Layer 2 or BGP.
+	L2ServiceLoadBalancerConfiguration L2ServiceLoadBalancerConfigurationPtrInput `pulumi:"l2ServiceLoadBalancerConfiguration"`
 	// The CIDR notation IP ranges from which to assign pod IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking.
 	PodCidrs pulumi.StringArrayInput `pulumi:"podCidrs"`
 	// The CIDR notation IP ranges from which to assign service IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking.
@@ -6435,7 +7630,7 @@ func (o NetworkConfigurationOutput) AttachedNetworkConfiguration() AttachedNetwo
 	return o.ApplyT(func(v NetworkConfiguration) *AttachedNetworkConfiguration { return v.AttachedNetworkConfiguration }).(AttachedNetworkConfigurationPtrOutput)
 }
 
-// The configuration of the BGP service load balancer for this Kubernetes cluster.
+// The configuration of the BGP service load balancer for this Kubernetes cluster. A maximum of one service load balancer may be specified, either Layer 2 or BGP.
 func (o NetworkConfigurationOutput) BgpServiceLoadBalancerConfiguration() BgpServiceLoadBalancerConfigurationPtrOutput {
 	return o.ApplyT(func(v NetworkConfiguration) *BgpServiceLoadBalancerConfiguration {
 		return v.BgpServiceLoadBalancerConfiguration
@@ -6457,6 +7652,13 @@ func (o NetworkConfigurationOutput) DnsServiceIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkConfiguration) *string { return v.DnsServiceIp }).(pulumi.StringPtrOutput)
 }
 
+// The configuration of the Layer 2 service load balancer for this Kubernetes cluster. A maximum of one service load balancer may be specified, either Layer 2 or BGP.
+func (o NetworkConfigurationOutput) L2ServiceLoadBalancerConfiguration() L2ServiceLoadBalancerConfigurationPtrOutput {
+	return o.ApplyT(func(v NetworkConfiguration) *L2ServiceLoadBalancerConfiguration {
+		return v.L2ServiceLoadBalancerConfiguration
+	}).(L2ServiceLoadBalancerConfigurationPtrOutput)
+}
+
 // The CIDR notation IP ranges from which to assign pod IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking.
 func (o NetworkConfigurationOutput) PodCidrs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NetworkConfiguration) []string { return v.PodCidrs }).(pulumi.StringArrayOutput)
@@ -6470,7 +7672,7 @@ func (o NetworkConfigurationOutput) ServiceCidrs() pulumi.StringArrayOutput {
 type NetworkConfigurationResponse struct {
 	// The configuration of networks being attached to the cluster for use by the workloads that run on this Kubernetes cluster.
 	AttachedNetworkConfiguration *AttachedNetworkConfigurationResponse `pulumi:"attachedNetworkConfiguration"`
-	// The configuration of the BGP service load balancer for this Kubernetes cluster.
+	// The configuration of the BGP service load balancer for this Kubernetes cluster. A maximum of one service load balancer may be specified, either Layer 2 or BGP.
 	BgpServiceLoadBalancerConfiguration *BgpServiceLoadBalancerConfigurationResponse `pulumi:"bgpServiceLoadBalancerConfiguration"`
 	// The resource ID of the associated Cloud Services network.
 	CloudServicesNetworkId string `pulumi:"cloudServicesNetworkId"`
@@ -6478,6 +7680,8 @@ type NetworkConfigurationResponse struct {
 	CniNetworkId string `pulumi:"cniNetworkId"`
 	// The IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified in service CIDR.
 	DnsServiceIp *string `pulumi:"dnsServiceIp"`
+	// The configuration of the Layer 2 service load balancer for this Kubernetes cluster. A maximum of one service load balancer may be specified, either Layer 2 or BGP.
+	L2ServiceLoadBalancerConfiguration *L2ServiceLoadBalancerConfigurationResponse `pulumi:"l2ServiceLoadBalancerConfiguration"`
 	// The CIDR notation IP ranges from which to assign pod IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking.
 	PodCidrs []string `pulumi:"podCidrs"`
 	// The CIDR notation IP ranges from which to assign service IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking.
@@ -6516,7 +7720,7 @@ func (o NetworkConfigurationResponseOutput) AttachedNetworkConfiguration() Attac
 	}).(AttachedNetworkConfigurationResponsePtrOutput)
 }
 
-// The configuration of the BGP service load balancer for this Kubernetes cluster.
+// The configuration of the BGP service load balancer for this Kubernetes cluster. A maximum of one service load balancer may be specified, either Layer 2 or BGP.
 func (o NetworkConfigurationResponseOutput) BgpServiceLoadBalancerConfiguration() BgpServiceLoadBalancerConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v NetworkConfigurationResponse) *BgpServiceLoadBalancerConfigurationResponse {
 		return v.BgpServiceLoadBalancerConfiguration
@@ -6536,6 +7740,13 @@ func (o NetworkConfigurationResponseOutput) CniNetworkId() pulumi.StringOutput {
 // The IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified in service CIDR.
 func (o NetworkConfigurationResponseOutput) DnsServiceIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkConfigurationResponse) *string { return v.DnsServiceIp }).(pulumi.StringPtrOutput)
+}
+
+// The configuration of the Layer 2 service load balancer for this Kubernetes cluster. A maximum of one service load balancer may be specified, either Layer 2 or BGP.
+func (o NetworkConfigurationResponseOutput) L2ServiceLoadBalancerConfiguration() L2ServiceLoadBalancerConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v NetworkConfigurationResponse) *L2ServiceLoadBalancerConfigurationResponse {
+		return v.L2ServiceLoadBalancerConfiguration
+	}).(L2ServiceLoadBalancerConfigurationResponsePtrOutput)
 }
 
 // The CIDR notation IP ranges from which to assign pod IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking.
@@ -6611,7 +7822,7 @@ type OsDisk struct {
 	CreateOption *string `pulumi:"createOption"`
 	// The strategy for deleting the OS disk.
 	DeleteOption *string `pulumi:"deleteOption"`
-	// The size of the disk in gigabytes. Required if the createOption is Ephemeral.
+	// The size of the disk. Required if the createOption is Ephemeral. Allocations are measured in gibibytes.
 	DiskSizeGB float64 `pulumi:"diskSizeGB"`
 }
 
@@ -6648,7 +7859,7 @@ type OsDiskArgs struct {
 	CreateOption pulumi.StringPtrInput `pulumi:"createOption"`
 	// The strategy for deleting the OS disk.
 	DeleteOption pulumi.StringPtrInput `pulumi:"deleteOption"`
-	// The size of the disk in gigabytes. Required if the createOption is Ephemeral.
+	// The size of the disk. Required if the createOption is Ephemeral. Allocations are measured in gibibytes.
 	DiskSizeGB pulumi.Float64Input `pulumi:"diskSizeGB"`
 }
 
@@ -6702,7 +7913,7 @@ func (o OsDiskOutput) DeleteOption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OsDisk) *string { return v.DeleteOption }).(pulumi.StringPtrOutput)
 }
 
-// The size of the disk in gigabytes. Required if the createOption is Ephemeral.
+// The size of the disk. Required if the createOption is Ephemeral. Allocations are measured in gibibytes.
 func (o OsDiskOutput) DiskSizeGB() pulumi.Float64Output {
 	return o.ApplyT(func(v OsDisk) float64 { return v.DiskSizeGB }).(pulumi.Float64Output)
 }
@@ -6712,7 +7923,7 @@ type OsDiskResponse struct {
 	CreateOption *string `pulumi:"createOption"`
 	// The strategy for deleting the OS disk.
 	DeleteOption *string `pulumi:"deleteOption"`
-	// The size of the disk in gigabytes. Required if the createOption is Ephemeral.
+	// The size of the disk. Required if the createOption is Ephemeral. Allocations are measured in gibibytes.
 	DiskSizeGB float64 `pulumi:"diskSizeGB"`
 }
 
@@ -6757,7 +7968,7 @@ func (o OsDiskResponseOutput) DeleteOption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OsDiskResponse) *string { return v.DeleteOption }).(pulumi.StringPtrOutput)
 }
 
-// The size of the disk in gigabytes. Required if the createOption is Ephemeral.
+// The size of the disk. Required if the createOption is Ephemeral. Allocations are measured in gibibytes.
 func (o OsDiskResponseOutput) DiskSizeGB() pulumi.Float64Output {
 	return o.ApplyT(func(v OsDiskResponse) float64 { return v.DiskSizeGB }).(pulumi.Float64Output)
 }
@@ -7287,14 +8498,355 @@ func (o RuntimeProtectionStatusResponseOutput) ScanStartedTime() pulumi.StringOu
 	return o.ApplyT(func(v RuntimeProtectionStatusResponse) string { return v.ScanStartedTime }).(pulumi.StringOutput)
 }
 
+type SecretArchiveReferenceResponse struct {
+	// The resource ID of the key vault containing the secret.
+	KeyVaultId string `pulumi:"keyVaultId"`
+	// The name of the secret in the key vault.
+	SecretName string `pulumi:"secretName"`
+	// The version of the secret in the key vault.
+	SecretVersion string `pulumi:"secretVersion"`
+}
+
+type SecretArchiveReferenceResponseOutput struct{ *pulumi.OutputState }
+
+func (SecretArchiveReferenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretArchiveReferenceResponse)(nil)).Elem()
+}
+
+func (o SecretArchiveReferenceResponseOutput) ToSecretArchiveReferenceResponseOutput() SecretArchiveReferenceResponseOutput {
+	return o
+}
+
+func (o SecretArchiveReferenceResponseOutput) ToSecretArchiveReferenceResponseOutputWithContext(ctx context.Context) SecretArchiveReferenceResponseOutput {
+	return o
+}
+
+// The resource ID of the key vault containing the secret.
+func (o SecretArchiveReferenceResponseOutput) KeyVaultId() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretArchiveReferenceResponse) string { return v.KeyVaultId }).(pulumi.StringOutput)
+}
+
+// The name of the secret in the key vault.
+func (o SecretArchiveReferenceResponseOutput) SecretName() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretArchiveReferenceResponse) string { return v.SecretName }).(pulumi.StringOutput)
+}
+
+// The version of the secret in the key vault.
+func (o SecretArchiveReferenceResponseOutput) SecretVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretArchiveReferenceResponse) string { return v.SecretVersion }).(pulumi.StringOutput)
+}
+
+type SecretArchiveSettings struct {
+	// The selection of the managed identity to use with this vault URI. The identity type must be either system assigned or user assigned.
+	AssociatedIdentity *IdentitySelector `pulumi:"associatedIdentity"`
+	// The URI for the key vault used as the secret archive.
+	VaultUri *string `pulumi:"vaultUri"`
+}
+
+// SecretArchiveSettingsInput is an input type that accepts SecretArchiveSettingsArgs and SecretArchiveSettingsOutput values.
+// You can construct a concrete instance of `SecretArchiveSettingsInput` via:
+//
+//	SecretArchiveSettingsArgs{...}
+type SecretArchiveSettingsInput interface {
+	pulumi.Input
+
+	ToSecretArchiveSettingsOutput() SecretArchiveSettingsOutput
+	ToSecretArchiveSettingsOutputWithContext(context.Context) SecretArchiveSettingsOutput
+}
+
+type SecretArchiveSettingsArgs struct {
+	// The selection of the managed identity to use with this vault URI. The identity type must be either system assigned or user assigned.
+	AssociatedIdentity IdentitySelectorPtrInput `pulumi:"associatedIdentity"`
+	// The URI for the key vault used as the secret archive.
+	VaultUri pulumi.StringPtrInput `pulumi:"vaultUri"`
+}
+
+func (SecretArchiveSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretArchiveSettings)(nil)).Elem()
+}
+
+func (i SecretArchiveSettingsArgs) ToSecretArchiveSettingsOutput() SecretArchiveSettingsOutput {
+	return i.ToSecretArchiveSettingsOutputWithContext(context.Background())
+}
+
+func (i SecretArchiveSettingsArgs) ToSecretArchiveSettingsOutputWithContext(ctx context.Context) SecretArchiveSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretArchiveSettingsOutput)
+}
+
+func (i SecretArchiveSettingsArgs) ToSecretArchiveSettingsPtrOutput() SecretArchiveSettingsPtrOutput {
+	return i.ToSecretArchiveSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i SecretArchiveSettingsArgs) ToSecretArchiveSettingsPtrOutputWithContext(ctx context.Context) SecretArchiveSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretArchiveSettingsOutput).ToSecretArchiveSettingsPtrOutputWithContext(ctx)
+}
+
+// SecretArchiveSettingsPtrInput is an input type that accepts SecretArchiveSettingsArgs, SecretArchiveSettingsPtr and SecretArchiveSettingsPtrOutput values.
+// You can construct a concrete instance of `SecretArchiveSettingsPtrInput` via:
+//
+//	        SecretArchiveSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecretArchiveSettingsPtrInput interface {
+	pulumi.Input
+
+	ToSecretArchiveSettingsPtrOutput() SecretArchiveSettingsPtrOutput
+	ToSecretArchiveSettingsPtrOutputWithContext(context.Context) SecretArchiveSettingsPtrOutput
+}
+
+type secretArchiveSettingsPtrType SecretArchiveSettingsArgs
+
+func SecretArchiveSettingsPtr(v *SecretArchiveSettingsArgs) SecretArchiveSettingsPtrInput {
+	return (*secretArchiveSettingsPtrType)(v)
+}
+
+func (*secretArchiveSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretArchiveSettings)(nil)).Elem()
+}
+
+func (i *secretArchiveSettingsPtrType) ToSecretArchiveSettingsPtrOutput() SecretArchiveSettingsPtrOutput {
+	return i.ToSecretArchiveSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *secretArchiveSettingsPtrType) ToSecretArchiveSettingsPtrOutputWithContext(ctx context.Context) SecretArchiveSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretArchiveSettingsPtrOutput)
+}
+
+type SecretArchiveSettingsOutput struct{ *pulumi.OutputState }
+
+func (SecretArchiveSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretArchiveSettings)(nil)).Elem()
+}
+
+func (o SecretArchiveSettingsOutput) ToSecretArchiveSettingsOutput() SecretArchiveSettingsOutput {
+	return o
+}
+
+func (o SecretArchiveSettingsOutput) ToSecretArchiveSettingsOutputWithContext(ctx context.Context) SecretArchiveSettingsOutput {
+	return o
+}
+
+func (o SecretArchiveSettingsOutput) ToSecretArchiveSettingsPtrOutput() SecretArchiveSettingsPtrOutput {
+	return o.ToSecretArchiveSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o SecretArchiveSettingsOutput) ToSecretArchiveSettingsPtrOutputWithContext(ctx context.Context) SecretArchiveSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretArchiveSettings) *SecretArchiveSettings {
+		return &v
+	}).(SecretArchiveSettingsPtrOutput)
+}
+
+// The selection of the managed identity to use with this vault URI. The identity type must be either system assigned or user assigned.
+func (o SecretArchiveSettingsOutput) AssociatedIdentity() IdentitySelectorPtrOutput {
+	return o.ApplyT(func(v SecretArchiveSettings) *IdentitySelector { return v.AssociatedIdentity }).(IdentitySelectorPtrOutput)
+}
+
+// The URI for the key vault used as the secret archive.
+func (o SecretArchiveSettingsOutput) VaultUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretArchiveSettings) *string { return v.VaultUri }).(pulumi.StringPtrOutput)
+}
+
+type SecretArchiveSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (SecretArchiveSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretArchiveSettings)(nil)).Elem()
+}
+
+func (o SecretArchiveSettingsPtrOutput) ToSecretArchiveSettingsPtrOutput() SecretArchiveSettingsPtrOutput {
+	return o
+}
+
+func (o SecretArchiveSettingsPtrOutput) ToSecretArchiveSettingsPtrOutputWithContext(ctx context.Context) SecretArchiveSettingsPtrOutput {
+	return o
+}
+
+func (o SecretArchiveSettingsPtrOutput) Elem() SecretArchiveSettingsOutput {
+	return o.ApplyT(func(v *SecretArchiveSettings) SecretArchiveSettings {
+		if v != nil {
+			return *v
+		}
+		var ret SecretArchiveSettings
+		return ret
+	}).(SecretArchiveSettingsOutput)
+}
+
+// The selection of the managed identity to use with this vault URI. The identity type must be either system assigned or user assigned.
+func (o SecretArchiveSettingsPtrOutput) AssociatedIdentity() IdentitySelectorPtrOutput {
+	return o.ApplyT(func(v *SecretArchiveSettings) *IdentitySelector {
+		if v == nil {
+			return nil
+		}
+		return v.AssociatedIdentity
+	}).(IdentitySelectorPtrOutput)
+}
+
+// The URI for the key vault used as the secret archive.
+func (o SecretArchiveSettingsPtrOutput) VaultUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretArchiveSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VaultUri
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecretArchiveSettingsResponse struct {
+	// The selection of the managed identity to use with this vault URI. The identity type must be either system assigned or user assigned.
+	AssociatedIdentity *IdentitySelectorResponse `pulumi:"associatedIdentity"`
+	// The URI for the key vault used as the secret archive.
+	VaultUri *string `pulumi:"vaultUri"`
+}
+
+type SecretArchiveSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (SecretArchiveSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretArchiveSettingsResponse)(nil)).Elem()
+}
+
+func (o SecretArchiveSettingsResponseOutput) ToSecretArchiveSettingsResponseOutput() SecretArchiveSettingsResponseOutput {
+	return o
+}
+
+func (o SecretArchiveSettingsResponseOutput) ToSecretArchiveSettingsResponseOutputWithContext(ctx context.Context) SecretArchiveSettingsResponseOutput {
+	return o
+}
+
+// The selection of the managed identity to use with this vault URI. The identity type must be either system assigned or user assigned.
+func (o SecretArchiveSettingsResponseOutput) AssociatedIdentity() IdentitySelectorResponsePtrOutput {
+	return o.ApplyT(func(v SecretArchiveSettingsResponse) *IdentitySelectorResponse { return v.AssociatedIdentity }).(IdentitySelectorResponsePtrOutput)
+}
+
+// The URI for the key vault used as the secret archive.
+func (o SecretArchiveSettingsResponseOutput) VaultUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretArchiveSettingsResponse) *string { return v.VaultUri }).(pulumi.StringPtrOutput)
+}
+
+type SecretArchiveSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SecretArchiveSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretArchiveSettingsResponse)(nil)).Elem()
+}
+
+func (o SecretArchiveSettingsResponsePtrOutput) ToSecretArchiveSettingsResponsePtrOutput() SecretArchiveSettingsResponsePtrOutput {
+	return o
+}
+
+func (o SecretArchiveSettingsResponsePtrOutput) ToSecretArchiveSettingsResponsePtrOutputWithContext(ctx context.Context) SecretArchiveSettingsResponsePtrOutput {
+	return o
+}
+
+func (o SecretArchiveSettingsResponsePtrOutput) Elem() SecretArchiveSettingsResponseOutput {
+	return o.ApplyT(func(v *SecretArchiveSettingsResponse) SecretArchiveSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SecretArchiveSettingsResponse
+		return ret
+	}).(SecretArchiveSettingsResponseOutput)
+}
+
+// The selection of the managed identity to use with this vault URI. The identity type must be either system assigned or user assigned.
+func (o SecretArchiveSettingsResponsePtrOutput) AssociatedIdentity() IdentitySelectorResponsePtrOutput {
+	return o.ApplyT(func(v *SecretArchiveSettingsResponse) *IdentitySelectorResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AssociatedIdentity
+	}).(IdentitySelectorResponsePtrOutput)
+}
+
+// The URI for the key vault used as the secret archive.
+func (o SecretArchiveSettingsResponsePtrOutput) VaultUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretArchiveSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VaultUri
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecretRotationStatusResponse struct {
+	// The maximum number of days the secret may be used before it must be changed.
+	ExpirePeriodDays float64 `pulumi:"expirePeriodDays"`
+	// The date and time when the secret was last changed.
+	LastRotationTime string `pulumi:"lastRotationTime"`
+	// The number of days a secret exists before rotations will be attempted.
+	RotationPeriodDays float64 `pulumi:"rotationPeriodDays"`
+	// The reference to the secret in a key vault.
+	SecretArchiveReference SecretArchiveReferenceResponse `pulumi:"secretArchiveReference"`
+	// The type name used to identify the purpose of the secret.
+	SecretType string `pulumi:"secretType"`
+}
+
+type SecretRotationStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (SecretRotationStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretRotationStatusResponse)(nil)).Elem()
+}
+
+func (o SecretRotationStatusResponseOutput) ToSecretRotationStatusResponseOutput() SecretRotationStatusResponseOutput {
+	return o
+}
+
+func (o SecretRotationStatusResponseOutput) ToSecretRotationStatusResponseOutputWithContext(ctx context.Context) SecretRotationStatusResponseOutput {
+	return o
+}
+
+// The maximum number of days the secret may be used before it must be changed.
+func (o SecretRotationStatusResponseOutput) ExpirePeriodDays() pulumi.Float64Output {
+	return o.ApplyT(func(v SecretRotationStatusResponse) float64 { return v.ExpirePeriodDays }).(pulumi.Float64Output)
+}
+
+// The date and time when the secret was last changed.
+func (o SecretRotationStatusResponseOutput) LastRotationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretRotationStatusResponse) string { return v.LastRotationTime }).(pulumi.StringOutput)
+}
+
+// The number of days a secret exists before rotations will be attempted.
+func (o SecretRotationStatusResponseOutput) RotationPeriodDays() pulumi.Float64Output {
+	return o.ApplyT(func(v SecretRotationStatusResponse) float64 { return v.RotationPeriodDays }).(pulumi.Float64Output)
+}
+
+// The reference to the secret in a key vault.
+func (o SecretRotationStatusResponseOutput) SecretArchiveReference() SecretArchiveReferenceResponseOutput {
+	return o.ApplyT(func(v SecretRotationStatusResponse) SecretArchiveReferenceResponse { return v.SecretArchiveReference }).(SecretArchiveReferenceResponseOutput)
+}
+
+// The type name used to identify the purpose of the secret.
+func (o SecretRotationStatusResponseOutput) SecretType() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretRotationStatusResponse) string { return v.SecretType }).(pulumi.StringOutput)
+}
+
+type SecretRotationStatusResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SecretRotationStatusResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecretRotationStatusResponse)(nil)).Elem()
+}
+
+func (o SecretRotationStatusResponseArrayOutput) ToSecretRotationStatusResponseArrayOutput() SecretRotationStatusResponseArrayOutput {
+	return o
+}
+
+func (o SecretRotationStatusResponseArrayOutput) ToSecretRotationStatusResponseArrayOutputWithContext(ctx context.Context) SecretRotationStatusResponseArrayOutput {
+	return o
+}
+
+func (o SecretRotationStatusResponseArrayOutput) Index(i pulumi.IntInput) SecretRotationStatusResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecretRotationStatusResponse {
+		return vs[0].([]SecretRotationStatusResponse)[vs[1].(int)]
+	}).(SecretRotationStatusResponseOutput)
+}
+
 type ServiceLoadBalancerBgpPeer struct {
 	// The indicator of BFD enablement for this BgpPeer.
 	BfdEnabled *string `pulumi:"bfdEnabled"`
 	// The indicator to enable multi-hop peering support.
 	BgpMultiHop *string `pulumi:"bgpMultiHop"`
-	// The requested BGP hold time value. This field uses ISO 8601 duration format, for example P1H.
+	// Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The requested BGP hold time value. This field uses ISO 8601 duration format, for example P1H.
 	HoldTime *string `pulumi:"holdTime"`
-	// The requested BGP keepalive time value. This field uses ISO 8601 duration format, for example P1H.
+	// Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The requested BGP keepalive time value. This field uses ISO 8601 duration format, for example P1H.
 	KeepAliveTime *string `pulumi:"keepAliveTime"`
 	// The autonomous system number used for the local end of the BGP session.
 	MyAsn *float64 `pulumi:"myAsn"`
@@ -7347,9 +8899,9 @@ type ServiceLoadBalancerBgpPeerArgs struct {
 	BfdEnabled pulumi.StringPtrInput `pulumi:"bfdEnabled"`
 	// The indicator to enable multi-hop peering support.
 	BgpMultiHop pulumi.StringPtrInput `pulumi:"bgpMultiHop"`
-	// The requested BGP hold time value. This field uses ISO 8601 duration format, for example P1H.
+	// Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The requested BGP hold time value. This field uses ISO 8601 duration format, for example P1H.
 	HoldTime pulumi.StringPtrInput `pulumi:"holdTime"`
-	// The requested BGP keepalive time value. This field uses ISO 8601 duration format, for example P1H.
+	// Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The requested BGP keepalive time value. This field uses ISO 8601 duration format, for example P1H.
 	KeepAliveTime pulumi.StringPtrInput `pulumi:"keepAliveTime"`
 	// The autonomous system number used for the local end of the BGP session.
 	MyAsn pulumi.Float64PtrInput `pulumi:"myAsn"`
@@ -7443,12 +8995,12 @@ func (o ServiceLoadBalancerBgpPeerOutput) BgpMultiHop() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceLoadBalancerBgpPeer) *string { return v.BgpMultiHop }).(pulumi.StringPtrOutput)
 }
 
-// The requested BGP hold time value. This field uses ISO 8601 duration format, for example P1H.
+// Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The requested BGP hold time value. This field uses ISO 8601 duration format, for example P1H.
 func (o ServiceLoadBalancerBgpPeerOutput) HoldTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceLoadBalancerBgpPeer) *string { return v.HoldTime }).(pulumi.StringPtrOutput)
 }
 
-// The requested BGP keepalive time value. This field uses ISO 8601 duration format, for example P1H.
+// Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The requested BGP keepalive time value. This field uses ISO 8601 duration format, for example P1H.
 func (o ServiceLoadBalancerBgpPeerOutput) KeepAliveTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceLoadBalancerBgpPeer) *string { return v.KeepAliveTime }).(pulumi.StringPtrOutput)
 }
@@ -7508,9 +9060,9 @@ type ServiceLoadBalancerBgpPeerResponse struct {
 	BfdEnabled *string `pulumi:"bfdEnabled"`
 	// The indicator to enable multi-hop peering support.
 	BgpMultiHop *string `pulumi:"bgpMultiHop"`
-	// The requested BGP hold time value. This field uses ISO 8601 duration format, for example P1H.
+	// Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The requested BGP hold time value. This field uses ISO 8601 duration format, for example P1H.
 	HoldTime *string `pulumi:"holdTime"`
-	// The requested BGP keepalive time value. This field uses ISO 8601 duration format, for example P1H.
+	// Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The requested BGP keepalive time value. This field uses ISO 8601 duration format, for example P1H.
 	KeepAliveTime *string `pulumi:"keepAliveTime"`
 	// The autonomous system number used for the local end of the BGP session.
 	MyAsn *float64 `pulumi:"myAsn"`
@@ -7569,12 +9121,12 @@ func (o ServiceLoadBalancerBgpPeerResponseOutput) BgpMultiHop() pulumi.StringPtr
 	return o.ApplyT(func(v ServiceLoadBalancerBgpPeerResponse) *string { return v.BgpMultiHop }).(pulumi.StringPtrOutput)
 }
 
-// The requested BGP hold time value. This field uses ISO 8601 duration format, for example P1H.
+// Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The requested BGP hold time value. This field uses ISO 8601 duration format, for example P1H.
 func (o ServiceLoadBalancerBgpPeerResponseOutput) HoldTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceLoadBalancerBgpPeerResponse) *string { return v.HoldTime }).(pulumi.StringPtrOutput)
 }
 
-// The requested BGP keepalive time value. This field uses ISO 8601 duration format, for example P1H.
+// Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The requested BGP keepalive time value. This field uses ISO 8601 duration format, for example P1H.
 func (o ServiceLoadBalancerBgpPeerResponseOutput) KeepAliveTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceLoadBalancerBgpPeerResponse) *string { return v.KeepAliveTime }).(pulumi.StringPtrOutput)
 }
@@ -8069,7 +9621,7 @@ func (o SshPublicKeyResponseArrayOutput) Index(i pulumi.IntInput) SshPublicKeyRe
 }
 
 type StorageApplianceConfigurationData struct {
-	// The credentials of the administrative interface on this storage appliance.
+	// The credentials of the administrative interface on this storage appliance. The password field is expected to be an Azure Key Vault key URL. Until the cluster is converted to utilize managed identity by setting the secret archive settings, the actual password value should be provided instead.
 	AdminCredentials AdministrativeCredentials `pulumi:"adminCredentials"`
 	// The slot that storage appliance is in the rack based on the BOM configuration.
 	RackSlot float64 `pulumi:"rackSlot"`
@@ -8091,7 +9643,7 @@ type StorageApplianceConfigurationDataInput interface {
 }
 
 type StorageApplianceConfigurationDataArgs struct {
-	// The credentials of the administrative interface on this storage appliance.
+	// The credentials of the administrative interface on this storage appliance. The password field is expected to be an Azure Key Vault key URL. Until the cluster is converted to utilize managed identity by setting the secret archive settings, the actual password value should be provided instead.
 	AdminCredentials AdministrativeCredentialsInput `pulumi:"adminCredentials"`
 	// The slot that storage appliance is in the rack based on the BOM configuration.
 	RackSlot pulumi.Float64Input `pulumi:"rackSlot"`
@@ -8152,7 +9704,7 @@ func (o StorageApplianceConfigurationDataOutput) ToStorageApplianceConfiguration
 	return o
 }
 
-// The credentials of the administrative interface on this storage appliance.
+// The credentials of the administrative interface on this storage appliance. The password field is expected to be an Azure Key Vault key URL. Until the cluster is converted to utilize managed identity by setting the secret archive settings, the actual password value should be provided instead.
 func (o StorageApplianceConfigurationDataOutput) AdminCredentials() AdministrativeCredentialsOutput {
 	return o.ApplyT(func(v StorageApplianceConfigurationData) AdministrativeCredentials { return v.AdminCredentials }).(AdministrativeCredentialsOutput)
 }
@@ -8193,7 +9745,7 @@ func (o StorageApplianceConfigurationDataArrayOutput) Index(i pulumi.IntInput) S
 }
 
 type StorageApplianceConfigurationDataResponse struct {
-	// The credentials of the administrative interface on this storage appliance.
+	// The credentials of the administrative interface on this storage appliance. The password field is expected to be an Azure Key Vault key URL. Until the cluster is converted to utilize managed identity by setting the secret archive settings, the actual password value should be provided instead.
 	AdminCredentials AdministrativeCredentialsResponse `pulumi:"adminCredentials"`
 	// The slot that storage appliance is in the rack based on the BOM configuration.
 	RackSlot float64 `pulumi:"rackSlot"`
@@ -8217,7 +9769,7 @@ func (o StorageApplianceConfigurationDataResponseOutput) ToStorageApplianceConfi
 	return o
 }
 
-// The credentials of the administrative interface on this storage appliance.
+// The credentials of the administrative interface on this storage appliance. The password field is expected to be an Azure Key Vault key URL. Until the cluster is converted to utilize managed identity by setting the secret archive settings, the actual password value should be provided instead.
 func (o StorageApplianceConfigurationDataResponseOutput) AdminCredentials() AdministrativeCredentialsResponseOutput {
 	return o.ApplyT(func(v StorageApplianceConfigurationDataResponse) AdministrativeCredentialsResponse {
 		return v.AdminCredentials
@@ -8794,6 +10346,59 @@ func (o TrunkedNetworkAttachmentConfigurationResponseArrayOutput) Index(i pulumi
 	}).(TrunkedNetworkAttachmentConfigurationResponseOutput)
 }
 
+// User assigned identity properties
+type UserAssignedIdentityResponse struct {
+	// The client ID of the assigned identity.
+	ClientId string `pulumi:"clientId"`
+	// The principal ID of the assigned identity.
+	PrincipalId string `pulumi:"principalId"`
+}
+
+// User assigned identity properties
+type UserAssignedIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (UserAssignedIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAssignedIdentityResponse)(nil)).Elem()
+}
+
+func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput() UserAssignedIdentityResponseOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutputWithContext(ctx context.Context) UserAssignedIdentityResponseOutput {
+	return o
+}
+
+// The client ID of the assigned identity.
+func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// The principal ID of the assigned identity.
+func (o UserAssignedIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+type UserAssignedIdentityResponseMapOutput struct{ *pulumi.OutputState }
+
+func (UserAssignedIdentityResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]UserAssignedIdentityResponse)(nil)).Elem()
+}
+
+func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutput() UserAssignedIdentityResponseMapOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseMapOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) UserAssignedIdentityResponse {
+		return vs[0].(map[string]UserAssignedIdentityResponse)[vs[1].(string)]
+	}).(UserAssignedIdentityResponseOutput)
+}
+
 type ValidationThreshold struct {
 	// Selection of how the type evaluation is applied to the cluster calculation.
 	Grouping string `pulumi:"grouping"`
@@ -9250,6 +10855,238 @@ func (o VirtualMachinePlacementHintResponseArrayOutput) Index(i pulumi.IntInput)
 	}).(VirtualMachinePlacementHintResponseOutput)
 }
 
+type VulnerabilityScanningSettings struct {
+	// The mode selection for container vulnerability scanning.
+	ContainerScan *string `pulumi:"containerScan"`
+}
+
+// Defaults sets the appropriate defaults for VulnerabilityScanningSettings
+func (val *VulnerabilityScanningSettings) Defaults() *VulnerabilityScanningSettings {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ContainerScan == nil {
+		containerScan_ := "Enabled"
+		tmp.ContainerScan = &containerScan_
+	}
+	return &tmp
+}
+
+// VulnerabilityScanningSettingsInput is an input type that accepts VulnerabilityScanningSettingsArgs and VulnerabilityScanningSettingsOutput values.
+// You can construct a concrete instance of `VulnerabilityScanningSettingsInput` via:
+//
+//	VulnerabilityScanningSettingsArgs{...}
+type VulnerabilityScanningSettingsInput interface {
+	pulumi.Input
+
+	ToVulnerabilityScanningSettingsOutput() VulnerabilityScanningSettingsOutput
+	ToVulnerabilityScanningSettingsOutputWithContext(context.Context) VulnerabilityScanningSettingsOutput
+}
+
+type VulnerabilityScanningSettingsArgs struct {
+	// The mode selection for container vulnerability scanning.
+	ContainerScan pulumi.StringPtrInput `pulumi:"containerScan"`
+}
+
+// Defaults sets the appropriate defaults for VulnerabilityScanningSettingsArgs
+func (val *VulnerabilityScanningSettingsArgs) Defaults() *VulnerabilityScanningSettingsArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ContainerScan == nil {
+		tmp.ContainerScan = pulumi.StringPtr("Enabled")
+	}
+	return &tmp
+}
+func (VulnerabilityScanningSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VulnerabilityScanningSettings)(nil)).Elem()
+}
+
+func (i VulnerabilityScanningSettingsArgs) ToVulnerabilityScanningSettingsOutput() VulnerabilityScanningSettingsOutput {
+	return i.ToVulnerabilityScanningSettingsOutputWithContext(context.Background())
+}
+
+func (i VulnerabilityScanningSettingsArgs) ToVulnerabilityScanningSettingsOutputWithContext(ctx context.Context) VulnerabilityScanningSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VulnerabilityScanningSettingsOutput)
+}
+
+func (i VulnerabilityScanningSettingsArgs) ToVulnerabilityScanningSettingsPtrOutput() VulnerabilityScanningSettingsPtrOutput {
+	return i.ToVulnerabilityScanningSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i VulnerabilityScanningSettingsArgs) ToVulnerabilityScanningSettingsPtrOutputWithContext(ctx context.Context) VulnerabilityScanningSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VulnerabilityScanningSettingsOutput).ToVulnerabilityScanningSettingsPtrOutputWithContext(ctx)
+}
+
+// VulnerabilityScanningSettingsPtrInput is an input type that accepts VulnerabilityScanningSettingsArgs, VulnerabilityScanningSettingsPtr and VulnerabilityScanningSettingsPtrOutput values.
+// You can construct a concrete instance of `VulnerabilityScanningSettingsPtrInput` via:
+//
+//	        VulnerabilityScanningSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type VulnerabilityScanningSettingsPtrInput interface {
+	pulumi.Input
+
+	ToVulnerabilityScanningSettingsPtrOutput() VulnerabilityScanningSettingsPtrOutput
+	ToVulnerabilityScanningSettingsPtrOutputWithContext(context.Context) VulnerabilityScanningSettingsPtrOutput
+}
+
+type vulnerabilityScanningSettingsPtrType VulnerabilityScanningSettingsArgs
+
+func VulnerabilityScanningSettingsPtr(v *VulnerabilityScanningSettingsArgs) VulnerabilityScanningSettingsPtrInput {
+	return (*vulnerabilityScanningSettingsPtrType)(v)
+}
+
+func (*vulnerabilityScanningSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VulnerabilityScanningSettings)(nil)).Elem()
+}
+
+func (i *vulnerabilityScanningSettingsPtrType) ToVulnerabilityScanningSettingsPtrOutput() VulnerabilityScanningSettingsPtrOutput {
+	return i.ToVulnerabilityScanningSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *vulnerabilityScanningSettingsPtrType) ToVulnerabilityScanningSettingsPtrOutputWithContext(ctx context.Context) VulnerabilityScanningSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VulnerabilityScanningSettingsPtrOutput)
+}
+
+type VulnerabilityScanningSettingsOutput struct{ *pulumi.OutputState }
+
+func (VulnerabilityScanningSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VulnerabilityScanningSettings)(nil)).Elem()
+}
+
+func (o VulnerabilityScanningSettingsOutput) ToVulnerabilityScanningSettingsOutput() VulnerabilityScanningSettingsOutput {
+	return o
+}
+
+func (o VulnerabilityScanningSettingsOutput) ToVulnerabilityScanningSettingsOutputWithContext(ctx context.Context) VulnerabilityScanningSettingsOutput {
+	return o
+}
+
+func (o VulnerabilityScanningSettingsOutput) ToVulnerabilityScanningSettingsPtrOutput() VulnerabilityScanningSettingsPtrOutput {
+	return o.ToVulnerabilityScanningSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o VulnerabilityScanningSettingsOutput) ToVulnerabilityScanningSettingsPtrOutputWithContext(ctx context.Context) VulnerabilityScanningSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VulnerabilityScanningSettings) *VulnerabilityScanningSettings {
+		return &v
+	}).(VulnerabilityScanningSettingsPtrOutput)
+}
+
+// The mode selection for container vulnerability scanning.
+func (o VulnerabilityScanningSettingsOutput) ContainerScan() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VulnerabilityScanningSettings) *string { return v.ContainerScan }).(pulumi.StringPtrOutput)
+}
+
+type VulnerabilityScanningSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (VulnerabilityScanningSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VulnerabilityScanningSettings)(nil)).Elem()
+}
+
+func (o VulnerabilityScanningSettingsPtrOutput) ToVulnerabilityScanningSettingsPtrOutput() VulnerabilityScanningSettingsPtrOutput {
+	return o
+}
+
+func (o VulnerabilityScanningSettingsPtrOutput) ToVulnerabilityScanningSettingsPtrOutputWithContext(ctx context.Context) VulnerabilityScanningSettingsPtrOutput {
+	return o
+}
+
+func (o VulnerabilityScanningSettingsPtrOutput) Elem() VulnerabilityScanningSettingsOutput {
+	return o.ApplyT(func(v *VulnerabilityScanningSettings) VulnerabilityScanningSettings {
+		if v != nil {
+			return *v
+		}
+		var ret VulnerabilityScanningSettings
+		return ret
+	}).(VulnerabilityScanningSettingsOutput)
+}
+
+// The mode selection for container vulnerability scanning.
+func (o VulnerabilityScanningSettingsPtrOutput) ContainerScan() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VulnerabilityScanningSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerScan
+	}).(pulumi.StringPtrOutput)
+}
+
+type VulnerabilityScanningSettingsResponse struct {
+	// The mode selection for container vulnerability scanning.
+	ContainerScan *string `pulumi:"containerScan"`
+}
+
+// Defaults sets the appropriate defaults for VulnerabilityScanningSettingsResponse
+func (val *VulnerabilityScanningSettingsResponse) Defaults() *VulnerabilityScanningSettingsResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ContainerScan == nil {
+		containerScan_ := "Enabled"
+		tmp.ContainerScan = &containerScan_
+	}
+	return &tmp
+}
+
+type VulnerabilityScanningSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (VulnerabilityScanningSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VulnerabilityScanningSettingsResponse)(nil)).Elem()
+}
+
+func (o VulnerabilityScanningSettingsResponseOutput) ToVulnerabilityScanningSettingsResponseOutput() VulnerabilityScanningSettingsResponseOutput {
+	return o
+}
+
+func (o VulnerabilityScanningSettingsResponseOutput) ToVulnerabilityScanningSettingsResponseOutputWithContext(ctx context.Context) VulnerabilityScanningSettingsResponseOutput {
+	return o
+}
+
+// The mode selection for container vulnerability scanning.
+func (o VulnerabilityScanningSettingsResponseOutput) ContainerScan() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VulnerabilityScanningSettingsResponse) *string { return v.ContainerScan }).(pulumi.StringPtrOutput)
+}
+
+type VulnerabilityScanningSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (VulnerabilityScanningSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VulnerabilityScanningSettingsResponse)(nil)).Elem()
+}
+
+func (o VulnerabilityScanningSettingsResponsePtrOutput) ToVulnerabilityScanningSettingsResponsePtrOutput() VulnerabilityScanningSettingsResponsePtrOutput {
+	return o
+}
+
+func (o VulnerabilityScanningSettingsResponsePtrOutput) ToVulnerabilityScanningSettingsResponsePtrOutputWithContext(ctx context.Context) VulnerabilityScanningSettingsResponsePtrOutput {
+	return o
+}
+
+func (o VulnerabilityScanningSettingsResponsePtrOutput) Elem() VulnerabilityScanningSettingsResponseOutput {
+	return o.ApplyT(func(v *VulnerabilityScanningSettingsResponse) VulnerabilityScanningSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret VulnerabilityScanningSettingsResponse
+		return ret
+	}).(VulnerabilityScanningSettingsResponseOutput)
+}
+
+// The mode selection for container vulnerability scanning.
+func (o VulnerabilityScanningSettingsResponsePtrOutput) ContainerScan() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VulnerabilityScanningSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerScan
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AadConfigurationOutput{})
 	pulumi.RegisterOutputType(AadConfigurationPtrOutput{})
@@ -9269,6 +11106,10 @@ func init() {
 	pulumi.RegisterOutputType(AgentPoolUpgradeSettingsPtrOutput{})
 	pulumi.RegisterOutputType(AgentPoolUpgradeSettingsResponseOutput{})
 	pulumi.RegisterOutputType(AgentPoolUpgradeSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(AnalyticsOutputSettingsOutput{})
+	pulumi.RegisterOutputType(AnalyticsOutputSettingsPtrOutput{})
+	pulumi.RegisterOutputType(AnalyticsOutputSettingsResponseOutput{})
+	pulumi.RegisterOutputType(AnalyticsOutputSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(AttachedNetworkConfigurationOutput{})
 	pulumi.RegisterOutputType(AttachedNetworkConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(AttachedNetworkConfigurationResponseOutput{})
@@ -9300,6 +11141,10 @@ func init() {
 	pulumi.RegisterOutputType(ClusterUpdateStrategyPtrOutput{})
 	pulumi.RegisterOutputType(ClusterUpdateStrategyResponseOutput{})
 	pulumi.RegisterOutputType(ClusterUpdateStrategyResponsePtrOutput{})
+	pulumi.RegisterOutputType(CommandOutputSettingsOutput{})
+	pulumi.RegisterOutputType(CommandOutputSettingsPtrOutput{})
+	pulumi.RegisterOutputType(CommandOutputSettingsResponseOutput{})
+	pulumi.RegisterOutputType(CommandOutputSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(ControlPlaneNodeConfigurationOutput{})
 	pulumi.RegisterOutputType(ControlPlaneNodeConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(EgressEndpointOutput{})
@@ -9320,6 +11165,10 @@ func init() {
 	pulumi.RegisterOutputType(HardwareInventoryNetworkInterfaceResponseArrayOutput{})
 	pulumi.RegisterOutputType(HardwareInventoryResponseOutput{})
 	pulumi.RegisterOutputType(HardwareValidationStatusResponseOutput{})
+	pulumi.RegisterOutputType(IdentitySelectorOutput{})
+	pulumi.RegisterOutputType(IdentitySelectorPtrOutput{})
+	pulumi.RegisterOutputType(IdentitySelectorResponseOutput{})
+	pulumi.RegisterOutputType(IdentitySelectorResponsePtrOutput{})
 	pulumi.RegisterOutputType(ImageRepositoryCredentialsOutput{})
 	pulumi.RegisterOutputType(ImageRepositoryCredentialsPtrOutput{})
 	pulumi.RegisterOutputType(ImageRepositoryCredentialsResponseOutput{})
@@ -9348,6 +11197,10 @@ func init() {
 	pulumi.RegisterOutputType(L2NetworkAttachmentConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(L2NetworkAttachmentConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(L2NetworkAttachmentConfigurationResponseArrayOutput{})
+	pulumi.RegisterOutputType(L2ServiceLoadBalancerConfigurationOutput{})
+	pulumi.RegisterOutputType(L2ServiceLoadBalancerConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(L2ServiceLoadBalancerConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(L2ServiceLoadBalancerConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(L3NetworkAttachmentConfigurationOutput{})
 	pulumi.RegisterOutputType(L3NetworkAttachmentConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(L3NetworkAttachmentConfigurationResponseOutput{})
@@ -9357,6 +11210,10 @@ func init() {
 	pulumi.RegisterOutputType(ManagedResourceGroupConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(ManagedResourceGroupConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(ManagedResourceGroupConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(ManagedServiceIdentityOutput{})
+	pulumi.RegisterOutputType(ManagedServiceIdentityPtrOutput{})
+	pulumi.RegisterOutputType(ManagedServiceIdentityResponseOutput{})
+	pulumi.RegisterOutputType(ManagedServiceIdentityResponsePtrOutput{})
 	pulumi.RegisterOutputType(NetworkAttachmentOutput{})
 	pulumi.RegisterOutputType(NetworkAttachmentArrayOutput{})
 	pulumi.RegisterOutputType(NetworkAttachmentResponseOutput{})
@@ -9376,6 +11233,13 @@ func init() {
 	pulumi.RegisterOutputType(RuntimeProtectionConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(RuntimeProtectionConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(RuntimeProtectionStatusResponseOutput{})
+	pulumi.RegisterOutputType(SecretArchiveReferenceResponseOutput{})
+	pulumi.RegisterOutputType(SecretArchiveSettingsOutput{})
+	pulumi.RegisterOutputType(SecretArchiveSettingsPtrOutput{})
+	pulumi.RegisterOutputType(SecretArchiveSettingsResponseOutput{})
+	pulumi.RegisterOutputType(SecretArchiveSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(SecretRotationStatusResponseOutput{})
+	pulumi.RegisterOutputType(SecretRotationStatusResponseArrayOutput{})
 	pulumi.RegisterOutputType(ServiceLoadBalancerBgpPeerOutput{})
 	pulumi.RegisterOutputType(ServiceLoadBalancerBgpPeerArrayOutput{})
 	pulumi.RegisterOutputType(ServiceLoadBalancerBgpPeerResponseOutput{})
@@ -9403,6 +11267,8 @@ func init() {
 	pulumi.RegisterOutputType(TrunkedNetworkAttachmentConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(TrunkedNetworkAttachmentConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(TrunkedNetworkAttachmentConfigurationResponseArrayOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})
 	pulumi.RegisterOutputType(ValidationThresholdOutput{})
 	pulumi.RegisterOutputType(ValidationThresholdPtrOutput{})
 	pulumi.RegisterOutputType(ValidationThresholdResponseOutput{})
@@ -9411,4 +11277,8 @@ func init() {
 	pulumi.RegisterOutputType(VirtualMachinePlacementHintArrayOutput{})
 	pulumi.RegisterOutputType(VirtualMachinePlacementHintResponseOutput{})
 	pulumi.RegisterOutputType(VirtualMachinePlacementHintResponseArrayOutput{})
+	pulumi.RegisterOutputType(VulnerabilityScanningSettingsOutput{})
+	pulumi.RegisterOutputType(VulnerabilityScanningSettingsPtrOutput{})
+	pulumi.RegisterOutputType(VulnerabilityScanningSettingsResponseOutput{})
+	pulumi.RegisterOutputType(VulnerabilityScanningSettingsResponsePtrOutput{})
 }

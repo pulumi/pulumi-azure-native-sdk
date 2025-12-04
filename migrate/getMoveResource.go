@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the Move Resource.
 //
-// Uses Azure REST API version 2022-08-01.
+// Uses Azure REST API version 2023-08-01.
 //
-// Other available API versions: 2023-08-01.
+// Other available API versions: 2019-10-01-preview, 2021-01-01, 2021-08-01, 2022-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native migrate [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupMoveResource(ctx *pulumi.Context, args *LookupMoveResourceArgs, opts ...pulumi.InvokeOption) (*LookupMoveResourceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMoveResourceResult
@@ -37,6 +37,8 @@ type LookupMoveResourceArgs struct {
 
 // Defines the move resource.
 type LookupMoveResourceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource Id for the resource.
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -84,6 +86,11 @@ func (o LookupMoveResourceResultOutput) ToLookupMoveResourceResultOutput() Looku
 
 func (o LookupMoveResourceResultOutput) ToLookupMoveResourceResultOutputWithContext(ctx context.Context) LookupMoveResourceResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupMoveResourceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMoveResourceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource Id for the resource.

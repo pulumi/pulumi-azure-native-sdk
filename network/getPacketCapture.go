@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a packet capture session by name.
 //
-// Uses Azure REST API version 2023-02-01.
+// Uses Azure REST API version 2024-05-01.
 //
-// Other available API versions: 2020-06-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Other available API versions: 2018-06-01, 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupPacketCapture(ctx *pulumi.Context, args *LookupPacketCaptureArgs, opts ...pulumi.InvokeOption) (*LookupPacketCaptureResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPacketCaptureResult
@@ -37,8 +37,14 @@ type LookupPacketCaptureArgs struct {
 
 // Information about packet capture session.
 type LookupPacketCaptureResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Number of bytes captured per packet, the remaining bytes are truncated.
 	BytesToCapturePerPacket *float64 `pulumi:"bytesToCapturePerPacket"`
+	// The capture setting holds the 'FileCount', 'FileSizeInBytes', 'SessionTimeLimitInSeconds' values.
+	CaptureSettings *PacketCaptureSettingsResponse `pulumi:"captureSettings"`
+	// This continuous capture is a nullable boolean, which can hold 'null', 'true' or 'false' value. If we do not pass this parameter, it would be consider as 'null', default value is 'null'.
+	ContinuousCapture *bool `pulumi:"continuousCapture"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag string `pulumi:"etag"`
 	// A list of packet capture filters.
@@ -73,6 +79,8 @@ func (val *LookupPacketCaptureResult) Defaults() *LookupPacketCaptureResult {
 		bytesToCapturePerPacket_ := 0.0
 		tmp.BytesToCapturePerPacket = &bytesToCapturePerPacket_
 	}
+	tmp.CaptureSettings = tmp.CaptureSettings.Defaults()
+
 	if tmp.TimeLimitInSeconds == nil {
 		timeLimitInSeconds_ := 18000
 		tmp.TimeLimitInSeconds = &timeLimitInSeconds_
@@ -120,9 +128,24 @@ func (o LookupPacketCaptureResultOutput) ToLookupPacketCaptureResultOutputWithCo
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupPacketCaptureResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPacketCaptureResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Number of bytes captured per packet, the remaining bytes are truncated.
 func (o LookupPacketCaptureResultOutput) BytesToCapturePerPacket() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v LookupPacketCaptureResult) *float64 { return v.BytesToCapturePerPacket }).(pulumi.Float64PtrOutput)
+}
+
+// The capture setting holds the 'FileCount', 'FileSizeInBytes', 'SessionTimeLimitInSeconds' values.
+func (o LookupPacketCaptureResultOutput) CaptureSettings() PacketCaptureSettingsResponsePtrOutput {
+	return o.ApplyT(func(v LookupPacketCaptureResult) *PacketCaptureSettingsResponse { return v.CaptureSettings }).(PacketCaptureSettingsResponsePtrOutput)
+}
+
+// This continuous capture is a nullable boolean, which can hold 'null', 'true' or 'false' value. If we do not pass this parameter, it would be consider as 'null', default value is 'null'.
+func (o LookupPacketCaptureResultOutput) ContinuousCapture() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupPacketCaptureResult) *bool { return v.ContinuousCapture }).(pulumi.BoolPtrOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.

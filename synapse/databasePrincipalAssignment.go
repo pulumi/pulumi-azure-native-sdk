@@ -8,16 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Class representing a database principal assignment.
 //
-// Uses Azure REST API version 2021-04-01-preview. In version 1.x of the Azure Native provider, it used API version 2021-04-01-preview.
+// Uses Azure REST API version 2021-04-01-preview. In version 2.x of the Azure Native provider, it used API version 2021-04-01-preview.
 type DatabasePrincipalAssignment struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The principal ID assigned to the database principal. It can be a user email, application ID, or security group name.
@@ -74,6 +76,12 @@ func NewDatabasePrincipalAssignment(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:synapse/v20210601preview:DatabasePrincipalAssignment"),
+		},
+		{
+			Type: pulumi.String("azure-native:synapse/v20210601preview:KustoPoolDatabasePrincipalAssignment"),
+		},
+		{
+			Type: pulumi.String("azure-native:synapse:KustoPoolDatabasePrincipalAssignment"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -187,6 +195,11 @@ func (o DatabasePrincipalAssignmentOutput) ToDatabasePrincipalAssignmentOutput()
 
 func (o DatabasePrincipalAssignmentOutput) ToDatabasePrincipalAssignmentOutputWithContext(ctx context.Context) DatabasePrincipalAssignmentOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o DatabasePrincipalAssignmentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabasePrincipalAssignment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

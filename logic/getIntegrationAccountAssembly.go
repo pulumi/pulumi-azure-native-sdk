@@ -7,13 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get an assembly for an integration account.
 //
 // Uses Azure REST API version 2019-05-01.
+//
+// Other available API versions: 2016-06-01, 2018-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native logic [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupIntegrationAccountAssembly(ctx *pulumi.Context, args *LookupIntegrationAccountAssemblyArgs, opts ...pulumi.InvokeOption) (*LookupIntegrationAccountAssemblyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIntegrationAccountAssemblyResult
@@ -35,6 +37,8 @@ type LookupIntegrationAccountAssemblyArgs struct {
 
 // The assembly definition.
 type LookupIntegrationAccountAssemblyResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The resource id.
 	Id string `pulumi:"id"`
 	// The resource location.
@@ -84,6 +88,11 @@ func (o LookupIntegrationAccountAssemblyResultOutput) ToLookupIntegrationAccount
 
 func (o LookupIntegrationAccountAssemblyResultOutput) ToLookupIntegrationAccountAssemblyResultOutputWithContext(ctx context.Context) LookupIntegrationAccountAssemblyResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupIntegrationAccountAssemblyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIntegrationAccountAssemblyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The resource id.

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2022-08-01-preview.
 //
-// Other available API versions: 2024-12-01-preview.
+// Other available API versions: 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupVariable(ctx *pulumi.Context, args *LookupVariableArgs, opts ...pulumi.InvokeOption) (*LookupVariableResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVariableResult
@@ -33,6 +33,8 @@ type LookupVariableArgs struct {
 
 // The variable.
 type LookupVariableResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Variable column definitions.
 	Columns []PolicyVariableColumnResponse `pulumi:"columns"`
 	// The ID of the variable.
@@ -76,6 +78,11 @@ func (o LookupVariableResultOutput) ToLookupVariableResultOutput() LookupVariabl
 
 func (o LookupVariableResultOutput) ToLookupVariableResultOutputWithContext(ctx context.Context) LookupVariableResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupVariableResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVariableResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Variable column definitions.

@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the database data masking policy.
 //
-// Uses Azure REST API version 2021-11-01.
+// Uses Azure REST API version 2023-08-01.
 //
-// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01, 2023-08-01-preview, 2024-05-01-preview.
+// Other available API versions: 2014-04-01, 2021-11-01, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupDataMaskingPolicy(ctx *pulumi.Context, args *LookupDataMaskingPolicyArgs, opts ...pulumi.InvokeOption) (*LookupDataMaskingPolicyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDataMaskingPolicyResult
@@ -41,6 +41,8 @@ type LookupDataMaskingPolicyArgs struct {
 type LookupDataMaskingPolicyResult struct {
 	// The list of the application principals. This is a legacy parameter and is no longer used.
 	ApplicationPrincipals string `pulumi:"applicationPrincipals"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The state of the data masking policy.
 	DataMaskingState string `pulumi:"dataMaskingState"`
 	// The list of the exempt principals. Specifies the semicolon-separated list of database users for which the data masking policy does not apply. The specified users receive data results without masking for all of the database queries.
@@ -101,6 +103,11 @@ func (o LookupDataMaskingPolicyResultOutput) ToLookupDataMaskingPolicyResultOutp
 // The list of the application principals. This is a legacy parameter and is no longer used.
 func (o LookupDataMaskingPolicyResultOutput) ApplicationPrincipals() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataMaskingPolicyResult) string { return v.ApplicationPrincipals }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupDataMaskingPolicyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDataMaskingPolicyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The state of the data masking policy.

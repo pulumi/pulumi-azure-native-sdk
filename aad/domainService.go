@@ -8,16 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Domain service.
 //
-// Uses Azure REST API version 2022-12-01. In version 1.x of the Azure Native provider, it used API version 2021-03-01.
+// Uses Azure REST API version 2022-12-01. In version 2.x of the Azure Native provider, it used API version 2022-12-01.
+//
+// Other available API versions: 2025-05-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native aad [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type DomainService struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Configuration diagnostics data containing latest execution from client.
 	ConfigDiagnostics ConfigDiagnosticsResponsePtrOutput `pulumi:"configDiagnostics"`
 	// Deployment Id
@@ -108,6 +112,12 @@ func NewDomainService(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:aad/v20221201:DomainService"),
+		},
+		{
+			Type: pulumi.String("azure-native:aad/v20250501:DomainService"),
+		},
+		{
+			Type: pulumi.String("azure-native:aad/v20250601:DomainService"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -245,6 +255,11 @@ func (o DomainServiceOutput) ToDomainServiceOutput() DomainServiceOutput {
 
 func (o DomainServiceOutput) ToDomainServiceOutputWithContext(ctx context.Context) DomainServiceOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o DomainServiceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DomainService) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Configuration diagnostics data containing latest execution from client.

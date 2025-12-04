@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Lists the schemas for the specified connection in a pipeline.
 //
-// Uses Azure REST API version 2023-10-11-preview.
+// Uses Azure REST API version 2024-09-27.
 //
-// Other available API versions: 2024-01-25, 2024-05-07, 2024-09-11, 2024-09-27, 2025-03-01-preview.
+// Other available API versions: 2023-10-11-preview, 2024-01-25, 2024-05-07, 2024-09-11, 2025-03-01-preview, 2025-04-11-preview, 2025-05-21, 2025-05-30-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuredatatransfer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func ListListSchema(ctx *pulumi.Context, args *ListListSchemaArgs, opts ...pulumi.InvokeOption) (*ListListSchemaResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListListSchemaResult
@@ -31,6 +31,8 @@ type ListListSchemaArgs struct {
 	ConnectionId *string `pulumi:"connectionId"`
 	// Content of the schema
 	Content *string `pulumi:"content"`
+	// The direction of the schema.
+	Direction *string `pulumi:"direction"`
 	// ID associated with this schema
 	Id *string `pulumi:"id"`
 	// Name of the schema
@@ -39,6 +41,10 @@ type ListListSchemaArgs struct {
 	PipelineName string `pulumi:"pipelineName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The Schema Type
+	SchemaType *string `pulumi:"schemaType"`
+	// Uri containing SAS token for the zipped schema
+	SchemaUri *string `pulumi:"schemaUri"`
 	// Status of the schema
 	Status *string `pulumi:"status"`
 }
@@ -63,6 +69,8 @@ type ListListSchemaOutputArgs struct {
 	ConnectionId pulumi.StringPtrInput `pulumi:"connectionId"`
 	// Content of the schema
 	Content pulumi.StringPtrInput `pulumi:"content"`
+	// The direction of the schema.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// ID associated with this schema
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Name of the schema
@@ -71,6 +79,10 @@ type ListListSchemaOutputArgs struct {
 	PipelineName pulumi.StringInput `pulumi:"pipelineName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The Schema Type
+	SchemaType pulumi.StringPtrInput `pulumi:"schemaType"`
+	// Uri containing SAS token for the zipped schema
+	SchemaUri pulumi.StringPtrInput `pulumi:"schemaUri"`
 	// Status of the schema
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }

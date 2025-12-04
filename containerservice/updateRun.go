@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A multi-stage process to perform update operations across members of a Fleet.
 //
-// Uses Azure REST API version 2023-03-15-preview.
+// Uses Azure REST API version 2024-05-02-preview. In version 2.x of the Azure Native provider, it used API version 2023-03-15-preview.
 //
-// Other available API versions: 2023-06-15-preview, 2023-08-15-preview, 2023-10-15, 2024-02-02-preview, 2024-04-01, 2024-05-02-preview.
+// Other available API versions: 2023-03-15-preview, 2023-06-15-preview, 2023-08-15-preview, 2023-10-15, 2024-02-02-preview, 2024-04-01, 2025-03-01, 2025-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type UpdateRun struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
 	ETag pulumi.StringOutput `pulumi:"eTag"`
 	// The update to be applied to all clusters in the UpdateRun. The managedClusterUpdate can be modified until the run is started.
@@ -38,6 +40,19 @@ type UpdateRun struct {
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
+	// The resource id of the FleetUpdateStrategy resource to reference.
+	//
+	// When creating a new run, there are three ways to define a strategy for the run:
+	// 1. Define a new strategy in place: Set the "strategy" field.
+	// 2. Use an existing strategy: Set the "updateStrategyId" field. (since 2023-08-15-preview)
+	// 3. Use the default strategy to update all the members one by one: Leave both "updateStrategyId" and "strategy" unset. (since 2023-08-15-preview)
+	//
+	// Setting both "updateStrategyId" and "strategy" is invalid.
+	//
+	// UpdateRuns created by "updateStrategyId" snapshot the referenced UpdateStrategy at the time of creation and store it in the "strategy" field.
+	// Subsequent changes to the referenced FleetUpdateStrategy resource do not propagate.
+	// UpdateRunStrategy changes can be made directly on the "strategy" field before launching the UpdateRun.
+	UpdateStrategyId pulumi.StringPtrOutput `pulumi:"updateStrategyId"`
 }
 
 // NewUpdateRun registers a new resource with the given unique name, arguments, and options.
@@ -77,6 +92,12 @@ func NewUpdateRun(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:containerservice/v20240502preview:UpdateRun"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20250301:UpdateRun"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20250401preview:UpdateRun"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -125,6 +146,19 @@ type updateRunArgs struct {
 	Strategy *UpdateRunStrategy `pulumi:"strategy"`
 	// The name of the UpdateRun resource.
 	UpdateRunName *string `pulumi:"updateRunName"`
+	// The resource id of the FleetUpdateStrategy resource to reference.
+	//
+	// When creating a new run, there are three ways to define a strategy for the run:
+	// 1. Define a new strategy in place: Set the "strategy" field.
+	// 2. Use an existing strategy: Set the "updateStrategyId" field. (since 2023-08-15-preview)
+	// 3. Use the default strategy to update all the members one by one: Leave both "updateStrategyId" and "strategy" unset. (since 2023-08-15-preview)
+	//
+	// Setting both "updateStrategyId" and "strategy" is invalid.
+	//
+	// UpdateRuns created by "updateStrategyId" snapshot the referenced UpdateStrategy at the time of creation and store it in the "strategy" field.
+	// Subsequent changes to the referenced FleetUpdateStrategy resource do not propagate.
+	// UpdateRunStrategy changes can be made directly on the "strategy" field before launching the UpdateRun.
+	UpdateStrategyId *string `pulumi:"updateStrategyId"`
 }
 
 // The set of arguments for constructing a UpdateRun resource.
@@ -141,6 +175,19 @@ type UpdateRunArgs struct {
 	Strategy UpdateRunStrategyPtrInput
 	// The name of the UpdateRun resource.
 	UpdateRunName pulumi.StringPtrInput
+	// The resource id of the FleetUpdateStrategy resource to reference.
+	//
+	// When creating a new run, there are three ways to define a strategy for the run:
+	// 1. Define a new strategy in place: Set the "strategy" field.
+	// 2. Use an existing strategy: Set the "updateStrategyId" field. (since 2023-08-15-preview)
+	// 3. Use the default strategy to update all the members one by one: Leave both "updateStrategyId" and "strategy" unset. (since 2023-08-15-preview)
+	//
+	// Setting both "updateStrategyId" and "strategy" is invalid.
+	//
+	// UpdateRuns created by "updateStrategyId" snapshot the referenced UpdateStrategy at the time of creation and store it in the "strategy" field.
+	// Subsequent changes to the referenced FleetUpdateStrategy resource do not propagate.
+	// UpdateRunStrategy changes can be made directly on the "strategy" field before launching the UpdateRun.
+	UpdateStrategyId pulumi.StringPtrInput
 }
 
 func (UpdateRunArgs) ElementType() reflect.Type {
@@ -178,6 +225,11 @@ func (o UpdateRunOutput) ToUpdateRunOutput() UpdateRunOutput {
 
 func (o UpdateRunOutput) ToUpdateRunOutputWithContext(ctx context.Context) UpdateRunOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o UpdateRunOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *UpdateRun) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
@@ -220,6 +272,22 @@ func (o UpdateRunOutput) SystemData() SystemDataResponseOutput {
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o UpdateRunOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *UpdateRun) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// The resource id of the FleetUpdateStrategy resource to reference.
+//
+// When creating a new run, there are three ways to define a strategy for the run:
+// 1. Define a new strategy in place: Set the "strategy" field.
+// 2. Use an existing strategy: Set the "updateStrategyId" field. (since 2023-08-15-preview)
+// 3. Use the default strategy to update all the members one by one: Leave both "updateStrategyId" and "strategy" unset. (since 2023-08-15-preview)
+//
+// Setting both "updateStrategyId" and "strategy" is invalid.
+//
+// UpdateRuns created by "updateStrategyId" snapshot the referenced UpdateStrategy at the time of creation and store it in the "strategy" field.
+// Subsequent changes to the referenced FleetUpdateStrategy resource do not propagate.
+// UpdateRunStrategy changes can be made directly on the "strategy" field before launching the UpdateRun.
+func (o UpdateRunOutput) UpdateStrategyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UpdateRun) pulumi.StringPtrOutput { return v.UpdateStrategyId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

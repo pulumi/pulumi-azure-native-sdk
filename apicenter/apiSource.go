@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // API source entity.
 //
-// Uses Azure REST API version 2024-06-01-preview.
+// Uses Azure REST API version 2024-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-06-01-preview.
 type ApiSource struct {
 	pulumi.CustomResourceState
 
 	// API source configuration for Azure API Management.
 	AzureApiManagementSource AzureApiManagementSourceResponsePtrOutput `pulumi:"azureApiManagementSource"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Indicates if the specification should be imported along with metadata.
 	ImportSpecification pulumi.StringPtrOutput `pulumi:"importSpecification"`
 	// The state of the API source link
@@ -172,6 +174,11 @@ func (o ApiSourceOutput) ToApiSourceOutputWithContext(ctx context.Context) ApiSo
 // API source configuration for Azure API Management.
 func (o ApiSourceOutput) AzureApiManagementSource() AzureApiManagementSourceResponsePtrOutput {
 	return o.ApplyT(func(v *ApiSource) AzureApiManagementSourceResponsePtrOutput { return v.AzureApiManagementSource }).(AzureApiManagementSourceResponsePtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o ApiSourceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApiSource) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Indicates if the specification should be imported along with metadata.

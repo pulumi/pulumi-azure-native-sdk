@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,6 +33,8 @@ type LookupVendorSkusArgs struct {
 
 // Sku sub resource.
 type LookupVendorSkusResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The sku deployment mode.
 	DeploymentMode *string `pulumi:"deploymentMode"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -92,6 +94,11 @@ func (o LookupVendorSkusResultOutput) ToLookupVendorSkusResultOutput() LookupVen
 
 func (o LookupVendorSkusResultOutput) ToLookupVendorSkusResultOutputWithContext(ctx context.Context) LookupVendorSkusResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupVendorSkusResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVendorSkusResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The sku deployment mode.

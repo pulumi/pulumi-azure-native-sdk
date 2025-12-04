@@ -8,20 +8,22 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents a definition for a Developer Machine.
 //
-// Uses Azure REST API version 2023-04-01. In version 1.x of the Azure Native provider, it used API version 2022-09-01-preview.
+// Uses Azure REST API version 2024-02-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
 //
-// Other available API versions: 2022-11-11-preview, 2023-08-01-preview, 2023-10-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01.
+// Other available API versions: 2023-04-01, 2023-08-01-preview, 2023-10-01-preview, 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01, 2025-04-01-preview, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devcenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type DevBoxDefinition struct {
 	pulumi.CustomResourceState
 
 	// Image reference information for the currently active image (only populated during updates).
 	ActiveImageReference ImageReferenceResponseOutput `pulumi:"activeImageReference"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Indicates whether Dev Boxes created with this definition are capable of hibernation. Not all images are capable of supporting hibernation. To find out more see https://aka.ms/devbox/hibernate
 	HibernateSupport pulumi.StringPtrOutput `pulumi:"hibernateSupport"`
 	// Image reference information.
@@ -46,6 +48,8 @@ type DevBoxDefinition struct {
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
+	// Validation status for the Dev Box Definition.
+	ValidationStatus pulumi.StringOutput `pulumi:"validationStatus"`
 }
 
 // NewDevBoxDefinition registers a new resource with the given unique name, arguments, and options.
@@ -112,6 +116,12 @@ func NewDevBoxDefinition(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:devcenter/v20250201:DevBoxDefinition"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20250401preview:DevBoxDefinition"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20250701preview:DevBoxDefinition"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -232,6 +242,11 @@ func (o DevBoxDefinitionOutput) ActiveImageReference() ImageReferenceResponseOut
 	return o.ApplyT(func(v *DevBoxDefinition) ImageReferenceResponseOutput { return v.ActiveImageReference }).(ImageReferenceResponseOutput)
 }
 
+// The Azure API version of the resource.
+func (o DevBoxDefinitionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DevBoxDefinition) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Indicates whether Dev Boxes created with this definition are capable of hibernation. Not all images are capable of supporting hibernation. To find out more see https://aka.ms/devbox/hibernate
 func (o DevBoxDefinitionOutput) HibernateSupport() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DevBoxDefinition) pulumi.StringPtrOutput { return v.HibernateSupport }).(pulumi.StringPtrOutput)
@@ -292,6 +307,11 @@ func (o DevBoxDefinitionOutput) Tags() pulumi.StringMapOutput {
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o DevBoxDefinitionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *DevBoxDefinition) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// Validation status for the Dev Box Definition.
+func (o DevBoxDefinitionOutput) ValidationStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *DevBoxDefinition) pulumi.StringOutput { return v.ValidationStatus }).(pulumi.StringOutput)
 }
 
 func init() {

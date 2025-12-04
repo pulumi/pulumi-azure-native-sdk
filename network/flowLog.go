@@ -8,26 +8,32 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A flow log resource.
 //
-// Uses Azure REST API version 2023-02-01. In version 1.x of the Azure Native provider, it used API version 2020-11-01.
+// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
 //
-// Other available API versions: 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Other available API versions: 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type FlowLog struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Flag to enable/disable flow logging.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
+	// Optional field to filter network traffic logs based on SrcIP, SrcPort, DstIP, DstPort, Protocol, Encryption, Direction and Action. If not specified, all network traffic will be logged.
+	EnabledFilteringCriteria pulumi.StringPtrOutput `pulumi:"enabledFilteringCriteria"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Parameters that define the configuration of traffic analytics.
 	FlowAnalyticsConfiguration TrafficAnalyticsPropertiesResponsePtrOutput `pulumi:"flowAnalyticsConfiguration"`
 	// Parameters that define the flow log format.
 	Format FlowLogFormatParametersResponsePtrOutput `pulumi:"format"`
+	// FlowLog resource Managed Identity
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// Resource location.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Resource name.
@@ -155,6 +161,12 @@ func NewFlowLog(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20240501:FlowLog"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20240701:FlowLog"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20241001:FlowLog"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -192,6 +204,8 @@ func (FlowLogState) ElementType() reflect.Type {
 type flowLogArgs struct {
 	// Flag to enable/disable flow logging.
 	Enabled *bool `pulumi:"enabled"`
+	// Optional field to filter network traffic logs based on SrcIP, SrcPort, DstIP, DstPort, Protocol, Encryption, Direction and Action. If not specified, all network traffic will be logged.
+	EnabledFilteringCriteria *string `pulumi:"enabledFilteringCriteria"`
 	// Parameters that define the configuration of traffic analytics.
 	FlowAnalyticsConfiguration *TrafficAnalyticsProperties `pulumi:"flowAnalyticsConfiguration"`
 	// The name of the flow log.
@@ -200,6 +214,8 @@ type flowLogArgs struct {
 	Format *FlowLogFormatParameters `pulumi:"format"`
 	// Resource ID.
 	Id *string `pulumi:"id"`
+	// FlowLog resource Managed Identity
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// Resource location.
 	Location *string `pulumi:"location"`
 	// The name of the network watcher.
@@ -220,6 +236,8 @@ type flowLogArgs struct {
 type FlowLogArgs struct {
 	// Flag to enable/disable flow logging.
 	Enabled pulumi.BoolPtrInput
+	// Optional field to filter network traffic logs based on SrcIP, SrcPort, DstIP, DstPort, Protocol, Encryption, Direction and Action. If not specified, all network traffic will be logged.
+	EnabledFilteringCriteria pulumi.StringPtrInput
 	// Parameters that define the configuration of traffic analytics.
 	FlowAnalyticsConfiguration TrafficAnalyticsPropertiesPtrInput
 	// The name of the flow log.
@@ -228,6 +246,8 @@ type FlowLogArgs struct {
 	Format FlowLogFormatParametersPtrInput
 	// Resource ID.
 	Id pulumi.StringPtrInput
+	// FlowLog resource Managed Identity
+	Identity ManagedServiceIdentityPtrInput
 	// Resource location.
 	Location pulumi.StringPtrInput
 	// The name of the network watcher.
@@ -281,9 +301,19 @@ func (o FlowLogOutput) ToFlowLogOutputWithContext(ctx context.Context) FlowLogOu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o FlowLogOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *FlowLog) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Flag to enable/disable flow logging.
 func (o FlowLogOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *FlowLog) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Optional field to filter network traffic logs based on SrcIP, SrcPort, DstIP, DstPort, Protocol, Encryption, Direction and Action. If not specified, all network traffic will be logged.
+func (o FlowLogOutput) EnabledFilteringCriteria() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowLog) pulumi.StringPtrOutput { return v.EnabledFilteringCriteria }).(pulumi.StringPtrOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.
@@ -299,6 +329,11 @@ func (o FlowLogOutput) FlowAnalyticsConfiguration() TrafficAnalyticsPropertiesRe
 // Parameters that define the flow log format.
 func (o FlowLogOutput) Format() FlowLogFormatParametersResponsePtrOutput {
 	return o.ApplyT(func(v *FlowLog) FlowLogFormatParametersResponsePtrOutput { return v.Format }).(FlowLogFormatParametersResponsePtrOutput)
+}
+
+// FlowLog resource Managed Identity
+func (o FlowLogOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *FlowLog) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // Resource location.

@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents an attached NetworkConnection.
 //
-// Uses Azure REST API version 2023-04-01. In version 1.x of the Azure Native provider, it used API version 2022-09-01-preview.
+// Uses Azure REST API version 2024-02-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
 //
-// Other available API versions: 2023-08-01-preview, 2023-10-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01.
+// Other available API versions: 2023-04-01, 2023-08-01-preview, 2023-10-01-preview, 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01, 2025-04-01-preview, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devcenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type AttachedNetworkByDevCenter struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// AAD Join type of the network. This is populated based on the referenced Network Connection.
 	DomainJoinType pulumi.StringOutput `pulumi:"domainJoinType"`
 	// Health check status values
@@ -99,6 +101,12 @@ func NewAttachedNetworkByDevCenter(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:devcenter/v20250201:AttachedNetworkByDevCenter"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20250401preview:AttachedNetworkByDevCenter"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20250701preview:AttachedNetworkByDevCenter"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -192,6 +200,11 @@ func (o AttachedNetworkByDevCenterOutput) ToAttachedNetworkByDevCenterOutput() A
 
 func (o AttachedNetworkByDevCenterOutput) ToAttachedNetworkByDevCenterOutputWithContext(ctx context.Context) AttachedNetworkByDevCenterOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o AttachedNetworkByDevCenterOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AttachedNetworkByDevCenter) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // AAD Join type of the network. This is populated based on the referenced Network Connection.

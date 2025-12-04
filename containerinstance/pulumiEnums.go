@@ -10,6 +10,342 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Access tier for specific share. GpV2 account can choose between TransactionOptimized (default), Hot, and Cool. FileStorage account can choose Premium. Learn more at: https://learn.microsoft.com/en-us/rest/api/storagerp/file-shares/create?tabs=HTTP#shareaccesstier
+type AzureFileShareAccessTier string
+
+const (
+	AzureFileShareAccessTierCool                 = AzureFileShareAccessTier("Cool")
+	AzureFileShareAccessTierHot                  = AzureFileShareAccessTier("Hot")
+	AzureFileShareAccessTierPremium              = AzureFileShareAccessTier("Premium")
+	AzureFileShareAccessTierTransactionOptimized = AzureFileShareAccessTier("TransactionOptimized")
+)
+
+func (AzureFileShareAccessTier) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureFileShareAccessTier)(nil)).Elem()
+}
+
+func (e AzureFileShareAccessTier) ToAzureFileShareAccessTierOutput() AzureFileShareAccessTierOutput {
+	return pulumi.ToOutput(e).(AzureFileShareAccessTierOutput)
+}
+
+func (e AzureFileShareAccessTier) ToAzureFileShareAccessTierOutputWithContext(ctx context.Context) AzureFileShareAccessTierOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AzureFileShareAccessTierOutput)
+}
+
+func (e AzureFileShareAccessTier) ToAzureFileShareAccessTierPtrOutput() AzureFileShareAccessTierPtrOutput {
+	return e.ToAzureFileShareAccessTierPtrOutputWithContext(context.Background())
+}
+
+func (e AzureFileShareAccessTier) ToAzureFileShareAccessTierPtrOutputWithContext(ctx context.Context) AzureFileShareAccessTierPtrOutput {
+	return AzureFileShareAccessTier(e).ToAzureFileShareAccessTierOutputWithContext(ctx).ToAzureFileShareAccessTierPtrOutputWithContext(ctx)
+}
+
+func (e AzureFileShareAccessTier) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AzureFileShareAccessTier) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AzureFileShareAccessTier) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AzureFileShareAccessTier) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AzureFileShareAccessTierOutput struct{ *pulumi.OutputState }
+
+func (AzureFileShareAccessTierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureFileShareAccessTier)(nil)).Elem()
+}
+
+func (o AzureFileShareAccessTierOutput) ToAzureFileShareAccessTierOutput() AzureFileShareAccessTierOutput {
+	return o
+}
+
+func (o AzureFileShareAccessTierOutput) ToAzureFileShareAccessTierOutputWithContext(ctx context.Context) AzureFileShareAccessTierOutput {
+	return o
+}
+
+func (o AzureFileShareAccessTierOutput) ToAzureFileShareAccessTierPtrOutput() AzureFileShareAccessTierPtrOutput {
+	return o.ToAzureFileShareAccessTierPtrOutputWithContext(context.Background())
+}
+
+func (o AzureFileShareAccessTierOutput) ToAzureFileShareAccessTierPtrOutputWithContext(ctx context.Context) AzureFileShareAccessTierPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureFileShareAccessTier) *AzureFileShareAccessTier {
+		return &v
+	}).(AzureFileShareAccessTierPtrOutput)
+}
+
+func (o AzureFileShareAccessTierOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AzureFileShareAccessTierOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AzureFileShareAccessTier) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AzureFileShareAccessTierOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AzureFileShareAccessTierOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AzureFileShareAccessTier) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AzureFileShareAccessTierPtrOutput struct{ *pulumi.OutputState }
+
+func (AzureFileShareAccessTierPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureFileShareAccessTier)(nil)).Elem()
+}
+
+func (o AzureFileShareAccessTierPtrOutput) ToAzureFileShareAccessTierPtrOutput() AzureFileShareAccessTierPtrOutput {
+	return o
+}
+
+func (o AzureFileShareAccessTierPtrOutput) ToAzureFileShareAccessTierPtrOutputWithContext(ctx context.Context) AzureFileShareAccessTierPtrOutput {
+	return o
+}
+
+func (o AzureFileShareAccessTierPtrOutput) Elem() AzureFileShareAccessTierOutput {
+	return o.ApplyT(func(v *AzureFileShareAccessTier) AzureFileShareAccessTier {
+		if v != nil {
+			return *v
+		}
+		var ret AzureFileShareAccessTier
+		return ret
+	}).(AzureFileShareAccessTierOutput)
+}
+
+func (o AzureFileShareAccessTierPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AzureFileShareAccessTierPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AzureFileShareAccessTier) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AzureFileShareAccessTierInput is an input type that accepts values of the AzureFileShareAccessTier enum
+// A concrete instance of `AzureFileShareAccessTierInput` can be one of the following:
+//
+//	AzureFileShareAccessTierCool
+//	AzureFileShareAccessTierHot
+//	AzureFileShareAccessTierPremium
+//	AzureFileShareAccessTierTransactionOptimized
+type AzureFileShareAccessTierInput interface {
+	pulumi.Input
+
+	ToAzureFileShareAccessTierOutput() AzureFileShareAccessTierOutput
+	ToAzureFileShareAccessTierOutputWithContext(context.Context) AzureFileShareAccessTierOutput
+}
+
+var azureFileShareAccessTierPtrType = reflect.TypeOf((**AzureFileShareAccessTier)(nil)).Elem()
+
+type AzureFileShareAccessTierPtrInput interface {
+	pulumi.Input
+
+	ToAzureFileShareAccessTierPtrOutput() AzureFileShareAccessTierPtrOutput
+	ToAzureFileShareAccessTierPtrOutputWithContext(context.Context) AzureFileShareAccessTierPtrOutput
+}
+
+type azureFileShareAccessTierPtr string
+
+func AzureFileShareAccessTierPtr(v string) AzureFileShareAccessTierPtrInput {
+	return (*azureFileShareAccessTierPtr)(&v)
+}
+
+func (*azureFileShareAccessTierPtr) ElementType() reflect.Type {
+	return azureFileShareAccessTierPtrType
+}
+
+func (in *azureFileShareAccessTierPtr) ToAzureFileShareAccessTierPtrOutput() AzureFileShareAccessTierPtrOutput {
+	return pulumi.ToOutput(in).(AzureFileShareAccessTierPtrOutput)
+}
+
+func (in *azureFileShareAccessTierPtr) ToAzureFileShareAccessTierPtrOutputWithContext(ctx context.Context) AzureFileShareAccessTierPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AzureFileShareAccessTierPtrOutput)
+}
+
+// Specifies how Container Groups can access the Azure file share i.e. all CG will share same Azure file share or going to have exclusive file share.
+type AzureFileShareAccessType string
+
+const (
+	AzureFileShareAccessTypeShared    = AzureFileShareAccessType("Shared")
+	AzureFileShareAccessTypeExclusive = AzureFileShareAccessType("Exclusive")
+)
+
+func (AzureFileShareAccessType) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureFileShareAccessType)(nil)).Elem()
+}
+
+func (e AzureFileShareAccessType) ToAzureFileShareAccessTypeOutput() AzureFileShareAccessTypeOutput {
+	return pulumi.ToOutput(e).(AzureFileShareAccessTypeOutput)
+}
+
+func (e AzureFileShareAccessType) ToAzureFileShareAccessTypeOutputWithContext(ctx context.Context) AzureFileShareAccessTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AzureFileShareAccessTypeOutput)
+}
+
+func (e AzureFileShareAccessType) ToAzureFileShareAccessTypePtrOutput() AzureFileShareAccessTypePtrOutput {
+	return e.ToAzureFileShareAccessTypePtrOutputWithContext(context.Background())
+}
+
+func (e AzureFileShareAccessType) ToAzureFileShareAccessTypePtrOutputWithContext(ctx context.Context) AzureFileShareAccessTypePtrOutput {
+	return AzureFileShareAccessType(e).ToAzureFileShareAccessTypeOutputWithContext(ctx).ToAzureFileShareAccessTypePtrOutputWithContext(ctx)
+}
+
+func (e AzureFileShareAccessType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AzureFileShareAccessType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AzureFileShareAccessType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AzureFileShareAccessType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AzureFileShareAccessTypeOutput struct{ *pulumi.OutputState }
+
+func (AzureFileShareAccessTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureFileShareAccessType)(nil)).Elem()
+}
+
+func (o AzureFileShareAccessTypeOutput) ToAzureFileShareAccessTypeOutput() AzureFileShareAccessTypeOutput {
+	return o
+}
+
+func (o AzureFileShareAccessTypeOutput) ToAzureFileShareAccessTypeOutputWithContext(ctx context.Context) AzureFileShareAccessTypeOutput {
+	return o
+}
+
+func (o AzureFileShareAccessTypeOutput) ToAzureFileShareAccessTypePtrOutput() AzureFileShareAccessTypePtrOutput {
+	return o.ToAzureFileShareAccessTypePtrOutputWithContext(context.Background())
+}
+
+func (o AzureFileShareAccessTypeOutput) ToAzureFileShareAccessTypePtrOutputWithContext(ctx context.Context) AzureFileShareAccessTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureFileShareAccessType) *AzureFileShareAccessType {
+		return &v
+	}).(AzureFileShareAccessTypePtrOutput)
+}
+
+func (o AzureFileShareAccessTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AzureFileShareAccessTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AzureFileShareAccessType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AzureFileShareAccessTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AzureFileShareAccessTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AzureFileShareAccessType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AzureFileShareAccessTypePtrOutput struct{ *pulumi.OutputState }
+
+func (AzureFileShareAccessTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureFileShareAccessType)(nil)).Elem()
+}
+
+func (o AzureFileShareAccessTypePtrOutput) ToAzureFileShareAccessTypePtrOutput() AzureFileShareAccessTypePtrOutput {
+	return o
+}
+
+func (o AzureFileShareAccessTypePtrOutput) ToAzureFileShareAccessTypePtrOutputWithContext(ctx context.Context) AzureFileShareAccessTypePtrOutput {
+	return o
+}
+
+func (o AzureFileShareAccessTypePtrOutput) Elem() AzureFileShareAccessTypeOutput {
+	return o.ApplyT(func(v *AzureFileShareAccessType) AzureFileShareAccessType {
+		if v != nil {
+			return *v
+		}
+		var ret AzureFileShareAccessType
+		return ret
+	}).(AzureFileShareAccessTypeOutput)
+}
+
+func (o AzureFileShareAccessTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AzureFileShareAccessTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AzureFileShareAccessType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AzureFileShareAccessTypeInput is an input type that accepts values of the AzureFileShareAccessType enum
+// A concrete instance of `AzureFileShareAccessTypeInput` can be one of the following:
+//
+//	AzureFileShareAccessTypeShared
+//	AzureFileShareAccessTypeExclusive
+type AzureFileShareAccessTypeInput interface {
+	pulumi.Input
+
+	ToAzureFileShareAccessTypeOutput() AzureFileShareAccessTypeOutput
+	ToAzureFileShareAccessTypeOutputWithContext(context.Context) AzureFileShareAccessTypeOutput
+}
+
+var azureFileShareAccessTypePtrType = reflect.TypeOf((**AzureFileShareAccessType)(nil)).Elem()
+
+type AzureFileShareAccessTypePtrInput interface {
+	pulumi.Input
+
+	ToAzureFileShareAccessTypePtrOutput() AzureFileShareAccessTypePtrOutput
+	ToAzureFileShareAccessTypePtrOutputWithContext(context.Context) AzureFileShareAccessTypePtrOutput
+}
+
+type azureFileShareAccessTypePtr string
+
+func AzureFileShareAccessTypePtr(v string) AzureFileShareAccessTypePtrInput {
+	return (*azureFileShareAccessTypePtr)(&v)
+}
+
+func (*azureFileShareAccessTypePtr) ElementType() reflect.Type {
+	return azureFileShareAccessTypePtrType
+}
+
+func (in *azureFileShareAccessTypePtr) ToAzureFileShareAccessTypePtrOutput() AzureFileShareAccessTypePtrOutput {
+	return pulumi.ToOutput(in).(AzureFileShareAccessTypePtrOutput)
+}
+
+func (in *azureFileShareAccessTypePtr) ToAzureFileShareAccessTypePtrOutputWithContext(ctx context.Context) AzureFileShareAccessTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AzureFileShareAccessTypePtrOutput)
+}
+
 // Specifies if the IP is exposed to the public internet or private VNET.
 type ContainerGroupIpAddressType string
 
@@ -1519,6 +1855,171 @@ func (in *logAnalyticsLogTypePtr) ToLogAnalyticsLogTypePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(LogAnalyticsLogTypePtrOutput)
 }
 
+type NGroupUpdateMode string
+
+const (
+	NGroupUpdateModeManual  = NGroupUpdateMode("Manual")
+	NGroupUpdateModeRolling = NGroupUpdateMode("Rolling")
+)
+
+func (NGroupUpdateMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*NGroupUpdateMode)(nil)).Elem()
+}
+
+func (e NGroupUpdateMode) ToNGroupUpdateModeOutput() NGroupUpdateModeOutput {
+	return pulumi.ToOutput(e).(NGroupUpdateModeOutput)
+}
+
+func (e NGroupUpdateMode) ToNGroupUpdateModeOutputWithContext(ctx context.Context) NGroupUpdateModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(NGroupUpdateModeOutput)
+}
+
+func (e NGroupUpdateMode) ToNGroupUpdateModePtrOutput() NGroupUpdateModePtrOutput {
+	return e.ToNGroupUpdateModePtrOutputWithContext(context.Background())
+}
+
+func (e NGroupUpdateMode) ToNGroupUpdateModePtrOutputWithContext(ctx context.Context) NGroupUpdateModePtrOutput {
+	return NGroupUpdateMode(e).ToNGroupUpdateModeOutputWithContext(ctx).ToNGroupUpdateModePtrOutputWithContext(ctx)
+}
+
+func (e NGroupUpdateMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NGroupUpdateMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NGroupUpdateMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e NGroupUpdateMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type NGroupUpdateModeOutput struct{ *pulumi.OutputState }
+
+func (NGroupUpdateModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NGroupUpdateMode)(nil)).Elem()
+}
+
+func (o NGroupUpdateModeOutput) ToNGroupUpdateModeOutput() NGroupUpdateModeOutput {
+	return o
+}
+
+func (o NGroupUpdateModeOutput) ToNGroupUpdateModeOutputWithContext(ctx context.Context) NGroupUpdateModeOutput {
+	return o
+}
+
+func (o NGroupUpdateModeOutput) ToNGroupUpdateModePtrOutput() NGroupUpdateModePtrOutput {
+	return o.ToNGroupUpdateModePtrOutputWithContext(context.Background())
+}
+
+func (o NGroupUpdateModeOutput) ToNGroupUpdateModePtrOutputWithContext(ctx context.Context) NGroupUpdateModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NGroupUpdateMode) *NGroupUpdateMode {
+		return &v
+	}).(NGroupUpdateModePtrOutput)
+}
+
+func (o NGroupUpdateModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o NGroupUpdateModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NGroupUpdateMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o NGroupUpdateModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NGroupUpdateModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NGroupUpdateMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type NGroupUpdateModePtrOutput struct{ *pulumi.OutputState }
+
+func (NGroupUpdateModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NGroupUpdateMode)(nil)).Elem()
+}
+
+func (o NGroupUpdateModePtrOutput) ToNGroupUpdateModePtrOutput() NGroupUpdateModePtrOutput {
+	return o
+}
+
+func (o NGroupUpdateModePtrOutput) ToNGroupUpdateModePtrOutputWithContext(ctx context.Context) NGroupUpdateModePtrOutput {
+	return o
+}
+
+func (o NGroupUpdateModePtrOutput) Elem() NGroupUpdateModeOutput {
+	return o.ApplyT(func(v *NGroupUpdateMode) NGroupUpdateMode {
+		if v != nil {
+			return *v
+		}
+		var ret NGroupUpdateMode
+		return ret
+	}).(NGroupUpdateModeOutput)
+}
+
+func (o NGroupUpdateModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NGroupUpdateModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *NGroupUpdateMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// NGroupUpdateModeInput is an input type that accepts values of the NGroupUpdateMode enum
+// A concrete instance of `NGroupUpdateModeInput` can be one of the following:
+//
+//	NGroupUpdateModeManual
+//	NGroupUpdateModeRolling
+type NGroupUpdateModeInput interface {
+	pulumi.Input
+
+	ToNGroupUpdateModeOutput() NGroupUpdateModeOutput
+	ToNGroupUpdateModeOutputWithContext(context.Context) NGroupUpdateModeOutput
+}
+
+var ngroupUpdateModePtrType = reflect.TypeOf((**NGroupUpdateMode)(nil)).Elem()
+
+type NGroupUpdateModePtrInput interface {
+	pulumi.Input
+
+	ToNGroupUpdateModePtrOutput() NGroupUpdateModePtrOutput
+	ToNGroupUpdateModePtrOutputWithContext(context.Context) NGroupUpdateModePtrOutput
+}
+
+type ngroupUpdateModePtr string
+
+func NGroupUpdateModePtr(v string) NGroupUpdateModePtrInput {
+	return (*ngroupUpdateModePtr)(&v)
+}
+
+func (*ngroupUpdateModePtr) ElementType() reflect.Type {
+	return ngroupUpdateModePtrType
+}
+
+func (in *ngroupUpdateModePtr) ToNGroupUpdateModePtrOutput() NGroupUpdateModePtrOutput {
+	return pulumi.ToOutput(in).(NGroupUpdateModePtrOutput)
+}
+
+func (in *ngroupUpdateModePtr) ToNGroupUpdateModePtrOutputWithContext(ctx context.Context) NGroupUpdateModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(NGroupUpdateModePtrOutput)
+}
+
 // The operating system type required by the containers in the container group.
 type OperatingSystemTypes string
 
@@ -1685,7 +2186,173 @@ func (in *operatingSystemTypesPtr) ToOperatingSystemTypesPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(OperatingSystemTypesPtrOutput)
 }
 
-// The type of identity used for the container scale set. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the nGroup.
+// The priority of the container group.
+type Priority string
+
+const (
+	PriorityRegular = Priority("Regular")
+	PrioritySpot    = Priority("Spot")
+)
+
+func (Priority) ElementType() reflect.Type {
+	return reflect.TypeOf((*Priority)(nil)).Elem()
+}
+
+func (e Priority) ToPriorityOutput() PriorityOutput {
+	return pulumi.ToOutput(e).(PriorityOutput)
+}
+
+func (e Priority) ToPriorityOutputWithContext(ctx context.Context) PriorityOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PriorityOutput)
+}
+
+func (e Priority) ToPriorityPtrOutput() PriorityPtrOutput {
+	return e.ToPriorityPtrOutputWithContext(context.Background())
+}
+
+func (e Priority) ToPriorityPtrOutputWithContext(ctx context.Context) PriorityPtrOutput {
+	return Priority(e).ToPriorityOutputWithContext(ctx).ToPriorityPtrOutputWithContext(ctx)
+}
+
+func (e Priority) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e Priority) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e Priority) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e Priority) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type PriorityOutput struct{ *pulumi.OutputState }
+
+func (PriorityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Priority)(nil)).Elem()
+}
+
+func (o PriorityOutput) ToPriorityOutput() PriorityOutput {
+	return o
+}
+
+func (o PriorityOutput) ToPriorityOutputWithContext(ctx context.Context) PriorityOutput {
+	return o
+}
+
+func (o PriorityOutput) ToPriorityPtrOutput() PriorityPtrOutput {
+	return o.ToPriorityPtrOutputWithContext(context.Background())
+}
+
+func (o PriorityOutput) ToPriorityPtrOutputWithContext(ctx context.Context) PriorityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Priority) *Priority {
+		return &v
+	}).(PriorityPtrOutput)
+}
+
+func (o PriorityOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PriorityOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e Priority) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PriorityOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PriorityOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e Priority) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PriorityPtrOutput struct{ *pulumi.OutputState }
+
+func (PriorityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Priority)(nil)).Elem()
+}
+
+func (o PriorityPtrOutput) ToPriorityPtrOutput() PriorityPtrOutput {
+	return o
+}
+
+func (o PriorityPtrOutput) ToPriorityPtrOutputWithContext(ctx context.Context) PriorityPtrOutput {
+	return o
+}
+
+func (o PriorityPtrOutput) Elem() PriorityOutput {
+	return o.ApplyT(func(v *Priority) Priority {
+		if v != nil {
+			return *v
+		}
+		var ret Priority
+		return ret
+	}).(PriorityOutput)
+}
+
+func (o PriorityPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PriorityPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *Priority) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// PriorityInput is an input type that accepts values of the Priority enum
+// A concrete instance of `PriorityInput` can be one of the following:
+//
+//	PriorityRegular
+//	PrioritySpot
+type PriorityInput interface {
+	pulumi.Input
+
+	ToPriorityOutput() PriorityOutput
+	ToPriorityOutputWithContext(context.Context) PriorityOutput
+}
+
+var priorityPtrType = reflect.TypeOf((**Priority)(nil)).Elem()
+
+type PriorityPtrInput interface {
+	pulumi.Input
+
+	ToPriorityPtrOutput() PriorityPtrOutput
+	ToPriorityPtrOutputWithContext(context.Context) PriorityPtrOutput
+}
+
+type priorityPtr string
+
+func PriorityPtr(v string) PriorityPtrInput {
+	return (*priorityPtr)(&v)
+}
+
+func (*priorityPtr) ElementType() reflect.Type {
+	return priorityPtrType
+}
+
+func (in *priorityPtr) ToPriorityPtrOutput() PriorityPtrOutput {
+	return pulumi.ToOutput(in).(PriorityPtrOutput)
+}
+
+func (in *priorityPtr) ToPriorityPtrOutputWithContext(ctx context.Context) PriorityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PriorityPtrOutput)
+}
+
+// The type of identity used for the NGroup. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the NGroup.
 type ResourceIdentityType string
 
 const (
@@ -2022,6 +2689,10 @@ func (in *schemePtr) ToSchemePtrOutputWithContext(ctx context.Context) SchemePtr
 }
 
 func init() {
+	pulumi.RegisterOutputType(AzureFileShareAccessTierOutput{})
+	pulumi.RegisterOutputType(AzureFileShareAccessTierPtrOutput{})
+	pulumi.RegisterOutputType(AzureFileShareAccessTypeOutput{})
+	pulumi.RegisterOutputType(AzureFileShareAccessTypePtrOutput{})
 	pulumi.RegisterOutputType(ContainerGroupIpAddressTypeOutput{})
 	pulumi.RegisterOutputType(ContainerGroupIpAddressTypePtrOutput{})
 	pulumi.RegisterOutputType(ContainerGroupNetworkProtocolOutput{})
@@ -2040,8 +2711,12 @@ func init() {
 	pulumi.RegisterOutputType(GpuSkuPtrOutput{})
 	pulumi.RegisterOutputType(LogAnalyticsLogTypeOutput{})
 	pulumi.RegisterOutputType(LogAnalyticsLogTypePtrOutput{})
+	pulumi.RegisterOutputType(NGroupUpdateModeOutput{})
+	pulumi.RegisterOutputType(NGroupUpdateModePtrOutput{})
 	pulumi.RegisterOutputType(OperatingSystemTypesOutput{})
 	pulumi.RegisterOutputType(OperatingSystemTypesPtrOutput{})
+	pulumi.RegisterOutputType(PriorityOutput{})
+	pulumi.RegisterOutputType(PriorityPtrOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityTypeOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityTypePtrOutput{})
 	pulumi.RegisterOutputType(SchemeOutput{})

@@ -8,20 +8,22 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The NSP resource association resource
 //
-// Uses Azure REST API version 2021-02-01-preview. In version 1.x of the Azure Native provider, it used API version 2021-02-01-preview.
+// Uses Azure REST API version 2023-08-01-preview. In version 2.x of the Azure Native provider, it used API version 2021-02-01-preview.
 //
-// Other available API versions: 2023-07-01-preview, 2023-08-01-preview.
+// Other available API versions: 2021-02-01-preview, 2023-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type NspAssociation struct {
 	pulumi.CustomResourceState
 
 	// Access mode on the association.
 	AccessMode pulumi.StringPtrOutput `pulumi:"accessMode"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Specifies if there are provisioning issues
 	HasProvisioningIssues pulumi.StringOutput `pulumi:"hasProvisioningIssues"`
 	// Resource location.
@@ -65,6 +67,12 @@ func NewNspAssociation(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240601preview:NspAssociation"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20240701:NspAssociation"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20241001:NspAssociation"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -187,6 +195,11 @@ func (o NspAssociationOutput) ToNspAssociationOutputWithContext(ctx context.Cont
 // Access mode on the association.
 func (o NspAssociationOutput) AccessMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NspAssociation) pulumi.StringPtrOutput { return v.AccessMode }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o NspAssociationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *NspAssociation) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Specifies if there are provisioning issues

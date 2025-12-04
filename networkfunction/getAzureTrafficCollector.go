@@ -7,15 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified Azure Traffic Collector in a specified resource group
 //
 // Uses Azure REST API version 2022-11-01.
-//
-// Other available API versions: 2022-08-01.
 func LookupAzureTrafficCollector(ctx *pulumi.Context, args *LookupAzureTrafficCollectorArgs, opts ...pulumi.InvokeOption) (*LookupAzureTrafficCollectorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAzureTrafficCollectorResult
@@ -35,6 +33,8 @@ type LookupAzureTrafficCollectorArgs struct {
 
 // Azure Traffic Collector resource.
 type LookupAzureTrafficCollectorResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Collector Policies for Azure Traffic Collector.
 	CollectorPolicies []ResourceReferenceResponse `pulumi:"collectorPolicies"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -90,6 +90,11 @@ func (o LookupAzureTrafficCollectorResultOutput) ToLookupAzureTrafficCollectorRe
 
 func (o LookupAzureTrafficCollectorResultOutput) ToLookupAzureTrafficCollectorResultOutputWithContext(ctx context.Context) LookupAzureTrafficCollectorResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupAzureTrafficCollectorResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAzureTrafficCollectorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Collector Policies for Azure Traffic Collector.

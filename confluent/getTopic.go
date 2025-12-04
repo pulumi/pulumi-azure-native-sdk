@@ -7,13 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Details of topic record
+// Get confluent topic by Name
 //
 // Uses Azure REST API version 2024-07-01.
+//
+// Other available API versions: 2025-07-17-preview, 2025-08-18-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupTopic(ctx *pulumi.Context, args *LookupTopicArgs, opts ...pulumi.InvokeOption) (*LookupTopicResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTopicResult
@@ -39,9 +41,11 @@ type LookupTopicArgs struct {
 
 // Details of topic record
 type LookupTopicResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Config Specification of the topic
 	Configs *TopicsRelatedLinkResponse `pulumi:"configs"`
-	// The ARM Resource Id of the Topic
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Input Config Specification of the topic
 	InputConfigs []TopicsInputConfigResponse `pulumi:"inputConfigs"`
@@ -49,7 +53,7 @@ type LookupTopicResult struct {
 	Kind *string `pulumi:"kind"`
 	// Metadata of the record
 	Metadata *TopicMetadataEntityResponse `pulumi:"metadata"`
-	// Display name of the topic
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Partition Specification of the topic
 	Partitions *TopicsRelatedLinkResponse `pulumi:"partitions"`
@@ -59,9 +63,11 @@ type LookupTopicResult struct {
 	PartitionsReassignments *TopicsRelatedLinkResponse `pulumi:"partitionsReassignments"`
 	// Replication factor of the topic
 	ReplicationFactor *string `pulumi:"replicationFactor"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Topic Id returned by Confluent
 	TopicId *string `pulumi:"topicId"`
-	// The type of the resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -106,12 +112,17 @@ func (o LookupTopicResultOutput) ToLookupTopicResultOutputWithContext(ctx contex
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupTopicResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTopicResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Config Specification of the topic
 func (o LookupTopicResultOutput) Configs() TopicsRelatedLinkResponsePtrOutput {
 	return o.ApplyT(func(v LookupTopicResult) *TopicsRelatedLinkResponse { return v.Configs }).(TopicsRelatedLinkResponsePtrOutput)
 }
 
-// The ARM Resource Id of the Topic
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupTopicResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTopicResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -131,7 +142,7 @@ func (o LookupTopicResultOutput) Metadata() TopicMetadataEntityResponsePtrOutput
 	return o.ApplyT(func(v LookupTopicResult) *TopicMetadataEntityResponse { return v.Metadata }).(TopicMetadataEntityResponsePtrOutput)
 }
 
-// Display name of the topic
+// The name of the resource
 func (o LookupTopicResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTopicResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -156,12 +167,17 @@ func (o LookupTopicResultOutput) ReplicationFactor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupTopicResult) *string { return v.ReplicationFactor }).(pulumi.StringPtrOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupTopicResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupTopicResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
 // Topic Id returned by Confluent
 func (o LookupTopicResultOutput) TopicId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupTopicResult) *string { return v.TopicId }).(pulumi.StringPtrOutput)
 }
 
-// The type of the resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupTopicResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTopicResult) string { return v.Type }).(pulumi.StringOutput)
 }

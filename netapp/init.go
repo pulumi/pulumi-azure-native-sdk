@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,20 +29,24 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BackupPolicy{}
 	case "azure-native:netapp:BackupVault":
 		r = &BackupVault{}
-	case "azure-native:netapp:Pool":
-		r = &Pool{}
-	case "azure-native:netapp:Snapshot":
-		r = &Snapshot{}
+	case "azure-native:netapp:CapacityPool":
+		r = &CapacityPool{}
+	case "azure-native:netapp:CapacityPoolBackup":
+		r = &CapacityPoolBackup{}
+	case "azure-native:netapp:CapacityPoolBucket":
+		r = &CapacityPoolBucket{}
+	case "azure-native:netapp:CapacityPoolSnapshot":
+		r = &CapacityPoolSnapshot{}
+	case "azure-native:netapp:CapacityPoolSubvolume":
+		r = &CapacityPoolSubvolume{}
+	case "azure-native:netapp:CapacityPoolVolume":
+		r = &CapacityPoolVolume{}
+	case "azure-native:netapp:CapacityPoolVolumeQuotaRule":
+		r = &CapacityPoolVolumeQuotaRule{}
 	case "azure-native:netapp:SnapshotPolicy":
 		r = &SnapshotPolicy{}
-	case "azure-native:netapp:Subvolume":
-		r = &Subvolume{}
-	case "azure-native:netapp:Volume":
-		r = &Volume{}
 	case "azure-native:netapp:VolumeGroup":
 		r = &VolumeGroup{}
-	case "azure-native:netapp:VolumeQuotaRule":
-		r = &VolumeQuotaRule{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
