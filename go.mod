@@ -2,11 +2,11 @@ module github.com/pulumi/pulumi-azure-native-sdk/v2
 
 go 1.24.0
 
-toolchain go1.24.10
+toolchain go1.24.11
 
 require (
 	github.com/blang/semver v3.5.1+incompatible
-	github.com/pulumi/pulumi/sdk/v3 v3.209.0
+	github.com/pulumi/pulumi/sdk/v3 v3.210.0
 )
 
 require (
