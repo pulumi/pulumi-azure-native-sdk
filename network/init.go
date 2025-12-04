@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -51,26 +51,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DefaultAdminRule{}
 	case "azure-native:network:DefaultUserRule":
 		r = &DefaultUserRule{}
-	case "azure-native:network:DnsForwardingRuleset":
-		r = &DnsForwardingRuleset{}
-	case "azure-native:network:DnsResolver":
-		r = &DnsResolver{}
-	case "azure-native:network:DnsResolverDomainList":
-		r = &DnsResolverDomainList{}
-	case "azure-native:network:DnsResolverPolicy":
-		r = &DnsResolverPolicy{}
-	case "azure-native:network:DnsResolverPolicyVirtualNetworkLink":
-		r = &DnsResolverPolicyVirtualNetworkLink{}
-	case "azure-native:network:DnsSecurityRule":
-		r = &DnsSecurityRule{}
-	case "azure-native:network:DnssecConfig":
-		r = &DnssecConfig{}
 	case "azure-native:network:DscpConfiguration":
 		r = &DscpConfiguration{}
-	case "azure-native:network:Endpoint":
-		r = &Endpoint{}
-	case "azure-native:network:Experiment":
-		r = &Experiment{}
 	case "azure-native:network:ExpressRouteCircuit":
 		r = &ExpressRouteCircuit{}
 	case "azure-native:network:ExpressRouteCircuitAuthorization":
@@ -101,16 +83,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &FirewallPolicyRuleGroup{}
 	case "azure-native:network:FlowLog":
 		r = &FlowLog{}
-	case "azure-native:network:ForwardingRule":
-		r = &ForwardingRule{}
-	case "azure-native:network:FrontDoor":
-		r = &FrontDoor{}
 	case "azure-native:network:HubRouteTable":
 		r = &HubRouteTable{}
 	case "azure-native:network:HubVirtualNetworkConnection":
 		r = &HubVirtualNetworkConnection{}
-	case "azure-native:network:InboundEndpoint":
-		r = &InboundEndpoint{}
 	case "azure-native:network:InboundNatRule":
 		r = &InboundNatRule{}
 	case "azure-native:network:InterfaceEndpoint":
@@ -133,8 +109,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NatGateway{}
 	case "azure-native:network:NatRule":
 		r = &NatRule{}
-	case "azure-native:network:NetworkExperimentProfile":
-		r = &NetworkExperimentProfile{}
 	case "azure-native:network:NetworkGroup":
 		r = &NetworkGroup{}
 	case "azure-native:network:NetworkInterface":
@@ -175,16 +149,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NspLink{}
 	case "azure-native:network:NspProfile":
 		r = &NspProfile{}
-	case "azure-native:network:OutboundEndpoint":
-		r = &OutboundEndpoint{}
 	case "azure-native:network:P2sVpnGateway":
 		r = &P2sVpnGateway{}
 	case "azure-native:network:P2sVpnServerConfiguration":
 		r = &P2sVpnServerConfiguration{}
 	case "azure-native:network:PacketCapture":
 		r = &PacketCapture{}
-	case "azure-native:network:Policy":
-		r = &Policy{}
 	case "azure-native:network:PrivateDnsZoneGroup":
 		r = &PrivateDnsZoneGroup{}
 	case "azure-native:network:PrivateEndpoint":
@@ -193,14 +163,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PrivateLinkService{}
 	case "azure-native:network:PrivateLinkServicePrivateEndpointConnection":
 		r = &PrivateLinkServicePrivateEndpointConnection{}
-	case "azure-native:network:PrivateRecordSet":
-		r = &PrivateRecordSet{}
-	case "azure-native:network:PrivateResolverVirtualNetworkLink":
-		r = &PrivateResolverVirtualNetworkLink{}
-	case "azure-native:network:PrivateZone":
-		r = &PrivateZone{}
-	case "azure-native:network:Profile":
-		r = &Profile{}
 	case "azure-native:network:PublicIPAddress":
 		r = &PublicIPAddress{}
 	case "azure-native:network:PublicIPPrefix":
@@ -209,8 +171,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ReachabilityAnalysisIntent{}
 	case "azure-native:network:ReachabilityAnalysisRun":
 		r = &ReachabilityAnalysisRun{}
-	case "azure-native:network:RecordSet":
-		r = &RecordSet{}
 	case "azure-native:network:Route":
 		r = &Route{}
 	case "azure-native:network:RouteFilter":
@@ -227,8 +187,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RoutingRule{}
 	case "azure-native:network:RoutingRuleCollection":
 		r = &RoutingRuleCollection{}
-	case "azure-native:network:RulesEngine":
-		r = &RulesEngine{}
 	case "azure-native:network:ScopeConnection":
 		r = &ScopeConnection{}
 	case "azure-native:network:SecurityAdminConfiguration":
@@ -255,8 +213,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Subnet{}
 	case "azure-native:network:SubscriptionNetworkManagerConnection":
 		r = &SubscriptionNetworkManagerConnection{}
-	case "azure-native:network:TrafficManagerUserMetricsKey":
-		r = &TrafficManagerUserMetricsKey{}
 	case "azure-native:network:UserRule":
 		r = &UserRule{}
 	case "azure-native:network:UserRuleCollection":
@@ -281,8 +237,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &VirtualNetworkGatewayConnection{}
 	case "azure-native:network:VirtualNetworkGatewayNatRule":
 		r = &VirtualNetworkGatewayNatRule{}
-	case "azure-native:network:VirtualNetworkLink":
-		r = &VirtualNetworkLink{}
 	case "azure-native:network:VirtualNetworkPeering":
 		r = &VirtualNetworkPeering{}
 	case "azure-native:network:VirtualNetworkTap":
@@ -303,8 +257,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &VpnSite{}
 	case "azure-native:network:WebApplicationFirewallPolicy":
 		r = &WebApplicationFirewallPolicy{}
-	case "azure-native:network:Zone":
-		r = &Zone{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

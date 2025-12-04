@@ -8,33 +8,41 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A global reach connection resource
 //
-// Uses Azure REST API version 2022-05-01. In version 1.x of the Azure Native provider, it used API version 2020-07-17-preview.
+// Uses Azure REST API version 2023-09-01. In version 2.x of the Azure Native provider, it used API version 2022-05-01.
 //
-// Other available API versions: 2023-03-01, 2023-09-01.
+// Other available API versions: 2022-05-01, 2023-03-01, 2024-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native avs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type GlobalReachConnection struct {
 	pulumi.CustomResourceState
 
-	// The network used for global reach carved out from the original network block provided for the private cloud
+	// The network used for global reach carved out from the original network block
+	// provided for the private cloud
 	AddressPrefix pulumi.StringOutput `pulumi:"addressPrefix"`
-	// Authorization key from the peer express route used for the global reach connection
+	// Authorization key from the peer express route used for the global reach
+	// connection
 	AuthorizationKey pulumi.StringPtrOutput `pulumi:"authorizationKey"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The connection status of the global reach connection
 	CircuitConnectionStatus pulumi.StringOutput `pulumi:"circuitConnectionStatus"`
-	// The ID of the Private Cloud's ExpressRoute Circuit that is participating in the global reach connection
+	// The ID of the Private Cloud's ExpressRoute Circuit that is participating in the
+	// global reach connection
 	ExpressRouteId pulumi.StringPtrOutput `pulumi:"expressRouteId"`
-	// Resource name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Identifier of the ExpressRoute Circuit to peer with in the global reach connection
+	// Identifier of the ExpressRoute Circuit to peer with in the global reach
+	// connection
 	PeerExpressRouteCircuit pulumi.StringPtrOutput `pulumi:"peerExpressRouteCircuit"`
 	// The state of the  ExpressRoute Circuit Authorization provisioning
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// Resource type.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -73,6 +81,9 @@ func NewGlobalReachConnection(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:avs/v20230901:GlobalReachConnection"),
 		},
+		{
+			Type: pulumi.String("azure-native:avs/v20240901:GlobalReachConnection"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -108,15 +119,18 @@ func (GlobalReachConnectionState) ElementType() reflect.Type {
 }
 
 type globalReachConnectionArgs struct {
-	// Authorization key from the peer express route used for the global reach connection
+	// Authorization key from the peer express route used for the global reach
+	// connection
 	AuthorizationKey *string `pulumi:"authorizationKey"`
-	// The ID of the Private Cloud's ExpressRoute Circuit that is participating in the global reach connection
+	// The ID of the Private Cloud's ExpressRoute Circuit that is participating in the
+	// global reach connection
 	ExpressRouteId *string `pulumi:"expressRouteId"`
-	// Name of the global reach connection in the private cloud
+	// Name of the global reach connection
 	GlobalReachConnectionName *string `pulumi:"globalReachConnectionName"`
-	// Identifier of the ExpressRoute Circuit to peer with in the global reach connection
+	// Identifier of the ExpressRoute Circuit to peer with in the global reach
+	// connection
 	PeerExpressRouteCircuit *string `pulumi:"peerExpressRouteCircuit"`
-	// The name of the private cloud.
+	// Name of the private cloud
 	PrivateCloudName string `pulumi:"privateCloudName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -124,15 +138,18 @@ type globalReachConnectionArgs struct {
 
 // The set of arguments for constructing a GlobalReachConnection resource.
 type GlobalReachConnectionArgs struct {
-	// Authorization key from the peer express route used for the global reach connection
+	// Authorization key from the peer express route used for the global reach
+	// connection
 	AuthorizationKey pulumi.StringPtrInput
-	// The ID of the Private Cloud's ExpressRoute Circuit that is participating in the global reach connection
+	// The ID of the Private Cloud's ExpressRoute Circuit that is participating in the
+	// global reach connection
 	ExpressRouteId pulumi.StringPtrInput
-	// Name of the global reach connection in the private cloud
+	// Name of the global reach connection
 	GlobalReachConnectionName pulumi.StringPtrInput
-	// Identifier of the ExpressRoute Circuit to peer with in the global reach connection
+	// Identifier of the ExpressRoute Circuit to peer with in the global reach
+	// connection
 	PeerExpressRouteCircuit pulumi.StringPtrInput
-	// The name of the private cloud.
+	// Name of the private cloud
 	PrivateCloudName pulumi.StringInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
@@ -175,14 +192,21 @@ func (o GlobalReachConnectionOutput) ToGlobalReachConnectionOutputWithContext(ct
 	return o
 }
 
-// The network used for global reach carved out from the original network block provided for the private cloud
+// The network used for global reach carved out from the original network block
+// provided for the private cloud
 func (o GlobalReachConnectionOutput) AddressPrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalReachConnection) pulumi.StringOutput { return v.AddressPrefix }).(pulumi.StringOutput)
 }
 
-// Authorization key from the peer express route used for the global reach connection
+// Authorization key from the peer express route used for the global reach
+// connection
 func (o GlobalReachConnectionOutput) AuthorizationKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GlobalReachConnection) pulumi.StringPtrOutput { return v.AuthorizationKey }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o GlobalReachConnectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalReachConnection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The connection status of the global reach connection
@@ -190,17 +214,19 @@ func (o GlobalReachConnectionOutput) CircuitConnectionStatus() pulumi.StringOutp
 	return o.ApplyT(func(v *GlobalReachConnection) pulumi.StringOutput { return v.CircuitConnectionStatus }).(pulumi.StringOutput)
 }
 
-// The ID of the Private Cloud's ExpressRoute Circuit that is participating in the global reach connection
+// The ID of the Private Cloud's ExpressRoute Circuit that is participating in the
+// global reach connection
 func (o GlobalReachConnectionOutput) ExpressRouteId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GlobalReachConnection) pulumi.StringPtrOutput { return v.ExpressRouteId }).(pulumi.StringPtrOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o GlobalReachConnectionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalReachConnection) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Identifier of the ExpressRoute Circuit to peer with in the global reach connection
+// Identifier of the ExpressRoute Circuit to peer with in the global reach
+// connection
 func (o GlobalReachConnectionOutput) PeerExpressRouteCircuit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GlobalReachConnection) pulumi.StringPtrOutput { return v.PeerExpressRouteCircuit }).(pulumi.StringPtrOutput)
 }
@@ -210,7 +236,12 @@ func (o GlobalReachConnectionOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalReachConnection) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Resource type.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o GlobalReachConnectionOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *GlobalReachConnection) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o GlobalReachConnectionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalReachConnection) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

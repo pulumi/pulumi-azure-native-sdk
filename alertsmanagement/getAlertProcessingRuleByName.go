@@ -7,13 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get an alert processing rule by name.
 //
 // Uses Azure REST API version 2021-08-08.
+//
+// Other available API versions: 2021-08-08-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native alertsmanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupAlertProcessingRuleByName(ctx *pulumi.Context, args *LookupAlertProcessingRuleByNameArgs, opts ...pulumi.InvokeOption) (*LookupAlertProcessingRuleByNameResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAlertProcessingRuleByNameResult
@@ -33,6 +35,8 @@ type LookupAlertProcessingRuleByNameArgs struct {
 
 // Alert processing rule object containing target scopes, conditions and scheduling logic.
 type LookupAlertProcessingRuleByNameResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Azure resource Id
 	Id string `pulumi:"id"`
 	// Resource location
@@ -92,6 +96,11 @@ func (o LookupAlertProcessingRuleByNameResultOutput) ToLookupAlertProcessingRule
 
 func (o LookupAlertProcessingRuleByNameResultOutput) ToLookupAlertProcessingRuleByNameResultOutputWithContext(ctx context.Context) LookupAlertProcessingRuleByNameResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupAlertProcessingRuleByNameResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAlertProcessingRuleByNameResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Azure resource Id

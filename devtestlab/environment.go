@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An environment, which is essentially an ARM template deployment.
 //
-// Uses Azure REST API version 2018-09-15. In version 1.x of the Azure Native provider, it used API version 2018-09-15.
+// Uses Azure REST API version 2018-09-15. In version 2.x of the Azure Native provider, it used API version 2018-09-15.
 type Environment struct {
 	pulumi.CustomResourceState
 
 	// The display name of the Azure Resource Manager template that produced the environment.
 	ArmTemplateDisplayName pulumi.StringPtrOutput `pulumi:"armTemplateDisplayName"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The creator of the environment.
 	CreatedByUser pulumi.StringOutput `pulumi:"createdByUser"`
 	// The deployment properties of the environment.
@@ -106,9 +108,9 @@ type environmentArgs struct {
 	LabName string `pulumi:"labName"`
 	// The location of the resource.
 	Location *string `pulumi:"location"`
-	// The name of the environment.
+	// The name of the DtlEnvironment
 	Name *string `pulumi:"name"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The tags of the resource.
 	Tags map[string]string `pulumi:"tags"`
@@ -126,9 +128,9 @@ type EnvironmentArgs struct {
 	LabName pulumi.StringInput
 	// The location of the resource.
 	Location pulumi.StringPtrInput
-	// The name of the environment.
+	// The name of the DtlEnvironment
 	Name pulumi.StringPtrInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The tags of the resource.
 	Tags pulumi.StringMapInput
@@ -176,6 +178,11 @@ func (o EnvironmentOutput) ToEnvironmentOutputWithContext(ctx context.Context) E
 // The display name of the Azure Resource Manager template that produced the environment.
 func (o EnvironmentOutput) ArmTemplateDisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringPtrOutput { return v.ArmTemplateDisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o EnvironmentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creator of the environment.

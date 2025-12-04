@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,6 +37,8 @@ type LookupSqlDWTableDataSetMappingArgs struct {
 
 // A SQL DW Table data set mapping.
 type LookupSqlDWTableDataSetMappingResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The id of the source data set.
 	DataSetId string `pulumi:"dataSetId"`
 	// Gets the status of the data set mapping.
@@ -101,6 +103,11 @@ func (o LookupSqlDWTableDataSetMappingResultOutput) ToLookupSqlDWTableDataSetMap
 
 func (o LookupSqlDWTableDataSetMappingResultOutput) ToLookupSqlDWTableDataSetMappingResultOutputWithContext(ctx context.Context) LookupSqlDWTableDataSetMappingResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSqlDWTableDataSetMappingResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSqlDWTableDataSetMappingResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The id of the source data set.

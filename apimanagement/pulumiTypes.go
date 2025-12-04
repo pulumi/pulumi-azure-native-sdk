@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -7036,6 +7036,83 @@ func (o CircuitBreakerRuleResponseArrayOutput) Index(i pulumi.IntInput) CircuitB
 	}).(CircuitBreakerRuleResponseOutput)
 }
 
+// Microsoft EntraID client application secrets
+type ClientApplicationSecretsContractResponseEntra struct {
+	// EntraID client application secret
+	ClientSecret *string `pulumi:"clientSecret"`
+	// EntraID client application secret expiration date.
+	ExpiresAt string `pulumi:"expiresAt"`
+}
+
+// Microsoft EntraID client application secrets
+type ClientApplicationSecretsContractResponseEntraOutput struct{ *pulumi.OutputState }
+
+func (ClientApplicationSecretsContractResponseEntraOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientApplicationSecretsContractResponseEntra)(nil)).Elem()
+}
+
+func (o ClientApplicationSecretsContractResponseEntraOutput) ToClientApplicationSecretsContractResponseEntraOutput() ClientApplicationSecretsContractResponseEntraOutput {
+	return o
+}
+
+func (o ClientApplicationSecretsContractResponseEntraOutput) ToClientApplicationSecretsContractResponseEntraOutputWithContext(ctx context.Context) ClientApplicationSecretsContractResponseEntraOutput {
+	return o
+}
+
+// EntraID client application secret
+func (o ClientApplicationSecretsContractResponseEntraOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientApplicationSecretsContractResponseEntra) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
+}
+
+// EntraID client application secret expiration date.
+func (o ClientApplicationSecretsContractResponseEntraOutput) ExpiresAt() pulumi.StringOutput {
+	return o.ApplyT(func(v ClientApplicationSecretsContractResponseEntra) string { return v.ExpiresAt }).(pulumi.StringOutput)
+}
+
+type ClientApplicationSecretsContractResponseEntraPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientApplicationSecretsContractResponseEntraPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientApplicationSecretsContractResponseEntra)(nil)).Elem()
+}
+
+func (o ClientApplicationSecretsContractResponseEntraPtrOutput) ToClientApplicationSecretsContractResponseEntraPtrOutput() ClientApplicationSecretsContractResponseEntraPtrOutput {
+	return o
+}
+
+func (o ClientApplicationSecretsContractResponseEntraPtrOutput) ToClientApplicationSecretsContractResponseEntraPtrOutputWithContext(ctx context.Context) ClientApplicationSecretsContractResponseEntraPtrOutput {
+	return o
+}
+
+func (o ClientApplicationSecretsContractResponseEntraPtrOutput) Elem() ClientApplicationSecretsContractResponseEntraOutput {
+	return o.ApplyT(func(v *ClientApplicationSecretsContractResponseEntra) ClientApplicationSecretsContractResponseEntra {
+		if v != nil {
+			return *v
+		}
+		var ret ClientApplicationSecretsContractResponseEntra
+		return ret
+	}).(ClientApplicationSecretsContractResponseEntraOutput)
+}
+
+// EntraID client application secret
+func (o ClientApplicationSecretsContractResponseEntraPtrOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientApplicationSecretsContractResponseEntra) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// EntraID client application secret expiration date.
+func (o ClientApplicationSecretsContractResponseEntraPtrOutput) ExpiresAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientApplicationSecretsContractResponseEntra) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ExpiresAt
+	}).(pulumi.StringPtrOutput)
+}
+
 type DataMasking struct {
 	// Masking settings for headers
 	Headers []DataMaskingEntity `pulumi:"headers"`
@@ -8930,6 +9007,514 @@ func (o KeyVaultLastAccessStatusContractPropertiesResponsePtrOutput) TimeStampUt
 			return nil
 		}
 		return v.TimeStampUtc
+	}).(pulumi.StringPtrOutput)
+}
+
+// Diagnostic settings for Large Language Models
+type LLMDiagnosticSettings struct {
+	// Specifies whether default diagnostic should be enabled for Large Language Models or not.
+	Logs *string `pulumi:"logs"`
+	// Diagnostic settings for Large Language Models requests.
+	Requests *LLMMessageDiagnosticSettings `pulumi:"requests"`
+	// Diagnostic settings for Large Language Models responses.
+	Responses *LLMMessageDiagnosticSettings `pulumi:"responses"`
+}
+
+// LLMDiagnosticSettingsInput is an input type that accepts LLMDiagnosticSettingsArgs and LLMDiagnosticSettingsOutput values.
+// You can construct a concrete instance of `LLMDiagnosticSettingsInput` via:
+//
+//	LLMDiagnosticSettingsArgs{...}
+type LLMDiagnosticSettingsInput interface {
+	pulumi.Input
+
+	ToLLMDiagnosticSettingsOutput() LLMDiagnosticSettingsOutput
+	ToLLMDiagnosticSettingsOutputWithContext(context.Context) LLMDiagnosticSettingsOutput
+}
+
+// Diagnostic settings for Large Language Models
+type LLMDiagnosticSettingsArgs struct {
+	// Specifies whether default diagnostic should be enabled for Large Language Models or not.
+	Logs pulumi.StringPtrInput `pulumi:"logs"`
+	// Diagnostic settings for Large Language Models requests.
+	Requests LLMMessageDiagnosticSettingsPtrInput `pulumi:"requests"`
+	// Diagnostic settings for Large Language Models responses.
+	Responses LLMMessageDiagnosticSettingsPtrInput `pulumi:"responses"`
+}
+
+func (LLMDiagnosticSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LLMDiagnosticSettings)(nil)).Elem()
+}
+
+func (i LLMDiagnosticSettingsArgs) ToLLMDiagnosticSettingsOutput() LLMDiagnosticSettingsOutput {
+	return i.ToLLMDiagnosticSettingsOutputWithContext(context.Background())
+}
+
+func (i LLMDiagnosticSettingsArgs) ToLLMDiagnosticSettingsOutputWithContext(ctx context.Context) LLMDiagnosticSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LLMDiagnosticSettingsOutput)
+}
+
+func (i LLMDiagnosticSettingsArgs) ToLLMDiagnosticSettingsPtrOutput() LLMDiagnosticSettingsPtrOutput {
+	return i.ToLLMDiagnosticSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i LLMDiagnosticSettingsArgs) ToLLMDiagnosticSettingsPtrOutputWithContext(ctx context.Context) LLMDiagnosticSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LLMDiagnosticSettingsOutput).ToLLMDiagnosticSettingsPtrOutputWithContext(ctx)
+}
+
+// LLMDiagnosticSettingsPtrInput is an input type that accepts LLMDiagnosticSettingsArgs, LLMDiagnosticSettingsPtr and LLMDiagnosticSettingsPtrOutput values.
+// You can construct a concrete instance of `LLMDiagnosticSettingsPtrInput` via:
+//
+//	        LLMDiagnosticSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type LLMDiagnosticSettingsPtrInput interface {
+	pulumi.Input
+
+	ToLLMDiagnosticSettingsPtrOutput() LLMDiagnosticSettingsPtrOutput
+	ToLLMDiagnosticSettingsPtrOutputWithContext(context.Context) LLMDiagnosticSettingsPtrOutput
+}
+
+type llmdiagnosticSettingsPtrType LLMDiagnosticSettingsArgs
+
+func LLMDiagnosticSettingsPtr(v *LLMDiagnosticSettingsArgs) LLMDiagnosticSettingsPtrInput {
+	return (*llmdiagnosticSettingsPtrType)(v)
+}
+
+func (*llmdiagnosticSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LLMDiagnosticSettings)(nil)).Elem()
+}
+
+func (i *llmdiagnosticSettingsPtrType) ToLLMDiagnosticSettingsPtrOutput() LLMDiagnosticSettingsPtrOutput {
+	return i.ToLLMDiagnosticSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *llmdiagnosticSettingsPtrType) ToLLMDiagnosticSettingsPtrOutputWithContext(ctx context.Context) LLMDiagnosticSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LLMDiagnosticSettingsPtrOutput)
+}
+
+// Diagnostic settings for Large Language Models
+type LLMDiagnosticSettingsOutput struct{ *pulumi.OutputState }
+
+func (LLMDiagnosticSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LLMDiagnosticSettings)(nil)).Elem()
+}
+
+func (o LLMDiagnosticSettingsOutput) ToLLMDiagnosticSettingsOutput() LLMDiagnosticSettingsOutput {
+	return o
+}
+
+func (o LLMDiagnosticSettingsOutput) ToLLMDiagnosticSettingsOutputWithContext(ctx context.Context) LLMDiagnosticSettingsOutput {
+	return o
+}
+
+func (o LLMDiagnosticSettingsOutput) ToLLMDiagnosticSettingsPtrOutput() LLMDiagnosticSettingsPtrOutput {
+	return o.ToLLMDiagnosticSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o LLMDiagnosticSettingsOutput) ToLLMDiagnosticSettingsPtrOutputWithContext(ctx context.Context) LLMDiagnosticSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LLMDiagnosticSettings) *LLMDiagnosticSettings {
+		return &v
+	}).(LLMDiagnosticSettingsPtrOutput)
+}
+
+// Specifies whether default diagnostic should be enabled for Large Language Models or not.
+func (o LLMDiagnosticSettingsOutput) Logs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LLMDiagnosticSettings) *string { return v.Logs }).(pulumi.StringPtrOutput)
+}
+
+// Diagnostic settings for Large Language Models requests.
+func (o LLMDiagnosticSettingsOutput) Requests() LLMMessageDiagnosticSettingsPtrOutput {
+	return o.ApplyT(func(v LLMDiagnosticSettings) *LLMMessageDiagnosticSettings { return v.Requests }).(LLMMessageDiagnosticSettingsPtrOutput)
+}
+
+// Diagnostic settings for Large Language Models responses.
+func (o LLMDiagnosticSettingsOutput) Responses() LLMMessageDiagnosticSettingsPtrOutput {
+	return o.ApplyT(func(v LLMDiagnosticSettings) *LLMMessageDiagnosticSettings { return v.Responses }).(LLMMessageDiagnosticSettingsPtrOutput)
+}
+
+type LLMDiagnosticSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (LLMDiagnosticSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LLMDiagnosticSettings)(nil)).Elem()
+}
+
+func (o LLMDiagnosticSettingsPtrOutput) ToLLMDiagnosticSettingsPtrOutput() LLMDiagnosticSettingsPtrOutput {
+	return o
+}
+
+func (o LLMDiagnosticSettingsPtrOutput) ToLLMDiagnosticSettingsPtrOutputWithContext(ctx context.Context) LLMDiagnosticSettingsPtrOutput {
+	return o
+}
+
+func (o LLMDiagnosticSettingsPtrOutput) Elem() LLMDiagnosticSettingsOutput {
+	return o.ApplyT(func(v *LLMDiagnosticSettings) LLMDiagnosticSettings {
+		if v != nil {
+			return *v
+		}
+		var ret LLMDiagnosticSettings
+		return ret
+	}).(LLMDiagnosticSettingsOutput)
+}
+
+// Specifies whether default diagnostic should be enabled for Large Language Models or not.
+func (o LLMDiagnosticSettingsPtrOutput) Logs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LLMDiagnosticSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Logs
+	}).(pulumi.StringPtrOutput)
+}
+
+// Diagnostic settings for Large Language Models requests.
+func (o LLMDiagnosticSettingsPtrOutput) Requests() LLMMessageDiagnosticSettingsPtrOutput {
+	return o.ApplyT(func(v *LLMDiagnosticSettings) *LLMMessageDiagnosticSettings {
+		if v == nil {
+			return nil
+		}
+		return v.Requests
+	}).(LLMMessageDiagnosticSettingsPtrOutput)
+}
+
+// Diagnostic settings for Large Language Models responses.
+func (o LLMDiagnosticSettingsPtrOutput) Responses() LLMMessageDiagnosticSettingsPtrOutput {
+	return o.ApplyT(func(v *LLMDiagnosticSettings) *LLMMessageDiagnosticSettings {
+		if v == nil {
+			return nil
+		}
+		return v.Responses
+	}).(LLMMessageDiagnosticSettingsPtrOutput)
+}
+
+// Diagnostic settings for Large Language Models
+type LLMDiagnosticSettingsResponse struct {
+	// Specifies whether default diagnostic should be enabled for Large Language Models or not.
+	Logs *string `pulumi:"logs"`
+	// Diagnostic settings for Large Language Models requests.
+	Requests *LLMMessageDiagnosticSettingsResponse `pulumi:"requests"`
+	// Diagnostic settings for Large Language Models responses.
+	Responses *LLMMessageDiagnosticSettingsResponse `pulumi:"responses"`
+}
+
+// Diagnostic settings for Large Language Models
+type LLMDiagnosticSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (LLMDiagnosticSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LLMDiagnosticSettingsResponse)(nil)).Elem()
+}
+
+func (o LLMDiagnosticSettingsResponseOutput) ToLLMDiagnosticSettingsResponseOutput() LLMDiagnosticSettingsResponseOutput {
+	return o
+}
+
+func (o LLMDiagnosticSettingsResponseOutput) ToLLMDiagnosticSettingsResponseOutputWithContext(ctx context.Context) LLMDiagnosticSettingsResponseOutput {
+	return o
+}
+
+// Specifies whether default diagnostic should be enabled for Large Language Models or not.
+func (o LLMDiagnosticSettingsResponseOutput) Logs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LLMDiagnosticSettingsResponse) *string { return v.Logs }).(pulumi.StringPtrOutput)
+}
+
+// Diagnostic settings for Large Language Models requests.
+func (o LLMDiagnosticSettingsResponseOutput) Requests() LLMMessageDiagnosticSettingsResponsePtrOutput {
+	return o.ApplyT(func(v LLMDiagnosticSettingsResponse) *LLMMessageDiagnosticSettingsResponse { return v.Requests }).(LLMMessageDiagnosticSettingsResponsePtrOutput)
+}
+
+// Diagnostic settings for Large Language Models responses.
+func (o LLMDiagnosticSettingsResponseOutput) Responses() LLMMessageDiagnosticSettingsResponsePtrOutput {
+	return o.ApplyT(func(v LLMDiagnosticSettingsResponse) *LLMMessageDiagnosticSettingsResponse { return v.Responses }).(LLMMessageDiagnosticSettingsResponsePtrOutput)
+}
+
+type LLMDiagnosticSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (LLMDiagnosticSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LLMDiagnosticSettingsResponse)(nil)).Elem()
+}
+
+func (o LLMDiagnosticSettingsResponsePtrOutput) ToLLMDiagnosticSettingsResponsePtrOutput() LLMDiagnosticSettingsResponsePtrOutput {
+	return o
+}
+
+func (o LLMDiagnosticSettingsResponsePtrOutput) ToLLMDiagnosticSettingsResponsePtrOutputWithContext(ctx context.Context) LLMDiagnosticSettingsResponsePtrOutput {
+	return o
+}
+
+func (o LLMDiagnosticSettingsResponsePtrOutput) Elem() LLMDiagnosticSettingsResponseOutput {
+	return o.ApplyT(func(v *LLMDiagnosticSettingsResponse) LLMDiagnosticSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret LLMDiagnosticSettingsResponse
+		return ret
+	}).(LLMDiagnosticSettingsResponseOutput)
+}
+
+// Specifies whether default diagnostic should be enabled for Large Language Models or not.
+func (o LLMDiagnosticSettingsResponsePtrOutput) Logs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LLMDiagnosticSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Logs
+	}).(pulumi.StringPtrOutput)
+}
+
+// Diagnostic settings for Large Language Models requests.
+func (o LLMDiagnosticSettingsResponsePtrOutput) Requests() LLMMessageDiagnosticSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *LLMDiagnosticSettingsResponse) *LLMMessageDiagnosticSettingsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Requests
+	}).(LLMMessageDiagnosticSettingsResponsePtrOutput)
+}
+
+// Diagnostic settings for Large Language Models responses.
+func (o LLMDiagnosticSettingsResponsePtrOutput) Responses() LLMMessageDiagnosticSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *LLMDiagnosticSettingsResponse) *LLMMessageDiagnosticSettingsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Responses
+	}).(LLMMessageDiagnosticSettingsResponsePtrOutput)
+}
+
+// Diagnostic settings for Large Language Models Messages
+type LLMMessageDiagnosticSettings struct {
+	// Maximum size of message to logs in bytes. The default size is 32KB.
+	MaxSizeInBytes *int `pulumi:"maxSizeInBytes"`
+	// Specifies which message should be logged. Currently there is only 'all' option.
+	Messages *string `pulumi:"messages"`
+}
+
+// LLMMessageDiagnosticSettingsInput is an input type that accepts LLMMessageDiagnosticSettingsArgs and LLMMessageDiagnosticSettingsOutput values.
+// You can construct a concrete instance of `LLMMessageDiagnosticSettingsInput` via:
+//
+//	LLMMessageDiagnosticSettingsArgs{...}
+type LLMMessageDiagnosticSettingsInput interface {
+	pulumi.Input
+
+	ToLLMMessageDiagnosticSettingsOutput() LLMMessageDiagnosticSettingsOutput
+	ToLLMMessageDiagnosticSettingsOutputWithContext(context.Context) LLMMessageDiagnosticSettingsOutput
+}
+
+// Diagnostic settings for Large Language Models Messages
+type LLMMessageDiagnosticSettingsArgs struct {
+	// Maximum size of message to logs in bytes. The default size is 32KB.
+	MaxSizeInBytes pulumi.IntPtrInput `pulumi:"maxSizeInBytes"`
+	// Specifies which message should be logged. Currently there is only 'all' option.
+	Messages pulumi.StringPtrInput `pulumi:"messages"`
+}
+
+func (LLMMessageDiagnosticSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LLMMessageDiagnosticSettings)(nil)).Elem()
+}
+
+func (i LLMMessageDiagnosticSettingsArgs) ToLLMMessageDiagnosticSettingsOutput() LLMMessageDiagnosticSettingsOutput {
+	return i.ToLLMMessageDiagnosticSettingsOutputWithContext(context.Background())
+}
+
+func (i LLMMessageDiagnosticSettingsArgs) ToLLMMessageDiagnosticSettingsOutputWithContext(ctx context.Context) LLMMessageDiagnosticSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LLMMessageDiagnosticSettingsOutput)
+}
+
+func (i LLMMessageDiagnosticSettingsArgs) ToLLMMessageDiagnosticSettingsPtrOutput() LLMMessageDiagnosticSettingsPtrOutput {
+	return i.ToLLMMessageDiagnosticSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i LLMMessageDiagnosticSettingsArgs) ToLLMMessageDiagnosticSettingsPtrOutputWithContext(ctx context.Context) LLMMessageDiagnosticSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LLMMessageDiagnosticSettingsOutput).ToLLMMessageDiagnosticSettingsPtrOutputWithContext(ctx)
+}
+
+// LLMMessageDiagnosticSettingsPtrInput is an input type that accepts LLMMessageDiagnosticSettingsArgs, LLMMessageDiagnosticSettingsPtr and LLMMessageDiagnosticSettingsPtrOutput values.
+// You can construct a concrete instance of `LLMMessageDiagnosticSettingsPtrInput` via:
+//
+//	        LLMMessageDiagnosticSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type LLMMessageDiagnosticSettingsPtrInput interface {
+	pulumi.Input
+
+	ToLLMMessageDiagnosticSettingsPtrOutput() LLMMessageDiagnosticSettingsPtrOutput
+	ToLLMMessageDiagnosticSettingsPtrOutputWithContext(context.Context) LLMMessageDiagnosticSettingsPtrOutput
+}
+
+type llmmessageDiagnosticSettingsPtrType LLMMessageDiagnosticSettingsArgs
+
+func LLMMessageDiagnosticSettingsPtr(v *LLMMessageDiagnosticSettingsArgs) LLMMessageDiagnosticSettingsPtrInput {
+	return (*llmmessageDiagnosticSettingsPtrType)(v)
+}
+
+func (*llmmessageDiagnosticSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LLMMessageDiagnosticSettings)(nil)).Elem()
+}
+
+func (i *llmmessageDiagnosticSettingsPtrType) ToLLMMessageDiagnosticSettingsPtrOutput() LLMMessageDiagnosticSettingsPtrOutput {
+	return i.ToLLMMessageDiagnosticSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *llmmessageDiagnosticSettingsPtrType) ToLLMMessageDiagnosticSettingsPtrOutputWithContext(ctx context.Context) LLMMessageDiagnosticSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LLMMessageDiagnosticSettingsPtrOutput)
+}
+
+// Diagnostic settings for Large Language Models Messages
+type LLMMessageDiagnosticSettingsOutput struct{ *pulumi.OutputState }
+
+func (LLMMessageDiagnosticSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LLMMessageDiagnosticSettings)(nil)).Elem()
+}
+
+func (o LLMMessageDiagnosticSettingsOutput) ToLLMMessageDiagnosticSettingsOutput() LLMMessageDiagnosticSettingsOutput {
+	return o
+}
+
+func (o LLMMessageDiagnosticSettingsOutput) ToLLMMessageDiagnosticSettingsOutputWithContext(ctx context.Context) LLMMessageDiagnosticSettingsOutput {
+	return o
+}
+
+func (o LLMMessageDiagnosticSettingsOutput) ToLLMMessageDiagnosticSettingsPtrOutput() LLMMessageDiagnosticSettingsPtrOutput {
+	return o.ToLLMMessageDiagnosticSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o LLMMessageDiagnosticSettingsOutput) ToLLMMessageDiagnosticSettingsPtrOutputWithContext(ctx context.Context) LLMMessageDiagnosticSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LLMMessageDiagnosticSettings) *LLMMessageDiagnosticSettings {
+		return &v
+	}).(LLMMessageDiagnosticSettingsPtrOutput)
+}
+
+// Maximum size of message to logs in bytes. The default size is 32KB.
+func (o LLMMessageDiagnosticSettingsOutput) MaxSizeInBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LLMMessageDiagnosticSettings) *int { return v.MaxSizeInBytes }).(pulumi.IntPtrOutput)
+}
+
+// Specifies which message should be logged. Currently there is only 'all' option.
+func (o LLMMessageDiagnosticSettingsOutput) Messages() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LLMMessageDiagnosticSettings) *string { return v.Messages }).(pulumi.StringPtrOutput)
+}
+
+type LLMMessageDiagnosticSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (LLMMessageDiagnosticSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LLMMessageDiagnosticSettings)(nil)).Elem()
+}
+
+func (o LLMMessageDiagnosticSettingsPtrOutput) ToLLMMessageDiagnosticSettingsPtrOutput() LLMMessageDiagnosticSettingsPtrOutput {
+	return o
+}
+
+func (o LLMMessageDiagnosticSettingsPtrOutput) ToLLMMessageDiagnosticSettingsPtrOutputWithContext(ctx context.Context) LLMMessageDiagnosticSettingsPtrOutput {
+	return o
+}
+
+func (o LLMMessageDiagnosticSettingsPtrOutput) Elem() LLMMessageDiagnosticSettingsOutput {
+	return o.ApplyT(func(v *LLMMessageDiagnosticSettings) LLMMessageDiagnosticSettings {
+		if v != nil {
+			return *v
+		}
+		var ret LLMMessageDiagnosticSettings
+		return ret
+	}).(LLMMessageDiagnosticSettingsOutput)
+}
+
+// Maximum size of message to logs in bytes. The default size is 32KB.
+func (o LLMMessageDiagnosticSettingsPtrOutput) MaxSizeInBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LLMMessageDiagnosticSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxSizeInBytes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies which message should be logged. Currently there is only 'all' option.
+func (o LLMMessageDiagnosticSettingsPtrOutput) Messages() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LLMMessageDiagnosticSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Messages
+	}).(pulumi.StringPtrOutput)
+}
+
+// Diagnostic settings for Large Language Models Messages
+type LLMMessageDiagnosticSettingsResponse struct {
+	// Maximum size of message to logs in bytes. The default size is 32KB.
+	MaxSizeInBytes *int `pulumi:"maxSizeInBytes"`
+	// Specifies which message should be logged. Currently there is only 'all' option.
+	Messages *string `pulumi:"messages"`
+}
+
+// Diagnostic settings for Large Language Models Messages
+type LLMMessageDiagnosticSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (LLMMessageDiagnosticSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LLMMessageDiagnosticSettingsResponse)(nil)).Elem()
+}
+
+func (o LLMMessageDiagnosticSettingsResponseOutput) ToLLMMessageDiagnosticSettingsResponseOutput() LLMMessageDiagnosticSettingsResponseOutput {
+	return o
+}
+
+func (o LLMMessageDiagnosticSettingsResponseOutput) ToLLMMessageDiagnosticSettingsResponseOutputWithContext(ctx context.Context) LLMMessageDiagnosticSettingsResponseOutput {
+	return o
+}
+
+// Maximum size of message to logs in bytes. The default size is 32KB.
+func (o LLMMessageDiagnosticSettingsResponseOutput) MaxSizeInBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LLMMessageDiagnosticSettingsResponse) *int { return v.MaxSizeInBytes }).(pulumi.IntPtrOutput)
+}
+
+// Specifies which message should be logged. Currently there is only 'all' option.
+func (o LLMMessageDiagnosticSettingsResponseOutput) Messages() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LLMMessageDiagnosticSettingsResponse) *string { return v.Messages }).(pulumi.StringPtrOutput)
+}
+
+type LLMMessageDiagnosticSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (LLMMessageDiagnosticSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LLMMessageDiagnosticSettingsResponse)(nil)).Elem()
+}
+
+func (o LLMMessageDiagnosticSettingsResponsePtrOutput) ToLLMMessageDiagnosticSettingsResponsePtrOutput() LLMMessageDiagnosticSettingsResponsePtrOutput {
+	return o
+}
+
+func (o LLMMessageDiagnosticSettingsResponsePtrOutput) ToLLMMessageDiagnosticSettingsResponsePtrOutputWithContext(ctx context.Context) LLMMessageDiagnosticSettingsResponsePtrOutput {
+	return o
+}
+
+func (o LLMMessageDiagnosticSettingsResponsePtrOutput) Elem() LLMMessageDiagnosticSettingsResponseOutput {
+	return o.ApplyT(func(v *LLMMessageDiagnosticSettingsResponse) LLMMessageDiagnosticSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret LLMMessageDiagnosticSettingsResponse
+		return ret
+	}).(LLMMessageDiagnosticSettingsResponseOutput)
+}
+
+// Maximum size of message to logs in bytes. The default size is 32KB.
+func (o LLMMessageDiagnosticSettingsResponsePtrOutput) MaxSizeInBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LLMMessageDiagnosticSettingsResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxSizeInBytes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies which message should be logged. Currently there is only 'all' option.
+func (o LLMMessageDiagnosticSettingsResponsePtrOutput) Messages() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LLMMessageDiagnosticSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Messages
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -13624,6 +14209,8 @@ func init() {
 	pulumi.RegisterOutputType(CircuitBreakerRuleArrayOutput{})
 	pulumi.RegisterOutputType(CircuitBreakerRuleResponseOutput{})
 	pulumi.RegisterOutputType(CircuitBreakerRuleResponseArrayOutput{})
+	pulumi.RegisterOutputType(ClientApplicationSecretsContractResponseEntraOutput{})
+	pulumi.RegisterOutputType(ClientApplicationSecretsContractResponseEntraPtrOutput{})
 	pulumi.RegisterOutputType(DataMaskingOutput{})
 	pulumi.RegisterOutputType(DataMaskingPtrOutput{})
 	pulumi.RegisterOutputType(DataMaskingEntityOutput{})
@@ -13660,6 +14247,14 @@ func init() {
 	pulumi.RegisterOutputType(KeyVaultContractPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(KeyVaultLastAccessStatusContractPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(KeyVaultLastAccessStatusContractPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(LLMDiagnosticSettingsOutput{})
+	pulumi.RegisterOutputType(LLMDiagnosticSettingsPtrOutput{})
+	pulumi.RegisterOutputType(LLMDiagnosticSettingsResponseOutput{})
+	pulumi.RegisterOutputType(LLMDiagnosticSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(LLMMessageDiagnosticSettingsOutput{})
+	pulumi.RegisterOutputType(LLMMessageDiagnosticSettingsPtrOutput{})
+	pulumi.RegisterOutputType(LLMMessageDiagnosticSettingsResponseOutput{})
+	pulumi.RegisterOutputType(LLMMessageDiagnosticSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(OAuth2AuthenticationSettingsContractOutput{})
 	pulumi.RegisterOutputType(OAuth2AuthenticationSettingsContractPtrOutput{})
 	pulumi.RegisterOutputType(OAuth2AuthenticationSettingsContractArrayOutput{})

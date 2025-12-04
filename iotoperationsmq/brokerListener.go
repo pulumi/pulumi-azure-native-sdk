@@ -8,13 +8,13 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // MQ broker/listener resource
 //
-// Uses Azure REST API version 2023-10-04-preview.
+// Uses Azure REST API version 2023-10-04-preview. In version 2.x of the Azure Native provider, it used API version 2023-10-04-preview.
 type BrokerListener struct {
 	pulumi.CustomResourceState
 
@@ -22,6 +22,8 @@ type BrokerListener struct {
 	AuthenticationEnabled pulumi.BoolPtrOutput `pulumi:"authenticationEnabled"`
 	// The flag for enabling Authorization policies on Listener Port. false - AllowAll, true - Use Authorization resource rules if present.
 	AuthorizationEnabled pulumi.BoolPtrOutput `pulumi:"authorizationEnabled"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The k8s cr/resource reference of mq/broker.
 	BrokerRef pulumi.StringOutput `pulumi:"brokerRef"`
 	// Extended Location
@@ -240,6 +242,11 @@ func (o BrokerListenerOutput) AuthenticationEnabled() pulumi.BoolPtrOutput {
 // The flag for enabling Authorization policies on Listener Port. false - AllowAll, true - Use Authorization resource rules if present.
 func (o BrokerListenerOutput) AuthorizationEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *BrokerListener) pulumi.BoolPtrOutput { return v.AuthorizationEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o BrokerListenerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *BrokerListener) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The k8s cr/resource reference of mq/broker.

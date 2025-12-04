@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves information about the view of a gateway.
 //
-// Uses Azure REST API version 2024-03-31-preview.
+// Uses Azure REST API version 2024-07-31-preview.
 //
-// Other available API versions: 2024-05-20-preview, 2024-07-31-preview, 2024-09-10-preview, 2024-11-10-preview, 2025-01-13.
+// Other available API versions: 2024-03-31-preview, 2024-05-20-preview, 2024-09-10-preview, 2024-11-10-preview, 2025-01-13, 2025-02-19-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hybridcompute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupGateway(ctx *pulumi.Context, args *LookupGatewayArgs, opts ...pulumi.InvokeOption) (*LookupGatewayResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGatewayResult
@@ -37,6 +37,8 @@ type LookupGatewayArgs struct {
 type LookupGatewayResult struct {
 	// Specifies the list of features that are enabled for this Gateway.
 	AllowedFeatures []string `pulumi:"allowedFeatures"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The endpoint fqdn for the Gateway.
 	GatewayEndpoint string `pulumi:"gatewayEndpoint"`
 	// A unique, immutable, identifier for the Gateway.
@@ -97,6 +99,11 @@ func (o LookupGatewayResultOutput) ToLookupGatewayResultOutputWithContext(ctx co
 // Specifies the list of features that are enabled for this Gateway.
 func (o LookupGatewayResultOutput) AllowedFeatures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupGatewayResult) []string { return v.AllowedFeatures }).(pulumi.StringArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupGatewayResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGatewayResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The endpoint fqdn for the Gateway.

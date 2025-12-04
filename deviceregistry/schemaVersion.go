@@ -8,16 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Schema version's definition.
 //
-// Uses Azure REST API version 2024-09-01-preview.
+// Uses Azure REST API version 2024-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-09-01-preview.
+//
+// Other available API versions: 2025-07-01-preview, 2025-10-01, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type SchemaVersion struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Human-readable description of the schema.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Hash of the schema content.
@@ -58,6 +62,15 @@ func NewSchemaVersion(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:deviceregistry/v20240901preview:SchemaVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:deviceregistry/v20250701preview:SchemaVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:deviceregistry/v20251001:SchemaVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:deviceregistry/v20251101preview:SchemaVersion"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -159,6 +172,11 @@ func (o SchemaVersionOutput) ToSchemaVersionOutput() SchemaVersionOutput {
 
 func (o SchemaVersionOutput) ToSchemaVersionOutputWithContext(ctx context.Context) SchemaVersionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o SchemaVersionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SchemaVersion) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Human-readable description of the schema.

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,6 +33,8 @@ type LookupPrivateLinkServicesForM365ComplianceCenterArgs struct {
 
 // The description of the service.
 type LookupPrivateLinkServicesForM365ComplianceCenterResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// An etag associated with the resource, used for optimistic concurrency when editing it.
 	Etag *string `pulumi:"etag"`
 	// The resource identifier.
@@ -88,6 +90,11 @@ func (o LookupPrivateLinkServicesForM365ComplianceCenterResultOutput) ToLookupPr
 
 func (o LookupPrivateLinkServicesForM365ComplianceCenterResultOutput) ToLookupPrivateLinkServicesForM365ComplianceCenterResultOutputWithContext(ctx context.Context) LookupPrivateLinkServicesForM365ComplianceCenterResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupPrivateLinkServicesForM365ComplianceCenterResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateLinkServicesForM365ComplianceCenterResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // An etag associated with the resource, used for optimistic concurrency when editing it.

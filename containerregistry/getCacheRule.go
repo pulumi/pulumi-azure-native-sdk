@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the properties of the specified cache rule resource.
 //
-// Uses Azure REST API version 2023-01-01-preview.
+// Uses Azure REST API version 2024-11-01-preview.
 //
-// Other available API versions: 2023-06-01-preview, 2023-07-01, 2023-08-01-preview, 2023-11-01-preview, 2024-11-01-preview.
+// Other available API versions: 2023-01-01-preview, 2023-06-01-preview, 2023-07-01, 2023-08-01-preview, 2023-11-01-preview, 2025-03-01-preview, 2025-04-01, 2025-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupCacheRule(ctx *pulumi.Context, args *LookupCacheRuleArgs, opts ...pulumi.InvokeOption) (*LookupCacheRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCacheRuleResult
@@ -37,6 +37,8 @@ type LookupCacheRuleArgs struct {
 
 // An object that represents a cache rule for a container registry.
 type LookupCacheRuleResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The creation date of the cache rule.
 	CreationDate string `pulumi:"creationDate"`
 	// The ARM resource ID of the credential store which is associated with the cache rule.
@@ -93,6 +95,11 @@ func (o LookupCacheRuleResultOutput) ToLookupCacheRuleResultOutput() LookupCache
 
 func (o LookupCacheRuleResultOutput) ToLookupCacheRuleResultOutputWithContext(ctx context.Context) LookupCacheRuleResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupCacheRuleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCacheRuleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of the cache rule.

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,6 +33,8 @@ type LookupStandardArgs struct {
 
 // Security Standard on a resource
 type LookupStandardResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// category of the standard provided
 	Category *string `pulumi:"category"`
 	// List of component objects containing component unique keys (such as assessment keys) to apply to standard scope.  Currently only supports assessment keys.
@@ -96,6 +98,11 @@ func (o LookupStandardResultOutput) ToLookupStandardResultOutput() LookupStandar
 
 func (o LookupStandardResultOutput) ToLookupStandardResultOutputWithContext(ctx context.Context) LookupStandardResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupStandardResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStandardResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // category of the standard provided

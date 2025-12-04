@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the specified shared private link resource
 //
-// Uses Azure REST API version 2023-02-01.
+// Uses Azure REST API version 2024-03-01.
 //
-// Other available API versions: 2023-03-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-08-01-preview, 2024-10-01-preview.
+// Other available API versions: 2023-02-01, 2023-03-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview, 2024-04-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native webpubsub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupWebPubSubSharedPrivateLinkResource(ctx *pulumi.Context, args *LookupWebPubSubSharedPrivateLinkResourceArgs, opts ...pulumi.InvokeOption) (*LookupWebPubSubSharedPrivateLinkResourceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebPubSubSharedPrivateLinkResourceResult
@@ -27,21 +27,23 @@ func LookupWebPubSubSharedPrivateLinkResource(ctx *pulumi.Context, args *LookupW
 }
 
 type LookupWebPubSubSharedPrivateLinkResourceArgs struct {
-	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the resource.
 	ResourceName string `pulumi:"resourceName"`
-	// The name of the shared private link resource
+	// The name of the shared private link resource.
 	SharedPrivateLinkResourceName string `pulumi:"sharedPrivateLinkResourceName"`
 }
 
 // Describes a Shared Private Link Resource
 type LookupWebPubSubSharedPrivateLinkResourceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The group id from the provider of resource the shared private link resource is for
 	GroupId string `pulumi:"groupId"`
-	// Fully qualified resource Id for the resource.
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
-	// The name of the resource.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// The resource id of the resource the shared private link resource is for
 	PrivateLinkResourceId string `pulumi:"privateLinkResourceId"`
@@ -51,9 +53,9 @@ type LookupWebPubSubSharedPrivateLinkResourceResult struct {
 	RequestMessage *string `pulumi:"requestMessage"`
 	// Status of the shared private link resource
 	Status string `pulumi:"status"`
-	// Metadata pertaining to creation and last modification of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -67,11 +69,11 @@ func LookupWebPubSubSharedPrivateLinkResourceOutput(ctx *pulumi.Context, args Lo
 }
 
 type LookupWebPubSubSharedPrivateLinkResourceOutputArgs struct {
-	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the resource.
 	ResourceName pulumi.StringInput `pulumi:"resourceName"`
-	// The name of the shared private link resource
+	// The name of the shared private link resource.
 	SharedPrivateLinkResourceName pulumi.StringInput `pulumi:"sharedPrivateLinkResourceName"`
 }
 
@@ -94,17 +96,22 @@ func (o LookupWebPubSubSharedPrivateLinkResourceResultOutput) ToLookupWebPubSubS
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupWebPubSubSharedPrivateLinkResourceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebPubSubSharedPrivateLinkResourceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The group id from the provider of resource the shared private link resource is for
 func (o LookupWebPubSubSharedPrivateLinkResourceResultOutput) GroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebPubSubSharedPrivateLinkResourceResult) string { return v.GroupId }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource Id for the resource.
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupWebPubSubSharedPrivateLinkResourceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebPubSubSharedPrivateLinkResourceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The name of the resource.
+// The name of the resource
 func (o LookupWebPubSubSharedPrivateLinkResourceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebPubSubSharedPrivateLinkResourceResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -129,12 +136,12 @@ func (o LookupWebPubSubSharedPrivateLinkResourceResultOutput) Status() pulumi.St
 	return o.ApplyT(func(v LookupWebPubSubSharedPrivateLinkResourceResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupWebPubSubSharedPrivateLinkResourceResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupWebPubSubSharedPrivateLinkResourceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupWebPubSubSharedPrivateLinkResourceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebPubSubSharedPrivateLinkResourceResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // List the authorization keys associated with this account.
 //
-// Uses Azure REST API version 2021-12-01.
+// Uses Azure REST API version 2024-04-01-preview.
 //
-// Other available API versions: 2020-12-01-preview, 2021-07-01, 2023-05-01-preview, 2024-04-01-preview.
+// Other available API versions: 2021-12-01, 2023-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native purview [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func ListAccountKeys(ctx *pulumi.Context, args *ListAccountKeysArgs, opts ...pulumi.InvokeOption) (*ListAccountKeysResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListAccountKeysResult
@@ -33,7 +33,7 @@ type ListAccountKeysArgs struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
-// The Account access keys.
+// The Purview Account access keys.
 type ListAccountKeysResult struct {
 	// Gets or sets the primary connection string.
 	AtlasKafkaPrimaryEndpoint *string `pulumi:"atlasKafkaPrimaryEndpoint"`
@@ -61,7 +61,7 @@ func (ListAccountKeysOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*ListAccountKeysArgs)(nil)).Elem()
 }
 
-// The Account access keys.
+// The Purview Account access keys.
 type ListAccountKeysResultOutput struct{ *pulumi.OutputState }
 
 func (ListAccountKeysResultOutput) ElementType() reflect.Type {

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,6 +33,8 @@ type LookupSapDiscoverySiteArgs struct {
 
 // Define the SAP Migration discovery site resource.
 type LookupSapDiscoverySiteResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Indicates any errors on the SAP Migration discovery site resource.
 	Errors SAPMigrateErrorResponse `pulumi:"errors"`
 	// The extended location definition.
@@ -90,6 +92,11 @@ func (o LookupSapDiscoverySiteResultOutput) ToLookupSapDiscoverySiteResultOutput
 
 func (o LookupSapDiscoverySiteResultOutput) ToLookupSapDiscoverySiteResultOutputWithContext(ctx context.Context) LookupSapDiscoverySiteResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSapDiscoverySiteResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSapDiscoverySiteResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Indicates any errors on the SAP Migration discovery site resource.

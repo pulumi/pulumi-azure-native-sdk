@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,7 +29,7 @@ type LookupLabArgs struct {
 	Expand *string `pulumi:"expand"`
 	// The name of the lab.
 	Name string `pulumi:"name"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -39,6 +39,8 @@ type LookupLabResult struct {
 	Announcement *LabAnnouncementPropertiesResponse `pulumi:"announcement"`
 	// The lab's artifact storage account.
 	ArtifactsStorageAccount string `pulumi:"artifactsStorageAccount"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The creation date of the lab.
 	CreatedDate string `pulumi:"createdDate"`
 	// The lab's default premium storage account.
@@ -115,7 +117,7 @@ type LookupLabOutputArgs struct {
 	Expand pulumi.StringPtrInput `pulumi:"expand"`
 	// The name of the lab.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -146,6 +148,11 @@ func (o LookupLabResultOutput) Announcement() LabAnnouncementPropertiesResponseP
 // The lab's artifact storage account.
 func (o LookupLabResultOutput) ArtifactsStorageAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLabResult) string { return v.ArtifactsStorageAccount }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupLabResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLabResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of the lab.

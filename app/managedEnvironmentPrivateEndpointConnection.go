@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Private Endpoint Connection resource.
 //
-// Uses Azure REST API version 2024-02-02-preview.
+// Uses Azure REST API version 2025-02-02-preview. In version 2.x of the Azure Native provider, it used API version 2024-02-02-preview.
 //
-// Other available API versions: 2024-08-02-preview, 2024-10-02-preview.
+// Other available API versions: 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ManagedEnvironmentPrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The group ids for the private endpoint resource.
 	GroupIds pulumi.StringArrayOutput `pulumi:"groupIds"`
 	// The name of the resource
@@ -61,6 +63,12 @@ func NewManagedEnvironmentPrivateEndpointConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:app/v20241002preview:ManagedEnvironmentPrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20250202preview:ManagedEnvironmentPrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20250701:ManagedEnvironmentPrivateEndpointConnection"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -154,6 +162,11 @@ func (o ManagedEnvironmentPrivateEndpointConnectionOutput) ToManagedEnvironmentP
 
 func (o ManagedEnvironmentPrivateEndpointConnectionOutput) ToManagedEnvironmentPrivateEndpointConnectionOutputWithContext(ctx context.Context) ManagedEnvironmentPrivateEndpointConnectionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ManagedEnvironmentPrivateEndpointConnectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagedEnvironmentPrivateEndpointConnection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The group ids for the private endpoint resource.

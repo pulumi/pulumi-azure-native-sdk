@@ -8,22 +8,26 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Uses Azure REST API version 2023-10-01-preview. In version 1.x of the Azure Native provider, it used API version 2022-12-12-preview.
+// Uses Azure REST API version 2025-02-01. In version 2.x of the Azure Native provider, it used API version 2023-10-01-preview.
 //
-// Other available API versions: 2023-07-01, 2024-06-01-preview, 2024-07-01, 2024-10-01-preview, 2025-02-01.
+// Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Console struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The more detailed status of the console.
 	DetailedStatus pulumi.StringOutput `pulumi:"detailedStatus"`
 	// The descriptive message about the current detailed status.
 	DetailedStatusMessage pulumi.StringOutput `pulumi:"detailedStatusMessage"`
 	// The indicator of whether the console access is enabled.
 	Enabled pulumi.StringOutput `pulumi:"enabled"`
+	// Resource ETag.
+	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The date and time after which the key will be disallowed access.
 	Expiration pulumi.StringPtrOutput `pulumi:"expiration"`
 	// The extended location of the cluster manager associated with the cluster this virtual machine is created on.
@@ -88,6 +92,12 @@ func NewConsole(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20250201:Console"),
+		},
+		{
+			Type: pulumi.String("azure-native:networkcloud/v20250701preview:Console"),
+		},
+		{
+			Type: pulumi.String("azure-native:networkcloud/v20250901:Console"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -203,6 +213,11 @@ func (o ConsoleOutput) ToConsoleOutputWithContext(ctx context.Context) ConsoleOu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ConsoleOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Console) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The more detailed status of the console.
 func (o ConsoleOutput) DetailedStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *Console) pulumi.StringOutput { return v.DetailedStatus }).(pulumi.StringOutput)
@@ -216,6 +231,11 @@ func (o ConsoleOutput) DetailedStatusMessage() pulumi.StringOutput {
 // The indicator of whether the console access is enabled.
 func (o ConsoleOutput) Enabled() pulumi.StringOutput {
 	return o.ApplyT(func(v *Console) pulumi.StringOutput { return v.Enabled }).(pulumi.StringOutput)
+}
+
+// Resource ETag.
+func (o ConsoleOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *Console) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The date and time after which the key will be disallowed access.

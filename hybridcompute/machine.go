@@ -8,15 +8,15 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Describes a hybrid machine.
 //
-// Uses Azure REST API version 2022-12-27. In version 1.x of the Azure Native provider, it used API version 2020-08-02.
+// Uses Azure REST API version 2024-07-10. In version 2.x of the Azure Native provider, it used API version 2022-12-27.
 //
-// Other available API versions: 2020-08-02, 2020-08-15-preview, 2022-05-10-preview, 2023-06-20-preview, 2023-10-03-preview, 2024-03-31-preview, 2024-05-20-preview, 2024-07-10, 2024-07-31-preview, 2024-09-10-preview, 2024-11-10-preview, 2025-01-13.
+// Other available API versions: 2020-08-15-preview, 2021-01-28-preview, 2021-03-25-preview, 2021-04-22-preview, 2021-05-17-preview, 2021-05-20, 2021-06-10-preview, 2021-12-10-preview, 2022-03-10, 2022-05-10-preview, 2022-08-11-preview, 2022-11-10, 2022-12-27, 2022-12-27-preview, 2023-03-15-preview, 2023-06-20-preview, 2023-10-03-preview, 2024-03-31-preview, 2024-05-20-preview, 2024-07-31-preview, 2024-09-10-preview, 2024-11-10-preview, 2025-01-13, 2025-02-19-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hybridcompute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Machine struct {
 	pulumi.CustomResourceState
 
@@ -28,6 +28,8 @@ type Machine struct {
 	AgentUpgrade AgentUpgradeResponsePtrOutput `pulumi:"agentUpgrade"`
 	// The hybrid machine agent full version.
 	AgentVersion pulumi.StringOutput `pulumi:"agentVersion"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Public Key that the client provides to be used during initial resource onboarding
 	ClientPublicKey pulumi.StringPtrOutput `pulumi:"clientPublicKey"`
 	// The metadata of the cloud environment (Azure/GCP/AWS/OCI...).
@@ -46,8 +48,12 @@ type Machine struct {
 	Extensions MachineExtensionInstanceViewResponseArrayOutput `pulumi:"extensions"`
 	// Identity for the resource.
 	Identity IdentityResponsePtrOutput `pulumi:"identity"`
+	// Indicates which kind of Arc machine placement on-premises, such as HCI, SCVMM or VMware etc.
+	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// The time of the last status change.
 	LastStatusChange pulumi.StringOutput `pulumi:"lastStatusChange"`
+	// Specifies the License related properties for a machine.
+	LicenseProfile LicenseProfileMachineInstanceViewResponsePtrOutput `pulumi:"licenseProfile"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Metadata pertaining to the geographic location of the resource.
@@ -58,6 +64,10 @@ type Machine struct {
 	MssqlDiscovered pulumi.StringPtrOutput `pulumi:"mssqlDiscovered"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Information about the network the machine is on.
+	NetworkProfile NetworkProfileResponseOutput `pulumi:"networkProfile"`
+	// The edition of the Operating System.
+	OsEdition pulumi.StringOutput `pulumi:"osEdition"`
 	// The Operating System running on the hybrid machine.
 	OsName pulumi.StringOutput `pulumi:"osName"`
 	// Specifies the operating system settings for the hybrid machine.
@@ -190,6 +200,9 @@ func NewMachine(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:hybridcompute/v20250113:Machine"),
 		},
+		{
+			Type: pulumi.String("azure-native:hybridcompute/v20250219preview:Machine"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -229,10 +242,16 @@ type machineArgs struct {
 	AgentUpgrade *AgentUpgrade `pulumi:"agentUpgrade"`
 	// Public Key that the client provides to be used during initial resource onboarding
 	ClientPublicKey *string `pulumi:"clientPublicKey"`
+	// Expands referenced resources.
+	Expand *string `pulumi:"expand"`
 	// Machine Extensions information (deprecated field)
 	Extensions []MachineExtensionInstanceView `pulumi:"extensions"`
 	// Identity for the resource.
 	Identity *Identity `pulumi:"identity"`
+	// Indicates which kind of Arc machine placement on-premises, such as HCI, SCVMM or VMware etc.
+	Kind *string `pulumi:"kind"`
+	// Specifies the License related properties for a machine.
+	LicenseProfile *LicenseProfileMachineInstanceView `pulumi:"licenseProfile"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// Metadata pertaining to the geographic location of the resource.
@@ -265,10 +284,16 @@ type MachineArgs struct {
 	AgentUpgrade AgentUpgradePtrInput
 	// Public Key that the client provides to be used during initial resource onboarding
 	ClientPublicKey pulumi.StringPtrInput
+	// Expands referenced resources.
+	Expand pulumi.StringPtrInput
 	// Machine Extensions information (deprecated field)
 	Extensions MachineExtensionInstanceViewArrayInput
 	// Identity for the resource.
 	Identity IdentityPtrInput
+	// Indicates which kind of Arc machine placement on-premises, such as HCI, SCVMM or VMware etc.
+	Kind pulumi.StringPtrInput
+	// Specifies the License related properties for a machine.
+	LicenseProfile LicenseProfileMachineInstanceViewPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// Metadata pertaining to the geographic location of the resource.
@@ -352,6 +377,11 @@ func (o MachineOutput) AgentVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Machine) pulumi.StringOutput { return v.AgentVersion }).(pulumi.StringOutput)
 }
 
+// The Azure API version of the resource.
+func (o MachineOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Machine) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Public Key that the client provides to be used during initial resource onboarding
 func (o MachineOutput) ClientPublicKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Machine) pulumi.StringPtrOutput { return v.ClientPublicKey }).(pulumi.StringPtrOutput)
@@ -397,9 +427,19 @@ func (o MachineOutput) Identity() IdentityResponsePtrOutput {
 	return o.ApplyT(func(v *Machine) IdentityResponsePtrOutput { return v.Identity }).(IdentityResponsePtrOutput)
 }
 
+// Indicates which kind of Arc machine placement on-premises, such as HCI, SCVMM or VMware etc.
+func (o MachineOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Machine) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
 // The time of the last status change.
 func (o MachineOutput) LastStatusChange() pulumi.StringOutput {
 	return o.ApplyT(func(v *Machine) pulumi.StringOutput { return v.LastStatusChange }).(pulumi.StringOutput)
+}
+
+// Specifies the License related properties for a machine.
+func (o MachineOutput) LicenseProfile() LicenseProfileMachineInstanceViewResponsePtrOutput {
+	return o.ApplyT(func(v *Machine) LicenseProfileMachineInstanceViewResponsePtrOutput { return v.LicenseProfile }).(LicenseProfileMachineInstanceViewResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -425,6 +465,16 @@ func (o MachineOutput) MssqlDiscovered() pulumi.StringPtrOutput {
 // The name of the resource
 func (o MachineOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Machine) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Information about the network the machine is on.
+func (o MachineOutput) NetworkProfile() NetworkProfileResponseOutput {
+	return o.ApplyT(func(v *Machine) NetworkProfileResponseOutput { return v.NetworkProfile }).(NetworkProfileResponseOutput)
+}
+
+// The edition of the Operating System.
+func (o MachineOutput) OsEdition() pulumi.StringOutput {
+	return o.ApplyT(func(v *Machine) pulumi.StringOutput { return v.OsEdition }).(pulumi.StringOutput)
 }
 
 // The Operating System running on the hybrid machine.

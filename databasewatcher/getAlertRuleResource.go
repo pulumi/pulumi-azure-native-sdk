@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a AlertRuleResource
 //
-// Uses Azure REST API version 2024-07-19-preview.
+// Uses Azure REST API version 2024-10-01-preview.
 //
-// Other available API versions: 2024-10-01-preview, 2025-01-02.
+// Other available API versions: 2024-07-19-preview, 2025-01-02. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native databasewatcher [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupAlertRuleResource(ctx *pulumi.Context, args *LookupAlertRuleResourceArgs, opts ...pulumi.InvokeOption) (*LookupAlertRuleResourceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAlertRuleResourceResult
@@ -43,6 +43,8 @@ type LookupAlertRuleResourceResult struct {
 	AlertRuleTemplateId string `pulumi:"alertRuleTemplateId"`
 	// The alert rule template version.
 	AlertRuleTemplateVersion string `pulumi:"alertRuleTemplateVersion"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The properties with which the alert rule resource was created.
 	CreatedWithProperties string `pulumi:"createdWithProperties"`
 	// The creation time of the alert rule resource.
@@ -109,6 +111,11 @@ func (o LookupAlertRuleResourceResultOutput) AlertRuleTemplateId() pulumi.String
 // The alert rule template version.
 func (o LookupAlertRuleResourceResultOutput) AlertRuleTemplateVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlertRuleResourceResult) string { return v.AlertRuleTemplateVersion }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupAlertRuleResourceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAlertRuleResourceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The properties with which the alert rule resource was created.

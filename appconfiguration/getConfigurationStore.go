@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the properties of the specified configuration store.
 //
-// Uses Azure REST API version 2023-03-01.
+// Uses Azure REST API version 2024-05-01.
 //
-// Other available API versions: 2023-08-01-preview, 2023-09-01-preview, 2024-05-01.
+// Other available API versions: 2023-03-01, 2023-08-01-preview, 2023-09-01-preview, 2024-06-01, 2024-06-15-preview, 2025-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native appconfiguration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupConfigurationStore(ctx *pulumi.Context, args *LookupConfigurationStoreArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationStoreResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConfigurationStoreResult
@@ -35,8 +35,12 @@ type LookupConfigurationStoreArgs struct {
 
 // The configuration store along with all resource properties. The Configuration Store will have all information to begin utilizing it.
 type LookupConfigurationStoreResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The creation date of configuration store.
 	CreationDate string `pulumi:"creationDate"`
+	// Property specifying the configuration of data plane proxy for Azure Resource Manager (ARM).
+	DataPlaneProxy *DataPlaneProxyPropertiesResponse `pulumi:"dataPlaneProxy"`
 	// Disables all authentication methods other than AAD authentication.
 	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
 	// Property specifying whether protection against purge is enabled for this configuration store.
@@ -126,9 +130,19 @@ func (o LookupConfigurationStoreResultOutput) ToLookupConfigurationStoreResultOu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupConfigurationStoreResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConfigurationStoreResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The creation date of configuration store.
 func (o LookupConfigurationStoreResultOutput) CreationDate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationStoreResult) string { return v.CreationDate }).(pulumi.StringOutput)
+}
+
+// Property specifying the configuration of data plane proxy for Azure Resource Manager (ARM).
+func (o LookupConfigurationStoreResultOutput) DataPlaneProxy() DataPlaneProxyPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v LookupConfigurationStoreResult) *DataPlaneProxyPropertiesResponse { return v.DataPlaneProxy }).(DataPlaneProxyPropertiesResponsePtrOutput)
 }
 
 // Disables all authentication methods other than AAD authentication.

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -2320,13 +2320,13 @@ func (o ClusterNetworkEntityResponsePtrOutput) ResourceName() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Record of the environment
+// Details of cluster record
 type ClusterRecordResponse struct {
-	// Display name of the user
+	// Display name of the cluster
 	DisplayName *string `pulumi:"displayName"`
-	// Id of the environment
+	// Id of the cluster
 	Id *string `pulumi:"id"`
-	// Type of environment
+	// Type of cluster
 	Kind *string `pulumi:"kind"`
 	// Metadata of the record
 	Metadata *MetadataEntityResponse `pulumi:"metadata"`
@@ -2336,7 +2336,7 @@ type ClusterRecordResponse struct {
 	Status *ClusterStatusEntityResponse `pulumi:"status"`
 }
 
-// Record of the environment
+// Details of cluster record
 type ClusterRecordResponseOutput struct{ *pulumi.OutputState }
 
 func (ClusterRecordResponseOutput) ElementType() reflect.Type {
@@ -2351,17 +2351,17 @@ func (o ClusterRecordResponseOutput) ToClusterRecordResponseOutputWithContext(ct
 	return o
 }
 
-// Display name of the user
+// Display name of the cluster
 func (o ClusterRecordResponseOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterRecordResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// Id of the environment
+// Id of the cluster
 func (o ClusterRecordResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterRecordResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// Type of environment
+// Type of cluster
 func (o ClusterRecordResponseOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterRecordResponse) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
@@ -3356,7 +3356,7 @@ func (o ConnectorInfoBaseResponsePtrOutput) ConnectorType() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Record of the environment
+// Details about environment name, metadata and environment id of an environment
 type EnvironmentRecordResponse struct {
 	// Display name of the user
 	DisplayName *string `pulumi:"displayName"`
@@ -3368,7 +3368,7 @@ type EnvironmentRecordResponse struct {
 	Metadata *MetadataEntityResponse `pulumi:"metadata"`
 }
 
-// Record of the environment
+// Details about environment name, metadata and environment id of an environment
 type EnvironmentRecordResponseOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentRecordResponseOutput) ElementType() reflect.Type {
@@ -6389,6 +6389,146 @@ func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoResponsePtrOutput) TopicsDir(
 	}).(pulumi.StringPtrOutput)
 }
 
+// Link an existing Confluent organization
+type LinkOrganization struct {
+	// User auth token
+	Token string `pulumi:"token"`
+}
+
+// LinkOrganizationInput is an input type that accepts LinkOrganizationArgs and LinkOrganizationOutput values.
+// You can construct a concrete instance of `LinkOrganizationInput` via:
+//
+//	LinkOrganizationArgs{...}
+type LinkOrganizationInput interface {
+	pulumi.Input
+
+	ToLinkOrganizationOutput() LinkOrganizationOutput
+	ToLinkOrganizationOutputWithContext(context.Context) LinkOrganizationOutput
+}
+
+// Link an existing Confluent organization
+type LinkOrganizationArgs struct {
+	// User auth token
+	Token pulumi.StringInput `pulumi:"token"`
+}
+
+func (LinkOrganizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkOrganization)(nil)).Elem()
+}
+
+func (i LinkOrganizationArgs) ToLinkOrganizationOutput() LinkOrganizationOutput {
+	return i.ToLinkOrganizationOutputWithContext(context.Background())
+}
+
+func (i LinkOrganizationArgs) ToLinkOrganizationOutputWithContext(ctx context.Context) LinkOrganizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinkOrganizationOutput)
+}
+
+func (i LinkOrganizationArgs) ToLinkOrganizationPtrOutput() LinkOrganizationPtrOutput {
+	return i.ToLinkOrganizationPtrOutputWithContext(context.Background())
+}
+
+func (i LinkOrganizationArgs) ToLinkOrganizationPtrOutputWithContext(ctx context.Context) LinkOrganizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinkOrganizationOutput).ToLinkOrganizationPtrOutputWithContext(ctx)
+}
+
+// LinkOrganizationPtrInput is an input type that accepts LinkOrganizationArgs, LinkOrganizationPtr and LinkOrganizationPtrOutput values.
+// You can construct a concrete instance of `LinkOrganizationPtrInput` via:
+//
+//	        LinkOrganizationArgs{...}
+//
+//	or:
+//
+//	        nil
+type LinkOrganizationPtrInput interface {
+	pulumi.Input
+
+	ToLinkOrganizationPtrOutput() LinkOrganizationPtrOutput
+	ToLinkOrganizationPtrOutputWithContext(context.Context) LinkOrganizationPtrOutput
+}
+
+type linkOrganizationPtrType LinkOrganizationArgs
+
+func LinkOrganizationPtr(v *LinkOrganizationArgs) LinkOrganizationPtrInput {
+	return (*linkOrganizationPtrType)(v)
+}
+
+func (*linkOrganizationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LinkOrganization)(nil)).Elem()
+}
+
+func (i *linkOrganizationPtrType) ToLinkOrganizationPtrOutput() LinkOrganizationPtrOutput {
+	return i.ToLinkOrganizationPtrOutputWithContext(context.Background())
+}
+
+func (i *linkOrganizationPtrType) ToLinkOrganizationPtrOutputWithContext(ctx context.Context) LinkOrganizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinkOrganizationPtrOutput)
+}
+
+// Link an existing Confluent organization
+type LinkOrganizationOutput struct{ *pulumi.OutputState }
+
+func (LinkOrganizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkOrganization)(nil)).Elem()
+}
+
+func (o LinkOrganizationOutput) ToLinkOrganizationOutput() LinkOrganizationOutput {
+	return o
+}
+
+func (o LinkOrganizationOutput) ToLinkOrganizationOutputWithContext(ctx context.Context) LinkOrganizationOutput {
+	return o
+}
+
+func (o LinkOrganizationOutput) ToLinkOrganizationPtrOutput() LinkOrganizationPtrOutput {
+	return o.ToLinkOrganizationPtrOutputWithContext(context.Background())
+}
+
+func (o LinkOrganizationOutput) ToLinkOrganizationPtrOutputWithContext(ctx context.Context) LinkOrganizationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LinkOrganization) *LinkOrganization {
+		return &v
+	}).(LinkOrganizationPtrOutput)
+}
+
+// User auth token
+func (o LinkOrganizationOutput) Token() pulumi.StringOutput {
+	return o.ApplyT(func(v LinkOrganization) string { return v.Token }).(pulumi.StringOutput)
+}
+
+type LinkOrganizationPtrOutput struct{ *pulumi.OutputState }
+
+func (LinkOrganizationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LinkOrganization)(nil)).Elem()
+}
+
+func (o LinkOrganizationPtrOutput) ToLinkOrganizationPtrOutput() LinkOrganizationPtrOutput {
+	return o
+}
+
+func (o LinkOrganizationPtrOutput) ToLinkOrganizationPtrOutputWithContext(ctx context.Context) LinkOrganizationPtrOutput {
+	return o
+}
+
+func (o LinkOrganizationPtrOutput) Elem() LinkOrganizationOutput {
+	return o.ApplyT(func(v *LinkOrganization) LinkOrganization {
+		if v != nil {
+			return *v
+		}
+		var ret LinkOrganization
+		return ret
+	}).(LinkOrganizationOutput)
+}
+
+// User auth token
+func (o LinkOrganizationPtrOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LinkOrganization) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Token
+	}).(pulumi.StringPtrOutput)
+}
+
 // Metadata of the data record
 type MetadataEntityResponse struct {
 	// Created Date Time
@@ -6525,8 +6665,16 @@ type OfferDetail struct {
 	PlanId string `pulumi:"planId"`
 	// Offer Plan Name
 	PlanName string `pulumi:"planName"`
+	// Private Offer Id
+	PrivateOfferId *string `pulumi:"privateOfferId"`
+	// Array of Private Offer Ids
+	PrivateOfferIds []string `pulumi:"privateOfferIds"`
 	// Publisher Id
 	PublisherId string `pulumi:"publisherId"`
+	// SaaS Offer Status
+	Status *string `pulumi:"status"`
+	// Offer Plan Term Id
+	TermId *string `pulumi:"termId"`
 	// Offer Plan Term unit
 	TermUnit string `pulumi:"termUnit"`
 }
@@ -6550,8 +6698,16 @@ type OfferDetailArgs struct {
 	PlanId pulumi.StringInput `pulumi:"planId"`
 	// Offer Plan Name
 	PlanName pulumi.StringInput `pulumi:"planName"`
+	// Private Offer Id
+	PrivateOfferId pulumi.StringPtrInput `pulumi:"privateOfferId"`
+	// Array of Private Offer Ids
+	PrivateOfferIds pulumi.StringArrayInput `pulumi:"privateOfferIds"`
 	// Publisher Id
 	PublisherId pulumi.StringInput `pulumi:"publisherId"`
+	// SaaS Offer Status
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// Offer Plan Term Id
+	TermId pulumi.StringPtrInput `pulumi:"termId"`
 	// Offer Plan Term unit
 	TermUnit pulumi.StringInput `pulumi:"termUnit"`
 }
@@ -6598,9 +6754,29 @@ func (o OfferDetailOutput) PlanName() pulumi.StringOutput {
 	return o.ApplyT(func(v OfferDetail) string { return v.PlanName }).(pulumi.StringOutput)
 }
 
+// Private Offer Id
+func (o OfferDetailOutput) PrivateOfferId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OfferDetail) *string { return v.PrivateOfferId }).(pulumi.StringPtrOutput)
+}
+
+// Array of Private Offer Ids
+func (o OfferDetailOutput) PrivateOfferIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OfferDetail) []string { return v.PrivateOfferIds }).(pulumi.StringArrayOutput)
+}
+
 // Publisher Id
 func (o OfferDetailOutput) PublisherId() pulumi.StringOutput {
 	return o.ApplyT(func(v OfferDetail) string { return v.PublisherId }).(pulumi.StringOutput)
+}
+
+// SaaS Offer Status
+func (o OfferDetailOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OfferDetail) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// Offer Plan Term Id
+func (o OfferDetailOutput) TermId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OfferDetail) *string { return v.TermId }).(pulumi.StringPtrOutput)
 }
 
 // Offer Plan Term unit
@@ -6616,10 +6792,16 @@ type OfferDetailResponse struct {
 	PlanId string `pulumi:"planId"`
 	// Offer Plan Name
 	PlanName string `pulumi:"planName"`
+	// Private Offer Id
+	PrivateOfferId *string `pulumi:"privateOfferId"`
+	// Array of Private Offer Ids
+	PrivateOfferIds []string `pulumi:"privateOfferIds"`
 	// Publisher Id
 	PublisherId string `pulumi:"publisherId"`
 	// SaaS Offer Status
-	Status string `pulumi:"status"`
+	Status *string `pulumi:"status"`
+	// Offer Plan Term Id
+	TermId *string `pulumi:"termId"`
 	// Offer Plan Term unit
 	TermUnit string `pulumi:"termUnit"`
 }
@@ -6654,14 +6836,29 @@ func (o OfferDetailResponseOutput) PlanName() pulumi.StringOutput {
 	return o.ApplyT(func(v OfferDetailResponse) string { return v.PlanName }).(pulumi.StringOutput)
 }
 
+// Private Offer Id
+func (o OfferDetailResponseOutput) PrivateOfferId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OfferDetailResponse) *string { return v.PrivateOfferId }).(pulumi.StringPtrOutput)
+}
+
+// Array of Private Offer Ids
+func (o OfferDetailResponseOutput) PrivateOfferIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OfferDetailResponse) []string { return v.PrivateOfferIds }).(pulumi.StringArrayOutput)
+}
+
 // Publisher Id
 func (o OfferDetailResponseOutput) PublisherId() pulumi.StringOutput {
 	return o.ApplyT(func(v OfferDetailResponse) string { return v.PublisherId }).(pulumi.StringOutput)
 }
 
 // SaaS Offer Status
-func (o OfferDetailResponseOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v OfferDetailResponse) string { return v.Status }).(pulumi.StringOutput)
+func (o OfferDetailResponseOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OfferDetailResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// Offer Plan Term Id
+func (o OfferDetailResponseOutput) TermId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OfferDetailResponse) *string { return v.TermId }).(pulumi.StringPtrOutput)
 }
 
 // Offer Plan Term unit
@@ -6844,11 +7041,11 @@ func (o RegionSpecEntityResponsePtrOutput) RegionName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Record of the environment
+// Details on principal, role name and crn pattern of a role binding
 type RoleBindingRecordResponse struct {
 	// A CRN that specifies the scope and resource patterns necessary for the role to bind
 	CrnPattern *string `pulumi:"crnPattern"`
-	// Id of the role
+	// Id of the role binding
 	Id *string `pulumi:"id"`
 	// The type of the resource.
 	Kind *string `pulumi:"kind"`
@@ -6860,7 +7057,7 @@ type RoleBindingRecordResponse struct {
 	RoleName *string `pulumi:"roleName"`
 }
 
-// Record of the environment
+// Details on principal, role name and crn pattern of a role binding
 type RoleBindingRecordResponseOutput struct{ *pulumi.OutputState }
 
 func (RoleBindingRecordResponseOutput) ElementType() reflect.Type {
@@ -6880,7 +7077,7 @@ func (o RoleBindingRecordResponseOutput) CrnPattern() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RoleBindingRecordResponse) *string { return v.CrnPattern }).(pulumi.StringPtrOutput)
 }
 
-// Id of the role
+// Id of the role binding
 func (o RoleBindingRecordResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RoleBindingRecordResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -9416,12 +9613,16 @@ func (o TopicsRelatedLinkResponsePtrOutput) Related() pulumi.StringPtrOutput {
 
 // Subscriber detail
 type UserDetail struct {
+	// AAD email address
+	AadEmail *string `pulumi:"aadEmail"`
 	// Email address
 	EmailAddress string `pulumi:"emailAddress"`
 	// First name
 	FirstName *string `pulumi:"firstName"`
 	// Last name
 	LastName *string `pulumi:"lastName"`
+	// User principal name
+	UserPrincipalName *string `pulumi:"userPrincipalName"`
 }
 
 // UserDetailInput is an input type that accepts UserDetailArgs and UserDetailOutput values.
@@ -9437,12 +9638,16 @@ type UserDetailInput interface {
 
 // Subscriber detail
 type UserDetailArgs struct {
+	// AAD email address
+	AadEmail pulumi.StringPtrInput `pulumi:"aadEmail"`
 	// Email address
 	EmailAddress pulumi.StringInput `pulumi:"emailAddress"`
 	// First name
 	FirstName pulumi.StringPtrInput `pulumi:"firstName"`
 	// Last name
 	LastName pulumi.StringPtrInput `pulumi:"lastName"`
+	// User principal name
+	UserPrincipalName pulumi.StringPtrInput `pulumi:"userPrincipalName"`
 }
 
 func (UserDetailArgs) ElementType() reflect.Type {
@@ -9472,6 +9677,11 @@ func (o UserDetailOutput) ToUserDetailOutputWithContext(ctx context.Context) Use
 	return o
 }
 
+// AAD email address
+func (o UserDetailOutput) AadEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserDetail) *string { return v.AadEmail }).(pulumi.StringPtrOutput)
+}
+
 // Email address
 func (o UserDetailOutput) EmailAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v UserDetail) string { return v.EmailAddress }).(pulumi.StringOutput)
@@ -9487,14 +9697,23 @@ func (o UserDetailOutput) LastName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserDetail) *string { return v.LastName }).(pulumi.StringPtrOutput)
 }
 
+// User principal name
+func (o UserDetailOutput) UserPrincipalName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserDetail) *string { return v.UserPrincipalName }).(pulumi.StringPtrOutput)
+}
+
 // Subscriber detail
 type UserDetailResponse struct {
+	// AAD email address
+	AadEmail *string `pulumi:"aadEmail"`
 	// Email address
 	EmailAddress string `pulumi:"emailAddress"`
 	// First name
 	FirstName *string `pulumi:"firstName"`
 	// Last name
 	LastName *string `pulumi:"lastName"`
+	// User principal name
+	UserPrincipalName *string `pulumi:"userPrincipalName"`
 }
 
 // Subscriber detail
@@ -9512,6 +9731,11 @@ func (o UserDetailResponseOutput) ToUserDetailResponseOutputWithContext(ctx cont
 	return o
 }
 
+// AAD email address
+func (o UserDetailResponseOutput) AadEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserDetailResponse) *string { return v.AadEmail }).(pulumi.StringPtrOutput)
+}
+
 // Email address
 func (o UserDetailResponseOutput) EmailAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v UserDetailResponse) string { return v.EmailAddress }).(pulumi.StringOutput)
@@ -9525,6 +9749,11 @@ func (o UserDetailResponseOutput) FirstName() pulumi.StringPtrOutput {
 // Last name
 func (o UserDetailResponseOutput) LastName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserDetailResponse) *string { return v.LastName }).(pulumi.StringPtrOutput)
+}
+
+// User principal name
+func (o UserDetailResponseOutput) UserPrincipalName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserDetailResponse) *string { return v.UserPrincipalName }).(pulumi.StringPtrOutput)
 }
 
 // Record of the user
@@ -9677,6 +9906,8 @@ func init() {
 	pulumi.RegisterOutputType(KafkaAzureSynapseAnalyticsSinkConnectorInfoPtrOutput{})
 	pulumi.RegisterOutputType(KafkaAzureSynapseAnalyticsSinkConnectorInfoResponseOutput{})
 	pulumi.RegisterOutputType(KafkaAzureSynapseAnalyticsSinkConnectorInfoResponsePtrOutput{})
+	pulumi.RegisterOutputType(LinkOrganizationOutput{})
+	pulumi.RegisterOutputType(LinkOrganizationPtrOutput{})
 	pulumi.RegisterOutputType(MetadataEntityResponseOutput{})
 	pulumi.RegisterOutputType(MetadataEntityResponsePtrOutput{})
 	pulumi.RegisterOutputType(OfferDetailOutput{})

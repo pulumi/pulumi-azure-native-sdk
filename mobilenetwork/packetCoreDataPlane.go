@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Packet core data plane resource. Must be created in the same location as its parent packet core control plane.
 //
-// Uses Azure REST API version 2023-06-01. In version 1.x of the Azure Native provider, it used API version 2022-04-01-preview.
+// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2023-06-01.
 //
-// Other available API versions: 2022-04-01-preview, 2022-11-01, 2023-09-01, 2024-02-01, 2024-04-01.
+// Other available API versions: 2022-04-01-preview, 2022-11-01, 2023-06-01, 2023-09-01, 2024-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native mobilenetwork [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type PacketCoreDataPlane struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -34,6 +36,8 @@ type PacketCoreDataPlane struct {
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The user plane interface on the access network. For 5G networks, this is the N3 interface. For 4G networks, this is the S1-U interface.
 	UserPlaneAccessInterface InterfacePropertiesResponseOutput `pulumi:"userPlaneAccessInterface"`
+	// The virtual IP address(es) for the user plane on the access network in a High Availability (HA) system. In an HA deployment the access network router should be configured to forward traffic for this address to the control plane access interface on the active or standby node. In non-HA system this list should be omitted or empty.
+	UserPlaneAccessVirtualIpv4Addresses pulumi.StringArrayOutput `pulumi:"userPlaneAccessVirtualIpv4Addresses"`
 }
 
 // NewPacketCoreDataPlane registers a new resource with the given unique name, arguments, and options.
@@ -121,6 +125,8 @@ type packetCoreDataPlaneArgs struct {
 	Tags map[string]string `pulumi:"tags"`
 	// The user plane interface on the access network. For 5G networks, this is the N3 interface. For 4G networks, this is the S1-U interface.
 	UserPlaneAccessInterface InterfaceProperties `pulumi:"userPlaneAccessInterface"`
+	// The virtual IP address(es) for the user plane on the access network in a High Availability (HA) system. In an HA deployment the access network router should be configured to forward traffic for this address to the control plane access interface on the active or standby node. In non-HA system this list should be omitted or empty.
+	UserPlaneAccessVirtualIpv4Addresses []string `pulumi:"userPlaneAccessVirtualIpv4Addresses"`
 }
 
 // The set of arguments for constructing a PacketCoreDataPlane resource.
@@ -137,6 +143,8 @@ type PacketCoreDataPlaneArgs struct {
 	Tags pulumi.StringMapInput
 	// The user plane interface on the access network. For 5G networks, this is the N3 interface. For 4G networks, this is the S1-U interface.
 	UserPlaneAccessInterface InterfacePropertiesInput
+	// The virtual IP address(es) for the user plane on the access network in a High Availability (HA) system. In an HA deployment the access network router should be configured to forward traffic for this address to the control plane access interface on the active or standby node. In non-HA system this list should be omitted or empty.
+	UserPlaneAccessVirtualIpv4Addresses pulumi.StringArrayInput
 }
 
 func (PacketCoreDataPlaneArgs) ElementType() reflect.Type {
@@ -176,6 +184,11 @@ func (o PacketCoreDataPlaneOutput) ToPacketCoreDataPlaneOutputWithContext(ctx co
 	return o
 }
 
+// The Azure API version of the resource.
+func (o PacketCoreDataPlaneOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PacketCoreDataPlane) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The geo-location where the resource lives
 func (o PacketCoreDataPlaneOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *PacketCoreDataPlane) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
@@ -209,6 +222,11 @@ func (o PacketCoreDataPlaneOutput) Type() pulumi.StringOutput {
 // The user plane interface on the access network. For 5G networks, this is the N3 interface. For 4G networks, this is the S1-U interface.
 func (o PacketCoreDataPlaneOutput) UserPlaneAccessInterface() InterfacePropertiesResponseOutput {
 	return o.ApplyT(func(v *PacketCoreDataPlane) InterfacePropertiesResponseOutput { return v.UserPlaneAccessInterface }).(InterfacePropertiesResponseOutput)
+}
+
+// The virtual IP address(es) for the user plane on the access network in a High Availability (HA) system. In an HA deployment the access network router should be configured to forward traffic for this address to the control plane access interface on the active or standby node. In non-HA system this list should be omitted or empty.
+func (o PacketCoreDataPlaneOutput) UserPlaneAccessVirtualIpv4Addresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PacketCoreDataPlane) pulumi.StringArrayOutput { return v.UserPlaneAccessVirtualIpv4Addresses }).(pulumi.StringArrayOutput)
 }
 
 func init() {

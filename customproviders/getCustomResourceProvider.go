@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,6 +35,8 @@ type LookupCustomResourceProviderArgs struct {
 type LookupCustomResourceProviderResult struct {
 	// A list of actions that the custom resource provider implements.
 	Actions []CustomRPActionRouteDefinitionResponse `pulumi:"actions"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource Id
 	Id string `pulumi:"id"`
 	// Resource location
@@ -91,6 +93,11 @@ func (o LookupCustomResourceProviderResultOutput) ToLookupCustomResourceProvider
 // A list of actions that the custom resource provider implements.
 func (o LookupCustomResourceProviderResultOutput) Actions() CustomRPActionRouteDefinitionResponseArrayOutput {
 	return o.ApplyT(func(v LookupCustomResourceProviderResult) []CustomRPActionRouteDefinitionResponse { return v.Actions }).(CustomRPActionRouteDefinitionResponseArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupCustomResourceProviderResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCustomResourceProviderResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource Id

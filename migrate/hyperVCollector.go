@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Uses Azure REST API version 2019-10-01. In version 1.x of the Azure Native provider, it used API version 2019-10-01.
+// Uses Azure REST API version 2019-10-01. In version 2.x of the Azure Native provider, it used API version 2019-10-01.
 type HyperVCollector struct {
 	pulumi.CustomResourceState
 
-	ETag       pulumi.StringPtrOutput            `pulumi:"eTag"`
-	Name       pulumi.StringOutput               `pulumi:"name"`
-	Properties CollectorPropertiesResponseOutput `pulumi:"properties"`
-	Type       pulumi.StringOutput               `pulumi:"type"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput               `pulumi:"azureApiVersion"`
+	ETag            pulumi.StringPtrOutput            `pulumi:"eTag"`
+	Name            pulumi.StringOutput               `pulumi:"name"`
+	Properties      CollectorPropertiesResponseOutput `pulumi:"properties"`
+	Type            pulumi.StringOutput               `pulumi:"type"`
 }
 
 // NewHyperVCollector registers a new resource with the given unique name, arguments, and options.
@@ -43,16 +45,40 @@ func NewHyperVCollector(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:migrate/v20230315:HyperVCollector"),
 		},
 		{
+			Type: pulumi.String("azure-native:migrate/v20230315:HypervCollectorsOperation"),
+		},
+		{
 			Type: pulumi.String("azure-native:migrate/v20230401preview:HyperVCollector"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20230401preview:HypervCollectorsOperation"),
 		},
 		{
 			Type: pulumi.String("azure-native:migrate/v20230501preview:HyperVCollector"),
 		},
 		{
+			Type: pulumi.String("azure-native:migrate/v20230501preview:HypervCollectorsOperation"),
+		},
+		{
 			Type: pulumi.String("azure-native:migrate/v20230909preview:HyperVCollector"),
 		},
 		{
+			Type: pulumi.String("azure-native:migrate/v20230909preview:HypervCollectorsOperation"),
+		},
+		{
 			Type: pulumi.String("azure-native:migrate/v20240101preview:HyperVCollector"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20240101preview:HypervCollectorsOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20240115:HyperVCollector"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20240303preview:HyperVCollector"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate:HypervCollectorsOperation"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -146,6 +172,11 @@ func (o HyperVCollectorOutput) ToHyperVCollectorOutput() HyperVCollectorOutput {
 
 func (o HyperVCollectorOutput) ToHyperVCollectorOutputWithContext(ctx context.Context) HyperVCollectorOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o HyperVCollectorOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *HyperVCollector) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 func (o HyperVCollectorOutput) ETag() pulumi.StringPtrOutput {

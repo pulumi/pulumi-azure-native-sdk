@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets information about the specified network interface.
 //
-// Uses Azure REST API version 2023-02-01.
+// Uses Azure REST API version 2024-05-01.
 //
-// Other available API versions: 2018-07-01, 2019-02-01, 2019-06-01, 2019-08-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Other available API versions: 2018-06-01, 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupNetworkInterface(ctx *pulumi.Context, args *LookupNetworkInterfaceArgs, opts ...pulumi.InvokeOption) (*LookupNetworkInterfaceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkInterfaceResult
@@ -41,6 +41,10 @@ type LookupNetworkInterfaceResult struct {
 	AuxiliaryMode *string `pulumi:"auxiliaryMode"`
 	// Auxiliary sku of Network Interface resource.
 	AuxiliarySku *string `pulumi:"auxiliarySku"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// Whether default outbound connectivity for nic was configured or not.
+	DefaultOutboundConnectivityEnabled bool `pulumi:"defaultOutboundConnectivityEnabled"`
 	// Indicates whether to disable tcp state tracking.
 	DisableTcpStateTracking *bool `pulumi:"disableTcpStateTracking"`
 	// The DNS settings in network interface.
@@ -152,6 +156,16 @@ func (o LookupNetworkInterfaceResultOutput) AuxiliaryMode() pulumi.StringPtrOutp
 // Auxiliary sku of Network Interface resource.
 func (o LookupNetworkInterfaceResultOutput) AuxiliarySku() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNetworkInterfaceResult) *string { return v.AuxiliarySku }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupNetworkInterfaceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkInterfaceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Whether default outbound connectivity for nic was configured or not.
+func (o LookupNetworkInterfaceResultOutput) DefaultOutboundConnectivityEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupNetworkInterfaceResult) bool { return v.DefaultOutboundConnectivityEnabled }).(pulumi.BoolOutput)
 }
 
 // Indicates whether to disable tcp state tracking.

@@ -8,21 +8,23 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Specifies information about the gallery Application Version that you want to create or update.
 //
-// Uses Azure REST API version 2022-03-03. In version 1.x of the Azure Native provider, it used API version 2020-09-30.
+// Uses Azure REST API version 2024-03-03. In version 2.x of the Azure Native provider, it used API version 2022-03-03.
 //
-// Other available API versions: 2022-08-03, 2023-07-03, 2024-03-03.
+// Other available API versions: 2022-03-03, 2022-08-03, 2023-07-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type GalleryApplicationVersion struct {
 	pulumi.CustomResourceState
 
-	// Resource location
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Resource name
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning state, which only appears in the response.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
@@ -32,9 +34,11 @@ type GalleryApplicationVersion struct {
 	ReplicationStatus ReplicationStatusResponseOutput `pulumi:"replicationStatus"`
 	// The safety profile of the Gallery Application Version.
 	SafetyProfile GalleryApplicationVersionSafetyProfileResponsePtrOutput `pulumi:"safetyProfile"`
-	// Resource tags
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Resource type
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -126,41 +130,41 @@ func (GalleryApplicationVersionState) ElementType() reflect.Type {
 }
 
 type galleryApplicationVersionArgs struct {
-	// The name of the gallery Application Definition in which the Application Version is to be created.
+	// The name of the gallery Application Definition to be retrieved.
 	GalleryApplicationName string `pulumi:"galleryApplicationName"`
-	// The name of the gallery Application Version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+	// The name of the gallery Application Version to be retrieved.
 	GalleryApplicationVersionName *string `pulumi:"galleryApplicationVersionName"`
-	// The name of the Shared Application Gallery in which the Application Definition resides.
+	// The name of the Shared Image Gallery.
 	GalleryName string `pulumi:"galleryName"`
-	// Resource location
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The publishing profile of a gallery image version.
 	PublishingProfile GalleryApplicationVersionPublishingProfile `pulumi:"publishingProfile"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The safety profile of the Gallery Application Version.
 	SafetyProfile *GalleryApplicationVersionSafetyProfile `pulumi:"safetyProfile"`
-	// Resource tags
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a GalleryApplicationVersion resource.
 type GalleryApplicationVersionArgs struct {
-	// The name of the gallery Application Definition in which the Application Version is to be created.
+	// The name of the gallery Application Definition to be retrieved.
 	GalleryApplicationName pulumi.StringInput
-	// The name of the gallery Application Version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+	// The name of the gallery Application Version to be retrieved.
 	GalleryApplicationVersionName pulumi.StringPtrInput
-	// The name of the Shared Application Gallery in which the Application Definition resides.
+	// The name of the Shared Image Gallery.
 	GalleryName pulumi.StringInput
-	// Resource location
+	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The publishing profile of a gallery image version.
 	PublishingProfile GalleryApplicationVersionPublishingProfileInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The safety profile of the Gallery Application Version.
 	SafetyProfile GalleryApplicationVersionSafetyProfilePtrInput
-	// Resource tags
+	// Resource tags.
 	Tags pulumi.StringMapInput
 }
 
@@ -201,12 +205,17 @@ func (o GalleryApplicationVersionOutput) ToGalleryApplicationVersionOutputWithCo
 	return o
 }
 
-// Resource location
+// The Azure API version of the resource.
+func (o GalleryApplicationVersionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *GalleryApplicationVersion) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// The geo-location where the resource lives
 func (o GalleryApplicationVersionOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *GalleryApplicationVersion) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Resource name
+// The name of the resource
 func (o GalleryApplicationVersionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *GalleryApplicationVersion) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -235,12 +244,17 @@ func (o GalleryApplicationVersionOutput) SafetyProfile() GalleryApplicationVersi
 	}).(GalleryApplicationVersionSafetyProfileResponsePtrOutput)
 }
 
-// Resource tags
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o GalleryApplicationVersionOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *GalleryApplicationVersion) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// Resource tags.
 func (o GalleryApplicationVersionOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GalleryApplicationVersion) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Resource type
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o GalleryApplicationVersionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *GalleryApplicationVersion) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

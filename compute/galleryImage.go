@@ -8,20 +8,24 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Specifies information about the gallery image definition that you want to create or update.
 //
-// Uses Azure REST API version 2022-03-03. In version 1.x of the Azure Native provider, it used API version 2020-09-30.
+// Uses Azure REST API version 2024-03-03. In version 2.x of the Azure Native provider, it used API version 2022-03-03.
 //
-// Other available API versions: 2022-08-03, 2023-07-03, 2024-03-03.
+// Other available API versions: 2022-03-03, 2022-08-03, 2023-07-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type GalleryImage struct {
 	pulumi.CustomResourceState
 
+	// Optional. Must be set to true if the gallery image features are being updated.
+	AllowUpdateImage pulumi.BoolPtrOutput `pulumi:"allowUpdateImage"`
 	// The architecture of the image. Applicable to OS disks only.
 	Architecture pulumi.StringPtrOutput `pulumi:"architecture"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The description of this gallery image definition resource. This property is updatable.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Describes the disallowed disk types.
@@ -36,13 +40,13 @@ type GalleryImage struct {
 	HyperVGeneration pulumi.StringPtrOutput `pulumi:"hyperVGeneration"`
 	// This is the gallery image definition identifier.
 	Identifier GalleryImageIdentifierResponseOutput `pulumi:"identifier"`
-	// Resource location
+	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Resource name
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// This property allows the user to specify whether the virtual machines created under this image are 'Generalized' or 'Specialized'.
 	OsState pulumi.StringOutput `pulumi:"osState"`
-	// This property allows you to specify the type of the OS that is included in the disk when creating a VM from a managed image. <br><br> Possible values are: <br><br> **Windows** <br><br> **Linux**
+	// This property allows you to specify the type of the OS that is included in the disk when creating a VM from a managed image. Possible values are: **Windows,** **Linux.**
 	OsType pulumi.StringOutput `pulumi:"osType"`
 	// The privacy statement uri.
 	PrivacyStatementUri pulumi.StringPtrOutput `pulumi:"privacyStatementUri"`
@@ -54,9 +58,11 @@ type GalleryImage struct {
 	Recommended RecommendedMachineConfigurationResponsePtrOutput `pulumi:"recommended"`
 	// The release note uri.
 	ReleaseNoteUri pulumi.StringPtrOutput `pulumi:"releaseNoteUri"`
-	// Resource tags
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Resource type
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -154,6 +160,8 @@ func (GalleryImageState) ElementType() reflect.Type {
 }
 
 type galleryImageArgs struct {
+	// Optional. Must be set to true if the gallery image features are being updated.
+	AllowUpdateImage *bool `pulumi:"allowUpdateImage"`
 	// The architecture of the image. Applicable to OS disks only.
 	Architecture *string `pulumi:"architecture"`
 	// The description of this gallery image definition resource. This property is updatable.
@@ -166,19 +174,19 @@ type galleryImageArgs struct {
 	Eula *string `pulumi:"eula"`
 	// A list of gallery image features.
 	Features []GalleryImageFeature `pulumi:"features"`
-	// The name of the gallery image definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+	// The name of the gallery image definition to be retrieved.
 	GalleryImageName *string `pulumi:"galleryImageName"`
-	// The name of the Shared Image Gallery in which the Image Definition is to be created.
+	// The name of the Shared Image Gallery.
 	GalleryName string `pulumi:"galleryName"`
 	// The hypervisor generation of the Virtual Machine. Applicable to OS disks only.
 	HyperVGeneration *string `pulumi:"hyperVGeneration"`
 	// This is the gallery image definition identifier.
 	Identifier GalleryImageIdentifier `pulumi:"identifier"`
-	// Resource location
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// This property allows the user to specify whether the virtual machines created under this image are 'Generalized' or 'Specialized'.
 	OsState OperatingSystemStateTypes `pulumi:"osState"`
-	// This property allows you to specify the type of the OS that is included in the disk when creating a VM from a managed image. <br><br> Possible values are: <br><br> **Windows** <br><br> **Linux**
+	// This property allows you to specify the type of the OS that is included in the disk when creating a VM from a managed image. Possible values are: **Windows,** **Linux.**
 	OsType OperatingSystemTypes `pulumi:"osType"`
 	// The privacy statement uri.
 	PrivacyStatementUri *string `pulumi:"privacyStatementUri"`
@@ -188,14 +196,16 @@ type galleryImageArgs struct {
 	Recommended *RecommendedMachineConfiguration `pulumi:"recommended"`
 	// The release note uri.
 	ReleaseNoteUri *string `pulumi:"releaseNoteUri"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Resource tags
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a GalleryImage resource.
 type GalleryImageArgs struct {
+	// Optional. Must be set to true if the gallery image features are being updated.
+	AllowUpdateImage pulumi.BoolPtrInput
 	// The architecture of the image. Applicable to OS disks only.
 	Architecture pulumi.StringPtrInput
 	// The description of this gallery image definition resource. This property is updatable.
@@ -208,19 +218,19 @@ type GalleryImageArgs struct {
 	Eula pulumi.StringPtrInput
 	// A list of gallery image features.
 	Features GalleryImageFeatureArrayInput
-	// The name of the gallery image definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+	// The name of the gallery image definition to be retrieved.
 	GalleryImageName pulumi.StringPtrInput
-	// The name of the Shared Image Gallery in which the Image Definition is to be created.
+	// The name of the Shared Image Gallery.
 	GalleryName pulumi.StringInput
 	// The hypervisor generation of the Virtual Machine. Applicable to OS disks only.
 	HyperVGeneration pulumi.StringPtrInput
 	// This is the gallery image definition identifier.
 	Identifier GalleryImageIdentifierInput
-	// Resource location
+	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// This property allows the user to specify whether the virtual machines created under this image are 'Generalized' or 'Specialized'.
 	OsState OperatingSystemStateTypesInput
-	// This property allows you to specify the type of the OS that is included in the disk when creating a VM from a managed image. <br><br> Possible values are: <br><br> **Windows** <br><br> **Linux**
+	// This property allows you to specify the type of the OS that is included in the disk when creating a VM from a managed image. Possible values are: **Windows,** **Linux.**
 	OsType OperatingSystemTypesInput
 	// The privacy statement uri.
 	PrivacyStatementUri pulumi.StringPtrInput
@@ -230,9 +240,9 @@ type GalleryImageArgs struct {
 	Recommended RecommendedMachineConfigurationPtrInput
 	// The release note uri.
 	ReleaseNoteUri pulumi.StringPtrInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// Resource tags
+	// Resource tags.
 	Tags pulumi.StringMapInput
 }
 
@@ -273,9 +283,19 @@ func (o GalleryImageOutput) ToGalleryImageOutputWithContext(ctx context.Context)
 	return o
 }
 
+// Optional. Must be set to true if the gallery image features are being updated.
+func (o GalleryImageOutput) AllowUpdateImage() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GalleryImage) pulumi.BoolPtrOutput { return v.AllowUpdateImage }).(pulumi.BoolPtrOutput)
+}
+
 // The architecture of the image. Applicable to OS disks only.
 func (o GalleryImageOutput) Architecture() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GalleryImage) pulumi.StringPtrOutput { return v.Architecture }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o GalleryImageOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *GalleryImage) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The description of this gallery image definition resource. This property is updatable.
@@ -313,12 +333,12 @@ func (o GalleryImageOutput) Identifier() GalleryImageIdentifierResponseOutput {
 	return o.ApplyT(func(v *GalleryImage) GalleryImageIdentifierResponseOutput { return v.Identifier }).(GalleryImageIdentifierResponseOutput)
 }
 
-// Resource location
+// The geo-location where the resource lives
 func (o GalleryImageOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *GalleryImage) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Resource name
+// The name of the resource
 func (o GalleryImageOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *GalleryImage) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -328,7 +348,7 @@ func (o GalleryImageOutput) OsState() pulumi.StringOutput {
 	return o.ApplyT(func(v *GalleryImage) pulumi.StringOutput { return v.OsState }).(pulumi.StringOutput)
 }
 
-// This property allows you to specify the type of the OS that is included in the disk when creating a VM from a managed image. <br><br> Possible values are: <br><br> **Windows** <br><br> **Linux**
+// This property allows you to specify the type of the OS that is included in the disk when creating a VM from a managed image. Possible values are: **Windows,** **Linux.**
 func (o GalleryImageOutput) OsType() pulumi.StringOutput {
 	return o.ApplyT(func(v *GalleryImage) pulumi.StringOutput { return v.OsType }).(pulumi.StringOutput)
 }
@@ -358,12 +378,17 @@ func (o GalleryImageOutput) ReleaseNoteUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GalleryImage) pulumi.StringPtrOutput { return v.ReleaseNoteUri }).(pulumi.StringPtrOutput)
 }
 
-// Resource tags
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o GalleryImageOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *GalleryImage) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// Resource tags.
 func (o GalleryImageOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GalleryImage) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Resource type
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o GalleryImageOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *GalleryImage) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A cache instance. Follows Azure Resource Manager standards: https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md
 //
-// Uses Azure REST API version 2023-05-01. In version 1.x of the Azure Native provider, it used API version 2021-03-01.
+// Uses Azure REST API version 2024-03-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
 //
-// Other available API versions: 2021-03-01, 2023-03-01-preview, 2023-11-01-preview, 2024-03-01, 2024-07-01.
+// Other available API versions: 2023-05-01, 2023-11-01-preview, 2024-07-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagecache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Cache struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The size of this Cache, in GB.
 	CacheSizeGB pulumi.IntPtrOutput `pulumi:"cacheSizeGB"`
 	// Specifies Directory Services settings of the cache.
@@ -125,6 +127,9 @@ func NewCache(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:storagecache/v20240701:Cache"),
+		},
+		{
+			Type: pulumi.String("azure-native:storagecache/v20250701:Cache"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -258,6 +263,11 @@ func (o CacheOutput) ToCacheOutput() CacheOutput {
 
 func (o CacheOutput) ToCacheOutputWithContext(ctx context.Context) CacheOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o CacheOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cache) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The size of this Cache, in GB.

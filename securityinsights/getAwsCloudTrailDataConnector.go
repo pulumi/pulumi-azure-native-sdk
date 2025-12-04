@@ -7,13 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a data connector.
 //
-// Uses Azure REST API version 2023-02-01.
+// Uses Azure REST API version 2024-09-01.
 func LookupAwsCloudTrailDataConnector(ctx *pulumi.Context, args *LookupAwsCloudTrailDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupAwsCloudTrailDataConnectorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAwsCloudTrailDataConnectorResult
@@ -37,6 +37,8 @@ type LookupAwsCloudTrailDataConnectorArgs struct {
 type LookupAwsCloudTrailDataConnectorResult struct {
 	// The Aws Role Arn (with CloudTrailReadOnly policy) that is used to access the Aws account.
 	AwsRoleArn *string `pulumi:"awsRoleArn"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The available data types for the connector.
 	DataTypes *AwsCloudTrailDataConnectorDataTypesResponse `pulumi:"dataTypes"`
 	// Etag of the azure resource
@@ -94,6 +96,11 @@ func (o LookupAwsCloudTrailDataConnectorResultOutput) ToLookupAwsCloudTrailDataC
 // The Aws Role Arn (with CloudTrailReadOnly policy) that is used to access the Aws account.
 func (o LookupAwsCloudTrailDataConnectorResultOutput) AwsRoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAwsCloudTrailDataConnectorResult) *string { return v.AwsRoleArn }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupAwsCloudTrailDataConnectorResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAwsCloudTrailDataConnectorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The available data types for the connector.

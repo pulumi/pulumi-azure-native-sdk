@@ -7,11 +7,143 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 var _ = utilities.GetEnvOrDefault
+
+// Defines the asset endpoint profile status error properties.
+type AssetEndpointProfileStatusErrorResponse struct {
+	// Error code for classification of errors (ex: 400, 404, 500, etc.).
+	Code int `pulumi:"code"`
+	// Human readable helpful error message to provide additional context for error (ex: “targetAddress 'foo' is not a valid url”).
+	Message string `pulumi:"message"`
+}
+
+// Defines the asset endpoint profile status error properties.
+type AssetEndpointProfileStatusErrorResponseOutput struct{ *pulumi.OutputState }
+
+func (AssetEndpointProfileStatusErrorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetEndpointProfileStatusErrorResponse)(nil)).Elem()
+}
+
+func (o AssetEndpointProfileStatusErrorResponseOutput) ToAssetEndpointProfileStatusErrorResponseOutput() AssetEndpointProfileStatusErrorResponseOutput {
+	return o
+}
+
+func (o AssetEndpointProfileStatusErrorResponseOutput) ToAssetEndpointProfileStatusErrorResponseOutputWithContext(ctx context.Context) AssetEndpointProfileStatusErrorResponseOutput {
+	return o
+}
+
+// Error code for classification of errors (ex: 400, 404, 500, etc.).
+func (o AssetEndpointProfileStatusErrorResponseOutput) Code() pulumi.IntOutput {
+	return o.ApplyT(func(v AssetEndpointProfileStatusErrorResponse) int { return v.Code }).(pulumi.IntOutput)
+}
+
+// Human readable helpful error message to provide additional context for error (ex: “targetAddress 'foo' is not a valid url”).
+func (o AssetEndpointProfileStatusErrorResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v AssetEndpointProfileStatusErrorResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+type AssetEndpointProfileStatusErrorResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AssetEndpointProfileStatusErrorResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssetEndpointProfileStatusErrorResponse)(nil)).Elem()
+}
+
+func (o AssetEndpointProfileStatusErrorResponseArrayOutput) ToAssetEndpointProfileStatusErrorResponseArrayOutput() AssetEndpointProfileStatusErrorResponseArrayOutput {
+	return o
+}
+
+func (o AssetEndpointProfileStatusErrorResponseArrayOutput) ToAssetEndpointProfileStatusErrorResponseArrayOutputWithContext(ctx context.Context) AssetEndpointProfileStatusErrorResponseArrayOutput {
+	return o
+}
+
+func (o AssetEndpointProfileStatusErrorResponseArrayOutput) Index(i pulumi.IntInput) AssetEndpointProfileStatusErrorResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AssetEndpointProfileStatusErrorResponse {
+		return vs[0].([]AssetEndpointProfileStatusErrorResponse)[vs[1].(int)]
+	}).(AssetEndpointProfileStatusErrorResponseOutput)
+}
+
+// Defines the asset endpoint profile status properties.
+type AssetEndpointProfileStatusResponse struct {
+	// Array object to transfer and persist errors that originate from the Edge.
+	Errors []AssetEndpointProfileStatusErrorResponse `pulumi:"errors"`
+}
+
+// Defines the asset endpoint profile status properties.
+type AssetEndpointProfileStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (AssetEndpointProfileStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetEndpointProfileStatusResponse)(nil)).Elem()
+}
+
+func (o AssetEndpointProfileStatusResponseOutput) ToAssetEndpointProfileStatusResponseOutput() AssetEndpointProfileStatusResponseOutput {
+	return o
+}
+
+func (o AssetEndpointProfileStatusResponseOutput) ToAssetEndpointProfileStatusResponseOutputWithContext(ctx context.Context) AssetEndpointProfileStatusResponseOutput {
+	return o
+}
+
+// Array object to transfer and persist errors that originate from the Edge.
+func (o AssetEndpointProfileStatusResponseOutput) Errors() AssetEndpointProfileStatusErrorResponseArrayOutput {
+	return o.ApplyT(func(v AssetEndpointProfileStatusResponse) []AssetEndpointProfileStatusErrorResponse { return v.Errors }).(AssetEndpointProfileStatusErrorResponseArrayOutput)
+}
+
+// Defines the asset status dataset properties.
+type AssetStatusDatasetResponse struct {
+	// The message schema reference object.
+	MessageSchemaReference MessageSchemaReferenceResponse `pulumi:"messageSchemaReference"`
+	// The name of the dataset. Must be unique within the status.datasets array. This name is used to correlate between the spec and status dataset information.
+	Name string `pulumi:"name"`
+}
+
+// Defines the asset status dataset properties.
+type AssetStatusDatasetResponseOutput struct{ *pulumi.OutputState }
+
+func (AssetStatusDatasetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetStatusDatasetResponse)(nil)).Elem()
+}
+
+func (o AssetStatusDatasetResponseOutput) ToAssetStatusDatasetResponseOutput() AssetStatusDatasetResponseOutput {
+	return o
+}
+
+func (o AssetStatusDatasetResponseOutput) ToAssetStatusDatasetResponseOutputWithContext(ctx context.Context) AssetStatusDatasetResponseOutput {
+	return o
+}
+
+// The message schema reference object.
+func (o AssetStatusDatasetResponseOutput) MessageSchemaReference() MessageSchemaReferenceResponseOutput {
+	return o.ApplyT(func(v AssetStatusDatasetResponse) MessageSchemaReferenceResponse { return v.MessageSchemaReference }).(MessageSchemaReferenceResponseOutput)
+}
+
+// The name of the dataset. Must be unique within the status.datasets array. This name is used to correlate between the spec and status dataset information.
+func (o AssetStatusDatasetResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v AssetStatusDatasetResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type AssetStatusDatasetResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AssetStatusDatasetResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssetStatusDatasetResponse)(nil)).Elem()
+}
+
+func (o AssetStatusDatasetResponseArrayOutput) ToAssetStatusDatasetResponseArrayOutput() AssetStatusDatasetResponseArrayOutput {
+	return o
+}
+
+func (o AssetStatusDatasetResponseArrayOutput) ToAssetStatusDatasetResponseArrayOutputWithContext(ctx context.Context) AssetStatusDatasetResponseArrayOutput {
+	return o
+}
+
+func (o AssetStatusDatasetResponseArrayOutput) Index(i pulumi.IntInput) AssetStatusDatasetResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AssetStatusDatasetResponse {
+		return vs[0].([]AssetStatusDatasetResponse)[vs[1].(int)]
+	}).(AssetStatusDatasetResponseOutput)
+}
 
 // Defines the asset status error properties.
 type AssetStatusErrorResponse struct {
@@ -66,12 +198,69 @@ func (o AssetStatusErrorResponseArrayOutput) Index(i pulumi.IntInput) AssetStatu
 	}).(AssetStatusErrorResponseOutput)
 }
 
+// Defines the asset status event properties.
+type AssetStatusEventResponse struct {
+	// The message schema reference object.
+	MessageSchemaReference MessageSchemaReferenceResponse `pulumi:"messageSchemaReference"`
+	// The name of the event. Must be unique within the status.events array. This name is used to correlate between the spec and status event information.
+	Name string `pulumi:"name"`
+}
+
+// Defines the asset status event properties.
+type AssetStatusEventResponseOutput struct{ *pulumi.OutputState }
+
+func (AssetStatusEventResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetStatusEventResponse)(nil)).Elem()
+}
+
+func (o AssetStatusEventResponseOutput) ToAssetStatusEventResponseOutput() AssetStatusEventResponseOutput {
+	return o
+}
+
+func (o AssetStatusEventResponseOutput) ToAssetStatusEventResponseOutputWithContext(ctx context.Context) AssetStatusEventResponseOutput {
+	return o
+}
+
+// The message schema reference object.
+func (o AssetStatusEventResponseOutput) MessageSchemaReference() MessageSchemaReferenceResponseOutput {
+	return o.ApplyT(func(v AssetStatusEventResponse) MessageSchemaReferenceResponse { return v.MessageSchemaReference }).(MessageSchemaReferenceResponseOutput)
+}
+
+// The name of the event. Must be unique within the status.events array. This name is used to correlate between the spec and status event information.
+func (o AssetStatusEventResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v AssetStatusEventResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type AssetStatusEventResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AssetStatusEventResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssetStatusEventResponse)(nil)).Elem()
+}
+
+func (o AssetStatusEventResponseArrayOutput) ToAssetStatusEventResponseArrayOutput() AssetStatusEventResponseArrayOutput {
+	return o
+}
+
+func (o AssetStatusEventResponseArrayOutput) ToAssetStatusEventResponseArrayOutputWithContext(ctx context.Context) AssetStatusEventResponseArrayOutput {
+	return o
+}
+
+func (o AssetStatusEventResponseArrayOutput) Index(i pulumi.IntInput) AssetStatusEventResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AssetStatusEventResponse {
+		return vs[0].([]AssetStatusEventResponse)[vs[1].(int)]
+	}).(AssetStatusEventResponseOutput)
+}
+
 // Defines the asset status properties.
 type AssetStatusResponse struct {
+	// Array of dataset statuses that describe the status of each dataset.
+	Datasets []AssetStatusDatasetResponse `pulumi:"datasets"`
 	// Array object to transfer and persist errors that originate from the Edge.
 	Errors []AssetStatusErrorResponse `pulumi:"errors"`
+	// Array of event statuses that describe the status of each event.
+	Events []AssetStatusEventResponse `pulumi:"events"`
 	// A read only incremental counter indicating the number of times the configuration has been modified from the perspective of the current actual (Edge) state of the Asset. Edge would be the only writer of this value and would sync back up to the cloud. In steady state, this should equal version.
-	Version int `pulumi:"version"`
+	Version float64 `pulumi:"version"`
 }
 
 // Defines the asset status properties.
@@ -89,26 +278,424 @@ func (o AssetStatusResponseOutput) ToAssetStatusResponseOutputWithContext(ctx co
 	return o
 }
 
+// Array of dataset statuses that describe the status of each dataset.
+func (o AssetStatusResponseOutput) Datasets() AssetStatusDatasetResponseArrayOutput {
+	return o.ApplyT(func(v AssetStatusResponse) []AssetStatusDatasetResponse { return v.Datasets }).(AssetStatusDatasetResponseArrayOutput)
+}
+
 // Array object to transfer and persist errors that originate from the Edge.
 func (o AssetStatusResponseOutput) Errors() AssetStatusErrorResponseArrayOutput {
 	return o.ApplyT(func(v AssetStatusResponse) []AssetStatusErrorResponse { return v.Errors }).(AssetStatusErrorResponseArrayOutput)
 }
 
+// Array of event statuses that describe the status of each event.
+func (o AssetStatusResponseOutput) Events() AssetStatusEventResponseArrayOutput {
+	return o.ApplyT(func(v AssetStatusResponse) []AssetStatusEventResponse { return v.Events }).(AssetStatusEventResponseArrayOutput)
+}
+
 // A read only incremental counter indicating the number of times the configuration has been modified from the perspective of the current actual (Edge) state of the Asset. Edge would be the only writer of this value and would sync back up to the cloud. In steady state, this should equal version.
-func (o AssetStatusResponseOutput) Version() pulumi.IntOutput {
-	return o.ApplyT(func(v AssetStatusResponse) int { return v.Version }).(pulumi.IntOutput)
+func (o AssetStatusResponseOutput) Version() pulumi.Float64Output {
+	return o.ApplyT(func(v AssetStatusResponse) float64 { return v.Version }).(pulumi.Float64Output)
+}
+
+// Definition of the client authentication mechanism to the server.
+type Authentication struct {
+	// Defines the method to authenticate the user of the client at the server.
+	Method string `pulumi:"method"`
+	// Defines the username and password references when UsernamePassword user authentication mode is selected.
+	UsernamePasswordCredentials *UsernamePasswordCredentials `pulumi:"usernamePasswordCredentials"`
+	// Defines the certificate reference when Certificate user authentication mode is selected.
+	X509Credentials *X509Credentials `pulumi:"x509Credentials"`
+}
+
+// Defaults sets the appropriate defaults for Authentication
+func (val *Authentication) Defaults() *Authentication {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if utilities.IsZero(tmp.Method) {
+		tmp.Method = "Certificate"
+	}
+	return &tmp
+}
+
+// AuthenticationInput is an input type that accepts AuthenticationArgs and AuthenticationOutput values.
+// You can construct a concrete instance of `AuthenticationInput` via:
+//
+//	AuthenticationArgs{...}
+type AuthenticationInput interface {
+	pulumi.Input
+
+	ToAuthenticationOutput() AuthenticationOutput
+	ToAuthenticationOutputWithContext(context.Context) AuthenticationOutput
+}
+
+// Definition of the client authentication mechanism to the server.
+type AuthenticationArgs struct {
+	// Defines the method to authenticate the user of the client at the server.
+	Method pulumi.StringInput `pulumi:"method"`
+	// Defines the username and password references when UsernamePassword user authentication mode is selected.
+	UsernamePasswordCredentials UsernamePasswordCredentialsPtrInput `pulumi:"usernamePasswordCredentials"`
+	// Defines the certificate reference when Certificate user authentication mode is selected.
+	X509Credentials X509CredentialsPtrInput `pulumi:"x509Credentials"`
+}
+
+// Defaults sets the appropriate defaults for AuthenticationArgs
+func (val *AuthenticationArgs) Defaults() *AuthenticationArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Method == nil {
+		tmp.Method = pulumi.String("Certificate")
+	}
+	return &tmp
+}
+func (AuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Authentication)(nil)).Elem()
+}
+
+func (i AuthenticationArgs) ToAuthenticationOutput() AuthenticationOutput {
+	return i.ToAuthenticationOutputWithContext(context.Background())
+}
+
+func (i AuthenticationArgs) ToAuthenticationOutputWithContext(ctx context.Context) AuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthenticationOutput)
+}
+
+func (i AuthenticationArgs) ToAuthenticationPtrOutput() AuthenticationPtrOutput {
+	return i.ToAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i AuthenticationArgs) ToAuthenticationPtrOutputWithContext(ctx context.Context) AuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthenticationOutput).ToAuthenticationPtrOutputWithContext(ctx)
+}
+
+// AuthenticationPtrInput is an input type that accepts AuthenticationArgs, AuthenticationPtr and AuthenticationPtrOutput values.
+// You can construct a concrete instance of `AuthenticationPtrInput` via:
+//
+//	        AuthenticationArgs{...}
+//
+//	or:
+//
+//	        nil
+type AuthenticationPtrInput interface {
+	pulumi.Input
+
+	ToAuthenticationPtrOutput() AuthenticationPtrOutput
+	ToAuthenticationPtrOutputWithContext(context.Context) AuthenticationPtrOutput
+}
+
+type authenticationPtrType AuthenticationArgs
+
+func AuthenticationPtr(v *AuthenticationArgs) AuthenticationPtrInput {
+	return (*authenticationPtrType)(v)
+}
+
+func (*authenticationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Authentication)(nil)).Elem()
+}
+
+func (i *authenticationPtrType) ToAuthenticationPtrOutput() AuthenticationPtrOutput {
+	return i.ToAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i *authenticationPtrType) ToAuthenticationPtrOutputWithContext(ctx context.Context) AuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthenticationPtrOutput)
+}
+
+// Definition of the client authentication mechanism to the server.
+type AuthenticationOutput struct{ *pulumi.OutputState }
+
+func (AuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Authentication)(nil)).Elem()
+}
+
+func (o AuthenticationOutput) ToAuthenticationOutput() AuthenticationOutput {
+	return o
+}
+
+func (o AuthenticationOutput) ToAuthenticationOutputWithContext(ctx context.Context) AuthenticationOutput {
+	return o
+}
+
+func (o AuthenticationOutput) ToAuthenticationPtrOutput() AuthenticationPtrOutput {
+	return o.ToAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (o AuthenticationOutput) ToAuthenticationPtrOutputWithContext(ctx context.Context) AuthenticationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Authentication) *Authentication {
+		return &v
+	}).(AuthenticationPtrOutput)
+}
+
+// Defines the method to authenticate the user of the client at the server.
+func (o AuthenticationOutput) Method() pulumi.StringOutput {
+	return o.ApplyT(func(v Authentication) string { return v.Method }).(pulumi.StringOutput)
+}
+
+// Defines the username and password references when UsernamePassword user authentication mode is selected.
+func (o AuthenticationOutput) UsernamePasswordCredentials() UsernamePasswordCredentialsPtrOutput {
+	return o.ApplyT(func(v Authentication) *UsernamePasswordCredentials { return v.UsernamePasswordCredentials }).(UsernamePasswordCredentialsPtrOutput)
+}
+
+// Defines the certificate reference when Certificate user authentication mode is selected.
+func (o AuthenticationOutput) X509Credentials() X509CredentialsPtrOutput {
+	return o.ApplyT(func(v Authentication) *X509Credentials { return v.X509Credentials }).(X509CredentialsPtrOutput)
+}
+
+type AuthenticationPtrOutput struct{ *pulumi.OutputState }
+
+func (AuthenticationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Authentication)(nil)).Elem()
+}
+
+func (o AuthenticationPtrOutput) ToAuthenticationPtrOutput() AuthenticationPtrOutput {
+	return o
+}
+
+func (o AuthenticationPtrOutput) ToAuthenticationPtrOutputWithContext(ctx context.Context) AuthenticationPtrOutput {
+	return o
+}
+
+func (o AuthenticationPtrOutput) Elem() AuthenticationOutput {
+	return o.ApplyT(func(v *Authentication) Authentication {
+		if v != nil {
+			return *v
+		}
+		var ret Authentication
+		return ret
+	}).(AuthenticationOutput)
+}
+
+// Defines the method to authenticate the user of the client at the server.
+func (o AuthenticationPtrOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Authentication) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Method
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines the username and password references when UsernamePassword user authentication mode is selected.
+func (o AuthenticationPtrOutput) UsernamePasswordCredentials() UsernamePasswordCredentialsPtrOutput {
+	return o.ApplyT(func(v *Authentication) *UsernamePasswordCredentials {
+		if v == nil {
+			return nil
+		}
+		return v.UsernamePasswordCredentials
+	}).(UsernamePasswordCredentialsPtrOutput)
+}
+
+// Defines the certificate reference when Certificate user authentication mode is selected.
+func (o AuthenticationPtrOutput) X509Credentials() X509CredentialsPtrOutput {
+	return o.ApplyT(func(v *Authentication) *X509Credentials {
+		if v == nil {
+			return nil
+		}
+		return v.X509Credentials
+	}).(X509CredentialsPtrOutput)
+}
+
+// Definition of the client authentication mechanism to the server.
+type AuthenticationResponse struct {
+	// Defines the method to authenticate the user of the client at the server.
+	Method string `pulumi:"method"`
+	// Defines the username and password references when UsernamePassword user authentication mode is selected.
+	UsernamePasswordCredentials *UsernamePasswordCredentialsResponse `pulumi:"usernamePasswordCredentials"`
+	// Defines the certificate reference when Certificate user authentication mode is selected.
+	X509Credentials *X509CredentialsResponse `pulumi:"x509Credentials"`
+}
+
+// Defaults sets the appropriate defaults for AuthenticationResponse
+func (val *AuthenticationResponse) Defaults() *AuthenticationResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if utilities.IsZero(tmp.Method) {
+		tmp.Method = "Certificate"
+	}
+	return &tmp
+}
+
+// Definition of the client authentication mechanism to the server.
+type AuthenticationResponseOutput struct{ *pulumi.OutputState }
+
+func (AuthenticationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthenticationResponse)(nil)).Elem()
+}
+
+func (o AuthenticationResponseOutput) ToAuthenticationResponseOutput() AuthenticationResponseOutput {
+	return o
+}
+
+func (o AuthenticationResponseOutput) ToAuthenticationResponseOutputWithContext(ctx context.Context) AuthenticationResponseOutput {
+	return o
+}
+
+// Defines the method to authenticate the user of the client at the server.
+func (o AuthenticationResponseOutput) Method() pulumi.StringOutput {
+	return o.ApplyT(func(v AuthenticationResponse) string { return v.Method }).(pulumi.StringOutput)
+}
+
+// Defines the username and password references when UsernamePassword user authentication mode is selected.
+func (o AuthenticationResponseOutput) UsernamePasswordCredentials() UsernamePasswordCredentialsResponsePtrOutput {
+	return o.ApplyT(func(v AuthenticationResponse) *UsernamePasswordCredentialsResponse {
+		return v.UsernamePasswordCredentials
+	}).(UsernamePasswordCredentialsResponsePtrOutput)
+}
+
+// Defines the certificate reference when Certificate user authentication mode is selected.
+func (o AuthenticationResponseOutput) X509Credentials() X509CredentialsResponsePtrOutput {
+	return o.ApplyT(func(v AuthenticationResponse) *X509CredentialsResponse { return v.X509Credentials }).(X509CredentialsResponsePtrOutput)
+}
+
+type AuthenticationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AuthenticationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthenticationResponse)(nil)).Elem()
+}
+
+func (o AuthenticationResponsePtrOutput) ToAuthenticationResponsePtrOutput() AuthenticationResponsePtrOutput {
+	return o
+}
+
+func (o AuthenticationResponsePtrOutput) ToAuthenticationResponsePtrOutputWithContext(ctx context.Context) AuthenticationResponsePtrOutput {
+	return o
+}
+
+func (o AuthenticationResponsePtrOutput) Elem() AuthenticationResponseOutput {
+	return o.ApplyT(func(v *AuthenticationResponse) AuthenticationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AuthenticationResponse
+		return ret
+	}).(AuthenticationResponseOutput)
+}
+
+// Defines the method to authenticate the user of the client at the server.
+func (o AuthenticationResponsePtrOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthenticationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Method
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines the username and password references when UsernamePassword user authentication mode is selected.
+func (o AuthenticationResponsePtrOutput) UsernamePasswordCredentials() UsernamePasswordCredentialsResponsePtrOutput {
+	return o.ApplyT(func(v *AuthenticationResponse) *UsernamePasswordCredentialsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.UsernamePasswordCredentials
+	}).(UsernamePasswordCredentialsResponsePtrOutput)
+}
+
+// Defines the certificate reference when Certificate user authentication mode is selected.
+func (o AuthenticationResponsePtrOutput) X509Credentials() X509CredentialsResponsePtrOutput {
+	return o.ApplyT(func(v *AuthenticationResponse) *X509CredentialsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.X509Credentials
+	}).(X509CredentialsResponsePtrOutput)
+}
+
+// The configuration for a MQTT broker state store destination.
+type BrokerStateStoreDestinationConfiguration struct {
+	// The MQTT broker state store destination key.
+	Key string `pulumi:"key"`
+}
+
+// BrokerStateStoreDestinationConfigurationInput is an input type that accepts BrokerStateStoreDestinationConfigurationArgs and BrokerStateStoreDestinationConfigurationOutput values.
+// You can construct a concrete instance of `BrokerStateStoreDestinationConfigurationInput` via:
+//
+//	BrokerStateStoreDestinationConfigurationArgs{...}
+type BrokerStateStoreDestinationConfigurationInput interface {
+	pulumi.Input
+
+	ToBrokerStateStoreDestinationConfigurationOutput() BrokerStateStoreDestinationConfigurationOutput
+	ToBrokerStateStoreDestinationConfigurationOutputWithContext(context.Context) BrokerStateStoreDestinationConfigurationOutput
+}
+
+// The configuration for a MQTT broker state store destination.
+type BrokerStateStoreDestinationConfigurationArgs struct {
+	// The MQTT broker state store destination key.
+	Key pulumi.StringInput `pulumi:"key"`
+}
+
+func (BrokerStateStoreDestinationConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BrokerStateStoreDestinationConfiguration)(nil)).Elem()
+}
+
+func (i BrokerStateStoreDestinationConfigurationArgs) ToBrokerStateStoreDestinationConfigurationOutput() BrokerStateStoreDestinationConfigurationOutput {
+	return i.ToBrokerStateStoreDestinationConfigurationOutputWithContext(context.Background())
+}
+
+func (i BrokerStateStoreDestinationConfigurationArgs) ToBrokerStateStoreDestinationConfigurationOutputWithContext(ctx context.Context) BrokerStateStoreDestinationConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BrokerStateStoreDestinationConfigurationOutput)
+}
+
+// The configuration for a MQTT broker state store destination.
+type BrokerStateStoreDestinationConfigurationOutput struct{ *pulumi.OutputState }
+
+func (BrokerStateStoreDestinationConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BrokerStateStoreDestinationConfiguration)(nil)).Elem()
+}
+
+func (o BrokerStateStoreDestinationConfigurationOutput) ToBrokerStateStoreDestinationConfigurationOutput() BrokerStateStoreDestinationConfigurationOutput {
+	return o
+}
+
+func (o BrokerStateStoreDestinationConfigurationOutput) ToBrokerStateStoreDestinationConfigurationOutputWithContext(ctx context.Context) BrokerStateStoreDestinationConfigurationOutput {
+	return o
+}
+
+// The MQTT broker state store destination key.
+func (o BrokerStateStoreDestinationConfigurationOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v BrokerStateStoreDestinationConfiguration) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The configuration for a MQTT broker state store destination.
+type BrokerStateStoreDestinationConfigurationResponse struct {
+	// The MQTT broker state store destination key.
+	Key string `pulumi:"key"`
+}
+
+// The configuration for a MQTT broker state store destination.
+type BrokerStateStoreDestinationConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (BrokerStateStoreDestinationConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BrokerStateStoreDestinationConfigurationResponse)(nil)).Elem()
+}
+
+func (o BrokerStateStoreDestinationConfigurationResponseOutput) ToBrokerStateStoreDestinationConfigurationResponseOutput() BrokerStateStoreDestinationConfigurationResponseOutput {
+	return o
+}
+
+func (o BrokerStateStoreDestinationConfigurationResponseOutput) ToBrokerStateStoreDestinationConfigurationResponseOutputWithContext(ctx context.Context) BrokerStateStoreDestinationConfigurationResponseOutput {
+	return o
+}
+
+// The MQTT broker state store destination key.
+func (o BrokerStateStoreDestinationConfigurationResponseOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v BrokerStateStoreDestinationConfigurationResponse) string { return v.Key }).(pulumi.StringOutput)
 }
 
 // Defines the data point properties.
 type DataPoint struct {
-	// The path to the type definition of the capability (e.g. DTMI, OPC UA information model node id, etc.), for example dtmi:com:example:Robot:_contents:__prop1;1.
-	CapabilityId *string `pulumi:"capabilityId"`
 	// Stringified JSON that contains connector-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
 	DataPointConfiguration *string `pulumi:"dataPointConfiguration"`
 	// The address of the source of the data in the asset (e.g. URL) so that a client can access the data source on the asset.
 	DataSource string `pulumi:"dataSource"`
 	// The name of the data point.
-	Name *string `pulumi:"name"`
+	Name string `pulumi:"name"`
 	// An indication of how the data point should be mapped to OpenTelemetry.
 	ObservabilityMode *string `pulumi:"observabilityMode"`
 }
@@ -120,7 +707,7 @@ func (val *DataPoint) Defaults() *DataPoint {
 	}
 	tmp := *val
 	if tmp.ObservabilityMode == nil {
-		observabilityMode_ := "none"
+		observabilityMode_ := "None"
 		tmp.ObservabilityMode = &observabilityMode_
 	}
 	return &tmp
@@ -139,14 +726,12 @@ type DataPointInput interface {
 
 // Defines the data point properties.
 type DataPointArgs struct {
-	// The path to the type definition of the capability (e.g. DTMI, OPC UA information model node id, etc.), for example dtmi:com:example:Robot:_contents:__prop1;1.
-	CapabilityId pulumi.StringPtrInput `pulumi:"capabilityId"`
 	// Stringified JSON that contains connector-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
 	DataPointConfiguration pulumi.StringPtrInput `pulumi:"dataPointConfiguration"`
 	// The address of the source of the data in the asset (e.g. URL) so that a client can access the data source on the asset.
 	DataSource pulumi.StringInput `pulumi:"dataSource"`
 	// The name of the data point.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Name pulumi.StringInput `pulumi:"name"`
 	// An indication of how the data point should be mapped to OpenTelemetry.
 	ObservabilityMode pulumi.StringPtrInput `pulumi:"observabilityMode"`
 }
@@ -158,7 +743,7 @@ func (val *DataPointArgs) Defaults() *DataPointArgs {
 	}
 	tmp := *val
 	if tmp.ObservabilityMode == nil {
-		tmp.ObservabilityMode = pulumi.StringPtr("none")
+		tmp.ObservabilityMode = pulumi.StringPtr("None")
 	}
 	return &tmp
 }
@@ -214,11 +799,6 @@ func (o DataPointOutput) ToDataPointOutputWithContext(ctx context.Context) DataP
 	return o
 }
 
-// The path to the type definition of the capability (e.g. DTMI, OPC UA information model node id, etc.), for example dtmi:com:example:Robot:_contents:__prop1;1.
-func (o DataPointOutput) CapabilityId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataPoint) *string { return v.CapabilityId }).(pulumi.StringPtrOutput)
-}
-
 // Stringified JSON that contains connector-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
 func (o DataPointOutput) DataPointConfiguration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataPoint) *string { return v.DataPointConfiguration }).(pulumi.StringPtrOutput)
@@ -230,8 +810,8 @@ func (o DataPointOutput) DataSource() pulumi.StringOutput {
 }
 
 // The name of the data point.
-func (o DataPointOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataPoint) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o DataPointOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v DataPoint) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // An indication of how the data point should be mapped to OpenTelemetry.
@@ -261,14 +841,12 @@ func (o DataPointArrayOutput) Index(i pulumi.IntInput) DataPointOutput {
 
 // Defines the data point properties.
 type DataPointResponse struct {
-	// The path to the type definition of the capability (e.g. DTMI, OPC UA information model node id, etc.), for example dtmi:com:example:Robot:_contents:__prop1;1.
-	CapabilityId *string `pulumi:"capabilityId"`
 	// Stringified JSON that contains connector-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
 	DataPointConfiguration *string `pulumi:"dataPointConfiguration"`
 	// The address of the source of the data in the asset (e.g. URL) so that a client can access the data source on the asset.
 	DataSource string `pulumi:"dataSource"`
 	// The name of the data point.
-	Name *string `pulumi:"name"`
+	Name string `pulumi:"name"`
 	// An indication of how the data point should be mapped to OpenTelemetry.
 	ObservabilityMode *string `pulumi:"observabilityMode"`
 }
@@ -280,7 +858,7 @@ func (val *DataPointResponse) Defaults() *DataPointResponse {
 	}
 	tmp := *val
 	if tmp.ObservabilityMode == nil {
-		observabilityMode_ := "none"
+		observabilityMode_ := "None"
 		tmp.ObservabilityMode = &observabilityMode_
 	}
 	return &tmp
@@ -301,11 +879,6 @@ func (o DataPointResponseOutput) ToDataPointResponseOutputWithContext(ctx contex
 	return o
 }
 
-// The path to the type definition of the capability (e.g. DTMI, OPC UA information model node id, etc.), for example dtmi:com:example:Robot:_contents:__prop1;1.
-func (o DataPointResponseOutput) CapabilityId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataPointResponse) *string { return v.CapabilityId }).(pulumi.StringPtrOutput)
-}
-
 // Stringified JSON that contains connector-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
 func (o DataPointResponseOutput) DataPointConfiguration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataPointResponse) *string { return v.DataPointConfiguration }).(pulumi.StringPtrOutput)
@@ -317,8 +890,8 @@ func (o DataPointResponseOutput) DataSource() pulumi.StringOutput {
 }
 
 // The name of the data point.
-func (o DataPointResponseOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataPointResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o DataPointResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v DataPointResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // An indication of how the data point should be mapped to OpenTelemetry.
@@ -344,6 +917,938 @@ func (o DataPointResponseArrayOutput) Index(i pulumi.IntInput) DataPointResponse
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataPointResponse {
 		return vs[0].([]DataPointResponse)[vs[1].(int)]
 	}).(DataPointResponseOutput)
+}
+
+// Defines the dataset properties.
+type Dataset struct {
+	// Array of data points that are part of the dataset. Each data point can have per-data point configuration.
+	DataPoints []DataPoint `pulumi:"dataPoints"`
+	// Stringified JSON that contains connector-specific JSON string that describes configuration for the specific dataset.
+	DatasetConfiguration *string `pulumi:"datasetConfiguration"`
+	// Name of the dataset.
+	Name string `pulumi:"name"`
+	// Object that describes the topic information for the specific dataset.
+	Topic *Topic `pulumi:"topic"`
+}
+
+// Defaults sets the appropriate defaults for Dataset
+func (val *Dataset) Defaults() *Dataset {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Topic = tmp.Topic.Defaults()
+
+	return &tmp
+}
+
+// DatasetInput is an input type that accepts DatasetArgs and DatasetOutput values.
+// You can construct a concrete instance of `DatasetInput` via:
+//
+//	DatasetArgs{...}
+type DatasetInput interface {
+	pulumi.Input
+
+	ToDatasetOutput() DatasetOutput
+	ToDatasetOutputWithContext(context.Context) DatasetOutput
+}
+
+// Defines the dataset properties.
+type DatasetArgs struct {
+	// Array of data points that are part of the dataset. Each data point can have per-data point configuration.
+	DataPoints DataPointArrayInput `pulumi:"dataPoints"`
+	// Stringified JSON that contains connector-specific JSON string that describes configuration for the specific dataset.
+	DatasetConfiguration pulumi.StringPtrInput `pulumi:"datasetConfiguration"`
+	// Name of the dataset.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Object that describes the topic information for the specific dataset.
+	Topic TopicPtrInput `pulumi:"topic"`
+}
+
+// Defaults sets the appropriate defaults for DatasetArgs
+func (val *DatasetArgs) Defaults() *DatasetArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	return &tmp
+}
+func (DatasetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Dataset)(nil)).Elem()
+}
+
+func (i DatasetArgs) ToDatasetOutput() DatasetOutput {
+	return i.ToDatasetOutputWithContext(context.Background())
+}
+
+func (i DatasetArgs) ToDatasetOutputWithContext(ctx context.Context) DatasetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetOutput)
+}
+
+// DatasetArrayInput is an input type that accepts DatasetArray and DatasetArrayOutput values.
+// You can construct a concrete instance of `DatasetArrayInput` via:
+//
+//	DatasetArray{ DatasetArgs{...} }
+type DatasetArrayInput interface {
+	pulumi.Input
+
+	ToDatasetArrayOutput() DatasetArrayOutput
+	ToDatasetArrayOutputWithContext(context.Context) DatasetArrayOutput
+}
+
+type DatasetArray []DatasetInput
+
+func (DatasetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Dataset)(nil)).Elem()
+}
+
+func (i DatasetArray) ToDatasetArrayOutput() DatasetArrayOutput {
+	return i.ToDatasetArrayOutputWithContext(context.Background())
+}
+
+func (i DatasetArray) ToDatasetArrayOutputWithContext(ctx context.Context) DatasetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetArrayOutput)
+}
+
+// Defines the dataset properties.
+type DatasetOutput struct{ *pulumi.OutputState }
+
+func (DatasetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Dataset)(nil)).Elem()
+}
+
+func (o DatasetOutput) ToDatasetOutput() DatasetOutput {
+	return o
+}
+
+func (o DatasetOutput) ToDatasetOutputWithContext(ctx context.Context) DatasetOutput {
+	return o
+}
+
+// Array of data points that are part of the dataset. Each data point can have per-data point configuration.
+func (o DatasetOutput) DataPoints() DataPointArrayOutput {
+	return o.ApplyT(func(v Dataset) []DataPoint { return v.DataPoints }).(DataPointArrayOutput)
+}
+
+// Stringified JSON that contains connector-specific JSON string that describes configuration for the specific dataset.
+func (o DatasetOutput) DatasetConfiguration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Dataset) *string { return v.DatasetConfiguration }).(pulumi.StringPtrOutput)
+}
+
+// Name of the dataset.
+func (o DatasetOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v Dataset) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Object that describes the topic information for the specific dataset.
+func (o DatasetOutput) Topic() TopicPtrOutput {
+	return o.ApplyT(func(v Dataset) *Topic { return v.Topic }).(TopicPtrOutput)
+}
+
+type DatasetArrayOutput struct{ *pulumi.OutputState }
+
+func (DatasetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Dataset)(nil)).Elem()
+}
+
+func (o DatasetArrayOutput) ToDatasetArrayOutput() DatasetArrayOutput {
+	return o
+}
+
+func (o DatasetArrayOutput) ToDatasetArrayOutputWithContext(ctx context.Context) DatasetArrayOutput {
+	return o
+}
+
+func (o DatasetArrayOutput) Index(i pulumi.IntInput) DatasetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Dataset {
+		return vs[0].([]Dataset)[vs[1].(int)]
+	}).(DatasetOutput)
+}
+
+// The type for a MQTT broker state store destination.
+type DatasetBrokerStateStoreDestination struct {
+	// The MQTT broker state store destination configuration.
+	Configuration BrokerStateStoreDestinationConfiguration `pulumi:"configuration"`
+	// The set of supported dataset destinations for an asset.
+	// Expected value is 'BrokerStateStore'.
+	Target string `pulumi:"target"`
+}
+
+// DatasetBrokerStateStoreDestinationInput is an input type that accepts DatasetBrokerStateStoreDestinationArgs and DatasetBrokerStateStoreDestinationOutput values.
+// You can construct a concrete instance of `DatasetBrokerStateStoreDestinationInput` via:
+//
+//	DatasetBrokerStateStoreDestinationArgs{...}
+type DatasetBrokerStateStoreDestinationInput interface {
+	pulumi.Input
+
+	ToDatasetBrokerStateStoreDestinationOutput() DatasetBrokerStateStoreDestinationOutput
+	ToDatasetBrokerStateStoreDestinationOutputWithContext(context.Context) DatasetBrokerStateStoreDestinationOutput
+}
+
+// The type for a MQTT broker state store destination.
+type DatasetBrokerStateStoreDestinationArgs struct {
+	// The MQTT broker state store destination configuration.
+	Configuration BrokerStateStoreDestinationConfigurationInput `pulumi:"configuration"`
+	// The set of supported dataset destinations for an asset.
+	// Expected value is 'BrokerStateStore'.
+	Target pulumi.StringInput `pulumi:"target"`
+}
+
+func (DatasetBrokerStateStoreDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetBrokerStateStoreDestination)(nil)).Elem()
+}
+
+func (i DatasetBrokerStateStoreDestinationArgs) ToDatasetBrokerStateStoreDestinationOutput() DatasetBrokerStateStoreDestinationOutput {
+	return i.ToDatasetBrokerStateStoreDestinationOutputWithContext(context.Background())
+}
+
+func (i DatasetBrokerStateStoreDestinationArgs) ToDatasetBrokerStateStoreDestinationOutputWithContext(ctx context.Context) DatasetBrokerStateStoreDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetBrokerStateStoreDestinationOutput)
+}
+
+// The type for a MQTT broker state store destination.
+type DatasetBrokerStateStoreDestinationOutput struct{ *pulumi.OutputState }
+
+func (DatasetBrokerStateStoreDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetBrokerStateStoreDestination)(nil)).Elem()
+}
+
+func (o DatasetBrokerStateStoreDestinationOutput) ToDatasetBrokerStateStoreDestinationOutput() DatasetBrokerStateStoreDestinationOutput {
+	return o
+}
+
+func (o DatasetBrokerStateStoreDestinationOutput) ToDatasetBrokerStateStoreDestinationOutputWithContext(ctx context.Context) DatasetBrokerStateStoreDestinationOutput {
+	return o
+}
+
+// The MQTT broker state store destination configuration.
+func (o DatasetBrokerStateStoreDestinationOutput) Configuration() BrokerStateStoreDestinationConfigurationOutput {
+	return o.ApplyT(func(v DatasetBrokerStateStoreDestination) BrokerStateStoreDestinationConfiguration {
+		return v.Configuration
+	}).(BrokerStateStoreDestinationConfigurationOutput)
+}
+
+// The set of supported dataset destinations for an asset.
+// Expected value is 'BrokerStateStore'.
+func (o DatasetBrokerStateStoreDestinationOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v DatasetBrokerStateStoreDestination) string { return v.Target }).(pulumi.StringOutput)
+}
+
+// The type for a MQTT broker state store destination.
+type DatasetBrokerStateStoreDestinationResponse struct {
+	// The MQTT broker state store destination configuration.
+	Configuration BrokerStateStoreDestinationConfigurationResponse `pulumi:"configuration"`
+	// The set of supported dataset destinations for an asset.
+	// Expected value is 'BrokerStateStore'.
+	Target string `pulumi:"target"`
+}
+
+// The type for a MQTT broker state store destination.
+type DatasetBrokerStateStoreDestinationResponseOutput struct{ *pulumi.OutputState }
+
+func (DatasetBrokerStateStoreDestinationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetBrokerStateStoreDestinationResponse)(nil)).Elem()
+}
+
+func (o DatasetBrokerStateStoreDestinationResponseOutput) ToDatasetBrokerStateStoreDestinationResponseOutput() DatasetBrokerStateStoreDestinationResponseOutput {
+	return o
+}
+
+func (o DatasetBrokerStateStoreDestinationResponseOutput) ToDatasetBrokerStateStoreDestinationResponseOutputWithContext(ctx context.Context) DatasetBrokerStateStoreDestinationResponseOutput {
+	return o
+}
+
+// The MQTT broker state store destination configuration.
+func (o DatasetBrokerStateStoreDestinationResponseOutput) Configuration() BrokerStateStoreDestinationConfigurationResponseOutput {
+	return o.ApplyT(func(v DatasetBrokerStateStoreDestinationResponse) BrokerStateStoreDestinationConfigurationResponse {
+		return v.Configuration
+	}).(BrokerStateStoreDestinationConfigurationResponseOutput)
+}
+
+// The set of supported dataset destinations for an asset.
+// Expected value is 'BrokerStateStore'.
+func (o DatasetBrokerStateStoreDestinationResponseOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v DatasetBrokerStateStoreDestinationResponse) string { return v.Target }).(pulumi.StringOutput)
+}
+
+// The type for a MQTT destination.
+type DatasetMqttDestination struct {
+	// The MQTT destination configuration.
+	Configuration MqttDestinationConfiguration `pulumi:"configuration"`
+	// The set of supported dataset destinations for an asset.
+	// Expected value is 'Mqtt'.
+	Target string `pulumi:"target"`
+}
+
+// Defaults sets the appropriate defaults for DatasetMqttDestination
+func (val *DatasetMqttDestination) Defaults() *DatasetMqttDestination {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Configuration = *tmp.Configuration.Defaults()
+
+	return &tmp
+}
+
+// DatasetMqttDestinationInput is an input type that accepts DatasetMqttDestinationArgs and DatasetMqttDestinationOutput values.
+// You can construct a concrete instance of `DatasetMqttDestinationInput` via:
+//
+//	DatasetMqttDestinationArgs{...}
+type DatasetMqttDestinationInput interface {
+	pulumi.Input
+
+	ToDatasetMqttDestinationOutput() DatasetMqttDestinationOutput
+	ToDatasetMqttDestinationOutputWithContext(context.Context) DatasetMqttDestinationOutput
+}
+
+// The type for a MQTT destination.
+type DatasetMqttDestinationArgs struct {
+	// The MQTT destination configuration.
+	Configuration MqttDestinationConfigurationInput `pulumi:"configuration"`
+	// The set of supported dataset destinations for an asset.
+	// Expected value is 'Mqtt'.
+	Target pulumi.StringInput `pulumi:"target"`
+}
+
+// Defaults sets the appropriate defaults for DatasetMqttDestinationArgs
+func (val *DatasetMqttDestinationArgs) Defaults() *DatasetMqttDestinationArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	return &tmp
+}
+func (DatasetMqttDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetMqttDestination)(nil)).Elem()
+}
+
+func (i DatasetMqttDestinationArgs) ToDatasetMqttDestinationOutput() DatasetMqttDestinationOutput {
+	return i.ToDatasetMqttDestinationOutputWithContext(context.Background())
+}
+
+func (i DatasetMqttDestinationArgs) ToDatasetMqttDestinationOutputWithContext(ctx context.Context) DatasetMqttDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetMqttDestinationOutput)
+}
+
+// The type for a MQTT destination.
+type DatasetMqttDestinationOutput struct{ *pulumi.OutputState }
+
+func (DatasetMqttDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetMqttDestination)(nil)).Elem()
+}
+
+func (o DatasetMqttDestinationOutput) ToDatasetMqttDestinationOutput() DatasetMqttDestinationOutput {
+	return o
+}
+
+func (o DatasetMqttDestinationOutput) ToDatasetMqttDestinationOutputWithContext(ctx context.Context) DatasetMqttDestinationOutput {
+	return o
+}
+
+// The MQTT destination configuration.
+func (o DatasetMqttDestinationOutput) Configuration() MqttDestinationConfigurationOutput {
+	return o.ApplyT(func(v DatasetMqttDestination) MqttDestinationConfiguration { return v.Configuration }).(MqttDestinationConfigurationOutput)
+}
+
+// The set of supported dataset destinations for an asset.
+// Expected value is 'Mqtt'.
+func (o DatasetMqttDestinationOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v DatasetMqttDestination) string { return v.Target }).(pulumi.StringOutput)
+}
+
+// The type for a MQTT destination.
+type DatasetMqttDestinationResponse struct {
+	// The MQTT destination configuration.
+	Configuration MqttDestinationConfigurationResponse `pulumi:"configuration"`
+	// The set of supported dataset destinations for an asset.
+	// Expected value is 'Mqtt'.
+	Target string `pulumi:"target"`
+}
+
+// Defaults sets the appropriate defaults for DatasetMqttDestinationResponse
+func (val *DatasetMqttDestinationResponse) Defaults() *DatasetMqttDestinationResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Configuration = *tmp.Configuration.Defaults()
+
+	return &tmp
+}
+
+// The type for a MQTT destination.
+type DatasetMqttDestinationResponseOutput struct{ *pulumi.OutputState }
+
+func (DatasetMqttDestinationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetMqttDestinationResponse)(nil)).Elem()
+}
+
+func (o DatasetMqttDestinationResponseOutput) ToDatasetMqttDestinationResponseOutput() DatasetMqttDestinationResponseOutput {
+	return o
+}
+
+func (o DatasetMqttDestinationResponseOutput) ToDatasetMqttDestinationResponseOutputWithContext(ctx context.Context) DatasetMqttDestinationResponseOutput {
+	return o
+}
+
+// The MQTT destination configuration.
+func (o DatasetMqttDestinationResponseOutput) Configuration() MqttDestinationConfigurationResponseOutput {
+	return o.ApplyT(func(v DatasetMqttDestinationResponse) MqttDestinationConfigurationResponse { return v.Configuration }).(MqttDestinationConfigurationResponseOutput)
+}
+
+// The set of supported dataset destinations for an asset.
+// Expected value is 'Mqtt'.
+func (o DatasetMqttDestinationResponseOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v DatasetMqttDestinationResponse) string { return v.Target }).(pulumi.StringOutput)
+}
+
+// Defines the dataset properties.
+type DatasetResponse struct {
+	// Array of data points that are part of the dataset. Each data point can have per-data point configuration.
+	DataPoints []DataPointResponse `pulumi:"dataPoints"`
+	// Stringified JSON that contains connector-specific JSON string that describes configuration for the specific dataset.
+	DatasetConfiguration *string `pulumi:"datasetConfiguration"`
+	// Name of the dataset.
+	Name string `pulumi:"name"`
+	// Object that describes the topic information for the specific dataset.
+	Topic *TopicResponse `pulumi:"topic"`
+}
+
+// Defaults sets the appropriate defaults for DatasetResponse
+func (val *DatasetResponse) Defaults() *DatasetResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Topic = tmp.Topic.Defaults()
+
+	return &tmp
+}
+
+// Defines the dataset properties.
+type DatasetResponseOutput struct{ *pulumi.OutputState }
+
+func (DatasetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetResponse)(nil)).Elem()
+}
+
+func (o DatasetResponseOutput) ToDatasetResponseOutput() DatasetResponseOutput {
+	return o
+}
+
+func (o DatasetResponseOutput) ToDatasetResponseOutputWithContext(ctx context.Context) DatasetResponseOutput {
+	return o
+}
+
+// Array of data points that are part of the dataset. Each data point can have per-data point configuration.
+func (o DatasetResponseOutput) DataPoints() DataPointResponseArrayOutput {
+	return o.ApplyT(func(v DatasetResponse) []DataPointResponse { return v.DataPoints }).(DataPointResponseArrayOutput)
+}
+
+// Stringified JSON that contains connector-specific JSON string that describes configuration for the specific dataset.
+func (o DatasetResponseOutput) DatasetConfiguration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatasetResponse) *string { return v.DatasetConfiguration }).(pulumi.StringPtrOutput)
+}
+
+// Name of the dataset.
+func (o DatasetResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v DatasetResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Object that describes the topic information for the specific dataset.
+func (o DatasetResponseOutput) Topic() TopicResponsePtrOutput {
+	return o.ApplyT(func(v DatasetResponse) *TopicResponse { return v.Topic }).(TopicResponsePtrOutput)
+}
+
+type DatasetResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DatasetResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatasetResponse)(nil)).Elem()
+}
+
+func (o DatasetResponseArrayOutput) ToDatasetResponseArrayOutput() DatasetResponseArrayOutput {
+	return o
+}
+
+func (o DatasetResponseArrayOutput) ToDatasetResponseArrayOutputWithContext(ctx context.Context) DatasetResponseArrayOutput {
+	return o
+}
+
+func (o DatasetResponseArrayOutput) Index(i pulumi.IntInput) DatasetResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatasetResponse {
+		return vs[0].([]DatasetResponse)[vs[1].(int)]
+	}).(DatasetResponseOutput)
+}
+
+// The type for a storage destination.
+type DatasetStorageDestination struct {
+	// The storage destination configuration.
+	Configuration StorageDestinationConfiguration `pulumi:"configuration"`
+	// The set of supported dataset destinations for an asset.
+	// Expected value is 'Storage'.
+	Target string `pulumi:"target"`
+}
+
+// DatasetStorageDestinationInput is an input type that accepts DatasetStorageDestinationArgs and DatasetStorageDestinationOutput values.
+// You can construct a concrete instance of `DatasetStorageDestinationInput` via:
+//
+//	DatasetStorageDestinationArgs{...}
+type DatasetStorageDestinationInput interface {
+	pulumi.Input
+
+	ToDatasetStorageDestinationOutput() DatasetStorageDestinationOutput
+	ToDatasetStorageDestinationOutputWithContext(context.Context) DatasetStorageDestinationOutput
+}
+
+// The type for a storage destination.
+type DatasetStorageDestinationArgs struct {
+	// The storage destination configuration.
+	Configuration StorageDestinationConfigurationInput `pulumi:"configuration"`
+	// The set of supported dataset destinations for an asset.
+	// Expected value is 'Storage'.
+	Target pulumi.StringInput `pulumi:"target"`
+}
+
+func (DatasetStorageDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetStorageDestination)(nil)).Elem()
+}
+
+func (i DatasetStorageDestinationArgs) ToDatasetStorageDestinationOutput() DatasetStorageDestinationOutput {
+	return i.ToDatasetStorageDestinationOutputWithContext(context.Background())
+}
+
+func (i DatasetStorageDestinationArgs) ToDatasetStorageDestinationOutputWithContext(ctx context.Context) DatasetStorageDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetStorageDestinationOutput)
+}
+
+// The type for a storage destination.
+type DatasetStorageDestinationOutput struct{ *pulumi.OutputState }
+
+func (DatasetStorageDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetStorageDestination)(nil)).Elem()
+}
+
+func (o DatasetStorageDestinationOutput) ToDatasetStorageDestinationOutput() DatasetStorageDestinationOutput {
+	return o
+}
+
+func (o DatasetStorageDestinationOutput) ToDatasetStorageDestinationOutputWithContext(ctx context.Context) DatasetStorageDestinationOutput {
+	return o
+}
+
+// The storage destination configuration.
+func (o DatasetStorageDestinationOutput) Configuration() StorageDestinationConfigurationOutput {
+	return o.ApplyT(func(v DatasetStorageDestination) StorageDestinationConfiguration { return v.Configuration }).(StorageDestinationConfigurationOutput)
+}
+
+// The set of supported dataset destinations for an asset.
+// Expected value is 'Storage'.
+func (o DatasetStorageDestinationOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v DatasetStorageDestination) string { return v.Target }).(pulumi.StringOutput)
+}
+
+// The type for a storage destination.
+type DatasetStorageDestinationResponse struct {
+	// The storage destination configuration.
+	Configuration StorageDestinationConfigurationResponse `pulumi:"configuration"`
+	// The set of supported dataset destinations for an asset.
+	// Expected value is 'Storage'.
+	Target string `pulumi:"target"`
+}
+
+// The type for a storage destination.
+type DatasetStorageDestinationResponseOutput struct{ *pulumi.OutputState }
+
+func (DatasetStorageDestinationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetStorageDestinationResponse)(nil)).Elem()
+}
+
+func (o DatasetStorageDestinationResponseOutput) ToDatasetStorageDestinationResponseOutput() DatasetStorageDestinationResponseOutput {
+	return o
+}
+
+func (o DatasetStorageDestinationResponseOutput) ToDatasetStorageDestinationResponseOutputWithContext(ctx context.Context) DatasetStorageDestinationResponseOutput {
+	return o
+}
+
+// The storage destination configuration.
+func (o DatasetStorageDestinationResponseOutput) Configuration() StorageDestinationConfigurationResponseOutput {
+	return o.ApplyT(func(v DatasetStorageDestinationResponse) StorageDestinationConfigurationResponse {
+		return v.Configuration
+	}).(StorageDestinationConfigurationResponseOutput)
+}
+
+// The set of supported dataset destinations for an asset.
+// Expected value is 'Storage'.
+func (o DatasetStorageDestinationResponseOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v DatasetStorageDestinationResponse) string { return v.Target }).(pulumi.StringOutput)
+}
+
+// Device messaging endpoint model.
+type DeviceMessagingEndpoint struct {
+	// The endpoint address to connect to.
+	Address string `pulumi:"address"`
+	// Type of connection used for the messaging endpoint.
+	EndpointType *string `pulumi:"endpointType"`
+}
+
+// DeviceMessagingEndpointInput is an input type that accepts DeviceMessagingEndpointArgs and DeviceMessagingEndpointOutput values.
+// You can construct a concrete instance of `DeviceMessagingEndpointInput` via:
+//
+//	DeviceMessagingEndpointArgs{...}
+type DeviceMessagingEndpointInput interface {
+	pulumi.Input
+
+	ToDeviceMessagingEndpointOutput() DeviceMessagingEndpointOutput
+	ToDeviceMessagingEndpointOutputWithContext(context.Context) DeviceMessagingEndpointOutput
+}
+
+// Device messaging endpoint model.
+type DeviceMessagingEndpointArgs struct {
+	// The endpoint address to connect to.
+	Address pulumi.StringInput `pulumi:"address"`
+	// Type of connection used for the messaging endpoint.
+	EndpointType pulumi.StringPtrInput `pulumi:"endpointType"`
+}
+
+func (DeviceMessagingEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceMessagingEndpoint)(nil)).Elem()
+}
+
+func (i DeviceMessagingEndpointArgs) ToDeviceMessagingEndpointOutput() DeviceMessagingEndpointOutput {
+	return i.ToDeviceMessagingEndpointOutputWithContext(context.Background())
+}
+
+func (i DeviceMessagingEndpointArgs) ToDeviceMessagingEndpointOutputWithContext(ctx context.Context) DeviceMessagingEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceMessagingEndpointOutput)
+}
+
+// DeviceMessagingEndpointMapInput is an input type that accepts DeviceMessagingEndpointMap and DeviceMessagingEndpointMapOutput values.
+// You can construct a concrete instance of `DeviceMessagingEndpointMapInput` via:
+//
+//	DeviceMessagingEndpointMap{ "key": DeviceMessagingEndpointArgs{...} }
+type DeviceMessagingEndpointMapInput interface {
+	pulumi.Input
+
+	ToDeviceMessagingEndpointMapOutput() DeviceMessagingEndpointMapOutput
+	ToDeviceMessagingEndpointMapOutputWithContext(context.Context) DeviceMessagingEndpointMapOutput
+}
+
+type DeviceMessagingEndpointMap map[string]DeviceMessagingEndpointInput
+
+func (DeviceMessagingEndpointMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DeviceMessagingEndpoint)(nil)).Elem()
+}
+
+func (i DeviceMessagingEndpointMap) ToDeviceMessagingEndpointMapOutput() DeviceMessagingEndpointMapOutput {
+	return i.ToDeviceMessagingEndpointMapOutputWithContext(context.Background())
+}
+
+func (i DeviceMessagingEndpointMap) ToDeviceMessagingEndpointMapOutputWithContext(ctx context.Context) DeviceMessagingEndpointMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceMessagingEndpointMapOutput)
+}
+
+// Device messaging endpoint model.
+type DeviceMessagingEndpointOutput struct{ *pulumi.OutputState }
+
+func (DeviceMessagingEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceMessagingEndpoint)(nil)).Elem()
+}
+
+func (o DeviceMessagingEndpointOutput) ToDeviceMessagingEndpointOutput() DeviceMessagingEndpointOutput {
+	return o
+}
+
+func (o DeviceMessagingEndpointOutput) ToDeviceMessagingEndpointOutputWithContext(ctx context.Context) DeviceMessagingEndpointOutput {
+	return o
+}
+
+// The endpoint address to connect to.
+func (o DeviceMessagingEndpointOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v DeviceMessagingEndpoint) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// Type of connection used for the messaging endpoint.
+func (o DeviceMessagingEndpointOutput) EndpointType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceMessagingEndpoint) *string { return v.EndpointType }).(pulumi.StringPtrOutput)
+}
+
+type DeviceMessagingEndpointMapOutput struct{ *pulumi.OutputState }
+
+func (DeviceMessagingEndpointMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DeviceMessagingEndpoint)(nil)).Elem()
+}
+
+func (o DeviceMessagingEndpointMapOutput) ToDeviceMessagingEndpointMapOutput() DeviceMessagingEndpointMapOutput {
+	return o
+}
+
+func (o DeviceMessagingEndpointMapOutput) ToDeviceMessagingEndpointMapOutputWithContext(ctx context.Context) DeviceMessagingEndpointMapOutput {
+	return o
+}
+
+func (o DeviceMessagingEndpointMapOutput) MapIndex(k pulumi.StringInput) DeviceMessagingEndpointOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DeviceMessagingEndpoint {
+		return vs[0].(map[string]DeviceMessagingEndpoint)[vs[1].(string)]
+	}).(DeviceMessagingEndpointOutput)
+}
+
+// Device messaging endpoint model.
+type DeviceMessagingEndpointResponse struct {
+	// The endpoint address to connect to.
+	Address string `pulumi:"address"`
+	// Type of connection used for the messaging endpoint.
+	EndpointType *string `pulumi:"endpointType"`
+}
+
+// Device messaging endpoint model.
+type DeviceMessagingEndpointResponseOutput struct{ *pulumi.OutputState }
+
+func (DeviceMessagingEndpointResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceMessagingEndpointResponse)(nil)).Elem()
+}
+
+func (o DeviceMessagingEndpointResponseOutput) ToDeviceMessagingEndpointResponseOutput() DeviceMessagingEndpointResponseOutput {
+	return o
+}
+
+func (o DeviceMessagingEndpointResponseOutput) ToDeviceMessagingEndpointResponseOutputWithContext(ctx context.Context) DeviceMessagingEndpointResponseOutput {
+	return o
+}
+
+// The endpoint address to connect to.
+func (o DeviceMessagingEndpointResponseOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v DeviceMessagingEndpointResponse) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// Type of connection used for the messaging endpoint.
+func (o DeviceMessagingEndpointResponseOutput) EndpointType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceMessagingEndpointResponse) *string { return v.EndpointType }).(pulumi.StringPtrOutput)
+}
+
+type DeviceMessagingEndpointResponseMapOutput struct{ *pulumi.OutputState }
+
+func (DeviceMessagingEndpointResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DeviceMessagingEndpointResponse)(nil)).Elem()
+}
+
+func (o DeviceMessagingEndpointResponseMapOutput) ToDeviceMessagingEndpointResponseMapOutput() DeviceMessagingEndpointResponseMapOutput {
+	return o
+}
+
+func (o DeviceMessagingEndpointResponseMapOutput) ToDeviceMessagingEndpointResponseMapOutputWithContext(ctx context.Context) DeviceMessagingEndpointResponseMapOutput {
+	return o
+}
+
+func (o DeviceMessagingEndpointResponseMapOutput) MapIndex(k pulumi.StringInput) DeviceMessagingEndpointResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DeviceMessagingEndpointResponse {
+		return vs[0].(map[string]DeviceMessagingEndpointResponse)[vs[1].(string)]
+	}).(DeviceMessagingEndpointResponseOutput)
+}
+
+// Defines which device and endpoint to use for this asset
+type DeviceRef struct {
+	// Name of the device resource
+	DeviceName string `pulumi:"deviceName"`
+	// The name of endpoint to use
+	EndpointName string `pulumi:"endpointName"`
+}
+
+// DeviceRefInput is an input type that accepts DeviceRefArgs and DeviceRefOutput values.
+// You can construct a concrete instance of `DeviceRefInput` via:
+//
+//	DeviceRefArgs{...}
+type DeviceRefInput interface {
+	pulumi.Input
+
+	ToDeviceRefOutput() DeviceRefOutput
+	ToDeviceRefOutputWithContext(context.Context) DeviceRefOutput
+}
+
+// Defines which device and endpoint to use for this asset
+type DeviceRefArgs struct {
+	// Name of the device resource
+	DeviceName pulumi.StringInput `pulumi:"deviceName"`
+	// The name of endpoint to use
+	EndpointName pulumi.StringInput `pulumi:"endpointName"`
+}
+
+func (DeviceRefArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceRef)(nil)).Elem()
+}
+
+func (i DeviceRefArgs) ToDeviceRefOutput() DeviceRefOutput {
+	return i.ToDeviceRefOutputWithContext(context.Background())
+}
+
+func (i DeviceRefArgs) ToDeviceRefOutputWithContext(ctx context.Context) DeviceRefOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceRefOutput)
+}
+
+// Defines which device and endpoint to use for this asset
+type DeviceRefOutput struct{ *pulumi.OutputState }
+
+func (DeviceRefOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceRef)(nil)).Elem()
+}
+
+func (o DeviceRefOutput) ToDeviceRefOutput() DeviceRefOutput {
+	return o
+}
+
+func (o DeviceRefOutput) ToDeviceRefOutputWithContext(ctx context.Context) DeviceRefOutput {
+	return o
+}
+
+// Name of the device resource
+func (o DeviceRefOutput) DeviceName() pulumi.StringOutput {
+	return o.ApplyT(func(v DeviceRef) string { return v.DeviceName }).(pulumi.StringOutput)
+}
+
+// The name of endpoint to use
+func (o DeviceRefOutput) EndpointName() pulumi.StringOutput {
+	return o.ApplyT(func(v DeviceRef) string { return v.EndpointName }).(pulumi.StringOutput)
+}
+
+// Defines which device and endpoint to use for this asset
+type DeviceRefResponse struct {
+	// Name of the device resource
+	DeviceName string `pulumi:"deviceName"`
+	// The name of endpoint to use
+	EndpointName string `pulumi:"endpointName"`
+}
+
+// Defines which device and endpoint to use for this asset
+type DeviceRefResponseOutput struct{ *pulumi.OutputState }
+
+func (DeviceRefResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceRefResponse)(nil)).Elem()
+}
+
+func (o DeviceRefResponseOutput) ToDeviceRefResponseOutput() DeviceRefResponseOutput {
+	return o
+}
+
+func (o DeviceRefResponseOutput) ToDeviceRefResponseOutputWithContext(ctx context.Context) DeviceRefResponseOutput {
+	return o
+}
+
+// Name of the device resource
+func (o DeviceRefResponseOutput) DeviceName() pulumi.StringOutput {
+	return o.ApplyT(func(v DeviceRefResponse) string { return v.DeviceName }).(pulumi.StringOutput)
+}
+
+// The name of endpoint to use
+func (o DeviceRefResponseOutput) EndpointName() pulumi.StringOutput {
+	return o.ApplyT(func(v DeviceRefResponse) string { return v.EndpointName }).(pulumi.StringOutput)
+}
+
+// Defines the device status properties.
+type DeviceStatusEndpointResponse struct {
+	// Defines the error related to this endpoint.
+	Error StatusErrorResponse `pulumi:"error"`
+}
+
+// Defines the device status properties.
+type DeviceStatusEndpointResponseOutput struct{ *pulumi.OutputState }
+
+func (DeviceStatusEndpointResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceStatusEndpointResponse)(nil)).Elem()
+}
+
+func (o DeviceStatusEndpointResponseOutput) ToDeviceStatusEndpointResponseOutput() DeviceStatusEndpointResponseOutput {
+	return o
+}
+
+func (o DeviceStatusEndpointResponseOutput) ToDeviceStatusEndpointResponseOutputWithContext(ctx context.Context) DeviceStatusEndpointResponseOutput {
+	return o
+}
+
+// Defines the error related to this endpoint.
+func (o DeviceStatusEndpointResponseOutput) Error() StatusErrorResponseOutput {
+	return o.ApplyT(func(v DeviceStatusEndpointResponse) StatusErrorResponse { return v.Error }).(StatusErrorResponseOutput)
+}
+
+type DeviceStatusEndpointResponseMapOutput struct{ *pulumi.OutputState }
+
+func (DeviceStatusEndpointResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DeviceStatusEndpointResponse)(nil)).Elem()
+}
+
+func (o DeviceStatusEndpointResponseMapOutput) ToDeviceStatusEndpointResponseMapOutput() DeviceStatusEndpointResponseMapOutput {
+	return o
+}
+
+func (o DeviceStatusEndpointResponseMapOutput) ToDeviceStatusEndpointResponseMapOutputWithContext(ctx context.Context) DeviceStatusEndpointResponseMapOutput {
+	return o
+}
+
+func (o DeviceStatusEndpointResponseMapOutput) MapIndex(k pulumi.StringInput) DeviceStatusEndpointResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DeviceStatusEndpointResponse {
+		return vs[0].(map[string]DeviceStatusEndpointResponse)[vs[1].(string)]
+	}).(DeviceStatusEndpointResponseOutput)
+}
+
+// Defines the device status for inbound/outbound endpoints.
+type DeviceStatusEndpointsResponse struct {
+	// KeyValue pair representing status of inbound endpoints.
+	Inbound map[string]DeviceStatusEndpointResponse `pulumi:"inbound"`
+}
+
+// Defines the device status for inbound/outbound endpoints.
+type DeviceStatusEndpointsResponseOutput struct{ *pulumi.OutputState }
+
+func (DeviceStatusEndpointsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceStatusEndpointsResponse)(nil)).Elem()
+}
+
+func (o DeviceStatusEndpointsResponseOutput) ToDeviceStatusEndpointsResponseOutput() DeviceStatusEndpointsResponseOutput {
+	return o
+}
+
+func (o DeviceStatusEndpointsResponseOutput) ToDeviceStatusEndpointsResponseOutputWithContext(ctx context.Context) DeviceStatusEndpointsResponseOutput {
+	return o
+}
+
+// KeyValue pair representing status of inbound endpoints.
+func (o DeviceStatusEndpointsResponseOutput) Inbound() DeviceStatusEndpointResponseMapOutput {
+	return o.ApplyT(func(v DeviceStatusEndpointsResponse) map[string]DeviceStatusEndpointResponse { return v.Inbound }).(DeviceStatusEndpointResponseMapOutput)
+}
+
+// Defines the device status properties.
+type DeviceStatusResponse struct {
+	// Defines the device status config properties.
+	Config StatusConfigResponse `pulumi:"config"`
+	// Defines the device status for inbound/outbound endpoints.
+	Endpoints DeviceStatusEndpointsResponse `pulumi:"endpoints"`
+}
+
+// Defines the device status properties.
+type DeviceStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (DeviceStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceStatusResponse)(nil)).Elem()
+}
+
+func (o DeviceStatusResponseOutput) ToDeviceStatusResponseOutput() DeviceStatusResponseOutput {
+	return o
+}
+
+func (o DeviceStatusResponseOutput) ToDeviceStatusResponseOutputWithContext(ctx context.Context) DeviceStatusResponseOutput {
+	return o
+}
+
+// Defines the device status config properties.
+func (o DeviceStatusResponseOutput) Config() StatusConfigResponseOutput {
+	return o.ApplyT(func(v DeviceStatusResponse) StatusConfigResponse { return v.Config }).(StatusConfigResponseOutput)
+}
+
+// Defines the device status for inbound/outbound endpoints.
+func (o DeviceStatusResponseOutput) Endpoints() DeviceStatusEndpointsResponseOutput {
+	return o.ApplyT(func(v DeviceStatusResponse) DeviceStatusEndpointsResponse { return v.Endpoints }).(DeviceStatusEndpointsResponseOutput)
 }
 
 // Defines the data point properties.
@@ -1006,18 +2511,751 @@ func (o DiscoveredEventResponseArrayOutput) Index(i pulumi.IntInput) DiscoveredE
 	}).(DiscoveredEventResponseOutput)
 }
 
+// An endpoint to connect to the device.
+type DiscoveredInboundEndpoints struct {
+	// Stringified JSON that contains configuration to be used by the connector (e.g., OPC UA, ONVIF).
+	AdditionalConfiguration *string `pulumi:"additionalConfiguration"`
+	// The endpoint address & port. This can be either an IP address (e.g., 192.168.1.1) or a fully qualified domain name (FQDN, e.g., server.example.com).
+	Address string `pulumi:"address"`
+	// Type of connection endpoint.
+	EndpointType string `pulumi:"endpointType"`
+	// The timestamp (in UTC) when the endpoint was discovered.
+	LastUpdatedOn *string `pulumi:"lastUpdatedOn"`
+	// List of supported authentication methods supported by device for Inbound connections.
+	SupportedAuthenticationMethods []string `pulumi:"supportedAuthenticationMethods"`
+	// Protocol version associated with the endpoint e.g. 1 or 2 for endpointType Microsoft.HTTP, and 3.5 or 5.0 for endpointType Microsoft.Mqtt etc.
+	Version *string `pulumi:"version"`
+}
+
+// DiscoveredInboundEndpointsInput is an input type that accepts DiscoveredInboundEndpointsArgs and DiscoveredInboundEndpointsOutput values.
+// You can construct a concrete instance of `DiscoveredInboundEndpointsInput` via:
+//
+//	DiscoveredInboundEndpointsArgs{...}
+type DiscoveredInboundEndpointsInput interface {
+	pulumi.Input
+
+	ToDiscoveredInboundEndpointsOutput() DiscoveredInboundEndpointsOutput
+	ToDiscoveredInboundEndpointsOutputWithContext(context.Context) DiscoveredInboundEndpointsOutput
+}
+
+// An endpoint to connect to the device.
+type DiscoveredInboundEndpointsArgs struct {
+	// Stringified JSON that contains configuration to be used by the connector (e.g., OPC UA, ONVIF).
+	AdditionalConfiguration pulumi.StringPtrInput `pulumi:"additionalConfiguration"`
+	// The endpoint address & port. This can be either an IP address (e.g., 192.168.1.1) or a fully qualified domain name (FQDN, e.g., server.example.com).
+	Address pulumi.StringInput `pulumi:"address"`
+	// Type of connection endpoint.
+	EndpointType pulumi.StringInput `pulumi:"endpointType"`
+	// The timestamp (in UTC) when the endpoint was discovered.
+	LastUpdatedOn pulumi.StringPtrInput `pulumi:"lastUpdatedOn"`
+	// List of supported authentication methods supported by device for Inbound connections.
+	SupportedAuthenticationMethods pulumi.StringArrayInput `pulumi:"supportedAuthenticationMethods"`
+	// Protocol version associated with the endpoint e.g. 1 or 2 for endpointType Microsoft.HTTP, and 3.5 or 5.0 for endpointType Microsoft.Mqtt etc.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (DiscoveredInboundEndpointsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoveredInboundEndpoints)(nil)).Elem()
+}
+
+func (i DiscoveredInboundEndpointsArgs) ToDiscoveredInboundEndpointsOutput() DiscoveredInboundEndpointsOutput {
+	return i.ToDiscoveredInboundEndpointsOutputWithContext(context.Background())
+}
+
+func (i DiscoveredInboundEndpointsArgs) ToDiscoveredInboundEndpointsOutputWithContext(ctx context.Context) DiscoveredInboundEndpointsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscoveredInboundEndpointsOutput)
+}
+
+// DiscoveredInboundEndpointsMapInput is an input type that accepts DiscoveredInboundEndpointsMap and DiscoveredInboundEndpointsMapOutput values.
+// You can construct a concrete instance of `DiscoveredInboundEndpointsMapInput` via:
+//
+//	DiscoveredInboundEndpointsMap{ "key": DiscoveredInboundEndpointsArgs{...} }
+type DiscoveredInboundEndpointsMapInput interface {
+	pulumi.Input
+
+	ToDiscoveredInboundEndpointsMapOutput() DiscoveredInboundEndpointsMapOutput
+	ToDiscoveredInboundEndpointsMapOutputWithContext(context.Context) DiscoveredInboundEndpointsMapOutput
+}
+
+type DiscoveredInboundEndpointsMap map[string]DiscoveredInboundEndpointsInput
+
+func (DiscoveredInboundEndpointsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DiscoveredInboundEndpoints)(nil)).Elem()
+}
+
+func (i DiscoveredInboundEndpointsMap) ToDiscoveredInboundEndpointsMapOutput() DiscoveredInboundEndpointsMapOutput {
+	return i.ToDiscoveredInboundEndpointsMapOutputWithContext(context.Background())
+}
+
+func (i DiscoveredInboundEndpointsMap) ToDiscoveredInboundEndpointsMapOutputWithContext(ctx context.Context) DiscoveredInboundEndpointsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscoveredInboundEndpointsMapOutput)
+}
+
+// An endpoint to connect to the device.
+type DiscoveredInboundEndpointsOutput struct{ *pulumi.OutputState }
+
+func (DiscoveredInboundEndpointsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoveredInboundEndpoints)(nil)).Elem()
+}
+
+func (o DiscoveredInboundEndpointsOutput) ToDiscoveredInboundEndpointsOutput() DiscoveredInboundEndpointsOutput {
+	return o
+}
+
+func (o DiscoveredInboundEndpointsOutput) ToDiscoveredInboundEndpointsOutputWithContext(ctx context.Context) DiscoveredInboundEndpointsOutput {
+	return o
+}
+
+// Stringified JSON that contains configuration to be used by the connector (e.g., OPC UA, ONVIF).
+func (o DiscoveredInboundEndpointsOutput) AdditionalConfiguration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscoveredInboundEndpoints) *string { return v.AdditionalConfiguration }).(pulumi.StringPtrOutput)
+}
+
+// The endpoint address & port. This can be either an IP address (e.g., 192.168.1.1) or a fully qualified domain name (FQDN, e.g., server.example.com).
+func (o DiscoveredInboundEndpointsOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v DiscoveredInboundEndpoints) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// Type of connection endpoint.
+func (o DiscoveredInboundEndpointsOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v DiscoveredInboundEndpoints) string { return v.EndpointType }).(pulumi.StringOutput)
+}
+
+// The timestamp (in UTC) when the endpoint was discovered.
+func (o DiscoveredInboundEndpointsOutput) LastUpdatedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscoveredInboundEndpoints) *string { return v.LastUpdatedOn }).(pulumi.StringPtrOutput)
+}
+
+// List of supported authentication methods supported by device for Inbound connections.
+func (o DiscoveredInboundEndpointsOutput) SupportedAuthenticationMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DiscoveredInboundEndpoints) []string { return v.SupportedAuthenticationMethods }).(pulumi.StringArrayOutput)
+}
+
+// Protocol version associated with the endpoint e.g. 1 or 2 for endpointType Microsoft.HTTP, and 3.5 or 5.0 for endpointType Microsoft.Mqtt etc.
+func (o DiscoveredInboundEndpointsOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscoveredInboundEndpoints) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type DiscoveredInboundEndpointsMapOutput struct{ *pulumi.OutputState }
+
+func (DiscoveredInboundEndpointsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DiscoveredInboundEndpoints)(nil)).Elem()
+}
+
+func (o DiscoveredInboundEndpointsMapOutput) ToDiscoveredInboundEndpointsMapOutput() DiscoveredInboundEndpointsMapOutput {
+	return o
+}
+
+func (o DiscoveredInboundEndpointsMapOutput) ToDiscoveredInboundEndpointsMapOutputWithContext(ctx context.Context) DiscoveredInboundEndpointsMapOutput {
+	return o
+}
+
+func (o DiscoveredInboundEndpointsMapOutput) MapIndex(k pulumi.StringInput) DiscoveredInboundEndpointsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DiscoveredInboundEndpoints {
+		return vs[0].(map[string]DiscoveredInboundEndpoints)[vs[1].(string)]
+	}).(DiscoveredInboundEndpointsOutput)
+}
+
+// An endpoint to connect to the device.
+type DiscoveredInboundEndpointsResponse struct {
+	// Stringified JSON that contains configuration to be used by the connector (e.g., OPC UA, ONVIF).
+	AdditionalConfiguration *string `pulumi:"additionalConfiguration"`
+	// The endpoint address & port. This can be either an IP address (e.g., 192.168.1.1) or a fully qualified domain name (FQDN, e.g., server.example.com).
+	Address string `pulumi:"address"`
+	// Type of connection endpoint.
+	EndpointType string `pulumi:"endpointType"`
+	// The timestamp (in UTC) when the endpoint was discovered.
+	LastUpdatedOn *string `pulumi:"lastUpdatedOn"`
+	// List of supported authentication methods supported by device for Inbound connections.
+	SupportedAuthenticationMethods []string `pulumi:"supportedAuthenticationMethods"`
+	// Protocol version associated with the endpoint e.g. 1 or 2 for endpointType Microsoft.HTTP, and 3.5 or 5.0 for endpointType Microsoft.Mqtt etc.
+	Version *string `pulumi:"version"`
+}
+
+// An endpoint to connect to the device.
+type DiscoveredInboundEndpointsResponseOutput struct{ *pulumi.OutputState }
+
+func (DiscoveredInboundEndpointsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoveredInboundEndpointsResponse)(nil)).Elem()
+}
+
+func (o DiscoveredInboundEndpointsResponseOutput) ToDiscoveredInboundEndpointsResponseOutput() DiscoveredInboundEndpointsResponseOutput {
+	return o
+}
+
+func (o DiscoveredInboundEndpointsResponseOutput) ToDiscoveredInboundEndpointsResponseOutputWithContext(ctx context.Context) DiscoveredInboundEndpointsResponseOutput {
+	return o
+}
+
+// Stringified JSON that contains configuration to be used by the connector (e.g., OPC UA, ONVIF).
+func (o DiscoveredInboundEndpointsResponseOutput) AdditionalConfiguration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscoveredInboundEndpointsResponse) *string { return v.AdditionalConfiguration }).(pulumi.StringPtrOutput)
+}
+
+// The endpoint address & port. This can be either an IP address (e.g., 192.168.1.1) or a fully qualified domain name (FQDN, e.g., server.example.com).
+func (o DiscoveredInboundEndpointsResponseOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v DiscoveredInboundEndpointsResponse) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// Type of connection endpoint.
+func (o DiscoveredInboundEndpointsResponseOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v DiscoveredInboundEndpointsResponse) string { return v.EndpointType }).(pulumi.StringOutput)
+}
+
+// The timestamp (in UTC) when the endpoint was discovered.
+func (o DiscoveredInboundEndpointsResponseOutput) LastUpdatedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscoveredInboundEndpointsResponse) *string { return v.LastUpdatedOn }).(pulumi.StringPtrOutput)
+}
+
+// List of supported authentication methods supported by device for Inbound connections.
+func (o DiscoveredInboundEndpointsResponseOutput) SupportedAuthenticationMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DiscoveredInboundEndpointsResponse) []string { return v.SupportedAuthenticationMethods }).(pulumi.StringArrayOutput)
+}
+
+// Protocol version associated with the endpoint e.g. 1 or 2 for endpointType Microsoft.HTTP, and 3.5 or 5.0 for endpointType Microsoft.Mqtt etc.
+func (o DiscoveredInboundEndpointsResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscoveredInboundEndpointsResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type DiscoveredInboundEndpointsResponseMapOutput struct{ *pulumi.OutputState }
+
+func (DiscoveredInboundEndpointsResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DiscoveredInboundEndpointsResponse)(nil)).Elem()
+}
+
+func (o DiscoveredInboundEndpointsResponseMapOutput) ToDiscoveredInboundEndpointsResponseMapOutput() DiscoveredInboundEndpointsResponseMapOutput {
+	return o
+}
+
+func (o DiscoveredInboundEndpointsResponseMapOutput) ToDiscoveredInboundEndpointsResponseMapOutputWithContext(ctx context.Context) DiscoveredInboundEndpointsResponseMapOutput {
+	return o
+}
+
+func (o DiscoveredInboundEndpointsResponseMapOutput) MapIndex(k pulumi.StringInput) DiscoveredInboundEndpointsResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DiscoveredInboundEndpointsResponse {
+		return vs[0].(map[string]DiscoveredInboundEndpointsResponse)[vs[1].(string)]
+	}).(DiscoveredInboundEndpointsResponseOutput)
+}
+
+// Connection endpoint URL a device can use to connect to a service.
+type DiscoveredMessagingEndpoints struct {
+	// Set of endpoints to connect to the device.
+	Inbound map[string]DiscoveredInboundEndpoints `pulumi:"inbound"`
+	// Set of endpoints a device can connect to.
+	Outbound *DiscoveredOutboundEndpoints `pulumi:"outbound"`
+}
+
+// DiscoveredMessagingEndpointsInput is an input type that accepts DiscoveredMessagingEndpointsArgs and DiscoveredMessagingEndpointsOutput values.
+// You can construct a concrete instance of `DiscoveredMessagingEndpointsInput` via:
+//
+//	DiscoveredMessagingEndpointsArgs{...}
+type DiscoveredMessagingEndpointsInput interface {
+	pulumi.Input
+
+	ToDiscoveredMessagingEndpointsOutput() DiscoveredMessagingEndpointsOutput
+	ToDiscoveredMessagingEndpointsOutputWithContext(context.Context) DiscoveredMessagingEndpointsOutput
+}
+
+// Connection endpoint URL a device can use to connect to a service.
+type DiscoveredMessagingEndpointsArgs struct {
+	// Set of endpoints to connect to the device.
+	Inbound DiscoveredInboundEndpointsMapInput `pulumi:"inbound"`
+	// Set of endpoints a device can connect to.
+	Outbound DiscoveredOutboundEndpointsPtrInput `pulumi:"outbound"`
+}
+
+func (DiscoveredMessagingEndpointsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoveredMessagingEndpoints)(nil)).Elem()
+}
+
+func (i DiscoveredMessagingEndpointsArgs) ToDiscoveredMessagingEndpointsOutput() DiscoveredMessagingEndpointsOutput {
+	return i.ToDiscoveredMessagingEndpointsOutputWithContext(context.Background())
+}
+
+func (i DiscoveredMessagingEndpointsArgs) ToDiscoveredMessagingEndpointsOutputWithContext(ctx context.Context) DiscoveredMessagingEndpointsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscoveredMessagingEndpointsOutput)
+}
+
+func (i DiscoveredMessagingEndpointsArgs) ToDiscoveredMessagingEndpointsPtrOutput() DiscoveredMessagingEndpointsPtrOutput {
+	return i.ToDiscoveredMessagingEndpointsPtrOutputWithContext(context.Background())
+}
+
+func (i DiscoveredMessagingEndpointsArgs) ToDiscoveredMessagingEndpointsPtrOutputWithContext(ctx context.Context) DiscoveredMessagingEndpointsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscoveredMessagingEndpointsOutput).ToDiscoveredMessagingEndpointsPtrOutputWithContext(ctx)
+}
+
+// DiscoveredMessagingEndpointsPtrInput is an input type that accepts DiscoveredMessagingEndpointsArgs, DiscoveredMessagingEndpointsPtr and DiscoveredMessagingEndpointsPtrOutput values.
+// You can construct a concrete instance of `DiscoveredMessagingEndpointsPtrInput` via:
+//
+//	        DiscoveredMessagingEndpointsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DiscoveredMessagingEndpointsPtrInput interface {
+	pulumi.Input
+
+	ToDiscoveredMessagingEndpointsPtrOutput() DiscoveredMessagingEndpointsPtrOutput
+	ToDiscoveredMessagingEndpointsPtrOutputWithContext(context.Context) DiscoveredMessagingEndpointsPtrOutput
+}
+
+type discoveredMessagingEndpointsPtrType DiscoveredMessagingEndpointsArgs
+
+func DiscoveredMessagingEndpointsPtr(v *DiscoveredMessagingEndpointsArgs) DiscoveredMessagingEndpointsPtrInput {
+	return (*discoveredMessagingEndpointsPtrType)(v)
+}
+
+func (*discoveredMessagingEndpointsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiscoveredMessagingEndpoints)(nil)).Elem()
+}
+
+func (i *discoveredMessagingEndpointsPtrType) ToDiscoveredMessagingEndpointsPtrOutput() DiscoveredMessagingEndpointsPtrOutput {
+	return i.ToDiscoveredMessagingEndpointsPtrOutputWithContext(context.Background())
+}
+
+func (i *discoveredMessagingEndpointsPtrType) ToDiscoveredMessagingEndpointsPtrOutputWithContext(ctx context.Context) DiscoveredMessagingEndpointsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscoveredMessagingEndpointsPtrOutput)
+}
+
+// Connection endpoint URL a device can use to connect to a service.
+type DiscoveredMessagingEndpointsOutput struct{ *pulumi.OutputState }
+
+func (DiscoveredMessagingEndpointsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoveredMessagingEndpoints)(nil)).Elem()
+}
+
+func (o DiscoveredMessagingEndpointsOutput) ToDiscoveredMessagingEndpointsOutput() DiscoveredMessagingEndpointsOutput {
+	return o
+}
+
+func (o DiscoveredMessagingEndpointsOutput) ToDiscoveredMessagingEndpointsOutputWithContext(ctx context.Context) DiscoveredMessagingEndpointsOutput {
+	return o
+}
+
+func (o DiscoveredMessagingEndpointsOutput) ToDiscoveredMessagingEndpointsPtrOutput() DiscoveredMessagingEndpointsPtrOutput {
+	return o.ToDiscoveredMessagingEndpointsPtrOutputWithContext(context.Background())
+}
+
+func (o DiscoveredMessagingEndpointsOutput) ToDiscoveredMessagingEndpointsPtrOutputWithContext(ctx context.Context) DiscoveredMessagingEndpointsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiscoveredMessagingEndpoints) *DiscoveredMessagingEndpoints {
+		return &v
+	}).(DiscoveredMessagingEndpointsPtrOutput)
+}
+
+// Set of endpoints to connect to the device.
+func (o DiscoveredMessagingEndpointsOutput) Inbound() DiscoveredInboundEndpointsMapOutput {
+	return o.ApplyT(func(v DiscoveredMessagingEndpoints) map[string]DiscoveredInboundEndpoints { return v.Inbound }).(DiscoveredInboundEndpointsMapOutput)
+}
+
+// Set of endpoints a device can connect to.
+func (o DiscoveredMessagingEndpointsOutput) Outbound() DiscoveredOutboundEndpointsPtrOutput {
+	return o.ApplyT(func(v DiscoveredMessagingEndpoints) *DiscoveredOutboundEndpoints { return v.Outbound }).(DiscoveredOutboundEndpointsPtrOutput)
+}
+
+type DiscoveredMessagingEndpointsPtrOutput struct{ *pulumi.OutputState }
+
+func (DiscoveredMessagingEndpointsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiscoveredMessagingEndpoints)(nil)).Elem()
+}
+
+func (o DiscoveredMessagingEndpointsPtrOutput) ToDiscoveredMessagingEndpointsPtrOutput() DiscoveredMessagingEndpointsPtrOutput {
+	return o
+}
+
+func (o DiscoveredMessagingEndpointsPtrOutput) ToDiscoveredMessagingEndpointsPtrOutputWithContext(ctx context.Context) DiscoveredMessagingEndpointsPtrOutput {
+	return o
+}
+
+func (o DiscoveredMessagingEndpointsPtrOutput) Elem() DiscoveredMessagingEndpointsOutput {
+	return o.ApplyT(func(v *DiscoveredMessagingEndpoints) DiscoveredMessagingEndpoints {
+		if v != nil {
+			return *v
+		}
+		var ret DiscoveredMessagingEndpoints
+		return ret
+	}).(DiscoveredMessagingEndpointsOutput)
+}
+
+// Set of endpoints to connect to the device.
+func (o DiscoveredMessagingEndpointsPtrOutput) Inbound() DiscoveredInboundEndpointsMapOutput {
+	return o.ApplyT(func(v *DiscoveredMessagingEndpoints) map[string]DiscoveredInboundEndpoints {
+		if v == nil {
+			return nil
+		}
+		return v.Inbound
+	}).(DiscoveredInboundEndpointsMapOutput)
+}
+
+// Set of endpoints a device can connect to.
+func (o DiscoveredMessagingEndpointsPtrOutput) Outbound() DiscoveredOutboundEndpointsPtrOutput {
+	return o.ApplyT(func(v *DiscoveredMessagingEndpoints) *DiscoveredOutboundEndpoints {
+		if v == nil {
+			return nil
+		}
+		return v.Outbound
+	}).(DiscoveredOutboundEndpointsPtrOutput)
+}
+
+// Connection endpoint URL a device can use to connect to a service.
+type DiscoveredMessagingEndpointsResponse struct {
+	// Set of endpoints to connect to the device.
+	Inbound map[string]DiscoveredInboundEndpointsResponse `pulumi:"inbound"`
+	// Set of endpoints a device can connect to.
+	Outbound *DiscoveredOutboundEndpointsResponse `pulumi:"outbound"`
+}
+
+// Connection endpoint URL a device can use to connect to a service.
+type DiscoveredMessagingEndpointsResponseOutput struct{ *pulumi.OutputState }
+
+func (DiscoveredMessagingEndpointsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoveredMessagingEndpointsResponse)(nil)).Elem()
+}
+
+func (o DiscoveredMessagingEndpointsResponseOutput) ToDiscoveredMessagingEndpointsResponseOutput() DiscoveredMessagingEndpointsResponseOutput {
+	return o
+}
+
+func (o DiscoveredMessagingEndpointsResponseOutput) ToDiscoveredMessagingEndpointsResponseOutputWithContext(ctx context.Context) DiscoveredMessagingEndpointsResponseOutput {
+	return o
+}
+
+// Set of endpoints to connect to the device.
+func (o DiscoveredMessagingEndpointsResponseOutput) Inbound() DiscoveredInboundEndpointsResponseMapOutput {
+	return o.ApplyT(func(v DiscoveredMessagingEndpointsResponse) map[string]DiscoveredInboundEndpointsResponse {
+		return v.Inbound
+	}).(DiscoveredInboundEndpointsResponseMapOutput)
+}
+
+// Set of endpoints a device can connect to.
+func (o DiscoveredMessagingEndpointsResponseOutput) Outbound() DiscoveredOutboundEndpointsResponsePtrOutput {
+	return o.ApplyT(func(v DiscoveredMessagingEndpointsResponse) *DiscoveredOutboundEndpointsResponse { return v.Outbound }).(DiscoveredOutboundEndpointsResponsePtrOutput)
+}
+
+type DiscoveredMessagingEndpointsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DiscoveredMessagingEndpointsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiscoveredMessagingEndpointsResponse)(nil)).Elem()
+}
+
+func (o DiscoveredMessagingEndpointsResponsePtrOutput) ToDiscoveredMessagingEndpointsResponsePtrOutput() DiscoveredMessagingEndpointsResponsePtrOutput {
+	return o
+}
+
+func (o DiscoveredMessagingEndpointsResponsePtrOutput) ToDiscoveredMessagingEndpointsResponsePtrOutputWithContext(ctx context.Context) DiscoveredMessagingEndpointsResponsePtrOutput {
+	return o
+}
+
+func (o DiscoveredMessagingEndpointsResponsePtrOutput) Elem() DiscoveredMessagingEndpointsResponseOutput {
+	return o.ApplyT(func(v *DiscoveredMessagingEndpointsResponse) DiscoveredMessagingEndpointsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DiscoveredMessagingEndpointsResponse
+		return ret
+	}).(DiscoveredMessagingEndpointsResponseOutput)
+}
+
+// Set of endpoints to connect to the device.
+func (o DiscoveredMessagingEndpointsResponsePtrOutput) Inbound() DiscoveredInboundEndpointsResponseMapOutput {
+	return o.ApplyT(func(v *DiscoveredMessagingEndpointsResponse) map[string]DiscoveredInboundEndpointsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Inbound
+	}).(DiscoveredInboundEndpointsResponseMapOutput)
+}
+
+// Set of endpoints a device can connect to.
+func (o DiscoveredMessagingEndpointsResponsePtrOutput) Outbound() DiscoveredOutboundEndpointsResponsePtrOutput {
+	return o.ApplyT(func(v *DiscoveredMessagingEndpointsResponse) *DiscoveredOutboundEndpointsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Outbound
+	}).(DiscoveredOutboundEndpointsResponsePtrOutput)
+}
+
+// Property bag contains the device's outbound endpoints
+type DiscoveredOutboundEndpoints struct {
+	// Endpoints the device can connect to.
+	Assigned map[string]DeviceMessagingEndpoint `pulumi:"assigned"`
+}
+
+// DiscoveredOutboundEndpointsInput is an input type that accepts DiscoveredOutboundEndpointsArgs and DiscoveredOutboundEndpointsOutput values.
+// You can construct a concrete instance of `DiscoveredOutboundEndpointsInput` via:
+//
+//	DiscoveredOutboundEndpointsArgs{...}
+type DiscoveredOutboundEndpointsInput interface {
+	pulumi.Input
+
+	ToDiscoveredOutboundEndpointsOutput() DiscoveredOutboundEndpointsOutput
+	ToDiscoveredOutboundEndpointsOutputWithContext(context.Context) DiscoveredOutboundEndpointsOutput
+}
+
+// Property bag contains the device's outbound endpoints
+type DiscoveredOutboundEndpointsArgs struct {
+	// Endpoints the device can connect to.
+	Assigned DeviceMessagingEndpointMapInput `pulumi:"assigned"`
+}
+
+func (DiscoveredOutboundEndpointsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoveredOutboundEndpoints)(nil)).Elem()
+}
+
+func (i DiscoveredOutboundEndpointsArgs) ToDiscoveredOutboundEndpointsOutput() DiscoveredOutboundEndpointsOutput {
+	return i.ToDiscoveredOutboundEndpointsOutputWithContext(context.Background())
+}
+
+func (i DiscoveredOutboundEndpointsArgs) ToDiscoveredOutboundEndpointsOutputWithContext(ctx context.Context) DiscoveredOutboundEndpointsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscoveredOutboundEndpointsOutput)
+}
+
+func (i DiscoveredOutboundEndpointsArgs) ToDiscoveredOutboundEndpointsPtrOutput() DiscoveredOutboundEndpointsPtrOutput {
+	return i.ToDiscoveredOutboundEndpointsPtrOutputWithContext(context.Background())
+}
+
+func (i DiscoveredOutboundEndpointsArgs) ToDiscoveredOutboundEndpointsPtrOutputWithContext(ctx context.Context) DiscoveredOutboundEndpointsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscoveredOutboundEndpointsOutput).ToDiscoveredOutboundEndpointsPtrOutputWithContext(ctx)
+}
+
+// DiscoveredOutboundEndpointsPtrInput is an input type that accepts DiscoveredOutboundEndpointsArgs, DiscoveredOutboundEndpointsPtr and DiscoveredOutboundEndpointsPtrOutput values.
+// You can construct a concrete instance of `DiscoveredOutboundEndpointsPtrInput` via:
+//
+//	        DiscoveredOutboundEndpointsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DiscoveredOutboundEndpointsPtrInput interface {
+	pulumi.Input
+
+	ToDiscoveredOutboundEndpointsPtrOutput() DiscoveredOutboundEndpointsPtrOutput
+	ToDiscoveredOutboundEndpointsPtrOutputWithContext(context.Context) DiscoveredOutboundEndpointsPtrOutput
+}
+
+type discoveredOutboundEndpointsPtrType DiscoveredOutboundEndpointsArgs
+
+func DiscoveredOutboundEndpointsPtr(v *DiscoveredOutboundEndpointsArgs) DiscoveredOutboundEndpointsPtrInput {
+	return (*discoveredOutboundEndpointsPtrType)(v)
+}
+
+func (*discoveredOutboundEndpointsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiscoveredOutboundEndpoints)(nil)).Elem()
+}
+
+func (i *discoveredOutboundEndpointsPtrType) ToDiscoveredOutboundEndpointsPtrOutput() DiscoveredOutboundEndpointsPtrOutput {
+	return i.ToDiscoveredOutboundEndpointsPtrOutputWithContext(context.Background())
+}
+
+func (i *discoveredOutboundEndpointsPtrType) ToDiscoveredOutboundEndpointsPtrOutputWithContext(ctx context.Context) DiscoveredOutboundEndpointsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscoveredOutboundEndpointsPtrOutput)
+}
+
+// Property bag contains the device's outbound endpoints
+type DiscoveredOutboundEndpointsOutput struct{ *pulumi.OutputState }
+
+func (DiscoveredOutboundEndpointsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoveredOutboundEndpoints)(nil)).Elem()
+}
+
+func (o DiscoveredOutboundEndpointsOutput) ToDiscoveredOutboundEndpointsOutput() DiscoveredOutboundEndpointsOutput {
+	return o
+}
+
+func (o DiscoveredOutboundEndpointsOutput) ToDiscoveredOutboundEndpointsOutputWithContext(ctx context.Context) DiscoveredOutboundEndpointsOutput {
+	return o
+}
+
+func (o DiscoveredOutboundEndpointsOutput) ToDiscoveredOutboundEndpointsPtrOutput() DiscoveredOutboundEndpointsPtrOutput {
+	return o.ToDiscoveredOutboundEndpointsPtrOutputWithContext(context.Background())
+}
+
+func (o DiscoveredOutboundEndpointsOutput) ToDiscoveredOutboundEndpointsPtrOutputWithContext(ctx context.Context) DiscoveredOutboundEndpointsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiscoveredOutboundEndpoints) *DiscoveredOutboundEndpoints {
+		return &v
+	}).(DiscoveredOutboundEndpointsPtrOutput)
+}
+
+// Endpoints the device can connect to.
+func (o DiscoveredOutboundEndpointsOutput) Assigned() DeviceMessagingEndpointMapOutput {
+	return o.ApplyT(func(v DiscoveredOutboundEndpoints) map[string]DeviceMessagingEndpoint { return v.Assigned }).(DeviceMessagingEndpointMapOutput)
+}
+
+type DiscoveredOutboundEndpointsPtrOutput struct{ *pulumi.OutputState }
+
+func (DiscoveredOutboundEndpointsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiscoveredOutboundEndpoints)(nil)).Elem()
+}
+
+func (o DiscoveredOutboundEndpointsPtrOutput) ToDiscoveredOutboundEndpointsPtrOutput() DiscoveredOutboundEndpointsPtrOutput {
+	return o
+}
+
+func (o DiscoveredOutboundEndpointsPtrOutput) ToDiscoveredOutboundEndpointsPtrOutputWithContext(ctx context.Context) DiscoveredOutboundEndpointsPtrOutput {
+	return o
+}
+
+func (o DiscoveredOutboundEndpointsPtrOutput) Elem() DiscoveredOutboundEndpointsOutput {
+	return o.ApplyT(func(v *DiscoveredOutboundEndpoints) DiscoveredOutboundEndpoints {
+		if v != nil {
+			return *v
+		}
+		var ret DiscoveredOutboundEndpoints
+		return ret
+	}).(DiscoveredOutboundEndpointsOutput)
+}
+
+// Endpoints the device can connect to.
+func (o DiscoveredOutboundEndpointsPtrOutput) Assigned() DeviceMessagingEndpointMapOutput {
+	return o.ApplyT(func(v *DiscoveredOutboundEndpoints) map[string]DeviceMessagingEndpoint {
+		if v == nil {
+			return nil
+		}
+		return v.Assigned
+	}).(DeviceMessagingEndpointMapOutput)
+}
+
+// Property bag contains the device's outbound endpoints
+type DiscoveredOutboundEndpointsResponse struct {
+	// Endpoints the device can connect to.
+	Assigned map[string]DeviceMessagingEndpointResponse `pulumi:"assigned"`
+}
+
+// Property bag contains the device's outbound endpoints
+type DiscoveredOutboundEndpointsResponseOutput struct{ *pulumi.OutputState }
+
+func (DiscoveredOutboundEndpointsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoveredOutboundEndpointsResponse)(nil)).Elem()
+}
+
+func (o DiscoveredOutboundEndpointsResponseOutput) ToDiscoveredOutboundEndpointsResponseOutput() DiscoveredOutboundEndpointsResponseOutput {
+	return o
+}
+
+func (o DiscoveredOutboundEndpointsResponseOutput) ToDiscoveredOutboundEndpointsResponseOutputWithContext(ctx context.Context) DiscoveredOutboundEndpointsResponseOutput {
+	return o
+}
+
+// Endpoints the device can connect to.
+func (o DiscoveredOutboundEndpointsResponseOutput) Assigned() DeviceMessagingEndpointResponseMapOutput {
+	return o.ApplyT(func(v DiscoveredOutboundEndpointsResponse) map[string]DeviceMessagingEndpointResponse {
+		return v.Assigned
+	}).(DeviceMessagingEndpointResponseMapOutput)
+}
+
+type DiscoveredOutboundEndpointsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DiscoveredOutboundEndpointsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiscoveredOutboundEndpointsResponse)(nil)).Elem()
+}
+
+func (o DiscoveredOutboundEndpointsResponsePtrOutput) ToDiscoveredOutboundEndpointsResponsePtrOutput() DiscoveredOutboundEndpointsResponsePtrOutput {
+	return o
+}
+
+func (o DiscoveredOutboundEndpointsResponsePtrOutput) ToDiscoveredOutboundEndpointsResponsePtrOutputWithContext(ctx context.Context) DiscoveredOutboundEndpointsResponsePtrOutput {
+	return o
+}
+
+func (o DiscoveredOutboundEndpointsResponsePtrOutput) Elem() DiscoveredOutboundEndpointsResponseOutput {
+	return o.ApplyT(func(v *DiscoveredOutboundEndpointsResponse) DiscoveredOutboundEndpointsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DiscoveredOutboundEndpointsResponse
+		return ret
+	}).(DiscoveredOutboundEndpointsResponseOutput)
+}
+
+// Endpoints the device can connect to.
+func (o DiscoveredOutboundEndpointsResponsePtrOutput) Assigned() DeviceMessagingEndpointResponseMapOutput {
+	return o.ApplyT(func(v *DiscoveredOutboundEndpointsResponse) map[string]DeviceMessagingEndpointResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Assigned
+	}).(DeviceMessagingEndpointResponseMapOutput)
+}
+
+// Defines the error details properties.
+type ErrorDetailsResponse struct {
+	// Multi-part error code for classification and root causing of errors (ex: 400.200.100.432).
+	Code string `pulumi:"code"`
+	// Unique identifier for the transaction to aid in debugging.
+	CorrelationId string `pulumi:"correlationId"`
+	// Human-readable helpful detailed text context for debugging (ex: “The following mechanisms are supported...”).
+	Info string `pulumi:"info"`
+	// Human-readable helpful error message to provide additional context for error (ex: “Authentication method not supported”).
+	Message string `pulumi:"message"`
+}
+
+// Defines the error details properties.
+type ErrorDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (ErrorDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErrorDetailsResponse)(nil)).Elem()
+}
+
+func (o ErrorDetailsResponseOutput) ToErrorDetailsResponseOutput() ErrorDetailsResponseOutput {
+	return o
+}
+
+func (o ErrorDetailsResponseOutput) ToErrorDetailsResponseOutputWithContext(ctx context.Context) ErrorDetailsResponseOutput {
+	return o
+}
+
+// Multi-part error code for classification and root causing of errors (ex: 400.200.100.432).
+func (o ErrorDetailsResponseOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorDetailsResponse) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// Unique identifier for the transaction to aid in debugging.
+func (o ErrorDetailsResponseOutput) CorrelationId() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorDetailsResponse) string { return v.CorrelationId }).(pulumi.StringOutput)
+}
+
+// Human-readable helpful detailed text context for debugging (ex: “The following mechanisms are supported...”).
+func (o ErrorDetailsResponseOutput) Info() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorDetailsResponse) string { return v.Info }).(pulumi.StringOutput)
+}
+
+// Human-readable helpful error message to provide additional context for error (ex: “Authentication method not supported”).
+func (o ErrorDetailsResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorDetailsResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+type ErrorDetailsResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ErrorDetailsResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ErrorDetailsResponse)(nil)).Elem()
+}
+
+func (o ErrorDetailsResponseArrayOutput) ToErrorDetailsResponseArrayOutput() ErrorDetailsResponseArrayOutput {
+	return o
+}
+
+func (o ErrorDetailsResponseArrayOutput) ToErrorDetailsResponseArrayOutputWithContext(ctx context.Context) ErrorDetailsResponseArrayOutput {
+	return o
+}
+
+func (o ErrorDetailsResponseArrayOutput) Index(i pulumi.IntInput) ErrorDetailsResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ErrorDetailsResponse {
+		return vs[0].([]ErrorDetailsResponse)[vs[1].(int)]
+	}).(ErrorDetailsResponseOutput)
+}
+
 // Defines the event properties.
 type Event struct {
-	// The path to the type definition of the capability (e.g. DTMI, OPC UA information model node id, etc.), for example dtmi:com:example:Robot:_contents:__prop1;1.
-	CapabilityId *string `pulumi:"capabilityId"`
 	// Stringified JSON that contains connector-specific configuration for the event. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
 	EventConfiguration *string `pulumi:"eventConfiguration"`
 	// The address of the notifier of the event in the asset (e.g. URL) so that a client can access the event on the asset.
 	EventNotifier string `pulumi:"eventNotifier"`
 	// The name of the event.
-	Name *string `pulumi:"name"`
+	Name string `pulumi:"name"`
 	// An indication of how the event should be mapped to OpenTelemetry.
 	ObservabilityMode *string `pulumi:"observabilityMode"`
+	// Object that describes the topic information for the specific event.
+	Topic *Topic `pulumi:"topic"`
 }
 
 // Defaults sets the appropriate defaults for Event
@@ -1027,9 +3265,11 @@ func (val *Event) Defaults() *Event {
 	}
 	tmp := *val
 	if tmp.ObservabilityMode == nil {
-		observabilityMode_ := "none"
+		observabilityMode_ := "None"
 		tmp.ObservabilityMode = &observabilityMode_
 	}
+	tmp.Topic = tmp.Topic.Defaults()
+
 	return &tmp
 }
 
@@ -1046,16 +3286,16 @@ type EventInput interface {
 
 // Defines the event properties.
 type EventArgs struct {
-	// The path to the type definition of the capability (e.g. DTMI, OPC UA information model node id, etc.), for example dtmi:com:example:Robot:_contents:__prop1;1.
-	CapabilityId pulumi.StringPtrInput `pulumi:"capabilityId"`
 	// Stringified JSON that contains connector-specific configuration for the event. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
 	EventConfiguration pulumi.StringPtrInput `pulumi:"eventConfiguration"`
 	// The address of the notifier of the event in the asset (e.g. URL) so that a client can access the event on the asset.
 	EventNotifier pulumi.StringInput `pulumi:"eventNotifier"`
 	// The name of the event.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Name pulumi.StringInput `pulumi:"name"`
 	// An indication of how the event should be mapped to OpenTelemetry.
 	ObservabilityMode pulumi.StringPtrInput `pulumi:"observabilityMode"`
+	// Object that describes the topic information for the specific event.
+	Topic TopicPtrInput `pulumi:"topic"`
 }
 
 // Defaults sets the appropriate defaults for EventArgs
@@ -1065,8 +3305,9 @@ func (val *EventArgs) Defaults() *EventArgs {
 	}
 	tmp := *val
 	if tmp.ObservabilityMode == nil {
-		tmp.ObservabilityMode = pulumi.StringPtr("none")
+		tmp.ObservabilityMode = pulumi.StringPtr("None")
 	}
+
 	return &tmp
 }
 func (EventArgs) ElementType() reflect.Type {
@@ -1121,11 +3362,6 @@ func (o EventOutput) ToEventOutputWithContext(ctx context.Context) EventOutput {
 	return o
 }
 
-// The path to the type definition of the capability (e.g. DTMI, OPC UA information model node id, etc.), for example dtmi:com:example:Robot:_contents:__prop1;1.
-func (o EventOutput) CapabilityId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Event) *string { return v.CapabilityId }).(pulumi.StringPtrOutput)
-}
-
 // Stringified JSON that contains connector-specific configuration for the event. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
 func (o EventOutput) EventConfiguration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Event) *string { return v.EventConfiguration }).(pulumi.StringPtrOutput)
@@ -1137,13 +3373,18 @@ func (o EventOutput) EventNotifier() pulumi.StringOutput {
 }
 
 // The name of the event.
-func (o EventOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Event) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o EventOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v Event) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // An indication of how the event should be mapped to OpenTelemetry.
 func (o EventOutput) ObservabilityMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Event) *string { return v.ObservabilityMode }).(pulumi.StringPtrOutput)
+}
+
+// Object that describes the topic information for the specific event.
+func (o EventOutput) Topic() TopicPtrOutput {
+	return o.ApplyT(func(v Event) *Topic { return v.Topic }).(TopicPtrOutput)
 }
 
 type EventArrayOutput struct{ *pulumi.OutputState }
@@ -1166,18 +3407,151 @@ func (o EventArrayOutput) Index(i pulumi.IntInput) EventOutput {
 	}).(EventOutput)
 }
 
+// The type for a MQTT destination.
+type EventMqttDestination struct {
+	// The MQTT destination configuration.
+	Configuration MqttDestinationConfiguration `pulumi:"configuration"`
+	// The set of supported event destinations for an asset.
+	// Expected value is 'Mqtt'.
+	Target string `pulumi:"target"`
+}
+
+// Defaults sets the appropriate defaults for EventMqttDestination
+func (val *EventMqttDestination) Defaults() *EventMqttDestination {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Configuration = *tmp.Configuration.Defaults()
+
+	return &tmp
+}
+
+// EventMqttDestinationInput is an input type that accepts EventMqttDestinationArgs and EventMqttDestinationOutput values.
+// You can construct a concrete instance of `EventMqttDestinationInput` via:
+//
+//	EventMqttDestinationArgs{...}
+type EventMqttDestinationInput interface {
+	pulumi.Input
+
+	ToEventMqttDestinationOutput() EventMqttDestinationOutput
+	ToEventMqttDestinationOutputWithContext(context.Context) EventMqttDestinationOutput
+}
+
+// The type for a MQTT destination.
+type EventMqttDestinationArgs struct {
+	// The MQTT destination configuration.
+	Configuration MqttDestinationConfigurationInput `pulumi:"configuration"`
+	// The set of supported event destinations for an asset.
+	// Expected value is 'Mqtt'.
+	Target pulumi.StringInput `pulumi:"target"`
+}
+
+// Defaults sets the appropriate defaults for EventMqttDestinationArgs
+func (val *EventMqttDestinationArgs) Defaults() *EventMqttDestinationArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	return &tmp
+}
+func (EventMqttDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventMqttDestination)(nil)).Elem()
+}
+
+func (i EventMqttDestinationArgs) ToEventMqttDestinationOutput() EventMqttDestinationOutput {
+	return i.ToEventMqttDestinationOutputWithContext(context.Background())
+}
+
+func (i EventMqttDestinationArgs) ToEventMqttDestinationOutputWithContext(ctx context.Context) EventMqttDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventMqttDestinationOutput)
+}
+
+// The type for a MQTT destination.
+type EventMqttDestinationOutput struct{ *pulumi.OutputState }
+
+func (EventMqttDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventMqttDestination)(nil)).Elem()
+}
+
+func (o EventMqttDestinationOutput) ToEventMqttDestinationOutput() EventMqttDestinationOutput {
+	return o
+}
+
+func (o EventMqttDestinationOutput) ToEventMqttDestinationOutputWithContext(ctx context.Context) EventMqttDestinationOutput {
+	return o
+}
+
+// The MQTT destination configuration.
+func (o EventMqttDestinationOutput) Configuration() MqttDestinationConfigurationOutput {
+	return o.ApplyT(func(v EventMqttDestination) MqttDestinationConfiguration { return v.Configuration }).(MqttDestinationConfigurationOutput)
+}
+
+// The set of supported event destinations for an asset.
+// Expected value is 'Mqtt'.
+func (o EventMqttDestinationOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v EventMqttDestination) string { return v.Target }).(pulumi.StringOutput)
+}
+
+// The type for a MQTT destination.
+type EventMqttDestinationResponse struct {
+	// The MQTT destination configuration.
+	Configuration MqttDestinationConfigurationResponse `pulumi:"configuration"`
+	// The set of supported event destinations for an asset.
+	// Expected value is 'Mqtt'.
+	Target string `pulumi:"target"`
+}
+
+// Defaults sets the appropriate defaults for EventMqttDestinationResponse
+func (val *EventMqttDestinationResponse) Defaults() *EventMqttDestinationResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Configuration = *tmp.Configuration.Defaults()
+
+	return &tmp
+}
+
+// The type for a MQTT destination.
+type EventMqttDestinationResponseOutput struct{ *pulumi.OutputState }
+
+func (EventMqttDestinationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventMqttDestinationResponse)(nil)).Elem()
+}
+
+func (o EventMqttDestinationResponseOutput) ToEventMqttDestinationResponseOutput() EventMqttDestinationResponseOutput {
+	return o
+}
+
+func (o EventMqttDestinationResponseOutput) ToEventMqttDestinationResponseOutputWithContext(ctx context.Context) EventMqttDestinationResponseOutput {
+	return o
+}
+
+// The MQTT destination configuration.
+func (o EventMqttDestinationResponseOutput) Configuration() MqttDestinationConfigurationResponseOutput {
+	return o.ApplyT(func(v EventMqttDestinationResponse) MqttDestinationConfigurationResponse { return v.Configuration }).(MqttDestinationConfigurationResponseOutput)
+}
+
+// The set of supported event destinations for an asset.
+// Expected value is 'Mqtt'.
+func (o EventMqttDestinationResponseOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v EventMqttDestinationResponse) string { return v.Target }).(pulumi.StringOutput)
+}
+
 // Defines the event properties.
 type EventResponse struct {
-	// The path to the type definition of the capability (e.g. DTMI, OPC UA information model node id, etc.), for example dtmi:com:example:Robot:_contents:__prop1;1.
-	CapabilityId *string `pulumi:"capabilityId"`
 	// Stringified JSON that contains connector-specific configuration for the event. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
 	EventConfiguration *string `pulumi:"eventConfiguration"`
 	// The address of the notifier of the event in the asset (e.g. URL) so that a client can access the event on the asset.
 	EventNotifier string `pulumi:"eventNotifier"`
 	// The name of the event.
-	Name *string `pulumi:"name"`
+	Name string `pulumi:"name"`
 	// An indication of how the event should be mapped to OpenTelemetry.
 	ObservabilityMode *string `pulumi:"observabilityMode"`
+	// Object that describes the topic information for the specific event.
+	Topic *TopicResponse `pulumi:"topic"`
 }
 
 // Defaults sets the appropriate defaults for EventResponse
@@ -1187,9 +3561,11 @@ func (val *EventResponse) Defaults() *EventResponse {
 	}
 	tmp := *val
 	if tmp.ObservabilityMode == nil {
-		observabilityMode_ := "none"
+		observabilityMode_ := "None"
 		tmp.ObservabilityMode = &observabilityMode_
 	}
+	tmp.Topic = tmp.Topic.Defaults()
+
 	return &tmp
 }
 
@@ -1208,11 +3584,6 @@ func (o EventResponseOutput) ToEventResponseOutputWithContext(ctx context.Contex
 	return o
 }
 
-// The path to the type definition of the capability (e.g. DTMI, OPC UA information model node id, etc.), for example dtmi:com:example:Robot:_contents:__prop1;1.
-func (o EventResponseOutput) CapabilityId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EventResponse) *string { return v.CapabilityId }).(pulumi.StringPtrOutput)
-}
-
 // Stringified JSON that contains connector-specific configuration for the event. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
 func (o EventResponseOutput) EventConfiguration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EventResponse) *string { return v.EventConfiguration }).(pulumi.StringPtrOutput)
@@ -1224,13 +3595,18 @@ func (o EventResponseOutput) EventNotifier() pulumi.StringOutput {
 }
 
 // The name of the event.
-func (o EventResponseOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EventResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o EventResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v EventResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // An indication of how the event should be mapped to OpenTelemetry.
 func (o EventResponseOutput) ObservabilityMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EventResponse) *string { return v.ObservabilityMode }).(pulumi.StringPtrOutput)
+}
+
+// Object that describes the topic information for the specific event.
+func (o EventResponseOutput) Topic() TopicResponsePtrOutput {
+	return o.ApplyT(func(v EventResponse) *TopicResponse { return v.Topic }).(TopicResponsePtrOutput)
 }
 
 type EventResponseArrayOutput struct{ *pulumi.OutputState }
@@ -1251,6 +3627,110 @@ func (o EventResponseArrayOutput) Index(i pulumi.IntInput) EventResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EventResponse {
 		return vs[0].([]EventResponse)[vs[1].(int)]
 	}).(EventResponseOutput)
+}
+
+// The type for a storage destination.
+type EventStorageDestination struct {
+	// The storage destination configuration.
+	Configuration StorageDestinationConfiguration `pulumi:"configuration"`
+	// The set of supported event destinations for an asset.
+	// Expected value is 'Storage'.
+	Target string `pulumi:"target"`
+}
+
+// EventStorageDestinationInput is an input type that accepts EventStorageDestinationArgs and EventStorageDestinationOutput values.
+// You can construct a concrete instance of `EventStorageDestinationInput` via:
+//
+//	EventStorageDestinationArgs{...}
+type EventStorageDestinationInput interface {
+	pulumi.Input
+
+	ToEventStorageDestinationOutput() EventStorageDestinationOutput
+	ToEventStorageDestinationOutputWithContext(context.Context) EventStorageDestinationOutput
+}
+
+// The type for a storage destination.
+type EventStorageDestinationArgs struct {
+	// The storage destination configuration.
+	Configuration StorageDestinationConfigurationInput `pulumi:"configuration"`
+	// The set of supported event destinations for an asset.
+	// Expected value is 'Storage'.
+	Target pulumi.StringInput `pulumi:"target"`
+}
+
+func (EventStorageDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventStorageDestination)(nil)).Elem()
+}
+
+func (i EventStorageDestinationArgs) ToEventStorageDestinationOutput() EventStorageDestinationOutput {
+	return i.ToEventStorageDestinationOutputWithContext(context.Background())
+}
+
+func (i EventStorageDestinationArgs) ToEventStorageDestinationOutputWithContext(ctx context.Context) EventStorageDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventStorageDestinationOutput)
+}
+
+// The type for a storage destination.
+type EventStorageDestinationOutput struct{ *pulumi.OutputState }
+
+func (EventStorageDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventStorageDestination)(nil)).Elem()
+}
+
+func (o EventStorageDestinationOutput) ToEventStorageDestinationOutput() EventStorageDestinationOutput {
+	return o
+}
+
+func (o EventStorageDestinationOutput) ToEventStorageDestinationOutputWithContext(ctx context.Context) EventStorageDestinationOutput {
+	return o
+}
+
+// The storage destination configuration.
+func (o EventStorageDestinationOutput) Configuration() StorageDestinationConfigurationOutput {
+	return o.ApplyT(func(v EventStorageDestination) StorageDestinationConfiguration { return v.Configuration }).(StorageDestinationConfigurationOutput)
+}
+
+// The set of supported event destinations for an asset.
+// Expected value is 'Storage'.
+func (o EventStorageDestinationOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v EventStorageDestination) string { return v.Target }).(pulumi.StringOutput)
+}
+
+// The type for a storage destination.
+type EventStorageDestinationResponse struct {
+	// The storage destination configuration.
+	Configuration StorageDestinationConfigurationResponse `pulumi:"configuration"`
+	// The set of supported event destinations for an asset.
+	// Expected value is 'Storage'.
+	Target string `pulumi:"target"`
+}
+
+// The type for a storage destination.
+type EventStorageDestinationResponseOutput struct{ *pulumi.OutputState }
+
+func (EventStorageDestinationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventStorageDestinationResponse)(nil)).Elem()
+}
+
+func (o EventStorageDestinationResponseOutput) ToEventStorageDestinationResponseOutput() EventStorageDestinationResponseOutput {
+	return o
+}
+
+func (o EventStorageDestinationResponseOutput) ToEventStorageDestinationResponseOutputWithContext(ctx context.Context) EventStorageDestinationResponseOutput {
+	return o
+}
+
+// The storage destination configuration.
+func (o EventStorageDestinationResponseOutput) Configuration() StorageDestinationConfigurationResponseOutput {
+	return o.ApplyT(func(v EventStorageDestinationResponse) StorageDestinationConfigurationResponse {
+		return v.Configuration
+	}).(StorageDestinationConfigurationResponseOutput)
+}
+
+// The set of supported event destinations for an asset.
+// Expected value is 'Storage'.
+func (o EventStorageDestinationResponseOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v EventStorageDestinationResponse) string { return v.Target }).(pulumi.StringOutput)
 }
 
 // The extended location.
@@ -1292,6 +3772,47 @@ func (i ExtendedLocationArgs) ToExtendedLocationOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ExtendedLocationOutput)
 }
 
+func (i ExtendedLocationArgs) ToExtendedLocationPtrOutput() ExtendedLocationPtrOutput {
+	return i.ToExtendedLocationPtrOutputWithContext(context.Background())
+}
+
+func (i ExtendedLocationArgs) ToExtendedLocationPtrOutputWithContext(ctx context.Context) ExtendedLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExtendedLocationOutput).ToExtendedLocationPtrOutputWithContext(ctx)
+}
+
+// ExtendedLocationPtrInput is an input type that accepts ExtendedLocationArgs, ExtendedLocationPtr and ExtendedLocationPtrOutput values.
+// You can construct a concrete instance of `ExtendedLocationPtrInput` via:
+//
+//	        ExtendedLocationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ExtendedLocationPtrInput interface {
+	pulumi.Input
+
+	ToExtendedLocationPtrOutput() ExtendedLocationPtrOutput
+	ToExtendedLocationPtrOutputWithContext(context.Context) ExtendedLocationPtrOutput
+}
+
+type extendedLocationPtrType ExtendedLocationArgs
+
+func ExtendedLocationPtr(v *ExtendedLocationArgs) ExtendedLocationPtrInput {
+	return (*extendedLocationPtrType)(v)
+}
+
+func (*extendedLocationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExtendedLocation)(nil)).Elem()
+}
+
+func (i *extendedLocationPtrType) ToExtendedLocationPtrOutput() ExtendedLocationPtrOutput {
+	return i.ToExtendedLocationPtrOutputWithContext(context.Background())
+}
+
+func (i *extendedLocationPtrType) ToExtendedLocationPtrOutputWithContext(ctx context.Context) ExtendedLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExtendedLocationPtrOutput)
+}
+
 // The extended location.
 type ExtendedLocationOutput struct{ *pulumi.OutputState }
 
@@ -1307,6 +3828,16 @@ func (o ExtendedLocationOutput) ToExtendedLocationOutputWithContext(ctx context.
 	return o
 }
 
+func (o ExtendedLocationOutput) ToExtendedLocationPtrOutput() ExtendedLocationPtrOutput {
+	return o.ToExtendedLocationPtrOutputWithContext(context.Background())
+}
+
+func (o ExtendedLocationOutput) ToExtendedLocationPtrOutputWithContext(ctx context.Context) ExtendedLocationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExtendedLocation) *ExtendedLocation {
+		return &v
+	}).(ExtendedLocationPtrOutput)
+}
+
 // The extended location name.
 func (o ExtendedLocationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ExtendedLocation) string { return v.Name }).(pulumi.StringOutput)
@@ -1315,6 +3846,50 @@ func (o ExtendedLocationOutput) Name() pulumi.StringOutput {
 // The extended location type.
 func (o ExtendedLocationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ExtendedLocation) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ExtendedLocationPtrOutput struct{ *pulumi.OutputState }
+
+func (ExtendedLocationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExtendedLocation)(nil)).Elem()
+}
+
+func (o ExtendedLocationPtrOutput) ToExtendedLocationPtrOutput() ExtendedLocationPtrOutput {
+	return o
+}
+
+func (o ExtendedLocationPtrOutput) ToExtendedLocationPtrOutputWithContext(ctx context.Context) ExtendedLocationPtrOutput {
+	return o
+}
+
+func (o ExtendedLocationPtrOutput) Elem() ExtendedLocationOutput {
+	return o.ApplyT(func(v *ExtendedLocation) ExtendedLocation {
+		if v != nil {
+			return *v
+		}
+		var ret ExtendedLocation
+		return ret
+	}).(ExtendedLocationOutput)
+}
+
+// The extended location name.
+func (o ExtendedLocationPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExtendedLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The extended location type.
+func (o ExtendedLocationPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExtendedLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 // The extended location.
@@ -1350,182 +3925,5725 @@ func (o ExtendedLocationResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ExtendedLocationResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Certificate or private key that can be used by the southbound connector connecting to the shop floor/OT device. The accepted extensions are .der for certificates and .pfx/.pem for private keys.
-type OwnCertificate struct {
-	// Secret Reference Name (Pfx or Pem password).
-	CertPasswordReference *string `pulumi:"certPasswordReference"`
-	// Secret Reference name (cert and private key).
-	CertSecretReference *string `pulumi:"certSecretReference"`
-	// Certificate thumbprint.
-	CertThumbprint *string `pulumi:"certThumbprint"`
+type ExtendedLocationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ExtendedLocationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExtendedLocationResponse)(nil)).Elem()
 }
 
-// OwnCertificateInput is an input type that accepts OwnCertificateArgs and OwnCertificateOutput values.
-// You can construct a concrete instance of `OwnCertificateInput` via:
+func (o ExtendedLocationResponsePtrOutput) ToExtendedLocationResponsePtrOutput() ExtendedLocationResponsePtrOutput {
+	return o
+}
+
+func (o ExtendedLocationResponsePtrOutput) ToExtendedLocationResponsePtrOutputWithContext(ctx context.Context) ExtendedLocationResponsePtrOutput {
+	return o
+}
+
+func (o ExtendedLocationResponsePtrOutput) Elem() ExtendedLocationResponseOutput {
+	return o.ApplyT(func(v *ExtendedLocationResponse) ExtendedLocationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ExtendedLocationResponse
+		return ret
+	}).(ExtendedLocationResponseOutput)
+}
+
+// The extended location name.
+func (o ExtendedLocationResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExtendedLocationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The extended location type.
+func (o ExtendedLocationResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExtendedLocationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Definition of the client authentication mechanism to the host.
+type HostAuthentication struct {
+	// Defines the method to authenticate the user of the client at the server.
+	Method string `pulumi:"method"`
+	// Defines the username and password references when UsernamePassword user authentication mode is selected.
+	UsernamePasswordCredentials *UsernamePasswordCredentials `pulumi:"usernamePasswordCredentials"`
+	// Defines the certificate reference when Certificate user authentication mode is selected.
+	X509Credentials *X509Credentials `pulumi:"x509Credentials"`
+}
+
+// Defaults sets the appropriate defaults for HostAuthentication
+func (val *HostAuthentication) Defaults() *HostAuthentication {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if utilities.IsZero(tmp.Method) {
+		tmp.Method = "Certificate"
+	}
+	return &tmp
+}
+
+// HostAuthenticationInput is an input type that accepts HostAuthenticationArgs and HostAuthenticationOutput values.
+// You can construct a concrete instance of `HostAuthenticationInput` via:
 //
-//	OwnCertificateArgs{...}
-type OwnCertificateInput interface {
+//	HostAuthenticationArgs{...}
+type HostAuthenticationInput interface {
 	pulumi.Input
 
-	ToOwnCertificateOutput() OwnCertificateOutput
-	ToOwnCertificateOutputWithContext(context.Context) OwnCertificateOutput
+	ToHostAuthenticationOutput() HostAuthenticationOutput
+	ToHostAuthenticationOutputWithContext(context.Context) HostAuthenticationOutput
 }
 
-// Certificate or private key that can be used by the southbound connector connecting to the shop floor/OT device. The accepted extensions are .der for certificates and .pfx/.pem for private keys.
-type OwnCertificateArgs struct {
-	// Secret Reference Name (Pfx or Pem password).
-	CertPasswordReference pulumi.StringPtrInput `pulumi:"certPasswordReference"`
-	// Secret Reference name (cert and private key).
-	CertSecretReference pulumi.StringPtrInput `pulumi:"certSecretReference"`
-	// Certificate thumbprint.
-	CertThumbprint pulumi.StringPtrInput `pulumi:"certThumbprint"`
+// Definition of the client authentication mechanism to the host.
+type HostAuthenticationArgs struct {
+	// Defines the method to authenticate the user of the client at the server.
+	Method pulumi.StringInput `pulumi:"method"`
+	// Defines the username and password references when UsernamePassword user authentication mode is selected.
+	UsernamePasswordCredentials UsernamePasswordCredentialsPtrInput `pulumi:"usernamePasswordCredentials"`
+	// Defines the certificate reference when Certificate user authentication mode is selected.
+	X509Credentials X509CredentialsPtrInput `pulumi:"x509Credentials"`
 }
 
-func (OwnCertificateArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OwnCertificate)(nil)).Elem()
+// Defaults sets the appropriate defaults for HostAuthenticationArgs
+func (val *HostAuthenticationArgs) Defaults() *HostAuthenticationArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Method == nil {
+		tmp.Method = pulumi.String("Certificate")
+	}
+	return &tmp
+}
+func (HostAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostAuthentication)(nil)).Elem()
 }
 
-func (i OwnCertificateArgs) ToOwnCertificateOutput() OwnCertificateOutput {
-	return i.ToOwnCertificateOutputWithContext(context.Background())
+func (i HostAuthenticationArgs) ToHostAuthenticationOutput() HostAuthenticationOutput {
+	return i.ToHostAuthenticationOutputWithContext(context.Background())
 }
 
-func (i OwnCertificateArgs) ToOwnCertificateOutputWithContext(ctx context.Context) OwnCertificateOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OwnCertificateOutput)
+func (i HostAuthenticationArgs) ToHostAuthenticationOutputWithContext(ctx context.Context) HostAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostAuthenticationOutput)
 }
 
-// OwnCertificateArrayInput is an input type that accepts OwnCertificateArray and OwnCertificateArrayOutput values.
-// You can construct a concrete instance of `OwnCertificateArrayInput` via:
+func (i HostAuthenticationArgs) ToHostAuthenticationPtrOutput() HostAuthenticationPtrOutput {
+	return i.ToHostAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i HostAuthenticationArgs) ToHostAuthenticationPtrOutputWithContext(ctx context.Context) HostAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostAuthenticationOutput).ToHostAuthenticationPtrOutputWithContext(ctx)
+}
+
+// HostAuthenticationPtrInput is an input type that accepts HostAuthenticationArgs, HostAuthenticationPtr and HostAuthenticationPtrOutput values.
+// You can construct a concrete instance of `HostAuthenticationPtrInput` via:
 //
-//	OwnCertificateArray{ OwnCertificateArgs{...} }
-type OwnCertificateArrayInput interface {
+//	        HostAuthenticationArgs{...}
+//
+//	or:
+//
+//	        nil
+type HostAuthenticationPtrInput interface {
 	pulumi.Input
 
-	ToOwnCertificateArrayOutput() OwnCertificateArrayOutput
-	ToOwnCertificateArrayOutputWithContext(context.Context) OwnCertificateArrayOutput
+	ToHostAuthenticationPtrOutput() HostAuthenticationPtrOutput
+	ToHostAuthenticationPtrOutputWithContext(context.Context) HostAuthenticationPtrOutput
 }
 
-type OwnCertificateArray []OwnCertificateInput
+type hostAuthenticationPtrType HostAuthenticationArgs
 
-func (OwnCertificateArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]OwnCertificate)(nil)).Elem()
+func HostAuthenticationPtr(v *HostAuthenticationArgs) HostAuthenticationPtrInput {
+	return (*hostAuthenticationPtrType)(v)
 }
 
-func (i OwnCertificateArray) ToOwnCertificateArrayOutput() OwnCertificateArrayOutput {
-	return i.ToOwnCertificateArrayOutputWithContext(context.Background())
+func (*hostAuthenticationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HostAuthentication)(nil)).Elem()
 }
 
-func (i OwnCertificateArray) ToOwnCertificateArrayOutputWithContext(ctx context.Context) OwnCertificateArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OwnCertificateArrayOutput)
+func (i *hostAuthenticationPtrType) ToHostAuthenticationPtrOutput() HostAuthenticationPtrOutput {
+	return i.ToHostAuthenticationPtrOutputWithContext(context.Background())
 }
 
-// Certificate or private key that can be used by the southbound connector connecting to the shop floor/OT device. The accepted extensions are .der for certificates and .pfx/.pem for private keys.
-type OwnCertificateOutput struct{ *pulumi.OutputState }
-
-func (OwnCertificateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OwnCertificate)(nil)).Elem()
+func (i *hostAuthenticationPtrType) ToHostAuthenticationPtrOutputWithContext(ctx context.Context) HostAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostAuthenticationPtrOutput)
 }
 
-func (o OwnCertificateOutput) ToOwnCertificateOutput() OwnCertificateOutput {
+// Definition of the client authentication mechanism to the host.
+type HostAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (HostAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostAuthentication)(nil)).Elem()
+}
+
+func (o HostAuthenticationOutput) ToHostAuthenticationOutput() HostAuthenticationOutput {
 	return o
 }
 
-func (o OwnCertificateOutput) ToOwnCertificateOutputWithContext(ctx context.Context) OwnCertificateOutput {
+func (o HostAuthenticationOutput) ToHostAuthenticationOutputWithContext(ctx context.Context) HostAuthenticationOutput {
 	return o
 }
 
-// Secret Reference Name (Pfx or Pem password).
-func (o OwnCertificateOutput) CertPasswordReference() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OwnCertificate) *string { return v.CertPasswordReference }).(pulumi.StringPtrOutput)
+func (o HostAuthenticationOutput) ToHostAuthenticationPtrOutput() HostAuthenticationPtrOutput {
+	return o.ToHostAuthenticationPtrOutputWithContext(context.Background())
 }
 
-// Secret Reference name (cert and private key).
-func (o OwnCertificateOutput) CertSecretReference() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OwnCertificate) *string { return v.CertSecretReference }).(pulumi.StringPtrOutput)
+func (o HostAuthenticationOutput) ToHostAuthenticationPtrOutputWithContext(ctx context.Context) HostAuthenticationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HostAuthentication) *HostAuthentication {
+		return &v
+	}).(HostAuthenticationPtrOutput)
 }
 
-// Certificate thumbprint.
-func (o OwnCertificateOutput) CertThumbprint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OwnCertificate) *string { return v.CertThumbprint }).(pulumi.StringPtrOutput)
+// Defines the method to authenticate the user of the client at the server.
+func (o HostAuthenticationOutput) Method() pulumi.StringOutput {
+	return o.ApplyT(func(v HostAuthentication) string { return v.Method }).(pulumi.StringOutput)
 }
 
-type OwnCertificateArrayOutput struct{ *pulumi.OutputState }
-
-func (OwnCertificateArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]OwnCertificate)(nil)).Elem()
+// Defines the username and password references when UsernamePassword user authentication mode is selected.
+func (o HostAuthenticationOutput) UsernamePasswordCredentials() UsernamePasswordCredentialsPtrOutput {
+	return o.ApplyT(func(v HostAuthentication) *UsernamePasswordCredentials { return v.UsernamePasswordCredentials }).(UsernamePasswordCredentialsPtrOutput)
 }
 
-func (o OwnCertificateArrayOutput) ToOwnCertificateArrayOutput() OwnCertificateArrayOutput {
+// Defines the certificate reference when Certificate user authentication mode is selected.
+func (o HostAuthenticationOutput) X509Credentials() X509CredentialsPtrOutput {
+	return o.ApplyT(func(v HostAuthentication) *X509Credentials { return v.X509Credentials }).(X509CredentialsPtrOutput)
+}
+
+type HostAuthenticationPtrOutput struct{ *pulumi.OutputState }
+
+func (HostAuthenticationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HostAuthentication)(nil)).Elem()
+}
+
+func (o HostAuthenticationPtrOutput) ToHostAuthenticationPtrOutput() HostAuthenticationPtrOutput {
 	return o
 }
 
-func (o OwnCertificateArrayOutput) ToOwnCertificateArrayOutputWithContext(ctx context.Context) OwnCertificateArrayOutput {
+func (o HostAuthenticationPtrOutput) ToHostAuthenticationPtrOutputWithContext(ctx context.Context) HostAuthenticationPtrOutput {
 	return o
 }
 
-func (o OwnCertificateArrayOutput) Index(i pulumi.IntInput) OwnCertificateOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OwnCertificate {
-		return vs[0].([]OwnCertificate)[vs[1].(int)]
-	}).(OwnCertificateOutput)
+func (o HostAuthenticationPtrOutput) Elem() HostAuthenticationOutput {
+	return o.ApplyT(func(v *HostAuthentication) HostAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret HostAuthentication
+		return ret
+	}).(HostAuthenticationOutput)
 }
 
-// Certificate or private key that can be used by the southbound connector connecting to the shop floor/OT device. The accepted extensions are .der for certificates and .pfx/.pem for private keys.
-type OwnCertificateResponse struct {
-	// Secret Reference Name (Pfx or Pem password).
-	CertPasswordReference *string `pulumi:"certPasswordReference"`
-	// Secret Reference name (cert and private key).
-	CertSecretReference *string `pulumi:"certSecretReference"`
-	// Certificate thumbprint.
-	CertThumbprint *string `pulumi:"certThumbprint"`
+// Defines the method to authenticate the user of the client at the server.
+func (o HostAuthenticationPtrOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HostAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Method
+	}).(pulumi.StringPtrOutput)
 }
 
-// Certificate or private key that can be used by the southbound connector connecting to the shop floor/OT device. The accepted extensions are .der for certificates and .pfx/.pem for private keys.
-type OwnCertificateResponseOutput struct{ *pulumi.OutputState }
-
-func (OwnCertificateResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OwnCertificateResponse)(nil)).Elem()
+// Defines the username and password references when UsernamePassword user authentication mode is selected.
+func (o HostAuthenticationPtrOutput) UsernamePasswordCredentials() UsernamePasswordCredentialsPtrOutput {
+	return o.ApplyT(func(v *HostAuthentication) *UsernamePasswordCredentials {
+		if v == nil {
+			return nil
+		}
+		return v.UsernamePasswordCredentials
+	}).(UsernamePasswordCredentialsPtrOutput)
 }
 
-func (o OwnCertificateResponseOutput) ToOwnCertificateResponseOutput() OwnCertificateResponseOutput {
+// Defines the certificate reference when Certificate user authentication mode is selected.
+func (o HostAuthenticationPtrOutput) X509Credentials() X509CredentialsPtrOutput {
+	return o.ApplyT(func(v *HostAuthentication) *X509Credentials {
+		if v == nil {
+			return nil
+		}
+		return v.X509Credentials
+	}).(X509CredentialsPtrOutput)
+}
+
+// Definition of the client authentication mechanism to the host.
+type HostAuthenticationResponse struct {
+	// Defines the method to authenticate the user of the client at the server.
+	Method string `pulumi:"method"`
+	// Defines the username and password references when UsernamePassword user authentication mode is selected.
+	UsernamePasswordCredentials *UsernamePasswordCredentialsResponse `pulumi:"usernamePasswordCredentials"`
+	// Defines the certificate reference when Certificate user authentication mode is selected.
+	X509Credentials *X509CredentialsResponse `pulumi:"x509Credentials"`
+}
+
+// Defaults sets the appropriate defaults for HostAuthenticationResponse
+func (val *HostAuthenticationResponse) Defaults() *HostAuthenticationResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if utilities.IsZero(tmp.Method) {
+		tmp.Method = "Certificate"
+	}
+	return &tmp
+}
+
+// Definition of the client authentication mechanism to the host.
+type HostAuthenticationResponseOutput struct{ *pulumi.OutputState }
+
+func (HostAuthenticationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostAuthenticationResponse)(nil)).Elem()
+}
+
+func (o HostAuthenticationResponseOutput) ToHostAuthenticationResponseOutput() HostAuthenticationResponseOutput {
 	return o
 }
 
-func (o OwnCertificateResponseOutput) ToOwnCertificateResponseOutputWithContext(ctx context.Context) OwnCertificateResponseOutput {
+func (o HostAuthenticationResponseOutput) ToHostAuthenticationResponseOutputWithContext(ctx context.Context) HostAuthenticationResponseOutput {
 	return o
 }
 
-// Secret Reference Name (Pfx or Pem password).
-func (o OwnCertificateResponseOutput) CertPasswordReference() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OwnCertificateResponse) *string { return v.CertPasswordReference }).(pulumi.StringPtrOutput)
+// Defines the method to authenticate the user of the client at the server.
+func (o HostAuthenticationResponseOutput) Method() pulumi.StringOutput {
+	return o.ApplyT(func(v HostAuthenticationResponse) string { return v.Method }).(pulumi.StringOutput)
 }
 
-// Secret Reference name (cert and private key).
-func (o OwnCertificateResponseOutput) CertSecretReference() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OwnCertificateResponse) *string { return v.CertSecretReference }).(pulumi.StringPtrOutput)
+// Defines the username and password references when UsernamePassword user authentication mode is selected.
+func (o HostAuthenticationResponseOutput) UsernamePasswordCredentials() UsernamePasswordCredentialsResponsePtrOutput {
+	return o.ApplyT(func(v HostAuthenticationResponse) *UsernamePasswordCredentialsResponse {
+		return v.UsernamePasswordCredentials
+	}).(UsernamePasswordCredentialsResponsePtrOutput)
 }
 
-// Certificate thumbprint.
-func (o OwnCertificateResponseOutput) CertThumbprint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OwnCertificateResponse) *string { return v.CertThumbprint }).(pulumi.StringPtrOutput)
+// Defines the certificate reference when Certificate user authentication mode is selected.
+func (o HostAuthenticationResponseOutput) X509Credentials() X509CredentialsResponsePtrOutput {
+	return o.ApplyT(func(v HostAuthenticationResponse) *X509CredentialsResponse { return v.X509Credentials }).(X509CredentialsResponsePtrOutput)
 }
 
-type OwnCertificateResponseArrayOutput struct{ *pulumi.OutputState }
+type HostAuthenticationResponsePtrOutput struct{ *pulumi.OutputState }
 
-func (OwnCertificateResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]OwnCertificateResponse)(nil)).Elem()
+func (HostAuthenticationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HostAuthenticationResponse)(nil)).Elem()
 }
 
-func (o OwnCertificateResponseArrayOutput) ToOwnCertificateResponseArrayOutput() OwnCertificateResponseArrayOutput {
+func (o HostAuthenticationResponsePtrOutput) ToHostAuthenticationResponsePtrOutput() HostAuthenticationResponsePtrOutput {
 	return o
 }
 
-func (o OwnCertificateResponseArrayOutput) ToOwnCertificateResponseArrayOutputWithContext(ctx context.Context) OwnCertificateResponseArrayOutput {
+func (o HostAuthenticationResponsePtrOutput) ToHostAuthenticationResponsePtrOutputWithContext(ctx context.Context) HostAuthenticationResponsePtrOutput {
 	return o
 }
 
-func (o OwnCertificateResponseArrayOutput) Index(i pulumi.IntInput) OwnCertificateResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OwnCertificateResponse {
-		return vs[0].([]OwnCertificateResponse)[vs[1].(int)]
-	}).(OwnCertificateResponseOutput)
+func (o HostAuthenticationResponsePtrOutput) Elem() HostAuthenticationResponseOutput {
+	return o.ApplyT(func(v *HostAuthenticationResponse) HostAuthenticationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret HostAuthenticationResponse
+		return ret
+	}).(HostAuthenticationResponseOutput)
+}
+
+// Defines the method to authenticate the user of the client at the server.
+func (o HostAuthenticationResponsePtrOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HostAuthenticationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Method
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines the username and password references when UsernamePassword user authentication mode is selected.
+func (o HostAuthenticationResponsePtrOutput) UsernamePasswordCredentials() UsernamePasswordCredentialsResponsePtrOutput {
+	return o.ApplyT(func(v *HostAuthenticationResponse) *UsernamePasswordCredentialsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.UsernamePasswordCredentials
+	}).(UsernamePasswordCredentialsResponsePtrOutput)
+}
+
+// Defines the certificate reference when Certificate user authentication mode is selected.
+func (o HostAuthenticationResponsePtrOutput) X509Credentials() X509CredentialsResponsePtrOutput {
+	return o.ApplyT(func(v *HostAuthenticationResponse) *X509CredentialsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.X509Credentials
+	}).(X509CredentialsResponsePtrOutput)
+}
+
+// An endpoint to connect to the device.
+type InboundEndpoints struct {
+	// Stringified JSON that contains configuration to be used by the connector (e.g., OPC UA, ONVIF).
+	AdditionalConfiguration *string `pulumi:"additionalConfiguration"`
+	// The endpoint address & port. This can be either an IP address (e.g., 192.168.1.1) or a fully qualified domain name (FQDN, e.g., server.example.com).
+	Address string `pulumi:"address"`
+	// Defines the client authentication mechanism to the server.
+	Authentication *HostAuthentication `pulumi:"authentication"`
+	// Type of connection endpoint.
+	EndpointType string `pulumi:"endpointType"`
+	// Defines server trust settings for the endpoint.
+	TrustSettings *TrustSettings `pulumi:"trustSettings"`
+	// Protocol version associated with the endpoint e.g. 1 or 2 for endpointType Microsoft.HTTP, and 3.5 or 5.0 for endpointType Microsoft.Mqtt etc.
+	Version *string `pulumi:"version"`
+}
+
+// Defaults sets the appropriate defaults for InboundEndpoints
+func (val *InboundEndpoints) Defaults() *InboundEndpoints {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Authentication = tmp.Authentication.Defaults()
+
+	return &tmp
+}
+
+// InboundEndpointsInput is an input type that accepts InboundEndpointsArgs and InboundEndpointsOutput values.
+// You can construct a concrete instance of `InboundEndpointsInput` via:
+//
+//	InboundEndpointsArgs{...}
+type InboundEndpointsInput interface {
+	pulumi.Input
+
+	ToInboundEndpointsOutput() InboundEndpointsOutput
+	ToInboundEndpointsOutputWithContext(context.Context) InboundEndpointsOutput
+}
+
+// An endpoint to connect to the device.
+type InboundEndpointsArgs struct {
+	// Stringified JSON that contains configuration to be used by the connector (e.g., OPC UA, ONVIF).
+	AdditionalConfiguration pulumi.StringPtrInput `pulumi:"additionalConfiguration"`
+	// The endpoint address & port. This can be either an IP address (e.g., 192.168.1.1) or a fully qualified domain name (FQDN, e.g., server.example.com).
+	Address pulumi.StringInput `pulumi:"address"`
+	// Defines the client authentication mechanism to the server.
+	Authentication HostAuthenticationPtrInput `pulumi:"authentication"`
+	// Type of connection endpoint.
+	EndpointType pulumi.StringInput `pulumi:"endpointType"`
+	// Defines server trust settings for the endpoint.
+	TrustSettings TrustSettingsPtrInput `pulumi:"trustSettings"`
+	// Protocol version associated with the endpoint e.g. 1 or 2 for endpointType Microsoft.HTTP, and 3.5 or 5.0 for endpointType Microsoft.Mqtt etc.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+// Defaults sets the appropriate defaults for InboundEndpointsArgs
+func (val *InboundEndpointsArgs) Defaults() *InboundEndpointsArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	return &tmp
+}
+func (InboundEndpointsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InboundEndpoints)(nil)).Elem()
+}
+
+func (i InboundEndpointsArgs) ToInboundEndpointsOutput() InboundEndpointsOutput {
+	return i.ToInboundEndpointsOutputWithContext(context.Background())
+}
+
+func (i InboundEndpointsArgs) ToInboundEndpointsOutputWithContext(ctx context.Context) InboundEndpointsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InboundEndpointsOutput)
+}
+
+// InboundEndpointsMapInput is an input type that accepts InboundEndpointsMap and InboundEndpointsMapOutput values.
+// You can construct a concrete instance of `InboundEndpointsMapInput` via:
+//
+//	InboundEndpointsMap{ "key": InboundEndpointsArgs{...} }
+type InboundEndpointsMapInput interface {
+	pulumi.Input
+
+	ToInboundEndpointsMapOutput() InboundEndpointsMapOutput
+	ToInboundEndpointsMapOutputWithContext(context.Context) InboundEndpointsMapOutput
+}
+
+type InboundEndpointsMap map[string]InboundEndpointsInput
+
+func (InboundEndpointsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]InboundEndpoints)(nil)).Elem()
+}
+
+func (i InboundEndpointsMap) ToInboundEndpointsMapOutput() InboundEndpointsMapOutput {
+	return i.ToInboundEndpointsMapOutputWithContext(context.Background())
+}
+
+func (i InboundEndpointsMap) ToInboundEndpointsMapOutputWithContext(ctx context.Context) InboundEndpointsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InboundEndpointsMapOutput)
+}
+
+// An endpoint to connect to the device.
+type InboundEndpointsOutput struct{ *pulumi.OutputState }
+
+func (InboundEndpointsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InboundEndpoints)(nil)).Elem()
+}
+
+func (o InboundEndpointsOutput) ToInboundEndpointsOutput() InboundEndpointsOutput {
+	return o
+}
+
+func (o InboundEndpointsOutput) ToInboundEndpointsOutputWithContext(ctx context.Context) InboundEndpointsOutput {
+	return o
+}
+
+// Stringified JSON that contains configuration to be used by the connector (e.g., OPC UA, ONVIF).
+func (o InboundEndpointsOutput) AdditionalConfiguration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InboundEndpoints) *string { return v.AdditionalConfiguration }).(pulumi.StringPtrOutput)
+}
+
+// The endpoint address & port. This can be either an IP address (e.g., 192.168.1.1) or a fully qualified domain name (FQDN, e.g., server.example.com).
+func (o InboundEndpointsOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v InboundEndpoints) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// Defines the client authentication mechanism to the server.
+func (o InboundEndpointsOutput) Authentication() HostAuthenticationPtrOutput {
+	return o.ApplyT(func(v InboundEndpoints) *HostAuthentication { return v.Authentication }).(HostAuthenticationPtrOutput)
+}
+
+// Type of connection endpoint.
+func (o InboundEndpointsOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v InboundEndpoints) string { return v.EndpointType }).(pulumi.StringOutput)
+}
+
+// Defines server trust settings for the endpoint.
+func (o InboundEndpointsOutput) TrustSettings() TrustSettingsPtrOutput {
+	return o.ApplyT(func(v InboundEndpoints) *TrustSettings { return v.TrustSettings }).(TrustSettingsPtrOutput)
+}
+
+// Protocol version associated with the endpoint e.g. 1 or 2 for endpointType Microsoft.HTTP, and 3.5 or 5.0 for endpointType Microsoft.Mqtt etc.
+func (o InboundEndpointsOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InboundEndpoints) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type InboundEndpointsMapOutput struct{ *pulumi.OutputState }
+
+func (InboundEndpointsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]InboundEndpoints)(nil)).Elem()
+}
+
+func (o InboundEndpointsMapOutput) ToInboundEndpointsMapOutput() InboundEndpointsMapOutput {
+	return o
+}
+
+func (o InboundEndpointsMapOutput) ToInboundEndpointsMapOutputWithContext(ctx context.Context) InboundEndpointsMapOutput {
+	return o
+}
+
+func (o InboundEndpointsMapOutput) MapIndex(k pulumi.StringInput) InboundEndpointsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) InboundEndpoints {
+		return vs[0].(map[string]InboundEndpoints)[vs[1].(string)]
+	}).(InboundEndpointsOutput)
+}
+
+// An endpoint to connect to the device.
+type InboundEndpointsResponse struct {
+	// Stringified JSON that contains configuration to be used by the connector (e.g., OPC UA, ONVIF).
+	AdditionalConfiguration *string `pulumi:"additionalConfiguration"`
+	// The endpoint address & port. This can be either an IP address (e.g., 192.168.1.1) or a fully qualified domain name (FQDN, e.g., server.example.com).
+	Address string `pulumi:"address"`
+	// Defines the client authentication mechanism to the server.
+	Authentication *HostAuthenticationResponse `pulumi:"authentication"`
+	// Type of connection endpoint.
+	EndpointType string `pulumi:"endpointType"`
+	// Defines server trust settings for the endpoint.
+	TrustSettings *TrustSettingsResponse `pulumi:"trustSettings"`
+	// Protocol version associated with the endpoint e.g. 1 or 2 for endpointType Microsoft.HTTP, and 3.5 or 5.0 for endpointType Microsoft.Mqtt etc.
+	Version *string `pulumi:"version"`
+}
+
+// Defaults sets the appropriate defaults for InboundEndpointsResponse
+func (val *InboundEndpointsResponse) Defaults() *InboundEndpointsResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Authentication = tmp.Authentication.Defaults()
+
+	return &tmp
+}
+
+// An endpoint to connect to the device.
+type InboundEndpointsResponseOutput struct{ *pulumi.OutputState }
+
+func (InboundEndpointsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InboundEndpointsResponse)(nil)).Elem()
+}
+
+func (o InboundEndpointsResponseOutput) ToInboundEndpointsResponseOutput() InboundEndpointsResponseOutput {
+	return o
+}
+
+func (o InboundEndpointsResponseOutput) ToInboundEndpointsResponseOutputWithContext(ctx context.Context) InboundEndpointsResponseOutput {
+	return o
+}
+
+// Stringified JSON that contains configuration to be used by the connector (e.g., OPC UA, ONVIF).
+func (o InboundEndpointsResponseOutput) AdditionalConfiguration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InboundEndpointsResponse) *string { return v.AdditionalConfiguration }).(pulumi.StringPtrOutput)
+}
+
+// The endpoint address & port. This can be either an IP address (e.g., 192.168.1.1) or a fully qualified domain name (FQDN, e.g., server.example.com).
+func (o InboundEndpointsResponseOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v InboundEndpointsResponse) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// Defines the client authentication mechanism to the server.
+func (o InboundEndpointsResponseOutput) Authentication() HostAuthenticationResponsePtrOutput {
+	return o.ApplyT(func(v InboundEndpointsResponse) *HostAuthenticationResponse { return v.Authentication }).(HostAuthenticationResponsePtrOutput)
+}
+
+// Type of connection endpoint.
+func (o InboundEndpointsResponseOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v InboundEndpointsResponse) string { return v.EndpointType }).(pulumi.StringOutput)
+}
+
+// Defines server trust settings for the endpoint.
+func (o InboundEndpointsResponseOutput) TrustSettings() TrustSettingsResponsePtrOutput {
+	return o.ApplyT(func(v InboundEndpointsResponse) *TrustSettingsResponse { return v.TrustSettings }).(TrustSettingsResponsePtrOutput)
+}
+
+// Protocol version associated with the endpoint e.g. 1 or 2 for endpointType Microsoft.HTTP, and 3.5 or 5.0 for endpointType Microsoft.Mqtt etc.
+func (o InboundEndpointsResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InboundEndpointsResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type InboundEndpointsResponseMapOutput struct{ *pulumi.OutputState }
+
+func (InboundEndpointsResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]InboundEndpointsResponse)(nil)).Elem()
+}
+
+func (o InboundEndpointsResponseMapOutput) ToInboundEndpointsResponseMapOutput() InboundEndpointsResponseMapOutput {
+	return o
+}
+
+func (o InboundEndpointsResponseMapOutput) ToInboundEndpointsResponseMapOutputWithContext(ctx context.Context) InboundEndpointsResponseMapOutput {
+	return o
+}
+
+func (o InboundEndpointsResponseMapOutput) MapIndex(k pulumi.StringInput) InboundEndpointsResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) InboundEndpointsResponse {
+		return vs[0].(map[string]InboundEndpointsResponse)[vs[1].(string)]
+	}).(InboundEndpointsResponseOutput)
+}
+
+// Defines the action properties.
+type ManagementAction struct {
+	// Stringified JSON that contains connector-specific configuration for the action.
+	ActionConfiguration *string `pulumi:"actionConfiguration"`
+	// The type of the action.
+	ActionType *string `pulumi:"actionType"`
+	// Name of the action.
+	Name string `pulumi:"name"`
+	// The target URI on which a client can invoke the specific action.
+	TargetUri string `pulumi:"targetUri"`
+	// Response timeout for the action.
+	TimeoutInSeconds *int `pulumi:"timeoutInSeconds"`
+	// The MQTT topic path on which a client will receive the request for the action.
+	Topic *string `pulumi:"topic"`
+	// URI or type definition ID.
+	TypeRef *string `pulumi:"typeRef"`
+}
+
+// Defaults sets the appropriate defaults for ManagementAction
+func (val *ManagementAction) Defaults() *ManagementAction {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ActionType == nil {
+		actionType_ := "Call"
+		tmp.ActionType = &actionType_
+	}
+	return &tmp
+}
+
+// ManagementActionInput is an input type that accepts ManagementActionArgs and ManagementActionOutput values.
+// You can construct a concrete instance of `ManagementActionInput` via:
+//
+//	ManagementActionArgs{...}
+type ManagementActionInput interface {
+	pulumi.Input
+
+	ToManagementActionOutput() ManagementActionOutput
+	ToManagementActionOutputWithContext(context.Context) ManagementActionOutput
+}
+
+// Defines the action properties.
+type ManagementActionArgs struct {
+	// Stringified JSON that contains connector-specific configuration for the action.
+	ActionConfiguration pulumi.StringPtrInput `pulumi:"actionConfiguration"`
+	// The type of the action.
+	ActionType pulumi.StringPtrInput `pulumi:"actionType"`
+	// Name of the action.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The target URI on which a client can invoke the specific action.
+	TargetUri pulumi.StringInput `pulumi:"targetUri"`
+	// Response timeout for the action.
+	TimeoutInSeconds pulumi.IntPtrInput `pulumi:"timeoutInSeconds"`
+	// The MQTT topic path on which a client will receive the request for the action.
+	Topic pulumi.StringPtrInput `pulumi:"topic"`
+	// URI or type definition ID.
+	TypeRef pulumi.StringPtrInput `pulumi:"typeRef"`
+}
+
+// Defaults sets the appropriate defaults for ManagementActionArgs
+func (val *ManagementActionArgs) Defaults() *ManagementActionArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ActionType == nil {
+		tmp.ActionType = pulumi.StringPtr("Call")
+	}
+	return &tmp
+}
+func (ManagementActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagementAction)(nil)).Elem()
+}
+
+func (i ManagementActionArgs) ToManagementActionOutput() ManagementActionOutput {
+	return i.ToManagementActionOutputWithContext(context.Background())
+}
+
+func (i ManagementActionArgs) ToManagementActionOutputWithContext(ctx context.Context) ManagementActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagementActionOutput)
+}
+
+// ManagementActionArrayInput is an input type that accepts ManagementActionArray and ManagementActionArrayOutput values.
+// You can construct a concrete instance of `ManagementActionArrayInput` via:
+//
+//	ManagementActionArray{ ManagementActionArgs{...} }
+type ManagementActionArrayInput interface {
+	pulumi.Input
+
+	ToManagementActionArrayOutput() ManagementActionArrayOutput
+	ToManagementActionArrayOutputWithContext(context.Context) ManagementActionArrayOutput
+}
+
+type ManagementActionArray []ManagementActionInput
+
+func (ManagementActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagementAction)(nil)).Elem()
+}
+
+func (i ManagementActionArray) ToManagementActionArrayOutput() ManagementActionArrayOutput {
+	return i.ToManagementActionArrayOutputWithContext(context.Background())
+}
+
+func (i ManagementActionArray) ToManagementActionArrayOutputWithContext(ctx context.Context) ManagementActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagementActionArrayOutput)
+}
+
+// Defines the action properties.
+type ManagementActionOutput struct{ *pulumi.OutputState }
+
+func (ManagementActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagementAction)(nil)).Elem()
+}
+
+func (o ManagementActionOutput) ToManagementActionOutput() ManagementActionOutput {
+	return o
+}
+
+func (o ManagementActionOutput) ToManagementActionOutputWithContext(ctx context.Context) ManagementActionOutput {
+	return o
+}
+
+// Stringified JSON that contains connector-specific configuration for the action.
+func (o ManagementActionOutput) ActionConfiguration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagementAction) *string { return v.ActionConfiguration }).(pulumi.StringPtrOutput)
+}
+
+// The type of the action.
+func (o ManagementActionOutput) ActionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagementAction) *string { return v.ActionType }).(pulumi.StringPtrOutput)
+}
+
+// Name of the action.
+func (o ManagementActionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagementAction) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The target URI on which a client can invoke the specific action.
+func (o ManagementActionOutput) TargetUri() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagementAction) string { return v.TargetUri }).(pulumi.StringOutput)
+}
+
+// Response timeout for the action.
+func (o ManagementActionOutput) TimeoutInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ManagementAction) *int { return v.TimeoutInSeconds }).(pulumi.IntPtrOutput)
+}
+
+// The MQTT topic path on which a client will receive the request for the action.
+func (o ManagementActionOutput) Topic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagementAction) *string { return v.Topic }).(pulumi.StringPtrOutput)
+}
+
+// URI or type definition ID.
+func (o ManagementActionOutput) TypeRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagementAction) *string { return v.TypeRef }).(pulumi.StringPtrOutput)
+}
+
+type ManagementActionArrayOutput struct{ *pulumi.OutputState }
+
+func (ManagementActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagementAction)(nil)).Elem()
+}
+
+func (o ManagementActionArrayOutput) ToManagementActionArrayOutput() ManagementActionArrayOutput {
+	return o
+}
+
+func (o ManagementActionArrayOutput) ToManagementActionArrayOutputWithContext(ctx context.Context) ManagementActionArrayOutput {
+	return o
+}
+
+func (o ManagementActionArrayOutput) Index(i pulumi.IntInput) ManagementActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagementAction {
+		return vs[0].([]ManagementAction)[vs[1].(int)]
+	}).(ManagementActionOutput)
+}
+
+// Defines the action properties.
+type ManagementActionResponse struct {
+	// Stringified JSON that contains connector-specific configuration for the action.
+	ActionConfiguration *string `pulumi:"actionConfiguration"`
+	// The type of the action.
+	ActionType *string `pulumi:"actionType"`
+	// Name of the action.
+	Name string `pulumi:"name"`
+	// The target URI on which a client can invoke the specific action.
+	TargetUri string `pulumi:"targetUri"`
+	// Response timeout for the action.
+	TimeoutInSeconds *int `pulumi:"timeoutInSeconds"`
+	// The MQTT topic path on which a client will receive the request for the action.
+	Topic *string `pulumi:"topic"`
+	// URI or type definition ID.
+	TypeRef *string `pulumi:"typeRef"`
+}
+
+// Defaults sets the appropriate defaults for ManagementActionResponse
+func (val *ManagementActionResponse) Defaults() *ManagementActionResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ActionType == nil {
+		actionType_ := "Call"
+		tmp.ActionType = &actionType_
+	}
+	return &tmp
+}
+
+// Defines the action properties.
+type ManagementActionResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagementActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagementActionResponse)(nil)).Elem()
+}
+
+func (o ManagementActionResponseOutput) ToManagementActionResponseOutput() ManagementActionResponseOutput {
+	return o
+}
+
+func (o ManagementActionResponseOutput) ToManagementActionResponseOutputWithContext(ctx context.Context) ManagementActionResponseOutput {
+	return o
+}
+
+// Stringified JSON that contains connector-specific configuration for the action.
+func (o ManagementActionResponseOutput) ActionConfiguration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagementActionResponse) *string { return v.ActionConfiguration }).(pulumi.StringPtrOutput)
+}
+
+// The type of the action.
+func (o ManagementActionResponseOutput) ActionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagementActionResponse) *string { return v.ActionType }).(pulumi.StringPtrOutput)
+}
+
+// Name of the action.
+func (o ManagementActionResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagementActionResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The target URI on which a client can invoke the specific action.
+func (o ManagementActionResponseOutput) TargetUri() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagementActionResponse) string { return v.TargetUri }).(pulumi.StringOutput)
+}
+
+// Response timeout for the action.
+func (o ManagementActionResponseOutput) TimeoutInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ManagementActionResponse) *int { return v.TimeoutInSeconds }).(pulumi.IntPtrOutput)
+}
+
+// The MQTT topic path on which a client will receive the request for the action.
+func (o ManagementActionResponseOutput) Topic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagementActionResponse) *string { return v.Topic }).(pulumi.StringPtrOutput)
+}
+
+// URI or type definition ID.
+func (o ManagementActionResponseOutput) TypeRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagementActionResponse) *string { return v.TypeRef }).(pulumi.StringPtrOutput)
+}
+
+type ManagementActionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ManagementActionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagementActionResponse)(nil)).Elem()
+}
+
+func (o ManagementActionResponseArrayOutput) ToManagementActionResponseArrayOutput() ManagementActionResponseArrayOutput {
+	return o
+}
+
+func (o ManagementActionResponseArrayOutput) ToManagementActionResponseArrayOutputWithContext(ctx context.Context) ManagementActionResponseArrayOutput {
+	return o
+}
+
+func (o ManagementActionResponseArrayOutput) Index(i pulumi.IntInput) ManagementActionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagementActionResponse {
+		return vs[0].([]ManagementActionResponse)[vs[1].(int)]
+	}).(ManagementActionResponseOutput)
+}
+
+// Defines the management group properties.
+type ManagementGroup struct {
+	// Array of actions that are part of the management group. Each action can have an individual configuration.
+	Actions []ManagementAction `pulumi:"actions"`
+	// Default response timeout for all actions that are part of the management group.
+	DefaultTimeoutInSeconds *int `pulumi:"defaultTimeoutInSeconds"`
+	// Default MQTT topic path on which a client will receive the request for all actions that are part of the management group.
+	DefaultTopic *string `pulumi:"defaultTopic"`
+	// Stringified JSON that contains connector-specific configuration for the management group.
+	ManagementGroupConfiguration *string `pulumi:"managementGroupConfiguration"`
+	// Name of the management group.
+	Name string `pulumi:"name"`
+	// URI or type definition ID.
+	TypeRef *string `pulumi:"typeRef"`
+}
+
+// Defaults sets the appropriate defaults for ManagementGroup
+func (val *ManagementGroup) Defaults() *ManagementGroup {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.DefaultTimeoutInSeconds == nil {
+		defaultTimeoutInSeconds_ := 100
+		tmp.DefaultTimeoutInSeconds = &defaultTimeoutInSeconds_
+	}
+	return &tmp
+}
+
+// ManagementGroupInput is an input type that accepts ManagementGroupArgs and ManagementGroupOutput values.
+// You can construct a concrete instance of `ManagementGroupInput` via:
+//
+//	ManagementGroupArgs{...}
+type ManagementGroupInput interface {
+	pulumi.Input
+
+	ToManagementGroupOutput() ManagementGroupOutput
+	ToManagementGroupOutputWithContext(context.Context) ManagementGroupOutput
+}
+
+// Defines the management group properties.
+type ManagementGroupArgs struct {
+	// Array of actions that are part of the management group. Each action can have an individual configuration.
+	Actions ManagementActionArrayInput `pulumi:"actions"`
+	// Default response timeout for all actions that are part of the management group.
+	DefaultTimeoutInSeconds pulumi.IntPtrInput `pulumi:"defaultTimeoutInSeconds"`
+	// Default MQTT topic path on which a client will receive the request for all actions that are part of the management group.
+	DefaultTopic pulumi.StringPtrInput `pulumi:"defaultTopic"`
+	// Stringified JSON that contains connector-specific configuration for the management group.
+	ManagementGroupConfiguration pulumi.StringPtrInput `pulumi:"managementGroupConfiguration"`
+	// Name of the management group.
+	Name pulumi.StringInput `pulumi:"name"`
+	// URI or type definition ID.
+	TypeRef pulumi.StringPtrInput `pulumi:"typeRef"`
+}
+
+// Defaults sets the appropriate defaults for ManagementGroupArgs
+func (val *ManagementGroupArgs) Defaults() *ManagementGroupArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.DefaultTimeoutInSeconds == nil {
+		tmp.DefaultTimeoutInSeconds = pulumi.IntPtr(100)
+	}
+	return &tmp
+}
+func (ManagementGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagementGroup)(nil)).Elem()
+}
+
+func (i ManagementGroupArgs) ToManagementGroupOutput() ManagementGroupOutput {
+	return i.ToManagementGroupOutputWithContext(context.Background())
+}
+
+func (i ManagementGroupArgs) ToManagementGroupOutputWithContext(ctx context.Context) ManagementGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagementGroupOutput)
+}
+
+// ManagementGroupArrayInput is an input type that accepts ManagementGroupArray and ManagementGroupArrayOutput values.
+// You can construct a concrete instance of `ManagementGroupArrayInput` via:
+//
+//	ManagementGroupArray{ ManagementGroupArgs{...} }
+type ManagementGroupArrayInput interface {
+	pulumi.Input
+
+	ToManagementGroupArrayOutput() ManagementGroupArrayOutput
+	ToManagementGroupArrayOutputWithContext(context.Context) ManagementGroupArrayOutput
+}
+
+type ManagementGroupArray []ManagementGroupInput
+
+func (ManagementGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagementGroup)(nil)).Elem()
+}
+
+func (i ManagementGroupArray) ToManagementGroupArrayOutput() ManagementGroupArrayOutput {
+	return i.ToManagementGroupArrayOutputWithContext(context.Background())
+}
+
+func (i ManagementGroupArray) ToManagementGroupArrayOutputWithContext(ctx context.Context) ManagementGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagementGroupArrayOutput)
+}
+
+// Defines the management group properties.
+type ManagementGroupOutput struct{ *pulumi.OutputState }
+
+func (ManagementGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagementGroup)(nil)).Elem()
+}
+
+func (o ManagementGroupOutput) ToManagementGroupOutput() ManagementGroupOutput {
+	return o
+}
+
+func (o ManagementGroupOutput) ToManagementGroupOutputWithContext(ctx context.Context) ManagementGroupOutput {
+	return o
+}
+
+// Array of actions that are part of the management group. Each action can have an individual configuration.
+func (o ManagementGroupOutput) Actions() ManagementActionArrayOutput {
+	return o.ApplyT(func(v ManagementGroup) []ManagementAction { return v.Actions }).(ManagementActionArrayOutput)
+}
+
+// Default response timeout for all actions that are part of the management group.
+func (o ManagementGroupOutput) DefaultTimeoutInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ManagementGroup) *int { return v.DefaultTimeoutInSeconds }).(pulumi.IntPtrOutput)
+}
+
+// Default MQTT topic path on which a client will receive the request for all actions that are part of the management group.
+func (o ManagementGroupOutput) DefaultTopic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagementGroup) *string { return v.DefaultTopic }).(pulumi.StringPtrOutput)
+}
+
+// Stringified JSON that contains connector-specific configuration for the management group.
+func (o ManagementGroupOutput) ManagementGroupConfiguration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagementGroup) *string { return v.ManagementGroupConfiguration }).(pulumi.StringPtrOutput)
+}
+
+// Name of the management group.
+func (o ManagementGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagementGroup) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// URI or type definition ID.
+func (o ManagementGroupOutput) TypeRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagementGroup) *string { return v.TypeRef }).(pulumi.StringPtrOutput)
+}
+
+type ManagementGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (ManagementGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagementGroup)(nil)).Elem()
+}
+
+func (o ManagementGroupArrayOutput) ToManagementGroupArrayOutput() ManagementGroupArrayOutput {
+	return o
+}
+
+func (o ManagementGroupArrayOutput) ToManagementGroupArrayOutputWithContext(ctx context.Context) ManagementGroupArrayOutput {
+	return o
+}
+
+func (o ManagementGroupArrayOutput) Index(i pulumi.IntInput) ManagementGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagementGroup {
+		return vs[0].([]ManagementGroup)[vs[1].(int)]
+	}).(ManagementGroupOutput)
+}
+
+// Defines the management group properties.
+type ManagementGroupResponse struct {
+	// Array of actions that are part of the management group. Each action can have an individual configuration.
+	Actions []ManagementActionResponse `pulumi:"actions"`
+	// Default response timeout for all actions that are part of the management group.
+	DefaultTimeoutInSeconds *int `pulumi:"defaultTimeoutInSeconds"`
+	// Default MQTT topic path on which a client will receive the request for all actions that are part of the management group.
+	DefaultTopic *string `pulumi:"defaultTopic"`
+	// Stringified JSON that contains connector-specific configuration for the management group.
+	ManagementGroupConfiguration *string `pulumi:"managementGroupConfiguration"`
+	// Name of the management group.
+	Name string `pulumi:"name"`
+	// URI or type definition ID.
+	TypeRef *string `pulumi:"typeRef"`
+}
+
+// Defaults sets the appropriate defaults for ManagementGroupResponse
+func (val *ManagementGroupResponse) Defaults() *ManagementGroupResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.DefaultTimeoutInSeconds == nil {
+		defaultTimeoutInSeconds_ := 100
+		tmp.DefaultTimeoutInSeconds = &defaultTimeoutInSeconds_
+	}
+	return &tmp
+}
+
+// Defines the management group properties.
+type ManagementGroupResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagementGroupResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagementGroupResponse)(nil)).Elem()
+}
+
+func (o ManagementGroupResponseOutput) ToManagementGroupResponseOutput() ManagementGroupResponseOutput {
+	return o
+}
+
+func (o ManagementGroupResponseOutput) ToManagementGroupResponseOutputWithContext(ctx context.Context) ManagementGroupResponseOutput {
+	return o
+}
+
+// Array of actions that are part of the management group. Each action can have an individual configuration.
+func (o ManagementGroupResponseOutput) Actions() ManagementActionResponseArrayOutput {
+	return o.ApplyT(func(v ManagementGroupResponse) []ManagementActionResponse { return v.Actions }).(ManagementActionResponseArrayOutput)
+}
+
+// Default response timeout for all actions that are part of the management group.
+func (o ManagementGroupResponseOutput) DefaultTimeoutInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ManagementGroupResponse) *int { return v.DefaultTimeoutInSeconds }).(pulumi.IntPtrOutput)
+}
+
+// Default MQTT topic path on which a client will receive the request for all actions that are part of the management group.
+func (o ManagementGroupResponseOutput) DefaultTopic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagementGroupResponse) *string { return v.DefaultTopic }).(pulumi.StringPtrOutput)
+}
+
+// Stringified JSON that contains connector-specific configuration for the management group.
+func (o ManagementGroupResponseOutput) ManagementGroupConfiguration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagementGroupResponse) *string { return v.ManagementGroupConfiguration }).(pulumi.StringPtrOutput)
+}
+
+// Name of the management group.
+func (o ManagementGroupResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagementGroupResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// URI or type definition ID.
+func (o ManagementGroupResponseOutput) TypeRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagementGroupResponse) *string { return v.TypeRef }).(pulumi.StringPtrOutput)
+}
+
+type ManagementGroupResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ManagementGroupResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagementGroupResponse)(nil)).Elem()
+}
+
+func (o ManagementGroupResponseArrayOutput) ToManagementGroupResponseArrayOutput() ManagementGroupResponseArrayOutput {
+	return o
+}
+
+func (o ManagementGroupResponseArrayOutput) ToManagementGroupResponseArrayOutputWithContext(ctx context.Context) ManagementGroupResponseArrayOutput {
+	return o
+}
+
+func (o ManagementGroupResponseArrayOutput) Index(i pulumi.IntInput) ManagementGroupResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagementGroupResponse {
+		return vs[0].([]ManagementGroupResponse)[vs[1].(int)]
+	}).(ManagementGroupResponseOutput)
+}
+
+// Defines the message schema reference properties.
+type MessageSchemaReferenceResponse struct {
+	// The message schema name.
+	SchemaName string `pulumi:"schemaName"`
+	// The message schema registry namespace.
+	SchemaRegistryNamespace string `pulumi:"schemaRegistryNamespace"`
+	// The message schema version.
+	SchemaVersion string `pulumi:"schemaVersion"`
+}
+
+// Defines the message schema reference properties.
+type MessageSchemaReferenceResponseOutput struct{ *pulumi.OutputState }
+
+func (MessageSchemaReferenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MessageSchemaReferenceResponse)(nil)).Elem()
+}
+
+func (o MessageSchemaReferenceResponseOutput) ToMessageSchemaReferenceResponseOutput() MessageSchemaReferenceResponseOutput {
+	return o
+}
+
+func (o MessageSchemaReferenceResponseOutput) ToMessageSchemaReferenceResponseOutputWithContext(ctx context.Context) MessageSchemaReferenceResponseOutput {
+	return o
+}
+
+// The message schema name.
+func (o MessageSchemaReferenceResponseOutput) SchemaName() pulumi.StringOutput {
+	return o.ApplyT(func(v MessageSchemaReferenceResponse) string { return v.SchemaName }).(pulumi.StringOutput)
+}
+
+// The message schema registry namespace.
+func (o MessageSchemaReferenceResponseOutput) SchemaRegistryNamespace() pulumi.StringOutput {
+	return o.ApplyT(func(v MessageSchemaReferenceResponse) string { return v.SchemaRegistryNamespace }).(pulumi.StringOutput)
+}
+
+// The message schema version.
+func (o MessageSchemaReferenceResponseOutput) SchemaVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v MessageSchemaReferenceResponse) string { return v.SchemaVersion }).(pulumi.StringOutput)
+}
+
+// The namespace messaging endpoints model.
+type Messaging struct {
+	// Dictionary of messaging endpoints.
+	Endpoints map[string]MessagingEndpoint `pulumi:"endpoints"`
+}
+
+// MessagingInput is an input type that accepts MessagingArgs and MessagingOutput values.
+// You can construct a concrete instance of `MessagingInput` via:
+//
+//	MessagingArgs{...}
+type MessagingInput interface {
+	pulumi.Input
+
+	ToMessagingOutput() MessagingOutput
+	ToMessagingOutputWithContext(context.Context) MessagingOutput
+}
+
+// The namespace messaging endpoints model.
+type MessagingArgs struct {
+	// Dictionary of messaging endpoints.
+	Endpoints MessagingEndpointMapInput `pulumi:"endpoints"`
+}
+
+func (MessagingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Messaging)(nil)).Elem()
+}
+
+func (i MessagingArgs) ToMessagingOutput() MessagingOutput {
+	return i.ToMessagingOutputWithContext(context.Background())
+}
+
+func (i MessagingArgs) ToMessagingOutputWithContext(ctx context.Context) MessagingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MessagingOutput)
+}
+
+func (i MessagingArgs) ToMessagingPtrOutput() MessagingPtrOutput {
+	return i.ToMessagingPtrOutputWithContext(context.Background())
+}
+
+func (i MessagingArgs) ToMessagingPtrOutputWithContext(ctx context.Context) MessagingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MessagingOutput).ToMessagingPtrOutputWithContext(ctx)
+}
+
+// MessagingPtrInput is an input type that accepts MessagingArgs, MessagingPtr and MessagingPtrOutput values.
+// You can construct a concrete instance of `MessagingPtrInput` via:
+//
+//	        MessagingArgs{...}
+//
+//	or:
+//
+//	        nil
+type MessagingPtrInput interface {
+	pulumi.Input
+
+	ToMessagingPtrOutput() MessagingPtrOutput
+	ToMessagingPtrOutputWithContext(context.Context) MessagingPtrOutput
+}
+
+type messagingPtrType MessagingArgs
+
+func MessagingPtr(v *MessagingArgs) MessagingPtrInput {
+	return (*messagingPtrType)(v)
+}
+
+func (*messagingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Messaging)(nil)).Elem()
+}
+
+func (i *messagingPtrType) ToMessagingPtrOutput() MessagingPtrOutput {
+	return i.ToMessagingPtrOutputWithContext(context.Background())
+}
+
+func (i *messagingPtrType) ToMessagingPtrOutputWithContext(ctx context.Context) MessagingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MessagingPtrOutput)
+}
+
+// The namespace messaging endpoints model.
+type MessagingOutput struct{ *pulumi.OutputState }
+
+func (MessagingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Messaging)(nil)).Elem()
+}
+
+func (o MessagingOutput) ToMessagingOutput() MessagingOutput {
+	return o
+}
+
+func (o MessagingOutput) ToMessagingOutputWithContext(ctx context.Context) MessagingOutput {
+	return o
+}
+
+func (o MessagingOutput) ToMessagingPtrOutput() MessagingPtrOutput {
+	return o.ToMessagingPtrOutputWithContext(context.Background())
+}
+
+func (o MessagingOutput) ToMessagingPtrOutputWithContext(ctx context.Context) MessagingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Messaging) *Messaging {
+		return &v
+	}).(MessagingPtrOutput)
+}
+
+// Dictionary of messaging endpoints.
+func (o MessagingOutput) Endpoints() MessagingEndpointMapOutput {
+	return o.ApplyT(func(v Messaging) map[string]MessagingEndpoint { return v.Endpoints }).(MessagingEndpointMapOutput)
+}
+
+type MessagingPtrOutput struct{ *pulumi.OutputState }
+
+func (MessagingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Messaging)(nil)).Elem()
+}
+
+func (o MessagingPtrOutput) ToMessagingPtrOutput() MessagingPtrOutput {
+	return o
+}
+
+func (o MessagingPtrOutput) ToMessagingPtrOutputWithContext(ctx context.Context) MessagingPtrOutput {
+	return o
+}
+
+func (o MessagingPtrOutput) Elem() MessagingOutput {
+	return o.ApplyT(func(v *Messaging) Messaging {
+		if v != nil {
+			return *v
+		}
+		var ret Messaging
+		return ret
+	}).(MessagingOutput)
+}
+
+// Dictionary of messaging endpoints.
+func (o MessagingPtrOutput) Endpoints() MessagingEndpointMapOutput {
+	return o.ApplyT(func(v *Messaging) map[string]MessagingEndpoint {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoints
+	}).(MessagingEndpointMapOutput)
+}
+
+// Namespace messaging endpoint model used by a device to connect to a service.
+type MessagingEndpoint struct {
+	// The endpoint address to connect to.
+	Address string `pulumi:"address"`
+	// Type of connection used for messaging endpoint.
+	EndpointType *string `pulumi:"endpointType"`
+	// The messaging endpoint Azure resource Id.
+	ResourceId *string `pulumi:"resourceId"`
+}
+
+// MessagingEndpointInput is an input type that accepts MessagingEndpointArgs and MessagingEndpointOutput values.
+// You can construct a concrete instance of `MessagingEndpointInput` via:
+//
+//	MessagingEndpointArgs{...}
+type MessagingEndpointInput interface {
+	pulumi.Input
+
+	ToMessagingEndpointOutput() MessagingEndpointOutput
+	ToMessagingEndpointOutputWithContext(context.Context) MessagingEndpointOutput
+}
+
+// Namespace messaging endpoint model used by a device to connect to a service.
+type MessagingEndpointArgs struct {
+	// The endpoint address to connect to.
+	Address pulumi.StringInput `pulumi:"address"`
+	// Type of connection used for messaging endpoint.
+	EndpointType pulumi.StringPtrInput `pulumi:"endpointType"`
+	// The messaging endpoint Azure resource Id.
+	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
+}
+
+func (MessagingEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MessagingEndpoint)(nil)).Elem()
+}
+
+func (i MessagingEndpointArgs) ToMessagingEndpointOutput() MessagingEndpointOutput {
+	return i.ToMessagingEndpointOutputWithContext(context.Background())
+}
+
+func (i MessagingEndpointArgs) ToMessagingEndpointOutputWithContext(ctx context.Context) MessagingEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MessagingEndpointOutput)
+}
+
+// MessagingEndpointMapInput is an input type that accepts MessagingEndpointMap and MessagingEndpointMapOutput values.
+// You can construct a concrete instance of `MessagingEndpointMapInput` via:
+//
+//	MessagingEndpointMap{ "key": MessagingEndpointArgs{...} }
+type MessagingEndpointMapInput interface {
+	pulumi.Input
+
+	ToMessagingEndpointMapOutput() MessagingEndpointMapOutput
+	ToMessagingEndpointMapOutputWithContext(context.Context) MessagingEndpointMapOutput
+}
+
+type MessagingEndpointMap map[string]MessagingEndpointInput
+
+func (MessagingEndpointMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]MessagingEndpoint)(nil)).Elem()
+}
+
+func (i MessagingEndpointMap) ToMessagingEndpointMapOutput() MessagingEndpointMapOutput {
+	return i.ToMessagingEndpointMapOutputWithContext(context.Background())
+}
+
+func (i MessagingEndpointMap) ToMessagingEndpointMapOutputWithContext(ctx context.Context) MessagingEndpointMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MessagingEndpointMapOutput)
+}
+
+// Namespace messaging endpoint model used by a device to connect to a service.
+type MessagingEndpointOutput struct{ *pulumi.OutputState }
+
+func (MessagingEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MessagingEndpoint)(nil)).Elem()
+}
+
+func (o MessagingEndpointOutput) ToMessagingEndpointOutput() MessagingEndpointOutput {
+	return o
+}
+
+func (o MessagingEndpointOutput) ToMessagingEndpointOutputWithContext(ctx context.Context) MessagingEndpointOutput {
+	return o
+}
+
+// The endpoint address to connect to.
+func (o MessagingEndpointOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v MessagingEndpoint) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// Type of connection used for messaging endpoint.
+func (o MessagingEndpointOutput) EndpointType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MessagingEndpoint) *string { return v.EndpointType }).(pulumi.StringPtrOutput)
+}
+
+// The messaging endpoint Azure resource Id.
+func (o MessagingEndpointOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MessagingEndpoint) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+type MessagingEndpointMapOutput struct{ *pulumi.OutputState }
+
+func (MessagingEndpointMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]MessagingEndpoint)(nil)).Elem()
+}
+
+func (o MessagingEndpointMapOutput) ToMessagingEndpointMapOutput() MessagingEndpointMapOutput {
+	return o
+}
+
+func (o MessagingEndpointMapOutput) ToMessagingEndpointMapOutputWithContext(ctx context.Context) MessagingEndpointMapOutput {
+	return o
+}
+
+func (o MessagingEndpointMapOutput) MapIndex(k pulumi.StringInput) MessagingEndpointOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MessagingEndpoint {
+		return vs[0].(map[string]MessagingEndpoint)[vs[1].(string)]
+	}).(MessagingEndpointOutput)
+}
+
+// Namespace messaging endpoint model used by a device to connect to a service.
+type MessagingEndpointResponse struct {
+	// The endpoint address to connect to.
+	Address string `pulumi:"address"`
+	// Type of connection used for messaging endpoint.
+	EndpointType *string `pulumi:"endpointType"`
+	// The messaging endpoint Azure resource Id.
+	ResourceId *string `pulumi:"resourceId"`
+}
+
+// Namespace messaging endpoint model used by a device to connect to a service.
+type MessagingEndpointResponseOutput struct{ *pulumi.OutputState }
+
+func (MessagingEndpointResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MessagingEndpointResponse)(nil)).Elem()
+}
+
+func (o MessagingEndpointResponseOutput) ToMessagingEndpointResponseOutput() MessagingEndpointResponseOutput {
+	return o
+}
+
+func (o MessagingEndpointResponseOutput) ToMessagingEndpointResponseOutputWithContext(ctx context.Context) MessagingEndpointResponseOutput {
+	return o
+}
+
+// The endpoint address to connect to.
+func (o MessagingEndpointResponseOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v MessagingEndpointResponse) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// Type of connection used for messaging endpoint.
+func (o MessagingEndpointResponseOutput) EndpointType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MessagingEndpointResponse) *string { return v.EndpointType }).(pulumi.StringPtrOutput)
+}
+
+// The messaging endpoint Azure resource Id.
+func (o MessagingEndpointResponseOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MessagingEndpointResponse) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+type MessagingEndpointResponseMapOutput struct{ *pulumi.OutputState }
+
+func (MessagingEndpointResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]MessagingEndpointResponse)(nil)).Elem()
+}
+
+func (o MessagingEndpointResponseMapOutput) ToMessagingEndpointResponseMapOutput() MessagingEndpointResponseMapOutput {
+	return o
+}
+
+func (o MessagingEndpointResponseMapOutput) ToMessagingEndpointResponseMapOutputWithContext(ctx context.Context) MessagingEndpointResponseMapOutput {
+	return o
+}
+
+func (o MessagingEndpointResponseMapOutput) MapIndex(k pulumi.StringInput) MessagingEndpointResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MessagingEndpointResponse {
+		return vs[0].(map[string]MessagingEndpointResponse)[vs[1].(string)]
+	}).(MessagingEndpointResponseOutput)
+}
+
+// Connection endpoint URL a device can use to connect to a service.
+type MessagingEndpoints struct {
+	// Set of endpoints to connect to the device.
+	Inbound map[string]InboundEndpoints `pulumi:"inbound"`
+	// Set of endpoints a device can connect to.
+	Outbound *OutboundEndpoints `pulumi:"outbound"`
+}
+
+// MessagingEndpointsInput is an input type that accepts MessagingEndpointsArgs and MessagingEndpointsOutput values.
+// You can construct a concrete instance of `MessagingEndpointsInput` via:
+//
+//	MessagingEndpointsArgs{...}
+type MessagingEndpointsInput interface {
+	pulumi.Input
+
+	ToMessagingEndpointsOutput() MessagingEndpointsOutput
+	ToMessagingEndpointsOutputWithContext(context.Context) MessagingEndpointsOutput
+}
+
+// Connection endpoint URL a device can use to connect to a service.
+type MessagingEndpointsArgs struct {
+	// Set of endpoints to connect to the device.
+	Inbound InboundEndpointsMapInput `pulumi:"inbound"`
+	// Set of endpoints a device can connect to.
+	Outbound OutboundEndpointsPtrInput `pulumi:"outbound"`
+}
+
+func (MessagingEndpointsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MessagingEndpoints)(nil)).Elem()
+}
+
+func (i MessagingEndpointsArgs) ToMessagingEndpointsOutput() MessagingEndpointsOutput {
+	return i.ToMessagingEndpointsOutputWithContext(context.Background())
+}
+
+func (i MessagingEndpointsArgs) ToMessagingEndpointsOutputWithContext(ctx context.Context) MessagingEndpointsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MessagingEndpointsOutput)
+}
+
+func (i MessagingEndpointsArgs) ToMessagingEndpointsPtrOutput() MessagingEndpointsPtrOutput {
+	return i.ToMessagingEndpointsPtrOutputWithContext(context.Background())
+}
+
+func (i MessagingEndpointsArgs) ToMessagingEndpointsPtrOutputWithContext(ctx context.Context) MessagingEndpointsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MessagingEndpointsOutput).ToMessagingEndpointsPtrOutputWithContext(ctx)
+}
+
+// MessagingEndpointsPtrInput is an input type that accepts MessagingEndpointsArgs, MessagingEndpointsPtr and MessagingEndpointsPtrOutput values.
+// You can construct a concrete instance of `MessagingEndpointsPtrInput` via:
+//
+//	        MessagingEndpointsArgs{...}
+//
+//	or:
+//
+//	        nil
+type MessagingEndpointsPtrInput interface {
+	pulumi.Input
+
+	ToMessagingEndpointsPtrOutput() MessagingEndpointsPtrOutput
+	ToMessagingEndpointsPtrOutputWithContext(context.Context) MessagingEndpointsPtrOutput
+}
+
+type messagingEndpointsPtrType MessagingEndpointsArgs
+
+func MessagingEndpointsPtr(v *MessagingEndpointsArgs) MessagingEndpointsPtrInput {
+	return (*messagingEndpointsPtrType)(v)
+}
+
+func (*messagingEndpointsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MessagingEndpoints)(nil)).Elem()
+}
+
+func (i *messagingEndpointsPtrType) ToMessagingEndpointsPtrOutput() MessagingEndpointsPtrOutput {
+	return i.ToMessagingEndpointsPtrOutputWithContext(context.Background())
+}
+
+func (i *messagingEndpointsPtrType) ToMessagingEndpointsPtrOutputWithContext(ctx context.Context) MessagingEndpointsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MessagingEndpointsPtrOutput)
+}
+
+// Connection endpoint URL a device can use to connect to a service.
+type MessagingEndpointsOutput struct{ *pulumi.OutputState }
+
+func (MessagingEndpointsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MessagingEndpoints)(nil)).Elem()
+}
+
+func (o MessagingEndpointsOutput) ToMessagingEndpointsOutput() MessagingEndpointsOutput {
+	return o
+}
+
+func (o MessagingEndpointsOutput) ToMessagingEndpointsOutputWithContext(ctx context.Context) MessagingEndpointsOutput {
+	return o
+}
+
+func (o MessagingEndpointsOutput) ToMessagingEndpointsPtrOutput() MessagingEndpointsPtrOutput {
+	return o.ToMessagingEndpointsPtrOutputWithContext(context.Background())
+}
+
+func (o MessagingEndpointsOutput) ToMessagingEndpointsPtrOutputWithContext(ctx context.Context) MessagingEndpointsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MessagingEndpoints) *MessagingEndpoints {
+		return &v
+	}).(MessagingEndpointsPtrOutput)
+}
+
+// Set of endpoints to connect to the device.
+func (o MessagingEndpointsOutput) Inbound() InboundEndpointsMapOutput {
+	return o.ApplyT(func(v MessagingEndpoints) map[string]InboundEndpoints { return v.Inbound }).(InboundEndpointsMapOutput)
+}
+
+// Set of endpoints a device can connect to.
+func (o MessagingEndpointsOutput) Outbound() OutboundEndpointsPtrOutput {
+	return o.ApplyT(func(v MessagingEndpoints) *OutboundEndpoints { return v.Outbound }).(OutboundEndpointsPtrOutput)
+}
+
+type MessagingEndpointsPtrOutput struct{ *pulumi.OutputState }
+
+func (MessagingEndpointsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MessagingEndpoints)(nil)).Elem()
+}
+
+func (o MessagingEndpointsPtrOutput) ToMessagingEndpointsPtrOutput() MessagingEndpointsPtrOutput {
+	return o
+}
+
+func (o MessagingEndpointsPtrOutput) ToMessagingEndpointsPtrOutputWithContext(ctx context.Context) MessagingEndpointsPtrOutput {
+	return o
+}
+
+func (o MessagingEndpointsPtrOutput) Elem() MessagingEndpointsOutput {
+	return o.ApplyT(func(v *MessagingEndpoints) MessagingEndpoints {
+		if v != nil {
+			return *v
+		}
+		var ret MessagingEndpoints
+		return ret
+	}).(MessagingEndpointsOutput)
+}
+
+// Set of endpoints to connect to the device.
+func (o MessagingEndpointsPtrOutput) Inbound() InboundEndpointsMapOutput {
+	return o.ApplyT(func(v *MessagingEndpoints) map[string]InboundEndpoints {
+		if v == nil {
+			return nil
+		}
+		return v.Inbound
+	}).(InboundEndpointsMapOutput)
+}
+
+// Set of endpoints a device can connect to.
+func (o MessagingEndpointsPtrOutput) Outbound() OutboundEndpointsPtrOutput {
+	return o.ApplyT(func(v *MessagingEndpoints) *OutboundEndpoints {
+		if v == nil {
+			return nil
+		}
+		return v.Outbound
+	}).(OutboundEndpointsPtrOutput)
+}
+
+// Connection endpoint URL a device can use to connect to a service.
+type MessagingEndpointsResponse struct {
+	// Set of endpoints to connect to the device.
+	Inbound map[string]InboundEndpointsResponse `pulumi:"inbound"`
+	// Set of endpoints a device can connect to.
+	Outbound *OutboundEndpointsResponse `pulumi:"outbound"`
+}
+
+// Connection endpoint URL a device can use to connect to a service.
+type MessagingEndpointsResponseOutput struct{ *pulumi.OutputState }
+
+func (MessagingEndpointsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MessagingEndpointsResponse)(nil)).Elem()
+}
+
+func (o MessagingEndpointsResponseOutput) ToMessagingEndpointsResponseOutput() MessagingEndpointsResponseOutput {
+	return o
+}
+
+func (o MessagingEndpointsResponseOutput) ToMessagingEndpointsResponseOutputWithContext(ctx context.Context) MessagingEndpointsResponseOutput {
+	return o
+}
+
+// Set of endpoints to connect to the device.
+func (o MessagingEndpointsResponseOutput) Inbound() InboundEndpointsResponseMapOutput {
+	return o.ApplyT(func(v MessagingEndpointsResponse) map[string]InboundEndpointsResponse { return v.Inbound }).(InboundEndpointsResponseMapOutput)
+}
+
+// Set of endpoints a device can connect to.
+func (o MessagingEndpointsResponseOutput) Outbound() OutboundEndpointsResponsePtrOutput {
+	return o.ApplyT(func(v MessagingEndpointsResponse) *OutboundEndpointsResponse { return v.Outbound }).(OutboundEndpointsResponsePtrOutput)
+}
+
+type MessagingEndpointsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MessagingEndpointsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MessagingEndpointsResponse)(nil)).Elem()
+}
+
+func (o MessagingEndpointsResponsePtrOutput) ToMessagingEndpointsResponsePtrOutput() MessagingEndpointsResponsePtrOutput {
+	return o
+}
+
+func (o MessagingEndpointsResponsePtrOutput) ToMessagingEndpointsResponsePtrOutputWithContext(ctx context.Context) MessagingEndpointsResponsePtrOutput {
+	return o
+}
+
+func (o MessagingEndpointsResponsePtrOutput) Elem() MessagingEndpointsResponseOutput {
+	return o.ApplyT(func(v *MessagingEndpointsResponse) MessagingEndpointsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MessagingEndpointsResponse
+		return ret
+	}).(MessagingEndpointsResponseOutput)
+}
+
+// Set of endpoints to connect to the device.
+func (o MessagingEndpointsResponsePtrOutput) Inbound() InboundEndpointsResponseMapOutput {
+	return o.ApplyT(func(v *MessagingEndpointsResponse) map[string]InboundEndpointsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Inbound
+	}).(InboundEndpointsResponseMapOutput)
+}
+
+// Set of endpoints a device can connect to.
+func (o MessagingEndpointsResponsePtrOutput) Outbound() OutboundEndpointsResponsePtrOutput {
+	return o.ApplyT(func(v *MessagingEndpointsResponse) *OutboundEndpointsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Outbound
+	}).(OutboundEndpointsResponsePtrOutput)
+}
+
+// The namespace messaging endpoints model.
+type MessagingResponse struct {
+	// Dictionary of messaging endpoints.
+	Endpoints map[string]MessagingEndpointResponse `pulumi:"endpoints"`
+}
+
+// The namespace messaging endpoints model.
+type MessagingResponseOutput struct{ *pulumi.OutputState }
+
+func (MessagingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MessagingResponse)(nil)).Elem()
+}
+
+func (o MessagingResponseOutput) ToMessagingResponseOutput() MessagingResponseOutput {
+	return o
+}
+
+func (o MessagingResponseOutput) ToMessagingResponseOutputWithContext(ctx context.Context) MessagingResponseOutput {
+	return o
+}
+
+// Dictionary of messaging endpoints.
+func (o MessagingResponseOutput) Endpoints() MessagingEndpointResponseMapOutput {
+	return o.ApplyT(func(v MessagingResponse) map[string]MessagingEndpointResponse { return v.Endpoints }).(MessagingEndpointResponseMapOutput)
+}
+
+type MessagingResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MessagingResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MessagingResponse)(nil)).Elem()
+}
+
+func (o MessagingResponsePtrOutput) ToMessagingResponsePtrOutput() MessagingResponsePtrOutput {
+	return o
+}
+
+func (o MessagingResponsePtrOutput) ToMessagingResponsePtrOutputWithContext(ctx context.Context) MessagingResponsePtrOutput {
+	return o
+}
+
+func (o MessagingResponsePtrOutput) Elem() MessagingResponseOutput {
+	return o.ApplyT(func(v *MessagingResponse) MessagingResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MessagingResponse
+		return ret
+	}).(MessagingResponseOutput)
+}
+
+// Dictionary of messaging endpoints.
+func (o MessagingResponsePtrOutput) Endpoints() MessagingEndpointResponseMapOutput {
+	return o.ApplyT(func(v *MessagingResponse) map[string]MessagingEndpointResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoints
+	}).(MessagingEndpointResponseMapOutput)
+}
+
+// The configuration for a MQTT destination.
+type MqttDestinationConfiguration struct {
+	// The MQTT QoS setting. Defaults to QoS 1.
+	Qos *string `pulumi:"qos"`
+	// When set to 'Keep', messages published to an MQTT broker will have the retain flag set. Default: 'Never'.
+	Retain *string `pulumi:"retain"`
+	// The MQTT topic.
+	Topic string `pulumi:"topic"`
+	// The MQTT TTL setting.
+	Ttl *float64 `pulumi:"ttl"`
+}
+
+// Defaults sets the appropriate defaults for MqttDestinationConfiguration
+func (val *MqttDestinationConfiguration) Defaults() *MqttDestinationConfiguration {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Qos == nil {
+		qos_ := "Qos1"
+		tmp.Qos = &qos_
+	}
+	if tmp.Retain == nil {
+		retain_ := "Never"
+		tmp.Retain = &retain_
+	}
+	return &tmp
+}
+
+// MqttDestinationConfigurationInput is an input type that accepts MqttDestinationConfigurationArgs and MqttDestinationConfigurationOutput values.
+// You can construct a concrete instance of `MqttDestinationConfigurationInput` via:
+//
+//	MqttDestinationConfigurationArgs{...}
+type MqttDestinationConfigurationInput interface {
+	pulumi.Input
+
+	ToMqttDestinationConfigurationOutput() MqttDestinationConfigurationOutput
+	ToMqttDestinationConfigurationOutputWithContext(context.Context) MqttDestinationConfigurationOutput
+}
+
+// The configuration for a MQTT destination.
+type MqttDestinationConfigurationArgs struct {
+	// The MQTT QoS setting. Defaults to QoS 1.
+	Qos pulumi.StringPtrInput `pulumi:"qos"`
+	// When set to 'Keep', messages published to an MQTT broker will have the retain flag set. Default: 'Never'.
+	Retain pulumi.StringPtrInput `pulumi:"retain"`
+	// The MQTT topic.
+	Topic pulumi.StringInput `pulumi:"topic"`
+	// The MQTT TTL setting.
+	Ttl pulumi.Float64PtrInput `pulumi:"ttl"`
+}
+
+// Defaults sets the appropriate defaults for MqttDestinationConfigurationArgs
+func (val *MqttDestinationConfigurationArgs) Defaults() *MqttDestinationConfigurationArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Qos == nil {
+		tmp.Qos = pulumi.StringPtr("Qos1")
+	}
+	if tmp.Retain == nil {
+		tmp.Retain = pulumi.StringPtr("Never")
+	}
+	return &tmp
+}
+func (MqttDestinationConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MqttDestinationConfiguration)(nil)).Elem()
+}
+
+func (i MqttDestinationConfigurationArgs) ToMqttDestinationConfigurationOutput() MqttDestinationConfigurationOutput {
+	return i.ToMqttDestinationConfigurationOutputWithContext(context.Background())
+}
+
+func (i MqttDestinationConfigurationArgs) ToMqttDestinationConfigurationOutputWithContext(ctx context.Context) MqttDestinationConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MqttDestinationConfigurationOutput)
+}
+
+// The configuration for a MQTT destination.
+type MqttDestinationConfigurationOutput struct{ *pulumi.OutputState }
+
+func (MqttDestinationConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MqttDestinationConfiguration)(nil)).Elem()
+}
+
+func (o MqttDestinationConfigurationOutput) ToMqttDestinationConfigurationOutput() MqttDestinationConfigurationOutput {
+	return o
+}
+
+func (o MqttDestinationConfigurationOutput) ToMqttDestinationConfigurationOutputWithContext(ctx context.Context) MqttDestinationConfigurationOutput {
+	return o
+}
+
+// The MQTT QoS setting. Defaults to QoS 1.
+func (o MqttDestinationConfigurationOutput) Qos() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MqttDestinationConfiguration) *string { return v.Qos }).(pulumi.StringPtrOutput)
+}
+
+// When set to 'Keep', messages published to an MQTT broker will have the retain flag set. Default: 'Never'.
+func (o MqttDestinationConfigurationOutput) Retain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MqttDestinationConfiguration) *string { return v.Retain }).(pulumi.StringPtrOutput)
+}
+
+// The MQTT topic.
+func (o MqttDestinationConfigurationOutput) Topic() pulumi.StringOutput {
+	return o.ApplyT(func(v MqttDestinationConfiguration) string { return v.Topic }).(pulumi.StringOutput)
+}
+
+// The MQTT TTL setting.
+func (o MqttDestinationConfigurationOutput) Ttl() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v MqttDestinationConfiguration) *float64 { return v.Ttl }).(pulumi.Float64PtrOutput)
+}
+
+// The configuration for a MQTT destination.
+type MqttDestinationConfigurationResponse struct {
+	// The MQTT QoS setting. Defaults to QoS 1.
+	Qos *string `pulumi:"qos"`
+	// When set to 'Keep', messages published to an MQTT broker will have the retain flag set. Default: 'Never'.
+	Retain *string `pulumi:"retain"`
+	// The MQTT topic.
+	Topic string `pulumi:"topic"`
+	// The MQTT TTL setting.
+	Ttl *float64 `pulumi:"ttl"`
+}
+
+// Defaults sets the appropriate defaults for MqttDestinationConfigurationResponse
+func (val *MqttDestinationConfigurationResponse) Defaults() *MqttDestinationConfigurationResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Qos == nil {
+		qos_ := "Qos1"
+		tmp.Qos = &qos_
+	}
+	if tmp.Retain == nil {
+		retain_ := "Never"
+		tmp.Retain = &retain_
+	}
+	return &tmp
+}
+
+// The configuration for a MQTT destination.
+type MqttDestinationConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (MqttDestinationConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MqttDestinationConfigurationResponse)(nil)).Elem()
+}
+
+func (o MqttDestinationConfigurationResponseOutput) ToMqttDestinationConfigurationResponseOutput() MqttDestinationConfigurationResponseOutput {
+	return o
+}
+
+func (o MqttDestinationConfigurationResponseOutput) ToMqttDestinationConfigurationResponseOutputWithContext(ctx context.Context) MqttDestinationConfigurationResponseOutput {
+	return o
+}
+
+// The MQTT QoS setting. Defaults to QoS 1.
+func (o MqttDestinationConfigurationResponseOutput) Qos() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MqttDestinationConfigurationResponse) *string { return v.Qos }).(pulumi.StringPtrOutput)
+}
+
+// When set to 'Keep', messages published to an MQTT broker will have the retain flag set. Default: 'Never'.
+func (o MqttDestinationConfigurationResponseOutput) Retain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MqttDestinationConfigurationResponse) *string { return v.Retain }).(pulumi.StringPtrOutput)
+}
+
+// The MQTT topic.
+func (o MqttDestinationConfigurationResponseOutput) Topic() pulumi.StringOutput {
+	return o.ApplyT(func(v MqttDestinationConfigurationResponse) string { return v.Topic }).(pulumi.StringOutput)
+}
+
+// The MQTT TTL setting.
+func (o MqttDestinationConfigurationResponseOutput) Ttl() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v MqttDestinationConfigurationResponse) *float64 { return v.Ttl }).(pulumi.Float64PtrOutput)
+}
+
+// Defines the asset status dataset properties.
+type NamespaceAssetStatusDatasetResponse struct {
+	// Object to transfer and persist errors that originate from the edge.
+	Error StatusErrorResponse `pulumi:"error"`
+	// The message schema reference object.
+	MessageSchemaReference NamespaceMessageSchemaReferenceResponse `pulumi:"messageSchemaReference"`
+	// The name of the dataset. Must be unique within the status.datasets array. This name is used to correlate between the spec and status dataset information.
+	Name string `pulumi:"name"`
+}
+
+// Defines the asset status dataset properties.
+type NamespaceAssetStatusDatasetResponseOutput struct{ *pulumi.OutputState }
+
+func (NamespaceAssetStatusDatasetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceAssetStatusDatasetResponse)(nil)).Elem()
+}
+
+func (o NamespaceAssetStatusDatasetResponseOutput) ToNamespaceAssetStatusDatasetResponseOutput() NamespaceAssetStatusDatasetResponseOutput {
+	return o
+}
+
+func (o NamespaceAssetStatusDatasetResponseOutput) ToNamespaceAssetStatusDatasetResponseOutputWithContext(ctx context.Context) NamespaceAssetStatusDatasetResponseOutput {
+	return o
+}
+
+// Object to transfer and persist errors that originate from the edge.
+func (o NamespaceAssetStatusDatasetResponseOutput) Error() StatusErrorResponseOutput {
+	return o.ApplyT(func(v NamespaceAssetStatusDatasetResponse) StatusErrorResponse { return v.Error }).(StatusErrorResponseOutput)
+}
+
+// The message schema reference object.
+func (o NamespaceAssetStatusDatasetResponseOutput) MessageSchemaReference() NamespaceMessageSchemaReferenceResponseOutput {
+	return o.ApplyT(func(v NamespaceAssetStatusDatasetResponse) NamespaceMessageSchemaReferenceResponse {
+		return v.MessageSchemaReference
+	}).(NamespaceMessageSchemaReferenceResponseOutput)
+}
+
+// The name of the dataset. Must be unique within the status.datasets array. This name is used to correlate between the spec and status dataset information.
+func (o NamespaceAssetStatusDatasetResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceAssetStatusDatasetResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type NamespaceAssetStatusDatasetResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (NamespaceAssetStatusDatasetResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceAssetStatusDatasetResponse)(nil)).Elem()
+}
+
+func (o NamespaceAssetStatusDatasetResponseArrayOutput) ToNamespaceAssetStatusDatasetResponseArrayOutput() NamespaceAssetStatusDatasetResponseArrayOutput {
+	return o
+}
+
+func (o NamespaceAssetStatusDatasetResponseArrayOutput) ToNamespaceAssetStatusDatasetResponseArrayOutputWithContext(ctx context.Context) NamespaceAssetStatusDatasetResponseArrayOutput {
+	return o
+}
+
+func (o NamespaceAssetStatusDatasetResponseArrayOutput) Index(i pulumi.IntInput) NamespaceAssetStatusDatasetResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamespaceAssetStatusDatasetResponse {
+		return vs[0].([]NamespaceAssetStatusDatasetResponse)[vs[1].(int)]
+	}).(NamespaceAssetStatusDatasetResponseOutput)
+}
+
+// Defines the asset status event properties.
+type NamespaceAssetStatusEventResponse struct {
+	// Object to transfer and persist errors that originate from the edge.
+	Error StatusErrorResponse `pulumi:"error"`
+	// The message schema reference object.
+	MessageSchemaReference NamespaceMessageSchemaReferenceResponse `pulumi:"messageSchemaReference"`
+	// The name of the event. Must be unique within the status.events array. This name is used to correlate between the spec and status event information.
+	Name string `pulumi:"name"`
+}
+
+// Defines the asset status event properties.
+type NamespaceAssetStatusEventResponseOutput struct{ *pulumi.OutputState }
+
+func (NamespaceAssetStatusEventResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceAssetStatusEventResponse)(nil)).Elem()
+}
+
+func (o NamespaceAssetStatusEventResponseOutput) ToNamespaceAssetStatusEventResponseOutput() NamespaceAssetStatusEventResponseOutput {
+	return o
+}
+
+func (o NamespaceAssetStatusEventResponseOutput) ToNamespaceAssetStatusEventResponseOutputWithContext(ctx context.Context) NamespaceAssetStatusEventResponseOutput {
+	return o
+}
+
+// Object to transfer and persist errors that originate from the edge.
+func (o NamespaceAssetStatusEventResponseOutput) Error() StatusErrorResponseOutput {
+	return o.ApplyT(func(v NamespaceAssetStatusEventResponse) StatusErrorResponse { return v.Error }).(StatusErrorResponseOutput)
+}
+
+// The message schema reference object.
+func (o NamespaceAssetStatusEventResponseOutput) MessageSchemaReference() NamespaceMessageSchemaReferenceResponseOutput {
+	return o.ApplyT(func(v NamespaceAssetStatusEventResponse) NamespaceMessageSchemaReferenceResponse {
+		return v.MessageSchemaReference
+	}).(NamespaceMessageSchemaReferenceResponseOutput)
+}
+
+// The name of the event. Must be unique within the status.events array. This name is used to correlate between the spec and status event information.
+func (o NamespaceAssetStatusEventResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceAssetStatusEventResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type NamespaceAssetStatusEventResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (NamespaceAssetStatusEventResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceAssetStatusEventResponse)(nil)).Elem()
+}
+
+func (o NamespaceAssetStatusEventResponseArrayOutput) ToNamespaceAssetStatusEventResponseArrayOutput() NamespaceAssetStatusEventResponseArrayOutput {
+	return o
+}
+
+func (o NamespaceAssetStatusEventResponseArrayOutput) ToNamespaceAssetStatusEventResponseArrayOutputWithContext(ctx context.Context) NamespaceAssetStatusEventResponseArrayOutput {
+	return o
+}
+
+func (o NamespaceAssetStatusEventResponseArrayOutput) Index(i pulumi.IntInput) NamespaceAssetStatusEventResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamespaceAssetStatusEventResponse {
+		return vs[0].([]NamespaceAssetStatusEventResponse)[vs[1].(int)]
+	}).(NamespaceAssetStatusEventResponseOutput)
+}
+
+// Defines the asset status action properties.
+type NamespaceAssetStatusManagementActionResponse struct {
+	// Object to transfer and persist errors that originate from the edge.
+	Error StatusErrorResponse `pulumi:"error"`
+	// The name of the action. Must be unique within the status.actions array. This name is used to correlate between the spec and status event information.
+	Name string `pulumi:"name"`
+	// The request message schema reference object for the action.
+	RequestMessageSchemaReference NamespaceMessageSchemaReferenceResponse `pulumi:"requestMessageSchemaReference"`
+	// The response message schema reference object for the action.
+	ResponseMessageSchemaReference NamespaceMessageSchemaReferenceResponse `pulumi:"responseMessageSchemaReference"`
+}
+
+// Defines the asset status action properties.
+type NamespaceAssetStatusManagementActionResponseOutput struct{ *pulumi.OutputState }
+
+func (NamespaceAssetStatusManagementActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceAssetStatusManagementActionResponse)(nil)).Elem()
+}
+
+func (o NamespaceAssetStatusManagementActionResponseOutput) ToNamespaceAssetStatusManagementActionResponseOutput() NamespaceAssetStatusManagementActionResponseOutput {
+	return o
+}
+
+func (o NamespaceAssetStatusManagementActionResponseOutput) ToNamespaceAssetStatusManagementActionResponseOutputWithContext(ctx context.Context) NamespaceAssetStatusManagementActionResponseOutput {
+	return o
+}
+
+// Object to transfer and persist errors that originate from the edge.
+func (o NamespaceAssetStatusManagementActionResponseOutput) Error() StatusErrorResponseOutput {
+	return o.ApplyT(func(v NamespaceAssetStatusManagementActionResponse) StatusErrorResponse { return v.Error }).(StatusErrorResponseOutput)
+}
+
+// The name of the action. Must be unique within the status.actions array. This name is used to correlate between the spec and status event information.
+func (o NamespaceAssetStatusManagementActionResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceAssetStatusManagementActionResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The request message schema reference object for the action.
+func (o NamespaceAssetStatusManagementActionResponseOutput) RequestMessageSchemaReference() NamespaceMessageSchemaReferenceResponseOutput {
+	return o.ApplyT(func(v NamespaceAssetStatusManagementActionResponse) NamespaceMessageSchemaReferenceResponse {
+		return v.RequestMessageSchemaReference
+	}).(NamespaceMessageSchemaReferenceResponseOutput)
+}
+
+// The response message schema reference object for the action.
+func (o NamespaceAssetStatusManagementActionResponseOutput) ResponseMessageSchemaReference() NamespaceMessageSchemaReferenceResponseOutput {
+	return o.ApplyT(func(v NamespaceAssetStatusManagementActionResponse) NamespaceMessageSchemaReferenceResponse {
+		return v.ResponseMessageSchemaReference
+	}).(NamespaceMessageSchemaReferenceResponseOutput)
+}
+
+type NamespaceAssetStatusManagementActionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (NamespaceAssetStatusManagementActionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceAssetStatusManagementActionResponse)(nil)).Elem()
+}
+
+func (o NamespaceAssetStatusManagementActionResponseArrayOutput) ToNamespaceAssetStatusManagementActionResponseArrayOutput() NamespaceAssetStatusManagementActionResponseArrayOutput {
+	return o
+}
+
+func (o NamespaceAssetStatusManagementActionResponseArrayOutput) ToNamespaceAssetStatusManagementActionResponseArrayOutputWithContext(ctx context.Context) NamespaceAssetStatusManagementActionResponseArrayOutput {
+	return o
+}
+
+func (o NamespaceAssetStatusManagementActionResponseArrayOutput) Index(i pulumi.IntInput) NamespaceAssetStatusManagementActionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamespaceAssetStatusManagementActionResponse {
+		return vs[0].([]NamespaceAssetStatusManagementActionResponse)[vs[1].(int)]
+	}).(NamespaceAssetStatusManagementActionResponseOutput)
+}
+
+// Defines the asset status management group properties.
+type NamespaceAssetStatusManagementGroupResponse struct {
+	// Array of action statuses that describe the status of each action.
+	Actions []NamespaceAssetStatusManagementActionResponse `pulumi:"actions"`
+	// The name of the management group. Must be unique within the status.managementGroups array. This name is used to correlate between the spec and status event information.
+	Name string `pulumi:"name"`
+}
+
+// Defines the asset status management group properties.
+type NamespaceAssetStatusManagementGroupResponseOutput struct{ *pulumi.OutputState }
+
+func (NamespaceAssetStatusManagementGroupResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceAssetStatusManagementGroupResponse)(nil)).Elem()
+}
+
+func (o NamespaceAssetStatusManagementGroupResponseOutput) ToNamespaceAssetStatusManagementGroupResponseOutput() NamespaceAssetStatusManagementGroupResponseOutput {
+	return o
+}
+
+func (o NamespaceAssetStatusManagementGroupResponseOutput) ToNamespaceAssetStatusManagementGroupResponseOutputWithContext(ctx context.Context) NamespaceAssetStatusManagementGroupResponseOutput {
+	return o
+}
+
+// Array of action statuses that describe the status of each action.
+func (o NamespaceAssetStatusManagementGroupResponseOutput) Actions() NamespaceAssetStatusManagementActionResponseArrayOutput {
+	return o.ApplyT(func(v NamespaceAssetStatusManagementGroupResponse) []NamespaceAssetStatusManagementActionResponse {
+		return v.Actions
+	}).(NamespaceAssetStatusManagementActionResponseArrayOutput)
+}
+
+// The name of the management group. Must be unique within the status.managementGroups array. This name is used to correlate between the spec and status event information.
+func (o NamespaceAssetStatusManagementGroupResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceAssetStatusManagementGroupResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type NamespaceAssetStatusManagementGroupResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (NamespaceAssetStatusManagementGroupResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceAssetStatusManagementGroupResponse)(nil)).Elem()
+}
+
+func (o NamespaceAssetStatusManagementGroupResponseArrayOutput) ToNamespaceAssetStatusManagementGroupResponseArrayOutput() NamespaceAssetStatusManagementGroupResponseArrayOutput {
+	return o
+}
+
+func (o NamespaceAssetStatusManagementGroupResponseArrayOutput) ToNamespaceAssetStatusManagementGroupResponseArrayOutputWithContext(ctx context.Context) NamespaceAssetStatusManagementGroupResponseArrayOutput {
+	return o
+}
+
+func (o NamespaceAssetStatusManagementGroupResponseArrayOutput) Index(i pulumi.IntInput) NamespaceAssetStatusManagementGroupResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamespaceAssetStatusManagementGroupResponse {
+		return vs[0].([]NamespaceAssetStatusManagementGroupResponse)[vs[1].(int)]
+	}).(NamespaceAssetStatusManagementGroupResponseOutput)
+}
+
+// Defines the asset status properties.
+type NamespaceAssetStatusResponse struct {
+	// Defines the asset status config properties.
+	Config StatusConfigResponse `pulumi:"config"`
+	// Array of dataset statuses that describe the status of each dataset.
+	Datasets []NamespaceAssetStatusDatasetResponse `pulumi:"datasets"`
+	// Array of event statuses that describe the status of each event.
+	Events []NamespaceAssetStatusEventResponse `pulumi:"events"`
+	// Array of management group statuses that describe the status of each management group.
+	ManagementGroups []NamespaceAssetStatusManagementGroupResponse `pulumi:"managementGroups"`
+	// Array of stream statuses that describe the status of each stream.
+	Streams []NamespaceAssetStatusStreamResponse `pulumi:"streams"`
+}
+
+// Defines the asset status properties.
+type NamespaceAssetStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (NamespaceAssetStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceAssetStatusResponse)(nil)).Elem()
+}
+
+func (o NamespaceAssetStatusResponseOutput) ToNamespaceAssetStatusResponseOutput() NamespaceAssetStatusResponseOutput {
+	return o
+}
+
+func (o NamespaceAssetStatusResponseOutput) ToNamespaceAssetStatusResponseOutputWithContext(ctx context.Context) NamespaceAssetStatusResponseOutput {
+	return o
+}
+
+// Defines the asset status config properties.
+func (o NamespaceAssetStatusResponseOutput) Config() StatusConfigResponseOutput {
+	return o.ApplyT(func(v NamespaceAssetStatusResponse) StatusConfigResponse { return v.Config }).(StatusConfigResponseOutput)
+}
+
+// Array of dataset statuses that describe the status of each dataset.
+func (o NamespaceAssetStatusResponseOutput) Datasets() NamespaceAssetStatusDatasetResponseArrayOutput {
+	return o.ApplyT(func(v NamespaceAssetStatusResponse) []NamespaceAssetStatusDatasetResponse { return v.Datasets }).(NamespaceAssetStatusDatasetResponseArrayOutput)
+}
+
+// Array of event statuses that describe the status of each event.
+func (o NamespaceAssetStatusResponseOutput) Events() NamespaceAssetStatusEventResponseArrayOutput {
+	return o.ApplyT(func(v NamespaceAssetStatusResponse) []NamespaceAssetStatusEventResponse { return v.Events }).(NamespaceAssetStatusEventResponseArrayOutput)
+}
+
+// Array of management group statuses that describe the status of each management group.
+func (o NamespaceAssetStatusResponseOutput) ManagementGroups() NamespaceAssetStatusManagementGroupResponseArrayOutput {
+	return o.ApplyT(func(v NamespaceAssetStatusResponse) []NamespaceAssetStatusManagementGroupResponse {
+		return v.ManagementGroups
+	}).(NamespaceAssetStatusManagementGroupResponseArrayOutput)
+}
+
+// Array of stream statuses that describe the status of each stream.
+func (o NamespaceAssetStatusResponseOutput) Streams() NamespaceAssetStatusStreamResponseArrayOutput {
+	return o.ApplyT(func(v NamespaceAssetStatusResponse) []NamespaceAssetStatusStreamResponse { return v.Streams }).(NamespaceAssetStatusStreamResponseArrayOutput)
+}
+
+// Defines the asset status stream properties.
+type NamespaceAssetStatusStreamResponse struct {
+	// Object to transfer and persist errors that originate from the edge.
+	Error StatusErrorResponse `pulumi:"error"`
+	// The message schema reference object.
+	MessageSchemaReference NamespaceMessageSchemaReferenceResponse `pulumi:"messageSchemaReference"`
+	// The name of the stream. Must be unique within the status.streams array. This name is used to correlate between the spec and status event information.
+	Name string `pulumi:"name"`
+}
+
+// Defines the asset status stream properties.
+type NamespaceAssetStatusStreamResponseOutput struct{ *pulumi.OutputState }
+
+func (NamespaceAssetStatusStreamResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceAssetStatusStreamResponse)(nil)).Elem()
+}
+
+func (o NamespaceAssetStatusStreamResponseOutput) ToNamespaceAssetStatusStreamResponseOutput() NamespaceAssetStatusStreamResponseOutput {
+	return o
+}
+
+func (o NamespaceAssetStatusStreamResponseOutput) ToNamespaceAssetStatusStreamResponseOutputWithContext(ctx context.Context) NamespaceAssetStatusStreamResponseOutput {
+	return o
+}
+
+// Object to transfer and persist errors that originate from the edge.
+func (o NamespaceAssetStatusStreamResponseOutput) Error() StatusErrorResponseOutput {
+	return o.ApplyT(func(v NamespaceAssetStatusStreamResponse) StatusErrorResponse { return v.Error }).(StatusErrorResponseOutput)
+}
+
+// The message schema reference object.
+func (o NamespaceAssetStatusStreamResponseOutput) MessageSchemaReference() NamespaceMessageSchemaReferenceResponseOutput {
+	return o.ApplyT(func(v NamespaceAssetStatusStreamResponse) NamespaceMessageSchemaReferenceResponse {
+		return v.MessageSchemaReference
+	}).(NamespaceMessageSchemaReferenceResponseOutput)
+}
+
+// The name of the stream. Must be unique within the status.streams array. This name is used to correlate between the spec and status event information.
+func (o NamespaceAssetStatusStreamResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceAssetStatusStreamResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type NamespaceAssetStatusStreamResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (NamespaceAssetStatusStreamResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceAssetStatusStreamResponse)(nil)).Elem()
+}
+
+func (o NamespaceAssetStatusStreamResponseArrayOutput) ToNamespaceAssetStatusStreamResponseArrayOutput() NamespaceAssetStatusStreamResponseArrayOutput {
+	return o
+}
+
+func (o NamespaceAssetStatusStreamResponseArrayOutput) ToNamespaceAssetStatusStreamResponseArrayOutputWithContext(ctx context.Context) NamespaceAssetStatusStreamResponseArrayOutput {
+	return o
+}
+
+func (o NamespaceAssetStatusStreamResponseArrayOutput) Index(i pulumi.IntInput) NamespaceAssetStatusStreamResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamespaceAssetStatusStreamResponse {
+		return vs[0].([]NamespaceAssetStatusStreamResponse)[vs[1].(int)]
+	}).(NamespaceAssetStatusStreamResponseOutput)
+}
+
+// Defines the dataset properties.
+type NamespaceDataset struct {
+	// Array of data points that are part of the dataset. Each data point can have per-data point configuration.
+	DataPoints []NamespaceDatasetDataPoint `pulumi:"dataPoints"`
+	// Reference to a data source for a given dataset.
+	DataSource *string `pulumi:"dataSource"`
+	// Stringified JSON that contains connector-specific JSON string that describes configuration for the specific dataset.
+	DatasetConfiguration *string `pulumi:"datasetConfiguration"`
+	// Destinations for a dataset.
+	Destinations []interface{} `pulumi:"destinations"`
+	// Name of the dataset.
+	Name string `pulumi:"name"`
+	// URI or type definition ID.
+	TypeRef *string `pulumi:"typeRef"`
+}
+
+// NamespaceDatasetInput is an input type that accepts NamespaceDatasetArgs and NamespaceDatasetOutput values.
+// You can construct a concrete instance of `NamespaceDatasetInput` via:
+//
+//	NamespaceDatasetArgs{...}
+type NamespaceDatasetInput interface {
+	pulumi.Input
+
+	ToNamespaceDatasetOutput() NamespaceDatasetOutput
+	ToNamespaceDatasetOutputWithContext(context.Context) NamespaceDatasetOutput
+}
+
+// Defines the dataset properties.
+type NamespaceDatasetArgs struct {
+	// Array of data points that are part of the dataset. Each data point can have per-data point configuration.
+	DataPoints NamespaceDatasetDataPointArrayInput `pulumi:"dataPoints"`
+	// Reference to a data source for a given dataset.
+	DataSource pulumi.StringPtrInput `pulumi:"dataSource"`
+	// Stringified JSON that contains connector-specific JSON string that describes configuration for the specific dataset.
+	DatasetConfiguration pulumi.StringPtrInput `pulumi:"datasetConfiguration"`
+	// Destinations for a dataset.
+	Destinations pulumi.ArrayInput `pulumi:"destinations"`
+	// Name of the dataset.
+	Name pulumi.StringInput `pulumi:"name"`
+	// URI or type definition ID.
+	TypeRef pulumi.StringPtrInput `pulumi:"typeRef"`
+}
+
+func (NamespaceDatasetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceDataset)(nil)).Elem()
+}
+
+func (i NamespaceDatasetArgs) ToNamespaceDatasetOutput() NamespaceDatasetOutput {
+	return i.ToNamespaceDatasetOutputWithContext(context.Background())
+}
+
+func (i NamespaceDatasetArgs) ToNamespaceDatasetOutputWithContext(ctx context.Context) NamespaceDatasetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceDatasetOutput)
+}
+
+// NamespaceDatasetArrayInput is an input type that accepts NamespaceDatasetArray and NamespaceDatasetArrayOutput values.
+// You can construct a concrete instance of `NamespaceDatasetArrayInput` via:
+//
+//	NamespaceDatasetArray{ NamespaceDatasetArgs{...} }
+type NamespaceDatasetArrayInput interface {
+	pulumi.Input
+
+	ToNamespaceDatasetArrayOutput() NamespaceDatasetArrayOutput
+	ToNamespaceDatasetArrayOutputWithContext(context.Context) NamespaceDatasetArrayOutput
+}
+
+type NamespaceDatasetArray []NamespaceDatasetInput
+
+func (NamespaceDatasetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceDataset)(nil)).Elem()
+}
+
+func (i NamespaceDatasetArray) ToNamespaceDatasetArrayOutput() NamespaceDatasetArrayOutput {
+	return i.ToNamespaceDatasetArrayOutputWithContext(context.Background())
+}
+
+func (i NamespaceDatasetArray) ToNamespaceDatasetArrayOutputWithContext(ctx context.Context) NamespaceDatasetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceDatasetArrayOutput)
+}
+
+// Defines the dataset properties.
+type NamespaceDatasetOutput struct{ *pulumi.OutputState }
+
+func (NamespaceDatasetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceDataset)(nil)).Elem()
+}
+
+func (o NamespaceDatasetOutput) ToNamespaceDatasetOutput() NamespaceDatasetOutput {
+	return o
+}
+
+func (o NamespaceDatasetOutput) ToNamespaceDatasetOutputWithContext(ctx context.Context) NamespaceDatasetOutput {
+	return o
+}
+
+// Array of data points that are part of the dataset. Each data point can have per-data point configuration.
+func (o NamespaceDatasetOutput) DataPoints() NamespaceDatasetDataPointArrayOutput {
+	return o.ApplyT(func(v NamespaceDataset) []NamespaceDatasetDataPoint { return v.DataPoints }).(NamespaceDatasetDataPointArrayOutput)
+}
+
+// Reference to a data source for a given dataset.
+func (o NamespaceDatasetOutput) DataSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDataset) *string { return v.DataSource }).(pulumi.StringPtrOutput)
+}
+
+// Stringified JSON that contains connector-specific JSON string that describes configuration for the specific dataset.
+func (o NamespaceDatasetOutput) DatasetConfiguration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDataset) *string { return v.DatasetConfiguration }).(pulumi.StringPtrOutput)
+}
+
+// Destinations for a dataset.
+func (o NamespaceDatasetOutput) Destinations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v NamespaceDataset) []interface{} { return v.Destinations }).(pulumi.ArrayOutput)
+}
+
+// Name of the dataset.
+func (o NamespaceDatasetOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceDataset) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// URI or type definition ID.
+func (o NamespaceDatasetOutput) TypeRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDataset) *string { return v.TypeRef }).(pulumi.StringPtrOutput)
+}
+
+type NamespaceDatasetArrayOutput struct{ *pulumi.OutputState }
+
+func (NamespaceDatasetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceDataset)(nil)).Elem()
+}
+
+func (o NamespaceDatasetArrayOutput) ToNamespaceDatasetArrayOutput() NamespaceDatasetArrayOutput {
+	return o
+}
+
+func (o NamespaceDatasetArrayOutput) ToNamespaceDatasetArrayOutputWithContext(ctx context.Context) NamespaceDatasetArrayOutput {
+	return o
+}
+
+func (o NamespaceDatasetArrayOutput) Index(i pulumi.IntInput) NamespaceDatasetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamespaceDataset {
+		return vs[0].([]NamespaceDataset)[vs[1].(int)]
+	}).(NamespaceDatasetOutput)
+}
+
+// Defines the dataset data point properties.
+type NamespaceDatasetDataPoint struct {
+	// Stringified JSON that contains connector-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+	DataPointConfiguration *string `pulumi:"dataPointConfiguration"`
+	// The address of the source of the data in the asset (e.g. URL) so that a client can access the data source on the asset.
+	DataSource string `pulumi:"dataSource"`
+	// The name of the data point.
+	Name string `pulumi:"name"`
+	// URI or type definition ID.
+	TypeRef *string `pulumi:"typeRef"`
+}
+
+// NamespaceDatasetDataPointInput is an input type that accepts NamespaceDatasetDataPointArgs and NamespaceDatasetDataPointOutput values.
+// You can construct a concrete instance of `NamespaceDatasetDataPointInput` via:
+//
+//	NamespaceDatasetDataPointArgs{...}
+type NamespaceDatasetDataPointInput interface {
+	pulumi.Input
+
+	ToNamespaceDatasetDataPointOutput() NamespaceDatasetDataPointOutput
+	ToNamespaceDatasetDataPointOutputWithContext(context.Context) NamespaceDatasetDataPointOutput
+}
+
+// Defines the dataset data point properties.
+type NamespaceDatasetDataPointArgs struct {
+	// Stringified JSON that contains connector-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+	DataPointConfiguration pulumi.StringPtrInput `pulumi:"dataPointConfiguration"`
+	// The address of the source of the data in the asset (e.g. URL) so that a client can access the data source on the asset.
+	DataSource pulumi.StringInput `pulumi:"dataSource"`
+	// The name of the data point.
+	Name pulumi.StringInput `pulumi:"name"`
+	// URI or type definition ID.
+	TypeRef pulumi.StringPtrInput `pulumi:"typeRef"`
+}
+
+func (NamespaceDatasetDataPointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceDatasetDataPoint)(nil)).Elem()
+}
+
+func (i NamespaceDatasetDataPointArgs) ToNamespaceDatasetDataPointOutput() NamespaceDatasetDataPointOutput {
+	return i.ToNamespaceDatasetDataPointOutputWithContext(context.Background())
+}
+
+func (i NamespaceDatasetDataPointArgs) ToNamespaceDatasetDataPointOutputWithContext(ctx context.Context) NamespaceDatasetDataPointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceDatasetDataPointOutput)
+}
+
+// NamespaceDatasetDataPointArrayInput is an input type that accepts NamespaceDatasetDataPointArray and NamespaceDatasetDataPointArrayOutput values.
+// You can construct a concrete instance of `NamespaceDatasetDataPointArrayInput` via:
+//
+//	NamespaceDatasetDataPointArray{ NamespaceDatasetDataPointArgs{...} }
+type NamespaceDatasetDataPointArrayInput interface {
+	pulumi.Input
+
+	ToNamespaceDatasetDataPointArrayOutput() NamespaceDatasetDataPointArrayOutput
+	ToNamespaceDatasetDataPointArrayOutputWithContext(context.Context) NamespaceDatasetDataPointArrayOutput
+}
+
+type NamespaceDatasetDataPointArray []NamespaceDatasetDataPointInput
+
+func (NamespaceDatasetDataPointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceDatasetDataPoint)(nil)).Elem()
+}
+
+func (i NamespaceDatasetDataPointArray) ToNamespaceDatasetDataPointArrayOutput() NamespaceDatasetDataPointArrayOutput {
+	return i.ToNamespaceDatasetDataPointArrayOutputWithContext(context.Background())
+}
+
+func (i NamespaceDatasetDataPointArray) ToNamespaceDatasetDataPointArrayOutputWithContext(ctx context.Context) NamespaceDatasetDataPointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceDatasetDataPointArrayOutput)
+}
+
+// Defines the dataset data point properties.
+type NamespaceDatasetDataPointOutput struct{ *pulumi.OutputState }
+
+func (NamespaceDatasetDataPointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceDatasetDataPoint)(nil)).Elem()
+}
+
+func (o NamespaceDatasetDataPointOutput) ToNamespaceDatasetDataPointOutput() NamespaceDatasetDataPointOutput {
+	return o
+}
+
+func (o NamespaceDatasetDataPointOutput) ToNamespaceDatasetDataPointOutputWithContext(ctx context.Context) NamespaceDatasetDataPointOutput {
+	return o
+}
+
+// Stringified JSON that contains connector-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+func (o NamespaceDatasetDataPointOutput) DataPointConfiguration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDatasetDataPoint) *string { return v.DataPointConfiguration }).(pulumi.StringPtrOutput)
+}
+
+// The address of the source of the data in the asset (e.g. URL) so that a client can access the data source on the asset.
+func (o NamespaceDatasetDataPointOutput) DataSource() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceDatasetDataPoint) string { return v.DataSource }).(pulumi.StringOutput)
+}
+
+// The name of the data point.
+func (o NamespaceDatasetDataPointOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceDatasetDataPoint) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// URI or type definition ID.
+func (o NamespaceDatasetDataPointOutput) TypeRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDatasetDataPoint) *string { return v.TypeRef }).(pulumi.StringPtrOutput)
+}
+
+type NamespaceDatasetDataPointArrayOutput struct{ *pulumi.OutputState }
+
+func (NamespaceDatasetDataPointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceDatasetDataPoint)(nil)).Elem()
+}
+
+func (o NamespaceDatasetDataPointArrayOutput) ToNamespaceDatasetDataPointArrayOutput() NamespaceDatasetDataPointArrayOutput {
+	return o
+}
+
+func (o NamespaceDatasetDataPointArrayOutput) ToNamespaceDatasetDataPointArrayOutputWithContext(ctx context.Context) NamespaceDatasetDataPointArrayOutput {
+	return o
+}
+
+func (o NamespaceDatasetDataPointArrayOutput) Index(i pulumi.IntInput) NamespaceDatasetDataPointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamespaceDatasetDataPoint {
+		return vs[0].([]NamespaceDatasetDataPoint)[vs[1].(int)]
+	}).(NamespaceDatasetDataPointOutput)
+}
+
+// Defines the dataset data point properties.
+type NamespaceDatasetDataPointResponse struct {
+	// Stringified JSON that contains connector-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+	DataPointConfiguration *string `pulumi:"dataPointConfiguration"`
+	// The address of the source of the data in the asset (e.g. URL) so that a client can access the data source on the asset.
+	DataSource string `pulumi:"dataSource"`
+	// The name of the data point.
+	Name string `pulumi:"name"`
+	// URI or type definition ID.
+	TypeRef *string `pulumi:"typeRef"`
+}
+
+// Defines the dataset data point properties.
+type NamespaceDatasetDataPointResponseOutput struct{ *pulumi.OutputState }
+
+func (NamespaceDatasetDataPointResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceDatasetDataPointResponse)(nil)).Elem()
+}
+
+func (o NamespaceDatasetDataPointResponseOutput) ToNamespaceDatasetDataPointResponseOutput() NamespaceDatasetDataPointResponseOutput {
+	return o
+}
+
+func (o NamespaceDatasetDataPointResponseOutput) ToNamespaceDatasetDataPointResponseOutputWithContext(ctx context.Context) NamespaceDatasetDataPointResponseOutput {
+	return o
+}
+
+// Stringified JSON that contains connector-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+func (o NamespaceDatasetDataPointResponseOutput) DataPointConfiguration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDatasetDataPointResponse) *string { return v.DataPointConfiguration }).(pulumi.StringPtrOutput)
+}
+
+// The address of the source of the data in the asset (e.g. URL) so that a client can access the data source on the asset.
+func (o NamespaceDatasetDataPointResponseOutput) DataSource() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceDatasetDataPointResponse) string { return v.DataSource }).(pulumi.StringOutput)
+}
+
+// The name of the data point.
+func (o NamespaceDatasetDataPointResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceDatasetDataPointResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// URI or type definition ID.
+func (o NamespaceDatasetDataPointResponseOutput) TypeRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDatasetDataPointResponse) *string { return v.TypeRef }).(pulumi.StringPtrOutput)
+}
+
+type NamespaceDatasetDataPointResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (NamespaceDatasetDataPointResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceDatasetDataPointResponse)(nil)).Elem()
+}
+
+func (o NamespaceDatasetDataPointResponseArrayOutput) ToNamespaceDatasetDataPointResponseArrayOutput() NamespaceDatasetDataPointResponseArrayOutput {
+	return o
+}
+
+func (o NamespaceDatasetDataPointResponseArrayOutput) ToNamespaceDatasetDataPointResponseArrayOutputWithContext(ctx context.Context) NamespaceDatasetDataPointResponseArrayOutput {
+	return o
+}
+
+func (o NamespaceDatasetDataPointResponseArrayOutput) Index(i pulumi.IntInput) NamespaceDatasetDataPointResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamespaceDatasetDataPointResponse {
+		return vs[0].([]NamespaceDatasetDataPointResponse)[vs[1].(int)]
+	}).(NamespaceDatasetDataPointResponseOutput)
+}
+
+// Defines the dataset properties.
+type NamespaceDatasetResponse struct {
+	// Array of data points that are part of the dataset. Each data point can have per-data point configuration.
+	DataPoints []NamespaceDatasetDataPointResponse `pulumi:"dataPoints"`
+	// Reference to a data source for a given dataset.
+	DataSource *string `pulumi:"dataSource"`
+	// Stringified JSON that contains connector-specific JSON string that describes configuration for the specific dataset.
+	DatasetConfiguration *string `pulumi:"datasetConfiguration"`
+	// Destinations for a dataset.
+	Destinations []interface{} `pulumi:"destinations"`
+	// Name of the dataset.
+	Name string `pulumi:"name"`
+	// URI or type definition ID.
+	TypeRef *string `pulumi:"typeRef"`
+}
+
+// Defines the dataset properties.
+type NamespaceDatasetResponseOutput struct{ *pulumi.OutputState }
+
+func (NamespaceDatasetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceDatasetResponse)(nil)).Elem()
+}
+
+func (o NamespaceDatasetResponseOutput) ToNamespaceDatasetResponseOutput() NamespaceDatasetResponseOutput {
+	return o
+}
+
+func (o NamespaceDatasetResponseOutput) ToNamespaceDatasetResponseOutputWithContext(ctx context.Context) NamespaceDatasetResponseOutput {
+	return o
+}
+
+// Array of data points that are part of the dataset. Each data point can have per-data point configuration.
+func (o NamespaceDatasetResponseOutput) DataPoints() NamespaceDatasetDataPointResponseArrayOutput {
+	return o.ApplyT(func(v NamespaceDatasetResponse) []NamespaceDatasetDataPointResponse { return v.DataPoints }).(NamespaceDatasetDataPointResponseArrayOutput)
+}
+
+// Reference to a data source for a given dataset.
+func (o NamespaceDatasetResponseOutput) DataSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDatasetResponse) *string { return v.DataSource }).(pulumi.StringPtrOutput)
+}
+
+// Stringified JSON that contains connector-specific JSON string that describes configuration for the specific dataset.
+func (o NamespaceDatasetResponseOutput) DatasetConfiguration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDatasetResponse) *string { return v.DatasetConfiguration }).(pulumi.StringPtrOutput)
+}
+
+// Destinations for a dataset.
+func (o NamespaceDatasetResponseOutput) Destinations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v NamespaceDatasetResponse) []interface{} { return v.Destinations }).(pulumi.ArrayOutput)
+}
+
+// Name of the dataset.
+func (o NamespaceDatasetResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceDatasetResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// URI or type definition ID.
+func (o NamespaceDatasetResponseOutput) TypeRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDatasetResponse) *string { return v.TypeRef }).(pulumi.StringPtrOutput)
+}
+
+type NamespaceDatasetResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (NamespaceDatasetResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceDatasetResponse)(nil)).Elem()
+}
+
+func (o NamespaceDatasetResponseArrayOutput) ToNamespaceDatasetResponseArrayOutput() NamespaceDatasetResponseArrayOutput {
+	return o
+}
+
+func (o NamespaceDatasetResponseArrayOutput) ToNamespaceDatasetResponseArrayOutputWithContext(ctx context.Context) NamespaceDatasetResponseArrayOutput {
+	return o
+}
+
+func (o NamespaceDatasetResponseArrayOutput) Index(i pulumi.IntInput) NamespaceDatasetResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamespaceDatasetResponse {
+		return vs[0].([]NamespaceDatasetResponse)[vs[1].(int)]
+	}).(NamespaceDatasetResponseOutput)
+}
+
+// Defines the dataset properties.
+type NamespaceDiscoveredDataset struct {
+	// Array of data points that are part of the dataset. Each data point can have per-data point configuration.
+	DataPoints []NamespaceDiscoveredDatasetDataPoint `pulumi:"dataPoints"`
+	// Reference to a data source for a given dataset.
+	DataSource *string `pulumi:"dataSource"`
+	// Stringified JSON that contains connector-specific properties that describes configuration for the specific dataset.
+	DatasetConfiguration *string `pulumi:"datasetConfiguration"`
+	// Destinations for a dataset.
+	Destinations []interface{} `pulumi:"destinations"`
+	// Timestamp (in UTC) indicating when the dataset was added or modified.
+	LastUpdatedOn *string `pulumi:"lastUpdatedOn"`
+	// Name of the dataset.
+	Name string `pulumi:"name"`
+	// URI or type definition ID.
+	TypeRef *string `pulumi:"typeRef"`
+}
+
+// NamespaceDiscoveredDatasetInput is an input type that accepts NamespaceDiscoveredDatasetArgs and NamespaceDiscoveredDatasetOutput values.
+// You can construct a concrete instance of `NamespaceDiscoveredDatasetInput` via:
+//
+//	NamespaceDiscoveredDatasetArgs{...}
+type NamespaceDiscoveredDatasetInput interface {
+	pulumi.Input
+
+	ToNamespaceDiscoveredDatasetOutput() NamespaceDiscoveredDatasetOutput
+	ToNamespaceDiscoveredDatasetOutputWithContext(context.Context) NamespaceDiscoveredDatasetOutput
+}
+
+// Defines the dataset properties.
+type NamespaceDiscoveredDatasetArgs struct {
+	// Array of data points that are part of the dataset. Each data point can have per-data point configuration.
+	DataPoints NamespaceDiscoveredDatasetDataPointArrayInput `pulumi:"dataPoints"`
+	// Reference to a data source for a given dataset.
+	DataSource pulumi.StringPtrInput `pulumi:"dataSource"`
+	// Stringified JSON that contains connector-specific properties that describes configuration for the specific dataset.
+	DatasetConfiguration pulumi.StringPtrInput `pulumi:"datasetConfiguration"`
+	// Destinations for a dataset.
+	Destinations pulumi.ArrayInput `pulumi:"destinations"`
+	// Timestamp (in UTC) indicating when the dataset was added or modified.
+	LastUpdatedOn pulumi.StringPtrInput `pulumi:"lastUpdatedOn"`
+	// Name of the dataset.
+	Name pulumi.StringInput `pulumi:"name"`
+	// URI or type definition ID.
+	TypeRef pulumi.StringPtrInput `pulumi:"typeRef"`
+}
+
+func (NamespaceDiscoveredDatasetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceDiscoveredDataset)(nil)).Elem()
+}
+
+func (i NamespaceDiscoveredDatasetArgs) ToNamespaceDiscoveredDatasetOutput() NamespaceDiscoveredDatasetOutput {
+	return i.ToNamespaceDiscoveredDatasetOutputWithContext(context.Background())
+}
+
+func (i NamespaceDiscoveredDatasetArgs) ToNamespaceDiscoveredDatasetOutputWithContext(ctx context.Context) NamespaceDiscoveredDatasetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceDiscoveredDatasetOutput)
+}
+
+// NamespaceDiscoveredDatasetArrayInput is an input type that accepts NamespaceDiscoveredDatasetArray and NamespaceDiscoveredDatasetArrayOutput values.
+// You can construct a concrete instance of `NamespaceDiscoveredDatasetArrayInput` via:
+//
+//	NamespaceDiscoveredDatasetArray{ NamespaceDiscoveredDatasetArgs{...} }
+type NamespaceDiscoveredDatasetArrayInput interface {
+	pulumi.Input
+
+	ToNamespaceDiscoveredDatasetArrayOutput() NamespaceDiscoveredDatasetArrayOutput
+	ToNamespaceDiscoveredDatasetArrayOutputWithContext(context.Context) NamespaceDiscoveredDatasetArrayOutput
+}
+
+type NamespaceDiscoveredDatasetArray []NamespaceDiscoveredDatasetInput
+
+func (NamespaceDiscoveredDatasetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceDiscoveredDataset)(nil)).Elem()
+}
+
+func (i NamespaceDiscoveredDatasetArray) ToNamespaceDiscoveredDatasetArrayOutput() NamespaceDiscoveredDatasetArrayOutput {
+	return i.ToNamespaceDiscoveredDatasetArrayOutputWithContext(context.Background())
+}
+
+func (i NamespaceDiscoveredDatasetArray) ToNamespaceDiscoveredDatasetArrayOutputWithContext(ctx context.Context) NamespaceDiscoveredDatasetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceDiscoveredDatasetArrayOutput)
+}
+
+// Defines the dataset properties.
+type NamespaceDiscoveredDatasetOutput struct{ *pulumi.OutputState }
+
+func (NamespaceDiscoveredDatasetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceDiscoveredDataset)(nil)).Elem()
+}
+
+func (o NamespaceDiscoveredDatasetOutput) ToNamespaceDiscoveredDatasetOutput() NamespaceDiscoveredDatasetOutput {
+	return o
+}
+
+func (o NamespaceDiscoveredDatasetOutput) ToNamespaceDiscoveredDatasetOutputWithContext(ctx context.Context) NamespaceDiscoveredDatasetOutput {
+	return o
+}
+
+// Array of data points that are part of the dataset. Each data point can have per-data point configuration.
+func (o NamespaceDiscoveredDatasetOutput) DataPoints() NamespaceDiscoveredDatasetDataPointArrayOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredDataset) []NamespaceDiscoveredDatasetDataPoint { return v.DataPoints }).(NamespaceDiscoveredDatasetDataPointArrayOutput)
+}
+
+// Reference to a data source for a given dataset.
+func (o NamespaceDiscoveredDatasetOutput) DataSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredDataset) *string { return v.DataSource }).(pulumi.StringPtrOutput)
+}
+
+// Stringified JSON that contains connector-specific properties that describes configuration for the specific dataset.
+func (o NamespaceDiscoveredDatasetOutput) DatasetConfiguration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredDataset) *string { return v.DatasetConfiguration }).(pulumi.StringPtrOutput)
+}
+
+// Destinations for a dataset.
+func (o NamespaceDiscoveredDatasetOutput) Destinations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredDataset) []interface{} { return v.Destinations }).(pulumi.ArrayOutput)
+}
+
+// Timestamp (in UTC) indicating when the dataset was added or modified.
+func (o NamespaceDiscoveredDatasetOutput) LastUpdatedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredDataset) *string { return v.LastUpdatedOn }).(pulumi.StringPtrOutput)
+}
+
+// Name of the dataset.
+func (o NamespaceDiscoveredDatasetOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredDataset) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// URI or type definition ID.
+func (o NamespaceDiscoveredDatasetOutput) TypeRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredDataset) *string { return v.TypeRef }).(pulumi.StringPtrOutput)
+}
+
+type NamespaceDiscoveredDatasetArrayOutput struct{ *pulumi.OutputState }
+
+func (NamespaceDiscoveredDatasetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceDiscoveredDataset)(nil)).Elem()
+}
+
+func (o NamespaceDiscoveredDatasetArrayOutput) ToNamespaceDiscoveredDatasetArrayOutput() NamespaceDiscoveredDatasetArrayOutput {
+	return o
+}
+
+func (o NamespaceDiscoveredDatasetArrayOutput) ToNamespaceDiscoveredDatasetArrayOutputWithContext(ctx context.Context) NamespaceDiscoveredDatasetArrayOutput {
+	return o
+}
+
+func (o NamespaceDiscoveredDatasetArrayOutput) Index(i pulumi.IntInput) NamespaceDiscoveredDatasetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamespaceDiscoveredDataset {
+		return vs[0].([]NamespaceDiscoveredDataset)[vs[1].(int)]
+	}).(NamespaceDiscoveredDatasetOutput)
+}
+
+// Defines the discovered dataset data point properties.
+type NamespaceDiscoveredDatasetDataPoint struct {
+	// Stringified JSON that contains connector-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+	DataPointConfiguration *string `pulumi:"dataPointConfiguration"`
+	// The address of the source of the data in the asset (e.g. URL) so that a client can access the data source on the asset.
+	DataSource string `pulumi:"dataSource"`
+	// UTC timestamp indicating when the data point was added or modified.
+	LastUpdatedOn *string `pulumi:"lastUpdatedOn"`
+	// The name of the data point.
+	Name string `pulumi:"name"`
+	// URI or type definition ID.
+	TypeRef *string `pulumi:"typeRef"`
+}
+
+// NamespaceDiscoveredDatasetDataPointInput is an input type that accepts NamespaceDiscoveredDatasetDataPointArgs and NamespaceDiscoveredDatasetDataPointOutput values.
+// You can construct a concrete instance of `NamespaceDiscoveredDatasetDataPointInput` via:
+//
+//	NamespaceDiscoveredDatasetDataPointArgs{...}
+type NamespaceDiscoveredDatasetDataPointInput interface {
+	pulumi.Input
+
+	ToNamespaceDiscoveredDatasetDataPointOutput() NamespaceDiscoveredDatasetDataPointOutput
+	ToNamespaceDiscoveredDatasetDataPointOutputWithContext(context.Context) NamespaceDiscoveredDatasetDataPointOutput
+}
+
+// Defines the discovered dataset data point properties.
+type NamespaceDiscoveredDatasetDataPointArgs struct {
+	// Stringified JSON that contains connector-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+	DataPointConfiguration pulumi.StringPtrInput `pulumi:"dataPointConfiguration"`
+	// The address of the source of the data in the asset (e.g. URL) so that a client can access the data source on the asset.
+	DataSource pulumi.StringInput `pulumi:"dataSource"`
+	// UTC timestamp indicating when the data point was added or modified.
+	LastUpdatedOn pulumi.StringPtrInput `pulumi:"lastUpdatedOn"`
+	// The name of the data point.
+	Name pulumi.StringInput `pulumi:"name"`
+	// URI or type definition ID.
+	TypeRef pulumi.StringPtrInput `pulumi:"typeRef"`
+}
+
+func (NamespaceDiscoveredDatasetDataPointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceDiscoveredDatasetDataPoint)(nil)).Elem()
+}
+
+func (i NamespaceDiscoveredDatasetDataPointArgs) ToNamespaceDiscoveredDatasetDataPointOutput() NamespaceDiscoveredDatasetDataPointOutput {
+	return i.ToNamespaceDiscoveredDatasetDataPointOutputWithContext(context.Background())
+}
+
+func (i NamespaceDiscoveredDatasetDataPointArgs) ToNamespaceDiscoveredDatasetDataPointOutputWithContext(ctx context.Context) NamespaceDiscoveredDatasetDataPointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceDiscoveredDatasetDataPointOutput)
+}
+
+// NamespaceDiscoveredDatasetDataPointArrayInput is an input type that accepts NamespaceDiscoveredDatasetDataPointArray and NamespaceDiscoveredDatasetDataPointArrayOutput values.
+// You can construct a concrete instance of `NamespaceDiscoveredDatasetDataPointArrayInput` via:
+//
+//	NamespaceDiscoveredDatasetDataPointArray{ NamespaceDiscoveredDatasetDataPointArgs{...} }
+type NamespaceDiscoveredDatasetDataPointArrayInput interface {
+	pulumi.Input
+
+	ToNamespaceDiscoveredDatasetDataPointArrayOutput() NamespaceDiscoveredDatasetDataPointArrayOutput
+	ToNamespaceDiscoveredDatasetDataPointArrayOutputWithContext(context.Context) NamespaceDiscoveredDatasetDataPointArrayOutput
+}
+
+type NamespaceDiscoveredDatasetDataPointArray []NamespaceDiscoveredDatasetDataPointInput
+
+func (NamespaceDiscoveredDatasetDataPointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceDiscoveredDatasetDataPoint)(nil)).Elem()
+}
+
+func (i NamespaceDiscoveredDatasetDataPointArray) ToNamespaceDiscoveredDatasetDataPointArrayOutput() NamespaceDiscoveredDatasetDataPointArrayOutput {
+	return i.ToNamespaceDiscoveredDatasetDataPointArrayOutputWithContext(context.Background())
+}
+
+func (i NamespaceDiscoveredDatasetDataPointArray) ToNamespaceDiscoveredDatasetDataPointArrayOutputWithContext(ctx context.Context) NamespaceDiscoveredDatasetDataPointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceDiscoveredDatasetDataPointArrayOutput)
+}
+
+// Defines the discovered dataset data point properties.
+type NamespaceDiscoveredDatasetDataPointOutput struct{ *pulumi.OutputState }
+
+func (NamespaceDiscoveredDatasetDataPointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceDiscoveredDatasetDataPoint)(nil)).Elem()
+}
+
+func (o NamespaceDiscoveredDatasetDataPointOutput) ToNamespaceDiscoveredDatasetDataPointOutput() NamespaceDiscoveredDatasetDataPointOutput {
+	return o
+}
+
+func (o NamespaceDiscoveredDatasetDataPointOutput) ToNamespaceDiscoveredDatasetDataPointOutputWithContext(ctx context.Context) NamespaceDiscoveredDatasetDataPointOutput {
+	return o
+}
+
+// Stringified JSON that contains connector-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+func (o NamespaceDiscoveredDatasetDataPointOutput) DataPointConfiguration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredDatasetDataPoint) *string { return v.DataPointConfiguration }).(pulumi.StringPtrOutput)
+}
+
+// The address of the source of the data in the asset (e.g. URL) so that a client can access the data source on the asset.
+func (o NamespaceDiscoveredDatasetDataPointOutput) DataSource() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredDatasetDataPoint) string { return v.DataSource }).(pulumi.StringOutput)
+}
+
+// UTC timestamp indicating when the data point was added or modified.
+func (o NamespaceDiscoveredDatasetDataPointOutput) LastUpdatedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredDatasetDataPoint) *string { return v.LastUpdatedOn }).(pulumi.StringPtrOutput)
+}
+
+// The name of the data point.
+func (o NamespaceDiscoveredDatasetDataPointOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredDatasetDataPoint) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// URI or type definition ID.
+func (o NamespaceDiscoveredDatasetDataPointOutput) TypeRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredDatasetDataPoint) *string { return v.TypeRef }).(pulumi.StringPtrOutput)
+}
+
+type NamespaceDiscoveredDatasetDataPointArrayOutput struct{ *pulumi.OutputState }
+
+func (NamespaceDiscoveredDatasetDataPointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceDiscoveredDatasetDataPoint)(nil)).Elem()
+}
+
+func (o NamespaceDiscoveredDatasetDataPointArrayOutput) ToNamespaceDiscoveredDatasetDataPointArrayOutput() NamespaceDiscoveredDatasetDataPointArrayOutput {
+	return o
+}
+
+func (o NamespaceDiscoveredDatasetDataPointArrayOutput) ToNamespaceDiscoveredDatasetDataPointArrayOutputWithContext(ctx context.Context) NamespaceDiscoveredDatasetDataPointArrayOutput {
+	return o
+}
+
+func (o NamespaceDiscoveredDatasetDataPointArrayOutput) Index(i pulumi.IntInput) NamespaceDiscoveredDatasetDataPointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamespaceDiscoveredDatasetDataPoint {
+		return vs[0].([]NamespaceDiscoveredDatasetDataPoint)[vs[1].(int)]
+	}).(NamespaceDiscoveredDatasetDataPointOutput)
+}
+
+// Defines the discovered dataset data point properties.
+type NamespaceDiscoveredDatasetDataPointResponse struct {
+	// Stringified JSON that contains connector-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+	DataPointConfiguration *string `pulumi:"dataPointConfiguration"`
+	// The address of the source of the data in the asset (e.g. URL) so that a client can access the data source on the asset.
+	DataSource string `pulumi:"dataSource"`
+	// UTC timestamp indicating when the data point was added or modified.
+	LastUpdatedOn *string `pulumi:"lastUpdatedOn"`
+	// The name of the data point.
+	Name string `pulumi:"name"`
+	// URI or type definition ID.
+	TypeRef *string `pulumi:"typeRef"`
+}
+
+// Defines the discovered dataset data point properties.
+type NamespaceDiscoveredDatasetDataPointResponseOutput struct{ *pulumi.OutputState }
+
+func (NamespaceDiscoveredDatasetDataPointResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceDiscoveredDatasetDataPointResponse)(nil)).Elem()
+}
+
+func (o NamespaceDiscoveredDatasetDataPointResponseOutput) ToNamespaceDiscoveredDatasetDataPointResponseOutput() NamespaceDiscoveredDatasetDataPointResponseOutput {
+	return o
+}
+
+func (o NamespaceDiscoveredDatasetDataPointResponseOutput) ToNamespaceDiscoveredDatasetDataPointResponseOutputWithContext(ctx context.Context) NamespaceDiscoveredDatasetDataPointResponseOutput {
+	return o
+}
+
+// Stringified JSON that contains connector-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+func (o NamespaceDiscoveredDatasetDataPointResponseOutput) DataPointConfiguration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredDatasetDataPointResponse) *string { return v.DataPointConfiguration }).(pulumi.StringPtrOutput)
+}
+
+// The address of the source of the data in the asset (e.g. URL) so that a client can access the data source on the asset.
+func (o NamespaceDiscoveredDatasetDataPointResponseOutput) DataSource() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredDatasetDataPointResponse) string { return v.DataSource }).(pulumi.StringOutput)
+}
+
+// UTC timestamp indicating when the data point was added or modified.
+func (o NamespaceDiscoveredDatasetDataPointResponseOutput) LastUpdatedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredDatasetDataPointResponse) *string { return v.LastUpdatedOn }).(pulumi.StringPtrOutput)
+}
+
+// The name of the data point.
+func (o NamespaceDiscoveredDatasetDataPointResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredDatasetDataPointResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// URI or type definition ID.
+func (o NamespaceDiscoveredDatasetDataPointResponseOutput) TypeRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredDatasetDataPointResponse) *string { return v.TypeRef }).(pulumi.StringPtrOutput)
+}
+
+type NamespaceDiscoveredDatasetDataPointResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (NamespaceDiscoveredDatasetDataPointResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceDiscoveredDatasetDataPointResponse)(nil)).Elem()
+}
+
+func (o NamespaceDiscoveredDatasetDataPointResponseArrayOutput) ToNamespaceDiscoveredDatasetDataPointResponseArrayOutput() NamespaceDiscoveredDatasetDataPointResponseArrayOutput {
+	return o
+}
+
+func (o NamespaceDiscoveredDatasetDataPointResponseArrayOutput) ToNamespaceDiscoveredDatasetDataPointResponseArrayOutputWithContext(ctx context.Context) NamespaceDiscoveredDatasetDataPointResponseArrayOutput {
+	return o
+}
+
+func (o NamespaceDiscoveredDatasetDataPointResponseArrayOutput) Index(i pulumi.IntInput) NamespaceDiscoveredDatasetDataPointResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamespaceDiscoveredDatasetDataPointResponse {
+		return vs[0].([]NamespaceDiscoveredDatasetDataPointResponse)[vs[1].(int)]
+	}).(NamespaceDiscoveredDatasetDataPointResponseOutput)
+}
+
+// Defines the dataset properties.
+type NamespaceDiscoveredDatasetResponse struct {
+	// Array of data points that are part of the dataset. Each data point can have per-data point configuration.
+	DataPoints []NamespaceDiscoveredDatasetDataPointResponse `pulumi:"dataPoints"`
+	// Reference to a data source for a given dataset.
+	DataSource *string `pulumi:"dataSource"`
+	// Stringified JSON that contains connector-specific properties that describes configuration for the specific dataset.
+	DatasetConfiguration *string `pulumi:"datasetConfiguration"`
+	// Destinations for a dataset.
+	Destinations []interface{} `pulumi:"destinations"`
+	// Timestamp (in UTC) indicating when the dataset was added or modified.
+	LastUpdatedOn *string `pulumi:"lastUpdatedOn"`
+	// Name of the dataset.
+	Name string `pulumi:"name"`
+	// URI or type definition ID.
+	TypeRef *string `pulumi:"typeRef"`
+}
+
+// Defines the dataset properties.
+type NamespaceDiscoveredDatasetResponseOutput struct{ *pulumi.OutputState }
+
+func (NamespaceDiscoveredDatasetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceDiscoveredDatasetResponse)(nil)).Elem()
+}
+
+func (o NamespaceDiscoveredDatasetResponseOutput) ToNamespaceDiscoveredDatasetResponseOutput() NamespaceDiscoveredDatasetResponseOutput {
+	return o
+}
+
+func (o NamespaceDiscoveredDatasetResponseOutput) ToNamespaceDiscoveredDatasetResponseOutputWithContext(ctx context.Context) NamespaceDiscoveredDatasetResponseOutput {
+	return o
+}
+
+// Array of data points that are part of the dataset. Each data point can have per-data point configuration.
+func (o NamespaceDiscoveredDatasetResponseOutput) DataPoints() NamespaceDiscoveredDatasetDataPointResponseArrayOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredDatasetResponse) []NamespaceDiscoveredDatasetDataPointResponse {
+		return v.DataPoints
+	}).(NamespaceDiscoveredDatasetDataPointResponseArrayOutput)
+}
+
+// Reference to a data source for a given dataset.
+func (o NamespaceDiscoveredDatasetResponseOutput) DataSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredDatasetResponse) *string { return v.DataSource }).(pulumi.StringPtrOutput)
+}
+
+// Stringified JSON that contains connector-specific properties that describes configuration for the specific dataset.
+func (o NamespaceDiscoveredDatasetResponseOutput) DatasetConfiguration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredDatasetResponse) *string { return v.DatasetConfiguration }).(pulumi.StringPtrOutput)
+}
+
+// Destinations for a dataset.
+func (o NamespaceDiscoveredDatasetResponseOutput) Destinations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredDatasetResponse) []interface{} { return v.Destinations }).(pulumi.ArrayOutput)
+}
+
+// Timestamp (in UTC) indicating when the dataset was added or modified.
+func (o NamespaceDiscoveredDatasetResponseOutput) LastUpdatedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredDatasetResponse) *string { return v.LastUpdatedOn }).(pulumi.StringPtrOutput)
+}
+
+// Name of the dataset.
+func (o NamespaceDiscoveredDatasetResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredDatasetResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// URI or type definition ID.
+func (o NamespaceDiscoveredDatasetResponseOutput) TypeRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredDatasetResponse) *string { return v.TypeRef }).(pulumi.StringPtrOutput)
+}
+
+type NamespaceDiscoveredDatasetResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (NamespaceDiscoveredDatasetResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceDiscoveredDatasetResponse)(nil)).Elem()
+}
+
+func (o NamespaceDiscoveredDatasetResponseArrayOutput) ToNamespaceDiscoveredDatasetResponseArrayOutput() NamespaceDiscoveredDatasetResponseArrayOutput {
+	return o
+}
+
+func (o NamespaceDiscoveredDatasetResponseArrayOutput) ToNamespaceDiscoveredDatasetResponseArrayOutputWithContext(ctx context.Context) NamespaceDiscoveredDatasetResponseArrayOutput {
+	return o
+}
+
+func (o NamespaceDiscoveredDatasetResponseArrayOutput) Index(i pulumi.IntInput) NamespaceDiscoveredDatasetResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamespaceDiscoveredDatasetResponse {
+		return vs[0].([]NamespaceDiscoveredDatasetResponse)[vs[1].(int)]
+	}).(NamespaceDiscoveredDatasetResponseOutput)
+}
+
+// Defines the event properties.
+type NamespaceDiscoveredEvent struct {
+	// Array of data points that are part of the event. Each data point can have a per-data point configuration.
+	DataPoints []NamespaceDiscoveredEventDataPoint `pulumi:"dataPoints"`
+	// Destinations for an event.
+	Destinations []interface{} `pulumi:"destinations"`
+	// Stringified JSON that contains connector-specific configuration for the event. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+	EventConfiguration *string `pulumi:"eventConfiguration"`
+	// The address of the notifier of the event in the asset (e.g. URL) so that a client can access the event on the asset.
+	EventNotifier string `pulumi:"eventNotifier"`
+	// UTC timestamp indicating when the event was added or modified.
+	LastUpdatedOn *string `pulumi:"lastUpdatedOn"`
+	// The name of the event.
+	Name string `pulumi:"name"`
+	// URI or type definition ID.
+	TypeRef *string `pulumi:"typeRef"`
+}
+
+// NamespaceDiscoveredEventInput is an input type that accepts NamespaceDiscoveredEventArgs and NamespaceDiscoveredEventOutput values.
+// You can construct a concrete instance of `NamespaceDiscoveredEventInput` via:
+//
+//	NamespaceDiscoveredEventArgs{...}
+type NamespaceDiscoveredEventInput interface {
+	pulumi.Input
+
+	ToNamespaceDiscoveredEventOutput() NamespaceDiscoveredEventOutput
+	ToNamespaceDiscoveredEventOutputWithContext(context.Context) NamespaceDiscoveredEventOutput
+}
+
+// Defines the event properties.
+type NamespaceDiscoveredEventArgs struct {
+	// Array of data points that are part of the event. Each data point can have a per-data point configuration.
+	DataPoints NamespaceDiscoveredEventDataPointArrayInput `pulumi:"dataPoints"`
+	// Destinations for an event.
+	Destinations pulumi.ArrayInput `pulumi:"destinations"`
+	// Stringified JSON that contains connector-specific configuration for the event. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+	EventConfiguration pulumi.StringPtrInput `pulumi:"eventConfiguration"`
+	// The address of the notifier of the event in the asset (e.g. URL) so that a client can access the event on the asset.
+	EventNotifier pulumi.StringInput `pulumi:"eventNotifier"`
+	// UTC timestamp indicating when the event was added or modified.
+	LastUpdatedOn pulumi.StringPtrInput `pulumi:"lastUpdatedOn"`
+	// The name of the event.
+	Name pulumi.StringInput `pulumi:"name"`
+	// URI or type definition ID.
+	TypeRef pulumi.StringPtrInput `pulumi:"typeRef"`
+}
+
+func (NamespaceDiscoveredEventArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceDiscoveredEvent)(nil)).Elem()
+}
+
+func (i NamespaceDiscoveredEventArgs) ToNamespaceDiscoveredEventOutput() NamespaceDiscoveredEventOutput {
+	return i.ToNamespaceDiscoveredEventOutputWithContext(context.Background())
+}
+
+func (i NamespaceDiscoveredEventArgs) ToNamespaceDiscoveredEventOutputWithContext(ctx context.Context) NamespaceDiscoveredEventOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceDiscoveredEventOutput)
+}
+
+// NamespaceDiscoveredEventArrayInput is an input type that accepts NamespaceDiscoveredEventArray and NamespaceDiscoveredEventArrayOutput values.
+// You can construct a concrete instance of `NamespaceDiscoveredEventArrayInput` via:
+//
+//	NamespaceDiscoveredEventArray{ NamespaceDiscoveredEventArgs{...} }
+type NamespaceDiscoveredEventArrayInput interface {
+	pulumi.Input
+
+	ToNamespaceDiscoveredEventArrayOutput() NamespaceDiscoveredEventArrayOutput
+	ToNamespaceDiscoveredEventArrayOutputWithContext(context.Context) NamespaceDiscoveredEventArrayOutput
+}
+
+type NamespaceDiscoveredEventArray []NamespaceDiscoveredEventInput
+
+func (NamespaceDiscoveredEventArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceDiscoveredEvent)(nil)).Elem()
+}
+
+func (i NamespaceDiscoveredEventArray) ToNamespaceDiscoveredEventArrayOutput() NamespaceDiscoveredEventArrayOutput {
+	return i.ToNamespaceDiscoveredEventArrayOutputWithContext(context.Background())
+}
+
+func (i NamespaceDiscoveredEventArray) ToNamespaceDiscoveredEventArrayOutputWithContext(ctx context.Context) NamespaceDiscoveredEventArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceDiscoveredEventArrayOutput)
+}
+
+// Defines the event properties.
+type NamespaceDiscoveredEventOutput struct{ *pulumi.OutputState }
+
+func (NamespaceDiscoveredEventOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceDiscoveredEvent)(nil)).Elem()
+}
+
+func (o NamespaceDiscoveredEventOutput) ToNamespaceDiscoveredEventOutput() NamespaceDiscoveredEventOutput {
+	return o
+}
+
+func (o NamespaceDiscoveredEventOutput) ToNamespaceDiscoveredEventOutputWithContext(ctx context.Context) NamespaceDiscoveredEventOutput {
+	return o
+}
+
+// Array of data points that are part of the event. Each data point can have a per-data point configuration.
+func (o NamespaceDiscoveredEventOutput) DataPoints() NamespaceDiscoveredEventDataPointArrayOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredEvent) []NamespaceDiscoveredEventDataPoint { return v.DataPoints }).(NamespaceDiscoveredEventDataPointArrayOutput)
+}
+
+// Destinations for an event.
+func (o NamespaceDiscoveredEventOutput) Destinations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredEvent) []interface{} { return v.Destinations }).(pulumi.ArrayOutput)
+}
+
+// Stringified JSON that contains connector-specific configuration for the event. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+func (o NamespaceDiscoveredEventOutput) EventConfiguration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredEvent) *string { return v.EventConfiguration }).(pulumi.StringPtrOutput)
+}
+
+// The address of the notifier of the event in the asset (e.g. URL) so that a client can access the event on the asset.
+func (o NamespaceDiscoveredEventOutput) EventNotifier() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredEvent) string { return v.EventNotifier }).(pulumi.StringOutput)
+}
+
+// UTC timestamp indicating when the event was added or modified.
+func (o NamespaceDiscoveredEventOutput) LastUpdatedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredEvent) *string { return v.LastUpdatedOn }).(pulumi.StringPtrOutput)
+}
+
+// The name of the event.
+func (o NamespaceDiscoveredEventOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredEvent) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// URI or type definition ID.
+func (o NamespaceDiscoveredEventOutput) TypeRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredEvent) *string { return v.TypeRef }).(pulumi.StringPtrOutput)
+}
+
+type NamespaceDiscoveredEventArrayOutput struct{ *pulumi.OutputState }
+
+func (NamespaceDiscoveredEventArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceDiscoveredEvent)(nil)).Elem()
+}
+
+func (o NamespaceDiscoveredEventArrayOutput) ToNamespaceDiscoveredEventArrayOutput() NamespaceDiscoveredEventArrayOutput {
+	return o
+}
+
+func (o NamespaceDiscoveredEventArrayOutput) ToNamespaceDiscoveredEventArrayOutputWithContext(ctx context.Context) NamespaceDiscoveredEventArrayOutput {
+	return o
+}
+
+func (o NamespaceDiscoveredEventArrayOutput) Index(i pulumi.IntInput) NamespaceDiscoveredEventOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamespaceDiscoveredEvent {
+		return vs[0].([]NamespaceDiscoveredEvent)[vs[1].(int)]
+	}).(NamespaceDiscoveredEventOutput)
+}
+
+// Defines the discovered event data point properties.
+type NamespaceDiscoveredEventDataPoint struct {
+	// Stringified JSON that contains connector-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+	DataPointConfiguration *string `pulumi:"dataPointConfiguration"`
+	// The address of the source of the data in the asset (e.g. URL) so that a client can access the data source on the asset.
+	DataSource string `pulumi:"dataSource"`
+	// UTC timestamp indicating when the data point was added or modified.
+	LastUpdatedOn *string `pulumi:"lastUpdatedOn"`
+	// The name of the data point.
+	Name string `pulumi:"name"`
+}
+
+// NamespaceDiscoveredEventDataPointInput is an input type that accepts NamespaceDiscoveredEventDataPointArgs and NamespaceDiscoveredEventDataPointOutput values.
+// You can construct a concrete instance of `NamespaceDiscoveredEventDataPointInput` via:
+//
+//	NamespaceDiscoveredEventDataPointArgs{...}
+type NamespaceDiscoveredEventDataPointInput interface {
+	pulumi.Input
+
+	ToNamespaceDiscoveredEventDataPointOutput() NamespaceDiscoveredEventDataPointOutput
+	ToNamespaceDiscoveredEventDataPointOutputWithContext(context.Context) NamespaceDiscoveredEventDataPointOutput
+}
+
+// Defines the discovered event data point properties.
+type NamespaceDiscoveredEventDataPointArgs struct {
+	// Stringified JSON that contains connector-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+	DataPointConfiguration pulumi.StringPtrInput `pulumi:"dataPointConfiguration"`
+	// The address of the source of the data in the asset (e.g. URL) so that a client can access the data source on the asset.
+	DataSource pulumi.StringInput `pulumi:"dataSource"`
+	// UTC timestamp indicating when the data point was added or modified.
+	LastUpdatedOn pulumi.StringPtrInput `pulumi:"lastUpdatedOn"`
+	// The name of the data point.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (NamespaceDiscoveredEventDataPointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceDiscoveredEventDataPoint)(nil)).Elem()
+}
+
+func (i NamespaceDiscoveredEventDataPointArgs) ToNamespaceDiscoveredEventDataPointOutput() NamespaceDiscoveredEventDataPointOutput {
+	return i.ToNamespaceDiscoveredEventDataPointOutputWithContext(context.Background())
+}
+
+func (i NamespaceDiscoveredEventDataPointArgs) ToNamespaceDiscoveredEventDataPointOutputWithContext(ctx context.Context) NamespaceDiscoveredEventDataPointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceDiscoveredEventDataPointOutput)
+}
+
+// NamespaceDiscoveredEventDataPointArrayInput is an input type that accepts NamespaceDiscoveredEventDataPointArray and NamespaceDiscoveredEventDataPointArrayOutput values.
+// You can construct a concrete instance of `NamespaceDiscoveredEventDataPointArrayInput` via:
+//
+//	NamespaceDiscoveredEventDataPointArray{ NamespaceDiscoveredEventDataPointArgs{...} }
+type NamespaceDiscoveredEventDataPointArrayInput interface {
+	pulumi.Input
+
+	ToNamespaceDiscoveredEventDataPointArrayOutput() NamespaceDiscoveredEventDataPointArrayOutput
+	ToNamespaceDiscoveredEventDataPointArrayOutputWithContext(context.Context) NamespaceDiscoveredEventDataPointArrayOutput
+}
+
+type NamespaceDiscoveredEventDataPointArray []NamespaceDiscoveredEventDataPointInput
+
+func (NamespaceDiscoveredEventDataPointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceDiscoveredEventDataPoint)(nil)).Elem()
+}
+
+func (i NamespaceDiscoveredEventDataPointArray) ToNamespaceDiscoveredEventDataPointArrayOutput() NamespaceDiscoveredEventDataPointArrayOutput {
+	return i.ToNamespaceDiscoveredEventDataPointArrayOutputWithContext(context.Background())
+}
+
+func (i NamespaceDiscoveredEventDataPointArray) ToNamespaceDiscoveredEventDataPointArrayOutputWithContext(ctx context.Context) NamespaceDiscoveredEventDataPointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceDiscoveredEventDataPointArrayOutput)
+}
+
+// Defines the discovered event data point properties.
+type NamespaceDiscoveredEventDataPointOutput struct{ *pulumi.OutputState }
+
+func (NamespaceDiscoveredEventDataPointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceDiscoveredEventDataPoint)(nil)).Elem()
+}
+
+func (o NamespaceDiscoveredEventDataPointOutput) ToNamespaceDiscoveredEventDataPointOutput() NamespaceDiscoveredEventDataPointOutput {
+	return o
+}
+
+func (o NamespaceDiscoveredEventDataPointOutput) ToNamespaceDiscoveredEventDataPointOutputWithContext(ctx context.Context) NamespaceDiscoveredEventDataPointOutput {
+	return o
+}
+
+// Stringified JSON that contains connector-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+func (o NamespaceDiscoveredEventDataPointOutput) DataPointConfiguration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredEventDataPoint) *string { return v.DataPointConfiguration }).(pulumi.StringPtrOutput)
+}
+
+// The address of the source of the data in the asset (e.g. URL) so that a client can access the data source on the asset.
+func (o NamespaceDiscoveredEventDataPointOutput) DataSource() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredEventDataPoint) string { return v.DataSource }).(pulumi.StringOutput)
+}
+
+// UTC timestamp indicating when the data point was added or modified.
+func (o NamespaceDiscoveredEventDataPointOutput) LastUpdatedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredEventDataPoint) *string { return v.LastUpdatedOn }).(pulumi.StringPtrOutput)
+}
+
+// The name of the data point.
+func (o NamespaceDiscoveredEventDataPointOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredEventDataPoint) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type NamespaceDiscoveredEventDataPointArrayOutput struct{ *pulumi.OutputState }
+
+func (NamespaceDiscoveredEventDataPointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceDiscoveredEventDataPoint)(nil)).Elem()
+}
+
+func (o NamespaceDiscoveredEventDataPointArrayOutput) ToNamespaceDiscoveredEventDataPointArrayOutput() NamespaceDiscoveredEventDataPointArrayOutput {
+	return o
+}
+
+func (o NamespaceDiscoveredEventDataPointArrayOutput) ToNamespaceDiscoveredEventDataPointArrayOutputWithContext(ctx context.Context) NamespaceDiscoveredEventDataPointArrayOutput {
+	return o
+}
+
+func (o NamespaceDiscoveredEventDataPointArrayOutput) Index(i pulumi.IntInput) NamespaceDiscoveredEventDataPointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamespaceDiscoveredEventDataPoint {
+		return vs[0].([]NamespaceDiscoveredEventDataPoint)[vs[1].(int)]
+	}).(NamespaceDiscoveredEventDataPointOutput)
+}
+
+// Defines the discovered event data point properties.
+type NamespaceDiscoveredEventDataPointResponse struct {
+	// Stringified JSON that contains connector-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+	DataPointConfiguration *string `pulumi:"dataPointConfiguration"`
+	// The address of the source of the data in the asset (e.g. URL) so that a client can access the data source on the asset.
+	DataSource string `pulumi:"dataSource"`
+	// UTC timestamp indicating when the data point was added or modified.
+	LastUpdatedOn *string `pulumi:"lastUpdatedOn"`
+	// The name of the data point.
+	Name string `pulumi:"name"`
+}
+
+// Defines the discovered event data point properties.
+type NamespaceDiscoveredEventDataPointResponseOutput struct{ *pulumi.OutputState }
+
+func (NamespaceDiscoveredEventDataPointResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceDiscoveredEventDataPointResponse)(nil)).Elem()
+}
+
+func (o NamespaceDiscoveredEventDataPointResponseOutput) ToNamespaceDiscoveredEventDataPointResponseOutput() NamespaceDiscoveredEventDataPointResponseOutput {
+	return o
+}
+
+func (o NamespaceDiscoveredEventDataPointResponseOutput) ToNamespaceDiscoveredEventDataPointResponseOutputWithContext(ctx context.Context) NamespaceDiscoveredEventDataPointResponseOutput {
+	return o
+}
+
+// Stringified JSON that contains connector-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+func (o NamespaceDiscoveredEventDataPointResponseOutput) DataPointConfiguration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredEventDataPointResponse) *string { return v.DataPointConfiguration }).(pulumi.StringPtrOutput)
+}
+
+// The address of the source of the data in the asset (e.g. URL) so that a client can access the data source on the asset.
+func (o NamespaceDiscoveredEventDataPointResponseOutput) DataSource() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredEventDataPointResponse) string { return v.DataSource }).(pulumi.StringOutput)
+}
+
+// UTC timestamp indicating when the data point was added or modified.
+func (o NamespaceDiscoveredEventDataPointResponseOutput) LastUpdatedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredEventDataPointResponse) *string { return v.LastUpdatedOn }).(pulumi.StringPtrOutput)
+}
+
+// The name of the data point.
+func (o NamespaceDiscoveredEventDataPointResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredEventDataPointResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type NamespaceDiscoveredEventDataPointResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (NamespaceDiscoveredEventDataPointResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceDiscoveredEventDataPointResponse)(nil)).Elem()
+}
+
+func (o NamespaceDiscoveredEventDataPointResponseArrayOutput) ToNamespaceDiscoveredEventDataPointResponseArrayOutput() NamespaceDiscoveredEventDataPointResponseArrayOutput {
+	return o
+}
+
+func (o NamespaceDiscoveredEventDataPointResponseArrayOutput) ToNamespaceDiscoveredEventDataPointResponseArrayOutputWithContext(ctx context.Context) NamespaceDiscoveredEventDataPointResponseArrayOutput {
+	return o
+}
+
+func (o NamespaceDiscoveredEventDataPointResponseArrayOutput) Index(i pulumi.IntInput) NamespaceDiscoveredEventDataPointResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamespaceDiscoveredEventDataPointResponse {
+		return vs[0].([]NamespaceDiscoveredEventDataPointResponse)[vs[1].(int)]
+	}).(NamespaceDiscoveredEventDataPointResponseOutput)
+}
+
+// Defines the event properties.
+type NamespaceDiscoveredEventResponse struct {
+	// Array of data points that are part of the event. Each data point can have a per-data point configuration.
+	DataPoints []NamespaceDiscoveredEventDataPointResponse `pulumi:"dataPoints"`
+	// Destinations for an event.
+	Destinations []interface{} `pulumi:"destinations"`
+	// Stringified JSON that contains connector-specific configuration for the event. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+	EventConfiguration *string `pulumi:"eventConfiguration"`
+	// The address of the notifier of the event in the asset (e.g. URL) so that a client can access the event on the asset.
+	EventNotifier string `pulumi:"eventNotifier"`
+	// UTC timestamp indicating when the event was added or modified.
+	LastUpdatedOn *string `pulumi:"lastUpdatedOn"`
+	// The name of the event.
+	Name string `pulumi:"name"`
+	// URI or type definition ID.
+	TypeRef *string `pulumi:"typeRef"`
+}
+
+// Defines the event properties.
+type NamespaceDiscoveredEventResponseOutput struct{ *pulumi.OutputState }
+
+func (NamespaceDiscoveredEventResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceDiscoveredEventResponse)(nil)).Elem()
+}
+
+func (o NamespaceDiscoveredEventResponseOutput) ToNamespaceDiscoveredEventResponseOutput() NamespaceDiscoveredEventResponseOutput {
+	return o
+}
+
+func (o NamespaceDiscoveredEventResponseOutput) ToNamespaceDiscoveredEventResponseOutputWithContext(ctx context.Context) NamespaceDiscoveredEventResponseOutput {
+	return o
+}
+
+// Array of data points that are part of the event. Each data point can have a per-data point configuration.
+func (o NamespaceDiscoveredEventResponseOutput) DataPoints() NamespaceDiscoveredEventDataPointResponseArrayOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredEventResponse) []NamespaceDiscoveredEventDataPointResponse {
+		return v.DataPoints
+	}).(NamespaceDiscoveredEventDataPointResponseArrayOutput)
+}
+
+// Destinations for an event.
+func (o NamespaceDiscoveredEventResponseOutput) Destinations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredEventResponse) []interface{} { return v.Destinations }).(pulumi.ArrayOutput)
+}
+
+// Stringified JSON that contains connector-specific configuration for the event. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+func (o NamespaceDiscoveredEventResponseOutput) EventConfiguration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredEventResponse) *string { return v.EventConfiguration }).(pulumi.StringPtrOutput)
+}
+
+// The address of the notifier of the event in the asset (e.g. URL) so that a client can access the event on the asset.
+func (o NamespaceDiscoveredEventResponseOutput) EventNotifier() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredEventResponse) string { return v.EventNotifier }).(pulumi.StringOutput)
+}
+
+// UTC timestamp indicating when the event was added or modified.
+func (o NamespaceDiscoveredEventResponseOutput) LastUpdatedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredEventResponse) *string { return v.LastUpdatedOn }).(pulumi.StringPtrOutput)
+}
+
+// The name of the event.
+func (o NamespaceDiscoveredEventResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredEventResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// URI or type definition ID.
+func (o NamespaceDiscoveredEventResponseOutput) TypeRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredEventResponse) *string { return v.TypeRef }).(pulumi.StringPtrOutput)
+}
+
+type NamespaceDiscoveredEventResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (NamespaceDiscoveredEventResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceDiscoveredEventResponse)(nil)).Elem()
+}
+
+func (o NamespaceDiscoveredEventResponseArrayOutput) ToNamespaceDiscoveredEventResponseArrayOutput() NamespaceDiscoveredEventResponseArrayOutput {
+	return o
+}
+
+func (o NamespaceDiscoveredEventResponseArrayOutput) ToNamespaceDiscoveredEventResponseArrayOutputWithContext(ctx context.Context) NamespaceDiscoveredEventResponseArrayOutput {
+	return o
+}
+
+func (o NamespaceDiscoveredEventResponseArrayOutput) Index(i pulumi.IntInput) NamespaceDiscoveredEventResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamespaceDiscoveredEventResponse {
+		return vs[0].([]NamespaceDiscoveredEventResponse)[vs[1].(int)]
+	}).(NamespaceDiscoveredEventResponseOutput)
+}
+
+// Defines the action properties.
+type NamespaceDiscoveredManagementAction struct {
+	// Stringified JSON that contains connector-specific configuration for the action.
+	ActionConfiguration *string `pulumi:"actionConfiguration"`
+	// The type of the action.
+	ActionType *string `pulumi:"actionType"`
+	// Timestamp (in UTC) indicating when the management action was added or modified.
+	LastUpdatedOn *string `pulumi:"lastUpdatedOn"`
+	// Name of the action.
+	Name string `pulumi:"name"`
+	// The target URI on which a client can invoke the specific action.
+	TargetUri string `pulumi:"targetUri"`
+	// Response timeout for the action.
+	TimeoutInSeconds *int `pulumi:"timeoutInSeconds"`
+	// The MQTT topic path on which a client will receive the request for the action.
+	Topic *string `pulumi:"topic"`
+	// URI or type definition ID.
+	TypeRef *string `pulumi:"typeRef"`
+}
+
+// Defaults sets the appropriate defaults for NamespaceDiscoveredManagementAction
+func (val *NamespaceDiscoveredManagementAction) Defaults() *NamespaceDiscoveredManagementAction {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ActionType == nil {
+		actionType_ := "Call"
+		tmp.ActionType = &actionType_
+	}
+	return &tmp
+}
+
+// NamespaceDiscoveredManagementActionInput is an input type that accepts NamespaceDiscoveredManagementActionArgs and NamespaceDiscoveredManagementActionOutput values.
+// You can construct a concrete instance of `NamespaceDiscoveredManagementActionInput` via:
+//
+//	NamespaceDiscoveredManagementActionArgs{...}
+type NamespaceDiscoveredManagementActionInput interface {
+	pulumi.Input
+
+	ToNamespaceDiscoveredManagementActionOutput() NamespaceDiscoveredManagementActionOutput
+	ToNamespaceDiscoveredManagementActionOutputWithContext(context.Context) NamespaceDiscoveredManagementActionOutput
+}
+
+// Defines the action properties.
+type NamespaceDiscoveredManagementActionArgs struct {
+	// Stringified JSON that contains connector-specific configuration for the action.
+	ActionConfiguration pulumi.StringPtrInput `pulumi:"actionConfiguration"`
+	// The type of the action.
+	ActionType pulumi.StringPtrInput `pulumi:"actionType"`
+	// Timestamp (in UTC) indicating when the management action was added or modified.
+	LastUpdatedOn pulumi.StringPtrInput `pulumi:"lastUpdatedOn"`
+	// Name of the action.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The target URI on which a client can invoke the specific action.
+	TargetUri pulumi.StringInput `pulumi:"targetUri"`
+	// Response timeout for the action.
+	TimeoutInSeconds pulumi.IntPtrInput `pulumi:"timeoutInSeconds"`
+	// The MQTT topic path on which a client will receive the request for the action.
+	Topic pulumi.StringPtrInput `pulumi:"topic"`
+	// URI or type definition ID.
+	TypeRef pulumi.StringPtrInput `pulumi:"typeRef"`
+}
+
+// Defaults sets the appropriate defaults for NamespaceDiscoveredManagementActionArgs
+func (val *NamespaceDiscoveredManagementActionArgs) Defaults() *NamespaceDiscoveredManagementActionArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ActionType == nil {
+		tmp.ActionType = pulumi.StringPtr("Call")
+	}
+	return &tmp
+}
+func (NamespaceDiscoveredManagementActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceDiscoveredManagementAction)(nil)).Elem()
+}
+
+func (i NamespaceDiscoveredManagementActionArgs) ToNamespaceDiscoveredManagementActionOutput() NamespaceDiscoveredManagementActionOutput {
+	return i.ToNamespaceDiscoveredManagementActionOutputWithContext(context.Background())
+}
+
+func (i NamespaceDiscoveredManagementActionArgs) ToNamespaceDiscoveredManagementActionOutputWithContext(ctx context.Context) NamespaceDiscoveredManagementActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceDiscoveredManagementActionOutput)
+}
+
+// NamespaceDiscoveredManagementActionArrayInput is an input type that accepts NamespaceDiscoveredManagementActionArray and NamespaceDiscoveredManagementActionArrayOutput values.
+// You can construct a concrete instance of `NamespaceDiscoveredManagementActionArrayInput` via:
+//
+//	NamespaceDiscoveredManagementActionArray{ NamespaceDiscoveredManagementActionArgs{...} }
+type NamespaceDiscoveredManagementActionArrayInput interface {
+	pulumi.Input
+
+	ToNamespaceDiscoveredManagementActionArrayOutput() NamespaceDiscoveredManagementActionArrayOutput
+	ToNamespaceDiscoveredManagementActionArrayOutputWithContext(context.Context) NamespaceDiscoveredManagementActionArrayOutput
+}
+
+type NamespaceDiscoveredManagementActionArray []NamespaceDiscoveredManagementActionInput
+
+func (NamespaceDiscoveredManagementActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceDiscoveredManagementAction)(nil)).Elem()
+}
+
+func (i NamespaceDiscoveredManagementActionArray) ToNamespaceDiscoveredManagementActionArrayOutput() NamespaceDiscoveredManagementActionArrayOutput {
+	return i.ToNamespaceDiscoveredManagementActionArrayOutputWithContext(context.Background())
+}
+
+func (i NamespaceDiscoveredManagementActionArray) ToNamespaceDiscoveredManagementActionArrayOutputWithContext(ctx context.Context) NamespaceDiscoveredManagementActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceDiscoveredManagementActionArrayOutput)
+}
+
+// Defines the action properties.
+type NamespaceDiscoveredManagementActionOutput struct{ *pulumi.OutputState }
+
+func (NamespaceDiscoveredManagementActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceDiscoveredManagementAction)(nil)).Elem()
+}
+
+func (o NamespaceDiscoveredManagementActionOutput) ToNamespaceDiscoveredManagementActionOutput() NamespaceDiscoveredManagementActionOutput {
+	return o
+}
+
+func (o NamespaceDiscoveredManagementActionOutput) ToNamespaceDiscoveredManagementActionOutputWithContext(ctx context.Context) NamespaceDiscoveredManagementActionOutput {
+	return o
+}
+
+// Stringified JSON that contains connector-specific configuration for the action.
+func (o NamespaceDiscoveredManagementActionOutput) ActionConfiguration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredManagementAction) *string { return v.ActionConfiguration }).(pulumi.StringPtrOutput)
+}
+
+// The type of the action.
+func (o NamespaceDiscoveredManagementActionOutput) ActionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredManagementAction) *string { return v.ActionType }).(pulumi.StringPtrOutput)
+}
+
+// Timestamp (in UTC) indicating when the management action was added or modified.
+func (o NamespaceDiscoveredManagementActionOutput) LastUpdatedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredManagementAction) *string { return v.LastUpdatedOn }).(pulumi.StringPtrOutput)
+}
+
+// Name of the action.
+func (o NamespaceDiscoveredManagementActionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredManagementAction) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The target URI on which a client can invoke the specific action.
+func (o NamespaceDiscoveredManagementActionOutput) TargetUri() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredManagementAction) string { return v.TargetUri }).(pulumi.StringOutput)
+}
+
+// Response timeout for the action.
+func (o NamespaceDiscoveredManagementActionOutput) TimeoutInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredManagementAction) *int { return v.TimeoutInSeconds }).(pulumi.IntPtrOutput)
+}
+
+// The MQTT topic path on which a client will receive the request for the action.
+func (o NamespaceDiscoveredManagementActionOutput) Topic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredManagementAction) *string { return v.Topic }).(pulumi.StringPtrOutput)
+}
+
+// URI or type definition ID.
+func (o NamespaceDiscoveredManagementActionOutput) TypeRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredManagementAction) *string { return v.TypeRef }).(pulumi.StringPtrOutput)
+}
+
+type NamespaceDiscoveredManagementActionArrayOutput struct{ *pulumi.OutputState }
+
+func (NamespaceDiscoveredManagementActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceDiscoveredManagementAction)(nil)).Elem()
+}
+
+func (o NamespaceDiscoveredManagementActionArrayOutput) ToNamespaceDiscoveredManagementActionArrayOutput() NamespaceDiscoveredManagementActionArrayOutput {
+	return o
+}
+
+func (o NamespaceDiscoveredManagementActionArrayOutput) ToNamespaceDiscoveredManagementActionArrayOutputWithContext(ctx context.Context) NamespaceDiscoveredManagementActionArrayOutput {
+	return o
+}
+
+func (o NamespaceDiscoveredManagementActionArrayOutput) Index(i pulumi.IntInput) NamespaceDiscoveredManagementActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamespaceDiscoveredManagementAction {
+		return vs[0].([]NamespaceDiscoveredManagementAction)[vs[1].(int)]
+	}).(NamespaceDiscoveredManagementActionOutput)
+}
+
+// Defines the action properties.
+type NamespaceDiscoveredManagementActionResponse struct {
+	// Stringified JSON that contains connector-specific configuration for the action.
+	ActionConfiguration *string `pulumi:"actionConfiguration"`
+	// The type of the action.
+	ActionType *string `pulumi:"actionType"`
+	// Timestamp (in UTC) indicating when the management action was added or modified.
+	LastUpdatedOn *string `pulumi:"lastUpdatedOn"`
+	// Name of the action.
+	Name string `pulumi:"name"`
+	// The target URI on which a client can invoke the specific action.
+	TargetUri string `pulumi:"targetUri"`
+	// Response timeout for the action.
+	TimeoutInSeconds *int `pulumi:"timeoutInSeconds"`
+	// The MQTT topic path on which a client will receive the request for the action.
+	Topic *string `pulumi:"topic"`
+	// URI or type definition ID.
+	TypeRef *string `pulumi:"typeRef"`
+}
+
+// Defaults sets the appropriate defaults for NamespaceDiscoveredManagementActionResponse
+func (val *NamespaceDiscoveredManagementActionResponse) Defaults() *NamespaceDiscoveredManagementActionResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ActionType == nil {
+		actionType_ := "Call"
+		tmp.ActionType = &actionType_
+	}
+	return &tmp
+}
+
+// Defines the action properties.
+type NamespaceDiscoveredManagementActionResponseOutput struct{ *pulumi.OutputState }
+
+func (NamespaceDiscoveredManagementActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceDiscoveredManagementActionResponse)(nil)).Elem()
+}
+
+func (o NamespaceDiscoveredManagementActionResponseOutput) ToNamespaceDiscoveredManagementActionResponseOutput() NamespaceDiscoveredManagementActionResponseOutput {
+	return o
+}
+
+func (o NamespaceDiscoveredManagementActionResponseOutput) ToNamespaceDiscoveredManagementActionResponseOutputWithContext(ctx context.Context) NamespaceDiscoveredManagementActionResponseOutput {
+	return o
+}
+
+// Stringified JSON that contains connector-specific configuration for the action.
+func (o NamespaceDiscoveredManagementActionResponseOutput) ActionConfiguration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredManagementActionResponse) *string { return v.ActionConfiguration }).(pulumi.StringPtrOutput)
+}
+
+// The type of the action.
+func (o NamespaceDiscoveredManagementActionResponseOutput) ActionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredManagementActionResponse) *string { return v.ActionType }).(pulumi.StringPtrOutput)
+}
+
+// Timestamp (in UTC) indicating when the management action was added or modified.
+func (o NamespaceDiscoveredManagementActionResponseOutput) LastUpdatedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredManagementActionResponse) *string { return v.LastUpdatedOn }).(pulumi.StringPtrOutput)
+}
+
+// Name of the action.
+func (o NamespaceDiscoveredManagementActionResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredManagementActionResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The target URI on which a client can invoke the specific action.
+func (o NamespaceDiscoveredManagementActionResponseOutput) TargetUri() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredManagementActionResponse) string { return v.TargetUri }).(pulumi.StringOutput)
+}
+
+// Response timeout for the action.
+func (o NamespaceDiscoveredManagementActionResponseOutput) TimeoutInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredManagementActionResponse) *int { return v.TimeoutInSeconds }).(pulumi.IntPtrOutput)
+}
+
+// The MQTT topic path on which a client will receive the request for the action.
+func (o NamespaceDiscoveredManagementActionResponseOutput) Topic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredManagementActionResponse) *string { return v.Topic }).(pulumi.StringPtrOutput)
+}
+
+// URI or type definition ID.
+func (o NamespaceDiscoveredManagementActionResponseOutput) TypeRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredManagementActionResponse) *string { return v.TypeRef }).(pulumi.StringPtrOutput)
+}
+
+type NamespaceDiscoveredManagementActionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (NamespaceDiscoveredManagementActionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceDiscoveredManagementActionResponse)(nil)).Elem()
+}
+
+func (o NamespaceDiscoveredManagementActionResponseArrayOutput) ToNamespaceDiscoveredManagementActionResponseArrayOutput() NamespaceDiscoveredManagementActionResponseArrayOutput {
+	return o
+}
+
+func (o NamespaceDiscoveredManagementActionResponseArrayOutput) ToNamespaceDiscoveredManagementActionResponseArrayOutputWithContext(ctx context.Context) NamespaceDiscoveredManagementActionResponseArrayOutput {
+	return o
+}
+
+func (o NamespaceDiscoveredManagementActionResponseArrayOutput) Index(i pulumi.IntInput) NamespaceDiscoveredManagementActionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamespaceDiscoveredManagementActionResponse {
+		return vs[0].([]NamespaceDiscoveredManagementActionResponse)[vs[1].(int)]
+	}).(NamespaceDiscoveredManagementActionResponseOutput)
+}
+
+// Defines the management group properties.
+type NamespaceDiscoveredManagementGroup struct {
+	// Array of actions that are part of the management group. Each action can have an individual configuration.
+	Actions []NamespaceDiscoveredManagementAction `pulumi:"actions"`
+	// Default response timeout for all actions that are part of the management group.
+	DefaultTimeoutInSeconds *int `pulumi:"defaultTimeoutInSeconds"`
+	// Default MQTT topic path on which a client will receive the request for all actions that are part of the management group.
+	DefaultTopic *string `pulumi:"defaultTopic"`
+	// Timestamp (in UTC) indicating when the management group was added or modified.
+	LastUpdatedOn *string `pulumi:"lastUpdatedOn"`
+	// Stringified JSON that contains connector-specific configuration for the management group.
+	ManagementGroupConfiguration *string `pulumi:"managementGroupConfiguration"`
+	// Name of the management group.
+	Name string `pulumi:"name"`
+	// URI or type definition ID.
+	TypeRef *string `pulumi:"typeRef"`
+}
+
+// Defaults sets the appropriate defaults for NamespaceDiscoveredManagementGroup
+func (val *NamespaceDiscoveredManagementGroup) Defaults() *NamespaceDiscoveredManagementGroup {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.DefaultTimeoutInSeconds == nil {
+		defaultTimeoutInSeconds_ := 100
+		tmp.DefaultTimeoutInSeconds = &defaultTimeoutInSeconds_
+	}
+	return &tmp
+}
+
+// NamespaceDiscoveredManagementGroupInput is an input type that accepts NamespaceDiscoveredManagementGroupArgs and NamespaceDiscoveredManagementGroupOutput values.
+// You can construct a concrete instance of `NamespaceDiscoveredManagementGroupInput` via:
+//
+//	NamespaceDiscoveredManagementGroupArgs{...}
+type NamespaceDiscoveredManagementGroupInput interface {
+	pulumi.Input
+
+	ToNamespaceDiscoveredManagementGroupOutput() NamespaceDiscoveredManagementGroupOutput
+	ToNamespaceDiscoveredManagementGroupOutputWithContext(context.Context) NamespaceDiscoveredManagementGroupOutput
+}
+
+// Defines the management group properties.
+type NamespaceDiscoveredManagementGroupArgs struct {
+	// Array of actions that are part of the management group. Each action can have an individual configuration.
+	Actions NamespaceDiscoveredManagementActionArrayInput `pulumi:"actions"`
+	// Default response timeout for all actions that are part of the management group.
+	DefaultTimeoutInSeconds pulumi.IntPtrInput `pulumi:"defaultTimeoutInSeconds"`
+	// Default MQTT topic path on which a client will receive the request for all actions that are part of the management group.
+	DefaultTopic pulumi.StringPtrInput `pulumi:"defaultTopic"`
+	// Timestamp (in UTC) indicating when the management group was added or modified.
+	LastUpdatedOn pulumi.StringPtrInput `pulumi:"lastUpdatedOn"`
+	// Stringified JSON that contains connector-specific configuration for the management group.
+	ManagementGroupConfiguration pulumi.StringPtrInput `pulumi:"managementGroupConfiguration"`
+	// Name of the management group.
+	Name pulumi.StringInput `pulumi:"name"`
+	// URI or type definition ID.
+	TypeRef pulumi.StringPtrInput `pulumi:"typeRef"`
+}
+
+// Defaults sets the appropriate defaults for NamespaceDiscoveredManagementGroupArgs
+func (val *NamespaceDiscoveredManagementGroupArgs) Defaults() *NamespaceDiscoveredManagementGroupArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.DefaultTimeoutInSeconds == nil {
+		tmp.DefaultTimeoutInSeconds = pulumi.IntPtr(100)
+	}
+	return &tmp
+}
+func (NamespaceDiscoveredManagementGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceDiscoveredManagementGroup)(nil)).Elem()
+}
+
+func (i NamespaceDiscoveredManagementGroupArgs) ToNamespaceDiscoveredManagementGroupOutput() NamespaceDiscoveredManagementGroupOutput {
+	return i.ToNamespaceDiscoveredManagementGroupOutputWithContext(context.Background())
+}
+
+func (i NamespaceDiscoveredManagementGroupArgs) ToNamespaceDiscoveredManagementGroupOutputWithContext(ctx context.Context) NamespaceDiscoveredManagementGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceDiscoveredManagementGroupOutput)
+}
+
+// NamespaceDiscoveredManagementGroupArrayInput is an input type that accepts NamespaceDiscoveredManagementGroupArray and NamespaceDiscoveredManagementGroupArrayOutput values.
+// You can construct a concrete instance of `NamespaceDiscoveredManagementGroupArrayInput` via:
+//
+//	NamespaceDiscoveredManagementGroupArray{ NamespaceDiscoveredManagementGroupArgs{...} }
+type NamespaceDiscoveredManagementGroupArrayInput interface {
+	pulumi.Input
+
+	ToNamespaceDiscoveredManagementGroupArrayOutput() NamespaceDiscoveredManagementGroupArrayOutput
+	ToNamespaceDiscoveredManagementGroupArrayOutputWithContext(context.Context) NamespaceDiscoveredManagementGroupArrayOutput
+}
+
+type NamespaceDiscoveredManagementGroupArray []NamespaceDiscoveredManagementGroupInput
+
+func (NamespaceDiscoveredManagementGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceDiscoveredManagementGroup)(nil)).Elem()
+}
+
+func (i NamespaceDiscoveredManagementGroupArray) ToNamespaceDiscoveredManagementGroupArrayOutput() NamespaceDiscoveredManagementGroupArrayOutput {
+	return i.ToNamespaceDiscoveredManagementGroupArrayOutputWithContext(context.Background())
+}
+
+func (i NamespaceDiscoveredManagementGroupArray) ToNamespaceDiscoveredManagementGroupArrayOutputWithContext(ctx context.Context) NamespaceDiscoveredManagementGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceDiscoveredManagementGroupArrayOutput)
+}
+
+// Defines the management group properties.
+type NamespaceDiscoveredManagementGroupOutput struct{ *pulumi.OutputState }
+
+func (NamespaceDiscoveredManagementGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceDiscoveredManagementGroup)(nil)).Elem()
+}
+
+func (o NamespaceDiscoveredManagementGroupOutput) ToNamespaceDiscoveredManagementGroupOutput() NamespaceDiscoveredManagementGroupOutput {
+	return o
+}
+
+func (o NamespaceDiscoveredManagementGroupOutput) ToNamespaceDiscoveredManagementGroupOutputWithContext(ctx context.Context) NamespaceDiscoveredManagementGroupOutput {
+	return o
+}
+
+// Array of actions that are part of the management group. Each action can have an individual configuration.
+func (o NamespaceDiscoveredManagementGroupOutput) Actions() NamespaceDiscoveredManagementActionArrayOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredManagementGroup) []NamespaceDiscoveredManagementAction { return v.Actions }).(NamespaceDiscoveredManagementActionArrayOutput)
+}
+
+// Default response timeout for all actions that are part of the management group.
+func (o NamespaceDiscoveredManagementGroupOutput) DefaultTimeoutInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredManagementGroup) *int { return v.DefaultTimeoutInSeconds }).(pulumi.IntPtrOutput)
+}
+
+// Default MQTT topic path on which a client will receive the request for all actions that are part of the management group.
+func (o NamespaceDiscoveredManagementGroupOutput) DefaultTopic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredManagementGroup) *string { return v.DefaultTopic }).(pulumi.StringPtrOutput)
+}
+
+// Timestamp (in UTC) indicating when the management group was added or modified.
+func (o NamespaceDiscoveredManagementGroupOutput) LastUpdatedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredManagementGroup) *string { return v.LastUpdatedOn }).(pulumi.StringPtrOutput)
+}
+
+// Stringified JSON that contains connector-specific configuration for the management group.
+func (o NamespaceDiscoveredManagementGroupOutput) ManagementGroupConfiguration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredManagementGroup) *string { return v.ManagementGroupConfiguration }).(pulumi.StringPtrOutput)
+}
+
+// Name of the management group.
+func (o NamespaceDiscoveredManagementGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredManagementGroup) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// URI or type definition ID.
+func (o NamespaceDiscoveredManagementGroupOutput) TypeRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredManagementGroup) *string { return v.TypeRef }).(pulumi.StringPtrOutput)
+}
+
+type NamespaceDiscoveredManagementGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (NamespaceDiscoveredManagementGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceDiscoveredManagementGroup)(nil)).Elem()
+}
+
+func (o NamespaceDiscoveredManagementGroupArrayOutput) ToNamespaceDiscoveredManagementGroupArrayOutput() NamespaceDiscoveredManagementGroupArrayOutput {
+	return o
+}
+
+func (o NamespaceDiscoveredManagementGroupArrayOutput) ToNamespaceDiscoveredManagementGroupArrayOutputWithContext(ctx context.Context) NamespaceDiscoveredManagementGroupArrayOutput {
+	return o
+}
+
+func (o NamespaceDiscoveredManagementGroupArrayOutput) Index(i pulumi.IntInput) NamespaceDiscoveredManagementGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamespaceDiscoveredManagementGroup {
+		return vs[0].([]NamespaceDiscoveredManagementGroup)[vs[1].(int)]
+	}).(NamespaceDiscoveredManagementGroupOutput)
+}
+
+// Defines the management group properties.
+type NamespaceDiscoveredManagementGroupResponse struct {
+	// Array of actions that are part of the management group. Each action can have an individual configuration.
+	Actions []NamespaceDiscoveredManagementActionResponse `pulumi:"actions"`
+	// Default response timeout for all actions that are part of the management group.
+	DefaultTimeoutInSeconds *int `pulumi:"defaultTimeoutInSeconds"`
+	// Default MQTT topic path on which a client will receive the request for all actions that are part of the management group.
+	DefaultTopic *string `pulumi:"defaultTopic"`
+	// Timestamp (in UTC) indicating when the management group was added or modified.
+	LastUpdatedOn *string `pulumi:"lastUpdatedOn"`
+	// Stringified JSON that contains connector-specific configuration for the management group.
+	ManagementGroupConfiguration *string `pulumi:"managementGroupConfiguration"`
+	// Name of the management group.
+	Name string `pulumi:"name"`
+	// URI or type definition ID.
+	TypeRef *string `pulumi:"typeRef"`
+}
+
+// Defaults sets the appropriate defaults for NamespaceDiscoveredManagementGroupResponse
+func (val *NamespaceDiscoveredManagementGroupResponse) Defaults() *NamespaceDiscoveredManagementGroupResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.DefaultTimeoutInSeconds == nil {
+		defaultTimeoutInSeconds_ := 100
+		tmp.DefaultTimeoutInSeconds = &defaultTimeoutInSeconds_
+	}
+	return &tmp
+}
+
+// Defines the management group properties.
+type NamespaceDiscoveredManagementGroupResponseOutput struct{ *pulumi.OutputState }
+
+func (NamespaceDiscoveredManagementGroupResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceDiscoveredManagementGroupResponse)(nil)).Elem()
+}
+
+func (o NamespaceDiscoveredManagementGroupResponseOutput) ToNamespaceDiscoveredManagementGroupResponseOutput() NamespaceDiscoveredManagementGroupResponseOutput {
+	return o
+}
+
+func (o NamespaceDiscoveredManagementGroupResponseOutput) ToNamespaceDiscoveredManagementGroupResponseOutputWithContext(ctx context.Context) NamespaceDiscoveredManagementGroupResponseOutput {
+	return o
+}
+
+// Array of actions that are part of the management group. Each action can have an individual configuration.
+func (o NamespaceDiscoveredManagementGroupResponseOutput) Actions() NamespaceDiscoveredManagementActionResponseArrayOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredManagementGroupResponse) []NamespaceDiscoveredManagementActionResponse {
+		return v.Actions
+	}).(NamespaceDiscoveredManagementActionResponseArrayOutput)
+}
+
+// Default response timeout for all actions that are part of the management group.
+func (o NamespaceDiscoveredManagementGroupResponseOutput) DefaultTimeoutInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredManagementGroupResponse) *int { return v.DefaultTimeoutInSeconds }).(pulumi.IntPtrOutput)
+}
+
+// Default MQTT topic path on which a client will receive the request for all actions that are part of the management group.
+func (o NamespaceDiscoveredManagementGroupResponseOutput) DefaultTopic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredManagementGroupResponse) *string { return v.DefaultTopic }).(pulumi.StringPtrOutput)
+}
+
+// Timestamp (in UTC) indicating when the management group was added or modified.
+func (o NamespaceDiscoveredManagementGroupResponseOutput) LastUpdatedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredManagementGroupResponse) *string { return v.LastUpdatedOn }).(pulumi.StringPtrOutput)
+}
+
+// Stringified JSON that contains connector-specific configuration for the management group.
+func (o NamespaceDiscoveredManagementGroupResponseOutput) ManagementGroupConfiguration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredManagementGroupResponse) *string { return v.ManagementGroupConfiguration }).(pulumi.StringPtrOutput)
+}
+
+// Name of the management group.
+func (o NamespaceDiscoveredManagementGroupResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredManagementGroupResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// URI or type definition ID.
+func (o NamespaceDiscoveredManagementGroupResponseOutput) TypeRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredManagementGroupResponse) *string { return v.TypeRef }).(pulumi.StringPtrOutput)
+}
+
+type NamespaceDiscoveredManagementGroupResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (NamespaceDiscoveredManagementGroupResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceDiscoveredManagementGroupResponse)(nil)).Elem()
+}
+
+func (o NamespaceDiscoveredManagementGroupResponseArrayOutput) ToNamespaceDiscoveredManagementGroupResponseArrayOutput() NamespaceDiscoveredManagementGroupResponseArrayOutput {
+	return o
+}
+
+func (o NamespaceDiscoveredManagementGroupResponseArrayOutput) ToNamespaceDiscoveredManagementGroupResponseArrayOutputWithContext(ctx context.Context) NamespaceDiscoveredManagementGroupResponseArrayOutput {
+	return o
+}
+
+func (o NamespaceDiscoveredManagementGroupResponseArrayOutput) Index(i pulumi.IntInput) NamespaceDiscoveredManagementGroupResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamespaceDiscoveredManagementGroupResponse {
+		return vs[0].([]NamespaceDiscoveredManagementGroupResponse)[vs[1].(int)]
+	}).(NamespaceDiscoveredManagementGroupResponseOutput)
+}
+
+// Defines the stream properties.
+type NamespaceDiscoveredStream struct {
+	// Destinations for a stream.
+	Destinations []interface{} `pulumi:"destinations"`
+	// Timestamp (in UTC) indicating when the stream was added or modified.
+	LastUpdatedOn *string `pulumi:"lastUpdatedOn"`
+	// Name of the stream definition.
+	Name string `pulumi:"name"`
+	// Stringified JSON that contains connector-specific configuration for the specific stream.
+	StreamConfiguration *string `pulumi:"streamConfiguration"`
+	// URI or type definition ID.
+	TypeRef *string `pulumi:"typeRef"`
+}
+
+// NamespaceDiscoveredStreamInput is an input type that accepts NamespaceDiscoveredStreamArgs and NamespaceDiscoveredStreamOutput values.
+// You can construct a concrete instance of `NamespaceDiscoveredStreamInput` via:
+//
+//	NamespaceDiscoveredStreamArgs{...}
+type NamespaceDiscoveredStreamInput interface {
+	pulumi.Input
+
+	ToNamespaceDiscoveredStreamOutput() NamespaceDiscoveredStreamOutput
+	ToNamespaceDiscoveredStreamOutputWithContext(context.Context) NamespaceDiscoveredStreamOutput
+}
+
+// Defines the stream properties.
+type NamespaceDiscoveredStreamArgs struct {
+	// Destinations for a stream.
+	Destinations pulumi.ArrayInput `pulumi:"destinations"`
+	// Timestamp (in UTC) indicating when the stream was added or modified.
+	LastUpdatedOn pulumi.StringPtrInput `pulumi:"lastUpdatedOn"`
+	// Name of the stream definition.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Stringified JSON that contains connector-specific configuration for the specific stream.
+	StreamConfiguration pulumi.StringPtrInput `pulumi:"streamConfiguration"`
+	// URI or type definition ID.
+	TypeRef pulumi.StringPtrInput `pulumi:"typeRef"`
+}
+
+func (NamespaceDiscoveredStreamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceDiscoveredStream)(nil)).Elem()
+}
+
+func (i NamespaceDiscoveredStreamArgs) ToNamespaceDiscoveredStreamOutput() NamespaceDiscoveredStreamOutput {
+	return i.ToNamespaceDiscoveredStreamOutputWithContext(context.Background())
+}
+
+func (i NamespaceDiscoveredStreamArgs) ToNamespaceDiscoveredStreamOutputWithContext(ctx context.Context) NamespaceDiscoveredStreamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceDiscoveredStreamOutput)
+}
+
+// NamespaceDiscoveredStreamArrayInput is an input type that accepts NamespaceDiscoveredStreamArray and NamespaceDiscoveredStreamArrayOutput values.
+// You can construct a concrete instance of `NamespaceDiscoveredStreamArrayInput` via:
+//
+//	NamespaceDiscoveredStreamArray{ NamespaceDiscoveredStreamArgs{...} }
+type NamespaceDiscoveredStreamArrayInput interface {
+	pulumi.Input
+
+	ToNamespaceDiscoveredStreamArrayOutput() NamespaceDiscoveredStreamArrayOutput
+	ToNamespaceDiscoveredStreamArrayOutputWithContext(context.Context) NamespaceDiscoveredStreamArrayOutput
+}
+
+type NamespaceDiscoveredStreamArray []NamespaceDiscoveredStreamInput
+
+func (NamespaceDiscoveredStreamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceDiscoveredStream)(nil)).Elem()
+}
+
+func (i NamespaceDiscoveredStreamArray) ToNamespaceDiscoveredStreamArrayOutput() NamespaceDiscoveredStreamArrayOutput {
+	return i.ToNamespaceDiscoveredStreamArrayOutputWithContext(context.Background())
+}
+
+func (i NamespaceDiscoveredStreamArray) ToNamespaceDiscoveredStreamArrayOutputWithContext(ctx context.Context) NamespaceDiscoveredStreamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceDiscoveredStreamArrayOutput)
+}
+
+// Defines the stream properties.
+type NamespaceDiscoveredStreamOutput struct{ *pulumi.OutputState }
+
+func (NamespaceDiscoveredStreamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceDiscoveredStream)(nil)).Elem()
+}
+
+func (o NamespaceDiscoveredStreamOutput) ToNamespaceDiscoveredStreamOutput() NamespaceDiscoveredStreamOutput {
+	return o
+}
+
+func (o NamespaceDiscoveredStreamOutput) ToNamespaceDiscoveredStreamOutputWithContext(ctx context.Context) NamespaceDiscoveredStreamOutput {
+	return o
+}
+
+// Destinations for a stream.
+func (o NamespaceDiscoveredStreamOutput) Destinations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredStream) []interface{} { return v.Destinations }).(pulumi.ArrayOutput)
+}
+
+// Timestamp (in UTC) indicating when the stream was added or modified.
+func (o NamespaceDiscoveredStreamOutput) LastUpdatedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredStream) *string { return v.LastUpdatedOn }).(pulumi.StringPtrOutput)
+}
+
+// Name of the stream definition.
+func (o NamespaceDiscoveredStreamOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredStream) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Stringified JSON that contains connector-specific configuration for the specific stream.
+func (o NamespaceDiscoveredStreamOutput) StreamConfiguration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredStream) *string { return v.StreamConfiguration }).(pulumi.StringPtrOutput)
+}
+
+// URI or type definition ID.
+func (o NamespaceDiscoveredStreamOutput) TypeRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredStream) *string { return v.TypeRef }).(pulumi.StringPtrOutput)
+}
+
+type NamespaceDiscoveredStreamArrayOutput struct{ *pulumi.OutputState }
+
+func (NamespaceDiscoveredStreamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceDiscoveredStream)(nil)).Elem()
+}
+
+func (o NamespaceDiscoveredStreamArrayOutput) ToNamespaceDiscoveredStreamArrayOutput() NamespaceDiscoveredStreamArrayOutput {
+	return o
+}
+
+func (o NamespaceDiscoveredStreamArrayOutput) ToNamespaceDiscoveredStreamArrayOutputWithContext(ctx context.Context) NamespaceDiscoveredStreamArrayOutput {
+	return o
+}
+
+func (o NamespaceDiscoveredStreamArrayOutput) Index(i pulumi.IntInput) NamespaceDiscoveredStreamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamespaceDiscoveredStream {
+		return vs[0].([]NamespaceDiscoveredStream)[vs[1].(int)]
+	}).(NamespaceDiscoveredStreamOutput)
+}
+
+// Defines the stream properties.
+type NamespaceDiscoveredStreamResponse struct {
+	// Destinations for a stream.
+	Destinations []interface{} `pulumi:"destinations"`
+	// Timestamp (in UTC) indicating when the stream was added or modified.
+	LastUpdatedOn *string `pulumi:"lastUpdatedOn"`
+	// Name of the stream definition.
+	Name string `pulumi:"name"`
+	// Stringified JSON that contains connector-specific configuration for the specific stream.
+	StreamConfiguration *string `pulumi:"streamConfiguration"`
+	// URI or type definition ID.
+	TypeRef *string `pulumi:"typeRef"`
+}
+
+// Defines the stream properties.
+type NamespaceDiscoveredStreamResponseOutput struct{ *pulumi.OutputState }
+
+func (NamespaceDiscoveredStreamResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceDiscoveredStreamResponse)(nil)).Elem()
+}
+
+func (o NamespaceDiscoveredStreamResponseOutput) ToNamespaceDiscoveredStreamResponseOutput() NamespaceDiscoveredStreamResponseOutput {
+	return o
+}
+
+func (o NamespaceDiscoveredStreamResponseOutput) ToNamespaceDiscoveredStreamResponseOutputWithContext(ctx context.Context) NamespaceDiscoveredStreamResponseOutput {
+	return o
+}
+
+// Destinations for a stream.
+func (o NamespaceDiscoveredStreamResponseOutput) Destinations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredStreamResponse) []interface{} { return v.Destinations }).(pulumi.ArrayOutput)
+}
+
+// Timestamp (in UTC) indicating when the stream was added or modified.
+func (o NamespaceDiscoveredStreamResponseOutput) LastUpdatedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredStreamResponse) *string { return v.LastUpdatedOn }).(pulumi.StringPtrOutput)
+}
+
+// Name of the stream definition.
+func (o NamespaceDiscoveredStreamResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredStreamResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Stringified JSON that contains connector-specific configuration for the specific stream.
+func (o NamespaceDiscoveredStreamResponseOutput) StreamConfiguration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredStreamResponse) *string { return v.StreamConfiguration }).(pulumi.StringPtrOutput)
+}
+
+// URI or type definition ID.
+func (o NamespaceDiscoveredStreamResponseOutput) TypeRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceDiscoveredStreamResponse) *string { return v.TypeRef }).(pulumi.StringPtrOutput)
+}
+
+type NamespaceDiscoveredStreamResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (NamespaceDiscoveredStreamResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceDiscoveredStreamResponse)(nil)).Elem()
+}
+
+func (o NamespaceDiscoveredStreamResponseArrayOutput) ToNamespaceDiscoveredStreamResponseArrayOutput() NamespaceDiscoveredStreamResponseArrayOutput {
+	return o
+}
+
+func (o NamespaceDiscoveredStreamResponseArrayOutput) ToNamespaceDiscoveredStreamResponseArrayOutputWithContext(ctx context.Context) NamespaceDiscoveredStreamResponseArrayOutput {
+	return o
+}
+
+func (o NamespaceDiscoveredStreamResponseArrayOutput) Index(i pulumi.IntInput) NamespaceDiscoveredStreamResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamespaceDiscoveredStreamResponse {
+		return vs[0].([]NamespaceDiscoveredStreamResponse)[vs[1].(int)]
+	}).(NamespaceDiscoveredStreamResponseOutput)
+}
+
+// Defines the event properties.
+type NamespaceEvent struct {
+	// Array of data points that are part of the event. Each data point can have a per-data point configuration.
+	DataPoints []NamespaceEventDataPoint `pulumi:"dataPoints"`
+	// Destinations for an event.
+	Destinations []interface{} `pulumi:"destinations"`
+	// Stringified JSON that contains connector-specific configuration for the event. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+	EventConfiguration *string `pulumi:"eventConfiguration"`
+	// The address of the notifier of the event in the asset (e.g. URL) so that a client can access the event on the asset.
+	EventNotifier string `pulumi:"eventNotifier"`
+	// The name of the event.
+	Name string `pulumi:"name"`
+	// URI or type definition ID.
+	TypeRef *string `pulumi:"typeRef"`
+}
+
+// NamespaceEventInput is an input type that accepts NamespaceEventArgs and NamespaceEventOutput values.
+// You can construct a concrete instance of `NamespaceEventInput` via:
+//
+//	NamespaceEventArgs{...}
+type NamespaceEventInput interface {
+	pulumi.Input
+
+	ToNamespaceEventOutput() NamespaceEventOutput
+	ToNamespaceEventOutputWithContext(context.Context) NamespaceEventOutput
+}
+
+// Defines the event properties.
+type NamespaceEventArgs struct {
+	// Array of data points that are part of the event. Each data point can have a per-data point configuration.
+	DataPoints NamespaceEventDataPointArrayInput `pulumi:"dataPoints"`
+	// Destinations for an event.
+	Destinations pulumi.ArrayInput `pulumi:"destinations"`
+	// Stringified JSON that contains connector-specific configuration for the event. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+	EventConfiguration pulumi.StringPtrInput `pulumi:"eventConfiguration"`
+	// The address of the notifier of the event in the asset (e.g. URL) so that a client can access the event on the asset.
+	EventNotifier pulumi.StringInput `pulumi:"eventNotifier"`
+	// The name of the event.
+	Name pulumi.StringInput `pulumi:"name"`
+	// URI or type definition ID.
+	TypeRef pulumi.StringPtrInput `pulumi:"typeRef"`
+}
+
+func (NamespaceEventArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceEvent)(nil)).Elem()
+}
+
+func (i NamespaceEventArgs) ToNamespaceEventOutput() NamespaceEventOutput {
+	return i.ToNamespaceEventOutputWithContext(context.Background())
+}
+
+func (i NamespaceEventArgs) ToNamespaceEventOutputWithContext(ctx context.Context) NamespaceEventOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceEventOutput)
+}
+
+// NamespaceEventArrayInput is an input type that accepts NamespaceEventArray and NamespaceEventArrayOutput values.
+// You can construct a concrete instance of `NamespaceEventArrayInput` via:
+//
+//	NamespaceEventArray{ NamespaceEventArgs{...} }
+type NamespaceEventArrayInput interface {
+	pulumi.Input
+
+	ToNamespaceEventArrayOutput() NamespaceEventArrayOutput
+	ToNamespaceEventArrayOutputWithContext(context.Context) NamespaceEventArrayOutput
+}
+
+type NamespaceEventArray []NamespaceEventInput
+
+func (NamespaceEventArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceEvent)(nil)).Elem()
+}
+
+func (i NamespaceEventArray) ToNamespaceEventArrayOutput() NamespaceEventArrayOutput {
+	return i.ToNamespaceEventArrayOutputWithContext(context.Background())
+}
+
+func (i NamespaceEventArray) ToNamespaceEventArrayOutputWithContext(ctx context.Context) NamespaceEventArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceEventArrayOutput)
+}
+
+// Defines the event properties.
+type NamespaceEventOutput struct{ *pulumi.OutputState }
+
+func (NamespaceEventOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceEvent)(nil)).Elem()
+}
+
+func (o NamespaceEventOutput) ToNamespaceEventOutput() NamespaceEventOutput {
+	return o
+}
+
+func (o NamespaceEventOutput) ToNamespaceEventOutputWithContext(ctx context.Context) NamespaceEventOutput {
+	return o
+}
+
+// Array of data points that are part of the event. Each data point can have a per-data point configuration.
+func (o NamespaceEventOutput) DataPoints() NamespaceEventDataPointArrayOutput {
+	return o.ApplyT(func(v NamespaceEvent) []NamespaceEventDataPoint { return v.DataPoints }).(NamespaceEventDataPointArrayOutput)
+}
+
+// Destinations for an event.
+func (o NamespaceEventOutput) Destinations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v NamespaceEvent) []interface{} { return v.Destinations }).(pulumi.ArrayOutput)
+}
+
+// Stringified JSON that contains connector-specific configuration for the event. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+func (o NamespaceEventOutput) EventConfiguration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceEvent) *string { return v.EventConfiguration }).(pulumi.StringPtrOutput)
+}
+
+// The address of the notifier of the event in the asset (e.g. URL) so that a client can access the event on the asset.
+func (o NamespaceEventOutput) EventNotifier() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceEvent) string { return v.EventNotifier }).(pulumi.StringOutput)
+}
+
+// The name of the event.
+func (o NamespaceEventOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceEvent) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// URI or type definition ID.
+func (o NamespaceEventOutput) TypeRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceEvent) *string { return v.TypeRef }).(pulumi.StringPtrOutput)
+}
+
+type NamespaceEventArrayOutput struct{ *pulumi.OutputState }
+
+func (NamespaceEventArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceEvent)(nil)).Elem()
+}
+
+func (o NamespaceEventArrayOutput) ToNamespaceEventArrayOutput() NamespaceEventArrayOutput {
+	return o
+}
+
+func (o NamespaceEventArrayOutput) ToNamespaceEventArrayOutputWithContext(ctx context.Context) NamespaceEventArrayOutput {
+	return o
+}
+
+func (o NamespaceEventArrayOutput) Index(i pulumi.IntInput) NamespaceEventOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamespaceEvent {
+		return vs[0].([]NamespaceEvent)[vs[1].(int)]
+	}).(NamespaceEventOutput)
+}
+
+// Defines the event data point properties.
+type NamespaceEventDataPoint struct {
+	// Stringified JSON that contains connector-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+	DataPointConfiguration *string `pulumi:"dataPointConfiguration"`
+	// The address of the source of the data in the asset (e.g. URL) so that a client can access the data source on the asset.
+	DataSource string `pulumi:"dataSource"`
+	// The name of the data point.
+	Name string `pulumi:"name"`
+}
+
+// NamespaceEventDataPointInput is an input type that accepts NamespaceEventDataPointArgs and NamespaceEventDataPointOutput values.
+// You can construct a concrete instance of `NamespaceEventDataPointInput` via:
+//
+//	NamespaceEventDataPointArgs{...}
+type NamespaceEventDataPointInput interface {
+	pulumi.Input
+
+	ToNamespaceEventDataPointOutput() NamespaceEventDataPointOutput
+	ToNamespaceEventDataPointOutputWithContext(context.Context) NamespaceEventDataPointOutput
+}
+
+// Defines the event data point properties.
+type NamespaceEventDataPointArgs struct {
+	// Stringified JSON that contains connector-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+	DataPointConfiguration pulumi.StringPtrInput `pulumi:"dataPointConfiguration"`
+	// The address of the source of the data in the asset (e.g. URL) so that a client can access the data source on the asset.
+	DataSource pulumi.StringInput `pulumi:"dataSource"`
+	// The name of the data point.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (NamespaceEventDataPointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceEventDataPoint)(nil)).Elem()
+}
+
+func (i NamespaceEventDataPointArgs) ToNamespaceEventDataPointOutput() NamespaceEventDataPointOutput {
+	return i.ToNamespaceEventDataPointOutputWithContext(context.Background())
+}
+
+func (i NamespaceEventDataPointArgs) ToNamespaceEventDataPointOutputWithContext(ctx context.Context) NamespaceEventDataPointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceEventDataPointOutput)
+}
+
+// NamespaceEventDataPointArrayInput is an input type that accepts NamespaceEventDataPointArray and NamespaceEventDataPointArrayOutput values.
+// You can construct a concrete instance of `NamespaceEventDataPointArrayInput` via:
+//
+//	NamespaceEventDataPointArray{ NamespaceEventDataPointArgs{...} }
+type NamespaceEventDataPointArrayInput interface {
+	pulumi.Input
+
+	ToNamespaceEventDataPointArrayOutput() NamespaceEventDataPointArrayOutput
+	ToNamespaceEventDataPointArrayOutputWithContext(context.Context) NamespaceEventDataPointArrayOutput
+}
+
+type NamespaceEventDataPointArray []NamespaceEventDataPointInput
+
+func (NamespaceEventDataPointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceEventDataPoint)(nil)).Elem()
+}
+
+func (i NamespaceEventDataPointArray) ToNamespaceEventDataPointArrayOutput() NamespaceEventDataPointArrayOutput {
+	return i.ToNamespaceEventDataPointArrayOutputWithContext(context.Background())
+}
+
+func (i NamespaceEventDataPointArray) ToNamespaceEventDataPointArrayOutputWithContext(ctx context.Context) NamespaceEventDataPointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceEventDataPointArrayOutput)
+}
+
+// Defines the event data point properties.
+type NamespaceEventDataPointOutput struct{ *pulumi.OutputState }
+
+func (NamespaceEventDataPointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceEventDataPoint)(nil)).Elem()
+}
+
+func (o NamespaceEventDataPointOutput) ToNamespaceEventDataPointOutput() NamespaceEventDataPointOutput {
+	return o
+}
+
+func (o NamespaceEventDataPointOutput) ToNamespaceEventDataPointOutputWithContext(ctx context.Context) NamespaceEventDataPointOutput {
+	return o
+}
+
+// Stringified JSON that contains connector-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+func (o NamespaceEventDataPointOutput) DataPointConfiguration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceEventDataPoint) *string { return v.DataPointConfiguration }).(pulumi.StringPtrOutput)
+}
+
+// The address of the source of the data in the asset (e.g. URL) so that a client can access the data source on the asset.
+func (o NamespaceEventDataPointOutput) DataSource() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceEventDataPoint) string { return v.DataSource }).(pulumi.StringOutput)
+}
+
+// The name of the data point.
+func (o NamespaceEventDataPointOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceEventDataPoint) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type NamespaceEventDataPointArrayOutput struct{ *pulumi.OutputState }
+
+func (NamespaceEventDataPointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceEventDataPoint)(nil)).Elem()
+}
+
+func (o NamespaceEventDataPointArrayOutput) ToNamespaceEventDataPointArrayOutput() NamespaceEventDataPointArrayOutput {
+	return o
+}
+
+func (o NamespaceEventDataPointArrayOutput) ToNamespaceEventDataPointArrayOutputWithContext(ctx context.Context) NamespaceEventDataPointArrayOutput {
+	return o
+}
+
+func (o NamespaceEventDataPointArrayOutput) Index(i pulumi.IntInput) NamespaceEventDataPointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamespaceEventDataPoint {
+		return vs[0].([]NamespaceEventDataPoint)[vs[1].(int)]
+	}).(NamespaceEventDataPointOutput)
+}
+
+// Defines the event data point properties.
+type NamespaceEventDataPointResponse struct {
+	// Stringified JSON that contains connector-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+	DataPointConfiguration *string `pulumi:"dataPointConfiguration"`
+	// The address of the source of the data in the asset (e.g. URL) so that a client can access the data source on the asset.
+	DataSource string `pulumi:"dataSource"`
+	// The name of the data point.
+	Name string `pulumi:"name"`
+}
+
+// Defines the event data point properties.
+type NamespaceEventDataPointResponseOutput struct{ *pulumi.OutputState }
+
+func (NamespaceEventDataPointResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceEventDataPointResponse)(nil)).Elem()
+}
+
+func (o NamespaceEventDataPointResponseOutput) ToNamespaceEventDataPointResponseOutput() NamespaceEventDataPointResponseOutput {
+	return o
+}
+
+func (o NamespaceEventDataPointResponseOutput) ToNamespaceEventDataPointResponseOutputWithContext(ctx context.Context) NamespaceEventDataPointResponseOutput {
+	return o
+}
+
+// Stringified JSON that contains connector-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+func (o NamespaceEventDataPointResponseOutput) DataPointConfiguration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceEventDataPointResponse) *string { return v.DataPointConfiguration }).(pulumi.StringPtrOutput)
+}
+
+// The address of the source of the data in the asset (e.g. URL) so that a client can access the data source on the asset.
+func (o NamespaceEventDataPointResponseOutput) DataSource() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceEventDataPointResponse) string { return v.DataSource }).(pulumi.StringOutput)
+}
+
+// The name of the data point.
+func (o NamespaceEventDataPointResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceEventDataPointResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type NamespaceEventDataPointResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (NamespaceEventDataPointResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceEventDataPointResponse)(nil)).Elem()
+}
+
+func (o NamespaceEventDataPointResponseArrayOutput) ToNamespaceEventDataPointResponseArrayOutput() NamespaceEventDataPointResponseArrayOutput {
+	return o
+}
+
+func (o NamespaceEventDataPointResponseArrayOutput) ToNamespaceEventDataPointResponseArrayOutputWithContext(ctx context.Context) NamespaceEventDataPointResponseArrayOutput {
+	return o
+}
+
+func (o NamespaceEventDataPointResponseArrayOutput) Index(i pulumi.IntInput) NamespaceEventDataPointResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamespaceEventDataPointResponse {
+		return vs[0].([]NamespaceEventDataPointResponse)[vs[1].(int)]
+	}).(NamespaceEventDataPointResponseOutput)
+}
+
+// Defines the event properties.
+type NamespaceEventResponse struct {
+	// Array of data points that are part of the event. Each data point can have a per-data point configuration.
+	DataPoints []NamespaceEventDataPointResponse `pulumi:"dataPoints"`
+	// Destinations for an event.
+	Destinations []interface{} `pulumi:"destinations"`
+	// Stringified JSON that contains connector-specific configuration for the event. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+	EventConfiguration *string `pulumi:"eventConfiguration"`
+	// The address of the notifier of the event in the asset (e.g. URL) so that a client can access the event on the asset.
+	EventNotifier string `pulumi:"eventNotifier"`
+	// The name of the event.
+	Name string `pulumi:"name"`
+	// URI or type definition ID.
+	TypeRef *string `pulumi:"typeRef"`
+}
+
+// Defines the event properties.
+type NamespaceEventResponseOutput struct{ *pulumi.OutputState }
+
+func (NamespaceEventResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceEventResponse)(nil)).Elem()
+}
+
+func (o NamespaceEventResponseOutput) ToNamespaceEventResponseOutput() NamespaceEventResponseOutput {
+	return o
+}
+
+func (o NamespaceEventResponseOutput) ToNamespaceEventResponseOutputWithContext(ctx context.Context) NamespaceEventResponseOutput {
+	return o
+}
+
+// Array of data points that are part of the event. Each data point can have a per-data point configuration.
+func (o NamespaceEventResponseOutput) DataPoints() NamespaceEventDataPointResponseArrayOutput {
+	return o.ApplyT(func(v NamespaceEventResponse) []NamespaceEventDataPointResponse { return v.DataPoints }).(NamespaceEventDataPointResponseArrayOutput)
+}
+
+// Destinations for an event.
+func (o NamespaceEventResponseOutput) Destinations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v NamespaceEventResponse) []interface{} { return v.Destinations }).(pulumi.ArrayOutput)
+}
+
+// Stringified JSON that contains connector-specific configuration for the event. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+func (o NamespaceEventResponseOutput) EventConfiguration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceEventResponse) *string { return v.EventConfiguration }).(pulumi.StringPtrOutput)
+}
+
+// The address of the notifier of the event in the asset (e.g. URL) so that a client can access the event on the asset.
+func (o NamespaceEventResponseOutput) EventNotifier() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceEventResponse) string { return v.EventNotifier }).(pulumi.StringOutput)
+}
+
+// The name of the event.
+func (o NamespaceEventResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceEventResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// URI or type definition ID.
+func (o NamespaceEventResponseOutput) TypeRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceEventResponse) *string { return v.TypeRef }).(pulumi.StringPtrOutput)
+}
+
+type NamespaceEventResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (NamespaceEventResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceEventResponse)(nil)).Elem()
+}
+
+func (o NamespaceEventResponseArrayOutput) ToNamespaceEventResponseArrayOutput() NamespaceEventResponseArrayOutput {
+	return o
+}
+
+func (o NamespaceEventResponseArrayOutput) ToNamespaceEventResponseArrayOutputWithContext(ctx context.Context) NamespaceEventResponseArrayOutput {
+	return o
+}
+
+func (o NamespaceEventResponseArrayOutput) Index(i pulumi.IntInput) NamespaceEventResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamespaceEventResponse {
+		return vs[0].([]NamespaceEventResponse)[vs[1].(int)]
+	}).(NamespaceEventResponseOutput)
+}
+
+// Defines the message schema reference properties.
+type NamespaceMessageSchemaReferenceResponse struct {
+	// The message schema name.
+	SchemaName string `pulumi:"schemaName"`
+	// The message schema registry namespace.
+	SchemaRegistryNamespace string `pulumi:"schemaRegistryNamespace"`
+	// The message schema version.
+	SchemaVersion string `pulumi:"schemaVersion"`
+}
+
+// Defines the message schema reference properties.
+type NamespaceMessageSchemaReferenceResponseOutput struct{ *pulumi.OutputState }
+
+func (NamespaceMessageSchemaReferenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceMessageSchemaReferenceResponse)(nil)).Elem()
+}
+
+func (o NamespaceMessageSchemaReferenceResponseOutput) ToNamespaceMessageSchemaReferenceResponseOutput() NamespaceMessageSchemaReferenceResponseOutput {
+	return o
+}
+
+func (o NamespaceMessageSchemaReferenceResponseOutput) ToNamespaceMessageSchemaReferenceResponseOutputWithContext(ctx context.Context) NamespaceMessageSchemaReferenceResponseOutput {
+	return o
+}
+
+// The message schema name.
+func (o NamespaceMessageSchemaReferenceResponseOutput) SchemaName() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceMessageSchemaReferenceResponse) string { return v.SchemaName }).(pulumi.StringOutput)
+}
+
+// The message schema registry namespace.
+func (o NamespaceMessageSchemaReferenceResponseOutput) SchemaRegistryNamespace() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceMessageSchemaReferenceResponse) string { return v.SchemaRegistryNamespace }).(pulumi.StringOutput)
+}
+
+// The message schema version.
+func (o NamespaceMessageSchemaReferenceResponseOutput) SchemaVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceMessageSchemaReferenceResponse) string { return v.SchemaVersion }).(pulumi.StringOutput)
+}
+
+// Defines the stream properties.
+type NamespaceStream struct {
+	// Destinations for a stream.
+	Destinations []interface{} `pulumi:"destinations"`
+	// Name of the stream definition.
+	Name string `pulumi:"name"`
+	// Stringified JSON that contains connector-specific configuration for the specific stream.
+	StreamConfiguration *string `pulumi:"streamConfiguration"`
+	// URI or type definition ID.
+	TypeRef *string `pulumi:"typeRef"`
+}
+
+// NamespaceStreamInput is an input type that accepts NamespaceStreamArgs and NamespaceStreamOutput values.
+// You can construct a concrete instance of `NamespaceStreamInput` via:
+//
+//	NamespaceStreamArgs{...}
+type NamespaceStreamInput interface {
+	pulumi.Input
+
+	ToNamespaceStreamOutput() NamespaceStreamOutput
+	ToNamespaceStreamOutputWithContext(context.Context) NamespaceStreamOutput
+}
+
+// Defines the stream properties.
+type NamespaceStreamArgs struct {
+	// Destinations for a stream.
+	Destinations pulumi.ArrayInput `pulumi:"destinations"`
+	// Name of the stream definition.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Stringified JSON that contains connector-specific configuration for the specific stream.
+	StreamConfiguration pulumi.StringPtrInput `pulumi:"streamConfiguration"`
+	// URI or type definition ID.
+	TypeRef pulumi.StringPtrInput `pulumi:"typeRef"`
+}
+
+func (NamespaceStreamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceStream)(nil)).Elem()
+}
+
+func (i NamespaceStreamArgs) ToNamespaceStreamOutput() NamespaceStreamOutput {
+	return i.ToNamespaceStreamOutputWithContext(context.Background())
+}
+
+func (i NamespaceStreamArgs) ToNamespaceStreamOutputWithContext(ctx context.Context) NamespaceStreamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceStreamOutput)
+}
+
+// NamespaceStreamArrayInput is an input type that accepts NamespaceStreamArray and NamespaceStreamArrayOutput values.
+// You can construct a concrete instance of `NamespaceStreamArrayInput` via:
+//
+//	NamespaceStreamArray{ NamespaceStreamArgs{...} }
+type NamespaceStreamArrayInput interface {
+	pulumi.Input
+
+	ToNamespaceStreamArrayOutput() NamespaceStreamArrayOutput
+	ToNamespaceStreamArrayOutputWithContext(context.Context) NamespaceStreamArrayOutput
+}
+
+type NamespaceStreamArray []NamespaceStreamInput
+
+func (NamespaceStreamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceStream)(nil)).Elem()
+}
+
+func (i NamespaceStreamArray) ToNamespaceStreamArrayOutput() NamespaceStreamArrayOutput {
+	return i.ToNamespaceStreamArrayOutputWithContext(context.Background())
+}
+
+func (i NamespaceStreamArray) ToNamespaceStreamArrayOutputWithContext(ctx context.Context) NamespaceStreamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceStreamArrayOutput)
+}
+
+// Defines the stream properties.
+type NamespaceStreamOutput struct{ *pulumi.OutputState }
+
+func (NamespaceStreamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceStream)(nil)).Elem()
+}
+
+func (o NamespaceStreamOutput) ToNamespaceStreamOutput() NamespaceStreamOutput {
+	return o
+}
+
+func (o NamespaceStreamOutput) ToNamespaceStreamOutputWithContext(ctx context.Context) NamespaceStreamOutput {
+	return o
+}
+
+// Destinations for a stream.
+func (o NamespaceStreamOutput) Destinations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v NamespaceStream) []interface{} { return v.Destinations }).(pulumi.ArrayOutput)
+}
+
+// Name of the stream definition.
+func (o NamespaceStreamOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceStream) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Stringified JSON that contains connector-specific configuration for the specific stream.
+func (o NamespaceStreamOutput) StreamConfiguration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceStream) *string { return v.StreamConfiguration }).(pulumi.StringPtrOutput)
+}
+
+// URI or type definition ID.
+func (o NamespaceStreamOutput) TypeRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceStream) *string { return v.TypeRef }).(pulumi.StringPtrOutput)
+}
+
+type NamespaceStreamArrayOutput struct{ *pulumi.OutputState }
+
+func (NamespaceStreamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceStream)(nil)).Elem()
+}
+
+func (o NamespaceStreamArrayOutput) ToNamespaceStreamArrayOutput() NamespaceStreamArrayOutput {
+	return o
+}
+
+func (o NamespaceStreamArrayOutput) ToNamespaceStreamArrayOutputWithContext(ctx context.Context) NamespaceStreamArrayOutput {
+	return o
+}
+
+func (o NamespaceStreamArrayOutput) Index(i pulumi.IntInput) NamespaceStreamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamespaceStream {
+		return vs[0].([]NamespaceStream)[vs[1].(int)]
+	}).(NamespaceStreamOutput)
+}
+
+// Defines the stream properties.
+type NamespaceStreamResponse struct {
+	// Destinations for a stream.
+	Destinations []interface{} `pulumi:"destinations"`
+	// Name of the stream definition.
+	Name string `pulumi:"name"`
+	// Stringified JSON that contains connector-specific configuration for the specific stream.
+	StreamConfiguration *string `pulumi:"streamConfiguration"`
+	// URI or type definition ID.
+	TypeRef *string `pulumi:"typeRef"`
+}
+
+// Defines the stream properties.
+type NamespaceStreamResponseOutput struct{ *pulumi.OutputState }
+
+func (NamespaceStreamResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceStreamResponse)(nil)).Elem()
+}
+
+func (o NamespaceStreamResponseOutput) ToNamespaceStreamResponseOutput() NamespaceStreamResponseOutput {
+	return o
+}
+
+func (o NamespaceStreamResponseOutput) ToNamespaceStreamResponseOutputWithContext(ctx context.Context) NamespaceStreamResponseOutput {
+	return o
+}
+
+// Destinations for a stream.
+func (o NamespaceStreamResponseOutput) Destinations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v NamespaceStreamResponse) []interface{} { return v.Destinations }).(pulumi.ArrayOutput)
+}
+
+// Name of the stream definition.
+func (o NamespaceStreamResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceStreamResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Stringified JSON that contains connector-specific configuration for the specific stream.
+func (o NamespaceStreamResponseOutput) StreamConfiguration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceStreamResponse) *string { return v.StreamConfiguration }).(pulumi.StringPtrOutput)
+}
+
+// URI or type definition ID.
+func (o NamespaceStreamResponseOutput) TypeRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceStreamResponse) *string { return v.TypeRef }).(pulumi.StringPtrOutput)
+}
+
+type NamespaceStreamResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (NamespaceStreamResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceStreamResponse)(nil)).Elem()
+}
+
+func (o NamespaceStreamResponseArrayOutput) ToNamespaceStreamResponseArrayOutput() NamespaceStreamResponseArrayOutput {
+	return o
+}
+
+func (o NamespaceStreamResponseArrayOutput) ToNamespaceStreamResponseArrayOutputWithContext(ctx context.Context) NamespaceStreamResponseArrayOutput {
+	return o
+}
+
+func (o NamespaceStreamResponseArrayOutput) Index(i pulumi.IntInput) NamespaceStreamResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamespaceStreamResponse {
+		return vs[0].([]NamespaceStreamResponse)[vs[1].(int)]
+	}).(NamespaceStreamResponseOutput)
+}
+
+// Property bag contains the device's outbound endpoints
+type OutboundEndpoints struct {
+	// Endpoints the device can connect to.
+	Assigned map[string]DeviceMessagingEndpoint `pulumi:"assigned"`
+	// Set of most recently removed endpoints.
+	Unassigned map[string]DeviceMessagingEndpoint `pulumi:"unassigned"`
+}
+
+// OutboundEndpointsInput is an input type that accepts OutboundEndpointsArgs and OutboundEndpointsOutput values.
+// You can construct a concrete instance of `OutboundEndpointsInput` via:
+//
+//	OutboundEndpointsArgs{...}
+type OutboundEndpointsInput interface {
+	pulumi.Input
+
+	ToOutboundEndpointsOutput() OutboundEndpointsOutput
+	ToOutboundEndpointsOutputWithContext(context.Context) OutboundEndpointsOutput
+}
+
+// Property bag contains the device's outbound endpoints
+type OutboundEndpointsArgs struct {
+	// Endpoints the device can connect to.
+	Assigned DeviceMessagingEndpointMapInput `pulumi:"assigned"`
+	// Set of most recently removed endpoints.
+	Unassigned DeviceMessagingEndpointMapInput `pulumi:"unassigned"`
+}
+
+func (OutboundEndpointsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OutboundEndpoints)(nil)).Elem()
+}
+
+func (i OutboundEndpointsArgs) ToOutboundEndpointsOutput() OutboundEndpointsOutput {
+	return i.ToOutboundEndpointsOutputWithContext(context.Background())
+}
+
+func (i OutboundEndpointsArgs) ToOutboundEndpointsOutputWithContext(ctx context.Context) OutboundEndpointsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OutboundEndpointsOutput)
+}
+
+func (i OutboundEndpointsArgs) ToOutboundEndpointsPtrOutput() OutboundEndpointsPtrOutput {
+	return i.ToOutboundEndpointsPtrOutputWithContext(context.Background())
+}
+
+func (i OutboundEndpointsArgs) ToOutboundEndpointsPtrOutputWithContext(ctx context.Context) OutboundEndpointsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OutboundEndpointsOutput).ToOutboundEndpointsPtrOutputWithContext(ctx)
+}
+
+// OutboundEndpointsPtrInput is an input type that accepts OutboundEndpointsArgs, OutboundEndpointsPtr and OutboundEndpointsPtrOutput values.
+// You can construct a concrete instance of `OutboundEndpointsPtrInput` via:
+//
+//	        OutboundEndpointsArgs{...}
+//
+//	or:
+//
+//	        nil
+type OutboundEndpointsPtrInput interface {
+	pulumi.Input
+
+	ToOutboundEndpointsPtrOutput() OutboundEndpointsPtrOutput
+	ToOutboundEndpointsPtrOutputWithContext(context.Context) OutboundEndpointsPtrOutput
+}
+
+type outboundEndpointsPtrType OutboundEndpointsArgs
+
+func OutboundEndpointsPtr(v *OutboundEndpointsArgs) OutboundEndpointsPtrInput {
+	return (*outboundEndpointsPtrType)(v)
+}
+
+func (*outboundEndpointsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OutboundEndpoints)(nil)).Elem()
+}
+
+func (i *outboundEndpointsPtrType) ToOutboundEndpointsPtrOutput() OutboundEndpointsPtrOutput {
+	return i.ToOutboundEndpointsPtrOutputWithContext(context.Background())
+}
+
+func (i *outboundEndpointsPtrType) ToOutboundEndpointsPtrOutputWithContext(ctx context.Context) OutboundEndpointsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OutboundEndpointsPtrOutput)
+}
+
+// Property bag contains the device's outbound endpoints
+type OutboundEndpointsOutput struct{ *pulumi.OutputState }
+
+func (OutboundEndpointsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OutboundEndpoints)(nil)).Elem()
+}
+
+func (o OutboundEndpointsOutput) ToOutboundEndpointsOutput() OutboundEndpointsOutput {
+	return o
+}
+
+func (o OutboundEndpointsOutput) ToOutboundEndpointsOutputWithContext(ctx context.Context) OutboundEndpointsOutput {
+	return o
+}
+
+func (o OutboundEndpointsOutput) ToOutboundEndpointsPtrOutput() OutboundEndpointsPtrOutput {
+	return o.ToOutboundEndpointsPtrOutputWithContext(context.Background())
+}
+
+func (o OutboundEndpointsOutput) ToOutboundEndpointsPtrOutputWithContext(ctx context.Context) OutboundEndpointsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OutboundEndpoints) *OutboundEndpoints {
+		return &v
+	}).(OutboundEndpointsPtrOutput)
+}
+
+// Endpoints the device can connect to.
+func (o OutboundEndpointsOutput) Assigned() DeviceMessagingEndpointMapOutput {
+	return o.ApplyT(func(v OutboundEndpoints) map[string]DeviceMessagingEndpoint { return v.Assigned }).(DeviceMessagingEndpointMapOutput)
+}
+
+// Set of most recently removed endpoints.
+func (o OutboundEndpointsOutput) Unassigned() DeviceMessagingEndpointMapOutput {
+	return o.ApplyT(func(v OutboundEndpoints) map[string]DeviceMessagingEndpoint { return v.Unassigned }).(DeviceMessagingEndpointMapOutput)
+}
+
+type OutboundEndpointsPtrOutput struct{ *pulumi.OutputState }
+
+func (OutboundEndpointsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OutboundEndpoints)(nil)).Elem()
+}
+
+func (o OutboundEndpointsPtrOutput) ToOutboundEndpointsPtrOutput() OutboundEndpointsPtrOutput {
+	return o
+}
+
+func (o OutboundEndpointsPtrOutput) ToOutboundEndpointsPtrOutputWithContext(ctx context.Context) OutboundEndpointsPtrOutput {
+	return o
+}
+
+func (o OutboundEndpointsPtrOutput) Elem() OutboundEndpointsOutput {
+	return o.ApplyT(func(v *OutboundEndpoints) OutboundEndpoints {
+		if v != nil {
+			return *v
+		}
+		var ret OutboundEndpoints
+		return ret
+	}).(OutboundEndpointsOutput)
+}
+
+// Endpoints the device can connect to.
+func (o OutboundEndpointsPtrOutput) Assigned() DeviceMessagingEndpointMapOutput {
+	return o.ApplyT(func(v *OutboundEndpoints) map[string]DeviceMessagingEndpoint {
+		if v == nil {
+			return nil
+		}
+		return v.Assigned
+	}).(DeviceMessagingEndpointMapOutput)
+}
+
+// Set of most recently removed endpoints.
+func (o OutboundEndpointsPtrOutput) Unassigned() DeviceMessagingEndpointMapOutput {
+	return o.ApplyT(func(v *OutboundEndpoints) map[string]DeviceMessagingEndpoint {
+		if v == nil {
+			return nil
+		}
+		return v.Unassigned
+	}).(DeviceMessagingEndpointMapOutput)
+}
+
+// Property bag contains the device's outbound endpoints
+type OutboundEndpointsResponse struct {
+	// Endpoints the device can connect to.
+	Assigned map[string]DeviceMessagingEndpointResponse `pulumi:"assigned"`
+	// Set of most recently removed endpoints.
+	Unassigned map[string]DeviceMessagingEndpointResponse `pulumi:"unassigned"`
+}
+
+// Property bag contains the device's outbound endpoints
+type OutboundEndpointsResponseOutput struct{ *pulumi.OutputState }
+
+func (OutboundEndpointsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OutboundEndpointsResponse)(nil)).Elem()
+}
+
+func (o OutboundEndpointsResponseOutput) ToOutboundEndpointsResponseOutput() OutboundEndpointsResponseOutput {
+	return o
+}
+
+func (o OutboundEndpointsResponseOutput) ToOutboundEndpointsResponseOutputWithContext(ctx context.Context) OutboundEndpointsResponseOutput {
+	return o
+}
+
+// Endpoints the device can connect to.
+func (o OutboundEndpointsResponseOutput) Assigned() DeviceMessagingEndpointResponseMapOutput {
+	return o.ApplyT(func(v OutboundEndpointsResponse) map[string]DeviceMessagingEndpointResponse { return v.Assigned }).(DeviceMessagingEndpointResponseMapOutput)
+}
+
+// Set of most recently removed endpoints.
+func (o OutboundEndpointsResponseOutput) Unassigned() DeviceMessagingEndpointResponseMapOutput {
+	return o.ApplyT(func(v OutboundEndpointsResponse) map[string]DeviceMessagingEndpointResponse { return v.Unassigned }).(DeviceMessagingEndpointResponseMapOutput)
+}
+
+type OutboundEndpointsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (OutboundEndpointsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OutboundEndpointsResponse)(nil)).Elem()
+}
+
+func (o OutboundEndpointsResponsePtrOutput) ToOutboundEndpointsResponsePtrOutput() OutboundEndpointsResponsePtrOutput {
+	return o
+}
+
+func (o OutboundEndpointsResponsePtrOutput) ToOutboundEndpointsResponsePtrOutputWithContext(ctx context.Context) OutboundEndpointsResponsePtrOutput {
+	return o
+}
+
+func (o OutboundEndpointsResponsePtrOutput) Elem() OutboundEndpointsResponseOutput {
+	return o.ApplyT(func(v *OutboundEndpointsResponse) OutboundEndpointsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret OutboundEndpointsResponse
+		return ret
+	}).(OutboundEndpointsResponseOutput)
+}
+
+// Endpoints the device can connect to.
+func (o OutboundEndpointsResponsePtrOutput) Assigned() DeviceMessagingEndpointResponseMapOutput {
+	return o.ApplyT(func(v *OutboundEndpointsResponse) map[string]DeviceMessagingEndpointResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Assigned
+	}).(DeviceMessagingEndpointResponseMapOutput)
+}
+
+// Set of most recently removed endpoints.
+func (o OutboundEndpointsResponsePtrOutput) Unassigned() DeviceMessagingEndpointResponseMapOutput {
+	return o.ApplyT(func(v *OutboundEndpointsResponse) map[string]DeviceMessagingEndpointResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Unassigned
+	}).(DeviceMessagingEndpointResponseMapOutput)
+}
+
+// Defines the status config properties.
+type StatusConfigResponse struct {
+	// Object to transfer and persist errors that originate from the edge.
+	Error StatusErrorResponse `pulumi:"error"`
+	// A read-only timestamp indicating the last time the configuration has been modified from the perspective of the current actual (edge) state of the CRD. Edge would be the only writer of this value and would sync back up to the cloud.
+	LastTransitionTime string `pulumi:"lastTransitionTime"`
+	// A read-only incremental counter indicating the number of times the configuration has been modified from the perspective of the current actual (edge) state of the CRD. Edge would be the only writer of this value and would sync back up to the cloud. In steady state, this should equal version.
+	Version float64 `pulumi:"version"`
+}
+
+// Defines the status config properties.
+type StatusConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (StatusConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatusConfigResponse)(nil)).Elem()
+}
+
+func (o StatusConfigResponseOutput) ToStatusConfigResponseOutput() StatusConfigResponseOutput {
+	return o
+}
+
+func (o StatusConfigResponseOutput) ToStatusConfigResponseOutputWithContext(ctx context.Context) StatusConfigResponseOutput {
+	return o
+}
+
+// Object to transfer and persist errors that originate from the edge.
+func (o StatusConfigResponseOutput) Error() StatusErrorResponseOutput {
+	return o.ApplyT(func(v StatusConfigResponse) StatusErrorResponse { return v.Error }).(StatusErrorResponseOutput)
+}
+
+// A read-only timestamp indicating the last time the configuration has been modified from the perspective of the current actual (edge) state of the CRD. Edge would be the only writer of this value and would sync back up to the cloud.
+func (o StatusConfigResponseOutput) LastTransitionTime() pulumi.StringOutput {
+	return o.ApplyT(func(v StatusConfigResponse) string { return v.LastTransitionTime }).(pulumi.StringOutput)
+}
+
+// A read-only incremental counter indicating the number of times the configuration has been modified from the perspective of the current actual (edge) state of the CRD. Edge would be the only writer of this value and would sync back up to the cloud. In steady state, this should equal version.
+func (o StatusConfigResponseOutput) Version() pulumi.Float64Output {
+	return o.ApplyT(func(v StatusConfigResponse) float64 { return v.Version }).(pulumi.Float64Output)
+}
+
+// Defines the status config error properties.
+type StatusErrorResponse struct {
+	// Error code for classification of errors (ex: '400', '404', '500', etc.).
+	Code string `pulumi:"code"`
+	// Array of error details that describe the status of each error.
+	Details []ErrorDetailsResponse `pulumi:"details"`
+	// Human-readable helpful error message to provide additional context for error (e.g.,: “Capability ID 'foo' does not exist”).
+	Message string `pulumi:"message"`
+}
+
+// Defines the status config error properties.
+type StatusErrorResponseOutput struct{ *pulumi.OutputState }
+
+func (StatusErrorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatusErrorResponse)(nil)).Elem()
+}
+
+func (o StatusErrorResponseOutput) ToStatusErrorResponseOutput() StatusErrorResponseOutput {
+	return o
+}
+
+func (o StatusErrorResponseOutput) ToStatusErrorResponseOutputWithContext(ctx context.Context) StatusErrorResponseOutput {
+	return o
+}
+
+// Error code for classification of errors (ex: '400', '404', '500', etc.).
+func (o StatusErrorResponseOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v StatusErrorResponse) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// Array of error details that describe the status of each error.
+func (o StatusErrorResponseOutput) Details() ErrorDetailsResponseArrayOutput {
+	return o.ApplyT(func(v StatusErrorResponse) []ErrorDetailsResponse { return v.Details }).(ErrorDetailsResponseArrayOutput)
+}
+
+// Human-readable helpful error message to provide additional context for error (e.g.,: “Capability ID 'foo' does not exist”).
+func (o StatusErrorResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v StatusErrorResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// The configuration for a storage destination.
+type StorageDestinationConfiguration struct {
+	// The storage destination path.
+	Path string `pulumi:"path"`
+}
+
+// StorageDestinationConfigurationInput is an input type that accepts StorageDestinationConfigurationArgs and StorageDestinationConfigurationOutput values.
+// You can construct a concrete instance of `StorageDestinationConfigurationInput` via:
+//
+//	StorageDestinationConfigurationArgs{...}
+type StorageDestinationConfigurationInput interface {
+	pulumi.Input
+
+	ToStorageDestinationConfigurationOutput() StorageDestinationConfigurationOutput
+	ToStorageDestinationConfigurationOutputWithContext(context.Context) StorageDestinationConfigurationOutput
+}
+
+// The configuration for a storage destination.
+type StorageDestinationConfigurationArgs struct {
+	// The storage destination path.
+	Path pulumi.StringInput `pulumi:"path"`
+}
+
+func (StorageDestinationConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageDestinationConfiguration)(nil)).Elem()
+}
+
+func (i StorageDestinationConfigurationArgs) ToStorageDestinationConfigurationOutput() StorageDestinationConfigurationOutput {
+	return i.ToStorageDestinationConfigurationOutputWithContext(context.Background())
+}
+
+func (i StorageDestinationConfigurationArgs) ToStorageDestinationConfigurationOutputWithContext(ctx context.Context) StorageDestinationConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageDestinationConfigurationOutput)
+}
+
+// The configuration for a storage destination.
+type StorageDestinationConfigurationOutput struct{ *pulumi.OutputState }
+
+func (StorageDestinationConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageDestinationConfiguration)(nil)).Elem()
+}
+
+func (o StorageDestinationConfigurationOutput) ToStorageDestinationConfigurationOutput() StorageDestinationConfigurationOutput {
+	return o
+}
+
+func (o StorageDestinationConfigurationOutput) ToStorageDestinationConfigurationOutputWithContext(ctx context.Context) StorageDestinationConfigurationOutput {
+	return o
+}
+
+// The storage destination path.
+func (o StorageDestinationConfigurationOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageDestinationConfiguration) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// The configuration for a storage destination.
+type StorageDestinationConfigurationResponse struct {
+	// The storage destination path.
+	Path string `pulumi:"path"`
+}
+
+// The configuration for a storage destination.
+type StorageDestinationConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (StorageDestinationConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageDestinationConfigurationResponse)(nil)).Elem()
+}
+
+func (o StorageDestinationConfigurationResponseOutput) ToStorageDestinationConfigurationResponseOutput() StorageDestinationConfigurationResponseOutput {
+	return o
+}
+
+func (o StorageDestinationConfigurationResponseOutput) ToStorageDestinationConfigurationResponseOutputWithContext(ctx context.Context) StorageDestinationConfigurationResponseOutput {
+	return o
+}
+
+// The storage destination path.
+func (o StorageDestinationConfigurationResponseOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageDestinationConfigurationResponse) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// The type for a MQTT destination.
+type StreamMqttDestination struct {
+	// The MQTT destination configuration.
+	Configuration MqttDestinationConfiguration `pulumi:"configuration"`
+	// The set of supported stream destinations for an asset.
+	// Expected value is 'Mqtt'.
+	Target string `pulumi:"target"`
+}
+
+// Defaults sets the appropriate defaults for StreamMqttDestination
+func (val *StreamMqttDestination) Defaults() *StreamMqttDestination {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Configuration = *tmp.Configuration.Defaults()
+
+	return &tmp
+}
+
+// StreamMqttDestinationInput is an input type that accepts StreamMqttDestinationArgs and StreamMqttDestinationOutput values.
+// You can construct a concrete instance of `StreamMqttDestinationInput` via:
+//
+//	StreamMqttDestinationArgs{...}
+type StreamMqttDestinationInput interface {
+	pulumi.Input
+
+	ToStreamMqttDestinationOutput() StreamMqttDestinationOutput
+	ToStreamMqttDestinationOutputWithContext(context.Context) StreamMqttDestinationOutput
+}
+
+// The type for a MQTT destination.
+type StreamMqttDestinationArgs struct {
+	// The MQTT destination configuration.
+	Configuration MqttDestinationConfigurationInput `pulumi:"configuration"`
+	// The set of supported stream destinations for an asset.
+	// Expected value is 'Mqtt'.
+	Target pulumi.StringInput `pulumi:"target"`
+}
+
+// Defaults sets the appropriate defaults for StreamMqttDestinationArgs
+func (val *StreamMqttDestinationArgs) Defaults() *StreamMqttDestinationArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	return &tmp
+}
+func (StreamMqttDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamMqttDestination)(nil)).Elem()
+}
+
+func (i StreamMqttDestinationArgs) ToStreamMqttDestinationOutput() StreamMqttDestinationOutput {
+	return i.ToStreamMqttDestinationOutputWithContext(context.Background())
+}
+
+func (i StreamMqttDestinationArgs) ToStreamMqttDestinationOutputWithContext(ctx context.Context) StreamMqttDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamMqttDestinationOutput)
+}
+
+// The type for a MQTT destination.
+type StreamMqttDestinationOutput struct{ *pulumi.OutputState }
+
+func (StreamMqttDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamMqttDestination)(nil)).Elem()
+}
+
+func (o StreamMqttDestinationOutput) ToStreamMqttDestinationOutput() StreamMqttDestinationOutput {
+	return o
+}
+
+func (o StreamMqttDestinationOutput) ToStreamMqttDestinationOutputWithContext(ctx context.Context) StreamMqttDestinationOutput {
+	return o
+}
+
+// The MQTT destination configuration.
+func (o StreamMqttDestinationOutput) Configuration() MqttDestinationConfigurationOutput {
+	return o.ApplyT(func(v StreamMqttDestination) MqttDestinationConfiguration { return v.Configuration }).(MqttDestinationConfigurationOutput)
+}
+
+// The set of supported stream destinations for an asset.
+// Expected value is 'Mqtt'.
+func (o StreamMqttDestinationOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamMqttDestination) string { return v.Target }).(pulumi.StringOutput)
+}
+
+// The type for a MQTT destination.
+type StreamMqttDestinationResponse struct {
+	// The MQTT destination configuration.
+	Configuration MqttDestinationConfigurationResponse `pulumi:"configuration"`
+	// The set of supported stream destinations for an asset.
+	// Expected value is 'Mqtt'.
+	Target string `pulumi:"target"`
+}
+
+// Defaults sets the appropriate defaults for StreamMqttDestinationResponse
+func (val *StreamMqttDestinationResponse) Defaults() *StreamMqttDestinationResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Configuration = *tmp.Configuration.Defaults()
+
+	return &tmp
+}
+
+// The type for a MQTT destination.
+type StreamMqttDestinationResponseOutput struct{ *pulumi.OutputState }
+
+func (StreamMqttDestinationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamMqttDestinationResponse)(nil)).Elem()
+}
+
+func (o StreamMqttDestinationResponseOutput) ToStreamMqttDestinationResponseOutput() StreamMqttDestinationResponseOutput {
+	return o
+}
+
+func (o StreamMqttDestinationResponseOutput) ToStreamMqttDestinationResponseOutputWithContext(ctx context.Context) StreamMqttDestinationResponseOutput {
+	return o
+}
+
+// The MQTT destination configuration.
+func (o StreamMqttDestinationResponseOutput) Configuration() MqttDestinationConfigurationResponseOutput {
+	return o.ApplyT(func(v StreamMqttDestinationResponse) MqttDestinationConfigurationResponse { return v.Configuration }).(MqttDestinationConfigurationResponseOutput)
+}
+
+// The set of supported stream destinations for an asset.
+// Expected value is 'Mqtt'.
+func (o StreamMqttDestinationResponseOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamMqttDestinationResponse) string { return v.Target }).(pulumi.StringOutput)
+}
+
+// The type for a storage destination.
+type StreamStorageDestination struct {
+	// The storage destination configuration.
+	Configuration StorageDestinationConfiguration `pulumi:"configuration"`
+	// The set of supported stream destinations for an asset.
+	// Expected value is 'Storage'.
+	Target string `pulumi:"target"`
+}
+
+// StreamStorageDestinationInput is an input type that accepts StreamStorageDestinationArgs and StreamStorageDestinationOutput values.
+// You can construct a concrete instance of `StreamStorageDestinationInput` via:
+//
+//	StreamStorageDestinationArgs{...}
+type StreamStorageDestinationInput interface {
+	pulumi.Input
+
+	ToStreamStorageDestinationOutput() StreamStorageDestinationOutput
+	ToStreamStorageDestinationOutputWithContext(context.Context) StreamStorageDestinationOutput
+}
+
+// The type for a storage destination.
+type StreamStorageDestinationArgs struct {
+	// The storage destination configuration.
+	Configuration StorageDestinationConfigurationInput `pulumi:"configuration"`
+	// The set of supported stream destinations for an asset.
+	// Expected value is 'Storage'.
+	Target pulumi.StringInput `pulumi:"target"`
+}
+
+func (StreamStorageDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamStorageDestination)(nil)).Elem()
+}
+
+func (i StreamStorageDestinationArgs) ToStreamStorageDestinationOutput() StreamStorageDestinationOutput {
+	return i.ToStreamStorageDestinationOutputWithContext(context.Background())
+}
+
+func (i StreamStorageDestinationArgs) ToStreamStorageDestinationOutputWithContext(ctx context.Context) StreamStorageDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamStorageDestinationOutput)
+}
+
+// The type for a storage destination.
+type StreamStorageDestinationOutput struct{ *pulumi.OutputState }
+
+func (StreamStorageDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamStorageDestination)(nil)).Elem()
+}
+
+func (o StreamStorageDestinationOutput) ToStreamStorageDestinationOutput() StreamStorageDestinationOutput {
+	return o
+}
+
+func (o StreamStorageDestinationOutput) ToStreamStorageDestinationOutputWithContext(ctx context.Context) StreamStorageDestinationOutput {
+	return o
+}
+
+// The storage destination configuration.
+func (o StreamStorageDestinationOutput) Configuration() StorageDestinationConfigurationOutput {
+	return o.ApplyT(func(v StreamStorageDestination) StorageDestinationConfiguration { return v.Configuration }).(StorageDestinationConfigurationOutput)
+}
+
+// The set of supported stream destinations for an asset.
+// Expected value is 'Storage'.
+func (o StreamStorageDestinationOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamStorageDestination) string { return v.Target }).(pulumi.StringOutput)
+}
+
+// The type for a storage destination.
+type StreamStorageDestinationResponse struct {
+	// The storage destination configuration.
+	Configuration StorageDestinationConfigurationResponse `pulumi:"configuration"`
+	// The set of supported stream destinations for an asset.
+	// Expected value is 'Storage'.
+	Target string `pulumi:"target"`
+}
+
+// The type for a storage destination.
+type StreamStorageDestinationResponseOutput struct{ *pulumi.OutputState }
+
+func (StreamStorageDestinationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamStorageDestinationResponse)(nil)).Elem()
+}
+
+func (o StreamStorageDestinationResponseOutput) ToStreamStorageDestinationResponseOutput() StreamStorageDestinationResponseOutput {
+	return o
+}
+
+func (o StreamStorageDestinationResponseOutput) ToStreamStorageDestinationResponseOutputWithContext(ctx context.Context) StreamStorageDestinationResponseOutput {
+	return o
+}
+
+// The storage destination configuration.
+func (o StreamStorageDestinationResponseOutput) Configuration() StorageDestinationConfigurationResponseOutput {
+	return o.ApplyT(func(v StreamStorageDestinationResponse) StorageDestinationConfigurationResponse {
+		return v.Configuration
+	}).(StorageDestinationConfigurationResponseOutput)
+}
+
+// The set of supported stream destinations for an asset.
+// Expected value is 'Storage'.
+func (o StreamStorageDestinationResponseOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamStorageDestinationResponse) string { return v.Target }).(pulumi.StringOutput)
 }
 
 // Managed service identity (either system assigned, or none)
@@ -2096,521 +10214,212 @@ func (o TopicResponsePtrOutput) Retain() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Definition of the authentication mechanism for the southbound connector.
-type TransportAuthentication struct {
-	// Defines a reference to a secret which contains all certificates and private keys that can be used by the southbound connector connecting to the shop floor/OT device. The accepted extensions are .der for certificates and .pfx/.pem for private keys.
-	OwnCertificates []OwnCertificate `pulumi:"ownCertificates"`
+// Defines server trust settings for an endpoint.
+type TrustSettings struct {
+	// Defines a secret reference for certificates to trust.
+	TrustList *string `pulumi:"trustList"`
 }
 
-// TransportAuthenticationInput is an input type that accepts TransportAuthenticationArgs and TransportAuthenticationOutput values.
-// You can construct a concrete instance of `TransportAuthenticationInput` via:
+// TrustSettingsInput is an input type that accepts TrustSettingsArgs and TrustSettingsOutput values.
+// You can construct a concrete instance of `TrustSettingsInput` via:
 //
-//	TransportAuthenticationArgs{...}
-type TransportAuthenticationInput interface {
+//	TrustSettingsArgs{...}
+type TrustSettingsInput interface {
 	pulumi.Input
 
-	ToTransportAuthenticationOutput() TransportAuthenticationOutput
-	ToTransportAuthenticationOutputWithContext(context.Context) TransportAuthenticationOutput
+	ToTrustSettingsOutput() TrustSettingsOutput
+	ToTrustSettingsOutputWithContext(context.Context) TrustSettingsOutput
 }
 
-// Definition of the authentication mechanism for the southbound connector.
-type TransportAuthenticationArgs struct {
-	// Defines a reference to a secret which contains all certificates and private keys that can be used by the southbound connector connecting to the shop floor/OT device. The accepted extensions are .der for certificates and .pfx/.pem for private keys.
-	OwnCertificates OwnCertificateArrayInput `pulumi:"ownCertificates"`
+// Defines server trust settings for an endpoint.
+type TrustSettingsArgs struct {
+	// Defines a secret reference for certificates to trust.
+	TrustList pulumi.StringPtrInput `pulumi:"trustList"`
 }
 
-func (TransportAuthenticationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TransportAuthentication)(nil)).Elem()
+func (TrustSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrustSettings)(nil)).Elem()
 }
 
-func (i TransportAuthenticationArgs) ToTransportAuthenticationOutput() TransportAuthenticationOutput {
-	return i.ToTransportAuthenticationOutputWithContext(context.Background())
+func (i TrustSettingsArgs) ToTrustSettingsOutput() TrustSettingsOutput {
+	return i.ToTrustSettingsOutputWithContext(context.Background())
 }
 
-func (i TransportAuthenticationArgs) ToTransportAuthenticationOutputWithContext(ctx context.Context) TransportAuthenticationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TransportAuthenticationOutput)
+func (i TrustSettingsArgs) ToTrustSettingsOutputWithContext(ctx context.Context) TrustSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrustSettingsOutput)
 }
 
-func (i TransportAuthenticationArgs) ToTransportAuthenticationPtrOutput() TransportAuthenticationPtrOutput {
-	return i.ToTransportAuthenticationPtrOutputWithContext(context.Background())
+func (i TrustSettingsArgs) ToTrustSettingsPtrOutput() TrustSettingsPtrOutput {
+	return i.ToTrustSettingsPtrOutputWithContext(context.Background())
 }
 
-func (i TransportAuthenticationArgs) ToTransportAuthenticationPtrOutputWithContext(ctx context.Context) TransportAuthenticationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TransportAuthenticationOutput).ToTransportAuthenticationPtrOutputWithContext(ctx)
+func (i TrustSettingsArgs) ToTrustSettingsPtrOutputWithContext(ctx context.Context) TrustSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrustSettingsOutput).ToTrustSettingsPtrOutputWithContext(ctx)
 }
 
-// TransportAuthenticationPtrInput is an input type that accepts TransportAuthenticationArgs, TransportAuthenticationPtr and TransportAuthenticationPtrOutput values.
-// You can construct a concrete instance of `TransportAuthenticationPtrInput` via:
+// TrustSettingsPtrInput is an input type that accepts TrustSettingsArgs, TrustSettingsPtr and TrustSettingsPtrOutput values.
+// You can construct a concrete instance of `TrustSettingsPtrInput` via:
 //
-//	        TransportAuthenticationArgs{...}
+//	        TrustSettingsArgs{...}
 //
 //	or:
 //
 //	        nil
-type TransportAuthenticationPtrInput interface {
+type TrustSettingsPtrInput interface {
 	pulumi.Input
 
-	ToTransportAuthenticationPtrOutput() TransportAuthenticationPtrOutput
-	ToTransportAuthenticationPtrOutputWithContext(context.Context) TransportAuthenticationPtrOutput
+	ToTrustSettingsPtrOutput() TrustSettingsPtrOutput
+	ToTrustSettingsPtrOutputWithContext(context.Context) TrustSettingsPtrOutput
 }
 
-type transportAuthenticationPtrType TransportAuthenticationArgs
+type trustSettingsPtrType TrustSettingsArgs
 
-func TransportAuthenticationPtr(v *TransportAuthenticationArgs) TransportAuthenticationPtrInput {
-	return (*transportAuthenticationPtrType)(v)
+func TrustSettingsPtr(v *TrustSettingsArgs) TrustSettingsPtrInput {
+	return (*trustSettingsPtrType)(v)
 }
 
-func (*transportAuthenticationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TransportAuthentication)(nil)).Elem()
+func (*trustSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TrustSettings)(nil)).Elem()
 }
 
-func (i *transportAuthenticationPtrType) ToTransportAuthenticationPtrOutput() TransportAuthenticationPtrOutput {
-	return i.ToTransportAuthenticationPtrOutputWithContext(context.Background())
+func (i *trustSettingsPtrType) ToTrustSettingsPtrOutput() TrustSettingsPtrOutput {
+	return i.ToTrustSettingsPtrOutputWithContext(context.Background())
 }
 
-func (i *transportAuthenticationPtrType) ToTransportAuthenticationPtrOutputWithContext(ctx context.Context) TransportAuthenticationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TransportAuthenticationPtrOutput)
+func (i *trustSettingsPtrType) ToTrustSettingsPtrOutputWithContext(ctx context.Context) TrustSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrustSettingsPtrOutput)
 }
 
-// Definition of the authentication mechanism for the southbound connector.
-type TransportAuthenticationOutput struct{ *pulumi.OutputState }
+// Defines server trust settings for an endpoint.
+type TrustSettingsOutput struct{ *pulumi.OutputState }
 
-func (TransportAuthenticationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TransportAuthentication)(nil)).Elem()
+func (TrustSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrustSettings)(nil)).Elem()
 }
 
-func (o TransportAuthenticationOutput) ToTransportAuthenticationOutput() TransportAuthenticationOutput {
+func (o TrustSettingsOutput) ToTrustSettingsOutput() TrustSettingsOutput {
 	return o
 }
 
-func (o TransportAuthenticationOutput) ToTransportAuthenticationOutputWithContext(ctx context.Context) TransportAuthenticationOutput {
+func (o TrustSettingsOutput) ToTrustSettingsOutputWithContext(ctx context.Context) TrustSettingsOutput {
 	return o
 }
 
-func (o TransportAuthenticationOutput) ToTransportAuthenticationPtrOutput() TransportAuthenticationPtrOutput {
-	return o.ToTransportAuthenticationPtrOutputWithContext(context.Background())
+func (o TrustSettingsOutput) ToTrustSettingsPtrOutput() TrustSettingsPtrOutput {
+	return o.ToTrustSettingsPtrOutputWithContext(context.Background())
 }
 
-func (o TransportAuthenticationOutput) ToTransportAuthenticationPtrOutputWithContext(ctx context.Context) TransportAuthenticationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransportAuthentication) *TransportAuthentication {
+func (o TrustSettingsOutput) ToTrustSettingsPtrOutputWithContext(ctx context.Context) TrustSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TrustSettings) *TrustSettings {
 		return &v
-	}).(TransportAuthenticationPtrOutput)
+	}).(TrustSettingsPtrOutput)
 }
 
-// Defines a reference to a secret which contains all certificates and private keys that can be used by the southbound connector connecting to the shop floor/OT device. The accepted extensions are .der for certificates and .pfx/.pem for private keys.
-func (o TransportAuthenticationOutput) OwnCertificates() OwnCertificateArrayOutput {
-	return o.ApplyT(func(v TransportAuthentication) []OwnCertificate { return v.OwnCertificates }).(OwnCertificateArrayOutput)
+// Defines a secret reference for certificates to trust.
+func (o TrustSettingsOutput) TrustList() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TrustSettings) *string { return v.TrustList }).(pulumi.StringPtrOutput)
 }
 
-type TransportAuthenticationPtrOutput struct{ *pulumi.OutputState }
+type TrustSettingsPtrOutput struct{ *pulumi.OutputState }
 
-func (TransportAuthenticationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TransportAuthentication)(nil)).Elem()
+func (TrustSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TrustSettings)(nil)).Elem()
 }
 
-func (o TransportAuthenticationPtrOutput) ToTransportAuthenticationPtrOutput() TransportAuthenticationPtrOutput {
+func (o TrustSettingsPtrOutput) ToTrustSettingsPtrOutput() TrustSettingsPtrOutput {
 	return o
 }
 
-func (o TransportAuthenticationPtrOutput) ToTransportAuthenticationPtrOutputWithContext(ctx context.Context) TransportAuthenticationPtrOutput {
+func (o TrustSettingsPtrOutput) ToTrustSettingsPtrOutputWithContext(ctx context.Context) TrustSettingsPtrOutput {
 	return o
 }
 
-func (o TransportAuthenticationPtrOutput) Elem() TransportAuthenticationOutput {
-	return o.ApplyT(func(v *TransportAuthentication) TransportAuthentication {
+func (o TrustSettingsPtrOutput) Elem() TrustSettingsOutput {
+	return o.ApplyT(func(v *TrustSettings) TrustSettings {
 		if v != nil {
 			return *v
 		}
-		var ret TransportAuthentication
+		var ret TrustSettings
 		return ret
-	}).(TransportAuthenticationOutput)
+	}).(TrustSettingsOutput)
 }
 
-// Defines a reference to a secret which contains all certificates and private keys that can be used by the southbound connector connecting to the shop floor/OT device. The accepted extensions are .der for certificates and .pfx/.pem for private keys.
-func (o TransportAuthenticationPtrOutput) OwnCertificates() OwnCertificateArrayOutput {
-	return o.ApplyT(func(v *TransportAuthentication) []OwnCertificate {
+// Defines a secret reference for certificates to trust.
+func (o TrustSettingsPtrOutput) TrustList() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TrustSettings) *string {
 		if v == nil {
 			return nil
 		}
-		return v.OwnCertificates
-	}).(OwnCertificateArrayOutput)
-}
-
-// Definition of the authentication mechanism for the southbound connector.
-type TransportAuthenticationResponse struct {
-	// Defines a reference to a secret which contains all certificates and private keys that can be used by the southbound connector connecting to the shop floor/OT device. The accepted extensions are .der for certificates and .pfx/.pem for private keys.
-	OwnCertificates []OwnCertificateResponse `pulumi:"ownCertificates"`
-}
-
-// Definition of the authentication mechanism for the southbound connector.
-type TransportAuthenticationResponseOutput struct{ *pulumi.OutputState }
-
-func (TransportAuthenticationResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TransportAuthenticationResponse)(nil)).Elem()
-}
-
-func (o TransportAuthenticationResponseOutput) ToTransportAuthenticationResponseOutput() TransportAuthenticationResponseOutput {
-	return o
-}
-
-func (o TransportAuthenticationResponseOutput) ToTransportAuthenticationResponseOutputWithContext(ctx context.Context) TransportAuthenticationResponseOutput {
-	return o
-}
-
-// Defines a reference to a secret which contains all certificates and private keys that can be used by the southbound connector connecting to the shop floor/OT device. The accepted extensions are .der for certificates and .pfx/.pem for private keys.
-func (o TransportAuthenticationResponseOutput) OwnCertificates() OwnCertificateResponseArrayOutput {
-	return o.ApplyT(func(v TransportAuthenticationResponse) []OwnCertificateResponse { return v.OwnCertificates }).(OwnCertificateResponseArrayOutput)
-}
-
-type TransportAuthenticationResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (TransportAuthenticationResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TransportAuthenticationResponse)(nil)).Elem()
-}
-
-func (o TransportAuthenticationResponsePtrOutput) ToTransportAuthenticationResponsePtrOutput() TransportAuthenticationResponsePtrOutput {
-	return o
-}
-
-func (o TransportAuthenticationResponsePtrOutput) ToTransportAuthenticationResponsePtrOutputWithContext(ctx context.Context) TransportAuthenticationResponsePtrOutput {
-	return o
-}
-
-func (o TransportAuthenticationResponsePtrOutput) Elem() TransportAuthenticationResponseOutput {
-	return o.ApplyT(func(v *TransportAuthenticationResponse) TransportAuthenticationResponse {
-		if v != nil {
-			return *v
-		}
-		var ret TransportAuthenticationResponse
-		return ret
-	}).(TransportAuthenticationResponseOutput)
-}
-
-// Defines a reference to a secret which contains all certificates and private keys that can be used by the southbound connector connecting to the shop floor/OT device. The accepted extensions are .der for certificates and .pfx/.pem for private keys.
-func (o TransportAuthenticationResponsePtrOutput) OwnCertificates() OwnCertificateResponseArrayOutput {
-	return o.ApplyT(func(v *TransportAuthenticationResponse) []OwnCertificateResponse {
-		if v == nil {
-			return nil
-		}
-		return v.OwnCertificates
-	}).(OwnCertificateResponseArrayOutput)
-}
-
-// Definition of the client authentication mechanism to the server.
-type UserAuthentication struct {
-	// Defines the method to authenticate the user of the client at the server.
-	Mode string `pulumi:"mode"`
-	// Defines the username and password references when UsernamePassword user authentication mode is selected.
-	UsernamePasswordCredentials *UsernamePasswordCredentials `pulumi:"usernamePasswordCredentials"`
-	// Defines the certificate reference when Certificate user authentication mode is selected.
-	X509Credentials *X509Credentials `pulumi:"x509Credentials"`
-}
-
-// Defaults sets the appropriate defaults for UserAuthentication
-func (val *UserAuthentication) Defaults() *UserAuthentication {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if utilities.IsZero(tmp.Mode) {
-		tmp.Mode = "Certificate"
-	}
-	return &tmp
-}
-
-// UserAuthenticationInput is an input type that accepts UserAuthenticationArgs and UserAuthenticationOutput values.
-// You can construct a concrete instance of `UserAuthenticationInput` via:
-//
-//	UserAuthenticationArgs{...}
-type UserAuthenticationInput interface {
-	pulumi.Input
-
-	ToUserAuthenticationOutput() UserAuthenticationOutput
-	ToUserAuthenticationOutputWithContext(context.Context) UserAuthenticationOutput
-}
-
-// Definition of the client authentication mechanism to the server.
-type UserAuthenticationArgs struct {
-	// Defines the method to authenticate the user of the client at the server.
-	Mode pulumi.StringInput `pulumi:"mode"`
-	// Defines the username and password references when UsernamePassword user authentication mode is selected.
-	UsernamePasswordCredentials UsernamePasswordCredentialsPtrInput `pulumi:"usernamePasswordCredentials"`
-	// Defines the certificate reference when Certificate user authentication mode is selected.
-	X509Credentials X509CredentialsPtrInput `pulumi:"x509Credentials"`
-}
-
-// Defaults sets the appropriate defaults for UserAuthenticationArgs
-func (val *UserAuthenticationArgs) Defaults() *UserAuthenticationArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.Mode == nil {
-		tmp.Mode = pulumi.String("Certificate")
-	}
-	return &tmp
-}
-func (UserAuthenticationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserAuthentication)(nil)).Elem()
-}
-
-func (i UserAuthenticationArgs) ToUserAuthenticationOutput() UserAuthenticationOutput {
-	return i.ToUserAuthenticationOutputWithContext(context.Background())
-}
-
-func (i UserAuthenticationArgs) ToUserAuthenticationOutputWithContext(ctx context.Context) UserAuthenticationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserAuthenticationOutput)
-}
-
-func (i UserAuthenticationArgs) ToUserAuthenticationPtrOutput() UserAuthenticationPtrOutput {
-	return i.ToUserAuthenticationPtrOutputWithContext(context.Background())
-}
-
-func (i UserAuthenticationArgs) ToUserAuthenticationPtrOutputWithContext(ctx context.Context) UserAuthenticationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserAuthenticationOutput).ToUserAuthenticationPtrOutputWithContext(ctx)
-}
-
-// UserAuthenticationPtrInput is an input type that accepts UserAuthenticationArgs, UserAuthenticationPtr and UserAuthenticationPtrOutput values.
-// You can construct a concrete instance of `UserAuthenticationPtrInput` via:
-//
-//	        UserAuthenticationArgs{...}
-//
-//	or:
-//
-//	        nil
-type UserAuthenticationPtrInput interface {
-	pulumi.Input
-
-	ToUserAuthenticationPtrOutput() UserAuthenticationPtrOutput
-	ToUserAuthenticationPtrOutputWithContext(context.Context) UserAuthenticationPtrOutput
-}
-
-type userAuthenticationPtrType UserAuthenticationArgs
-
-func UserAuthenticationPtr(v *UserAuthenticationArgs) UserAuthenticationPtrInput {
-	return (*userAuthenticationPtrType)(v)
-}
-
-func (*userAuthenticationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**UserAuthentication)(nil)).Elem()
-}
-
-func (i *userAuthenticationPtrType) ToUserAuthenticationPtrOutput() UserAuthenticationPtrOutput {
-	return i.ToUserAuthenticationPtrOutputWithContext(context.Background())
-}
-
-func (i *userAuthenticationPtrType) ToUserAuthenticationPtrOutputWithContext(ctx context.Context) UserAuthenticationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserAuthenticationPtrOutput)
-}
-
-// Definition of the client authentication mechanism to the server.
-type UserAuthenticationOutput struct{ *pulumi.OutputState }
-
-func (UserAuthenticationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserAuthentication)(nil)).Elem()
-}
-
-func (o UserAuthenticationOutput) ToUserAuthenticationOutput() UserAuthenticationOutput {
-	return o
-}
-
-func (o UserAuthenticationOutput) ToUserAuthenticationOutputWithContext(ctx context.Context) UserAuthenticationOutput {
-	return o
-}
-
-func (o UserAuthenticationOutput) ToUserAuthenticationPtrOutput() UserAuthenticationPtrOutput {
-	return o.ToUserAuthenticationPtrOutputWithContext(context.Background())
-}
-
-func (o UserAuthenticationOutput) ToUserAuthenticationPtrOutputWithContext(ctx context.Context) UserAuthenticationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v UserAuthentication) *UserAuthentication {
-		return &v
-	}).(UserAuthenticationPtrOutput)
-}
-
-// Defines the method to authenticate the user of the client at the server.
-func (o UserAuthenticationOutput) Mode() pulumi.StringOutput {
-	return o.ApplyT(func(v UserAuthentication) string { return v.Mode }).(pulumi.StringOutput)
-}
-
-// Defines the username and password references when UsernamePassword user authentication mode is selected.
-func (o UserAuthenticationOutput) UsernamePasswordCredentials() UsernamePasswordCredentialsPtrOutput {
-	return o.ApplyT(func(v UserAuthentication) *UsernamePasswordCredentials { return v.UsernamePasswordCredentials }).(UsernamePasswordCredentialsPtrOutput)
-}
-
-// Defines the certificate reference when Certificate user authentication mode is selected.
-func (o UserAuthenticationOutput) X509Credentials() X509CredentialsPtrOutput {
-	return o.ApplyT(func(v UserAuthentication) *X509Credentials { return v.X509Credentials }).(X509CredentialsPtrOutput)
-}
-
-type UserAuthenticationPtrOutput struct{ *pulumi.OutputState }
-
-func (UserAuthenticationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**UserAuthentication)(nil)).Elem()
-}
-
-func (o UserAuthenticationPtrOutput) ToUserAuthenticationPtrOutput() UserAuthenticationPtrOutput {
-	return o
-}
-
-func (o UserAuthenticationPtrOutput) ToUserAuthenticationPtrOutputWithContext(ctx context.Context) UserAuthenticationPtrOutput {
-	return o
-}
-
-func (o UserAuthenticationPtrOutput) Elem() UserAuthenticationOutput {
-	return o.ApplyT(func(v *UserAuthentication) UserAuthentication {
-		if v != nil {
-			return *v
-		}
-		var ret UserAuthentication
-		return ret
-	}).(UserAuthenticationOutput)
-}
-
-// Defines the method to authenticate the user of the client at the server.
-func (o UserAuthenticationPtrOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *UserAuthentication) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Mode
+		return v.TrustList
 	}).(pulumi.StringPtrOutput)
 }
 
-// Defines the username and password references when UsernamePassword user authentication mode is selected.
-func (o UserAuthenticationPtrOutput) UsernamePasswordCredentials() UsernamePasswordCredentialsPtrOutput {
-	return o.ApplyT(func(v *UserAuthentication) *UsernamePasswordCredentials {
-		if v == nil {
-			return nil
-		}
-		return v.UsernamePasswordCredentials
-	}).(UsernamePasswordCredentialsPtrOutput)
+// Defines server trust settings for an endpoint.
+type TrustSettingsResponse struct {
+	// Defines a secret reference for certificates to trust.
+	TrustList *string `pulumi:"trustList"`
 }
 
-// Defines the certificate reference when Certificate user authentication mode is selected.
-func (o UserAuthenticationPtrOutput) X509Credentials() X509CredentialsPtrOutput {
-	return o.ApplyT(func(v *UserAuthentication) *X509Credentials {
-		if v == nil {
-			return nil
-		}
-		return v.X509Credentials
-	}).(X509CredentialsPtrOutput)
+// Defines server trust settings for an endpoint.
+type TrustSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (TrustSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrustSettingsResponse)(nil)).Elem()
 }
 
-// Definition of the client authentication mechanism to the server.
-type UserAuthenticationResponse struct {
-	// Defines the method to authenticate the user of the client at the server.
-	Mode string `pulumi:"mode"`
-	// Defines the username and password references when UsernamePassword user authentication mode is selected.
-	UsernamePasswordCredentials *UsernamePasswordCredentialsResponse `pulumi:"usernamePasswordCredentials"`
-	// Defines the certificate reference when Certificate user authentication mode is selected.
-	X509Credentials *X509CredentialsResponse `pulumi:"x509Credentials"`
-}
-
-// Defaults sets the appropriate defaults for UserAuthenticationResponse
-func (val *UserAuthenticationResponse) Defaults() *UserAuthenticationResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if utilities.IsZero(tmp.Mode) {
-		tmp.Mode = "Certificate"
-	}
-	return &tmp
-}
-
-// Definition of the client authentication mechanism to the server.
-type UserAuthenticationResponseOutput struct{ *pulumi.OutputState }
-
-func (UserAuthenticationResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserAuthenticationResponse)(nil)).Elem()
-}
-
-func (o UserAuthenticationResponseOutput) ToUserAuthenticationResponseOutput() UserAuthenticationResponseOutput {
+func (o TrustSettingsResponseOutput) ToTrustSettingsResponseOutput() TrustSettingsResponseOutput {
 	return o
 }
 
-func (o UserAuthenticationResponseOutput) ToUserAuthenticationResponseOutputWithContext(ctx context.Context) UserAuthenticationResponseOutput {
+func (o TrustSettingsResponseOutput) ToTrustSettingsResponseOutputWithContext(ctx context.Context) TrustSettingsResponseOutput {
 	return o
 }
 
-// Defines the method to authenticate the user of the client at the server.
-func (o UserAuthenticationResponseOutput) Mode() pulumi.StringOutput {
-	return o.ApplyT(func(v UserAuthenticationResponse) string { return v.Mode }).(pulumi.StringOutput)
+// Defines a secret reference for certificates to trust.
+func (o TrustSettingsResponseOutput) TrustList() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TrustSettingsResponse) *string { return v.TrustList }).(pulumi.StringPtrOutput)
 }
 
-// Defines the username and password references when UsernamePassword user authentication mode is selected.
-func (o UserAuthenticationResponseOutput) UsernamePasswordCredentials() UsernamePasswordCredentialsResponsePtrOutput {
-	return o.ApplyT(func(v UserAuthenticationResponse) *UsernamePasswordCredentialsResponse {
-		return v.UsernamePasswordCredentials
-	}).(UsernamePasswordCredentialsResponsePtrOutput)
+type TrustSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (TrustSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TrustSettingsResponse)(nil)).Elem()
 }
 
-// Defines the certificate reference when Certificate user authentication mode is selected.
-func (o UserAuthenticationResponseOutput) X509Credentials() X509CredentialsResponsePtrOutput {
-	return o.ApplyT(func(v UserAuthenticationResponse) *X509CredentialsResponse { return v.X509Credentials }).(X509CredentialsResponsePtrOutput)
-}
-
-type UserAuthenticationResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (UserAuthenticationResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**UserAuthenticationResponse)(nil)).Elem()
-}
-
-func (o UserAuthenticationResponsePtrOutput) ToUserAuthenticationResponsePtrOutput() UserAuthenticationResponsePtrOutput {
+func (o TrustSettingsResponsePtrOutput) ToTrustSettingsResponsePtrOutput() TrustSettingsResponsePtrOutput {
 	return o
 }
 
-func (o UserAuthenticationResponsePtrOutput) ToUserAuthenticationResponsePtrOutputWithContext(ctx context.Context) UserAuthenticationResponsePtrOutput {
+func (o TrustSettingsResponsePtrOutput) ToTrustSettingsResponsePtrOutputWithContext(ctx context.Context) TrustSettingsResponsePtrOutput {
 	return o
 }
 
-func (o UserAuthenticationResponsePtrOutput) Elem() UserAuthenticationResponseOutput {
-	return o.ApplyT(func(v *UserAuthenticationResponse) UserAuthenticationResponse {
+func (o TrustSettingsResponsePtrOutput) Elem() TrustSettingsResponseOutput {
+	return o.ApplyT(func(v *TrustSettingsResponse) TrustSettingsResponse {
 		if v != nil {
 			return *v
 		}
-		var ret UserAuthenticationResponse
+		var ret TrustSettingsResponse
 		return ret
-	}).(UserAuthenticationResponseOutput)
+	}).(TrustSettingsResponseOutput)
 }
 
-// Defines the method to authenticate the user of the client at the server.
-func (o UserAuthenticationResponsePtrOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *UserAuthenticationResponse) *string {
+// Defines a secret reference for certificates to trust.
+func (o TrustSettingsResponsePtrOutput) TrustList() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TrustSettingsResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.Mode
+		return v.TrustList
 	}).(pulumi.StringPtrOutput)
-}
-
-// Defines the username and password references when UsernamePassword user authentication mode is selected.
-func (o UserAuthenticationResponsePtrOutput) UsernamePasswordCredentials() UsernamePasswordCredentialsResponsePtrOutput {
-	return o.ApplyT(func(v *UserAuthenticationResponse) *UsernamePasswordCredentialsResponse {
-		if v == nil {
-			return nil
-		}
-		return v.UsernamePasswordCredentials
-	}).(UsernamePasswordCredentialsResponsePtrOutput)
-}
-
-// Defines the certificate reference when Certificate user authentication mode is selected.
-func (o UserAuthenticationResponsePtrOutput) X509Credentials() X509CredentialsResponsePtrOutput {
-	return o.ApplyT(func(v *UserAuthenticationResponse) *X509CredentialsResponse {
-		if v == nil {
-			return nil
-		}
-		return v.X509Credentials
-	}).(X509CredentialsResponsePtrOutput)
 }
 
 // The credentials for authentication mode UsernamePassword.
 type UsernamePasswordCredentials struct {
-	// A reference to secret containing the password.
-	PasswordReference string `pulumi:"passwordReference"`
-	// A reference to secret containing the username.
-	UsernameReference string `pulumi:"usernameReference"`
+	// The name of the secret containing the password.
+	PasswordSecretName string `pulumi:"passwordSecretName"`
+	// The name of the secret containing the username.
+	UsernameSecretName string `pulumi:"usernameSecretName"`
 }
 
 // UsernamePasswordCredentialsInput is an input type that accepts UsernamePasswordCredentialsArgs and UsernamePasswordCredentialsOutput values.
@@ -2626,10 +10435,10 @@ type UsernamePasswordCredentialsInput interface {
 
 // The credentials for authentication mode UsernamePassword.
 type UsernamePasswordCredentialsArgs struct {
-	// A reference to secret containing the password.
-	PasswordReference pulumi.StringInput `pulumi:"passwordReference"`
-	// A reference to secret containing the username.
-	UsernameReference pulumi.StringInput `pulumi:"usernameReference"`
+	// The name of the secret containing the password.
+	PasswordSecretName pulumi.StringInput `pulumi:"passwordSecretName"`
+	// The name of the secret containing the username.
+	UsernameSecretName pulumi.StringInput `pulumi:"usernameSecretName"`
 }
 
 func (UsernamePasswordCredentialsArgs) ElementType() reflect.Type {
@@ -2710,14 +10519,14 @@ func (o UsernamePasswordCredentialsOutput) ToUsernamePasswordCredentialsPtrOutpu
 	}).(UsernamePasswordCredentialsPtrOutput)
 }
 
-// A reference to secret containing the password.
-func (o UsernamePasswordCredentialsOutput) PasswordReference() pulumi.StringOutput {
-	return o.ApplyT(func(v UsernamePasswordCredentials) string { return v.PasswordReference }).(pulumi.StringOutput)
+// The name of the secret containing the password.
+func (o UsernamePasswordCredentialsOutput) PasswordSecretName() pulumi.StringOutput {
+	return o.ApplyT(func(v UsernamePasswordCredentials) string { return v.PasswordSecretName }).(pulumi.StringOutput)
 }
 
-// A reference to secret containing the username.
-func (o UsernamePasswordCredentialsOutput) UsernameReference() pulumi.StringOutput {
-	return o.ApplyT(func(v UsernamePasswordCredentials) string { return v.UsernameReference }).(pulumi.StringOutput)
+// The name of the secret containing the username.
+func (o UsernamePasswordCredentialsOutput) UsernameSecretName() pulumi.StringOutput {
+	return o.ApplyT(func(v UsernamePasswordCredentials) string { return v.UsernameSecretName }).(pulumi.StringOutput)
 }
 
 type UsernamePasswordCredentialsPtrOutput struct{ *pulumi.OutputState }
@@ -2744,32 +10553,32 @@ func (o UsernamePasswordCredentialsPtrOutput) Elem() UsernamePasswordCredentials
 	}).(UsernamePasswordCredentialsOutput)
 }
 
-// A reference to secret containing the password.
-func (o UsernamePasswordCredentialsPtrOutput) PasswordReference() pulumi.StringPtrOutput {
+// The name of the secret containing the password.
+func (o UsernamePasswordCredentialsPtrOutput) PasswordSecretName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UsernamePasswordCredentials) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.PasswordReference
+		return &v.PasswordSecretName
 	}).(pulumi.StringPtrOutput)
 }
 
-// A reference to secret containing the username.
-func (o UsernamePasswordCredentialsPtrOutput) UsernameReference() pulumi.StringPtrOutput {
+// The name of the secret containing the username.
+func (o UsernamePasswordCredentialsPtrOutput) UsernameSecretName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UsernamePasswordCredentials) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.UsernameReference
+		return &v.UsernameSecretName
 	}).(pulumi.StringPtrOutput)
 }
 
 // The credentials for authentication mode UsernamePassword.
 type UsernamePasswordCredentialsResponse struct {
-	// A reference to secret containing the password.
-	PasswordReference string `pulumi:"passwordReference"`
-	// A reference to secret containing the username.
-	UsernameReference string `pulumi:"usernameReference"`
+	// The name of the secret containing the password.
+	PasswordSecretName string `pulumi:"passwordSecretName"`
+	// The name of the secret containing the username.
+	UsernameSecretName string `pulumi:"usernameSecretName"`
 }
 
 // The credentials for authentication mode UsernamePassword.
@@ -2787,14 +10596,14 @@ func (o UsernamePasswordCredentialsResponseOutput) ToUsernamePasswordCredentials
 	return o
 }
 
-// A reference to secret containing the password.
-func (o UsernamePasswordCredentialsResponseOutput) PasswordReference() pulumi.StringOutput {
-	return o.ApplyT(func(v UsernamePasswordCredentialsResponse) string { return v.PasswordReference }).(pulumi.StringOutput)
+// The name of the secret containing the password.
+func (o UsernamePasswordCredentialsResponseOutput) PasswordSecretName() pulumi.StringOutput {
+	return o.ApplyT(func(v UsernamePasswordCredentialsResponse) string { return v.PasswordSecretName }).(pulumi.StringOutput)
 }
 
-// A reference to secret containing the username.
-func (o UsernamePasswordCredentialsResponseOutput) UsernameReference() pulumi.StringOutput {
-	return o.ApplyT(func(v UsernamePasswordCredentialsResponse) string { return v.UsernameReference }).(pulumi.StringOutput)
+// The name of the secret containing the username.
+func (o UsernamePasswordCredentialsResponseOutput) UsernameSecretName() pulumi.StringOutput {
+	return o.ApplyT(func(v UsernamePasswordCredentialsResponse) string { return v.UsernameSecretName }).(pulumi.StringOutput)
 }
 
 type UsernamePasswordCredentialsResponsePtrOutput struct{ *pulumi.OutputState }
@@ -2821,30 +10630,30 @@ func (o UsernamePasswordCredentialsResponsePtrOutput) Elem() UsernamePasswordCre
 	}).(UsernamePasswordCredentialsResponseOutput)
 }
 
-// A reference to secret containing the password.
-func (o UsernamePasswordCredentialsResponsePtrOutput) PasswordReference() pulumi.StringPtrOutput {
+// The name of the secret containing the password.
+func (o UsernamePasswordCredentialsResponsePtrOutput) PasswordSecretName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UsernamePasswordCredentialsResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.PasswordReference
+		return &v.PasswordSecretName
 	}).(pulumi.StringPtrOutput)
 }
 
-// A reference to secret containing the username.
-func (o UsernamePasswordCredentialsResponsePtrOutput) UsernameReference() pulumi.StringPtrOutput {
+// The name of the secret containing the username.
+func (o UsernamePasswordCredentialsResponsePtrOutput) UsernameSecretName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UsernamePasswordCredentialsResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.UsernameReference
+		return &v.UsernameSecretName
 	}).(pulumi.StringPtrOutput)
 }
 
 // The x509 certificate for authentication mode Certificate.
 type X509Credentials struct {
-	// A reference to secret containing the certificate and private key (e.g. stored as .der/.pem or .der/.pfx).
-	CertificateReference string `pulumi:"certificateReference"`
+	// The name of the secret containing the certificate and private key (e.g. stored as .der/.pem or .der/.pfx).
+	CertificateSecretName string `pulumi:"certificateSecretName"`
 }
 
 // X509CredentialsInput is an input type that accepts X509CredentialsArgs and X509CredentialsOutput values.
@@ -2860,8 +10669,8 @@ type X509CredentialsInput interface {
 
 // The x509 certificate for authentication mode Certificate.
 type X509CredentialsArgs struct {
-	// A reference to secret containing the certificate and private key (e.g. stored as .der/.pem or .der/.pfx).
-	CertificateReference pulumi.StringInput `pulumi:"certificateReference"`
+	// The name of the secret containing the certificate and private key (e.g. stored as .der/.pem or .der/.pfx).
+	CertificateSecretName pulumi.StringInput `pulumi:"certificateSecretName"`
 }
 
 func (X509CredentialsArgs) ElementType() reflect.Type {
@@ -2942,9 +10751,9 @@ func (o X509CredentialsOutput) ToX509CredentialsPtrOutputWithContext(ctx context
 	}).(X509CredentialsPtrOutput)
 }
 
-// A reference to secret containing the certificate and private key (e.g. stored as .der/.pem or .der/.pfx).
-func (o X509CredentialsOutput) CertificateReference() pulumi.StringOutput {
-	return o.ApplyT(func(v X509Credentials) string { return v.CertificateReference }).(pulumi.StringOutput)
+// The name of the secret containing the certificate and private key (e.g. stored as .der/.pem or .der/.pfx).
+func (o X509CredentialsOutput) CertificateSecretName() pulumi.StringOutput {
+	return o.ApplyT(func(v X509Credentials) string { return v.CertificateSecretName }).(pulumi.StringOutput)
 }
 
 type X509CredentialsPtrOutput struct{ *pulumi.OutputState }
@@ -2971,20 +10780,20 @@ func (o X509CredentialsPtrOutput) Elem() X509CredentialsOutput {
 	}).(X509CredentialsOutput)
 }
 
-// A reference to secret containing the certificate and private key (e.g. stored as .der/.pem or .der/.pfx).
-func (o X509CredentialsPtrOutput) CertificateReference() pulumi.StringPtrOutput {
+// The name of the secret containing the certificate and private key (e.g. stored as .der/.pem or .der/.pfx).
+func (o X509CredentialsPtrOutput) CertificateSecretName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *X509Credentials) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.CertificateReference
+		return &v.CertificateSecretName
 	}).(pulumi.StringPtrOutput)
 }
 
 // The x509 certificate for authentication mode Certificate.
 type X509CredentialsResponse struct {
-	// A reference to secret containing the certificate and private key (e.g. stored as .der/.pem or .der/.pfx).
-	CertificateReference string `pulumi:"certificateReference"`
+	// The name of the secret containing the certificate and private key (e.g. stored as .der/.pem or .der/.pfx).
+	CertificateSecretName string `pulumi:"certificateSecretName"`
 }
 
 // The x509 certificate for authentication mode Certificate.
@@ -3002,9 +10811,9 @@ func (o X509CredentialsResponseOutput) ToX509CredentialsResponseOutputWithContex
 	return o
 }
 
-// A reference to secret containing the certificate and private key (e.g. stored as .der/.pem or .der/.pfx).
-func (o X509CredentialsResponseOutput) CertificateReference() pulumi.StringOutput {
-	return o.ApplyT(func(v X509CredentialsResponse) string { return v.CertificateReference }).(pulumi.StringOutput)
+// The name of the secret containing the certificate and private key (e.g. stored as .der/.pem or .der/.pfx).
+func (o X509CredentialsResponseOutput) CertificateSecretName() pulumi.StringOutput {
+	return o.ApplyT(func(v X509CredentialsResponse) string { return v.CertificateSecretName }).(pulumi.StringOutput)
 }
 
 type X509CredentialsResponsePtrOutput struct{ *pulumi.OutputState }
@@ -3031,24 +10840,57 @@ func (o X509CredentialsResponsePtrOutput) Elem() X509CredentialsResponseOutput {
 	}).(X509CredentialsResponseOutput)
 }
 
-// A reference to secret containing the certificate and private key (e.g. stored as .der/.pem or .der/.pfx).
-func (o X509CredentialsResponsePtrOutput) CertificateReference() pulumi.StringPtrOutput {
+// The name of the secret containing the certificate and private key (e.g. stored as .der/.pem or .der/.pfx).
+func (o X509CredentialsResponsePtrOutput) CertificateSecretName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *X509CredentialsResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.CertificateReference
+		return &v.CertificateSecretName
 	}).(pulumi.StringPtrOutput)
 }
 
 func init() {
+	pulumi.RegisterOutputType(AssetEndpointProfileStatusErrorResponseOutput{})
+	pulumi.RegisterOutputType(AssetEndpointProfileStatusErrorResponseArrayOutput{})
+	pulumi.RegisterOutputType(AssetEndpointProfileStatusResponseOutput{})
+	pulumi.RegisterOutputType(AssetStatusDatasetResponseOutput{})
+	pulumi.RegisterOutputType(AssetStatusDatasetResponseArrayOutput{})
 	pulumi.RegisterOutputType(AssetStatusErrorResponseOutput{})
 	pulumi.RegisterOutputType(AssetStatusErrorResponseArrayOutput{})
+	pulumi.RegisterOutputType(AssetStatusEventResponseOutput{})
+	pulumi.RegisterOutputType(AssetStatusEventResponseArrayOutput{})
 	pulumi.RegisterOutputType(AssetStatusResponseOutput{})
+	pulumi.RegisterOutputType(AuthenticationOutput{})
+	pulumi.RegisterOutputType(AuthenticationPtrOutput{})
+	pulumi.RegisterOutputType(AuthenticationResponseOutput{})
+	pulumi.RegisterOutputType(AuthenticationResponsePtrOutput{})
+	pulumi.RegisterOutputType(BrokerStateStoreDestinationConfigurationOutput{})
+	pulumi.RegisterOutputType(BrokerStateStoreDestinationConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(DataPointOutput{})
 	pulumi.RegisterOutputType(DataPointArrayOutput{})
 	pulumi.RegisterOutputType(DataPointResponseOutput{})
 	pulumi.RegisterOutputType(DataPointResponseArrayOutput{})
+	pulumi.RegisterOutputType(DatasetOutput{})
+	pulumi.RegisterOutputType(DatasetArrayOutput{})
+	pulumi.RegisterOutputType(DatasetBrokerStateStoreDestinationOutput{})
+	pulumi.RegisterOutputType(DatasetBrokerStateStoreDestinationResponseOutput{})
+	pulumi.RegisterOutputType(DatasetMqttDestinationOutput{})
+	pulumi.RegisterOutputType(DatasetMqttDestinationResponseOutput{})
+	pulumi.RegisterOutputType(DatasetResponseOutput{})
+	pulumi.RegisterOutputType(DatasetResponseArrayOutput{})
+	pulumi.RegisterOutputType(DatasetStorageDestinationOutput{})
+	pulumi.RegisterOutputType(DatasetStorageDestinationResponseOutput{})
+	pulumi.RegisterOutputType(DeviceMessagingEndpointOutput{})
+	pulumi.RegisterOutputType(DeviceMessagingEndpointMapOutput{})
+	pulumi.RegisterOutputType(DeviceMessagingEndpointResponseOutput{})
+	pulumi.RegisterOutputType(DeviceMessagingEndpointResponseMapOutput{})
+	pulumi.RegisterOutputType(DeviceRefOutput{})
+	pulumi.RegisterOutputType(DeviceRefResponseOutput{})
+	pulumi.RegisterOutputType(DeviceStatusEndpointResponseOutput{})
+	pulumi.RegisterOutputType(DeviceStatusEndpointResponseMapOutput{})
+	pulumi.RegisterOutputType(DeviceStatusEndpointsResponseOutput{})
+	pulumi.RegisterOutputType(DeviceStatusResponseOutput{})
 	pulumi.RegisterOutputType(DiscoveredDataPointOutput{})
 	pulumi.RegisterOutputType(DiscoveredDataPointArrayOutput{})
 	pulumi.RegisterOutputType(DiscoveredDataPointResponseOutput{})
@@ -3061,16 +10903,135 @@ func init() {
 	pulumi.RegisterOutputType(DiscoveredEventArrayOutput{})
 	pulumi.RegisterOutputType(DiscoveredEventResponseOutput{})
 	pulumi.RegisterOutputType(DiscoveredEventResponseArrayOutput{})
+	pulumi.RegisterOutputType(DiscoveredInboundEndpointsOutput{})
+	pulumi.RegisterOutputType(DiscoveredInboundEndpointsMapOutput{})
+	pulumi.RegisterOutputType(DiscoveredInboundEndpointsResponseOutput{})
+	pulumi.RegisterOutputType(DiscoveredInboundEndpointsResponseMapOutput{})
+	pulumi.RegisterOutputType(DiscoveredMessagingEndpointsOutput{})
+	pulumi.RegisterOutputType(DiscoveredMessagingEndpointsPtrOutput{})
+	pulumi.RegisterOutputType(DiscoveredMessagingEndpointsResponseOutput{})
+	pulumi.RegisterOutputType(DiscoveredMessagingEndpointsResponsePtrOutput{})
+	pulumi.RegisterOutputType(DiscoveredOutboundEndpointsOutput{})
+	pulumi.RegisterOutputType(DiscoveredOutboundEndpointsPtrOutput{})
+	pulumi.RegisterOutputType(DiscoveredOutboundEndpointsResponseOutput{})
+	pulumi.RegisterOutputType(DiscoveredOutboundEndpointsResponsePtrOutput{})
+	pulumi.RegisterOutputType(ErrorDetailsResponseOutput{})
+	pulumi.RegisterOutputType(ErrorDetailsResponseArrayOutput{})
 	pulumi.RegisterOutputType(EventOutput{})
 	pulumi.RegisterOutputType(EventArrayOutput{})
+	pulumi.RegisterOutputType(EventMqttDestinationOutput{})
+	pulumi.RegisterOutputType(EventMqttDestinationResponseOutput{})
 	pulumi.RegisterOutputType(EventResponseOutput{})
 	pulumi.RegisterOutputType(EventResponseArrayOutput{})
+	pulumi.RegisterOutputType(EventStorageDestinationOutput{})
+	pulumi.RegisterOutputType(EventStorageDestinationResponseOutput{})
 	pulumi.RegisterOutputType(ExtendedLocationOutput{})
+	pulumi.RegisterOutputType(ExtendedLocationPtrOutput{})
 	pulumi.RegisterOutputType(ExtendedLocationResponseOutput{})
-	pulumi.RegisterOutputType(OwnCertificateOutput{})
-	pulumi.RegisterOutputType(OwnCertificateArrayOutput{})
-	pulumi.RegisterOutputType(OwnCertificateResponseOutput{})
-	pulumi.RegisterOutputType(OwnCertificateResponseArrayOutput{})
+	pulumi.RegisterOutputType(ExtendedLocationResponsePtrOutput{})
+	pulumi.RegisterOutputType(HostAuthenticationOutput{})
+	pulumi.RegisterOutputType(HostAuthenticationPtrOutput{})
+	pulumi.RegisterOutputType(HostAuthenticationResponseOutput{})
+	pulumi.RegisterOutputType(HostAuthenticationResponsePtrOutput{})
+	pulumi.RegisterOutputType(InboundEndpointsOutput{})
+	pulumi.RegisterOutputType(InboundEndpointsMapOutput{})
+	pulumi.RegisterOutputType(InboundEndpointsResponseOutput{})
+	pulumi.RegisterOutputType(InboundEndpointsResponseMapOutput{})
+	pulumi.RegisterOutputType(ManagementActionOutput{})
+	pulumi.RegisterOutputType(ManagementActionArrayOutput{})
+	pulumi.RegisterOutputType(ManagementActionResponseOutput{})
+	pulumi.RegisterOutputType(ManagementActionResponseArrayOutput{})
+	pulumi.RegisterOutputType(ManagementGroupOutput{})
+	pulumi.RegisterOutputType(ManagementGroupArrayOutput{})
+	pulumi.RegisterOutputType(ManagementGroupResponseOutput{})
+	pulumi.RegisterOutputType(ManagementGroupResponseArrayOutput{})
+	pulumi.RegisterOutputType(MessageSchemaReferenceResponseOutput{})
+	pulumi.RegisterOutputType(MessagingOutput{})
+	pulumi.RegisterOutputType(MessagingPtrOutput{})
+	pulumi.RegisterOutputType(MessagingEndpointOutput{})
+	pulumi.RegisterOutputType(MessagingEndpointMapOutput{})
+	pulumi.RegisterOutputType(MessagingEndpointResponseOutput{})
+	pulumi.RegisterOutputType(MessagingEndpointResponseMapOutput{})
+	pulumi.RegisterOutputType(MessagingEndpointsOutput{})
+	pulumi.RegisterOutputType(MessagingEndpointsPtrOutput{})
+	pulumi.RegisterOutputType(MessagingEndpointsResponseOutput{})
+	pulumi.RegisterOutputType(MessagingEndpointsResponsePtrOutput{})
+	pulumi.RegisterOutputType(MessagingResponseOutput{})
+	pulumi.RegisterOutputType(MessagingResponsePtrOutput{})
+	pulumi.RegisterOutputType(MqttDestinationConfigurationOutput{})
+	pulumi.RegisterOutputType(MqttDestinationConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(NamespaceAssetStatusDatasetResponseOutput{})
+	pulumi.RegisterOutputType(NamespaceAssetStatusDatasetResponseArrayOutput{})
+	pulumi.RegisterOutputType(NamespaceAssetStatusEventResponseOutput{})
+	pulumi.RegisterOutputType(NamespaceAssetStatusEventResponseArrayOutput{})
+	pulumi.RegisterOutputType(NamespaceAssetStatusManagementActionResponseOutput{})
+	pulumi.RegisterOutputType(NamespaceAssetStatusManagementActionResponseArrayOutput{})
+	pulumi.RegisterOutputType(NamespaceAssetStatusManagementGroupResponseOutput{})
+	pulumi.RegisterOutputType(NamespaceAssetStatusManagementGroupResponseArrayOutput{})
+	pulumi.RegisterOutputType(NamespaceAssetStatusResponseOutput{})
+	pulumi.RegisterOutputType(NamespaceAssetStatusStreamResponseOutput{})
+	pulumi.RegisterOutputType(NamespaceAssetStatusStreamResponseArrayOutput{})
+	pulumi.RegisterOutputType(NamespaceDatasetOutput{})
+	pulumi.RegisterOutputType(NamespaceDatasetArrayOutput{})
+	pulumi.RegisterOutputType(NamespaceDatasetDataPointOutput{})
+	pulumi.RegisterOutputType(NamespaceDatasetDataPointArrayOutput{})
+	pulumi.RegisterOutputType(NamespaceDatasetDataPointResponseOutput{})
+	pulumi.RegisterOutputType(NamespaceDatasetDataPointResponseArrayOutput{})
+	pulumi.RegisterOutputType(NamespaceDatasetResponseOutput{})
+	pulumi.RegisterOutputType(NamespaceDatasetResponseArrayOutput{})
+	pulumi.RegisterOutputType(NamespaceDiscoveredDatasetOutput{})
+	pulumi.RegisterOutputType(NamespaceDiscoveredDatasetArrayOutput{})
+	pulumi.RegisterOutputType(NamespaceDiscoveredDatasetDataPointOutput{})
+	pulumi.RegisterOutputType(NamespaceDiscoveredDatasetDataPointArrayOutput{})
+	pulumi.RegisterOutputType(NamespaceDiscoveredDatasetDataPointResponseOutput{})
+	pulumi.RegisterOutputType(NamespaceDiscoveredDatasetDataPointResponseArrayOutput{})
+	pulumi.RegisterOutputType(NamespaceDiscoveredDatasetResponseOutput{})
+	pulumi.RegisterOutputType(NamespaceDiscoveredDatasetResponseArrayOutput{})
+	pulumi.RegisterOutputType(NamespaceDiscoveredEventOutput{})
+	pulumi.RegisterOutputType(NamespaceDiscoveredEventArrayOutput{})
+	pulumi.RegisterOutputType(NamespaceDiscoveredEventDataPointOutput{})
+	pulumi.RegisterOutputType(NamespaceDiscoveredEventDataPointArrayOutput{})
+	pulumi.RegisterOutputType(NamespaceDiscoveredEventDataPointResponseOutput{})
+	pulumi.RegisterOutputType(NamespaceDiscoveredEventDataPointResponseArrayOutput{})
+	pulumi.RegisterOutputType(NamespaceDiscoveredEventResponseOutput{})
+	pulumi.RegisterOutputType(NamespaceDiscoveredEventResponseArrayOutput{})
+	pulumi.RegisterOutputType(NamespaceDiscoveredManagementActionOutput{})
+	pulumi.RegisterOutputType(NamespaceDiscoveredManagementActionArrayOutput{})
+	pulumi.RegisterOutputType(NamespaceDiscoveredManagementActionResponseOutput{})
+	pulumi.RegisterOutputType(NamespaceDiscoveredManagementActionResponseArrayOutput{})
+	pulumi.RegisterOutputType(NamespaceDiscoveredManagementGroupOutput{})
+	pulumi.RegisterOutputType(NamespaceDiscoveredManagementGroupArrayOutput{})
+	pulumi.RegisterOutputType(NamespaceDiscoveredManagementGroupResponseOutput{})
+	pulumi.RegisterOutputType(NamespaceDiscoveredManagementGroupResponseArrayOutput{})
+	pulumi.RegisterOutputType(NamespaceDiscoveredStreamOutput{})
+	pulumi.RegisterOutputType(NamespaceDiscoveredStreamArrayOutput{})
+	pulumi.RegisterOutputType(NamespaceDiscoveredStreamResponseOutput{})
+	pulumi.RegisterOutputType(NamespaceDiscoveredStreamResponseArrayOutput{})
+	pulumi.RegisterOutputType(NamespaceEventOutput{})
+	pulumi.RegisterOutputType(NamespaceEventArrayOutput{})
+	pulumi.RegisterOutputType(NamespaceEventDataPointOutput{})
+	pulumi.RegisterOutputType(NamespaceEventDataPointArrayOutput{})
+	pulumi.RegisterOutputType(NamespaceEventDataPointResponseOutput{})
+	pulumi.RegisterOutputType(NamespaceEventDataPointResponseArrayOutput{})
+	pulumi.RegisterOutputType(NamespaceEventResponseOutput{})
+	pulumi.RegisterOutputType(NamespaceEventResponseArrayOutput{})
+	pulumi.RegisterOutputType(NamespaceMessageSchemaReferenceResponseOutput{})
+	pulumi.RegisterOutputType(NamespaceStreamOutput{})
+	pulumi.RegisterOutputType(NamespaceStreamArrayOutput{})
+	pulumi.RegisterOutputType(NamespaceStreamResponseOutput{})
+	pulumi.RegisterOutputType(NamespaceStreamResponseArrayOutput{})
+	pulumi.RegisterOutputType(OutboundEndpointsOutput{})
+	pulumi.RegisterOutputType(OutboundEndpointsPtrOutput{})
+	pulumi.RegisterOutputType(OutboundEndpointsResponseOutput{})
+	pulumi.RegisterOutputType(OutboundEndpointsResponsePtrOutput{})
+	pulumi.RegisterOutputType(StatusConfigResponseOutput{})
+	pulumi.RegisterOutputType(StatusErrorResponseOutput{})
+	pulumi.RegisterOutputType(StorageDestinationConfigurationOutput{})
+	pulumi.RegisterOutputType(StorageDestinationConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(StreamMqttDestinationOutput{})
+	pulumi.RegisterOutputType(StreamMqttDestinationResponseOutput{})
+	pulumi.RegisterOutputType(StreamStorageDestinationOutput{})
+	pulumi.RegisterOutputType(StreamStorageDestinationResponseOutput{})
 	pulumi.RegisterOutputType(SystemAssignedServiceIdentityOutput{})
 	pulumi.RegisterOutputType(SystemAssignedServiceIdentityPtrOutput{})
 	pulumi.RegisterOutputType(SystemAssignedServiceIdentityResponseOutput{})
@@ -3080,14 +11041,10 @@ func init() {
 	pulumi.RegisterOutputType(TopicPtrOutput{})
 	pulumi.RegisterOutputType(TopicResponseOutput{})
 	pulumi.RegisterOutputType(TopicResponsePtrOutput{})
-	pulumi.RegisterOutputType(TransportAuthenticationOutput{})
-	pulumi.RegisterOutputType(TransportAuthenticationPtrOutput{})
-	pulumi.RegisterOutputType(TransportAuthenticationResponseOutput{})
-	pulumi.RegisterOutputType(TransportAuthenticationResponsePtrOutput{})
-	pulumi.RegisterOutputType(UserAuthenticationOutput{})
-	pulumi.RegisterOutputType(UserAuthenticationPtrOutput{})
-	pulumi.RegisterOutputType(UserAuthenticationResponseOutput{})
-	pulumi.RegisterOutputType(UserAuthenticationResponsePtrOutput{})
+	pulumi.RegisterOutputType(TrustSettingsOutput{})
+	pulumi.RegisterOutputType(TrustSettingsPtrOutput{})
+	pulumi.RegisterOutputType(TrustSettingsResponseOutput{})
+	pulumi.RegisterOutputType(TrustSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(UsernamePasswordCredentialsOutput{})
 	pulumi.RegisterOutputType(UsernamePasswordCredentialsPtrOutput{})
 	pulumi.RegisterOutputType(UsernamePasswordCredentialsResponseOutput{})

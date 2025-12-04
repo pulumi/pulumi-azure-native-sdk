@@ -8,16 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // MQ mqttBridgeTopicMap resource
 //
-// Uses Azure REST API version 2023-10-04-preview.
+// Uses Azure REST API version 2023-10-04-preview. In version 2.x of the Azure Native provider, it used API version 2023-10-04-preview.
 type MqttBridgeTopicMap struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Extended Location
 	ExtendedLocation ExtendedLocationPropertyResponseOutput `pulumi:"extendedLocation"`
 	// The geo-location where the resource lives
@@ -176,6 +178,11 @@ func (o MqttBridgeTopicMapOutput) ToMqttBridgeTopicMapOutput() MqttBridgeTopicMa
 
 func (o MqttBridgeTopicMapOutput) ToMqttBridgeTopicMapOutputWithContext(ctx context.Context) MqttBridgeTopicMapOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o MqttBridgeTopicMapOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *MqttBridgeTopicMap) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Extended Location

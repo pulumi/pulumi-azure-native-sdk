@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,12 +25,18 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AgentPool{}
 	case "azure-native:containerservice:AutoUpgradeProfile":
 		r = &AutoUpgradeProfile{}
+	case "azure-native:containerservice:DeploymentSafeguard":
+		r = &DeploymentSafeguard{}
 	case "azure-native:containerservice:Fleet":
 		r = &Fleet{}
 	case "azure-native:containerservice:FleetMember":
 		r = &FleetMember{}
 	case "azure-native:containerservice:FleetUpdateStrategy":
 		r = &FleetUpdateStrategy{}
+	case "azure-native:containerservice:IdentityBinding":
+		r = &IdentityBinding{}
+	case "azure-native:containerservice:JWTAuthenticator":
+		r = &JWTAuthenticator{}
 	case "azure-native:containerservice:LoadBalancer":
 		r = &LoadBalancer{}
 	case "azure-native:containerservice:MaintenanceConfiguration":
@@ -39,8 +45,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ManagedCluster{}
 	case "azure-native:containerservice:ManagedClusterSnapshot":
 		r = &ManagedClusterSnapshot{}
-	case "azure-native:containerservice:OpenShiftManagedCluster":
-		r = &OpenShiftManagedCluster{}
+	case "azure-native:containerservice:ManagedNamespace":
+		r = &ManagedNamespace{}
+	case "azure-native:containerservice:Namespace":
+		r = &Namespace{}
+	case "azure-native:containerservice:NodeCustomization":
+		r = &NodeCustomization{}
 	case "azure-native:containerservice:PrivateEndpointConnection":
 		r = &PrivateEndpointConnection{}
 	case "azure-native:containerservice:Snapshot":

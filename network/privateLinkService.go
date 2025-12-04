@@ -8,15 +8,15 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Private link service resource.
 //
-// Uses Azure REST API version 2023-02-01. In version 1.x of the Azure Native provider, it used API version 2020-11-01.
+// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
 //
-// Other available API versions: 2019-08-01, 2021-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Other available API versions: 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type PrivateLinkService struct {
 	pulumi.CustomResourceState
 
@@ -24,6 +24,10 @@ type PrivateLinkService struct {
 	Alias pulumi.StringOutput `pulumi:"alias"`
 	// The auto-approval list of the private link service.
 	AutoApproval PrivateLinkServicePropertiesResponseAutoApprovalPtrOutput `pulumi:"autoApproval"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// The destination IP address of the private link service.
+	DestinationIPAddress pulumi.StringPtrOutput `pulumi:"destinationIPAddress"`
 	// Whether the private link service is enabled for proxy protocol or not.
 	EnableProxyProtocol pulumi.BoolPtrOutput `pulumi:"enableProxyProtocol"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -161,6 +165,12 @@ func NewPrivateLinkService(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20240501:PrivateLinkService"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20240701:PrivateLinkService"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20241001:PrivateLinkService"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -198,6 +208,8 @@ func (PrivateLinkServiceState) ElementType() reflect.Type {
 type privateLinkServiceArgs struct {
 	// The auto-approval list of the private link service.
 	AutoApproval *PrivateLinkServicePropertiesAutoApproval `pulumi:"autoApproval"`
+	// The destination IP address of the private link service.
+	DestinationIPAddress *string `pulumi:"destinationIPAddress"`
 	// Whether the private link service is enabled for proxy protocol or not.
 	EnableProxyProtocol *bool `pulumi:"enableProxyProtocol"`
 	// The extended location of the load balancer.
@@ -226,6 +238,8 @@ type privateLinkServiceArgs struct {
 type PrivateLinkServiceArgs struct {
 	// The auto-approval list of the private link service.
 	AutoApproval PrivateLinkServicePropertiesAutoApprovalPtrInput
+	// The destination IP address of the private link service.
+	DestinationIPAddress pulumi.StringPtrInput
 	// Whether the private link service is enabled for proxy protocol or not.
 	EnableProxyProtocol pulumi.BoolPtrInput
 	// The extended location of the load balancer.
@@ -297,6 +311,16 @@ func (o PrivateLinkServiceOutput) AutoApproval() PrivateLinkServicePropertiesRes
 	return o.ApplyT(func(v *PrivateLinkService) PrivateLinkServicePropertiesResponseAutoApprovalPtrOutput {
 		return v.AutoApproval
 	}).(PrivateLinkServicePropertiesResponseAutoApprovalPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o PrivateLinkServiceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateLinkService) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// The destination IP address of the private link service.
+func (o PrivateLinkServiceOutput) DestinationIPAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateLinkService) pulumi.StringPtrOutput { return v.DestinationIPAddress }).(pulumi.StringPtrOutput)
 }
 
 // Whether the private link service is enabled for proxy protocol or not.

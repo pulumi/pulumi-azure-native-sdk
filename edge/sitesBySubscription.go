@@ -7,16 +7,20 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Site as ARM Resource
 //
-// Uses Azure REST API version 2024-02-01-preview.
+// Uses Azure REST API version 2024-02-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-02-01-preview.
+//
+// Other available API versions: 2025-03-01-preview, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type SitesBySubscription struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The resource-specific properties for this resource.
@@ -37,6 +41,12 @@ func NewSitesBySubscription(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:edge/v20240201preview:SitesBySubscription"),
+		},
+		{
+			Type: pulumi.String("azure-native:edge/v20250301preview:SitesBySubscription"),
+		},
+		{
+			Type: pulumi.String("azure-native:edge/v20250601:SitesBySubscription"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -75,7 +85,7 @@ func (SitesBySubscriptionState) ElementType() reflect.Type {
 type sitesBySubscriptionArgs struct {
 	// The resource-specific properties for this resource.
 	Properties *SiteProperties `pulumi:"properties"`
-	// Name of Site resource
+	// The name of the Site
 	SiteName *string `pulumi:"siteName"`
 }
 
@@ -83,7 +93,7 @@ type sitesBySubscriptionArgs struct {
 type SitesBySubscriptionArgs struct {
 	// The resource-specific properties for this resource.
 	Properties SitePropertiesPtrInput
-	// Name of Site resource
+	// The name of the Site
 	SiteName pulumi.StringPtrInput
 }
 
@@ -122,6 +132,11 @@ func (o SitesBySubscriptionOutput) ToSitesBySubscriptionOutput() SitesBySubscrip
 
 func (o SitesBySubscriptionOutput) ToSitesBySubscriptionOutputWithContext(ctx context.Context) SitesBySubscriptionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o SitesBySubscriptionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SitesBySubscription) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

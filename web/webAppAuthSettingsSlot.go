@@ -8,15 +8,15 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Configuration settings for the Azure App Service Authentication / Authorization feature.
 //
-// Uses Azure REST API version 2022-09-01. In version 1.x of the Azure Native provider, it used API version 2020-12-01.
+// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
 //
-// Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
+// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type WebAppAuthSettingsSlot struct {
 	pulumi.CustomResourceState
 
@@ -36,6 +36,8 @@ type WebAppAuthSettingsSlot struct {
 	// The path of the config file containing auth settings.
 	// If the path is relative, base will the site's root directory.
 	AuthFilePath pulumi.StringPtrOutput `pulumi:"authFilePath"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The Client ID of this relying party application, known as the client_id.
 	// This setting is required for enabling OpenID Connection authentication with Azure Active Directory or
 	// other 3rd party OpenID Connect providers.
@@ -226,6 +228,9 @@ func NewWebAppAuthSettingsSlot(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20240401:WebAppAuthSettingsSlot"),
+		},
+		{
+			Type: pulumi.String("azure-native:web/v20241101:WebAppAuthSettingsSlot"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -606,6 +611,11 @@ func (o WebAppAuthSettingsSlotOutput) AllowedExternalRedirectUrls() pulumi.Strin
 // If the path is relative, base will the site's root directory.
 func (o WebAppAuthSettingsSlotOutput) AuthFilePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebAppAuthSettingsSlot) pulumi.StringPtrOutput { return v.AuthFilePath }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o WebAppAuthSettingsSlotOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *WebAppAuthSettingsSlot) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The Client ID of this relying party application, known as the client_id.

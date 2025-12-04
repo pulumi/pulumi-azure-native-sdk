@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the resource and its properties.
 //
-// Uses Azure REST API version 2023-02-01.
+// Uses Azure REST API version 2024-03-01.
 //
-// Other available API versions: 2023-03-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-08-01-preview, 2024-10-01-preview.
+// Other available API versions: 2023-02-01, 2023-03-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview, 2024-04-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native signalrservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupSignalR(ctx *pulumi.Context, args *LookupSignalRArgs, opts ...pulumi.InvokeOption) (*LookupSignalRResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSignalRResult
@@ -27,7 +27,7 @@ func LookupSignalR(ctx *pulumi.Context, args *LookupSignalRArgs, opts ...pulumi.
 }
 
 type LookupSignalRArgs struct {
-	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the resource.
 	ResourceName string `pulumi:"resourceName"`
@@ -35,6 +35,8 @@ type LookupSignalRArgs struct {
 
 // A class represent a resource.
 type LookupSignalRResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Cross-Origin Resource Sharing (CORS) settings.
 	Cors *SignalRCorsSettingsResponse `pulumi:"cors"`
 	// DisableLocalAuth
@@ -58,17 +60,17 @@ type LookupSignalRResult struct {
 	HostName string `pulumi:"hostName"`
 	// Deprecated.
 	HostNamePrefix string `pulumi:"hostNamePrefix"`
-	// Fully qualified resource Id for the resource.
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// A class represent managed identities used for request and response
 	Identity *ManagedIdentityResponse `pulumi:"identity"`
-	// The kind of the service, it can be SignalR or RawWebSockets
+	// The kind of the service
 	Kind *string `pulumi:"kind"`
 	// Live trace configuration of a Microsoft.SignalRService resource.
 	LiveTraceConfiguration *LiveTraceConfigurationResponse `pulumi:"liveTraceConfiguration"`
-	// The GEO location of the resource. e.g. West US | East US | North Central US | South Central US.
-	Location *string `pulumi:"location"`
-	// The name of the resource.
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Network ACLs for the resource
 	NetworkACLs *SignalRNetworkACLsResponse `pulumi:"networkACLs"`
@@ -82,8 +84,16 @@ type LookupSignalRResult struct {
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// The publicly accessible port of the resource which is designed for browser/client side usage.
 	PublicPort int `pulumi:"publicPort"`
+	// Enable or disable the regional endpoint. Default to "Enabled".
+	// When it's Disabled, new connections will not be routed to this endpoint, however existing connections will not be affected.
+	// This property is replica specific. Disable the regional endpoint without replica is not allowed.
+	RegionEndpointEnabled *string `pulumi:"regionEndpointEnabled"`
 	// Resource log configuration of a Microsoft.SignalRService resource.
 	ResourceLogConfiguration *ResourceLogConfigurationResponse `pulumi:"resourceLogConfiguration"`
+	// Stop or start the resource.  Default to "False".
+	// When it's true, the data plane of the resource is shutdown.
+	// When it's false, the data plane of the resource is started.
+	ResourceStopped *string `pulumi:"resourceStopped"`
 	// The publicly accessible port of the resource which is designed for customer server side usage.
 	ServerPort int `pulumi:"serverPort"`
 	// Serverless settings.
@@ -92,13 +102,13 @@ type LookupSignalRResult struct {
 	SharedPrivateLinkResources []SharedPrivateLinkResourceResponse `pulumi:"sharedPrivateLinkResources"`
 	// The billing information of the resource.
 	Sku *ResourceSkuResponse `pulumi:"sku"`
-	// Metadata pertaining to creation and last modification of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// Tags of the service which is a list of key value pairs that describe the resource.
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// TLS settings for the resource
 	Tls *SignalRTlsSettingsResponse `pulumi:"tls"`
-	// The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// The settings for the Upstream when the service is in server-less mode.
 	Upstream *ServerlessUpstreamSettingsResponse `pulumi:"upstream"`
@@ -126,6 +136,14 @@ func (val *LookupSignalRResult) Defaults() *LookupSignalRResult {
 		publicNetworkAccess_ := "Enabled"
 		tmp.PublicNetworkAccess = &publicNetworkAccess_
 	}
+	if tmp.RegionEndpointEnabled == nil {
+		regionEndpointEnabled_ := "Enabled"
+		tmp.RegionEndpointEnabled = &regionEndpointEnabled_
+	}
+	if tmp.ResourceStopped == nil {
+		resourceStopped_ := "false"
+		tmp.ResourceStopped = &resourceStopped_
+	}
 	tmp.Serverless = tmp.Serverless.Defaults()
 
 	tmp.Tls = tmp.Tls.Defaults()
@@ -142,7 +160,7 @@ func LookupSignalROutput(ctx *pulumi.Context, args LookupSignalROutputArgs, opts
 }
 
 type LookupSignalROutputArgs struct {
-	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the resource.
 	ResourceName pulumi.StringInput `pulumi:"resourceName"`
@@ -165,6 +183,11 @@ func (o LookupSignalRResultOutput) ToLookupSignalRResultOutput() LookupSignalRRe
 
 func (o LookupSignalRResultOutput) ToLookupSignalRResultOutputWithContext(ctx context.Context) LookupSignalRResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSignalRResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSignalRResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Cross-Origin Resource Sharing (CORS) settings.
@@ -211,7 +234,7 @@ func (o LookupSignalRResultOutput) HostNamePrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSignalRResult) string { return v.HostNamePrefix }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource Id for the resource.
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupSignalRResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSignalRResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -221,7 +244,7 @@ func (o LookupSignalRResultOutput) Identity() ManagedIdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupSignalRResult) *ManagedIdentityResponse { return v.Identity }).(ManagedIdentityResponsePtrOutput)
 }
 
-// The kind of the service, it can be SignalR or RawWebSockets
+// The kind of the service
 func (o LookupSignalRResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSignalRResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
@@ -231,12 +254,12 @@ func (o LookupSignalRResultOutput) LiveTraceConfiguration() LiveTraceConfigurati
 	return o.ApplyT(func(v LookupSignalRResult) *LiveTraceConfigurationResponse { return v.LiveTraceConfiguration }).(LiveTraceConfigurationResponsePtrOutput)
 }
 
-// The GEO location of the resource. e.g. West US | East US | North Central US | South Central US.
-func (o LookupSignalRResultOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupSignalRResult) *string { return v.Location }).(pulumi.StringPtrOutput)
+// The geo-location where the resource lives
+func (o LookupSignalRResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSignalRResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// The name of the resource.
+// The name of the resource
 func (o LookupSignalRResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSignalRResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -268,9 +291,23 @@ func (o LookupSignalRResultOutput) PublicPort() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupSignalRResult) int { return v.PublicPort }).(pulumi.IntOutput)
 }
 
+// Enable or disable the regional endpoint. Default to "Enabled".
+// When it's Disabled, new connections will not be routed to this endpoint, however existing connections will not be affected.
+// This property is replica specific. Disable the regional endpoint without replica is not allowed.
+func (o LookupSignalRResultOutput) RegionEndpointEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupSignalRResult) *string { return v.RegionEndpointEnabled }).(pulumi.StringPtrOutput)
+}
+
 // Resource log configuration of a Microsoft.SignalRService resource.
 func (o LookupSignalRResultOutput) ResourceLogConfiguration() ResourceLogConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v LookupSignalRResult) *ResourceLogConfigurationResponse { return v.ResourceLogConfiguration }).(ResourceLogConfigurationResponsePtrOutput)
+}
+
+// Stop or start the resource.  Default to "False".
+// When it's true, the data plane of the resource is shutdown.
+// When it's false, the data plane of the resource is started.
+func (o LookupSignalRResultOutput) ResourceStopped() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupSignalRResult) *string { return v.ResourceStopped }).(pulumi.StringPtrOutput)
 }
 
 // The publicly accessible port of the resource which is designed for customer server side usage.
@@ -293,12 +330,12 @@ func (o LookupSignalRResultOutput) Sku() ResourceSkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupSignalRResult) *ResourceSkuResponse { return v.Sku }).(ResourceSkuResponsePtrOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupSignalRResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupSignalRResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Tags of the service which is a list of key value pairs that describe the resource.
+// Resource tags.
 func (o LookupSignalRResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupSignalRResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -308,7 +345,7 @@ func (o LookupSignalRResultOutput) Tls() SignalRTlsSettingsResponsePtrOutput {
 	return o.ApplyT(func(v LookupSignalRResult) *SignalRTlsSettingsResponse { return v.Tls }).(SignalRTlsSettingsResponsePtrOutput)
 }
 
-// The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupSignalRResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSignalRResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,20 +27,22 @@ func LookupServiceFabricSchedule(ctx *pulumi.Context, args *LookupServiceFabricS
 type LookupServiceFabricScheduleArgs struct {
 	// Specify the $expand query. Example: 'properties($select=status)'
 	Expand *string `pulumi:"expand"`
-	// The name of the lab.
+	// labs
 	LabName string `pulumi:"labName"`
-	// The name of the schedule.
+	// The name of the Schedule
 	Name string `pulumi:"name"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// The name of the service fabric.
+	// servicefabrics
 	ServiceFabricName string `pulumi:"serviceFabricName"`
-	// The name of the user profile.
+	// users
 	UserName string `pulumi:"userName"`
 }
 
 // A schedule.
 type LookupServiceFabricScheduleResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The creation date of the schedule.
 	CreatedDate string `pulumi:"createdDate"`
 	// If the schedule will occur once each day of the week, specify the daily recurrence.
@@ -101,15 +103,15 @@ func LookupServiceFabricScheduleOutput(ctx *pulumi.Context, args LookupServiceFa
 type LookupServiceFabricScheduleOutputArgs struct {
 	// Specify the $expand query. Example: 'properties($select=status)'
 	Expand pulumi.StringPtrInput `pulumi:"expand"`
-	// The name of the lab.
+	// labs
 	LabName pulumi.StringInput `pulumi:"labName"`
-	// The name of the schedule.
+	// The name of the Schedule
 	Name pulumi.StringInput `pulumi:"name"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	// The name of the service fabric.
+	// servicefabrics
 	ServiceFabricName pulumi.StringInput `pulumi:"serviceFabricName"`
-	// The name of the user profile.
+	// users
 	UserName pulumi.StringInput `pulumi:"userName"`
 }
 
@@ -130,6 +132,11 @@ func (o LookupServiceFabricScheduleResultOutput) ToLookupServiceFabricScheduleRe
 
 func (o LookupServiceFabricScheduleResultOutput) ToLookupServiceFabricScheduleResultOutputWithContext(ctx context.Context) LookupServiceFabricScheduleResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupServiceFabricScheduleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceFabricScheduleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of the schedule.

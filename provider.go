@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -55,9 +55,11 @@ type providerArgs struct {
 	ClientId *string `pulumi:"clientId"`
 	// The Client Secret which should be used. For use When authenticating as a Service Principal using a Client Secret.
 	ClientSecret *string `pulumi:"clientSecret"`
+	// Determines whether or not instance discovery is performed when attempting to authenticate. Setting this to true will completely disable both instance discovery and authority validation. This functionality is intended for use in scenarios where the metadata endpoint cannot be reached, such as in private clouds or Azure Stack.
+	DisableInstanceDiscovery *bool `pulumi:"disableInstanceDiscovery"`
 	// This will disable the Pulumi Partner ID which is used if a custom `partnerId` isn't specified.
 	DisablePulumiPartnerId *bool `pulumi:"disablePulumiPartnerId"`
-	// The Cloud Environment which should be used. Possible values are public, usgovernment, and china. Defaults to public.
+	// The Cloud Environment which should be used. Possible values are public, usgovernment, and china. Defaults to public. Not used when metadataHost is specified or when ARM_METADATA_HOSTNAME is set.
 	Environment *string `pulumi:"environment"`
 	// The location to use. ResourceGroups will consult this property for a default location, if one was not supplied explicitly when defining the resource.
 	Location *string `pulumi:"location"`
@@ -77,6 +79,8 @@ type providerArgs struct {
 	SubscriptionId *string `pulumi:"subscriptionId"`
 	// The Tenant ID which should be used.
 	TenantId *string `pulumi:"tenantId"`
+	// Use the default credential chain of the Azure SDK (see https://learn.microsoft.com/en-us/azure/developer/go/sdk/authentication/credential-chains#defaultazurecredential-overview).
+	UseDefaultAzureCredential *bool `pulumi:"useDefaultAzureCredential"`
 	// Allow Managed Service Identity to be used for Authentication.
 	UseMsi *bool `pulumi:"useMsi"`
 	// Allow OpenID Connect (OIDC) to be used for Authentication.
@@ -95,9 +99,11 @@ type ProviderArgs struct {
 	ClientId pulumi.StringPtrInput
 	// The Client Secret which should be used. For use When authenticating as a Service Principal using a Client Secret.
 	ClientSecret pulumi.StringPtrInput
+	// Determines whether or not instance discovery is performed when attempting to authenticate. Setting this to true will completely disable both instance discovery and authority validation. This functionality is intended for use in scenarios where the metadata endpoint cannot be reached, such as in private clouds or Azure Stack.
+	DisableInstanceDiscovery pulumi.BoolPtrInput
 	// This will disable the Pulumi Partner ID which is used if a custom `partnerId` isn't specified.
 	DisablePulumiPartnerId pulumi.BoolPtrInput
-	// The Cloud Environment which should be used. Possible values are public, usgovernment, and china. Defaults to public.
+	// The Cloud Environment which should be used. Possible values are public, usgovernment, and china. Defaults to public. Not used when metadataHost is specified or when ARM_METADATA_HOSTNAME is set.
 	Environment pulumi.StringPtrInput
 	// The location to use. ResourceGroups will consult this property for a default location, if one was not supplied explicitly when defining the resource.
 	Location pulumi.StringPtrInput
@@ -117,6 +123,8 @@ type ProviderArgs struct {
 	SubscriptionId pulumi.StringPtrInput
 	// The Tenant ID which should be used.
 	TenantId pulumi.StringPtrInput
+	// Use the default credential chain of the Azure SDK (see https://learn.microsoft.com/en-us/azure/developer/go/sdk/authentication/credential-chains#defaultazurecredential-overview).
+	UseDefaultAzureCredential pulumi.BoolPtrInput
 	// Allow Managed Service Identity to be used for Authentication.
 	UseMsi pulumi.BoolPtrInput
 	// Allow OpenID Connect (OIDC) to be used for Authentication.

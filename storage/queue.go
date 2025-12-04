@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Uses Azure REST API version 2022-09-01. In version 1.x of the Azure Native provider, it used API version 2021-02-01.
+// Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
 //
-// Other available API versions: 2023-01-01, 2023-04-01, 2023-05-01, 2024-01-01.
+// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Queue struct {
 	pulumi.CustomResourceState
 
 	// Integer indicating an approximate number of messages in the queue. This number is not lower than the actual number of messages in the queue, but could be higher.
 	ApproximateMessageCount pulumi.IntOutput `pulumi:"approximateMessageCount"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A name-value pair that represents queue metadata.
 	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
 	// The name of the resource
@@ -83,6 +85,9 @@ func NewQueue(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:storage/v20240101:Queue"),
+		},
+		{
+			Type: pulumi.String("azure-native:storage/v20250101:Queue"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -181,6 +186,11 @@ func (o QueueOutput) ToQueueOutputWithContext(ctx context.Context) QueueOutput {
 // Integer indicating an approximate number of messages in the queue. This number is not lower than the actual number of messages in the queue, but could be higher.
 func (o QueueOutput) ApproximateMessageCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *Queue) pulumi.IntOutput { return v.ApproximateMessageCount }).(pulumi.IntOutput)
+}
+
+// The Azure API version of the resource.
+func (o QueueOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Queue) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A name-value pair that represents queue metadata.

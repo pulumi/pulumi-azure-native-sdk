@@ -8,20 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents a video resource within Azure Video Analyzer. Videos can be ingested from RTSP cameras through live pipelines or can be created by exporting sequences from existing captured video through a pipeline job. Videos ingested through live pipelines can be streamed through Azure Video Analyzer Player Widget or compatible players. Exported videos can be downloaded as MP4 files.
 //
-// Uses Azure REST API version 2021-11-01-preview. In version 1.x of the Azure Native provider, it used API version 2021-05-01-preview.
-//
-// Other available API versions: 2021-05-01-preview.
+// Uses Azure REST API version 2021-11-01-preview. In version 2.x of the Azure Native provider, it used API version 2021-11-01-preview.
 type Video struct {
 	pulumi.CustomResourceState
 
 	// Video archival properties.
 	Archival VideoArchivalResponsePtrOutput `pulumi:"archival"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Set of URLs to the video content.
 	ContentUrls VideoContentUrlsResponseOutput `pulumi:"contentUrls"`
 	// Optional video description provided by the user. Value can be up to 2048 characters long.
@@ -169,6 +169,11 @@ func (o VideoOutput) ToVideoOutputWithContext(ctx context.Context) VideoOutput {
 // Video archival properties.
 func (o VideoOutput) Archival() VideoArchivalResponsePtrOutput {
 	return o.ApplyT(func(v *Video) VideoArchivalResponsePtrOutput { return v.Archival }).(VideoArchivalResponsePtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o VideoOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Video) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Set of URLs to the video content.

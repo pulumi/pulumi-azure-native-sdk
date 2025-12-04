@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Volume group resource for create
 //
-// Uses Azure REST API version 2022-11-01. In version 1.x of the Azure Native provider, it used API version 2021-10-01.
+// Uses Azure REST API version 2024-09-01. In version 2.x of the Azure Native provider, it used API version 2022-11-01.
 //
-// Other available API versions: 2021-10-01, 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01, 2023-07-01-preview, 2023-11-01, 2023-11-01-preview, 2024-01-01, 2024-03-01, 2024-03-01-preview, 2024-05-01, 2024-05-01-preview, 2024-07-01, 2024-07-01-preview, 2024-09-01, 2024-09-01-preview.
+// Other available API versions: 2022-11-01, 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01, 2023-07-01-preview, 2023-11-01, 2023-11-01-preview, 2024-01-01, 2024-03-01, 2024-03-01-preview, 2024-05-01, 2024-05-01-preview, 2024-07-01, 2024-07-01-preview, 2024-09-01-preview, 2025-01-01, 2025-01-01-preview, 2025-03-01, 2025-03-01-preview, 2025-06-01, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native netapp [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type VolumeGroup struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Volume group details
 	GroupMetaData VolumeGroupMetaDataResponsePtrOutput `pulumi:"groupMetaData"`
 	// Resource location
@@ -116,6 +118,24 @@ func NewVolumeGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:netapp/v20240901preview:VolumeGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20250101:VolumeGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20250101preview:VolumeGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20250301:VolumeGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20250301preview:VolumeGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20250601:VolumeGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20250701preview:VolumeGroup"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -217,6 +237,11 @@ func (o VolumeGroupOutput) ToVolumeGroupOutput() VolumeGroupOutput {
 
 func (o VolumeGroupOutput) ToVolumeGroupOutputWithContext(ctx context.Context) VolumeGroupOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o VolumeGroupOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *VolumeGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Volume group details

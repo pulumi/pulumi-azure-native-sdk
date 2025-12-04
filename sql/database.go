@@ -8,20 +8,24 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A database resource.
 //
-// Uses Azure REST API version 2021-11-01. In version 1.x of the Azure Native provider, it used API version 2020-11-01-preview.
+// Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2021-11-01.
 //
-// Other available API versions: 2014-04-01, 2019-06-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01, 2023-08-01-preview, 2024-05-01-preview.
+// Other available API versions: 2014-04-01, 2017-03-01-preview, 2017-10-01-preview, 2019-06-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Database struct {
 	pulumi.CustomResourceState
 
 	// Time in minutes after which database is automatically paused. A value of -1 means that automatic pause is disabled
 	AutoPauseDelay pulumi.IntPtrOutput `pulumi:"autoPauseDelay"`
+	// Specifies the availability zone the database is pinned to.
+	AvailabilityZone pulumi.StringPtrOutput `pulumi:"availabilityZone"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Collation of the metadata catalog.
 	CatalogCollation pulumi.StringPtrOutput `pulumi:"catalogCollation"`
 	// The collation of the database.
@@ -42,11 +46,21 @@ type Database struct {
 	EarliestRestoreDate pulumi.StringOutput `pulumi:"earliestRestoreDate"`
 	// The resource identifier of the elastic pool containing this database.
 	ElasticPoolId pulumi.StringPtrOutput `pulumi:"elasticPoolId"`
+	// The azure key vault URI of the database if it's configured with per Database Customer Managed Keys.
+	EncryptionProtector pulumi.StringPtrOutput `pulumi:"encryptionProtector"`
+	// The flag to enable or disable auto rotation of database encryption protector AKV key.
+	EncryptionProtectorAutoRotation pulumi.BoolPtrOutput `pulumi:"encryptionProtectorAutoRotation"`
 	// Failover Group resource identifier that this database belongs to.
 	FailoverGroupId pulumi.StringOutput `pulumi:"failoverGroupId"`
 	// The Client id used for cross tenant per database CMK scenario
 	FederatedClientId pulumi.StringPtrOutput `pulumi:"federatedClientId"`
-	// The number of secondary replicas associated with the database that are used to provide high availability. Not applicable to a Hyperscale database within an elastic pool.
+	// Specifies the behavior when monthly free limits are exhausted for the free database.
+	//
+	// AutoPause: The database will be auto paused upon exhaustion of free limits for remainder of the month.
+	//
+	// BillForUsage: The database will continue to be online upon exhaustion of free limits and any overage will be billed.
+	FreeLimitExhaustionBehavior pulumi.StringPtrOutput `pulumi:"freeLimitExhaustionBehavior"`
+	// The number of secondary replicas associated with the Business Critical, Premium, or Hyperscale edition database that are used to provide high availability. Not applicable to a Hyperscale database within an elastic pool.
 	HighAvailabilityReplicaCount pulumi.IntPtrOutput `pulumi:"highAvailabilityReplicaCount"`
 	// The Azure Active Directory identity of the database.
 	Identity DatabaseIdentityResponsePtrOutput `pulumi:"identity"`
@@ -54,6 +68,8 @@ type Database struct {
 	IsInfraEncryptionEnabled pulumi.BoolOutput `pulumi:"isInfraEncryptionEnabled"`
 	// Whether or not this database is a ledger database, which means all tables in the database are ledger tables. Note: the value of this property cannot be changed after the database has been created.
 	IsLedgerOn pulumi.BoolPtrOutput `pulumi:"isLedgerOn"`
+	// The resource ids of the user assigned identities to use
+	Keys DatabaseKeyResponseMapOutput `pulumi:"keys"`
 	// Kind of database. This is metadata used for the Azure portal experience.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// The license type to apply for this database. `LicenseIncluded` if you need a license, or `BasePrice` if you have a license and are eligible for the Azure Hybrid Benefit.
@@ -64,6 +80,14 @@ type Database struct {
 	MaintenanceConfigurationId pulumi.StringPtrOutput `pulumi:"maintenanceConfigurationId"`
 	// Resource that manages the database.
 	ManagedBy pulumi.StringOutput `pulumi:"managedBy"`
+	// Whether or not customer controlled manual cutover needs to be done during Update Database operation to Hyperscale tier.
+	//
+	// This property is only applicable when scaling database from Business Critical/General Purpose/Premium/Standard tier to Hyperscale tier.
+	//
+	// When manualCutover is specified, the scaling operation will wait for user input to trigger cutover to Hyperscale database.
+	//
+	// To trigger cutover, please provide 'performCutover' parameter when the Scaling operation is in Waiting state.
+	ManualCutover pulumi.BoolPtrOutput `pulumi:"manualCutover"`
 	// The max log size for this database.
 	MaxLogSizeBytes pulumi.Float64Output `pulumi:"maxLogSizeBytes"`
 	// The max size of the database expressed in bytes.
@@ -74,6 +98,16 @@ type Database struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The date when database was paused by user configuration or action(ISO8601 format). Null if the database is ready.
 	PausedDate pulumi.StringOutput `pulumi:"pausedDate"`
+	// To trigger customer controlled manual cutover during the wait state while Scaling operation is in progress.
+	//
+	// This property parameter is only applicable for scaling operations that are initiated along with 'manualCutover' parameter.
+	//
+	// This property is only applicable when scaling database from Business Critical/General Purpose/Premium/Standard tier to Hyperscale tier is already in progress.
+	//
+	// When performCutover is specified, the scaling operation will trigger cutover and perform role-change to Hyperscale database.
+	PerformCutover pulumi.BoolPtrOutput `pulumi:"performCutover"`
+	// Type of enclave requested on the database i.e. Default or VBS enclaves.
+	PreferredEnclaveType pulumi.StringPtrOutput `pulumi:"preferredEnclaveType"`
 	// The state of read-only routing. If enabled, connections that have application intent set to readonly in their connection string may be routed to a readonly secondary replica in the same region. Not applicable to a Hyperscale database within an elastic pool.
 	ReadScale pulumi.StringPtrOutput `pulumi:"readScale"`
 	// The storage account type to be used to store backups for this database.
@@ -82,7 +116,7 @@ type Database struct {
 	RequestedServiceObjectiveName pulumi.StringOutput `pulumi:"requestedServiceObjectiveName"`
 	// The date when database was resumed by user action or database login (ISO8601 format). Null if the database is paused.
 	ResumedDate pulumi.StringOutput `pulumi:"resumedDate"`
-	// The secondary type of the database if it is a secondary.  Valid values are Geo and Named.
+	// The secondary type of the database if it is a secondary.  Valid values are Geo, Named and Standby.
 	SecondaryType pulumi.StringPtrOutput `pulumi:"secondaryType"`
 	// The database SKU.
 	//
@@ -94,6 +128,8 @@ type Database struct {
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Resource type.
 	Type pulumi.StringOutput `pulumi:"type"`
+	// Whether or not the database uses free monthly limits. Allowed on one database in a subscription.
+	UseFreeLimit pulumi.BoolPtrOutput `pulumi:"useFreeLimit"`
 	// Whether or not this database is zone redundant, which means the replicas of this database will be spread across multiple availability zones.
 	ZoneRedundant pulumi.BoolPtrOutput `pulumi:"zoneRedundant"`
 }
@@ -175,6 +211,9 @@ func NewDatabase(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:sql/v20240501preview:Database"),
 		},
+		{
+			Type: pulumi.String("azure-native:sql/v20241101preview:Database"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -212,6 +251,8 @@ func (DatabaseState) ElementType() reflect.Type {
 type databaseArgs struct {
 	// Time in minutes after which database is automatically paused. A value of -1 means that automatic pause is disabled
 	AutoPauseDelay *int `pulumi:"autoPauseDelay"`
+	// Specifies the availability zone the database is pinned to.
+	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// Collation of the metadata catalog.
 	CatalogCollation *string `pulumi:"catalogCollation"`
 	// The collation of the database.
@@ -238,14 +279,26 @@ type databaseArgs struct {
 	DatabaseName *string `pulumi:"databaseName"`
 	// The resource identifier of the elastic pool containing this database.
 	ElasticPoolId *string `pulumi:"elasticPoolId"`
+	// The azure key vault URI of the database if it's configured with per Database Customer Managed Keys.
+	EncryptionProtector *string `pulumi:"encryptionProtector"`
+	// The flag to enable or disable auto rotation of database encryption protector AKV key.
+	EncryptionProtectorAutoRotation *bool `pulumi:"encryptionProtectorAutoRotation"`
 	// The Client id used for cross tenant per database CMK scenario
 	FederatedClientId *string `pulumi:"federatedClientId"`
-	// The number of secondary replicas associated with the database that are used to provide high availability. Not applicable to a Hyperscale database within an elastic pool.
+	// Specifies the behavior when monthly free limits are exhausted for the free database.
+	//
+	// AutoPause: The database will be auto paused upon exhaustion of free limits for remainder of the month.
+	//
+	// BillForUsage: The database will continue to be online upon exhaustion of free limits and any overage will be billed.
+	FreeLimitExhaustionBehavior *string `pulumi:"freeLimitExhaustionBehavior"`
+	// The number of secondary replicas associated with the Business Critical, Premium, or Hyperscale edition database that are used to provide high availability. Not applicable to a Hyperscale database within an elastic pool.
 	HighAvailabilityReplicaCount *int `pulumi:"highAvailabilityReplicaCount"`
 	// The Azure Active Directory identity of the database.
 	Identity *DatabaseIdentity `pulumi:"identity"`
 	// Whether or not this database is a ledger database, which means all tables in the database are ledger tables. Note: the value of this property cannot be changed after the database has been created.
 	IsLedgerOn *bool `pulumi:"isLedgerOn"`
+	// The resource ids of the user assigned identities to use
+	Keys []string `pulumi:"keys"`
 	// The license type to apply for this database. `LicenseIncluded` if you need a license, or `BasePrice` if you have a license and are eligible for the Azure Hybrid Benefit.
 	LicenseType *string `pulumi:"licenseType"`
 	// Resource location.
@@ -254,10 +307,28 @@ type databaseArgs struct {
 	LongTermRetentionBackupResourceId *string `pulumi:"longTermRetentionBackupResourceId"`
 	// Maintenance configuration id assigned to the database. This configuration defines the period when the maintenance updates will occur.
 	MaintenanceConfigurationId *string `pulumi:"maintenanceConfigurationId"`
+	// Whether or not customer controlled manual cutover needs to be done during Update Database operation to Hyperscale tier.
+	//
+	// This property is only applicable when scaling database from Business Critical/General Purpose/Premium/Standard tier to Hyperscale tier.
+	//
+	// When manualCutover is specified, the scaling operation will wait for user input to trigger cutover to Hyperscale database.
+	//
+	// To trigger cutover, please provide 'performCutover' parameter when the Scaling operation is in Waiting state.
+	ManualCutover *bool `pulumi:"manualCutover"`
 	// The max size of the database expressed in bytes.
 	MaxSizeBytes *float64 `pulumi:"maxSizeBytes"`
 	// Minimal capacity that database will always have allocated, if not paused
 	MinCapacity *float64 `pulumi:"minCapacity"`
+	// To trigger customer controlled manual cutover during the wait state while Scaling operation is in progress.
+	//
+	// This property parameter is only applicable for scaling operations that are initiated along with 'manualCutover' parameter.
+	//
+	// This property is only applicable when scaling database from Business Critical/General Purpose/Premium/Standard tier to Hyperscale tier is already in progress.
+	//
+	// When performCutover is specified, the scaling operation will trigger cutover and perform role-change to Hyperscale database.
+	PerformCutover *bool `pulumi:"performCutover"`
+	// Type of enclave requested on the database i.e. Default or VBS enclaves.
+	PreferredEnclaveType *string `pulumi:"preferredEnclaveType"`
 	// The state of read-only routing. If enabled, connections that have application intent set to readonly in their connection string may be routed to a readonly secondary replica in the same region. Not applicable to a Hyperscale database within an elastic pool.
 	ReadScale *string `pulumi:"readScale"`
 	// The resource identifier of the recoverable database associated with create operation of this database.
@@ -274,7 +345,7 @@ type databaseArgs struct {
 	RestorePointInTime *string `pulumi:"restorePointInTime"`
 	// The name of the sample schema to apply when creating this database.
 	SampleName *string `pulumi:"sampleName"`
-	// The secondary type of the database if it is a secondary.  Valid values are Geo and Named.
+	// The secondary type of the database if it is a secondary.  Valid values are Geo, Named and Standby.
 	SecondaryType *string `pulumi:"secondaryType"`
 	// The name of the server.
 	ServerName string `pulumi:"serverName"`
@@ -302,6 +373,8 @@ type databaseArgs struct {
 	SourceResourceId *string `pulumi:"sourceResourceId"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
+	// Whether or not the database uses free monthly limits. Allowed on one database in a subscription.
+	UseFreeLimit *bool `pulumi:"useFreeLimit"`
 	// Whether or not this database is zone redundant, which means the replicas of this database will be spread across multiple availability zones.
 	ZoneRedundant *bool `pulumi:"zoneRedundant"`
 }
@@ -310,6 +383,8 @@ type databaseArgs struct {
 type DatabaseArgs struct {
 	// Time in minutes after which database is automatically paused. A value of -1 means that automatic pause is disabled
 	AutoPauseDelay pulumi.IntPtrInput
+	// Specifies the availability zone the database is pinned to.
+	AvailabilityZone pulumi.StringPtrInput
 	// Collation of the metadata catalog.
 	CatalogCollation pulumi.StringPtrInput
 	// The collation of the database.
@@ -336,14 +411,26 @@ type DatabaseArgs struct {
 	DatabaseName pulumi.StringPtrInput
 	// The resource identifier of the elastic pool containing this database.
 	ElasticPoolId pulumi.StringPtrInput
+	// The azure key vault URI of the database if it's configured with per Database Customer Managed Keys.
+	EncryptionProtector pulumi.StringPtrInput
+	// The flag to enable or disable auto rotation of database encryption protector AKV key.
+	EncryptionProtectorAutoRotation pulumi.BoolPtrInput
 	// The Client id used for cross tenant per database CMK scenario
 	FederatedClientId pulumi.StringPtrInput
-	// The number of secondary replicas associated with the database that are used to provide high availability. Not applicable to a Hyperscale database within an elastic pool.
+	// Specifies the behavior when monthly free limits are exhausted for the free database.
+	//
+	// AutoPause: The database will be auto paused upon exhaustion of free limits for remainder of the month.
+	//
+	// BillForUsage: The database will continue to be online upon exhaustion of free limits and any overage will be billed.
+	FreeLimitExhaustionBehavior pulumi.StringPtrInput
+	// The number of secondary replicas associated with the Business Critical, Premium, or Hyperscale edition database that are used to provide high availability. Not applicable to a Hyperscale database within an elastic pool.
 	HighAvailabilityReplicaCount pulumi.IntPtrInput
 	// The Azure Active Directory identity of the database.
 	Identity DatabaseIdentityPtrInput
 	// Whether or not this database is a ledger database, which means all tables in the database are ledger tables. Note: the value of this property cannot be changed after the database has been created.
 	IsLedgerOn pulumi.BoolPtrInput
+	// The resource ids of the user assigned identities to use
+	Keys pulumi.StringArrayInput
 	// The license type to apply for this database. `LicenseIncluded` if you need a license, or `BasePrice` if you have a license and are eligible for the Azure Hybrid Benefit.
 	LicenseType pulumi.StringPtrInput
 	// Resource location.
@@ -352,10 +439,28 @@ type DatabaseArgs struct {
 	LongTermRetentionBackupResourceId pulumi.StringPtrInput
 	// Maintenance configuration id assigned to the database. This configuration defines the period when the maintenance updates will occur.
 	MaintenanceConfigurationId pulumi.StringPtrInput
+	// Whether or not customer controlled manual cutover needs to be done during Update Database operation to Hyperscale tier.
+	//
+	// This property is only applicable when scaling database from Business Critical/General Purpose/Premium/Standard tier to Hyperscale tier.
+	//
+	// When manualCutover is specified, the scaling operation will wait for user input to trigger cutover to Hyperscale database.
+	//
+	// To trigger cutover, please provide 'performCutover' parameter when the Scaling operation is in Waiting state.
+	ManualCutover pulumi.BoolPtrInput
 	// The max size of the database expressed in bytes.
 	MaxSizeBytes pulumi.Float64PtrInput
 	// Minimal capacity that database will always have allocated, if not paused
 	MinCapacity pulumi.Float64PtrInput
+	// To trigger customer controlled manual cutover during the wait state while Scaling operation is in progress.
+	//
+	// This property parameter is only applicable for scaling operations that are initiated along with 'manualCutover' parameter.
+	//
+	// This property is only applicable when scaling database from Business Critical/General Purpose/Premium/Standard tier to Hyperscale tier is already in progress.
+	//
+	// When performCutover is specified, the scaling operation will trigger cutover and perform role-change to Hyperscale database.
+	PerformCutover pulumi.BoolPtrInput
+	// Type of enclave requested on the database i.e. Default or VBS enclaves.
+	PreferredEnclaveType pulumi.StringPtrInput
 	// The state of read-only routing. If enabled, connections that have application intent set to readonly in their connection string may be routed to a readonly secondary replica in the same region. Not applicable to a Hyperscale database within an elastic pool.
 	ReadScale pulumi.StringPtrInput
 	// The resource identifier of the recoverable database associated with create operation of this database.
@@ -372,7 +477,7 @@ type DatabaseArgs struct {
 	RestorePointInTime pulumi.StringPtrInput
 	// The name of the sample schema to apply when creating this database.
 	SampleName pulumi.StringPtrInput
-	// The secondary type of the database if it is a secondary.  Valid values are Geo and Named.
+	// The secondary type of the database if it is a secondary.  Valid values are Geo, Named and Standby.
 	SecondaryType pulumi.StringPtrInput
 	// The name of the server.
 	ServerName pulumi.StringInput
@@ -400,6 +505,8 @@ type DatabaseArgs struct {
 	SourceResourceId pulumi.StringPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
+	// Whether or not the database uses free monthly limits. Allowed on one database in a subscription.
+	UseFreeLimit pulumi.BoolPtrInput
 	// Whether or not this database is zone redundant, which means the replicas of this database will be spread across multiple availability zones.
 	ZoneRedundant pulumi.BoolPtrInput
 }
@@ -444,6 +551,16 @@ func (o DatabaseOutput) ToDatabaseOutputWithContext(ctx context.Context) Databas
 // Time in minutes after which database is automatically paused. A value of -1 means that automatic pause is disabled
 func (o DatabaseOutput) AutoPauseDelay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Database) pulumi.IntPtrOutput { return v.AutoPauseDelay }).(pulumi.IntPtrOutput)
+}
+
+// Specifies the availability zone the database is pinned to.
+func (o DatabaseOutput) AvailabilityZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringPtrOutput { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o DatabaseOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Collation of the metadata catalog.
@@ -496,6 +613,16 @@ func (o DatabaseOutput) ElasticPoolId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringPtrOutput { return v.ElasticPoolId }).(pulumi.StringPtrOutput)
 }
 
+// The azure key vault URI of the database if it's configured with per Database Customer Managed Keys.
+func (o DatabaseOutput) EncryptionProtector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringPtrOutput { return v.EncryptionProtector }).(pulumi.StringPtrOutput)
+}
+
+// The flag to enable or disable auto rotation of database encryption protector AKV key.
+func (o DatabaseOutput) EncryptionProtectorAutoRotation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Database) pulumi.BoolPtrOutput { return v.EncryptionProtectorAutoRotation }).(pulumi.BoolPtrOutput)
+}
+
 // Failover Group resource identifier that this database belongs to.
 func (o DatabaseOutput) FailoverGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.FailoverGroupId }).(pulumi.StringOutput)
@@ -506,7 +633,16 @@ func (o DatabaseOutput) FederatedClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringPtrOutput { return v.FederatedClientId }).(pulumi.StringPtrOutput)
 }
 
-// The number of secondary replicas associated with the database that are used to provide high availability. Not applicable to a Hyperscale database within an elastic pool.
+// Specifies the behavior when monthly free limits are exhausted for the free database.
+//
+// AutoPause: The database will be auto paused upon exhaustion of free limits for remainder of the month.
+//
+// BillForUsage: The database will continue to be online upon exhaustion of free limits and any overage will be billed.
+func (o DatabaseOutput) FreeLimitExhaustionBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringPtrOutput { return v.FreeLimitExhaustionBehavior }).(pulumi.StringPtrOutput)
+}
+
+// The number of secondary replicas associated with the Business Critical, Premium, or Hyperscale edition database that are used to provide high availability. Not applicable to a Hyperscale database within an elastic pool.
 func (o DatabaseOutput) HighAvailabilityReplicaCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Database) pulumi.IntPtrOutput { return v.HighAvailabilityReplicaCount }).(pulumi.IntPtrOutput)
 }
@@ -524,6 +660,11 @@ func (o DatabaseOutput) IsInfraEncryptionEnabled() pulumi.BoolOutput {
 // Whether or not this database is a ledger database, which means all tables in the database are ledger tables. Note: the value of this property cannot be changed after the database has been created.
 func (o DatabaseOutput) IsLedgerOn() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Database) pulumi.BoolPtrOutput { return v.IsLedgerOn }).(pulumi.BoolPtrOutput)
+}
+
+// The resource ids of the user assigned identities to use
+func (o DatabaseOutput) Keys() DatabaseKeyResponseMapOutput {
+	return o.ApplyT(func(v *Database) DatabaseKeyResponseMapOutput { return v.Keys }).(DatabaseKeyResponseMapOutput)
 }
 
 // Kind of database. This is metadata used for the Azure portal experience.
@@ -551,6 +692,17 @@ func (o DatabaseOutput) ManagedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.ManagedBy }).(pulumi.StringOutput)
 }
 
+// Whether or not customer controlled manual cutover needs to be done during Update Database operation to Hyperscale tier.
+//
+// This property is only applicable when scaling database from Business Critical/General Purpose/Premium/Standard tier to Hyperscale tier.
+//
+// When manualCutover is specified, the scaling operation will wait for user input to trigger cutover to Hyperscale database.
+//
+// To trigger cutover, please provide 'performCutover' parameter when the Scaling operation is in Waiting state.
+func (o DatabaseOutput) ManualCutover() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Database) pulumi.BoolPtrOutput { return v.ManualCutover }).(pulumi.BoolPtrOutput)
+}
+
 // The max log size for this database.
 func (o DatabaseOutput) MaxLogSizeBytes() pulumi.Float64Output {
 	return o.ApplyT(func(v *Database) pulumi.Float64Output { return v.MaxLogSizeBytes }).(pulumi.Float64Output)
@@ -576,6 +728,22 @@ func (o DatabaseOutput) PausedDate() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.PausedDate }).(pulumi.StringOutput)
 }
 
+// To trigger customer controlled manual cutover during the wait state while Scaling operation is in progress.
+//
+// This property parameter is only applicable for scaling operations that are initiated along with 'manualCutover' parameter.
+//
+// This property is only applicable when scaling database from Business Critical/General Purpose/Premium/Standard tier to Hyperscale tier is already in progress.
+//
+// When performCutover is specified, the scaling operation will trigger cutover and perform role-change to Hyperscale database.
+func (o DatabaseOutput) PerformCutover() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Database) pulumi.BoolPtrOutput { return v.PerformCutover }).(pulumi.BoolPtrOutput)
+}
+
+// Type of enclave requested on the database i.e. Default or VBS enclaves.
+func (o DatabaseOutput) PreferredEnclaveType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringPtrOutput { return v.PreferredEnclaveType }).(pulumi.StringPtrOutput)
+}
+
 // The state of read-only routing. If enabled, connections that have application intent set to readonly in their connection string may be routed to a readonly secondary replica in the same region. Not applicable to a Hyperscale database within an elastic pool.
 func (o DatabaseOutput) ReadScale() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringPtrOutput { return v.ReadScale }).(pulumi.StringPtrOutput)
@@ -596,7 +764,7 @@ func (o DatabaseOutput) ResumedDate() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.ResumedDate }).(pulumi.StringOutput)
 }
 
-// The secondary type of the database if it is a secondary.  Valid values are Geo and Named.
+// The secondary type of the database if it is a secondary.  Valid values are Geo, Named and Standby.
 func (o DatabaseOutput) SecondaryType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringPtrOutput { return v.SecondaryType }).(pulumi.StringPtrOutput)
 }
@@ -621,6 +789,11 @@ func (o DatabaseOutput) Tags() pulumi.StringMapOutput {
 // Resource type.
 func (o DatabaseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// Whether or not the database uses free monthly limits. Allowed on one database in a subscription.
+func (o DatabaseOutput) UseFreeLimit() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Database) pulumi.BoolPtrOutput { return v.UseFreeLimit }).(pulumi.BoolPtrOutput)
 }
 
 // Whether or not this database is zone redundant, which means the replicas of this database will be spread across multiple availability zones.
