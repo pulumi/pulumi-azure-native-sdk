@@ -8,25 +8,27 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The network security perimeter link resource
 //
-// Uses Azure REST API version 2021-02-01-preview.
+// Uses Azure REST API version 2023-08-01-preview. In version 2.x of the Azure Native provider, it used API version 2021-02-01-preview.
 //
-// Other available API versions: 2023-07-01-preview, 2023-08-01-preview.
+// Other available API versions: 2021-02-01-preview, 2023-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type NspLink struct {
 	pulumi.CustomResourceState
 
 	// Perimeter ARM Id for the remote NSP with which the link gets created in Auto-approval mode. It should be used when the NSP admin have Microsoft.Network/networkSecurityPerimeters/linkPerimeter/action permission on the remote NSP resource.
 	AutoApprovedRemotePerimeterResourceId pulumi.StringPtrOutput `pulumi:"autoApprovedRemotePerimeterResourceId"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A message passed to the owner of the remote NSP link resource with this connection request. In case of Auto-approved flow, it is default to 'Auto Approved'. Restricted to 140 chars.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag pulumi.StringOutput `pulumi:"etag"`
-	// Local Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. It's default value is ['*'].
+	// Local Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles.
 	LocalInboundProfiles pulumi.StringArrayOutput `pulumi:"localInboundProfiles"`
 	// Local Outbound profile names from which Outbound is allowed. In current version, it is readonly property and it's value is set to ['*'] to allow outbound from all profiles. In later version, user will be able to modify it.
 	LocalOutboundProfiles pulumi.StringArrayOutput `pulumi:"localOutboundProfiles"`
@@ -34,7 +36,7 @@ type NspLink struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning state of the NSP Link resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// Remote Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. This property can only be updated in auto-approval mode. It's default value is ['*'].
+	// Remote Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. This property can only be updated in auto-approval mode.
 	RemoteInboundProfiles pulumi.StringArrayOutput `pulumi:"remoteInboundProfiles"`
 	// Remote Outbound profile names from which Outbound is allowed. In current version, it is readonly property and it's value is set to ['*'] to allow outbound from all profiles. In later version, user will be able to modify it.
 	RemoteOutboundProfiles pulumi.StringArrayOutput `pulumi:"remoteOutboundProfiles"`
@@ -73,6 +75,12 @@ func NewNspLink(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240601preview:NspLink"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20240701:NspLink"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20241001:NspLink"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -115,11 +123,11 @@ type nspLinkArgs struct {
 	Description *string `pulumi:"description"`
 	// The name of the NSP link.
 	LinkName *string `pulumi:"linkName"`
-	// Local Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. It's default value is ['*'].
+	// Local Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles.
 	LocalInboundProfiles []string `pulumi:"localInboundProfiles"`
 	// The name of the network security perimeter.
 	NetworkSecurityPerimeterName string `pulumi:"networkSecurityPerimeterName"`
-	// Remote Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. This property can only be updated in auto-approval mode. It's default value is ['*'].
+	// Remote Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. This property can only be updated in auto-approval mode.
 	RemoteInboundProfiles []string `pulumi:"remoteInboundProfiles"`
 	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -133,11 +141,11 @@ type NspLinkArgs struct {
 	Description pulumi.StringPtrInput
 	// The name of the NSP link.
 	LinkName pulumi.StringPtrInput
-	// Local Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. It's default value is ['*'].
+	// Local Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles.
 	LocalInboundProfiles pulumi.StringArrayInput
 	// The name of the network security perimeter.
 	NetworkSecurityPerimeterName pulumi.StringInput
-	// Remote Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. This property can only be updated in auto-approval mode. It's default value is ['*'].
+	// Remote Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. This property can only be updated in auto-approval mode.
 	RemoteInboundProfiles pulumi.StringArrayInput
 	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
@@ -185,6 +193,11 @@ func (o NspLinkOutput) AutoApprovedRemotePerimeterResourceId() pulumi.StringPtrO
 	return o.ApplyT(func(v *NspLink) pulumi.StringPtrOutput { return v.AutoApprovedRemotePerimeterResourceId }).(pulumi.StringPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o NspLinkOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *NspLink) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // A message passed to the owner of the remote NSP link resource with this connection request. In case of Auto-approved flow, it is default to 'Auto Approved'. Restricted to 140 chars.
 func (o NspLinkOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NspLink) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -195,7 +208,7 @@ func (o NspLinkOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *NspLink) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-// Local Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. It's default value is ['*'].
+// Local Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles.
 func (o NspLinkOutput) LocalInboundProfiles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NspLink) pulumi.StringArrayOutput { return v.LocalInboundProfiles }).(pulumi.StringArrayOutput)
 }
@@ -215,7 +228,7 @@ func (o NspLinkOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *NspLink) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Remote Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. This property can only be updated in auto-approval mode. It's default value is ['*'].
+// Remote Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. This property can only be updated in auto-approval mode.
 func (o NspLinkOutput) RemoteInboundProfiles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NspLink) pulumi.StringArrayOutput { return v.RemoteInboundProfiles }).(pulumi.StringArrayOutput)
 }

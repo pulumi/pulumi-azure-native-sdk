@@ -1024,16 +1024,11 @@ func (in *attestationComplianceStatePtr) ToAttestationComplianceStatePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(AttestationComplianceStatePtrOutput)
 }
 
-// Connect to your cloud account, for AWS use either account credentials or role-based authentication. For GCP use account organization credentials.
+// The authentication type
 type AuthenticationType string
 
 const (
-	// AWS cloud account connector user credentials authentication
-	AuthenticationTypeAwsCreds = AuthenticationType("awsCreds")
-	// AWS account connector assume role authentication
-	AuthenticationTypeAwsAssumeRole = AuthenticationType("awsAssumeRole")
-	// GCP account connector service to service authentication
-	AuthenticationTypeGcpCredentials = AuthenticationType("gcpCredentials")
+	AuthenticationTypeAccessToken = AuthenticationType("AccessToken")
 )
 
 // AutoDiscovery states.
@@ -1554,6 +1549,8 @@ const (
 	CloudNameGithub      = CloudName("Github")
 	CloudNameAzureDevOps = CloudName("AzureDevOps")
 	CloudNameGitLab      = CloudName("GitLab")
+	CloudNameDockerHub   = CloudName("DockerHub")
+	CloudNameJFrog       = CloudName("JFrog")
 )
 
 func (CloudName) ElementType() reflect.Type {
@@ -1684,6 +1681,8 @@ func (o CloudNamePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pu
 //	CloudNameGithub
 //	CloudNameAzureDevOps
 //	CloudNameGitLab
+//	CloudNameDockerHub
+//	CloudNameJFrog
 type CloudNameInput interface {
 	pulumi.Input
 
@@ -1880,340 +1879,6 @@ func (in *dataSourcePtr) ToDataSourcePtrOutput() DataSourcePtrOutput {
 
 func (in *dataSourcePtr) ToDataSourcePtrOutputWithContext(ctx context.Context) DataSourcePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DataSourcePtrOutput)
-}
-
-// The behavior of a policy on descendant resources.
-type DescendantBehavior string
-
-const (
-	DescendantBehaviorUnknown  = DescendantBehavior("Unknown")
-	DescendantBehaviorOverride = DescendantBehavior("Override")
-	DescendantBehaviorFallBack = DescendantBehavior("FallBack")
-)
-
-func (DescendantBehavior) ElementType() reflect.Type {
-	return reflect.TypeOf((*DescendantBehavior)(nil)).Elem()
-}
-
-func (e DescendantBehavior) ToDescendantBehaviorOutput() DescendantBehaviorOutput {
-	return pulumi.ToOutput(e).(DescendantBehaviorOutput)
-}
-
-func (e DescendantBehavior) ToDescendantBehaviorOutputWithContext(ctx context.Context) DescendantBehaviorOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(DescendantBehaviorOutput)
-}
-
-func (e DescendantBehavior) ToDescendantBehaviorPtrOutput() DescendantBehaviorPtrOutput {
-	return e.ToDescendantBehaviorPtrOutputWithContext(context.Background())
-}
-
-func (e DescendantBehavior) ToDescendantBehaviorPtrOutputWithContext(ctx context.Context) DescendantBehaviorPtrOutput {
-	return DescendantBehavior(e).ToDescendantBehaviorOutputWithContext(ctx).ToDescendantBehaviorPtrOutputWithContext(ctx)
-}
-
-func (e DescendantBehavior) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e DescendantBehavior) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e DescendantBehavior) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e DescendantBehavior) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type DescendantBehaviorOutput struct{ *pulumi.OutputState }
-
-func (DescendantBehaviorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DescendantBehavior)(nil)).Elem()
-}
-
-func (o DescendantBehaviorOutput) ToDescendantBehaviorOutput() DescendantBehaviorOutput {
-	return o
-}
-
-func (o DescendantBehaviorOutput) ToDescendantBehaviorOutputWithContext(ctx context.Context) DescendantBehaviorOutput {
-	return o
-}
-
-func (o DescendantBehaviorOutput) ToDescendantBehaviorPtrOutput() DescendantBehaviorPtrOutput {
-	return o.ToDescendantBehaviorPtrOutputWithContext(context.Background())
-}
-
-func (o DescendantBehaviorOutput) ToDescendantBehaviorPtrOutputWithContext(ctx context.Context) DescendantBehaviorPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DescendantBehavior) *DescendantBehavior {
-		return &v
-	}).(DescendantBehaviorPtrOutput)
-}
-
-func (o DescendantBehaviorOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o DescendantBehaviorOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e DescendantBehavior) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o DescendantBehaviorOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o DescendantBehaviorOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e DescendantBehavior) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type DescendantBehaviorPtrOutput struct{ *pulumi.OutputState }
-
-func (DescendantBehaviorPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DescendantBehavior)(nil)).Elem()
-}
-
-func (o DescendantBehaviorPtrOutput) ToDescendantBehaviorPtrOutput() DescendantBehaviorPtrOutput {
-	return o
-}
-
-func (o DescendantBehaviorPtrOutput) ToDescendantBehaviorPtrOutputWithContext(ctx context.Context) DescendantBehaviorPtrOutput {
-	return o
-}
-
-func (o DescendantBehaviorPtrOutput) Elem() DescendantBehaviorOutput {
-	return o.ApplyT(func(v *DescendantBehavior) DescendantBehavior {
-		if v != nil {
-			return *v
-		}
-		var ret DescendantBehavior
-		return ret
-	}).(DescendantBehaviorOutput)
-}
-
-func (o DescendantBehaviorPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o DescendantBehaviorPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DescendantBehavior) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// DescendantBehaviorInput is an input type that accepts values of the DescendantBehavior enum
-// A concrete instance of `DescendantBehaviorInput` can be one of the following:
-//
-//	DescendantBehaviorUnknown
-//	DescendantBehaviorOverride
-//	DescendantBehaviorFallBack
-type DescendantBehaviorInput interface {
-	pulumi.Input
-
-	ToDescendantBehaviorOutput() DescendantBehaviorOutput
-	ToDescendantBehaviorOutputWithContext(context.Context) DescendantBehaviorOutput
-}
-
-var descendantBehaviorPtrType = reflect.TypeOf((**DescendantBehavior)(nil)).Elem()
-
-type DescendantBehaviorPtrInput interface {
-	pulumi.Input
-
-	ToDescendantBehaviorPtrOutput() DescendantBehaviorPtrOutput
-	ToDescendantBehaviorPtrOutputWithContext(context.Context) DescendantBehaviorPtrOutput
-}
-
-type descendantBehaviorPtr string
-
-func DescendantBehaviorPtr(v string) DescendantBehaviorPtrInput {
-	return (*descendantBehaviorPtr)(&v)
-}
-
-func (*descendantBehaviorPtr) ElementType() reflect.Type {
-	return descendantBehaviorPtrType
-}
-
-func (in *descendantBehaviorPtr) ToDescendantBehaviorPtrOutput() DescendantBehaviorPtrOutput {
-	return pulumi.ToOutput(in).(DescendantBehaviorPtrOutput)
-}
-
-func (in *descendantBehaviorPtr) ToDescendantBehaviorPtrOutputWithContext(ctx context.Context) DescendantBehaviorPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(DescendantBehaviorPtrOutput)
-}
-
-// DevOps Policy resource types.
-type DevOpsPolicyType string
-
-const (
-	DevOpsPolicyTypeUnknown  = DevOpsPolicyType("Unknown")
-	DevOpsPolicyTypePipeline = DevOpsPolicyType("Pipeline")
-)
-
-func (DevOpsPolicyType) ElementType() reflect.Type {
-	return reflect.TypeOf((*DevOpsPolicyType)(nil)).Elem()
-}
-
-func (e DevOpsPolicyType) ToDevOpsPolicyTypeOutput() DevOpsPolicyTypeOutput {
-	return pulumi.ToOutput(e).(DevOpsPolicyTypeOutput)
-}
-
-func (e DevOpsPolicyType) ToDevOpsPolicyTypeOutputWithContext(ctx context.Context) DevOpsPolicyTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(DevOpsPolicyTypeOutput)
-}
-
-func (e DevOpsPolicyType) ToDevOpsPolicyTypePtrOutput() DevOpsPolicyTypePtrOutput {
-	return e.ToDevOpsPolicyTypePtrOutputWithContext(context.Background())
-}
-
-func (e DevOpsPolicyType) ToDevOpsPolicyTypePtrOutputWithContext(ctx context.Context) DevOpsPolicyTypePtrOutput {
-	return DevOpsPolicyType(e).ToDevOpsPolicyTypeOutputWithContext(ctx).ToDevOpsPolicyTypePtrOutputWithContext(ctx)
-}
-
-func (e DevOpsPolicyType) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e DevOpsPolicyType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e DevOpsPolicyType) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e DevOpsPolicyType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type DevOpsPolicyTypeOutput struct{ *pulumi.OutputState }
-
-func (DevOpsPolicyTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DevOpsPolicyType)(nil)).Elem()
-}
-
-func (o DevOpsPolicyTypeOutput) ToDevOpsPolicyTypeOutput() DevOpsPolicyTypeOutput {
-	return o
-}
-
-func (o DevOpsPolicyTypeOutput) ToDevOpsPolicyTypeOutputWithContext(ctx context.Context) DevOpsPolicyTypeOutput {
-	return o
-}
-
-func (o DevOpsPolicyTypeOutput) ToDevOpsPolicyTypePtrOutput() DevOpsPolicyTypePtrOutput {
-	return o.ToDevOpsPolicyTypePtrOutputWithContext(context.Background())
-}
-
-func (o DevOpsPolicyTypeOutput) ToDevOpsPolicyTypePtrOutputWithContext(ctx context.Context) DevOpsPolicyTypePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DevOpsPolicyType) *DevOpsPolicyType {
-		return &v
-	}).(DevOpsPolicyTypePtrOutput)
-}
-
-func (o DevOpsPolicyTypeOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o DevOpsPolicyTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e DevOpsPolicyType) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o DevOpsPolicyTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o DevOpsPolicyTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e DevOpsPolicyType) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type DevOpsPolicyTypePtrOutput struct{ *pulumi.OutputState }
-
-func (DevOpsPolicyTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DevOpsPolicyType)(nil)).Elem()
-}
-
-func (o DevOpsPolicyTypePtrOutput) ToDevOpsPolicyTypePtrOutput() DevOpsPolicyTypePtrOutput {
-	return o
-}
-
-func (o DevOpsPolicyTypePtrOutput) ToDevOpsPolicyTypePtrOutputWithContext(ctx context.Context) DevOpsPolicyTypePtrOutput {
-	return o
-}
-
-func (o DevOpsPolicyTypePtrOutput) Elem() DevOpsPolicyTypeOutput {
-	return o.ApplyT(func(v *DevOpsPolicyType) DevOpsPolicyType {
-		if v != nil {
-			return *v
-		}
-		var ret DevOpsPolicyType
-		return ret
-	}).(DevOpsPolicyTypeOutput)
-}
-
-func (o DevOpsPolicyTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o DevOpsPolicyTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DevOpsPolicyType) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// DevOpsPolicyTypeInput is an input type that accepts values of the DevOpsPolicyType enum
-// A concrete instance of `DevOpsPolicyTypeInput` can be one of the following:
-//
-//	DevOpsPolicyTypeUnknown
-//	DevOpsPolicyTypePipeline
-type DevOpsPolicyTypeInput interface {
-	pulumi.Input
-
-	ToDevOpsPolicyTypeOutput() DevOpsPolicyTypeOutput
-	ToDevOpsPolicyTypeOutputWithContext(context.Context) DevOpsPolicyTypeOutput
-}
-
-var devOpsPolicyTypePtrType = reflect.TypeOf((**DevOpsPolicyType)(nil)).Elem()
-
-type DevOpsPolicyTypePtrInput interface {
-	pulumi.Input
-
-	ToDevOpsPolicyTypePtrOutput() DevOpsPolicyTypePtrOutput
-	ToDevOpsPolicyTypePtrOutputWithContext(context.Context) DevOpsPolicyTypePtrOutput
-}
-
-type devOpsPolicyTypePtr string
-
-func DevOpsPolicyTypePtr(v string) DevOpsPolicyTypePtrInput {
-	return (*devOpsPolicyTypePtr)(&v)
-}
-
-func (*devOpsPolicyTypePtr) ElementType() reflect.Type {
-	return devOpsPolicyTypePtrType
-}
-
-func (in *devOpsPolicyTypePtr) ToDevOpsPolicyTypePtrOutput() DevOpsPolicyTypePtrOutput {
-	return pulumi.ToOutput(in).(DevOpsPolicyTypePtrOutput)
-}
-
-func (in *devOpsPolicyTypePtr) ToDevOpsPolicyTypePtrOutputWithContext(ctx context.Context) DevOpsPolicyTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(DevOpsPolicyTypePtrOutput)
 }
 
 // The provisioning state of the resource.
@@ -2740,11 +2405,13 @@ func (in *enforcePtr) ToEnforcePtrOutputWithContext(ctx context.Context) Enforce
 type EnvironmentType string
 
 const (
-	EnvironmentTypeAwsAccount       = EnvironmentType("AwsAccount")
-	EnvironmentTypeGcpProject       = EnvironmentType("GcpProject")
-	EnvironmentTypeGithubScope      = EnvironmentType("GithubScope")
-	EnvironmentTypeAzureDevOpsScope = EnvironmentType("AzureDevOpsScope")
-	EnvironmentTypeGitlabScope      = EnvironmentType("GitlabScope")
+	EnvironmentTypeAwsAccount            = EnvironmentType("AwsAccount")
+	EnvironmentTypeGcpProject            = EnvironmentType("GcpProject")
+	EnvironmentTypeGithubScope           = EnvironmentType("GithubScope")
+	EnvironmentTypeAzureDevOpsScope      = EnvironmentType("AzureDevOpsScope")
+	EnvironmentTypeGitlabScope           = EnvironmentType("GitlabScope")
+	EnvironmentTypeDockerHubOrganization = EnvironmentType("DockerHubOrganization")
+	EnvironmentTypeJFrogArtifactory      = EnvironmentType("JFrogArtifactory")
 )
 
 // A valid event source type.
@@ -2762,6 +2429,8 @@ const (
 	EventSourceSecureScoreControlsSnapshot            = EventSource("SecureScoreControlsSnapshot")
 	EventSourceRegulatoryComplianceAssessment         = EventSource("RegulatoryComplianceAssessment")
 	EventSourceRegulatoryComplianceAssessmentSnapshot = EventSource("RegulatoryComplianceAssessmentSnapshot")
+	EventSourceAttackPaths                            = EventSource("AttackPaths")
+	EventSourceAttackPathsSnapshot                    = EventSource("AttackPathsSnapshot")
 )
 
 func (EventSource) ElementType() reflect.Type {
@@ -2897,6 +2566,8 @@ func (o EventSourcePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 //	EventSourceSecureScoreControlsSnapshot
 //	EventSourceRegulatoryComplianceAssessment
 //	EventSourceRegulatoryComplianceAssessmentSnapshot
+//	EventSourceAttackPaths
+//	EventSourceAttackPathsSnapshot
 type EventSourceInput interface {
 	pulumi.Input
 
@@ -4098,15 +3769,189 @@ func (in *isEnabledPtr) ToIsEnabledPtrOutputWithContext(ctx context.Context) IsE
 	return pulumi.ToOutputWithContext(ctx, in).(IsEnabledPtrOutput)
 }
 
+// Defines the minimal attach path risk level which will be sent as email notifications
+type MinimalRiskLevel string
+
+const (
+	// Get notifications on new attack paths with Critical risk level
+	MinimalRiskLevelCritical = MinimalRiskLevel("Critical")
+	// Get notifications on new attack paths with High or Critical risk level
+	MinimalRiskLevelHigh = MinimalRiskLevel("High")
+	// Get notifications on new attach paths with Medium, High or Critical risk level
+	MinimalRiskLevelMedium = MinimalRiskLevel("Medium")
+	// Get notifications on new attach paths with Low, Medium, High or Critical risk level
+	MinimalRiskLevelLow = MinimalRiskLevel("Low")
+)
+
+func (MinimalRiskLevel) ElementType() reflect.Type {
+	return reflect.TypeOf((*MinimalRiskLevel)(nil)).Elem()
+}
+
+func (e MinimalRiskLevel) ToMinimalRiskLevelOutput() MinimalRiskLevelOutput {
+	return pulumi.ToOutput(e).(MinimalRiskLevelOutput)
+}
+
+func (e MinimalRiskLevel) ToMinimalRiskLevelOutputWithContext(ctx context.Context) MinimalRiskLevelOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(MinimalRiskLevelOutput)
+}
+
+func (e MinimalRiskLevel) ToMinimalRiskLevelPtrOutput() MinimalRiskLevelPtrOutput {
+	return e.ToMinimalRiskLevelPtrOutputWithContext(context.Background())
+}
+
+func (e MinimalRiskLevel) ToMinimalRiskLevelPtrOutputWithContext(ctx context.Context) MinimalRiskLevelPtrOutput {
+	return MinimalRiskLevel(e).ToMinimalRiskLevelOutputWithContext(ctx).ToMinimalRiskLevelPtrOutputWithContext(ctx)
+}
+
+func (e MinimalRiskLevel) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MinimalRiskLevel) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MinimalRiskLevel) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e MinimalRiskLevel) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type MinimalRiskLevelOutput struct{ *pulumi.OutputState }
+
+func (MinimalRiskLevelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MinimalRiskLevel)(nil)).Elem()
+}
+
+func (o MinimalRiskLevelOutput) ToMinimalRiskLevelOutput() MinimalRiskLevelOutput {
+	return o
+}
+
+func (o MinimalRiskLevelOutput) ToMinimalRiskLevelOutputWithContext(ctx context.Context) MinimalRiskLevelOutput {
+	return o
+}
+
+func (o MinimalRiskLevelOutput) ToMinimalRiskLevelPtrOutput() MinimalRiskLevelPtrOutput {
+	return o.ToMinimalRiskLevelPtrOutputWithContext(context.Background())
+}
+
+func (o MinimalRiskLevelOutput) ToMinimalRiskLevelPtrOutputWithContext(ctx context.Context) MinimalRiskLevelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MinimalRiskLevel) *MinimalRiskLevel {
+		return &v
+	}).(MinimalRiskLevelPtrOutput)
+}
+
+func (o MinimalRiskLevelOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o MinimalRiskLevelOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MinimalRiskLevel) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o MinimalRiskLevelOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MinimalRiskLevelOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MinimalRiskLevel) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type MinimalRiskLevelPtrOutput struct{ *pulumi.OutputState }
+
+func (MinimalRiskLevelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MinimalRiskLevel)(nil)).Elem()
+}
+
+func (o MinimalRiskLevelPtrOutput) ToMinimalRiskLevelPtrOutput() MinimalRiskLevelPtrOutput {
+	return o
+}
+
+func (o MinimalRiskLevelPtrOutput) ToMinimalRiskLevelPtrOutputWithContext(ctx context.Context) MinimalRiskLevelPtrOutput {
+	return o
+}
+
+func (o MinimalRiskLevelPtrOutput) Elem() MinimalRiskLevelOutput {
+	return o.ApplyT(func(v *MinimalRiskLevel) MinimalRiskLevel {
+		if v != nil {
+			return *v
+		}
+		var ret MinimalRiskLevel
+		return ret
+	}).(MinimalRiskLevelOutput)
+}
+
+func (o MinimalRiskLevelPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MinimalRiskLevelPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *MinimalRiskLevel) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// MinimalRiskLevelInput is an input type that accepts values of the MinimalRiskLevel enum
+// A concrete instance of `MinimalRiskLevelInput` can be one of the following:
+//
+//	MinimalRiskLevelCritical
+//	MinimalRiskLevelHigh
+//	MinimalRiskLevelMedium
+//	MinimalRiskLevelLow
+type MinimalRiskLevelInput interface {
+	pulumi.Input
+
+	ToMinimalRiskLevelOutput() MinimalRiskLevelOutput
+	ToMinimalRiskLevelOutputWithContext(context.Context) MinimalRiskLevelOutput
+}
+
+var minimalRiskLevelPtrType = reflect.TypeOf((**MinimalRiskLevel)(nil)).Elem()
+
+type MinimalRiskLevelPtrInput interface {
+	pulumi.Input
+
+	ToMinimalRiskLevelPtrOutput() MinimalRiskLevelPtrOutput
+	ToMinimalRiskLevelPtrOutputWithContext(context.Context) MinimalRiskLevelPtrOutput
+}
+
+type minimalRiskLevelPtr string
+
+func MinimalRiskLevelPtr(v string) MinimalRiskLevelPtrInput {
+	return (*minimalRiskLevelPtr)(&v)
+}
+
+func (*minimalRiskLevelPtr) ElementType() reflect.Type {
+	return minimalRiskLevelPtrType
+}
+
+func (in *minimalRiskLevelPtr) ToMinimalRiskLevelPtrOutput() MinimalRiskLevelPtrOutput {
+	return pulumi.ToOutput(in).(MinimalRiskLevelPtrOutput)
+}
+
+func (in *minimalRiskLevelPtr) ToMinimalRiskLevelPtrOutputWithContext(ctx context.Context) MinimalRiskLevelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(MinimalRiskLevelPtrOutput)
+}
+
 // Defines the minimal alert severity which will be sent as email notifications
 type MinimalSeverity string
 
 const (
 	// Get notifications on new alerts with High severity
 	MinimalSeverityHigh = MinimalSeverity("High")
-	// Get notifications on new alerts with medium or high severity
+	// Get notifications on new alerts with Medium or High severity
 	MinimalSeverityMedium = MinimalSeverity("Medium")
-	// Don't get notifications on new alerts with low, medium or high severity
+	// Get notifications on new alerts with Low, Medium or High severity
 	MinimalSeverityLow = MinimalSeverity("Low")
 )
 
@@ -4273,23 +4118,25 @@ func (in *minimalSeverityPtr) ToMinimalSeverityPtrOutputWithContext(ctx context.
 type OfferingType string
 
 const (
-	OfferingTypeCspmMonitorAws               = OfferingType("CspmMonitorAws")
-	OfferingTypeDefenderForContainersAws     = OfferingType("DefenderForContainersAws")
-	OfferingTypeDefenderForServersAws        = OfferingType("DefenderForServersAws")
-	OfferingTypeDefenderForDatabasesAws      = OfferingType("DefenderForDatabasesAws")
-	OfferingTypeInformationProtectionAws     = OfferingType("InformationProtectionAws")
-	OfferingTypeCspmMonitorGcp               = OfferingType("CspmMonitorGcp")
-	OfferingTypeCspmMonitorGithub            = OfferingType("CspmMonitorGithub")
-	OfferingTypeCspmMonitorAzureDevOps       = OfferingType("CspmMonitorAzureDevOps")
-	OfferingTypeDefenderForServersGcp        = OfferingType("DefenderForServersGcp")
-	OfferingTypeDefenderForContainersGcp     = OfferingType("DefenderForContainersGcp")
-	OfferingTypeDefenderForDatabasesGcp      = OfferingType("DefenderForDatabasesGcp")
-	OfferingTypeDefenderCspmAws              = OfferingType("DefenderCspmAws")
-	OfferingTypeDefenderCspmGcp              = OfferingType("DefenderCspmGcp")
-	OfferingTypeDefenderForDevOpsGithub      = OfferingType("DefenderForDevOpsGithub")
-	OfferingTypeDefenderForDevOpsAzureDevOps = OfferingType("DefenderForDevOpsAzureDevOps")
-	OfferingTypeCspmMonitorGitLab            = OfferingType("CspmMonitorGitLab")
-	OfferingTypeDefenderForDevOpsGitLab      = OfferingType("DefenderForDevOpsGitLab")
+	OfferingTypeCspmMonitorAws                 = OfferingType("CspmMonitorAws")
+	OfferingTypeDefenderForContainersAws       = OfferingType("DefenderForContainersAws")
+	OfferingTypeDefenderForServersAws          = OfferingType("DefenderForServersAws")
+	OfferingTypeDefenderForDatabasesAws        = OfferingType("DefenderForDatabasesAws")
+	OfferingTypeCspmMonitorGcp                 = OfferingType("CspmMonitorGcp")
+	OfferingTypeCspmMonitorGithub              = OfferingType("CspmMonitorGithub")
+	OfferingTypeCspmMonitorAzureDevOps         = OfferingType("CspmMonitorAzureDevOps")
+	OfferingTypeDefenderForServersGcp          = OfferingType("DefenderForServersGcp")
+	OfferingTypeDefenderForContainersGcp       = OfferingType("DefenderForContainersGcp")
+	OfferingTypeDefenderForDatabasesGcp        = OfferingType("DefenderForDatabasesGcp")
+	OfferingTypeDefenderCspmAws                = OfferingType("DefenderCspmAws")
+	OfferingTypeDefenderCspmGcp                = OfferingType("DefenderCspmGcp")
+	OfferingTypeCspmMonitorGitLab              = OfferingType("CspmMonitorGitLab")
+	OfferingTypeCspmMonitorDockerHub           = OfferingType("CspmMonitorDockerHub")
+	OfferingTypeDefenderForContainersDockerHub = OfferingType("DefenderForContainersDockerHub")
+	OfferingTypeDefenderCspmDockerHub          = OfferingType("DefenderCspmDockerHub")
+	OfferingTypeCspmMonitorJFrog               = OfferingType("CspmMonitorJFrog")
+	OfferingTypeDefenderForContainersJFrog     = OfferingType("DefenderForContainersJFrog")
+	OfferingTypeDefenderCspmJFrog              = OfferingType("DefenderCspmJFrog")
 )
 
 // A valid comparer operator to use. A case-insensitive comparison will be applied for String PropertyType.
@@ -4655,6 +4502,174 @@ func (in *pricingTierPtr) ToPricingTierPtrOutput() PricingTierPtrOutput {
 
 func (in *pricingTierPtr) ToPricingTierPtrOutputWithContext(ctx context.Context) PricingTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PricingTierPtrOutput)
+}
+
+// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+type PrivateEndpointServiceConnectionStatus string
+
+const (
+	PrivateEndpointServiceConnectionStatusPending  = PrivateEndpointServiceConnectionStatus("Pending")
+	PrivateEndpointServiceConnectionStatusApproved = PrivateEndpointServiceConnectionStatus("Approved")
+	PrivateEndpointServiceConnectionStatusRejected = PrivateEndpointServiceConnectionStatus("Rejected")
+)
+
+func (PrivateEndpointServiceConnectionStatus) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointServiceConnectionStatus)(nil)).Elem()
+}
+
+func (e PrivateEndpointServiceConnectionStatus) ToPrivateEndpointServiceConnectionStatusOutput() PrivateEndpointServiceConnectionStatusOutput {
+	return pulumi.ToOutput(e).(PrivateEndpointServiceConnectionStatusOutput)
+}
+
+func (e PrivateEndpointServiceConnectionStatus) ToPrivateEndpointServiceConnectionStatusOutputWithContext(ctx context.Context) PrivateEndpointServiceConnectionStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PrivateEndpointServiceConnectionStatusOutput)
+}
+
+func (e PrivateEndpointServiceConnectionStatus) ToPrivateEndpointServiceConnectionStatusPtrOutput() PrivateEndpointServiceConnectionStatusPtrOutput {
+	return e.ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(context.Background())
+}
+
+func (e PrivateEndpointServiceConnectionStatus) ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx context.Context) PrivateEndpointServiceConnectionStatusPtrOutput {
+	return PrivateEndpointServiceConnectionStatus(e).ToPrivateEndpointServiceConnectionStatusOutputWithContext(ctx).ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx)
+}
+
+func (e PrivateEndpointServiceConnectionStatus) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PrivateEndpointServiceConnectionStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PrivateEndpointServiceConnectionStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e PrivateEndpointServiceConnectionStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type PrivateEndpointServiceConnectionStatusOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointServiceConnectionStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointServiceConnectionStatus)(nil)).Elem()
+}
+
+func (o PrivateEndpointServiceConnectionStatusOutput) ToPrivateEndpointServiceConnectionStatusOutput() PrivateEndpointServiceConnectionStatusOutput {
+	return o
+}
+
+func (o PrivateEndpointServiceConnectionStatusOutput) ToPrivateEndpointServiceConnectionStatusOutputWithContext(ctx context.Context) PrivateEndpointServiceConnectionStatusOutput {
+	return o
+}
+
+func (o PrivateEndpointServiceConnectionStatusOutput) ToPrivateEndpointServiceConnectionStatusPtrOutput() PrivateEndpointServiceConnectionStatusPtrOutput {
+	return o.ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(context.Background())
+}
+
+func (o PrivateEndpointServiceConnectionStatusOutput) ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx context.Context) PrivateEndpointServiceConnectionStatusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateEndpointServiceConnectionStatus) *PrivateEndpointServiceConnectionStatus {
+		return &v
+	}).(PrivateEndpointServiceConnectionStatusPtrOutput)
+}
+
+func (o PrivateEndpointServiceConnectionStatusOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PrivateEndpointServiceConnectionStatusOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PrivateEndpointServiceConnectionStatus) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PrivateEndpointServiceConnectionStatusOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PrivateEndpointServiceConnectionStatusOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PrivateEndpointServiceConnectionStatus) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PrivateEndpointServiceConnectionStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointServiceConnectionStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateEndpointServiceConnectionStatus)(nil)).Elem()
+}
+
+func (o PrivateEndpointServiceConnectionStatusPtrOutput) ToPrivateEndpointServiceConnectionStatusPtrOutput() PrivateEndpointServiceConnectionStatusPtrOutput {
+	return o
+}
+
+func (o PrivateEndpointServiceConnectionStatusPtrOutput) ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx context.Context) PrivateEndpointServiceConnectionStatusPtrOutput {
+	return o
+}
+
+func (o PrivateEndpointServiceConnectionStatusPtrOutput) Elem() PrivateEndpointServiceConnectionStatusOutput {
+	return o.ApplyT(func(v *PrivateEndpointServiceConnectionStatus) PrivateEndpointServiceConnectionStatus {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateEndpointServiceConnectionStatus
+		return ret
+	}).(PrivateEndpointServiceConnectionStatusOutput)
+}
+
+func (o PrivateEndpointServiceConnectionStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PrivateEndpointServiceConnectionStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PrivateEndpointServiceConnectionStatus) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// PrivateEndpointServiceConnectionStatusInput is an input type that accepts values of the PrivateEndpointServiceConnectionStatus enum
+// A concrete instance of `PrivateEndpointServiceConnectionStatusInput` can be one of the following:
+//
+//	PrivateEndpointServiceConnectionStatusPending
+//	PrivateEndpointServiceConnectionStatusApproved
+//	PrivateEndpointServiceConnectionStatusRejected
+type PrivateEndpointServiceConnectionStatusInput interface {
+	pulumi.Input
+
+	ToPrivateEndpointServiceConnectionStatusOutput() PrivateEndpointServiceConnectionStatusOutput
+	ToPrivateEndpointServiceConnectionStatusOutputWithContext(context.Context) PrivateEndpointServiceConnectionStatusOutput
+}
+
+var privateEndpointServiceConnectionStatusPtrType = reflect.TypeOf((**PrivateEndpointServiceConnectionStatus)(nil)).Elem()
+
+type PrivateEndpointServiceConnectionStatusPtrInput interface {
+	pulumi.Input
+
+	ToPrivateEndpointServiceConnectionStatusPtrOutput() PrivateEndpointServiceConnectionStatusPtrOutput
+	ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(context.Context) PrivateEndpointServiceConnectionStatusPtrOutput
+}
+
+type privateEndpointServiceConnectionStatusPtr string
+
+func PrivateEndpointServiceConnectionStatusPtr(v string) PrivateEndpointServiceConnectionStatusPtrInput {
+	return (*privateEndpointServiceConnectionStatusPtr)(&v)
+}
+
+func (*privateEndpointServiceConnectionStatusPtr) ElementType() reflect.Type {
+	return privateEndpointServiceConnectionStatusPtrType
+}
+
+func (in *privateEndpointServiceConnectionStatusPtr) ToPrivateEndpointServiceConnectionStatusPtrOutput() PrivateEndpointServiceConnectionStatusPtrOutput {
+	return pulumi.ToOutput(in).(PrivateEndpointServiceConnectionStatusPtrOutput)
+}
+
+func (in *privateEndpointServiceConnectionStatusPtr) ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx context.Context) PrivateEndpointServiceConnectionStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PrivateEndpointServiceConnectionStatusPtrOutput)
 }
 
 // The data type of the compared operands (string, integer, floating point number or a boolean [true/false]]
@@ -5538,180 +5553,6 @@ func (in *recommendationTypePtr) ToRecommendationTypePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(RecommendationTypePtrOutput)
 }
 
-// A possible role to configure sending security notification alerts to
-type Roles string
-
-const (
-	// If enabled, send notification on new alerts to the account admins
-	RolesAccountAdmin = Roles("AccountAdmin")
-	// If enabled, send notification on new alerts to the service admins
-	RolesServiceAdmin = Roles("ServiceAdmin")
-	// If enabled, send notification on new alerts to the subscription owners
-	RolesOwner = Roles("Owner")
-	// If enabled, send notification on new alerts to the subscription contributors
-	RolesContributor = Roles("Contributor")
-)
-
-func (Roles) ElementType() reflect.Type {
-	return reflect.TypeOf((*Roles)(nil)).Elem()
-}
-
-func (e Roles) ToRolesOutput() RolesOutput {
-	return pulumi.ToOutput(e).(RolesOutput)
-}
-
-func (e Roles) ToRolesOutputWithContext(ctx context.Context) RolesOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(RolesOutput)
-}
-
-func (e Roles) ToRolesPtrOutput() RolesPtrOutput {
-	return e.ToRolesPtrOutputWithContext(context.Background())
-}
-
-func (e Roles) ToRolesPtrOutputWithContext(ctx context.Context) RolesPtrOutput {
-	return Roles(e).ToRolesOutputWithContext(ctx).ToRolesPtrOutputWithContext(ctx)
-}
-
-func (e Roles) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e Roles) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e Roles) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e Roles) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type RolesOutput struct{ *pulumi.OutputState }
-
-func (RolesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Roles)(nil)).Elem()
-}
-
-func (o RolesOutput) ToRolesOutput() RolesOutput {
-	return o
-}
-
-func (o RolesOutput) ToRolesOutputWithContext(ctx context.Context) RolesOutput {
-	return o
-}
-
-func (o RolesOutput) ToRolesPtrOutput() RolesPtrOutput {
-	return o.ToRolesPtrOutputWithContext(context.Background())
-}
-
-func (o RolesOutput) ToRolesPtrOutputWithContext(ctx context.Context) RolesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Roles) *Roles {
-		return &v
-	}).(RolesPtrOutput)
-}
-
-func (o RolesOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o RolesOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e Roles) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o RolesOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o RolesOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e Roles) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type RolesPtrOutput struct{ *pulumi.OutputState }
-
-func (RolesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Roles)(nil)).Elem()
-}
-
-func (o RolesPtrOutput) ToRolesPtrOutput() RolesPtrOutput {
-	return o
-}
-
-func (o RolesPtrOutput) ToRolesPtrOutputWithContext(ctx context.Context) RolesPtrOutput {
-	return o
-}
-
-func (o RolesPtrOutput) Elem() RolesOutput {
-	return o.ApplyT(func(v *Roles) Roles {
-		if v != nil {
-			return *v
-		}
-		var ret Roles
-		return ret
-	}).(RolesOutput)
-}
-
-func (o RolesPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o RolesPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *Roles) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// RolesInput is an input type that accepts values of the Roles enum
-// A concrete instance of `RolesInput` can be one of the following:
-//
-//	RolesAccountAdmin
-//	RolesServiceAdmin
-//	RolesOwner
-//	RolesContributor
-type RolesInput interface {
-	pulumi.Input
-
-	ToRolesOutput() RolesOutput
-	ToRolesOutputWithContext(context.Context) RolesOutput
-}
-
-var rolesPtrType = reflect.TypeOf((**Roles)(nil)).Elem()
-
-type RolesPtrInput interface {
-	pulumi.Input
-
-	ToRolesPtrOutput() RolesPtrOutput
-	ToRolesPtrOutputWithContext(context.Context) RolesPtrOutput
-}
-
-type rolesPtr string
-
-func RolesPtr(v string) RolesPtrInput {
-	return (*rolesPtr)(&v)
-}
-
-func (*rolesPtr) ElementType() reflect.Type {
-	return rolesPtrType
-}
-
-func (in *rolesPtr) ToRolesPtrOutput() RolesPtrOutput {
-	return pulumi.ToOutput(in).(RolesPtrOutput)
-}
-
-func (in *rolesPtr) ToRolesPtrOutputWithContext(ctx context.Context) RolesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(RolesPtrOutput)
-}
-
 // Possible states of the rule
 type RuleState string
 
@@ -6042,6 +5883,180 @@ func (in *scanningModePtr) ToScanningModePtrOutput() ScanningModePtrOutput {
 
 func (in *scanningModePtr) ToScanningModePtrOutputWithContext(ctx context.Context) ScanningModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ScanningModePtrOutput)
+}
+
+// A possible role to configure sending security notification alerts to
+type SecurityContactRole string
+
+const (
+	// If enabled, send notification on new alerts to the account admins
+	SecurityContactRoleAccountAdmin = SecurityContactRole("AccountAdmin")
+	// If enabled, send notification on new alerts to the service admins
+	SecurityContactRoleServiceAdmin = SecurityContactRole("ServiceAdmin")
+	// If enabled, send notification on new alerts to the subscription owners
+	SecurityContactRoleOwner = SecurityContactRole("Owner")
+	// If enabled, send notification on new alerts to the subscription contributors
+	SecurityContactRoleContributor = SecurityContactRole("Contributor")
+)
+
+func (SecurityContactRole) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityContactRole)(nil)).Elem()
+}
+
+func (e SecurityContactRole) ToSecurityContactRoleOutput() SecurityContactRoleOutput {
+	return pulumi.ToOutput(e).(SecurityContactRoleOutput)
+}
+
+func (e SecurityContactRole) ToSecurityContactRoleOutputWithContext(ctx context.Context) SecurityContactRoleOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SecurityContactRoleOutput)
+}
+
+func (e SecurityContactRole) ToSecurityContactRolePtrOutput() SecurityContactRolePtrOutput {
+	return e.ToSecurityContactRolePtrOutputWithContext(context.Background())
+}
+
+func (e SecurityContactRole) ToSecurityContactRolePtrOutputWithContext(ctx context.Context) SecurityContactRolePtrOutput {
+	return SecurityContactRole(e).ToSecurityContactRoleOutputWithContext(ctx).ToSecurityContactRolePtrOutputWithContext(ctx)
+}
+
+func (e SecurityContactRole) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SecurityContactRole) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SecurityContactRole) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SecurityContactRole) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SecurityContactRoleOutput struct{ *pulumi.OutputState }
+
+func (SecurityContactRoleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityContactRole)(nil)).Elem()
+}
+
+func (o SecurityContactRoleOutput) ToSecurityContactRoleOutput() SecurityContactRoleOutput {
+	return o
+}
+
+func (o SecurityContactRoleOutput) ToSecurityContactRoleOutputWithContext(ctx context.Context) SecurityContactRoleOutput {
+	return o
+}
+
+func (o SecurityContactRoleOutput) ToSecurityContactRolePtrOutput() SecurityContactRolePtrOutput {
+	return o.ToSecurityContactRolePtrOutputWithContext(context.Background())
+}
+
+func (o SecurityContactRoleOutput) ToSecurityContactRolePtrOutputWithContext(ctx context.Context) SecurityContactRolePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityContactRole) *SecurityContactRole {
+		return &v
+	}).(SecurityContactRolePtrOutput)
+}
+
+func (o SecurityContactRoleOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SecurityContactRoleOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SecurityContactRole) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SecurityContactRoleOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityContactRoleOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SecurityContactRole) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecurityContactRolePtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityContactRolePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityContactRole)(nil)).Elem()
+}
+
+func (o SecurityContactRolePtrOutput) ToSecurityContactRolePtrOutput() SecurityContactRolePtrOutput {
+	return o
+}
+
+func (o SecurityContactRolePtrOutput) ToSecurityContactRolePtrOutputWithContext(ctx context.Context) SecurityContactRolePtrOutput {
+	return o
+}
+
+func (o SecurityContactRolePtrOutput) Elem() SecurityContactRoleOutput {
+	return o.ApplyT(func(v *SecurityContactRole) SecurityContactRole {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityContactRole
+		return ret
+	}).(SecurityContactRoleOutput)
+}
+
+func (o SecurityContactRolePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityContactRolePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SecurityContactRole) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SecurityContactRoleInput is an input type that accepts values of the SecurityContactRole enum
+// A concrete instance of `SecurityContactRoleInput` can be one of the following:
+//
+//	SecurityContactRoleAccountAdmin
+//	SecurityContactRoleServiceAdmin
+//	SecurityContactRoleOwner
+//	SecurityContactRoleContributor
+type SecurityContactRoleInput interface {
+	pulumi.Input
+
+	ToSecurityContactRoleOutput() SecurityContactRoleOutput
+	ToSecurityContactRoleOutputWithContext(context.Context) SecurityContactRoleOutput
+}
+
+var securityContactRolePtrType = reflect.TypeOf((**SecurityContactRole)(nil)).Elem()
+
+type SecurityContactRolePtrInput interface {
+	pulumi.Input
+
+	ToSecurityContactRolePtrOutput() SecurityContactRolePtrOutput
+	ToSecurityContactRolePtrOutputWithContext(context.Context) SecurityContactRolePtrOutput
+}
+
+type securityContactRolePtr string
+
+func SecurityContactRolePtr(v string) SecurityContactRolePtrInput {
+	return (*securityContactRolePtr)(&v)
+}
+
+func (*securityContactRolePtr) ElementType() reflect.Type {
+	return securityContactRolePtrType
+}
+
+func (in *securityContactRolePtr) ToSecurityContactRolePtrOutput() SecurityContactRolePtrOutput {
+	return pulumi.ToOutput(in).(SecurityContactRolePtrOutput)
+}
+
+func (in *securityContactRolePtr) ToSecurityContactRolePtrOutputWithContext(ctx context.Context) SecurityContactRolePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SecurityContactRolePtrOutput)
 }
 
 // The severity to relate to the assessments generated by this Recommendation.
@@ -6902,6 +6917,14 @@ const (
 	SourceOnPremise = Source("OnPremise")
 	// SQL Resource in an on premise machine connected to Azure cloud
 	SourceOnPremiseSql = Source("OnPremiseSql")
+)
+
+// The source type that will trigger the notification
+type SourceType string
+
+const (
+	SourceTypeAlert      = SourceType("Alert")
+	SourceTypeAttackPath = SourceType("AttackPath")
 )
 
 // The cloud that the standard is supported on.
@@ -9380,10 +9403,6 @@ func init() {
 	pulumi.RegisterOutputType(CloudNamePtrOutput{})
 	pulumi.RegisterOutputType(DataSourceOutput{})
 	pulumi.RegisterOutputType(DataSourcePtrOutput{})
-	pulumi.RegisterOutputType(DescendantBehaviorOutput{})
-	pulumi.RegisterOutputType(DescendantBehaviorPtrOutput{})
-	pulumi.RegisterOutputType(DevOpsPolicyTypeOutput{})
-	pulumi.RegisterOutputType(DevOpsPolicyTypePtrOutput{})
 	pulumi.RegisterOutputType(DevOpsProvisioningStateOutput{})
 	pulumi.RegisterOutputType(DevOpsProvisioningStatePtrOutput{})
 	pulumi.RegisterOutputType(EffectOutput{})
@@ -9406,12 +9425,16 @@ func init() {
 	pulumi.RegisterOutputType(ImplementationEffortPtrOutput{})
 	pulumi.RegisterOutputType(IsEnabledOutput{})
 	pulumi.RegisterOutputType(IsEnabledPtrOutput{})
+	pulumi.RegisterOutputType(MinimalRiskLevelOutput{})
+	pulumi.RegisterOutputType(MinimalRiskLevelPtrOutput{})
 	pulumi.RegisterOutputType(MinimalSeverityOutput{})
 	pulumi.RegisterOutputType(MinimalSeverityPtrOutput{})
 	pulumi.RegisterOutputType(OperatorOutput{})
 	pulumi.RegisterOutputType(OperatorPtrOutput{})
 	pulumi.RegisterOutputType(PricingTierOutput{})
 	pulumi.RegisterOutputType(PricingTierPtrOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointServiceConnectionStatusOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointServiceConnectionStatusPtrOutput{})
 	pulumi.RegisterOutputType(PropertyTypeOutput{})
 	pulumi.RegisterOutputType(PropertyTypePtrOutput{})
 	pulumi.RegisterOutputType(ProtocolOutput{})
@@ -9422,12 +9445,12 @@ func init() {
 	pulumi.RegisterOutputType(RecommendationSupportedCloudsPtrOutput{})
 	pulumi.RegisterOutputType(RecommendationTypeOutput{})
 	pulumi.RegisterOutputType(RecommendationTypePtrOutput{})
-	pulumi.RegisterOutputType(RolesOutput{})
-	pulumi.RegisterOutputType(RolesPtrOutput{})
 	pulumi.RegisterOutputType(RuleStateOutput{})
 	pulumi.RegisterOutputType(RuleStatePtrOutput{})
 	pulumi.RegisterOutputType(ScanningModeOutput{})
 	pulumi.RegisterOutputType(ScanningModePtrOutput{})
+	pulumi.RegisterOutputType(SecurityContactRoleOutput{})
+	pulumi.RegisterOutputType(SecurityContactRolePtrOutput{})
 	pulumi.RegisterOutputType(SecurityIssueOutput{})
 	pulumi.RegisterOutputType(SecurityIssuePtrOutput{})
 	pulumi.RegisterOutputType(SecuritySolutionStatusOutput{})

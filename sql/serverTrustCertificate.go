@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Server trust certificate imported from box to enable connection between box and Sql Managed Instance.
 //
-// Uses Azure REST API version 2021-11-01. In version 1.x of the Azure Native provider, it used API version 2021-05-01-preview.
+// Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2021-11-01.
 //
-// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01, 2023-08-01-preview, 2024-05-01-preview.
+// Other available API versions: 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ServerTrustCertificate struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The certificate name
 	CertificateName pulumi.StringOutput `pulumi:"certificateName"`
 	// Resource name.
@@ -84,6 +86,9 @@ func NewServerTrustCertificate(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20240501preview:ServerTrustCertificate"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20241101preview:ServerTrustCertificate"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -177,6 +182,11 @@ func (o ServerTrustCertificateOutput) ToServerTrustCertificateOutput() ServerTru
 
 func (o ServerTrustCertificateOutput) ToServerTrustCertificateOutputWithContext(ctx context.Context) ServerTrustCertificateOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ServerTrustCertificateOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerTrustCertificate) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The certificate name

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,6 +35,8 @@ type LookupDiagnosticServiceArgs struct {
 
 // MQ diagnostic services resource
 type LookupDiagnosticServiceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The frequency at which the data will be exported.
 	DataExportFrequencySeconds *int `pulumi:"dataExportFrequencySeconds"`
 	// Extended Location
@@ -136,6 +138,11 @@ func (o LookupDiagnosticServiceResultOutput) ToLookupDiagnosticServiceResultOutp
 
 func (o LookupDiagnosticServiceResultOutput) ToLookupDiagnosticServiceResultOutputWithContext(ctx context.Context) LookupDiagnosticServiceResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupDiagnosticServiceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDiagnosticServiceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The frequency at which the data will be exported.

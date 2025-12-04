@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,6 +33,8 @@ type LookupHyperVSiteArgs struct {
 
 // Site REST Resource.
 type LookupHyperVSiteResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// eTag for concurrency control.
 	ETag *string `pulumi:"eTag"`
 	// Resource Id.
@@ -83,6 +85,11 @@ func (o LookupHyperVSiteResultOutput) ToLookupHyperVSiteResultOutput() LookupHyp
 
 func (o LookupHyperVSiteResultOutput) ToLookupHyperVSiteResultOutputWithContext(ctx context.Context) LookupHyperVSiteResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupHyperVSiteResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHyperVSiteResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // eTag for concurrency control.

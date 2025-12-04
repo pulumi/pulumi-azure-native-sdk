@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Deployment information.
 //
-// Uses Azure REST API version 2022-09-01. In version 1.x of the Azure Native provider, it used API version 2021-01-01.
+// Uses Azure REST API version 2024-03-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
 //
-// Other available API versions: 2023-07-01, 2024-03-01, 2024-07-01, 2024-11-01.
+// Other available API versions: 2020-10-01, 2021-01-01, 2021-04-01, 2022-09-01, 2023-07-01, 2024-07-01, 2024-11-01, 2025-03-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native resources [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type DeploymentAtTenantScope struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// the location of the deployment.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The name of the deployment.
@@ -81,6 +83,12 @@ func NewDeploymentAtTenantScope(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:resources/v20241101:DeploymentAtTenantScope"),
+		},
+		{
+			Type: pulumi.String("azure-native:resources/v20250301:DeploymentAtTenantScope"),
+		},
+		{
+			Type: pulumi.String("azure-native:resources/v20250401:DeploymentAtTenantScope"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -174,6 +182,11 @@ func (o DeploymentAtTenantScopeOutput) ToDeploymentAtTenantScopeOutput() Deploym
 
 func (o DeploymentAtTenantScopeOutput) ToDeploymentAtTenantScopeOutputWithContext(ctx context.Context) DeploymentAtTenantScopeOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o DeploymentAtTenantScopeOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DeploymentAtTenantScope) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // the location of the deployment.

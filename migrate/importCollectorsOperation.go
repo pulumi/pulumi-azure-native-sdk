@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Import collector resource.
 //
-// Uses Azure REST API version 2023-03-15.
+// Uses Azure REST API version 2024-01-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-03-15.
 //
-// Other available API versions: 2023-04-01-preview, 2023-05-01-preview, 2023-09-09-preview, 2024-01-01-preview.
+// Other available API versions: 2023-03-15, 2023-04-01-preview, 2023-05-01-preview, 2023-09-09-preview, 2024-01-15, 2024-03-03-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native migrate [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ImportCollectorsOperation struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets the Timestamp when collector was created.
 	CreatedTimestamp pulumi.StringOutput `pulumi:"createdTimestamp"`
 	// Gets the discovery site id.
@@ -51,6 +53,9 @@ func NewImportCollectorsOperation(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:migrate/v20191001:ImportCollector"),
+		},
+		{
 			Type: pulumi.String("azure-native:migrate/v20191001:ImportCollectorsOperation"),
 		},
 		{
@@ -67,6 +72,15 @@ func NewImportCollectorsOperation(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:migrate/v20240101preview:ImportCollectorsOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20240115:ImportCollectorsOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20240303preview:ImportCollectorsOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate:ImportCollector"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -164,6 +178,11 @@ func (o ImportCollectorsOperationOutput) ToImportCollectorsOperationOutput() Imp
 
 func (o ImportCollectorsOperationOutput) ToImportCollectorsOperationOutputWithContext(ctx context.Context) ImportCollectorsOperationOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ImportCollectorsOperationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ImportCollectorsOperation) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets the Timestamp when collector was created.

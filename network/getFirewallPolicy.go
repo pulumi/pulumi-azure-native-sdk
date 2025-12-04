@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified Firewall Policy.
 //
-// Uses Azure REST API version 2023-02-01.
+// Uses Azure REST API version 2024-05-01.
 //
-// Other available API versions: 2020-04-01, 2021-08-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Other available API versions: 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupFirewallPolicy(ctx *pulumi.Context, args *LookupFirewallPolicyArgs, opts ...pulumi.InvokeOption) (*LookupFirewallPolicyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFirewallPolicyResult
@@ -37,6 +37,8 @@ type LookupFirewallPolicyArgs struct {
 
 // FirewallPolicy Resource.
 type LookupFirewallPolicyResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The parent firewall policy from which rules are inherited.
 	BasePolicy *SubResourceResponse `pulumi:"basePolicy"`
 	// List of references to Child Firewall Policies.
@@ -65,6 +67,8 @@ type LookupFirewallPolicyResult struct {
 	ProvisioningState string `pulumi:"provisioningState"`
 	// List of references to FirewallPolicyRuleCollectionGroups.
 	RuleCollectionGroups []SubResourceResponse `pulumi:"ruleCollectionGroups"`
+	// A read-only string that represents the size of the FirewallPolicyPropertiesFormat in MB. (ex 0.5MB)
+	Size string `pulumi:"size"`
 	// The Firewall Policy SKU.
 	Sku *FirewallPolicySkuResponse `pulumi:"sku"`
 	// The private IP addresses/IP ranges to which traffic will not be SNAT.
@@ -118,6 +122,11 @@ func (o LookupFirewallPolicyResultOutput) ToLookupFirewallPolicyResultOutput() L
 
 func (o LookupFirewallPolicyResultOutput) ToLookupFirewallPolicyResultOutputWithContext(ctx context.Context) LookupFirewallPolicyResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupFirewallPolicyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFirewallPolicyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The parent firewall policy from which rules are inherited.
@@ -190,6 +199,11 @@ func (o LookupFirewallPolicyResultOutput) ProvisioningState() pulumi.StringOutpu
 // List of references to FirewallPolicyRuleCollectionGroups.
 func (o LookupFirewallPolicyResultOutput) RuleCollectionGroups() SubResourceResponseArrayOutput {
 	return o.ApplyT(func(v LookupFirewallPolicyResult) []SubResourceResponse { return v.RuleCollectionGroups }).(SubResourceResponseArrayOutput)
+}
+
+// A read-only string that represents the size of the FirewallPolicyPropertiesFormat in MB. (ex 0.5MB)
+func (o LookupFirewallPolicyResultOutput) Size() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFirewallPolicyResult) string { return v.Size }).(pulumi.StringOutput)
 }
 
 // The Firewall Policy SKU.

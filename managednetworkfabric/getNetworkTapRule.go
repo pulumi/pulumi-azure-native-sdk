@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,6 +37,8 @@ type LookupNetworkTapRuleResult struct {
 	AdministrativeState string `pulumi:"administrativeState"`
 	// Switch configuration description.
 	Annotation *string `pulumi:"annotation"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Configuration state of the resource.
 	ConfigurationState string `pulumi:"configurationState"`
 	// Input method to configure Network Tap Rule.
@@ -124,6 +126,11 @@ func (o LookupNetworkTapRuleResultOutput) AdministrativeState() pulumi.StringOut
 // Switch configuration description.
 func (o LookupNetworkTapRuleResultOutput) Annotation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNetworkTapRuleResult) *string { return v.Annotation }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupNetworkTapRuleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkTapRuleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Configuration state of the resource.

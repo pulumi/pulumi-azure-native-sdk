@@ -8,16 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // MQ kafkaConnector/topicMap resource
 //
-// Uses Azure REST API version 2023-10-04-preview.
+// Uses Azure REST API version 2023-10-04-preview. In version 2.x of the Azure Native provider, it used API version 2023-10-04-preview.
 type KafkaConnectorTopicMap struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The batching settings for kafka messages.
 	Batching KafkaTopicMapBatchingResponsePtrOutput `pulumi:"batching"`
 	// The compression to use for kafka messages.
@@ -218,6 +220,11 @@ func (o KafkaConnectorTopicMapOutput) ToKafkaConnectorTopicMapOutput() KafkaConn
 
 func (o KafkaConnectorTopicMapOutput) ToKafkaConnectorTopicMapOutputWithContext(ctx context.Context) KafkaConnectorTopicMapOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o KafkaConnectorTopicMapOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *KafkaConnectorTopicMap) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The batching settings for kafka messages.

@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Information about the SourceToCloud builder resource.
 //
-// Uses Azure REST API version 2023-08-01-preview.
+// Uses Azure REST API version 2025-02-02-preview. In version 2.x of the Azure Native provider, it used API version 2023-08-01-preview.
 //
-// Other available API versions: 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview.
+// Other available API versions: 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Builder struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// List of mappings of container registries and the managed identity used to connect to it.
 	ContainerRegistries ContainerRegistryResponseArrayOutput `pulumi:"containerRegistries"`
 	// Resource ID of the container apps environment that the builder is associated with.
@@ -68,6 +70,9 @@ func NewBuilder(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:app/v20241002preview:Builder"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20250202preview:Builder"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -173,6 +178,11 @@ func (o BuilderOutput) ToBuilderOutput() BuilderOutput {
 
 func (o BuilderOutput) ToBuilderOutputWithContext(ctx context.Context) BuilderOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o BuilderOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Builder) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // List of mappings of container registries and the managed identity used to connect to it.

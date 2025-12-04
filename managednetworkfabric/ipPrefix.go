@@ -8,27 +8,33 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The IPPrefix resource definition.
+// The IP Prefix resource definition.
 //
-// Uses Azure REST API version 2023-02-01-preview.
+// Uses Azure REST API version 2023-06-15. In version 2.x of the Azure Native provider, it used API version 2023-02-01-preview.
 //
-// Other available API versions: 2023-06-15.
+// Other available API versions: 2023-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type IpPrefix struct {
 	pulumi.CustomResourceState
 
+	// Administrative state of the resource.
+	AdministrativeState pulumi.StringOutput `pulumi:"administrativeState"`
 	// Switch configuration description.
 	Annotation pulumi.StringPtrOutput `pulumi:"annotation"`
-	// IpPrefix contains the list of IP PrefixRules objects.
-	IpPrefixRules IpPrefixPropertiesResponseIpPrefixRulesArrayOutput `pulumi:"ipPrefixRules"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// Configuration state of the resource.
+	ConfigurationState pulumi.StringOutput `pulumi:"configurationState"`
+	// The list of IP Prefix Rules.
+	IpPrefixRules IpPrefixRuleResponseArrayOutput `pulumi:"ipPrefixRules"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Gets the provisioning state of the resource.
+	// Provisioning state of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
@@ -95,10 +101,10 @@ func (IpPrefixState) ElementType() reflect.Type {
 type ipPrefixArgs struct {
 	// Switch configuration description.
 	Annotation *string `pulumi:"annotation"`
-	// Name of the IP Prefix
+	// Name of the IP Prefix.
 	IpPrefixName *string `pulumi:"ipPrefixName"`
-	// IpPrefix contains the list of IP PrefixRules objects.
-	IpPrefixRules []IpPrefixPropertiesIpPrefixRules `pulumi:"ipPrefixRules"`
+	// The list of IP Prefix Rules.
+	IpPrefixRules []IpPrefixRule `pulumi:"ipPrefixRules"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The name of the resource group. The name is case insensitive.
@@ -111,10 +117,10 @@ type ipPrefixArgs struct {
 type IpPrefixArgs struct {
 	// Switch configuration description.
 	Annotation pulumi.StringPtrInput
-	// Name of the IP Prefix
+	// Name of the IP Prefix.
 	IpPrefixName pulumi.StringPtrInput
-	// IpPrefix contains the list of IP PrefixRules objects.
-	IpPrefixRules IpPrefixPropertiesIpPrefixRulesArrayInput
+	// The list of IP Prefix Rules.
+	IpPrefixRules IpPrefixRuleArrayInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
@@ -160,14 +166,29 @@ func (o IpPrefixOutput) ToIpPrefixOutputWithContext(ctx context.Context) IpPrefi
 	return o
 }
 
+// Administrative state of the resource.
+func (o IpPrefixOutput) AdministrativeState() pulumi.StringOutput {
+	return o.ApplyT(func(v *IpPrefix) pulumi.StringOutput { return v.AdministrativeState }).(pulumi.StringOutput)
+}
+
 // Switch configuration description.
 func (o IpPrefixOutput) Annotation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IpPrefix) pulumi.StringPtrOutput { return v.Annotation }).(pulumi.StringPtrOutput)
 }
 
-// IpPrefix contains the list of IP PrefixRules objects.
-func (o IpPrefixOutput) IpPrefixRules() IpPrefixPropertiesResponseIpPrefixRulesArrayOutput {
-	return o.ApplyT(func(v *IpPrefix) IpPrefixPropertiesResponseIpPrefixRulesArrayOutput { return v.IpPrefixRules }).(IpPrefixPropertiesResponseIpPrefixRulesArrayOutput)
+// The Azure API version of the resource.
+func (o IpPrefixOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *IpPrefix) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Configuration state of the resource.
+func (o IpPrefixOutput) ConfigurationState() pulumi.StringOutput {
+	return o.ApplyT(func(v *IpPrefix) pulumi.StringOutput { return v.ConfigurationState }).(pulumi.StringOutput)
+}
+
+// The list of IP Prefix Rules.
+func (o IpPrefixOutput) IpPrefixRules() IpPrefixRuleResponseArrayOutput {
+	return o.ApplyT(func(v *IpPrefix) IpPrefixRuleResponseArrayOutput { return v.IpPrefixRules }).(IpPrefixRuleResponseArrayOutput)
 }
 
 // The geo-location where the resource lives
@@ -180,7 +201,7 @@ func (o IpPrefixOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *IpPrefix) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Gets the provisioning state of the resource.
+// Provisioning state of the resource.
 func (o IpPrefixOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *IpPrefix) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }

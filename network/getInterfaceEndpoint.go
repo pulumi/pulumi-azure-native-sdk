@@ -7,13 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified interface endpoint by resource group.
 //
 // Uses Azure REST API version 2019-02-01.
+//
+// Other available API versions: 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupInterfaceEndpoint(ctx *pulumi.Context, args *LookupInterfaceEndpointArgs, opts ...pulumi.InvokeOption) (*LookupInterfaceEndpointResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupInterfaceEndpointResult
@@ -35,6 +37,8 @@ type LookupInterfaceEndpointArgs struct {
 
 // Interface endpoint resource.
 type LookupInterfaceEndpointResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A reference to the service being brought into the virtual network.
 	EndpointService *EndpointServiceResponse `pulumi:"endpointService"`
 	// Gets a unique read-only string that changes whenever the resource is updated.
@@ -106,6 +110,11 @@ func (o LookupInterfaceEndpointResultOutput) ToLookupInterfaceEndpointResultOutp
 
 func (o LookupInterfaceEndpointResultOutput) ToLookupInterfaceEndpointResultOutputWithContext(ctx context.Context) LookupInterfaceEndpointResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupInterfaceEndpointResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInterfaceEndpointResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A reference to the service being brought into the virtual network.

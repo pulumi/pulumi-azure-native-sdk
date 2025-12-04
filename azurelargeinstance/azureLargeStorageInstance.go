@@ -8,17 +8,19 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // AzureLargeStorageInstance info on Azure (ARM properties and
 // AzureLargeStorageInstance properties)
 //
-// Uses Azure REST API version 2024-08-01-preview.
+// Uses Azure REST API version 2024-08-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-08-01-preview.
 type AzureLargeStorageInstance struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Specifies the AzureLargeStorageInstance unique ID.
 	AzureLargeStorageInstanceUniqueIdentifier pulumi.StringPtrOutput `pulumi:"azureLargeStorageInstanceUniqueIdentifier"`
 	// The managed service identities assigned to this resource.
@@ -155,6 +157,11 @@ func (o AzureLargeStorageInstanceOutput) ToAzureLargeStorageInstanceOutput() Azu
 
 func (o AzureLargeStorageInstanceOutput) ToAzureLargeStorageInstanceOutputWithContext(ctx context.Context) AzureLargeStorageInstanceOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o AzureLargeStorageInstanceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AzureLargeStorageInstance) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Specifies the AzureLargeStorageInstance unique ID.

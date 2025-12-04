@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,6 +37,8 @@ type LookupKustoTableDataSetArgs struct {
 
 // A kusto table data set.
 type LookupKustoTableDataSetResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Unique id for identifying a data set resource
 	DataSetId string `pulumi:"dataSetId"`
 	// The resource id of the azure resource
@@ -97,6 +99,11 @@ func (o LookupKustoTableDataSetResultOutput) ToLookupKustoTableDataSetResultOutp
 
 func (o LookupKustoTableDataSetResultOutput) ToLookupKustoTableDataSetResultOutputWithContext(ctx context.Context) LookupKustoTableDataSetResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupKustoTableDataSetResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKustoTableDataSetResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Unique id for identifying a data set resource

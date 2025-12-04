@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,6 +37,8 @@ type LookupViewArgs struct {
 
 // The view resource format.
 type LookupViewResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Date time when view was last modified.
 	Changed string `pulumi:"changed"`
 	// Date time when view was created.
@@ -96,6 +98,11 @@ func (o LookupViewResultOutput) ToLookupViewResultOutput() LookupViewResultOutpu
 
 func (o LookupViewResultOutput) ToLookupViewResultOutputWithContext(ctx context.Context) LookupViewResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupViewResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupViewResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Date time when view was last modified.

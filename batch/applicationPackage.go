@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An application package which represents a particular version of an application.
 //
-// Uses Azure REST API version 2023-05-01. In version 1.x of the Azure Native provider, it used API version 2021-01-01.
+// Uses Azure REST API version 2024-07-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
 //
-// Other available API versions: 2023-11-01, 2024-02-01, 2024-07-01.
+// Other available API versions: 2023-05-01, 2023-11-01, 2024-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native batch [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ApplicationPackage struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The ETag of the resource, used for concurrency statements.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The format of the application package, if the package is active.
@@ -34,6 +36,8 @@ type ApplicationPackage struct {
 	StorageUrl pulumi.StringOutput `pulumi:"storageUrl"`
 	// The UTC time at which the Azure Storage URL will expire.
 	StorageUrlExpiry pulumi.StringOutput `pulumi:"storageUrlExpiry"`
+	// The tags of the resource.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -153,6 +157,8 @@ type applicationPackageArgs struct {
 	ApplicationName string `pulumi:"applicationName"`
 	// The name of the resource group that contains the Batch account.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The tags of the resource.
+	Tags map[string]string `pulumi:"tags"`
 	// The version of the application.
 	VersionName *string `pulumi:"versionName"`
 }
@@ -165,6 +171,8 @@ type ApplicationPackageArgs struct {
 	ApplicationName pulumi.StringInput
 	// The name of the resource group that contains the Batch account.
 	ResourceGroupName pulumi.StringInput
+	// The tags of the resource.
+	Tags pulumi.StringMapInput
 	// The version of the application.
 	VersionName pulumi.StringPtrInput
 }
@@ -206,6 +214,11 @@ func (o ApplicationPackageOutput) ToApplicationPackageOutputWithContext(ctx cont
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ApplicationPackageOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationPackage) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The ETag of the resource, used for concurrency statements.
 func (o ApplicationPackageOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationPackage) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
@@ -239,6 +252,11 @@ func (o ApplicationPackageOutput) StorageUrl() pulumi.StringOutput {
 // The UTC time at which the Azure Storage URL will expire.
 func (o ApplicationPackageOutput) StorageUrlExpiry() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationPackage) pulumi.StringOutput { return v.StorageUrlExpiry }).(pulumi.StringOutput)
+}
+
+// The tags of the resource.
+func (o ApplicationPackageOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ApplicationPackage) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The type of the resource.

@@ -8,18 +8,22 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The customer's ASN that is registered by the peering service provider.
 //
-// Uses Azure REST API version 2022-10-01. In version 1.x of the Azure Native provider, it used API version 2021-01-01.
+// Uses Azure REST API version 2022-10-01. In version 2.x of the Azure Native provider, it used API version 2022-10-01.
+//
+// Other available API versions: 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native peering [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type RegisteredAsn struct {
 	pulumi.CustomResourceState
 
 	// The customer's ASN from which traffic originates.
 	Asn pulumi.IntPtrOutput `pulumi:"asn"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The peering service prefix key that is to be shared with the customer.
@@ -67,6 +71,9 @@ func NewRegisteredAsn(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:peering/v20221001:RegisteredAsn"),
+		},
+		{
+			Type: pulumi.String("azure-native:peering/v20250501:RegisteredAsn"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -165,6 +172,11 @@ func (o RegisteredAsnOutput) ToRegisteredAsnOutputWithContext(ctx context.Contex
 // The customer's ASN from which traffic originates.
 func (o RegisteredAsnOutput) Asn() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RegisteredAsn) pulumi.IntPtrOutput { return v.Asn }).(pulumi.IntPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o RegisteredAsnOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegisteredAsn) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource.

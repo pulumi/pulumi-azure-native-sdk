@@ -8,35 +8,37 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Defines the NetworkInterface resource.
 //
-// Uses Azure REST API version 2023-02-01-preview. In version 1.x of the Azure Native provider, it used API version 2023-02-01-preview.
+// Uses Azure REST API version 2023-06-15. In version 2.x of the Azure Native provider, it used API version 2023-02-01-preview.
 //
-// Other available API versions: 2023-06-15.
+// Other available API versions: 2023-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type NetworkInterface struct {
 	pulumi.CustomResourceState
 
-	// administrativeState of the network interface. Example: Enabled | Disabled.
+	// Administrative state of the resource.
 	AdministrativeState pulumi.StringOutput `pulumi:"administrativeState"`
 	// Switch configuration description.
 	Annotation pulumi.StringPtrOutput `pulumi:"annotation"`
-	// The arm resource id of the interface or compute server its connected to.
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// The ARM resource id of the interface or compute server its connected to.
 	ConnectedTo pulumi.StringOutput `pulumi:"connectedTo"`
 	// The Interface Type. Example: Management/Data
 	InterfaceType pulumi.StringOutput `pulumi:"interfaceType"`
-	// ipv4Address.
+	// IPv4Address of the interface.
 	Ipv4Address pulumi.StringOutput `pulumi:"ipv4Address"`
-	// ipv6Address.
+	// IPv6Address of the interface.
 	Ipv6Address pulumi.StringOutput `pulumi:"ipv6Address"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// physicalIdentifier of the network interface.
+	// Physical Identifier of the network interface.
 	PhysicalIdentifier pulumi.StringOutput `pulumi:"physicalIdentifier"`
-	// Gets the provisioning state of the resource.
+	// Provisioning state of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
@@ -101,9 +103,9 @@ func (NetworkInterfaceState) ElementType() reflect.Type {
 type networkInterfaceArgs struct {
 	// Switch configuration description.
 	Annotation *string `pulumi:"annotation"`
-	// Name of the NetworkDevice
+	// Name of the Network Device.
 	NetworkDeviceName string `pulumi:"networkDeviceName"`
-	// Name of the NetworkInterface
+	// Name of the Network Interface.
 	NetworkInterfaceName *string `pulumi:"networkInterfaceName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -113,9 +115,9 @@ type networkInterfaceArgs struct {
 type NetworkInterfaceArgs struct {
 	// Switch configuration description.
 	Annotation pulumi.StringPtrInput
-	// Name of the NetworkDevice
+	// Name of the Network Device.
 	NetworkDeviceName pulumi.StringInput
-	// Name of the NetworkInterface
+	// Name of the Network Interface.
 	NetworkInterfaceName pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
@@ -158,7 +160,7 @@ func (o NetworkInterfaceOutput) ToNetworkInterfaceOutputWithContext(ctx context.
 	return o
 }
 
-// administrativeState of the network interface. Example: Enabled | Disabled.
+// Administrative state of the resource.
 func (o NetworkInterfaceOutput) AdministrativeState() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkInterface) pulumi.StringOutput { return v.AdministrativeState }).(pulumi.StringOutput)
 }
@@ -168,7 +170,12 @@ func (o NetworkInterfaceOutput) Annotation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkInterface) pulumi.StringPtrOutput { return v.Annotation }).(pulumi.StringPtrOutput)
 }
 
-// The arm resource id of the interface or compute server its connected to.
+// The Azure API version of the resource.
+func (o NetworkInterfaceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkInterface) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// The ARM resource id of the interface or compute server its connected to.
 func (o NetworkInterfaceOutput) ConnectedTo() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkInterface) pulumi.StringOutput { return v.ConnectedTo }).(pulumi.StringOutput)
 }
@@ -178,12 +185,12 @@ func (o NetworkInterfaceOutput) InterfaceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkInterface) pulumi.StringOutput { return v.InterfaceType }).(pulumi.StringOutput)
 }
 
-// ipv4Address.
+// IPv4Address of the interface.
 func (o NetworkInterfaceOutput) Ipv4Address() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkInterface) pulumi.StringOutput { return v.Ipv4Address }).(pulumi.StringOutput)
 }
 
-// ipv6Address.
+// IPv6Address of the interface.
 func (o NetworkInterfaceOutput) Ipv6Address() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkInterface) pulumi.StringOutput { return v.Ipv6Address }).(pulumi.StringOutput)
 }
@@ -193,12 +200,12 @@ func (o NetworkInterfaceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkInterface) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// physicalIdentifier of the network interface.
+// Physical Identifier of the network interface.
 func (o NetworkInterfaceOutput) PhysicalIdentifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkInterface) pulumi.StringOutput { return v.PhysicalIdentifier }).(pulumi.StringOutput)
 }
 
-// Gets the provisioning state of the resource.
+// Provisioning state of the resource.
 func (o NetworkInterfaceOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkInterface) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }

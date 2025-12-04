@@ -10,6 +10,174 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The customer action on which the discount is applied. Supported values are Purchase, Consume, and Renew. Validation: Required, one of supported values.
+type ApplyDiscountOn string
+
+const (
+	ApplyDiscountOnPurchase = ApplyDiscountOn("Purchase")
+	ApplyDiscountOnConsume  = ApplyDiscountOn("Consume")
+	ApplyDiscountOnRenew    = ApplyDiscountOn("Renew")
+)
+
+func (ApplyDiscountOn) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplyDiscountOn)(nil)).Elem()
+}
+
+func (e ApplyDiscountOn) ToApplyDiscountOnOutput() ApplyDiscountOnOutput {
+	return pulumi.ToOutput(e).(ApplyDiscountOnOutput)
+}
+
+func (e ApplyDiscountOn) ToApplyDiscountOnOutputWithContext(ctx context.Context) ApplyDiscountOnOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ApplyDiscountOnOutput)
+}
+
+func (e ApplyDiscountOn) ToApplyDiscountOnPtrOutput() ApplyDiscountOnPtrOutput {
+	return e.ToApplyDiscountOnPtrOutputWithContext(context.Background())
+}
+
+func (e ApplyDiscountOn) ToApplyDiscountOnPtrOutputWithContext(ctx context.Context) ApplyDiscountOnPtrOutput {
+	return ApplyDiscountOn(e).ToApplyDiscountOnOutputWithContext(ctx).ToApplyDiscountOnPtrOutputWithContext(ctx)
+}
+
+func (e ApplyDiscountOn) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ApplyDiscountOn) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ApplyDiscountOn) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ApplyDiscountOn) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ApplyDiscountOnOutput struct{ *pulumi.OutputState }
+
+func (ApplyDiscountOnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplyDiscountOn)(nil)).Elem()
+}
+
+func (o ApplyDiscountOnOutput) ToApplyDiscountOnOutput() ApplyDiscountOnOutput {
+	return o
+}
+
+func (o ApplyDiscountOnOutput) ToApplyDiscountOnOutputWithContext(ctx context.Context) ApplyDiscountOnOutput {
+	return o
+}
+
+func (o ApplyDiscountOnOutput) ToApplyDiscountOnPtrOutput() ApplyDiscountOnPtrOutput {
+	return o.ToApplyDiscountOnPtrOutputWithContext(context.Background())
+}
+
+func (o ApplyDiscountOnOutput) ToApplyDiscountOnPtrOutputWithContext(ctx context.Context) ApplyDiscountOnPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplyDiscountOn) *ApplyDiscountOn {
+		return &v
+	}).(ApplyDiscountOnPtrOutput)
+}
+
+func (o ApplyDiscountOnOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ApplyDiscountOnOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ApplyDiscountOn) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ApplyDiscountOnOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ApplyDiscountOnOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ApplyDiscountOn) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ApplyDiscountOnPtrOutput struct{ *pulumi.OutputState }
+
+func (ApplyDiscountOnPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplyDiscountOn)(nil)).Elem()
+}
+
+func (o ApplyDiscountOnPtrOutput) ToApplyDiscountOnPtrOutput() ApplyDiscountOnPtrOutput {
+	return o
+}
+
+func (o ApplyDiscountOnPtrOutput) ToApplyDiscountOnPtrOutputWithContext(ctx context.Context) ApplyDiscountOnPtrOutput {
+	return o
+}
+
+func (o ApplyDiscountOnPtrOutput) Elem() ApplyDiscountOnOutput {
+	return o.ApplyT(func(v *ApplyDiscountOn) ApplyDiscountOn {
+		if v != nil {
+			return *v
+		}
+		var ret ApplyDiscountOn
+		return ret
+	}).(ApplyDiscountOnOutput)
+}
+
+func (o ApplyDiscountOnPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ApplyDiscountOnPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ApplyDiscountOn) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ApplyDiscountOnInput is an input type that accepts values of the ApplyDiscountOn enum
+// A concrete instance of `ApplyDiscountOnInput` can be one of the following:
+//
+//	ApplyDiscountOnPurchase
+//	ApplyDiscountOnConsume
+//	ApplyDiscountOnRenew
+type ApplyDiscountOnInput interface {
+	pulumi.Input
+
+	ToApplyDiscountOnOutput() ApplyDiscountOnOutput
+	ToApplyDiscountOnOutputWithContext(context.Context) ApplyDiscountOnOutput
+}
+
+var applyDiscountOnPtrType = reflect.TypeOf((**ApplyDiscountOn)(nil)).Elem()
+
+type ApplyDiscountOnPtrInput interface {
+	pulumi.Input
+
+	ToApplyDiscountOnPtrOutput() ApplyDiscountOnPtrOutput
+	ToApplyDiscountOnPtrOutputWithContext(context.Context) ApplyDiscountOnPtrOutput
+}
+
+type applyDiscountOnPtr string
+
+func ApplyDiscountOnPtr(v string) ApplyDiscountOnPtrInput {
+	return (*applyDiscountOnPtr)(&v)
+}
+
+func (*applyDiscountOnPtr) ElementType() reflect.Type {
+	return applyDiscountOnPtrType
+}
+
+func (in *applyDiscountOnPtr) ToApplyDiscountOnPtrOutput() ApplyDiscountOnPtrOutput {
+	return pulumi.ToOutput(in).(ApplyDiscountOnPtrOutput)
+}
+
+func (in *applyDiscountOnPtr) ToApplyDiscountOnPtrOutputWithContext(ctx context.Context) ApplyDiscountOnPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ApplyDiscountOnPtrOutput)
+}
+
 // List of applied scopes supported for discounts.
 type DiscountAppliedScopeType string
 
@@ -178,125 +346,125 @@ func (in *discountAppliedScopeTypePtr) ToDiscountAppliedScopeTypePtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(DiscountAppliedScopeTypePtrOutput)
 }
 
-// This defines whether the entity being created is primary or affiliate. Supported values: primary, affiliate. Validation: Required, must match one of the 2 values.
-type DiscountEntityType string
+// The discount combination rule when there are multiple applicable custom prices. Validation: Required. Supported values are Stackable and BestOf.
+type DiscountCombinationRule string
 
 const (
-	DiscountEntityTypePrimary   = DiscountEntityType("Primary")
-	DiscountEntityTypeAffiliate = DiscountEntityType("Affiliate")
+	DiscountCombinationRuleBestOf    = DiscountCombinationRule("BestOf")
+	DiscountCombinationRuleStackable = DiscountCombinationRule("Stackable")
 )
 
-func (DiscountEntityType) ElementType() reflect.Type {
-	return reflect.TypeOf((*DiscountEntityType)(nil)).Elem()
+func (DiscountCombinationRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscountCombinationRule)(nil)).Elem()
 }
 
-func (e DiscountEntityType) ToDiscountEntityTypeOutput() DiscountEntityTypeOutput {
-	return pulumi.ToOutput(e).(DiscountEntityTypeOutput)
+func (e DiscountCombinationRule) ToDiscountCombinationRuleOutput() DiscountCombinationRuleOutput {
+	return pulumi.ToOutput(e).(DiscountCombinationRuleOutput)
 }
 
-func (e DiscountEntityType) ToDiscountEntityTypeOutputWithContext(ctx context.Context) DiscountEntityTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(DiscountEntityTypeOutput)
+func (e DiscountCombinationRule) ToDiscountCombinationRuleOutputWithContext(ctx context.Context) DiscountCombinationRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DiscountCombinationRuleOutput)
 }
 
-func (e DiscountEntityType) ToDiscountEntityTypePtrOutput() DiscountEntityTypePtrOutput {
-	return e.ToDiscountEntityTypePtrOutputWithContext(context.Background())
+func (e DiscountCombinationRule) ToDiscountCombinationRulePtrOutput() DiscountCombinationRulePtrOutput {
+	return e.ToDiscountCombinationRulePtrOutputWithContext(context.Background())
 }
 
-func (e DiscountEntityType) ToDiscountEntityTypePtrOutputWithContext(ctx context.Context) DiscountEntityTypePtrOutput {
-	return DiscountEntityType(e).ToDiscountEntityTypeOutputWithContext(ctx).ToDiscountEntityTypePtrOutputWithContext(ctx)
+func (e DiscountCombinationRule) ToDiscountCombinationRulePtrOutputWithContext(ctx context.Context) DiscountCombinationRulePtrOutput {
+	return DiscountCombinationRule(e).ToDiscountCombinationRuleOutputWithContext(ctx).ToDiscountCombinationRulePtrOutputWithContext(ctx)
 }
 
-func (e DiscountEntityType) ToStringOutput() pulumi.StringOutput {
+func (e DiscountCombinationRule) ToStringOutput() pulumi.StringOutput {
 	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e DiscountEntityType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+func (e DiscountCombinationRule) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
 	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e DiscountEntityType) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (e DiscountCombinationRule) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
 }
 
-func (e DiscountEntityType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+func (e DiscountCombinationRule) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-type DiscountEntityTypeOutput struct{ *pulumi.OutputState }
+type DiscountCombinationRuleOutput struct{ *pulumi.OutputState }
 
-func (DiscountEntityTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DiscountEntityType)(nil)).Elem()
+func (DiscountCombinationRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscountCombinationRule)(nil)).Elem()
 }
 
-func (o DiscountEntityTypeOutput) ToDiscountEntityTypeOutput() DiscountEntityTypeOutput {
+func (o DiscountCombinationRuleOutput) ToDiscountCombinationRuleOutput() DiscountCombinationRuleOutput {
 	return o
 }
 
-func (o DiscountEntityTypeOutput) ToDiscountEntityTypeOutputWithContext(ctx context.Context) DiscountEntityTypeOutput {
+func (o DiscountCombinationRuleOutput) ToDiscountCombinationRuleOutputWithContext(ctx context.Context) DiscountCombinationRuleOutput {
 	return o
 }
 
-func (o DiscountEntityTypeOutput) ToDiscountEntityTypePtrOutput() DiscountEntityTypePtrOutput {
-	return o.ToDiscountEntityTypePtrOutputWithContext(context.Background())
+func (o DiscountCombinationRuleOutput) ToDiscountCombinationRulePtrOutput() DiscountCombinationRulePtrOutput {
+	return o.ToDiscountCombinationRulePtrOutputWithContext(context.Background())
 }
 
-func (o DiscountEntityTypeOutput) ToDiscountEntityTypePtrOutputWithContext(ctx context.Context) DiscountEntityTypePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiscountEntityType) *DiscountEntityType {
+func (o DiscountCombinationRuleOutput) ToDiscountCombinationRulePtrOutputWithContext(ctx context.Context) DiscountCombinationRulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiscountCombinationRule) *DiscountCombinationRule {
 		return &v
-	}).(DiscountEntityTypePtrOutput)
+	}).(DiscountCombinationRulePtrOutput)
 }
 
-func (o DiscountEntityTypeOutput) ToStringOutput() pulumi.StringOutput {
+func (o DiscountCombinationRuleOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
 
-func (o DiscountEntityTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e DiscountEntityType) string {
+func (o DiscountCombinationRuleOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DiscountCombinationRule) string {
 		return string(e)
 	}).(pulumi.StringOutput)
 }
 
-func (o DiscountEntityTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (o DiscountCombinationRuleOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return o.ToStringPtrOutputWithContext(context.Background())
 }
 
-func (o DiscountEntityTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e DiscountEntityType) *string {
+func (o DiscountCombinationRuleOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DiscountCombinationRule) *string {
 		v := string(e)
 		return &v
 	}).(pulumi.StringPtrOutput)
 }
 
-type DiscountEntityTypePtrOutput struct{ *pulumi.OutputState }
+type DiscountCombinationRulePtrOutput struct{ *pulumi.OutputState }
 
-func (DiscountEntityTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DiscountEntityType)(nil)).Elem()
+func (DiscountCombinationRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiscountCombinationRule)(nil)).Elem()
 }
 
-func (o DiscountEntityTypePtrOutput) ToDiscountEntityTypePtrOutput() DiscountEntityTypePtrOutput {
+func (o DiscountCombinationRulePtrOutput) ToDiscountCombinationRulePtrOutput() DiscountCombinationRulePtrOutput {
 	return o
 }
 
-func (o DiscountEntityTypePtrOutput) ToDiscountEntityTypePtrOutputWithContext(ctx context.Context) DiscountEntityTypePtrOutput {
+func (o DiscountCombinationRulePtrOutput) ToDiscountCombinationRulePtrOutputWithContext(ctx context.Context) DiscountCombinationRulePtrOutput {
 	return o
 }
 
-func (o DiscountEntityTypePtrOutput) Elem() DiscountEntityTypeOutput {
-	return o.ApplyT(func(v *DiscountEntityType) DiscountEntityType {
+func (o DiscountCombinationRulePtrOutput) Elem() DiscountCombinationRuleOutput {
+	return o.ApplyT(func(v *DiscountCombinationRule) DiscountCombinationRule {
 		if v != nil {
 			return *v
 		}
-		var ret DiscountEntityType
+		var ret DiscountCombinationRule
 		return ret
-	}).(DiscountEntityTypeOutput)
+	}).(DiscountCombinationRuleOutput)
 }
 
-func (o DiscountEntityTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (o DiscountCombinationRulePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return o.ToStringPtrOutputWithContext(context.Background())
 }
 
-func (o DiscountEntityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DiscountEntityType) *string {
+func (o DiscountCombinationRulePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DiscountCombinationRule) *string {
 		if e == nil {
 			return nil
 		}
@@ -305,44 +473,231 @@ func (o DiscountEntityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 	}).(pulumi.StringPtrOutput)
 }
 
-// DiscountEntityTypeInput is an input type that accepts values of the DiscountEntityType enum
-// A concrete instance of `DiscountEntityTypeInput` can be one of the following:
+// DiscountCombinationRuleInput is an input type that accepts values of the DiscountCombinationRule enum
+// A concrete instance of `DiscountCombinationRuleInput` can be one of the following:
 //
-//	DiscountEntityTypePrimary
-//	DiscountEntityTypeAffiliate
-type DiscountEntityTypeInput interface {
+//	DiscountCombinationRuleBestOf
+//	DiscountCombinationRuleStackable
+type DiscountCombinationRuleInput interface {
 	pulumi.Input
 
-	ToDiscountEntityTypeOutput() DiscountEntityTypeOutput
-	ToDiscountEntityTypeOutputWithContext(context.Context) DiscountEntityTypeOutput
+	ToDiscountCombinationRuleOutput() DiscountCombinationRuleOutput
+	ToDiscountCombinationRuleOutputWithContext(context.Context) DiscountCombinationRuleOutput
 }
 
-var discountEntityTypePtrType = reflect.TypeOf((**DiscountEntityType)(nil)).Elem()
+var discountCombinationRulePtrType = reflect.TypeOf((**DiscountCombinationRule)(nil)).Elem()
 
-type DiscountEntityTypePtrInput interface {
+type DiscountCombinationRulePtrInput interface {
 	pulumi.Input
 
-	ToDiscountEntityTypePtrOutput() DiscountEntityTypePtrOutput
-	ToDiscountEntityTypePtrOutputWithContext(context.Context) DiscountEntityTypePtrOutput
+	ToDiscountCombinationRulePtrOutput() DiscountCombinationRulePtrOutput
+	ToDiscountCombinationRulePtrOutputWithContext(context.Context) DiscountCombinationRulePtrOutput
 }
 
-type discountEntityTypePtr string
+type discountCombinationRulePtr string
 
-func DiscountEntityTypePtr(v string) DiscountEntityTypePtrInput {
-	return (*discountEntityTypePtr)(&v)
+func DiscountCombinationRulePtr(v string) DiscountCombinationRulePtrInput {
+	return (*discountCombinationRulePtr)(&v)
 }
 
-func (*discountEntityTypePtr) ElementType() reflect.Type {
-	return discountEntityTypePtrType
+func (*discountCombinationRulePtr) ElementType() reflect.Type {
+	return discountCombinationRulePtrType
 }
 
-func (in *discountEntityTypePtr) ToDiscountEntityTypePtrOutput() DiscountEntityTypePtrOutput {
-	return pulumi.ToOutput(in).(DiscountEntityTypePtrOutput)
+func (in *discountCombinationRulePtr) ToDiscountCombinationRulePtrOutput() DiscountCombinationRulePtrOutput {
+	return pulumi.ToOutput(in).(DiscountCombinationRulePtrOutput)
 }
 
-func (in *discountEntityTypePtr) ToDiscountEntityTypePtrOutputWithContext(ctx context.Context) DiscountEntityTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(DiscountEntityTypePtrOutput)
+func (in *discountCombinationRulePtr) ToDiscountCombinationRulePtrOutputWithContext(ctx context.Context) DiscountCombinationRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DiscountCombinationRulePtrOutput)
 }
+
+// This defines whether the entity being created is primary or affiliate. Supported values: primary, affiliate. Validation: Required, must match one of the 2 values.
+type DiscountEntityType string
+
+const (
+	DiscountEntityTypePrimary   = DiscountEntityType("Primary")
+	DiscountEntityTypeAffiliate = DiscountEntityType("Affiliate")
+)
+
+// The type of the priceable node pricing rule. Validation: Required. Supported values are fixedPriceLock, fixedListPrice, and priceCeiling.
+type DiscountRuleType string
+
+const (
+	DiscountRuleTypeFixedPriceLock = DiscountRuleType("FixedPriceLock")
+	DiscountRuleTypeFixedListPrice = DiscountRuleType("FixedListPrice")
+	DiscountRuleTypePriceCeiling   = DiscountRuleType("PriceCeiling")
+)
+
+func (DiscountRuleType) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscountRuleType)(nil)).Elem()
+}
+
+func (e DiscountRuleType) ToDiscountRuleTypeOutput() DiscountRuleTypeOutput {
+	return pulumi.ToOutput(e).(DiscountRuleTypeOutput)
+}
+
+func (e DiscountRuleType) ToDiscountRuleTypeOutputWithContext(ctx context.Context) DiscountRuleTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DiscountRuleTypeOutput)
+}
+
+func (e DiscountRuleType) ToDiscountRuleTypePtrOutput() DiscountRuleTypePtrOutput {
+	return e.ToDiscountRuleTypePtrOutputWithContext(context.Background())
+}
+
+func (e DiscountRuleType) ToDiscountRuleTypePtrOutputWithContext(ctx context.Context) DiscountRuleTypePtrOutput {
+	return DiscountRuleType(e).ToDiscountRuleTypeOutputWithContext(ctx).ToDiscountRuleTypePtrOutputWithContext(ctx)
+}
+
+func (e DiscountRuleType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DiscountRuleType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DiscountRuleType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e DiscountRuleType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DiscountRuleTypeOutput struct{ *pulumi.OutputState }
+
+func (DiscountRuleTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscountRuleType)(nil)).Elem()
+}
+
+func (o DiscountRuleTypeOutput) ToDiscountRuleTypeOutput() DiscountRuleTypeOutput {
+	return o
+}
+
+func (o DiscountRuleTypeOutput) ToDiscountRuleTypeOutputWithContext(ctx context.Context) DiscountRuleTypeOutput {
+	return o
+}
+
+func (o DiscountRuleTypeOutput) ToDiscountRuleTypePtrOutput() DiscountRuleTypePtrOutput {
+	return o.ToDiscountRuleTypePtrOutputWithContext(context.Background())
+}
+
+func (o DiscountRuleTypeOutput) ToDiscountRuleTypePtrOutputWithContext(ctx context.Context) DiscountRuleTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiscountRuleType) *DiscountRuleType {
+		return &v
+	}).(DiscountRuleTypePtrOutput)
+}
+
+func (o DiscountRuleTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DiscountRuleTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DiscountRuleType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DiscountRuleTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DiscountRuleTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DiscountRuleType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DiscountRuleTypePtrOutput struct{ *pulumi.OutputState }
+
+func (DiscountRuleTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiscountRuleType)(nil)).Elem()
+}
+
+func (o DiscountRuleTypePtrOutput) ToDiscountRuleTypePtrOutput() DiscountRuleTypePtrOutput {
+	return o
+}
+
+func (o DiscountRuleTypePtrOutput) ToDiscountRuleTypePtrOutputWithContext(ctx context.Context) DiscountRuleTypePtrOutput {
+	return o
+}
+
+func (o DiscountRuleTypePtrOutput) Elem() DiscountRuleTypeOutput {
+	return o.ApplyT(func(v *DiscountRuleType) DiscountRuleType {
+		if v != nil {
+			return *v
+		}
+		var ret DiscountRuleType
+		return ret
+	}).(DiscountRuleTypeOutput)
+}
+
+func (o DiscountRuleTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DiscountRuleTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DiscountRuleType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// DiscountRuleTypeInput is an input type that accepts values of the DiscountRuleType enum
+// A concrete instance of `DiscountRuleTypeInput` can be one of the following:
+//
+//	DiscountRuleTypeFixedPriceLock
+//	DiscountRuleTypeFixedListPrice
+//	DiscountRuleTypePriceCeiling
+type DiscountRuleTypeInput interface {
+	pulumi.Input
+
+	ToDiscountRuleTypeOutput() DiscountRuleTypeOutput
+	ToDiscountRuleTypeOutputWithContext(context.Context) DiscountRuleTypeOutput
+}
+
+var discountRuleTypePtrType = reflect.TypeOf((**DiscountRuleType)(nil)).Elem()
+
+type DiscountRuleTypePtrInput interface {
+	pulumi.Input
+
+	ToDiscountRuleTypePtrOutput() DiscountRuleTypePtrOutput
+	ToDiscountRuleTypePtrOutputWithContext(context.Context) DiscountRuleTypePtrOutput
+}
+
+type discountRuleTypePtr string
+
+func DiscountRuleTypePtr(v string) DiscountRuleTypePtrInput {
+	return (*discountRuleTypePtr)(&v)
+}
+
+func (*discountRuleTypePtr) ElementType() reflect.Type {
+	return discountRuleTypePtrType
+}
+
+func (in *discountRuleTypePtr) ToDiscountRuleTypePtrOutput() DiscountRuleTypePtrOutput {
+	return pulumi.ToOutput(in).(DiscountRuleTypePtrOutput)
+}
+
+func (in *discountRuleTypePtr) ToDiscountRuleTypePtrOutputWithContext(ctx context.Context) DiscountRuleTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DiscountRuleTypePtrOutput)
+}
+
+// Defines the type of discount. Supported values are ProductFamily, Product, Sku, CustomPrice, and CustomPriceMultiCurrency.
+type DiscountType string
+
+const (
+	DiscountTypeProductFamily            = DiscountType("ProductFamily")
+	DiscountTypeProduct                  = DiscountType("Product")
+	DiscountTypeSku                      = DiscountType("Sku")
+	DiscountTypeCustomPrice              = DiscountType("CustomPrice")
+	DiscountTypeCustomPriceMultiCurrency = DiscountType("CustomPriceMultiCurrency")
+)
 
 // Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 type ManagedServiceIdentityType string
@@ -512,6 +867,172 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutput()
 
 func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
+}
+
+// Supported values: Protected, Locked
+type PricingPolicy string
+
+const (
+	PricingPolicyProtected = PricingPolicy("Protected")
+	PricingPolicyLocked    = PricingPolicy("Locked")
+)
+
+func (PricingPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*PricingPolicy)(nil)).Elem()
+}
+
+func (e PricingPolicy) ToPricingPolicyOutput() PricingPolicyOutput {
+	return pulumi.ToOutput(e).(PricingPolicyOutput)
+}
+
+func (e PricingPolicy) ToPricingPolicyOutputWithContext(ctx context.Context) PricingPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PricingPolicyOutput)
+}
+
+func (e PricingPolicy) ToPricingPolicyPtrOutput() PricingPolicyPtrOutput {
+	return e.ToPricingPolicyPtrOutputWithContext(context.Background())
+}
+
+func (e PricingPolicy) ToPricingPolicyPtrOutputWithContext(ctx context.Context) PricingPolicyPtrOutput {
+	return PricingPolicy(e).ToPricingPolicyOutputWithContext(ctx).ToPricingPolicyPtrOutputWithContext(ctx)
+}
+
+func (e PricingPolicy) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PricingPolicy) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PricingPolicy) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e PricingPolicy) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type PricingPolicyOutput struct{ *pulumi.OutputState }
+
+func (PricingPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PricingPolicy)(nil)).Elem()
+}
+
+func (o PricingPolicyOutput) ToPricingPolicyOutput() PricingPolicyOutput {
+	return o
+}
+
+func (o PricingPolicyOutput) ToPricingPolicyOutputWithContext(ctx context.Context) PricingPolicyOutput {
+	return o
+}
+
+func (o PricingPolicyOutput) ToPricingPolicyPtrOutput() PricingPolicyPtrOutput {
+	return o.ToPricingPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o PricingPolicyOutput) ToPricingPolicyPtrOutputWithContext(ctx context.Context) PricingPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PricingPolicy) *PricingPolicy {
+		return &v
+	}).(PricingPolicyPtrOutput)
+}
+
+func (o PricingPolicyOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PricingPolicyOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PricingPolicy) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PricingPolicyOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PricingPolicyOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PricingPolicy) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PricingPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (PricingPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PricingPolicy)(nil)).Elem()
+}
+
+func (o PricingPolicyPtrOutput) ToPricingPolicyPtrOutput() PricingPolicyPtrOutput {
+	return o
+}
+
+func (o PricingPolicyPtrOutput) ToPricingPolicyPtrOutputWithContext(ctx context.Context) PricingPolicyPtrOutput {
+	return o
+}
+
+func (o PricingPolicyPtrOutput) Elem() PricingPolicyOutput {
+	return o.ApplyT(func(v *PricingPolicy) PricingPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret PricingPolicy
+		return ret
+	}).(PricingPolicyOutput)
+}
+
+func (o PricingPolicyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PricingPolicyPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PricingPolicy) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// PricingPolicyInput is an input type that accepts values of the PricingPolicy enum
+// A concrete instance of `PricingPolicyInput` can be one of the following:
+//
+//	PricingPolicyProtected
+//	PricingPolicyLocked
+type PricingPolicyInput interface {
+	pulumi.Input
+
+	ToPricingPolicyOutput() PricingPolicyOutput
+	ToPricingPolicyOutputWithContext(context.Context) PricingPolicyOutput
+}
+
+var pricingPolicyPtrType = reflect.TypeOf((**PricingPolicy)(nil)).Elem()
+
+type PricingPolicyPtrInput interface {
+	pulumi.Input
+
+	ToPricingPolicyPtrOutput() PricingPolicyPtrOutput
+	ToPricingPolicyPtrOutputWithContext(context.Context) PricingPolicyPtrOutput
+}
+
+type pricingPolicyPtr string
+
+func PricingPolicyPtr(v string) PricingPolicyPtrInput {
+	return (*pricingPolicyPtr)(&v)
+}
+
+func (*pricingPolicyPtr) ElementType() reflect.Type {
+	return pricingPolicyPtrType
+}
+
+func (in *pricingPolicyPtr) ToPricingPolicyPtrOutput() PricingPolicyPtrOutput {
+	return pulumi.ToOutput(in).(PricingPolicyPtrOutput)
+}
+
+func (in *pricingPolicyPtr) ToPricingPolicyPtrOutputWithContext(ctx context.Context) PricingPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PricingPolicyPtrOutput)
 }
 
 // This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
@@ -685,12 +1206,18 @@ func (in *skuTierPtr) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTier
 }
 
 func init() {
+	pulumi.RegisterOutputType(ApplyDiscountOnOutput{})
+	pulumi.RegisterOutputType(ApplyDiscountOnPtrOutput{})
 	pulumi.RegisterOutputType(DiscountAppliedScopeTypeOutput{})
 	pulumi.RegisterOutputType(DiscountAppliedScopeTypePtrOutput{})
-	pulumi.RegisterOutputType(DiscountEntityTypeOutput{})
-	pulumi.RegisterOutputType(DiscountEntityTypePtrOutput{})
+	pulumi.RegisterOutputType(DiscountCombinationRuleOutput{})
+	pulumi.RegisterOutputType(DiscountCombinationRulePtrOutput{})
+	pulumi.RegisterOutputType(DiscountRuleTypeOutput{})
+	pulumi.RegisterOutputType(DiscountRuleTypePtrOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityTypeOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityTypePtrOutput{})
+	pulumi.RegisterOutputType(PricingPolicyOutput{})
+	pulumi.RegisterOutputType(PricingPolicyPtrOutput{})
 	pulumi.RegisterOutputType(SkuTierOutput{})
 	pulumi.RegisterOutputType(SkuTierPtrOutput{})
 }

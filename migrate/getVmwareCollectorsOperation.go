@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a VmwareCollector
 //
-// Uses Azure REST API version 2023-03-15.
+// Uses Azure REST API version 2024-01-01-preview.
 //
-// Other available API versions: 2023-04-01-preview, 2023-05-01-preview, 2023-09-09-preview, 2024-01-01-preview.
+// Other available API versions: 2023-03-15, 2023-04-01-preview, 2023-05-01-preview, 2023-09-09-preview, 2024-01-15, 2024-03-03-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native migrate [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupVmwareCollectorsOperation(ctx *pulumi.Context, args *LookupVmwareCollectorsOperationArgs, opts ...pulumi.InvokeOption) (*LookupVmwareCollectorsOperationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVmwareCollectorsOperationResult
@@ -39,11 +39,13 @@ type LookupVmwareCollectorsOperationArgs struct {
 type LookupVmwareCollectorsOperationResult struct {
 	// Gets or sets the collector agent properties.
 	AgentProperties *CollectorAgentPropertiesBaseResponse `pulumi:"agentProperties"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets the Timestamp when collector was created.
 	CreatedTimestamp string `pulumi:"createdTimestamp"`
 	// Gets the discovery site id.
 	DiscoverySiteId *string `pulumi:"discoverySiteId"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name string `pulumi:"name"`
@@ -101,6 +103,11 @@ func (o LookupVmwareCollectorsOperationResultOutput) AgentProperties() Collector
 	}).(CollectorAgentPropertiesBaseResponsePtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupVmwareCollectorsOperationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVmwareCollectorsOperationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Gets the Timestamp when collector was created.
 func (o LookupVmwareCollectorsOperationResultOutput) CreatedTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVmwareCollectorsOperationResult) string { return v.CreatedTimestamp }).(pulumi.StringOutput)
@@ -111,7 +118,7 @@ func (o LookupVmwareCollectorsOperationResultOutput) DiscoverySiteId() pulumi.St
 	return o.ApplyT(func(v LookupVmwareCollectorsOperationResult) *string { return v.DiscoverySiteId }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupVmwareCollectorsOperationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVmwareCollectorsOperationResult) string { return v.Id }).(pulumi.StringOutput)
 }

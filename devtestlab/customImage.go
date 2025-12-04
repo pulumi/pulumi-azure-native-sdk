@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A custom image.
 //
-// Uses Azure REST API version 2018-09-15. In version 1.x of the Azure Native provider, it used API version 2018-09-15.
+// Uses Azure REST API version 2018-09-15. In version 2.x of the Azure Native provider, it used API version 2018-09-15.
 type CustomImage struct {
 	pulumi.CustomResourceState
 
 	// The author of the custom image.
 	Author pulumi.StringPtrOutput `pulumi:"author"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The creation date of the custom image.
 	CreationDate pulumi.StringOutput `pulumi:"creationDate"`
 	// Storage information about the plan related to this custom image
@@ -128,9 +130,9 @@ type customImageArgs struct {
 	ManagedImageId *string `pulumi:"managedImageId"`
 	// The Managed Snapshot Id backing the custom image.
 	ManagedSnapshotId *string `pulumi:"managedSnapshotId"`
-	// The name of the custom image.
+	// The name of the CustomImage
 	Name *string `pulumi:"name"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The tags of the resource.
 	Tags map[string]string `pulumi:"tags"`
@@ -160,9 +162,9 @@ type CustomImageArgs struct {
 	ManagedImageId pulumi.StringPtrInput
 	// The Managed Snapshot Id backing the custom image.
 	ManagedSnapshotId pulumi.StringPtrInput
-	// The name of the custom image.
+	// The name of the CustomImage
 	Name pulumi.StringPtrInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The tags of the resource.
 	Tags pulumi.StringMapInput
@@ -212,6 +214,11 @@ func (o CustomImageOutput) ToCustomImageOutputWithContext(ctx context.Context) C
 // The author of the custom image.
 func (o CustomImageOutput) Author() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomImage) pulumi.StringPtrOutput { return v.Author }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o CustomImageOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomImage) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of the custom image.

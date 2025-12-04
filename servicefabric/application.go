@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The application resource.
 //
-// Uses Azure REST API version 2024-11-01-preview. In version 1.x of the Azure Native provider, it used API version 2020-03-01.
+// Uses Azure REST API version 2024-11-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-11-01-preview.
 //
-// Other available API versions: 2021-06-01.
+// Other available API versions: 2025-03-01-preview, 2025-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicefabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Application struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Describes the managed identities for an Azure resource.
 	Identity ManagedIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
@@ -66,6 +68,9 @@ func NewApplication(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:servicefabric/v20210501:Application"),
 		},
 		{
+			Type: pulumi.String("azure-native:servicefabric/v20210601:Application"),
+		},
+		{
 			Type: pulumi.String("azure-native:servicefabric/v20210701preview:Application"),
 		},
 		{
@@ -96,31 +101,67 @@ func NewApplication(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:servicefabric/v20230301preview:Application"),
 		},
 		{
+			Type: pulumi.String("azure-native:servicefabric/v20230301preview:ManagedClusterApplication"),
+		},
+		{
 			Type: pulumi.String("azure-native:servicefabric/v20230701preview:Application"),
+		},
+		{
+			Type: pulumi.String("azure-native:servicefabric/v20230701preview:ManagedClusterApplication"),
 		},
 		{
 			Type: pulumi.String("azure-native:servicefabric/v20230901preview:Application"),
 		},
 		{
+			Type: pulumi.String("azure-native:servicefabric/v20230901preview:ManagedClusterApplication"),
+		},
+		{
 			Type: pulumi.String("azure-native:servicefabric/v20231101preview:Application"),
+		},
+		{
+			Type: pulumi.String("azure-native:servicefabric/v20231101preview:ManagedClusterApplication"),
 		},
 		{
 			Type: pulumi.String("azure-native:servicefabric/v20231201preview:Application"),
 		},
 		{
+			Type: pulumi.String("azure-native:servicefabric/v20231201preview:ManagedClusterApplication"),
+		},
+		{
 			Type: pulumi.String("azure-native:servicefabric/v20240201preview:Application"),
+		},
+		{
+			Type: pulumi.String("azure-native:servicefabric/v20240201preview:ManagedClusterApplication"),
 		},
 		{
 			Type: pulumi.String("azure-native:servicefabric/v20240401:Application"),
 		},
 		{
+			Type: pulumi.String("azure-native:servicefabric/v20240401:ManagedClusterApplication"),
+		},
+		{
 			Type: pulumi.String("azure-native:servicefabric/v20240601preview:Application"),
+		},
+		{
+			Type: pulumi.String("azure-native:servicefabric/v20240601preview:ManagedClusterApplication"),
 		},
 		{
 			Type: pulumi.String("azure-native:servicefabric/v20240901preview:Application"),
 		},
 		{
+			Type: pulumi.String("azure-native:servicefabric/v20240901preview:ManagedClusterApplication"),
+		},
+		{
 			Type: pulumi.String("azure-native:servicefabric/v20241101preview:Application"),
+		},
+		{
+			Type: pulumi.String("azure-native:servicefabric/v20250301preview:Application"),
+		},
+		{
+			Type: pulumi.String("azure-native:servicefabric/v20250601preview:Application"),
+		},
+		{
+			Type: pulumi.String("azure-native:servicefabric:ManagedClusterApplication"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -240,6 +281,11 @@ func (o ApplicationOutput) ToApplicationOutput() ApplicationOutput {
 
 func (o ApplicationOutput) ToApplicationOutputWithContext(ctx context.Context) ApplicationOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ApplicationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Application) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Describes the managed identities for an Azure resource.

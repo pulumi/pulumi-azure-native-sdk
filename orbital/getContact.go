@@ -7,15 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified contact in a specified resource group.
 //
 // Uses Azure REST API version 2022-11-01.
-//
-// Other available API versions: 2022-03-01.
 func LookupContact(ctx *pulumi.Context, args *LookupContactArgs, opts ...pulumi.InvokeOption) (*LookupContactResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupContactResult
@@ -39,6 +37,8 @@ type LookupContactArgs struct {
 type LookupContactResult struct {
 	// The configuration associated with the allocated antenna.
 	AntennaConfiguration ContactsPropertiesResponseAntennaConfiguration `pulumi:"antennaConfiguration"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The reference to the contact profile resource.
 	ContactProfile ContactsPropertiesResponseContactProfile `pulumi:"contactProfile"`
 	// Azimuth of the antenna at the end of the contact in decimal degrees.
@@ -121,6 +121,11 @@ func (o LookupContactResultOutput) AntennaConfiguration() ContactsPropertiesResp
 	return o.ApplyT(func(v LookupContactResult) ContactsPropertiesResponseAntennaConfiguration {
 		return v.AntennaConfiguration
 	}).(ContactsPropertiesResponseAntennaConfigurationOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupContactResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupContactResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The reference to the contact profile resource.

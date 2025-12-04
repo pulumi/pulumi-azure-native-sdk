@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a specified connection created by this management group.
 //
-// Uses Azure REST API version 2023-02-01.
+// Uses Azure REST API version 2024-05-01.
 //
-// Other available API versions: 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Other available API versions: 2022-01-01, 2022-02-01-preview, 2022-04-01-preview, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupManagementGroupNetworkManagerConnection(ctx *pulumi.Context, args *LookupManagementGroupNetworkManagerConnectionArgs, opts ...pulumi.InvokeOption) (*LookupManagementGroupNetworkManagerConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagementGroupNetworkManagerConnectionResult
@@ -35,6 +35,8 @@ type LookupManagementGroupNetworkManagerConnectionArgs struct {
 
 // The Network Manager Connection resource
 type LookupManagementGroupNetworkManagerConnectionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A description of the network manager connection.
 	Description *string `pulumi:"description"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -84,6 +86,11 @@ func (o LookupManagementGroupNetworkManagerConnectionResultOutput) ToLookupManag
 
 func (o LookupManagementGroupNetworkManagerConnectionResultOutput) ToLookupManagementGroupNetworkManagerConnectionResultOutputWithContext(ctx context.Context) LookupManagementGroupNetworkManagerConnectionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupManagementGroupNetworkManagerConnectionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupManagementGroupNetworkManagerConnectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A description of the network manager connection.

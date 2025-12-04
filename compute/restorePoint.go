@@ -8,25 +8,27 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Restore Point details.
 //
-// Uses Azure REST API version 2023-03-01. In version 1.x of the Azure Native provider, it used API version 2021-03-01.
+// Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
 //
-// Other available API versions: 2021-11-01, 2022-11-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2024-11-01.
+// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type RestorePoint struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// ConsistencyMode of the RestorePoint. Can be specified in the input while creating a restore point. For now, only CrashConsistent is accepted as a valid input. Please refer to https://aka.ms/RestorePoints for more details.
 	ConsistencyMode pulumi.StringPtrOutput `pulumi:"consistencyMode"`
 	// List of disk resource ids that the customer wishes to exclude from the restore point. If no disks are specified, all disks will be included.
 	ExcludeDisks ApiEntityReferenceResponseArrayOutput `pulumi:"excludeDisks"`
 	// The restore point instance view.
 	InstanceView RestorePointInstanceViewResponseOutput `pulumi:"instanceView"`
-	// Resource name
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Gets the provisioning state of the restore point.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
@@ -34,9 +36,11 @@ type RestorePoint struct {
 	SourceMetadata RestorePointSourceMetadataResponsePtrOutput `pulumi:"sourceMetadata"`
 	// Resource Id of the source restore point from which a copy needs to be created.
 	SourceRestorePoint ApiEntityReferenceResponsePtrOutput `pulumi:"sourceRestorePoint"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Gets the creation time of the restore point.
 	TimeCreated pulumi.StringPtrOutput `pulumi:"timeCreated"`
-	// Resource type
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -93,6 +97,9 @@ func NewRestorePoint(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:compute/v20241101:RestorePoint"),
 		},
+		{
+			Type: pulumi.String("azure-native:compute/v20250401:RestorePoint"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -132,7 +139,7 @@ type restorePointArgs struct {
 	ConsistencyMode *string `pulumi:"consistencyMode"`
 	// List of disk resource ids that the customer wishes to exclude from the restore point. If no disks are specified, all disks will be included.
 	ExcludeDisks []ApiEntityReference `pulumi:"excludeDisks"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the restore point collection.
 	RestorePointCollectionName string `pulumi:"restorePointCollectionName"`
@@ -152,7 +159,7 @@ type RestorePointArgs struct {
 	ConsistencyMode pulumi.StringPtrInput
 	// List of disk resource ids that the customer wishes to exclude from the restore point. If no disks are specified, all disks will be included.
 	ExcludeDisks ApiEntityReferenceArrayInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of the restore point collection.
 	RestorePointCollectionName pulumi.StringInput
@@ -203,6 +210,11 @@ func (o RestorePointOutput) ToRestorePointOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The Azure API version of the resource.
+func (o RestorePointOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *RestorePoint) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // ConsistencyMode of the RestorePoint. Can be specified in the input while creating a restore point. For now, only CrashConsistent is accepted as a valid input. Please refer to https://aka.ms/RestorePoints for more details.
 func (o RestorePointOutput) ConsistencyMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RestorePoint) pulumi.StringPtrOutput { return v.ConsistencyMode }).(pulumi.StringPtrOutput)
@@ -218,7 +230,7 @@ func (o RestorePointOutput) InstanceView() RestorePointInstanceViewResponseOutpu
 	return o.ApplyT(func(v *RestorePoint) RestorePointInstanceViewResponseOutput { return v.InstanceView }).(RestorePointInstanceViewResponseOutput)
 }
 
-// Resource name
+// The name of the resource
 func (o RestorePointOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RestorePoint) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -238,12 +250,17 @@ func (o RestorePointOutput) SourceRestorePoint() ApiEntityReferenceResponsePtrOu
 	return o.ApplyT(func(v *RestorePoint) ApiEntityReferenceResponsePtrOutput { return v.SourceRestorePoint }).(ApiEntityReferenceResponsePtrOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o RestorePointOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *RestorePoint) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
 // Gets the creation time of the restore point.
 func (o RestorePointOutput) TimeCreated() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RestorePoint) pulumi.StringPtrOutput { return v.TimeCreated }).(pulumi.StringPtrOutput)
 }
 
-// Resource type
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o RestorePointOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *RestorePoint) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

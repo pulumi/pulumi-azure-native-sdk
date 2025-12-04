@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Implements Access Control List GET method.
 //
-// Uses Azure REST API version 2023-02-01-preview.
+// Uses Azure REST API version 2023-06-15.
 //
-// Other available API versions: 2023-06-15.
+// Other available API versions: 2023-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupAccessControlList(ctx *pulumi.Context, args *LookupAccessControlListArgs, opts ...pulumi.InvokeOption) (*LookupAccessControlListResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccessControlListResult
@@ -23,31 +23,45 @@ func LookupAccessControlList(ctx *pulumi.Context, args *LookupAccessControlListA
 	if err != nil {
 		return nil, err
 	}
-	return &rv, nil
+	return rv.Defaults(), nil
 }
 
 type LookupAccessControlListArgs struct {
-	// Name of the Access Control List
+	// Name of the Access Control List.
 	AccessControlListName string `pulumi:"accessControlListName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
-// The AccessControlList resource definition.
+// The Access Control List resource definition.
 type LookupAccessControlListResult struct {
-	// IP address family. Example: ipv4 | ipv6.
-	AddressFamily string `pulumi:"addressFamily"`
+	// Access Control List file URL.
+	AclsUrl *string `pulumi:"aclsUrl"`
+	// Administrative state of the resource.
+	AdministrativeState string `pulumi:"administrativeState"`
 	// Switch configuration description.
 	Annotation *string `pulumi:"annotation"`
-	// Access Control List conditions.
-	Conditions []AccessControlListConditionPropertiesResponse `pulumi:"conditions"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// Configuration state of the resource.
+	ConfigurationState string `pulumi:"configurationState"`
+	// Input method to configure Access Control List.
+	ConfigurationType string `pulumi:"configurationType"`
+	// Default action that needs to be applied when no condition is matched. Example: Permit | Deny.
+	DefaultAction *string `pulumi:"defaultAction"`
+	// List of dynamic match configurations.
+	DynamicMatchConfigurations []CommonDynamicMatchConfigurationResponse `pulumi:"dynamicMatchConfigurations"`
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
+	// The last synced timestamp.
+	LastSyncedTime string `pulumi:"lastSyncedTime"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
+	// List of match configurations.
+	MatchConfigurations []AccessControlListMatchConfigurationResponse `pulumi:"matchConfigurations"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// Gets the provisioning state of the resource.
+	// Provisioning state of the resource.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
@@ -57,6 +71,18 @@ type LookupAccessControlListResult struct {
 	Type string `pulumi:"type"`
 }
 
+// Defaults sets the appropriate defaults for LookupAccessControlListResult
+func (val *LookupAccessControlListResult) Defaults() *LookupAccessControlListResult {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.DefaultAction == nil {
+		defaultAction_ := "Permit"
+		tmp.DefaultAction = &defaultAction_
+	}
+	return &tmp
+}
 func LookupAccessControlListOutput(ctx *pulumi.Context, args LookupAccessControlListOutputArgs, opts ...pulumi.InvokeOption) LookupAccessControlListResultOutput {
 	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAccessControlListResultOutput, error) {
@@ -67,7 +93,7 @@ func LookupAccessControlListOutput(ctx *pulumi.Context, args LookupAccessControl
 }
 
 type LookupAccessControlListOutputArgs struct {
-	// Name of the Access Control List
+	// Name of the Access Control List.
 	AccessControlListName pulumi.StringInput `pulumi:"accessControlListName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
@@ -77,7 +103,7 @@ func (LookupAccessControlListOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupAccessControlListArgs)(nil)).Elem()
 }
 
-// The AccessControlList resource definition.
+// The Access Control List resource definition.
 type LookupAccessControlListResultOutput struct{ *pulumi.OutputState }
 
 func (LookupAccessControlListResultOutput) ElementType() reflect.Type {
@@ -92,9 +118,14 @@ func (o LookupAccessControlListResultOutput) ToLookupAccessControlListResultOutp
 	return o
 }
 
-// IP address family. Example: ipv4 | ipv6.
-func (o LookupAccessControlListResultOutput) AddressFamily() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAccessControlListResult) string { return v.AddressFamily }).(pulumi.StringOutput)
+// Access Control List file URL.
+func (o LookupAccessControlListResultOutput) AclsUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAccessControlListResult) *string { return v.AclsUrl }).(pulumi.StringPtrOutput)
+}
+
+// Administrative state of the resource.
+func (o LookupAccessControlListResultOutput) AdministrativeState() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccessControlListResult) string { return v.AdministrativeState }).(pulumi.StringOutput)
 }
 
 // Switch configuration description.
@@ -102,16 +133,41 @@ func (o LookupAccessControlListResultOutput) Annotation() pulumi.StringPtrOutput
 	return o.ApplyT(func(v LookupAccessControlListResult) *string { return v.Annotation }).(pulumi.StringPtrOutput)
 }
 
-// Access Control List conditions.
-func (o LookupAccessControlListResultOutput) Conditions() AccessControlListConditionPropertiesResponseArrayOutput {
-	return o.ApplyT(func(v LookupAccessControlListResult) []AccessControlListConditionPropertiesResponse {
-		return v.Conditions
-	}).(AccessControlListConditionPropertiesResponseArrayOutput)
+// The Azure API version of the resource.
+func (o LookupAccessControlListResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccessControlListResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Configuration state of the resource.
+func (o LookupAccessControlListResultOutput) ConfigurationState() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccessControlListResult) string { return v.ConfigurationState }).(pulumi.StringOutput)
+}
+
+// Input method to configure Access Control List.
+func (o LookupAccessControlListResultOutput) ConfigurationType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccessControlListResult) string { return v.ConfigurationType }).(pulumi.StringOutput)
+}
+
+// Default action that needs to be applied when no condition is matched. Example: Permit | Deny.
+func (o LookupAccessControlListResultOutput) DefaultAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAccessControlListResult) *string { return v.DefaultAction }).(pulumi.StringPtrOutput)
+}
+
+// List of dynamic match configurations.
+func (o LookupAccessControlListResultOutput) DynamicMatchConfigurations() CommonDynamicMatchConfigurationResponseArrayOutput {
+	return o.ApplyT(func(v LookupAccessControlListResult) []CommonDynamicMatchConfigurationResponse {
+		return v.DynamicMatchConfigurations
+	}).(CommonDynamicMatchConfigurationResponseArrayOutput)
+}
+
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupAccessControlListResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccessControlListResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The last synced timestamp.
+func (o LookupAccessControlListResultOutput) LastSyncedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccessControlListResult) string { return v.LastSyncedTime }).(pulumi.StringOutput)
 }
 
 // The geo-location where the resource lives
@@ -119,12 +175,19 @@ func (o LookupAccessControlListResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccessControlListResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// List of match configurations.
+func (o LookupAccessControlListResultOutput) MatchConfigurations() AccessControlListMatchConfigurationResponseArrayOutput {
+	return o.ApplyT(func(v LookupAccessControlListResult) []AccessControlListMatchConfigurationResponse {
+		return v.MatchConfigurations
+	}).(AccessControlListMatchConfigurationResponseArrayOutput)
+}
+
 // The name of the resource
 func (o LookupAccessControlListResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccessControlListResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Gets the provisioning state of the resource.
+// Provisioning state of the resource.
 func (o LookupAccessControlListResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccessControlListResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }

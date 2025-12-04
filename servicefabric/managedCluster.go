@@ -8,15 +8,15 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The managed cluster resource
 //
-// Uses Azure REST API version 2023-03-01-preview. In version 1.x of the Azure Native provider, it used API version 2020-01-01-preview.
+// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01-preview.
 //
-// Other available API versions: 2020-01-01-preview, 2022-01-01, 2022-10-01-preview, 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01-preview, 2024-02-01-preview, 2024-04-01, 2024-06-01-preview, 2024-09-01-preview, 2024-11-01-preview.
+// Other available API versions: 2023-03-01-preview, 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01-preview, 2024-02-01-preview, 2024-06-01-preview, 2024-09-01-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicefabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ManagedCluster struct {
 	pulumi.CustomResourceState
 
@@ -34,6 +34,8 @@ type ManagedCluster struct {
 	AuxiliarySubnets SubnetResponseArrayOutput `pulumi:"auxiliarySubnets"`
 	// The AAD authentication settings of the cluster.
 	AzureActiveDirectory AzureActiveDirectoryResponsePtrOutput `pulumi:"azureActiveDirectory"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The port used for client connections to the cluster.
 	ClientConnectionPort pulumi.IntPtrOutput `pulumi:"clientConnectionPort"`
 	// Client certificates that are allowed to manage the cluster.
@@ -50,10 +52,14 @@ type ManagedCluster struct {
 	ClusterUpgradeCadence pulumi.StringPtrOutput `pulumi:"clusterUpgradeCadence"`
 	// The upgrade mode of the cluster when new Service Fabric runtime version is available.
 	ClusterUpgradeMode pulumi.StringPtrOutput `pulumi:"clusterUpgradeMode"`
+	// Specify the resource id of a DDoS network protection plan that will be associated with the virtual network of the cluster.
+	DdosProtectionPlanId pulumi.StringPtrOutput `pulumi:"ddosProtectionPlanId"`
 	// The cluster dns name.
 	DnsName pulumi.StringOutput `pulumi:"dnsName"`
 	// Setting this to true enables automatic OS upgrade for the node types that are created using any platform OS image with version 'latest'. The default value for this setting is false.
 	EnableAutoOSUpgrade pulumi.BoolPtrOutput `pulumi:"enableAutoOSUpgrade"`
+	// If true, token-based authentication is not allowed on the HttpGatewayEndpoint. This is required to support TLS versions 1.3 and above. If token-based authentication is used, HttpGatewayTokenAuthConnectionPort must be defined.
+	EnableHttpGatewayExclusiveAuthMode pulumi.BoolPtrOutput `pulumi:"enableHttpGatewayExclusiveAuthMode"`
 	// Setting this to true creates IPv6 address space for the default VNet used by the cluster. This setting cannot be changed once the cluster is created. The default value for this setting is false.
 	EnableIpv6 pulumi.BoolPtrOutput `pulumi:"enableIpv6"`
 	// Setting this to true will link the IPv4 address as the ServicePublicIP of the IPv6 address. It can only be set to True if IPv6 is enabled on the cluster.
@@ -66,8 +72,10 @@ type ManagedCluster struct {
 	Fqdn pulumi.StringOutput `pulumi:"fqdn"`
 	// The port used for HTTP connections to the cluster.
 	HttpGatewayConnectionPort pulumi.IntPtrOutput `pulumi:"httpGatewayConnectionPort"`
+	// The port used for token-auth based HTTPS connections to the cluster. Cannot be set to the same port as HttpGatewayEndpoint.
+	HttpGatewayTokenAuthConnectionPort pulumi.IntPtrOutput `pulumi:"httpGatewayTokenAuthConnectionPort"`
 	// The list of IP tags associated with the default public IP address of the cluster.
-	IpTags IPTagResponseArrayOutput `pulumi:"ipTags"`
+	IpTags IpTagResponseArrayOutput `pulumi:"ipTags"`
 	// The IPv4 address associated with the public load balancer of the cluster.
 	Ipv4Address pulumi.StringOutput `pulumi:"ipv4Address"`
 	// IPv6 address for the cluster if IPv6 is enabled.
@@ -82,8 +90,10 @@ type ManagedCluster struct {
 	NetworkSecurityRules NetworkSecurityRuleResponseArrayOutput `pulumi:"networkSecurityRules"`
 	// The provisioning state of the managed cluster resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// Specify the resource id of a public IP prefix that the load balancer will allocate a public IP address from. Only supports IPv4.
+	// Specify the resource id of a public IPv4 prefix that the load balancer will allocate a public IPv4 address from. This setting cannot be changed once the cluster is created.
 	PublicIPPrefixId pulumi.StringPtrOutput `pulumi:"publicIPPrefixId"`
+	// Specify the resource id of a public IPv6 prefix that the load balancer will allocate a public IPv6 address from. This setting cannot be changed once the cluster is created.
+	PublicIPv6PrefixId pulumi.StringPtrOutput `pulumi:"publicIPv6PrefixId"`
 	// Service endpoints for subnets in the cluster.
 	ServiceEndpoints ServiceEndpointResponseArrayOutput `pulumi:"serviceEndpoints"`
 	// The sku of the managed cluster
@@ -96,6 +106,8 @@ type ManagedCluster struct {
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Azure resource type.
 	Type pulumi.StringOutput `pulumi:"type"`
+	// The policy to use when upgrading the cluster.
+	UpgradeDescription ClusterUpgradePolicyResponsePtrOutput `pulumi:"upgradeDescription"`
 	// For new clusters, this parameter indicates that it uses Bring your own VNet, but the subnet is specified at node type level; and for such clusters, the subnetId property is required for node types.
 	UseCustomVnet pulumi.BoolPtrOutput `pulumi:"useCustomVnet"`
 	// Indicates if the cluster has zone resiliency.
@@ -128,6 +140,9 @@ func NewManagedCluster(ctx *pulumi.Context,
 	}
 	if args.HttpGatewayConnectionPort == nil {
 		args.HttpGatewayConnectionPort = pulumi.IntPtr(19080)
+	}
+	if args.UpgradeDescription != nil {
+		args.UpgradeDescription = args.UpgradeDescription.ToClusterUpgradePolicyPtrOutput().ApplyT(func(v *ClusterUpgradePolicy) *ClusterUpgradePolicy { return v.Defaults() }).(ClusterUpgradePolicyPtrOutput)
 	}
 	if args.ZonalResiliency == nil {
 		args.ZonalResiliency = pulumi.BoolPtr(false)
@@ -199,6 +214,12 @@ func NewManagedCluster(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:servicefabric/v20241101preview:ManagedCluster"),
 		},
+		{
+			Type: pulumi.String("azure-native:servicefabric/v20250301preview:ManagedCluster"),
+		},
+		{
+			Type: pulumi.String("azure-native:servicefabric/v20250601preview:ManagedCluster"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -260,10 +281,14 @@ type managedClusterArgs struct {
 	ClusterUpgradeCadence *string `pulumi:"clusterUpgradeCadence"`
 	// The upgrade mode of the cluster when new Service Fabric runtime version is available.
 	ClusterUpgradeMode *string `pulumi:"clusterUpgradeMode"`
+	// Specify the resource id of a DDoS network protection plan that will be associated with the virtual network of the cluster.
+	DdosProtectionPlanId *string `pulumi:"ddosProtectionPlanId"`
 	// The cluster dns name.
 	DnsName string `pulumi:"dnsName"`
 	// Setting this to true enables automatic OS upgrade for the node types that are created using any platform OS image with version 'latest'. The default value for this setting is false.
 	EnableAutoOSUpgrade *bool `pulumi:"enableAutoOSUpgrade"`
+	// If true, token-based authentication is not allowed on the HttpGatewayEndpoint. This is required to support TLS versions 1.3 and above. If token-based authentication is used, HttpGatewayTokenAuthConnectionPort must be defined.
+	EnableHttpGatewayExclusiveAuthMode *bool `pulumi:"enableHttpGatewayExclusiveAuthMode"`
 	// Setting this to true creates IPv6 address space for the default VNet used by the cluster. This setting cannot be changed once the cluster is created. The default value for this setting is false.
 	EnableIpv6 *bool `pulumi:"enableIpv6"`
 	// Setting this to true will link the IPv4 address as the ServicePublicIP of the IPv6 address. It can only be set to True if IPv6 is enabled on the cluster.
@@ -272,16 +297,20 @@ type managedClusterArgs struct {
 	FabricSettings []SettingsSectionDescription `pulumi:"fabricSettings"`
 	// The port used for HTTP connections to the cluster.
 	HttpGatewayConnectionPort *int `pulumi:"httpGatewayConnectionPort"`
+	// The port used for token-auth based HTTPS connections to the cluster. Cannot be set to the same port as HttpGatewayEndpoint.
+	HttpGatewayTokenAuthConnectionPort *int `pulumi:"httpGatewayTokenAuthConnectionPort"`
 	// The list of IP tags associated with the default public IP address of the cluster.
-	IpTags []IPTag `pulumi:"ipTags"`
+	IpTags []IpTag `pulumi:"ipTags"`
 	// Load balancing rules that are applied to the public load balancer of the cluster.
 	LoadBalancingRules []LoadBalancingRule `pulumi:"loadBalancingRules"`
 	// Azure resource location.
 	Location *string `pulumi:"location"`
 	// Custom Network Security Rules that are applied to the Virtual Network of the cluster.
 	NetworkSecurityRules []NetworkSecurityRule `pulumi:"networkSecurityRules"`
-	// Specify the resource id of a public IP prefix that the load balancer will allocate a public IP address from. Only supports IPv4.
+	// Specify the resource id of a public IPv4 prefix that the load balancer will allocate a public IPv4 address from. This setting cannot be changed once the cluster is created.
 	PublicIPPrefixId *string `pulumi:"publicIPPrefixId"`
+	// Specify the resource id of a public IPv6 prefix that the load balancer will allocate a public IPv6 address from. This setting cannot be changed once the cluster is created.
+	PublicIPv6PrefixId *string `pulumi:"publicIPv6PrefixId"`
 	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Service endpoints for subnets in the cluster.
@@ -292,6 +321,8 @@ type managedClusterArgs struct {
 	SubnetId *string `pulumi:"subnetId"`
 	// Azure resource tags.
 	Tags map[string]string `pulumi:"tags"`
+	// The policy to use when upgrading the cluster.
+	UpgradeDescription *ClusterUpgradePolicy `pulumi:"upgradeDescription"`
 	// For new clusters, this parameter indicates that it uses Bring your own VNet, but the subnet is specified at node type level; and for such clusters, the subnetId property is required for node types.
 	UseCustomVnet *bool `pulumi:"useCustomVnet"`
 	// Indicates if the cluster has zone resiliency.
@@ -328,10 +359,14 @@ type ManagedClusterArgs struct {
 	ClusterUpgradeCadence pulumi.StringPtrInput
 	// The upgrade mode of the cluster when new Service Fabric runtime version is available.
 	ClusterUpgradeMode pulumi.StringPtrInput
+	// Specify the resource id of a DDoS network protection plan that will be associated with the virtual network of the cluster.
+	DdosProtectionPlanId pulumi.StringPtrInput
 	// The cluster dns name.
 	DnsName pulumi.StringInput
 	// Setting this to true enables automatic OS upgrade for the node types that are created using any platform OS image with version 'latest'. The default value for this setting is false.
 	EnableAutoOSUpgrade pulumi.BoolPtrInput
+	// If true, token-based authentication is not allowed on the HttpGatewayEndpoint. This is required to support TLS versions 1.3 and above. If token-based authentication is used, HttpGatewayTokenAuthConnectionPort must be defined.
+	EnableHttpGatewayExclusiveAuthMode pulumi.BoolPtrInput
 	// Setting this to true creates IPv6 address space for the default VNet used by the cluster. This setting cannot be changed once the cluster is created. The default value for this setting is false.
 	EnableIpv6 pulumi.BoolPtrInput
 	// Setting this to true will link the IPv4 address as the ServicePublicIP of the IPv6 address. It can only be set to True if IPv6 is enabled on the cluster.
@@ -340,16 +375,20 @@ type ManagedClusterArgs struct {
 	FabricSettings SettingsSectionDescriptionArrayInput
 	// The port used for HTTP connections to the cluster.
 	HttpGatewayConnectionPort pulumi.IntPtrInput
+	// The port used for token-auth based HTTPS connections to the cluster. Cannot be set to the same port as HttpGatewayEndpoint.
+	HttpGatewayTokenAuthConnectionPort pulumi.IntPtrInput
 	// The list of IP tags associated with the default public IP address of the cluster.
-	IpTags IPTagArrayInput
+	IpTags IpTagArrayInput
 	// Load balancing rules that are applied to the public load balancer of the cluster.
 	LoadBalancingRules LoadBalancingRuleArrayInput
 	// Azure resource location.
 	Location pulumi.StringPtrInput
 	// Custom Network Security Rules that are applied to the Virtual Network of the cluster.
 	NetworkSecurityRules NetworkSecurityRuleArrayInput
-	// Specify the resource id of a public IP prefix that the load balancer will allocate a public IP address from. Only supports IPv4.
+	// Specify the resource id of a public IPv4 prefix that the load balancer will allocate a public IPv4 address from. This setting cannot be changed once the cluster is created.
 	PublicIPPrefixId pulumi.StringPtrInput
+	// Specify the resource id of a public IPv6 prefix that the load balancer will allocate a public IPv6 address from. This setting cannot be changed once the cluster is created.
+	PublicIPv6PrefixId pulumi.StringPtrInput
 	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
 	// Service endpoints for subnets in the cluster.
@@ -360,6 +399,8 @@ type ManagedClusterArgs struct {
 	SubnetId pulumi.StringPtrInput
 	// Azure resource tags.
 	Tags pulumi.StringMapInput
+	// The policy to use when upgrading the cluster.
+	UpgradeDescription ClusterUpgradePolicyPtrInput
 	// For new clusters, this parameter indicates that it uses Bring your own VNet, but the subnet is specified at node type level; and for such clusters, the subnetId property is required for node types.
 	UseCustomVnet pulumi.BoolPtrInput
 	// Indicates if the cluster has zone resiliency.
@@ -442,6 +483,11 @@ func (o ManagedClusterOutput) AzureActiveDirectory() AzureActiveDirectoryRespons
 	return o.ApplyT(func(v *ManagedCluster) AzureActiveDirectoryResponsePtrOutput { return v.AzureActiveDirectory }).(AzureActiveDirectoryResponsePtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o ManagedClusterOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagedCluster) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The port used for client connections to the cluster.
 func (o ManagedClusterOutput) ClientConnectionPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ManagedCluster) pulumi.IntPtrOutput { return v.ClientConnectionPort }).(pulumi.IntPtrOutput)
@@ -482,6 +528,11 @@ func (o ManagedClusterOutput) ClusterUpgradeMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedCluster) pulumi.StringPtrOutput { return v.ClusterUpgradeMode }).(pulumi.StringPtrOutput)
 }
 
+// Specify the resource id of a DDoS network protection plan that will be associated with the virtual network of the cluster.
+func (o ManagedClusterOutput) DdosProtectionPlanId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedCluster) pulumi.StringPtrOutput { return v.DdosProtectionPlanId }).(pulumi.StringPtrOutput)
+}
+
 // The cluster dns name.
 func (o ManagedClusterOutput) DnsName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedCluster) pulumi.StringOutput { return v.DnsName }).(pulumi.StringOutput)
@@ -490,6 +541,11 @@ func (o ManagedClusterOutput) DnsName() pulumi.StringOutput {
 // Setting this to true enables automatic OS upgrade for the node types that are created using any platform OS image with version 'latest'. The default value for this setting is false.
 func (o ManagedClusterOutput) EnableAutoOSUpgrade() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ManagedCluster) pulumi.BoolPtrOutput { return v.EnableAutoOSUpgrade }).(pulumi.BoolPtrOutput)
+}
+
+// If true, token-based authentication is not allowed on the HttpGatewayEndpoint. This is required to support TLS versions 1.3 and above. If token-based authentication is used, HttpGatewayTokenAuthConnectionPort must be defined.
+func (o ManagedClusterOutput) EnableHttpGatewayExclusiveAuthMode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ManagedCluster) pulumi.BoolPtrOutput { return v.EnableHttpGatewayExclusiveAuthMode }).(pulumi.BoolPtrOutput)
 }
 
 // Setting this to true creates IPv6 address space for the default VNet used by the cluster. This setting cannot be changed once the cluster is created. The default value for this setting is false.
@@ -522,9 +578,14 @@ func (o ManagedClusterOutput) HttpGatewayConnectionPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ManagedCluster) pulumi.IntPtrOutput { return v.HttpGatewayConnectionPort }).(pulumi.IntPtrOutput)
 }
 
+// The port used for token-auth based HTTPS connections to the cluster. Cannot be set to the same port as HttpGatewayEndpoint.
+func (o ManagedClusterOutput) HttpGatewayTokenAuthConnectionPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ManagedCluster) pulumi.IntPtrOutput { return v.HttpGatewayTokenAuthConnectionPort }).(pulumi.IntPtrOutput)
+}
+
 // The list of IP tags associated with the default public IP address of the cluster.
-func (o ManagedClusterOutput) IpTags() IPTagResponseArrayOutput {
-	return o.ApplyT(func(v *ManagedCluster) IPTagResponseArrayOutput { return v.IpTags }).(IPTagResponseArrayOutput)
+func (o ManagedClusterOutput) IpTags() IpTagResponseArrayOutput {
+	return o.ApplyT(func(v *ManagedCluster) IpTagResponseArrayOutput { return v.IpTags }).(IpTagResponseArrayOutput)
 }
 
 // The IPv4 address associated with the public load balancer of the cluster.
@@ -562,9 +623,14 @@ func (o ManagedClusterOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedCluster) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Specify the resource id of a public IP prefix that the load balancer will allocate a public IP address from. Only supports IPv4.
+// Specify the resource id of a public IPv4 prefix that the load balancer will allocate a public IPv4 address from. This setting cannot be changed once the cluster is created.
 func (o ManagedClusterOutput) PublicIPPrefixId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedCluster) pulumi.StringPtrOutput { return v.PublicIPPrefixId }).(pulumi.StringPtrOutput)
+}
+
+// Specify the resource id of a public IPv6 prefix that the load balancer will allocate a public IPv6 address from. This setting cannot be changed once the cluster is created.
+func (o ManagedClusterOutput) PublicIPv6PrefixId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedCluster) pulumi.StringPtrOutput { return v.PublicIPv6PrefixId }).(pulumi.StringPtrOutput)
 }
 
 // Service endpoints for subnets in the cluster.
@@ -595,6 +661,11 @@ func (o ManagedClusterOutput) Tags() pulumi.StringMapOutput {
 // Azure resource type.
 func (o ManagedClusterOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedCluster) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// The policy to use when upgrading the cluster.
+func (o ManagedClusterOutput) UpgradeDescription() ClusterUpgradePolicyResponsePtrOutput {
+	return o.ApplyT(func(v *ManagedCluster) ClusterUpgradePolicyResponsePtrOutput { return v.UpgradeDescription }).(ClusterUpgradePolicyResponsePtrOutput)
 }
 
 // For new clusters, this parameter indicates that it uses Bring your own VNet, but the subnet is specified at node type level; and for such clusters, the subnetId property is required for node types.

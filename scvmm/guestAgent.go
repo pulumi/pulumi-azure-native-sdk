@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Defines the GuestAgent.
 //
-// Uses Azure REST API version 2022-05-21-preview.
+// Uses Azure REST API version 2023-04-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-05-21-preview.
 //
-// Other available API versions: 2023-04-01-preview, 2023-10-07, 2024-06-01.
+// Other available API versions: 2022-05-21-preview, 2023-10-07, 2024-06-01, 2025-03-13. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native scvmm [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type GuestAgent struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Username / Password Credentials to provision guest agent.
 	Credentials GuestCredentialResponsePtrOutput `pulumi:"credentials"`
 	// Gets the name of the corresponding resource in Kubernetes.
@@ -61,6 +63,12 @@ func NewGuestAgent(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:scvmm/v20230401preview:GuestAgent"),
+		},
+		{
+			Type: pulumi.String("azure-native:scvmm/v20231007:GuestAgent"),
+		},
+		{
+			Type: pulumi.String("azure-native:scvmm/v20240601:GuestAgent"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -162,6 +170,11 @@ func (o GuestAgentOutput) ToGuestAgentOutput() GuestAgentOutput {
 
 func (o GuestAgentOutput) ToGuestAgentOutputWithContext(ctx context.Context) GuestAgentOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o GuestAgentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *GuestAgent) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Username / Password Credentials to provision guest agent.

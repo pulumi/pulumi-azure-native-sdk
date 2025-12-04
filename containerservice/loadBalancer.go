@@ -8,20 +8,22 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The configurations regarding multiple standard load balancers. If not supplied, single load balancer mode will be used. Multiple standard load balancers mode will be used if at lease one configuration is supplied. There has to be a configuration named `kubernetes`.
 //
-// Uses Azure REST API version 2024-03-02-preview.
+// Uses Azure REST API version 2024-10-02-preview. In version 2.x of the Azure Native provider, it used API version 2024-03-02-preview.
 //
-// Other available API versions: 2024-04-02-preview, 2024-05-02-preview, 2024-06-02-preview, 2024-07-02-preview, 2024-09-02-preview, 2024-10-02-preview.
+// Other available API versions: 2024-03-02-preview, 2024-04-02-preview, 2024-05-02-preview, 2024-06-02-preview, 2024-07-02-preview, 2024-09-02-preview, 2025-01-02-preview, 2025-02-02-preview, 2025-03-02-preview, 2025-04-02-preview, 2025-05-02-preview, 2025-06-02-preview, 2025-07-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type LoadBalancer struct {
 	pulumi.CustomResourceState
 
 	// Whether to automatically place services on the load balancer. If not supplied, the default value is true. If set to false manually, both of the external and the internal load balancer will not be selected for services unless they explicitly target it.
 	AllowServicePlacement pulumi.BoolPtrOutput `pulumi:"allowServicePlacement"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Nodes that match this selector will be possible members of this load balancer.
@@ -80,6 +82,27 @@ func NewLoadBalancer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:containerservice/v20241002preview:LoadBalancer"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20250102preview:LoadBalancer"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20250202preview:LoadBalancer"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20250302preview:LoadBalancer"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20250402preview:LoadBalancer"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20250502preview:LoadBalancer"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20250602preview:LoadBalancer"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20250702preview:LoadBalancer"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -198,6 +221,11 @@ func (o LoadBalancerOutput) ToLoadBalancerOutputWithContext(ctx context.Context)
 // Whether to automatically place services on the load balancer. If not supplied, the default value is true. If set to false manually, both of the external and the internal load balancer will not be selected for services unless they explicitly target it.
 func (o LoadBalancerOutput) AllowServicePlacement() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.BoolPtrOutput { return v.AllowServicePlacement }).(pulumi.BoolPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LoadBalancerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

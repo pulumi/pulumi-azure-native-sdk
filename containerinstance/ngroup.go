@@ -8,28 +8,32 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Describes a nGroup.
+// Describes the NGroups resource.
 //
-// Uses Azure REST API version 2024-09-01-preview.
+// Uses Azure REST API version 2025-09-01. In version 2.x of the Azure Native provider, it used API version 2024-09-01-preview.
 //
-// Other available API versions: 2024-11-01-preview.
+// Other available API versions: 2024-09-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerinstance [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type NGroup struct {
 	pulumi.CustomResourceState
 
-	// The Container Group Profiles that could be used in a nGroup.
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// The Container Group Profiles that could be used in the NGroups resource.
 	ContainerGroupProfiles ContainerGroupProfileStubResponseArrayOutput `pulumi:"containerGroupProfiles"`
 	// The elastic profile.
 	ElasticProfile ElasticProfileResponsePtrOutput `pulumi:"elasticProfile"`
-	// The identity of the nGroup, if configured.
+	// The identity of the NGroup, if configured.
 	Identity NGroupIdentityResponsePtrOutput `pulumi:"identity"`
 	// The resource location.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Provides options w.r.t allocation and management w.r.t certain placement policies. These utilize capabilities provided by the underlying Azure infrastructure. They are typically used for high availability scenarios. E.g., distributing CGs across fault domains.
+	PlacementProfile PlacementProfileResponsePtrOutput `pulumi:"placementProfile"`
 	// The provisioning state, which only appears in the response.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Metadata pertaining to creation and last modification of the resource.
@@ -38,6 +42,8 @@ type NGroup struct {
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The resource type.
 	Type pulumi.StringOutput `pulumi:"type"`
+	// Used by the customer to specify the way to update the Container Groups in NGroup.
+	UpdateProfile UpdateProfileResponsePtrOutput `pulumi:"updateProfile"`
 	// The zones for the container group.
 	Zones pulumi.StringArrayOutput `pulumi:"zones"`
 }
@@ -58,6 +64,9 @@ func NewNGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:containerinstance/v20241101preview:NGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerinstance/v20250901:NGroup"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -94,40 +103,48 @@ func (NGroupState) ElementType() reflect.Type {
 }
 
 type ngroupArgs struct {
-	// The Container Group Profiles that could be used in a nGroup.
+	// The Container Group Profiles that could be used in the NGroups resource.
 	ContainerGroupProfiles []ContainerGroupProfileStub `pulumi:"containerGroupProfiles"`
 	// The elastic profile.
 	ElasticProfile *ElasticProfile `pulumi:"elasticProfile"`
-	// The identity of the nGroup, if configured.
+	// The identity of the NGroup, if configured.
 	Identity *NGroupIdentity `pulumi:"identity"`
 	// The resource location.
 	Location *string `pulumi:"location"`
-	// The N Groups name.
+	// The NGroups name.
 	NgroupsName *string `pulumi:"ngroupsName"`
-	// The name of the resource group.
+	// Provides options w.r.t allocation and management w.r.t certain placement policies. These utilize capabilities provided by the underlying Azure infrastructure. They are typically used for high availability scenarios. E.g., distributing CGs across fault domains.
+	PlacementProfile *PlacementProfile `pulumi:"placementProfile"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The resource tags.
 	Tags map[string]string `pulumi:"tags"`
+	// Used by the customer to specify the way to update the Container Groups in NGroup.
+	UpdateProfile *UpdateProfile `pulumi:"updateProfile"`
 	// The zones for the container group.
 	Zones []string `pulumi:"zones"`
 }
 
 // The set of arguments for constructing a NGroup resource.
 type NGroupArgs struct {
-	// The Container Group Profiles that could be used in a nGroup.
+	// The Container Group Profiles that could be used in the NGroups resource.
 	ContainerGroupProfiles ContainerGroupProfileStubArrayInput
 	// The elastic profile.
 	ElasticProfile ElasticProfilePtrInput
-	// The identity of the nGroup, if configured.
+	// The identity of the NGroup, if configured.
 	Identity NGroupIdentityPtrInput
 	// The resource location.
 	Location pulumi.StringPtrInput
-	// The N Groups name.
+	// The NGroups name.
 	NgroupsName pulumi.StringPtrInput
-	// The name of the resource group.
+	// Provides options w.r.t allocation and management w.r.t certain placement policies. These utilize capabilities provided by the underlying Azure infrastructure. They are typically used for high availability scenarios. E.g., distributing CGs across fault domains.
+	PlacementProfile PlacementProfilePtrInput
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The resource tags.
 	Tags pulumi.StringMapInput
+	// Used by the customer to specify the way to update the Container Groups in NGroup.
+	UpdateProfile UpdateProfilePtrInput
 	// The zones for the container group.
 	Zones pulumi.StringArrayInput
 }
@@ -169,7 +186,12 @@ func (o NGroupOutput) ToNGroupOutputWithContext(ctx context.Context) NGroupOutpu
 	return o
 }
 
-// The Container Group Profiles that could be used in a nGroup.
+// The Azure API version of the resource.
+func (o NGroupOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *NGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// The Container Group Profiles that could be used in the NGroups resource.
 func (o NGroupOutput) ContainerGroupProfiles() ContainerGroupProfileStubResponseArrayOutput {
 	return o.ApplyT(func(v *NGroup) ContainerGroupProfileStubResponseArrayOutput { return v.ContainerGroupProfiles }).(ContainerGroupProfileStubResponseArrayOutput)
 }
@@ -179,7 +201,7 @@ func (o NGroupOutput) ElasticProfile() ElasticProfileResponsePtrOutput {
 	return o.ApplyT(func(v *NGroup) ElasticProfileResponsePtrOutput { return v.ElasticProfile }).(ElasticProfileResponsePtrOutput)
 }
 
-// The identity of the nGroup, if configured.
+// The identity of the NGroup, if configured.
 func (o NGroupOutput) Identity() NGroupIdentityResponsePtrOutput {
 	return o.ApplyT(func(v *NGroup) NGroupIdentityResponsePtrOutput { return v.Identity }).(NGroupIdentityResponsePtrOutput)
 }
@@ -192,6 +214,11 @@ func (o NGroupOutput) Location() pulumi.StringPtrOutput {
 // The resource name.
 func (o NGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *NGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Provides options w.r.t allocation and management w.r.t certain placement policies. These utilize capabilities provided by the underlying Azure infrastructure. They are typically used for high availability scenarios. E.g., distributing CGs across fault domains.
+func (o NGroupOutput) PlacementProfile() PlacementProfileResponsePtrOutput {
+	return o.ApplyT(func(v *NGroup) PlacementProfileResponsePtrOutput { return v.PlacementProfile }).(PlacementProfileResponsePtrOutput)
 }
 
 // The provisioning state, which only appears in the response.
@@ -212,6 +239,11 @@ func (o NGroupOutput) Tags() pulumi.StringMapOutput {
 // The resource type.
 func (o NGroupOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *NGroup) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// Used by the customer to specify the way to update the Container Groups in NGroup.
+func (o NGroupOutput) UpdateProfile() UpdateProfileResponsePtrOutput {
+	return o.ApplyT(func(v *NGroup) UpdateProfileResponsePtrOutput { return v.UpdateProfile }).(UpdateProfileResponsePtrOutput)
 }
 
 // The zones for the container group.

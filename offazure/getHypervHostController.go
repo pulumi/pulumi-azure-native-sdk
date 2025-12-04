@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a HypervHost
 //
-// Uses Azure REST API version 2023-06-06.
+// Uses Azure REST API version 2023-10-01-preview.
 //
-// Other available API versions: 2023-10-01-preview, 2024-05-01-preview.
+// Other available API versions: 2023-06-06, 2024-05-01-preview, 2024-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native offazure [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupHypervHostController(ctx *pulumi.Context, args *LookupHypervHostControllerArgs, opts ...pulumi.InvokeOption) (*LookupHypervHostControllerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupHypervHostControllerResult
@@ -37,6 +37,8 @@ type LookupHypervHostControllerArgs struct {
 
 // A host resource belonging to a site resource.
 type LookupHypervHostControllerResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets the timestamp marking Hyper-V host creation.
 	CreatedTimestamp string `pulumi:"createdTimestamp"`
 	// Gets the errors.
@@ -96,6 +98,11 @@ func (o LookupHypervHostControllerResultOutput) ToLookupHypervHostControllerResu
 
 func (o LookupHypervHostControllerResultOutput) ToLookupHypervHostControllerResultOutputWithContext(ctx context.Context) LookupHypervHostControllerResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupHypervHostControllerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHypervHostControllerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets the timestamp marking Hyper-V host creation.

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,6 +33,8 @@ type LookupSupportPlanTypeArgs struct {
 
 // The status of the Canonical support plan.
 type LookupSupportPlanTypeResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The id of the ARM resource, e.g. "/subscriptions/{id}/providers/Microsoft.Addons/supportProvider/{supportProviderName}/supportPlanTypes/{planTypeName}".
 	Id string `pulumi:"id"`
 	// The name of the Canonical support plan, i.e. "essential", "standard" or "advanced".
@@ -76,6 +78,11 @@ func (o LookupSupportPlanTypeResultOutput) ToLookupSupportPlanTypeResultOutput()
 
 func (o LookupSupportPlanTypeResultOutput) ToLookupSupportPlanTypeResultOutputWithContext(ctx context.Context) LookupSupportPlanTypeResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSupportPlanTypeResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSupportPlanTypeResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The id of the ARM resource, e.g. "/subscriptions/{id}/providers/Microsoft.Addons/supportProvider/{supportProviderName}/supportPlanTypes/{planTypeName}".

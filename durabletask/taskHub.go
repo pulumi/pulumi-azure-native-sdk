@@ -8,16 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A Task Hub resource belonging to the scheduler
 //
-// Uses Azure REST API version 2024-10-01-preview.
+// Uses Azure REST API version 2024-10-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-10-01-preview.
+//
+// Other available API versions: 2025-04-01-preview, 2025-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native durabletask [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type TaskHub struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The resource-specific properties for this resource.
@@ -44,6 +48,12 @@ func NewTaskHub(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:durabletask/v20241001preview:TaskHub"),
+		},
+		{
+			Type: pulumi.String("azure-native:durabletask/v20250401preview:TaskHub"),
+		},
+		{
+			Type: pulumi.String("azure-native:durabletask/v20251101:TaskHub"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -133,6 +143,11 @@ func (o TaskHubOutput) ToTaskHubOutput() TaskHubOutput {
 
 func (o TaskHubOutput) ToTaskHubOutputWithContext(ctx context.Context) TaskHubOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o TaskHubOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *TaskHub) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the details of the Diagnostic for an API specified by its identifier.
 //
-// Uses Azure REST API version 2023-09-01-preview.
+// Uses Azure REST API version 2024-06-01-preview.
 //
-// Other available API versions: 2024-05-01, 2024-06-01-preview.
+// Other available API versions: 2023-09-01-preview, 2024-05-01, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupWorkspaceApiDiagnostic(ctx *pulumi.Context, args *LookupWorkspaceApiDiagnosticArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceApiDiagnosticResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceApiDiagnosticResult
@@ -43,6 +43,8 @@ type LookupWorkspaceApiDiagnosticArgs struct {
 type LookupWorkspaceApiDiagnosticResult struct {
 	// Specifies for what type of messages sampling settings should not apply.
 	AlwaysLog *string `pulumi:"alwaysLog"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Diagnostic settings for incoming/outgoing HTTP messages to the Backend
 	Backend *PipelineDiagnosticSettingsResponse `pulumi:"backend"`
 	// Diagnostic settings for incoming/outgoing HTTP messages to the Gateway.
@@ -51,6 +53,8 @@ type LookupWorkspaceApiDiagnosticResult struct {
 	HttpCorrelationProtocol *string `pulumi:"httpCorrelationProtocol"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
+	// Large Language Models diagnostic settings
+	LargeLanguageModel *LLMDiagnosticSettingsResponse `pulumi:"largeLanguageModel"`
 	// Log the ClientIP. Default is false.
 	LogClientIp *bool `pulumi:"logClientIp"`
 	// Resource Id of a target logger.
@@ -115,6 +119,11 @@ func (o LookupWorkspaceApiDiagnosticResultOutput) AlwaysLog() pulumi.StringPtrOu
 	return o.ApplyT(func(v LookupWorkspaceApiDiagnosticResult) *string { return v.AlwaysLog }).(pulumi.StringPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupWorkspaceApiDiagnosticResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkspaceApiDiagnosticResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Diagnostic settings for incoming/outgoing HTTP messages to the Backend
 func (o LookupWorkspaceApiDiagnosticResultOutput) Backend() PipelineDiagnosticSettingsResponsePtrOutput {
 	return o.ApplyT(func(v LookupWorkspaceApiDiagnosticResult) *PipelineDiagnosticSettingsResponse { return v.Backend }).(PipelineDiagnosticSettingsResponsePtrOutput)
@@ -133,6 +142,11 @@ func (o LookupWorkspaceApiDiagnosticResultOutput) HttpCorrelationProtocol() pulu
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupWorkspaceApiDiagnosticResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceApiDiagnosticResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Large Language Models diagnostic settings
+func (o LookupWorkspaceApiDiagnosticResultOutput) LargeLanguageModel() LLMDiagnosticSettingsResponsePtrOutput {
+	return o.ApplyT(func(v LookupWorkspaceApiDiagnosticResult) *LLMDiagnosticSettingsResponse { return v.LargeLanguageModel }).(LLMDiagnosticSettingsResponsePtrOutput)
 }
 
 // Log the ClientIP. Default is false.

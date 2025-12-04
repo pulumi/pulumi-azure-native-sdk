@@ -8,20 +8,22 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Security Rule resource.
 //
-// Uses Azure REST API version 2024-02-01-preview.
+// Uses Azure REST API version 2025-02-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-02-01-preview.
 //
-// Other available API versions: 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01-preview, 2025-04-01-preview.
+// Other available API versions: 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type SecurityRule struct {
 	pulumi.CustomResourceState
 
 	// The network traffic is allowed or denied.
 	Access pulumi.StringOutput `pulumi:"access"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A description for this rule. Restricted to 140 chars.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The destination address prefixes. CIDR or destination IP ranges.
@@ -96,6 +98,9 @@ func NewSecurityRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20250401preview:SecurityRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20250601preview:SecurityRule"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -230,6 +235,11 @@ func (o SecurityRuleOutput) ToSecurityRuleOutputWithContext(ctx context.Context)
 // The network traffic is allowed or denied.
 func (o SecurityRuleOutput) Access() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityRule) pulumi.StringOutput { return v.Access }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o SecurityRuleOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityRule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A description for this rule. Restricted to 140 chars.

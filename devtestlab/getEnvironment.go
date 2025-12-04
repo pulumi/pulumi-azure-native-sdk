@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,9 +29,9 @@ type LookupEnvironmentArgs struct {
 	Expand *string `pulumi:"expand"`
 	// The name of the lab.
 	LabName string `pulumi:"labName"`
-	// The name of the environment.
+	// The name of the DtlEnvironment
 	Name string `pulumi:"name"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the user profile.
 	UserName string `pulumi:"userName"`
@@ -41,6 +41,8 @@ type LookupEnvironmentArgs struct {
 type LookupEnvironmentResult struct {
 	// The display name of the Azure Resource Manager template that produced the environment.
 	ArmTemplateDisplayName *string `pulumi:"armTemplateDisplayName"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The creator of the environment.
 	CreatedByUser string `pulumi:"createdByUser"`
 	// The deployment properties of the environment.
@@ -77,9 +79,9 @@ type LookupEnvironmentOutputArgs struct {
 	Expand pulumi.StringPtrInput `pulumi:"expand"`
 	// The name of the lab.
 	LabName pulumi.StringInput `pulumi:"labName"`
-	// The name of the environment.
+	// The name of the DtlEnvironment
 	Name pulumi.StringInput `pulumi:"name"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the user profile.
 	UserName pulumi.StringInput `pulumi:"userName"`
@@ -107,6 +109,11 @@ func (o LookupEnvironmentResultOutput) ToLookupEnvironmentResultOutputWithContex
 // The display name of the Azure Resource Manager template that produced the environment.
 func (o LookupEnvironmentResultOutput) ArmTemplateDisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) *string { return v.ArmTemplateDisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupEnvironmentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creator of the environment.

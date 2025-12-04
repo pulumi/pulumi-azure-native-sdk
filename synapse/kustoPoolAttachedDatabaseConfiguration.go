@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Class representing an attached database configuration.
 //
-// Uses Azure REST API version 2021-06-01-preview. In version 1.x of the Azure Native provider, it used API version 2021-06-01-preview.
+// Uses Azure REST API version 2021-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2021-06-01-preview.
 type KustoPoolAttachedDatabaseConfiguration struct {
 	pulumi.CustomResourceState
 
 	// The list of databases from the clusterResourceId which are currently attached to the kusto pool.
 	AttachedDatabaseNames pulumi.StringArrayOutput `pulumi:"attachedDatabaseNames"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the database which you would like to attach, use * if you want to follow all current and future databases.
 	DatabaseName pulumi.StringOutput `pulumi:"databaseName"`
 	// The default principals modification kind
@@ -188,6 +190,11 @@ func (o KustoPoolAttachedDatabaseConfigurationOutput) AttachedDatabaseNames() pu
 	return o.ApplyT(func(v *KustoPoolAttachedDatabaseConfiguration) pulumi.StringArrayOutput {
 		return v.AttachedDatabaseNames
 	}).(pulumi.StringArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o KustoPoolAttachedDatabaseConfigurationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *KustoPoolAttachedDatabaseConfiguration) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the database which you would like to attach, use * if you want to follow all current and future databases.
