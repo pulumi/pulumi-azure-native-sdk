@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get details of a certificate profile.
 //
-// Uses Azure REST API version 2024-02-05-preview.
+// Uses Azure REST API version 2024-09-30-preview.
 //
-// Other available API versions: 2024-09-30-preview.
+// Other available API versions: 2024-02-05-preview, 2025-10-13. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native codesigning [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupCertificateProfile(ctx *pulumi.Context, args *LookupCertificateProfileArgs, opts ...pulumi.InvokeOption) (*LookupCertificateProfileResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCertificateProfileResult
@@ -37,18 +37,12 @@ type LookupCertificateProfileArgs struct {
 
 // Certificate profile resource.
 type LookupCertificateProfileResult struct {
-	// Used as L in the certificate subject name.
-	City string `pulumi:"city"`
-	// Used as CN in the certificate subject name.
-	CommonName string `pulumi:"commonName"`
-	// Used as C in the certificate subject name.
-	Country string `pulumi:"country"`
-	// Enhanced key usage of the certificate.
-	EnhancedKeyUsage string `pulumi:"enhancedKeyUsage"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Identity validation id used for the certificate subject name.
-	IdentityValidationId *string `pulumi:"identityValidationId"`
+	IdentityValidationId string `pulumi:"identityValidationId"`
 	// Whether to include L in the certificate subject name. Applicable only for private trust, private trust ci profile types
 	IncludeCity *bool `pulumi:"includeCity"`
 	// Whether to include C in the certificate subject name. Applicable only for private trust, private trust ci profile types
@@ -61,22 +55,12 @@ type LookupCertificateProfileResult struct {
 	IncludeStreetAddress *bool `pulumi:"includeStreetAddress"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// Used as O in the certificate subject name.
-	Organization string `pulumi:"organization"`
-	// Used as OU in the private trust certificate subject name.
-	OrganizationUnit string `pulumi:"organizationUnit"`
-	// Used as PC in the certificate subject name.
-	PostalCode string `pulumi:"postalCode"`
 	// Profile type of the certificate.
 	ProfileType string `pulumi:"profileType"`
 	// Status of the current operation on certificate profile.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// Used as S in the certificate subject name.
-	State string `pulumi:"state"`
 	// Status of the certificate profile.
 	Status string `pulumi:"status"`
-	// Used as STREET in the certificate subject name.
-	StreetAddress string `pulumi:"streetAddress"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -148,24 +132,9 @@ func (o LookupCertificateProfileResultOutput) ToLookupCertificateProfileResultOu
 	return o
 }
 
-// Used as L in the certificate subject name.
-func (o LookupCertificateProfileResultOutput) City() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCertificateProfileResult) string { return v.City }).(pulumi.StringOutput)
-}
-
-// Used as CN in the certificate subject name.
-func (o LookupCertificateProfileResultOutput) CommonName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCertificateProfileResult) string { return v.CommonName }).(pulumi.StringOutput)
-}
-
-// Used as C in the certificate subject name.
-func (o LookupCertificateProfileResultOutput) Country() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCertificateProfileResult) string { return v.Country }).(pulumi.StringOutput)
-}
-
-// Enhanced key usage of the certificate.
-func (o LookupCertificateProfileResultOutput) EnhancedKeyUsage() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCertificateProfileResult) string { return v.EnhancedKeyUsage }).(pulumi.StringOutput)
+// The Azure API version of the resource.
+func (o LookupCertificateProfileResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCertificateProfileResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -174,8 +143,8 @@ func (o LookupCertificateProfileResultOutput) Id() pulumi.StringOutput {
 }
 
 // Identity validation id used for the certificate subject name.
-func (o LookupCertificateProfileResultOutput) IdentityValidationId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupCertificateProfileResult) *string { return v.IdentityValidationId }).(pulumi.StringPtrOutput)
+func (o LookupCertificateProfileResultOutput) IdentityValidationId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCertificateProfileResult) string { return v.IdentityValidationId }).(pulumi.StringOutput)
 }
 
 // Whether to include L in the certificate subject name. Applicable only for private trust, private trust ci profile types
@@ -208,21 +177,6 @@ func (o LookupCertificateProfileResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCertificateProfileResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Used as O in the certificate subject name.
-func (o LookupCertificateProfileResultOutput) Organization() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCertificateProfileResult) string { return v.Organization }).(pulumi.StringOutput)
-}
-
-// Used as OU in the private trust certificate subject name.
-func (o LookupCertificateProfileResultOutput) OrganizationUnit() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCertificateProfileResult) string { return v.OrganizationUnit }).(pulumi.StringOutput)
-}
-
-// Used as PC in the certificate subject name.
-func (o LookupCertificateProfileResultOutput) PostalCode() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCertificateProfileResult) string { return v.PostalCode }).(pulumi.StringOutput)
-}
-
 // Profile type of the certificate.
 func (o LookupCertificateProfileResultOutput) ProfileType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCertificateProfileResult) string { return v.ProfileType }).(pulumi.StringOutput)
@@ -233,19 +187,9 @@ func (o LookupCertificateProfileResultOutput) ProvisioningState() pulumi.StringO
 	return o.ApplyT(func(v LookupCertificateProfileResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Used as S in the certificate subject name.
-func (o LookupCertificateProfileResultOutput) State() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCertificateProfileResult) string { return v.State }).(pulumi.StringOutput)
-}
-
 // Status of the certificate profile.
 func (o LookupCertificateProfileResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCertificateProfileResult) string { return v.Status }).(pulumi.StringOutput)
-}
-
-// Used as STREET in the certificate subject name.
-func (o LookupCertificateProfileResultOutput) StreetAddress() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCertificateProfileResult) string { return v.StreetAddress }).(pulumi.StringOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

@@ -8,16 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The peering service prefix class.
 //
-// Uses Azure REST API version 2022-10-01. In version 1.x of the Azure Native provider, it used API version 2021-01-01.
+// Uses Azure REST API version 2022-10-01. In version 2.x of the Azure Native provider, it used API version 2022-10-01.
+//
+// Other available API versions: 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native peering [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Prefix struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The error message for validation state
 	ErrorMessage pulumi.StringOutput `pulumi:"errorMessage"`
 	// The list of events for peering service prefix
@@ -81,6 +85,9 @@ func NewPrefix(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:peering/v20221001:Prefix"),
+		},
+		{
+			Type: pulumi.String("azure-native:peering/v20250501:Prefix"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -178,6 +185,11 @@ func (o PrefixOutput) ToPrefixOutput() PrefixOutput {
 
 func (o PrefixOutput) ToPrefixOutputWithContext(ctx context.Context) PrefixOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o PrefixOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Prefix) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The error message for validation state

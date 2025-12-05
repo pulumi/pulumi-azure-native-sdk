@@ -8,16 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A VerifiedId authority resource
 //
-// Uses Azure REST API version 2024-01-26-preview.
+// Uses Azure REST API version 2024-01-26-preview. In version 2.x of the Azure Native provider, it used API version 2024-01-26-preview.
 type Authority struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -138,6 +140,11 @@ func (o AuthorityOutput) ToAuthorityOutput() AuthorityOutput {
 
 func (o AuthorityOutput) ToAuthorityOutputWithContext(ctx context.Context) AuthorityOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o AuthorityOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Authority) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The geo-location where the resource lives

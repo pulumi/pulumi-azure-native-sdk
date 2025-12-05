@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,18 +27,20 @@ func LookupVirtualMachineSchedule(ctx *pulumi.Context, args *LookupVirtualMachin
 type LookupVirtualMachineScheduleArgs struct {
 	// Specify the $expand query. Example: 'properties($select=status)'
 	Expand *string `pulumi:"expand"`
-	// The name of the lab.
+	// labs
 	LabName string `pulumi:"labName"`
-	// The name of the schedule.
+	// The name of the Schedule
 	Name string `pulumi:"name"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// The name of the virtual machine.
+	// virtualmachines
 	VirtualMachineName string `pulumi:"virtualMachineName"`
 }
 
 // A schedule.
 type LookupVirtualMachineScheduleResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The creation date of the schedule.
 	CreatedDate string `pulumi:"createdDate"`
 	// If the schedule will occur once each day of the week, specify the daily recurrence.
@@ -99,13 +101,13 @@ func LookupVirtualMachineScheduleOutput(ctx *pulumi.Context, args LookupVirtualM
 type LookupVirtualMachineScheduleOutputArgs struct {
 	// Specify the $expand query. Example: 'properties($select=status)'
 	Expand pulumi.StringPtrInput `pulumi:"expand"`
-	// The name of the lab.
+	// labs
 	LabName pulumi.StringInput `pulumi:"labName"`
-	// The name of the schedule.
+	// The name of the Schedule
 	Name pulumi.StringInput `pulumi:"name"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	// The name of the virtual machine.
+	// virtualmachines
 	VirtualMachineName pulumi.StringInput `pulumi:"virtualMachineName"`
 }
 
@@ -126,6 +128,11 @@ func (o LookupVirtualMachineScheduleResultOutput) ToLookupVirtualMachineSchedule
 
 func (o LookupVirtualMachineScheduleResultOutput) ToLookupVirtualMachineScheduleResultOutputWithContext(ctx context.Context) LookupVirtualMachineScheduleResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupVirtualMachineScheduleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualMachineScheduleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of the schedule.

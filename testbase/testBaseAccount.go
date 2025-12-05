@@ -8,35 +8,37 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Test Base Account resource.
 //
-// Uses Azure REST API version 2022-04-01-preview. In version 1.x of the Azure Native provider, it used API version 2022-04-01-preview.
+// Uses Azure REST API version 2023-11-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-04-01-preview.
 //
-// Other available API versions: 2023-11-01-preview.
+// Other available API versions: 2022-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native testbase [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type TestBaseAccount struct {
 	pulumi.CustomResourceState
 
 	// The access level of the Test Base Account.
 	AccessLevel pulumi.StringOutput `pulumi:"accessLevel"`
-	// Resource Etag.
-	Etag pulumi.StringOutput `pulumi:"etag"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// The identity of the testBaseAccount.
+	Identity SystemAssignedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Resource name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning state of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The SKU of the Test Base Account.
 	Sku TestBaseAccountSKUResponseOutput `pulumi:"sku"`
-	// The system metadata relating to this resource
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// The tags of the resource.
+	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -98,15 +100,17 @@ func (TestBaseAccountState) ElementType() reflect.Type {
 }
 
 type testBaseAccountArgs struct {
+	// The identity of the testBaseAccount.
+	Identity *SystemAssignedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// The name of the resource group that contains the resource.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The flag indicating if we would like to restore the Test Base Accounts which were soft deleted before.
 	Restore *bool `pulumi:"restore"`
 	// The SKU of the Test Base Account.
 	Sku TestBaseAccountSKU `pulumi:"sku"`
-	// The tags of the resource.
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The resource name of the Test Base Account.
 	TestBaseAccountName *string `pulumi:"testBaseAccountName"`
@@ -114,15 +118,17 @@ type testBaseAccountArgs struct {
 
 // The set of arguments for constructing a TestBaseAccount resource.
 type TestBaseAccountArgs struct {
+	// The identity of the testBaseAccount.
+	Identity SystemAssignedServiceIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
-	// The name of the resource group that contains the resource.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The flag indicating if we would like to restore the Test Base Accounts which were soft deleted before.
 	Restore pulumi.BoolPtrInput
 	// The SKU of the Test Base Account.
 	Sku TestBaseAccountSKUInput
-	// The tags of the resource.
+	// Resource tags.
 	Tags pulumi.StringMapInput
 	// The resource name of the Test Base Account.
 	TestBaseAccountName pulumi.StringPtrInput
@@ -170,9 +176,14 @@ func (o TestBaseAccountOutput) AccessLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *TestBaseAccount) pulumi.StringOutput { return v.AccessLevel }).(pulumi.StringOutput)
 }
 
-// Resource Etag.
-func (o TestBaseAccountOutput) Etag() pulumi.StringOutput {
-	return o.ApplyT(func(v *TestBaseAccount) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+// The Azure API version of the resource.
+func (o TestBaseAccountOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *TestBaseAccount) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// The identity of the testBaseAccount.
+func (o TestBaseAccountOutput) Identity() SystemAssignedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *TestBaseAccount) SystemAssignedServiceIdentityResponsePtrOutput { return v.Identity }).(SystemAssignedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -180,7 +191,7 @@ func (o TestBaseAccountOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *TestBaseAccount) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o TestBaseAccountOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TestBaseAccount) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -195,17 +206,17 @@ func (o TestBaseAccountOutput) Sku() TestBaseAccountSKUResponseOutput {
 	return o.ApplyT(func(v *TestBaseAccount) TestBaseAccountSKUResponseOutput { return v.Sku }).(TestBaseAccountSKUResponseOutput)
 }
 
-// The system metadata relating to this resource
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o TestBaseAccountOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *TestBaseAccount) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// The tags of the resource.
+// Resource tags.
 func (o TestBaseAccountOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *TestBaseAccount) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o TestBaseAccountOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *TestBaseAccount) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

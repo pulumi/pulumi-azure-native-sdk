@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the object replication policy of the storage account by policy ID.
 //
-// Uses Azure REST API version 2022-09-01.
+// Uses Azure REST API version 2024-01-01.
 //
-// Other available API versions: 2023-01-01, 2023-04-01, 2023-05-01, 2024-01-01.
+// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupObjectReplicationPolicy(ctx *pulumi.Context, args *LookupObjectReplicationPolicyArgs, opts ...pulumi.InvokeOption) (*LookupObjectReplicationPolicyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupObjectReplicationPolicyResult
@@ -37,12 +37,16 @@ type LookupObjectReplicationPolicyArgs struct {
 
 // The replication policy between two storage accounts. Multiple rules can be defined in one policy.
 type LookupObjectReplicationPolicyResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Required. Destination account name. It should be full resource id if allowCrossTenantReplication set to false.
 	DestinationAccount string `pulumi:"destinationAccount"`
 	// Indicates when the policy is enabled on the source account.
 	EnabledTime string `pulumi:"enabledTime"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
+	// Optional. The object replication policy metrics feature options.
+	Metrics *ObjectReplicationPolicyPropertiesResponseMetrics `pulumi:"metrics"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// A unique id for object replication policy.
@@ -92,6 +96,11 @@ func (o LookupObjectReplicationPolicyResultOutput) ToLookupObjectReplicationPoli
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupObjectReplicationPolicyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupObjectReplicationPolicyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Required. Destination account name. It should be full resource id if allowCrossTenantReplication set to false.
 func (o LookupObjectReplicationPolicyResultOutput) DestinationAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupObjectReplicationPolicyResult) string { return v.DestinationAccount }).(pulumi.StringOutput)
@@ -105,6 +114,13 @@ func (o LookupObjectReplicationPolicyResultOutput) EnabledTime() pulumi.StringOu
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupObjectReplicationPolicyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupObjectReplicationPolicyResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Optional. The object replication policy metrics feature options.
+func (o LookupObjectReplicationPolicyResultOutput) Metrics() ObjectReplicationPolicyPropertiesResponseMetricsPtrOutput {
+	return o.ApplyT(func(v LookupObjectReplicationPolicyResult) *ObjectReplicationPolicyPropertiesResponseMetrics {
+		return v.Metrics
+	}).(ObjectReplicationPolicyPropertiesResponseMetricsPtrOutput)
 }
 
 // The name of the resource

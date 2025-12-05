@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Software update configuration properties.
 //
-// Uses Azure REST API version 2019-06-01. In version 1.x of the Azure Native provider, it used API version 2019-06-01.
+// Uses Azure REST API version 2023-05-15-preview. In version 2.x of the Azure Native provider, it used API version 2019-06-01.
 //
-// Other available API versions: 2017-05-15-preview, 2023-05-15-preview, 2024-10-23.
+// Other available API versions: 2017-05-15-preview, 2019-06-01, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type SoftwareUpdateConfigurationByName struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// CreatedBy property, which only appears in the response.
 	CreatedBy pulumi.StringOutput `pulumi:"createdBy"`
 	// Creation time of the resource, which only appears in the response.
@@ -181,6 +183,11 @@ func (o SoftwareUpdateConfigurationByNameOutput) ToSoftwareUpdateConfigurationBy
 
 func (o SoftwareUpdateConfigurationByNameOutput) ToSoftwareUpdateConfigurationByNameOutputWithContext(ctx context.Context) SoftwareUpdateConfigurationByNameOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o SoftwareUpdateConfigurationByNameOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SoftwareUpdateConfigurationByName) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // CreatedBy property, which only appears in the response.

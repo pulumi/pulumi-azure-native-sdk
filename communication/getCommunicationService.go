@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the CommunicationService and its properties.
 //
-// Uses Azure REST API version 2023-03-31.
+// Uses Azure REST API version 2023-06-01-preview.
 //
-// Other available API versions: 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2024-09-01-preview.
+// Other available API versions: 2023-03-31, 2023-04-01, 2023-04-01-preview, 2024-09-01-preview, 2025-05-01, 2025-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native communication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupCommunicationService(ctx *pulumi.Context, args *LookupCommunicationServiceArgs, opts ...pulumi.InvokeOption) (*LookupCommunicationServiceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCommunicationServiceResult
@@ -35,12 +35,16 @@ type LookupCommunicationServiceArgs struct {
 
 // A class representing a CommunicationService resource.
 type LookupCommunicationServiceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The location where the communication service stores its data at rest.
 	DataLocation string `pulumi:"dataLocation"`
 	// FQDN of the CommunicationService instance.
 	HostName string `pulumi:"hostName"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
+	// Managed service identity (system assigned and/or user assigned identities)
+	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
 	// The immutable resource Id of the communication service.
 	ImmutableResourceId string `pulumi:"immutableResourceId"`
 	// List of email Domain resource Ids.
@@ -98,6 +102,11 @@ func (o LookupCommunicationServiceResultOutput) ToLookupCommunicationServiceResu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupCommunicationServiceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCommunicationServiceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The location where the communication service stores its data at rest.
 func (o LookupCommunicationServiceResultOutput) DataLocation() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCommunicationServiceResult) string { return v.DataLocation }).(pulumi.StringOutput)
@@ -111,6 +120,11 @@ func (o LookupCommunicationServiceResultOutput) HostName() pulumi.StringOutput {
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupCommunicationServiceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCommunicationServiceResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Managed service identity (system assigned and/or user assigned identities)
+func (o LookupCommunicationServiceResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupCommunicationServiceResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The immutable resource Id of the communication service.

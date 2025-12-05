@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// See [planned maintenance](https://docs.microsoft.com/azure/aks/planned-maintenance) for more information about planned maintenance.
+// Planned maintenance configuration, used to configure when updates can be deployed to a Managed Cluster. See [planned maintenance](https://docs.microsoft.com/azure/aks/planned-maintenance) for more information about planned maintenance.
 //
-// Uses Azure REST API version 2023-04-01.
+// Uses Azure REST API version 2025-08-01.
 //
-// Other available API versions: 2023-05-02-preview, 2023-06-01, 2023-06-02-preview, 2023-07-01, 2023-07-02-preview, 2023-08-01, 2023-08-02-preview, 2023-09-01, 2023-09-02-preview, 2023-10-01, 2023-10-02-preview, 2023-11-01, 2023-11-02-preview, 2024-01-01, 2024-01-02-preview, 2024-02-01, 2024-02-02-preview, 2024-03-02-preview, 2024-04-02-preview, 2024-05-01, 2024-05-02-preview, 2024-06-02-preview, 2024-07-01, 2024-07-02-preview, 2024-08-01, 2024-09-01, 2024-09-02-preview, 2024-10-01, 2024-10-02-preview, 2025-01-01.
+// Other available API versions: 2020-12-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-07-01, 2021-08-01, 2021-09-01, 2021-10-01, 2021-11-01-preview, 2022-01-01, 2022-01-02-preview, 2022-02-01, 2022-02-02-preview, 2022-03-01, 2022-03-02-preview, 2022-04-01, 2022-04-02-preview, 2022-05-02-preview, 2022-06-01, 2022-06-02-preview, 2022-07-01, 2022-07-02-preview, 2022-08-02-preview, 2022-08-03-preview, 2022-09-01, 2022-09-02-preview, 2022-10-02-preview, 2022-11-01, 2022-11-02-preview, 2023-01-01, 2023-01-02-preview, 2023-02-01, 2023-02-02-preview, 2023-03-01, 2023-03-02-preview, 2023-04-01, 2023-04-02-preview, 2023-05-01, 2023-05-02-preview, 2023-06-01, 2023-06-02-preview, 2023-07-01, 2023-07-02-preview, 2023-08-01, 2023-08-02-preview, 2023-09-01, 2023-09-02-preview, 2023-10-01, 2023-10-02-preview, 2023-11-01, 2023-11-02-preview, 2024-01-01, 2024-01-02-preview, 2024-02-01, 2024-02-02-preview, 2024-03-02-preview, 2024-04-02-preview, 2024-05-01, 2024-05-02-preview, 2024-06-02-preview, 2024-07-01, 2024-07-02-preview, 2024-08-01, 2024-09-01, 2024-09-02-preview, 2024-10-01, 2024-10-02-preview, 2025-01-01, 2025-01-02-preview, 2025-02-01, 2025-02-02-preview, 2025-03-01, 2025-03-02-preview, 2025-04-01, 2025-04-02-preview, 2025-05-01, 2025-05-02-preview, 2025-06-02-preview, 2025-07-01, 2025-07-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupMaintenanceConfiguration(ctx *pulumi.Context, args *LookupMaintenanceConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupMaintenanceConfigurationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMaintenanceConfigurationResult
@@ -23,7 +23,7 @@ func LookupMaintenanceConfiguration(ctx *pulumi.Context, args *LookupMaintenance
 	if err != nil {
 		return nil, err
 	}
-	return &rv, nil
+	return rv.Defaults(), nil
 }
 
 type LookupMaintenanceConfigurationArgs struct {
@@ -35,22 +35,36 @@ type LookupMaintenanceConfigurationArgs struct {
 	ResourceName string `pulumi:"resourceName"`
 }
 
-// See [planned maintenance](https://docs.microsoft.com/azure/aks/planned-maintenance) for more information about planned maintenance.
+// Planned maintenance configuration, used to configure when updates can be deployed to a Managed Cluster. See [planned maintenance](https://docs.microsoft.com/azure/aks/planned-maintenance) for more information about planned maintenance.
 type LookupMaintenanceConfigurationResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource ID.
 	Id string `pulumi:"id"`
+	// Maintenance window for the maintenance configuration.
+	MaintenanceWindow *MaintenanceWindowResponse `pulumi:"maintenanceWindow"`
 	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
 	Name string `pulumi:"name"`
 	// Time slots on which upgrade is not allowed.
 	NotAllowedTime []TimeSpanResponse `pulumi:"notAllowedTime"`
 	// The system metadata relating to this resource.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// If two array entries specify the same day of the week, the applied configuration is the union of times in both entries.
+	// Time slots during the week when planned maintenance is allowed to proceed. If two array entries specify the same day of the week, the applied configuration is the union of times in both entries.
 	TimeInWeek []TimeInWeekResponse `pulumi:"timeInWeek"`
 	// Resource type
 	Type string `pulumi:"type"`
 }
 
+// Defaults sets the appropriate defaults for LookupMaintenanceConfigurationResult
+func (val *LookupMaintenanceConfigurationResult) Defaults() *LookupMaintenanceConfigurationResult {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.MaintenanceWindow = tmp.MaintenanceWindow.Defaults()
+
+	return &tmp
+}
 func LookupMaintenanceConfigurationOutput(ctx *pulumi.Context, args LookupMaintenanceConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupMaintenanceConfigurationResultOutput {
 	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupMaintenanceConfigurationResultOutput, error) {
@@ -73,7 +87,7 @@ func (LookupMaintenanceConfigurationOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupMaintenanceConfigurationArgs)(nil)).Elem()
 }
 
-// See [planned maintenance](https://docs.microsoft.com/azure/aks/planned-maintenance) for more information about planned maintenance.
+// Planned maintenance configuration, used to configure when updates can be deployed to a Managed Cluster. See [planned maintenance](https://docs.microsoft.com/azure/aks/planned-maintenance) for more information about planned maintenance.
 type LookupMaintenanceConfigurationResultOutput struct{ *pulumi.OutputState }
 
 func (LookupMaintenanceConfigurationResultOutput) ElementType() reflect.Type {
@@ -88,9 +102,19 @@ func (o LookupMaintenanceConfigurationResultOutput) ToLookupMaintenanceConfigura
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupMaintenanceConfigurationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMaintenanceConfigurationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Resource ID.
 func (o LookupMaintenanceConfigurationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMaintenanceConfigurationResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Maintenance window for the maintenance configuration.
+func (o LookupMaintenanceConfigurationResultOutput) MaintenanceWindow() MaintenanceWindowResponsePtrOutput {
+	return o.ApplyT(func(v LookupMaintenanceConfigurationResult) *MaintenanceWindowResponse { return v.MaintenanceWindow }).(MaintenanceWindowResponsePtrOutput)
 }
 
 // The name of the resource that is unique within a resource group. This name can be used to access the resource.
@@ -108,7 +132,7 @@ func (o LookupMaintenanceConfigurationResultOutput) SystemData() SystemDataRespo
 	return o.ApplyT(func(v LookupMaintenanceConfigurationResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// If two array entries specify the same day of the week, the applied configuration is the union of times in both entries.
+// Time slots during the week when planned maintenance is allowed to proceed. If two array entries specify the same day of the week, the applied configuration is the union of times in both entries.
 func (o LookupMaintenanceConfigurationResultOutput) TimeInWeek() TimeInWeekResponseArrayOutput {
 	return o.ApplyT(func(v LookupMaintenanceConfigurationResult) []TimeInWeekResponse { return v.TimeInWeek }).(TimeInWeekResponseArrayOutput)
 }

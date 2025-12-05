@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get configuration assignment for resource.
 //
-// Uses Azure REST API version 2023-04-01.
+// Uses Azure REST API version 2023-10-01-preview.
 //
-// Other available API versions: 2023-09-01-preview, 2023-10-01-preview.
+// Other available API versions: 2023-04-01, 2023-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native maintenance [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupConfigurationAssignmentsForSubscription(ctx *pulumi.Context, args *LookupConfigurationAssignmentsForSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationAssignmentsForSubscriptionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConfigurationAssignmentsForSubscriptionResult
@@ -27,27 +27,29 @@ func LookupConfigurationAssignmentsForSubscription(ctx *pulumi.Context, args *Lo
 }
 
 type LookupConfigurationAssignmentsForSubscriptionArgs struct {
-	// Configuration assignment name
+	// The name of the ConfigurationAssignment
 	ConfigurationAssignmentName string `pulumi:"configurationAssignmentName"`
 }
 
 // Configuration Assignment
 type LookupConfigurationAssignmentsForSubscriptionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Properties of the configuration assignment
 	Filter *ConfigurationAssignmentFilterPropertiesResponse `pulumi:"filter"`
-	// Fully qualified identifier of the resource
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Location of the resource
 	Location *string `pulumi:"location"`
 	// The maintenance configuration Id
 	MaintenanceConfigurationId *string `pulumi:"maintenanceConfigurationId"`
-	// Name of the resource
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// The unique resourceId
 	ResourceId *string `pulumi:"resourceId"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// Type of the resource
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -61,7 +63,7 @@ func LookupConfigurationAssignmentsForSubscriptionOutput(ctx *pulumi.Context, ar
 }
 
 type LookupConfigurationAssignmentsForSubscriptionOutputArgs struct {
-	// Configuration assignment name
+	// The name of the ConfigurationAssignment
 	ConfigurationAssignmentName pulumi.StringInput `pulumi:"configurationAssignmentName"`
 }
 
@@ -84,6 +86,11 @@ func (o LookupConfigurationAssignmentsForSubscriptionResultOutput) ToLookupConfi
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupConfigurationAssignmentsForSubscriptionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConfigurationAssignmentsForSubscriptionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Properties of the configuration assignment
 func (o LookupConfigurationAssignmentsForSubscriptionResultOutput) Filter() ConfigurationAssignmentFilterPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v LookupConfigurationAssignmentsForSubscriptionResult) *ConfigurationAssignmentFilterPropertiesResponse {
@@ -91,7 +98,7 @@ func (o LookupConfigurationAssignmentsForSubscriptionResultOutput) Filter() Conf
 	}).(ConfigurationAssignmentFilterPropertiesResponsePtrOutput)
 }
 
-// Fully qualified identifier of the resource
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupConfigurationAssignmentsForSubscriptionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationAssignmentsForSubscriptionResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -108,7 +115,7 @@ func (o LookupConfigurationAssignmentsForSubscriptionResultOutput) MaintenanceCo
 	}).(pulumi.StringPtrOutput)
 }
 
-// Name of the resource
+// The name of the resource
 func (o LookupConfigurationAssignmentsForSubscriptionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationAssignmentsForSubscriptionResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -123,7 +130,7 @@ func (o LookupConfigurationAssignmentsForSubscriptionResultOutput) SystemData() 
 	return o.ApplyT(func(v LookupConfigurationAssignmentsForSubscriptionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Type of the resource
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupConfigurationAssignmentsForSubscriptionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationAssignmentsForSubscriptionResult) string { return v.Type }).(pulumi.StringOutput)
 }

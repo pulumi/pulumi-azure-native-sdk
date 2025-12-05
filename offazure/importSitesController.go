@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A ImportSite
 //
-// Uses Azure REST API version 2023-06-06.
+// Uses Azure REST API version 2023-10-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-06-06.
 //
-// Other available API versions: 2023-10-01-preview, 2024-05-01-preview.
+// Other available API versions: 2023-06-06, 2024-05-01-preview, 2024-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native offazure [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ImportSitesController struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets or sets the ARM ID of migration hub solution for SDS.
 	DiscoverySolutionId pulumi.StringPtrOutput `pulumi:"discoverySolutionId"`
 	// The geo-location where the resource lives
@@ -59,6 +61,9 @@ func NewImportSitesController(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:offazure/v20240501preview:ImportSitesController"),
+		},
+		{
+			Type: pulumi.String("azure-native:offazure/v20240701preview:ImportSitesController"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -160,6 +165,11 @@ func (o ImportSitesControllerOutput) ToImportSitesControllerOutput() ImportSites
 
 func (o ImportSitesControllerOutput) ToImportSitesControllerOutputWithContext(ctx context.Context) ImportSitesControllerOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ImportSitesControllerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ImportSitesController) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the ARM ID of migration hub solution for SDS.

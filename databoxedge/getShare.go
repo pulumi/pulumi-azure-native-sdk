@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents a share on the  Data Box Edge/Gateway device.
 //
-// Uses Azure REST API version 2022-03-01.
+// Uses Azure REST API version 2023-07-01.
 //
-// Other available API versions: 2023-01-01-preview, 2023-07-01, 2023-12-01.
+// Other available API versions: 2022-03-01, 2022-04-01-preview, 2022-12-01-preview, 2023-01-01-preview, 2023-12-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native databoxedge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupShare(ctx *pulumi.Context, args *LookupShareArgs, opts ...pulumi.InvokeOption) (*LookupShareResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupShareResult
@@ -39,6 +39,8 @@ type LookupShareArgs struct {
 type LookupShareResult struct {
 	// Access protocol to be used by the share.
 	AccessProtocol string `pulumi:"accessProtocol"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Azure container mapping for the share.
 	AzureContainerInfo *AzureContainerInfoResponse `pulumi:"azureContainerInfo"`
 	// List of IP addresses and corresponding access rights on the share(required for NFS protocol).
@@ -107,6 +109,11 @@ func (o LookupShareResultOutput) ToLookupShareResultOutputWithContext(ctx contex
 // Access protocol to be used by the share.
 func (o LookupShareResultOutput) AccessProtocol() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupShareResult) string { return v.AccessProtocol }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupShareResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupShareResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Azure container mapping for the share.

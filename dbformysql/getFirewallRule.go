@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets information about a server firewall rule.
 //
-// Uses Azure REST API version 2022-01-01.
+// Uses Azure REST API version 2023-12-30.
 //
-// Other available API versions: 2017-12-01, 2023-06-01-preview, 2023-06-30, 2023-12-30.
+// Other available API versions: 2022-01-01, 2023-06-01-preview, 2023-06-30, 2024-12-01-preview, 2024-12-30. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbformysql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupFirewallRule(ctx *pulumi.Context, args *LookupFirewallRuleArgs, opts ...pulumi.InvokeOption) (*LookupFirewallRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFirewallRuleResult
@@ -37,15 +37,17 @@ type LookupFirewallRuleArgs struct {
 
 // Represents a server firewall rule.
 type LookupFirewallRuleResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The end IP address of the server firewall rule. Must be IPv4 format.
 	EndIpAddress string `pulumi:"endIpAddress"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// The start IP address of the server firewall rule. Must be IPv4 format.
 	StartIpAddress string `pulumi:"startIpAddress"`
-	// The system metadata relating to this resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
@@ -88,12 +90,17 @@ func (o LookupFirewallRuleResultOutput) ToLookupFirewallRuleResultOutputWithCont
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupFirewallRuleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFirewallRuleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The end IP address of the server firewall rule. Must be IPv4 format.
 func (o LookupFirewallRuleResultOutput) EndIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFirewallRuleResult) string { return v.EndIpAddress }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupFirewallRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFirewallRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -108,7 +115,7 @@ func (o LookupFirewallRuleResultOutput) StartIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFirewallRuleResult) string { return v.StartIpAddress }).(pulumi.StringOutput)
 }
 
-// The system metadata relating to this resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupFirewallRuleResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupFirewallRuleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }

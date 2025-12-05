@@ -7,13 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns an import job.
 //
 // Uses Azure REST API version 2024-03-01.
+//
+// Other available API versions: 2024-07-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagecache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupImportJob(ctx *pulumi.Context, args *LookupImportJobArgs, opts ...pulumi.InvokeOption) (*LookupImportJobResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupImportJobResult
@@ -35,6 +37,8 @@ type LookupImportJobArgs struct {
 
 // An import job instance. Follows Azure Resource Manager standards: https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md
 type LookupImportJobResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A recent and frequently updated rate of total files, directories, and symlinks imported per second.
 	BlobsImportedPerSecond float64 `pulumi:"blobsImportedPerSecond"`
 	// A recent and frequently updated rate of blobs walked per second.
@@ -128,6 +132,11 @@ func (o LookupImportJobResultOutput) ToLookupImportJobResultOutput() LookupImpor
 
 func (o LookupImportJobResultOutput) ToLookupImportJobResultOutputWithContext(ctx context.Context) LookupImportJobResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupImportJobResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupImportJobResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A recent and frequently updated rate of total files, directories, and symlinks imported per second.

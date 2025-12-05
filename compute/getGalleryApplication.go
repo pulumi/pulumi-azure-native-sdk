@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves information about a gallery Application Definition.
 //
-// Uses Azure REST API version 2022-03-03.
+// Uses Azure REST API version 2024-03-03.
 //
-// Other available API versions: 2022-08-03, 2023-07-03, 2024-03-03.
+// Other available API versions: 2022-03-03, 2022-08-03, 2023-07-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupGalleryApplication(ctx *pulumi.Context, args *LookupGalleryApplicationArgs, opts ...pulumi.InvokeOption) (*LookupGalleryApplicationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGalleryApplicationResult
@@ -29,14 +29,16 @@ func LookupGalleryApplication(ctx *pulumi.Context, args *LookupGalleryApplicatio
 type LookupGalleryApplicationArgs struct {
 	// The name of the gallery Application Definition to be retrieved.
 	GalleryApplicationName string `pulumi:"galleryApplicationName"`
-	// The name of the Shared Application Gallery from which the Application Definitions are to be retrieved.
+	// The name of the Shared Image Gallery.
 	GalleryName string `pulumi:"galleryName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Specifies information about the gallery Application Definition that you want to create or update.
 type LookupGalleryApplicationResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A list of custom actions that can be performed with all of the Gallery Application Versions within this Gallery Application.
 	CustomActions []GalleryApplicationCustomActionResponse `pulumi:"customActions"`
 	// The description of this gallery Application Definition resource. This property is updatable.
@@ -45,21 +47,23 @@ type LookupGalleryApplicationResult struct {
 	EndOfLifeDate *string `pulumi:"endOfLifeDate"`
 	// The Eula agreement for the gallery Application Definition.
 	Eula *string `pulumi:"eula"`
-	// Resource Id
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// Resource location
+	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
-	// Resource name
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// The privacy statement uri.
 	PrivacyStatementUri *string `pulumi:"privacyStatementUri"`
 	// The release note uri.
 	ReleaseNoteUri *string `pulumi:"releaseNoteUri"`
-	// This property allows you to specify the supported type of the OS that application is built for. <br><br> Possible values are: <br><br> **Windows** <br><br> **Linux**
+	// This property allows you to specify the supported type of the OS that application is built for. Possible values are: **Windows,** **Linux.**
 	SupportedOSType string `pulumi:"supportedOSType"`
-	// Resource tags
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// Resource type
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -75,9 +79,9 @@ func LookupGalleryApplicationOutput(ctx *pulumi.Context, args LookupGalleryAppli
 type LookupGalleryApplicationOutputArgs struct {
 	// The name of the gallery Application Definition to be retrieved.
 	GalleryApplicationName pulumi.StringInput `pulumi:"galleryApplicationName"`
-	// The name of the Shared Application Gallery from which the Application Definitions are to be retrieved.
+	// The name of the Shared Image Gallery.
 	GalleryName pulumi.StringInput `pulumi:"galleryName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -98,6 +102,11 @@ func (o LookupGalleryApplicationResultOutput) ToLookupGalleryApplicationResultOu
 
 func (o LookupGalleryApplicationResultOutput) ToLookupGalleryApplicationResultOutputWithContext(ctx context.Context) LookupGalleryApplicationResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupGalleryApplicationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGalleryApplicationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A list of custom actions that can be performed with all of the Gallery Application Versions within this Gallery Application.
@@ -122,17 +131,17 @@ func (o LookupGalleryApplicationResultOutput) Eula() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupGalleryApplicationResult) *string { return v.Eula }).(pulumi.StringPtrOutput)
 }
 
-// Resource Id
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupGalleryApplicationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGalleryApplicationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Resource location
+// The geo-location where the resource lives
 func (o LookupGalleryApplicationResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGalleryApplicationResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// Resource name
+// The name of the resource
 func (o LookupGalleryApplicationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGalleryApplicationResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -147,17 +156,22 @@ func (o LookupGalleryApplicationResultOutput) ReleaseNoteUri() pulumi.StringPtrO
 	return o.ApplyT(func(v LookupGalleryApplicationResult) *string { return v.ReleaseNoteUri }).(pulumi.StringPtrOutput)
 }
 
-// This property allows you to specify the supported type of the OS that application is built for. <br><br> Possible values are: <br><br> **Windows** <br><br> **Linux**
+// This property allows you to specify the supported type of the OS that application is built for. Possible values are: **Windows,** **Linux.**
 func (o LookupGalleryApplicationResultOutput) SupportedOSType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGalleryApplicationResult) string { return v.SupportedOSType }).(pulumi.StringOutput)
 }
 
-// Resource tags
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupGalleryApplicationResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupGalleryApplicationResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// Resource tags.
 func (o LookupGalleryApplicationResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupGalleryApplicationResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Resource type
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupGalleryApplicationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGalleryApplicationResult) string { return v.Type }).(pulumi.StringOutput)
 }

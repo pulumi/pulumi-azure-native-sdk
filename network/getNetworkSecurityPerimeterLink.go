@@ -7,13 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified NSP link resource.
 //
 // Uses Azure REST API version 2024-06-01-preview.
+//
+// Other available API versions: 2024-07-01, 2024-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupNetworkSecurityPerimeterLink(ctx *pulumi.Context, args *LookupNetworkSecurityPerimeterLinkArgs, opts ...pulumi.InvokeOption) (*LookupNetworkSecurityPerimeterLinkResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkSecurityPerimeterLinkResult
@@ -37,6 +39,8 @@ type LookupNetworkSecurityPerimeterLinkArgs struct {
 type LookupNetworkSecurityPerimeterLinkResult struct {
 	// Perimeter ARM Id for the remote NSP with which the link gets created in Auto-approval mode. It should be used when the NSP admin have Microsoft.Network/networkSecurityPerimeters/linkPerimeter/action permission on the remote NSP resource.
 	AutoApprovedRemotePerimeterResourceId *string `pulumi:"autoApprovedRemotePerimeterResourceId"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A message passed to the owner of the remote NSP link resource with this connection request. In case of Auto-approved flow, it is default to 'Auto Approved'. Restricted to 140 chars.
 	Description *string `pulumi:"description"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -107,6 +111,11 @@ func (o LookupNetworkSecurityPerimeterLinkResultOutput) AutoApprovedRemotePerime
 	return o.ApplyT(func(v LookupNetworkSecurityPerimeterLinkResult) *string {
 		return v.AutoApprovedRemotePerimeterResourceId
 	}).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupNetworkSecurityPerimeterLinkResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkSecurityPerimeterLinkResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A message passed to the owner of the remote NSP link resource with this connection request. In case of Auto-approved flow, it is default to 'Auto Approved'. Restricted to 140 chars.

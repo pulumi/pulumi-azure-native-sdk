@@ -7,18 +7,20 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The connector setting
 //
-// Uses Azure REST API version 2020-01-01-preview. In version 1.x of the Azure Native provider, it used API version 2020-01-01-preview.
+// Uses Azure REST API version 2020-01-01-preview. In version 2.x of the Azure Native provider, it used API version 2020-01-01-preview.
 type Connector struct {
 	pulumi.CustomResourceState
 
 	// Settings for authentication management, these settings are relevant only for the cloud connector.
 	AuthenticationDetails pulumi.AnyOutput `pulumi:"authenticationDetails"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Settings for hybrid compute management. These settings are relevant only for Arc autoProvision (Hybrid Compute).
 	HybridComputeSettings HybridComputeSettingsPropertiesResponsePtrOutput `pulumi:"hybridComputeSettings"`
 	// Resource name
@@ -131,6 +133,11 @@ func (o ConnectorOutput) ToConnectorOutputWithContext(ctx context.Context) Conne
 // Settings for authentication management, these settings are relevant only for the cloud connector.
 func (o ConnectorOutput) AuthenticationDetails() pulumi.AnyOutput {
 	return o.ApplyT(func(v *Connector) pulumi.AnyOutput { return v.AuthenticationDetails }).(pulumi.AnyOutput)
+}
+
+// The Azure API version of the resource.
+func (o ConnectorOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connector) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Settings for hybrid compute management. These settings are relevant only for Arc autoProvision (Hybrid Compute).

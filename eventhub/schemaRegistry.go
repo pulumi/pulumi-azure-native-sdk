@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Single item in List or Get Schema Group operation
 //
-// Uses Azure REST API version 2022-10-01-preview. In version 1.x of the Azure Native provider, it used API version 2022-01-01-preview.
+// Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2022-10-01-preview.
 //
-// Other available API versions: 2023-01-01-preview, 2024-01-01, 2024-05-01-preview.
+// Other available API versions: 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2024-05-01-preview, 2025-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventhub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type SchemaRegistry struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Exact time the Schema Group was created.
 	CreatedAtUtc pulumi.StringOutput `pulumi:"createdAtUtc"`
 	// The ETag value.
@@ -71,6 +73,9 @@ func NewSchemaRegistry(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventhub/v20240501preview:SchemaRegistry"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventhub/v20250501preview:SchemaRegistry"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -168,6 +173,11 @@ func (o SchemaRegistryOutput) ToSchemaRegistryOutput() SchemaRegistryOutput {
 
 func (o SchemaRegistryOutput) ToSchemaRegistryOutputWithContext(ctx context.Context) SchemaRegistryOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o SchemaRegistryOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SchemaRegistry) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Exact time the Schema Group was created.

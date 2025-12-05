@@ -7,18 +7,24 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Uses Azure REST API version 2021-09-01-preview. In version 1.x of the Azure Native provider, it used API version 2020-11-20.
+// Uses Azure REST API version 2024-09-01. In version 2.x of the Azure Native provider, it used API version 2021-09-01-preview.
+//
+// Other available API versions: 2021-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native providerhub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ProviderRegistration struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// Provider registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type.
+	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// The name of the resource
 	Name       pulumi.StringOutput                          `pulumi:"name"`
-	Properties ProviderRegistrationResponsePropertiesOutput `pulumi:"properties"`
-	// Metadata pertaining to creation and last modification of the resource.
+	Properties ProviderRegistrationPropertiesResponseOutput `pulumi:"properties"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -31,6 +37,9 @@ func NewProviderRegistration(ctx *pulumi.Context,
 		args = &ProviderRegistrationArgs{}
 	}
 
+	if args.Kind == nil {
+		args.Kind = pulumi.StringPtr("Managed")
+	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:providerhub/v20201120:ProviderRegistration"),
@@ -43,6 +52,9 @@ func NewProviderRegistration(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:providerhub/v20210901preview:ProviderRegistration"),
+		},
+		{
+			Type: pulumi.String("azure-native:providerhub/v20240901:ProviderRegistration"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -79,6 +91,8 @@ func (ProviderRegistrationState) ElementType() reflect.Type {
 }
 
 type providerRegistrationArgs struct {
+	// Provider registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type.
+	Kind       *string                         `pulumi:"kind"`
 	Properties *ProviderRegistrationProperties `pulumi:"properties"`
 	// The name of the resource provider hosted within ProviderHub.
 	ProviderNamespace *string `pulumi:"providerNamespace"`
@@ -86,6 +100,8 @@ type providerRegistrationArgs struct {
 
 // The set of arguments for constructing a ProviderRegistration resource.
 type ProviderRegistrationArgs struct {
+	// Provider registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type.
+	Kind       pulumi.StringPtrInput
 	Properties ProviderRegistrationPropertiesPtrInput
 	// The name of the resource provider hosted within ProviderHub.
 	ProviderNamespace pulumi.StringPtrInput
@@ -128,16 +144,26 @@ func (o ProviderRegistrationOutput) ToProviderRegistrationOutputWithContext(ctx 
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ProviderRegistrationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProviderRegistration) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Provider registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type.
+func (o ProviderRegistrationOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderRegistration) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
 // The name of the resource
 func (o ProviderRegistrationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProviderRegistration) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o ProviderRegistrationOutput) Properties() ProviderRegistrationResponsePropertiesOutput {
-	return o.ApplyT(func(v *ProviderRegistration) ProviderRegistrationResponsePropertiesOutput { return v.Properties }).(ProviderRegistrationResponsePropertiesOutput)
+func (o ProviderRegistrationOutput) Properties() ProviderRegistrationPropertiesResponseOutput {
+	return o.ApplyT(func(v *ProviderRegistration) ProviderRegistrationPropertiesResponseOutput { return v.Properties }).(ProviderRegistrationPropertiesResponseOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o ProviderRegistrationOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *ProviderRegistration) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a Service Fabric managed application resource created or in the process of being created in the Service Fabric cluster resource.
 //
-// Uses Azure REST API version 2023-03-01-preview.
+// Uses Azure REST API version 2024-04-01.
 //
-// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01-preview, 2024-02-01-preview, 2024-04-01, 2024-06-01-preview, 2024-09-01-preview.
+// Other available API versions: 2023-03-01-preview, 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01-preview, 2024-02-01-preview, 2024-06-01-preview, 2024-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicefabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupManagedClusterApplication(ctx *pulumi.Context, args *LookupManagedClusterApplicationArgs, opts ...pulumi.InvokeOption) (*LookupManagedClusterApplicationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagedClusterApplicationResult
@@ -37,6 +37,8 @@ type LookupManagedClusterApplicationArgs struct {
 
 // The application resource.
 type LookupManagedClusterApplicationResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Azure resource identifier.
 	Id string `pulumi:"id"`
 	// Describes the managed identities for an Azure resource.
@@ -99,6 +101,11 @@ func (o LookupManagedClusterApplicationResultOutput) ToLookupManagedClusterAppli
 
 func (o LookupManagedClusterApplicationResultOutput) ToLookupManagedClusterApplicationResultOutputWithContext(ctx context.Context) LookupManagedClusterApplicationResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupManagedClusterApplicationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupManagedClusterApplicationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Azure resource identifier.

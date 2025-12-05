@@ -8,20 +8,22 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Workspace data table definition.
 //
-// Uses Azure REST API version 2022-10-01. In version 1.x of the Azure Native provider, it used API version 2021-12-01-preview.
+// Uses Azure REST API version 2023-09-01. In version 2.x of the Azure Native provider, it used API version 2022-10-01.
 //
-// Other available API versions: 2023-09-01, 2025-02-01.
+// Other available API versions: 2021-12-01-preview, 2022-10-01, 2025-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Table struct {
 	pulumi.CustomResourceState
 
 	// The table data archive retention in days. Calculated as (totalRetentionInDays-retentionInDays)
 	ArchiveRetentionInDays pulumi.IntOutput `pulumi:"archiveRetentionInDays"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The timestamp that table plan was last modified (UTC).
 	LastPlanModifiedDate pulumi.StringOutput `pulumi:"lastPlanModifiedDate"`
 	// The name of the resource
@@ -195,6 +197,11 @@ func (o TableOutput) ToTableOutputWithContext(ctx context.Context) TableOutput {
 // The table data archive retention in days. Calculated as (totalRetentionInDays-retentionInDays)
 func (o TableOutput) ArchiveRetentionInDays() pulumi.IntOutput {
 	return o.ApplyT(func(v *Table) pulumi.IntOutput { return v.ArchiveRetentionInDays }).(pulumi.IntOutput)
+}
+
+// The Azure API version of the resource.
+func (o TableOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The timestamp that table plan was last modified (UTC).

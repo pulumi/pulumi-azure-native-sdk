@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The configurations regarding multiple standard load balancers. If not supplied, single load balancer mode will be used. Multiple standard load balancers mode will be used if at lease one configuration is supplied. There has to be a configuration named `kubernetes`.
 //
-// Uses Azure REST API version 2024-03-02-preview.
+// Uses Azure REST API version 2024-10-02-preview.
 //
-// Other available API versions: 2024-04-02-preview, 2024-05-02-preview, 2024-06-02-preview, 2024-07-02-preview, 2024-09-02-preview, 2024-10-02-preview.
+// Other available API versions: 2024-03-02-preview, 2024-04-02-preview, 2024-05-02-preview, 2024-06-02-preview, 2024-07-02-preview, 2024-09-02-preview, 2025-01-02-preview, 2025-02-02-preview, 2025-03-02-preview, 2025-04-02-preview, 2025-05-02-preview, 2025-06-02-preview, 2025-07-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupLoadBalancer(ctx *pulumi.Context, args *LookupLoadBalancerArgs, opts ...pulumi.InvokeOption) (*LookupLoadBalancerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLoadBalancerResult
@@ -39,6 +39,8 @@ type LookupLoadBalancerArgs struct {
 type LookupLoadBalancerResult struct {
 	// Whether to automatically place services on the load balancer. If not supplied, the default value is true. If set to false manually, both of the external and the internal load balancer will not be selected for services unless they explicitly target it.
 	AllowServicePlacement *bool `pulumi:"allowServicePlacement"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -99,6 +101,11 @@ func (o LookupLoadBalancerResultOutput) ToLookupLoadBalancerResultOutputWithCont
 // Whether to automatically place services on the load balancer. If not supplied, the default value is true. If set to false manually, both of the external and the internal load balancer will not be selected for services unless they explicitly target it.
 func (o LookupLoadBalancerResultOutput) AllowServicePlacement() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupLoadBalancerResult) *bool { return v.AllowServicePlacement }).(pulumi.BoolPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupLoadBalancerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoadBalancerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -257,6 +257,206 @@ func (o ResourceIdResponseArrayOutput) Index(i pulumi.IntInput) ResourceIdRespon
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourceIdResponse {
 		return vs[0].([]ResourceIdResponse)[vs[1].(int)]
 	}).(ResourceIdResponseOutput)
+}
+
+// SecurityPolicyConfigurations Subresource of Traffic Controller.
+type SecurityPolicyConfigurations struct {
+	// Contains reference to a WAF-type security policy.
+	WafSecurityPolicy *WafSecurityPolicy `pulumi:"wafSecurityPolicy"`
+}
+
+// SecurityPolicyConfigurationsInput is an input type that accepts SecurityPolicyConfigurationsArgs and SecurityPolicyConfigurationsOutput values.
+// You can construct a concrete instance of `SecurityPolicyConfigurationsInput` via:
+//
+//	SecurityPolicyConfigurationsArgs{...}
+type SecurityPolicyConfigurationsInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyConfigurationsOutput() SecurityPolicyConfigurationsOutput
+	ToSecurityPolicyConfigurationsOutputWithContext(context.Context) SecurityPolicyConfigurationsOutput
+}
+
+// SecurityPolicyConfigurations Subresource of Traffic Controller.
+type SecurityPolicyConfigurationsArgs struct {
+	// Contains reference to a WAF-type security policy.
+	WafSecurityPolicy WafSecurityPolicyPtrInput `pulumi:"wafSecurityPolicy"`
+}
+
+func (SecurityPolicyConfigurationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyConfigurations)(nil)).Elem()
+}
+
+func (i SecurityPolicyConfigurationsArgs) ToSecurityPolicyConfigurationsOutput() SecurityPolicyConfigurationsOutput {
+	return i.ToSecurityPolicyConfigurationsOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyConfigurationsArgs) ToSecurityPolicyConfigurationsOutputWithContext(ctx context.Context) SecurityPolicyConfigurationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyConfigurationsOutput)
+}
+
+func (i SecurityPolicyConfigurationsArgs) ToSecurityPolicyConfigurationsPtrOutput() SecurityPolicyConfigurationsPtrOutput {
+	return i.ToSecurityPolicyConfigurationsPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyConfigurationsArgs) ToSecurityPolicyConfigurationsPtrOutputWithContext(ctx context.Context) SecurityPolicyConfigurationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyConfigurationsOutput).ToSecurityPolicyConfigurationsPtrOutputWithContext(ctx)
+}
+
+// SecurityPolicyConfigurationsPtrInput is an input type that accepts SecurityPolicyConfigurationsArgs, SecurityPolicyConfigurationsPtr and SecurityPolicyConfigurationsPtrOutput values.
+// You can construct a concrete instance of `SecurityPolicyConfigurationsPtrInput` via:
+//
+//	        SecurityPolicyConfigurationsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityPolicyConfigurationsPtrInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyConfigurationsPtrOutput() SecurityPolicyConfigurationsPtrOutput
+	ToSecurityPolicyConfigurationsPtrOutputWithContext(context.Context) SecurityPolicyConfigurationsPtrOutput
+}
+
+type securityPolicyConfigurationsPtrType SecurityPolicyConfigurationsArgs
+
+func SecurityPolicyConfigurationsPtr(v *SecurityPolicyConfigurationsArgs) SecurityPolicyConfigurationsPtrInput {
+	return (*securityPolicyConfigurationsPtrType)(v)
+}
+
+func (*securityPolicyConfigurationsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyConfigurations)(nil)).Elem()
+}
+
+func (i *securityPolicyConfigurationsPtrType) ToSecurityPolicyConfigurationsPtrOutput() SecurityPolicyConfigurationsPtrOutput {
+	return i.ToSecurityPolicyConfigurationsPtrOutputWithContext(context.Background())
+}
+
+func (i *securityPolicyConfigurationsPtrType) ToSecurityPolicyConfigurationsPtrOutputWithContext(ctx context.Context) SecurityPolicyConfigurationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyConfigurationsPtrOutput)
+}
+
+// SecurityPolicyConfigurations Subresource of Traffic Controller.
+type SecurityPolicyConfigurationsOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyConfigurationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyConfigurations)(nil)).Elem()
+}
+
+func (o SecurityPolicyConfigurationsOutput) ToSecurityPolicyConfigurationsOutput() SecurityPolicyConfigurationsOutput {
+	return o
+}
+
+func (o SecurityPolicyConfigurationsOutput) ToSecurityPolicyConfigurationsOutputWithContext(ctx context.Context) SecurityPolicyConfigurationsOutput {
+	return o
+}
+
+func (o SecurityPolicyConfigurationsOutput) ToSecurityPolicyConfigurationsPtrOutput() SecurityPolicyConfigurationsPtrOutput {
+	return o.ToSecurityPolicyConfigurationsPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyConfigurationsOutput) ToSecurityPolicyConfigurationsPtrOutputWithContext(ctx context.Context) SecurityPolicyConfigurationsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPolicyConfigurations) *SecurityPolicyConfigurations {
+		return &v
+	}).(SecurityPolicyConfigurationsPtrOutput)
+}
+
+// Contains reference to a WAF-type security policy.
+func (o SecurityPolicyConfigurationsOutput) WafSecurityPolicy() WafSecurityPolicyPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyConfigurations) *WafSecurityPolicy { return v.WafSecurityPolicy }).(WafSecurityPolicyPtrOutput)
+}
+
+type SecurityPolicyConfigurationsPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyConfigurationsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyConfigurations)(nil)).Elem()
+}
+
+func (o SecurityPolicyConfigurationsPtrOutput) ToSecurityPolicyConfigurationsPtrOutput() SecurityPolicyConfigurationsPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyConfigurationsPtrOutput) ToSecurityPolicyConfigurationsPtrOutputWithContext(ctx context.Context) SecurityPolicyConfigurationsPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyConfigurationsPtrOutput) Elem() SecurityPolicyConfigurationsOutput {
+	return o.ApplyT(func(v *SecurityPolicyConfigurations) SecurityPolicyConfigurations {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityPolicyConfigurations
+		return ret
+	}).(SecurityPolicyConfigurationsOutput)
+}
+
+// Contains reference to a WAF-type security policy.
+func (o SecurityPolicyConfigurationsPtrOutput) WafSecurityPolicy() WafSecurityPolicyPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyConfigurations) *WafSecurityPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.WafSecurityPolicy
+	}).(WafSecurityPolicyPtrOutput)
+}
+
+// SecurityPolicyConfigurations Subresource of Traffic Controller.
+type SecurityPolicyConfigurationsResponse struct {
+	// Contains reference to a WAF-type security policy.
+	WafSecurityPolicy *WafSecurityPolicyResponse `pulumi:"wafSecurityPolicy"`
+}
+
+// SecurityPolicyConfigurations Subresource of Traffic Controller.
+type SecurityPolicyConfigurationsResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyConfigurationsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyConfigurationsResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyConfigurationsResponseOutput) ToSecurityPolicyConfigurationsResponseOutput() SecurityPolicyConfigurationsResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyConfigurationsResponseOutput) ToSecurityPolicyConfigurationsResponseOutputWithContext(ctx context.Context) SecurityPolicyConfigurationsResponseOutput {
+	return o
+}
+
+// Contains reference to a WAF-type security policy.
+func (o SecurityPolicyConfigurationsResponseOutput) WafSecurityPolicy() WafSecurityPolicyResponsePtrOutput {
+	return o.ApplyT(func(v SecurityPolicyConfigurationsResponse) *WafSecurityPolicyResponse { return v.WafSecurityPolicy }).(WafSecurityPolicyResponsePtrOutput)
+}
+
+type SecurityPolicyConfigurationsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyConfigurationsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyConfigurationsResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyConfigurationsResponsePtrOutput) ToSecurityPolicyConfigurationsResponsePtrOutput() SecurityPolicyConfigurationsResponsePtrOutput {
+	return o
+}
+
+func (o SecurityPolicyConfigurationsResponsePtrOutput) ToSecurityPolicyConfigurationsResponsePtrOutputWithContext(ctx context.Context) SecurityPolicyConfigurationsResponsePtrOutput {
+	return o
+}
+
+func (o SecurityPolicyConfigurationsResponsePtrOutput) Elem() SecurityPolicyConfigurationsResponseOutput {
+	return o.ApplyT(func(v *SecurityPolicyConfigurationsResponse) SecurityPolicyConfigurationsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityPolicyConfigurationsResponse
+		return ret
+	}).(SecurityPolicyConfigurationsResponseOutput)
+}
+
+// Contains reference to a WAF-type security policy.
+func (o SecurityPolicyConfigurationsResponsePtrOutput) WafSecurityPolicy() WafSecurityPolicyResponsePtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyConfigurationsResponse) *WafSecurityPolicyResponse {
+		if v == nil {
+			return nil
+		}
+		return v.WafSecurityPolicy
+	}).(WafSecurityPolicyResponsePtrOutput)
 }
 
 // Metadata pertaining to creation and last modification of the resource.
@@ -520,6 +720,206 @@ func (o WafPolicyResponsePtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Web Application Firewall Security Policy
+type WafSecurityPolicy struct {
+	// Resource ID of the Waf Security Policy
+	Id string `pulumi:"id"`
+}
+
+// WafSecurityPolicyInput is an input type that accepts WafSecurityPolicyArgs and WafSecurityPolicyOutput values.
+// You can construct a concrete instance of `WafSecurityPolicyInput` via:
+//
+//	WafSecurityPolicyArgs{...}
+type WafSecurityPolicyInput interface {
+	pulumi.Input
+
+	ToWafSecurityPolicyOutput() WafSecurityPolicyOutput
+	ToWafSecurityPolicyOutputWithContext(context.Context) WafSecurityPolicyOutput
+}
+
+// Web Application Firewall Security Policy
+type WafSecurityPolicyArgs struct {
+	// Resource ID of the Waf Security Policy
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (WafSecurityPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafSecurityPolicy)(nil)).Elem()
+}
+
+func (i WafSecurityPolicyArgs) ToWafSecurityPolicyOutput() WafSecurityPolicyOutput {
+	return i.ToWafSecurityPolicyOutputWithContext(context.Background())
+}
+
+func (i WafSecurityPolicyArgs) ToWafSecurityPolicyOutputWithContext(ctx context.Context) WafSecurityPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafSecurityPolicyOutput)
+}
+
+func (i WafSecurityPolicyArgs) ToWafSecurityPolicyPtrOutput() WafSecurityPolicyPtrOutput {
+	return i.ToWafSecurityPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i WafSecurityPolicyArgs) ToWafSecurityPolicyPtrOutputWithContext(ctx context.Context) WafSecurityPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafSecurityPolicyOutput).ToWafSecurityPolicyPtrOutputWithContext(ctx)
+}
+
+// WafSecurityPolicyPtrInput is an input type that accepts WafSecurityPolicyArgs, WafSecurityPolicyPtr and WafSecurityPolicyPtrOutput values.
+// You can construct a concrete instance of `WafSecurityPolicyPtrInput` via:
+//
+//	        WafSecurityPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type WafSecurityPolicyPtrInput interface {
+	pulumi.Input
+
+	ToWafSecurityPolicyPtrOutput() WafSecurityPolicyPtrOutput
+	ToWafSecurityPolicyPtrOutputWithContext(context.Context) WafSecurityPolicyPtrOutput
+}
+
+type wafSecurityPolicyPtrType WafSecurityPolicyArgs
+
+func WafSecurityPolicyPtr(v *WafSecurityPolicyArgs) WafSecurityPolicyPtrInput {
+	return (*wafSecurityPolicyPtrType)(v)
+}
+
+func (*wafSecurityPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WafSecurityPolicy)(nil)).Elem()
+}
+
+func (i *wafSecurityPolicyPtrType) ToWafSecurityPolicyPtrOutput() WafSecurityPolicyPtrOutput {
+	return i.ToWafSecurityPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *wafSecurityPolicyPtrType) ToWafSecurityPolicyPtrOutputWithContext(ctx context.Context) WafSecurityPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafSecurityPolicyPtrOutput)
+}
+
+// Web Application Firewall Security Policy
+type WafSecurityPolicyOutput struct{ *pulumi.OutputState }
+
+func (WafSecurityPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafSecurityPolicy)(nil)).Elem()
+}
+
+func (o WafSecurityPolicyOutput) ToWafSecurityPolicyOutput() WafSecurityPolicyOutput {
+	return o
+}
+
+func (o WafSecurityPolicyOutput) ToWafSecurityPolicyOutputWithContext(ctx context.Context) WafSecurityPolicyOutput {
+	return o
+}
+
+func (o WafSecurityPolicyOutput) ToWafSecurityPolicyPtrOutput() WafSecurityPolicyPtrOutput {
+	return o.ToWafSecurityPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o WafSecurityPolicyOutput) ToWafSecurityPolicyPtrOutputWithContext(ctx context.Context) WafSecurityPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WafSecurityPolicy) *WafSecurityPolicy {
+		return &v
+	}).(WafSecurityPolicyPtrOutput)
+}
+
+// Resource ID of the Waf Security Policy
+func (o WafSecurityPolicyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v WafSecurityPolicy) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type WafSecurityPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (WafSecurityPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WafSecurityPolicy)(nil)).Elem()
+}
+
+func (o WafSecurityPolicyPtrOutput) ToWafSecurityPolicyPtrOutput() WafSecurityPolicyPtrOutput {
+	return o
+}
+
+func (o WafSecurityPolicyPtrOutput) ToWafSecurityPolicyPtrOutputWithContext(ctx context.Context) WafSecurityPolicyPtrOutput {
+	return o
+}
+
+func (o WafSecurityPolicyPtrOutput) Elem() WafSecurityPolicyOutput {
+	return o.ApplyT(func(v *WafSecurityPolicy) WafSecurityPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret WafSecurityPolicy
+		return ret
+	}).(WafSecurityPolicyOutput)
+}
+
+// Resource ID of the Waf Security Policy
+func (o WafSecurityPolicyPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WafSecurityPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Web Application Firewall Security Policy
+type WafSecurityPolicyResponse struct {
+	// Resource ID of the Waf Security Policy
+	Id string `pulumi:"id"`
+}
+
+// Web Application Firewall Security Policy
+type WafSecurityPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (WafSecurityPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafSecurityPolicyResponse)(nil)).Elem()
+}
+
+func (o WafSecurityPolicyResponseOutput) ToWafSecurityPolicyResponseOutput() WafSecurityPolicyResponseOutput {
+	return o
+}
+
+func (o WafSecurityPolicyResponseOutput) ToWafSecurityPolicyResponseOutputWithContext(ctx context.Context) WafSecurityPolicyResponseOutput {
+	return o
+}
+
+// Resource ID of the Waf Security Policy
+func (o WafSecurityPolicyResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v WafSecurityPolicyResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type WafSecurityPolicyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (WafSecurityPolicyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WafSecurityPolicyResponse)(nil)).Elem()
+}
+
+func (o WafSecurityPolicyResponsePtrOutput) ToWafSecurityPolicyResponsePtrOutput() WafSecurityPolicyResponsePtrOutput {
+	return o
+}
+
+func (o WafSecurityPolicyResponsePtrOutput) ToWafSecurityPolicyResponsePtrOutputWithContext(ctx context.Context) WafSecurityPolicyResponsePtrOutput {
+	return o
+}
+
+func (o WafSecurityPolicyResponsePtrOutput) Elem() WafSecurityPolicyResponseOutput {
+	return o.ApplyT(func(v *WafSecurityPolicyResponse) WafSecurityPolicyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret WafSecurityPolicyResponse
+		return ret
+	}).(WafSecurityPolicyResponseOutput)
+}
+
+// Resource ID of the Waf Security Policy
+func (o WafSecurityPolicyResponsePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WafSecurityPolicyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AssociationSubnetOutput{})
 	pulumi.RegisterOutputType(AssociationSubnetPtrOutput{})
@@ -527,9 +927,17 @@ func init() {
 	pulumi.RegisterOutputType(AssociationSubnetResponsePtrOutput{})
 	pulumi.RegisterOutputType(ResourceIdResponseOutput{})
 	pulumi.RegisterOutputType(ResourceIdResponseArrayOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyConfigurationsOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyConfigurationsPtrOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyConfigurationsResponseOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyConfigurationsResponsePtrOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(WafPolicyOutput{})
 	pulumi.RegisterOutputType(WafPolicyPtrOutput{})
 	pulumi.RegisterOutputType(WafPolicyResponseOutput{})
 	pulumi.RegisterOutputType(WafPolicyResponsePtrOutput{})
+	pulumi.RegisterOutputType(WafSecurityPolicyOutput{})
+	pulumi.RegisterOutputType(WafSecurityPolicyPtrOutput{})
+	pulumi.RegisterOutputType(WafSecurityPolicyResponseOutput{})
+	pulumi.RegisterOutputType(WafSecurityPolicyResponsePtrOutput{})
 }

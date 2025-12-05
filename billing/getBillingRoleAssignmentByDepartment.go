@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a role assignment for the caller on a department. The operation is supported only for billing accounts with agreement type Enterprise Agreement.
 //
-// Uses Azure REST API version 2019-10-01-preview.
+// Uses Azure REST API version 2024-04-01.
 //
-// Other available API versions: 2024-04-01.
+// Other available API versions: 2019-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native billing [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupBillingRoleAssignmentByDepartment(ctx *pulumi.Context, args *LookupBillingRoleAssignmentByDepartmentArgs, opts ...pulumi.InvokeOption) (*LookupBillingRoleAssignmentByDepartmentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBillingRoleAssignmentByDepartmentResult
@@ -31,38 +31,26 @@ type LookupBillingRoleAssignmentByDepartmentArgs struct {
 	BillingAccountName string `pulumi:"billingAccountName"`
 	// The ID that uniquely identifies a role assignment.
 	BillingRoleAssignmentName string `pulumi:"billingRoleAssignmentName"`
-	// The ID that uniquely identifies a department.
+	// The name of the department.
 	DepartmentName string `pulumi:"departmentName"`
 }
 
-// The role assignment
+// The properties of the billing role assignment.
 type LookupBillingRoleAssignmentByDepartmentResult struct {
-	// The principal Id of the user who created the role assignment.
-	CreatedByPrincipalId string `pulumi:"createdByPrincipalId"`
-	// The tenant Id of the user who created the role assignment.
-	CreatedByPrincipalTenantId string `pulumi:"createdByPrincipalTenantId"`
-	// The email address of the user who created the role assignment. This is supported only for billing accounts with agreement type Enterprise Agreement.
-	CreatedByUserEmailAddress string `pulumi:"createdByUserEmailAddress"`
-	// The date the role assignment was created.
-	CreatedOn string `pulumi:"createdOn"`
-	// Resource Id.
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
-	// Resource name.
+	// The name of the resource
 	Name string `pulumi:"name"`
-	// The principal id of the user to whom the role was assigned.
-	PrincipalId *string `pulumi:"principalId"`
-	// The principal tenant id of the user to whom the role was assigned.
-	PrincipalTenantId *string `pulumi:"principalTenantId"`
-	// The ID of the role definition.
-	RoleDefinitionId *string `pulumi:"roleDefinitionId"`
-	// The scope at which the role was assigned.
-	Scope string `pulumi:"scope"`
-	// Resource type.
+	// The properties of the billing role assignment.
+	Properties BillingRoleAssignmentPropertiesResponse `pulumi:"properties"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? /
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
-	// The authentication type of the user, whether Organization or MSA, of the user to whom the role was assigned. This is supported only for billing accounts with agreement type Enterprise Agreement.
-	UserAuthenticationType *string `pulumi:"userAuthenticationType"`
-	// The email address of the user to whom the role was assigned. This is supported only for billing accounts with agreement type Enterprise Agreement.
-	UserEmailAddress *string `pulumi:"userEmailAddress"`
 }
 
 func LookupBillingRoleAssignmentByDepartmentOutput(ctx *pulumi.Context, args LookupBillingRoleAssignmentByDepartmentOutputArgs, opts ...pulumi.InvokeOption) LookupBillingRoleAssignmentByDepartmentResultOutput {
@@ -79,7 +67,7 @@ type LookupBillingRoleAssignmentByDepartmentOutputArgs struct {
 	BillingAccountName pulumi.StringInput `pulumi:"billingAccountName"`
 	// The ID that uniquely identifies a role assignment.
 	BillingRoleAssignmentName pulumi.StringInput `pulumi:"billingRoleAssignmentName"`
-	// The ID that uniquely identifies a department.
+	// The name of the department.
 	DepartmentName pulumi.StringInput `pulumi:"departmentName"`
 }
 
@@ -87,7 +75,7 @@ func (LookupBillingRoleAssignmentByDepartmentOutputArgs) ElementType() reflect.T
 	return reflect.TypeOf((*LookupBillingRoleAssignmentByDepartmentArgs)(nil)).Elem()
 }
 
-// The role assignment
+// The properties of the billing role assignment.
 type LookupBillingRoleAssignmentByDepartmentResultOutput struct{ *pulumi.OutputState }
 
 func (LookupBillingRoleAssignmentByDepartmentResultOutput) ElementType() reflect.Type {
@@ -102,69 +90,41 @@ func (o LookupBillingRoleAssignmentByDepartmentResultOutput) ToLookupBillingRole
 	return o
 }
 
-// The principal Id of the user who created the role assignment.
-func (o LookupBillingRoleAssignmentByDepartmentResultOutput) CreatedByPrincipalId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupBillingRoleAssignmentByDepartmentResult) string { return v.CreatedByPrincipalId }).(pulumi.StringOutput)
+// The Azure API version of the resource.
+func (o LookupBillingRoleAssignmentByDepartmentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBillingRoleAssignmentByDepartmentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
-// The tenant Id of the user who created the role assignment.
-func (o LookupBillingRoleAssignmentByDepartmentResultOutput) CreatedByPrincipalTenantId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupBillingRoleAssignmentByDepartmentResult) string { return v.CreatedByPrincipalTenantId }).(pulumi.StringOutput)
-}
-
-// The email address of the user who created the role assignment. This is supported only for billing accounts with agreement type Enterprise Agreement.
-func (o LookupBillingRoleAssignmentByDepartmentResultOutput) CreatedByUserEmailAddress() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupBillingRoleAssignmentByDepartmentResult) string { return v.CreatedByUserEmailAddress }).(pulumi.StringOutput)
-}
-
-// The date the role assignment was created.
-func (o LookupBillingRoleAssignmentByDepartmentResultOutput) CreatedOn() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupBillingRoleAssignmentByDepartmentResult) string { return v.CreatedOn }).(pulumi.StringOutput)
-}
-
-// Resource Id.
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupBillingRoleAssignmentByDepartmentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBillingRoleAssignmentByDepartmentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o LookupBillingRoleAssignmentByDepartmentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBillingRoleAssignmentByDepartmentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The principal id of the user to whom the role was assigned.
-func (o LookupBillingRoleAssignmentByDepartmentResultOutput) PrincipalId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupBillingRoleAssignmentByDepartmentResult) *string { return v.PrincipalId }).(pulumi.StringPtrOutput)
+// The properties of the billing role assignment.
+func (o LookupBillingRoleAssignmentByDepartmentResultOutput) Properties() BillingRoleAssignmentPropertiesResponseOutput {
+	return o.ApplyT(func(v LookupBillingRoleAssignmentByDepartmentResult) BillingRoleAssignmentPropertiesResponse {
+		return v.Properties
+	}).(BillingRoleAssignmentPropertiesResponseOutput)
 }
 
-// The principal tenant id of the user to whom the role was assigned.
-func (o LookupBillingRoleAssignmentByDepartmentResultOutput) PrincipalTenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupBillingRoleAssignmentByDepartmentResult) *string { return v.PrincipalTenantId }).(pulumi.StringPtrOutput)
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupBillingRoleAssignmentByDepartmentResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupBillingRoleAssignmentByDepartmentResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// The ID of the role definition.
-func (o LookupBillingRoleAssignmentByDepartmentResultOutput) RoleDefinitionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupBillingRoleAssignmentByDepartmentResult) *string { return v.RoleDefinitionId }).(pulumi.StringPtrOutput)
+// Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? /
+func (o LookupBillingRoleAssignmentByDepartmentResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupBillingRoleAssignmentByDepartmentResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The scope at which the role was assigned.
-func (o LookupBillingRoleAssignmentByDepartmentResultOutput) Scope() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupBillingRoleAssignmentByDepartmentResult) string { return v.Scope }).(pulumi.StringOutput)
-}
-
-// Resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupBillingRoleAssignmentByDepartmentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBillingRoleAssignmentByDepartmentResult) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// The authentication type of the user, whether Organization or MSA, of the user to whom the role was assigned. This is supported only for billing accounts with agreement type Enterprise Agreement.
-func (o LookupBillingRoleAssignmentByDepartmentResultOutput) UserAuthenticationType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupBillingRoleAssignmentByDepartmentResult) *string { return v.UserAuthenticationType }).(pulumi.StringPtrOutput)
-}
-
-// The email address of the user to whom the role was assigned. This is supported only for billing accounts with agreement type Enterprise Agreement.
-func (o LookupBillingRoleAssignmentByDepartmentResultOutput) UserEmailAddress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupBillingRoleAssignmentByDepartmentResult) *string { return v.UserEmailAddress }).(pulumi.StringPtrOutput)
 }
 
 func init() {

@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the EmailService and its properties.
 //
-// Uses Azure REST API version 2023-03-31.
+// Uses Azure REST API version 2023-06-01-preview.
 //
-// Other available API versions: 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2024-09-01-preview.
+// Other available API versions: 2023-03-31, 2023-04-01, 2023-04-01-preview, 2024-09-01-preview, 2025-05-01, 2025-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native communication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupEmailService(ctx *pulumi.Context, args *LookupEmailServiceArgs, opts ...pulumi.InvokeOption) (*LookupEmailServiceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEmailServiceResult
@@ -35,6 +35,8 @@ type LookupEmailServiceArgs struct {
 
 // A class representing an EmailService resource.
 type LookupEmailServiceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The location where the email service stores its data at rest.
 	DataLocation string `pulumi:"dataLocation"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -86,6 +88,11 @@ func (o LookupEmailServiceResultOutput) ToLookupEmailServiceResultOutput() Looku
 
 func (o LookupEmailServiceResultOutput) ToLookupEmailServiceResultOutputWithContext(ctx context.Context) LookupEmailServiceResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupEmailServiceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEmailServiceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The location where the email service stores its data at rest.

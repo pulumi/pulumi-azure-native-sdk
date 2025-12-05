@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves information about a gallery image definition.
 //
-// Uses Azure REST API version 2022-03-03.
+// Uses Azure REST API version 2024-03-03.
 //
-// Other available API versions: 2022-08-03, 2023-07-03, 2024-03-03.
+// Other available API versions: 2022-03-03, 2022-08-03, 2023-07-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupGalleryImage(ctx *pulumi.Context, args *LookupGalleryImageArgs, opts ...pulumi.InvokeOption) (*LookupGalleryImageResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGalleryImageResult
@@ -29,16 +29,20 @@ func LookupGalleryImage(ctx *pulumi.Context, args *LookupGalleryImageArgs, opts 
 type LookupGalleryImageArgs struct {
 	// The name of the gallery image definition to be retrieved.
 	GalleryImageName string `pulumi:"galleryImageName"`
-	// The name of the Shared Image Gallery from which the Image Definitions are to be retrieved.
+	// The name of the Shared Image Gallery.
 	GalleryName string `pulumi:"galleryName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Specifies information about the gallery image definition that you want to create or update.
 type LookupGalleryImageResult struct {
+	// Optional. Must be set to true if the gallery image features are being updated.
+	AllowUpdateImage *bool `pulumi:"allowUpdateImage"`
 	// The architecture of the image. Applicable to OS disks only.
 	Architecture *string `pulumi:"architecture"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The description of this gallery image definition resource. This property is updatable.
 	Description *string `pulumi:"description"`
 	// Describes the disallowed disk types.
@@ -51,17 +55,17 @@ type LookupGalleryImageResult struct {
 	Features []GalleryImageFeatureResponse `pulumi:"features"`
 	// The hypervisor generation of the Virtual Machine. Applicable to OS disks only.
 	HyperVGeneration *string `pulumi:"hyperVGeneration"`
-	// Resource Id
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// This is the gallery image definition identifier.
 	Identifier GalleryImageIdentifierResponse `pulumi:"identifier"`
-	// Resource location
+	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
-	// Resource name
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// This property allows the user to specify whether the virtual machines created under this image are 'Generalized' or 'Specialized'.
 	OsState string `pulumi:"osState"`
-	// This property allows you to specify the type of the OS that is included in the disk when creating a VM from a managed image. <br><br> Possible values are: <br><br> **Windows** <br><br> **Linux**
+	// This property allows you to specify the type of the OS that is included in the disk when creating a VM from a managed image. Possible values are: **Windows,** **Linux.**
 	OsType string `pulumi:"osType"`
 	// The privacy statement uri.
 	PrivacyStatementUri *string `pulumi:"privacyStatementUri"`
@@ -73,9 +77,11 @@ type LookupGalleryImageResult struct {
 	Recommended *RecommendedMachineConfigurationResponse `pulumi:"recommended"`
 	// The release note uri.
 	ReleaseNoteUri *string `pulumi:"releaseNoteUri"`
-	// Resource tags
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// Resource type
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -91,9 +97,9 @@ func LookupGalleryImageOutput(ctx *pulumi.Context, args LookupGalleryImageOutput
 type LookupGalleryImageOutputArgs struct {
 	// The name of the gallery image definition to be retrieved.
 	GalleryImageName pulumi.StringInput `pulumi:"galleryImageName"`
-	// The name of the Shared Image Gallery from which the Image Definitions are to be retrieved.
+	// The name of the Shared Image Gallery.
 	GalleryName pulumi.StringInput `pulumi:"galleryName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -116,9 +122,19 @@ func (o LookupGalleryImageResultOutput) ToLookupGalleryImageResultOutputWithCont
 	return o
 }
 
+// Optional. Must be set to true if the gallery image features are being updated.
+func (o LookupGalleryImageResultOutput) AllowUpdateImage() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupGalleryImageResult) *bool { return v.AllowUpdateImage }).(pulumi.BoolPtrOutput)
+}
+
 // The architecture of the image. Applicable to OS disks only.
 func (o LookupGalleryImageResultOutput) Architecture() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupGalleryImageResult) *string { return v.Architecture }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupGalleryImageResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGalleryImageResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The description of this gallery image definition resource. This property is updatable.
@@ -151,7 +167,7 @@ func (o LookupGalleryImageResultOutput) HyperVGeneration() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v LookupGalleryImageResult) *string { return v.HyperVGeneration }).(pulumi.StringPtrOutput)
 }
 
-// Resource Id
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupGalleryImageResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGalleryImageResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -161,12 +177,12 @@ func (o LookupGalleryImageResultOutput) Identifier() GalleryImageIdentifierRespo
 	return o.ApplyT(func(v LookupGalleryImageResult) GalleryImageIdentifierResponse { return v.Identifier }).(GalleryImageIdentifierResponseOutput)
 }
 
-// Resource location
+// The geo-location where the resource lives
 func (o LookupGalleryImageResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGalleryImageResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// Resource name
+// The name of the resource
 func (o LookupGalleryImageResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGalleryImageResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -176,7 +192,7 @@ func (o LookupGalleryImageResultOutput) OsState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGalleryImageResult) string { return v.OsState }).(pulumi.StringOutput)
 }
 
-// This property allows you to specify the type of the OS that is included in the disk when creating a VM from a managed image. <br><br> Possible values are: <br><br> **Windows** <br><br> **Linux**
+// This property allows you to specify the type of the OS that is included in the disk when creating a VM from a managed image. Possible values are: **Windows,** **Linux.**
 func (o LookupGalleryImageResultOutput) OsType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGalleryImageResult) string { return v.OsType }).(pulumi.StringOutput)
 }
@@ -206,12 +222,17 @@ func (o LookupGalleryImageResultOutput) ReleaseNoteUri() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v LookupGalleryImageResult) *string { return v.ReleaseNoteUri }).(pulumi.StringPtrOutput)
 }
 
-// Resource tags
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupGalleryImageResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupGalleryImageResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// Resource tags.
 func (o LookupGalleryImageResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupGalleryImageResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Resource type
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupGalleryImageResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGalleryImageResult) string { return v.Type }).(pulumi.StringOutput)
 }

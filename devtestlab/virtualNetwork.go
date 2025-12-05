@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A virtual network.
 //
-// Uses Azure REST API version 2018-09-15. In version 1.x of the Azure Native provider, it used API version 2018-09-15.
+// Uses Azure REST API version 2018-09-15. In version 2.x of the Azure Native provider, it used API version 2018-09-15.
 type VirtualNetwork struct {
 	pulumi.CustomResourceState
 
 	// The allowed subnets of the virtual network.
 	AllowedSubnets SubnetResponseArrayOutput `pulumi:"allowedSubnets"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The creation date of the virtual network.
 	CreatedDate pulumi.StringOutput `pulumi:"createdDate"`
 	// The description of the virtual network.
@@ -112,9 +114,9 @@ type virtualNetworkArgs struct {
 	LabName string `pulumi:"labName"`
 	// The location of the resource.
 	Location *string `pulumi:"location"`
-	// The name of the virtual network.
+	// The name of the VirtualNetwork
 	Name *string `pulumi:"name"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The subnet overrides of the virtual network.
 	SubnetOverrides []SubnetOverride `pulumi:"subnetOverrides"`
@@ -134,9 +136,9 @@ type VirtualNetworkArgs struct {
 	LabName pulumi.StringInput
 	// The location of the resource.
 	Location pulumi.StringPtrInput
-	// The name of the virtual network.
+	// The name of the VirtualNetwork
 	Name pulumi.StringPtrInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The subnet overrides of the virtual network.
 	SubnetOverrides SubnetOverrideArrayInput
@@ -184,6 +186,11 @@ func (o VirtualNetworkOutput) ToVirtualNetworkOutputWithContext(ctx context.Cont
 // The allowed subnets of the virtual network.
 func (o VirtualNetworkOutput) AllowedSubnets() SubnetResponseArrayOutput {
 	return o.ApplyT(func(v *VirtualNetwork) SubnetResponseArrayOutput { return v.AllowedSubnets }).(SubnetResponseArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o VirtualNetworkOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualNetwork) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of the virtual network.

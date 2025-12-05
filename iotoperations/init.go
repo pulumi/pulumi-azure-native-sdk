@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,6 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "azure-native:iotoperations:AkriConnector":
+		r = &AkriConnector{}
+	case "azure-native:iotoperations:AkriConnectorTemplate":
+		r = &AkriConnectorTemplate{}
 	case "azure-native:iotoperations:Broker":
 		r = &Broker{}
 	case "azure-native:iotoperations:BrokerAuthentication":
@@ -29,14 +33,18 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BrokerAuthorization{}
 	case "azure-native:iotoperations:BrokerListener":
 		r = &BrokerListener{}
-	case "azure-native:iotoperations:DataFlow":
-		r = &DataFlow{}
-	case "azure-native:iotoperations:DataFlowEndpoint":
-		r = &DataFlowEndpoint{}
-	case "azure-native:iotoperations:DataFlowProfile":
-		r = &DataFlowProfile{}
+	case "azure-native:iotoperations:Dataflow":
+		r = &Dataflow{}
+	case "azure-native:iotoperations:DataflowEndpoint":
+		r = &DataflowEndpoint{}
+	case "azure-native:iotoperations:DataflowGraph":
+		r = &DataflowGraph{}
+	case "azure-native:iotoperations:DataflowProfile":
+		r = &DataflowProfile{}
 	case "azure-native:iotoperations:Instance":
 		r = &Instance{}
+	case "azure-native:iotoperations:RegistryEndpoint":
+		r = &RegistryEndpoint{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

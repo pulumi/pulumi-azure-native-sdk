@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // List the two keys used to publish to a namespace.
 //
-// Uses Azure REST API version 2023-06-01-preview.
+// Uses Azure REST API version 2025-02-15.
 //
-// Other available API versions: 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
+// Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func ListNamespaceSharedAccessKeys(ctx *pulumi.Context, args *ListNamespaceSharedAccessKeysArgs, opts ...pulumi.InvokeOption) (*ListNamespaceSharedAccessKeysResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListNamespaceSharedAccessKeysResult

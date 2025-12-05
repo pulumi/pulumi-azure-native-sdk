@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Event Subscription
+// Event Subscription.
 //
-// Uses Azure REST API version 2022-06-15. In version 1.x of the Azure Native provider, it used API version 2020-04-01-preview.
+// Uses Azure REST API version 2025-02-15. In version 2.x of the Azure Native provider, it used API version 2022-06-15.
 //
-// Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
+// Other available API versions: 2022-06-15, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type PartnerTopicEventSubscription struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.
 	// Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering.
 	DeadLetterDestination StorageBlobDeadLetterDestinationResponsePtrOutput `pulumi:"deadLetterDestination"`
@@ -46,7 +48,7 @@ type PartnerTopicEventSubscription struct {
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The retry policy for events. This can be used to configure maximum number of delivery attempts and time to live for events.
 	RetryPolicy RetryPolicyResponsePtrOutput `pulumi:"retryPolicy"`
-	// The system metadata relating to Event Subscription resource.
+	// The system metadata relating to the Event Grid resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Name of the topic of the event subscription.
 	Topic pulumi.StringOutput `pulumi:"topic"`
@@ -107,6 +109,9 @@ func NewPartnerTopicEventSubscription(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20250215:PartnerTopicEventSubscription"),
 		},
+		{
+			Type: pulumi.String("azure-native:eventgrid/v20250401preview:PartnerTopicEventSubscription"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -156,7 +161,7 @@ type partnerTopicEventSubscriptionArgs struct {
 	Destination interface{} `pulumi:"destination"`
 	// The event delivery schema for the event subscription.
 	EventDeliverySchema *string `pulumi:"eventDeliverySchema"`
-	// Name of the event subscription to be created. Event subscription names must be between 3 and 100 characters in length and use alphanumeric letters only.
+	// Name of the event subscription to be created. Event subscription names must be between 3 and 64 characters in length and use alphanumeric letters only.
 	EventSubscriptionName *string `pulumi:"eventSubscriptionName"`
 	// Expiration time of the event subscription.
 	ExpirationTimeUtc *string `pulumi:"expirationTimeUtc"`
@@ -188,7 +193,7 @@ type PartnerTopicEventSubscriptionArgs struct {
 	Destination pulumi.Input
 	// The event delivery schema for the event subscription.
 	EventDeliverySchema pulumi.StringPtrInput
-	// Name of the event subscription to be created. Event subscription names must be between 3 and 100 characters in length and use alphanumeric letters only.
+	// Name of the event subscription to be created. Event subscription names must be between 3 and 64 characters in length and use alphanumeric letters only.
 	EventSubscriptionName pulumi.StringPtrInput
 	// Expiration time of the event subscription.
 	ExpirationTimeUtc pulumi.StringPtrInput
@@ -239,6 +244,11 @@ func (o PartnerTopicEventSubscriptionOutput) ToPartnerTopicEventSubscriptionOutp
 
 func (o PartnerTopicEventSubscriptionOutput) ToPartnerTopicEventSubscriptionOutputWithContext(ctx context.Context) PartnerTopicEventSubscriptionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o PartnerTopicEventSubscriptionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PartnerTopicEventSubscription) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.
@@ -306,7 +316,7 @@ func (o PartnerTopicEventSubscriptionOutput) RetryPolicy() RetryPolicyResponsePt
 	return o.ApplyT(func(v *PartnerTopicEventSubscription) RetryPolicyResponsePtrOutput { return v.RetryPolicy }).(RetryPolicyResponsePtrOutput)
 }
 
-// The system metadata relating to Event Subscription resource.
+// The system metadata relating to the Event Grid resource.
 func (o PartnerTopicEventSubscriptionOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *PartnerTopicEventSubscription) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

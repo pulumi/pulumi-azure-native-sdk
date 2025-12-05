@@ -175,6 +175,177 @@ func (in *alwaysLogPtr) ToAlwaysLogPtrOutputWithContext(ctx context.Context) Alw
 	return pulumi.ToOutputWithContext(ctx, in).(AlwaysLogPtrOutput)
 }
 
+// Name of the Sku.
+type ApiGatewaySkuType string
+
+const (
+	// Standard SKU of the API gateway.
+	ApiGatewaySkuTypeStandard = ApiGatewaySkuType("Standard")
+	// Standard SKU of the API gateway to be used in Workspaces.
+	ApiGatewaySkuTypeWorkspaceGatewayStandard = ApiGatewaySkuType("WorkspaceGatewayStandard")
+	// Premium SKU of the API gateway to be used in Workspaces.
+	ApiGatewaySkuTypeWorkspaceGatewayPremium = ApiGatewaySkuType("WorkspaceGatewayPremium")
+)
+
+func (ApiGatewaySkuType) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiGatewaySkuType)(nil)).Elem()
+}
+
+func (e ApiGatewaySkuType) ToApiGatewaySkuTypeOutput() ApiGatewaySkuTypeOutput {
+	return pulumi.ToOutput(e).(ApiGatewaySkuTypeOutput)
+}
+
+func (e ApiGatewaySkuType) ToApiGatewaySkuTypeOutputWithContext(ctx context.Context) ApiGatewaySkuTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ApiGatewaySkuTypeOutput)
+}
+
+func (e ApiGatewaySkuType) ToApiGatewaySkuTypePtrOutput() ApiGatewaySkuTypePtrOutput {
+	return e.ToApiGatewaySkuTypePtrOutputWithContext(context.Background())
+}
+
+func (e ApiGatewaySkuType) ToApiGatewaySkuTypePtrOutputWithContext(ctx context.Context) ApiGatewaySkuTypePtrOutput {
+	return ApiGatewaySkuType(e).ToApiGatewaySkuTypeOutputWithContext(ctx).ToApiGatewaySkuTypePtrOutputWithContext(ctx)
+}
+
+func (e ApiGatewaySkuType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ApiGatewaySkuType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ApiGatewaySkuType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ApiGatewaySkuType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ApiGatewaySkuTypeOutput struct{ *pulumi.OutputState }
+
+func (ApiGatewaySkuTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiGatewaySkuType)(nil)).Elem()
+}
+
+func (o ApiGatewaySkuTypeOutput) ToApiGatewaySkuTypeOutput() ApiGatewaySkuTypeOutput {
+	return o
+}
+
+func (o ApiGatewaySkuTypeOutput) ToApiGatewaySkuTypeOutputWithContext(ctx context.Context) ApiGatewaySkuTypeOutput {
+	return o
+}
+
+func (o ApiGatewaySkuTypeOutput) ToApiGatewaySkuTypePtrOutput() ApiGatewaySkuTypePtrOutput {
+	return o.ToApiGatewaySkuTypePtrOutputWithContext(context.Background())
+}
+
+func (o ApiGatewaySkuTypeOutput) ToApiGatewaySkuTypePtrOutputWithContext(ctx context.Context) ApiGatewaySkuTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiGatewaySkuType) *ApiGatewaySkuType {
+		return &v
+	}).(ApiGatewaySkuTypePtrOutput)
+}
+
+func (o ApiGatewaySkuTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ApiGatewaySkuTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ApiGatewaySkuType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ApiGatewaySkuTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ApiGatewaySkuTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ApiGatewaySkuType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ApiGatewaySkuTypePtrOutput struct{ *pulumi.OutputState }
+
+func (ApiGatewaySkuTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiGatewaySkuType)(nil)).Elem()
+}
+
+func (o ApiGatewaySkuTypePtrOutput) ToApiGatewaySkuTypePtrOutput() ApiGatewaySkuTypePtrOutput {
+	return o
+}
+
+func (o ApiGatewaySkuTypePtrOutput) ToApiGatewaySkuTypePtrOutputWithContext(ctx context.Context) ApiGatewaySkuTypePtrOutput {
+	return o
+}
+
+func (o ApiGatewaySkuTypePtrOutput) Elem() ApiGatewaySkuTypeOutput {
+	return o.ApplyT(func(v *ApiGatewaySkuType) ApiGatewaySkuType {
+		if v != nil {
+			return *v
+		}
+		var ret ApiGatewaySkuType
+		return ret
+	}).(ApiGatewaySkuTypeOutput)
+}
+
+func (o ApiGatewaySkuTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ApiGatewaySkuTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ApiGatewaySkuType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ApiGatewaySkuTypeInput is an input type that accepts values of the ApiGatewaySkuType enum
+// A concrete instance of `ApiGatewaySkuTypeInput` can be one of the following:
+//
+//	ApiGatewaySkuTypeStandard
+//	ApiGatewaySkuTypeWorkspaceGatewayStandard
+//	ApiGatewaySkuTypeWorkspaceGatewayPremium
+type ApiGatewaySkuTypeInput interface {
+	pulumi.Input
+
+	ToApiGatewaySkuTypeOutput() ApiGatewaySkuTypeOutput
+	ToApiGatewaySkuTypeOutputWithContext(context.Context) ApiGatewaySkuTypeOutput
+}
+
+var apiGatewaySkuTypePtrType = reflect.TypeOf((**ApiGatewaySkuType)(nil)).Elem()
+
+type ApiGatewaySkuTypePtrInput interface {
+	pulumi.Input
+
+	ToApiGatewaySkuTypePtrOutput() ApiGatewaySkuTypePtrOutput
+	ToApiGatewaySkuTypePtrOutputWithContext(context.Context) ApiGatewaySkuTypePtrOutput
+}
+
+type apiGatewaySkuTypePtr string
+
+func ApiGatewaySkuTypePtr(v string) ApiGatewaySkuTypePtrInput {
+	return (*apiGatewaySkuTypePtr)(&v)
+}
+
+func (*apiGatewaySkuTypePtr) ElementType() reflect.Type {
+	return apiGatewaySkuTypePtrType
+}
+
+func (in *apiGatewaySkuTypePtr) ToApiGatewaySkuTypePtrOutput() ApiGatewaySkuTypePtrOutput {
+	return pulumi.ToOutput(in).(ApiGatewaySkuTypePtrOutput)
+}
+
+func (in *apiGatewaySkuTypePtr) ToApiGatewaySkuTypePtrOutputWithContext(ctx context.Context) ApiGatewaySkuTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ApiGatewaySkuTypePtrOutput)
+}
+
 // Type of API.
 type ApiType string
 
@@ -1070,7 +1241,7 @@ func (in *authorizationTypePtr) ToAuthorizationTypePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(AuthorizationTypePtrOutput)
 }
 
-// Backend communication protocol.
+// Backend communication protocol. Required when backend type is 'Single'.
 type BackendProtocol string
 
 const (
@@ -3968,6 +4139,339 @@ func (in *keyTypePtr) ToKeyTypePtrOutput() KeyTypePtrOutput {
 
 func (in *keyTypePtr) ToKeyTypePtrOutputWithContext(ctx context.Context) KeyTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KeyTypePtrOutput)
+}
+
+// Specifies whether default diagnostic should be enabled for Large Language Models or not.
+type LlmDiagnosticSettings string
+
+const (
+	// Default LLM logs are enabled.
+	LlmDiagnosticSettingsEnabled = LlmDiagnosticSettings("enabled")
+	// Default LLM logs are disabled.
+	LlmDiagnosticSettingsDisabled = LlmDiagnosticSettings("disabled")
+)
+
+func (LlmDiagnosticSettings) ElementType() reflect.Type {
+	return reflect.TypeOf((*LlmDiagnosticSettings)(nil)).Elem()
+}
+
+func (e LlmDiagnosticSettings) ToLlmDiagnosticSettingsOutput() LlmDiagnosticSettingsOutput {
+	return pulumi.ToOutput(e).(LlmDiagnosticSettingsOutput)
+}
+
+func (e LlmDiagnosticSettings) ToLlmDiagnosticSettingsOutputWithContext(ctx context.Context) LlmDiagnosticSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(LlmDiagnosticSettingsOutput)
+}
+
+func (e LlmDiagnosticSettings) ToLlmDiagnosticSettingsPtrOutput() LlmDiagnosticSettingsPtrOutput {
+	return e.ToLlmDiagnosticSettingsPtrOutputWithContext(context.Background())
+}
+
+func (e LlmDiagnosticSettings) ToLlmDiagnosticSettingsPtrOutputWithContext(ctx context.Context) LlmDiagnosticSettingsPtrOutput {
+	return LlmDiagnosticSettings(e).ToLlmDiagnosticSettingsOutputWithContext(ctx).ToLlmDiagnosticSettingsPtrOutputWithContext(ctx)
+}
+
+func (e LlmDiagnosticSettings) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LlmDiagnosticSettings) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LlmDiagnosticSettings) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e LlmDiagnosticSettings) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type LlmDiagnosticSettingsOutput struct{ *pulumi.OutputState }
+
+func (LlmDiagnosticSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LlmDiagnosticSettings)(nil)).Elem()
+}
+
+func (o LlmDiagnosticSettingsOutput) ToLlmDiagnosticSettingsOutput() LlmDiagnosticSettingsOutput {
+	return o
+}
+
+func (o LlmDiagnosticSettingsOutput) ToLlmDiagnosticSettingsOutputWithContext(ctx context.Context) LlmDiagnosticSettingsOutput {
+	return o
+}
+
+func (o LlmDiagnosticSettingsOutput) ToLlmDiagnosticSettingsPtrOutput() LlmDiagnosticSettingsPtrOutput {
+	return o.ToLlmDiagnosticSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o LlmDiagnosticSettingsOutput) ToLlmDiagnosticSettingsPtrOutputWithContext(ctx context.Context) LlmDiagnosticSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LlmDiagnosticSettings) *LlmDiagnosticSettings {
+		return &v
+	}).(LlmDiagnosticSettingsPtrOutput)
+}
+
+func (o LlmDiagnosticSettingsOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o LlmDiagnosticSettingsOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LlmDiagnosticSettings) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o LlmDiagnosticSettingsOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LlmDiagnosticSettingsOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LlmDiagnosticSettings) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type LlmDiagnosticSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (LlmDiagnosticSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LlmDiagnosticSettings)(nil)).Elem()
+}
+
+func (o LlmDiagnosticSettingsPtrOutput) ToLlmDiagnosticSettingsPtrOutput() LlmDiagnosticSettingsPtrOutput {
+	return o
+}
+
+func (o LlmDiagnosticSettingsPtrOutput) ToLlmDiagnosticSettingsPtrOutputWithContext(ctx context.Context) LlmDiagnosticSettingsPtrOutput {
+	return o
+}
+
+func (o LlmDiagnosticSettingsPtrOutput) Elem() LlmDiagnosticSettingsOutput {
+	return o.ApplyT(func(v *LlmDiagnosticSettings) LlmDiagnosticSettings {
+		if v != nil {
+			return *v
+		}
+		var ret LlmDiagnosticSettings
+		return ret
+	}).(LlmDiagnosticSettingsOutput)
+}
+
+func (o LlmDiagnosticSettingsPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LlmDiagnosticSettingsPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *LlmDiagnosticSettings) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// LlmDiagnosticSettingsInput is an input type that accepts values of the LlmDiagnosticSettings enum
+// A concrete instance of `LlmDiagnosticSettingsInput` can be one of the following:
+//
+//	LlmDiagnosticSettingsEnabled
+//	LlmDiagnosticSettingsDisabled
+type LlmDiagnosticSettingsInput interface {
+	pulumi.Input
+
+	ToLlmDiagnosticSettingsOutput() LlmDiagnosticSettingsOutput
+	ToLlmDiagnosticSettingsOutputWithContext(context.Context) LlmDiagnosticSettingsOutput
+}
+
+var llmDiagnosticSettingsPtrType = reflect.TypeOf((**LlmDiagnosticSettings)(nil)).Elem()
+
+type LlmDiagnosticSettingsPtrInput interface {
+	pulumi.Input
+
+	ToLlmDiagnosticSettingsPtrOutput() LlmDiagnosticSettingsPtrOutput
+	ToLlmDiagnosticSettingsPtrOutputWithContext(context.Context) LlmDiagnosticSettingsPtrOutput
+}
+
+type llmDiagnosticSettingsPtr string
+
+func LlmDiagnosticSettingsPtr(v string) LlmDiagnosticSettingsPtrInput {
+	return (*llmDiagnosticSettingsPtr)(&v)
+}
+
+func (*llmDiagnosticSettingsPtr) ElementType() reflect.Type {
+	return llmDiagnosticSettingsPtrType
+}
+
+func (in *llmDiagnosticSettingsPtr) ToLlmDiagnosticSettingsPtrOutput() LlmDiagnosticSettingsPtrOutput {
+	return pulumi.ToOutput(in).(LlmDiagnosticSettingsPtrOutput)
+}
+
+func (in *llmDiagnosticSettingsPtr) ToLlmDiagnosticSettingsPtrOutputWithContext(ctx context.Context) LlmDiagnosticSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(LlmDiagnosticSettingsPtrOutput)
+}
+
+// Specifies which message should be logged. Currently there is only 'all' option.
+type LlmMessageLogTypes string
+
+const (
+	// Log all messages.
+	LlmMessageLogTypesAll = LlmMessageLogTypes("all")
+)
+
+func (LlmMessageLogTypes) ElementType() reflect.Type {
+	return reflect.TypeOf((*LlmMessageLogTypes)(nil)).Elem()
+}
+
+func (e LlmMessageLogTypes) ToLlmMessageLogTypesOutput() LlmMessageLogTypesOutput {
+	return pulumi.ToOutput(e).(LlmMessageLogTypesOutput)
+}
+
+func (e LlmMessageLogTypes) ToLlmMessageLogTypesOutputWithContext(ctx context.Context) LlmMessageLogTypesOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(LlmMessageLogTypesOutput)
+}
+
+func (e LlmMessageLogTypes) ToLlmMessageLogTypesPtrOutput() LlmMessageLogTypesPtrOutput {
+	return e.ToLlmMessageLogTypesPtrOutputWithContext(context.Background())
+}
+
+func (e LlmMessageLogTypes) ToLlmMessageLogTypesPtrOutputWithContext(ctx context.Context) LlmMessageLogTypesPtrOutput {
+	return LlmMessageLogTypes(e).ToLlmMessageLogTypesOutputWithContext(ctx).ToLlmMessageLogTypesPtrOutputWithContext(ctx)
+}
+
+func (e LlmMessageLogTypes) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LlmMessageLogTypes) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LlmMessageLogTypes) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e LlmMessageLogTypes) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type LlmMessageLogTypesOutput struct{ *pulumi.OutputState }
+
+func (LlmMessageLogTypesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LlmMessageLogTypes)(nil)).Elem()
+}
+
+func (o LlmMessageLogTypesOutput) ToLlmMessageLogTypesOutput() LlmMessageLogTypesOutput {
+	return o
+}
+
+func (o LlmMessageLogTypesOutput) ToLlmMessageLogTypesOutputWithContext(ctx context.Context) LlmMessageLogTypesOutput {
+	return o
+}
+
+func (o LlmMessageLogTypesOutput) ToLlmMessageLogTypesPtrOutput() LlmMessageLogTypesPtrOutput {
+	return o.ToLlmMessageLogTypesPtrOutputWithContext(context.Background())
+}
+
+func (o LlmMessageLogTypesOutput) ToLlmMessageLogTypesPtrOutputWithContext(ctx context.Context) LlmMessageLogTypesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LlmMessageLogTypes) *LlmMessageLogTypes {
+		return &v
+	}).(LlmMessageLogTypesPtrOutput)
+}
+
+func (o LlmMessageLogTypesOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o LlmMessageLogTypesOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LlmMessageLogTypes) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o LlmMessageLogTypesOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LlmMessageLogTypesOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LlmMessageLogTypes) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type LlmMessageLogTypesPtrOutput struct{ *pulumi.OutputState }
+
+func (LlmMessageLogTypesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LlmMessageLogTypes)(nil)).Elem()
+}
+
+func (o LlmMessageLogTypesPtrOutput) ToLlmMessageLogTypesPtrOutput() LlmMessageLogTypesPtrOutput {
+	return o
+}
+
+func (o LlmMessageLogTypesPtrOutput) ToLlmMessageLogTypesPtrOutputWithContext(ctx context.Context) LlmMessageLogTypesPtrOutput {
+	return o
+}
+
+func (o LlmMessageLogTypesPtrOutput) Elem() LlmMessageLogTypesOutput {
+	return o.ApplyT(func(v *LlmMessageLogTypes) LlmMessageLogTypes {
+		if v != nil {
+			return *v
+		}
+		var ret LlmMessageLogTypes
+		return ret
+	}).(LlmMessageLogTypesOutput)
+}
+
+func (o LlmMessageLogTypesPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LlmMessageLogTypesPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *LlmMessageLogTypes) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// LlmMessageLogTypesInput is an input type that accepts values of the LlmMessageLogTypes enum
+// A concrete instance of `LlmMessageLogTypesInput` can be one of the following:
+//
+//	LlmMessageLogTypesAll
+type LlmMessageLogTypesInput interface {
+	pulumi.Input
+
+	ToLlmMessageLogTypesOutput() LlmMessageLogTypesOutput
+	ToLlmMessageLogTypesOutputWithContext(context.Context) LlmMessageLogTypesOutput
+}
+
+var llmMessageLogTypesPtrType = reflect.TypeOf((**LlmMessageLogTypes)(nil)).Elem()
+
+type LlmMessageLogTypesPtrInput interface {
+	pulumi.Input
+
+	ToLlmMessageLogTypesPtrOutput() LlmMessageLogTypesPtrOutput
+	ToLlmMessageLogTypesPtrOutputWithContext(context.Context) LlmMessageLogTypesPtrOutput
+}
+
+type llmMessageLogTypesPtr string
+
+func LlmMessageLogTypesPtr(v string) LlmMessageLogTypesPtrInput {
+	return (*llmMessageLogTypesPtr)(&v)
+}
+
+func (*llmMessageLogTypesPtr) ElementType() reflect.Type {
+	return llmMessageLogTypesPtrType
+}
+
+func (in *llmMessageLogTypesPtr) ToLlmMessageLogTypesPtrOutput() LlmMessageLogTypesPtrOutput {
+	return pulumi.ToOutput(in).(LlmMessageLogTypesPtrOutput)
+}
+
+func (in *llmMessageLogTypesPtr) ToLlmMessageLogTypesPtrOutputWithContext(ctx context.Context) LlmMessageLogTypesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(LlmMessageLogTypesPtrOutput)
 }
 
 // Logger type.
@@ -7888,6 +8392,8 @@ func (in *virtualNetworkTypePtr) ToVirtualNetworkTypePtrOutputWithContext(ctx co
 func init() {
 	pulumi.RegisterOutputType(AlwaysLogOutput{})
 	pulumi.RegisterOutputType(AlwaysLogPtrOutput{})
+	pulumi.RegisterOutputType(ApiGatewaySkuTypeOutput{})
+	pulumi.RegisterOutputType(ApiGatewaySkuTypePtrOutput{})
 	pulumi.RegisterOutputType(ApiTypeOutput{})
 	pulumi.RegisterOutputType(ApiTypePtrOutput{})
 	pulumi.RegisterOutputType(ApimIdentityTypeOutput{})
@@ -7933,6 +8439,10 @@ func init() {
 	pulumi.RegisterOutputType(IdentityProviderTypePtrOutput{})
 	pulumi.RegisterOutputType(KeyTypeOutput{})
 	pulumi.RegisterOutputType(KeyTypePtrOutput{})
+	pulumi.RegisterOutputType(LlmDiagnosticSettingsOutput{})
+	pulumi.RegisterOutputType(LlmDiagnosticSettingsPtrOutput{})
+	pulumi.RegisterOutputType(LlmMessageLogTypesOutput{})
+	pulumi.RegisterOutputType(LlmMessageLogTypesPtrOutput{})
 	pulumi.RegisterOutputType(LoggerTypeOutput{})
 	pulumi.RegisterOutputType(LoggerTypePtrOutput{})
 	pulumi.RegisterOutputType(NatGatewayStateOutput{})

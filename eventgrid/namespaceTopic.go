@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Namespace topic details.
 //
-// Uses Azure REST API version 2023-06-01-preview.
+// Uses Azure REST API version 2025-02-15. In version 2.x of the Azure Native provider, it used API version 2023-06-01-preview.
 //
-// Other available API versions: 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
+// Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type NamespaceTopic struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Event retention for the namespace topic expressed in days. The property default value is 1 day.
 	// Min event retention duration value is 1 day and max event retention duration value is 1 day.
 	EventRetentionInDays pulumi.IntPtrOutput `pulumi:"eventRetentionInDays"`
@@ -31,7 +33,7 @@ type NamespaceTopic struct {
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Publisher type of the namespace topic.
 	PublisherType pulumi.StringPtrOutput `pulumi:"publisherType"`
-	// The system metadata relating to namespace topic resource.
+	// The system metadata relating to the Event Grid resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Type of the resource.
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -68,6 +70,9 @@ func NewNamespaceTopic(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20250215:NamespaceTopic"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventgrid/v20250401preview:NamespaceTopic"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -173,6 +178,11 @@ func (o NamespaceTopicOutput) ToNamespaceTopicOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The Azure API version of the resource.
+func (o NamespaceTopicOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *NamespaceTopic) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Event retention for the namespace topic expressed in days. The property default value is 1 day.
 // Min event retention duration value is 1 day and max event retention duration value is 1 day.
 func (o NamespaceTopicOutput) EventRetentionInDays() pulumi.IntPtrOutput {
@@ -199,7 +209,7 @@ func (o NamespaceTopicOutput) PublisherType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NamespaceTopic) pulumi.StringPtrOutput { return v.PublisherType }).(pulumi.StringPtrOutput)
 }
 
-// The system metadata relating to namespace topic resource.
+// The system metadata relating to the Event Grid resource.
 func (o NamespaceTopicOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *NamespaceTopic) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

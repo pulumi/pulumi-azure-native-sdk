@@ -8,27 +8,27 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Defines the GuestAgent.
 //
-// Uses Azure REST API version 2022-12-15-preview.
+// Uses Azure REST API version 2025-02-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-12-15-preview.
 //
-// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01-preview, 2025-04-01-preview.
+// Other available API versions: 2022-12-15-preview, 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type GuestAgent struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Username / Password Credentials to provision guest agent.
 	Credentials GuestCredentialResponsePtrOutput `pulumi:"credentials"`
-	// HTTP Proxy configuration for the VM.
-	HttpProxyConfig HttpProxyConfigurationResponsePtrOutput `pulumi:"httpProxyConfig"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The guest agent provisioning action.
 	ProvisioningAction pulumi.StringPtrOutput `pulumi:"provisioningAction"`
-	// The provisioning state.
+	// Provisioning state of the virtual machine instance.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The guest agent status.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -45,18 +45,45 @@ func NewGuestAgent(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ResourceGroupName == nil {
-		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
-	}
-	if args.VirtualMachineName == nil {
-		return nil, errors.New("invalid value for required argument 'VirtualMachineName'")
+	if args.ResourceUri == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceUri'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:azurestackhci/v20210901preview:GuestAgent"),
+			Type: pulumi.String("azure-native:azurestackhci/v20221215preview:GuestAgent"),
 		},
 		{
-			Type: pulumi.String("azure-native:azurestackhci/v20221215preview:GuestAgent"),
+			Type: pulumi.String("azure-native:azurestackhci/v20230701preview:GuestAgent"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20230901preview:GuestAgent"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20240101:GuestAgent"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20240201preview:GuestAgent"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20240501preview:GuestAgent"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20240715preview:GuestAgent"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20240801preview:GuestAgent"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20241001preview:GuestAgent"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20250201preview:GuestAgent"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20250401preview:GuestAgent"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20250601preview:GuestAgent"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -95,32 +122,20 @@ func (GuestAgentState) ElementType() reflect.Type {
 type guestAgentArgs struct {
 	// Username / Password Credentials to provision guest agent.
 	Credentials *GuestCredential `pulumi:"credentials"`
-	// HTTP Proxy configuration for the VM.
-	HttpProxyConfig *HttpProxyConfiguration `pulumi:"httpProxyConfig"`
-	// Name of the guestAgents.
-	Name *string `pulumi:"name"`
 	// The guest agent provisioning action.
 	ProvisioningAction *string `pulumi:"provisioningAction"`
-	// The name of the resource group. The name is case insensitive.
-	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Name of the vm.
-	VirtualMachineName string `pulumi:"virtualMachineName"`
+	// The fully qualified Azure Resource manager identifier of the resource.
+	ResourceUri string `pulumi:"resourceUri"`
 }
 
 // The set of arguments for constructing a GuestAgent resource.
 type GuestAgentArgs struct {
 	// Username / Password Credentials to provision guest agent.
 	Credentials GuestCredentialPtrInput
-	// HTTP Proxy configuration for the VM.
-	HttpProxyConfig HttpProxyConfigurationPtrInput
-	// Name of the guestAgents.
-	Name pulumi.StringPtrInput
 	// The guest agent provisioning action.
 	ProvisioningAction pulumi.StringPtrInput
-	// The name of the resource group. The name is case insensitive.
-	ResourceGroupName pulumi.StringInput
-	// Name of the vm.
-	VirtualMachineName pulumi.StringInput
+	// The fully qualified Azure Resource manager identifier of the resource.
+	ResourceUri pulumi.StringInput
 }
 
 func (GuestAgentArgs) ElementType() reflect.Type {
@@ -160,14 +175,14 @@ func (o GuestAgentOutput) ToGuestAgentOutputWithContext(ctx context.Context) Gue
 	return o
 }
 
+// The Azure API version of the resource.
+func (o GuestAgentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *GuestAgent) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Username / Password Credentials to provision guest agent.
 func (o GuestAgentOutput) Credentials() GuestCredentialResponsePtrOutput {
 	return o.ApplyT(func(v *GuestAgent) GuestCredentialResponsePtrOutput { return v.Credentials }).(GuestCredentialResponsePtrOutput)
-}
-
-// HTTP Proxy configuration for the VM.
-func (o GuestAgentOutput) HttpProxyConfig() HttpProxyConfigurationResponsePtrOutput {
-	return o.ApplyT(func(v *GuestAgent) HttpProxyConfigurationResponsePtrOutput { return v.HttpProxyConfig }).(HttpProxyConfigurationResponsePtrOutput)
 }
 
 // The name of the resource
@@ -180,7 +195,7 @@ func (o GuestAgentOutput) ProvisioningAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuestAgent) pulumi.StringPtrOutput { return v.ProvisioningAction }).(pulumi.StringPtrOutput)
 }
 
-// The provisioning state.
+// Provisioning state of the virtual machine instance.
 func (o GuestAgentOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *GuestAgent) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }

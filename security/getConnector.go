@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,6 +33,8 @@ type LookupConnectorArgs struct {
 type LookupConnectorResult struct {
 	// Settings for authentication management, these settings are relevant only for the cloud connector.
 	AuthenticationDetails interface{} `pulumi:"authenticationDetails"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Settings for hybrid compute management. These settings are relevant only for Arc autoProvision (Hybrid Compute).
 	HybridComputeSettings *HybridComputeSettingsPropertiesResponse `pulumi:"hybridComputeSettings"`
 	// Resource Id
@@ -79,6 +81,11 @@ func (o LookupConnectorResultOutput) ToLookupConnectorResultOutputWithContext(ct
 // Settings for authentication management, these settings are relevant only for the cloud connector.
 func (o LookupConnectorResultOutput) AuthenticationDetails() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupConnectorResult) interface{} { return v.AuthenticationDetails }).(pulumi.AnyOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupConnectorResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Settings for hybrid compute management. These settings are relevant only for Arc autoProvision (Hybrid Compute).

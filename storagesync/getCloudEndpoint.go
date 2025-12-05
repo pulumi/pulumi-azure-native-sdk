@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a given CloudEndpoint.
 //
-// Uses Azure REST API version 2022-06-01.
+// Uses Azure REST API version 2022-09-01.
 //
-// Other available API versions: 2022-09-01.
+// Other available API versions: 2022-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagesync [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupCloudEndpoint(ctx *pulumi.Context, args *LookupCloudEndpointArgs, opts ...pulumi.InvokeOption) (*LookupCloudEndpointResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCloudEndpointResult
@@ -39,6 +39,8 @@ type LookupCloudEndpointArgs struct {
 
 // Cloud Endpoint object.
 type LookupCloudEndpointResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Azure file share name
 	AzureFileShareName *string `pulumi:"azureFileShareName"`
 	// Backup Enabled
@@ -47,7 +49,7 @@ type LookupCloudEndpointResult struct {
 	ChangeEnumerationStatus CloudEndpointChangeEnumerationStatusResponse `pulumi:"changeEnumerationStatus"`
 	// Friendly Name
 	FriendlyName *string `pulumi:"friendlyName"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Resource Last Operation Name
 	LastOperationName *string `pulumi:"lastOperationName"`
@@ -108,6 +110,11 @@ func (o LookupCloudEndpointResultOutput) ToLookupCloudEndpointResultOutputWithCo
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupCloudEndpointResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCloudEndpointResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Azure file share name
 func (o LookupCloudEndpointResultOutput) AzureFileShareName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCloudEndpointResult) *string { return v.AzureFileShareName }).(pulumi.StringPtrOutput)
@@ -130,7 +137,7 @@ func (o LookupCloudEndpointResultOutput) FriendlyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCloudEndpointResult) *string { return v.FriendlyName }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupCloudEndpointResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudEndpointResult) string { return v.Id }).(pulumi.StringOutput)
 }

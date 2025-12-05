@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the properties of a Managed Environment used to host container apps.
 //
-// Uses Azure REST API version 2022-10-01.
+// Uses Azure REST API version 2025-02-02-preview.
 //
-// Other available API versions: 2022-01-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01.
+// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupManagedEnvironment(ctx *pulumi.Context, args *LookupManagedEnvironmentArgs, opts ...pulumi.InvokeOption) (*LookupManagedEnvironmentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagedEnvironmentResult
@@ -35,32 +35,60 @@ type LookupManagedEnvironmentArgs struct {
 
 // An environment for hosting container apps
 type LookupManagedEnvironmentResult struct {
-	// Cluster configuration which enables the log daemon to export app logs to configured destination.
+	// Environment level Application Insights configuration
+	AppInsightsConfiguration *AppInsightsConfigurationResponse `pulumi:"appInsightsConfiguration"`
+	// Cluster configuration which enables the log daemon to export app logs to configured destination
 	AppLogsConfiguration *AppLogsConfigurationResponse `pulumi:"appLogsConfiguration"`
+	// The list of availability zones to use for managed environment
+	AvailabilityZones []string `pulumi:"availabilityZones"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Custom domain configuration for the environment
 	CustomDomainConfiguration *CustomDomainConfigurationResponse `pulumi:"customDomainConfiguration"`
 	// Application Insights connection string used by Dapr to export Service to Service communication telemetry
 	DaprAIConnectionString *string `pulumi:"daprAIConnectionString"`
 	// Azure Monitor instrumentation key used by Dapr to export Service to Service communication telemetry
 	DaprAIInstrumentationKey *string `pulumi:"daprAIInstrumentationKey"`
+	// The configuration of Dapr component.
+	DaprConfiguration *DaprConfigurationResponse `pulumi:"daprConfiguration"`
 	// Default Domain Name for the cluster
 	DefaultDomain string `pulumi:"defaultDomain"`
 	// Any errors that occurred during deployment or deployment validation
 	DeploymentErrors string `pulumi:"deploymentErrors"`
+	// Disk encryption configuration for the Managed Environment.
+	DiskEncryptionConfiguration *DiskEncryptionConfigurationResponse `pulumi:"diskEncryptionConfiguration"`
 	// The endpoint of the eventstream of the Environment.
 	EventStreamEndpoint string `pulumi:"eventStreamEndpoint"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
+	// Managed identities for the Managed Environment to interact with other Azure services without maintaining any secrets or credentials in code.
+	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
+	// Name of the platform-managed resource group created for the Managed Environment to host infrastructure resources. If a subnet ID is provided, this resource group will be created in the same subscription as the subnet.
+	InfrastructureResourceGroup *string `pulumi:"infrastructureResourceGroup"`
+	// Ingress configuration for the Managed Environment.
+	IngressConfiguration *IngressConfigurationResponse `pulumi:"ingressConfiguration"`
+	// The configuration of Keda component.
+	KedaConfiguration *KedaConfigurationResponse `pulumi:"kedaConfiguration"`
 	// Kind of the Environment.
 	Kind *string `pulumi:"kind"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// The name of the resource
 	Name string `pulumi:"name"`
+	// Environment Open Telemetry configuration
+	OpenTelemetryConfiguration *OpenTelemetryConfigurationResponse `pulumi:"openTelemetryConfiguration"`
+	// Peer authentication settings for the Managed Environment
+	PeerAuthentication *ManagedEnvironmentResponsePeerAuthentication `pulumi:"peerAuthentication"`
+	// Peer traffic settings for the Managed Environment
+	PeerTrafficConfiguration *ManagedEnvironmentResponsePeerTrafficConfiguration `pulumi:"peerTrafficConfiguration"`
+	// Private endpoint connections to the resource.
+	PrivateEndpointConnections []PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
+	// Private Link Default Domain Name for the environment
+	PrivateLinkDefaultDomain string `pulumi:"privateLinkDefaultDomain"`
 	// Provisioning state of the Environment.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// SKU properties of the Environment.
-	Sku *EnvironmentSkuPropertiesResponse `pulumi:"sku"`
+	// Property to allow or block all public traffic. Allowed Values: 'Enabled', 'Disabled'.
+	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// Static IP of the Environment
 	StaticIp string `pulumi:"staticIp"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -112,9 +140,26 @@ func (o LookupManagedEnvironmentResultOutput) ToLookupManagedEnvironmentResultOu
 	return o
 }
 
-// Cluster configuration which enables the log daemon to export app logs to configured destination.
+// Environment level Application Insights configuration
+func (o LookupManagedEnvironmentResultOutput) AppInsightsConfiguration() AppInsightsConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v LookupManagedEnvironmentResult) *AppInsightsConfigurationResponse {
+		return v.AppInsightsConfiguration
+	}).(AppInsightsConfigurationResponsePtrOutput)
+}
+
+// Cluster configuration which enables the log daemon to export app logs to configured destination
 func (o LookupManagedEnvironmentResultOutput) AppLogsConfiguration() AppLogsConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v LookupManagedEnvironmentResult) *AppLogsConfigurationResponse { return v.AppLogsConfiguration }).(AppLogsConfigurationResponsePtrOutput)
+}
+
+// The list of availability zones to use for managed environment
+func (o LookupManagedEnvironmentResultOutput) AvailabilityZones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupManagedEnvironmentResult) []string { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupManagedEnvironmentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupManagedEnvironmentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Custom domain configuration for the environment
@@ -134,6 +179,11 @@ func (o LookupManagedEnvironmentResultOutput) DaprAIInstrumentationKey() pulumi.
 	return o.ApplyT(func(v LookupManagedEnvironmentResult) *string { return v.DaprAIInstrumentationKey }).(pulumi.StringPtrOutput)
 }
 
+// The configuration of Dapr component.
+func (o LookupManagedEnvironmentResultOutput) DaprConfiguration() DaprConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v LookupManagedEnvironmentResult) *DaprConfigurationResponse { return v.DaprConfiguration }).(DaprConfigurationResponsePtrOutput)
+}
+
 // Default Domain Name for the cluster
 func (o LookupManagedEnvironmentResultOutput) DefaultDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedEnvironmentResult) string { return v.DefaultDomain }).(pulumi.StringOutput)
@@ -144,14 +194,41 @@ func (o LookupManagedEnvironmentResultOutput) DeploymentErrors() pulumi.StringOu
 	return o.ApplyT(func(v LookupManagedEnvironmentResult) string { return v.DeploymentErrors }).(pulumi.StringOutput)
 }
 
+// Disk encryption configuration for the Managed Environment.
+func (o LookupManagedEnvironmentResultOutput) DiskEncryptionConfiguration() DiskEncryptionConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v LookupManagedEnvironmentResult) *DiskEncryptionConfigurationResponse {
+		return v.DiskEncryptionConfiguration
+	}).(DiskEncryptionConfigurationResponsePtrOutput)
+}
+
 // The endpoint of the eventstream of the Environment.
 func (o LookupManagedEnvironmentResultOutput) EventStreamEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedEnvironmentResult) string { return v.EventStreamEndpoint }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupManagedEnvironmentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedEnvironmentResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Managed identities for the Managed Environment to interact with other Azure services without maintaining any secrets or credentials in code.
+func (o LookupManagedEnvironmentResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupManagedEnvironmentResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+}
+
+// Name of the platform-managed resource group created for the Managed Environment to host infrastructure resources. If a subnet ID is provided, this resource group will be created in the same subscription as the subnet.
+func (o LookupManagedEnvironmentResultOutput) InfrastructureResourceGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupManagedEnvironmentResult) *string { return v.InfrastructureResourceGroup }).(pulumi.StringPtrOutput)
+}
+
+// Ingress configuration for the Managed Environment.
+func (o LookupManagedEnvironmentResultOutput) IngressConfiguration() IngressConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v LookupManagedEnvironmentResult) *IngressConfigurationResponse { return v.IngressConfiguration }).(IngressConfigurationResponsePtrOutput)
+}
+
+// The configuration of Keda component.
+func (o LookupManagedEnvironmentResultOutput) KedaConfiguration() KedaConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v LookupManagedEnvironmentResult) *KedaConfigurationResponse { return v.KedaConfiguration }).(KedaConfigurationResponsePtrOutput)
 }
 
 // Kind of the Environment.
@@ -169,14 +246,47 @@ func (o LookupManagedEnvironmentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedEnvironmentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Environment Open Telemetry configuration
+func (o LookupManagedEnvironmentResultOutput) OpenTelemetryConfiguration() OpenTelemetryConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v LookupManagedEnvironmentResult) *OpenTelemetryConfigurationResponse {
+		return v.OpenTelemetryConfiguration
+	}).(OpenTelemetryConfigurationResponsePtrOutput)
+}
+
+// Peer authentication settings for the Managed Environment
+func (o LookupManagedEnvironmentResultOutput) PeerAuthentication() ManagedEnvironmentResponsePeerAuthenticationPtrOutput {
+	return o.ApplyT(func(v LookupManagedEnvironmentResult) *ManagedEnvironmentResponsePeerAuthentication {
+		return v.PeerAuthentication
+	}).(ManagedEnvironmentResponsePeerAuthenticationPtrOutput)
+}
+
+// Peer traffic settings for the Managed Environment
+func (o LookupManagedEnvironmentResultOutput) PeerTrafficConfiguration() ManagedEnvironmentResponsePeerTrafficConfigurationPtrOutput {
+	return o.ApplyT(func(v LookupManagedEnvironmentResult) *ManagedEnvironmentResponsePeerTrafficConfiguration {
+		return v.PeerTrafficConfiguration
+	}).(ManagedEnvironmentResponsePeerTrafficConfigurationPtrOutput)
+}
+
+// Private endpoint connections to the resource.
+func (o LookupManagedEnvironmentResultOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v LookupManagedEnvironmentResult) []PrivateEndpointConnectionResponse {
+		return v.PrivateEndpointConnections
+	}).(PrivateEndpointConnectionResponseArrayOutput)
+}
+
+// Private Link Default Domain Name for the environment
+func (o LookupManagedEnvironmentResultOutput) PrivateLinkDefaultDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupManagedEnvironmentResult) string { return v.PrivateLinkDefaultDomain }).(pulumi.StringOutput)
+}
+
 // Provisioning state of the Environment.
 func (o LookupManagedEnvironmentResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedEnvironmentResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// SKU properties of the Environment.
-func (o LookupManagedEnvironmentResultOutput) Sku() EnvironmentSkuPropertiesResponsePtrOutput {
-	return o.ApplyT(func(v LookupManagedEnvironmentResult) *EnvironmentSkuPropertiesResponse { return v.Sku }).(EnvironmentSkuPropertiesResponsePtrOutput)
+// Property to allow or block all public traffic. Allowed Values: 'Enabled', 'Disabled'.
+func (o LookupManagedEnvironmentResultOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupManagedEnvironmentResult) *string { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
 }
 
 // Static IP of the Environment

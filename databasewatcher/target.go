@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Concrete proxy resource types can be created by aliasing this type using a specific property type.
 //
-// Uses Azure REST API version 2023-09-01-preview.
+// Uses Azure REST API version 2024-10-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-09-01-preview.
 //
-// Other available API versions: 2024-07-19-preview, 2024-10-01-preview, 2025-01-02.
+// Other available API versions: 2023-09-01-preview, 2024-07-19-preview, 2025-01-02. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native databasewatcher [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Target struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The FQDN host name of the server to use in the connection string when connecting to a target. For example, for an Azure SQL logical server in the Azure commercial cloud, the value might be 'sql-logical-server-22092780.database.windows.net'; for an Azure SQL managed instance in the Azure commercial cloud, the value might be 'sql-mi-39441134.767d5869f605.database.windows.net'. Port number and instance name must be specified separately.
 	ConnectionServerName pulumi.StringOutput `pulumi:"connectionServerName"`
 	// The name of the resource
@@ -177,6 +179,11 @@ func (o TargetOutput) ToTargetOutput() TargetOutput {
 
 func (o TargetOutput) ToTargetOutputWithContext(ctx context.Context) TargetOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o TargetOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Target) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The FQDN host name of the server to use in the connection string when connecting to a target. For example, for an Azure SQL logical server in the Azure commercial cloud, the value might be 'sql-logical-server-22092780.database.windows.net'; for an Azure SQL managed instance in the Azure commercial cloud, the value might be 'sql-mi-39441134.767d5869f605.database.windows.net'. Port number and instance name must be specified separately.

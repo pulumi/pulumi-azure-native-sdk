@@ -8,16 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The relationship resource format.
 //
-// Uses Azure REST API version 2017-04-26. In version 1.x of the Azure Native provider, it used API version 2017-04-26.
+// Uses Azure REST API version 2017-04-26. In version 2.x of the Azure Native provider, it used API version 2017-04-26.
 type Relationship struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The Relationship Cardinality.
 	Cardinality pulumi.StringPtrOutput `pulumi:"cardinality"`
 	// Localized descriptions for the Relationship.
@@ -194,6 +196,11 @@ func (o RelationshipOutput) ToRelationshipOutput() RelationshipOutput {
 
 func (o RelationshipOutput) ToRelationshipOutputWithContext(ctx context.Context) RelationshipOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o RelationshipOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Relationship) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The Relationship Cardinality.

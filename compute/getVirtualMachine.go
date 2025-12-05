@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves information about the model view or the instance view of a virtual machine.
 //
-// Uses Azure REST API version 2023-03-01.
+// Uses Azure REST API version 2024-11-01.
 //
-// Other available API versions: 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2024-11-01.
+// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupVirtualMachine(ctx *pulumi.Context, args *LookupVirtualMachineArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVirtualMachineResult
@@ -29,7 +29,7 @@ func LookupVirtualMachine(ctx *pulumi.Context, args *LookupVirtualMachineArgs, o
 type LookupVirtualMachineArgs struct {
 	// The expand expression to apply on the operation. 'InstanceView' retrieves a snapshot of the runtime properties of the virtual machine that is managed by the platform and can change outside of control plane operations. 'UserData' retrieves the UserData property as part of the VM model view that was provided by the user during the VM Create/Update operation.
 	Expand *string `pulumi:"expand"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the virtual machine.
 	VmName string `pulumi:"vmName"`
@@ -43,12 +43,16 @@ type LookupVirtualMachineResult struct {
 	ApplicationProfile *ApplicationProfileResponse `pulumi:"applicationProfile"`
 	// Specifies information about the availability set that the virtual machine should be assigned to. Virtual machines specified in the same availability set are allocated to different nodes to maximize availability. For more information about availability sets, see [Availability sets overview](https://docs.microsoft.com/azure/virtual-machines/availability-set-overview). For more information on Azure planned maintenance, see [Maintenance and updates for Virtual Machines in Azure](https://docs.microsoft.com/azure/virtual-machines/maintenance-and-updates). Currently, a VM can only be added to availability set at creation time. The availability set to which the VM is being added should be under the same resource group as the availability set resource. An existing VM cannot be added to an availability set. This property cannot exist along with a non-null properties.virtualMachineScaleSet reference.
 	AvailabilitySet *SubResourceResponse `pulumi:"availabilitySet"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Specifies the billing related details of a Azure Spot virtual machine. Minimum api-version: 2019-03-01.
 	BillingProfile *BillingProfileResponse `pulumi:"billingProfile"`
 	// Specifies information about the capacity reservation that is used to allocate virtual machine. Minimum api-version: 2021-04-01.
 	CapacityReservation *CapacityReservationProfileResponse `pulumi:"capacityReservation"`
 	// Specifies the boot diagnostic settings state. Minimum api-version: 2015-06-15.
 	DiagnosticsProfile *DiagnosticsProfileResponse `pulumi:"diagnosticsProfile"`
+	// Etag is property returned in Create/Update/Get response of the VM, so that customer can supply it in the header to ensure optimistic updates.
+	Etag string `pulumi:"etag"`
 	// Specifies the eviction policy for the Azure Spot virtual machine and Azure Spot scale set. For Azure Spot virtual machines, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2019-03-01. For Azure Spot scale sets, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2017-10-30-preview.
 	EvictionPolicy *string `pulumi:"evictionPolicy"`
 	// The extended location of the Virtual Machine.
@@ -61,7 +65,7 @@ type LookupVirtualMachineResult struct {
 	Host *SubResourceResponse `pulumi:"host"`
 	// Specifies information about the dedicated host group that the virtual machine resides in. **Note:** User cannot specify both host and hostGroup properties. Minimum api-version: 2020-06-01.
 	HostGroup *SubResourceResponse `pulumi:"hostGroup"`
-	// Resource Id
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The identity of the virtual machine, if configured.
 	Identity *VirtualMachineIdentityResponse `pulumi:"identity"`
@@ -69,14 +73,18 @@ type LookupVirtualMachineResult struct {
 	InstanceView VirtualMachineInstanceViewResponse `pulumi:"instanceView"`
 	// Specifies that the image or disk that is being used was licensed on-premises. <br><br> Possible values for Windows Server operating system are: <br><br> Windows_Client <br><br> Windows_Server <br><br> Possible values for Linux Server operating system are: <br><br> RHEL_BYOS (for RHEL) <br><br> SLES_BYOS (for SUSE) <br><br> For more information, see [Azure Hybrid Use Benefit for Windows Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) <br><br> [Azure Hybrid Use Benefit for Linux Server](https://docs.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux) <br><br> Minimum api-version: 2015-06-15
 	LicenseType *string `pulumi:"licenseType"`
-	// Resource location
+	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
-	// Resource name
+	// ManagedBy is set to Virtual Machine Scale Set(VMSS) flex ARM resourceID, if the VM is part of the VMSS. This property is used by platform for internal resource group delete optimization.
+	ManagedBy string `pulumi:"managedBy"`
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Specifies the network interfaces of the virtual machine.
 	NetworkProfile *NetworkProfileResponse `pulumi:"networkProfile"`
 	// Specifies the operating system settings used while creating the virtual machine. Some of the settings cannot be changed once VM is provisioned.
 	OsProfile *OSProfileResponse `pulumi:"osProfile"`
+	// Placement section specifies the user-defined constraints for virtual machine hardware placement. This property cannot be changed once VM is provisioned. Minimum api-version: 2024-11-01.
+	Placement *PlacementResponse `pulumi:"placement"`
 	// Specifies information about the marketplace image used to create the virtual machine. This element is only used for marketplace images. Before you can use a marketplace image from an API, you must enable the image for programmatic use.  In the Azure portal, find the marketplace image that you want to use and then click **Want to deploy programmatically, Get Started ->**. Enter any required information and then click **Save**.
 	Plan *PlanResponse `pulumi:"plan"`
 	// Specifies the scale set logical fault domain into which the Virtual Machine will be created. By default, the Virtual Machine will by automatically assigned to a fault domain that best maintains balance across available fault domains. This is applicable only if the 'virtualMachineScaleSet' property of this Virtual Machine is set. The Virtual Machine Scale Set that is referenced, must have 'platformFaultDomainCount' greater than 1. This property cannot be updated once the Virtual Machine is created. Fault domain assignment can be viewed in the Virtual Machine Instance View. Minimum api‐version: 2020‐12‐01.
@@ -89,17 +97,21 @@ type LookupVirtualMachineResult struct {
 	ProximityPlacementGroup *SubResourceResponse `pulumi:"proximityPlacementGroup"`
 	// The virtual machine child extension resources.
 	Resources []VirtualMachineExtensionResponse `pulumi:"resources"`
+	// Specifies Redeploy, Reboot and ScheduledEventsAdditionalPublishingTargets Scheduled Event related configurations for the virtual machine.
+	ScheduledEventsPolicy *ScheduledEventsPolicyResponse `pulumi:"scheduledEventsPolicy"`
 	// Specifies Scheduled Event related configurations.
 	ScheduledEventsProfile *ScheduledEventsProfileResponse `pulumi:"scheduledEventsProfile"`
 	// Specifies the Security related profile settings for the virtual machine.
 	SecurityProfile *SecurityProfileResponse `pulumi:"securityProfile"`
 	// Specifies the storage settings for the virtual machine disks.
 	StorageProfile *StorageProfileResponse `pulumi:"storageProfile"`
-	// Resource tags
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Specifies the time at which the Virtual Machine resource was created. Minimum api-version: 2021-11-01.
 	TimeCreated string `pulumi:"timeCreated"`
-	// Resource type
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// UserData for the VM, which must be base-64 encoded. Customer should not pass any secrets in here. Minimum api-version: 2021-03-01.
 	UserData *string `pulumi:"userData"`
@@ -107,7 +119,7 @@ type LookupVirtualMachineResult struct {
 	VirtualMachineScaleSet *SubResourceResponse `pulumi:"virtualMachineScaleSet"`
 	// Specifies the VM unique ID which is a 128-bits identifier that is encoded and stored in all Azure IaaS VMs SMBIOS and can be read using platform BIOS commands.
 	VmId string `pulumi:"vmId"`
-	// The virtual machine zones.
+	// The availability zones.
 	Zones []string `pulumi:"zones"`
 }
 
@@ -123,7 +135,7 @@ func LookupVirtualMachineOutput(ctx *pulumi.Context, args LookupVirtualMachineOu
 type LookupVirtualMachineOutputArgs struct {
 	// The expand expression to apply on the operation. 'InstanceView' retrieves a snapshot of the runtime properties of the virtual machine that is managed by the platform and can change outside of control plane operations. 'UserData' retrieves the UserData property as part of the VM model view that was provided by the user during the VM Create/Update operation.
 	Expand pulumi.StringPtrInput `pulumi:"expand"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the virtual machine.
 	VmName pulumi.StringInput `pulumi:"vmName"`
@@ -163,6 +175,11 @@ func (o LookupVirtualMachineResultOutput) AvailabilitySet() SubResourceResponseP
 	return o.ApplyT(func(v LookupVirtualMachineResult) *SubResourceResponse { return v.AvailabilitySet }).(SubResourceResponsePtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupVirtualMachineResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Specifies the billing related details of a Azure Spot virtual machine. Minimum api-version: 2019-03-01.
 func (o LookupVirtualMachineResultOutput) BillingProfile() BillingProfileResponsePtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) *BillingProfileResponse { return v.BillingProfile }).(BillingProfileResponsePtrOutput)
@@ -176,6 +193,11 @@ func (o LookupVirtualMachineResultOutput) CapacityReservation() CapacityReservat
 // Specifies the boot diagnostic settings state. Minimum api-version: 2015-06-15.
 func (o LookupVirtualMachineResultOutput) DiagnosticsProfile() DiagnosticsProfileResponsePtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) *DiagnosticsProfileResponse { return v.DiagnosticsProfile }).(DiagnosticsProfileResponsePtrOutput)
+}
+
+// Etag is property returned in Create/Update/Get response of the VM, so that customer can supply it in the header to ensure optimistic updates.
+func (o LookupVirtualMachineResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
 // Specifies the eviction policy for the Azure Spot virtual machine and Azure Spot scale set. For Azure Spot virtual machines, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2019-03-01. For Azure Spot scale sets, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2017-10-30-preview.
@@ -208,7 +230,7 @@ func (o LookupVirtualMachineResultOutput) HostGroup() SubResourceResponsePtrOutp
 	return o.ApplyT(func(v LookupVirtualMachineResult) *SubResourceResponse { return v.HostGroup }).(SubResourceResponsePtrOutput)
 }
 
-// Resource Id
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupVirtualMachineResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -228,12 +250,17 @@ func (o LookupVirtualMachineResultOutput) LicenseType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) *string { return v.LicenseType }).(pulumi.StringPtrOutput)
 }
 
-// Resource location
+// The geo-location where the resource lives
 func (o LookupVirtualMachineResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// Resource name
+// ManagedBy is set to Virtual Machine Scale Set(VMSS) flex ARM resourceID, if the VM is part of the VMSS. This property is used by platform for internal resource group delete optimization.
+func (o LookupVirtualMachineResultOutput) ManagedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.ManagedBy }).(pulumi.StringOutput)
+}
+
+// The name of the resource
 func (o LookupVirtualMachineResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -246,6 +273,11 @@ func (o LookupVirtualMachineResultOutput) NetworkProfile() NetworkProfileRespons
 // Specifies the operating system settings used while creating the virtual machine. Some of the settings cannot be changed once VM is provisioned.
 func (o LookupVirtualMachineResultOutput) OsProfile() OSProfileResponsePtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) *OSProfileResponse { return v.OsProfile }).(OSProfileResponsePtrOutput)
+}
+
+// Placement section specifies the user-defined constraints for virtual machine hardware placement. This property cannot be changed once VM is provisioned. Minimum api-version: 2024-11-01.
+func (o LookupVirtualMachineResultOutput) Placement() PlacementResponsePtrOutput {
+	return o.ApplyT(func(v LookupVirtualMachineResult) *PlacementResponse { return v.Placement }).(PlacementResponsePtrOutput)
 }
 
 // Specifies information about the marketplace image used to create the virtual machine. This element is only used for marketplace images. Before you can use a marketplace image from an API, you must enable the image for programmatic use.  In the Azure portal, find the marketplace image that you want to use and then click **Want to deploy programmatically, Get Started ->**. Enter any required information and then click **Save**.
@@ -278,6 +310,11 @@ func (o LookupVirtualMachineResultOutput) Resources() VirtualMachineExtensionRes
 	return o.ApplyT(func(v LookupVirtualMachineResult) []VirtualMachineExtensionResponse { return v.Resources }).(VirtualMachineExtensionResponseArrayOutput)
 }
 
+// Specifies Redeploy, Reboot and ScheduledEventsAdditionalPublishingTargets Scheduled Event related configurations for the virtual machine.
+func (o LookupVirtualMachineResultOutput) ScheduledEventsPolicy() ScheduledEventsPolicyResponsePtrOutput {
+	return o.ApplyT(func(v LookupVirtualMachineResult) *ScheduledEventsPolicyResponse { return v.ScheduledEventsPolicy }).(ScheduledEventsPolicyResponsePtrOutput)
+}
+
 // Specifies Scheduled Event related configurations.
 func (o LookupVirtualMachineResultOutput) ScheduledEventsProfile() ScheduledEventsProfileResponsePtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) *ScheduledEventsProfileResponse { return v.ScheduledEventsProfile }).(ScheduledEventsProfileResponsePtrOutput)
@@ -293,7 +330,12 @@ func (o LookupVirtualMachineResultOutput) StorageProfile() StorageProfileRespons
 	return o.ApplyT(func(v LookupVirtualMachineResult) *StorageProfileResponse { return v.StorageProfile }).(StorageProfileResponsePtrOutput)
 }
 
-// Resource tags
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupVirtualMachineResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupVirtualMachineResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// Resource tags.
 func (o LookupVirtualMachineResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -303,7 +345,7 @@ func (o LookupVirtualMachineResultOutput) TimeCreated() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.TimeCreated }).(pulumi.StringOutput)
 }
 
-// Resource type
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupVirtualMachineResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -323,7 +365,7 @@ func (o LookupVirtualMachineResultOutput) VmId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.VmId }).(pulumi.StringOutput)
 }
 
-// The virtual machine zones.
+// The availability zones.
 func (o LookupVirtualMachineResultOutput) Zones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) []string { return v.Zones }).(pulumi.StringArrayOutput)
 }

@@ -8,24 +8,29 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // EventGrid Topic
 //
-// Uses Azure REST API version 2022-06-15. In version 1.x of the Azure Native provider, it used API version 2020-06-01.
+// Uses Azure REST API version 2025-02-15. In version 2.x of the Azure Native provider, it used API version 2022-06-15.
 //
-// Other available API versions: 2020-04-01-preview, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
+// Other available API versions: 2022-06-15, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Topic struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Data Residency Boundary of the resource.
 	DataResidencyBoundary pulumi.StringPtrOutput `pulumi:"dataResidencyBoundary"`
 	// This boolean is used to enable or disable local auth. Default value is false. When the property is set to true, only AAD token will be used to authenticate if user is allowed to publish to the topic.
 	DisableLocalAuth pulumi.BoolPtrOutput `pulumi:"disableLocalAuth"`
 	// Endpoint for the topic.
 	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
+	// Event Type Information for the user topic. This information is provided by the publisher and can be used by the
+	// subscriber to view different types of events that are published.
+	EventTypeInfo EventTypeInfoResponsePtrOutput `pulumi:"eventTypeInfo"`
 	// Identity information for the resource.
 	Identity IdentityInfoResponsePtrOutput `pulumi:"identity"`
 	// This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled.
@@ -38,15 +43,18 @@ type Topic struct {
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Metric resource id for the topic.
 	MetricResourceId pulumi.StringOutput `pulumi:"metricResourceId"`
+	// Minimum TLS version of the publisher allowed to publish to this topic
+	MinimumTlsVersionAllowed pulumi.StringPtrOutput `pulumi:"minimumTlsVersionAllowed"`
 	// Name of the resource.
-	Name                       pulumi.StringOutput                          `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// List of private endpoint connections.
 	PrivateEndpointConnections PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
 	// Provisioning state of the topic.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// This determines if traffic is allowed over public network. By default it is enabled.
 	// You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.TopicProperties.InboundIpRules" />
 	PublicNetworkAccess pulumi.StringPtrOutput `pulumi:"publicNetworkAccess"`
-	// The system metadata relating to Topic resource.
+	// The system metadata relating to the Event Grid resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Tags of the resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
@@ -137,6 +145,9 @@ func NewTopic(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20250215:Topic"),
 		},
+		{
+			Type: pulumi.String("azure-native:eventgrid/v20250401preview:Topic"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -176,6 +187,9 @@ type topicArgs struct {
 	DataResidencyBoundary *string `pulumi:"dataResidencyBoundary"`
 	// This boolean is used to enable or disable local auth. Default value is false. When the property is set to true, only AAD token will be used to authenticate if user is allowed to publish to the topic.
 	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
+	// Event Type Information for the user topic. This information is provided by the publisher and can be used by the
+	// subscriber to view different types of events that are published.
+	EventTypeInfo *EventTypeInfo `pulumi:"eventTypeInfo"`
 	// Identity information for the resource.
 	Identity *IdentityInfo `pulumi:"identity"`
 	// This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled.
@@ -186,6 +200,8 @@ type topicArgs struct {
 	InputSchemaMapping *JsonInputSchemaMapping `pulumi:"inputSchemaMapping"`
 	// Location of the resource.
 	Location *string `pulumi:"location"`
+	// Minimum TLS version of the publisher allowed to publish to this topic
+	MinimumTlsVersionAllowed *string `pulumi:"minimumTlsVersionAllowed"`
 	// This determines if traffic is allowed over public network. By default it is enabled.
 	// You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.TopicProperties.InboundIpRules" />
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
@@ -203,6 +219,9 @@ type TopicArgs struct {
 	DataResidencyBoundary pulumi.StringPtrInput
 	// This boolean is used to enable or disable local auth. Default value is false. When the property is set to true, only AAD token will be used to authenticate if user is allowed to publish to the topic.
 	DisableLocalAuth pulumi.BoolPtrInput
+	// Event Type Information for the user topic. This information is provided by the publisher and can be used by the
+	// subscriber to view different types of events that are published.
+	EventTypeInfo EventTypeInfoPtrInput
 	// Identity information for the resource.
 	Identity IdentityInfoPtrInput
 	// This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled.
@@ -213,6 +232,8 @@ type TopicArgs struct {
 	InputSchemaMapping JsonInputSchemaMappingPtrInput
 	// Location of the resource.
 	Location pulumi.StringPtrInput
+	// Minimum TLS version of the publisher allowed to publish to this topic
+	MinimumTlsVersionAllowed pulumi.StringPtrInput
 	// This determines if traffic is allowed over public network. By default it is enabled.
 	// You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.TopicProperties.InboundIpRules" />
 	PublicNetworkAccess pulumi.StringPtrInput
@@ -261,6 +282,11 @@ func (o TopicOutput) ToTopicOutputWithContext(ctx context.Context) TopicOutput {
 	return o
 }
 
+// The Azure API version of the resource.
+func (o TopicOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Topic) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Data Residency Boundary of the resource.
 func (o TopicOutput) DataResidencyBoundary() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Topic) pulumi.StringPtrOutput { return v.DataResidencyBoundary }).(pulumi.StringPtrOutput)
@@ -274,6 +300,12 @@ func (o TopicOutput) DisableLocalAuth() pulumi.BoolPtrOutput {
 // Endpoint for the topic.
 func (o TopicOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *Topic) pulumi.StringOutput { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// Event Type Information for the user topic. This information is provided by the publisher and can be used by the
+// subscriber to view different types of events that are published.
+func (o TopicOutput) EventTypeInfo() EventTypeInfoResponsePtrOutput {
+	return o.ApplyT(func(v *Topic) EventTypeInfoResponsePtrOutput { return v.EventTypeInfo }).(EventTypeInfoResponsePtrOutput)
 }
 
 // Identity information for the resource.
@@ -306,11 +338,17 @@ func (o TopicOutput) MetricResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Topic) pulumi.StringOutput { return v.MetricResourceId }).(pulumi.StringOutput)
 }
 
+// Minimum TLS version of the publisher allowed to publish to this topic
+func (o TopicOutput) MinimumTlsVersionAllowed() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Topic) pulumi.StringPtrOutput { return v.MinimumTlsVersionAllowed }).(pulumi.StringPtrOutput)
+}
+
 // Name of the resource.
 func (o TopicOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Topic) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// List of private endpoint connections.
 func (o TopicOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
 	return o.ApplyT(func(v *Topic) PrivateEndpointConnectionResponseArrayOutput { return v.PrivateEndpointConnections }).(PrivateEndpointConnectionResponseArrayOutput)
 }
@@ -326,7 +364,7 @@ func (o TopicOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Topic) pulumi.StringPtrOutput { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
 }
 
-// The system metadata relating to Topic resource.
+// The system metadata relating to the Event Grid resource.
 func (o TopicOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Topic) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

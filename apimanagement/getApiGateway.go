@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an API Management gateway resource description.
 //
-// Uses Azure REST API version 2023-09-01-preview.
+// Uses Azure REST API version 2024-06-01-preview.
 //
-// Other available API versions: 2024-05-01, 2024-06-01-preview.
+// Other available API versions: 2023-09-01-preview, 2024-05-01, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupApiGateway(ctx *pulumi.Context, args *LookupApiGatewayArgs, opts ...pulumi.InvokeOption) (*LookupApiGatewayResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupApiGatewayResult
@@ -35,6 +35,8 @@ type LookupApiGatewayArgs struct {
 
 // A single API Management gateway resource in List or Get response.
 type LookupApiGatewayResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Information regarding how the gateway should integrate with backend systems.
 	Backend *BackendConfigurationResponse `pulumi:"backend"`
 	// Information regarding the Configuration API of the API Management gateway. This is only applicable for API gateway with Standard SKU.
@@ -100,6 +102,11 @@ func (o LookupApiGatewayResultOutput) ToLookupApiGatewayResultOutput() LookupApi
 
 func (o LookupApiGatewayResultOutput) ToLookupApiGatewayResultOutputWithContext(ctx context.Context) LookupApiGatewayResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupApiGatewayResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApiGatewayResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Information regarding how the gateway should integrate with backend systems.

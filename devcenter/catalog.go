@@ -8,22 +8,30 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents a catalog.
 //
-// Uses Azure REST API version 2023-04-01. In version 1.x of the Azure Native provider, it used API version 2022-09-01-preview.
+// Uses Azure REST API version 2024-02-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
 //
-// Other available API versions: 2023-08-01-preview, 2023-10-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01.
+// Other available API versions: 2023-04-01, 2023-08-01-preview, 2023-10-01-preview, 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01, 2025-04-01-preview, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devcenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Catalog struct {
 	pulumi.CustomResourceState
 
 	// Properties for an Azure DevOps catalog type.
 	AdoGit GitCatalogResponsePtrOutput `pulumi:"adoGit"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// The connection state of the catalog.
+	ConnectionState pulumi.StringOutput `pulumi:"connectionState"`
 	// Properties for a GitHub catalog type.
 	GitHub GitCatalogResponsePtrOutput `pulumi:"gitHub"`
+	// When the catalog was last connected.
+	LastConnectionTime pulumi.StringOutput `pulumi:"lastConnectionTime"`
+	// Stats of the latest synchronization.
+	LastSyncStats SyncStatsResponseOutput `pulumi:"lastSyncStats"`
 	// When the catalog was last synced.
 	LastSyncTime pulumi.StringOutput `pulumi:"lastSyncTime"`
 	// The name of the resource
@@ -32,8 +40,12 @@ type Catalog struct {
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The synchronization state of the catalog.
 	SyncState pulumi.StringOutput `pulumi:"syncState"`
+	// Indicates the type of sync that is configured for the catalog.
+	SyncType pulumi.StringPtrOutput `pulumi:"syncType"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// Resource tags.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -97,6 +109,12 @@ func NewCatalog(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:devcenter/v20250201:Catalog"),
 		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20250401preview:Catalog"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20250701preview:Catalog"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -142,6 +160,10 @@ type catalogArgs struct {
 	GitHub *GitCatalog `pulumi:"gitHub"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Indicates the type of sync that is configured for the catalog.
+	SyncType *string `pulumi:"syncType"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Catalog resource.
@@ -156,6 +178,10 @@ type CatalogArgs struct {
 	GitHub GitCatalogPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
+	// Indicates the type of sync that is configured for the catalog.
+	SyncType pulumi.StringPtrInput
+	// Resource tags.
+	Tags pulumi.StringMapInput
 }
 
 func (CatalogArgs) ElementType() reflect.Type {
@@ -200,9 +226,29 @@ func (o CatalogOutput) AdoGit() GitCatalogResponsePtrOutput {
 	return o.ApplyT(func(v *Catalog) GitCatalogResponsePtrOutput { return v.AdoGit }).(GitCatalogResponsePtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o CatalogOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Catalog) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// The connection state of the catalog.
+func (o CatalogOutput) ConnectionState() pulumi.StringOutput {
+	return o.ApplyT(func(v *Catalog) pulumi.StringOutput { return v.ConnectionState }).(pulumi.StringOutput)
+}
+
 // Properties for a GitHub catalog type.
 func (o CatalogOutput) GitHub() GitCatalogResponsePtrOutput {
 	return o.ApplyT(func(v *Catalog) GitCatalogResponsePtrOutput { return v.GitHub }).(GitCatalogResponsePtrOutput)
+}
+
+// When the catalog was last connected.
+func (o CatalogOutput) LastConnectionTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Catalog) pulumi.StringOutput { return v.LastConnectionTime }).(pulumi.StringOutput)
+}
+
+// Stats of the latest synchronization.
+func (o CatalogOutput) LastSyncStats() SyncStatsResponseOutput {
+	return o.ApplyT(func(v *Catalog) SyncStatsResponseOutput { return v.LastSyncStats }).(SyncStatsResponseOutput)
 }
 
 // When the catalog was last synced.
@@ -225,9 +271,19 @@ func (o CatalogOutput) SyncState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Catalog) pulumi.StringOutput { return v.SyncState }).(pulumi.StringOutput)
 }
 
+// Indicates the type of sync that is configured for the catalog.
+func (o CatalogOutput) SyncType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Catalog) pulumi.StringPtrOutput { return v.SyncType }).(pulumi.StringPtrOutput)
+}
+
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o CatalogOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Catalog) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// Resource tags.
+func (o CatalogOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Catalog) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

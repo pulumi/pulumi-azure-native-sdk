@@ -7,13 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns a data connection.
 //
-// Uses Azure REST API version 2022-12-29.
+// Uses Azure REST API version 2024-04-13.
 func LookupIotHubDataConnection(ctx *pulumi.Context, args *LookupIotHubDataConnectionArgs, opts ...pulumi.InvokeOption) (*LookupIotHubDataConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIotHubDataConnectionResult
@@ -31,12 +31,14 @@ type LookupIotHubDataConnectionArgs struct {
 	DataConnectionName string `pulumi:"dataConnectionName"`
 	// The name of the database in the Kusto cluster.
 	DatabaseName string `pulumi:"databaseName"`
-	// The name of the resource group containing the Kusto cluster.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Class representing an iot hub data connection.
 type LookupIotHubDataConnectionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The iot hub consumer group.
 	ConsumerGroup string `pulumi:"consumerGroup"`
 	// The data format of the message. Optionally the data format can be added to each message.
@@ -98,7 +100,7 @@ type LookupIotHubDataConnectionOutputArgs struct {
 	DataConnectionName pulumi.StringInput `pulumi:"dataConnectionName"`
 	// The name of the database in the Kusto cluster.
 	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
-	// The name of the resource group containing the Kusto cluster.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -119,6 +121,11 @@ func (o LookupIotHubDataConnectionResultOutput) ToLookupIotHubDataConnectionResu
 
 func (o LookupIotHubDataConnectionResultOutput) ToLookupIotHubDataConnectionResultOutputWithContext(ctx context.Context) LookupIotHubDataConnectionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupIotHubDataConnectionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIotHubDataConnectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The iot hub consumer group.

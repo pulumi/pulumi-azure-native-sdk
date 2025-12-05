@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the details of the authorization server specified by its identifier.
 //
-// Uses Azure REST API version 2022-08-01.
+// Uses Azure REST API version 2022-09-01-preview.
 //
-// Other available API versions: 2016-10-10, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupAuthorizationServer(ctx *pulumi.Context, args *LookupAuthorizationServerArgs, opts ...pulumi.InvokeOption) (*LookupAuthorizationServerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAuthorizationServerResult
@@ -41,6 +41,8 @@ type LookupAuthorizationServerResult struct {
 	AuthorizationEndpoint string `pulumi:"authorizationEndpoint"`
 	// HTTP verbs supported by the authorization endpoint. GET must be always present. POST is optional.
 	AuthorizationMethods []string `pulumi:"authorizationMethods"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Specifies the mechanism by which access token is passed to the API.
 	BearerTokenSendingMethods []string `pulumi:"bearerTokenSendingMethods"`
 	// Method of authentication supported by the token endpoint of this authorization server. Possible values are Basic and/or Body. When Body is specified, client credentials and other parameters are passed within the request body in the application/x-www-form-urlencoded format.
@@ -126,6 +128,11 @@ func (o LookupAuthorizationServerResultOutput) AuthorizationEndpoint() pulumi.St
 // HTTP verbs supported by the authorization endpoint. GET must be always present. POST is optional.
 func (o LookupAuthorizationServerResultOutput) AuthorizationMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupAuthorizationServerResult) []string { return v.AuthorizationMethods }).(pulumi.StringArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupAuthorizationServerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAuthorizationServerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Specifies the mechanism by which access token is passed to the API.

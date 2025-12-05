@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieve a hybrid runbook worker group.
 //
-// Uses Azure REST API version 2022-08-08.
+// Uses Azure REST API version 2023-11-01.
 //
-// Other available API versions: 2021-06-22, 2023-05-15-preview, 2023-11-01, 2024-10-23.
+// Other available API versions: 2021-06-22, 2022-02-22, 2022-08-08, 2023-05-15-preview, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupHybridRunbookWorkerGroup(ctx *pulumi.Context, args *LookupHybridRunbookWorkerGroupArgs, opts ...pulumi.InvokeOption) (*LookupHybridRunbookWorkerGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupHybridRunbookWorkerGroupResult
@@ -37,6 +37,8 @@ type LookupHybridRunbookWorkerGroupArgs struct {
 
 // Definition of hybrid runbook worker group.
 type LookupHybridRunbookWorkerGroupResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Sets the credential of a worker group.
 	Credential *RunAsCredentialAssociationPropertyResponse `pulumi:"credential"`
 	// Type of the HybridWorkerGroup.
@@ -86,6 +88,11 @@ func (o LookupHybridRunbookWorkerGroupResultOutput) ToLookupHybridRunbookWorkerG
 
 func (o LookupHybridRunbookWorkerGroupResultOutput) ToLookupHybridRunbookWorkerGroupResultOutputWithContext(ctx context.Context) LookupHybridRunbookWorkerGroupResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupHybridRunbookWorkerGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHybridRunbookWorkerGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Sets the credential of a worker group.

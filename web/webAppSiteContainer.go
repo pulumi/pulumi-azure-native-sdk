@@ -8,20 +8,22 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Container of a site
 //
-// Uses Azure REST API version 2023-12-01.
+// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2023-12-01.
 //
-// Other available API versions: 2024-04-01.
+// Other available API versions: 2023-12-01, 2024-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type WebAppSiteContainer struct {
 	pulumi.CustomResourceState
 
 	// Auth Type
 	AuthType pulumi.StringPtrOutput `pulumi:"authType"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Created Time
 	CreatedTime pulumi.StringOutput `pulumi:"createdTime"`
 	// List of environment variables
@@ -77,6 +79,9 @@ func NewWebAppSiteContainer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20240401:WebAppSiteContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:web/v20241101:WebAppSiteContainer"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -215,6 +220,11 @@ func (o WebAppSiteContainerOutput) ToWebAppSiteContainerOutputWithContext(ctx co
 // Auth Type
 func (o WebAppSiteContainerOutput) AuthType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebAppSiteContainer) pulumi.StringPtrOutput { return v.AuthType }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o WebAppSiteContainerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *WebAppSiteContainer) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Created Time

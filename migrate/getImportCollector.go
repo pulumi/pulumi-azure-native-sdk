@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -34,11 +34,13 @@ type LookupImportCollectorArgs struct {
 }
 
 type LookupImportCollectorResult struct {
-	ETag       *string                           `pulumi:"eTag"`
-	Id         string                            `pulumi:"id"`
-	Name       string                            `pulumi:"name"`
-	Properties ImportCollectorPropertiesResponse `pulumi:"properties"`
-	Type       string                            `pulumi:"type"`
+	// The Azure API version of the resource.
+	AzureApiVersion string                            `pulumi:"azureApiVersion"`
+	ETag            *string                           `pulumi:"eTag"`
+	Id              string                            `pulumi:"id"`
+	Name            string                            `pulumi:"name"`
+	Properties      ImportCollectorPropertiesResponse `pulumi:"properties"`
+	Type            string                            `pulumi:"type"`
 }
 
 func LookupImportCollectorOutput(ctx *pulumi.Context, args LookupImportCollectorOutputArgs, opts ...pulumi.InvokeOption) LookupImportCollectorResultOutput {
@@ -75,6 +77,11 @@ func (o LookupImportCollectorResultOutput) ToLookupImportCollectorResultOutput()
 
 func (o LookupImportCollectorResultOutput) ToLookupImportCollectorResultOutputWithContext(ctx context.Context) LookupImportCollectorResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupImportCollectorResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupImportCollectorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 func (o LookupImportCollectorResultOutput) ETag() pulumi.StringPtrOutput {

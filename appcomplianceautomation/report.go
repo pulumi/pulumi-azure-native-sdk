@@ -8,24 +8,53 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A class represent an AppComplianceAutomation report resource.
 //
-// Uses Azure REST API version 2022-11-16-preview. In version 1.x of the Azure Native provider, it used API version 2022-11-16-preview.
+// Uses Azure REST API version 2024-06-27. In version 2.x of the Azure Native provider, it used API version 2022-11-16-preview.
 //
-// Other available API versions: 2024-06-27.
+// Other available API versions: 2022-11-16-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native appcomplianceautomation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Report struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// List of synchronized certification records.
+	CertRecords CertSyncRecordResponseArrayOutput `pulumi:"certRecords"`
+	// Report compliance status.
+	ComplianceStatus ReportComplianceStatusResponseOutput `pulumi:"complianceStatus"`
+	// List of report error codes.
+	Errors pulumi.StringArrayOutput `pulumi:"errors"`
+	// Report last collection trigger time.
+	LastTriggerTime pulumi.StringOutput `pulumi:"lastTriggerTime"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Report property.
-	Properties ReportPropertiesResponseOutput `pulumi:"properties"`
+	// Report next collection trigger time.
+	NextTriggerTime pulumi.StringOutput `pulumi:"nextTriggerTime"`
+	// A list of comma-separated offerGuids indicates a series of offerGuids that map to the report. For example, "00000000-0000-0000-0000-000000000001,00000000-0000-0000-0000-000000000002" and "00000000-0000-0000-0000-000000000003".
+	OfferGuid pulumi.StringPtrOutput `pulumi:"offerGuid"`
+	// Azure lifecycle management
+	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// List of resource data.
+	Resources ResourceMetadataResponseArrayOutput `pulumi:"resources"`
+	// Report status.
+	Status pulumi.StringOutput `pulumi:"status"`
+	// The information of 'bring your own storage' binding to the report
+	StorageInfo StorageInfoResponsePtrOutput `pulumi:"storageInfo"`
+	// List of subscription Ids.
+	Subscriptions pulumi.StringArrayOutput `pulumi:"subscriptions"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// Report's tenant id.
+	TenantId pulumi.StringOutput `pulumi:"tenantId"`
+	// Report collection trigger time's time zone, the available list can be obtained by executing "Get-TimeZone -ListAvailable" in PowerShell.
+	// An example of valid timezone id is "Pacific Standard Time".
+	TimeZone pulumi.StringOutput `pulumi:"timeZone"`
+	// Report collection trigger time.
+	TriggerTime pulumi.StringOutput `pulumi:"triggerTime"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -37,8 +66,14 @@ func NewReport(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Properties == nil {
-		return nil, errors.New("invalid value for required argument 'Properties'")
+	if args.Resources == nil {
+		return nil, errors.New("invalid value for required argument 'Resources'")
+	}
+	if args.TimeZone == nil {
+		return nil, errors.New("invalid value for required argument 'TimeZone'")
+	}
+	if args.TriggerTime == nil {
+		return nil, errors.New("invalid value for required argument 'TriggerTime'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -82,18 +117,36 @@ func (ReportState) ElementType() reflect.Type {
 }
 
 type reportArgs struct {
-	// Report property.
-	Properties ReportProperties `pulumi:"properties"`
+	// A list of comma-separated offerGuids indicates a series of offerGuids that map to the report. For example, "00000000-0000-0000-0000-000000000001,00000000-0000-0000-0000-000000000002" and "00000000-0000-0000-0000-000000000003".
+	OfferGuid *string `pulumi:"offerGuid"`
 	// Report Name.
 	ReportName *string `pulumi:"reportName"`
+	// List of resource data.
+	Resources []ResourceMetadata `pulumi:"resources"`
+	// The information of 'bring your own storage' binding to the report
+	StorageInfo *StorageInfo `pulumi:"storageInfo"`
+	// Report collection trigger time's time zone, the available list can be obtained by executing "Get-TimeZone -ListAvailable" in PowerShell.
+	// An example of valid timezone id is "Pacific Standard Time".
+	TimeZone string `pulumi:"timeZone"`
+	// Report collection trigger time.
+	TriggerTime string `pulumi:"triggerTime"`
 }
 
 // The set of arguments for constructing a Report resource.
 type ReportArgs struct {
-	// Report property.
-	Properties ReportPropertiesInput
+	// A list of comma-separated offerGuids indicates a series of offerGuids that map to the report. For example, "00000000-0000-0000-0000-000000000001,00000000-0000-0000-0000-000000000002" and "00000000-0000-0000-0000-000000000003".
+	OfferGuid pulumi.StringPtrInput
 	// Report Name.
 	ReportName pulumi.StringPtrInput
+	// List of resource data.
+	Resources ResourceMetadataArrayInput
+	// The information of 'bring your own storage' binding to the report
+	StorageInfo StorageInfoPtrInput
+	// Report collection trigger time's time zone, the available list can be obtained by executing "Get-TimeZone -ListAvailable" in PowerShell.
+	// An example of valid timezone id is "Pacific Standard Time".
+	TimeZone pulumi.StringInput
+	// Report collection trigger time.
+	TriggerTime pulumi.StringInput
 }
 
 func (ReportArgs) ElementType() reflect.Type {
@@ -133,19 +186,90 @@ func (o ReportOutput) ToReportOutputWithContext(ctx context.Context) ReportOutpu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ReportOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Report) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// List of synchronized certification records.
+func (o ReportOutput) CertRecords() CertSyncRecordResponseArrayOutput {
+	return o.ApplyT(func(v *Report) CertSyncRecordResponseArrayOutput { return v.CertRecords }).(CertSyncRecordResponseArrayOutput)
+}
+
+// Report compliance status.
+func (o ReportOutput) ComplianceStatus() ReportComplianceStatusResponseOutput {
+	return o.ApplyT(func(v *Report) ReportComplianceStatusResponseOutput { return v.ComplianceStatus }).(ReportComplianceStatusResponseOutput)
+}
+
+// List of report error codes.
+func (o ReportOutput) Errors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Report) pulumi.StringArrayOutput { return v.Errors }).(pulumi.StringArrayOutput)
+}
+
+// Report last collection trigger time.
+func (o ReportOutput) LastTriggerTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Report) pulumi.StringOutput { return v.LastTriggerTime }).(pulumi.StringOutput)
+}
+
 // The name of the resource
 func (o ReportOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Report) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Report property.
-func (o ReportOutput) Properties() ReportPropertiesResponseOutput {
-	return o.ApplyT(func(v *Report) ReportPropertiesResponseOutput { return v.Properties }).(ReportPropertiesResponseOutput)
+// Report next collection trigger time.
+func (o ReportOutput) NextTriggerTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Report) pulumi.StringOutput { return v.NextTriggerTime }).(pulumi.StringOutput)
+}
+
+// A list of comma-separated offerGuids indicates a series of offerGuids that map to the report. For example, "00000000-0000-0000-0000-000000000001,00000000-0000-0000-0000-000000000002" and "00000000-0000-0000-0000-000000000003".
+func (o ReportOutput) OfferGuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Report) pulumi.StringPtrOutput { return v.OfferGuid }).(pulumi.StringPtrOutput)
+}
+
+// Azure lifecycle management
+func (o ReportOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v *Report) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// List of resource data.
+func (o ReportOutput) Resources() ResourceMetadataResponseArrayOutput {
+	return o.ApplyT(func(v *Report) ResourceMetadataResponseArrayOutput { return v.Resources }).(ResourceMetadataResponseArrayOutput)
+}
+
+// Report status.
+func (o ReportOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Report) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The information of 'bring your own storage' binding to the report
+func (o ReportOutput) StorageInfo() StorageInfoResponsePtrOutput {
+	return o.ApplyT(func(v *Report) StorageInfoResponsePtrOutput { return v.StorageInfo }).(StorageInfoResponsePtrOutput)
+}
+
+// List of subscription Ids.
+func (o ReportOutput) Subscriptions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Report) pulumi.StringArrayOutput { return v.Subscriptions }).(pulumi.StringArrayOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o ReportOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Report) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// Report's tenant id.
+func (o ReportOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Report) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// Report collection trigger time's time zone, the available list can be obtained by executing "Get-TimeZone -ListAvailable" in PowerShell.
+// An example of valid timezone id is "Pacific Standard Time".
+func (o ReportOutput) TimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v *Report) pulumi.StringOutput { return v.TimeZone }).(pulumi.StringOutput)
+}
+
+// Report collection trigger time.
+func (o ReportOutput) TriggerTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Report) pulumi.StringOutput { return v.TriggerTime }).(pulumi.StringOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
