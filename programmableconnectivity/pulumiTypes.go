@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +21,7 @@ type ApplicationProperties struct {
 	ApplicationType *string `pulumi:"applicationType"`
 	// Legal name of the organization owning the application.
 	LegalName *string `pulumi:"legalName"`
-	// Name of the application. Example: Contoso App.
+	// Name of the application.
 	Name *string `pulumi:"name"`
 	// A description of the organization owning the application.
 	OrganizationDescription *string `pulumi:"organizationDescription"`
@@ -50,7 +50,7 @@ type ApplicationPropertiesArgs struct {
 	ApplicationType pulumi.StringPtrInput `pulumi:"applicationType"`
 	// Legal name of the organization owning the application.
 	LegalName pulumi.StringPtrInput `pulumi:"legalName"`
-	// Name of the application. Example: Contoso App.
+	// Name of the application.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// A description of the organization owning the application.
 	OrganizationDescription pulumi.StringPtrInput `pulumi:"organizationDescription"`
@@ -153,7 +153,7 @@ func (o ApplicationPropertiesOutput) LegalName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationProperties) *string { return v.LegalName }).(pulumi.StringPtrOutput)
 }
 
-// Name of the application. Example: Contoso App.
+// Name of the application.
 func (o ApplicationPropertiesOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationProperties) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -227,7 +227,7 @@ func (o ApplicationPropertiesPtrOutput) LegalName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Name of the application. Example: Contoso App.
+// Name of the application.
 func (o ApplicationPropertiesPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationProperties) *string {
 		if v == nil {
@@ -275,7 +275,7 @@ type ApplicationPropertiesResponse struct {
 	ApplicationType *string `pulumi:"applicationType"`
 	// Legal name of the organization owning the application.
 	LegalName *string `pulumi:"legalName"`
-	// Name of the application. Example: Contoso App.
+	// Name of the application.
 	Name *string `pulumi:"name"`
 	// A description of the organization owning the application.
 	OrganizationDescription *string `pulumi:"organizationDescription"`
@@ -315,7 +315,7 @@ func (o ApplicationPropertiesResponseOutput) LegalName() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v ApplicationPropertiesResponse) *string { return v.LegalName }).(pulumi.StringPtrOutput)
 }
 
-// Name of the application. Example: Contoso App.
+// Name of the application.
 func (o ApplicationPropertiesResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationPropertiesResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -389,7 +389,7 @@ func (o ApplicationPropertiesResponsePtrOutput) LegalName() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Name of the application. Example: Contoso App.
+// Name of the application.
 func (o ApplicationPropertiesResponsePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationPropertiesResponse) *string {
 		if v == nil {

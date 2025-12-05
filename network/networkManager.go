@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Managed Network resource
 //
-// Uses Azure REST API version 2023-02-01. In version 1.x of the Azure Native provider, it used API version 2021-02-01-preview.
+// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
 //
-// Other available API versions: 2021-02-01-preview, 2021-05-01-preview, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-01-01-preview, 2024-03-01, 2024-05-01.
+// Other available API versions: 2021-02-01-preview, 2022-01-01, 2022-02-01-preview, 2022-04-01-preview, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-01-01-preview, 2024-03-01, 2024-07-01, 2024-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type NetworkManager struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A description of the network manager.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -51,9 +53,6 @@ func NewNetworkManager(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.NetworkManagerScopeAccesses == nil {
-		return nil, errors.New("invalid value for required argument 'NetworkManagerScopeAccesses'")
-	}
 	if args.NetworkManagerScopes == nil {
 		return nil, errors.New("invalid value for required argument 'NetworkManagerScopes'")
 	}
@@ -117,6 +116,12 @@ func NewNetworkManager(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240501:NetworkManager"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20240701:NetworkManager"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20241001:NetworkManager"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -226,6 +231,11 @@ func (o NetworkManagerOutput) ToNetworkManagerOutput() NetworkManagerOutput {
 
 func (o NetworkManagerOutput) ToNetworkManagerOutputWithContext(ctx context.Context) NetworkManagerOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o NetworkManagerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkManager) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A description of the network manager.

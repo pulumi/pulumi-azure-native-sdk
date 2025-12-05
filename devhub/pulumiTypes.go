@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -653,6 +653,328 @@ func (o DeploymentPropertiesResponsePtrOutput) Overrides() pulumi.StringMapOutpu
 	}).(pulumi.StringMapOutput)
 }
 
+// GitHub Workflow Profile
+type GitHubWorkflowProfile struct {
+	// Information on the azure container registry
+	Acr *ACR `pulumi:"acr"`
+	// The Azure Kubernetes Cluster Resource the application will be deployed to.
+	AksResourceId *string `pulumi:"aksResourceId"`
+	// Repository Branch Name
+	BranchName           *string               `pulumi:"branchName"`
+	DeploymentProperties *DeploymentProperties `pulumi:"deploymentProperties"`
+	// Path to Dockerfile Build Context within the repository.
+	DockerBuildContext *string `pulumi:"dockerBuildContext"`
+	// Path to the Dockerfile within the repository.
+	Dockerfile      *string      `pulumi:"dockerfile"`
+	LastWorkflowRun *WorkflowRun `pulumi:"lastWorkflowRun"`
+	// Kubernetes namespace the application is deployed to.
+	Namespace *string `pulumi:"namespace"`
+	// The fields needed for OIDC with GitHub.
+	OidcCredentials *GitHubWorkflowProfileOidcCredentials `pulumi:"oidcCredentials"`
+	// Repository Name
+	RepositoryName *string `pulumi:"repositoryName"`
+	// Repository Owner
+	RepositoryOwner *string `pulumi:"repositoryOwner"`
+}
+
+// GitHubWorkflowProfileInput is an input type that accepts GitHubWorkflowProfileArgs and GitHubWorkflowProfileOutput values.
+// You can construct a concrete instance of `GitHubWorkflowProfileInput` via:
+//
+//	GitHubWorkflowProfileArgs{...}
+type GitHubWorkflowProfileInput interface {
+	pulumi.Input
+
+	ToGitHubWorkflowProfileOutput() GitHubWorkflowProfileOutput
+	ToGitHubWorkflowProfileOutputWithContext(context.Context) GitHubWorkflowProfileOutput
+}
+
+// GitHub Workflow Profile
+type GitHubWorkflowProfileArgs struct {
+	// Information on the azure container registry
+	Acr ACRPtrInput `pulumi:"acr"`
+	// The Azure Kubernetes Cluster Resource the application will be deployed to.
+	AksResourceId pulumi.StringPtrInput `pulumi:"aksResourceId"`
+	// Repository Branch Name
+	BranchName           pulumi.StringPtrInput        `pulumi:"branchName"`
+	DeploymentProperties DeploymentPropertiesPtrInput `pulumi:"deploymentProperties"`
+	// Path to Dockerfile Build Context within the repository.
+	DockerBuildContext pulumi.StringPtrInput `pulumi:"dockerBuildContext"`
+	// Path to the Dockerfile within the repository.
+	Dockerfile      pulumi.StringPtrInput `pulumi:"dockerfile"`
+	LastWorkflowRun WorkflowRunPtrInput   `pulumi:"lastWorkflowRun"`
+	// Kubernetes namespace the application is deployed to.
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// The fields needed for OIDC with GitHub.
+	OidcCredentials GitHubWorkflowProfileOidcCredentialsPtrInput `pulumi:"oidcCredentials"`
+	// Repository Name
+	RepositoryName pulumi.StringPtrInput `pulumi:"repositoryName"`
+	// Repository Owner
+	RepositoryOwner pulumi.StringPtrInput `pulumi:"repositoryOwner"`
+}
+
+func (GitHubWorkflowProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitHubWorkflowProfile)(nil)).Elem()
+}
+
+func (i GitHubWorkflowProfileArgs) ToGitHubWorkflowProfileOutput() GitHubWorkflowProfileOutput {
+	return i.ToGitHubWorkflowProfileOutputWithContext(context.Background())
+}
+
+func (i GitHubWorkflowProfileArgs) ToGitHubWorkflowProfileOutputWithContext(ctx context.Context) GitHubWorkflowProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitHubWorkflowProfileOutput)
+}
+
+func (i GitHubWorkflowProfileArgs) ToGitHubWorkflowProfilePtrOutput() GitHubWorkflowProfilePtrOutput {
+	return i.ToGitHubWorkflowProfilePtrOutputWithContext(context.Background())
+}
+
+func (i GitHubWorkflowProfileArgs) ToGitHubWorkflowProfilePtrOutputWithContext(ctx context.Context) GitHubWorkflowProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitHubWorkflowProfileOutput).ToGitHubWorkflowProfilePtrOutputWithContext(ctx)
+}
+
+// GitHubWorkflowProfilePtrInput is an input type that accepts GitHubWorkflowProfileArgs, GitHubWorkflowProfilePtr and GitHubWorkflowProfilePtrOutput values.
+// You can construct a concrete instance of `GitHubWorkflowProfilePtrInput` via:
+//
+//	        GitHubWorkflowProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type GitHubWorkflowProfilePtrInput interface {
+	pulumi.Input
+
+	ToGitHubWorkflowProfilePtrOutput() GitHubWorkflowProfilePtrOutput
+	ToGitHubWorkflowProfilePtrOutputWithContext(context.Context) GitHubWorkflowProfilePtrOutput
+}
+
+type gitHubWorkflowProfilePtrType GitHubWorkflowProfileArgs
+
+func GitHubWorkflowProfilePtr(v *GitHubWorkflowProfileArgs) GitHubWorkflowProfilePtrInput {
+	return (*gitHubWorkflowProfilePtrType)(v)
+}
+
+func (*gitHubWorkflowProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitHubWorkflowProfile)(nil)).Elem()
+}
+
+func (i *gitHubWorkflowProfilePtrType) ToGitHubWorkflowProfilePtrOutput() GitHubWorkflowProfilePtrOutput {
+	return i.ToGitHubWorkflowProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *gitHubWorkflowProfilePtrType) ToGitHubWorkflowProfilePtrOutputWithContext(ctx context.Context) GitHubWorkflowProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitHubWorkflowProfilePtrOutput)
+}
+
+// GitHub Workflow Profile
+type GitHubWorkflowProfileOutput struct{ *pulumi.OutputState }
+
+func (GitHubWorkflowProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitHubWorkflowProfile)(nil)).Elem()
+}
+
+func (o GitHubWorkflowProfileOutput) ToGitHubWorkflowProfileOutput() GitHubWorkflowProfileOutput {
+	return o
+}
+
+func (o GitHubWorkflowProfileOutput) ToGitHubWorkflowProfileOutputWithContext(ctx context.Context) GitHubWorkflowProfileOutput {
+	return o
+}
+
+func (o GitHubWorkflowProfileOutput) ToGitHubWorkflowProfilePtrOutput() GitHubWorkflowProfilePtrOutput {
+	return o.ToGitHubWorkflowProfilePtrOutputWithContext(context.Background())
+}
+
+func (o GitHubWorkflowProfileOutput) ToGitHubWorkflowProfilePtrOutputWithContext(ctx context.Context) GitHubWorkflowProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitHubWorkflowProfile) *GitHubWorkflowProfile {
+		return &v
+	}).(GitHubWorkflowProfilePtrOutput)
+}
+
+// Information on the azure container registry
+func (o GitHubWorkflowProfileOutput) Acr() ACRPtrOutput {
+	return o.ApplyT(func(v GitHubWorkflowProfile) *ACR { return v.Acr }).(ACRPtrOutput)
+}
+
+// The Azure Kubernetes Cluster Resource the application will be deployed to.
+func (o GitHubWorkflowProfileOutput) AksResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitHubWorkflowProfile) *string { return v.AksResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Repository Branch Name
+func (o GitHubWorkflowProfileOutput) BranchName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitHubWorkflowProfile) *string { return v.BranchName }).(pulumi.StringPtrOutput)
+}
+
+func (o GitHubWorkflowProfileOutput) DeploymentProperties() DeploymentPropertiesPtrOutput {
+	return o.ApplyT(func(v GitHubWorkflowProfile) *DeploymentProperties { return v.DeploymentProperties }).(DeploymentPropertiesPtrOutput)
+}
+
+// Path to Dockerfile Build Context within the repository.
+func (o GitHubWorkflowProfileOutput) DockerBuildContext() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitHubWorkflowProfile) *string { return v.DockerBuildContext }).(pulumi.StringPtrOutput)
+}
+
+// Path to the Dockerfile within the repository.
+func (o GitHubWorkflowProfileOutput) Dockerfile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitHubWorkflowProfile) *string { return v.Dockerfile }).(pulumi.StringPtrOutput)
+}
+
+func (o GitHubWorkflowProfileOutput) LastWorkflowRun() WorkflowRunPtrOutput {
+	return o.ApplyT(func(v GitHubWorkflowProfile) *WorkflowRun { return v.LastWorkflowRun }).(WorkflowRunPtrOutput)
+}
+
+// Kubernetes namespace the application is deployed to.
+func (o GitHubWorkflowProfileOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitHubWorkflowProfile) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// The fields needed for OIDC with GitHub.
+func (o GitHubWorkflowProfileOutput) OidcCredentials() GitHubWorkflowProfileOidcCredentialsPtrOutput {
+	return o.ApplyT(func(v GitHubWorkflowProfile) *GitHubWorkflowProfileOidcCredentials { return v.OidcCredentials }).(GitHubWorkflowProfileOidcCredentialsPtrOutput)
+}
+
+// Repository Name
+func (o GitHubWorkflowProfileOutput) RepositoryName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitHubWorkflowProfile) *string { return v.RepositoryName }).(pulumi.StringPtrOutput)
+}
+
+// Repository Owner
+func (o GitHubWorkflowProfileOutput) RepositoryOwner() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitHubWorkflowProfile) *string { return v.RepositoryOwner }).(pulumi.StringPtrOutput)
+}
+
+type GitHubWorkflowProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (GitHubWorkflowProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitHubWorkflowProfile)(nil)).Elem()
+}
+
+func (o GitHubWorkflowProfilePtrOutput) ToGitHubWorkflowProfilePtrOutput() GitHubWorkflowProfilePtrOutput {
+	return o
+}
+
+func (o GitHubWorkflowProfilePtrOutput) ToGitHubWorkflowProfilePtrOutputWithContext(ctx context.Context) GitHubWorkflowProfilePtrOutput {
+	return o
+}
+
+func (o GitHubWorkflowProfilePtrOutput) Elem() GitHubWorkflowProfileOutput {
+	return o.ApplyT(func(v *GitHubWorkflowProfile) GitHubWorkflowProfile {
+		if v != nil {
+			return *v
+		}
+		var ret GitHubWorkflowProfile
+		return ret
+	}).(GitHubWorkflowProfileOutput)
+}
+
+// Information on the azure container registry
+func (o GitHubWorkflowProfilePtrOutput) Acr() ACRPtrOutput {
+	return o.ApplyT(func(v *GitHubWorkflowProfile) *ACR {
+		if v == nil {
+			return nil
+		}
+		return v.Acr
+	}).(ACRPtrOutput)
+}
+
+// The Azure Kubernetes Cluster Resource the application will be deployed to.
+func (o GitHubWorkflowProfilePtrOutput) AksResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitHubWorkflowProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AksResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Repository Branch Name
+func (o GitHubWorkflowProfilePtrOutput) BranchName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitHubWorkflowProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BranchName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GitHubWorkflowProfilePtrOutput) DeploymentProperties() DeploymentPropertiesPtrOutput {
+	return o.ApplyT(func(v *GitHubWorkflowProfile) *DeploymentProperties {
+		if v == nil {
+			return nil
+		}
+		return v.DeploymentProperties
+	}).(DeploymentPropertiesPtrOutput)
+}
+
+// Path to Dockerfile Build Context within the repository.
+func (o GitHubWorkflowProfilePtrOutput) DockerBuildContext() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitHubWorkflowProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DockerBuildContext
+	}).(pulumi.StringPtrOutput)
+}
+
+// Path to the Dockerfile within the repository.
+func (o GitHubWorkflowProfilePtrOutput) Dockerfile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitHubWorkflowProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Dockerfile
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GitHubWorkflowProfilePtrOutput) LastWorkflowRun() WorkflowRunPtrOutput {
+	return o.ApplyT(func(v *GitHubWorkflowProfile) *WorkflowRun {
+		if v == nil {
+			return nil
+		}
+		return v.LastWorkflowRun
+	}).(WorkflowRunPtrOutput)
+}
+
+// Kubernetes namespace the application is deployed to.
+func (o GitHubWorkflowProfilePtrOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitHubWorkflowProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Namespace
+	}).(pulumi.StringPtrOutput)
+}
+
+// The fields needed for OIDC with GitHub.
+func (o GitHubWorkflowProfilePtrOutput) OidcCredentials() GitHubWorkflowProfileOidcCredentialsPtrOutput {
+	return o.ApplyT(func(v *GitHubWorkflowProfile) *GitHubWorkflowProfileOidcCredentials {
+		if v == nil {
+			return nil
+		}
+		return v.OidcCredentials
+	}).(GitHubWorkflowProfileOidcCredentialsPtrOutput)
+}
+
+// Repository Name
+func (o GitHubWorkflowProfilePtrOutput) RepositoryName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitHubWorkflowProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RepositoryName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Repository Owner
+func (o GitHubWorkflowProfilePtrOutput) RepositoryOwner() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitHubWorkflowProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RepositoryOwner
+	}).(pulumi.StringPtrOutput)
+}
+
 // The fields needed for OIDC with GitHub.
 type GitHubWorkflowProfileOidcCredentials struct {
 	// Azure Application Client ID
@@ -809,6 +1131,300 @@ func (o GitHubWorkflowProfileOidcCredentialsPtrOutput) AzureTenantId() pulumi.St
 			return nil
 		}
 		return v.AzureTenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+// GitHub Workflow Profile
+type GitHubWorkflowProfileResponse struct {
+	// Information on the azure container registry
+	Acr *ACRResponse `pulumi:"acr"`
+	// The Azure Kubernetes Cluster Resource the application will be deployed to.
+	AksResourceId *string `pulumi:"aksResourceId"`
+	// Determines the authorization status of requests.
+	AuthStatus string `pulumi:"authStatus"`
+	// Repository Branch Name
+	BranchName           *string                       `pulumi:"branchName"`
+	DeploymentProperties *DeploymentPropertiesResponse `pulumi:"deploymentProperties"`
+	// Path to Dockerfile Build Context within the repository.
+	DockerBuildContext *string `pulumi:"dockerBuildContext"`
+	// Path to the Dockerfile within the repository.
+	Dockerfile      *string              `pulumi:"dockerfile"`
+	LastWorkflowRun *WorkflowRunResponse `pulumi:"lastWorkflowRun"`
+	// Kubernetes namespace the application is deployed to.
+	Namespace *string `pulumi:"namespace"`
+	// The fields needed for OIDC with GitHub.
+	OidcCredentials *GitHubWorkflowProfileResponseOidcCredentials `pulumi:"oidcCredentials"`
+	// The status of the Pull Request submitted against the users repository.
+	PrStatus string `pulumi:"prStatus"`
+	// The URL to the Pull Request submitted against the users repository.
+	PrURL string `pulumi:"prURL"`
+	// The number associated with the submitted pull request.
+	PullNumber int `pulumi:"pullNumber"`
+	// Repository Name
+	RepositoryName *string `pulumi:"repositoryName"`
+	// Repository Owner
+	RepositoryOwner *string `pulumi:"repositoryOwner"`
+}
+
+// GitHub Workflow Profile
+type GitHubWorkflowProfileResponseOutput struct{ *pulumi.OutputState }
+
+func (GitHubWorkflowProfileResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitHubWorkflowProfileResponse)(nil)).Elem()
+}
+
+func (o GitHubWorkflowProfileResponseOutput) ToGitHubWorkflowProfileResponseOutput() GitHubWorkflowProfileResponseOutput {
+	return o
+}
+
+func (o GitHubWorkflowProfileResponseOutput) ToGitHubWorkflowProfileResponseOutputWithContext(ctx context.Context) GitHubWorkflowProfileResponseOutput {
+	return o
+}
+
+// Information on the azure container registry
+func (o GitHubWorkflowProfileResponseOutput) Acr() ACRResponsePtrOutput {
+	return o.ApplyT(func(v GitHubWorkflowProfileResponse) *ACRResponse { return v.Acr }).(ACRResponsePtrOutput)
+}
+
+// The Azure Kubernetes Cluster Resource the application will be deployed to.
+func (o GitHubWorkflowProfileResponseOutput) AksResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitHubWorkflowProfileResponse) *string { return v.AksResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Determines the authorization status of requests.
+func (o GitHubWorkflowProfileResponseOutput) AuthStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GitHubWorkflowProfileResponse) string { return v.AuthStatus }).(pulumi.StringOutput)
+}
+
+// Repository Branch Name
+func (o GitHubWorkflowProfileResponseOutput) BranchName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitHubWorkflowProfileResponse) *string { return v.BranchName }).(pulumi.StringPtrOutput)
+}
+
+func (o GitHubWorkflowProfileResponseOutput) DeploymentProperties() DeploymentPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v GitHubWorkflowProfileResponse) *DeploymentPropertiesResponse { return v.DeploymentProperties }).(DeploymentPropertiesResponsePtrOutput)
+}
+
+// Path to Dockerfile Build Context within the repository.
+func (o GitHubWorkflowProfileResponseOutput) DockerBuildContext() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitHubWorkflowProfileResponse) *string { return v.DockerBuildContext }).(pulumi.StringPtrOutput)
+}
+
+// Path to the Dockerfile within the repository.
+func (o GitHubWorkflowProfileResponseOutput) Dockerfile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitHubWorkflowProfileResponse) *string { return v.Dockerfile }).(pulumi.StringPtrOutput)
+}
+
+func (o GitHubWorkflowProfileResponseOutput) LastWorkflowRun() WorkflowRunResponsePtrOutput {
+	return o.ApplyT(func(v GitHubWorkflowProfileResponse) *WorkflowRunResponse { return v.LastWorkflowRun }).(WorkflowRunResponsePtrOutput)
+}
+
+// Kubernetes namespace the application is deployed to.
+func (o GitHubWorkflowProfileResponseOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitHubWorkflowProfileResponse) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// The fields needed for OIDC with GitHub.
+func (o GitHubWorkflowProfileResponseOutput) OidcCredentials() GitHubWorkflowProfileResponseOidcCredentialsPtrOutput {
+	return o.ApplyT(func(v GitHubWorkflowProfileResponse) *GitHubWorkflowProfileResponseOidcCredentials {
+		return v.OidcCredentials
+	}).(GitHubWorkflowProfileResponseOidcCredentialsPtrOutput)
+}
+
+// The status of the Pull Request submitted against the users repository.
+func (o GitHubWorkflowProfileResponseOutput) PrStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GitHubWorkflowProfileResponse) string { return v.PrStatus }).(pulumi.StringOutput)
+}
+
+// The URL to the Pull Request submitted against the users repository.
+func (o GitHubWorkflowProfileResponseOutput) PrURL() pulumi.StringOutput {
+	return o.ApplyT(func(v GitHubWorkflowProfileResponse) string { return v.PrURL }).(pulumi.StringOutput)
+}
+
+// The number associated with the submitted pull request.
+func (o GitHubWorkflowProfileResponseOutput) PullNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v GitHubWorkflowProfileResponse) int { return v.PullNumber }).(pulumi.IntOutput)
+}
+
+// Repository Name
+func (o GitHubWorkflowProfileResponseOutput) RepositoryName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitHubWorkflowProfileResponse) *string { return v.RepositoryName }).(pulumi.StringPtrOutput)
+}
+
+// Repository Owner
+func (o GitHubWorkflowProfileResponseOutput) RepositoryOwner() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitHubWorkflowProfileResponse) *string { return v.RepositoryOwner }).(pulumi.StringPtrOutput)
+}
+
+type GitHubWorkflowProfileResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GitHubWorkflowProfileResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitHubWorkflowProfileResponse)(nil)).Elem()
+}
+
+func (o GitHubWorkflowProfileResponsePtrOutput) ToGitHubWorkflowProfileResponsePtrOutput() GitHubWorkflowProfileResponsePtrOutput {
+	return o
+}
+
+func (o GitHubWorkflowProfileResponsePtrOutput) ToGitHubWorkflowProfileResponsePtrOutputWithContext(ctx context.Context) GitHubWorkflowProfileResponsePtrOutput {
+	return o
+}
+
+func (o GitHubWorkflowProfileResponsePtrOutput) Elem() GitHubWorkflowProfileResponseOutput {
+	return o.ApplyT(func(v *GitHubWorkflowProfileResponse) GitHubWorkflowProfileResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GitHubWorkflowProfileResponse
+		return ret
+	}).(GitHubWorkflowProfileResponseOutput)
+}
+
+// Information on the azure container registry
+func (o GitHubWorkflowProfileResponsePtrOutput) Acr() ACRResponsePtrOutput {
+	return o.ApplyT(func(v *GitHubWorkflowProfileResponse) *ACRResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Acr
+	}).(ACRResponsePtrOutput)
+}
+
+// The Azure Kubernetes Cluster Resource the application will be deployed to.
+func (o GitHubWorkflowProfileResponsePtrOutput) AksResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitHubWorkflowProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AksResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Determines the authorization status of requests.
+func (o GitHubWorkflowProfileResponsePtrOutput) AuthStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitHubWorkflowProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+// Repository Branch Name
+func (o GitHubWorkflowProfileResponsePtrOutput) BranchName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitHubWorkflowProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BranchName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GitHubWorkflowProfileResponsePtrOutput) DeploymentProperties() DeploymentPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *GitHubWorkflowProfileResponse) *DeploymentPropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.DeploymentProperties
+	}).(DeploymentPropertiesResponsePtrOutput)
+}
+
+// Path to Dockerfile Build Context within the repository.
+func (o GitHubWorkflowProfileResponsePtrOutput) DockerBuildContext() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitHubWorkflowProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DockerBuildContext
+	}).(pulumi.StringPtrOutput)
+}
+
+// Path to the Dockerfile within the repository.
+func (o GitHubWorkflowProfileResponsePtrOutput) Dockerfile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitHubWorkflowProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Dockerfile
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GitHubWorkflowProfileResponsePtrOutput) LastWorkflowRun() WorkflowRunResponsePtrOutput {
+	return o.ApplyT(func(v *GitHubWorkflowProfileResponse) *WorkflowRunResponse {
+		if v == nil {
+			return nil
+		}
+		return v.LastWorkflowRun
+	}).(WorkflowRunResponsePtrOutput)
+}
+
+// Kubernetes namespace the application is deployed to.
+func (o GitHubWorkflowProfileResponsePtrOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitHubWorkflowProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Namespace
+	}).(pulumi.StringPtrOutput)
+}
+
+// The fields needed for OIDC with GitHub.
+func (o GitHubWorkflowProfileResponsePtrOutput) OidcCredentials() GitHubWorkflowProfileResponseOidcCredentialsPtrOutput {
+	return o.ApplyT(func(v *GitHubWorkflowProfileResponse) *GitHubWorkflowProfileResponseOidcCredentials {
+		if v == nil {
+			return nil
+		}
+		return v.OidcCredentials
+	}).(GitHubWorkflowProfileResponseOidcCredentialsPtrOutput)
+}
+
+// The status of the Pull Request submitted against the users repository.
+func (o GitHubWorkflowProfileResponsePtrOutput) PrStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitHubWorkflowProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URL to the Pull Request submitted against the users repository.
+func (o GitHubWorkflowProfileResponsePtrOutput) PrURL() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitHubWorkflowProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrURL
+	}).(pulumi.StringPtrOutput)
+}
+
+// The number associated with the submitted pull request.
+func (o GitHubWorkflowProfileResponsePtrOutput) PullNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GitHubWorkflowProfileResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.PullNumber
+	}).(pulumi.IntPtrOutput)
+}
+
+// Repository Name
+func (o GitHubWorkflowProfileResponsePtrOutput) RepositoryName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitHubWorkflowProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RepositoryName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Repository Owner
+func (o GitHubWorkflowProfileResponsePtrOutput) RepositoryOwner() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitHubWorkflowProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RepositoryOwner
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1767,8 +2383,12 @@ func init() {
 	pulumi.RegisterOutputType(DeploymentPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(DeploymentPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(DeploymentPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(GitHubWorkflowProfileOutput{})
+	pulumi.RegisterOutputType(GitHubWorkflowProfilePtrOutput{})
 	pulumi.RegisterOutputType(GitHubWorkflowProfileOidcCredentialsOutput{})
 	pulumi.RegisterOutputType(GitHubWorkflowProfileOidcCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(GitHubWorkflowProfileResponseOutput{})
+	pulumi.RegisterOutputType(GitHubWorkflowProfileResponsePtrOutput{})
 	pulumi.RegisterOutputType(GitHubWorkflowProfileResponseOidcCredentialsOutput{})
 	pulumi.RegisterOutputType(GitHubWorkflowProfileResponseOidcCredentialsPtrOutput{})
 	pulumi.RegisterOutputType(IacTemplateDetailsOutput{})

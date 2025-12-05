@@ -8,16 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Azure AD for customers resource.
 //
-// Uses Azure REST API version 2023-05-17-preview.
+// Uses Azure REST API version 2023-05-17-preview. In version 2.x of the Azure Native provider, it used API version 2023-05-17-preview.
 type CIAMTenant struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The type of billing. Will be MAU for all new customers. Cannot be changed if value is 'MAU'. Learn more about Azure AD for customers billing at [aka.ms/b2cBilling](https://aka.ms/b2cbilling).
 	BillingType pulumi.StringOutput `pulumi:"billingType"`
 	// These properties are used to create the Azure AD for customers tenant. These properties are not part of the Azure resource.
@@ -167,6 +169,11 @@ func (o CIAMTenantOutput) ToCIAMTenantOutput() CIAMTenantOutput {
 
 func (o CIAMTenantOutput) ToCIAMTenantOutputWithContext(ctx context.Context) CIAMTenantOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o CIAMTenantOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *CIAMTenant) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The type of billing. Will be MAU for all new customers. Cannot be changed if value is 'MAU'. Learn more about Azure AD for customers billing at [aka.ms/b2cBilling](https://aka.ms/b2cbilling).

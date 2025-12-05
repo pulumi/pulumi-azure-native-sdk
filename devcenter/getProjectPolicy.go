@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2024-10-01-preview.
 //
-// Other available API versions: 2025-02-01.
+// Other available API versions: 2025-02-01, 2025-04-01-preview, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devcenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupProjectPolicy(ctx *pulumi.Context, args *LookupProjectPolicyArgs, opts ...pulumi.InvokeOption) (*LookupProjectPolicyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProjectPolicyResult
@@ -37,6 +37,8 @@ type LookupProjectPolicyArgs struct {
 
 // Represents an project policy resource.
 type LookupProjectPolicyResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -88,6 +90,11 @@ func (o LookupProjectPolicyResultOutput) ToLookupProjectPolicyResultOutput() Loo
 
 func (o LookupProjectPolicyResultOutput) ToLookupProjectPolicyResultOutputWithContext(ctx context.Context) LookupProjectPolicyResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupProjectPolicyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectPolicyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

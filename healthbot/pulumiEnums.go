@@ -188,6 +188,7 @@ const (
 	SkuNameS1  = SkuName("S1")
 	SkuNameC0  = SkuName("C0")
 	SkuNamePES = SkuName("PES")
+	SkuNameC1  = SkuName("C1")
 )
 
 func (SkuName) ElementType() reflect.Type {
@@ -316,6 +317,7 @@ func (o SkuNamePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulu
 //	SkuNameS1
 //	SkuNameC0
 //	SkuNamePES
+//	SkuNameC1
 type SkuNameInput interface {
 	pulumi.Input
 

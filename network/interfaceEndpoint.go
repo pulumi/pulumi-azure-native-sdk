@@ -8,16 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Interface endpoint resource.
 //
-// Uses Azure REST API version 2019-02-01.
+// Uses Azure REST API version 2019-02-01. In version 2.x of the Azure Native provider, it used API version 2019-02-01.
+//
+// Other available API versions: 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type InterfaceEndpoint struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A reference to the service being brought into the virtual network.
 	EndpointService EndpointServiceResponsePtrOutput `pulumi:"endpointService"`
 	// Gets a unique read-only string that changes whenever the resource is updated.
@@ -117,6 +121,9 @@ func NewInterfaceEndpoint(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:network/v20210201:InterfaceEndpoint"),
 		},
 		{
+			Type: pulumi.String("azure-native:network/v20210201:PrivateEndpoint"),
+		},
+		{
 			Type: pulumi.String("azure-native:network/v20210301:InterfaceEndpoint"),
 		},
 		{
@@ -144,28 +151,64 @@ func NewInterfaceEndpoint(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:network/v20230201:InterfaceEndpoint"),
 		},
 		{
+			Type: pulumi.String("azure-native:network/v20230201:PrivateEndpoint"),
+		},
+		{
 			Type: pulumi.String("azure-native:network/v20230401:InterfaceEndpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20230401:PrivateEndpoint"),
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20230501:InterfaceEndpoint"),
 		},
 		{
+			Type: pulumi.String("azure-native:network/v20230501:PrivateEndpoint"),
+		},
+		{
 			Type: pulumi.String("azure-native:network/v20230601:InterfaceEndpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20230601:PrivateEndpoint"),
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20230901:InterfaceEndpoint"),
 		},
 		{
+			Type: pulumi.String("azure-native:network/v20230901:PrivateEndpoint"),
+		},
+		{
 			Type: pulumi.String("azure-native:network/v20231101:InterfaceEndpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20231101:PrivateEndpoint"),
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240101:InterfaceEndpoint"),
 		},
 		{
+			Type: pulumi.String("azure-native:network/v20240101:PrivateEndpoint"),
+		},
+		{
 			Type: pulumi.String("azure-native:network/v20240301:InterfaceEndpoint"),
 		},
 		{
+			Type: pulumi.String("azure-native:network/v20240301:PrivateEndpoint"),
+		},
+		{
 			Type: pulumi.String("azure-native:network/v20240501:InterfaceEndpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20240501:PrivateEndpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20240701:InterfaceEndpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20241001:InterfaceEndpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:PrivateEndpoint"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -275,6 +318,11 @@ func (o InterfaceEndpointOutput) ToInterfaceEndpointOutput() InterfaceEndpointOu
 
 func (o InterfaceEndpointOutput) ToInterfaceEndpointOutputWithContext(ctx context.Context) InterfaceEndpointOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o InterfaceEndpointOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *InterfaceEndpoint) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A reference to the service being brought into the virtual network.

@@ -7,13 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a data connector.
 //
-// Uses Azure REST API version 2023-02-01.
+// Uses Azure REST API version 2024-09-01.
 func LookupOfficeDataConnector(ctx *pulumi.Context, args *LookupOfficeDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupOfficeDataConnectorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupOfficeDataConnectorResult
@@ -35,6 +35,8 @@ type LookupOfficeDataConnectorArgs struct {
 
 // Represents office data connector.
 type LookupOfficeDataConnectorResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The available data types for the connector.
 	DataTypes *OfficeDataConnectorDataTypesResponse `pulumi:"dataTypes"`
 	// Etag of the azure resource
@@ -89,6 +91,11 @@ func (o LookupOfficeDataConnectorResultOutput) ToLookupOfficeDataConnectorResult
 
 func (o LookupOfficeDataConnectorResultOutput) ToLookupOfficeDataConnectorResultOutputWithContext(ctx context.Context) LookupOfficeDataConnectorResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupOfficeDataConnectorResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOfficeDataConnectorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The available data types for the connector.

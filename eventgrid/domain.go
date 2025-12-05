@@ -8,15 +8,15 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // EventGrid Domain.
 //
-// Uses Azure REST API version 2022-06-15. In version 1.x of the Azure Native provider, it used API version 2020-06-01.
+// Uses Azure REST API version 2025-02-15. In version 2.x of the Azure Native provider, it used API version 2022-06-15.
 //
-// Other available API versions: 2020-04-01-preview, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
+// Other available API versions: 2022-06-15, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Domain struct {
 	pulumi.CustomResourceState
 
@@ -36,12 +36,17 @@ type Domain struct {
 	// control of when the domain topic needs to be deleted, while auto-managed mode provides the flexibility to perform less operations and manage fewer
 	// resources by the user.
 	AutoDeleteTopicWithLastSubscription pulumi.BoolPtrOutput `pulumi:"autoDeleteTopicWithLastSubscription"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Data Residency Boundary of the resource.
 	DataResidencyBoundary pulumi.StringPtrOutput `pulumi:"dataResidencyBoundary"`
 	// This boolean is used to enable or disable local auth. Default value is false. When the property is set to true, only AAD token will be used to authenticate if user is allowed to publish to the domain.
 	DisableLocalAuth pulumi.BoolPtrOutput `pulumi:"disableLocalAuth"`
 	// Endpoint for the Event Grid Domain Resource which is used for publishing the events.
 	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
+	// Event Type Information for the domain. This information is provided by the publisher and can be used by the
+	// subscriber to view different types of events that are published.
+	EventTypeInfo EventTypeInfoResponsePtrOutput `pulumi:"eventTypeInfo"`
 	// Identity information for the Event Grid Domain resource.
 	Identity IdentityInfoResponsePtrOutput `pulumi:"identity"`
 	// This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled.
@@ -54,6 +59,8 @@ type Domain struct {
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Metric resource id for the Event Grid Domain Resource.
 	MetricResourceId pulumi.StringOutput `pulumi:"metricResourceId"`
+	// Minimum TLS version of the publisher allowed to publish to this domain
+	MinimumTlsVersionAllowed pulumi.StringPtrOutput `pulumi:"minimumTlsVersionAllowed"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// List of private endpoint connections.
@@ -63,7 +70,7 @@ type Domain struct {
 	// This determines if traffic is allowed over public network. By default it is enabled.
 	// You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.DomainProperties.InboundIpRules" />
 	PublicNetworkAccess pulumi.StringPtrOutput `pulumi:"publicNetworkAccess"`
-	// The system metadata relating to the Event Grid Domain resource.
+	// The system metadata relating to the Event Grid resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Tags of the resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
@@ -145,6 +152,9 @@ func NewDomain(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20250215:Domain"),
 		},
+		{
+			Type: pulumi.String("azure-native:eventgrid/v20250401preview:Domain"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -202,6 +212,9 @@ type domainArgs struct {
 	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
 	// Name of the domain.
 	DomainName *string `pulumi:"domainName"`
+	// Event Type Information for the domain. This information is provided by the publisher and can be used by the
+	// subscriber to view different types of events that are published.
+	EventTypeInfo *EventTypeInfo `pulumi:"eventTypeInfo"`
 	// Identity information for the Event Grid Domain resource.
 	Identity *IdentityInfo `pulumi:"identity"`
 	// This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled.
@@ -212,6 +225,8 @@ type domainArgs struct {
 	InputSchemaMapping *JsonInputSchemaMapping `pulumi:"inputSchemaMapping"`
 	// Location of the resource.
 	Location *string `pulumi:"location"`
+	// Minimum TLS version of the publisher allowed to publish to this domain
+	MinimumTlsVersionAllowed *string `pulumi:"minimumTlsVersionAllowed"`
 	// This determines if traffic is allowed over public network. By default it is enabled.
 	// You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.DomainProperties.InboundIpRules" />
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
@@ -245,6 +260,9 @@ type DomainArgs struct {
 	DisableLocalAuth pulumi.BoolPtrInput
 	// Name of the domain.
 	DomainName pulumi.StringPtrInput
+	// Event Type Information for the domain. This information is provided by the publisher and can be used by the
+	// subscriber to view different types of events that are published.
+	EventTypeInfo EventTypeInfoPtrInput
 	// Identity information for the Event Grid Domain resource.
 	Identity IdentityInfoPtrInput
 	// This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled.
@@ -255,6 +273,8 @@ type DomainArgs struct {
 	InputSchemaMapping JsonInputSchemaMappingPtrInput
 	// Location of the resource.
 	Location pulumi.StringPtrInput
+	// Minimum TLS version of the publisher allowed to publish to this domain
+	MinimumTlsVersionAllowed pulumi.StringPtrInput
 	// This determines if traffic is allowed over public network. By default it is enabled.
 	// You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.DomainProperties.InboundIpRules" />
 	PublicNetworkAccess pulumi.StringPtrInput
@@ -323,6 +343,11 @@ func (o DomainOutput) AutoDeleteTopicWithLastSubscription() pulumi.BoolPtrOutput
 	return o.ApplyT(func(v *Domain) pulumi.BoolPtrOutput { return v.AutoDeleteTopicWithLastSubscription }).(pulumi.BoolPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o DomainOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Data Residency Boundary of the resource.
 func (o DomainOutput) DataResidencyBoundary() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.DataResidencyBoundary }).(pulumi.StringPtrOutput)
@@ -336,6 +361,12 @@ func (o DomainOutput) DisableLocalAuth() pulumi.BoolPtrOutput {
 // Endpoint for the Event Grid Domain Resource which is used for publishing the events.
 func (o DomainOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// Event Type Information for the domain. This information is provided by the publisher and can be used by the
+// subscriber to view different types of events that are published.
+func (o DomainOutput) EventTypeInfo() EventTypeInfoResponsePtrOutput {
+	return o.ApplyT(func(v *Domain) EventTypeInfoResponsePtrOutput { return v.EventTypeInfo }).(EventTypeInfoResponsePtrOutput)
 }
 
 // Identity information for the Event Grid Domain resource.
@@ -368,6 +399,11 @@ func (o DomainOutput) MetricResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.MetricResourceId }).(pulumi.StringOutput)
 }
 
+// Minimum TLS version of the publisher allowed to publish to this domain
+func (o DomainOutput) MinimumTlsVersionAllowed() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.MinimumTlsVersionAllowed }).(pulumi.StringPtrOutput)
+}
+
 // Name of the resource.
 func (o DomainOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -389,7 +425,7 @@ func (o DomainOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
 }
 
-// The system metadata relating to the Event Grid Domain resource.
+// The system metadata relating to the Event Grid resource.
 func (o DomainOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Domain) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The KPI resource format.
 //
-// Uses Azure REST API version 2017-04-26. In version 1.x of the Azure Native provider, it used API version 2017-04-26.
+// Uses Azure REST API version 2017-04-26. In version 2.x of the Azure Native provider, it used API version 2017-04-26.
 type Kpi struct {
 	pulumi.CustomResourceState
 
 	// The aliases.
 	Aliases KpiAliasResponseArrayOutput `pulumi:"aliases"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The calculation window.
 	CalculationWindow pulumi.StringOutput `pulumi:"calculationWindow"`
 	// Name of calculation window field.
@@ -246,6 +248,11 @@ func (o KpiOutput) ToKpiOutputWithContext(ctx context.Context) KpiOutput {
 // The aliases.
 func (o KpiOutput) Aliases() KpiAliasResponseArrayOutput {
 	return o.ApplyT(func(v *Kpi) KpiAliasResponseArrayOutput { return v.Aliases }).(KpiAliasResponseArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o KpiOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Kpi) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The calculation window.

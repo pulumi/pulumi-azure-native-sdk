@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Internet Gateway resource definition.
 //
-// Uses Azure REST API version 2023-06-15.
+// Uses Azure REST API version 2023-06-15. In version 2.x of the Azure Native provider, it used API version 2023-06-15.
 type InternetGateway struct {
 	pulumi.CustomResourceState
 
 	// Switch configuration description.
 	Annotation pulumi.StringPtrOutput `pulumi:"annotation"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// ARM Resource ID of the Internet Gateway Rule.
 	InternetGatewayRuleId pulumi.StringPtrOutput `pulumi:"internetGatewayRuleId"`
 	// IPv4 Address of Internet Gateway.
@@ -175,6 +177,11 @@ func (o InternetGatewayOutput) ToInternetGatewayOutputWithContext(ctx context.Co
 // Switch configuration description.
 func (o InternetGatewayOutput) Annotation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InternetGateway) pulumi.StringPtrOutput { return v.Annotation }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o InternetGatewayOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *InternetGateway) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // ARM Resource ID of the Internet Gateway Rule.

@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the tenant configuration.
 //
-// Uses Azure REST API version 2020-09-01-preview.
+// Uses Azure REST API version 2022-12-01-preview.
 //
-// Other available API versions: 2022-12-01-preview, 2025-04-01-preview.
+// Other available API versions: 2019-01-01-preview, 2020-09-01-preview, 2025-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native portal [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupTenantConfiguration(ctx *pulumi.Context, args *LookupTenantConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupTenantConfigurationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTenantConfigurationResult
@@ -33,6 +33,8 @@ type LookupTenantConfigurationArgs struct {
 
 // The tenant configuration resource definition.
 type LookupTenantConfigurationResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -76,6 +78,11 @@ func (o LookupTenantConfigurationResultOutput) ToLookupTenantConfigurationResult
 
 func (o LookupTenantConfigurationResultOutput) ToLookupTenantConfigurationResultOutputWithContext(ctx context.Context) LookupTenantConfigurationResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupTenantConfigurationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTenantConfigurationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

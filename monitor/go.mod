@@ -1,12 +1,12 @@
-module github.com/pulumi/pulumi-azure-native-sdk/monitor/v2
+module github.com/pulumi/pulumi-azure-native-sdk/monitor/v3
 
 go 1.24.0
 
-toolchain go1.24.11
+toolchain go1.24.7
 
 require (
 	github.com/blang/semver v3.5.1+incompatible
-	github.com/pulumi/pulumi-azure-native-sdk/v2 v2.92.0
+	github.com/pulumi/pulumi-azure-native-sdk/v3 v3.11.0
 	github.com/pulumi/pulumi/sdk/v3 v3.210.0
 )
 

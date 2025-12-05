@@ -8,22 +8,26 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Uses Azure REST API version 2023-10-01-preview. In version 1.x of the Azure Native provider, it used API version 2022-12-12-preview.
+// Uses Azure REST API version 2025-02-01. In version 2.x of the Azure Native provider, it used API version 2023-10-01-preview.
 //
-// Other available API versions: 2023-07-01, 2024-06-01-preview, 2024-07-01, 2024-10-01-preview, 2025-02-01.
+// Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Volume struct {
 	pulumi.CustomResourceState
 
 	// The list of resource IDs that attach the volume. It may include virtual machines and Hybrid AKS clusters.
 	AttachedTo pulumi.StringArrayOutput `pulumi:"attachedTo"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The more detailed status of the volume.
 	DetailedStatus pulumi.StringOutput `pulumi:"detailedStatus"`
 	// The descriptive message about the current detailed status.
 	DetailedStatusMessage pulumi.StringOutput `pulumi:"detailedStatusMessage"`
+	// Resource ETag.
+	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The extended location of the cluster associated with the resource.
 	ExtendedLocation ExtendedLocationResponseOutput `pulumi:"extendedLocation"`
 	// The geo-location where the resource lives
@@ -78,6 +82,12 @@ func NewVolume(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20250201:Volume"),
+		},
+		{
+			Type: pulumi.String("azure-native:networkcloud/v20250701preview:Volume"),
+		},
+		{
+			Type: pulumi.String("azure-native:networkcloud/v20250901:Volume"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -186,6 +196,11 @@ func (o VolumeOutput) AttachedTo() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringArrayOutput { return v.AttachedTo }).(pulumi.StringArrayOutput)
 }
 
+// The Azure API version of the resource.
+func (o VolumeOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The more detailed status of the volume.
 func (o VolumeOutput) DetailedStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.DetailedStatus }).(pulumi.StringOutput)
@@ -194,6 +209,11 @@ func (o VolumeOutput) DetailedStatus() pulumi.StringOutput {
 // The descriptive message about the current detailed status.
 func (o VolumeOutput) DetailedStatusMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.DetailedStatusMessage }).(pulumi.StringOutput)
+}
+
+// Resource ETag.
+func (o VolumeOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The extended location of the cluster associated with the resource.

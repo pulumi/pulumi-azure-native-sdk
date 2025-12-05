@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Get a specific private endpoint connection under a topic, domain, or partner namespace.
+// Get a specific private endpoint connection under a topic, domain, or partner namespace or namespace.
 //
-// Uses Azure REST API version 2022-06-15.
+// Uses Azure REST API version 2025-02-15.
 //
-// Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
+// Other available API versions: 2022-06-15, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateEndpointConnectionResult
@@ -27,9 +27,9 @@ func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEnd
 }
 
 type LookupPrivateEndpointConnectionArgs struct {
-	// The name of the parent resource (namely, either, the topic name, domain name, or partner namespace name).
+	// The name of the parent resource (namely, either, the topic name, domain name, or partner namespace name or namespace name).
 	ParentName string `pulumi:"parentName"`
-	// The type of the parent resource. This can be either \'topics\', \'domains\', or \'partnerNamespaces\'.
+	// The type of the parent resource. This can be either \'topics\', \'domains\', or \'partnerNamespaces\' or \'namespaces\'.
 	ParentType string `pulumi:"parentType"`
 	// The name of the private endpoint connection connection.
 	PrivateEndpointConnectionName string `pulumi:"privateEndpointConnectionName"`
@@ -38,6 +38,8 @@ type LookupPrivateEndpointConnectionArgs struct {
 }
 
 type LookupPrivateEndpointConnectionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// GroupIds from the private link service resource.
 	GroupIds []string `pulumi:"groupIds"`
 	// Fully qualified identifier of the resource.
@@ -64,9 +66,9 @@ func LookupPrivateEndpointConnectionOutput(ctx *pulumi.Context, args LookupPriva
 }
 
 type LookupPrivateEndpointConnectionOutputArgs struct {
-	// The name of the parent resource (namely, either, the topic name, domain name, or partner namespace name).
+	// The name of the parent resource (namely, either, the topic name, domain name, or partner namespace name or namespace name).
 	ParentName pulumi.StringInput `pulumi:"parentName"`
-	// The type of the parent resource. This can be either \'topics\', \'domains\', or \'partnerNamespaces\'.
+	// The type of the parent resource. This can be either \'topics\', \'domains\', or \'partnerNamespaces\' or \'namespaces\'.
 	ParentType pulumi.StringInput `pulumi:"parentType"`
 	// The name of the private endpoint connection connection.
 	PrivateEndpointConnectionName pulumi.StringInput `pulumi:"privateEndpointConnectionName"`
@@ -90,6 +92,11 @@ func (o LookupPrivateEndpointConnectionResultOutput) ToLookupPrivateEndpointConn
 
 func (o LookupPrivateEndpointConnectionResultOutput) ToLookupPrivateEndpointConnectionResultOutputWithContext(ctx context.Context) LookupPrivateEndpointConnectionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupPrivateEndpointConnectionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateEndpointConnectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // GroupIds from the private link service resource.

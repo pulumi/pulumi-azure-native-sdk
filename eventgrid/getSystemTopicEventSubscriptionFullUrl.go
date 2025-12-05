@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the full endpoint URL for an event subscription of a system topic.
 //
-// Uses Azure REST API version 2022-06-15.
+// Uses Azure REST API version 2025-02-15.
 //
-// Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
+// Other available API versions: 2022-06-15, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func GetSystemTopicEventSubscriptionFullUrl(ctx *pulumi.Context, args *GetSystemTopicEventSubscriptionFullUrlArgs, opts ...pulumi.InvokeOption) (*GetSystemTopicEventSubscriptionFullUrlResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetSystemTopicEventSubscriptionFullUrlResult
@@ -27,7 +27,7 @@ func GetSystemTopicEventSubscriptionFullUrl(ctx *pulumi.Context, args *GetSystem
 }
 
 type GetSystemTopicEventSubscriptionFullUrlArgs struct {
-	// Name of the event subscription to be created. Event subscription names must be between 3 and 100 characters in length and use alphanumeric letters only.
+	// Name of the event subscription.
 	EventSubscriptionName string `pulumi:"eventSubscriptionName"`
 	// The name of the resource group within the user's subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -35,7 +35,7 @@ type GetSystemTopicEventSubscriptionFullUrlArgs struct {
 	SystemTopicName string `pulumi:"systemTopicName"`
 }
 
-// Full endpoint url of an event subscription
+// Full endpoint URL of an event subscription
 type GetSystemTopicEventSubscriptionFullUrlResult struct {
 	// The URL that represents the endpoint of the destination of an event subscription.
 	EndpointUrl *string `pulumi:"endpointUrl"`
@@ -51,7 +51,7 @@ func GetSystemTopicEventSubscriptionFullUrlOutput(ctx *pulumi.Context, args GetS
 }
 
 type GetSystemTopicEventSubscriptionFullUrlOutputArgs struct {
-	// Name of the event subscription to be created. Event subscription names must be between 3 and 100 characters in length and use alphanumeric letters only.
+	// Name of the event subscription.
 	EventSubscriptionName pulumi.StringInput `pulumi:"eventSubscriptionName"`
 	// The name of the resource group within the user's subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
@@ -63,7 +63,7 @@ func (GetSystemTopicEventSubscriptionFullUrlOutputArgs) ElementType() reflect.Ty
 	return reflect.TypeOf((*GetSystemTopicEventSubscriptionFullUrlArgs)(nil)).Elem()
 }
 
-// Full endpoint url of an event subscription
+// Full endpoint URL of an event subscription
 type GetSystemTopicEventSubscriptionFullUrlResultOutput struct{ *pulumi.OutputState }
 
 func (GetSystemTopicEventSubscriptionFullUrlResultOutput) ElementType() reflect.Type {

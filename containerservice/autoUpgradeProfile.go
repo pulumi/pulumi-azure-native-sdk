@@ -8,16 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The AutoUpgradeProfile resource.
 //
-// Uses Azure REST API version 2024-05-02-preview.
+// Uses Azure REST API version 2024-05-02-preview. In version 2.x of the Azure Native provider, it used API version 2024-05-02-preview.
+//
+// Other available API versions: 2025-03-01, 2025-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type AutoUpgradeProfile struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Configures how auto-upgrade will be run.
 	Channel pulumi.StringOutput `pulumi:"channel"`
 	// If set to False: the auto upgrade has effect - target managed clusters will be upgraded on schedule.
@@ -60,6 +64,12 @@ func NewAutoUpgradeProfile(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:containerservice/v20240502preview:AutoUpgradeProfile"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20250301:AutoUpgradeProfile"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20250401preview:AutoUpgradeProfile"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -171,6 +181,11 @@ func (o AutoUpgradeProfileOutput) ToAutoUpgradeProfileOutput() AutoUpgradeProfil
 
 func (o AutoUpgradeProfileOutput) ToAutoUpgradeProfileOutputWithContext(ctx context.Context) AutoUpgradeProfileOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o AutoUpgradeProfileOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AutoUpgradeProfile) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Configures how auto-upgrade will be run.

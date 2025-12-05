@@ -8,15 +8,15 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Description of queue Resource.
 //
-// Uses Azure REST API version 2022-01-01-preview. In version 1.x of the Azure Native provider, it used API version 2017-04-01.
+// Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2022-01-01-preview.
 //
-// Other available API versions: 2022-10-01-preview, 2023-01-01-preview, 2024-01-01.
+// Other available API versions: 2018-01-01-preview, 2021-01-01-preview, 2021-06-01-preview, 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2025-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicebus [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Queue struct {
 	pulumi.CustomResourceState
 
@@ -24,6 +24,8 @@ type Queue struct {
 	AccessedAt pulumi.StringOutput `pulumi:"accessedAt"`
 	// ISO 8061 timeSpan idle interval after which the queue is automatically deleted. The minimum duration is 5 minutes.
 	AutoDeleteOnIdle pulumi.StringPtrOutput `pulumi:"autoDeleteOnIdle"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Message Count Details.
 	CountDetails MessageCountDetailsResponseOutput `pulumi:"countDetails"`
 	// The exact time the message was created.
@@ -121,6 +123,9 @@ func NewQueue(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:servicebus/v20240101:Queue"),
 		},
+		{
+			Type: pulumi.String("azure-native:servicebus/v20250501preview:Queue"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -190,7 +195,7 @@ type queueArgs struct {
 	RequiresDuplicateDetection *bool `pulumi:"requiresDuplicateDetection"`
 	// A value that indicates whether the queue supports the concept of sessions.
 	RequiresSession *bool `pulumi:"requiresSession"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Enumerates the possible values for the status of a messaging entity.
 	Status *EntityStatus `pulumi:"status"`
@@ -232,7 +237,7 @@ type QueueArgs struct {
 	RequiresDuplicateDetection pulumi.BoolPtrInput
 	// A value that indicates whether the queue supports the concept of sessions.
 	RequiresSession pulumi.BoolPtrInput
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Enumerates the possible values for the status of a messaging entity.
 	Status EntityStatusPtrInput
@@ -283,6 +288,11 @@ func (o QueueOutput) AccessedAt() pulumi.StringOutput {
 // ISO 8061 timeSpan idle interval after which the queue is automatically deleted. The minimum duration is 5 minutes.
 func (o QueueOutput) AutoDeleteOnIdle() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Queue) pulumi.StringPtrOutput { return v.AutoDeleteOnIdle }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o QueueOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Queue) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Message Count Details.

@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets information about the specified SIM.
 //
-// Uses Azure REST API version 2023-06-01.
+// Uses Azure REST API version 2024-04-01.
 //
-// Other available API versions: 2022-03-01-preview, 2022-04-01-preview, 2022-11-01, 2023-09-01, 2024-02-01, 2024-04-01.
+// Other available API versions: 2022-04-01-preview, 2022-11-01, 2023-06-01, 2023-09-01, 2024-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native mobilenetwork [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupSim(ctx *pulumi.Context, args *LookupSimArgs, opts ...pulumi.InvokeOption) (*LookupSimResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSimResult
@@ -37,6 +37,8 @@ type LookupSimArgs struct {
 
 // SIM resource.
 type LookupSimResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// An optional free-form text field that can be used to record the device type this SIM is associated with, for example 'Video camera'. The Azure portal allows SIMs to be grouped and filtered based on this value.
 	DeviceType *string `pulumi:"deviceType"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -102,6 +104,11 @@ func (o LookupSimResultOutput) ToLookupSimResultOutput() LookupSimResultOutput {
 
 func (o LookupSimResultOutput) ToLookupSimResultOutputWithContext(ctx context.Context) LookupSimResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSimResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSimResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // An optional free-form text field that can be used to record the device type this SIM is associated with, for example 'Video camera'. The Azure portal allows SIMs to be grouped and filtered based on this value.

@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the budget for the scope by budget name.
 //
-// Uses Azure REST API version 2023-04-01-preview.
+// Uses Azure REST API version 2024-08-01.
 //
-// Other available API versions: 2019-04-01-preview, 2023-08-01, 2023-09-01, 2023-11-01, 2024-08-01, 2024-10-01-preview.
+// Other available API versions: 2019-04-01-preview, 2023-04-01-preview, 2023-08-01, 2023-09-01, 2023-11-01, 2024-10-01-preview, 2025-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native costmanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupBudget(ctx *pulumi.Context, args *LookupBudgetArgs, opts ...pulumi.InvokeOption) (*LookupBudgetResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBudgetResult
@@ -69,6 +69,8 @@ type LookupBudgetResult struct {
 	//
 	//  Required for CategoryType(s): Cost.
 	Amount *float64 `pulumi:"amount"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The category of the budget.
 	// - 'Cost' defines a Budget.
 	// - 'ReservationUtilization' defines a Reservation Utilization Alert Rule.
@@ -87,9 +89,9 @@ type LookupBudgetResult struct {
 	//
 	//  Supported for CategoryType(s): Cost.
 	ForecastSpend ForecastSpendResponse `pulumi:"forecastSpend"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Resource Id.
 	Id string `pulumi:"id"`
-	// The name of the resource
+	// Resource name.
 	Name string `pulumi:"name"`
 	// Dictionary of notifications associated with the budget.
 	//
@@ -125,7 +127,7 @@ type LookupBudgetResult struct {
 	//
 	//  Required for CategoryType(s): Cost, ReservationUtilization.
 	TimePeriod BudgetTimePeriodResponse `pulumi:"timePeriod"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// Resource type.
 	Type string `pulumi:"type"`
 }
 
@@ -201,6 +203,11 @@ func (o LookupBudgetResultOutput) Amount() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v LookupBudgetResult) *float64 { return v.Amount }).(pulumi.Float64PtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupBudgetResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBudgetResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The category of the budget.
 // - 'Cost' defines a Budget.
 // - 'ReservationUtilization' defines a Reservation Utilization Alert Rule.
@@ -234,12 +241,12 @@ func (o LookupBudgetResultOutput) ForecastSpend() ForecastSpendResponseOutput {
 	return o.ApplyT(func(v LookupBudgetResult) ForecastSpendResponse { return v.ForecastSpend }).(ForecastSpendResponseOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Resource Id.
 func (o LookupBudgetResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBudgetResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The name of the resource
+// Resource name.
 func (o LookupBudgetResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBudgetResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -288,7 +295,7 @@ func (o LookupBudgetResultOutput) TimePeriod() BudgetTimePeriodResponseOutput {
 	return o.ApplyT(func(v LookupBudgetResult) BudgetTimePeriodResponse { return v.TimePeriod }).(BudgetTimePeriodResponseOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// Resource type.
 func (o LookupBudgetResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBudgetResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -8,29 +8,33 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Configuration Assignment
 //
-// Uses Azure REST API version 2022-11-01-preview. In version 1.x of the Azure Native provider, it used API version 2021-04-01-preview.
+// Uses Azure REST API version 2023-10-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-11-01-preview.
 //
-// Other available API versions: 2023-04-01, 2023-09-01-preview, 2023-10-01-preview.
+// Other available API versions: 2022-11-01-preview, 2023-04-01, 2023-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native maintenance [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ConfigurationAssignment struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// Properties of the configuration assignment
+	Filter ConfigurationAssignmentFilterPropertiesResponsePtrOutput `pulumi:"filter"`
 	// Location of the resource
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The maintenance configuration Id
 	MaintenanceConfigurationId pulumi.StringPtrOutput `pulumi:"maintenanceConfigurationId"`
-	// Name of the resource
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The unique resourceId
 	ResourceId pulumi.StringPtrOutput `pulumi:"resourceId"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// Type of the resource
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -110,41 +114,45 @@ func (ConfigurationAssignmentState) ElementType() reflect.Type {
 }
 
 type configurationAssignmentArgs struct {
-	// Configuration assignment name
+	// The name of the ConfigurationAssignment
 	ConfigurationAssignmentName *string `pulumi:"configurationAssignmentName"`
+	// Properties of the configuration assignment
+	Filter *ConfigurationAssignmentFilterProperties `pulumi:"filter"`
 	// Location of the resource
 	Location *string `pulumi:"location"`
 	// The maintenance configuration Id
 	MaintenanceConfigurationId *string `pulumi:"maintenanceConfigurationId"`
 	// Resource provider name
 	ProviderName string `pulumi:"providerName"`
-	// Resource group name
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The unique resourceId
 	ResourceId *string `pulumi:"resourceId"`
-	// Resource identifier
+	// Resource parent name
 	ResourceName string `pulumi:"resourceName"`
-	// Resource type
+	// Resource parent type
 	ResourceType string `pulumi:"resourceType"`
 }
 
 // The set of arguments for constructing a ConfigurationAssignment resource.
 type ConfigurationAssignmentArgs struct {
-	// Configuration assignment name
+	// The name of the ConfigurationAssignment
 	ConfigurationAssignmentName pulumi.StringPtrInput
+	// Properties of the configuration assignment
+	Filter ConfigurationAssignmentFilterPropertiesPtrInput
 	// Location of the resource
 	Location pulumi.StringPtrInput
 	// The maintenance configuration Id
 	MaintenanceConfigurationId pulumi.StringPtrInput
 	// Resource provider name
 	ProviderName pulumi.StringInput
-	// Resource group name
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The unique resourceId
 	ResourceId pulumi.StringPtrInput
-	// Resource identifier
+	// Resource parent name
 	ResourceName pulumi.StringInput
-	// Resource type
+	// Resource parent type
 	ResourceType pulumi.StringInput
 }
 
@@ -185,6 +193,18 @@ func (o ConfigurationAssignmentOutput) ToConfigurationAssignmentOutputWithContex
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ConfigurationAssignmentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConfigurationAssignment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Properties of the configuration assignment
+func (o ConfigurationAssignmentOutput) Filter() ConfigurationAssignmentFilterPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *ConfigurationAssignment) ConfigurationAssignmentFilterPropertiesResponsePtrOutput {
+		return v.Filter
+	}).(ConfigurationAssignmentFilterPropertiesResponsePtrOutput)
+}
+
 // Location of the resource
 func (o ConfigurationAssignmentOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConfigurationAssignment) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
@@ -195,7 +215,7 @@ func (o ConfigurationAssignmentOutput) MaintenanceConfigurationId() pulumi.Strin
 	return o.ApplyT(func(v *ConfigurationAssignment) pulumi.StringPtrOutput { return v.MaintenanceConfigurationId }).(pulumi.StringPtrOutput)
 }
 
-// Name of the resource
+// The name of the resource
 func (o ConfigurationAssignmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConfigurationAssignment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -210,7 +230,7 @@ func (o ConfigurationAssignmentOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *ConfigurationAssignment) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Type of the resource
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o ConfigurationAssignmentOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConfigurationAssignment) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

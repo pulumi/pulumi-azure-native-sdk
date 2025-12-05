@@ -7,13 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a existing Azure Advisor assessment.
 //
 // Uses Azure REST API version 2023-09-01-preview.
+//
+// Other available API versions: 2024-11-18-preview, 2025-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native advisor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupAssessment(ctx *pulumi.Context, args *LookupAssessmentArgs, opts ...pulumi.InvokeOption) (*LookupAssessmentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAssessmentResult
@@ -33,6 +35,8 @@ type LookupAssessmentArgs struct {
 type LookupAssessmentResult struct {
 	// Assessment Id.
 	AssessmentId string `pulumi:"assessmentId"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Assessment Type Description.
 	Description string `pulumi:"description"`
 	// Assessment Id
@@ -95,6 +99,11 @@ func (o LookupAssessmentResultOutput) ToLookupAssessmentResultOutputWithContext(
 // Assessment Id.
 func (o LookupAssessmentResultOutput) AssessmentId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAssessmentResult) string { return v.AssessmentId }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupAssessmentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAssessmentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Assessment Type Description.

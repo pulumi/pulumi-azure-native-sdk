@@ -8,16 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A container for a managed identity to execute DevTest lab services.
 //
-// Uses Azure REST API version 2018-09-15. In version 1.x of the Azure Native provider, it used API version 2018-09-15.
+// Uses Azure REST API version 2018-09-15. In version 2.x of the Azure Native provider, it used API version 2018-09-15.
 type ServiceRunner struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The identity of the resource.
 	Identity IdentityPropertiesResponsePtrOutput `pulumi:"identity"`
 	// The location of the resource.
@@ -91,9 +93,9 @@ type serviceRunnerArgs struct {
 	LabName string `pulumi:"labName"`
 	// The location of the resource.
 	Location *string `pulumi:"location"`
-	// The name of the service runner.
+	// The name of the ServiceRunner
 	Name *string `pulumi:"name"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The tags of the resource.
 	Tags map[string]string `pulumi:"tags"`
@@ -107,9 +109,9 @@ type ServiceRunnerArgs struct {
 	LabName pulumi.StringInput
 	// The location of the resource.
 	Location pulumi.StringPtrInput
-	// The name of the service runner.
+	// The name of the ServiceRunner
 	Name pulumi.StringPtrInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The tags of the resource.
 	Tags pulumi.StringMapInput
@@ -150,6 +152,11 @@ func (o ServiceRunnerOutput) ToServiceRunnerOutput() ServiceRunnerOutput {
 
 func (o ServiceRunnerOutput) ToServiceRunnerOutputWithContext(ctx context.Context) ServiceRunnerOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ServiceRunnerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceRunner) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The identity of the resource.

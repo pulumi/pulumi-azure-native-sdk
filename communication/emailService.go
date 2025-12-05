@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A class representing an EmailService resource.
 //
-// Uses Azure REST API version 2023-03-31. In version 1.x of the Azure Native provider, it used API version 2021-10-01-preview.
+// Uses Azure REST API version 2023-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-03-31.
 //
-// Other available API versions: 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2024-09-01-preview.
+// Other available API versions: 2023-03-31, 2023-04-01, 2023-04-01-preview, 2024-09-01-preview, 2025-05-01, 2025-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native communication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type EmailService struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The location where the email service stores its data at rest.
 	DataLocation pulumi.StringOutput `pulumi:"dataLocation"`
 	// The geo-location where the resource lives
@@ -73,6 +75,12 @@ func NewEmailService(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:communication/v20240901preview:EmailService"),
+		},
+		{
+			Type: pulumi.String("azure-native:communication/v20250501:EmailService"),
+		},
+		{
+			Type: pulumi.String("azure-native:communication/v20250501preview:EmailService"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -170,6 +178,11 @@ func (o EmailServiceOutput) ToEmailServiceOutput() EmailServiceOutput {
 
 func (o EmailServiceOutput) ToEmailServiceOutputWithContext(ctx context.Context) EmailServiceOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o EmailServiceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *EmailService) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The location where the email service stores its data at rest.

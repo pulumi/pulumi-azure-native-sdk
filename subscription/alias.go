@@ -7,18 +7,20 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Subscription Information with the alias.
 //
-// Uses Azure REST API version 2021-10-01. In version 1.x of the Azure Native provider, it used API version 2020-09-01.
+// Uses Azure REST API version 2024-08-01-preview. In version 2.x of the Azure Native provider, it used API version 2021-10-01.
 //
-// Other available API versions: 2020-09-01, 2024-08-01-preview.
+// Other available API versions: 2021-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native subscription [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Alias struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Alias ID.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Subscription Alias response properties.
@@ -133,6 +135,11 @@ func (o AliasOutput) ToAliasOutput() AliasOutput {
 
 func (o AliasOutput) ToAliasOutputWithContext(ctx context.Context) AliasOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o AliasOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Alias) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Alias ID.

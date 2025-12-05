@@ -8,20 +8,22 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents an instance of a orchestrator.
 //
-// Uses Azure REST API version 2021-03-15. In version 1.x of the Azure Native provider, it used API version 2021-03-15.
+// Uses Azure REST API version 2023-06-27-preview. In version 2.x of the Azure Native provider, it used API version 2021-03-15.
 //
-// Other available API versions: 2023-05-18-preview, 2023-06-27-preview.
+// Other available API versions: 2021-03-15, 2023-05-18-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native delegatednetwork [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type OrchestratorInstanceServiceDetails struct {
 	pulumi.CustomResourceState
 
 	// K8s APIServer url. Either one of apiServerEndpoint or privateLinkResourceId can be specified
 	ApiServerEndpoint pulumi.StringPtrOutput `pulumi:"apiServerEndpoint"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// RootCA certificate of kubernetes cluster base64 encoded
 	ClusterRootCA pulumi.StringPtrOutput `pulumi:"clusterRootCA"`
 	// Properties of the controller.
@@ -208,6 +210,11 @@ func (o OrchestratorInstanceServiceDetailsOutput) ToOrchestratorInstanceServiceD
 // K8s APIServer url. Either one of apiServerEndpoint or privateLinkResourceId can be specified
 func (o OrchestratorInstanceServiceDetailsOutput) ApiServerEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OrchestratorInstanceServiceDetails) pulumi.StringPtrOutput { return v.ApiServerEndpoint }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o OrchestratorInstanceServiceDetailsOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrchestratorInstanceServiceDetails) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // RootCA certificate of kubernetes cluster base64 encoded

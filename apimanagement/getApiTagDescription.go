@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get Tag description in scope of API
 //
-// Uses Azure REST API version 2022-08-01.
+// Uses Azure REST API version 2022-09-01-preview.
 //
-// Other available API versions: 2019-01-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupApiTagDescription(ctx *pulumi.Context, args *LookupApiTagDescriptionArgs, opts ...pulumi.InvokeOption) (*LookupApiTagDescriptionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupApiTagDescriptionResult
@@ -39,6 +39,8 @@ type LookupApiTagDescriptionArgs struct {
 
 // Contract details.
 type LookupApiTagDescriptionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Description of the Tag.
 	Description *string `pulumi:"description"`
 	// Tag name.
@@ -94,6 +96,11 @@ func (o LookupApiTagDescriptionResultOutput) ToLookupApiTagDescriptionResultOutp
 
 func (o LookupApiTagDescriptionResultOutput) ToLookupApiTagDescriptionResultOutputWithContext(ctx context.Context) LookupApiTagDescriptionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupApiTagDescriptionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApiTagDescriptionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Description of the Tag.

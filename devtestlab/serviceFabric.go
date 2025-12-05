@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A Service Fabric.
 //
-// Uses Azure REST API version 2018-09-15. In version 1.x of the Azure Native provider, it used API version 2018-09-15.
+// Uses Azure REST API version 2018-09-15. In version 2.x of the Azure Native provider, it used API version 2018-09-15.
 type ServiceFabric struct {
 	pulumi.CustomResourceState
 
 	// The applicable schedule for the virtual machine.
 	ApplicableSchedule ApplicableScheduleResponseOutput `pulumi:"applicableSchedule"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The resource id of the environment under which the service fabric resource is present
 	EnvironmentId pulumi.StringPtrOutput `pulumi:"environmentId"`
 	// The backing service fabric resource's id
@@ -101,9 +103,9 @@ type serviceFabricArgs struct {
 	LabName string `pulumi:"labName"`
 	// The location of the resource.
 	Location *string `pulumi:"location"`
-	// The name of the service fabric.
+	// The name of the ServiceFabric
 	Name *string `pulumi:"name"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The tags of the resource.
 	Tags map[string]string `pulumi:"tags"`
@@ -121,9 +123,9 @@ type ServiceFabricArgs struct {
 	LabName pulumi.StringInput
 	// The location of the resource.
 	Location pulumi.StringPtrInput
-	// The name of the service fabric.
+	// The name of the ServiceFabric
 	Name pulumi.StringPtrInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The tags of the resource.
 	Tags pulumi.StringMapInput
@@ -171,6 +173,11 @@ func (o ServiceFabricOutput) ToServiceFabricOutputWithContext(ctx context.Contex
 // The applicable schedule for the virtual machine.
 func (o ServiceFabricOutput) ApplicableSchedule() ApplicableScheduleResponseOutput {
 	return o.ApplyT(func(v *ServiceFabric) ApplicableScheduleResponseOutput { return v.ApplicableSchedule }).(ApplicableScheduleResponseOutput)
+}
+
+// The Azure API version of the resource.
+func (o ServiceFabricOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceFabric) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The resource id of the environment under which the service fabric resource is present

@@ -8,16 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A Policy.
 //
-// Uses Azure REST API version 2018-09-15. In version 1.x of the Azure Native provider, it used API version 2018-09-15.
+// Uses Azure REST API version 2018-09-15. In version 2.x of the Azure Native provider, it used API version 2018-09-15.
 type Policy struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The creation date of the policy.
 	CreatedDate pulumi.StringOutput `pulumi:"createdDate"`
 	// The description of the policy.
@@ -115,15 +117,15 @@ type policyArgs struct {
 	FactData *string `pulumi:"factData"`
 	// The fact name of the policy (e.g. LabVmCount, LabVmSize, MaxVmsAllowedPerLab, etc.
 	FactName *string `pulumi:"factName"`
-	// The name of the lab.
+	// labs
 	LabName string `pulumi:"labName"`
 	// The location of the resource.
 	Location *string `pulumi:"location"`
-	// The name of the policy.
+	// The name of the Schedule
 	Name *string `pulumi:"name"`
-	// The name of the policy set.
+	// policysets
 	PolicySetName string `pulumi:"policySetName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The status of the policy.
 	Status *string `pulumi:"status"`
@@ -143,15 +145,15 @@ type PolicyArgs struct {
 	FactData pulumi.StringPtrInput
 	// The fact name of the policy (e.g. LabVmCount, LabVmSize, MaxVmsAllowedPerLab, etc.
 	FactName pulumi.StringPtrInput
-	// The name of the lab.
+	// labs
 	LabName pulumi.StringInput
 	// The location of the resource.
 	Location pulumi.StringPtrInput
-	// The name of the policy.
+	// The name of the Schedule
 	Name pulumi.StringPtrInput
-	// The name of the policy set.
+	// policysets
 	PolicySetName pulumi.StringInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The status of the policy.
 	Status pulumi.StringPtrInput
@@ -196,6 +198,11 @@ func (o PolicyOutput) ToPolicyOutput() PolicyOutput {
 
 func (o PolicyOutput) ToPolicyOutputWithContext(ctx context.Context) PolicyOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o PolicyOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of the policy.

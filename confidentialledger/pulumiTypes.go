@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -741,8 +741,12 @@ type LedgerProperties struct {
 	AadBasedSecurityPrincipals []AADBasedSecurityPrincipal `pulumi:"aadBasedSecurityPrincipals"`
 	// Array of all cert based Security Principals.
 	CertBasedSecurityPrincipals []CertBasedSecurityPrincipal `pulumi:"certBasedSecurityPrincipals"`
+	// SKU associated with the ledger
+	LedgerSku *string `pulumi:"ledgerSku"`
 	// Type of Confidential Ledger
 	LedgerType *string `pulumi:"ledgerType"`
+	// Object representing RunningState for Ledger.
+	RunningState *string `pulumi:"runningState"`
 }
 
 // LedgerPropertiesInput is an input type that accepts LedgerPropertiesArgs and LedgerPropertiesOutput values.
@@ -762,8 +766,12 @@ type LedgerPropertiesArgs struct {
 	AadBasedSecurityPrincipals AADBasedSecurityPrincipalArrayInput `pulumi:"aadBasedSecurityPrincipals"`
 	// Array of all cert based Security Principals.
 	CertBasedSecurityPrincipals CertBasedSecurityPrincipalArrayInput `pulumi:"certBasedSecurityPrincipals"`
+	// SKU associated with the ledger
+	LedgerSku pulumi.StringPtrInput `pulumi:"ledgerSku"`
 	// Type of Confidential Ledger
 	LedgerType pulumi.StringPtrInput `pulumi:"ledgerType"`
+	// Object representing RunningState for Ledger.
+	RunningState pulumi.StringPtrInput `pulumi:"runningState"`
 }
 
 func (LedgerPropertiesArgs) ElementType() reflect.Type {
@@ -854,9 +862,19 @@ func (o LedgerPropertiesOutput) CertBasedSecurityPrincipals() CertBasedSecurityP
 	return o.ApplyT(func(v LedgerProperties) []CertBasedSecurityPrincipal { return v.CertBasedSecurityPrincipals }).(CertBasedSecurityPrincipalArrayOutput)
 }
 
+// SKU associated with the ledger
+func (o LedgerPropertiesOutput) LedgerSku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LedgerProperties) *string { return v.LedgerSku }).(pulumi.StringPtrOutput)
+}
+
 // Type of Confidential Ledger
 func (o LedgerPropertiesOutput) LedgerType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LedgerProperties) *string { return v.LedgerType }).(pulumi.StringPtrOutput)
+}
+
+// Object representing RunningState for Ledger.
+func (o LedgerPropertiesOutput) RunningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LedgerProperties) *string { return v.RunningState }).(pulumi.StringPtrOutput)
 }
 
 type LedgerPropertiesPtrOutput struct{ *pulumi.OutputState }
@@ -903,6 +921,16 @@ func (o LedgerPropertiesPtrOutput) CertBasedSecurityPrincipals() CertBasedSecuri
 	}).(CertBasedSecurityPrincipalArrayOutput)
 }
 
+// SKU associated with the ledger
+func (o LedgerPropertiesPtrOutput) LedgerSku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LedgerProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LedgerSku
+	}).(pulumi.StringPtrOutput)
+}
+
 // Type of Confidential Ledger
 func (o LedgerPropertiesPtrOutput) LedgerType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LedgerProperties) *string {
@@ -910,6 +938,16 @@ func (o LedgerPropertiesPtrOutput) LedgerType() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.LedgerType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Object representing RunningState for Ledger.
+func (o LedgerPropertiesPtrOutput) RunningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LedgerProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RunningState
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -925,12 +963,16 @@ type LedgerPropertiesResponse struct {
 	LedgerInternalNamespace string `pulumi:"ledgerInternalNamespace"`
 	// Unique name for the Confidential Ledger.
 	LedgerName string `pulumi:"ledgerName"`
+	// SKU associated with the ledger
+	LedgerSku *string `pulumi:"ledgerSku"`
 	// Type of Confidential Ledger
 	LedgerType *string `pulumi:"ledgerType"`
 	// Endpoint for calling Ledger Service.
 	LedgerUri string `pulumi:"ledgerUri"`
 	// Provisioning state of Ledger Resource
 	ProvisioningState string `pulumi:"provisioningState"`
+	// Object representing RunningState for Ledger.
+	RunningState *string `pulumi:"runningState"`
 }
 
 // Additional Confidential Ledger properties.
@@ -977,6 +1019,11 @@ func (o LedgerPropertiesResponseOutput) LedgerName() pulumi.StringOutput {
 	return o.ApplyT(func(v LedgerPropertiesResponse) string { return v.LedgerName }).(pulumi.StringOutput)
 }
 
+// SKU associated with the ledger
+func (o LedgerPropertiesResponseOutput) LedgerSku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LedgerPropertiesResponse) *string { return v.LedgerSku }).(pulumi.StringPtrOutput)
+}
+
 // Type of Confidential Ledger
 func (o LedgerPropertiesResponseOutput) LedgerType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LedgerPropertiesResponse) *string { return v.LedgerType }).(pulumi.StringPtrOutput)
@@ -992,6 +1039,11 @@ func (o LedgerPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput 
 	return o.ApplyT(func(v LedgerPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Object representing RunningState for Ledger.
+func (o LedgerPropertiesResponseOutput) RunningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LedgerPropertiesResponse) *string { return v.RunningState }).(pulumi.StringPtrOutput)
+}
+
 // Additional Managed CCF properties.
 type ManagedCCFProperties struct {
 	// Deployment Type of Managed CCF
@@ -1000,6 +1052,8 @@ type ManagedCCFProperties struct {
 	MemberIdentityCertificates []MemberIdentityCertificate `pulumi:"memberIdentityCertificates"`
 	// Number of CCF nodes in the Managed CCF.
 	NodeCount *int `pulumi:"nodeCount"`
+	// Object representing RunningState for Managed CCF.
+	RunningState *string `pulumi:"runningState"`
 }
 
 // ManagedCCFPropertiesInput is an input type that accepts ManagedCCFPropertiesArgs and ManagedCCFPropertiesOutput values.
@@ -1021,6 +1075,8 @@ type ManagedCCFPropertiesArgs struct {
 	MemberIdentityCertificates MemberIdentityCertificateArrayInput `pulumi:"memberIdentityCertificates"`
 	// Number of CCF nodes in the Managed CCF.
 	NodeCount pulumi.IntPtrInput `pulumi:"nodeCount"`
+	// Object representing RunningState for Managed CCF.
+	RunningState pulumi.StringPtrInput `pulumi:"runningState"`
 }
 
 func (ManagedCCFPropertiesArgs) ElementType() reflect.Type {
@@ -1116,6 +1172,11 @@ func (o ManagedCCFPropertiesOutput) NodeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ManagedCCFProperties) *int { return v.NodeCount }).(pulumi.IntPtrOutput)
 }
 
+// Object representing RunningState for Managed CCF.
+func (o ManagedCCFPropertiesOutput) RunningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedCCFProperties) *string { return v.RunningState }).(pulumi.StringPtrOutput)
+}
+
 type ManagedCCFPropertiesPtrOutput struct{ *pulumi.OutputState }
 
 func (ManagedCCFPropertiesPtrOutput) ElementType() reflect.Type {
@@ -1170,6 +1231,16 @@ func (o ManagedCCFPropertiesPtrOutput) NodeCount() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Object representing RunningState for Managed CCF.
+func (o ManagedCCFPropertiesPtrOutput) RunningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedCCFProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RunningState
+	}).(pulumi.StringPtrOutput)
+}
+
 // Additional Managed CCF properties.
 type ManagedCCFPropertiesResponse struct {
 	// Unique name for the Managed CCF.
@@ -1184,8 +1255,10 @@ type ManagedCCFPropertiesResponse struct {
 	MemberIdentityCertificates []MemberIdentityCertificateResponse `pulumi:"memberIdentityCertificates"`
 	// Number of CCF nodes in the Managed CCF.
 	NodeCount *int `pulumi:"nodeCount"`
-	// Provisioning state of Ledger Resource
+	// Provisioning state of Managed CCF Resource
 	ProvisioningState string `pulumi:"provisioningState"`
+	// Object representing RunningState for Managed CCF.
+	RunningState *string `pulumi:"runningState"`
 }
 
 // Additional Managed CCF properties.
@@ -1235,9 +1308,14 @@ func (o ManagedCCFPropertiesResponseOutput) NodeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ManagedCCFPropertiesResponse) *int { return v.NodeCount }).(pulumi.IntPtrOutput)
 }
 
-// Provisioning state of Ledger Resource
+// Provisioning state of Managed CCF Resource
 func (o ManagedCCFPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedCCFPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Object representing RunningState for Managed CCF.
+func (o ManagedCCFPropertiesResponseOutput) RunningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedCCFPropertiesResponse) *string { return v.RunningState }).(pulumi.StringPtrOutput)
 }
 
 // Object representing MemberIdentityCertificate for Managed CCF.

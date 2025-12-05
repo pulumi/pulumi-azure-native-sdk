@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Dapr PubSub Event Subscription.
 //
-// Uses Azure REST API version 2023-08-01-preview.
+// Uses Azure REST API version 2025-02-02-preview. In version 2.x of the Azure Native provider, it used API version 2023-08-01-preview.
 //
-// Other available API versions: 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview.
+// Other available API versions: 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type DaprSubscription struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Bulk subscription options
 	BulkSubscribe DaprSubscriptionBulkSubscribeOptionsResponsePtrOutput `pulumi:"bulkSubscribe"`
 	// Deadletter topic name
@@ -75,6 +77,9 @@ func NewDaprSubscription(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:app/v20241002preview:DaprSubscription"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20250202preview:DaprSubscription"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -192,6 +197,11 @@ func (o DaprSubscriptionOutput) ToDaprSubscriptionOutput() DaprSubscriptionOutpu
 
 func (o DaprSubscriptionOutput) ToDaprSubscriptionOutputWithContext(ctx context.Context) DaprSubscriptionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o DaprSubscriptionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DaprSubscription) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Bulk subscription options

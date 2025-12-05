@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified authorization from the specified express route port.
 //
-// Uses Azure REST API version 2023-02-01.
+// Uses Azure REST API version 2024-05-01.
 //
-// Other available API versions: 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Other available API versions: 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupExpressRoutePortAuthorization(ctx *pulumi.Context, args *LookupExpressRoutePortAuthorizationArgs, opts ...pulumi.InvokeOption) (*LookupExpressRoutePortAuthorizationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupExpressRoutePortAuthorizationResult
@@ -41,6 +41,8 @@ type LookupExpressRoutePortAuthorizationResult struct {
 	AuthorizationKey string `pulumi:"authorizationKey"`
 	// The authorization use status.
 	AuthorizationUseStatus string `pulumi:"authorizationUseStatus"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The reference to the ExpressRoute circuit resource using the authorization.
 	CircuitResourceUri string `pulumi:"circuitResourceUri"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -100,6 +102,11 @@ func (o LookupExpressRoutePortAuthorizationResultOutput) AuthorizationKey() pulu
 // The authorization use status.
 func (o LookupExpressRoutePortAuthorizationResultOutput) AuthorizationUseStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExpressRoutePortAuthorizationResult) string { return v.AuthorizationUseStatus }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupExpressRoutePortAuthorizationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupExpressRoutePortAuthorizationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The reference to the ExpressRoute circuit resource using the authorization.

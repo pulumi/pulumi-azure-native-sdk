@@ -8,27 +8,31 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // AzureBareMetalStorageInstance info on Azure (ARM properties and AzureBareMetalStorage properties)
 //
-// Uses Azure REST API version 2023-04-06.
+// Uses Azure REST API version 2024-08-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-04-06.
 //
-// Other available API versions: 2023-08-04-preview, 2023-11-01-preview, 2024-08-01-preview.
+// Other available API versions: 2023-04-06, 2023-08-04-preview, 2023-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native baremetalinfrastructure [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type AzureBareMetalStorageInstance struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Specifies the AzureBareMetaStorageInstance unique ID.
 	AzureBareMetalStorageInstanceUniqueIdentifier pulumi.StringPtrOutput `pulumi:"azureBareMetalStorageInstanceUniqueIdentifier"`
+	// The identity of Azure Bare Metal Storage Instance, if configured.
+	Identity AzureBareMetalStorageInstanceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Specifies the storage properties for the AzureBareMetalStorage instance.
 	StorageProperties StoragePropertiesResponsePtrOutput `pulumi:"storageProperties"`
-	// The system metadata relating to this resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
@@ -94,10 +98,12 @@ func (AzureBareMetalStorageInstanceState) ElementType() reflect.Type {
 }
 
 type azureBareMetalStorageInstanceArgs struct {
-	// Name of the AzureBareMetalStorage on Azure instance.
+	// Name of the Azure Bare Metal Storage Instance, also known as the ResourceName.
 	AzureBareMetalStorageInstanceName *string `pulumi:"azureBareMetalStorageInstanceName"`
 	// Specifies the AzureBareMetaStorageInstance unique ID.
 	AzureBareMetalStorageInstanceUniqueIdentifier *string `pulumi:"azureBareMetalStorageInstanceUniqueIdentifier"`
+	// The identity of Azure Bare Metal Storage Instance, if configured.
+	Identity *AzureBareMetalStorageInstanceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The name of the resource group. The name is case insensitive.
@@ -110,10 +116,12 @@ type azureBareMetalStorageInstanceArgs struct {
 
 // The set of arguments for constructing a AzureBareMetalStorageInstance resource.
 type AzureBareMetalStorageInstanceArgs struct {
-	// Name of the AzureBareMetalStorage on Azure instance.
+	// Name of the Azure Bare Metal Storage Instance, also known as the ResourceName.
 	AzureBareMetalStorageInstanceName pulumi.StringPtrInput
 	// Specifies the AzureBareMetaStorageInstance unique ID.
 	AzureBareMetalStorageInstanceUniqueIdentifier pulumi.StringPtrInput
+	// The identity of Azure Bare Metal Storage Instance, if configured.
+	Identity AzureBareMetalStorageInstanceIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
@@ -161,11 +169,23 @@ func (o AzureBareMetalStorageInstanceOutput) ToAzureBareMetalStorageInstanceOutp
 	return o
 }
 
+// The Azure API version of the resource.
+func (o AzureBareMetalStorageInstanceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AzureBareMetalStorageInstance) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Specifies the AzureBareMetaStorageInstance unique ID.
 func (o AzureBareMetalStorageInstanceOutput) AzureBareMetalStorageInstanceUniqueIdentifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureBareMetalStorageInstance) pulumi.StringPtrOutput {
 		return v.AzureBareMetalStorageInstanceUniqueIdentifier
 	}).(pulumi.StringPtrOutput)
+}
+
+// The identity of Azure Bare Metal Storage Instance, if configured.
+func (o AzureBareMetalStorageInstanceOutput) Identity() AzureBareMetalStorageInstanceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *AzureBareMetalStorageInstance) AzureBareMetalStorageInstanceIdentityResponsePtrOutput {
+		return v.Identity
+	}).(AzureBareMetalStorageInstanceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -183,7 +203,7 @@ func (o AzureBareMetalStorageInstanceOutput) StorageProperties() StorageProperti
 	return o.ApplyT(func(v *AzureBareMetalStorageInstance) StoragePropertiesResponsePtrOutput { return v.StorageProperties }).(StoragePropertiesResponsePtrOutput)
 }
 
-// The system metadata relating to this resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o AzureBareMetalStorageInstanceOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *AzureBareMetalStorageInstance) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

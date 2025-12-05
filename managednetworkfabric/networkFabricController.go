@@ -8,28 +8,32 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The NetworkFabricController resource definition.
+// The Network Fabric Controller resource definition.
 //
-// Uses Azure REST API version 2023-02-01-preview. In version 1.x of the Azure Native provider, it used API version 2023-02-01-preview.
+// Uses Azure REST API version 2023-06-15. In version 2.x of the Azure Native provider, it used API version 2023-02-01-preview.
 //
-// Other available API versions: 2023-06-15.
+// Other available API versions: 2023-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type NetworkFabricController struct {
 	pulumi.CustomResourceState
 
 	// Switch configuration description.
 	Annotation pulumi.StringPtrOutput `pulumi:"annotation"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// As part of an update, the Infrastructure ExpressRoute CircuitID should be provided to create and Provision a NFC. This Express route is dedicated for Infrastructure services. (This is a Mandatory attribute)
 	InfrastructureExpressRouteConnections ExpressRouteConnectionInformationResponseArrayOutput `pulumi:"infrastructureExpressRouteConnections"`
 	// InfrastructureServices IP ranges.
-	InfrastructureServices InfrastructureServicesResponseOutput `pulumi:"infrastructureServices"`
+	InfrastructureServices ControllerServicesResponseOutput `pulumi:"infrastructureServices"`
 	// IPv4 Network Fabric Controller Address Space.
 	Ipv4AddressSpace pulumi.StringPtrOutput `pulumi:"ipv4AddressSpace"`
 	// IPv6 Network Fabric Controller Address Space.
 	Ipv6AddressSpace pulumi.StringPtrOutput `pulumi:"ipv6AddressSpace"`
+	// A workload management network is required for all the tenant (workload) traffic. This traffic is only dedicated for Tenant workloads which are required to access internet or any other MSFT/Public endpoints.
+	IsWorkloadManagementNetworkEnabled pulumi.StringPtrOutput `pulumi:"isWorkloadManagementNetworkEnabled"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Managed Resource Group configuration properties.
@@ -38,22 +42,24 @@ type NetworkFabricController struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The NF-ID will be an input parameter used by the NF to link and get associated with the parent NFC Service.
 	NetworkFabricIds pulumi.StringArrayOutput `pulumi:"networkFabricIds"`
-	// The Operational Status would always be NULL. Look only in to the Provisioning state for the latest status.
-	OperationalState pulumi.StringOutput `pulumi:"operationalState"`
+	// Network Fabric Controller SKU.
+	NfcSku pulumi.StringPtrOutput `pulumi:"nfcSku"`
 	// Provides you the latest status of the NFC service, whether it is Accepted, updating, Succeeded or Failed. During this process, the states keep changing based on the status of NFC provisioning.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	// List of tenant InternetGateway resource IDs
+	TenantInternetGatewayIds pulumi.StringArrayOutput `pulumi:"tenantInternetGatewayIds"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// As part of an update, the workload ExpressRoute CircuitID should be provided to create and Provision a NFC. This Express route is dedicated for Workload services. (This is a Mandatory attribute).
 	WorkloadExpressRouteConnections ExpressRouteConnectionInformationResponseArrayOutput `pulumi:"workloadExpressRouteConnections"`
-	// A workload management network is required for all the tenant (workload) traffic. This traffic is only dedicated for Tenant workloads which are required to access internet or any other MSFT/Public endpoints.
+	// A workload management network is required for all the tenant (workload) traffic. This traffic is only dedicated for Tenant workloads which are required to access internet or any other MSFT/Public endpoints. This is used for the backward compatibility.
 	WorkloadManagementNetwork pulumi.BoolOutput `pulumi:"workloadManagementNetwork"`
 	// WorkloadServices IP ranges.
-	WorkloadServices WorkloadServicesResponseOutput `pulumi:"workloadServices"`
+	WorkloadServices ControllerServicesResponseOutput `pulumi:"workloadServices"`
 }
 
 // NewNetworkFabricController registers a new resource with the given unique name, arguments, and options.
@@ -65,6 +71,18 @@ func NewNetworkFabricController(ctx *pulumi.Context,
 
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Ipv4AddressSpace == nil {
+		args.Ipv4AddressSpace = pulumi.StringPtr("10.0.0.0/19")
+	}
+	if args.Ipv6AddressSpace == nil {
+		args.Ipv6AddressSpace = pulumi.StringPtr("FC00::/59")
+	}
+	if args.IsWorkloadManagementNetworkEnabled == nil {
+		args.IsWorkloadManagementNetworkEnabled = pulumi.StringPtr("True")
+	}
+	if args.NfcSku == nil {
+		args.NfcSku = pulumi.StringPtr("Standard")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -116,12 +134,16 @@ type networkFabricControllerArgs struct {
 	Ipv4AddressSpace *string `pulumi:"ipv4AddressSpace"`
 	// IPv6 Network Fabric Controller Address Space.
 	Ipv6AddressSpace *string `pulumi:"ipv6AddressSpace"`
+	// A workload management network is required for all the tenant (workload) traffic. This traffic is only dedicated for Tenant workloads which are required to access internet or any other MSFT/Public endpoints.
+	IsWorkloadManagementNetworkEnabled *string `pulumi:"isWorkloadManagementNetworkEnabled"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// Managed Resource Group configuration properties.
 	ManagedResourceGroupConfiguration *ManagedResourceGroupConfiguration `pulumi:"managedResourceGroupConfiguration"`
-	// Name of the Network Fabric Controller
+	// Name of the Network Fabric Controller.
 	NetworkFabricControllerName *string `pulumi:"networkFabricControllerName"`
+	// Network Fabric Controller SKU.
+	NfcSku *string `pulumi:"nfcSku"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Resource tags.
@@ -140,12 +162,16 @@ type NetworkFabricControllerArgs struct {
 	Ipv4AddressSpace pulumi.StringPtrInput
 	// IPv6 Network Fabric Controller Address Space.
 	Ipv6AddressSpace pulumi.StringPtrInput
+	// A workload management network is required for all the tenant (workload) traffic. This traffic is only dedicated for Tenant workloads which are required to access internet or any other MSFT/Public endpoints.
+	IsWorkloadManagementNetworkEnabled pulumi.StringPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// Managed Resource Group configuration properties.
 	ManagedResourceGroupConfiguration ManagedResourceGroupConfigurationPtrInput
-	// Name of the Network Fabric Controller
+	// Name of the Network Fabric Controller.
 	NetworkFabricControllerName pulumi.StringPtrInput
+	// Network Fabric Controller SKU.
+	NfcSku pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Resource tags.
@@ -196,6 +222,11 @@ func (o NetworkFabricControllerOutput) Annotation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkFabricController) pulumi.StringPtrOutput { return v.Annotation }).(pulumi.StringPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o NetworkFabricControllerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkFabricController) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // As part of an update, the Infrastructure ExpressRoute CircuitID should be provided to create and Provision a NFC. This Express route is dedicated for Infrastructure services. (This is a Mandatory attribute)
 func (o NetworkFabricControllerOutput) InfrastructureExpressRouteConnections() ExpressRouteConnectionInformationResponseArrayOutput {
 	return o.ApplyT(func(v *NetworkFabricController) ExpressRouteConnectionInformationResponseArrayOutput {
@@ -204,8 +235,8 @@ func (o NetworkFabricControllerOutput) InfrastructureExpressRouteConnections() E
 }
 
 // InfrastructureServices IP ranges.
-func (o NetworkFabricControllerOutput) InfrastructureServices() InfrastructureServicesResponseOutput {
-	return o.ApplyT(func(v *NetworkFabricController) InfrastructureServicesResponseOutput { return v.InfrastructureServices }).(InfrastructureServicesResponseOutput)
+func (o NetworkFabricControllerOutput) InfrastructureServices() ControllerServicesResponseOutput {
+	return o.ApplyT(func(v *NetworkFabricController) ControllerServicesResponseOutput { return v.InfrastructureServices }).(ControllerServicesResponseOutput)
 }
 
 // IPv4 Network Fabric Controller Address Space.
@@ -216,6 +247,11 @@ func (o NetworkFabricControllerOutput) Ipv4AddressSpace() pulumi.StringPtrOutput
 // IPv6 Network Fabric Controller Address Space.
 func (o NetworkFabricControllerOutput) Ipv6AddressSpace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkFabricController) pulumi.StringPtrOutput { return v.Ipv6AddressSpace }).(pulumi.StringPtrOutput)
+}
+
+// A workload management network is required for all the tenant (workload) traffic. This traffic is only dedicated for Tenant workloads which are required to access internet or any other MSFT/Public endpoints.
+func (o NetworkFabricControllerOutput) IsWorkloadManagementNetworkEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkFabricController) pulumi.StringPtrOutput { return v.IsWorkloadManagementNetworkEnabled }).(pulumi.StringPtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -240,9 +276,9 @@ func (o NetworkFabricControllerOutput) NetworkFabricIds() pulumi.StringArrayOutp
 	return o.ApplyT(func(v *NetworkFabricController) pulumi.StringArrayOutput { return v.NetworkFabricIds }).(pulumi.StringArrayOutput)
 }
 
-// The Operational Status would always be NULL. Look only in to the Provisioning state for the latest status.
-func (o NetworkFabricControllerOutput) OperationalState() pulumi.StringOutput {
-	return o.ApplyT(func(v *NetworkFabricController) pulumi.StringOutput { return v.OperationalState }).(pulumi.StringOutput)
+// Network Fabric Controller SKU.
+func (o NetworkFabricControllerOutput) NfcSku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkFabricController) pulumi.StringPtrOutput { return v.NfcSku }).(pulumi.StringPtrOutput)
 }
 
 // Provides you the latest status of the NFC service, whether it is Accepted, updating, Succeeded or Failed. During this process, the states keep changing based on the status of NFC provisioning.
@@ -260,6 +296,11 @@ func (o NetworkFabricControllerOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *NetworkFabricController) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// List of tenant InternetGateway resource IDs
+func (o NetworkFabricControllerOutput) TenantInternetGatewayIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NetworkFabricController) pulumi.StringArrayOutput { return v.TenantInternetGatewayIds }).(pulumi.StringArrayOutput)
+}
+
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o NetworkFabricControllerOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkFabricController) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
@@ -272,14 +313,14 @@ func (o NetworkFabricControllerOutput) WorkloadExpressRouteConnections() Express
 	}).(ExpressRouteConnectionInformationResponseArrayOutput)
 }
 
-// A workload management network is required for all the tenant (workload) traffic. This traffic is only dedicated for Tenant workloads which are required to access internet or any other MSFT/Public endpoints.
+// A workload management network is required for all the tenant (workload) traffic. This traffic is only dedicated for Tenant workloads which are required to access internet or any other MSFT/Public endpoints. This is used for the backward compatibility.
 func (o NetworkFabricControllerOutput) WorkloadManagementNetwork() pulumi.BoolOutput {
 	return o.ApplyT(func(v *NetworkFabricController) pulumi.BoolOutput { return v.WorkloadManagementNetwork }).(pulumi.BoolOutput)
 }
 
 // WorkloadServices IP ranges.
-func (o NetworkFabricControllerOutput) WorkloadServices() WorkloadServicesResponseOutput {
-	return o.ApplyT(func(v *NetworkFabricController) WorkloadServicesResponseOutput { return v.WorkloadServices }).(WorkloadServicesResponseOutput)
+func (o NetworkFabricControllerOutput) WorkloadServices() ControllerServicesResponseOutput {
+	return o.ApplyT(func(v *NetworkFabricController) ControllerServicesResponseOutput { return v.WorkloadServices }).(ControllerServicesResponseOutput)
 }
 
 func init() {

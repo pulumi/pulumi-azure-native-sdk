@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets the specified backup of the volume
+// Get the specified Backup under Backup Vault.
 //
-// Uses Azure REST API version 2022-11-01.
+// Uses Azure REST API version 2024-09-01.
 //
-// Other available API versions: 2022-11-01-preview, 2023-05-01-preview, 2023-07-01-preview, 2023-11-01, 2023-11-01-preview, 2024-01-01, 2024-03-01, 2024-03-01-preview, 2024-05-01, 2024-05-01-preview, 2024-07-01, 2024-07-01-preview, 2024-09-01, 2024-09-01-preview.
+// Other available API versions: 2022-11-01-preview, 2023-05-01-preview, 2023-07-01-preview, 2023-11-01, 2023-11-01-preview, 2024-01-01, 2024-03-01, 2024-03-01-preview, 2024-05-01, 2024-05-01-preview, 2024-07-01, 2024-07-01-preview, 2024-09-01-preview, 2025-01-01, 2025-01-01-preview, 2025-03-01, 2025-03-01-preview, 2025-06-01, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native netapp [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupBackup(ctx *pulumi.Context, args *LookupBackupArgs, opts ...pulumi.InvokeOption) (*LookupBackupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBackupResult
@@ -31,44 +31,46 @@ type LookupBackupArgs struct {
 	AccountName string `pulumi:"accountName"`
 	// The name of the backup
 	BackupName string `pulumi:"backupName"`
-	// The name of the capacity pool
-	PoolName string `pulumi:"poolName"`
+	// The name of the Backup Vault
+	BackupVaultName string `pulumi:"backupVaultName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// The name of the volume
-	VolumeName string `pulumi:"volumeName"`
 }
 
-// Backup of a Volume
+// Backup under a Backup Vault
 type LookupBackupResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// UUID v4 used to identify the Backup
 	BackupId string `pulumi:"backupId"`
+	// ResourceId used to identify the backup policy
+	BackupPolicyResourceId string `pulumi:"backupPolicyResourceId"`
 	// Type of backup Manual or Scheduled
 	BackupType string `pulumi:"backupType"`
 	// The creation date of the backup
 	CreationDate string `pulumi:"creationDate"`
 	// Failure reason
 	FailureReason string `pulumi:"failureReason"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Label for backup
 	Label *string `pulumi:"label"`
-	// Resource location
-	Location string `pulumi:"location"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// Azure lifecycle management
 	ProvisioningState string `pulumi:"provisioningState"`
-	// Size of backup
+	// Size of backup in bytes
 	Size float64 `pulumi:"size"`
+	// The name of the snapshot
+	SnapshotName *string `pulumi:"snapshotName"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// Manual backup an already existing snapshot. This will always be false for scheduled backups and true/false for manual backups
 	UseExistingSnapshot *bool `pulumi:"useExistingSnapshot"`
-	// Volume name
-	VolumeName string `pulumi:"volumeName"`
+	// ResourceId used to identify the Volume
+	VolumeResourceId string `pulumi:"volumeResourceId"`
 }
 
 // Defaults sets the appropriate defaults for LookupBackupResult
@@ -97,19 +99,17 @@ type LookupBackupOutputArgs struct {
 	AccountName pulumi.StringInput `pulumi:"accountName"`
 	// The name of the backup
 	BackupName pulumi.StringInput `pulumi:"backupName"`
-	// The name of the capacity pool
-	PoolName pulumi.StringInput `pulumi:"poolName"`
+	// The name of the Backup Vault
+	BackupVaultName pulumi.StringInput `pulumi:"backupVaultName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	// The name of the volume
-	VolumeName pulumi.StringInput `pulumi:"volumeName"`
 }
 
 func (LookupBackupOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupBackupArgs)(nil)).Elem()
 }
 
-// Backup of a Volume
+// Backup under a Backup Vault
 type LookupBackupResultOutput struct{ *pulumi.OutputState }
 
 func (LookupBackupResultOutput) ElementType() reflect.Type {
@@ -124,9 +124,19 @@ func (o LookupBackupResultOutput) ToLookupBackupResultOutputWithContext(ctx cont
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupBackupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // UUID v4 used to identify the Backup
 func (o LookupBackupResultOutput) BackupId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupResult) string { return v.BackupId }).(pulumi.StringOutput)
+}
+
+// ResourceId used to identify the backup policy
+func (o LookupBackupResultOutput) BackupPolicyResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackupResult) string { return v.BackupPolicyResourceId }).(pulumi.StringOutput)
 }
 
 // Type of backup Manual or Scheduled
@@ -144,7 +154,7 @@ func (o LookupBackupResultOutput) FailureReason() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupResult) string { return v.FailureReason }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupBackupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -152,11 +162,6 @@ func (o LookupBackupResultOutput) Id() pulumi.StringOutput {
 // Label for backup
 func (o LookupBackupResultOutput) Label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupBackupResult) *string { return v.Label }).(pulumi.StringPtrOutput)
-}
-
-// Resource location
-func (o LookupBackupResultOutput) Location() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupBackupResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
 // The name of the resource
@@ -169,9 +174,14 @@ func (o LookupBackupResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Size of backup
+// Size of backup in bytes
 func (o LookupBackupResultOutput) Size() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupBackupResult) float64 { return v.Size }).(pulumi.Float64Output)
+}
+
+// The name of the snapshot
+func (o LookupBackupResultOutput) SnapshotName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupBackupResult) *string { return v.SnapshotName }).(pulumi.StringPtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -189,9 +199,9 @@ func (o LookupBackupResultOutput) UseExistingSnapshot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupBackupResult) *bool { return v.UseExistingSnapshot }).(pulumi.BoolPtrOutput)
 }
 
-// Volume name
-func (o LookupBackupResultOutput) VolumeName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupBackupResult) string { return v.VolumeName }).(pulumi.StringOutput)
+// ResourceId used to identify the Volume
+func (o LookupBackupResultOutput) VolumeResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackupResult) string { return v.VolumeResourceId }).(pulumi.StringOutput)
 }
 
 func init() {

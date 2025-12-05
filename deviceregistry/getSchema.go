@@ -7,13 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a Schema
 //
 // Uses Azure REST API version 2024-09-01-preview.
+//
+// Other available API versions: 2025-07-01-preview, 2025-10-01, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupSchema(ctx *pulumi.Context, args *LookupSchemaArgs, opts ...pulumi.InvokeOption) (*LookupSchemaResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSchemaResult
@@ -35,6 +37,8 @@ type LookupSchemaArgs struct {
 
 // Schema definition.
 type LookupSchemaResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Human-readable description of the schema.
 	Description *string `pulumi:"description"`
 	// Human-readable display name.
@@ -94,6 +98,11 @@ func (o LookupSchemaResultOutput) ToLookupSchemaResultOutput() LookupSchemaResul
 
 func (o LookupSchemaResultOutput) ToLookupSchemaResultOutputWithContext(ctx context.Context) LookupSchemaResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSchemaResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSchemaResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Human-readable description of the schema.

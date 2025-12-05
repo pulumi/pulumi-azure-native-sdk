@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Response for Volume Snapshot request.
 //
-// Uses Azure REST API version 2023-01-01.
+// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-01-01.
 //
-// Other available API versions: 2024-05-01, 2024-06-01-preview.
+// Other available API versions: 2023-01-01, 2024-06-01-preview, 2024-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native elasticsan [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type VolumeSnapshot struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Data used when creating a volume snapshot.
 	CreationData SnapshotCreationDataResponseOutput `pulumi:"creationData"`
 	// The name of the resource
@@ -64,6 +66,9 @@ func NewVolumeSnapshot(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:elasticsan/v20240601preview:VolumeSnapshot"),
+		},
+		{
+			Type: pulumi.String("azure-native:elasticsan/v20240701preview:VolumeSnapshot"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -161,6 +166,11 @@ func (o VolumeSnapshotOutput) ToVolumeSnapshotOutput() VolumeSnapshotOutput {
 
 func (o VolumeSnapshotOutput) ToVolumeSnapshotOutputWithContext(ctx context.Context) VolumeSnapshotOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o VolumeSnapshotOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *VolumeSnapshot) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Data used when creating a volume snapshot.

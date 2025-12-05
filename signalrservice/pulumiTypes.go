@@ -7,11 +7,173 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 var _ = utilities.GetEnvOrDefault
+
+// An IP rule
+type IPRule struct {
+	// Azure Networking ACL Action.
+	Action *string `pulumi:"action"`
+	// An IP or CIDR or ServiceTag
+	Value *string `pulumi:"value"`
+}
+
+// IPRuleInput is an input type that accepts IPRuleArgs and IPRuleOutput values.
+// You can construct a concrete instance of `IPRuleInput` via:
+//
+//	IPRuleArgs{...}
+type IPRuleInput interface {
+	pulumi.Input
+
+	ToIPRuleOutput() IPRuleOutput
+	ToIPRuleOutputWithContext(context.Context) IPRuleOutput
+}
+
+// An IP rule
+type IPRuleArgs struct {
+	// Azure Networking ACL Action.
+	Action pulumi.StringPtrInput `pulumi:"action"`
+	// An IP or CIDR or ServiceTag
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (IPRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IPRule)(nil)).Elem()
+}
+
+func (i IPRuleArgs) ToIPRuleOutput() IPRuleOutput {
+	return i.ToIPRuleOutputWithContext(context.Background())
+}
+
+func (i IPRuleArgs) ToIPRuleOutputWithContext(ctx context.Context) IPRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IPRuleOutput)
+}
+
+// IPRuleArrayInput is an input type that accepts IPRuleArray and IPRuleArrayOutput values.
+// You can construct a concrete instance of `IPRuleArrayInput` via:
+//
+//	IPRuleArray{ IPRuleArgs{...} }
+type IPRuleArrayInput interface {
+	pulumi.Input
+
+	ToIPRuleArrayOutput() IPRuleArrayOutput
+	ToIPRuleArrayOutputWithContext(context.Context) IPRuleArrayOutput
+}
+
+type IPRuleArray []IPRuleInput
+
+func (IPRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IPRule)(nil)).Elem()
+}
+
+func (i IPRuleArray) ToIPRuleArrayOutput() IPRuleArrayOutput {
+	return i.ToIPRuleArrayOutputWithContext(context.Background())
+}
+
+func (i IPRuleArray) ToIPRuleArrayOutputWithContext(ctx context.Context) IPRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IPRuleArrayOutput)
+}
+
+// An IP rule
+type IPRuleOutput struct{ *pulumi.OutputState }
+
+func (IPRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IPRule)(nil)).Elem()
+}
+
+func (o IPRuleOutput) ToIPRuleOutput() IPRuleOutput {
+	return o
+}
+
+func (o IPRuleOutput) ToIPRuleOutputWithContext(ctx context.Context) IPRuleOutput {
+	return o
+}
+
+// Azure Networking ACL Action.
+func (o IPRuleOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IPRule) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
+// An IP or CIDR or ServiceTag
+func (o IPRuleOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IPRule) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type IPRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (IPRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IPRule)(nil)).Elem()
+}
+
+func (o IPRuleArrayOutput) ToIPRuleArrayOutput() IPRuleArrayOutput {
+	return o
+}
+
+func (o IPRuleArrayOutput) ToIPRuleArrayOutputWithContext(ctx context.Context) IPRuleArrayOutput {
+	return o
+}
+
+func (o IPRuleArrayOutput) Index(i pulumi.IntInput) IPRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IPRule {
+		return vs[0].([]IPRule)[vs[1].(int)]
+	}).(IPRuleOutput)
+}
+
+// An IP rule
+type IPRuleResponse struct {
+	// Azure Networking ACL Action.
+	Action *string `pulumi:"action"`
+	// An IP or CIDR or ServiceTag
+	Value *string `pulumi:"value"`
+}
+
+// An IP rule
+type IPRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (IPRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IPRuleResponse)(nil)).Elem()
+}
+
+func (o IPRuleResponseOutput) ToIPRuleResponseOutput() IPRuleResponseOutput {
+	return o
+}
+
+func (o IPRuleResponseOutput) ToIPRuleResponseOutputWithContext(ctx context.Context) IPRuleResponseOutput {
+	return o
+}
+
+// Azure Networking ACL Action.
+func (o IPRuleResponseOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IPRuleResponse) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
+// An IP or CIDR or ServiceTag
+func (o IPRuleResponseOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IPRuleResponse) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type IPRuleResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (IPRuleResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IPRuleResponse)(nil)).Elem()
+}
+
+func (o IPRuleResponseArrayOutput) ToIPRuleResponseArrayOutput() IPRuleResponseArrayOutput {
+	return o
+}
+
+func (o IPRuleResponseArrayOutput) ToIPRuleResponseArrayOutputWithContext(ctx context.Context) IPRuleResponseArrayOutput {
+	return o
+}
+
+func (o IPRuleResponseArrayOutput) Index(i pulumi.IntInput) IPRuleResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IPRuleResponse {
+		return vs[0].([]IPRuleResponse)[vs[1].(int)]
+	}).(IPRuleResponseOutput)
+}
 
 // Live trace category configuration of a Microsoft.SignalRService resource.
 type LiveTraceCategory struct {
@@ -1539,9 +1701,9 @@ func (o PrivateEndpointACLResponseArrayOutput) Index(i pulumi.IntInput) PrivateE
 type PrivateEndpointConnectionResponse struct {
 	// Group IDs
 	GroupIds []string `pulumi:"groupIds"`
-	// Fully qualified resource Id for the resource.
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
-	// The name of the resource.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Private endpoint
 	PrivateEndpoint *PrivateEndpointResponse `pulumi:"privateEndpoint"`
@@ -1549,9 +1711,9 @@ type PrivateEndpointConnectionResponse struct {
 	PrivateLinkServiceConnectionState *PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
 	// Provisioning state of the resource.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// Metadata pertaining to creation and last modification of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -1575,12 +1737,12 @@ func (o PrivateEndpointConnectionResponseOutput) GroupIds() pulumi.StringArrayOu
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
 }
 
-// Fully qualified resource Id for the resource.
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o PrivateEndpointConnectionResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The name of the resource.
+// The name of the resource
 func (o PrivateEndpointConnectionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -1602,12 +1764,12 @@ func (o PrivateEndpointConnectionResponseOutput) ProvisioningState() pulumi.Stri
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o PrivateEndpointConnectionResponseOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o PrivateEndpointConnectionResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -2429,16 +2591,18 @@ func (o ResourceReferenceResponseOutput) Id() pulumi.StringPtrOutput {
 
 // The billing information of the resource.
 type ResourceSku struct {
-	// Optional, integer. The unit count of the resource. 1 by default.
+	// Optional, integer. The unit count of the resource.
+	// 1 for Free_F1/Standard_S1/Premium_P1, 100 for Premium_P2 by default.
 	//
 	// If present, following values are allowed:
-	//     Free: 1;
-	//     Standard: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
-	//     Premium:  1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
+	//     Free_F1: 1;
+	//     Standard_S1: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
+	//     Premium_P1:  1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
+	//     Premium_P2:  100,200,300,400,500,600,700,800,900,1000;
 	Capacity *int `pulumi:"capacity"`
 	// The name of the SKU. Required.
 	//
-	// Allowed values: Standard_S1, Free_F1, Premium_P1
+	// Allowed values: Standard_S1, Free_F1, Premium_P1, Premium_P2
 	Name string `pulumi:"name"`
 	// Optional tier of this particular SKU. 'Standard' or 'Free'.
 	//
@@ -2459,16 +2623,18 @@ type ResourceSkuInput interface {
 
 // The billing information of the resource.
 type ResourceSkuArgs struct {
-	// Optional, integer. The unit count of the resource. 1 by default.
+	// Optional, integer. The unit count of the resource.
+	// 1 for Free_F1/Standard_S1/Premium_P1, 100 for Premium_P2 by default.
 	//
 	// If present, following values are allowed:
-	//     Free: 1;
-	//     Standard: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
-	//     Premium:  1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
+	//     Free_F1: 1;
+	//     Standard_S1: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
+	//     Premium_P1:  1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
+	//     Premium_P2:  100,200,300,400,500,600,700,800,900,1000;
 	Capacity pulumi.IntPtrInput `pulumi:"capacity"`
 	// The name of the SKU. Required.
 	//
-	// Allowed values: Standard_S1, Free_F1, Premium_P1
+	// Allowed values: Standard_S1, Free_F1, Premium_P1, Premium_P2
 	Name pulumi.StringInput `pulumi:"name"`
 	// Optional tier of this particular SKU. 'Standard' or 'Free'.
 	//
@@ -2554,20 +2720,22 @@ func (o ResourceSkuOutput) ToResourceSkuPtrOutputWithContext(ctx context.Context
 	}).(ResourceSkuPtrOutput)
 }
 
-// Optional, integer. The unit count of the resource. 1 by default.
+// Optional, integer. The unit count of the resource.
+// 1 for Free_F1/Standard_S1/Premium_P1, 100 for Premium_P2 by default.
 //
 // If present, following values are allowed:
 //
-//	Free: 1;
-//	Standard: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
-//	Premium:  1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
+//	Free_F1: 1;
+//	Standard_S1: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
+//	Premium_P1:  1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
+//	Premium_P2:  100,200,300,400,500,600,700,800,900,1000;
 func (o ResourceSkuOutput) Capacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceSku) *int { return v.Capacity }).(pulumi.IntPtrOutput)
 }
 
 // The name of the SKU. Required.
 //
-// Allowed values: Standard_S1, Free_F1, Premium_P1
+// Allowed values: Standard_S1, Free_F1, Premium_P1, Premium_P2
 func (o ResourceSkuOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceSku) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -2603,13 +2771,15 @@ func (o ResourceSkuPtrOutput) Elem() ResourceSkuOutput {
 	}).(ResourceSkuOutput)
 }
 
-// Optional, integer. The unit count of the resource. 1 by default.
+// Optional, integer. The unit count of the resource.
+// 1 for Free_F1/Standard_S1/Premium_P1, 100 for Premium_P2 by default.
 //
 // If present, following values are allowed:
 //
-//	Free: 1;
-//	Standard: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
-//	Premium:  1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
+//	Free_F1: 1;
+//	Standard_S1: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
+//	Premium_P1:  1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
+//	Premium_P2:  100,200,300,400,500,600,700,800,900,1000;
 func (o ResourceSkuPtrOutput) Capacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ResourceSku) *int {
 		if v == nil {
@@ -2621,7 +2791,7 @@ func (o ResourceSkuPtrOutput) Capacity() pulumi.IntPtrOutput {
 
 // The name of the SKU. Required.
 //
-// Allowed values: Standard_S1, Free_F1, Premium_P1
+// Allowed values: Standard_S1, Free_F1, Premium_P1, Premium_P2
 func (o ResourceSkuPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceSku) *string {
 		if v == nil {
@@ -2645,18 +2815,20 @@ func (o ResourceSkuPtrOutput) Tier() pulumi.StringPtrOutput {
 
 // The billing information of the resource.
 type ResourceSkuResponse struct {
-	// Optional, integer. The unit count of the resource. 1 by default.
+	// Optional, integer. The unit count of the resource.
+	// 1 for Free_F1/Standard_S1/Premium_P1, 100 for Premium_P2 by default.
 	//
 	// If present, following values are allowed:
-	//     Free: 1;
-	//     Standard: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
-	//     Premium:  1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
+	//     Free_F1: 1;
+	//     Standard_S1: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
+	//     Premium_P1:  1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
+	//     Premium_P2:  100,200,300,400,500,600,700,800,900,1000;
 	Capacity *int `pulumi:"capacity"`
 	// Not used. Retained for future use.
 	Family string `pulumi:"family"`
 	// The name of the SKU. Required.
 	//
-	// Allowed values: Standard_S1, Free_F1, Premium_P1
+	// Allowed values: Standard_S1, Free_F1, Premium_P1, Premium_P2
 	Name string `pulumi:"name"`
 	// Not used. Retained for future use.
 	Size string `pulumi:"size"`
@@ -2681,13 +2853,15 @@ func (o ResourceSkuResponseOutput) ToResourceSkuResponseOutputWithContext(ctx co
 	return o
 }
 
-// Optional, integer. The unit count of the resource. 1 by default.
+// Optional, integer. The unit count of the resource.
+// 1 for Free_F1/Standard_S1/Premium_P1, 100 for Premium_P2 by default.
 //
 // If present, following values are allowed:
 //
-//	Free: 1;
-//	Standard: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
-//	Premium:  1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
+//	Free_F1: 1;
+//	Standard_S1: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
+//	Premium_P1:  1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
+//	Premium_P2:  100,200,300,400,500,600,700,800,900,1000;
 func (o ResourceSkuResponseOutput) Capacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceSkuResponse) *int { return v.Capacity }).(pulumi.IntPtrOutput)
 }
@@ -2699,7 +2873,7 @@ func (o ResourceSkuResponseOutput) Family() pulumi.StringOutput {
 
 // The name of the SKU. Required.
 //
-// Allowed values: Standard_S1, Free_F1, Premium_P1
+// Allowed values: Standard_S1, Free_F1, Premium_P1, Premium_P2
 func (o ResourceSkuResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceSkuResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -2740,13 +2914,15 @@ func (o ResourceSkuResponsePtrOutput) Elem() ResourceSkuResponseOutput {
 	}).(ResourceSkuResponseOutput)
 }
 
-// Optional, integer. The unit count of the resource. 1 by default.
+// Optional, integer. The unit count of the resource.
+// 1 for Free_F1/Standard_S1/Premium_P1, 100 for Premium_P2 by default.
 //
 // If present, following values are allowed:
 //
-//	Free: 1;
-//	Standard: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
-//	Premium:  1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
+//	Free_F1: 1;
+//	Standard_S1: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
+//	Premium_P1:  1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
+//	Premium_P2:  100,200,300,400,500,600,700,800,900,1000;
 func (o ResourceSkuResponsePtrOutput) Capacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ResourceSkuResponse) *int {
 		if v == nil {
@@ -2768,7 +2944,7 @@ func (o ResourceSkuResponsePtrOutput) Family() pulumi.StringPtrOutput {
 
 // The name of the SKU. Required.
 //
-// Allowed values: Standard_S1, Free_F1, Premium_P1
+// Allowed values: Standard_S1, Free_F1, Premium_P1, Premium_P2
 func (o ResourceSkuResponsePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceSkuResponse) *string {
 		if v == nil {
@@ -3290,9 +3466,9 @@ func (o ServerlessUpstreamSettingsResponsePtrOutput) Templates() UpstreamTemplat
 type SharedPrivateLinkResourceResponse struct {
 	// The group id from the provider of resource the shared private link resource is for
 	GroupId string `pulumi:"groupId"`
-	// Fully qualified resource Id for the resource.
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
-	// The name of the resource.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// The resource id of the resource the shared private link resource is for
 	PrivateLinkResourceId string `pulumi:"privateLinkResourceId"`
@@ -3302,9 +3478,9 @@ type SharedPrivateLinkResourceResponse struct {
 	RequestMessage *string `pulumi:"requestMessage"`
 	// Status of the shared private link resource
 	Status string `pulumi:"status"`
-	// Metadata pertaining to creation and last modification of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -3328,12 +3504,12 @@ func (o SharedPrivateLinkResourceResponseOutput) GroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v SharedPrivateLinkResourceResponse) string { return v.GroupId }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource Id for the resource.
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o SharedPrivateLinkResourceResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v SharedPrivateLinkResourceResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The name of the resource.
+// The name of the resource
 func (o SharedPrivateLinkResourceResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v SharedPrivateLinkResourceResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -3358,12 +3534,12 @@ func (o SharedPrivateLinkResourceResponseOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v SharedPrivateLinkResourceResponse) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o SharedPrivateLinkResourceResponseOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v SharedPrivateLinkResourceResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o SharedPrivateLinkResourceResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v SharedPrivateLinkResourceResponse) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -3790,6 +3966,8 @@ func (o SignalRFeatureResponseArrayOutput) Index(i pulumi.IntInput) SignalRFeatu
 type SignalRNetworkACLs struct {
 	// Azure Networking ACL Action.
 	DefaultAction *string `pulumi:"defaultAction"`
+	// IP rules for filtering public traffic
+	IpRules []IPRule `pulumi:"ipRules"`
 	// ACLs for requests from private endpoints
 	PrivateEndpoints []PrivateEndpointACL `pulumi:"privateEndpoints"`
 	// Network ACL
@@ -3811,6 +3989,8 @@ type SignalRNetworkACLsInput interface {
 type SignalRNetworkACLsArgs struct {
 	// Azure Networking ACL Action.
 	DefaultAction pulumi.StringPtrInput `pulumi:"defaultAction"`
+	// IP rules for filtering public traffic
+	IpRules IPRuleArrayInput `pulumi:"ipRules"`
 	// ACLs for requests from private endpoints
 	PrivateEndpoints PrivateEndpointACLArrayInput `pulumi:"privateEndpoints"`
 	// Network ACL
@@ -3900,6 +4080,11 @@ func (o SignalRNetworkACLsOutput) DefaultAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SignalRNetworkACLs) *string { return v.DefaultAction }).(pulumi.StringPtrOutput)
 }
 
+// IP rules for filtering public traffic
+func (o SignalRNetworkACLsOutput) IpRules() IPRuleArrayOutput {
+	return o.ApplyT(func(v SignalRNetworkACLs) []IPRule { return v.IpRules }).(IPRuleArrayOutput)
+}
+
 // ACLs for requests from private endpoints
 func (o SignalRNetworkACLsOutput) PrivateEndpoints() PrivateEndpointACLArrayOutput {
 	return o.ApplyT(func(v SignalRNetworkACLs) []PrivateEndpointACL { return v.PrivateEndpoints }).(PrivateEndpointACLArrayOutput)
@@ -3944,6 +4129,16 @@ func (o SignalRNetworkACLsPtrOutput) DefaultAction() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// IP rules for filtering public traffic
+func (o SignalRNetworkACLsPtrOutput) IpRules() IPRuleArrayOutput {
+	return o.ApplyT(func(v *SignalRNetworkACLs) []IPRule {
+		if v == nil {
+			return nil
+		}
+		return v.IpRules
+	}).(IPRuleArrayOutput)
+}
+
 // ACLs for requests from private endpoints
 func (o SignalRNetworkACLsPtrOutput) PrivateEndpoints() PrivateEndpointACLArrayOutput {
 	return o.ApplyT(func(v *SignalRNetworkACLs) []PrivateEndpointACL {
@@ -3968,6 +4163,8 @@ func (o SignalRNetworkACLsPtrOutput) PublicNetwork() NetworkACLPtrOutput {
 type SignalRNetworkACLsResponse struct {
 	// Azure Networking ACL Action.
 	DefaultAction *string `pulumi:"defaultAction"`
+	// IP rules for filtering public traffic
+	IpRules []IPRuleResponse `pulumi:"ipRules"`
 	// ACLs for requests from private endpoints
 	PrivateEndpoints []PrivateEndpointACLResponse `pulumi:"privateEndpoints"`
 	// Network ACL
@@ -3992,6 +4189,11 @@ func (o SignalRNetworkACLsResponseOutput) ToSignalRNetworkACLsResponseOutputWith
 // Azure Networking ACL Action.
 func (o SignalRNetworkACLsResponseOutput) DefaultAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SignalRNetworkACLsResponse) *string { return v.DefaultAction }).(pulumi.StringPtrOutput)
+}
+
+// IP rules for filtering public traffic
+func (o SignalRNetworkACLsResponseOutput) IpRules() IPRuleResponseArrayOutput {
+	return o.ApplyT(func(v SignalRNetworkACLsResponse) []IPRuleResponse { return v.IpRules }).(IPRuleResponseArrayOutput)
 }
 
 // ACLs for requests from private endpoints
@@ -4038,6 +4240,16 @@ func (o SignalRNetworkACLsResponsePtrOutput) DefaultAction() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// IP rules for filtering public traffic
+func (o SignalRNetworkACLsResponsePtrOutput) IpRules() IPRuleResponseArrayOutput {
+	return o.ApplyT(func(v *SignalRNetworkACLsResponse) []IPRuleResponse {
+		if v == nil {
+			return nil
+		}
+		return v.IpRules
+	}).(IPRuleResponseArrayOutput)
+}
+
 // ACLs for requests from private endpoints
 func (o SignalRNetworkACLsResponsePtrOutput) PrivateEndpoints() PrivateEndpointACLResponseArrayOutput {
 	return o.ApplyT(func(v *SignalRNetworkACLsResponse) []PrivateEndpointACLResponse {
@@ -4060,7 +4272,7 @@ func (o SignalRNetworkACLsResponsePtrOutput) PublicNetwork() NetworkACLResponseP
 
 // TLS settings for the resource
 type SignalRTlsSettings struct {
-	// Request client certificate during TLS handshake if enabled
+	// Request client certificate during TLS handshake if enabled. Not supported for free tier. Any input will be ignored for free tier.
 	ClientCertEnabled *bool `pulumi:"clientCertEnabled"`
 }
 
@@ -4071,7 +4283,7 @@ func (val *SignalRTlsSettings) Defaults() *SignalRTlsSettings {
 	}
 	tmp := *val
 	if tmp.ClientCertEnabled == nil {
-		clientCertEnabled_ := true
+		clientCertEnabled_ := false
 		tmp.ClientCertEnabled = &clientCertEnabled_
 	}
 	return &tmp
@@ -4090,7 +4302,7 @@ type SignalRTlsSettingsInput interface {
 
 // TLS settings for the resource
 type SignalRTlsSettingsArgs struct {
-	// Request client certificate during TLS handshake if enabled
+	// Request client certificate during TLS handshake if enabled. Not supported for free tier. Any input will be ignored for free tier.
 	ClientCertEnabled pulumi.BoolPtrInput `pulumi:"clientCertEnabled"`
 }
 
@@ -4101,7 +4313,7 @@ func (val *SignalRTlsSettingsArgs) Defaults() *SignalRTlsSettingsArgs {
 	}
 	tmp := *val
 	if tmp.ClientCertEnabled == nil {
-		tmp.ClientCertEnabled = pulumi.BoolPtr(true)
+		tmp.ClientCertEnabled = pulumi.BoolPtr(false)
 	}
 	return &tmp
 }
@@ -4183,7 +4395,7 @@ func (o SignalRTlsSettingsOutput) ToSignalRTlsSettingsPtrOutputWithContext(ctx c
 	}).(SignalRTlsSettingsPtrOutput)
 }
 
-// Request client certificate during TLS handshake if enabled
+// Request client certificate during TLS handshake if enabled. Not supported for free tier. Any input will be ignored for free tier.
 func (o SignalRTlsSettingsOutput) ClientCertEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SignalRTlsSettings) *bool { return v.ClientCertEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -4212,7 +4424,7 @@ func (o SignalRTlsSettingsPtrOutput) Elem() SignalRTlsSettingsOutput {
 	}).(SignalRTlsSettingsOutput)
 }
 
-// Request client certificate during TLS handshake if enabled
+// Request client certificate during TLS handshake if enabled. Not supported for free tier. Any input will be ignored for free tier.
 func (o SignalRTlsSettingsPtrOutput) ClientCertEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SignalRTlsSettings) *bool {
 		if v == nil {
@@ -4224,7 +4436,7 @@ func (o SignalRTlsSettingsPtrOutput) ClientCertEnabled() pulumi.BoolPtrOutput {
 
 // TLS settings for the resource
 type SignalRTlsSettingsResponse struct {
-	// Request client certificate during TLS handshake if enabled
+	// Request client certificate during TLS handshake if enabled. Not supported for free tier. Any input will be ignored for free tier.
 	ClientCertEnabled *bool `pulumi:"clientCertEnabled"`
 }
 
@@ -4235,7 +4447,7 @@ func (val *SignalRTlsSettingsResponse) Defaults() *SignalRTlsSettingsResponse {
 	}
 	tmp := *val
 	if tmp.ClientCertEnabled == nil {
-		clientCertEnabled_ := true
+		clientCertEnabled_ := false
 		tmp.ClientCertEnabled = &clientCertEnabled_
 	}
 	return &tmp
@@ -4256,7 +4468,7 @@ func (o SignalRTlsSettingsResponseOutput) ToSignalRTlsSettingsResponseOutputWith
 	return o
 }
 
-// Request client certificate during TLS handshake if enabled
+// Request client certificate during TLS handshake if enabled. Not supported for free tier. Any input will be ignored for free tier.
 func (o SignalRTlsSettingsResponseOutput) ClientCertEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SignalRTlsSettingsResponse) *bool { return v.ClientCertEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -4285,7 +4497,7 @@ func (o SignalRTlsSettingsResponsePtrOutput) Elem() SignalRTlsSettingsResponseOu
 	}).(SignalRTlsSettingsResponseOutput)
 }
 
-// Request client certificate during TLS handshake if enabled
+// Request client certificate during TLS handshake if enabled. Not supported for free tier. Any input will be ignored for free tier.
 func (o SignalRTlsSettingsResponsePtrOutput) ClientCertEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SignalRTlsSettingsResponse) *bool {
 		if v == nil {
@@ -4926,6 +5138,10 @@ func (o UserAssignedIdentityPropertyResponseMapOutput) MapIndex(k pulumi.StringI
 }
 
 func init() {
+	pulumi.RegisterOutputType(IPRuleOutput{})
+	pulumi.RegisterOutputType(IPRuleArrayOutput{})
+	pulumi.RegisterOutputType(IPRuleResponseOutput{})
+	pulumi.RegisterOutputType(IPRuleResponseArrayOutput{})
 	pulumi.RegisterOutputType(LiveTraceCategoryOutput{})
 	pulumi.RegisterOutputType(LiveTraceCategoryArrayOutput{})
 	pulumi.RegisterOutputType(LiveTraceCategoryResponseOutput{})

@@ -8,15 +8,15 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Subnet in a virtual network resource.
 //
-// Uses Azure REST API version 2023-02-01. In version 1.x of the Azure Native provider, it used API version 2020-11-01.
+// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
 //
-// Other available API versions: 2019-02-01, 2019-06-01, 2019-08-01, 2020-06-01, 2022-07-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Other available API versions: 2018-06-01, 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Subnet struct {
 	pulumi.CustomResourceState
 
@@ -26,6 +26,10 @@ type Subnet struct {
 	AddressPrefixes pulumi.StringArrayOutput `pulumi:"addressPrefixes"`
 	// Application gateway IP configurations of virtual network resource.
 	ApplicationGatewayIPConfigurations ApplicationGatewayIPConfigurationResponseArrayOutput `pulumi:"applicationGatewayIPConfigurations"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// Set this property to false to disable default outbound connectivity for all VMs in the subnet. This property can only be set at the time of subnet creation and cannot be updated for an existing subnet.
+	DefaultOutboundAccess pulumi.BoolPtrOutput `pulumi:"defaultOutboundAccess"`
 	// An array of references to the delegations on the subnet.
 	Delegations DelegationResponseArrayOutput `pulumi:"delegations"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -36,6 +40,8 @@ type Subnet struct {
 	IpConfigurationProfiles IPConfigurationProfileResponseArrayOutput `pulumi:"ipConfigurationProfiles"`
 	// An array of references to the network interface IP configurations using subnet.
 	IpConfigurations IPConfigurationResponseArrayOutput `pulumi:"ipConfigurations"`
+	// A list of IPAM Pools for allocating IP address prefixes.
+	IpamPoolPrefixAllocations IpamPoolPrefixAllocationResponseArrayOutput `pulumi:"ipamPoolPrefixAllocations"`
 	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
 	Name pulumi.StringPtrOutput `pulumi:"name"`
 	// Nat gateway associated with this subnet.
@@ -62,6 +68,8 @@ type Subnet struct {
 	ServiceEndpointPolicies ServiceEndpointPolicyResponseArrayOutput `pulumi:"serviceEndpointPolicies"`
 	// An array of service endpoints.
 	ServiceEndpoints ServiceEndpointPropertiesFormatResponseArrayOutput `pulumi:"serviceEndpoints"`
+	// Set this property to Tenant to allow sharing subnet with other subscriptions in your AAD tenant. This property can only be set if defaultOutboundAccess is set to false, both properties can only be set if subnet is empty.
+	SharingScope pulumi.StringPtrOutput `pulumi:"sharingScope"`
 	// Resource type.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 }
@@ -248,6 +256,12 @@ func NewSubnet(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20240501:Subnet"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20240701:Subnet"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20241001:Subnet"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -289,12 +303,16 @@ type subnetArgs struct {
 	AddressPrefixes []string `pulumi:"addressPrefixes"`
 	// Application gateway IP configurations of virtual network resource.
 	ApplicationGatewayIPConfigurations []ApplicationGatewayIPConfiguration `pulumi:"applicationGatewayIPConfigurations"`
+	// Set this property to false to disable default outbound connectivity for all VMs in the subnet. This property can only be set at the time of subnet creation and cannot be updated for an existing subnet.
+	DefaultOutboundAccess *bool `pulumi:"defaultOutboundAccess"`
 	// An array of references to the delegations on the subnet.
 	Delegations []Delegation `pulumi:"delegations"`
 	// Resource ID.
 	Id *string `pulumi:"id"`
 	// Array of IpAllocation which reference this subnet.
 	IpAllocations []SubResource `pulumi:"ipAllocations"`
+	// A list of IPAM Pools for allocating IP address prefixes.
+	IpamPoolPrefixAllocations []IpamPoolPrefixAllocation `pulumi:"ipamPoolPrefixAllocations"`
 	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
 	Name *string `pulumi:"name"`
 	// Nat gateway associated with this subnet.
@@ -313,6 +331,8 @@ type subnetArgs struct {
 	ServiceEndpointPolicies []ServiceEndpointPolicyType `pulumi:"serviceEndpointPolicies"`
 	// An array of service endpoints.
 	ServiceEndpoints []ServiceEndpointPropertiesFormat `pulumi:"serviceEndpoints"`
+	// Set this property to Tenant to allow sharing subnet with other subscriptions in your AAD tenant. This property can only be set if defaultOutboundAccess is set to false, both properties can only be set if subnet is empty.
+	SharingScope *string `pulumi:"sharingScope"`
 	// The name of the subnet.
 	SubnetName *string `pulumi:"subnetName"`
 	// Resource type.
@@ -329,12 +349,16 @@ type SubnetArgs struct {
 	AddressPrefixes pulumi.StringArrayInput
 	// Application gateway IP configurations of virtual network resource.
 	ApplicationGatewayIPConfigurations ApplicationGatewayIPConfigurationArrayInput
+	// Set this property to false to disable default outbound connectivity for all VMs in the subnet. This property can only be set at the time of subnet creation and cannot be updated for an existing subnet.
+	DefaultOutboundAccess pulumi.BoolPtrInput
 	// An array of references to the delegations on the subnet.
 	Delegations DelegationArrayInput
 	// Resource ID.
 	Id pulumi.StringPtrInput
 	// Array of IpAllocation which reference this subnet.
 	IpAllocations SubResourceArrayInput
+	// A list of IPAM Pools for allocating IP address prefixes.
+	IpamPoolPrefixAllocations IpamPoolPrefixAllocationArrayInput
 	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
 	Name pulumi.StringPtrInput
 	// Nat gateway associated with this subnet.
@@ -353,6 +377,8 @@ type SubnetArgs struct {
 	ServiceEndpointPolicies ServiceEndpointPolicyTypeArrayInput
 	// An array of service endpoints.
 	ServiceEndpoints ServiceEndpointPropertiesFormatArrayInput
+	// Set this property to Tenant to allow sharing subnet with other subscriptions in your AAD tenant. This property can only be set if defaultOutboundAccess is set to false, both properties can only be set if subnet is empty.
+	SharingScope pulumi.StringPtrInput
 	// The name of the subnet.
 	SubnetName pulumi.StringPtrInput
 	// Resource type.
@@ -415,6 +441,16 @@ func (o SubnetOutput) ApplicationGatewayIPConfigurations() ApplicationGatewayIPC
 	}).(ApplicationGatewayIPConfigurationResponseArrayOutput)
 }
 
+// The Azure API version of the resource.
+func (o SubnetOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subnet) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Set this property to false to disable default outbound connectivity for all VMs in the subnet. This property can only be set at the time of subnet creation and cannot be updated for an existing subnet.
+func (o SubnetOutput) DefaultOutboundAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Subnet) pulumi.BoolPtrOutput { return v.DefaultOutboundAccess }).(pulumi.BoolPtrOutput)
+}
+
 // An array of references to the delegations on the subnet.
 func (o SubnetOutput) Delegations() DelegationResponseArrayOutput {
 	return o.ApplyT(func(v *Subnet) DelegationResponseArrayOutput { return v.Delegations }).(DelegationResponseArrayOutput)
@@ -438,6 +474,11 @@ func (o SubnetOutput) IpConfigurationProfiles() IPConfigurationProfileResponseAr
 // An array of references to the network interface IP configurations using subnet.
 func (o SubnetOutput) IpConfigurations() IPConfigurationResponseArrayOutput {
 	return o.ApplyT(func(v *Subnet) IPConfigurationResponseArrayOutput { return v.IpConfigurations }).(IPConfigurationResponseArrayOutput)
+}
+
+// A list of IPAM Pools for allocating IP address prefixes.
+func (o SubnetOutput) IpamPoolPrefixAllocations() IpamPoolPrefixAllocationResponseArrayOutput {
+	return o.ApplyT(func(v *Subnet) IpamPoolPrefixAllocationResponseArrayOutput { return v.IpamPoolPrefixAllocations }).(IpamPoolPrefixAllocationResponseArrayOutput)
 }
 
 // The name of the resource that is unique within a resource group. This name can be used to access the resource.
@@ -503,6 +544,11 @@ func (o SubnetOutput) ServiceEndpointPolicies() ServiceEndpointPolicyResponseArr
 // An array of service endpoints.
 func (o SubnetOutput) ServiceEndpoints() ServiceEndpointPropertiesFormatResponseArrayOutput {
 	return o.ApplyT(func(v *Subnet) ServiceEndpointPropertiesFormatResponseArrayOutput { return v.ServiceEndpoints }).(ServiceEndpointPropertiesFormatResponseArrayOutput)
+}
+
+// Set this property to Tenant to allow sharing subnet with other subscriptions in your AAD tenant. This property can only be set if defaultOutboundAccess is set to false, both properties can only be set if subnet is empty.
+func (o SubnetOutput) SharingScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Subnet) pulumi.StringPtrOutput { return v.SharingScope }).(pulumi.StringPtrOutput)
 }
 
 // Resource type.

@@ -8,16 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Concrete proxy resource types can be created by aliasing this type using a specific property type.
 //
-// Uses Azure REST API version 2023-07-01-preview. In version 1.x of the Azure Native provider, it used API version 2023-03-01-preview.
+// Uses Azure REST API version 2023-07-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-07-01-preview.
 type Volume struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Requested capacity in GiB
 	CapacityGiB pulumi.Float64Output `pulumi:"capacityGiB"`
 	// String KV pairs indicating labels
@@ -155,6 +157,11 @@ func (o VolumeOutput) ToVolumeOutput() VolumeOutput {
 
 func (o VolumeOutput) ToVolumeOutputWithContext(ctx context.Context) VolumeOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o VolumeOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Requested capacity in GiB

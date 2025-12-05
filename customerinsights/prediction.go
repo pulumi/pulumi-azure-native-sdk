@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The prediction resource format.
 //
-// Uses Azure REST API version 2017-04-26. In version 1.x of the Azure Native provider, it used API version 2017-04-26.
+// Uses Azure REST API version 2017-04-26. In version 2.x of the Azure Native provider, it used API version 2017-04-26.
 type Prediction struct {
 	pulumi.CustomResourceState
 
 	// Whether do auto analyze.
 	AutoAnalyze pulumi.BoolOutput `pulumi:"autoAnalyze"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Description of the prediction.
 	Description pulumi.StringMapOutput `pulumi:"description"`
 	// Display name of the prediction.
@@ -241,6 +243,11 @@ func (o PredictionOutput) ToPredictionOutputWithContext(ctx context.Context) Pre
 // Whether do auto analyze.
 func (o PredictionOutput) AutoAnalyze() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Prediction) pulumi.BoolOutput { return v.AutoAnalyze }).(pulumi.BoolOutput)
+}
+
+// The Azure API version of the resource.
+func (o PredictionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Prediction) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Description of the prediction.

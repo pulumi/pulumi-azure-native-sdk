@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,6 +37,8 @@ type LookupStandardAssignmentResult struct {
 	AssignedStandard *AssignedStandardItemResponse `pulumi:"assignedStandard"`
 	// Additional data about assignment that has Attest effect
 	AttestationData *StandardAssignmentPropertiesResponseAttestationData `pulumi:"attestationData"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Description of the standardAssignment
 	Description *string `pulumi:"description"`
 	// Display name of the standardAssignment
@@ -104,6 +106,11 @@ func (o LookupStandardAssignmentResultOutput) AttestationData() StandardAssignme
 	return o.ApplyT(func(v LookupStandardAssignmentResult) *StandardAssignmentPropertiesResponseAttestationData {
 		return v.AttestationData
 	}).(StandardAssignmentPropertiesResponseAttestationDataPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupStandardAssignmentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStandardAssignmentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Description of the standardAssignment

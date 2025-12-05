@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,6 +37,8 @@ type LookupStudentArgs struct {
 
 // Student details.
 type LookupStudentResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Student Budget
 	Budget AmountResponse `pulumi:"budget"`
 	// Date student was added to the lab
@@ -106,6 +108,11 @@ func (o LookupStudentResultOutput) ToLookupStudentResultOutput() LookupStudentRe
 
 func (o LookupStudentResultOutput) ToLookupStudentResultOutputWithContext(ctx context.Context) LookupStudentResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupStudentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStudentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Student Budget

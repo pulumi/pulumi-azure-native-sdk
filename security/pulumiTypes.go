@@ -7,11 +7,290 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 var _ = utilities.GetEnvOrDefault
+
+// The environment authentication details
+type AccessTokenAuthentication struct {
+	// The access token that will be used while authenticating with the onboarded environment
+	AccessToken *string `pulumi:"accessToken"`
+	// The authentication type
+	// Expected value is 'AccessToken'.
+	AuthenticationType string `pulumi:"authenticationType"`
+	// The user name that will be used while authenticating with the onboarded environment
+	Username *string `pulumi:"username"`
+}
+
+// AccessTokenAuthenticationInput is an input type that accepts AccessTokenAuthenticationArgs and AccessTokenAuthenticationOutput values.
+// You can construct a concrete instance of `AccessTokenAuthenticationInput` via:
+//
+//	AccessTokenAuthenticationArgs{...}
+type AccessTokenAuthenticationInput interface {
+	pulumi.Input
+
+	ToAccessTokenAuthenticationOutput() AccessTokenAuthenticationOutput
+	ToAccessTokenAuthenticationOutputWithContext(context.Context) AccessTokenAuthenticationOutput
+}
+
+// The environment authentication details
+type AccessTokenAuthenticationArgs struct {
+	// The access token that will be used while authenticating with the onboarded environment
+	AccessToken pulumi.StringPtrInput `pulumi:"accessToken"`
+	// The authentication type
+	// Expected value is 'AccessToken'.
+	AuthenticationType pulumi.StringInput `pulumi:"authenticationType"`
+	// The user name that will be used while authenticating with the onboarded environment
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (AccessTokenAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessTokenAuthentication)(nil)).Elem()
+}
+
+func (i AccessTokenAuthenticationArgs) ToAccessTokenAuthenticationOutput() AccessTokenAuthenticationOutput {
+	return i.ToAccessTokenAuthenticationOutputWithContext(context.Background())
+}
+
+func (i AccessTokenAuthenticationArgs) ToAccessTokenAuthenticationOutputWithContext(ctx context.Context) AccessTokenAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessTokenAuthenticationOutput)
+}
+
+func (i AccessTokenAuthenticationArgs) ToAccessTokenAuthenticationPtrOutput() AccessTokenAuthenticationPtrOutput {
+	return i.ToAccessTokenAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i AccessTokenAuthenticationArgs) ToAccessTokenAuthenticationPtrOutputWithContext(ctx context.Context) AccessTokenAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessTokenAuthenticationOutput).ToAccessTokenAuthenticationPtrOutputWithContext(ctx)
+}
+
+// AccessTokenAuthenticationPtrInput is an input type that accepts AccessTokenAuthenticationArgs, AccessTokenAuthenticationPtr and AccessTokenAuthenticationPtrOutput values.
+// You can construct a concrete instance of `AccessTokenAuthenticationPtrInput` via:
+//
+//	        AccessTokenAuthenticationArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccessTokenAuthenticationPtrInput interface {
+	pulumi.Input
+
+	ToAccessTokenAuthenticationPtrOutput() AccessTokenAuthenticationPtrOutput
+	ToAccessTokenAuthenticationPtrOutputWithContext(context.Context) AccessTokenAuthenticationPtrOutput
+}
+
+type accessTokenAuthenticationPtrType AccessTokenAuthenticationArgs
+
+func AccessTokenAuthenticationPtr(v *AccessTokenAuthenticationArgs) AccessTokenAuthenticationPtrInput {
+	return (*accessTokenAuthenticationPtrType)(v)
+}
+
+func (*accessTokenAuthenticationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessTokenAuthentication)(nil)).Elem()
+}
+
+func (i *accessTokenAuthenticationPtrType) ToAccessTokenAuthenticationPtrOutput() AccessTokenAuthenticationPtrOutput {
+	return i.ToAccessTokenAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i *accessTokenAuthenticationPtrType) ToAccessTokenAuthenticationPtrOutputWithContext(ctx context.Context) AccessTokenAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessTokenAuthenticationPtrOutput)
+}
+
+// The environment authentication details
+type AccessTokenAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (AccessTokenAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessTokenAuthentication)(nil)).Elem()
+}
+
+func (o AccessTokenAuthenticationOutput) ToAccessTokenAuthenticationOutput() AccessTokenAuthenticationOutput {
+	return o
+}
+
+func (o AccessTokenAuthenticationOutput) ToAccessTokenAuthenticationOutputWithContext(ctx context.Context) AccessTokenAuthenticationOutput {
+	return o
+}
+
+func (o AccessTokenAuthenticationOutput) ToAccessTokenAuthenticationPtrOutput() AccessTokenAuthenticationPtrOutput {
+	return o.ToAccessTokenAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (o AccessTokenAuthenticationOutput) ToAccessTokenAuthenticationPtrOutputWithContext(ctx context.Context) AccessTokenAuthenticationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessTokenAuthentication) *AccessTokenAuthentication {
+		return &v
+	}).(AccessTokenAuthenticationPtrOutput)
+}
+
+// The access token that will be used while authenticating with the onboarded environment
+func (o AccessTokenAuthenticationOutput) AccessToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessTokenAuthentication) *string { return v.AccessToken }).(pulumi.StringPtrOutput)
+}
+
+// The authentication type
+// Expected value is 'AccessToken'.
+func (o AccessTokenAuthenticationOutput) AuthenticationType() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessTokenAuthentication) string { return v.AuthenticationType }).(pulumi.StringOutput)
+}
+
+// The user name that will be used while authenticating with the onboarded environment
+func (o AccessTokenAuthenticationOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessTokenAuthentication) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type AccessTokenAuthenticationPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessTokenAuthenticationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessTokenAuthentication)(nil)).Elem()
+}
+
+func (o AccessTokenAuthenticationPtrOutput) ToAccessTokenAuthenticationPtrOutput() AccessTokenAuthenticationPtrOutput {
+	return o
+}
+
+func (o AccessTokenAuthenticationPtrOutput) ToAccessTokenAuthenticationPtrOutputWithContext(ctx context.Context) AccessTokenAuthenticationPtrOutput {
+	return o
+}
+
+func (o AccessTokenAuthenticationPtrOutput) Elem() AccessTokenAuthenticationOutput {
+	return o.ApplyT(func(v *AccessTokenAuthentication) AccessTokenAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret AccessTokenAuthentication
+		return ret
+	}).(AccessTokenAuthenticationOutput)
+}
+
+// The access token that will be used while authenticating with the onboarded environment
+func (o AccessTokenAuthenticationPtrOutput) AccessToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessTokenAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessToken
+	}).(pulumi.StringPtrOutput)
+}
+
+// The authentication type
+// Expected value is 'AccessToken'.
+func (o AccessTokenAuthenticationPtrOutput) AuthenticationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessTokenAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthenticationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The user name that will be used while authenticating with the onboarded environment
+func (o AccessTokenAuthenticationPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessTokenAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+// The environment authentication details
+type AccessTokenAuthenticationResponse struct {
+	// The access token that will be used while authenticating with the onboarded environment
+	AccessToken *string `pulumi:"accessToken"`
+	// The authentication type
+	// Expected value is 'AccessToken'.
+	AuthenticationType string `pulumi:"authenticationType"`
+	// The user name that will be used while authenticating with the onboarded environment
+	Username *string `pulumi:"username"`
+}
+
+// The environment authentication details
+type AccessTokenAuthenticationResponseOutput struct{ *pulumi.OutputState }
+
+func (AccessTokenAuthenticationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessTokenAuthenticationResponse)(nil)).Elem()
+}
+
+func (o AccessTokenAuthenticationResponseOutput) ToAccessTokenAuthenticationResponseOutput() AccessTokenAuthenticationResponseOutput {
+	return o
+}
+
+func (o AccessTokenAuthenticationResponseOutput) ToAccessTokenAuthenticationResponseOutputWithContext(ctx context.Context) AccessTokenAuthenticationResponseOutput {
+	return o
+}
+
+// The access token that will be used while authenticating with the onboarded environment
+func (o AccessTokenAuthenticationResponseOutput) AccessToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessTokenAuthenticationResponse) *string { return v.AccessToken }).(pulumi.StringPtrOutput)
+}
+
+// The authentication type
+// Expected value is 'AccessToken'.
+func (o AccessTokenAuthenticationResponseOutput) AuthenticationType() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessTokenAuthenticationResponse) string { return v.AuthenticationType }).(pulumi.StringOutput)
+}
+
+// The user name that will be used while authenticating with the onboarded environment
+func (o AccessTokenAuthenticationResponseOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessTokenAuthenticationResponse) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type AccessTokenAuthenticationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AccessTokenAuthenticationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessTokenAuthenticationResponse)(nil)).Elem()
+}
+
+func (o AccessTokenAuthenticationResponsePtrOutput) ToAccessTokenAuthenticationResponsePtrOutput() AccessTokenAuthenticationResponsePtrOutput {
+	return o
+}
+
+func (o AccessTokenAuthenticationResponsePtrOutput) ToAccessTokenAuthenticationResponsePtrOutputWithContext(ctx context.Context) AccessTokenAuthenticationResponsePtrOutput {
+	return o
+}
+
+func (o AccessTokenAuthenticationResponsePtrOutput) Elem() AccessTokenAuthenticationResponseOutput {
+	return o.ApplyT(func(v *AccessTokenAuthenticationResponse) AccessTokenAuthenticationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AccessTokenAuthenticationResponse
+		return ret
+	}).(AccessTokenAuthenticationResponseOutput)
+}
+
+// The access token that will be used while authenticating with the onboarded environment
+func (o AccessTokenAuthenticationResponsePtrOutput) AccessToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessTokenAuthenticationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessToken
+	}).(pulumi.StringPtrOutput)
+}
+
+// The authentication type
+// Expected value is 'AccessToken'.
+func (o AccessTokenAuthenticationResponsePtrOutput) AuthenticationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessTokenAuthenticationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthenticationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The user name that will be used while authenticating with the onboarded environment
+func (o AccessTokenAuthenticationResponsePtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessTokenAuthenticationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
 
 // Configuration payload for PR Annotations.
 type ActionableRemediationResponse struct {
@@ -559,6 +838,242 @@ func (o AllowlistCustomAlertRuleResponseArrayOutput) Index(i pulumi.IntInput) Al
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AllowlistCustomAlertRuleResponse {
 		return vs[0].([]AllowlistCustomAlertRuleResponse)[vs[1].(int)]
 	}).(AllowlistCustomAlertRuleResponseOutput)
+}
+
+// Configuration for servers Arc auto provisioning for a given environment
+type ArcAutoProvisioningConfiguration struct {
+	// Optional Arc private link scope resource id to link the Arc agent
+	PrivateLinkScope *string `pulumi:"privateLinkScope"`
+	// Optional HTTP proxy endpoint to use for the Arc agent
+	Proxy *string `pulumi:"proxy"`
+}
+
+// ArcAutoProvisioningConfigurationInput is an input type that accepts ArcAutoProvisioningConfigurationArgs and ArcAutoProvisioningConfigurationOutput values.
+// You can construct a concrete instance of `ArcAutoProvisioningConfigurationInput` via:
+//
+//	ArcAutoProvisioningConfigurationArgs{...}
+type ArcAutoProvisioningConfigurationInput interface {
+	pulumi.Input
+
+	ToArcAutoProvisioningConfigurationOutput() ArcAutoProvisioningConfigurationOutput
+	ToArcAutoProvisioningConfigurationOutputWithContext(context.Context) ArcAutoProvisioningConfigurationOutput
+}
+
+// Configuration for servers Arc auto provisioning for a given environment
+type ArcAutoProvisioningConfigurationArgs struct {
+	// Optional Arc private link scope resource id to link the Arc agent
+	PrivateLinkScope pulumi.StringPtrInput `pulumi:"privateLinkScope"`
+	// Optional HTTP proxy endpoint to use for the Arc agent
+	Proxy pulumi.StringPtrInput `pulumi:"proxy"`
+}
+
+func (ArcAutoProvisioningConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ArcAutoProvisioningConfiguration)(nil)).Elem()
+}
+
+func (i ArcAutoProvisioningConfigurationArgs) ToArcAutoProvisioningConfigurationOutput() ArcAutoProvisioningConfigurationOutput {
+	return i.ToArcAutoProvisioningConfigurationOutputWithContext(context.Background())
+}
+
+func (i ArcAutoProvisioningConfigurationArgs) ToArcAutoProvisioningConfigurationOutputWithContext(ctx context.Context) ArcAutoProvisioningConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ArcAutoProvisioningConfigurationOutput)
+}
+
+func (i ArcAutoProvisioningConfigurationArgs) ToArcAutoProvisioningConfigurationPtrOutput() ArcAutoProvisioningConfigurationPtrOutput {
+	return i.ToArcAutoProvisioningConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i ArcAutoProvisioningConfigurationArgs) ToArcAutoProvisioningConfigurationPtrOutputWithContext(ctx context.Context) ArcAutoProvisioningConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ArcAutoProvisioningConfigurationOutput).ToArcAutoProvisioningConfigurationPtrOutputWithContext(ctx)
+}
+
+// ArcAutoProvisioningConfigurationPtrInput is an input type that accepts ArcAutoProvisioningConfigurationArgs, ArcAutoProvisioningConfigurationPtr and ArcAutoProvisioningConfigurationPtrOutput values.
+// You can construct a concrete instance of `ArcAutoProvisioningConfigurationPtrInput` via:
+//
+//	        ArcAutoProvisioningConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ArcAutoProvisioningConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToArcAutoProvisioningConfigurationPtrOutput() ArcAutoProvisioningConfigurationPtrOutput
+	ToArcAutoProvisioningConfigurationPtrOutputWithContext(context.Context) ArcAutoProvisioningConfigurationPtrOutput
+}
+
+type arcAutoProvisioningConfigurationPtrType ArcAutoProvisioningConfigurationArgs
+
+func ArcAutoProvisioningConfigurationPtr(v *ArcAutoProvisioningConfigurationArgs) ArcAutoProvisioningConfigurationPtrInput {
+	return (*arcAutoProvisioningConfigurationPtrType)(v)
+}
+
+func (*arcAutoProvisioningConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ArcAutoProvisioningConfiguration)(nil)).Elem()
+}
+
+func (i *arcAutoProvisioningConfigurationPtrType) ToArcAutoProvisioningConfigurationPtrOutput() ArcAutoProvisioningConfigurationPtrOutput {
+	return i.ToArcAutoProvisioningConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *arcAutoProvisioningConfigurationPtrType) ToArcAutoProvisioningConfigurationPtrOutputWithContext(ctx context.Context) ArcAutoProvisioningConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ArcAutoProvisioningConfigurationPtrOutput)
+}
+
+// Configuration for servers Arc auto provisioning for a given environment
+type ArcAutoProvisioningConfigurationOutput struct{ *pulumi.OutputState }
+
+func (ArcAutoProvisioningConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ArcAutoProvisioningConfiguration)(nil)).Elem()
+}
+
+func (o ArcAutoProvisioningConfigurationOutput) ToArcAutoProvisioningConfigurationOutput() ArcAutoProvisioningConfigurationOutput {
+	return o
+}
+
+func (o ArcAutoProvisioningConfigurationOutput) ToArcAutoProvisioningConfigurationOutputWithContext(ctx context.Context) ArcAutoProvisioningConfigurationOutput {
+	return o
+}
+
+func (o ArcAutoProvisioningConfigurationOutput) ToArcAutoProvisioningConfigurationPtrOutput() ArcAutoProvisioningConfigurationPtrOutput {
+	return o.ToArcAutoProvisioningConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o ArcAutoProvisioningConfigurationOutput) ToArcAutoProvisioningConfigurationPtrOutputWithContext(ctx context.Context) ArcAutoProvisioningConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ArcAutoProvisioningConfiguration) *ArcAutoProvisioningConfiguration {
+		return &v
+	}).(ArcAutoProvisioningConfigurationPtrOutput)
+}
+
+// Optional Arc private link scope resource id to link the Arc agent
+func (o ArcAutoProvisioningConfigurationOutput) PrivateLinkScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ArcAutoProvisioningConfiguration) *string { return v.PrivateLinkScope }).(pulumi.StringPtrOutput)
+}
+
+// Optional HTTP proxy endpoint to use for the Arc agent
+func (o ArcAutoProvisioningConfigurationOutput) Proxy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ArcAutoProvisioningConfiguration) *string { return v.Proxy }).(pulumi.StringPtrOutput)
+}
+
+type ArcAutoProvisioningConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (ArcAutoProvisioningConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ArcAutoProvisioningConfiguration)(nil)).Elem()
+}
+
+func (o ArcAutoProvisioningConfigurationPtrOutput) ToArcAutoProvisioningConfigurationPtrOutput() ArcAutoProvisioningConfigurationPtrOutput {
+	return o
+}
+
+func (o ArcAutoProvisioningConfigurationPtrOutput) ToArcAutoProvisioningConfigurationPtrOutputWithContext(ctx context.Context) ArcAutoProvisioningConfigurationPtrOutput {
+	return o
+}
+
+func (o ArcAutoProvisioningConfigurationPtrOutput) Elem() ArcAutoProvisioningConfigurationOutput {
+	return o.ApplyT(func(v *ArcAutoProvisioningConfiguration) ArcAutoProvisioningConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret ArcAutoProvisioningConfiguration
+		return ret
+	}).(ArcAutoProvisioningConfigurationOutput)
+}
+
+// Optional Arc private link scope resource id to link the Arc agent
+func (o ArcAutoProvisioningConfigurationPtrOutput) PrivateLinkScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ArcAutoProvisioningConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateLinkScope
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional HTTP proxy endpoint to use for the Arc agent
+func (o ArcAutoProvisioningConfigurationPtrOutput) Proxy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ArcAutoProvisioningConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Proxy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for servers Arc auto provisioning for a given environment
+type ArcAutoProvisioningResponseConfiguration struct {
+	// Optional Arc private link scope resource id to link the Arc agent
+	PrivateLinkScope *string `pulumi:"privateLinkScope"`
+	// Optional HTTP proxy endpoint to use for the Arc agent
+	Proxy *string `pulumi:"proxy"`
+}
+
+// Configuration for servers Arc auto provisioning for a given environment
+type ArcAutoProvisioningResponseConfigurationOutput struct{ *pulumi.OutputState }
+
+func (ArcAutoProvisioningResponseConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ArcAutoProvisioningResponseConfiguration)(nil)).Elem()
+}
+
+func (o ArcAutoProvisioningResponseConfigurationOutput) ToArcAutoProvisioningResponseConfigurationOutput() ArcAutoProvisioningResponseConfigurationOutput {
+	return o
+}
+
+func (o ArcAutoProvisioningResponseConfigurationOutput) ToArcAutoProvisioningResponseConfigurationOutputWithContext(ctx context.Context) ArcAutoProvisioningResponseConfigurationOutput {
+	return o
+}
+
+// Optional Arc private link scope resource id to link the Arc agent
+func (o ArcAutoProvisioningResponseConfigurationOutput) PrivateLinkScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ArcAutoProvisioningResponseConfiguration) *string { return v.PrivateLinkScope }).(pulumi.StringPtrOutput)
+}
+
+// Optional HTTP proxy endpoint to use for the Arc agent
+func (o ArcAutoProvisioningResponseConfigurationOutput) Proxy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ArcAutoProvisioningResponseConfiguration) *string { return v.Proxy }).(pulumi.StringPtrOutput)
+}
+
+type ArcAutoProvisioningResponseConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (ArcAutoProvisioningResponseConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ArcAutoProvisioningResponseConfiguration)(nil)).Elem()
+}
+
+func (o ArcAutoProvisioningResponseConfigurationPtrOutput) ToArcAutoProvisioningResponseConfigurationPtrOutput() ArcAutoProvisioningResponseConfigurationPtrOutput {
+	return o
+}
+
+func (o ArcAutoProvisioningResponseConfigurationPtrOutput) ToArcAutoProvisioningResponseConfigurationPtrOutputWithContext(ctx context.Context) ArcAutoProvisioningResponseConfigurationPtrOutput {
+	return o
+}
+
+func (o ArcAutoProvisioningResponseConfigurationPtrOutput) Elem() ArcAutoProvisioningResponseConfigurationOutput {
+	return o.ApplyT(func(v *ArcAutoProvisioningResponseConfiguration) ArcAutoProvisioningResponseConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret ArcAutoProvisioningResponseConfiguration
+		return ret
+	}).(ArcAutoProvisioningResponseConfigurationOutput)
+}
+
+// Optional Arc private link scope resource id to link the Arc agent
+func (o ArcAutoProvisioningResponseConfigurationPtrOutput) PrivateLinkScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ArcAutoProvisioningResponseConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateLinkScope
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional HTTP proxy endpoint to use for the Arc agent
+func (o ArcAutoProvisioningResponseConfigurationPtrOutput) Proxy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ArcAutoProvisioningResponseConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Proxy
+	}).(pulumi.StringPtrOutput)
 }
 
 // Links relevant to the assessment
@@ -1899,6 +2414,8 @@ type AutomationActionEventHub struct {
 	ConnectionString *string `pulumi:"connectionString"`
 	// The target Event Hub Azure Resource ID.
 	EventHubResourceId *string `pulumi:"eventHubResourceId"`
+	// Indicates whether the trusted service is enabled or not.
+	IsTrustedServiceEnabled *bool `pulumi:"isTrustedServiceEnabled"`
 }
 
 // AutomationActionEventHubInput is an input type that accepts AutomationActionEventHubArgs and AutomationActionEventHubOutput values.
@@ -1921,6 +2438,8 @@ type AutomationActionEventHubArgs struct {
 	ConnectionString pulumi.StringPtrInput `pulumi:"connectionString"`
 	// The target Event Hub Azure Resource ID.
 	EventHubResourceId pulumi.StringPtrInput `pulumi:"eventHubResourceId"`
+	// Indicates whether the trusted service is enabled or not.
+	IsTrustedServiceEnabled pulumi.BoolPtrInput `pulumi:"isTrustedServiceEnabled"`
 }
 
 func (AutomationActionEventHubArgs) ElementType() reflect.Type {
@@ -1966,6 +2485,11 @@ func (o AutomationActionEventHubOutput) EventHubResourceId() pulumi.StringPtrOut
 	return o.ApplyT(func(v AutomationActionEventHub) *string { return v.EventHubResourceId }).(pulumi.StringPtrOutput)
 }
 
+// Indicates whether the trusted service is enabled or not.
+func (o AutomationActionEventHubOutput) IsTrustedServiceEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AutomationActionEventHub) *bool { return v.IsTrustedServiceEnabled }).(pulumi.BoolPtrOutput)
+}
+
 // The target Event Hub to which event data will be exported. To learn more about Microsoft Defender for Cloud continuous export capabilities, visit https://aka.ms/ASCExportLearnMore
 type AutomationActionEventHubResponse struct {
 	// The type of the action that will be triggered by the Automation
@@ -1975,6 +2499,8 @@ type AutomationActionEventHubResponse struct {
 	ConnectionString *string `pulumi:"connectionString"`
 	// The target Event Hub Azure Resource ID.
 	EventHubResourceId *string `pulumi:"eventHubResourceId"`
+	// Indicates whether the trusted service is enabled or not.
+	IsTrustedServiceEnabled *bool `pulumi:"isTrustedServiceEnabled"`
 	// The target Event Hub SAS policy name.
 	SasPolicyName string `pulumi:"sasPolicyName"`
 }
@@ -2008,6 +2534,11 @@ func (o AutomationActionEventHubResponseOutput) ConnectionString() pulumi.String
 // The target Event Hub Azure Resource ID.
 func (o AutomationActionEventHubResponseOutput) EventHubResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AutomationActionEventHubResponse) *string { return v.EventHubResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether the trusted service is enabled or not.
+func (o AutomationActionEventHubResponseOutput) IsTrustedServiceEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AutomationActionEventHubResponse) *bool { return v.IsTrustedServiceEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // The target Event Hub SAS policy name.
@@ -2133,7 +2664,7 @@ func (o AutomationActionLogicAppResponseOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AutomationActionLogicAppResponse) *string { return v.Uri }).(pulumi.StringPtrOutput)
 }
 
-// The Log Analytics Workspace to which event data will be exported. Security alerts data will reside in the 'SecurityAlert' table and the assessments data will reside in the 'SecurityRecommendation' table (under the 'Security'/'SecurityCenterFree' solutions). Note that in order to view the data in the workspace, the Security Center Log Analytics free/standard solution needs to be enabled on that workspace. To learn more about Microsoft Defender for Cloud continuous export capabilities, visit https://aka.ms/ASCExportLearnMore
+// The Log Analytics Workspace to which event data will be exported. Security alerts data will reside in the 'SecurityAlert' table and the assessments data will reside in the 'SecurityRecommendation' table (under the 'Security'/'SecurityCenterFree' solutions). Note that in order to view the data in the workspace, the Security Center Log Analytics free/standard solution needs to be enabled on that workspace. To learn more about Microsoft Defender for Cloud continuous export capabilities, visit https://aka.ms/ASCExportLearnMore
 type AutomationActionWorkspace struct {
 	// The type of the action that will be triggered by the Automation
 	// Expected value is 'Workspace'.
@@ -2153,7 +2684,7 @@ type AutomationActionWorkspaceInput interface {
 	ToAutomationActionWorkspaceOutputWithContext(context.Context) AutomationActionWorkspaceOutput
 }
 
-// The Log Analytics Workspace to which event data will be exported. Security alerts data will reside in the 'SecurityAlert' table and the assessments data will reside in the 'SecurityRecommendation' table (under the 'Security'/'SecurityCenterFree' solutions). Note that in order to view the data in the workspace, the Security Center Log Analytics free/standard solution needs to be enabled on that workspace. To learn more about Microsoft Defender for Cloud continuous export capabilities, visit https://aka.ms/ASCExportLearnMore
+// The Log Analytics Workspace to which event data will be exported. Security alerts data will reside in the 'SecurityAlert' table and the assessments data will reside in the 'SecurityRecommendation' table (under the 'Security'/'SecurityCenterFree' solutions). Note that in order to view the data in the workspace, the Security Center Log Analytics free/standard solution needs to be enabled on that workspace. To learn more about Microsoft Defender for Cloud continuous export capabilities, visit https://aka.ms/ASCExportLearnMore
 type AutomationActionWorkspaceArgs struct {
 	// The type of the action that will be triggered by the Automation
 	// Expected value is 'Workspace'.
@@ -2174,7 +2705,7 @@ func (i AutomationActionWorkspaceArgs) ToAutomationActionWorkspaceOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(AutomationActionWorkspaceOutput)
 }
 
-// The Log Analytics Workspace to which event data will be exported. Security alerts data will reside in the 'SecurityAlert' table and the assessments data will reside in the 'SecurityRecommendation' table (under the 'Security'/'SecurityCenterFree' solutions). Note that in order to view the data in the workspace, the Security Center Log Analytics free/standard solution needs to be enabled on that workspace. To learn more about Microsoft Defender for Cloud continuous export capabilities, visit https://aka.ms/ASCExportLearnMore
+// The Log Analytics Workspace to which event data will be exported. Security alerts data will reside in the 'SecurityAlert' table and the assessments data will reside in the 'SecurityRecommendation' table (under the 'Security'/'SecurityCenterFree' solutions). Note that in order to view the data in the workspace, the Security Center Log Analytics free/standard solution needs to be enabled on that workspace. To learn more about Microsoft Defender for Cloud continuous export capabilities, visit https://aka.ms/ASCExportLearnMore
 type AutomationActionWorkspaceOutput struct{ *pulumi.OutputState }
 
 func (AutomationActionWorkspaceOutput) ElementType() reflect.Type {
@@ -2200,7 +2731,7 @@ func (o AutomationActionWorkspaceOutput) WorkspaceResourceId() pulumi.StringPtrO
 	return o.ApplyT(func(v AutomationActionWorkspace) *string { return v.WorkspaceResourceId }).(pulumi.StringPtrOutput)
 }
 
-// The Log Analytics Workspace to which event data will be exported. Security alerts data will reside in the 'SecurityAlert' table and the assessments data will reside in the 'SecurityRecommendation' table (under the 'Security'/'SecurityCenterFree' solutions). Note that in order to view the data in the workspace, the Security Center Log Analytics free/standard solution needs to be enabled on that workspace. To learn more about Microsoft Defender for Cloud continuous export capabilities, visit https://aka.ms/ASCExportLearnMore
+// The Log Analytics Workspace to which event data will be exported. Security alerts data will reside in the 'SecurityAlert' table and the assessments data will reside in the 'SecurityRecommendation' table (under the 'Security'/'SecurityCenterFree' solutions). Note that in order to view the data in the workspace, the Security Center Log Analytics free/standard solution needs to be enabled on that workspace. To learn more about Microsoft Defender for Cloud continuous export capabilities, visit https://aka.ms/ASCExportLearnMore
 type AutomationActionWorkspaceResponse struct {
 	// The type of the action that will be triggered by the Automation
 	// Expected value is 'Workspace'.
@@ -2209,7 +2740,7 @@ type AutomationActionWorkspaceResponse struct {
 	WorkspaceResourceId *string `pulumi:"workspaceResourceId"`
 }
 
-// The Log Analytics Workspace to which event data will be exported. Security alerts data will reside in the 'SecurityAlert' table and the assessments data will reside in the 'SecurityRecommendation' table (under the 'Security'/'SecurityCenterFree' solutions). Note that in order to view the data in the workspace, the Security Center Log Analytics free/standard solution needs to be enabled on that workspace. To learn more about Microsoft Defender for Cloud continuous export capabilities, visit https://aka.ms/ASCExportLearnMore
+// The Log Analytics Workspace to which event data will be exported. Security alerts data will reside in the 'SecurityAlert' table and the assessments data will reside in the 'SecurityRecommendation' table (under the 'Security'/'SecurityCenterFree' solutions). Note that in order to view the data in the workspace, the Security Center Log Analytics free/standard solution needs to be enabled on that workspace. To learn more about Microsoft Defender for Cloud continuous export capabilities, visit https://aka.ms/ASCExportLearnMore
 type AutomationActionWorkspaceResponseOutput struct{ *pulumi.OutputState }
 
 func (AutomationActionWorkspaceResponseOutput) ElementType() reflect.Type {
@@ -3567,6 +4098,8 @@ type AwsEnvironmentData struct {
 	OrganizationalData interface{} `pulumi:"organizationalData"`
 	// list of regions to scan
 	Regions []string `pulumi:"regions"`
+	// Scan interval in hours (value should be between 1-hour to 24-hours)
+	ScanInterval *float64 `pulumi:"scanInterval"`
 }
 
 // AwsEnvironmentDataInput is an input type that accepts AwsEnvironmentDataArgs and AwsEnvironmentDataOutput values.
@@ -3589,6 +4122,8 @@ type AwsEnvironmentDataArgs struct {
 	OrganizationalData pulumi.Input `pulumi:"organizationalData"`
 	// list of regions to scan
 	Regions pulumi.StringArrayInput `pulumi:"regions"`
+	// Scan interval in hours (value should be between 1-hour to 24-hours)
+	ScanInterval pulumi.Float64PtrInput `pulumi:"scanInterval"`
 }
 
 func (AwsEnvironmentDataArgs) ElementType() reflect.Type {
@@ -3685,6 +4220,11 @@ func (o AwsEnvironmentDataOutput) Regions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AwsEnvironmentData) []string { return v.Regions }).(pulumi.StringArrayOutput)
 }
 
+// Scan interval in hours (value should be between 1-hour to 24-hours)
+func (o AwsEnvironmentDataOutput) ScanInterval() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AwsEnvironmentData) *float64 { return v.ScanInterval }).(pulumi.Float64PtrOutput)
+}
+
 type AwsEnvironmentDataPtrOutput struct{ *pulumi.OutputState }
 
 func (AwsEnvironmentDataPtrOutput) ElementType() reflect.Type {
@@ -3740,6 +4280,16 @@ func (o AwsEnvironmentDataPtrOutput) Regions() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// Scan interval in hours (value should be between 1-hour to 24-hours)
+func (o AwsEnvironmentDataPtrOutput) ScanInterval() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AwsEnvironmentData) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.ScanInterval
+	}).(pulumi.Float64PtrOutput)
+}
+
 // The AWS connector environment data
 type AwsEnvironmentDataResponse struct {
 	// The AWS account name
@@ -3751,6 +4301,8 @@ type AwsEnvironmentDataResponse struct {
 	OrganizationalData interface{} `pulumi:"organizationalData"`
 	// list of regions to scan
 	Regions []string `pulumi:"regions"`
+	// Scan interval in hours (value should be between 1-hour to 24-hours)
+	ScanInterval *float64 `pulumi:"scanInterval"`
 }
 
 // The AWS connector environment data
@@ -3787,6 +4339,11 @@ func (o AwsEnvironmentDataResponseOutput) OrganizationalData() pulumi.AnyOutput 
 // list of regions to scan
 func (o AwsEnvironmentDataResponseOutput) Regions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AwsEnvironmentDataResponse) []string { return v.Regions }).(pulumi.StringArrayOutput)
+}
+
+// Scan interval in hours (value should be between 1-hour to 24-hours)
+func (o AwsEnvironmentDataResponseOutput) ScanInterval() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AwsEnvironmentDataResponse) *float64 { return v.ScanInterval }).(pulumi.Float64PtrOutput)
 }
 
 type AwsEnvironmentDataResponsePtrOutput struct{ *pulumi.OutputState }
@@ -3852,6 +4409,16 @@ func (o AwsEnvironmentDataResponsePtrOutput) Regions() pulumi.StringArrayOutput 
 		}
 		return v.Regions
 	}).(pulumi.StringArrayOutput)
+}
+
+// Scan interval in hours (value should be between 1-hour to 24-hours)
+func (o AwsEnvironmentDataResponsePtrOutput) ScanInterval() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AwsEnvironmentDataResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.ScanInterval
+	}).(pulumi.Float64PtrOutput)
 }
 
 // The AWS organization data for the master account
@@ -5390,6 +5957,99 @@ func (o CspmMonitorAzureDevOpsOfferingResponseOutput) OfferingType() pulumi.Stri
 	return o.ApplyT(func(v CspmMonitorAzureDevOpsOfferingResponse) string { return v.OfferingType }).(pulumi.StringOutput)
 }
 
+// The CSPM (Cloud security posture management) monitoring for Docker Hub offering
+type CspmMonitorDockerHubOffering struct {
+	// The type of the security offering.
+	// Expected value is 'CspmMonitorDockerHub'.
+	OfferingType string `pulumi:"offeringType"`
+}
+
+// CspmMonitorDockerHubOfferingInput is an input type that accepts CspmMonitorDockerHubOfferingArgs and CspmMonitorDockerHubOfferingOutput values.
+// You can construct a concrete instance of `CspmMonitorDockerHubOfferingInput` via:
+//
+//	CspmMonitorDockerHubOfferingArgs{...}
+type CspmMonitorDockerHubOfferingInput interface {
+	pulumi.Input
+
+	ToCspmMonitorDockerHubOfferingOutput() CspmMonitorDockerHubOfferingOutput
+	ToCspmMonitorDockerHubOfferingOutputWithContext(context.Context) CspmMonitorDockerHubOfferingOutput
+}
+
+// The CSPM (Cloud security posture management) monitoring for Docker Hub offering
+type CspmMonitorDockerHubOfferingArgs struct {
+	// The type of the security offering.
+	// Expected value is 'CspmMonitorDockerHub'.
+	OfferingType pulumi.StringInput `pulumi:"offeringType"`
+}
+
+func (CspmMonitorDockerHubOfferingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CspmMonitorDockerHubOffering)(nil)).Elem()
+}
+
+func (i CspmMonitorDockerHubOfferingArgs) ToCspmMonitorDockerHubOfferingOutput() CspmMonitorDockerHubOfferingOutput {
+	return i.ToCspmMonitorDockerHubOfferingOutputWithContext(context.Background())
+}
+
+func (i CspmMonitorDockerHubOfferingArgs) ToCspmMonitorDockerHubOfferingOutputWithContext(ctx context.Context) CspmMonitorDockerHubOfferingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CspmMonitorDockerHubOfferingOutput)
+}
+
+// The CSPM (Cloud security posture management) monitoring for Docker Hub offering
+type CspmMonitorDockerHubOfferingOutput struct{ *pulumi.OutputState }
+
+func (CspmMonitorDockerHubOfferingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CspmMonitorDockerHubOffering)(nil)).Elem()
+}
+
+func (o CspmMonitorDockerHubOfferingOutput) ToCspmMonitorDockerHubOfferingOutput() CspmMonitorDockerHubOfferingOutput {
+	return o
+}
+
+func (o CspmMonitorDockerHubOfferingOutput) ToCspmMonitorDockerHubOfferingOutputWithContext(ctx context.Context) CspmMonitorDockerHubOfferingOutput {
+	return o
+}
+
+// The type of the security offering.
+// Expected value is 'CspmMonitorDockerHub'.
+func (o CspmMonitorDockerHubOfferingOutput) OfferingType() pulumi.StringOutput {
+	return o.ApplyT(func(v CspmMonitorDockerHubOffering) string { return v.OfferingType }).(pulumi.StringOutput)
+}
+
+// The CSPM (Cloud security posture management) monitoring for Docker Hub offering
+type CspmMonitorDockerHubOfferingResponse struct {
+	// The offering description.
+	Description string `pulumi:"description"`
+	// The type of the security offering.
+	// Expected value is 'CspmMonitorDockerHub'.
+	OfferingType string `pulumi:"offeringType"`
+}
+
+// The CSPM (Cloud security posture management) monitoring for Docker Hub offering
+type CspmMonitorDockerHubOfferingResponseOutput struct{ *pulumi.OutputState }
+
+func (CspmMonitorDockerHubOfferingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CspmMonitorDockerHubOfferingResponse)(nil)).Elem()
+}
+
+func (o CspmMonitorDockerHubOfferingResponseOutput) ToCspmMonitorDockerHubOfferingResponseOutput() CspmMonitorDockerHubOfferingResponseOutput {
+	return o
+}
+
+func (o CspmMonitorDockerHubOfferingResponseOutput) ToCspmMonitorDockerHubOfferingResponseOutputWithContext(ctx context.Context) CspmMonitorDockerHubOfferingResponseOutput {
+	return o
+}
+
+// The offering description.
+func (o CspmMonitorDockerHubOfferingResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v CspmMonitorDockerHubOfferingResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The type of the security offering.
+// Expected value is 'CspmMonitorDockerHub'.
+func (o CspmMonitorDockerHubOfferingResponseOutput) OfferingType() pulumi.StringOutput {
+	return o.ApplyT(func(v CspmMonitorDockerHubOfferingResponse) string { return v.OfferingType }).(pulumi.StringOutput)
+}
+
 // The CSPM monitoring for GCP offering
 type CspmMonitorGcpOffering struct {
 	// The native cloud connection configuration
@@ -5929,16 +6589,115 @@ func (o CspmMonitorGithubOfferingResponseOutput) OfferingType() pulumi.StringOut
 	return o.ApplyT(func(v CspmMonitorGithubOfferingResponse) string { return v.OfferingType }).(pulumi.StringOutput)
 }
 
+// The CSPM (Cloud security posture management) monitoring for JFrog Artifactory offering
+type CspmMonitorJFrogOffering struct {
+	// The type of the security offering.
+	// Expected value is 'CspmMonitorJFrog'.
+	OfferingType string `pulumi:"offeringType"`
+}
+
+// CspmMonitorJFrogOfferingInput is an input type that accepts CspmMonitorJFrogOfferingArgs and CspmMonitorJFrogOfferingOutput values.
+// You can construct a concrete instance of `CspmMonitorJFrogOfferingInput` via:
+//
+//	CspmMonitorJFrogOfferingArgs{...}
+type CspmMonitorJFrogOfferingInput interface {
+	pulumi.Input
+
+	ToCspmMonitorJFrogOfferingOutput() CspmMonitorJFrogOfferingOutput
+	ToCspmMonitorJFrogOfferingOutputWithContext(context.Context) CspmMonitorJFrogOfferingOutput
+}
+
+// The CSPM (Cloud security posture management) monitoring for JFrog Artifactory offering
+type CspmMonitorJFrogOfferingArgs struct {
+	// The type of the security offering.
+	// Expected value is 'CspmMonitorJFrog'.
+	OfferingType pulumi.StringInput `pulumi:"offeringType"`
+}
+
+func (CspmMonitorJFrogOfferingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CspmMonitorJFrogOffering)(nil)).Elem()
+}
+
+func (i CspmMonitorJFrogOfferingArgs) ToCspmMonitorJFrogOfferingOutput() CspmMonitorJFrogOfferingOutput {
+	return i.ToCspmMonitorJFrogOfferingOutputWithContext(context.Background())
+}
+
+func (i CspmMonitorJFrogOfferingArgs) ToCspmMonitorJFrogOfferingOutputWithContext(ctx context.Context) CspmMonitorJFrogOfferingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CspmMonitorJFrogOfferingOutput)
+}
+
+// The CSPM (Cloud security posture management) monitoring for JFrog Artifactory offering
+type CspmMonitorJFrogOfferingOutput struct{ *pulumi.OutputState }
+
+func (CspmMonitorJFrogOfferingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CspmMonitorJFrogOffering)(nil)).Elem()
+}
+
+func (o CspmMonitorJFrogOfferingOutput) ToCspmMonitorJFrogOfferingOutput() CspmMonitorJFrogOfferingOutput {
+	return o
+}
+
+func (o CspmMonitorJFrogOfferingOutput) ToCspmMonitorJFrogOfferingOutputWithContext(ctx context.Context) CspmMonitorJFrogOfferingOutput {
+	return o
+}
+
+// The type of the security offering.
+// Expected value is 'CspmMonitorJFrog'.
+func (o CspmMonitorJFrogOfferingOutput) OfferingType() pulumi.StringOutput {
+	return o.ApplyT(func(v CspmMonitorJFrogOffering) string { return v.OfferingType }).(pulumi.StringOutput)
+}
+
+// The CSPM (Cloud security posture management) monitoring for JFrog Artifactory offering
+type CspmMonitorJFrogOfferingResponse struct {
+	// The offering description.
+	Description string `pulumi:"description"`
+	// The type of the security offering.
+	// Expected value is 'CspmMonitorJFrog'.
+	OfferingType string `pulumi:"offeringType"`
+}
+
+// The CSPM (Cloud security posture management) monitoring for JFrog Artifactory offering
+type CspmMonitorJFrogOfferingResponseOutput struct{ *pulumi.OutputState }
+
+func (CspmMonitorJFrogOfferingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CspmMonitorJFrogOfferingResponse)(nil)).Elem()
+}
+
+func (o CspmMonitorJFrogOfferingResponseOutput) ToCspmMonitorJFrogOfferingResponseOutput() CspmMonitorJFrogOfferingResponseOutput {
+	return o
+}
+
+func (o CspmMonitorJFrogOfferingResponseOutput) ToCspmMonitorJFrogOfferingResponseOutputWithContext(ctx context.Context) CspmMonitorJFrogOfferingResponseOutput {
+	return o
+}
+
+// The offering description.
+func (o CspmMonitorJFrogOfferingResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v CspmMonitorJFrogOfferingResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The type of the security offering.
+// Expected value is 'CspmMonitorJFrog'.
+func (o CspmMonitorJFrogOfferingResponseOutput) OfferingType() pulumi.StringOutput {
+	return o.ApplyT(func(v CspmMonitorJFrogOfferingResponse) string { return v.OfferingType }).(pulumi.StringOutput)
+}
+
 // The CSPM P1 for AWS offering
 type DefenderCspmAwsOffering struct {
+	// Defenders CSPM Permissions Management offering configurations
+	Ciem *DefenderCspmAwsOfferingCiem `pulumi:"ciem"`
 	// The Microsoft Defender Data Sensitivity discovery configuration
 	DataSensitivityDiscovery *DefenderCspmAwsOfferingDataSensitivityDiscovery `pulumi:"dataSensitivityDiscovery"`
 	// The databases DSPM configuration
 	DatabasesDspm *DefenderCspmAwsOfferingDatabasesDspm `pulumi:"databasesDspm"`
+	// The Microsoft Defender container agentless discovery K8s configuration
+	MdcContainersAgentlessDiscoveryK8s *DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8s `pulumi:"mdcContainersAgentlessDiscoveryK8s"`
+	// The Microsoft Defender container image assessment configuration
+	MdcContainersImageAssessment *DefenderCspmAwsOfferingMdcContainersImageAssessment `pulumi:"mdcContainersImageAssessment"`
 	// The type of the security offering.
 	// Expected value is 'DefenderCspmAws'.
 	OfferingType string `pulumi:"offeringType"`
-	// The Microsoft Defender for Server VM scanning configuration
+	// The Microsoft Defender for CSPM offering VM scanning configuration
 	VmScanners *DefenderCspmAwsOfferingVmScanners `pulumi:"vmScanners"`
 }
 
@@ -5955,14 +6714,20 @@ type DefenderCspmAwsOfferingInput interface {
 
 // The CSPM P1 for AWS offering
 type DefenderCspmAwsOfferingArgs struct {
+	// Defenders CSPM Permissions Management offering configurations
+	Ciem DefenderCspmAwsOfferingCiemPtrInput `pulumi:"ciem"`
 	// The Microsoft Defender Data Sensitivity discovery configuration
 	DataSensitivityDiscovery DefenderCspmAwsOfferingDataSensitivityDiscoveryPtrInput `pulumi:"dataSensitivityDiscovery"`
 	// The databases DSPM configuration
 	DatabasesDspm DefenderCspmAwsOfferingDatabasesDspmPtrInput `pulumi:"databasesDspm"`
+	// The Microsoft Defender container agentless discovery K8s configuration
+	MdcContainersAgentlessDiscoveryK8s DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrInput `pulumi:"mdcContainersAgentlessDiscoveryK8s"`
+	// The Microsoft Defender container image assessment configuration
+	MdcContainersImageAssessment DefenderCspmAwsOfferingMdcContainersImageAssessmentPtrInput `pulumi:"mdcContainersImageAssessment"`
 	// The type of the security offering.
 	// Expected value is 'DefenderCspmAws'.
 	OfferingType pulumi.StringInput `pulumi:"offeringType"`
-	// The Microsoft Defender for Server VM scanning configuration
+	// The Microsoft Defender for CSPM offering VM scanning configuration
 	VmScanners DefenderCspmAwsOfferingVmScannersPtrInput `pulumi:"vmScanners"`
 }
 
@@ -5993,6 +6758,11 @@ func (o DefenderCspmAwsOfferingOutput) ToDefenderCspmAwsOfferingOutputWithContex
 	return o
 }
 
+// Defenders CSPM Permissions Management offering configurations
+func (o DefenderCspmAwsOfferingOutput) Ciem() DefenderCspmAwsOfferingCiemPtrOutput {
+	return o.ApplyT(func(v DefenderCspmAwsOffering) *DefenderCspmAwsOfferingCiem { return v.Ciem }).(DefenderCspmAwsOfferingCiemPtrOutput)
+}
+
 // The Microsoft Defender Data Sensitivity discovery configuration
 func (o DefenderCspmAwsOfferingOutput) DataSensitivityDiscovery() DefenderCspmAwsOfferingDataSensitivityDiscoveryPtrOutput {
 	return o.ApplyT(func(v DefenderCspmAwsOffering) *DefenderCspmAwsOfferingDataSensitivityDiscovery {
@@ -6005,168 +6775,323 @@ func (o DefenderCspmAwsOfferingOutput) DatabasesDspm() DefenderCspmAwsOfferingDa
 	return o.ApplyT(func(v DefenderCspmAwsOffering) *DefenderCspmAwsOfferingDatabasesDspm { return v.DatabasesDspm }).(DefenderCspmAwsOfferingDatabasesDspmPtrOutput)
 }
 
+// The Microsoft Defender container agentless discovery K8s configuration
+func (o DefenderCspmAwsOfferingOutput) MdcContainersAgentlessDiscoveryK8s() DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput {
+	return o.ApplyT(func(v DefenderCspmAwsOffering) *DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8s {
+		return v.MdcContainersAgentlessDiscoveryK8s
+	}).(DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput)
+}
+
+// The Microsoft Defender container image assessment configuration
+func (o DefenderCspmAwsOfferingOutput) MdcContainersImageAssessment() DefenderCspmAwsOfferingMdcContainersImageAssessmentPtrOutput {
+	return o.ApplyT(func(v DefenderCspmAwsOffering) *DefenderCspmAwsOfferingMdcContainersImageAssessment {
+		return v.MdcContainersImageAssessment
+	}).(DefenderCspmAwsOfferingMdcContainersImageAssessmentPtrOutput)
+}
+
 // The type of the security offering.
 // Expected value is 'DefenderCspmAws'.
 func (o DefenderCspmAwsOfferingOutput) OfferingType() pulumi.StringOutput {
 	return o.ApplyT(func(v DefenderCspmAwsOffering) string { return v.OfferingType }).(pulumi.StringOutput)
 }
 
-// The Microsoft Defender for Server VM scanning configuration
+// The Microsoft Defender for CSPM offering VM scanning configuration
 func (o DefenderCspmAwsOfferingOutput) VmScanners() DefenderCspmAwsOfferingVmScannersPtrOutput {
 	return o.ApplyT(func(v DefenderCspmAwsOffering) *DefenderCspmAwsOfferingVmScanners { return v.VmScanners }).(DefenderCspmAwsOfferingVmScannersPtrOutput)
 }
 
-// configuration for Microsoft Defender for Server VM scanning
-type DefenderCspmAwsOfferingConfiguration struct {
-	// The cloud role ARN in AWS for this feature
-	CloudRoleArn *string `pulumi:"cloudRoleArn"`
-	// VM tags that indicates that VM should not be scanned
-	ExclusionTags map[string]string `pulumi:"exclusionTags"`
-	// The scanning mode for the VM scan.
-	ScanningMode *string `pulumi:"scanningMode"`
+// Defenders CSPM Permissions Management offering configurations
+type DefenderCspmAwsOfferingCiem struct {
+	// Defender CSPM Permissions Management discovery configuration
+	CiemDiscovery *DefenderCspmAwsOfferingCiemDiscovery `pulumi:"ciemDiscovery"`
+	// AWS Defender CSPM Permissions Management OIDC (open id connect) connection configurations
+	CiemOidc *DefenderCspmAwsOfferingCiemOidc `pulumi:"ciemOidc"`
 }
 
-// DefenderCspmAwsOfferingConfigurationInput is an input type that accepts DefenderCspmAwsOfferingConfigurationArgs and DefenderCspmAwsOfferingConfigurationOutput values.
-// You can construct a concrete instance of `DefenderCspmAwsOfferingConfigurationInput` via:
+// DefenderCspmAwsOfferingCiemInput is an input type that accepts DefenderCspmAwsOfferingCiemArgs and DefenderCspmAwsOfferingCiemOutput values.
+// You can construct a concrete instance of `DefenderCspmAwsOfferingCiemInput` via:
 //
-//	DefenderCspmAwsOfferingConfigurationArgs{...}
-type DefenderCspmAwsOfferingConfigurationInput interface {
+//	DefenderCspmAwsOfferingCiemArgs{...}
+type DefenderCspmAwsOfferingCiemInput interface {
 	pulumi.Input
 
-	ToDefenderCspmAwsOfferingConfigurationOutput() DefenderCspmAwsOfferingConfigurationOutput
-	ToDefenderCspmAwsOfferingConfigurationOutputWithContext(context.Context) DefenderCspmAwsOfferingConfigurationOutput
+	ToDefenderCspmAwsOfferingCiemOutput() DefenderCspmAwsOfferingCiemOutput
+	ToDefenderCspmAwsOfferingCiemOutputWithContext(context.Context) DefenderCspmAwsOfferingCiemOutput
 }
 
-// configuration for Microsoft Defender for Server VM scanning
-type DefenderCspmAwsOfferingConfigurationArgs struct {
-	// The cloud role ARN in AWS for this feature
-	CloudRoleArn pulumi.StringPtrInput `pulumi:"cloudRoleArn"`
-	// VM tags that indicates that VM should not be scanned
-	ExclusionTags pulumi.StringMapInput `pulumi:"exclusionTags"`
-	// The scanning mode for the VM scan.
-	ScanningMode pulumi.StringPtrInput `pulumi:"scanningMode"`
+// Defenders CSPM Permissions Management offering configurations
+type DefenderCspmAwsOfferingCiemArgs struct {
+	// Defender CSPM Permissions Management discovery configuration
+	CiemDiscovery DefenderCspmAwsOfferingCiemDiscoveryPtrInput `pulumi:"ciemDiscovery"`
+	// AWS Defender CSPM Permissions Management OIDC (open id connect) connection configurations
+	CiemOidc DefenderCspmAwsOfferingCiemOidcPtrInput `pulumi:"ciemOidc"`
 }
 
-func (DefenderCspmAwsOfferingConfigurationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefenderCspmAwsOfferingConfiguration)(nil)).Elem()
+func (DefenderCspmAwsOfferingCiemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderCspmAwsOfferingCiem)(nil)).Elem()
 }
 
-func (i DefenderCspmAwsOfferingConfigurationArgs) ToDefenderCspmAwsOfferingConfigurationOutput() DefenderCspmAwsOfferingConfigurationOutput {
-	return i.ToDefenderCspmAwsOfferingConfigurationOutputWithContext(context.Background())
+func (i DefenderCspmAwsOfferingCiemArgs) ToDefenderCspmAwsOfferingCiemOutput() DefenderCspmAwsOfferingCiemOutput {
+	return i.ToDefenderCspmAwsOfferingCiemOutputWithContext(context.Background())
 }
 
-func (i DefenderCspmAwsOfferingConfigurationArgs) ToDefenderCspmAwsOfferingConfigurationOutputWithContext(ctx context.Context) DefenderCspmAwsOfferingConfigurationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DefenderCspmAwsOfferingConfigurationOutput)
+func (i DefenderCspmAwsOfferingCiemArgs) ToDefenderCspmAwsOfferingCiemOutputWithContext(ctx context.Context) DefenderCspmAwsOfferingCiemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderCspmAwsOfferingCiemOutput)
 }
 
-func (i DefenderCspmAwsOfferingConfigurationArgs) ToDefenderCspmAwsOfferingConfigurationPtrOutput() DefenderCspmAwsOfferingConfigurationPtrOutput {
-	return i.ToDefenderCspmAwsOfferingConfigurationPtrOutputWithContext(context.Background())
+func (i DefenderCspmAwsOfferingCiemArgs) ToDefenderCspmAwsOfferingCiemPtrOutput() DefenderCspmAwsOfferingCiemPtrOutput {
+	return i.ToDefenderCspmAwsOfferingCiemPtrOutputWithContext(context.Background())
 }
 
-func (i DefenderCspmAwsOfferingConfigurationArgs) ToDefenderCspmAwsOfferingConfigurationPtrOutputWithContext(ctx context.Context) DefenderCspmAwsOfferingConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DefenderCspmAwsOfferingConfigurationOutput).ToDefenderCspmAwsOfferingConfigurationPtrOutputWithContext(ctx)
+func (i DefenderCspmAwsOfferingCiemArgs) ToDefenderCspmAwsOfferingCiemPtrOutputWithContext(ctx context.Context) DefenderCspmAwsOfferingCiemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderCspmAwsOfferingCiemOutput).ToDefenderCspmAwsOfferingCiemPtrOutputWithContext(ctx)
 }
 
-// DefenderCspmAwsOfferingConfigurationPtrInput is an input type that accepts DefenderCspmAwsOfferingConfigurationArgs, DefenderCspmAwsOfferingConfigurationPtr and DefenderCspmAwsOfferingConfigurationPtrOutput values.
-// You can construct a concrete instance of `DefenderCspmAwsOfferingConfigurationPtrInput` via:
+// DefenderCspmAwsOfferingCiemPtrInput is an input type that accepts DefenderCspmAwsOfferingCiemArgs, DefenderCspmAwsOfferingCiemPtr and DefenderCspmAwsOfferingCiemPtrOutput values.
+// You can construct a concrete instance of `DefenderCspmAwsOfferingCiemPtrInput` via:
 //
-//	        DefenderCspmAwsOfferingConfigurationArgs{...}
+//	        DefenderCspmAwsOfferingCiemArgs{...}
 //
 //	or:
 //
 //	        nil
-type DefenderCspmAwsOfferingConfigurationPtrInput interface {
+type DefenderCspmAwsOfferingCiemPtrInput interface {
 	pulumi.Input
 
-	ToDefenderCspmAwsOfferingConfigurationPtrOutput() DefenderCspmAwsOfferingConfigurationPtrOutput
-	ToDefenderCspmAwsOfferingConfigurationPtrOutputWithContext(context.Context) DefenderCspmAwsOfferingConfigurationPtrOutput
+	ToDefenderCspmAwsOfferingCiemPtrOutput() DefenderCspmAwsOfferingCiemPtrOutput
+	ToDefenderCspmAwsOfferingCiemPtrOutputWithContext(context.Context) DefenderCspmAwsOfferingCiemPtrOutput
 }
 
-type defenderCspmAwsOfferingConfigurationPtrType DefenderCspmAwsOfferingConfigurationArgs
+type defenderCspmAwsOfferingCiemPtrType DefenderCspmAwsOfferingCiemArgs
 
-func DefenderCspmAwsOfferingConfigurationPtr(v *DefenderCspmAwsOfferingConfigurationArgs) DefenderCspmAwsOfferingConfigurationPtrInput {
-	return (*defenderCspmAwsOfferingConfigurationPtrType)(v)
+func DefenderCspmAwsOfferingCiemPtr(v *DefenderCspmAwsOfferingCiemArgs) DefenderCspmAwsOfferingCiemPtrInput {
+	return (*defenderCspmAwsOfferingCiemPtrType)(v)
 }
 
-func (*defenderCspmAwsOfferingConfigurationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DefenderCspmAwsOfferingConfiguration)(nil)).Elem()
+func (*defenderCspmAwsOfferingCiemPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderCspmAwsOfferingCiem)(nil)).Elem()
 }
 
-func (i *defenderCspmAwsOfferingConfigurationPtrType) ToDefenderCspmAwsOfferingConfigurationPtrOutput() DefenderCspmAwsOfferingConfigurationPtrOutput {
-	return i.ToDefenderCspmAwsOfferingConfigurationPtrOutputWithContext(context.Background())
+func (i *defenderCspmAwsOfferingCiemPtrType) ToDefenderCspmAwsOfferingCiemPtrOutput() DefenderCspmAwsOfferingCiemPtrOutput {
+	return i.ToDefenderCspmAwsOfferingCiemPtrOutputWithContext(context.Background())
 }
 
-func (i *defenderCspmAwsOfferingConfigurationPtrType) ToDefenderCspmAwsOfferingConfigurationPtrOutputWithContext(ctx context.Context) DefenderCspmAwsOfferingConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DefenderCspmAwsOfferingConfigurationPtrOutput)
+func (i *defenderCspmAwsOfferingCiemPtrType) ToDefenderCspmAwsOfferingCiemPtrOutputWithContext(ctx context.Context) DefenderCspmAwsOfferingCiemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderCspmAwsOfferingCiemPtrOutput)
 }
 
-// configuration for Microsoft Defender for Server VM scanning
-type DefenderCspmAwsOfferingConfigurationOutput struct{ *pulumi.OutputState }
+// Defenders CSPM Permissions Management offering configurations
+type DefenderCspmAwsOfferingCiemOutput struct{ *pulumi.OutputState }
 
-func (DefenderCspmAwsOfferingConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefenderCspmAwsOfferingConfiguration)(nil)).Elem()
+func (DefenderCspmAwsOfferingCiemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderCspmAwsOfferingCiem)(nil)).Elem()
 }
 
-func (o DefenderCspmAwsOfferingConfigurationOutput) ToDefenderCspmAwsOfferingConfigurationOutput() DefenderCspmAwsOfferingConfigurationOutput {
+func (o DefenderCspmAwsOfferingCiemOutput) ToDefenderCspmAwsOfferingCiemOutput() DefenderCspmAwsOfferingCiemOutput {
 	return o
 }
 
-func (o DefenderCspmAwsOfferingConfigurationOutput) ToDefenderCspmAwsOfferingConfigurationOutputWithContext(ctx context.Context) DefenderCspmAwsOfferingConfigurationOutput {
+func (o DefenderCspmAwsOfferingCiemOutput) ToDefenderCspmAwsOfferingCiemOutputWithContext(ctx context.Context) DefenderCspmAwsOfferingCiemOutput {
 	return o
 }
 
-func (o DefenderCspmAwsOfferingConfigurationOutput) ToDefenderCspmAwsOfferingConfigurationPtrOutput() DefenderCspmAwsOfferingConfigurationPtrOutput {
-	return o.ToDefenderCspmAwsOfferingConfigurationPtrOutputWithContext(context.Background())
+func (o DefenderCspmAwsOfferingCiemOutput) ToDefenderCspmAwsOfferingCiemPtrOutput() DefenderCspmAwsOfferingCiemPtrOutput {
+	return o.ToDefenderCspmAwsOfferingCiemPtrOutputWithContext(context.Background())
 }
 
-func (o DefenderCspmAwsOfferingConfigurationOutput) ToDefenderCspmAwsOfferingConfigurationPtrOutputWithContext(ctx context.Context) DefenderCspmAwsOfferingConfigurationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefenderCspmAwsOfferingConfiguration) *DefenderCspmAwsOfferingConfiguration {
+func (o DefenderCspmAwsOfferingCiemOutput) ToDefenderCspmAwsOfferingCiemPtrOutputWithContext(ctx context.Context) DefenderCspmAwsOfferingCiemPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefenderCspmAwsOfferingCiem) *DefenderCspmAwsOfferingCiem {
 		return &v
-	}).(DefenderCspmAwsOfferingConfigurationPtrOutput)
+	}).(DefenderCspmAwsOfferingCiemPtrOutput)
 }
 
-// The cloud role ARN in AWS for this feature
-func (o DefenderCspmAwsOfferingConfigurationOutput) CloudRoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DefenderCspmAwsOfferingConfiguration) *string { return v.CloudRoleArn }).(pulumi.StringPtrOutput)
+// Defender CSPM Permissions Management discovery configuration
+func (o DefenderCspmAwsOfferingCiemOutput) CiemDiscovery() DefenderCspmAwsOfferingCiemDiscoveryPtrOutput {
+	return o.ApplyT(func(v DefenderCspmAwsOfferingCiem) *DefenderCspmAwsOfferingCiemDiscovery { return v.CiemDiscovery }).(DefenderCspmAwsOfferingCiemDiscoveryPtrOutput)
 }
 
-// VM tags that indicates that VM should not be scanned
-func (o DefenderCspmAwsOfferingConfigurationOutput) ExclusionTags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v DefenderCspmAwsOfferingConfiguration) map[string]string { return v.ExclusionTags }).(pulumi.StringMapOutput)
+// AWS Defender CSPM Permissions Management OIDC (open id connect) connection configurations
+func (o DefenderCspmAwsOfferingCiemOutput) CiemOidc() DefenderCspmAwsOfferingCiemOidcPtrOutput {
+	return o.ApplyT(func(v DefenderCspmAwsOfferingCiem) *DefenderCspmAwsOfferingCiemOidc { return v.CiemOidc }).(DefenderCspmAwsOfferingCiemOidcPtrOutput)
 }
 
-// The scanning mode for the VM scan.
-func (o DefenderCspmAwsOfferingConfigurationOutput) ScanningMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DefenderCspmAwsOfferingConfiguration) *string { return v.ScanningMode }).(pulumi.StringPtrOutput)
+type DefenderCspmAwsOfferingCiemPtrOutput struct{ *pulumi.OutputState }
+
+func (DefenderCspmAwsOfferingCiemPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderCspmAwsOfferingCiem)(nil)).Elem()
 }
 
-type DefenderCspmAwsOfferingConfigurationPtrOutput struct{ *pulumi.OutputState }
-
-func (DefenderCspmAwsOfferingConfigurationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DefenderCspmAwsOfferingConfiguration)(nil)).Elem()
-}
-
-func (o DefenderCspmAwsOfferingConfigurationPtrOutput) ToDefenderCspmAwsOfferingConfigurationPtrOutput() DefenderCspmAwsOfferingConfigurationPtrOutput {
+func (o DefenderCspmAwsOfferingCiemPtrOutput) ToDefenderCspmAwsOfferingCiemPtrOutput() DefenderCspmAwsOfferingCiemPtrOutput {
 	return o
 }
 
-func (o DefenderCspmAwsOfferingConfigurationPtrOutput) ToDefenderCspmAwsOfferingConfigurationPtrOutputWithContext(ctx context.Context) DefenderCspmAwsOfferingConfigurationPtrOutput {
+func (o DefenderCspmAwsOfferingCiemPtrOutput) ToDefenderCspmAwsOfferingCiemPtrOutputWithContext(ctx context.Context) DefenderCspmAwsOfferingCiemPtrOutput {
 	return o
 }
 
-func (o DefenderCspmAwsOfferingConfigurationPtrOutput) Elem() DefenderCspmAwsOfferingConfigurationOutput {
-	return o.ApplyT(func(v *DefenderCspmAwsOfferingConfiguration) DefenderCspmAwsOfferingConfiguration {
+func (o DefenderCspmAwsOfferingCiemPtrOutput) Elem() DefenderCspmAwsOfferingCiemOutput {
+	return o.ApplyT(func(v *DefenderCspmAwsOfferingCiem) DefenderCspmAwsOfferingCiem {
 		if v != nil {
 			return *v
 		}
-		var ret DefenderCspmAwsOfferingConfiguration
+		var ret DefenderCspmAwsOfferingCiem
 		return ret
-	}).(DefenderCspmAwsOfferingConfigurationOutput)
+	}).(DefenderCspmAwsOfferingCiemOutput)
 }
 
-// The cloud role ARN in AWS for this feature
-func (o DefenderCspmAwsOfferingConfigurationPtrOutput) CloudRoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DefenderCspmAwsOfferingConfiguration) *string {
+// Defender CSPM Permissions Management discovery configuration
+func (o DefenderCspmAwsOfferingCiemPtrOutput) CiemDiscovery() DefenderCspmAwsOfferingCiemDiscoveryPtrOutput {
+	return o.ApplyT(func(v *DefenderCspmAwsOfferingCiem) *DefenderCspmAwsOfferingCiemDiscovery {
+		if v == nil {
+			return nil
+		}
+		return v.CiemDiscovery
+	}).(DefenderCspmAwsOfferingCiemDiscoveryPtrOutput)
+}
+
+// AWS Defender CSPM Permissions Management OIDC (open id connect) connection configurations
+func (o DefenderCspmAwsOfferingCiemPtrOutput) CiemOidc() DefenderCspmAwsOfferingCiemOidcPtrOutput {
+	return o.ApplyT(func(v *DefenderCspmAwsOfferingCiem) *DefenderCspmAwsOfferingCiemOidc {
+		if v == nil {
+			return nil
+		}
+		return v.CiemOidc
+	}).(DefenderCspmAwsOfferingCiemOidcPtrOutput)
+}
+
+// Defender CSPM Permissions Management discovery configuration
+type DefenderCspmAwsOfferingCiemDiscovery struct {
+	// The cloud role ARN in AWS for Permissions Management discovery
+	CloudRoleArn *string `pulumi:"cloudRoleArn"`
+}
+
+// DefenderCspmAwsOfferingCiemDiscoveryInput is an input type that accepts DefenderCspmAwsOfferingCiemDiscoveryArgs and DefenderCspmAwsOfferingCiemDiscoveryOutput values.
+// You can construct a concrete instance of `DefenderCspmAwsOfferingCiemDiscoveryInput` via:
+//
+//	DefenderCspmAwsOfferingCiemDiscoveryArgs{...}
+type DefenderCspmAwsOfferingCiemDiscoveryInput interface {
+	pulumi.Input
+
+	ToDefenderCspmAwsOfferingCiemDiscoveryOutput() DefenderCspmAwsOfferingCiemDiscoveryOutput
+	ToDefenderCspmAwsOfferingCiemDiscoveryOutputWithContext(context.Context) DefenderCspmAwsOfferingCiemDiscoveryOutput
+}
+
+// Defender CSPM Permissions Management discovery configuration
+type DefenderCspmAwsOfferingCiemDiscoveryArgs struct {
+	// The cloud role ARN in AWS for Permissions Management discovery
+	CloudRoleArn pulumi.StringPtrInput `pulumi:"cloudRoleArn"`
+}
+
+func (DefenderCspmAwsOfferingCiemDiscoveryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderCspmAwsOfferingCiemDiscovery)(nil)).Elem()
+}
+
+func (i DefenderCspmAwsOfferingCiemDiscoveryArgs) ToDefenderCspmAwsOfferingCiemDiscoveryOutput() DefenderCspmAwsOfferingCiemDiscoveryOutput {
+	return i.ToDefenderCspmAwsOfferingCiemDiscoveryOutputWithContext(context.Background())
+}
+
+func (i DefenderCspmAwsOfferingCiemDiscoveryArgs) ToDefenderCspmAwsOfferingCiemDiscoveryOutputWithContext(ctx context.Context) DefenderCspmAwsOfferingCiemDiscoveryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderCspmAwsOfferingCiemDiscoveryOutput)
+}
+
+func (i DefenderCspmAwsOfferingCiemDiscoveryArgs) ToDefenderCspmAwsOfferingCiemDiscoveryPtrOutput() DefenderCspmAwsOfferingCiemDiscoveryPtrOutput {
+	return i.ToDefenderCspmAwsOfferingCiemDiscoveryPtrOutputWithContext(context.Background())
+}
+
+func (i DefenderCspmAwsOfferingCiemDiscoveryArgs) ToDefenderCspmAwsOfferingCiemDiscoveryPtrOutputWithContext(ctx context.Context) DefenderCspmAwsOfferingCiemDiscoveryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderCspmAwsOfferingCiemDiscoveryOutput).ToDefenderCspmAwsOfferingCiemDiscoveryPtrOutputWithContext(ctx)
+}
+
+// DefenderCspmAwsOfferingCiemDiscoveryPtrInput is an input type that accepts DefenderCspmAwsOfferingCiemDiscoveryArgs, DefenderCspmAwsOfferingCiemDiscoveryPtr and DefenderCspmAwsOfferingCiemDiscoveryPtrOutput values.
+// You can construct a concrete instance of `DefenderCspmAwsOfferingCiemDiscoveryPtrInput` via:
+//
+//	        DefenderCspmAwsOfferingCiemDiscoveryArgs{...}
+//
+//	or:
+//
+//	        nil
+type DefenderCspmAwsOfferingCiemDiscoveryPtrInput interface {
+	pulumi.Input
+
+	ToDefenderCspmAwsOfferingCiemDiscoveryPtrOutput() DefenderCspmAwsOfferingCiemDiscoveryPtrOutput
+	ToDefenderCspmAwsOfferingCiemDiscoveryPtrOutputWithContext(context.Context) DefenderCspmAwsOfferingCiemDiscoveryPtrOutput
+}
+
+type defenderCspmAwsOfferingCiemDiscoveryPtrType DefenderCspmAwsOfferingCiemDiscoveryArgs
+
+func DefenderCspmAwsOfferingCiemDiscoveryPtr(v *DefenderCspmAwsOfferingCiemDiscoveryArgs) DefenderCspmAwsOfferingCiemDiscoveryPtrInput {
+	return (*defenderCspmAwsOfferingCiemDiscoveryPtrType)(v)
+}
+
+func (*defenderCspmAwsOfferingCiemDiscoveryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderCspmAwsOfferingCiemDiscovery)(nil)).Elem()
+}
+
+func (i *defenderCspmAwsOfferingCiemDiscoveryPtrType) ToDefenderCspmAwsOfferingCiemDiscoveryPtrOutput() DefenderCspmAwsOfferingCiemDiscoveryPtrOutput {
+	return i.ToDefenderCspmAwsOfferingCiemDiscoveryPtrOutputWithContext(context.Background())
+}
+
+func (i *defenderCspmAwsOfferingCiemDiscoveryPtrType) ToDefenderCspmAwsOfferingCiemDiscoveryPtrOutputWithContext(ctx context.Context) DefenderCspmAwsOfferingCiemDiscoveryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderCspmAwsOfferingCiemDiscoveryPtrOutput)
+}
+
+// Defender CSPM Permissions Management discovery configuration
+type DefenderCspmAwsOfferingCiemDiscoveryOutput struct{ *pulumi.OutputState }
+
+func (DefenderCspmAwsOfferingCiemDiscoveryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderCspmAwsOfferingCiemDiscovery)(nil)).Elem()
+}
+
+func (o DefenderCspmAwsOfferingCiemDiscoveryOutput) ToDefenderCspmAwsOfferingCiemDiscoveryOutput() DefenderCspmAwsOfferingCiemDiscoveryOutput {
+	return o
+}
+
+func (o DefenderCspmAwsOfferingCiemDiscoveryOutput) ToDefenderCspmAwsOfferingCiemDiscoveryOutputWithContext(ctx context.Context) DefenderCspmAwsOfferingCiemDiscoveryOutput {
+	return o
+}
+
+func (o DefenderCspmAwsOfferingCiemDiscoveryOutput) ToDefenderCspmAwsOfferingCiemDiscoveryPtrOutput() DefenderCspmAwsOfferingCiemDiscoveryPtrOutput {
+	return o.ToDefenderCspmAwsOfferingCiemDiscoveryPtrOutputWithContext(context.Background())
+}
+
+func (o DefenderCspmAwsOfferingCiemDiscoveryOutput) ToDefenderCspmAwsOfferingCiemDiscoveryPtrOutputWithContext(ctx context.Context) DefenderCspmAwsOfferingCiemDiscoveryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefenderCspmAwsOfferingCiemDiscovery) *DefenderCspmAwsOfferingCiemDiscovery {
+		return &v
+	}).(DefenderCspmAwsOfferingCiemDiscoveryPtrOutput)
+}
+
+// The cloud role ARN in AWS for Permissions Management discovery
+func (o DefenderCspmAwsOfferingCiemDiscoveryOutput) CloudRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderCspmAwsOfferingCiemDiscovery) *string { return v.CloudRoleArn }).(pulumi.StringPtrOutput)
+}
+
+type DefenderCspmAwsOfferingCiemDiscoveryPtrOutput struct{ *pulumi.OutputState }
+
+func (DefenderCspmAwsOfferingCiemDiscoveryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderCspmAwsOfferingCiemDiscovery)(nil)).Elem()
+}
+
+func (o DefenderCspmAwsOfferingCiemDiscoveryPtrOutput) ToDefenderCspmAwsOfferingCiemDiscoveryPtrOutput() DefenderCspmAwsOfferingCiemDiscoveryPtrOutput {
+	return o
+}
+
+func (o DefenderCspmAwsOfferingCiemDiscoveryPtrOutput) ToDefenderCspmAwsOfferingCiemDiscoveryPtrOutputWithContext(ctx context.Context) DefenderCspmAwsOfferingCiemDiscoveryPtrOutput {
+	return o
+}
+
+func (o DefenderCspmAwsOfferingCiemDiscoveryPtrOutput) Elem() DefenderCspmAwsOfferingCiemDiscoveryOutput {
+	return o.ApplyT(func(v *DefenderCspmAwsOfferingCiemDiscovery) DefenderCspmAwsOfferingCiemDiscovery {
+		if v != nil {
+			return *v
+		}
+		var ret DefenderCspmAwsOfferingCiemDiscovery
+		return ret
+	}).(DefenderCspmAwsOfferingCiemDiscoveryOutput)
+}
+
+// The cloud role ARN in AWS for Permissions Management discovery
+func (o DefenderCspmAwsOfferingCiemDiscoveryPtrOutput) CloudRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenderCspmAwsOfferingCiemDiscovery) *string {
 		if v == nil {
 			return nil
 		}
@@ -6174,23 +7099,162 @@ func (o DefenderCspmAwsOfferingConfigurationPtrOutput) CloudRoleArn() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
-// VM tags that indicates that VM should not be scanned
-func (o DefenderCspmAwsOfferingConfigurationPtrOutput) ExclusionTags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *DefenderCspmAwsOfferingConfiguration) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.ExclusionTags
-	}).(pulumi.StringMapOutput)
+// AWS Defender CSPM Permissions Management OIDC (open id connect) connection configurations
+type DefenderCspmAwsOfferingCiemOidc struct {
+	// the azure active directory app name used of authenticating against AWS
+	AzureActiveDirectoryAppName *string `pulumi:"azureActiveDirectoryAppName"`
+	// The cloud role ARN in AWS for Permissions Management used for oidc connection
+	CloudRoleArn *string `pulumi:"cloudRoleArn"`
 }
 
-// The scanning mode for the VM scan.
-func (o DefenderCspmAwsOfferingConfigurationPtrOutput) ScanningMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DefenderCspmAwsOfferingConfiguration) *string {
+// DefenderCspmAwsOfferingCiemOidcInput is an input type that accepts DefenderCspmAwsOfferingCiemOidcArgs and DefenderCspmAwsOfferingCiemOidcOutput values.
+// You can construct a concrete instance of `DefenderCspmAwsOfferingCiemOidcInput` via:
+//
+//	DefenderCspmAwsOfferingCiemOidcArgs{...}
+type DefenderCspmAwsOfferingCiemOidcInput interface {
+	pulumi.Input
+
+	ToDefenderCspmAwsOfferingCiemOidcOutput() DefenderCspmAwsOfferingCiemOidcOutput
+	ToDefenderCspmAwsOfferingCiemOidcOutputWithContext(context.Context) DefenderCspmAwsOfferingCiemOidcOutput
+}
+
+// AWS Defender CSPM Permissions Management OIDC (open id connect) connection configurations
+type DefenderCspmAwsOfferingCiemOidcArgs struct {
+	// the azure active directory app name used of authenticating against AWS
+	AzureActiveDirectoryAppName pulumi.StringPtrInput `pulumi:"azureActiveDirectoryAppName"`
+	// The cloud role ARN in AWS for Permissions Management used for oidc connection
+	CloudRoleArn pulumi.StringPtrInput `pulumi:"cloudRoleArn"`
+}
+
+func (DefenderCspmAwsOfferingCiemOidcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderCspmAwsOfferingCiemOidc)(nil)).Elem()
+}
+
+func (i DefenderCspmAwsOfferingCiemOidcArgs) ToDefenderCspmAwsOfferingCiemOidcOutput() DefenderCspmAwsOfferingCiemOidcOutput {
+	return i.ToDefenderCspmAwsOfferingCiemOidcOutputWithContext(context.Background())
+}
+
+func (i DefenderCspmAwsOfferingCiemOidcArgs) ToDefenderCspmAwsOfferingCiemOidcOutputWithContext(ctx context.Context) DefenderCspmAwsOfferingCiemOidcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderCspmAwsOfferingCiemOidcOutput)
+}
+
+func (i DefenderCspmAwsOfferingCiemOidcArgs) ToDefenderCspmAwsOfferingCiemOidcPtrOutput() DefenderCspmAwsOfferingCiemOidcPtrOutput {
+	return i.ToDefenderCspmAwsOfferingCiemOidcPtrOutputWithContext(context.Background())
+}
+
+func (i DefenderCspmAwsOfferingCiemOidcArgs) ToDefenderCspmAwsOfferingCiemOidcPtrOutputWithContext(ctx context.Context) DefenderCspmAwsOfferingCiemOidcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderCspmAwsOfferingCiemOidcOutput).ToDefenderCspmAwsOfferingCiemOidcPtrOutputWithContext(ctx)
+}
+
+// DefenderCspmAwsOfferingCiemOidcPtrInput is an input type that accepts DefenderCspmAwsOfferingCiemOidcArgs, DefenderCspmAwsOfferingCiemOidcPtr and DefenderCspmAwsOfferingCiemOidcPtrOutput values.
+// You can construct a concrete instance of `DefenderCspmAwsOfferingCiemOidcPtrInput` via:
+//
+//	        DefenderCspmAwsOfferingCiemOidcArgs{...}
+//
+//	or:
+//
+//	        nil
+type DefenderCspmAwsOfferingCiemOidcPtrInput interface {
+	pulumi.Input
+
+	ToDefenderCspmAwsOfferingCiemOidcPtrOutput() DefenderCspmAwsOfferingCiemOidcPtrOutput
+	ToDefenderCspmAwsOfferingCiemOidcPtrOutputWithContext(context.Context) DefenderCspmAwsOfferingCiemOidcPtrOutput
+}
+
+type defenderCspmAwsOfferingCiemOidcPtrType DefenderCspmAwsOfferingCiemOidcArgs
+
+func DefenderCspmAwsOfferingCiemOidcPtr(v *DefenderCspmAwsOfferingCiemOidcArgs) DefenderCspmAwsOfferingCiemOidcPtrInput {
+	return (*defenderCspmAwsOfferingCiemOidcPtrType)(v)
+}
+
+func (*defenderCspmAwsOfferingCiemOidcPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderCspmAwsOfferingCiemOidc)(nil)).Elem()
+}
+
+func (i *defenderCspmAwsOfferingCiemOidcPtrType) ToDefenderCspmAwsOfferingCiemOidcPtrOutput() DefenderCspmAwsOfferingCiemOidcPtrOutput {
+	return i.ToDefenderCspmAwsOfferingCiemOidcPtrOutputWithContext(context.Background())
+}
+
+func (i *defenderCspmAwsOfferingCiemOidcPtrType) ToDefenderCspmAwsOfferingCiemOidcPtrOutputWithContext(ctx context.Context) DefenderCspmAwsOfferingCiemOidcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderCspmAwsOfferingCiemOidcPtrOutput)
+}
+
+// AWS Defender CSPM Permissions Management OIDC (open id connect) connection configurations
+type DefenderCspmAwsOfferingCiemOidcOutput struct{ *pulumi.OutputState }
+
+func (DefenderCspmAwsOfferingCiemOidcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderCspmAwsOfferingCiemOidc)(nil)).Elem()
+}
+
+func (o DefenderCspmAwsOfferingCiemOidcOutput) ToDefenderCspmAwsOfferingCiemOidcOutput() DefenderCspmAwsOfferingCiemOidcOutput {
+	return o
+}
+
+func (o DefenderCspmAwsOfferingCiemOidcOutput) ToDefenderCspmAwsOfferingCiemOidcOutputWithContext(ctx context.Context) DefenderCspmAwsOfferingCiemOidcOutput {
+	return o
+}
+
+func (o DefenderCspmAwsOfferingCiemOidcOutput) ToDefenderCspmAwsOfferingCiemOidcPtrOutput() DefenderCspmAwsOfferingCiemOidcPtrOutput {
+	return o.ToDefenderCspmAwsOfferingCiemOidcPtrOutputWithContext(context.Background())
+}
+
+func (o DefenderCspmAwsOfferingCiemOidcOutput) ToDefenderCspmAwsOfferingCiemOidcPtrOutputWithContext(ctx context.Context) DefenderCspmAwsOfferingCiemOidcPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefenderCspmAwsOfferingCiemOidc) *DefenderCspmAwsOfferingCiemOidc {
+		return &v
+	}).(DefenderCspmAwsOfferingCiemOidcPtrOutput)
+}
+
+// the azure active directory app name used of authenticating against AWS
+func (o DefenderCspmAwsOfferingCiemOidcOutput) AzureActiveDirectoryAppName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderCspmAwsOfferingCiemOidc) *string { return v.AzureActiveDirectoryAppName }).(pulumi.StringPtrOutput)
+}
+
+// The cloud role ARN in AWS for Permissions Management used for oidc connection
+func (o DefenderCspmAwsOfferingCiemOidcOutput) CloudRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderCspmAwsOfferingCiemOidc) *string { return v.CloudRoleArn }).(pulumi.StringPtrOutput)
+}
+
+type DefenderCspmAwsOfferingCiemOidcPtrOutput struct{ *pulumi.OutputState }
+
+func (DefenderCspmAwsOfferingCiemOidcPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderCspmAwsOfferingCiemOidc)(nil)).Elem()
+}
+
+func (o DefenderCspmAwsOfferingCiemOidcPtrOutput) ToDefenderCspmAwsOfferingCiemOidcPtrOutput() DefenderCspmAwsOfferingCiemOidcPtrOutput {
+	return o
+}
+
+func (o DefenderCspmAwsOfferingCiemOidcPtrOutput) ToDefenderCspmAwsOfferingCiemOidcPtrOutputWithContext(ctx context.Context) DefenderCspmAwsOfferingCiemOidcPtrOutput {
+	return o
+}
+
+func (o DefenderCspmAwsOfferingCiemOidcPtrOutput) Elem() DefenderCspmAwsOfferingCiemOidcOutput {
+	return o.ApplyT(func(v *DefenderCspmAwsOfferingCiemOidc) DefenderCspmAwsOfferingCiemOidc {
+		if v != nil {
+			return *v
+		}
+		var ret DefenderCspmAwsOfferingCiemOidc
+		return ret
+	}).(DefenderCspmAwsOfferingCiemOidcOutput)
+}
+
+// the azure active directory app name used of authenticating against AWS
+func (o DefenderCspmAwsOfferingCiemOidcPtrOutput) AzureActiveDirectoryAppName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenderCspmAwsOfferingCiemOidc) *string {
 		if v == nil {
 			return nil
 		}
-		return v.ScanningMode
+		return v.AzureActiveDirectoryAppName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The cloud role ARN in AWS for Permissions Management used for oidc connection
+func (o DefenderCspmAwsOfferingCiemOidcPtrOutput) CloudRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenderCspmAwsOfferingCiemOidc) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CloudRoleArn
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -6512,18 +7576,342 @@ func (o DefenderCspmAwsOfferingDatabasesDspmPtrOutput) Enabled() pulumi.BoolPtrO
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The Microsoft Defender container agentless discovery K8s configuration
+type DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8s struct {
+	// The cloud role ARN in AWS for this feature
+	CloudRoleArn *string `pulumi:"cloudRoleArn"`
+	// Is Microsoft Defender container agentless discovery K8s enabled
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sInput is an input type that accepts DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sArgs and DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sOutput values.
+// You can construct a concrete instance of `DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sInput` via:
+//
+//	DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sArgs{...}
+type DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sInput interface {
+	pulumi.Input
+
+	ToDefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sOutput() DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sOutput
+	ToDefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sOutputWithContext(context.Context) DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sOutput
+}
+
+// The Microsoft Defender container agentless discovery K8s configuration
+type DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sArgs struct {
+	// The cloud role ARN in AWS for this feature
+	CloudRoleArn pulumi.StringPtrInput `pulumi:"cloudRoleArn"`
+	// Is Microsoft Defender container agentless discovery K8s enabled
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8s)(nil)).Elem()
+}
+
+func (i DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sArgs) ToDefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sOutput() DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sOutput {
+	return i.ToDefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sOutputWithContext(context.Background())
+}
+
+func (i DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sArgs) ToDefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sOutputWithContext(ctx context.Context) DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sOutput)
+}
+
+func (i DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sArgs) ToDefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput() DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput {
+	return i.ToDefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutputWithContext(context.Background())
+}
+
+func (i DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sArgs) ToDefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutputWithContext(ctx context.Context) DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sOutput).ToDefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutputWithContext(ctx)
+}
+
+// DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrInput is an input type that accepts DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sArgs, DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sPtr and DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput values.
+// You can construct a concrete instance of `DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrInput` via:
+//
+//	        DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sArgs{...}
+//
+//	or:
+//
+//	        nil
+type DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrInput interface {
+	pulumi.Input
+
+	ToDefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput() DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput
+	ToDefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutputWithContext(context.Context) DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput
+}
+
+type defenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrType DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sArgs
+
+func DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sPtr(v *DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sArgs) DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrInput {
+	return (*defenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrType)(v)
+}
+
+func (*defenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8s)(nil)).Elem()
+}
+
+func (i *defenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrType) ToDefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput() DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput {
+	return i.ToDefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutputWithContext(context.Background())
+}
+
+func (i *defenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrType) ToDefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutputWithContext(ctx context.Context) DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput)
+}
+
+// The Microsoft Defender container agentless discovery K8s configuration
+type DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sOutput struct{ *pulumi.OutputState }
+
+func (DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8s)(nil)).Elem()
+}
+
+func (o DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sOutput) ToDefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sOutput() DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sOutput {
+	return o
+}
+
+func (o DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sOutput) ToDefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sOutputWithContext(ctx context.Context) DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sOutput {
+	return o
+}
+
+func (o DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sOutput) ToDefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput() DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput {
+	return o.ToDefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutputWithContext(context.Background())
+}
+
+func (o DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sOutput) ToDefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutputWithContext(ctx context.Context) DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8s) *DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8s {
+		return &v
+	}).(DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput)
+}
+
+// The cloud role ARN in AWS for this feature
+func (o DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sOutput) CloudRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8s) *string { return v.CloudRoleArn }).(pulumi.StringPtrOutput)
+}
+
+// Is Microsoft Defender container agentless discovery K8s enabled
+func (o DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8s) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput struct{ *pulumi.OutputState }
+
+func (DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8s)(nil)).Elem()
+}
+
+func (o DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput) ToDefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput() DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput {
+	return o
+}
+
+func (o DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput) ToDefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutputWithContext(ctx context.Context) DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput {
+	return o
+}
+
+func (o DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput) Elem() DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sOutput {
+	return o.ApplyT(func(v *DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8s) DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8s {
+		if v != nil {
+			return *v
+		}
+		var ret DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8s
+		return ret
+	}).(DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sOutput)
+}
+
+// The cloud role ARN in AWS for this feature
+func (o DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput) CloudRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8s) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CloudRoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Is Microsoft Defender container agentless discovery K8s enabled
+func (o DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8s) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The Microsoft Defender container image assessment configuration
+type DefenderCspmAwsOfferingMdcContainersImageAssessment struct {
+	// The cloud role ARN in AWS for this feature
+	CloudRoleArn *string `pulumi:"cloudRoleArn"`
+	// Is Microsoft Defender container image assessment enabled
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// DefenderCspmAwsOfferingMdcContainersImageAssessmentInput is an input type that accepts DefenderCspmAwsOfferingMdcContainersImageAssessmentArgs and DefenderCspmAwsOfferingMdcContainersImageAssessmentOutput values.
+// You can construct a concrete instance of `DefenderCspmAwsOfferingMdcContainersImageAssessmentInput` via:
+//
+//	DefenderCspmAwsOfferingMdcContainersImageAssessmentArgs{...}
+type DefenderCspmAwsOfferingMdcContainersImageAssessmentInput interface {
+	pulumi.Input
+
+	ToDefenderCspmAwsOfferingMdcContainersImageAssessmentOutput() DefenderCspmAwsOfferingMdcContainersImageAssessmentOutput
+	ToDefenderCspmAwsOfferingMdcContainersImageAssessmentOutputWithContext(context.Context) DefenderCspmAwsOfferingMdcContainersImageAssessmentOutput
+}
+
+// The Microsoft Defender container image assessment configuration
+type DefenderCspmAwsOfferingMdcContainersImageAssessmentArgs struct {
+	// The cloud role ARN in AWS for this feature
+	CloudRoleArn pulumi.StringPtrInput `pulumi:"cloudRoleArn"`
+	// Is Microsoft Defender container image assessment enabled
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (DefenderCspmAwsOfferingMdcContainersImageAssessmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderCspmAwsOfferingMdcContainersImageAssessment)(nil)).Elem()
+}
+
+func (i DefenderCspmAwsOfferingMdcContainersImageAssessmentArgs) ToDefenderCspmAwsOfferingMdcContainersImageAssessmentOutput() DefenderCspmAwsOfferingMdcContainersImageAssessmentOutput {
+	return i.ToDefenderCspmAwsOfferingMdcContainersImageAssessmentOutputWithContext(context.Background())
+}
+
+func (i DefenderCspmAwsOfferingMdcContainersImageAssessmentArgs) ToDefenderCspmAwsOfferingMdcContainersImageAssessmentOutputWithContext(ctx context.Context) DefenderCspmAwsOfferingMdcContainersImageAssessmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderCspmAwsOfferingMdcContainersImageAssessmentOutput)
+}
+
+func (i DefenderCspmAwsOfferingMdcContainersImageAssessmentArgs) ToDefenderCspmAwsOfferingMdcContainersImageAssessmentPtrOutput() DefenderCspmAwsOfferingMdcContainersImageAssessmentPtrOutput {
+	return i.ToDefenderCspmAwsOfferingMdcContainersImageAssessmentPtrOutputWithContext(context.Background())
+}
+
+func (i DefenderCspmAwsOfferingMdcContainersImageAssessmentArgs) ToDefenderCspmAwsOfferingMdcContainersImageAssessmentPtrOutputWithContext(ctx context.Context) DefenderCspmAwsOfferingMdcContainersImageAssessmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderCspmAwsOfferingMdcContainersImageAssessmentOutput).ToDefenderCspmAwsOfferingMdcContainersImageAssessmentPtrOutputWithContext(ctx)
+}
+
+// DefenderCspmAwsOfferingMdcContainersImageAssessmentPtrInput is an input type that accepts DefenderCspmAwsOfferingMdcContainersImageAssessmentArgs, DefenderCspmAwsOfferingMdcContainersImageAssessmentPtr and DefenderCspmAwsOfferingMdcContainersImageAssessmentPtrOutput values.
+// You can construct a concrete instance of `DefenderCspmAwsOfferingMdcContainersImageAssessmentPtrInput` via:
+//
+//	        DefenderCspmAwsOfferingMdcContainersImageAssessmentArgs{...}
+//
+//	or:
+//
+//	        nil
+type DefenderCspmAwsOfferingMdcContainersImageAssessmentPtrInput interface {
+	pulumi.Input
+
+	ToDefenderCspmAwsOfferingMdcContainersImageAssessmentPtrOutput() DefenderCspmAwsOfferingMdcContainersImageAssessmentPtrOutput
+	ToDefenderCspmAwsOfferingMdcContainersImageAssessmentPtrOutputWithContext(context.Context) DefenderCspmAwsOfferingMdcContainersImageAssessmentPtrOutput
+}
+
+type defenderCspmAwsOfferingMdcContainersImageAssessmentPtrType DefenderCspmAwsOfferingMdcContainersImageAssessmentArgs
+
+func DefenderCspmAwsOfferingMdcContainersImageAssessmentPtr(v *DefenderCspmAwsOfferingMdcContainersImageAssessmentArgs) DefenderCspmAwsOfferingMdcContainersImageAssessmentPtrInput {
+	return (*defenderCspmAwsOfferingMdcContainersImageAssessmentPtrType)(v)
+}
+
+func (*defenderCspmAwsOfferingMdcContainersImageAssessmentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderCspmAwsOfferingMdcContainersImageAssessment)(nil)).Elem()
+}
+
+func (i *defenderCspmAwsOfferingMdcContainersImageAssessmentPtrType) ToDefenderCspmAwsOfferingMdcContainersImageAssessmentPtrOutput() DefenderCspmAwsOfferingMdcContainersImageAssessmentPtrOutput {
+	return i.ToDefenderCspmAwsOfferingMdcContainersImageAssessmentPtrOutputWithContext(context.Background())
+}
+
+func (i *defenderCspmAwsOfferingMdcContainersImageAssessmentPtrType) ToDefenderCspmAwsOfferingMdcContainersImageAssessmentPtrOutputWithContext(ctx context.Context) DefenderCspmAwsOfferingMdcContainersImageAssessmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderCspmAwsOfferingMdcContainersImageAssessmentPtrOutput)
+}
+
+// The Microsoft Defender container image assessment configuration
+type DefenderCspmAwsOfferingMdcContainersImageAssessmentOutput struct{ *pulumi.OutputState }
+
+func (DefenderCspmAwsOfferingMdcContainersImageAssessmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderCspmAwsOfferingMdcContainersImageAssessment)(nil)).Elem()
+}
+
+func (o DefenderCspmAwsOfferingMdcContainersImageAssessmentOutput) ToDefenderCspmAwsOfferingMdcContainersImageAssessmentOutput() DefenderCspmAwsOfferingMdcContainersImageAssessmentOutput {
+	return o
+}
+
+func (o DefenderCspmAwsOfferingMdcContainersImageAssessmentOutput) ToDefenderCspmAwsOfferingMdcContainersImageAssessmentOutputWithContext(ctx context.Context) DefenderCspmAwsOfferingMdcContainersImageAssessmentOutput {
+	return o
+}
+
+func (o DefenderCspmAwsOfferingMdcContainersImageAssessmentOutput) ToDefenderCspmAwsOfferingMdcContainersImageAssessmentPtrOutput() DefenderCspmAwsOfferingMdcContainersImageAssessmentPtrOutput {
+	return o.ToDefenderCspmAwsOfferingMdcContainersImageAssessmentPtrOutputWithContext(context.Background())
+}
+
+func (o DefenderCspmAwsOfferingMdcContainersImageAssessmentOutput) ToDefenderCspmAwsOfferingMdcContainersImageAssessmentPtrOutputWithContext(ctx context.Context) DefenderCspmAwsOfferingMdcContainersImageAssessmentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefenderCspmAwsOfferingMdcContainersImageAssessment) *DefenderCspmAwsOfferingMdcContainersImageAssessment {
+		return &v
+	}).(DefenderCspmAwsOfferingMdcContainersImageAssessmentPtrOutput)
+}
+
+// The cloud role ARN in AWS for this feature
+func (o DefenderCspmAwsOfferingMdcContainersImageAssessmentOutput) CloudRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderCspmAwsOfferingMdcContainersImageAssessment) *string { return v.CloudRoleArn }).(pulumi.StringPtrOutput)
+}
+
+// Is Microsoft Defender container image assessment enabled
+func (o DefenderCspmAwsOfferingMdcContainersImageAssessmentOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DefenderCspmAwsOfferingMdcContainersImageAssessment) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type DefenderCspmAwsOfferingMdcContainersImageAssessmentPtrOutput struct{ *pulumi.OutputState }
+
+func (DefenderCspmAwsOfferingMdcContainersImageAssessmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderCspmAwsOfferingMdcContainersImageAssessment)(nil)).Elem()
+}
+
+func (o DefenderCspmAwsOfferingMdcContainersImageAssessmentPtrOutput) ToDefenderCspmAwsOfferingMdcContainersImageAssessmentPtrOutput() DefenderCspmAwsOfferingMdcContainersImageAssessmentPtrOutput {
+	return o
+}
+
+func (o DefenderCspmAwsOfferingMdcContainersImageAssessmentPtrOutput) ToDefenderCspmAwsOfferingMdcContainersImageAssessmentPtrOutputWithContext(ctx context.Context) DefenderCspmAwsOfferingMdcContainersImageAssessmentPtrOutput {
+	return o
+}
+
+func (o DefenderCspmAwsOfferingMdcContainersImageAssessmentPtrOutput) Elem() DefenderCspmAwsOfferingMdcContainersImageAssessmentOutput {
+	return o.ApplyT(func(v *DefenderCspmAwsOfferingMdcContainersImageAssessment) DefenderCspmAwsOfferingMdcContainersImageAssessment {
+		if v != nil {
+			return *v
+		}
+		var ret DefenderCspmAwsOfferingMdcContainersImageAssessment
+		return ret
+	}).(DefenderCspmAwsOfferingMdcContainersImageAssessmentOutput)
+}
+
+// The cloud role ARN in AWS for this feature
+func (o DefenderCspmAwsOfferingMdcContainersImageAssessmentPtrOutput) CloudRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenderCspmAwsOfferingMdcContainersImageAssessment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CloudRoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Is Microsoft Defender container image assessment enabled
+func (o DefenderCspmAwsOfferingMdcContainersImageAssessmentPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DefenderCspmAwsOfferingMdcContainersImageAssessment) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 // The CSPM P1 for AWS offering
 type DefenderCspmAwsOfferingResponse struct {
+	// Defenders CSPM Permissions Management offering configurations
+	Ciem *DefenderCspmAwsOfferingResponseCiem `pulumi:"ciem"`
 	// The Microsoft Defender Data Sensitivity discovery configuration
 	DataSensitivityDiscovery *DefenderCspmAwsOfferingResponseDataSensitivityDiscovery `pulumi:"dataSensitivityDiscovery"`
 	// The databases DSPM configuration
 	DatabasesDspm *DefenderCspmAwsOfferingResponseDatabasesDspm `pulumi:"databasesDspm"`
 	// The offering description.
 	Description string `pulumi:"description"`
+	// The Microsoft Defender container agentless discovery K8s configuration
+	MdcContainersAgentlessDiscoveryK8s *DefenderCspmAwsOfferingResponseMdcContainersAgentlessDiscoveryK8s `pulumi:"mdcContainersAgentlessDiscoveryK8s"`
+	// The Microsoft Defender container image assessment configuration
+	MdcContainersImageAssessment *DefenderCspmAwsOfferingResponseMdcContainersImageAssessment `pulumi:"mdcContainersImageAssessment"`
 	// The type of the security offering.
 	// Expected value is 'DefenderCspmAws'.
 	OfferingType string `pulumi:"offeringType"`
-	// The Microsoft Defender for Server VM scanning configuration
+	// The Microsoft Defender for CSPM offering VM scanning configuration
 	VmScanners *DefenderCspmAwsOfferingResponseVmScanners `pulumi:"vmScanners"`
 }
 
@@ -6540,6 +7928,11 @@ func (o DefenderCspmAwsOfferingResponseOutput) ToDefenderCspmAwsOfferingResponse
 
 func (o DefenderCspmAwsOfferingResponseOutput) ToDefenderCspmAwsOfferingResponseOutputWithContext(ctx context.Context) DefenderCspmAwsOfferingResponseOutput {
 	return o
+}
+
+// Defenders CSPM Permissions Management offering configurations
+func (o DefenderCspmAwsOfferingResponseOutput) Ciem() DefenderCspmAwsOfferingResponseCiemPtrOutput {
+	return o.ApplyT(func(v DefenderCspmAwsOfferingResponse) *DefenderCspmAwsOfferingResponseCiem { return v.Ciem }).(DefenderCspmAwsOfferingResponseCiemPtrOutput)
 }
 
 // The Microsoft Defender Data Sensitivity discovery configuration
@@ -6561,86 +7954,167 @@ func (o DefenderCspmAwsOfferingResponseOutput) Description() pulumi.StringOutput
 	return o.ApplyT(func(v DefenderCspmAwsOfferingResponse) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// The Microsoft Defender container agentless discovery K8s configuration
+func (o DefenderCspmAwsOfferingResponseOutput) MdcContainersAgentlessDiscoveryK8s() DefenderCspmAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput {
+	return o.ApplyT(func(v DefenderCspmAwsOfferingResponse) *DefenderCspmAwsOfferingResponseMdcContainersAgentlessDiscoveryK8s {
+		return v.MdcContainersAgentlessDiscoveryK8s
+	}).(DefenderCspmAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput)
+}
+
+// The Microsoft Defender container image assessment configuration
+func (o DefenderCspmAwsOfferingResponseOutput) MdcContainersImageAssessment() DefenderCspmAwsOfferingResponseMdcContainersImageAssessmentPtrOutput {
+	return o.ApplyT(func(v DefenderCspmAwsOfferingResponse) *DefenderCspmAwsOfferingResponseMdcContainersImageAssessment {
+		return v.MdcContainersImageAssessment
+	}).(DefenderCspmAwsOfferingResponseMdcContainersImageAssessmentPtrOutput)
+}
+
 // The type of the security offering.
 // Expected value is 'DefenderCspmAws'.
 func (o DefenderCspmAwsOfferingResponseOutput) OfferingType() pulumi.StringOutput {
 	return o.ApplyT(func(v DefenderCspmAwsOfferingResponse) string { return v.OfferingType }).(pulumi.StringOutput)
 }
 
-// The Microsoft Defender for Server VM scanning configuration
+// The Microsoft Defender for CSPM offering VM scanning configuration
 func (o DefenderCspmAwsOfferingResponseOutput) VmScanners() DefenderCspmAwsOfferingResponseVmScannersPtrOutput {
 	return o.ApplyT(func(v DefenderCspmAwsOfferingResponse) *DefenderCspmAwsOfferingResponseVmScanners {
 		return v.VmScanners
 	}).(DefenderCspmAwsOfferingResponseVmScannersPtrOutput)
 }
 
-// configuration for Microsoft Defender for Server VM scanning
-type DefenderCspmAwsOfferingResponseConfiguration struct {
-	// The cloud role ARN in AWS for this feature
-	CloudRoleArn *string `pulumi:"cloudRoleArn"`
-	// VM tags that indicates that VM should not be scanned
-	ExclusionTags map[string]string `pulumi:"exclusionTags"`
-	// The scanning mode for the VM scan.
-	ScanningMode *string `pulumi:"scanningMode"`
+// Defenders CSPM Permissions Management offering configurations
+type DefenderCspmAwsOfferingResponseCiem struct {
+	// Defender CSPM Permissions Management discovery configuration
+	CiemDiscovery *DefenderCspmAwsOfferingResponseCiemDiscovery `pulumi:"ciemDiscovery"`
+	// AWS Defender CSPM Permissions Management OIDC (open id connect) connection configurations
+	CiemOidc *DefenderCspmAwsOfferingResponseCiemOidc `pulumi:"ciemOidc"`
 }
 
-// configuration for Microsoft Defender for Server VM scanning
-type DefenderCspmAwsOfferingResponseConfigurationOutput struct{ *pulumi.OutputState }
+// Defenders CSPM Permissions Management offering configurations
+type DefenderCspmAwsOfferingResponseCiemOutput struct{ *pulumi.OutputState }
 
-func (DefenderCspmAwsOfferingResponseConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefenderCspmAwsOfferingResponseConfiguration)(nil)).Elem()
+func (DefenderCspmAwsOfferingResponseCiemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderCspmAwsOfferingResponseCiem)(nil)).Elem()
 }
 
-func (o DefenderCspmAwsOfferingResponseConfigurationOutput) ToDefenderCspmAwsOfferingResponseConfigurationOutput() DefenderCspmAwsOfferingResponseConfigurationOutput {
+func (o DefenderCspmAwsOfferingResponseCiemOutput) ToDefenderCspmAwsOfferingResponseCiemOutput() DefenderCspmAwsOfferingResponseCiemOutput {
 	return o
 }
 
-func (o DefenderCspmAwsOfferingResponseConfigurationOutput) ToDefenderCspmAwsOfferingResponseConfigurationOutputWithContext(ctx context.Context) DefenderCspmAwsOfferingResponseConfigurationOutput {
+func (o DefenderCspmAwsOfferingResponseCiemOutput) ToDefenderCspmAwsOfferingResponseCiemOutputWithContext(ctx context.Context) DefenderCspmAwsOfferingResponseCiemOutput {
 	return o
 }
 
-// The cloud role ARN in AWS for this feature
-func (o DefenderCspmAwsOfferingResponseConfigurationOutput) CloudRoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DefenderCspmAwsOfferingResponseConfiguration) *string { return v.CloudRoleArn }).(pulumi.StringPtrOutput)
+// Defender CSPM Permissions Management discovery configuration
+func (o DefenderCspmAwsOfferingResponseCiemOutput) CiemDiscovery() DefenderCspmAwsOfferingResponseCiemDiscoveryPtrOutput {
+	return o.ApplyT(func(v DefenderCspmAwsOfferingResponseCiem) *DefenderCspmAwsOfferingResponseCiemDiscovery {
+		return v.CiemDiscovery
+	}).(DefenderCspmAwsOfferingResponseCiemDiscoveryPtrOutput)
 }
 
-// VM tags that indicates that VM should not be scanned
-func (o DefenderCspmAwsOfferingResponseConfigurationOutput) ExclusionTags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v DefenderCspmAwsOfferingResponseConfiguration) map[string]string { return v.ExclusionTags }).(pulumi.StringMapOutput)
+// AWS Defender CSPM Permissions Management OIDC (open id connect) connection configurations
+func (o DefenderCspmAwsOfferingResponseCiemOutput) CiemOidc() DefenderCspmAwsOfferingResponseCiemOidcPtrOutput {
+	return o.ApplyT(func(v DefenderCspmAwsOfferingResponseCiem) *DefenderCspmAwsOfferingResponseCiemOidc {
+		return v.CiemOidc
+	}).(DefenderCspmAwsOfferingResponseCiemOidcPtrOutput)
 }
 
-// The scanning mode for the VM scan.
-func (o DefenderCspmAwsOfferingResponseConfigurationOutput) ScanningMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DefenderCspmAwsOfferingResponseConfiguration) *string { return v.ScanningMode }).(pulumi.StringPtrOutput)
+type DefenderCspmAwsOfferingResponseCiemPtrOutput struct{ *pulumi.OutputState }
+
+func (DefenderCspmAwsOfferingResponseCiemPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderCspmAwsOfferingResponseCiem)(nil)).Elem()
 }
 
-type DefenderCspmAwsOfferingResponseConfigurationPtrOutput struct{ *pulumi.OutputState }
-
-func (DefenderCspmAwsOfferingResponseConfigurationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DefenderCspmAwsOfferingResponseConfiguration)(nil)).Elem()
-}
-
-func (o DefenderCspmAwsOfferingResponseConfigurationPtrOutput) ToDefenderCspmAwsOfferingResponseConfigurationPtrOutput() DefenderCspmAwsOfferingResponseConfigurationPtrOutput {
+func (o DefenderCspmAwsOfferingResponseCiemPtrOutput) ToDefenderCspmAwsOfferingResponseCiemPtrOutput() DefenderCspmAwsOfferingResponseCiemPtrOutput {
 	return o
 }
 
-func (o DefenderCspmAwsOfferingResponseConfigurationPtrOutput) ToDefenderCspmAwsOfferingResponseConfigurationPtrOutputWithContext(ctx context.Context) DefenderCspmAwsOfferingResponseConfigurationPtrOutput {
+func (o DefenderCspmAwsOfferingResponseCiemPtrOutput) ToDefenderCspmAwsOfferingResponseCiemPtrOutputWithContext(ctx context.Context) DefenderCspmAwsOfferingResponseCiemPtrOutput {
 	return o
 }
 
-func (o DefenderCspmAwsOfferingResponseConfigurationPtrOutput) Elem() DefenderCspmAwsOfferingResponseConfigurationOutput {
-	return o.ApplyT(func(v *DefenderCspmAwsOfferingResponseConfiguration) DefenderCspmAwsOfferingResponseConfiguration {
+func (o DefenderCspmAwsOfferingResponseCiemPtrOutput) Elem() DefenderCspmAwsOfferingResponseCiemOutput {
+	return o.ApplyT(func(v *DefenderCspmAwsOfferingResponseCiem) DefenderCspmAwsOfferingResponseCiem {
 		if v != nil {
 			return *v
 		}
-		var ret DefenderCspmAwsOfferingResponseConfiguration
+		var ret DefenderCspmAwsOfferingResponseCiem
 		return ret
-	}).(DefenderCspmAwsOfferingResponseConfigurationOutput)
+	}).(DefenderCspmAwsOfferingResponseCiemOutput)
 }
 
-// The cloud role ARN in AWS for this feature
-func (o DefenderCspmAwsOfferingResponseConfigurationPtrOutput) CloudRoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DefenderCspmAwsOfferingResponseConfiguration) *string {
+// Defender CSPM Permissions Management discovery configuration
+func (o DefenderCspmAwsOfferingResponseCiemPtrOutput) CiemDiscovery() DefenderCspmAwsOfferingResponseCiemDiscoveryPtrOutput {
+	return o.ApplyT(func(v *DefenderCspmAwsOfferingResponseCiem) *DefenderCspmAwsOfferingResponseCiemDiscovery {
+		if v == nil {
+			return nil
+		}
+		return v.CiemDiscovery
+	}).(DefenderCspmAwsOfferingResponseCiemDiscoveryPtrOutput)
+}
+
+// AWS Defender CSPM Permissions Management OIDC (open id connect) connection configurations
+func (o DefenderCspmAwsOfferingResponseCiemPtrOutput) CiemOidc() DefenderCspmAwsOfferingResponseCiemOidcPtrOutput {
+	return o.ApplyT(func(v *DefenderCspmAwsOfferingResponseCiem) *DefenderCspmAwsOfferingResponseCiemOidc {
+		if v == nil {
+			return nil
+		}
+		return v.CiemOidc
+	}).(DefenderCspmAwsOfferingResponseCiemOidcPtrOutput)
+}
+
+// Defender CSPM Permissions Management discovery configuration
+type DefenderCspmAwsOfferingResponseCiemDiscovery struct {
+	// The cloud role ARN in AWS for Permissions Management discovery
+	CloudRoleArn *string `pulumi:"cloudRoleArn"`
+}
+
+// Defender CSPM Permissions Management discovery configuration
+type DefenderCspmAwsOfferingResponseCiemDiscoveryOutput struct{ *pulumi.OutputState }
+
+func (DefenderCspmAwsOfferingResponseCiemDiscoveryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderCspmAwsOfferingResponseCiemDiscovery)(nil)).Elem()
+}
+
+func (o DefenderCspmAwsOfferingResponseCiemDiscoveryOutput) ToDefenderCspmAwsOfferingResponseCiemDiscoveryOutput() DefenderCspmAwsOfferingResponseCiemDiscoveryOutput {
+	return o
+}
+
+func (o DefenderCspmAwsOfferingResponseCiemDiscoveryOutput) ToDefenderCspmAwsOfferingResponseCiemDiscoveryOutputWithContext(ctx context.Context) DefenderCspmAwsOfferingResponseCiemDiscoveryOutput {
+	return o
+}
+
+// The cloud role ARN in AWS for Permissions Management discovery
+func (o DefenderCspmAwsOfferingResponseCiemDiscoveryOutput) CloudRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderCspmAwsOfferingResponseCiemDiscovery) *string { return v.CloudRoleArn }).(pulumi.StringPtrOutput)
+}
+
+type DefenderCspmAwsOfferingResponseCiemDiscoveryPtrOutput struct{ *pulumi.OutputState }
+
+func (DefenderCspmAwsOfferingResponseCiemDiscoveryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderCspmAwsOfferingResponseCiemDiscovery)(nil)).Elem()
+}
+
+func (o DefenderCspmAwsOfferingResponseCiemDiscoveryPtrOutput) ToDefenderCspmAwsOfferingResponseCiemDiscoveryPtrOutput() DefenderCspmAwsOfferingResponseCiemDiscoveryPtrOutput {
+	return o
+}
+
+func (o DefenderCspmAwsOfferingResponseCiemDiscoveryPtrOutput) ToDefenderCspmAwsOfferingResponseCiemDiscoveryPtrOutputWithContext(ctx context.Context) DefenderCspmAwsOfferingResponseCiemDiscoveryPtrOutput {
+	return o
+}
+
+func (o DefenderCspmAwsOfferingResponseCiemDiscoveryPtrOutput) Elem() DefenderCspmAwsOfferingResponseCiemDiscoveryOutput {
+	return o.ApplyT(func(v *DefenderCspmAwsOfferingResponseCiemDiscovery) DefenderCspmAwsOfferingResponseCiemDiscovery {
+		if v != nil {
+			return *v
+		}
+		var ret DefenderCspmAwsOfferingResponseCiemDiscovery
+		return ret
+	}).(DefenderCspmAwsOfferingResponseCiemDiscoveryOutput)
+}
+
+// The cloud role ARN in AWS for Permissions Management discovery
+func (o DefenderCspmAwsOfferingResponseCiemDiscoveryPtrOutput) CloudRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenderCspmAwsOfferingResponseCiemDiscovery) *string {
 		if v == nil {
 			return nil
 		}
@@ -6648,23 +8122,80 @@ func (o DefenderCspmAwsOfferingResponseConfigurationPtrOutput) CloudRoleArn() pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// VM tags that indicates that VM should not be scanned
-func (o DefenderCspmAwsOfferingResponseConfigurationPtrOutput) ExclusionTags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *DefenderCspmAwsOfferingResponseConfiguration) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.ExclusionTags
-	}).(pulumi.StringMapOutput)
+// AWS Defender CSPM Permissions Management OIDC (open id connect) connection configurations
+type DefenderCspmAwsOfferingResponseCiemOidc struct {
+	// the azure active directory app name used of authenticating against AWS
+	AzureActiveDirectoryAppName *string `pulumi:"azureActiveDirectoryAppName"`
+	// The cloud role ARN in AWS for Permissions Management used for oidc connection
+	CloudRoleArn *string `pulumi:"cloudRoleArn"`
 }
 
-// The scanning mode for the VM scan.
-func (o DefenderCspmAwsOfferingResponseConfigurationPtrOutput) ScanningMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DefenderCspmAwsOfferingResponseConfiguration) *string {
+// AWS Defender CSPM Permissions Management OIDC (open id connect) connection configurations
+type DefenderCspmAwsOfferingResponseCiemOidcOutput struct{ *pulumi.OutputState }
+
+func (DefenderCspmAwsOfferingResponseCiemOidcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderCspmAwsOfferingResponseCiemOidc)(nil)).Elem()
+}
+
+func (o DefenderCspmAwsOfferingResponseCiemOidcOutput) ToDefenderCspmAwsOfferingResponseCiemOidcOutput() DefenderCspmAwsOfferingResponseCiemOidcOutput {
+	return o
+}
+
+func (o DefenderCspmAwsOfferingResponseCiemOidcOutput) ToDefenderCspmAwsOfferingResponseCiemOidcOutputWithContext(ctx context.Context) DefenderCspmAwsOfferingResponseCiemOidcOutput {
+	return o
+}
+
+// the azure active directory app name used of authenticating against AWS
+func (o DefenderCspmAwsOfferingResponseCiemOidcOutput) AzureActiveDirectoryAppName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderCspmAwsOfferingResponseCiemOidc) *string { return v.AzureActiveDirectoryAppName }).(pulumi.StringPtrOutput)
+}
+
+// The cloud role ARN in AWS for Permissions Management used for oidc connection
+func (o DefenderCspmAwsOfferingResponseCiemOidcOutput) CloudRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderCspmAwsOfferingResponseCiemOidc) *string { return v.CloudRoleArn }).(pulumi.StringPtrOutput)
+}
+
+type DefenderCspmAwsOfferingResponseCiemOidcPtrOutput struct{ *pulumi.OutputState }
+
+func (DefenderCspmAwsOfferingResponseCiemOidcPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderCspmAwsOfferingResponseCiemOidc)(nil)).Elem()
+}
+
+func (o DefenderCspmAwsOfferingResponseCiemOidcPtrOutput) ToDefenderCspmAwsOfferingResponseCiemOidcPtrOutput() DefenderCspmAwsOfferingResponseCiemOidcPtrOutput {
+	return o
+}
+
+func (o DefenderCspmAwsOfferingResponseCiemOidcPtrOutput) ToDefenderCspmAwsOfferingResponseCiemOidcPtrOutputWithContext(ctx context.Context) DefenderCspmAwsOfferingResponseCiemOidcPtrOutput {
+	return o
+}
+
+func (o DefenderCspmAwsOfferingResponseCiemOidcPtrOutput) Elem() DefenderCspmAwsOfferingResponseCiemOidcOutput {
+	return o.ApplyT(func(v *DefenderCspmAwsOfferingResponseCiemOidc) DefenderCspmAwsOfferingResponseCiemOidc {
+		if v != nil {
+			return *v
+		}
+		var ret DefenderCspmAwsOfferingResponseCiemOidc
+		return ret
+	}).(DefenderCspmAwsOfferingResponseCiemOidcOutput)
+}
+
+// the azure active directory app name used of authenticating against AWS
+func (o DefenderCspmAwsOfferingResponseCiemOidcPtrOutput) AzureActiveDirectoryAppName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenderCspmAwsOfferingResponseCiemOidc) *string {
 		if v == nil {
 			return nil
 		}
-		return v.ScanningMode
+		return v.AzureActiveDirectoryAppName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The cloud role ARN in AWS for Permissions Management used for oidc connection
+func (o DefenderCspmAwsOfferingResponseCiemOidcPtrOutput) CloudRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenderCspmAwsOfferingResponseCiemOidc) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CloudRoleArn
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -6822,15 +8353,173 @@ func (o DefenderCspmAwsOfferingResponseDatabasesDspmPtrOutput) Enabled() pulumi.
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The Microsoft Defender for Server VM scanning configuration
-type DefenderCspmAwsOfferingResponseVmScanners struct {
-	// configuration for Microsoft Defender for Server VM scanning
-	Configuration *DefenderCspmAwsOfferingResponseConfiguration `pulumi:"configuration"`
-	// Is Microsoft Defender for Server VM scanning enabled
+// The Microsoft Defender container agentless discovery K8s configuration
+type DefenderCspmAwsOfferingResponseMdcContainersAgentlessDiscoveryK8s struct {
+	// The cloud role ARN in AWS for this feature
+	CloudRoleArn *string `pulumi:"cloudRoleArn"`
+	// Is Microsoft Defender container agentless discovery K8s enabled
 	Enabled *bool `pulumi:"enabled"`
 }
 
-// The Microsoft Defender for Server VM scanning configuration
+// The Microsoft Defender container agentless discovery K8s configuration
+type DefenderCspmAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sOutput struct{ *pulumi.OutputState }
+
+func (DefenderCspmAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderCspmAwsOfferingResponseMdcContainersAgentlessDiscoveryK8s)(nil)).Elem()
+}
+
+func (o DefenderCspmAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sOutput) ToDefenderCspmAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sOutput() DefenderCspmAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sOutput {
+	return o
+}
+
+func (o DefenderCspmAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sOutput) ToDefenderCspmAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sOutputWithContext(ctx context.Context) DefenderCspmAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sOutput {
+	return o
+}
+
+// The cloud role ARN in AWS for this feature
+func (o DefenderCspmAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sOutput) CloudRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderCspmAwsOfferingResponseMdcContainersAgentlessDiscoveryK8s) *string {
+		return v.CloudRoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Is Microsoft Defender container agentless discovery K8s enabled
+func (o DefenderCspmAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DefenderCspmAwsOfferingResponseMdcContainersAgentlessDiscoveryK8s) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type DefenderCspmAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput struct{ *pulumi.OutputState }
+
+func (DefenderCspmAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderCspmAwsOfferingResponseMdcContainersAgentlessDiscoveryK8s)(nil)).Elem()
+}
+
+func (o DefenderCspmAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput) ToDefenderCspmAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput() DefenderCspmAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput {
+	return o
+}
+
+func (o DefenderCspmAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput) ToDefenderCspmAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutputWithContext(ctx context.Context) DefenderCspmAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput {
+	return o
+}
+
+func (o DefenderCspmAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput) Elem() DefenderCspmAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sOutput {
+	return o.ApplyT(func(v *DefenderCspmAwsOfferingResponseMdcContainersAgentlessDiscoveryK8s) DefenderCspmAwsOfferingResponseMdcContainersAgentlessDiscoveryK8s {
+		if v != nil {
+			return *v
+		}
+		var ret DefenderCspmAwsOfferingResponseMdcContainersAgentlessDiscoveryK8s
+		return ret
+	}).(DefenderCspmAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sOutput)
+}
+
+// The cloud role ARN in AWS for this feature
+func (o DefenderCspmAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput) CloudRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenderCspmAwsOfferingResponseMdcContainersAgentlessDiscoveryK8s) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CloudRoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Is Microsoft Defender container agentless discovery K8s enabled
+func (o DefenderCspmAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DefenderCspmAwsOfferingResponseMdcContainersAgentlessDiscoveryK8s) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The Microsoft Defender container image assessment configuration
+type DefenderCspmAwsOfferingResponseMdcContainersImageAssessment struct {
+	// The cloud role ARN in AWS for this feature
+	CloudRoleArn *string `pulumi:"cloudRoleArn"`
+	// Is Microsoft Defender container image assessment enabled
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// The Microsoft Defender container image assessment configuration
+type DefenderCspmAwsOfferingResponseMdcContainersImageAssessmentOutput struct{ *pulumi.OutputState }
+
+func (DefenderCspmAwsOfferingResponseMdcContainersImageAssessmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderCspmAwsOfferingResponseMdcContainersImageAssessment)(nil)).Elem()
+}
+
+func (o DefenderCspmAwsOfferingResponseMdcContainersImageAssessmentOutput) ToDefenderCspmAwsOfferingResponseMdcContainersImageAssessmentOutput() DefenderCspmAwsOfferingResponseMdcContainersImageAssessmentOutput {
+	return o
+}
+
+func (o DefenderCspmAwsOfferingResponseMdcContainersImageAssessmentOutput) ToDefenderCspmAwsOfferingResponseMdcContainersImageAssessmentOutputWithContext(ctx context.Context) DefenderCspmAwsOfferingResponseMdcContainersImageAssessmentOutput {
+	return o
+}
+
+// The cloud role ARN in AWS for this feature
+func (o DefenderCspmAwsOfferingResponseMdcContainersImageAssessmentOutput) CloudRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderCspmAwsOfferingResponseMdcContainersImageAssessment) *string { return v.CloudRoleArn }).(pulumi.StringPtrOutput)
+}
+
+// Is Microsoft Defender container image assessment enabled
+func (o DefenderCspmAwsOfferingResponseMdcContainersImageAssessmentOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DefenderCspmAwsOfferingResponseMdcContainersImageAssessment) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type DefenderCspmAwsOfferingResponseMdcContainersImageAssessmentPtrOutput struct{ *pulumi.OutputState }
+
+func (DefenderCspmAwsOfferingResponseMdcContainersImageAssessmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderCspmAwsOfferingResponseMdcContainersImageAssessment)(nil)).Elem()
+}
+
+func (o DefenderCspmAwsOfferingResponseMdcContainersImageAssessmentPtrOutput) ToDefenderCspmAwsOfferingResponseMdcContainersImageAssessmentPtrOutput() DefenderCspmAwsOfferingResponseMdcContainersImageAssessmentPtrOutput {
+	return o
+}
+
+func (o DefenderCspmAwsOfferingResponseMdcContainersImageAssessmentPtrOutput) ToDefenderCspmAwsOfferingResponseMdcContainersImageAssessmentPtrOutputWithContext(ctx context.Context) DefenderCspmAwsOfferingResponseMdcContainersImageAssessmentPtrOutput {
+	return o
+}
+
+func (o DefenderCspmAwsOfferingResponseMdcContainersImageAssessmentPtrOutput) Elem() DefenderCspmAwsOfferingResponseMdcContainersImageAssessmentOutput {
+	return o.ApplyT(func(v *DefenderCspmAwsOfferingResponseMdcContainersImageAssessment) DefenderCspmAwsOfferingResponseMdcContainersImageAssessment {
+		if v != nil {
+			return *v
+		}
+		var ret DefenderCspmAwsOfferingResponseMdcContainersImageAssessment
+		return ret
+	}).(DefenderCspmAwsOfferingResponseMdcContainersImageAssessmentOutput)
+}
+
+// The cloud role ARN in AWS for this feature
+func (o DefenderCspmAwsOfferingResponseMdcContainersImageAssessmentPtrOutput) CloudRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenderCspmAwsOfferingResponseMdcContainersImageAssessment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CloudRoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Is Microsoft Defender container image assessment enabled
+func (o DefenderCspmAwsOfferingResponseMdcContainersImageAssessmentPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DefenderCspmAwsOfferingResponseMdcContainersImageAssessment) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The Microsoft Defender for CSPM offering VM scanning configuration
+type DefenderCspmAwsOfferingResponseVmScanners struct {
+	// The cloud role ARN in AWS for this feature
+	CloudRoleArn *string `pulumi:"cloudRoleArn"`
+	// Configuration for VM scanning
+	Configuration *VmScannersBaseResponseConfiguration `pulumi:"configuration"`
+	// Is VM scanning enabled
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// The Microsoft Defender for CSPM offering VM scanning configuration
 type DefenderCspmAwsOfferingResponseVmScannersOutput struct{ *pulumi.OutputState }
 
 func (DefenderCspmAwsOfferingResponseVmScannersOutput) ElementType() reflect.Type {
@@ -6845,14 +8534,19 @@ func (o DefenderCspmAwsOfferingResponseVmScannersOutput) ToDefenderCspmAwsOfferi
 	return o
 }
 
-// configuration for Microsoft Defender for Server VM scanning
-func (o DefenderCspmAwsOfferingResponseVmScannersOutput) Configuration() DefenderCspmAwsOfferingResponseConfigurationPtrOutput {
-	return o.ApplyT(func(v DefenderCspmAwsOfferingResponseVmScanners) *DefenderCspmAwsOfferingResponseConfiguration {
-		return v.Configuration
-	}).(DefenderCspmAwsOfferingResponseConfigurationPtrOutput)
+// The cloud role ARN in AWS for this feature
+func (o DefenderCspmAwsOfferingResponseVmScannersOutput) CloudRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderCspmAwsOfferingResponseVmScanners) *string { return v.CloudRoleArn }).(pulumi.StringPtrOutput)
 }
 
-// Is Microsoft Defender for Server VM scanning enabled
+// Configuration for VM scanning
+func (o DefenderCspmAwsOfferingResponseVmScannersOutput) Configuration() VmScannersBaseResponseConfigurationPtrOutput {
+	return o.ApplyT(func(v DefenderCspmAwsOfferingResponseVmScanners) *VmScannersBaseResponseConfiguration {
+		return v.Configuration
+	}).(VmScannersBaseResponseConfigurationPtrOutput)
+}
+
+// Is VM scanning enabled
 func (o DefenderCspmAwsOfferingResponseVmScannersOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DefenderCspmAwsOfferingResponseVmScanners) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -6881,17 +8575,27 @@ func (o DefenderCspmAwsOfferingResponseVmScannersPtrOutput) Elem() DefenderCspmA
 	}).(DefenderCspmAwsOfferingResponseVmScannersOutput)
 }
 
-// configuration for Microsoft Defender for Server VM scanning
-func (o DefenderCspmAwsOfferingResponseVmScannersPtrOutput) Configuration() DefenderCspmAwsOfferingResponseConfigurationPtrOutput {
-	return o.ApplyT(func(v *DefenderCspmAwsOfferingResponseVmScanners) *DefenderCspmAwsOfferingResponseConfiguration {
+// The cloud role ARN in AWS for this feature
+func (o DefenderCspmAwsOfferingResponseVmScannersPtrOutput) CloudRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenderCspmAwsOfferingResponseVmScanners) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CloudRoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for VM scanning
+func (o DefenderCspmAwsOfferingResponseVmScannersPtrOutput) Configuration() VmScannersBaseResponseConfigurationPtrOutput {
+	return o.ApplyT(func(v *DefenderCspmAwsOfferingResponseVmScanners) *VmScannersBaseResponseConfiguration {
 		if v == nil {
 			return nil
 		}
 		return v.Configuration
-	}).(DefenderCspmAwsOfferingResponseConfigurationPtrOutput)
+	}).(VmScannersBaseResponseConfigurationPtrOutput)
 }
 
-// Is Microsoft Defender for Server VM scanning enabled
+// Is VM scanning enabled
 func (o DefenderCspmAwsOfferingResponseVmScannersPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DefenderCspmAwsOfferingResponseVmScanners) *bool {
 		if v == nil {
@@ -6901,11 +8605,13 @@ func (o DefenderCspmAwsOfferingResponseVmScannersPtrOutput) Enabled() pulumi.Boo
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The Microsoft Defender for Server VM scanning configuration
+// The Microsoft Defender for CSPM offering VM scanning configuration
 type DefenderCspmAwsOfferingVmScanners struct {
-	// configuration for Microsoft Defender for Server VM scanning
-	Configuration *DefenderCspmAwsOfferingConfiguration `pulumi:"configuration"`
-	// Is Microsoft Defender for Server VM scanning enabled
+	// The cloud role ARN in AWS for this feature
+	CloudRoleArn *string `pulumi:"cloudRoleArn"`
+	// Configuration for VM scanning
+	Configuration *VmScannersBaseConfiguration `pulumi:"configuration"`
+	// Is VM scanning enabled
 	Enabled *bool `pulumi:"enabled"`
 }
 
@@ -6920,11 +8626,13 @@ type DefenderCspmAwsOfferingVmScannersInput interface {
 	ToDefenderCspmAwsOfferingVmScannersOutputWithContext(context.Context) DefenderCspmAwsOfferingVmScannersOutput
 }
 
-// The Microsoft Defender for Server VM scanning configuration
+// The Microsoft Defender for CSPM offering VM scanning configuration
 type DefenderCspmAwsOfferingVmScannersArgs struct {
-	// configuration for Microsoft Defender for Server VM scanning
-	Configuration DefenderCspmAwsOfferingConfigurationPtrInput `pulumi:"configuration"`
-	// Is Microsoft Defender for Server VM scanning enabled
+	// The cloud role ARN in AWS for this feature
+	CloudRoleArn pulumi.StringPtrInput `pulumi:"cloudRoleArn"`
+	// Configuration for VM scanning
+	Configuration VmScannersBaseConfigurationPtrInput `pulumi:"configuration"`
+	// Is VM scanning enabled
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
@@ -6981,7 +8689,7 @@ func (i *defenderCspmAwsOfferingVmScannersPtrType) ToDefenderCspmAwsOfferingVmSc
 	return pulumi.ToOutputWithContext(ctx, i).(DefenderCspmAwsOfferingVmScannersPtrOutput)
 }
 
-// The Microsoft Defender for Server VM scanning configuration
+// The Microsoft Defender for CSPM offering VM scanning configuration
 type DefenderCspmAwsOfferingVmScannersOutput struct{ *pulumi.OutputState }
 
 func (DefenderCspmAwsOfferingVmScannersOutput) ElementType() reflect.Type {
@@ -7006,14 +8714,17 @@ func (o DefenderCspmAwsOfferingVmScannersOutput) ToDefenderCspmAwsOfferingVmScan
 	}).(DefenderCspmAwsOfferingVmScannersPtrOutput)
 }
 
-// configuration for Microsoft Defender for Server VM scanning
-func (o DefenderCspmAwsOfferingVmScannersOutput) Configuration() DefenderCspmAwsOfferingConfigurationPtrOutput {
-	return o.ApplyT(func(v DefenderCspmAwsOfferingVmScanners) *DefenderCspmAwsOfferingConfiguration {
-		return v.Configuration
-	}).(DefenderCspmAwsOfferingConfigurationPtrOutput)
+// The cloud role ARN in AWS for this feature
+func (o DefenderCspmAwsOfferingVmScannersOutput) CloudRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderCspmAwsOfferingVmScanners) *string { return v.CloudRoleArn }).(pulumi.StringPtrOutput)
 }
 
-// Is Microsoft Defender for Server VM scanning enabled
+// Configuration for VM scanning
+func (o DefenderCspmAwsOfferingVmScannersOutput) Configuration() VmScannersBaseConfigurationPtrOutput {
+	return o.ApplyT(func(v DefenderCspmAwsOfferingVmScanners) *VmScannersBaseConfiguration { return v.Configuration }).(VmScannersBaseConfigurationPtrOutput)
+}
+
+// Is VM scanning enabled
 func (o DefenderCspmAwsOfferingVmScannersOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DefenderCspmAwsOfferingVmScanners) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -7042,17 +8753,27 @@ func (o DefenderCspmAwsOfferingVmScannersPtrOutput) Elem() DefenderCspmAwsOfferi
 	}).(DefenderCspmAwsOfferingVmScannersOutput)
 }
 
-// configuration for Microsoft Defender for Server VM scanning
-func (o DefenderCspmAwsOfferingVmScannersPtrOutput) Configuration() DefenderCspmAwsOfferingConfigurationPtrOutput {
-	return o.ApplyT(func(v *DefenderCspmAwsOfferingVmScanners) *DefenderCspmAwsOfferingConfiguration {
+// The cloud role ARN in AWS for this feature
+func (o DefenderCspmAwsOfferingVmScannersPtrOutput) CloudRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenderCspmAwsOfferingVmScanners) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CloudRoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for VM scanning
+func (o DefenderCspmAwsOfferingVmScannersPtrOutput) Configuration() VmScannersBaseConfigurationPtrOutput {
+	return o.ApplyT(func(v *DefenderCspmAwsOfferingVmScanners) *VmScannersBaseConfiguration {
 		if v == nil {
 			return nil
 		}
 		return v.Configuration
-	}).(DefenderCspmAwsOfferingConfigurationPtrOutput)
+	}).(VmScannersBaseConfigurationPtrOutput)
 }
 
-// Is Microsoft Defender for Server VM scanning enabled
+// Is VM scanning enabled
 func (o DefenderCspmAwsOfferingVmScannersPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DefenderCspmAwsOfferingVmScanners) *bool {
 		if v == nil {
@@ -7062,11 +8783,114 @@ func (o DefenderCspmAwsOfferingVmScannersPtrOutput) Enabled() pulumi.BoolPtrOutp
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The Defender for CSPM Docker Hub offering configurations
+type DefenderCspmDockerHubOffering struct {
+	// The type of the security offering.
+	// Expected value is 'DefenderCspmDockerHub'.
+	OfferingType string `pulumi:"offeringType"`
+}
+
+// DefenderCspmDockerHubOfferingInput is an input type that accepts DefenderCspmDockerHubOfferingArgs and DefenderCspmDockerHubOfferingOutput values.
+// You can construct a concrete instance of `DefenderCspmDockerHubOfferingInput` via:
+//
+//	DefenderCspmDockerHubOfferingArgs{...}
+type DefenderCspmDockerHubOfferingInput interface {
+	pulumi.Input
+
+	ToDefenderCspmDockerHubOfferingOutput() DefenderCspmDockerHubOfferingOutput
+	ToDefenderCspmDockerHubOfferingOutputWithContext(context.Context) DefenderCspmDockerHubOfferingOutput
+}
+
+// The Defender for CSPM Docker Hub offering configurations
+type DefenderCspmDockerHubOfferingArgs struct {
+	// The type of the security offering.
+	// Expected value is 'DefenderCspmDockerHub'.
+	OfferingType pulumi.StringInput `pulumi:"offeringType"`
+}
+
+func (DefenderCspmDockerHubOfferingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderCspmDockerHubOffering)(nil)).Elem()
+}
+
+func (i DefenderCspmDockerHubOfferingArgs) ToDefenderCspmDockerHubOfferingOutput() DefenderCspmDockerHubOfferingOutput {
+	return i.ToDefenderCspmDockerHubOfferingOutputWithContext(context.Background())
+}
+
+func (i DefenderCspmDockerHubOfferingArgs) ToDefenderCspmDockerHubOfferingOutputWithContext(ctx context.Context) DefenderCspmDockerHubOfferingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderCspmDockerHubOfferingOutput)
+}
+
+// The Defender for CSPM Docker Hub offering configurations
+type DefenderCspmDockerHubOfferingOutput struct{ *pulumi.OutputState }
+
+func (DefenderCspmDockerHubOfferingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderCspmDockerHubOffering)(nil)).Elem()
+}
+
+func (o DefenderCspmDockerHubOfferingOutput) ToDefenderCspmDockerHubOfferingOutput() DefenderCspmDockerHubOfferingOutput {
+	return o
+}
+
+func (o DefenderCspmDockerHubOfferingOutput) ToDefenderCspmDockerHubOfferingOutputWithContext(ctx context.Context) DefenderCspmDockerHubOfferingOutput {
+	return o
+}
+
+// The type of the security offering.
+// Expected value is 'DefenderCspmDockerHub'.
+func (o DefenderCspmDockerHubOfferingOutput) OfferingType() pulumi.StringOutput {
+	return o.ApplyT(func(v DefenderCspmDockerHubOffering) string { return v.OfferingType }).(pulumi.StringOutput)
+}
+
+// The Defender for CSPM Docker Hub offering configurations
+type DefenderCspmDockerHubOfferingResponse struct {
+	// The offering description.
+	Description string `pulumi:"description"`
+	// The type of the security offering.
+	// Expected value is 'DefenderCspmDockerHub'.
+	OfferingType string `pulumi:"offeringType"`
+}
+
+// The Defender for CSPM Docker Hub offering configurations
+type DefenderCspmDockerHubOfferingResponseOutput struct{ *pulumi.OutputState }
+
+func (DefenderCspmDockerHubOfferingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderCspmDockerHubOfferingResponse)(nil)).Elem()
+}
+
+func (o DefenderCspmDockerHubOfferingResponseOutput) ToDefenderCspmDockerHubOfferingResponseOutput() DefenderCspmDockerHubOfferingResponseOutput {
+	return o
+}
+
+func (o DefenderCspmDockerHubOfferingResponseOutput) ToDefenderCspmDockerHubOfferingResponseOutputWithContext(ctx context.Context) DefenderCspmDockerHubOfferingResponseOutput {
+	return o
+}
+
+// The offering description.
+func (o DefenderCspmDockerHubOfferingResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v DefenderCspmDockerHubOfferingResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The type of the security offering.
+// Expected value is 'DefenderCspmDockerHub'.
+func (o DefenderCspmDockerHubOfferingResponseOutput) OfferingType() pulumi.StringOutput {
+	return o.ApplyT(func(v DefenderCspmDockerHubOfferingResponse) string { return v.OfferingType }).(pulumi.StringOutput)
+}
+
 // The CSPM P1 for GCP offering
 type DefenderCspmGcpOffering struct {
+	// GCP Defenders CSPM Permissions Management OIDC (Open ID connect) connection configurations
+	CiemDiscovery *DefenderCspmGcpOfferingCiemDiscovery `pulumi:"ciemDiscovery"`
+	// The Microsoft Defender Data Sensitivity discovery configuration
+	DataSensitivityDiscovery *DefenderCspmGcpOfferingDataSensitivityDiscovery `pulumi:"dataSensitivityDiscovery"`
+	// The Microsoft Defender Container agentless discovery configuration
+	MdcContainersAgentlessDiscoveryK8s *DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8s `pulumi:"mdcContainersAgentlessDiscoveryK8s"`
+	// The Microsoft Defender Container image assessment configuration
+	MdcContainersImageAssessment *DefenderCspmGcpOfferingMdcContainersImageAssessment `pulumi:"mdcContainersImageAssessment"`
 	// The type of the security offering.
 	// Expected value is 'DefenderCspmGcp'.
 	OfferingType string `pulumi:"offeringType"`
+	// The Microsoft Defender for CSPM VM scanning configuration
+	VmScanners *DefenderCspmGcpOfferingVmScanners `pulumi:"vmScanners"`
 }
 
 // DefenderCspmGcpOfferingInput is an input type that accepts DefenderCspmGcpOfferingArgs and DefenderCspmGcpOfferingOutput values.
@@ -7082,9 +8906,19 @@ type DefenderCspmGcpOfferingInput interface {
 
 // The CSPM P1 for GCP offering
 type DefenderCspmGcpOfferingArgs struct {
+	// GCP Defenders CSPM Permissions Management OIDC (Open ID connect) connection configurations
+	CiemDiscovery DefenderCspmGcpOfferingCiemDiscoveryPtrInput `pulumi:"ciemDiscovery"`
+	// The Microsoft Defender Data Sensitivity discovery configuration
+	DataSensitivityDiscovery DefenderCspmGcpOfferingDataSensitivityDiscoveryPtrInput `pulumi:"dataSensitivityDiscovery"`
+	// The Microsoft Defender Container agentless discovery configuration
+	MdcContainersAgentlessDiscoveryK8s DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrInput `pulumi:"mdcContainersAgentlessDiscoveryK8s"`
+	// The Microsoft Defender Container image assessment configuration
+	MdcContainersImageAssessment DefenderCspmGcpOfferingMdcContainersImageAssessmentPtrInput `pulumi:"mdcContainersImageAssessment"`
 	// The type of the security offering.
 	// Expected value is 'DefenderCspmGcp'.
 	OfferingType pulumi.StringInput `pulumi:"offeringType"`
+	// The Microsoft Defender for CSPM VM scanning configuration
+	VmScanners DefenderCspmGcpOfferingVmScannersPtrInput `pulumi:"vmScanners"`
 }
 
 func (DefenderCspmGcpOfferingArgs) ElementType() reflect.Type {
@@ -7114,19 +8948,780 @@ func (o DefenderCspmGcpOfferingOutput) ToDefenderCspmGcpOfferingOutputWithContex
 	return o
 }
 
+// GCP Defenders CSPM Permissions Management OIDC (Open ID connect) connection configurations
+func (o DefenderCspmGcpOfferingOutput) CiemDiscovery() DefenderCspmGcpOfferingCiemDiscoveryPtrOutput {
+	return o.ApplyT(func(v DefenderCspmGcpOffering) *DefenderCspmGcpOfferingCiemDiscovery { return v.CiemDiscovery }).(DefenderCspmGcpOfferingCiemDiscoveryPtrOutput)
+}
+
+// The Microsoft Defender Data Sensitivity discovery configuration
+func (o DefenderCspmGcpOfferingOutput) DataSensitivityDiscovery() DefenderCspmGcpOfferingDataSensitivityDiscoveryPtrOutput {
+	return o.ApplyT(func(v DefenderCspmGcpOffering) *DefenderCspmGcpOfferingDataSensitivityDiscovery {
+		return v.DataSensitivityDiscovery
+	}).(DefenderCspmGcpOfferingDataSensitivityDiscoveryPtrOutput)
+}
+
+// The Microsoft Defender Container agentless discovery configuration
+func (o DefenderCspmGcpOfferingOutput) MdcContainersAgentlessDiscoveryK8s() DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput {
+	return o.ApplyT(func(v DefenderCspmGcpOffering) *DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8s {
+		return v.MdcContainersAgentlessDiscoveryK8s
+	}).(DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput)
+}
+
+// The Microsoft Defender Container image assessment configuration
+func (o DefenderCspmGcpOfferingOutput) MdcContainersImageAssessment() DefenderCspmGcpOfferingMdcContainersImageAssessmentPtrOutput {
+	return o.ApplyT(func(v DefenderCspmGcpOffering) *DefenderCspmGcpOfferingMdcContainersImageAssessment {
+		return v.MdcContainersImageAssessment
+	}).(DefenderCspmGcpOfferingMdcContainersImageAssessmentPtrOutput)
+}
+
 // The type of the security offering.
 // Expected value is 'DefenderCspmGcp'.
 func (o DefenderCspmGcpOfferingOutput) OfferingType() pulumi.StringOutput {
 	return o.ApplyT(func(v DefenderCspmGcpOffering) string { return v.OfferingType }).(pulumi.StringOutput)
 }
 
+// The Microsoft Defender for CSPM VM scanning configuration
+func (o DefenderCspmGcpOfferingOutput) VmScanners() DefenderCspmGcpOfferingVmScannersPtrOutput {
+	return o.ApplyT(func(v DefenderCspmGcpOffering) *DefenderCspmGcpOfferingVmScanners { return v.VmScanners }).(DefenderCspmGcpOfferingVmScannersPtrOutput)
+}
+
+// GCP Defenders CSPM Permissions Management OIDC (Open ID connect) connection configurations
+type DefenderCspmGcpOfferingCiemDiscovery struct {
+	// the azure active directory app name used of authenticating against GCP workload identity federation
+	AzureActiveDirectoryAppName *string `pulumi:"azureActiveDirectoryAppName"`
+	// The service account email address in GCP for Permissions Management offering
+	ServiceAccountEmailAddress *string `pulumi:"serviceAccountEmailAddress"`
+	// The GCP workload identity provider id for Permissions Management offering
+	WorkloadIdentityProviderId *string `pulumi:"workloadIdentityProviderId"`
+}
+
+// DefenderCspmGcpOfferingCiemDiscoveryInput is an input type that accepts DefenderCspmGcpOfferingCiemDiscoveryArgs and DefenderCspmGcpOfferingCiemDiscoveryOutput values.
+// You can construct a concrete instance of `DefenderCspmGcpOfferingCiemDiscoveryInput` via:
+//
+//	DefenderCspmGcpOfferingCiemDiscoveryArgs{...}
+type DefenderCspmGcpOfferingCiemDiscoveryInput interface {
+	pulumi.Input
+
+	ToDefenderCspmGcpOfferingCiemDiscoveryOutput() DefenderCspmGcpOfferingCiemDiscoveryOutput
+	ToDefenderCspmGcpOfferingCiemDiscoveryOutputWithContext(context.Context) DefenderCspmGcpOfferingCiemDiscoveryOutput
+}
+
+// GCP Defenders CSPM Permissions Management OIDC (Open ID connect) connection configurations
+type DefenderCspmGcpOfferingCiemDiscoveryArgs struct {
+	// the azure active directory app name used of authenticating against GCP workload identity federation
+	AzureActiveDirectoryAppName pulumi.StringPtrInput `pulumi:"azureActiveDirectoryAppName"`
+	// The service account email address in GCP for Permissions Management offering
+	ServiceAccountEmailAddress pulumi.StringPtrInput `pulumi:"serviceAccountEmailAddress"`
+	// The GCP workload identity provider id for Permissions Management offering
+	WorkloadIdentityProviderId pulumi.StringPtrInput `pulumi:"workloadIdentityProviderId"`
+}
+
+func (DefenderCspmGcpOfferingCiemDiscoveryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderCspmGcpOfferingCiemDiscovery)(nil)).Elem()
+}
+
+func (i DefenderCspmGcpOfferingCiemDiscoveryArgs) ToDefenderCspmGcpOfferingCiemDiscoveryOutput() DefenderCspmGcpOfferingCiemDiscoveryOutput {
+	return i.ToDefenderCspmGcpOfferingCiemDiscoveryOutputWithContext(context.Background())
+}
+
+func (i DefenderCspmGcpOfferingCiemDiscoveryArgs) ToDefenderCspmGcpOfferingCiemDiscoveryOutputWithContext(ctx context.Context) DefenderCspmGcpOfferingCiemDiscoveryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderCspmGcpOfferingCiemDiscoveryOutput)
+}
+
+func (i DefenderCspmGcpOfferingCiemDiscoveryArgs) ToDefenderCspmGcpOfferingCiemDiscoveryPtrOutput() DefenderCspmGcpOfferingCiemDiscoveryPtrOutput {
+	return i.ToDefenderCspmGcpOfferingCiemDiscoveryPtrOutputWithContext(context.Background())
+}
+
+func (i DefenderCspmGcpOfferingCiemDiscoveryArgs) ToDefenderCspmGcpOfferingCiemDiscoveryPtrOutputWithContext(ctx context.Context) DefenderCspmGcpOfferingCiemDiscoveryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderCspmGcpOfferingCiemDiscoveryOutput).ToDefenderCspmGcpOfferingCiemDiscoveryPtrOutputWithContext(ctx)
+}
+
+// DefenderCspmGcpOfferingCiemDiscoveryPtrInput is an input type that accepts DefenderCspmGcpOfferingCiemDiscoveryArgs, DefenderCspmGcpOfferingCiemDiscoveryPtr and DefenderCspmGcpOfferingCiemDiscoveryPtrOutput values.
+// You can construct a concrete instance of `DefenderCspmGcpOfferingCiemDiscoveryPtrInput` via:
+//
+//	        DefenderCspmGcpOfferingCiemDiscoveryArgs{...}
+//
+//	or:
+//
+//	        nil
+type DefenderCspmGcpOfferingCiemDiscoveryPtrInput interface {
+	pulumi.Input
+
+	ToDefenderCspmGcpOfferingCiemDiscoveryPtrOutput() DefenderCspmGcpOfferingCiemDiscoveryPtrOutput
+	ToDefenderCspmGcpOfferingCiemDiscoveryPtrOutputWithContext(context.Context) DefenderCspmGcpOfferingCiemDiscoveryPtrOutput
+}
+
+type defenderCspmGcpOfferingCiemDiscoveryPtrType DefenderCspmGcpOfferingCiemDiscoveryArgs
+
+func DefenderCspmGcpOfferingCiemDiscoveryPtr(v *DefenderCspmGcpOfferingCiemDiscoveryArgs) DefenderCspmGcpOfferingCiemDiscoveryPtrInput {
+	return (*defenderCspmGcpOfferingCiemDiscoveryPtrType)(v)
+}
+
+func (*defenderCspmGcpOfferingCiemDiscoveryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderCspmGcpOfferingCiemDiscovery)(nil)).Elem()
+}
+
+func (i *defenderCspmGcpOfferingCiemDiscoveryPtrType) ToDefenderCspmGcpOfferingCiemDiscoveryPtrOutput() DefenderCspmGcpOfferingCiemDiscoveryPtrOutput {
+	return i.ToDefenderCspmGcpOfferingCiemDiscoveryPtrOutputWithContext(context.Background())
+}
+
+func (i *defenderCspmGcpOfferingCiemDiscoveryPtrType) ToDefenderCspmGcpOfferingCiemDiscoveryPtrOutputWithContext(ctx context.Context) DefenderCspmGcpOfferingCiemDiscoveryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderCspmGcpOfferingCiemDiscoveryPtrOutput)
+}
+
+// GCP Defenders CSPM Permissions Management OIDC (Open ID connect) connection configurations
+type DefenderCspmGcpOfferingCiemDiscoveryOutput struct{ *pulumi.OutputState }
+
+func (DefenderCspmGcpOfferingCiemDiscoveryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderCspmGcpOfferingCiemDiscovery)(nil)).Elem()
+}
+
+func (o DefenderCspmGcpOfferingCiemDiscoveryOutput) ToDefenderCspmGcpOfferingCiemDiscoveryOutput() DefenderCspmGcpOfferingCiemDiscoveryOutput {
+	return o
+}
+
+func (o DefenderCspmGcpOfferingCiemDiscoveryOutput) ToDefenderCspmGcpOfferingCiemDiscoveryOutputWithContext(ctx context.Context) DefenderCspmGcpOfferingCiemDiscoveryOutput {
+	return o
+}
+
+func (o DefenderCspmGcpOfferingCiemDiscoveryOutput) ToDefenderCspmGcpOfferingCiemDiscoveryPtrOutput() DefenderCspmGcpOfferingCiemDiscoveryPtrOutput {
+	return o.ToDefenderCspmGcpOfferingCiemDiscoveryPtrOutputWithContext(context.Background())
+}
+
+func (o DefenderCspmGcpOfferingCiemDiscoveryOutput) ToDefenderCspmGcpOfferingCiemDiscoveryPtrOutputWithContext(ctx context.Context) DefenderCspmGcpOfferingCiemDiscoveryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefenderCspmGcpOfferingCiemDiscovery) *DefenderCspmGcpOfferingCiemDiscovery {
+		return &v
+	}).(DefenderCspmGcpOfferingCiemDiscoveryPtrOutput)
+}
+
+// the azure active directory app name used of authenticating against GCP workload identity federation
+func (o DefenderCspmGcpOfferingCiemDiscoveryOutput) AzureActiveDirectoryAppName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderCspmGcpOfferingCiemDiscovery) *string { return v.AzureActiveDirectoryAppName }).(pulumi.StringPtrOutput)
+}
+
+// The service account email address in GCP for Permissions Management offering
+func (o DefenderCspmGcpOfferingCiemDiscoveryOutput) ServiceAccountEmailAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderCspmGcpOfferingCiemDiscovery) *string { return v.ServiceAccountEmailAddress }).(pulumi.StringPtrOutput)
+}
+
+// The GCP workload identity provider id for Permissions Management offering
+func (o DefenderCspmGcpOfferingCiemDiscoveryOutput) WorkloadIdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderCspmGcpOfferingCiemDiscovery) *string { return v.WorkloadIdentityProviderId }).(pulumi.StringPtrOutput)
+}
+
+type DefenderCspmGcpOfferingCiemDiscoveryPtrOutput struct{ *pulumi.OutputState }
+
+func (DefenderCspmGcpOfferingCiemDiscoveryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderCspmGcpOfferingCiemDiscovery)(nil)).Elem()
+}
+
+func (o DefenderCspmGcpOfferingCiemDiscoveryPtrOutput) ToDefenderCspmGcpOfferingCiemDiscoveryPtrOutput() DefenderCspmGcpOfferingCiemDiscoveryPtrOutput {
+	return o
+}
+
+func (o DefenderCspmGcpOfferingCiemDiscoveryPtrOutput) ToDefenderCspmGcpOfferingCiemDiscoveryPtrOutputWithContext(ctx context.Context) DefenderCspmGcpOfferingCiemDiscoveryPtrOutput {
+	return o
+}
+
+func (o DefenderCspmGcpOfferingCiemDiscoveryPtrOutput) Elem() DefenderCspmGcpOfferingCiemDiscoveryOutput {
+	return o.ApplyT(func(v *DefenderCspmGcpOfferingCiemDiscovery) DefenderCspmGcpOfferingCiemDiscovery {
+		if v != nil {
+			return *v
+		}
+		var ret DefenderCspmGcpOfferingCiemDiscovery
+		return ret
+	}).(DefenderCspmGcpOfferingCiemDiscoveryOutput)
+}
+
+// the azure active directory app name used of authenticating against GCP workload identity federation
+func (o DefenderCspmGcpOfferingCiemDiscoveryPtrOutput) AzureActiveDirectoryAppName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenderCspmGcpOfferingCiemDiscovery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureActiveDirectoryAppName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The service account email address in GCP for Permissions Management offering
+func (o DefenderCspmGcpOfferingCiemDiscoveryPtrOutput) ServiceAccountEmailAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenderCspmGcpOfferingCiemDiscovery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountEmailAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// The GCP workload identity provider id for Permissions Management offering
+func (o DefenderCspmGcpOfferingCiemDiscoveryPtrOutput) WorkloadIdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenderCspmGcpOfferingCiemDiscovery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkloadIdentityProviderId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Microsoft Defender Data Sensitivity discovery configuration
+type DefenderCspmGcpOfferingDataSensitivityDiscovery struct {
+	// Is Microsoft Defender Data Sensitivity discovery enabled
+	Enabled *bool `pulumi:"enabled"`
+	// The service account email address in GCP for this feature
+	ServiceAccountEmailAddress *string `pulumi:"serviceAccountEmailAddress"`
+	// The workload identity provider id in GCP for this feature
+	WorkloadIdentityProviderId *string `pulumi:"workloadIdentityProviderId"`
+}
+
+// DefenderCspmGcpOfferingDataSensitivityDiscoveryInput is an input type that accepts DefenderCspmGcpOfferingDataSensitivityDiscoveryArgs and DefenderCspmGcpOfferingDataSensitivityDiscoveryOutput values.
+// You can construct a concrete instance of `DefenderCspmGcpOfferingDataSensitivityDiscoveryInput` via:
+//
+//	DefenderCspmGcpOfferingDataSensitivityDiscoveryArgs{...}
+type DefenderCspmGcpOfferingDataSensitivityDiscoveryInput interface {
+	pulumi.Input
+
+	ToDefenderCspmGcpOfferingDataSensitivityDiscoveryOutput() DefenderCspmGcpOfferingDataSensitivityDiscoveryOutput
+	ToDefenderCspmGcpOfferingDataSensitivityDiscoveryOutputWithContext(context.Context) DefenderCspmGcpOfferingDataSensitivityDiscoveryOutput
+}
+
+// The Microsoft Defender Data Sensitivity discovery configuration
+type DefenderCspmGcpOfferingDataSensitivityDiscoveryArgs struct {
+	// Is Microsoft Defender Data Sensitivity discovery enabled
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The service account email address in GCP for this feature
+	ServiceAccountEmailAddress pulumi.StringPtrInput `pulumi:"serviceAccountEmailAddress"`
+	// The workload identity provider id in GCP for this feature
+	WorkloadIdentityProviderId pulumi.StringPtrInput `pulumi:"workloadIdentityProviderId"`
+}
+
+func (DefenderCspmGcpOfferingDataSensitivityDiscoveryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderCspmGcpOfferingDataSensitivityDiscovery)(nil)).Elem()
+}
+
+func (i DefenderCspmGcpOfferingDataSensitivityDiscoveryArgs) ToDefenderCspmGcpOfferingDataSensitivityDiscoveryOutput() DefenderCspmGcpOfferingDataSensitivityDiscoveryOutput {
+	return i.ToDefenderCspmGcpOfferingDataSensitivityDiscoveryOutputWithContext(context.Background())
+}
+
+func (i DefenderCspmGcpOfferingDataSensitivityDiscoveryArgs) ToDefenderCspmGcpOfferingDataSensitivityDiscoveryOutputWithContext(ctx context.Context) DefenderCspmGcpOfferingDataSensitivityDiscoveryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderCspmGcpOfferingDataSensitivityDiscoveryOutput)
+}
+
+func (i DefenderCspmGcpOfferingDataSensitivityDiscoveryArgs) ToDefenderCspmGcpOfferingDataSensitivityDiscoveryPtrOutput() DefenderCspmGcpOfferingDataSensitivityDiscoveryPtrOutput {
+	return i.ToDefenderCspmGcpOfferingDataSensitivityDiscoveryPtrOutputWithContext(context.Background())
+}
+
+func (i DefenderCspmGcpOfferingDataSensitivityDiscoveryArgs) ToDefenderCspmGcpOfferingDataSensitivityDiscoveryPtrOutputWithContext(ctx context.Context) DefenderCspmGcpOfferingDataSensitivityDiscoveryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderCspmGcpOfferingDataSensitivityDiscoveryOutput).ToDefenderCspmGcpOfferingDataSensitivityDiscoveryPtrOutputWithContext(ctx)
+}
+
+// DefenderCspmGcpOfferingDataSensitivityDiscoveryPtrInput is an input type that accepts DefenderCspmGcpOfferingDataSensitivityDiscoveryArgs, DefenderCspmGcpOfferingDataSensitivityDiscoveryPtr and DefenderCspmGcpOfferingDataSensitivityDiscoveryPtrOutput values.
+// You can construct a concrete instance of `DefenderCspmGcpOfferingDataSensitivityDiscoveryPtrInput` via:
+//
+//	        DefenderCspmGcpOfferingDataSensitivityDiscoveryArgs{...}
+//
+//	or:
+//
+//	        nil
+type DefenderCspmGcpOfferingDataSensitivityDiscoveryPtrInput interface {
+	pulumi.Input
+
+	ToDefenderCspmGcpOfferingDataSensitivityDiscoveryPtrOutput() DefenderCspmGcpOfferingDataSensitivityDiscoveryPtrOutput
+	ToDefenderCspmGcpOfferingDataSensitivityDiscoveryPtrOutputWithContext(context.Context) DefenderCspmGcpOfferingDataSensitivityDiscoveryPtrOutput
+}
+
+type defenderCspmGcpOfferingDataSensitivityDiscoveryPtrType DefenderCspmGcpOfferingDataSensitivityDiscoveryArgs
+
+func DefenderCspmGcpOfferingDataSensitivityDiscoveryPtr(v *DefenderCspmGcpOfferingDataSensitivityDiscoveryArgs) DefenderCspmGcpOfferingDataSensitivityDiscoveryPtrInput {
+	return (*defenderCspmGcpOfferingDataSensitivityDiscoveryPtrType)(v)
+}
+
+func (*defenderCspmGcpOfferingDataSensitivityDiscoveryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderCspmGcpOfferingDataSensitivityDiscovery)(nil)).Elem()
+}
+
+func (i *defenderCspmGcpOfferingDataSensitivityDiscoveryPtrType) ToDefenderCspmGcpOfferingDataSensitivityDiscoveryPtrOutput() DefenderCspmGcpOfferingDataSensitivityDiscoveryPtrOutput {
+	return i.ToDefenderCspmGcpOfferingDataSensitivityDiscoveryPtrOutputWithContext(context.Background())
+}
+
+func (i *defenderCspmGcpOfferingDataSensitivityDiscoveryPtrType) ToDefenderCspmGcpOfferingDataSensitivityDiscoveryPtrOutputWithContext(ctx context.Context) DefenderCspmGcpOfferingDataSensitivityDiscoveryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderCspmGcpOfferingDataSensitivityDiscoveryPtrOutput)
+}
+
+// The Microsoft Defender Data Sensitivity discovery configuration
+type DefenderCspmGcpOfferingDataSensitivityDiscoveryOutput struct{ *pulumi.OutputState }
+
+func (DefenderCspmGcpOfferingDataSensitivityDiscoveryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderCspmGcpOfferingDataSensitivityDiscovery)(nil)).Elem()
+}
+
+func (o DefenderCspmGcpOfferingDataSensitivityDiscoveryOutput) ToDefenderCspmGcpOfferingDataSensitivityDiscoveryOutput() DefenderCspmGcpOfferingDataSensitivityDiscoveryOutput {
+	return o
+}
+
+func (o DefenderCspmGcpOfferingDataSensitivityDiscoveryOutput) ToDefenderCspmGcpOfferingDataSensitivityDiscoveryOutputWithContext(ctx context.Context) DefenderCspmGcpOfferingDataSensitivityDiscoveryOutput {
+	return o
+}
+
+func (o DefenderCspmGcpOfferingDataSensitivityDiscoveryOutput) ToDefenderCspmGcpOfferingDataSensitivityDiscoveryPtrOutput() DefenderCspmGcpOfferingDataSensitivityDiscoveryPtrOutput {
+	return o.ToDefenderCspmGcpOfferingDataSensitivityDiscoveryPtrOutputWithContext(context.Background())
+}
+
+func (o DefenderCspmGcpOfferingDataSensitivityDiscoveryOutput) ToDefenderCspmGcpOfferingDataSensitivityDiscoveryPtrOutputWithContext(ctx context.Context) DefenderCspmGcpOfferingDataSensitivityDiscoveryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefenderCspmGcpOfferingDataSensitivityDiscovery) *DefenderCspmGcpOfferingDataSensitivityDiscovery {
+		return &v
+	}).(DefenderCspmGcpOfferingDataSensitivityDiscoveryPtrOutput)
+}
+
+// Is Microsoft Defender Data Sensitivity discovery enabled
+func (o DefenderCspmGcpOfferingDataSensitivityDiscoveryOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DefenderCspmGcpOfferingDataSensitivityDiscovery) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The service account email address in GCP for this feature
+func (o DefenderCspmGcpOfferingDataSensitivityDiscoveryOutput) ServiceAccountEmailAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderCspmGcpOfferingDataSensitivityDiscovery) *string { return v.ServiceAccountEmailAddress }).(pulumi.StringPtrOutput)
+}
+
+// The workload identity provider id in GCP for this feature
+func (o DefenderCspmGcpOfferingDataSensitivityDiscoveryOutput) WorkloadIdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderCspmGcpOfferingDataSensitivityDiscovery) *string { return v.WorkloadIdentityProviderId }).(pulumi.StringPtrOutput)
+}
+
+type DefenderCspmGcpOfferingDataSensitivityDiscoveryPtrOutput struct{ *pulumi.OutputState }
+
+func (DefenderCspmGcpOfferingDataSensitivityDiscoveryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderCspmGcpOfferingDataSensitivityDiscovery)(nil)).Elem()
+}
+
+func (o DefenderCspmGcpOfferingDataSensitivityDiscoveryPtrOutput) ToDefenderCspmGcpOfferingDataSensitivityDiscoveryPtrOutput() DefenderCspmGcpOfferingDataSensitivityDiscoveryPtrOutput {
+	return o
+}
+
+func (o DefenderCspmGcpOfferingDataSensitivityDiscoveryPtrOutput) ToDefenderCspmGcpOfferingDataSensitivityDiscoveryPtrOutputWithContext(ctx context.Context) DefenderCspmGcpOfferingDataSensitivityDiscoveryPtrOutput {
+	return o
+}
+
+func (o DefenderCspmGcpOfferingDataSensitivityDiscoveryPtrOutput) Elem() DefenderCspmGcpOfferingDataSensitivityDiscoveryOutput {
+	return o.ApplyT(func(v *DefenderCspmGcpOfferingDataSensitivityDiscovery) DefenderCspmGcpOfferingDataSensitivityDiscovery {
+		if v != nil {
+			return *v
+		}
+		var ret DefenderCspmGcpOfferingDataSensitivityDiscovery
+		return ret
+	}).(DefenderCspmGcpOfferingDataSensitivityDiscoveryOutput)
+}
+
+// Is Microsoft Defender Data Sensitivity discovery enabled
+func (o DefenderCspmGcpOfferingDataSensitivityDiscoveryPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DefenderCspmGcpOfferingDataSensitivityDiscovery) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The service account email address in GCP for this feature
+func (o DefenderCspmGcpOfferingDataSensitivityDiscoveryPtrOutput) ServiceAccountEmailAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenderCspmGcpOfferingDataSensitivityDiscovery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountEmailAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// The workload identity provider id in GCP for this feature
+func (o DefenderCspmGcpOfferingDataSensitivityDiscoveryPtrOutput) WorkloadIdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenderCspmGcpOfferingDataSensitivityDiscovery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkloadIdentityProviderId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Microsoft Defender Container agentless discovery configuration
+type DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8s struct {
+	// Is Microsoft Defender container agentless discovery enabled
+	Enabled *bool `pulumi:"enabled"`
+	// The service account email address in GCP for this feature
+	ServiceAccountEmailAddress *string `pulumi:"serviceAccountEmailAddress"`
+	// The workload identity provider id in GCP for this feature
+	WorkloadIdentityProviderId *string `pulumi:"workloadIdentityProviderId"`
+}
+
+// DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sInput is an input type that accepts DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sArgs and DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sOutput values.
+// You can construct a concrete instance of `DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sInput` via:
+//
+//	DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sArgs{...}
+type DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sInput interface {
+	pulumi.Input
+
+	ToDefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sOutput() DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sOutput
+	ToDefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sOutputWithContext(context.Context) DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sOutput
+}
+
+// The Microsoft Defender Container agentless discovery configuration
+type DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sArgs struct {
+	// Is Microsoft Defender container agentless discovery enabled
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The service account email address in GCP for this feature
+	ServiceAccountEmailAddress pulumi.StringPtrInput `pulumi:"serviceAccountEmailAddress"`
+	// The workload identity provider id in GCP for this feature
+	WorkloadIdentityProviderId pulumi.StringPtrInput `pulumi:"workloadIdentityProviderId"`
+}
+
+func (DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8s)(nil)).Elem()
+}
+
+func (i DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sArgs) ToDefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sOutput() DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sOutput {
+	return i.ToDefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sOutputWithContext(context.Background())
+}
+
+func (i DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sArgs) ToDefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sOutputWithContext(ctx context.Context) DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sOutput)
+}
+
+func (i DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sArgs) ToDefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput() DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput {
+	return i.ToDefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutputWithContext(context.Background())
+}
+
+func (i DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sArgs) ToDefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutputWithContext(ctx context.Context) DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sOutput).ToDefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutputWithContext(ctx)
+}
+
+// DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrInput is an input type that accepts DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sArgs, DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sPtr and DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput values.
+// You can construct a concrete instance of `DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrInput` via:
+//
+//	        DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sArgs{...}
+//
+//	or:
+//
+//	        nil
+type DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrInput interface {
+	pulumi.Input
+
+	ToDefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput() DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput
+	ToDefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutputWithContext(context.Context) DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput
+}
+
+type defenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrType DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sArgs
+
+func DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sPtr(v *DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sArgs) DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrInput {
+	return (*defenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrType)(v)
+}
+
+func (*defenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8s)(nil)).Elem()
+}
+
+func (i *defenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrType) ToDefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput() DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput {
+	return i.ToDefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutputWithContext(context.Background())
+}
+
+func (i *defenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrType) ToDefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutputWithContext(ctx context.Context) DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput)
+}
+
+// The Microsoft Defender Container agentless discovery configuration
+type DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sOutput struct{ *pulumi.OutputState }
+
+func (DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8s)(nil)).Elem()
+}
+
+func (o DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sOutput) ToDefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sOutput() DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sOutput {
+	return o
+}
+
+func (o DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sOutput) ToDefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sOutputWithContext(ctx context.Context) DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sOutput {
+	return o
+}
+
+func (o DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sOutput) ToDefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput() DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput {
+	return o.ToDefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutputWithContext(context.Background())
+}
+
+func (o DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sOutput) ToDefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutputWithContext(ctx context.Context) DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8s) *DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8s {
+		return &v
+	}).(DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput)
+}
+
+// Is Microsoft Defender container agentless discovery enabled
+func (o DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8s) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The service account email address in GCP for this feature
+func (o DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sOutput) ServiceAccountEmailAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8s) *string {
+		return v.ServiceAccountEmailAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// The workload identity provider id in GCP for this feature
+func (o DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sOutput) WorkloadIdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8s) *string {
+		return v.WorkloadIdentityProviderId
+	}).(pulumi.StringPtrOutput)
+}
+
+type DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput struct{ *pulumi.OutputState }
+
+func (DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8s)(nil)).Elem()
+}
+
+func (o DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput) ToDefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput() DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput {
+	return o
+}
+
+func (o DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput) ToDefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutputWithContext(ctx context.Context) DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput {
+	return o
+}
+
+func (o DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput) Elem() DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sOutput {
+	return o.ApplyT(func(v *DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8s) DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8s {
+		if v != nil {
+			return *v
+		}
+		var ret DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8s
+		return ret
+	}).(DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sOutput)
+}
+
+// Is Microsoft Defender container agentless discovery enabled
+func (o DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8s) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The service account email address in GCP for this feature
+func (o DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput) ServiceAccountEmailAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8s) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountEmailAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// The workload identity provider id in GCP for this feature
+func (o DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput) WorkloadIdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8s) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkloadIdentityProviderId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Microsoft Defender Container image assessment configuration
+type DefenderCspmGcpOfferingMdcContainersImageAssessment struct {
+	// Is Microsoft Defender container image assessment enabled
+	Enabled *bool `pulumi:"enabled"`
+	// The service account email address in GCP for this feature
+	ServiceAccountEmailAddress *string `pulumi:"serviceAccountEmailAddress"`
+	// The workload identity provider id in GCP for this feature
+	WorkloadIdentityProviderId *string `pulumi:"workloadIdentityProviderId"`
+}
+
+// DefenderCspmGcpOfferingMdcContainersImageAssessmentInput is an input type that accepts DefenderCspmGcpOfferingMdcContainersImageAssessmentArgs and DefenderCspmGcpOfferingMdcContainersImageAssessmentOutput values.
+// You can construct a concrete instance of `DefenderCspmGcpOfferingMdcContainersImageAssessmentInput` via:
+//
+//	DefenderCspmGcpOfferingMdcContainersImageAssessmentArgs{...}
+type DefenderCspmGcpOfferingMdcContainersImageAssessmentInput interface {
+	pulumi.Input
+
+	ToDefenderCspmGcpOfferingMdcContainersImageAssessmentOutput() DefenderCspmGcpOfferingMdcContainersImageAssessmentOutput
+	ToDefenderCspmGcpOfferingMdcContainersImageAssessmentOutputWithContext(context.Context) DefenderCspmGcpOfferingMdcContainersImageAssessmentOutput
+}
+
+// The Microsoft Defender Container image assessment configuration
+type DefenderCspmGcpOfferingMdcContainersImageAssessmentArgs struct {
+	// Is Microsoft Defender container image assessment enabled
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The service account email address in GCP for this feature
+	ServiceAccountEmailAddress pulumi.StringPtrInput `pulumi:"serviceAccountEmailAddress"`
+	// The workload identity provider id in GCP for this feature
+	WorkloadIdentityProviderId pulumi.StringPtrInput `pulumi:"workloadIdentityProviderId"`
+}
+
+func (DefenderCspmGcpOfferingMdcContainersImageAssessmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderCspmGcpOfferingMdcContainersImageAssessment)(nil)).Elem()
+}
+
+func (i DefenderCspmGcpOfferingMdcContainersImageAssessmentArgs) ToDefenderCspmGcpOfferingMdcContainersImageAssessmentOutput() DefenderCspmGcpOfferingMdcContainersImageAssessmentOutput {
+	return i.ToDefenderCspmGcpOfferingMdcContainersImageAssessmentOutputWithContext(context.Background())
+}
+
+func (i DefenderCspmGcpOfferingMdcContainersImageAssessmentArgs) ToDefenderCspmGcpOfferingMdcContainersImageAssessmentOutputWithContext(ctx context.Context) DefenderCspmGcpOfferingMdcContainersImageAssessmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderCspmGcpOfferingMdcContainersImageAssessmentOutput)
+}
+
+func (i DefenderCspmGcpOfferingMdcContainersImageAssessmentArgs) ToDefenderCspmGcpOfferingMdcContainersImageAssessmentPtrOutput() DefenderCspmGcpOfferingMdcContainersImageAssessmentPtrOutput {
+	return i.ToDefenderCspmGcpOfferingMdcContainersImageAssessmentPtrOutputWithContext(context.Background())
+}
+
+func (i DefenderCspmGcpOfferingMdcContainersImageAssessmentArgs) ToDefenderCspmGcpOfferingMdcContainersImageAssessmentPtrOutputWithContext(ctx context.Context) DefenderCspmGcpOfferingMdcContainersImageAssessmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderCspmGcpOfferingMdcContainersImageAssessmentOutput).ToDefenderCspmGcpOfferingMdcContainersImageAssessmentPtrOutputWithContext(ctx)
+}
+
+// DefenderCspmGcpOfferingMdcContainersImageAssessmentPtrInput is an input type that accepts DefenderCspmGcpOfferingMdcContainersImageAssessmentArgs, DefenderCspmGcpOfferingMdcContainersImageAssessmentPtr and DefenderCspmGcpOfferingMdcContainersImageAssessmentPtrOutput values.
+// You can construct a concrete instance of `DefenderCspmGcpOfferingMdcContainersImageAssessmentPtrInput` via:
+//
+//	        DefenderCspmGcpOfferingMdcContainersImageAssessmentArgs{...}
+//
+//	or:
+//
+//	        nil
+type DefenderCspmGcpOfferingMdcContainersImageAssessmentPtrInput interface {
+	pulumi.Input
+
+	ToDefenderCspmGcpOfferingMdcContainersImageAssessmentPtrOutput() DefenderCspmGcpOfferingMdcContainersImageAssessmentPtrOutput
+	ToDefenderCspmGcpOfferingMdcContainersImageAssessmentPtrOutputWithContext(context.Context) DefenderCspmGcpOfferingMdcContainersImageAssessmentPtrOutput
+}
+
+type defenderCspmGcpOfferingMdcContainersImageAssessmentPtrType DefenderCspmGcpOfferingMdcContainersImageAssessmentArgs
+
+func DefenderCspmGcpOfferingMdcContainersImageAssessmentPtr(v *DefenderCspmGcpOfferingMdcContainersImageAssessmentArgs) DefenderCspmGcpOfferingMdcContainersImageAssessmentPtrInput {
+	return (*defenderCspmGcpOfferingMdcContainersImageAssessmentPtrType)(v)
+}
+
+func (*defenderCspmGcpOfferingMdcContainersImageAssessmentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderCspmGcpOfferingMdcContainersImageAssessment)(nil)).Elem()
+}
+
+func (i *defenderCspmGcpOfferingMdcContainersImageAssessmentPtrType) ToDefenderCspmGcpOfferingMdcContainersImageAssessmentPtrOutput() DefenderCspmGcpOfferingMdcContainersImageAssessmentPtrOutput {
+	return i.ToDefenderCspmGcpOfferingMdcContainersImageAssessmentPtrOutputWithContext(context.Background())
+}
+
+func (i *defenderCspmGcpOfferingMdcContainersImageAssessmentPtrType) ToDefenderCspmGcpOfferingMdcContainersImageAssessmentPtrOutputWithContext(ctx context.Context) DefenderCspmGcpOfferingMdcContainersImageAssessmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderCspmGcpOfferingMdcContainersImageAssessmentPtrOutput)
+}
+
+// The Microsoft Defender Container image assessment configuration
+type DefenderCspmGcpOfferingMdcContainersImageAssessmentOutput struct{ *pulumi.OutputState }
+
+func (DefenderCspmGcpOfferingMdcContainersImageAssessmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderCspmGcpOfferingMdcContainersImageAssessment)(nil)).Elem()
+}
+
+func (o DefenderCspmGcpOfferingMdcContainersImageAssessmentOutput) ToDefenderCspmGcpOfferingMdcContainersImageAssessmentOutput() DefenderCspmGcpOfferingMdcContainersImageAssessmentOutput {
+	return o
+}
+
+func (o DefenderCspmGcpOfferingMdcContainersImageAssessmentOutput) ToDefenderCspmGcpOfferingMdcContainersImageAssessmentOutputWithContext(ctx context.Context) DefenderCspmGcpOfferingMdcContainersImageAssessmentOutput {
+	return o
+}
+
+func (o DefenderCspmGcpOfferingMdcContainersImageAssessmentOutput) ToDefenderCspmGcpOfferingMdcContainersImageAssessmentPtrOutput() DefenderCspmGcpOfferingMdcContainersImageAssessmentPtrOutput {
+	return o.ToDefenderCspmGcpOfferingMdcContainersImageAssessmentPtrOutputWithContext(context.Background())
+}
+
+func (o DefenderCspmGcpOfferingMdcContainersImageAssessmentOutput) ToDefenderCspmGcpOfferingMdcContainersImageAssessmentPtrOutputWithContext(ctx context.Context) DefenderCspmGcpOfferingMdcContainersImageAssessmentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefenderCspmGcpOfferingMdcContainersImageAssessment) *DefenderCspmGcpOfferingMdcContainersImageAssessment {
+		return &v
+	}).(DefenderCspmGcpOfferingMdcContainersImageAssessmentPtrOutput)
+}
+
+// Is Microsoft Defender container image assessment enabled
+func (o DefenderCspmGcpOfferingMdcContainersImageAssessmentOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DefenderCspmGcpOfferingMdcContainersImageAssessment) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The service account email address in GCP for this feature
+func (o DefenderCspmGcpOfferingMdcContainersImageAssessmentOutput) ServiceAccountEmailAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderCspmGcpOfferingMdcContainersImageAssessment) *string {
+		return v.ServiceAccountEmailAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// The workload identity provider id in GCP for this feature
+func (o DefenderCspmGcpOfferingMdcContainersImageAssessmentOutput) WorkloadIdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderCspmGcpOfferingMdcContainersImageAssessment) *string {
+		return v.WorkloadIdentityProviderId
+	}).(pulumi.StringPtrOutput)
+}
+
+type DefenderCspmGcpOfferingMdcContainersImageAssessmentPtrOutput struct{ *pulumi.OutputState }
+
+func (DefenderCspmGcpOfferingMdcContainersImageAssessmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderCspmGcpOfferingMdcContainersImageAssessment)(nil)).Elem()
+}
+
+func (o DefenderCspmGcpOfferingMdcContainersImageAssessmentPtrOutput) ToDefenderCspmGcpOfferingMdcContainersImageAssessmentPtrOutput() DefenderCspmGcpOfferingMdcContainersImageAssessmentPtrOutput {
+	return o
+}
+
+func (o DefenderCspmGcpOfferingMdcContainersImageAssessmentPtrOutput) ToDefenderCspmGcpOfferingMdcContainersImageAssessmentPtrOutputWithContext(ctx context.Context) DefenderCspmGcpOfferingMdcContainersImageAssessmentPtrOutput {
+	return o
+}
+
+func (o DefenderCspmGcpOfferingMdcContainersImageAssessmentPtrOutput) Elem() DefenderCspmGcpOfferingMdcContainersImageAssessmentOutput {
+	return o.ApplyT(func(v *DefenderCspmGcpOfferingMdcContainersImageAssessment) DefenderCspmGcpOfferingMdcContainersImageAssessment {
+		if v != nil {
+			return *v
+		}
+		var ret DefenderCspmGcpOfferingMdcContainersImageAssessment
+		return ret
+	}).(DefenderCspmGcpOfferingMdcContainersImageAssessmentOutput)
+}
+
+// Is Microsoft Defender container image assessment enabled
+func (o DefenderCspmGcpOfferingMdcContainersImageAssessmentPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DefenderCspmGcpOfferingMdcContainersImageAssessment) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The service account email address in GCP for this feature
+func (o DefenderCspmGcpOfferingMdcContainersImageAssessmentPtrOutput) ServiceAccountEmailAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenderCspmGcpOfferingMdcContainersImageAssessment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountEmailAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// The workload identity provider id in GCP for this feature
+func (o DefenderCspmGcpOfferingMdcContainersImageAssessmentPtrOutput) WorkloadIdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenderCspmGcpOfferingMdcContainersImageAssessment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkloadIdentityProviderId
+	}).(pulumi.StringPtrOutput)
+}
+
 // The CSPM P1 for GCP offering
 type DefenderCspmGcpOfferingResponse struct {
+	// GCP Defenders CSPM Permissions Management OIDC (Open ID connect) connection configurations
+	CiemDiscovery *DefenderCspmGcpOfferingResponseCiemDiscovery `pulumi:"ciemDiscovery"`
+	// The Microsoft Defender Data Sensitivity discovery configuration
+	DataSensitivityDiscovery *DefenderCspmGcpOfferingResponseDataSensitivityDiscovery `pulumi:"dataSensitivityDiscovery"`
 	// The offering description.
 	Description string `pulumi:"description"`
+	// The Microsoft Defender Container agentless discovery configuration
+	MdcContainersAgentlessDiscoveryK8s *DefenderCspmGcpOfferingResponseMdcContainersAgentlessDiscoveryK8s `pulumi:"mdcContainersAgentlessDiscoveryK8s"`
+	// The Microsoft Defender Container image assessment configuration
+	MdcContainersImageAssessment *DefenderCspmGcpOfferingResponseMdcContainersImageAssessment `pulumi:"mdcContainersImageAssessment"`
 	// The type of the security offering.
 	// Expected value is 'DefenderCspmGcp'.
 	OfferingType string `pulumi:"offeringType"`
+	// The Microsoft Defender for CSPM VM scanning configuration
+	VmScanners *DefenderCspmGcpOfferingResponseVmScanners `pulumi:"vmScanners"`
 }
 
 // The CSPM P1 for GCP offering
@@ -7144,15 +9739,989 @@ func (o DefenderCspmGcpOfferingResponseOutput) ToDefenderCspmGcpOfferingResponse
 	return o
 }
 
+// GCP Defenders CSPM Permissions Management OIDC (Open ID connect) connection configurations
+func (o DefenderCspmGcpOfferingResponseOutput) CiemDiscovery() DefenderCspmGcpOfferingResponseCiemDiscoveryPtrOutput {
+	return o.ApplyT(func(v DefenderCspmGcpOfferingResponse) *DefenderCspmGcpOfferingResponseCiemDiscovery {
+		return v.CiemDiscovery
+	}).(DefenderCspmGcpOfferingResponseCiemDiscoveryPtrOutput)
+}
+
+// The Microsoft Defender Data Sensitivity discovery configuration
+func (o DefenderCspmGcpOfferingResponseOutput) DataSensitivityDiscovery() DefenderCspmGcpOfferingResponseDataSensitivityDiscoveryPtrOutput {
+	return o.ApplyT(func(v DefenderCspmGcpOfferingResponse) *DefenderCspmGcpOfferingResponseDataSensitivityDiscovery {
+		return v.DataSensitivityDiscovery
+	}).(DefenderCspmGcpOfferingResponseDataSensitivityDiscoveryPtrOutput)
+}
+
 // The offering description.
 func (o DefenderCspmGcpOfferingResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v DefenderCspmGcpOfferingResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The Microsoft Defender Container agentless discovery configuration
+func (o DefenderCspmGcpOfferingResponseOutput) MdcContainersAgentlessDiscoveryK8s() DefenderCspmGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput {
+	return o.ApplyT(func(v DefenderCspmGcpOfferingResponse) *DefenderCspmGcpOfferingResponseMdcContainersAgentlessDiscoveryK8s {
+		return v.MdcContainersAgentlessDiscoveryK8s
+	}).(DefenderCspmGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput)
+}
+
+// The Microsoft Defender Container image assessment configuration
+func (o DefenderCspmGcpOfferingResponseOutput) MdcContainersImageAssessment() DefenderCspmGcpOfferingResponseMdcContainersImageAssessmentPtrOutput {
+	return o.ApplyT(func(v DefenderCspmGcpOfferingResponse) *DefenderCspmGcpOfferingResponseMdcContainersImageAssessment {
+		return v.MdcContainersImageAssessment
+	}).(DefenderCspmGcpOfferingResponseMdcContainersImageAssessmentPtrOutput)
 }
 
 // The type of the security offering.
 // Expected value is 'DefenderCspmGcp'.
 func (o DefenderCspmGcpOfferingResponseOutput) OfferingType() pulumi.StringOutput {
 	return o.ApplyT(func(v DefenderCspmGcpOfferingResponse) string { return v.OfferingType }).(pulumi.StringOutput)
+}
+
+// The Microsoft Defender for CSPM VM scanning configuration
+func (o DefenderCspmGcpOfferingResponseOutput) VmScanners() DefenderCspmGcpOfferingResponseVmScannersPtrOutput {
+	return o.ApplyT(func(v DefenderCspmGcpOfferingResponse) *DefenderCspmGcpOfferingResponseVmScanners {
+		return v.VmScanners
+	}).(DefenderCspmGcpOfferingResponseVmScannersPtrOutput)
+}
+
+// GCP Defenders CSPM Permissions Management OIDC (Open ID connect) connection configurations
+type DefenderCspmGcpOfferingResponseCiemDiscovery struct {
+	// the azure active directory app name used of authenticating against GCP workload identity federation
+	AzureActiveDirectoryAppName *string `pulumi:"azureActiveDirectoryAppName"`
+	// The service account email address in GCP for Permissions Management offering
+	ServiceAccountEmailAddress *string `pulumi:"serviceAccountEmailAddress"`
+	// The GCP workload identity provider id for Permissions Management offering
+	WorkloadIdentityProviderId *string `pulumi:"workloadIdentityProviderId"`
+}
+
+// GCP Defenders CSPM Permissions Management OIDC (Open ID connect) connection configurations
+type DefenderCspmGcpOfferingResponseCiemDiscoveryOutput struct{ *pulumi.OutputState }
+
+func (DefenderCspmGcpOfferingResponseCiemDiscoveryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderCspmGcpOfferingResponseCiemDiscovery)(nil)).Elem()
+}
+
+func (o DefenderCspmGcpOfferingResponseCiemDiscoveryOutput) ToDefenderCspmGcpOfferingResponseCiemDiscoveryOutput() DefenderCspmGcpOfferingResponseCiemDiscoveryOutput {
+	return o
+}
+
+func (o DefenderCspmGcpOfferingResponseCiemDiscoveryOutput) ToDefenderCspmGcpOfferingResponseCiemDiscoveryOutputWithContext(ctx context.Context) DefenderCspmGcpOfferingResponseCiemDiscoveryOutput {
+	return o
+}
+
+// the azure active directory app name used of authenticating against GCP workload identity federation
+func (o DefenderCspmGcpOfferingResponseCiemDiscoveryOutput) AzureActiveDirectoryAppName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderCspmGcpOfferingResponseCiemDiscovery) *string { return v.AzureActiveDirectoryAppName }).(pulumi.StringPtrOutput)
+}
+
+// The service account email address in GCP for Permissions Management offering
+func (o DefenderCspmGcpOfferingResponseCiemDiscoveryOutput) ServiceAccountEmailAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderCspmGcpOfferingResponseCiemDiscovery) *string { return v.ServiceAccountEmailAddress }).(pulumi.StringPtrOutput)
+}
+
+// The GCP workload identity provider id for Permissions Management offering
+func (o DefenderCspmGcpOfferingResponseCiemDiscoveryOutput) WorkloadIdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderCspmGcpOfferingResponseCiemDiscovery) *string { return v.WorkloadIdentityProviderId }).(pulumi.StringPtrOutput)
+}
+
+type DefenderCspmGcpOfferingResponseCiemDiscoveryPtrOutput struct{ *pulumi.OutputState }
+
+func (DefenderCspmGcpOfferingResponseCiemDiscoveryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderCspmGcpOfferingResponseCiemDiscovery)(nil)).Elem()
+}
+
+func (o DefenderCspmGcpOfferingResponseCiemDiscoveryPtrOutput) ToDefenderCspmGcpOfferingResponseCiemDiscoveryPtrOutput() DefenderCspmGcpOfferingResponseCiemDiscoveryPtrOutput {
+	return o
+}
+
+func (o DefenderCspmGcpOfferingResponseCiemDiscoveryPtrOutput) ToDefenderCspmGcpOfferingResponseCiemDiscoveryPtrOutputWithContext(ctx context.Context) DefenderCspmGcpOfferingResponseCiemDiscoveryPtrOutput {
+	return o
+}
+
+func (o DefenderCspmGcpOfferingResponseCiemDiscoveryPtrOutput) Elem() DefenderCspmGcpOfferingResponseCiemDiscoveryOutput {
+	return o.ApplyT(func(v *DefenderCspmGcpOfferingResponseCiemDiscovery) DefenderCspmGcpOfferingResponseCiemDiscovery {
+		if v != nil {
+			return *v
+		}
+		var ret DefenderCspmGcpOfferingResponseCiemDiscovery
+		return ret
+	}).(DefenderCspmGcpOfferingResponseCiemDiscoveryOutput)
+}
+
+// the azure active directory app name used of authenticating against GCP workload identity federation
+func (o DefenderCspmGcpOfferingResponseCiemDiscoveryPtrOutput) AzureActiveDirectoryAppName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenderCspmGcpOfferingResponseCiemDiscovery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureActiveDirectoryAppName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The service account email address in GCP for Permissions Management offering
+func (o DefenderCspmGcpOfferingResponseCiemDiscoveryPtrOutput) ServiceAccountEmailAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenderCspmGcpOfferingResponseCiemDiscovery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountEmailAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// The GCP workload identity provider id for Permissions Management offering
+func (o DefenderCspmGcpOfferingResponseCiemDiscoveryPtrOutput) WorkloadIdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenderCspmGcpOfferingResponseCiemDiscovery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkloadIdentityProviderId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Microsoft Defender Data Sensitivity discovery configuration
+type DefenderCspmGcpOfferingResponseDataSensitivityDiscovery struct {
+	// Is Microsoft Defender Data Sensitivity discovery enabled
+	Enabled *bool `pulumi:"enabled"`
+	// The service account email address in GCP for this feature
+	ServiceAccountEmailAddress *string `pulumi:"serviceAccountEmailAddress"`
+	// The workload identity provider id in GCP for this feature
+	WorkloadIdentityProviderId *string `pulumi:"workloadIdentityProviderId"`
+}
+
+// The Microsoft Defender Data Sensitivity discovery configuration
+type DefenderCspmGcpOfferingResponseDataSensitivityDiscoveryOutput struct{ *pulumi.OutputState }
+
+func (DefenderCspmGcpOfferingResponseDataSensitivityDiscoveryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderCspmGcpOfferingResponseDataSensitivityDiscovery)(nil)).Elem()
+}
+
+func (o DefenderCspmGcpOfferingResponseDataSensitivityDiscoveryOutput) ToDefenderCspmGcpOfferingResponseDataSensitivityDiscoveryOutput() DefenderCspmGcpOfferingResponseDataSensitivityDiscoveryOutput {
+	return o
+}
+
+func (o DefenderCspmGcpOfferingResponseDataSensitivityDiscoveryOutput) ToDefenderCspmGcpOfferingResponseDataSensitivityDiscoveryOutputWithContext(ctx context.Context) DefenderCspmGcpOfferingResponseDataSensitivityDiscoveryOutput {
+	return o
+}
+
+// Is Microsoft Defender Data Sensitivity discovery enabled
+func (o DefenderCspmGcpOfferingResponseDataSensitivityDiscoveryOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DefenderCspmGcpOfferingResponseDataSensitivityDiscovery) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The service account email address in GCP for this feature
+func (o DefenderCspmGcpOfferingResponseDataSensitivityDiscoveryOutput) ServiceAccountEmailAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderCspmGcpOfferingResponseDataSensitivityDiscovery) *string {
+		return v.ServiceAccountEmailAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// The workload identity provider id in GCP for this feature
+func (o DefenderCspmGcpOfferingResponseDataSensitivityDiscoveryOutput) WorkloadIdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderCspmGcpOfferingResponseDataSensitivityDiscovery) *string {
+		return v.WorkloadIdentityProviderId
+	}).(pulumi.StringPtrOutput)
+}
+
+type DefenderCspmGcpOfferingResponseDataSensitivityDiscoveryPtrOutput struct{ *pulumi.OutputState }
+
+func (DefenderCspmGcpOfferingResponseDataSensitivityDiscoveryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderCspmGcpOfferingResponseDataSensitivityDiscovery)(nil)).Elem()
+}
+
+func (o DefenderCspmGcpOfferingResponseDataSensitivityDiscoveryPtrOutput) ToDefenderCspmGcpOfferingResponseDataSensitivityDiscoveryPtrOutput() DefenderCspmGcpOfferingResponseDataSensitivityDiscoveryPtrOutput {
+	return o
+}
+
+func (o DefenderCspmGcpOfferingResponseDataSensitivityDiscoveryPtrOutput) ToDefenderCspmGcpOfferingResponseDataSensitivityDiscoveryPtrOutputWithContext(ctx context.Context) DefenderCspmGcpOfferingResponseDataSensitivityDiscoveryPtrOutput {
+	return o
+}
+
+func (o DefenderCspmGcpOfferingResponseDataSensitivityDiscoveryPtrOutput) Elem() DefenderCspmGcpOfferingResponseDataSensitivityDiscoveryOutput {
+	return o.ApplyT(func(v *DefenderCspmGcpOfferingResponseDataSensitivityDiscovery) DefenderCspmGcpOfferingResponseDataSensitivityDiscovery {
+		if v != nil {
+			return *v
+		}
+		var ret DefenderCspmGcpOfferingResponseDataSensitivityDiscovery
+		return ret
+	}).(DefenderCspmGcpOfferingResponseDataSensitivityDiscoveryOutput)
+}
+
+// Is Microsoft Defender Data Sensitivity discovery enabled
+func (o DefenderCspmGcpOfferingResponseDataSensitivityDiscoveryPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DefenderCspmGcpOfferingResponseDataSensitivityDiscovery) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The service account email address in GCP for this feature
+func (o DefenderCspmGcpOfferingResponseDataSensitivityDiscoveryPtrOutput) ServiceAccountEmailAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenderCspmGcpOfferingResponseDataSensitivityDiscovery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountEmailAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// The workload identity provider id in GCP for this feature
+func (o DefenderCspmGcpOfferingResponseDataSensitivityDiscoveryPtrOutput) WorkloadIdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenderCspmGcpOfferingResponseDataSensitivityDiscovery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkloadIdentityProviderId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Microsoft Defender Container agentless discovery configuration
+type DefenderCspmGcpOfferingResponseMdcContainersAgentlessDiscoveryK8s struct {
+	// Is Microsoft Defender container agentless discovery enabled
+	Enabled *bool `pulumi:"enabled"`
+	// The service account email address in GCP for this feature
+	ServiceAccountEmailAddress *string `pulumi:"serviceAccountEmailAddress"`
+	// The workload identity provider id in GCP for this feature
+	WorkloadIdentityProviderId *string `pulumi:"workloadIdentityProviderId"`
+}
+
+// The Microsoft Defender Container agentless discovery configuration
+type DefenderCspmGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sOutput struct{ *pulumi.OutputState }
+
+func (DefenderCspmGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderCspmGcpOfferingResponseMdcContainersAgentlessDiscoveryK8s)(nil)).Elem()
+}
+
+func (o DefenderCspmGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sOutput) ToDefenderCspmGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sOutput() DefenderCspmGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sOutput {
+	return o
+}
+
+func (o DefenderCspmGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sOutput) ToDefenderCspmGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sOutputWithContext(ctx context.Context) DefenderCspmGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sOutput {
+	return o
+}
+
+// Is Microsoft Defender container agentless discovery enabled
+func (o DefenderCspmGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DefenderCspmGcpOfferingResponseMdcContainersAgentlessDiscoveryK8s) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The service account email address in GCP for this feature
+func (o DefenderCspmGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sOutput) ServiceAccountEmailAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderCspmGcpOfferingResponseMdcContainersAgentlessDiscoveryK8s) *string {
+		return v.ServiceAccountEmailAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// The workload identity provider id in GCP for this feature
+func (o DefenderCspmGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sOutput) WorkloadIdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderCspmGcpOfferingResponseMdcContainersAgentlessDiscoveryK8s) *string {
+		return v.WorkloadIdentityProviderId
+	}).(pulumi.StringPtrOutput)
+}
+
+type DefenderCspmGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput struct{ *pulumi.OutputState }
+
+func (DefenderCspmGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderCspmGcpOfferingResponseMdcContainersAgentlessDiscoveryK8s)(nil)).Elem()
+}
+
+func (o DefenderCspmGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput) ToDefenderCspmGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput() DefenderCspmGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput {
+	return o
+}
+
+func (o DefenderCspmGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput) ToDefenderCspmGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutputWithContext(ctx context.Context) DefenderCspmGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput {
+	return o
+}
+
+func (o DefenderCspmGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput) Elem() DefenderCspmGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sOutput {
+	return o.ApplyT(func(v *DefenderCspmGcpOfferingResponseMdcContainersAgentlessDiscoveryK8s) DefenderCspmGcpOfferingResponseMdcContainersAgentlessDiscoveryK8s {
+		if v != nil {
+			return *v
+		}
+		var ret DefenderCspmGcpOfferingResponseMdcContainersAgentlessDiscoveryK8s
+		return ret
+	}).(DefenderCspmGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sOutput)
+}
+
+// Is Microsoft Defender container agentless discovery enabled
+func (o DefenderCspmGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DefenderCspmGcpOfferingResponseMdcContainersAgentlessDiscoveryK8s) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The service account email address in GCP for this feature
+func (o DefenderCspmGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput) ServiceAccountEmailAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenderCspmGcpOfferingResponseMdcContainersAgentlessDiscoveryK8s) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountEmailAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// The workload identity provider id in GCP for this feature
+func (o DefenderCspmGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput) WorkloadIdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenderCspmGcpOfferingResponseMdcContainersAgentlessDiscoveryK8s) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkloadIdentityProviderId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Microsoft Defender Container image assessment configuration
+type DefenderCspmGcpOfferingResponseMdcContainersImageAssessment struct {
+	// Is Microsoft Defender container image assessment enabled
+	Enabled *bool `pulumi:"enabled"`
+	// The service account email address in GCP for this feature
+	ServiceAccountEmailAddress *string `pulumi:"serviceAccountEmailAddress"`
+	// The workload identity provider id in GCP for this feature
+	WorkloadIdentityProviderId *string `pulumi:"workloadIdentityProviderId"`
+}
+
+// The Microsoft Defender Container image assessment configuration
+type DefenderCspmGcpOfferingResponseMdcContainersImageAssessmentOutput struct{ *pulumi.OutputState }
+
+func (DefenderCspmGcpOfferingResponseMdcContainersImageAssessmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderCspmGcpOfferingResponseMdcContainersImageAssessment)(nil)).Elem()
+}
+
+func (o DefenderCspmGcpOfferingResponseMdcContainersImageAssessmentOutput) ToDefenderCspmGcpOfferingResponseMdcContainersImageAssessmentOutput() DefenderCspmGcpOfferingResponseMdcContainersImageAssessmentOutput {
+	return o
+}
+
+func (o DefenderCspmGcpOfferingResponseMdcContainersImageAssessmentOutput) ToDefenderCspmGcpOfferingResponseMdcContainersImageAssessmentOutputWithContext(ctx context.Context) DefenderCspmGcpOfferingResponseMdcContainersImageAssessmentOutput {
+	return o
+}
+
+// Is Microsoft Defender container image assessment enabled
+func (o DefenderCspmGcpOfferingResponseMdcContainersImageAssessmentOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DefenderCspmGcpOfferingResponseMdcContainersImageAssessment) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The service account email address in GCP for this feature
+func (o DefenderCspmGcpOfferingResponseMdcContainersImageAssessmentOutput) ServiceAccountEmailAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderCspmGcpOfferingResponseMdcContainersImageAssessment) *string {
+		return v.ServiceAccountEmailAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// The workload identity provider id in GCP for this feature
+func (o DefenderCspmGcpOfferingResponseMdcContainersImageAssessmentOutput) WorkloadIdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderCspmGcpOfferingResponseMdcContainersImageAssessment) *string {
+		return v.WorkloadIdentityProviderId
+	}).(pulumi.StringPtrOutput)
+}
+
+type DefenderCspmGcpOfferingResponseMdcContainersImageAssessmentPtrOutput struct{ *pulumi.OutputState }
+
+func (DefenderCspmGcpOfferingResponseMdcContainersImageAssessmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderCspmGcpOfferingResponseMdcContainersImageAssessment)(nil)).Elem()
+}
+
+func (o DefenderCspmGcpOfferingResponseMdcContainersImageAssessmentPtrOutput) ToDefenderCspmGcpOfferingResponseMdcContainersImageAssessmentPtrOutput() DefenderCspmGcpOfferingResponseMdcContainersImageAssessmentPtrOutput {
+	return o
+}
+
+func (o DefenderCspmGcpOfferingResponseMdcContainersImageAssessmentPtrOutput) ToDefenderCspmGcpOfferingResponseMdcContainersImageAssessmentPtrOutputWithContext(ctx context.Context) DefenderCspmGcpOfferingResponseMdcContainersImageAssessmentPtrOutput {
+	return o
+}
+
+func (o DefenderCspmGcpOfferingResponseMdcContainersImageAssessmentPtrOutput) Elem() DefenderCspmGcpOfferingResponseMdcContainersImageAssessmentOutput {
+	return o.ApplyT(func(v *DefenderCspmGcpOfferingResponseMdcContainersImageAssessment) DefenderCspmGcpOfferingResponseMdcContainersImageAssessment {
+		if v != nil {
+			return *v
+		}
+		var ret DefenderCspmGcpOfferingResponseMdcContainersImageAssessment
+		return ret
+	}).(DefenderCspmGcpOfferingResponseMdcContainersImageAssessmentOutput)
+}
+
+// Is Microsoft Defender container image assessment enabled
+func (o DefenderCspmGcpOfferingResponseMdcContainersImageAssessmentPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DefenderCspmGcpOfferingResponseMdcContainersImageAssessment) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The service account email address in GCP for this feature
+func (o DefenderCspmGcpOfferingResponseMdcContainersImageAssessmentPtrOutput) ServiceAccountEmailAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenderCspmGcpOfferingResponseMdcContainersImageAssessment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountEmailAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// The workload identity provider id in GCP for this feature
+func (o DefenderCspmGcpOfferingResponseMdcContainersImageAssessmentPtrOutput) WorkloadIdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenderCspmGcpOfferingResponseMdcContainersImageAssessment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkloadIdentityProviderId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Microsoft Defender for CSPM VM scanning configuration
+type DefenderCspmGcpOfferingResponseVmScanners struct {
+	// Configuration for VM scanning
+	Configuration *VmScannersBaseResponseConfiguration `pulumi:"configuration"`
+	// Is VM scanning enabled
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// The Microsoft Defender for CSPM VM scanning configuration
+type DefenderCspmGcpOfferingResponseVmScannersOutput struct{ *pulumi.OutputState }
+
+func (DefenderCspmGcpOfferingResponseVmScannersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderCspmGcpOfferingResponseVmScanners)(nil)).Elem()
+}
+
+func (o DefenderCspmGcpOfferingResponseVmScannersOutput) ToDefenderCspmGcpOfferingResponseVmScannersOutput() DefenderCspmGcpOfferingResponseVmScannersOutput {
+	return o
+}
+
+func (o DefenderCspmGcpOfferingResponseVmScannersOutput) ToDefenderCspmGcpOfferingResponseVmScannersOutputWithContext(ctx context.Context) DefenderCspmGcpOfferingResponseVmScannersOutput {
+	return o
+}
+
+// Configuration for VM scanning
+func (o DefenderCspmGcpOfferingResponseVmScannersOutput) Configuration() VmScannersBaseResponseConfigurationPtrOutput {
+	return o.ApplyT(func(v DefenderCspmGcpOfferingResponseVmScanners) *VmScannersBaseResponseConfiguration {
+		return v.Configuration
+	}).(VmScannersBaseResponseConfigurationPtrOutput)
+}
+
+// Is VM scanning enabled
+func (o DefenderCspmGcpOfferingResponseVmScannersOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DefenderCspmGcpOfferingResponseVmScanners) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type DefenderCspmGcpOfferingResponseVmScannersPtrOutput struct{ *pulumi.OutputState }
+
+func (DefenderCspmGcpOfferingResponseVmScannersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderCspmGcpOfferingResponseVmScanners)(nil)).Elem()
+}
+
+func (o DefenderCspmGcpOfferingResponseVmScannersPtrOutput) ToDefenderCspmGcpOfferingResponseVmScannersPtrOutput() DefenderCspmGcpOfferingResponseVmScannersPtrOutput {
+	return o
+}
+
+func (o DefenderCspmGcpOfferingResponseVmScannersPtrOutput) ToDefenderCspmGcpOfferingResponseVmScannersPtrOutputWithContext(ctx context.Context) DefenderCspmGcpOfferingResponseVmScannersPtrOutput {
+	return o
+}
+
+func (o DefenderCspmGcpOfferingResponseVmScannersPtrOutput) Elem() DefenderCspmGcpOfferingResponseVmScannersOutput {
+	return o.ApplyT(func(v *DefenderCspmGcpOfferingResponseVmScanners) DefenderCspmGcpOfferingResponseVmScanners {
+		if v != nil {
+			return *v
+		}
+		var ret DefenderCspmGcpOfferingResponseVmScanners
+		return ret
+	}).(DefenderCspmGcpOfferingResponseVmScannersOutput)
+}
+
+// Configuration for VM scanning
+func (o DefenderCspmGcpOfferingResponseVmScannersPtrOutput) Configuration() VmScannersBaseResponseConfigurationPtrOutput {
+	return o.ApplyT(func(v *DefenderCspmGcpOfferingResponseVmScanners) *VmScannersBaseResponseConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.Configuration
+	}).(VmScannersBaseResponseConfigurationPtrOutput)
+}
+
+// Is VM scanning enabled
+func (o DefenderCspmGcpOfferingResponseVmScannersPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DefenderCspmGcpOfferingResponseVmScanners) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The Microsoft Defender for CSPM VM scanning configuration
+type DefenderCspmGcpOfferingVmScanners struct {
+	// Configuration for VM scanning
+	Configuration *VmScannersBaseConfiguration `pulumi:"configuration"`
+	// Is VM scanning enabled
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// DefenderCspmGcpOfferingVmScannersInput is an input type that accepts DefenderCspmGcpOfferingVmScannersArgs and DefenderCspmGcpOfferingVmScannersOutput values.
+// You can construct a concrete instance of `DefenderCspmGcpOfferingVmScannersInput` via:
+//
+//	DefenderCspmGcpOfferingVmScannersArgs{...}
+type DefenderCspmGcpOfferingVmScannersInput interface {
+	pulumi.Input
+
+	ToDefenderCspmGcpOfferingVmScannersOutput() DefenderCspmGcpOfferingVmScannersOutput
+	ToDefenderCspmGcpOfferingVmScannersOutputWithContext(context.Context) DefenderCspmGcpOfferingVmScannersOutput
+}
+
+// The Microsoft Defender for CSPM VM scanning configuration
+type DefenderCspmGcpOfferingVmScannersArgs struct {
+	// Configuration for VM scanning
+	Configuration VmScannersBaseConfigurationPtrInput `pulumi:"configuration"`
+	// Is VM scanning enabled
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (DefenderCspmGcpOfferingVmScannersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderCspmGcpOfferingVmScanners)(nil)).Elem()
+}
+
+func (i DefenderCspmGcpOfferingVmScannersArgs) ToDefenderCspmGcpOfferingVmScannersOutput() DefenderCspmGcpOfferingVmScannersOutput {
+	return i.ToDefenderCspmGcpOfferingVmScannersOutputWithContext(context.Background())
+}
+
+func (i DefenderCspmGcpOfferingVmScannersArgs) ToDefenderCspmGcpOfferingVmScannersOutputWithContext(ctx context.Context) DefenderCspmGcpOfferingVmScannersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderCspmGcpOfferingVmScannersOutput)
+}
+
+func (i DefenderCspmGcpOfferingVmScannersArgs) ToDefenderCspmGcpOfferingVmScannersPtrOutput() DefenderCspmGcpOfferingVmScannersPtrOutput {
+	return i.ToDefenderCspmGcpOfferingVmScannersPtrOutputWithContext(context.Background())
+}
+
+func (i DefenderCspmGcpOfferingVmScannersArgs) ToDefenderCspmGcpOfferingVmScannersPtrOutputWithContext(ctx context.Context) DefenderCspmGcpOfferingVmScannersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderCspmGcpOfferingVmScannersOutput).ToDefenderCspmGcpOfferingVmScannersPtrOutputWithContext(ctx)
+}
+
+// DefenderCspmGcpOfferingVmScannersPtrInput is an input type that accepts DefenderCspmGcpOfferingVmScannersArgs, DefenderCspmGcpOfferingVmScannersPtr and DefenderCspmGcpOfferingVmScannersPtrOutput values.
+// You can construct a concrete instance of `DefenderCspmGcpOfferingVmScannersPtrInput` via:
+//
+//	        DefenderCspmGcpOfferingVmScannersArgs{...}
+//
+//	or:
+//
+//	        nil
+type DefenderCspmGcpOfferingVmScannersPtrInput interface {
+	pulumi.Input
+
+	ToDefenderCspmGcpOfferingVmScannersPtrOutput() DefenderCspmGcpOfferingVmScannersPtrOutput
+	ToDefenderCspmGcpOfferingVmScannersPtrOutputWithContext(context.Context) DefenderCspmGcpOfferingVmScannersPtrOutput
+}
+
+type defenderCspmGcpOfferingVmScannersPtrType DefenderCspmGcpOfferingVmScannersArgs
+
+func DefenderCspmGcpOfferingVmScannersPtr(v *DefenderCspmGcpOfferingVmScannersArgs) DefenderCspmGcpOfferingVmScannersPtrInput {
+	return (*defenderCspmGcpOfferingVmScannersPtrType)(v)
+}
+
+func (*defenderCspmGcpOfferingVmScannersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderCspmGcpOfferingVmScanners)(nil)).Elem()
+}
+
+func (i *defenderCspmGcpOfferingVmScannersPtrType) ToDefenderCspmGcpOfferingVmScannersPtrOutput() DefenderCspmGcpOfferingVmScannersPtrOutput {
+	return i.ToDefenderCspmGcpOfferingVmScannersPtrOutputWithContext(context.Background())
+}
+
+func (i *defenderCspmGcpOfferingVmScannersPtrType) ToDefenderCspmGcpOfferingVmScannersPtrOutputWithContext(ctx context.Context) DefenderCspmGcpOfferingVmScannersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderCspmGcpOfferingVmScannersPtrOutput)
+}
+
+// The Microsoft Defender for CSPM VM scanning configuration
+type DefenderCspmGcpOfferingVmScannersOutput struct{ *pulumi.OutputState }
+
+func (DefenderCspmGcpOfferingVmScannersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderCspmGcpOfferingVmScanners)(nil)).Elem()
+}
+
+func (o DefenderCspmGcpOfferingVmScannersOutput) ToDefenderCspmGcpOfferingVmScannersOutput() DefenderCspmGcpOfferingVmScannersOutput {
+	return o
+}
+
+func (o DefenderCspmGcpOfferingVmScannersOutput) ToDefenderCspmGcpOfferingVmScannersOutputWithContext(ctx context.Context) DefenderCspmGcpOfferingVmScannersOutput {
+	return o
+}
+
+func (o DefenderCspmGcpOfferingVmScannersOutput) ToDefenderCspmGcpOfferingVmScannersPtrOutput() DefenderCspmGcpOfferingVmScannersPtrOutput {
+	return o.ToDefenderCspmGcpOfferingVmScannersPtrOutputWithContext(context.Background())
+}
+
+func (o DefenderCspmGcpOfferingVmScannersOutput) ToDefenderCspmGcpOfferingVmScannersPtrOutputWithContext(ctx context.Context) DefenderCspmGcpOfferingVmScannersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefenderCspmGcpOfferingVmScanners) *DefenderCspmGcpOfferingVmScanners {
+		return &v
+	}).(DefenderCspmGcpOfferingVmScannersPtrOutput)
+}
+
+// Configuration for VM scanning
+func (o DefenderCspmGcpOfferingVmScannersOutput) Configuration() VmScannersBaseConfigurationPtrOutput {
+	return o.ApplyT(func(v DefenderCspmGcpOfferingVmScanners) *VmScannersBaseConfiguration { return v.Configuration }).(VmScannersBaseConfigurationPtrOutput)
+}
+
+// Is VM scanning enabled
+func (o DefenderCspmGcpOfferingVmScannersOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DefenderCspmGcpOfferingVmScanners) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type DefenderCspmGcpOfferingVmScannersPtrOutput struct{ *pulumi.OutputState }
+
+func (DefenderCspmGcpOfferingVmScannersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderCspmGcpOfferingVmScanners)(nil)).Elem()
+}
+
+func (o DefenderCspmGcpOfferingVmScannersPtrOutput) ToDefenderCspmGcpOfferingVmScannersPtrOutput() DefenderCspmGcpOfferingVmScannersPtrOutput {
+	return o
+}
+
+func (o DefenderCspmGcpOfferingVmScannersPtrOutput) ToDefenderCspmGcpOfferingVmScannersPtrOutputWithContext(ctx context.Context) DefenderCspmGcpOfferingVmScannersPtrOutput {
+	return o
+}
+
+func (o DefenderCspmGcpOfferingVmScannersPtrOutput) Elem() DefenderCspmGcpOfferingVmScannersOutput {
+	return o.ApplyT(func(v *DefenderCspmGcpOfferingVmScanners) DefenderCspmGcpOfferingVmScanners {
+		if v != nil {
+			return *v
+		}
+		var ret DefenderCspmGcpOfferingVmScanners
+		return ret
+	}).(DefenderCspmGcpOfferingVmScannersOutput)
+}
+
+// Configuration for VM scanning
+func (o DefenderCspmGcpOfferingVmScannersPtrOutput) Configuration() VmScannersBaseConfigurationPtrOutput {
+	return o.ApplyT(func(v *DefenderCspmGcpOfferingVmScanners) *VmScannersBaseConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.Configuration
+	}).(VmScannersBaseConfigurationPtrOutput)
+}
+
+// Is VM scanning enabled
+func (o DefenderCspmGcpOfferingVmScannersPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DefenderCspmGcpOfferingVmScanners) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The CSPM P1 for JFrog Artifactory offering
+type DefenderCspmJFrogOffering struct {
+	// The Microsoft Defender Container image assessment configuration
+	MdcContainersImageAssessment *DefenderCspmJFrogOfferingMdcContainersImageAssessment `pulumi:"mdcContainersImageAssessment"`
+	// The type of the security offering.
+	// Expected value is 'DefenderCspmJFrog'.
+	OfferingType string `pulumi:"offeringType"`
+}
+
+// DefenderCspmJFrogOfferingInput is an input type that accepts DefenderCspmJFrogOfferingArgs and DefenderCspmJFrogOfferingOutput values.
+// You can construct a concrete instance of `DefenderCspmJFrogOfferingInput` via:
+//
+//	DefenderCspmJFrogOfferingArgs{...}
+type DefenderCspmJFrogOfferingInput interface {
+	pulumi.Input
+
+	ToDefenderCspmJFrogOfferingOutput() DefenderCspmJFrogOfferingOutput
+	ToDefenderCspmJFrogOfferingOutputWithContext(context.Context) DefenderCspmJFrogOfferingOutput
+}
+
+// The CSPM P1 for JFrog Artifactory offering
+type DefenderCspmJFrogOfferingArgs struct {
+	// The Microsoft Defender Container image assessment configuration
+	MdcContainersImageAssessment DefenderCspmJFrogOfferingMdcContainersImageAssessmentPtrInput `pulumi:"mdcContainersImageAssessment"`
+	// The type of the security offering.
+	// Expected value is 'DefenderCspmJFrog'.
+	OfferingType pulumi.StringInput `pulumi:"offeringType"`
+}
+
+func (DefenderCspmJFrogOfferingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderCspmJFrogOffering)(nil)).Elem()
+}
+
+func (i DefenderCspmJFrogOfferingArgs) ToDefenderCspmJFrogOfferingOutput() DefenderCspmJFrogOfferingOutput {
+	return i.ToDefenderCspmJFrogOfferingOutputWithContext(context.Background())
+}
+
+func (i DefenderCspmJFrogOfferingArgs) ToDefenderCspmJFrogOfferingOutputWithContext(ctx context.Context) DefenderCspmJFrogOfferingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderCspmJFrogOfferingOutput)
+}
+
+// The CSPM P1 for JFrog Artifactory offering
+type DefenderCspmJFrogOfferingOutput struct{ *pulumi.OutputState }
+
+func (DefenderCspmJFrogOfferingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderCspmJFrogOffering)(nil)).Elem()
+}
+
+func (o DefenderCspmJFrogOfferingOutput) ToDefenderCspmJFrogOfferingOutput() DefenderCspmJFrogOfferingOutput {
+	return o
+}
+
+func (o DefenderCspmJFrogOfferingOutput) ToDefenderCspmJFrogOfferingOutputWithContext(ctx context.Context) DefenderCspmJFrogOfferingOutput {
+	return o
+}
+
+// The Microsoft Defender Container image assessment configuration
+func (o DefenderCspmJFrogOfferingOutput) MdcContainersImageAssessment() DefenderCspmJFrogOfferingMdcContainersImageAssessmentPtrOutput {
+	return o.ApplyT(func(v DefenderCspmJFrogOffering) *DefenderCspmJFrogOfferingMdcContainersImageAssessment {
+		return v.MdcContainersImageAssessment
+	}).(DefenderCspmJFrogOfferingMdcContainersImageAssessmentPtrOutput)
+}
+
+// The type of the security offering.
+// Expected value is 'DefenderCspmJFrog'.
+func (o DefenderCspmJFrogOfferingOutput) OfferingType() pulumi.StringOutput {
+	return o.ApplyT(func(v DefenderCspmJFrogOffering) string { return v.OfferingType }).(pulumi.StringOutput)
+}
+
+// The Microsoft Defender Container image assessment configuration
+type DefenderCspmJFrogOfferingMdcContainersImageAssessment struct {
+	// Is Microsoft Defender container image assessment enabled
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// DefenderCspmJFrogOfferingMdcContainersImageAssessmentInput is an input type that accepts DefenderCspmJFrogOfferingMdcContainersImageAssessmentArgs and DefenderCspmJFrogOfferingMdcContainersImageAssessmentOutput values.
+// You can construct a concrete instance of `DefenderCspmJFrogOfferingMdcContainersImageAssessmentInput` via:
+//
+//	DefenderCspmJFrogOfferingMdcContainersImageAssessmentArgs{...}
+type DefenderCspmJFrogOfferingMdcContainersImageAssessmentInput interface {
+	pulumi.Input
+
+	ToDefenderCspmJFrogOfferingMdcContainersImageAssessmentOutput() DefenderCspmJFrogOfferingMdcContainersImageAssessmentOutput
+	ToDefenderCspmJFrogOfferingMdcContainersImageAssessmentOutputWithContext(context.Context) DefenderCspmJFrogOfferingMdcContainersImageAssessmentOutput
+}
+
+// The Microsoft Defender Container image assessment configuration
+type DefenderCspmJFrogOfferingMdcContainersImageAssessmentArgs struct {
+	// Is Microsoft Defender container image assessment enabled
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (DefenderCspmJFrogOfferingMdcContainersImageAssessmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderCspmJFrogOfferingMdcContainersImageAssessment)(nil)).Elem()
+}
+
+func (i DefenderCspmJFrogOfferingMdcContainersImageAssessmentArgs) ToDefenderCspmJFrogOfferingMdcContainersImageAssessmentOutput() DefenderCspmJFrogOfferingMdcContainersImageAssessmentOutput {
+	return i.ToDefenderCspmJFrogOfferingMdcContainersImageAssessmentOutputWithContext(context.Background())
+}
+
+func (i DefenderCspmJFrogOfferingMdcContainersImageAssessmentArgs) ToDefenderCspmJFrogOfferingMdcContainersImageAssessmentOutputWithContext(ctx context.Context) DefenderCspmJFrogOfferingMdcContainersImageAssessmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderCspmJFrogOfferingMdcContainersImageAssessmentOutput)
+}
+
+func (i DefenderCspmJFrogOfferingMdcContainersImageAssessmentArgs) ToDefenderCspmJFrogOfferingMdcContainersImageAssessmentPtrOutput() DefenderCspmJFrogOfferingMdcContainersImageAssessmentPtrOutput {
+	return i.ToDefenderCspmJFrogOfferingMdcContainersImageAssessmentPtrOutputWithContext(context.Background())
+}
+
+func (i DefenderCspmJFrogOfferingMdcContainersImageAssessmentArgs) ToDefenderCspmJFrogOfferingMdcContainersImageAssessmentPtrOutputWithContext(ctx context.Context) DefenderCspmJFrogOfferingMdcContainersImageAssessmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderCspmJFrogOfferingMdcContainersImageAssessmentOutput).ToDefenderCspmJFrogOfferingMdcContainersImageAssessmentPtrOutputWithContext(ctx)
+}
+
+// DefenderCspmJFrogOfferingMdcContainersImageAssessmentPtrInput is an input type that accepts DefenderCspmJFrogOfferingMdcContainersImageAssessmentArgs, DefenderCspmJFrogOfferingMdcContainersImageAssessmentPtr and DefenderCspmJFrogOfferingMdcContainersImageAssessmentPtrOutput values.
+// You can construct a concrete instance of `DefenderCspmJFrogOfferingMdcContainersImageAssessmentPtrInput` via:
+//
+//	        DefenderCspmJFrogOfferingMdcContainersImageAssessmentArgs{...}
+//
+//	or:
+//
+//	        nil
+type DefenderCspmJFrogOfferingMdcContainersImageAssessmentPtrInput interface {
+	pulumi.Input
+
+	ToDefenderCspmJFrogOfferingMdcContainersImageAssessmentPtrOutput() DefenderCspmJFrogOfferingMdcContainersImageAssessmentPtrOutput
+	ToDefenderCspmJFrogOfferingMdcContainersImageAssessmentPtrOutputWithContext(context.Context) DefenderCspmJFrogOfferingMdcContainersImageAssessmentPtrOutput
+}
+
+type defenderCspmJFrogOfferingMdcContainersImageAssessmentPtrType DefenderCspmJFrogOfferingMdcContainersImageAssessmentArgs
+
+func DefenderCspmJFrogOfferingMdcContainersImageAssessmentPtr(v *DefenderCspmJFrogOfferingMdcContainersImageAssessmentArgs) DefenderCspmJFrogOfferingMdcContainersImageAssessmentPtrInput {
+	return (*defenderCspmJFrogOfferingMdcContainersImageAssessmentPtrType)(v)
+}
+
+func (*defenderCspmJFrogOfferingMdcContainersImageAssessmentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderCspmJFrogOfferingMdcContainersImageAssessment)(nil)).Elem()
+}
+
+func (i *defenderCspmJFrogOfferingMdcContainersImageAssessmentPtrType) ToDefenderCspmJFrogOfferingMdcContainersImageAssessmentPtrOutput() DefenderCspmJFrogOfferingMdcContainersImageAssessmentPtrOutput {
+	return i.ToDefenderCspmJFrogOfferingMdcContainersImageAssessmentPtrOutputWithContext(context.Background())
+}
+
+func (i *defenderCspmJFrogOfferingMdcContainersImageAssessmentPtrType) ToDefenderCspmJFrogOfferingMdcContainersImageAssessmentPtrOutputWithContext(ctx context.Context) DefenderCspmJFrogOfferingMdcContainersImageAssessmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderCspmJFrogOfferingMdcContainersImageAssessmentPtrOutput)
+}
+
+// The Microsoft Defender Container image assessment configuration
+type DefenderCspmJFrogOfferingMdcContainersImageAssessmentOutput struct{ *pulumi.OutputState }
+
+func (DefenderCspmJFrogOfferingMdcContainersImageAssessmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderCspmJFrogOfferingMdcContainersImageAssessment)(nil)).Elem()
+}
+
+func (o DefenderCspmJFrogOfferingMdcContainersImageAssessmentOutput) ToDefenderCspmJFrogOfferingMdcContainersImageAssessmentOutput() DefenderCspmJFrogOfferingMdcContainersImageAssessmentOutput {
+	return o
+}
+
+func (o DefenderCspmJFrogOfferingMdcContainersImageAssessmentOutput) ToDefenderCspmJFrogOfferingMdcContainersImageAssessmentOutputWithContext(ctx context.Context) DefenderCspmJFrogOfferingMdcContainersImageAssessmentOutput {
+	return o
+}
+
+func (o DefenderCspmJFrogOfferingMdcContainersImageAssessmentOutput) ToDefenderCspmJFrogOfferingMdcContainersImageAssessmentPtrOutput() DefenderCspmJFrogOfferingMdcContainersImageAssessmentPtrOutput {
+	return o.ToDefenderCspmJFrogOfferingMdcContainersImageAssessmentPtrOutputWithContext(context.Background())
+}
+
+func (o DefenderCspmJFrogOfferingMdcContainersImageAssessmentOutput) ToDefenderCspmJFrogOfferingMdcContainersImageAssessmentPtrOutputWithContext(ctx context.Context) DefenderCspmJFrogOfferingMdcContainersImageAssessmentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefenderCspmJFrogOfferingMdcContainersImageAssessment) *DefenderCspmJFrogOfferingMdcContainersImageAssessment {
+		return &v
+	}).(DefenderCspmJFrogOfferingMdcContainersImageAssessmentPtrOutput)
+}
+
+// Is Microsoft Defender container image assessment enabled
+func (o DefenderCspmJFrogOfferingMdcContainersImageAssessmentOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DefenderCspmJFrogOfferingMdcContainersImageAssessment) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type DefenderCspmJFrogOfferingMdcContainersImageAssessmentPtrOutput struct{ *pulumi.OutputState }
+
+func (DefenderCspmJFrogOfferingMdcContainersImageAssessmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderCspmJFrogOfferingMdcContainersImageAssessment)(nil)).Elem()
+}
+
+func (o DefenderCspmJFrogOfferingMdcContainersImageAssessmentPtrOutput) ToDefenderCspmJFrogOfferingMdcContainersImageAssessmentPtrOutput() DefenderCspmJFrogOfferingMdcContainersImageAssessmentPtrOutput {
+	return o
+}
+
+func (o DefenderCspmJFrogOfferingMdcContainersImageAssessmentPtrOutput) ToDefenderCspmJFrogOfferingMdcContainersImageAssessmentPtrOutputWithContext(ctx context.Context) DefenderCspmJFrogOfferingMdcContainersImageAssessmentPtrOutput {
+	return o
+}
+
+func (o DefenderCspmJFrogOfferingMdcContainersImageAssessmentPtrOutput) Elem() DefenderCspmJFrogOfferingMdcContainersImageAssessmentOutput {
+	return o.ApplyT(func(v *DefenderCspmJFrogOfferingMdcContainersImageAssessment) DefenderCspmJFrogOfferingMdcContainersImageAssessment {
+		if v != nil {
+			return *v
+		}
+		var ret DefenderCspmJFrogOfferingMdcContainersImageAssessment
+		return ret
+	}).(DefenderCspmJFrogOfferingMdcContainersImageAssessmentOutput)
+}
+
+// Is Microsoft Defender container image assessment enabled
+func (o DefenderCspmJFrogOfferingMdcContainersImageAssessmentPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DefenderCspmJFrogOfferingMdcContainersImageAssessment) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The CSPM P1 for JFrog Artifactory offering
+type DefenderCspmJFrogOfferingResponse struct {
+	// The offering description.
+	Description string `pulumi:"description"`
+	// The Microsoft Defender Container image assessment configuration
+	MdcContainersImageAssessment *DefenderCspmJFrogOfferingResponseMdcContainersImageAssessment `pulumi:"mdcContainersImageAssessment"`
+	// The type of the security offering.
+	// Expected value is 'DefenderCspmJFrog'.
+	OfferingType string `pulumi:"offeringType"`
+}
+
+// The CSPM P1 for JFrog Artifactory offering
+type DefenderCspmJFrogOfferingResponseOutput struct{ *pulumi.OutputState }
+
+func (DefenderCspmJFrogOfferingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderCspmJFrogOfferingResponse)(nil)).Elem()
+}
+
+func (o DefenderCspmJFrogOfferingResponseOutput) ToDefenderCspmJFrogOfferingResponseOutput() DefenderCspmJFrogOfferingResponseOutput {
+	return o
+}
+
+func (o DefenderCspmJFrogOfferingResponseOutput) ToDefenderCspmJFrogOfferingResponseOutputWithContext(ctx context.Context) DefenderCspmJFrogOfferingResponseOutput {
+	return o
+}
+
+// The offering description.
+func (o DefenderCspmJFrogOfferingResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v DefenderCspmJFrogOfferingResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The Microsoft Defender Container image assessment configuration
+func (o DefenderCspmJFrogOfferingResponseOutput) MdcContainersImageAssessment() DefenderCspmJFrogOfferingResponseMdcContainersImageAssessmentPtrOutput {
+	return o.ApplyT(func(v DefenderCspmJFrogOfferingResponse) *DefenderCspmJFrogOfferingResponseMdcContainersImageAssessment {
+		return v.MdcContainersImageAssessment
+	}).(DefenderCspmJFrogOfferingResponseMdcContainersImageAssessmentPtrOutput)
+}
+
+// The type of the security offering.
+// Expected value is 'DefenderCspmJFrog'.
+func (o DefenderCspmJFrogOfferingResponseOutput) OfferingType() pulumi.StringOutput {
+	return o.ApplyT(func(v DefenderCspmJFrogOfferingResponse) string { return v.OfferingType }).(pulumi.StringOutput)
+}
+
+// The Microsoft Defender Container image assessment configuration
+type DefenderCspmJFrogOfferingResponseMdcContainersImageAssessment struct {
+	// Is Microsoft Defender container image assessment enabled
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// The Microsoft Defender Container image assessment configuration
+type DefenderCspmJFrogOfferingResponseMdcContainersImageAssessmentOutput struct{ *pulumi.OutputState }
+
+func (DefenderCspmJFrogOfferingResponseMdcContainersImageAssessmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderCspmJFrogOfferingResponseMdcContainersImageAssessment)(nil)).Elem()
+}
+
+func (o DefenderCspmJFrogOfferingResponseMdcContainersImageAssessmentOutput) ToDefenderCspmJFrogOfferingResponseMdcContainersImageAssessmentOutput() DefenderCspmJFrogOfferingResponseMdcContainersImageAssessmentOutput {
+	return o
+}
+
+func (o DefenderCspmJFrogOfferingResponseMdcContainersImageAssessmentOutput) ToDefenderCspmJFrogOfferingResponseMdcContainersImageAssessmentOutputWithContext(ctx context.Context) DefenderCspmJFrogOfferingResponseMdcContainersImageAssessmentOutput {
+	return o
+}
+
+// Is Microsoft Defender container image assessment enabled
+func (o DefenderCspmJFrogOfferingResponseMdcContainersImageAssessmentOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DefenderCspmJFrogOfferingResponseMdcContainersImageAssessment) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type DefenderCspmJFrogOfferingResponseMdcContainersImageAssessmentPtrOutput struct{ *pulumi.OutputState }
+
+func (DefenderCspmJFrogOfferingResponseMdcContainersImageAssessmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderCspmJFrogOfferingResponseMdcContainersImageAssessment)(nil)).Elem()
+}
+
+func (o DefenderCspmJFrogOfferingResponseMdcContainersImageAssessmentPtrOutput) ToDefenderCspmJFrogOfferingResponseMdcContainersImageAssessmentPtrOutput() DefenderCspmJFrogOfferingResponseMdcContainersImageAssessmentPtrOutput {
+	return o
+}
+
+func (o DefenderCspmJFrogOfferingResponseMdcContainersImageAssessmentPtrOutput) ToDefenderCspmJFrogOfferingResponseMdcContainersImageAssessmentPtrOutputWithContext(ctx context.Context) DefenderCspmJFrogOfferingResponseMdcContainersImageAssessmentPtrOutput {
+	return o
+}
+
+func (o DefenderCspmJFrogOfferingResponseMdcContainersImageAssessmentPtrOutput) Elem() DefenderCspmJFrogOfferingResponseMdcContainersImageAssessmentOutput {
+	return o.ApplyT(func(v *DefenderCspmJFrogOfferingResponseMdcContainersImageAssessment) DefenderCspmJFrogOfferingResponseMdcContainersImageAssessment {
+		if v != nil {
+			return *v
+		}
+		var ret DefenderCspmJFrogOfferingResponseMdcContainersImageAssessment
+		return ret
+	}).(DefenderCspmJFrogOfferingResponseMdcContainersImageAssessmentOutput)
+}
+
+// Is Microsoft Defender container image assessment enabled
+func (o DefenderCspmJFrogOfferingResponseMdcContainersImageAssessmentPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DefenderCspmJFrogOfferingResponseMdcContainersImageAssessment) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The Defender for Databases AWS offering
@@ -7248,8 +10817,8 @@ func (o DefenderFoDatabasesAwsOfferingOutput) Rds() DefenderFoDatabasesAwsOfferi
 type DefenderFoDatabasesAwsOfferingArcAutoProvisioning struct {
 	// The cloud role ARN in AWS for this feature
 	CloudRoleArn *string `pulumi:"cloudRoleArn"`
-	// Configuration for servers Arc auto provisioning
-	Configuration *DefenderFoDatabasesAwsOfferingConfiguration `pulumi:"configuration"`
+	// Configuration for servers Arc auto provisioning for a given environment
+	Configuration *ArcAutoProvisioningConfiguration `pulumi:"configuration"`
 	// Is arc auto provisioning enabled
 	Enabled *bool `pulumi:"enabled"`
 }
@@ -7269,8 +10838,8 @@ type DefenderFoDatabasesAwsOfferingArcAutoProvisioningInput interface {
 type DefenderFoDatabasesAwsOfferingArcAutoProvisioningArgs struct {
 	// The cloud role ARN in AWS for this feature
 	CloudRoleArn pulumi.StringPtrInput `pulumi:"cloudRoleArn"`
-	// Configuration for servers Arc auto provisioning
-	Configuration DefenderFoDatabasesAwsOfferingConfigurationPtrInput `pulumi:"configuration"`
+	// Configuration for servers Arc auto provisioning for a given environment
+	Configuration ArcAutoProvisioningConfigurationPtrInput `pulumi:"configuration"`
 	// Is arc auto provisioning enabled
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
@@ -7358,11 +10927,11 @@ func (o DefenderFoDatabasesAwsOfferingArcAutoProvisioningOutput) CloudRoleArn() 
 	return o.ApplyT(func(v DefenderFoDatabasesAwsOfferingArcAutoProvisioning) *string { return v.CloudRoleArn }).(pulumi.StringPtrOutput)
 }
 
-// Configuration for servers Arc auto provisioning
-func (o DefenderFoDatabasesAwsOfferingArcAutoProvisioningOutput) Configuration() DefenderFoDatabasesAwsOfferingConfigurationPtrOutput {
-	return o.ApplyT(func(v DefenderFoDatabasesAwsOfferingArcAutoProvisioning) *DefenderFoDatabasesAwsOfferingConfiguration {
+// Configuration for servers Arc auto provisioning for a given environment
+func (o DefenderFoDatabasesAwsOfferingArcAutoProvisioningOutput) Configuration() ArcAutoProvisioningConfigurationPtrOutput {
+	return o.ApplyT(func(v DefenderFoDatabasesAwsOfferingArcAutoProvisioning) *ArcAutoProvisioningConfiguration {
 		return v.Configuration
-	}).(DefenderFoDatabasesAwsOfferingConfigurationPtrOutput)
+	}).(ArcAutoProvisioningConfigurationPtrOutput)
 }
 
 // Is arc auto provisioning enabled
@@ -7404,14 +10973,14 @@ func (o DefenderFoDatabasesAwsOfferingArcAutoProvisioningPtrOutput) CloudRoleArn
 	}).(pulumi.StringPtrOutput)
 }
 
-// Configuration for servers Arc auto provisioning
-func (o DefenderFoDatabasesAwsOfferingArcAutoProvisioningPtrOutput) Configuration() DefenderFoDatabasesAwsOfferingConfigurationPtrOutput {
-	return o.ApplyT(func(v *DefenderFoDatabasesAwsOfferingArcAutoProvisioning) *DefenderFoDatabasesAwsOfferingConfiguration {
+// Configuration for servers Arc auto provisioning for a given environment
+func (o DefenderFoDatabasesAwsOfferingArcAutoProvisioningPtrOutput) Configuration() ArcAutoProvisioningConfigurationPtrOutput {
+	return o.ApplyT(func(v *DefenderFoDatabasesAwsOfferingArcAutoProvisioning) *ArcAutoProvisioningConfiguration {
 		if v == nil {
 			return nil
 		}
 		return v.Configuration
-	}).(DefenderFoDatabasesAwsOfferingConfigurationPtrOutput)
+	}).(ArcAutoProvisioningConfigurationPtrOutput)
 }
 
 // Is arc auto provisioning enabled
@@ -7422,165 +10991,6 @@ func (o DefenderFoDatabasesAwsOfferingArcAutoProvisioningPtrOutput) Enabled() pu
 		}
 		return v.Enabled
 	}).(pulumi.BoolPtrOutput)
-}
-
-// Configuration for servers Arc auto provisioning
-type DefenderFoDatabasesAwsOfferingConfiguration struct {
-	// Optional Arc private link scope resource id to link the Arc agent
-	PrivateLinkScope *string `pulumi:"privateLinkScope"`
-	// Optional http proxy endpoint to use for the Arc agent
-	Proxy *string `pulumi:"proxy"`
-}
-
-// DefenderFoDatabasesAwsOfferingConfigurationInput is an input type that accepts DefenderFoDatabasesAwsOfferingConfigurationArgs and DefenderFoDatabasesAwsOfferingConfigurationOutput values.
-// You can construct a concrete instance of `DefenderFoDatabasesAwsOfferingConfigurationInput` via:
-//
-//	DefenderFoDatabasesAwsOfferingConfigurationArgs{...}
-type DefenderFoDatabasesAwsOfferingConfigurationInput interface {
-	pulumi.Input
-
-	ToDefenderFoDatabasesAwsOfferingConfigurationOutput() DefenderFoDatabasesAwsOfferingConfigurationOutput
-	ToDefenderFoDatabasesAwsOfferingConfigurationOutputWithContext(context.Context) DefenderFoDatabasesAwsOfferingConfigurationOutput
-}
-
-// Configuration for servers Arc auto provisioning
-type DefenderFoDatabasesAwsOfferingConfigurationArgs struct {
-	// Optional Arc private link scope resource id to link the Arc agent
-	PrivateLinkScope pulumi.StringPtrInput `pulumi:"privateLinkScope"`
-	// Optional http proxy endpoint to use for the Arc agent
-	Proxy pulumi.StringPtrInput `pulumi:"proxy"`
-}
-
-func (DefenderFoDatabasesAwsOfferingConfigurationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefenderFoDatabasesAwsOfferingConfiguration)(nil)).Elem()
-}
-
-func (i DefenderFoDatabasesAwsOfferingConfigurationArgs) ToDefenderFoDatabasesAwsOfferingConfigurationOutput() DefenderFoDatabasesAwsOfferingConfigurationOutput {
-	return i.ToDefenderFoDatabasesAwsOfferingConfigurationOutputWithContext(context.Background())
-}
-
-func (i DefenderFoDatabasesAwsOfferingConfigurationArgs) ToDefenderFoDatabasesAwsOfferingConfigurationOutputWithContext(ctx context.Context) DefenderFoDatabasesAwsOfferingConfigurationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DefenderFoDatabasesAwsOfferingConfigurationOutput)
-}
-
-func (i DefenderFoDatabasesAwsOfferingConfigurationArgs) ToDefenderFoDatabasesAwsOfferingConfigurationPtrOutput() DefenderFoDatabasesAwsOfferingConfigurationPtrOutput {
-	return i.ToDefenderFoDatabasesAwsOfferingConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i DefenderFoDatabasesAwsOfferingConfigurationArgs) ToDefenderFoDatabasesAwsOfferingConfigurationPtrOutputWithContext(ctx context.Context) DefenderFoDatabasesAwsOfferingConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DefenderFoDatabasesAwsOfferingConfigurationOutput).ToDefenderFoDatabasesAwsOfferingConfigurationPtrOutputWithContext(ctx)
-}
-
-// DefenderFoDatabasesAwsOfferingConfigurationPtrInput is an input type that accepts DefenderFoDatabasesAwsOfferingConfigurationArgs, DefenderFoDatabasesAwsOfferingConfigurationPtr and DefenderFoDatabasesAwsOfferingConfigurationPtrOutput values.
-// You can construct a concrete instance of `DefenderFoDatabasesAwsOfferingConfigurationPtrInput` via:
-//
-//	        DefenderFoDatabasesAwsOfferingConfigurationArgs{...}
-//
-//	or:
-//
-//	        nil
-type DefenderFoDatabasesAwsOfferingConfigurationPtrInput interface {
-	pulumi.Input
-
-	ToDefenderFoDatabasesAwsOfferingConfigurationPtrOutput() DefenderFoDatabasesAwsOfferingConfigurationPtrOutput
-	ToDefenderFoDatabasesAwsOfferingConfigurationPtrOutputWithContext(context.Context) DefenderFoDatabasesAwsOfferingConfigurationPtrOutput
-}
-
-type defenderFoDatabasesAwsOfferingConfigurationPtrType DefenderFoDatabasesAwsOfferingConfigurationArgs
-
-func DefenderFoDatabasesAwsOfferingConfigurationPtr(v *DefenderFoDatabasesAwsOfferingConfigurationArgs) DefenderFoDatabasesAwsOfferingConfigurationPtrInput {
-	return (*defenderFoDatabasesAwsOfferingConfigurationPtrType)(v)
-}
-
-func (*defenderFoDatabasesAwsOfferingConfigurationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DefenderFoDatabasesAwsOfferingConfiguration)(nil)).Elem()
-}
-
-func (i *defenderFoDatabasesAwsOfferingConfigurationPtrType) ToDefenderFoDatabasesAwsOfferingConfigurationPtrOutput() DefenderFoDatabasesAwsOfferingConfigurationPtrOutput {
-	return i.ToDefenderFoDatabasesAwsOfferingConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i *defenderFoDatabasesAwsOfferingConfigurationPtrType) ToDefenderFoDatabasesAwsOfferingConfigurationPtrOutputWithContext(ctx context.Context) DefenderFoDatabasesAwsOfferingConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DefenderFoDatabasesAwsOfferingConfigurationPtrOutput)
-}
-
-// Configuration for servers Arc auto provisioning
-type DefenderFoDatabasesAwsOfferingConfigurationOutput struct{ *pulumi.OutputState }
-
-func (DefenderFoDatabasesAwsOfferingConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefenderFoDatabasesAwsOfferingConfiguration)(nil)).Elem()
-}
-
-func (o DefenderFoDatabasesAwsOfferingConfigurationOutput) ToDefenderFoDatabasesAwsOfferingConfigurationOutput() DefenderFoDatabasesAwsOfferingConfigurationOutput {
-	return o
-}
-
-func (o DefenderFoDatabasesAwsOfferingConfigurationOutput) ToDefenderFoDatabasesAwsOfferingConfigurationOutputWithContext(ctx context.Context) DefenderFoDatabasesAwsOfferingConfigurationOutput {
-	return o
-}
-
-func (o DefenderFoDatabasesAwsOfferingConfigurationOutput) ToDefenderFoDatabasesAwsOfferingConfigurationPtrOutput() DefenderFoDatabasesAwsOfferingConfigurationPtrOutput {
-	return o.ToDefenderFoDatabasesAwsOfferingConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (o DefenderFoDatabasesAwsOfferingConfigurationOutput) ToDefenderFoDatabasesAwsOfferingConfigurationPtrOutputWithContext(ctx context.Context) DefenderFoDatabasesAwsOfferingConfigurationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefenderFoDatabasesAwsOfferingConfiguration) *DefenderFoDatabasesAwsOfferingConfiguration {
-		return &v
-	}).(DefenderFoDatabasesAwsOfferingConfigurationPtrOutput)
-}
-
-// Optional Arc private link scope resource id to link the Arc agent
-func (o DefenderFoDatabasesAwsOfferingConfigurationOutput) PrivateLinkScope() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DefenderFoDatabasesAwsOfferingConfiguration) *string { return v.PrivateLinkScope }).(pulumi.StringPtrOutput)
-}
-
-// Optional http proxy endpoint to use for the Arc agent
-func (o DefenderFoDatabasesAwsOfferingConfigurationOutput) Proxy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DefenderFoDatabasesAwsOfferingConfiguration) *string { return v.Proxy }).(pulumi.StringPtrOutput)
-}
-
-type DefenderFoDatabasesAwsOfferingConfigurationPtrOutput struct{ *pulumi.OutputState }
-
-func (DefenderFoDatabasesAwsOfferingConfigurationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DefenderFoDatabasesAwsOfferingConfiguration)(nil)).Elem()
-}
-
-func (o DefenderFoDatabasesAwsOfferingConfigurationPtrOutput) ToDefenderFoDatabasesAwsOfferingConfigurationPtrOutput() DefenderFoDatabasesAwsOfferingConfigurationPtrOutput {
-	return o
-}
-
-func (o DefenderFoDatabasesAwsOfferingConfigurationPtrOutput) ToDefenderFoDatabasesAwsOfferingConfigurationPtrOutputWithContext(ctx context.Context) DefenderFoDatabasesAwsOfferingConfigurationPtrOutput {
-	return o
-}
-
-func (o DefenderFoDatabasesAwsOfferingConfigurationPtrOutput) Elem() DefenderFoDatabasesAwsOfferingConfigurationOutput {
-	return o.ApplyT(func(v *DefenderFoDatabasesAwsOfferingConfiguration) DefenderFoDatabasesAwsOfferingConfiguration {
-		if v != nil {
-			return *v
-		}
-		var ret DefenderFoDatabasesAwsOfferingConfiguration
-		return ret
-	}).(DefenderFoDatabasesAwsOfferingConfigurationOutput)
-}
-
-// Optional Arc private link scope resource id to link the Arc agent
-func (o DefenderFoDatabasesAwsOfferingConfigurationPtrOutput) PrivateLinkScope() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DefenderFoDatabasesAwsOfferingConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PrivateLinkScope
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional http proxy endpoint to use for the Arc agent
-func (o DefenderFoDatabasesAwsOfferingConfigurationPtrOutput) Proxy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DefenderFoDatabasesAwsOfferingConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Proxy
-	}).(pulumi.StringPtrOutput)
 }
 
 // The databases data security posture management (DSPM) configuration
@@ -7967,8 +11377,8 @@ func (o DefenderFoDatabasesAwsOfferingResponseOutput) Rds() DefenderFoDatabasesA
 type DefenderFoDatabasesAwsOfferingResponseArcAutoProvisioning struct {
 	// The cloud role ARN in AWS for this feature
 	CloudRoleArn *string `pulumi:"cloudRoleArn"`
-	// Configuration for servers Arc auto provisioning
-	Configuration *DefenderFoDatabasesAwsOfferingResponseConfiguration `pulumi:"configuration"`
+	// Configuration for servers Arc auto provisioning for a given environment
+	Configuration *ArcAutoProvisioningResponseConfiguration `pulumi:"configuration"`
 	// Is arc auto provisioning enabled
 	Enabled *bool `pulumi:"enabled"`
 }
@@ -7993,11 +11403,11 @@ func (o DefenderFoDatabasesAwsOfferingResponseArcAutoProvisioningOutput) CloudRo
 	return o.ApplyT(func(v DefenderFoDatabasesAwsOfferingResponseArcAutoProvisioning) *string { return v.CloudRoleArn }).(pulumi.StringPtrOutput)
 }
 
-// Configuration for servers Arc auto provisioning
-func (o DefenderFoDatabasesAwsOfferingResponseArcAutoProvisioningOutput) Configuration() DefenderFoDatabasesAwsOfferingResponseConfigurationPtrOutput {
-	return o.ApplyT(func(v DefenderFoDatabasesAwsOfferingResponseArcAutoProvisioning) *DefenderFoDatabasesAwsOfferingResponseConfiguration {
+// Configuration for servers Arc auto provisioning for a given environment
+func (o DefenderFoDatabasesAwsOfferingResponseArcAutoProvisioningOutput) Configuration() ArcAutoProvisioningResponseConfigurationPtrOutput {
+	return o.ApplyT(func(v DefenderFoDatabasesAwsOfferingResponseArcAutoProvisioning) *ArcAutoProvisioningResponseConfiguration {
 		return v.Configuration
-	}).(DefenderFoDatabasesAwsOfferingResponseConfigurationPtrOutput)
+	}).(ArcAutoProvisioningResponseConfigurationPtrOutput)
 }
 
 // Is arc auto provisioning enabled
@@ -8039,14 +11449,14 @@ func (o DefenderFoDatabasesAwsOfferingResponseArcAutoProvisioningPtrOutput) Clou
 	}).(pulumi.StringPtrOutput)
 }
 
-// Configuration for servers Arc auto provisioning
-func (o DefenderFoDatabasesAwsOfferingResponseArcAutoProvisioningPtrOutput) Configuration() DefenderFoDatabasesAwsOfferingResponseConfigurationPtrOutput {
-	return o.ApplyT(func(v *DefenderFoDatabasesAwsOfferingResponseArcAutoProvisioning) *DefenderFoDatabasesAwsOfferingResponseConfiguration {
+// Configuration for servers Arc auto provisioning for a given environment
+func (o DefenderFoDatabasesAwsOfferingResponseArcAutoProvisioningPtrOutput) Configuration() ArcAutoProvisioningResponseConfigurationPtrOutput {
+	return o.ApplyT(func(v *DefenderFoDatabasesAwsOfferingResponseArcAutoProvisioning) *ArcAutoProvisioningResponseConfiguration {
 		if v == nil {
 			return nil
 		}
 		return v.Configuration
-	}).(DefenderFoDatabasesAwsOfferingResponseConfigurationPtrOutput)
+	}).(ArcAutoProvisioningResponseConfigurationPtrOutput)
 }
 
 // Is arc auto provisioning enabled
@@ -8057,83 +11467,6 @@ func (o DefenderFoDatabasesAwsOfferingResponseArcAutoProvisioningPtrOutput) Enab
 		}
 		return v.Enabled
 	}).(pulumi.BoolPtrOutput)
-}
-
-// Configuration for servers Arc auto provisioning
-type DefenderFoDatabasesAwsOfferingResponseConfiguration struct {
-	// Optional Arc private link scope resource id to link the Arc agent
-	PrivateLinkScope *string `pulumi:"privateLinkScope"`
-	// Optional http proxy endpoint to use for the Arc agent
-	Proxy *string `pulumi:"proxy"`
-}
-
-// Configuration for servers Arc auto provisioning
-type DefenderFoDatabasesAwsOfferingResponseConfigurationOutput struct{ *pulumi.OutputState }
-
-func (DefenderFoDatabasesAwsOfferingResponseConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefenderFoDatabasesAwsOfferingResponseConfiguration)(nil)).Elem()
-}
-
-func (o DefenderFoDatabasesAwsOfferingResponseConfigurationOutput) ToDefenderFoDatabasesAwsOfferingResponseConfigurationOutput() DefenderFoDatabasesAwsOfferingResponseConfigurationOutput {
-	return o
-}
-
-func (o DefenderFoDatabasesAwsOfferingResponseConfigurationOutput) ToDefenderFoDatabasesAwsOfferingResponseConfigurationOutputWithContext(ctx context.Context) DefenderFoDatabasesAwsOfferingResponseConfigurationOutput {
-	return o
-}
-
-// Optional Arc private link scope resource id to link the Arc agent
-func (o DefenderFoDatabasesAwsOfferingResponseConfigurationOutput) PrivateLinkScope() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DefenderFoDatabasesAwsOfferingResponseConfiguration) *string { return v.PrivateLinkScope }).(pulumi.StringPtrOutput)
-}
-
-// Optional http proxy endpoint to use for the Arc agent
-func (o DefenderFoDatabasesAwsOfferingResponseConfigurationOutput) Proxy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DefenderFoDatabasesAwsOfferingResponseConfiguration) *string { return v.Proxy }).(pulumi.StringPtrOutput)
-}
-
-type DefenderFoDatabasesAwsOfferingResponseConfigurationPtrOutput struct{ *pulumi.OutputState }
-
-func (DefenderFoDatabasesAwsOfferingResponseConfigurationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DefenderFoDatabasesAwsOfferingResponseConfiguration)(nil)).Elem()
-}
-
-func (o DefenderFoDatabasesAwsOfferingResponseConfigurationPtrOutput) ToDefenderFoDatabasesAwsOfferingResponseConfigurationPtrOutput() DefenderFoDatabasesAwsOfferingResponseConfigurationPtrOutput {
-	return o
-}
-
-func (o DefenderFoDatabasesAwsOfferingResponseConfigurationPtrOutput) ToDefenderFoDatabasesAwsOfferingResponseConfigurationPtrOutputWithContext(ctx context.Context) DefenderFoDatabasesAwsOfferingResponseConfigurationPtrOutput {
-	return o
-}
-
-func (o DefenderFoDatabasesAwsOfferingResponseConfigurationPtrOutput) Elem() DefenderFoDatabasesAwsOfferingResponseConfigurationOutput {
-	return o.ApplyT(func(v *DefenderFoDatabasesAwsOfferingResponseConfiguration) DefenderFoDatabasesAwsOfferingResponseConfiguration {
-		if v != nil {
-			return *v
-		}
-		var ret DefenderFoDatabasesAwsOfferingResponseConfiguration
-		return ret
-	}).(DefenderFoDatabasesAwsOfferingResponseConfigurationOutput)
-}
-
-// Optional Arc private link scope resource id to link the Arc agent
-func (o DefenderFoDatabasesAwsOfferingResponseConfigurationPtrOutput) PrivateLinkScope() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DefenderFoDatabasesAwsOfferingResponseConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PrivateLinkScope
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional http proxy endpoint to use for the Arc agent
-func (o DefenderFoDatabasesAwsOfferingResponseConfigurationPtrOutput) Proxy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DefenderFoDatabasesAwsOfferingResponseConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Proxy
-	}).(pulumi.StringPtrOutput)
 }
 
 // The databases data security posture management (DSPM) configuration
@@ -8292,29 +11625,33 @@ func (o DefenderFoDatabasesAwsOfferingResponseRdsPtrOutput) Enabled() pulumi.Boo
 
 // The Defender for Containers AWS offering
 type DefenderForContainersAwsOffering struct {
-	// Is audit logs pipeline auto provisioning enabled
-	AutoProvisioning *bool `pulumi:"autoProvisioning"`
 	// The cloudwatch to kinesis connection configuration
 	CloudWatchToKinesis *DefenderForContainersAwsOfferingCloudWatchToKinesis `pulumi:"cloudWatchToKinesis"`
-	// The container vulnerability assessment configuration
-	ContainerVulnerabilityAssessment *DefenderForContainersAwsOfferingContainerVulnerabilityAssessment `pulumi:"containerVulnerabilityAssessment"`
-	// The container vulnerability assessment task configuration
-	ContainerVulnerabilityAssessmentTask *DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTask `pulumi:"containerVulnerabilityAssessmentTask"`
-	// Enable container vulnerability assessment feature
-	EnableContainerVulnerabilityAssessment *bool `pulumi:"enableContainerVulnerabilityAssessment"`
+	// The externalId used by the data reader to prevent the confused deputy attack
+	DataCollectionExternalId *string `pulumi:"dataCollectionExternalId"`
+	// Is audit logs data collection enabled
+	EnableAuditLogsAutoProvisioning *bool `pulumi:"enableAuditLogsAutoProvisioning"`
+	// Is Microsoft Defender for Cloud Kubernetes agent auto provisioning enabled
+	EnableDefenderAgentAutoProvisioning *bool `pulumi:"enableDefenderAgentAutoProvisioning"`
+	// Is Policy Kubernetes agent auto provisioning enabled
+	EnablePolicyAgentAutoProvisioning *bool `pulumi:"enablePolicyAgentAutoProvisioning"`
 	// The kinesis to s3 connection configuration
 	KinesisToS3 *DefenderForContainersAwsOfferingKinesisToS3 `pulumi:"kinesisToS3"`
 	// The retention time in days of kube audit logs set on the CloudWatch log group
 	KubeAuditRetentionTime *float64 `pulumi:"kubeAuditRetentionTime"`
-	// The kubernetes to scuba connection configuration
-	KubernetesScubaReader *DefenderForContainersAwsOfferingKubernetesScubaReader `pulumi:"kubernetesScubaReader"`
+	// The kubernetes data collection connection configuration
+	KubernetesDataCollection *DefenderForContainersAwsOfferingKubernetesDataCollection `pulumi:"kubernetesDataCollection"`
 	// The kubernetes service connection configuration
 	KubernetesService *DefenderForContainersAwsOfferingKubernetesService `pulumi:"kubernetesService"`
+	// The Microsoft Defender container agentless discovery K8s configuration
+	MdcContainersAgentlessDiscoveryK8s *DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8s `pulumi:"mdcContainersAgentlessDiscoveryK8s"`
+	// The Microsoft Defender container image assessment configuration
+	MdcContainersImageAssessment *DefenderForContainersAwsOfferingMdcContainersImageAssessment `pulumi:"mdcContainersImageAssessment"`
 	// The type of the security offering.
 	// Expected value is 'DefenderForContainersAws'.
 	OfferingType string `pulumi:"offeringType"`
-	// The externalId used by the data reader to prevent the confused deputy attack
-	ScubaExternalId *string `pulumi:"scubaExternalId"`
+	// The Microsoft Defender for Container K8s VM host scanning configuration
+	VmScanners *DefenderForContainersAwsOfferingVmScanners `pulumi:"vmScanners"`
 }
 
 // DefenderForContainersAwsOfferingInput is an input type that accepts DefenderForContainersAwsOfferingArgs and DefenderForContainersAwsOfferingOutput values.
@@ -8330,29 +11667,33 @@ type DefenderForContainersAwsOfferingInput interface {
 
 // The Defender for Containers AWS offering
 type DefenderForContainersAwsOfferingArgs struct {
-	// Is audit logs pipeline auto provisioning enabled
-	AutoProvisioning pulumi.BoolPtrInput `pulumi:"autoProvisioning"`
 	// The cloudwatch to kinesis connection configuration
 	CloudWatchToKinesis DefenderForContainersAwsOfferingCloudWatchToKinesisPtrInput `pulumi:"cloudWatchToKinesis"`
-	// The container vulnerability assessment configuration
-	ContainerVulnerabilityAssessment DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentPtrInput `pulumi:"containerVulnerabilityAssessment"`
-	// The container vulnerability assessment task configuration
-	ContainerVulnerabilityAssessmentTask DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskPtrInput `pulumi:"containerVulnerabilityAssessmentTask"`
-	// Enable container vulnerability assessment feature
-	EnableContainerVulnerabilityAssessment pulumi.BoolPtrInput `pulumi:"enableContainerVulnerabilityAssessment"`
+	// The externalId used by the data reader to prevent the confused deputy attack
+	DataCollectionExternalId pulumi.StringPtrInput `pulumi:"dataCollectionExternalId"`
+	// Is audit logs data collection enabled
+	EnableAuditLogsAutoProvisioning pulumi.BoolPtrInput `pulumi:"enableAuditLogsAutoProvisioning"`
+	// Is Microsoft Defender for Cloud Kubernetes agent auto provisioning enabled
+	EnableDefenderAgentAutoProvisioning pulumi.BoolPtrInput `pulumi:"enableDefenderAgentAutoProvisioning"`
+	// Is Policy Kubernetes agent auto provisioning enabled
+	EnablePolicyAgentAutoProvisioning pulumi.BoolPtrInput `pulumi:"enablePolicyAgentAutoProvisioning"`
 	// The kinesis to s3 connection configuration
 	KinesisToS3 DefenderForContainersAwsOfferingKinesisToS3PtrInput `pulumi:"kinesisToS3"`
 	// The retention time in days of kube audit logs set on the CloudWatch log group
 	KubeAuditRetentionTime pulumi.Float64PtrInput `pulumi:"kubeAuditRetentionTime"`
-	// The kubernetes to scuba connection configuration
-	KubernetesScubaReader DefenderForContainersAwsOfferingKubernetesScubaReaderPtrInput `pulumi:"kubernetesScubaReader"`
+	// The kubernetes data collection connection configuration
+	KubernetesDataCollection DefenderForContainersAwsOfferingKubernetesDataCollectionPtrInput `pulumi:"kubernetesDataCollection"`
 	// The kubernetes service connection configuration
 	KubernetesService DefenderForContainersAwsOfferingKubernetesServicePtrInput `pulumi:"kubernetesService"`
+	// The Microsoft Defender container agentless discovery K8s configuration
+	MdcContainersAgentlessDiscoveryK8s DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrInput `pulumi:"mdcContainersAgentlessDiscoveryK8s"`
+	// The Microsoft Defender container image assessment configuration
+	MdcContainersImageAssessment DefenderForContainersAwsOfferingMdcContainersImageAssessmentPtrInput `pulumi:"mdcContainersImageAssessment"`
 	// The type of the security offering.
 	// Expected value is 'DefenderForContainersAws'.
 	OfferingType pulumi.StringInput `pulumi:"offeringType"`
-	// The externalId used by the data reader to prevent the confused deputy attack
-	ScubaExternalId pulumi.StringPtrInput `pulumi:"scubaExternalId"`
+	// The Microsoft Defender for Container K8s VM host scanning configuration
+	VmScanners DefenderForContainersAwsOfferingVmScannersPtrInput `pulumi:"vmScanners"`
 }
 
 func (DefenderForContainersAwsOfferingArgs) ElementType() reflect.Type {
@@ -8382,11 +11723,6 @@ func (o DefenderForContainersAwsOfferingOutput) ToDefenderForContainersAwsOfferi
 	return o
 }
 
-// Is audit logs pipeline auto provisioning enabled
-func (o DefenderForContainersAwsOfferingOutput) AutoProvisioning() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v DefenderForContainersAwsOffering) *bool { return v.AutoProvisioning }).(pulumi.BoolPtrOutput)
-}
-
 // The cloudwatch to kinesis connection configuration
 func (o DefenderForContainersAwsOfferingOutput) CloudWatchToKinesis() DefenderForContainersAwsOfferingCloudWatchToKinesisPtrOutput {
 	return o.ApplyT(func(v DefenderForContainersAwsOffering) *DefenderForContainersAwsOfferingCloudWatchToKinesis {
@@ -8394,23 +11730,24 @@ func (o DefenderForContainersAwsOfferingOutput) CloudWatchToKinesis() DefenderFo
 	}).(DefenderForContainersAwsOfferingCloudWatchToKinesisPtrOutput)
 }
 
-// The container vulnerability assessment configuration
-func (o DefenderForContainersAwsOfferingOutput) ContainerVulnerabilityAssessment() DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentPtrOutput {
-	return o.ApplyT(func(v DefenderForContainersAwsOffering) *DefenderForContainersAwsOfferingContainerVulnerabilityAssessment {
-		return v.ContainerVulnerabilityAssessment
-	}).(DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentPtrOutput)
+// The externalId used by the data reader to prevent the confused deputy attack
+func (o DefenderForContainersAwsOfferingOutput) DataCollectionExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersAwsOffering) *string { return v.DataCollectionExternalId }).(pulumi.StringPtrOutput)
 }
 
-// The container vulnerability assessment task configuration
-func (o DefenderForContainersAwsOfferingOutput) ContainerVulnerabilityAssessmentTask() DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskPtrOutput {
-	return o.ApplyT(func(v DefenderForContainersAwsOffering) *DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTask {
-		return v.ContainerVulnerabilityAssessmentTask
-	}).(DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskPtrOutput)
+// Is audit logs data collection enabled
+func (o DefenderForContainersAwsOfferingOutput) EnableAuditLogsAutoProvisioning() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersAwsOffering) *bool { return v.EnableAuditLogsAutoProvisioning }).(pulumi.BoolPtrOutput)
 }
 
-// Enable container vulnerability assessment feature
-func (o DefenderForContainersAwsOfferingOutput) EnableContainerVulnerabilityAssessment() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v DefenderForContainersAwsOffering) *bool { return v.EnableContainerVulnerabilityAssessment }).(pulumi.BoolPtrOutput)
+// Is Microsoft Defender for Cloud Kubernetes agent auto provisioning enabled
+func (o DefenderForContainersAwsOfferingOutput) EnableDefenderAgentAutoProvisioning() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersAwsOffering) *bool { return v.EnableDefenderAgentAutoProvisioning }).(pulumi.BoolPtrOutput)
+}
+
+// Is Policy Kubernetes agent auto provisioning enabled
+func (o DefenderForContainersAwsOfferingOutput) EnablePolicyAgentAutoProvisioning() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersAwsOffering) *bool { return v.EnablePolicyAgentAutoProvisioning }).(pulumi.BoolPtrOutput)
 }
 
 // The kinesis to s3 connection configuration
@@ -8425,11 +11762,11 @@ func (o DefenderForContainersAwsOfferingOutput) KubeAuditRetentionTime() pulumi.
 	return o.ApplyT(func(v DefenderForContainersAwsOffering) *float64 { return v.KubeAuditRetentionTime }).(pulumi.Float64PtrOutput)
 }
 
-// The kubernetes to scuba connection configuration
-func (o DefenderForContainersAwsOfferingOutput) KubernetesScubaReader() DefenderForContainersAwsOfferingKubernetesScubaReaderPtrOutput {
-	return o.ApplyT(func(v DefenderForContainersAwsOffering) *DefenderForContainersAwsOfferingKubernetesScubaReader {
-		return v.KubernetesScubaReader
-	}).(DefenderForContainersAwsOfferingKubernetesScubaReaderPtrOutput)
+// The kubernetes data collection connection configuration
+func (o DefenderForContainersAwsOfferingOutput) KubernetesDataCollection() DefenderForContainersAwsOfferingKubernetesDataCollectionPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersAwsOffering) *DefenderForContainersAwsOfferingKubernetesDataCollection {
+		return v.KubernetesDataCollection
+	}).(DefenderForContainersAwsOfferingKubernetesDataCollectionPtrOutput)
 }
 
 // The kubernetes service connection configuration
@@ -8439,15 +11776,31 @@ func (o DefenderForContainersAwsOfferingOutput) KubernetesService() DefenderForC
 	}).(DefenderForContainersAwsOfferingKubernetesServicePtrOutput)
 }
 
+// The Microsoft Defender container agentless discovery K8s configuration
+func (o DefenderForContainersAwsOfferingOutput) MdcContainersAgentlessDiscoveryK8s() DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersAwsOffering) *DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8s {
+		return v.MdcContainersAgentlessDiscoveryK8s
+	}).(DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput)
+}
+
+// The Microsoft Defender container image assessment configuration
+func (o DefenderForContainersAwsOfferingOutput) MdcContainersImageAssessment() DefenderForContainersAwsOfferingMdcContainersImageAssessmentPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersAwsOffering) *DefenderForContainersAwsOfferingMdcContainersImageAssessment {
+		return v.MdcContainersImageAssessment
+	}).(DefenderForContainersAwsOfferingMdcContainersImageAssessmentPtrOutput)
+}
+
 // The type of the security offering.
 // Expected value is 'DefenderForContainersAws'.
 func (o DefenderForContainersAwsOfferingOutput) OfferingType() pulumi.StringOutput {
 	return o.ApplyT(func(v DefenderForContainersAwsOffering) string { return v.OfferingType }).(pulumi.StringOutput)
 }
 
-// The externalId used by the data reader to prevent the confused deputy attack
-func (o DefenderForContainersAwsOfferingOutput) ScubaExternalId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DefenderForContainersAwsOffering) *string { return v.ScubaExternalId }).(pulumi.StringPtrOutput)
+// The Microsoft Defender for Container K8s VM host scanning configuration
+func (o DefenderForContainersAwsOfferingOutput) VmScanners() DefenderForContainersAwsOfferingVmScannersPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersAwsOffering) *DefenderForContainersAwsOfferingVmScanners {
+		return v.VmScanners
+	}).(DefenderForContainersAwsOfferingVmScannersPtrOutput)
 }
 
 // The cloudwatch to kinesis connection configuration
@@ -8583,290 +11936,6 @@ func (o DefenderForContainersAwsOfferingCloudWatchToKinesisPtrOutput) Elem() Def
 // The cloud role ARN in AWS used by CloudWatch to transfer data into Kinesis
 func (o DefenderForContainersAwsOfferingCloudWatchToKinesisPtrOutput) CloudRoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DefenderForContainersAwsOfferingCloudWatchToKinesis) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CloudRoleArn
-	}).(pulumi.StringPtrOutput)
-}
-
-// The container vulnerability assessment configuration
-type DefenderForContainersAwsOfferingContainerVulnerabilityAssessment struct {
-	// The cloud role ARN in AWS for this feature
-	CloudRoleArn *string `pulumi:"cloudRoleArn"`
-}
-
-// DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentInput is an input type that accepts DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentArgs and DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentOutput values.
-// You can construct a concrete instance of `DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentInput` via:
-//
-//	DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentArgs{...}
-type DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentInput interface {
-	pulumi.Input
-
-	ToDefenderForContainersAwsOfferingContainerVulnerabilityAssessmentOutput() DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentOutput
-	ToDefenderForContainersAwsOfferingContainerVulnerabilityAssessmentOutputWithContext(context.Context) DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentOutput
-}
-
-// The container vulnerability assessment configuration
-type DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentArgs struct {
-	// The cloud role ARN in AWS for this feature
-	CloudRoleArn pulumi.StringPtrInput `pulumi:"cloudRoleArn"`
-}
-
-func (DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefenderForContainersAwsOfferingContainerVulnerabilityAssessment)(nil)).Elem()
-}
-
-func (i DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentArgs) ToDefenderForContainersAwsOfferingContainerVulnerabilityAssessmentOutput() DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentOutput {
-	return i.ToDefenderForContainersAwsOfferingContainerVulnerabilityAssessmentOutputWithContext(context.Background())
-}
-
-func (i DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentArgs) ToDefenderForContainersAwsOfferingContainerVulnerabilityAssessmentOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentOutput)
-}
-
-func (i DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentArgs) ToDefenderForContainersAwsOfferingContainerVulnerabilityAssessmentPtrOutput() DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentPtrOutput {
-	return i.ToDefenderForContainersAwsOfferingContainerVulnerabilityAssessmentPtrOutputWithContext(context.Background())
-}
-
-func (i DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentArgs) ToDefenderForContainersAwsOfferingContainerVulnerabilityAssessmentPtrOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentOutput).ToDefenderForContainersAwsOfferingContainerVulnerabilityAssessmentPtrOutputWithContext(ctx)
-}
-
-// DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentPtrInput is an input type that accepts DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentArgs, DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentPtr and DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentPtrOutput values.
-// You can construct a concrete instance of `DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentPtrInput` via:
-//
-//	        DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentArgs{...}
-//
-//	or:
-//
-//	        nil
-type DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentPtrInput interface {
-	pulumi.Input
-
-	ToDefenderForContainersAwsOfferingContainerVulnerabilityAssessmentPtrOutput() DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentPtrOutput
-	ToDefenderForContainersAwsOfferingContainerVulnerabilityAssessmentPtrOutputWithContext(context.Context) DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentPtrOutput
-}
-
-type defenderForContainersAwsOfferingContainerVulnerabilityAssessmentPtrType DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentArgs
-
-func DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentPtr(v *DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentArgs) DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentPtrInput {
-	return (*defenderForContainersAwsOfferingContainerVulnerabilityAssessmentPtrType)(v)
-}
-
-func (*defenderForContainersAwsOfferingContainerVulnerabilityAssessmentPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DefenderForContainersAwsOfferingContainerVulnerabilityAssessment)(nil)).Elem()
-}
-
-func (i *defenderForContainersAwsOfferingContainerVulnerabilityAssessmentPtrType) ToDefenderForContainersAwsOfferingContainerVulnerabilityAssessmentPtrOutput() DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentPtrOutput {
-	return i.ToDefenderForContainersAwsOfferingContainerVulnerabilityAssessmentPtrOutputWithContext(context.Background())
-}
-
-func (i *defenderForContainersAwsOfferingContainerVulnerabilityAssessmentPtrType) ToDefenderForContainersAwsOfferingContainerVulnerabilityAssessmentPtrOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentPtrOutput)
-}
-
-// The container vulnerability assessment configuration
-type DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentOutput struct{ *pulumi.OutputState }
-
-func (DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefenderForContainersAwsOfferingContainerVulnerabilityAssessment)(nil)).Elem()
-}
-
-func (o DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentOutput) ToDefenderForContainersAwsOfferingContainerVulnerabilityAssessmentOutput() DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentOutput {
-	return o
-}
-
-func (o DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentOutput) ToDefenderForContainersAwsOfferingContainerVulnerabilityAssessmentOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentOutput {
-	return o
-}
-
-func (o DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentOutput) ToDefenderForContainersAwsOfferingContainerVulnerabilityAssessmentPtrOutput() DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentPtrOutput {
-	return o.ToDefenderForContainersAwsOfferingContainerVulnerabilityAssessmentPtrOutputWithContext(context.Background())
-}
-
-func (o DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentOutput) ToDefenderForContainersAwsOfferingContainerVulnerabilityAssessmentPtrOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefenderForContainersAwsOfferingContainerVulnerabilityAssessment) *DefenderForContainersAwsOfferingContainerVulnerabilityAssessment {
-		return &v
-	}).(DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentPtrOutput)
-}
-
-// The cloud role ARN in AWS for this feature
-func (o DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentOutput) CloudRoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DefenderForContainersAwsOfferingContainerVulnerabilityAssessment) *string {
-		return v.CloudRoleArn
-	}).(pulumi.StringPtrOutput)
-}
-
-type DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentPtrOutput struct{ *pulumi.OutputState }
-
-func (DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DefenderForContainersAwsOfferingContainerVulnerabilityAssessment)(nil)).Elem()
-}
-
-func (o DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentPtrOutput) ToDefenderForContainersAwsOfferingContainerVulnerabilityAssessmentPtrOutput() DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentPtrOutput {
-	return o
-}
-
-func (o DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentPtrOutput) ToDefenderForContainersAwsOfferingContainerVulnerabilityAssessmentPtrOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentPtrOutput {
-	return o
-}
-
-func (o DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentPtrOutput) Elem() DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentOutput {
-	return o.ApplyT(func(v *DefenderForContainersAwsOfferingContainerVulnerabilityAssessment) DefenderForContainersAwsOfferingContainerVulnerabilityAssessment {
-		if v != nil {
-			return *v
-		}
-		var ret DefenderForContainersAwsOfferingContainerVulnerabilityAssessment
-		return ret
-	}).(DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentOutput)
-}
-
-// The cloud role ARN in AWS for this feature
-func (o DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentPtrOutput) CloudRoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DefenderForContainersAwsOfferingContainerVulnerabilityAssessment) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CloudRoleArn
-	}).(pulumi.StringPtrOutput)
-}
-
-// The container vulnerability assessment task configuration
-type DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTask struct {
-	// The cloud role ARN in AWS for this feature
-	CloudRoleArn *string `pulumi:"cloudRoleArn"`
-}
-
-// DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskInput is an input type that accepts DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskArgs and DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskOutput values.
-// You can construct a concrete instance of `DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskInput` via:
-//
-//	DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskArgs{...}
-type DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskInput interface {
-	pulumi.Input
-
-	ToDefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskOutput() DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskOutput
-	ToDefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskOutputWithContext(context.Context) DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskOutput
-}
-
-// The container vulnerability assessment task configuration
-type DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskArgs struct {
-	// The cloud role ARN in AWS for this feature
-	CloudRoleArn pulumi.StringPtrInput `pulumi:"cloudRoleArn"`
-}
-
-func (DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTask)(nil)).Elem()
-}
-
-func (i DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskArgs) ToDefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskOutput() DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskOutput {
-	return i.ToDefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskOutputWithContext(context.Background())
-}
-
-func (i DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskArgs) ToDefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskOutput)
-}
-
-func (i DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskArgs) ToDefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskPtrOutput() DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskPtrOutput {
-	return i.ToDefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskPtrOutputWithContext(context.Background())
-}
-
-func (i DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskArgs) ToDefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskPtrOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskOutput).ToDefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskPtrOutputWithContext(ctx)
-}
-
-// DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskPtrInput is an input type that accepts DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskArgs, DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskPtr and DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskPtrOutput values.
-// You can construct a concrete instance of `DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskPtrInput` via:
-//
-//	        DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskArgs{...}
-//
-//	or:
-//
-//	        nil
-type DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskPtrInput interface {
-	pulumi.Input
-
-	ToDefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskPtrOutput() DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskPtrOutput
-	ToDefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskPtrOutputWithContext(context.Context) DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskPtrOutput
-}
-
-type defenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskPtrType DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskArgs
-
-func DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskPtr(v *DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskArgs) DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskPtrInput {
-	return (*defenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskPtrType)(v)
-}
-
-func (*defenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTask)(nil)).Elem()
-}
-
-func (i *defenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskPtrType) ToDefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskPtrOutput() DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskPtrOutput {
-	return i.ToDefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskPtrOutputWithContext(context.Background())
-}
-
-func (i *defenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskPtrType) ToDefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskPtrOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskPtrOutput)
-}
-
-// The container vulnerability assessment task configuration
-type DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskOutput struct{ *pulumi.OutputState }
-
-func (DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTask)(nil)).Elem()
-}
-
-func (o DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskOutput) ToDefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskOutput() DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskOutput {
-	return o
-}
-
-func (o DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskOutput) ToDefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskOutput {
-	return o
-}
-
-func (o DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskOutput) ToDefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskPtrOutput() DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskPtrOutput {
-	return o.ToDefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskPtrOutputWithContext(context.Background())
-}
-
-func (o DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskOutput) ToDefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskPtrOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTask) *DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTask {
-		return &v
-	}).(DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskPtrOutput)
-}
-
-// The cloud role ARN in AWS for this feature
-func (o DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskOutput) CloudRoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTask) *string {
-		return v.CloudRoleArn
-	}).(pulumi.StringPtrOutput)
-}
-
-type DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskPtrOutput struct{ *pulumi.OutputState }
-
-func (DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTask)(nil)).Elem()
-}
-
-func (o DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskPtrOutput) ToDefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskPtrOutput() DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskPtrOutput {
-	return o
-}
-
-func (o DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskPtrOutput) ToDefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskPtrOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskPtrOutput {
-	return o
-}
-
-func (o DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskPtrOutput) Elem() DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskOutput {
-	return o.ApplyT(func(v *DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTask) DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTask {
-		if v != nil {
-			return *v
-		}
-		var ret DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTask
-		return ret
-	}).(DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskOutput)
-}
-
-// The cloud role ARN in AWS for this feature
-func (o DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskPtrOutput) CloudRoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTask) *string {
 		if v == nil {
 			return nil
 		}
@@ -9014,139 +12083,139 @@ func (o DefenderForContainersAwsOfferingKinesisToS3PtrOutput) CloudRoleArn() pul
 	}).(pulumi.StringPtrOutput)
 }
 
-// The kubernetes to scuba connection configuration
-type DefenderForContainersAwsOfferingKubernetesScubaReader struct {
+// The kubernetes data collection connection configuration
+type DefenderForContainersAwsOfferingKubernetesDataCollection struct {
 	// The cloud role ARN in AWS for this feature used for reading data
 	CloudRoleArn *string `pulumi:"cloudRoleArn"`
 }
 
-// DefenderForContainersAwsOfferingKubernetesScubaReaderInput is an input type that accepts DefenderForContainersAwsOfferingKubernetesScubaReaderArgs and DefenderForContainersAwsOfferingKubernetesScubaReaderOutput values.
-// You can construct a concrete instance of `DefenderForContainersAwsOfferingKubernetesScubaReaderInput` via:
+// DefenderForContainersAwsOfferingKubernetesDataCollectionInput is an input type that accepts DefenderForContainersAwsOfferingKubernetesDataCollectionArgs and DefenderForContainersAwsOfferingKubernetesDataCollectionOutput values.
+// You can construct a concrete instance of `DefenderForContainersAwsOfferingKubernetesDataCollectionInput` via:
 //
-//	DefenderForContainersAwsOfferingKubernetesScubaReaderArgs{...}
-type DefenderForContainersAwsOfferingKubernetesScubaReaderInput interface {
+//	DefenderForContainersAwsOfferingKubernetesDataCollectionArgs{...}
+type DefenderForContainersAwsOfferingKubernetesDataCollectionInput interface {
 	pulumi.Input
 
-	ToDefenderForContainersAwsOfferingKubernetesScubaReaderOutput() DefenderForContainersAwsOfferingKubernetesScubaReaderOutput
-	ToDefenderForContainersAwsOfferingKubernetesScubaReaderOutputWithContext(context.Context) DefenderForContainersAwsOfferingKubernetesScubaReaderOutput
+	ToDefenderForContainersAwsOfferingKubernetesDataCollectionOutput() DefenderForContainersAwsOfferingKubernetesDataCollectionOutput
+	ToDefenderForContainersAwsOfferingKubernetesDataCollectionOutputWithContext(context.Context) DefenderForContainersAwsOfferingKubernetesDataCollectionOutput
 }
 
-// The kubernetes to scuba connection configuration
-type DefenderForContainersAwsOfferingKubernetesScubaReaderArgs struct {
+// The kubernetes data collection connection configuration
+type DefenderForContainersAwsOfferingKubernetesDataCollectionArgs struct {
 	// The cloud role ARN in AWS for this feature used for reading data
 	CloudRoleArn pulumi.StringPtrInput `pulumi:"cloudRoleArn"`
 }
 
-func (DefenderForContainersAwsOfferingKubernetesScubaReaderArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefenderForContainersAwsOfferingKubernetesScubaReader)(nil)).Elem()
+func (DefenderForContainersAwsOfferingKubernetesDataCollectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderForContainersAwsOfferingKubernetesDataCollection)(nil)).Elem()
 }
 
-func (i DefenderForContainersAwsOfferingKubernetesScubaReaderArgs) ToDefenderForContainersAwsOfferingKubernetesScubaReaderOutput() DefenderForContainersAwsOfferingKubernetesScubaReaderOutput {
-	return i.ToDefenderForContainersAwsOfferingKubernetesScubaReaderOutputWithContext(context.Background())
+func (i DefenderForContainersAwsOfferingKubernetesDataCollectionArgs) ToDefenderForContainersAwsOfferingKubernetesDataCollectionOutput() DefenderForContainersAwsOfferingKubernetesDataCollectionOutput {
+	return i.ToDefenderForContainersAwsOfferingKubernetesDataCollectionOutputWithContext(context.Background())
 }
 
-func (i DefenderForContainersAwsOfferingKubernetesScubaReaderArgs) ToDefenderForContainersAwsOfferingKubernetesScubaReaderOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingKubernetesScubaReaderOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DefenderForContainersAwsOfferingKubernetesScubaReaderOutput)
+func (i DefenderForContainersAwsOfferingKubernetesDataCollectionArgs) ToDefenderForContainersAwsOfferingKubernetesDataCollectionOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingKubernetesDataCollectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderForContainersAwsOfferingKubernetesDataCollectionOutput)
 }
 
-func (i DefenderForContainersAwsOfferingKubernetesScubaReaderArgs) ToDefenderForContainersAwsOfferingKubernetesScubaReaderPtrOutput() DefenderForContainersAwsOfferingKubernetesScubaReaderPtrOutput {
-	return i.ToDefenderForContainersAwsOfferingKubernetesScubaReaderPtrOutputWithContext(context.Background())
+func (i DefenderForContainersAwsOfferingKubernetesDataCollectionArgs) ToDefenderForContainersAwsOfferingKubernetesDataCollectionPtrOutput() DefenderForContainersAwsOfferingKubernetesDataCollectionPtrOutput {
+	return i.ToDefenderForContainersAwsOfferingKubernetesDataCollectionPtrOutputWithContext(context.Background())
 }
 
-func (i DefenderForContainersAwsOfferingKubernetesScubaReaderArgs) ToDefenderForContainersAwsOfferingKubernetesScubaReaderPtrOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingKubernetesScubaReaderPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DefenderForContainersAwsOfferingKubernetesScubaReaderOutput).ToDefenderForContainersAwsOfferingKubernetesScubaReaderPtrOutputWithContext(ctx)
+func (i DefenderForContainersAwsOfferingKubernetesDataCollectionArgs) ToDefenderForContainersAwsOfferingKubernetesDataCollectionPtrOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingKubernetesDataCollectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderForContainersAwsOfferingKubernetesDataCollectionOutput).ToDefenderForContainersAwsOfferingKubernetesDataCollectionPtrOutputWithContext(ctx)
 }
 
-// DefenderForContainersAwsOfferingKubernetesScubaReaderPtrInput is an input type that accepts DefenderForContainersAwsOfferingKubernetesScubaReaderArgs, DefenderForContainersAwsOfferingKubernetesScubaReaderPtr and DefenderForContainersAwsOfferingKubernetesScubaReaderPtrOutput values.
-// You can construct a concrete instance of `DefenderForContainersAwsOfferingKubernetesScubaReaderPtrInput` via:
+// DefenderForContainersAwsOfferingKubernetesDataCollectionPtrInput is an input type that accepts DefenderForContainersAwsOfferingKubernetesDataCollectionArgs, DefenderForContainersAwsOfferingKubernetesDataCollectionPtr and DefenderForContainersAwsOfferingKubernetesDataCollectionPtrOutput values.
+// You can construct a concrete instance of `DefenderForContainersAwsOfferingKubernetesDataCollectionPtrInput` via:
 //
-//	        DefenderForContainersAwsOfferingKubernetesScubaReaderArgs{...}
+//	        DefenderForContainersAwsOfferingKubernetesDataCollectionArgs{...}
 //
 //	or:
 //
 //	        nil
-type DefenderForContainersAwsOfferingKubernetesScubaReaderPtrInput interface {
+type DefenderForContainersAwsOfferingKubernetesDataCollectionPtrInput interface {
 	pulumi.Input
 
-	ToDefenderForContainersAwsOfferingKubernetesScubaReaderPtrOutput() DefenderForContainersAwsOfferingKubernetesScubaReaderPtrOutput
-	ToDefenderForContainersAwsOfferingKubernetesScubaReaderPtrOutputWithContext(context.Context) DefenderForContainersAwsOfferingKubernetesScubaReaderPtrOutput
+	ToDefenderForContainersAwsOfferingKubernetesDataCollectionPtrOutput() DefenderForContainersAwsOfferingKubernetesDataCollectionPtrOutput
+	ToDefenderForContainersAwsOfferingKubernetesDataCollectionPtrOutputWithContext(context.Context) DefenderForContainersAwsOfferingKubernetesDataCollectionPtrOutput
 }
 
-type defenderForContainersAwsOfferingKubernetesScubaReaderPtrType DefenderForContainersAwsOfferingKubernetesScubaReaderArgs
+type defenderForContainersAwsOfferingKubernetesDataCollectionPtrType DefenderForContainersAwsOfferingKubernetesDataCollectionArgs
 
-func DefenderForContainersAwsOfferingKubernetesScubaReaderPtr(v *DefenderForContainersAwsOfferingKubernetesScubaReaderArgs) DefenderForContainersAwsOfferingKubernetesScubaReaderPtrInput {
-	return (*defenderForContainersAwsOfferingKubernetesScubaReaderPtrType)(v)
+func DefenderForContainersAwsOfferingKubernetesDataCollectionPtr(v *DefenderForContainersAwsOfferingKubernetesDataCollectionArgs) DefenderForContainersAwsOfferingKubernetesDataCollectionPtrInput {
+	return (*defenderForContainersAwsOfferingKubernetesDataCollectionPtrType)(v)
 }
 
-func (*defenderForContainersAwsOfferingKubernetesScubaReaderPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DefenderForContainersAwsOfferingKubernetesScubaReader)(nil)).Elem()
+func (*defenderForContainersAwsOfferingKubernetesDataCollectionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderForContainersAwsOfferingKubernetesDataCollection)(nil)).Elem()
 }
 
-func (i *defenderForContainersAwsOfferingKubernetesScubaReaderPtrType) ToDefenderForContainersAwsOfferingKubernetesScubaReaderPtrOutput() DefenderForContainersAwsOfferingKubernetesScubaReaderPtrOutput {
-	return i.ToDefenderForContainersAwsOfferingKubernetesScubaReaderPtrOutputWithContext(context.Background())
+func (i *defenderForContainersAwsOfferingKubernetesDataCollectionPtrType) ToDefenderForContainersAwsOfferingKubernetesDataCollectionPtrOutput() DefenderForContainersAwsOfferingKubernetesDataCollectionPtrOutput {
+	return i.ToDefenderForContainersAwsOfferingKubernetesDataCollectionPtrOutputWithContext(context.Background())
 }
 
-func (i *defenderForContainersAwsOfferingKubernetesScubaReaderPtrType) ToDefenderForContainersAwsOfferingKubernetesScubaReaderPtrOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingKubernetesScubaReaderPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DefenderForContainersAwsOfferingKubernetesScubaReaderPtrOutput)
+func (i *defenderForContainersAwsOfferingKubernetesDataCollectionPtrType) ToDefenderForContainersAwsOfferingKubernetesDataCollectionPtrOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingKubernetesDataCollectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderForContainersAwsOfferingKubernetesDataCollectionPtrOutput)
 }
 
-// The kubernetes to scuba connection configuration
-type DefenderForContainersAwsOfferingKubernetesScubaReaderOutput struct{ *pulumi.OutputState }
+// The kubernetes data collection connection configuration
+type DefenderForContainersAwsOfferingKubernetesDataCollectionOutput struct{ *pulumi.OutputState }
 
-func (DefenderForContainersAwsOfferingKubernetesScubaReaderOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefenderForContainersAwsOfferingKubernetesScubaReader)(nil)).Elem()
+func (DefenderForContainersAwsOfferingKubernetesDataCollectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderForContainersAwsOfferingKubernetesDataCollection)(nil)).Elem()
 }
 
-func (o DefenderForContainersAwsOfferingKubernetesScubaReaderOutput) ToDefenderForContainersAwsOfferingKubernetesScubaReaderOutput() DefenderForContainersAwsOfferingKubernetesScubaReaderOutput {
+func (o DefenderForContainersAwsOfferingKubernetesDataCollectionOutput) ToDefenderForContainersAwsOfferingKubernetesDataCollectionOutput() DefenderForContainersAwsOfferingKubernetesDataCollectionOutput {
 	return o
 }
 
-func (o DefenderForContainersAwsOfferingKubernetesScubaReaderOutput) ToDefenderForContainersAwsOfferingKubernetesScubaReaderOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingKubernetesScubaReaderOutput {
+func (o DefenderForContainersAwsOfferingKubernetesDataCollectionOutput) ToDefenderForContainersAwsOfferingKubernetesDataCollectionOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingKubernetesDataCollectionOutput {
 	return o
 }
 
-func (o DefenderForContainersAwsOfferingKubernetesScubaReaderOutput) ToDefenderForContainersAwsOfferingKubernetesScubaReaderPtrOutput() DefenderForContainersAwsOfferingKubernetesScubaReaderPtrOutput {
-	return o.ToDefenderForContainersAwsOfferingKubernetesScubaReaderPtrOutputWithContext(context.Background())
+func (o DefenderForContainersAwsOfferingKubernetesDataCollectionOutput) ToDefenderForContainersAwsOfferingKubernetesDataCollectionPtrOutput() DefenderForContainersAwsOfferingKubernetesDataCollectionPtrOutput {
+	return o.ToDefenderForContainersAwsOfferingKubernetesDataCollectionPtrOutputWithContext(context.Background())
 }
 
-func (o DefenderForContainersAwsOfferingKubernetesScubaReaderOutput) ToDefenderForContainersAwsOfferingKubernetesScubaReaderPtrOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingKubernetesScubaReaderPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefenderForContainersAwsOfferingKubernetesScubaReader) *DefenderForContainersAwsOfferingKubernetesScubaReader {
+func (o DefenderForContainersAwsOfferingKubernetesDataCollectionOutput) ToDefenderForContainersAwsOfferingKubernetesDataCollectionPtrOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingKubernetesDataCollectionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefenderForContainersAwsOfferingKubernetesDataCollection) *DefenderForContainersAwsOfferingKubernetesDataCollection {
 		return &v
-	}).(DefenderForContainersAwsOfferingKubernetesScubaReaderPtrOutput)
+	}).(DefenderForContainersAwsOfferingKubernetesDataCollectionPtrOutput)
 }
 
 // The cloud role ARN in AWS for this feature used for reading data
-func (o DefenderForContainersAwsOfferingKubernetesScubaReaderOutput) CloudRoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DefenderForContainersAwsOfferingKubernetesScubaReader) *string { return v.CloudRoleArn }).(pulumi.StringPtrOutput)
+func (o DefenderForContainersAwsOfferingKubernetesDataCollectionOutput) CloudRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersAwsOfferingKubernetesDataCollection) *string { return v.CloudRoleArn }).(pulumi.StringPtrOutput)
 }
 
-type DefenderForContainersAwsOfferingKubernetesScubaReaderPtrOutput struct{ *pulumi.OutputState }
+type DefenderForContainersAwsOfferingKubernetesDataCollectionPtrOutput struct{ *pulumi.OutputState }
 
-func (DefenderForContainersAwsOfferingKubernetesScubaReaderPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DefenderForContainersAwsOfferingKubernetesScubaReader)(nil)).Elem()
+func (DefenderForContainersAwsOfferingKubernetesDataCollectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderForContainersAwsOfferingKubernetesDataCollection)(nil)).Elem()
 }
 
-func (o DefenderForContainersAwsOfferingKubernetesScubaReaderPtrOutput) ToDefenderForContainersAwsOfferingKubernetesScubaReaderPtrOutput() DefenderForContainersAwsOfferingKubernetesScubaReaderPtrOutput {
+func (o DefenderForContainersAwsOfferingKubernetesDataCollectionPtrOutput) ToDefenderForContainersAwsOfferingKubernetesDataCollectionPtrOutput() DefenderForContainersAwsOfferingKubernetesDataCollectionPtrOutput {
 	return o
 }
 
-func (o DefenderForContainersAwsOfferingKubernetesScubaReaderPtrOutput) ToDefenderForContainersAwsOfferingKubernetesScubaReaderPtrOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingKubernetesScubaReaderPtrOutput {
+func (o DefenderForContainersAwsOfferingKubernetesDataCollectionPtrOutput) ToDefenderForContainersAwsOfferingKubernetesDataCollectionPtrOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingKubernetesDataCollectionPtrOutput {
 	return o
 }
 
-func (o DefenderForContainersAwsOfferingKubernetesScubaReaderPtrOutput) Elem() DefenderForContainersAwsOfferingKubernetesScubaReaderOutput {
-	return o.ApplyT(func(v *DefenderForContainersAwsOfferingKubernetesScubaReader) DefenderForContainersAwsOfferingKubernetesScubaReader {
+func (o DefenderForContainersAwsOfferingKubernetesDataCollectionPtrOutput) Elem() DefenderForContainersAwsOfferingKubernetesDataCollectionOutput {
+	return o.ApplyT(func(v *DefenderForContainersAwsOfferingKubernetesDataCollection) DefenderForContainersAwsOfferingKubernetesDataCollection {
 		if v != nil {
 			return *v
 		}
-		var ret DefenderForContainersAwsOfferingKubernetesScubaReader
+		var ret DefenderForContainersAwsOfferingKubernetesDataCollection
 		return ret
-	}).(DefenderForContainersAwsOfferingKubernetesScubaReaderOutput)
+	}).(DefenderForContainersAwsOfferingKubernetesDataCollectionOutput)
 }
 
 // The cloud role ARN in AWS for this feature used for reading data
-func (o DefenderForContainersAwsOfferingKubernetesScubaReaderPtrOutput) CloudRoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DefenderForContainersAwsOfferingKubernetesScubaReader) *string {
+func (o DefenderForContainersAwsOfferingKubernetesDataCollectionPtrOutput) CloudRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenderForContainersAwsOfferingKubernetesDataCollection) *string {
 		if v == nil {
 			return nil
 		}
@@ -9294,33 +12363,357 @@ func (o DefenderForContainersAwsOfferingKubernetesServicePtrOutput) CloudRoleArn
 	}).(pulumi.StringPtrOutput)
 }
 
+// The Microsoft Defender container agentless discovery K8s configuration
+type DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8s struct {
+	// The cloud role ARN in AWS for this feature
+	CloudRoleArn *string `pulumi:"cloudRoleArn"`
+	// Is Microsoft Defender container agentless discovery K8s enabled
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sInput is an input type that accepts DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sArgs and DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sOutput values.
+// You can construct a concrete instance of `DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sInput` via:
+//
+//	DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sArgs{...}
+type DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sInput interface {
+	pulumi.Input
+
+	ToDefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sOutput() DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sOutput
+	ToDefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sOutputWithContext(context.Context) DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sOutput
+}
+
+// The Microsoft Defender container agentless discovery K8s configuration
+type DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sArgs struct {
+	// The cloud role ARN in AWS for this feature
+	CloudRoleArn pulumi.StringPtrInput `pulumi:"cloudRoleArn"`
+	// Is Microsoft Defender container agentless discovery K8s enabled
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8s)(nil)).Elem()
+}
+
+func (i DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sArgs) ToDefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sOutput() DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sOutput {
+	return i.ToDefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sOutputWithContext(context.Background())
+}
+
+func (i DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sArgs) ToDefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sOutput)
+}
+
+func (i DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sArgs) ToDefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput() DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput {
+	return i.ToDefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutputWithContext(context.Background())
+}
+
+func (i DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sArgs) ToDefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sOutput).ToDefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutputWithContext(ctx)
+}
+
+// DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrInput is an input type that accepts DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sArgs, DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sPtr and DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput values.
+// You can construct a concrete instance of `DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrInput` via:
+//
+//	        DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sArgs{...}
+//
+//	or:
+//
+//	        nil
+type DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrInput interface {
+	pulumi.Input
+
+	ToDefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput() DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput
+	ToDefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutputWithContext(context.Context) DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput
+}
+
+type defenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrType DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sArgs
+
+func DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sPtr(v *DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sArgs) DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrInput {
+	return (*defenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrType)(v)
+}
+
+func (*defenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8s)(nil)).Elem()
+}
+
+func (i *defenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrType) ToDefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput() DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput {
+	return i.ToDefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutputWithContext(context.Background())
+}
+
+func (i *defenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrType) ToDefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput)
+}
+
+// The Microsoft Defender container agentless discovery K8s configuration
+type DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sOutput struct{ *pulumi.OutputState }
+
+func (DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8s)(nil)).Elem()
+}
+
+func (o DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sOutput) ToDefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sOutput() DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sOutput {
+	return o
+}
+
+func (o DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sOutput) ToDefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sOutput {
+	return o
+}
+
+func (o DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sOutput) ToDefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput() DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput {
+	return o.ToDefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutputWithContext(context.Background())
+}
+
+func (o DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sOutput) ToDefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8s) *DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8s {
+		return &v
+	}).(DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput)
+}
+
+// The cloud role ARN in AWS for this feature
+func (o DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sOutput) CloudRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8s) *string {
+		return v.CloudRoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Is Microsoft Defender container agentless discovery K8s enabled
+func (o DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8s) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput struct{ *pulumi.OutputState }
+
+func (DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8s)(nil)).Elem()
+}
+
+func (o DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput) ToDefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput() DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput {
+	return o
+}
+
+func (o DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput) ToDefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput {
+	return o
+}
+
+func (o DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput) Elem() DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sOutput {
+	return o.ApplyT(func(v *DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8s) DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8s {
+		if v != nil {
+			return *v
+		}
+		var ret DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8s
+		return ret
+	}).(DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sOutput)
+}
+
+// The cloud role ARN in AWS for this feature
+func (o DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput) CloudRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8s) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CloudRoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Is Microsoft Defender container agentless discovery K8s enabled
+func (o DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8s) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The Microsoft Defender container image assessment configuration
+type DefenderForContainersAwsOfferingMdcContainersImageAssessment struct {
+	// The cloud role ARN in AWS for this feature
+	CloudRoleArn *string `pulumi:"cloudRoleArn"`
+	// Is Microsoft Defender container image assessment enabled
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// DefenderForContainersAwsOfferingMdcContainersImageAssessmentInput is an input type that accepts DefenderForContainersAwsOfferingMdcContainersImageAssessmentArgs and DefenderForContainersAwsOfferingMdcContainersImageAssessmentOutput values.
+// You can construct a concrete instance of `DefenderForContainersAwsOfferingMdcContainersImageAssessmentInput` via:
+//
+//	DefenderForContainersAwsOfferingMdcContainersImageAssessmentArgs{...}
+type DefenderForContainersAwsOfferingMdcContainersImageAssessmentInput interface {
+	pulumi.Input
+
+	ToDefenderForContainersAwsOfferingMdcContainersImageAssessmentOutput() DefenderForContainersAwsOfferingMdcContainersImageAssessmentOutput
+	ToDefenderForContainersAwsOfferingMdcContainersImageAssessmentOutputWithContext(context.Context) DefenderForContainersAwsOfferingMdcContainersImageAssessmentOutput
+}
+
+// The Microsoft Defender container image assessment configuration
+type DefenderForContainersAwsOfferingMdcContainersImageAssessmentArgs struct {
+	// The cloud role ARN in AWS for this feature
+	CloudRoleArn pulumi.StringPtrInput `pulumi:"cloudRoleArn"`
+	// Is Microsoft Defender container image assessment enabled
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (DefenderForContainersAwsOfferingMdcContainersImageAssessmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderForContainersAwsOfferingMdcContainersImageAssessment)(nil)).Elem()
+}
+
+func (i DefenderForContainersAwsOfferingMdcContainersImageAssessmentArgs) ToDefenderForContainersAwsOfferingMdcContainersImageAssessmentOutput() DefenderForContainersAwsOfferingMdcContainersImageAssessmentOutput {
+	return i.ToDefenderForContainersAwsOfferingMdcContainersImageAssessmentOutputWithContext(context.Background())
+}
+
+func (i DefenderForContainersAwsOfferingMdcContainersImageAssessmentArgs) ToDefenderForContainersAwsOfferingMdcContainersImageAssessmentOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingMdcContainersImageAssessmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderForContainersAwsOfferingMdcContainersImageAssessmentOutput)
+}
+
+func (i DefenderForContainersAwsOfferingMdcContainersImageAssessmentArgs) ToDefenderForContainersAwsOfferingMdcContainersImageAssessmentPtrOutput() DefenderForContainersAwsOfferingMdcContainersImageAssessmentPtrOutput {
+	return i.ToDefenderForContainersAwsOfferingMdcContainersImageAssessmentPtrOutputWithContext(context.Background())
+}
+
+func (i DefenderForContainersAwsOfferingMdcContainersImageAssessmentArgs) ToDefenderForContainersAwsOfferingMdcContainersImageAssessmentPtrOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingMdcContainersImageAssessmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderForContainersAwsOfferingMdcContainersImageAssessmentOutput).ToDefenderForContainersAwsOfferingMdcContainersImageAssessmentPtrOutputWithContext(ctx)
+}
+
+// DefenderForContainersAwsOfferingMdcContainersImageAssessmentPtrInput is an input type that accepts DefenderForContainersAwsOfferingMdcContainersImageAssessmentArgs, DefenderForContainersAwsOfferingMdcContainersImageAssessmentPtr and DefenderForContainersAwsOfferingMdcContainersImageAssessmentPtrOutput values.
+// You can construct a concrete instance of `DefenderForContainersAwsOfferingMdcContainersImageAssessmentPtrInput` via:
+//
+//	        DefenderForContainersAwsOfferingMdcContainersImageAssessmentArgs{...}
+//
+//	or:
+//
+//	        nil
+type DefenderForContainersAwsOfferingMdcContainersImageAssessmentPtrInput interface {
+	pulumi.Input
+
+	ToDefenderForContainersAwsOfferingMdcContainersImageAssessmentPtrOutput() DefenderForContainersAwsOfferingMdcContainersImageAssessmentPtrOutput
+	ToDefenderForContainersAwsOfferingMdcContainersImageAssessmentPtrOutputWithContext(context.Context) DefenderForContainersAwsOfferingMdcContainersImageAssessmentPtrOutput
+}
+
+type defenderForContainersAwsOfferingMdcContainersImageAssessmentPtrType DefenderForContainersAwsOfferingMdcContainersImageAssessmentArgs
+
+func DefenderForContainersAwsOfferingMdcContainersImageAssessmentPtr(v *DefenderForContainersAwsOfferingMdcContainersImageAssessmentArgs) DefenderForContainersAwsOfferingMdcContainersImageAssessmentPtrInput {
+	return (*defenderForContainersAwsOfferingMdcContainersImageAssessmentPtrType)(v)
+}
+
+func (*defenderForContainersAwsOfferingMdcContainersImageAssessmentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderForContainersAwsOfferingMdcContainersImageAssessment)(nil)).Elem()
+}
+
+func (i *defenderForContainersAwsOfferingMdcContainersImageAssessmentPtrType) ToDefenderForContainersAwsOfferingMdcContainersImageAssessmentPtrOutput() DefenderForContainersAwsOfferingMdcContainersImageAssessmentPtrOutput {
+	return i.ToDefenderForContainersAwsOfferingMdcContainersImageAssessmentPtrOutputWithContext(context.Background())
+}
+
+func (i *defenderForContainersAwsOfferingMdcContainersImageAssessmentPtrType) ToDefenderForContainersAwsOfferingMdcContainersImageAssessmentPtrOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingMdcContainersImageAssessmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderForContainersAwsOfferingMdcContainersImageAssessmentPtrOutput)
+}
+
+// The Microsoft Defender container image assessment configuration
+type DefenderForContainersAwsOfferingMdcContainersImageAssessmentOutput struct{ *pulumi.OutputState }
+
+func (DefenderForContainersAwsOfferingMdcContainersImageAssessmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderForContainersAwsOfferingMdcContainersImageAssessment)(nil)).Elem()
+}
+
+func (o DefenderForContainersAwsOfferingMdcContainersImageAssessmentOutput) ToDefenderForContainersAwsOfferingMdcContainersImageAssessmentOutput() DefenderForContainersAwsOfferingMdcContainersImageAssessmentOutput {
+	return o
+}
+
+func (o DefenderForContainersAwsOfferingMdcContainersImageAssessmentOutput) ToDefenderForContainersAwsOfferingMdcContainersImageAssessmentOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingMdcContainersImageAssessmentOutput {
+	return o
+}
+
+func (o DefenderForContainersAwsOfferingMdcContainersImageAssessmentOutput) ToDefenderForContainersAwsOfferingMdcContainersImageAssessmentPtrOutput() DefenderForContainersAwsOfferingMdcContainersImageAssessmentPtrOutput {
+	return o.ToDefenderForContainersAwsOfferingMdcContainersImageAssessmentPtrOutputWithContext(context.Background())
+}
+
+func (o DefenderForContainersAwsOfferingMdcContainersImageAssessmentOutput) ToDefenderForContainersAwsOfferingMdcContainersImageAssessmentPtrOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingMdcContainersImageAssessmentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefenderForContainersAwsOfferingMdcContainersImageAssessment) *DefenderForContainersAwsOfferingMdcContainersImageAssessment {
+		return &v
+	}).(DefenderForContainersAwsOfferingMdcContainersImageAssessmentPtrOutput)
+}
+
+// The cloud role ARN in AWS for this feature
+func (o DefenderForContainersAwsOfferingMdcContainersImageAssessmentOutput) CloudRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersAwsOfferingMdcContainersImageAssessment) *string { return v.CloudRoleArn }).(pulumi.StringPtrOutput)
+}
+
+// Is Microsoft Defender container image assessment enabled
+func (o DefenderForContainersAwsOfferingMdcContainersImageAssessmentOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersAwsOfferingMdcContainersImageAssessment) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type DefenderForContainersAwsOfferingMdcContainersImageAssessmentPtrOutput struct{ *pulumi.OutputState }
+
+func (DefenderForContainersAwsOfferingMdcContainersImageAssessmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderForContainersAwsOfferingMdcContainersImageAssessment)(nil)).Elem()
+}
+
+func (o DefenderForContainersAwsOfferingMdcContainersImageAssessmentPtrOutput) ToDefenderForContainersAwsOfferingMdcContainersImageAssessmentPtrOutput() DefenderForContainersAwsOfferingMdcContainersImageAssessmentPtrOutput {
+	return o
+}
+
+func (o DefenderForContainersAwsOfferingMdcContainersImageAssessmentPtrOutput) ToDefenderForContainersAwsOfferingMdcContainersImageAssessmentPtrOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingMdcContainersImageAssessmentPtrOutput {
+	return o
+}
+
+func (o DefenderForContainersAwsOfferingMdcContainersImageAssessmentPtrOutput) Elem() DefenderForContainersAwsOfferingMdcContainersImageAssessmentOutput {
+	return o.ApplyT(func(v *DefenderForContainersAwsOfferingMdcContainersImageAssessment) DefenderForContainersAwsOfferingMdcContainersImageAssessment {
+		if v != nil {
+			return *v
+		}
+		var ret DefenderForContainersAwsOfferingMdcContainersImageAssessment
+		return ret
+	}).(DefenderForContainersAwsOfferingMdcContainersImageAssessmentOutput)
+}
+
+// The cloud role ARN in AWS for this feature
+func (o DefenderForContainersAwsOfferingMdcContainersImageAssessmentPtrOutput) CloudRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenderForContainersAwsOfferingMdcContainersImageAssessment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CloudRoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Is Microsoft Defender container image assessment enabled
+func (o DefenderForContainersAwsOfferingMdcContainersImageAssessmentPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DefenderForContainersAwsOfferingMdcContainersImageAssessment) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 // The Defender for Containers AWS offering
 type DefenderForContainersAwsOfferingResponse struct {
-	// Is audit logs pipeline auto provisioning enabled
-	AutoProvisioning *bool `pulumi:"autoProvisioning"`
 	// The cloudwatch to kinesis connection configuration
 	CloudWatchToKinesis *DefenderForContainersAwsOfferingResponseCloudWatchToKinesis `pulumi:"cloudWatchToKinesis"`
-	// The container vulnerability assessment configuration
-	ContainerVulnerabilityAssessment *DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessment `pulumi:"containerVulnerabilityAssessment"`
-	// The container vulnerability assessment task configuration
-	ContainerVulnerabilityAssessmentTask *DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentTask `pulumi:"containerVulnerabilityAssessmentTask"`
+	// The externalId used by the data reader to prevent the confused deputy attack
+	DataCollectionExternalId *string `pulumi:"dataCollectionExternalId"`
 	// The offering description.
 	Description string `pulumi:"description"`
-	// Enable container vulnerability assessment feature
-	EnableContainerVulnerabilityAssessment *bool `pulumi:"enableContainerVulnerabilityAssessment"`
+	// Is audit logs data collection enabled
+	EnableAuditLogsAutoProvisioning *bool `pulumi:"enableAuditLogsAutoProvisioning"`
+	// Is Microsoft Defender for Cloud Kubernetes agent auto provisioning enabled
+	EnableDefenderAgentAutoProvisioning *bool `pulumi:"enableDefenderAgentAutoProvisioning"`
+	// Is Policy Kubernetes agent auto provisioning enabled
+	EnablePolicyAgentAutoProvisioning *bool `pulumi:"enablePolicyAgentAutoProvisioning"`
 	// The kinesis to s3 connection configuration
 	KinesisToS3 *DefenderForContainersAwsOfferingResponseKinesisToS3 `pulumi:"kinesisToS3"`
 	// The retention time in days of kube audit logs set on the CloudWatch log group
 	KubeAuditRetentionTime *float64 `pulumi:"kubeAuditRetentionTime"`
-	// The kubernetes to scuba connection configuration
-	KubernetesScubaReader *DefenderForContainersAwsOfferingResponseKubernetesScubaReader `pulumi:"kubernetesScubaReader"`
+	// The kubernetes data collection connection configuration
+	KubernetesDataCollection *DefenderForContainersAwsOfferingResponseKubernetesDataCollection `pulumi:"kubernetesDataCollection"`
 	// The kubernetes service connection configuration
 	KubernetesService *DefenderForContainersAwsOfferingResponseKubernetesService `pulumi:"kubernetesService"`
+	// The Microsoft Defender container agentless discovery K8s configuration
+	MdcContainersAgentlessDiscoveryK8s *DefenderForContainersAwsOfferingResponseMdcContainersAgentlessDiscoveryK8s `pulumi:"mdcContainersAgentlessDiscoveryK8s"`
+	// The Microsoft Defender container image assessment configuration
+	MdcContainersImageAssessment *DefenderForContainersAwsOfferingResponseMdcContainersImageAssessment `pulumi:"mdcContainersImageAssessment"`
 	// The type of the security offering.
 	// Expected value is 'DefenderForContainersAws'.
 	OfferingType string `pulumi:"offeringType"`
-	// The externalId used by the data reader to prevent the confused deputy attack
-	ScubaExternalId *string `pulumi:"scubaExternalId"`
+	// The Microsoft Defender for Container K8s VM host scanning configuration
+	VmScanners *DefenderForContainersAwsOfferingResponseVmScanners `pulumi:"vmScanners"`
 }
 
 // The Defender for Containers AWS offering
@@ -9338,11 +12731,6 @@ func (o DefenderForContainersAwsOfferingResponseOutput) ToDefenderForContainersA
 	return o
 }
 
-// Is audit logs pipeline auto provisioning enabled
-func (o DefenderForContainersAwsOfferingResponseOutput) AutoProvisioning() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v DefenderForContainersAwsOfferingResponse) *bool { return v.AutoProvisioning }).(pulumi.BoolPtrOutput)
-}
-
 // The cloudwatch to kinesis connection configuration
 func (o DefenderForContainersAwsOfferingResponseOutput) CloudWatchToKinesis() DefenderForContainersAwsOfferingResponseCloudWatchToKinesisPtrOutput {
 	return o.ApplyT(func(v DefenderForContainersAwsOfferingResponse) *DefenderForContainersAwsOfferingResponseCloudWatchToKinesis {
@@ -9350,18 +12738,9 @@ func (o DefenderForContainersAwsOfferingResponseOutput) CloudWatchToKinesis() De
 	}).(DefenderForContainersAwsOfferingResponseCloudWatchToKinesisPtrOutput)
 }
 
-// The container vulnerability assessment configuration
-func (o DefenderForContainersAwsOfferingResponseOutput) ContainerVulnerabilityAssessment() DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentPtrOutput {
-	return o.ApplyT(func(v DefenderForContainersAwsOfferingResponse) *DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessment {
-		return v.ContainerVulnerabilityAssessment
-	}).(DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentPtrOutput)
-}
-
-// The container vulnerability assessment task configuration
-func (o DefenderForContainersAwsOfferingResponseOutput) ContainerVulnerabilityAssessmentTask() DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentTaskPtrOutput {
-	return o.ApplyT(func(v DefenderForContainersAwsOfferingResponse) *DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentTask {
-		return v.ContainerVulnerabilityAssessmentTask
-	}).(DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentTaskPtrOutput)
+// The externalId used by the data reader to prevent the confused deputy attack
+func (o DefenderForContainersAwsOfferingResponseOutput) DataCollectionExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersAwsOfferingResponse) *string { return v.DataCollectionExternalId }).(pulumi.StringPtrOutput)
 }
 
 // The offering description.
@@ -9369,11 +12748,19 @@ func (o DefenderForContainersAwsOfferingResponseOutput) Description() pulumi.Str
 	return o.ApplyT(func(v DefenderForContainersAwsOfferingResponse) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Enable container vulnerability assessment feature
-func (o DefenderForContainersAwsOfferingResponseOutput) EnableContainerVulnerabilityAssessment() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v DefenderForContainersAwsOfferingResponse) *bool {
-		return v.EnableContainerVulnerabilityAssessment
-	}).(pulumi.BoolPtrOutput)
+// Is audit logs data collection enabled
+func (o DefenderForContainersAwsOfferingResponseOutput) EnableAuditLogsAutoProvisioning() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersAwsOfferingResponse) *bool { return v.EnableAuditLogsAutoProvisioning }).(pulumi.BoolPtrOutput)
+}
+
+// Is Microsoft Defender for Cloud Kubernetes agent auto provisioning enabled
+func (o DefenderForContainersAwsOfferingResponseOutput) EnableDefenderAgentAutoProvisioning() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersAwsOfferingResponse) *bool { return v.EnableDefenderAgentAutoProvisioning }).(pulumi.BoolPtrOutput)
+}
+
+// Is Policy Kubernetes agent auto provisioning enabled
+func (o DefenderForContainersAwsOfferingResponseOutput) EnablePolicyAgentAutoProvisioning() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersAwsOfferingResponse) *bool { return v.EnablePolicyAgentAutoProvisioning }).(pulumi.BoolPtrOutput)
 }
 
 // The kinesis to s3 connection configuration
@@ -9388,11 +12775,11 @@ func (o DefenderForContainersAwsOfferingResponseOutput) KubeAuditRetentionTime()
 	return o.ApplyT(func(v DefenderForContainersAwsOfferingResponse) *float64 { return v.KubeAuditRetentionTime }).(pulumi.Float64PtrOutput)
 }
 
-// The kubernetes to scuba connection configuration
-func (o DefenderForContainersAwsOfferingResponseOutput) KubernetesScubaReader() DefenderForContainersAwsOfferingResponseKubernetesScubaReaderPtrOutput {
-	return o.ApplyT(func(v DefenderForContainersAwsOfferingResponse) *DefenderForContainersAwsOfferingResponseKubernetesScubaReader {
-		return v.KubernetesScubaReader
-	}).(DefenderForContainersAwsOfferingResponseKubernetesScubaReaderPtrOutput)
+// The kubernetes data collection connection configuration
+func (o DefenderForContainersAwsOfferingResponseOutput) KubernetesDataCollection() DefenderForContainersAwsOfferingResponseKubernetesDataCollectionPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersAwsOfferingResponse) *DefenderForContainersAwsOfferingResponseKubernetesDataCollection {
+		return v.KubernetesDataCollection
+	}).(DefenderForContainersAwsOfferingResponseKubernetesDataCollectionPtrOutput)
 }
 
 // The kubernetes service connection configuration
@@ -9402,15 +12789,31 @@ func (o DefenderForContainersAwsOfferingResponseOutput) KubernetesService() Defe
 	}).(DefenderForContainersAwsOfferingResponseKubernetesServicePtrOutput)
 }
 
+// The Microsoft Defender container agentless discovery K8s configuration
+func (o DefenderForContainersAwsOfferingResponseOutput) MdcContainersAgentlessDiscoveryK8s() DefenderForContainersAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersAwsOfferingResponse) *DefenderForContainersAwsOfferingResponseMdcContainersAgentlessDiscoveryK8s {
+		return v.MdcContainersAgentlessDiscoveryK8s
+	}).(DefenderForContainersAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput)
+}
+
+// The Microsoft Defender container image assessment configuration
+func (o DefenderForContainersAwsOfferingResponseOutput) MdcContainersImageAssessment() DefenderForContainersAwsOfferingResponseMdcContainersImageAssessmentPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersAwsOfferingResponse) *DefenderForContainersAwsOfferingResponseMdcContainersImageAssessment {
+		return v.MdcContainersImageAssessment
+	}).(DefenderForContainersAwsOfferingResponseMdcContainersImageAssessmentPtrOutput)
+}
+
 // The type of the security offering.
 // Expected value is 'DefenderForContainersAws'.
 func (o DefenderForContainersAwsOfferingResponseOutput) OfferingType() pulumi.StringOutput {
 	return o.ApplyT(func(v DefenderForContainersAwsOfferingResponse) string { return v.OfferingType }).(pulumi.StringOutput)
 }
 
-// The externalId used by the data reader to prevent the confused deputy attack
-func (o DefenderForContainersAwsOfferingResponseOutput) ScubaExternalId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DefenderForContainersAwsOfferingResponse) *string { return v.ScubaExternalId }).(pulumi.StringPtrOutput)
+// The Microsoft Defender for Container K8s VM host scanning configuration
+func (o DefenderForContainersAwsOfferingResponseOutput) VmScanners() DefenderForContainersAwsOfferingResponseVmScannersPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersAwsOfferingResponse) *DefenderForContainersAwsOfferingResponseVmScanners {
+		return v.VmScanners
+	}).(DefenderForContainersAwsOfferingResponseVmScannersPtrOutput)
 }
 
 // The cloudwatch to kinesis connection configuration
@@ -9466,130 +12869,6 @@ func (o DefenderForContainersAwsOfferingResponseCloudWatchToKinesisPtrOutput) El
 // The cloud role ARN in AWS used by CloudWatch to transfer data into Kinesis
 func (o DefenderForContainersAwsOfferingResponseCloudWatchToKinesisPtrOutput) CloudRoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DefenderForContainersAwsOfferingResponseCloudWatchToKinesis) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CloudRoleArn
-	}).(pulumi.StringPtrOutput)
-}
-
-// The container vulnerability assessment configuration
-type DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessment struct {
-	// The cloud role ARN in AWS for this feature
-	CloudRoleArn *string `pulumi:"cloudRoleArn"`
-}
-
-// The container vulnerability assessment configuration
-type DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentOutput struct{ *pulumi.OutputState }
-
-func (DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessment)(nil)).Elem()
-}
-
-func (o DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentOutput) ToDefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentOutput() DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentOutput {
-	return o
-}
-
-func (o DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentOutput) ToDefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentOutput {
-	return o
-}
-
-// The cloud role ARN in AWS for this feature
-func (o DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentOutput) CloudRoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessment) *string {
-		return v.CloudRoleArn
-	}).(pulumi.StringPtrOutput)
-}
-
-type DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentPtrOutput struct{ *pulumi.OutputState }
-
-func (DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessment)(nil)).Elem()
-}
-
-func (o DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentPtrOutput) ToDefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentPtrOutput() DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentPtrOutput {
-	return o
-}
-
-func (o DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentPtrOutput) ToDefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentPtrOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentPtrOutput {
-	return o
-}
-
-func (o DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentPtrOutput) Elem() DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentOutput {
-	return o.ApplyT(func(v *DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessment) DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessment {
-		if v != nil {
-			return *v
-		}
-		var ret DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessment
-		return ret
-	}).(DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentOutput)
-}
-
-// The cloud role ARN in AWS for this feature
-func (o DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentPtrOutput) CloudRoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessment) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CloudRoleArn
-	}).(pulumi.StringPtrOutput)
-}
-
-// The container vulnerability assessment task configuration
-type DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentTask struct {
-	// The cloud role ARN in AWS for this feature
-	CloudRoleArn *string `pulumi:"cloudRoleArn"`
-}
-
-// The container vulnerability assessment task configuration
-type DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentTaskOutput struct{ *pulumi.OutputState }
-
-func (DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentTaskOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentTask)(nil)).Elem()
-}
-
-func (o DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentTaskOutput) ToDefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentTaskOutput() DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentTaskOutput {
-	return o
-}
-
-func (o DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentTaskOutput) ToDefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentTaskOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentTaskOutput {
-	return o
-}
-
-// The cloud role ARN in AWS for this feature
-func (o DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentTaskOutput) CloudRoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentTask) *string {
-		return v.CloudRoleArn
-	}).(pulumi.StringPtrOutput)
-}
-
-type DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentTaskPtrOutput struct{ *pulumi.OutputState }
-
-func (DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentTaskPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentTask)(nil)).Elem()
-}
-
-func (o DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentTaskPtrOutput) ToDefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentTaskPtrOutput() DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentTaskPtrOutput {
-	return o
-}
-
-func (o DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentTaskPtrOutput) ToDefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentTaskPtrOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentTaskPtrOutput {
-	return o
-}
-
-func (o DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentTaskPtrOutput) Elem() DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentTaskOutput {
-	return o.ApplyT(func(v *DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentTask) DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentTask {
-		if v != nil {
-			return *v
-		}
-		var ret DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentTask
-		return ret
-	}).(DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentTaskOutput)
-}
-
-// The cloud role ARN in AWS for this feature
-func (o DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentTaskPtrOutput) CloudRoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentTask) *string {
 		if v == nil {
 			return nil
 		}
@@ -9657,59 +12936,61 @@ func (o DefenderForContainersAwsOfferingResponseKinesisToS3PtrOutput) CloudRoleA
 	}).(pulumi.StringPtrOutput)
 }
 
-// The kubernetes to scuba connection configuration
-type DefenderForContainersAwsOfferingResponseKubernetesScubaReader struct {
+// The kubernetes data collection connection configuration
+type DefenderForContainersAwsOfferingResponseKubernetesDataCollection struct {
 	// The cloud role ARN in AWS for this feature used for reading data
 	CloudRoleArn *string `pulumi:"cloudRoleArn"`
 }
 
-// The kubernetes to scuba connection configuration
-type DefenderForContainersAwsOfferingResponseKubernetesScubaReaderOutput struct{ *pulumi.OutputState }
+// The kubernetes data collection connection configuration
+type DefenderForContainersAwsOfferingResponseKubernetesDataCollectionOutput struct{ *pulumi.OutputState }
 
-func (DefenderForContainersAwsOfferingResponseKubernetesScubaReaderOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefenderForContainersAwsOfferingResponseKubernetesScubaReader)(nil)).Elem()
+func (DefenderForContainersAwsOfferingResponseKubernetesDataCollectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderForContainersAwsOfferingResponseKubernetesDataCollection)(nil)).Elem()
 }
 
-func (o DefenderForContainersAwsOfferingResponseKubernetesScubaReaderOutput) ToDefenderForContainersAwsOfferingResponseKubernetesScubaReaderOutput() DefenderForContainersAwsOfferingResponseKubernetesScubaReaderOutput {
+func (o DefenderForContainersAwsOfferingResponseKubernetesDataCollectionOutput) ToDefenderForContainersAwsOfferingResponseKubernetesDataCollectionOutput() DefenderForContainersAwsOfferingResponseKubernetesDataCollectionOutput {
 	return o
 }
 
-func (o DefenderForContainersAwsOfferingResponseKubernetesScubaReaderOutput) ToDefenderForContainersAwsOfferingResponseKubernetesScubaReaderOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingResponseKubernetesScubaReaderOutput {
+func (o DefenderForContainersAwsOfferingResponseKubernetesDataCollectionOutput) ToDefenderForContainersAwsOfferingResponseKubernetesDataCollectionOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingResponseKubernetesDataCollectionOutput {
 	return o
 }
 
 // The cloud role ARN in AWS for this feature used for reading data
-func (o DefenderForContainersAwsOfferingResponseKubernetesScubaReaderOutput) CloudRoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DefenderForContainersAwsOfferingResponseKubernetesScubaReader) *string { return v.CloudRoleArn }).(pulumi.StringPtrOutput)
+func (o DefenderForContainersAwsOfferingResponseKubernetesDataCollectionOutput) CloudRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersAwsOfferingResponseKubernetesDataCollection) *string {
+		return v.CloudRoleArn
+	}).(pulumi.StringPtrOutput)
 }
 
-type DefenderForContainersAwsOfferingResponseKubernetesScubaReaderPtrOutput struct{ *pulumi.OutputState }
+type DefenderForContainersAwsOfferingResponseKubernetesDataCollectionPtrOutput struct{ *pulumi.OutputState }
 
-func (DefenderForContainersAwsOfferingResponseKubernetesScubaReaderPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DefenderForContainersAwsOfferingResponseKubernetesScubaReader)(nil)).Elem()
+func (DefenderForContainersAwsOfferingResponseKubernetesDataCollectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderForContainersAwsOfferingResponseKubernetesDataCollection)(nil)).Elem()
 }
 
-func (o DefenderForContainersAwsOfferingResponseKubernetesScubaReaderPtrOutput) ToDefenderForContainersAwsOfferingResponseKubernetesScubaReaderPtrOutput() DefenderForContainersAwsOfferingResponseKubernetesScubaReaderPtrOutput {
+func (o DefenderForContainersAwsOfferingResponseKubernetesDataCollectionPtrOutput) ToDefenderForContainersAwsOfferingResponseKubernetesDataCollectionPtrOutput() DefenderForContainersAwsOfferingResponseKubernetesDataCollectionPtrOutput {
 	return o
 }
 
-func (o DefenderForContainersAwsOfferingResponseKubernetesScubaReaderPtrOutput) ToDefenderForContainersAwsOfferingResponseKubernetesScubaReaderPtrOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingResponseKubernetesScubaReaderPtrOutput {
+func (o DefenderForContainersAwsOfferingResponseKubernetesDataCollectionPtrOutput) ToDefenderForContainersAwsOfferingResponseKubernetesDataCollectionPtrOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingResponseKubernetesDataCollectionPtrOutput {
 	return o
 }
 
-func (o DefenderForContainersAwsOfferingResponseKubernetesScubaReaderPtrOutput) Elem() DefenderForContainersAwsOfferingResponseKubernetesScubaReaderOutput {
-	return o.ApplyT(func(v *DefenderForContainersAwsOfferingResponseKubernetesScubaReader) DefenderForContainersAwsOfferingResponseKubernetesScubaReader {
+func (o DefenderForContainersAwsOfferingResponseKubernetesDataCollectionPtrOutput) Elem() DefenderForContainersAwsOfferingResponseKubernetesDataCollectionOutput {
+	return o.ApplyT(func(v *DefenderForContainersAwsOfferingResponseKubernetesDataCollection) DefenderForContainersAwsOfferingResponseKubernetesDataCollection {
 		if v != nil {
 			return *v
 		}
-		var ret DefenderForContainersAwsOfferingResponseKubernetesScubaReader
+		var ret DefenderForContainersAwsOfferingResponseKubernetesDataCollection
 		return ret
-	}).(DefenderForContainersAwsOfferingResponseKubernetesScubaReaderOutput)
+	}).(DefenderForContainersAwsOfferingResponseKubernetesDataCollectionOutput)
 }
 
 // The cloud role ARN in AWS for this feature used for reading data
-func (o DefenderForContainersAwsOfferingResponseKubernetesScubaReaderPtrOutput) CloudRoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DefenderForContainersAwsOfferingResponseKubernetesScubaReader) *string {
+func (o DefenderForContainersAwsOfferingResponseKubernetesDataCollectionPtrOutput) CloudRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenderForContainersAwsOfferingResponseKubernetesDataCollection) *string {
 		if v == nil {
 			return nil
 		}
@@ -9777,21 +13058,556 @@ func (o DefenderForContainersAwsOfferingResponseKubernetesServicePtrOutput) Clou
 	}).(pulumi.StringPtrOutput)
 }
 
+// The Microsoft Defender container agentless discovery K8s configuration
+type DefenderForContainersAwsOfferingResponseMdcContainersAgentlessDiscoveryK8s struct {
+	// The cloud role ARN in AWS for this feature
+	CloudRoleArn *string `pulumi:"cloudRoleArn"`
+	// Is Microsoft Defender container agentless discovery K8s enabled
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// The Microsoft Defender container agentless discovery K8s configuration
+type DefenderForContainersAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sOutput struct{ *pulumi.OutputState }
+
+func (DefenderForContainersAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderForContainersAwsOfferingResponseMdcContainersAgentlessDiscoveryK8s)(nil)).Elem()
+}
+
+func (o DefenderForContainersAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sOutput) ToDefenderForContainersAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sOutput() DefenderForContainersAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sOutput {
+	return o
+}
+
+func (o DefenderForContainersAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sOutput) ToDefenderForContainersAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sOutput {
+	return o
+}
+
+// The cloud role ARN in AWS for this feature
+func (o DefenderForContainersAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sOutput) CloudRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersAwsOfferingResponseMdcContainersAgentlessDiscoveryK8s) *string {
+		return v.CloudRoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Is Microsoft Defender container agentless discovery K8s enabled
+func (o DefenderForContainersAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersAwsOfferingResponseMdcContainersAgentlessDiscoveryK8s) *bool {
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type DefenderForContainersAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput struct{ *pulumi.OutputState }
+
+func (DefenderForContainersAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderForContainersAwsOfferingResponseMdcContainersAgentlessDiscoveryK8s)(nil)).Elem()
+}
+
+func (o DefenderForContainersAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput) ToDefenderForContainersAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput() DefenderForContainersAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput {
+	return o
+}
+
+func (o DefenderForContainersAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput) ToDefenderForContainersAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput {
+	return o
+}
+
+func (o DefenderForContainersAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput) Elem() DefenderForContainersAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sOutput {
+	return o.ApplyT(func(v *DefenderForContainersAwsOfferingResponseMdcContainersAgentlessDiscoveryK8s) DefenderForContainersAwsOfferingResponseMdcContainersAgentlessDiscoveryK8s {
+		if v != nil {
+			return *v
+		}
+		var ret DefenderForContainersAwsOfferingResponseMdcContainersAgentlessDiscoveryK8s
+		return ret
+	}).(DefenderForContainersAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sOutput)
+}
+
+// The cloud role ARN in AWS for this feature
+func (o DefenderForContainersAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput) CloudRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenderForContainersAwsOfferingResponseMdcContainersAgentlessDiscoveryK8s) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CloudRoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Is Microsoft Defender container agentless discovery K8s enabled
+func (o DefenderForContainersAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DefenderForContainersAwsOfferingResponseMdcContainersAgentlessDiscoveryK8s) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The Microsoft Defender container image assessment configuration
+type DefenderForContainersAwsOfferingResponseMdcContainersImageAssessment struct {
+	// The cloud role ARN in AWS for this feature
+	CloudRoleArn *string `pulumi:"cloudRoleArn"`
+	// Is Microsoft Defender container image assessment enabled
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// The Microsoft Defender container image assessment configuration
+type DefenderForContainersAwsOfferingResponseMdcContainersImageAssessmentOutput struct{ *pulumi.OutputState }
+
+func (DefenderForContainersAwsOfferingResponseMdcContainersImageAssessmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderForContainersAwsOfferingResponseMdcContainersImageAssessment)(nil)).Elem()
+}
+
+func (o DefenderForContainersAwsOfferingResponseMdcContainersImageAssessmentOutput) ToDefenderForContainersAwsOfferingResponseMdcContainersImageAssessmentOutput() DefenderForContainersAwsOfferingResponseMdcContainersImageAssessmentOutput {
+	return o
+}
+
+func (o DefenderForContainersAwsOfferingResponseMdcContainersImageAssessmentOutput) ToDefenderForContainersAwsOfferingResponseMdcContainersImageAssessmentOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingResponseMdcContainersImageAssessmentOutput {
+	return o
+}
+
+// The cloud role ARN in AWS for this feature
+func (o DefenderForContainersAwsOfferingResponseMdcContainersImageAssessmentOutput) CloudRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersAwsOfferingResponseMdcContainersImageAssessment) *string {
+		return v.CloudRoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Is Microsoft Defender container image assessment enabled
+func (o DefenderForContainersAwsOfferingResponseMdcContainersImageAssessmentOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersAwsOfferingResponseMdcContainersImageAssessment) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type DefenderForContainersAwsOfferingResponseMdcContainersImageAssessmentPtrOutput struct{ *pulumi.OutputState }
+
+func (DefenderForContainersAwsOfferingResponseMdcContainersImageAssessmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderForContainersAwsOfferingResponseMdcContainersImageAssessment)(nil)).Elem()
+}
+
+func (o DefenderForContainersAwsOfferingResponseMdcContainersImageAssessmentPtrOutput) ToDefenderForContainersAwsOfferingResponseMdcContainersImageAssessmentPtrOutput() DefenderForContainersAwsOfferingResponseMdcContainersImageAssessmentPtrOutput {
+	return o
+}
+
+func (o DefenderForContainersAwsOfferingResponseMdcContainersImageAssessmentPtrOutput) ToDefenderForContainersAwsOfferingResponseMdcContainersImageAssessmentPtrOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingResponseMdcContainersImageAssessmentPtrOutput {
+	return o
+}
+
+func (o DefenderForContainersAwsOfferingResponseMdcContainersImageAssessmentPtrOutput) Elem() DefenderForContainersAwsOfferingResponseMdcContainersImageAssessmentOutput {
+	return o.ApplyT(func(v *DefenderForContainersAwsOfferingResponseMdcContainersImageAssessment) DefenderForContainersAwsOfferingResponseMdcContainersImageAssessment {
+		if v != nil {
+			return *v
+		}
+		var ret DefenderForContainersAwsOfferingResponseMdcContainersImageAssessment
+		return ret
+	}).(DefenderForContainersAwsOfferingResponseMdcContainersImageAssessmentOutput)
+}
+
+// The cloud role ARN in AWS for this feature
+func (o DefenderForContainersAwsOfferingResponseMdcContainersImageAssessmentPtrOutput) CloudRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenderForContainersAwsOfferingResponseMdcContainersImageAssessment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CloudRoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Is Microsoft Defender container image assessment enabled
+func (o DefenderForContainersAwsOfferingResponseMdcContainersImageAssessmentPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DefenderForContainersAwsOfferingResponseMdcContainersImageAssessment) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The Microsoft Defender for Container K8s VM host scanning configuration
+type DefenderForContainersAwsOfferingResponseVmScanners struct {
+	// The cloud role ARN in AWS for this feature
+	CloudRoleArn *string `pulumi:"cloudRoleArn"`
+	// Configuration for VM scanning
+	Configuration *VmScannersBaseResponseConfiguration `pulumi:"configuration"`
+	// Is VM scanning enabled
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// The Microsoft Defender for Container K8s VM host scanning configuration
+type DefenderForContainersAwsOfferingResponseVmScannersOutput struct{ *pulumi.OutputState }
+
+func (DefenderForContainersAwsOfferingResponseVmScannersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderForContainersAwsOfferingResponseVmScanners)(nil)).Elem()
+}
+
+func (o DefenderForContainersAwsOfferingResponseVmScannersOutput) ToDefenderForContainersAwsOfferingResponseVmScannersOutput() DefenderForContainersAwsOfferingResponseVmScannersOutput {
+	return o
+}
+
+func (o DefenderForContainersAwsOfferingResponseVmScannersOutput) ToDefenderForContainersAwsOfferingResponseVmScannersOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingResponseVmScannersOutput {
+	return o
+}
+
+// The cloud role ARN in AWS for this feature
+func (o DefenderForContainersAwsOfferingResponseVmScannersOutput) CloudRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersAwsOfferingResponseVmScanners) *string { return v.CloudRoleArn }).(pulumi.StringPtrOutput)
+}
+
+// Configuration for VM scanning
+func (o DefenderForContainersAwsOfferingResponseVmScannersOutput) Configuration() VmScannersBaseResponseConfigurationPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersAwsOfferingResponseVmScanners) *VmScannersBaseResponseConfiguration {
+		return v.Configuration
+	}).(VmScannersBaseResponseConfigurationPtrOutput)
+}
+
+// Is VM scanning enabled
+func (o DefenderForContainersAwsOfferingResponseVmScannersOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersAwsOfferingResponseVmScanners) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type DefenderForContainersAwsOfferingResponseVmScannersPtrOutput struct{ *pulumi.OutputState }
+
+func (DefenderForContainersAwsOfferingResponseVmScannersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderForContainersAwsOfferingResponseVmScanners)(nil)).Elem()
+}
+
+func (o DefenderForContainersAwsOfferingResponseVmScannersPtrOutput) ToDefenderForContainersAwsOfferingResponseVmScannersPtrOutput() DefenderForContainersAwsOfferingResponseVmScannersPtrOutput {
+	return o
+}
+
+func (o DefenderForContainersAwsOfferingResponseVmScannersPtrOutput) ToDefenderForContainersAwsOfferingResponseVmScannersPtrOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingResponseVmScannersPtrOutput {
+	return o
+}
+
+func (o DefenderForContainersAwsOfferingResponseVmScannersPtrOutput) Elem() DefenderForContainersAwsOfferingResponseVmScannersOutput {
+	return o.ApplyT(func(v *DefenderForContainersAwsOfferingResponseVmScanners) DefenderForContainersAwsOfferingResponseVmScanners {
+		if v != nil {
+			return *v
+		}
+		var ret DefenderForContainersAwsOfferingResponseVmScanners
+		return ret
+	}).(DefenderForContainersAwsOfferingResponseVmScannersOutput)
+}
+
+// The cloud role ARN in AWS for this feature
+func (o DefenderForContainersAwsOfferingResponseVmScannersPtrOutput) CloudRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenderForContainersAwsOfferingResponseVmScanners) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CloudRoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for VM scanning
+func (o DefenderForContainersAwsOfferingResponseVmScannersPtrOutput) Configuration() VmScannersBaseResponseConfigurationPtrOutput {
+	return o.ApplyT(func(v *DefenderForContainersAwsOfferingResponseVmScanners) *VmScannersBaseResponseConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.Configuration
+	}).(VmScannersBaseResponseConfigurationPtrOutput)
+}
+
+// Is VM scanning enabled
+func (o DefenderForContainersAwsOfferingResponseVmScannersPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DefenderForContainersAwsOfferingResponseVmScanners) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The Microsoft Defender for Container K8s VM host scanning configuration
+type DefenderForContainersAwsOfferingVmScanners struct {
+	// The cloud role ARN in AWS for this feature
+	CloudRoleArn *string `pulumi:"cloudRoleArn"`
+	// Configuration for VM scanning
+	Configuration *VmScannersBaseConfiguration `pulumi:"configuration"`
+	// Is VM scanning enabled
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// DefenderForContainersAwsOfferingVmScannersInput is an input type that accepts DefenderForContainersAwsOfferingVmScannersArgs and DefenderForContainersAwsOfferingVmScannersOutput values.
+// You can construct a concrete instance of `DefenderForContainersAwsOfferingVmScannersInput` via:
+//
+//	DefenderForContainersAwsOfferingVmScannersArgs{...}
+type DefenderForContainersAwsOfferingVmScannersInput interface {
+	pulumi.Input
+
+	ToDefenderForContainersAwsOfferingVmScannersOutput() DefenderForContainersAwsOfferingVmScannersOutput
+	ToDefenderForContainersAwsOfferingVmScannersOutputWithContext(context.Context) DefenderForContainersAwsOfferingVmScannersOutput
+}
+
+// The Microsoft Defender for Container K8s VM host scanning configuration
+type DefenderForContainersAwsOfferingVmScannersArgs struct {
+	// The cloud role ARN in AWS for this feature
+	CloudRoleArn pulumi.StringPtrInput `pulumi:"cloudRoleArn"`
+	// Configuration for VM scanning
+	Configuration VmScannersBaseConfigurationPtrInput `pulumi:"configuration"`
+	// Is VM scanning enabled
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (DefenderForContainersAwsOfferingVmScannersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderForContainersAwsOfferingVmScanners)(nil)).Elem()
+}
+
+func (i DefenderForContainersAwsOfferingVmScannersArgs) ToDefenderForContainersAwsOfferingVmScannersOutput() DefenderForContainersAwsOfferingVmScannersOutput {
+	return i.ToDefenderForContainersAwsOfferingVmScannersOutputWithContext(context.Background())
+}
+
+func (i DefenderForContainersAwsOfferingVmScannersArgs) ToDefenderForContainersAwsOfferingVmScannersOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingVmScannersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderForContainersAwsOfferingVmScannersOutput)
+}
+
+func (i DefenderForContainersAwsOfferingVmScannersArgs) ToDefenderForContainersAwsOfferingVmScannersPtrOutput() DefenderForContainersAwsOfferingVmScannersPtrOutput {
+	return i.ToDefenderForContainersAwsOfferingVmScannersPtrOutputWithContext(context.Background())
+}
+
+func (i DefenderForContainersAwsOfferingVmScannersArgs) ToDefenderForContainersAwsOfferingVmScannersPtrOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingVmScannersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderForContainersAwsOfferingVmScannersOutput).ToDefenderForContainersAwsOfferingVmScannersPtrOutputWithContext(ctx)
+}
+
+// DefenderForContainersAwsOfferingVmScannersPtrInput is an input type that accepts DefenderForContainersAwsOfferingVmScannersArgs, DefenderForContainersAwsOfferingVmScannersPtr and DefenderForContainersAwsOfferingVmScannersPtrOutput values.
+// You can construct a concrete instance of `DefenderForContainersAwsOfferingVmScannersPtrInput` via:
+//
+//	        DefenderForContainersAwsOfferingVmScannersArgs{...}
+//
+//	or:
+//
+//	        nil
+type DefenderForContainersAwsOfferingVmScannersPtrInput interface {
+	pulumi.Input
+
+	ToDefenderForContainersAwsOfferingVmScannersPtrOutput() DefenderForContainersAwsOfferingVmScannersPtrOutput
+	ToDefenderForContainersAwsOfferingVmScannersPtrOutputWithContext(context.Context) DefenderForContainersAwsOfferingVmScannersPtrOutput
+}
+
+type defenderForContainersAwsOfferingVmScannersPtrType DefenderForContainersAwsOfferingVmScannersArgs
+
+func DefenderForContainersAwsOfferingVmScannersPtr(v *DefenderForContainersAwsOfferingVmScannersArgs) DefenderForContainersAwsOfferingVmScannersPtrInput {
+	return (*defenderForContainersAwsOfferingVmScannersPtrType)(v)
+}
+
+func (*defenderForContainersAwsOfferingVmScannersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderForContainersAwsOfferingVmScanners)(nil)).Elem()
+}
+
+func (i *defenderForContainersAwsOfferingVmScannersPtrType) ToDefenderForContainersAwsOfferingVmScannersPtrOutput() DefenderForContainersAwsOfferingVmScannersPtrOutput {
+	return i.ToDefenderForContainersAwsOfferingVmScannersPtrOutputWithContext(context.Background())
+}
+
+func (i *defenderForContainersAwsOfferingVmScannersPtrType) ToDefenderForContainersAwsOfferingVmScannersPtrOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingVmScannersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderForContainersAwsOfferingVmScannersPtrOutput)
+}
+
+// The Microsoft Defender for Container K8s VM host scanning configuration
+type DefenderForContainersAwsOfferingVmScannersOutput struct{ *pulumi.OutputState }
+
+func (DefenderForContainersAwsOfferingVmScannersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderForContainersAwsOfferingVmScanners)(nil)).Elem()
+}
+
+func (o DefenderForContainersAwsOfferingVmScannersOutput) ToDefenderForContainersAwsOfferingVmScannersOutput() DefenderForContainersAwsOfferingVmScannersOutput {
+	return o
+}
+
+func (o DefenderForContainersAwsOfferingVmScannersOutput) ToDefenderForContainersAwsOfferingVmScannersOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingVmScannersOutput {
+	return o
+}
+
+func (o DefenderForContainersAwsOfferingVmScannersOutput) ToDefenderForContainersAwsOfferingVmScannersPtrOutput() DefenderForContainersAwsOfferingVmScannersPtrOutput {
+	return o.ToDefenderForContainersAwsOfferingVmScannersPtrOutputWithContext(context.Background())
+}
+
+func (o DefenderForContainersAwsOfferingVmScannersOutput) ToDefenderForContainersAwsOfferingVmScannersPtrOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingVmScannersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefenderForContainersAwsOfferingVmScanners) *DefenderForContainersAwsOfferingVmScanners {
+		return &v
+	}).(DefenderForContainersAwsOfferingVmScannersPtrOutput)
+}
+
+// The cloud role ARN in AWS for this feature
+func (o DefenderForContainersAwsOfferingVmScannersOutput) CloudRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersAwsOfferingVmScanners) *string { return v.CloudRoleArn }).(pulumi.StringPtrOutput)
+}
+
+// Configuration for VM scanning
+func (o DefenderForContainersAwsOfferingVmScannersOutput) Configuration() VmScannersBaseConfigurationPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersAwsOfferingVmScanners) *VmScannersBaseConfiguration {
+		return v.Configuration
+	}).(VmScannersBaseConfigurationPtrOutput)
+}
+
+// Is VM scanning enabled
+func (o DefenderForContainersAwsOfferingVmScannersOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersAwsOfferingVmScanners) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type DefenderForContainersAwsOfferingVmScannersPtrOutput struct{ *pulumi.OutputState }
+
+func (DefenderForContainersAwsOfferingVmScannersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderForContainersAwsOfferingVmScanners)(nil)).Elem()
+}
+
+func (o DefenderForContainersAwsOfferingVmScannersPtrOutput) ToDefenderForContainersAwsOfferingVmScannersPtrOutput() DefenderForContainersAwsOfferingVmScannersPtrOutput {
+	return o
+}
+
+func (o DefenderForContainersAwsOfferingVmScannersPtrOutput) ToDefenderForContainersAwsOfferingVmScannersPtrOutputWithContext(ctx context.Context) DefenderForContainersAwsOfferingVmScannersPtrOutput {
+	return o
+}
+
+func (o DefenderForContainersAwsOfferingVmScannersPtrOutput) Elem() DefenderForContainersAwsOfferingVmScannersOutput {
+	return o.ApplyT(func(v *DefenderForContainersAwsOfferingVmScanners) DefenderForContainersAwsOfferingVmScanners {
+		if v != nil {
+			return *v
+		}
+		var ret DefenderForContainersAwsOfferingVmScanners
+		return ret
+	}).(DefenderForContainersAwsOfferingVmScannersOutput)
+}
+
+// The cloud role ARN in AWS for this feature
+func (o DefenderForContainersAwsOfferingVmScannersPtrOutput) CloudRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenderForContainersAwsOfferingVmScanners) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CloudRoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for VM scanning
+func (o DefenderForContainersAwsOfferingVmScannersPtrOutput) Configuration() VmScannersBaseConfigurationPtrOutput {
+	return o.ApplyT(func(v *DefenderForContainersAwsOfferingVmScanners) *VmScannersBaseConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.Configuration
+	}).(VmScannersBaseConfigurationPtrOutput)
+}
+
+// Is VM scanning enabled
+func (o DefenderForContainersAwsOfferingVmScannersPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DefenderForContainersAwsOfferingVmScanners) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The Defender for containers Docker Hub offering configurations
+type DefenderForContainersDockerHubOffering struct {
+	// The type of the security offering.
+	// Expected value is 'DefenderForContainersDockerHub'.
+	OfferingType string `pulumi:"offeringType"`
+}
+
+// DefenderForContainersDockerHubOfferingInput is an input type that accepts DefenderForContainersDockerHubOfferingArgs and DefenderForContainersDockerHubOfferingOutput values.
+// You can construct a concrete instance of `DefenderForContainersDockerHubOfferingInput` via:
+//
+//	DefenderForContainersDockerHubOfferingArgs{...}
+type DefenderForContainersDockerHubOfferingInput interface {
+	pulumi.Input
+
+	ToDefenderForContainersDockerHubOfferingOutput() DefenderForContainersDockerHubOfferingOutput
+	ToDefenderForContainersDockerHubOfferingOutputWithContext(context.Context) DefenderForContainersDockerHubOfferingOutput
+}
+
+// The Defender for containers Docker Hub offering configurations
+type DefenderForContainersDockerHubOfferingArgs struct {
+	// The type of the security offering.
+	// Expected value is 'DefenderForContainersDockerHub'.
+	OfferingType pulumi.StringInput `pulumi:"offeringType"`
+}
+
+func (DefenderForContainersDockerHubOfferingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderForContainersDockerHubOffering)(nil)).Elem()
+}
+
+func (i DefenderForContainersDockerHubOfferingArgs) ToDefenderForContainersDockerHubOfferingOutput() DefenderForContainersDockerHubOfferingOutput {
+	return i.ToDefenderForContainersDockerHubOfferingOutputWithContext(context.Background())
+}
+
+func (i DefenderForContainersDockerHubOfferingArgs) ToDefenderForContainersDockerHubOfferingOutputWithContext(ctx context.Context) DefenderForContainersDockerHubOfferingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderForContainersDockerHubOfferingOutput)
+}
+
+// The Defender for containers Docker Hub offering configurations
+type DefenderForContainersDockerHubOfferingOutput struct{ *pulumi.OutputState }
+
+func (DefenderForContainersDockerHubOfferingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderForContainersDockerHubOffering)(nil)).Elem()
+}
+
+func (o DefenderForContainersDockerHubOfferingOutput) ToDefenderForContainersDockerHubOfferingOutput() DefenderForContainersDockerHubOfferingOutput {
+	return o
+}
+
+func (o DefenderForContainersDockerHubOfferingOutput) ToDefenderForContainersDockerHubOfferingOutputWithContext(ctx context.Context) DefenderForContainersDockerHubOfferingOutput {
+	return o
+}
+
+// The type of the security offering.
+// Expected value is 'DefenderForContainersDockerHub'.
+func (o DefenderForContainersDockerHubOfferingOutput) OfferingType() pulumi.StringOutput {
+	return o.ApplyT(func(v DefenderForContainersDockerHubOffering) string { return v.OfferingType }).(pulumi.StringOutput)
+}
+
+// The Defender for containers Docker Hub offering configurations
+type DefenderForContainersDockerHubOfferingResponse struct {
+	// The offering description.
+	Description string `pulumi:"description"`
+	// The type of the security offering.
+	// Expected value is 'DefenderForContainersDockerHub'.
+	OfferingType string `pulumi:"offeringType"`
+}
+
+// The Defender for containers Docker Hub offering configurations
+type DefenderForContainersDockerHubOfferingResponseOutput struct{ *pulumi.OutputState }
+
+func (DefenderForContainersDockerHubOfferingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderForContainersDockerHubOfferingResponse)(nil)).Elem()
+}
+
+func (o DefenderForContainersDockerHubOfferingResponseOutput) ToDefenderForContainersDockerHubOfferingResponseOutput() DefenderForContainersDockerHubOfferingResponseOutput {
+	return o
+}
+
+func (o DefenderForContainersDockerHubOfferingResponseOutput) ToDefenderForContainersDockerHubOfferingResponseOutputWithContext(ctx context.Context) DefenderForContainersDockerHubOfferingResponseOutput {
+	return o
+}
+
+// The offering description.
+func (o DefenderForContainersDockerHubOfferingResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v DefenderForContainersDockerHubOfferingResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The type of the security offering.
+// Expected value is 'DefenderForContainersDockerHub'.
+func (o DefenderForContainersDockerHubOfferingResponseOutput) OfferingType() pulumi.StringOutput {
+	return o.ApplyT(func(v DefenderForContainersDockerHubOfferingResponse) string { return v.OfferingType }).(pulumi.StringOutput)
+}
+
 // The containers GCP offering
 type DefenderForContainersGcpOffering struct {
-	// Is audit logs data collection enabled
-	AuditLogsAutoProvisioningFlag *bool `pulumi:"auditLogsAutoProvisioningFlag"`
 	// The native cloud connection configuration
 	DataPipelineNativeCloudConnection *DefenderForContainersGcpOfferingDataPipelineNativeCloudConnection `pulumi:"dataPipelineNativeCloudConnection"`
+	// Is audit logs data collection enabled
+	EnableAuditLogsAutoProvisioning *bool `pulumi:"enableAuditLogsAutoProvisioning"`
 	// Is Microsoft Defender for Cloud Kubernetes agent auto provisioning enabled
-	DefenderAgentAutoProvisioningFlag *bool `pulumi:"defenderAgentAutoProvisioningFlag"`
+	EnableDefenderAgentAutoProvisioning *bool `pulumi:"enableDefenderAgentAutoProvisioning"`
+	// Is Policy Kubernetes agent auto provisioning enabled
+	EnablePolicyAgentAutoProvisioning *bool `pulumi:"enablePolicyAgentAutoProvisioning"`
+	// The Microsoft Defender Container agentless discovery configuration
+	MdcContainersAgentlessDiscoveryK8s *DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8s `pulumi:"mdcContainersAgentlessDiscoveryK8s"`
+	// The Microsoft Defender Container image assessment configuration
+	MdcContainersImageAssessment *DefenderForContainersGcpOfferingMdcContainersImageAssessment `pulumi:"mdcContainersImageAssessment"`
 	// The native cloud connection configuration
 	NativeCloudConnection *DefenderForContainersGcpOfferingNativeCloudConnection `pulumi:"nativeCloudConnection"`
 	// The type of the security offering.
 	// Expected value is 'DefenderForContainersGcp'.
 	OfferingType string `pulumi:"offeringType"`
-	// Is Policy Kubernetes agent auto provisioning enabled
-	PolicyAgentAutoProvisioningFlag *bool `pulumi:"policyAgentAutoProvisioningFlag"`
+	// The Microsoft Defender for Container K8s VM host scanning configuration
+	VmScanners *DefenderForContainersGcpOfferingVmScanners `pulumi:"vmScanners"`
 }
 
 // DefenderForContainersGcpOfferingInput is an input type that accepts DefenderForContainersGcpOfferingArgs and DefenderForContainersGcpOfferingOutput values.
@@ -9807,19 +13623,25 @@ type DefenderForContainersGcpOfferingInput interface {
 
 // The containers GCP offering
 type DefenderForContainersGcpOfferingArgs struct {
-	// Is audit logs data collection enabled
-	AuditLogsAutoProvisioningFlag pulumi.BoolPtrInput `pulumi:"auditLogsAutoProvisioningFlag"`
 	// The native cloud connection configuration
 	DataPipelineNativeCloudConnection DefenderForContainersGcpOfferingDataPipelineNativeCloudConnectionPtrInput `pulumi:"dataPipelineNativeCloudConnection"`
+	// Is audit logs data collection enabled
+	EnableAuditLogsAutoProvisioning pulumi.BoolPtrInput `pulumi:"enableAuditLogsAutoProvisioning"`
 	// Is Microsoft Defender for Cloud Kubernetes agent auto provisioning enabled
-	DefenderAgentAutoProvisioningFlag pulumi.BoolPtrInput `pulumi:"defenderAgentAutoProvisioningFlag"`
+	EnableDefenderAgentAutoProvisioning pulumi.BoolPtrInput `pulumi:"enableDefenderAgentAutoProvisioning"`
+	// Is Policy Kubernetes agent auto provisioning enabled
+	EnablePolicyAgentAutoProvisioning pulumi.BoolPtrInput `pulumi:"enablePolicyAgentAutoProvisioning"`
+	// The Microsoft Defender Container agentless discovery configuration
+	MdcContainersAgentlessDiscoveryK8s DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrInput `pulumi:"mdcContainersAgentlessDiscoveryK8s"`
+	// The Microsoft Defender Container image assessment configuration
+	MdcContainersImageAssessment DefenderForContainersGcpOfferingMdcContainersImageAssessmentPtrInput `pulumi:"mdcContainersImageAssessment"`
 	// The native cloud connection configuration
 	NativeCloudConnection DefenderForContainersGcpOfferingNativeCloudConnectionPtrInput `pulumi:"nativeCloudConnection"`
 	// The type of the security offering.
 	// Expected value is 'DefenderForContainersGcp'.
 	OfferingType pulumi.StringInput `pulumi:"offeringType"`
-	// Is Policy Kubernetes agent auto provisioning enabled
-	PolicyAgentAutoProvisioningFlag pulumi.BoolPtrInput `pulumi:"policyAgentAutoProvisioningFlag"`
+	// The Microsoft Defender for Container K8s VM host scanning configuration
+	VmScanners DefenderForContainersGcpOfferingVmScannersPtrInput `pulumi:"vmScanners"`
 }
 
 func (DefenderForContainersGcpOfferingArgs) ElementType() reflect.Type {
@@ -9849,11 +13671,6 @@ func (o DefenderForContainersGcpOfferingOutput) ToDefenderForContainersGcpOfferi
 	return o
 }
 
-// Is audit logs data collection enabled
-func (o DefenderForContainersGcpOfferingOutput) AuditLogsAutoProvisioningFlag() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v DefenderForContainersGcpOffering) *bool { return v.AuditLogsAutoProvisioningFlag }).(pulumi.BoolPtrOutput)
-}
-
 // The native cloud connection configuration
 func (o DefenderForContainersGcpOfferingOutput) DataPipelineNativeCloudConnection() DefenderForContainersGcpOfferingDataPipelineNativeCloudConnectionPtrOutput {
 	return o.ApplyT(func(v DefenderForContainersGcpOffering) *DefenderForContainersGcpOfferingDataPipelineNativeCloudConnection {
@@ -9861,9 +13678,33 @@ func (o DefenderForContainersGcpOfferingOutput) DataPipelineNativeCloudConnectio
 	}).(DefenderForContainersGcpOfferingDataPipelineNativeCloudConnectionPtrOutput)
 }
 
+// Is audit logs data collection enabled
+func (o DefenderForContainersGcpOfferingOutput) EnableAuditLogsAutoProvisioning() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersGcpOffering) *bool { return v.EnableAuditLogsAutoProvisioning }).(pulumi.BoolPtrOutput)
+}
+
 // Is Microsoft Defender for Cloud Kubernetes agent auto provisioning enabled
-func (o DefenderForContainersGcpOfferingOutput) DefenderAgentAutoProvisioningFlag() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v DefenderForContainersGcpOffering) *bool { return v.DefenderAgentAutoProvisioningFlag }).(pulumi.BoolPtrOutput)
+func (o DefenderForContainersGcpOfferingOutput) EnableDefenderAgentAutoProvisioning() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersGcpOffering) *bool { return v.EnableDefenderAgentAutoProvisioning }).(pulumi.BoolPtrOutput)
+}
+
+// Is Policy Kubernetes agent auto provisioning enabled
+func (o DefenderForContainersGcpOfferingOutput) EnablePolicyAgentAutoProvisioning() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersGcpOffering) *bool { return v.EnablePolicyAgentAutoProvisioning }).(pulumi.BoolPtrOutput)
+}
+
+// The Microsoft Defender Container agentless discovery configuration
+func (o DefenderForContainersGcpOfferingOutput) MdcContainersAgentlessDiscoveryK8s() DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersGcpOffering) *DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8s {
+		return v.MdcContainersAgentlessDiscoveryK8s
+	}).(DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput)
+}
+
+// The Microsoft Defender Container image assessment configuration
+func (o DefenderForContainersGcpOfferingOutput) MdcContainersImageAssessment() DefenderForContainersGcpOfferingMdcContainersImageAssessmentPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersGcpOffering) *DefenderForContainersGcpOfferingMdcContainersImageAssessment {
+		return v.MdcContainersImageAssessment
+	}).(DefenderForContainersGcpOfferingMdcContainersImageAssessmentPtrOutput)
 }
 
 // The native cloud connection configuration
@@ -9879,9 +13720,11 @@ func (o DefenderForContainersGcpOfferingOutput) OfferingType() pulumi.StringOutp
 	return o.ApplyT(func(v DefenderForContainersGcpOffering) string { return v.OfferingType }).(pulumi.StringOutput)
 }
 
-// Is Policy Kubernetes agent auto provisioning enabled
-func (o DefenderForContainersGcpOfferingOutput) PolicyAgentAutoProvisioningFlag() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v DefenderForContainersGcpOffering) *bool { return v.PolicyAgentAutoProvisioningFlag }).(pulumi.BoolPtrOutput)
+// The Microsoft Defender for Container K8s VM host scanning configuration
+func (o DefenderForContainersGcpOfferingOutput) VmScanners() DefenderForContainersGcpOfferingVmScannersPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersGcpOffering) *DefenderForContainersGcpOfferingVmScanners {
+		return v.VmScanners
+	}).(DefenderForContainersGcpOfferingVmScannersPtrOutput)
 }
 
 // The native cloud connection configuration
@@ -10040,6 +13883,370 @@ func (o DefenderForContainersGcpOfferingDataPipelineNativeCloudConnectionPtrOutp
 // The data collection GCP workload identity provider id for this offering
 func (o DefenderForContainersGcpOfferingDataPipelineNativeCloudConnectionPtrOutput) WorkloadIdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DefenderForContainersGcpOfferingDataPipelineNativeCloudConnection) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkloadIdentityProviderId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Microsoft Defender Container agentless discovery configuration
+type DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8s struct {
+	// Is Microsoft Defender container agentless discovery enabled
+	Enabled *bool `pulumi:"enabled"`
+	// The service account email address in GCP for this feature
+	ServiceAccountEmailAddress *string `pulumi:"serviceAccountEmailAddress"`
+	// The workload identity provider id in GCP for this feature
+	WorkloadIdentityProviderId *string `pulumi:"workloadIdentityProviderId"`
+}
+
+// DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sInput is an input type that accepts DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sArgs and DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sOutput values.
+// You can construct a concrete instance of `DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sInput` via:
+//
+//	DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sArgs{...}
+type DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sInput interface {
+	pulumi.Input
+
+	ToDefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sOutput() DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sOutput
+	ToDefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sOutputWithContext(context.Context) DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sOutput
+}
+
+// The Microsoft Defender Container agentless discovery configuration
+type DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sArgs struct {
+	// Is Microsoft Defender container agentless discovery enabled
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The service account email address in GCP for this feature
+	ServiceAccountEmailAddress pulumi.StringPtrInput `pulumi:"serviceAccountEmailAddress"`
+	// The workload identity provider id in GCP for this feature
+	WorkloadIdentityProviderId pulumi.StringPtrInput `pulumi:"workloadIdentityProviderId"`
+}
+
+func (DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8s)(nil)).Elem()
+}
+
+func (i DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sArgs) ToDefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sOutput() DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sOutput {
+	return i.ToDefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sOutputWithContext(context.Background())
+}
+
+func (i DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sArgs) ToDefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sOutputWithContext(ctx context.Context) DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sOutput)
+}
+
+func (i DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sArgs) ToDefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput() DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput {
+	return i.ToDefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutputWithContext(context.Background())
+}
+
+func (i DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sArgs) ToDefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutputWithContext(ctx context.Context) DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sOutput).ToDefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutputWithContext(ctx)
+}
+
+// DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrInput is an input type that accepts DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sArgs, DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sPtr and DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput values.
+// You can construct a concrete instance of `DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrInput` via:
+//
+//	        DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sArgs{...}
+//
+//	or:
+//
+//	        nil
+type DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrInput interface {
+	pulumi.Input
+
+	ToDefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput() DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput
+	ToDefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutputWithContext(context.Context) DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput
+}
+
+type defenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrType DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sArgs
+
+func DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sPtr(v *DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sArgs) DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrInput {
+	return (*defenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrType)(v)
+}
+
+func (*defenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8s)(nil)).Elem()
+}
+
+func (i *defenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrType) ToDefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput() DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput {
+	return i.ToDefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutputWithContext(context.Background())
+}
+
+func (i *defenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrType) ToDefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutputWithContext(ctx context.Context) DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput)
+}
+
+// The Microsoft Defender Container agentless discovery configuration
+type DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sOutput struct{ *pulumi.OutputState }
+
+func (DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8s)(nil)).Elem()
+}
+
+func (o DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sOutput) ToDefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sOutput() DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sOutput {
+	return o
+}
+
+func (o DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sOutput) ToDefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sOutputWithContext(ctx context.Context) DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sOutput {
+	return o
+}
+
+func (o DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sOutput) ToDefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput() DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput {
+	return o.ToDefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutputWithContext(context.Background())
+}
+
+func (o DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sOutput) ToDefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutputWithContext(ctx context.Context) DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8s) *DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8s {
+		return &v
+	}).(DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput)
+}
+
+// Is Microsoft Defender container agentless discovery enabled
+func (o DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8s) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The service account email address in GCP for this feature
+func (o DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sOutput) ServiceAccountEmailAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8s) *string {
+		return v.ServiceAccountEmailAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// The workload identity provider id in GCP for this feature
+func (o DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sOutput) WorkloadIdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8s) *string {
+		return v.WorkloadIdentityProviderId
+	}).(pulumi.StringPtrOutput)
+}
+
+type DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput struct{ *pulumi.OutputState }
+
+func (DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8s)(nil)).Elem()
+}
+
+func (o DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput) ToDefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput() DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput {
+	return o
+}
+
+func (o DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput) ToDefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutputWithContext(ctx context.Context) DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput {
+	return o
+}
+
+func (o DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput) Elem() DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sOutput {
+	return o.ApplyT(func(v *DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8s) DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8s {
+		if v != nil {
+			return *v
+		}
+		var ret DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8s
+		return ret
+	}).(DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sOutput)
+}
+
+// Is Microsoft Defender container agentless discovery enabled
+func (o DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8s) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The service account email address in GCP for this feature
+func (o DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput) ServiceAccountEmailAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8s) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountEmailAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// The workload identity provider id in GCP for this feature
+func (o DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput) WorkloadIdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8s) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkloadIdentityProviderId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Microsoft Defender Container image assessment configuration
+type DefenderForContainersGcpOfferingMdcContainersImageAssessment struct {
+	// Is Microsoft Defender container image assessment enabled
+	Enabled *bool `pulumi:"enabled"`
+	// The service account email address in GCP for this feature
+	ServiceAccountEmailAddress *string `pulumi:"serviceAccountEmailAddress"`
+	// The workload identity provider id in GCP for this feature
+	WorkloadIdentityProviderId *string `pulumi:"workloadIdentityProviderId"`
+}
+
+// DefenderForContainersGcpOfferingMdcContainersImageAssessmentInput is an input type that accepts DefenderForContainersGcpOfferingMdcContainersImageAssessmentArgs and DefenderForContainersGcpOfferingMdcContainersImageAssessmentOutput values.
+// You can construct a concrete instance of `DefenderForContainersGcpOfferingMdcContainersImageAssessmentInput` via:
+//
+//	DefenderForContainersGcpOfferingMdcContainersImageAssessmentArgs{...}
+type DefenderForContainersGcpOfferingMdcContainersImageAssessmentInput interface {
+	pulumi.Input
+
+	ToDefenderForContainersGcpOfferingMdcContainersImageAssessmentOutput() DefenderForContainersGcpOfferingMdcContainersImageAssessmentOutput
+	ToDefenderForContainersGcpOfferingMdcContainersImageAssessmentOutputWithContext(context.Context) DefenderForContainersGcpOfferingMdcContainersImageAssessmentOutput
+}
+
+// The Microsoft Defender Container image assessment configuration
+type DefenderForContainersGcpOfferingMdcContainersImageAssessmentArgs struct {
+	// Is Microsoft Defender container image assessment enabled
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The service account email address in GCP for this feature
+	ServiceAccountEmailAddress pulumi.StringPtrInput `pulumi:"serviceAccountEmailAddress"`
+	// The workload identity provider id in GCP for this feature
+	WorkloadIdentityProviderId pulumi.StringPtrInput `pulumi:"workloadIdentityProviderId"`
+}
+
+func (DefenderForContainersGcpOfferingMdcContainersImageAssessmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderForContainersGcpOfferingMdcContainersImageAssessment)(nil)).Elem()
+}
+
+func (i DefenderForContainersGcpOfferingMdcContainersImageAssessmentArgs) ToDefenderForContainersGcpOfferingMdcContainersImageAssessmentOutput() DefenderForContainersGcpOfferingMdcContainersImageAssessmentOutput {
+	return i.ToDefenderForContainersGcpOfferingMdcContainersImageAssessmentOutputWithContext(context.Background())
+}
+
+func (i DefenderForContainersGcpOfferingMdcContainersImageAssessmentArgs) ToDefenderForContainersGcpOfferingMdcContainersImageAssessmentOutputWithContext(ctx context.Context) DefenderForContainersGcpOfferingMdcContainersImageAssessmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderForContainersGcpOfferingMdcContainersImageAssessmentOutput)
+}
+
+func (i DefenderForContainersGcpOfferingMdcContainersImageAssessmentArgs) ToDefenderForContainersGcpOfferingMdcContainersImageAssessmentPtrOutput() DefenderForContainersGcpOfferingMdcContainersImageAssessmentPtrOutput {
+	return i.ToDefenderForContainersGcpOfferingMdcContainersImageAssessmentPtrOutputWithContext(context.Background())
+}
+
+func (i DefenderForContainersGcpOfferingMdcContainersImageAssessmentArgs) ToDefenderForContainersGcpOfferingMdcContainersImageAssessmentPtrOutputWithContext(ctx context.Context) DefenderForContainersGcpOfferingMdcContainersImageAssessmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderForContainersGcpOfferingMdcContainersImageAssessmentOutput).ToDefenderForContainersGcpOfferingMdcContainersImageAssessmentPtrOutputWithContext(ctx)
+}
+
+// DefenderForContainersGcpOfferingMdcContainersImageAssessmentPtrInput is an input type that accepts DefenderForContainersGcpOfferingMdcContainersImageAssessmentArgs, DefenderForContainersGcpOfferingMdcContainersImageAssessmentPtr and DefenderForContainersGcpOfferingMdcContainersImageAssessmentPtrOutput values.
+// You can construct a concrete instance of `DefenderForContainersGcpOfferingMdcContainersImageAssessmentPtrInput` via:
+//
+//	        DefenderForContainersGcpOfferingMdcContainersImageAssessmentArgs{...}
+//
+//	or:
+//
+//	        nil
+type DefenderForContainersGcpOfferingMdcContainersImageAssessmentPtrInput interface {
+	pulumi.Input
+
+	ToDefenderForContainersGcpOfferingMdcContainersImageAssessmentPtrOutput() DefenderForContainersGcpOfferingMdcContainersImageAssessmentPtrOutput
+	ToDefenderForContainersGcpOfferingMdcContainersImageAssessmentPtrOutputWithContext(context.Context) DefenderForContainersGcpOfferingMdcContainersImageAssessmentPtrOutput
+}
+
+type defenderForContainersGcpOfferingMdcContainersImageAssessmentPtrType DefenderForContainersGcpOfferingMdcContainersImageAssessmentArgs
+
+func DefenderForContainersGcpOfferingMdcContainersImageAssessmentPtr(v *DefenderForContainersGcpOfferingMdcContainersImageAssessmentArgs) DefenderForContainersGcpOfferingMdcContainersImageAssessmentPtrInput {
+	return (*defenderForContainersGcpOfferingMdcContainersImageAssessmentPtrType)(v)
+}
+
+func (*defenderForContainersGcpOfferingMdcContainersImageAssessmentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderForContainersGcpOfferingMdcContainersImageAssessment)(nil)).Elem()
+}
+
+func (i *defenderForContainersGcpOfferingMdcContainersImageAssessmentPtrType) ToDefenderForContainersGcpOfferingMdcContainersImageAssessmentPtrOutput() DefenderForContainersGcpOfferingMdcContainersImageAssessmentPtrOutput {
+	return i.ToDefenderForContainersGcpOfferingMdcContainersImageAssessmentPtrOutputWithContext(context.Background())
+}
+
+func (i *defenderForContainersGcpOfferingMdcContainersImageAssessmentPtrType) ToDefenderForContainersGcpOfferingMdcContainersImageAssessmentPtrOutputWithContext(ctx context.Context) DefenderForContainersGcpOfferingMdcContainersImageAssessmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderForContainersGcpOfferingMdcContainersImageAssessmentPtrOutput)
+}
+
+// The Microsoft Defender Container image assessment configuration
+type DefenderForContainersGcpOfferingMdcContainersImageAssessmentOutput struct{ *pulumi.OutputState }
+
+func (DefenderForContainersGcpOfferingMdcContainersImageAssessmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderForContainersGcpOfferingMdcContainersImageAssessment)(nil)).Elem()
+}
+
+func (o DefenderForContainersGcpOfferingMdcContainersImageAssessmentOutput) ToDefenderForContainersGcpOfferingMdcContainersImageAssessmentOutput() DefenderForContainersGcpOfferingMdcContainersImageAssessmentOutput {
+	return o
+}
+
+func (o DefenderForContainersGcpOfferingMdcContainersImageAssessmentOutput) ToDefenderForContainersGcpOfferingMdcContainersImageAssessmentOutputWithContext(ctx context.Context) DefenderForContainersGcpOfferingMdcContainersImageAssessmentOutput {
+	return o
+}
+
+func (o DefenderForContainersGcpOfferingMdcContainersImageAssessmentOutput) ToDefenderForContainersGcpOfferingMdcContainersImageAssessmentPtrOutput() DefenderForContainersGcpOfferingMdcContainersImageAssessmentPtrOutput {
+	return o.ToDefenderForContainersGcpOfferingMdcContainersImageAssessmentPtrOutputWithContext(context.Background())
+}
+
+func (o DefenderForContainersGcpOfferingMdcContainersImageAssessmentOutput) ToDefenderForContainersGcpOfferingMdcContainersImageAssessmentPtrOutputWithContext(ctx context.Context) DefenderForContainersGcpOfferingMdcContainersImageAssessmentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefenderForContainersGcpOfferingMdcContainersImageAssessment) *DefenderForContainersGcpOfferingMdcContainersImageAssessment {
+		return &v
+	}).(DefenderForContainersGcpOfferingMdcContainersImageAssessmentPtrOutput)
+}
+
+// Is Microsoft Defender container image assessment enabled
+func (o DefenderForContainersGcpOfferingMdcContainersImageAssessmentOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersGcpOfferingMdcContainersImageAssessment) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The service account email address in GCP for this feature
+func (o DefenderForContainersGcpOfferingMdcContainersImageAssessmentOutput) ServiceAccountEmailAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersGcpOfferingMdcContainersImageAssessment) *string {
+		return v.ServiceAccountEmailAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// The workload identity provider id in GCP for this feature
+func (o DefenderForContainersGcpOfferingMdcContainersImageAssessmentOutput) WorkloadIdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersGcpOfferingMdcContainersImageAssessment) *string {
+		return v.WorkloadIdentityProviderId
+	}).(pulumi.StringPtrOutput)
+}
+
+type DefenderForContainersGcpOfferingMdcContainersImageAssessmentPtrOutput struct{ *pulumi.OutputState }
+
+func (DefenderForContainersGcpOfferingMdcContainersImageAssessmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderForContainersGcpOfferingMdcContainersImageAssessment)(nil)).Elem()
+}
+
+func (o DefenderForContainersGcpOfferingMdcContainersImageAssessmentPtrOutput) ToDefenderForContainersGcpOfferingMdcContainersImageAssessmentPtrOutput() DefenderForContainersGcpOfferingMdcContainersImageAssessmentPtrOutput {
+	return o
+}
+
+func (o DefenderForContainersGcpOfferingMdcContainersImageAssessmentPtrOutput) ToDefenderForContainersGcpOfferingMdcContainersImageAssessmentPtrOutputWithContext(ctx context.Context) DefenderForContainersGcpOfferingMdcContainersImageAssessmentPtrOutput {
+	return o
+}
+
+func (o DefenderForContainersGcpOfferingMdcContainersImageAssessmentPtrOutput) Elem() DefenderForContainersGcpOfferingMdcContainersImageAssessmentOutput {
+	return o.ApplyT(func(v *DefenderForContainersGcpOfferingMdcContainersImageAssessment) DefenderForContainersGcpOfferingMdcContainersImageAssessment {
+		if v != nil {
+			return *v
+		}
+		var ret DefenderForContainersGcpOfferingMdcContainersImageAssessment
+		return ret
+	}).(DefenderForContainersGcpOfferingMdcContainersImageAssessmentOutput)
+}
+
+// Is Microsoft Defender container image assessment enabled
+func (o DefenderForContainersGcpOfferingMdcContainersImageAssessmentPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DefenderForContainersGcpOfferingMdcContainersImageAssessment) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The service account email address in GCP for this feature
+func (o DefenderForContainersGcpOfferingMdcContainersImageAssessmentPtrOutput) ServiceAccountEmailAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenderForContainersGcpOfferingMdcContainersImageAssessment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountEmailAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// The workload identity provider id in GCP for this feature
+func (o DefenderForContainersGcpOfferingMdcContainersImageAssessmentPtrOutput) WorkloadIdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenderForContainersGcpOfferingMdcContainersImageAssessment) *string {
 		if v == nil {
 			return nil
 		}
@@ -10212,21 +14419,27 @@ func (o DefenderForContainersGcpOfferingNativeCloudConnectionPtrOutput) Workload
 
 // The containers GCP offering
 type DefenderForContainersGcpOfferingResponse struct {
-	// Is audit logs data collection enabled
-	AuditLogsAutoProvisioningFlag *bool `pulumi:"auditLogsAutoProvisioningFlag"`
 	// The native cloud connection configuration
 	DataPipelineNativeCloudConnection *DefenderForContainersGcpOfferingResponseDataPipelineNativeCloudConnection `pulumi:"dataPipelineNativeCloudConnection"`
-	// Is Microsoft Defender for Cloud Kubernetes agent auto provisioning enabled
-	DefenderAgentAutoProvisioningFlag *bool `pulumi:"defenderAgentAutoProvisioningFlag"`
 	// The offering description.
 	Description string `pulumi:"description"`
+	// Is audit logs data collection enabled
+	EnableAuditLogsAutoProvisioning *bool `pulumi:"enableAuditLogsAutoProvisioning"`
+	// Is Microsoft Defender for Cloud Kubernetes agent auto provisioning enabled
+	EnableDefenderAgentAutoProvisioning *bool `pulumi:"enableDefenderAgentAutoProvisioning"`
+	// Is Policy Kubernetes agent auto provisioning enabled
+	EnablePolicyAgentAutoProvisioning *bool `pulumi:"enablePolicyAgentAutoProvisioning"`
+	// The Microsoft Defender Container agentless discovery configuration
+	MdcContainersAgentlessDiscoveryK8s *DefenderForContainersGcpOfferingResponseMdcContainersAgentlessDiscoveryK8s `pulumi:"mdcContainersAgentlessDiscoveryK8s"`
+	// The Microsoft Defender Container image assessment configuration
+	MdcContainersImageAssessment *DefenderForContainersGcpOfferingResponseMdcContainersImageAssessment `pulumi:"mdcContainersImageAssessment"`
 	// The native cloud connection configuration
 	NativeCloudConnection *DefenderForContainersGcpOfferingResponseNativeCloudConnection `pulumi:"nativeCloudConnection"`
 	// The type of the security offering.
 	// Expected value is 'DefenderForContainersGcp'.
 	OfferingType string `pulumi:"offeringType"`
-	// Is Policy Kubernetes agent auto provisioning enabled
-	PolicyAgentAutoProvisioningFlag *bool `pulumi:"policyAgentAutoProvisioningFlag"`
+	// The Microsoft Defender for Container K8s VM host scanning configuration
+	VmScanners *DefenderForContainersGcpOfferingResponseVmScanners `pulumi:"vmScanners"`
 }
 
 // The containers GCP offering
@@ -10244,11 +14457,6 @@ func (o DefenderForContainersGcpOfferingResponseOutput) ToDefenderForContainersG
 	return o
 }
 
-// Is audit logs data collection enabled
-func (o DefenderForContainersGcpOfferingResponseOutput) AuditLogsAutoProvisioningFlag() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v DefenderForContainersGcpOfferingResponse) *bool { return v.AuditLogsAutoProvisioningFlag }).(pulumi.BoolPtrOutput)
-}
-
 // The native cloud connection configuration
 func (o DefenderForContainersGcpOfferingResponseOutput) DataPipelineNativeCloudConnection() DefenderForContainersGcpOfferingResponseDataPipelineNativeCloudConnectionPtrOutput {
 	return o.ApplyT(func(v DefenderForContainersGcpOfferingResponse) *DefenderForContainersGcpOfferingResponseDataPipelineNativeCloudConnection {
@@ -10256,14 +14464,38 @@ func (o DefenderForContainersGcpOfferingResponseOutput) DataPipelineNativeCloudC
 	}).(DefenderForContainersGcpOfferingResponseDataPipelineNativeCloudConnectionPtrOutput)
 }
 
-// Is Microsoft Defender for Cloud Kubernetes agent auto provisioning enabled
-func (o DefenderForContainersGcpOfferingResponseOutput) DefenderAgentAutoProvisioningFlag() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v DefenderForContainersGcpOfferingResponse) *bool { return v.DefenderAgentAutoProvisioningFlag }).(pulumi.BoolPtrOutput)
-}
-
 // The offering description.
 func (o DefenderForContainersGcpOfferingResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v DefenderForContainersGcpOfferingResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Is audit logs data collection enabled
+func (o DefenderForContainersGcpOfferingResponseOutput) EnableAuditLogsAutoProvisioning() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersGcpOfferingResponse) *bool { return v.EnableAuditLogsAutoProvisioning }).(pulumi.BoolPtrOutput)
+}
+
+// Is Microsoft Defender for Cloud Kubernetes agent auto provisioning enabled
+func (o DefenderForContainersGcpOfferingResponseOutput) EnableDefenderAgentAutoProvisioning() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersGcpOfferingResponse) *bool { return v.EnableDefenderAgentAutoProvisioning }).(pulumi.BoolPtrOutput)
+}
+
+// Is Policy Kubernetes agent auto provisioning enabled
+func (o DefenderForContainersGcpOfferingResponseOutput) EnablePolicyAgentAutoProvisioning() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersGcpOfferingResponse) *bool { return v.EnablePolicyAgentAutoProvisioning }).(pulumi.BoolPtrOutput)
+}
+
+// The Microsoft Defender Container agentless discovery configuration
+func (o DefenderForContainersGcpOfferingResponseOutput) MdcContainersAgentlessDiscoveryK8s() DefenderForContainersGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersGcpOfferingResponse) *DefenderForContainersGcpOfferingResponseMdcContainersAgentlessDiscoveryK8s {
+		return v.MdcContainersAgentlessDiscoveryK8s
+	}).(DefenderForContainersGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput)
+}
+
+// The Microsoft Defender Container image assessment configuration
+func (o DefenderForContainersGcpOfferingResponseOutput) MdcContainersImageAssessment() DefenderForContainersGcpOfferingResponseMdcContainersImageAssessmentPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersGcpOfferingResponse) *DefenderForContainersGcpOfferingResponseMdcContainersImageAssessment {
+		return v.MdcContainersImageAssessment
+	}).(DefenderForContainersGcpOfferingResponseMdcContainersImageAssessmentPtrOutput)
 }
 
 // The native cloud connection configuration
@@ -10279,9 +14511,11 @@ func (o DefenderForContainersGcpOfferingResponseOutput) OfferingType() pulumi.St
 	return o.ApplyT(func(v DefenderForContainersGcpOfferingResponse) string { return v.OfferingType }).(pulumi.StringOutput)
 }
 
-// Is Policy Kubernetes agent auto provisioning enabled
-func (o DefenderForContainersGcpOfferingResponseOutput) PolicyAgentAutoProvisioningFlag() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v DefenderForContainersGcpOfferingResponse) *bool { return v.PolicyAgentAutoProvisioningFlag }).(pulumi.BoolPtrOutput)
+// The Microsoft Defender for Container K8s VM host scanning configuration
+func (o DefenderForContainersGcpOfferingResponseOutput) VmScanners() DefenderForContainersGcpOfferingResponseVmScannersPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersGcpOfferingResponse) *DefenderForContainersGcpOfferingResponseVmScanners {
+		return v.VmScanners
+	}).(DefenderForContainersGcpOfferingResponseVmScannersPtrOutput)
 }
 
 // The native cloud connection configuration
@@ -10358,6 +14592,204 @@ func (o DefenderForContainersGcpOfferingResponseDataPipelineNativeCloudConnectio
 // The data collection GCP workload identity provider id for this offering
 func (o DefenderForContainersGcpOfferingResponseDataPipelineNativeCloudConnectionPtrOutput) WorkloadIdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DefenderForContainersGcpOfferingResponseDataPipelineNativeCloudConnection) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkloadIdentityProviderId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Microsoft Defender Container agentless discovery configuration
+type DefenderForContainersGcpOfferingResponseMdcContainersAgentlessDiscoveryK8s struct {
+	// Is Microsoft Defender container agentless discovery enabled
+	Enabled *bool `pulumi:"enabled"`
+	// The service account email address in GCP for this feature
+	ServiceAccountEmailAddress *string `pulumi:"serviceAccountEmailAddress"`
+	// The workload identity provider id in GCP for this feature
+	WorkloadIdentityProviderId *string `pulumi:"workloadIdentityProviderId"`
+}
+
+// The Microsoft Defender Container agentless discovery configuration
+type DefenderForContainersGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sOutput struct{ *pulumi.OutputState }
+
+func (DefenderForContainersGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderForContainersGcpOfferingResponseMdcContainersAgentlessDiscoveryK8s)(nil)).Elem()
+}
+
+func (o DefenderForContainersGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sOutput) ToDefenderForContainersGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sOutput() DefenderForContainersGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sOutput {
+	return o
+}
+
+func (o DefenderForContainersGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sOutput) ToDefenderForContainersGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sOutputWithContext(ctx context.Context) DefenderForContainersGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sOutput {
+	return o
+}
+
+// Is Microsoft Defender container agentless discovery enabled
+func (o DefenderForContainersGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersGcpOfferingResponseMdcContainersAgentlessDiscoveryK8s) *bool {
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The service account email address in GCP for this feature
+func (o DefenderForContainersGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sOutput) ServiceAccountEmailAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersGcpOfferingResponseMdcContainersAgentlessDiscoveryK8s) *string {
+		return v.ServiceAccountEmailAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// The workload identity provider id in GCP for this feature
+func (o DefenderForContainersGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sOutput) WorkloadIdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersGcpOfferingResponseMdcContainersAgentlessDiscoveryK8s) *string {
+		return v.WorkloadIdentityProviderId
+	}).(pulumi.StringPtrOutput)
+}
+
+type DefenderForContainersGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput struct{ *pulumi.OutputState }
+
+func (DefenderForContainersGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderForContainersGcpOfferingResponseMdcContainersAgentlessDiscoveryK8s)(nil)).Elem()
+}
+
+func (o DefenderForContainersGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput) ToDefenderForContainersGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput() DefenderForContainersGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput {
+	return o
+}
+
+func (o DefenderForContainersGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput) ToDefenderForContainersGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutputWithContext(ctx context.Context) DefenderForContainersGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput {
+	return o
+}
+
+func (o DefenderForContainersGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput) Elem() DefenderForContainersGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sOutput {
+	return o.ApplyT(func(v *DefenderForContainersGcpOfferingResponseMdcContainersAgentlessDiscoveryK8s) DefenderForContainersGcpOfferingResponseMdcContainersAgentlessDiscoveryK8s {
+		if v != nil {
+			return *v
+		}
+		var ret DefenderForContainersGcpOfferingResponseMdcContainersAgentlessDiscoveryK8s
+		return ret
+	}).(DefenderForContainersGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sOutput)
+}
+
+// Is Microsoft Defender container agentless discovery enabled
+func (o DefenderForContainersGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DefenderForContainersGcpOfferingResponseMdcContainersAgentlessDiscoveryK8s) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The service account email address in GCP for this feature
+func (o DefenderForContainersGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput) ServiceAccountEmailAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenderForContainersGcpOfferingResponseMdcContainersAgentlessDiscoveryK8s) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountEmailAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// The workload identity provider id in GCP for this feature
+func (o DefenderForContainersGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput) WorkloadIdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenderForContainersGcpOfferingResponseMdcContainersAgentlessDiscoveryK8s) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkloadIdentityProviderId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Microsoft Defender Container image assessment configuration
+type DefenderForContainersGcpOfferingResponseMdcContainersImageAssessment struct {
+	// Is Microsoft Defender container image assessment enabled
+	Enabled *bool `pulumi:"enabled"`
+	// The service account email address in GCP for this feature
+	ServiceAccountEmailAddress *string `pulumi:"serviceAccountEmailAddress"`
+	// The workload identity provider id in GCP for this feature
+	WorkloadIdentityProviderId *string `pulumi:"workloadIdentityProviderId"`
+}
+
+// The Microsoft Defender Container image assessment configuration
+type DefenderForContainersGcpOfferingResponseMdcContainersImageAssessmentOutput struct{ *pulumi.OutputState }
+
+func (DefenderForContainersGcpOfferingResponseMdcContainersImageAssessmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderForContainersGcpOfferingResponseMdcContainersImageAssessment)(nil)).Elem()
+}
+
+func (o DefenderForContainersGcpOfferingResponseMdcContainersImageAssessmentOutput) ToDefenderForContainersGcpOfferingResponseMdcContainersImageAssessmentOutput() DefenderForContainersGcpOfferingResponseMdcContainersImageAssessmentOutput {
+	return o
+}
+
+func (o DefenderForContainersGcpOfferingResponseMdcContainersImageAssessmentOutput) ToDefenderForContainersGcpOfferingResponseMdcContainersImageAssessmentOutputWithContext(ctx context.Context) DefenderForContainersGcpOfferingResponseMdcContainersImageAssessmentOutput {
+	return o
+}
+
+// Is Microsoft Defender container image assessment enabled
+func (o DefenderForContainersGcpOfferingResponseMdcContainersImageAssessmentOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersGcpOfferingResponseMdcContainersImageAssessment) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The service account email address in GCP for this feature
+func (o DefenderForContainersGcpOfferingResponseMdcContainersImageAssessmentOutput) ServiceAccountEmailAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersGcpOfferingResponseMdcContainersImageAssessment) *string {
+		return v.ServiceAccountEmailAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// The workload identity provider id in GCP for this feature
+func (o DefenderForContainersGcpOfferingResponseMdcContainersImageAssessmentOutput) WorkloadIdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersGcpOfferingResponseMdcContainersImageAssessment) *string {
+		return v.WorkloadIdentityProviderId
+	}).(pulumi.StringPtrOutput)
+}
+
+type DefenderForContainersGcpOfferingResponseMdcContainersImageAssessmentPtrOutput struct{ *pulumi.OutputState }
+
+func (DefenderForContainersGcpOfferingResponseMdcContainersImageAssessmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderForContainersGcpOfferingResponseMdcContainersImageAssessment)(nil)).Elem()
+}
+
+func (o DefenderForContainersGcpOfferingResponseMdcContainersImageAssessmentPtrOutput) ToDefenderForContainersGcpOfferingResponseMdcContainersImageAssessmentPtrOutput() DefenderForContainersGcpOfferingResponseMdcContainersImageAssessmentPtrOutput {
+	return o
+}
+
+func (o DefenderForContainersGcpOfferingResponseMdcContainersImageAssessmentPtrOutput) ToDefenderForContainersGcpOfferingResponseMdcContainersImageAssessmentPtrOutputWithContext(ctx context.Context) DefenderForContainersGcpOfferingResponseMdcContainersImageAssessmentPtrOutput {
+	return o
+}
+
+func (o DefenderForContainersGcpOfferingResponseMdcContainersImageAssessmentPtrOutput) Elem() DefenderForContainersGcpOfferingResponseMdcContainersImageAssessmentOutput {
+	return o.ApplyT(func(v *DefenderForContainersGcpOfferingResponseMdcContainersImageAssessment) DefenderForContainersGcpOfferingResponseMdcContainersImageAssessment {
+		if v != nil {
+			return *v
+		}
+		var ret DefenderForContainersGcpOfferingResponseMdcContainersImageAssessment
+		return ret
+	}).(DefenderForContainersGcpOfferingResponseMdcContainersImageAssessmentOutput)
+}
+
+// Is Microsoft Defender container image assessment enabled
+func (o DefenderForContainersGcpOfferingResponseMdcContainersImageAssessmentPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DefenderForContainersGcpOfferingResponseMdcContainersImageAssessment) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The service account email address in GCP for this feature
+func (o DefenderForContainersGcpOfferingResponseMdcContainersImageAssessmentPtrOutput) ServiceAccountEmailAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenderForContainersGcpOfferingResponseMdcContainersImageAssessment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountEmailAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// The workload identity provider id in GCP for this feature
+func (o DefenderForContainersGcpOfferingResponseMdcContainersImageAssessmentPtrOutput) WorkloadIdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenderForContainersGcpOfferingResponseMdcContainersImageAssessment) *string {
 		if v == nil {
 			return nil
 		}
@@ -10446,6 +14878,339 @@ func (o DefenderForContainersGcpOfferingResponseNativeCloudConnectionPtrOutput) 
 	}).(pulumi.StringPtrOutput)
 }
 
+// The Microsoft Defender for Container K8s VM host scanning configuration
+type DefenderForContainersGcpOfferingResponseVmScanners struct {
+	// Configuration for VM scanning
+	Configuration *VmScannersBaseResponseConfiguration `pulumi:"configuration"`
+	// Is VM scanning enabled
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// The Microsoft Defender for Container K8s VM host scanning configuration
+type DefenderForContainersGcpOfferingResponseVmScannersOutput struct{ *pulumi.OutputState }
+
+func (DefenderForContainersGcpOfferingResponseVmScannersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderForContainersGcpOfferingResponseVmScanners)(nil)).Elem()
+}
+
+func (o DefenderForContainersGcpOfferingResponseVmScannersOutput) ToDefenderForContainersGcpOfferingResponseVmScannersOutput() DefenderForContainersGcpOfferingResponseVmScannersOutput {
+	return o
+}
+
+func (o DefenderForContainersGcpOfferingResponseVmScannersOutput) ToDefenderForContainersGcpOfferingResponseVmScannersOutputWithContext(ctx context.Context) DefenderForContainersGcpOfferingResponseVmScannersOutput {
+	return o
+}
+
+// Configuration for VM scanning
+func (o DefenderForContainersGcpOfferingResponseVmScannersOutput) Configuration() VmScannersBaseResponseConfigurationPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersGcpOfferingResponseVmScanners) *VmScannersBaseResponseConfiguration {
+		return v.Configuration
+	}).(VmScannersBaseResponseConfigurationPtrOutput)
+}
+
+// Is VM scanning enabled
+func (o DefenderForContainersGcpOfferingResponseVmScannersOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersGcpOfferingResponseVmScanners) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type DefenderForContainersGcpOfferingResponseVmScannersPtrOutput struct{ *pulumi.OutputState }
+
+func (DefenderForContainersGcpOfferingResponseVmScannersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderForContainersGcpOfferingResponseVmScanners)(nil)).Elem()
+}
+
+func (o DefenderForContainersGcpOfferingResponseVmScannersPtrOutput) ToDefenderForContainersGcpOfferingResponseVmScannersPtrOutput() DefenderForContainersGcpOfferingResponseVmScannersPtrOutput {
+	return o
+}
+
+func (o DefenderForContainersGcpOfferingResponseVmScannersPtrOutput) ToDefenderForContainersGcpOfferingResponseVmScannersPtrOutputWithContext(ctx context.Context) DefenderForContainersGcpOfferingResponseVmScannersPtrOutput {
+	return o
+}
+
+func (o DefenderForContainersGcpOfferingResponseVmScannersPtrOutput) Elem() DefenderForContainersGcpOfferingResponseVmScannersOutput {
+	return o.ApplyT(func(v *DefenderForContainersGcpOfferingResponseVmScanners) DefenderForContainersGcpOfferingResponseVmScanners {
+		if v != nil {
+			return *v
+		}
+		var ret DefenderForContainersGcpOfferingResponseVmScanners
+		return ret
+	}).(DefenderForContainersGcpOfferingResponseVmScannersOutput)
+}
+
+// Configuration for VM scanning
+func (o DefenderForContainersGcpOfferingResponseVmScannersPtrOutput) Configuration() VmScannersBaseResponseConfigurationPtrOutput {
+	return o.ApplyT(func(v *DefenderForContainersGcpOfferingResponseVmScanners) *VmScannersBaseResponseConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.Configuration
+	}).(VmScannersBaseResponseConfigurationPtrOutput)
+}
+
+// Is VM scanning enabled
+func (o DefenderForContainersGcpOfferingResponseVmScannersPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DefenderForContainersGcpOfferingResponseVmScanners) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The Microsoft Defender for Container K8s VM host scanning configuration
+type DefenderForContainersGcpOfferingVmScanners struct {
+	// Configuration for VM scanning
+	Configuration *VmScannersBaseConfiguration `pulumi:"configuration"`
+	// Is VM scanning enabled
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// DefenderForContainersGcpOfferingVmScannersInput is an input type that accepts DefenderForContainersGcpOfferingVmScannersArgs and DefenderForContainersGcpOfferingVmScannersOutput values.
+// You can construct a concrete instance of `DefenderForContainersGcpOfferingVmScannersInput` via:
+//
+//	DefenderForContainersGcpOfferingVmScannersArgs{...}
+type DefenderForContainersGcpOfferingVmScannersInput interface {
+	pulumi.Input
+
+	ToDefenderForContainersGcpOfferingVmScannersOutput() DefenderForContainersGcpOfferingVmScannersOutput
+	ToDefenderForContainersGcpOfferingVmScannersOutputWithContext(context.Context) DefenderForContainersGcpOfferingVmScannersOutput
+}
+
+// The Microsoft Defender for Container K8s VM host scanning configuration
+type DefenderForContainersGcpOfferingVmScannersArgs struct {
+	// Configuration for VM scanning
+	Configuration VmScannersBaseConfigurationPtrInput `pulumi:"configuration"`
+	// Is VM scanning enabled
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (DefenderForContainersGcpOfferingVmScannersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderForContainersGcpOfferingVmScanners)(nil)).Elem()
+}
+
+func (i DefenderForContainersGcpOfferingVmScannersArgs) ToDefenderForContainersGcpOfferingVmScannersOutput() DefenderForContainersGcpOfferingVmScannersOutput {
+	return i.ToDefenderForContainersGcpOfferingVmScannersOutputWithContext(context.Background())
+}
+
+func (i DefenderForContainersGcpOfferingVmScannersArgs) ToDefenderForContainersGcpOfferingVmScannersOutputWithContext(ctx context.Context) DefenderForContainersGcpOfferingVmScannersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderForContainersGcpOfferingVmScannersOutput)
+}
+
+func (i DefenderForContainersGcpOfferingVmScannersArgs) ToDefenderForContainersGcpOfferingVmScannersPtrOutput() DefenderForContainersGcpOfferingVmScannersPtrOutput {
+	return i.ToDefenderForContainersGcpOfferingVmScannersPtrOutputWithContext(context.Background())
+}
+
+func (i DefenderForContainersGcpOfferingVmScannersArgs) ToDefenderForContainersGcpOfferingVmScannersPtrOutputWithContext(ctx context.Context) DefenderForContainersGcpOfferingVmScannersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderForContainersGcpOfferingVmScannersOutput).ToDefenderForContainersGcpOfferingVmScannersPtrOutputWithContext(ctx)
+}
+
+// DefenderForContainersGcpOfferingVmScannersPtrInput is an input type that accepts DefenderForContainersGcpOfferingVmScannersArgs, DefenderForContainersGcpOfferingVmScannersPtr and DefenderForContainersGcpOfferingVmScannersPtrOutput values.
+// You can construct a concrete instance of `DefenderForContainersGcpOfferingVmScannersPtrInput` via:
+//
+//	        DefenderForContainersGcpOfferingVmScannersArgs{...}
+//
+//	or:
+//
+//	        nil
+type DefenderForContainersGcpOfferingVmScannersPtrInput interface {
+	pulumi.Input
+
+	ToDefenderForContainersGcpOfferingVmScannersPtrOutput() DefenderForContainersGcpOfferingVmScannersPtrOutput
+	ToDefenderForContainersGcpOfferingVmScannersPtrOutputWithContext(context.Context) DefenderForContainersGcpOfferingVmScannersPtrOutput
+}
+
+type defenderForContainersGcpOfferingVmScannersPtrType DefenderForContainersGcpOfferingVmScannersArgs
+
+func DefenderForContainersGcpOfferingVmScannersPtr(v *DefenderForContainersGcpOfferingVmScannersArgs) DefenderForContainersGcpOfferingVmScannersPtrInput {
+	return (*defenderForContainersGcpOfferingVmScannersPtrType)(v)
+}
+
+func (*defenderForContainersGcpOfferingVmScannersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderForContainersGcpOfferingVmScanners)(nil)).Elem()
+}
+
+func (i *defenderForContainersGcpOfferingVmScannersPtrType) ToDefenderForContainersGcpOfferingVmScannersPtrOutput() DefenderForContainersGcpOfferingVmScannersPtrOutput {
+	return i.ToDefenderForContainersGcpOfferingVmScannersPtrOutputWithContext(context.Background())
+}
+
+func (i *defenderForContainersGcpOfferingVmScannersPtrType) ToDefenderForContainersGcpOfferingVmScannersPtrOutputWithContext(ctx context.Context) DefenderForContainersGcpOfferingVmScannersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderForContainersGcpOfferingVmScannersPtrOutput)
+}
+
+// The Microsoft Defender for Container K8s VM host scanning configuration
+type DefenderForContainersGcpOfferingVmScannersOutput struct{ *pulumi.OutputState }
+
+func (DefenderForContainersGcpOfferingVmScannersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderForContainersGcpOfferingVmScanners)(nil)).Elem()
+}
+
+func (o DefenderForContainersGcpOfferingVmScannersOutput) ToDefenderForContainersGcpOfferingVmScannersOutput() DefenderForContainersGcpOfferingVmScannersOutput {
+	return o
+}
+
+func (o DefenderForContainersGcpOfferingVmScannersOutput) ToDefenderForContainersGcpOfferingVmScannersOutputWithContext(ctx context.Context) DefenderForContainersGcpOfferingVmScannersOutput {
+	return o
+}
+
+func (o DefenderForContainersGcpOfferingVmScannersOutput) ToDefenderForContainersGcpOfferingVmScannersPtrOutput() DefenderForContainersGcpOfferingVmScannersPtrOutput {
+	return o.ToDefenderForContainersGcpOfferingVmScannersPtrOutputWithContext(context.Background())
+}
+
+func (o DefenderForContainersGcpOfferingVmScannersOutput) ToDefenderForContainersGcpOfferingVmScannersPtrOutputWithContext(ctx context.Context) DefenderForContainersGcpOfferingVmScannersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefenderForContainersGcpOfferingVmScanners) *DefenderForContainersGcpOfferingVmScanners {
+		return &v
+	}).(DefenderForContainersGcpOfferingVmScannersPtrOutput)
+}
+
+// Configuration for VM scanning
+func (o DefenderForContainersGcpOfferingVmScannersOutput) Configuration() VmScannersBaseConfigurationPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersGcpOfferingVmScanners) *VmScannersBaseConfiguration {
+		return v.Configuration
+	}).(VmScannersBaseConfigurationPtrOutput)
+}
+
+// Is VM scanning enabled
+func (o DefenderForContainersGcpOfferingVmScannersOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DefenderForContainersGcpOfferingVmScanners) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type DefenderForContainersGcpOfferingVmScannersPtrOutput struct{ *pulumi.OutputState }
+
+func (DefenderForContainersGcpOfferingVmScannersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderForContainersGcpOfferingVmScanners)(nil)).Elem()
+}
+
+func (o DefenderForContainersGcpOfferingVmScannersPtrOutput) ToDefenderForContainersGcpOfferingVmScannersPtrOutput() DefenderForContainersGcpOfferingVmScannersPtrOutput {
+	return o
+}
+
+func (o DefenderForContainersGcpOfferingVmScannersPtrOutput) ToDefenderForContainersGcpOfferingVmScannersPtrOutputWithContext(ctx context.Context) DefenderForContainersGcpOfferingVmScannersPtrOutput {
+	return o
+}
+
+func (o DefenderForContainersGcpOfferingVmScannersPtrOutput) Elem() DefenderForContainersGcpOfferingVmScannersOutput {
+	return o.ApplyT(func(v *DefenderForContainersGcpOfferingVmScanners) DefenderForContainersGcpOfferingVmScanners {
+		if v != nil {
+			return *v
+		}
+		var ret DefenderForContainersGcpOfferingVmScanners
+		return ret
+	}).(DefenderForContainersGcpOfferingVmScannersOutput)
+}
+
+// Configuration for VM scanning
+func (o DefenderForContainersGcpOfferingVmScannersPtrOutput) Configuration() VmScannersBaseConfigurationPtrOutput {
+	return o.ApplyT(func(v *DefenderForContainersGcpOfferingVmScanners) *VmScannersBaseConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.Configuration
+	}).(VmScannersBaseConfigurationPtrOutput)
+}
+
+// Is VM scanning enabled
+func (o DefenderForContainersGcpOfferingVmScannersPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DefenderForContainersGcpOfferingVmScanners) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The Defender for Containers for JFrog Artifactory offering
+type DefenderForContainersJFrogOffering struct {
+	// The type of the security offering.
+	// Expected value is 'DefenderForContainersJFrog'.
+	OfferingType string `pulumi:"offeringType"`
+}
+
+// DefenderForContainersJFrogOfferingInput is an input type that accepts DefenderForContainersJFrogOfferingArgs and DefenderForContainersJFrogOfferingOutput values.
+// You can construct a concrete instance of `DefenderForContainersJFrogOfferingInput` via:
+//
+//	DefenderForContainersJFrogOfferingArgs{...}
+type DefenderForContainersJFrogOfferingInput interface {
+	pulumi.Input
+
+	ToDefenderForContainersJFrogOfferingOutput() DefenderForContainersJFrogOfferingOutput
+	ToDefenderForContainersJFrogOfferingOutputWithContext(context.Context) DefenderForContainersJFrogOfferingOutput
+}
+
+// The Defender for Containers for JFrog Artifactory offering
+type DefenderForContainersJFrogOfferingArgs struct {
+	// The type of the security offering.
+	// Expected value is 'DefenderForContainersJFrog'.
+	OfferingType pulumi.StringInput `pulumi:"offeringType"`
+}
+
+func (DefenderForContainersJFrogOfferingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderForContainersJFrogOffering)(nil)).Elem()
+}
+
+func (i DefenderForContainersJFrogOfferingArgs) ToDefenderForContainersJFrogOfferingOutput() DefenderForContainersJFrogOfferingOutput {
+	return i.ToDefenderForContainersJFrogOfferingOutputWithContext(context.Background())
+}
+
+func (i DefenderForContainersJFrogOfferingArgs) ToDefenderForContainersJFrogOfferingOutputWithContext(ctx context.Context) DefenderForContainersJFrogOfferingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderForContainersJFrogOfferingOutput)
+}
+
+// The Defender for Containers for JFrog Artifactory offering
+type DefenderForContainersJFrogOfferingOutput struct{ *pulumi.OutputState }
+
+func (DefenderForContainersJFrogOfferingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderForContainersJFrogOffering)(nil)).Elem()
+}
+
+func (o DefenderForContainersJFrogOfferingOutput) ToDefenderForContainersJFrogOfferingOutput() DefenderForContainersJFrogOfferingOutput {
+	return o
+}
+
+func (o DefenderForContainersJFrogOfferingOutput) ToDefenderForContainersJFrogOfferingOutputWithContext(ctx context.Context) DefenderForContainersJFrogOfferingOutput {
+	return o
+}
+
+// The type of the security offering.
+// Expected value is 'DefenderForContainersJFrog'.
+func (o DefenderForContainersJFrogOfferingOutput) OfferingType() pulumi.StringOutput {
+	return o.ApplyT(func(v DefenderForContainersJFrogOffering) string { return v.OfferingType }).(pulumi.StringOutput)
+}
+
+// The Defender for Containers for JFrog Artifactory offering
+type DefenderForContainersJFrogOfferingResponse struct {
+	// The offering description.
+	Description string `pulumi:"description"`
+	// The type of the security offering.
+	// Expected value is 'DefenderForContainersJFrog'.
+	OfferingType string `pulumi:"offeringType"`
+}
+
+// The Defender for Containers for JFrog Artifactory offering
+type DefenderForContainersJFrogOfferingResponseOutput struct{ *pulumi.OutputState }
+
+func (DefenderForContainersJFrogOfferingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderForContainersJFrogOfferingResponse)(nil)).Elem()
+}
+
+func (o DefenderForContainersJFrogOfferingResponseOutput) ToDefenderForContainersJFrogOfferingResponseOutput() DefenderForContainersJFrogOfferingResponseOutput {
+	return o
+}
+
+func (o DefenderForContainersJFrogOfferingResponseOutput) ToDefenderForContainersJFrogOfferingResponseOutputWithContext(ctx context.Context) DefenderForContainersJFrogOfferingResponseOutput {
+	return o
+}
+
+// The offering description.
+func (o DefenderForContainersJFrogOfferingResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v DefenderForContainersJFrogOfferingResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The type of the security offering.
+// Expected value is 'DefenderForContainersJFrog'.
+func (o DefenderForContainersJFrogOfferingResponseOutput) OfferingType() pulumi.StringOutput {
+	return o.ApplyT(func(v DefenderForContainersJFrogOfferingResponse) string { return v.OfferingType }).(pulumi.StringOutput)
+}
+
 // The Defender for Databases GCP offering configurations
 type DefenderForDatabasesGcpOffering struct {
 	// The ARC autoprovisioning configuration
@@ -10528,8 +15293,8 @@ func (o DefenderForDatabasesGcpOfferingOutput) OfferingType() pulumi.StringOutpu
 
 // The ARC autoprovisioning configuration
 type DefenderForDatabasesGcpOfferingArcAutoProvisioning struct {
-	// Configuration for servers Arc auto provisioning
-	Configuration *DefenderForDatabasesGcpOfferingConfiguration `pulumi:"configuration"`
+	// Configuration for servers Arc auto provisioning for a given environment
+	Configuration *ArcAutoProvisioningConfiguration `pulumi:"configuration"`
 	// Is arc auto provisioning enabled
 	Enabled *bool `pulumi:"enabled"`
 }
@@ -10547,8 +15312,8 @@ type DefenderForDatabasesGcpOfferingArcAutoProvisioningInput interface {
 
 // The ARC autoprovisioning configuration
 type DefenderForDatabasesGcpOfferingArcAutoProvisioningArgs struct {
-	// Configuration for servers Arc auto provisioning
-	Configuration DefenderForDatabasesGcpOfferingConfigurationPtrInput `pulumi:"configuration"`
+	// Configuration for servers Arc auto provisioning for a given environment
+	Configuration ArcAutoProvisioningConfigurationPtrInput `pulumi:"configuration"`
 	// Is arc auto provisioning enabled
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
@@ -10631,11 +15396,11 @@ func (o DefenderForDatabasesGcpOfferingArcAutoProvisioningOutput) ToDefenderForD
 	}).(DefenderForDatabasesGcpOfferingArcAutoProvisioningPtrOutput)
 }
 
-// Configuration for servers Arc auto provisioning
-func (o DefenderForDatabasesGcpOfferingArcAutoProvisioningOutput) Configuration() DefenderForDatabasesGcpOfferingConfigurationPtrOutput {
-	return o.ApplyT(func(v DefenderForDatabasesGcpOfferingArcAutoProvisioning) *DefenderForDatabasesGcpOfferingConfiguration {
+// Configuration for servers Arc auto provisioning for a given environment
+func (o DefenderForDatabasesGcpOfferingArcAutoProvisioningOutput) Configuration() ArcAutoProvisioningConfigurationPtrOutput {
+	return o.ApplyT(func(v DefenderForDatabasesGcpOfferingArcAutoProvisioning) *ArcAutoProvisioningConfiguration {
 		return v.Configuration
-	}).(DefenderForDatabasesGcpOfferingConfigurationPtrOutput)
+	}).(ArcAutoProvisioningConfigurationPtrOutput)
 }
 
 // Is arc auto provisioning enabled
@@ -10667,14 +15432,14 @@ func (o DefenderForDatabasesGcpOfferingArcAutoProvisioningPtrOutput) Elem() Defe
 	}).(DefenderForDatabasesGcpOfferingArcAutoProvisioningOutput)
 }
 
-// Configuration for servers Arc auto provisioning
-func (o DefenderForDatabasesGcpOfferingArcAutoProvisioningPtrOutput) Configuration() DefenderForDatabasesGcpOfferingConfigurationPtrOutput {
-	return o.ApplyT(func(v *DefenderForDatabasesGcpOfferingArcAutoProvisioning) *DefenderForDatabasesGcpOfferingConfiguration {
+// Configuration for servers Arc auto provisioning for a given environment
+func (o DefenderForDatabasesGcpOfferingArcAutoProvisioningPtrOutput) Configuration() ArcAutoProvisioningConfigurationPtrOutput {
+	return o.ApplyT(func(v *DefenderForDatabasesGcpOfferingArcAutoProvisioning) *ArcAutoProvisioningConfiguration {
 		if v == nil {
 			return nil
 		}
 		return v.Configuration
-	}).(DefenderForDatabasesGcpOfferingConfigurationPtrOutput)
+	}).(ArcAutoProvisioningConfigurationPtrOutput)
 }
 
 // Is arc auto provisioning enabled
@@ -10685,165 +15450,6 @@ func (o DefenderForDatabasesGcpOfferingArcAutoProvisioningPtrOutput) Enabled() p
 		}
 		return v.Enabled
 	}).(pulumi.BoolPtrOutput)
-}
-
-// Configuration for servers Arc auto provisioning
-type DefenderForDatabasesGcpOfferingConfiguration struct {
-	// Optional Arc private link scope resource id to link the Arc agent
-	PrivateLinkScope *string `pulumi:"privateLinkScope"`
-	// Optional http proxy endpoint to use for the Arc agent
-	Proxy *string `pulumi:"proxy"`
-}
-
-// DefenderForDatabasesGcpOfferingConfigurationInput is an input type that accepts DefenderForDatabasesGcpOfferingConfigurationArgs and DefenderForDatabasesGcpOfferingConfigurationOutput values.
-// You can construct a concrete instance of `DefenderForDatabasesGcpOfferingConfigurationInput` via:
-//
-//	DefenderForDatabasesGcpOfferingConfigurationArgs{...}
-type DefenderForDatabasesGcpOfferingConfigurationInput interface {
-	pulumi.Input
-
-	ToDefenderForDatabasesGcpOfferingConfigurationOutput() DefenderForDatabasesGcpOfferingConfigurationOutput
-	ToDefenderForDatabasesGcpOfferingConfigurationOutputWithContext(context.Context) DefenderForDatabasesGcpOfferingConfigurationOutput
-}
-
-// Configuration for servers Arc auto provisioning
-type DefenderForDatabasesGcpOfferingConfigurationArgs struct {
-	// Optional Arc private link scope resource id to link the Arc agent
-	PrivateLinkScope pulumi.StringPtrInput `pulumi:"privateLinkScope"`
-	// Optional http proxy endpoint to use for the Arc agent
-	Proxy pulumi.StringPtrInput `pulumi:"proxy"`
-}
-
-func (DefenderForDatabasesGcpOfferingConfigurationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefenderForDatabasesGcpOfferingConfiguration)(nil)).Elem()
-}
-
-func (i DefenderForDatabasesGcpOfferingConfigurationArgs) ToDefenderForDatabasesGcpOfferingConfigurationOutput() DefenderForDatabasesGcpOfferingConfigurationOutput {
-	return i.ToDefenderForDatabasesGcpOfferingConfigurationOutputWithContext(context.Background())
-}
-
-func (i DefenderForDatabasesGcpOfferingConfigurationArgs) ToDefenderForDatabasesGcpOfferingConfigurationOutputWithContext(ctx context.Context) DefenderForDatabasesGcpOfferingConfigurationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DefenderForDatabasesGcpOfferingConfigurationOutput)
-}
-
-func (i DefenderForDatabasesGcpOfferingConfigurationArgs) ToDefenderForDatabasesGcpOfferingConfigurationPtrOutput() DefenderForDatabasesGcpOfferingConfigurationPtrOutput {
-	return i.ToDefenderForDatabasesGcpOfferingConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i DefenderForDatabasesGcpOfferingConfigurationArgs) ToDefenderForDatabasesGcpOfferingConfigurationPtrOutputWithContext(ctx context.Context) DefenderForDatabasesGcpOfferingConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DefenderForDatabasesGcpOfferingConfigurationOutput).ToDefenderForDatabasesGcpOfferingConfigurationPtrOutputWithContext(ctx)
-}
-
-// DefenderForDatabasesGcpOfferingConfigurationPtrInput is an input type that accepts DefenderForDatabasesGcpOfferingConfigurationArgs, DefenderForDatabasesGcpOfferingConfigurationPtr and DefenderForDatabasesGcpOfferingConfigurationPtrOutput values.
-// You can construct a concrete instance of `DefenderForDatabasesGcpOfferingConfigurationPtrInput` via:
-//
-//	        DefenderForDatabasesGcpOfferingConfigurationArgs{...}
-//
-//	or:
-//
-//	        nil
-type DefenderForDatabasesGcpOfferingConfigurationPtrInput interface {
-	pulumi.Input
-
-	ToDefenderForDatabasesGcpOfferingConfigurationPtrOutput() DefenderForDatabasesGcpOfferingConfigurationPtrOutput
-	ToDefenderForDatabasesGcpOfferingConfigurationPtrOutputWithContext(context.Context) DefenderForDatabasesGcpOfferingConfigurationPtrOutput
-}
-
-type defenderForDatabasesGcpOfferingConfigurationPtrType DefenderForDatabasesGcpOfferingConfigurationArgs
-
-func DefenderForDatabasesGcpOfferingConfigurationPtr(v *DefenderForDatabasesGcpOfferingConfigurationArgs) DefenderForDatabasesGcpOfferingConfigurationPtrInput {
-	return (*defenderForDatabasesGcpOfferingConfigurationPtrType)(v)
-}
-
-func (*defenderForDatabasesGcpOfferingConfigurationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DefenderForDatabasesGcpOfferingConfiguration)(nil)).Elem()
-}
-
-func (i *defenderForDatabasesGcpOfferingConfigurationPtrType) ToDefenderForDatabasesGcpOfferingConfigurationPtrOutput() DefenderForDatabasesGcpOfferingConfigurationPtrOutput {
-	return i.ToDefenderForDatabasesGcpOfferingConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i *defenderForDatabasesGcpOfferingConfigurationPtrType) ToDefenderForDatabasesGcpOfferingConfigurationPtrOutputWithContext(ctx context.Context) DefenderForDatabasesGcpOfferingConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DefenderForDatabasesGcpOfferingConfigurationPtrOutput)
-}
-
-// Configuration for servers Arc auto provisioning
-type DefenderForDatabasesGcpOfferingConfigurationOutput struct{ *pulumi.OutputState }
-
-func (DefenderForDatabasesGcpOfferingConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefenderForDatabasesGcpOfferingConfiguration)(nil)).Elem()
-}
-
-func (o DefenderForDatabasesGcpOfferingConfigurationOutput) ToDefenderForDatabasesGcpOfferingConfigurationOutput() DefenderForDatabasesGcpOfferingConfigurationOutput {
-	return o
-}
-
-func (o DefenderForDatabasesGcpOfferingConfigurationOutput) ToDefenderForDatabasesGcpOfferingConfigurationOutputWithContext(ctx context.Context) DefenderForDatabasesGcpOfferingConfigurationOutput {
-	return o
-}
-
-func (o DefenderForDatabasesGcpOfferingConfigurationOutput) ToDefenderForDatabasesGcpOfferingConfigurationPtrOutput() DefenderForDatabasesGcpOfferingConfigurationPtrOutput {
-	return o.ToDefenderForDatabasesGcpOfferingConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (o DefenderForDatabasesGcpOfferingConfigurationOutput) ToDefenderForDatabasesGcpOfferingConfigurationPtrOutputWithContext(ctx context.Context) DefenderForDatabasesGcpOfferingConfigurationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefenderForDatabasesGcpOfferingConfiguration) *DefenderForDatabasesGcpOfferingConfiguration {
-		return &v
-	}).(DefenderForDatabasesGcpOfferingConfigurationPtrOutput)
-}
-
-// Optional Arc private link scope resource id to link the Arc agent
-func (o DefenderForDatabasesGcpOfferingConfigurationOutput) PrivateLinkScope() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DefenderForDatabasesGcpOfferingConfiguration) *string { return v.PrivateLinkScope }).(pulumi.StringPtrOutput)
-}
-
-// Optional http proxy endpoint to use for the Arc agent
-func (o DefenderForDatabasesGcpOfferingConfigurationOutput) Proxy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DefenderForDatabasesGcpOfferingConfiguration) *string { return v.Proxy }).(pulumi.StringPtrOutput)
-}
-
-type DefenderForDatabasesGcpOfferingConfigurationPtrOutput struct{ *pulumi.OutputState }
-
-func (DefenderForDatabasesGcpOfferingConfigurationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DefenderForDatabasesGcpOfferingConfiguration)(nil)).Elem()
-}
-
-func (o DefenderForDatabasesGcpOfferingConfigurationPtrOutput) ToDefenderForDatabasesGcpOfferingConfigurationPtrOutput() DefenderForDatabasesGcpOfferingConfigurationPtrOutput {
-	return o
-}
-
-func (o DefenderForDatabasesGcpOfferingConfigurationPtrOutput) ToDefenderForDatabasesGcpOfferingConfigurationPtrOutputWithContext(ctx context.Context) DefenderForDatabasesGcpOfferingConfigurationPtrOutput {
-	return o
-}
-
-func (o DefenderForDatabasesGcpOfferingConfigurationPtrOutput) Elem() DefenderForDatabasesGcpOfferingConfigurationOutput {
-	return o.ApplyT(func(v *DefenderForDatabasesGcpOfferingConfiguration) DefenderForDatabasesGcpOfferingConfiguration {
-		if v != nil {
-			return *v
-		}
-		var ret DefenderForDatabasesGcpOfferingConfiguration
-		return ret
-	}).(DefenderForDatabasesGcpOfferingConfigurationOutput)
-}
-
-// Optional Arc private link scope resource id to link the Arc agent
-func (o DefenderForDatabasesGcpOfferingConfigurationPtrOutput) PrivateLinkScope() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DefenderForDatabasesGcpOfferingConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PrivateLinkScope
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional http proxy endpoint to use for the Arc agent
-func (o DefenderForDatabasesGcpOfferingConfigurationPtrOutput) Proxy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DefenderForDatabasesGcpOfferingConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Proxy
-	}).(pulumi.StringPtrOutput)
 }
 
 // The native cloud connection configuration
@@ -11064,8 +15670,8 @@ func (o DefenderForDatabasesGcpOfferingResponseOutput) OfferingType() pulumi.Str
 
 // The ARC autoprovisioning configuration
 type DefenderForDatabasesGcpOfferingResponseArcAutoProvisioning struct {
-	// Configuration for servers Arc auto provisioning
-	Configuration *DefenderForDatabasesGcpOfferingResponseConfiguration `pulumi:"configuration"`
+	// Configuration for servers Arc auto provisioning for a given environment
+	Configuration *ArcAutoProvisioningResponseConfiguration `pulumi:"configuration"`
 	// Is arc auto provisioning enabled
 	Enabled *bool `pulumi:"enabled"`
 }
@@ -11085,11 +15691,11 @@ func (o DefenderForDatabasesGcpOfferingResponseArcAutoProvisioningOutput) ToDefe
 	return o
 }
 
-// Configuration for servers Arc auto provisioning
-func (o DefenderForDatabasesGcpOfferingResponseArcAutoProvisioningOutput) Configuration() DefenderForDatabasesGcpOfferingResponseConfigurationPtrOutput {
-	return o.ApplyT(func(v DefenderForDatabasesGcpOfferingResponseArcAutoProvisioning) *DefenderForDatabasesGcpOfferingResponseConfiguration {
+// Configuration for servers Arc auto provisioning for a given environment
+func (o DefenderForDatabasesGcpOfferingResponseArcAutoProvisioningOutput) Configuration() ArcAutoProvisioningResponseConfigurationPtrOutput {
+	return o.ApplyT(func(v DefenderForDatabasesGcpOfferingResponseArcAutoProvisioning) *ArcAutoProvisioningResponseConfiguration {
 		return v.Configuration
-	}).(DefenderForDatabasesGcpOfferingResponseConfigurationPtrOutput)
+	}).(ArcAutoProvisioningResponseConfigurationPtrOutput)
 }
 
 // Is arc auto provisioning enabled
@@ -11121,14 +15727,14 @@ func (o DefenderForDatabasesGcpOfferingResponseArcAutoProvisioningPtrOutput) Ele
 	}).(DefenderForDatabasesGcpOfferingResponseArcAutoProvisioningOutput)
 }
 
-// Configuration for servers Arc auto provisioning
-func (o DefenderForDatabasesGcpOfferingResponseArcAutoProvisioningPtrOutput) Configuration() DefenderForDatabasesGcpOfferingResponseConfigurationPtrOutput {
-	return o.ApplyT(func(v *DefenderForDatabasesGcpOfferingResponseArcAutoProvisioning) *DefenderForDatabasesGcpOfferingResponseConfiguration {
+// Configuration for servers Arc auto provisioning for a given environment
+func (o DefenderForDatabasesGcpOfferingResponseArcAutoProvisioningPtrOutput) Configuration() ArcAutoProvisioningResponseConfigurationPtrOutput {
+	return o.ApplyT(func(v *DefenderForDatabasesGcpOfferingResponseArcAutoProvisioning) *ArcAutoProvisioningResponseConfiguration {
 		if v == nil {
 			return nil
 		}
 		return v.Configuration
-	}).(DefenderForDatabasesGcpOfferingResponseConfigurationPtrOutput)
+	}).(ArcAutoProvisioningResponseConfigurationPtrOutput)
 }
 
 // Is arc auto provisioning enabled
@@ -11139,83 +15745,6 @@ func (o DefenderForDatabasesGcpOfferingResponseArcAutoProvisioningPtrOutput) Ena
 		}
 		return v.Enabled
 	}).(pulumi.BoolPtrOutput)
-}
-
-// Configuration for servers Arc auto provisioning
-type DefenderForDatabasesGcpOfferingResponseConfiguration struct {
-	// Optional Arc private link scope resource id to link the Arc agent
-	PrivateLinkScope *string `pulumi:"privateLinkScope"`
-	// Optional http proxy endpoint to use for the Arc agent
-	Proxy *string `pulumi:"proxy"`
-}
-
-// Configuration for servers Arc auto provisioning
-type DefenderForDatabasesGcpOfferingResponseConfigurationOutput struct{ *pulumi.OutputState }
-
-func (DefenderForDatabasesGcpOfferingResponseConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefenderForDatabasesGcpOfferingResponseConfiguration)(nil)).Elem()
-}
-
-func (o DefenderForDatabasesGcpOfferingResponseConfigurationOutput) ToDefenderForDatabasesGcpOfferingResponseConfigurationOutput() DefenderForDatabasesGcpOfferingResponseConfigurationOutput {
-	return o
-}
-
-func (o DefenderForDatabasesGcpOfferingResponseConfigurationOutput) ToDefenderForDatabasesGcpOfferingResponseConfigurationOutputWithContext(ctx context.Context) DefenderForDatabasesGcpOfferingResponseConfigurationOutput {
-	return o
-}
-
-// Optional Arc private link scope resource id to link the Arc agent
-func (o DefenderForDatabasesGcpOfferingResponseConfigurationOutput) PrivateLinkScope() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DefenderForDatabasesGcpOfferingResponseConfiguration) *string { return v.PrivateLinkScope }).(pulumi.StringPtrOutput)
-}
-
-// Optional http proxy endpoint to use for the Arc agent
-func (o DefenderForDatabasesGcpOfferingResponseConfigurationOutput) Proxy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DefenderForDatabasesGcpOfferingResponseConfiguration) *string { return v.Proxy }).(pulumi.StringPtrOutput)
-}
-
-type DefenderForDatabasesGcpOfferingResponseConfigurationPtrOutput struct{ *pulumi.OutputState }
-
-func (DefenderForDatabasesGcpOfferingResponseConfigurationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DefenderForDatabasesGcpOfferingResponseConfiguration)(nil)).Elem()
-}
-
-func (o DefenderForDatabasesGcpOfferingResponseConfigurationPtrOutput) ToDefenderForDatabasesGcpOfferingResponseConfigurationPtrOutput() DefenderForDatabasesGcpOfferingResponseConfigurationPtrOutput {
-	return o
-}
-
-func (o DefenderForDatabasesGcpOfferingResponseConfigurationPtrOutput) ToDefenderForDatabasesGcpOfferingResponseConfigurationPtrOutputWithContext(ctx context.Context) DefenderForDatabasesGcpOfferingResponseConfigurationPtrOutput {
-	return o
-}
-
-func (o DefenderForDatabasesGcpOfferingResponseConfigurationPtrOutput) Elem() DefenderForDatabasesGcpOfferingResponseConfigurationOutput {
-	return o.ApplyT(func(v *DefenderForDatabasesGcpOfferingResponseConfiguration) DefenderForDatabasesGcpOfferingResponseConfiguration {
-		if v != nil {
-			return *v
-		}
-		var ret DefenderForDatabasesGcpOfferingResponseConfiguration
-		return ret
-	}).(DefenderForDatabasesGcpOfferingResponseConfigurationOutput)
-}
-
-// Optional Arc private link scope resource id to link the Arc agent
-func (o DefenderForDatabasesGcpOfferingResponseConfigurationPtrOutput) PrivateLinkScope() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DefenderForDatabasesGcpOfferingResponseConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PrivateLinkScope
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional http proxy endpoint to use for the Arc agent
-func (o DefenderForDatabasesGcpOfferingResponseConfigurationPtrOutput) Proxy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DefenderForDatabasesGcpOfferingResponseConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Proxy
-	}).(pulumi.StringPtrOutput)
 }
 
 // The native cloud connection configuration
@@ -11297,285 +15826,6 @@ func (o DefenderForDatabasesGcpOfferingResponseDefenderForDatabasesArcAutoProvis
 		}
 		return v.WorkloadIdentityProviderId
 	}).(pulumi.StringPtrOutput)
-}
-
-// The Defender for DevOps for Azure DevOps offering
-type DefenderForDevOpsAzureDevOpsOffering struct {
-	// The type of the security offering.
-	// Expected value is 'DefenderForDevOpsAzureDevOps'.
-	OfferingType string `pulumi:"offeringType"`
-}
-
-// DefenderForDevOpsAzureDevOpsOfferingInput is an input type that accepts DefenderForDevOpsAzureDevOpsOfferingArgs and DefenderForDevOpsAzureDevOpsOfferingOutput values.
-// You can construct a concrete instance of `DefenderForDevOpsAzureDevOpsOfferingInput` via:
-//
-//	DefenderForDevOpsAzureDevOpsOfferingArgs{...}
-type DefenderForDevOpsAzureDevOpsOfferingInput interface {
-	pulumi.Input
-
-	ToDefenderForDevOpsAzureDevOpsOfferingOutput() DefenderForDevOpsAzureDevOpsOfferingOutput
-	ToDefenderForDevOpsAzureDevOpsOfferingOutputWithContext(context.Context) DefenderForDevOpsAzureDevOpsOfferingOutput
-}
-
-// The Defender for DevOps for Azure DevOps offering
-type DefenderForDevOpsAzureDevOpsOfferingArgs struct {
-	// The type of the security offering.
-	// Expected value is 'DefenderForDevOpsAzureDevOps'.
-	OfferingType pulumi.StringInput `pulumi:"offeringType"`
-}
-
-func (DefenderForDevOpsAzureDevOpsOfferingArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefenderForDevOpsAzureDevOpsOffering)(nil)).Elem()
-}
-
-func (i DefenderForDevOpsAzureDevOpsOfferingArgs) ToDefenderForDevOpsAzureDevOpsOfferingOutput() DefenderForDevOpsAzureDevOpsOfferingOutput {
-	return i.ToDefenderForDevOpsAzureDevOpsOfferingOutputWithContext(context.Background())
-}
-
-func (i DefenderForDevOpsAzureDevOpsOfferingArgs) ToDefenderForDevOpsAzureDevOpsOfferingOutputWithContext(ctx context.Context) DefenderForDevOpsAzureDevOpsOfferingOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DefenderForDevOpsAzureDevOpsOfferingOutput)
-}
-
-// The Defender for DevOps for Azure DevOps offering
-type DefenderForDevOpsAzureDevOpsOfferingOutput struct{ *pulumi.OutputState }
-
-func (DefenderForDevOpsAzureDevOpsOfferingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefenderForDevOpsAzureDevOpsOffering)(nil)).Elem()
-}
-
-func (o DefenderForDevOpsAzureDevOpsOfferingOutput) ToDefenderForDevOpsAzureDevOpsOfferingOutput() DefenderForDevOpsAzureDevOpsOfferingOutput {
-	return o
-}
-
-func (o DefenderForDevOpsAzureDevOpsOfferingOutput) ToDefenderForDevOpsAzureDevOpsOfferingOutputWithContext(ctx context.Context) DefenderForDevOpsAzureDevOpsOfferingOutput {
-	return o
-}
-
-// The type of the security offering.
-// Expected value is 'DefenderForDevOpsAzureDevOps'.
-func (o DefenderForDevOpsAzureDevOpsOfferingOutput) OfferingType() pulumi.StringOutput {
-	return o.ApplyT(func(v DefenderForDevOpsAzureDevOpsOffering) string { return v.OfferingType }).(pulumi.StringOutput)
-}
-
-// The Defender for DevOps for Azure DevOps offering
-type DefenderForDevOpsAzureDevOpsOfferingResponse struct {
-	// The offering description.
-	Description string `pulumi:"description"`
-	// The type of the security offering.
-	// Expected value is 'DefenderForDevOpsAzureDevOps'.
-	OfferingType string `pulumi:"offeringType"`
-}
-
-// The Defender for DevOps for Azure DevOps offering
-type DefenderForDevOpsAzureDevOpsOfferingResponseOutput struct{ *pulumi.OutputState }
-
-func (DefenderForDevOpsAzureDevOpsOfferingResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefenderForDevOpsAzureDevOpsOfferingResponse)(nil)).Elem()
-}
-
-func (o DefenderForDevOpsAzureDevOpsOfferingResponseOutput) ToDefenderForDevOpsAzureDevOpsOfferingResponseOutput() DefenderForDevOpsAzureDevOpsOfferingResponseOutput {
-	return o
-}
-
-func (o DefenderForDevOpsAzureDevOpsOfferingResponseOutput) ToDefenderForDevOpsAzureDevOpsOfferingResponseOutputWithContext(ctx context.Context) DefenderForDevOpsAzureDevOpsOfferingResponseOutput {
-	return o
-}
-
-// The offering description.
-func (o DefenderForDevOpsAzureDevOpsOfferingResponseOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v DefenderForDevOpsAzureDevOpsOfferingResponse) string { return v.Description }).(pulumi.StringOutput)
-}
-
-// The type of the security offering.
-// Expected value is 'DefenderForDevOpsAzureDevOps'.
-func (o DefenderForDevOpsAzureDevOpsOfferingResponseOutput) OfferingType() pulumi.StringOutput {
-	return o.ApplyT(func(v DefenderForDevOpsAzureDevOpsOfferingResponse) string { return v.OfferingType }).(pulumi.StringOutput)
-}
-
-// The Defender for DevOps for Gitlab offering
-type DefenderForDevOpsGitLabOffering struct {
-	// The type of the security offering.
-	// Expected value is 'DefenderForDevOpsGitLab'.
-	OfferingType string `pulumi:"offeringType"`
-}
-
-// DefenderForDevOpsGitLabOfferingInput is an input type that accepts DefenderForDevOpsGitLabOfferingArgs and DefenderForDevOpsGitLabOfferingOutput values.
-// You can construct a concrete instance of `DefenderForDevOpsGitLabOfferingInput` via:
-//
-//	DefenderForDevOpsGitLabOfferingArgs{...}
-type DefenderForDevOpsGitLabOfferingInput interface {
-	pulumi.Input
-
-	ToDefenderForDevOpsGitLabOfferingOutput() DefenderForDevOpsGitLabOfferingOutput
-	ToDefenderForDevOpsGitLabOfferingOutputWithContext(context.Context) DefenderForDevOpsGitLabOfferingOutput
-}
-
-// The Defender for DevOps for Gitlab offering
-type DefenderForDevOpsGitLabOfferingArgs struct {
-	// The type of the security offering.
-	// Expected value is 'DefenderForDevOpsGitLab'.
-	OfferingType pulumi.StringInput `pulumi:"offeringType"`
-}
-
-func (DefenderForDevOpsGitLabOfferingArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefenderForDevOpsGitLabOffering)(nil)).Elem()
-}
-
-func (i DefenderForDevOpsGitLabOfferingArgs) ToDefenderForDevOpsGitLabOfferingOutput() DefenderForDevOpsGitLabOfferingOutput {
-	return i.ToDefenderForDevOpsGitLabOfferingOutputWithContext(context.Background())
-}
-
-func (i DefenderForDevOpsGitLabOfferingArgs) ToDefenderForDevOpsGitLabOfferingOutputWithContext(ctx context.Context) DefenderForDevOpsGitLabOfferingOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DefenderForDevOpsGitLabOfferingOutput)
-}
-
-// The Defender for DevOps for Gitlab offering
-type DefenderForDevOpsGitLabOfferingOutput struct{ *pulumi.OutputState }
-
-func (DefenderForDevOpsGitLabOfferingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefenderForDevOpsGitLabOffering)(nil)).Elem()
-}
-
-func (o DefenderForDevOpsGitLabOfferingOutput) ToDefenderForDevOpsGitLabOfferingOutput() DefenderForDevOpsGitLabOfferingOutput {
-	return o
-}
-
-func (o DefenderForDevOpsGitLabOfferingOutput) ToDefenderForDevOpsGitLabOfferingOutputWithContext(ctx context.Context) DefenderForDevOpsGitLabOfferingOutput {
-	return o
-}
-
-// The type of the security offering.
-// Expected value is 'DefenderForDevOpsGitLab'.
-func (o DefenderForDevOpsGitLabOfferingOutput) OfferingType() pulumi.StringOutput {
-	return o.ApplyT(func(v DefenderForDevOpsGitLabOffering) string { return v.OfferingType }).(pulumi.StringOutput)
-}
-
-// The Defender for DevOps for Gitlab offering
-type DefenderForDevOpsGitLabOfferingResponse struct {
-	// The offering description.
-	Description string `pulumi:"description"`
-	// The type of the security offering.
-	// Expected value is 'DefenderForDevOpsGitLab'.
-	OfferingType string `pulumi:"offeringType"`
-}
-
-// The Defender for DevOps for Gitlab offering
-type DefenderForDevOpsGitLabOfferingResponseOutput struct{ *pulumi.OutputState }
-
-func (DefenderForDevOpsGitLabOfferingResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefenderForDevOpsGitLabOfferingResponse)(nil)).Elem()
-}
-
-func (o DefenderForDevOpsGitLabOfferingResponseOutput) ToDefenderForDevOpsGitLabOfferingResponseOutput() DefenderForDevOpsGitLabOfferingResponseOutput {
-	return o
-}
-
-func (o DefenderForDevOpsGitLabOfferingResponseOutput) ToDefenderForDevOpsGitLabOfferingResponseOutputWithContext(ctx context.Context) DefenderForDevOpsGitLabOfferingResponseOutput {
-	return o
-}
-
-// The offering description.
-func (o DefenderForDevOpsGitLabOfferingResponseOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v DefenderForDevOpsGitLabOfferingResponse) string { return v.Description }).(pulumi.StringOutput)
-}
-
-// The type of the security offering.
-// Expected value is 'DefenderForDevOpsGitLab'.
-func (o DefenderForDevOpsGitLabOfferingResponseOutput) OfferingType() pulumi.StringOutput {
-	return o.ApplyT(func(v DefenderForDevOpsGitLabOfferingResponse) string { return v.OfferingType }).(pulumi.StringOutput)
-}
-
-// The Defender for DevOps for Github offering
-type DefenderForDevOpsGithubOffering struct {
-	// The type of the security offering.
-	// Expected value is 'DefenderForDevOpsGithub'.
-	OfferingType string `pulumi:"offeringType"`
-}
-
-// DefenderForDevOpsGithubOfferingInput is an input type that accepts DefenderForDevOpsGithubOfferingArgs and DefenderForDevOpsGithubOfferingOutput values.
-// You can construct a concrete instance of `DefenderForDevOpsGithubOfferingInput` via:
-//
-//	DefenderForDevOpsGithubOfferingArgs{...}
-type DefenderForDevOpsGithubOfferingInput interface {
-	pulumi.Input
-
-	ToDefenderForDevOpsGithubOfferingOutput() DefenderForDevOpsGithubOfferingOutput
-	ToDefenderForDevOpsGithubOfferingOutputWithContext(context.Context) DefenderForDevOpsGithubOfferingOutput
-}
-
-// The Defender for DevOps for Github offering
-type DefenderForDevOpsGithubOfferingArgs struct {
-	// The type of the security offering.
-	// Expected value is 'DefenderForDevOpsGithub'.
-	OfferingType pulumi.StringInput `pulumi:"offeringType"`
-}
-
-func (DefenderForDevOpsGithubOfferingArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefenderForDevOpsGithubOffering)(nil)).Elem()
-}
-
-func (i DefenderForDevOpsGithubOfferingArgs) ToDefenderForDevOpsGithubOfferingOutput() DefenderForDevOpsGithubOfferingOutput {
-	return i.ToDefenderForDevOpsGithubOfferingOutputWithContext(context.Background())
-}
-
-func (i DefenderForDevOpsGithubOfferingArgs) ToDefenderForDevOpsGithubOfferingOutputWithContext(ctx context.Context) DefenderForDevOpsGithubOfferingOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DefenderForDevOpsGithubOfferingOutput)
-}
-
-// The Defender for DevOps for Github offering
-type DefenderForDevOpsGithubOfferingOutput struct{ *pulumi.OutputState }
-
-func (DefenderForDevOpsGithubOfferingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefenderForDevOpsGithubOffering)(nil)).Elem()
-}
-
-func (o DefenderForDevOpsGithubOfferingOutput) ToDefenderForDevOpsGithubOfferingOutput() DefenderForDevOpsGithubOfferingOutput {
-	return o
-}
-
-func (o DefenderForDevOpsGithubOfferingOutput) ToDefenderForDevOpsGithubOfferingOutputWithContext(ctx context.Context) DefenderForDevOpsGithubOfferingOutput {
-	return o
-}
-
-// The type of the security offering.
-// Expected value is 'DefenderForDevOpsGithub'.
-func (o DefenderForDevOpsGithubOfferingOutput) OfferingType() pulumi.StringOutput {
-	return o.ApplyT(func(v DefenderForDevOpsGithubOffering) string { return v.OfferingType }).(pulumi.StringOutput)
-}
-
-// The Defender for DevOps for Github offering
-type DefenderForDevOpsGithubOfferingResponse struct {
-	// The offering description.
-	Description string `pulumi:"description"`
-	// The type of the security offering.
-	// Expected value is 'DefenderForDevOpsGithub'.
-	OfferingType string `pulumi:"offeringType"`
-}
-
-// The Defender for DevOps for Github offering
-type DefenderForDevOpsGithubOfferingResponseOutput struct{ *pulumi.OutputState }
-
-func (DefenderForDevOpsGithubOfferingResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefenderForDevOpsGithubOfferingResponse)(nil)).Elem()
-}
-
-func (o DefenderForDevOpsGithubOfferingResponseOutput) ToDefenderForDevOpsGithubOfferingResponseOutput() DefenderForDevOpsGithubOfferingResponseOutput {
-	return o
-}
-
-func (o DefenderForDevOpsGithubOfferingResponseOutput) ToDefenderForDevOpsGithubOfferingResponseOutputWithContext(ctx context.Context) DefenderForDevOpsGithubOfferingResponseOutput {
-	return o
-}
-
-// The offering description.
-func (o DefenderForDevOpsGithubOfferingResponseOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v DefenderForDevOpsGithubOfferingResponse) string { return v.Description }).(pulumi.StringOutput)
-}
-
-// The type of the security offering.
-// Expected value is 'DefenderForDevOpsGithub'.
-func (o DefenderForDevOpsGithubOfferingResponseOutput) OfferingType() pulumi.StringOutput {
-	return o.ApplyT(func(v DefenderForDevOpsGithubOfferingResponse) string { return v.OfferingType }).(pulumi.StringOutput)
 }
 
 // The Defender for Servers AWS offering
@@ -11702,8 +15952,8 @@ func (o DefenderForServersAwsOfferingOutput) VmScanners() DefenderForServersAwsO
 type DefenderForServersAwsOfferingArcAutoProvisioning struct {
 	// The cloud role ARN in AWS for this feature
 	CloudRoleArn *string `pulumi:"cloudRoleArn"`
-	// Configuration for servers Arc auto provisioning
-	Configuration *DefenderForServersAwsOfferingConfiguration `pulumi:"configuration"`
+	// Configuration for servers Arc auto provisioning for a given environment
+	Configuration *ArcAutoProvisioningConfiguration `pulumi:"configuration"`
 	// Is arc auto provisioning enabled
 	Enabled *bool `pulumi:"enabled"`
 }
@@ -11723,8 +15973,8 @@ type DefenderForServersAwsOfferingArcAutoProvisioningInput interface {
 type DefenderForServersAwsOfferingArcAutoProvisioningArgs struct {
 	// The cloud role ARN in AWS for this feature
 	CloudRoleArn pulumi.StringPtrInput `pulumi:"cloudRoleArn"`
-	// Configuration for servers Arc auto provisioning
-	Configuration DefenderForServersAwsOfferingConfigurationPtrInput `pulumi:"configuration"`
+	// Configuration for servers Arc auto provisioning for a given environment
+	Configuration ArcAutoProvisioningConfigurationPtrInput `pulumi:"configuration"`
 	// Is arc auto provisioning enabled
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
@@ -11812,11 +16062,11 @@ func (o DefenderForServersAwsOfferingArcAutoProvisioningOutput) CloudRoleArn() p
 	return o.ApplyT(func(v DefenderForServersAwsOfferingArcAutoProvisioning) *string { return v.CloudRoleArn }).(pulumi.StringPtrOutput)
 }
 
-// Configuration for servers Arc auto provisioning
-func (o DefenderForServersAwsOfferingArcAutoProvisioningOutput) Configuration() DefenderForServersAwsOfferingConfigurationPtrOutput {
-	return o.ApplyT(func(v DefenderForServersAwsOfferingArcAutoProvisioning) *DefenderForServersAwsOfferingConfiguration {
+// Configuration for servers Arc auto provisioning for a given environment
+func (o DefenderForServersAwsOfferingArcAutoProvisioningOutput) Configuration() ArcAutoProvisioningConfigurationPtrOutput {
+	return o.ApplyT(func(v DefenderForServersAwsOfferingArcAutoProvisioning) *ArcAutoProvisioningConfiguration {
 		return v.Configuration
-	}).(DefenderForServersAwsOfferingConfigurationPtrOutput)
+	}).(ArcAutoProvisioningConfigurationPtrOutput)
 }
 
 // Is arc auto provisioning enabled
@@ -11858,14 +16108,14 @@ func (o DefenderForServersAwsOfferingArcAutoProvisioningPtrOutput) CloudRoleArn(
 	}).(pulumi.StringPtrOutput)
 }
 
-// Configuration for servers Arc auto provisioning
-func (o DefenderForServersAwsOfferingArcAutoProvisioningPtrOutput) Configuration() DefenderForServersAwsOfferingConfigurationPtrOutput {
-	return o.ApplyT(func(v *DefenderForServersAwsOfferingArcAutoProvisioning) *DefenderForServersAwsOfferingConfiguration {
+// Configuration for servers Arc auto provisioning for a given environment
+func (o DefenderForServersAwsOfferingArcAutoProvisioningPtrOutput) Configuration() ArcAutoProvisioningConfigurationPtrOutput {
+	return o.ApplyT(func(v *DefenderForServersAwsOfferingArcAutoProvisioning) *ArcAutoProvisioningConfiguration {
 		if v == nil {
 			return nil
 		}
 		return v.Configuration
-	}).(DefenderForServersAwsOfferingConfigurationPtrOutput)
+	}).(ArcAutoProvisioningConfigurationPtrOutput)
 }
 
 // Is arc auto provisioning enabled
@@ -11878,12 +16128,10 @@ func (o DefenderForServersAwsOfferingArcAutoProvisioningPtrOutput) Enabled() pul
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Configuration for servers Arc auto provisioning
+// configuration for Vulnerability Assessment autoprovisioning
 type DefenderForServersAwsOfferingConfiguration struct {
-	// Optional Arc private link scope resource id to link the Arc agent
-	PrivateLinkScope *string `pulumi:"privateLinkScope"`
-	// Optional HTTP proxy endpoint to use for the Arc agent
-	Proxy *string `pulumi:"proxy"`
+	// The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'
+	Type *string `pulumi:"type"`
 }
 
 // DefenderForServersAwsOfferingConfigurationInput is an input type that accepts DefenderForServersAwsOfferingConfigurationArgs and DefenderForServersAwsOfferingConfigurationOutput values.
@@ -11897,12 +16145,10 @@ type DefenderForServersAwsOfferingConfigurationInput interface {
 	ToDefenderForServersAwsOfferingConfigurationOutputWithContext(context.Context) DefenderForServersAwsOfferingConfigurationOutput
 }
 
-// Configuration for servers Arc auto provisioning
+// configuration for Vulnerability Assessment autoprovisioning
 type DefenderForServersAwsOfferingConfigurationArgs struct {
-	// Optional Arc private link scope resource id to link the Arc agent
-	PrivateLinkScope pulumi.StringPtrInput `pulumi:"privateLinkScope"`
-	// Optional HTTP proxy endpoint to use for the Arc agent
-	Proxy pulumi.StringPtrInput `pulumi:"proxy"`
+	// The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (DefenderForServersAwsOfferingConfigurationArgs) ElementType() reflect.Type {
@@ -11958,7 +16204,7 @@ func (i *defenderForServersAwsOfferingConfigurationPtrType) ToDefenderForServers
 	return pulumi.ToOutputWithContext(ctx, i).(DefenderForServersAwsOfferingConfigurationPtrOutput)
 }
 
-// Configuration for servers Arc auto provisioning
+// configuration for Vulnerability Assessment autoprovisioning
 type DefenderForServersAwsOfferingConfigurationOutput struct{ *pulumi.OutputState }
 
 func (DefenderForServersAwsOfferingConfigurationOutput) ElementType() reflect.Type {
@@ -11983,14 +16229,9 @@ func (o DefenderForServersAwsOfferingConfigurationOutput) ToDefenderForServersAw
 	}).(DefenderForServersAwsOfferingConfigurationPtrOutput)
 }
 
-// Optional Arc private link scope resource id to link the Arc agent
-func (o DefenderForServersAwsOfferingConfigurationOutput) PrivateLinkScope() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DefenderForServersAwsOfferingConfiguration) *string { return v.PrivateLinkScope }).(pulumi.StringPtrOutput)
-}
-
-// Optional HTTP proxy endpoint to use for the Arc agent
-func (o DefenderForServersAwsOfferingConfigurationOutput) Proxy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DefenderForServersAwsOfferingConfiguration) *string { return v.Proxy }).(pulumi.StringPtrOutput)
+// The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'
+func (o DefenderForServersAwsOfferingConfigurationOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderForServersAwsOfferingConfiguration) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
 type DefenderForServersAwsOfferingConfigurationPtrOutput struct{ *pulumi.OutputState }
@@ -12017,347 +16258,13 @@ func (o DefenderForServersAwsOfferingConfigurationPtrOutput) Elem() DefenderForS
 	}).(DefenderForServersAwsOfferingConfigurationOutput)
 }
 
-// Optional Arc private link scope resource id to link the Arc agent
-func (o DefenderForServersAwsOfferingConfigurationPtrOutput) PrivateLinkScope() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DefenderForServersAwsOfferingConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PrivateLinkScope
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional HTTP proxy endpoint to use for the Arc agent
-func (o DefenderForServersAwsOfferingConfigurationPtrOutput) Proxy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DefenderForServersAwsOfferingConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Proxy
-	}).(pulumi.StringPtrOutput)
-}
-
-// configuration for Vulnerability Assessment autoprovisioning
-type DefenderForServersAwsOfferingConfigurationConfiguration struct {
-	// The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'
-	Type *string `pulumi:"type"`
-}
-
-// DefenderForServersAwsOfferingConfigurationConfigurationInput is an input type that accepts DefenderForServersAwsOfferingConfigurationConfigurationArgs and DefenderForServersAwsOfferingConfigurationConfigurationOutput values.
-// You can construct a concrete instance of `DefenderForServersAwsOfferingConfigurationConfigurationInput` via:
-//
-//	DefenderForServersAwsOfferingConfigurationConfigurationArgs{...}
-type DefenderForServersAwsOfferingConfigurationConfigurationInput interface {
-	pulumi.Input
-
-	ToDefenderForServersAwsOfferingConfigurationConfigurationOutput() DefenderForServersAwsOfferingConfigurationConfigurationOutput
-	ToDefenderForServersAwsOfferingConfigurationConfigurationOutputWithContext(context.Context) DefenderForServersAwsOfferingConfigurationConfigurationOutput
-}
-
-// configuration for Vulnerability Assessment autoprovisioning
-type DefenderForServersAwsOfferingConfigurationConfigurationArgs struct {
-	// The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'
-	Type pulumi.StringPtrInput `pulumi:"type"`
-}
-
-func (DefenderForServersAwsOfferingConfigurationConfigurationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefenderForServersAwsOfferingConfigurationConfiguration)(nil)).Elem()
-}
-
-func (i DefenderForServersAwsOfferingConfigurationConfigurationArgs) ToDefenderForServersAwsOfferingConfigurationConfigurationOutput() DefenderForServersAwsOfferingConfigurationConfigurationOutput {
-	return i.ToDefenderForServersAwsOfferingConfigurationConfigurationOutputWithContext(context.Background())
-}
-
-func (i DefenderForServersAwsOfferingConfigurationConfigurationArgs) ToDefenderForServersAwsOfferingConfigurationConfigurationOutputWithContext(ctx context.Context) DefenderForServersAwsOfferingConfigurationConfigurationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DefenderForServersAwsOfferingConfigurationConfigurationOutput)
-}
-
-func (i DefenderForServersAwsOfferingConfigurationConfigurationArgs) ToDefenderForServersAwsOfferingConfigurationConfigurationPtrOutput() DefenderForServersAwsOfferingConfigurationConfigurationPtrOutput {
-	return i.ToDefenderForServersAwsOfferingConfigurationConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i DefenderForServersAwsOfferingConfigurationConfigurationArgs) ToDefenderForServersAwsOfferingConfigurationConfigurationPtrOutputWithContext(ctx context.Context) DefenderForServersAwsOfferingConfigurationConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DefenderForServersAwsOfferingConfigurationConfigurationOutput).ToDefenderForServersAwsOfferingConfigurationConfigurationPtrOutputWithContext(ctx)
-}
-
-// DefenderForServersAwsOfferingConfigurationConfigurationPtrInput is an input type that accepts DefenderForServersAwsOfferingConfigurationConfigurationArgs, DefenderForServersAwsOfferingConfigurationConfigurationPtr and DefenderForServersAwsOfferingConfigurationConfigurationPtrOutput values.
-// You can construct a concrete instance of `DefenderForServersAwsOfferingConfigurationConfigurationPtrInput` via:
-//
-//	        DefenderForServersAwsOfferingConfigurationConfigurationArgs{...}
-//
-//	or:
-//
-//	        nil
-type DefenderForServersAwsOfferingConfigurationConfigurationPtrInput interface {
-	pulumi.Input
-
-	ToDefenderForServersAwsOfferingConfigurationConfigurationPtrOutput() DefenderForServersAwsOfferingConfigurationConfigurationPtrOutput
-	ToDefenderForServersAwsOfferingConfigurationConfigurationPtrOutputWithContext(context.Context) DefenderForServersAwsOfferingConfigurationConfigurationPtrOutput
-}
-
-type defenderForServersAwsOfferingConfigurationConfigurationPtrType DefenderForServersAwsOfferingConfigurationConfigurationArgs
-
-func DefenderForServersAwsOfferingConfigurationConfigurationPtr(v *DefenderForServersAwsOfferingConfigurationConfigurationArgs) DefenderForServersAwsOfferingConfigurationConfigurationPtrInput {
-	return (*defenderForServersAwsOfferingConfigurationConfigurationPtrType)(v)
-}
-
-func (*defenderForServersAwsOfferingConfigurationConfigurationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DefenderForServersAwsOfferingConfigurationConfiguration)(nil)).Elem()
-}
-
-func (i *defenderForServersAwsOfferingConfigurationConfigurationPtrType) ToDefenderForServersAwsOfferingConfigurationConfigurationPtrOutput() DefenderForServersAwsOfferingConfigurationConfigurationPtrOutput {
-	return i.ToDefenderForServersAwsOfferingConfigurationConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i *defenderForServersAwsOfferingConfigurationConfigurationPtrType) ToDefenderForServersAwsOfferingConfigurationConfigurationPtrOutputWithContext(ctx context.Context) DefenderForServersAwsOfferingConfigurationConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DefenderForServersAwsOfferingConfigurationConfigurationPtrOutput)
-}
-
-// configuration for Vulnerability Assessment autoprovisioning
-type DefenderForServersAwsOfferingConfigurationConfigurationOutput struct{ *pulumi.OutputState }
-
-func (DefenderForServersAwsOfferingConfigurationConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefenderForServersAwsOfferingConfigurationConfiguration)(nil)).Elem()
-}
-
-func (o DefenderForServersAwsOfferingConfigurationConfigurationOutput) ToDefenderForServersAwsOfferingConfigurationConfigurationOutput() DefenderForServersAwsOfferingConfigurationConfigurationOutput {
-	return o
-}
-
-func (o DefenderForServersAwsOfferingConfigurationConfigurationOutput) ToDefenderForServersAwsOfferingConfigurationConfigurationOutputWithContext(ctx context.Context) DefenderForServersAwsOfferingConfigurationConfigurationOutput {
-	return o
-}
-
-func (o DefenderForServersAwsOfferingConfigurationConfigurationOutput) ToDefenderForServersAwsOfferingConfigurationConfigurationPtrOutput() DefenderForServersAwsOfferingConfigurationConfigurationPtrOutput {
-	return o.ToDefenderForServersAwsOfferingConfigurationConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (o DefenderForServersAwsOfferingConfigurationConfigurationOutput) ToDefenderForServersAwsOfferingConfigurationConfigurationPtrOutputWithContext(ctx context.Context) DefenderForServersAwsOfferingConfigurationConfigurationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefenderForServersAwsOfferingConfigurationConfiguration) *DefenderForServersAwsOfferingConfigurationConfiguration {
-		return &v
-	}).(DefenderForServersAwsOfferingConfigurationConfigurationPtrOutput)
-}
-
 // The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'
-func (o DefenderForServersAwsOfferingConfigurationConfigurationOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DefenderForServersAwsOfferingConfigurationConfiguration) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-type DefenderForServersAwsOfferingConfigurationConfigurationPtrOutput struct{ *pulumi.OutputState }
-
-func (DefenderForServersAwsOfferingConfigurationConfigurationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DefenderForServersAwsOfferingConfigurationConfiguration)(nil)).Elem()
-}
-
-func (o DefenderForServersAwsOfferingConfigurationConfigurationPtrOutput) ToDefenderForServersAwsOfferingConfigurationConfigurationPtrOutput() DefenderForServersAwsOfferingConfigurationConfigurationPtrOutput {
-	return o
-}
-
-func (o DefenderForServersAwsOfferingConfigurationConfigurationPtrOutput) ToDefenderForServersAwsOfferingConfigurationConfigurationPtrOutputWithContext(ctx context.Context) DefenderForServersAwsOfferingConfigurationConfigurationPtrOutput {
-	return o
-}
-
-func (o DefenderForServersAwsOfferingConfigurationConfigurationPtrOutput) Elem() DefenderForServersAwsOfferingConfigurationConfigurationOutput {
-	return o.ApplyT(func(v *DefenderForServersAwsOfferingConfigurationConfiguration) DefenderForServersAwsOfferingConfigurationConfiguration {
-		if v != nil {
-			return *v
-		}
-		var ret DefenderForServersAwsOfferingConfigurationConfiguration
-		return ret
-	}).(DefenderForServersAwsOfferingConfigurationConfigurationOutput)
-}
-
-// The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'
-func (o DefenderForServersAwsOfferingConfigurationConfigurationPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DefenderForServersAwsOfferingConfigurationConfiguration) *string {
+func (o DefenderForServersAwsOfferingConfigurationPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenderForServersAwsOfferingConfiguration) *string {
 		if v == nil {
 			return nil
 		}
 		return v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-// configuration for Microsoft Defender for Server VM scanning
-type DefenderForServersAwsOfferingConfigurationConfigurationConfiguration struct {
-	// The cloud role ARN in AWS for this feature
-	CloudRoleArn *string `pulumi:"cloudRoleArn"`
-	// VM tags that indicates that VM should not be scanned
-	ExclusionTags map[string]string `pulumi:"exclusionTags"`
-	// The scanning mode for the VM scan.
-	ScanningMode *string `pulumi:"scanningMode"`
-}
-
-// DefenderForServersAwsOfferingConfigurationConfigurationConfigurationInput is an input type that accepts DefenderForServersAwsOfferingConfigurationConfigurationConfigurationArgs and DefenderForServersAwsOfferingConfigurationConfigurationConfigurationOutput values.
-// You can construct a concrete instance of `DefenderForServersAwsOfferingConfigurationConfigurationConfigurationInput` via:
-//
-//	DefenderForServersAwsOfferingConfigurationConfigurationConfigurationArgs{...}
-type DefenderForServersAwsOfferingConfigurationConfigurationConfigurationInput interface {
-	pulumi.Input
-
-	ToDefenderForServersAwsOfferingConfigurationConfigurationConfigurationOutput() DefenderForServersAwsOfferingConfigurationConfigurationConfigurationOutput
-	ToDefenderForServersAwsOfferingConfigurationConfigurationConfigurationOutputWithContext(context.Context) DefenderForServersAwsOfferingConfigurationConfigurationConfigurationOutput
-}
-
-// configuration for Microsoft Defender for Server VM scanning
-type DefenderForServersAwsOfferingConfigurationConfigurationConfigurationArgs struct {
-	// The cloud role ARN in AWS for this feature
-	CloudRoleArn pulumi.StringPtrInput `pulumi:"cloudRoleArn"`
-	// VM tags that indicates that VM should not be scanned
-	ExclusionTags pulumi.StringMapInput `pulumi:"exclusionTags"`
-	// The scanning mode for the VM scan.
-	ScanningMode pulumi.StringPtrInput `pulumi:"scanningMode"`
-}
-
-func (DefenderForServersAwsOfferingConfigurationConfigurationConfigurationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefenderForServersAwsOfferingConfigurationConfigurationConfiguration)(nil)).Elem()
-}
-
-func (i DefenderForServersAwsOfferingConfigurationConfigurationConfigurationArgs) ToDefenderForServersAwsOfferingConfigurationConfigurationConfigurationOutput() DefenderForServersAwsOfferingConfigurationConfigurationConfigurationOutput {
-	return i.ToDefenderForServersAwsOfferingConfigurationConfigurationConfigurationOutputWithContext(context.Background())
-}
-
-func (i DefenderForServersAwsOfferingConfigurationConfigurationConfigurationArgs) ToDefenderForServersAwsOfferingConfigurationConfigurationConfigurationOutputWithContext(ctx context.Context) DefenderForServersAwsOfferingConfigurationConfigurationConfigurationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DefenderForServersAwsOfferingConfigurationConfigurationConfigurationOutput)
-}
-
-func (i DefenderForServersAwsOfferingConfigurationConfigurationConfigurationArgs) ToDefenderForServersAwsOfferingConfigurationConfigurationConfigurationPtrOutput() DefenderForServersAwsOfferingConfigurationConfigurationConfigurationPtrOutput {
-	return i.ToDefenderForServersAwsOfferingConfigurationConfigurationConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i DefenderForServersAwsOfferingConfigurationConfigurationConfigurationArgs) ToDefenderForServersAwsOfferingConfigurationConfigurationConfigurationPtrOutputWithContext(ctx context.Context) DefenderForServersAwsOfferingConfigurationConfigurationConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DefenderForServersAwsOfferingConfigurationConfigurationConfigurationOutput).ToDefenderForServersAwsOfferingConfigurationConfigurationConfigurationPtrOutputWithContext(ctx)
-}
-
-// DefenderForServersAwsOfferingConfigurationConfigurationConfigurationPtrInput is an input type that accepts DefenderForServersAwsOfferingConfigurationConfigurationConfigurationArgs, DefenderForServersAwsOfferingConfigurationConfigurationConfigurationPtr and DefenderForServersAwsOfferingConfigurationConfigurationConfigurationPtrOutput values.
-// You can construct a concrete instance of `DefenderForServersAwsOfferingConfigurationConfigurationConfigurationPtrInput` via:
-//
-//	        DefenderForServersAwsOfferingConfigurationConfigurationConfigurationArgs{...}
-//
-//	or:
-//
-//	        nil
-type DefenderForServersAwsOfferingConfigurationConfigurationConfigurationPtrInput interface {
-	pulumi.Input
-
-	ToDefenderForServersAwsOfferingConfigurationConfigurationConfigurationPtrOutput() DefenderForServersAwsOfferingConfigurationConfigurationConfigurationPtrOutput
-	ToDefenderForServersAwsOfferingConfigurationConfigurationConfigurationPtrOutputWithContext(context.Context) DefenderForServersAwsOfferingConfigurationConfigurationConfigurationPtrOutput
-}
-
-type defenderForServersAwsOfferingConfigurationConfigurationConfigurationPtrType DefenderForServersAwsOfferingConfigurationConfigurationConfigurationArgs
-
-func DefenderForServersAwsOfferingConfigurationConfigurationConfigurationPtr(v *DefenderForServersAwsOfferingConfigurationConfigurationConfigurationArgs) DefenderForServersAwsOfferingConfigurationConfigurationConfigurationPtrInput {
-	return (*defenderForServersAwsOfferingConfigurationConfigurationConfigurationPtrType)(v)
-}
-
-func (*defenderForServersAwsOfferingConfigurationConfigurationConfigurationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DefenderForServersAwsOfferingConfigurationConfigurationConfiguration)(nil)).Elem()
-}
-
-func (i *defenderForServersAwsOfferingConfigurationConfigurationConfigurationPtrType) ToDefenderForServersAwsOfferingConfigurationConfigurationConfigurationPtrOutput() DefenderForServersAwsOfferingConfigurationConfigurationConfigurationPtrOutput {
-	return i.ToDefenderForServersAwsOfferingConfigurationConfigurationConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i *defenderForServersAwsOfferingConfigurationConfigurationConfigurationPtrType) ToDefenderForServersAwsOfferingConfigurationConfigurationConfigurationPtrOutputWithContext(ctx context.Context) DefenderForServersAwsOfferingConfigurationConfigurationConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DefenderForServersAwsOfferingConfigurationConfigurationConfigurationPtrOutput)
-}
-
-// configuration for Microsoft Defender for Server VM scanning
-type DefenderForServersAwsOfferingConfigurationConfigurationConfigurationOutput struct{ *pulumi.OutputState }
-
-func (DefenderForServersAwsOfferingConfigurationConfigurationConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefenderForServersAwsOfferingConfigurationConfigurationConfiguration)(nil)).Elem()
-}
-
-func (o DefenderForServersAwsOfferingConfigurationConfigurationConfigurationOutput) ToDefenderForServersAwsOfferingConfigurationConfigurationConfigurationOutput() DefenderForServersAwsOfferingConfigurationConfigurationConfigurationOutput {
-	return o
-}
-
-func (o DefenderForServersAwsOfferingConfigurationConfigurationConfigurationOutput) ToDefenderForServersAwsOfferingConfigurationConfigurationConfigurationOutputWithContext(ctx context.Context) DefenderForServersAwsOfferingConfigurationConfigurationConfigurationOutput {
-	return o
-}
-
-func (o DefenderForServersAwsOfferingConfigurationConfigurationConfigurationOutput) ToDefenderForServersAwsOfferingConfigurationConfigurationConfigurationPtrOutput() DefenderForServersAwsOfferingConfigurationConfigurationConfigurationPtrOutput {
-	return o.ToDefenderForServersAwsOfferingConfigurationConfigurationConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (o DefenderForServersAwsOfferingConfigurationConfigurationConfigurationOutput) ToDefenderForServersAwsOfferingConfigurationConfigurationConfigurationPtrOutputWithContext(ctx context.Context) DefenderForServersAwsOfferingConfigurationConfigurationConfigurationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefenderForServersAwsOfferingConfigurationConfigurationConfiguration) *DefenderForServersAwsOfferingConfigurationConfigurationConfiguration {
-		return &v
-	}).(DefenderForServersAwsOfferingConfigurationConfigurationConfigurationPtrOutput)
-}
-
-// The cloud role ARN in AWS for this feature
-func (o DefenderForServersAwsOfferingConfigurationConfigurationConfigurationOutput) CloudRoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DefenderForServersAwsOfferingConfigurationConfigurationConfiguration) *string {
-		return v.CloudRoleArn
-	}).(pulumi.StringPtrOutput)
-}
-
-// VM tags that indicates that VM should not be scanned
-func (o DefenderForServersAwsOfferingConfigurationConfigurationConfigurationOutput) ExclusionTags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v DefenderForServersAwsOfferingConfigurationConfigurationConfiguration) map[string]string {
-		return v.ExclusionTags
-	}).(pulumi.StringMapOutput)
-}
-
-// The scanning mode for the VM scan.
-func (o DefenderForServersAwsOfferingConfigurationConfigurationConfigurationOutput) ScanningMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DefenderForServersAwsOfferingConfigurationConfigurationConfiguration) *string {
-		return v.ScanningMode
-	}).(pulumi.StringPtrOutput)
-}
-
-type DefenderForServersAwsOfferingConfigurationConfigurationConfigurationPtrOutput struct{ *pulumi.OutputState }
-
-func (DefenderForServersAwsOfferingConfigurationConfigurationConfigurationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DefenderForServersAwsOfferingConfigurationConfigurationConfiguration)(nil)).Elem()
-}
-
-func (o DefenderForServersAwsOfferingConfigurationConfigurationConfigurationPtrOutput) ToDefenderForServersAwsOfferingConfigurationConfigurationConfigurationPtrOutput() DefenderForServersAwsOfferingConfigurationConfigurationConfigurationPtrOutput {
-	return o
-}
-
-func (o DefenderForServersAwsOfferingConfigurationConfigurationConfigurationPtrOutput) ToDefenderForServersAwsOfferingConfigurationConfigurationConfigurationPtrOutputWithContext(ctx context.Context) DefenderForServersAwsOfferingConfigurationConfigurationConfigurationPtrOutput {
-	return o
-}
-
-func (o DefenderForServersAwsOfferingConfigurationConfigurationConfigurationPtrOutput) Elem() DefenderForServersAwsOfferingConfigurationConfigurationConfigurationOutput {
-	return o.ApplyT(func(v *DefenderForServersAwsOfferingConfigurationConfigurationConfiguration) DefenderForServersAwsOfferingConfigurationConfigurationConfiguration {
-		if v != nil {
-			return *v
-		}
-		var ret DefenderForServersAwsOfferingConfigurationConfigurationConfiguration
-		return ret
-	}).(DefenderForServersAwsOfferingConfigurationConfigurationConfigurationOutput)
-}
-
-// The cloud role ARN in AWS for this feature
-func (o DefenderForServersAwsOfferingConfigurationConfigurationConfigurationPtrOutput) CloudRoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DefenderForServersAwsOfferingConfigurationConfigurationConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CloudRoleArn
-	}).(pulumi.StringPtrOutput)
-}
-
-// VM tags that indicates that VM should not be scanned
-func (o DefenderForServersAwsOfferingConfigurationConfigurationConfigurationPtrOutput) ExclusionTags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *DefenderForServersAwsOfferingConfigurationConfigurationConfiguration) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.ExclusionTags
-	}).(pulumi.StringMapOutput)
-}
-
-// The scanning mode for the VM scan.
-func (o DefenderForServersAwsOfferingConfigurationConfigurationConfigurationPtrOutput) ScanningMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DefenderForServersAwsOfferingConfigurationConfigurationConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ScanningMode
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -12753,8 +16660,8 @@ func (o DefenderForServersAwsOfferingResponseOutput) VmScanners() DefenderForSer
 type DefenderForServersAwsOfferingResponseArcAutoProvisioning struct {
 	// The cloud role ARN in AWS for this feature
 	CloudRoleArn *string `pulumi:"cloudRoleArn"`
-	// Configuration for servers Arc auto provisioning
-	Configuration *DefenderForServersAwsOfferingResponseConfiguration `pulumi:"configuration"`
+	// Configuration for servers Arc auto provisioning for a given environment
+	Configuration *ArcAutoProvisioningResponseConfiguration `pulumi:"configuration"`
 	// Is arc auto provisioning enabled
 	Enabled *bool `pulumi:"enabled"`
 }
@@ -12779,11 +16686,11 @@ func (o DefenderForServersAwsOfferingResponseArcAutoProvisioningOutput) CloudRol
 	return o.ApplyT(func(v DefenderForServersAwsOfferingResponseArcAutoProvisioning) *string { return v.CloudRoleArn }).(pulumi.StringPtrOutput)
 }
 
-// Configuration for servers Arc auto provisioning
-func (o DefenderForServersAwsOfferingResponseArcAutoProvisioningOutput) Configuration() DefenderForServersAwsOfferingResponseConfigurationPtrOutput {
-	return o.ApplyT(func(v DefenderForServersAwsOfferingResponseArcAutoProvisioning) *DefenderForServersAwsOfferingResponseConfiguration {
+// Configuration for servers Arc auto provisioning for a given environment
+func (o DefenderForServersAwsOfferingResponseArcAutoProvisioningOutput) Configuration() ArcAutoProvisioningResponseConfigurationPtrOutput {
+	return o.ApplyT(func(v DefenderForServersAwsOfferingResponseArcAutoProvisioning) *ArcAutoProvisioningResponseConfiguration {
 		return v.Configuration
-	}).(DefenderForServersAwsOfferingResponseConfigurationPtrOutput)
+	}).(ArcAutoProvisioningResponseConfigurationPtrOutput)
 }
 
 // Is arc auto provisioning enabled
@@ -12825,14 +16732,14 @@ func (o DefenderForServersAwsOfferingResponseArcAutoProvisioningPtrOutput) Cloud
 	}).(pulumi.StringPtrOutput)
 }
 
-// Configuration for servers Arc auto provisioning
-func (o DefenderForServersAwsOfferingResponseArcAutoProvisioningPtrOutput) Configuration() DefenderForServersAwsOfferingResponseConfigurationPtrOutput {
-	return o.ApplyT(func(v *DefenderForServersAwsOfferingResponseArcAutoProvisioning) *DefenderForServersAwsOfferingResponseConfiguration {
+// Configuration for servers Arc auto provisioning for a given environment
+func (o DefenderForServersAwsOfferingResponseArcAutoProvisioningPtrOutput) Configuration() ArcAutoProvisioningResponseConfigurationPtrOutput {
+	return o.ApplyT(func(v *DefenderForServersAwsOfferingResponseArcAutoProvisioning) *ArcAutoProvisioningResponseConfiguration {
 		if v == nil {
 			return nil
 		}
 		return v.Configuration
-	}).(DefenderForServersAwsOfferingResponseConfigurationPtrOutput)
+	}).(ArcAutoProvisioningResponseConfigurationPtrOutput)
 }
 
 // Is arc auto provisioning enabled
@@ -12845,15 +16752,13 @@ func (o DefenderForServersAwsOfferingResponseArcAutoProvisioningPtrOutput) Enabl
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Configuration for servers Arc auto provisioning
+// configuration for Vulnerability Assessment autoprovisioning
 type DefenderForServersAwsOfferingResponseConfiguration struct {
-	// Optional Arc private link scope resource id to link the Arc agent
-	PrivateLinkScope *string `pulumi:"privateLinkScope"`
-	// Optional HTTP proxy endpoint to use for the Arc agent
-	Proxy *string `pulumi:"proxy"`
+	// The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'
+	Type *string `pulumi:"type"`
 }
 
-// Configuration for servers Arc auto provisioning
+// configuration for Vulnerability Assessment autoprovisioning
 type DefenderForServersAwsOfferingResponseConfigurationOutput struct{ *pulumi.OutputState }
 
 func (DefenderForServersAwsOfferingResponseConfigurationOutput) ElementType() reflect.Type {
@@ -12868,14 +16773,9 @@ func (o DefenderForServersAwsOfferingResponseConfigurationOutput) ToDefenderForS
 	return o
 }
 
-// Optional Arc private link scope resource id to link the Arc agent
-func (o DefenderForServersAwsOfferingResponseConfigurationOutput) PrivateLinkScope() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DefenderForServersAwsOfferingResponseConfiguration) *string { return v.PrivateLinkScope }).(pulumi.StringPtrOutput)
-}
-
-// Optional HTTP proxy endpoint to use for the Arc agent
-func (o DefenderForServersAwsOfferingResponseConfigurationOutput) Proxy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DefenderForServersAwsOfferingResponseConfiguration) *string { return v.Proxy }).(pulumi.StringPtrOutput)
+// The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'
+func (o DefenderForServersAwsOfferingResponseConfigurationOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderForServersAwsOfferingResponseConfiguration) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
 type DefenderForServersAwsOfferingResponseConfigurationPtrOutput struct{ *pulumi.OutputState }
@@ -12902,183 +16802,13 @@ func (o DefenderForServersAwsOfferingResponseConfigurationPtrOutput) Elem() Defe
 	}).(DefenderForServersAwsOfferingResponseConfigurationOutput)
 }
 
-// Optional Arc private link scope resource id to link the Arc agent
-func (o DefenderForServersAwsOfferingResponseConfigurationPtrOutput) PrivateLinkScope() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DefenderForServersAwsOfferingResponseConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PrivateLinkScope
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional HTTP proxy endpoint to use for the Arc agent
-func (o DefenderForServersAwsOfferingResponseConfigurationPtrOutput) Proxy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DefenderForServersAwsOfferingResponseConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Proxy
-	}).(pulumi.StringPtrOutput)
-}
-
-// configuration for Vulnerability Assessment autoprovisioning
-type DefenderForServersAwsOfferingResponseConfigurationConfiguration struct {
-	// The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'
-	Type *string `pulumi:"type"`
-}
-
-// configuration for Vulnerability Assessment autoprovisioning
-type DefenderForServersAwsOfferingResponseConfigurationConfigurationOutput struct{ *pulumi.OutputState }
-
-func (DefenderForServersAwsOfferingResponseConfigurationConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefenderForServersAwsOfferingResponseConfigurationConfiguration)(nil)).Elem()
-}
-
-func (o DefenderForServersAwsOfferingResponseConfigurationConfigurationOutput) ToDefenderForServersAwsOfferingResponseConfigurationConfigurationOutput() DefenderForServersAwsOfferingResponseConfigurationConfigurationOutput {
-	return o
-}
-
-func (o DefenderForServersAwsOfferingResponseConfigurationConfigurationOutput) ToDefenderForServersAwsOfferingResponseConfigurationConfigurationOutputWithContext(ctx context.Context) DefenderForServersAwsOfferingResponseConfigurationConfigurationOutput {
-	return o
-}
-
 // The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'
-func (o DefenderForServersAwsOfferingResponseConfigurationConfigurationOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DefenderForServersAwsOfferingResponseConfigurationConfiguration) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-type DefenderForServersAwsOfferingResponseConfigurationConfigurationPtrOutput struct{ *pulumi.OutputState }
-
-func (DefenderForServersAwsOfferingResponseConfigurationConfigurationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DefenderForServersAwsOfferingResponseConfigurationConfiguration)(nil)).Elem()
-}
-
-func (o DefenderForServersAwsOfferingResponseConfigurationConfigurationPtrOutput) ToDefenderForServersAwsOfferingResponseConfigurationConfigurationPtrOutput() DefenderForServersAwsOfferingResponseConfigurationConfigurationPtrOutput {
-	return o
-}
-
-func (o DefenderForServersAwsOfferingResponseConfigurationConfigurationPtrOutput) ToDefenderForServersAwsOfferingResponseConfigurationConfigurationPtrOutputWithContext(ctx context.Context) DefenderForServersAwsOfferingResponseConfigurationConfigurationPtrOutput {
-	return o
-}
-
-func (o DefenderForServersAwsOfferingResponseConfigurationConfigurationPtrOutput) Elem() DefenderForServersAwsOfferingResponseConfigurationConfigurationOutput {
-	return o.ApplyT(func(v *DefenderForServersAwsOfferingResponseConfigurationConfiguration) DefenderForServersAwsOfferingResponseConfigurationConfiguration {
-		if v != nil {
-			return *v
-		}
-		var ret DefenderForServersAwsOfferingResponseConfigurationConfiguration
-		return ret
-	}).(DefenderForServersAwsOfferingResponseConfigurationConfigurationOutput)
-}
-
-// The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'
-func (o DefenderForServersAwsOfferingResponseConfigurationConfigurationPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DefenderForServersAwsOfferingResponseConfigurationConfiguration) *string {
+func (o DefenderForServersAwsOfferingResponseConfigurationPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenderForServersAwsOfferingResponseConfiguration) *string {
 		if v == nil {
 			return nil
 		}
 		return v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-// configuration for Microsoft Defender for Server VM scanning
-type DefenderForServersAwsOfferingResponseConfigurationConfigurationConfiguration struct {
-	// The cloud role ARN in AWS for this feature
-	CloudRoleArn *string `pulumi:"cloudRoleArn"`
-	// VM tags that indicates that VM should not be scanned
-	ExclusionTags map[string]string `pulumi:"exclusionTags"`
-	// The scanning mode for the VM scan.
-	ScanningMode *string `pulumi:"scanningMode"`
-}
-
-// configuration for Microsoft Defender for Server VM scanning
-type DefenderForServersAwsOfferingResponseConfigurationConfigurationConfigurationOutput struct{ *pulumi.OutputState }
-
-func (DefenderForServersAwsOfferingResponseConfigurationConfigurationConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefenderForServersAwsOfferingResponseConfigurationConfigurationConfiguration)(nil)).Elem()
-}
-
-func (o DefenderForServersAwsOfferingResponseConfigurationConfigurationConfigurationOutput) ToDefenderForServersAwsOfferingResponseConfigurationConfigurationConfigurationOutput() DefenderForServersAwsOfferingResponseConfigurationConfigurationConfigurationOutput {
-	return o
-}
-
-func (o DefenderForServersAwsOfferingResponseConfigurationConfigurationConfigurationOutput) ToDefenderForServersAwsOfferingResponseConfigurationConfigurationConfigurationOutputWithContext(ctx context.Context) DefenderForServersAwsOfferingResponseConfigurationConfigurationConfigurationOutput {
-	return o
-}
-
-// The cloud role ARN in AWS for this feature
-func (o DefenderForServersAwsOfferingResponseConfigurationConfigurationConfigurationOutput) CloudRoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DefenderForServersAwsOfferingResponseConfigurationConfigurationConfiguration) *string {
-		return v.CloudRoleArn
-	}).(pulumi.StringPtrOutput)
-}
-
-// VM tags that indicates that VM should not be scanned
-func (o DefenderForServersAwsOfferingResponseConfigurationConfigurationConfigurationOutput) ExclusionTags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v DefenderForServersAwsOfferingResponseConfigurationConfigurationConfiguration) map[string]string {
-		return v.ExclusionTags
-	}).(pulumi.StringMapOutput)
-}
-
-// The scanning mode for the VM scan.
-func (o DefenderForServersAwsOfferingResponseConfigurationConfigurationConfigurationOutput) ScanningMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DefenderForServersAwsOfferingResponseConfigurationConfigurationConfiguration) *string {
-		return v.ScanningMode
-	}).(pulumi.StringPtrOutput)
-}
-
-type DefenderForServersAwsOfferingResponseConfigurationConfigurationConfigurationPtrOutput struct{ *pulumi.OutputState }
-
-func (DefenderForServersAwsOfferingResponseConfigurationConfigurationConfigurationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DefenderForServersAwsOfferingResponseConfigurationConfigurationConfiguration)(nil)).Elem()
-}
-
-func (o DefenderForServersAwsOfferingResponseConfigurationConfigurationConfigurationPtrOutput) ToDefenderForServersAwsOfferingResponseConfigurationConfigurationConfigurationPtrOutput() DefenderForServersAwsOfferingResponseConfigurationConfigurationConfigurationPtrOutput {
-	return o
-}
-
-func (o DefenderForServersAwsOfferingResponseConfigurationConfigurationConfigurationPtrOutput) ToDefenderForServersAwsOfferingResponseConfigurationConfigurationConfigurationPtrOutputWithContext(ctx context.Context) DefenderForServersAwsOfferingResponseConfigurationConfigurationConfigurationPtrOutput {
-	return o
-}
-
-func (o DefenderForServersAwsOfferingResponseConfigurationConfigurationConfigurationPtrOutput) Elem() DefenderForServersAwsOfferingResponseConfigurationConfigurationConfigurationOutput {
-	return o.ApplyT(func(v *DefenderForServersAwsOfferingResponseConfigurationConfigurationConfiguration) DefenderForServersAwsOfferingResponseConfigurationConfigurationConfiguration {
-		if v != nil {
-			return *v
-		}
-		var ret DefenderForServersAwsOfferingResponseConfigurationConfigurationConfiguration
-		return ret
-	}).(DefenderForServersAwsOfferingResponseConfigurationConfigurationConfigurationOutput)
-}
-
-// The cloud role ARN in AWS for this feature
-func (o DefenderForServersAwsOfferingResponseConfigurationConfigurationConfigurationPtrOutput) CloudRoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DefenderForServersAwsOfferingResponseConfigurationConfigurationConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CloudRoleArn
-	}).(pulumi.StringPtrOutput)
-}
-
-// VM tags that indicates that VM should not be scanned
-func (o DefenderForServersAwsOfferingResponseConfigurationConfigurationConfigurationPtrOutput) ExclusionTags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *DefenderForServersAwsOfferingResponseConfigurationConfigurationConfiguration) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.ExclusionTags
-	}).(pulumi.StringMapOutput)
-}
-
-// The scanning mode for the VM scan.
-func (o DefenderForServersAwsOfferingResponseConfigurationConfigurationConfigurationPtrOutput) ScanningMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DefenderForServersAwsOfferingResponseConfigurationConfigurationConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ScanningMode
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -13282,7 +17012,7 @@ func (o DefenderForServersAwsOfferingResponseSubPlanPtrOutput) Type() pulumi.Str
 // The Vulnerability Assessment autoprovisioning configuration
 type DefenderForServersAwsOfferingResponseVaAutoProvisioning struct {
 	// configuration for Vulnerability Assessment autoprovisioning
-	Configuration *DefenderForServersAwsOfferingResponseConfigurationConfiguration `pulumi:"configuration"`
+	Configuration *DefenderForServersAwsOfferingResponseConfiguration `pulumi:"configuration"`
 	// Is Vulnerability Assessment auto provisioning enabled
 	Enabled *bool `pulumi:"enabled"`
 }
@@ -13303,10 +17033,10 @@ func (o DefenderForServersAwsOfferingResponseVaAutoProvisioningOutput) ToDefende
 }
 
 // configuration for Vulnerability Assessment autoprovisioning
-func (o DefenderForServersAwsOfferingResponseVaAutoProvisioningOutput) Configuration() DefenderForServersAwsOfferingResponseConfigurationConfigurationPtrOutput {
-	return o.ApplyT(func(v DefenderForServersAwsOfferingResponseVaAutoProvisioning) *DefenderForServersAwsOfferingResponseConfigurationConfiguration {
+func (o DefenderForServersAwsOfferingResponseVaAutoProvisioningOutput) Configuration() DefenderForServersAwsOfferingResponseConfigurationPtrOutput {
+	return o.ApplyT(func(v DefenderForServersAwsOfferingResponseVaAutoProvisioning) *DefenderForServersAwsOfferingResponseConfiguration {
 		return v.Configuration
-	}).(DefenderForServersAwsOfferingResponseConfigurationConfigurationPtrOutput)
+	}).(DefenderForServersAwsOfferingResponseConfigurationPtrOutput)
 }
 
 // Is Vulnerability Assessment auto provisioning enabled
@@ -13339,13 +17069,13 @@ func (o DefenderForServersAwsOfferingResponseVaAutoProvisioningPtrOutput) Elem()
 }
 
 // configuration for Vulnerability Assessment autoprovisioning
-func (o DefenderForServersAwsOfferingResponseVaAutoProvisioningPtrOutput) Configuration() DefenderForServersAwsOfferingResponseConfigurationConfigurationPtrOutput {
-	return o.ApplyT(func(v *DefenderForServersAwsOfferingResponseVaAutoProvisioning) *DefenderForServersAwsOfferingResponseConfigurationConfiguration {
+func (o DefenderForServersAwsOfferingResponseVaAutoProvisioningPtrOutput) Configuration() DefenderForServersAwsOfferingResponseConfigurationPtrOutput {
+	return o.ApplyT(func(v *DefenderForServersAwsOfferingResponseVaAutoProvisioning) *DefenderForServersAwsOfferingResponseConfiguration {
 		if v == nil {
 			return nil
 		}
 		return v.Configuration
-	}).(DefenderForServersAwsOfferingResponseConfigurationConfigurationPtrOutput)
+	}).(DefenderForServersAwsOfferingResponseConfigurationPtrOutput)
 }
 
 // Is Vulnerability Assessment auto provisioning enabled
@@ -13360,9 +17090,11 @@ func (o DefenderForServersAwsOfferingResponseVaAutoProvisioningPtrOutput) Enable
 
 // The Microsoft Defender for Server VM scanning configuration
 type DefenderForServersAwsOfferingResponseVmScanners struct {
-	// configuration for Microsoft Defender for Server VM scanning
-	Configuration *DefenderForServersAwsOfferingResponseConfigurationConfigurationConfiguration `pulumi:"configuration"`
-	// Is Microsoft Defender for Server VM scanning enabled
+	// The cloud role ARN in AWS for this feature
+	CloudRoleArn *string `pulumi:"cloudRoleArn"`
+	// Configuration for VM scanning
+	Configuration *VmScannersBaseResponseConfiguration `pulumi:"configuration"`
+	// Is VM scanning enabled
 	Enabled *bool `pulumi:"enabled"`
 }
 
@@ -13381,14 +17113,19 @@ func (o DefenderForServersAwsOfferingResponseVmScannersOutput) ToDefenderForServ
 	return o
 }
 
-// configuration for Microsoft Defender for Server VM scanning
-func (o DefenderForServersAwsOfferingResponseVmScannersOutput) Configuration() DefenderForServersAwsOfferingResponseConfigurationConfigurationConfigurationPtrOutput {
-	return o.ApplyT(func(v DefenderForServersAwsOfferingResponseVmScanners) *DefenderForServersAwsOfferingResponseConfigurationConfigurationConfiguration {
-		return v.Configuration
-	}).(DefenderForServersAwsOfferingResponseConfigurationConfigurationConfigurationPtrOutput)
+// The cloud role ARN in AWS for this feature
+func (o DefenderForServersAwsOfferingResponseVmScannersOutput) CloudRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderForServersAwsOfferingResponseVmScanners) *string { return v.CloudRoleArn }).(pulumi.StringPtrOutput)
 }
 
-// Is Microsoft Defender for Server VM scanning enabled
+// Configuration for VM scanning
+func (o DefenderForServersAwsOfferingResponseVmScannersOutput) Configuration() VmScannersBaseResponseConfigurationPtrOutput {
+	return o.ApplyT(func(v DefenderForServersAwsOfferingResponseVmScanners) *VmScannersBaseResponseConfiguration {
+		return v.Configuration
+	}).(VmScannersBaseResponseConfigurationPtrOutput)
+}
+
+// Is VM scanning enabled
 func (o DefenderForServersAwsOfferingResponseVmScannersOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DefenderForServersAwsOfferingResponseVmScanners) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -13417,17 +17154,27 @@ func (o DefenderForServersAwsOfferingResponseVmScannersPtrOutput) Elem() Defende
 	}).(DefenderForServersAwsOfferingResponseVmScannersOutput)
 }
 
-// configuration for Microsoft Defender for Server VM scanning
-func (o DefenderForServersAwsOfferingResponseVmScannersPtrOutput) Configuration() DefenderForServersAwsOfferingResponseConfigurationConfigurationConfigurationPtrOutput {
-	return o.ApplyT(func(v *DefenderForServersAwsOfferingResponseVmScanners) *DefenderForServersAwsOfferingResponseConfigurationConfigurationConfiguration {
+// The cloud role ARN in AWS for this feature
+func (o DefenderForServersAwsOfferingResponseVmScannersPtrOutput) CloudRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenderForServersAwsOfferingResponseVmScanners) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CloudRoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for VM scanning
+func (o DefenderForServersAwsOfferingResponseVmScannersPtrOutput) Configuration() VmScannersBaseResponseConfigurationPtrOutput {
+	return o.ApplyT(func(v *DefenderForServersAwsOfferingResponseVmScanners) *VmScannersBaseResponseConfiguration {
 		if v == nil {
 			return nil
 		}
 		return v.Configuration
-	}).(DefenderForServersAwsOfferingResponseConfigurationConfigurationConfigurationPtrOutput)
+	}).(VmScannersBaseResponseConfigurationPtrOutput)
 }
 
-// Is Microsoft Defender for Server VM scanning enabled
+// Is VM scanning enabled
 func (o DefenderForServersAwsOfferingResponseVmScannersPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DefenderForServersAwsOfferingResponseVmScanners) *bool {
 		if v == nil {
@@ -13580,7 +17327,7 @@ func (o DefenderForServersAwsOfferingSubPlanPtrOutput) Type() pulumi.StringPtrOu
 // The Vulnerability Assessment autoprovisioning configuration
 type DefenderForServersAwsOfferingVaAutoProvisioning struct {
 	// configuration for Vulnerability Assessment autoprovisioning
-	Configuration *DefenderForServersAwsOfferingConfigurationConfiguration `pulumi:"configuration"`
+	Configuration *DefenderForServersAwsOfferingConfiguration `pulumi:"configuration"`
 	// Is Vulnerability Assessment auto provisioning enabled
 	Enabled *bool `pulumi:"enabled"`
 }
@@ -13599,7 +17346,7 @@ type DefenderForServersAwsOfferingVaAutoProvisioningInput interface {
 // The Vulnerability Assessment autoprovisioning configuration
 type DefenderForServersAwsOfferingVaAutoProvisioningArgs struct {
 	// configuration for Vulnerability Assessment autoprovisioning
-	Configuration DefenderForServersAwsOfferingConfigurationConfigurationPtrInput `pulumi:"configuration"`
+	Configuration DefenderForServersAwsOfferingConfigurationPtrInput `pulumi:"configuration"`
 	// Is Vulnerability Assessment auto provisioning enabled
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
@@ -13683,10 +17430,10 @@ func (o DefenderForServersAwsOfferingVaAutoProvisioningOutput) ToDefenderForServ
 }
 
 // configuration for Vulnerability Assessment autoprovisioning
-func (o DefenderForServersAwsOfferingVaAutoProvisioningOutput) Configuration() DefenderForServersAwsOfferingConfigurationConfigurationPtrOutput {
-	return o.ApplyT(func(v DefenderForServersAwsOfferingVaAutoProvisioning) *DefenderForServersAwsOfferingConfigurationConfiguration {
+func (o DefenderForServersAwsOfferingVaAutoProvisioningOutput) Configuration() DefenderForServersAwsOfferingConfigurationPtrOutput {
+	return o.ApplyT(func(v DefenderForServersAwsOfferingVaAutoProvisioning) *DefenderForServersAwsOfferingConfiguration {
 		return v.Configuration
-	}).(DefenderForServersAwsOfferingConfigurationConfigurationPtrOutput)
+	}).(DefenderForServersAwsOfferingConfigurationPtrOutput)
 }
 
 // Is Vulnerability Assessment auto provisioning enabled
@@ -13719,13 +17466,13 @@ func (o DefenderForServersAwsOfferingVaAutoProvisioningPtrOutput) Elem() Defende
 }
 
 // configuration for Vulnerability Assessment autoprovisioning
-func (o DefenderForServersAwsOfferingVaAutoProvisioningPtrOutput) Configuration() DefenderForServersAwsOfferingConfigurationConfigurationPtrOutput {
-	return o.ApplyT(func(v *DefenderForServersAwsOfferingVaAutoProvisioning) *DefenderForServersAwsOfferingConfigurationConfiguration {
+func (o DefenderForServersAwsOfferingVaAutoProvisioningPtrOutput) Configuration() DefenderForServersAwsOfferingConfigurationPtrOutput {
+	return o.ApplyT(func(v *DefenderForServersAwsOfferingVaAutoProvisioning) *DefenderForServersAwsOfferingConfiguration {
 		if v == nil {
 			return nil
 		}
 		return v.Configuration
-	}).(DefenderForServersAwsOfferingConfigurationConfigurationPtrOutput)
+	}).(DefenderForServersAwsOfferingConfigurationPtrOutput)
 }
 
 // Is Vulnerability Assessment auto provisioning enabled
@@ -13740,9 +17487,11 @@ func (o DefenderForServersAwsOfferingVaAutoProvisioningPtrOutput) Enabled() pulu
 
 // The Microsoft Defender for Server VM scanning configuration
 type DefenderForServersAwsOfferingVmScanners struct {
-	// configuration for Microsoft Defender for Server VM scanning
-	Configuration *DefenderForServersAwsOfferingConfigurationConfigurationConfiguration `pulumi:"configuration"`
-	// Is Microsoft Defender for Server VM scanning enabled
+	// The cloud role ARN in AWS for this feature
+	CloudRoleArn *string `pulumi:"cloudRoleArn"`
+	// Configuration for VM scanning
+	Configuration *VmScannersBaseConfiguration `pulumi:"configuration"`
+	// Is VM scanning enabled
 	Enabled *bool `pulumi:"enabled"`
 }
 
@@ -13759,9 +17508,11 @@ type DefenderForServersAwsOfferingVmScannersInput interface {
 
 // The Microsoft Defender for Server VM scanning configuration
 type DefenderForServersAwsOfferingVmScannersArgs struct {
-	// configuration for Microsoft Defender for Server VM scanning
-	Configuration DefenderForServersAwsOfferingConfigurationConfigurationConfigurationPtrInput `pulumi:"configuration"`
-	// Is Microsoft Defender for Server VM scanning enabled
+	// The cloud role ARN in AWS for this feature
+	CloudRoleArn pulumi.StringPtrInput `pulumi:"cloudRoleArn"`
+	// Configuration for VM scanning
+	Configuration VmScannersBaseConfigurationPtrInput `pulumi:"configuration"`
+	// Is VM scanning enabled
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
@@ -13843,14 +17594,17 @@ func (o DefenderForServersAwsOfferingVmScannersOutput) ToDefenderForServersAwsOf
 	}).(DefenderForServersAwsOfferingVmScannersPtrOutput)
 }
 
-// configuration for Microsoft Defender for Server VM scanning
-func (o DefenderForServersAwsOfferingVmScannersOutput) Configuration() DefenderForServersAwsOfferingConfigurationConfigurationConfigurationPtrOutput {
-	return o.ApplyT(func(v DefenderForServersAwsOfferingVmScanners) *DefenderForServersAwsOfferingConfigurationConfigurationConfiguration {
-		return v.Configuration
-	}).(DefenderForServersAwsOfferingConfigurationConfigurationConfigurationPtrOutput)
+// The cloud role ARN in AWS for this feature
+func (o DefenderForServersAwsOfferingVmScannersOutput) CloudRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderForServersAwsOfferingVmScanners) *string { return v.CloudRoleArn }).(pulumi.StringPtrOutput)
 }
 
-// Is Microsoft Defender for Server VM scanning enabled
+// Configuration for VM scanning
+func (o DefenderForServersAwsOfferingVmScannersOutput) Configuration() VmScannersBaseConfigurationPtrOutput {
+	return o.ApplyT(func(v DefenderForServersAwsOfferingVmScanners) *VmScannersBaseConfiguration { return v.Configuration }).(VmScannersBaseConfigurationPtrOutput)
+}
+
+// Is VM scanning enabled
 func (o DefenderForServersAwsOfferingVmScannersOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DefenderForServersAwsOfferingVmScanners) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -13879,17 +17633,27 @@ func (o DefenderForServersAwsOfferingVmScannersPtrOutput) Elem() DefenderForServ
 	}).(DefenderForServersAwsOfferingVmScannersOutput)
 }
 
-// configuration for Microsoft Defender for Server VM scanning
-func (o DefenderForServersAwsOfferingVmScannersPtrOutput) Configuration() DefenderForServersAwsOfferingConfigurationConfigurationConfigurationPtrOutput {
-	return o.ApplyT(func(v *DefenderForServersAwsOfferingVmScanners) *DefenderForServersAwsOfferingConfigurationConfigurationConfiguration {
+// The cloud role ARN in AWS for this feature
+func (o DefenderForServersAwsOfferingVmScannersPtrOutput) CloudRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenderForServersAwsOfferingVmScanners) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CloudRoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for VM scanning
+func (o DefenderForServersAwsOfferingVmScannersPtrOutput) Configuration() VmScannersBaseConfigurationPtrOutput {
+	return o.ApplyT(func(v *DefenderForServersAwsOfferingVmScanners) *VmScannersBaseConfiguration {
 		if v == nil {
 			return nil
 		}
 		return v.Configuration
-	}).(DefenderForServersAwsOfferingConfigurationConfigurationConfigurationPtrOutput)
+	}).(VmScannersBaseConfigurationPtrOutput)
 }
 
-// Is Microsoft Defender for Server VM scanning enabled
+// Is VM scanning enabled
 func (o DefenderForServersAwsOfferingVmScannersPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DefenderForServersAwsOfferingVmScanners) *bool {
 		if v == nil {
@@ -14021,8 +17785,8 @@ func (o DefenderForServersGcpOfferingOutput) VmScanners() DefenderForServersGcpO
 
 // The ARC autoprovisioning configuration
 type DefenderForServersGcpOfferingArcAutoProvisioning struct {
-	// Configuration for servers Arc auto provisioning
-	Configuration *DefenderForServersGcpOfferingConfiguration `pulumi:"configuration"`
+	// Configuration for servers Arc auto provisioning for a given environment
+	Configuration *ArcAutoProvisioningConfiguration `pulumi:"configuration"`
 	// Is arc auto provisioning enabled
 	Enabled *bool `pulumi:"enabled"`
 }
@@ -14040,8 +17804,8 @@ type DefenderForServersGcpOfferingArcAutoProvisioningInput interface {
 
 // The ARC autoprovisioning configuration
 type DefenderForServersGcpOfferingArcAutoProvisioningArgs struct {
-	// Configuration for servers Arc auto provisioning
-	Configuration DefenderForServersGcpOfferingConfigurationPtrInput `pulumi:"configuration"`
+	// Configuration for servers Arc auto provisioning for a given environment
+	Configuration ArcAutoProvisioningConfigurationPtrInput `pulumi:"configuration"`
 	// Is arc auto provisioning enabled
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
@@ -14124,11 +17888,11 @@ func (o DefenderForServersGcpOfferingArcAutoProvisioningOutput) ToDefenderForSer
 	}).(DefenderForServersGcpOfferingArcAutoProvisioningPtrOutput)
 }
 
-// Configuration for servers Arc auto provisioning
-func (o DefenderForServersGcpOfferingArcAutoProvisioningOutput) Configuration() DefenderForServersGcpOfferingConfigurationPtrOutput {
-	return o.ApplyT(func(v DefenderForServersGcpOfferingArcAutoProvisioning) *DefenderForServersGcpOfferingConfiguration {
+// Configuration for servers Arc auto provisioning for a given environment
+func (o DefenderForServersGcpOfferingArcAutoProvisioningOutput) Configuration() ArcAutoProvisioningConfigurationPtrOutput {
+	return o.ApplyT(func(v DefenderForServersGcpOfferingArcAutoProvisioning) *ArcAutoProvisioningConfiguration {
 		return v.Configuration
-	}).(DefenderForServersGcpOfferingConfigurationPtrOutput)
+	}).(ArcAutoProvisioningConfigurationPtrOutput)
 }
 
 // Is arc auto provisioning enabled
@@ -14160,14 +17924,14 @@ func (o DefenderForServersGcpOfferingArcAutoProvisioningPtrOutput) Elem() Defend
 	}).(DefenderForServersGcpOfferingArcAutoProvisioningOutput)
 }
 
-// Configuration for servers Arc auto provisioning
-func (o DefenderForServersGcpOfferingArcAutoProvisioningPtrOutput) Configuration() DefenderForServersGcpOfferingConfigurationPtrOutput {
-	return o.ApplyT(func(v *DefenderForServersGcpOfferingArcAutoProvisioning) *DefenderForServersGcpOfferingConfiguration {
+// Configuration for servers Arc auto provisioning for a given environment
+func (o DefenderForServersGcpOfferingArcAutoProvisioningPtrOutput) Configuration() ArcAutoProvisioningConfigurationPtrOutput {
+	return o.ApplyT(func(v *DefenderForServersGcpOfferingArcAutoProvisioning) *ArcAutoProvisioningConfiguration {
 		if v == nil {
 			return nil
 		}
 		return v.Configuration
-	}).(DefenderForServersGcpOfferingConfigurationPtrOutput)
+	}).(ArcAutoProvisioningConfigurationPtrOutput)
 }
 
 // Is arc auto provisioning enabled
@@ -14180,12 +17944,10 @@ func (o DefenderForServersGcpOfferingArcAutoProvisioningPtrOutput) Enabled() pul
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Configuration for servers Arc auto provisioning
+// configuration for Vulnerability Assessment autoprovisioning
 type DefenderForServersGcpOfferingConfiguration struct {
-	// Optional Arc private link scope resource id to link the Arc agent
-	PrivateLinkScope *string `pulumi:"privateLinkScope"`
-	// Optional HTTP proxy endpoint to use for the Arc agent
-	Proxy *string `pulumi:"proxy"`
+	// The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'
+	Type *string `pulumi:"type"`
 }
 
 // DefenderForServersGcpOfferingConfigurationInput is an input type that accepts DefenderForServersGcpOfferingConfigurationArgs and DefenderForServersGcpOfferingConfigurationOutput values.
@@ -14199,12 +17961,10 @@ type DefenderForServersGcpOfferingConfigurationInput interface {
 	ToDefenderForServersGcpOfferingConfigurationOutputWithContext(context.Context) DefenderForServersGcpOfferingConfigurationOutput
 }
 
-// Configuration for servers Arc auto provisioning
+// configuration for Vulnerability Assessment autoprovisioning
 type DefenderForServersGcpOfferingConfigurationArgs struct {
-	// Optional Arc private link scope resource id to link the Arc agent
-	PrivateLinkScope pulumi.StringPtrInput `pulumi:"privateLinkScope"`
-	// Optional HTTP proxy endpoint to use for the Arc agent
-	Proxy pulumi.StringPtrInput `pulumi:"proxy"`
+	// The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (DefenderForServersGcpOfferingConfigurationArgs) ElementType() reflect.Type {
@@ -14260,7 +18020,7 @@ func (i *defenderForServersGcpOfferingConfigurationPtrType) ToDefenderForServers
 	return pulumi.ToOutputWithContext(ctx, i).(DefenderForServersGcpOfferingConfigurationPtrOutput)
 }
 
-// Configuration for servers Arc auto provisioning
+// configuration for Vulnerability Assessment autoprovisioning
 type DefenderForServersGcpOfferingConfigurationOutput struct{ *pulumi.OutputState }
 
 func (DefenderForServersGcpOfferingConfigurationOutput) ElementType() reflect.Type {
@@ -14285,14 +18045,9 @@ func (o DefenderForServersGcpOfferingConfigurationOutput) ToDefenderForServersGc
 	}).(DefenderForServersGcpOfferingConfigurationPtrOutput)
 }
 
-// Optional Arc private link scope resource id to link the Arc agent
-func (o DefenderForServersGcpOfferingConfigurationOutput) PrivateLinkScope() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DefenderForServersGcpOfferingConfiguration) *string { return v.PrivateLinkScope }).(pulumi.StringPtrOutput)
-}
-
-// Optional HTTP proxy endpoint to use for the Arc agent
-func (o DefenderForServersGcpOfferingConfigurationOutput) Proxy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DefenderForServersGcpOfferingConfiguration) *string { return v.Proxy }).(pulumi.StringPtrOutput)
+// The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'
+func (o DefenderForServersGcpOfferingConfigurationOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderForServersGcpOfferingConfiguration) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
 type DefenderForServersGcpOfferingConfigurationPtrOutput struct{ *pulumi.OutputState }
@@ -14319,326 +18074,13 @@ func (o DefenderForServersGcpOfferingConfigurationPtrOutput) Elem() DefenderForS
 	}).(DefenderForServersGcpOfferingConfigurationOutput)
 }
 
-// Optional Arc private link scope resource id to link the Arc agent
-func (o DefenderForServersGcpOfferingConfigurationPtrOutput) PrivateLinkScope() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DefenderForServersGcpOfferingConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PrivateLinkScope
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional HTTP proxy endpoint to use for the Arc agent
-func (o DefenderForServersGcpOfferingConfigurationPtrOutput) Proxy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DefenderForServersGcpOfferingConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Proxy
-	}).(pulumi.StringPtrOutput)
-}
-
-// configuration for Vulnerability Assessment autoprovisioning
-type DefenderForServersGcpOfferingConfigurationConfiguration struct {
-	// The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'
-	Type *string `pulumi:"type"`
-}
-
-// DefenderForServersGcpOfferingConfigurationConfigurationInput is an input type that accepts DefenderForServersGcpOfferingConfigurationConfigurationArgs and DefenderForServersGcpOfferingConfigurationConfigurationOutput values.
-// You can construct a concrete instance of `DefenderForServersGcpOfferingConfigurationConfigurationInput` via:
-//
-//	DefenderForServersGcpOfferingConfigurationConfigurationArgs{...}
-type DefenderForServersGcpOfferingConfigurationConfigurationInput interface {
-	pulumi.Input
-
-	ToDefenderForServersGcpOfferingConfigurationConfigurationOutput() DefenderForServersGcpOfferingConfigurationConfigurationOutput
-	ToDefenderForServersGcpOfferingConfigurationConfigurationOutputWithContext(context.Context) DefenderForServersGcpOfferingConfigurationConfigurationOutput
-}
-
-// configuration for Vulnerability Assessment autoprovisioning
-type DefenderForServersGcpOfferingConfigurationConfigurationArgs struct {
-	// The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'
-	Type pulumi.StringPtrInput `pulumi:"type"`
-}
-
-func (DefenderForServersGcpOfferingConfigurationConfigurationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefenderForServersGcpOfferingConfigurationConfiguration)(nil)).Elem()
-}
-
-func (i DefenderForServersGcpOfferingConfigurationConfigurationArgs) ToDefenderForServersGcpOfferingConfigurationConfigurationOutput() DefenderForServersGcpOfferingConfigurationConfigurationOutput {
-	return i.ToDefenderForServersGcpOfferingConfigurationConfigurationOutputWithContext(context.Background())
-}
-
-func (i DefenderForServersGcpOfferingConfigurationConfigurationArgs) ToDefenderForServersGcpOfferingConfigurationConfigurationOutputWithContext(ctx context.Context) DefenderForServersGcpOfferingConfigurationConfigurationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DefenderForServersGcpOfferingConfigurationConfigurationOutput)
-}
-
-func (i DefenderForServersGcpOfferingConfigurationConfigurationArgs) ToDefenderForServersGcpOfferingConfigurationConfigurationPtrOutput() DefenderForServersGcpOfferingConfigurationConfigurationPtrOutput {
-	return i.ToDefenderForServersGcpOfferingConfigurationConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i DefenderForServersGcpOfferingConfigurationConfigurationArgs) ToDefenderForServersGcpOfferingConfigurationConfigurationPtrOutputWithContext(ctx context.Context) DefenderForServersGcpOfferingConfigurationConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DefenderForServersGcpOfferingConfigurationConfigurationOutput).ToDefenderForServersGcpOfferingConfigurationConfigurationPtrOutputWithContext(ctx)
-}
-
-// DefenderForServersGcpOfferingConfigurationConfigurationPtrInput is an input type that accepts DefenderForServersGcpOfferingConfigurationConfigurationArgs, DefenderForServersGcpOfferingConfigurationConfigurationPtr and DefenderForServersGcpOfferingConfigurationConfigurationPtrOutput values.
-// You can construct a concrete instance of `DefenderForServersGcpOfferingConfigurationConfigurationPtrInput` via:
-//
-//	        DefenderForServersGcpOfferingConfigurationConfigurationArgs{...}
-//
-//	or:
-//
-//	        nil
-type DefenderForServersGcpOfferingConfigurationConfigurationPtrInput interface {
-	pulumi.Input
-
-	ToDefenderForServersGcpOfferingConfigurationConfigurationPtrOutput() DefenderForServersGcpOfferingConfigurationConfigurationPtrOutput
-	ToDefenderForServersGcpOfferingConfigurationConfigurationPtrOutputWithContext(context.Context) DefenderForServersGcpOfferingConfigurationConfigurationPtrOutput
-}
-
-type defenderForServersGcpOfferingConfigurationConfigurationPtrType DefenderForServersGcpOfferingConfigurationConfigurationArgs
-
-func DefenderForServersGcpOfferingConfigurationConfigurationPtr(v *DefenderForServersGcpOfferingConfigurationConfigurationArgs) DefenderForServersGcpOfferingConfigurationConfigurationPtrInput {
-	return (*defenderForServersGcpOfferingConfigurationConfigurationPtrType)(v)
-}
-
-func (*defenderForServersGcpOfferingConfigurationConfigurationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DefenderForServersGcpOfferingConfigurationConfiguration)(nil)).Elem()
-}
-
-func (i *defenderForServersGcpOfferingConfigurationConfigurationPtrType) ToDefenderForServersGcpOfferingConfigurationConfigurationPtrOutput() DefenderForServersGcpOfferingConfigurationConfigurationPtrOutput {
-	return i.ToDefenderForServersGcpOfferingConfigurationConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i *defenderForServersGcpOfferingConfigurationConfigurationPtrType) ToDefenderForServersGcpOfferingConfigurationConfigurationPtrOutputWithContext(ctx context.Context) DefenderForServersGcpOfferingConfigurationConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DefenderForServersGcpOfferingConfigurationConfigurationPtrOutput)
-}
-
-// configuration for Vulnerability Assessment autoprovisioning
-type DefenderForServersGcpOfferingConfigurationConfigurationOutput struct{ *pulumi.OutputState }
-
-func (DefenderForServersGcpOfferingConfigurationConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefenderForServersGcpOfferingConfigurationConfiguration)(nil)).Elem()
-}
-
-func (o DefenderForServersGcpOfferingConfigurationConfigurationOutput) ToDefenderForServersGcpOfferingConfigurationConfigurationOutput() DefenderForServersGcpOfferingConfigurationConfigurationOutput {
-	return o
-}
-
-func (o DefenderForServersGcpOfferingConfigurationConfigurationOutput) ToDefenderForServersGcpOfferingConfigurationConfigurationOutputWithContext(ctx context.Context) DefenderForServersGcpOfferingConfigurationConfigurationOutput {
-	return o
-}
-
-func (o DefenderForServersGcpOfferingConfigurationConfigurationOutput) ToDefenderForServersGcpOfferingConfigurationConfigurationPtrOutput() DefenderForServersGcpOfferingConfigurationConfigurationPtrOutput {
-	return o.ToDefenderForServersGcpOfferingConfigurationConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (o DefenderForServersGcpOfferingConfigurationConfigurationOutput) ToDefenderForServersGcpOfferingConfigurationConfigurationPtrOutputWithContext(ctx context.Context) DefenderForServersGcpOfferingConfigurationConfigurationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefenderForServersGcpOfferingConfigurationConfiguration) *DefenderForServersGcpOfferingConfigurationConfiguration {
-		return &v
-	}).(DefenderForServersGcpOfferingConfigurationConfigurationPtrOutput)
-}
-
 // The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'
-func (o DefenderForServersGcpOfferingConfigurationConfigurationOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DefenderForServersGcpOfferingConfigurationConfiguration) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-type DefenderForServersGcpOfferingConfigurationConfigurationPtrOutput struct{ *pulumi.OutputState }
-
-func (DefenderForServersGcpOfferingConfigurationConfigurationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DefenderForServersGcpOfferingConfigurationConfiguration)(nil)).Elem()
-}
-
-func (o DefenderForServersGcpOfferingConfigurationConfigurationPtrOutput) ToDefenderForServersGcpOfferingConfigurationConfigurationPtrOutput() DefenderForServersGcpOfferingConfigurationConfigurationPtrOutput {
-	return o
-}
-
-func (o DefenderForServersGcpOfferingConfigurationConfigurationPtrOutput) ToDefenderForServersGcpOfferingConfigurationConfigurationPtrOutputWithContext(ctx context.Context) DefenderForServersGcpOfferingConfigurationConfigurationPtrOutput {
-	return o
-}
-
-func (o DefenderForServersGcpOfferingConfigurationConfigurationPtrOutput) Elem() DefenderForServersGcpOfferingConfigurationConfigurationOutput {
-	return o.ApplyT(func(v *DefenderForServersGcpOfferingConfigurationConfiguration) DefenderForServersGcpOfferingConfigurationConfiguration {
-		if v != nil {
-			return *v
-		}
-		var ret DefenderForServersGcpOfferingConfigurationConfiguration
-		return ret
-	}).(DefenderForServersGcpOfferingConfigurationConfigurationOutput)
-}
-
-// The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'
-func (o DefenderForServersGcpOfferingConfigurationConfigurationPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DefenderForServersGcpOfferingConfigurationConfiguration) *string {
+func (o DefenderForServersGcpOfferingConfigurationPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenderForServersGcpOfferingConfiguration) *string {
 		if v == nil {
 			return nil
 		}
 		return v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-// configuration for Microsoft Defender for Server VM scanning
-type DefenderForServersGcpOfferingConfigurationConfigurationConfiguration struct {
-	// VM tags that indicate that VM should not be scanned
-	ExclusionTags map[string]string `pulumi:"exclusionTags"`
-	// The scanning mode for the VM scan.
-	ScanningMode *string `pulumi:"scanningMode"`
-}
-
-// DefenderForServersGcpOfferingConfigurationConfigurationConfigurationInput is an input type that accepts DefenderForServersGcpOfferingConfigurationConfigurationConfigurationArgs and DefenderForServersGcpOfferingConfigurationConfigurationConfigurationOutput values.
-// You can construct a concrete instance of `DefenderForServersGcpOfferingConfigurationConfigurationConfigurationInput` via:
-//
-//	DefenderForServersGcpOfferingConfigurationConfigurationConfigurationArgs{...}
-type DefenderForServersGcpOfferingConfigurationConfigurationConfigurationInput interface {
-	pulumi.Input
-
-	ToDefenderForServersGcpOfferingConfigurationConfigurationConfigurationOutput() DefenderForServersGcpOfferingConfigurationConfigurationConfigurationOutput
-	ToDefenderForServersGcpOfferingConfigurationConfigurationConfigurationOutputWithContext(context.Context) DefenderForServersGcpOfferingConfigurationConfigurationConfigurationOutput
-}
-
-// configuration for Microsoft Defender for Server VM scanning
-type DefenderForServersGcpOfferingConfigurationConfigurationConfigurationArgs struct {
-	// VM tags that indicate that VM should not be scanned
-	ExclusionTags pulumi.StringMapInput `pulumi:"exclusionTags"`
-	// The scanning mode for the VM scan.
-	ScanningMode pulumi.StringPtrInput `pulumi:"scanningMode"`
-}
-
-func (DefenderForServersGcpOfferingConfigurationConfigurationConfigurationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefenderForServersGcpOfferingConfigurationConfigurationConfiguration)(nil)).Elem()
-}
-
-func (i DefenderForServersGcpOfferingConfigurationConfigurationConfigurationArgs) ToDefenderForServersGcpOfferingConfigurationConfigurationConfigurationOutput() DefenderForServersGcpOfferingConfigurationConfigurationConfigurationOutput {
-	return i.ToDefenderForServersGcpOfferingConfigurationConfigurationConfigurationOutputWithContext(context.Background())
-}
-
-func (i DefenderForServersGcpOfferingConfigurationConfigurationConfigurationArgs) ToDefenderForServersGcpOfferingConfigurationConfigurationConfigurationOutputWithContext(ctx context.Context) DefenderForServersGcpOfferingConfigurationConfigurationConfigurationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DefenderForServersGcpOfferingConfigurationConfigurationConfigurationOutput)
-}
-
-func (i DefenderForServersGcpOfferingConfigurationConfigurationConfigurationArgs) ToDefenderForServersGcpOfferingConfigurationConfigurationConfigurationPtrOutput() DefenderForServersGcpOfferingConfigurationConfigurationConfigurationPtrOutput {
-	return i.ToDefenderForServersGcpOfferingConfigurationConfigurationConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i DefenderForServersGcpOfferingConfigurationConfigurationConfigurationArgs) ToDefenderForServersGcpOfferingConfigurationConfigurationConfigurationPtrOutputWithContext(ctx context.Context) DefenderForServersGcpOfferingConfigurationConfigurationConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DefenderForServersGcpOfferingConfigurationConfigurationConfigurationOutput).ToDefenderForServersGcpOfferingConfigurationConfigurationConfigurationPtrOutputWithContext(ctx)
-}
-
-// DefenderForServersGcpOfferingConfigurationConfigurationConfigurationPtrInput is an input type that accepts DefenderForServersGcpOfferingConfigurationConfigurationConfigurationArgs, DefenderForServersGcpOfferingConfigurationConfigurationConfigurationPtr and DefenderForServersGcpOfferingConfigurationConfigurationConfigurationPtrOutput values.
-// You can construct a concrete instance of `DefenderForServersGcpOfferingConfigurationConfigurationConfigurationPtrInput` via:
-//
-//	        DefenderForServersGcpOfferingConfigurationConfigurationConfigurationArgs{...}
-//
-//	or:
-//
-//	        nil
-type DefenderForServersGcpOfferingConfigurationConfigurationConfigurationPtrInput interface {
-	pulumi.Input
-
-	ToDefenderForServersGcpOfferingConfigurationConfigurationConfigurationPtrOutput() DefenderForServersGcpOfferingConfigurationConfigurationConfigurationPtrOutput
-	ToDefenderForServersGcpOfferingConfigurationConfigurationConfigurationPtrOutputWithContext(context.Context) DefenderForServersGcpOfferingConfigurationConfigurationConfigurationPtrOutput
-}
-
-type defenderForServersGcpOfferingConfigurationConfigurationConfigurationPtrType DefenderForServersGcpOfferingConfigurationConfigurationConfigurationArgs
-
-func DefenderForServersGcpOfferingConfigurationConfigurationConfigurationPtr(v *DefenderForServersGcpOfferingConfigurationConfigurationConfigurationArgs) DefenderForServersGcpOfferingConfigurationConfigurationConfigurationPtrInput {
-	return (*defenderForServersGcpOfferingConfigurationConfigurationConfigurationPtrType)(v)
-}
-
-func (*defenderForServersGcpOfferingConfigurationConfigurationConfigurationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DefenderForServersGcpOfferingConfigurationConfigurationConfiguration)(nil)).Elem()
-}
-
-func (i *defenderForServersGcpOfferingConfigurationConfigurationConfigurationPtrType) ToDefenderForServersGcpOfferingConfigurationConfigurationConfigurationPtrOutput() DefenderForServersGcpOfferingConfigurationConfigurationConfigurationPtrOutput {
-	return i.ToDefenderForServersGcpOfferingConfigurationConfigurationConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i *defenderForServersGcpOfferingConfigurationConfigurationConfigurationPtrType) ToDefenderForServersGcpOfferingConfigurationConfigurationConfigurationPtrOutputWithContext(ctx context.Context) DefenderForServersGcpOfferingConfigurationConfigurationConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DefenderForServersGcpOfferingConfigurationConfigurationConfigurationPtrOutput)
-}
-
-// configuration for Microsoft Defender for Server VM scanning
-type DefenderForServersGcpOfferingConfigurationConfigurationConfigurationOutput struct{ *pulumi.OutputState }
-
-func (DefenderForServersGcpOfferingConfigurationConfigurationConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefenderForServersGcpOfferingConfigurationConfigurationConfiguration)(nil)).Elem()
-}
-
-func (o DefenderForServersGcpOfferingConfigurationConfigurationConfigurationOutput) ToDefenderForServersGcpOfferingConfigurationConfigurationConfigurationOutput() DefenderForServersGcpOfferingConfigurationConfigurationConfigurationOutput {
-	return o
-}
-
-func (o DefenderForServersGcpOfferingConfigurationConfigurationConfigurationOutput) ToDefenderForServersGcpOfferingConfigurationConfigurationConfigurationOutputWithContext(ctx context.Context) DefenderForServersGcpOfferingConfigurationConfigurationConfigurationOutput {
-	return o
-}
-
-func (o DefenderForServersGcpOfferingConfigurationConfigurationConfigurationOutput) ToDefenderForServersGcpOfferingConfigurationConfigurationConfigurationPtrOutput() DefenderForServersGcpOfferingConfigurationConfigurationConfigurationPtrOutput {
-	return o.ToDefenderForServersGcpOfferingConfigurationConfigurationConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (o DefenderForServersGcpOfferingConfigurationConfigurationConfigurationOutput) ToDefenderForServersGcpOfferingConfigurationConfigurationConfigurationPtrOutputWithContext(ctx context.Context) DefenderForServersGcpOfferingConfigurationConfigurationConfigurationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefenderForServersGcpOfferingConfigurationConfigurationConfiguration) *DefenderForServersGcpOfferingConfigurationConfigurationConfiguration {
-		return &v
-	}).(DefenderForServersGcpOfferingConfigurationConfigurationConfigurationPtrOutput)
-}
-
-// VM tags that indicate that VM should not be scanned
-func (o DefenderForServersGcpOfferingConfigurationConfigurationConfigurationOutput) ExclusionTags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v DefenderForServersGcpOfferingConfigurationConfigurationConfiguration) map[string]string {
-		return v.ExclusionTags
-	}).(pulumi.StringMapOutput)
-}
-
-// The scanning mode for the VM scan.
-func (o DefenderForServersGcpOfferingConfigurationConfigurationConfigurationOutput) ScanningMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DefenderForServersGcpOfferingConfigurationConfigurationConfiguration) *string {
-		return v.ScanningMode
-	}).(pulumi.StringPtrOutput)
-}
-
-type DefenderForServersGcpOfferingConfigurationConfigurationConfigurationPtrOutput struct{ *pulumi.OutputState }
-
-func (DefenderForServersGcpOfferingConfigurationConfigurationConfigurationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DefenderForServersGcpOfferingConfigurationConfigurationConfiguration)(nil)).Elem()
-}
-
-func (o DefenderForServersGcpOfferingConfigurationConfigurationConfigurationPtrOutput) ToDefenderForServersGcpOfferingConfigurationConfigurationConfigurationPtrOutput() DefenderForServersGcpOfferingConfigurationConfigurationConfigurationPtrOutput {
-	return o
-}
-
-func (o DefenderForServersGcpOfferingConfigurationConfigurationConfigurationPtrOutput) ToDefenderForServersGcpOfferingConfigurationConfigurationConfigurationPtrOutputWithContext(ctx context.Context) DefenderForServersGcpOfferingConfigurationConfigurationConfigurationPtrOutput {
-	return o
-}
-
-func (o DefenderForServersGcpOfferingConfigurationConfigurationConfigurationPtrOutput) Elem() DefenderForServersGcpOfferingConfigurationConfigurationConfigurationOutput {
-	return o.ApplyT(func(v *DefenderForServersGcpOfferingConfigurationConfigurationConfiguration) DefenderForServersGcpOfferingConfigurationConfigurationConfiguration {
-		if v != nil {
-			return *v
-		}
-		var ret DefenderForServersGcpOfferingConfigurationConfigurationConfiguration
-		return ret
-	}).(DefenderForServersGcpOfferingConfigurationConfigurationConfigurationOutput)
-}
-
-// VM tags that indicate that VM should not be scanned
-func (o DefenderForServersGcpOfferingConfigurationConfigurationConfigurationPtrOutput) ExclusionTags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *DefenderForServersGcpOfferingConfigurationConfigurationConfiguration) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.ExclusionTags
-	}).(pulumi.StringMapOutput)
-}
-
-// The scanning mode for the VM scan.
-func (o DefenderForServersGcpOfferingConfigurationConfigurationConfigurationPtrOutput) ScanningMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DefenderForServersGcpOfferingConfigurationConfigurationConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ScanningMode
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -15051,8 +18493,8 @@ func (o DefenderForServersGcpOfferingResponseOutput) VmScanners() DefenderForSer
 
 // The ARC autoprovisioning configuration
 type DefenderForServersGcpOfferingResponseArcAutoProvisioning struct {
-	// Configuration for servers Arc auto provisioning
-	Configuration *DefenderForServersGcpOfferingResponseConfiguration `pulumi:"configuration"`
+	// Configuration for servers Arc auto provisioning for a given environment
+	Configuration *ArcAutoProvisioningResponseConfiguration `pulumi:"configuration"`
 	// Is arc auto provisioning enabled
 	Enabled *bool `pulumi:"enabled"`
 }
@@ -15072,11 +18514,11 @@ func (o DefenderForServersGcpOfferingResponseArcAutoProvisioningOutput) ToDefend
 	return o
 }
 
-// Configuration for servers Arc auto provisioning
-func (o DefenderForServersGcpOfferingResponseArcAutoProvisioningOutput) Configuration() DefenderForServersGcpOfferingResponseConfigurationPtrOutput {
-	return o.ApplyT(func(v DefenderForServersGcpOfferingResponseArcAutoProvisioning) *DefenderForServersGcpOfferingResponseConfiguration {
+// Configuration for servers Arc auto provisioning for a given environment
+func (o DefenderForServersGcpOfferingResponseArcAutoProvisioningOutput) Configuration() ArcAutoProvisioningResponseConfigurationPtrOutput {
+	return o.ApplyT(func(v DefenderForServersGcpOfferingResponseArcAutoProvisioning) *ArcAutoProvisioningResponseConfiguration {
 		return v.Configuration
-	}).(DefenderForServersGcpOfferingResponseConfigurationPtrOutput)
+	}).(ArcAutoProvisioningResponseConfigurationPtrOutput)
 }
 
 // Is arc auto provisioning enabled
@@ -15108,14 +18550,14 @@ func (o DefenderForServersGcpOfferingResponseArcAutoProvisioningPtrOutput) Elem(
 	}).(DefenderForServersGcpOfferingResponseArcAutoProvisioningOutput)
 }
 
-// Configuration for servers Arc auto provisioning
-func (o DefenderForServersGcpOfferingResponseArcAutoProvisioningPtrOutput) Configuration() DefenderForServersGcpOfferingResponseConfigurationPtrOutput {
-	return o.ApplyT(func(v *DefenderForServersGcpOfferingResponseArcAutoProvisioning) *DefenderForServersGcpOfferingResponseConfiguration {
+// Configuration for servers Arc auto provisioning for a given environment
+func (o DefenderForServersGcpOfferingResponseArcAutoProvisioningPtrOutput) Configuration() ArcAutoProvisioningResponseConfigurationPtrOutput {
+	return o.ApplyT(func(v *DefenderForServersGcpOfferingResponseArcAutoProvisioning) *ArcAutoProvisioningResponseConfiguration {
 		if v == nil {
 			return nil
 		}
 		return v.Configuration
-	}).(DefenderForServersGcpOfferingResponseConfigurationPtrOutput)
+	}).(ArcAutoProvisioningResponseConfigurationPtrOutput)
 }
 
 // Is arc auto provisioning enabled
@@ -15128,15 +18570,13 @@ func (o DefenderForServersGcpOfferingResponseArcAutoProvisioningPtrOutput) Enabl
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Configuration for servers Arc auto provisioning
+// configuration for Vulnerability Assessment autoprovisioning
 type DefenderForServersGcpOfferingResponseConfiguration struct {
-	// Optional Arc private link scope resource id to link the Arc agent
-	PrivateLinkScope *string `pulumi:"privateLinkScope"`
-	// Optional HTTP proxy endpoint to use for the Arc agent
-	Proxy *string `pulumi:"proxy"`
+	// The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'
+	Type *string `pulumi:"type"`
 }
 
-// Configuration for servers Arc auto provisioning
+// configuration for Vulnerability Assessment autoprovisioning
 type DefenderForServersGcpOfferingResponseConfigurationOutput struct{ *pulumi.OutputState }
 
 func (DefenderForServersGcpOfferingResponseConfigurationOutput) ElementType() reflect.Type {
@@ -15151,14 +18591,9 @@ func (o DefenderForServersGcpOfferingResponseConfigurationOutput) ToDefenderForS
 	return o
 }
 
-// Optional Arc private link scope resource id to link the Arc agent
-func (o DefenderForServersGcpOfferingResponseConfigurationOutput) PrivateLinkScope() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DefenderForServersGcpOfferingResponseConfiguration) *string { return v.PrivateLinkScope }).(pulumi.StringPtrOutput)
-}
-
-// Optional HTTP proxy endpoint to use for the Arc agent
-func (o DefenderForServersGcpOfferingResponseConfigurationOutput) Proxy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DefenderForServersGcpOfferingResponseConfiguration) *string { return v.Proxy }).(pulumi.StringPtrOutput)
+// The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'
+func (o DefenderForServersGcpOfferingResponseConfigurationOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenderForServersGcpOfferingResponseConfiguration) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
 type DefenderForServersGcpOfferingResponseConfigurationPtrOutput struct{ *pulumi.OutputState }
@@ -15185,164 +18620,13 @@ func (o DefenderForServersGcpOfferingResponseConfigurationPtrOutput) Elem() Defe
 	}).(DefenderForServersGcpOfferingResponseConfigurationOutput)
 }
 
-// Optional Arc private link scope resource id to link the Arc agent
-func (o DefenderForServersGcpOfferingResponseConfigurationPtrOutput) PrivateLinkScope() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DefenderForServersGcpOfferingResponseConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PrivateLinkScope
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional HTTP proxy endpoint to use for the Arc agent
-func (o DefenderForServersGcpOfferingResponseConfigurationPtrOutput) Proxy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DefenderForServersGcpOfferingResponseConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Proxy
-	}).(pulumi.StringPtrOutput)
-}
-
-// configuration for Vulnerability Assessment autoprovisioning
-type DefenderForServersGcpOfferingResponseConfigurationConfiguration struct {
-	// The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'
-	Type *string `pulumi:"type"`
-}
-
-// configuration for Vulnerability Assessment autoprovisioning
-type DefenderForServersGcpOfferingResponseConfigurationConfigurationOutput struct{ *pulumi.OutputState }
-
-func (DefenderForServersGcpOfferingResponseConfigurationConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefenderForServersGcpOfferingResponseConfigurationConfiguration)(nil)).Elem()
-}
-
-func (o DefenderForServersGcpOfferingResponseConfigurationConfigurationOutput) ToDefenderForServersGcpOfferingResponseConfigurationConfigurationOutput() DefenderForServersGcpOfferingResponseConfigurationConfigurationOutput {
-	return o
-}
-
-func (o DefenderForServersGcpOfferingResponseConfigurationConfigurationOutput) ToDefenderForServersGcpOfferingResponseConfigurationConfigurationOutputWithContext(ctx context.Context) DefenderForServersGcpOfferingResponseConfigurationConfigurationOutput {
-	return o
-}
-
 // The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'
-func (o DefenderForServersGcpOfferingResponseConfigurationConfigurationOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DefenderForServersGcpOfferingResponseConfigurationConfiguration) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-type DefenderForServersGcpOfferingResponseConfigurationConfigurationPtrOutput struct{ *pulumi.OutputState }
-
-func (DefenderForServersGcpOfferingResponseConfigurationConfigurationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DefenderForServersGcpOfferingResponseConfigurationConfiguration)(nil)).Elem()
-}
-
-func (o DefenderForServersGcpOfferingResponseConfigurationConfigurationPtrOutput) ToDefenderForServersGcpOfferingResponseConfigurationConfigurationPtrOutput() DefenderForServersGcpOfferingResponseConfigurationConfigurationPtrOutput {
-	return o
-}
-
-func (o DefenderForServersGcpOfferingResponseConfigurationConfigurationPtrOutput) ToDefenderForServersGcpOfferingResponseConfigurationConfigurationPtrOutputWithContext(ctx context.Context) DefenderForServersGcpOfferingResponseConfigurationConfigurationPtrOutput {
-	return o
-}
-
-func (o DefenderForServersGcpOfferingResponseConfigurationConfigurationPtrOutput) Elem() DefenderForServersGcpOfferingResponseConfigurationConfigurationOutput {
-	return o.ApplyT(func(v *DefenderForServersGcpOfferingResponseConfigurationConfiguration) DefenderForServersGcpOfferingResponseConfigurationConfiguration {
-		if v != nil {
-			return *v
-		}
-		var ret DefenderForServersGcpOfferingResponseConfigurationConfiguration
-		return ret
-	}).(DefenderForServersGcpOfferingResponseConfigurationConfigurationOutput)
-}
-
-// The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'
-func (o DefenderForServersGcpOfferingResponseConfigurationConfigurationPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DefenderForServersGcpOfferingResponseConfigurationConfiguration) *string {
+func (o DefenderForServersGcpOfferingResponseConfigurationPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenderForServersGcpOfferingResponseConfiguration) *string {
 		if v == nil {
 			return nil
 		}
 		return v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-// configuration for Microsoft Defender for Server VM scanning
-type DefenderForServersGcpOfferingResponseConfigurationConfigurationConfiguration struct {
-	// VM tags that indicate that VM should not be scanned
-	ExclusionTags map[string]string `pulumi:"exclusionTags"`
-	// The scanning mode for the VM scan.
-	ScanningMode *string `pulumi:"scanningMode"`
-}
-
-// configuration for Microsoft Defender for Server VM scanning
-type DefenderForServersGcpOfferingResponseConfigurationConfigurationConfigurationOutput struct{ *pulumi.OutputState }
-
-func (DefenderForServersGcpOfferingResponseConfigurationConfigurationConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefenderForServersGcpOfferingResponseConfigurationConfigurationConfiguration)(nil)).Elem()
-}
-
-func (o DefenderForServersGcpOfferingResponseConfigurationConfigurationConfigurationOutput) ToDefenderForServersGcpOfferingResponseConfigurationConfigurationConfigurationOutput() DefenderForServersGcpOfferingResponseConfigurationConfigurationConfigurationOutput {
-	return o
-}
-
-func (o DefenderForServersGcpOfferingResponseConfigurationConfigurationConfigurationOutput) ToDefenderForServersGcpOfferingResponseConfigurationConfigurationConfigurationOutputWithContext(ctx context.Context) DefenderForServersGcpOfferingResponseConfigurationConfigurationConfigurationOutput {
-	return o
-}
-
-// VM tags that indicate that VM should not be scanned
-func (o DefenderForServersGcpOfferingResponseConfigurationConfigurationConfigurationOutput) ExclusionTags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v DefenderForServersGcpOfferingResponseConfigurationConfigurationConfiguration) map[string]string {
-		return v.ExclusionTags
-	}).(pulumi.StringMapOutput)
-}
-
-// The scanning mode for the VM scan.
-func (o DefenderForServersGcpOfferingResponseConfigurationConfigurationConfigurationOutput) ScanningMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DefenderForServersGcpOfferingResponseConfigurationConfigurationConfiguration) *string {
-		return v.ScanningMode
-	}).(pulumi.StringPtrOutput)
-}
-
-type DefenderForServersGcpOfferingResponseConfigurationConfigurationConfigurationPtrOutput struct{ *pulumi.OutputState }
-
-func (DefenderForServersGcpOfferingResponseConfigurationConfigurationConfigurationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DefenderForServersGcpOfferingResponseConfigurationConfigurationConfiguration)(nil)).Elem()
-}
-
-func (o DefenderForServersGcpOfferingResponseConfigurationConfigurationConfigurationPtrOutput) ToDefenderForServersGcpOfferingResponseConfigurationConfigurationConfigurationPtrOutput() DefenderForServersGcpOfferingResponseConfigurationConfigurationConfigurationPtrOutput {
-	return o
-}
-
-func (o DefenderForServersGcpOfferingResponseConfigurationConfigurationConfigurationPtrOutput) ToDefenderForServersGcpOfferingResponseConfigurationConfigurationConfigurationPtrOutputWithContext(ctx context.Context) DefenderForServersGcpOfferingResponseConfigurationConfigurationConfigurationPtrOutput {
-	return o
-}
-
-func (o DefenderForServersGcpOfferingResponseConfigurationConfigurationConfigurationPtrOutput) Elem() DefenderForServersGcpOfferingResponseConfigurationConfigurationConfigurationOutput {
-	return o.ApplyT(func(v *DefenderForServersGcpOfferingResponseConfigurationConfigurationConfiguration) DefenderForServersGcpOfferingResponseConfigurationConfigurationConfiguration {
-		if v != nil {
-			return *v
-		}
-		var ret DefenderForServersGcpOfferingResponseConfigurationConfigurationConfiguration
-		return ret
-	}).(DefenderForServersGcpOfferingResponseConfigurationConfigurationConfigurationOutput)
-}
-
-// VM tags that indicate that VM should not be scanned
-func (o DefenderForServersGcpOfferingResponseConfigurationConfigurationConfigurationPtrOutput) ExclusionTags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *DefenderForServersGcpOfferingResponseConfigurationConfigurationConfiguration) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.ExclusionTags
-	}).(pulumi.StringMapOutput)
-}
-
-// The scanning mode for the VM scan.
-func (o DefenderForServersGcpOfferingResponseConfigurationConfigurationConfigurationPtrOutput) ScanningMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DefenderForServersGcpOfferingResponseConfigurationConfigurationConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ScanningMode
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -15567,7 +18851,7 @@ func (o DefenderForServersGcpOfferingResponseSubPlanPtrOutput) Type() pulumi.Str
 // The Vulnerability Assessment autoprovisioning configuration
 type DefenderForServersGcpOfferingResponseVaAutoProvisioning struct {
 	// configuration for Vulnerability Assessment autoprovisioning
-	Configuration *DefenderForServersGcpOfferingResponseConfigurationConfiguration `pulumi:"configuration"`
+	Configuration *DefenderForServersGcpOfferingResponseConfiguration `pulumi:"configuration"`
 	// Is Vulnerability Assessment auto provisioning enabled
 	Enabled *bool `pulumi:"enabled"`
 }
@@ -15588,10 +18872,10 @@ func (o DefenderForServersGcpOfferingResponseVaAutoProvisioningOutput) ToDefende
 }
 
 // configuration for Vulnerability Assessment autoprovisioning
-func (o DefenderForServersGcpOfferingResponseVaAutoProvisioningOutput) Configuration() DefenderForServersGcpOfferingResponseConfigurationConfigurationPtrOutput {
-	return o.ApplyT(func(v DefenderForServersGcpOfferingResponseVaAutoProvisioning) *DefenderForServersGcpOfferingResponseConfigurationConfiguration {
+func (o DefenderForServersGcpOfferingResponseVaAutoProvisioningOutput) Configuration() DefenderForServersGcpOfferingResponseConfigurationPtrOutput {
+	return o.ApplyT(func(v DefenderForServersGcpOfferingResponseVaAutoProvisioning) *DefenderForServersGcpOfferingResponseConfiguration {
 		return v.Configuration
-	}).(DefenderForServersGcpOfferingResponseConfigurationConfigurationPtrOutput)
+	}).(DefenderForServersGcpOfferingResponseConfigurationPtrOutput)
 }
 
 // Is Vulnerability Assessment auto provisioning enabled
@@ -15624,13 +18908,13 @@ func (o DefenderForServersGcpOfferingResponseVaAutoProvisioningPtrOutput) Elem()
 }
 
 // configuration for Vulnerability Assessment autoprovisioning
-func (o DefenderForServersGcpOfferingResponseVaAutoProvisioningPtrOutput) Configuration() DefenderForServersGcpOfferingResponseConfigurationConfigurationPtrOutput {
-	return o.ApplyT(func(v *DefenderForServersGcpOfferingResponseVaAutoProvisioning) *DefenderForServersGcpOfferingResponseConfigurationConfiguration {
+func (o DefenderForServersGcpOfferingResponseVaAutoProvisioningPtrOutput) Configuration() DefenderForServersGcpOfferingResponseConfigurationPtrOutput {
+	return o.ApplyT(func(v *DefenderForServersGcpOfferingResponseVaAutoProvisioning) *DefenderForServersGcpOfferingResponseConfiguration {
 		if v == nil {
 			return nil
 		}
 		return v.Configuration
-	}).(DefenderForServersGcpOfferingResponseConfigurationConfigurationPtrOutput)
+	}).(DefenderForServersGcpOfferingResponseConfigurationPtrOutput)
 }
 
 // Is Vulnerability Assessment auto provisioning enabled
@@ -15645,9 +18929,9 @@ func (o DefenderForServersGcpOfferingResponseVaAutoProvisioningPtrOutput) Enable
 
 // The Microsoft Defender for Server VM scanning configuration
 type DefenderForServersGcpOfferingResponseVmScanners struct {
-	// configuration for Microsoft Defender for Server VM scanning
-	Configuration *DefenderForServersGcpOfferingResponseConfigurationConfigurationConfiguration `pulumi:"configuration"`
-	// Is Microsoft Defender for Server VM scanning enabled
+	// Configuration for VM scanning
+	Configuration *VmScannersBaseResponseConfiguration `pulumi:"configuration"`
+	// Is VM scanning enabled
 	Enabled *bool `pulumi:"enabled"`
 }
 
@@ -15666,14 +18950,14 @@ func (o DefenderForServersGcpOfferingResponseVmScannersOutput) ToDefenderForServ
 	return o
 }
 
-// configuration for Microsoft Defender for Server VM scanning
-func (o DefenderForServersGcpOfferingResponseVmScannersOutput) Configuration() DefenderForServersGcpOfferingResponseConfigurationConfigurationConfigurationPtrOutput {
-	return o.ApplyT(func(v DefenderForServersGcpOfferingResponseVmScanners) *DefenderForServersGcpOfferingResponseConfigurationConfigurationConfiguration {
+// Configuration for VM scanning
+func (o DefenderForServersGcpOfferingResponseVmScannersOutput) Configuration() VmScannersBaseResponseConfigurationPtrOutput {
+	return o.ApplyT(func(v DefenderForServersGcpOfferingResponseVmScanners) *VmScannersBaseResponseConfiguration {
 		return v.Configuration
-	}).(DefenderForServersGcpOfferingResponseConfigurationConfigurationConfigurationPtrOutput)
+	}).(VmScannersBaseResponseConfigurationPtrOutput)
 }
 
-// Is Microsoft Defender for Server VM scanning enabled
+// Is VM scanning enabled
 func (o DefenderForServersGcpOfferingResponseVmScannersOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DefenderForServersGcpOfferingResponseVmScanners) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -15702,17 +18986,17 @@ func (o DefenderForServersGcpOfferingResponseVmScannersPtrOutput) Elem() Defende
 	}).(DefenderForServersGcpOfferingResponseVmScannersOutput)
 }
 
-// configuration for Microsoft Defender for Server VM scanning
-func (o DefenderForServersGcpOfferingResponseVmScannersPtrOutput) Configuration() DefenderForServersGcpOfferingResponseConfigurationConfigurationConfigurationPtrOutput {
-	return o.ApplyT(func(v *DefenderForServersGcpOfferingResponseVmScanners) *DefenderForServersGcpOfferingResponseConfigurationConfigurationConfiguration {
+// Configuration for VM scanning
+func (o DefenderForServersGcpOfferingResponseVmScannersPtrOutput) Configuration() VmScannersBaseResponseConfigurationPtrOutput {
+	return o.ApplyT(func(v *DefenderForServersGcpOfferingResponseVmScanners) *VmScannersBaseResponseConfiguration {
 		if v == nil {
 			return nil
 		}
 		return v.Configuration
-	}).(DefenderForServersGcpOfferingResponseConfigurationConfigurationConfigurationPtrOutput)
+	}).(VmScannersBaseResponseConfigurationPtrOutput)
 }
 
-// Is Microsoft Defender for Server VM scanning enabled
+// Is VM scanning enabled
 func (o DefenderForServersGcpOfferingResponseVmScannersPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DefenderForServersGcpOfferingResponseVmScanners) *bool {
 		if v == nil {
@@ -15865,7 +19149,7 @@ func (o DefenderForServersGcpOfferingSubPlanPtrOutput) Type() pulumi.StringPtrOu
 // The Vulnerability Assessment autoprovisioning configuration
 type DefenderForServersGcpOfferingVaAutoProvisioning struct {
 	// configuration for Vulnerability Assessment autoprovisioning
-	Configuration *DefenderForServersGcpOfferingConfigurationConfiguration `pulumi:"configuration"`
+	Configuration *DefenderForServersGcpOfferingConfiguration `pulumi:"configuration"`
 	// Is Vulnerability Assessment auto provisioning enabled
 	Enabled *bool `pulumi:"enabled"`
 }
@@ -15884,7 +19168,7 @@ type DefenderForServersGcpOfferingVaAutoProvisioningInput interface {
 // The Vulnerability Assessment autoprovisioning configuration
 type DefenderForServersGcpOfferingVaAutoProvisioningArgs struct {
 	// configuration for Vulnerability Assessment autoprovisioning
-	Configuration DefenderForServersGcpOfferingConfigurationConfigurationPtrInput `pulumi:"configuration"`
+	Configuration DefenderForServersGcpOfferingConfigurationPtrInput `pulumi:"configuration"`
 	// Is Vulnerability Assessment auto provisioning enabled
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
@@ -15968,10 +19252,10 @@ func (o DefenderForServersGcpOfferingVaAutoProvisioningOutput) ToDefenderForServ
 }
 
 // configuration for Vulnerability Assessment autoprovisioning
-func (o DefenderForServersGcpOfferingVaAutoProvisioningOutput) Configuration() DefenderForServersGcpOfferingConfigurationConfigurationPtrOutput {
-	return o.ApplyT(func(v DefenderForServersGcpOfferingVaAutoProvisioning) *DefenderForServersGcpOfferingConfigurationConfiguration {
+func (o DefenderForServersGcpOfferingVaAutoProvisioningOutput) Configuration() DefenderForServersGcpOfferingConfigurationPtrOutput {
+	return o.ApplyT(func(v DefenderForServersGcpOfferingVaAutoProvisioning) *DefenderForServersGcpOfferingConfiguration {
 		return v.Configuration
-	}).(DefenderForServersGcpOfferingConfigurationConfigurationPtrOutput)
+	}).(DefenderForServersGcpOfferingConfigurationPtrOutput)
 }
 
 // Is Vulnerability Assessment auto provisioning enabled
@@ -16004,13 +19288,13 @@ func (o DefenderForServersGcpOfferingVaAutoProvisioningPtrOutput) Elem() Defende
 }
 
 // configuration for Vulnerability Assessment autoprovisioning
-func (o DefenderForServersGcpOfferingVaAutoProvisioningPtrOutput) Configuration() DefenderForServersGcpOfferingConfigurationConfigurationPtrOutput {
-	return o.ApplyT(func(v *DefenderForServersGcpOfferingVaAutoProvisioning) *DefenderForServersGcpOfferingConfigurationConfiguration {
+func (o DefenderForServersGcpOfferingVaAutoProvisioningPtrOutput) Configuration() DefenderForServersGcpOfferingConfigurationPtrOutput {
+	return o.ApplyT(func(v *DefenderForServersGcpOfferingVaAutoProvisioning) *DefenderForServersGcpOfferingConfiguration {
 		if v == nil {
 			return nil
 		}
 		return v.Configuration
-	}).(DefenderForServersGcpOfferingConfigurationConfigurationPtrOutput)
+	}).(DefenderForServersGcpOfferingConfigurationPtrOutput)
 }
 
 // Is Vulnerability Assessment auto provisioning enabled
@@ -16025,9 +19309,9 @@ func (o DefenderForServersGcpOfferingVaAutoProvisioningPtrOutput) Enabled() pulu
 
 // The Microsoft Defender for Server VM scanning configuration
 type DefenderForServersGcpOfferingVmScanners struct {
-	// configuration for Microsoft Defender for Server VM scanning
-	Configuration *DefenderForServersGcpOfferingConfigurationConfigurationConfiguration `pulumi:"configuration"`
-	// Is Microsoft Defender for Server VM scanning enabled
+	// Configuration for VM scanning
+	Configuration *VmScannersBaseConfiguration `pulumi:"configuration"`
+	// Is VM scanning enabled
 	Enabled *bool `pulumi:"enabled"`
 }
 
@@ -16044,9 +19328,9 @@ type DefenderForServersGcpOfferingVmScannersInput interface {
 
 // The Microsoft Defender for Server VM scanning configuration
 type DefenderForServersGcpOfferingVmScannersArgs struct {
-	// configuration for Microsoft Defender for Server VM scanning
-	Configuration DefenderForServersGcpOfferingConfigurationConfigurationConfigurationPtrInput `pulumi:"configuration"`
-	// Is Microsoft Defender for Server VM scanning enabled
+	// Configuration for VM scanning
+	Configuration VmScannersBaseConfigurationPtrInput `pulumi:"configuration"`
+	// Is VM scanning enabled
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
@@ -16128,14 +19412,12 @@ func (o DefenderForServersGcpOfferingVmScannersOutput) ToDefenderForServersGcpOf
 	}).(DefenderForServersGcpOfferingVmScannersPtrOutput)
 }
 
-// configuration for Microsoft Defender for Server VM scanning
-func (o DefenderForServersGcpOfferingVmScannersOutput) Configuration() DefenderForServersGcpOfferingConfigurationConfigurationConfigurationPtrOutput {
-	return o.ApplyT(func(v DefenderForServersGcpOfferingVmScanners) *DefenderForServersGcpOfferingConfigurationConfigurationConfiguration {
-		return v.Configuration
-	}).(DefenderForServersGcpOfferingConfigurationConfigurationConfigurationPtrOutput)
+// Configuration for VM scanning
+func (o DefenderForServersGcpOfferingVmScannersOutput) Configuration() VmScannersBaseConfigurationPtrOutput {
+	return o.ApplyT(func(v DefenderForServersGcpOfferingVmScanners) *VmScannersBaseConfiguration { return v.Configuration }).(VmScannersBaseConfigurationPtrOutput)
 }
 
-// Is Microsoft Defender for Server VM scanning enabled
+// Is VM scanning enabled
 func (o DefenderForServersGcpOfferingVmScannersOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DefenderForServersGcpOfferingVmScanners) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -16164,17 +19446,17 @@ func (o DefenderForServersGcpOfferingVmScannersPtrOutput) Elem() DefenderForServ
 	}).(DefenderForServersGcpOfferingVmScannersOutput)
 }
 
-// configuration for Microsoft Defender for Server VM scanning
-func (o DefenderForServersGcpOfferingVmScannersPtrOutput) Configuration() DefenderForServersGcpOfferingConfigurationConfigurationConfigurationPtrOutput {
-	return o.ApplyT(func(v *DefenderForServersGcpOfferingVmScanners) *DefenderForServersGcpOfferingConfigurationConfigurationConfiguration {
+// Configuration for VM scanning
+func (o DefenderForServersGcpOfferingVmScannersPtrOutput) Configuration() VmScannersBaseConfigurationPtrOutput {
+	return o.ApplyT(func(v *DefenderForServersGcpOfferingVmScanners) *VmScannersBaseConfiguration {
 		if v == nil {
 			return nil
 		}
 		return v.Configuration
-	}).(DefenderForServersGcpOfferingConfigurationConfigurationConfigurationPtrOutput)
+	}).(VmScannersBaseConfigurationPtrOutput)
 }
 
-// Is Microsoft Defender for Server VM scanning enabled
+// Is VM scanning enabled
 func (o DefenderForServersGcpOfferingVmScannersPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DefenderForServersGcpOfferingVmScanners) *bool {
 		if v == nil {
@@ -16638,6 +19920,59 @@ func (o DenylistCustomAlertRuleResponseArrayOutput) Index(i pulumi.IntInput) Den
 	}).(DenylistCustomAlertRuleResponseOutput)
 }
 
+// Details about DevOps capability.
+type DevOpsCapabilityResponse struct {
+	// Gets the name of the DevOps capability.
+	Name string `pulumi:"name"`
+	// Gets the value of the DevOps capability.
+	Value string `pulumi:"value"`
+}
+
+// Details about DevOps capability.
+type DevOpsCapabilityResponseOutput struct{ *pulumi.OutputState }
+
+func (DevOpsCapabilityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DevOpsCapabilityResponse)(nil)).Elem()
+}
+
+func (o DevOpsCapabilityResponseOutput) ToDevOpsCapabilityResponseOutput() DevOpsCapabilityResponseOutput {
+	return o
+}
+
+func (o DevOpsCapabilityResponseOutput) ToDevOpsCapabilityResponseOutputWithContext(ctx context.Context) DevOpsCapabilityResponseOutput {
+	return o
+}
+
+// Gets the name of the DevOps capability.
+func (o DevOpsCapabilityResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v DevOpsCapabilityResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Gets the value of the DevOps capability.
+func (o DevOpsCapabilityResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v DevOpsCapabilityResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type DevOpsCapabilityResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DevOpsCapabilityResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DevOpsCapabilityResponse)(nil)).Elem()
+}
+
+func (o DevOpsCapabilityResponseArrayOutput) ToDevOpsCapabilityResponseArrayOutput() DevOpsCapabilityResponseArrayOutput {
+	return o
+}
+
+func (o DevOpsCapabilityResponseArrayOutput) ToDevOpsCapabilityResponseArrayOutputWithContext(ctx context.Context) DevOpsCapabilityResponseArrayOutput {
+	return o
+}
+
+func (o DevOpsCapabilityResponseArrayOutput) Index(i pulumi.IntInput) DevOpsCapabilityResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DevOpsCapabilityResponse {
+		return vs[0].([]DevOpsCapabilityResponse)[vs[1].(int)]
+	}).(DevOpsCapabilityResponseOutput)
+}
+
 // DevOps Configuration properties.
 type DevOpsConfigurationProperties struct {
 	// Authorization payload.
@@ -16877,6 +20212,8 @@ type DevOpsConfigurationPropertiesResponse struct {
 	Authorization *AuthorizationResponse `pulumi:"authorization"`
 	// AutoDiscovery states.
 	AutoDiscovery *string `pulumi:"autoDiscovery"`
+	// List of capabilities assigned to the DevOps configuration during the discovery process.
+	Capabilities []DevOpsCapabilityResponse `pulumi:"capabilities"`
 	// The provisioning state of the resource.
 	//
 	// Pending - Provisioning pending.
@@ -16921,6 +20258,11 @@ func (o DevOpsConfigurationPropertiesResponseOutput) AutoDiscovery() pulumi.Stri
 	return o.ApplyT(func(v DevOpsConfigurationPropertiesResponse) *string { return v.AutoDiscovery }).(pulumi.StringPtrOutput)
 }
 
+// List of capabilities assigned to the DevOps configuration during the discovery process.
+func (o DevOpsConfigurationPropertiesResponseOutput) Capabilities() DevOpsCapabilityResponseArrayOutput {
+	return o.ApplyT(func(v DevOpsConfigurationPropertiesResponse) []DevOpsCapabilityResponse { return v.Capabilities }).(DevOpsCapabilityResponseArrayOutput)
+}
+
 // The provisioning state of the resource.
 //
 // Pending - Provisioning pending.
@@ -16950,593 +20292,283 @@ func (o DevOpsConfigurationPropertiesResponseOutput) TopLevelInventoryList() pul
 	return o.ApplyT(func(v DevOpsConfigurationPropertiesResponse) []string { return v.TopLevelInventoryList }).(pulumi.StringArrayOutput)
 }
 
-// Properties of the DevOps policy assignment resource.
-type DevOpsPolicyAssignmentProperties struct {
-	// Gets or sets time when the assignment was created in UTC.
-	AssignedAt *string `pulumi:"assignedAt"`
-	// The behavior of a policy on descendant resources.
-	DescendantBehavior *string `pulumi:"descendantBehavior"`
-	// Condensed information to identify a DevOps Policy resource.
-	Policy *DevOpsPolicyDescriptor `pulumi:"policy"`
-	// Gets or sets the Azure resource id.
-	ResourceId *string `pulumi:"resourceId"`
+// The Docker Hub connector environment data
+type DockerHubEnvironmentData struct {
+	// The Docker Hub organization authentication details
+	Authentication *AccessTokenAuthentication `pulumi:"authentication"`
+	// The type of the environment data.
+	// Expected value is 'DockerHubOrganization'.
+	EnvironmentType string `pulumi:"environmentType"`
+	// Scan interval in hours (value should be between 1-hour to 24-hours)
+	ScanInterval *float64 `pulumi:"scanInterval"`
 }
 
-// DevOpsPolicyAssignmentPropertiesInput is an input type that accepts DevOpsPolicyAssignmentPropertiesArgs and DevOpsPolicyAssignmentPropertiesOutput values.
-// You can construct a concrete instance of `DevOpsPolicyAssignmentPropertiesInput` via:
+// DockerHubEnvironmentDataInput is an input type that accepts DockerHubEnvironmentDataArgs and DockerHubEnvironmentDataOutput values.
+// You can construct a concrete instance of `DockerHubEnvironmentDataInput` via:
 //
-//	DevOpsPolicyAssignmentPropertiesArgs{...}
-type DevOpsPolicyAssignmentPropertiesInput interface {
+//	DockerHubEnvironmentDataArgs{...}
+type DockerHubEnvironmentDataInput interface {
 	pulumi.Input
 
-	ToDevOpsPolicyAssignmentPropertiesOutput() DevOpsPolicyAssignmentPropertiesOutput
-	ToDevOpsPolicyAssignmentPropertiesOutputWithContext(context.Context) DevOpsPolicyAssignmentPropertiesOutput
+	ToDockerHubEnvironmentDataOutput() DockerHubEnvironmentDataOutput
+	ToDockerHubEnvironmentDataOutputWithContext(context.Context) DockerHubEnvironmentDataOutput
 }
 
-// Properties of the DevOps policy assignment resource.
-type DevOpsPolicyAssignmentPropertiesArgs struct {
-	// Gets or sets time when the assignment was created in UTC.
-	AssignedAt pulumi.StringPtrInput `pulumi:"assignedAt"`
-	// The behavior of a policy on descendant resources.
-	DescendantBehavior pulumi.StringPtrInput `pulumi:"descendantBehavior"`
-	// Condensed information to identify a DevOps Policy resource.
-	Policy DevOpsPolicyDescriptorPtrInput `pulumi:"policy"`
-	// Gets or sets the Azure resource id.
-	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
+// The Docker Hub connector environment data
+type DockerHubEnvironmentDataArgs struct {
+	// The Docker Hub organization authentication details
+	Authentication AccessTokenAuthenticationPtrInput `pulumi:"authentication"`
+	// The type of the environment data.
+	// Expected value is 'DockerHubOrganization'.
+	EnvironmentType pulumi.StringInput `pulumi:"environmentType"`
+	// Scan interval in hours (value should be between 1-hour to 24-hours)
+	ScanInterval pulumi.Float64PtrInput `pulumi:"scanInterval"`
 }
 
-func (DevOpsPolicyAssignmentPropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DevOpsPolicyAssignmentProperties)(nil)).Elem()
+func (DockerHubEnvironmentDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DockerHubEnvironmentData)(nil)).Elem()
 }
 
-func (i DevOpsPolicyAssignmentPropertiesArgs) ToDevOpsPolicyAssignmentPropertiesOutput() DevOpsPolicyAssignmentPropertiesOutput {
-	return i.ToDevOpsPolicyAssignmentPropertiesOutputWithContext(context.Background())
+func (i DockerHubEnvironmentDataArgs) ToDockerHubEnvironmentDataOutput() DockerHubEnvironmentDataOutput {
+	return i.ToDockerHubEnvironmentDataOutputWithContext(context.Background())
 }
 
-func (i DevOpsPolicyAssignmentPropertiesArgs) ToDevOpsPolicyAssignmentPropertiesOutputWithContext(ctx context.Context) DevOpsPolicyAssignmentPropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DevOpsPolicyAssignmentPropertiesOutput)
+func (i DockerHubEnvironmentDataArgs) ToDockerHubEnvironmentDataOutputWithContext(ctx context.Context) DockerHubEnvironmentDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DockerHubEnvironmentDataOutput)
 }
 
-func (i DevOpsPolicyAssignmentPropertiesArgs) ToDevOpsPolicyAssignmentPropertiesPtrOutput() DevOpsPolicyAssignmentPropertiesPtrOutput {
-	return i.ToDevOpsPolicyAssignmentPropertiesPtrOutputWithContext(context.Background())
+func (i DockerHubEnvironmentDataArgs) ToDockerHubEnvironmentDataPtrOutput() DockerHubEnvironmentDataPtrOutput {
+	return i.ToDockerHubEnvironmentDataPtrOutputWithContext(context.Background())
 }
 
-func (i DevOpsPolicyAssignmentPropertiesArgs) ToDevOpsPolicyAssignmentPropertiesPtrOutputWithContext(ctx context.Context) DevOpsPolicyAssignmentPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DevOpsPolicyAssignmentPropertiesOutput).ToDevOpsPolicyAssignmentPropertiesPtrOutputWithContext(ctx)
+func (i DockerHubEnvironmentDataArgs) ToDockerHubEnvironmentDataPtrOutputWithContext(ctx context.Context) DockerHubEnvironmentDataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DockerHubEnvironmentDataOutput).ToDockerHubEnvironmentDataPtrOutputWithContext(ctx)
 }
 
-// DevOpsPolicyAssignmentPropertiesPtrInput is an input type that accepts DevOpsPolicyAssignmentPropertiesArgs, DevOpsPolicyAssignmentPropertiesPtr and DevOpsPolicyAssignmentPropertiesPtrOutput values.
-// You can construct a concrete instance of `DevOpsPolicyAssignmentPropertiesPtrInput` via:
+// DockerHubEnvironmentDataPtrInput is an input type that accepts DockerHubEnvironmentDataArgs, DockerHubEnvironmentDataPtr and DockerHubEnvironmentDataPtrOutput values.
+// You can construct a concrete instance of `DockerHubEnvironmentDataPtrInput` via:
 //
-//	        DevOpsPolicyAssignmentPropertiesArgs{...}
+//	        DockerHubEnvironmentDataArgs{...}
 //
 //	or:
 //
 //	        nil
-type DevOpsPolicyAssignmentPropertiesPtrInput interface {
+type DockerHubEnvironmentDataPtrInput interface {
 	pulumi.Input
 
-	ToDevOpsPolicyAssignmentPropertiesPtrOutput() DevOpsPolicyAssignmentPropertiesPtrOutput
-	ToDevOpsPolicyAssignmentPropertiesPtrOutputWithContext(context.Context) DevOpsPolicyAssignmentPropertiesPtrOutput
+	ToDockerHubEnvironmentDataPtrOutput() DockerHubEnvironmentDataPtrOutput
+	ToDockerHubEnvironmentDataPtrOutputWithContext(context.Context) DockerHubEnvironmentDataPtrOutput
 }
 
-type devOpsPolicyAssignmentPropertiesPtrType DevOpsPolicyAssignmentPropertiesArgs
+type dockerHubEnvironmentDataPtrType DockerHubEnvironmentDataArgs
 
-func DevOpsPolicyAssignmentPropertiesPtr(v *DevOpsPolicyAssignmentPropertiesArgs) DevOpsPolicyAssignmentPropertiesPtrInput {
-	return (*devOpsPolicyAssignmentPropertiesPtrType)(v)
+func DockerHubEnvironmentDataPtr(v *DockerHubEnvironmentDataArgs) DockerHubEnvironmentDataPtrInput {
+	return (*dockerHubEnvironmentDataPtrType)(v)
 }
 
-func (*devOpsPolicyAssignmentPropertiesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DevOpsPolicyAssignmentProperties)(nil)).Elem()
+func (*dockerHubEnvironmentDataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DockerHubEnvironmentData)(nil)).Elem()
 }
 
-func (i *devOpsPolicyAssignmentPropertiesPtrType) ToDevOpsPolicyAssignmentPropertiesPtrOutput() DevOpsPolicyAssignmentPropertiesPtrOutput {
-	return i.ToDevOpsPolicyAssignmentPropertiesPtrOutputWithContext(context.Background())
+func (i *dockerHubEnvironmentDataPtrType) ToDockerHubEnvironmentDataPtrOutput() DockerHubEnvironmentDataPtrOutput {
+	return i.ToDockerHubEnvironmentDataPtrOutputWithContext(context.Background())
 }
 
-func (i *devOpsPolicyAssignmentPropertiesPtrType) ToDevOpsPolicyAssignmentPropertiesPtrOutputWithContext(ctx context.Context) DevOpsPolicyAssignmentPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DevOpsPolicyAssignmentPropertiesPtrOutput)
+func (i *dockerHubEnvironmentDataPtrType) ToDockerHubEnvironmentDataPtrOutputWithContext(ctx context.Context) DockerHubEnvironmentDataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DockerHubEnvironmentDataPtrOutput)
 }
 
-// Properties of the DevOps policy assignment resource.
-type DevOpsPolicyAssignmentPropertiesOutput struct{ *pulumi.OutputState }
+// The Docker Hub connector environment data
+type DockerHubEnvironmentDataOutput struct{ *pulumi.OutputState }
 
-func (DevOpsPolicyAssignmentPropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DevOpsPolicyAssignmentProperties)(nil)).Elem()
+func (DockerHubEnvironmentDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DockerHubEnvironmentData)(nil)).Elem()
 }
 
-func (o DevOpsPolicyAssignmentPropertiesOutput) ToDevOpsPolicyAssignmentPropertiesOutput() DevOpsPolicyAssignmentPropertiesOutput {
+func (o DockerHubEnvironmentDataOutput) ToDockerHubEnvironmentDataOutput() DockerHubEnvironmentDataOutput {
 	return o
 }
 
-func (o DevOpsPolicyAssignmentPropertiesOutput) ToDevOpsPolicyAssignmentPropertiesOutputWithContext(ctx context.Context) DevOpsPolicyAssignmentPropertiesOutput {
+func (o DockerHubEnvironmentDataOutput) ToDockerHubEnvironmentDataOutputWithContext(ctx context.Context) DockerHubEnvironmentDataOutput {
 	return o
 }
 
-func (o DevOpsPolicyAssignmentPropertiesOutput) ToDevOpsPolicyAssignmentPropertiesPtrOutput() DevOpsPolicyAssignmentPropertiesPtrOutput {
-	return o.ToDevOpsPolicyAssignmentPropertiesPtrOutputWithContext(context.Background())
+func (o DockerHubEnvironmentDataOutput) ToDockerHubEnvironmentDataPtrOutput() DockerHubEnvironmentDataPtrOutput {
+	return o.ToDockerHubEnvironmentDataPtrOutputWithContext(context.Background())
 }
 
-func (o DevOpsPolicyAssignmentPropertiesOutput) ToDevOpsPolicyAssignmentPropertiesPtrOutputWithContext(ctx context.Context) DevOpsPolicyAssignmentPropertiesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DevOpsPolicyAssignmentProperties) *DevOpsPolicyAssignmentProperties {
+func (o DockerHubEnvironmentDataOutput) ToDockerHubEnvironmentDataPtrOutputWithContext(ctx context.Context) DockerHubEnvironmentDataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DockerHubEnvironmentData) *DockerHubEnvironmentData {
 		return &v
-	}).(DevOpsPolicyAssignmentPropertiesPtrOutput)
+	}).(DockerHubEnvironmentDataPtrOutput)
 }
 
-// Gets or sets time when the assignment was created in UTC.
-func (o DevOpsPolicyAssignmentPropertiesOutput) AssignedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DevOpsPolicyAssignmentProperties) *string { return v.AssignedAt }).(pulumi.StringPtrOutput)
+// The Docker Hub organization authentication details
+func (o DockerHubEnvironmentDataOutput) Authentication() AccessTokenAuthenticationPtrOutput {
+	return o.ApplyT(func(v DockerHubEnvironmentData) *AccessTokenAuthentication { return v.Authentication }).(AccessTokenAuthenticationPtrOutput)
 }
 
-// The behavior of a policy on descendant resources.
-func (o DevOpsPolicyAssignmentPropertiesOutput) DescendantBehavior() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DevOpsPolicyAssignmentProperties) *string { return v.DescendantBehavior }).(pulumi.StringPtrOutput)
+// The type of the environment data.
+// Expected value is 'DockerHubOrganization'.
+func (o DockerHubEnvironmentDataOutput) EnvironmentType() pulumi.StringOutput {
+	return o.ApplyT(func(v DockerHubEnvironmentData) string { return v.EnvironmentType }).(pulumi.StringOutput)
 }
 
-// Condensed information to identify a DevOps Policy resource.
-func (o DevOpsPolicyAssignmentPropertiesOutput) Policy() DevOpsPolicyDescriptorPtrOutput {
-	return o.ApplyT(func(v DevOpsPolicyAssignmentProperties) *DevOpsPolicyDescriptor { return v.Policy }).(DevOpsPolicyDescriptorPtrOutput)
+// Scan interval in hours (value should be between 1-hour to 24-hours)
+func (o DockerHubEnvironmentDataOutput) ScanInterval() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DockerHubEnvironmentData) *float64 { return v.ScanInterval }).(pulumi.Float64PtrOutput)
 }
 
-// Gets or sets the Azure resource id.
-func (o DevOpsPolicyAssignmentPropertiesOutput) ResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DevOpsPolicyAssignmentProperties) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+type DockerHubEnvironmentDataPtrOutput struct{ *pulumi.OutputState }
+
+func (DockerHubEnvironmentDataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DockerHubEnvironmentData)(nil)).Elem()
 }
 
-type DevOpsPolicyAssignmentPropertiesPtrOutput struct{ *pulumi.OutputState }
-
-func (DevOpsPolicyAssignmentPropertiesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DevOpsPolicyAssignmentProperties)(nil)).Elem()
-}
-
-func (o DevOpsPolicyAssignmentPropertiesPtrOutput) ToDevOpsPolicyAssignmentPropertiesPtrOutput() DevOpsPolicyAssignmentPropertiesPtrOutput {
+func (o DockerHubEnvironmentDataPtrOutput) ToDockerHubEnvironmentDataPtrOutput() DockerHubEnvironmentDataPtrOutput {
 	return o
 }
 
-func (o DevOpsPolicyAssignmentPropertiesPtrOutput) ToDevOpsPolicyAssignmentPropertiesPtrOutputWithContext(ctx context.Context) DevOpsPolicyAssignmentPropertiesPtrOutput {
+func (o DockerHubEnvironmentDataPtrOutput) ToDockerHubEnvironmentDataPtrOutputWithContext(ctx context.Context) DockerHubEnvironmentDataPtrOutput {
 	return o
 }
 
-func (o DevOpsPolicyAssignmentPropertiesPtrOutput) Elem() DevOpsPolicyAssignmentPropertiesOutput {
-	return o.ApplyT(func(v *DevOpsPolicyAssignmentProperties) DevOpsPolicyAssignmentProperties {
+func (o DockerHubEnvironmentDataPtrOutput) Elem() DockerHubEnvironmentDataOutput {
+	return o.ApplyT(func(v *DockerHubEnvironmentData) DockerHubEnvironmentData {
 		if v != nil {
 			return *v
 		}
-		var ret DevOpsPolicyAssignmentProperties
+		var ret DockerHubEnvironmentData
 		return ret
-	}).(DevOpsPolicyAssignmentPropertiesOutput)
+	}).(DockerHubEnvironmentDataOutput)
 }
 
-// Gets or sets time when the assignment was created in UTC.
-func (o DevOpsPolicyAssignmentPropertiesPtrOutput) AssignedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DevOpsPolicyAssignmentProperties) *string {
+// The Docker Hub organization authentication details
+func (o DockerHubEnvironmentDataPtrOutput) Authentication() AccessTokenAuthenticationPtrOutput {
+	return o.ApplyT(func(v *DockerHubEnvironmentData) *AccessTokenAuthentication {
 		if v == nil {
 			return nil
 		}
-		return v.AssignedAt
+		return v.Authentication
+	}).(AccessTokenAuthenticationPtrOutput)
+}
+
+// The type of the environment data.
+// Expected value is 'DockerHubOrganization'.
+func (o DockerHubEnvironmentDataPtrOutput) EnvironmentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DockerHubEnvironmentData) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EnvironmentType
 	}).(pulumi.StringPtrOutput)
 }
 
-// The behavior of a policy on descendant resources.
-func (o DevOpsPolicyAssignmentPropertiesPtrOutput) DescendantBehavior() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DevOpsPolicyAssignmentProperties) *string {
+// Scan interval in hours (value should be between 1-hour to 24-hours)
+func (o DockerHubEnvironmentDataPtrOutput) ScanInterval() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *DockerHubEnvironmentData) *float64 {
 		if v == nil {
 			return nil
 		}
-		return v.DescendantBehavior
-	}).(pulumi.StringPtrOutput)
+		return v.ScanInterval
+	}).(pulumi.Float64PtrOutput)
 }
 
-// Condensed information to identify a DevOps Policy resource.
-func (o DevOpsPolicyAssignmentPropertiesPtrOutput) Policy() DevOpsPolicyDescriptorPtrOutput {
-	return o.ApplyT(func(v *DevOpsPolicyAssignmentProperties) *DevOpsPolicyDescriptor {
-		if v == nil {
-			return nil
-		}
-		return v.Policy
-	}).(DevOpsPolicyDescriptorPtrOutput)
+// The Docker Hub connector environment data
+type DockerHubEnvironmentDataResponse struct {
+	// The Docker Hub organization authentication details
+	Authentication *AccessTokenAuthenticationResponse `pulumi:"authentication"`
+	// The type of the environment data.
+	// Expected value is 'DockerHubOrganization'.
+	EnvironmentType string `pulumi:"environmentType"`
+	// Scan interval in hours (value should be between 1-hour to 24-hours)
+	ScanInterval *float64 `pulumi:"scanInterval"`
 }
 
-// Gets or sets the Azure resource id.
-func (o DevOpsPolicyAssignmentPropertiesPtrOutput) ResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DevOpsPolicyAssignmentProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ResourceId
-	}).(pulumi.StringPtrOutput)
+// The Docker Hub connector environment data
+type DockerHubEnvironmentDataResponseOutput struct{ *pulumi.OutputState }
+
+func (DockerHubEnvironmentDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DockerHubEnvironmentDataResponse)(nil)).Elem()
 }
 
-// Properties of the DevOps policy assignment resource.
-type DevOpsPolicyAssignmentPropertiesResponse struct {
-	// Gets or sets time when the assignment was created in UTC.
-	AssignedAt *string `pulumi:"assignedAt"`
-	// The behavior of a policy on descendant resources.
-	DescendantBehavior *string `pulumi:"descendantBehavior"`
-	// Condensed information to identify a DevOps Policy resource.
-	Policy *DevOpsPolicyDescriptorResponse `pulumi:"policy"`
-	// The provisioning state of the resource.
-	//
-	// Pending - Provisioning pending.
-	// Failed - Provisioning failed.
-	// Succeeded - Successful provisioning.
-	// Canceled - Provisioning canceled.
-	// PendingDeletion - Deletion pending.
-	// DeletionSuccess - Deletion successful.
-	// DeletionFailure - Deletion failure.
-	ProvisioningState string `pulumi:"provisioningState"`
-	// Gets the resource status message.
-	ProvisioningStatusMessage string `pulumi:"provisioningStatusMessage"`
-	// Gets the time when resource was last checked.
-	ProvisioningStatusUpdateTimeUtc string `pulumi:"provisioningStatusUpdateTimeUtc"`
-	// Gets or sets the Azure resource id.
-	ResourceId *string `pulumi:"resourceId"`
-}
-
-// Properties of the DevOps policy assignment resource.
-type DevOpsPolicyAssignmentPropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (DevOpsPolicyAssignmentPropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DevOpsPolicyAssignmentPropertiesResponse)(nil)).Elem()
-}
-
-func (o DevOpsPolicyAssignmentPropertiesResponseOutput) ToDevOpsPolicyAssignmentPropertiesResponseOutput() DevOpsPolicyAssignmentPropertiesResponseOutput {
+func (o DockerHubEnvironmentDataResponseOutput) ToDockerHubEnvironmentDataResponseOutput() DockerHubEnvironmentDataResponseOutput {
 	return o
 }
 
-func (o DevOpsPolicyAssignmentPropertiesResponseOutput) ToDevOpsPolicyAssignmentPropertiesResponseOutputWithContext(ctx context.Context) DevOpsPolicyAssignmentPropertiesResponseOutput {
+func (o DockerHubEnvironmentDataResponseOutput) ToDockerHubEnvironmentDataResponseOutputWithContext(ctx context.Context) DockerHubEnvironmentDataResponseOutput {
 	return o
 }
 
-// Gets or sets time when the assignment was created in UTC.
-func (o DevOpsPolicyAssignmentPropertiesResponseOutput) AssignedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DevOpsPolicyAssignmentPropertiesResponse) *string { return v.AssignedAt }).(pulumi.StringPtrOutput)
+// The Docker Hub organization authentication details
+func (o DockerHubEnvironmentDataResponseOutput) Authentication() AccessTokenAuthenticationResponsePtrOutput {
+	return o.ApplyT(func(v DockerHubEnvironmentDataResponse) *AccessTokenAuthenticationResponse { return v.Authentication }).(AccessTokenAuthenticationResponsePtrOutput)
 }
 
-// The behavior of a policy on descendant resources.
-func (o DevOpsPolicyAssignmentPropertiesResponseOutput) DescendantBehavior() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DevOpsPolicyAssignmentPropertiesResponse) *string { return v.DescendantBehavior }).(pulumi.StringPtrOutput)
+// The type of the environment data.
+// Expected value is 'DockerHubOrganization'.
+func (o DockerHubEnvironmentDataResponseOutput) EnvironmentType() pulumi.StringOutput {
+	return o.ApplyT(func(v DockerHubEnvironmentDataResponse) string { return v.EnvironmentType }).(pulumi.StringOutput)
 }
 
-// Condensed information to identify a DevOps Policy resource.
-func (o DevOpsPolicyAssignmentPropertiesResponseOutput) Policy() DevOpsPolicyDescriptorResponsePtrOutput {
-	return o.ApplyT(func(v DevOpsPolicyAssignmentPropertiesResponse) *DevOpsPolicyDescriptorResponse { return v.Policy }).(DevOpsPolicyDescriptorResponsePtrOutput)
+// Scan interval in hours (value should be between 1-hour to 24-hours)
+func (o DockerHubEnvironmentDataResponseOutput) ScanInterval() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DockerHubEnvironmentDataResponse) *float64 { return v.ScanInterval }).(pulumi.Float64PtrOutput)
 }
 
-// The provisioning state of the resource.
-//
-// Pending - Provisioning pending.
-// Failed - Provisioning failed.
-// Succeeded - Successful provisioning.
-// Canceled - Provisioning canceled.
-// PendingDeletion - Deletion pending.
-// DeletionSuccess - Deletion successful.
-// DeletionFailure - Deletion failure.
-func (o DevOpsPolicyAssignmentPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v DevOpsPolicyAssignmentPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+type DockerHubEnvironmentDataResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DockerHubEnvironmentDataResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DockerHubEnvironmentDataResponse)(nil)).Elem()
 }
 
-// Gets the resource status message.
-func (o DevOpsPolicyAssignmentPropertiesResponseOutput) ProvisioningStatusMessage() pulumi.StringOutput {
-	return o.ApplyT(func(v DevOpsPolicyAssignmentPropertiesResponse) string { return v.ProvisioningStatusMessage }).(pulumi.StringOutput)
-}
-
-// Gets the time when resource was last checked.
-func (o DevOpsPolicyAssignmentPropertiesResponseOutput) ProvisioningStatusUpdateTimeUtc() pulumi.StringOutput {
-	return o.ApplyT(func(v DevOpsPolicyAssignmentPropertiesResponse) string { return v.ProvisioningStatusUpdateTimeUtc }).(pulumi.StringOutput)
-}
-
-// Gets or sets the Azure resource id.
-func (o DevOpsPolicyAssignmentPropertiesResponseOutput) ResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DevOpsPolicyAssignmentPropertiesResponse) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
-}
-
-// Condensed information to identify a DevOps Policy resource.
-type DevOpsPolicyDescriptor struct {
-	// Gets or sets the policy GUID.
-	PolicyId *string `pulumi:"policyId"`
-	// Gets or sets the policy name.
-	PolicyName *string `pulumi:"policyName"`
-	// DevOps Policy resource types.
-	PolicyType *string `pulumi:"policyType"`
-	// Gets or sets the version.
-	PolicyVersion *string `pulumi:"policyVersion"`
-}
-
-// DevOpsPolicyDescriptorInput is an input type that accepts DevOpsPolicyDescriptorArgs and DevOpsPolicyDescriptorOutput values.
-// You can construct a concrete instance of `DevOpsPolicyDescriptorInput` via:
-//
-//	DevOpsPolicyDescriptorArgs{...}
-type DevOpsPolicyDescriptorInput interface {
-	pulumi.Input
-
-	ToDevOpsPolicyDescriptorOutput() DevOpsPolicyDescriptorOutput
-	ToDevOpsPolicyDescriptorOutputWithContext(context.Context) DevOpsPolicyDescriptorOutput
-}
-
-// Condensed information to identify a DevOps Policy resource.
-type DevOpsPolicyDescriptorArgs struct {
-	// Gets or sets the policy GUID.
-	PolicyId pulumi.StringPtrInput `pulumi:"policyId"`
-	// Gets or sets the policy name.
-	PolicyName pulumi.StringPtrInput `pulumi:"policyName"`
-	// DevOps Policy resource types.
-	PolicyType pulumi.StringPtrInput `pulumi:"policyType"`
-	// Gets or sets the version.
-	PolicyVersion pulumi.StringPtrInput `pulumi:"policyVersion"`
-}
-
-func (DevOpsPolicyDescriptorArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DevOpsPolicyDescriptor)(nil)).Elem()
-}
-
-func (i DevOpsPolicyDescriptorArgs) ToDevOpsPolicyDescriptorOutput() DevOpsPolicyDescriptorOutput {
-	return i.ToDevOpsPolicyDescriptorOutputWithContext(context.Background())
-}
-
-func (i DevOpsPolicyDescriptorArgs) ToDevOpsPolicyDescriptorOutputWithContext(ctx context.Context) DevOpsPolicyDescriptorOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DevOpsPolicyDescriptorOutput)
-}
-
-func (i DevOpsPolicyDescriptorArgs) ToDevOpsPolicyDescriptorPtrOutput() DevOpsPolicyDescriptorPtrOutput {
-	return i.ToDevOpsPolicyDescriptorPtrOutputWithContext(context.Background())
-}
-
-func (i DevOpsPolicyDescriptorArgs) ToDevOpsPolicyDescriptorPtrOutputWithContext(ctx context.Context) DevOpsPolicyDescriptorPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DevOpsPolicyDescriptorOutput).ToDevOpsPolicyDescriptorPtrOutputWithContext(ctx)
-}
-
-// DevOpsPolicyDescriptorPtrInput is an input type that accepts DevOpsPolicyDescriptorArgs, DevOpsPolicyDescriptorPtr and DevOpsPolicyDescriptorPtrOutput values.
-// You can construct a concrete instance of `DevOpsPolicyDescriptorPtrInput` via:
-//
-//	        DevOpsPolicyDescriptorArgs{...}
-//
-//	or:
-//
-//	        nil
-type DevOpsPolicyDescriptorPtrInput interface {
-	pulumi.Input
-
-	ToDevOpsPolicyDescriptorPtrOutput() DevOpsPolicyDescriptorPtrOutput
-	ToDevOpsPolicyDescriptorPtrOutputWithContext(context.Context) DevOpsPolicyDescriptorPtrOutput
-}
-
-type devOpsPolicyDescriptorPtrType DevOpsPolicyDescriptorArgs
-
-func DevOpsPolicyDescriptorPtr(v *DevOpsPolicyDescriptorArgs) DevOpsPolicyDescriptorPtrInput {
-	return (*devOpsPolicyDescriptorPtrType)(v)
-}
-
-func (*devOpsPolicyDescriptorPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DevOpsPolicyDescriptor)(nil)).Elem()
-}
-
-func (i *devOpsPolicyDescriptorPtrType) ToDevOpsPolicyDescriptorPtrOutput() DevOpsPolicyDescriptorPtrOutput {
-	return i.ToDevOpsPolicyDescriptorPtrOutputWithContext(context.Background())
-}
-
-func (i *devOpsPolicyDescriptorPtrType) ToDevOpsPolicyDescriptorPtrOutputWithContext(ctx context.Context) DevOpsPolicyDescriptorPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DevOpsPolicyDescriptorPtrOutput)
-}
-
-// Condensed information to identify a DevOps Policy resource.
-type DevOpsPolicyDescriptorOutput struct{ *pulumi.OutputState }
-
-func (DevOpsPolicyDescriptorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DevOpsPolicyDescriptor)(nil)).Elem()
-}
-
-func (o DevOpsPolicyDescriptorOutput) ToDevOpsPolicyDescriptorOutput() DevOpsPolicyDescriptorOutput {
+func (o DockerHubEnvironmentDataResponsePtrOutput) ToDockerHubEnvironmentDataResponsePtrOutput() DockerHubEnvironmentDataResponsePtrOutput {
 	return o
 }
 
-func (o DevOpsPolicyDescriptorOutput) ToDevOpsPolicyDescriptorOutputWithContext(ctx context.Context) DevOpsPolicyDescriptorOutput {
+func (o DockerHubEnvironmentDataResponsePtrOutput) ToDockerHubEnvironmentDataResponsePtrOutputWithContext(ctx context.Context) DockerHubEnvironmentDataResponsePtrOutput {
 	return o
 }
 
-func (o DevOpsPolicyDescriptorOutput) ToDevOpsPolicyDescriptorPtrOutput() DevOpsPolicyDescriptorPtrOutput {
-	return o.ToDevOpsPolicyDescriptorPtrOutputWithContext(context.Background())
-}
-
-func (o DevOpsPolicyDescriptorOutput) ToDevOpsPolicyDescriptorPtrOutputWithContext(ctx context.Context) DevOpsPolicyDescriptorPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DevOpsPolicyDescriptor) *DevOpsPolicyDescriptor {
-		return &v
-	}).(DevOpsPolicyDescriptorPtrOutput)
-}
-
-// Gets or sets the policy GUID.
-func (o DevOpsPolicyDescriptorOutput) PolicyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DevOpsPolicyDescriptor) *string { return v.PolicyId }).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets the policy name.
-func (o DevOpsPolicyDescriptorOutput) PolicyName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DevOpsPolicyDescriptor) *string { return v.PolicyName }).(pulumi.StringPtrOutput)
-}
-
-// DevOps Policy resource types.
-func (o DevOpsPolicyDescriptorOutput) PolicyType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DevOpsPolicyDescriptor) *string { return v.PolicyType }).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets the version.
-func (o DevOpsPolicyDescriptorOutput) PolicyVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DevOpsPolicyDescriptor) *string { return v.PolicyVersion }).(pulumi.StringPtrOutput)
-}
-
-type DevOpsPolicyDescriptorPtrOutput struct{ *pulumi.OutputState }
-
-func (DevOpsPolicyDescriptorPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DevOpsPolicyDescriptor)(nil)).Elem()
-}
-
-func (o DevOpsPolicyDescriptorPtrOutput) ToDevOpsPolicyDescriptorPtrOutput() DevOpsPolicyDescriptorPtrOutput {
-	return o
-}
-
-func (o DevOpsPolicyDescriptorPtrOutput) ToDevOpsPolicyDescriptorPtrOutputWithContext(ctx context.Context) DevOpsPolicyDescriptorPtrOutput {
-	return o
-}
-
-func (o DevOpsPolicyDescriptorPtrOutput) Elem() DevOpsPolicyDescriptorOutput {
-	return o.ApplyT(func(v *DevOpsPolicyDescriptor) DevOpsPolicyDescriptor {
+func (o DockerHubEnvironmentDataResponsePtrOutput) Elem() DockerHubEnvironmentDataResponseOutput {
+	return o.ApplyT(func(v *DockerHubEnvironmentDataResponse) DockerHubEnvironmentDataResponse {
 		if v != nil {
 			return *v
 		}
-		var ret DevOpsPolicyDescriptor
+		var ret DockerHubEnvironmentDataResponse
 		return ret
-	}).(DevOpsPolicyDescriptorOutput)
+	}).(DockerHubEnvironmentDataResponseOutput)
 }
 
-// Gets or sets the policy GUID.
-func (o DevOpsPolicyDescriptorPtrOutput) PolicyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DevOpsPolicyDescriptor) *string {
+// The Docker Hub organization authentication details
+func (o DockerHubEnvironmentDataResponsePtrOutput) Authentication() AccessTokenAuthenticationResponsePtrOutput {
+	return o.ApplyT(func(v *DockerHubEnvironmentDataResponse) *AccessTokenAuthenticationResponse {
 		if v == nil {
 			return nil
 		}
-		return v.PolicyId
-	}).(pulumi.StringPtrOutput)
+		return v.Authentication
+	}).(AccessTokenAuthenticationResponsePtrOutput)
 }
 
-// Gets or sets the policy name.
-func (o DevOpsPolicyDescriptorPtrOutput) PolicyName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DevOpsPolicyDescriptor) *string {
+// The type of the environment data.
+// Expected value is 'DockerHubOrganization'.
+func (o DockerHubEnvironmentDataResponsePtrOutput) EnvironmentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DockerHubEnvironmentDataResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return v.PolicyName
+		return &v.EnvironmentType
 	}).(pulumi.StringPtrOutput)
 }
 
-// DevOps Policy resource types.
-func (o DevOpsPolicyDescriptorPtrOutput) PolicyType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DevOpsPolicyDescriptor) *string {
+// Scan interval in hours (value should be between 1-hour to 24-hours)
+func (o DockerHubEnvironmentDataResponsePtrOutput) ScanInterval() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *DockerHubEnvironmentDataResponse) *float64 {
 		if v == nil {
 			return nil
 		}
-		return v.PolicyType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets the version.
-func (o DevOpsPolicyDescriptorPtrOutput) PolicyVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DevOpsPolicyDescriptor) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PolicyVersion
-	}).(pulumi.StringPtrOutput)
-}
-
-// Condensed information to identify a DevOps Policy resource.
-type DevOpsPolicyDescriptorResponse struct {
-	// Gets or sets the policy GUID.
-	PolicyId *string `pulumi:"policyId"`
-	// Gets or sets the policy name.
-	PolicyName *string `pulumi:"policyName"`
-	// DevOps Policy resource types.
-	PolicyType *string `pulumi:"policyType"`
-	// Gets or sets the version.
-	PolicyVersion *string `pulumi:"policyVersion"`
-}
-
-// Condensed information to identify a DevOps Policy resource.
-type DevOpsPolicyDescriptorResponseOutput struct{ *pulumi.OutputState }
-
-func (DevOpsPolicyDescriptorResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DevOpsPolicyDescriptorResponse)(nil)).Elem()
-}
-
-func (o DevOpsPolicyDescriptorResponseOutput) ToDevOpsPolicyDescriptorResponseOutput() DevOpsPolicyDescriptorResponseOutput {
-	return o
-}
-
-func (o DevOpsPolicyDescriptorResponseOutput) ToDevOpsPolicyDescriptorResponseOutputWithContext(ctx context.Context) DevOpsPolicyDescriptorResponseOutput {
-	return o
-}
-
-// Gets or sets the policy GUID.
-func (o DevOpsPolicyDescriptorResponseOutput) PolicyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DevOpsPolicyDescriptorResponse) *string { return v.PolicyId }).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets the policy name.
-func (o DevOpsPolicyDescriptorResponseOutput) PolicyName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DevOpsPolicyDescriptorResponse) *string { return v.PolicyName }).(pulumi.StringPtrOutput)
-}
-
-// DevOps Policy resource types.
-func (o DevOpsPolicyDescriptorResponseOutput) PolicyType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DevOpsPolicyDescriptorResponse) *string { return v.PolicyType }).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets the version.
-func (o DevOpsPolicyDescriptorResponseOutput) PolicyVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DevOpsPolicyDescriptorResponse) *string { return v.PolicyVersion }).(pulumi.StringPtrOutput)
-}
-
-type DevOpsPolicyDescriptorResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (DevOpsPolicyDescriptorResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DevOpsPolicyDescriptorResponse)(nil)).Elem()
-}
-
-func (o DevOpsPolicyDescriptorResponsePtrOutput) ToDevOpsPolicyDescriptorResponsePtrOutput() DevOpsPolicyDescriptorResponsePtrOutput {
-	return o
-}
-
-func (o DevOpsPolicyDescriptorResponsePtrOutput) ToDevOpsPolicyDescriptorResponsePtrOutputWithContext(ctx context.Context) DevOpsPolicyDescriptorResponsePtrOutput {
-	return o
-}
-
-func (o DevOpsPolicyDescriptorResponsePtrOutput) Elem() DevOpsPolicyDescriptorResponseOutput {
-	return o.ApplyT(func(v *DevOpsPolicyDescriptorResponse) DevOpsPolicyDescriptorResponse {
-		if v != nil {
-			return *v
-		}
-		var ret DevOpsPolicyDescriptorResponse
-		return ret
-	}).(DevOpsPolicyDescriptorResponseOutput)
-}
-
-// Gets or sets the policy GUID.
-func (o DevOpsPolicyDescriptorResponsePtrOutput) PolicyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DevOpsPolicyDescriptorResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PolicyId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets the policy name.
-func (o DevOpsPolicyDescriptorResponsePtrOutput) PolicyName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DevOpsPolicyDescriptorResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PolicyName
-	}).(pulumi.StringPtrOutput)
-}
-
-// DevOps Policy resource types.
-func (o DevOpsPolicyDescriptorResponsePtrOutput) PolicyType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DevOpsPolicyDescriptorResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PolicyType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets the version.
-func (o DevOpsPolicyDescriptorResponsePtrOutput) PolicyVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DevOpsPolicyDescriptorResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PolicyVersion
-	}).(pulumi.StringPtrOutput)
+		return v.ScanInterval
+	}).(pulumi.Float64PtrOutput)
 }
 
 // A plan's extension properties
@@ -19251,6 +22283,8 @@ type GcpProjectEnvironmentData struct {
 	OrganizationalData interface{} `pulumi:"organizationalData"`
 	// The Gcp project's details
 	ProjectDetails *GcpProjectDetails `pulumi:"projectDetails"`
+	// Scan interval in hours (value should be between 1-hour to 24-hours)
+	ScanInterval *float64 `pulumi:"scanInterval"`
 }
 
 // GcpProjectEnvironmentDataInput is an input type that accepts GcpProjectEnvironmentDataArgs and GcpProjectEnvironmentDataOutput values.
@@ -19273,6 +22307,8 @@ type GcpProjectEnvironmentDataArgs struct {
 	OrganizationalData pulumi.Input `pulumi:"organizationalData"`
 	// The Gcp project's details
 	ProjectDetails GcpProjectDetailsPtrInput `pulumi:"projectDetails"`
+	// Scan interval in hours (value should be between 1-hour to 24-hours)
+	ScanInterval pulumi.Float64PtrInput `pulumi:"scanInterval"`
 }
 
 func (GcpProjectEnvironmentDataArgs) ElementType() reflect.Type {
@@ -19369,6 +22405,11 @@ func (o GcpProjectEnvironmentDataOutput) ProjectDetails() GcpProjectDetailsPtrOu
 	return o.ApplyT(func(v GcpProjectEnvironmentData) *GcpProjectDetails { return v.ProjectDetails }).(GcpProjectDetailsPtrOutput)
 }
 
+// Scan interval in hours (value should be between 1-hour to 24-hours)
+func (o GcpProjectEnvironmentDataOutput) ScanInterval() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GcpProjectEnvironmentData) *float64 { return v.ScanInterval }).(pulumi.Float64PtrOutput)
+}
+
 type GcpProjectEnvironmentDataPtrOutput struct{ *pulumi.OutputState }
 
 func (GcpProjectEnvironmentDataPtrOutput) ElementType() reflect.Type {
@@ -19424,6 +22465,16 @@ func (o GcpProjectEnvironmentDataPtrOutput) ProjectDetails() GcpProjectDetailsPt
 	}).(GcpProjectDetailsPtrOutput)
 }
 
+// Scan interval in hours (value should be between 1-hour to 24-hours)
+func (o GcpProjectEnvironmentDataPtrOutput) ScanInterval() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GcpProjectEnvironmentData) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.ScanInterval
+	}).(pulumi.Float64PtrOutput)
+}
+
 // The GCP project connector environment data
 type GcpProjectEnvironmentDataResponse struct {
 	// The type of the environment data.
@@ -19433,6 +22484,8 @@ type GcpProjectEnvironmentDataResponse struct {
 	OrganizationalData interface{} `pulumi:"organizationalData"`
 	// The Gcp project's details
 	ProjectDetails *GcpProjectDetailsResponse `pulumi:"projectDetails"`
+	// Scan interval in hours (value should be between 1-hour to 24-hours)
+	ScanInterval *float64 `pulumi:"scanInterval"`
 }
 
 // The GCP project connector environment data
@@ -19464,6 +22517,11 @@ func (o GcpProjectEnvironmentDataResponseOutput) OrganizationalData() pulumi.Any
 // The Gcp project's details
 func (o GcpProjectEnvironmentDataResponseOutput) ProjectDetails() GcpProjectDetailsResponsePtrOutput {
 	return o.ApplyT(func(v GcpProjectEnvironmentDataResponse) *GcpProjectDetailsResponse { return v.ProjectDetails }).(GcpProjectDetailsResponsePtrOutput)
+}
+
+// Scan interval in hours (value should be between 1-hour to 24-hours)
+func (o GcpProjectEnvironmentDataResponseOutput) ScanInterval() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GcpProjectEnvironmentDataResponse) *float64 { return v.ScanInterval }).(pulumi.Float64PtrOutput)
 }
 
 type GcpProjectEnvironmentDataResponsePtrOutput struct{ *pulumi.OutputState }
@@ -19519,6 +22577,16 @@ func (o GcpProjectEnvironmentDataResponsePtrOutput) ProjectDetails() GcpProjectD
 		}
 		return v.ProjectDetails
 	}).(GcpProjectDetailsResponsePtrOutput)
+}
+
+// Scan interval in hours (value should be between 1-hour to 24-hours)
+func (o GcpProjectEnvironmentDataResponsePtrOutput) ScanInterval() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GcpProjectEnvironmentDataResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.ScanInterval
+	}).(pulumi.Float64PtrOutput)
 }
 
 // GitHub Owner properties.
@@ -21889,317 +24957,247 @@ func (o IdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The information protection for AWS offering
-type InformationProtectionAwsOffering struct {
-	// The native cloud connection configuration
-	InformationProtection *InformationProtectionAwsOfferingInformationProtection `pulumi:"informationProtection"`
-	// The type of the security offering.
-	// Expected value is 'InformationProtectionAws'.
-	OfferingType string `pulumi:"offeringType"`
+// The JFrog Artifactory connector environment data
+type JFrogEnvironmentData struct {
+	// The type of the environment data.
+	// Expected value is 'JFrogArtifactory'.
+	EnvironmentType string `pulumi:"environmentType"`
+	// Scan interval in hours (value should be between 1-hour to 24-hours)
+	ScanInterval *int `pulumi:"scanInterval"`
 }
 
-// InformationProtectionAwsOfferingInput is an input type that accepts InformationProtectionAwsOfferingArgs and InformationProtectionAwsOfferingOutput values.
-// You can construct a concrete instance of `InformationProtectionAwsOfferingInput` via:
+// JFrogEnvironmentDataInput is an input type that accepts JFrogEnvironmentDataArgs and JFrogEnvironmentDataOutput values.
+// You can construct a concrete instance of `JFrogEnvironmentDataInput` via:
 //
-//	InformationProtectionAwsOfferingArgs{...}
-type InformationProtectionAwsOfferingInput interface {
+//	JFrogEnvironmentDataArgs{...}
+type JFrogEnvironmentDataInput interface {
 	pulumi.Input
 
-	ToInformationProtectionAwsOfferingOutput() InformationProtectionAwsOfferingOutput
-	ToInformationProtectionAwsOfferingOutputWithContext(context.Context) InformationProtectionAwsOfferingOutput
+	ToJFrogEnvironmentDataOutput() JFrogEnvironmentDataOutput
+	ToJFrogEnvironmentDataOutputWithContext(context.Context) JFrogEnvironmentDataOutput
 }
 
-// The information protection for AWS offering
-type InformationProtectionAwsOfferingArgs struct {
-	// The native cloud connection configuration
-	InformationProtection InformationProtectionAwsOfferingInformationProtectionPtrInput `pulumi:"informationProtection"`
-	// The type of the security offering.
-	// Expected value is 'InformationProtectionAws'.
-	OfferingType pulumi.StringInput `pulumi:"offeringType"`
+// The JFrog Artifactory connector environment data
+type JFrogEnvironmentDataArgs struct {
+	// The type of the environment data.
+	// Expected value is 'JFrogArtifactory'.
+	EnvironmentType pulumi.StringInput `pulumi:"environmentType"`
+	// Scan interval in hours (value should be between 1-hour to 24-hours)
+	ScanInterval pulumi.IntPtrInput `pulumi:"scanInterval"`
 }
 
-func (InformationProtectionAwsOfferingArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*InformationProtectionAwsOffering)(nil)).Elem()
+func (JFrogEnvironmentDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JFrogEnvironmentData)(nil)).Elem()
 }
 
-func (i InformationProtectionAwsOfferingArgs) ToInformationProtectionAwsOfferingOutput() InformationProtectionAwsOfferingOutput {
-	return i.ToInformationProtectionAwsOfferingOutputWithContext(context.Background())
+func (i JFrogEnvironmentDataArgs) ToJFrogEnvironmentDataOutput() JFrogEnvironmentDataOutput {
+	return i.ToJFrogEnvironmentDataOutputWithContext(context.Background())
 }
 
-func (i InformationProtectionAwsOfferingArgs) ToInformationProtectionAwsOfferingOutputWithContext(ctx context.Context) InformationProtectionAwsOfferingOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InformationProtectionAwsOfferingOutput)
+func (i JFrogEnvironmentDataArgs) ToJFrogEnvironmentDataOutputWithContext(ctx context.Context) JFrogEnvironmentDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JFrogEnvironmentDataOutput)
 }
 
-// The information protection for AWS offering
-type InformationProtectionAwsOfferingOutput struct{ *pulumi.OutputState }
-
-func (InformationProtectionAwsOfferingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InformationProtectionAwsOffering)(nil)).Elem()
+func (i JFrogEnvironmentDataArgs) ToJFrogEnvironmentDataPtrOutput() JFrogEnvironmentDataPtrOutput {
+	return i.ToJFrogEnvironmentDataPtrOutputWithContext(context.Background())
 }
 
-func (o InformationProtectionAwsOfferingOutput) ToInformationProtectionAwsOfferingOutput() InformationProtectionAwsOfferingOutput {
-	return o
+func (i JFrogEnvironmentDataArgs) ToJFrogEnvironmentDataPtrOutputWithContext(ctx context.Context) JFrogEnvironmentDataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JFrogEnvironmentDataOutput).ToJFrogEnvironmentDataPtrOutputWithContext(ctx)
 }
 
-func (o InformationProtectionAwsOfferingOutput) ToInformationProtectionAwsOfferingOutputWithContext(ctx context.Context) InformationProtectionAwsOfferingOutput {
-	return o
-}
-
-// The native cloud connection configuration
-func (o InformationProtectionAwsOfferingOutput) InformationProtection() InformationProtectionAwsOfferingInformationProtectionPtrOutput {
-	return o.ApplyT(func(v InformationProtectionAwsOffering) *InformationProtectionAwsOfferingInformationProtection {
-		return v.InformationProtection
-	}).(InformationProtectionAwsOfferingInformationProtectionPtrOutput)
-}
-
-// The type of the security offering.
-// Expected value is 'InformationProtectionAws'.
-func (o InformationProtectionAwsOfferingOutput) OfferingType() pulumi.StringOutput {
-	return o.ApplyT(func(v InformationProtectionAwsOffering) string { return v.OfferingType }).(pulumi.StringOutput)
-}
-
-// The native cloud connection configuration
-type InformationProtectionAwsOfferingInformationProtection struct {
-	// The cloud role ARN in AWS for this feature
-	CloudRoleArn *string `pulumi:"cloudRoleArn"`
-}
-
-// InformationProtectionAwsOfferingInformationProtectionInput is an input type that accepts InformationProtectionAwsOfferingInformationProtectionArgs and InformationProtectionAwsOfferingInformationProtectionOutput values.
-// You can construct a concrete instance of `InformationProtectionAwsOfferingInformationProtectionInput` via:
+// JFrogEnvironmentDataPtrInput is an input type that accepts JFrogEnvironmentDataArgs, JFrogEnvironmentDataPtr and JFrogEnvironmentDataPtrOutput values.
+// You can construct a concrete instance of `JFrogEnvironmentDataPtrInput` via:
 //
-//	InformationProtectionAwsOfferingInformationProtectionArgs{...}
-type InformationProtectionAwsOfferingInformationProtectionInput interface {
-	pulumi.Input
-
-	ToInformationProtectionAwsOfferingInformationProtectionOutput() InformationProtectionAwsOfferingInformationProtectionOutput
-	ToInformationProtectionAwsOfferingInformationProtectionOutputWithContext(context.Context) InformationProtectionAwsOfferingInformationProtectionOutput
-}
-
-// The native cloud connection configuration
-type InformationProtectionAwsOfferingInformationProtectionArgs struct {
-	// The cloud role ARN in AWS for this feature
-	CloudRoleArn pulumi.StringPtrInput `pulumi:"cloudRoleArn"`
-}
-
-func (InformationProtectionAwsOfferingInformationProtectionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*InformationProtectionAwsOfferingInformationProtection)(nil)).Elem()
-}
-
-func (i InformationProtectionAwsOfferingInformationProtectionArgs) ToInformationProtectionAwsOfferingInformationProtectionOutput() InformationProtectionAwsOfferingInformationProtectionOutput {
-	return i.ToInformationProtectionAwsOfferingInformationProtectionOutputWithContext(context.Background())
-}
-
-func (i InformationProtectionAwsOfferingInformationProtectionArgs) ToInformationProtectionAwsOfferingInformationProtectionOutputWithContext(ctx context.Context) InformationProtectionAwsOfferingInformationProtectionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InformationProtectionAwsOfferingInformationProtectionOutput)
-}
-
-func (i InformationProtectionAwsOfferingInformationProtectionArgs) ToInformationProtectionAwsOfferingInformationProtectionPtrOutput() InformationProtectionAwsOfferingInformationProtectionPtrOutput {
-	return i.ToInformationProtectionAwsOfferingInformationProtectionPtrOutputWithContext(context.Background())
-}
-
-func (i InformationProtectionAwsOfferingInformationProtectionArgs) ToInformationProtectionAwsOfferingInformationProtectionPtrOutputWithContext(ctx context.Context) InformationProtectionAwsOfferingInformationProtectionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InformationProtectionAwsOfferingInformationProtectionOutput).ToInformationProtectionAwsOfferingInformationProtectionPtrOutputWithContext(ctx)
-}
-
-// InformationProtectionAwsOfferingInformationProtectionPtrInput is an input type that accepts InformationProtectionAwsOfferingInformationProtectionArgs, InformationProtectionAwsOfferingInformationProtectionPtr and InformationProtectionAwsOfferingInformationProtectionPtrOutput values.
-// You can construct a concrete instance of `InformationProtectionAwsOfferingInformationProtectionPtrInput` via:
-//
-//	        InformationProtectionAwsOfferingInformationProtectionArgs{...}
+//	        JFrogEnvironmentDataArgs{...}
 //
 //	or:
 //
 //	        nil
-type InformationProtectionAwsOfferingInformationProtectionPtrInput interface {
+type JFrogEnvironmentDataPtrInput interface {
 	pulumi.Input
 
-	ToInformationProtectionAwsOfferingInformationProtectionPtrOutput() InformationProtectionAwsOfferingInformationProtectionPtrOutput
-	ToInformationProtectionAwsOfferingInformationProtectionPtrOutputWithContext(context.Context) InformationProtectionAwsOfferingInformationProtectionPtrOutput
+	ToJFrogEnvironmentDataPtrOutput() JFrogEnvironmentDataPtrOutput
+	ToJFrogEnvironmentDataPtrOutputWithContext(context.Context) JFrogEnvironmentDataPtrOutput
 }
 
-type informationProtectionAwsOfferingInformationProtectionPtrType InformationProtectionAwsOfferingInformationProtectionArgs
+type jfrogEnvironmentDataPtrType JFrogEnvironmentDataArgs
 
-func InformationProtectionAwsOfferingInformationProtectionPtr(v *InformationProtectionAwsOfferingInformationProtectionArgs) InformationProtectionAwsOfferingInformationProtectionPtrInput {
-	return (*informationProtectionAwsOfferingInformationProtectionPtrType)(v)
+func JFrogEnvironmentDataPtr(v *JFrogEnvironmentDataArgs) JFrogEnvironmentDataPtrInput {
+	return (*jfrogEnvironmentDataPtrType)(v)
 }
 
-func (*informationProtectionAwsOfferingInformationProtectionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**InformationProtectionAwsOfferingInformationProtection)(nil)).Elem()
+func (*jfrogEnvironmentDataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JFrogEnvironmentData)(nil)).Elem()
 }
 
-func (i *informationProtectionAwsOfferingInformationProtectionPtrType) ToInformationProtectionAwsOfferingInformationProtectionPtrOutput() InformationProtectionAwsOfferingInformationProtectionPtrOutput {
-	return i.ToInformationProtectionAwsOfferingInformationProtectionPtrOutputWithContext(context.Background())
+func (i *jfrogEnvironmentDataPtrType) ToJFrogEnvironmentDataPtrOutput() JFrogEnvironmentDataPtrOutput {
+	return i.ToJFrogEnvironmentDataPtrOutputWithContext(context.Background())
 }
 
-func (i *informationProtectionAwsOfferingInformationProtectionPtrType) ToInformationProtectionAwsOfferingInformationProtectionPtrOutputWithContext(ctx context.Context) InformationProtectionAwsOfferingInformationProtectionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InformationProtectionAwsOfferingInformationProtectionPtrOutput)
+func (i *jfrogEnvironmentDataPtrType) ToJFrogEnvironmentDataPtrOutputWithContext(ctx context.Context) JFrogEnvironmentDataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JFrogEnvironmentDataPtrOutput)
 }
 
-// The native cloud connection configuration
-type InformationProtectionAwsOfferingInformationProtectionOutput struct{ *pulumi.OutputState }
+// The JFrog Artifactory connector environment data
+type JFrogEnvironmentDataOutput struct{ *pulumi.OutputState }
 
-func (InformationProtectionAwsOfferingInformationProtectionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InformationProtectionAwsOfferingInformationProtection)(nil)).Elem()
+func (JFrogEnvironmentDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JFrogEnvironmentData)(nil)).Elem()
 }
 
-func (o InformationProtectionAwsOfferingInformationProtectionOutput) ToInformationProtectionAwsOfferingInformationProtectionOutput() InformationProtectionAwsOfferingInformationProtectionOutput {
+func (o JFrogEnvironmentDataOutput) ToJFrogEnvironmentDataOutput() JFrogEnvironmentDataOutput {
 	return o
 }
 
-func (o InformationProtectionAwsOfferingInformationProtectionOutput) ToInformationProtectionAwsOfferingInformationProtectionOutputWithContext(ctx context.Context) InformationProtectionAwsOfferingInformationProtectionOutput {
+func (o JFrogEnvironmentDataOutput) ToJFrogEnvironmentDataOutputWithContext(ctx context.Context) JFrogEnvironmentDataOutput {
 	return o
 }
 
-func (o InformationProtectionAwsOfferingInformationProtectionOutput) ToInformationProtectionAwsOfferingInformationProtectionPtrOutput() InformationProtectionAwsOfferingInformationProtectionPtrOutput {
-	return o.ToInformationProtectionAwsOfferingInformationProtectionPtrOutputWithContext(context.Background())
+func (o JFrogEnvironmentDataOutput) ToJFrogEnvironmentDataPtrOutput() JFrogEnvironmentDataPtrOutput {
+	return o.ToJFrogEnvironmentDataPtrOutputWithContext(context.Background())
 }
 
-func (o InformationProtectionAwsOfferingInformationProtectionOutput) ToInformationProtectionAwsOfferingInformationProtectionPtrOutputWithContext(ctx context.Context) InformationProtectionAwsOfferingInformationProtectionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v InformationProtectionAwsOfferingInformationProtection) *InformationProtectionAwsOfferingInformationProtection {
+func (o JFrogEnvironmentDataOutput) ToJFrogEnvironmentDataPtrOutputWithContext(ctx context.Context) JFrogEnvironmentDataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JFrogEnvironmentData) *JFrogEnvironmentData {
 		return &v
-	}).(InformationProtectionAwsOfferingInformationProtectionPtrOutput)
+	}).(JFrogEnvironmentDataPtrOutput)
 }
 
-// The cloud role ARN in AWS for this feature
-func (o InformationProtectionAwsOfferingInformationProtectionOutput) CloudRoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InformationProtectionAwsOfferingInformationProtection) *string { return v.CloudRoleArn }).(pulumi.StringPtrOutput)
+// The type of the environment data.
+// Expected value is 'JFrogArtifactory'.
+func (o JFrogEnvironmentDataOutput) EnvironmentType() pulumi.StringOutput {
+	return o.ApplyT(func(v JFrogEnvironmentData) string { return v.EnvironmentType }).(pulumi.StringOutput)
 }
 
-type InformationProtectionAwsOfferingInformationProtectionPtrOutput struct{ *pulumi.OutputState }
-
-func (InformationProtectionAwsOfferingInformationProtectionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**InformationProtectionAwsOfferingInformationProtection)(nil)).Elem()
+// Scan interval in hours (value should be between 1-hour to 24-hours)
+func (o JFrogEnvironmentDataOutput) ScanInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JFrogEnvironmentData) *int { return v.ScanInterval }).(pulumi.IntPtrOutput)
 }
 
-func (o InformationProtectionAwsOfferingInformationProtectionPtrOutput) ToInformationProtectionAwsOfferingInformationProtectionPtrOutput() InformationProtectionAwsOfferingInformationProtectionPtrOutput {
+type JFrogEnvironmentDataPtrOutput struct{ *pulumi.OutputState }
+
+func (JFrogEnvironmentDataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JFrogEnvironmentData)(nil)).Elem()
+}
+
+func (o JFrogEnvironmentDataPtrOutput) ToJFrogEnvironmentDataPtrOutput() JFrogEnvironmentDataPtrOutput {
 	return o
 }
 
-func (o InformationProtectionAwsOfferingInformationProtectionPtrOutput) ToInformationProtectionAwsOfferingInformationProtectionPtrOutputWithContext(ctx context.Context) InformationProtectionAwsOfferingInformationProtectionPtrOutput {
+func (o JFrogEnvironmentDataPtrOutput) ToJFrogEnvironmentDataPtrOutputWithContext(ctx context.Context) JFrogEnvironmentDataPtrOutput {
 	return o
 }
 
-func (o InformationProtectionAwsOfferingInformationProtectionPtrOutput) Elem() InformationProtectionAwsOfferingInformationProtectionOutput {
-	return o.ApplyT(func(v *InformationProtectionAwsOfferingInformationProtection) InformationProtectionAwsOfferingInformationProtection {
+func (o JFrogEnvironmentDataPtrOutput) Elem() JFrogEnvironmentDataOutput {
+	return o.ApplyT(func(v *JFrogEnvironmentData) JFrogEnvironmentData {
 		if v != nil {
 			return *v
 		}
-		var ret InformationProtectionAwsOfferingInformationProtection
+		var ret JFrogEnvironmentData
 		return ret
-	}).(InformationProtectionAwsOfferingInformationProtectionOutput)
+	}).(JFrogEnvironmentDataOutput)
 }
 
-// The cloud role ARN in AWS for this feature
-func (o InformationProtectionAwsOfferingInformationProtectionPtrOutput) CloudRoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InformationProtectionAwsOfferingInformationProtection) *string {
+// The type of the environment data.
+// Expected value is 'JFrogArtifactory'.
+func (o JFrogEnvironmentDataPtrOutput) EnvironmentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JFrogEnvironmentData) *string {
 		if v == nil {
 			return nil
 		}
-		return v.CloudRoleArn
+		return &v.EnvironmentType
 	}).(pulumi.StringPtrOutput)
 }
 
-// The information protection for AWS offering
-type InformationProtectionAwsOfferingResponse struct {
-	// The offering description.
-	Description string `pulumi:"description"`
-	// The native cloud connection configuration
-	InformationProtection *InformationProtectionAwsOfferingResponseInformationProtection `pulumi:"informationProtection"`
-	// The type of the security offering.
-	// Expected value is 'InformationProtectionAws'.
-	OfferingType string `pulumi:"offeringType"`
+// Scan interval in hours (value should be between 1-hour to 24-hours)
+func (o JFrogEnvironmentDataPtrOutput) ScanInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JFrogEnvironmentData) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ScanInterval
+	}).(pulumi.IntPtrOutput)
 }
 
-// The information protection for AWS offering
-type InformationProtectionAwsOfferingResponseOutput struct{ *pulumi.OutputState }
-
-func (InformationProtectionAwsOfferingResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InformationProtectionAwsOfferingResponse)(nil)).Elem()
+// The JFrog Artifactory connector environment data
+type JFrogEnvironmentDataResponse struct {
+	// The type of the environment data.
+	// Expected value is 'JFrogArtifactory'.
+	EnvironmentType string `pulumi:"environmentType"`
+	// Scan interval in hours (value should be between 1-hour to 24-hours)
+	ScanInterval *int `pulumi:"scanInterval"`
 }
 
-func (o InformationProtectionAwsOfferingResponseOutput) ToInformationProtectionAwsOfferingResponseOutput() InformationProtectionAwsOfferingResponseOutput {
+// The JFrog Artifactory connector environment data
+type JFrogEnvironmentDataResponseOutput struct{ *pulumi.OutputState }
+
+func (JFrogEnvironmentDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JFrogEnvironmentDataResponse)(nil)).Elem()
+}
+
+func (o JFrogEnvironmentDataResponseOutput) ToJFrogEnvironmentDataResponseOutput() JFrogEnvironmentDataResponseOutput {
 	return o
 }
 
-func (o InformationProtectionAwsOfferingResponseOutput) ToInformationProtectionAwsOfferingResponseOutputWithContext(ctx context.Context) InformationProtectionAwsOfferingResponseOutput {
+func (o JFrogEnvironmentDataResponseOutput) ToJFrogEnvironmentDataResponseOutputWithContext(ctx context.Context) JFrogEnvironmentDataResponseOutput {
 	return o
 }
 
-// The offering description.
-func (o InformationProtectionAwsOfferingResponseOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v InformationProtectionAwsOfferingResponse) string { return v.Description }).(pulumi.StringOutput)
+// The type of the environment data.
+// Expected value is 'JFrogArtifactory'.
+func (o JFrogEnvironmentDataResponseOutput) EnvironmentType() pulumi.StringOutput {
+	return o.ApplyT(func(v JFrogEnvironmentDataResponse) string { return v.EnvironmentType }).(pulumi.StringOutput)
 }
 
-// The native cloud connection configuration
-func (o InformationProtectionAwsOfferingResponseOutput) InformationProtection() InformationProtectionAwsOfferingResponseInformationProtectionPtrOutput {
-	return o.ApplyT(func(v InformationProtectionAwsOfferingResponse) *InformationProtectionAwsOfferingResponseInformationProtection {
-		return v.InformationProtection
-	}).(InformationProtectionAwsOfferingResponseInformationProtectionPtrOutput)
+// Scan interval in hours (value should be between 1-hour to 24-hours)
+func (o JFrogEnvironmentDataResponseOutput) ScanInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JFrogEnvironmentDataResponse) *int { return v.ScanInterval }).(pulumi.IntPtrOutput)
 }
 
-// The type of the security offering.
-// Expected value is 'InformationProtectionAws'.
-func (o InformationProtectionAwsOfferingResponseOutput) OfferingType() pulumi.StringOutput {
-	return o.ApplyT(func(v InformationProtectionAwsOfferingResponse) string { return v.OfferingType }).(pulumi.StringOutput)
+type JFrogEnvironmentDataResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (JFrogEnvironmentDataResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JFrogEnvironmentDataResponse)(nil)).Elem()
 }
 
-// The native cloud connection configuration
-type InformationProtectionAwsOfferingResponseInformationProtection struct {
-	// The cloud role ARN in AWS for this feature
-	CloudRoleArn *string `pulumi:"cloudRoleArn"`
-}
-
-// The native cloud connection configuration
-type InformationProtectionAwsOfferingResponseInformationProtectionOutput struct{ *pulumi.OutputState }
-
-func (InformationProtectionAwsOfferingResponseInformationProtectionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InformationProtectionAwsOfferingResponseInformationProtection)(nil)).Elem()
-}
-
-func (o InformationProtectionAwsOfferingResponseInformationProtectionOutput) ToInformationProtectionAwsOfferingResponseInformationProtectionOutput() InformationProtectionAwsOfferingResponseInformationProtectionOutput {
+func (o JFrogEnvironmentDataResponsePtrOutput) ToJFrogEnvironmentDataResponsePtrOutput() JFrogEnvironmentDataResponsePtrOutput {
 	return o
 }
 
-func (o InformationProtectionAwsOfferingResponseInformationProtectionOutput) ToInformationProtectionAwsOfferingResponseInformationProtectionOutputWithContext(ctx context.Context) InformationProtectionAwsOfferingResponseInformationProtectionOutput {
+func (o JFrogEnvironmentDataResponsePtrOutput) ToJFrogEnvironmentDataResponsePtrOutputWithContext(ctx context.Context) JFrogEnvironmentDataResponsePtrOutput {
 	return o
 }
 
-// The cloud role ARN in AWS for this feature
-func (o InformationProtectionAwsOfferingResponseInformationProtectionOutput) CloudRoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InformationProtectionAwsOfferingResponseInformationProtection) *string { return v.CloudRoleArn }).(pulumi.StringPtrOutput)
-}
-
-type InformationProtectionAwsOfferingResponseInformationProtectionPtrOutput struct{ *pulumi.OutputState }
-
-func (InformationProtectionAwsOfferingResponseInformationProtectionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**InformationProtectionAwsOfferingResponseInformationProtection)(nil)).Elem()
-}
-
-func (o InformationProtectionAwsOfferingResponseInformationProtectionPtrOutput) ToInformationProtectionAwsOfferingResponseInformationProtectionPtrOutput() InformationProtectionAwsOfferingResponseInformationProtectionPtrOutput {
-	return o
-}
-
-func (o InformationProtectionAwsOfferingResponseInformationProtectionPtrOutput) ToInformationProtectionAwsOfferingResponseInformationProtectionPtrOutputWithContext(ctx context.Context) InformationProtectionAwsOfferingResponseInformationProtectionPtrOutput {
-	return o
-}
-
-func (o InformationProtectionAwsOfferingResponseInformationProtectionPtrOutput) Elem() InformationProtectionAwsOfferingResponseInformationProtectionOutput {
-	return o.ApplyT(func(v *InformationProtectionAwsOfferingResponseInformationProtection) InformationProtectionAwsOfferingResponseInformationProtection {
+func (o JFrogEnvironmentDataResponsePtrOutput) Elem() JFrogEnvironmentDataResponseOutput {
+	return o.ApplyT(func(v *JFrogEnvironmentDataResponse) JFrogEnvironmentDataResponse {
 		if v != nil {
 			return *v
 		}
-		var ret InformationProtectionAwsOfferingResponseInformationProtection
+		var ret JFrogEnvironmentDataResponse
 		return ret
-	}).(InformationProtectionAwsOfferingResponseInformationProtectionOutput)
+	}).(JFrogEnvironmentDataResponseOutput)
 }
 
-// The cloud role ARN in AWS for this feature
-func (o InformationProtectionAwsOfferingResponseInformationProtectionPtrOutput) CloudRoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InformationProtectionAwsOfferingResponseInformationProtection) *string {
+// The type of the environment data.
+// Expected value is 'JFrogArtifactory'.
+func (o JFrogEnvironmentDataResponsePtrOutput) EnvironmentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JFrogEnvironmentDataResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return v.CloudRoleArn
+		return &v.EnvironmentType
 	}).(pulumi.StringPtrOutput)
+}
+
+// Scan interval in hours (value should be between 1-hour to 24-hours)
+func (o JFrogEnvironmentDataResponsePtrOutput) ScanInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JFrogEnvironmentDataResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ScanInterval
+	}).(pulumi.IntPtrOutput)
 }
 
 type JitNetworkAccessPolicyVirtualMachine struct {
@@ -23402,6 +26400,210 @@ func (o MalwareScanningPropertiesResponsePtrOutput) ScanResultsEventGridTopicRes
 	}).(pulumi.StringPtrOutput)
 }
 
+// Alert notification source
+type NotificationsSourceAlert struct {
+	// Defines the minimal alert severity which will be sent as email notifications
+	MinimalSeverity *string `pulumi:"minimalSeverity"`
+	// The source type that will trigger the notification
+	// Expected value is 'Alert'.
+	SourceType string `pulumi:"sourceType"`
+}
+
+// NotificationsSourceAlertInput is an input type that accepts NotificationsSourceAlertArgs and NotificationsSourceAlertOutput values.
+// You can construct a concrete instance of `NotificationsSourceAlertInput` via:
+//
+//	NotificationsSourceAlertArgs{...}
+type NotificationsSourceAlertInput interface {
+	pulumi.Input
+
+	ToNotificationsSourceAlertOutput() NotificationsSourceAlertOutput
+	ToNotificationsSourceAlertOutputWithContext(context.Context) NotificationsSourceAlertOutput
+}
+
+// Alert notification source
+type NotificationsSourceAlertArgs struct {
+	// Defines the minimal alert severity which will be sent as email notifications
+	MinimalSeverity pulumi.StringPtrInput `pulumi:"minimalSeverity"`
+	// The source type that will trigger the notification
+	// Expected value is 'Alert'.
+	SourceType pulumi.StringInput `pulumi:"sourceType"`
+}
+
+func (NotificationsSourceAlertArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationsSourceAlert)(nil)).Elem()
+}
+
+func (i NotificationsSourceAlertArgs) ToNotificationsSourceAlertOutput() NotificationsSourceAlertOutput {
+	return i.ToNotificationsSourceAlertOutputWithContext(context.Background())
+}
+
+func (i NotificationsSourceAlertArgs) ToNotificationsSourceAlertOutputWithContext(ctx context.Context) NotificationsSourceAlertOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationsSourceAlertOutput)
+}
+
+// Alert notification source
+type NotificationsSourceAlertOutput struct{ *pulumi.OutputState }
+
+func (NotificationsSourceAlertOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationsSourceAlert)(nil)).Elem()
+}
+
+func (o NotificationsSourceAlertOutput) ToNotificationsSourceAlertOutput() NotificationsSourceAlertOutput {
+	return o
+}
+
+func (o NotificationsSourceAlertOutput) ToNotificationsSourceAlertOutputWithContext(ctx context.Context) NotificationsSourceAlertOutput {
+	return o
+}
+
+// Defines the minimal alert severity which will be sent as email notifications
+func (o NotificationsSourceAlertOutput) MinimalSeverity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationsSourceAlert) *string { return v.MinimalSeverity }).(pulumi.StringPtrOutput)
+}
+
+// The source type that will trigger the notification
+// Expected value is 'Alert'.
+func (o NotificationsSourceAlertOutput) SourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v NotificationsSourceAlert) string { return v.SourceType }).(pulumi.StringOutput)
+}
+
+// Alert notification source
+type NotificationsSourceAlertResponse struct {
+	// Defines the minimal alert severity which will be sent as email notifications
+	MinimalSeverity *string `pulumi:"minimalSeverity"`
+	// The source type that will trigger the notification
+	// Expected value is 'Alert'.
+	SourceType string `pulumi:"sourceType"`
+}
+
+// Alert notification source
+type NotificationsSourceAlertResponseOutput struct{ *pulumi.OutputState }
+
+func (NotificationsSourceAlertResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationsSourceAlertResponse)(nil)).Elem()
+}
+
+func (o NotificationsSourceAlertResponseOutput) ToNotificationsSourceAlertResponseOutput() NotificationsSourceAlertResponseOutput {
+	return o
+}
+
+func (o NotificationsSourceAlertResponseOutput) ToNotificationsSourceAlertResponseOutputWithContext(ctx context.Context) NotificationsSourceAlertResponseOutput {
+	return o
+}
+
+// Defines the minimal alert severity which will be sent as email notifications
+func (o NotificationsSourceAlertResponseOutput) MinimalSeverity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationsSourceAlertResponse) *string { return v.MinimalSeverity }).(pulumi.StringPtrOutput)
+}
+
+// The source type that will trigger the notification
+// Expected value is 'Alert'.
+func (o NotificationsSourceAlertResponseOutput) SourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v NotificationsSourceAlertResponse) string { return v.SourceType }).(pulumi.StringOutput)
+}
+
+// Attack path notification source
+type NotificationsSourceAttackPath struct {
+	// Defines the minimal attach path risk level which will be sent as email notifications
+	MinimalRiskLevel *string `pulumi:"minimalRiskLevel"`
+	// The source type that will trigger the notification
+	// Expected value is 'AttackPath'.
+	SourceType string `pulumi:"sourceType"`
+}
+
+// NotificationsSourceAttackPathInput is an input type that accepts NotificationsSourceAttackPathArgs and NotificationsSourceAttackPathOutput values.
+// You can construct a concrete instance of `NotificationsSourceAttackPathInput` via:
+//
+//	NotificationsSourceAttackPathArgs{...}
+type NotificationsSourceAttackPathInput interface {
+	pulumi.Input
+
+	ToNotificationsSourceAttackPathOutput() NotificationsSourceAttackPathOutput
+	ToNotificationsSourceAttackPathOutputWithContext(context.Context) NotificationsSourceAttackPathOutput
+}
+
+// Attack path notification source
+type NotificationsSourceAttackPathArgs struct {
+	// Defines the minimal attach path risk level which will be sent as email notifications
+	MinimalRiskLevel pulumi.StringPtrInput `pulumi:"minimalRiskLevel"`
+	// The source type that will trigger the notification
+	// Expected value is 'AttackPath'.
+	SourceType pulumi.StringInput `pulumi:"sourceType"`
+}
+
+func (NotificationsSourceAttackPathArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationsSourceAttackPath)(nil)).Elem()
+}
+
+func (i NotificationsSourceAttackPathArgs) ToNotificationsSourceAttackPathOutput() NotificationsSourceAttackPathOutput {
+	return i.ToNotificationsSourceAttackPathOutputWithContext(context.Background())
+}
+
+func (i NotificationsSourceAttackPathArgs) ToNotificationsSourceAttackPathOutputWithContext(ctx context.Context) NotificationsSourceAttackPathOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationsSourceAttackPathOutput)
+}
+
+// Attack path notification source
+type NotificationsSourceAttackPathOutput struct{ *pulumi.OutputState }
+
+func (NotificationsSourceAttackPathOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationsSourceAttackPath)(nil)).Elem()
+}
+
+func (o NotificationsSourceAttackPathOutput) ToNotificationsSourceAttackPathOutput() NotificationsSourceAttackPathOutput {
+	return o
+}
+
+func (o NotificationsSourceAttackPathOutput) ToNotificationsSourceAttackPathOutputWithContext(ctx context.Context) NotificationsSourceAttackPathOutput {
+	return o
+}
+
+// Defines the minimal attach path risk level which will be sent as email notifications
+func (o NotificationsSourceAttackPathOutput) MinimalRiskLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationsSourceAttackPath) *string { return v.MinimalRiskLevel }).(pulumi.StringPtrOutput)
+}
+
+// The source type that will trigger the notification
+// Expected value is 'AttackPath'.
+func (o NotificationsSourceAttackPathOutput) SourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v NotificationsSourceAttackPath) string { return v.SourceType }).(pulumi.StringOutput)
+}
+
+// Attack path notification source
+type NotificationsSourceAttackPathResponse struct {
+	// Defines the minimal attach path risk level which will be sent as email notifications
+	MinimalRiskLevel *string `pulumi:"minimalRiskLevel"`
+	// The source type that will trigger the notification
+	// Expected value is 'AttackPath'.
+	SourceType string `pulumi:"sourceType"`
+}
+
+// Attack path notification source
+type NotificationsSourceAttackPathResponseOutput struct{ *pulumi.OutputState }
+
+func (NotificationsSourceAttackPathResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationsSourceAttackPathResponse)(nil)).Elem()
+}
+
+func (o NotificationsSourceAttackPathResponseOutput) ToNotificationsSourceAttackPathResponseOutput() NotificationsSourceAttackPathResponseOutput {
+	return o
+}
+
+func (o NotificationsSourceAttackPathResponseOutput) ToNotificationsSourceAttackPathResponseOutputWithContext(ctx context.Context) NotificationsSourceAttackPathResponseOutput {
+	return o
+}
+
+// Defines the minimal attach path risk level which will be sent as email notifications
+func (o NotificationsSourceAttackPathResponseOutput) MinimalRiskLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationsSourceAttackPathResponse) *string { return v.MinimalRiskLevel }).(pulumi.StringPtrOutput)
+}
+
+// The source type that will trigger the notification
+// Expected value is 'AttackPath'.
+func (o NotificationsSourceAttackPathResponseOutput) SourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v NotificationsSourceAttackPathResponse) string { return v.SourceType }).(pulumi.StringOutput)
+}
+
 // Details of the On Premise resource that was assessed
 type OnPremiseResourceDetails struct {
 	// The name of the machine
@@ -24191,6 +27393,364 @@ func (o PartialAssessmentPropertiesResponseArrayOutput) Index(i pulumi.IntInput)
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PartialAssessmentPropertiesResponse {
 		return vs[0].([]PartialAssessmentPropertiesResponse)[vs[1].(int)]
 	}).(PartialAssessmentPropertiesResponseOutput)
+}
+
+// The private endpoint connection resource.
+type PrivateEndpointConnectionResponse struct {
+	// The group ids for the private endpoint resource.
+	GroupIds []string `pulumi:"groupIds"`
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The private endpoint resource.
+	PrivateEndpoint *PrivateEndpointResponse `pulumi:"privateEndpoint"`
+	// A collection of information about the state of the connection between service consumer and provider.
+	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
+	// The provisioning state of the private endpoint connection resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
+}
+
+// The private endpoint connection resource.
+type PrivateEndpointConnectionResponseOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointConnectionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointConnectionResponse)(nil)).Elem()
+}
+
+func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResponseOutput() PrivateEndpointConnectionResponseOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResponseOutputWithContext(ctx context.Context) PrivateEndpointConnectionResponseOutput {
+	return o
+}
+
+// The group ids for the private endpoint resource.
+func (o PrivateEndpointConnectionResponseOutput) GroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
+}
+
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+func (o PrivateEndpointConnectionResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the resource
+func (o PrivateEndpointConnectionResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The private endpoint resource.
+func (o PrivateEndpointConnectionResponseOutput) PrivateEndpoint() PrivateEndpointResponsePtrOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) *PrivateEndpointResponse { return v.PrivateEndpoint }).(PrivateEndpointResponsePtrOutput)
+}
+
+// A collection of information about the state of the connection between service consumer and provider.
+func (o PrivateEndpointConnectionResponseOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStateResponseOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) PrivateLinkServiceConnectionStateResponse {
+		return v.PrivateLinkServiceConnectionState
+	}).(PrivateLinkServiceConnectionStateResponseOutput)
+}
+
+// The provisioning state of the private endpoint connection resource.
+func (o PrivateEndpointConnectionResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o PrivateEndpointConnectionResponseOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+func (o PrivateEndpointConnectionResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type PrivateEndpointConnectionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointConnectionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrivateEndpointConnectionResponse)(nil)).Elem()
+}
+
+func (o PrivateEndpointConnectionResponseArrayOutput) ToPrivateEndpointConnectionResponseArrayOutput() PrivateEndpointConnectionResponseArrayOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionResponseArrayOutput) ToPrivateEndpointConnectionResponseArrayOutputWithContext(ctx context.Context) PrivateEndpointConnectionResponseArrayOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionResponseArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnectionResponse {
+		return vs[0].([]PrivateEndpointConnectionResponse)[vs[1].(int)]
+	}).(PrivateEndpointConnectionResponseOutput)
+}
+
+// The private endpoint resource.
+type PrivateEndpointResponse struct {
+	// The ARM identifier for private endpoint.
+	Id string `pulumi:"id"`
+}
+
+// The private endpoint resource.
+type PrivateEndpointResponseOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointResponse)(nil)).Elem()
+}
+
+func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutput() PrivateEndpointResponseOutput {
+	return o
+}
+
+func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutputWithContext(ctx context.Context) PrivateEndpointResponseOutput {
+	return o
+}
+
+// The ARM identifier for private endpoint.
+func (o PrivateEndpointResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type PrivateEndpointResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateEndpointResponse)(nil)).Elem()
+}
+
+func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutput() PrivateEndpointResponsePtrOutput {
+	return o
+}
+
+func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutputWithContext(ctx context.Context) PrivateEndpointResponsePtrOutput {
+	return o
+}
+
+func (o PrivateEndpointResponsePtrOutput) Elem() PrivateEndpointResponseOutput {
+	return o.ApplyT(func(v *PrivateEndpointResponse) PrivateEndpointResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateEndpointResponse
+		return ret
+	}).(PrivateEndpointResponseOutput)
+}
+
+// The ARM identifier for private endpoint.
+func (o PrivateEndpointResponsePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateEndpointResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// A private link resource.
+type PrivateLinkResourceResponse struct {
+	// The private link resource group id.
+	GroupId string `pulumi:"groupId"`
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The private link resource required member names.
+	RequiredMembers []string `pulumi:"requiredMembers"`
+	// The private link resource private link DNS zone name.
+	RequiredZoneNames []string `pulumi:"requiredZoneNames"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
+}
+
+// A private link resource.
+type PrivateLinkResourceResponseOutput struct{ *pulumi.OutputState }
+
+func (PrivateLinkResourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateLinkResourceResponse)(nil)).Elem()
+}
+
+func (o PrivateLinkResourceResponseOutput) ToPrivateLinkResourceResponseOutput() PrivateLinkResourceResponseOutput {
+	return o
+}
+
+func (o PrivateLinkResourceResponseOutput) ToPrivateLinkResourceResponseOutputWithContext(ctx context.Context) PrivateLinkResourceResponseOutput {
+	return o
+}
+
+// The private link resource group id.
+func (o PrivateLinkResourceResponseOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateLinkResourceResponse) string { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+func (o PrivateLinkResourceResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateLinkResourceResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the resource
+func (o PrivateLinkResourceResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateLinkResourceResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The private link resource required member names.
+func (o PrivateLinkResourceResponseOutput) RequiredMembers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PrivateLinkResourceResponse) []string { return v.RequiredMembers }).(pulumi.StringArrayOutput)
+}
+
+// The private link resource private link DNS zone name.
+func (o PrivateLinkResourceResponseOutput) RequiredZoneNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PrivateLinkResourceResponse) []string { return v.RequiredZoneNames }).(pulumi.StringArrayOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o PrivateLinkResourceResponseOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v PrivateLinkResourceResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+func (o PrivateLinkResourceResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateLinkResourceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type PrivateLinkResourceResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (PrivateLinkResourceResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrivateLinkResourceResponse)(nil)).Elem()
+}
+
+func (o PrivateLinkResourceResponseArrayOutput) ToPrivateLinkResourceResponseArrayOutput() PrivateLinkResourceResponseArrayOutput {
+	return o
+}
+
+func (o PrivateLinkResourceResponseArrayOutput) ToPrivateLinkResourceResponseArrayOutputWithContext(ctx context.Context) PrivateLinkResourceResponseArrayOutput {
+	return o
+}
+
+func (o PrivateLinkResourceResponseArrayOutput) Index(i pulumi.IntInput) PrivateLinkResourceResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateLinkResourceResponse {
+		return vs[0].([]PrivateLinkResourceResponse)[vs[1].(int)]
+	}).(PrivateLinkResourceResponseOutput)
+}
+
+// A collection of information about the state of the connection between service consumer and provider.
+type PrivateLinkServiceConnectionState struct {
+	// A message indicating if changes on the service provider require any updates on the consumer.
+	ActionsRequired *string `pulumi:"actionsRequired"`
+	// The reason for approval/rejection of the connection.
+	Description *string `pulumi:"description"`
+	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+	Status *string `pulumi:"status"`
+}
+
+// PrivateLinkServiceConnectionStateInput is an input type that accepts PrivateLinkServiceConnectionStateArgs and PrivateLinkServiceConnectionStateOutput values.
+// You can construct a concrete instance of `PrivateLinkServiceConnectionStateInput` via:
+//
+//	PrivateLinkServiceConnectionStateArgs{...}
+type PrivateLinkServiceConnectionStateInput interface {
+	pulumi.Input
+
+	ToPrivateLinkServiceConnectionStateOutput() PrivateLinkServiceConnectionStateOutput
+	ToPrivateLinkServiceConnectionStateOutputWithContext(context.Context) PrivateLinkServiceConnectionStateOutput
+}
+
+// A collection of information about the state of the connection between service consumer and provider.
+type PrivateLinkServiceConnectionStateArgs struct {
+	// A message indicating if changes on the service provider require any updates on the consumer.
+	ActionsRequired pulumi.StringPtrInput `pulumi:"actionsRequired"`
+	// The reason for approval/rejection of the connection.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (PrivateLinkServiceConnectionStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateLinkServiceConnectionState)(nil)).Elem()
+}
+
+func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionStateOutput() PrivateLinkServiceConnectionStateOutput {
+	return i.ToPrivateLinkServiceConnectionStateOutputWithContext(context.Background())
+}
+
+func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionStateOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStateOutput)
+}
+
+// A collection of information about the state of the connection between service consumer and provider.
+type PrivateLinkServiceConnectionStateOutput struct{ *pulumi.OutputState }
+
+func (PrivateLinkServiceConnectionStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateLinkServiceConnectionState)(nil)).Elem()
+}
+
+func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStateOutput() PrivateLinkServiceConnectionStateOutput {
+	return o
+}
+
+func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStateOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateOutput {
+	return o
+}
+
+// A message indicating if changes on the service provider require any updates on the consumer.
+func (o PrivateLinkServiceConnectionStateOutput) ActionsRequired() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
+}
+
+// The reason for approval/rejection of the connection.
+func (o PrivateLinkServiceConnectionStateOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+func (o PrivateLinkServiceConnectionStateOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// A collection of information about the state of the connection between service consumer and provider.
+type PrivateLinkServiceConnectionStateResponse struct {
+	// A message indicating if changes on the service provider require any updates on the consumer.
+	ActionsRequired *string `pulumi:"actionsRequired"`
+	// The reason for approval/rejection of the connection.
+	Description *string `pulumi:"description"`
+	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+	Status *string `pulumi:"status"`
+}
+
+// A collection of information about the state of the connection between service consumer and provider.
+type PrivateLinkServiceConnectionStateResponseOutput struct{ *pulumi.OutputState }
+
+func (PrivateLinkServiceConnectionStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateLinkServiceConnectionStateResponse)(nil)).Elem()
+}
+
+func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceConnectionStateResponseOutput() PrivateLinkServiceConnectionStateResponseOutput {
+	return o
+}
+
+func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceConnectionStateResponseOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateResponseOutput {
+	return o
+}
+
+// A message indicating if changes on the service provider require any updates on the consumer.
+func (o PrivateLinkServiceConnectionStateResponseOutput) ActionsRequired() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
+}
+
+// The reason for approval/rejection of the connection.
+func (o PrivateLinkServiceConnectionStateResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+func (o PrivateLinkServiceConnectionStateResponseOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
 // For a non-Azure machine that is not connected directly to the internet, specify a proxy server that the non-Azure machine can use.
@@ -26331,165 +29891,6 @@ func (o SecurityAssessmentPartnerDataResponsePtrOutput) Secret() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Defines whether to send email notifications about new security alerts
-type SecurityContactPropertiesAlertNotifications struct {
-	// Defines the minimal alert severity which will be sent as email notifications
-	MinimalSeverity *string `pulumi:"minimalSeverity"`
-	// Defines if email notifications will be sent about new security alerts
-	State *string `pulumi:"state"`
-}
-
-// SecurityContactPropertiesAlertNotificationsInput is an input type that accepts SecurityContactPropertiesAlertNotificationsArgs and SecurityContactPropertiesAlertNotificationsOutput values.
-// You can construct a concrete instance of `SecurityContactPropertiesAlertNotificationsInput` via:
-//
-//	SecurityContactPropertiesAlertNotificationsArgs{...}
-type SecurityContactPropertiesAlertNotificationsInput interface {
-	pulumi.Input
-
-	ToSecurityContactPropertiesAlertNotificationsOutput() SecurityContactPropertiesAlertNotificationsOutput
-	ToSecurityContactPropertiesAlertNotificationsOutputWithContext(context.Context) SecurityContactPropertiesAlertNotificationsOutput
-}
-
-// Defines whether to send email notifications about new security alerts
-type SecurityContactPropertiesAlertNotificationsArgs struct {
-	// Defines the minimal alert severity which will be sent as email notifications
-	MinimalSeverity pulumi.StringPtrInput `pulumi:"minimalSeverity"`
-	// Defines if email notifications will be sent about new security alerts
-	State pulumi.StringPtrInput `pulumi:"state"`
-}
-
-func (SecurityContactPropertiesAlertNotificationsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityContactPropertiesAlertNotifications)(nil)).Elem()
-}
-
-func (i SecurityContactPropertiesAlertNotificationsArgs) ToSecurityContactPropertiesAlertNotificationsOutput() SecurityContactPropertiesAlertNotificationsOutput {
-	return i.ToSecurityContactPropertiesAlertNotificationsOutputWithContext(context.Background())
-}
-
-func (i SecurityContactPropertiesAlertNotificationsArgs) ToSecurityContactPropertiesAlertNotificationsOutputWithContext(ctx context.Context) SecurityContactPropertiesAlertNotificationsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityContactPropertiesAlertNotificationsOutput)
-}
-
-func (i SecurityContactPropertiesAlertNotificationsArgs) ToSecurityContactPropertiesAlertNotificationsPtrOutput() SecurityContactPropertiesAlertNotificationsPtrOutput {
-	return i.ToSecurityContactPropertiesAlertNotificationsPtrOutputWithContext(context.Background())
-}
-
-func (i SecurityContactPropertiesAlertNotificationsArgs) ToSecurityContactPropertiesAlertNotificationsPtrOutputWithContext(ctx context.Context) SecurityContactPropertiesAlertNotificationsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityContactPropertiesAlertNotificationsOutput).ToSecurityContactPropertiesAlertNotificationsPtrOutputWithContext(ctx)
-}
-
-// SecurityContactPropertiesAlertNotificationsPtrInput is an input type that accepts SecurityContactPropertiesAlertNotificationsArgs, SecurityContactPropertiesAlertNotificationsPtr and SecurityContactPropertiesAlertNotificationsPtrOutput values.
-// You can construct a concrete instance of `SecurityContactPropertiesAlertNotificationsPtrInput` via:
-//
-//	        SecurityContactPropertiesAlertNotificationsArgs{...}
-//
-//	or:
-//
-//	        nil
-type SecurityContactPropertiesAlertNotificationsPtrInput interface {
-	pulumi.Input
-
-	ToSecurityContactPropertiesAlertNotificationsPtrOutput() SecurityContactPropertiesAlertNotificationsPtrOutput
-	ToSecurityContactPropertiesAlertNotificationsPtrOutputWithContext(context.Context) SecurityContactPropertiesAlertNotificationsPtrOutput
-}
-
-type securityContactPropertiesAlertNotificationsPtrType SecurityContactPropertiesAlertNotificationsArgs
-
-func SecurityContactPropertiesAlertNotificationsPtr(v *SecurityContactPropertiesAlertNotificationsArgs) SecurityContactPropertiesAlertNotificationsPtrInput {
-	return (*securityContactPropertiesAlertNotificationsPtrType)(v)
-}
-
-func (*securityContactPropertiesAlertNotificationsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SecurityContactPropertiesAlertNotifications)(nil)).Elem()
-}
-
-func (i *securityContactPropertiesAlertNotificationsPtrType) ToSecurityContactPropertiesAlertNotificationsPtrOutput() SecurityContactPropertiesAlertNotificationsPtrOutput {
-	return i.ToSecurityContactPropertiesAlertNotificationsPtrOutputWithContext(context.Background())
-}
-
-func (i *securityContactPropertiesAlertNotificationsPtrType) ToSecurityContactPropertiesAlertNotificationsPtrOutputWithContext(ctx context.Context) SecurityContactPropertiesAlertNotificationsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityContactPropertiesAlertNotificationsPtrOutput)
-}
-
-// Defines whether to send email notifications about new security alerts
-type SecurityContactPropertiesAlertNotificationsOutput struct{ *pulumi.OutputState }
-
-func (SecurityContactPropertiesAlertNotificationsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityContactPropertiesAlertNotifications)(nil)).Elem()
-}
-
-func (o SecurityContactPropertiesAlertNotificationsOutput) ToSecurityContactPropertiesAlertNotificationsOutput() SecurityContactPropertiesAlertNotificationsOutput {
-	return o
-}
-
-func (o SecurityContactPropertiesAlertNotificationsOutput) ToSecurityContactPropertiesAlertNotificationsOutputWithContext(ctx context.Context) SecurityContactPropertiesAlertNotificationsOutput {
-	return o
-}
-
-func (o SecurityContactPropertiesAlertNotificationsOutput) ToSecurityContactPropertiesAlertNotificationsPtrOutput() SecurityContactPropertiesAlertNotificationsPtrOutput {
-	return o.ToSecurityContactPropertiesAlertNotificationsPtrOutputWithContext(context.Background())
-}
-
-func (o SecurityContactPropertiesAlertNotificationsOutput) ToSecurityContactPropertiesAlertNotificationsPtrOutputWithContext(ctx context.Context) SecurityContactPropertiesAlertNotificationsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityContactPropertiesAlertNotifications) *SecurityContactPropertiesAlertNotifications {
-		return &v
-	}).(SecurityContactPropertiesAlertNotificationsPtrOutput)
-}
-
-// Defines the minimal alert severity which will be sent as email notifications
-func (o SecurityContactPropertiesAlertNotificationsOutput) MinimalSeverity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecurityContactPropertiesAlertNotifications) *string { return v.MinimalSeverity }).(pulumi.StringPtrOutput)
-}
-
-// Defines if email notifications will be sent about new security alerts
-func (o SecurityContactPropertiesAlertNotificationsOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecurityContactPropertiesAlertNotifications) *string { return v.State }).(pulumi.StringPtrOutput)
-}
-
-type SecurityContactPropertiesAlertNotificationsPtrOutput struct{ *pulumi.OutputState }
-
-func (SecurityContactPropertiesAlertNotificationsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SecurityContactPropertiesAlertNotifications)(nil)).Elem()
-}
-
-func (o SecurityContactPropertiesAlertNotificationsPtrOutput) ToSecurityContactPropertiesAlertNotificationsPtrOutput() SecurityContactPropertiesAlertNotificationsPtrOutput {
-	return o
-}
-
-func (o SecurityContactPropertiesAlertNotificationsPtrOutput) ToSecurityContactPropertiesAlertNotificationsPtrOutputWithContext(ctx context.Context) SecurityContactPropertiesAlertNotificationsPtrOutput {
-	return o
-}
-
-func (o SecurityContactPropertiesAlertNotificationsPtrOutput) Elem() SecurityContactPropertiesAlertNotificationsOutput {
-	return o.ApplyT(func(v *SecurityContactPropertiesAlertNotifications) SecurityContactPropertiesAlertNotifications {
-		if v != nil {
-			return *v
-		}
-		var ret SecurityContactPropertiesAlertNotifications
-		return ret
-	}).(SecurityContactPropertiesAlertNotificationsOutput)
-}
-
-// Defines the minimal alert severity which will be sent as email notifications
-func (o SecurityContactPropertiesAlertNotificationsPtrOutput) MinimalSeverity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SecurityContactPropertiesAlertNotifications) *string {
-		if v == nil {
-			return nil
-		}
-		return v.MinimalSeverity
-	}).(pulumi.StringPtrOutput)
-}
-
-// Defines if email notifications will be sent about new security alerts
-func (o SecurityContactPropertiesAlertNotificationsPtrOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SecurityContactPropertiesAlertNotifications) *string {
-		if v == nil {
-			return nil
-		}
-		return v.State
-	}).(pulumi.StringPtrOutput)
-}
-
 // Defines whether to send email notifications from Microsoft Defender for Cloud to persons with specific RBAC roles on the subscription.
 type SecurityContactPropertiesNotificationsByRole struct {
 	// Defines which RBAC roles will get email notifications from Microsoft Defender for Cloud. List of allowed RBAC roles:
@@ -26642,83 +30043,6 @@ func (o SecurityContactPropertiesNotificationsByRolePtrOutput) Roles() pulumi.St
 // Defines whether to send email notifications from AMicrosoft Defender for Cloud to persons with specific RBAC roles on the subscription.
 func (o SecurityContactPropertiesNotificationsByRolePtrOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityContactPropertiesNotificationsByRole) *string {
-		if v == nil {
-			return nil
-		}
-		return v.State
-	}).(pulumi.StringPtrOutput)
-}
-
-// Defines whether to send email notifications about new security alerts
-type SecurityContactPropertiesResponseAlertNotifications struct {
-	// Defines the minimal alert severity which will be sent as email notifications
-	MinimalSeverity *string `pulumi:"minimalSeverity"`
-	// Defines if email notifications will be sent about new security alerts
-	State *string `pulumi:"state"`
-}
-
-// Defines whether to send email notifications about new security alerts
-type SecurityContactPropertiesResponseAlertNotificationsOutput struct{ *pulumi.OutputState }
-
-func (SecurityContactPropertiesResponseAlertNotificationsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityContactPropertiesResponseAlertNotifications)(nil)).Elem()
-}
-
-func (o SecurityContactPropertiesResponseAlertNotificationsOutput) ToSecurityContactPropertiesResponseAlertNotificationsOutput() SecurityContactPropertiesResponseAlertNotificationsOutput {
-	return o
-}
-
-func (o SecurityContactPropertiesResponseAlertNotificationsOutput) ToSecurityContactPropertiesResponseAlertNotificationsOutputWithContext(ctx context.Context) SecurityContactPropertiesResponseAlertNotificationsOutput {
-	return o
-}
-
-// Defines the minimal alert severity which will be sent as email notifications
-func (o SecurityContactPropertiesResponseAlertNotificationsOutput) MinimalSeverity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecurityContactPropertiesResponseAlertNotifications) *string { return v.MinimalSeverity }).(pulumi.StringPtrOutput)
-}
-
-// Defines if email notifications will be sent about new security alerts
-func (o SecurityContactPropertiesResponseAlertNotificationsOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecurityContactPropertiesResponseAlertNotifications) *string { return v.State }).(pulumi.StringPtrOutput)
-}
-
-type SecurityContactPropertiesResponseAlertNotificationsPtrOutput struct{ *pulumi.OutputState }
-
-func (SecurityContactPropertiesResponseAlertNotificationsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SecurityContactPropertiesResponseAlertNotifications)(nil)).Elem()
-}
-
-func (o SecurityContactPropertiesResponseAlertNotificationsPtrOutput) ToSecurityContactPropertiesResponseAlertNotificationsPtrOutput() SecurityContactPropertiesResponseAlertNotificationsPtrOutput {
-	return o
-}
-
-func (o SecurityContactPropertiesResponseAlertNotificationsPtrOutput) ToSecurityContactPropertiesResponseAlertNotificationsPtrOutputWithContext(ctx context.Context) SecurityContactPropertiesResponseAlertNotificationsPtrOutput {
-	return o
-}
-
-func (o SecurityContactPropertiesResponseAlertNotificationsPtrOutput) Elem() SecurityContactPropertiesResponseAlertNotificationsOutput {
-	return o.ApplyT(func(v *SecurityContactPropertiesResponseAlertNotifications) SecurityContactPropertiesResponseAlertNotifications {
-		if v != nil {
-			return *v
-		}
-		var ret SecurityContactPropertiesResponseAlertNotifications
-		return ret
-	}).(SecurityContactPropertiesResponseAlertNotificationsOutput)
-}
-
-// Defines the minimal alert severity which will be sent as email notifications
-func (o SecurityContactPropertiesResponseAlertNotificationsPtrOutput) MinimalSeverity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SecurityContactPropertiesResponseAlertNotifications) *string {
-		if v == nil {
-			return nil
-		}
-		return v.MinimalSeverity
-	}).(pulumi.StringPtrOutput)
-}
-
-// Defines if email notifications will be sent about new security alerts
-func (o SecurityContactPropertiesResponseAlertNotificationsPtrOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SecurityContactPropertiesResponseAlertNotifications) *string {
 		if v == nil {
 			return nil
 		}
@@ -29177,7 +32501,247 @@ func (o UserDefinedResourcesPropertiesResponsePtrOutput) QuerySubscriptions() pu
 	}).(pulumi.StringArrayOutput)
 }
 
+// Configuration for VM scanning
+type VmScannersBaseConfiguration struct {
+	// Tags that indicates that a resource should not be scanned
+	ExclusionTags map[string]string `pulumi:"exclusionTags"`
+	// The scanning mode for the VM scan.
+	ScanningMode *string `pulumi:"scanningMode"`
+}
+
+// VmScannersBaseConfigurationInput is an input type that accepts VmScannersBaseConfigurationArgs and VmScannersBaseConfigurationOutput values.
+// You can construct a concrete instance of `VmScannersBaseConfigurationInput` via:
+//
+//	VmScannersBaseConfigurationArgs{...}
+type VmScannersBaseConfigurationInput interface {
+	pulumi.Input
+
+	ToVmScannersBaseConfigurationOutput() VmScannersBaseConfigurationOutput
+	ToVmScannersBaseConfigurationOutputWithContext(context.Context) VmScannersBaseConfigurationOutput
+}
+
+// Configuration for VM scanning
+type VmScannersBaseConfigurationArgs struct {
+	// Tags that indicates that a resource should not be scanned
+	ExclusionTags pulumi.StringMapInput `pulumi:"exclusionTags"`
+	// The scanning mode for the VM scan.
+	ScanningMode pulumi.StringPtrInput `pulumi:"scanningMode"`
+}
+
+func (VmScannersBaseConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmScannersBaseConfiguration)(nil)).Elem()
+}
+
+func (i VmScannersBaseConfigurationArgs) ToVmScannersBaseConfigurationOutput() VmScannersBaseConfigurationOutput {
+	return i.ToVmScannersBaseConfigurationOutputWithContext(context.Background())
+}
+
+func (i VmScannersBaseConfigurationArgs) ToVmScannersBaseConfigurationOutputWithContext(ctx context.Context) VmScannersBaseConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmScannersBaseConfigurationOutput)
+}
+
+func (i VmScannersBaseConfigurationArgs) ToVmScannersBaseConfigurationPtrOutput() VmScannersBaseConfigurationPtrOutput {
+	return i.ToVmScannersBaseConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i VmScannersBaseConfigurationArgs) ToVmScannersBaseConfigurationPtrOutputWithContext(ctx context.Context) VmScannersBaseConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmScannersBaseConfigurationOutput).ToVmScannersBaseConfigurationPtrOutputWithContext(ctx)
+}
+
+// VmScannersBaseConfigurationPtrInput is an input type that accepts VmScannersBaseConfigurationArgs, VmScannersBaseConfigurationPtr and VmScannersBaseConfigurationPtrOutput values.
+// You can construct a concrete instance of `VmScannersBaseConfigurationPtrInput` via:
+//
+//	        VmScannersBaseConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmScannersBaseConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToVmScannersBaseConfigurationPtrOutput() VmScannersBaseConfigurationPtrOutput
+	ToVmScannersBaseConfigurationPtrOutputWithContext(context.Context) VmScannersBaseConfigurationPtrOutput
+}
+
+type vmScannersBaseConfigurationPtrType VmScannersBaseConfigurationArgs
+
+func VmScannersBaseConfigurationPtr(v *VmScannersBaseConfigurationArgs) VmScannersBaseConfigurationPtrInput {
+	return (*vmScannersBaseConfigurationPtrType)(v)
+}
+
+func (*vmScannersBaseConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmScannersBaseConfiguration)(nil)).Elem()
+}
+
+func (i *vmScannersBaseConfigurationPtrType) ToVmScannersBaseConfigurationPtrOutput() VmScannersBaseConfigurationPtrOutput {
+	return i.ToVmScannersBaseConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *vmScannersBaseConfigurationPtrType) ToVmScannersBaseConfigurationPtrOutputWithContext(ctx context.Context) VmScannersBaseConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmScannersBaseConfigurationPtrOutput)
+}
+
+// Configuration for VM scanning
+type VmScannersBaseConfigurationOutput struct{ *pulumi.OutputState }
+
+func (VmScannersBaseConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmScannersBaseConfiguration)(nil)).Elem()
+}
+
+func (o VmScannersBaseConfigurationOutput) ToVmScannersBaseConfigurationOutput() VmScannersBaseConfigurationOutput {
+	return o
+}
+
+func (o VmScannersBaseConfigurationOutput) ToVmScannersBaseConfigurationOutputWithContext(ctx context.Context) VmScannersBaseConfigurationOutput {
+	return o
+}
+
+func (o VmScannersBaseConfigurationOutput) ToVmScannersBaseConfigurationPtrOutput() VmScannersBaseConfigurationPtrOutput {
+	return o.ToVmScannersBaseConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o VmScannersBaseConfigurationOutput) ToVmScannersBaseConfigurationPtrOutputWithContext(ctx context.Context) VmScannersBaseConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmScannersBaseConfiguration) *VmScannersBaseConfiguration {
+		return &v
+	}).(VmScannersBaseConfigurationPtrOutput)
+}
+
+// Tags that indicates that a resource should not be scanned
+func (o VmScannersBaseConfigurationOutput) ExclusionTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v VmScannersBaseConfiguration) map[string]string { return v.ExclusionTags }).(pulumi.StringMapOutput)
+}
+
+// The scanning mode for the VM scan.
+func (o VmScannersBaseConfigurationOutput) ScanningMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmScannersBaseConfiguration) *string { return v.ScanningMode }).(pulumi.StringPtrOutput)
+}
+
+type VmScannersBaseConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (VmScannersBaseConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmScannersBaseConfiguration)(nil)).Elem()
+}
+
+func (o VmScannersBaseConfigurationPtrOutput) ToVmScannersBaseConfigurationPtrOutput() VmScannersBaseConfigurationPtrOutput {
+	return o
+}
+
+func (o VmScannersBaseConfigurationPtrOutput) ToVmScannersBaseConfigurationPtrOutputWithContext(ctx context.Context) VmScannersBaseConfigurationPtrOutput {
+	return o
+}
+
+func (o VmScannersBaseConfigurationPtrOutput) Elem() VmScannersBaseConfigurationOutput {
+	return o.ApplyT(func(v *VmScannersBaseConfiguration) VmScannersBaseConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret VmScannersBaseConfiguration
+		return ret
+	}).(VmScannersBaseConfigurationOutput)
+}
+
+// Tags that indicates that a resource should not be scanned
+func (o VmScannersBaseConfigurationPtrOutput) ExclusionTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *VmScannersBaseConfiguration) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ExclusionTags
+	}).(pulumi.StringMapOutput)
+}
+
+// The scanning mode for the VM scan.
+func (o VmScannersBaseConfigurationPtrOutput) ScanningMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmScannersBaseConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ScanningMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for VM scanning
+type VmScannersBaseResponseConfiguration struct {
+	// Tags that indicates that a resource should not be scanned
+	ExclusionTags map[string]string `pulumi:"exclusionTags"`
+	// The scanning mode for the VM scan.
+	ScanningMode *string `pulumi:"scanningMode"`
+}
+
+// Configuration for VM scanning
+type VmScannersBaseResponseConfigurationOutput struct{ *pulumi.OutputState }
+
+func (VmScannersBaseResponseConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmScannersBaseResponseConfiguration)(nil)).Elem()
+}
+
+func (o VmScannersBaseResponseConfigurationOutput) ToVmScannersBaseResponseConfigurationOutput() VmScannersBaseResponseConfigurationOutput {
+	return o
+}
+
+func (o VmScannersBaseResponseConfigurationOutput) ToVmScannersBaseResponseConfigurationOutputWithContext(ctx context.Context) VmScannersBaseResponseConfigurationOutput {
+	return o
+}
+
+// Tags that indicates that a resource should not be scanned
+func (o VmScannersBaseResponseConfigurationOutput) ExclusionTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v VmScannersBaseResponseConfiguration) map[string]string { return v.ExclusionTags }).(pulumi.StringMapOutput)
+}
+
+// The scanning mode for the VM scan.
+func (o VmScannersBaseResponseConfigurationOutput) ScanningMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmScannersBaseResponseConfiguration) *string { return v.ScanningMode }).(pulumi.StringPtrOutput)
+}
+
+type VmScannersBaseResponseConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (VmScannersBaseResponseConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmScannersBaseResponseConfiguration)(nil)).Elem()
+}
+
+func (o VmScannersBaseResponseConfigurationPtrOutput) ToVmScannersBaseResponseConfigurationPtrOutput() VmScannersBaseResponseConfigurationPtrOutput {
+	return o
+}
+
+func (o VmScannersBaseResponseConfigurationPtrOutput) ToVmScannersBaseResponseConfigurationPtrOutputWithContext(ctx context.Context) VmScannersBaseResponseConfigurationPtrOutput {
+	return o
+}
+
+func (o VmScannersBaseResponseConfigurationPtrOutput) Elem() VmScannersBaseResponseConfigurationOutput {
+	return o.ApplyT(func(v *VmScannersBaseResponseConfiguration) VmScannersBaseResponseConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret VmScannersBaseResponseConfiguration
+		return ret
+	}).(VmScannersBaseResponseConfigurationOutput)
+}
+
+// Tags that indicates that a resource should not be scanned
+func (o VmScannersBaseResponseConfigurationPtrOutput) ExclusionTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *VmScannersBaseResponseConfiguration) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ExclusionTags
+	}).(pulumi.StringMapOutput)
+}
+
+// The scanning mode for the VM scan.
+func (o VmScannersBaseResponseConfigurationPtrOutput) ScanningMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmScannersBaseResponseConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ScanningMode
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
+	pulumi.RegisterOutputType(AccessTokenAuthenticationOutput{})
+	pulumi.RegisterOutputType(AccessTokenAuthenticationPtrOutput{})
+	pulumi.RegisterOutputType(AccessTokenAuthenticationResponseOutput{})
+	pulumi.RegisterOutputType(AccessTokenAuthenticationResponsePtrOutput{})
 	pulumi.RegisterOutputType(ActionableRemediationResponseOutput{})
 	pulumi.RegisterOutputType(ActionableRemediationResponsePtrOutput{})
 	pulumi.RegisterOutputType(AdditionalWorkspacesPropertiesOutput{})
@@ -29188,6 +32752,10 @@ func init() {
 	pulumi.RegisterOutputType(AllowlistCustomAlertRuleArrayOutput{})
 	pulumi.RegisterOutputType(AllowlistCustomAlertRuleResponseOutput{})
 	pulumi.RegisterOutputType(AllowlistCustomAlertRuleResponseArrayOutput{})
+	pulumi.RegisterOutputType(ArcAutoProvisioningConfigurationOutput{})
+	pulumi.RegisterOutputType(ArcAutoProvisioningConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(ArcAutoProvisioningResponseConfigurationOutput{})
+	pulumi.RegisterOutputType(ArcAutoProvisioningResponseConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(AssessmentLinksResponseOutput{})
 	pulumi.RegisterOutputType(AssessmentStatusOutput{})
 	pulumi.RegisterOutputType(AssessmentStatusResponseResponseOutput{})
@@ -29277,6 +32845,8 @@ func init() {
 	pulumi.RegisterOutputType(CspmMonitorAwsOfferingResponseNativeCloudConnectionPtrOutput{})
 	pulumi.RegisterOutputType(CspmMonitorAzureDevOpsOfferingOutput{})
 	pulumi.RegisterOutputType(CspmMonitorAzureDevOpsOfferingResponseOutput{})
+	pulumi.RegisterOutputType(CspmMonitorDockerHubOfferingOutput{})
+	pulumi.RegisterOutputType(CspmMonitorDockerHubOfferingResponseOutput{})
 	pulumi.RegisterOutputType(CspmMonitorGcpOfferingOutput{})
 	pulumi.RegisterOutputType(CspmMonitorGcpOfferingNativeCloudConnectionOutput{})
 	pulumi.RegisterOutputType(CspmMonitorGcpOfferingNativeCloudConnectionPtrOutput{})
@@ -29287,31 +32857,75 @@ func init() {
 	pulumi.RegisterOutputType(CspmMonitorGitLabOfferingResponseOutput{})
 	pulumi.RegisterOutputType(CspmMonitorGithubOfferingOutput{})
 	pulumi.RegisterOutputType(CspmMonitorGithubOfferingResponseOutput{})
+	pulumi.RegisterOutputType(CspmMonitorJFrogOfferingOutput{})
+	pulumi.RegisterOutputType(CspmMonitorJFrogOfferingResponseOutput{})
 	pulumi.RegisterOutputType(DefenderCspmAwsOfferingOutput{})
-	pulumi.RegisterOutputType(DefenderCspmAwsOfferingConfigurationOutput{})
-	pulumi.RegisterOutputType(DefenderCspmAwsOfferingConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(DefenderCspmAwsOfferingCiemOutput{})
+	pulumi.RegisterOutputType(DefenderCspmAwsOfferingCiemPtrOutput{})
+	pulumi.RegisterOutputType(DefenderCspmAwsOfferingCiemDiscoveryOutput{})
+	pulumi.RegisterOutputType(DefenderCspmAwsOfferingCiemDiscoveryPtrOutput{})
+	pulumi.RegisterOutputType(DefenderCspmAwsOfferingCiemOidcOutput{})
+	pulumi.RegisterOutputType(DefenderCspmAwsOfferingCiemOidcPtrOutput{})
 	pulumi.RegisterOutputType(DefenderCspmAwsOfferingDataSensitivityDiscoveryOutput{})
 	pulumi.RegisterOutputType(DefenderCspmAwsOfferingDataSensitivityDiscoveryPtrOutput{})
 	pulumi.RegisterOutputType(DefenderCspmAwsOfferingDatabasesDspmOutput{})
 	pulumi.RegisterOutputType(DefenderCspmAwsOfferingDatabasesDspmPtrOutput{})
+	pulumi.RegisterOutputType(DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sOutput{})
+	pulumi.RegisterOutputType(DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput{})
+	pulumi.RegisterOutputType(DefenderCspmAwsOfferingMdcContainersImageAssessmentOutput{})
+	pulumi.RegisterOutputType(DefenderCspmAwsOfferingMdcContainersImageAssessmentPtrOutput{})
 	pulumi.RegisterOutputType(DefenderCspmAwsOfferingResponseOutput{})
-	pulumi.RegisterOutputType(DefenderCspmAwsOfferingResponseConfigurationOutput{})
-	pulumi.RegisterOutputType(DefenderCspmAwsOfferingResponseConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(DefenderCspmAwsOfferingResponseCiemOutput{})
+	pulumi.RegisterOutputType(DefenderCspmAwsOfferingResponseCiemPtrOutput{})
+	pulumi.RegisterOutputType(DefenderCspmAwsOfferingResponseCiemDiscoveryOutput{})
+	pulumi.RegisterOutputType(DefenderCspmAwsOfferingResponseCiemDiscoveryPtrOutput{})
+	pulumi.RegisterOutputType(DefenderCspmAwsOfferingResponseCiemOidcOutput{})
+	pulumi.RegisterOutputType(DefenderCspmAwsOfferingResponseCiemOidcPtrOutput{})
 	pulumi.RegisterOutputType(DefenderCspmAwsOfferingResponseDataSensitivityDiscoveryOutput{})
 	pulumi.RegisterOutputType(DefenderCspmAwsOfferingResponseDataSensitivityDiscoveryPtrOutput{})
 	pulumi.RegisterOutputType(DefenderCspmAwsOfferingResponseDatabasesDspmOutput{})
 	pulumi.RegisterOutputType(DefenderCspmAwsOfferingResponseDatabasesDspmPtrOutput{})
+	pulumi.RegisterOutputType(DefenderCspmAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sOutput{})
+	pulumi.RegisterOutputType(DefenderCspmAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput{})
+	pulumi.RegisterOutputType(DefenderCspmAwsOfferingResponseMdcContainersImageAssessmentOutput{})
+	pulumi.RegisterOutputType(DefenderCspmAwsOfferingResponseMdcContainersImageAssessmentPtrOutput{})
 	pulumi.RegisterOutputType(DefenderCspmAwsOfferingResponseVmScannersOutput{})
 	pulumi.RegisterOutputType(DefenderCspmAwsOfferingResponseVmScannersPtrOutput{})
 	pulumi.RegisterOutputType(DefenderCspmAwsOfferingVmScannersOutput{})
 	pulumi.RegisterOutputType(DefenderCspmAwsOfferingVmScannersPtrOutput{})
+	pulumi.RegisterOutputType(DefenderCspmDockerHubOfferingOutput{})
+	pulumi.RegisterOutputType(DefenderCspmDockerHubOfferingResponseOutput{})
 	pulumi.RegisterOutputType(DefenderCspmGcpOfferingOutput{})
+	pulumi.RegisterOutputType(DefenderCspmGcpOfferingCiemDiscoveryOutput{})
+	pulumi.RegisterOutputType(DefenderCspmGcpOfferingCiemDiscoveryPtrOutput{})
+	pulumi.RegisterOutputType(DefenderCspmGcpOfferingDataSensitivityDiscoveryOutput{})
+	pulumi.RegisterOutputType(DefenderCspmGcpOfferingDataSensitivityDiscoveryPtrOutput{})
+	pulumi.RegisterOutputType(DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sOutput{})
+	pulumi.RegisterOutputType(DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput{})
+	pulumi.RegisterOutputType(DefenderCspmGcpOfferingMdcContainersImageAssessmentOutput{})
+	pulumi.RegisterOutputType(DefenderCspmGcpOfferingMdcContainersImageAssessmentPtrOutput{})
 	pulumi.RegisterOutputType(DefenderCspmGcpOfferingResponseOutput{})
+	pulumi.RegisterOutputType(DefenderCspmGcpOfferingResponseCiemDiscoveryOutput{})
+	pulumi.RegisterOutputType(DefenderCspmGcpOfferingResponseCiemDiscoveryPtrOutput{})
+	pulumi.RegisterOutputType(DefenderCspmGcpOfferingResponseDataSensitivityDiscoveryOutput{})
+	pulumi.RegisterOutputType(DefenderCspmGcpOfferingResponseDataSensitivityDiscoveryPtrOutput{})
+	pulumi.RegisterOutputType(DefenderCspmGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sOutput{})
+	pulumi.RegisterOutputType(DefenderCspmGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput{})
+	pulumi.RegisterOutputType(DefenderCspmGcpOfferingResponseMdcContainersImageAssessmentOutput{})
+	pulumi.RegisterOutputType(DefenderCspmGcpOfferingResponseMdcContainersImageAssessmentPtrOutput{})
+	pulumi.RegisterOutputType(DefenderCspmGcpOfferingResponseVmScannersOutput{})
+	pulumi.RegisterOutputType(DefenderCspmGcpOfferingResponseVmScannersPtrOutput{})
+	pulumi.RegisterOutputType(DefenderCspmGcpOfferingVmScannersOutput{})
+	pulumi.RegisterOutputType(DefenderCspmGcpOfferingVmScannersPtrOutput{})
+	pulumi.RegisterOutputType(DefenderCspmJFrogOfferingOutput{})
+	pulumi.RegisterOutputType(DefenderCspmJFrogOfferingMdcContainersImageAssessmentOutput{})
+	pulumi.RegisterOutputType(DefenderCspmJFrogOfferingMdcContainersImageAssessmentPtrOutput{})
+	pulumi.RegisterOutputType(DefenderCspmJFrogOfferingResponseOutput{})
+	pulumi.RegisterOutputType(DefenderCspmJFrogOfferingResponseMdcContainersImageAssessmentOutput{})
+	pulumi.RegisterOutputType(DefenderCspmJFrogOfferingResponseMdcContainersImageAssessmentPtrOutput{})
 	pulumi.RegisterOutputType(DefenderFoDatabasesAwsOfferingOutput{})
 	pulumi.RegisterOutputType(DefenderFoDatabasesAwsOfferingArcAutoProvisioningOutput{})
 	pulumi.RegisterOutputType(DefenderFoDatabasesAwsOfferingArcAutoProvisioningPtrOutput{})
-	pulumi.RegisterOutputType(DefenderFoDatabasesAwsOfferingConfigurationOutput{})
-	pulumi.RegisterOutputType(DefenderFoDatabasesAwsOfferingConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(DefenderFoDatabasesAwsOfferingDatabasesDspmOutput{})
 	pulumi.RegisterOutputType(DefenderFoDatabasesAwsOfferingDatabasesDspmPtrOutput{})
 	pulumi.RegisterOutputType(DefenderFoDatabasesAwsOfferingRdsOutput{})
@@ -29319,8 +32933,6 @@ func init() {
 	pulumi.RegisterOutputType(DefenderFoDatabasesAwsOfferingResponseOutput{})
 	pulumi.RegisterOutputType(DefenderFoDatabasesAwsOfferingResponseArcAutoProvisioningOutput{})
 	pulumi.RegisterOutputType(DefenderFoDatabasesAwsOfferingResponseArcAutoProvisioningPtrOutput{})
-	pulumi.RegisterOutputType(DefenderFoDatabasesAwsOfferingResponseConfigurationOutput{})
-	pulumi.RegisterOutputType(DefenderFoDatabasesAwsOfferingResponseConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(DefenderFoDatabasesAwsOfferingResponseDatabasesDspmOutput{})
 	pulumi.RegisterOutputType(DefenderFoDatabasesAwsOfferingResponseDatabasesDspmPtrOutput{})
 	pulumi.RegisterOutputType(DefenderFoDatabasesAwsOfferingResponseRdsOutput{})
@@ -29328,68 +32940,74 @@ func init() {
 	pulumi.RegisterOutputType(DefenderForContainersAwsOfferingOutput{})
 	pulumi.RegisterOutputType(DefenderForContainersAwsOfferingCloudWatchToKinesisOutput{})
 	pulumi.RegisterOutputType(DefenderForContainersAwsOfferingCloudWatchToKinesisPtrOutput{})
-	pulumi.RegisterOutputType(DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentOutput{})
-	pulumi.RegisterOutputType(DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentPtrOutput{})
-	pulumi.RegisterOutputType(DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskOutput{})
-	pulumi.RegisterOutputType(DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTaskPtrOutput{})
 	pulumi.RegisterOutputType(DefenderForContainersAwsOfferingKinesisToS3Output{})
 	pulumi.RegisterOutputType(DefenderForContainersAwsOfferingKinesisToS3PtrOutput{})
-	pulumi.RegisterOutputType(DefenderForContainersAwsOfferingKubernetesScubaReaderOutput{})
-	pulumi.RegisterOutputType(DefenderForContainersAwsOfferingKubernetesScubaReaderPtrOutput{})
+	pulumi.RegisterOutputType(DefenderForContainersAwsOfferingKubernetesDataCollectionOutput{})
+	pulumi.RegisterOutputType(DefenderForContainersAwsOfferingKubernetesDataCollectionPtrOutput{})
 	pulumi.RegisterOutputType(DefenderForContainersAwsOfferingKubernetesServiceOutput{})
 	pulumi.RegisterOutputType(DefenderForContainersAwsOfferingKubernetesServicePtrOutput{})
+	pulumi.RegisterOutputType(DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sOutput{})
+	pulumi.RegisterOutputType(DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput{})
+	pulumi.RegisterOutputType(DefenderForContainersAwsOfferingMdcContainersImageAssessmentOutput{})
+	pulumi.RegisterOutputType(DefenderForContainersAwsOfferingMdcContainersImageAssessmentPtrOutput{})
 	pulumi.RegisterOutputType(DefenderForContainersAwsOfferingResponseOutput{})
 	pulumi.RegisterOutputType(DefenderForContainersAwsOfferingResponseCloudWatchToKinesisOutput{})
 	pulumi.RegisterOutputType(DefenderForContainersAwsOfferingResponseCloudWatchToKinesisPtrOutput{})
-	pulumi.RegisterOutputType(DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentOutput{})
-	pulumi.RegisterOutputType(DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentPtrOutput{})
-	pulumi.RegisterOutputType(DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentTaskOutput{})
-	pulumi.RegisterOutputType(DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentTaskPtrOutput{})
 	pulumi.RegisterOutputType(DefenderForContainersAwsOfferingResponseKinesisToS3Output{})
 	pulumi.RegisterOutputType(DefenderForContainersAwsOfferingResponseKinesisToS3PtrOutput{})
-	pulumi.RegisterOutputType(DefenderForContainersAwsOfferingResponseKubernetesScubaReaderOutput{})
-	pulumi.RegisterOutputType(DefenderForContainersAwsOfferingResponseKubernetesScubaReaderPtrOutput{})
+	pulumi.RegisterOutputType(DefenderForContainersAwsOfferingResponseKubernetesDataCollectionOutput{})
+	pulumi.RegisterOutputType(DefenderForContainersAwsOfferingResponseKubernetesDataCollectionPtrOutput{})
 	pulumi.RegisterOutputType(DefenderForContainersAwsOfferingResponseKubernetesServiceOutput{})
 	pulumi.RegisterOutputType(DefenderForContainersAwsOfferingResponseKubernetesServicePtrOutput{})
+	pulumi.RegisterOutputType(DefenderForContainersAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sOutput{})
+	pulumi.RegisterOutputType(DefenderForContainersAwsOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput{})
+	pulumi.RegisterOutputType(DefenderForContainersAwsOfferingResponseMdcContainersImageAssessmentOutput{})
+	pulumi.RegisterOutputType(DefenderForContainersAwsOfferingResponseMdcContainersImageAssessmentPtrOutput{})
+	pulumi.RegisterOutputType(DefenderForContainersAwsOfferingResponseVmScannersOutput{})
+	pulumi.RegisterOutputType(DefenderForContainersAwsOfferingResponseVmScannersPtrOutput{})
+	pulumi.RegisterOutputType(DefenderForContainersAwsOfferingVmScannersOutput{})
+	pulumi.RegisterOutputType(DefenderForContainersAwsOfferingVmScannersPtrOutput{})
+	pulumi.RegisterOutputType(DefenderForContainersDockerHubOfferingOutput{})
+	pulumi.RegisterOutputType(DefenderForContainersDockerHubOfferingResponseOutput{})
 	pulumi.RegisterOutputType(DefenderForContainersGcpOfferingOutput{})
 	pulumi.RegisterOutputType(DefenderForContainersGcpOfferingDataPipelineNativeCloudConnectionOutput{})
 	pulumi.RegisterOutputType(DefenderForContainersGcpOfferingDataPipelineNativeCloudConnectionPtrOutput{})
+	pulumi.RegisterOutputType(DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sOutput{})
+	pulumi.RegisterOutputType(DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sPtrOutput{})
+	pulumi.RegisterOutputType(DefenderForContainersGcpOfferingMdcContainersImageAssessmentOutput{})
+	pulumi.RegisterOutputType(DefenderForContainersGcpOfferingMdcContainersImageAssessmentPtrOutput{})
 	pulumi.RegisterOutputType(DefenderForContainersGcpOfferingNativeCloudConnectionOutput{})
 	pulumi.RegisterOutputType(DefenderForContainersGcpOfferingNativeCloudConnectionPtrOutput{})
 	pulumi.RegisterOutputType(DefenderForContainersGcpOfferingResponseOutput{})
 	pulumi.RegisterOutputType(DefenderForContainersGcpOfferingResponseDataPipelineNativeCloudConnectionOutput{})
 	pulumi.RegisterOutputType(DefenderForContainersGcpOfferingResponseDataPipelineNativeCloudConnectionPtrOutput{})
+	pulumi.RegisterOutputType(DefenderForContainersGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sOutput{})
+	pulumi.RegisterOutputType(DefenderForContainersGcpOfferingResponseMdcContainersAgentlessDiscoveryK8sPtrOutput{})
+	pulumi.RegisterOutputType(DefenderForContainersGcpOfferingResponseMdcContainersImageAssessmentOutput{})
+	pulumi.RegisterOutputType(DefenderForContainersGcpOfferingResponseMdcContainersImageAssessmentPtrOutput{})
 	pulumi.RegisterOutputType(DefenderForContainersGcpOfferingResponseNativeCloudConnectionOutput{})
 	pulumi.RegisterOutputType(DefenderForContainersGcpOfferingResponseNativeCloudConnectionPtrOutput{})
+	pulumi.RegisterOutputType(DefenderForContainersGcpOfferingResponseVmScannersOutput{})
+	pulumi.RegisterOutputType(DefenderForContainersGcpOfferingResponseVmScannersPtrOutput{})
+	pulumi.RegisterOutputType(DefenderForContainersGcpOfferingVmScannersOutput{})
+	pulumi.RegisterOutputType(DefenderForContainersGcpOfferingVmScannersPtrOutput{})
+	pulumi.RegisterOutputType(DefenderForContainersJFrogOfferingOutput{})
+	pulumi.RegisterOutputType(DefenderForContainersJFrogOfferingResponseOutput{})
 	pulumi.RegisterOutputType(DefenderForDatabasesGcpOfferingOutput{})
 	pulumi.RegisterOutputType(DefenderForDatabasesGcpOfferingArcAutoProvisioningOutput{})
 	pulumi.RegisterOutputType(DefenderForDatabasesGcpOfferingArcAutoProvisioningPtrOutput{})
-	pulumi.RegisterOutputType(DefenderForDatabasesGcpOfferingConfigurationOutput{})
-	pulumi.RegisterOutputType(DefenderForDatabasesGcpOfferingConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(DefenderForDatabasesGcpOfferingDefenderForDatabasesArcAutoProvisioningOutput{})
 	pulumi.RegisterOutputType(DefenderForDatabasesGcpOfferingDefenderForDatabasesArcAutoProvisioningPtrOutput{})
 	pulumi.RegisterOutputType(DefenderForDatabasesGcpOfferingResponseOutput{})
 	pulumi.RegisterOutputType(DefenderForDatabasesGcpOfferingResponseArcAutoProvisioningOutput{})
 	pulumi.RegisterOutputType(DefenderForDatabasesGcpOfferingResponseArcAutoProvisioningPtrOutput{})
-	pulumi.RegisterOutputType(DefenderForDatabasesGcpOfferingResponseConfigurationOutput{})
-	pulumi.RegisterOutputType(DefenderForDatabasesGcpOfferingResponseConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(DefenderForDatabasesGcpOfferingResponseDefenderForDatabasesArcAutoProvisioningOutput{})
 	pulumi.RegisterOutputType(DefenderForDatabasesGcpOfferingResponseDefenderForDatabasesArcAutoProvisioningPtrOutput{})
-	pulumi.RegisterOutputType(DefenderForDevOpsAzureDevOpsOfferingOutput{})
-	pulumi.RegisterOutputType(DefenderForDevOpsAzureDevOpsOfferingResponseOutput{})
-	pulumi.RegisterOutputType(DefenderForDevOpsGitLabOfferingOutput{})
-	pulumi.RegisterOutputType(DefenderForDevOpsGitLabOfferingResponseOutput{})
-	pulumi.RegisterOutputType(DefenderForDevOpsGithubOfferingOutput{})
-	pulumi.RegisterOutputType(DefenderForDevOpsGithubOfferingResponseOutput{})
 	pulumi.RegisterOutputType(DefenderForServersAwsOfferingOutput{})
 	pulumi.RegisterOutputType(DefenderForServersAwsOfferingArcAutoProvisioningOutput{})
 	pulumi.RegisterOutputType(DefenderForServersAwsOfferingArcAutoProvisioningPtrOutput{})
 	pulumi.RegisterOutputType(DefenderForServersAwsOfferingConfigurationOutput{})
 	pulumi.RegisterOutputType(DefenderForServersAwsOfferingConfigurationPtrOutput{})
-	pulumi.RegisterOutputType(DefenderForServersAwsOfferingConfigurationConfigurationOutput{})
-	pulumi.RegisterOutputType(DefenderForServersAwsOfferingConfigurationConfigurationPtrOutput{})
-	pulumi.RegisterOutputType(DefenderForServersAwsOfferingConfigurationConfigurationConfigurationOutput{})
-	pulumi.RegisterOutputType(DefenderForServersAwsOfferingConfigurationConfigurationConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(DefenderForServersAwsOfferingDefenderForServersOutput{})
 	pulumi.RegisterOutputType(DefenderForServersAwsOfferingDefenderForServersPtrOutput{})
 	pulumi.RegisterOutputType(DefenderForServersAwsOfferingMdeAutoProvisioningOutput{})
@@ -29399,10 +33017,6 @@ func init() {
 	pulumi.RegisterOutputType(DefenderForServersAwsOfferingResponseArcAutoProvisioningPtrOutput{})
 	pulumi.RegisterOutputType(DefenderForServersAwsOfferingResponseConfigurationOutput{})
 	pulumi.RegisterOutputType(DefenderForServersAwsOfferingResponseConfigurationPtrOutput{})
-	pulumi.RegisterOutputType(DefenderForServersAwsOfferingResponseConfigurationConfigurationOutput{})
-	pulumi.RegisterOutputType(DefenderForServersAwsOfferingResponseConfigurationConfigurationPtrOutput{})
-	pulumi.RegisterOutputType(DefenderForServersAwsOfferingResponseConfigurationConfigurationConfigurationOutput{})
-	pulumi.RegisterOutputType(DefenderForServersAwsOfferingResponseConfigurationConfigurationConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(DefenderForServersAwsOfferingResponseDefenderForServersOutput{})
 	pulumi.RegisterOutputType(DefenderForServersAwsOfferingResponseDefenderForServersPtrOutput{})
 	pulumi.RegisterOutputType(DefenderForServersAwsOfferingResponseMdeAutoProvisioningOutput{})
@@ -29424,10 +33038,6 @@ func init() {
 	pulumi.RegisterOutputType(DefenderForServersGcpOfferingArcAutoProvisioningPtrOutput{})
 	pulumi.RegisterOutputType(DefenderForServersGcpOfferingConfigurationOutput{})
 	pulumi.RegisterOutputType(DefenderForServersGcpOfferingConfigurationPtrOutput{})
-	pulumi.RegisterOutputType(DefenderForServersGcpOfferingConfigurationConfigurationOutput{})
-	pulumi.RegisterOutputType(DefenderForServersGcpOfferingConfigurationConfigurationPtrOutput{})
-	pulumi.RegisterOutputType(DefenderForServersGcpOfferingConfigurationConfigurationConfigurationOutput{})
-	pulumi.RegisterOutputType(DefenderForServersGcpOfferingConfigurationConfigurationConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(DefenderForServersGcpOfferingDefenderForServersOutput{})
 	pulumi.RegisterOutputType(DefenderForServersGcpOfferingDefenderForServersPtrOutput{})
 	pulumi.RegisterOutputType(DefenderForServersGcpOfferingMdeAutoProvisioningOutput{})
@@ -29437,10 +33047,6 @@ func init() {
 	pulumi.RegisterOutputType(DefenderForServersGcpOfferingResponseArcAutoProvisioningPtrOutput{})
 	pulumi.RegisterOutputType(DefenderForServersGcpOfferingResponseConfigurationOutput{})
 	pulumi.RegisterOutputType(DefenderForServersGcpOfferingResponseConfigurationPtrOutput{})
-	pulumi.RegisterOutputType(DefenderForServersGcpOfferingResponseConfigurationConfigurationOutput{})
-	pulumi.RegisterOutputType(DefenderForServersGcpOfferingResponseConfigurationConfigurationPtrOutput{})
-	pulumi.RegisterOutputType(DefenderForServersGcpOfferingResponseConfigurationConfigurationConfigurationOutput{})
-	pulumi.RegisterOutputType(DefenderForServersGcpOfferingResponseConfigurationConfigurationConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(DefenderForServersGcpOfferingResponseDefenderForServersOutput{})
 	pulumi.RegisterOutputType(DefenderForServersGcpOfferingResponseDefenderForServersPtrOutput{})
 	pulumi.RegisterOutputType(DefenderForServersGcpOfferingResponseMdeAutoProvisioningOutput{})
@@ -29464,16 +33070,15 @@ func init() {
 	pulumi.RegisterOutputType(DenylistCustomAlertRuleArrayOutput{})
 	pulumi.RegisterOutputType(DenylistCustomAlertRuleResponseOutput{})
 	pulumi.RegisterOutputType(DenylistCustomAlertRuleResponseArrayOutput{})
+	pulumi.RegisterOutputType(DevOpsCapabilityResponseOutput{})
+	pulumi.RegisterOutputType(DevOpsCapabilityResponseArrayOutput{})
 	pulumi.RegisterOutputType(DevOpsConfigurationPropertiesOutput{})
 	pulumi.RegisterOutputType(DevOpsConfigurationPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(DevOpsConfigurationPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(DevOpsPolicyAssignmentPropertiesOutput{})
-	pulumi.RegisterOutputType(DevOpsPolicyAssignmentPropertiesPtrOutput{})
-	pulumi.RegisterOutputType(DevOpsPolicyAssignmentPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(DevOpsPolicyDescriptorOutput{})
-	pulumi.RegisterOutputType(DevOpsPolicyDescriptorPtrOutput{})
-	pulumi.RegisterOutputType(DevOpsPolicyDescriptorResponseOutput{})
-	pulumi.RegisterOutputType(DevOpsPolicyDescriptorResponsePtrOutput{})
+	pulumi.RegisterOutputType(DockerHubEnvironmentDataOutput{})
+	pulumi.RegisterOutputType(DockerHubEnvironmentDataPtrOutput{})
+	pulumi.RegisterOutputType(DockerHubEnvironmentDataResponseOutput{})
+	pulumi.RegisterOutputType(DockerHubEnvironmentDataResponsePtrOutput{})
 	pulumi.RegisterOutputType(ExtensionOutput{})
 	pulumi.RegisterOutputType(ExtensionArrayOutput{})
 	pulumi.RegisterOutputType(ExtensionResponseOutput{})
@@ -29536,12 +33141,10 @@ func init() {
 	pulumi.RegisterOutputType(HybridComputeSettingsPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(IdentityResponseOutput{})
 	pulumi.RegisterOutputType(IdentityResponsePtrOutput{})
-	pulumi.RegisterOutputType(InformationProtectionAwsOfferingOutput{})
-	pulumi.RegisterOutputType(InformationProtectionAwsOfferingInformationProtectionOutput{})
-	pulumi.RegisterOutputType(InformationProtectionAwsOfferingInformationProtectionPtrOutput{})
-	pulumi.RegisterOutputType(InformationProtectionAwsOfferingResponseOutput{})
-	pulumi.RegisterOutputType(InformationProtectionAwsOfferingResponseInformationProtectionOutput{})
-	pulumi.RegisterOutputType(InformationProtectionAwsOfferingResponseInformationProtectionPtrOutput{})
+	pulumi.RegisterOutputType(JFrogEnvironmentDataOutput{})
+	pulumi.RegisterOutputType(JFrogEnvironmentDataPtrOutput{})
+	pulumi.RegisterOutputType(JFrogEnvironmentDataResponseOutput{})
+	pulumi.RegisterOutputType(JFrogEnvironmentDataResponsePtrOutput{})
 	pulumi.RegisterOutputType(JitNetworkAccessPolicyVirtualMachineOutput{})
 	pulumi.RegisterOutputType(JitNetworkAccessPolicyVirtualMachineArrayOutput{})
 	pulumi.RegisterOutputType(JitNetworkAccessPolicyVirtualMachineResponseOutput{})
@@ -29566,6 +33169,10 @@ func init() {
 	pulumi.RegisterOutputType(MalwareScanningPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(MalwareScanningPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(MalwareScanningPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(NotificationsSourceAlertOutput{})
+	pulumi.RegisterOutputType(NotificationsSourceAlertResponseOutput{})
+	pulumi.RegisterOutputType(NotificationsSourceAttackPathOutput{})
+	pulumi.RegisterOutputType(NotificationsSourceAttackPathResponseOutput{})
 	pulumi.RegisterOutputType(OnPremiseResourceDetailsOutput{})
 	pulumi.RegisterOutputType(OnPremiseResourceDetailsResponseOutput{})
 	pulumi.RegisterOutputType(OnPremiseSqlResourceDetailsOutput{})
@@ -29580,6 +33187,14 @@ func init() {
 	pulumi.RegisterOutputType(PartialAssessmentPropertiesArrayOutput{})
 	pulumi.RegisterOutputType(PartialAssessmentPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(PartialAssessmentPropertiesResponseArrayOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseArrayOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointResponseOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointResponsePtrOutput{})
+	pulumi.RegisterOutputType(PrivateLinkResourceResponseOutput{})
+	pulumi.RegisterOutputType(PrivateLinkResourceResponseArrayOutput{})
+	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateOutput{})
+	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateResponseOutput{})
 	pulumi.RegisterOutputType(ProxyServerPropertiesOutput{})
 	pulumi.RegisterOutputType(ProxyServerPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(ProxyServerPropertiesResponseOutput{})
@@ -29613,12 +33228,8 @@ func init() {
 	pulumi.RegisterOutputType(SecurityAssessmentPartnerDataPtrOutput{})
 	pulumi.RegisterOutputType(SecurityAssessmentPartnerDataResponseOutput{})
 	pulumi.RegisterOutputType(SecurityAssessmentPartnerDataResponsePtrOutput{})
-	pulumi.RegisterOutputType(SecurityContactPropertiesAlertNotificationsOutput{})
-	pulumi.RegisterOutputType(SecurityContactPropertiesAlertNotificationsPtrOutput{})
 	pulumi.RegisterOutputType(SecurityContactPropertiesNotificationsByRoleOutput{})
 	pulumi.RegisterOutputType(SecurityContactPropertiesNotificationsByRolePtrOutput{})
-	pulumi.RegisterOutputType(SecurityContactPropertiesResponseAlertNotificationsOutput{})
-	pulumi.RegisterOutputType(SecurityContactPropertiesResponseAlertNotificationsPtrOutput{})
 	pulumi.RegisterOutputType(SecurityContactPropertiesResponseNotificationsByRoleOutput{})
 	pulumi.RegisterOutputType(SecurityContactPropertiesResponseNotificationsByRolePtrOutput{})
 	pulumi.RegisterOutputType(SensitiveDataDiscoveryPropertiesOutput{})
@@ -29664,4 +33275,8 @@ func init() {
 	pulumi.RegisterOutputType(UserDefinedResourcesPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(UserDefinedResourcesPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(UserDefinedResourcesPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(VmScannersBaseConfigurationOutput{})
+	pulumi.RegisterOutputType(VmScannersBaseConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(VmScannersBaseResponseConfigurationOutput{})
+	pulumi.RegisterOutputType(VmScannersBaseResponseConfigurationPtrOutput{})
 }

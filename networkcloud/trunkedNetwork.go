@@ -8,24 +8,28 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Uses Azure REST API version 2023-10-01-preview. In version 1.x of the Azure Native provider, it used API version 2022-12-12-preview.
+// Uses Azure REST API version 2025-02-01. In version 2.x of the Azure Native provider, it used API version 2023-10-01-preview.
 //
-// Other available API versions: 2023-07-01, 2024-06-01-preview, 2024-07-01, 2024-10-01-preview, 2025-02-01.
+// Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type TrunkedNetwork struct {
 	pulumi.CustomResourceState
 
 	// The list of resource IDs for the other Microsoft.NetworkCloud resources that have attached this network.
 	AssociatedResourceIds pulumi.StringArrayOutput `pulumi:"associatedResourceIds"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The resource ID of the Network Cloud cluster this trunked network is associated with.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// The more detailed status of the trunked network.
 	DetailedStatus pulumi.StringOutput `pulumi:"detailedStatus"`
 	// The descriptive message about the current detailed status.
 	DetailedStatusMessage pulumi.StringOutput `pulumi:"detailedStatusMessage"`
+	// Resource ETag.
+	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The extended location of the cluster associated with the resource.
 	ExtendedLocation ExtendedLocationResponseOutput `pulumi:"extendedLocation"`
 	// Field Deprecated. These fields will be empty/omitted. The list of Hybrid AKS cluster resource IDs that are associated with this trunked network.
@@ -94,6 +98,12 @@ func NewTrunkedNetwork(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20250201:TrunkedNetwork"),
+		},
+		{
+			Type: pulumi.String("azure-native:networkcloud/v20250701preview:TrunkedNetwork"),
+		},
+		{
+			Type: pulumi.String("azure-native:networkcloud/v20250901:TrunkedNetwork"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -214,6 +224,11 @@ func (o TrunkedNetworkOutput) AssociatedResourceIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *TrunkedNetwork) pulumi.StringArrayOutput { return v.AssociatedResourceIds }).(pulumi.StringArrayOutput)
 }
 
+// The Azure API version of the resource.
+func (o TrunkedNetworkOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *TrunkedNetwork) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The resource ID of the Network Cloud cluster this trunked network is associated with.
 func (o TrunkedNetworkOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TrunkedNetwork) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
@@ -227,6 +242,11 @@ func (o TrunkedNetworkOutput) DetailedStatus() pulumi.StringOutput {
 // The descriptive message about the current detailed status.
 func (o TrunkedNetworkOutput) DetailedStatusMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v *TrunkedNetwork) pulumi.StringOutput { return v.DetailedStatusMessage }).(pulumi.StringOutput)
+}
+
+// Resource ETag.
+func (o TrunkedNetworkOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *TrunkedNetwork) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The extended location of the cluster associated with the resource.

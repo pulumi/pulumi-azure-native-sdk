@@ -8,33 +8,37 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An Log Analytics QueryPack definition.
 //
-// Uses Azure REST API version 2019-09-01. In version 1.x of the Azure Native provider, it used API version 2019-09-01.
+// Uses Azure REST API version 2023-09-01. In version 2.x of the Azure Native provider, it used API version 2019-09-01.
 //
-// Other available API versions: 2019-09-01-preview, 2023-09-01, 2025-02-01.
+// Other available API versions: 2019-09-01, 2019-09-01-preview, 2025-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type QueryPack struct {
 	pulumi.CustomResourceState
 
-	// Resource location
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Azure resource name
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Current state of this QueryPack: whether or not is has been provisioned within the resource group it is defined. Users cannot change this value but are able to read from it. Values will include Succeeded, Deploying, Canceled, and Failed.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The unique ID of your application. This field cannot be changed.
 	QueryPackId pulumi.StringOutput `pulumi:"queryPackId"`
-	// Resource tags
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Creation Date for the Log Analytics QueryPack, in ISO 8601 format.
 	TimeCreated pulumi.StringOutput `pulumi:"timeCreated"`
 	// Last modified date of the Log Analytics QueryPack, in ISO 8601 format.
 	TimeModified pulumi.StringOutput `pulumi:"timeModified"`
-	// Azure resource type
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -96,25 +100,25 @@ func (QueryPackState) ElementType() reflect.Type {
 }
 
 type queryPackArgs struct {
-	// Resource location
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The name of the Log Analytics QueryPack resource.
 	QueryPackName *string `pulumi:"queryPackName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Resource tags
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a QueryPack resource.
 type QueryPackArgs struct {
-	// Resource location
+	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The name of the Log Analytics QueryPack resource.
 	QueryPackName pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// Resource tags
+	// Resource tags.
 	Tags pulumi.StringMapInput
 }
 
@@ -155,12 +159,17 @@ func (o QueryPackOutput) ToQueryPackOutputWithContext(ctx context.Context) Query
 	return o
 }
 
-// Resource location
+// The Azure API version of the resource.
+func (o QueryPackOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *QueryPack) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// The geo-location where the resource lives
 func (o QueryPackOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *QueryPack) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Azure resource name
+// The name of the resource
 func (o QueryPackOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *QueryPack) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -175,7 +184,12 @@ func (o QueryPackOutput) QueryPackId() pulumi.StringOutput {
 	return o.ApplyT(func(v *QueryPack) pulumi.StringOutput { return v.QueryPackId }).(pulumi.StringOutput)
 }
 
-// Resource tags
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o QueryPackOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *QueryPack) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// Resource tags.
 func (o QueryPackOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *QueryPack) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -190,7 +204,7 @@ func (o QueryPackOutput) TimeModified() pulumi.StringOutput {
 	return o.ApplyT(func(v *QueryPack) pulumi.StringOutput { return v.TimeModified }).(pulumi.StringOutput)
 }
 
-// Azure resource type
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o QueryPackOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *QueryPack) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

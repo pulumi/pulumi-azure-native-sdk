@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -30,6 +30,8 @@ type PimRoleEligibilitySchedule struct {
 
 	// The approvalId of the role eligibility schedule request.
 	ApprovalId pulumi.StringOutput `pulumi:"approvalId"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The conditions on the role assignment. This limits the resources it can be assigned to. e.g.: @Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName] StringEqualsIgnoreCase 'foo_storage_container'
 	Condition pulumi.StringPtrOutput `pulumi:"condition"`
 	// Version of the condition. Currently accepted value is '2.0'
@@ -209,6 +211,11 @@ func (o PimRoleEligibilityScheduleOutput) ToPimRoleEligibilityScheduleOutputWith
 // The approvalId of the role eligibility schedule request.
 func (o PimRoleEligibilityScheduleOutput) ApprovalId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PimRoleEligibilitySchedule) pulumi.StringOutput { return v.ApprovalId }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o PimRoleEligibilityScheduleOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PimRoleEligibilitySchedule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The conditions on the role assignment. This limits the resources it can be assigned to. e.g.: @Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName] StringEqualsIgnoreCase 'foo_storage_container'
