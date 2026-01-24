@@ -739,6 +739,186 @@ func (o FileShareProvisioningRecommendationOutputResponseOutput) ProvisionedThro
 	return o.ApplyT(func(v FileShareProvisioningRecommendationOutputResponse) int { return v.ProvisionedThroughputMiBPerSec }).(pulumi.IntOutput)
 }
 
+// FileShareSnapshot properties
+type FileShareSnapshotProperties struct {
+	// The metadata
+	Metadata map[string]string `pulumi:"metadata"`
+}
+
+// FileShareSnapshotPropertiesInput is an input type that accepts FileShareSnapshotPropertiesArgs and FileShareSnapshotPropertiesOutput values.
+// You can construct a concrete instance of `FileShareSnapshotPropertiesInput` via:
+//
+//	FileShareSnapshotPropertiesArgs{...}
+type FileShareSnapshotPropertiesInput interface {
+	pulumi.Input
+
+	ToFileShareSnapshotPropertiesOutput() FileShareSnapshotPropertiesOutput
+	ToFileShareSnapshotPropertiesOutputWithContext(context.Context) FileShareSnapshotPropertiesOutput
+}
+
+// FileShareSnapshot properties
+type FileShareSnapshotPropertiesArgs struct {
+	// The metadata
+	Metadata pulumi.StringMapInput `pulumi:"metadata"`
+}
+
+func (FileShareSnapshotPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileShareSnapshotProperties)(nil)).Elem()
+}
+
+func (i FileShareSnapshotPropertiesArgs) ToFileShareSnapshotPropertiesOutput() FileShareSnapshotPropertiesOutput {
+	return i.ToFileShareSnapshotPropertiesOutputWithContext(context.Background())
+}
+
+func (i FileShareSnapshotPropertiesArgs) ToFileShareSnapshotPropertiesOutputWithContext(ctx context.Context) FileShareSnapshotPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileShareSnapshotPropertiesOutput)
+}
+
+func (i FileShareSnapshotPropertiesArgs) ToFileShareSnapshotPropertiesPtrOutput() FileShareSnapshotPropertiesPtrOutput {
+	return i.ToFileShareSnapshotPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i FileShareSnapshotPropertiesArgs) ToFileShareSnapshotPropertiesPtrOutputWithContext(ctx context.Context) FileShareSnapshotPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileShareSnapshotPropertiesOutput).ToFileShareSnapshotPropertiesPtrOutputWithContext(ctx)
+}
+
+// FileShareSnapshotPropertiesPtrInput is an input type that accepts FileShareSnapshotPropertiesArgs, FileShareSnapshotPropertiesPtr and FileShareSnapshotPropertiesPtrOutput values.
+// You can construct a concrete instance of `FileShareSnapshotPropertiesPtrInput` via:
+//
+//	        FileShareSnapshotPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type FileShareSnapshotPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToFileShareSnapshotPropertiesPtrOutput() FileShareSnapshotPropertiesPtrOutput
+	ToFileShareSnapshotPropertiesPtrOutputWithContext(context.Context) FileShareSnapshotPropertiesPtrOutput
+}
+
+type fileShareSnapshotPropertiesPtrType FileShareSnapshotPropertiesArgs
+
+func FileShareSnapshotPropertiesPtr(v *FileShareSnapshotPropertiesArgs) FileShareSnapshotPropertiesPtrInput {
+	return (*fileShareSnapshotPropertiesPtrType)(v)
+}
+
+func (*fileShareSnapshotPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FileShareSnapshotProperties)(nil)).Elem()
+}
+
+func (i *fileShareSnapshotPropertiesPtrType) ToFileShareSnapshotPropertiesPtrOutput() FileShareSnapshotPropertiesPtrOutput {
+	return i.ToFileShareSnapshotPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *fileShareSnapshotPropertiesPtrType) ToFileShareSnapshotPropertiesPtrOutputWithContext(ctx context.Context) FileShareSnapshotPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileShareSnapshotPropertiesPtrOutput)
+}
+
+// FileShareSnapshot properties
+type FileShareSnapshotPropertiesOutput struct{ *pulumi.OutputState }
+
+func (FileShareSnapshotPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileShareSnapshotProperties)(nil)).Elem()
+}
+
+func (o FileShareSnapshotPropertiesOutput) ToFileShareSnapshotPropertiesOutput() FileShareSnapshotPropertiesOutput {
+	return o
+}
+
+func (o FileShareSnapshotPropertiesOutput) ToFileShareSnapshotPropertiesOutputWithContext(ctx context.Context) FileShareSnapshotPropertiesOutput {
+	return o
+}
+
+func (o FileShareSnapshotPropertiesOutput) ToFileShareSnapshotPropertiesPtrOutput() FileShareSnapshotPropertiesPtrOutput {
+	return o.ToFileShareSnapshotPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o FileShareSnapshotPropertiesOutput) ToFileShareSnapshotPropertiesPtrOutputWithContext(ctx context.Context) FileShareSnapshotPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FileShareSnapshotProperties) *FileShareSnapshotProperties {
+		return &v
+	}).(FileShareSnapshotPropertiesPtrOutput)
+}
+
+// The metadata
+func (o FileShareSnapshotPropertiesOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v FileShareSnapshotProperties) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+type FileShareSnapshotPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (FileShareSnapshotPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FileShareSnapshotProperties)(nil)).Elem()
+}
+
+func (o FileShareSnapshotPropertiesPtrOutput) ToFileShareSnapshotPropertiesPtrOutput() FileShareSnapshotPropertiesPtrOutput {
+	return o
+}
+
+func (o FileShareSnapshotPropertiesPtrOutput) ToFileShareSnapshotPropertiesPtrOutputWithContext(ctx context.Context) FileShareSnapshotPropertiesPtrOutput {
+	return o
+}
+
+func (o FileShareSnapshotPropertiesPtrOutput) Elem() FileShareSnapshotPropertiesOutput {
+	return o.ApplyT(func(v *FileShareSnapshotProperties) FileShareSnapshotProperties {
+		if v != nil {
+			return *v
+		}
+		var ret FileShareSnapshotProperties
+		return ret
+	}).(FileShareSnapshotPropertiesOutput)
+}
+
+// The metadata
+func (o FileShareSnapshotPropertiesPtrOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *FileShareSnapshotProperties) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Metadata
+	}).(pulumi.StringMapOutput)
+}
+
+// FileShareSnapshot properties
+type FileShareSnapshotPropertiesResponse struct {
+	// The initiator of the FileShareSnapshot. This is a user-defined value.
+	InitiatorId string `pulumi:"initiatorId"`
+	// The metadata
+	Metadata map[string]string `pulumi:"metadata"`
+	// The FileShareSnapshot time in UTC in string representation
+	SnapshotTime string `pulumi:"snapshotTime"`
+}
+
+// FileShareSnapshot properties
+type FileShareSnapshotPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (FileShareSnapshotPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileShareSnapshotPropertiesResponse)(nil)).Elem()
+}
+
+func (o FileShareSnapshotPropertiesResponseOutput) ToFileShareSnapshotPropertiesResponseOutput() FileShareSnapshotPropertiesResponseOutput {
+	return o
+}
+
+func (o FileShareSnapshotPropertiesResponseOutput) ToFileShareSnapshotPropertiesResponseOutputWithContext(ctx context.Context) FileShareSnapshotPropertiesResponseOutput {
+	return o
+}
+
+// The initiator of the FileShareSnapshot. This is a user-defined value.
+func (o FileShareSnapshotPropertiesResponseOutput) InitiatorId() pulumi.StringOutput {
+	return o.ApplyT(func(v FileShareSnapshotPropertiesResponse) string { return v.InitiatorId }).(pulumi.StringOutput)
+}
+
+// The metadata
+func (o FileShareSnapshotPropertiesResponseOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v FileShareSnapshotPropertiesResponse) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+// The FileShareSnapshot time in UTC in string representation
+func (o FileShareSnapshotPropertiesResponseOutput) SnapshotTime() pulumi.StringOutput {
+	return o.ApplyT(func(v FileShareSnapshotPropertiesResponse) string { return v.SnapshotTime }).(pulumi.StringOutput)
+}
+
 // File shares usage result.
 type FileShareUsageDataOutputResponse struct {
 	// File share usage data for active file shares.
@@ -1458,6 +1638,9 @@ func init() {
 	pulumi.RegisterOutputType(FileShareProvisioningConstantsResponseOutput{})
 	pulumi.RegisterOutputType(FileShareProvisioningRecommendationInputOutput{})
 	pulumi.RegisterOutputType(FileShareProvisioningRecommendationOutputResponseOutput{})
+	pulumi.RegisterOutputType(FileShareSnapshotPropertiesOutput{})
+	pulumi.RegisterOutputType(FileShareSnapshotPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(FileShareSnapshotPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(FileShareUsageDataOutputResponseOutput{})
 	pulumi.RegisterOutputType(LiveSharesUsageDataResponseOutput{})
 	pulumi.RegisterOutputType(NfsProtocolPropertiesOutput{})

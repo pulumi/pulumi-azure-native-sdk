@@ -2479,6 +2479,426 @@ func (o AutoscaleTimeAndCapacityResponsePtrOutput) Time() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// The selected configurations for azure monitor.
+type AzureMonitorSelectedConfigurations struct {
+	// The configuration version.
+	ConfigurationVersion *string `pulumi:"configurationVersion"`
+	// The global configurations of selected configurations.
+	GlobalConfigurations map[string]string `pulumi:"globalConfigurations"`
+	// The table list.
+	TableList []AzureMonitorTableConfiguration `pulumi:"tableList"`
+}
+
+// AzureMonitorSelectedConfigurationsInput is an input type that accepts AzureMonitorSelectedConfigurationsArgs and AzureMonitorSelectedConfigurationsOutput values.
+// You can construct a concrete instance of `AzureMonitorSelectedConfigurationsInput` via:
+//
+//	AzureMonitorSelectedConfigurationsArgs{...}
+type AzureMonitorSelectedConfigurationsInput interface {
+	pulumi.Input
+
+	ToAzureMonitorSelectedConfigurationsOutput() AzureMonitorSelectedConfigurationsOutput
+	ToAzureMonitorSelectedConfigurationsOutputWithContext(context.Context) AzureMonitorSelectedConfigurationsOutput
+}
+
+// The selected configurations for azure monitor.
+type AzureMonitorSelectedConfigurationsArgs struct {
+	// The configuration version.
+	ConfigurationVersion pulumi.StringPtrInput `pulumi:"configurationVersion"`
+	// The global configurations of selected configurations.
+	GlobalConfigurations pulumi.StringMapInput `pulumi:"globalConfigurations"`
+	// The table list.
+	TableList AzureMonitorTableConfigurationArrayInput `pulumi:"tableList"`
+}
+
+func (AzureMonitorSelectedConfigurationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureMonitorSelectedConfigurations)(nil)).Elem()
+}
+
+func (i AzureMonitorSelectedConfigurationsArgs) ToAzureMonitorSelectedConfigurationsOutput() AzureMonitorSelectedConfigurationsOutput {
+	return i.ToAzureMonitorSelectedConfigurationsOutputWithContext(context.Background())
+}
+
+func (i AzureMonitorSelectedConfigurationsArgs) ToAzureMonitorSelectedConfigurationsOutputWithContext(ctx context.Context) AzureMonitorSelectedConfigurationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureMonitorSelectedConfigurationsOutput)
+}
+
+func (i AzureMonitorSelectedConfigurationsArgs) ToAzureMonitorSelectedConfigurationsPtrOutput() AzureMonitorSelectedConfigurationsPtrOutput {
+	return i.ToAzureMonitorSelectedConfigurationsPtrOutputWithContext(context.Background())
+}
+
+func (i AzureMonitorSelectedConfigurationsArgs) ToAzureMonitorSelectedConfigurationsPtrOutputWithContext(ctx context.Context) AzureMonitorSelectedConfigurationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureMonitorSelectedConfigurationsOutput).ToAzureMonitorSelectedConfigurationsPtrOutputWithContext(ctx)
+}
+
+// AzureMonitorSelectedConfigurationsPtrInput is an input type that accepts AzureMonitorSelectedConfigurationsArgs, AzureMonitorSelectedConfigurationsPtr and AzureMonitorSelectedConfigurationsPtrOutput values.
+// You can construct a concrete instance of `AzureMonitorSelectedConfigurationsPtrInput` via:
+//
+//	        AzureMonitorSelectedConfigurationsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AzureMonitorSelectedConfigurationsPtrInput interface {
+	pulumi.Input
+
+	ToAzureMonitorSelectedConfigurationsPtrOutput() AzureMonitorSelectedConfigurationsPtrOutput
+	ToAzureMonitorSelectedConfigurationsPtrOutputWithContext(context.Context) AzureMonitorSelectedConfigurationsPtrOutput
+}
+
+type azureMonitorSelectedConfigurationsPtrType AzureMonitorSelectedConfigurationsArgs
+
+func AzureMonitorSelectedConfigurationsPtr(v *AzureMonitorSelectedConfigurationsArgs) AzureMonitorSelectedConfigurationsPtrInput {
+	return (*azureMonitorSelectedConfigurationsPtrType)(v)
+}
+
+func (*azureMonitorSelectedConfigurationsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureMonitorSelectedConfigurations)(nil)).Elem()
+}
+
+func (i *azureMonitorSelectedConfigurationsPtrType) ToAzureMonitorSelectedConfigurationsPtrOutput() AzureMonitorSelectedConfigurationsPtrOutput {
+	return i.ToAzureMonitorSelectedConfigurationsPtrOutputWithContext(context.Background())
+}
+
+func (i *azureMonitorSelectedConfigurationsPtrType) ToAzureMonitorSelectedConfigurationsPtrOutputWithContext(ctx context.Context) AzureMonitorSelectedConfigurationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureMonitorSelectedConfigurationsPtrOutput)
+}
+
+// The selected configurations for azure monitor.
+type AzureMonitorSelectedConfigurationsOutput struct{ *pulumi.OutputState }
+
+func (AzureMonitorSelectedConfigurationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureMonitorSelectedConfigurations)(nil)).Elem()
+}
+
+func (o AzureMonitorSelectedConfigurationsOutput) ToAzureMonitorSelectedConfigurationsOutput() AzureMonitorSelectedConfigurationsOutput {
+	return o
+}
+
+func (o AzureMonitorSelectedConfigurationsOutput) ToAzureMonitorSelectedConfigurationsOutputWithContext(ctx context.Context) AzureMonitorSelectedConfigurationsOutput {
+	return o
+}
+
+func (o AzureMonitorSelectedConfigurationsOutput) ToAzureMonitorSelectedConfigurationsPtrOutput() AzureMonitorSelectedConfigurationsPtrOutput {
+	return o.ToAzureMonitorSelectedConfigurationsPtrOutputWithContext(context.Background())
+}
+
+func (o AzureMonitorSelectedConfigurationsOutput) ToAzureMonitorSelectedConfigurationsPtrOutputWithContext(ctx context.Context) AzureMonitorSelectedConfigurationsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureMonitorSelectedConfigurations) *AzureMonitorSelectedConfigurations {
+		return &v
+	}).(AzureMonitorSelectedConfigurationsPtrOutput)
+}
+
+// The configuration version.
+func (o AzureMonitorSelectedConfigurationsOutput) ConfigurationVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureMonitorSelectedConfigurations) *string { return v.ConfigurationVersion }).(pulumi.StringPtrOutput)
+}
+
+// The global configurations of selected configurations.
+func (o AzureMonitorSelectedConfigurationsOutput) GlobalConfigurations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AzureMonitorSelectedConfigurations) map[string]string { return v.GlobalConfigurations }).(pulumi.StringMapOutput)
+}
+
+// The table list.
+func (o AzureMonitorSelectedConfigurationsOutput) TableList() AzureMonitorTableConfigurationArrayOutput {
+	return o.ApplyT(func(v AzureMonitorSelectedConfigurations) []AzureMonitorTableConfiguration { return v.TableList }).(AzureMonitorTableConfigurationArrayOutput)
+}
+
+type AzureMonitorSelectedConfigurationsPtrOutput struct{ *pulumi.OutputState }
+
+func (AzureMonitorSelectedConfigurationsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureMonitorSelectedConfigurations)(nil)).Elem()
+}
+
+func (o AzureMonitorSelectedConfigurationsPtrOutput) ToAzureMonitorSelectedConfigurationsPtrOutput() AzureMonitorSelectedConfigurationsPtrOutput {
+	return o
+}
+
+func (o AzureMonitorSelectedConfigurationsPtrOutput) ToAzureMonitorSelectedConfigurationsPtrOutputWithContext(ctx context.Context) AzureMonitorSelectedConfigurationsPtrOutput {
+	return o
+}
+
+func (o AzureMonitorSelectedConfigurationsPtrOutput) Elem() AzureMonitorSelectedConfigurationsOutput {
+	return o.ApplyT(func(v *AzureMonitorSelectedConfigurations) AzureMonitorSelectedConfigurations {
+		if v != nil {
+			return *v
+		}
+		var ret AzureMonitorSelectedConfigurations
+		return ret
+	}).(AzureMonitorSelectedConfigurationsOutput)
+}
+
+// The configuration version.
+func (o AzureMonitorSelectedConfigurationsPtrOutput) ConfigurationVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureMonitorSelectedConfigurations) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConfigurationVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The global configurations of selected configurations.
+func (o AzureMonitorSelectedConfigurationsPtrOutput) GlobalConfigurations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AzureMonitorSelectedConfigurations) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.GlobalConfigurations
+	}).(pulumi.StringMapOutput)
+}
+
+// The table list.
+func (o AzureMonitorSelectedConfigurationsPtrOutput) TableList() AzureMonitorTableConfigurationArrayOutput {
+	return o.ApplyT(func(v *AzureMonitorSelectedConfigurations) []AzureMonitorTableConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.TableList
+	}).(AzureMonitorTableConfigurationArrayOutput)
+}
+
+// The selected configurations for azure monitor.
+type AzureMonitorSelectedConfigurationsResponse struct {
+	// The configuration version.
+	ConfigurationVersion *string `pulumi:"configurationVersion"`
+	// The global configurations of selected configurations.
+	GlobalConfigurations map[string]string `pulumi:"globalConfigurations"`
+	// The table list.
+	TableList []AzureMonitorTableConfigurationResponse `pulumi:"tableList"`
+}
+
+// The selected configurations for azure monitor.
+type AzureMonitorSelectedConfigurationsResponseOutput struct{ *pulumi.OutputState }
+
+func (AzureMonitorSelectedConfigurationsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureMonitorSelectedConfigurationsResponse)(nil)).Elem()
+}
+
+func (o AzureMonitorSelectedConfigurationsResponseOutput) ToAzureMonitorSelectedConfigurationsResponseOutput() AzureMonitorSelectedConfigurationsResponseOutput {
+	return o
+}
+
+func (o AzureMonitorSelectedConfigurationsResponseOutput) ToAzureMonitorSelectedConfigurationsResponseOutputWithContext(ctx context.Context) AzureMonitorSelectedConfigurationsResponseOutput {
+	return o
+}
+
+// The configuration version.
+func (o AzureMonitorSelectedConfigurationsResponseOutput) ConfigurationVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureMonitorSelectedConfigurationsResponse) *string { return v.ConfigurationVersion }).(pulumi.StringPtrOutput)
+}
+
+// The global configurations of selected configurations.
+func (o AzureMonitorSelectedConfigurationsResponseOutput) GlobalConfigurations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AzureMonitorSelectedConfigurationsResponse) map[string]string { return v.GlobalConfigurations }).(pulumi.StringMapOutput)
+}
+
+// The table list.
+func (o AzureMonitorSelectedConfigurationsResponseOutput) TableList() AzureMonitorTableConfigurationResponseArrayOutput {
+	return o.ApplyT(func(v AzureMonitorSelectedConfigurationsResponse) []AzureMonitorTableConfigurationResponse {
+		return v.TableList
+	}).(AzureMonitorTableConfigurationResponseArrayOutput)
+}
+
+type AzureMonitorSelectedConfigurationsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AzureMonitorSelectedConfigurationsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureMonitorSelectedConfigurationsResponse)(nil)).Elem()
+}
+
+func (o AzureMonitorSelectedConfigurationsResponsePtrOutput) ToAzureMonitorSelectedConfigurationsResponsePtrOutput() AzureMonitorSelectedConfigurationsResponsePtrOutput {
+	return o
+}
+
+func (o AzureMonitorSelectedConfigurationsResponsePtrOutput) ToAzureMonitorSelectedConfigurationsResponsePtrOutputWithContext(ctx context.Context) AzureMonitorSelectedConfigurationsResponsePtrOutput {
+	return o
+}
+
+func (o AzureMonitorSelectedConfigurationsResponsePtrOutput) Elem() AzureMonitorSelectedConfigurationsResponseOutput {
+	return o.ApplyT(func(v *AzureMonitorSelectedConfigurationsResponse) AzureMonitorSelectedConfigurationsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AzureMonitorSelectedConfigurationsResponse
+		return ret
+	}).(AzureMonitorSelectedConfigurationsResponseOutput)
+}
+
+// The configuration version.
+func (o AzureMonitorSelectedConfigurationsResponsePtrOutput) ConfigurationVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureMonitorSelectedConfigurationsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConfigurationVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The global configurations of selected configurations.
+func (o AzureMonitorSelectedConfigurationsResponsePtrOutput) GlobalConfigurations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AzureMonitorSelectedConfigurationsResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.GlobalConfigurations
+	}).(pulumi.StringMapOutput)
+}
+
+// The table list.
+func (o AzureMonitorSelectedConfigurationsResponsePtrOutput) TableList() AzureMonitorTableConfigurationResponseArrayOutput {
+	return o.ApplyT(func(v *AzureMonitorSelectedConfigurationsResponse) []AzureMonitorTableConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.TableList
+	}).(AzureMonitorTableConfigurationResponseArrayOutput)
+}
+
+// The table configuration for the Log Analytics integration.
+type AzureMonitorTableConfiguration struct {
+	// The name.
+	Name *string `pulumi:"name"`
+}
+
+// AzureMonitorTableConfigurationInput is an input type that accepts AzureMonitorTableConfigurationArgs and AzureMonitorTableConfigurationOutput values.
+// You can construct a concrete instance of `AzureMonitorTableConfigurationInput` via:
+//
+//	AzureMonitorTableConfigurationArgs{...}
+type AzureMonitorTableConfigurationInput interface {
+	pulumi.Input
+
+	ToAzureMonitorTableConfigurationOutput() AzureMonitorTableConfigurationOutput
+	ToAzureMonitorTableConfigurationOutputWithContext(context.Context) AzureMonitorTableConfigurationOutput
+}
+
+// The table configuration for the Log Analytics integration.
+type AzureMonitorTableConfigurationArgs struct {
+	// The name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (AzureMonitorTableConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureMonitorTableConfiguration)(nil)).Elem()
+}
+
+func (i AzureMonitorTableConfigurationArgs) ToAzureMonitorTableConfigurationOutput() AzureMonitorTableConfigurationOutput {
+	return i.ToAzureMonitorTableConfigurationOutputWithContext(context.Background())
+}
+
+func (i AzureMonitorTableConfigurationArgs) ToAzureMonitorTableConfigurationOutputWithContext(ctx context.Context) AzureMonitorTableConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureMonitorTableConfigurationOutput)
+}
+
+// AzureMonitorTableConfigurationArrayInput is an input type that accepts AzureMonitorTableConfigurationArray and AzureMonitorTableConfigurationArrayOutput values.
+// You can construct a concrete instance of `AzureMonitorTableConfigurationArrayInput` via:
+//
+//	AzureMonitorTableConfigurationArray{ AzureMonitorTableConfigurationArgs{...} }
+type AzureMonitorTableConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToAzureMonitorTableConfigurationArrayOutput() AzureMonitorTableConfigurationArrayOutput
+	ToAzureMonitorTableConfigurationArrayOutputWithContext(context.Context) AzureMonitorTableConfigurationArrayOutput
+}
+
+type AzureMonitorTableConfigurationArray []AzureMonitorTableConfigurationInput
+
+func (AzureMonitorTableConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AzureMonitorTableConfiguration)(nil)).Elem()
+}
+
+func (i AzureMonitorTableConfigurationArray) ToAzureMonitorTableConfigurationArrayOutput() AzureMonitorTableConfigurationArrayOutput {
+	return i.ToAzureMonitorTableConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i AzureMonitorTableConfigurationArray) ToAzureMonitorTableConfigurationArrayOutputWithContext(ctx context.Context) AzureMonitorTableConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureMonitorTableConfigurationArrayOutput)
+}
+
+// The table configuration for the Log Analytics integration.
+type AzureMonitorTableConfigurationOutput struct{ *pulumi.OutputState }
+
+func (AzureMonitorTableConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureMonitorTableConfiguration)(nil)).Elem()
+}
+
+func (o AzureMonitorTableConfigurationOutput) ToAzureMonitorTableConfigurationOutput() AzureMonitorTableConfigurationOutput {
+	return o
+}
+
+func (o AzureMonitorTableConfigurationOutput) ToAzureMonitorTableConfigurationOutputWithContext(ctx context.Context) AzureMonitorTableConfigurationOutput {
+	return o
+}
+
+// The name.
+func (o AzureMonitorTableConfigurationOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureMonitorTableConfiguration) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type AzureMonitorTableConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (AzureMonitorTableConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AzureMonitorTableConfiguration)(nil)).Elem()
+}
+
+func (o AzureMonitorTableConfigurationArrayOutput) ToAzureMonitorTableConfigurationArrayOutput() AzureMonitorTableConfigurationArrayOutput {
+	return o
+}
+
+func (o AzureMonitorTableConfigurationArrayOutput) ToAzureMonitorTableConfigurationArrayOutputWithContext(ctx context.Context) AzureMonitorTableConfigurationArrayOutput {
+	return o
+}
+
+func (o AzureMonitorTableConfigurationArrayOutput) Index(i pulumi.IntInput) AzureMonitorTableConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AzureMonitorTableConfiguration {
+		return vs[0].([]AzureMonitorTableConfiguration)[vs[1].(int)]
+	}).(AzureMonitorTableConfigurationOutput)
+}
+
+// The table configuration for the Log Analytics integration.
+type AzureMonitorTableConfigurationResponse struct {
+	// The name.
+	Name *string `pulumi:"name"`
+}
+
+// The table configuration for the Log Analytics integration.
+type AzureMonitorTableConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (AzureMonitorTableConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureMonitorTableConfigurationResponse)(nil)).Elem()
+}
+
+func (o AzureMonitorTableConfigurationResponseOutput) ToAzureMonitorTableConfigurationResponseOutput() AzureMonitorTableConfigurationResponseOutput {
+	return o
+}
+
+func (o AzureMonitorTableConfigurationResponseOutput) ToAzureMonitorTableConfigurationResponseOutputWithContext(ctx context.Context) AzureMonitorTableConfigurationResponseOutput {
+	return o
+}
+
+// The name.
+func (o AzureMonitorTableConfigurationResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureMonitorTableConfigurationResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type AzureMonitorTableConfigurationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AzureMonitorTableConfigurationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AzureMonitorTableConfigurationResponse)(nil)).Elem()
+}
+
+func (o AzureMonitorTableConfigurationResponseArrayOutput) ToAzureMonitorTableConfigurationResponseArrayOutput() AzureMonitorTableConfigurationResponseArrayOutput {
+	return o
+}
+
+func (o AzureMonitorTableConfigurationResponseArrayOutput) ToAzureMonitorTableConfigurationResponseArrayOutputWithContext(ctx context.Context) AzureMonitorTableConfigurationResponseArrayOutput {
+	return o
+}
+
+func (o AzureMonitorTableConfigurationResponseArrayOutput) Index(i pulumi.IntInput) AzureMonitorTableConfigurationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AzureMonitorTableConfigurationResponse {
+		return vs[0].([]AzureMonitorTableConfigurationResponse)[vs[1].(int)]
+	}).(AzureMonitorTableConfigurationResponseOutput)
+}
+
 // Trino cluster catalog options.
 type CatalogOptions struct {
 	// hive catalog options.
@@ -24369,6 +24789,14 @@ func init() {
 	pulumi.RegisterOutputType(AutoscaleTimeAndCapacityPtrOutput{})
 	pulumi.RegisterOutputType(AutoscaleTimeAndCapacityResponseOutput{})
 	pulumi.RegisterOutputType(AutoscaleTimeAndCapacityResponsePtrOutput{})
+	pulumi.RegisterOutputType(AzureMonitorSelectedConfigurationsOutput{})
+	pulumi.RegisterOutputType(AzureMonitorSelectedConfigurationsPtrOutput{})
+	pulumi.RegisterOutputType(AzureMonitorSelectedConfigurationsResponseOutput{})
+	pulumi.RegisterOutputType(AzureMonitorSelectedConfigurationsResponsePtrOutput{})
+	pulumi.RegisterOutputType(AzureMonitorTableConfigurationOutput{})
+	pulumi.RegisterOutputType(AzureMonitorTableConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(AzureMonitorTableConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(AzureMonitorTableConfigurationResponseArrayOutput{})
 	pulumi.RegisterOutputType(CatalogOptionsOutput{})
 	pulumi.RegisterOutputType(CatalogOptionsPtrOutput{})
 	pulumi.RegisterOutputType(CatalogOptionsResponseOutput{})

@@ -13,9 +13,9 @@ import (
 
 // Gets information about an existing database.
 //
-// Uses Azure REST API version 2024-08-01.
+// Uses Azure REST API version 2025-08-01.
 //
-// Other available API versions: 2022-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-11-01-preview, 2025-01-01-preview, 2025-06-01-preview, 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-08-01, 2024-11-01-preview, 2025-01-01-preview, 2025-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupDatabase(ctx *pulumi.Context, args *LookupDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDatabaseResult
@@ -27,7 +27,7 @@ func LookupDatabase(ctx *pulumi.Context, args *LookupDatabaseArgs, opts ...pulum
 }
 
 type LookupDatabaseArgs struct {
-	// Name of the database.
+	// Name of the database (case-sensitive). Exact database names can be retrieved by getting the list of all existing databases in a server.
 	DatabaseName string `pulumi:"databaseName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -35,7 +35,7 @@ type LookupDatabaseArgs struct {
 	ServerName string `pulumi:"serverName"`
 }
 
-// Represents a Database.
+// Represents a database.
 type LookupDatabaseResult struct {
 	// The Azure API version of the resource.
 	AzureApiVersion string `pulumi:"azureApiVersion"`
@@ -63,7 +63,7 @@ func LookupDatabaseOutput(ctx *pulumi.Context, args LookupDatabaseOutputArgs, op
 }
 
 type LookupDatabaseOutputArgs struct {
-	// Name of the database.
+	// Name of the database (case-sensitive). Exact database names can be retrieved by getting the list of all existing databases in a server.
 	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
@@ -75,7 +75,7 @@ func (LookupDatabaseOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupDatabaseArgs)(nil)).Elem()
 }
 
-// Represents a Database.
+// Represents a database.
 type LookupDatabaseResultOutput struct{ *pulumi.OutputState }
 
 func (LookupDatabaseResultOutput) ElementType() reflect.Type {

@@ -29,6 +29,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ClusterPool{}
 	case "azure-native:hdinsight:ClusterPoolCluster":
 		r = &ClusterPoolCluster{}
+	case "azure-native:hdinsight:Extension":
+		r = &Extension{}
+	case "azure-native:hdinsight:ExtensionAzureMonitorAgentStatus":
+		r = &ExtensionAzureMonitorAgentStatus{}
+	case "azure-native:hdinsight:ExtensionAzureMonitorStatus":
+		r = &ExtensionAzureMonitorStatus{}
+	case "azure-native:hdinsight:ExtensionMonitoringStatus":
+		r = &ExtensionMonitoringStatus{}
 	case "azure-native:hdinsight:PrivateEndpointConnection":
 		r = &PrivateEndpointConnection{}
 	default:

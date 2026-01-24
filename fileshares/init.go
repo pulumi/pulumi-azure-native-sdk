@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:fileshares:FileShare":
 		r = &FileShare{}
+	case "azure-native:fileshares:FileShareSnapshot":
+		r = &FileShareSnapshot{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

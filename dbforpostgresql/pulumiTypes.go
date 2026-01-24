@@ -172,7 +172,7 @@ func (o AdminCredentialsPtrOutput) TargetServerPassword() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// Authentication configuration properties of a flexible server.
+// Authentication configuration properties of a server.
 type AuthConfig struct {
 	// Indicates if the server supports Microsoft Entra authentication.
 	ActiveDirectoryAuth *string `pulumi:"activeDirectoryAuth"`
@@ -210,7 +210,7 @@ type AuthConfigInput interface {
 	ToAuthConfigOutputWithContext(context.Context) AuthConfigOutput
 }
 
-// Authentication configuration properties of a flexible server.
+// Authentication configuration properties of a server.
 type AuthConfigArgs struct {
 	// Indicates if the server supports Microsoft Entra authentication.
 	ActiveDirectoryAuth pulumi.StringPtrInput `pulumi:"activeDirectoryAuth"`
@@ -287,7 +287,7 @@ func (i *authConfigPtrType) ToAuthConfigPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigPtrOutput)
 }
 
-// Authentication configuration properties of a flexible server.
+// Authentication configuration properties of a server.
 type AuthConfigOutput struct{ *pulumi.OutputState }
 
 func (AuthConfigOutput) ElementType() reflect.Type {
@@ -381,7 +381,7 @@ func (o AuthConfigPtrOutput) TenantId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Authentication configuration properties of a flexible server.
+// Authentication configuration properties of a server.
 type AuthConfigResponse struct {
 	// Indicates if the server supports Microsoft Entra authentication.
 	ActiveDirectoryAuth *string `pulumi:"activeDirectoryAuth"`
@@ -408,7 +408,7 @@ func (val *AuthConfigResponse) Defaults() *AuthConfigResponse {
 	return &tmp
 }
 
-// Authentication configuration properties of a flexible server.
+// Authentication configuration properties of a server.
 type AuthConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (AuthConfigResponseOutput) ElementType() reflect.Type {
@@ -492,9 +492,9 @@ func (o AuthConfigResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Backup properties of a flexible server.
+// Backup properties of a server.
 type BackupType struct {
-	// Backup retention days for the flexible server.
+	// Backup retention days for the server.
 	BackupRetentionDays *int `pulumi:"backupRetentionDays"`
 	// Indicates if the server is configured to create geographically redundant backups.
 	GeoRedundantBackup *string `pulumi:"geoRedundantBackup"`
@@ -528,9 +528,9 @@ type BackupTypeInput interface {
 	ToBackupTypeOutputWithContext(context.Context) BackupTypeOutput
 }
 
-// Backup properties of a flexible server.
+// Backup properties of a server.
 type BackupTypeArgs struct {
-	// Backup retention days for the flexible server.
+	// Backup retention days for the server.
 	BackupRetentionDays pulumi.IntPtrInput `pulumi:"backupRetentionDays"`
 	// Indicates if the server is configured to create geographically redundant backups.
 	GeoRedundantBackup pulumi.StringPtrInput `pulumi:"geoRedundantBackup"`
@@ -603,7 +603,7 @@ func (i *backupTypePtrType) ToBackupTypePtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(BackupTypePtrOutput)
 }
 
-// Backup properties of a flexible server.
+// Backup properties of a server.
 type BackupTypeOutput struct{ *pulumi.OutputState }
 
 func (BackupTypeOutput) ElementType() reflect.Type {
@@ -628,7 +628,7 @@ func (o BackupTypeOutput) ToBackupTypePtrOutputWithContext(ctx context.Context) 
 	}).(BackupTypePtrOutput)
 }
 
-// Backup retention days for the flexible server.
+// Backup retention days for the server.
 func (o BackupTypeOutput) BackupRetentionDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BackupType) *int { return v.BackupRetentionDays }).(pulumi.IntPtrOutput)
 }
@@ -662,7 +662,7 @@ func (o BackupTypePtrOutput) Elem() BackupTypeOutput {
 	}).(BackupTypeOutput)
 }
 
-// Backup retention days for the flexible server.
+// Backup retention days for the server.
 func (o BackupTypePtrOutput) BackupRetentionDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *BackupType) *int {
 		if v == nil {
@@ -682,11 +682,11 @@ func (o BackupTypePtrOutput) GeoRedundantBackup() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Backup properties of a flexible server.
+// Backup properties of a server.
 type BackupResponse struct {
-	// Backup retention days for the flexible server.
+	// Backup retention days for the server.
 	BackupRetentionDays *int `pulumi:"backupRetentionDays"`
-	// Earliest restore point time (ISO8601 format) for a flexible server.
+	// Earliest restore point time (ISO8601 format) for a server.
 	EarliestRestoreDate string `pulumi:"earliestRestoreDate"`
 	// Indicates if the server is configured to create geographically redundant backups.
 	GeoRedundantBackup *string `pulumi:"geoRedundantBackup"`
@@ -709,7 +709,7 @@ func (val *BackupResponse) Defaults() *BackupResponse {
 	return &tmp
 }
 
-// Backup properties of a flexible server.
+// Backup properties of a server.
 type BackupResponseOutput struct{ *pulumi.OutputState }
 
 func (BackupResponseOutput) ElementType() reflect.Type {
@@ -724,12 +724,12 @@ func (o BackupResponseOutput) ToBackupResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
-// Backup retention days for the flexible server.
+// Backup retention days for the server.
 func (o BackupResponseOutput) BackupRetentionDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BackupResponse) *int { return v.BackupRetentionDays }).(pulumi.IntPtrOutput)
 }
 
-// Earliest restore point time (ISO8601 format) for a flexible server.
+// Earliest restore point time (ISO8601 format) for a server.
 func (o BackupResponseOutput) EarliestRestoreDate() pulumi.StringOutput {
 	return o.ApplyT(func(v BackupResponse) string { return v.EarliestRestoreDate }).(pulumi.StringOutput)
 }
@@ -763,7 +763,7 @@ func (o BackupResponsePtrOutput) Elem() BackupResponseOutput {
 	}).(BackupResponseOutput)
 }
 
-// Backup retention days for the flexible server.
+// Backup retention days for the server.
 func (o BackupResponsePtrOutput) BackupRetentionDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *BackupResponse) *int {
 		if v == nil {
@@ -773,7 +773,7 @@ func (o BackupResponsePtrOutput) BackupRetentionDays() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Earliest restore point time (ISO8601 format) for a flexible server.
+// Earliest restore point time (ISO8601 format) for a server.
 func (o BackupResponsePtrOutput) EarliestRestoreDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BackupResponse) *string {
 		if v == nil {
@@ -793,21 +793,294 @@ func (o BackupResponsePtrOutput) GeoRedundantBackup() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Data encryption properties of a flexible server.
+// Cluster properties of a server.
+type Cluster struct {
+	// Number of nodes assigned to the elastic cluster.
+	ClusterSize *int `pulumi:"clusterSize"`
+	// Default database name for the elastic cluster.
+	DefaultDatabaseName *string `pulumi:"defaultDatabaseName"`
+}
+
+// Defaults sets the appropriate defaults for Cluster
+func (val *Cluster) Defaults() *Cluster {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ClusterSize == nil {
+		clusterSize_ := 0
+		tmp.ClusterSize = &clusterSize_
+	}
+	return &tmp
+}
+
+// ClusterInput is an input type that accepts ClusterArgs and ClusterOutput values.
+// You can construct a concrete instance of `ClusterInput` via:
+//
+//	ClusterArgs{...}
+type ClusterInput interface {
+	pulumi.Input
+
+	ToClusterOutput() ClusterOutput
+	ToClusterOutputWithContext(context.Context) ClusterOutput
+}
+
+// Cluster properties of a server.
+type ClusterArgs struct {
+	// Number of nodes assigned to the elastic cluster.
+	ClusterSize pulumi.IntPtrInput `pulumi:"clusterSize"`
+	// Default database name for the elastic cluster.
+	DefaultDatabaseName pulumi.StringPtrInput `pulumi:"defaultDatabaseName"`
+}
+
+// Defaults sets the appropriate defaults for ClusterArgs
+func (val *ClusterArgs) Defaults() *ClusterArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ClusterSize == nil {
+		tmp.ClusterSize = pulumi.IntPtr(0)
+	}
+	return &tmp
+}
+func (ClusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Cluster)(nil)).Elem()
+}
+
+func (i ClusterArgs) ToClusterOutput() ClusterOutput {
+	return i.ToClusterOutputWithContext(context.Background())
+}
+
+func (i ClusterArgs) ToClusterOutputWithContext(ctx context.Context) ClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterOutput)
+}
+
+func (i ClusterArgs) ToClusterPtrOutput() ClusterPtrOutput {
+	return i.ToClusterPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterArgs) ToClusterPtrOutputWithContext(ctx context.Context) ClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterOutput).ToClusterPtrOutputWithContext(ctx)
+}
+
+// ClusterPtrInput is an input type that accepts ClusterArgs, ClusterPtr and ClusterPtrOutput values.
+// You can construct a concrete instance of `ClusterPtrInput` via:
+//
+//	        ClusterArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterPtrInput interface {
+	pulumi.Input
+
+	ToClusterPtrOutput() ClusterPtrOutput
+	ToClusterPtrOutputWithContext(context.Context) ClusterPtrOutput
+}
+
+type clusterPtrType ClusterArgs
+
+func ClusterPtr(v *ClusterArgs) ClusterPtrInput {
+	return (*clusterPtrType)(v)
+}
+
+func (*clusterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Cluster)(nil)).Elem()
+}
+
+func (i *clusterPtrType) ToClusterPtrOutput() ClusterPtrOutput {
+	return i.ToClusterPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterPtrType) ToClusterPtrOutputWithContext(ctx context.Context) ClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPtrOutput)
+}
+
+// Cluster properties of a server.
+type ClusterOutput struct{ *pulumi.OutputState }
+
+func (ClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Cluster)(nil)).Elem()
+}
+
+func (o ClusterOutput) ToClusterOutput() ClusterOutput {
+	return o
+}
+
+func (o ClusterOutput) ToClusterOutputWithContext(ctx context.Context) ClusterOutput {
+	return o
+}
+
+func (o ClusterOutput) ToClusterPtrOutput() ClusterPtrOutput {
+	return o.ToClusterPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterOutput) ToClusterPtrOutputWithContext(ctx context.Context) ClusterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Cluster) *Cluster {
+		return &v
+	}).(ClusterPtrOutput)
+}
+
+// Number of nodes assigned to the elastic cluster.
+func (o ClusterOutput) ClusterSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Cluster) *int { return v.ClusterSize }).(pulumi.IntPtrOutput)
+}
+
+// Default database name for the elastic cluster.
+func (o ClusterOutput) DefaultDatabaseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Cluster) *string { return v.DefaultDatabaseName }).(pulumi.StringPtrOutput)
+}
+
+type ClusterPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Cluster)(nil)).Elem()
+}
+
+func (o ClusterPtrOutput) ToClusterPtrOutput() ClusterPtrOutput {
+	return o
+}
+
+func (o ClusterPtrOutput) ToClusterPtrOutputWithContext(ctx context.Context) ClusterPtrOutput {
+	return o
+}
+
+func (o ClusterPtrOutput) Elem() ClusterOutput {
+	return o.ApplyT(func(v *Cluster) Cluster {
+		if v != nil {
+			return *v
+		}
+		var ret Cluster
+		return ret
+	}).(ClusterOutput)
+}
+
+// Number of nodes assigned to the elastic cluster.
+func (o ClusterPtrOutput) ClusterSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Cluster) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// Default database name for the elastic cluster.
+func (o ClusterPtrOutput) DefaultDatabaseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultDatabaseName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Cluster properties of a server.
+type ClusterResponse struct {
+	// Number of nodes assigned to the elastic cluster.
+	ClusterSize *int `pulumi:"clusterSize"`
+	// Default database name for the elastic cluster.
+	DefaultDatabaseName *string `pulumi:"defaultDatabaseName"`
+}
+
+// Defaults sets the appropriate defaults for ClusterResponse
+func (val *ClusterResponse) Defaults() *ClusterResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ClusterSize == nil {
+		clusterSize_ := 0
+		tmp.ClusterSize = &clusterSize_
+	}
+	return &tmp
+}
+
+// Cluster properties of a server.
+type ClusterResponseOutput struct{ *pulumi.OutputState }
+
+func (ClusterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterResponse)(nil)).Elem()
+}
+
+func (o ClusterResponseOutput) ToClusterResponseOutput() ClusterResponseOutput {
+	return o
+}
+
+func (o ClusterResponseOutput) ToClusterResponseOutputWithContext(ctx context.Context) ClusterResponseOutput {
+	return o
+}
+
+// Number of nodes assigned to the elastic cluster.
+func (o ClusterResponseOutput) ClusterSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterResponse) *int { return v.ClusterSize }).(pulumi.IntPtrOutput)
+}
+
+// Default database name for the elastic cluster.
+func (o ClusterResponseOutput) DefaultDatabaseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterResponse) *string { return v.DefaultDatabaseName }).(pulumi.StringPtrOutput)
+}
+
+type ClusterResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterResponse)(nil)).Elem()
+}
+
+func (o ClusterResponsePtrOutput) ToClusterResponsePtrOutput() ClusterResponsePtrOutput {
+	return o
+}
+
+func (o ClusterResponsePtrOutput) ToClusterResponsePtrOutputWithContext(ctx context.Context) ClusterResponsePtrOutput {
+	return o
+}
+
+func (o ClusterResponsePtrOutput) Elem() ClusterResponseOutput {
+	return o.ApplyT(func(v *ClusterResponse) ClusterResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterResponse
+		return ret
+	}).(ClusterResponseOutput)
+}
+
+// Number of nodes assigned to the elastic cluster.
+func (o ClusterResponsePtrOutput) ClusterSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// Default database name for the elastic cluster.
+func (o ClusterResponsePtrOutput) DefaultDatabaseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultDatabaseName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Data encryption properties of a server.
 type DataEncryption struct {
-	// Status of key used by a flexible server configured with data encryption based on customer managed key, to encrypt the geographically redundant storage associated to the server when it is configured to support geographically redundant backups.
+	// Status of key used by a server configured with data encryption based on customer managed key, to encrypt the geographically redundant storage associated to the server when it is configured to support geographically redundant backups.
 	GeoBackupEncryptionKeyStatus *string `pulumi:"geoBackupEncryptionKeyStatus"`
-	// Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the geographically redundant storage associated to a flexible server that is configured to support geographically redundant backups.
+	// Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the geographically redundant storage associated to a server that is configured to support geographically redundant backups.
 	GeoBackupKeyURI *string `pulumi:"geoBackupKeyURI"`
-	// Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the geographically redundant storage associated to a flexible server that is configured to support geographically redundant backups.
+	// Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the geographically redundant storage associated to a server that is configured to support geographically redundant backups.
 	GeoBackupUserAssignedIdentityId *string `pulumi:"geoBackupUserAssignedIdentityId"`
-	// Status of key used by a flexible server configured with data encryption based on customer managed key, to encrypt the primary storage associated to the server.
+	// Status of key used by a server configured with data encryption based on customer managed key, to encrypt the primary storage associated to the server.
 	PrimaryEncryptionKeyStatus *string `pulumi:"primaryEncryptionKeyStatus"`
-	// URI of the key in Azure Key Vault used for data encryption of the primary storage associated to a flexible server.
+	// URI of the key in Azure Key Vault used for data encryption of the primary storage associated to a server.
 	PrimaryKeyURI *string `pulumi:"primaryKeyURI"`
-	// Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the primary storage associated to a flexible server.
+	// Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the primary storage associated to a server.
 	PrimaryUserAssignedIdentityId *string `pulumi:"primaryUserAssignedIdentityId"`
-	// Data encryption type used by a flexible server.
+	// Data encryption type used by a server.
 	Type *string `pulumi:"type"`
 }
 
@@ -822,21 +1095,21 @@ type DataEncryptionInput interface {
 	ToDataEncryptionOutputWithContext(context.Context) DataEncryptionOutput
 }
 
-// Data encryption properties of a flexible server.
+// Data encryption properties of a server.
 type DataEncryptionArgs struct {
-	// Status of key used by a flexible server configured with data encryption based on customer managed key, to encrypt the geographically redundant storage associated to the server when it is configured to support geographically redundant backups.
+	// Status of key used by a server configured with data encryption based on customer managed key, to encrypt the geographically redundant storage associated to the server when it is configured to support geographically redundant backups.
 	GeoBackupEncryptionKeyStatus pulumi.StringPtrInput `pulumi:"geoBackupEncryptionKeyStatus"`
-	// Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the geographically redundant storage associated to a flexible server that is configured to support geographically redundant backups.
+	// Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the geographically redundant storage associated to a server that is configured to support geographically redundant backups.
 	GeoBackupKeyURI pulumi.StringPtrInput `pulumi:"geoBackupKeyURI"`
-	// Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the geographically redundant storage associated to a flexible server that is configured to support geographically redundant backups.
+	// Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the geographically redundant storage associated to a server that is configured to support geographically redundant backups.
 	GeoBackupUserAssignedIdentityId pulumi.StringPtrInput `pulumi:"geoBackupUserAssignedIdentityId"`
-	// Status of key used by a flexible server configured with data encryption based on customer managed key, to encrypt the primary storage associated to the server.
+	// Status of key used by a server configured with data encryption based on customer managed key, to encrypt the primary storage associated to the server.
 	PrimaryEncryptionKeyStatus pulumi.StringPtrInput `pulumi:"primaryEncryptionKeyStatus"`
-	// URI of the key in Azure Key Vault used for data encryption of the primary storage associated to a flexible server.
+	// URI of the key in Azure Key Vault used for data encryption of the primary storage associated to a server.
 	PrimaryKeyURI pulumi.StringPtrInput `pulumi:"primaryKeyURI"`
-	// Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the primary storage associated to a flexible server.
+	// Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the primary storage associated to a server.
 	PrimaryUserAssignedIdentityId pulumi.StringPtrInput `pulumi:"primaryUserAssignedIdentityId"`
-	// Data encryption type used by a flexible server.
+	// Data encryption type used by a server.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -893,7 +1166,7 @@ func (i *dataEncryptionPtrType) ToDataEncryptionPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(DataEncryptionPtrOutput)
 }
 
-// Data encryption properties of a flexible server.
+// Data encryption properties of a server.
 type DataEncryptionOutput struct{ *pulumi.OutputState }
 
 func (DataEncryptionOutput) ElementType() reflect.Type {
@@ -918,37 +1191,37 @@ func (o DataEncryptionOutput) ToDataEncryptionPtrOutputWithContext(ctx context.C
 	}).(DataEncryptionPtrOutput)
 }
 
-// Status of key used by a flexible server configured with data encryption based on customer managed key, to encrypt the geographically redundant storage associated to the server when it is configured to support geographically redundant backups.
+// Status of key used by a server configured with data encryption based on customer managed key, to encrypt the geographically redundant storage associated to the server when it is configured to support geographically redundant backups.
 func (o DataEncryptionOutput) GeoBackupEncryptionKeyStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataEncryption) *string { return v.GeoBackupEncryptionKeyStatus }).(pulumi.StringPtrOutput)
 }
 
-// Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the geographically redundant storage associated to a flexible server that is configured to support geographically redundant backups.
+// Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the geographically redundant storage associated to a server that is configured to support geographically redundant backups.
 func (o DataEncryptionOutput) GeoBackupKeyURI() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataEncryption) *string { return v.GeoBackupKeyURI }).(pulumi.StringPtrOutput)
 }
 
-// Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the geographically redundant storage associated to a flexible server that is configured to support geographically redundant backups.
+// Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the geographically redundant storage associated to a server that is configured to support geographically redundant backups.
 func (o DataEncryptionOutput) GeoBackupUserAssignedIdentityId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataEncryption) *string { return v.GeoBackupUserAssignedIdentityId }).(pulumi.StringPtrOutput)
 }
 
-// Status of key used by a flexible server configured with data encryption based on customer managed key, to encrypt the primary storage associated to the server.
+// Status of key used by a server configured with data encryption based on customer managed key, to encrypt the primary storage associated to the server.
 func (o DataEncryptionOutput) PrimaryEncryptionKeyStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataEncryption) *string { return v.PrimaryEncryptionKeyStatus }).(pulumi.StringPtrOutput)
 }
 
-// URI of the key in Azure Key Vault used for data encryption of the primary storage associated to a flexible server.
+// URI of the key in Azure Key Vault used for data encryption of the primary storage associated to a server.
 func (o DataEncryptionOutput) PrimaryKeyURI() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataEncryption) *string { return v.PrimaryKeyURI }).(pulumi.StringPtrOutput)
 }
 
-// Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the primary storage associated to a flexible server.
+// Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the primary storage associated to a server.
 func (o DataEncryptionOutput) PrimaryUserAssignedIdentityId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataEncryption) *string { return v.PrimaryUserAssignedIdentityId }).(pulumi.StringPtrOutput)
 }
 
-// Data encryption type used by a flexible server.
+// Data encryption type used by a server.
 func (o DataEncryptionOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataEncryption) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -977,7 +1250,7 @@ func (o DataEncryptionPtrOutput) Elem() DataEncryptionOutput {
 	}).(DataEncryptionOutput)
 }
 
-// Status of key used by a flexible server configured with data encryption based on customer managed key, to encrypt the geographically redundant storage associated to the server when it is configured to support geographically redundant backups.
+// Status of key used by a server configured with data encryption based on customer managed key, to encrypt the geographically redundant storage associated to the server when it is configured to support geographically redundant backups.
 func (o DataEncryptionPtrOutput) GeoBackupEncryptionKeyStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DataEncryption) *string {
 		if v == nil {
@@ -987,7 +1260,7 @@ func (o DataEncryptionPtrOutput) GeoBackupEncryptionKeyStatus() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the geographically redundant storage associated to a flexible server that is configured to support geographically redundant backups.
+// Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the geographically redundant storage associated to a server that is configured to support geographically redundant backups.
 func (o DataEncryptionPtrOutput) GeoBackupKeyURI() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DataEncryption) *string {
 		if v == nil {
@@ -997,7 +1270,7 @@ func (o DataEncryptionPtrOutput) GeoBackupKeyURI() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the geographically redundant storage associated to a flexible server that is configured to support geographically redundant backups.
+// Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the geographically redundant storage associated to a server that is configured to support geographically redundant backups.
 func (o DataEncryptionPtrOutput) GeoBackupUserAssignedIdentityId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DataEncryption) *string {
 		if v == nil {
@@ -1007,7 +1280,7 @@ func (o DataEncryptionPtrOutput) GeoBackupUserAssignedIdentityId() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// Status of key used by a flexible server configured with data encryption based on customer managed key, to encrypt the primary storage associated to the server.
+// Status of key used by a server configured with data encryption based on customer managed key, to encrypt the primary storage associated to the server.
 func (o DataEncryptionPtrOutput) PrimaryEncryptionKeyStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DataEncryption) *string {
 		if v == nil {
@@ -1017,7 +1290,7 @@ func (o DataEncryptionPtrOutput) PrimaryEncryptionKeyStatus() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// URI of the key in Azure Key Vault used for data encryption of the primary storage associated to a flexible server.
+// URI of the key in Azure Key Vault used for data encryption of the primary storage associated to a server.
 func (o DataEncryptionPtrOutput) PrimaryKeyURI() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DataEncryption) *string {
 		if v == nil {
@@ -1027,7 +1300,7 @@ func (o DataEncryptionPtrOutput) PrimaryKeyURI() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the primary storage associated to a flexible server.
+// Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the primary storage associated to a server.
 func (o DataEncryptionPtrOutput) PrimaryUserAssignedIdentityId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DataEncryption) *string {
 		if v == nil {
@@ -1037,7 +1310,7 @@ func (o DataEncryptionPtrOutput) PrimaryUserAssignedIdentityId() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Data encryption type used by a flexible server.
+// Data encryption type used by a server.
 func (o DataEncryptionPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DataEncryption) *string {
 		if v == nil {
@@ -1047,25 +1320,25 @@ func (o DataEncryptionPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Data encryption properties of a flexible server.
+// Data encryption properties of a server.
 type DataEncryptionResponse struct {
-	// Status of key used by a flexible server configured with data encryption based on customer managed key, to encrypt the geographically redundant storage associated to the server when it is configured to support geographically redundant backups.
+	// Status of key used by a server configured with data encryption based on customer managed key, to encrypt the geographically redundant storage associated to the server when it is configured to support geographically redundant backups.
 	GeoBackupEncryptionKeyStatus *string `pulumi:"geoBackupEncryptionKeyStatus"`
-	// Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the geographically redundant storage associated to a flexible server that is configured to support geographically redundant backups.
+	// Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the geographically redundant storage associated to a server that is configured to support geographically redundant backups.
 	GeoBackupKeyURI *string `pulumi:"geoBackupKeyURI"`
-	// Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the geographically redundant storage associated to a flexible server that is configured to support geographically redundant backups.
+	// Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the geographically redundant storage associated to a server that is configured to support geographically redundant backups.
 	GeoBackupUserAssignedIdentityId *string `pulumi:"geoBackupUserAssignedIdentityId"`
-	// Status of key used by a flexible server configured with data encryption based on customer managed key, to encrypt the primary storage associated to the server.
+	// Status of key used by a server configured with data encryption based on customer managed key, to encrypt the primary storage associated to the server.
 	PrimaryEncryptionKeyStatus *string `pulumi:"primaryEncryptionKeyStatus"`
-	// URI of the key in Azure Key Vault used for data encryption of the primary storage associated to a flexible server.
+	// URI of the key in Azure Key Vault used for data encryption of the primary storage associated to a server.
 	PrimaryKeyURI *string `pulumi:"primaryKeyURI"`
-	// Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the primary storage associated to a flexible server.
+	// Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the primary storage associated to a server.
 	PrimaryUserAssignedIdentityId *string `pulumi:"primaryUserAssignedIdentityId"`
-	// Data encryption type used by a flexible server.
+	// Data encryption type used by a server.
 	Type *string `pulumi:"type"`
 }
 
-// Data encryption properties of a flexible server.
+// Data encryption properties of a server.
 type DataEncryptionResponseOutput struct{ *pulumi.OutputState }
 
 func (DataEncryptionResponseOutput) ElementType() reflect.Type {
@@ -1080,37 +1353,37 @@ func (o DataEncryptionResponseOutput) ToDataEncryptionResponseOutputWithContext(
 	return o
 }
 
-// Status of key used by a flexible server configured with data encryption based on customer managed key, to encrypt the geographically redundant storage associated to the server when it is configured to support geographically redundant backups.
+// Status of key used by a server configured with data encryption based on customer managed key, to encrypt the geographically redundant storage associated to the server when it is configured to support geographically redundant backups.
 func (o DataEncryptionResponseOutput) GeoBackupEncryptionKeyStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataEncryptionResponse) *string { return v.GeoBackupEncryptionKeyStatus }).(pulumi.StringPtrOutput)
 }
 
-// Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the geographically redundant storage associated to a flexible server that is configured to support geographically redundant backups.
+// Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the geographically redundant storage associated to a server that is configured to support geographically redundant backups.
 func (o DataEncryptionResponseOutput) GeoBackupKeyURI() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataEncryptionResponse) *string { return v.GeoBackupKeyURI }).(pulumi.StringPtrOutput)
 }
 
-// Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the geographically redundant storage associated to a flexible server that is configured to support geographically redundant backups.
+// Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the geographically redundant storage associated to a server that is configured to support geographically redundant backups.
 func (o DataEncryptionResponseOutput) GeoBackupUserAssignedIdentityId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataEncryptionResponse) *string { return v.GeoBackupUserAssignedIdentityId }).(pulumi.StringPtrOutput)
 }
 
-// Status of key used by a flexible server configured with data encryption based on customer managed key, to encrypt the primary storage associated to the server.
+// Status of key used by a server configured with data encryption based on customer managed key, to encrypt the primary storage associated to the server.
 func (o DataEncryptionResponseOutput) PrimaryEncryptionKeyStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataEncryptionResponse) *string { return v.PrimaryEncryptionKeyStatus }).(pulumi.StringPtrOutput)
 }
 
-// URI of the key in Azure Key Vault used for data encryption of the primary storage associated to a flexible server.
+// URI of the key in Azure Key Vault used for data encryption of the primary storage associated to a server.
 func (o DataEncryptionResponseOutput) PrimaryKeyURI() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataEncryptionResponse) *string { return v.PrimaryKeyURI }).(pulumi.StringPtrOutput)
 }
 
-// Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the primary storage associated to a flexible server.
+// Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the primary storage associated to a server.
 func (o DataEncryptionResponseOutput) PrimaryUserAssignedIdentityId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataEncryptionResponse) *string { return v.PrimaryUserAssignedIdentityId }).(pulumi.StringPtrOutput)
 }
 
-// Data encryption type used by a flexible server.
+// Data encryption type used by a server.
 func (o DataEncryptionResponseOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataEncryptionResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -1139,7 +1412,7 @@ func (o DataEncryptionResponsePtrOutput) Elem() DataEncryptionResponseOutput {
 	}).(DataEncryptionResponseOutput)
 }
 
-// Status of key used by a flexible server configured with data encryption based on customer managed key, to encrypt the geographically redundant storage associated to the server when it is configured to support geographically redundant backups.
+// Status of key used by a server configured with data encryption based on customer managed key, to encrypt the geographically redundant storage associated to the server when it is configured to support geographically redundant backups.
 func (o DataEncryptionResponsePtrOutput) GeoBackupEncryptionKeyStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DataEncryptionResponse) *string {
 		if v == nil {
@@ -1149,7 +1422,7 @@ func (o DataEncryptionResponsePtrOutput) GeoBackupEncryptionKeyStatus() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-// Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the geographically redundant storage associated to a flexible server that is configured to support geographically redundant backups.
+// Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the geographically redundant storage associated to a server that is configured to support geographically redundant backups.
 func (o DataEncryptionResponsePtrOutput) GeoBackupKeyURI() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DataEncryptionResponse) *string {
 		if v == nil {
@@ -1159,7 +1432,7 @@ func (o DataEncryptionResponsePtrOutput) GeoBackupKeyURI() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the geographically redundant storage associated to a flexible server that is configured to support geographically redundant backups.
+// Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the geographically redundant storage associated to a server that is configured to support geographically redundant backups.
 func (o DataEncryptionResponsePtrOutput) GeoBackupUserAssignedIdentityId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DataEncryptionResponse) *string {
 		if v == nil {
@@ -1169,7 +1442,7 @@ func (o DataEncryptionResponsePtrOutput) GeoBackupUserAssignedIdentityId() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
-// Status of key used by a flexible server configured with data encryption based on customer managed key, to encrypt the primary storage associated to the server.
+// Status of key used by a server configured with data encryption based on customer managed key, to encrypt the primary storage associated to the server.
 func (o DataEncryptionResponsePtrOutput) PrimaryEncryptionKeyStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DataEncryptionResponse) *string {
 		if v == nil {
@@ -1179,7 +1452,7 @@ func (o DataEncryptionResponsePtrOutput) PrimaryEncryptionKeyStatus() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
-// URI of the key in Azure Key Vault used for data encryption of the primary storage associated to a flexible server.
+// URI of the key in Azure Key Vault used for data encryption of the primary storage associated to a server.
 func (o DataEncryptionResponsePtrOutput) PrimaryKeyURI() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DataEncryptionResponse) *string {
 		if v == nil {
@@ -1189,7 +1462,7 @@ func (o DataEncryptionResponsePtrOutput) PrimaryKeyURI() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the primary storage associated to a flexible server.
+// Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the primary storage associated to a server.
 func (o DataEncryptionResponsePtrOutput) PrimaryUserAssignedIdentityId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DataEncryptionResponse) *string {
 		if v == nil {
@@ -1199,7 +1472,7 @@ func (o DataEncryptionResponsePtrOutput) PrimaryUserAssignedIdentityId() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
-// Data encryption type used by a flexible server.
+// Data encryption type used by a server.
 func (o DataEncryptionResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DataEncryptionResponse) *string {
 		if v == nil {
@@ -1207,6 +1480,157 @@ func (o DataEncryptionResponsePtrOutput) Type() pulumi.StringPtrOutput {
 		}
 		return v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+// Migration state of a database.
+type DatabaseMigrationStateResponse struct {
+	// Change Data Capture applied changes counter.
+	AppliedChanges *int `pulumi:"appliedChanges"`
+	// Change Data Capture delete counter.
+	CdcDeleteCounter *int `pulumi:"cdcDeleteCounter"`
+	// Change Data Capture insert counter.
+	CdcInsertCounter *int `pulumi:"cdcInsertCounter"`
+	// Change Data Capture update counter.
+	CdcUpdateCounter *int `pulumi:"cdcUpdateCounter"`
+	// Name of database.
+	DatabaseName *string `pulumi:"databaseName"`
+	// End time of a migration state.
+	EndedOn *string `pulumi:"endedOn"`
+	// Number of tables loaded during the migration of a database.
+	FullLoadCompletedTables *int `pulumi:"fullLoadCompletedTables"`
+	// Number of tables encountering errors during the migration of a database.
+	FullLoadErroredTables *int `pulumi:"fullLoadErroredTables"`
+	// Number of tables loading during the migration of a database.
+	FullLoadLoadingTables *int `pulumi:"fullLoadLoadingTables"`
+	// Number of tables queued for the migration of a database.
+	FullLoadQueuedTables *int `pulumi:"fullLoadQueuedTables"`
+	// Change Data Capture incoming changes counter.
+	IncomingChanges *int `pulumi:"incomingChanges"`
+	// Lag in seconds between source and target during online phase.
+	Latency *int `pulumi:"latency"`
+	// Error message, if any, for the migration state.
+	Message *string `pulumi:"message"`
+	// Migration operation of a database.
+	MigrationOperation *string `pulumi:"migrationOperation"`
+	// Migration state of a database.
+	MigrationState *string `pulumi:"migrationState"`
+	// Start time of a migration state.
+	StartedOn *string `pulumi:"startedOn"`
+}
+
+// Migration state of a database.
+type DatabaseMigrationStateResponseOutput struct{ *pulumi.OutputState }
+
+func (DatabaseMigrationStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseMigrationStateResponse)(nil)).Elem()
+}
+
+func (o DatabaseMigrationStateResponseOutput) ToDatabaseMigrationStateResponseOutput() DatabaseMigrationStateResponseOutput {
+	return o
+}
+
+func (o DatabaseMigrationStateResponseOutput) ToDatabaseMigrationStateResponseOutputWithContext(ctx context.Context) DatabaseMigrationStateResponseOutput {
+	return o
+}
+
+// Change Data Capture applied changes counter.
+func (o DatabaseMigrationStateResponseOutput) AppliedChanges() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabaseMigrationStateResponse) *int { return v.AppliedChanges }).(pulumi.IntPtrOutput)
+}
+
+// Change Data Capture delete counter.
+func (o DatabaseMigrationStateResponseOutput) CdcDeleteCounter() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabaseMigrationStateResponse) *int { return v.CdcDeleteCounter }).(pulumi.IntPtrOutput)
+}
+
+// Change Data Capture insert counter.
+func (o DatabaseMigrationStateResponseOutput) CdcInsertCounter() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabaseMigrationStateResponse) *int { return v.CdcInsertCounter }).(pulumi.IntPtrOutput)
+}
+
+// Change Data Capture update counter.
+func (o DatabaseMigrationStateResponseOutput) CdcUpdateCounter() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabaseMigrationStateResponse) *int { return v.CdcUpdateCounter }).(pulumi.IntPtrOutput)
+}
+
+// Name of database.
+func (o DatabaseMigrationStateResponseOutput) DatabaseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseMigrationStateResponse) *string { return v.DatabaseName }).(pulumi.StringPtrOutput)
+}
+
+// End time of a migration state.
+func (o DatabaseMigrationStateResponseOutput) EndedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseMigrationStateResponse) *string { return v.EndedOn }).(pulumi.StringPtrOutput)
+}
+
+// Number of tables loaded during the migration of a database.
+func (o DatabaseMigrationStateResponseOutput) FullLoadCompletedTables() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabaseMigrationStateResponse) *int { return v.FullLoadCompletedTables }).(pulumi.IntPtrOutput)
+}
+
+// Number of tables encountering errors during the migration of a database.
+func (o DatabaseMigrationStateResponseOutput) FullLoadErroredTables() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabaseMigrationStateResponse) *int { return v.FullLoadErroredTables }).(pulumi.IntPtrOutput)
+}
+
+// Number of tables loading during the migration of a database.
+func (o DatabaseMigrationStateResponseOutput) FullLoadLoadingTables() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabaseMigrationStateResponse) *int { return v.FullLoadLoadingTables }).(pulumi.IntPtrOutput)
+}
+
+// Number of tables queued for the migration of a database.
+func (o DatabaseMigrationStateResponseOutput) FullLoadQueuedTables() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabaseMigrationStateResponse) *int { return v.FullLoadQueuedTables }).(pulumi.IntPtrOutput)
+}
+
+// Change Data Capture incoming changes counter.
+func (o DatabaseMigrationStateResponseOutput) IncomingChanges() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabaseMigrationStateResponse) *int { return v.IncomingChanges }).(pulumi.IntPtrOutput)
+}
+
+// Lag in seconds between source and target during online phase.
+func (o DatabaseMigrationStateResponseOutput) Latency() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabaseMigrationStateResponse) *int { return v.Latency }).(pulumi.IntPtrOutput)
+}
+
+// Error message, if any, for the migration state.
+func (o DatabaseMigrationStateResponseOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseMigrationStateResponse) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+// Migration operation of a database.
+func (o DatabaseMigrationStateResponseOutput) MigrationOperation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseMigrationStateResponse) *string { return v.MigrationOperation }).(pulumi.StringPtrOutput)
+}
+
+// Migration state of a database.
+func (o DatabaseMigrationStateResponseOutput) MigrationState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseMigrationStateResponse) *string { return v.MigrationState }).(pulumi.StringPtrOutput)
+}
+
+// Start time of a migration state.
+func (o DatabaseMigrationStateResponseOutput) StartedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseMigrationStateResponse) *string { return v.StartedOn }).(pulumi.StringPtrOutput)
+}
+
+type DatabaseMigrationStateResponseMapOutput struct{ *pulumi.OutputState }
+
+func (DatabaseMigrationStateResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DatabaseMigrationStateResponse)(nil)).Elem()
+}
+
+func (o DatabaseMigrationStateResponseMapOutput) ToDatabaseMigrationStateResponseMapOutput() DatabaseMigrationStateResponseMapOutput {
+	return o
+}
+
+func (o DatabaseMigrationStateResponseMapOutput) ToDatabaseMigrationStateResponseMapOutputWithContext(ctx context.Context) DatabaseMigrationStateResponseMapOutput {
+	return o
+}
+
+func (o DatabaseMigrationStateResponseMapOutput) MapIndex(k pulumi.StringInput) DatabaseMigrationStateResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DatabaseMigrationStateResponse {
+		return vs[0].(map[string]DatabaseMigrationStateResponse)[vs[1].(string)]
+	}).(DatabaseMigrationStateResponseOutput)
 }
 
 // Validation status summary for a database.
@@ -1276,157 +1700,6 @@ func (o DbLevelValidationStatusResponseArrayOutput) Index(i pulumi.IntInput) DbL
 	}).(DbLevelValidationStatusResponseOutput)
 }
 
-// Migration status of a database.
-type DbMigrationStatusResponse struct {
-	// Change Data Capture applied changes counter.
-	AppliedChanges *int `pulumi:"appliedChanges"`
-	// Change Data Capture delete counter.
-	CdcDeleteCounter *int `pulumi:"cdcDeleteCounter"`
-	// Change Data Capture insert counter.
-	CdcInsertCounter *int `pulumi:"cdcInsertCounter"`
-	// Change Data Capture update counter.
-	CdcUpdateCounter *int `pulumi:"cdcUpdateCounter"`
-	// Name of database.
-	DatabaseName *string `pulumi:"databaseName"`
-	// End time of a migration state.
-	EndedOn *string `pulumi:"endedOn"`
-	// Number of tables loaded during the migration of a database.
-	FullLoadCompletedTables *int `pulumi:"fullLoadCompletedTables"`
-	// Number of tables encountering errors during the migration of a database.
-	FullLoadErroredTables *int `pulumi:"fullLoadErroredTables"`
-	// Number of tables loading during the migration of a database.
-	FullLoadLoadingTables *int `pulumi:"fullLoadLoadingTables"`
-	// Number of tables queued for the migration of a database.
-	FullLoadQueuedTables *int `pulumi:"fullLoadQueuedTables"`
-	// Change Data Capture incoming changes counter.
-	IncomingChanges *int `pulumi:"incomingChanges"`
-	// Lag in seconds between source and target during online phase.
-	Latency *int `pulumi:"latency"`
-	// Error message, if any, for the migration state.
-	Message *string `pulumi:"message"`
-	// Migration operation of a database.
-	MigrationOperation *string `pulumi:"migrationOperation"`
-	// Migration state of a database.
-	MigrationState *string `pulumi:"migrationState"`
-	// Start time of a migration state.
-	StartedOn *string `pulumi:"startedOn"`
-}
-
-// Migration status of a database.
-type DbMigrationStatusResponseOutput struct{ *pulumi.OutputState }
-
-func (DbMigrationStatusResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DbMigrationStatusResponse)(nil)).Elem()
-}
-
-func (o DbMigrationStatusResponseOutput) ToDbMigrationStatusResponseOutput() DbMigrationStatusResponseOutput {
-	return o
-}
-
-func (o DbMigrationStatusResponseOutput) ToDbMigrationStatusResponseOutputWithContext(ctx context.Context) DbMigrationStatusResponseOutput {
-	return o
-}
-
-// Change Data Capture applied changes counter.
-func (o DbMigrationStatusResponseOutput) AppliedChanges() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DbMigrationStatusResponse) *int { return v.AppliedChanges }).(pulumi.IntPtrOutput)
-}
-
-// Change Data Capture delete counter.
-func (o DbMigrationStatusResponseOutput) CdcDeleteCounter() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DbMigrationStatusResponse) *int { return v.CdcDeleteCounter }).(pulumi.IntPtrOutput)
-}
-
-// Change Data Capture insert counter.
-func (o DbMigrationStatusResponseOutput) CdcInsertCounter() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DbMigrationStatusResponse) *int { return v.CdcInsertCounter }).(pulumi.IntPtrOutput)
-}
-
-// Change Data Capture update counter.
-func (o DbMigrationStatusResponseOutput) CdcUpdateCounter() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DbMigrationStatusResponse) *int { return v.CdcUpdateCounter }).(pulumi.IntPtrOutput)
-}
-
-// Name of database.
-func (o DbMigrationStatusResponseOutput) DatabaseName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DbMigrationStatusResponse) *string { return v.DatabaseName }).(pulumi.StringPtrOutput)
-}
-
-// End time of a migration state.
-func (o DbMigrationStatusResponseOutput) EndedOn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DbMigrationStatusResponse) *string { return v.EndedOn }).(pulumi.StringPtrOutput)
-}
-
-// Number of tables loaded during the migration of a database.
-func (o DbMigrationStatusResponseOutput) FullLoadCompletedTables() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DbMigrationStatusResponse) *int { return v.FullLoadCompletedTables }).(pulumi.IntPtrOutput)
-}
-
-// Number of tables encountering errors during the migration of a database.
-func (o DbMigrationStatusResponseOutput) FullLoadErroredTables() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DbMigrationStatusResponse) *int { return v.FullLoadErroredTables }).(pulumi.IntPtrOutput)
-}
-
-// Number of tables loading during the migration of a database.
-func (o DbMigrationStatusResponseOutput) FullLoadLoadingTables() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DbMigrationStatusResponse) *int { return v.FullLoadLoadingTables }).(pulumi.IntPtrOutput)
-}
-
-// Number of tables queued for the migration of a database.
-func (o DbMigrationStatusResponseOutput) FullLoadQueuedTables() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DbMigrationStatusResponse) *int { return v.FullLoadQueuedTables }).(pulumi.IntPtrOutput)
-}
-
-// Change Data Capture incoming changes counter.
-func (o DbMigrationStatusResponseOutput) IncomingChanges() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DbMigrationStatusResponse) *int { return v.IncomingChanges }).(pulumi.IntPtrOutput)
-}
-
-// Lag in seconds between source and target during online phase.
-func (o DbMigrationStatusResponseOutput) Latency() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DbMigrationStatusResponse) *int { return v.Latency }).(pulumi.IntPtrOutput)
-}
-
-// Error message, if any, for the migration state.
-func (o DbMigrationStatusResponseOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DbMigrationStatusResponse) *string { return v.Message }).(pulumi.StringPtrOutput)
-}
-
-// Migration operation of a database.
-func (o DbMigrationStatusResponseOutput) MigrationOperation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DbMigrationStatusResponse) *string { return v.MigrationOperation }).(pulumi.StringPtrOutput)
-}
-
-// Migration state of a database.
-func (o DbMigrationStatusResponseOutput) MigrationState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DbMigrationStatusResponse) *string { return v.MigrationState }).(pulumi.StringPtrOutput)
-}
-
-// Start time of a migration state.
-func (o DbMigrationStatusResponseOutput) StartedOn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DbMigrationStatusResponse) *string { return v.StartedOn }).(pulumi.StringPtrOutput)
-}
-
-type DbMigrationStatusResponseMapOutput struct{ *pulumi.OutputState }
-
-func (DbMigrationStatusResponseMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DbMigrationStatusResponse)(nil)).Elem()
-}
-
-func (o DbMigrationStatusResponseMapOutput) ToDbMigrationStatusResponseMapOutput() DbMigrationStatusResponseMapOutput {
-	return o
-}
-
-func (o DbMigrationStatusResponseMapOutput) ToDbMigrationStatusResponseMapOutputWithContext(ctx context.Context) DbMigrationStatusResponseMapOutput {
-	return o
-}
-
-func (o DbMigrationStatusResponseMapOutput) MapIndex(k pulumi.StringInput) DbMigrationStatusResponseOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DbMigrationStatusResponse {
-		return vs[0].(map[string]DbMigrationStatusResponse)[vs[1].(string)]
-	}).(DbMigrationStatusResponseOutput)
-}
-
 // Database server metadata.
 type DbServerMetadataResponse struct {
 	// Location of database server.
@@ -1474,9 +1747,9 @@ func (o DbServerMetadataResponseOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DbServerMetadataResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
-// High availability properties of a flexible server.
+// High availability properties of a server.
 type HighAvailability struct {
-	// High availability mode for a flexible server.
+	// High availability mode for a server.
 	Mode *string `pulumi:"mode"`
 	// Availability zone associated to the standby server created when high availability is set to SameZone or ZoneRedundant.
 	StandbyAvailabilityZone *string `pulumi:"standbyAvailabilityZone"`
@@ -1510,9 +1783,9 @@ type HighAvailabilityInput interface {
 	ToHighAvailabilityOutputWithContext(context.Context) HighAvailabilityOutput
 }
 
-// High availability properties of a flexible server.
+// High availability properties of a server.
 type HighAvailabilityArgs struct {
-	// High availability mode for a flexible server.
+	// High availability mode for a server.
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
 	// Availability zone associated to the standby server created when high availability is set to SameZone or ZoneRedundant.
 	StandbyAvailabilityZone pulumi.StringPtrInput `pulumi:"standbyAvailabilityZone"`
@@ -1585,7 +1858,7 @@ func (i *highAvailabilityPtrType) ToHighAvailabilityPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(HighAvailabilityPtrOutput)
 }
 
-// High availability properties of a flexible server.
+// High availability properties of a server.
 type HighAvailabilityOutput struct{ *pulumi.OutputState }
 
 func (HighAvailabilityOutput) ElementType() reflect.Type {
@@ -1610,7 +1883,7 @@ func (o HighAvailabilityOutput) ToHighAvailabilityPtrOutputWithContext(ctx conte
 	}).(HighAvailabilityPtrOutput)
 }
 
-// High availability mode for a flexible server.
+// High availability mode for a server.
 func (o HighAvailabilityOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HighAvailability) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
@@ -1644,7 +1917,7 @@ func (o HighAvailabilityPtrOutput) Elem() HighAvailabilityOutput {
 	}).(HighAvailabilityOutput)
 }
 
-// High availability mode for a flexible server.
+// High availability mode for a server.
 func (o HighAvailabilityPtrOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HighAvailability) *string {
 		if v == nil {
@@ -1664,9 +1937,9 @@ func (o HighAvailabilityPtrOutput) StandbyAvailabilityZone() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// High availability properties of a flexible server.
+// High availability properties of a server.
 type HighAvailabilityResponse struct {
-	// High availability mode for a flexible server.
+	// High availability mode for a server.
 	Mode *string `pulumi:"mode"`
 	// Availability zone associated to the standby server created when high availability is set to SameZone or ZoneRedundant.
 	StandbyAvailabilityZone *string `pulumi:"standbyAvailabilityZone"`
@@ -1691,7 +1964,7 @@ func (val *HighAvailabilityResponse) Defaults() *HighAvailabilityResponse {
 	return &tmp
 }
 
-// High availability properties of a flexible server.
+// High availability properties of a server.
 type HighAvailabilityResponseOutput struct{ *pulumi.OutputState }
 
 func (HighAvailabilityResponseOutput) ElementType() reflect.Type {
@@ -1706,7 +1979,7 @@ func (o HighAvailabilityResponseOutput) ToHighAvailabilityResponseOutputWithCont
 	return o
 }
 
-// High availability mode for a flexible server.
+// High availability mode for a server.
 func (o HighAvailabilityResponseOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HighAvailabilityResponse) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
@@ -1745,7 +2018,7 @@ func (o HighAvailabilityResponsePtrOutput) Elem() HighAvailabilityResponseOutput
 	}).(HighAvailabilityResponseOutput)
 }
 
-// High availability mode for a flexible server.
+// High availability mode for a server.
 func (o HighAvailabilityResponsePtrOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HighAvailabilityResponse) *string {
 		if v == nil {
@@ -2006,7 +2279,7 @@ func (o IdentityPropertiesResponsePtrOutput) UserAssignedIdentities() UserAssign
 	}).(UserAssignedIdentityResponseMapOutput)
 }
 
-// Maintenance window properties of a flexible server.
+// Maintenance window properties of a server.
 type MaintenanceWindow struct {
 	// Indicates whether custom window is enabled or disabled.
 	CustomWindow *string `pulumi:"customWindow"`
@@ -2054,7 +2327,7 @@ type MaintenanceWindowInput interface {
 	ToMaintenanceWindowOutputWithContext(context.Context) MaintenanceWindowOutput
 }
 
-// Maintenance window properties of a flexible server.
+// Maintenance window properties of a server.
 type MaintenanceWindowArgs struct {
 	// Indicates whether custom window is enabled or disabled.
 	CustomWindow pulumi.StringPtrInput `pulumi:"customWindow"`
@@ -2139,7 +2412,7 @@ func (i *maintenanceWindowPtrType) ToMaintenanceWindowPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceWindowPtrOutput)
 }
 
-// Maintenance window properties of a flexible server.
+// Maintenance window properties of a server.
 type MaintenanceWindowOutput struct{ *pulumi.OutputState }
 
 func (MaintenanceWindowOutput) ElementType() reflect.Type {
@@ -2248,7 +2521,7 @@ func (o MaintenanceWindowPtrOutput) StartMinute() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Maintenance window properties of a flexible server.
+// Maintenance window properties of a server.
 type MaintenanceWindowResponse struct {
 	// Indicates whether custom window is enabled or disabled.
 	CustomWindow *string `pulumi:"customWindow"`
@@ -2285,7 +2558,7 @@ func (val *MaintenanceWindowResponse) Defaults() *MaintenanceWindowResponse {
 	return &tmp
 }
 
-// Maintenance window properties of a flexible server.
+// Maintenance window properties of a server.
 type MaintenanceWindowResponseOutput struct{ *pulumi.OutputState }
 
 func (MaintenanceWindowResponseOutput) ElementType() reflect.Type {
@@ -2565,7 +2838,7 @@ func (o MigrationSecretParametersPtrOutput) TargetServerUsername() pulumi.String
 // State of migration.
 type MigrationStatusResponse struct {
 	// Current migration sub state details.
-	CurrentSubStateDetails MigrationSubStateDetailsResponse `pulumi:"currentSubStateDetails"`
+	CurrentSubStateDetails MigrationSubstateDetailsResponse `pulumi:"currentSubStateDetails"`
 	// Error message, if any, for the migration state.
 	Error string `pulumi:"error"`
 	// State of migration.
@@ -2588,8 +2861,8 @@ func (o MigrationStatusResponseOutput) ToMigrationStatusResponseOutputWithContex
 }
 
 // Current migration sub state details.
-func (o MigrationStatusResponseOutput) CurrentSubStateDetails() MigrationSubStateDetailsResponseOutput {
-	return o.ApplyT(func(v MigrationStatusResponse) MigrationSubStateDetailsResponse { return v.CurrentSubStateDetails }).(MigrationSubStateDetailsResponseOutput)
+func (o MigrationStatusResponseOutput) CurrentSubStateDetails() MigrationSubstateDetailsResponseOutput {
+	return o.ApplyT(func(v MigrationStatusResponse) MigrationSubstateDetailsResponse { return v.CurrentSubStateDetails }).(MigrationSubstateDetailsResponseOutput)
 }
 
 // Error message, if any, for the migration state.
@@ -2603,50 +2876,50 @@ func (o MigrationStatusResponseOutput) State() pulumi.StringOutput {
 }
 
 // Details of migration substate.
-type MigrationSubStateDetailsResponse struct {
+type MigrationSubstateDetailsResponse struct {
 	// Substate of migration.
-	CurrentSubState string                               `pulumi:"currentSubState"`
-	DbDetails       map[string]DbMigrationStatusResponse `pulumi:"dbDetails"`
+	CurrentSubState string                                    `pulumi:"currentSubState"`
+	DbDetails       map[string]DatabaseMigrationStateResponse `pulumi:"dbDetails"`
 	// Details for the validation for migration.
 	ValidationDetails *ValidationDetailsResponse `pulumi:"validationDetails"`
 }
 
 // Details of migration substate.
-type MigrationSubStateDetailsResponseOutput struct{ *pulumi.OutputState }
+type MigrationSubstateDetailsResponseOutput struct{ *pulumi.OutputState }
 
-func (MigrationSubStateDetailsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MigrationSubStateDetailsResponse)(nil)).Elem()
+func (MigrationSubstateDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MigrationSubstateDetailsResponse)(nil)).Elem()
 }
 
-func (o MigrationSubStateDetailsResponseOutput) ToMigrationSubStateDetailsResponseOutput() MigrationSubStateDetailsResponseOutput {
+func (o MigrationSubstateDetailsResponseOutput) ToMigrationSubstateDetailsResponseOutput() MigrationSubstateDetailsResponseOutput {
 	return o
 }
 
-func (o MigrationSubStateDetailsResponseOutput) ToMigrationSubStateDetailsResponseOutputWithContext(ctx context.Context) MigrationSubStateDetailsResponseOutput {
+func (o MigrationSubstateDetailsResponseOutput) ToMigrationSubstateDetailsResponseOutputWithContext(ctx context.Context) MigrationSubstateDetailsResponseOutput {
 	return o
 }
 
 // Substate of migration.
-func (o MigrationSubStateDetailsResponseOutput) CurrentSubState() pulumi.StringOutput {
-	return o.ApplyT(func(v MigrationSubStateDetailsResponse) string { return v.CurrentSubState }).(pulumi.StringOutput)
+func (o MigrationSubstateDetailsResponseOutput) CurrentSubState() pulumi.StringOutput {
+	return o.ApplyT(func(v MigrationSubstateDetailsResponse) string { return v.CurrentSubState }).(pulumi.StringOutput)
 }
 
-func (o MigrationSubStateDetailsResponseOutput) DbDetails() DbMigrationStatusResponseMapOutput {
-	return o.ApplyT(func(v MigrationSubStateDetailsResponse) map[string]DbMigrationStatusResponse { return v.DbDetails }).(DbMigrationStatusResponseMapOutput)
+func (o MigrationSubstateDetailsResponseOutput) DbDetails() DatabaseMigrationStateResponseMapOutput {
+	return o.ApplyT(func(v MigrationSubstateDetailsResponse) map[string]DatabaseMigrationStateResponse { return v.DbDetails }).(DatabaseMigrationStateResponseMapOutput)
 }
 
 // Details for the validation for migration.
-func (o MigrationSubStateDetailsResponseOutput) ValidationDetails() ValidationDetailsResponsePtrOutput {
-	return o.ApplyT(func(v MigrationSubStateDetailsResponse) *ValidationDetailsResponse { return v.ValidationDetails }).(ValidationDetailsResponsePtrOutput)
+func (o MigrationSubstateDetailsResponseOutput) ValidationDetails() ValidationDetailsResponsePtrOutput {
+	return o.ApplyT(func(v MigrationSubstateDetailsResponse) *ValidationDetailsResponse { return v.ValidationDetails }).(ValidationDetailsResponsePtrOutput)
 }
 
-// Network properties of a flexible server.
+// Network properties of a server.
 type Network struct {
 	// Resource identifier of the delegated subnet. Required during creation of a new server, in case you want the server to be integrated into your own virtual network. For an update operation, you only have to provide this property if you want to change the value assigned for the private DNS zone.
 	DelegatedSubnetResourceId *string `pulumi:"delegatedSubnetResourceId"`
 	// Identifier of the private DNS zone. Required during creation of a new server, in case you want the server to be integrated into your own virtual network. For an update operation, you only have to provide this property if you want to change the value assigned for the private DNS zone.
 	PrivateDnsZoneArmResourceId *string `pulumi:"privateDnsZoneArmResourceId"`
-	// Indicates if public network access is enabled or not.
+	// Indicates if public network access is enabled or not. This is only supported for servers that are not integrated into a virtual network which is owned and provided by customer when server is deployed.
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 }
 
@@ -2661,13 +2934,13 @@ type NetworkInput interface {
 	ToNetworkOutputWithContext(context.Context) NetworkOutput
 }
 
-// Network properties of a flexible server.
+// Network properties of a server.
 type NetworkArgs struct {
 	// Resource identifier of the delegated subnet. Required during creation of a new server, in case you want the server to be integrated into your own virtual network. For an update operation, you only have to provide this property if you want to change the value assigned for the private DNS zone.
 	DelegatedSubnetResourceId pulumi.StringPtrInput `pulumi:"delegatedSubnetResourceId"`
 	// Identifier of the private DNS zone. Required during creation of a new server, in case you want the server to be integrated into your own virtual network. For an update operation, you only have to provide this property if you want to change the value assigned for the private DNS zone.
 	PrivateDnsZoneArmResourceId pulumi.StringPtrInput `pulumi:"privateDnsZoneArmResourceId"`
-	// Indicates if public network access is enabled or not.
+	// Indicates if public network access is enabled or not. This is only supported for servers that are not integrated into a virtual network which is owned and provided by customer when server is deployed.
 	PublicNetworkAccess pulumi.StringPtrInput `pulumi:"publicNetworkAccess"`
 }
 
@@ -2724,7 +2997,7 @@ func (i *networkPtrType) ToNetworkPtrOutputWithContext(ctx context.Context) Netw
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkPtrOutput)
 }
 
-// Network properties of a flexible server.
+// Network properties of a server.
 type NetworkOutput struct{ *pulumi.OutputState }
 
 func (NetworkOutput) ElementType() reflect.Type {
@@ -2759,7 +3032,7 @@ func (o NetworkOutput) PrivateDnsZoneArmResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Network) *string { return v.PrivateDnsZoneArmResourceId }).(pulumi.StringPtrOutput)
 }
 
-// Indicates if public network access is enabled or not.
+// Indicates if public network access is enabled or not. This is only supported for servers that are not integrated into a virtual network which is owned and provided by customer when server is deployed.
 func (o NetworkOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Network) *string { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
 }
@@ -2808,7 +3081,7 @@ func (o NetworkPtrOutput) PrivateDnsZoneArmResourceId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Indicates if public network access is enabled or not.
+// Indicates if public network access is enabled or not. This is only supported for servers that are not integrated into a virtual network which is owned and provided by customer when server is deployed.
 func (o NetworkPtrOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Network) *string {
 		if v == nil {
@@ -2818,17 +3091,17 @@ func (o NetworkPtrOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Network properties of a flexible server.
+// Network properties of a server.
 type NetworkResponse struct {
 	// Resource identifier of the delegated subnet. Required during creation of a new server, in case you want the server to be integrated into your own virtual network. For an update operation, you only have to provide this property if you want to change the value assigned for the private DNS zone.
 	DelegatedSubnetResourceId *string `pulumi:"delegatedSubnetResourceId"`
 	// Identifier of the private DNS zone. Required during creation of a new server, in case you want the server to be integrated into your own virtual network. For an update operation, you only have to provide this property if you want to change the value assigned for the private DNS zone.
 	PrivateDnsZoneArmResourceId *string `pulumi:"privateDnsZoneArmResourceId"`
-	// Indicates if public network access is enabled or not.
+	// Indicates if public network access is enabled or not. This is only supported for servers that are not integrated into a virtual network which is owned and provided by customer when server is deployed.
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 }
 
-// Network properties of a flexible server.
+// Network properties of a server.
 type NetworkResponseOutput struct{ *pulumi.OutputState }
 
 func (NetworkResponseOutput) ElementType() reflect.Type {
@@ -2853,7 +3126,7 @@ func (o NetworkResponseOutput) PrivateDnsZoneArmResourceId() pulumi.StringPtrOut
 	return o.ApplyT(func(v NetworkResponse) *string { return v.PrivateDnsZoneArmResourceId }).(pulumi.StringPtrOutput)
 }
 
-// Indicates if public network access is enabled or not.
+// Indicates if public network access is enabled or not. This is only supported for servers that are not integrated into a virtual network which is owned and provided by customer when server is deployed.
 func (o NetworkResponseOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkResponse) *string { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
 }
@@ -2902,7 +3175,7 @@ func (o NetworkResponsePtrOutput) PrivateDnsZoneArmResourceId() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// Indicates if public network access is enabled or not.
+// Indicates if public network access is enabled or not. This is only supported for servers that are not integrated into a virtual network which is owned and provided by customer when server is deployed.
 func (o NetworkResponsePtrOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkResponse) *string {
 		if v == nil {
@@ -3294,11 +3567,11 @@ func (o PrivateLinkServiceConnectionStateResponsePtrOutput) Status() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Replica properties of a flexible server.
+// Replica properties of a server.
 type Replica struct {
 	// Type of operation to apply on the read replica. This property is write only. Standalone means that the read replica will be promoted to a standalone server, and will become a completely independent entity from the replication set. Switchover means that the read replica will roles with the primary server.
 	PromoteMode *string `pulumi:"promoteMode"`
-	// Data synchronization option to use when processing the operation specified in the promoteMode property This property is write only. Planned means that the operation will wait for data in the read replica to be fully synchronized with its source server before it initiates the operation. Forced means that the operation will not wait for data in the read replica to be synchronized with its source server before it initiates the operation.
+	// Data synchronization option to use when processing the operation specified in the promoteMode property. This property is write only.
 	PromoteOption *string `pulumi:"promoteOption"`
 	// Role of the server in a replication set.
 	Role *string `pulumi:"role"`
@@ -3315,11 +3588,11 @@ type ReplicaInput interface {
 	ToReplicaOutputWithContext(context.Context) ReplicaOutput
 }
 
-// Replica properties of a flexible server.
+// Replica properties of a server.
 type ReplicaArgs struct {
 	// Type of operation to apply on the read replica. This property is write only. Standalone means that the read replica will be promoted to a standalone server, and will become a completely independent entity from the replication set. Switchover means that the read replica will roles with the primary server.
 	PromoteMode pulumi.StringPtrInput `pulumi:"promoteMode"`
-	// Data synchronization option to use when processing the operation specified in the promoteMode property This property is write only. Planned means that the operation will wait for data in the read replica to be fully synchronized with its source server before it initiates the operation. Forced means that the operation will not wait for data in the read replica to be synchronized with its source server before it initiates the operation.
+	// Data synchronization option to use when processing the operation specified in the promoteMode property. This property is write only.
 	PromoteOption pulumi.StringPtrInput `pulumi:"promoteOption"`
 	// Role of the server in a replication set.
 	Role pulumi.StringPtrInput `pulumi:"role"`
@@ -3378,7 +3651,7 @@ func (i *replicaPtrType) ToReplicaPtrOutputWithContext(ctx context.Context) Repl
 	return pulumi.ToOutputWithContext(ctx, i).(ReplicaPtrOutput)
 }
 
-// Replica properties of a flexible server.
+// Replica properties of a server.
 type ReplicaOutput struct{ *pulumi.OutputState }
 
 func (ReplicaOutput) ElementType() reflect.Type {
@@ -3408,7 +3681,7 @@ func (o ReplicaOutput) PromoteMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Replica) *string { return v.PromoteMode }).(pulumi.StringPtrOutput)
 }
 
-// Data synchronization option to use when processing the operation specified in the promoteMode property This property is write only. Planned means that the operation will wait for data in the read replica to be fully synchronized with its source server before it initiates the operation. Forced means that the operation will not wait for data in the read replica to be synchronized with its source server before it initiates the operation.
+// Data synchronization option to use when processing the operation specified in the promoteMode property. This property is write only.
 func (o ReplicaOutput) PromoteOption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Replica) *string { return v.PromoteOption }).(pulumi.StringPtrOutput)
 }
@@ -3452,7 +3725,7 @@ func (o ReplicaPtrOutput) PromoteMode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Data synchronization option to use when processing the operation specified in the promoteMode property This property is write only. Planned means that the operation will wait for data in the read replica to be fully synchronized with its source server before it initiates the operation. Forced means that the operation will not wait for data in the read replica to be synchronized with its source server before it initiates the operation.
+// Data synchronization option to use when processing the operation specified in the promoteMode property. This property is write only.
 func (o ReplicaPtrOutput) PromoteOption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Replica) *string {
 		if v == nil {
@@ -3472,17 +3745,17 @@ func (o ReplicaPtrOutput) Role() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Replica properties of a flexible server.
+// Replica properties of a server.
 type ReplicaResponse struct {
-	// Maximum number of read replicas allowed for a flexible server.
+	// Maximum number of read replicas allowed for a server.
 	Capacity int `pulumi:"capacity"`
-	// Indicates the replication state of a read replica. This property is returned only when the target flexible server is a read replica. Possible  values are Active, Broken, Catchup, Provisioning, Reconfiguring, and Updating
+	// Indicates the replication state of a read replica. This property is returned only when the target server is a read replica. Possible  values are Active, Broken, Catchup, Provisioning, Reconfiguring, and Updating
 	ReplicationState string `pulumi:"replicationState"`
 	// Role of the server in a replication set.
 	Role *string `pulumi:"role"`
 }
 
-// Replica properties of a flexible server.
+// Replica properties of a server.
 type ReplicaResponseOutput struct{ *pulumi.OutputState }
 
 func (ReplicaResponseOutput) ElementType() reflect.Type {
@@ -3497,12 +3770,12 @@ func (o ReplicaResponseOutput) ToReplicaResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-// Maximum number of read replicas allowed for a flexible server.
+// Maximum number of read replicas allowed for a server.
 func (o ReplicaResponseOutput) Capacity() pulumi.IntOutput {
 	return o.ApplyT(func(v ReplicaResponse) int { return v.Capacity }).(pulumi.IntOutput)
 }
 
-// Indicates the replication state of a read replica. This property is returned only when the target flexible server is a read replica. Possible  values are Active, Broken, Catchup, Provisioning, Reconfiguring, and Updating
+// Indicates the replication state of a read replica. This property is returned only when the target server is a read replica. Possible  values are Active, Broken, Catchup, Provisioning, Reconfiguring, and Updating
 func (o ReplicaResponseOutput) ReplicationState() pulumi.StringOutput {
 	return o.ApplyT(func(v ReplicaResponse) string { return v.ReplicationState }).(pulumi.StringOutput)
 }
@@ -3536,7 +3809,7 @@ func (o ReplicaResponsePtrOutput) Elem() ReplicaResponseOutput {
 	}).(ReplicaResponseOutput)
 }
 
-// Maximum number of read replicas allowed for a flexible server.
+// Maximum number of read replicas allowed for a server.
 func (o ReplicaResponsePtrOutput) Capacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ReplicaResponse) *int {
 		if v == nil {
@@ -3546,7 +3819,7 @@ func (o ReplicaResponsePtrOutput) Capacity() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Indicates the replication state of a read replica. This property is returned only when the target flexible server is a read replica. Possible  values are Active, Broken, Catchup, Provisioning, Reconfiguring, and Updating
+// Indicates the replication state of a read replica. This property is returned only when the target server is a read replica. Possible  values are Active, Broken, Catchup, Provisioning, Reconfiguring, and Updating
 func (o ReplicaResponsePtrOutput) ReplicationState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReplicaResponse) *string {
 		if v == nil {
@@ -5341,15 +5614,15 @@ func (o ServerPropertiesForRestoreOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerPropertiesForRestore) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
-// Compute information of a flexible server.
+// Compute information of a server.
 type ServerSkuResponse struct {
 	// Compute tier and size of the database server. This object is empty for an Azure Database for PostgreSQL single server.
 	Name *string `pulumi:"name"`
-	// Tier of the compute assigned to a flexible server.
+	// Tier of the compute assigned to a server.
 	Tier *string `pulumi:"tier"`
 }
 
-// Compute information of a flexible server.
+// Compute information of a server.
 type ServerSkuResponseOutput struct{ *pulumi.OutputState }
 
 func (ServerSkuResponseOutput) ElementType() reflect.Type {
@@ -5369,7 +5642,7 @@ func (o ServerSkuResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerSkuResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Tier of the compute assigned to a flexible server.
+// Tier of the compute assigned to a server.
 func (o ServerSkuResponseOutput) Tier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerSkuResponse) *string { return v.Tier }).(pulumi.StringPtrOutput)
 }
@@ -5408,7 +5681,7 @@ func (o ServerSkuResponsePtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Tier of the compute assigned to a flexible server.
+// Tier of the compute assigned to a server.
 func (o ServerSkuResponsePtrOutput) Tier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerSkuResponse) *string {
 		if v == nil {
@@ -5854,11 +6127,11 @@ func (o SingleServerSkuResponsePtrOutput) Tier() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Compute information of a flexible server.
+// Compute information of a server.
 type Sku struct {
-	// Name by which is known a given compute size assigned to a flexible server.
+	// Name by which is known a given compute size assigned to a server.
 	Name string `pulumi:"name"`
-	// Tier of the compute assigned to a flexible server.
+	// Tier of the compute assigned to a server.
 	Tier string `pulumi:"tier"`
 }
 
@@ -5873,11 +6146,11 @@ type SkuInput interface {
 	ToSkuOutputWithContext(context.Context) SkuOutput
 }
 
-// Compute information of a flexible server.
+// Compute information of a server.
 type SkuArgs struct {
-	// Name by which is known a given compute size assigned to a flexible server.
+	// Name by which is known a given compute size assigned to a server.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Tier of the compute assigned to a flexible server.
+	// Tier of the compute assigned to a server.
 	Tier pulumi.StringInput `pulumi:"tier"`
 }
 
@@ -5934,7 +6207,7 @@ func (i *skuPtrType) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput
 	return pulumi.ToOutputWithContext(ctx, i).(SkuPtrOutput)
 }
 
-// Compute information of a flexible server.
+// Compute information of a server.
 type SkuOutput struct{ *pulumi.OutputState }
 
 func (SkuOutput) ElementType() reflect.Type {
@@ -5959,12 +6232,12 @@ func (o SkuOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
 	}).(SkuPtrOutput)
 }
 
-// Name by which is known a given compute size assigned to a flexible server.
+// Name by which is known a given compute size assigned to a server.
 func (o SkuOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v Sku) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Tier of the compute assigned to a flexible server.
+// Tier of the compute assigned to a server.
 func (o SkuOutput) Tier() pulumi.StringOutput {
 	return o.ApplyT(func(v Sku) string { return v.Tier }).(pulumi.StringOutput)
 }
@@ -5993,7 +6266,7 @@ func (o SkuPtrOutput) Elem() SkuOutput {
 	}).(SkuOutput)
 }
 
-// Name by which is known a given compute size assigned to a flexible server.
+// Name by which is known a given compute size assigned to a server.
 func (o SkuPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Sku) *string {
 		if v == nil {
@@ -6003,7 +6276,7 @@ func (o SkuPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Tier of the compute assigned to a flexible server.
+// Tier of the compute assigned to a server.
 func (o SkuPtrOutput) Tier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Sku) *string {
 		if v == nil {
@@ -6013,15 +6286,15 @@ func (o SkuPtrOutput) Tier() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Compute information of a flexible server.
+// Compute information of a server.
 type SkuResponse struct {
-	// Name by which is known a given compute size assigned to a flexible server.
+	// Name by which is known a given compute size assigned to a server.
 	Name string `pulumi:"name"`
-	// Tier of the compute assigned to a flexible server.
+	// Tier of the compute assigned to a server.
 	Tier string `pulumi:"tier"`
 }
 
-// Compute information of a flexible server.
+// Compute information of a server.
 type SkuResponseOutput struct{ *pulumi.OutputState }
 
 func (SkuResponseOutput) ElementType() reflect.Type {
@@ -6036,12 +6309,12 @@ func (o SkuResponseOutput) ToSkuResponseOutputWithContext(ctx context.Context) S
 	return o
 }
 
-// Name by which is known a given compute size assigned to a flexible server.
+// Name by which is known a given compute size assigned to a server.
 func (o SkuResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v SkuResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Tier of the compute assigned to a flexible server.
+// Tier of the compute assigned to a server.
 func (o SkuResponseOutput) Tier() pulumi.StringOutput {
 	return o.ApplyT(func(v SkuResponse) string { return v.Tier }).(pulumi.StringOutput)
 }
@@ -6070,7 +6343,7 @@ func (o SkuResponsePtrOutput) Elem() SkuResponseOutput {
 	}).(SkuResponseOutput)
 }
 
-// Name by which is known a given compute size assigned to a flexible server.
+// Name by which is known a given compute size assigned to a server.
 func (o SkuResponsePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SkuResponse) *string {
 		if v == nil {
@@ -6080,7 +6353,7 @@ func (o SkuResponsePtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Tier of the compute assigned to a flexible server.
+// Tier of the compute assigned to a server.
 func (o SkuResponsePtrOutput) Tier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SkuResponse) *string {
 		if v == nil {
@@ -6090,19 +6363,19 @@ func (o SkuResponsePtrOutput) Tier() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Storage properties of a flexible server.
+// Storage properties of a server.
 type Storage struct {
-	// Flag to enable or disable the automatic growth of storage size of a flexible server when available space is nearing zero and conditions allow for automatically growing storage size.
+	// Flag to enable or disable the automatic growth of storage size of a server when available space is nearing zero and conditions allow for automatically growing storage size.
 	AutoGrow *string `pulumi:"autoGrow"`
-	// Maximum IOPS supported for storage. Required when type of storage is PremiumV2_LRS.
+	// Maximum IOPS supported for storage. Required when type of storage is PremiumV2_LRS or UltraSSD_LRS.
 	Iops *int `pulumi:"iops"`
-	// Size of storage assigned to a flexible server.
+	// Size of storage assigned to a server.
 	StorageSizeGB *int `pulumi:"storageSizeGB"`
-	// Maximum throughput supported for storage. Required when type of storage is PremiumV2_LRS.
+	// Maximum throughput supported for storage. Required when type of storage is PremiumV2_LRS or UltraSSD_LRS.
 	Throughput *int `pulumi:"throughput"`
-	// Storage tier of a flexible server.
+	// Storage tier of a server.
 	Tier *string `pulumi:"tier"`
-	// Type of storage assigned to a flexible server. Allowed values are Premium_LRS or PremiumV2_LRS. If not specified, it defaults to Premium_LRS.
+	// Type of storage assigned to a server. Allowed values are Premium_LRS, PremiumV2_LRS, or UltraSSD_LRS. If not specified, it defaults to Premium_LRS.
 	Type *string `pulumi:"type"`
 }
 
@@ -6117,19 +6390,19 @@ type StorageInput interface {
 	ToStorageOutputWithContext(context.Context) StorageOutput
 }
 
-// Storage properties of a flexible server.
+// Storage properties of a server.
 type StorageArgs struct {
-	// Flag to enable or disable the automatic growth of storage size of a flexible server when available space is nearing zero and conditions allow for automatically growing storage size.
+	// Flag to enable or disable the automatic growth of storage size of a server when available space is nearing zero and conditions allow for automatically growing storage size.
 	AutoGrow pulumi.StringPtrInput `pulumi:"autoGrow"`
-	// Maximum IOPS supported for storage. Required when type of storage is PremiumV2_LRS.
+	// Maximum IOPS supported for storage. Required when type of storage is PremiumV2_LRS or UltraSSD_LRS.
 	Iops pulumi.IntPtrInput `pulumi:"iops"`
-	// Size of storage assigned to a flexible server.
+	// Size of storage assigned to a server.
 	StorageSizeGB pulumi.IntPtrInput `pulumi:"storageSizeGB"`
-	// Maximum throughput supported for storage. Required when type of storage is PremiumV2_LRS.
+	// Maximum throughput supported for storage. Required when type of storage is PremiumV2_LRS or UltraSSD_LRS.
 	Throughput pulumi.IntPtrInput `pulumi:"throughput"`
-	// Storage tier of a flexible server.
+	// Storage tier of a server.
 	Tier pulumi.StringPtrInput `pulumi:"tier"`
-	// Type of storage assigned to a flexible server. Allowed values are Premium_LRS or PremiumV2_LRS. If not specified, it defaults to Premium_LRS.
+	// Type of storage assigned to a server. Allowed values are Premium_LRS, PremiumV2_LRS, or UltraSSD_LRS. If not specified, it defaults to Premium_LRS.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -6186,7 +6459,7 @@ func (i *storagePtrType) ToStoragePtrOutputWithContext(ctx context.Context) Stor
 	return pulumi.ToOutputWithContext(ctx, i).(StoragePtrOutput)
 }
 
-// Storage properties of a flexible server.
+// Storage properties of a server.
 type StorageOutput struct{ *pulumi.OutputState }
 
 func (StorageOutput) ElementType() reflect.Type {
@@ -6211,32 +6484,32 @@ func (o StorageOutput) ToStoragePtrOutputWithContext(ctx context.Context) Storag
 	}).(StoragePtrOutput)
 }
 
-// Flag to enable or disable the automatic growth of storage size of a flexible server when available space is nearing zero and conditions allow for automatically growing storage size.
+// Flag to enable or disable the automatic growth of storage size of a server when available space is nearing zero and conditions allow for automatically growing storage size.
 func (o StorageOutput) AutoGrow() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Storage) *string { return v.AutoGrow }).(pulumi.StringPtrOutput)
 }
 
-// Maximum IOPS supported for storage. Required when type of storage is PremiumV2_LRS.
+// Maximum IOPS supported for storage. Required when type of storage is PremiumV2_LRS or UltraSSD_LRS.
 func (o StorageOutput) Iops() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Storage) *int { return v.Iops }).(pulumi.IntPtrOutput)
 }
 
-// Size of storage assigned to a flexible server.
+// Size of storage assigned to a server.
 func (o StorageOutput) StorageSizeGB() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Storage) *int { return v.StorageSizeGB }).(pulumi.IntPtrOutput)
 }
 
-// Maximum throughput supported for storage. Required when type of storage is PremiumV2_LRS.
+// Maximum throughput supported for storage. Required when type of storage is PremiumV2_LRS or UltraSSD_LRS.
 func (o StorageOutput) Throughput() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Storage) *int { return v.Throughput }).(pulumi.IntPtrOutput)
 }
 
-// Storage tier of a flexible server.
+// Storage tier of a server.
 func (o StorageOutput) Tier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Storage) *string { return v.Tier }).(pulumi.StringPtrOutput)
 }
 
-// Type of storage assigned to a flexible server. Allowed values are Premium_LRS or PremiumV2_LRS. If not specified, it defaults to Premium_LRS.
+// Type of storage assigned to a server. Allowed values are Premium_LRS, PremiumV2_LRS, or UltraSSD_LRS. If not specified, it defaults to Premium_LRS.
 func (o StorageOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Storage) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -6265,7 +6538,7 @@ func (o StoragePtrOutput) Elem() StorageOutput {
 	}).(StorageOutput)
 }
 
-// Flag to enable or disable the automatic growth of storage size of a flexible server when available space is nearing zero and conditions allow for automatically growing storage size.
+// Flag to enable or disable the automatic growth of storage size of a server when available space is nearing zero and conditions allow for automatically growing storage size.
 func (o StoragePtrOutput) AutoGrow() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Storage) *string {
 		if v == nil {
@@ -6275,7 +6548,7 @@ func (o StoragePtrOutput) AutoGrow() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Maximum IOPS supported for storage. Required when type of storage is PremiumV2_LRS.
+// Maximum IOPS supported for storage. Required when type of storage is PremiumV2_LRS or UltraSSD_LRS.
 func (o StoragePtrOutput) Iops() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Storage) *int {
 		if v == nil {
@@ -6285,7 +6558,7 @@ func (o StoragePtrOutput) Iops() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Size of storage assigned to a flexible server.
+// Size of storage assigned to a server.
 func (o StoragePtrOutput) StorageSizeGB() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Storage) *int {
 		if v == nil {
@@ -6295,7 +6568,7 @@ func (o StoragePtrOutput) StorageSizeGB() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Maximum throughput supported for storage. Required when type of storage is PremiumV2_LRS.
+// Maximum throughput supported for storage. Required when type of storage is PremiumV2_LRS or UltraSSD_LRS.
 func (o StoragePtrOutput) Throughput() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Storage) *int {
 		if v == nil {
@@ -6305,7 +6578,7 @@ func (o StoragePtrOutput) Throughput() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Storage tier of a flexible server.
+// Storage tier of a server.
 func (o StoragePtrOutput) Tier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Storage) *string {
 		if v == nil {
@@ -6315,7 +6588,7 @@ func (o StoragePtrOutput) Tier() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Type of storage assigned to a flexible server. Allowed values are Premium_LRS or PremiumV2_LRS. If not specified, it defaults to Premium_LRS.
+// Type of storage assigned to a server. Allowed values are Premium_LRS, PremiumV2_LRS, or UltraSSD_LRS. If not specified, it defaults to Premium_LRS.
 func (o StoragePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Storage) *string {
 		if v == nil {
@@ -6633,23 +6906,23 @@ func (o StorageProfileResponsePtrOutput) StorageMB() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Storage properties of a flexible server.
+// Storage properties of a server.
 type StorageResponse struct {
-	// Flag to enable or disable the automatic growth of storage size of a flexible server when available space is nearing zero and conditions allow for automatically growing storage size.
+	// Flag to enable or disable the automatic growth of storage size of a server when available space is nearing zero and conditions allow for automatically growing storage size.
 	AutoGrow *string `pulumi:"autoGrow"`
-	// Maximum IOPS supported for storage. Required when type of storage is PremiumV2_LRS.
+	// Maximum IOPS supported for storage. Required when type of storage is PremiumV2_LRS or UltraSSD_LRS.
 	Iops *int `pulumi:"iops"`
-	// Size of storage assigned to a flexible server.
+	// Size of storage assigned to a server.
 	StorageSizeGB *int `pulumi:"storageSizeGB"`
-	// Maximum throughput supported for storage. Required when type of storage is PremiumV2_LRS.
+	// Maximum throughput supported for storage. Required when type of storage is PremiumV2_LRS or UltraSSD_LRS.
 	Throughput *int `pulumi:"throughput"`
-	// Storage tier of a flexible server.
+	// Storage tier of a server.
 	Tier *string `pulumi:"tier"`
-	// Type of storage assigned to a flexible server. Allowed values are Premium_LRS or PremiumV2_LRS. If not specified, it defaults to Premium_LRS.
+	// Type of storage assigned to a server. Allowed values are Premium_LRS, PremiumV2_LRS, or UltraSSD_LRS. If not specified, it defaults to Premium_LRS.
 	Type *string `pulumi:"type"`
 }
 
-// Storage properties of a flexible server.
+// Storage properties of a server.
 type StorageResponseOutput struct{ *pulumi.OutputState }
 
 func (StorageResponseOutput) ElementType() reflect.Type {
@@ -6664,32 +6937,32 @@ func (o StorageResponseOutput) ToStorageResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-// Flag to enable or disable the automatic growth of storage size of a flexible server when available space is nearing zero and conditions allow for automatically growing storage size.
+// Flag to enable or disable the automatic growth of storage size of a server when available space is nearing zero and conditions allow for automatically growing storage size.
 func (o StorageResponseOutput) AutoGrow() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StorageResponse) *string { return v.AutoGrow }).(pulumi.StringPtrOutput)
 }
 
-// Maximum IOPS supported for storage. Required when type of storage is PremiumV2_LRS.
+// Maximum IOPS supported for storage. Required when type of storage is PremiumV2_LRS or UltraSSD_LRS.
 func (o StorageResponseOutput) Iops() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StorageResponse) *int { return v.Iops }).(pulumi.IntPtrOutput)
 }
 
-// Size of storage assigned to a flexible server.
+// Size of storage assigned to a server.
 func (o StorageResponseOutput) StorageSizeGB() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StorageResponse) *int { return v.StorageSizeGB }).(pulumi.IntPtrOutput)
 }
 
-// Maximum throughput supported for storage. Required when type of storage is PremiumV2_LRS.
+// Maximum throughput supported for storage. Required when type of storage is PremiumV2_LRS or UltraSSD_LRS.
 func (o StorageResponseOutput) Throughput() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StorageResponse) *int { return v.Throughput }).(pulumi.IntPtrOutput)
 }
 
-// Storage tier of a flexible server.
+// Storage tier of a server.
 func (o StorageResponseOutput) Tier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StorageResponse) *string { return v.Tier }).(pulumi.StringPtrOutput)
 }
 
-// Type of storage assigned to a flexible server. Allowed values are Premium_LRS or PremiumV2_LRS. If not specified, it defaults to Premium_LRS.
+// Type of storage assigned to a server. Allowed values are Premium_LRS, PremiumV2_LRS, or UltraSSD_LRS. If not specified, it defaults to Premium_LRS.
 func (o StorageResponseOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StorageResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -6718,7 +6991,7 @@ func (o StorageResponsePtrOutput) Elem() StorageResponseOutput {
 	}).(StorageResponseOutput)
 }
 
-// Flag to enable or disable the automatic growth of storage size of a flexible server when available space is nearing zero and conditions allow for automatically growing storage size.
+// Flag to enable or disable the automatic growth of storage size of a server when available space is nearing zero and conditions allow for automatically growing storage size.
 func (o StorageResponsePtrOutput) AutoGrow() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StorageResponse) *string {
 		if v == nil {
@@ -6728,7 +7001,7 @@ func (o StorageResponsePtrOutput) AutoGrow() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Maximum IOPS supported for storage. Required when type of storage is PremiumV2_LRS.
+// Maximum IOPS supported for storage. Required when type of storage is PremiumV2_LRS or UltraSSD_LRS.
 func (o StorageResponsePtrOutput) Iops() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *StorageResponse) *int {
 		if v == nil {
@@ -6738,7 +7011,7 @@ func (o StorageResponsePtrOutput) Iops() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Size of storage assigned to a flexible server.
+// Size of storage assigned to a server.
 func (o StorageResponsePtrOutput) StorageSizeGB() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *StorageResponse) *int {
 		if v == nil {
@@ -6748,7 +7021,7 @@ func (o StorageResponsePtrOutput) StorageSizeGB() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Maximum throughput supported for storage. Required when type of storage is PremiumV2_LRS.
+// Maximum throughput supported for storage. Required when type of storage is PremiumV2_LRS or UltraSSD_LRS.
 func (o StorageResponsePtrOutput) Throughput() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *StorageResponse) *int {
 		if v == nil {
@@ -6758,7 +7031,7 @@ func (o StorageResponsePtrOutput) Throughput() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Storage tier of a flexible server.
+// Storage tier of a server.
 func (o StorageResponsePtrOutput) Tier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StorageResponse) *string {
 		if v == nil {
@@ -6768,7 +7041,7 @@ func (o StorageResponsePtrOutput) Tier() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Type of storage assigned to a flexible server. Allowed values are Premium_LRS or PremiumV2_LRS. If not specified, it defaults to Premium_LRS.
+// Type of storage assigned to a server. Allowed values are Premium_LRS, PremiumV2_LRS, or UltraSSD_LRS. If not specified, it defaults to Premium_LRS.
 func (o StorageResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StorageResponse) *string {
 		if v == nil {
@@ -6839,11 +7112,11 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
 
-// Identities associated with a flexible server.
+// Identities associated with a server.
 type UserAssignedIdentity struct {
 	// Identifier of the object of the service principal associated to the user assigned managed identity.
 	PrincipalId *string `pulumi:"principalId"`
-	// Types of identities associated with a flexible server.
+	// Types of identities associated with a server.
 	Type string `pulumi:"type"`
 	// Map of user assigned managed identities.
 	UserAssignedIdentities map[string]UserIdentity `pulumi:"userAssignedIdentities"`
@@ -6860,11 +7133,11 @@ type UserAssignedIdentityInput interface {
 	ToUserAssignedIdentityOutputWithContext(context.Context) UserAssignedIdentityOutput
 }
 
-// Identities associated with a flexible server.
+// Identities associated with a server.
 type UserAssignedIdentityArgs struct {
 	// Identifier of the object of the service principal associated to the user assigned managed identity.
 	PrincipalId pulumi.StringPtrInput `pulumi:"principalId"`
-	// Types of identities associated with a flexible server.
+	// Types of identities associated with a server.
 	Type pulumi.StringInput `pulumi:"type"`
 	// Map of user assigned managed identities.
 	UserAssignedIdentities UserIdentityMapInput `pulumi:"userAssignedIdentities"`
@@ -6923,7 +7196,7 @@ func (i *userAssignedIdentityPtrType) ToUserAssignedIdentityPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(UserAssignedIdentityPtrOutput)
 }
 
-// Identities associated with a flexible server.
+// Identities associated with a server.
 type UserAssignedIdentityOutput struct{ *pulumi.OutputState }
 
 func (UserAssignedIdentityOutput) ElementType() reflect.Type {
@@ -6953,7 +7226,7 @@ func (o UserAssignedIdentityOutput) PrincipalId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserAssignedIdentity) *string { return v.PrincipalId }).(pulumi.StringPtrOutput)
 }
 
-// Types of identities associated with a flexible server.
+// Types of identities associated with a server.
 func (o UserAssignedIdentityOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v UserAssignedIdentity) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -6997,7 +7270,7 @@ func (o UserAssignedIdentityPtrOutput) PrincipalId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Types of identities associated with a flexible server.
+// Types of identities associated with a server.
 func (o UserAssignedIdentityPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UserAssignedIdentity) *string {
 		if v == nil {
@@ -7023,9 +7296,9 @@ type UserAssignedIdentityResponse struct {
 	ClientId string `pulumi:"clientId"`
 	// The principal ID of the assigned identity.
 	PrincipalId string `pulumi:"principalId"`
-	// Identifier of the tenant of a flexible server.
+	// Identifier of the tenant of a server.
 	TenantId *string `pulumi:"tenantId"`
-	// Types of identities associated with a flexible server.
+	// Types of identities associated with a server.
 	Type *string `pulumi:"type"`
 	// Map of user assigned managed identities.
 	UserAssignedIdentities map[string]UserIdentityResponse `pulumi:"userAssignedIdentities"`
@@ -7056,12 +7329,12 @@ func (o UserAssignedIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
 }
 
-// Identifier of the tenant of a flexible server.
+// Identifier of the tenant of a server.
 func (o UserAssignedIdentityResponseOutput) TenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserAssignedIdentityResponse) *string { return v.TenantId }).(pulumi.StringPtrOutput)
 }
 
-// Types of identities associated with a flexible server.
+// Types of identities associated with a server.
 func (o UserAssignedIdentityResponseOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserAssignedIdentityResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -7115,7 +7388,7 @@ func (o UserAssignedIdentityResponsePtrOutput) PrincipalId() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Identifier of the tenant of a flexible server.
+// Identifier of the tenant of a server.
 func (o UserAssignedIdentityResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UserAssignedIdentityResponse) *string {
 		if v == nil {
@@ -7125,7 +7398,7 @@ func (o UserAssignedIdentityResponsePtrOutput) TenantId() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// Types of identities associated with a flexible server.
+// Types of identities associated with a server.
 func (o UserAssignedIdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UserAssignedIdentityResponse) *string {
 		if v == nil {
@@ -7165,7 +7438,7 @@ func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) Us
 	}).(UserAssignedIdentityResponseOutput)
 }
 
-// User assigned managed identity associated with a flexible server.
+// User assigned managed identity associated with a server.
 type UserIdentity struct {
 	// Identifier of the client of the service principal associated to the user assigned managed identity.
 	ClientId *string `pulumi:"clientId"`
@@ -7184,7 +7457,7 @@ type UserIdentityInput interface {
 	ToUserIdentityOutputWithContext(context.Context) UserIdentityOutput
 }
 
-// User assigned managed identity associated with a flexible server.
+// User assigned managed identity associated with a server.
 type UserIdentityArgs struct {
 	// Identifier of the client of the service principal associated to the user assigned managed identity.
 	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
@@ -7229,7 +7502,7 @@ func (i UserIdentityMap) ToUserIdentityMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(UserIdentityMapOutput)
 }
 
-// User assigned managed identity associated with a flexible server.
+// User assigned managed identity associated with a server.
 type UserIdentityOutput struct{ *pulumi.OutputState }
 
 func (UserIdentityOutput) ElementType() reflect.Type {
@@ -7274,7 +7547,7 @@ func (o UserIdentityMapOutput) MapIndex(k pulumi.StringInput) UserIdentityOutput
 	}).(UserIdentityOutput)
 }
 
-// User assigned managed identity associated with a flexible server.
+// User assigned managed identity associated with a server.
 type UserIdentityResponse struct {
 	// Identifier of the client of the service principal associated to the user assigned managed identity.
 	ClientId *string `pulumi:"clientId"`
@@ -7282,7 +7555,7 @@ type UserIdentityResponse struct {
 	PrincipalId *string `pulumi:"principalId"`
 }
 
-// User assigned managed identity associated with a flexible server.
+// User assigned managed identity associated with a server.
 type UserIdentityResponseOutput struct{ *pulumi.OutputState }
 
 func (UserIdentityResponseOutput) ElementType() reflect.Type {
@@ -7581,14 +7854,18 @@ func init() {
 	pulumi.RegisterOutputType(BackupTypePtrOutput{})
 	pulumi.RegisterOutputType(BackupResponseOutput{})
 	pulumi.RegisterOutputType(BackupResponsePtrOutput{})
+	pulumi.RegisterOutputType(ClusterOutput{})
+	pulumi.RegisterOutputType(ClusterPtrOutput{})
+	pulumi.RegisterOutputType(ClusterResponseOutput{})
+	pulumi.RegisterOutputType(ClusterResponsePtrOutput{})
 	pulumi.RegisterOutputType(DataEncryptionOutput{})
 	pulumi.RegisterOutputType(DataEncryptionPtrOutput{})
 	pulumi.RegisterOutputType(DataEncryptionResponseOutput{})
 	pulumi.RegisterOutputType(DataEncryptionResponsePtrOutput{})
+	pulumi.RegisterOutputType(DatabaseMigrationStateResponseOutput{})
+	pulumi.RegisterOutputType(DatabaseMigrationStateResponseMapOutput{})
 	pulumi.RegisterOutputType(DbLevelValidationStatusResponseOutput{})
 	pulumi.RegisterOutputType(DbLevelValidationStatusResponseArrayOutput{})
-	pulumi.RegisterOutputType(DbMigrationStatusResponseOutput{})
-	pulumi.RegisterOutputType(DbMigrationStatusResponseMapOutput{})
 	pulumi.RegisterOutputType(DbServerMetadataResponseOutput{})
 	pulumi.RegisterOutputType(HighAvailabilityOutput{})
 	pulumi.RegisterOutputType(HighAvailabilityPtrOutput{})
@@ -7605,7 +7882,7 @@ func init() {
 	pulumi.RegisterOutputType(MigrationSecretParametersOutput{})
 	pulumi.RegisterOutputType(MigrationSecretParametersPtrOutput{})
 	pulumi.RegisterOutputType(MigrationStatusResponseOutput{})
-	pulumi.RegisterOutputType(MigrationSubStateDetailsResponseOutput{})
+	pulumi.RegisterOutputType(MigrationSubstateDetailsResponseOutput{})
 	pulumi.RegisterOutputType(NetworkOutput{})
 	pulumi.RegisterOutputType(NetworkPtrOutput{})
 	pulumi.RegisterOutputType(NetworkResponseOutput{})
