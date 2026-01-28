@@ -1494,6 +1494,87 @@ func (o DataSizeRulesetResponsePtrOutput) Minimum() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
+// The FlowProfile Metadata used to concisely provide all publicly viewable information.
+type FlowProfileMetadataResponse struct {
+	// A description of the FlowProfile and its rulesets. The description should describe the flowprofile's purpose and rulesets applied.
+	Description string `pulumi:"description"`
+	// A guid represented as a string for the FlowProfile resource, assigned by the system.
+	FlowProfileId string `pulumi:"flowProfileId"`
+	// The name of the FlowProfile.
+	Name string `pulumi:"name"`
+	// The name of the parent Pipeline Azure resource associated with this FlowProfile.
+	Pipeline string `pulumi:"pipeline"`
+	// The data replication scenario handled by this FlowProfile. Please note, that this value cannot be updated after creation. See the FlowProfilePatchProperties to see updateable properties.
+	ReplicationScenario string `pulumi:"replicationScenario"`
+	// The operational status of the FlowProfile.
+	Status string `pulumi:"status"`
+}
+
+// The FlowProfile Metadata used to concisely provide all publicly viewable information.
+type FlowProfileMetadataResponseOutput struct{ *pulumi.OutputState }
+
+func (FlowProfileMetadataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlowProfileMetadataResponse)(nil)).Elem()
+}
+
+func (o FlowProfileMetadataResponseOutput) ToFlowProfileMetadataResponseOutput() FlowProfileMetadataResponseOutput {
+	return o
+}
+
+func (o FlowProfileMetadataResponseOutput) ToFlowProfileMetadataResponseOutputWithContext(ctx context.Context) FlowProfileMetadataResponseOutput {
+	return o
+}
+
+// A description of the FlowProfile and its rulesets. The description should describe the flowprofile's purpose and rulesets applied.
+func (o FlowProfileMetadataResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v FlowProfileMetadataResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// A guid represented as a string for the FlowProfile resource, assigned by the system.
+func (o FlowProfileMetadataResponseOutput) FlowProfileId() pulumi.StringOutput {
+	return o.ApplyT(func(v FlowProfileMetadataResponse) string { return v.FlowProfileId }).(pulumi.StringOutput)
+}
+
+// The name of the FlowProfile.
+func (o FlowProfileMetadataResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v FlowProfileMetadataResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the parent Pipeline Azure resource associated with this FlowProfile.
+func (o FlowProfileMetadataResponseOutput) Pipeline() pulumi.StringOutput {
+	return o.ApplyT(func(v FlowProfileMetadataResponse) string { return v.Pipeline }).(pulumi.StringOutput)
+}
+
+// The data replication scenario handled by this FlowProfile. Please note, that this value cannot be updated after creation. See the FlowProfilePatchProperties to see updateable properties.
+func (o FlowProfileMetadataResponseOutput) ReplicationScenario() pulumi.StringOutput {
+	return o.ApplyT(func(v FlowProfileMetadataResponse) string { return v.ReplicationScenario }).(pulumi.StringOutput)
+}
+
+// The operational status of the FlowProfile.
+func (o FlowProfileMetadataResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v FlowProfileMetadataResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type FlowProfileMetadataResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (FlowProfileMetadataResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FlowProfileMetadataResponse)(nil)).Elem()
+}
+
+func (o FlowProfileMetadataResponseArrayOutput) ToFlowProfileMetadataResponseArrayOutput() FlowProfileMetadataResponseArrayOutput {
+	return o
+}
+
+func (o FlowProfileMetadataResponseArrayOutput) ToFlowProfileMetadataResponseArrayOutputWithContext(ctx context.Context) FlowProfileMetadataResponseArrayOutput {
+	return o
+}
+
+func (o FlowProfileMetadataResponseArrayOutput) Index(i pulumi.IntInput) FlowProfileMetadataResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FlowProfileMetadataResponse {
+		return vs[0].([]FlowProfileMetadataResponse)[vs[1].(int)]
+	}).(FlowProfileMetadataResponseOutput)
+}
+
 // Defines the full set of properties for a FlowProfile resource.
 type FlowProfileProperties struct {
 	// A user-defined description of the FlowProfile.
@@ -7703,6 +7784,8 @@ func init() {
 	pulumi.RegisterOutputType(DataSizeRulesetPtrOutput{})
 	pulumi.RegisterOutputType(DataSizeRulesetResponseOutput{})
 	pulumi.RegisterOutputType(DataSizeRulesetResponsePtrOutput{})
+	pulumi.RegisterOutputType(FlowProfileMetadataResponseOutput{})
+	pulumi.RegisterOutputType(FlowProfileMetadataResponseArrayOutput{})
 	pulumi.RegisterOutputType(FlowProfilePropertiesOutput{})
 	pulumi.RegisterOutputType(FlowProfilePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(FlowProfilePropertiesResponseOutput{})

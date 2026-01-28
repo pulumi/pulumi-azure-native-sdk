@@ -44,7 +44,7 @@ type LookupEndpointResult struct {
 	// The Azure API version of the resource.
 	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// List of custom headers.
-	CustomHeaders []EndpointPropertiesResponseCustomHeaders `pulumi:"customHeaders"`
+	CustomHeaders []EndpointPropertiesCustomHeadersItemResponse `pulumi:"customHeaders"`
 	// Specifies the location of the external or nested endpoints when using the 'Performance' traffic routing method.
 	EndpointLocation *string `pulumi:"endpointLocation"`
 	// The monitoring status of the endpoint.
@@ -66,7 +66,7 @@ type LookupEndpointResult struct {
 	// The priority of this endpoint when using the 'Priority' traffic routing method. Possible values are from 1 to 1000, lower values represent higher priority. This is an optional parameter.  If specified, it must be specified on all endpoints, and no two endpoints can share the same priority value.
 	Priority *float64 `pulumi:"priority"`
 	// The list of subnets, IP addresses, and/or address ranges mapped to this endpoint when using the 'Subnet' traffic routing method. An empty list will match all ranges not covered by other endpoints.
-	Subnets []EndpointPropertiesResponseSubnets `pulumi:"subnets"`
+	Subnets []EndpointPropertiesSubnetsItemResponse `pulumi:"subnets"`
 	// The fully-qualified DNS name or IP address of the endpoint. Traffic Manager returns this value in DNS responses to direct traffic to this endpoint.
 	Target *string `pulumi:"target"`
 	// The Azure Resource URI of the of the endpoint. Not applicable to endpoints of type 'ExternalEndpoints'.
@@ -127,8 +127,8 @@ func (o LookupEndpointResultOutput) AzureApiVersion() pulumi.StringOutput {
 }
 
 // List of custom headers.
-func (o LookupEndpointResultOutput) CustomHeaders() EndpointPropertiesResponseCustomHeadersArrayOutput {
-	return o.ApplyT(func(v LookupEndpointResult) []EndpointPropertiesResponseCustomHeaders { return v.CustomHeaders }).(EndpointPropertiesResponseCustomHeadersArrayOutput)
+func (o LookupEndpointResultOutput) CustomHeaders() EndpointPropertiesCustomHeadersItemResponseArrayOutput {
+	return o.ApplyT(func(v LookupEndpointResult) []EndpointPropertiesCustomHeadersItemResponse { return v.CustomHeaders }).(EndpointPropertiesCustomHeadersItemResponseArrayOutput)
 }
 
 // Specifies the location of the external or nested endpoints when using the 'Performance' traffic routing method.
@@ -182,8 +182,8 @@ func (o LookupEndpointResultOutput) Priority() pulumi.Float64PtrOutput {
 }
 
 // The list of subnets, IP addresses, and/or address ranges mapped to this endpoint when using the 'Subnet' traffic routing method. An empty list will match all ranges not covered by other endpoints.
-func (o LookupEndpointResultOutput) Subnets() EndpointPropertiesResponseSubnetsArrayOutput {
-	return o.ApplyT(func(v LookupEndpointResult) []EndpointPropertiesResponseSubnets { return v.Subnets }).(EndpointPropertiesResponseSubnetsArrayOutput)
+func (o LookupEndpointResultOutput) Subnets() EndpointPropertiesSubnetsItemResponseArrayOutput {
+	return o.ApplyT(func(v LookupEndpointResult) []EndpointPropertiesSubnetsItemResponse { return v.Subnets }).(EndpointPropertiesSubnetsItemResponseArrayOutput)
 }
 
 // The fully-qualified DNS name or IP address of the endpoint. Traffic Manager returns this value in DNS responses to direct traffic to this endpoint.

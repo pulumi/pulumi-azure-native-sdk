@@ -51,7 +51,7 @@ type LookupMDATPDataConnectorResult struct {
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The tenant id to connect to, and get the data from.
-	TenantId *string `pulumi:"tenantId"`
+	TenantId string `pulumi:"tenantId"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -130,8 +130,8 @@ func (o LookupMDATPDataConnectorResultOutput) SystemData() SystemDataResponseOut
 }
 
 // The tenant id to connect to, and get the data from.
-func (o LookupMDATPDataConnectorResultOutput) TenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupMDATPDataConnectorResult) *string { return v.TenantId }).(pulumi.StringPtrOutput)
+func (o LookupMDATPDataConnectorResultOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMDATPDataConnectorResult) string { return v.TenantId }).(pulumi.StringOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

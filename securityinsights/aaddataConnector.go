@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents AAD (Azure Active Directory) data connector.
+// Represents Microsoft Entra ID data connector.
 //
 // Uses Azure REST API version 2024-09-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
 type AADDataConnector struct {
@@ -32,7 +32,7 @@ type AADDataConnector struct {
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The tenant id to connect to, and get the data from.
-	TenantId pulumi.StringPtrOutput `pulumi:"tenantId"`
+	TenantId pulumi.StringOutput `pulumi:"tenantId"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -49,6 +49,9 @@ func NewAADDataConnector(ctx *pulumi.Context,
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.TenantId == nil {
+		return nil, errors.New("invalid value for required argument 'TenantId'")
 	}
 	if args.WorkspaceName == nil {
 		return nil, errors.New("invalid value for required argument 'WorkspaceName'")
@@ -952,7 +955,7 @@ type aaddataConnectorArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The tenant id to connect to, and get the data from.
-	TenantId *string `pulumi:"tenantId"`
+	TenantId string `pulumi:"tenantId"`
 	// The name of the workspace.
 	WorkspaceName string `pulumi:"workspaceName"`
 }
@@ -969,7 +972,7 @@ type AADDataConnectorArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The tenant id to connect to, and get the data from.
-	TenantId pulumi.StringPtrInput
+	TenantId pulumi.StringInput
 	// The name of the workspace.
 	WorkspaceName pulumi.StringInput
 }
@@ -1043,8 +1046,8 @@ func (o AADDataConnectorOutput) SystemData() SystemDataResponseOutput {
 }
 
 // The tenant id to connect to, and get the data from.
-func (o AADDataConnectorOutput) TenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AADDataConnector) pulumi.StringPtrOutput { return v.TenantId }).(pulumi.StringPtrOutput)
+func (o AADDataConnectorOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AADDataConnector) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

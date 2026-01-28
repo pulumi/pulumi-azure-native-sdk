@@ -1795,9 +1795,42 @@ func (o BackupPolicyResponseOutput) PolicyRules() pulumi.ArrayOutput {
 
 // Schedule for backup
 type BackupSchedule struct {
-	// Repeating time interval which only support the following ISO 8601 format [R/startDateTime/Duration]. Example: R/2007-03-01T13:00:00Z/P1Y2M10DT2H30M
+	// Repeating time interval which supports the ISO 8601 format and unsupported or partially supported formats.
+	//
+	// Supported ISO 8601 Time Formats
+	//
+	// The following time formats were verified to be successfully parsed and supported:
+	// - T14:30:45.123 → Thh:mm:ss.sss (with milliseconds)
+	// - T14:30:45 → Thh:mm:ss (standard time format)
+	// - T14:30 → Thh:mm (hour and minute only)
+	//
+	// All of the above may include time zone indicators like 'Z', '+05:30', '-08:00'.
+	//
+	// Examples of supported timestamps:
+	// - 2023-10-15T14:30:45Z
+	// - 2023-10-15T14:30:45.123+05:30
+	// - 2023-10-15T14:30Z
+	//
+	// Unsupported or partially supported formats:
+	// - T143045.123 or T143045 (no colons)
+	// - T14.500 (decimal hours)
+	// - T14 (hour only)
+	// - T14:30.500 (minute fractions)
+	// - T24:00:00 (invalid)
+	// - T23:59:60 (leap second)
 	RepeatingTimeIntervals []string `pulumi:"repeatingTimeIntervals"`
-	// Time zone for a schedule. Example: Pacific Standard Time
+	// Time Zone for a schedule.
+	//
+	// Supported timezone indicators include:
+	// - 'Z' for UTC
+	// - '+00:00'
+	// - '+05:30'
+	// - '-08:00'
+	//
+	// Examples:
+	// - 2023-10-15T14:30:45Z
+	// - 2023-10-15T14:30:45.123+05:30
+	// - 2023-10-15T14:30-08:00
 	TimeZone *string `pulumi:"timeZone"`
 }
 
@@ -1814,9 +1847,42 @@ type BackupScheduleInput interface {
 
 // Schedule for backup
 type BackupScheduleArgs struct {
-	// Repeating time interval which only support the following ISO 8601 format [R/startDateTime/Duration]. Example: R/2007-03-01T13:00:00Z/P1Y2M10DT2H30M
+	// Repeating time interval which supports the ISO 8601 format and unsupported or partially supported formats.
+	//
+	// Supported ISO 8601 Time Formats
+	//
+	// The following time formats were verified to be successfully parsed and supported:
+	// - T14:30:45.123 → Thh:mm:ss.sss (with milliseconds)
+	// - T14:30:45 → Thh:mm:ss (standard time format)
+	// - T14:30 → Thh:mm (hour and minute only)
+	//
+	// All of the above may include time zone indicators like 'Z', '+05:30', '-08:00'.
+	//
+	// Examples of supported timestamps:
+	// - 2023-10-15T14:30:45Z
+	// - 2023-10-15T14:30:45.123+05:30
+	// - 2023-10-15T14:30Z
+	//
+	// Unsupported or partially supported formats:
+	// - T143045.123 or T143045 (no colons)
+	// - T14.500 (decimal hours)
+	// - T14 (hour only)
+	// - T14:30.500 (minute fractions)
+	// - T24:00:00 (invalid)
+	// - T23:59:60 (leap second)
 	RepeatingTimeIntervals pulumi.StringArrayInput `pulumi:"repeatingTimeIntervals"`
-	// Time zone for a schedule. Example: Pacific Standard Time
+	// Time Zone for a schedule.
+	//
+	// Supported timezone indicators include:
+	// - 'Z' for UTC
+	// - '+00:00'
+	// - '+05:30'
+	// - '-08:00'
+	//
+	// Examples:
+	// - 2023-10-15T14:30:45Z
+	// - 2023-10-15T14:30:45.123+05:30
+	// - 2023-10-15T14:30-08:00
 	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
 }
 
@@ -1847,21 +1913,87 @@ func (o BackupScheduleOutput) ToBackupScheduleOutputWithContext(ctx context.Cont
 	return o
 }
 
-// Repeating time interval which only support the following ISO 8601 format [R/startDateTime/Duration]. Example: R/2007-03-01T13:00:00Z/P1Y2M10DT2H30M
+// Repeating time interval which supports the ISO 8601 format and unsupported or partially supported formats.
+//
+// # Supported ISO 8601 Time Formats
+//
+// The following time formats were verified to be successfully parsed and supported:
+// - T14:30:45.123 → Thh:mm:ss.sss (with milliseconds)
+// - T14:30:45 → Thh:mm:ss (standard time format)
+// - T14:30 → Thh:mm (hour and minute only)
+//
+// All of the above may include time zone indicators like 'Z', '+05:30', '-08:00'.
+//
+// Examples of supported timestamps:
+// - 2023-10-15T14:30:45Z
+// - 2023-10-15T14:30:45.123+05:30
+// - 2023-10-15T14:30Z
+//
+// Unsupported or partially supported formats:
+// - T143045.123 or T143045 (no colons)
+// - T14.500 (decimal hours)
+// - T14 (hour only)
+// - T14:30.500 (minute fractions)
+// - T24:00:00 (invalid)
+// - T23:59:60 (leap second)
 func (o BackupScheduleOutput) RepeatingTimeIntervals() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BackupSchedule) []string { return v.RepeatingTimeIntervals }).(pulumi.StringArrayOutput)
 }
 
-// Time zone for a schedule. Example: Pacific Standard Time
+// Time Zone for a schedule.
+//
+// Supported timezone indicators include:
+// - 'Z' for UTC
+// - '+00:00'
+// - '+05:30'
+// - '-08:00'
+//
+// Examples:
+// - 2023-10-15T14:30:45Z
+// - 2023-10-15T14:30:45.123+05:30
+// - 2023-10-15T14:30-08:00
 func (o BackupScheduleOutput) TimeZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BackupSchedule) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
 }
 
 // Schedule for backup
 type BackupScheduleResponse struct {
-	// Repeating time interval which only support the following ISO 8601 format [R/startDateTime/Duration]. Example: R/2007-03-01T13:00:00Z/P1Y2M10DT2H30M
+	// Repeating time interval which supports the ISO 8601 format and unsupported or partially supported formats.
+	//
+	// Supported ISO 8601 Time Formats
+	//
+	// The following time formats were verified to be successfully parsed and supported:
+	// - T14:30:45.123 → Thh:mm:ss.sss (with milliseconds)
+	// - T14:30:45 → Thh:mm:ss (standard time format)
+	// - T14:30 → Thh:mm (hour and minute only)
+	//
+	// All of the above may include time zone indicators like 'Z', '+05:30', '-08:00'.
+	//
+	// Examples of supported timestamps:
+	// - 2023-10-15T14:30:45Z
+	// - 2023-10-15T14:30:45.123+05:30
+	// - 2023-10-15T14:30Z
+	//
+	// Unsupported or partially supported formats:
+	// - T143045.123 or T143045 (no colons)
+	// - T14.500 (decimal hours)
+	// - T14 (hour only)
+	// - T14:30.500 (minute fractions)
+	// - T24:00:00 (invalid)
+	// - T23:59:60 (leap second)
 	RepeatingTimeIntervals []string `pulumi:"repeatingTimeIntervals"`
-	// Time zone for a schedule. Example: Pacific Standard Time
+	// Time Zone for a schedule.
+	//
+	// Supported timezone indicators include:
+	// - 'Z' for UTC
+	// - '+00:00'
+	// - '+05:30'
+	// - '-08:00'
+	//
+	// Examples:
+	// - 2023-10-15T14:30:45Z
+	// - 2023-10-15T14:30:45.123+05:30
+	// - 2023-10-15T14:30-08:00
 	TimeZone *string `pulumi:"timeZone"`
 }
 
@@ -1880,12 +2012,45 @@ func (o BackupScheduleResponseOutput) ToBackupScheduleResponseOutputWithContext(
 	return o
 }
 
-// Repeating time interval which only support the following ISO 8601 format [R/startDateTime/Duration]. Example: R/2007-03-01T13:00:00Z/P1Y2M10DT2H30M
+// Repeating time interval which supports the ISO 8601 format and unsupported or partially supported formats.
+//
+// # Supported ISO 8601 Time Formats
+//
+// The following time formats were verified to be successfully parsed and supported:
+// - T14:30:45.123 → Thh:mm:ss.sss (with milliseconds)
+// - T14:30:45 → Thh:mm:ss (standard time format)
+// - T14:30 → Thh:mm (hour and minute only)
+//
+// All of the above may include time zone indicators like 'Z', '+05:30', '-08:00'.
+//
+// Examples of supported timestamps:
+// - 2023-10-15T14:30:45Z
+// - 2023-10-15T14:30:45.123+05:30
+// - 2023-10-15T14:30Z
+//
+// Unsupported or partially supported formats:
+// - T143045.123 or T143045 (no colons)
+// - T14.500 (decimal hours)
+// - T14 (hour only)
+// - T14:30.500 (minute fractions)
+// - T24:00:00 (invalid)
+// - T23:59:60 (leap second)
 func (o BackupScheduleResponseOutput) RepeatingTimeIntervals() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BackupScheduleResponse) []string { return v.RepeatingTimeIntervals }).(pulumi.StringArrayOutput)
 }
 
-// Time zone for a schedule. Example: Pacific Standard Time
+// Time Zone for a schedule.
+//
+// Supported timezone indicators include:
+// - 'Z' for UTC
+// - '+00:00'
+// - '+05:30'
+// - '-08:00'
+//
+// Examples:
+// - 2023-10-15T14:30:45Z
+// - 2023-10-15T14:30:45.123+05:30
+// - 2023-10-15T14:30-08:00
 func (o BackupScheduleResponseOutput) TimeZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BackupScheduleResponse) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
 }

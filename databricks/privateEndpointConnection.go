@@ -16,7 +16,7 @@ import (
 //
 // Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
 //
-// Other available API versions: 2023-02-01, 2023-09-15-preview, 2024-09-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native databricks [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-02-01, 2023-09-15-preview, 2024-09-01-preview, 2025-03-01-preview, 2025-08-01-preview, 2025-10-01-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native databricks [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type PrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
@@ -67,6 +67,15 @@ func NewPrivateEndpointConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:databricks/v20250301preview:PrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:databricks/v20250801preview:PrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:databricks/v20251001preview:PrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:databricks/v20260101:PrivateEndpointConnection"),
 		},
 	})
 	opts = append(opts, aliases)

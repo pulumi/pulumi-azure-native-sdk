@@ -33,6 +33,7 @@ type LookupDefaultRolloutArgs struct {
 	RolloutName string `pulumi:"rolloutName"`
 }
 
+// Concrete proxy resource types can be created by aliasing this type using a specific property type.
 type LookupDefaultRolloutResult struct {
 	// The Azure API version of the resource.
 	AzureApiVersion string `pulumi:"azureApiVersion"`
@@ -78,6 +79,7 @@ func (LookupDefaultRolloutOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupDefaultRolloutArgs)(nil)).Elem()
 }
 
+// Concrete proxy resource types can be created by aliasing this type using a specific property type.
 type LookupDefaultRolloutResultOutput struct{ *pulumi.OutputState }
 
 func (LookupDefaultRolloutResultOutput) ElementType() reflect.Type {

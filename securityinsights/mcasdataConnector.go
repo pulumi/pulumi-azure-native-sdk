@@ -21,7 +21,7 @@ type MCASDataConnector struct {
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The available data types for the connector.
-	DataTypes MCASDataConnectorDataTypesResponsePtrOutput `pulumi:"dataTypes"`
+	DataTypes MCASDataConnectorDataTypesResponseOutput `pulumi:"dataTypes"`
 	// Etag of the azure resource
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// The kind of the data connector
@@ -32,7 +32,7 @@ type MCASDataConnector struct {
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The tenant id to connect to, and get the data from.
-	TenantId pulumi.StringPtrOutput `pulumi:"tenantId"`
+	TenantId pulumi.StringOutput `pulumi:"tenantId"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -44,11 +44,17 @@ func NewMCASDataConnector(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.DataTypes == nil {
+		return nil, errors.New("invalid value for required argument 'DataTypes'")
+	}
 	if args.Kind == nil {
 		return nil, errors.New("invalid value for required argument 'Kind'")
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.TenantId == nil {
+		return nil, errors.New("invalid value for required argument 'TenantId'")
 	}
 	if args.WorkspaceName == nil {
 		return nil, errors.New("invalid value for required argument 'WorkspaceName'")
@@ -945,14 +951,14 @@ type mcasdataConnectorArgs struct {
 	// Connector ID
 	DataConnectorId *string `pulumi:"dataConnectorId"`
 	// The available data types for the connector.
-	DataTypes *MCASDataConnectorDataTypes `pulumi:"dataTypes"`
+	DataTypes MCASDataConnectorDataTypes `pulumi:"dataTypes"`
 	// The kind of the data connector
 	// Expected value is 'MicrosoftCloudAppSecurity'.
 	Kind string `pulumi:"kind"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The tenant id to connect to, and get the data from.
-	TenantId *string `pulumi:"tenantId"`
+	TenantId string `pulumi:"tenantId"`
 	// The name of the workspace.
 	WorkspaceName string `pulumi:"workspaceName"`
 }
@@ -962,14 +968,14 @@ type MCASDataConnectorArgs struct {
 	// Connector ID
 	DataConnectorId pulumi.StringPtrInput
 	// The available data types for the connector.
-	DataTypes MCASDataConnectorDataTypesPtrInput
+	DataTypes MCASDataConnectorDataTypesInput
 	// The kind of the data connector
 	// Expected value is 'MicrosoftCloudAppSecurity'.
 	Kind pulumi.StringInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The tenant id to connect to, and get the data from.
-	TenantId pulumi.StringPtrInput
+	TenantId pulumi.StringInput
 	// The name of the workspace.
 	WorkspaceName pulumi.StringInput
 }
@@ -1017,8 +1023,8 @@ func (o MCASDataConnectorOutput) AzureApiVersion() pulumi.StringOutput {
 }
 
 // The available data types for the connector.
-func (o MCASDataConnectorOutput) DataTypes() MCASDataConnectorDataTypesResponsePtrOutput {
-	return o.ApplyT(func(v *MCASDataConnector) MCASDataConnectorDataTypesResponsePtrOutput { return v.DataTypes }).(MCASDataConnectorDataTypesResponsePtrOutput)
+func (o MCASDataConnectorOutput) DataTypes() MCASDataConnectorDataTypesResponseOutput {
+	return o.ApplyT(func(v *MCASDataConnector) MCASDataConnectorDataTypesResponseOutput { return v.DataTypes }).(MCASDataConnectorDataTypesResponseOutput)
 }
 
 // Etag of the azure resource
@@ -1043,8 +1049,8 @@ func (o MCASDataConnectorOutput) SystemData() SystemDataResponseOutput {
 }
 
 // The tenant id to connect to, and get the data from.
-func (o MCASDataConnectorOutput) TenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MCASDataConnector) pulumi.StringPtrOutput { return v.TenantId }).(pulumi.StringPtrOutput)
+func (o MCASDataConnectorOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v *MCASDataConnector) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

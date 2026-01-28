@@ -26,12 +26,8 @@ type DiscoverySource struct {
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Provisioning state of Discovery Source resource.
-	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// Source ArmId of Discovery Source resource
-	SourceId pulumi.StringOutput `pulumi:"sourceId"`
-	// Source type of Discovery Source resource.
-	SourceType pulumi.StringOutput `pulumi:"sourceType"`
+	// The resource-specific properties for this resource.
+	Properties OffAzureDiscoverySourceResourcePropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
@@ -52,12 +48,6 @@ func NewDiscoverySource(ctx *pulumi.Context,
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
-	}
-	if args.SourceId == nil {
-		return nil, errors.New("invalid value for required argument 'SourceId'")
-	}
-	if args.SourceType == nil {
-		return nil, errors.New("invalid value for required argument 'SourceType'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -108,14 +98,12 @@ type discoverySourceArgs struct {
 	Location *string `pulumi:"location"`
 	// Maps resource name
 	MapName string `pulumi:"mapName"`
+	// The resource-specific properties for this resource.
+	Properties *OffAzureDiscoverySourceResourceProperties `pulumi:"properties"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Source ArmId of Discovery Source resource
-	SourceId string `pulumi:"sourceId"`
 	// discovery source resource
 	SourceName *string `pulumi:"sourceName"`
-	// Source type of Discovery Source resource.
-	SourceType string `pulumi:"sourceType"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 }
@@ -126,14 +114,12 @@ type DiscoverySourceArgs struct {
 	Location pulumi.StringPtrInput
 	// Maps resource name
 	MapName pulumi.StringInput
+	// The resource-specific properties for this resource.
+	Properties OffAzureDiscoverySourceResourcePropertiesPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// Source ArmId of Discovery Source resource
-	SourceId pulumi.StringInput
 	// discovery source resource
 	SourceName pulumi.StringPtrInput
-	// Source type of Discovery Source resource.
-	SourceType pulumi.StringInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 }
@@ -190,19 +176,9 @@ func (o DiscoverySourceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DiscoverySource) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Provisioning state of Discovery Source resource.
-func (o DiscoverySourceOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v *DiscoverySource) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// Source ArmId of Discovery Source resource
-func (o DiscoverySourceOutput) SourceId() pulumi.StringOutput {
-	return o.ApplyT(func(v *DiscoverySource) pulumi.StringOutput { return v.SourceId }).(pulumi.StringOutput)
-}
-
-// Source type of Discovery Source resource.
-func (o DiscoverySourceOutput) SourceType() pulumi.StringOutput {
-	return o.ApplyT(func(v *DiscoverySource) pulumi.StringOutput { return v.SourceType }).(pulumi.StringOutput)
+// The resource-specific properties for this resource.
+func (o DiscoverySourceOutput) Properties() OffAzureDiscoverySourceResourcePropertiesResponseOutput {
+	return o.ApplyT(func(v *DiscoverySource) OffAzureDiscoverySourceResourcePropertiesResponseOutput { return v.Properties }).(OffAzureDiscoverySourceResourcePropertiesResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

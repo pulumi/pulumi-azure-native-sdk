@@ -14,7 +14,9 @@ import (
 
 // An Azure Cosmos DB Fleetspace Account
 //
-// Uses Azure REST API version 2025-05-01-preview.
+// Uses Azure REST API version 2025-10-15.
+//
+// Other available API versions: 2025-05-01-preview, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type FleetspaceAccount struct {
 	pulumi.CustomResourceState
 
@@ -51,6 +53,12 @@ func NewFleetspaceAccount(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:cosmosdb/v20250501preview:FleetspaceAccount"),
+		},
+		{
+			Type: pulumi.String("azure-native:cosmosdb/v20251015:FleetspaceAccount"),
+		},
+		{
+			Type: pulumi.String("azure-native:cosmosdb/v20251101preview:FleetspaceAccount"),
 		},
 	})
 	opts = append(opts, aliases)

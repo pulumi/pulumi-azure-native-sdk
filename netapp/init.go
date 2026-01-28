@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:netapp:Account":
 		r = &Account{}
+	case "azure-native:netapp:ActiveDirectoryConfig":
+		r = &ActiveDirectoryConfig{}
 	case "azure-native:netapp:Backup":
 		r = &Backup{}
 	case "azure-native:netapp:BackupPolicy":
@@ -35,6 +37,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CapacityPoolBackup{}
 	case "azure-native:netapp:CapacityPoolBucket":
 		r = &CapacityPoolBucket{}
+	case "azure-native:netapp:CapacityPoolCache":
+		r = &CapacityPoolCache{}
 	case "azure-native:netapp:CapacityPoolSnapshot":
 		r = &CapacityPoolSnapshot{}
 	case "azure-native:netapp:CapacityPoolSubvolume":
@@ -43,6 +47,22 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CapacityPoolVolume{}
 	case "azure-native:netapp:CapacityPoolVolumeQuotaRule":
 		r = &CapacityPoolVolumeQuotaRule{}
+	case "azure-native:netapp:ElasticAccount":
+		r = &ElasticAccount{}
+	case "azure-native:netapp:ElasticBackup":
+		r = &ElasticBackup{}
+	case "azure-native:netapp:ElasticBackupPolicy":
+		r = &ElasticBackupPolicy{}
+	case "azure-native:netapp:ElasticBackupVault":
+		r = &ElasticBackupVault{}
+	case "azure-native:netapp:ElasticCapacityPool":
+		r = &ElasticCapacityPool{}
+	case "azure-native:netapp:ElasticSnapshot":
+		r = &ElasticSnapshot{}
+	case "azure-native:netapp:ElasticSnapshotPolicy":
+		r = &ElasticSnapshotPolicy{}
+	case "azure-native:netapp:ElasticVolume":
+		r = &ElasticVolume{}
 	case "azure-native:netapp:SnapshotPolicy":
 		r = &SnapshotPolicy{}
 	case "azure-native:netapp:VolumeGroup":

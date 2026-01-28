@@ -207,58 +207,58 @@ func (o AppliancePropertiesInfrastructureConfigPtrOutput) Provider() pulumi.Stri
 }
 
 // Contains infrastructure information about the Appliance
-type AppliancePropertiesResponseInfrastructureConfig struct {
+type AppliancePropertiesInfrastructureConfigResponse struct {
 	// Information about the connected appliance.
 	Provider *string `pulumi:"provider"`
 }
 
 // Contains infrastructure information about the Appliance
-type AppliancePropertiesResponseInfrastructureConfigOutput struct{ *pulumi.OutputState }
+type AppliancePropertiesInfrastructureConfigResponseOutput struct{ *pulumi.OutputState }
 
-func (AppliancePropertiesResponseInfrastructureConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppliancePropertiesResponseInfrastructureConfig)(nil)).Elem()
+func (AppliancePropertiesInfrastructureConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppliancePropertiesInfrastructureConfigResponse)(nil)).Elem()
 }
 
-func (o AppliancePropertiesResponseInfrastructureConfigOutput) ToAppliancePropertiesResponseInfrastructureConfigOutput() AppliancePropertiesResponseInfrastructureConfigOutput {
+func (o AppliancePropertiesInfrastructureConfigResponseOutput) ToAppliancePropertiesInfrastructureConfigResponseOutput() AppliancePropertiesInfrastructureConfigResponseOutput {
 	return o
 }
 
-func (o AppliancePropertiesResponseInfrastructureConfigOutput) ToAppliancePropertiesResponseInfrastructureConfigOutputWithContext(ctx context.Context) AppliancePropertiesResponseInfrastructureConfigOutput {
+func (o AppliancePropertiesInfrastructureConfigResponseOutput) ToAppliancePropertiesInfrastructureConfigResponseOutputWithContext(ctx context.Context) AppliancePropertiesInfrastructureConfigResponseOutput {
 	return o
 }
 
 // Information about the connected appliance.
-func (o AppliancePropertiesResponseInfrastructureConfigOutput) Provider() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppliancePropertiesResponseInfrastructureConfig) *string { return v.Provider }).(pulumi.StringPtrOutput)
+func (o AppliancePropertiesInfrastructureConfigResponseOutput) Provider() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppliancePropertiesInfrastructureConfigResponse) *string { return v.Provider }).(pulumi.StringPtrOutput)
 }
 
-type AppliancePropertiesResponseInfrastructureConfigPtrOutput struct{ *pulumi.OutputState }
+type AppliancePropertiesInfrastructureConfigResponsePtrOutput struct{ *pulumi.OutputState }
 
-func (AppliancePropertiesResponseInfrastructureConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AppliancePropertiesResponseInfrastructureConfig)(nil)).Elem()
+func (AppliancePropertiesInfrastructureConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppliancePropertiesInfrastructureConfigResponse)(nil)).Elem()
 }
 
-func (o AppliancePropertiesResponseInfrastructureConfigPtrOutput) ToAppliancePropertiesResponseInfrastructureConfigPtrOutput() AppliancePropertiesResponseInfrastructureConfigPtrOutput {
+func (o AppliancePropertiesInfrastructureConfigResponsePtrOutput) ToAppliancePropertiesInfrastructureConfigResponsePtrOutput() AppliancePropertiesInfrastructureConfigResponsePtrOutput {
 	return o
 }
 
-func (o AppliancePropertiesResponseInfrastructureConfigPtrOutput) ToAppliancePropertiesResponseInfrastructureConfigPtrOutputWithContext(ctx context.Context) AppliancePropertiesResponseInfrastructureConfigPtrOutput {
+func (o AppliancePropertiesInfrastructureConfigResponsePtrOutput) ToAppliancePropertiesInfrastructureConfigResponsePtrOutputWithContext(ctx context.Context) AppliancePropertiesInfrastructureConfigResponsePtrOutput {
 	return o
 }
 
-func (o AppliancePropertiesResponseInfrastructureConfigPtrOutput) Elem() AppliancePropertiesResponseInfrastructureConfigOutput {
-	return o.ApplyT(func(v *AppliancePropertiesResponseInfrastructureConfig) AppliancePropertiesResponseInfrastructureConfig {
+func (o AppliancePropertiesInfrastructureConfigResponsePtrOutput) Elem() AppliancePropertiesInfrastructureConfigResponseOutput {
+	return o.ApplyT(func(v *AppliancePropertiesInfrastructureConfigResponse) AppliancePropertiesInfrastructureConfigResponse {
 		if v != nil {
 			return *v
 		}
-		var ret AppliancePropertiesResponseInfrastructureConfig
+		var ret AppliancePropertiesInfrastructureConfigResponse
 		return ret
-	}).(AppliancePropertiesResponseInfrastructureConfigOutput)
+	}).(AppliancePropertiesInfrastructureConfigResponseOutput)
 }
 
 // Information about the connected appliance.
-func (o AppliancePropertiesResponseInfrastructureConfigPtrOutput) Provider() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppliancePropertiesResponseInfrastructureConfig) *string {
+func (o AppliancePropertiesInfrastructureConfigResponsePtrOutput) Provider() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppliancePropertiesInfrastructureConfigResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -733,8 +733,8 @@ func init() {
 	pulumi.RegisterOutputType(ApplianceCredentialKubeconfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(AppliancePropertiesInfrastructureConfigOutput{})
 	pulumi.RegisterOutputType(AppliancePropertiesInfrastructureConfigPtrOutput{})
-	pulumi.RegisterOutputType(AppliancePropertiesResponseInfrastructureConfigOutput{})
-	pulumi.RegisterOutputType(AppliancePropertiesResponseInfrastructureConfigPtrOutput{})
+	pulumi.RegisterOutputType(AppliancePropertiesInfrastructureConfigResponseOutput{})
+	pulumi.RegisterOutputType(AppliancePropertiesInfrastructureConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(ArtifactProfileResponseOutput{})
 	pulumi.RegisterOutputType(ArtifactProfileResponseMapOutput{})
 	pulumi.RegisterOutputType(HybridConnectionConfigResponseOutput{})

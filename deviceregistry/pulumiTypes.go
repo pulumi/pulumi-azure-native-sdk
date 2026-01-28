@@ -688,6 +688,499 @@ func (o BrokerStateStoreDestinationConfigurationResponseOutput) Key() pulumi.Str
 	return o.ApplyT(func(v BrokerStateStoreDestinationConfigurationResponse) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// The configuration to set up an ICA.
+type CertificateAuthorityConfiguration struct {
+	// Crypto type: ECC.
+	KeyType string `pulumi:"keyType"`
+}
+
+// CertificateAuthorityConfigurationInput is an input type that accepts CertificateAuthorityConfigurationArgs and CertificateAuthorityConfigurationOutput values.
+// You can construct a concrete instance of `CertificateAuthorityConfigurationInput` via:
+//
+//	CertificateAuthorityConfigurationArgs{...}
+type CertificateAuthorityConfigurationInput interface {
+	pulumi.Input
+
+	ToCertificateAuthorityConfigurationOutput() CertificateAuthorityConfigurationOutput
+	ToCertificateAuthorityConfigurationOutputWithContext(context.Context) CertificateAuthorityConfigurationOutput
+}
+
+// The configuration to set up an ICA.
+type CertificateAuthorityConfigurationArgs struct {
+	// Crypto type: ECC.
+	KeyType pulumi.StringInput `pulumi:"keyType"`
+}
+
+func (CertificateAuthorityConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateAuthorityConfiguration)(nil)).Elem()
+}
+
+func (i CertificateAuthorityConfigurationArgs) ToCertificateAuthorityConfigurationOutput() CertificateAuthorityConfigurationOutput {
+	return i.ToCertificateAuthorityConfigurationOutputWithContext(context.Background())
+}
+
+func (i CertificateAuthorityConfigurationArgs) ToCertificateAuthorityConfigurationOutputWithContext(ctx context.Context) CertificateAuthorityConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateAuthorityConfigurationOutput)
+}
+
+func (i CertificateAuthorityConfigurationArgs) ToCertificateAuthorityConfigurationPtrOutput() CertificateAuthorityConfigurationPtrOutput {
+	return i.ToCertificateAuthorityConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i CertificateAuthorityConfigurationArgs) ToCertificateAuthorityConfigurationPtrOutputWithContext(ctx context.Context) CertificateAuthorityConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateAuthorityConfigurationOutput).ToCertificateAuthorityConfigurationPtrOutputWithContext(ctx)
+}
+
+// CertificateAuthorityConfigurationPtrInput is an input type that accepts CertificateAuthorityConfigurationArgs, CertificateAuthorityConfigurationPtr and CertificateAuthorityConfigurationPtrOutput values.
+// You can construct a concrete instance of `CertificateAuthorityConfigurationPtrInput` via:
+//
+//	        CertificateAuthorityConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type CertificateAuthorityConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToCertificateAuthorityConfigurationPtrOutput() CertificateAuthorityConfigurationPtrOutput
+	ToCertificateAuthorityConfigurationPtrOutputWithContext(context.Context) CertificateAuthorityConfigurationPtrOutput
+}
+
+type certificateAuthorityConfigurationPtrType CertificateAuthorityConfigurationArgs
+
+func CertificateAuthorityConfigurationPtr(v *CertificateAuthorityConfigurationArgs) CertificateAuthorityConfigurationPtrInput {
+	return (*certificateAuthorityConfigurationPtrType)(v)
+}
+
+func (*certificateAuthorityConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateAuthorityConfiguration)(nil)).Elem()
+}
+
+func (i *certificateAuthorityConfigurationPtrType) ToCertificateAuthorityConfigurationPtrOutput() CertificateAuthorityConfigurationPtrOutput {
+	return i.ToCertificateAuthorityConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *certificateAuthorityConfigurationPtrType) ToCertificateAuthorityConfigurationPtrOutputWithContext(ctx context.Context) CertificateAuthorityConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateAuthorityConfigurationPtrOutput)
+}
+
+// The configuration to set up an ICA.
+type CertificateAuthorityConfigurationOutput struct{ *pulumi.OutputState }
+
+func (CertificateAuthorityConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateAuthorityConfiguration)(nil)).Elem()
+}
+
+func (o CertificateAuthorityConfigurationOutput) ToCertificateAuthorityConfigurationOutput() CertificateAuthorityConfigurationOutput {
+	return o
+}
+
+func (o CertificateAuthorityConfigurationOutput) ToCertificateAuthorityConfigurationOutputWithContext(ctx context.Context) CertificateAuthorityConfigurationOutput {
+	return o
+}
+
+func (o CertificateAuthorityConfigurationOutput) ToCertificateAuthorityConfigurationPtrOutput() CertificateAuthorityConfigurationPtrOutput {
+	return o.ToCertificateAuthorityConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o CertificateAuthorityConfigurationOutput) ToCertificateAuthorityConfigurationPtrOutputWithContext(ctx context.Context) CertificateAuthorityConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateAuthorityConfiguration) *CertificateAuthorityConfiguration {
+		return &v
+	}).(CertificateAuthorityConfigurationPtrOutput)
+}
+
+// Crypto type: ECC.
+func (o CertificateAuthorityConfigurationOutput) KeyType() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateAuthorityConfiguration) string { return v.KeyType }).(pulumi.StringOutput)
+}
+
+type CertificateAuthorityConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (CertificateAuthorityConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateAuthorityConfiguration)(nil)).Elem()
+}
+
+func (o CertificateAuthorityConfigurationPtrOutput) ToCertificateAuthorityConfigurationPtrOutput() CertificateAuthorityConfigurationPtrOutput {
+	return o
+}
+
+func (o CertificateAuthorityConfigurationPtrOutput) ToCertificateAuthorityConfigurationPtrOutputWithContext(ctx context.Context) CertificateAuthorityConfigurationPtrOutput {
+	return o
+}
+
+func (o CertificateAuthorityConfigurationPtrOutput) Elem() CertificateAuthorityConfigurationOutput {
+	return o.ApplyT(func(v *CertificateAuthorityConfiguration) CertificateAuthorityConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret CertificateAuthorityConfiguration
+		return ret
+	}).(CertificateAuthorityConfigurationOutput)
+}
+
+// Crypto type: ECC.
+func (o CertificateAuthorityConfigurationPtrOutput) KeyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateAuthorityConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KeyType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The configuration to set up an ICA.
+type CertificateAuthorityConfigurationResponse struct {
+	// Crypto type: ECC.
+	KeyType string `pulumi:"keyType"`
+	// Certificate subject.
+	Subject string `pulumi:"subject"`
+	// Certificate is valid not after this date. Format ISO8601. Generated based on validity period.
+	ValidityNotAfter string `pulumi:"validityNotAfter"`
+	// Certificate is valid not before this date. Format ISO8601. Generated based on on validity period.
+	ValidityNotBefore string `pulumi:"validityNotBefore"`
+}
+
+// The configuration to set up an ICA.
+type CertificateAuthorityConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (CertificateAuthorityConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateAuthorityConfigurationResponse)(nil)).Elem()
+}
+
+func (o CertificateAuthorityConfigurationResponseOutput) ToCertificateAuthorityConfigurationResponseOutput() CertificateAuthorityConfigurationResponseOutput {
+	return o
+}
+
+func (o CertificateAuthorityConfigurationResponseOutput) ToCertificateAuthorityConfigurationResponseOutputWithContext(ctx context.Context) CertificateAuthorityConfigurationResponseOutput {
+	return o
+}
+
+// Crypto type: ECC.
+func (o CertificateAuthorityConfigurationResponseOutput) KeyType() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateAuthorityConfigurationResponse) string { return v.KeyType }).(pulumi.StringOutput)
+}
+
+// Certificate subject.
+func (o CertificateAuthorityConfigurationResponseOutput) Subject() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateAuthorityConfigurationResponse) string { return v.Subject }).(pulumi.StringOutput)
+}
+
+// Certificate is valid not after this date. Format ISO8601. Generated based on validity period.
+func (o CertificateAuthorityConfigurationResponseOutput) ValidityNotAfter() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateAuthorityConfigurationResponse) string { return v.ValidityNotAfter }).(pulumi.StringOutput)
+}
+
+// Certificate is valid not before this date. Format ISO8601. Generated based on on validity period.
+func (o CertificateAuthorityConfigurationResponseOutput) ValidityNotBefore() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateAuthorityConfigurationResponse) string { return v.ValidityNotBefore }).(pulumi.StringOutput)
+}
+
+type CertificateAuthorityConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CertificateAuthorityConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateAuthorityConfigurationResponse)(nil)).Elem()
+}
+
+func (o CertificateAuthorityConfigurationResponsePtrOutput) ToCertificateAuthorityConfigurationResponsePtrOutput() CertificateAuthorityConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o CertificateAuthorityConfigurationResponsePtrOutput) ToCertificateAuthorityConfigurationResponsePtrOutputWithContext(ctx context.Context) CertificateAuthorityConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o CertificateAuthorityConfigurationResponsePtrOutput) Elem() CertificateAuthorityConfigurationResponseOutput {
+	return o.ApplyT(func(v *CertificateAuthorityConfigurationResponse) CertificateAuthorityConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CertificateAuthorityConfigurationResponse
+		return ret
+	}).(CertificateAuthorityConfigurationResponseOutput)
+}
+
+// Crypto type: ECC.
+func (o CertificateAuthorityConfigurationResponsePtrOutput) KeyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateAuthorityConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KeyType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Certificate subject.
+func (o CertificateAuthorityConfigurationResponsePtrOutput) Subject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateAuthorityConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Subject
+	}).(pulumi.StringPtrOutput)
+}
+
+// Certificate is valid not after this date. Format ISO8601. Generated based on validity period.
+func (o CertificateAuthorityConfigurationResponsePtrOutput) ValidityNotAfter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateAuthorityConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ValidityNotAfter
+	}).(pulumi.StringPtrOutput)
+}
+
+// Certificate is valid not before this date. Format ISO8601. Generated based on on validity period.
+func (o CertificateAuthorityConfigurationResponsePtrOutput) ValidityNotBefore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateAuthorityConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ValidityNotBefore
+	}).(pulumi.StringPtrOutput)
+}
+
+// The certificate configuration.
+type CertificateConfiguration struct {
+	// The configuration to set up an ICA.
+	CertificateAuthorityConfiguration CertificateAuthorityConfiguration `pulumi:"certificateAuthorityConfiguration"`
+	// The leaf certificate configuration.
+	LeafCertificateConfiguration LeafCertificateConfiguration `pulumi:"leafCertificateConfiguration"`
+}
+
+// CertificateConfigurationInput is an input type that accepts CertificateConfigurationArgs and CertificateConfigurationOutput values.
+// You can construct a concrete instance of `CertificateConfigurationInput` via:
+//
+//	CertificateConfigurationArgs{...}
+type CertificateConfigurationInput interface {
+	pulumi.Input
+
+	ToCertificateConfigurationOutput() CertificateConfigurationOutput
+	ToCertificateConfigurationOutputWithContext(context.Context) CertificateConfigurationOutput
+}
+
+// The certificate configuration.
+type CertificateConfigurationArgs struct {
+	// The configuration to set up an ICA.
+	CertificateAuthorityConfiguration CertificateAuthorityConfigurationInput `pulumi:"certificateAuthorityConfiguration"`
+	// The leaf certificate configuration.
+	LeafCertificateConfiguration LeafCertificateConfigurationInput `pulumi:"leafCertificateConfiguration"`
+}
+
+func (CertificateConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateConfiguration)(nil)).Elem()
+}
+
+func (i CertificateConfigurationArgs) ToCertificateConfigurationOutput() CertificateConfigurationOutput {
+	return i.ToCertificateConfigurationOutputWithContext(context.Background())
+}
+
+func (i CertificateConfigurationArgs) ToCertificateConfigurationOutputWithContext(ctx context.Context) CertificateConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateConfigurationOutput)
+}
+
+func (i CertificateConfigurationArgs) ToCertificateConfigurationPtrOutput() CertificateConfigurationPtrOutput {
+	return i.ToCertificateConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i CertificateConfigurationArgs) ToCertificateConfigurationPtrOutputWithContext(ctx context.Context) CertificateConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateConfigurationOutput).ToCertificateConfigurationPtrOutputWithContext(ctx)
+}
+
+// CertificateConfigurationPtrInput is an input type that accepts CertificateConfigurationArgs, CertificateConfigurationPtr and CertificateConfigurationPtrOutput values.
+// You can construct a concrete instance of `CertificateConfigurationPtrInput` via:
+//
+//	        CertificateConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type CertificateConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToCertificateConfigurationPtrOutput() CertificateConfigurationPtrOutput
+	ToCertificateConfigurationPtrOutputWithContext(context.Context) CertificateConfigurationPtrOutput
+}
+
+type certificateConfigurationPtrType CertificateConfigurationArgs
+
+func CertificateConfigurationPtr(v *CertificateConfigurationArgs) CertificateConfigurationPtrInput {
+	return (*certificateConfigurationPtrType)(v)
+}
+
+func (*certificateConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateConfiguration)(nil)).Elem()
+}
+
+func (i *certificateConfigurationPtrType) ToCertificateConfigurationPtrOutput() CertificateConfigurationPtrOutput {
+	return i.ToCertificateConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *certificateConfigurationPtrType) ToCertificateConfigurationPtrOutputWithContext(ctx context.Context) CertificateConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateConfigurationPtrOutput)
+}
+
+// The certificate configuration.
+type CertificateConfigurationOutput struct{ *pulumi.OutputState }
+
+func (CertificateConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateConfiguration)(nil)).Elem()
+}
+
+func (o CertificateConfigurationOutput) ToCertificateConfigurationOutput() CertificateConfigurationOutput {
+	return o
+}
+
+func (o CertificateConfigurationOutput) ToCertificateConfigurationOutputWithContext(ctx context.Context) CertificateConfigurationOutput {
+	return o
+}
+
+func (o CertificateConfigurationOutput) ToCertificateConfigurationPtrOutput() CertificateConfigurationPtrOutput {
+	return o.ToCertificateConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o CertificateConfigurationOutput) ToCertificateConfigurationPtrOutputWithContext(ctx context.Context) CertificateConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateConfiguration) *CertificateConfiguration {
+		return &v
+	}).(CertificateConfigurationPtrOutput)
+}
+
+// The configuration to set up an ICA.
+func (o CertificateConfigurationOutput) CertificateAuthorityConfiguration() CertificateAuthorityConfigurationOutput {
+	return o.ApplyT(func(v CertificateConfiguration) CertificateAuthorityConfiguration {
+		return v.CertificateAuthorityConfiguration
+	}).(CertificateAuthorityConfigurationOutput)
+}
+
+// The leaf certificate configuration.
+func (o CertificateConfigurationOutput) LeafCertificateConfiguration() LeafCertificateConfigurationOutput {
+	return o.ApplyT(func(v CertificateConfiguration) LeafCertificateConfiguration { return v.LeafCertificateConfiguration }).(LeafCertificateConfigurationOutput)
+}
+
+type CertificateConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (CertificateConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateConfiguration)(nil)).Elem()
+}
+
+func (o CertificateConfigurationPtrOutput) ToCertificateConfigurationPtrOutput() CertificateConfigurationPtrOutput {
+	return o
+}
+
+func (o CertificateConfigurationPtrOutput) ToCertificateConfigurationPtrOutputWithContext(ctx context.Context) CertificateConfigurationPtrOutput {
+	return o
+}
+
+func (o CertificateConfigurationPtrOutput) Elem() CertificateConfigurationOutput {
+	return o.ApplyT(func(v *CertificateConfiguration) CertificateConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret CertificateConfiguration
+		return ret
+	}).(CertificateConfigurationOutput)
+}
+
+// The configuration to set up an ICA.
+func (o CertificateConfigurationPtrOutput) CertificateAuthorityConfiguration() CertificateAuthorityConfigurationPtrOutput {
+	return o.ApplyT(func(v *CertificateConfiguration) *CertificateAuthorityConfiguration {
+		if v == nil {
+			return nil
+		}
+		return &v.CertificateAuthorityConfiguration
+	}).(CertificateAuthorityConfigurationPtrOutput)
+}
+
+// The leaf certificate configuration.
+func (o CertificateConfigurationPtrOutput) LeafCertificateConfiguration() LeafCertificateConfigurationPtrOutput {
+	return o.ApplyT(func(v *CertificateConfiguration) *LeafCertificateConfiguration {
+		if v == nil {
+			return nil
+		}
+		return &v.LeafCertificateConfiguration
+	}).(LeafCertificateConfigurationPtrOutput)
+}
+
+// The certificate configuration.
+type CertificateConfigurationResponse struct {
+	// The configuration to set up an ICA.
+	CertificateAuthorityConfiguration CertificateAuthorityConfigurationResponse `pulumi:"certificateAuthorityConfiguration"`
+	// The leaf certificate configuration.
+	LeafCertificateConfiguration LeafCertificateConfigurationResponse `pulumi:"leafCertificateConfiguration"`
+}
+
+// The certificate configuration.
+type CertificateConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (CertificateConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateConfigurationResponse)(nil)).Elem()
+}
+
+func (o CertificateConfigurationResponseOutput) ToCertificateConfigurationResponseOutput() CertificateConfigurationResponseOutput {
+	return o
+}
+
+func (o CertificateConfigurationResponseOutput) ToCertificateConfigurationResponseOutputWithContext(ctx context.Context) CertificateConfigurationResponseOutput {
+	return o
+}
+
+// The configuration to set up an ICA.
+func (o CertificateConfigurationResponseOutput) CertificateAuthorityConfiguration() CertificateAuthorityConfigurationResponseOutput {
+	return o.ApplyT(func(v CertificateConfigurationResponse) CertificateAuthorityConfigurationResponse {
+		return v.CertificateAuthorityConfiguration
+	}).(CertificateAuthorityConfigurationResponseOutput)
+}
+
+// The leaf certificate configuration.
+func (o CertificateConfigurationResponseOutput) LeafCertificateConfiguration() LeafCertificateConfigurationResponseOutput {
+	return o.ApplyT(func(v CertificateConfigurationResponse) LeafCertificateConfigurationResponse {
+		return v.LeafCertificateConfiguration
+	}).(LeafCertificateConfigurationResponseOutput)
+}
+
+type CertificateConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CertificateConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateConfigurationResponse)(nil)).Elem()
+}
+
+func (o CertificateConfigurationResponsePtrOutput) ToCertificateConfigurationResponsePtrOutput() CertificateConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o CertificateConfigurationResponsePtrOutput) ToCertificateConfigurationResponsePtrOutputWithContext(ctx context.Context) CertificateConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o CertificateConfigurationResponsePtrOutput) Elem() CertificateConfigurationResponseOutput {
+	return o.ApplyT(func(v *CertificateConfigurationResponse) CertificateConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CertificateConfigurationResponse
+		return ret
+	}).(CertificateConfigurationResponseOutput)
+}
+
+// The configuration to set up an ICA.
+func (o CertificateConfigurationResponsePtrOutput) CertificateAuthorityConfiguration() CertificateAuthorityConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *CertificateConfigurationResponse) *CertificateAuthorityConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.CertificateAuthorityConfiguration
+	}).(CertificateAuthorityConfigurationResponsePtrOutput)
+}
+
+// The leaf certificate configuration.
+func (o CertificateConfigurationResponsePtrOutput) LeafCertificateConfiguration() LeafCertificateConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *CertificateConfigurationResponse) *LeafCertificateConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.LeafCertificateConfiguration
+	}).(LeafCertificateConfigurationResponsePtrOutput)
+}
+
 // Defines the data point properties.
 type DataPoint struct {
 	// Stringified JSON that contains connector-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
@@ -4533,6 +5026,206 @@ func (o InboundEndpointsResponseMapOutput) MapIndex(k pulumi.StringInput) Inboun
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) InboundEndpointsResponse {
 		return vs[0].(map[string]InboundEndpointsResponse)[vs[1].(string)]
 	}).(InboundEndpointsResponseOutput)
+}
+
+// The leaf certificate configuration.
+type LeafCertificateConfiguration struct {
+	// The validity period in days.
+	ValidityPeriodInDays int `pulumi:"validityPeriodInDays"`
+}
+
+// LeafCertificateConfigurationInput is an input type that accepts LeafCertificateConfigurationArgs and LeafCertificateConfigurationOutput values.
+// You can construct a concrete instance of `LeafCertificateConfigurationInput` via:
+//
+//	LeafCertificateConfigurationArgs{...}
+type LeafCertificateConfigurationInput interface {
+	pulumi.Input
+
+	ToLeafCertificateConfigurationOutput() LeafCertificateConfigurationOutput
+	ToLeafCertificateConfigurationOutputWithContext(context.Context) LeafCertificateConfigurationOutput
+}
+
+// The leaf certificate configuration.
+type LeafCertificateConfigurationArgs struct {
+	// The validity period in days.
+	ValidityPeriodInDays pulumi.IntInput `pulumi:"validityPeriodInDays"`
+}
+
+func (LeafCertificateConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LeafCertificateConfiguration)(nil)).Elem()
+}
+
+func (i LeafCertificateConfigurationArgs) ToLeafCertificateConfigurationOutput() LeafCertificateConfigurationOutput {
+	return i.ToLeafCertificateConfigurationOutputWithContext(context.Background())
+}
+
+func (i LeafCertificateConfigurationArgs) ToLeafCertificateConfigurationOutputWithContext(ctx context.Context) LeafCertificateConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LeafCertificateConfigurationOutput)
+}
+
+func (i LeafCertificateConfigurationArgs) ToLeafCertificateConfigurationPtrOutput() LeafCertificateConfigurationPtrOutput {
+	return i.ToLeafCertificateConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i LeafCertificateConfigurationArgs) ToLeafCertificateConfigurationPtrOutputWithContext(ctx context.Context) LeafCertificateConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LeafCertificateConfigurationOutput).ToLeafCertificateConfigurationPtrOutputWithContext(ctx)
+}
+
+// LeafCertificateConfigurationPtrInput is an input type that accepts LeafCertificateConfigurationArgs, LeafCertificateConfigurationPtr and LeafCertificateConfigurationPtrOutput values.
+// You can construct a concrete instance of `LeafCertificateConfigurationPtrInput` via:
+//
+//	        LeafCertificateConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type LeafCertificateConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToLeafCertificateConfigurationPtrOutput() LeafCertificateConfigurationPtrOutput
+	ToLeafCertificateConfigurationPtrOutputWithContext(context.Context) LeafCertificateConfigurationPtrOutput
+}
+
+type leafCertificateConfigurationPtrType LeafCertificateConfigurationArgs
+
+func LeafCertificateConfigurationPtr(v *LeafCertificateConfigurationArgs) LeafCertificateConfigurationPtrInput {
+	return (*leafCertificateConfigurationPtrType)(v)
+}
+
+func (*leafCertificateConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LeafCertificateConfiguration)(nil)).Elem()
+}
+
+func (i *leafCertificateConfigurationPtrType) ToLeafCertificateConfigurationPtrOutput() LeafCertificateConfigurationPtrOutput {
+	return i.ToLeafCertificateConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *leafCertificateConfigurationPtrType) ToLeafCertificateConfigurationPtrOutputWithContext(ctx context.Context) LeafCertificateConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LeafCertificateConfigurationPtrOutput)
+}
+
+// The leaf certificate configuration.
+type LeafCertificateConfigurationOutput struct{ *pulumi.OutputState }
+
+func (LeafCertificateConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LeafCertificateConfiguration)(nil)).Elem()
+}
+
+func (o LeafCertificateConfigurationOutput) ToLeafCertificateConfigurationOutput() LeafCertificateConfigurationOutput {
+	return o
+}
+
+func (o LeafCertificateConfigurationOutput) ToLeafCertificateConfigurationOutputWithContext(ctx context.Context) LeafCertificateConfigurationOutput {
+	return o
+}
+
+func (o LeafCertificateConfigurationOutput) ToLeafCertificateConfigurationPtrOutput() LeafCertificateConfigurationPtrOutput {
+	return o.ToLeafCertificateConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o LeafCertificateConfigurationOutput) ToLeafCertificateConfigurationPtrOutputWithContext(ctx context.Context) LeafCertificateConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LeafCertificateConfiguration) *LeafCertificateConfiguration {
+		return &v
+	}).(LeafCertificateConfigurationPtrOutput)
+}
+
+// The validity period in days.
+func (o LeafCertificateConfigurationOutput) ValidityPeriodInDays() pulumi.IntOutput {
+	return o.ApplyT(func(v LeafCertificateConfiguration) int { return v.ValidityPeriodInDays }).(pulumi.IntOutput)
+}
+
+type LeafCertificateConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (LeafCertificateConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LeafCertificateConfiguration)(nil)).Elem()
+}
+
+func (o LeafCertificateConfigurationPtrOutput) ToLeafCertificateConfigurationPtrOutput() LeafCertificateConfigurationPtrOutput {
+	return o
+}
+
+func (o LeafCertificateConfigurationPtrOutput) ToLeafCertificateConfigurationPtrOutputWithContext(ctx context.Context) LeafCertificateConfigurationPtrOutput {
+	return o
+}
+
+func (o LeafCertificateConfigurationPtrOutput) Elem() LeafCertificateConfigurationOutput {
+	return o.ApplyT(func(v *LeafCertificateConfiguration) LeafCertificateConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret LeafCertificateConfiguration
+		return ret
+	}).(LeafCertificateConfigurationOutput)
+}
+
+// The validity period in days.
+func (o LeafCertificateConfigurationPtrOutput) ValidityPeriodInDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LeafCertificateConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.ValidityPeriodInDays
+	}).(pulumi.IntPtrOutput)
+}
+
+// The leaf certificate configuration.
+type LeafCertificateConfigurationResponse struct {
+	// The validity period in days.
+	ValidityPeriodInDays int `pulumi:"validityPeriodInDays"`
+}
+
+// The leaf certificate configuration.
+type LeafCertificateConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (LeafCertificateConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LeafCertificateConfigurationResponse)(nil)).Elem()
+}
+
+func (o LeafCertificateConfigurationResponseOutput) ToLeafCertificateConfigurationResponseOutput() LeafCertificateConfigurationResponseOutput {
+	return o
+}
+
+func (o LeafCertificateConfigurationResponseOutput) ToLeafCertificateConfigurationResponseOutputWithContext(ctx context.Context) LeafCertificateConfigurationResponseOutput {
+	return o
+}
+
+// The validity period in days.
+func (o LeafCertificateConfigurationResponseOutput) ValidityPeriodInDays() pulumi.IntOutput {
+	return o.ApplyT(func(v LeafCertificateConfigurationResponse) int { return v.ValidityPeriodInDays }).(pulumi.IntOutput)
+}
+
+type LeafCertificateConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (LeafCertificateConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LeafCertificateConfigurationResponse)(nil)).Elem()
+}
+
+func (o LeafCertificateConfigurationResponsePtrOutput) ToLeafCertificateConfigurationResponsePtrOutput() LeafCertificateConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o LeafCertificateConfigurationResponsePtrOutput) ToLeafCertificateConfigurationResponsePtrOutputWithContext(ctx context.Context) LeafCertificateConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o LeafCertificateConfigurationResponsePtrOutput) Elem() LeafCertificateConfigurationResponseOutput {
+	return o.ApplyT(func(v *LeafCertificateConfigurationResponse) LeafCertificateConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret LeafCertificateConfigurationResponse
+		return ret
+	}).(LeafCertificateConfigurationResponseOutput)
+}
+
+// The validity period in days.
+func (o LeafCertificateConfigurationResponsePtrOutput) ValidityPeriodInDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LeafCertificateConfigurationResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.ValidityPeriodInDays
+	}).(pulumi.IntPtrOutput)
 }
 
 // Defines the action properties.
@@ -10867,6 +11560,14 @@ func init() {
 	pulumi.RegisterOutputType(AuthenticationResponsePtrOutput{})
 	pulumi.RegisterOutputType(BrokerStateStoreDestinationConfigurationOutput{})
 	pulumi.RegisterOutputType(BrokerStateStoreDestinationConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(CertificateAuthorityConfigurationOutput{})
+	pulumi.RegisterOutputType(CertificateAuthorityConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(CertificateAuthorityConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(CertificateAuthorityConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(CertificateConfigurationOutput{})
+	pulumi.RegisterOutputType(CertificateConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(CertificateConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(CertificateConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(DataPointOutput{})
 	pulumi.RegisterOutputType(DataPointArrayOutput{})
 	pulumi.RegisterOutputType(DataPointResponseOutput{})
@@ -10937,6 +11638,10 @@ func init() {
 	pulumi.RegisterOutputType(InboundEndpointsMapOutput{})
 	pulumi.RegisterOutputType(InboundEndpointsResponseOutput{})
 	pulumi.RegisterOutputType(InboundEndpointsResponseMapOutput{})
+	pulumi.RegisterOutputType(LeafCertificateConfigurationOutput{})
+	pulumi.RegisterOutputType(LeafCertificateConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(LeafCertificateConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(LeafCertificateConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(ManagementActionOutput{})
 	pulumi.RegisterOutputType(ManagementActionArrayOutput{})
 	pulumi.RegisterOutputType(ManagementActionResponseOutput{})

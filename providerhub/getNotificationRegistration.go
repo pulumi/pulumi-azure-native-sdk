@@ -33,6 +33,7 @@ type LookupNotificationRegistrationArgs struct {
 	ProviderNamespace string `pulumi:"providerNamespace"`
 }
 
+// Concrete proxy resource types can be created by aliasing this type using a specific property type.
 type LookupNotificationRegistrationResult struct {
 	// The Azure API version of the resource.
 	AzureApiVersion string `pulumi:"azureApiVersion"`
@@ -67,6 +68,7 @@ func (LookupNotificationRegistrationOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupNotificationRegistrationArgs)(nil)).Elem()
 }
 
+// Concrete proxy resource types can be created by aliasing this type using a specific property type.
 type LookupNotificationRegistrationResultOutput struct{ *pulumi.OutputState }
 
 func (LookupNotificationRegistrationResultOutput) ElementType() reflect.Type {

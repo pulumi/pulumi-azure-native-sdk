@@ -37,6 +37,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &HcxEnterpriseSite{}
 	case "azure-native:avs:IscsiPath":
 		r = &IscsiPath{}
+	case "azure-native:avs:License":
+		r = &License{}
 	case "azure-native:avs:PlacementPolicy":
 		r = &PlacementPolicy{}
 	case "azure-native:avs:PrivateCloud":

@@ -40,7 +40,7 @@ type LookupAwsCloudTrailDataConnectorResult struct {
 	// The Azure API version of the resource.
 	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The available data types for the connector.
-	DataTypes *AwsCloudTrailDataConnectorDataTypesResponse `pulumi:"dataTypes"`
+	DataTypes AwsCloudTrailDataConnectorDataTypesResponse `pulumi:"dataTypes"`
 	// Etag of the azure resource
 	Etag *string `pulumi:"etag"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -104,10 +104,10 @@ func (o LookupAwsCloudTrailDataConnectorResultOutput) AzureApiVersion() pulumi.S
 }
 
 // The available data types for the connector.
-func (o LookupAwsCloudTrailDataConnectorResultOutput) DataTypes() AwsCloudTrailDataConnectorDataTypesResponsePtrOutput {
-	return o.ApplyT(func(v LookupAwsCloudTrailDataConnectorResult) *AwsCloudTrailDataConnectorDataTypesResponse {
+func (o LookupAwsCloudTrailDataConnectorResultOutput) DataTypes() AwsCloudTrailDataConnectorDataTypesResponseOutput {
+	return o.ApplyT(func(v LookupAwsCloudTrailDataConnectorResult) AwsCloudTrailDataConnectorDataTypesResponse {
 		return v.DataTypes
-	}).(AwsCloudTrailDataConnectorDataTypesResponsePtrOutput)
+	}).(AwsCloudTrailDataConnectorDataTypesResponseOutput)
 }
 
 // Etag of the azure resource

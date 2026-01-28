@@ -14,6 +14,8 @@ import (
 // Get a ScheduledAction
 //
 // Uses Azure REST API version 2025-04-15-preview.
+//
+// Other available API versions: 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native computeschedule [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupScheduledAction(ctx *pulumi.Context, args *LookupScheduledActionArgs, opts ...pulumi.InvokeOption) (*LookupScheduledActionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupScheduledActionResult

@@ -14,8 +14,6 @@ import (
 // Get a Deployment. '.default' and '.unassigned' are system defined values and cannot be used for product or device group name.
 //
 // Uses Azure REST API version 2024-04-01.
-//
-// Other available API versions: 2022-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuresphere [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupDeployment(ctx *pulumi.Context, args *LookupDeploymentArgs, opts ...pulumi.InvokeOption) (*LookupDeploymentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDeploymentResult

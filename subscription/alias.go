@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2024-08-01-preview. In version 2.x of the Azure Native provider, it used API version 2021-10-01.
 //
-// Other available API versions: 2021-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native subscription [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-10-01, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native subscription [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Alias struct {
 	pulumi.CustomResourceState
 
@@ -50,6 +50,9 @@ func NewAlias(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:subscription/v20240801preview:Alias"),
+		},
+		{
+			Type: pulumi.String("azure-native:subscription/v20251101preview:Alias"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -33,7 +33,7 @@ type LookupPremiumMicrosoftDefenderForThreatIntelligenceArgs struct {
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
-// Represents Premium Microsoft Defender for Threat Intelligence data connector.
+// Represents Microsoft Defender for Threat Intelligence Premium data connector.
 type LookupPremiumMicrosoftDefenderForThreatIntelligenceResult struct {
 	// The Azure API version of the resource.
 	AzureApiVersion string `pulumi:"azureApiVersion"`
@@ -55,7 +55,7 @@ type LookupPremiumMicrosoftDefenderForThreatIntelligenceResult struct {
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The tenant id to connect to, and get the data from.
-	TenantId *string `pulumi:"tenantId"`
+	TenantId string `pulumi:"tenantId"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -82,7 +82,7 @@ func (LookupPremiumMicrosoftDefenderForThreatIntelligenceOutputArgs) ElementType
 	return reflect.TypeOf((*LookupPremiumMicrosoftDefenderForThreatIntelligenceArgs)(nil)).Elem()
 }
 
-// Represents Premium Microsoft Defender for Threat Intelligence data connector.
+// Represents Microsoft Defender for Threat Intelligence Premium data connector.
 type LookupPremiumMicrosoftDefenderForThreatIntelligenceResultOutput struct{ *pulumi.OutputState }
 
 func (LookupPremiumMicrosoftDefenderForThreatIntelligenceResultOutput) ElementType() reflect.Type {
@@ -148,8 +148,8 @@ func (o LookupPremiumMicrosoftDefenderForThreatIntelligenceResultOutput) SystemD
 }
 
 // The tenant id to connect to, and get the data from.
-func (o LookupPremiumMicrosoftDefenderForThreatIntelligenceResultOutput) TenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupPremiumMicrosoftDefenderForThreatIntelligenceResult) *string { return v.TenantId }).(pulumi.StringPtrOutput)
+func (o LookupPremiumMicrosoftDefenderForThreatIntelligenceResultOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPremiumMicrosoftDefenderForThreatIntelligenceResult) string { return v.TenantId }).(pulumi.StringOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

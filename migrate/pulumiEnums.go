@@ -7718,6 +7718,13 @@ func (in *loadBalancerTypePtr) ToLoadBalancerTypePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(LoadBalancerTypePtrOutput)
 }
 
+// Discriminator for migration specific properties.
+type MigrationSpecificPropertiesInstanceType string
+
+const (
+	MigrationSpecificPropertiesInstanceTypeServerMigration = MigrationSpecificPropertiesInstanceType("ServerMigration")
+)
+
 // Migration Strategy.
 type MigrationStrategy string
 
@@ -11971,6 +11978,177 @@ func (in *targetStorageProjectionTypePtr) ToTargetStorageProjectionTypePtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(TargetStorageProjectionTypePtrOutput)
 }
 
+// Task Scope
+type TaskScope string
+
+const (
+	// Wave task - typically related to a specific wave of migration
+	TaskScopeWave = TaskScope("Wave")
+	// Migration Entity task - typically related to a specific migration entity
+	TaskScopeMigrationEntity = TaskScope("MigrationEntity")
+	// Migration Entity Group task - typically related to a specific migration entity group
+	TaskScopeMigrationEntityGroup = TaskScope("MigrationEntityGroup")
+)
+
+func (TaskScope) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskScope)(nil)).Elem()
+}
+
+func (e TaskScope) ToTaskScopeOutput() TaskScopeOutput {
+	return pulumi.ToOutput(e).(TaskScopeOutput)
+}
+
+func (e TaskScope) ToTaskScopeOutputWithContext(ctx context.Context) TaskScopeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(TaskScopeOutput)
+}
+
+func (e TaskScope) ToTaskScopePtrOutput() TaskScopePtrOutput {
+	return e.ToTaskScopePtrOutputWithContext(context.Background())
+}
+
+func (e TaskScope) ToTaskScopePtrOutputWithContext(ctx context.Context) TaskScopePtrOutput {
+	return TaskScope(e).ToTaskScopeOutputWithContext(ctx).ToTaskScopePtrOutputWithContext(ctx)
+}
+
+func (e TaskScope) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TaskScope) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TaskScope) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e TaskScope) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type TaskScopeOutput struct{ *pulumi.OutputState }
+
+func (TaskScopeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskScope)(nil)).Elem()
+}
+
+func (o TaskScopeOutput) ToTaskScopeOutput() TaskScopeOutput {
+	return o
+}
+
+func (o TaskScopeOutput) ToTaskScopeOutputWithContext(ctx context.Context) TaskScopeOutput {
+	return o
+}
+
+func (o TaskScopeOutput) ToTaskScopePtrOutput() TaskScopePtrOutput {
+	return o.ToTaskScopePtrOutputWithContext(context.Background())
+}
+
+func (o TaskScopeOutput) ToTaskScopePtrOutputWithContext(ctx context.Context) TaskScopePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TaskScope) *TaskScope {
+		return &v
+	}).(TaskScopePtrOutput)
+}
+
+func (o TaskScopeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o TaskScopeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TaskScope) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o TaskScopeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TaskScopeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TaskScope) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type TaskScopePtrOutput struct{ *pulumi.OutputState }
+
+func (TaskScopePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskScope)(nil)).Elem()
+}
+
+func (o TaskScopePtrOutput) ToTaskScopePtrOutput() TaskScopePtrOutput {
+	return o
+}
+
+func (o TaskScopePtrOutput) ToTaskScopePtrOutputWithContext(ctx context.Context) TaskScopePtrOutput {
+	return o
+}
+
+func (o TaskScopePtrOutput) Elem() TaskScopeOutput {
+	return o.ApplyT(func(v *TaskScope) TaskScope {
+		if v != nil {
+			return *v
+		}
+		var ret TaskScope
+		return ret
+	}).(TaskScopeOutput)
+}
+
+func (o TaskScopePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TaskScopePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *TaskScope) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// TaskScopeInput is an input type that accepts values of the TaskScope enum
+// A concrete instance of `TaskScopeInput` can be one of the following:
+//
+//	TaskScopeWave
+//	TaskScopeMigrationEntity
+//	TaskScopeMigrationEntityGroup
+type TaskScopeInput interface {
+	pulumi.Input
+
+	ToTaskScopeOutput() TaskScopeOutput
+	ToTaskScopeOutputWithContext(context.Context) TaskScopeOutput
+}
+
+var taskScopePtrType = reflect.TypeOf((**TaskScope)(nil)).Elem()
+
+type TaskScopePtrInput interface {
+	pulumi.Input
+
+	ToTaskScopePtrOutput() TaskScopePtrOutput
+	ToTaskScopePtrOutputWithContext(context.Context) TaskScopePtrOutput
+}
+
+type taskScopePtr string
+
+func TaskScopePtr(v string) TaskScopePtrInput {
+	return (*taskScopePtr)(&v)
+}
+
+func (*taskScopePtr) ElementType() reflect.Type {
+	return taskScopePtrType
+}
+
+func (in *taskScopePtr) ToTaskScopePtrOutput() TaskScopePtrOutput {
+	return pulumi.ToOutput(in).(TaskScopePtrOutput)
+}
+
+func (in *taskScopePtr) ToTaskScopePtrOutputWithContext(ctx context.Context) TaskScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(TaskScopePtrOutput)
+}
+
 // Time Range for which the historic utilization data should be considered for
 // assessment.
 type TimeRange string
@@ -12629,6 +12807,8 @@ func init() {
 	pulumi.RegisterOutputType(TargetStorageAccessTypePtrOutput{})
 	pulumi.RegisterOutputType(TargetStorageProjectionTypeOutput{})
 	pulumi.RegisterOutputType(TargetStorageProjectionTypePtrOutput{})
+	pulumi.RegisterOutputType(TaskScopeOutput{})
+	pulumi.RegisterOutputType(TaskScopePtrOutput{})
 	pulumi.RegisterOutputType(TimeRangeOutput{})
 	pulumi.RegisterOutputType(TimeRangePtrOutput{})
 	pulumi.RegisterOutputType(WorkloadDeploymentTargetOutput{})

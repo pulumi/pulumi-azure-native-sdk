@@ -14,9 +14,9 @@ import (
 
 // An Azure Cosmos DB database account.
 //
-// Uses Azure REST API version 2025-04-15.
+// Uses Azure REST API version 2025-10-15.
 //
-// Other available API versions: 2015-04-01, 2015-04-08, 2015-11-06, 2016-03-19, 2016-03-31, 2019-08-01, 2019-12-12, 2020-03-01, 2020-04-01, 2020-06-01-preview, 2020-09-01, 2021-01-15, 2021-03-01-preview, 2021-03-15, 2021-04-01-preview, 2021-04-15, 2021-05-15, 2021-06-15, 2021-07-01-preview, 2021-10-15, 2021-10-15-preview, 2021-11-15-preview, 2022-02-15-preview, 2022-05-15, 2022-05-15-preview, 2022-08-15, 2022-08-15-preview, 2022-11-15, 2022-11-15-preview, 2023-03-01-preview, 2023-03-15, 2023-03-15-preview, 2023-04-15, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview, 2024-11-15, 2024-12-01-preview, 2025-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2015-04-01, 2015-04-08, 2015-11-06, 2016-03-19, 2016-03-31, 2019-08-01, 2019-12-12, 2020-03-01, 2020-04-01, 2020-06-01-preview, 2020-09-01, 2021-01-15, 2021-03-01-preview, 2021-03-15, 2021-04-01-preview, 2021-04-15, 2021-05-15, 2021-06-15, 2021-07-01-preview, 2021-10-15, 2021-10-15-preview, 2021-11-15-preview, 2022-02-15-preview, 2022-05-15, 2022-05-15-preview, 2022-08-15, 2022-08-15-preview, 2022-11-15, 2022-11-15-preview, 2023-03-01-preview, 2023-03-15, 2023-03-15-preview, 2023-04-15, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview, 2024-11-15, 2024-12-01-preview, 2025-04-15, 2025-05-01-preview, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type DatabaseAccount struct {
 	pulumi.CustomResourceState
 
@@ -46,6 +46,8 @@ type DatabaseAccount struct {
 	DatabaseAccountOfferType pulumi.StringOutput `pulumi:"databaseAccountOfferType"`
 	// The default identity for accessing key vault used in features like customer managed keys. The default identity needs to be explicitly set by the users. It can be "FirstPartyIdentity", "SystemAssignedIdentity" and more.
 	DefaultIdentity pulumi.StringPtrOutput `pulumi:"defaultIdentity"`
+	// Enum to indicate default Priority Level of request for Priority Based Execution.
+	DefaultPriorityLevel pulumi.StringPtrOutput `pulumi:"defaultPriorityLevel"`
 	// Disable write operations on metadata resources (databases, containers, throughput) via account keys
 	DisableKeyBasedMetadataWriteAccess pulumi.BoolPtrOutput `pulumi:"disableKeyBasedMetadataWriteAccess"`
 	// Opt-out of local authentication and ensure only MSI and AAD can be used exclusively for authentication.
@@ -68,6 +70,8 @@ type DatabaseAccount struct {
 	EnablePartitionMerge pulumi.BoolPtrOutput `pulumi:"enablePartitionMerge"`
 	// Flag to indicate enabling/disabling of PerRegionPerPartitionAutoscale feature on the account
 	EnablePerRegionPerPartitionAutoscale pulumi.BoolPtrOutput `pulumi:"enablePerRegionPerPartitionAutoscale"`
+	// Flag to indicate enabling/disabling of Priority Based Execution Preview feature on the account
+	EnablePriorityBasedExecution pulumi.BoolPtrOutput `pulumi:"enablePriorityBasedExecution"`
 	// An array that contains the regions ordered by their failover priorities.
 	FailoverPolicies FailoverPolicyResponseArrayOutput `pulumi:"failoverPolicies"`
 	// Identity for the resource.
@@ -80,6 +84,8 @@ type DatabaseAccount struct {
 	IsVirtualNetworkFilterEnabled pulumi.BoolPtrOutput `pulumi:"isVirtualNetworkFilterEnabled"`
 	// The URI of the key vault
 	KeyVaultKeyUri pulumi.StringPtrOutput `pulumi:"keyVaultKeyUri"`
+	// The version of the Customer Managed Key currently being used by the account
+	KeyVaultKeyUriVersion pulumi.StringOutput `pulumi:"keyVaultKeyUriVersion"`
 	// The object that represents the metadata for the Account Keys of the Cosmos DB account.
 	KeysMetadata DatabaseAccountKeysMetadataResponseOutput `pulumi:"keysMetadata"`
 	// Indicates the type of database account. This can only be set at database account creation.
@@ -280,6 +286,12 @@ func NewDatabaseAccount(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:cosmosdb/v20250501preview:DatabaseAccount"),
 		},
 		{
+			Type: pulumi.String("azure-native:cosmosdb/v20251015:DatabaseAccount"),
+		},
+		{
+			Type: pulumi.String("azure-native:cosmosdb/v20251101preview:DatabaseAccount"),
+		},
+		{
 			Type: pulumi.String("azure-native:documentdb/v20210401preview:DatabaseAccount"),
 		},
 		{
@@ -385,6 +397,8 @@ type databaseAccountArgs struct {
 	DatabaseAccountOfferType DatabaseAccountOfferType `pulumi:"databaseAccountOfferType"`
 	// The default identity for accessing key vault used in features like customer managed keys. The default identity needs to be explicitly set by the users. It can be "FirstPartyIdentity", "SystemAssignedIdentity" and more.
 	DefaultIdentity *string `pulumi:"defaultIdentity"`
+	// Enum to indicate default Priority Level of request for Priority Based Execution.
+	DefaultPriorityLevel *string `pulumi:"defaultPriorityLevel"`
 	// Disable write operations on metadata resources (databases, containers, throughput) via account keys
 	DisableKeyBasedMetadataWriteAccess *bool `pulumi:"disableKeyBasedMetadataWriteAccess"`
 	// Opt-out of local authentication and ensure only MSI and AAD can be used exclusively for authentication.
@@ -405,6 +419,8 @@ type databaseAccountArgs struct {
 	EnablePartitionMerge *bool `pulumi:"enablePartitionMerge"`
 	// Flag to indicate enabling/disabling of PerRegionPerPartitionAutoscale feature on the account
 	EnablePerRegionPerPartitionAutoscale *bool `pulumi:"enablePerRegionPerPartitionAutoscale"`
+	// Flag to indicate enabling/disabling of Priority Based Execution Preview feature on the account
+	EnablePriorityBasedExecution *bool `pulumi:"enablePriorityBasedExecution"`
 	// Identity for the resource.
 	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// List of IpRules.
@@ -465,6 +481,8 @@ type DatabaseAccountArgs struct {
 	DatabaseAccountOfferType DatabaseAccountOfferTypeInput
 	// The default identity for accessing key vault used in features like customer managed keys. The default identity needs to be explicitly set by the users. It can be "FirstPartyIdentity", "SystemAssignedIdentity" and more.
 	DefaultIdentity pulumi.StringPtrInput
+	// Enum to indicate default Priority Level of request for Priority Based Execution.
+	DefaultPriorityLevel pulumi.StringPtrInput
 	// Disable write operations on metadata resources (databases, containers, throughput) via account keys
 	DisableKeyBasedMetadataWriteAccess pulumi.BoolPtrInput
 	// Opt-out of local authentication and ensure only MSI and AAD can be used exclusively for authentication.
@@ -485,6 +503,8 @@ type DatabaseAccountArgs struct {
 	EnablePartitionMerge pulumi.BoolPtrInput
 	// Flag to indicate enabling/disabling of PerRegionPerPartitionAutoscale feature on the account
 	EnablePerRegionPerPartitionAutoscale pulumi.BoolPtrInput
+	// Flag to indicate enabling/disabling of Priority Based Execution Preview feature on the account
+	EnablePriorityBasedExecution pulumi.BoolPtrInput
 	// Identity for the resource.
 	Identity ManagedServiceIdentityPtrInput
 	// List of IpRules.
@@ -621,6 +641,11 @@ func (o DatabaseAccountOutput) DefaultIdentity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseAccount) pulumi.StringPtrOutput { return v.DefaultIdentity }).(pulumi.StringPtrOutput)
 }
 
+// Enum to indicate default Priority Level of request for Priority Based Execution.
+func (o DatabaseAccountOutput) DefaultPriorityLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseAccount) pulumi.StringPtrOutput { return v.DefaultPriorityLevel }).(pulumi.StringPtrOutput)
+}
+
 // Disable write operations on metadata resources (databases, containers, throughput) via account keys
 func (o DatabaseAccountOutput) DisableKeyBasedMetadataWriteAccess() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DatabaseAccount) pulumi.BoolPtrOutput { return v.DisableKeyBasedMetadataWriteAccess }).(pulumi.BoolPtrOutput)
@@ -676,6 +701,11 @@ func (o DatabaseAccountOutput) EnablePerRegionPerPartitionAutoscale() pulumi.Boo
 	return o.ApplyT(func(v *DatabaseAccount) pulumi.BoolPtrOutput { return v.EnablePerRegionPerPartitionAutoscale }).(pulumi.BoolPtrOutput)
 }
 
+// Flag to indicate enabling/disabling of Priority Based Execution Preview feature on the account
+func (o DatabaseAccountOutput) EnablePriorityBasedExecution() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DatabaseAccount) pulumi.BoolPtrOutput { return v.EnablePriorityBasedExecution }).(pulumi.BoolPtrOutput)
+}
+
 // An array that contains the regions ordered by their failover priorities.
 func (o DatabaseAccountOutput) FailoverPolicies() FailoverPolicyResponseArrayOutput {
 	return o.ApplyT(func(v *DatabaseAccount) FailoverPolicyResponseArrayOutput { return v.FailoverPolicies }).(FailoverPolicyResponseArrayOutput)
@@ -704,6 +734,11 @@ func (o DatabaseAccountOutput) IsVirtualNetworkFilterEnabled() pulumi.BoolPtrOut
 // The URI of the key vault
 func (o DatabaseAccountOutput) KeyVaultKeyUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseAccount) pulumi.StringPtrOutput { return v.KeyVaultKeyUri }).(pulumi.StringPtrOutput)
+}
+
+// The version of the Customer Managed Key currently being used by the account
+func (o DatabaseAccountOutput) KeyVaultKeyUriVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseAccount) pulumi.StringOutput { return v.KeyVaultKeyUriVersion }).(pulumi.StringOutput)
 }
 
 // The object that represents the metadata for the Account Keys of the Cosmos DB account.

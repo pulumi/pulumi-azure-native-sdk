@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Asset{}
 	case "azure-native:deviceregistry:AssetEndpointProfile":
 		r = &AssetEndpointProfile{}
+	case "azure-native:deviceregistry:Credential":
+		r = &Credential{}
 	case "azure-native:deviceregistry:DiscoveredAsset":
 		r = &DiscoveredAsset{}
 	case "azure-native:deviceregistry:DiscoveredAssetEndpointProfile":
@@ -39,6 +41,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NamespaceDiscoveredAsset{}
 	case "azure-native:deviceregistry:NamespaceDiscoveredDevice":
 		r = &NamespaceDiscoveredDevice{}
+	case "azure-native:deviceregistry:Policy":
+		r = &Policy{}
 	case "azure-native:deviceregistry:Schema":
 		r = &Schema{}
 	case "azure-native:deviceregistry:SchemaRegistry":

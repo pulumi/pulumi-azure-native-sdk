@@ -12,20 +12,20 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure Resource Manager resource envelope.
+// Azure Resource Manager resource envelope for Project CapabilityHost.
 //
 // Uses Azure REST API version 2025-04-01-preview.
 //
-// Other available API versions: 2025-06-01, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ProjectCapabilityHost struct {
 	pulumi.CustomResourceState
 
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
-	// [Required] Additional attributes of the entity.
-	CapabilityHostProperties CapabilityHostResponseOutput `pulumi:"capabilityHostProperties"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
+	// [Required] Additional attributes of the entity.
+	ProjectCapabilityHostProperties ProjectCapabilityHostResponseOutput `pulumi:"projectCapabilityHostProperties"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -40,8 +40,8 @@ func NewProjectCapabilityHost(ctx *pulumi.Context,
 	if args.AccountName == nil {
 		return nil, errors.New("invalid value for required argument 'AccountName'")
 	}
-	if args.CapabilityHostProperties == nil {
-		return nil, errors.New("invalid value for required argument 'CapabilityHostProperties'")
+	if args.ProjectCapabilityHostProperties == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectCapabilityHostProperties'")
 	}
 	if args.ProjectName == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectName'")
@@ -49,7 +49,6 @@ func NewProjectCapabilityHost(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	args.CapabilityHostProperties = args.CapabilityHostProperties.ToCapabilityHostOutput().ApplyT(func(v CapabilityHost) CapabilityHost { return *v.Defaults() }).(CapabilityHostOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:cognitiveservices/v20250401preview:ProjectCapabilityHost"),
@@ -62,6 +61,9 @@ func NewProjectCapabilityHost(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cognitiveservices/v20250901:ProjectCapabilityHost"),
+		},
+		{
+			Type: pulumi.String("azure-native:cognitiveservices/v20251001preview:ProjectCapabilityHost"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -103,7 +105,7 @@ type projectCapabilityHostArgs struct {
 	// The name of the capability host associated with the Cognitive Services Resource
 	CapabilityHostName *string `pulumi:"capabilityHostName"`
 	// [Required] Additional attributes of the entity.
-	CapabilityHostProperties CapabilityHost `pulumi:"capabilityHostProperties"`
+	ProjectCapabilityHostProperties ProjectCapabilityHostType `pulumi:"projectCapabilityHostProperties"`
 	// The name of Cognitive Services account's project.
 	ProjectName string `pulumi:"projectName"`
 	// The name of the resource group. The name is case insensitive.
@@ -117,7 +119,7 @@ type ProjectCapabilityHostArgs struct {
 	// The name of the capability host associated with the Cognitive Services Resource
 	CapabilityHostName pulumi.StringPtrInput
 	// [Required] Additional attributes of the entity.
-	CapabilityHostProperties CapabilityHostInput
+	ProjectCapabilityHostProperties ProjectCapabilityHostTypeInput
 	// The name of Cognitive Services account's project.
 	ProjectName pulumi.StringInput
 	// The name of the resource group. The name is case insensitive.
@@ -166,14 +168,16 @@ func (o ProjectCapabilityHostOutput) AzureApiVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectCapabilityHost) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
-// [Required] Additional attributes of the entity.
-func (o ProjectCapabilityHostOutput) CapabilityHostProperties() CapabilityHostResponseOutput {
-	return o.ApplyT(func(v *ProjectCapabilityHost) CapabilityHostResponseOutput { return v.CapabilityHostProperties }).(CapabilityHostResponseOutput)
-}
-
 // The name of the resource
 func (o ProjectCapabilityHostOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectCapabilityHost) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// [Required] Additional attributes of the entity.
+func (o ProjectCapabilityHostOutput) ProjectCapabilityHostProperties() ProjectCapabilityHostResponseOutput {
+	return o.ApplyT(func(v *ProjectCapabilityHost) ProjectCapabilityHostResponseOutput {
+		return v.ProjectCapabilityHostProperties
+	}).(ProjectCapabilityHostResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

@@ -562,6 +562,7 @@ func (in *autoUserScopePtr) ToAutoUserScopePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(AutoUserScopePtrOutput)
 }
 
+// The type of caching to enable for the disk.
 type CachingType string
 
 const (
@@ -1289,6 +1290,7 @@ func (in *computeNodeDeallocationOptionPtr) ToComputeNodeDeallocationOptionPtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(ComputeNodeDeallocationOptionPtrOutput)
 }
 
+// How tasks should be distributed across compute nodes.
 type ComputeNodeFillType string
 
 const (
@@ -1456,6 +1458,7 @@ func (in *computeNodeFillTypePtr) ToComputeNodeFillTypePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(ComputeNodeFillTypePtrOutput)
 }
 
+// The paths which will be mounted to container task's container.
 type ContainerHostDataPath string
 
 const (
@@ -1635,6 +1638,7 @@ func (in *containerHostDataPathPtr) ToContainerHostDataPathPtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(ContainerHostDataPathPtrOutput)
 }
 
+// The container technology to be used.
 type ContainerType string
 
 const (
@@ -1802,6 +1806,7 @@ func (in *containerTypePtr) ToContainerTypePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(ContainerTypePtrOutput)
 }
 
+// A flag to indicate where the container task working directory is. The default is 'taskWorkingDirectory'.
 type ContainerWorkingDirectory string
 
 const (
@@ -1973,7 +1978,7 @@ func (in *containerWorkingDirectoryPtr) ToContainerWorkingDirectoryPtrOutputWith
 type DiffDiskPlacement string
 
 const (
-	// The Ephemeral OS Disk is stored on the VM cache.
+	// The OS disk will be placed on the cache disk of the VM.
 	DiffDiskPlacementCacheDisk = DiffDiskPlacement("CacheDisk")
 )
 
@@ -2347,6 +2352,7 @@ func (o DiskEncryptionTargetArrayOutput) Index(i pulumi.IntInput) DiskEncryption
 	}).(DiskEncryptionTargetOutput)
 }
 
+// The scope of dynamic vnet assignment.
 type DynamicVNetAssignmentScope string
 
 const (
@@ -3186,6 +3192,7 @@ func (in *ipruleActionPtr) ToIPRuleActionPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(IPRuleActionPtrOutput)
 }
 
+// The protocol of the endpoint.
 type InboundEndpointProtocol string
 
 const (
@@ -3857,6 +3864,7 @@ func (in *loginModePtr) ToLoginModePtrOutputWithContext(ctx context.Context) Log
 	return pulumi.ToOutputWithContext(ctx, in).(LoginModePtrOutput)
 }
 
+// The action that should be taken for a specified IP address, subnet range or tag.
 type NetworkSecurityGroupRuleAccess string
 
 const (
@@ -4699,7 +4707,7 @@ func (in *poolIdentityTypePtr) ToPoolIdentityTypePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(PoolIdentityTypePtrOutput)
 }
 
-// If not specified, the default value is 'enabled'.
+// The network access type for operating on the resources in the Batch account.
 type PublicNetworkAccessType string
 
 const (
@@ -5041,6 +5049,7 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
 }
 
+// Specifies the EncryptionType of the managed disk. It is set to VMGuestStateOnly for encryption of just the VMGuestState blob, and NonPersistedTPM for not persisting firmware state in the VMGuestState blob. **Note**: It can be set for only Confidential VMs and required when using Confidential VMs.
 type SecurityEncryptionTypes string
 
 const (
@@ -5206,6 +5215,7 @@ func (in *securityEncryptionTypesPtr) ToSecurityEncryptionTypesPtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityEncryptionTypesPtrOutput)
 }
 
+// Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings.
 type SecurityTypes string
 
 const (
@@ -5373,6 +5383,7 @@ func (in *securityTypesPtr) ToSecurityTypesPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityTypesPtrOutput)
 }
 
+// The storage account type for use in creating data disks or OS disk.
 type StorageAccountType string
 
 const (
@@ -5543,6 +5554,7 @@ func (in *storageAccountTypePtr) ToStorageAccountTypePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(StorageAccountTypePtrOutput)
 }
 
+// Specifies the mode of an upgrade to virtual machines in the scale set.<br /><br /> Possible values are:<br /><br /> **Manual** - You  control the application of updates to virtual machines in the scale set. You do this by using the manualUpgrade action.<br /><br /> **Automatic** - All virtual machines in the scale set are automatically updated at the same time.<br /><br /> **Rolling** - Scale set performs updates in batches with an optional pause time in between.
 type UpgradeMode string
 
 const (

@@ -3973,10 +3973,14 @@ func (o ClusterKeyResponseArrayOutput) Index(i pulumi.IntInput) ClusterKeyRespon
 	}).(ClusterKeyResponseOutput)
 }
 
-// Properties of a managed Cassandra cluster.
+// Properties of a Garnet cache cluster.
 type ClusterResourceProperties struct {
+	// Allocation state of the cluster and data center resources. Active implies the virtual machines of the cluster are allocated, deallocated implies virtual machines and resources are deallocated.
+	AllocationState *string `pulumi:"allocationState"`
 	// Which authentication method Cassandra should use to authenticate clients. 'None' turns off authentication, so should not be used except in emergencies. 'Cassandra' is the default password based authentication. The default is 'Cassandra'.
 	AuthenticationMethod *string `pulumi:"authenticationMethod"`
+	// If the data center has Availability Zone support, apply it to the Virtual Machine ScaleSet that host the garnet cluster virtual machines.
+	AvailabilityZone *bool `pulumi:"availabilityZone"`
 	// How to connect to the azure services needed for running the cluster
 	AzureConnectionMethod *string `pulumi:"azureConnectionMethod"`
 	// Whether Cassandra audit logging is enabled
@@ -3987,10 +3991,14 @@ type ClusterResourceProperties struct {
 	ClientCertificates []Certificate `pulumi:"clientCertificates"`
 	// If you need to set the clusterName property in cassandra.yaml to something besides the resource name of the cluster, set the value to use on this property.
 	ClusterNameOverride *string `pulumi:"clusterNameOverride"`
+	// Type of the cluster. If set to Production, some operations might not be permitted on cluster.
+	ClusterType *string `pulumi:"clusterType"`
 	// Whether the cluster and associated data centers has been deallocated.
 	Deallocated *bool `pulumi:"deallocated"`
 	// Resource id of a subnet that this cluster's management service should have its network interface attached to. The subnet must be routable to all subnets that will be delegated to data centers. The resource id must be of the form '/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Network/virtualNetworks/<virtual network>/subnets/<subnet>'
 	DelegatedManagementSubnetId *string `pulumi:"delegatedManagementSubnetId"`
+	// Extensions to be added or updated on cluster.
+	Extensions []string `pulumi:"extensions"`
 	// List of TLS certificates used to authorize gossip from unmanaged data centers. The TLS certificates of all nodes in unmanaged data centers must be verifiable using one of the certificates provided in this property.
 	ExternalGossipCertificates []Certificate `pulumi:"externalGossipCertificates"`
 	// List of IP addresses of seed nodes in unmanaged data centers. These will be added to the seed node lists of all managed nodes.
@@ -3999,6 +4007,10 @@ type ClusterResourceProperties struct {
 	HoursBetweenBackups *int `pulumi:"hoursBetweenBackups"`
 	// Initial password for clients connecting as admin to the cluster. Should be changed after cluster creation. Returns null on GET. This field only applies when the authenticationMethod field is 'Cassandra'.
 	InitialCassandraAdminPassword *string `pulumi:"initialCassandraAdminPassword"`
+	// Number of nodes
+	NodeCount *int `pulumi:"nodeCount"`
+	// Virtual Machine SKU used for clusters. Default value is Standard_DS14_v2
+	NodeSku *string `pulumi:"nodeSku"`
 	// Hostname or IP address where the Prometheus endpoint containing data about the managed Cassandra nodes can be reached.
 	PrometheusEndpoint *SeedNode `pulumi:"prometheusEndpoint"`
 	// Error related to resource provisioning.
@@ -4007,8 +4019,12 @@ type ClusterResourceProperties struct {
 	ProvisioningState *string `pulumi:"provisioningState"`
 	// Should automatic repairs run on this cluster? If omitted, this is true, and should stay true unless you are running a hybrid cluster where you are already doing your own repairs.
 	RepairEnabled *bool `pulumi:"repairEnabled"`
+	// Number of copies of data maintained by the cluster
+	ReplicationFactor *int `pulumi:"replicationFactor"`
 	// To create an empty cluster, omit this field or set it to null. To restore a backup into a new cluster, set this field to the resource id of the backup.
 	RestoreFromBackupId *string `pulumi:"restoreFromBackupId"`
+	// Resource id of a subnet that this cluster's management service should have its network interface attached to. The subnet must be routable to all subnets that will be delegated to data centers. The resource id must be of the form '/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Network/virtualNetworks/<virtual network>/subnets/<subnet>'
+	SubnetId *string `pulumi:"subnetId"`
 }
 
 // ClusterResourcePropertiesInput is an input type that accepts ClusterResourcePropertiesArgs and ClusterResourcePropertiesOutput values.
@@ -4022,10 +4038,14 @@ type ClusterResourcePropertiesInput interface {
 	ToClusterResourcePropertiesOutputWithContext(context.Context) ClusterResourcePropertiesOutput
 }
 
-// Properties of a managed Cassandra cluster.
+// Properties of a Garnet cache cluster.
 type ClusterResourcePropertiesArgs struct {
+	// Allocation state of the cluster and data center resources. Active implies the virtual machines of the cluster are allocated, deallocated implies virtual machines and resources are deallocated.
+	AllocationState pulumi.StringPtrInput `pulumi:"allocationState"`
 	// Which authentication method Cassandra should use to authenticate clients. 'None' turns off authentication, so should not be used except in emergencies. 'Cassandra' is the default password based authentication. The default is 'Cassandra'.
 	AuthenticationMethod pulumi.StringPtrInput `pulumi:"authenticationMethod"`
+	// If the data center has Availability Zone support, apply it to the Virtual Machine ScaleSet that host the garnet cluster virtual machines.
+	AvailabilityZone pulumi.BoolPtrInput `pulumi:"availabilityZone"`
 	// How to connect to the azure services needed for running the cluster
 	AzureConnectionMethod pulumi.StringPtrInput `pulumi:"azureConnectionMethod"`
 	// Whether Cassandra audit logging is enabled
@@ -4036,10 +4056,14 @@ type ClusterResourcePropertiesArgs struct {
 	ClientCertificates CertificateArrayInput `pulumi:"clientCertificates"`
 	// If you need to set the clusterName property in cassandra.yaml to something besides the resource name of the cluster, set the value to use on this property.
 	ClusterNameOverride pulumi.StringPtrInput `pulumi:"clusterNameOverride"`
+	// Type of the cluster. If set to Production, some operations might not be permitted on cluster.
+	ClusterType pulumi.StringPtrInput `pulumi:"clusterType"`
 	// Whether the cluster and associated data centers has been deallocated.
 	Deallocated pulumi.BoolPtrInput `pulumi:"deallocated"`
 	// Resource id of a subnet that this cluster's management service should have its network interface attached to. The subnet must be routable to all subnets that will be delegated to data centers. The resource id must be of the form '/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Network/virtualNetworks/<virtual network>/subnets/<subnet>'
 	DelegatedManagementSubnetId pulumi.StringPtrInput `pulumi:"delegatedManagementSubnetId"`
+	// Extensions to be added or updated on cluster.
+	Extensions pulumi.StringArrayInput `pulumi:"extensions"`
 	// List of TLS certificates used to authorize gossip from unmanaged data centers. The TLS certificates of all nodes in unmanaged data centers must be verifiable using one of the certificates provided in this property.
 	ExternalGossipCertificates CertificateArrayInput `pulumi:"externalGossipCertificates"`
 	// List of IP addresses of seed nodes in unmanaged data centers. These will be added to the seed node lists of all managed nodes.
@@ -4048,6 +4072,10 @@ type ClusterResourcePropertiesArgs struct {
 	HoursBetweenBackups pulumi.IntPtrInput `pulumi:"hoursBetweenBackups"`
 	// Initial password for clients connecting as admin to the cluster. Should be changed after cluster creation. Returns null on GET. This field only applies when the authenticationMethod field is 'Cassandra'.
 	InitialCassandraAdminPassword pulumi.StringPtrInput `pulumi:"initialCassandraAdminPassword"`
+	// Number of nodes
+	NodeCount pulumi.IntPtrInput `pulumi:"nodeCount"`
+	// Virtual Machine SKU used for clusters. Default value is Standard_DS14_v2
+	NodeSku pulumi.StringPtrInput `pulumi:"nodeSku"`
 	// Hostname or IP address where the Prometheus endpoint containing data about the managed Cassandra nodes can be reached.
 	PrometheusEndpoint SeedNodePtrInput `pulumi:"prometheusEndpoint"`
 	// Error related to resource provisioning.
@@ -4056,8 +4084,12 @@ type ClusterResourcePropertiesArgs struct {
 	ProvisioningState pulumi.StringPtrInput `pulumi:"provisioningState"`
 	// Should automatic repairs run on this cluster? If omitted, this is true, and should stay true unless you are running a hybrid cluster where you are already doing your own repairs.
 	RepairEnabled pulumi.BoolPtrInput `pulumi:"repairEnabled"`
+	// Number of copies of data maintained by the cluster
+	ReplicationFactor pulumi.IntPtrInput `pulumi:"replicationFactor"`
 	// To create an empty cluster, omit this field or set it to null. To restore a backup into a new cluster, set this field to the resource id of the backup.
 	RestoreFromBackupId pulumi.StringPtrInput `pulumi:"restoreFromBackupId"`
+	// Resource id of a subnet that this cluster's management service should have its network interface attached to. The subnet must be routable to all subnets that will be delegated to data centers. The resource id must be of the form '/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Network/virtualNetworks/<virtual network>/subnets/<subnet>'
+	SubnetId pulumi.StringPtrInput `pulumi:"subnetId"`
 }
 
 func (ClusterResourcePropertiesArgs) ElementType() reflect.Type {
@@ -4113,7 +4145,7 @@ func (i *clusterResourcePropertiesPtrType) ToClusterResourcePropertiesPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterResourcePropertiesPtrOutput)
 }
 
-// Properties of a managed Cassandra cluster.
+// Properties of a Garnet cache cluster.
 type ClusterResourcePropertiesOutput struct{ *pulumi.OutputState }
 
 func (ClusterResourcePropertiesOutput) ElementType() reflect.Type {
@@ -4138,9 +4170,19 @@ func (o ClusterResourcePropertiesOutput) ToClusterResourcePropertiesPtrOutputWit
 	}).(ClusterResourcePropertiesPtrOutput)
 }
 
+// Allocation state of the cluster and data center resources. Active implies the virtual machines of the cluster are allocated, deallocated implies virtual machines and resources are deallocated.
+func (o ClusterResourcePropertiesOutput) AllocationState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterResourceProperties) *string { return v.AllocationState }).(pulumi.StringPtrOutput)
+}
+
 // Which authentication method Cassandra should use to authenticate clients. 'None' turns off authentication, so should not be used except in emergencies. 'Cassandra' is the default password based authentication. The default is 'Cassandra'.
 func (o ClusterResourcePropertiesOutput) AuthenticationMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterResourceProperties) *string { return v.AuthenticationMethod }).(pulumi.StringPtrOutput)
+}
+
+// If the data center has Availability Zone support, apply it to the Virtual Machine ScaleSet that host the garnet cluster virtual machines.
+func (o ClusterResourcePropertiesOutput) AvailabilityZone() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterResourceProperties) *bool { return v.AvailabilityZone }).(pulumi.BoolPtrOutput)
 }
 
 // How to connect to the azure services needed for running the cluster
@@ -4168,6 +4210,11 @@ func (o ClusterResourcePropertiesOutput) ClusterNameOverride() pulumi.StringPtrO
 	return o.ApplyT(func(v ClusterResourceProperties) *string { return v.ClusterNameOverride }).(pulumi.StringPtrOutput)
 }
 
+// Type of the cluster. If set to Production, some operations might not be permitted on cluster.
+func (o ClusterResourcePropertiesOutput) ClusterType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterResourceProperties) *string { return v.ClusterType }).(pulumi.StringPtrOutput)
+}
+
 // Whether the cluster and associated data centers has been deallocated.
 func (o ClusterResourcePropertiesOutput) Deallocated() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterResourceProperties) *bool { return v.Deallocated }).(pulumi.BoolPtrOutput)
@@ -4176,6 +4223,11 @@ func (o ClusterResourcePropertiesOutput) Deallocated() pulumi.BoolPtrOutput {
 // Resource id of a subnet that this cluster's management service should have its network interface attached to. The subnet must be routable to all subnets that will be delegated to data centers. The resource id must be of the form '/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Network/virtualNetworks/<virtual network>/subnets/<subnet>'
 func (o ClusterResourcePropertiesOutput) DelegatedManagementSubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterResourceProperties) *string { return v.DelegatedManagementSubnetId }).(pulumi.StringPtrOutput)
+}
+
+// Extensions to be added or updated on cluster.
+func (o ClusterResourcePropertiesOutput) Extensions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterResourceProperties) []string { return v.Extensions }).(pulumi.StringArrayOutput)
 }
 
 // List of TLS certificates used to authorize gossip from unmanaged data centers. The TLS certificates of all nodes in unmanaged data centers must be verifiable using one of the certificates provided in this property.
@@ -4198,6 +4250,16 @@ func (o ClusterResourcePropertiesOutput) InitialCassandraAdminPassword() pulumi.
 	return o.ApplyT(func(v ClusterResourceProperties) *string { return v.InitialCassandraAdminPassword }).(pulumi.StringPtrOutput)
 }
 
+// Number of nodes
+func (o ClusterResourcePropertiesOutput) NodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterResourceProperties) *int { return v.NodeCount }).(pulumi.IntPtrOutput)
+}
+
+// Virtual Machine SKU used for clusters. Default value is Standard_DS14_v2
+func (o ClusterResourcePropertiesOutput) NodeSku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterResourceProperties) *string { return v.NodeSku }).(pulumi.StringPtrOutput)
+}
+
 // Hostname or IP address where the Prometheus endpoint containing data about the managed Cassandra nodes can be reached.
 func (o ClusterResourcePropertiesOutput) PrometheusEndpoint() SeedNodePtrOutput {
 	return o.ApplyT(func(v ClusterResourceProperties) *SeedNode { return v.PrometheusEndpoint }).(SeedNodePtrOutput)
@@ -4218,9 +4280,19 @@ func (o ClusterResourcePropertiesOutput) RepairEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterResourceProperties) *bool { return v.RepairEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// Number of copies of data maintained by the cluster
+func (o ClusterResourcePropertiesOutput) ReplicationFactor() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterResourceProperties) *int { return v.ReplicationFactor }).(pulumi.IntPtrOutput)
+}
+
 // To create an empty cluster, omit this field or set it to null. To restore a backup into a new cluster, set this field to the resource id of the backup.
 func (o ClusterResourcePropertiesOutput) RestoreFromBackupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterResourceProperties) *string { return v.RestoreFromBackupId }).(pulumi.StringPtrOutput)
+}
+
+// Resource id of a subnet that this cluster's management service should have its network interface attached to. The subnet must be routable to all subnets that will be delegated to data centers. The resource id must be of the form '/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Network/virtualNetworks/<virtual network>/subnets/<subnet>'
+func (o ClusterResourcePropertiesOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterResourceProperties) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
 }
 
 type ClusterResourcePropertiesPtrOutput struct{ *pulumi.OutputState }
@@ -4247,6 +4319,16 @@ func (o ClusterResourcePropertiesPtrOutput) Elem() ClusterResourcePropertiesOutp
 	}).(ClusterResourcePropertiesOutput)
 }
 
+// Allocation state of the cluster and data center resources. Active implies the virtual machines of the cluster are allocated, deallocated implies virtual machines and resources are deallocated.
+func (o ClusterResourcePropertiesPtrOutput) AllocationState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterResourceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AllocationState
+	}).(pulumi.StringPtrOutput)
+}
+
 // Which authentication method Cassandra should use to authenticate clients. 'None' turns off authentication, so should not be used except in emergencies. 'Cassandra' is the default password based authentication. The default is 'Cassandra'.
 func (o ClusterResourcePropertiesPtrOutput) AuthenticationMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterResourceProperties) *string {
@@ -4255,6 +4337,16 @@ func (o ClusterResourcePropertiesPtrOutput) AuthenticationMethod() pulumi.String
 		}
 		return v.AuthenticationMethod
 	}).(pulumi.StringPtrOutput)
+}
+
+// If the data center has Availability Zone support, apply it to the Virtual Machine ScaleSet that host the garnet cluster virtual machines.
+func (o ClusterResourcePropertiesPtrOutput) AvailabilityZone() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterResourceProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AvailabilityZone
+	}).(pulumi.BoolPtrOutput)
 }
 
 // How to connect to the azure services needed for running the cluster
@@ -4307,6 +4399,16 @@ func (o ClusterResourcePropertiesPtrOutput) ClusterNameOverride() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+// Type of the cluster. If set to Production, some operations might not be permitted on cluster.
+func (o ClusterResourcePropertiesPtrOutput) ClusterType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterResourceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterType
+	}).(pulumi.StringPtrOutput)
+}
+
 // Whether the cluster and associated data centers has been deallocated.
 func (o ClusterResourcePropertiesPtrOutput) Deallocated() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterResourceProperties) *bool {
@@ -4325,6 +4427,16 @@ func (o ClusterResourcePropertiesPtrOutput) DelegatedManagementSubnetId() pulumi
 		}
 		return v.DelegatedManagementSubnetId
 	}).(pulumi.StringPtrOutput)
+}
+
+// Extensions to be added or updated on cluster.
+func (o ClusterResourcePropertiesPtrOutput) Extensions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClusterResourceProperties) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Extensions
+	}).(pulumi.StringArrayOutput)
 }
 
 // List of TLS certificates used to authorize gossip from unmanaged data centers. The TLS certificates of all nodes in unmanaged data centers must be verifiable using one of the certificates provided in this property.
@@ -4364,6 +4476,26 @@ func (o ClusterResourcePropertiesPtrOutput) InitialCassandraAdminPassword() pulu
 			return nil
 		}
 		return v.InitialCassandraAdminPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of nodes
+func (o ClusterResourcePropertiesPtrOutput) NodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterResourceProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Virtual Machine SKU used for clusters. Default value is Standard_DS14_v2
+func (o ClusterResourcePropertiesPtrOutput) NodeSku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterResourceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NodeSku
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4407,6 +4539,16 @@ func (o ClusterResourcePropertiesPtrOutput) RepairEnabled() pulumi.BoolPtrOutput
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Number of copies of data maintained by the cluster
+func (o ClusterResourcePropertiesPtrOutput) ReplicationFactor() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterResourceProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ReplicationFactor
+	}).(pulumi.IntPtrOutput)
+}
+
 // To create an empty cluster, omit this field or set it to null. To restore a backup into a new cluster, set this field to the resource id of the backup.
 func (o ClusterResourcePropertiesPtrOutput) RestoreFromBackupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterResourceProperties) *string {
@@ -4415,6 +4557,67 @@ func (o ClusterResourcePropertiesPtrOutput) RestoreFromBackupId() pulumi.StringP
 		}
 		return v.RestoreFromBackupId
 	}).(pulumi.StringPtrOutput)
+}
+
+// Resource id of a subnet that this cluster's management service should have its network interface attached to. The subnet must be routable to all subnets that will be delegated to data centers. The resource id must be of the form '/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Network/virtualNetworks/<virtual network>/subnets/<subnet>'
+func (o ClusterResourcePropertiesPtrOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterResourceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubnetId
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterResourceResponseEndPoints struct {
+	// Ipv4 address of the endpoint
+	IpAddress *string `pulumi:"ipAddress"`
+	// Port number
+	Port *int `pulumi:"port"`
+}
+
+type ClusterResourceResponseEndPointsOutput struct{ *pulumi.OutputState }
+
+func (ClusterResourceResponseEndPointsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterResourceResponseEndPoints)(nil)).Elem()
+}
+
+func (o ClusterResourceResponseEndPointsOutput) ToClusterResourceResponseEndPointsOutput() ClusterResourceResponseEndPointsOutput {
+	return o
+}
+
+func (o ClusterResourceResponseEndPointsOutput) ToClusterResourceResponseEndPointsOutputWithContext(ctx context.Context) ClusterResourceResponseEndPointsOutput {
+	return o
+}
+
+// Ipv4 address of the endpoint
+func (o ClusterResourceResponseEndPointsOutput) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterResourceResponseEndPoints) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
+}
+
+// Port number
+func (o ClusterResourceResponseEndPointsOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterResourceResponseEndPoints) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+type ClusterResourceResponseEndPointsArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterResourceResponseEndPointsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterResourceResponseEndPoints)(nil)).Elem()
+}
+
+func (o ClusterResourceResponseEndPointsArrayOutput) ToClusterResourceResponseEndPointsArrayOutput() ClusterResourceResponseEndPointsArrayOutput {
+	return o
+}
+
+func (o ClusterResourceResponseEndPointsArrayOutput) ToClusterResourceResponseEndPointsArrayOutputWithContext(ctx context.Context) ClusterResourceResponseEndPointsArrayOutput {
+	return o
+}
+
+func (o ClusterResourceResponseEndPointsArrayOutput) Index(i pulumi.IntInput) ClusterResourceResponseEndPointsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterResourceResponseEndPoints {
+		return vs[0].([]ClusterResourceResponseEndPoints)[vs[1].(int)]
+	}).(ClusterResourceResponseEndPointsOutput)
 }
 
 // Properties of a managed Cassandra cluster.
@@ -4560,6 +4763,102 @@ func (o ClusterResourceResponsePropertiesOutput) RepairEnabled() pulumi.BoolPtrO
 // List of IP addresses of seed nodes in the managed data centers. These should be added to the seed node lists of all unmanaged nodes.
 func (o ClusterResourceResponsePropertiesOutput) SeedNodes() SeedNodeResponseArrayOutput {
 	return o.ApplyT(func(v ClusterResourceResponseProperties) []SeedNodeResponse { return v.SeedNodes }).(SeedNodeResponseArrayOutput)
+}
+
+// Properties of a Garnet cache cluster.
+type ClusterResourceResponsePropertiesV1 struct {
+	// Allocation state of the cluster and data center resources. Active implies the virtual machines of the cluster are allocated, deallocated implies virtual machines and resources are deallocated.
+	AllocationState *string `pulumi:"allocationState"`
+	// If the data center has Availability Zone support, apply it to the Virtual Machine ScaleSet that host the garnet cluster virtual machines.
+	AvailabilityZone *bool `pulumi:"availabilityZone"`
+	// Type of the cluster. If set to Production, some operations might not be permitted on cluster.
+	ClusterType *string `pulumi:"clusterType"`
+	// endpoints for clients to connect to the cluster.
+	EndPoints []ClusterResourceResponseEndPoints `pulumi:"endPoints"`
+	// Extensions to be added or updated on cluster.
+	Extensions []string `pulumi:"extensions"`
+	// Number of nodes
+	NodeCount *int `pulumi:"nodeCount"`
+	// Virtual Machine SKU used for clusters. Default value is Standard_DS14_v2
+	NodeSku *string `pulumi:"nodeSku"`
+	// Error related to resource provisioning.
+	ProvisionError *ErrorDetailResponse `pulumi:"provisionError"`
+	// The status of the resource at the time the operation was called.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Number of copies of data maintained by the cluster
+	ReplicationFactor *int `pulumi:"replicationFactor"`
+	// Resource id of a subnet that this cluster's management service should have its network interface attached to. The subnet must be routable to all subnets that will be delegated to data centers. The resource id must be of the form '/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Network/virtualNetworks/<virtual network>/subnets/<subnet>'
+	SubnetId *string `pulumi:"subnetId"`
+}
+
+// Properties of a Garnet cache cluster.
+type ClusterResourceResponsePropertiesV1Output struct{ *pulumi.OutputState }
+
+func (ClusterResourceResponsePropertiesV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterResourceResponsePropertiesV1)(nil)).Elem()
+}
+
+func (o ClusterResourceResponsePropertiesV1Output) ToClusterResourceResponsePropertiesV1Output() ClusterResourceResponsePropertiesV1Output {
+	return o
+}
+
+func (o ClusterResourceResponsePropertiesV1Output) ToClusterResourceResponsePropertiesV1OutputWithContext(ctx context.Context) ClusterResourceResponsePropertiesV1Output {
+	return o
+}
+
+// Allocation state of the cluster and data center resources. Active implies the virtual machines of the cluster are allocated, deallocated implies virtual machines and resources are deallocated.
+func (o ClusterResourceResponsePropertiesV1Output) AllocationState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterResourceResponsePropertiesV1) *string { return v.AllocationState }).(pulumi.StringPtrOutput)
+}
+
+// If the data center has Availability Zone support, apply it to the Virtual Machine ScaleSet that host the garnet cluster virtual machines.
+func (o ClusterResourceResponsePropertiesV1Output) AvailabilityZone() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterResourceResponsePropertiesV1) *bool { return v.AvailabilityZone }).(pulumi.BoolPtrOutput)
+}
+
+// Type of the cluster. If set to Production, some operations might not be permitted on cluster.
+func (o ClusterResourceResponsePropertiesV1Output) ClusterType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterResourceResponsePropertiesV1) *string { return v.ClusterType }).(pulumi.StringPtrOutput)
+}
+
+// endpoints for clients to connect to the cluster.
+func (o ClusterResourceResponsePropertiesV1Output) EndPoints() ClusterResourceResponseEndPointsArrayOutput {
+	return o.ApplyT(func(v ClusterResourceResponsePropertiesV1) []ClusterResourceResponseEndPoints { return v.EndPoints }).(ClusterResourceResponseEndPointsArrayOutput)
+}
+
+// Extensions to be added or updated on cluster.
+func (o ClusterResourceResponsePropertiesV1Output) Extensions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterResourceResponsePropertiesV1) []string { return v.Extensions }).(pulumi.StringArrayOutput)
+}
+
+// Number of nodes
+func (o ClusterResourceResponsePropertiesV1Output) NodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterResourceResponsePropertiesV1) *int { return v.NodeCount }).(pulumi.IntPtrOutput)
+}
+
+// Virtual Machine SKU used for clusters. Default value is Standard_DS14_v2
+func (o ClusterResourceResponsePropertiesV1Output) NodeSku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterResourceResponsePropertiesV1) *string { return v.NodeSku }).(pulumi.StringPtrOutput)
+}
+
+// Error related to resource provisioning.
+func (o ClusterResourceResponsePropertiesV1Output) ProvisionError() ErrorDetailResponsePtrOutput {
+	return o.ApplyT(func(v ClusterResourceResponsePropertiesV1) *ErrorDetailResponse { return v.ProvisionError }).(ErrorDetailResponsePtrOutput)
+}
+
+// The status of the resource at the time the operation was called.
+func (o ClusterResourceResponsePropertiesV1Output) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterResourceResponsePropertiesV1) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Number of copies of data maintained by the cluster
+func (o ClusterResourceResponsePropertiesV1Output) ReplicationFactor() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterResourceResponsePropertiesV1) *int { return v.ReplicationFactor }).(pulumi.IntPtrOutput)
+}
+
+// Resource id of a subnet that this cluster's management service should have its network interface attached to. The subnet must be routable to all subnets that will be delegated to data centers. The resource id must be of the form '/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Network/virtualNetworks/<virtual network>/subnets/<subnet>'
+func (o ClusterResourceResponsePropertiesV1Output) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterResourceResponsePropertiesV1) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
 }
 
 // Cosmos DB Cassandra table column
@@ -7983,6 +8282,207 @@ func (o DatabaseRestoreResourceResponseArrayOutput) Index(i pulumi.IntInput) Dat
 	}).(DatabaseRestoreResourceResponseOutput)
 }
 
+// The resource management error additional info.
+type ErrorAdditionalInfoResponse struct {
+	// The additional info.
+	Info interface{} `pulumi:"info"`
+	// The additional info type.
+	Type string `pulumi:"type"`
+}
+
+// The resource management error additional info.
+type ErrorAdditionalInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (ErrorAdditionalInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErrorAdditionalInfoResponse)(nil)).Elem()
+}
+
+func (o ErrorAdditionalInfoResponseOutput) ToErrorAdditionalInfoResponseOutput() ErrorAdditionalInfoResponseOutput {
+	return o
+}
+
+func (o ErrorAdditionalInfoResponseOutput) ToErrorAdditionalInfoResponseOutputWithContext(ctx context.Context) ErrorAdditionalInfoResponseOutput {
+	return o
+}
+
+// The additional info.
+func (o ErrorAdditionalInfoResponseOutput) Info() pulumi.AnyOutput {
+	return o.ApplyT(func(v ErrorAdditionalInfoResponse) interface{} { return v.Info }).(pulumi.AnyOutput)
+}
+
+// The additional info type.
+func (o ErrorAdditionalInfoResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorAdditionalInfoResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ErrorAdditionalInfoResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ErrorAdditionalInfoResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ErrorAdditionalInfoResponse)(nil)).Elem()
+}
+
+func (o ErrorAdditionalInfoResponseArrayOutput) ToErrorAdditionalInfoResponseArrayOutput() ErrorAdditionalInfoResponseArrayOutput {
+	return o
+}
+
+func (o ErrorAdditionalInfoResponseArrayOutput) ToErrorAdditionalInfoResponseArrayOutputWithContext(ctx context.Context) ErrorAdditionalInfoResponseArrayOutput {
+	return o
+}
+
+func (o ErrorAdditionalInfoResponseArrayOutput) Index(i pulumi.IntInput) ErrorAdditionalInfoResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ErrorAdditionalInfoResponse {
+		return vs[0].([]ErrorAdditionalInfoResponse)[vs[1].(int)]
+	}).(ErrorAdditionalInfoResponseOutput)
+}
+
+// The error detail.
+type ErrorDetailResponse struct {
+	// The error additional info.
+	AdditionalInfo []ErrorAdditionalInfoResponse `pulumi:"additionalInfo"`
+	// The error code.
+	Code string `pulumi:"code"`
+	// The error details.
+	Details []ErrorDetailResponse `pulumi:"details"`
+	// The error message.
+	Message string `pulumi:"message"`
+	// The error target.
+	Target string `pulumi:"target"`
+}
+
+// The error detail.
+type ErrorDetailResponseOutput struct{ *pulumi.OutputState }
+
+func (ErrorDetailResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErrorDetailResponse)(nil)).Elem()
+}
+
+func (o ErrorDetailResponseOutput) ToErrorDetailResponseOutput() ErrorDetailResponseOutput {
+	return o
+}
+
+func (o ErrorDetailResponseOutput) ToErrorDetailResponseOutputWithContext(ctx context.Context) ErrorDetailResponseOutput {
+	return o
+}
+
+// The error additional info.
+func (o ErrorDetailResponseOutput) AdditionalInfo() ErrorAdditionalInfoResponseArrayOutput {
+	return o.ApplyT(func(v ErrorDetailResponse) []ErrorAdditionalInfoResponse { return v.AdditionalInfo }).(ErrorAdditionalInfoResponseArrayOutput)
+}
+
+// The error code.
+func (o ErrorDetailResponseOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorDetailResponse) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// The error details.
+func (o ErrorDetailResponseOutput) Details() ErrorDetailResponseArrayOutput {
+	return o.ApplyT(func(v ErrorDetailResponse) []ErrorDetailResponse { return v.Details }).(ErrorDetailResponseArrayOutput)
+}
+
+// The error message.
+func (o ErrorDetailResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorDetailResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// The error target.
+func (o ErrorDetailResponseOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorDetailResponse) string { return v.Target }).(pulumi.StringOutput)
+}
+
+type ErrorDetailResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ErrorDetailResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErrorDetailResponse)(nil)).Elem()
+}
+
+func (o ErrorDetailResponsePtrOutput) ToErrorDetailResponsePtrOutput() ErrorDetailResponsePtrOutput {
+	return o
+}
+
+func (o ErrorDetailResponsePtrOutput) ToErrorDetailResponsePtrOutputWithContext(ctx context.Context) ErrorDetailResponsePtrOutput {
+	return o
+}
+
+func (o ErrorDetailResponsePtrOutput) Elem() ErrorDetailResponseOutput {
+	return o.ApplyT(func(v *ErrorDetailResponse) ErrorDetailResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ErrorDetailResponse
+		return ret
+	}).(ErrorDetailResponseOutput)
+}
+
+// The error additional info.
+func (o ErrorDetailResponsePtrOutput) AdditionalInfo() ErrorAdditionalInfoResponseArrayOutput {
+	return o.ApplyT(func(v *ErrorDetailResponse) []ErrorAdditionalInfoResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalInfo
+	}).(ErrorAdditionalInfoResponseArrayOutput)
+}
+
+// The error code.
+func (o ErrorDetailResponsePtrOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErrorDetailResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Code
+	}).(pulumi.StringPtrOutput)
+}
+
+// The error details.
+func (o ErrorDetailResponsePtrOutput) Details() ErrorDetailResponseArrayOutput {
+	return o.ApplyT(func(v *ErrorDetailResponse) []ErrorDetailResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Details
+	}).(ErrorDetailResponseArrayOutput)
+}
+
+// The error message.
+func (o ErrorDetailResponsePtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErrorDetailResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Message
+	}).(pulumi.StringPtrOutput)
+}
+
+// The error target.
+func (o ErrorDetailResponsePtrOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErrorDetailResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Target
+	}).(pulumi.StringPtrOutput)
+}
+
+type ErrorDetailResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ErrorDetailResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ErrorDetailResponse)(nil)).Elem()
+}
+
+func (o ErrorDetailResponseArrayOutput) ToErrorDetailResponseArrayOutput() ErrorDetailResponseArrayOutput {
+	return o
+}
+
+func (o ErrorDetailResponseArrayOutput) ToErrorDetailResponseArrayOutputWithContext(ctx context.Context) ErrorDetailResponseArrayOutput {
+	return o
+}
+
+func (o ErrorDetailResponseArrayOutput) Index(i pulumi.IntInput) ErrorDetailResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ErrorDetailResponse {
+		return vs[0].([]ErrorDetailResponse)[vs[1].(int)]
+	}).(ErrorDetailResponseOutput)
+}
+
 type ExcludedPath struct {
 	// The path for which the indexing behavior applies to. Index paths typically start with root and end with wildcard (/path/*)
 	Path *string `pulumi:"path"`
@@ -8426,14 +8926,10 @@ func (o FleetspaceAccountPropertiesResponseGlobalDatabaseAccountPropertiesPtrOut
 
 // Configuration for throughput pool in the fleetspace.
 type FleetspacePropertiesResponseThroughputPoolConfiguration struct {
-	// List of data regions assigned to the fleetspace. Eg [westus2]
-	DataRegions []string `pulumi:"dataRegions"`
 	// Maximum throughput for the pool.
 	MaxThroughput *int `pulumi:"maxThroughput"`
 	// Minimum throughput for the pool.
 	MinThroughput *int `pulumi:"minThroughput"`
-	// Service Tier for the fleetspace. GeneralPurpose types refers to single write region accounts that can be added to this fleetspace, whereas BusinessCritical refers to multi write region.
-	ServiceTier *string `pulumi:"serviceTier"`
 }
 
 // Configuration for throughput pool in the fleetspace.
@@ -8451,11 +8947,6 @@ func (o FleetspacePropertiesResponseThroughputPoolConfigurationOutput) ToFleetsp
 	return o
 }
 
-// List of data regions assigned to the fleetspace. Eg [westus2]
-func (o FleetspacePropertiesResponseThroughputPoolConfigurationOutput) DataRegions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FleetspacePropertiesResponseThroughputPoolConfiguration) []string { return v.DataRegions }).(pulumi.StringArrayOutput)
-}
-
 // Maximum throughput for the pool.
 func (o FleetspacePropertiesResponseThroughputPoolConfigurationOutput) MaxThroughput() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FleetspacePropertiesResponseThroughputPoolConfiguration) *int { return v.MaxThroughput }).(pulumi.IntPtrOutput)
@@ -8464,11 +8955,6 @@ func (o FleetspacePropertiesResponseThroughputPoolConfigurationOutput) MaxThroug
 // Minimum throughput for the pool.
 func (o FleetspacePropertiesResponseThroughputPoolConfigurationOutput) MinThroughput() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FleetspacePropertiesResponseThroughputPoolConfiguration) *int { return v.MinThroughput }).(pulumi.IntPtrOutput)
-}
-
-// Service Tier for the fleetspace. GeneralPurpose types refers to single write region accounts that can be added to this fleetspace, whereas BusinessCritical refers to multi write region.
-func (o FleetspacePropertiesResponseThroughputPoolConfigurationOutput) ServiceTier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FleetspacePropertiesResponseThroughputPoolConfiguration) *string { return v.ServiceTier }).(pulumi.StringPtrOutput)
 }
 
 type FleetspacePropertiesResponseThroughputPoolConfigurationPtrOutput struct{ *pulumi.OutputState }
@@ -8495,16 +8981,6 @@ func (o FleetspacePropertiesResponseThroughputPoolConfigurationPtrOutput) Elem()
 	}).(FleetspacePropertiesResponseThroughputPoolConfigurationOutput)
 }
 
-// List of data regions assigned to the fleetspace. Eg [westus2]
-func (o FleetspacePropertiesResponseThroughputPoolConfigurationPtrOutput) DataRegions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FleetspacePropertiesResponseThroughputPoolConfiguration) []string {
-		if v == nil {
-			return nil
-		}
-		return v.DataRegions
-	}).(pulumi.StringArrayOutput)
-}
-
 // Maximum throughput for the pool.
 func (o FleetspacePropertiesResponseThroughputPoolConfigurationPtrOutput) MaxThroughput() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FleetspacePropertiesResponseThroughputPoolConfiguration) *int {
@@ -8525,26 +9001,12 @@ func (o FleetspacePropertiesResponseThroughputPoolConfigurationPtrOutput) MinThr
 	}).(pulumi.IntPtrOutput)
 }
 
-// Service Tier for the fleetspace. GeneralPurpose types refers to single write region accounts that can be added to this fleetspace, whereas BusinessCritical refers to multi write region.
-func (o FleetspacePropertiesResponseThroughputPoolConfigurationPtrOutput) ServiceTier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FleetspacePropertiesResponseThroughputPoolConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ServiceTier
-	}).(pulumi.StringPtrOutput)
-}
-
 // Configuration for throughput pool in the fleetspace.
 type FleetspacePropertiesThroughputPoolConfiguration struct {
-	// List of data regions assigned to the fleetspace. Eg [westus2]
-	DataRegions []string `pulumi:"dataRegions"`
 	// Maximum throughput for the pool.
 	MaxThroughput *int `pulumi:"maxThroughput"`
 	// Minimum throughput for the pool.
 	MinThroughput *int `pulumi:"minThroughput"`
-	// Service Tier for the fleetspace. GeneralPurpose types refers to single write region accounts that can be added to this fleetspace, whereas BusinessCritical refers to multi write region.
-	ServiceTier *string `pulumi:"serviceTier"`
 }
 
 // FleetspacePropertiesThroughputPoolConfigurationInput is an input type that accepts FleetspacePropertiesThroughputPoolConfigurationArgs and FleetspacePropertiesThroughputPoolConfigurationOutput values.
@@ -8560,14 +9022,10 @@ type FleetspacePropertiesThroughputPoolConfigurationInput interface {
 
 // Configuration for throughput pool in the fleetspace.
 type FleetspacePropertiesThroughputPoolConfigurationArgs struct {
-	// List of data regions assigned to the fleetspace. Eg [westus2]
-	DataRegions pulumi.StringArrayInput `pulumi:"dataRegions"`
 	// Maximum throughput for the pool.
 	MaxThroughput pulumi.IntPtrInput `pulumi:"maxThroughput"`
 	// Minimum throughput for the pool.
 	MinThroughput pulumi.IntPtrInput `pulumi:"minThroughput"`
-	// Service Tier for the fleetspace. GeneralPurpose types refers to single write region accounts that can be added to this fleetspace, whereas BusinessCritical refers to multi write region.
-	ServiceTier pulumi.StringPtrInput `pulumi:"serviceTier"`
 }
 
 func (FleetspacePropertiesThroughputPoolConfigurationArgs) ElementType() reflect.Type {
@@ -8648,11 +9106,6 @@ func (o FleetspacePropertiesThroughputPoolConfigurationOutput) ToFleetspacePrope
 	}).(FleetspacePropertiesThroughputPoolConfigurationPtrOutput)
 }
 
-// List of data regions assigned to the fleetspace. Eg [westus2]
-func (o FleetspacePropertiesThroughputPoolConfigurationOutput) DataRegions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FleetspacePropertiesThroughputPoolConfiguration) []string { return v.DataRegions }).(pulumi.StringArrayOutput)
-}
-
 // Maximum throughput for the pool.
 func (o FleetspacePropertiesThroughputPoolConfigurationOutput) MaxThroughput() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FleetspacePropertiesThroughputPoolConfiguration) *int { return v.MaxThroughput }).(pulumi.IntPtrOutput)
@@ -8661,11 +9114,6 @@ func (o FleetspacePropertiesThroughputPoolConfigurationOutput) MaxThroughput() p
 // Minimum throughput for the pool.
 func (o FleetspacePropertiesThroughputPoolConfigurationOutput) MinThroughput() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FleetspacePropertiesThroughputPoolConfiguration) *int { return v.MinThroughput }).(pulumi.IntPtrOutput)
-}
-
-// Service Tier for the fleetspace. GeneralPurpose types refers to single write region accounts that can be added to this fleetspace, whereas BusinessCritical refers to multi write region.
-func (o FleetspacePropertiesThroughputPoolConfigurationOutput) ServiceTier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FleetspacePropertiesThroughputPoolConfiguration) *string { return v.ServiceTier }).(pulumi.StringPtrOutput)
 }
 
 type FleetspacePropertiesThroughputPoolConfigurationPtrOutput struct{ *pulumi.OutputState }
@@ -8692,16 +9140,6 @@ func (o FleetspacePropertiesThroughputPoolConfigurationPtrOutput) Elem() Fleetsp
 	}).(FleetspacePropertiesThroughputPoolConfigurationOutput)
 }
 
-// List of data regions assigned to the fleetspace. Eg [westus2]
-func (o FleetspacePropertiesThroughputPoolConfigurationPtrOutput) DataRegions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FleetspacePropertiesThroughputPoolConfiguration) []string {
-		if v == nil {
-			return nil
-		}
-		return v.DataRegions
-	}).(pulumi.StringArrayOutput)
-}
-
 // Maximum throughput for the pool.
 func (o FleetspacePropertiesThroughputPoolConfigurationPtrOutput) MaxThroughput() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FleetspacePropertiesThroughputPoolConfiguration) *int {
@@ -8722,14 +9160,150 @@ func (o FleetspacePropertiesThroughputPoolConfigurationPtrOutput) MinThroughput(
 	}).(pulumi.IntPtrOutput)
 }
 
-// Service Tier for the fleetspace. GeneralPurpose types refers to single write region accounts that can be added to this fleetspace, whereas BusinessCritical refers to multi write region.
-func (o FleetspacePropertiesThroughputPoolConfigurationPtrOutput) ServiceTier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FleetspacePropertiesThroughputPoolConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ServiceTier
-	}).(pulumi.StringPtrOutput)
+// Represents the full text index path.
+type FullTextIndexPath struct {
+	// The path to the full text field in the document.
+	Path string `pulumi:"path"`
+}
+
+// FullTextIndexPathInput is an input type that accepts FullTextIndexPathArgs and FullTextIndexPathOutput values.
+// You can construct a concrete instance of `FullTextIndexPathInput` via:
+//
+//	FullTextIndexPathArgs{...}
+type FullTextIndexPathInput interface {
+	pulumi.Input
+
+	ToFullTextIndexPathOutput() FullTextIndexPathOutput
+	ToFullTextIndexPathOutputWithContext(context.Context) FullTextIndexPathOutput
+}
+
+// Represents the full text index path.
+type FullTextIndexPathArgs struct {
+	// The path to the full text field in the document.
+	Path pulumi.StringInput `pulumi:"path"`
+}
+
+func (FullTextIndexPathArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FullTextIndexPath)(nil)).Elem()
+}
+
+func (i FullTextIndexPathArgs) ToFullTextIndexPathOutput() FullTextIndexPathOutput {
+	return i.ToFullTextIndexPathOutputWithContext(context.Background())
+}
+
+func (i FullTextIndexPathArgs) ToFullTextIndexPathOutputWithContext(ctx context.Context) FullTextIndexPathOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FullTextIndexPathOutput)
+}
+
+// FullTextIndexPathArrayInput is an input type that accepts FullTextIndexPathArray and FullTextIndexPathArrayOutput values.
+// You can construct a concrete instance of `FullTextIndexPathArrayInput` via:
+//
+//	FullTextIndexPathArray{ FullTextIndexPathArgs{...} }
+type FullTextIndexPathArrayInput interface {
+	pulumi.Input
+
+	ToFullTextIndexPathArrayOutput() FullTextIndexPathArrayOutput
+	ToFullTextIndexPathArrayOutputWithContext(context.Context) FullTextIndexPathArrayOutput
+}
+
+type FullTextIndexPathArray []FullTextIndexPathInput
+
+func (FullTextIndexPathArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FullTextIndexPath)(nil)).Elem()
+}
+
+func (i FullTextIndexPathArray) ToFullTextIndexPathArrayOutput() FullTextIndexPathArrayOutput {
+	return i.ToFullTextIndexPathArrayOutputWithContext(context.Background())
+}
+
+func (i FullTextIndexPathArray) ToFullTextIndexPathArrayOutputWithContext(ctx context.Context) FullTextIndexPathArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FullTextIndexPathArrayOutput)
+}
+
+// Represents the full text index path.
+type FullTextIndexPathOutput struct{ *pulumi.OutputState }
+
+func (FullTextIndexPathOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FullTextIndexPath)(nil)).Elem()
+}
+
+func (o FullTextIndexPathOutput) ToFullTextIndexPathOutput() FullTextIndexPathOutput {
+	return o
+}
+
+func (o FullTextIndexPathOutput) ToFullTextIndexPathOutputWithContext(ctx context.Context) FullTextIndexPathOutput {
+	return o
+}
+
+// The path to the full text field in the document.
+func (o FullTextIndexPathOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v FullTextIndexPath) string { return v.Path }).(pulumi.StringOutput)
+}
+
+type FullTextIndexPathArrayOutput struct{ *pulumi.OutputState }
+
+func (FullTextIndexPathArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FullTextIndexPath)(nil)).Elem()
+}
+
+func (o FullTextIndexPathArrayOutput) ToFullTextIndexPathArrayOutput() FullTextIndexPathArrayOutput {
+	return o
+}
+
+func (o FullTextIndexPathArrayOutput) ToFullTextIndexPathArrayOutputWithContext(ctx context.Context) FullTextIndexPathArrayOutput {
+	return o
+}
+
+func (o FullTextIndexPathArrayOutput) Index(i pulumi.IntInput) FullTextIndexPathOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FullTextIndexPath {
+		return vs[0].([]FullTextIndexPath)[vs[1].(int)]
+	}).(FullTextIndexPathOutput)
+}
+
+// Represents the full text index path.
+type FullTextIndexPathResponse struct {
+	// The path to the full text field in the document.
+	Path string `pulumi:"path"`
+}
+
+// Represents the full text index path.
+type FullTextIndexPathResponseOutput struct{ *pulumi.OutputState }
+
+func (FullTextIndexPathResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FullTextIndexPathResponse)(nil)).Elem()
+}
+
+func (o FullTextIndexPathResponseOutput) ToFullTextIndexPathResponseOutput() FullTextIndexPathResponseOutput {
+	return o
+}
+
+func (o FullTextIndexPathResponseOutput) ToFullTextIndexPathResponseOutputWithContext(ctx context.Context) FullTextIndexPathResponseOutput {
+	return o
+}
+
+// The path to the full text field in the document.
+func (o FullTextIndexPathResponseOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v FullTextIndexPathResponse) string { return v.Path }).(pulumi.StringOutput)
+}
+
+type FullTextIndexPathResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (FullTextIndexPathResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FullTextIndexPathResponse)(nil)).Elem()
+}
+
+func (o FullTextIndexPathResponseArrayOutput) ToFullTextIndexPathResponseArrayOutput() FullTextIndexPathResponseArrayOutput {
+	return o
+}
+
+func (o FullTextIndexPathResponseArrayOutput) ToFullTextIndexPathResponseArrayOutputWithContext(ctx context.Context) FullTextIndexPathResponseArrayOutput {
+	return o
+}
+
+func (o FullTextIndexPathResponseArrayOutput) Index(i pulumi.IntInput) FullTextIndexPathResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FullTextIndexPathResponse {
+		return vs[0].([]FullTextIndexPathResponse)[vs[1].(int)]
+	}).(FullTextIndexPathResponseOutput)
 }
 
 // Represents the full text path specification.
@@ -10988,6 +11562,8 @@ type IndexingPolicy struct {
 	CompositeIndexes [][]CompositePath `pulumi:"compositeIndexes"`
 	// List of paths to exclude from indexing
 	ExcludedPaths []ExcludedPath `pulumi:"excludedPaths"`
+	// List of paths to include in the full text indexing
+	FullTextIndexes []FullTextIndexPath `pulumi:"fullTextIndexes"`
 	// List of paths to include in the indexing
 	IncludedPaths []IncludedPath `pulumi:"includedPaths"`
 	// Indicates the indexing mode.
@@ -11030,6 +11606,8 @@ type IndexingPolicyArgs struct {
 	CompositeIndexes CompositePathArrayArrayInput `pulumi:"compositeIndexes"`
 	// List of paths to exclude from indexing
 	ExcludedPaths ExcludedPathArrayInput `pulumi:"excludedPaths"`
+	// List of paths to include in the full text indexing
+	FullTextIndexes FullTextIndexPathArrayInput `pulumi:"fullTextIndexes"`
 	// List of paths to include in the indexing
 	IncludedPaths IncludedPathArrayInput `pulumi:"includedPaths"`
 	// Indicates the indexing mode.
@@ -11144,6 +11722,11 @@ func (o IndexingPolicyOutput) ExcludedPaths() ExcludedPathArrayOutput {
 	return o.ApplyT(func(v IndexingPolicy) []ExcludedPath { return v.ExcludedPaths }).(ExcludedPathArrayOutput)
 }
 
+// List of paths to include in the full text indexing
+func (o IndexingPolicyOutput) FullTextIndexes() FullTextIndexPathArrayOutput {
+	return o.ApplyT(func(v IndexingPolicy) []FullTextIndexPath { return v.FullTextIndexes }).(FullTextIndexPathArrayOutput)
+}
+
 // List of paths to include in the indexing
 func (o IndexingPolicyOutput) IncludedPaths() IncludedPathArrayOutput {
 	return o.ApplyT(func(v IndexingPolicy) []IncludedPath { return v.IncludedPaths }).(IncludedPathArrayOutput)
@@ -11218,6 +11801,16 @@ func (o IndexingPolicyPtrOutput) ExcludedPaths() ExcludedPathArrayOutput {
 	}).(ExcludedPathArrayOutput)
 }
 
+// List of paths to include in the full text indexing
+func (o IndexingPolicyPtrOutput) FullTextIndexes() FullTextIndexPathArrayOutput {
+	return o.ApplyT(func(v *IndexingPolicy) []FullTextIndexPath {
+		if v == nil {
+			return nil
+		}
+		return v.FullTextIndexes
+	}).(FullTextIndexPathArrayOutput)
+}
+
 // List of paths to include in the indexing
 func (o IndexingPolicyPtrOutput) IncludedPaths() IncludedPathArrayOutput {
 	return o.ApplyT(func(v *IndexingPolicy) []IncludedPath {
@@ -11266,6 +11859,8 @@ type IndexingPolicyResponse struct {
 	CompositeIndexes [][]CompositePathResponse `pulumi:"compositeIndexes"`
 	// List of paths to exclude from indexing
 	ExcludedPaths []ExcludedPathResponse `pulumi:"excludedPaths"`
+	// List of paths to include in the full text indexing
+	FullTextIndexes []FullTextIndexPathResponse `pulumi:"fullTextIndexes"`
 	// List of paths to include in the indexing
 	IncludedPaths []IncludedPathResponse `pulumi:"includedPaths"`
 	// Indicates the indexing mode.
@@ -11317,6 +11912,11 @@ func (o IndexingPolicyResponseOutput) CompositeIndexes() CompositePathResponseAr
 // List of paths to exclude from indexing
 func (o IndexingPolicyResponseOutput) ExcludedPaths() ExcludedPathResponseArrayOutput {
 	return o.ApplyT(func(v IndexingPolicyResponse) []ExcludedPathResponse { return v.ExcludedPaths }).(ExcludedPathResponseArrayOutput)
+}
+
+// List of paths to include in the full text indexing
+func (o IndexingPolicyResponseOutput) FullTextIndexes() FullTextIndexPathResponseArrayOutput {
+	return o.ApplyT(func(v IndexingPolicyResponse) []FullTextIndexPathResponse { return v.FullTextIndexes }).(FullTextIndexPathResponseArrayOutput)
 }
 
 // List of paths to include in the indexing
@@ -11391,6 +11991,16 @@ func (o IndexingPolicyResponsePtrOutput) ExcludedPaths() ExcludedPathResponseArr
 		}
 		return v.ExcludedPaths
 	}).(ExcludedPathResponseArrayOutput)
+}
+
+// List of paths to include in the full text indexing
+func (o IndexingPolicyResponsePtrOutput) FullTextIndexes() FullTextIndexPathResponseArrayOutput {
+	return o.ApplyT(func(v *IndexingPolicyResponse) []FullTextIndexPathResponse {
+		if v == nil {
+			return nil
+		}
+		return v.FullTextIndexes
+	}).(FullTextIndexPathResponseArrayOutput)
 }
 
 // List of paths to include in the indexing
@@ -16235,6 +16845,8 @@ type RestoreParameters struct {
 	RestoreTimestampInUtc *string `pulumi:"restoreTimestampInUtc"`
 	// Specifies whether the restored account will have Time-To-Live disabled upon the successful restore.
 	RestoreWithTtlDisabled *bool `pulumi:"restoreWithTtlDisabled"`
+	// The source backup location for restore.
+	SourceBackupLocation *string `pulumi:"sourceBackupLocation"`
 	// List of specific tables available for restore.
 	TablesToRestore []string `pulumi:"tablesToRestore"`
 }
@@ -16264,6 +16876,8 @@ type RestoreParametersArgs struct {
 	RestoreTimestampInUtc pulumi.StringPtrInput `pulumi:"restoreTimestampInUtc"`
 	// Specifies whether the restored account will have Time-To-Live disabled upon the successful restore.
 	RestoreWithTtlDisabled pulumi.BoolPtrInput `pulumi:"restoreWithTtlDisabled"`
+	// The source backup location for restore.
+	SourceBackupLocation pulumi.StringPtrInput `pulumi:"sourceBackupLocation"`
 	// List of specific tables available for restore.
 	TablesToRestore pulumi.StringArrayInput `pulumi:"tablesToRestore"`
 }
@@ -16376,6 +16990,11 @@ func (o RestoreParametersOutput) RestoreWithTtlDisabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RestoreParameters) *bool { return v.RestoreWithTtlDisabled }).(pulumi.BoolPtrOutput)
 }
 
+// The source backup location for restore.
+func (o RestoreParametersOutput) SourceBackupLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreParameters) *string { return v.SourceBackupLocation }).(pulumi.StringPtrOutput)
+}
+
 // List of specific tables available for restore.
 func (o RestoreParametersOutput) TablesToRestore() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RestoreParameters) []string { return v.TablesToRestore }).(pulumi.StringArrayOutput)
@@ -16465,6 +17084,16 @@ func (o RestoreParametersPtrOutput) RestoreWithTtlDisabled() pulumi.BoolPtrOutpu
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The source backup location for restore.
+func (o RestoreParametersPtrOutput) SourceBackupLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceBackupLocation
+	}).(pulumi.StringPtrOutput)
+}
+
 // List of specific tables available for restore.
 func (o RestoreParametersPtrOutput) TablesToRestore() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RestoreParameters) []string {
@@ -16489,6 +17118,8 @@ type RestoreParametersResponse struct {
 	RestoreTimestampInUtc *string `pulumi:"restoreTimestampInUtc"`
 	// Specifies whether the restored account will have Time-To-Live disabled upon the successful restore.
 	RestoreWithTtlDisabled *bool `pulumi:"restoreWithTtlDisabled"`
+	// The source backup location for restore.
+	SourceBackupLocation *string `pulumi:"sourceBackupLocation"`
 	// List of specific tables available for restore.
 	TablesToRestore []string `pulumi:"tablesToRestore"`
 }
@@ -16538,6 +17169,11 @@ func (o RestoreParametersResponseOutput) RestoreTimestampInUtc() pulumi.StringPt
 // Specifies whether the restored account will have Time-To-Live disabled upon the successful restore.
 func (o RestoreParametersResponseOutput) RestoreWithTtlDisabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RestoreParametersResponse) *bool { return v.RestoreWithTtlDisabled }).(pulumi.BoolPtrOutput)
+}
+
+// The source backup location for restore.
+func (o RestoreParametersResponseOutput) SourceBackupLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreParametersResponse) *string { return v.SourceBackupLocation }).(pulumi.StringPtrOutput)
 }
 
 // List of specific tables available for restore.
@@ -16627,6 +17263,16 @@ func (o RestoreParametersResponsePtrOutput) RestoreWithTtlDisabled() pulumi.Bool
 		}
 		return v.RestoreWithTtlDisabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+// The source backup location for restore.
+func (o RestoreParametersResponsePtrOutput) SourceBackupLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreParametersResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceBackupLocation
+	}).(pulumi.StringPtrOutput)
 }
 
 // List of specific tables available for restore.
@@ -20219,10 +20865,29 @@ func (o VectorEmbeddingResponseArrayOutput) Index(i pulumi.IntInput) VectorEmbed
 }
 
 type VectorIndex struct {
+	// This is the size of the candidate list of approximate neighbors stored while building the DiskANN index as part of the optimization processes. Large values may improve recall at the expense of latency. This is only applicable for the diskANN vector index type.
+	IndexingSearchListSize *float64 `pulumi:"indexingSearchListSize"`
 	// The path to the vector field in the document.
 	Path string `pulumi:"path"`
+	// The number of bytes used in product quantization of the vectors. A larger value may result in better recall for vector searches at the expense of latency. This is only applicable for the quantizedFlat and diskANN vector index types.
+	QuantizationByteSize *float64 `pulumi:"quantizationByteSize"`
 	// The index type of the vector. Currently, flat, diskANN, and quantizedFlat are supported.
 	Type string `pulumi:"type"`
+	// Array of shard keys for the vector index. This is only applicable for the quantizedFlat and diskANN vector index types.
+	VectorIndexShardKey []string `pulumi:"vectorIndexShardKey"`
+}
+
+// Defaults sets the appropriate defaults for VectorIndex
+func (val *VectorIndex) Defaults() *VectorIndex {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.IndexingSearchListSize == nil {
+		indexingSearchListSize_ := 100.0
+		tmp.IndexingSearchListSize = &indexingSearchListSize_
+	}
+	return &tmp
 }
 
 // VectorIndexInput is an input type that accepts VectorIndexArgs and VectorIndexOutput values.
@@ -20237,12 +20902,29 @@ type VectorIndexInput interface {
 }
 
 type VectorIndexArgs struct {
+	// This is the size of the candidate list of approximate neighbors stored while building the DiskANN index as part of the optimization processes. Large values may improve recall at the expense of latency. This is only applicable for the diskANN vector index type.
+	IndexingSearchListSize pulumi.Float64PtrInput `pulumi:"indexingSearchListSize"`
 	// The path to the vector field in the document.
 	Path pulumi.StringInput `pulumi:"path"`
+	// The number of bytes used in product quantization of the vectors. A larger value may result in better recall for vector searches at the expense of latency. This is only applicable for the quantizedFlat and diskANN vector index types.
+	QuantizationByteSize pulumi.Float64PtrInput `pulumi:"quantizationByteSize"`
 	// The index type of the vector. Currently, flat, diskANN, and quantizedFlat are supported.
 	Type pulumi.StringInput `pulumi:"type"`
+	// Array of shard keys for the vector index. This is only applicable for the quantizedFlat and diskANN vector index types.
+	VectorIndexShardKey pulumi.StringArrayInput `pulumi:"vectorIndexShardKey"`
 }
 
+// Defaults sets the appropriate defaults for VectorIndexArgs
+func (val *VectorIndexArgs) Defaults() *VectorIndexArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.IndexingSearchListSize == nil {
+		tmp.IndexingSearchListSize = pulumi.Float64Ptr(100.0)
+	}
+	return &tmp
+}
 func (VectorIndexArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*VectorIndex)(nil)).Elem()
 }
@@ -20294,14 +20976,29 @@ func (o VectorIndexOutput) ToVectorIndexOutputWithContext(ctx context.Context) V
 	return o
 }
 
+// This is the size of the candidate list of approximate neighbors stored while building the DiskANN index as part of the optimization processes. Large values may improve recall at the expense of latency. This is only applicable for the diskANN vector index type.
+func (o VectorIndexOutput) IndexingSearchListSize() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v VectorIndex) *float64 { return v.IndexingSearchListSize }).(pulumi.Float64PtrOutput)
+}
+
 // The path to the vector field in the document.
 func (o VectorIndexOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v VectorIndex) string { return v.Path }).(pulumi.StringOutput)
 }
 
+// The number of bytes used in product quantization of the vectors. A larger value may result in better recall for vector searches at the expense of latency. This is only applicable for the quantizedFlat and diskANN vector index types.
+func (o VectorIndexOutput) QuantizationByteSize() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v VectorIndex) *float64 { return v.QuantizationByteSize }).(pulumi.Float64PtrOutput)
+}
+
 // The index type of the vector. Currently, flat, diskANN, and quantizedFlat are supported.
 func (o VectorIndexOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v VectorIndex) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Array of shard keys for the vector index. This is only applicable for the quantizedFlat and diskANN vector index types.
+func (o VectorIndexOutput) VectorIndexShardKey() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VectorIndex) []string { return v.VectorIndexShardKey }).(pulumi.StringArrayOutput)
 }
 
 type VectorIndexArrayOutput struct{ *pulumi.OutputState }
@@ -20325,10 +21022,29 @@ func (o VectorIndexArrayOutput) Index(i pulumi.IntInput) VectorIndexOutput {
 }
 
 type VectorIndexResponse struct {
+	// This is the size of the candidate list of approximate neighbors stored while building the DiskANN index as part of the optimization processes. Large values may improve recall at the expense of latency. This is only applicable for the diskANN vector index type.
+	IndexingSearchListSize *float64 `pulumi:"indexingSearchListSize"`
 	// The path to the vector field in the document.
 	Path string `pulumi:"path"`
+	// The number of bytes used in product quantization of the vectors. A larger value may result in better recall for vector searches at the expense of latency. This is only applicable for the quantizedFlat and diskANN vector index types.
+	QuantizationByteSize *float64 `pulumi:"quantizationByteSize"`
 	// The index type of the vector. Currently, flat, diskANN, and quantizedFlat are supported.
 	Type string `pulumi:"type"`
+	// Array of shard keys for the vector index. This is only applicable for the quantizedFlat and diskANN vector index types.
+	VectorIndexShardKey []string `pulumi:"vectorIndexShardKey"`
+}
+
+// Defaults sets the appropriate defaults for VectorIndexResponse
+func (val *VectorIndexResponse) Defaults() *VectorIndexResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.IndexingSearchListSize == nil {
+		indexingSearchListSize_ := 100.0
+		tmp.IndexingSearchListSize = &indexingSearchListSize_
+	}
+	return &tmp
 }
 
 type VectorIndexResponseOutput struct{ *pulumi.OutputState }
@@ -20345,14 +21061,29 @@ func (o VectorIndexResponseOutput) ToVectorIndexResponseOutputWithContext(ctx co
 	return o
 }
 
+// This is the size of the candidate list of approximate neighbors stored while building the DiskANN index as part of the optimization processes. Large values may improve recall at the expense of latency. This is only applicable for the diskANN vector index type.
+func (o VectorIndexResponseOutput) IndexingSearchListSize() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v VectorIndexResponse) *float64 { return v.IndexingSearchListSize }).(pulumi.Float64PtrOutput)
+}
+
 // The path to the vector field in the document.
 func (o VectorIndexResponseOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v VectorIndexResponse) string { return v.Path }).(pulumi.StringOutput)
 }
 
+// The number of bytes used in product quantization of the vectors. A larger value may result in better recall for vector searches at the expense of latency. This is only applicable for the quantizedFlat and diskANN vector index types.
+func (o VectorIndexResponseOutput) QuantizationByteSize() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v VectorIndexResponse) *float64 { return v.QuantizationByteSize }).(pulumi.Float64PtrOutput)
+}
+
 // The index type of the vector. Currently, flat, diskANN, and quantizedFlat are supported.
 func (o VectorIndexResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v VectorIndexResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Array of shard keys for the vector index. This is only applicable for the quantizedFlat and diskANN vector index types.
+func (o VectorIndexResponseOutput) VectorIndexShardKey() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VectorIndexResponse) []string { return v.VectorIndexShardKey }).(pulumi.StringArrayOutput)
 }
 
 type VectorIndexResponseArrayOutput struct{ *pulumi.OutputState }
@@ -20677,7 +21408,10 @@ func init() {
 	pulumi.RegisterOutputType(ClusterKeyResponseArrayOutput{})
 	pulumi.RegisterOutputType(ClusterResourcePropertiesOutput{})
 	pulumi.RegisterOutputType(ClusterResourcePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(ClusterResourceResponseEndPointsOutput{})
+	pulumi.RegisterOutputType(ClusterResourceResponseEndPointsArrayOutput{})
 	pulumi.RegisterOutputType(ClusterResourceResponsePropertiesOutput{})
+	pulumi.RegisterOutputType(ClusterResourceResponsePropertiesV1Output{})
 	pulumi.RegisterOutputType(ColumnOutput{})
 	pulumi.RegisterOutputType(ColumnArrayOutput{})
 	pulumi.RegisterOutputType(ColumnResponseOutput{})
@@ -20733,6 +21467,11 @@ func init() {
 	pulumi.RegisterOutputType(DatabaseRestoreResourceArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseRestoreResourceResponseOutput{})
 	pulumi.RegisterOutputType(DatabaseRestoreResourceResponseArrayOutput{})
+	pulumi.RegisterOutputType(ErrorAdditionalInfoResponseOutput{})
+	pulumi.RegisterOutputType(ErrorAdditionalInfoResponseArrayOutput{})
+	pulumi.RegisterOutputType(ErrorDetailResponseOutput{})
+	pulumi.RegisterOutputType(ErrorDetailResponsePtrOutput{})
+	pulumi.RegisterOutputType(ErrorDetailResponseArrayOutput{})
 	pulumi.RegisterOutputType(ExcludedPathOutput{})
 	pulumi.RegisterOutputType(ExcludedPathArrayOutput{})
 	pulumi.RegisterOutputType(ExcludedPathResponseOutput{})
@@ -20747,6 +21486,10 @@ func init() {
 	pulumi.RegisterOutputType(FleetspacePropertiesResponseThroughputPoolConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(FleetspacePropertiesThroughputPoolConfigurationOutput{})
 	pulumi.RegisterOutputType(FleetspacePropertiesThroughputPoolConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(FullTextIndexPathOutput{})
+	pulumi.RegisterOutputType(FullTextIndexPathArrayOutput{})
+	pulumi.RegisterOutputType(FullTextIndexPathResponseOutput{})
+	pulumi.RegisterOutputType(FullTextIndexPathResponseArrayOutput{})
 	pulumi.RegisterOutputType(FullTextPathOutput{})
 	pulumi.RegisterOutputType(FullTextPathArrayOutput{})
 	pulumi.RegisterOutputType(FullTextPathResponseOutput{})

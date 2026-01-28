@@ -32,7 +32,7 @@ type AttestationProvider struct {
 	PublicNetworkAccess pulumi.StringPtrOutput `pulumi:"publicNetworkAccess"`
 	// Status of attestation service.
 	Status pulumi.StringPtrOutput `pulumi:"status"`
-	// The system metadata relating to this resource
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
@@ -57,6 +57,9 @@ func NewAttestationProvider(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
+	args.Properties = args.Properties.ToAttestationServiceCreationSpecificParamsOutput().ApplyT(func(v AttestationServiceCreationSpecificParams) AttestationServiceCreationSpecificParams {
+		return *v.Defaults()
+	}).(AttestationServiceCreationSpecificParamsOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:attestation/v20180901preview:AttestationProvider"),
@@ -205,7 +208,7 @@ func (o AttestationProviderOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AttestationProvider) pulumi.StringPtrOutput { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-// The system metadata relating to this resource
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o AttestationProviderOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *AttestationProvider) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

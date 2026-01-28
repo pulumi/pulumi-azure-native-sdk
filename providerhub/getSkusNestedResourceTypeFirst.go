@@ -37,6 +37,7 @@ type LookupSkusNestedResourceTypeFirstArgs struct {
 	Sku string `pulumi:"sku"`
 }
 
+// Concrete proxy resource types can be created by aliasing this type using a specific property type.
 type LookupSkusNestedResourceTypeFirstResult struct {
 	// The Azure API version of the resource.
 	AzureApiVersion string `pulumi:"azureApiVersion"`
@@ -44,7 +45,7 @@ type LookupSkusNestedResourceTypeFirstResult struct {
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name       string                        `pulumi:"name"`
-	Properties SkuResourceResponseProperties `pulumi:"properties"`
+	Properties SkuResourcePropertiesResponse `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -75,6 +76,7 @@ func (LookupSkusNestedResourceTypeFirstOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupSkusNestedResourceTypeFirstArgs)(nil)).Elem()
 }
 
+// Concrete proxy resource types can be created by aliasing this type using a specific property type.
 type LookupSkusNestedResourceTypeFirstResultOutput struct{ *pulumi.OutputState }
 
 func (LookupSkusNestedResourceTypeFirstResultOutput) ElementType() reflect.Type {
@@ -104,8 +106,8 @@ func (o LookupSkusNestedResourceTypeFirstResultOutput) Name() pulumi.StringOutpu
 	return o.ApplyT(func(v LookupSkusNestedResourceTypeFirstResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o LookupSkusNestedResourceTypeFirstResultOutput) Properties() SkuResourceResponsePropertiesOutput {
-	return o.ApplyT(func(v LookupSkusNestedResourceTypeFirstResult) SkuResourceResponseProperties { return v.Properties }).(SkuResourceResponsePropertiesOutput)
+func (o LookupSkusNestedResourceTypeFirstResultOutput) Properties() SkuResourcePropertiesResponseOutput {
+	return o.ApplyT(func(v LookupSkusNestedResourceTypeFirstResult) SkuResourcePropertiesResponse { return v.Properties }).(SkuResourcePropertiesResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

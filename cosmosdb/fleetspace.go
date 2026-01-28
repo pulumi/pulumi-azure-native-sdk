@@ -14,18 +14,24 @@ import (
 
 // An Azure Cosmos DB Fleetspace.
 //
-// Uses Azure REST API version 2025-05-01-preview.
+// Uses Azure REST API version 2025-10-15.
+//
+// Other available API versions: 2025-05-01-preview, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Fleetspace struct {
 	pulumi.CustomResourceState
 
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// List of data regions assigned to the fleetspace. Eg [westus2]
+	DataRegions pulumi.StringArrayOutput `pulumi:"dataRegions"`
 	// The kind of API this fleetspace belongs to. Acceptable values: 'NoSQL'
 	FleetspaceApiKind pulumi.StringPtrOutput `pulumi:"fleetspaceApiKind"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A provisioning state of the Fleetspace.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// Service Tier for the fleetspace. GeneralPurpose types refers to single write region accounts that can be added to this fleetspace, whereas BusinessCritical refers to multi write region.
+	ServiceTier pulumi.StringPtrOutput `pulumi:"serviceTier"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Configuration for throughput pool in the fleetspace.
@@ -50,6 +56,12 @@ func NewFleetspace(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:cosmosdb/v20250501preview:Fleetspace"),
+		},
+		{
+			Type: pulumi.String("azure-native:cosmosdb/v20251015:Fleetspace"),
+		},
+		{
+			Type: pulumi.String("azure-native:cosmosdb/v20251101preview:Fleetspace"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -86,6 +98,8 @@ func (FleetspaceState) ElementType() reflect.Type {
 }
 
 type fleetspaceArgs struct {
+	// List of data regions assigned to the fleetspace. Eg [westus2]
+	DataRegions []string `pulumi:"dataRegions"`
 	// Cosmos DB fleet name. Needs to be unique under a subscription.
 	FleetName string `pulumi:"fleetName"`
 	// The kind of API this fleetspace belongs to. Acceptable values: 'NoSQL'
@@ -94,12 +108,16 @@ type fleetspaceArgs struct {
 	FleetspaceName *string `pulumi:"fleetspaceName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Service Tier for the fleetspace. GeneralPurpose types refers to single write region accounts that can be added to this fleetspace, whereas BusinessCritical refers to multi write region.
+	ServiceTier *string `pulumi:"serviceTier"`
 	// Configuration for throughput pool in the fleetspace.
 	ThroughputPoolConfiguration *FleetspacePropertiesThroughputPoolConfiguration `pulumi:"throughputPoolConfiguration"`
 }
 
 // The set of arguments for constructing a Fleetspace resource.
 type FleetspaceArgs struct {
+	// List of data regions assigned to the fleetspace. Eg [westus2]
+	DataRegions pulumi.StringArrayInput
 	// Cosmos DB fleet name. Needs to be unique under a subscription.
 	FleetName pulumi.StringInput
 	// The kind of API this fleetspace belongs to. Acceptable values: 'NoSQL'
@@ -108,6 +126,8 @@ type FleetspaceArgs struct {
 	FleetspaceName pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
+	// Service Tier for the fleetspace. GeneralPurpose types refers to single write region accounts that can be added to this fleetspace, whereas BusinessCritical refers to multi write region.
+	ServiceTier pulumi.StringPtrInput
 	// Configuration for throughput pool in the fleetspace.
 	ThroughputPoolConfiguration FleetspacePropertiesThroughputPoolConfigurationPtrInput
 }
@@ -154,6 +174,11 @@ func (o FleetspaceOutput) AzureApiVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Fleetspace) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
+// List of data regions assigned to the fleetspace. Eg [westus2]
+func (o FleetspaceOutput) DataRegions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Fleetspace) pulumi.StringArrayOutput { return v.DataRegions }).(pulumi.StringArrayOutput)
+}
+
 // The kind of API this fleetspace belongs to. Acceptable values: 'NoSQL'
 func (o FleetspaceOutput) FleetspaceApiKind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Fleetspace) pulumi.StringPtrOutput { return v.FleetspaceApiKind }).(pulumi.StringPtrOutput)
@@ -167,6 +192,11 @@ func (o FleetspaceOutput) Name() pulumi.StringOutput {
 // A provisioning state of the Fleetspace.
 func (o FleetspaceOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Fleetspace) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Service Tier for the fleetspace. GeneralPurpose types refers to single write region accounts that can be added to this fleetspace, whereas BusinessCritical refers to multi write region.
+func (o FleetspaceOutput) ServiceTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Fleetspace) pulumi.StringPtrOutput { return v.ServiceTier }).(pulumi.StringPtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

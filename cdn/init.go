@@ -33,6 +33,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AFDTargetGroup{}
 	case "azure-native:cdn:CustomDomain":
 		r = &CustomDomain{}
+	case "azure-native:cdn:EdgeAction":
+		r = &EdgeAction{}
+	case "azure-native:cdn:EdgeActionExecutionFilter":
+		r = &EdgeActionExecutionFilter{}
+	case "azure-native:cdn:EdgeActionVersion":
+		r = &EdgeActionVersion{}
 	case "azure-native:cdn:Endpoint":
 		r = &Endpoint{}
 	case "azure-native:cdn:KeyGroup":

@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2024-05-01.
 //
-// Other available API versions: 2023-02-01, 2023-09-15-preview, 2024-09-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native databricks [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-02-01, 2023-09-15-preview, 2024-09-01-preview, 2025-03-01-preview, 2025-08-01-preview, 2025-10-01-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native databricks [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupVNetPeering(ctx *pulumi.Context, args *LookupVNetPeeringArgs, opts ...pulumi.InvokeOption) (*LookupVNetPeeringResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVNetPeeringResult

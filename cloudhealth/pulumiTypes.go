@@ -2680,11 +2680,11 @@ func (o EntityPropertiesResponseOutput) Signals() SignalGroupResponsePtrOutput {
 
 // Evaluation rule for a signal definition
 type EvaluationRule struct {
-	// Degraded rule with static threshold. When used, dynamicDetectionRule must not be set.
+	// Degraded rule with static threshold.
 	DegradedRule *ThresholdRule `pulumi:"degradedRule"`
 	// Configure to use ML-based dynamic thresholds. When used, degradedRule and unhealthyRule must not be set.
 	DynamicDetectionRule *DynamicDetectionRule `pulumi:"dynamicDetectionRule"`
-	// Unhealthy rule with static threshold. When used, dynamicDetectionRule must not be set.
+	// Unhealthy rule with static threshold.
 	UnhealthyRule *ThresholdRule `pulumi:"unhealthyRule"`
 }
 
@@ -2701,11 +2701,11 @@ type EvaluationRuleInput interface {
 
 // Evaluation rule for a signal definition
 type EvaluationRuleArgs struct {
-	// Degraded rule with static threshold. When used, dynamicDetectionRule must not be set.
+	// Degraded rule with static threshold.
 	DegradedRule ThresholdRulePtrInput `pulumi:"degradedRule"`
 	// Configure to use ML-based dynamic thresholds. When used, degradedRule and unhealthyRule must not be set.
 	DynamicDetectionRule DynamicDetectionRulePtrInput `pulumi:"dynamicDetectionRule"`
-	// Unhealthy rule with static threshold. When used, dynamicDetectionRule must not be set.
+	// Unhealthy rule with static threshold.
 	UnhealthyRule ThresholdRulePtrInput `pulumi:"unhealthyRule"`
 }
 
@@ -2787,7 +2787,7 @@ func (o EvaluationRuleOutput) ToEvaluationRulePtrOutputWithContext(ctx context.C
 	}).(EvaluationRulePtrOutput)
 }
 
-// Degraded rule with static threshold. When used, dynamicDetectionRule must not be set.
+// Degraded rule with static threshold.
 func (o EvaluationRuleOutput) DegradedRule() ThresholdRulePtrOutput {
 	return o.ApplyT(func(v EvaluationRule) *ThresholdRule { return v.DegradedRule }).(ThresholdRulePtrOutput)
 }
@@ -2797,7 +2797,7 @@ func (o EvaluationRuleOutput) DynamicDetectionRule() DynamicDetectionRulePtrOutp
 	return o.ApplyT(func(v EvaluationRule) *DynamicDetectionRule { return v.DynamicDetectionRule }).(DynamicDetectionRulePtrOutput)
 }
 
-// Unhealthy rule with static threshold. When used, dynamicDetectionRule must not be set.
+// Unhealthy rule with static threshold.
 func (o EvaluationRuleOutput) UnhealthyRule() ThresholdRulePtrOutput {
 	return o.ApplyT(func(v EvaluationRule) *ThresholdRule { return v.UnhealthyRule }).(ThresholdRulePtrOutput)
 }
@@ -2826,7 +2826,7 @@ func (o EvaluationRulePtrOutput) Elem() EvaluationRuleOutput {
 	}).(EvaluationRuleOutput)
 }
 
-// Degraded rule with static threshold. When used, dynamicDetectionRule must not be set.
+// Degraded rule with static threshold.
 func (o EvaluationRulePtrOutput) DegradedRule() ThresholdRulePtrOutput {
 	return o.ApplyT(func(v *EvaluationRule) *ThresholdRule {
 		if v == nil {
@@ -2846,7 +2846,7 @@ func (o EvaluationRulePtrOutput) DynamicDetectionRule() DynamicDetectionRulePtrO
 	}).(DynamicDetectionRulePtrOutput)
 }
 
-// Unhealthy rule with static threshold. When used, dynamicDetectionRule must not be set.
+// Unhealthy rule with static threshold.
 func (o EvaluationRulePtrOutput) UnhealthyRule() ThresholdRulePtrOutput {
 	return o.ApplyT(func(v *EvaluationRule) *ThresholdRule {
 		if v == nil {
@@ -2858,11 +2858,11 @@ func (o EvaluationRulePtrOutput) UnhealthyRule() ThresholdRulePtrOutput {
 
 // Evaluation rule for a signal definition
 type EvaluationRuleResponse struct {
-	// Degraded rule with static threshold. When used, dynamicDetectionRule must not be set.
+	// Degraded rule with static threshold.
 	DegradedRule *ThresholdRuleResponse `pulumi:"degradedRule"`
 	// Configure to use ML-based dynamic thresholds. When used, degradedRule and unhealthyRule must not be set.
 	DynamicDetectionRule *DynamicDetectionRuleResponse `pulumi:"dynamicDetectionRule"`
-	// Unhealthy rule with static threshold. When used, dynamicDetectionRule must not be set.
+	// Unhealthy rule with static threshold.
 	UnhealthyRule *ThresholdRuleResponse `pulumi:"unhealthyRule"`
 }
 
@@ -2881,7 +2881,7 @@ func (o EvaluationRuleResponseOutput) ToEvaluationRuleResponseOutputWithContext(
 	return o
 }
 
-// Degraded rule with static threshold. When used, dynamicDetectionRule must not be set.
+// Degraded rule with static threshold.
 func (o EvaluationRuleResponseOutput) DegradedRule() ThresholdRuleResponsePtrOutput {
 	return o.ApplyT(func(v EvaluationRuleResponse) *ThresholdRuleResponse { return v.DegradedRule }).(ThresholdRuleResponsePtrOutput)
 }
@@ -2891,7 +2891,7 @@ func (o EvaluationRuleResponseOutput) DynamicDetectionRule() DynamicDetectionRul
 	return o.ApplyT(func(v EvaluationRuleResponse) *DynamicDetectionRuleResponse { return v.DynamicDetectionRule }).(DynamicDetectionRuleResponsePtrOutput)
 }
 
-// Unhealthy rule with static threshold. When used, dynamicDetectionRule must not be set.
+// Unhealthy rule with static threshold.
 func (o EvaluationRuleResponseOutput) UnhealthyRule() ThresholdRuleResponsePtrOutput {
 	return o.ApplyT(func(v EvaluationRuleResponse) *ThresholdRuleResponse { return v.UnhealthyRule }).(ThresholdRuleResponsePtrOutput)
 }

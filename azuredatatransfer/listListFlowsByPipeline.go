@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2025-05-21.
 //
-// Other available API versions: 2025-04-11-preview, 2025-05-30-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuredatatransfer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2025-04-11-preview, 2025-05-30-preview, 2025-10-10-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuredatatransfer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func ListListFlowsByPipeline(ctx *pulumi.Context, args *ListListFlowsByPipelineArgs, opts ...pulumi.InvokeOption) (*ListListFlowsByPipelineResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListListFlowsByPipelineResult

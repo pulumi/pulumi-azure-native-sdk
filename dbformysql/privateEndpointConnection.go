@@ -16,7 +16,7 @@ import (
 //
 // Uses Azure REST API version 2023-06-30. In version 2.x of the Azure Native provider, it used API version 2022-09-30-preview.
 //
-// Other available API versions: 2022-09-30-preview, 2024-12-01-preview, 2024-12-30. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbformysql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-09-30-preview, 2024-12-01-preview, 2024-12-30, 2025-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbformysql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type PrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
@@ -69,6 +69,9 @@ func NewPrivateEndpointConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dbformysql/v20241230:PrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbformysql/v20250601preview:PrivateEndpointConnection"),
 		},
 	})
 	opts = append(opts, aliases)

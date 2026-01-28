@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2023-09-01.
 //
-// Other available API versions: 2022-05-01, 2023-03-01, 2024-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native avs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-05-01, 2023-03-01, 2024-09-01, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native avs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupWorkloadNetworkDhcp(ctx *pulumi.Context, args *LookupWorkloadNetworkDhcpArgs, opts ...pulumi.InvokeOption) (*LookupWorkloadNetworkDhcpResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkloadNetworkDhcpResult
@@ -39,20 +39,12 @@ type LookupWorkloadNetworkDhcpArgs struct {
 type LookupWorkloadNetworkDhcpResult struct {
 	// The Azure API version of the resource.
 	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// Type of DHCP: SERVER or RELAY.
-	DhcpType string `pulumi:"dhcpType"`
-	// Display name of the DHCP entity.
-	DisplayName *string `pulumi:"displayName"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// The provisioning state
-	ProvisioningState string `pulumi:"provisioningState"`
-	// NSX revision number.
-	Revision *float64 `pulumi:"revision"`
-	// NSX Segments consuming DHCP.
-	Segments []string `pulumi:"segments"`
+	// The resource-specific properties for this resource.
+	Properties interface{} `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -101,16 +93,6 @@ func (o LookupWorkloadNetworkDhcpResultOutput) AzureApiVersion() pulumi.StringOu
 	return o.ApplyT(func(v LookupWorkloadNetworkDhcpResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
-// Type of DHCP: SERVER or RELAY.
-func (o LookupWorkloadNetworkDhcpResultOutput) DhcpType() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWorkloadNetworkDhcpResult) string { return v.DhcpType }).(pulumi.StringOutput)
-}
-
-// Display name of the DHCP entity.
-func (o LookupWorkloadNetworkDhcpResultOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupWorkloadNetworkDhcpResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
-}
-
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupWorkloadNetworkDhcpResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkDhcpResult) string { return v.Id }).(pulumi.StringOutput)
@@ -121,19 +103,9 @@ func (o LookupWorkloadNetworkDhcpResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkDhcpResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The provisioning state
-func (o LookupWorkloadNetworkDhcpResultOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWorkloadNetworkDhcpResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// NSX revision number.
-func (o LookupWorkloadNetworkDhcpResultOutput) Revision() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v LookupWorkloadNetworkDhcpResult) *float64 { return v.Revision }).(pulumi.Float64PtrOutput)
-}
-
-// NSX Segments consuming DHCP.
-func (o LookupWorkloadNetworkDhcpResultOutput) Segments() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupWorkloadNetworkDhcpResult) []string { return v.Segments }).(pulumi.StringArrayOutput)
+// The resource-specific properties for this resource.
+func (o LookupWorkloadNetworkDhcpResultOutput) Properties() pulumi.AnyOutput {
+	return o.ApplyT(func(v LookupWorkloadNetworkDhcpResult) interface{} { return v.Properties }).(pulumi.AnyOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

@@ -71,6 +71,9 @@ func NewPrivateEndpointConnection(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:offazure/v20240701preview:PrivateEndpointConnection"),
 		},
 		{
+			Type: pulumi.String("azure-native:offazure/v20241201preview:PrivateEndpointConnection"),
+		},
+		{
 			Type: pulumi.String("azure-native:offazure:PrivateEndpointConnectionController"),
 		},
 	})

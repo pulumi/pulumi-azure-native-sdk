@@ -16,7 +16,7 @@ import (
 //
 // Uses Azure REST API version 2024-10-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-10-01-preview.
 //
-// Other available API versions: 2025-02-01, 2025-04-01-preview, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devcenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2025-02-01, 2025-04-01-preview, 2025-07-01-preview, 2025-10-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devcenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ProjectPolicy struct {
 	pulumi.CustomResourceState
 
@@ -61,6 +61,12 @@ func NewProjectPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:devcenter/v20250701preview:ProjectPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20251001preview:ProjectPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20260101preview:ProjectPolicy"),
 		},
 	})
 	opts = append(opts, aliases)

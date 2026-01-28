@@ -14,6 +14,8 @@ import (
 // A FluidRelay Server.
 //
 // Uses Azure REST API version 2022-06-01.
+//
+// Other available API versions: 2025-06-20-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native fluidrelay [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupFluidRelayServer(ctx *pulumi.Context, args *LookupFluidRelayServerArgs, opts ...pulumi.InvokeOption) (*LookupFluidRelayServerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFluidRelayServerResult

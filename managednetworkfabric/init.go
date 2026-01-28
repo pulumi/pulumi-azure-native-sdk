@@ -51,6 +51,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NetworkFabricController{}
 	case "azure-native:managednetworkfabric:NetworkInterface":
 		r = &NetworkInterface{}
+	case "azure-native:managednetworkfabric:NetworkMonitor":
+		r = &NetworkMonitor{}
 	case "azure-native:managednetworkfabric:NetworkPacketBroker":
 		r = &NetworkPacketBroker{}
 	case "azure-native:managednetworkfabric:NetworkRack":

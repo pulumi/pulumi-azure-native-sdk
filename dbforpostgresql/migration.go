@@ -12,11 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Migration.
+// Properties of a migration.
 //
-// Uses Azure REST API version 2024-08-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01-preview.
+// Uses Azure REST API version 2025-08-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01-preview.
 //
-// Other available API versions: 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-11-01-preview, 2025-01-01-preview, 2025-06-01-preview, 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-08-01, 2024-11-01-preview, 2025-01-01-preview, 2025-06-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Migration struct {
 	pulumi.CustomResourceState
 
@@ -52,7 +52,7 @@ type Migration struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Indicates if databases on the target server can be overwritten when already present. If set to 'False', when the migration workflow detects that the database already exists on the target server, it will wait for a confirmation.
 	OverwriteDbsInTarget pulumi.StringPtrOutput `pulumi:"overwriteDbsInTarget"`
-	// Indicates whether to setup LogicalReplicationOnSourceDb, if needed.
+	// Indicates whether to setup logical replication on source server, if needed.
 	SetupLogicalReplicationOnSourceDbIfNeeded pulumi.StringPtrOutput `pulumi:"setupLogicalReplicationOnSourceDbIfNeeded"`
 	// Fully qualified domain name (FQDN) or IP address of the source server. This property is optional. When provided, the migration service will always use it to connect to the source server.
 	SourceDbServerFullyQualifiedDomainName pulumi.StringPtrOutput `pulumi:"sourceDbServerFullyQualifiedDomainName"`
@@ -92,8 +92,8 @@ func NewMigration(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if args.TargetDbServerName == nil {
-		return nil, errors.New("invalid value for required argument 'TargetDbServerName'")
+	if args.ServerName == nil {
+		return nil, errors.New("invalid value for required argument 'ServerName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -128,6 +128,9 @@ func NewMigration(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20250801:Migration"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20260101preview:Migration"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -190,11 +193,13 @@ type migrationArgs struct {
 	MigrationWindowStartTimeInUtc *string `pulumi:"migrationWindowStartTimeInUtc"`
 	// Indicates if databases on the target server can be overwritten when already present. If set to 'False', when the migration workflow detects that the database already exists on the target server, it will wait for a confirmation.
 	OverwriteDbsInTarget *string `pulumi:"overwriteDbsInTarget"`
-	// Name of resource group of target database server.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Migration secret parameters.
 	SecretParameters *MigrationSecretParameters `pulumi:"secretParameters"`
-	// Indicates whether to setup LogicalReplicationOnSourceDb, if needed.
+	// The name of the server.
+	ServerName string `pulumi:"serverName"`
+	// Indicates whether to setup logical replication on source server, if needed.
 	SetupLogicalReplicationOnSourceDbIfNeeded *string `pulumi:"setupLogicalReplicationOnSourceDbIfNeeded"`
 	// Fully qualified domain name (FQDN) or IP address of the source server. This property is optional. When provided, the migration service will always use it to connect to the source server.
 	SourceDbServerFullyQualifiedDomainName *string `pulumi:"sourceDbServerFullyQualifiedDomainName"`
@@ -206,14 +211,10 @@ type migrationArgs struct {
 	SslMode *string `pulumi:"sslMode"`
 	// Indicates if data migration must start right away.
 	StartDataMigration *string `pulumi:"startDataMigration"`
-	// Identifier of subscription of target database server.
-	SubscriptionId *string `pulumi:"subscriptionId"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Fully qualified domain name (FQDN) or IP address of the target server. This property is optional. When provided, the migration service will always use it to connect to the target server.
 	TargetDbServerFullyQualifiedDomainName *string `pulumi:"targetDbServerFullyQualifiedDomainName"`
-	// Name of target database server.
-	TargetDbServerName string `pulumi:"targetDbServerName"`
 	// Indicates if cutover must be triggered for the entire migration.
 	TriggerCutover *string `pulumi:"triggerCutover"`
 }
@@ -246,11 +247,13 @@ type MigrationArgs struct {
 	MigrationWindowStartTimeInUtc pulumi.StringPtrInput
 	// Indicates if databases on the target server can be overwritten when already present. If set to 'False', when the migration workflow detects that the database already exists on the target server, it will wait for a confirmation.
 	OverwriteDbsInTarget pulumi.StringPtrInput
-	// Name of resource group of target database server.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Migration secret parameters.
 	SecretParameters MigrationSecretParametersPtrInput
-	// Indicates whether to setup LogicalReplicationOnSourceDb, if needed.
+	// The name of the server.
+	ServerName pulumi.StringInput
+	// Indicates whether to setup logical replication on source server, if needed.
 	SetupLogicalReplicationOnSourceDbIfNeeded pulumi.StringPtrInput
 	// Fully qualified domain name (FQDN) or IP address of the source server. This property is optional. When provided, the migration service will always use it to connect to the source server.
 	SourceDbServerFullyQualifiedDomainName pulumi.StringPtrInput
@@ -262,14 +265,10 @@ type MigrationArgs struct {
 	SslMode pulumi.StringPtrInput
 	// Indicates if data migration must start right away.
 	StartDataMigration pulumi.StringPtrInput
-	// Identifier of subscription of target database server.
-	SubscriptionId pulumi.StringPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 	// Fully qualified domain name (FQDN) or IP address of the target server. This property is optional. When provided, the migration service will always use it to connect to the target server.
 	TargetDbServerFullyQualifiedDomainName pulumi.StringPtrInput
-	// Name of target database server.
-	TargetDbServerName pulumi.StringInput
 	// Indicates if cutover must be triggered for the entire migration.
 	TriggerCutover pulumi.StringPtrInput
 }
@@ -391,7 +390,7 @@ func (o MigrationOutput) OverwriteDbsInTarget() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Migration) pulumi.StringPtrOutput { return v.OverwriteDbsInTarget }).(pulumi.StringPtrOutput)
 }
 
-// Indicates whether to setup LogicalReplicationOnSourceDb, if needed.
+// Indicates whether to setup logical replication on source server, if needed.
 func (o MigrationOutput) SetupLogicalReplicationOnSourceDbIfNeeded() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Migration) pulumi.StringPtrOutput { return v.SetupLogicalReplicationOnSourceDbIfNeeded }).(pulumi.StringPtrOutput)
 }

@@ -21,7 +21,7 @@ type TIDataConnector struct {
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The available data types for the connector.
-	DataTypes TIDataConnectorDataTypesResponsePtrOutput `pulumi:"dataTypes"`
+	DataTypes TIDataConnectorDataTypesResponseOutput `pulumi:"dataTypes"`
 	// Etag of the azure resource
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// The kind of the data connector
@@ -32,7 +32,7 @@ type TIDataConnector struct {
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The tenant id to connect to, and get the data from.
-	TenantId pulumi.StringPtrOutput `pulumi:"tenantId"`
+	TenantId pulumi.StringOutput `pulumi:"tenantId"`
 	// The lookback period for the feed to be imported.
 	TipLookbackPeriod pulumi.StringPtrOutput `pulumi:"tipLookbackPeriod"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -46,11 +46,17 @@ func NewTIDataConnector(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.DataTypes == nil {
+		return nil, errors.New("invalid value for required argument 'DataTypes'")
+	}
 	if args.Kind == nil {
 		return nil, errors.New("invalid value for required argument 'Kind'")
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.TenantId == nil {
+		return nil, errors.New("invalid value for required argument 'TenantId'")
 	}
 	if args.WorkspaceName == nil {
 		return nil, errors.New("invalid value for required argument 'WorkspaceName'")
@@ -947,14 +953,14 @@ type tidataConnectorArgs struct {
 	// Connector ID
 	DataConnectorId *string `pulumi:"dataConnectorId"`
 	// The available data types for the connector.
-	DataTypes *TIDataConnectorDataTypes `pulumi:"dataTypes"`
+	DataTypes TIDataConnectorDataTypes `pulumi:"dataTypes"`
 	// The kind of the data connector
 	// Expected value is 'ThreatIntelligence'.
 	Kind string `pulumi:"kind"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The tenant id to connect to, and get the data from.
-	TenantId *string `pulumi:"tenantId"`
+	TenantId string `pulumi:"tenantId"`
 	// The lookback period for the feed to be imported.
 	TipLookbackPeriod *string `pulumi:"tipLookbackPeriod"`
 	// The name of the workspace.
@@ -966,14 +972,14 @@ type TIDataConnectorArgs struct {
 	// Connector ID
 	DataConnectorId pulumi.StringPtrInput
 	// The available data types for the connector.
-	DataTypes TIDataConnectorDataTypesPtrInput
+	DataTypes TIDataConnectorDataTypesInput
 	// The kind of the data connector
 	// Expected value is 'ThreatIntelligence'.
 	Kind pulumi.StringInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The tenant id to connect to, and get the data from.
-	TenantId pulumi.StringPtrInput
+	TenantId pulumi.StringInput
 	// The lookback period for the feed to be imported.
 	TipLookbackPeriod pulumi.StringPtrInput
 	// The name of the workspace.
@@ -1023,8 +1029,8 @@ func (o TIDataConnectorOutput) AzureApiVersion() pulumi.StringOutput {
 }
 
 // The available data types for the connector.
-func (o TIDataConnectorOutput) DataTypes() TIDataConnectorDataTypesResponsePtrOutput {
-	return o.ApplyT(func(v *TIDataConnector) TIDataConnectorDataTypesResponsePtrOutput { return v.DataTypes }).(TIDataConnectorDataTypesResponsePtrOutput)
+func (o TIDataConnectorOutput) DataTypes() TIDataConnectorDataTypesResponseOutput {
+	return o.ApplyT(func(v *TIDataConnector) TIDataConnectorDataTypesResponseOutput { return v.DataTypes }).(TIDataConnectorDataTypesResponseOutput)
 }
 
 // Etag of the azure resource
@@ -1049,8 +1055,8 @@ func (o TIDataConnectorOutput) SystemData() SystemDataResponseOutput {
 }
 
 // The tenant id to connect to, and get the data from.
-func (o TIDataConnectorOutput) TenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TIDataConnector) pulumi.StringPtrOutput { return v.TenantId }).(pulumi.StringPtrOutput)
+func (o TIDataConnectorOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TIDataConnector) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
 }
 
 // The lookback period for the feed to be imported.

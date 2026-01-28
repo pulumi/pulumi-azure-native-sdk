@@ -39,6 +39,8 @@ type LookupCertificateProfileArgs struct {
 type LookupCertificateProfileResult struct {
 	// The Azure API version of the resource.
 	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// List of renewed certificates.
+	Certificates []CertificateResponse `pulumi:"certificates"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Identity validation id used for the certificate subject name.
@@ -135,6 +137,11 @@ func (o LookupCertificateProfileResultOutput) ToLookupCertificateProfileResultOu
 // The Azure API version of the resource.
 func (o LookupCertificateProfileResultOutput) AzureApiVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCertificateProfileResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// List of renewed certificates.
+func (o LookupCertificateProfileResultOutput) Certificates() CertificateResponseArrayOutput {
+	return o.ApplyT(func(v LookupCertificateProfileResult) []CertificateResponse { return v.Certificates }).(CertificateResponseArrayOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

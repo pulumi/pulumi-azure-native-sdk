@@ -39,22 +39,14 @@ type LookupTargetArgs struct {
 type LookupTargetResult struct {
 	// The Azure API version of the resource.
 	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// The FQDN host name of the server to use in the connection string when connecting to a target. For example, for an Azure SQL logical server in the Azure commercial cloud, the value might be 'sql-logical-server-22092780.database.windows.net'; for an Azure SQL managed instance in the Azure commercial cloud, the value might be 'sql-mi-39441134.767d5869f605.database.windows.net'. Port number and instance name must be specified separately.
-	ConnectionServerName string `pulumi:"connectionServerName"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// The provisioning state of the resource.
-	ProvisioningState string `pulumi:"provisioningState"`
+	// The resource-specific properties for this resource.
+	Properties interface{} `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// The type of authentication to use when connecting to a target.
-	TargetAuthenticationType string `pulumi:"targetAuthenticationType"`
-	// Discriminator property for TargetProperties.
-	TargetType string `pulumi:"targetType"`
-	// To use SQL authentication when connecting to targets, specify the vault where the login name and password secrets are stored.
-	TargetVault *VaultSecretResponse `pulumi:"targetVault"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -101,11 +93,6 @@ func (o LookupTargetResultOutput) AzureApiVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTargetResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
-// The FQDN host name of the server to use in the connection string when connecting to a target. For example, for an Azure SQL logical server in the Azure commercial cloud, the value might be 'sql-logical-server-22092780.database.windows.net'; for an Azure SQL managed instance in the Azure commercial cloud, the value might be 'sql-mi-39441134.767d5869f605.database.windows.net'. Port number and instance name must be specified separately.
-func (o LookupTargetResultOutput) ConnectionServerName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupTargetResult) string { return v.ConnectionServerName }).(pulumi.StringOutput)
-}
-
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupTargetResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTargetResult) string { return v.Id }).(pulumi.StringOutput)
@@ -116,29 +103,14 @@ func (o LookupTargetResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTargetResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The provisioning state of the resource.
-func (o LookupTargetResultOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupTargetResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
+// The resource-specific properties for this resource.
+func (o LookupTargetResultOutput) Properties() pulumi.AnyOutput {
+	return o.ApplyT(func(v LookupTargetResult) interface{} { return v.Properties }).(pulumi.AnyOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupTargetResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupTargetResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
-}
-
-// The type of authentication to use when connecting to a target.
-func (o LookupTargetResultOutput) TargetAuthenticationType() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupTargetResult) string { return v.TargetAuthenticationType }).(pulumi.StringOutput)
-}
-
-// Discriminator property for TargetProperties.
-func (o LookupTargetResultOutput) TargetType() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupTargetResult) string { return v.TargetType }).(pulumi.StringOutput)
-}
-
-// To use SQL authentication when connecting to targets, specify the vault where the login name and password secrets are stored.
-func (o LookupTargetResultOutput) TargetVault() VaultSecretResponsePtrOutput {
-	return o.ApplyT(func(v LookupTargetResult) *VaultSecretResponse { return v.TargetVault }).(VaultSecretResponsePtrOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

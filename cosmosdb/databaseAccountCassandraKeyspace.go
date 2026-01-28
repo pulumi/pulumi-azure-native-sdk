@@ -191,6 +191,12 @@ func NewDatabaseAccountCassandraKeyspace(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:cosmosdb/v20250501preview:DatabaseAccountCassandraKeyspace"),
 		},
 		{
+			Type: pulumi.String("azure-native:cosmosdb/v20251015:DatabaseAccountCassandraKeyspace"),
+		},
+		{
+			Type: pulumi.String("azure-native:cosmosdb/v20251101preview:DatabaseAccountCassandraKeyspace"),
+		},
+		{
 			Type: pulumi.String("azure-native:documentdb/v20230315preview:CassandraResourceCassandraKeyspace"),
 		},
 		{

@@ -676,6 +676,354 @@ func (in *allowASOverridePtr) ToAllowASOverridePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(AllowASOverridePtrOutput)
 }
 
+// Export Policy for the BMP Configuration.
+type BmpExportPolicy string
+
+const (
+	// BMP ExportPolicy Pre-Policy
+	BmpExportPolicyPrePolicy = BmpExportPolicy("Pre-Policy")
+	// BMP ExportPolicy Post-Policy
+	BmpExportPolicyPostPolicy = BmpExportPolicy("Post-Policy")
+	// BMP ExportPolicy All
+	BmpExportPolicyAll = BmpExportPolicy("All")
+)
+
+func (BmpExportPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*BmpExportPolicy)(nil)).Elem()
+}
+
+func (e BmpExportPolicy) ToBmpExportPolicyOutput() BmpExportPolicyOutput {
+	return pulumi.ToOutput(e).(BmpExportPolicyOutput)
+}
+
+func (e BmpExportPolicy) ToBmpExportPolicyOutputWithContext(ctx context.Context) BmpExportPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(BmpExportPolicyOutput)
+}
+
+func (e BmpExportPolicy) ToBmpExportPolicyPtrOutput() BmpExportPolicyPtrOutput {
+	return e.ToBmpExportPolicyPtrOutputWithContext(context.Background())
+}
+
+func (e BmpExportPolicy) ToBmpExportPolicyPtrOutputWithContext(ctx context.Context) BmpExportPolicyPtrOutput {
+	return BmpExportPolicy(e).ToBmpExportPolicyOutputWithContext(ctx).ToBmpExportPolicyPtrOutputWithContext(ctx)
+}
+
+func (e BmpExportPolicy) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BmpExportPolicy) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BmpExportPolicy) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e BmpExportPolicy) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type BmpExportPolicyOutput struct{ *pulumi.OutputState }
+
+func (BmpExportPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BmpExportPolicy)(nil)).Elem()
+}
+
+func (o BmpExportPolicyOutput) ToBmpExportPolicyOutput() BmpExportPolicyOutput {
+	return o
+}
+
+func (o BmpExportPolicyOutput) ToBmpExportPolicyOutputWithContext(ctx context.Context) BmpExportPolicyOutput {
+	return o
+}
+
+func (o BmpExportPolicyOutput) ToBmpExportPolicyPtrOutput() BmpExportPolicyPtrOutput {
+	return o.ToBmpExportPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o BmpExportPolicyOutput) ToBmpExportPolicyPtrOutputWithContext(ctx context.Context) BmpExportPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BmpExportPolicy) *BmpExportPolicy {
+		return &v
+	}).(BmpExportPolicyPtrOutput)
+}
+
+func (o BmpExportPolicyOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o BmpExportPolicyOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BmpExportPolicy) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o BmpExportPolicyOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BmpExportPolicyOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BmpExportPolicy) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type BmpExportPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (BmpExportPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BmpExportPolicy)(nil)).Elem()
+}
+
+func (o BmpExportPolicyPtrOutput) ToBmpExportPolicyPtrOutput() BmpExportPolicyPtrOutput {
+	return o
+}
+
+func (o BmpExportPolicyPtrOutput) ToBmpExportPolicyPtrOutputWithContext(ctx context.Context) BmpExportPolicyPtrOutput {
+	return o
+}
+
+func (o BmpExportPolicyPtrOutput) Elem() BmpExportPolicyOutput {
+	return o.ApplyT(func(v *BmpExportPolicy) BmpExportPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret BmpExportPolicy
+		return ret
+	}).(BmpExportPolicyOutput)
+}
+
+func (o BmpExportPolicyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BmpExportPolicyPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *BmpExportPolicy) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// BmpExportPolicyInput is an input type that accepts values of the BmpExportPolicy enum
+// A concrete instance of `BmpExportPolicyInput` can be one of the following:
+//
+//	BmpExportPolicyPrePolicy
+//	BmpExportPolicyPostPolicy
+//	BmpExportPolicyAll
+type BmpExportPolicyInput interface {
+	pulumi.Input
+
+	ToBmpExportPolicyOutput() BmpExportPolicyOutput
+	ToBmpExportPolicyOutputWithContext(context.Context) BmpExportPolicyOutput
+}
+
+var bmpExportPolicyPtrType = reflect.TypeOf((**BmpExportPolicy)(nil)).Elem()
+
+type BmpExportPolicyPtrInput interface {
+	pulumi.Input
+
+	ToBmpExportPolicyPtrOutput() BmpExportPolicyPtrOutput
+	ToBmpExportPolicyPtrOutputWithContext(context.Context) BmpExportPolicyPtrOutput
+}
+
+type bmpExportPolicyPtr string
+
+func BmpExportPolicyPtr(v string) BmpExportPolicyPtrInput {
+	return (*bmpExportPolicyPtr)(&v)
+}
+
+func (*bmpExportPolicyPtr) ElementType() reflect.Type {
+	return bmpExportPolicyPtrType
+}
+
+func (in *bmpExportPolicyPtr) ToBmpExportPolicyPtrOutput() BmpExportPolicyPtrOutput {
+	return pulumi.ToOutput(in).(BmpExportPolicyPtrOutput)
+}
+
+func (in *bmpExportPolicyPtr) ToBmpExportPolicyPtrOutputWithContext(ctx context.Context) BmpExportPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(BmpExportPolicyPtrOutput)
+}
+
+// Monitored Address Family.
+type BmpMonitoredAddressFamily string
+
+const (
+	// IPv4 Unicast
+	BmpMonitoredAddressFamilyIpv4Unicast = BmpMonitoredAddressFamily("ipv4Unicast")
+	// IPv6 Unicast
+	BmpMonitoredAddressFamilyIpv6Unicast = BmpMonitoredAddressFamily("ipv6Unicast")
+	// VPN IPv4
+	BmpMonitoredAddressFamilyVpnIpv4 = BmpMonitoredAddressFamily("vpnIpv4")
+	// VPN IPv6
+	BmpMonitoredAddressFamilyVpnIpv6 = BmpMonitoredAddressFamily("vpnIpv6")
+	// All Address Families
+	BmpMonitoredAddressFamilyAll = BmpMonitoredAddressFamily("All")
+)
+
+func (BmpMonitoredAddressFamily) ElementType() reflect.Type {
+	return reflect.TypeOf((*BmpMonitoredAddressFamily)(nil)).Elem()
+}
+
+func (e BmpMonitoredAddressFamily) ToBmpMonitoredAddressFamilyOutput() BmpMonitoredAddressFamilyOutput {
+	return pulumi.ToOutput(e).(BmpMonitoredAddressFamilyOutput)
+}
+
+func (e BmpMonitoredAddressFamily) ToBmpMonitoredAddressFamilyOutputWithContext(ctx context.Context) BmpMonitoredAddressFamilyOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(BmpMonitoredAddressFamilyOutput)
+}
+
+func (e BmpMonitoredAddressFamily) ToBmpMonitoredAddressFamilyPtrOutput() BmpMonitoredAddressFamilyPtrOutput {
+	return e.ToBmpMonitoredAddressFamilyPtrOutputWithContext(context.Background())
+}
+
+func (e BmpMonitoredAddressFamily) ToBmpMonitoredAddressFamilyPtrOutputWithContext(ctx context.Context) BmpMonitoredAddressFamilyPtrOutput {
+	return BmpMonitoredAddressFamily(e).ToBmpMonitoredAddressFamilyOutputWithContext(ctx).ToBmpMonitoredAddressFamilyPtrOutputWithContext(ctx)
+}
+
+func (e BmpMonitoredAddressFamily) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BmpMonitoredAddressFamily) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BmpMonitoredAddressFamily) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e BmpMonitoredAddressFamily) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type BmpMonitoredAddressFamilyOutput struct{ *pulumi.OutputState }
+
+func (BmpMonitoredAddressFamilyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BmpMonitoredAddressFamily)(nil)).Elem()
+}
+
+func (o BmpMonitoredAddressFamilyOutput) ToBmpMonitoredAddressFamilyOutput() BmpMonitoredAddressFamilyOutput {
+	return o
+}
+
+func (o BmpMonitoredAddressFamilyOutput) ToBmpMonitoredAddressFamilyOutputWithContext(ctx context.Context) BmpMonitoredAddressFamilyOutput {
+	return o
+}
+
+func (o BmpMonitoredAddressFamilyOutput) ToBmpMonitoredAddressFamilyPtrOutput() BmpMonitoredAddressFamilyPtrOutput {
+	return o.ToBmpMonitoredAddressFamilyPtrOutputWithContext(context.Background())
+}
+
+func (o BmpMonitoredAddressFamilyOutput) ToBmpMonitoredAddressFamilyPtrOutputWithContext(ctx context.Context) BmpMonitoredAddressFamilyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BmpMonitoredAddressFamily) *BmpMonitoredAddressFamily {
+		return &v
+	}).(BmpMonitoredAddressFamilyPtrOutput)
+}
+
+func (o BmpMonitoredAddressFamilyOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o BmpMonitoredAddressFamilyOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BmpMonitoredAddressFamily) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o BmpMonitoredAddressFamilyOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BmpMonitoredAddressFamilyOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BmpMonitoredAddressFamily) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type BmpMonitoredAddressFamilyPtrOutput struct{ *pulumi.OutputState }
+
+func (BmpMonitoredAddressFamilyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BmpMonitoredAddressFamily)(nil)).Elem()
+}
+
+func (o BmpMonitoredAddressFamilyPtrOutput) ToBmpMonitoredAddressFamilyPtrOutput() BmpMonitoredAddressFamilyPtrOutput {
+	return o
+}
+
+func (o BmpMonitoredAddressFamilyPtrOutput) ToBmpMonitoredAddressFamilyPtrOutputWithContext(ctx context.Context) BmpMonitoredAddressFamilyPtrOutput {
+	return o
+}
+
+func (o BmpMonitoredAddressFamilyPtrOutput) Elem() BmpMonitoredAddressFamilyOutput {
+	return o.ApplyT(func(v *BmpMonitoredAddressFamily) BmpMonitoredAddressFamily {
+		if v != nil {
+			return *v
+		}
+		var ret BmpMonitoredAddressFamily
+		return ret
+	}).(BmpMonitoredAddressFamilyOutput)
+}
+
+func (o BmpMonitoredAddressFamilyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BmpMonitoredAddressFamilyPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *BmpMonitoredAddressFamily) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// BmpMonitoredAddressFamilyInput is an input type that accepts values of the BmpMonitoredAddressFamily enum
+// A concrete instance of `BmpMonitoredAddressFamilyInput` can be one of the following:
+//
+//	BmpMonitoredAddressFamilyIpv4Unicast
+//	BmpMonitoredAddressFamilyIpv6Unicast
+//	BmpMonitoredAddressFamilyVpnIpv4
+//	BmpMonitoredAddressFamilyVpnIpv6
+//	BmpMonitoredAddressFamilyAll
+type BmpMonitoredAddressFamilyInput interface {
+	pulumi.Input
+
+	ToBmpMonitoredAddressFamilyOutput() BmpMonitoredAddressFamilyOutput
+	ToBmpMonitoredAddressFamilyOutputWithContext(context.Context) BmpMonitoredAddressFamilyOutput
+}
+
+var bmpMonitoredAddressFamilyPtrType = reflect.TypeOf((**BmpMonitoredAddressFamily)(nil)).Elem()
+
+type BmpMonitoredAddressFamilyPtrInput interface {
+	pulumi.Input
+
+	ToBmpMonitoredAddressFamilyPtrOutput() BmpMonitoredAddressFamilyPtrOutput
+	ToBmpMonitoredAddressFamilyPtrOutputWithContext(context.Context) BmpMonitoredAddressFamilyPtrOutput
+}
+
+type bmpMonitoredAddressFamilyPtr string
+
+func BmpMonitoredAddressFamilyPtr(v string) BmpMonitoredAddressFamilyPtrInput {
+	return (*bmpMonitoredAddressFamilyPtr)(&v)
+}
+
+func (*bmpMonitoredAddressFamilyPtr) ElementType() reflect.Type {
+	return bmpMonitoredAddressFamilyPtrType
+}
+
+func (in *bmpMonitoredAddressFamilyPtr) ToBmpMonitoredAddressFamilyPtrOutput() BmpMonitoredAddressFamilyPtrOutput {
+	return pulumi.ToOutput(in).(BmpMonitoredAddressFamilyPtrOutput)
+}
+
+func (in *bmpMonitoredAddressFamilyPtr) ToBmpMonitoredAddressFamilyPtrOutputWithContext(ctx context.Context) BmpMonitoredAddressFamilyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(BmpMonitoredAddressFamilyPtrOutput)
+}
+
 // Based on this option layer3 parameters are mandatory. Example: True/False
 type BooleanEnumProperty string
 
@@ -5002,6 +5350,342 @@ func (in *sourceDestinationTypePtr) ToSourceDestinationTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(SourceDestinationTypePtrOutput)
 }
 
+// Enabling a station. Either True/False.
+type StationConfigurationState string
+
+const (
+	// StationConfigurationState Enabled
+	StationConfigurationStateEnabled = StationConfigurationState("Enabled")
+	// StationConfigurationState Disabled
+	StationConfigurationStateDisabled = StationConfigurationState("Disabled")
+)
+
+func (StationConfigurationState) ElementType() reflect.Type {
+	return reflect.TypeOf((*StationConfigurationState)(nil)).Elem()
+}
+
+func (e StationConfigurationState) ToStationConfigurationStateOutput() StationConfigurationStateOutput {
+	return pulumi.ToOutput(e).(StationConfigurationStateOutput)
+}
+
+func (e StationConfigurationState) ToStationConfigurationStateOutputWithContext(ctx context.Context) StationConfigurationStateOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(StationConfigurationStateOutput)
+}
+
+func (e StationConfigurationState) ToStationConfigurationStatePtrOutput() StationConfigurationStatePtrOutput {
+	return e.ToStationConfigurationStatePtrOutputWithContext(context.Background())
+}
+
+func (e StationConfigurationState) ToStationConfigurationStatePtrOutputWithContext(ctx context.Context) StationConfigurationStatePtrOutput {
+	return StationConfigurationState(e).ToStationConfigurationStateOutputWithContext(ctx).ToStationConfigurationStatePtrOutputWithContext(ctx)
+}
+
+func (e StationConfigurationState) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e StationConfigurationState) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e StationConfigurationState) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e StationConfigurationState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type StationConfigurationStateOutput struct{ *pulumi.OutputState }
+
+func (StationConfigurationStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StationConfigurationState)(nil)).Elem()
+}
+
+func (o StationConfigurationStateOutput) ToStationConfigurationStateOutput() StationConfigurationStateOutput {
+	return o
+}
+
+func (o StationConfigurationStateOutput) ToStationConfigurationStateOutputWithContext(ctx context.Context) StationConfigurationStateOutput {
+	return o
+}
+
+func (o StationConfigurationStateOutput) ToStationConfigurationStatePtrOutput() StationConfigurationStatePtrOutput {
+	return o.ToStationConfigurationStatePtrOutputWithContext(context.Background())
+}
+
+func (o StationConfigurationStateOutput) ToStationConfigurationStatePtrOutputWithContext(ctx context.Context) StationConfigurationStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StationConfigurationState) *StationConfigurationState {
+		return &v
+	}).(StationConfigurationStatePtrOutput)
+}
+
+func (o StationConfigurationStateOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o StationConfigurationStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e StationConfigurationState) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o StationConfigurationStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o StationConfigurationStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e StationConfigurationState) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type StationConfigurationStatePtrOutput struct{ *pulumi.OutputState }
+
+func (StationConfigurationStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StationConfigurationState)(nil)).Elem()
+}
+
+func (o StationConfigurationStatePtrOutput) ToStationConfigurationStatePtrOutput() StationConfigurationStatePtrOutput {
+	return o
+}
+
+func (o StationConfigurationStatePtrOutput) ToStationConfigurationStatePtrOutputWithContext(ctx context.Context) StationConfigurationStatePtrOutput {
+	return o
+}
+
+func (o StationConfigurationStatePtrOutput) Elem() StationConfigurationStateOutput {
+	return o.ApplyT(func(v *StationConfigurationState) StationConfigurationState {
+		if v != nil {
+			return *v
+		}
+		var ret StationConfigurationState
+		return ret
+	}).(StationConfigurationStateOutput)
+}
+
+func (o StationConfigurationStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o StationConfigurationStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *StationConfigurationState) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// StationConfigurationStateInput is an input type that accepts values of the StationConfigurationState enum
+// A concrete instance of `StationConfigurationStateInput` can be one of the following:
+//
+//	StationConfigurationStateEnabled
+//	StationConfigurationStateDisabled
+type StationConfigurationStateInput interface {
+	pulumi.Input
+
+	ToStationConfigurationStateOutput() StationConfigurationStateOutput
+	ToStationConfigurationStateOutputWithContext(context.Context) StationConfigurationStateOutput
+}
+
+var stationConfigurationStatePtrType = reflect.TypeOf((**StationConfigurationState)(nil)).Elem()
+
+type StationConfigurationStatePtrInput interface {
+	pulumi.Input
+
+	ToStationConfigurationStatePtrOutput() StationConfigurationStatePtrOutput
+	ToStationConfigurationStatePtrOutputWithContext(context.Context) StationConfigurationStatePtrOutput
+}
+
+type stationConfigurationStatePtr string
+
+func StationConfigurationStatePtr(v string) StationConfigurationStatePtrInput {
+	return (*stationConfigurationStatePtr)(&v)
+}
+
+func (*stationConfigurationStatePtr) ElementType() reflect.Type {
+	return stationConfigurationStatePtrType
+}
+
+func (in *stationConfigurationStatePtr) ToStationConfigurationStatePtrOutput() StationConfigurationStatePtrOutput {
+	return pulumi.ToOutput(in).(StationConfigurationStatePtrOutput)
+}
+
+func (in *stationConfigurationStatePtr) ToStationConfigurationStatePtrOutputWithContext(ctx context.Context) StationConfigurationStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(StationConfigurationStatePtrOutput)
+}
+
+// Station Connection Mode.
+type StationConnectionMode string
+
+const (
+	// StationConnectionMode Active
+	StationConnectionModeActive = StationConnectionMode("Active")
+	// StationConnectionMode Passive
+	StationConnectionModePassive = StationConnectionMode("Passive")
+)
+
+func (StationConnectionMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*StationConnectionMode)(nil)).Elem()
+}
+
+func (e StationConnectionMode) ToStationConnectionModeOutput() StationConnectionModeOutput {
+	return pulumi.ToOutput(e).(StationConnectionModeOutput)
+}
+
+func (e StationConnectionMode) ToStationConnectionModeOutputWithContext(ctx context.Context) StationConnectionModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(StationConnectionModeOutput)
+}
+
+func (e StationConnectionMode) ToStationConnectionModePtrOutput() StationConnectionModePtrOutput {
+	return e.ToStationConnectionModePtrOutputWithContext(context.Background())
+}
+
+func (e StationConnectionMode) ToStationConnectionModePtrOutputWithContext(ctx context.Context) StationConnectionModePtrOutput {
+	return StationConnectionMode(e).ToStationConnectionModeOutputWithContext(ctx).ToStationConnectionModePtrOutputWithContext(ctx)
+}
+
+func (e StationConnectionMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e StationConnectionMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e StationConnectionMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e StationConnectionMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type StationConnectionModeOutput struct{ *pulumi.OutputState }
+
+func (StationConnectionModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StationConnectionMode)(nil)).Elem()
+}
+
+func (o StationConnectionModeOutput) ToStationConnectionModeOutput() StationConnectionModeOutput {
+	return o
+}
+
+func (o StationConnectionModeOutput) ToStationConnectionModeOutputWithContext(ctx context.Context) StationConnectionModeOutput {
+	return o
+}
+
+func (o StationConnectionModeOutput) ToStationConnectionModePtrOutput() StationConnectionModePtrOutput {
+	return o.ToStationConnectionModePtrOutputWithContext(context.Background())
+}
+
+func (o StationConnectionModeOutput) ToStationConnectionModePtrOutputWithContext(ctx context.Context) StationConnectionModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StationConnectionMode) *StationConnectionMode {
+		return &v
+	}).(StationConnectionModePtrOutput)
+}
+
+func (o StationConnectionModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o StationConnectionModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e StationConnectionMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o StationConnectionModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o StationConnectionModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e StationConnectionMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type StationConnectionModePtrOutput struct{ *pulumi.OutputState }
+
+func (StationConnectionModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StationConnectionMode)(nil)).Elem()
+}
+
+func (o StationConnectionModePtrOutput) ToStationConnectionModePtrOutput() StationConnectionModePtrOutput {
+	return o
+}
+
+func (o StationConnectionModePtrOutput) ToStationConnectionModePtrOutputWithContext(ctx context.Context) StationConnectionModePtrOutput {
+	return o
+}
+
+func (o StationConnectionModePtrOutput) Elem() StationConnectionModeOutput {
+	return o.ApplyT(func(v *StationConnectionMode) StationConnectionMode {
+		if v != nil {
+			return *v
+		}
+		var ret StationConnectionMode
+		return ret
+	}).(StationConnectionModeOutput)
+}
+
+func (o StationConnectionModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o StationConnectionModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *StationConnectionMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// StationConnectionModeInput is an input type that accepts values of the StationConnectionMode enum
+// A concrete instance of `StationConnectionModeInput` can be one of the following:
+//
+//	StationConnectionModeActive
+//	StationConnectionModePassive
+type StationConnectionModeInput interface {
+	pulumi.Input
+
+	ToStationConnectionModeOutput() StationConnectionModeOutput
+	ToStationConnectionModeOutputWithContext(context.Context) StationConnectionModeOutput
+}
+
+var stationConnectionModePtrType = reflect.TypeOf((**StationConnectionMode)(nil)).Elem()
+
+type StationConnectionModePtrInput interface {
+	pulumi.Input
+
+	ToStationConnectionModePtrOutput() StationConnectionModePtrOutput
+	ToStationConnectionModePtrOutputWithContext(context.Context) StationConnectionModePtrOutput
+}
+
+type stationConnectionModePtr string
+
+func StationConnectionModePtr(v string) StationConnectionModePtrInput {
+	return (*stationConnectionModePtr)(&v)
+}
+
+func (*stationConnectionModePtr) ElementType() reflect.Type {
+	return stationConnectionModePtrType
+}
+
+func (in *stationConnectionModePtr) ToStationConnectionModePtrOutput() StationConnectionModePtrOutput {
+	return pulumi.ToOutput(in).(StationConnectionModePtrOutput)
+}
+
+func (in *stationConnectionModePtr) ToStationConnectionModePtrOutputWithContext(ctx context.Context) StationConnectionModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(StationConnectionModePtrOutput)
+}
+
 // Type of actions that can be performed.
 type TapRuleActionType string
 
@@ -5365,6 +6049,10 @@ func init() {
 	pulumi.RegisterOutputType(AddressFamilyTypePtrOutput{})
 	pulumi.RegisterOutputType(AllowASOverrideOutput{})
 	pulumi.RegisterOutputType(AllowASOverridePtrOutput{})
+	pulumi.RegisterOutputType(BmpExportPolicyOutput{})
+	pulumi.RegisterOutputType(BmpExportPolicyPtrOutput{})
+	pulumi.RegisterOutputType(BmpMonitoredAddressFamilyOutput{})
+	pulumi.RegisterOutputType(BmpMonitoredAddressFamilyPtrOutput{})
 	pulumi.RegisterOutputType(BooleanEnumPropertyOutput{})
 	pulumi.RegisterOutputType(BooleanEnumPropertyPtrOutput{})
 	pulumi.RegisterOutputType(CommunityActionTypesOutput{})
@@ -5417,6 +6105,10 @@ func init() {
 	pulumi.RegisterOutputType(RoutePolicyConditionTypePtrOutput{})
 	pulumi.RegisterOutputType(SourceDestinationTypeOutput{})
 	pulumi.RegisterOutputType(SourceDestinationTypePtrOutput{})
+	pulumi.RegisterOutputType(StationConfigurationStateOutput{})
+	pulumi.RegisterOutputType(StationConfigurationStatePtrOutput{})
+	pulumi.RegisterOutputType(StationConnectionModeOutput{})
+	pulumi.RegisterOutputType(StationConnectionModePtrOutput{})
 	pulumi.RegisterOutputType(TapRuleActionTypeOutput{})
 	pulumi.RegisterOutputType(TapRuleActionTypePtrOutput{})
 	pulumi.RegisterOutputType(WellKnownCommunitiesOutput{})

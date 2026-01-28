@@ -14,8 +14,6 @@ import (
 // Get a Product. '.default' and '.unassigned' are system defined values and cannot be used for product name.
 //
 // Uses Azure REST API version 2024-04-01.
-//
-// Other available API versions: 2022-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuresphere [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupProduct(ctx *pulumi.Context, args *LookupProductArgs, opts ...pulumi.InvokeOption) (*LookupProductResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProductResult

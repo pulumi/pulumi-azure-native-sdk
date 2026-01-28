@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ApiGateway{}
 	case "azure-native:apimanagement:ApiGatewayConfigConnection":
 		r = &ApiGatewayConfigConnection{}
+	case "azure-native:apimanagement:ApiGatewayHostnameBinding":
+		r = &ApiGatewayHostnameBinding{}
 	case "azure-native:apimanagement:ApiIssue":
 		r = &ApiIssue{}
 	case "azure-native:apimanagement:ApiIssueAttachment":
@@ -49,6 +51,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ApiSchema{}
 	case "azure-native:apimanagement:ApiTagDescription":
 		r = &ApiTagDescription{}
+	case "azure-native:apimanagement:ApiTool":
+		r = &ApiTool{}
 	case "azure-native:apimanagement:ApiVersionSet":
 		r = &ApiVersionSet{}
 	case "azure-native:apimanagement:ApiWiki":

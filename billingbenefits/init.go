@@ -21,8 +21,18 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "azure-native:billingbenefits:ConditionalCredit":
+		r = &ConditionalCredit{}
+	case "azure-native:billingbenefits:Credit":
+		r = &Credit{}
 	case "azure-native:billingbenefits:Discount":
 		r = &Discount{}
+	case "azure-native:billingbenefits:FreeService":
+		r = &FreeService{}
+	case "azure-native:billingbenefits:Macc":
+		r = &Macc{}
+	case "azure-native:billingbenefits:Source":
+		r = &Source{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

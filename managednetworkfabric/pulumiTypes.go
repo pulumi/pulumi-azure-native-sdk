@@ -2245,6 +2245,621 @@ func (o BfdConfigurationResponsePtrOutput) Multiplier() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// BGP Monitoring Protocol (BMP) Configuration properties.
+type BmpConfigurationProperties struct {
+	// Export Policy for the BMP Configuration.
+	ExportPolicy *string `pulumi:"exportPolicy"`
+	// Monitored Address Families for the BMP Configuration.
+	MonitoredAddressFamilies []string `pulumi:"monitoredAddressFamilies"`
+	// The List of Network ID's that need to be monitored.
+	MonitoredNetworks []string `pulumi:"monitoredNetworks"`
+	// Scope resource ARM Identifier.
+	ScopeResourceId *string `pulumi:"scopeResourceId"`
+	// Enabling a station. Either True/False.
+	StationConfigurationState *string `pulumi:"stationConfigurationState"`
+	// Station Connection Mode.
+	StationConnectionMode *string `pulumi:"stationConnectionMode"`
+	// Station Connection Properties.
+	StationConnectionProperties *StationConnectionProperties `pulumi:"stationConnectionProperties"`
+	// IP Address of the station.
+	StationIp *string `pulumi:"stationIp"`
+	// Name of the station.
+	StationName *string `pulumi:"stationName"`
+	// Network of the station
+	StationNetwork *string `pulumi:"stationNetwork"`
+	// Port of the station. Default value is 5000.
+	StationPort *int `pulumi:"stationPort"`
+}
+
+// Defaults sets the appropriate defaults for BmpConfigurationProperties
+func (val *BmpConfigurationProperties) Defaults() *BmpConfigurationProperties {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ExportPolicy == nil {
+		exportPolicy_ := "All"
+		tmp.ExportPolicy = &exportPolicy_
+	}
+	tmp.StationConnectionProperties = tmp.StationConnectionProperties.Defaults()
+
+	if tmp.StationPort == nil {
+		stationPort_ := 5000
+		tmp.StationPort = &stationPort_
+	}
+	return &tmp
+}
+
+// BmpConfigurationPropertiesInput is an input type that accepts BmpConfigurationPropertiesArgs and BmpConfigurationPropertiesOutput values.
+// You can construct a concrete instance of `BmpConfigurationPropertiesInput` via:
+//
+//	BmpConfigurationPropertiesArgs{...}
+type BmpConfigurationPropertiesInput interface {
+	pulumi.Input
+
+	ToBmpConfigurationPropertiesOutput() BmpConfigurationPropertiesOutput
+	ToBmpConfigurationPropertiesOutputWithContext(context.Context) BmpConfigurationPropertiesOutput
+}
+
+// BGP Monitoring Protocol (BMP) Configuration properties.
+type BmpConfigurationPropertiesArgs struct {
+	// Export Policy for the BMP Configuration.
+	ExportPolicy pulumi.StringPtrInput `pulumi:"exportPolicy"`
+	// Monitored Address Families for the BMP Configuration.
+	MonitoredAddressFamilies pulumi.StringArrayInput `pulumi:"monitoredAddressFamilies"`
+	// The List of Network ID's that need to be monitored.
+	MonitoredNetworks pulumi.StringArrayInput `pulumi:"monitoredNetworks"`
+	// Scope resource ARM Identifier.
+	ScopeResourceId pulumi.StringPtrInput `pulumi:"scopeResourceId"`
+	// Enabling a station. Either True/False.
+	StationConfigurationState pulumi.StringPtrInput `pulumi:"stationConfigurationState"`
+	// Station Connection Mode.
+	StationConnectionMode pulumi.StringPtrInput `pulumi:"stationConnectionMode"`
+	// Station Connection Properties.
+	StationConnectionProperties StationConnectionPropertiesPtrInput `pulumi:"stationConnectionProperties"`
+	// IP Address of the station.
+	StationIp pulumi.StringPtrInput `pulumi:"stationIp"`
+	// Name of the station.
+	StationName pulumi.StringPtrInput `pulumi:"stationName"`
+	// Network of the station
+	StationNetwork pulumi.StringPtrInput `pulumi:"stationNetwork"`
+	// Port of the station. Default value is 5000.
+	StationPort pulumi.IntPtrInput `pulumi:"stationPort"`
+}
+
+// Defaults sets the appropriate defaults for BmpConfigurationPropertiesArgs
+func (val *BmpConfigurationPropertiesArgs) Defaults() *BmpConfigurationPropertiesArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ExportPolicy == nil {
+		tmp.ExportPolicy = pulumi.StringPtr("All")
+	}
+
+	if tmp.StationPort == nil {
+		tmp.StationPort = pulumi.IntPtr(5000)
+	}
+	return &tmp
+}
+func (BmpConfigurationPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BmpConfigurationProperties)(nil)).Elem()
+}
+
+func (i BmpConfigurationPropertiesArgs) ToBmpConfigurationPropertiesOutput() BmpConfigurationPropertiesOutput {
+	return i.ToBmpConfigurationPropertiesOutputWithContext(context.Background())
+}
+
+func (i BmpConfigurationPropertiesArgs) ToBmpConfigurationPropertiesOutputWithContext(ctx context.Context) BmpConfigurationPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BmpConfigurationPropertiesOutput)
+}
+
+func (i BmpConfigurationPropertiesArgs) ToBmpConfigurationPropertiesPtrOutput() BmpConfigurationPropertiesPtrOutput {
+	return i.ToBmpConfigurationPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i BmpConfigurationPropertiesArgs) ToBmpConfigurationPropertiesPtrOutputWithContext(ctx context.Context) BmpConfigurationPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BmpConfigurationPropertiesOutput).ToBmpConfigurationPropertiesPtrOutputWithContext(ctx)
+}
+
+// BmpConfigurationPropertiesPtrInput is an input type that accepts BmpConfigurationPropertiesArgs, BmpConfigurationPropertiesPtr and BmpConfigurationPropertiesPtrOutput values.
+// You can construct a concrete instance of `BmpConfigurationPropertiesPtrInput` via:
+//
+//	        BmpConfigurationPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type BmpConfigurationPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToBmpConfigurationPropertiesPtrOutput() BmpConfigurationPropertiesPtrOutput
+	ToBmpConfigurationPropertiesPtrOutputWithContext(context.Context) BmpConfigurationPropertiesPtrOutput
+}
+
+type bmpConfigurationPropertiesPtrType BmpConfigurationPropertiesArgs
+
+func BmpConfigurationPropertiesPtr(v *BmpConfigurationPropertiesArgs) BmpConfigurationPropertiesPtrInput {
+	return (*bmpConfigurationPropertiesPtrType)(v)
+}
+
+func (*bmpConfigurationPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BmpConfigurationProperties)(nil)).Elem()
+}
+
+func (i *bmpConfigurationPropertiesPtrType) ToBmpConfigurationPropertiesPtrOutput() BmpConfigurationPropertiesPtrOutput {
+	return i.ToBmpConfigurationPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *bmpConfigurationPropertiesPtrType) ToBmpConfigurationPropertiesPtrOutputWithContext(ctx context.Context) BmpConfigurationPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BmpConfigurationPropertiesPtrOutput)
+}
+
+// BGP Monitoring Protocol (BMP) Configuration properties.
+type BmpConfigurationPropertiesOutput struct{ *pulumi.OutputState }
+
+func (BmpConfigurationPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BmpConfigurationProperties)(nil)).Elem()
+}
+
+func (o BmpConfigurationPropertiesOutput) ToBmpConfigurationPropertiesOutput() BmpConfigurationPropertiesOutput {
+	return o
+}
+
+func (o BmpConfigurationPropertiesOutput) ToBmpConfigurationPropertiesOutputWithContext(ctx context.Context) BmpConfigurationPropertiesOutput {
+	return o
+}
+
+func (o BmpConfigurationPropertiesOutput) ToBmpConfigurationPropertiesPtrOutput() BmpConfigurationPropertiesPtrOutput {
+	return o.ToBmpConfigurationPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o BmpConfigurationPropertiesOutput) ToBmpConfigurationPropertiesPtrOutputWithContext(ctx context.Context) BmpConfigurationPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BmpConfigurationProperties) *BmpConfigurationProperties {
+		return &v
+	}).(BmpConfigurationPropertiesPtrOutput)
+}
+
+// Export Policy for the BMP Configuration.
+func (o BmpConfigurationPropertiesOutput) ExportPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BmpConfigurationProperties) *string { return v.ExportPolicy }).(pulumi.StringPtrOutput)
+}
+
+// Monitored Address Families for the BMP Configuration.
+func (o BmpConfigurationPropertiesOutput) MonitoredAddressFamilies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BmpConfigurationProperties) []string { return v.MonitoredAddressFamilies }).(pulumi.StringArrayOutput)
+}
+
+// The List of Network ID's that need to be monitored.
+func (o BmpConfigurationPropertiesOutput) MonitoredNetworks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BmpConfigurationProperties) []string { return v.MonitoredNetworks }).(pulumi.StringArrayOutput)
+}
+
+// Scope resource ARM Identifier.
+func (o BmpConfigurationPropertiesOutput) ScopeResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BmpConfigurationProperties) *string { return v.ScopeResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Enabling a station. Either True/False.
+func (o BmpConfigurationPropertiesOutput) StationConfigurationState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BmpConfigurationProperties) *string { return v.StationConfigurationState }).(pulumi.StringPtrOutput)
+}
+
+// Station Connection Mode.
+func (o BmpConfigurationPropertiesOutput) StationConnectionMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BmpConfigurationProperties) *string { return v.StationConnectionMode }).(pulumi.StringPtrOutput)
+}
+
+// Station Connection Properties.
+func (o BmpConfigurationPropertiesOutput) StationConnectionProperties() StationConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v BmpConfigurationProperties) *StationConnectionProperties { return v.StationConnectionProperties }).(StationConnectionPropertiesPtrOutput)
+}
+
+// IP Address of the station.
+func (o BmpConfigurationPropertiesOutput) StationIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BmpConfigurationProperties) *string { return v.StationIp }).(pulumi.StringPtrOutput)
+}
+
+// Name of the station.
+func (o BmpConfigurationPropertiesOutput) StationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BmpConfigurationProperties) *string { return v.StationName }).(pulumi.StringPtrOutput)
+}
+
+// Network of the station
+func (o BmpConfigurationPropertiesOutput) StationNetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BmpConfigurationProperties) *string { return v.StationNetwork }).(pulumi.StringPtrOutput)
+}
+
+// Port of the station. Default value is 5000.
+func (o BmpConfigurationPropertiesOutput) StationPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BmpConfigurationProperties) *int { return v.StationPort }).(pulumi.IntPtrOutput)
+}
+
+type BmpConfigurationPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (BmpConfigurationPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BmpConfigurationProperties)(nil)).Elem()
+}
+
+func (o BmpConfigurationPropertiesPtrOutput) ToBmpConfigurationPropertiesPtrOutput() BmpConfigurationPropertiesPtrOutput {
+	return o
+}
+
+func (o BmpConfigurationPropertiesPtrOutput) ToBmpConfigurationPropertiesPtrOutputWithContext(ctx context.Context) BmpConfigurationPropertiesPtrOutput {
+	return o
+}
+
+func (o BmpConfigurationPropertiesPtrOutput) Elem() BmpConfigurationPropertiesOutput {
+	return o.ApplyT(func(v *BmpConfigurationProperties) BmpConfigurationProperties {
+		if v != nil {
+			return *v
+		}
+		var ret BmpConfigurationProperties
+		return ret
+	}).(BmpConfigurationPropertiesOutput)
+}
+
+// Export Policy for the BMP Configuration.
+func (o BmpConfigurationPropertiesPtrOutput) ExportPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BmpConfigurationProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExportPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Monitored Address Families for the BMP Configuration.
+func (o BmpConfigurationPropertiesPtrOutput) MonitoredAddressFamilies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BmpConfigurationProperties) []string {
+		if v == nil {
+			return nil
+		}
+		return v.MonitoredAddressFamilies
+	}).(pulumi.StringArrayOutput)
+}
+
+// The List of Network ID's that need to be monitored.
+func (o BmpConfigurationPropertiesPtrOutput) MonitoredNetworks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BmpConfigurationProperties) []string {
+		if v == nil {
+			return nil
+		}
+		return v.MonitoredNetworks
+	}).(pulumi.StringArrayOutput)
+}
+
+// Scope resource ARM Identifier.
+func (o BmpConfigurationPropertiesPtrOutput) ScopeResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BmpConfigurationProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ScopeResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Enabling a station. Either True/False.
+func (o BmpConfigurationPropertiesPtrOutput) StationConfigurationState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BmpConfigurationProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StationConfigurationState
+	}).(pulumi.StringPtrOutput)
+}
+
+// Station Connection Mode.
+func (o BmpConfigurationPropertiesPtrOutput) StationConnectionMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BmpConfigurationProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StationConnectionMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Station Connection Properties.
+func (o BmpConfigurationPropertiesPtrOutput) StationConnectionProperties() StationConnectionPropertiesPtrOutput {
+	return o.ApplyT(func(v *BmpConfigurationProperties) *StationConnectionProperties {
+		if v == nil {
+			return nil
+		}
+		return v.StationConnectionProperties
+	}).(StationConnectionPropertiesPtrOutput)
+}
+
+// IP Address of the station.
+func (o BmpConfigurationPropertiesPtrOutput) StationIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BmpConfigurationProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StationIp
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the station.
+func (o BmpConfigurationPropertiesPtrOutput) StationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BmpConfigurationProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StationName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Network of the station
+func (o BmpConfigurationPropertiesPtrOutput) StationNetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BmpConfigurationProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StationNetwork
+	}).(pulumi.StringPtrOutput)
+}
+
+// Port of the station. Default value is 5000.
+func (o BmpConfigurationPropertiesPtrOutput) StationPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BmpConfigurationProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.StationPort
+	}).(pulumi.IntPtrOutput)
+}
+
+// BGP Monitoring Protocol (BMP) Configuration properties.
+type BmpConfigurationPropertiesResponse struct {
+	// Export Policy for the BMP Configuration.
+	ExportPolicy *string `pulumi:"exportPolicy"`
+	// Monitored Address Families for the BMP Configuration.
+	MonitoredAddressFamilies []string `pulumi:"monitoredAddressFamilies"`
+	// The List of Network ID's that need to be monitored.
+	MonitoredNetworks []string `pulumi:"monitoredNetworks"`
+	// Scope resource ARM Identifier.
+	ScopeResourceId *string `pulumi:"scopeResourceId"`
+	// Enabling a station. Either True/False.
+	StationConfigurationState *string `pulumi:"stationConfigurationState"`
+	// Station Connection Mode.
+	StationConnectionMode *string `pulumi:"stationConnectionMode"`
+	// Station Connection Properties.
+	StationConnectionProperties *StationConnectionPropertiesResponse `pulumi:"stationConnectionProperties"`
+	// IP Address of the station.
+	StationIp *string `pulumi:"stationIp"`
+	// Name of the station.
+	StationName *string `pulumi:"stationName"`
+	// Network of the station
+	StationNetwork *string `pulumi:"stationNetwork"`
+	// Port of the station. Default value is 5000.
+	StationPort *int `pulumi:"stationPort"`
+}
+
+// Defaults sets the appropriate defaults for BmpConfigurationPropertiesResponse
+func (val *BmpConfigurationPropertiesResponse) Defaults() *BmpConfigurationPropertiesResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ExportPolicy == nil {
+		exportPolicy_ := "All"
+		tmp.ExportPolicy = &exportPolicy_
+	}
+	tmp.StationConnectionProperties = tmp.StationConnectionProperties.Defaults()
+
+	if tmp.StationPort == nil {
+		stationPort_ := 5000
+		tmp.StationPort = &stationPort_
+	}
+	return &tmp
+}
+
+// BGP Monitoring Protocol (BMP) Configuration properties.
+type BmpConfigurationPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (BmpConfigurationPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BmpConfigurationPropertiesResponse)(nil)).Elem()
+}
+
+func (o BmpConfigurationPropertiesResponseOutput) ToBmpConfigurationPropertiesResponseOutput() BmpConfigurationPropertiesResponseOutput {
+	return o
+}
+
+func (o BmpConfigurationPropertiesResponseOutput) ToBmpConfigurationPropertiesResponseOutputWithContext(ctx context.Context) BmpConfigurationPropertiesResponseOutput {
+	return o
+}
+
+// Export Policy for the BMP Configuration.
+func (o BmpConfigurationPropertiesResponseOutput) ExportPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BmpConfigurationPropertiesResponse) *string { return v.ExportPolicy }).(pulumi.StringPtrOutput)
+}
+
+// Monitored Address Families for the BMP Configuration.
+func (o BmpConfigurationPropertiesResponseOutput) MonitoredAddressFamilies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BmpConfigurationPropertiesResponse) []string { return v.MonitoredAddressFamilies }).(pulumi.StringArrayOutput)
+}
+
+// The List of Network ID's that need to be monitored.
+func (o BmpConfigurationPropertiesResponseOutput) MonitoredNetworks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BmpConfigurationPropertiesResponse) []string { return v.MonitoredNetworks }).(pulumi.StringArrayOutput)
+}
+
+// Scope resource ARM Identifier.
+func (o BmpConfigurationPropertiesResponseOutput) ScopeResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BmpConfigurationPropertiesResponse) *string { return v.ScopeResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Enabling a station. Either True/False.
+func (o BmpConfigurationPropertiesResponseOutput) StationConfigurationState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BmpConfigurationPropertiesResponse) *string { return v.StationConfigurationState }).(pulumi.StringPtrOutput)
+}
+
+// Station Connection Mode.
+func (o BmpConfigurationPropertiesResponseOutput) StationConnectionMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BmpConfigurationPropertiesResponse) *string { return v.StationConnectionMode }).(pulumi.StringPtrOutput)
+}
+
+// Station Connection Properties.
+func (o BmpConfigurationPropertiesResponseOutput) StationConnectionProperties() StationConnectionPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v BmpConfigurationPropertiesResponse) *StationConnectionPropertiesResponse {
+		return v.StationConnectionProperties
+	}).(StationConnectionPropertiesResponsePtrOutput)
+}
+
+// IP Address of the station.
+func (o BmpConfigurationPropertiesResponseOutput) StationIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BmpConfigurationPropertiesResponse) *string { return v.StationIp }).(pulumi.StringPtrOutput)
+}
+
+// Name of the station.
+func (o BmpConfigurationPropertiesResponseOutput) StationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BmpConfigurationPropertiesResponse) *string { return v.StationName }).(pulumi.StringPtrOutput)
+}
+
+// Network of the station
+func (o BmpConfigurationPropertiesResponseOutput) StationNetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BmpConfigurationPropertiesResponse) *string { return v.StationNetwork }).(pulumi.StringPtrOutput)
+}
+
+// Port of the station. Default value is 5000.
+func (o BmpConfigurationPropertiesResponseOutput) StationPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BmpConfigurationPropertiesResponse) *int { return v.StationPort }).(pulumi.IntPtrOutput)
+}
+
+type BmpConfigurationPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (BmpConfigurationPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BmpConfigurationPropertiesResponse)(nil)).Elem()
+}
+
+func (o BmpConfigurationPropertiesResponsePtrOutput) ToBmpConfigurationPropertiesResponsePtrOutput() BmpConfigurationPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o BmpConfigurationPropertiesResponsePtrOutput) ToBmpConfigurationPropertiesResponsePtrOutputWithContext(ctx context.Context) BmpConfigurationPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o BmpConfigurationPropertiesResponsePtrOutput) Elem() BmpConfigurationPropertiesResponseOutput {
+	return o.ApplyT(func(v *BmpConfigurationPropertiesResponse) BmpConfigurationPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BmpConfigurationPropertiesResponse
+		return ret
+	}).(BmpConfigurationPropertiesResponseOutput)
+}
+
+// Export Policy for the BMP Configuration.
+func (o BmpConfigurationPropertiesResponsePtrOutput) ExportPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BmpConfigurationPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExportPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Monitored Address Families for the BMP Configuration.
+func (o BmpConfigurationPropertiesResponsePtrOutput) MonitoredAddressFamilies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BmpConfigurationPropertiesResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.MonitoredAddressFamilies
+	}).(pulumi.StringArrayOutput)
+}
+
+// The List of Network ID's that need to be monitored.
+func (o BmpConfigurationPropertiesResponsePtrOutput) MonitoredNetworks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BmpConfigurationPropertiesResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.MonitoredNetworks
+	}).(pulumi.StringArrayOutput)
+}
+
+// Scope resource ARM Identifier.
+func (o BmpConfigurationPropertiesResponsePtrOutput) ScopeResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BmpConfigurationPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ScopeResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Enabling a station. Either True/False.
+func (o BmpConfigurationPropertiesResponsePtrOutput) StationConfigurationState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BmpConfigurationPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StationConfigurationState
+	}).(pulumi.StringPtrOutput)
+}
+
+// Station Connection Mode.
+func (o BmpConfigurationPropertiesResponsePtrOutput) StationConnectionMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BmpConfigurationPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StationConnectionMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Station Connection Properties.
+func (o BmpConfigurationPropertiesResponsePtrOutput) StationConnectionProperties() StationConnectionPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *BmpConfigurationPropertiesResponse) *StationConnectionPropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.StationConnectionProperties
+	}).(StationConnectionPropertiesResponsePtrOutput)
+}
+
+// IP Address of the station.
+func (o BmpConfigurationPropertiesResponsePtrOutput) StationIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BmpConfigurationPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StationIp
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the station.
+func (o BmpConfigurationPropertiesResponsePtrOutput) StationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BmpConfigurationPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StationName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Network of the station
+func (o BmpConfigurationPropertiesResponsePtrOutput) StationNetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BmpConfigurationPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StationNetwork
+	}).(pulumi.StringPtrOutput)
+}
+
+// Port of the station. Default value is 5000.
+func (o BmpConfigurationPropertiesResponsePtrOutput) StationPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BmpConfigurationPropertiesResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.StationPort
+	}).(pulumi.IntPtrOutput)
+}
+
 // Dynamic match configuration object.
 type CommonDynamicMatchConfiguration struct {
 	// List of IP Groups.
@@ -8175,6 +8790,32 @@ func (o L3OptionBPropertiesResponsePtrOutput) RouteTargets() RouteTargetInformat
 	}).(RouteTargetInformationResponsePtrOutput)
 }
 
+// Details of the last operations performed on the resource
+type LastOperationPropertiesResponse struct {
+	// Details status of the last operation performed on the resource.
+	Details string `pulumi:"details"`
+}
+
+// Details of the last operations performed on the resource
+type LastOperationPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (LastOperationPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LastOperationPropertiesResponse)(nil)).Elem()
+}
+
+func (o LastOperationPropertiesResponseOutput) ToLastOperationPropertiesResponseOutput() LastOperationPropertiesResponseOutput {
+	return o
+}
+
+func (o LastOperationPropertiesResponseOutput) ToLastOperationPropertiesResponseOutputWithContext(ctx context.Context) LastOperationPropertiesResponseOutput {
+	return o
+}
+
+// Details status of the last operation performed on the resource.
+func (o LastOperationPropertiesResponseOutput) Details() pulumi.StringOutput {
+	return o.ApplyT(func(v LastOperationPropertiesResponse) string { return v.Details }).(pulumi.StringOutput)
+}
+
 // Common properties for Layer2 Configuration.
 type Layer2Configuration struct {
 	// List of network device interfaces resource IDs.
@@ -9072,6 +9713,164 @@ func (o NeighborGroupDestinationResponseOutput) Ipv4Addresses() pulumi.StringArr
 // Array of IPv6 Addresses.
 func (o NeighborGroupDestinationResponseOutput) Ipv6Addresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NeighborGroupDestinationResponse) []string { return v.Ipv6Addresses }).(pulumi.StringArrayOutput)
+}
+
+// Network Monitor Properties defines the properties of the resource.
+type NetworkMonitorProperties struct {
+	// Switch configuration description.
+	Annotation *string `pulumi:"annotation"`
+	// BMP Configurations for the Network Fabric.
+	BmpConfiguration *BmpConfigurationProperties `pulumi:"bmpConfiguration"`
+}
+
+// Defaults sets the appropriate defaults for NetworkMonitorProperties
+func (val *NetworkMonitorProperties) Defaults() *NetworkMonitorProperties {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.BmpConfiguration = tmp.BmpConfiguration.Defaults()
+
+	return &tmp
+}
+
+// NetworkMonitorPropertiesInput is an input type that accepts NetworkMonitorPropertiesArgs and NetworkMonitorPropertiesOutput values.
+// You can construct a concrete instance of `NetworkMonitorPropertiesInput` via:
+//
+//	NetworkMonitorPropertiesArgs{...}
+type NetworkMonitorPropertiesInput interface {
+	pulumi.Input
+
+	ToNetworkMonitorPropertiesOutput() NetworkMonitorPropertiesOutput
+	ToNetworkMonitorPropertiesOutputWithContext(context.Context) NetworkMonitorPropertiesOutput
+}
+
+// Network Monitor Properties defines the properties of the resource.
+type NetworkMonitorPropertiesArgs struct {
+	// Switch configuration description.
+	Annotation pulumi.StringPtrInput `pulumi:"annotation"`
+	// BMP Configurations for the Network Fabric.
+	BmpConfiguration BmpConfigurationPropertiesPtrInput `pulumi:"bmpConfiguration"`
+}
+
+// Defaults sets the appropriate defaults for NetworkMonitorPropertiesArgs
+func (val *NetworkMonitorPropertiesArgs) Defaults() *NetworkMonitorPropertiesArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	return &tmp
+}
+func (NetworkMonitorPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkMonitorProperties)(nil)).Elem()
+}
+
+func (i NetworkMonitorPropertiesArgs) ToNetworkMonitorPropertiesOutput() NetworkMonitorPropertiesOutput {
+	return i.ToNetworkMonitorPropertiesOutputWithContext(context.Background())
+}
+
+func (i NetworkMonitorPropertiesArgs) ToNetworkMonitorPropertiesOutputWithContext(ctx context.Context) NetworkMonitorPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkMonitorPropertiesOutput)
+}
+
+// Network Monitor Properties defines the properties of the resource.
+type NetworkMonitorPropertiesOutput struct{ *pulumi.OutputState }
+
+func (NetworkMonitorPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkMonitorProperties)(nil)).Elem()
+}
+
+func (o NetworkMonitorPropertiesOutput) ToNetworkMonitorPropertiesOutput() NetworkMonitorPropertiesOutput {
+	return o
+}
+
+func (o NetworkMonitorPropertiesOutput) ToNetworkMonitorPropertiesOutputWithContext(ctx context.Context) NetworkMonitorPropertiesOutput {
+	return o
+}
+
+// Switch configuration description.
+func (o NetworkMonitorPropertiesOutput) Annotation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkMonitorProperties) *string { return v.Annotation }).(pulumi.StringPtrOutput)
+}
+
+// BMP Configurations for the Network Fabric.
+func (o NetworkMonitorPropertiesOutput) BmpConfiguration() BmpConfigurationPropertiesPtrOutput {
+	return o.ApplyT(func(v NetworkMonitorProperties) *BmpConfigurationProperties { return v.BmpConfiguration }).(BmpConfigurationPropertiesPtrOutput)
+}
+
+// Network Monitor Properties defines the properties of the resource.
+type NetworkMonitorPropertiesResponse struct {
+	// Administrative state of the resource.
+	AdministrativeState string `pulumi:"administrativeState"`
+	// Switch configuration description.
+	Annotation *string `pulumi:"annotation"`
+	// BMP Configurations for the Network Fabric.
+	BmpConfiguration *BmpConfigurationPropertiesResponse `pulumi:"bmpConfiguration"`
+	// Configuration state of the resource.
+	ConfigurationState string `pulumi:"configurationState"`
+	// Details of the last operation performed on the resource
+	LastOperation LastOperationPropertiesResponse `pulumi:"lastOperation"`
+	// Provides you the latest status of the NetworkMonitor resource
+	ProvisioningState string `pulumi:"provisioningState"`
+}
+
+// Defaults sets the appropriate defaults for NetworkMonitorPropertiesResponse
+func (val *NetworkMonitorPropertiesResponse) Defaults() *NetworkMonitorPropertiesResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.BmpConfiguration = tmp.BmpConfiguration.Defaults()
+
+	return &tmp
+}
+
+// Network Monitor Properties defines the properties of the resource.
+type NetworkMonitorPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (NetworkMonitorPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkMonitorPropertiesResponse)(nil)).Elem()
+}
+
+func (o NetworkMonitorPropertiesResponseOutput) ToNetworkMonitorPropertiesResponseOutput() NetworkMonitorPropertiesResponseOutput {
+	return o
+}
+
+func (o NetworkMonitorPropertiesResponseOutput) ToNetworkMonitorPropertiesResponseOutputWithContext(ctx context.Context) NetworkMonitorPropertiesResponseOutput {
+	return o
+}
+
+// Administrative state of the resource.
+func (o NetworkMonitorPropertiesResponseOutput) AdministrativeState() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkMonitorPropertiesResponse) string { return v.AdministrativeState }).(pulumi.StringOutput)
+}
+
+// Switch configuration description.
+func (o NetworkMonitorPropertiesResponseOutput) Annotation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkMonitorPropertiesResponse) *string { return v.Annotation }).(pulumi.StringPtrOutput)
+}
+
+// BMP Configurations for the Network Fabric.
+func (o NetworkMonitorPropertiesResponseOutput) BmpConfiguration() BmpConfigurationPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v NetworkMonitorPropertiesResponse) *BmpConfigurationPropertiesResponse {
+		return v.BmpConfiguration
+	}).(BmpConfigurationPropertiesResponsePtrOutput)
+}
+
+// Configuration state of the resource.
+func (o NetworkMonitorPropertiesResponseOutput) ConfigurationState() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkMonitorPropertiesResponse) string { return v.ConfigurationState }).(pulumi.StringOutput)
+}
+
+// Details of the last operation performed on the resource
+func (o NetworkMonitorPropertiesResponseOutput) LastOperation() LastOperationPropertiesResponseOutput {
+	return o.ApplyT(func(v NetworkMonitorPropertiesResponse) LastOperationPropertiesResponse { return v.LastOperation }).(LastOperationPropertiesResponseOutput)
+}
+
+// Provides you the latest status of the NetworkMonitor resource
+func (o NetworkMonitorPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkMonitorPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // Destination.
@@ -12242,6 +13041,337 @@ func (o StaticRoutePropertiesResponseArrayOutput) Index(i pulumi.IntInput) Stati
 	}).(StaticRoutePropertiesResponseOutput)
 }
 
+// Station Connection Properties.
+type StationConnectionProperties struct {
+	// Connection keepalive idle time in seconds
+	KeepaliveIdleTime *int `pulumi:"keepaliveIdleTime"`
+	// Probe count, default value is 10
+	ProbeCount *int `pulumi:"probeCount"`
+	// Probe interval in seconds, default value is 60
+	ProbeInterval *int `pulumi:"probeInterval"`
+}
+
+// Defaults sets the appropriate defaults for StationConnectionProperties
+func (val *StationConnectionProperties) Defaults() *StationConnectionProperties {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.KeepaliveIdleTime == nil {
+		keepaliveIdleTime_ := 180
+		tmp.KeepaliveIdleTime = &keepaliveIdleTime_
+	}
+	if tmp.ProbeCount == nil {
+		probeCount_ := 10
+		tmp.ProbeCount = &probeCount_
+	}
+	if tmp.ProbeInterval == nil {
+		probeInterval_ := 60
+		tmp.ProbeInterval = &probeInterval_
+	}
+	return &tmp
+}
+
+// StationConnectionPropertiesInput is an input type that accepts StationConnectionPropertiesArgs and StationConnectionPropertiesOutput values.
+// You can construct a concrete instance of `StationConnectionPropertiesInput` via:
+//
+//	StationConnectionPropertiesArgs{...}
+type StationConnectionPropertiesInput interface {
+	pulumi.Input
+
+	ToStationConnectionPropertiesOutput() StationConnectionPropertiesOutput
+	ToStationConnectionPropertiesOutputWithContext(context.Context) StationConnectionPropertiesOutput
+}
+
+// Station Connection Properties.
+type StationConnectionPropertiesArgs struct {
+	// Connection keepalive idle time in seconds
+	KeepaliveIdleTime pulumi.IntPtrInput `pulumi:"keepaliveIdleTime"`
+	// Probe count, default value is 10
+	ProbeCount pulumi.IntPtrInput `pulumi:"probeCount"`
+	// Probe interval in seconds, default value is 60
+	ProbeInterval pulumi.IntPtrInput `pulumi:"probeInterval"`
+}
+
+// Defaults sets the appropriate defaults for StationConnectionPropertiesArgs
+func (val *StationConnectionPropertiesArgs) Defaults() *StationConnectionPropertiesArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.KeepaliveIdleTime == nil {
+		tmp.KeepaliveIdleTime = pulumi.IntPtr(180)
+	}
+	if tmp.ProbeCount == nil {
+		tmp.ProbeCount = pulumi.IntPtr(10)
+	}
+	if tmp.ProbeInterval == nil {
+		tmp.ProbeInterval = pulumi.IntPtr(60)
+	}
+	return &tmp
+}
+func (StationConnectionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StationConnectionProperties)(nil)).Elem()
+}
+
+func (i StationConnectionPropertiesArgs) ToStationConnectionPropertiesOutput() StationConnectionPropertiesOutput {
+	return i.ToStationConnectionPropertiesOutputWithContext(context.Background())
+}
+
+func (i StationConnectionPropertiesArgs) ToStationConnectionPropertiesOutputWithContext(ctx context.Context) StationConnectionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StationConnectionPropertiesOutput)
+}
+
+func (i StationConnectionPropertiesArgs) ToStationConnectionPropertiesPtrOutput() StationConnectionPropertiesPtrOutput {
+	return i.ToStationConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i StationConnectionPropertiesArgs) ToStationConnectionPropertiesPtrOutputWithContext(ctx context.Context) StationConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StationConnectionPropertiesOutput).ToStationConnectionPropertiesPtrOutputWithContext(ctx)
+}
+
+// StationConnectionPropertiesPtrInput is an input type that accepts StationConnectionPropertiesArgs, StationConnectionPropertiesPtr and StationConnectionPropertiesPtrOutput values.
+// You can construct a concrete instance of `StationConnectionPropertiesPtrInput` via:
+//
+//	        StationConnectionPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type StationConnectionPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToStationConnectionPropertiesPtrOutput() StationConnectionPropertiesPtrOutput
+	ToStationConnectionPropertiesPtrOutputWithContext(context.Context) StationConnectionPropertiesPtrOutput
+}
+
+type stationConnectionPropertiesPtrType StationConnectionPropertiesArgs
+
+func StationConnectionPropertiesPtr(v *StationConnectionPropertiesArgs) StationConnectionPropertiesPtrInput {
+	return (*stationConnectionPropertiesPtrType)(v)
+}
+
+func (*stationConnectionPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StationConnectionProperties)(nil)).Elem()
+}
+
+func (i *stationConnectionPropertiesPtrType) ToStationConnectionPropertiesPtrOutput() StationConnectionPropertiesPtrOutput {
+	return i.ToStationConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *stationConnectionPropertiesPtrType) ToStationConnectionPropertiesPtrOutputWithContext(ctx context.Context) StationConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StationConnectionPropertiesPtrOutput)
+}
+
+// Station Connection Properties.
+type StationConnectionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (StationConnectionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StationConnectionProperties)(nil)).Elem()
+}
+
+func (o StationConnectionPropertiesOutput) ToStationConnectionPropertiesOutput() StationConnectionPropertiesOutput {
+	return o
+}
+
+func (o StationConnectionPropertiesOutput) ToStationConnectionPropertiesOutputWithContext(ctx context.Context) StationConnectionPropertiesOutput {
+	return o
+}
+
+func (o StationConnectionPropertiesOutput) ToStationConnectionPropertiesPtrOutput() StationConnectionPropertiesPtrOutput {
+	return o.ToStationConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o StationConnectionPropertiesOutput) ToStationConnectionPropertiesPtrOutputWithContext(ctx context.Context) StationConnectionPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StationConnectionProperties) *StationConnectionProperties {
+		return &v
+	}).(StationConnectionPropertiesPtrOutput)
+}
+
+// Connection keepalive idle time in seconds
+func (o StationConnectionPropertiesOutput) KeepaliveIdleTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StationConnectionProperties) *int { return v.KeepaliveIdleTime }).(pulumi.IntPtrOutput)
+}
+
+// Probe count, default value is 10
+func (o StationConnectionPropertiesOutput) ProbeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StationConnectionProperties) *int { return v.ProbeCount }).(pulumi.IntPtrOutput)
+}
+
+// Probe interval in seconds, default value is 60
+func (o StationConnectionPropertiesOutput) ProbeInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StationConnectionProperties) *int { return v.ProbeInterval }).(pulumi.IntPtrOutput)
+}
+
+type StationConnectionPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (StationConnectionPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StationConnectionProperties)(nil)).Elem()
+}
+
+func (o StationConnectionPropertiesPtrOutput) ToStationConnectionPropertiesPtrOutput() StationConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o StationConnectionPropertiesPtrOutput) ToStationConnectionPropertiesPtrOutputWithContext(ctx context.Context) StationConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o StationConnectionPropertiesPtrOutput) Elem() StationConnectionPropertiesOutput {
+	return o.ApplyT(func(v *StationConnectionProperties) StationConnectionProperties {
+		if v != nil {
+			return *v
+		}
+		var ret StationConnectionProperties
+		return ret
+	}).(StationConnectionPropertiesOutput)
+}
+
+// Connection keepalive idle time in seconds
+func (o StationConnectionPropertiesPtrOutput) KeepaliveIdleTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StationConnectionProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepaliveIdleTime
+	}).(pulumi.IntPtrOutput)
+}
+
+// Probe count, default value is 10
+func (o StationConnectionPropertiesPtrOutput) ProbeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StationConnectionProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ProbeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Probe interval in seconds, default value is 60
+func (o StationConnectionPropertiesPtrOutput) ProbeInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StationConnectionProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ProbeInterval
+	}).(pulumi.IntPtrOutput)
+}
+
+// Station Connection Properties.
+type StationConnectionPropertiesResponse struct {
+	// Connection keepalive idle time in seconds
+	KeepaliveIdleTime *int `pulumi:"keepaliveIdleTime"`
+	// Probe count, default value is 10
+	ProbeCount *int `pulumi:"probeCount"`
+	// Probe interval in seconds, default value is 60
+	ProbeInterval *int `pulumi:"probeInterval"`
+}
+
+// Defaults sets the appropriate defaults for StationConnectionPropertiesResponse
+func (val *StationConnectionPropertiesResponse) Defaults() *StationConnectionPropertiesResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.KeepaliveIdleTime == nil {
+		keepaliveIdleTime_ := 180
+		tmp.KeepaliveIdleTime = &keepaliveIdleTime_
+	}
+	if tmp.ProbeCount == nil {
+		probeCount_ := 10
+		tmp.ProbeCount = &probeCount_
+	}
+	if tmp.ProbeInterval == nil {
+		probeInterval_ := 60
+		tmp.ProbeInterval = &probeInterval_
+	}
+	return &tmp
+}
+
+// Station Connection Properties.
+type StationConnectionPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (StationConnectionPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StationConnectionPropertiesResponse)(nil)).Elem()
+}
+
+func (o StationConnectionPropertiesResponseOutput) ToStationConnectionPropertiesResponseOutput() StationConnectionPropertiesResponseOutput {
+	return o
+}
+
+func (o StationConnectionPropertiesResponseOutput) ToStationConnectionPropertiesResponseOutputWithContext(ctx context.Context) StationConnectionPropertiesResponseOutput {
+	return o
+}
+
+// Connection keepalive idle time in seconds
+func (o StationConnectionPropertiesResponseOutput) KeepaliveIdleTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StationConnectionPropertiesResponse) *int { return v.KeepaliveIdleTime }).(pulumi.IntPtrOutput)
+}
+
+// Probe count, default value is 10
+func (o StationConnectionPropertiesResponseOutput) ProbeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StationConnectionPropertiesResponse) *int { return v.ProbeCount }).(pulumi.IntPtrOutput)
+}
+
+// Probe interval in seconds, default value is 60
+func (o StationConnectionPropertiesResponseOutput) ProbeInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StationConnectionPropertiesResponse) *int { return v.ProbeInterval }).(pulumi.IntPtrOutput)
+}
+
+type StationConnectionPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (StationConnectionPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StationConnectionPropertiesResponse)(nil)).Elem()
+}
+
+func (o StationConnectionPropertiesResponsePtrOutput) ToStationConnectionPropertiesResponsePtrOutput() StationConnectionPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o StationConnectionPropertiesResponsePtrOutput) ToStationConnectionPropertiesResponsePtrOutputWithContext(ctx context.Context) StationConnectionPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o StationConnectionPropertiesResponsePtrOutput) Elem() StationConnectionPropertiesResponseOutput {
+	return o.ApplyT(func(v *StationConnectionPropertiesResponse) StationConnectionPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret StationConnectionPropertiesResponse
+		return ret
+	}).(StationConnectionPropertiesResponseOutput)
+}
+
+// Connection keepalive idle time in seconds
+func (o StationConnectionPropertiesResponsePtrOutput) KeepaliveIdleTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StationConnectionPropertiesResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepaliveIdleTime
+	}).(pulumi.IntPtrOutput)
+}
+
+// Probe count, default value is 10
+func (o StationConnectionPropertiesResponsePtrOutput) ProbeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StationConnectionPropertiesResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ProbeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Probe interval in seconds, default value is 60
+func (o StationConnectionPropertiesResponsePtrOutput) ProbeInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StationConnectionPropertiesResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ProbeInterval
+	}).(pulumi.IntPtrOutput)
+}
+
 // Metadata pertaining to creation and last modification of the resource.
 type SystemDataResponse struct {
 	// The timestamp of resource creation (UTC).
@@ -13627,6 +14757,10 @@ func init() {
 	pulumi.RegisterOutputType(BfdConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(BfdConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(BfdConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(BmpConfigurationPropertiesOutput{})
+	pulumi.RegisterOutputType(BmpConfigurationPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(BmpConfigurationPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(BmpConfigurationPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(CommonDynamicMatchConfigurationOutput{})
 	pulumi.RegisterOutputType(CommonDynamicMatchConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(CommonDynamicMatchConfigurationResponseOutput{})
@@ -13721,6 +14855,7 @@ func init() {
 	pulumi.RegisterOutputType(L3OptionBPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(L3OptionBPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(L3OptionBPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(LastOperationPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(Layer2ConfigurationOutput{})
 	pulumi.RegisterOutputType(Layer2ConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(Layer2ConfigurationResponseOutput{})
@@ -13737,6 +14872,8 @@ func init() {
 	pulumi.RegisterOutputType(NeighborAddressResponseArrayOutput{})
 	pulumi.RegisterOutputType(NeighborGroupDestinationOutput{})
 	pulumi.RegisterOutputType(NeighborGroupDestinationResponseOutput{})
+	pulumi.RegisterOutputType(NetworkMonitorPropertiesOutput{})
+	pulumi.RegisterOutputType(NetworkMonitorPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(NetworkTapPropertiesDestinationsOutput{})
 	pulumi.RegisterOutputType(NetworkTapPropertiesDestinationsArrayOutput{})
 	pulumi.RegisterOutputType(NetworkTapPropertiesResponseDestinationsOutput{})
@@ -13787,6 +14924,10 @@ func init() {
 	pulumi.RegisterOutputType(StaticRoutePropertiesArrayOutput{})
 	pulumi.RegisterOutputType(StaticRoutePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(StaticRoutePropertiesResponseArrayOutput{})
+	pulumi.RegisterOutputType(StationConnectionPropertiesOutput{})
+	pulumi.RegisterOutputType(StationConnectionPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(StationConnectionPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(StationConnectionPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(TerminalServerConfigurationOutput{})
 	pulumi.RegisterOutputType(TerminalServerConfigurationResponseOutput{})

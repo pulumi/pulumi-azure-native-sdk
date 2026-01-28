@@ -21,7 +21,7 @@ type OfficeDataConnector struct {
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The available data types for the connector.
-	DataTypes OfficeDataConnectorDataTypesResponsePtrOutput `pulumi:"dataTypes"`
+	DataTypes OfficeDataConnectorDataTypesResponseOutput `pulumi:"dataTypes"`
 	// Etag of the azure resource
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// The kind of the data connector
@@ -32,7 +32,7 @@ type OfficeDataConnector struct {
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The tenant id to connect to, and get the data from.
-	TenantId pulumi.StringPtrOutput `pulumi:"tenantId"`
+	TenantId pulumi.StringOutput `pulumi:"tenantId"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -44,11 +44,17 @@ func NewOfficeDataConnector(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.DataTypes == nil {
+		return nil, errors.New("invalid value for required argument 'DataTypes'")
+	}
 	if args.Kind == nil {
 		return nil, errors.New("invalid value for required argument 'Kind'")
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.TenantId == nil {
+		return nil, errors.New("invalid value for required argument 'TenantId'")
 	}
 	if args.WorkspaceName == nil {
 		return nil, errors.New("invalid value for required argument 'WorkspaceName'")
@@ -945,14 +951,14 @@ type officeDataConnectorArgs struct {
 	// Connector ID
 	DataConnectorId *string `pulumi:"dataConnectorId"`
 	// The available data types for the connector.
-	DataTypes *OfficeDataConnectorDataTypes `pulumi:"dataTypes"`
+	DataTypes OfficeDataConnectorDataTypes `pulumi:"dataTypes"`
 	// The kind of the data connector
 	// Expected value is 'Office365'.
 	Kind string `pulumi:"kind"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The tenant id to connect to, and get the data from.
-	TenantId *string `pulumi:"tenantId"`
+	TenantId string `pulumi:"tenantId"`
 	// The name of the workspace.
 	WorkspaceName string `pulumi:"workspaceName"`
 }
@@ -962,14 +968,14 @@ type OfficeDataConnectorArgs struct {
 	// Connector ID
 	DataConnectorId pulumi.StringPtrInput
 	// The available data types for the connector.
-	DataTypes OfficeDataConnectorDataTypesPtrInput
+	DataTypes OfficeDataConnectorDataTypesInput
 	// The kind of the data connector
 	// Expected value is 'Office365'.
 	Kind pulumi.StringInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The tenant id to connect to, and get the data from.
-	TenantId pulumi.StringPtrInput
+	TenantId pulumi.StringInput
 	// The name of the workspace.
 	WorkspaceName pulumi.StringInput
 }
@@ -1017,8 +1023,8 @@ func (o OfficeDataConnectorOutput) AzureApiVersion() pulumi.StringOutput {
 }
 
 // The available data types for the connector.
-func (o OfficeDataConnectorOutput) DataTypes() OfficeDataConnectorDataTypesResponsePtrOutput {
-	return o.ApplyT(func(v *OfficeDataConnector) OfficeDataConnectorDataTypesResponsePtrOutput { return v.DataTypes }).(OfficeDataConnectorDataTypesResponsePtrOutput)
+func (o OfficeDataConnectorOutput) DataTypes() OfficeDataConnectorDataTypesResponseOutput {
+	return o.ApplyT(func(v *OfficeDataConnector) OfficeDataConnectorDataTypesResponseOutput { return v.DataTypes }).(OfficeDataConnectorDataTypesResponseOutput)
 }
 
 // Etag of the azure resource
@@ -1043,8 +1049,8 @@ func (o OfficeDataConnectorOutput) SystemData() SystemDataResponseOutput {
 }
 
 // The tenant id to connect to, and get the data from.
-func (o OfficeDataConnectorOutput) TenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OfficeDataConnector) pulumi.StringPtrOutput { return v.TenantId }).(pulumi.StringPtrOutput)
+func (o OfficeDataConnectorOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v *OfficeDataConnector) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

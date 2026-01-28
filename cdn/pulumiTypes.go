@@ -7682,6 +7682,59 @@ func (o DomainValidationPropertiesResponseOutput) ValidationToken() pulumi.Strin
 	return o.ApplyT(func(v DomainValidationPropertiesResponse) string { return v.ValidationToken }).(pulumi.StringOutput)
 }
 
+// Edge action attachment information
+type EdgeActionAttachmentResponse struct {
+	// The attached resource Id
+	AttachedResourceId string `pulumi:"attachedResourceId"`
+	// The edge action attachment id
+	Id string `pulumi:"id"`
+}
+
+// Edge action attachment information
+type EdgeActionAttachmentResponseOutput struct{ *pulumi.OutputState }
+
+func (EdgeActionAttachmentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EdgeActionAttachmentResponse)(nil)).Elem()
+}
+
+func (o EdgeActionAttachmentResponseOutput) ToEdgeActionAttachmentResponseOutput() EdgeActionAttachmentResponseOutput {
+	return o
+}
+
+func (o EdgeActionAttachmentResponseOutput) ToEdgeActionAttachmentResponseOutputWithContext(ctx context.Context) EdgeActionAttachmentResponseOutput {
+	return o
+}
+
+// The attached resource Id
+func (o EdgeActionAttachmentResponseOutput) AttachedResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v EdgeActionAttachmentResponse) string { return v.AttachedResourceId }).(pulumi.StringOutput)
+}
+
+// The edge action attachment id
+func (o EdgeActionAttachmentResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v EdgeActionAttachmentResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type EdgeActionAttachmentResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (EdgeActionAttachmentResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EdgeActionAttachmentResponse)(nil)).Elem()
+}
+
+func (o EdgeActionAttachmentResponseArrayOutput) ToEdgeActionAttachmentResponseArrayOutput() EdgeActionAttachmentResponseArrayOutput {
+	return o
+}
+
+func (o EdgeActionAttachmentResponseArrayOutput) ToEdgeActionAttachmentResponseArrayOutputWithContext(ctx context.Context) EdgeActionAttachmentResponseArrayOutput {
+	return o
+}
+
+func (o EdgeActionAttachmentResponseArrayOutput) Index(i pulumi.IntInput) EdgeActionAttachmentResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EdgeActionAttachmentResponse {
+		return vs[0].([]EdgeActionAttachmentResponse)[vs[1].(int)]
+	}).(EdgeActionAttachmentResponseOutput)
+}
+
 // A policy that specifies the delivery rules to be used for an endpoint.
 type EndpointPropertiesUpdateParametersDeliveryPolicy struct {
 	// User-friendly description of the policy.
@@ -16722,6 +16775,103 @@ func (o SkuResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SkuResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The SKU type for the edge action
+type SkuType struct {
+	// The name of the SKU
+	Name string `pulumi:"name"`
+	// The tier of the SKU
+	Tier string `pulumi:"tier"`
+}
+
+// SkuTypeInput is an input type that accepts SkuTypeArgs and SkuTypeOutput values.
+// You can construct a concrete instance of `SkuTypeInput` via:
+//
+//	SkuTypeArgs{...}
+type SkuTypeInput interface {
+	pulumi.Input
+
+	ToSkuTypeOutput() SkuTypeOutput
+	ToSkuTypeOutputWithContext(context.Context) SkuTypeOutput
+}
+
+// The SKU type for the edge action
+type SkuTypeArgs struct {
+	// The name of the SKU
+	Name pulumi.StringInput `pulumi:"name"`
+	// The tier of the SKU
+	Tier pulumi.StringInput `pulumi:"tier"`
+}
+
+func (SkuTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SkuType)(nil)).Elem()
+}
+
+func (i SkuTypeArgs) ToSkuTypeOutput() SkuTypeOutput {
+	return i.ToSkuTypeOutputWithContext(context.Background())
+}
+
+func (i SkuTypeArgs) ToSkuTypeOutputWithContext(ctx context.Context) SkuTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SkuTypeOutput)
+}
+
+// The SKU type for the edge action
+type SkuTypeOutput struct{ *pulumi.OutputState }
+
+func (SkuTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SkuType)(nil)).Elem()
+}
+
+func (o SkuTypeOutput) ToSkuTypeOutput() SkuTypeOutput {
+	return o
+}
+
+func (o SkuTypeOutput) ToSkuTypeOutputWithContext(ctx context.Context) SkuTypeOutput {
+	return o
+}
+
+// The name of the SKU
+func (o SkuTypeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SkuType) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The tier of the SKU
+func (o SkuTypeOutput) Tier() pulumi.StringOutput {
+	return o.ApplyT(func(v SkuType) string { return v.Tier }).(pulumi.StringOutput)
+}
+
+// The SKU type for the edge action
+type SkuTypeResponse struct {
+	// The name of the SKU
+	Name string `pulumi:"name"`
+	// The tier of the SKU
+	Tier string `pulumi:"tier"`
+}
+
+// The SKU type for the edge action
+type SkuTypeResponseOutput struct{ *pulumi.OutputState }
+
+func (SkuTypeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SkuTypeResponse)(nil)).Elem()
+}
+
+func (o SkuTypeResponseOutput) ToSkuTypeResponseOutput() SkuTypeResponseOutput {
+	return o
+}
+
+func (o SkuTypeResponseOutput) ToSkuTypeResponseOutputWithContext(ctx context.Context) SkuTypeResponseOutput {
+	return o
+}
+
+// The name of the SKU
+func (o SkuTypeResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SkuTypeResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The tier of the SKU
+func (o SkuTypeResponseOutput) Tier() pulumi.StringOutput {
+	return o.ApplyT(func(v SkuTypeResponse) string { return v.Tier }).(pulumi.StringOutput)
+}
+
 // Defines the parameters for SocketAddress match conditions
 type SocketAddrMatchConditionParameters struct {
 	// The match value for the condition of the delivery rule
@@ -19512,6 +19662,8 @@ func init() {
 	pulumi.RegisterOutputType(DeliveryRuleUrlPathConditionOutput{})
 	pulumi.RegisterOutputType(DeliveryRuleUrlPathConditionResponseOutput{})
 	pulumi.RegisterOutputType(DomainValidationPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(EdgeActionAttachmentResponseOutput{})
+	pulumi.RegisterOutputType(EdgeActionAttachmentResponseArrayOutput{})
 	pulumi.RegisterOutputType(EndpointPropertiesUpdateParametersDeliveryPolicyOutput{})
 	pulumi.RegisterOutputType(EndpointPropertiesUpdateParametersDeliveryPolicyPtrOutput{})
 	pulumi.RegisterOutputType(EndpointPropertiesUpdateParametersDeliveryPolicyResponseOutput{})
@@ -19652,6 +19804,8 @@ func init() {
 	pulumi.RegisterOutputType(SharedPrivateLinkResourcePropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(SkuOutput{})
 	pulumi.RegisterOutputType(SkuResponseOutput{})
+	pulumi.RegisterOutputType(SkuTypeOutput{})
+	pulumi.RegisterOutputType(SkuTypeResponseOutput{})
 	pulumi.RegisterOutputType(SocketAddrMatchConditionParametersOutput{})
 	pulumi.RegisterOutputType(SocketAddrMatchConditionParametersResponseOutput{})
 	pulumi.RegisterOutputType(SslProtocolMatchConditionParametersOutput{})

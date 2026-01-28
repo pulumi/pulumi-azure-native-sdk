@@ -2221,6 +2221,8 @@ type HDInsightOnDemandLinkedService struct {
 	ClusterPassword interface{} `pulumi:"clusterPassword"`
 	// The resource group where the cluster belongs. Type: string (or Expression with resultType string).
 	ClusterResourceGroup interface{} `pulumi:"clusterResourceGroup"`
+	// HDInsight On-demand cluster resource group authentication type.
+	ClusterResourceGroupAuthType *string `pulumi:"clusterResourceGroupAuthType"`
 	// Number of worker/data nodes in the cluster. Suggestion value: 4. Type: int (or Expression with resultType int).
 	ClusterSize interface{} `pulumi:"clusterSize"`
 	// The password to SSH remotely connect cluster’s node (for Linux).
@@ -2315,6 +2317,8 @@ type HDInsightOnDemandLinkedServiceArgs struct {
 	ClusterPassword pulumi.Input `pulumi:"clusterPassword"`
 	// The resource group where the cluster belongs. Type: string (or Expression with resultType string).
 	ClusterResourceGroup pulumi.Input `pulumi:"clusterResourceGroup"`
+	// HDInsight On-demand cluster resource group authentication type.
+	ClusterResourceGroupAuthType pulumi.StringPtrInput `pulumi:"clusterResourceGroupAuthType"`
 	// Number of worker/data nodes in the cluster. Suggestion value: 4. Type: int (or Expression with resultType int).
 	ClusterSize pulumi.Input `pulumi:"clusterSize"`
 	// The password to SSH remotely connect cluster’s node (for Linux).
@@ -2436,6 +2440,11 @@ func (o HDInsightOnDemandLinkedServiceOutput) ClusterPassword() pulumi.AnyOutput
 // The resource group where the cluster belongs. Type: string (or Expression with resultType string).
 func (o HDInsightOnDemandLinkedServiceOutput) ClusterResourceGroup() pulumi.AnyOutput {
 	return o.ApplyT(func(v HDInsightOnDemandLinkedService) interface{} { return v.ClusterResourceGroup }).(pulumi.AnyOutput)
+}
+
+// HDInsight On-demand cluster resource group authentication type.
+func (o HDInsightOnDemandLinkedServiceOutput) ClusterResourceGroupAuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HDInsightOnDemandLinkedService) *string { return v.ClusterResourceGroupAuthType }).(pulumi.StringPtrOutput)
 }
 
 // Number of worker/data nodes in the cluster. Suggestion value: 4. Type: int (or Expression with resultType int).
@@ -2621,6 +2630,8 @@ type HDInsightOnDemandLinkedServiceResponse struct {
 	ClusterPassword interface{} `pulumi:"clusterPassword"`
 	// The resource group where the cluster belongs. Type: string (or Expression with resultType string).
 	ClusterResourceGroup interface{} `pulumi:"clusterResourceGroup"`
+	// HDInsight On-demand cluster resource group authentication type.
+	ClusterResourceGroupAuthType *string `pulumi:"clusterResourceGroupAuthType"`
 	// Number of worker/data nodes in the cluster. Suggestion value: 4. Type: int (or Expression with resultType int).
 	ClusterSize interface{} `pulumi:"clusterSize"`
 	// The password to SSH remotely connect cluster’s node (for Linux).
@@ -2732,6 +2743,11 @@ func (o HDInsightOnDemandLinkedServiceResponseOutput) ClusterPassword() pulumi.A
 // The resource group where the cluster belongs. Type: string (or Expression with resultType string).
 func (o HDInsightOnDemandLinkedServiceResponseOutput) ClusterResourceGroup() pulumi.AnyOutput {
 	return o.ApplyT(func(v HDInsightOnDemandLinkedServiceResponse) interface{} { return v.ClusterResourceGroup }).(pulumi.AnyOutput)
+}
+
+// HDInsight On-demand cluster resource group authentication type.
+func (o HDInsightOnDemandLinkedServiceResponseOutput) ClusterResourceGroupAuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HDInsightOnDemandLinkedServiceResponse) *string { return v.ClusterResourceGroupAuthType }).(pulumi.StringPtrOutput)
 }
 
 // Number of worker/data nodes in the cluster. Suggestion value: 4. Type: int (or Expression with resultType int).
@@ -13725,6 +13741,83 @@ func (o IntegrationRuntimeVNetPropertiesResponsePtrOutput) VNetId() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// Interactive authoring capability type properties.
+type InteractiveQueryPropertiesResponse struct {
+	// The allowed idle time for interactive authoring.
+	AutoTerminationMinutes int `pulumi:"autoTerminationMinutes"`
+	// The interactive authoring capability status. Must be one of InteractiveCapabilityStatus. The default value is 'Enabling'.
+	Status string `pulumi:"status"`
+}
+
+// Interactive authoring capability type properties.
+type InteractiveQueryPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (InteractiveQueryPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InteractiveQueryPropertiesResponse)(nil)).Elem()
+}
+
+func (o InteractiveQueryPropertiesResponseOutput) ToInteractiveQueryPropertiesResponseOutput() InteractiveQueryPropertiesResponseOutput {
+	return o
+}
+
+func (o InteractiveQueryPropertiesResponseOutput) ToInteractiveQueryPropertiesResponseOutputWithContext(ctx context.Context) InteractiveQueryPropertiesResponseOutput {
+	return o
+}
+
+// The allowed idle time for interactive authoring.
+func (o InteractiveQueryPropertiesResponseOutput) AutoTerminationMinutes() pulumi.IntOutput {
+	return o.ApplyT(func(v InteractiveQueryPropertiesResponse) int { return v.AutoTerminationMinutes }).(pulumi.IntOutput)
+}
+
+// The interactive authoring capability status. Must be one of InteractiveCapabilityStatus. The default value is 'Enabling'.
+func (o InteractiveQueryPropertiesResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v InteractiveQueryPropertiesResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type InteractiveQueryPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (InteractiveQueryPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InteractiveQueryPropertiesResponse)(nil)).Elem()
+}
+
+func (o InteractiveQueryPropertiesResponsePtrOutput) ToInteractiveQueryPropertiesResponsePtrOutput() InteractiveQueryPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o InteractiveQueryPropertiesResponsePtrOutput) ToInteractiveQueryPropertiesResponsePtrOutputWithContext(ctx context.Context) InteractiveQueryPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o InteractiveQueryPropertiesResponsePtrOutput) Elem() InteractiveQueryPropertiesResponseOutput {
+	return o.ApplyT(func(v *InteractiveQueryPropertiesResponse) InteractiveQueryPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret InteractiveQueryPropertiesResponse
+		return ret
+	}).(InteractiveQueryPropertiesResponseOutput)
+}
+
+// The allowed idle time for interactive authoring.
+func (o InteractiveQueryPropertiesResponsePtrOutput) AutoTerminationMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InteractiveQueryPropertiesResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.AutoTerminationMinutes
+	}).(pulumi.IntPtrOutput)
+}
+
+// The interactive authoring capability status. Must be one of InteractiveCapabilityStatus. The default value is 'Enabling'.
+func (o InteractiveQueryPropertiesResponsePtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InteractiveQueryPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
 // Jira Service linked service.
 type JiraLinkedService struct {
 	// List of tags that can be used for describing the linked service.
@@ -14035,7 +14128,9 @@ type JiraObjectDataset struct {
 	Schema interface{} `pulumi:"schema"`
 	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
 	Structure interface{} `pulumi:"structure"`
-	// The table name. Type: string (or Expression with resultType string).
+	// The table name of the Jira, applies only for Jira V2 dataset. Type: string (or Expression with resultType string).
+	Table interface{} `pulumi:"table"`
+	// This property is only supported in Jira V1 Dataset, please consider upgrading to V2 dataset.
 	TableName interface{} `pulumi:"tableName"`
 	// Type of dataset.
 	// Expected value is 'JiraObject'.
@@ -14069,7 +14164,9 @@ type JiraObjectDatasetArgs struct {
 	Schema pulumi.Input `pulumi:"schema"`
 	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
 	Structure pulumi.Input `pulumi:"structure"`
-	// The table name. Type: string (or Expression with resultType string).
+	// The table name of the Jira, applies only for Jira V2 dataset. Type: string (or Expression with resultType string).
+	Table pulumi.Input `pulumi:"table"`
+	// This property is only supported in Jira V1 Dataset, please consider upgrading to V2 dataset.
 	TableName pulumi.Input `pulumi:"tableName"`
 	// Type of dataset.
 	// Expected value is 'JiraObject'.
@@ -14138,7 +14235,12 @@ func (o JiraObjectDatasetOutput) Structure() pulumi.AnyOutput {
 	return o.ApplyT(func(v JiraObjectDataset) interface{} { return v.Structure }).(pulumi.AnyOutput)
 }
 
-// The table name. Type: string (or Expression with resultType string).
+// The table name of the Jira, applies only for Jira V2 dataset. Type: string (or Expression with resultType string).
+func (o JiraObjectDatasetOutput) Table() pulumi.AnyOutput {
+	return o.ApplyT(func(v JiraObjectDataset) interface{} { return v.Table }).(pulumi.AnyOutput)
+}
+
+// This property is only supported in Jira V1 Dataset, please consider upgrading to V2 dataset.
 func (o JiraObjectDatasetOutput) TableName() pulumi.AnyOutput {
 	return o.ApplyT(func(v JiraObjectDataset) interface{} { return v.TableName }).(pulumi.AnyOutput)
 }
@@ -14165,7 +14267,9 @@ type JiraObjectDatasetResponse struct {
 	Schema interface{} `pulumi:"schema"`
 	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
 	Structure interface{} `pulumi:"structure"`
-	// The table name. Type: string (or Expression with resultType string).
+	// The table name of the Jira, applies only for Jira V2 dataset. Type: string (or Expression with resultType string).
+	Table interface{} `pulumi:"table"`
+	// This property is only supported in Jira V1 Dataset, please consider upgrading to V2 dataset.
 	TableName interface{} `pulumi:"tableName"`
 	// Type of dataset.
 	// Expected value is 'JiraObject'.
@@ -14222,7 +14326,12 @@ func (o JiraObjectDatasetResponseOutput) Structure() pulumi.AnyOutput {
 	return o.ApplyT(func(v JiraObjectDatasetResponse) interface{} { return v.Structure }).(pulumi.AnyOutput)
 }
 
-// The table name. Type: string (or Expression with resultType string).
+// The table name of the Jira, applies only for Jira V2 dataset. Type: string (or Expression with resultType string).
+func (o JiraObjectDatasetResponseOutput) Table() pulumi.AnyOutput {
+	return o.ApplyT(func(v JiraObjectDatasetResponse) interface{} { return v.Table }).(pulumi.AnyOutput)
+}
+
+// This property is only supported in Jira V1 Dataset, please consider upgrading to V2 dataset.
 func (o JiraObjectDatasetResponseOutput) TableName() pulumi.AnyOutput {
 	return o.ApplyT(func(v JiraObjectDatasetResponse) interface{} { return v.TableName }).(pulumi.AnyOutput)
 }
@@ -21214,6 +21323,8 @@ type ManagedIntegrationRuntimeResponse struct {
 	CustomerVirtualNetwork *IntegrationRuntimeCustomerVirtualNetworkResponse `pulumi:"customerVirtualNetwork"`
 	// Integration runtime description.
 	Description *string `pulumi:"description"`
+	// Interactive authoring capability reference.
+	InteractiveQuery *InteractiveQueryPropertiesResponse `pulumi:"interactiveQuery"`
 	// Managed Virtual Network reference.
 	ManagedVirtualNetwork *ManagedVirtualNetworkReferenceResponse `pulumi:"managedVirtualNetwork"`
 	// SSIS properties for managed integration runtime.
@@ -21257,6 +21368,13 @@ func (o ManagedIntegrationRuntimeResponseOutput) CustomerVirtualNetwork() Integr
 // Integration runtime description.
 func (o ManagedIntegrationRuntimeResponseOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedIntegrationRuntimeResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Interactive authoring capability reference.
+func (o ManagedIntegrationRuntimeResponseOutput) InteractiveQuery() InteractiveQueryPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v ManagedIntegrationRuntimeResponse) *InteractiveQueryPropertiesResponse {
+		return v.InteractiveQuery
+	}).(InteractiveQueryPropertiesResponsePtrOutput)
 }
 
 // Managed Virtual Network reference.
@@ -30669,17 +30787,27 @@ type NetezzaLinkedService struct {
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
 	// An ODBC connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
 	ConnectionString interface{} `pulumi:"connectionString"`
+	// Database name for connection. Type: string.
+	Database interface{} `pulumi:"database"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
+	// The port for the connection. Type: integer.
+	Port interface{} `pulumi:"port"`
 	// The Azure key vault secret reference of password in connection string.
 	Pwd *AzureKeyVaultSecretReference `pulumi:"pwd"`
+	// Specifies the security level for the driver connection to the data store. PreferredUnSecured : prefer unsecured, allow fallback to secured connection if required. OnlyUnSecured : strictly unsecured, no fallback.
+	SecurityLevel *string `pulumi:"securityLevel"`
+	// Server name for connection. Type: string.
+	Server interface{} `pulumi:"server"`
 	// Type of linked service.
 	// Expected value is 'Netezza'.
 	Type string `pulumi:"type"`
+	// Username for authentication. Type: string.
+	Uid interface{} `pulumi:"uid"`
 	// Version of the linked service.
 	Version *string `pulumi:"version"`
 }
@@ -30703,17 +30831,27 @@ type NetezzaLinkedServiceArgs struct {
 	ConnectVia IntegrationRuntimeReferencePtrInput `pulumi:"connectVia"`
 	// An ODBC connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
 	ConnectionString pulumi.Input `pulumi:"connectionString"`
+	// Database name for connection. Type: string.
+	Database pulumi.Input `pulumi:"database"`
 	// Linked service description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential pulumi.StringPtrInput `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters ParameterSpecificationMapInput `pulumi:"parameters"`
+	// The port for the connection. Type: integer.
+	Port pulumi.Input `pulumi:"port"`
 	// The Azure key vault secret reference of password in connection string.
 	Pwd AzureKeyVaultSecretReferencePtrInput `pulumi:"pwd"`
+	// Specifies the security level for the driver connection to the data store. PreferredUnSecured : prefer unsecured, allow fallback to secured connection if required. OnlyUnSecured : strictly unsecured, no fallback.
+	SecurityLevel pulumi.StringPtrInput `pulumi:"securityLevel"`
+	// Server name for connection. Type: string.
+	Server pulumi.Input `pulumi:"server"`
 	// Type of linked service.
 	// Expected value is 'Netezza'.
 	Type pulumi.StringInput `pulumi:"type"`
+	// Username for authentication. Type: string.
+	Uid pulumi.Input `pulumi:"uid"`
 	// Version of the linked service.
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
@@ -30760,6 +30898,11 @@ func (o NetezzaLinkedServiceOutput) ConnectionString() pulumi.AnyOutput {
 	return o.ApplyT(func(v NetezzaLinkedService) interface{} { return v.ConnectionString }).(pulumi.AnyOutput)
 }
 
+// Database name for connection. Type: string.
+func (o NetezzaLinkedServiceOutput) Database() pulumi.AnyOutput {
+	return o.ApplyT(func(v NetezzaLinkedService) interface{} { return v.Database }).(pulumi.AnyOutput)
+}
+
 // Linked service description.
 func (o NetezzaLinkedServiceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetezzaLinkedService) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -30775,15 +30918,35 @@ func (o NetezzaLinkedServiceOutput) Parameters() ParameterSpecificationMapOutput
 	return o.ApplyT(func(v NetezzaLinkedService) map[string]ParameterSpecification { return v.Parameters }).(ParameterSpecificationMapOutput)
 }
 
+// The port for the connection. Type: integer.
+func (o NetezzaLinkedServiceOutput) Port() pulumi.AnyOutput {
+	return o.ApplyT(func(v NetezzaLinkedService) interface{} { return v.Port }).(pulumi.AnyOutput)
+}
+
 // The Azure key vault secret reference of password in connection string.
 func (o NetezzaLinkedServiceOutput) Pwd() AzureKeyVaultSecretReferencePtrOutput {
 	return o.ApplyT(func(v NetezzaLinkedService) *AzureKeyVaultSecretReference { return v.Pwd }).(AzureKeyVaultSecretReferencePtrOutput)
+}
+
+// Specifies the security level for the driver connection to the data store. PreferredUnSecured : prefer unsecured, allow fallback to secured connection if required. OnlyUnSecured : strictly unsecured, no fallback.
+func (o NetezzaLinkedServiceOutput) SecurityLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetezzaLinkedService) *string { return v.SecurityLevel }).(pulumi.StringPtrOutput)
+}
+
+// Server name for connection. Type: string.
+func (o NetezzaLinkedServiceOutput) Server() pulumi.AnyOutput {
+	return o.ApplyT(func(v NetezzaLinkedService) interface{} { return v.Server }).(pulumi.AnyOutput)
 }
 
 // Type of linked service.
 // Expected value is 'Netezza'.
 func (o NetezzaLinkedServiceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v NetezzaLinkedService) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Username for authentication. Type: string.
+func (o NetezzaLinkedServiceOutput) Uid() pulumi.AnyOutput {
+	return o.ApplyT(func(v NetezzaLinkedService) interface{} { return v.Uid }).(pulumi.AnyOutput)
 }
 
 // Version of the linked service.
@@ -30799,17 +30962,27 @@ type NetezzaLinkedServiceResponse struct {
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
 	// An ODBC connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
 	ConnectionString interface{} `pulumi:"connectionString"`
+	// Database name for connection. Type: string.
+	Database interface{} `pulumi:"database"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
+	// The port for the connection. Type: integer.
+	Port interface{} `pulumi:"port"`
 	// The Azure key vault secret reference of password in connection string.
 	Pwd *AzureKeyVaultSecretReferenceResponse `pulumi:"pwd"`
+	// Specifies the security level for the driver connection to the data store. PreferredUnSecured : prefer unsecured, allow fallback to secured connection if required. OnlyUnSecured : strictly unsecured, no fallback.
+	SecurityLevel *string `pulumi:"securityLevel"`
+	// Server name for connection. Type: string.
+	Server interface{} `pulumi:"server"`
 	// Type of linked service.
 	// Expected value is 'Netezza'.
 	Type string `pulumi:"type"`
+	// Username for authentication. Type: string.
+	Uid interface{} `pulumi:"uid"`
 	// Version of the linked service.
 	Version *string `pulumi:"version"`
 }
@@ -30844,6 +31017,11 @@ func (o NetezzaLinkedServiceResponseOutput) ConnectionString() pulumi.AnyOutput 
 	return o.ApplyT(func(v NetezzaLinkedServiceResponse) interface{} { return v.ConnectionString }).(pulumi.AnyOutput)
 }
 
+// Database name for connection. Type: string.
+func (o NetezzaLinkedServiceResponseOutput) Database() pulumi.AnyOutput {
+	return o.ApplyT(func(v NetezzaLinkedServiceResponse) interface{} { return v.Database }).(pulumi.AnyOutput)
+}
+
 // Linked service description.
 func (o NetezzaLinkedServiceResponseOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetezzaLinkedServiceResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -30859,15 +31037,35 @@ func (o NetezzaLinkedServiceResponseOutput) Parameters() ParameterSpecificationR
 	return o.ApplyT(func(v NetezzaLinkedServiceResponse) map[string]ParameterSpecificationResponse { return v.Parameters }).(ParameterSpecificationResponseMapOutput)
 }
 
+// The port for the connection. Type: integer.
+func (o NetezzaLinkedServiceResponseOutput) Port() pulumi.AnyOutput {
+	return o.ApplyT(func(v NetezzaLinkedServiceResponse) interface{} { return v.Port }).(pulumi.AnyOutput)
+}
+
 // The Azure key vault secret reference of password in connection string.
 func (o NetezzaLinkedServiceResponseOutput) Pwd() AzureKeyVaultSecretReferenceResponsePtrOutput {
 	return o.ApplyT(func(v NetezzaLinkedServiceResponse) *AzureKeyVaultSecretReferenceResponse { return v.Pwd }).(AzureKeyVaultSecretReferenceResponsePtrOutput)
+}
+
+// Specifies the security level for the driver connection to the data store. PreferredUnSecured : prefer unsecured, allow fallback to secured connection if required. OnlyUnSecured : strictly unsecured, no fallback.
+func (o NetezzaLinkedServiceResponseOutput) SecurityLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetezzaLinkedServiceResponse) *string { return v.SecurityLevel }).(pulumi.StringPtrOutput)
+}
+
+// Server name for connection. Type: string.
+func (o NetezzaLinkedServiceResponseOutput) Server() pulumi.AnyOutput {
+	return o.ApplyT(func(v NetezzaLinkedServiceResponse) interface{} { return v.Server }).(pulumi.AnyOutput)
 }
 
 // Type of linked service.
 // Expected value is 'Netezza'.
 func (o NetezzaLinkedServiceResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v NetezzaLinkedServiceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Username for authentication. Type: string.
+func (o NetezzaLinkedServiceResponseOutput) Uid() pulumi.AnyOutput {
+	return o.ApplyT(func(v NetezzaLinkedServiceResponse) interface{} { return v.Uid }).(pulumi.AnyOutput)
 }
 
 // Version of the linked service.
@@ -62288,146 +62486,6 @@ func (o SapOpenHubLinkedServiceOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SapOpenHubLinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
-// SAP Business Warehouse Open Hub Destination Linked Service.
-type SapOpenHubLinkedServiceResponse struct {
-	// List of tags that can be used for describing the linked service.
-	Annotations []interface{} `pulumi:"annotations"`
-	// Client ID of the client on the BW system where the open hub destination is located. (Usually a three-digit decimal number represented as a string) Type: string (or Expression with resultType string).
-	ClientId interface{} `pulumi:"clientId"`
-	// The integration runtime reference.
-	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
-	// Linked service description.
-	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-	EncryptedCredential *string `pulumi:"encryptedCredential"`
-	// Language of the BW system where the open hub destination is located. The default value is EN. Type: string (or Expression with resultType string).
-	Language interface{} `pulumi:"language"`
-	// The Logon Group for the SAP System. Type: string (or Expression with resultType string).
-	LogonGroup interface{} `pulumi:"logonGroup"`
-	// The hostname of the SAP Message Server. Type: string (or Expression with resultType string).
-	MessageServer interface{} `pulumi:"messageServer"`
-	// The service name or port number of the Message Server. Type: string (or Expression with resultType string).
-	MessageServerService interface{} `pulumi:"messageServerService"`
-	// Parameters for linked service.
-	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
-	// Password to access the SAP BW server where the open hub destination is located.
-	Password interface{} `pulumi:"password"`
-	// Host name of the SAP BW instance where the open hub destination is located. Type: string (or Expression with resultType string).
-	Server interface{} `pulumi:"server"`
-	// SystemID of the SAP system where the table is located. Type: string (or Expression with resultType string).
-	SystemId interface{} `pulumi:"systemId"`
-	// System number of the BW system where the open hub destination is located. (Usually a two-digit decimal number represented as a string.) Type: string (or Expression with resultType string).
-	SystemNumber interface{} `pulumi:"systemNumber"`
-	// Type of linked service.
-	// Expected value is 'SapOpenHub'.
-	Type string `pulumi:"type"`
-	// Username to access the SAP BW server where the open hub destination is located. Type: string (or Expression with resultType string).
-	UserName interface{} `pulumi:"userName"`
-	// Version of the linked service.
-	Version *string `pulumi:"version"`
-}
-
-// SAP Business Warehouse Open Hub Destination Linked Service.
-type SapOpenHubLinkedServiceResponseOutput struct{ *pulumi.OutputState }
-
-func (SapOpenHubLinkedServiceResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SapOpenHubLinkedServiceResponse)(nil)).Elem()
-}
-
-func (o SapOpenHubLinkedServiceResponseOutput) ToSapOpenHubLinkedServiceResponseOutput() SapOpenHubLinkedServiceResponseOutput {
-	return o
-}
-
-func (o SapOpenHubLinkedServiceResponseOutput) ToSapOpenHubLinkedServiceResponseOutputWithContext(ctx context.Context) SapOpenHubLinkedServiceResponseOutput {
-	return o
-}
-
-// List of tags that can be used for describing the linked service.
-func (o SapOpenHubLinkedServiceResponseOutput) Annotations() pulumi.ArrayOutput {
-	return o.ApplyT(func(v SapOpenHubLinkedServiceResponse) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
-}
-
-// Client ID of the client on the BW system where the open hub destination is located. (Usually a three-digit decimal number represented as a string) Type: string (or Expression with resultType string).
-func (o SapOpenHubLinkedServiceResponseOutput) ClientId() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubLinkedServiceResponse) interface{} { return v.ClientId }).(pulumi.AnyOutput)
-}
-
-// The integration runtime reference.
-func (o SapOpenHubLinkedServiceResponseOutput) ConnectVia() IntegrationRuntimeReferenceResponsePtrOutput {
-	return o.ApplyT(func(v SapOpenHubLinkedServiceResponse) *IntegrationRuntimeReferenceResponse { return v.ConnectVia }).(IntegrationRuntimeReferenceResponsePtrOutput)
-}
-
-// Linked service description.
-func (o SapOpenHubLinkedServiceResponseOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SapOpenHubLinkedServiceResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-func (o SapOpenHubLinkedServiceResponseOutput) EncryptedCredential() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SapOpenHubLinkedServiceResponse) *string { return v.EncryptedCredential }).(pulumi.StringPtrOutput)
-}
-
-// Language of the BW system where the open hub destination is located. The default value is EN. Type: string (or Expression with resultType string).
-func (o SapOpenHubLinkedServiceResponseOutput) Language() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubLinkedServiceResponse) interface{} { return v.Language }).(pulumi.AnyOutput)
-}
-
-// The Logon Group for the SAP System. Type: string (or Expression with resultType string).
-func (o SapOpenHubLinkedServiceResponseOutput) LogonGroup() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubLinkedServiceResponse) interface{} { return v.LogonGroup }).(pulumi.AnyOutput)
-}
-
-// The hostname of the SAP Message Server. Type: string (or Expression with resultType string).
-func (o SapOpenHubLinkedServiceResponseOutput) MessageServer() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubLinkedServiceResponse) interface{} { return v.MessageServer }).(pulumi.AnyOutput)
-}
-
-// The service name or port number of the Message Server. Type: string (or Expression with resultType string).
-func (o SapOpenHubLinkedServiceResponseOutput) MessageServerService() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubLinkedServiceResponse) interface{} { return v.MessageServerService }).(pulumi.AnyOutput)
-}
-
-// Parameters for linked service.
-func (o SapOpenHubLinkedServiceResponseOutput) Parameters() ParameterSpecificationResponseMapOutput {
-	return o.ApplyT(func(v SapOpenHubLinkedServiceResponse) map[string]ParameterSpecificationResponse { return v.Parameters }).(ParameterSpecificationResponseMapOutput)
-}
-
-// Password to access the SAP BW server where the open hub destination is located.
-func (o SapOpenHubLinkedServiceResponseOutput) Password() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubLinkedServiceResponse) interface{} { return v.Password }).(pulumi.AnyOutput)
-}
-
-// Host name of the SAP BW instance where the open hub destination is located. Type: string (or Expression with resultType string).
-func (o SapOpenHubLinkedServiceResponseOutput) Server() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubLinkedServiceResponse) interface{} { return v.Server }).(pulumi.AnyOutput)
-}
-
-// SystemID of the SAP system where the table is located. Type: string (or Expression with resultType string).
-func (o SapOpenHubLinkedServiceResponseOutput) SystemId() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubLinkedServiceResponse) interface{} { return v.SystemId }).(pulumi.AnyOutput)
-}
-
-// System number of the BW system where the open hub destination is located. (Usually a two-digit decimal number represented as a string.) Type: string (or Expression with resultType string).
-func (o SapOpenHubLinkedServiceResponseOutput) SystemNumber() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubLinkedServiceResponse) interface{} { return v.SystemNumber }).(pulumi.AnyOutput)
-}
-
-// Type of linked service.
-// Expected value is 'SapOpenHub'.
-func (o SapOpenHubLinkedServiceResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v SapOpenHubLinkedServiceResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Username to access the SAP BW server where the open hub destination is located. Type: string (or Expression with resultType string).
-func (o SapOpenHubLinkedServiceResponseOutput) UserName() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubLinkedServiceResponse) interface{} { return v.UserName }).(pulumi.AnyOutput)
-}
-
-// Version of the linked service.
-func (o SapOpenHubLinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SapOpenHubLinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterOutputType(GreenplumSourceOutput{})
 	pulumi.RegisterOutputType(GreenplumSourceResponseOutput{})
@@ -62551,6 +62609,8 @@ func init() {
 	pulumi.RegisterOutputType(IntegrationRuntimeVNetPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(IntegrationRuntimeVNetPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(IntegrationRuntimeVNetPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(InteractiveQueryPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(InteractiveQueryPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(JiraLinkedServiceOutput{})
 	pulumi.RegisterOutputType(JiraLinkedServiceResponseOutput{})
 	pulumi.RegisterOutputType(JiraObjectDatasetOutput{})
@@ -63085,5 +63145,4 @@ func init() {
 	pulumi.RegisterOutputType(SapOdpSourceOutput{})
 	pulumi.RegisterOutputType(SapOdpSourceResponseOutput{})
 	pulumi.RegisterOutputType(SapOpenHubLinkedServiceOutput{})
-	pulumi.RegisterOutputType(SapOpenHubLinkedServiceResponseOutput{})
 }

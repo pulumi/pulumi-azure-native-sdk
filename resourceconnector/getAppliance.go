@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2022-10-27.
 //
-// Other available API versions: 2022-04-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native resourceconnector [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-04-15-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native resourceconnector [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupAppliance(ctx *pulumi.Context, args *LookupApplianceArgs, opts ...pulumi.InvokeOption) (*LookupApplianceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupApplianceResult
@@ -44,7 +44,7 @@ type LookupApplianceResult struct {
 	// Identity for the resource.
 	Identity *IdentityResponse `pulumi:"identity"`
 	// Contains infrastructure information about the Appliance
-	InfrastructureConfig *AppliancePropertiesResponseInfrastructureConfig `pulumi:"infrastructureConfig"`
+	InfrastructureConfig *AppliancePropertiesInfrastructureConfigResponse `pulumi:"infrastructureConfig"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// The name of the resource
@@ -53,7 +53,7 @@ type LookupApplianceResult struct {
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Certificates pair used to download MSI certificate from HIS. Can only be set once.
 	PublicKey *string `pulumi:"publicKey"`
-	// Appliance’s health and state of connection to on-prem
+	// Appliance’s health and state of connection to on-prem. This list of values is not exhaustive.
 	Status string `pulumi:"status"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
@@ -133,10 +133,10 @@ func (o LookupApplianceResultOutput) Identity() IdentityResponsePtrOutput {
 }
 
 // Contains infrastructure information about the Appliance
-func (o LookupApplianceResultOutput) InfrastructureConfig() AppliancePropertiesResponseInfrastructureConfigPtrOutput {
-	return o.ApplyT(func(v LookupApplianceResult) *AppliancePropertiesResponseInfrastructureConfig {
+func (o LookupApplianceResultOutput) InfrastructureConfig() AppliancePropertiesInfrastructureConfigResponsePtrOutput {
+	return o.ApplyT(func(v LookupApplianceResult) *AppliancePropertiesInfrastructureConfigResponse {
 		return v.InfrastructureConfig
-	}).(AppliancePropertiesResponseInfrastructureConfigPtrOutput)
+	}).(AppliancePropertiesInfrastructureConfigResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -159,7 +159,7 @@ func (o LookupApplianceResultOutput) PublicKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApplianceResult) *string { return v.PublicKey }).(pulumi.StringPtrOutput)
 }
 
-// Appliance’s health and state of connection to on-prem
+// Appliance’s health and state of connection to on-prem. This list of values is not exhaustive.
 func (o LookupApplianceResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplianceResult) string { return v.Status }).(pulumi.StringOutput)
 }

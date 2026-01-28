@@ -1401,6 +1401,171 @@ const (
 	StreamDestinationTargetStorage = StreamDestinationTarget("Storage")
 )
 
+// Crypto type: ECC.
+type SupportedKeyType string
+
+const (
+	// Indicates the ECC key type.
+	SupportedKeyTypeECC = SupportedKeyType("ECC")
+)
+
+func (SupportedKeyType) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupportedKeyType)(nil)).Elem()
+}
+
+func (e SupportedKeyType) ToSupportedKeyTypeOutput() SupportedKeyTypeOutput {
+	return pulumi.ToOutput(e).(SupportedKeyTypeOutput)
+}
+
+func (e SupportedKeyType) ToSupportedKeyTypeOutputWithContext(ctx context.Context) SupportedKeyTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SupportedKeyTypeOutput)
+}
+
+func (e SupportedKeyType) ToSupportedKeyTypePtrOutput() SupportedKeyTypePtrOutput {
+	return e.ToSupportedKeyTypePtrOutputWithContext(context.Background())
+}
+
+func (e SupportedKeyType) ToSupportedKeyTypePtrOutputWithContext(ctx context.Context) SupportedKeyTypePtrOutput {
+	return SupportedKeyType(e).ToSupportedKeyTypeOutputWithContext(ctx).ToSupportedKeyTypePtrOutputWithContext(ctx)
+}
+
+func (e SupportedKeyType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SupportedKeyType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SupportedKeyType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SupportedKeyType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SupportedKeyTypeOutput struct{ *pulumi.OutputState }
+
+func (SupportedKeyTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupportedKeyType)(nil)).Elem()
+}
+
+func (o SupportedKeyTypeOutput) ToSupportedKeyTypeOutput() SupportedKeyTypeOutput {
+	return o
+}
+
+func (o SupportedKeyTypeOutput) ToSupportedKeyTypeOutputWithContext(ctx context.Context) SupportedKeyTypeOutput {
+	return o
+}
+
+func (o SupportedKeyTypeOutput) ToSupportedKeyTypePtrOutput() SupportedKeyTypePtrOutput {
+	return o.ToSupportedKeyTypePtrOutputWithContext(context.Background())
+}
+
+func (o SupportedKeyTypeOutput) ToSupportedKeyTypePtrOutputWithContext(ctx context.Context) SupportedKeyTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SupportedKeyType) *SupportedKeyType {
+		return &v
+	}).(SupportedKeyTypePtrOutput)
+}
+
+func (o SupportedKeyTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SupportedKeyTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SupportedKeyType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SupportedKeyTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SupportedKeyTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SupportedKeyType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SupportedKeyTypePtrOutput struct{ *pulumi.OutputState }
+
+func (SupportedKeyTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupportedKeyType)(nil)).Elem()
+}
+
+func (o SupportedKeyTypePtrOutput) ToSupportedKeyTypePtrOutput() SupportedKeyTypePtrOutput {
+	return o
+}
+
+func (o SupportedKeyTypePtrOutput) ToSupportedKeyTypePtrOutputWithContext(ctx context.Context) SupportedKeyTypePtrOutput {
+	return o
+}
+
+func (o SupportedKeyTypePtrOutput) Elem() SupportedKeyTypeOutput {
+	return o.ApplyT(func(v *SupportedKeyType) SupportedKeyType {
+		if v != nil {
+			return *v
+		}
+		var ret SupportedKeyType
+		return ret
+	}).(SupportedKeyTypeOutput)
+}
+
+func (o SupportedKeyTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SupportedKeyTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SupportedKeyType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SupportedKeyTypeInput is an input type that accepts values of the SupportedKeyType enum
+// A concrete instance of `SupportedKeyTypeInput` can be one of the following:
+//
+//	SupportedKeyTypeECC
+type SupportedKeyTypeInput interface {
+	pulumi.Input
+
+	ToSupportedKeyTypeOutput() SupportedKeyTypeOutput
+	ToSupportedKeyTypeOutputWithContext(context.Context) SupportedKeyTypeOutput
+}
+
+var supportedKeyTypePtrType = reflect.TypeOf((**SupportedKeyType)(nil)).Elem()
+
+type SupportedKeyTypePtrInput interface {
+	pulumi.Input
+
+	ToSupportedKeyTypePtrOutput() SupportedKeyTypePtrOutput
+	ToSupportedKeyTypePtrOutputWithContext(context.Context) SupportedKeyTypePtrOutput
+}
+
+type supportedKeyTypePtr string
+
+func SupportedKeyTypePtr(v string) SupportedKeyTypePtrInput {
+	return (*supportedKeyTypePtr)(&v)
+}
+
+func (*supportedKeyTypePtr) ElementType() reflect.Type {
+	return supportedKeyTypePtrType
+}
+
+func (in *supportedKeyTypePtr) ToSupportedKeyTypePtrOutput() SupportedKeyTypePtrOutput {
+	return pulumi.ToOutput(in).(SupportedKeyTypePtrOutput)
+}
+
+func (in *supportedKeyTypePtr) ToSupportedKeyTypePtrOutputWithContext(ctx context.Context) SupportedKeyTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SupportedKeyTypePtrOutput)
+}
+
 // Type of managed service identity (either system assigned, or none).
 type SystemAssignedServiceIdentityType string
 
@@ -1752,6 +1917,8 @@ func init() {
 	pulumi.RegisterOutputType(NamespaceDiscoveredManagementActionTypePtrOutput{})
 	pulumi.RegisterOutputType(SchemaTypeOutput{})
 	pulumi.RegisterOutputType(SchemaTypePtrOutput{})
+	pulumi.RegisterOutputType(SupportedKeyTypeOutput{})
+	pulumi.RegisterOutputType(SupportedKeyTypePtrOutput{})
 	pulumi.RegisterOutputType(SystemAssignedServiceIdentityTypeOutput{})
 	pulumi.RegisterOutputType(SystemAssignedServiceIdentityTypePtrOutput{})
 	pulumi.RegisterOutputType(TopicRetainTypeOutput{})

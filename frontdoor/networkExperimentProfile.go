@@ -15,6 +15,8 @@ import (
 // Defines an Network Experiment Profile and lists of Experiments
 //
 // Uses Azure REST API version 2019-11-01.
+//
+// Other available API versions: 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native frontdoor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type NetworkExperimentProfile struct {
 	pulumi.CustomResourceState
 
@@ -49,6 +51,9 @@ func NewNetworkExperimentProfile(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:frontdoor/v20191101:NetworkExperimentProfile"),
+		},
+		{
+			Type: pulumi.String("azure-native:frontdoor/v20251001:NetworkExperimentProfile"),
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20191101:NetworkExperimentProfile"),

@@ -13,6 +13,242 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
+// Optional field to record suppression reason for automatic shortfall.
+type AutomaticShortfallSuppressReason struct {
+	// Code for the suppression reason.
+	Code *string `pulumi:"code"`
+	// Message for suppression reason.
+	Message *string `pulumi:"message"`
+}
+
+// AutomaticShortfallSuppressReasonInput is an input type that accepts AutomaticShortfallSuppressReasonArgs and AutomaticShortfallSuppressReasonOutput values.
+// You can construct a concrete instance of `AutomaticShortfallSuppressReasonInput` via:
+//
+//	AutomaticShortfallSuppressReasonArgs{...}
+type AutomaticShortfallSuppressReasonInput interface {
+	pulumi.Input
+
+	ToAutomaticShortfallSuppressReasonOutput() AutomaticShortfallSuppressReasonOutput
+	ToAutomaticShortfallSuppressReasonOutputWithContext(context.Context) AutomaticShortfallSuppressReasonOutput
+}
+
+// Optional field to record suppression reason for automatic shortfall.
+type AutomaticShortfallSuppressReasonArgs struct {
+	// Code for the suppression reason.
+	Code pulumi.StringPtrInput `pulumi:"code"`
+	// Message for suppression reason.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (AutomaticShortfallSuppressReasonArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomaticShortfallSuppressReason)(nil)).Elem()
+}
+
+func (i AutomaticShortfallSuppressReasonArgs) ToAutomaticShortfallSuppressReasonOutput() AutomaticShortfallSuppressReasonOutput {
+	return i.ToAutomaticShortfallSuppressReasonOutputWithContext(context.Background())
+}
+
+func (i AutomaticShortfallSuppressReasonArgs) ToAutomaticShortfallSuppressReasonOutputWithContext(ctx context.Context) AutomaticShortfallSuppressReasonOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomaticShortfallSuppressReasonOutput)
+}
+
+func (i AutomaticShortfallSuppressReasonArgs) ToAutomaticShortfallSuppressReasonPtrOutput() AutomaticShortfallSuppressReasonPtrOutput {
+	return i.ToAutomaticShortfallSuppressReasonPtrOutputWithContext(context.Background())
+}
+
+func (i AutomaticShortfallSuppressReasonArgs) ToAutomaticShortfallSuppressReasonPtrOutputWithContext(ctx context.Context) AutomaticShortfallSuppressReasonPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomaticShortfallSuppressReasonOutput).ToAutomaticShortfallSuppressReasonPtrOutputWithContext(ctx)
+}
+
+// AutomaticShortfallSuppressReasonPtrInput is an input type that accepts AutomaticShortfallSuppressReasonArgs, AutomaticShortfallSuppressReasonPtr and AutomaticShortfallSuppressReasonPtrOutput values.
+// You can construct a concrete instance of `AutomaticShortfallSuppressReasonPtrInput` via:
+//
+//	        AutomaticShortfallSuppressReasonArgs{...}
+//
+//	or:
+//
+//	        nil
+type AutomaticShortfallSuppressReasonPtrInput interface {
+	pulumi.Input
+
+	ToAutomaticShortfallSuppressReasonPtrOutput() AutomaticShortfallSuppressReasonPtrOutput
+	ToAutomaticShortfallSuppressReasonPtrOutputWithContext(context.Context) AutomaticShortfallSuppressReasonPtrOutput
+}
+
+type automaticShortfallSuppressReasonPtrType AutomaticShortfallSuppressReasonArgs
+
+func AutomaticShortfallSuppressReasonPtr(v *AutomaticShortfallSuppressReasonArgs) AutomaticShortfallSuppressReasonPtrInput {
+	return (*automaticShortfallSuppressReasonPtrType)(v)
+}
+
+func (*automaticShortfallSuppressReasonPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutomaticShortfallSuppressReason)(nil)).Elem()
+}
+
+func (i *automaticShortfallSuppressReasonPtrType) ToAutomaticShortfallSuppressReasonPtrOutput() AutomaticShortfallSuppressReasonPtrOutput {
+	return i.ToAutomaticShortfallSuppressReasonPtrOutputWithContext(context.Background())
+}
+
+func (i *automaticShortfallSuppressReasonPtrType) ToAutomaticShortfallSuppressReasonPtrOutputWithContext(ctx context.Context) AutomaticShortfallSuppressReasonPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomaticShortfallSuppressReasonPtrOutput)
+}
+
+// Optional field to record suppression reason for automatic shortfall.
+type AutomaticShortfallSuppressReasonOutput struct{ *pulumi.OutputState }
+
+func (AutomaticShortfallSuppressReasonOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomaticShortfallSuppressReason)(nil)).Elem()
+}
+
+func (o AutomaticShortfallSuppressReasonOutput) ToAutomaticShortfallSuppressReasonOutput() AutomaticShortfallSuppressReasonOutput {
+	return o
+}
+
+func (o AutomaticShortfallSuppressReasonOutput) ToAutomaticShortfallSuppressReasonOutputWithContext(ctx context.Context) AutomaticShortfallSuppressReasonOutput {
+	return o
+}
+
+func (o AutomaticShortfallSuppressReasonOutput) ToAutomaticShortfallSuppressReasonPtrOutput() AutomaticShortfallSuppressReasonPtrOutput {
+	return o.ToAutomaticShortfallSuppressReasonPtrOutputWithContext(context.Background())
+}
+
+func (o AutomaticShortfallSuppressReasonOutput) ToAutomaticShortfallSuppressReasonPtrOutputWithContext(ctx context.Context) AutomaticShortfallSuppressReasonPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutomaticShortfallSuppressReason) *AutomaticShortfallSuppressReason {
+		return &v
+	}).(AutomaticShortfallSuppressReasonPtrOutput)
+}
+
+// Code for the suppression reason.
+func (o AutomaticShortfallSuppressReasonOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutomaticShortfallSuppressReason) *string { return v.Code }).(pulumi.StringPtrOutput)
+}
+
+// Message for suppression reason.
+func (o AutomaticShortfallSuppressReasonOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutomaticShortfallSuppressReason) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type AutomaticShortfallSuppressReasonPtrOutput struct{ *pulumi.OutputState }
+
+func (AutomaticShortfallSuppressReasonPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutomaticShortfallSuppressReason)(nil)).Elem()
+}
+
+func (o AutomaticShortfallSuppressReasonPtrOutput) ToAutomaticShortfallSuppressReasonPtrOutput() AutomaticShortfallSuppressReasonPtrOutput {
+	return o
+}
+
+func (o AutomaticShortfallSuppressReasonPtrOutput) ToAutomaticShortfallSuppressReasonPtrOutputWithContext(ctx context.Context) AutomaticShortfallSuppressReasonPtrOutput {
+	return o
+}
+
+func (o AutomaticShortfallSuppressReasonPtrOutput) Elem() AutomaticShortfallSuppressReasonOutput {
+	return o.ApplyT(func(v *AutomaticShortfallSuppressReason) AutomaticShortfallSuppressReason {
+		if v != nil {
+			return *v
+		}
+		var ret AutomaticShortfallSuppressReason
+		return ret
+	}).(AutomaticShortfallSuppressReasonOutput)
+}
+
+// Code for the suppression reason.
+func (o AutomaticShortfallSuppressReasonPtrOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutomaticShortfallSuppressReason) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Code
+	}).(pulumi.StringPtrOutput)
+}
+
+// Message for suppression reason.
+func (o AutomaticShortfallSuppressReasonPtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutomaticShortfallSuppressReason) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Message
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional field to record suppression reason for automatic shortfall.
+type AutomaticShortfallSuppressReasonResponse struct {
+	// Code for the suppression reason.
+	Code *string `pulumi:"code"`
+	// Message for suppression reason.
+	Message *string `pulumi:"message"`
+}
+
+// Optional field to record suppression reason for automatic shortfall.
+type AutomaticShortfallSuppressReasonResponseOutput struct{ *pulumi.OutputState }
+
+func (AutomaticShortfallSuppressReasonResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomaticShortfallSuppressReasonResponse)(nil)).Elem()
+}
+
+func (o AutomaticShortfallSuppressReasonResponseOutput) ToAutomaticShortfallSuppressReasonResponseOutput() AutomaticShortfallSuppressReasonResponseOutput {
+	return o
+}
+
+func (o AutomaticShortfallSuppressReasonResponseOutput) ToAutomaticShortfallSuppressReasonResponseOutputWithContext(ctx context.Context) AutomaticShortfallSuppressReasonResponseOutput {
+	return o
+}
+
+// Code for the suppression reason.
+func (o AutomaticShortfallSuppressReasonResponseOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutomaticShortfallSuppressReasonResponse) *string { return v.Code }).(pulumi.StringPtrOutput)
+}
+
+// Message for suppression reason.
+func (o AutomaticShortfallSuppressReasonResponseOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutomaticShortfallSuppressReasonResponse) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type AutomaticShortfallSuppressReasonResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AutomaticShortfallSuppressReasonResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutomaticShortfallSuppressReasonResponse)(nil)).Elem()
+}
+
+func (o AutomaticShortfallSuppressReasonResponsePtrOutput) ToAutomaticShortfallSuppressReasonResponsePtrOutput() AutomaticShortfallSuppressReasonResponsePtrOutput {
+	return o
+}
+
+func (o AutomaticShortfallSuppressReasonResponsePtrOutput) ToAutomaticShortfallSuppressReasonResponsePtrOutputWithContext(ctx context.Context) AutomaticShortfallSuppressReasonResponsePtrOutput {
+	return o
+}
+
+func (o AutomaticShortfallSuppressReasonResponsePtrOutput) Elem() AutomaticShortfallSuppressReasonResponseOutput {
+	return o.ApplyT(func(v *AutomaticShortfallSuppressReasonResponse) AutomaticShortfallSuppressReasonResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AutomaticShortfallSuppressReasonResponse
+		return ret
+	}).(AutomaticShortfallSuppressReasonResponseOutput)
+}
+
+// Code for the suppression reason.
+func (o AutomaticShortfallSuppressReasonResponsePtrOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutomaticShortfallSuppressReasonResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Code
+	}).(pulumi.StringPtrOutput)
+}
+
+// Message for suppression reason.
+func (o AutomaticShortfallSuppressReasonResponsePtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutomaticShortfallSuppressReasonResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Message
+	}).(pulumi.StringPtrOutput)
+}
+
 // Catalog claim for a discount.
 type CatalogClaimsItem struct {
 	CatalogClaimsItemType *string `pulumi:"catalogClaimsItemType"`
@@ -163,6 +399,271 @@ func (o CatalogClaimsItemResponseArrayOutput) Index(i pulumi.IntInput) CatalogCl
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CatalogClaimsItemResponse {
 		return vs[0].([]CatalogClaimsItemResponse)[vs[1].(int)]
 	}).(CatalogClaimsItemResponseOutput)
+}
+
+// Commitment towards the benefit.
+type Commitment struct {
+	Amount *float64 `pulumi:"amount"`
+	// The ISO 4217 3-letter currency code for the currency used by this purchase record.
+	CurrencyCode *string `pulumi:"currencyCode"`
+	// The grain of the commitment.
+	Grain *string `pulumi:"grain"`
+}
+
+// CommitmentInput is an input type that accepts CommitmentArgs and CommitmentOutput values.
+// You can construct a concrete instance of `CommitmentInput` via:
+//
+//	CommitmentArgs{...}
+type CommitmentInput interface {
+	pulumi.Input
+
+	ToCommitmentOutput() CommitmentOutput
+	ToCommitmentOutputWithContext(context.Context) CommitmentOutput
+}
+
+// Commitment towards the benefit.
+type CommitmentArgs struct {
+	Amount pulumi.Float64PtrInput `pulumi:"amount"`
+	// The ISO 4217 3-letter currency code for the currency used by this purchase record.
+	CurrencyCode pulumi.StringPtrInput `pulumi:"currencyCode"`
+	// The grain of the commitment.
+	Grain pulumi.StringPtrInput `pulumi:"grain"`
+}
+
+func (CommitmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Commitment)(nil)).Elem()
+}
+
+func (i CommitmentArgs) ToCommitmentOutput() CommitmentOutput {
+	return i.ToCommitmentOutputWithContext(context.Background())
+}
+
+func (i CommitmentArgs) ToCommitmentOutputWithContext(ctx context.Context) CommitmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommitmentOutput)
+}
+
+func (i CommitmentArgs) ToCommitmentPtrOutput() CommitmentPtrOutput {
+	return i.ToCommitmentPtrOutputWithContext(context.Background())
+}
+
+func (i CommitmentArgs) ToCommitmentPtrOutputWithContext(ctx context.Context) CommitmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommitmentOutput).ToCommitmentPtrOutputWithContext(ctx)
+}
+
+// CommitmentPtrInput is an input type that accepts CommitmentArgs, CommitmentPtr and CommitmentPtrOutput values.
+// You can construct a concrete instance of `CommitmentPtrInput` via:
+//
+//	        CommitmentArgs{...}
+//
+//	or:
+//
+//	        nil
+type CommitmentPtrInput interface {
+	pulumi.Input
+
+	ToCommitmentPtrOutput() CommitmentPtrOutput
+	ToCommitmentPtrOutputWithContext(context.Context) CommitmentPtrOutput
+}
+
+type commitmentPtrType CommitmentArgs
+
+func CommitmentPtr(v *CommitmentArgs) CommitmentPtrInput {
+	return (*commitmentPtrType)(v)
+}
+
+func (*commitmentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Commitment)(nil)).Elem()
+}
+
+func (i *commitmentPtrType) ToCommitmentPtrOutput() CommitmentPtrOutput {
+	return i.ToCommitmentPtrOutputWithContext(context.Background())
+}
+
+func (i *commitmentPtrType) ToCommitmentPtrOutputWithContext(ctx context.Context) CommitmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommitmentPtrOutput)
+}
+
+// Commitment towards the benefit.
+type CommitmentOutput struct{ *pulumi.OutputState }
+
+func (CommitmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Commitment)(nil)).Elem()
+}
+
+func (o CommitmentOutput) ToCommitmentOutput() CommitmentOutput {
+	return o
+}
+
+func (o CommitmentOutput) ToCommitmentOutputWithContext(ctx context.Context) CommitmentOutput {
+	return o
+}
+
+func (o CommitmentOutput) ToCommitmentPtrOutput() CommitmentPtrOutput {
+	return o.ToCommitmentPtrOutputWithContext(context.Background())
+}
+
+func (o CommitmentOutput) ToCommitmentPtrOutputWithContext(ctx context.Context) CommitmentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Commitment) *Commitment {
+		return &v
+	}).(CommitmentPtrOutput)
+}
+
+func (o CommitmentOutput) Amount() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v Commitment) *float64 { return v.Amount }).(pulumi.Float64PtrOutput)
+}
+
+// The ISO 4217 3-letter currency code for the currency used by this purchase record.
+func (o CommitmentOutput) CurrencyCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Commitment) *string { return v.CurrencyCode }).(pulumi.StringPtrOutput)
+}
+
+// The grain of the commitment.
+func (o CommitmentOutput) Grain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Commitment) *string { return v.Grain }).(pulumi.StringPtrOutput)
+}
+
+type CommitmentPtrOutput struct{ *pulumi.OutputState }
+
+func (CommitmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Commitment)(nil)).Elem()
+}
+
+func (o CommitmentPtrOutput) ToCommitmentPtrOutput() CommitmentPtrOutput {
+	return o
+}
+
+func (o CommitmentPtrOutput) ToCommitmentPtrOutputWithContext(ctx context.Context) CommitmentPtrOutput {
+	return o
+}
+
+func (o CommitmentPtrOutput) Elem() CommitmentOutput {
+	return o.ApplyT(func(v *Commitment) Commitment {
+		if v != nil {
+			return *v
+		}
+		var ret Commitment
+		return ret
+	}).(CommitmentOutput)
+}
+
+func (o CommitmentPtrOutput) Amount() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *Commitment) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Amount
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The ISO 4217 3-letter currency code for the currency used by this purchase record.
+func (o CommitmentPtrOutput) CurrencyCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Commitment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CurrencyCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The grain of the commitment.
+func (o CommitmentPtrOutput) Grain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Commitment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Grain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Commitment towards the benefit.
+type CommitmentResponse struct {
+	Amount *float64 `pulumi:"amount"`
+	// The ISO 4217 3-letter currency code for the currency used by this purchase record.
+	CurrencyCode *string `pulumi:"currencyCode"`
+	// The grain of the commitment.
+	Grain *string `pulumi:"grain"`
+}
+
+// Commitment towards the benefit.
+type CommitmentResponseOutput struct{ *pulumi.OutputState }
+
+func (CommitmentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommitmentResponse)(nil)).Elem()
+}
+
+func (o CommitmentResponseOutput) ToCommitmentResponseOutput() CommitmentResponseOutput {
+	return o
+}
+
+func (o CommitmentResponseOutput) ToCommitmentResponseOutputWithContext(ctx context.Context) CommitmentResponseOutput {
+	return o
+}
+
+func (o CommitmentResponseOutput) Amount() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v CommitmentResponse) *float64 { return v.Amount }).(pulumi.Float64PtrOutput)
+}
+
+// The ISO 4217 3-letter currency code for the currency used by this purchase record.
+func (o CommitmentResponseOutput) CurrencyCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CommitmentResponse) *string { return v.CurrencyCode }).(pulumi.StringPtrOutput)
+}
+
+// The grain of the commitment.
+func (o CommitmentResponseOutput) Grain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CommitmentResponse) *string { return v.Grain }).(pulumi.StringPtrOutput)
+}
+
+type CommitmentResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CommitmentResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CommitmentResponse)(nil)).Elem()
+}
+
+func (o CommitmentResponsePtrOutput) ToCommitmentResponsePtrOutput() CommitmentResponsePtrOutput {
+	return o
+}
+
+func (o CommitmentResponsePtrOutput) ToCommitmentResponsePtrOutputWithContext(ctx context.Context) CommitmentResponsePtrOutput {
+	return o
+}
+
+func (o CommitmentResponsePtrOutput) Elem() CommitmentResponseOutput {
+	return o.ApplyT(func(v *CommitmentResponse) CommitmentResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CommitmentResponse
+		return ret
+	}).(CommitmentResponseOutput)
+}
+
+func (o CommitmentResponsePtrOutput) Amount() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *CommitmentResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Amount
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The ISO 4217 3-letter currency code for the currency used by this purchase record.
+func (o CommitmentResponsePtrOutput) CurrencyCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CommitmentResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CurrencyCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The grain of the commitment.
+func (o CommitmentResponsePtrOutput) Grain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CommitmentResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Grain
+	}).(pulumi.StringPtrOutput)
 }
 
 // Condition for a discount.
@@ -331,6 +832,675 @@ func (o ConditionsItemResponseArrayOutput) Index(i pulumi.IntInput) ConditionsIt
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConditionsItemResponse {
 		return vs[0].([]ConditionsItemResponse)[vs[1].(int)]
 	}).(ConditionsItemResponseOutput)
+}
+
+// Credit breakdown item representing a milestone, line-item, or no-charge service
+type CreditBreakdownItem struct {
+	// Allocation details including currency and amount for this breakdown item
+	Allocation *Commitment `pulumi:"allocation"`
+	// Key-value pairs for additional parameters and metadata
+	Dimensions []CreditDimension `pulumi:"dimensions"`
+	// End DateTime in UTC.
+	EndAt *string `pulumi:"endAt"`
+	// Start DateTime.
+	StartAt *string `pulumi:"startAt"`
+}
+
+// CreditBreakdownItemInput is an input type that accepts CreditBreakdownItemArgs and CreditBreakdownItemOutput values.
+// You can construct a concrete instance of `CreditBreakdownItemInput` via:
+//
+//	CreditBreakdownItemArgs{...}
+type CreditBreakdownItemInput interface {
+	pulumi.Input
+
+	ToCreditBreakdownItemOutput() CreditBreakdownItemOutput
+	ToCreditBreakdownItemOutputWithContext(context.Context) CreditBreakdownItemOutput
+}
+
+// Credit breakdown item representing a milestone, line-item, or no-charge service
+type CreditBreakdownItemArgs struct {
+	// Allocation details including currency and amount for this breakdown item
+	Allocation CommitmentPtrInput `pulumi:"allocation"`
+	// Key-value pairs for additional parameters and metadata
+	Dimensions CreditDimensionArrayInput `pulumi:"dimensions"`
+	// End DateTime in UTC.
+	EndAt pulumi.StringPtrInput `pulumi:"endAt"`
+	// Start DateTime.
+	StartAt pulumi.StringPtrInput `pulumi:"startAt"`
+}
+
+func (CreditBreakdownItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CreditBreakdownItem)(nil)).Elem()
+}
+
+func (i CreditBreakdownItemArgs) ToCreditBreakdownItemOutput() CreditBreakdownItemOutput {
+	return i.ToCreditBreakdownItemOutputWithContext(context.Background())
+}
+
+func (i CreditBreakdownItemArgs) ToCreditBreakdownItemOutputWithContext(ctx context.Context) CreditBreakdownItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CreditBreakdownItemOutput)
+}
+
+// CreditBreakdownItemArrayInput is an input type that accepts CreditBreakdownItemArray and CreditBreakdownItemArrayOutput values.
+// You can construct a concrete instance of `CreditBreakdownItemArrayInput` via:
+//
+//	CreditBreakdownItemArray{ CreditBreakdownItemArgs{...} }
+type CreditBreakdownItemArrayInput interface {
+	pulumi.Input
+
+	ToCreditBreakdownItemArrayOutput() CreditBreakdownItemArrayOutput
+	ToCreditBreakdownItemArrayOutputWithContext(context.Context) CreditBreakdownItemArrayOutput
+}
+
+type CreditBreakdownItemArray []CreditBreakdownItemInput
+
+func (CreditBreakdownItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CreditBreakdownItem)(nil)).Elem()
+}
+
+func (i CreditBreakdownItemArray) ToCreditBreakdownItemArrayOutput() CreditBreakdownItemArrayOutput {
+	return i.ToCreditBreakdownItemArrayOutputWithContext(context.Background())
+}
+
+func (i CreditBreakdownItemArray) ToCreditBreakdownItemArrayOutputWithContext(ctx context.Context) CreditBreakdownItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CreditBreakdownItemArrayOutput)
+}
+
+// Credit breakdown item representing a milestone, line-item, or no-charge service
+type CreditBreakdownItemOutput struct{ *pulumi.OutputState }
+
+func (CreditBreakdownItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CreditBreakdownItem)(nil)).Elem()
+}
+
+func (o CreditBreakdownItemOutput) ToCreditBreakdownItemOutput() CreditBreakdownItemOutput {
+	return o
+}
+
+func (o CreditBreakdownItemOutput) ToCreditBreakdownItemOutputWithContext(ctx context.Context) CreditBreakdownItemOutput {
+	return o
+}
+
+// Allocation details including currency and amount for this breakdown item
+func (o CreditBreakdownItemOutput) Allocation() CommitmentPtrOutput {
+	return o.ApplyT(func(v CreditBreakdownItem) *Commitment { return v.Allocation }).(CommitmentPtrOutput)
+}
+
+// Key-value pairs for additional parameters and metadata
+func (o CreditBreakdownItemOutput) Dimensions() CreditDimensionArrayOutput {
+	return o.ApplyT(func(v CreditBreakdownItem) []CreditDimension { return v.Dimensions }).(CreditDimensionArrayOutput)
+}
+
+// End DateTime in UTC.
+func (o CreditBreakdownItemOutput) EndAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CreditBreakdownItem) *string { return v.EndAt }).(pulumi.StringPtrOutput)
+}
+
+// Start DateTime.
+func (o CreditBreakdownItemOutput) StartAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CreditBreakdownItem) *string { return v.StartAt }).(pulumi.StringPtrOutput)
+}
+
+type CreditBreakdownItemArrayOutput struct{ *pulumi.OutputState }
+
+func (CreditBreakdownItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CreditBreakdownItem)(nil)).Elem()
+}
+
+func (o CreditBreakdownItemArrayOutput) ToCreditBreakdownItemArrayOutput() CreditBreakdownItemArrayOutput {
+	return o
+}
+
+func (o CreditBreakdownItemArrayOutput) ToCreditBreakdownItemArrayOutputWithContext(ctx context.Context) CreditBreakdownItemArrayOutput {
+	return o
+}
+
+func (o CreditBreakdownItemArrayOutput) Index(i pulumi.IntInput) CreditBreakdownItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CreditBreakdownItem {
+		return vs[0].([]CreditBreakdownItem)[vs[1].(int)]
+	}).(CreditBreakdownItemOutput)
+}
+
+// Credit breakdown item representing a milestone, line-item, or no-charge service
+type CreditBreakdownItemResponse struct {
+	// Allocation details including currency and amount for this breakdown item
+	Allocation *CommitmentResponse `pulumi:"allocation"`
+	// Key-value pairs for additional parameters and metadata
+	Dimensions []CreditDimensionResponse `pulumi:"dimensions"`
+	// End DateTime in UTC.
+	EndAt *string `pulumi:"endAt"`
+	// Start DateTime.
+	StartAt *string `pulumi:"startAt"`
+}
+
+// Credit breakdown item representing a milestone, line-item, or no-charge service
+type CreditBreakdownItemResponseOutput struct{ *pulumi.OutputState }
+
+func (CreditBreakdownItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CreditBreakdownItemResponse)(nil)).Elem()
+}
+
+func (o CreditBreakdownItemResponseOutput) ToCreditBreakdownItemResponseOutput() CreditBreakdownItemResponseOutput {
+	return o
+}
+
+func (o CreditBreakdownItemResponseOutput) ToCreditBreakdownItemResponseOutputWithContext(ctx context.Context) CreditBreakdownItemResponseOutput {
+	return o
+}
+
+// Allocation details including currency and amount for this breakdown item
+func (o CreditBreakdownItemResponseOutput) Allocation() CommitmentResponsePtrOutput {
+	return o.ApplyT(func(v CreditBreakdownItemResponse) *CommitmentResponse { return v.Allocation }).(CommitmentResponsePtrOutput)
+}
+
+// Key-value pairs for additional parameters and metadata
+func (o CreditBreakdownItemResponseOutput) Dimensions() CreditDimensionResponseArrayOutput {
+	return o.ApplyT(func(v CreditBreakdownItemResponse) []CreditDimensionResponse { return v.Dimensions }).(CreditDimensionResponseArrayOutput)
+}
+
+// End DateTime in UTC.
+func (o CreditBreakdownItemResponseOutput) EndAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CreditBreakdownItemResponse) *string { return v.EndAt }).(pulumi.StringPtrOutput)
+}
+
+// Start DateTime.
+func (o CreditBreakdownItemResponseOutput) StartAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CreditBreakdownItemResponse) *string { return v.StartAt }).(pulumi.StringPtrOutput)
+}
+
+type CreditBreakdownItemResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (CreditBreakdownItemResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CreditBreakdownItemResponse)(nil)).Elem()
+}
+
+func (o CreditBreakdownItemResponseArrayOutput) ToCreditBreakdownItemResponseArrayOutput() CreditBreakdownItemResponseArrayOutput {
+	return o
+}
+
+func (o CreditBreakdownItemResponseArrayOutput) ToCreditBreakdownItemResponseArrayOutputWithContext(ctx context.Context) CreditBreakdownItemResponseArrayOutput {
+	return o
+}
+
+func (o CreditBreakdownItemResponseArrayOutput) Index(i pulumi.IntInput) CreditBreakdownItemResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CreditBreakdownItemResponse {
+		return vs[0].([]CreditBreakdownItemResponse)[vs[1].(int)]
+	}).(CreditBreakdownItemResponseOutput)
+}
+
+// Key-value pair for additional credit parameters and metadata
+type CreditDimension struct {
+	// The dimension key (e.g., productFamily, description, creditType)
+	Key string `pulumi:"key"`
+	// The dimension value
+	Value string `pulumi:"value"`
+}
+
+// CreditDimensionInput is an input type that accepts CreditDimensionArgs and CreditDimensionOutput values.
+// You can construct a concrete instance of `CreditDimensionInput` via:
+//
+//	CreditDimensionArgs{...}
+type CreditDimensionInput interface {
+	pulumi.Input
+
+	ToCreditDimensionOutput() CreditDimensionOutput
+	ToCreditDimensionOutputWithContext(context.Context) CreditDimensionOutput
+}
+
+// Key-value pair for additional credit parameters and metadata
+type CreditDimensionArgs struct {
+	// The dimension key (e.g., productFamily, description, creditType)
+	Key pulumi.StringInput `pulumi:"key"`
+	// The dimension value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (CreditDimensionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CreditDimension)(nil)).Elem()
+}
+
+func (i CreditDimensionArgs) ToCreditDimensionOutput() CreditDimensionOutput {
+	return i.ToCreditDimensionOutputWithContext(context.Background())
+}
+
+func (i CreditDimensionArgs) ToCreditDimensionOutputWithContext(ctx context.Context) CreditDimensionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CreditDimensionOutput)
+}
+
+// CreditDimensionArrayInput is an input type that accepts CreditDimensionArray and CreditDimensionArrayOutput values.
+// You can construct a concrete instance of `CreditDimensionArrayInput` via:
+//
+//	CreditDimensionArray{ CreditDimensionArgs{...} }
+type CreditDimensionArrayInput interface {
+	pulumi.Input
+
+	ToCreditDimensionArrayOutput() CreditDimensionArrayOutput
+	ToCreditDimensionArrayOutputWithContext(context.Context) CreditDimensionArrayOutput
+}
+
+type CreditDimensionArray []CreditDimensionInput
+
+func (CreditDimensionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CreditDimension)(nil)).Elem()
+}
+
+func (i CreditDimensionArray) ToCreditDimensionArrayOutput() CreditDimensionArrayOutput {
+	return i.ToCreditDimensionArrayOutputWithContext(context.Background())
+}
+
+func (i CreditDimensionArray) ToCreditDimensionArrayOutputWithContext(ctx context.Context) CreditDimensionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CreditDimensionArrayOutput)
+}
+
+// Key-value pair for additional credit parameters and metadata
+type CreditDimensionOutput struct{ *pulumi.OutputState }
+
+func (CreditDimensionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CreditDimension)(nil)).Elem()
+}
+
+func (o CreditDimensionOutput) ToCreditDimensionOutput() CreditDimensionOutput {
+	return o
+}
+
+func (o CreditDimensionOutput) ToCreditDimensionOutputWithContext(ctx context.Context) CreditDimensionOutput {
+	return o
+}
+
+// The dimension key (e.g., productFamily, description, creditType)
+func (o CreditDimensionOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v CreditDimension) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The dimension value
+func (o CreditDimensionOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v CreditDimension) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type CreditDimensionArrayOutput struct{ *pulumi.OutputState }
+
+func (CreditDimensionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CreditDimension)(nil)).Elem()
+}
+
+func (o CreditDimensionArrayOutput) ToCreditDimensionArrayOutput() CreditDimensionArrayOutput {
+	return o
+}
+
+func (o CreditDimensionArrayOutput) ToCreditDimensionArrayOutputWithContext(ctx context.Context) CreditDimensionArrayOutput {
+	return o
+}
+
+func (o CreditDimensionArrayOutput) Index(i pulumi.IntInput) CreditDimensionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CreditDimension {
+		return vs[0].([]CreditDimension)[vs[1].(int)]
+	}).(CreditDimensionOutput)
+}
+
+// Key-value pair for additional credit parameters and metadata
+type CreditDimensionResponse struct {
+	// The dimension key (e.g., productFamily, description, creditType)
+	Key string `pulumi:"key"`
+	// The dimension value
+	Value string `pulumi:"value"`
+}
+
+// Key-value pair for additional credit parameters and metadata
+type CreditDimensionResponseOutput struct{ *pulumi.OutputState }
+
+func (CreditDimensionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CreditDimensionResponse)(nil)).Elem()
+}
+
+func (o CreditDimensionResponseOutput) ToCreditDimensionResponseOutput() CreditDimensionResponseOutput {
+	return o
+}
+
+func (o CreditDimensionResponseOutput) ToCreditDimensionResponseOutputWithContext(ctx context.Context) CreditDimensionResponseOutput {
+	return o
+}
+
+// The dimension key (e.g., productFamily, description, creditType)
+func (o CreditDimensionResponseOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v CreditDimensionResponse) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The dimension value
+func (o CreditDimensionResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v CreditDimensionResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type CreditDimensionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (CreditDimensionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CreditDimensionResponse)(nil)).Elem()
+}
+
+func (o CreditDimensionResponseArrayOutput) ToCreditDimensionResponseArrayOutput() CreditDimensionResponseArrayOutput {
+	return o
+}
+
+func (o CreditDimensionResponseArrayOutput) ToCreditDimensionResponseArrayOutputWithContext(ctx context.Context) CreditDimensionResponseArrayOutput {
+	return o
+}
+
+func (o CreditDimensionResponseArrayOutput) Index(i pulumi.IntInput) CreditDimensionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CreditDimensionResponse {
+		return vs[0].([]CreditDimensionResponse)[vs[1].(int)]
+	}).(CreditDimensionResponseOutput)
+}
+
+// Credit breakdown item representing a milestone, line-item, or no-charge service
+type CreditPolicies struct {
+	// Expiration policy of the Credit
+	Expiration *string `pulumi:"expiration"`
+	// Redemption policy of the Credit
+	Redemption *string `pulumi:"redemption"`
+}
+
+// CreditPoliciesInput is an input type that accepts CreditPoliciesArgs and CreditPoliciesOutput values.
+// You can construct a concrete instance of `CreditPoliciesInput` via:
+//
+//	CreditPoliciesArgs{...}
+type CreditPoliciesInput interface {
+	pulumi.Input
+
+	ToCreditPoliciesOutput() CreditPoliciesOutput
+	ToCreditPoliciesOutputWithContext(context.Context) CreditPoliciesOutput
+}
+
+// Credit breakdown item representing a milestone, line-item, or no-charge service
+type CreditPoliciesArgs struct {
+	// Expiration policy of the Credit
+	Expiration pulumi.StringPtrInput `pulumi:"expiration"`
+	// Redemption policy of the Credit
+	Redemption pulumi.StringPtrInput `pulumi:"redemption"`
+}
+
+func (CreditPoliciesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CreditPolicies)(nil)).Elem()
+}
+
+func (i CreditPoliciesArgs) ToCreditPoliciesOutput() CreditPoliciesOutput {
+	return i.ToCreditPoliciesOutputWithContext(context.Background())
+}
+
+func (i CreditPoliciesArgs) ToCreditPoliciesOutputWithContext(ctx context.Context) CreditPoliciesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CreditPoliciesOutput)
+}
+
+func (i CreditPoliciesArgs) ToCreditPoliciesPtrOutput() CreditPoliciesPtrOutput {
+	return i.ToCreditPoliciesPtrOutputWithContext(context.Background())
+}
+
+func (i CreditPoliciesArgs) ToCreditPoliciesPtrOutputWithContext(ctx context.Context) CreditPoliciesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CreditPoliciesOutput).ToCreditPoliciesPtrOutputWithContext(ctx)
+}
+
+// CreditPoliciesPtrInput is an input type that accepts CreditPoliciesArgs, CreditPoliciesPtr and CreditPoliciesPtrOutput values.
+// You can construct a concrete instance of `CreditPoliciesPtrInput` via:
+//
+//	        CreditPoliciesArgs{...}
+//
+//	or:
+//
+//	        nil
+type CreditPoliciesPtrInput interface {
+	pulumi.Input
+
+	ToCreditPoliciesPtrOutput() CreditPoliciesPtrOutput
+	ToCreditPoliciesPtrOutputWithContext(context.Context) CreditPoliciesPtrOutput
+}
+
+type creditPoliciesPtrType CreditPoliciesArgs
+
+func CreditPoliciesPtr(v *CreditPoliciesArgs) CreditPoliciesPtrInput {
+	return (*creditPoliciesPtrType)(v)
+}
+
+func (*creditPoliciesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CreditPolicies)(nil)).Elem()
+}
+
+func (i *creditPoliciesPtrType) ToCreditPoliciesPtrOutput() CreditPoliciesPtrOutput {
+	return i.ToCreditPoliciesPtrOutputWithContext(context.Background())
+}
+
+func (i *creditPoliciesPtrType) ToCreditPoliciesPtrOutputWithContext(ctx context.Context) CreditPoliciesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CreditPoliciesPtrOutput)
+}
+
+// Credit breakdown item representing a milestone, line-item, or no-charge service
+type CreditPoliciesOutput struct{ *pulumi.OutputState }
+
+func (CreditPoliciesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CreditPolicies)(nil)).Elem()
+}
+
+func (o CreditPoliciesOutput) ToCreditPoliciesOutput() CreditPoliciesOutput {
+	return o
+}
+
+func (o CreditPoliciesOutput) ToCreditPoliciesOutputWithContext(ctx context.Context) CreditPoliciesOutput {
+	return o
+}
+
+func (o CreditPoliciesOutput) ToCreditPoliciesPtrOutput() CreditPoliciesPtrOutput {
+	return o.ToCreditPoliciesPtrOutputWithContext(context.Background())
+}
+
+func (o CreditPoliciesOutput) ToCreditPoliciesPtrOutputWithContext(ctx context.Context) CreditPoliciesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CreditPolicies) *CreditPolicies {
+		return &v
+	}).(CreditPoliciesPtrOutput)
+}
+
+// Expiration policy of the Credit
+func (o CreditPoliciesOutput) Expiration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CreditPolicies) *string { return v.Expiration }).(pulumi.StringPtrOutput)
+}
+
+// Redemption policy of the Credit
+func (o CreditPoliciesOutput) Redemption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CreditPolicies) *string { return v.Redemption }).(pulumi.StringPtrOutput)
+}
+
+type CreditPoliciesPtrOutput struct{ *pulumi.OutputState }
+
+func (CreditPoliciesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CreditPolicies)(nil)).Elem()
+}
+
+func (o CreditPoliciesPtrOutput) ToCreditPoliciesPtrOutput() CreditPoliciesPtrOutput {
+	return o
+}
+
+func (o CreditPoliciesPtrOutput) ToCreditPoliciesPtrOutputWithContext(ctx context.Context) CreditPoliciesPtrOutput {
+	return o
+}
+
+func (o CreditPoliciesPtrOutput) Elem() CreditPoliciesOutput {
+	return o.ApplyT(func(v *CreditPolicies) CreditPolicies {
+		if v != nil {
+			return *v
+		}
+		var ret CreditPolicies
+		return ret
+	}).(CreditPoliciesOutput)
+}
+
+// Expiration policy of the Credit
+func (o CreditPoliciesPtrOutput) Expiration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CreditPolicies) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Expiration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Redemption policy of the Credit
+func (o CreditPoliciesPtrOutput) Redemption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CreditPolicies) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Redemption
+	}).(pulumi.StringPtrOutput)
+}
+
+// Credit breakdown item representing a milestone, line-item, or no-charge service
+type CreditPoliciesResponse struct {
+	// Expiration policy of the Credit
+	Expiration *string `pulumi:"expiration"`
+	// Redemption policy of the Credit
+	Redemption *string `pulumi:"redemption"`
+}
+
+// Credit breakdown item representing a milestone, line-item, or no-charge service
+type CreditPoliciesResponseOutput struct{ *pulumi.OutputState }
+
+func (CreditPoliciesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CreditPoliciesResponse)(nil)).Elem()
+}
+
+func (o CreditPoliciesResponseOutput) ToCreditPoliciesResponseOutput() CreditPoliciesResponseOutput {
+	return o
+}
+
+func (o CreditPoliciesResponseOutput) ToCreditPoliciesResponseOutputWithContext(ctx context.Context) CreditPoliciesResponseOutput {
+	return o
+}
+
+// Expiration policy of the Credit
+func (o CreditPoliciesResponseOutput) Expiration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CreditPoliciesResponse) *string { return v.Expiration }).(pulumi.StringPtrOutput)
+}
+
+// Redemption policy of the Credit
+func (o CreditPoliciesResponseOutput) Redemption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CreditPoliciesResponse) *string { return v.Redemption }).(pulumi.StringPtrOutput)
+}
+
+type CreditPoliciesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CreditPoliciesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CreditPoliciesResponse)(nil)).Elem()
+}
+
+func (o CreditPoliciesResponsePtrOutput) ToCreditPoliciesResponsePtrOutput() CreditPoliciesResponsePtrOutput {
+	return o
+}
+
+func (o CreditPoliciesResponsePtrOutput) ToCreditPoliciesResponsePtrOutputWithContext(ctx context.Context) CreditPoliciesResponsePtrOutput {
+	return o
+}
+
+func (o CreditPoliciesResponsePtrOutput) Elem() CreditPoliciesResponseOutput {
+	return o.ApplyT(func(v *CreditPoliciesResponse) CreditPoliciesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CreditPoliciesResponse
+		return ret
+	}).(CreditPoliciesResponseOutput)
+}
+
+// Expiration policy of the Credit
+func (o CreditPoliciesResponsePtrOutput) Expiration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CreditPoliciesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Expiration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Redemption policy of the Credit
+func (o CreditPoliciesResponsePtrOutput) Redemption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CreditPoliciesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Redemption
+	}).(pulumi.StringPtrOutput)
+}
+
+// The reason for the credit. Not required if not applicable.
+type CreditReasonResponse struct {
+	// The reason code for credit.
+	Code float64 `pulumi:"code"`
+	// The free string description of the credit.
+	Description string `pulumi:"description"`
+}
+
+// The reason for the credit. Not required if not applicable.
+type CreditReasonResponseOutput struct{ *pulumi.OutputState }
+
+func (CreditReasonResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CreditReasonResponse)(nil)).Elem()
+}
+
+func (o CreditReasonResponseOutput) ToCreditReasonResponseOutput() CreditReasonResponseOutput {
+	return o
+}
+
+func (o CreditReasonResponseOutput) ToCreditReasonResponseOutputWithContext(ctx context.Context) CreditReasonResponseOutput {
+	return o
+}
+
+// The reason code for credit.
+func (o CreditReasonResponseOutput) Code() pulumi.Float64Output {
+	return o.ApplyT(func(v CreditReasonResponse) float64 { return v.Code }).(pulumi.Float64Output)
+}
+
+// The free string description of the credit.
+func (o CreditReasonResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v CreditReasonResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+type CreditReasonResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CreditReasonResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CreditReasonResponse)(nil)).Elem()
+}
+
+func (o CreditReasonResponsePtrOutput) ToCreditReasonResponsePtrOutput() CreditReasonResponsePtrOutput {
+	return o
+}
+
+func (o CreditReasonResponsePtrOutput) ToCreditReasonResponsePtrOutputWithContext(ctx context.Context) CreditReasonResponsePtrOutput {
+	return o
+}
+
+func (o CreditReasonResponsePtrOutput) Elem() CreditReasonResponseOutput {
+	return o.ApplyT(func(v *CreditReasonResponse) CreditReasonResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CreditReasonResponse
+		return ret
+	}).(CreditReasonResponseOutput)
+}
+
+// The reason code for credit.
+func (o CreditReasonResponsePtrOutput) Code() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *CreditReasonResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.Code
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The free string description of the credit.
+func (o CreditReasonResponsePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CreditReasonResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Description
+	}).(pulumi.StringPtrOutput)
 }
 
 // Custom price properties for a given discount.
@@ -3952,6 +5122,250 @@ func (o EntityTypePrimaryDiscountResponseOutput) SystemId() pulumi.StringPtrOutp
 	return o.ApplyT(func(v EntityTypePrimaryDiscountResponse) *string { return v.SystemId }).(pulumi.StringPtrOutput)
 }
 
+// MACC milestone represents interim targets within the period of MACC.
+type MaccMilestone struct {
+	// Setting this to 'Enable' enables automatic shortfall invoicing when milestone commitment is not met.
+	AutomaticShortfall *string `pulumi:"automaticShortfall"`
+	// Optional field to record suppression reason for automatic shortfall.
+	AutomaticShortfallSuppressReason *AutomaticShortfallSuppressReason `pulumi:"automaticShortfallSuppressReason"`
+	// Commitment associated with this milestone.
+	Commitment *Price `pulumi:"commitment"`
+	// End date time for the milestone. Timestamp must be in the ISO date format YYYY-MM-DDT23:59:59Z.
+	EndAt *string `pulumi:"endAt"`
+	// Globally unique identifier for the milestone. Format: {guid}
+	MilestoneId *string `pulumi:"milestoneId"`
+	// Details of the shortfall associated with this milestone.
+	Shortfall *Shortfall `pulumi:"shortfall"`
+	// Represents the current status of the Milestone.
+	Status *string `pulumi:"status"`
+}
+
+// MaccMilestoneInput is an input type that accepts MaccMilestoneArgs and MaccMilestoneOutput values.
+// You can construct a concrete instance of `MaccMilestoneInput` via:
+//
+//	MaccMilestoneArgs{...}
+type MaccMilestoneInput interface {
+	pulumi.Input
+
+	ToMaccMilestoneOutput() MaccMilestoneOutput
+	ToMaccMilestoneOutputWithContext(context.Context) MaccMilestoneOutput
+}
+
+// MACC milestone represents interim targets within the period of MACC.
+type MaccMilestoneArgs struct {
+	// Setting this to 'Enable' enables automatic shortfall invoicing when milestone commitment is not met.
+	AutomaticShortfall pulumi.StringPtrInput `pulumi:"automaticShortfall"`
+	// Optional field to record suppression reason for automatic shortfall.
+	AutomaticShortfallSuppressReason AutomaticShortfallSuppressReasonPtrInput `pulumi:"automaticShortfallSuppressReason"`
+	// Commitment associated with this milestone.
+	Commitment PricePtrInput `pulumi:"commitment"`
+	// End date time for the milestone. Timestamp must be in the ISO date format YYYY-MM-DDT23:59:59Z.
+	EndAt pulumi.StringPtrInput `pulumi:"endAt"`
+	// Globally unique identifier for the milestone. Format: {guid}
+	MilestoneId pulumi.StringPtrInput `pulumi:"milestoneId"`
+	// Details of the shortfall associated with this milestone.
+	Shortfall ShortfallPtrInput `pulumi:"shortfall"`
+	// Represents the current status of the Milestone.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (MaccMilestoneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaccMilestone)(nil)).Elem()
+}
+
+func (i MaccMilestoneArgs) ToMaccMilestoneOutput() MaccMilestoneOutput {
+	return i.ToMaccMilestoneOutputWithContext(context.Background())
+}
+
+func (i MaccMilestoneArgs) ToMaccMilestoneOutputWithContext(ctx context.Context) MaccMilestoneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MaccMilestoneOutput)
+}
+
+// MaccMilestoneArrayInput is an input type that accepts MaccMilestoneArray and MaccMilestoneArrayOutput values.
+// You can construct a concrete instance of `MaccMilestoneArrayInput` via:
+//
+//	MaccMilestoneArray{ MaccMilestoneArgs{...} }
+type MaccMilestoneArrayInput interface {
+	pulumi.Input
+
+	ToMaccMilestoneArrayOutput() MaccMilestoneArrayOutput
+	ToMaccMilestoneArrayOutputWithContext(context.Context) MaccMilestoneArrayOutput
+}
+
+type MaccMilestoneArray []MaccMilestoneInput
+
+func (MaccMilestoneArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MaccMilestone)(nil)).Elem()
+}
+
+func (i MaccMilestoneArray) ToMaccMilestoneArrayOutput() MaccMilestoneArrayOutput {
+	return i.ToMaccMilestoneArrayOutputWithContext(context.Background())
+}
+
+func (i MaccMilestoneArray) ToMaccMilestoneArrayOutputWithContext(ctx context.Context) MaccMilestoneArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MaccMilestoneArrayOutput)
+}
+
+// MACC milestone represents interim targets within the period of MACC.
+type MaccMilestoneOutput struct{ *pulumi.OutputState }
+
+func (MaccMilestoneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaccMilestone)(nil)).Elem()
+}
+
+func (o MaccMilestoneOutput) ToMaccMilestoneOutput() MaccMilestoneOutput {
+	return o
+}
+
+func (o MaccMilestoneOutput) ToMaccMilestoneOutputWithContext(ctx context.Context) MaccMilestoneOutput {
+	return o
+}
+
+// Setting this to 'Enable' enables automatic shortfall invoicing when milestone commitment is not met.
+func (o MaccMilestoneOutput) AutomaticShortfall() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MaccMilestone) *string { return v.AutomaticShortfall }).(pulumi.StringPtrOutput)
+}
+
+// Optional field to record suppression reason for automatic shortfall.
+func (o MaccMilestoneOutput) AutomaticShortfallSuppressReason() AutomaticShortfallSuppressReasonPtrOutput {
+	return o.ApplyT(func(v MaccMilestone) *AutomaticShortfallSuppressReason { return v.AutomaticShortfallSuppressReason }).(AutomaticShortfallSuppressReasonPtrOutput)
+}
+
+// Commitment associated with this milestone.
+func (o MaccMilestoneOutput) Commitment() PricePtrOutput {
+	return o.ApplyT(func(v MaccMilestone) *Price { return v.Commitment }).(PricePtrOutput)
+}
+
+// End date time for the milestone. Timestamp must be in the ISO date format YYYY-MM-DDT23:59:59Z.
+func (o MaccMilestoneOutput) EndAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MaccMilestone) *string { return v.EndAt }).(pulumi.StringPtrOutput)
+}
+
+// Globally unique identifier for the milestone. Format: {guid}
+func (o MaccMilestoneOutput) MilestoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MaccMilestone) *string { return v.MilestoneId }).(pulumi.StringPtrOutput)
+}
+
+// Details of the shortfall associated with this milestone.
+func (o MaccMilestoneOutput) Shortfall() ShortfallPtrOutput {
+	return o.ApplyT(func(v MaccMilestone) *Shortfall { return v.Shortfall }).(ShortfallPtrOutput)
+}
+
+// Represents the current status of the Milestone.
+func (o MaccMilestoneOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MaccMilestone) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type MaccMilestoneArrayOutput struct{ *pulumi.OutputState }
+
+func (MaccMilestoneArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MaccMilestone)(nil)).Elem()
+}
+
+func (o MaccMilestoneArrayOutput) ToMaccMilestoneArrayOutput() MaccMilestoneArrayOutput {
+	return o
+}
+
+func (o MaccMilestoneArrayOutput) ToMaccMilestoneArrayOutputWithContext(ctx context.Context) MaccMilestoneArrayOutput {
+	return o
+}
+
+func (o MaccMilestoneArrayOutput) Index(i pulumi.IntInput) MaccMilestoneOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MaccMilestone {
+		return vs[0].([]MaccMilestone)[vs[1].(int)]
+	}).(MaccMilestoneOutput)
+}
+
+// MACC milestone represents interim targets within the period of MACC.
+type MaccMilestoneResponse struct {
+	// Setting this to 'Enable' enables automatic shortfall invoicing when milestone commitment is not met.
+	AutomaticShortfall *string `pulumi:"automaticShortfall"`
+	// Optional field to record suppression reason for automatic shortfall.
+	AutomaticShortfallSuppressReason *AutomaticShortfallSuppressReasonResponse `pulumi:"automaticShortfallSuppressReason"`
+	// Commitment associated with this milestone.
+	Commitment *PriceResponse `pulumi:"commitment"`
+	// End date time for the milestone. Timestamp must be in the ISO date format YYYY-MM-DDT23:59:59Z.
+	EndAt *string `pulumi:"endAt"`
+	// Globally unique identifier for the milestone. Format: {guid}
+	MilestoneId *string `pulumi:"milestoneId"`
+	// Details of the shortfall associated with this milestone.
+	Shortfall *ShortfallResponse `pulumi:"shortfall"`
+	// Represents the current status of the Milestone.
+	Status *string `pulumi:"status"`
+}
+
+// MACC milestone represents interim targets within the period of MACC.
+type MaccMilestoneResponseOutput struct{ *pulumi.OutputState }
+
+func (MaccMilestoneResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaccMilestoneResponse)(nil)).Elem()
+}
+
+func (o MaccMilestoneResponseOutput) ToMaccMilestoneResponseOutput() MaccMilestoneResponseOutput {
+	return o
+}
+
+func (o MaccMilestoneResponseOutput) ToMaccMilestoneResponseOutputWithContext(ctx context.Context) MaccMilestoneResponseOutput {
+	return o
+}
+
+// Setting this to 'Enable' enables automatic shortfall invoicing when milestone commitment is not met.
+func (o MaccMilestoneResponseOutput) AutomaticShortfall() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MaccMilestoneResponse) *string { return v.AutomaticShortfall }).(pulumi.StringPtrOutput)
+}
+
+// Optional field to record suppression reason for automatic shortfall.
+func (o MaccMilestoneResponseOutput) AutomaticShortfallSuppressReason() AutomaticShortfallSuppressReasonResponsePtrOutput {
+	return o.ApplyT(func(v MaccMilestoneResponse) *AutomaticShortfallSuppressReasonResponse {
+		return v.AutomaticShortfallSuppressReason
+	}).(AutomaticShortfallSuppressReasonResponsePtrOutput)
+}
+
+// Commitment associated with this milestone.
+func (o MaccMilestoneResponseOutput) Commitment() PriceResponsePtrOutput {
+	return o.ApplyT(func(v MaccMilestoneResponse) *PriceResponse { return v.Commitment }).(PriceResponsePtrOutput)
+}
+
+// End date time for the milestone. Timestamp must be in the ISO date format YYYY-MM-DDT23:59:59Z.
+func (o MaccMilestoneResponseOutput) EndAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MaccMilestoneResponse) *string { return v.EndAt }).(pulumi.StringPtrOutput)
+}
+
+// Globally unique identifier for the milestone. Format: {guid}
+func (o MaccMilestoneResponseOutput) MilestoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MaccMilestoneResponse) *string { return v.MilestoneId }).(pulumi.StringPtrOutput)
+}
+
+// Details of the shortfall associated with this milestone.
+func (o MaccMilestoneResponseOutput) Shortfall() ShortfallResponsePtrOutput {
+	return o.ApplyT(func(v MaccMilestoneResponse) *ShortfallResponse { return v.Shortfall }).(ShortfallResponsePtrOutput)
+}
+
+// Represents the current status of the Milestone.
+func (o MaccMilestoneResponseOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MaccMilestoneResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type MaccMilestoneResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (MaccMilestoneResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MaccMilestoneResponse)(nil)).Elem()
+}
+
+func (o MaccMilestoneResponseArrayOutput) ToMaccMilestoneResponseArrayOutput() MaccMilestoneResponseArrayOutput {
+	return o
+}
+
+func (o MaccMilestoneResponseArrayOutput) ToMaccMilestoneResponseArrayOutputWithContext(ctx context.Context) MaccMilestoneResponseArrayOutput {
+	return o
+}
+
+func (o MaccMilestoneResponseArrayOutput) Index(i pulumi.IntInput) MaccMilestoneResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MaccMilestoneResponse {
+		return vs[0].([]MaccMilestoneResponse)[vs[1].(int)]
+	}).(MaccMilestoneResponseOutput)
+}
+
 // Managed service identity (system assigned and/or user assigned identities)
 type ManagedServiceIdentity struct {
 	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
@@ -4741,6 +6155,158 @@ func (o PlanResponsePtrOutput) Version() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type Price struct {
+	Amount *float64 `pulumi:"amount"`
+	// The ISO 4217 3-letter currency code for the currency used by this purchase record.
+	CurrencyCode *string `pulumi:"currencyCode"`
+}
+
+// PriceInput is an input type that accepts PriceArgs and PriceOutput values.
+// You can construct a concrete instance of `PriceInput` via:
+//
+//	PriceArgs{...}
+type PriceInput interface {
+	pulumi.Input
+
+	ToPriceOutput() PriceOutput
+	ToPriceOutputWithContext(context.Context) PriceOutput
+}
+
+type PriceArgs struct {
+	Amount pulumi.Float64PtrInput `pulumi:"amount"`
+	// The ISO 4217 3-letter currency code for the currency used by this purchase record.
+	CurrencyCode pulumi.StringPtrInput `pulumi:"currencyCode"`
+}
+
+func (PriceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Price)(nil)).Elem()
+}
+
+func (i PriceArgs) ToPriceOutput() PriceOutput {
+	return i.ToPriceOutputWithContext(context.Background())
+}
+
+func (i PriceArgs) ToPriceOutputWithContext(ctx context.Context) PriceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PriceOutput)
+}
+
+func (i PriceArgs) ToPricePtrOutput() PricePtrOutput {
+	return i.ToPricePtrOutputWithContext(context.Background())
+}
+
+func (i PriceArgs) ToPricePtrOutputWithContext(ctx context.Context) PricePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PriceOutput).ToPricePtrOutputWithContext(ctx)
+}
+
+// PricePtrInput is an input type that accepts PriceArgs, PricePtr and PricePtrOutput values.
+// You can construct a concrete instance of `PricePtrInput` via:
+//
+//	        PriceArgs{...}
+//
+//	or:
+//
+//	        nil
+type PricePtrInput interface {
+	pulumi.Input
+
+	ToPricePtrOutput() PricePtrOutput
+	ToPricePtrOutputWithContext(context.Context) PricePtrOutput
+}
+
+type pricePtrType PriceArgs
+
+func PricePtr(v *PriceArgs) PricePtrInput {
+	return (*pricePtrType)(v)
+}
+
+func (*pricePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Price)(nil)).Elem()
+}
+
+func (i *pricePtrType) ToPricePtrOutput() PricePtrOutput {
+	return i.ToPricePtrOutputWithContext(context.Background())
+}
+
+func (i *pricePtrType) ToPricePtrOutputWithContext(ctx context.Context) PricePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PricePtrOutput)
+}
+
+type PriceOutput struct{ *pulumi.OutputState }
+
+func (PriceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Price)(nil)).Elem()
+}
+
+func (o PriceOutput) ToPriceOutput() PriceOutput {
+	return o
+}
+
+func (o PriceOutput) ToPriceOutputWithContext(ctx context.Context) PriceOutput {
+	return o
+}
+
+func (o PriceOutput) ToPricePtrOutput() PricePtrOutput {
+	return o.ToPricePtrOutputWithContext(context.Background())
+}
+
+func (o PriceOutput) ToPricePtrOutputWithContext(ctx context.Context) PricePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Price) *Price {
+		return &v
+	}).(PricePtrOutput)
+}
+
+func (o PriceOutput) Amount() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v Price) *float64 { return v.Amount }).(pulumi.Float64PtrOutput)
+}
+
+// The ISO 4217 3-letter currency code for the currency used by this purchase record.
+func (o PriceOutput) CurrencyCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Price) *string { return v.CurrencyCode }).(pulumi.StringPtrOutput)
+}
+
+type PricePtrOutput struct{ *pulumi.OutputState }
+
+func (PricePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Price)(nil)).Elem()
+}
+
+func (o PricePtrOutput) ToPricePtrOutput() PricePtrOutput {
+	return o
+}
+
+func (o PricePtrOutput) ToPricePtrOutputWithContext(ctx context.Context) PricePtrOutput {
+	return o
+}
+
+func (o PricePtrOutput) Elem() PriceOutput {
+	return o.ApplyT(func(v *Price) Price {
+		if v != nil {
+			return *v
+		}
+		var ret Price
+		return ret
+	}).(PriceOutput)
+}
+
+func (o PricePtrOutput) Amount() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *Price) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Amount
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The ISO 4217 3-letter currency code for the currency used by this purchase record.
+func (o PricePtrOutput) CurrencyCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Price) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CurrencyCode
+	}).(pulumi.StringPtrOutput)
+}
+
 // Set only in price guarantee scenario.
 type PriceGuaranteeProperties struct {
 	// The date on which prices are to be used for guarantee calculation. Validation: expected to be 00 hours, Format: 2024-09-30T00:00:00Z. Must be in UTC.
@@ -4974,6 +6540,494 @@ func (o PriceGuaranteePropertiesResponsePtrOutput) PricingPolicy() pulumi.String
 			return nil
 		}
 		return v.PricingPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+type PriceResponse struct {
+	Amount *float64 `pulumi:"amount"`
+	// The ISO 4217 3-letter currency code for the currency used by this purchase record.
+	CurrencyCode *string `pulumi:"currencyCode"`
+}
+
+type PriceResponseOutput struct{ *pulumi.OutputState }
+
+func (PriceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PriceResponse)(nil)).Elem()
+}
+
+func (o PriceResponseOutput) ToPriceResponseOutput() PriceResponseOutput {
+	return o
+}
+
+func (o PriceResponseOutput) ToPriceResponseOutputWithContext(ctx context.Context) PriceResponseOutput {
+	return o
+}
+
+func (o PriceResponseOutput) Amount() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v PriceResponse) *float64 { return v.Amount }).(pulumi.Float64PtrOutput)
+}
+
+// The ISO 4217 3-letter currency code for the currency used by this purchase record.
+func (o PriceResponseOutput) CurrencyCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PriceResponse) *string { return v.CurrencyCode }).(pulumi.StringPtrOutput)
+}
+
+type PriceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PriceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PriceResponse)(nil)).Elem()
+}
+
+func (o PriceResponsePtrOutput) ToPriceResponsePtrOutput() PriceResponsePtrOutput {
+	return o
+}
+
+func (o PriceResponsePtrOutput) ToPriceResponsePtrOutputWithContext(ctx context.Context) PriceResponsePtrOutput {
+	return o
+}
+
+func (o PriceResponsePtrOutput) Elem() PriceResponseOutput {
+	return o.ApplyT(func(v *PriceResponse) PriceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PriceResponse
+		return ret
+	}).(PriceResponseOutput)
+}
+
+func (o PriceResponsePtrOutput) Amount() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *PriceResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Amount
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The ISO 4217 3-letter currency code for the currency used by this purchase record.
+func (o PriceResponsePtrOutput) CurrencyCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PriceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CurrencyCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// MACC shortfall
+type Shortfall struct {
+	// Points to BalanceVersion document that indicates the remaining commitment balance when the credit was created.
+	BalanceVersion *float64 `pulumi:"balanceVersion"`
+	// Shortfall amount with grain.
+	Charge *Commitment `pulumi:"charge"`
+	// End DateTime in UTC.
+	EndAt *string `pulumi:"endAt"`
+	// Represents catalog UPN.
+	ProductCode *string `pulumi:"productCode"`
+	// Fully-qualified resource identifier of the credits associated with the shortfall.
+	ResourceId *string `pulumi:"resourceId"`
+	// Start DateTime.
+	StartAt *string `pulumi:"startAt"`
+	// This is an identifier of the shortfall which will not change for its lifetime.
+	SystemId *string `pulumi:"systemId"`
+}
+
+// ShortfallInput is an input type that accepts ShortfallArgs and ShortfallOutput values.
+// You can construct a concrete instance of `ShortfallInput` via:
+//
+//	ShortfallArgs{...}
+type ShortfallInput interface {
+	pulumi.Input
+
+	ToShortfallOutput() ShortfallOutput
+	ToShortfallOutputWithContext(context.Context) ShortfallOutput
+}
+
+// MACC shortfall
+type ShortfallArgs struct {
+	// Points to BalanceVersion document that indicates the remaining commitment balance when the credit was created.
+	BalanceVersion pulumi.Float64PtrInput `pulumi:"balanceVersion"`
+	// Shortfall amount with grain.
+	Charge CommitmentPtrInput `pulumi:"charge"`
+	// End DateTime in UTC.
+	EndAt pulumi.StringPtrInput `pulumi:"endAt"`
+	// Represents catalog UPN.
+	ProductCode pulumi.StringPtrInput `pulumi:"productCode"`
+	// Fully-qualified resource identifier of the credits associated with the shortfall.
+	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
+	// Start DateTime.
+	StartAt pulumi.StringPtrInput `pulumi:"startAt"`
+	// This is an identifier of the shortfall which will not change for its lifetime.
+	SystemId pulumi.StringPtrInput `pulumi:"systemId"`
+}
+
+func (ShortfallArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Shortfall)(nil)).Elem()
+}
+
+func (i ShortfallArgs) ToShortfallOutput() ShortfallOutput {
+	return i.ToShortfallOutputWithContext(context.Background())
+}
+
+func (i ShortfallArgs) ToShortfallOutputWithContext(ctx context.Context) ShortfallOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShortfallOutput)
+}
+
+func (i ShortfallArgs) ToShortfallPtrOutput() ShortfallPtrOutput {
+	return i.ToShortfallPtrOutputWithContext(context.Background())
+}
+
+func (i ShortfallArgs) ToShortfallPtrOutputWithContext(ctx context.Context) ShortfallPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShortfallOutput).ToShortfallPtrOutputWithContext(ctx)
+}
+
+// ShortfallPtrInput is an input type that accepts ShortfallArgs, ShortfallPtr and ShortfallPtrOutput values.
+// You can construct a concrete instance of `ShortfallPtrInput` via:
+//
+//	        ShortfallArgs{...}
+//
+//	or:
+//
+//	        nil
+type ShortfallPtrInput interface {
+	pulumi.Input
+
+	ToShortfallPtrOutput() ShortfallPtrOutput
+	ToShortfallPtrOutputWithContext(context.Context) ShortfallPtrOutput
+}
+
+type shortfallPtrType ShortfallArgs
+
+func ShortfallPtr(v *ShortfallArgs) ShortfallPtrInput {
+	return (*shortfallPtrType)(v)
+}
+
+func (*shortfallPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Shortfall)(nil)).Elem()
+}
+
+func (i *shortfallPtrType) ToShortfallPtrOutput() ShortfallPtrOutput {
+	return i.ToShortfallPtrOutputWithContext(context.Background())
+}
+
+func (i *shortfallPtrType) ToShortfallPtrOutputWithContext(ctx context.Context) ShortfallPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShortfallPtrOutput)
+}
+
+// MACC shortfall
+type ShortfallOutput struct{ *pulumi.OutputState }
+
+func (ShortfallOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Shortfall)(nil)).Elem()
+}
+
+func (o ShortfallOutput) ToShortfallOutput() ShortfallOutput {
+	return o
+}
+
+func (o ShortfallOutput) ToShortfallOutputWithContext(ctx context.Context) ShortfallOutput {
+	return o
+}
+
+func (o ShortfallOutput) ToShortfallPtrOutput() ShortfallPtrOutput {
+	return o.ToShortfallPtrOutputWithContext(context.Background())
+}
+
+func (o ShortfallOutput) ToShortfallPtrOutputWithContext(ctx context.Context) ShortfallPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Shortfall) *Shortfall {
+		return &v
+	}).(ShortfallPtrOutput)
+}
+
+// Points to BalanceVersion document that indicates the remaining commitment balance when the credit was created.
+func (o ShortfallOutput) BalanceVersion() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v Shortfall) *float64 { return v.BalanceVersion }).(pulumi.Float64PtrOutput)
+}
+
+// Shortfall amount with grain.
+func (o ShortfallOutput) Charge() CommitmentPtrOutput {
+	return o.ApplyT(func(v Shortfall) *Commitment { return v.Charge }).(CommitmentPtrOutput)
+}
+
+// End DateTime in UTC.
+func (o ShortfallOutput) EndAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Shortfall) *string { return v.EndAt }).(pulumi.StringPtrOutput)
+}
+
+// Represents catalog UPN.
+func (o ShortfallOutput) ProductCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Shortfall) *string { return v.ProductCode }).(pulumi.StringPtrOutput)
+}
+
+// Fully-qualified resource identifier of the credits associated with the shortfall.
+func (o ShortfallOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Shortfall) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Start DateTime.
+func (o ShortfallOutput) StartAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Shortfall) *string { return v.StartAt }).(pulumi.StringPtrOutput)
+}
+
+// This is an identifier of the shortfall which will not change for its lifetime.
+func (o ShortfallOutput) SystemId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Shortfall) *string { return v.SystemId }).(pulumi.StringPtrOutput)
+}
+
+type ShortfallPtrOutput struct{ *pulumi.OutputState }
+
+func (ShortfallPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Shortfall)(nil)).Elem()
+}
+
+func (o ShortfallPtrOutput) ToShortfallPtrOutput() ShortfallPtrOutput {
+	return o
+}
+
+func (o ShortfallPtrOutput) ToShortfallPtrOutputWithContext(ctx context.Context) ShortfallPtrOutput {
+	return o
+}
+
+func (o ShortfallPtrOutput) Elem() ShortfallOutput {
+	return o.ApplyT(func(v *Shortfall) Shortfall {
+		if v != nil {
+			return *v
+		}
+		var ret Shortfall
+		return ret
+	}).(ShortfallOutput)
+}
+
+// Points to BalanceVersion document that indicates the remaining commitment balance when the credit was created.
+func (o ShortfallPtrOutput) BalanceVersion() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *Shortfall) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.BalanceVersion
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Shortfall amount with grain.
+func (o ShortfallPtrOutput) Charge() CommitmentPtrOutput {
+	return o.ApplyT(func(v *Shortfall) *Commitment {
+		if v == nil {
+			return nil
+		}
+		return v.Charge
+	}).(CommitmentPtrOutput)
+}
+
+// End DateTime in UTC.
+func (o ShortfallPtrOutput) EndAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Shortfall) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndAt
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents catalog UPN.
+func (o ShortfallPtrOutput) ProductCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Shortfall) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProductCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Fully-qualified resource identifier of the credits associated with the shortfall.
+func (o ShortfallPtrOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Shortfall) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Start DateTime.
+func (o ShortfallPtrOutput) StartAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Shortfall) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartAt
+	}).(pulumi.StringPtrOutput)
+}
+
+// This is an identifier of the shortfall which will not change for its lifetime.
+func (o ShortfallPtrOutput) SystemId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Shortfall) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SystemId
+	}).(pulumi.StringPtrOutput)
+}
+
+// MACC shortfall
+type ShortfallResponse struct {
+	// Points to BalanceVersion document that indicates the remaining commitment balance when the credit was created.
+	BalanceVersion *float64 `pulumi:"balanceVersion"`
+	// Shortfall amount with grain.
+	Charge *CommitmentResponse `pulumi:"charge"`
+	// End DateTime in UTC.
+	EndAt *string `pulumi:"endAt"`
+	// Represents catalog UPN.
+	ProductCode *string `pulumi:"productCode"`
+	// Fully-qualified resource identifier of the credits associated with the shortfall.
+	ResourceId *string `pulumi:"resourceId"`
+	// Start DateTime.
+	StartAt *string `pulumi:"startAt"`
+	// This is an identifier of the shortfall which will not change for its lifetime.
+	SystemId *string `pulumi:"systemId"`
+}
+
+// MACC shortfall
+type ShortfallResponseOutput struct{ *pulumi.OutputState }
+
+func (ShortfallResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShortfallResponse)(nil)).Elem()
+}
+
+func (o ShortfallResponseOutput) ToShortfallResponseOutput() ShortfallResponseOutput {
+	return o
+}
+
+func (o ShortfallResponseOutput) ToShortfallResponseOutputWithContext(ctx context.Context) ShortfallResponseOutput {
+	return o
+}
+
+// Points to BalanceVersion document that indicates the remaining commitment balance when the credit was created.
+func (o ShortfallResponseOutput) BalanceVersion() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ShortfallResponse) *float64 { return v.BalanceVersion }).(pulumi.Float64PtrOutput)
+}
+
+// Shortfall amount with grain.
+func (o ShortfallResponseOutput) Charge() CommitmentResponsePtrOutput {
+	return o.ApplyT(func(v ShortfallResponse) *CommitmentResponse { return v.Charge }).(CommitmentResponsePtrOutput)
+}
+
+// End DateTime in UTC.
+func (o ShortfallResponseOutput) EndAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ShortfallResponse) *string { return v.EndAt }).(pulumi.StringPtrOutput)
+}
+
+// Represents catalog UPN.
+func (o ShortfallResponseOutput) ProductCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ShortfallResponse) *string { return v.ProductCode }).(pulumi.StringPtrOutput)
+}
+
+// Fully-qualified resource identifier of the credits associated with the shortfall.
+func (o ShortfallResponseOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ShortfallResponse) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Start DateTime.
+func (o ShortfallResponseOutput) StartAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ShortfallResponse) *string { return v.StartAt }).(pulumi.StringPtrOutput)
+}
+
+// This is an identifier of the shortfall which will not change for its lifetime.
+func (o ShortfallResponseOutput) SystemId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ShortfallResponse) *string { return v.SystemId }).(pulumi.StringPtrOutput)
+}
+
+type ShortfallResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ShortfallResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ShortfallResponse)(nil)).Elem()
+}
+
+func (o ShortfallResponsePtrOutput) ToShortfallResponsePtrOutput() ShortfallResponsePtrOutput {
+	return o
+}
+
+func (o ShortfallResponsePtrOutput) ToShortfallResponsePtrOutputWithContext(ctx context.Context) ShortfallResponsePtrOutput {
+	return o
+}
+
+func (o ShortfallResponsePtrOutput) Elem() ShortfallResponseOutput {
+	return o.ApplyT(func(v *ShortfallResponse) ShortfallResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ShortfallResponse
+		return ret
+	}).(ShortfallResponseOutput)
+}
+
+// Points to BalanceVersion document that indicates the remaining commitment balance when the credit was created.
+func (o ShortfallResponsePtrOutput) BalanceVersion() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ShortfallResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.BalanceVersion
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Shortfall amount with grain.
+func (o ShortfallResponsePtrOutput) Charge() CommitmentResponsePtrOutput {
+	return o.ApplyT(func(v *ShortfallResponse) *CommitmentResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Charge
+	}).(CommitmentResponsePtrOutput)
+}
+
+// End DateTime in UTC.
+func (o ShortfallResponsePtrOutput) EndAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ShortfallResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndAt
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents catalog UPN.
+func (o ShortfallResponsePtrOutput) ProductCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ShortfallResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProductCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Fully-qualified resource identifier of the credits associated with the shortfall.
+func (o ShortfallResponsePtrOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ShortfallResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Start DateTime.
+func (o ShortfallResponsePtrOutput) StartAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ShortfallResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartAt
+	}).(pulumi.StringPtrOutput)
+}
+
+// This is an identifier of the shortfall which will not change for its lifetime.
+func (o ShortfallResponsePtrOutput) SystemId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ShortfallResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SystemId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5436,14 +7490,36 @@ func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) Us
 }
 
 func init() {
+	pulumi.RegisterOutputType(AutomaticShortfallSuppressReasonOutput{})
+	pulumi.RegisterOutputType(AutomaticShortfallSuppressReasonPtrOutput{})
+	pulumi.RegisterOutputType(AutomaticShortfallSuppressReasonResponseOutput{})
+	pulumi.RegisterOutputType(AutomaticShortfallSuppressReasonResponsePtrOutput{})
 	pulumi.RegisterOutputType(CatalogClaimsItemOutput{})
 	pulumi.RegisterOutputType(CatalogClaimsItemArrayOutput{})
 	pulumi.RegisterOutputType(CatalogClaimsItemResponseOutput{})
 	pulumi.RegisterOutputType(CatalogClaimsItemResponseArrayOutput{})
+	pulumi.RegisterOutputType(CommitmentOutput{})
+	pulumi.RegisterOutputType(CommitmentPtrOutput{})
+	pulumi.RegisterOutputType(CommitmentResponseOutput{})
+	pulumi.RegisterOutputType(CommitmentResponsePtrOutput{})
 	pulumi.RegisterOutputType(ConditionsItemOutput{})
 	pulumi.RegisterOutputType(ConditionsItemArrayOutput{})
 	pulumi.RegisterOutputType(ConditionsItemResponseOutput{})
 	pulumi.RegisterOutputType(ConditionsItemResponseArrayOutput{})
+	pulumi.RegisterOutputType(CreditBreakdownItemOutput{})
+	pulumi.RegisterOutputType(CreditBreakdownItemArrayOutput{})
+	pulumi.RegisterOutputType(CreditBreakdownItemResponseOutput{})
+	pulumi.RegisterOutputType(CreditBreakdownItemResponseArrayOutput{})
+	pulumi.RegisterOutputType(CreditDimensionOutput{})
+	pulumi.RegisterOutputType(CreditDimensionArrayOutput{})
+	pulumi.RegisterOutputType(CreditDimensionResponseOutput{})
+	pulumi.RegisterOutputType(CreditDimensionResponseArrayOutput{})
+	pulumi.RegisterOutputType(CreditPoliciesOutput{})
+	pulumi.RegisterOutputType(CreditPoliciesPtrOutput{})
+	pulumi.RegisterOutputType(CreditPoliciesResponseOutput{})
+	pulumi.RegisterOutputType(CreditPoliciesResponsePtrOutput{})
+	pulumi.RegisterOutputType(CreditReasonResponseOutput{})
+	pulumi.RegisterOutputType(CreditReasonResponsePtrOutput{})
 	pulumi.RegisterOutputType(CustomPricePropertiesOutput{})
 	pulumi.RegisterOutputType(CustomPricePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(CustomPricePropertiesResponseOutput{})
@@ -5474,6 +7550,10 @@ func init() {
 	pulumi.RegisterOutputType(EntityTypePrimaryDiscountOutput{})
 	pulumi.RegisterOutputType(EntityTypePrimaryDiscountPtrOutput{})
 	pulumi.RegisterOutputType(EntityTypePrimaryDiscountResponseOutput{})
+	pulumi.RegisterOutputType(MaccMilestoneOutput{})
+	pulumi.RegisterOutputType(MaccMilestoneArrayOutput{})
+	pulumi.RegisterOutputType(MaccMilestoneResponseOutput{})
+	pulumi.RegisterOutputType(MaccMilestoneResponseArrayOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityPtrOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityResponseOutput{})
@@ -5486,10 +7566,18 @@ func init() {
 	pulumi.RegisterOutputType(PlanPtrOutput{})
 	pulumi.RegisterOutputType(PlanResponseOutput{})
 	pulumi.RegisterOutputType(PlanResponsePtrOutput{})
+	pulumi.RegisterOutputType(PriceOutput{})
+	pulumi.RegisterOutputType(PricePtrOutput{})
 	pulumi.RegisterOutputType(PriceGuaranteePropertiesOutput{})
 	pulumi.RegisterOutputType(PriceGuaranteePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(PriceGuaranteePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(PriceGuaranteePropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(PriceResponseOutput{})
+	pulumi.RegisterOutputType(PriceResponsePtrOutput{})
+	pulumi.RegisterOutputType(ShortfallOutput{})
+	pulumi.RegisterOutputType(ShortfallPtrOutput{})
+	pulumi.RegisterOutputType(ShortfallResponseOutput{})
+	pulumi.RegisterOutputType(ShortfallResponsePtrOutput{})
 	pulumi.RegisterOutputType(SkuOutput{})
 	pulumi.RegisterOutputType(SkuPtrOutput{})
 	pulumi.RegisterOutputType(SkuResponseOutput{})

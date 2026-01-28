@@ -626,6 +626,420 @@ func (o ActiveDirectoryArrayOutput) Index(i pulumi.IntInput) ActiveDirectoryOutp
 	}).(ActiveDirectoryOutput)
 }
 
+// Active Directory Configuration properties
+type ActiveDirectoryConfigProperties struct {
+	// Users to be added to the Built-in Administrators active directory group. A list of unique usernames without domain specifier
+	Administrators []string `pulumi:"administrators"`
+	// Users to be added to the Built-in Backup Operator active directory group. A list of unique usernames without domain specifier
+	BackupOperators []string `pulumi:"backupOperators"`
+	// An array of DNS server IP addresses(IPv4 only) for the Active Directory
+	Dns []string `pulumi:"dns"`
+	// Name of the Active Directory domain
+	Domain string `pulumi:"domain"`
+	// The Organizational Unit (OU) within the Windows Active Directory
+	OrganizationalUnit *string `pulumi:"organizationalUnit"`
+	// Access password from Azure KeyVault Secrets to connect Active Directory
+	SecretPassword SecretPassword `pulumi:"secretPassword"`
+	// Domain Users in the Active directory to be given SecurityPrivilege privilege (Needed for SMB Continuously available shares for SQL). A list of unique usernames without domain specifier
+	SecurityOperators []string `pulumi:"securityOperators"`
+	// The Active Directory site the service will limit Domain Controller discovery to
+	Site *string `pulumi:"site"`
+	// NetBIOS name of the SMB server. This name will be registered as a computer account in the AD and used to mount volumes
+	SmbServerName *string `pulumi:"smbServerName"`
+	// A domain user account with permission to create machine accounts
+	UserName *string `pulumi:"userName"`
+}
+
+// ActiveDirectoryConfigPropertiesInput is an input type that accepts ActiveDirectoryConfigPropertiesArgs and ActiveDirectoryConfigPropertiesOutput values.
+// You can construct a concrete instance of `ActiveDirectoryConfigPropertiesInput` via:
+//
+//	ActiveDirectoryConfigPropertiesArgs{...}
+type ActiveDirectoryConfigPropertiesInput interface {
+	pulumi.Input
+
+	ToActiveDirectoryConfigPropertiesOutput() ActiveDirectoryConfigPropertiesOutput
+	ToActiveDirectoryConfigPropertiesOutputWithContext(context.Context) ActiveDirectoryConfigPropertiesOutput
+}
+
+// Active Directory Configuration properties
+type ActiveDirectoryConfigPropertiesArgs struct {
+	// Users to be added to the Built-in Administrators active directory group. A list of unique usernames without domain specifier
+	Administrators pulumi.StringArrayInput `pulumi:"administrators"`
+	// Users to be added to the Built-in Backup Operator active directory group. A list of unique usernames without domain specifier
+	BackupOperators pulumi.StringArrayInput `pulumi:"backupOperators"`
+	// An array of DNS server IP addresses(IPv4 only) for the Active Directory
+	Dns pulumi.StringArrayInput `pulumi:"dns"`
+	// Name of the Active Directory domain
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// The Organizational Unit (OU) within the Windows Active Directory
+	OrganizationalUnit pulumi.StringPtrInput `pulumi:"organizationalUnit"`
+	// Access password from Azure KeyVault Secrets to connect Active Directory
+	SecretPassword SecretPasswordInput `pulumi:"secretPassword"`
+	// Domain Users in the Active directory to be given SecurityPrivilege privilege (Needed for SMB Continuously available shares for SQL). A list of unique usernames without domain specifier
+	SecurityOperators pulumi.StringArrayInput `pulumi:"securityOperators"`
+	// The Active Directory site the service will limit Domain Controller discovery to
+	Site pulumi.StringPtrInput `pulumi:"site"`
+	// NetBIOS name of the SMB server. This name will be registered as a computer account in the AD and used to mount volumes
+	SmbServerName pulumi.StringPtrInput `pulumi:"smbServerName"`
+	// A domain user account with permission to create machine accounts
+	UserName pulumi.StringPtrInput `pulumi:"userName"`
+}
+
+func (ActiveDirectoryConfigPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActiveDirectoryConfigProperties)(nil)).Elem()
+}
+
+func (i ActiveDirectoryConfigPropertiesArgs) ToActiveDirectoryConfigPropertiesOutput() ActiveDirectoryConfigPropertiesOutput {
+	return i.ToActiveDirectoryConfigPropertiesOutputWithContext(context.Background())
+}
+
+func (i ActiveDirectoryConfigPropertiesArgs) ToActiveDirectoryConfigPropertiesOutputWithContext(ctx context.Context) ActiveDirectoryConfigPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActiveDirectoryConfigPropertiesOutput)
+}
+
+func (i ActiveDirectoryConfigPropertiesArgs) ToActiveDirectoryConfigPropertiesPtrOutput() ActiveDirectoryConfigPropertiesPtrOutput {
+	return i.ToActiveDirectoryConfigPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i ActiveDirectoryConfigPropertiesArgs) ToActiveDirectoryConfigPropertiesPtrOutputWithContext(ctx context.Context) ActiveDirectoryConfigPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActiveDirectoryConfigPropertiesOutput).ToActiveDirectoryConfigPropertiesPtrOutputWithContext(ctx)
+}
+
+// ActiveDirectoryConfigPropertiesPtrInput is an input type that accepts ActiveDirectoryConfigPropertiesArgs, ActiveDirectoryConfigPropertiesPtr and ActiveDirectoryConfigPropertiesPtrOutput values.
+// You can construct a concrete instance of `ActiveDirectoryConfigPropertiesPtrInput` via:
+//
+//	        ActiveDirectoryConfigPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ActiveDirectoryConfigPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToActiveDirectoryConfigPropertiesPtrOutput() ActiveDirectoryConfigPropertiesPtrOutput
+	ToActiveDirectoryConfigPropertiesPtrOutputWithContext(context.Context) ActiveDirectoryConfigPropertiesPtrOutput
+}
+
+type activeDirectoryConfigPropertiesPtrType ActiveDirectoryConfigPropertiesArgs
+
+func ActiveDirectoryConfigPropertiesPtr(v *ActiveDirectoryConfigPropertiesArgs) ActiveDirectoryConfigPropertiesPtrInput {
+	return (*activeDirectoryConfigPropertiesPtrType)(v)
+}
+
+func (*activeDirectoryConfigPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActiveDirectoryConfigProperties)(nil)).Elem()
+}
+
+func (i *activeDirectoryConfigPropertiesPtrType) ToActiveDirectoryConfigPropertiesPtrOutput() ActiveDirectoryConfigPropertiesPtrOutput {
+	return i.ToActiveDirectoryConfigPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *activeDirectoryConfigPropertiesPtrType) ToActiveDirectoryConfigPropertiesPtrOutputWithContext(ctx context.Context) ActiveDirectoryConfigPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActiveDirectoryConfigPropertiesPtrOutput)
+}
+
+// Active Directory Configuration properties
+type ActiveDirectoryConfigPropertiesOutput struct{ *pulumi.OutputState }
+
+func (ActiveDirectoryConfigPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActiveDirectoryConfigProperties)(nil)).Elem()
+}
+
+func (o ActiveDirectoryConfigPropertiesOutput) ToActiveDirectoryConfigPropertiesOutput() ActiveDirectoryConfigPropertiesOutput {
+	return o
+}
+
+func (o ActiveDirectoryConfigPropertiesOutput) ToActiveDirectoryConfigPropertiesOutputWithContext(ctx context.Context) ActiveDirectoryConfigPropertiesOutput {
+	return o
+}
+
+func (o ActiveDirectoryConfigPropertiesOutput) ToActiveDirectoryConfigPropertiesPtrOutput() ActiveDirectoryConfigPropertiesPtrOutput {
+	return o.ToActiveDirectoryConfigPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o ActiveDirectoryConfigPropertiesOutput) ToActiveDirectoryConfigPropertiesPtrOutputWithContext(ctx context.Context) ActiveDirectoryConfigPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActiveDirectoryConfigProperties) *ActiveDirectoryConfigProperties {
+		return &v
+	}).(ActiveDirectoryConfigPropertiesPtrOutput)
+}
+
+// Users to be added to the Built-in Administrators active directory group. A list of unique usernames without domain specifier
+func (o ActiveDirectoryConfigPropertiesOutput) Administrators() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ActiveDirectoryConfigProperties) []string { return v.Administrators }).(pulumi.StringArrayOutput)
+}
+
+// Users to be added to the Built-in Backup Operator active directory group. A list of unique usernames without domain specifier
+func (o ActiveDirectoryConfigPropertiesOutput) BackupOperators() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ActiveDirectoryConfigProperties) []string { return v.BackupOperators }).(pulumi.StringArrayOutput)
+}
+
+// An array of DNS server IP addresses(IPv4 only) for the Active Directory
+func (o ActiveDirectoryConfigPropertiesOutput) Dns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ActiveDirectoryConfigProperties) []string { return v.Dns }).(pulumi.StringArrayOutput)
+}
+
+// Name of the Active Directory domain
+func (o ActiveDirectoryConfigPropertiesOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v ActiveDirectoryConfigProperties) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// The Organizational Unit (OU) within the Windows Active Directory
+func (o ActiveDirectoryConfigPropertiesOutput) OrganizationalUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActiveDirectoryConfigProperties) *string { return v.OrganizationalUnit }).(pulumi.StringPtrOutput)
+}
+
+// Access password from Azure KeyVault Secrets to connect Active Directory
+func (o ActiveDirectoryConfigPropertiesOutput) SecretPassword() SecretPasswordOutput {
+	return o.ApplyT(func(v ActiveDirectoryConfigProperties) SecretPassword { return v.SecretPassword }).(SecretPasswordOutput)
+}
+
+// Domain Users in the Active directory to be given SecurityPrivilege privilege (Needed for SMB Continuously available shares for SQL). A list of unique usernames without domain specifier
+func (o ActiveDirectoryConfigPropertiesOutput) SecurityOperators() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ActiveDirectoryConfigProperties) []string { return v.SecurityOperators }).(pulumi.StringArrayOutput)
+}
+
+// The Active Directory site the service will limit Domain Controller discovery to
+func (o ActiveDirectoryConfigPropertiesOutput) Site() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActiveDirectoryConfigProperties) *string { return v.Site }).(pulumi.StringPtrOutput)
+}
+
+// NetBIOS name of the SMB server. This name will be registered as a computer account in the AD and used to mount volumes
+func (o ActiveDirectoryConfigPropertiesOutput) SmbServerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActiveDirectoryConfigProperties) *string { return v.SmbServerName }).(pulumi.StringPtrOutput)
+}
+
+// A domain user account with permission to create machine accounts
+func (o ActiveDirectoryConfigPropertiesOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActiveDirectoryConfigProperties) *string { return v.UserName }).(pulumi.StringPtrOutput)
+}
+
+type ActiveDirectoryConfigPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (ActiveDirectoryConfigPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActiveDirectoryConfigProperties)(nil)).Elem()
+}
+
+func (o ActiveDirectoryConfigPropertiesPtrOutput) ToActiveDirectoryConfigPropertiesPtrOutput() ActiveDirectoryConfigPropertiesPtrOutput {
+	return o
+}
+
+func (o ActiveDirectoryConfigPropertiesPtrOutput) ToActiveDirectoryConfigPropertiesPtrOutputWithContext(ctx context.Context) ActiveDirectoryConfigPropertiesPtrOutput {
+	return o
+}
+
+func (o ActiveDirectoryConfigPropertiesPtrOutput) Elem() ActiveDirectoryConfigPropertiesOutput {
+	return o.ApplyT(func(v *ActiveDirectoryConfigProperties) ActiveDirectoryConfigProperties {
+		if v != nil {
+			return *v
+		}
+		var ret ActiveDirectoryConfigProperties
+		return ret
+	}).(ActiveDirectoryConfigPropertiesOutput)
+}
+
+// Users to be added to the Built-in Administrators active directory group. A list of unique usernames without domain specifier
+func (o ActiveDirectoryConfigPropertiesPtrOutput) Administrators() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ActiveDirectoryConfigProperties) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Administrators
+	}).(pulumi.StringArrayOutput)
+}
+
+// Users to be added to the Built-in Backup Operator active directory group. A list of unique usernames without domain specifier
+func (o ActiveDirectoryConfigPropertiesPtrOutput) BackupOperators() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ActiveDirectoryConfigProperties) []string {
+		if v == nil {
+			return nil
+		}
+		return v.BackupOperators
+	}).(pulumi.StringArrayOutput)
+}
+
+// An array of DNS server IP addresses(IPv4 only) for the Active Directory
+func (o ActiveDirectoryConfigPropertiesPtrOutput) Dns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ActiveDirectoryConfigProperties) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Dns
+	}).(pulumi.StringArrayOutput)
+}
+
+// Name of the Active Directory domain
+func (o ActiveDirectoryConfigPropertiesPtrOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActiveDirectoryConfigProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Domain
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Organizational Unit (OU) within the Windows Active Directory
+func (o ActiveDirectoryConfigPropertiesPtrOutput) OrganizationalUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActiveDirectoryConfigProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OrganizationalUnit
+	}).(pulumi.StringPtrOutput)
+}
+
+// Access password from Azure KeyVault Secrets to connect Active Directory
+func (o ActiveDirectoryConfigPropertiesPtrOutput) SecretPassword() SecretPasswordPtrOutput {
+	return o.ApplyT(func(v *ActiveDirectoryConfigProperties) *SecretPassword {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretPassword
+	}).(SecretPasswordPtrOutput)
+}
+
+// Domain Users in the Active directory to be given SecurityPrivilege privilege (Needed for SMB Continuously available shares for SQL). A list of unique usernames without domain specifier
+func (o ActiveDirectoryConfigPropertiesPtrOutput) SecurityOperators() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ActiveDirectoryConfigProperties) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityOperators
+	}).(pulumi.StringArrayOutput)
+}
+
+// The Active Directory site the service will limit Domain Controller discovery to
+func (o ActiveDirectoryConfigPropertiesPtrOutput) Site() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActiveDirectoryConfigProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Site
+	}).(pulumi.StringPtrOutput)
+}
+
+// NetBIOS name of the SMB server. This name will be registered as a computer account in the AD and used to mount volumes
+func (o ActiveDirectoryConfigPropertiesPtrOutput) SmbServerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActiveDirectoryConfigProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SmbServerName
+	}).(pulumi.StringPtrOutput)
+}
+
+// A domain user account with permission to create machine accounts
+func (o ActiveDirectoryConfigPropertiesPtrOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActiveDirectoryConfigProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Active Directory Configuration properties
+type ActiveDirectoryConfigPropertiesResponse struct {
+	// Status of the Active Directory
+	ActiveDirectoryStatus string `pulumi:"activeDirectoryStatus"`
+	// Users to be added to the Built-in Administrators active directory group. A list of unique usernames without domain specifier
+	Administrators []string `pulumi:"administrators"`
+	// Users to be added to the Built-in Backup Operator active directory group. A list of unique usernames without domain specifier
+	BackupOperators []string `pulumi:"backupOperators"`
+	// An array of DNS server IP addresses(IPv4 only) for the Active Directory
+	Dns []string `pulumi:"dns"`
+	// Name of the Active Directory domain
+	Domain string `pulumi:"domain"`
+	// The Organizational Unit (OU) within the Windows Active Directory
+	OrganizationalUnit *string `pulumi:"organizationalUnit"`
+	// Azure lifecycle management.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Access password from Azure KeyVault Secrets to connect Active Directory
+	SecretPassword SecretPasswordResponse `pulumi:"secretPassword"`
+	// Domain Users in the Active directory to be given SecurityPrivilege privilege (Needed for SMB Continuously available shares for SQL). A list of unique usernames without domain specifier
+	SecurityOperators []string `pulumi:"securityOperators"`
+	// The Active Directory site the service will limit Domain Controller discovery to
+	Site *string `pulumi:"site"`
+	// NetBIOS name of the SMB server. This name will be registered as a computer account in the AD and used to mount volumes
+	SmbServerName *string `pulumi:"smbServerName"`
+	// A domain user account with permission to create machine accounts
+	UserName *string `pulumi:"userName"`
+}
+
+// Active Directory Configuration properties
+type ActiveDirectoryConfigPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (ActiveDirectoryConfigPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActiveDirectoryConfigPropertiesResponse)(nil)).Elem()
+}
+
+func (o ActiveDirectoryConfigPropertiesResponseOutput) ToActiveDirectoryConfigPropertiesResponseOutput() ActiveDirectoryConfigPropertiesResponseOutput {
+	return o
+}
+
+func (o ActiveDirectoryConfigPropertiesResponseOutput) ToActiveDirectoryConfigPropertiesResponseOutputWithContext(ctx context.Context) ActiveDirectoryConfigPropertiesResponseOutput {
+	return o
+}
+
+// Status of the Active Directory
+func (o ActiveDirectoryConfigPropertiesResponseOutput) ActiveDirectoryStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v ActiveDirectoryConfigPropertiesResponse) string { return v.ActiveDirectoryStatus }).(pulumi.StringOutput)
+}
+
+// Users to be added to the Built-in Administrators active directory group. A list of unique usernames without domain specifier
+func (o ActiveDirectoryConfigPropertiesResponseOutput) Administrators() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ActiveDirectoryConfigPropertiesResponse) []string { return v.Administrators }).(pulumi.StringArrayOutput)
+}
+
+// Users to be added to the Built-in Backup Operator active directory group. A list of unique usernames without domain specifier
+func (o ActiveDirectoryConfigPropertiesResponseOutput) BackupOperators() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ActiveDirectoryConfigPropertiesResponse) []string { return v.BackupOperators }).(pulumi.StringArrayOutput)
+}
+
+// An array of DNS server IP addresses(IPv4 only) for the Active Directory
+func (o ActiveDirectoryConfigPropertiesResponseOutput) Dns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ActiveDirectoryConfigPropertiesResponse) []string { return v.Dns }).(pulumi.StringArrayOutput)
+}
+
+// Name of the Active Directory domain
+func (o ActiveDirectoryConfigPropertiesResponseOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v ActiveDirectoryConfigPropertiesResponse) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// The Organizational Unit (OU) within the Windows Active Directory
+func (o ActiveDirectoryConfigPropertiesResponseOutput) OrganizationalUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActiveDirectoryConfigPropertiesResponse) *string { return v.OrganizationalUnit }).(pulumi.StringPtrOutput)
+}
+
+// Azure lifecycle management.
+func (o ActiveDirectoryConfigPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v ActiveDirectoryConfigPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Access password from Azure KeyVault Secrets to connect Active Directory
+func (o ActiveDirectoryConfigPropertiesResponseOutput) SecretPassword() SecretPasswordResponseOutput {
+	return o.ApplyT(func(v ActiveDirectoryConfigPropertiesResponse) SecretPasswordResponse { return v.SecretPassword }).(SecretPasswordResponseOutput)
+}
+
+// Domain Users in the Active directory to be given SecurityPrivilege privilege (Needed for SMB Continuously available shares for SQL). A list of unique usernames without domain specifier
+func (o ActiveDirectoryConfigPropertiesResponseOutput) SecurityOperators() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ActiveDirectoryConfigPropertiesResponse) []string { return v.SecurityOperators }).(pulumi.StringArrayOutput)
+}
+
+// The Active Directory site the service will limit Domain Controller discovery to
+func (o ActiveDirectoryConfigPropertiesResponseOutput) Site() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActiveDirectoryConfigPropertiesResponse) *string { return v.Site }).(pulumi.StringPtrOutput)
+}
+
+// NetBIOS name of the SMB server. This name will be registered as a computer account in the AD and used to mount volumes
+func (o ActiveDirectoryConfigPropertiesResponseOutput) SmbServerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActiveDirectoryConfigPropertiesResponse) *string { return v.SmbServerName }).(pulumi.StringPtrOutput)
+}
+
+// A domain user account with permission to create machine accounts
+func (o ActiveDirectoryConfigPropertiesResponseOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActiveDirectoryConfigPropertiesResponse) *string { return v.UserName }).(pulumi.StringPtrOutput)
+}
+
 // Active Directory
 type ActiveDirectoryResponse struct {
 	// Id of the Active Directory
@@ -1107,6 +1521,652 @@ func (o BucketServerPropertiesResponsePtrOutput) IpAddress() pulumi.StringPtrOut
 		}
 		return &v.IpAddress
 	}).(pulumi.StringPtrOutput)
+}
+
+// Contains all the information needed to mount a cache
+type CacheMountTargetPropertiesResponse struct {
+	// The mount target's IPv4 address, used to mount the cache.
+	IpAddress string `pulumi:"ipAddress"`
+	// UUID v4 used to identify the MountTarget
+	MountTargetId string `pulumi:"mountTargetId"`
+	// The SMB server's Fully Qualified Domain Name, FQDN
+	SmbServerFqdn string `pulumi:"smbServerFqdn"`
+}
+
+// Contains all the information needed to mount a cache
+type CacheMountTargetPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (CacheMountTargetPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CacheMountTargetPropertiesResponse)(nil)).Elem()
+}
+
+func (o CacheMountTargetPropertiesResponseOutput) ToCacheMountTargetPropertiesResponseOutput() CacheMountTargetPropertiesResponseOutput {
+	return o
+}
+
+func (o CacheMountTargetPropertiesResponseOutput) ToCacheMountTargetPropertiesResponseOutputWithContext(ctx context.Context) CacheMountTargetPropertiesResponseOutput {
+	return o
+}
+
+// The mount target's IPv4 address, used to mount the cache.
+func (o CacheMountTargetPropertiesResponseOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v CacheMountTargetPropertiesResponse) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// UUID v4 used to identify the MountTarget
+func (o CacheMountTargetPropertiesResponseOutput) MountTargetId() pulumi.StringOutput {
+	return o.ApplyT(func(v CacheMountTargetPropertiesResponse) string { return v.MountTargetId }).(pulumi.StringOutput)
+}
+
+// The SMB server's Fully Qualified Domain Name, FQDN
+func (o CacheMountTargetPropertiesResponseOutput) SmbServerFqdn() pulumi.StringOutput {
+	return o.ApplyT(func(v CacheMountTargetPropertiesResponse) string { return v.SmbServerFqdn }).(pulumi.StringOutput)
+}
+
+type CacheMountTargetPropertiesResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (CacheMountTargetPropertiesResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CacheMountTargetPropertiesResponse)(nil)).Elem()
+}
+
+func (o CacheMountTargetPropertiesResponseArrayOutput) ToCacheMountTargetPropertiesResponseArrayOutput() CacheMountTargetPropertiesResponseArrayOutput {
+	return o
+}
+
+func (o CacheMountTargetPropertiesResponseArrayOutput) ToCacheMountTargetPropertiesResponseArrayOutputWithContext(ctx context.Context) CacheMountTargetPropertiesResponseArrayOutput {
+	return o
+}
+
+func (o CacheMountTargetPropertiesResponseArrayOutput) Index(i pulumi.IntInput) CacheMountTargetPropertiesResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CacheMountTargetPropertiesResponse {
+		return vs[0].([]CacheMountTargetPropertiesResponse)[vs[1].(int)]
+	}).(CacheMountTargetPropertiesResponseOutput)
+}
+
+// Cache resource properties
+type CacheProperties struct {
+	// The Azure Resource URI for a delegated cache subnet that will be used to allocate data IPs.
+	CacheSubnetResourceId string `pulumi:"cacheSubnetResourceId"`
+	// Flag indicating whether a CIFS change notification is enabled for the cache.
+	CifsChangeNotifications *string `pulumi:"cifsChangeNotifications"`
+	// Source of key used to encrypt data in the cache. Applicable if NetApp account has encryption.keySource = 'Microsoft.KeyVault'. Possible values (case-insensitive) are: 'Microsoft.NetApp, Microsoft.KeyVault'
+	EncryptionKeySource string `pulumi:"encryptionKeySource"`
+	// Set of export policy rules
+	ExportPolicy *CachePropertiesExportPolicy `pulumi:"exportPolicy"`
+	// The file path of the Cache.
+	Filepath string `pulumi:"filepath"`
+	// Flag indicating whether the global file lock is enabled for the cache.
+	GlobalFileLocking *string `pulumi:"globalFileLocking"`
+	// Describe if a cache is Kerberos enabled.
+	Kerberos *string `pulumi:"kerberos"`
+	// The resource ID of private endpoint for KeyVault. It must reside in the same VNET as the volume. Only applicable if encryptionKeySource = 'Microsoft.KeyVault'.
+	KeyVaultPrivateEndpointResourceId *string `pulumi:"keyVaultPrivateEndpointResourceId"`
+	// Specifies whether LDAP is enabled or not for flexcache volume.
+	Ldap *string `pulumi:"ldap"`
+	// Specifies the type of LDAP server for flexcache volume.
+	LdapServerType *string `pulumi:"ldapServerType"`
+	// Origin cluster information
+	OriginClusterInformation OriginClusterInformation `pulumi:"originClusterInformation"`
+	// The Azure Resource URI for a delegated subnet that will be used for ANF Intercluster Interface IP addresses.
+	PeeringSubnetResourceId string `pulumi:"peeringSubnetResourceId"`
+	// Set of supported protocol types, which include NFSv3, NFSv4 and SMB protocol
+	ProtocolTypes []string `pulumi:"protocolTypes"`
+	// Maximum storage quota allowed for a file system in bytes. Valid values are in the range 50GiB to 1PiB. Values expressed in bytes as multiples of 1GiB.
+	Size float64 `pulumi:"size"`
+	// SMB information for the cache
+	SmbSettings *SmbSettings `pulumi:"smbSettings"`
+	// Maximum throughput in MiB/s that can be achieved by this cache volume and this will be accepted as input only for manual qosType cache
+	ThroughputMibps *float64 `pulumi:"throughputMibps"`
+	// Flag indicating whether writeback is enabled for the cache.
+	WriteBack *string `pulumi:"writeBack"`
+}
+
+// CachePropertiesInput is an input type that accepts CachePropertiesArgs and CachePropertiesOutput values.
+// You can construct a concrete instance of `CachePropertiesInput` via:
+//
+//	CachePropertiesArgs{...}
+type CachePropertiesInput interface {
+	pulumi.Input
+
+	ToCachePropertiesOutput() CachePropertiesOutput
+	ToCachePropertiesOutputWithContext(context.Context) CachePropertiesOutput
+}
+
+// Cache resource properties
+type CachePropertiesArgs struct {
+	// The Azure Resource URI for a delegated cache subnet that will be used to allocate data IPs.
+	CacheSubnetResourceId pulumi.StringInput `pulumi:"cacheSubnetResourceId"`
+	// Flag indicating whether a CIFS change notification is enabled for the cache.
+	CifsChangeNotifications pulumi.StringPtrInput `pulumi:"cifsChangeNotifications"`
+	// Source of key used to encrypt data in the cache. Applicable if NetApp account has encryption.keySource = 'Microsoft.KeyVault'. Possible values (case-insensitive) are: 'Microsoft.NetApp, Microsoft.KeyVault'
+	EncryptionKeySource pulumi.StringInput `pulumi:"encryptionKeySource"`
+	// Set of export policy rules
+	ExportPolicy CachePropertiesExportPolicyPtrInput `pulumi:"exportPolicy"`
+	// The file path of the Cache.
+	Filepath pulumi.StringInput `pulumi:"filepath"`
+	// Flag indicating whether the global file lock is enabled for the cache.
+	GlobalFileLocking pulumi.StringPtrInput `pulumi:"globalFileLocking"`
+	// Describe if a cache is Kerberos enabled.
+	Kerberos pulumi.StringPtrInput `pulumi:"kerberos"`
+	// The resource ID of private endpoint for KeyVault. It must reside in the same VNET as the volume. Only applicable if encryptionKeySource = 'Microsoft.KeyVault'.
+	KeyVaultPrivateEndpointResourceId pulumi.StringPtrInput `pulumi:"keyVaultPrivateEndpointResourceId"`
+	// Specifies whether LDAP is enabled or not for flexcache volume.
+	Ldap pulumi.StringPtrInput `pulumi:"ldap"`
+	// Specifies the type of LDAP server for flexcache volume.
+	LdapServerType pulumi.StringPtrInput `pulumi:"ldapServerType"`
+	// Origin cluster information
+	OriginClusterInformation OriginClusterInformationInput `pulumi:"originClusterInformation"`
+	// The Azure Resource URI for a delegated subnet that will be used for ANF Intercluster Interface IP addresses.
+	PeeringSubnetResourceId pulumi.StringInput `pulumi:"peeringSubnetResourceId"`
+	// Set of supported protocol types, which include NFSv3, NFSv4 and SMB protocol
+	ProtocolTypes pulumi.StringArrayInput `pulumi:"protocolTypes"`
+	// Maximum storage quota allowed for a file system in bytes. Valid values are in the range 50GiB to 1PiB. Values expressed in bytes as multiples of 1GiB.
+	Size pulumi.Float64Input `pulumi:"size"`
+	// SMB information for the cache
+	SmbSettings SmbSettingsPtrInput `pulumi:"smbSettings"`
+	// Maximum throughput in MiB/s that can be achieved by this cache volume and this will be accepted as input only for manual qosType cache
+	ThroughputMibps pulumi.Float64PtrInput `pulumi:"throughputMibps"`
+	// Flag indicating whether writeback is enabled for the cache.
+	WriteBack pulumi.StringPtrInput `pulumi:"writeBack"`
+}
+
+func (CachePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CacheProperties)(nil)).Elem()
+}
+
+func (i CachePropertiesArgs) ToCachePropertiesOutput() CachePropertiesOutput {
+	return i.ToCachePropertiesOutputWithContext(context.Background())
+}
+
+func (i CachePropertiesArgs) ToCachePropertiesOutputWithContext(ctx context.Context) CachePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CachePropertiesOutput)
+}
+
+// Cache resource properties
+type CachePropertiesOutput struct{ *pulumi.OutputState }
+
+func (CachePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CacheProperties)(nil)).Elem()
+}
+
+func (o CachePropertiesOutput) ToCachePropertiesOutput() CachePropertiesOutput {
+	return o
+}
+
+func (o CachePropertiesOutput) ToCachePropertiesOutputWithContext(ctx context.Context) CachePropertiesOutput {
+	return o
+}
+
+// The Azure Resource URI for a delegated cache subnet that will be used to allocate data IPs.
+func (o CachePropertiesOutput) CacheSubnetResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v CacheProperties) string { return v.CacheSubnetResourceId }).(pulumi.StringOutput)
+}
+
+// Flag indicating whether a CIFS change notification is enabled for the cache.
+func (o CachePropertiesOutput) CifsChangeNotifications() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CacheProperties) *string { return v.CifsChangeNotifications }).(pulumi.StringPtrOutput)
+}
+
+// Source of key used to encrypt data in the cache. Applicable if NetApp account has encryption.keySource = 'Microsoft.KeyVault'. Possible values (case-insensitive) are: 'Microsoft.NetApp, Microsoft.KeyVault'
+func (o CachePropertiesOutput) EncryptionKeySource() pulumi.StringOutput {
+	return o.ApplyT(func(v CacheProperties) string { return v.EncryptionKeySource }).(pulumi.StringOutput)
+}
+
+// Set of export policy rules
+func (o CachePropertiesOutput) ExportPolicy() CachePropertiesExportPolicyPtrOutput {
+	return o.ApplyT(func(v CacheProperties) *CachePropertiesExportPolicy { return v.ExportPolicy }).(CachePropertiesExportPolicyPtrOutput)
+}
+
+// The file path of the Cache.
+func (o CachePropertiesOutput) Filepath() pulumi.StringOutput {
+	return o.ApplyT(func(v CacheProperties) string { return v.Filepath }).(pulumi.StringOutput)
+}
+
+// Flag indicating whether the global file lock is enabled for the cache.
+func (o CachePropertiesOutput) GlobalFileLocking() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CacheProperties) *string { return v.GlobalFileLocking }).(pulumi.StringPtrOutput)
+}
+
+// Describe if a cache is Kerberos enabled.
+func (o CachePropertiesOutput) Kerberos() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CacheProperties) *string { return v.Kerberos }).(pulumi.StringPtrOutput)
+}
+
+// The resource ID of private endpoint for KeyVault. It must reside in the same VNET as the volume. Only applicable if encryptionKeySource = 'Microsoft.KeyVault'.
+func (o CachePropertiesOutput) KeyVaultPrivateEndpointResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CacheProperties) *string { return v.KeyVaultPrivateEndpointResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether LDAP is enabled or not for flexcache volume.
+func (o CachePropertiesOutput) Ldap() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CacheProperties) *string { return v.Ldap }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the type of LDAP server for flexcache volume.
+func (o CachePropertiesOutput) LdapServerType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CacheProperties) *string { return v.LdapServerType }).(pulumi.StringPtrOutput)
+}
+
+// Origin cluster information
+func (o CachePropertiesOutput) OriginClusterInformation() OriginClusterInformationOutput {
+	return o.ApplyT(func(v CacheProperties) OriginClusterInformation { return v.OriginClusterInformation }).(OriginClusterInformationOutput)
+}
+
+// The Azure Resource URI for a delegated subnet that will be used for ANF Intercluster Interface IP addresses.
+func (o CachePropertiesOutput) PeeringSubnetResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v CacheProperties) string { return v.PeeringSubnetResourceId }).(pulumi.StringOutput)
+}
+
+// Set of supported protocol types, which include NFSv3, NFSv4 and SMB protocol
+func (o CachePropertiesOutput) ProtocolTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CacheProperties) []string { return v.ProtocolTypes }).(pulumi.StringArrayOutput)
+}
+
+// Maximum storage quota allowed for a file system in bytes. Valid values are in the range 50GiB to 1PiB. Values expressed in bytes as multiples of 1GiB.
+func (o CachePropertiesOutput) Size() pulumi.Float64Output {
+	return o.ApplyT(func(v CacheProperties) float64 { return v.Size }).(pulumi.Float64Output)
+}
+
+// SMB information for the cache
+func (o CachePropertiesOutput) SmbSettings() SmbSettingsPtrOutput {
+	return o.ApplyT(func(v CacheProperties) *SmbSettings { return v.SmbSettings }).(SmbSettingsPtrOutput)
+}
+
+// Maximum throughput in MiB/s that can be achieved by this cache volume and this will be accepted as input only for manual qosType cache
+func (o CachePropertiesOutput) ThroughputMibps() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v CacheProperties) *float64 { return v.ThroughputMibps }).(pulumi.Float64PtrOutput)
+}
+
+// Flag indicating whether writeback is enabled for the cache.
+func (o CachePropertiesOutput) WriteBack() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CacheProperties) *string { return v.WriteBack }).(pulumi.StringPtrOutput)
+}
+
+// Set of export policy rules
+type CachePropertiesExportPolicy struct {
+	// Export policy rule
+	Rules []ExportPolicyRule `pulumi:"rules"`
+}
+
+// CachePropertiesExportPolicyInput is an input type that accepts CachePropertiesExportPolicyArgs and CachePropertiesExportPolicyOutput values.
+// You can construct a concrete instance of `CachePropertiesExportPolicyInput` via:
+//
+//	CachePropertiesExportPolicyArgs{...}
+type CachePropertiesExportPolicyInput interface {
+	pulumi.Input
+
+	ToCachePropertiesExportPolicyOutput() CachePropertiesExportPolicyOutput
+	ToCachePropertiesExportPolicyOutputWithContext(context.Context) CachePropertiesExportPolicyOutput
+}
+
+// Set of export policy rules
+type CachePropertiesExportPolicyArgs struct {
+	// Export policy rule
+	Rules ExportPolicyRuleArrayInput `pulumi:"rules"`
+}
+
+func (CachePropertiesExportPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CachePropertiesExportPolicy)(nil)).Elem()
+}
+
+func (i CachePropertiesExportPolicyArgs) ToCachePropertiesExportPolicyOutput() CachePropertiesExportPolicyOutput {
+	return i.ToCachePropertiesExportPolicyOutputWithContext(context.Background())
+}
+
+func (i CachePropertiesExportPolicyArgs) ToCachePropertiesExportPolicyOutputWithContext(ctx context.Context) CachePropertiesExportPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CachePropertiesExportPolicyOutput)
+}
+
+func (i CachePropertiesExportPolicyArgs) ToCachePropertiesExportPolicyPtrOutput() CachePropertiesExportPolicyPtrOutput {
+	return i.ToCachePropertiesExportPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i CachePropertiesExportPolicyArgs) ToCachePropertiesExportPolicyPtrOutputWithContext(ctx context.Context) CachePropertiesExportPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CachePropertiesExportPolicyOutput).ToCachePropertiesExportPolicyPtrOutputWithContext(ctx)
+}
+
+// CachePropertiesExportPolicyPtrInput is an input type that accepts CachePropertiesExportPolicyArgs, CachePropertiesExportPolicyPtr and CachePropertiesExportPolicyPtrOutput values.
+// You can construct a concrete instance of `CachePropertiesExportPolicyPtrInput` via:
+//
+//	        CachePropertiesExportPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type CachePropertiesExportPolicyPtrInput interface {
+	pulumi.Input
+
+	ToCachePropertiesExportPolicyPtrOutput() CachePropertiesExportPolicyPtrOutput
+	ToCachePropertiesExportPolicyPtrOutputWithContext(context.Context) CachePropertiesExportPolicyPtrOutput
+}
+
+type cachePropertiesExportPolicyPtrType CachePropertiesExportPolicyArgs
+
+func CachePropertiesExportPolicyPtr(v *CachePropertiesExportPolicyArgs) CachePropertiesExportPolicyPtrInput {
+	return (*cachePropertiesExportPolicyPtrType)(v)
+}
+
+func (*cachePropertiesExportPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CachePropertiesExportPolicy)(nil)).Elem()
+}
+
+func (i *cachePropertiesExportPolicyPtrType) ToCachePropertiesExportPolicyPtrOutput() CachePropertiesExportPolicyPtrOutput {
+	return i.ToCachePropertiesExportPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *cachePropertiesExportPolicyPtrType) ToCachePropertiesExportPolicyPtrOutputWithContext(ctx context.Context) CachePropertiesExportPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CachePropertiesExportPolicyPtrOutput)
+}
+
+// Set of export policy rules
+type CachePropertiesExportPolicyOutput struct{ *pulumi.OutputState }
+
+func (CachePropertiesExportPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CachePropertiesExportPolicy)(nil)).Elem()
+}
+
+func (o CachePropertiesExportPolicyOutput) ToCachePropertiesExportPolicyOutput() CachePropertiesExportPolicyOutput {
+	return o
+}
+
+func (o CachePropertiesExportPolicyOutput) ToCachePropertiesExportPolicyOutputWithContext(ctx context.Context) CachePropertiesExportPolicyOutput {
+	return o
+}
+
+func (o CachePropertiesExportPolicyOutput) ToCachePropertiesExportPolicyPtrOutput() CachePropertiesExportPolicyPtrOutput {
+	return o.ToCachePropertiesExportPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o CachePropertiesExportPolicyOutput) ToCachePropertiesExportPolicyPtrOutputWithContext(ctx context.Context) CachePropertiesExportPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CachePropertiesExportPolicy) *CachePropertiesExportPolicy {
+		return &v
+	}).(CachePropertiesExportPolicyPtrOutput)
+}
+
+// Export policy rule
+func (o CachePropertiesExportPolicyOutput) Rules() ExportPolicyRuleArrayOutput {
+	return o.ApplyT(func(v CachePropertiesExportPolicy) []ExportPolicyRule { return v.Rules }).(ExportPolicyRuleArrayOutput)
+}
+
+type CachePropertiesExportPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (CachePropertiesExportPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CachePropertiesExportPolicy)(nil)).Elem()
+}
+
+func (o CachePropertiesExportPolicyPtrOutput) ToCachePropertiesExportPolicyPtrOutput() CachePropertiesExportPolicyPtrOutput {
+	return o
+}
+
+func (o CachePropertiesExportPolicyPtrOutput) ToCachePropertiesExportPolicyPtrOutputWithContext(ctx context.Context) CachePropertiesExportPolicyPtrOutput {
+	return o
+}
+
+func (o CachePropertiesExportPolicyPtrOutput) Elem() CachePropertiesExportPolicyOutput {
+	return o.ApplyT(func(v *CachePropertiesExportPolicy) CachePropertiesExportPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret CachePropertiesExportPolicy
+		return ret
+	}).(CachePropertiesExportPolicyOutput)
+}
+
+// Export policy rule
+func (o CachePropertiesExportPolicyPtrOutput) Rules() ExportPolicyRuleArrayOutput {
+	return o.ApplyT(func(v *CachePropertiesExportPolicy) []ExportPolicyRule {
+		if v == nil {
+			return nil
+		}
+		return v.Rules
+	}).(ExportPolicyRuleArrayOutput)
+}
+
+// Set of export policy rules
+type CachePropertiesExportPolicyResponse struct {
+	// Export policy rule
+	Rules []ExportPolicyRuleResponse `pulumi:"rules"`
+}
+
+// Set of export policy rules
+type CachePropertiesExportPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (CachePropertiesExportPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CachePropertiesExportPolicyResponse)(nil)).Elem()
+}
+
+func (o CachePropertiesExportPolicyResponseOutput) ToCachePropertiesExportPolicyResponseOutput() CachePropertiesExportPolicyResponseOutput {
+	return o
+}
+
+func (o CachePropertiesExportPolicyResponseOutput) ToCachePropertiesExportPolicyResponseOutputWithContext(ctx context.Context) CachePropertiesExportPolicyResponseOutput {
+	return o
+}
+
+// Export policy rule
+func (o CachePropertiesExportPolicyResponseOutput) Rules() ExportPolicyRuleResponseArrayOutput {
+	return o.ApplyT(func(v CachePropertiesExportPolicyResponse) []ExportPolicyRuleResponse { return v.Rules }).(ExportPolicyRuleResponseArrayOutput)
+}
+
+type CachePropertiesExportPolicyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CachePropertiesExportPolicyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CachePropertiesExportPolicyResponse)(nil)).Elem()
+}
+
+func (o CachePropertiesExportPolicyResponsePtrOutput) ToCachePropertiesExportPolicyResponsePtrOutput() CachePropertiesExportPolicyResponsePtrOutput {
+	return o
+}
+
+func (o CachePropertiesExportPolicyResponsePtrOutput) ToCachePropertiesExportPolicyResponsePtrOutputWithContext(ctx context.Context) CachePropertiesExportPolicyResponsePtrOutput {
+	return o
+}
+
+func (o CachePropertiesExportPolicyResponsePtrOutput) Elem() CachePropertiesExportPolicyResponseOutput {
+	return o.ApplyT(func(v *CachePropertiesExportPolicyResponse) CachePropertiesExportPolicyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CachePropertiesExportPolicyResponse
+		return ret
+	}).(CachePropertiesExportPolicyResponseOutput)
+}
+
+// Export policy rule
+func (o CachePropertiesExportPolicyResponsePtrOutput) Rules() ExportPolicyRuleResponseArrayOutput {
+	return o.ApplyT(func(v *CachePropertiesExportPolicyResponse) []ExportPolicyRuleResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Rules
+	}).(ExportPolicyRuleResponseArrayOutput)
+}
+
+// Cache resource properties
+type CachePropertiesResponse struct {
+	// Actual throughput in MiB/s for auto qosType volumes calculated based on size and serviceLevel
+	ActualThroughputMibps float64 `pulumi:"actualThroughputMibps"`
+	// Azure NetApp Files Cache lifecycle management
+	CacheState string `pulumi:"cacheState"`
+	// The Azure Resource URI for a delegated cache subnet that will be used to allocate data IPs.
+	CacheSubnetResourceId string `pulumi:"cacheSubnetResourceId"`
+	// Flag indicating whether a CIFS change notification is enabled for the cache.
+	CifsChangeNotifications *string `pulumi:"cifsChangeNotifications"`
+	// Specifies if the cache is encryption or not.
+	Encryption string `pulumi:"encryption"`
+	// Source of key used to encrypt data in the cache. Applicable if NetApp account has encryption.keySource = 'Microsoft.KeyVault'. Possible values (case-insensitive) are: 'Microsoft.NetApp, Microsoft.KeyVault'
+	EncryptionKeySource string `pulumi:"encryptionKeySource"`
+	// Set of export policy rules
+	ExportPolicy *CachePropertiesExportPolicyResponse `pulumi:"exportPolicy"`
+	// The file path of the Cache.
+	Filepath string `pulumi:"filepath"`
+	// Flag indicating whether the global file lock is enabled for the cache.
+	GlobalFileLocking *string `pulumi:"globalFileLocking"`
+	// Describe if a cache is Kerberos enabled.
+	Kerberos *string `pulumi:"kerberos"`
+	// The resource ID of private endpoint for KeyVault. It must reside in the same VNET as the volume. Only applicable if encryptionKeySource = 'Microsoft.KeyVault'.
+	KeyVaultPrivateEndpointResourceId *string `pulumi:"keyVaultPrivateEndpointResourceId"`
+	// Language supported for volume.
+	Language string `pulumi:"language"`
+	// Specifies whether LDAP is enabled or not for flexcache volume.
+	Ldap *string `pulumi:"ldap"`
+	// Specifies the type of LDAP server for flexcache volume.
+	LdapServerType *string `pulumi:"ldapServerType"`
+	// Maximum number of files allowed.
+	MaximumNumberOfFiles float64 `pulumi:"maximumNumberOfFiles"`
+	// List of mount targets that can be used to mount this cache
+	MountTargets []CacheMountTargetPropertiesResponse `pulumi:"mountTargets"`
+	// Origin cluster information
+	OriginClusterInformation OriginClusterInformationResponse `pulumi:"originClusterInformation"`
+	// The Azure Resource URI for a delegated subnet that will be used for ANF Intercluster Interface IP addresses.
+	PeeringSubnetResourceId string `pulumi:"peeringSubnetResourceId"`
+	// Set of supported protocol types, which include NFSv3, NFSv4 and SMB protocol
+	ProtocolTypes []string `pulumi:"protocolTypes"`
+	// Azure lifecycle management
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Maximum storage quota allowed for a file system in bytes. Valid values are in the range 50GiB to 1PiB. Values expressed in bytes as multiples of 1GiB.
+	Size float64 `pulumi:"size"`
+	// SMB information for the cache
+	SmbSettings *SmbSettingsResponse `pulumi:"smbSettings"`
+	// Maximum throughput in MiB/s that can be achieved by this cache volume and this will be accepted as input only for manual qosType cache
+	ThroughputMibps *float64 `pulumi:"throughputMibps"`
+	// Flag indicating whether writeback is enabled for the cache.
+	WriteBack *string `pulumi:"writeBack"`
+}
+
+// Cache resource properties
+type CachePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (CachePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CachePropertiesResponse)(nil)).Elem()
+}
+
+func (o CachePropertiesResponseOutput) ToCachePropertiesResponseOutput() CachePropertiesResponseOutput {
+	return o
+}
+
+func (o CachePropertiesResponseOutput) ToCachePropertiesResponseOutputWithContext(ctx context.Context) CachePropertiesResponseOutput {
+	return o
+}
+
+// Actual throughput in MiB/s for auto qosType volumes calculated based on size and serviceLevel
+func (o CachePropertiesResponseOutput) ActualThroughputMibps() pulumi.Float64Output {
+	return o.ApplyT(func(v CachePropertiesResponse) float64 { return v.ActualThroughputMibps }).(pulumi.Float64Output)
+}
+
+// Azure NetApp Files Cache lifecycle management
+func (o CachePropertiesResponseOutput) CacheState() pulumi.StringOutput {
+	return o.ApplyT(func(v CachePropertiesResponse) string { return v.CacheState }).(pulumi.StringOutput)
+}
+
+// The Azure Resource URI for a delegated cache subnet that will be used to allocate data IPs.
+func (o CachePropertiesResponseOutput) CacheSubnetResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v CachePropertiesResponse) string { return v.CacheSubnetResourceId }).(pulumi.StringOutput)
+}
+
+// Flag indicating whether a CIFS change notification is enabled for the cache.
+func (o CachePropertiesResponseOutput) CifsChangeNotifications() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CachePropertiesResponse) *string { return v.CifsChangeNotifications }).(pulumi.StringPtrOutput)
+}
+
+// Specifies if the cache is encryption or not.
+func (o CachePropertiesResponseOutput) Encryption() pulumi.StringOutput {
+	return o.ApplyT(func(v CachePropertiesResponse) string { return v.Encryption }).(pulumi.StringOutput)
+}
+
+// Source of key used to encrypt data in the cache. Applicable if NetApp account has encryption.keySource = 'Microsoft.KeyVault'. Possible values (case-insensitive) are: 'Microsoft.NetApp, Microsoft.KeyVault'
+func (o CachePropertiesResponseOutput) EncryptionKeySource() pulumi.StringOutput {
+	return o.ApplyT(func(v CachePropertiesResponse) string { return v.EncryptionKeySource }).(pulumi.StringOutput)
+}
+
+// Set of export policy rules
+func (o CachePropertiesResponseOutput) ExportPolicy() CachePropertiesExportPolicyResponsePtrOutput {
+	return o.ApplyT(func(v CachePropertiesResponse) *CachePropertiesExportPolicyResponse { return v.ExportPolicy }).(CachePropertiesExportPolicyResponsePtrOutput)
+}
+
+// The file path of the Cache.
+func (o CachePropertiesResponseOutput) Filepath() pulumi.StringOutput {
+	return o.ApplyT(func(v CachePropertiesResponse) string { return v.Filepath }).(pulumi.StringOutput)
+}
+
+// Flag indicating whether the global file lock is enabled for the cache.
+func (o CachePropertiesResponseOutput) GlobalFileLocking() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CachePropertiesResponse) *string { return v.GlobalFileLocking }).(pulumi.StringPtrOutput)
+}
+
+// Describe if a cache is Kerberos enabled.
+func (o CachePropertiesResponseOutput) Kerberos() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CachePropertiesResponse) *string { return v.Kerberos }).(pulumi.StringPtrOutput)
+}
+
+// The resource ID of private endpoint for KeyVault. It must reside in the same VNET as the volume. Only applicable if encryptionKeySource = 'Microsoft.KeyVault'.
+func (o CachePropertiesResponseOutput) KeyVaultPrivateEndpointResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CachePropertiesResponse) *string { return v.KeyVaultPrivateEndpointResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Language supported for volume.
+func (o CachePropertiesResponseOutput) Language() pulumi.StringOutput {
+	return o.ApplyT(func(v CachePropertiesResponse) string { return v.Language }).(pulumi.StringOutput)
+}
+
+// Specifies whether LDAP is enabled or not for flexcache volume.
+func (o CachePropertiesResponseOutput) Ldap() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CachePropertiesResponse) *string { return v.Ldap }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the type of LDAP server for flexcache volume.
+func (o CachePropertiesResponseOutput) LdapServerType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CachePropertiesResponse) *string { return v.LdapServerType }).(pulumi.StringPtrOutput)
+}
+
+// Maximum number of files allowed.
+func (o CachePropertiesResponseOutput) MaximumNumberOfFiles() pulumi.Float64Output {
+	return o.ApplyT(func(v CachePropertiesResponse) float64 { return v.MaximumNumberOfFiles }).(pulumi.Float64Output)
+}
+
+// List of mount targets that can be used to mount this cache
+func (o CachePropertiesResponseOutput) MountTargets() CacheMountTargetPropertiesResponseArrayOutput {
+	return o.ApplyT(func(v CachePropertiesResponse) []CacheMountTargetPropertiesResponse { return v.MountTargets }).(CacheMountTargetPropertiesResponseArrayOutput)
+}
+
+// Origin cluster information
+func (o CachePropertiesResponseOutput) OriginClusterInformation() OriginClusterInformationResponseOutput {
+	return o.ApplyT(func(v CachePropertiesResponse) OriginClusterInformationResponse { return v.OriginClusterInformation }).(OriginClusterInformationResponseOutput)
+}
+
+// The Azure Resource URI for a delegated subnet that will be used for ANF Intercluster Interface IP addresses.
+func (o CachePropertiesResponseOutput) PeeringSubnetResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v CachePropertiesResponse) string { return v.PeeringSubnetResourceId }).(pulumi.StringOutput)
+}
+
+// Set of supported protocol types, which include NFSv3, NFSv4 and SMB protocol
+func (o CachePropertiesResponseOutput) ProtocolTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CachePropertiesResponse) []string { return v.ProtocolTypes }).(pulumi.StringArrayOutput)
+}
+
+// Azure lifecycle management
+func (o CachePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v CachePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Maximum storage quota allowed for a file system in bytes. Valid values are in the range 50GiB to 1PiB. Values expressed in bytes as multiples of 1GiB.
+func (o CachePropertiesResponseOutput) Size() pulumi.Float64Output {
+	return o.ApplyT(func(v CachePropertiesResponse) float64 { return v.Size }).(pulumi.Float64Output)
+}
+
+// SMB information for the cache
+func (o CachePropertiesResponseOutput) SmbSettings() SmbSettingsResponsePtrOutput {
+	return o.ApplyT(func(v CachePropertiesResponse) *SmbSettingsResponse { return v.SmbSettings }).(SmbSettingsResponsePtrOutput)
+}
+
+// Maximum throughput in MiB/s that can be achieved by this cache volume and this will be accepted as input only for manual qosType cache
+func (o CachePropertiesResponseOutput) ThroughputMibps() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v CachePropertiesResponse) *float64 { return v.ThroughputMibps }).(pulumi.Float64PtrOutput)
+}
+
+// Flag indicating whether writeback is enabled for the cache.
+func (o CachePropertiesResponseOutput) WriteBack() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CachePropertiesResponse) *string { return v.WriteBack }).(pulumi.StringPtrOutput)
 }
 
 // The effective CIFS username when accessing the volume data.
@@ -1617,6 +2677,5491 @@ func (o DailyScheduleResponsePtrOutput) UsedBytes() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
+// NetApp elastic account properties
+type ElasticAccountProperties struct {
+	// Encryption settings
+	Encryption *ElasticEncryption `pulumi:"encryption"`
+}
+
+// ElasticAccountPropertiesInput is an input type that accepts ElasticAccountPropertiesArgs and ElasticAccountPropertiesOutput values.
+// You can construct a concrete instance of `ElasticAccountPropertiesInput` via:
+//
+//	ElasticAccountPropertiesArgs{...}
+type ElasticAccountPropertiesInput interface {
+	pulumi.Input
+
+	ToElasticAccountPropertiesOutput() ElasticAccountPropertiesOutput
+	ToElasticAccountPropertiesOutputWithContext(context.Context) ElasticAccountPropertiesOutput
+}
+
+// NetApp elastic account properties
+type ElasticAccountPropertiesArgs struct {
+	// Encryption settings
+	Encryption ElasticEncryptionPtrInput `pulumi:"encryption"`
+}
+
+func (ElasticAccountPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticAccountProperties)(nil)).Elem()
+}
+
+func (i ElasticAccountPropertiesArgs) ToElasticAccountPropertiesOutput() ElasticAccountPropertiesOutput {
+	return i.ToElasticAccountPropertiesOutputWithContext(context.Background())
+}
+
+func (i ElasticAccountPropertiesArgs) ToElasticAccountPropertiesOutputWithContext(ctx context.Context) ElasticAccountPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticAccountPropertiesOutput)
+}
+
+func (i ElasticAccountPropertiesArgs) ToElasticAccountPropertiesPtrOutput() ElasticAccountPropertiesPtrOutput {
+	return i.ToElasticAccountPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i ElasticAccountPropertiesArgs) ToElasticAccountPropertiesPtrOutputWithContext(ctx context.Context) ElasticAccountPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticAccountPropertiesOutput).ToElasticAccountPropertiesPtrOutputWithContext(ctx)
+}
+
+// ElasticAccountPropertiesPtrInput is an input type that accepts ElasticAccountPropertiesArgs, ElasticAccountPropertiesPtr and ElasticAccountPropertiesPtrOutput values.
+// You can construct a concrete instance of `ElasticAccountPropertiesPtrInput` via:
+//
+//	        ElasticAccountPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ElasticAccountPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToElasticAccountPropertiesPtrOutput() ElasticAccountPropertiesPtrOutput
+	ToElasticAccountPropertiesPtrOutputWithContext(context.Context) ElasticAccountPropertiesPtrOutput
+}
+
+type elasticAccountPropertiesPtrType ElasticAccountPropertiesArgs
+
+func ElasticAccountPropertiesPtr(v *ElasticAccountPropertiesArgs) ElasticAccountPropertiesPtrInput {
+	return (*elasticAccountPropertiesPtrType)(v)
+}
+
+func (*elasticAccountPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticAccountProperties)(nil)).Elem()
+}
+
+func (i *elasticAccountPropertiesPtrType) ToElasticAccountPropertiesPtrOutput() ElasticAccountPropertiesPtrOutput {
+	return i.ToElasticAccountPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *elasticAccountPropertiesPtrType) ToElasticAccountPropertiesPtrOutputWithContext(ctx context.Context) ElasticAccountPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticAccountPropertiesPtrOutput)
+}
+
+// NetApp elastic account properties
+type ElasticAccountPropertiesOutput struct{ *pulumi.OutputState }
+
+func (ElasticAccountPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticAccountProperties)(nil)).Elem()
+}
+
+func (o ElasticAccountPropertiesOutput) ToElasticAccountPropertiesOutput() ElasticAccountPropertiesOutput {
+	return o
+}
+
+func (o ElasticAccountPropertiesOutput) ToElasticAccountPropertiesOutputWithContext(ctx context.Context) ElasticAccountPropertiesOutput {
+	return o
+}
+
+func (o ElasticAccountPropertiesOutput) ToElasticAccountPropertiesPtrOutput() ElasticAccountPropertiesPtrOutput {
+	return o.ToElasticAccountPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o ElasticAccountPropertiesOutput) ToElasticAccountPropertiesPtrOutputWithContext(ctx context.Context) ElasticAccountPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElasticAccountProperties) *ElasticAccountProperties {
+		return &v
+	}).(ElasticAccountPropertiesPtrOutput)
+}
+
+// Encryption settings
+func (o ElasticAccountPropertiesOutput) Encryption() ElasticEncryptionPtrOutput {
+	return o.ApplyT(func(v ElasticAccountProperties) *ElasticEncryption { return v.Encryption }).(ElasticEncryptionPtrOutput)
+}
+
+type ElasticAccountPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (ElasticAccountPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticAccountProperties)(nil)).Elem()
+}
+
+func (o ElasticAccountPropertiesPtrOutput) ToElasticAccountPropertiesPtrOutput() ElasticAccountPropertiesPtrOutput {
+	return o
+}
+
+func (o ElasticAccountPropertiesPtrOutput) ToElasticAccountPropertiesPtrOutputWithContext(ctx context.Context) ElasticAccountPropertiesPtrOutput {
+	return o
+}
+
+func (o ElasticAccountPropertiesPtrOutput) Elem() ElasticAccountPropertiesOutput {
+	return o.ApplyT(func(v *ElasticAccountProperties) ElasticAccountProperties {
+		if v != nil {
+			return *v
+		}
+		var ret ElasticAccountProperties
+		return ret
+	}).(ElasticAccountPropertiesOutput)
+}
+
+// Encryption settings
+func (o ElasticAccountPropertiesPtrOutput) Encryption() ElasticEncryptionPtrOutput {
+	return o.ApplyT(func(v *ElasticAccountProperties) *ElasticEncryption {
+		if v == nil {
+			return nil
+		}
+		return v.Encryption
+	}).(ElasticEncryptionPtrOutput)
+}
+
+// NetApp elastic account properties
+type ElasticAccountPropertiesResponse struct {
+	// Encryption settings
+	Encryption *ElasticEncryptionResponse `pulumi:"encryption"`
+	// Azure lifecycle management.
+	ProvisioningState string `pulumi:"provisioningState"`
+}
+
+// NetApp elastic account properties
+type ElasticAccountPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (ElasticAccountPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticAccountPropertiesResponse)(nil)).Elem()
+}
+
+func (o ElasticAccountPropertiesResponseOutput) ToElasticAccountPropertiesResponseOutput() ElasticAccountPropertiesResponseOutput {
+	return o
+}
+
+func (o ElasticAccountPropertiesResponseOutput) ToElasticAccountPropertiesResponseOutputWithContext(ctx context.Context) ElasticAccountPropertiesResponseOutput {
+	return o
+}
+
+// Encryption settings
+func (o ElasticAccountPropertiesResponseOutput) Encryption() ElasticEncryptionResponsePtrOutput {
+	return o.ApplyT(func(v ElasticAccountPropertiesResponse) *ElasticEncryptionResponse { return v.Encryption }).(ElasticEncryptionResponsePtrOutput)
+}
+
+// Azure lifecycle management.
+func (o ElasticAccountPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v ElasticAccountPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Elastic Backup Policy properties
+type ElasticBackupPolicyProperties struct {
+	// Daily backups count to keep
+	DailyBackupsToKeep *int `pulumi:"dailyBackupsToKeep"`
+	// Monthly backups count to keep
+	MonthlyBackupsToKeep *int `pulumi:"monthlyBackupsToKeep"`
+	// The property to identify whether Backup Policy is enabled or not
+	PolicyState *string `pulumi:"policyState"`
+	// Weekly backups count to keep
+	WeeklyBackupsToKeep *int `pulumi:"weeklyBackupsToKeep"`
+}
+
+// ElasticBackupPolicyPropertiesInput is an input type that accepts ElasticBackupPolicyPropertiesArgs and ElasticBackupPolicyPropertiesOutput values.
+// You can construct a concrete instance of `ElasticBackupPolicyPropertiesInput` via:
+//
+//	ElasticBackupPolicyPropertiesArgs{...}
+type ElasticBackupPolicyPropertiesInput interface {
+	pulumi.Input
+
+	ToElasticBackupPolicyPropertiesOutput() ElasticBackupPolicyPropertiesOutput
+	ToElasticBackupPolicyPropertiesOutputWithContext(context.Context) ElasticBackupPolicyPropertiesOutput
+}
+
+// Elastic Backup Policy properties
+type ElasticBackupPolicyPropertiesArgs struct {
+	// Daily backups count to keep
+	DailyBackupsToKeep pulumi.IntPtrInput `pulumi:"dailyBackupsToKeep"`
+	// Monthly backups count to keep
+	MonthlyBackupsToKeep pulumi.IntPtrInput `pulumi:"monthlyBackupsToKeep"`
+	// The property to identify whether Backup Policy is enabled or not
+	PolicyState pulumi.StringPtrInput `pulumi:"policyState"`
+	// Weekly backups count to keep
+	WeeklyBackupsToKeep pulumi.IntPtrInput `pulumi:"weeklyBackupsToKeep"`
+}
+
+func (ElasticBackupPolicyPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticBackupPolicyProperties)(nil)).Elem()
+}
+
+func (i ElasticBackupPolicyPropertiesArgs) ToElasticBackupPolicyPropertiesOutput() ElasticBackupPolicyPropertiesOutput {
+	return i.ToElasticBackupPolicyPropertiesOutputWithContext(context.Background())
+}
+
+func (i ElasticBackupPolicyPropertiesArgs) ToElasticBackupPolicyPropertiesOutputWithContext(ctx context.Context) ElasticBackupPolicyPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticBackupPolicyPropertiesOutput)
+}
+
+func (i ElasticBackupPolicyPropertiesArgs) ToElasticBackupPolicyPropertiesPtrOutput() ElasticBackupPolicyPropertiesPtrOutput {
+	return i.ToElasticBackupPolicyPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i ElasticBackupPolicyPropertiesArgs) ToElasticBackupPolicyPropertiesPtrOutputWithContext(ctx context.Context) ElasticBackupPolicyPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticBackupPolicyPropertiesOutput).ToElasticBackupPolicyPropertiesPtrOutputWithContext(ctx)
+}
+
+// ElasticBackupPolicyPropertiesPtrInput is an input type that accepts ElasticBackupPolicyPropertiesArgs, ElasticBackupPolicyPropertiesPtr and ElasticBackupPolicyPropertiesPtrOutput values.
+// You can construct a concrete instance of `ElasticBackupPolicyPropertiesPtrInput` via:
+//
+//	        ElasticBackupPolicyPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ElasticBackupPolicyPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToElasticBackupPolicyPropertiesPtrOutput() ElasticBackupPolicyPropertiesPtrOutput
+	ToElasticBackupPolicyPropertiesPtrOutputWithContext(context.Context) ElasticBackupPolicyPropertiesPtrOutput
+}
+
+type elasticBackupPolicyPropertiesPtrType ElasticBackupPolicyPropertiesArgs
+
+func ElasticBackupPolicyPropertiesPtr(v *ElasticBackupPolicyPropertiesArgs) ElasticBackupPolicyPropertiesPtrInput {
+	return (*elasticBackupPolicyPropertiesPtrType)(v)
+}
+
+func (*elasticBackupPolicyPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticBackupPolicyProperties)(nil)).Elem()
+}
+
+func (i *elasticBackupPolicyPropertiesPtrType) ToElasticBackupPolicyPropertiesPtrOutput() ElasticBackupPolicyPropertiesPtrOutput {
+	return i.ToElasticBackupPolicyPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *elasticBackupPolicyPropertiesPtrType) ToElasticBackupPolicyPropertiesPtrOutputWithContext(ctx context.Context) ElasticBackupPolicyPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticBackupPolicyPropertiesPtrOutput)
+}
+
+// Elastic Backup Policy properties
+type ElasticBackupPolicyPropertiesOutput struct{ *pulumi.OutputState }
+
+func (ElasticBackupPolicyPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticBackupPolicyProperties)(nil)).Elem()
+}
+
+func (o ElasticBackupPolicyPropertiesOutput) ToElasticBackupPolicyPropertiesOutput() ElasticBackupPolicyPropertiesOutput {
+	return o
+}
+
+func (o ElasticBackupPolicyPropertiesOutput) ToElasticBackupPolicyPropertiesOutputWithContext(ctx context.Context) ElasticBackupPolicyPropertiesOutput {
+	return o
+}
+
+func (o ElasticBackupPolicyPropertiesOutput) ToElasticBackupPolicyPropertiesPtrOutput() ElasticBackupPolicyPropertiesPtrOutput {
+	return o.ToElasticBackupPolicyPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o ElasticBackupPolicyPropertiesOutput) ToElasticBackupPolicyPropertiesPtrOutputWithContext(ctx context.Context) ElasticBackupPolicyPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElasticBackupPolicyProperties) *ElasticBackupPolicyProperties {
+		return &v
+	}).(ElasticBackupPolicyPropertiesPtrOutput)
+}
+
+// Daily backups count to keep
+func (o ElasticBackupPolicyPropertiesOutput) DailyBackupsToKeep() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElasticBackupPolicyProperties) *int { return v.DailyBackupsToKeep }).(pulumi.IntPtrOutput)
+}
+
+// Monthly backups count to keep
+func (o ElasticBackupPolicyPropertiesOutput) MonthlyBackupsToKeep() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElasticBackupPolicyProperties) *int { return v.MonthlyBackupsToKeep }).(pulumi.IntPtrOutput)
+}
+
+// The property to identify whether Backup Policy is enabled or not
+func (o ElasticBackupPolicyPropertiesOutput) PolicyState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticBackupPolicyProperties) *string { return v.PolicyState }).(pulumi.StringPtrOutput)
+}
+
+// Weekly backups count to keep
+func (o ElasticBackupPolicyPropertiesOutput) WeeklyBackupsToKeep() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElasticBackupPolicyProperties) *int { return v.WeeklyBackupsToKeep }).(pulumi.IntPtrOutput)
+}
+
+type ElasticBackupPolicyPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (ElasticBackupPolicyPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticBackupPolicyProperties)(nil)).Elem()
+}
+
+func (o ElasticBackupPolicyPropertiesPtrOutput) ToElasticBackupPolicyPropertiesPtrOutput() ElasticBackupPolicyPropertiesPtrOutput {
+	return o
+}
+
+func (o ElasticBackupPolicyPropertiesPtrOutput) ToElasticBackupPolicyPropertiesPtrOutputWithContext(ctx context.Context) ElasticBackupPolicyPropertiesPtrOutput {
+	return o
+}
+
+func (o ElasticBackupPolicyPropertiesPtrOutput) Elem() ElasticBackupPolicyPropertiesOutput {
+	return o.ApplyT(func(v *ElasticBackupPolicyProperties) ElasticBackupPolicyProperties {
+		if v != nil {
+			return *v
+		}
+		var ret ElasticBackupPolicyProperties
+		return ret
+	}).(ElasticBackupPolicyPropertiesOutput)
+}
+
+// Daily backups count to keep
+func (o ElasticBackupPolicyPropertiesPtrOutput) DailyBackupsToKeep() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElasticBackupPolicyProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DailyBackupsToKeep
+	}).(pulumi.IntPtrOutput)
+}
+
+// Monthly backups count to keep
+func (o ElasticBackupPolicyPropertiesPtrOutput) MonthlyBackupsToKeep() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElasticBackupPolicyProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MonthlyBackupsToKeep
+	}).(pulumi.IntPtrOutput)
+}
+
+// The property to identify whether Backup Policy is enabled or not
+func (o ElasticBackupPolicyPropertiesPtrOutput) PolicyState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticBackupPolicyProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PolicyState
+	}).(pulumi.StringPtrOutput)
+}
+
+// Weekly backups count to keep
+func (o ElasticBackupPolicyPropertiesPtrOutput) WeeklyBackupsToKeep() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElasticBackupPolicyProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.WeeklyBackupsToKeep
+	}).(pulumi.IntPtrOutput)
+}
+
+// Elastic Backup Policy properties
+type ElasticBackupPolicyPropertiesResponse struct {
+	// The number of volumes currently using this Backup Policy.
+	AssignedVolumesCount int `pulumi:"assignedVolumesCount"`
+	// Daily backups count to keep
+	DailyBackupsToKeep *int `pulumi:"dailyBackupsToKeep"`
+	// Monthly backups count to keep
+	MonthlyBackupsToKeep *int `pulumi:"monthlyBackupsToKeep"`
+	// The property to identify whether Backup Policy is enabled or not
+	PolicyState *string `pulumi:"policyState"`
+	// Azure lifecycle management.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Weekly backups count to keep
+	WeeklyBackupsToKeep *int `pulumi:"weeklyBackupsToKeep"`
+}
+
+// Elastic Backup Policy properties
+type ElasticBackupPolicyPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (ElasticBackupPolicyPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticBackupPolicyPropertiesResponse)(nil)).Elem()
+}
+
+func (o ElasticBackupPolicyPropertiesResponseOutput) ToElasticBackupPolicyPropertiesResponseOutput() ElasticBackupPolicyPropertiesResponseOutput {
+	return o
+}
+
+func (o ElasticBackupPolicyPropertiesResponseOutput) ToElasticBackupPolicyPropertiesResponseOutputWithContext(ctx context.Context) ElasticBackupPolicyPropertiesResponseOutput {
+	return o
+}
+
+// The number of volumes currently using this Backup Policy.
+func (o ElasticBackupPolicyPropertiesResponseOutput) AssignedVolumesCount() pulumi.IntOutput {
+	return o.ApplyT(func(v ElasticBackupPolicyPropertiesResponse) int { return v.AssignedVolumesCount }).(pulumi.IntOutput)
+}
+
+// Daily backups count to keep
+func (o ElasticBackupPolicyPropertiesResponseOutput) DailyBackupsToKeep() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElasticBackupPolicyPropertiesResponse) *int { return v.DailyBackupsToKeep }).(pulumi.IntPtrOutput)
+}
+
+// Monthly backups count to keep
+func (o ElasticBackupPolicyPropertiesResponseOutput) MonthlyBackupsToKeep() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElasticBackupPolicyPropertiesResponse) *int { return v.MonthlyBackupsToKeep }).(pulumi.IntPtrOutput)
+}
+
+// The property to identify whether Backup Policy is enabled or not
+func (o ElasticBackupPolicyPropertiesResponseOutput) PolicyState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticBackupPolicyPropertiesResponse) *string { return v.PolicyState }).(pulumi.StringPtrOutput)
+}
+
+// Azure lifecycle management.
+func (o ElasticBackupPolicyPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v ElasticBackupPolicyPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Weekly backups count to keep
+func (o ElasticBackupPolicyPropertiesResponseOutput) WeeklyBackupsToKeep() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElasticBackupPolicyPropertiesResponse) *int { return v.WeeklyBackupsToKeep }).(pulumi.IntPtrOutput)
+}
+
+// Elastic Backup properties
+type ElasticBackupProperties struct {
+	// ResourceId used to identify the elastic snapshot resource. This is required when an existing snapshot needs to be used for creating a manual backup
+	ElasticSnapshotResourceId *string `pulumi:"elasticSnapshotResourceId"`
+	// ResourceId used to identify the Elastic Volume
+	ElasticVolumeResourceId string `pulumi:"elasticVolumeResourceId"`
+	// Label for backup
+	Label *string `pulumi:"label"`
+	// Manual backup using an already existing snapshot. This will always be CreateNewSnapshot for scheduled backups and UseExistingSnapshot/CreateNewSnapshot for manual backups
+	SnapshotUsage *string `pulumi:"snapshotUsage"`
+}
+
+// Defaults sets the appropriate defaults for ElasticBackupProperties
+func (val *ElasticBackupProperties) Defaults() *ElasticBackupProperties {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.SnapshotUsage == nil {
+		snapshotUsage_ := "CreateNewSnapshot"
+		tmp.SnapshotUsage = &snapshotUsage_
+	}
+	return &tmp
+}
+
+// ElasticBackupPropertiesInput is an input type that accepts ElasticBackupPropertiesArgs and ElasticBackupPropertiesOutput values.
+// You can construct a concrete instance of `ElasticBackupPropertiesInput` via:
+//
+//	ElasticBackupPropertiesArgs{...}
+type ElasticBackupPropertiesInput interface {
+	pulumi.Input
+
+	ToElasticBackupPropertiesOutput() ElasticBackupPropertiesOutput
+	ToElasticBackupPropertiesOutputWithContext(context.Context) ElasticBackupPropertiesOutput
+}
+
+// Elastic Backup properties
+type ElasticBackupPropertiesArgs struct {
+	// ResourceId used to identify the elastic snapshot resource. This is required when an existing snapshot needs to be used for creating a manual backup
+	ElasticSnapshotResourceId pulumi.StringPtrInput `pulumi:"elasticSnapshotResourceId"`
+	// ResourceId used to identify the Elastic Volume
+	ElasticVolumeResourceId pulumi.StringInput `pulumi:"elasticVolumeResourceId"`
+	// Label for backup
+	Label pulumi.StringPtrInput `pulumi:"label"`
+	// Manual backup using an already existing snapshot. This will always be CreateNewSnapshot for scheduled backups and UseExistingSnapshot/CreateNewSnapshot for manual backups
+	SnapshotUsage pulumi.StringPtrInput `pulumi:"snapshotUsage"`
+}
+
+// Defaults sets the appropriate defaults for ElasticBackupPropertiesArgs
+func (val *ElasticBackupPropertiesArgs) Defaults() *ElasticBackupPropertiesArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.SnapshotUsage == nil {
+		tmp.SnapshotUsage = pulumi.StringPtr("CreateNewSnapshot")
+	}
+	return &tmp
+}
+func (ElasticBackupPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticBackupProperties)(nil)).Elem()
+}
+
+func (i ElasticBackupPropertiesArgs) ToElasticBackupPropertiesOutput() ElasticBackupPropertiesOutput {
+	return i.ToElasticBackupPropertiesOutputWithContext(context.Background())
+}
+
+func (i ElasticBackupPropertiesArgs) ToElasticBackupPropertiesOutputWithContext(ctx context.Context) ElasticBackupPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticBackupPropertiesOutput)
+}
+
+func (i ElasticBackupPropertiesArgs) ToElasticBackupPropertiesPtrOutput() ElasticBackupPropertiesPtrOutput {
+	return i.ToElasticBackupPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i ElasticBackupPropertiesArgs) ToElasticBackupPropertiesPtrOutputWithContext(ctx context.Context) ElasticBackupPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticBackupPropertiesOutput).ToElasticBackupPropertiesPtrOutputWithContext(ctx)
+}
+
+// ElasticBackupPropertiesPtrInput is an input type that accepts ElasticBackupPropertiesArgs, ElasticBackupPropertiesPtr and ElasticBackupPropertiesPtrOutput values.
+// You can construct a concrete instance of `ElasticBackupPropertiesPtrInput` via:
+//
+//	        ElasticBackupPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ElasticBackupPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToElasticBackupPropertiesPtrOutput() ElasticBackupPropertiesPtrOutput
+	ToElasticBackupPropertiesPtrOutputWithContext(context.Context) ElasticBackupPropertiesPtrOutput
+}
+
+type elasticBackupPropertiesPtrType ElasticBackupPropertiesArgs
+
+func ElasticBackupPropertiesPtr(v *ElasticBackupPropertiesArgs) ElasticBackupPropertiesPtrInput {
+	return (*elasticBackupPropertiesPtrType)(v)
+}
+
+func (*elasticBackupPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticBackupProperties)(nil)).Elem()
+}
+
+func (i *elasticBackupPropertiesPtrType) ToElasticBackupPropertiesPtrOutput() ElasticBackupPropertiesPtrOutput {
+	return i.ToElasticBackupPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *elasticBackupPropertiesPtrType) ToElasticBackupPropertiesPtrOutputWithContext(ctx context.Context) ElasticBackupPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticBackupPropertiesPtrOutput)
+}
+
+// Elastic Backup properties
+type ElasticBackupPropertiesOutput struct{ *pulumi.OutputState }
+
+func (ElasticBackupPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticBackupProperties)(nil)).Elem()
+}
+
+func (o ElasticBackupPropertiesOutput) ToElasticBackupPropertiesOutput() ElasticBackupPropertiesOutput {
+	return o
+}
+
+func (o ElasticBackupPropertiesOutput) ToElasticBackupPropertiesOutputWithContext(ctx context.Context) ElasticBackupPropertiesOutput {
+	return o
+}
+
+func (o ElasticBackupPropertiesOutput) ToElasticBackupPropertiesPtrOutput() ElasticBackupPropertiesPtrOutput {
+	return o.ToElasticBackupPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o ElasticBackupPropertiesOutput) ToElasticBackupPropertiesPtrOutputWithContext(ctx context.Context) ElasticBackupPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElasticBackupProperties) *ElasticBackupProperties {
+		return &v
+	}).(ElasticBackupPropertiesPtrOutput)
+}
+
+// ResourceId used to identify the elastic snapshot resource. This is required when an existing snapshot needs to be used for creating a manual backup
+func (o ElasticBackupPropertiesOutput) ElasticSnapshotResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticBackupProperties) *string { return v.ElasticSnapshotResourceId }).(pulumi.StringPtrOutput)
+}
+
+// ResourceId used to identify the Elastic Volume
+func (o ElasticBackupPropertiesOutput) ElasticVolumeResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v ElasticBackupProperties) string { return v.ElasticVolumeResourceId }).(pulumi.StringOutput)
+}
+
+// Label for backup
+func (o ElasticBackupPropertiesOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticBackupProperties) *string { return v.Label }).(pulumi.StringPtrOutput)
+}
+
+// Manual backup using an already existing snapshot. This will always be CreateNewSnapshot for scheduled backups and UseExistingSnapshot/CreateNewSnapshot for manual backups
+func (o ElasticBackupPropertiesOutput) SnapshotUsage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticBackupProperties) *string { return v.SnapshotUsage }).(pulumi.StringPtrOutput)
+}
+
+type ElasticBackupPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (ElasticBackupPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticBackupProperties)(nil)).Elem()
+}
+
+func (o ElasticBackupPropertiesPtrOutput) ToElasticBackupPropertiesPtrOutput() ElasticBackupPropertiesPtrOutput {
+	return o
+}
+
+func (o ElasticBackupPropertiesPtrOutput) ToElasticBackupPropertiesPtrOutputWithContext(ctx context.Context) ElasticBackupPropertiesPtrOutput {
+	return o
+}
+
+func (o ElasticBackupPropertiesPtrOutput) Elem() ElasticBackupPropertiesOutput {
+	return o.ApplyT(func(v *ElasticBackupProperties) ElasticBackupProperties {
+		if v != nil {
+			return *v
+		}
+		var ret ElasticBackupProperties
+		return ret
+	}).(ElasticBackupPropertiesOutput)
+}
+
+// ResourceId used to identify the elastic snapshot resource. This is required when an existing snapshot needs to be used for creating a manual backup
+func (o ElasticBackupPropertiesPtrOutput) ElasticSnapshotResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticBackupProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ElasticSnapshotResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// ResourceId used to identify the Elastic Volume
+func (o ElasticBackupPropertiesPtrOutput) ElasticVolumeResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticBackupProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ElasticVolumeResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Label for backup
+func (o ElasticBackupPropertiesPtrOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticBackupProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Label
+	}).(pulumi.StringPtrOutput)
+}
+
+// Manual backup using an already existing snapshot. This will always be CreateNewSnapshot for scheduled backups and UseExistingSnapshot/CreateNewSnapshot for manual backups
+func (o ElasticBackupPropertiesPtrOutput) SnapshotUsage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticBackupProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SnapshotUsage
+	}).(pulumi.StringPtrOutput)
+}
+
+// Elastic Backup properties
+type ElasticBackupPropertiesResponse struct {
+	// Type of backup Manual or Scheduled
+	BackupType string `pulumi:"backupType"`
+	// The completion date of the backup
+	CompletionDate string `pulumi:"completionDate"`
+	// The creation date of the backup
+	CreationDate string `pulumi:"creationDate"`
+	// ResourceId used to identify the elastic backup policy
+	ElasticBackupPolicyResourceId string `pulumi:"elasticBackupPolicyResourceId"`
+	// ResourceId used to identify the elastic snapshot resource. This is required when an existing snapshot needs to be used for creating a manual backup
+	ElasticSnapshotResourceId *string `pulumi:"elasticSnapshotResourceId"`
+	// ResourceId used to identify the Elastic Volume
+	ElasticVolumeResourceId string `pulumi:"elasticVolumeResourceId"`
+	// Failure reason
+	FailureReason string `pulumi:"failureReason"`
+	// Label for backup
+	Label *string `pulumi:"label"`
+	// Azure lifecycle management.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Size of backup in bytes
+	Size float64 `pulumi:"size"`
+	// The snapshot creation date of the backup
+	SnapshotCreationDate string `pulumi:"snapshotCreationDate"`
+	// Manual backup using an already existing snapshot. This will always be CreateNewSnapshot for scheduled backups and UseExistingSnapshot/CreateNewSnapshot for manual backups
+	SnapshotUsage *string `pulumi:"snapshotUsage"`
+	// Specifies if the backup is for a large volume.
+	VolumeSize string `pulumi:"volumeSize"`
+}
+
+// Defaults sets the appropriate defaults for ElasticBackupPropertiesResponse
+func (val *ElasticBackupPropertiesResponse) Defaults() *ElasticBackupPropertiesResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.SnapshotUsage == nil {
+		snapshotUsage_ := "CreateNewSnapshot"
+		tmp.SnapshotUsage = &snapshotUsage_
+	}
+	return &tmp
+}
+
+// Elastic Backup properties
+type ElasticBackupPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (ElasticBackupPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticBackupPropertiesResponse)(nil)).Elem()
+}
+
+func (o ElasticBackupPropertiesResponseOutput) ToElasticBackupPropertiesResponseOutput() ElasticBackupPropertiesResponseOutput {
+	return o
+}
+
+func (o ElasticBackupPropertiesResponseOutput) ToElasticBackupPropertiesResponseOutputWithContext(ctx context.Context) ElasticBackupPropertiesResponseOutput {
+	return o
+}
+
+// Type of backup Manual or Scheduled
+func (o ElasticBackupPropertiesResponseOutput) BackupType() pulumi.StringOutput {
+	return o.ApplyT(func(v ElasticBackupPropertiesResponse) string { return v.BackupType }).(pulumi.StringOutput)
+}
+
+// The completion date of the backup
+func (o ElasticBackupPropertiesResponseOutput) CompletionDate() pulumi.StringOutput {
+	return o.ApplyT(func(v ElasticBackupPropertiesResponse) string { return v.CompletionDate }).(pulumi.StringOutput)
+}
+
+// The creation date of the backup
+func (o ElasticBackupPropertiesResponseOutput) CreationDate() pulumi.StringOutput {
+	return o.ApplyT(func(v ElasticBackupPropertiesResponse) string { return v.CreationDate }).(pulumi.StringOutput)
+}
+
+// ResourceId used to identify the elastic backup policy
+func (o ElasticBackupPropertiesResponseOutput) ElasticBackupPolicyResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v ElasticBackupPropertiesResponse) string { return v.ElasticBackupPolicyResourceId }).(pulumi.StringOutput)
+}
+
+// ResourceId used to identify the elastic snapshot resource. This is required when an existing snapshot needs to be used for creating a manual backup
+func (o ElasticBackupPropertiesResponseOutput) ElasticSnapshotResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticBackupPropertiesResponse) *string { return v.ElasticSnapshotResourceId }).(pulumi.StringPtrOutput)
+}
+
+// ResourceId used to identify the Elastic Volume
+func (o ElasticBackupPropertiesResponseOutput) ElasticVolumeResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v ElasticBackupPropertiesResponse) string { return v.ElasticVolumeResourceId }).(pulumi.StringOutput)
+}
+
+// Failure reason
+func (o ElasticBackupPropertiesResponseOutput) FailureReason() pulumi.StringOutput {
+	return o.ApplyT(func(v ElasticBackupPropertiesResponse) string { return v.FailureReason }).(pulumi.StringOutput)
+}
+
+// Label for backup
+func (o ElasticBackupPropertiesResponseOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticBackupPropertiesResponse) *string { return v.Label }).(pulumi.StringPtrOutput)
+}
+
+// Azure lifecycle management.
+func (o ElasticBackupPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v ElasticBackupPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Size of backup in bytes
+func (o ElasticBackupPropertiesResponseOutput) Size() pulumi.Float64Output {
+	return o.ApplyT(func(v ElasticBackupPropertiesResponse) float64 { return v.Size }).(pulumi.Float64Output)
+}
+
+// The snapshot creation date of the backup
+func (o ElasticBackupPropertiesResponseOutput) SnapshotCreationDate() pulumi.StringOutput {
+	return o.ApplyT(func(v ElasticBackupPropertiesResponse) string { return v.SnapshotCreationDate }).(pulumi.StringOutput)
+}
+
+// Manual backup using an already existing snapshot. This will always be CreateNewSnapshot for scheduled backups and UseExistingSnapshot/CreateNewSnapshot for manual backups
+func (o ElasticBackupPropertiesResponseOutput) SnapshotUsage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticBackupPropertiesResponse) *string { return v.SnapshotUsage }).(pulumi.StringPtrOutput)
+}
+
+// Specifies if the backup is for a large volume.
+func (o ElasticBackupPropertiesResponseOutput) VolumeSize() pulumi.StringOutput {
+	return o.ApplyT(func(v ElasticBackupPropertiesResponse) string { return v.VolumeSize }).(pulumi.StringOutput)
+}
+
+// Elastic Backup Vault properties
+type ElasticBackupVaultPropertiesResponse struct {
+	// Azure lifecycle management.
+	ProvisioningState string `pulumi:"provisioningState"`
+}
+
+// Elastic Backup Vault properties
+type ElasticBackupVaultPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (ElasticBackupVaultPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticBackupVaultPropertiesResponse)(nil)).Elem()
+}
+
+func (o ElasticBackupVaultPropertiesResponseOutput) ToElasticBackupVaultPropertiesResponseOutput() ElasticBackupVaultPropertiesResponseOutput {
+	return o
+}
+
+func (o ElasticBackupVaultPropertiesResponseOutput) ToElasticBackupVaultPropertiesResponseOutputWithContext(ctx context.Context) ElasticBackupVaultPropertiesResponseOutput {
+	return o
+}
+
+// Azure lifecycle management.
+func (o ElasticBackupVaultPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v ElasticBackupVaultPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Elastic capacity pool properties
+type ElasticCapacityPoolProperties struct {
+	// The Azure Resource URI for an Active Directory configuration. This is used by all the SMB volumes within the pool
+	ActiveDirectoryConfigResourceId *string `pulumi:"activeDirectoryConfigResourceId"`
+	// Encryption settings
+	Encryption *ElasticEncryptionConfiguration `pulumi:"encryption"`
+	// The service level of the elastic capacity pool
+	ServiceLevel string `pulumi:"serviceLevel"`
+	// Provisioned size of the pool (in bytes). For zoneRedundant service level pool, value must be in the range 1TiB to 16TiB or 1TiB to 128TiB for supported region. Values expressed in bytes as multiples of 1TiB till 16TiB and in multiples of 8TiB from 24TiB to 128TiB. Pool size can't be shrunk once it is created.
+	Size float64 `pulumi:"size"`
+	// The Azure Resource URI for a delegated subnet. Must have the delegation Microsoft.NetApp/elasticVolumes, this is used by all the volumes within the pool
+	SubnetResourceId string `pulumi:"subnetResourceId"`
+}
+
+// ElasticCapacityPoolPropertiesInput is an input type that accepts ElasticCapacityPoolPropertiesArgs and ElasticCapacityPoolPropertiesOutput values.
+// You can construct a concrete instance of `ElasticCapacityPoolPropertiesInput` via:
+//
+//	ElasticCapacityPoolPropertiesArgs{...}
+type ElasticCapacityPoolPropertiesInput interface {
+	pulumi.Input
+
+	ToElasticCapacityPoolPropertiesOutput() ElasticCapacityPoolPropertiesOutput
+	ToElasticCapacityPoolPropertiesOutputWithContext(context.Context) ElasticCapacityPoolPropertiesOutput
+}
+
+// Elastic capacity pool properties
+type ElasticCapacityPoolPropertiesArgs struct {
+	// The Azure Resource URI for an Active Directory configuration. This is used by all the SMB volumes within the pool
+	ActiveDirectoryConfigResourceId pulumi.StringPtrInput `pulumi:"activeDirectoryConfigResourceId"`
+	// Encryption settings
+	Encryption ElasticEncryptionConfigurationPtrInput `pulumi:"encryption"`
+	// The service level of the elastic capacity pool
+	ServiceLevel pulumi.StringInput `pulumi:"serviceLevel"`
+	// Provisioned size of the pool (in bytes). For zoneRedundant service level pool, value must be in the range 1TiB to 16TiB or 1TiB to 128TiB for supported region. Values expressed in bytes as multiples of 1TiB till 16TiB and in multiples of 8TiB from 24TiB to 128TiB. Pool size can't be shrunk once it is created.
+	Size pulumi.Float64Input `pulumi:"size"`
+	// The Azure Resource URI for a delegated subnet. Must have the delegation Microsoft.NetApp/elasticVolumes, this is used by all the volumes within the pool
+	SubnetResourceId pulumi.StringInput `pulumi:"subnetResourceId"`
+}
+
+func (ElasticCapacityPoolPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticCapacityPoolProperties)(nil)).Elem()
+}
+
+func (i ElasticCapacityPoolPropertiesArgs) ToElasticCapacityPoolPropertiesOutput() ElasticCapacityPoolPropertiesOutput {
+	return i.ToElasticCapacityPoolPropertiesOutputWithContext(context.Background())
+}
+
+func (i ElasticCapacityPoolPropertiesArgs) ToElasticCapacityPoolPropertiesOutputWithContext(ctx context.Context) ElasticCapacityPoolPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticCapacityPoolPropertiesOutput)
+}
+
+func (i ElasticCapacityPoolPropertiesArgs) ToElasticCapacityPoolPropertiesPtrOutput() ElasticCapacityPoolPropertiesPtrOutput {
+	return i.ToElasticCapacityPoolPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i ElasticCapacityPoolPropertiesArgs) ToElasticCapacityPoolPropertiesPtrOutputWithContext(ctx context.Context) ElasticCapacityPoolPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticCapacityPoolPropertiesOutput).ToElasticCapacityPoolPropertiesPtrOutputWithContext(ctx)
+}
+
+// ElasticCapacityPoolPropertiesPtrInput is an input type that accepts ElasticCapacityPoolPropertiesArgs, ElasticCapacityPoolPropertiesPtr and ElasticCapacityPoolPropertiesPtrOutput values.
+// You can construct a concrete instance of `ElasticCapacityPoolPropertiesPtrInput` via:
+//
+//	        ElasticCapacityPoolPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ElasticCapacityPoolPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToElasticCapacityPoolPropertiesPtrOutput() ElasticCapacityPoolPropertiesPtrOutput
+	ToElasticCapacityPoolPropertiesPtrOutputWithContext(context.Context) ElasticCapacityPoolPropertiesPtrOutput
+}
+
+type elasticCapacityPoolPropertiesPtrType ElasticCapacityPoolPropertiesArgs
+
+func ElasticCapacityPoolPropertiesPtr(v *ElasticCapacityPoolPropertiesArgs) ElasticCapacityPoolPropertiesPtrInput {
+	return (*elasticCapacityPoolPropertiesPtrType)(v)
+}
+
+func (*elasticCapacityPoolPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticCapacityPoolProperties)(nil)).Elem()
+}
+
+func (i *elasticCapacityPoolPropertiesPtrType) ToElasticCapacityPoolPropertiesPtrOutput() ElasticCapacityPoolPropertiesPtrOutput {
+	return i.ToElasticCapacityPoolPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *elasticCapacityPoolPropertiesPtrType) ToElasticCapacityPoolPropertiesPtrOutputWithContext(ctx context.Context) ElasticCapacityPoolPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticCapacityPoolPropertiesPtrOutput)
+}
+
+// Elastic capacity pool properties
+type ElasticCapacityPoolPropertiesOutput struct{ *pulumi.OutputState }
+
+func (ElasticCapacityPoolPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticCapacityPoolProperties)(nil)).Elem()
+}
+
+func (o ElasticCapacityPoolPropertiesOutput) ToElasticCapacityPoolPropertiesOutput() ElasticCapacityPoolPropertiesOutput {
+	return o
+}
+
+func (o ElasticCapacityPoolPropertiesOutput) ToElasticCapacityPoolPropertiesOutputWithContext(ctx context.Context) ElasticCapacityPoolPropertiesOutput {
+	return o
+}
+
+func (o ElasticCapacityPoolPropertiesOutput) ToElasticCapacityPoolPropertiesPtrOutput() ElasticCapacityPoolPropertiesPtrOutput {
+	return o.ToElasticCapacityPoolPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o ElasticCapacityPoolPropertiesOutput) ToElasticCapacityPoolPropertiesPtrOutputWithContext(ctx context.Context) ElasticCapacityPoolPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElasticCapacityPoolProperties) *ElasticCapacityPoolProperties {
+		return &v
+	}).(ElasticCapacityPoolPropertiesPtrOutput)
+}
+
+// The Azure Resource URI for an Active Directory configuration. This is used by all the SMB volumes within the pool
+func (o ElasticCapacityPoolPropertiesOutput) ActiveDirectoryConfigResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticCapacityPoolProperties) *string { return v.ActiveDirectoryConfigResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Encryption settings
+func (o ElasticCapacityPoolPropertiesOutput) Encryption() ElasticEncryptionConfigurationPtrOutput {
+	return o.ApplyT(func(v ElasticCapacityPoolProperties) *ElasticEncryptionConfiguration { return v.Encryption }).(ElasticEncryptionConfigurationPtrOutput)
+}
+
+// The service level of the elastic capacity pool
+func (o ElasticCapacityPoolPropertiesOutput) ServiceLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v ElasticCapacityPoolProperties) string { return v.ServiceLevel }).(pulumi.StringOutput)
+}
+
+// Provisioned size of the pool (in bytes). For zoneRedundant service level pool, value must be in the range 1TiB to 16TiB or 1TiB to 128TiB for supported region. Values expressed in bytes as multiples of 1TiB till 16TiB and in multiples of 8TiB from 24TiB to 128TiB. Pool size can't be shrunk once it is created.
+func (o ElasticCapacityPoolPropertiesOutput) Size() pulumi.Float64Output {
+	return o.ApplyT(func(v ElasticCapacityPoolProperties) float64 { return v.Size }).(pulumi.Float64Output)
+}
+
+// The Azure Resource URI for a delegated subnet. Must have the delegation Microsoft.NetApp/elasticVolumes, this is used by all the volumes within the pool
+func (o ElasticCapacityPoolPropertiesOutput) SubnetResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v ElasticCapacityPoolProperties) string { return v.SubnetResourceId }).(pulumi.StringOutput)
+}
+
+type ElasticCapacityPoolPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (ElasticCapacityPoolPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticCapacityPoolProperties)(nil)).Elem()
+}
+
+func (o ElasticCapacityPoolPropertiesPtrOutput) ToElasticCapacityPoolPropertiesPtrOutput() ElasticCapacityPoolPropertiesPtrOutput {
+	return o
+}
+
+func (o ElasticCapacityPoolPropertiesPtrOutput) ToElasticCapacityPoolPropertiesPtrOutputWithContext(ctx context.Context) ElasticCapacityPoolPropertiesPtrOutput {
+	return o
+}
+
+func (o ElasticCapacityPoolPropertiesPtrOutput) Elem() ElasticCapacityPoolPropertiesOutput {
+	return o.ApplyT(func(v *ElasticCapacityPoolProperties) ElasticCapacityPoolProperties {
+		if v != nil {
+			return *v
+		}
+		var ret ElasticCapacityPoolProperties
+		return ret
+	}).(ElasticCapacityPoolPropertiesOutput)
+}
+
+// The Azure Resource URI for an Active Directory configuration. This is used by all the SMB volumes within the pool
+func (o ElasticCapacityPoolPropertiesPtrOutput) ActiveDirectoryConfigResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticCapacityPoolProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ActiveDirectoryConfigResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Encryption settings
+func (o ElasticCapacityPoolPropertiesPtrOutput) Encryption() ElasticEncryptionConfigurationPtrOutput {
+	return o.ApplyT(func(v *ElasticCapacityPoolProperties) *ElasticEncryptionConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.Encryption
+	}).(ElasticEncryptionConfigurationPtrOutput)
+}
+
+// The service level of the elastic capacity pool
+func (o ElasticCapacityPoolPropertiesPtrOutput) ServiceLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticCapacityPoolProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceLevel
+	}).(pulumi.StringPtrOutput)
+}
+
+// Provisioned size of the pool (in bytes). For zoneRedundant service level pool, value must be in the range 1TiB to 16TiB or 1TiB to 128TiB for supported region. Values expressed in bytes as multiples of 1TiB till 16TiB and in multiples of 8TiB from 24TiB to 128TiB. Pool size can't be shrunk once it is created.
+func (o ElasticCapacityPoolPropertiesPtrOutput) Size() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ElasticCapacityPoolProperties) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.Size
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The Azure Resource URI for a delegated subnet. Must have the delegation Microsoft.NetApp/elasticVolumes, this is used by all the volumes within the pool
+func (o ElasticCapacityPoolPropertiesPtrOutput) SubnetResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticCapacityPoolProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SubnetResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Elastic capacity pool properties
+type ElasticCapacityPoolPropertiesResponse struct {
+	// The Azure Resource URI for an Active Directory configuration. This is used by all the SMB volumes within the pool
+	ActiveDirectoryConfigResourceId *string `pulumi:"activeDirectoryConfigResourceId"`
+	// Current availability status of the resource.
+	AvailabilityStatus string `pulumi:"availabilityStatus"`
+	// Indicates the current zone of the pool. This can be changed for zoneRedundant service level pool with the changeZone action
+	CurrentZone string `pulumi:"currentZone"`
+	// Encryption settings
+	Encryption *ElasticEncryptionConfigurationResponse `pulumi:"encryption"`
+	// Azure lifecycle management.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The service level of the elastic capacity pool
+	ServiceLevel string `pulumi:"serviceLevel"`
+	// Provisioned size of the pool (in bytes). For zoneRedundant service level pool, value must be in the range 1TiB to 16TiB or 1TiB to 128TiB for supported region. Values expressed in bytes as multiples of 1TiB till 16TiB and in multiples of 8TiB from 24TiB to 128TiB. Pool size can't be shrunk once it is created.
+	Size float64 `pulumi:"size"`
+	// The Azure Resource URI for a delegated subnet. Must have the delegation Microsoft.NetApp/elasticVolumes, this is used by all the volumes within the pool
+	SubnetResourceId string `pulumi:"subnetResourceId"`
+	// Total throughput of the pool in MiB/s
+	TotalThroughputMibps float64 `pulumi:"totalThroughputMibps"`
+}
+
+// Elastic capacity pool properties
+type ElasticCapacityPoolPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (ElasticCapacityPoolPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticCapacityPoolPropertiesResponse)(nil)).Elem()
+}
+
+func (o ElasticCapacityPoolPropertiesResponseOutput) ToElasticCapacityPoolPropertiesResponseOutput() ElasticCapacityPoolPropertiesResponseOutput {
+	return o
+}
+
+func (o ElasticCapacityPoolPropertiesResponseOutput) ToElasticCapacityPoolPropertiesResponseOutputWithContext(ctx context.Context) ElasticCapacityPoolPropertiesResponseOutput {
+	return o
+}
+
+// The Azure Resource URI for an Active Directory configuration. This is used by all the SMB volumes within the pool
+func (o ElasticCapacityPoolPropertiesResponseOutput) ActiveDirectoryConfigResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticCapacityPoolPropertiesResponse) *string { return v.ActiveDirectoryConfigResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Current availability status of the resource.
+func (o ElasticCapacityPoolPropertiesResponseOutput) AvailabilityStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v ElasticCapacityPoolPropertiesResponse) string { return v.AvailabilityStatus }).(pulumi.StringOutput)
+}
+
+// Indicates the current zone of the pool. This can be changed for zoneRedundant service level pool with the changeZone action
+func (o ElasticCapacityPoolPropertiesResponseOutput) CurrentZone() pulumi.StringOutput {
+	return o.ApplyT(func(v ElasticCapacityPoolPropertiesResponse) string { return v.CurrentZone }).(pulumi.StringOutput)
+}
+
+// Encryption settings
+func (o ElasticCapacityPoolPropertiesResponseOutput) Encryption() ElasticEncryptionConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v ElasticCapacityPoolPropertiesResponse) *ElasticEncryptionConfigurationResponse {
+		return v.Encryption
+	}).(ElasticEncryptionConfigurationResponsePtrOutput)
+}
+
+// Azure lifecycle management.
+func (o ElasticCapacityPoolPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v ElasticCapacityPoolPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The service level of the elastic capacity pool
+func (o ElasticCapacityPoolPropertiesResponseOutput) ServiceLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v ElasticCapacityPoolPropertiesResponse) string { return v.ServiceLevel }).(pulumi.StringOutput)
+}
+
+// Provisioned size of the pool (in bytes). For zoneRedundant service level pool, value must be in the range 1TiB to 16TiB or 1TiB to 128TiB for supported region. Values expressed in bytes as multiples of 1TiB till 16TiB and in multiples of 8TiB from 24TiB to 128TiB. Pool size can't be shrunk once it is created.
+func (o ElasticCapacityPoolPropertiesResponseOutput) Size() pulumi.Float64Output {
+	return o.ApplyT(func(v ElasticCapacityPoolPropertiesResponse) float64 { return v.Size }).(pulumi.Float64Output)
+}
+
+// The Azure Resource URI for a delegated subnet. Must have the delegation Microsoft.NetApp/elasticVolumes, this is used by all the volumes within the pool
+func (o ElasticCapacityPoolPropertiesResponseOutput) SubnetResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v ElasticCapacityPoolPropertiesResponse) string { return v.SubnetResourceId }).(pulumi.StringOutput)
+}
+
+// Total throughput of the pool in MiB/s
+func (o ElasticCapacityPoolPropertiesResponseOutput) TotalThroughputMibps() pulumi.Float64Output {
+	return o.ApplyT(func(v ElasticCapacityPoolPropertiesResponse) float64 { return v.TotalThroughputMibps }).(pulumi.Float64Output)
+}
+
+// Encryption settings
+type ElasticEncryption struct {
+	// Identity used to authenticate to KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
+	Identity *ElasticEncryptionIdentity `pulumi:"identity"`
+	// The encryption keySource (provider). Possible values (case-insensitive): Microsoft.NetApp, Microsoft.KeyVault
+	KeySource *string `pulumi:"keySource"`
+	// Properties provided by KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
+	KeyVaultProperties *ElasticKeyVaultProperties `pulumi:"keyVaultProperties"`
+}
+
+// ElasticEncryptionInput is an input type that accepts ElasticEncryptionArgs and ElasticEncryptionOutput values.
+// You can construct a concrete instance of `ElasticEncryptionInput` via:
+//
+//	ElasticEncryptionArgs{...}
+type ElasticEncryptionInput interface {
+	pulumi.Input
+
+	ToElasticEncryptionOutput() ElasticEncryptionOutput
+	ToElasticEncryptionOutputWithContext(context.Context) ElasticEncryptionOutput
+}
+
+// Encryption settings
+type ElasticEncryptionArgs struct {
+	// Identity used to authenticate to KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
+	Identity ElasticEncryptionIdentityPtrInput `pulumi:"identity"`
+	// The encryption keySource (provider). Possible values (case-insensitive): Microsoft.NetApp, Microsoft.KeyVault
+	KeySource pulumi.StringPtrInput `pulumi:"keySource"`
+	// Properties provided by KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
+	KeyVaultProperties ElasticKeyVaultPropertiesPtrInput `pulumi:"keyVaultProperties"`
+}
+
+func (ElasticEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticEncryption)(nil)).Elem()
+}
+
+func (i ElasticEncryptionArgs) ToElasticEncryptionOutput() ElasticEncryptionOutput {
+	return i.ToElasticEncryptionOutputWithContext(context.Background())
+}
+
+func (i ElasticEncryptionArgs) ToElasticEncryptionOutputWithContext(ctx context.Context) ElasticEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticEncryptionOutput)
+}
+
+func (i ElasticEncryptionArgs) ToElasticEncryptionPtrOutput() ElasticEncryptionPtrOutput {
+	return i.ToElasticEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i ElasticEncryptionArgs) ToElasticEncryptionPtrOutputWithContext(ctx context.Context) ElasticEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticEncryptionOutput).ToElasticEncryptionPtrOutputWithContext(ctx)
+}
+
+// ElasticEncryptionPtrInput is an input type that accepts ElasticEncryptionArgs, ElasticEncryptionPtr and ElasticEncryptionPtrOutput values.
+// You can construct a concrete instance of `ElasticEncryptionPtrInput` via:
+//
+//	        ElasticEncryptionArgs{...}
+//
+//	or:
+//
+//	        nil
+type ElasticEncryptionPtrInput interface {
+	pulumi.Input
+
+	ToElasticEncryptionPtrOutput() ElasticEncryptionPtrOutput
+	ToElasticEncryptionPtrOutputWithContext(context.Context) ElasticEncryptionPtrOutput
+}
+
+type elasticEncryptionPtrType ElasticEncryptionArgs
+
+func ElasticEncryptionPtr(v *ElasticEncryptionArgs) ElasticEncryptionPtrInput {
+	return (*elasticEncryptionPtrType)(v)
+}
+
+func (*elasticEncryptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticEncryption)(nil)).Elem()
+}
+
+func (i *elasticEncryptionPtrType) ToElasticEncryptionPtrOutput() ElasticEncryptionPtrOutput {
+	return i.ToElasticEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i *elasticEncryptionPtrType) ToElasticEncryptionPtrOutputWithContext(ctx context.Context) ElasticEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticEncryptionPtrOutput)
+}
+
+// Encryption settings
+type ElasticEncryptionOutput struct{ *pulumi.OutputState }
+
+func (ElasticEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticEncryption)(nil)).Elem()
+}
+
+func (o ElasticEncryptionOutput) ToElasticEncryptionOutput() ElasticEncryptionOutput {
+	return o
+}
+
+func (o ElasticEncryptionOutput) ToElasticEncryptionOutputWithContext(ctx context.Context) ElasticEncryptionOutput {
+	return o
+}
+
+func (o ElasticEncryptionOutput) ToElasticEncryptionPtrOutput() ElasticEncryptionPtrOutput {
+	return o.ToElasticEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (o ElasticEncryptionOutput) ToElasticEncryptionPtrOutputWithContext(ctx context.Context) ElasticEncryptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElasticEncryption) *ElasticEncryption {
+		return &v
+	}).(ElasticEncryptionPtrOutput)
+}
+
+// Identity used to authenticate to KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
+func (o ElasticEncryptionOutput) Identity() ElasticEncryptionIdentityPtrOutput {
+	return o.ApplyT(func(v ElasticEncryption) *ElasticEncryptionIdentity { return v.Identity }).(ElasticEncryptionIdentityPtrOutput)
+}
+
+// The encryption keySource (provider). Possible values (case-insensitive): Microsoft.NetApp, Microsoft.KeyVault
+func (o ElasticEncryptionOutput) KeySource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticEncryption) *string { return v.KeySource }).(pulumi.StringPtrOutput)
+}
+
+// Properties provided by KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
+func (o ElasticEncryptionOutput) KeyVaultProperties() ElasticKeyVaultPropertiesPtrOutput {
+	return o.ApplyT(func(v ElasticEncryption) *ElasticKeyVaultProperties { return v.KeyVaultProperties }).(ElasticKeyVaultPropertiesPtrOutput)
+}
+
+type ElasticEncryptionPtrOutput struct{ *pulumi.OutputState }
+
+func (ElasticEncryptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticEncryption)(nil)).Elem()
+}
+
+func (o ElasticEncryptionPtrOutput) ToElasticEncryptionPtrOutput() ElasticEncryptionPtrOutput {
+	return o
+}
+
+func (o ElasticEncryptionPtrOutput) ToElasticEncryptionPtrOutputWithContext(ctx context.Context) ElasticEncryptionPtrOutput {
+	return o
+}
+
+func (o ElasticEncryptionPtrOutput) Elem() ElasticEncryptionOutput {
+	return o.ApplyT(func(v *ElasticEncryption) ElasticEncryption {
+		if v != nil {
+			return *v
+		}
+		var ret ElasticEncryption
+		return ret
+	}).(ElasticEncryptionOutput)
+}
+
+// Identity used to authenticate to KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
+func (o ElasticEncryptionPtrOutput) Identity() ElasticEncryptionIdentityPtrOutput {
+	return o.ApplyT(func(v *ElasticEncryption) *ElasticEncryptionIdentity {
+		if v == nil {
+			return nil
+		}
+		return v.Identity
+	}).(ElasticEncryptionIdentityPtrOutput)
+}
+
+// The encryption keySource (provider). Possible values (case-insensitive): Microsoft.NetApp, Microsoft.KeyVault
+func (o ElasticEncryptionPtrOutput) KeySource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticEncryption) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeySource
+	}).(pulumi.StringPtrOutput)
+}
+
+// Properties provided by KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
+func (o ElasticEncryptionPtrOutput) KeyVaultProperties() ElasticKeyVaultPropertiesPtrOutput {
+	return o.ApplyT(func(v *ElasticEncryption) *ElasticKeyVaultProperties {
+		if v == nil {
+			return nil
+		}
+		return v.KeyVaultProperties
+	}).(ElasticKeyVaultPropertiesPtrOutput)
+}
+
+// CMK Encryption Configuration
+type ElasticEncryptionConfiguration struct {
+	// Pool Encryption Key Source.
+	ElasticPoolEncryptionKeySource string `pulumi:"elasticPoolEncryptionKeySource"`
+	// The resource ID of private endpoint for KeyVault. It must reside in the same VNET as the volume. Only applicable if encryptionKeySource = 'Microsoft.KeyVault'.
+	KeyVaultPrivateEndpointResourceId string `pulumi:"keyVaultPrivateEndpointResourceId"`
+}
+
+// ElasticEncryptionConfigurationInput is an input type that accepts ElasticEncryptionConfigurationArgs and ElasticEncryptionConfigurationOutput values.
+// You can construct a concrete instance of `ElasticEncryptionConfigurationInput` via:
+//
+//	ElasticEncryptionConfigurationArgs{...}
+type ElasticEncryptionConfigurationInput interface {
+	pulumi.Input
+
+	ToElasticEncryptionConfigurationOutput() ElasticEncryptionConfigurationOutput
+	ToElasticEncryptionConfigurationOutputWithContext(context.Context) ElasticEncryptionConfigurationOutput
+}
+
+// CMK Encryption Configuration
+type ElasticEncryptionConfigurationArgs struct {
+	// Pool Encryption Key Source.
+	ElasticPoolEncryptionKeySource pulumi.StringInput `pulumi:"elasticPoolEncryptionKeySource"`
+	// The resource ID of private endpoint for KeyVault. It must reside in the same VNET as the volume. Only applicable if encryptionKeySource = 'Microsoft.KeyVault'.
+	KeyVaultPrivateEndpointResourceId pulumi.StringInput `pulumi:"keyVaultPrivateEndpointResourceId"`
+}
+
+func (ElasticEncryptionConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticEncryptionConfiguration)(nil)).Elem()
+}
+
+func (i ElasticEncryptionConfigurationArgs) ToElasticEncryptionConfigurationOutput() ElasticEncryptionConfigurationOutput {
+	return i.ToElasticEncryptionConfigurationOutputWithContext(context.Background())
+}
+
+func (i ElasticEncryptionConfigurationArgs) ToElasticEncryptionConfigurationOutputWithContext(ctx context.Context) ElasticEncryptionConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticEncryptionConfigurationOutput)
+}
+
+func (i ElasticEncryptionConfigurationArgs) ToElasticEncryptionConfigurationPtrOutput() ElasticEncryptionConfigurationPtrOutput {
+	return i.ToElasticEncryptionConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i ElasticEncryptionConfigurationArgs) ToElasticEncryptionConfigurationPtrOutputWithContext(ctx context.Context) ElasticEncryptionConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticEncryptionConfigurationOutput).ToElasticEncryptionConfigurationPtrOutputWithContext(ctx)
+}
+
+// ElasticEncryptionConfigurationPtrInput is an input type that accepts ElasticEncryptionConfigurationArgs, ElasticEncryptionConfigurationPtr and ElasticEncryptionConfigurationPtrOutput values.
+// You can construct a concrete instance of `ElasticEncryptionConfigurationPtrInput` via:
+//
+//	        ElasticEncryptionConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ElasticEncryptionConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToElasticEncryptionConfigurationPtrOutput() ElasticEncryptionConfigurationPtrOutput
+	ToElasticEncryptionConfigurationPtrOutputWithContext(context.Context) ElasticEncryptionConfigurationPtrOutput
+}
+
+type elasticEncryptionConfigurationPtrType ElasticEncryptionConfigurationArgs
+
+func ElasticEncryptionConfigurationPtr(v *ElasticEncryptionConfigurationArgs) ElasticEncryptionConfigurationPtrInput {
+	return (*elasticEncryptionConfigurationPtrType)(v)
+}
+
+func (*elasticEncryptionConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticEncryptionConfiguration)(nil)).Elem()
+}
+
+func (i *elasticEncryptionConfigurationPtrType) ToElasticEncryptionConfigurationPtrOutput() ElasticEncryptionConfigurationPtrOutput {
+	return i.ToElasticEncryptionConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *elasticEncryptionConfigurationPtrType) ToElasticEncryptionConfigurationPtrOutputWithContext(ctx context.Context) ElasticEncryptionConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticEncryptionConfigurationPtrOutput)
+}
+
+// CMK Encryption Configuration
+type ElasticEncryptionConfigurationOutput struct{ *pulumi.OutputState }
+
+func (ElasticEncryptionConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticEncryptionConfiguration)(nil)).Elem()
+}
+
+func (o ElasticEncryptionConfigurationOutput) ToElasticEncryptionConfigurationOutput() ElasticEncryptionConfigurationOutput {
+	return o
+}
+
+func (o ElasticEncryptionConfigurationOutput) ToElasticEncryptionConfigurationOutputWithContext(ctx context.Context) ElasticEncryptionConfigurationOutput {
+	return o
+}
+
+func (o ElasticEncryptionConfigurationOutput) ToElasticEncryptionConfigurationPtrOutput() ElasticEncryptionConfigurationPtrOutput {
+	return o.ToElasticEncryptionConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o ElasticEncryptionConfigurationOutput) ToElasticEncryptionConfigurationPtrOutputWithContext(ctx context.Context) ElasticEncryptionConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElasticEncryptionConfiguration) *ElasticEncryptionConfiguration {
+		return &v
+	}).(ElasticEncryptionConfigurationPtrOutput)
+}
+
+// Pool Encryption Key Source.
+func (o ElasticEncryptionConfigurationOutput) ElasticPoolEncryptionKeySource() pulumi.StringOutput {
+	return o.ApplyT(func(v ElasticEncryptionConfiguration) string { return v.ElasticPoolEncryptionKeySource }).(pulumi.StringOutput)
+}
+
+// The resource ID of private endpoint for KeyVault. It must reside in the same VNET as the volume. Only applicable if encryptionKeySource = 'Microsoft.KeyVault'.
+func (o ElasticEncryptionConfigurationOutput) KeyVaultPrivateEndpointResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v ElasticEncryptionConfiguration) string { return v.KeyVaultPrivateEndpointResourceId }).(pulumi.StringOutput)
+}
+
+type ElasticEncryptionConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (ElasticEncryptionConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticEncryptionConfiguration)(nil)).Elem()
+}
+
+func (o ElasticEncryptionConfigurationPtrOutput) ToElasticEncryptionConfigurationPtrOutput() ElasticEncryptionConfigurationPtrOutput {
+	return o
+}
+
+func (o ElasticEncryptionConfigurationPtrOutput) ToElasticEncryptionConfigurationPtrOutputWithContext(ctx context.Context) ElasticEncryptionConfigurationPtrOutput {
+	return o
+}
+
+func (o ElasticEncryptionConfigurationPtrOutput) Elem() ElasticEncryptionConfigurationOutput {
+	return o.ApplyT(func(v *ElasticEncryptionConfiguration) ElasticEncryptionConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret ElasticEncryptionConfiguration
+		return ret
+	}).(ElasticEncryptionConfigurationOutput)
+}
+
+// Pool Encryption Key Source.
+func (o ElasticEncryptionConfigurationPtrOutput) ElasticPoolEncryptionKeySource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticEncryptionConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ElasticPoolEncryptionKeySource
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource ID of private endpoint for KeyVault. It must reside in the same VNET as the volume. Only applicable if encryptionKeySource = 'Microsoft.KeyVault'.
+func (o ElasticEncryptionConfigurationPtrOutput) KeyVaultPrivateEndpointResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticEncryptionConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KeyVaultPrivateEndpointResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// CMK Encryption Configuration
+type ElasticEncryptionConfigurationResponse struct {
+	// Pool Encryption Key Source.
+	ElasticPoolEncryptionKeySource string `pulumi:"elasticPoolEncryptionKeySource"`
+	// The resource ID of private endpoint for KeyVault. It must reside in the same VNET as the volume. Only applicable if encryptionKeySource = 'Microsoft.KeyVault'.
+	KeyVaultPrivateEndpointResourceId string `pulumi:"keyVaultPrivateEndpointResourceId"`
+}
+
+// CMK Encryption Configuration
+type ElasticEncryptionConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (ElasticEncryptionConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticEncryptionConfigurationResponse)(nil)).Elem()
+}
+
+func (o ElasticEncryptionConfigurationResponseOutput) ToElasticEncryptionConfigurationResponseOutput() ElasticEncryptionConfigurationResponseOutput {
+	return o
+}
+
+func (o ElasticEncryptionConfigurationResponseOutput) ToElasticEncryptionConfigurationResponseOutputWithContext(ctx context.Context) ElasticEncryptionConfigurationResponseOutput {
+	return o
+}
+
+// Pool Encryption Key Source.
+func (o ElasticEncryptionConfigurationResponseOutput) ElasticPoolEncryptionKeySource() pulumi.StringOutput {
+	return o.ApplyT(func(v ElasticEncryptionConfigurationResponse) string { return v.ElasticPoolEncryptionKeySource }).(pulumi.StringOutput)
+}
+
+// The resource ID of private endpoint for KeyVault. It must reside in the same VNET as the volume. Only applicable if encryptionKeySource = 'Microsoft.KeyVault'.
+func (o ElasticEncryptionConfigurationResponseOutput) KeyVaultPrivateEndpointResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v ElasticEncryptionConfigurationResponse) string { return v.KeyVaultPrivateEndpointResourceId }).(pulumi.StringOutput)
+}
+
+type ElasticEncryptionConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ElasticEncryptionConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticEncryptionConfigurationResponse)(nil)).Elem()
+}
+
+func (o ElasticEncryptionConfigurationResponsePtrOutput) ToElasticEncryptionConfigurationResponsePtrOutput() ElasticEncryptionConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o ElasticEncryptionConfigurationResponsePtrOutput) ToElasticEncryptionConfigurationResponsePtrOutputWithContext(ctx context.Context) ElasticEncryptionConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o ElasticEncryptionConfigurationResponsePtrOutput) Elem() ElasticEncryptionConfigurationResponseOutput {
+	return o.ApplyT(func(v *ElasticEncryptionConfigurationResponse) ElasticEncryptionConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ElasticEncryptionConfigurationResponse
+		return ret
+	}).(ElasticEncryptionConfigurationResponseOutput)
+}
+
+// Pool Encryption Key Source.
+func (o ElasticEncryptionConfigurationResponsePtrOutput) ElasticPoolEncryptionKeySource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticEncryptionConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ElasticPoolEncryptionKeySource
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource ID of private endpoint for KeyVault. It must reside in the same VNET as the volume. Only applicable if encryptionKeySource = 'Microsoft.KeyVault'.
+func (o ElasticEncryptionConfigurationResponsePtrOutput) KeyVaultPrivateEndpointResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticEncryptionConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KeyVaultPrivateEndpointResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identity used to authenticate with key vault.
+type ElasticEncryptionIdentity struct {
+	// The ARM resource identifier of the user assigned identity used to authenticate with key vault. Applicable if identity.type has 'UserAssigned'. It should match key of identity.userAssignedIdentities.
+	UserAssignedIdentity *string `pulumi:"userAssignedIdentity"`
+}
+
+// ElasticEncryptionIdentityInput is an input type that accepts ElasticEncryptionIdentityArgs and ElasticEncryptionIdentityOutput values.
+// You can construct a concrete instance of `ElasticEncryptionIdentityInput` via:
+//
+//	ElasticEncryptionIdentityArgs{...}
+type ElasticEncryptionIdentityInput interface {
+	pulumi.Input
+
+	ToElasticEncryptionIdentityOutput() ElasticEncryptionIdentityOutput
+	ToElasticEncryptionIdentityOutputWithContext(context.Context) ElasticEncryptionIdentityOutput
+}
+
+// Identity used to authenticate with key vault.
+type ElasticEncryptionIdentityArgs struct {
+	// The ARM resource identifier of the user assigned identity used to authenticate with key vault. Applicable if identity.type has 'UserAssigned'. It should match key of identity.userAssignedIdentities.
+	UserAssignedIdentity pulumi.StringPtrInput `pulumi:"userAssignedIdentity"`
+}
+
+func (ElasticEncryptionIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticEncryptionIdentity)(nil)).Elem()
+}
+
+func (i ElasticEncryptionIdentityArgs) ToElasticEncryptionIdentityOutput() ElasticEncryptionIdentityOutput {
+	return i.ToElasticEncryptionIdentityOutputWithContext(context.Background())
+}
+
+func (i ElasticEncryptionIdentityArgs) ToElasticEncryptionIdentityOutputWithContext(ctx context.Context) ElasticEncryptionIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticEncryptionIdentityOutput)
+}
+
+func (i ElasticEncryptionIdentityArgs) ToElasticEncryptionIdentityPtrOutput() ElasticEncryptionIdentityPtrOutput {
+	return i.ToElasticEncryptionIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i ElasticEncryptionIdentityArgs) ToElasticEncryptionIdentityPtrOutputWithContext(ctx context.Context) ElasticEncryptionIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticEncryptionIdentityOutput).ToElasticEncryptionIdentityPtrOutputWithContext(ctx)
+}
+
+// ElasticEncryptionIdentityPtrInput is an input type that accepts ElasticEncryptionIdentityArgs, ElasticEncryptionIdentityPtr and ElasticEncryptionIdentityPtrOutput values.
+// You can construct a concrete instance of `ElasticEncryptionIdentityPtrInput` via:
+//
+//	        ElasticEncryptionIdentityArgs{...}
+//
+//	or:
+//
+//	        nil
+type ElasticEncryptionIdentityPtrInput interface {
+	pulumi.Input
+
+	ToElasticEncryptionIdentityPtrOutput() ElasticEncryptionIdentityPtrOutput
+	ToElasticEncryptionIdentityPtrOutputWithContext(context.Context) ElasticEncryptionIdentityPtrOutput
+}
+
+type elasticEncryptionIdentityPtrType ElasticEncryptionIdentityArgs
+
+func ElasticEncryptionIdentityPtr(v *ElasticEncryptionIdentityArgs) ElasticEncryptionIdentityPtrInput {
+	return (*elasticEncryptionIdentityPtrType)(v)
+}
+
+func (*elasticEncryptionIdentityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticEncryptionIdentity)(nil)).Elem()
+}
+
+func (i *elasticEncryptionIdentityPtrType) ToElasticEncryptionIdentityPtrOutput() ElasticEncryptionIdentityPtrOutput {
+	return i.ToElasticEncryptionIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i *elasticEncryptionIdentityPtrType) ToElasticEncryptionIdentityPtrOutputWithContext(ctx context.Context) ElasticEncryptionIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticEncryptionIdentityPtrOutput)
+}
+
+// Identity used to authenticate with key vault.
+type ElasticEncryptionIdentityOutput struct{ *pulumi.OutputState }
+
+func (ElasticEncryptionIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticEncryptionIdentity)(nil)).Elem()
+}
+
+func (o ElasticEncryptionIdentityOutput) ToElasticEncryptionIdentityOutput() ElasticEncryptionIdentityOutput {
+	return o
+}
+
+func (o ElasticEncryptionIdentityOutput) ToElasticEncryptionIdentityOutputWithContext(ctx context.Context) ElasticEncryptionIdentityOutput {
+	return o
+}
+
+func (o ElasticEncryptionIdentityOutput) ToElasticEncryptionIdentityPtrOutput() ElasticEncryptionIdentityPtrOutput {
+	return o.ToElasticEncryptionIdentityPtrOutputWithContext(context.Background())
+}
+
+func (o ElasticEncryptionIdentityOutput) ToElasticEncryptionIdentityPtrOutputWithContext(ctx context.Context) ElasticEncryptionIdentityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElasticEncryptionIdentity) *ElasticEncryptionIdentity {
+		return &v
+	}).(ElasticEncryptionIdentityPtrOutput)
+}
+
+// The ARM resource identifier of the user assigned identity used to authenticate with key vault. Applicable if identity.type has 'UserAssigned'. It should match key of identity.userAssignedIdentities.
+func (o ElasticEncryptionIdentityOutput) UserAssignedIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticEncryptionIdentity) *string { return v.UserAssignedIdentity }).(pulumi.StringPtrOutput)
+}
+
+type ElasticEncryptionIdentityPtrOutput struct{ *pulumi.OutputState }
+
+func (ElasticEncryptionIdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticEncryptionIdentity)(nil)).Elem()
+}
+
+func (o ElasticEncryptionIdentityPtrOutput) ToElasticEncryptionIdentityPtrOutput() ElasticEncryptionIdentityPtrOutput {
+	return o
+}
+
+func (o ElasticEncryptionIdentityPtrOutput) ToElasticEncryptionIdentityPtrOutputWithContext(ctx context.Context) ElasticEncryptionIdentityPtrOutput {
+	return o
+}
+
+func (o ElasticEncryptionIdentityPtrOutput) Elem() ElasticEncryptionIdentityOutput {
+	return o.ApplyT(func(v *ElasticEncryptionIdentity) ElasticEncryptionIdentity {
+		if v != nil {
+			return *v
+		}
+		var ret ElasticEncryptionIdentity
+		return ret
+	}).(ElasticEncryptionIdentityOutput)
+}
+
+// The ARM resource identifier of the user assigned identity used to authenticate with key vault. Applicable if identity.type has 'UserAssigned'. It should match key of identity.userAssignedIdentities.
+func (o ElasticEncryptionIdentityPtrOutput) UserAssignedIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticEncryptionIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentity
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identity used to authenticate with key vault.
+type ElasticEncryptionIdentityResponse struct {
+	// The principal ID (object ID) of the identity used to authenticate with key vault. Read-only.
+	PrincipalId string `pulumi:"principalId"`
+	// The ARM resource identifier of the user assigned identity used to authenticate with key vault. Applicable if identity.type has 'UserAssigned'. It should match key of identity.userAssignedIdentities.
+	UserAssignedIdentity *string `pulumi:"userAssignedIdentity"`
+}
+
+// Identity used to authenticate with key vault.
+type ElasticEncryptionIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (ElasticEncryptionIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticEncryptionIdentityResponse)(nil)).Elem()
+}
+
+func (o ElasticEncryptionIdentityResponseOutput) ToElasticEncryptionIdentityResponseOutput() ElasticEncryptionIdentityResponseOutput {
+	return o
+}
+
+func (o ElasticEncryptionIdentityResponseOutput) ToElasticEncryptionIdentityResponseOutputWithContext(ctx context.Context) ElasticEncryptionIdentityResponseOutput {
+	return o
+}
+
+// The principal ID (object ID) of the identity used to authenticate with key vault. Read-only.
+func (o ElasticEncryptionIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v ElasticEncryptionIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+// The ARM resource identifier of the user assigned identity used to authenticate with key vault. Applicable if identity.type has 'UserAssigned'. It should match key of identity.userAssignedIdentities.
+func (o ElasticEncryptionIdentityResponseOutput) UserAssignedIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticEncryptionIdentityResponse) *string { return v.UserAssignedIdentity }).(pulumi.StringPtrOutput)
+}
+
+type ElasticEncryptionIdentityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ElasticEncryptionIdentityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticEncryptionIdentityResponse)(nil)).Elem()
+}
+
+func (o ElasticEncryptionIdentityResponsePtrOutput) ToElasticEncryptionIdentityResponsePtrOutput() ElasticEncryptionIdentityResponsePtrOutput {
+	return o
+}
+
+func (o ElasticEncryptionIdentityResponsePtrOutput) ToElasticEncryptionIdentityResponsePtrOutputWithContext(ctx context.Context) ElasticEncryptionIdentityResponsePtrOutput {
+	return o
+}
+
+func (o ElasticEncryptionIdentityResponsePtrOutput) Elem() ElasticEncryptionIdentityResponseOutput {
+	return o.ApplyT(func(v *ElasticEncryptionIdentityResponse) ElasticEncryptionIdentityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ElasticEncryptionIdentityResponse
+		return ret
+	}).(ElasticEncryptionIdentityResponseOutput)
+}
+
+// The principal ID (object ID) of the identity used to authenticate with key vault. Read-only.
+func (o ElasticEncryptionIdentityResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticEncryptionIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrincipalId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ARM resource identifier of the user assigned identity used to authenticate with key vault. Applicable if identity.type has 'UserAssigned'. It should match key of identity.userAssignedIdentities.
+func (o ElasticEncryptionIdentityResponsePtrOutput) UserAssignedIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticEncryptionIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentity
+	}).(pulumi.StringPtrOutput)
+}
+
+// Encryption settings
+type ElasticEncryptionResponse struct {
+	// Identity used to authenticate to KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
+	Identity *ElasticEncryptionIdentityResponse `pulumi:"identity"`
+	// The encryption keySource (provider). Possible values (case-insensitive): Microsoft.NetApp, Microsoft.KeyVault
+	KeySource *string `pulumi:"keySource"`
+	// Properties provided by KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
+	KeyVaultProperties *ElasticKeyVaultPropertiesResponse `pulumi:"keyVaultProperties"`
+}
+
+// Encryption settings
+type ElasticEncryptionResponseOutput struct{ *pulumi.OutputState }
+
+func (ElasticEncryptionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticEncryptionResponse)(nil)).Elem()
+}
+
+func (o ElasticEncryptionResponseOutput) ToElasticEncryptionResponseOutput() ElasticEncryptionResponseOutput {
+	return o
+}
+
+func (o ElasticEncryptionResponseOutput) ToElasticEncryptionResponseOutputWithContext(ctx context.Context) ElasticEncryptionResponseOutput {
+	return o
+}
+
+// Identity used to authenticate to KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
+func (o ElasticEncryptionResponseOutput) Identity() ElasticEncryptionIdentityResponsePtrOutput {
+	return o.ApplyT(func(v ElasticEncryptionResponse) *ElasticEncryptionIdentityResponse { return v.Identity }).(ElasticEncryptionIdentityResponsePtrOutput)
+}
+
+// The encryption keySource (provider). Possible values (case-insensitive): Microsoft.NetApp, Microsoft.KeyVault
+func (o ElasticEncryptionResponseOutput) KeySource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticEncryptionResponse) *string { return v.KeySource }).(pulumi.StringPtrOutput)
+}
+
+// Properties provided by KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
+func (o ElasticEncryptionResponseOutput) KeyVaultProperties() ElasticKeyVaultPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v ElasticEncryptionResponse) *ElasticKeyVaultPropertiesResponse { return v.KeyVaultProperties }).(ElasticKeyVaultPropertiesResponsePtrOutput)
+}
+
+type ElasticEncryptionResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ElasticEncryptionResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticEncryptionResponse)(nil)).Elem()
+}
+
+func (o ElasticEncryptionResponsePtrOutput) ToElasticEncryptionResponsePtrOutput() ElasticEncryptionResponsePtrOutput {
+	return o
+}
+
+func (o ElasticEncryptionResponsePtrOutput) ToElasticEncryptionResponsePtrOutputWithContext(ctx context.Context) ElasticEncryptionResponsePtrOutput {
+	return o
+}
+
+func (o ElasticEncryptionResponsePtrOutput) Elem() ElasticEncryptionResponseOutput {
+	return o.ApplyT(func(v *ElasticEncryptionResponse) ElasticEncryptionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ElasticEncryptionResponse
+		return ret
+	}).(ElasticEncryptionResponseOutput)
+}
+
+// Identity used to authenticate to KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
+func (o ElasticEncryptionResponsePtrOutput) Identity() ElasticEncryptionIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *ElasticEncryptionResponse) *ElasticEncryptionIdentityResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Identity
+	}).(ElasticEncryptionIdentityResponsePtrOutput)
+}
+
+// The encryption keySource (provider). Possible values (case-insensitive): Microsoft.NetApp, Microsoft.KeyVault
+func (o ElasticEncryptionResponsePtrOutput) KeySource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticEncryptionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeySource
+	}).(pulumi.StringPtrOutput)
+}
+
+// Properties provided by KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
+func (o ElasticEncryptionResponsePtrOutput) KeyVaultProperties() ElasticKeyVaultPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *ElasticEncryptionResponse) *ElasticKeyVaultPropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.KeyVaultProperties
+	}).(ElasticKeyVaultPropertiesResponsePtrOutput)
+}
+
+// Set of export policy rules
+type ElasticExportPolicy struct {
+	// Export policy rule
+	Rules []ElasticExportPolicyRule `pulumi:"rules"`
+}
+
+// ElasticExportPolicyInput is an input type that accepts ElasticExportPolicyArgs and ElasticExportPolicyOutput values.
+// You can construct a concrete instance of `ElasticExportPolicyInput` via:
+//
+//	ElasticExportPolicyArgs{...}
+type ElasticExportPolicyInput interface {
+	pulumi.Input
+
+	ToElasticExportPolicyOutput() ElasticExportPolicyOutput
+	ToElasticExportPolicyOutputWithContext(context.Context) ElasticExportPolicyOutput
+}
+
+// Set of export policy rules
+type ElasticExportPolicyArgs struct {
+	// Export policy rule
+	Rules ElasticExportPolicyRuleArrayInput `pulumi:"rules"`
+}
+
+func (ElasticExportPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticExportPolicy)(nil)).Elem()
+}
+
+func (i ElasticExportPolicyArgs) ToElasticExportPolicyOutput() ElasticExportPolicyOutput {
+	return i.ToElasticExportPolicyOutputWithContext(context.Background())
+}
+
+func (i ElasticExportPolicyArgs) ToElasticExportPolicyOutputWithContext(ctx context.Context) ElasticExportPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticExportPolicyOutput)
+}
+
+func (i ElasticExportPolicyArgs) ToElasticExportPolicyPtrOutput() ElasticExportPolicyPtrOutput {
+	return i.ToElasticExportPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i ElasticExportPolicyArgs) ToElasticExportPolicyPtrOutputWithContext(ctx context.Context) ElasticExportPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticExportPolicyOutput).ToElasticExportPolicyPtrOutputWithContext(ctx)
+}
+
+// ElasticExportPolicyPtrInput is an input type that accepts ElasticExportPolicyArgs, ElasticExportPolicyPtr and ElasticExportPolicyPtrOutput values.
+// You can construct a concrete instance of `ElasticExportPolicyPtrInput` via:
+//
+//	        ElasticExportPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ElasticExportPolicyPtrInput interface {
+	pulumi.Input
+
+	ToElasticExportPolicyPtrOutput() ElasticExportPolicyPtrOutput
+	ToElasticExportPolicyPtrOutputWithContext(context.Context) ElasticExportPolicyPtrOutput
+}
+
+type elasticExportPolicyPtrType ElasticExportPolicyArgs
+
+func ElasticExportPolicyPtr(v *ElasticExportPolicyArgs) ElasticExportPolicyPtrInput {
+	return (*elasticExportPolicyPtrType)(v)
+}
+
+func (*elasticExportPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticExportPolicy)(nil)).Elem()
+}
+
+func (i *elasticExportPolicyPtrType) ToElasticExportPolicyPtrOutput() ElasticExportPolicyPtrOutput {
+	return i.ToElasticExportPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *elasticExportPolicyPtrType) ToElasticExportPolicyPtrOutputWithContext(ctx context.Context) ElasticExportPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticExportPolicyPtrOutput)
+}
+
+// Set of export policy rules
+type ElasticExportPolicyOutput struct{ *pulumi.OutputState }
+
+func (ElasticExportPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticExportPolicy)(nil)).Elem()
+}
+
+func (o ElasticExportPolicyOutput) ToElasticExportPolicyOutput() ElasticExportPolicyOutput {
+	return o
+}
+
+func (o ElasticExportPolicyOutput) ToElasticExportPolicyOutputWithContext(ctx context.Context) ElasticExportPolicyOutput {
+	return o
+}
+
+func (o ElasticExportPolicyOutput) ToElasticExportPolicyPtrOutput() ElasticExportPolicyPtrOutput {
+	return o.ToElasticExportPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o ElasticExportPolicyOutput) ToElasticExportPolicyPtrOutputWithContext(ctx context.Context) ElasticExportPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElasticExportPolicy) *ElasticExportPolicy {
+		return &v
+	}).(ElasticExportPolicyPtrOutput)
+}
+
+// Export policy rule
+func (o ElasticExportPolicyOutput) Rules() ElasticExportPolicyRuleArrayOutput {
+	return o.ApplyT(func(v ElasticExportPolicy) []ElasticExportPolicyRule { return v.Rules }).(ElasticExportPolicyRuleArrayOutput)
+}
+
+type ElasticExportPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (ElasticExportPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticExportPolicy)(nil)).Elem()
+}
+
+func (o ElasticExportPolicyPtrOutput) ToElasticExportPolicyPtrOutput() ElasticExportPolicyPtrOutput {
+	return o
+}
+
+func (o ElasticExportPolicyPtrOutput) ToElasticExportPolicyPtrOutputWithContext(ctx context.Context) ElasticExportPolicyPtrOutput {
+	return o
+}
+
+func (o ElasticExportPolicyPtrOutput) Elem() ElasticExportPolicyOutput {
+	return o.ApplyT(func(v *ElasticExportPolicy) ElasticExportPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ElasticExportPolicy
+		return ret
+	}).(ElasticExportPolicyOutput)
+}
+
+// Export policy rule
+func (o ElasticExportPolicyPtrOutput) Rules() ElasticExportPolicyRuleArrayOutput {
+	return o.ApplyT(func(v *ElasticExportPolicy) []ElasticExportPolicyRule {
+		if v == nil {
+			return nil
+		}
+		return v.Rules
+	}).(ElasticExportPolicyRuleArrayOutput)
+}
+
+// Set of export policy rules
+type ElasticExportPolicyResponse struct {
+	// Export policy rule
+	Rules []ElasticExportPolicyRuleResponse `pulumi:"rules"`
+}
+
+// Set of export policy rules
+type ElasticExportPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (ElasticExportPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticExportPolicyResponse)(nil)).Elem()
+}
+
+func (o ElasticExportPolicyResponseOutput) ToElasticExportPolicyResponseOutput() ElasticExportPolicyResponseOutput {
+	return o
+}
+
+func (o ElasticExportPolicyResponseOutput) ToElasticExportPolicyResponseOutputWithContext(ctx context.Context) ElasticExportPolicyResponseOutput {
+	return o
+}
+
+// Export policy rule
+func (o ElasticExportPolicyResponseOutput) Rules() ElasticExportPolicyRuleResponseArrayOutput {
+	return o.ApplyT(func(v ElasticExportPolicyResponse) []ElasticExportPolicyRuleResponse { return v.Rules }).(ElasticExportPolicyRuleResponseArrayOutput)
+}
+
+type ElasticExportPolicyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ElasticExportPolicyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticExportPolicyResponse)(nil)).Elem()
+}
+
+func (o ElasticExportPolicyResponsePtrOutput) ToElasticExportPolicyResponsePtrOutput() ElasticExportPolicyResponsePtrOutput {
+	return o
+}
+
+func (o ElasticExportPolicyResponsePtrOutput) ToElasticExportPolicyResponsePtrOutputWithContext(ctx context.Context) ElasticExportPolicyResponsePtrOutput {
+	return o
+}
+
+func (o ElasticExportPolicyResponsePtrOutput) Elem() ElasticExportPolicyResponseOutput {
+	return o.ApplyT(func(v *ElasticExportPolicyResponse) ElasticExportPolicyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ElasticExportPolicyResponse
+		return ret
+	}).(ElasticExportPolicyResponseOutput)
+}
+
+// Export policy rule
+func (o ElasticExportPolicyResponsePtrOutput) Rules() ElasticExportPolicyRuleResponseArrayOutput {
+	return o.ApplyT(func(v *ElasticExportPolicyResponse) []ElasticExportPolicyRuleResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Rules
+	}).(ElasticExportPolicyRuleResponseArrayOutput)
+}
+
+// Elastic Volume Export Policy Rule
+type ElasticExportPolicyRule struct {
+	// Client ingress specification for the export policy as list of IPv4 CIDRs, IPv4 host addresses and host names.
+	AllowedClients []string `pulumi:"allowedClients"`
+	// Allows clients to access the volume with the NFSv3 protocol. Enable only for NFSv3 type volumes
+	Nfsv3 *string `pulumi:"nfsv3"`
+	// Allows clients to access the volume with at least NFSv4.1 protocol.
+	Nfsv4 *string `pulumi:"nfsv4"`
+	// Indicates whether root access to the volume is granted to clients affected by this rule
+	RootAccess *string `pulumi:"rootAccess"`
+	// Controls the priority of the export policy rule. When connecting to the volume the rule with the lowest index that applies to the connecting client is used
+	RuleIndex *int `pulumi:"ruleIndex"`
+	// Specifies the Unix file access level for the volume. It encompasses both read-only and read-write permissions. Additionally, NoAccess can be set to block all access to the volume
+	UnixAccessRule *string `pulumi:"unixAccessRule"`
+}
+
+// Defaults sets the appropriate defaults for ElasticExportPolicyRule
+func (val *ElasticExportPolicyRule) Defaults() *ElasticExportPolicyRule {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Nfsv3 == nil {
+		nfsv3_ := "Disabled"
+		tmp.Nfsv3 = &nfsv3_
+	}
+	if tmp.Nfsv4 == nil {
+		nfsv4_ := "Disabled"
+		tmp.Nfsv4 = &nfsv4_
+	}
+	if tmp.RootAccess == nil {
+		rootAccess_ := "Disabled"
+		tmp.RootAccess = &rootAccess_
+	}
+	if tmp.UnixAccessRule == nil {
+		unixAccessRule_ := "NoAccess"
+		tmp.UnixAccessRule = &unixAccessRule_
+	}
+	return &tmp
+}
+
+// ElasticExportPolicyRuleInput is an input type that accepts ElasticExportPolicyRuleArgs and ElasticExportPolicyRuleOutput values.
+// You can construct a concrete instance of `ElasticExportPolicyRuleInput` via:
+//
+//	ElasticExportPolicyRuleArgs{...}
+type ElasticExportPolicyRuleInput interface {
+	pulumi.Input
+
+	ToElasticExportPolicyRuleOutput() ElasticExportPolicyRuleOutput
+	ToElasticExportPolicyRuleOutputWithContext(context.Context) ElasticExportPolicyRuleOutput
+}
+
+// Elastic Volume Export Policy Rule
+type ElasticExportPolicyRuleArgs struct {
+	// Client ingress specification for the export policy as list of IPv4 CIDRs, IPv4 host addresses and host names.
+	AllowedClients pulumi.StringArrayInput `pulumi:"allowedClients"`
+	// Allows clients to access the volume with the NFSv3 protocol. Enable only for NFSv3 type volumes
+	Nfsv3 pulumi.StringPtrInput `pulumi:"nfsv3"`
+	// Allows clients to access the volume with at least NFSv4.1 protocol.
+	Nfsv4 pulumi.StringPtrInput `pulumi:"nfsv4"`
+	// Indicates whether root access to the volume is granted to clients affected by this rule
+	RootAccess pulumi.StringPtrInput `pulumi:"rootAccess"`
+	// Controls the priority of the export policy rule. When connecting to the volume the rule with the lowest index that applies to the connecting client is used
+	RuleIndex pulumi.IntPtrInput `pulumi:"ruleIndex"`
+	// Specifies the Unix file access level for the volume. It encompasses both read-only and read-write permissions. Additionally, NoAccess can be set to block all access to the volume
+	UnixAccessRule pulumi.StringPtrInput `pulumi:"unixAccessRule"`
+}
+
+// Defaults sets the appropriate defaults for ElasticExportPolicyRuleArgs
+func (val *ElasticExportPolicyRuleArgs) Defaults() *ElasticExportPolicyRuleArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Nfsv3 == nil {
+		tmp.Nfsv3 = pulumi.StringPtr("Disabled")
+	}
+	if tmp.Nfsv4 == nil {
+		tmp.Nfsv4 = pulumi.StringPtr("Disabled")
+	}
+	if tmp.RootAccess == nil {
+		tmp.RootAccess = pulumi.StringPtr("Disabled")
+	}
+	if tmp.UnixAccessRule == nil {
+		tmp.UnixAccessRule = pulumi.StringPtr("NoAccess")
+	}
+	return &tmp
+}
+func (ElasticExportPolicyRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticExportPolicyRule)(nil)).Elem()
+}
+
+func (i ElasticExportPolicyRuleArgs) ToElasticExportPolicyRuleOutput() ElasticExportPolicyRuleOutput {
+	return i.ToElasticExportPolicyRuleOutputWithContext(context.Background())
+}
+
+func (i ElasticExportPolicyRuleArgs) ToElasticExportPolicyRuleOutputWithContext(ctx context.Context) ElasticExportPolicyRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticExportPolicyRuleOutput)
+}
+
+// ElasticExportPolicyRuleArrayInput is an input type that accepts ElasticExportPolicyRuleArray and ElasticExportPolicyRuleArrayOutput values.
+// You can construct a concrete instance of `ElasticExportPolicyRuleArrayInput` via:
+//
+//	ElasticExportPolicyRuleArray{ ElasticExportPolicyRuleArgs{...} }
+type ElasticExportPolicyRuleArrayInput interface {
+	pulumi.Input
+
+	ToElasticExportPolicyRuleArrayOutput() ElasticExportPolicyRuleArrayOutput
+	ToElasticExportPolicyRuleArrayOutputWithContext(context.Context) ElasticExportPolicyRuleArrayOutput
+}
+
+type ElasticExportPolicyRuleArray []ElasticExportPolicyRuleInput
+
+func (ElasticExportPolicyRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElasticExportPolicyRule)(nil)).Elem()
+}
+
+func (i ElasticExportPolicyRuleArray) ToElasticExportPolicyRuleArrayOutput() ElasticExportPolicyRuleArrayOutput {
+	return i.ToElasticExportPolicyRuleArrayOutputWithContext(context.Background())
+}
+
+func (i ElasticExportPolicyRuleArray) ToElasticExportPolicyRuleArrayOutputWithContext(ctx context.Context) ElasticExportPolicyRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticExportPolicyRuleArrayOutput)
+}
+
+// Elastic Volume Export Policy Rule
+type ElasticExportPolicyRuleOutput struct{ *pulumi.OutputState }
+
+func (ElasticExportPolicyRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticExportPolicyRule)(nil)).Elem()
+}
+
+func (o ElasticExportPolicyRuleOutput) ToElasticExportPolicyRuleOutput() ElasticExportPolicyRuleOutput {
+	return o
+}
+
+func (o ElasticExportPolicyRuleOutput) ToElasticExportPolicyRuleOutputWithContext(ctx context.Context) ElasticExportPolicyRuleOutput {
+	return o
+}
+
+// Client ingress specification for the export policy as list of IPv4 CIDRs, IPv4 host addresses and host names.
+func (o ElasticExportPolicyRuleOutput) AllowedClients() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ElasticExportPolicyRule) []string { return v.AllowedClients }).(pulumi.StringArrayOutput)
+}
+
+// Allows clients to access the volume with the NFSv3 protocol. Enable only for NFSv3 type volumes
+func (o ElasticExportPolicyRuleOutput) Nfsv3() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticExportPolicyRule) *string { return v.Nfsv3 }).(pulumi.StringPtrOutput)
+}
+
+// Allows clients to access the volume with at least NFSv4.1 protocol.
+func (o ElasticExportPolicyRuleOutput) Nfsv4() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticExportPolicyRule) *string { return v.Nfsv4 }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether root access to the volume is granted to clients affected by this rule
+func (o ElasticExportPolicyRuleOutput) RootAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticExportPolicyRule) *string { return v.RootAccess }).(pulumi.StringPtrOutput)
+}
+
+// Controls the priority of the export policy rule. When connecting to the volume the rule with the lowest index that applies to the connecting client is used
+func (o ElasticExportPolicyRuleOutput) RuleIndex() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElasticExportPolicyRule) *int { return v.RuleIndex }).(pulumi.IntPtrOutput)
+}
+
+// Specifies the Unix file access level for the volume. It encompasses both read-only and read-write permissions. Additionally, NoAccess can be set to block all access to the volume
+func (o ElasticExportPolicyRuleOutput) UnixAccessRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticExportPolicyRule) *string { return v.UnixAccessRule }).(pulumi.StringPtrOutput)
+}
+
+type ElasticExportPolicyRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (ElasticExportPolicyRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElasticExportPolicyRule)(nil)).Elem()
+}
+
+func (o ElasticExportPolicyRuleArrayOutput) ToElasticExportPolicyRuleArrayOutput() ElasticExportPolicyRuleArrayOutput {
+	return o
+}
+
+func (o ElasticExportPolicyRuleArrayOutput) ToElasticExportPolicyRuleArrayOutputWithContext(ctx context.Context) ElasticExportPolicyRuleArrayOutput {
+	return o
+}
+
+func (o ElasticExportPolicyRuleArrayOutput) Index(i pulumi.IntInput) ElasticExportPolicyRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElasticExportPolicyRule {
+		return vs[0].([]ElasticExportPolicyRule)[vs[1].(int)]
+	}).(ElasticExportPolicyRuleOutput)
+}
+
+// Elastic Volume Export Policy Rule
+type ElasticExportPolicyRuleResponse struct {
+	// Client ingress specification for the export policy as list of IPv4 CIDRs, IPv4 host addresses and host names.
+	AllowedClients []string `pulumi:"allowedClients"`
+	// Allows clients to access the volume with the NFSv3 protocol. Enable only for NFSv3 type volumes
+	Nfsv3 *string `pulumi:"nfsv3"`
+	// Allows clients to access the volume with at least NFSv4.1 protocol.
+	Nfsv4 *string `pulumi:"nfsv4"`
+	// Indicates whether root access to the volume is granted to clients affected by this rule
+	RootAccess *string `pulumi:"rootAccess"`
+	// Controls the priority of the export policy rule. When connecting to the volume the rule with the lowest index that applies to the connecting client is used
+	RuleIndex *int `pulumi:"ruleIndex"`
+	// Specifies the Unix file access level for the volume. It encompasses both read-only and read-write permissions. Additionally, NoAccess can be set to block all access to the volume
+	UnixAccessRule *string `pulumi:"unixAccessRule"`
+}
+
+// Defaults sets the appropriate defaults for ElasticExportPolicyRuleResponse
+func (val *ElasticExportPolicyRuleResponse) Defaults() *ElasticExportPolicyRuleResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Nfsv3 == nil {
+		nfsv3_ := "Disabled"
+		tmp.Nfsv3 = &nfsv3_
+	}
+	if tmp.Nfsv4 == nil {
+		nfsv4_ := "Disabled"
+		tmp.Nfsv4 = &nfsv4_
+	}
+	if tmp.RootAccess == nil {
+		rootAccess_ := "Disabled"
+		tmp.RootAccess = &rootAccess_
+	}
+	if tmp.UnixAccessRule == nil {
+		unixAccessRule_ := "NoAccess"
+		tmp.UnixAccessRule = &unixAccessRule_
+	}
+	return &tmp
+}
+
+// Elastic Volume Export Policy Rule
+type ElasticExportPolicyRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (ElasticExportPolicyRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticExportPolicyRuleResponse)(nil)).Elem()
+}
+
+func (o ElasticExportPolicyRuleResponseOutput) ToElasticExportPolicyRuleResponseOutput() ElasticExportPolicyRuleResponseOutput {
+	return o
+}
+
+func (o ElasticExportPolicyRuleResponseOutput) ToElasticExportPolicyRuleResponseOutputWithContext(ctx context.Context) ElasticExportPolicyRuleResponseOutput {
+	return o
+}
+
+// Client ingress specification for the export policy as list of IPv4 CIDRs, IPv4 host addresses and host names.
+func (o ElasticExportPolicyRuleResponseOutput) AllowedClients() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ElasticExportPolicyRuleResponse) []string { return v.AllowedClients }).(pulumi.StringArrayOutput)
+}
+
+// Allows clients to access the volume with the NFSv3 protocol. Enable only for NFSv3 type volumes
+func (o ElasticExportPolicyRuleResponseOutput) Nfsv3() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticExportPolicyRuleResponse) *string { return v.Nfsv3 }).(pulumi.StringPtrOutput)
+}
+
+// Allows clients to access the volume with at least NFSv4.1 protocol.
+func (o ElasticExportPolicyRuleResponseOutput) Nfsv4() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticExportPolicyRuleResponse) *string { return v.Nfsv4 }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether root access to the volume is granted to clients affected by this rule
+func (o ElasticExportPolicyRuleResponseOutput) RootAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticExportPolicyRuleResponse) *string { return v.RootAccess }).(pulumi.StringPtrOutput)
+}
+
+// Controls the priority of the export policy rule. When connecting to the volume the rule with the lowest index that applies to the connecting client is used
+func (o ElasticExportPolicyRuleResponseOutput) RuleIndex() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElasticExportPolicyRuleResponse) *int { return v.RuleIndex }).(pulumi.IntPtrOutput)
+}
+
+// Specifies the Unix file access level for the volume. It encompasses both read-only and read-write permissions. Additionally, NoAccess can be set to block all access to the volume
+func (o ElasticExportPolicyRuleResponseOutput) UnixAccessRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticExportPolicyRuleResponse) *string { return v.UnixAccessRule }).(pulumi.StringPtrOutput)
+}
+
+type ElasticExportPolicyRuleResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ElasticExportPolicyRuleResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElasticExportPolicyRuleResponse)(nil)).Elem()
+}
+
+func (o ElasticExportPolicyRuleResponseArrayOutput) ToElasticExportPolicyRuleResponseArrayOutput() ElasticExportPolicyRuleResponseArrayOutput {
+	return o
+}
+
+func (o ElasticExportPolicyRuleResponseArrayOutput) ToElasticExportPolicyRuleResponseArrayOutputWithContext(ctx context.Context) ElasticExportPolicyRuleResponseArrayOutput {
+	return o
+}
+
+func (o ElasticExportPolicyRuleResponseArrayOutput) Index(i pulumi.IntInput) ElasticExportPolicyRuleResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElasticExportPolicyRuleResponse {
+		return vs[0].([]ElasticExportPolicyRuleResponse)[vs[1].(int)]
+	}).(ElasticExportPolicyRuleResponseOutput)
+}
+
+// Properties of key vault.
+type ElasticKeyVaultProperties struct {
+	// The name of KeyVault key.
+	KeyName *string `pulumi:"keyName"`
+	// The resource ID of KeyVault.
+	KeyVaultResourceId *string `pulumi:"keyVaultResourceId"`
+	// The Uri of KeyVault.
+	KeyVaultUri *string `pulumi:"keyVaultUri"`
+}
+
+// ElasticKeyVaultPropertiesInput is an input type that accepts ElasticKeyVaultPropertiesArgs and ElasticKeyVaultPropertiesOutput values.
+// You can construct a concrete instance of `ElasticKeyVaultPropertiesInput` via:
+//
+//	ElasticKeyVaultPropertiesArgs{...}
+type ElasticKeyVaultPropertiesInput interface {
+	pulumi.Input
+
+	ToElasticKeyVaultPropertiesOutput() ElasticKeyVaultPropertiesOutput
+	ToElasticKeyVaultPropertiesOutputWithContext(context.Context) ElasticKeyVaultPropertiesOutput
+}
+
+// Properties of key vault.
+type ElasticKeyVaultPropertiesArgs struct {
+	// The name of KeyVault key.
+	KeyName pulumi.StringPtrInput `pulumi:"keyName"`
+	// The resource ID of KeyVault.
+	KeyVaultResourceId pulumi.StringPtrInput `pulumi:"keyVaultResourceId"`
+	// The Uri of KeyVault.
+	KeyVaultUri pulumi.StringPtrInput `pulumi:"keyVaultUri"`
+}
+
+func (ElasticKeyVaultPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticKeyVaultProperties)(nil)).Elem()
+}
+
+func (i ElasticKeyVaultPropertiesArgs) ToElasticKeyVaultPropertiesOutput() ElasticKeyVaultPropertiesOutput {
+	return i.ToElasticKeyVaultPropertiesOutputWithContext(context.Background())
+}
+
+func (i ElasticKeyVaultPropertiesArgs) ToElasticKeyVaultPropertiesOutputWithContext(ctx context.Context) ElasticKeyVaultPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticKeyVaultPropertiesOutput)
+}
+
+func (i ElasticKeyVaultPropertiesArgs) ToElasticKeyVaultPropertiesPtrOutput() ElasticKeyVaultPropertiesPtrOutput {
+	return i.ToElasticKeyVaultPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i ElasticKeyVaultPropertiesArgs) ToElasticKeyVaultPropertiesPtrOutputWithContext(ctx context.Context) ElasticKeyVaultPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticKeyVaultPropertiesOutput).ToElasticKeyVaultPropertiesPtrOutputWithContext(ctx)
+}
+
+// ElasticKeyVaultPropertiesPtrInput is an input type that accepts ElasticKeyVaultPropertiesArgs, ElasticKeyVaultPropertiesPtr and ElasticKeyVaultPropertiesPtrOutput values.
+// You can construct a concrete instance of `ElasticKeyVaultPropertiesPtrInput` via:
+//
+//	        ElasticKeyVaultPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ElasticKeyVaultPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToElasticKeyVaultPropertiesPtrOutput() ElasticKeyVaultPropertiesPtrOutput
+	ToElasticKeyVaultPropertiesPtrOutputWithContext(context.Context) ElasticKeyVaultPropertiesPtrOutput
+}
+
+type elasticKeyVaultPropertiesPtrType ElasticKeyVaultPropertiesArgs
+
+func ElasticKeyVaultPropertiesPtr(v *ElasticKeyVaultPropertiesArgs) ElasticKeyVaultPropertiesPtrInput {
+	return (*elasticKeyVaultPropertiesPtrType)(v)
+}
+
+func (*elasticKeyVaultPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticKeyVaultProperties)(nil)).Elem()
+}
+
+func (i *elasticKeyVaultPropertiesPtrType) ToElasticKeyVaultPropertiesPtrOutput() ElasticKeyVaultPropertiesPtrOutput {
+	return i.ToElasticKeyVaultPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *elasticKeyVaultPropertiesPtrType) ToElasticKeyVaultPropertiesPtrOutputWithContext(ctx context.Context) ElasticKeyVaultPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticKeyVaultPropertiesPtrOutput)
+}
+
+// Properties of key vault.
+type ElasticKeyVaultPropertiesOutput struct{ *pulumi.OutputState }
+
+func (ElasticKeyVaultPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticKeyVaultProperties)(nil)).Elem()
+}
+
+func (o ElasticKeyVaultPropertiesOutput) ToElasticKeyVaultPropertiesOutput() ElasticKeyVaultPropertiesOutput {
+	return o
+}
+
+func (o ElasticKeyVaultPropertiesOutput) ToElasticKeyVaultPropertiesOutputWithContext(ctx context.Context) ElasticKeyVaultPropertiesOutput {
+	return o
+}
+
+func (o ElasticKeyVaultPropertiesOutput) ToElasticKeyVaultPropertiesPtrOutput() ElasticKeyVaultPropertiesPtrOutput {
+	return o.ToElasticKeyVaultPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o ElasticKeyVaultPropertiesOutput) ToElasticKeyVaultPropertiesPtrOutputWithContext(ctx context.Context) ElasticKeyVaultPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElasticKeyVaultProperties) *ElasticKeyVaultProperties {
+		return &v
+	}).(ElasticKeyVaultPropertiesPtrOutput)
+}
+
+// The name of KeyVault key.
+func (o ElasticKeyVaultPropertiesOutput) KeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticKeyVaultProperties) *string { return v.KeyName }).(pulumi.StringPtrOutput)
+}
+
+// The resource ID of KeyVault.
+func (o ElasticKeyVaultPropertiesOutput) KeyVaultResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticKeyVaultProperties) *string { return v.KeyVaultResourceId }).(pulumi.StringPtrOutput)
+}
+
+// The Uri of KeyVault.
+func (o ElasticKeyVaultPropertiesOutput) KeyVaultUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticKeyVaultProperties) *string { return v.KeyVaultUri }).(pulumi.StringPtrOutput)
+}
+
+type ElasticKeyVaultPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (ElasticKeyVaultPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticKeyVaultProperties)(nil)).Elem()
+}
+
+func (o ElasticKeyVaultPropertiesPtrOutput) ToElasticKeyVaultPropertiesPtrOutput() ElasticKeyVaultPropertiesPtrOutput {
+	return o
+}
+
+func (o ElasticKeyVaultPropertiesPtrOutput) ToElasticKeyVaultPropertiesPtrOutputWithContext(ctx context.Context) ElasticKeyVaultPropertiesPtrOutput {
+	return o
+}
+
+func (o ElasticKeyVaultPropertiesPtrOutput) Elem() ElasticKeyVaultPropertiesOutput {
+	return o.ApplyT(func(v *ElasticKeyVaultProperties) ElasticKeyVaultProperties {
+		if v != nil {
+			return *v
+		}
+		var ret ElasticKeyVaultProperties
+		return ret
+	}).(ElasticKeyVaultPropertiesOutput)
+}
+
+// The name of KeyVault key.
+func (o ElasticKeyVaultPropertiesPtrOutput) KeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticKeyVaultProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource ID of KeyVault.
+func (o ElasticKeyVaultPropertiesPtrOutput) KeyVaultResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticKeyVaultProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyVaultResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Uri of KeyVault.
+func (o ElasticKeyVaultPropertiesPtrOutput) KeyVaultUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticKeyVaultProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyVaultUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Properties of key vault.
+type ElasticKeyVaultPropertiesResponse struct {
+	// The name of KeyVault key.
+	KeyName *string `pulumi:"keyName"`
+	// The resource ID of KeyVault.
+	KeyVaultResourceId *string `pulumi:"keyVaultResourceId"`
+	// The Uri of KeyVault.
+	KeyVaultUri *string `pulumi:"keyVaultUri"`
+	// Status of the KeyVault connection.
+	Status string `pulumi:"status"`
+}
+
+// Properties of key vault.
+type ElasticKeyVaultPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (ElasticKeyVaultPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticKeyVaultPropertiesResponse)(nil)).Elem()
+}
+
+func (o ElasticKeyVaultPropertiesResponseOutput) ToElasticKeyVaultPropertiesResponseOutput() ElasticKeyVaultPropertiesResponseOutput {
+	return o
+}
+
+func (o ElasticKeyVaultPropertiesResponseOutput) ToElasticKeyVaultPropertiesResponseOutputWithContext(ctx context.Context) ElasticKeyVaultPropertiesResponseOutput {
+	return o
+}
+
+// The name of KeyVault key.
+func (o ElasticKeyVaultPropertiesResponseOutput) KeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticKeyVaultPropertiesResponse) *string { return v.KeyName }).(pulumi.StringPtrOutput)
+}
+
+// The resource ID of KeyVault.
+func (o ElasticKeyVaultPropertiesResponseOutput) KeyVaultResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticKeyVaultPropertiesResponse) *string { return v.KeyVaultResourceId }).(pulumi.StringPtrOutput)
+}
+
+// The Uri of KeyVault.
+func (o ElasticKeyVaultPropertiesResponseOutput) KeyVaultUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticKeyVaultPropertiesResponse) *string { return v.KeyVaultUri }).(pulumi.StringPtrOutput)
+}
+
+// Status of the KeyVault connection.
+func (o ElasticKeyVaultPropertiesResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v ElasticKeyVaultPropertiesResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type ElasticKeyVaultPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ElasticKeyVaultPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticKeyVaultPropertiesResponse)(nil)).Elem()
+}
+
+func (o ElasticKeyVaultPropertiesResponsePtrOutput) ToElasticKeyVaultPropertiesResponsePtrOutput() ElasticKeyVaultPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o ElasticKeyVaultPropertiesResponsePtrOutput) ToElasticKeyVaultPropertiesResponsePtrOutputWithContext(ctx context.Context) ElasticKeyVaultPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o ElasticKeyVaultPropertiesResponsePtrOutput) Elem() ElasticKeyVaultPropertiesResponseOutput {
+	return o.ApplyT(func(v *ElasticKeyVaultPropertiesResponse) ElasticKeyVaultPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ElasticKeyVaultPropertiesResponse
+		return ret
+	}).(ElasticKeyVaultPropertiesResponseOutput)
+}
+
+// The name of KeyVault key.
+func (o ElasticKeyVaultPropertiesResponsePtrOutput) KeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticKeyVaultPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource ID of KeyVault.
+func (o ElasticKeyVaultPropertiesResponsePtrOutput) KeyVaultResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticKeyVaultPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyVaultResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Uri of KeyVault.
+func (o ElasticKeyVaultPropertiesResponsePtrOutput) KeyVaultUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticKeyVaultPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyVaultUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Status of the KeyVault connection.
+func (o ElasticKeyVaultPropertiesResponsePtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticKeyVaultPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+// Contains all the information needed to mount an elastic volume
+type ElasticMountTargetPropertiesResponse struct {
+	// The mount target's IPv4 address, used to mount the volume
+	IpAddress string `pulumi:"ipAddress"`
+	// The SMB server's Fully Qualified Domain Name, FQDN
+	SmbServerFqdn string `pulumi:"smbServerFqdn"`
+}
+
+// Contains all the information needed to mount an elastic volume
+type ElasticMountTargetPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (ElasticMountTargetPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticMountTargetPropertiesResponse)(nil)).Elem()
+}
+
+func (o ElasticMountTargetPropertiesResponseOutput) ToElasticMountTargetPropertiesResponseOutput() ElasticMountTargetPropertiesResponseOutput {
+	return o
+}
+
+func (o ElasticMountTargetPropertiesResponseOutput) ToElasticMountTargetPropertiesResponseOutputWithContext(ctx context.Context) ElasticMountTargetPropertiesResponseOutput {
+	return o
+}
+
+// The mount target's IPv4 address, used to mount the volume
+func (o ElasticMountTargetPropertiesResponseOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v ElasticMountTargetPropertiesResponse) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// The SMB server's Fully Qualified Domain Name, FQDN
+func (o ElasticMountTargetPropertiesResponseOutput) SmbServerFqdn() pulumi.StringOutput {
+	return o.ApplyT(func(v ElasticMountTargetPropertiesResponse) string { return v.SmbServerFqdn }).(pulumi.StringOutput)
+}
+
+type ElasticMountTargetPropertiesResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ElasticMountTargetPropertiesResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElasticMountTargetPropertiesResponse)(nil)).Elem()
+}
+
+func (o ElasticMountTargetPropertiesResponseArrayOutput) ToElasticMountTargetPropertiesResponseArrayOutput() ElasticMountTargetPropertiesResponseArrayOutput {
+	return o
+}
+
+func (o ElasticMountTargetPropertiesResponseArrayOutput) ToElasticMountTargetPropertiesResponseArrayOutputWithContext(ctx context.Context) ElasticMountTargetPropertiesResponseArrayOutput {
+	return o
+}
+
+func (o ElasticMountTargetPropertiesResponseArrayOutput) Index(i pulumi.IntInput) ElasticMountTargetPropertiesResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElasticMountTargetPropertiesResponse {
+		return vs[0].([]ElasticMountTargetPropertiesResponse)[vs[1].(int)]
+	}).(ElasticMountTargetPropertiesResponseOutput)
+}
+
+// SMB Properties
+type ElasticSmbProperties struct {
+	// Used to enable or disable encryption for in-flight SMB data volume. This flag can be modified during Elastic volume update operation as well. Only applicable for SMB protocol Elastic volumes.
+	SmbEncryption *string `pulumi:"smbEncryption"`
+}
+
+// Defaults sets the appropriate defaults for ElasticSmbProperties
+func (val *ElasticSmbProperties) Defaults() *ElasticSmbProperties {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.SmbEncryption == nil {
+		smbEncryption_ := "Disabled"
+		tmp.SmbEncryption = &smbEncryption_
+	}
+	return &tmp
+}
+
+// ElasticSmbPropertiesInput is an input type that accepts ElasticSmbPropertiesArgs and ElasticSmbPropertiesOutput values.
+// You can construct a concrete instance of `ElasticSmbPropertiesInput` via:
+//
+//	ElasticSmbPropertiesArgs{...}
+type ElasticSmbPropertiesInput interface {
+	pulumi.Input
+
+	ToElasticSmbPropertiesOutput() ElasticSmbPropertiesOutput
+	ToElasticSmbPropertiesOutputWithContext(context.Context) ElasticSmbPropertiesOutput
+}
+
+// SMB Properties
+type ElasticSmbPropertiesArgs struct {
+	// Used to enable or disable encryption for in-flight SMB data volume. This flag can be modified during Elastic volume update operation as well. Only applicable for SMB protocol Elastic volumes.
+	SmbEncryption pulumi.StringPtrInput `pulumi:"smbEncryption"`
+}
+
+// Defaults sets the appropriate defaults for ElasticSmbPropertiesArgs
+func (val *ElasticSmbPropertiesArgs) Defaults() *ElasticSmbPropertiesArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.SmbEncryption == nil {
+		tmp.SmbEncryption = pulumi.StringPtr("Disabled")
+	}
+	return &tmp
+}
+func (ElasticSmbPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticSmbProperties)(nil)).Elem()
+}
+
+func (i ElasticSmbPropertiesArgs) ToElasticSmbPropertiesOutput() ElasticSmbPropertiesOutput {
+	return i.ToElasticSmbPropertiesOutputWithContext(context.Background())
+}
+
+func (i ElasticSmbPropertiesArgs) ToElasticSmbPropertiesOutputWithContext(ctx context.Context) ElasticSmbPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticSmbPropertiesOutput)
+}
+
+func (i ElasticSmbPropertiesArgs) ToElasticSmbPropertiesPtrOutput() ElasticSmbPropertiesPtrOutput {
+	return i.ToElasticSmbPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i ElasticSmbPropertiesArgs) ToElasticSmbPropertiesPtrOutputWithContext(ctx context.Context) ElasticSmbPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticSmbPropertiesOutput).ToElasticSmbPropertiesPtrOutputWithContext(ctx)
+}
+
+// ElasticSmbPropertiesPtrInput is an input type that accepts ElasticSmbPropertiesArgs, ElasticSmbPropertiesPtr and ElasticSmbPropertiesPtrOutput values.
+// You can construct a concrete instance of `ElasticSmbPropertiesPtrInput` via:
+//
+//	        ElasticSmbPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ElasticSmbPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToElasticSmbPropertiesPtrOutput() ElasticSmbPropertiesPtrOutput
+	ToElasticSmbPropertiesPtrOutputWithContext(context.Context) ElasticSmbPropertiesPtrOutput
+}
+
+type elasticSmbPropertiesPtrType ElasticSmbPropertiesArgs
+
+func ElasticSmbPropertiesPtr(v *ElasticSmbPropertiesArgs) ElasticSmbPropertiesPtrInput {
+	return (*elasticSmbPropertiesPtrType)(v)
+}
+
+func (*elasticSmbPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticSmbProperties)(nil)).Elem()
+}
+
+func (i *elasticSmbPropertiesPtrType) ToElasticSmbPropertiesPtrOutput() ElasticSmbPropertiesPtrOutput {
+	return i.ToElasticSmbPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *elasticSmbPropertiesPtrType) ToElasticSmbPropertiesPtrOutputWithContext(ctx context.Context) ElasticSmbPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticSmbPropertiesPtrOutput)
+}
+
+// SMB Properties
+type ElasticSmbPropertiesOutput struct{ *pulumi.OutputState }
+
+func (ElasticSmbPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticSmbProperties)(nil)).Elem()
+}
+
+func (o ElasticSmbPropertiesOutput) ToElasticSmbPropertiesOutput() ElasticSmbPropertiesOutput {
+	return o
+}
+
+func (o ElasticSmbPropertiesOutput) ToElasticSmbPropertiesOutputWithContext(ctx context.Context) ElasticSmbPropertiesOutput {
+	return o
+}
+
+func (o ElasticSmbPropertiesOutput) ToElasticSmbPropertiesPtrOutput() ElasticSmbPropertiesPtrOutput {
+	return o.ToElasticSmbPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o ElasticSmbPropertiesOutput) ToElasticSmbPropertiesPtrOutputWithContext(ctx context.Context) ElasticSmbPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElasticSmbProperties) *ElasticSmbProperties {
+		return &v
+	}).(ElasticSmbPropertiesPtrOutput)
+}
+
+// Used to enable or disable encryption for in-flight SMB data volume. This flag can be modified during Elastic volume update operation as well. Only applicable for SMB protocol Elastic volumes.
+func (o ElasticSmbPropertiesOutput) SmbEncryption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticSmbProperties) *string { return v.SmbEncryption }).(pulumi.StringPtrOutput)
+}
+
+type ElasticSmbPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (ElasticSmbPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticSmbProperties)(nil)).Elem()
+}
+
+func (o ElasticSmbPropertiesPtrOutput) ToElasticSmbPropertiesPtrOutput() ElasticSmbPropertiesPtrOutput {
+	return o
+}
+
+func (o ElasticSmbPropertiesPtrOutput) ToElasticSmbPropertiesPtrOutputWithContext(ctx context.Context) ElasticSmbPropertiesPtrOutput {
+	return o
+}
+
+func (o ElasticSmbPropertiesPtrOutput) Elem() ElasticSmbPropertiesOutput {
+	return o.ApplyT(func(v *ElasticSmbProperties) ElasticSmbProperties {
+		if v != nil {
+			return *v
+		}
+		var ret ElasticSmbProperties
+		return ret
+	}).(ElasticSmbPropertiesOutput)
+}
+
+// Used to enable or disable encryption for in-flight SMB data volume. This flag can be modified during Elastic volume update operation as well. Only applicable for SMB protocol Elastic volumes.
+func (o ElasticSmbPropertiesPtrOutput) SmbEncryption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticSmbProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SmbEncryption
+	}).(pulumi.StringPtrOutput)
+}
+
+// SMB Properties
+type ElasticSmbPropertiesResponse struct {
+	// Used to enable or disable encryption for in-flight SMB data volume. This flag can be modified during Elastic volume update operation as well. Only applicable for SMB protocol Elastic volumes.
+	SmbEncryption *string `pulumi:"smbEncryption"`
+}
+
+// Defaults sets the appropriate defaults for ElasticSmbPropertiesResponse
+func (val *ElasticSmbPropertiesResponse) Defaults() *ElasticSmbPropertiesResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.SmbEncryption == nil {
+		smbEncryption_ := "Disabled"
+		tmp.SmbEncryption = &smbEncryption_
+	}
+	return &tmp
+}
+
+// SMB Properties
+type ElasticSmbPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (ElasticSmbPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticSmbPropertiesResponse)(nil)).Elem()
+}
+
+func (o ElasticSmbPropertiesResponseOutput) ToElasticSmbPropertiesResponseOutput() ElasticSmbPropertiesResponseOutput {
+	return o
+}
+
+func (o ElasticSmbPropertiesResponseOutput) ToElasticSmbPropertiesResponseOutputWithContext(ctx context.Context) ElasticSmbPropertiesResponseOutput {
+	return o
+}
+
+// Used to enable or disable encryption for in-flight SMB data volume. This flag can be modified during Elastic volume update operation as well. Only applicable for SMB protocol Elastic volumes.
+func (o ElasticSmbPropertiesResponseOutput) SmbEncryption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticSmbPropertiesResponse) *string { return v.SmbEncryption }).(pulumi.StringPtrOutput)
+}
+
+type ElasticSmbPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ElasticSmbPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticSmbPropertiesResponse)(nil)).Elem()
+}
+
+func (o ElasticSmbPropertiesResponsePtrOutput) ToElasticSmbPropertiesResponsePtrOutput() ElasticSmbPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o ElasticSmbPropertiesResponsePtrOutput) ToElasticSmbPropertiesResponsePtrOutputWithContext(ctx context.Context) ElasticSmbPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o ElasticSmbPropertiesResponsePtrOutput) Elem() ElasticSmbPropertiesResponseOutput {
+	return o.ApplyT(func(v *ElasticSmbPropertiesResponse) ElasticSmbPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ElasticSmbPropertiesResponse
+		return ret
+	}).(ElasticSmbPropertiesResponseOutput)
+}
+
+// Used to enable or disable encryption for in-flight SMB data volume. This flag can be modified during Elastic volume update operation as well. Only applicable for SMB protocol Elastic volumes.
+func (o ElasticSmbPropertiesResponsePtrOutput) SmbEncryption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticSmbPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SmbEncryption
+	}).(pulumi.StringPtrOutput)
+}
+
+// Daily Schedule properties used to create NetApp snapshot policy
+type ElasticSnapshotPolicyDailySchedule struct {
+	// Indicates which hour in UTC timezone a snapshot should be taken
+	Hour *int `pulumi:"hour"`
+	// Indicates which minute snapshot should be taken
+	Minute *int `pulumi:"minute"`
+	// Daily snapshot count to keep
+	SnapshotsToKeep *int `pulumi:"snapshotsToKeep"`
+}
+
+// ElasticSnapshotPolicyDailyScheduleInput is an input type that accepts ElasticSnapshotPolicyDailyScheduleArgs and ElasticSnapshotPolicyDailyScheduleOutput values.
+// You can construct a concrete instance of `ElasticSnapshotPolicyDailyScheduleInput` via:
+//
+//	ElasticSnapshotPolicyDailyScheduleArgs{...}
+type ElasticSnapshotPolicyDailyScheduleInput interface {
+	pulumi.Input
+
+	ToElasticSnapshotPolicyDailyScheduleOutput() ElasticSnapshotPolicyDailyScheduleOutput
+	ToElasticSnapshotPolicyDailyScheduleOutputWithContext(context.Context) ElasticSnapshotPolicyDailyScheduleOutput
+}
+
+// Daily Schedule properties used to create NetApp snapshot policy
+type ElasticSnapshotPolicyDailyScheduleArgs struct {
+	// Indicates which hour in UTC timezone a snapshot should be taken
+	Hour pulumi.IntPtrInput `pulumi:"hour"`
+	// Indicates which minute snapshot should be taken
+	Minute pulumi.IntPtrInput `pulumi:"minute"`
+	// Daily snapshot count to keep
+	SnapshotsToKeep pulumi.IntPtrInput `pulumi:"snapshotsToKeep"`
+}
+
+func (ElasticSnapshotPolicyDailyScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticSnapshotPolicyDailySchedule)(nil)).Elem()
+}
+
+func (i ElasticSnapshotPolicyDailyScheduleArgs) ToElasticSnapshotPolicyDailyScheduleOutput() ElasticSnapshotPolicyDailyScheduleOutput {
+	return i.ToElasticSnapshotPolicyDailyScheduleOutputWithContext(context.Background())
+}
+
+func (i ElasticSnapshotPolicyDailyScheduleArgs) ToElasticSnapshotPolicyDailyScheduleOutputWithContext(ctx context.Context) ElasticSnapshotPolicyDailyScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticSnapshotPolicyDailyScheduleOutput)
+}
+
+func (i ElasticSnapshotPolicyDailyScheduleArgs) ToElasticSnapshotPolicyDailySchedulePtrOutput() ElasticSnapshotPolicyDailySchedulePtrOutput {
+	return i.ToElasticSnapshotPolicyDailySchedulePtrOutputWithContext(context.Background())
+}
+
+func (i ElasticSnapshotPolicyDailyScheduleArgs) ToElasticSnapshotPolicyDailySchedulePtrOutputWithContext(ctx context.Context) ElasticSnapshotPolicyDailySchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticSnapshotPolicyDailyScheduleOutput).ToElasticSnapshotPolicyDailySchedulePtrOutputWithContext(ctx)
+}
+
+// ElasticSnapshotPolicyDailySchedulePtrInput is an input type that accepts ElasticSnapshotPolicyDailyScheduleArgs, ElasticSnapshotPolicyDailySchedulePtr and ElasticSnapshotPolicyDailySchedulePtrOutput values.
+// You can construct a concrete instance of `ElasticSnapshotPolicyDailySchedulePtrInput` via:
+//
+//	        ElasticSnapshotPolicyDailyScheduleArgs{...}
+//
+//	or:
+//
+//	        nil
+type ElasticSnapshotPolicyDailySchedulePtrInput interface {
+	pulumi.Input
+
+	ToElasticSnapshotPolicyDailySchedulePtrOutput() ElasticSnapshotPolicyDailySchedulePtrOutput
+	ToElasticSnapshotPolicyDailySchedulePtrOutputWithContext(context.Context) ElasticSnapshotPolicyDailySchedulePtrOutput
+}
+
+type elasticSnapshotPolicyDailySchedulePtrType ElasticSnapshotPolicyDailyScheduleArgs
+
+func ElasticSnapshotPolicyDailySchedulePtr(v *ElasticSnapshotPolicyDailyScheduleArgs) ElasticSnapshotPolicyDailySchedulePtrInput {
+	return (*elasticSnapshotPolicyDailySchedulePtrType)(v)
+}
+
+func (*elasticSnapshotPolicyDailySchedulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticSnapshotPolicyDailySchedule)(nil)).Elem()
+}
+
+func (i *elasticSnapshotPolicyDailySchedulePtrType) ToElasticSnapshotPolicyDailySchedulePtrOutput() ElasticSnapshotPolicyDailySchedulePtrOutput {
+	return i.ToElasticSnapshotPolicyDailySchedulePtrOutputWithContext(context.Background())
+}
+
+func (i *elasticSnapshotPolicyDailySchedulePtrType) ToElasticSnapshotPolicyDailySchedulePtrOutputWithContext(ctx context.Context) ElasticSnapshotPolicyDailySchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticSnapshotPolicyDailySchedulePtrOutput)
+}
+
+// Daily Schedule properties used to create NetApp snapshot policy
+type ElasticSnapshotPolicyDailyScheduleOutput struct{ *pulumi.OutputState }
+
+func (ElasticSnapshotPolicyDailyScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticSnapshotPolicyDailySchedule)(nil)).Elem()
+}
+
+func (o ElasticSnapshotPolicyDailyScheduleOutput) ToElasticSnapshotPolicyDailyScheduleOutput() ElasticSnapshotPolicyDailyScheduleOutput {
+	return o
+}
+
+func (o ElasticSnapshotPolicyDailyScheduleOutput) ToElasticSnapshotPolicyDailyScheduleOutputWithContext(ctx context.Context) ElasticSnapshotPolicyDailyScheduleOutput {
+	return o
+}
+
+func (o ElasticSnapshotPolicyDailyScheduleOutput) ToElasticSnapshotPolicyDailySchedulePtrOutput() ElasticSnapshotPolicyDailySchedulePtrOutput {
+	return o.ToElasticSnapshotPolicyDailySchedulePtrOutputWithContext(context.Background())
+}
+
+func (o ElasticSnapshotPolicyDailyScheduleOutput) ToElasticSnapshotPolicyDailySchedulePtrOutputWithContext(ctx context.Context) ElasticSnapshotPolicyDailySchedulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElasticSnapshotPolicyDailySchedule) *ElasticSnapshotPolicyDailySchedule {
+		return &v
+	}).(ElasticSnapshotPolicyDailySchedulePtrOutput)
+}
+
+// Indicates which hour in UTC timezone a snapshot should be taken
+func (o ElasticSnapshotPolicyDailyScheduleOutput) Hour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElasticSnapshotPolicyDailySchedule) *int { return v.Hour }).(pulumi.IntPtrOutput)
+}
+
+// Indicates which minute snapshot should be taken
+func (o ElasticSnapshotPolicyDailyScheduleOutput) Minute() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElasticSnapshotPolicyDailySchedule) *int { return v.Minute }).(pulumi.IntPtrOutput)
+}
+
+// Daily snapshot count to keep
+func (o ElasticSnapshotPolicyDailyScheduleOutput) SnapshotsToKeep() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElasticSnapshotPolicyDailySchedule) *int { return v.SnapshotsToKeep }).(pulumi.IntPtrOutput)
+}
+
+type ElasticSnapshotPolicyDailySchedulePtrOutput struct{ *pulumi.OutputState }
+
+func (ElasticSnapshotPolicyDailySchedulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticSnapshotPolicyDailySchedule)(nil)).Elem()
+}
+
+func (o ElasticSnapshotPolicyDailySchedulePtrOutput) ToElasticSnapshotPolicyDailySchedulePtrOutput() ElasticSnapshotPolicyDailySchedulePtrOutput {
+	return o
+}
+
+func (o ElasticSnapshotPolicyDailySchedulePtrOutput) ToElasticSnapshotPolicyDailySchedulePtrOutputWithContext(ctx context.Context) ElasticSnapshotPolicyDailySchedulePtrOutput {
+	return o
+}
+
+func (o ElasticSnapshotPolicyDailySchedulePtrOutput) Elem() ElasticSnapshotPolicyDailyScheduleOutput {
+	return o.ApplyT(func(v *ElasticSnapshotPolicyDailySchedule) ElasticSnapshotPolicyDailySchedule {
+		if v != nil {
+			return *v
+		}
+		var ret ElasticSnapshotPolicyDailySchedule
+		return ret
+	}).(ElasticSnapshotPolicyDailyScheduleOutput)
+}
+
+// Indicates which hour in UTC timezone a snapshot should be taken
+func (o ElasticSnapshotPolicyDailySchedulePtrOutput) Hour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElasticSnapshotPolicyDailySchedule) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Hour
+	}).(pulumi.IntPtrOutput)
+}
+
+// Indicates which minute snapshot should be taken
+func (o ElasticSnapshotPolicyDailySchedulePtrOutput) Minute() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElasticSnapshotPolicyDailySchedule) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Minute
+	}).(pulumi.IntPtrOutput)
+}
+
+// Daily snapshot count to keep
+func (o ElasticSnapshotPolicyDailySchedulePtrOutput) SnapshotsToKeep() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElasticSnapshotPolicyDailySchedule) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SnapshotsToKeep
+	}).(pulumi.IntPtrOutput)
+}
+
+// Daily Schedule properties used to create NetApp snapshot policy
+type ElasticSnapshotPolicyDailyScheduleResponse struct {
+	// Indicates which hour in UTC timezone a snapshot should be taken
+	Hour *int `pulumi:"hour"`
+	// Indicates which minute snapshot should be taken
+	Minute *int `pulumi:"minute"`
+	// Daily snapshot count to keep
+	SnapshotsToKeep *int `pulumi:"snapshotsToKeep"`
+}
+
+// Daily Schedule properties used to create NetApp snapshot policy
+type ElasticSnapshotPolicyDailyScheduleResponseOutput struct{ *pulumi.OutputState }
+
+func (ElasticSnapshotPolicyDailyScheduleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticSnapshotPolicyDailyScheduleResponse)(nil)).Elem()
+}
+
+func (o ElasticSnapshotPolicyDailyScheduleResponseOutput) ToElasticSnapshotPolicyDailyScheduleResponseOutput() ElasticSnapshotPolicyDailyScheduleResponseOutput {
+	return o
+}
+
+func (o ElasticSnapshotPolicyDailyScheduleResponseOutput) ToElasticSnapshotPolicyDailyScheduleResponseOutputWithContext(ctx context.Context) ElasticSnapshotPolicyDailyScheduleResponseOutput {
+	return o
+}
+
+// Indicates which hour in UTC timezone a snapshot should be taken
+func (o ElasticSnapshotPolicyDailyScheduleResponseOutput) Hour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElasticSnapshotPolicyDailyScheduleResponse) *int { return v.Hour }).(pulumi.IntPtrOutput)
+}
+
+// Indicates which minute snapshot should be taken
+func (o ElasticSnapshotPolicyDailyScheduleResponseOutput) Minute() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElasticSnapshotPolicyDailyScheduleResponse) *int { return v.Minute }).(pulumi.IntPtrOutput)
+}
+
+// Daily snapshot count to keep
+func (o ElasticSnapshotPolicyDailyScheduleResponseOutput) SnapshotsToKeep() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElasticSnapshotPolicyDailyScheduleResponse) *int { return v.SnapshotsToKeep }).(pulumi.IntPtrOutput)
+}
+
+type ElasticSnapshotPolicyDailyScheduleResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ElasticSnapshotPolicyDailyScheduleResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticSnapshotPolicyDailyScheduleResponse)(nil)).Elem()
+}
+
+func (o ElasticSnapshotPolicyDailyScheduleResponsePtrOutput) ToElasticSnapshotPolicyDailyScheduleResponsePtrOutput() ElasticSnapshotPolicyDailyScheduleResponsePtrOutput {
+	return o
+}
+
+func (o ElasticSnapshotPolicyDailyScheduleResponsePtrOutput) ToElasticSnapshotPolicyDailyScheduleResponsePtrOutputWithContext(ctx context.Context) ElasticSnapshotPolicyDailyScheduleResponsePtrOutput {
+	return o
+}
+
+func (o ElasticSnapshotPolicyDailyScheduleResponsePtrOutput) Elem() ElasticSnapshotPolicyDailyScheduleResponseOutput {
+	return o.ApplyT(func(v *ElasticSnapshotPolicyDailyScheduleResponse) ElasticSnapshotPolicyDailyScheduleResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ElasticSnapshotPolicyDailyScheduleResponse
+		return ret
+	}).(ElasticSnapshotPolicyDailyScheduleResponseOutput)
+}
+
+// Indicates which hour in UTC timezone a snapshot should be taken
+func (o ElasticSnapshotPolicyDailyScheduleResponsePtrOutput) Hour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElasticSnapshotPolicyDailyScheduleResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Hour
+	}).(pulumi.IntPtrOutput)
+}
+
+// Indicates which minute snapshot should be taken
+func (o ElasticSnapshotPolicyDailyScheduleResponsePtrOutput) Minute() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElasticSnapshotPolicyDailyScheduleResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Minute
+	}).(pulumi.IntPtrOutput)
+}
+
+// Daily snapshot count to keep
+func (o ElasticSnapshotPolicyDailyScheduleResponsePtrOutput) SnapshotsToKeep() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElasticSnapshotPolicyDailyScheduleResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SnapshotsToKeep
+	}).(pulumi.IntPtrOutput)
+}
+
+// Hourly Schedule properties used to create NetApp snapshot policy
+type ElasticSnapshotPolicyHourlySchedule struct {
+	// Indicates which minute snapshot should be taken
+	Minute *int `pulumi:"minute"`
+	// Hourly snapshot count to keep
+	SnapshotsToKeep *int `pulumi:"snapshotsToKeep"`
+}
+
+// ElasticSnapshotPolicyHourlyScheduleInput is an input type that accepts ElasticSnapshotPolicyHourlyScheduleArgs and ElasticSnapshotPolicyHourlyScheduleOutput values.
+// You can construct a concrete instance of `ElasticSnapshotPolicyHourlyScheduleInput` via:
+//
+//	ElasticSnapshotPolicyHourlyScheduleArgs{...}
+type ElasticSnapshotPolicyHourlyScheduleInput interface {
+	pulumi.Input
+
+	ToElasticSnapshotPolicyHourlyScheduleOutput() ElasticSnapshotPolicyHourlyScheduleOutput
+	ToElasticSnapshotPolicyHourlyScheduleOutputWithContext(context.Context) ElasticSnapshotPolicyHourlyScheduleOutput
+}
+
+// Hourly Schedule properties used to create NetApp snapshot policy
+type ElasticSnapshotPolicyHourlyScheduleArgs struct {
+	// Indicates which minute snapshot should be taken
+	Minute pulumi.IntPtrInput `pulumi:"minute"`
+	// Hourly snapshot count to keep
+	SnapshotsToKeep pulumi.IntPtrInput `pulumi:"snapshotsToKeep"`
+}
+
+func (ElasticSnapshotPolicyHourlyScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticSnapshotPolicyHourlySchedule)(nil)).Elem()
+}
+
+func (i ElasticSnapshotPolicyHourlyScheduleArgs) ToElasticSnapshotPolicyHourlyScheduleOutput() ElasticSnapshotPolicyHourlyScheduleOutput {
+	return i.ToElasticSnapshotPolicyHourlyScheduleOutputWithContext(context.Background())
+}
+
+func (i ElasticSnapshotPolicyHourlyScheduleArgs) ToElasticSnapshotPolicyHourlyScheduleOutputWithContext(ctx context.Context) ElasticSnapshotPolicyHourlyScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticSnapshotPolicyHourlyScheduleOutput)
+}
+
+func (i ElasticSnapshotPolicyHourlyScheduleArgs) ToElasticSnapshotPolicyHourlySchedulePtrOutput() ElasticSnapshotPolicyHourlySchedulePtrOutput {
+	return i.ToElasticSnapshotPolicyHourlySchedulePtrOutputWithContext(context.Background())
+}
+
+func (i ElasticSnapshotPolicyHourlyScheduleArgs) ToElasticSnapshotPolicyHourlySchedulePtrOutputWithContext(ctx context.Context) ElasticSnapshotPolicyHourlySchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticSnapshotPolicyHourlyScheduleOutput).ToElasticSnapshotPolicyHourlySchedulePtrOutputWithContext(ctx)
+}
+
+// ElasticSnapshotPolicyHourlySchedulePtrInput is an input type that accepts ElasticSnapshotPolicyHourlyScheduleArgs, ElasticSnapshotPolicyHourlySchedulePtr and ElasticSnapshotPolicyHourlySchedulePtrOutput values.
+// You can construct a concrete instance of `ElasticSnapshotPolicyHourlySchedulePtrInput` via:
+//
+//	        ElasticSnapshotPolicyHourlyScheduleArgs{...}
+//
+//	or:
+//
+//	        nil
+type ElasticSnapshotPolicyHourlySchedulePtrInput interface {
+	pulumi.Input
+
+	ToElasticSnapshotPolicyHourlySchedulePtrOutput() ElasticSnapshotPolicyHourlySchedulePtrOutput
+	ToElasticSnapshotPolicyHourlySchedulePtrOutputWithContext(context.Context) ElasticSnapshotPolicyHourlySchedulePtrOutput
+}
+
+type elasticSnapshotPolicyHourlySchedulePtrType ElasticSnapshotPolicyHourlyScheduleArgs
+
+func ElasticSnapshotPolicyHourlySchedulePtr(v *ElasticSnapshotPolicyHourlyScheduleArgs) ElasticSnapshotPolicyHourlySchedulePtrInput {
+	return (*elasticSnapshotPolicyHourlySchedulePtrType)(v)
+}
+
+func (*elasticSnapshotPolicyHourlySchedulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticSnapshotPolicyHourlySchedule)(nil)).Elem()
+}
+
+func (i *elasticSnapshotPolicyHourlySchedulePtrType) ToElasticSnapshotPolicyHourlySchedulePtrOutput() ElasticSnapshotPolicyHourlySchedulePtrOutput {
+	return i.ToElasticSnapshotPolicyHourlySchedulePtrOutputWithContext(context.Background())
+}
+
+func (i *elasticSnapshotPolicyHourlySchedulePtrType) ToElasticSnapshotPolicyHourlySchedulePtrOutputWithContext(ctx context.Context) ElasticSnapshotPolicyHourlySchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticSnapshotPolicyHourlySchedulePtrOutput)
+}
+
+// Hourly Schedule properties used to create NetApp snapshot policy
+type ElasticSnapshotPolicyHourlyScheduleOutput struct{ *pulumi.OutputState }
+
+func (ElasticSnapshotPolicyHourlyScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticSnapshotPolicyHourlySchedule)(nil)).Elem()
+}
+
+func (o ElasticSnapshotPolicyHourlyScheduleOutput) ToElasticSnapshotPolicyHourlyScheduleOutput() ElasticSnapshotPolicyHourlyScheduleOutput {
+	return o
+}
+
+func (o ElasticSnapshotPolicyHourlyScheduleOutput) ToElasticSnapshotPolicyHourlyScheduleOutputWithContext(ctx context.Context) ElasticSnapshotPolicyHourlyScheduleOutput {
+	return o
+}
+
+func (o ElasticSnapshotPolicyHourlyScheduleOutput) ToElasticSnapshotPolicyHourlySchedulePtrOutput() ElasticSnapshotPolicyHourlySchedulePtrOutput {
+	return o.ToElasticSnapshotPolicyHourlySchedulePtrOutputWithContext(context.Background())
+}
+
+func (o ElasticSnapshotPolicyHourlyScheduleOutput) ToElasticSnapshotPolicyHourlySchedulePtrOutputWithContext(ctx context.Context) ElasticSnapshotPolicyHourlySchedulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElasticSnapshotPolicyHourlySchedule) *ElasticSnapshotPolicyHourlySchedule {
+		return &v
+	}).(ElasticSnapshotPolicyHourlySchedulePtrOutput)
+}
+
+// Indicates which minute snapshot should be taken
+func (o ElasticSnapshotPolicyHourlyScheduleOutput) Minute() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElasticSnapshotPolicyHourlySchedule) *int { return v.Minute }).(pulumi.IntPtrOutput)
+}
+
+// Hourly snapshot count to keep
+func (o ElasticSnapshotPolicyHourlyScheduleOutput) SnapshotsToKeep() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElasticSnapshotPolicyHourlySchedule) *int { return v.SnapshotsToKeep }).(pulumi.IntPtrOutput)
+}
+
+type ElasticSnapshotPolicyHourlySchedulePtrOutput struct{ *pulumi.OutputState }
+
+func (ElasticSnapshotPolicyHourlySchedulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticSnapshotPolicyHourlySchedule)(nil)).Elem()
+}
+
+func (o ElasticSnapshotPolicyHourlySchedulePtrOutput) ToElasticSnapshotPolicyHourlySchedulePtrOutput() ElasticSnapshotPolicyHourlySchedulePtrOutput {
+	return o
+}
+
+func (o ElasticSnapshotPolicyHourlySchedulePtrOutput) ToElasticSnapshotPolicyHourlySchedulePtrOutputWithContext(ctx context.Context) ElasticSnapshotPolicyHourlySchedulePtrOutput {
+	return o
+}
+
+func (o ElasticSnapshotPolicyHourlySchedulePtrOutput) Elem() ElasticSnapshotPolicyHourlyScheduleOutput {
+	return o.ApplyT(func(v *ElasticSnapshotPolicyHourlySchedule) ElasticSnapshotPolicyHourlySchedule {
+		if v != nil {
+			return *v
+		}
+		var ret ElasticSnapshotPolicyHourlySchedule
+		return ret
+	}).(ElasticSnapshotPolicyHourlyScheduleOutput)
+}
+
+// Indicates which minute snapshot should be taken
+func (o ElasticSnapshotPolicyHourlySchedulePtrOutput) Minute() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElasticSnapshotPolicyHourlySchedule) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Minute
+	}).(pulumi.IntPtrOutput)
+}
+
+// Hourly snapshot count to keep
+func (o ElasticSnapshotPolicyHourlySchedulePtrOutput) SnapshotsToKeep() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElasticSnapshotPolicyHourlySchedule) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SnapshotsToKeep
+	}).(pulumi.IntPtrOutput)
+}
+
+// Hourly Schedule properties used to create NetApp snapshot policy
+type ElasticSnapshotPolicyHourlyScheduleResponse struct {
+	// Indicates which minute snapshot should be taken
+	Minute *int `pulumi:"minute"`
+	// Hourly snapshot count to keep
+	SnapshotsToKeep *int `pulumi:"snapshotsToKeep"`
+}
+
+// Hourly Schedule properties used to create NetApp snapshot policy
+type ElasticSnapshotPolicyHourlyScheduleResponseOutput struct{ *pulumi.OutputState }
+
+func (ElasticSnapshotPolicyHourlyScheduleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticSnapshotPolicyHourlyScheduleResponse)(nil)).Elem()
+}
+
+func (o ElasticSnapshotPolicyHourlyScheduleResponseOutput) ToElasticSnapshotPolicyHourlyScheduleResponseOutput() ElasticSnapshotPolicyHourlyScheduleResponseOutput {
+	return o
+}
+
+func (o ElasticSnapshotPolicyHourlyScheduleResponseOutput) ToElasticSnapshotPolicyHourlyScheduleResponseOutputWithContext(ctx context.Context) ElasticSnapshotPolicyHourlyScheduleResponseOutput {
+	return o
+}
+
+// Indicates which minute snapshot should be taken
+func (o ElasticSnapshotPolicyHourlyScheduleResponseOutput) Minute() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElasticSnapshotPolicyHourlyScheduleResponse) *int { return v.Minute }).(pulumi.IntPtrOutput)
+}
+
+// Hourly snapshot count to keep
+func (o ElasticSnapshotPolicyHourlyScheduleResponseOutput) SnapshotsToKeep() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElasticSnapshotPolicyHourlyScheduleResponse) *int { return v.SnapshotsToKeep }).(pulumi.IntPtrOutput)
+}
+
+type ElasticSnapshotPolicyHourlyScheduleResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ElasticSnapshotPolicyHourlyScheduleResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticSnapshotPolicyHourlyScheduleResponse)(nil)).Elem()
+}
+
+func (o ElasticSnapshotPolicyHourlyScheduleResponsePtrOutput) ToElasticSnapshotPolicyHourlyScheduleResponsePtrOutput() ElasticSnapshotPolicyHourlyScheduleResponsePtrOutput {
+	return o
+}
+
+func (o ElasticSnapshotPolicyHourlyScheduleResponsePtrOutput) ToElasticSnapshotPolicyHourlyScheduleResponsePtrOutputWithContext(ctx context.Context) ElasticSnapshotPolicyHourlyScheduleResponsePtrOutput {
+	return o
+}
+
+func (o ElasticSnapshotPolicyHourlyScheduleResponsePtrOutput) Elem() ElasticSnapshotPolicyHourlyScheduleResponseOutput {
+	return o.ApplyT(func(v *ElasticSnapshotPolicyHourlyScheduleResponse) ElasticSnapshotPolicyHourlyScheduleResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ElasticSnapshotPolicyHourlyScheduleResponse
+		return ret
+	}).(ElasticSnapshotPolicyHourlyScheduleResponseOutput)
+}
+
+// Indicates which minute snapshot should be taken
+func (o ElasticSnapshotPolicyHourlyScheduleResponsePtrOutput) Minute() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElasticSnapshotPolicyHourlyScheduleResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Minute
+	}).(pulumi.IntPtrOutput)
+}
+
+// Hourly snapshot count to keep
+func (o ElasticSnapshotPolicyHourlyScheduleResponsePtrOutput) SnapshotsToKeep() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElasticSnapshotPolicyHourlyScheduleResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SnapshotsToKeep
+	}).(pulumi.IntPtrOutput)
+}
+
+// Monthly Schedule properties used to create NetApp snapshot policy
+type ElasticSnapshotPolicyMonthlySchedule struct {
+	// Indicates which days of the month snapshot (1-31) should be taken, accepts a list of integers
+	DaysOfMonth []int `pulumi:"daysOfMonth"`
+	// Indicates which hour in UTC timezone a snapshot should be taken
+	Hour *int `pulumi:"hour"`
+	// Indicates which minute snapshot should be taken
+	Minute *int `pulumi:"minute"`
+	// Monthly snapshot count to keep
+	SnapshotsToKeep *int `pulumi:"snapshotsToKeep"`
+}
+
+// ElasticSnapshotPolicyMonthlyScheduleInput is an input type that accepts ElasticSnapshotPolicyMonthlyScheduleArgs and ElasticSnapshotPolicyMonthlyScheduleOutput values.
+// You can construct a concrete instance of `ElasticSnapshotPolicyMonthlyScheduleInput` via:
+//
+//	ElasticSnapshotPolicyMonthlyScheduleArgs{...}
+type ElasticSnapshotPolicyMonthlyScheduleInput interface {
+	pulumi.Input
+
+	ToElasticSnapshotPolicyMonthlyScheduleOutput() ElasticSnapshotPolicyMonthlyScheduleOutput
+	ToElasticSnapshotPolicyMonthlyScheduleOutputWithContext(context.Context) ElasticSnapshotPolicyMonthlyScheduleOutput
+}
+
+// Monthly Schedule properties used to create NetApp snapshot policy
+type ElasticSnapshotPolicyMonthlyScheduleArgs struct {
+	// Indicates which days of the month snapshot (1-31) should be taken, accepts a list of integers
+	DaysOfMonth pulumi.IntArrayInput `pulumi:"daysOfMonth"`
+	// Indicates which hour in UTC timezone a snapshot should be taken
+	Hour pulumi.IntPtrInput `pulumi:"hour"`
+	// Indicates which minute snapshot should be taken
+	Minute pulumi.IntPtrInput `pulumi:"minute"`
+	// Monthly snapshot count to keep
+	SnapshotsToKeep pulumi.IntPtrInput `pulumi:"snapshotsToKeep"`
+}
+
+func (ElasticSnapshotPolicyMonthlyScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticSnapshotPolicyMonthlySchedule)(nil)).Elem()
+}
+
+func (i ElasticSnapshotPolicyMonthlyScheduleArgs) ToElasticSnapshotPolicyMonthlyScheduleOutput() ElasticSnapshotPolicyMonthlyScheduleOutput {
+	return i.ToElasticSnapshotPolicyMonthlyScheduleOutputWithContext(context.Background())
+}
+
+func (i ElasticSnapshotPolicyMonthlyScheduleArgs) ToElasticSnapshotPolicyMonthlyScheduleOutputWithContext(ctx context.Context) ElasticSnapshotPolicyMonthlyScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticSnapshotPolicyMonthlyScheduleOutput)
+}
+
+func (i ElasticSnapshotPolicyMonthlyScheduleArgs) ToElasticSnapshotPolicyMonthlySchedulePtrOutput() ElasticSnapshotPolicyMonthlySchedulePtrOutput {
+	return i.ToElasticSnapshotPolicyMonthlySchedulePtrOutputWithContext(context.Background())
+}
+
+func (i ElasticSnapshotPolicyMonthlyScheduleArgs) ToElasticSnapshotPolicyMonthlySchedulePtrOutputWithContext(ctx context.Context) ElasticSnapshotPolicyMonthlySchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticSnapshotPolicyMonthlyScheduleOutput).ToElasticSnapshotPolicyMonthlySchedulePtrOutputWithContext(ctx)
+}
+
+// ElasticSnapshotPolicyMonthlySchedulePtrInput is an input type that accepts ElasticSnapshotPolicyMonthlyScheduleArgs, ElasticSnapshotPolicyMonthlySchedulePtr and ElasticSnapshotPolicyMonthlySchedulePtrOutput values.
+// You can construct a concrete instance of `ElasticSnapshotPolicyMonthlySchedulePtrInput` via:
+//
+//	        ElasticSnapshotPolicyMonthlyScheduleArgs{...}
+//
+//	or:
+//
+//	        nil
+type ElasticSnapshotPolicyMonthlySchedulePtrInput interface {
+	pulumi.Input
+
+	ToElasticSnapshotPolicyMonthlySchedulePtrOutput() ElasticSnapshotPolicyMonthlySchedulePtrOutput
+	ToElasticSnapshotPolicyMonthlySchedulePtrOutputWithContext(context.Context) ElasticSnapshotPolicyMonthlySchedulePtrOutput
+}
+
+type elasticSnapshotPolicyMonthlySchedulePtrType ElasticSnapshotPolicyMonthlyScheduleArgs
+
+func ElasticSnapshotPolicyMonthlySchedulePtr(v *ElasticSnapshotPolicyMonthlyScheduleArgs) ElasticSnapshotPolicyMonthlySchedulePtrInput {
+	return (*elasticSnapshotPolicyMonthlySchedulePtrType)(v)
+}
+
+func (*elasticSnapshotPolicyMonthlySchedulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticSnapshotPolicyMonthlySchedule)(nil)).Elem()
+}
+
+func (i *elasticSnapshotPolicyMonthlySchedulePtrType) ToElasticSnapshotPolicyMonthlySchedulePtrOutput() ElasticSnapshotPolicyMonthlySchedulePtrOutput {
+	return i.ToElasticSnapshotPolicyMonthlySchedulePtrOutputWithContext(context.Background())
+}
+
+func (i *elasticSnapshotPolicyMonthlySchedulePtrType) ToElasticSnapshotPolicyMonthlySchedulePtrOutputWithContext(ctx context.Context) ElasticSnapshotPolicyMonthlySchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticSnapshotPolicyMonthlySchedulePtrOutput)
+}
+
+// Monthly Schedule properties used to create NetApp snapshot policy
+type ElasticSnapshotPolicyMonthlyScheduleOutput struct{ *pulumi.OutputState }
+
+func (ElasticSnapshotPolicyMonthlyScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticSnapshotPolicyMonthlySchedule)(nil)).Elem()
+}
+
+func (o ElasticSnapshotPolicyMonthlyScheduleOutput) ToElasticSnapshotPolicyMonthlyScheduleOutput() ElasticSnapshotPolicyMonthlyScheduleOutput {
+	return o
+}
+
+func (o ElasticSnapshotPolicyMonthlyScheduleOutput) ToElasticSnapshotPolicyMonthlyScheduleOutputWithContext(ctx context.Context) ElasticSnapshotPolicyMonthlyScheduleOutput {
+	return o
+}
+
+func (o ElasticSnapshotPolicyMonthlyScheduleOutput) ToElasticSnapshotPolicyMonthlySchedulePtrOutput() ElasticSnapshotPolicyMonthlySchedulePtrOutput {
+	return o.ToElasticSnapshotPolicyMonthlySchedulePtrOutputWithContext(context.Background())
+}
+
+func (o ElasticSnapshotPolicyMonthlyScheduleOutput) ToElasticSnapshotPolicyMonthlySchedulePtrOutputWithContext(ctx context.Context) ElasticSnapshotPolicyMonthlySchedulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElasticSnapshotPolicyMonthlySchedule) *ElasticSnapshotPolicyMonthlySchedule {
+		return &v
+	}).(ElasticSnapshotPolicyMonthlySchedulePtrOutput)
+}
+
+// Indicates which days of the month snapshot (1-31) should be taken, accepts a list of integers
+func (o ElasticSnapshotPolicyMonthlyScheduleOutput) DaysOfMonth() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v ElasticSnapshotPolicyMonthlySchedule) []int { return v.DaysOfMonth }).(pulumi.IntArrayOutput)
+}
+
+// Indicates which hour in UTC timezone a snapshot should be taken
+func (o ElasticSnapshotPolicyMonthlyScheduleOutput) Hour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElasticSnapshotPolicyMonthlySchedule) *int { return v.Hour }).(pulumi.IntPtrOutput)
+}
+
+// Indicates which minute snapshot should be taken
+func (o ElasticSnapshotPolicyMonthlyScheduleOutput) Minute() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElasticSnapshotPolicyMonthlySchedule) *int { return v.Minute }).(pulumi.IntPtrOutput)
+}
+
+// Monthly snapshot count to keep
+func (o ElasticSnapshotPolicyMonthlyScheduleOutput) SnapshotsToKeep() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElasticSnapshotPolicyMonthlySchedule) *int { return v.SnapshotsToKeep }).(pulumi.IntPtrOutput)
+}
+
+type ElasticSnapshotPolicyMonthlySchedulePtrOutput struct{ *pulumi.OutputState }
+
+func (ElasticSnapshotPolicyMonthlySchedulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticSnapshotPolicyMonthlySchedule)(nil)).Elem()
+}
+
+func (o ElasticSnapshotPolicyMonthlySchedulePtrOutput) ToElasticSnapshotPolicyMonthlySchedulePtrOutput() ElasticSnapshotPolicyMonthlySchedulePtrOutput {
+	return o
+}
+
+func (o ElasticSnapshotPolicyMonthlySchedulePtrOutput) ToElasticSnapshotPolicyMonthlySchedulePtrOutputWithContext(ctx context.Context) ElasticSnapshotPolicyMonthlySchedulePtrOutput {
+	return o
+}
+
+func (o ElasticSnapshotPolicyMonthlySchedulePtrOutput) Elem() ElasticSnapshotPolicyMonthlyScheduleOutput {
+	return o.ApplyT(func(v *ElasticSnapshotPolicyMonthlySchedule) ElasticSnapshotPolicyMonthlySchedule {
+		if v != nil {
+			return *v
+		}
+		var ret ElasticSnapshotPolicyMonthlySchedule
+		return ret
+	}).(ElasticSnapshotPolicyMonthlyScheduleOutput)
+}
+
+// Indicates which days of the month snapshot (1-31) should be taken, accepts a list of integers
+func (o ElasticSnapshotPolicyMonthlySchedulePtrOutput) DaysOfMonth() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *ElasticSnapshotPolicyMonthlySchedule) []int {
+		if v == nil {
+			return nil
+		}
+		return v.DaysOfMonth
+	}).(pulumi.IntArrayOutput)
+}
+
+// Indicates which hour in UTC timezone a snapshot should be taken
+func (o ElasticSnapshotPolicyMonthlySchedulePtrOutput) Hour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElasticSnapshotPolicyMonthlySchedule) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Hour
+	}).(pulumi.IntPtrOutput)
+}
+
+// Indicates which minute snapshot should be taken
+func (o ElasticSnapshotPolicyMonthlySchedulePtrOutput) Minute() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElasticSnapshotPolicyMonthlySchedule) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Minute
+	}).(pulumi.IntPtrOutput)
+}
+
+// Monthly snapshot count to keep
+func (o ElasticSnapshotPolicyMonthlySchedulePtrOutput) SnapshotsToKeep() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElasticSnapshotPolicyMonthlySchedule) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SnapshotsToKeep
+	}).(pulumi.IntPtrOutput)
+}
+
+// Monthly Schedule properties used to create NetApp snapshot policy
+type ElasticSnapshotPolicyMonthlyScheduleResponse struct {
+	// Indicates which days of the month snapshot (1-31) should be taken, accepts a list of integers
+	DaysOfMonth []int `pulumi:"daysOfMonth"`
+	// Indicates which hour in UTC timezone a snapshot should be taken
+	Hour *int `pulumi:"hour"`
+	// Indicates which minute snapshot should be taken
+	Minute *int `pulumi:"minute"`
+	// Monthly snapshot count to keep
+	SnapshotsToKeep *int `pulumi:"snapshotsToKeep"`
+}
+
+// Monthly Schedule properties used to create NetApp snapshot policy
+type ElasticSnapshotPolicyMonthlyScheduleResponseOutput struct{ *pulumi.OutputState }
+
+func (ElasticSnapshotPolicyMonthlyScheduleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticSnapshotPolicyMonthlyScheduleResponse)(nil)).Elem()
+}
+
+func (o ElasticSnapshotPolicyMonthlyScheduleResponseOutput) ToElasticSnapshotPolicyMonthlyScheduleResponseOutput() ElasticSnapshotPolicyMonthlyScheduleResponseOutput {
+	return o
+}
+
+func (o ElasticSnapshotPolicyMonthlyScheduleResponseOutput) ToElasticSnapshotPolicyMonthlyScheduleResponseOutputWithContext(ctx context.Context) ElasticSnapshotPolicyMonthlyScheduleResponseOutput {
+	return o
+}
+
+// Indicates which days of the month snapshot (1-31) should be taken, accepts a list of integers
+func (o ElasticSnapshotPolicyMonthlyScheduleResponseOutput) DaysOfMonth() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v ElasticSnapshotPolicyMonthlyScheduleResponse) []int { return v.DaysOfMonth }).(pulumi.IntArrayOutput)
+}
+
+// Indicates which hour in UTC timezone a snapshot should be taken
+func (o ElasticSnapshotPolicyMonthlyScheduleResponseOutput) Hour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElasticSnapshotPolicyMonthlyScheduleResponse) *int { return v.Hour }).(pulumi.IntPtrOutput)
+}
+
+// Indicates which minute snapshot should be taken
+func (o ElasticSnapshotPolicyMonthlyScheduleResponseOutput) Minute() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElasticSnapshotPolicyMonthlyScheduleResponse) *int { return v.Minute }).(pulumi.IntPtrOutput)
+}
+
+// Monthly snapshot count to keep
+func (o ElasticSnapshotPolicyMonthlyScheduleResponseOutput) SnapshotsToKeep() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElasticSnapshotPolicyMonthlyScheduleResponse) *int { return v.SnapshotsToKeep }).(pulumi.IntPtrOutput)
+}
+
+type ElasticSnapshotPolicyMonthlyScheduleResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ElasticSnapshotPolicyMonthlyScheduleResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticSnapshotPolicyMonthlyScheduleResponse)(nil)).Elem()
+}
+
+func (o ElasticSnapshotPolicyMonthlyScheduleResponsePtrOutput) ToElasticSnapshotPolicyMonthlyScheduleResponsePtrOutput() ElasticSnapshotPolicyMonthlyScheduleResponsePtrOutput {
+	return o
+}
+
+func (o ElasticSnapshotPolicyMonthlyScheduleResponsePtrOutput) ToElasticSnapshotPolicyMonthlyScheduleResponsePtrOutputWithContext(ctx context.Context) ElasticSnapshotPolicyMonthlyScheduleResponsePtrOutput {
+	return o
+}
+
+func (o ElasticSnapshotPolicyMonthlyScheduleResponsePtrOutput) Elem() ElasticSnapshotPolicyMonthlyScheduleResponseOutput {
+	return o.ApplyT(func(v *ElasticSnapshotPolicyMonthlyScheduleResponse) ElasticSnapshotPolicyMonthlyScheduleResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ElasticSnapshotPolicyMonthlyScheduleResponse
+		return ret
+	}).(ElasticSnapshotPolicyMonthlyScheduleResponseOutput)
+}
+
+// Indicates which days of the month snapshot (1-31) should be taken, accepts a list of integers
+func (o ElasticSnapshotPolicyMonthlyScheduleResponsePtrOutput) DaysOfMonth() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *ElasticSnapshotPolicyMonthlyScheduleResponse) []int {
+		if v == nil {
+			return nil
+		}
+		return v.DaysOfMonth
+	}).(pulumi.IntArrayOutput)
+}
+
+// Indicates which hour in UTC timezone a snapshot should be taken
+func (o ElasticSnapshotPolicyMonthlyScheduleResponsePtrOutput) Hour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElasticSnapshotPolicyMonthlyScheduleResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Hour
+	}).(pulumi.IntPtrOutput)
+}
+
+// Indicates which minute snapshot should be taken
+func (o ElasticSnapshotPolicyMonthlyScheduleResponsePtrOutput) Minute() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElasticSnapshotPolicyMonthlyScheduleResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Minute
+	}).(pulumi.IntPtrOutput)
+}
+
+// Monthly snapshot count to keep
+func (o ElasticSnapshotPolicyMonthlyScheduleResponsePtrOutput) SnapshotsToKeep() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElasticSnapshotPolicyMonthlyScheduleResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SnapshotsToKeep
+	}).(pulumi.IntPtrOutput)
+}
+
+// Elastic Snapshot policy properties
+type ElasticSnapshotPolicyProperties struct {
+	// Schedule for daily snapshots
+	DailySchedule *ElasticSnapshotPolicyDailySchedule `pulumi:"dailySchedule"`
+	// Schedule for hourly snapshots
+	HourlySchedule *ElasticSnapshotPolicyHourlySchedule `pulumi:"hourlySchedule"`
+	// Schedule for monthly snapshots
+	MonthlySchedule *ElasticSnapshotPolicyMonthlySchedule `pulumi:"monthlySchedule"`
+	// Configures if the snapshot policy is enabled on the volumes connected to the policy.
+	PolicyStatus *string `pulumi:"policyStatus"`
+	// Schedule for weekly snapshots
+	WeeklySchedule *ElasticSnapshotPolicyWeeklySchedule `pulumi:"weeklySchedule"`
+}
+
+// ElasticSnapshotPolicyPropertiesInput is an input type that accepts ElasticSnapshotPolicyPropertiesArgs and ElasticSnapshotPolicyPropertiesOutput values.
+// You can construct a concrete instance of `ElasticSnapshotPolicyPropertiesInput` via:
+//
+//	ElasticSnapshotPolicyPropertiesArgs{...}
+type ElasticSnapshotPolicyPropertiesInput interface {
+	pulumi.Input
+
+	ToElasticSnapshotPolicyPropertiesOutput() ElasticSnapshotPolicyPropertiesOutput
+	ToElasticSnapshotPolicyPropertiesOutputWithContext(context.Context) ElasticSnapshotPolicyPropertiesOutput
+}
+
+// Elastic Snapshot policy properties
+type ElasticSnapshotPolicyPropertiesArgs struct {
+	// Schedule for daily snapshots
+	DailySchedule ElasticSnapshotPolicyDailySchedulePtrInput `pulumi:"dailySchedule"`
+	// Schedule for hourly snapshots
+	HourlySchedule ElasticSnapshotPolicyHourlySchedulePtrInput `pulumi:"hourlySchedule"`
+	// Schedule for monthly snapshots
+	MonthlySchedule ElasticSnapshotPolicyMonthlySchedulePtrInput `pulumi:"monthlySchedule"`
+	// Configures if the snapshot policy is enabled on the volumes connected to the policy.
+	PolicyStatus pulumi.StringPtrInput `pulumi:"policyStatus"`
+	// Schedule for weekly snapshots
+	WeeklySchedule ElasticSnapshotPolicyWeeklySchedulePtrInput `pulumi:"weeklySchedule"`
+}
+
+func (ElasticSnapshotPolicyPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticSnapshotPolicyProperties)(nil)).Elem()
+}
+
+func (i ElasticSnapshotPolicyPropertiesArgs) ToElasticSnapshotPolicyPropertiesOutput() ElasticSnapshotPolicyPropertiesOutput {
+	return i.ToElasticSnapshotPolicyPropertiesOutputWithContext(context.Background())
+}
+
+func (i ElasticSnapshotPolicyPropertiesArgs) ToElasticSnapshotPolicyPropertiesOutputWithContext(ctx context.Context) ElasticSnapshotPolicyPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticSnapshotPolicyPropertiesOutput)
+}
+
+func (i ElasticSnapshotPolicyPropertiesArgs) ToElasticSnapshotPolicyPropertiesPtrOutput() ElasticSnapshotPolicyPropertiesPtrOutput {
+	return i.ToElasticSnapshotPolicyPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i ElasticSnapshotPolicyPropertiesArgs) ToElasticSnapshotPolicyPropertiesPtrOutputWithContext(ctx context.Context) ElasticSnapshotPolicyPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticSnapshotPolicyPropertiesOutput).ToElasticSnapshotPolicyPropertiesPtrOutputWithContext(ctx)
+}
+
+// ElasticSnapshotPolicyPropertiesPtrInput is an input type that accepts ElasticSnapshotPolicyPropertiesArgs, ElasticSnapshotPolicyPropertiesPtr and ElasticSnapshotPolicyPropertiesPtrOutput values.
+// You can construct a concrete instance of `ElasticSnapshotPolicyPropertiesPtrInput` via:
+//
+//	        ElasticSnapshotPolicyPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ElasticSnapshotPolicyPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToElasticSnapshotPolicyPropertiesPtrOutput() ElasticSnapshotPolicyPropertiesPtrOutput
+	ToElasticSnapshotPolicyPropertiesPtrOutputWithContext(context.Context) ElasticSnapshotPolicyPropertiesPtrOutput
+}
+
+type elasticSnapshotPolicyPropertiesPtrType ElasticSnapshotPolicyPropertiesArgs
+
+func ElasticSnapshotPolicyPropertiesPtr(v *ElasticSnapshotPolicyPropertiesArgs) ElasticSnapshotPolicyPropertiesPtrInput {
+	return (*elasticSnapshotPolicyPropertiesPtrType)(v)
+}
+
+func (*elasticSnapshotPolicyPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticSnapshotPolicyProperties)(nil)).Elem()
+}
+
+func (i *elasticSnapshotPolicyPropertiesPtrType) ToElasticSnapshotPolicyPropertiesPtrOutput() ElasticSnapshotPolicyPropertiesPtrOutput {
+	return i.ToElasticSnapshotPolicyPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *elasticSnapshotPolicyPropertiesPtrType) ToElasticSnapshotPolicyPropertiesPtrOutputWithContext(ctx context.Context) ElasticSnapshotPolicyPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticSnapshotPolicyPropertiesPtrOutput)
+}
+
+// Elastic Snapshot policy properties
+type ElasticSnapshotPolicyPropertiesOutput struct{ *pulumi.OutputState }
+
+func (ElasticSnapshotPolicyPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticSnapshotPolicyProperties)(nil)).Elem()
+}
+
+func (o ElasticSnapshotPolicyPropertiesOutput) ToElasticSnapshotPolicyPropertiesOutput() ElasticSnapshotPolicyPropertiesOutput {
+	return o
+}
+
+func (o ElasticSnapshotPolicyPropertiesOutput) ToElasticSnapshotPolicyPropertiesOutputWithContext(ctx context.Context) ElasticSnapshotPolicyPropertiesOutput {
+	return o
+}
+
+func (o ElasticSnapshotPolicyPropertiesOutput) ToElasticSnapshotPolicyPropertiesPtrOutput() ElasticSnapshotPolicyPropertiesPtrOutput {
+	return o.ToElasticSnapshotPolicyPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o ElasticSnapshotPolicyPropertiesOutput) ToElasticSnapshotPolicyPropertiesPtrOutputWithContext(ctx context.Context) ElasticSnapshotPolicyPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElasticSnapshotPolicyProperties) *ElasticSnapshotPolicyProperties {
+		return &v
+	}).(ElasticSnapshotPolicyPropertiesPtrOutput)
+}
+
+// Schedule for daily snapshots
+func (o ElasticSnapshotPolicyPropertiesOutput) DailySchedule() ElasticSnapshotPolicyDailySchedulePtrOutput {
+	return o.ApplyT(func(v ElasticSnapshotPolicyProperties) *ElasticSnapshotPolicyDailySchedule { return v.DailySchedule }).(ElasticSnapshotPolicyDailySchedulePtrOutput)
+}
+
+// Schedule for hourly snapshots
+func (o ElasticSnapshotPolicyPropertiesOutput) HourlySchedule() ElasticSnapshotPolicyHourlySchedulePtrOutput {
+	return o.ApplyT(func(v ElasticSnapshotPolicyProperties) *ElasticSnapshotPolicyHourlySchedule { return v.HourlySchedule }).(ElasticSnapshotPolicyHourlySchedulePtrOutput)
+}
+
+// Schedule for monthly snapshots
+func (o ElasticSnapshotPolicyPropertiesOutput) MonthlySchedule() ElasticSnapshotPolicyMonthlySchedulePtrOutput {
+	return o.ApplyT(func(v ElasticSnapshotPolicyProperties) *ElasticSnapshotPolicyMonthlySchedule {
+		return v.MonthlySchedule
+	}).(ElasticSnapshotPolicyMonthlySchedulePtrOutput)
+}
+
+// Configures if the snapshot policy is enabled on the volumes connected to the policy.
+func (o ElasticSnapshotPolicyPropertiesOutput) PolicyStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticSnapshotPolicyProperties) *string { return v.PolicyStatus }).(pulumi.StringPtrOutput)
+}
+
+// Schedule for weekly snapshots
+func (o ElasticSnapshotPolicyPropertiesOutput) WeeklySchedule() ElasticSnapshotPolicyWeeklySchedulePtrOutput {
+	return o.ApplyT(func(v ElasticSnapshotPolicyProperties) *ElasticSnapshotPolicyWeeklySchedule { return v.WeeklySchedule }).(ElasticSnapshotPolicyWeeklySchedulePtrOutput)
+}
+
+type ElasticSnapshotPolicyPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (ElasticSnapshotPolicyPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticSnapshotPolicyProperties)(nil)).Elem()
+}
+
+func (o ElasticSnapshotPolicyPropertiesPtrOutput) ToElasticSnapshotPolicyPropertiesPtrOutput() ElasticSnapshotPolicyPropertiesPtrOutput {
+	return o
+}
+
+func (o ElasticSnapshotPolicyPropertiesPtrOutput) ToElasticSnapshotPolicyPropertiesPtrOutputWithContext(ctx context.Context) ElasticSnapshotPolicyPropertiesPtrOutput {
+	return o
+}
+
+func (o ElasticSnapshotPolicyPropertiesPtrOutput) Elem() ElasticSnapshotPolicyPropertiesOutput {
+	return o.ApplyT(func(v *ElasticSnapshotPolicyProperties) ElasticSnapshotPolicyProperties {
+		if v != nil {
+			return *v
+		}
+		var ret ElasticSnapshotPolicyProperties
+		return ret
+	}).(ElasticSnapshotPolicyPropertiesOutput)
+}
+
+// Schedule for daily snapshots
+func (o ElasticSnapshotPolicyPropertiesPtrOutput) DailySchedule() ElasticSnapshotPolicyDailySchedulePtrOutput {
+	return o.ApplyT(func(v *ElasticSnapshotPolicyProperties) *ElasticSnapshotPolicyDailySchedule {
+		if v == nil {
+			return nil
+		}
+		return v.DailySchedule
+	}).(ElasticSnapshotPolicyDailySchedulePtrOutput)
+}
+
+// Schedule for hourly snapshots
+func (o ElasticSnapshotPolicyPropertiesPtrOutput) HourlySchedule() ElasticSnapshotPolicyHourlySchedulePtrOutput {
+	return o.ApplyT(func(v *ElasticSnapshotPolicyProperties) *ElasticSnapshotPolicyHourlySchedule {
+		if v == nil {
+			return nil
+		}
+		return v.HourlySchedule
+	}).(ElasticSnapshotPolicyHourlySchedulePtrOutput)
+}
+
+// Schedule for monthly snapshots
+func (o ElasticSnapshotPolicyPropertiesPtrOutput) MonthlySchedule() ElasticSnapshotPolicyMonthlySchedulePtrOutput {
+	return o.ApplyT(func(v *ElasticSnapshotPolicyProperties) *ElasticSnapshotPolicyMonthlySchedule {
+		if v == nil {
+			return nil
+		}
+		return v.MonthlySchedule
+	}).(ElasticSnapshotPolicyMonthlySchedulePtrOutput)
+}
+
+// Configures if the snapshot policy is enabled on the volumes connected to the policy.
+func (o ElasticSnapshotPolicyPropertiesPtrOutput) PolicyStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticSnapshotPolicyProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PolicyStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+// Schedule for weekly snapshots
+func (o ElasticSnapshotPolicyPropertiesPtrOutput) WeeklySchedule() ElasticSnapshotPolicyWeeklySchedulePtrOutput {
+	return o.ApplyT(func(v *ElasticSnapshotPolicyProperties) *ElasticSnapshotPolicyWeeklySchedule {
+		if v == nil {
+			return nil
+		}
+		return v.WeeklySchedule
+	}).(ElasticSnapshotPolicyWeeklySchedulePtrOutput)
+}
+
+// Elastic Snapshot policy properties
+type ElasticSnapshotPolicyPropertiesResponse struct {
+	// Schedule for daily snapshots
+	DailySchedule *ElasticSnapshotPolicyDailyScheduleResponse `pulumi:"dailySchedule"`
+	// Schedule for hourly snapshots
+	HourlySchedule *ElasticSnapshotPolicyHourlyScheduleResponse `pulumi:"hourlySchedule"`
+	// Schedule for monthly snapshots
+	MonthlySchedule *ElasticSnapshotPolicyMonthlyScheduleResponse `pulumi:"monthlySchedule"`
+	// Configures if the snapshot policy is enabled on the volumes connected to the policy.
+	PolicyStatus *string `pulumi:"policyStatus"`
+	// Azure lifecycle management.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Schedule for weekly snapshots
+	WeeklySchedule *ElasticSnapshotPolicyWeeklyScheduleResponse `pulumi:"weeklySchedule"`
+}
+
+// Elastic Snapshot policy properties
+type ElasticSnapshotPolicyPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (ElasticSnapshotPolicyPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticSnapshotPolicyPropertiesResponse)(nil)).Elem()
+}
+
+func (o ElasticSnapshotPolicyPropertiesResponseOutput) ToElasticSnapshotPolicyPropertiesResponseOutput() ElasticSnapshotPolicyPropertiesResponseOutput {
+	return o
+}
+
+func (o ElasticSnapshotPolicyPropertiesResponseOutput) ToElasticSnapshotPolicyPropertiesResponseOutputWithContext(ctx context.Context) ElasticSnapshotPolicyPropertiesResponseOutput {
+	return o
+}
+
+// Schedule for daily snapshots
+func (o ElasticSnapshotPolicyPropertiesResponseOutput) DailySchedule() ElasticSnapshotPolicyDailyScheduleResponsePtrOutput {
+	return o.ApplyT(func(v ElasticSnapshotPolicyPropertiesResponse) *ElasticSnapshotPolicyDailyScheduleResponse {
+		return v.DailySchedule
+	}).(ElasticSnapshotPolicyDailyScheduleResponsePtrOutput)
+}
+
+// Schedule for hourly snapshots
+func (o ElasticSnapshotPolicyPropertiesResponseOutput) HourlySchedule() ElasticSnapshotPolicyHourlyScheduleResponsePtrOutput {
+	return o.ApplyT(func(v ElasticSnapshotPolicyPropertiesResponse) *ElasticSnapshotPolicyHourlyScheduleResponse {
+		return v.HourlySchedule
+	}).(ElasticSnapshotPolicyHourlyScheduleResponsePtrOutput)
+}
+
+// Schedule for monthly snapshots
+func (o ElasticSnapshotPolicyPropertiesResponseOutput) MonthlySchedule() ElasticSnapshotPolicyMonthlyScheduleResponsePtrOutput {
+	return o.ApplyT(func(v ElasticSnapshotPolicyPropertiesResponse) *ElasticSnapshotPolicyMonthlyScheduleResponse {
+		return v.MonthlySchedule
+	}).(ElasticSnapshotPolicyMonthlyScheduleResponsePtrOutput)
+}
+
+// Configures if the snapshot policy is enabled on the volumes connected to the policy.
+func (o ElasticSnapshotPolicyPropertiesResponseOutput) PolicyStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticSnapshotPolicyPropertiesResponse) *string { return v.PolicyStatus }).(pulumi.StringPtrOutput)
+}
+
+// Azure lifecycle management.
+func (o ElasticSnapshotPolicyPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v ElasticSnapshotPolicyPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Schedule for weekly snapshots
+func (o ElasticSnapshotPolicyPropertiesResponseOutput) WeeklySchedule() ElasticSnapshotPolicyWeeklyScheduleResponsePtrOutput {
+	return o.ApplyT(func(v ElasticSnapshotPolicyPropertiesResponse) *ElasticSnapshotPolicyWeeklyScheduleResponse {
+		return v.WeeklySchedule
+	}).(ElasticSnapshotPolicyWeeklyScheduleResponsePtrOutput)
+}
+
+// Weekly Schedule properties used to create NetApp snapshot policy
+type ElasticSnapshotPolicyWeeklySchedule struct {
+	// Indicates which weekday(s) snapshot(s) should be taken, accepts a list of week day names in english
+	Days []string `pulumi:"days"`
+	// Indicates which hour in UTC timezone a snapshot should be taken
+	Hour *int `pulumi:"hour"`
+	// Indicates which minute snapshot should be taken
+	Minute *int `pulumi:"minute"`
+	// Weekly snapshot count to keep
+	SnapshotsToKeep *int `pulumi:"snapshotsToKeep"`
+}
+
+// ElasticSnapshotPolicyWeeklyScheduleInput is an input type that accepts ElasticSnapshotPolicyWeeklyScheduleArgs and ElasticSnapshotPolicyWeeklyScheduleOutput values.
+// You can construct a concrete instance of `ElasticSnapshotPolicyWeeklyScheduleInput` via:
+//
+//	ElasticSnapshotPolicyWeeklyScheduleArgs{...}
+type ElasticSnapshotPolicyWeeklyScheduleInput interface {
+	pulumi.Input
+
+	ToElasticSnapshotPolicyWeeklyScheduleOutput() ElasticSnapshotPolicyWeeklyScheduleOutput
+	ToElasticSnapshotPolicyWeeklyScheduleOutputWithContext(context.Context) ElasticSnapshotPolicyWeeklyScheduleOutput
+}
+
+// Weekly Schedule properties used to create NetApp snapshot policy
+type ElasticSnapshotPolicyWeeklyScheduleArgs struct {
+	// Indicates which weekday(s) snapshot(s) should be taken, accepts a list of week day names in english
+	Days pulumi.StringArrayInput `pulumi:"days"`
+	// Indicates which hour in UTC timezone a snapshot should be taken
+	Hour pulumi.IntPtrInput `pulumi:"hour"`
+	// Indicates which minute snapshot should be taken
+	Minute pulumi.IntPtrInput `pulumi:"minute"`
+	// Weekly snapshot count to keep
+	SnapshotsToKeep pulumi.IntPtrInput `pulumi:"snapshotsToKeep"`
+}
+
+func (ElasticSnapshotPolicyWeeklyScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticSnapshotPolicyWeeklySchedule)(nil)).Elem()
+}
+
+func (i ElasticSnapshotPolicyWeeklyScheduleArgs) ToElasticSnapshotPolicyWeeklyScheduleOutput() ElasticSnapshotPolicyWeeklyScheduleOutput {
+	return i.ToElasticSnapshotPolicyWeeklyScheduleOutputWithContext(context.Background())
+}
+
+func (i ElasticSnapshotPolicyWeeklyScheduleArgs) ToElasticSnapshotPolicyWeeklyScheduleOutputWithContext(ctx context.Context) ElasticSnapshotPolicyWeeklyScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticSnapshotPolicyWeeklyScheduleOutput)
+}
+
+func (i ElasticSnapshotPolicyWeeklyScheduleArgs) ToElasticSnapshotPolicyWeeklySchedulePtrOutput() ElasticSnapshotPolicyWeeklySchedulePtrOutput {
+	return i.ToElasticSnapshotPolicyWeeklySchedulePtrOutputWithContext(context.Background())
+}
+
+func (i ElasticSnapshotPolicyWeeklyScheduleArgs) ToElasticSnapshotPolicyWeeklySchedulePtrOutputWithContext(ctx context.Context) ElasticSnapshotPolicyWeeklySchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticSnapshotPolicyWeeklyScheduleOutput).ToElasticSnapshotPolicyWeeklySchedulePtrOutputWithContext(ctx)
+}
+
+// ElasticSnapshotPolicyWeeklySchedulePtrInput is an input type that accepts ElasticSnapshotPolicyWeeklyScheduleArgs, ElasticSnapshotPolicyWeeklySchedulePtr and ElasticSnapshotPolicyWeeklySchedulePtrOutput values.
+// You can construct a concrete instance of `ElasticSnapshotPolicyWeeklySchedulePtrInput` via:
+//
+//	        ElasticSnapshotPolicyWeeklyScheduleArgs{...}
+//
+//	or:
+//
+//	        nil
+type ElasticSnapshotPolicyWeeklySchedulePtrInput interface {
+	pulumi.Input
+
+	ToElasticSnapshotPolicyWeeklySchedulePtrOutput() ElasticSnapshotPolicyWeeklySchedulePtrOutput
+	ToElasticSnapshotPolicyWeeklySchedulePtrOutputWithContext(context.Context) ElasticSnapshotPolicyWeeklySchedulePtrOutput
+}
+
+type elasticSnapshotPolicyWeeklySchedulePtrType ElasticSnapshotPolicyWeeklyScheduleArgs
+
+func ElasticSnapshotPolicyWeeklySchedulePtr(v *ElasticSnapshotPolicyWeeklyScheduleArgs) ElasticSnapshotPolicyWeeklySchedulePtrInput {
+	return (*elasticSnapshotPolicyWeeklySchedulePtrType)(v)
+}
+
+func (*elasticSnapshotPolicyWeeklySchedulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticSnapshotPolicyWeeklySchedule)(nil)).Elem()
+}
+
+func (i *elasticSnapshotPolicyWeeklySchedulePtrType) ToElasticSnapshotPolicyWeeklySchedulePtrOutput() ElasticSnapshotPolicyWeeklySchedulePtrOutput {
+	return i.ToElasticSnapshotPolicyWeeklySchedulePtrOutputWithContext(context.Background())
+}
+
+func (i *elasticSnapshotPolicyWeeklySchedulePtrType) ToElasticSnapshotPolicyWeeklySchedulePtrOutputWithContext(ctx context.Context) ElasticSnapshotPolicyWeeklySchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticSnapshotPolicyWeeklySchedulePtrOutput)
+}
+
+// Weekly Schedule properties used to create NetApp snapshot policy
+type ElasticSnapshotPolicyWeeklyScheduleOutput struct{ *pulumi.OutputState }
+
+func (ElasticSnapshotPolicyWeeklyScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticSnapshotPolicyWeeklySchedule)(nil)).Elem()
+}
+
+func (o ElasticSnapshotPolicyWeeklyScheduleOutput) ToElasticSnapshotPolicyWeeklyScheduleOutput() ElasticSnapshotPolicyWeeklyScheduleOutput {
+	return o
+}
+
+func (o ElasticSnapshotPolicyWeeklyScheduleOutput) ToElasticSnapshotPolicyWeeklyScheduleOutputWithContext(ctx context.Context) ElasticSnapshotPolicyWeeklyScheduleOutput {
+	return o
+}
+
+func (o ElasticSnapshotPolicyWeeklyScheduleOutput) ToElasticSnapshotPolicyWeeklySchedulePtrOutput() ElasticSnapshotPolicyWeeklySchedulePtrOutput {
+	return o.ToElasticSnapshotPolicyWeeklySchedulePtrOutputWithContext(context.Background())
+}
+
+func (o ElasticSnapshotPolicyWeeklyScheduleOutput) ToElasticSnapshotPolicyWeeklySchedulePtrOutputWithContext(ctx context.Context) ElasticSnapshotPolicyWeeklySchedulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElasticSnapshotPolicyWeeklySchedule) *ElasticSnapshotPolicyWeeklySchedule {
+		return &v
+	}).(ElasticSnapshotPolicyWeeklySchedulePtrOutput)
+}
+
+// Indicates which weekday(s) snapshot(s) should be taken, accepts a list of week day names in english
+func (o ElasticSnapshotPolicyWeeklyScheduleOutput) Days() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ElasticSnapshotPolicyWeeklySchedule) []string { return v.Days }).(pulumi.StringArrayOutput)
+}
+
+// Indicates which hour in UTC timezone a snapshot should be taken
+func (o ElasticSnapshotPolicyWeeklyScheduleOutput) Hour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElasticSnapshotPolicyWeeklySchedule) *int { return v.Hour }).(pulumi.IntPtrOutput)
+}
+
+// Indicates which minute snapshot should be taken
+func (o ElasticSnapshotPolicyWeeklyScheduleOutput) Minute() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElasticSnapshotPolicyWeeklySchedule) *int { return v.Minute }).(pulumi.IntPtrOutput)
+}
+
+// Weekly snapshot count to keep
+func (o ElasticSnapshotPolicyWeeklyScheduleOutput) SnapshotsToKeep() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElasticSnapshotPolicyWeeklySchedule) *int { return v.SnapshotsToKeep }).(pulumi.IntPtrOutput)
+}
+
+type ElasticSnapshotPolicyWeeklySchedulePtrOutput struct{ *pulumi.OutputState }
+
+func (ElasticSnapshotPolicyWeeklySchedulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticSnapshotPolicyWeeklySchedule)(nil)).Elem()
+}
+
+func (o ElasticSnapshotPolicyWeeklySchedulePtrOutput) ToElasticSnapshotPolicyWeeklySchedulePtrOutput() ElasticSnapshotPolicyWeeklySchedulePtrOutput {
+	return o
+}
+
+func (o ElasticSnapshotPolicyWeeklySchedulePtrOutput) ToElasticSnapshotPolicyWeeklySchedulePtrOutputWithContext(ctx context.Context) ElasticSnapshotPolicyWeeklySchedulePtrOutput {
+	return o
+}
+
+func (o ElasticSnapshotPolicyWeeklySchedulePtrOutput) Elem() ElasticSnapshotPolicyWeeklyScheduleOutput {
+	return o.ApplyT(func(v *ElasticSnapshotPolicyWeeklySchedule) ElasticSnapshotPolicyWeeklySchedule {
+		if v != nil {
+			return *v
+		}
+		var ret ElasticSnapshotPolicyWeeklySchedule
+		return ret
+	}).(ElasticSnapshotPolicyWeeklyScheduleOutput)
+}
+
+// Indicates which weekday(s) snapshot(s) should be taken, accepts a list of week day names in english
+func (o ElasticSnapshotPolicyWeeklySchedulePtrOutput) Days() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ElasticSnapshotPolicyWeeklySchedule) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Days
+	}).(pulumi.StringArrayOutput)
+}
+
+// Indicates which hour in UTC timezone a snapshot should be taken
+func (o ElasticSnapshotPolicyWeeklySchedulePtrOutput) Hour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElasticSnapshotPolicyWeeklySchedule) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Hour
+	}).(pulumi.IntPtrOutput)
+}
+
+// Indicates which minute snapshot should be taken
+func (o ElasticSnapshotPolicyWeeklySchedulePtrOutput) Minute() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElasticSnapshotPolicyWeeklySchedule) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Minute
+	}).(pulumi.IntPtrOutput)
+}
+
+// Weekly snapshot count to keep
+func (o ElasticSnapshotPolicyWeeklySchedulePtrOutput) SnapshotsToKeep() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElasticSnapshotPolicyWeeklySchedule) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SnapshotsToKeep
+	}).(pulumi.IntPtrOutput)
+}
+
+// Weekly Schedule properties used to create NetApp snapshot policy
+type ElasticSnapshotPolicyWeeklyScheduleResponse struct {
+	// Indicates which weekday(s) snapshot(s) should be taken, accepts a list of week day names in english
+	Days []string `pulumi:"days"`
+	// Indicates which hour in UTC timezone a snapshot should be taken
+	Hour *int `pulumi:"hour"`
+	// Indicates which minute snapshot should be taken
+	Minute *int `pulumi:"minute"`
+	// Weekly snapshot count to keep
+	SnapshotsToKeep *int `pulumi:"snapshotsToKeep"`
+}
+
+// Weekly Schedule properties used to create NetApp snapshot policy
+type ElasticSnapshotPolicyWeeklyScheduleResponseOutput struct{ *pulumi.OutputState }
+
+func (ElasticSnapshotPolicyWeeklyScheduleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticSnapshotPolicyWeeklyScheduleResponse)(nil)).Elem()
+}
+
+func (o ElasticSnapshotPolicyWeeklyScheduleResponseOutput) ToElasticSnapshotPolicyWeeklyScheduleResponseOutput() ElasticSnapshotPolicyWeeklyScheduleResponseOutput {
+	return o
+}
+
+func (o ElasticSnapshotPolicyWeeklyScheduleResponseOutput) ToElasticSnapshotPolicyWeeklyScheduleResponseOutputWithContext(ctx context.Context) ElasticSnapshotPolicyWeeklyScheduleResponseOutput {
+	return o
+}
+
+// Indicates which weekday(s) snapshot(s) should be taken, accepts a list of week day names in english
+func (o ElasticSnapshotPolicyWeeklyScheduleResponseOutput) Days() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ElasticSnapshotPolicyWeeklyScheduleResponse) []string { return v.Days }).(pulumi.StringArrayOutput)
+}
+
+// Indicates which hour in UTC timezone a snapshot should be taken
+func (o ElasticSnapshotPolicyWeeklyScheduleResponseOutput) Hour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElasticSnapshotPolicyWeeklyScheduleResponse) *int { return v.Hour }).(pulumi.IntPtrOutput)
+}
+
+// Indicates which minute snapshot should be taken
+func (o ElasticSnapshotPolicyWeeklyScheduleResponseOutput) Minute() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElasticSnapshotPolicyWeeklyScheduleResponse) *int { return v.Minute }).(pulumi.IntPtrOutput)
+}
+
+// Weekly snapshot count to keep
+func (o ElasticSnapshotPolicyWeeklyScheduleResponseOutput) SnapshotsToKeep() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElasticSnapshotPolicyWeeklyScheduleResponse) *int { return v.SnapshotsToKeep }).(pulumi.IntPtrOutput)
+}
+
+type ElasticSnapshotPolicyWeeklyScheduleResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ElasticSnapshotPolicyWeeklyScheduleResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticSnapshotPolicyWeeklyScheduleResponse)(nil)).Elem()
+}
+
+func (o ElasticSnapshotPolicyWeeklyScheduleResponsePtrOutput) ToElasticSnapshotPolicyWeeklyScheduleResponsePtrOutput() ElasticSnapshotPolicyWeeklyScheduleResponsePtrOutput {
+	return o
+}
+
+func (o ElasticSnapshotPolicyWeeklyScheduleResponsePtrOutput) ToElasticSnapshotPolicyWeeklyScheduleResponsePtrOutputWithContext(ctx context.Context) ElasticSnapshotPolicyWeeklyScheduleResponsePtrOutput {
+	return o
+}
+
+func (o ElasticSnapshotPolicyWeeklyScheduleResponsePtrOutput) Elem() ElasticSnapshotPolicyWeeklyScheduleResponseOutput {
+	return o.ApplyT(func(v *ElasticSnapshotPolicyWeeklyScheduleResponse) ElasticSnapshotPolicyWeeklyScheduleResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ElasticSnapshotPolicyWeeklyScheduleResponse
+		return ret
+	}).(ElasticSnapshotPolicyWeeklyScheduleResponseOutput)
+}
+
+// Indicates which weekday(s) snapshot(s) should be taken, accepts a list of week day names in english
+func (o ElasticSnapshotPolicyWeeklyScheduleResponsePtrOutput) Days() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ElasticSnapshotPolicyWeeklyScheduleResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Days
+	}).(pulumi.StringArrayOutput)
+}
+
+// Indicates which hour in UTC timezone a snapshot should be taken
+func (o ElasticSnapshotPolicyWeeklyScheduleResponsePtrOutput) Hour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElasticSnapshotPolicyWeeklyScheduleResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Hour
+	}).(pulumi.IntPtrOutput)
+}
+
+// Indicates which minute snapshot should be taken
+func (o ElasticSnapshotPolicyWeeklyScheduleResponsePtrOutput) Minute() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElasticSnapshotPolicyWeeklyScheduleResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Minute
+	}).(pulumi.IntPtrOutput)
+}
+
+// Weekly snapshot count to keep
+func (o ElasticSnapshotPolicyWeeklyScheduleResponsePtrOutput) SnapshotsToKeep() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElasticSnapshotPolicyWeeklyScheduleResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SnapshotsToKeep
+	}).(pulumi.IntPtrOutput)
+}
+
+// Elastic Snapshot properties
+type ElasticSnapshotPropertiesResponse struct {
+	// Azure lifecycle management.
+	ProvisioningState string `pulumi:"provisioningState"`
+}
+
+// Elastic Snapshot properties
+type ElasticSnapshotPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (ElasticSnapshotPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticSnapshotPropertiesResponse)(nil)).Elem()
+}
+
+func (o ElasticSnapshotPropertiesResponseOutput) ToElasticSnapshotPropertiesResponseOutput() ElasticSnapshotPropertiesResponseOutput {
+	return o
+}
+
+func (o ElasticSnapshotPropertiesResponseOutput) ToElasticSnapshotPropertiesResponseOutputWithContext(ctx context.Context) ElasticSnapshotPropertiesResponseOutput {
+	return o
+}
+
+// Azure lifecycle management.
+func (o ElasticSnapshotPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v ElasticSnapshotPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Elastic Volume Backup Properties
+type ElasticVolumeBackupProperties struct {
+	// ResourceId used to identify Elastic Backup Policy
+	ElasticBackupPolicyResourceId *string `pulumi:"elasticBackupPolicyResourceId"`
+	// ResourceId used to identify Elastic Backup Vault
+	ElasticBackupVaultResourceId *string `pulumi:"elasticBackupVaultResourceId"`
+	// The property to decide policy is enforced or not on the volume
+	PolicyEnforcement *string `pulumi:"policyEnforcement"`
+}
+
+// ElasticVolumeBackupPropertiesInput is an input type that accepts ElasticVolumeBackupPropertiesArgs and ElasticVolumeBackupPropertiesOutput values.
+// You can construct a concrete instance of `ElasticVolumeBackupPropertiesInput` via:
+//
+//	ElasticVolumeBackupPropertiesArgs{...}
+type ElasticVolumeBackupPropertiesInput interface {
+	pulumi.Input
+
+	ToElasticVolumeBackupPropertiesOutput() ElasticVolumeBackupPropertiesOutput
+	ToElasticVolumeBackupPropertiesOutputWithContext(context.Context) ElasticVolumeBackupPropertiesOutput
+}
+
+// Elastic Volume Backup Properties
+type ElasticVolumeBackupPropertiesArgs struct {
+	// ResourceId used to identify Elastic Backup Policy
+	ElasticBackupPolicyResourceId pulumi.StringPtrInput `pulumi:"elasticBackupPolicyResourceId"`
+	// ResourceId used to identify Elastic Backup Vault
+	ElasticBackupVaultResourceId pulumi.StringPtrInput `pulumi:"elasticBackupVaultResourceId"`
+	// The property to decide policy is enforced or not on the volume
+	PolicyEnforcement pulumi.StringPtrInput `pulumi:"policyEnforcement"`
+}
+
+func (ElasticVolumeBackupPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticVolumeBackupProperties)(nil)).Elem()
+}
+
+func (i ElasticVolumeBackupPropertiesArgs) ToElasticVolumeBackupPropertiesOutput() ElasticVolumeBackupPropertiesOutput {
+	return i.ToElasticVolumeBackupPropertiesOutputWithContext(context.Background())
+}
+
+func (i ElasticVolumeBackupPropertiesArgs) ToElasticVolumeBackupPropertiesOutputWithContext(ctx context.Context) ElasticVolumeBackupPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticVolumeBackupPropertiesOutput)
+}
+
+func (i ElasticVolumeBackupPropertiesArgs) ToElasticVolumeBackupPropertiesPtrOutput() ElasticVolumeBackupPropertiesPtrOutput {
+	return i.ToElasticVolumeBackupPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i ElasticVolumeBackupPropertiesArgs) ToElasticVolumeBackupPropertiesPtrOutputWithContext(ctx context.Context) ElasticVolumeBackupPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticVolumeBackupPropertiesOutput).ToElasticVolumeBackupPropertiesPtrOutputWithContext(ctx)
+}
+
+// ElasticVolumeBackupPropertiesPtrInput is an input type that accepts ElasticVolumeBackupPropertiesArgs, ElasticVolumeBackupPropertiesPtr and ElasticVolumeBackupPropertiesPtrOutput values.
+// You can construct a concrete instance of `ElasticVolumeBackupPropertiesPtrInput` via:
+//
+//	        ElasticVolumeBackupPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ElasticVolumeBackupPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToElasticVolumeBackupPropertiesPtrOutput() ElasticVolumeBackupPropertiesPtrOutput
+	ToElasticVolumeBackupPropertiesPtrOutputWithContext(context.Context) ElasticVolumeBackupPropertiesPtrOutput
+}
+
+type elasticVolumeBackupPropertiesPtrType ElasticVolumeBackupPropertiesArgs
+
+func ElasticVolumeBackupPropertiesPtr(v *ElasticVolumeBackupPropertiesArgs) ElasticVolumeBackupPropertiesPtrInput {
+	return (*elasticVolumeBackupPropertiesPtrType)(v)
+}
+
+func (*elasticVolumeBackupPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticVolumeBackupProperties)(nil)).Elem()
+}
+
+func (i *elasticVolumeBackupPropertiesPtrType) ToElasticVolumeBackupPropertiesPtrOutput() ElasticVolumeBackupPropertiesPtrOutput {
+	return i.ToElasticVolumeBackupPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *elasticVolumeBackupPropertiesPtrType) ToElasticVolumeBackupPropertiesPtrOutputWithContext(ctx context.Context) ElasticVolumeBackupPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticVolumeBackupPropertiesPtrOutput)
+}
+
+// Elastic Volume Backup Properties
+type ElasticVolumeBackupPropertiesOutput struct{ *pulumi.OutputState }
+
+func (ElasticVolumeBackupPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticVolumeBackupProperties)(nil)).Elem()
+}
+
+func (o ElasticVolumeBackupPropertiesOutput) ToElasticVolumeBackupPropertiesOutput() ElasticVolumeBackupPropertiesOutput {
+	return o
+}
+
+func (o ElasticVolumeBackupPropertiesOutput) ToElasticVolumeBackupPropertiesOutputWithContext(ctx context.Context) ElasticVolumeBackupPropertiesOutput {
+	return o
+}
+
+func (o ElasticVolumeBackupPropertiesOutput) ToElasticVolumeBackupPropertiesPtrOutput() ElasticVolumeBackupPropertiesPtrOutput {
+	return o.ToElasticVolumeBackupPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o ElasticVolumeBackupPropertiesOutput) ToElasticVolumeBackupPropertiesPtrOutputWithContext(ctx context.Context) ElasticVolumeBackupPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElasticVolumeBackupProperties) *ElasticVolumeBackupProperties {
+		return &v
+	}).(ElasticVolumeBackupPropertiesPtrOutput)
+}
+
+// ResourceId used to identify Elastic Backup Policy
+func (o ElasticVolumeBackupPropertiesOutput) ElasticBackupPolicyResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticVolumeBackupProperties) *string { return v.ElasticBackupPolicyResourceId }).(pulumi.StringPtrOutput)
+}
+
+// ResourceId used to identify Elastic Backup Vault
+func (o ElasticVolumeBackupPropertiesOutput) ElasticBackupVaultResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticVolumeBackupProperties) *string { return v.ElasticBackupVaultResourceId }).(pulumi.StringPtrOutput)
+}
+
+// The property to decide policy is enforced or not on the volume
+func (o ElasticVolumeBackupPropertiesOutput) PolicyEnforcement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticVolumeBackupProperties) *string { return v.PolicyEnforcement }).(pulumi.StringPtrOutput)
+}
+
+type ElasticVolumeBackupPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (ElasticVolumeBackupPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticVolumeBackupProperties)(nil)).Elem()
+}
+
+func (o ElasticVolumeBackupPropertiesPtrOutput) ToElasticVolumeBackupPropertiesPtrOutput() ElasticVolumeBackupPropertiesPtrOutput {
+	return o
+}
+
+func (o ElasticVolumeBackupPropertiesPtrOutput) ToElasticVolumeBackupPropertiesPtrOutputWithContext(ctx context.Context) ElasticVolumeBackupPropertiesPtrOutput {
+	return o
+}
+
+func (o ElasticVolumeBackupPropertiesPtrOutput) Elem() ElasticVolumeBackupPropertiesOutput {
+	return o.ApplyT(func(v *ElasticVolumeBackupProperties) ElasticVolumeBackupProperties {
+		if v != nil {
+			return *v
+		}
+		var ret ElasticVolumeBackupProperties
+		return ret
+	}).(ElasticVolumeBackupPropertiesOutput)
+}
+
+// ResourceId used to identify Elastic Backup Policy
+func (o ElasticVolumeBackupPropertiesPtrOutput) ElasticBackupPolicyResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticVolumeBackupProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ElasticBackupPolicyResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// ResourceId used to identify Elastic Backup Vault
+func (o ElasticVolumeBackupPropertiesPtrOutput) ElasticBackupVaultResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticVolumeBackupProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ElasticBackupVaultResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The property to decide policy is enforced or not on the volume
+func (o ElasticVolumeBackupPropertiesPtrOutput) PolicyEnforcement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticVolumeBackupProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PolicyEnforcement
+	}).(pulumi.StringPtrOutput)
+}
+
+// Elastic Volume Backup Properties
+type ElasticVolumeBackupPropertiesResponse struct {
+	// ResourceId used to identify Elastic Backup Policy
+	ElasticBackupPolicyResourceId *string `pulumi:"elasticBackupPolicyResourceId"`
+	// ResourceId used to identify Elastic Backup Vault
+	ElasticBackupVaultResourceId *string `pulumi:"elasticBackupVaultResourceId"`
+	// The property to decide policy is enforced or not on the volume
+	PolicyEnforcement *string `pulumi:"policyEnforcement"`
+}
+
+// Elastic Volume Backup Properties
+type ElasticVolumeBackupPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (ElasticVolumeBackupPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticVolumeBackupPropertiesResponse)(nil)).Elem()
+}
+
+func (o ElasticVolumeBackupPropertiesResponseOutput) ToElasticVolumeBackupPropertiesResponseOutput() ElasticVolumeBackupPropertiesResponseOutput {
+	return o
+}
+
+func (o ElasticVolumeBackupPropertiesResponseOutput) ToElasticVolumeBackupPropertiesResponseOutputWithContext(ctx context.Context) ElasticVolumeBackupPropertiesResponseOutput {
+	return o
+}
+
+// ResourceId used to identify Elastic Backup Policy
+func (o ElasticVolumeBackupPropertiesResponseOutput) ElasticBackupPolicyResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticVolumeBackupPropertiesResponse) *string { return v.ElasticBackupPolicyResourceId }).(pulumi.StringPtrOutput)
+}
+
+// ResourceId used to identify Elastic Backup Vault
+func (o ElasticVolumeBackupPropertiesResponseOutput) ElasticBackupVaultResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticVolumeBackupPropertiesResponse) *string { return v.ElasticBackupVaultResourceId }).(pulumi.StringPtrOutput)
+}
+
+// The property to decide policy is enforced or not on the volume
+func (o ElasticVolumeBackupPropertiesResponseOutput) PolicyEnforcement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticVolumeBackupPropertiesResponse) *string { return v.PolicyEnforcement }).(pulumi.StringPtrOutput)
+}
+
+type ElasticVolumeBackupPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ElasticVolumeBackupPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticVolumeBackupPropertiesResponse)(nil)).Elem()
+}
+
+func (o ElasticVolumeBackupPropertiesResponsePtrOutput) ToElasticVolumeBackupPropertiesResponsePtrOutput() ElasticVolumeBackupPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o ElasticVolumeBackupPropertiesResponsePtrOutput) ToElasticVolumeBackupPropertiesResponsePtrOutputWithContext(ctx context.Context) ElasticVolumeBackupPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o ElasticVolumeBackupPropertiesResponsePtrOutput) Elem() ElasticVolumeBackupPropertiesResponseOutput {
+	return o.ApplyT(func(v *ElasticVolumeBackupPropertiesResponse) ElasticVolumeBackupPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ElasticVolumeBackupPropertiesResponse
+		return ret
+	}).(ElasticVolumeBackupPropertiesResponseOutput)
+}
+
+// ResourceId used to identify Elastic Backup Policy
+func (o ElasticVolumeBackupPropertiesResponsePtrOutput) ElasticBackupPolicyResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticVolumeBackupPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ElasticBackupPolicyResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// ResourceId used to identify Elastic Backup Vault
+func (o ElasticVolumeBackupPropertiesResponsePtrOutput) ElasticBackupVaultResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticVolumeBackupPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ElasticBackupVaultResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The property to decide policy is enforced or not on the volume
+func (o ElasticVolumeBackupPropertiesResponsePtrOutput) PolicyEnforcement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticVolumeBackupPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PolicyEnforcement
+	}).(pulumi.StringPtrOutput)
+}
+
+// Data protection configuration option for the volume, including snapshot policies and backup.
+type ElasticVolumeDataProtectionProperties struct {
+	// Used to configure backups on an elastic volume.
+	Backup *ElasticVolumeBackupProperties `pulumi:"backup"`
+	// Used to apply a snapshot policy to a volume.
+	Snapshot *ElasticVolumeSnapshotProperties `pulumi:"snapshot"`
+}
+
+// ElasticVolumeDataProtectionPropertiesInput is an input type that accepts ElasticVolumeDataProtectionPropertiesArgs and ElasticVolumeDataProtectionPropertiesOutput values.
+// You can construct a concrete instance of `ElasticVolumeDataProtectionPropertiesInput` via:
+//
+//	ElasticVolumeDataProtectionPropertiesArgs{...}
+type ElasticVolumeDataProtectionPropertiesInput interface {
+	pulumi.Input
+
+	ToElasticVolumeDataProtectionPropertiesOutput() ElasticVolumeDataProtectionPropertiesOutput
+	ToElasticVolumeDataProtectionPropertiesOutputWithContext(context.Context) ElasticVolumeDataProtectionPropertiesOutput
+}
+
+// Data protection configuration option for the volume, including snapshot policies and backup.
+type ElasticVolumeDataProtectionPropertiesArgs struct {
+	// Used to configure backups on an elastic volume.
+	Backup ElasticVolumeBackupPropertiesPtrInput `pulumi:"backup"`
+	// Used to apply a snapshot policy to a volume.
+	Snapshot ElasticVolumeSnapshotPropertiesPtrInput `pulumi:"snapshot"`
+}
+
+func (ElasticVolumeDataProtectionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticVolumeDataProtectionProperties)(nil)).Elem()
+}
+
+func (i ElasticVolumeDataProtectionPropertiesArgs) ToElasticVolumeDataProtectionPropertiesOutput() ElasticVolumeDataProtectionPropertiesOutput {
+	return i.ToElasticVolumeDataProtectionPropertiesOutputWithContext(context.Background())
+}
+
+func (i ElasticVolumeDataProtectionPropertiesArgs) ToElasticVolumeDataProtectionPropertiesOutputWithContext(ctx context.Context) ElasticVolumeDataProtectionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticVolumeDataProtectionPropertiesOutput)
+}
+
+func (i ElasticVolumeDataProtectionPropertiesArgs) ToElasticVolumeDataProtectionPropertiesPtrOutput() ElasticVolumeDataProtectionPropertiesPtrOutput {
+	return i.ToElasticVolumeDataProtectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i ElasticVolumeDataProtectionPropertiesArgs) ToElasticVolumeDataProtectionPropertiesPtrOutputWithContext(ctx context.Context) ElasticVolumeDataProtectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticVolumeDataProtectionPropertiesOutput).ToElasticVolumeDataProtectionPropertiesPtrOutputWithContext(ctx)
+}
+
+// ElasticVolumeDataProtectionPropertiesPtrInput is an input type that accepts ElasticVolumeDataProtectionPropertiesArgs, ElasticVolumeDataProtectionPropertiesPtr and ElasticVolumeDataProtectionPropertiesPtrOutput values.
+// You can construct a concrete instance of `ElasticVolumeDataProtectionPropertiesPtrInput` via:
+//
+//	        ElasticVolumeDataProtectionPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ElasticVolumeDataProtectionPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToElasticVolumeDataProtectionPropertiesPtrOutput() ElasticVolumeDataProtectionPropertiesPtrOutput
+	ToElasticVolumeDataProtectionPropertiesPtrOutputWithContext(context.Context) ElasticVolumeDataProtectionPropertiesPtrOutput
+}
+
+type elasticVolumeDataProtectionPropertiesPtrType ElasticVolumeDataProtectionPropertiesArgs
+
+func ElasticVolumeDataProtectionPropertiesPtr(v *ElasticVolumeDataProtectionPropertiesArgs) ElasticVolumeDataProtectionPropertiesPtrInput {
+	return (*elasticVolumeDataProtectionPropertiesPtrType)(v)
+}
+
+func (*elasticVolumeDataProtectionPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticVolumeDataProtectionProperties)(nil)).Elem()
+}
+
+func (i *elasticVolumeDataProtectionPropertiesPtrType) ToElasticVolumeDataProtectionPropertiesPtrOutput() ElasticVolumeDataProtectionPropertiesPtrOutput {
+	return i.ToElasticVolumeDataProtectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *elasticVolumeDataProtectionPropertiesPtrType) ToElasticVolumeDataProtectionPropertiesPtrOutputWithContext(ctx context.Context) ElasticVolumeDataProtectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticVolumeDataProtectionPropertiesPtrOutput)
+}
+
+// Data protection configuration option for the volume, including snapshot policies and backup.
+type ElasticVolumeDataProtectionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (ElasticVolumeDataProtectionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticVolumeDataProtectionProperties)(nil)).Elem()
+}
+
+func (o ElasticVolumeDataProtectionPropertiesOutput) ToElasticVolumeDataProtectionPropertiesOutput() ElasticVolumeDataProtectionPropertiesOutput {
+	return o
+}
+
+func (o ElasticVolumeDataProtectionPropertiesOutput) ToElasticVolumeDataProtectionPropertiesOutputWithContext(ctx context.Context) ElasticVolumeDataProtectionPropertiesOutput {
+	return o
+}
+
+func (o ElasticVolumeDataProtectionPropertiesOutput) ToElasticVolumeDataProtectionPropertiesPtrOutput() ElasticVolumeDataProtectionPropertiesPtrOutput {
+	return o.ToElasticVolumeDataProtectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o ElasticVolumeDataProtectionPropertiesOutput) ToElasticVolumeDataProtectionPropertiesPtrOutputWithContext(ctx context.Context) ElasticVolumeDataProtectionPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElasticVolumeDataProtectionProperties) *ElasticVolumeDataProtectionProperties {
+		return &v
+	}).(ElasticVolumeDataProtectionPropertiesPtrOutput)
+}
+
+// Used to configure backups on an elastic volume.
+func (o ElasticVolumeDataProtectionPropertiesOutput) Backup() ElasticVolumeBackupPropertiesPtrOutput {
+	return o.ApplyT(func(v ElasticVolumeDataProtectionProperties) *ElasticVolumeBackupProperties { return v.Backup }).(ElasticVolumeBackupPropertiesPtrOutput)
+}
+
+// Used to apply a snapshot policy to a volume.
+func (o ElasticVolumeDataProtectionPropertiesOutput) Snapshot() ElasticVolumeSnapshotPropertiesPtrOutput {
+	return o.ApplyT(func(v ElasticVolumeDataProtectionProperties) *ElasticVolumeSnapshotProperties { return v.Snapshot }).(ElasticVolumeSnapshotPropertiesPtrOutput)
+}
+
+type ElasticVolumeDataProtectionPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (ElasticVolumeDataProtectionPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticVolumeDataProtectionProperties)(nil)).Elem()
+}
+
+func (o ElasticVolumeDataProtectionPropertiesPtrOutput) ToElasticVolumeDataProtectionPropertiesPtrOutput() ElasticVolumeDataProtectionPropertiesPtrOutput {
+	return o
+}
+
+func (o ElasticVolumeDataProtectionPropertiesPtrOutput) ToElasticVolumeDataProtectionPropertiesPtrOutputWithContext(ctx context.Context) ElasticVolumeDataProtectionPropertiesPtrOutput {
+	return o
+}
+
+func (o ElasticVolumeDataProtectionPropertiesPtrOutput) Elem() ElasticVolumeDataProtectionPropertiesOutput {
+	return o.ApplyT(func(v *ElasticVolumeDataProtectionProperties) ElasticVolumeDataProtectionProperties {
+		if v != nil {
+			return *v
+		}
+		var ret ElasticVolumeDataProtectionProperties
+		return ret
+	}).(ElasticVolumeDataProtectionPropertiesOutput)
+}
+
+// Used to configure backups on an elastic volume.
+func (o ElasticVolumeDataProtectionPropertiesPtrOutput) Backup() ElasticVolumeBackupPropertiesPtrOutput {
+	return o.ApplyT(func(v *ElasticVolumeDataProtectionProperties) *ElasticVolumeBackupProperties {
+		if v == nil {
+			return nil
+		}
+		return v.Backup
+	}).(ElasticVolumeBackupPropertiesPtrOutput)
+}
+
+// Used to apply a snapshot policy to a volume.
+func (o ElasticVolumeDataProtectionPropertiesPtrOutput) Snapshot() ElasticVolumeSnapshotPropertiesPtrOutput {
+	return o.ApplyT(func(v *ElasticVolumeDataProtectionProperties) *ElasticVolumeSnapshotProperties {
+		if v == nil {
+			return nil
+		}
+		return v.Snapshot
+	}).(ElasticVolumeSnapshotPropertiesPtrOutput)
+}
+
+// Data protection configuration option for the volume, including snapshot policies and backup.
+type ElasticVolumeDataProtectionPropertiesResponse struct {
+	// Used to configure backups on an elastic volume.
+	Backup *ElasticVolumeBackupPropertiesResponse `pulumi:"backup"`
+	// Used to apply a snapshot policy to a volume.
+	Snapshot *ElasticVolumeSnapshotPropertiesResponse `pulumi:"snapshot"`
+}
+
+// Data protection configuration option for the volume, including snapshot policies and backup.
+type ElasticVolumeDataProtectionPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (ElasticVolumeDataProtectionPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticVolumeDataProtectionPropertiesResponse)(nil)).Elem()
+}
+
+func (o ElasticVolumeDataProtectionPropertiesResponseOutput) ToElasticVolumeDataProtectionPropertiesResponseOutput() ElasticVolumeDataProtectionPropertiesResponseOutput {
+	return o
+}
+
+func (o ElasticVolumeDataProtectionPropertiesResponseOutput) ToElasticVolumeDataProtectionPropertiesResponseOutputWithContext(ctx context.Context) ElasticVolumeDataProtectionPropertiesResponseOutput {
+	return o
+}
+
+// Used to configure backups on an elastic volume.
+func (o ElasticVolumeDataProtectionPropertiesResponseOutput) Backup() ElasticVolumeBackupPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v ElasticVolumeDataProtectionPropertiesResponse) *ElasticVolumeBackupPropertiesResponse {
+		return v.Backup
+	}).(ElasticVolumeBackupPropertiesResponsePtrOutput)
+}
+
+// Used to apply a snapshot policy to a volume.
+func (o ElasticVolumeDataProtectionPropertiesResponseOutput) Snapshot() ElasticVolumeSnapshotPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v ElasticVolumeDataProtectionPropertiesResponse) *ElasticVolumeSnapshotPropertiesResponse {
+		return v.Snapshot
+	}).(ElasticVolumeSnapshotPropertiesResponsePtrOutput)
+}
+
+type ElasticVolumeDataProtectionPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ElasticVolumeDataProtectionPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticVolumeDataProtectionPropertiesResponse)(nil)).Elem()
+}
+
+func (o ElasticVolumeDataProtectionPropertiesResponsePtrOutput) ToElasticVolumeDataProtectionPropertiesResponsePtrOutput() ElasticVolumeDataProtectionPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o ElasticVolumeDataProtectionPropertiesResponsePtrOutput) ToElasticVolumeDataProtectionPropertiesResponsePtrOutputWithContext(ctx context.Context) ElasticVolumeDataProtectionPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o ElasticVolumeDataProtectionPropertiesResponsePtrOutput) Elem() ElasticVolumeDataProtectionPropertiesResponseOutput {
+	return o.ApplyT(func(v *ElasticVolumeDataProtectionPropertiesResponse) ElasticVolumeDataProtectionPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ElasticVolumeDataProtectionPropertiesResponse
+		return ret
+	}).(ElasticVolumeDataProtectionPropertiesResponseOutput)
+}
+
+// Used to configure backups on an elastic volume.
+func (o ElasticVolumeDataProtectionPropertiesResponsePtrOutput) Backup() ElasticVolumeBackupPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *ElasticVolumeDataProtectionPropertiesResponse) *ElasticVolumeBackupPropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Backup
+	}).(ElasticVolumeBackupPropertiesResponsePtrOutput)
+}
+
+// Used to apply a snapshot policy to a volume.
+func (o ElasticVolumeDataProtectionPropertiesResponsePtrOutput) Snapshot() ElasticVolumeSnapshotPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *ElasticVolumeDataProtectionPropertiesResponse) *ElasticVolumeSnapshotPropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Snapshot
+	}).(ElasticVolumeSnapshotPropertiesResponsePtrOutput)
+}
+
+// Elastic Volume properties
+type ElasticVolumeProperties struct {
+	// Resource identifier used to identify the Elastic Backup.
+	BackupResourceId *string `pulumi:"backupResourceId"`
+	// Data protection configuration option for the volume, including snapshot policies and backup.
+	DataProtection *ElasticVolumeDataProtectionProperties `pulumi:"dataProtection"`
+	// Set of export policy rules
+	ExportPolicy *ElasticExportPolicy `pulumi:"exportPolicy"`
+	// A unique file path for the volume. Used when creating mount targets. This needs to be unique within the elastic capacity pool.
+	FilePath string `pulumi:"filePath"`
+	// Set of support protocol types for the elastic volume
+	ProtocolTypes []string `pulumi:"protocolTypes"`
+	// Maximum size allowed for a volume in bytes. Valid values are in the range 1GiB to 16TiB. Values expressed in bytes as multiples of 1 GiB.
+	Size float64 `pulumi:"size"`
+	// SMB Properties
+	SmbProperties *ElasticSmbProperties `pulumi:"smbProperties"`
+	// Controls the visibility of the volume's read-only snapshot directory, which provides access to each of the volume's snapshots.
+	SnapshotDirectoryVisibility *string `pulumi:"snapshotDirectoryVisibility"`
+	// Resource identifier used to identify the Elastic Snapshot.
+	SnapshotResourceId *string `pulumi:"snapshotResourceId"`
+}
+
+// Defaults sets the appropriate defaults for ElasticVolumeProperties
+func (val *ElasticVolumeProperties) Defaults() *ElasticVolumeProperties {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.SmbProperties = tmp.SmbProperties.Defaults()
+
+	return &tmp
+}
+
+// ElasticVolumePropertiesInput is an input type that accepts ElasticVolumePropertiesArgs and ElasticVolumePropertiesOutput values.
+// You can construct a concrete instance of `ElasticVolumePropertiesInput` via:
+//
+//	ElasticVolumePropertiesArgs{...}
+type ElasticVolumePropertiesInput interface {
+	pulumi.Input
+
+	ToElasticVolumePropertiesOutput() ElasticVolumePropertiesOutput
+	ToElasticVolumePropertiesOutputWithContext(context.Context) ElasticVolumePropertiesOutput
+}
+
+// Elastic Volume properties
+type ElasticVolumePropertiesArgs struct {
+	// Resource identifier used to identify the Elastic Backup.
+	BackupResourceId pulumi.StringPtrInput `pulumi:"backupResourceId"`
+	// Data protection configuration option for the volume, including snapshot policies and backup.
+	DataProtection ElasticVolumeDataProtectionPropertiesPtrInput `pulumi:"dataProtection"`
+	// Set of export policy rules
+	ExportPolicy ElasticExportPolicyPtrInput `pulumi:"exportPolicy"`
+	// A unique file path for the volume. Used when creating mount targets. This needs to be unique within the elastic capacity pool.
+	FilePath pulumi.StringInput `pulumi:"filePath"`
+	// Set of support protocol types for the elastic volume
+	ProtocolTypes pulumi.StringArrayInput `pulumi:"protocolTypes"`
+	// Maximum size allowed for a volume in bytes. Valid values are in the range 1GiB to 16TiB. Values expressed in bytes as multiples of 1 GiB.
+	Size pulumi.Float64Input `pulumi:"size"`
+	// SMB Properties
+	SmbProperties ElasticSmbPropertiesPtrInput `pulumi:"smbProperties"`
+	// Controls the visibility of the volume's read-only snapshot directory, which provides access to each of the volume's snapshots.
+	SnapshotDirectoryVisibility pulumi.StringPtrInput `pulumi:"snapshotDirectoryVisibility"`
+	// Resource identifier used to identify the Elastic Snapshot.
+	SnapshotResourceId pulumi.StringPtrInput `pulumi:"snapshotResourceId"`
+}
+
+// Defaults sets the appropriate defaults for ElasticVolumePropertiesArgs
+func (val *ElasticVolumePropertiesArgs) Defaults() *ElasticVolumePropertiesArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	return &tmp
+}
+func (ElasticVolumePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticVolumeProperties)(nil)).Elem()
+}
+
+func (i ElasticVolumePropertiesArgs) ToElasticVolumePropertiesOutput() ElasticVolumePropertiesOutput {
+	return i.ToElasticVolumePropertiesOutputWithContext(context.Background())
+}
+
+func (i ElasticVolumePropertiesArgs) ToElasticVolumePropertiesOutputWithContext(ctx context.Context) ElasticVolumePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticVolumePropertiesOutput)
+}
+
+func (i ElasticVolumePropertiesArgs) ToElasticVolumePropertiesPtrOutput() ElasticVolumePropertiesPtrOutput {
+	return i.ToElasticVolumePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i ElasticVolumePropertiesArgs) ToElasticVolumePropertiesPtrOutputWithContext(ctx context.Context) ElasticVolumePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticVolumePropertiesOutput).ToElasticVolumePropertiesPtrOutputWithContext(ctx)
+}
+
+// ElasticVolumePropertiesPtrInput is an input type that accepts ElasticVolumePropertiesArgs, ElasticVolumePropertiesPtr and ElasticVolumePropertiesPtrOutput values.
+// You can construct a concrete instance of `ElasticVolumePropertiesPtrInput` via:
+//
+//	        ElasticVolumePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ElasticVolumePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToElasticVolumePropertiesPtrOutput() ElasticVolumePropertiesPtrOutput
+	ToElasticVolumePropertiesPtrOutputWithContext(context.Context) ElasticVolumePropertiesPtrOutput
+}
+
+type elasticVolumePropertiesPtrType ElasticVolumePropertiesArgs
+
+func ElasticVolumePropertiesPtr(v *ElasticVolumePropertiesArgs) ElasticVolumePropertiesPtrInput {
+	return (*elasticVolumePropertiesPtrType)(v)
+}
+
+func (*elasticVolumePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticVolumeProperties)(nil)).Elem()
+}
+
+func (i *elasticVolumePropertiesPtrType) ToElasticVolumePropertiesPtrOutput() ElasticVolumePropertiesPtrOutput {
+	return i.ToElasticVolumePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *elasticVolumePropertiesPtrType) ToElasticVolumePropertiesPtrOutputWithContext(ctx context.Context) ElasticVolumePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticVolumePropertiesPtrOutput)
+}
+
+// Elastic Volume properties
+type ElasticVolumePropertiesOutput struct{ *pulumi.OutputState }
+
+func (ElasticVolumePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticVolumeProperties)(nil)).Elem()
+}
+
+func (o ElasticVolumePropertiesOutput) ToElasticVolumePropertiesOutput() ElasticVolumePropertiesOutput {
+	return o
+}
+
+func (o ElasticVolumePropertiesOutput) ToElasticVolumePropertiesOutputWithContext(ctx context.Context) ElasticVolumePropertiesOutput {
+	return o
+}
+
+func (o ElasticVolumePropertiesOutput) ToElasticVolumePropertiesPtrOutput() ElasticVolumePropertiesPtrOutput {
+	return o.ToElasticVolumePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o ElasticVolumePropertiesOutput) ToElasticVolumePropertiesPtrOutputWithContext(ctx context.Context) ElasticVolumePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElasticVolumeProperties) *ElasticVolumeProperties {
+		return &v
+	}).(ElasticVolumePropertiesPtrOutput)
+}
+
+// Resource identifier used to identify the Elastic Backup.
+func (o ElasticVolumePropertiesOutput) BackupResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticVolumeProperties) *string { return v.BackupResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Data protection configuration option for the volume, including snapshot policies and backup.
+func (o ElasticVolumePropertiesOutput) DataProtection() ElasticVolumeDataProtectionPropertiesPtrOutput {
+	return o.ApplyT(func(v ElasticVolumeProperties) *ElasticVolumeDataProtectionProperties { return v.DataProtection }).(ElasticVolumeDataProtectionPropertiesPtrOutput)
+}
+
+// Set of export policy rules
+func (o ElasticVolumePropertiesOutput) ExportPolicy() ElasticExportPolicyPtrOutput {
+	return o.ApplyT(func(v ElasticVolumeProperties) *ElasticExportPolicy { return v.ExportPolicy }).(ElasticExportPolicyPtrOutput)
+}
+
+// A unique file path for the volume. Used when creating mount targets. This needs to be unique within the elastic capacity pool.
+func (o ElasticVolumePropertiesOutput) FilePath() pulumi.StringOutput {
+	return o.ApplyT(func(v ElasticVolumeProperties) string { return v.FilePath }).(pulumi.StringOutput)
+}
+
+// Set of support protocol types for the elastic volume
+func (o ElasticVolumePropertiesOutput) ProtocolTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ElasticVolumeProperties) []string { return v.ProtocolTypes }).(pulumi.StringArrayOutput)
+}
+
+// Maximum size allowed for a volume in bytes. Valid values are in the range 1GiB to 16TiB. Values expressed in bytes as multiples of 1 GiB.
+func (o ElasticVolumePropertiesOutput) Size() pulumi.Float64Output {
+	return o.ApplyT(func(v ElasticVolumeProperties) float64 { return v.Size }).(pulumi.Float64Output)
+}
+
+// SMB Properties
+func (o ElasticVolumePropertiesOutput) SmbProperties() ElasticSmbPropertiesPtrOutput {
+	return o.ApplyT(func(v ElasticVolumeProperties) *ElasticSmbProperties { return v.SmbProperties }).(ElasticSmbPropertiesPtrOutput)
+}
+
+// Controls the visibility of the volume's read-only snapshot directory, which provides access to each of the volume's snapshots.
+func (o ElasticVolumePropertiesOutput) SnapshotDirectoryVisibility() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticVolumeProperties) *string { return v.SnapshotDirectoryVisibility }).(pulumi.StringPtrOutput)
+}
+
+// Resource identifier used to identify the Elastic Snapshot.
+func (o ElasticVolumePropertiesOutput) SnapshotResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticVolumeProperties) *string { return v.SnapshotResourceId }).(pulumi.StringPtrOutput)
+}
+
+type ElasticVolumePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (ElasticVolumePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticVolumeProperties)(nil)).Elem()
+}
+
+func (o ElasticVolumePropertiesPtrOutput) ToElasticVolumePropertiesPtrOutput() ElasticVolumePropertiesPtrOutput {
+	return o
+}
+
+func (o ElasticVolumePropertiesPtrOutput) ToElasticVolumePropertiesPtrOutputWithContext(ctx context.Context) ElasticVolumePropertiesPtrOutput {
+	return o
+}
+
+func (o ElasticVolumePropertiesPtrOutput) Elem() ElasticVolumePropertiesOutput {
+	return o.ApplyT(func(v *ElasticVolumeProperties) ElasticVolumeProperties {
+		if v != nil {
+			return *v
+		}
+		var ret ElasticVolumeProperties
+		return ret
+	}).(ElasticVolumePropertiesOutput)
+}
+
+// Resource identifier used to identify the Elastic Backup.
+func (o ElasticVolumePropertiesPtrOutput) BackupResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticVolumeProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BackupResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Data protection configuration option for the volume, including snapshot policies and backup.
+func (o ElasticVolumePropertiesPtrOutput) DataProtection() ElasticVolumeDataProtectionPropertiesPtrOutput {
+	return o.ApplyT(func(v *ElasticVolumeProperties) *ElasticVolumeDataProtectionProperties {
+		if v == nil {
+			return nil
+		}
+		return v.DataProtection
+	}).(ElasticVolumeDataProtectionPropertiesPtrOutput)
+}
+
+// Set of export policy rules
+func (o ElasticVolumePropertiesPtrOutput) ExportPolicy() ElasticExportPolicyPtrOutput {
+	return o.ApplyT(func(v *ElasticVolumeProperties) *ElasticExportPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.ExportPolicy
+	}).(ElasticExportPolicyPtrOutput)
+}
+
+// A unique file path for the volume. Used when creating mount targets. This needs to be unique within the elastic capacity pool.
+func (o ElasticVolumePropertiesPtrOutput) FilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticVolumeProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.FilePath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Set of support protocol types for the elastic volume
+func (o ElasticVolumePropertiesPtrOutput) ProtocolTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ElasticVolumeProperties) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ProtocolTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Maximum size allowed for a volume in bytes. Valid values are in the range 1GiB to 16TiB. Values expressed in bytes as multiples of 1 GiB.
+func (o ElasticVolumePropertiesPtrOutput) Size() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ElasticVolumeProperties) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.Size
+	}).(pulumi.Float64PtrOutput)
+}
+
+// SMB Properties
+func (o ElasticVolumePropertiesPtrOutput) SmbProperties() ElasticSmbPropertiesPtrOutput {
+	return o.ApplyT(func(v *ElasticVolumeProperties) *ElasticSmbProperties {
+		if v == nil {
+			return nil
+		}
+		return v.SmbProperties
+	}).(ElasticSmbPropertiesPtrOutput)
+}
+
+// Controls the visibility of the volume's read-only snapshot directory, which provides access to each of the volume's snapshots.
+func (o ElasticVolumePropertiesPtrOutput) SnapshotDirectoryVisibility() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticVolumeProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SnapshotDirectoryVisibility
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource identifier used to identify the Elastic Snapshot.
+func (o ElasticVolumePropertiesPtrOutput) SnapshotResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticVolumeProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SnapshotResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Elastic Volume properties
+type ElasticVolumePropertiesResponse struct {
+	// Current availability status of the resource.
+	AvailabilityStatus string `pulumi:"availabilityStatus"`
+	// Resource identifier used to identify the Elastic Backup.
+	BackupResourceId *string `pulumi:"backupResourceId"`
+	// Data protection configuration option for the volume, including snapshot policies and backup.
+	DataProtection *ElasticVolumeDataProtectionPropertiesResponse `pulumi:"dataProtection"`
+	// Set of export policy rules
+	ExportPolicy *ElasticExportPolicyResponse `pulumi:"exportPolicy"`
+	// A unique file path for the volume. Used when creating mount targets. This needs to be unique within the elastic capacity pool.
+	FilePath string `pulumi:"filePath"`
+	// List of mount targets that can be used to mount this volume
+	MountTargets []ElasticMountTargetPropertiesResponse `pulumi:"mountTargets"`
+	// Set of support protocol types for the elastic volume
+	ProtocolTypes []string `pulumi:"protocolTypes"`
+	// Azure lifecycle management.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The current state of the restoration process.
+	RestorationState string `pulumi:"restorationState"`
+	// Maximum size allowed for a volume in bytes. Valid values are in the range 1GiB to 16TiB. Values expressed in bytes as multiples of 1 GiB.
+	Size float64 `pulumi:"size"`
+	// SMB Properties
+	SmbProperties *ElasticSmbPropertiesResponse `pulumi:"smbProperties"`
+	// Controls the visibility of the volume's read-only snapshot directory, which provides access to each of the volume's snapshots.
+	SnapshotDirectoryVisibility *string `pulumi:"snapshotDirectoryVisibility"`
+	// Resource identifier used to identify the Elastic Snapshot.
+	SnapshotResourceId *string `pulumi:"snapshotResourceId"`
+}
+
+// Defaults sets the appropriate defaults for ElasticVolumePropertiesResponse
+func (val *ElasticVolumePropertiesResponse) Defaults() *ElasticVolumePropertiesResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.SmbProperties = tmp.SmbProperties.Defaults()
+
+	return &tmp
+}
+
+// Elastic Volume properties
+type ElasticVolumePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (ElasticVolumePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticVolumePropertiesResponse)(nil)).Elem()
+}
+
+func (o ElasticVolumePropertiesResponseOutput) ToElasticVolumePropertiesResponseOutput() ElasticVolumePropertiesResponseOutput {
+	return o
+}
+
+func (o ElasticVolumePropertiesResponseOutput) ToElasticVolumePropertiesResponseOutputWithContext(ctx context.Context) ElasticVolumePropertiesResponseOutput {
+	return o
+}
+
+// Current availability status of the resource.
+func (o ElasticVolumePropertiesResponseOutput) AvailabilityStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v ElasticVolumePropertiesResponse) string { return v.AvailabilityStatus }).(pulumi.StringOutput)
+}
+
+// Resource identifier used to identify the Elastic Backup.
+func (o ElasticVolumePropertiesResponseOutput) BackupResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticVolumePropertiesResponse) *string { return v.BackupResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Data protection configuration option for the volume, including snapshot policies and backup.
+func (o ElasticVolumePropertiesResponseOutput) DataProtection() ElasticVolumeDataProtectionPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v ElasticVolumePropertiesResponse) *ElasticVolumeDataProtectionPropertiesResponse {
+		return v.DataProtection
+	}).(ElasticVolumeDataProtectionPropertiesResponsePtrOutput)
+}
+
+// Set of export policy rules
+func (o ElasticVolumePropertiesResponseOutput) ExportPolicy() ElasticExportPolicyResponsePtrOutput {
+	return o.ApplyT(func(v ElasticVolumePropertiesResponse) *ElasticExportPolicyResponse { return v.ExportPolicy }).(ElasticExportPolicyResponsePtrOutput)
+}
+
+// A unique file path for the volume. Used when creating mount targets. This needs to be unique within the elastic capacity pool.
+func (o ElasticVolumePropertiesResponseOutput) FilePath() pulumi.StringOutput {
+	return o.ApplyT(func(v ElasticVolumePropertiesResponse) string { return v.FilePath }).(pulumi.StringOutput)
+}
+
+// List of mount targets that can be used to mount this volume
+func (o ElasticVolumePropertiesResponseOutput) MountTargets() ElasticMountTargetPropertiesResponseArrayOutput {
+	return o.ApplyT(func(v ElasticVolumePropertiesResponse) []ElasticMountTargetPropertiesResponse { return v.MountTargets }).(ElasticMountTargetPropertiesResponseArrayOutput)
+}
+
+// Set of support protocol types for the elastic volume
+func (o ElasticVolumePropertiesResponseOutput) ProtocolTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ElasticVolumePropertiesResponse) []string { return v.ProtocolTypes }).(pulumi.StringArrayOutput)
+}
+
+// Azure lifecycle management.
+func (o ElasticVolumePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v ElasticVolumePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The current state of the restoration process.
+func (o ElasticVolumePropertiesResponseOutput) RestorationState() pulumi.StringOutput {
+	return o.ApplyT(func(v ElasticVolumePropertiesResponse) string { return v.RestorationState }).(pulumi.StringOutput)
+}
+
+// Maximum size allowed for a volume in bytes. Valid values are in the range 1GiB to 16TiB. Values expressed in bytes as multiples of 1 GiB.
+func (o ElasticVolumePropertiesResponseOutput) Size() pulumi.Float64Output {
+	return o.ApplyT(func(v ElasticVolumePropertiesResponse) float64 { return v.Size }).(pulumi.Float64Output)
+}
+
+// SMB Properties
+func (o ElasticVolumePropertiesResponseOutput) SmbProperties() ElasticSmbPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v ElasticVolumePropertiesResponse) *ElasticSmbPropertiesResponse { return v.SmbProperties }).(ElasticSmbPropertiesResponsePtrOutput)
+}
+
+// Controls the visibility of the volume's read-only snapshot directory, which provides access to each of the volume's snapshots.
+func (o ElasticVolumePropertiesResponseOutput) SnapshotDirectoryVisibility() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticVolumePropertiesResponse) *string { return v.SnapshotDirectoryVisibility }).(pulumi.StringPtrOutput)
+}
+
+// Resource identifier used to identify the Elastic Snapshot.
+func (o ElasticVolumePropertiesResponseOutput) SnapshotResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticVolumePropertiesResponse) *string { return v.SnapshotResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Elastic Volume Snapshot Properties
+type ElasticVolumeSnapshotProperties struct {
+	// Snapshot Policy ResourceId
+	SnapshotPolicyResourceId *string `pulumi:"snapshotPolicyResourceId"`
+}
+
+// ElasticVolumeSnapshotPropertiesInput is an input type that accepts ElasticVolumeSnapshotPropertiesArgs and ElasticVolumeSnapshotPropertiesOutput values.
+// You can construct a concrete instance of `ElasticVolumeSnapshotPropertiesInput` via:
+//
+//	ElasticVolumeSnapshotPropertiesArgs{...}
+type ElasticVolumeSnapshotPropertiesInput interface {
+	pulumi.Input
+
+	ToElasticVolumeSnapshotPropertiesOutput() ElasticVolumeSnapshotPropertiesOutput
+	ToElasticVolumeSnapshotPropertiesOutputWithContext(context.Context) ElasticVolumeSnapshotPropertiesOutput
+}
+
+// Elastic Volume Snapshot Properties
+type ElasticVolumeSnapshotPropertiesArgs struct {
+	// Snapshot Policy ResourceId
+	SnapshotPolicyResourceId pulumi.StringPtrInput `pulumi:"snapshotPolicyResourceId"`
+}
+
+func (ElasticVolumeSnapshotPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticVolumeSnapshotProperties)(nil)).Elem()
+}
+
+func (i ElasticVolumeSnapshotPropertiesArgs) ToElasticVolumeSnapshotPropertiesOutput() ElasticVolumeSnapshotPropertiesOutput {
+	return i.ToElasticVolumeSnapshotPropertiesOutputWithContext(context.Background())
+}
+
+func (i ElasticVolumeSnapshotPropertiesArgs) ToElasticVolumeSnapshotPropertiesOutputWithContext(ctx context.Context) ElasticVolumeSnapshotPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticVolumeSnapshotPropertiesOutput)
+}
+
+func (i ElasticVolumeSnapshotPropertiesArgs) ToElasticVolumeSnapshotPropertiesPtrOutput() ElasticVolumeSnapshotPropertiesPtrOutput {
+	return i.ToElasticVolumeSnapshotPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i ElasticVolumeSnapshotPropertiesArgs) ToElasticVolumeSnapshotPropertiesPtrOutputWithContext(ctx context.Context) ElasticVolumeSnapshotPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticVolumeSnapshotPropertiesOutput).ToElasticVolumeSnapshotPropertiesPtrOutputWithContext(ctx)
+}
+
+// ElasticVolumeSnapshotPropertiesPtrInput is an input type that accepts ElasticVolumeSnapshotPropertiesArgs, ElasticVolumeSnapshotPropertiesPtr and ElasticVolumeSnapshotPropertiesPtrOutput values.
+// You can construct a concrete instance of `ElasticVolumeSnapshotPropertiesPtrInput` via:
+//
+//	        ElasticVolumeSnapshotPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ElasticVolumeSnapshotPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToElasticVolumeSnapshotPropertiesPtrOutput() ElasticVolumeSnapshotPropertiesPtrOutput
+	ToElasticVolumeSnapshotPropertiesPtrOutputWithContext(context.Context) ElasticVolumeSnapshotPropertiesPtrOutput
+}
+
+type elasticVolumeSnapshotPropertiesPtrType ElasticVolumeSnapshotPropertiesArgs
+
+func ElasticVolumeSnapshotPropertiesPtr(v *ElasticVolumeSnapshotPropertiesArgs) ElasticVolumeSnapshotPropertiesPtrInput {
+	return (*elasticVolumeSnapshotPropertiesPtrType)(v)
+}
+
+func (*elasticVolumeSnapshotPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticVolumeSnapshotProperties)(nil)).Elem()
+}
+
+func (i *elasticVolumeSnapshotPropertiesPtrType) ToElasticVolumeSnapshotPropertiesPtrOutput() ElasticVolumeSnapshotPropertiesPtrOutput {
+	return i.ToElasticVolumeSnapshotPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *elasticVolumeSnapshotPropertiesPtrType) ToElasticVolumeSnapshotPropertiesPtrOutputWithContext(ctx context.Context) ElasticVolumeSnapshotPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticVolumeSnapshotPropertiesPtrOutput)
+}
+
+// Elastic Volume Snapshot Properties
+type ElasticVolumeSnapshotPropertiesOutput struct{ *pulumi.OutputState }
+
+func (ElasticVolumeSnapshotPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticVolumeSnapshotProperties)(nil)).Elem()
+}
+
+func (o ElasticVolumeSnapshotPropertiesOutput) ToElasticVolumeSnapshotPropertiesOutput() ElasticVolumeSnapshotPropertiesOutput {
+	return o
+}
+
+func (o ElasticVolumeSnapshotPropertiesOutput) ToElasticVolumeSnapshotPropertiesOutputWithContext(ctx context.Context) ElasticVolumeSnapshotPropertiesOutput {
+	return o
+}
+
+func (o ElasticVolumeSnapshotPropertiesOutput) ToElasticVolumeSnapshotPropertiesPtrOutput() ElasticVolumeSnapshotPropertiesPtrOutput {
+	return o.ToElasticVolumeSnapshotPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o ElasticVolumeSnapshotPropertiesOutput) ToElasticVolumeSnapshotPropertiesPtrOutputWithContext(ctx context.Context) ElasticVolumeSnapshotPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElasticVolumeSnapshotProperties) *ElasticVolumeSnapshotProperties {
+		return &v
+	}).(ElasticVolumeSnapshotPropertiesPtrOutput)
+}
+
+// Snapshot Policy ResourceId
+func (o ElasticVolumeSnapshotPropertiesOutput) SnapshotPolicyResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticVolumeSnapshotProperties) *string { return v.SnapshotPolicyResourceId }).(pulumi.StringPtrOutput)
+}
+
+type ElasticVolumeSnapshotPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (ElasticVolumeSnapshotPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticVolumeSnapshotProperties)(nil)).Elem()
+}
+
+func (o ElasticVolumeSnapshotPropertiesPtrOutput) ToElasticVolumeSnapshotPropertiesPtrOutput() ElasticVolumeSnapshotPropertiesPtrOutput {
+	return o
+}
+
+func (o ElasticVolumeSnapshotPropertiesPtrOutput) ToElasticVolumeSnapshotPropertiesPtrOutputWithContext(ctx context.Context) ElasticVolumeSnapshotPropertiesPtrOutput {
+	return o
+}
+
+func (o ElasticVolumeSnapshotPropertiesPtrOutput) Elem() ElasticVolumeSnapshotPropertiesOutput {
+	return o.ApplyT(func(v *ElasticVolumeSnapshotProperties) ElasticVolumeSnapshotProperties {
+		if v != nil {
+			return *v
+		}
+		var ret ElasticVolumeSnapshotProperties
+		return ret
+	}).(ElasticVolumeSnapshotPropertiesOutput)
+}
+
+// Snapshot Policy ResourceId
+func (o ElasticVolumeSnapshotPropertiesPtrOutput) SnapshotPolicyResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticVolumeSnapshotProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SnapshotPolicyResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Elastic Volume Snapshot Properties
+type ElasticVolumeSnapshotPropertiesResponse struct {
+	// Snapshot Policy ResourceId
+	SnapshotPolicyResourceId *string `pulumi:"snapshotPolicyResourceId"`
+}
+
+// Elastic Volume Snapshot Properties
+type ElasticVolumeSnapshotPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (ElasticVolumeSnapshotPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticVolumeSnapshotPropertiesResponse)(nil)).Elem()
+}
+
+func (o ElasticVolumeSnapshotPropertiesResponseOutput) ToElasticVolumeSnapshotPropertiesResponseOutput() ElasticVolumeSnapshotPropertiesResponseOutput {
+	return o
+}
+
+func (o ElasticVolumeSnapshotPropertiesResponseOutput) ToElasticVolumeSnapshotPropertiesResponseOutputWithContext(ctx context.Context) ElasticVolumeSnapshotPropertiesResponseOutput {
+	return o
+}
+
+// Snapshot Policy ResourceId
+func (o ElasticVolumeSnapshotPropertiesResponseOutput) SnapshotPolicyResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticVolumeSnapshotPropertiesResponse) *string { return v.SnapshotPolicyResourceId }).(pulumi.StringPtrOutput)
+}
+
+type ElasticVolumeSnapshotPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ElasticVolumeSnapshotPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticVolumeSnapshotPropertiesResponse)(nil)).Elem()
+}
+
+func (o ElasticVolumeSnapshotPropertiesResponsePtrOutput) ToElasticVolumeSnapshotPropertiesResponsePtrOutput() ElasticVolumeSnapshotPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o ElasticVolumeSnapshotPropertiesResponsePtrOutput) ToElasticVolumeSnapshotPropertiesResponsePtrOutputWithContext(ctx context.Context) ElasticVolumeSnapshotPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o ElasticVolumeSnapshotPropertiesResponsePtrOutput) Elem() ElasticVolumeSnapshotPropertiesResponseOutput {
+	return o.ApplyT(func(v *ElasticVolumeSnapshotPropertiesResponse) ElasticVolumeSnapshotPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ElasticVolumeSnapshotPropertiesResponse
+		return ret
+	}).(ElasticVolumeSnapshotPropertiesResponseOutput)
+}
+
+// Snapshot Policy ResourceId
+func (o ElasticVolumeSnapshotPropertiesResponsePtrOutput) SnapshotPolicyResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticVolumeSnapshotPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SnapshotPolicyResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Identity used to authenticate with key vault.
 type EncryptionIdentity struct {
 	// The ARM resource identifier of the user assigned identity used to authenticate with key vault. Applicable if identity.type has 'UserAssigned'. It should match key of identity.userAssignedIdentities.
@@ -1844,6 +8389,14 @@ type ExportPolicyRule struct {
 	Cifs *bool `pulumi:"cifs"`
 	// Has root access to volume
 	HasRootAccess *bool `pulumi:"hasRootAccess"`
+	// Kerberos5i Read only access. To be use with swagger version 2020-05-01 or later
+	Kerberos5IReadOnly *bool `pulumi:"kerberos5IReadOnly"`
+	// Kerberos5i Read and write access. To be use with swagger version 2020-05-01 or later
+	Kerberos5IReadWrite *bool `pulumi:"kerberos5IReadWrite"`
+	// Kerberos5p Read only access. To be use with swagger version 2020-05-01 or later
+	Kerberos5PReadOnly *bool `pulumi:"kerberos5PReadOnly"`
+	// Kerberos5p Read and write access. To be use with swagger version 2020-05-01 or later
+	Kerberos5PReadWrite *bool `pulumi:"kerberos5PReadWrite"`
 	// Kerberos5 Read only access. To be use with swagger version 2020-05-01 or later
 	Kerberos5ReadOnly *bool `pulumi:"kerberos5ReadOnly"`
 	// Kerberos5 Read and write access. To be use with swagger version 2020-05-01 or later
@@ -1881,6 +8434,22 @@ func (val *ExportPolicyRule) Defaults() *ExportPolicyRule {
 	if tmp.HasRootAccess == nil {
 		hasRootAccess_ := true
 		tmp.HasRootAccess = &hasRootAccess_
+	}
+	if tmp.Kerberos5IReadOnly == nil {
+		kerberos5IReadOnly_ := false
+		tmp.Kerberos5IReadOnly = &kerberos5IReadOnly_
+	}
+	if tmp.Kerberos5IReadWrite == nil {
+		kerberos5IReadWrite_ := false
+		tmp.Kerberos5IReadWrite = &kerberos5IReadWrite_
+	}
+	if tmp.Kerberos5PReadOnly == nil {
+		kerberos5PReadOnly_ := false
+		tmp.Kerberos5PReadOnly = &kerberos5PReadOnly_
+	}
+	if tmp.Kerberos5PReadWrite == nil {
+		kerberos5PReadWrite_ := false
+		tmp.Kerberos5PReadWrite = &kerberos5PReadWrite_
 	}
 	if tmp.Kerberos5ReadOnly == nil {
 		kerberos5ReadOnly_ := false
@@ -1930,6 +8499,14 @@ type ExportPolicyRuleArgs struct {
 	Cifs pulumi.BoolPtrInput `pulumi:"cifs"`
 	// Has root access to volume
 	HasRootAccess pulumi.BoolPtrInput `pulumi:"hasRootAccess"`
+	// Kerberos5i Read only access. To be use with swagger version 2020-05-01 or later
+	Kerberos5IReadOnly pulumi.BoolPtrInput `pulumi:"kerberos5IReadOnly"`
+	// Kerberos5i Read and write access. To be use with swagger version 2020-05-01 or later
+	Kerberos5IReadWrite pulumi.BoolPtrInput `pulumi:"kerberos5IReadWrite"`
+	// Kerberos5p Read only access. To be use with swagger version 2020-05-01 or later
+	Kerberos5PReadOnly pulumi.BoolPtrInput `pulumi:"kerberos5PReadOnly"`
+	// Kerberos5p Read and write access. To be use with swagger version 2020-05-01 or later
+	Kerberos5PReadWrite pulumi.BoolPtrInput `pulumi:"kerberos5PReadWrite"`
 	// Kerberos5 Read only access. To be use with swagger version 2020-05-01 or later
 	Kerberos5ReadOnly pulumi.BoolPtrInput `pulumi:"kerberos5ReadOnly"`
 	// Kerberos5 Read and write access. To be use with swagger version 2020-05-01 or later
@@ -1965,6 +8542,18 @@ func (val *ExportPolicyRuleArgs) Defaults() *ExportPolicyRuleArgs {
 	}
 	if tmp.HasRootAccess == nil {
 		tmp.HasRootAccess = pulumi.BoolPtr(true)
+	}
+	if tmp.Kerberos5IReadOnly == nil {
+		tmp.Kerberos5IReadOnly = pulumi.BoolPtr(false)
+	}
+	if tmp.Kerberos5IReadWrite == nil {
+		tmp.Kerberos5IReadWrite = pulumi.BoolPtr(false)
+	}
+	if tmp.Kerberos5PReadOnly == nil {
+		tmp.Kerberos5PReadOnly = pulumi.BoolPtr(false)
+	}
+	if tmp.Kerberos5PReadWrite == nil {
+		tmp.Kerberos5PReadWrite = pulumi.BoolPtr(false)
 	}
 	if tmp.Kerberos5ReadOnly == nil {
 		tmp.Kerberos5ReadOnly = pulumi.BoolPtr(false)
@@ -2058,6 +8647,26 @@ func (o ExportPolicyRuleOutput) HasRootAccess() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ExportPolicyRule) *bool { return v.HasRootAccess }).(pulumi.BoolPtrOutput)
 }
 
+// Kerberos5i Read only access. To be use with swagger version 2020-05-01 or later
+func (o ExportPolicyRuleOutput) Kerberos5IReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ExportPolicyRule) *bool { return v.Kerberos5IReadOnly }).(pulumi.BoolPtrOutput)
+}
+
+// Kerberos5i Read and write access. To be use with swagger version 2020-05-01 or later
+func (o ExportPolicyRuleOutput) Kerberos5IReadWrite() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ExportPolicyRule) *bool { return v.Kerberos5IReadWrite }).(pulumi.BoolPtrOutput)
+}
+
+// Kerberos5p Read only access. To be use with swagger version 2020-05-01 or later
+func (o ExportPolicyRuleOutput) Kerberos5PReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ExportPolicyRule) *bool { return v.Kerberos5PReadOnly }).(pulumi.BoolPtrOutput)
+}
+
+// Kerberos5p Read and write access. To be use with swagger version 2020-05-01 or later
+func (o ExportPolicyRuleOutput) Kerberos5PReadWrite() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ExportPolicyRule) *bool { return v.Kerberos5PReadWrite }).(pulumi.BoolPtrOutput)
+}
+
 // Kerberos5 Read only access. To be use with swagger version 2020-05-01 or later
 func (o ExportPolicyRuleOutput) Kerberos5ReadOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ExportPolicyRule) *bool { return v.Kerberos5ReadOnly }).(pulumi.BoolPtrOutput)
@@ -2143,6 +8752,14 @@ type ExportPolicyRuleResponse struct {
 	Cifs *bool `pulumi:"cifs"`
 	// Has root access to volume
 	HasRootAccess *bool `pulumi:"hasRootAccess"`
+	// Kerberos5i Read only access. To be use with swagger version 2020-05-01 or later
+	Kerberos5IReadOnly *bool `pulumi:"kerberos5IReadOnly"`
+	// Kerberos5i Read and write access. To be use with swagger version 2020-05-01 or later
+	Kerberos5IReadWrite *bool `pulumi:"kerberos5IReadWrite"`
+	// Kerberos5p Read only access. To be use with swagger version 2020-05-01 or later
+	Kerberos5PReadOnly *bool `pulumi:"kerberos5PReadOnly"`
+	// Kerberos5p Read and write access. To be use with swagger version 2020-05-01 or later
+	Kerberos5PReadWrite *bool `pulumi:"kerberos5PReadWrite"`
 	// Kerberos5 Read only access. To be use with swagger version 2020-05-01 or later
 	Kerberos5ReadOnly *bool `pulumi:"kerberos5ReadOnly"`
 	// Kerberos5 Read and write access. To be use with swagger version 2020-05-01 or later
@@ -2180,6 +8797,22 @@ func (val *ExportPolicyRuleResponse) Defaults() *ExportPolicyRuleResponse {
 	if tmp.HasRootAccess == nil {
 		hasRootAccess_ := true
 		tmp.HasRootAccess = &hasRootAccess_
+	}
+	if tmp.Kerberos5IReadOnly == nil {
+		kerberos5IReadOnly_ := false
+		tmp.Kerberos5IReadOnly = &kerberos5IReadOnly_
+	}
+	if tmp.Kerberos5IReadWrite == nil {
+		kerberos5IReadWrite_ := false
+		tmp.Kerberos5IReadWrite = &kerberos5IReadWrite_
+	}
+	if tmp.Kerberos5PReadOnly == nil {
+		kerberos5PReadOnly_ := false
+		tmp.Kerberos5PReadOnly = &kerberos5PReadOnly_
+	}
+	if tmp.Kerberos5PReadWrite == nil {
+		kerberos5PReadWrite_ := false
+		tmp.Kerberos5PReadWrite = &kerberos5PReadWrite_
 	}
 	if tmp.Kerberos5ReadOnly == nil {
 		kerberos5ReadOnly_ := false
@@ -2241,6 +8874,26 @@ func (o ExportPolicyRuleResponseOutput) Cifs() pulumi.BoolPtrOutput {
 // Has root access to volume
 func (o ExportPolicyRuleResponseOutput) HasRootAccess() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ExportPolicyRuleResponse) *bool { return v.HasRootAccess }).(pulumi.BoolPtrOutput)
+}
+
+// Kerberos5i Read only access. To be use with swagger version 2020-05-01 or later
+func (o ExportPolicyRuleResponseOutput) Kerberos5IReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ExportPolicyRuleResponse) *bool { return v.Kerberos5IReadOnly }).(pulumi.BoolPtrOutput)
+}
+
+// Kerberos5i Read and write access. To be use with swagger version 2020-05-01 or later
+func (o ExportPolicyRuleResponseOutput) Kerberos5IReadWrite() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ExportPolicyRuleResponse) *bool { return v.Kerberos5IReadWrite }).(pulumi.BoolPtrOutput)
+}
+
+// Kerberos5p Read only access. To be use with swagger version 2020-05-01 or later
+func (o ExportPolicyRuleResponseOutput) Kerberos5PReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ExportPolicyRuleResponse) *bool { return v.Kerberos5PReadOnly }).(pulumi.BoolPtrOutput)
+}
+
+// Kerberos5p Read and write access. To be use with swagger version 2020-05-01 or later
+func (o ExportPolicyRuleResponseOutput) Kerberos5PReadWrite() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ExportPolicyRuleResponse) *bool { return v.Kerberos5PReadWrite }).(pulumi.BoolPtrOutput)
 }
 
 // Kerberos5 Read only access. To be use with swagger version 2020-05-01 or later
@@ -4376,6 +11029,135 @@ func (o NfsUserResponsePtrOutput) UserId() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Stores the origin cluster information associated to a cache.
+type OriginClusterInformation struct {
+	// ONTAP Intercluster LIF IP addresses. One IP address per cluster node is required
+	PeerAddresses []string `pulumi:"peerAddresses"`
+	// ONTAP cluster name of external cluster hosting the origin volume
+	PeerClusterName string `pulumi:"peerClusterName"`
+	// External origin volume name associated to this cache
+	PeerVolumeName string `pulumi:"peerVolumeName"`
+	// External Vserver (SVM) name  name of the SVM hosting the origin volume
+	PeerVserverName string `pulumi:"peerVserverName"`
+}
+
+// OriginClusterInformationInput is an input type that accepts OriginClusterInformationArgs and OriginClusterInformationOutput values.
+// You can construct a concrete instance of `OriginClusterInformationInput` via:
+//
+//	OriginClusterInformationArgs{...}
+type OriginClusterInformationInput interface {
+	pulumi.Input
+
+	ToOriginClusterInformationOutput() OriginClusterInformationOutput
+	ToOriginClusterInformationOutputWithContext(context.Context) OriginClusterInformationOutput
+}
+
+// Stores the origin cluster information associated to a cache.
+type OriginClusterInformationArgs struct {
+	// ONTAP Intercluster LIF IP addresses. One IP address per cluster node is required
+	PeerAddresses pulumi.StringArrayInput `pulumi:"peerAddresses"`
+	// ONTAP cluster name of external cluster hosting the origin volume
+	PeerClusterName pulumi.StringInput `pulumi:"peerClusterName"`
+	// External origin volume name associated to this cache
+	PeerVolumeName pulumi.StringInput `pulumi:"peerVolumeName"`
+	// External Vserver (SVM) name  name of the SVM hosting the origin volume
+	PeerVserverName pulumi.StringInput `pulumi:"peerVserverName"`
+}
+
+func (OriginClusterInformationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OriginClusterInformation)(nil)).Elem()
+}
+
+func (i OriginClusterInformationArgs) ToOriginClusterInformationOutput() OriginClusterInformationOutput {
+	return i.ToOriginClusterInformationOutputWithContext(context.Background())
+}
+
+func (i OriginClusterInformationArgs) ToOriginClusterInformationOutputWithContext(ctx context.Context) OriginClusterInformationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OriginClusterInformationOutput)
+}
+
+// Stores the origin cluster information associated to a cache.
+type OriginClusterInformationOutput struct{ *pulumi.OutputState }
+
+func (OriginClusterInformationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OriginClusterInformation)(nil)).Elem()
+}
+
+func (o OriginClusterInformationOutput) ToOriginClusterInformationOutput() OriginClusterInformationOutput {
+	return o
+}
+
+func (o OriginClusterInformationOutput) ToOriginClusterInformationOutputWithContext(ctx context.Context) OriginClusterInformationOutput {
+	return o
+}
+
+// ONTAP Intercluster LIF IP addresses. One IP address per cluster node is required
+func (o OriginClusterInformationOutput) PeerAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OriginClusterInformation) []string { return v.PeerAddresses }).(pulumi.StringArrayOutput)
+}
+
+// ONTAP cluster name of external cluster hosting the origin volume
+func (o OriginClusterInformationOutput) PeerClusterName() pulumi.StringOutput {
+	return o.ApplyT(func(v OriginClusterInformation) string { return v.PeerClusterName }).(pulumi.StringOutput)
+}
+
+// External origin volume name associated to this cache
+func (o OriginClusterInformationOutput) PeerVolumeName() pulumi.StringOutput {
+	return o.ApplyT(func(v OriginClusterInformation) string { return v.PeerVolumeName }).(pulumi.StringOutput)
+}
+
+// External Vserver (SVM) name  name of the SVM hosting the origin volume
+func (o OriginClusterInformationOutput) PeerVserverName() pulumi.StringOutput {
+	return o.ApplyT(func(v OriginClusterInformation) string { return v.PeerVserverName }).(pulumi.StringOutput)
+}
+
+// Stores the origin cluster information associated to a cache.
+type OriginClusterInformationResponse struct {
+	// ONTAP Intercluster LIF IP addresses. One IP address per cluster node is required
+	PeerAddresses []string `pulumi:"peerAddresses"`
+	// ONTAP cluster name of external cluster hosting the origin volume
+	PeerClusterName string `pulumi:"peerClusterName"`
+	// External origin volume name associated to this cache
+	PeerVolumeName string `pulumi:"peerVolumeName"`
+	// External Vserver (SVM) name  name of the SVM hosting the origin volume
+	PeerVserverName string `pulumi:"peerVserverName"`
+}
+
+// Stores the origin cluster information associated to a cache.
+type OriginClusterInformationResponseOutput struct{ *pulumi.OutputState }
+
+func (OriginClusterInformationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OriginClusterInformationResponse)(nil)).Elem()
+}
+
+func (o OriginClusterInformationResponseOutput) ToOriginClusterInformationResponseOutput() OriginClusterInformationResponseOutput {
+	return o
+}
+
+func (o OriginClusterInformationResponseOutput) ToOriginClusterInformationResponseOutputWithContext(ctx context.Context) OriginClusterInformationResponseOutput {
+	return o
+}
+
+// ONTAP Intercluster LIF IP addresses. One IP address per cluster node is required
+func (o OriginClusterInformationResponseOutput) PeerAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OriginClusterInformationResponse) []string { return v.PeerAddresses }).(pulumi.StringArrayOutput)
+}
+
+// ONTAP cluster name of external cluster hosting the origin volume
+func (o OriginClusterInformationResponseOutput) PeerClusterName() pulumi.StringOutput {
+	return o.ApplyT(func(v OriginClusterInformationResponse) string { return v.PeerClusterName }).(pulumi.StringOutput)
+}
+
+// External origin volume name associated to this cache
+func (o OriginClusterInformationResponseOutput) PeerVolumeName() pulumi.StringOutput {
+	return o.ApplyT(func(v OriginClusterInformationResponse) string { return v.PeerVolumeName }).(pulumi.StringOutput)
+}
+
+// External Vserver (SVM) name  name of the SVM hosting the origin volume
+func (o OriginClusterInformationResponseOutput) PeerVserverName() pulumi.StringOutput {
+	return o.ApplyT(func(v OriginClusterInformationResponse) string { return v.PeerVserverName }).(pulumi.StringOutput)
+}
+
 // Application specific parameters for the placement of volumes in the volume group
 type PlacementKeyValuePairs struct {
 	// Key for an application specific parameter for the placement of volumes in the volume group
@@ -5324,6 +12106,923 @@ func (o ReplicationResponseArrayOutput) Index(i pulumi.IntInput) ReplicationResp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReplicationResponse {
 		return vs[0].([]ReplicationResponse)[vs[1].(int)]
 	}).(ReplicationResponseOutput)
+}
+
+// Access password from Azure KeyVault Secrets to connect Active Directory
+type SecretPassword struct {
+	// Identity used to authenticate to KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
+	Identity *SecretPasswordIdentity `pulumi:"identity"`
+	// Properties provided by KeyVault.
+	KeyVaultProperties *SecretPasswordKeyVaultProperties `pulumi:"keyVaultProperties"`
+}
+
+// SecretPasswordInput is an input type that accepts SecretPasswordArgs and SecretPasswordOutput values.
+// You can construct a concrete instance of `SecretPasswordInput` via:
+//
+//	SecretPasswordArgs{...}
+type SecretPasswordInput interface {
+	pulumi.Input
+
+	ToSecretPasswordOutput() SecretPasswordOutput
+	ToSecretPasswordOutputWithContext(context.Context) SecretPasswordOutput
+}
+
+// Access password from Azure KeyVault Secrets to connect Active Directory
+type SecretPasswordArgs struct {
+	// Identity used to authenticate to KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
+	Identity SecretPasswordIdentityPtrInput `pulumi:"identity"`
+	// Properties provided by KeyVault.
+	KeyVaultProperties SecretPasswordKeyVaultPropertiesPtrInput `pulumi:"keyVaultProperties"`
+}
+
+func (SecretPasswordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretPassword)(nil)).Elem()
+}
+
+func (i SecretPasswordArgs) ToSecretPasswordOutput() SecretPasswordOutput {
+	return i.ToSecretPasswordOutputWithContext(context.Background())
+}
+
+func (i SecretPasswordArgs) ToSecretPasswordOutputWithContext(ctx context.Context) SecretPasswordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretPasswordOutput)
+}
+
+func (i SecretPasswordArgs) ToSecretPasswordPtrOutput() SecretPasswordPtrOutput {
+	return i.ToSecretPasswordPtrOutputWithContext(context.Background())
+}
+
+func (i SecretPasswordArgs) ToSecretPasswordPtrOutputWithContext(ctx context.Context) SecretPasswordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretPasswordOutput).ToSecretPasswordPtrOutputWithContext(ctx)
+}
+
+// SecretPasswordPtrInput is an input type that accepts SecretPasswordArgs, SecretPasswordPtr and SecretPasswordPtrOutput values.
+// You can construct a concrete instance of `SecretPasswordPtrInput` via:
+//
+//	        SecretPasswordArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecretPasswordPtrInput interface {
+	pulumi.Input
+
+	ToSecretPasswordPtrOutput() SecretPasswordPtrOutput
+	ToSecretPasswordPtrOutputWithContext(context.Context) SecretPasswordPtrOutput
+}
+
+type secretPasswordPtrType SecretPasswordArgs
+
+func SecretPasswordPtr(v *SecretPasswordArgs) SecretPasswordPtrInput {
+	return (*secretPasswordPtrType)(v)
+}
+
+func (*secretPasswordPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretPassword)(nil)).Elem()
+}
+
+func (i *secretPasswordPtrType) ToSecretPasswordPtrOutput() SecretPasswordPtrOutput {
+	return i.ToSecretPasswordPtrOutputWithContext(context.Background())
+}
+
+func (i *secretPasswordPtrType) ToSecretPasswordPtrOutputWithContext(ctx context.Context) SecretPasswordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretPasswordPtrOutput)
+}
+
+// Access password from Azure KeyVault Secrets to connect Active Directory
+type SecretPasswordOutput struct{ *pulumi.OutputState }
+
+func (SecretPasswordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretPassword)(nil)).Elem()
+}
+
+func (o SecretPasswordOutput) ToSecretPasswordOutput() SecretPasswordOutput {
+	return o
+}
+
+func (o SecretPasswordOutput) ToSecretPasswordOutputWithContext(ctx context.Context) SecretPasswordOutput {
+	return o
+}
+
+func (o SecretPasswordOutput) ToSecretPasswordPtrOutput() SecretPasswordPtrOutput {
+	return o.ToSecretPasswordPtrOutputWithContext(context.Background())
+}
+
+func (o SecretPasswordOutput) ToSecretPasswordPtrOutputWithContext(ctx context.Context) SecretPasswordPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretPassword) *SecretPassword {
+		return &v
+	}).(SecretPasswordPtrOutput)
+}
+
+// Identity used to authenticate to KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
+func (o SecretPasswordOutput) Identity() SecretPasswordIdentityPtrOutput {
+	return o.ApplyT(func(v SecretPassword) *SecretPasswordIdentity { return v.Identity }).(SecretPasswordIdentityPtrOutput)
+}
+
+// Properties provided by KeyVault.
+func (o SecretPasswordOutput) KeyVaultProperties() SecretPasswordKeyVaultPropertiesPtrOutput {
+	return o.ApplyT(func(v SecretPassword) *SecretPasswordKeyVaultProperties { return v.KeyVaultProperties }).(SecretPasswordKeyVaultPropertiesPtrOutput)
+}
+
+type SecretPasswordPtrOutput struct{ *pulumi.OutputState }
+
+func (SecretPasswordPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretPassword)(nil)).Elem()
+}
+
+func (o SecretPasswordPtrOutput) ToSecretPasswordPtrOutput() SecretPasswordPtrOutput {
+	return o
+}
+
+func (o SecretPasswordPtrOutput) ToSecretPasswordPtrOutputWithContext(ctx context.Context) SecretPasswordPtrOutput {
+	return o
+}
+
+func (o SecretPasswordPtrOutput) Elem() SecretPasswordOutput {
+	return o.ApplyT(func(v *SecretPassword) SecretPassword {
+		if v != nil {
+			return *v
+		}
+		var ret SecretPassword
+		return ret
+	}).(SecretPasswordOutput)
+}
+
+// Identity used to authenticate to KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
+func (o SecretPasswordPtrOutput) Identity() SecretPasswordIdentityPtrOutput {
+	return o.ApplyT(func(v *SecretPassword) *SecretPasswordIdentity {
+		if v == nil {
+			return nil
+		}
+		return v.Identity
+	}).(SecretPasswordIdentityPtrOutput)
+}
+
+// Properties provided by KeyVault.
+func (o SecretPasswordPtrOutput) KeyVaultProperties() SecretPasswordKeyVaultPropertiesPtrOutput {
+	return o.ApplyT(func(v *SecretPassword) *SecretPasswordKeyVaultProperties {
+		if v == nil {
+			return nil
+		}
+		return v.KeyVaultProperties
+	}).(SecretPasswordKeyVaultPropertiesPtrOutput)
+}
+
+// Identity used to authenticate with key vault.
+type SecretPasswordIdentity struct {
+	// The Azure resource identifier of the user assigned identity used to authenticate with key vault. Applicable if identity.type has 'UserAssigned'. It should match key of identity.userAssignedIdentities.
+	UserAssignedIdentity *string `pulumi:"userAssignedIdentity"`
+}
+
+// SecretPasswordIdentityInput is an input type that accepts SecretPasswordIdentityArgs and SecretPasswordIdentityOutput values.
+// You can construct a concrete instance of `SecretPasswordIdentityInput` via:
+//
+//	SecretPasswordIdentityArgs{...}
+type SecretPasswordIdentityInput interface {
+	pulumi.Input
+
+	ToSecretPasswordIdentityOutput() SecretPasswordIdentityOutput
+	ToSecretPasswordIdentityOutputWithContext(context.Context) SecretPasswordIdentityOutput
+}
+
+// Identity used to authenticate with key vault.
+type SecretPasswordIdentityArgs struct {
+	// The Azure resource identifier of the user assigned identity used to authenticate with key vault. Applicable if identity.type has 'UserAssigned'. It should match key of identity.userAssignedIdentities.
+	UserAssignedIdentity pulumi.StringPtrInput `pulumi:"userAssignedIdentity"`
+}
+
+func (SecretPasswordIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretPasswordIdentity)(nil)).Elem()
+}
+
+func (i SecretPasswordIdentityArgs) ToSecretPasswordIdentityOutput() SecretPasswordIdentityOutput {
+	return i.ToSecretPasswordIdentityOutputWithContext(context.Background())
+}
+
+func (i SecretPasswordIdentityArgs) ToSecretPasswordIdentityOutputWithContext(ctx context.Context) SecretPasswordIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretPasswordIdentityOutput)
+}
+
+func (i SecretPasswordIdentityArgs) ToSecretPasswordIdentityPtrOutput() SecretPasswordIdentityPtrOutput {
+	return i.ToSecretPasswordIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i SecretPasswordIdentityArgs) ToSecretPasswordIdentityPtrOutputWithContext(ctx context.Context) SecretPasswordIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretPasswordIdentityOutput).ToSecretPasswordIdentityPtrOutputWithContext(ctx)
+}
+
+// SecretPasswordIdentityPtrInput is an input type that accepts SecretPasswordIdentityArgs, SecretPasswordIdentityPtr and SecretPasswordIdentityPtrOutput values.
+// You can construct a concrete instance of `SecretPasswordIdentityPtrInput` via:
+//
+//	        SecretPasswordIdentityArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecretPasswordIdentityPtrInput interface {
+	pulumi.Input
+
+	ToSecretPasswordIdentityPtrOutput() SecretPasswordIdentityPtrOutput
+	ToSecretPasswordIdentityPtrOutputWithContext(context.Context) SecretPasswordIdentityPtrOutput
+}
+
+type secretPasswordIdentityPtrType SecretPasswordIdentityArgs
+
+func SecretPasswordIdentityPtr(v *SecretPasswordIdentityArgs) SecretPasswordIdentityPtrInput {
+	return (*secretPasswordIdentityPtrType)(v)
+}
+
+func (*secretPasswordIdentityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretPasswordIdentity)(nil)).Elem()
+}
+
+func (i *secretPasswordIdentityPtrType) ToSecretPasswordIdentityPtrOutput() SecretPasswordIdentityPtrOutput {
+	return i.ToSecretPasswordIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i *secretPasswordIdentityPtrType) ToSecretPasswordIdentityPtrOutputWithContext(ctx context.Context) SecretPasswordIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretPasswordIdentityPtrOutput)
+}
+
+// Identity used to authenticate with key vault.
+type SecretPasswordIdentityOutput struct{ *pulumi.OutputState }
+
+func (SecretPasswordIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretPasswordIdentity)(nil)).Elem()
+}
+
+func (o SecretPasswordIdentityOutput) ToSecretPasswordIdentityOutput() SecretPasswordIdentityOutput {
+	return o
+}
+
+func (o SecretPasswordIdentityOutput) ToSecretPasswordIdentityOutputWithContext(ctx context.Context) SecretPasswordIdentityOutput {
+	return o
+}
+
+func (o SecretPasswordIdentityOutput) ToSecretPasswordIdentityPtrOutput() SecretPasswordIdentityPtrOutput {
+	return o.ToSecretPasswordIdentityPtrOutputWithContext(context.Background())
+}
+
+func (o SecretPasswordIdentityOutput) ToSecretPasswordIdentityPtrOutputWithContext(ctx context.Context) SecretPasswordIdentityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretPasswordIdentity) *SecretPasswordIdentity {
+		return &v
+	}).(SecretPasswordIdentityPtrOutput)
+}
+
+// The Azure resource identifier of the user assigned identity used to authenticate with key vault. Applicable if identity.type has 'UserAssigned'. It should match key of identity.userAssignedIdentities.
+func (o SecretPasswordIdentityOutput) UserAssignedIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretPasswordIdentity) *string { return v.UserAssignedIdentity }).(pulumi.StringPtrOutput)
+}
+
+type SecretPasswordIdentityPtrOutput struct{ *pulumi.OutputState }
+
+func (SecretPasswordIdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretPasswordIdentity)(nil)).Elem()
+}
+
+func (o SecretPasswordIdentityPtrOutput) ToSecretPasswordIdentityPtrOutput() SecretPasswordIdentityPtrOutput {
+	return o
+}
+
+func (o SecretPasswordIdentityPtrOutput) ToSecretPasswordIdentityPtrOutputWithContext(ctx context.Context) SecretPasswordIdentityPtrOutput {
+	return o
+}
+
+func (o SecretPasswordIdentityPtrOutput) Elem() SecretPasswordIdentityOutput {
+	return o.ApplyT(func(v *SecretPasswordIdentity) SecretPasswordIdentity {
+		if v != nil {
+			return *v
+		}
+		var ret SecretPasswordIdentity
+		return ret
+	}).(SecretPasswordIdentityOutput)
+}
+
+// The Azure resource identifier of the user assigned identity used to authenticate with key vault. Applicable if identity.type has 'UserAssigned'. It should match key of identity.userAssignedIdentities.
+func (o SecretPasswordIdentityPtrOutput) UserAssignedIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretPasswordIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentity
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identity used to authenticate with key vault.
+type SecretPasswordIdentityResponse struct {
+	// The principal ID (object ID) of the identity used to authenticate with key vault. Read-only.
+	PrincipalId string `pulumi:"principalId"`
+	// The Azure resource identifier of the user assigned identity used to authenticate with key vault. Applicable if identity.type has 'UserAssigned'. It should match key of identity.userAssignedIdentities.
+	UserAssignedIdentity *string `pulumi:"userAssignedIdentity"`
+}
+
+// Identity used to authenticate with key vault.
+type SecretPasswordIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (SecretPasswordIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretPasswordIdentityResponse)(nil)).Elem()
+}
+
+func (o SecretPasswordIdentityResponseOutput) ToSecretPasswordIdentityResponseOutput() SecretPasswordIdentityResponseOutput {
+	return o
+}
+
+func (o SecretPasswordIdentityResponseOutput) ToSecretPasswordIdentityResponseOutputWithContext(ctx context.Context) SecretPasswordIdentityResponseOutput {
+	return o
+}
+
+// The principal ID (object ID) of the identity used to authenticate with key vault. Read-only.
+func (o SecretPasswordIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretPasswordIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+// The Azure resource identifier of the user assigned identity used to authenticate with key vault. Applicable if identity.type has 'UserAssigned'. It should match key of identity.userAssignedIdentities.
+func (o SecretPasswordIdentityResponseOutput) UserAssignedIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretPasswordIdentityResponse) *string { return v.UserAssignedIdentity }).(pulumi.StringPtrOutput)
+}
+
+type SecretPasswordIdentityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SecretPasswordIdentityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretPasswordIdentityResponse)(nil)).Elem()
+}
+
+func (o SecretPasswordIdentityResponsePtrOutput) ToSecretPasswordIdentityResponsePtrOutput() SecretPasswordIdentityResponsePtrOutput {
+	return o
+}
+
+func (o SecretPasswordIdentityResponsePtrOutput) ToSecretPasswordIdentityResponsePtrOutputWithContext(ctx context.Context) SecretPasswordIdentityResponsePtrOutput {
+	return o
+}
+
+func (o SecretPasswordIdentityResponsePtrOutput) Elem() SecretPasswordIdentityResponseOutput {
+	return o.ApplyT(func(v *SecretPasswordIdentityResponse) SecretPasswordIdentityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SecretPasswordIdentityResponse
+		return ret
+	}).(SecretPasswordIdentityResponseOutput)
+}
+
+// The principal ID (object ID) of the identity used to authenticate with key vault. Read-only.
+func (o SecretPasswordIdentityResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretPasswordIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrincipalId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Azure resource identifier of the user assigned identity used to authenticate with key vault. Applicable if identity.type has 'UserAssigned'. It should match key of identity.userAssignedIdentities.
+func (o SecretPasswordIdentityResponsePtrOutput) UserAssignedIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretPasswordIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentity
+	}).(pulumi.StringPtrOutput)
+}
+
+// Properties of key vault to get the secrets for password.
+type SecretPasswordKeyVaultProperties struct {
+	// The Uri of KeyVault.
+	KeyVaultUri string `pulumi:"keyVaultUri"`
+	// The name of KeyVault password secret.
+	SecretName string `pulumi:"secretName"`
+}
+
+// SecretPasswordKeyVaultPropertiesInput is an input type that accepts SecretPasswordKeyVaultPropertiesArgs and SecretPasswordKeyVaultPropertiesOutput values.
+// You can construct a concrete instance of `SecretPasswordKeyVaultPropertiesInput` via:
+//
+//	SecretPasswordKeyVaultPropertiesArgs{...}
+type SecretPasswordKeyVaultPropertiesInput interface {
+	pulumi.Input
+
+	ToSecretPasswordKeyVaultPropertiesOutput() SecretPasswordKeyVaultPropertiesOutput
+	ToSecretPasswordKeyVaultPropertiesOutputWithContext(context.Context) SecretPasswordKeyVaultPropertiesOutput
+}
+
+// Properties of key vault to get the secrets for password.
+type SecretPasswordKeyVaultPropertiesArgs struct {
+	// The Uri of KeyVault.
+	KeyVaultUri pulumi.StringInput `pulumi:"keyVaultUri"`
+	// The name of KeyVault password secret.
+	SecretName pulumi.StringInput `pulumi:"secretName"`
+}
+
+func (SecretPasswordKeyVaultPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretPasswordKeyVaultProperties)(nil)).Elem()
+}
+
+func (i SecretPasswordKeyVaultPropertiesArgs) ToSecretPasswordKeyVaultPropertiesOutput() SecretPasswordKeyVaultPropertiesOutput {
+	return i.ToSecretPasswordKeyVaultPropertiesOutputWithContext(context.Background())
+}
+
+func (i SecretPasswordKeyVaultPropertiesArgs) ToSecretPasswordKeyVaultPropertiesOutputWithContext(ctx context.Context) SecretPasswordKeyVaultPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretPasswordKeyVaultPropertiesOutput)
+}
+
+func (i SecretPasswordKeyVaultPropertiesArgs) ToSecretPasswordKeyVaultPropertiesPtrOutput() SecretPasswordKeyVaultPropertiesPtrOutput {
+	return i.ToSecretPasswordKeyVaultPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i SecretPasswordKeyVaultPropertiesArgs) ToSecretPasswordKeyVaultPropertiesPtrOutputWithContext(ctx context.Context) SecretPasswordKeyVaultPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretPasswordKeyVaultPropertiesOutput).ToSecretPasswordKeyVaultPropertiesPtrOutputWithContext(ctx)
+}
+
+// SecretPasswordKeyVaultPropertiesPtrInput is an input type that accepts SecretPasswordKeyVaultPropertiesArgs, SecretPasswordKeyVaultPropertiesPtr and SecretPasswordKeyVaultPropertiesPtrOutput values.
+// You can construct a concrete instance of `SecretPasswordKeyVaultPropertiesPtrInput` via:
+//
+//	        SecretPasswordKeyVaultPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecretPasswordKeyVaultPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToSecretPasswordKeyVaultPropertiesPtrOutput() SecretPasswordKeyVaultPropertiesPtrOutput
+	ToSecretPasswordKeyVaultPropertiesPtrOutputWithContext(context.Context) SecretPasswordKeyVaultPropertiesPtrOutput
+}
+
+type secretPasswordKeyVaultPropertiesPtrType SecretPasswordKeyVaultPropertiesArgs
+
+func SecretPasswordKeyVaultPropertiesPtr(v *SecretPasswordKeyVaultPropertiesArgs) SecretPasswordKeyVaultPropertiesPtrInput {
+	return (*secretPasswordKeyVaultPropertiesPtrType)(v)
+}
+
+func (*secretPasswordKeyVaultPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretPasswordKeyVaultProperties)(nil)).Elem()
+}
+
+func (i *secretPasswordKeyVaultPropertiesPtrType) ToSecretPasswordKeyVaultPropertiesPtrOutput() SecretPasswordKeyVaultPropertiesPtrOutput {
+	return i.ToSecretPasswordKeyVaultPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *secretPasswordKeyVaultPropertiesPtrType) ToSecretPasswordKeyVaultPropertiesPtrOutputWithContext(ctx context.Context) SecretPasswordKeyVaultPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretPasswordKeyVaultPropertiesPtrOutput)
+}
+
+// Properties of key vault to get the secrets for password.
+type SecretPasswordKeyVaultPropertiesOutput struct{ *pulumi.OutputState }
+
+func (SecretPasswordKeyVaultPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretPasswordKeyVaultProperties)(nil)).Elem()
+}
+
+func (o SecretPasswordKeyVaultPropertiesOutput) ToSecretPasswordKeyVaultPropertiesOutput() SecretPasswordKeyVaultPropertiesOutput {
+	return o
+}
+
+func (o SecretPasswordKeyVaultPropertiesOutput) ToSecretPasswordKeyVaultPropertiesOutputWithContext(ctx context.Context) SecretPasswordKeyVaultPropertiesOutput {
+	return o
+}
+
+func (o SecretPasswordKeyVaultPropertiesOutput) ToSecretPasswordKeyVaultPropertiesPtrOutput() SecretPasswordKeyVaultPropertiesPtrOutput {
+	return o.ToSecretPasswordKeyVaultPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o SecretPasswordKeyVaultPropertiesOutput) ToSecretPasswordKeyVaultPropertiesPtrOutputWithContext(ctx context.Context) SecretPasswordKeyVaultPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretPasswordKeyVaultProperties) *SecretPasswordKeyVaultProperties {
+		return &v
+	}).(SecretPasswordKeyVaultPropertiesPtrOutput)
+}
+
+// The Uri of KeyVault.
+func (o SecretPasswordKeyVaultPropertiesOutput) KeyVaultUri() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretPasswordKeyVaultProperties) string { return v.KeyVaultUri }).(pulumi.StringOutput)
+}
+
+// The name of KeyVault password secret.
+func (o SecretPasswordKeyVaultPropertiesOutput) SecretName() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretPasswordKeyVaultProperties) string { return v.SecretName }).(pulumi.StringOutput)
+}
+
+type SecretPasswordKeyVaultPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (SecretPasswordKeyVaultPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretPasswordKeyVaultProperties)(nil)).Elem()
+}
+
+func (o SecretPasswordKeyVaultPropertiesPtrOutput) ToSecretPasswordKeyVaultPropertiesPtrOutput() SecretPasswordKeyVaultPropertiesPtrOutput {
+	return o
+}
+
+func (o SecretPasswordKeyVaultPropertiesPtrOutput) ToSecretPasswordKeyVaultPropertiesPtrOutputWithContext(ctx context.Context) SecretPasswordKeyVaultPropertiesPtrOutput {
+	return o
+}
+
+func (o SecretPasswordKeyVaultPropertiesPtrOutput) Elem() SecretPasswordKeyVaultPropertiesOutput {
+	return o.ApplyT(func(v *SecretPasswordKeyVaultProperties) SecretPasswordKeyVaultProperties {
+		if v != nil {
+			return *v
+		}
+		var ret SecretPasswordKeyVaultProperties
+		return ret
+	}).(SecretPasswordKeyVaultPropertiesOutput)
+}
+
+// The Uri of KeyVault.
+func (o SecretPasswordKeyVaultPropertiesPtrOutput) KeyVaultUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretPasswordKeyVaultProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KeyVaultUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of KeyVault password secret.
+func (o SecretPasswordKeyVaultPropertiesPtrOutput) SecretName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretPasswordKeyVaultProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Properties of key vault to get the secrets for password.
+type SecretPasswordKeyVaultPropertiesResponse struct {
+	// The Uri of KeyVault.
+	KeyVaultUri string `pulumi:"keyVaultUri"`
+	// The name of KeyVault password secret.
+	SecretName string `pulumi:"secretName"`
+}
+
+// Properties of key vault to get the secrets for password.
+type SecretPasswordKeyVaultPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (SecretPasswordKeyVaultPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretPasswordKeyVaultPropertiesResponse)(nil)).Elem()
+}
+
+func (o SecretPasswordKeyVaultPropertiesResponseOutput) ToSecretPasswordKeyVaultPropertiesResponseOutput() SecretPasswordKeyVaultPropertiesResponseOutput {
+	return o
+}
+
+func (o SecretPasswordKeyVaultPropertiesResponseOutput) ToSecretPasswordKeyVaultPropertiesResponseOutputWithContext(ctx context.Context) SecretPasswordKeyVaultPropertiesResponseOutput {
+	return o
+}
+
+// The Uri of KeyVault.
+func (o SecretPasswordKeyVaultPropertiesResponseOutput) KeyVaultUri() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretPasswordKeyVaultPropertiesResponse) string { return v.KeyVaultUri }).(pulumi.StringOutput)
+}
+
+// The name of KeyVault password secret.
+func (o SecretPasswordKeyVaultPropertiesResponseOutput) SecretName() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretPasswordKeyVaultPropertiesResponse) string { return v.SecretName }).(pulumi.StringOutput)
+}
+
+type SecretPasswordKeyVaultPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SecretPasswordKeyVaultPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretPasswordKeyVaultPropertiesResponse)(nil)).Elem()
+}
+
+func (o SecretPasswordKeyVaultPropertiesResponsePtrOutput) ToSecretPasswordKeyVaultPropertiesResponsePtrOutput() SecretPasswordKeyVaultPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o SecretPasswordKeyVaultPropertiesResponsePtrOutput) ToSecretPasswordKeyVaultPropertiesResponsePtrOutputWithContext(ctx context.Context) SecretPasswordKeyVaultPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o SecretPasswordKeyVaultPropertiesResponsePtrOutput) Elem() SecretPasswordKeyVaultPropertiesResponseOutput {
+	return o.ApplyT(func(v *SecretPasswordKeyVaultPropertiesResponse) SecretPasswordKeyVaultPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SecretPasswordKeyVaultPropertiesResponse
+		return ret
+	}).(SecretPasswordKeyVaultPropertiesResponseOutput)
+}
+
+// The Uri of KeyVault.
+func (o SecretPasswordKeyVaultPropertiesResponsePtrOutput) KeyVaultUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretPasswordKeyVaultPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KeyVaultUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of KeyVault password secret.
+func (o SecretPasswordKeyVaultPropertiesResponsePtrOutput) SecretName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretPasswordKeyVaultPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Access password from Azure KeyVault Secrets to connect Active Directory
+type SecretPasswordResponse struct {
+	// Identity used to authenticate to KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
+	Identity *SecretPasswordIdentityResponse `pulumi:"identity"`
+	// Properties provided by KeyVault.
+	KeyVaultProperties *SecretPasswordKeyVaultPropertiesResponse `pulumi:"keyVaultProperties"`
+}
+
+// Access password from Azure KeyVault Secrets to connect Active Directory
+type SecretPasswordResponseOutput struct{ *pulumi.OutputState }
+
+func (SecretPasswordResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretPasswordResponse)(nil)).Elem()
+}
+
+func (o SecretPasswordResponseOutput) ToSecretPasswordResponseOutput() SecretPasswordResponseOutput {
+	return o
+}
+
+func (o SecretPasswordResponseOutput) ToSecretPasswordResponseOutputWithContext(ctx context.Context) SecretPasswordResponseOutput {
+	return o
+}
+
+// Identity used to authenticate to KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
+func (o SecretPasswordResponseOutput) Identity() SecretPasswordIdentityResponsePtrOutput {
+	return o.ApplyT(func(v SecretPasswordResponse) *SecretPasswordIdentityResponse { return v.Identity }).(SecretPasswordIdentityResponsePtrOutput)
+}
+
+// Properties provided by KeyVault.
+func (o SecretPasswordResponseOutput) KeyVaultProperties() SecretPasswordKeyVaultPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v SecretPasswordResponse) *SecretPasswordKeyVaultPropertiesResponse { return v.KeyVaultProperties }).(SecretPasswordKeyVaultPropertiesResponsePtrOutput)
+}
+
+// SMB settings for the cache
+type SmbSettings struct {
+	// Enables access-based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume
+	SmbAccessBasedEnumeration *string `pulumi:"smbAccessBasedEnumeration"`
+	// Enables encryption for in-flight smb3 data. Only applicable for SMB/DualProtocol cache.
+	SmbEncryption *string `pulumi:"smbEncryption"`
+	// Enables non-browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume
+	SmbNonBrowsable *string `pulumi:"smbNonBrowsable"`
+}
+
+// SmbSettingsInput is an input type that accepts SmbSettingsArgs and SmbSettingsOutput values.
+// You can construct a concrete instance of `SmbSettingsInput` via:
+//
+//	SmbSettingsArgs{...}
+type SmbSettingsInput interface {
+	pulumi.Input
+
+	ToSmbSettingsOutput() SmbSettingsOutput
+	ToSmbSettingsOutputWithContext(context.Context) SmbSettingsOutput
+}
+
+// SMB settings for the cache
+type SmbSettingsArgs struct {
+	// Enables access-based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume
+	SmbAccessBasedEnumeration pulumi.StringPtrInput `pulumi:"smbAccessBasedEnumeration"`
+	// Enables encryption for in-flight smb3 data. Only applicable for SMB/DualProtocol cache.
+	SmbEncryption pulumi.StringPtrInput `pulumi:"smbEncryption"`
+	// Enables non-browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume
+	SmbNonBrowsable pulumi.StringPtrInput `pulumi:"smbNonBrowsable"`
+}
+
+func (SmbSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SmbSettings)(nil)).Elem()
+}
+
+func (i SmbSettingsArgs) ToSmbSettingsOutput() SmbSettingsOutput {
+	return i.ToSmbSettingsOutputWithContext(context.Background())
+}
+
+func (i SmbSettingsArgs) ToSmbSettingsOutputWithContext(ctx context.Context) SmbSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SmbSettingsOutput)
+}
+
+func (i SmbSettingsArgs) ToSmbSettingsPtrOutput() SmbSettingsPtrOutput {
+	return i.ToSmbSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i SmbSettingsArgs) ToSmbSettingsPtrOutputWithContext(ctx context.Context) SmbSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SmbSettingsOutput).ToSmbSettingsPtrOutputWithContext(ctx)
+}
+
+// SmbSettingsPtrInput is an input type that accepts SmbSettingsArgs, SmbSettingsPtr and SmbSettingsPtrOutput values.
+// You can construct a concrete instance of `SmbSettingsPtrInput` via:
+//
+//	        SmbSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SmbSettingsPtrInput interface {
+	pulumi.Input
+
+	ToSmbSettingsPtrOutput() SmbSettingsPtrOutput
+	ToSmbSettingsPtrOutputWithContext(context.Context) SmbSettingsPtrOutput
+}
+
+type smbSettingsPtrType SmbSettingsArgs
+
+func SmbSettingsPtr(v *SmbSettingsArgs) SmbSettingsPtrInput {
+	return (*smbSettingsPtrType)(v)
+}
+
+func (*smbSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SmbSettings)(nil)).Elem()
+}
+
+func (i *smbSettingsPtrType) ToSmbSettingsPtrOutput() SmbSettingsPtrOutput {
+	return i.ToSmbSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *smbSettingsPtrType) ToSmbSettingsPtrOutputWithContext(ctx context.Context) SmbSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SmbSettingsPtrOutput)
+}
+
+// SMB settings for the cache
+type SmbSettingsOutput struct{ *pulumi.OutputState }
+
+func (SmbSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SmbSettings)(nil)).Elem()
+}
+
+func (o SmbSettingsOutput) ToSmbSettingsOutput() SmbSettingsOutput {
+	return o
+}
+
+func (o SmbSettingsOutput) ToSmbSettingsOutputWithContext(ctx context.Context) SmbSettingsOutput {
+	return o
+}
+
+func (o SmbSettingsOutput) ToSmbSettingsPtrOutput() SmbSettingsPtrOutput {
+	return o.ToSmbSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o SmbSettingsOutput) ToSmbSettingsPtrOutputWithContext(ctx context.Context) SmbSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SmbSettings) *SmbSettings {
+		return &v
+	}).(SmbSettingsPtrOutput)
+}
+
+// Enables access-based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume
+func (o SmbSettingsOutput) SmbAccessBasedEnumeration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SmbSettings) *string { return v.SmbAccessBasedEnumeration }).(pulumi.StringPtrOutput)
+}
+
+// Enables encryption for in-flight smb3 data. Only applicable for SMB/DualProtocol cache.
+func (o SmbSettingsOutput) SmbEncryption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SmbSettings) *string { return v.SmbEncryption }).(pulumi.StringPtrOutput)
+}
+
+// Enables non-browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume
+func (o SmbSettingsOutput) SmbNonBrowsable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SmbSettings) *string { return v.SmbNonBrowsable }).(pulumi.StringPtrOutput)
+}
+
+type SmbSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (SmbSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SmbSettings)(nil)).Elem()
+}
+
+func (o SmbSettingsPtrOutput) ToSmbSettingsPtrOutput() SmbSettingsPtrOutput {
+	return o
+}
+
+func (o SmbSettingsPtrOutput) ToSmbSettingsPtrOutputWithContext(ctx context.Context) SmbSettingsPtrOutput {
+	return o
+}
+
+func (o SmbSettingsPtrOutput) Elem() SmbSettingsOutput {
+	return o.ApplyT(func(v *SmbSettings) SmbSettings {
+		if v != nil {
+			return *v
+		}
+		var ret SmbSettings
+		return ret
+	}).(SmbSettingsOutput)
+}
+
+// Enables access-based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume
+func (o SmbSettingsPtrOutput) SmbAccessBasedEnumeration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SmbSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SmbAccessBasedEnumeration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Enables encryption for in-flight smb3 data. Only applicable for SMB/DualProtocol cache.
+func (o SmbSettingsPtrOutput) SmbEncryption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SmbSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SmbEncryption
+	}).(pulumi.StringPtrOutput)
+}
+
+// Enables non-browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume
+func (o SmbSettingsPtrOutput) SmbNonBrowsable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SmbSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SmbNonBrowsable
+	}).(pulumi.StringPtrOutput)
+}
+
+// SMB settings for the cache
+type SmbSettingsResponse struct {
+	// Enables access-based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume
+	SmbAccessBasedEnumeration *string `pulumi:"smbAccessBasedEnumeration"`
+	// Enables encryption for in-flight smb3 data. Only applicable for SMB/DualProtocol cache.
+	SmbEncryption *string `pulumi:"smbEncryption"`
+	// Enables non-browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume
+	SmbNonBrowsable *string `pulumi:"smbNonBrowsable"`
+}
+
+// SMB settings for the cache
+type SmbSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (SmbSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SmbSettingsResponse)(nil)).Elem()
+}
+
+func (o SmbSettingsResponseOutput) ToSmbSettingsResponseOutput() SmbSettingsResponseOutput {
+	return o
+}
+
+func (o SmbSettingsResponseOutput) ToSmbSettingsResponseOutputWithContext(ctx context.Context) SmbSettingsResponseOutput {
+	return o
+}
+
+// Enables access-based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume
+func (o SmbSettingsResponseOutput) SmbAccessBasedEnumeration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SmbSettingsResponse) *string { return v.SmbAccessBasedEnumeration }).(pulumi.StringPtrOutput)
+}
+
+// Enables encryption for in-flight smb3 data. Only applicable for SMB/DualProtocol cache.
+func (o SmbSettingsResponseOutput) SmbEncryption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SmbSettingsResponse) *string { return v.SmbEncryption }).(pulumi.StringPtrOutput)
+}
+
+// Enables non-browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume
+func (o SmbSettingsResponseOutput) SmbNonBrowsable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SmbSettingsResponse) *string { return v.SmbNonBrowsable }).(pulumi.StringPtrOutput)
+}
+
+type SmbSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SmbSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SmbSettingsResponse)(nil)).Elem()
+}
+
+func (o SmbSettingsResponsePtrOutput) ToSmbSettingsResponsePtrOutput() SmbSettingsResponsePtrOutput {
+	return o
+}
+
+func (o SmbSettingsResponsePtrOutput) ToSmbSettingsResponsePtrOutputWithContext(ctx context.Context) SmbSettingsResponsePtrOutput {
+	return o
+}
+
+func (o SmbSettingsResponsePtrOutput) Elem() SmbSettingsResponseOutput {
+	return o.ApplyT(func(v *SmbSettingsResponse) SmbSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SmbSettingsResponse
+		return ret
+	}).(SmbSettingsResponseOutput)
+}
+
+// Enables access-based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume
+func (o SmbSettingsResponsePtrOutput) SmbAccessBasedEnumeration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SmbSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SmbAccessBasedEnumeration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Enables encryption for in-flight smb3 data. Only applicable for SMB/DualProtocol cache.
+func (o SmbSettingsResponsePtrOutput) SmbEncryption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SmbSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SmbEncryption
+	}).(pulumi.StringPtrOutput)
+}
+
+// Enables non-browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume
+func (o SmbSettingsResponsePtrOutput) SmbNonBrowsable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SmbSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SmbNonBrowsable
+	}).(pulumi.StringPtrOutput)
 }
 
 // Metadata pertaining to creation and last modification of the resource.
@@ -8525,12 +16224,23 @@ func init() {
 	pulumi.RegisterOutputType(AccountEncryptionResponsePtrOutput{})
 	pulumi.RegisterOutputType(ActiveDirectoryOutput{})
 	pulumi.RegisterOutputType(ActiveDirectoryArrayOutput{})
+	pulumi.RegisterOutputType(ActiveDirectoryConfigPropertiesOutput{})
+	pulumi.RegisterOutputType(ActiveDirectoryConfigPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(ActiveDirectoryConfigPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ActiveDirectoryResponseOutput{})
 	pulumi.RegisterOutputType(ActiveDirectoryResponseArrayOutput{})
 	pulumi.RegisterOutputType(BucketServerPropertiesOutput{})
 	pulumi.RegisterOutputType(BucketServerPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(BucketServerPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(BucketServerPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(CacheMountTargetPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(CacheMountTargetPropertiesResponseArrayOutput{})
+	pulumi.RegisterOutputType(CachePropertiesOutput{})
+	pulumi.RegisterOutputType(CachePropertiesExportPolicyOutput{})
+	pulumi.RegisterOutputType(CachePropertiesExportPolicyPtrOutput{})
+	pulumi.RegisterOutputType(CachePropertiesExportPolicyResponseOutput{})
+	pulumi.RegisterOutputType(CachePropertiesExportPolicyResponsePtrOutput{})
+	pulumi.RegisterOutputType(CachePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(CifsUserOutput{})
 	pulumi.RegisterOutputType(CifsUserPtrOutput{})
 	pulumi.RegisterOutputType(CifsUserResponseOutput{})
@@ -8539,6 +16249,84 @@ func init() {
 	pulumi.RegisterOutputType(DailySchedulePtrOutput{})
 	pulumi.RegisterOutputType(DailyScheduleResponseOutput{})
 	pulumi.RegisterOutputType(DailyScheduleResponsePtrOutput{})
+	pulumi.RegisterOutputType(ElasticAccountPropertiesOutput{})
+	pulumi.RegisterOutputType(ElasticAccountPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(ElasticAccountPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(ElasticBackupPolicyPropertiesOutput{})
+	pulumi.RegisterOutputType(ElasticBackupPolicyPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(ElasticBackupPolicyPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(ElasticBackupPropertiesOutput{})
+	pulumi.RegisterOutputType(ElasticBackupPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(ElasticBackupPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(ElasticBackupVaultPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(ElasticCapacityPoolPropertiesOutput{})
+	pulumi.RegisterOutputType(ElasticCapacityPoolPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(ElasticCapacityPoolPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(ElasticEncryptionOutput{})
+	pulumi.RegisterOutputType(ElasticEncryptionPtrOutput{})
+	pulumi.RegisterOutputType(ElasticEncryptionConfigurationOutput{})
+	pulumi.RegisterOutputType(ElasticEncryptionConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(ElasticEncryptionConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(ElasticEncryptionConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(ElasticEncryptionIdentityOutput{})
+	pulumi.RegisterOutputType(ElasticEncryptionIdentityPtrOutput{})
+	pulumi.RegisterOutputType(ElasticEncryptionIdentityResponseOutput{})
+	pulumi.RegisterOutputType(ElasticEncryptionIdentityResponsePtrOutput{})
+	pulumi.RegisterOutputType(ElasticEncryptionResponseOutput{})
+	pulumi.RegisterOutputType(ElasticEncryptionResponsePtrOutput{})
+	pulumi.RegisterOutputType(ElasticExportPolicyOutput{})
+	pulumi.RegisterOutputType(ElasticExportPolicyPtrOutput{})
+	pulumi.RegisterOutputType(ElasticExportPolicyResponseOutput{})
+	pulumi.RegisterOutputType(ElasticExportPolicyResponsePtrOutput{})
+	pulumi.RegisterOutputType(ElasticExportPolicyRuleOutput{})
+	pulumi.RegisterOutputType(ElasticExportPolicyRuleArrayOutput{})
+	pulumi.RegisterOutputType(ElasticExportPolicyRuleResponseOutput{})
+	pulumi.RegisterOutputType(ElasticExportPolicyRuleResponseArrayOutput{})
+	pulumi.RegisterOutputType(ElasticKeyVaultPropertiesOutput{})
+	pulumi.RegisterOutputType(ElasticKeyVaultPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(ElasticKeyVaultPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(ElasticKeyVaultPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(ElasticMountTargetPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(ElasticMountTargetPropertiesResponseArrayOutput{})
+	pulumi.RegisterOutputType(ElasticSmbPropertiesOutput{})
+	pulumi.RegisterOutputType(ElasticSmbPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(ElasticSmbPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(ElasticSmbPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(ElasticSnapshotPolicyDailyScheduleOutput{})
+	pulumi.RegisterOutputType(ElasticSnapshotPolicyDailySchedulePtrOutput{})
+	pulumi.RegisterOutputType(ElasticSnapshotPolicyDailyScheduleResponseOutput{})
+	pulumi.RegisterOutputType(ElasticSnapshotPolicyDailyScheduleResponsePtrOutput{})
+	pulumi.RegisterOutputType(ElasticSnapshotPolicyHourlyScheduleOutput{})
+	pulumi.RegisterOutputType(ElasticSnapshotPolicyHourlySchedulePtrOutput{})
+	pulumi.RegisterOutputType(ElasticSnapshotPolicyHourlyScheduleResponseOutput{})
+	pulumi.RegisterOutputType(ElasticSnapshotPolicyHourlyScheduleResponsePtrOutput{})
+	pulumi.RegisterOutputType(ElasticSnapshotPolicyMonthlyScheduleOutput{})
+	pulumi.RegisterOutputType(ElasticSnapshotPolicyMonthlySchedulePtrOutput{})
+	pulumi.RegisterOutputType(ElasticSnapshotPolicyMonthlyScheduleResponseOutput{})
+	pulumi.RegisterOutputType(ElasticSnapshotPolicyMonthlyScheduleResponsePtrOutput{})
+	pulumi.RegisterOutputType(ElasticSnapshotPolicyPropertiesOutput{})
+	pulumi.RegisterOutputType(ElasticSnapshotPolicyPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(ElasticSnapshotPolicyPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(ElasticSnapshotPolicyWeeklyScheduleOutput{})
+	pulumi.RegisterOutputType(ElasticSnapshotPolicyWeeklySchedulePtrOutput{})
+	pulumi.RegisterOutputType(ElasticSnapshotPolicyWeeklyScheduleResponseOutput{})
+	pulumi.RegisterOutputType(ElasticSnapshotPolicyWeeklyScheduleResponsePtrOutput{})
+	pulumi.RegisterOutputType(ElasticSnapshotPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(ElasticVolumeBackupPropertiesOutput{})
+	pulumi.RegisterOutputType(ElasticVolumeBackupPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(ElasticVolumeBackupPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(ElasticVolumeBackupPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(ElasticVolumeDataProtectionPropertiesOutput{})
+	pulumi.RegisterOutputType(ElasticVolumeDataProtectionPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(ElasticVolumeDataProtectionPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(ElasticVolumeDataProtectionPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(ElasticVolumePropertiesOutput{})
+	pulumi.RegisterOutputType(ElasticVolumePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(ElasticVolumePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(ElasticVolumeSnapshotPropertiesOutput{})
+	pulumi.RegisterOutputType(ElasticVolumeSnapshotPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(ElasticVolumeSnapshotPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(ElasticVolumeSnapshotPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(EncryptionIdentityOutput{})
 	pulumi.RegisterOutputType(EncryptionIdentityPtrOutput{})
 	pulumi.RegisterOutputType(EncryptionIdentityResponseOutput{})
@@ -8579,6 +16367,8 @@ func init() {
 	pulumi.RegisterOutputType(NfsUserPtrOutput{})
 	pulumi.RegisterOutputType(NfsUserResponseOutput{})
 	pulumi.RegisterOutputType(NfsUserResponsePtrOutput{})
+	pulumi.RegisterOutputType(OriginClusterInformationOutput{})
+	pulumi.RegisterOutputType(OriginClusterInformationResponseOutput{})
 	pulumi.RegisterOutputType(PlacementKeyValuePairsOutput{})
 	pulumi.RegisterOutputType(PlacementKeyValuePairsArrayOutput{})
 	pulumi.RegisterOutputType(PlacementKeyValuePairsResponseOutput{})
@@ -8595,6 +16385,21 @@ func init() {
 	pulumi.RegisterOutputType(ReplicationObjectResponsePtrOutput{})
 	pulumi.RegisterOutputType(ReplicationResponseOutput{})
 	pulumi.RegisterOutputType(ReplicationResponseArrayOutput{})
+	pulumi.RegisterOutputType(SecretPasswordOutput{})
+	pulumi.RegisterOutputType(SecretPasswordPtrOutput{})
+	pulumi.RegisterOutputType(SecretPasswordIdentityOutput{})
+	pulumi.RegisterOutputType(SecretPasswordIdentityPtrOutput{})
+	pulumi.RegisterOutputType(SecretPasswordIdentityResponseOutput{})
+	pulumi.RegisterOutputType(SecretPasswordIdentityResponsePtrOutput{})
+	pulumi.RegisterOutputType(SecretPasswordKeyVaultPropertiesOutput{})
+	pulumi.RegisterOutputType(SecretPasswordKeyVaultPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(SecretPasswordKeyVaultPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(SecretPasswordKeyVaultPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(SecretPasswordResponseOutput{})
+	pulumi.RegisterOutputType(SmbSettingsOutput{})
+	pulumi.RegisterOutputType(SmbSettingsPtrOutput{})
+	pulumi.RegisterOutputType(SmbSettingsResponseOutput{})
+	pulumi.RegisterOutputType(SmbSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})

@@ -2316,6 +2316,386 @@ func (o ResultStatisticsResponseOutput) ScannedGb() pulumi.Float64Output {
 	return o.ApplyT(func(v ResultStatisticsResponse) float64 { return v.ScannedGb }).(pulumi.Float64Output)
 }
 
+// Rule definition parameters.
+type RuleDefinition struct {
+	// The minimum delay in seconds before bin processing.
+	BinDelay *int `pulumi:"binDelay"`
+	// Scheduled window in minutes. Allowed values: 20, 30, 60, 120, 180, 360, 720, 1440.
+	BinSize *int `pulumi:"binSize"`
+	// The start time (UTC) when Summary rule execution starts.
+	BinStartTime *string `pulumi:"binStartTime"`
+	// The destination table used for the Summary rule results.
+	DestinationTable *string `pulumi:"destinationTable"`
+	// Summary rule query.
+	Query *string `pulumi:"query"`
+	// The time cursor used in Summary rules bins processing, e.g. TimeGenerated.
+	TimeSelector *string `pulumi:"timeSelector"`
+}
+
+// RuleDefinitionInput is an input type that accepts RuleDefinitionArgs and RuleDefinitionOutput values.
+// You can construct a concrete instance of `RuleDefinitionInput` via:
+//
+//	RuleDefinitionArgs{...}
+type RuleDefinitionInput interface {
+	pulumi.Input
+
+	ToRuleDefinitionOutput() RuleDefinitionOutput
+	ToRuleDefinitionOutputWithContext(context.Context) RuleDefinitionOutput
+}
+
+// Rule definition parameters.
+type RuleDefinitionArgs struct {
+	// The minimum delay in seconds before bin processing.
+	BinDelay pulumi.IntPtrInput `pulumi:"binDelay"`
+	// Scheduled window in minutes. Allowed values: 20, 30, 60, 120, 180, 360, 720, 1440.
+	BinSize pulumi.IntPtrInput `pulumi:"binSize"`
+	// The start time (UTC) when Summary rule execution starts.
+	BinStartTime pulumi.StringPtrInput `pulumi:"binStartTime"`
+	// The destination table used for the Summary rule results.
+	DestinationTable pulumi.StringPtrInput `pulumi:"destinationTable"`
+	// Summary rule query.
+	Query pulumi.StringPtrInput `pulumi:"query"`
+	// The time cursor used in Summary rules bins processing, e.g. TimeGenerated.
+	TimeSelector pulumi.StringPtrInput `pulumi:"timeSelector"`
+}
+
+func (RuleDefinitionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleDefinition)(nil)).Elem()
+}
+
+func (i RuleDefinitionArgs) ToRuleDefinitionOutput() RuleDefinitionOutput {
+	return i.ToRuleDefinitionOutputWithContext(context.Background())
+}
+
+func (i RuleDefinitionArgs) ToRuleDefinitionOutputWithContext(ctx context.Context) RuleDefinitionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleDefinitionOutput)
+}
+
+func (i RuleDefinitionArgs) ToRuleDefinitionPtrOutput() RuleDefinitionPtrOutput {
+	return i.ToRuleDefinitionPtrOutputWithContext(context.Background())
+}
+
+func (i RuleDefinitionArgs) ToRuleDefinitionPtrOutputWithContext(ctx context.Context) RuleDefinitionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleDefinitionOutput).ToRuleDefinitionPtrOutputWithContext(ctx)
+}
+
+// RuleDefinitionPtrInput is an input type that accepts RuleDefinitionArgs, RuleDefinitionPtr and RuleDefinitionPtrOutput values.
+// You can construct a concrete instance of `RuleDefinitionPtrInput` via:
+//
+//	        RuleDefinitionArgs{...}
+//
+//	or:
+//
+//	        nil
+type RuleDefinitionPtrInput interface {
+	pulumi.Input
+
+	ToRuleDefinitionPtrOutput() RuleDefinitionPtrOutput
+	ToRuleDefinitionPtrOutputWithContext(context.Context) RuleDefinitionPtrOutput
+}
+
+type ruleDefinitionPtrType RuleDefinitionArgs
+
+func RuleDefinitionPtr(v *RuleDefinitionArgs) RuleDefinitionPtrInput {
+	return (*ruleDefinitionPtrType)(v)
+}
+
+func (*ruleDefinitionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleDefinition)(nil)).Elem()
+}
+
+func (i *ruleDefinitionPtrType) ToRuleDefinitionPtrOutput() RuleDefinitionPtrOutput {
+	return i.ToRuleDefinitionPtrOutputWithContext(context.Background())
+}
+
+func (i *ruleDefinitionPtrType) ToRuleDefinitionPtrOutputWithContext(ctx context.Context) RuleDefinitionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleDefinitionPtrOutput)
+}
+
+// Rule definition parameters.
+type RuleDefinitionOutput struct{ *pulumi.OutputState }
+
+func (RuleDefinitionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleDefinition)(nil)).Elem()
+}
+
+func (o RuleDefinitionOutput) ToRuleDefinitionOutput() RuleDefinitionOutput {
+	return o
+}
+
+func (o RuleDefinitionOutput) ToRuleDefinitionOutputWithContext(ctx context.Context) RuleDefinitionOutput {
+	return o
+}
+
+func (o RuleDefinitionOutput) ToRuleDefinitionPtrOutput() RuleDefinitionPtrOutput {
+	return o.ToRuleDefinitionPtrOutputWithContext(context.Background())
+}
+
+func (o RuleDefinitionOutput) ToRuleDefinitionPtrOutputWithContext(ctx context.Context) RuleDefinitionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuleDefinition) *RuleDefinition {
+		return &v
+	}).(RuleDefinitionPtrOutput)
+}
+
+// The minimum delay in seconds before bin processing.
+func (o RuleDefinitionOutput) BinDelay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RuleDefinition) *int { return v.BinDelay }).(pulumi.IntPtrOutput)
+}
+
+// Scheduled window in minutes. Allowed values: 20, 30, 60, 120, 180, 360, 720, 1440.
+func (o RuleDefinitionOutput) BinSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RuleDefinition) *int { return v.BinSize }).(pulumi.IntPtrOutput)
+}
+
+// The start time (UTC) when Summary rule execution starts.
+func (o RuleDefinitionOutput) BinStartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleDefinition) *string { return v.BinStartTime }).(pulumi.StringPtrOutput)
+}
+
+// The destination table used for the Summary rule results.
+func (o RuleDefinitionOutput) DestinationTable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleDefinition) *string { return v.DestinationTable }).(pulumi.StringPtrOutput)
+}
+
+// Summary rule query.
+func (o RuleDefinitionOutput) Query() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleDefinition) *string { return v.Query }).(pulumi.StringPtrOutput)
+}
+
+// The time cursor used in Summary rules bins processing, e.g. TimeGenerated.
+func (o RuleDefinitionOutput) TimeSelector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleDefinition) *string { return v.TimeSelector }).(pulumi.StringPtrOutput)
+}
+
+type RuleDefinitionPtrOutput struct{ *pulumi.OutputState }
+
+func (RuleDefinitionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleDefinition)(nil)).Elem()
+}
+
+func (o RuleDefinitionPtrOutput) ToRuleDefinitionPtrOutput() RuleDefinitionPtrOutput {
+	return o
+}
+
+func (o RuleDefinitionPtrOutput) ToRuleDefinitionPtrOutputWithContext(ctx context.Context) RuleDefinitionPtrOutput {
+	return o
+}
+
+func (o RuleDefinitionPtrOutput) Elem() RuleDefinitionOutput {
+	return o.ApplyT(func(v *RuleDefinition) RuleDefinition {
+		if v != nil {
+			return *v
+		}
+		var ret RuleDefinition
+		return ret
+	}).(RuleDefinitionOutput)
+}
+
+// The minimum delay in seconds before bin processing.
+func (o RuleDefinitionPtrOutput) BinDelay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RuleDefinition) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BinDelay
+	}).(pulumi.IntPtrOutput)
+}
+
+// Scheduled window in minutes. Allowed values: 20, 30, 60, 120, 180, 360, 720, 1440.
+func (o RuleDefinitionPtrOutput) BinSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RuleDefinition) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BinSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// The start time (UTC) when Summary rule execution starts.
+func (o RuleDefinitionPtrOutput) BinStartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleDefinition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BinStartTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The destination table used for the Summary rule results.
+func (o RuleDefinitionPtrOutput) DestinationTable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleDefinition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DestinationTable
+	}).(pulumi.StringPtrOutput)
+}
+
+// Summary rule query.
+func (o RuleDefinitionPtrOutput) Query() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleDefinition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Query
+	}).(pulumi.StringPtrOutput)
+}
+
+// The time cursor used in Summary rules bins processing, e.g. TimeGenerated.
+func (o RuleDefinitionPtrOutput) TimeSelector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleDefinition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeSelector
+	}).(pulumi.StringPtrOutput)
+}
+
+// Rule definition parameters.
+type RuleDefinitionResponse struct {
+	// The minimum delay in seconds before bin processing.
+	BinDelay *int `pulumi:"binDelay"`
+	// Scheduled window in minutes. Allowed values: 20, 30, 60, 120, 180, 360, 720, 1440.
+	BinSize *int `pulumi:"binSize"`
+	// The start time (UTC) when Summary rule execution starts.
+	BinStartTime *string `pulumi:"binStartTime"`
+	// The destination table used for the Summary rule results.
+	DestinationTable *string `pulumi:"destinationTable"`
+	// Summary rule query.
+	Query *string `pulumi:"query"`
+	// The time cursor used in Summary rules bins processing, e.g. TimeGenerated.
+	TimeSelector *string `pulumi:"timeSelector"`
+}
+
+// Rule definition parameters.
+type RuleDefinitionResponseOutput struct{ *pulumi.OutputState }
+
+func (RuleDefinitionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleDefinitionResponse)(nil)).Elem()
+}
+
+func (o RuleDefinitionResponseOutput) ToRuleDefinitionResponseOutput() RuleDefinitionResponseOutput {
+	return o
+}
+
+func (o RuleDefinitionResponseOutput) ToRuleDefinitionResponseOutputWithContext(ctx context.Context) RuleDefinitionResponseOutput {
+	return o
+}
+
+// The minimum delay in seconds before bin processing.
+func (o RuleDefinitionResponseOutput) BinDelay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RuleDefinitionResponse) *int { return v.BinDelay }).(pulumi.IntPtrOutput)
+}
+
+// Scheduled window in minutes. Allowed values: 20, 30, 60, 120, 180, 360, 720, 1440.
+func (o RuleDefinitionResponseOutput) BinSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RuleDefinitionResponse) *int { return v.BinSize }).(pulumi.IntPtrOutput)
+}
+
+// The start time (UTC) when Summary rule execution starts.
+func (o RuleDefinitionResponseOutput) BinStartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleDefinitionResponse) *string { return v.BinStartTime }).(pulumi.StringPtrOutput)
+}
+
+// The destination table used for the Summary rule results.
+func (o RuleDefinitionResponseOutput) DestinationTable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleDefinitionResponse) *string { return v.DestinationTable }).(pulumi.StringPtrOutput)
+}
+
+// Summary rule query.
+func (o RuleDefinitionResponseOutput) Query() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleDefinitionResponse) *string { return v.Query }).(pulumi.StringPtrOutput)
+}
+
+// The time cursor used in Summary rules bins processing, e.g. TimeGenerated.
+func (o RuleDefinitionResponseOutput) TimeSelector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleDefinitionResponse) *string { return v.TimeSelector }).(pulumi.StringPtrOutput)
+}
+
+type RuleDefinitionResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (RuleDefinitionResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleDefinitionResponse)(nil)).Elem()
+}
+
+func (o RuleDefinitionResponsePtrOutput) ToRuleDefinitionResponsePtrOutput() RuleDefinitionResponsePtrOutput {
+	return o
+}
+
+func (o RuleDefinitionResponsePtrOutput) ToRuleDefinitionResponsePtrOutputWithContext(ctx context.Context) RuleDefinitionResponsePtrOutput {
+	return o
+}
+
+func (o RuleDefinitionResponsePtrOutput) Elem() RuleDefinitionResponseOutput {
+	return o.ApplyT(func(v *RuleDefinitionResponse) RuleDefinitionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RuleDefinitionResponse
+		return ret
+	}).(RuleDefinitionResponseOutput)
+}
+
+// The minimum delay in seconds before bin processing.
+func (o RuleDefinitionResponsePtrOutput) BinDelay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RuleDefinitionResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BinDelay
+	}).(pulumi.IntPtrOutput)
+}
+
+// Scheduled window in minutes. Allowed values: 20, 30, 60, 120, 180, 360, 720, 1440.
+func (o RuleDefinitionResponsePtrOutput) BinSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RuleDefinitionResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BinSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// The start time (UTC) when Summary rule execution starts.
+func (o RuleDefinitionResponsePtrOutput) BinStartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleDefinitionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BinStartTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The destination table used for the Summary rule results.
+func (o RuleDefinitionResponsePtrOutput) DestinationTable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleDefinitionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DestinationTable
+	}).(pulumi.StringPtrOutput)
+}
+
+// Summary rule query.
+func (o RuleDefinitionResponsePtrOutput) Query() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleDefinitionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Query
+	}).(pulumi.StringPtrOutput)
+}
+
+// The time cursor used in Summary rules bins processing, e.g. TimeGenerated.
+func (o RuleDefinitionResponsePtrOutput) TimeSelector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleDefinitionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeSelector
+	}).(pulumi.StringPtrOutput)
+}
+
 // Table's schema.
 type Schema struct {
 	// A list of table custom columns.
@@ -4468,6 +4848,10 @@ func init() {
 	pulumi.RegisterOutputType(RestoredLogsResponseOutput{})
 	pulumi.RegisterOutputType(RestoredLogsResponsePtrOutput{})
 	pulumi.RegisterOutputType(ResultStatisticsResponseOutput{})
+	pulumi.RegisterOutputType(RuleDefinitionOutput{})
+	pulumi.RegisterOutputType(RuleDefinitionPtrOutput{})
+	pulumi.RegisterOutputType(RuleDefinitionResponseOutput{})
+	pulumi.RegisterOutputType(RuleDefinitionResponsePtrOutput{})
 	pulumi.RegisterOutputType(SchemaOutput{})
 	pulumi.RegisterOutputType(SchemaPtrOutput{})
 	pulumi.RegisterOutputType(SchemaResponseOutput{})

@@ -271,7 +271,7 @@ type EndpointType struct {
 	// If Always Serve is enabled, probing for endpoint health will be disabled and endpoints will be included in the traffic routing method.
 	AlwaysServe *string `pulumi:"alwaysServe"`
 	// List of custom headers.
-	CustomHeaders []EndpointPropertiesCustomHeaders `pulumi:"customHeaders"`
+	CustomHeaders []EndpointPropertiesCustomHeadersItem `pulumi:"customHeaders"`
 	// Specifies the location of the external or nested endpoints when using the 'Performance' traffic routing method.
 	EndpointLocation *string `pulumi:"endpointLocation"`
 	// The monitoring status of the endpoint.
@@ -293,7 +293,7 @@ type EndpointType struct {
 	// The priority of this endpoint when using the 'Priority' traffic routing method. Possible values are from 1 to 1000, lower values represent higher priority. This is an optional parameter.  If specified, it must be specified on all endpoints, and no two endpoints can share the same priority value.
 	Priority *float64 `pulumi:"priority"`
 	// The list of subnets, IP addresses, and/or address ranges mapped to this endpoint when using the 'Subnet' traffic routing method. An empty list will match all ranges not covered by other endpoints.
-	Subnets []EndpointPropertiesSubnets `pulumi:"subnets"`
+	Subnets []EndpointPropertiesSubnetsItem `pulumi:"subnets"`
 	// The fully-qualified DNS name or IP address of the endpoint. Traffic Manager returns this value in DNS responses to direct traffic to this endpoint.
 	Target *string `pulumi:"target"`
 	// The Azure Resource URI of the of the endpoint. Not applicable to endpoints of type 'ExternalEndpoints'.
@@ -320,7 +320,7 @@ type EndpointTypeArgs struct {
 	// If Always Serve is enabled, probing for endpoint health will be disabled and endpoints will be included in the traffic routing method.
 	AlwaysServe pulumi.StringPtrInput `pulumi:"alwaysServe"`
 	// List of custom headers.
-	CustomHeaders EndpointPropertiesCustomHeadersArrayInput `pulumi:"customHeaders"`
+	CustomHeaders EndpointPropertiesCustomHeadersItemArrayInput `pulumi:"customHeaders"`
 	// Specifies the location of the external or nested endpoints when using the 'Performance' traffic routing method.
 	EndpointLocation pulumi.StringPtrInput `pulumi:"endpointLocation"`
 	// The monitoring status of the endpoint.
@@ -342,7 +342,7 @@ type EndpointTypeArgs struct {
 	// The priority of this endpoint when using the 'Priority' traffic routing method. Possible values are from 1 to 1000, lower values represent higher priority. This is an optional parameter.  If specified, it must be specified on all endpoints, and no two endpoints can share the same priority value.
 	Priority pulumi.Float64PtrInput `pulumi:"priority"`
 	// The list of subnets, IP addresses, and/or address ranges mapped to this endpoint when using the 'Subnet' traffic routing method. An empty list will match all ranges not covered by other endpoints.
-	Subnets EndpointPropertiesSubnetsArrayInput `pulumi:"subnets"`
+	Subnets EndpointPropertiesSubnetsItemArrayInput `pulumi:"subnets"`
 	// The fully-qualified DNS name or IP address of the endpoint. Traffic Manager returns this value in DNS responses to direct traffic to this endpoint.
 	Target pulumi.StringPtrInput `pulumi:"target"`
 	// The Azure Resource URI of the of the endpoint. Not applicable to endpoints of type 'ExternalEndpoints'.
@@ -411,8 +411,8 @@ func (o EndpointTypeOutput) AlwaysServe() pulumi.StringPtrOutput {
 }
 
 // List of custom headers.
-func (o EndpointTypeOutput) CustomHeaders() EndpointPropertiesCustomHeadersArrayOutput {
-	return o.ApplyT(func(v EndpointType) []EndpointPropertiesCustomHeaders { return v.CustomHeaders }).(EndpointPropertiesCustomHeadersArrayOutput)
+func (o EndpointTypeOutput) CustomHeaders() EndpointPropertiesCustomHeadersItemArrayOutput {
+	return o.ApplyT(func(v EndpointType) []EndpointPropertiesCustomHeadersItem { return v.CustomHeaders }).(EndpointPropertiesCustomHeadersItemArrayOutput)
 }
 
 // Specifies the location of the external or nested endpoints when using the 'Performance' traffic routing method.
@@ -466,8 +466,8 @@ func (o EndpointTypeOutput) Priority() pulumi.Float64PtrOutput {
 }
 
 // The list of subnets, IP addresses, and/or address ranges mapped to this endpoint when using the 'Subnet' traffic routing method. An empty list will match all ranges not covered by other endpoints.
-func (o EndpointTypeOutput) Subnets() EndpointPropertiesSubnetsArrayOutput {
-	return o.ApplyT(func(v EndpointType) []EndpointPropertiesSubnets { return v.Subnets }).(EndpointPropertiesSubnetsArrayOutput)
+func (o EndpointTypeOutput) Subnets() EndpointPropertiesSubnetsItemArrayOutput {
+	return o.ApplyT(func(v EndpointType) []EndpointPropertiesSubnetsItem { return v.Subnets }).(EndpointPropertiesSubnetsItemArrayOutput)
 }
 
 // The fully-qualified DNS name or IP address of the endpoint. Traffic Manager returns this value in DNS responses to direct traffic to this endpoint.
@@ -511,116 +511,116 @@ func (o EndpointTypeArrayOutput) Index(i pulumi.IntInput) EndpointTypeOutput {
 }
 
 // Custom header name and value.
-type EndpointPropertiesCustomHeaders struct {
+type EndpointPropertiesCustomHeadersItem struct {
 	// Header name.
 	Name *string `pulumi:"name"`
 	// Header value.
 	Value *string `pulumi:"value"`
 }
 
-// EndpointPropertiesCustomHeadersInput is an input type that accepts EndpointPropertiesCustomHeadersArgs and EndpointPropertiesCustomHeadersOutput values.
-// You can construct a concrete instance of `EndpointPropertiesCustomHeadersInput` via:
+// EndpointPropertiesCustomHeadersItemInput is an input type that accepts EndpointPropertiesCustomHeadersItemArgs and EndpointPropertiesCustomHeadersItemOutput values.
+// You can construct a concrete instance of `EndpointPropertiesCustomHeadersItemInput` via:
 //
-//	EndpointPropertiesCustomHeadersArgs{...}
-type EndpointPropertiesCustomHeadersInput interface {
+//	EndpointPropertiesCustomHeadersItemArgs{...}
+type EndpointPropertiesCustomHeadersItemInput interface {
 	pulumi.Input
 
-	ToEndpointPropertiesCustomHeadersOutput() EndpointPropertiesCustomHeadersOutput
-	ToEndpointPropertiesCustomHeadersOutputWithContext(context.Context) EndpointPropertiesCustomHeadersOutput
+	ToEndpointPropertiesCustomHeadersItemOutput() EndpointPropertiesCustomHeadersItemOutput
+	ToEndpointPropertiesCustomHeadersItemOutputWithContext(context.Context) EndpointPropertiesCustomHeadersItemOutput
 }
 
 // Custom header name and value.
-type EndpointPropertiesCustomHeadersArgs struct {
+type EndpointPropertiesCustomHeadersItemArgs struct {
 	// Header name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Header value.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
-func (EndpointPropertiesCustomHeadersArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EndpointPropertiesCustomHeaders)(nil)).Elem()
+func (EndpointPropertiesCustomHeadersItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointPropertiesCustomHeadersItem)(nil)).Elem()
 }
 
-func (i EndpointPropertiesCustomHeadersArgs) ToEndpointPropertiesCustomHeadersOutput() EndpointPropertiesCustomHeadersOutput {
-	return i.ToEndpointPropertiesCustomHeadersOutputWithContext(context.Background())
+func (i EndpointPropertiesCustomHeadersItemArgs) ToEndpointPropertiesCustomHeadersItemOutput() EndpointPropertiesCustomHeadersItemOutput {
+	return i.ToEndpointPropertiesCustomHeadersItemOutputWithContext(context.Background())
 }
 
-func (i EndpointPropertiesCustomHeadersArgs) ToEndpointPropertiesCustomHeadersOutputWithContext(ctx context.Context) EndpointPropertiesCustomHeadersOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointPropertiesCustomHeadersOutput)
+func (i EndpointPropertiesCustomHeadersItemArgs) ToEndpointPropertiesCustomHeadersItemOutputWithContext(ctx context.Context) EndpointPropertiesCustomHeadersItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointPropertiesCustomHeadersItemOutput)
 }
 
-// EndpointPropertiesCustomHeadersArrayInput is an input type that accepts EndpointPropertiesCustomHeadersArray and EndpointPropertiesCustomHeadersArrayOutput values.
-// You can construct a concrete instance of `EndpointPropertiesCustomHeadersArrayInput` via:
+// EndpointPropertiesCustomHeadersItemArrayInput is an input type that accepts EndpointPropertiesCustomHeadersItemArray and EndpointPropertiesCustomHeadersItemArrayOutput values.
+// You can construct a concrete instance of `EndpointPropertiesCustomHeadersItemArrayInput` via:
 //
-//	EndpointPropertiesCustomHeadersArray{ EndpointPropertiesCustomHeadersArgs{...} }
-type EndpointPropertiesCustomHeadersArrayInput interface {
+//	EndpointPropertiesCustomHeadersItemArray{ EndpointPropertiesCustomHeadersItemArgs{...} }
+type EndpointPropertiesCustomHeadersItemArrayInput interface {
 	pulumi.Input
 
-	ToEndpointPropertiesCustomHeadersArrayOutput() EndpointPropertiesCustomHeadersArrayOutput
-	ToEndpointPropertiesCustomHeadersArrayOutputWithContext(context.Context) EndpointPropertiesCustomHeadersArrayOutput
+	ToEndpointPropertiesCustomHeadersItemArrayOutput() EndpointPropertiesCustomHeadersItemArrayOutput
+	ToEndpointPropertiesCustomHeadersItemArrayOutputWithContext(context.Context) EndpointPropertiesCustomHeadersItemArrayOutput
 }
 
-type EndpointPropertiesCustomHeadersArray []EndpointPropertiesCustomHeadersInput
+type EndpointPropertiesCustomHeadersItemArray []EndpointPropertiesCustomHeadersItemInput
 
-func (EndpointPropertiesCustomHeadersArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EndpointPropertiesCustomHeaders)(nil)).Elem()
+func (EndpointPropertiesCustomHeadersItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EndpointPropertiesCustomHeadersItem)(nil)).Elem()
 }
 
-func (i EndpointPropertiesCustomHeadersArray) ToEndpointPropertiesCustomHeadersArrayOutput() EndpointPropertiesCustomHeadersArrayOutput {
-	return i.ToEndpointPropertiesCustomHeadersArrayOutputWithContext(context.Background())
+func (i EndpointPropertiesCustomHeadersItemArray) ToEndpointPropertiesCustomHeadersItemArrayOutput() EndpointPropertiesCustomHeadersItemArrayOutput {
+	return i.ToEndpointPropertiesCustomHeadersItemArrayOutputWithContext(context.Background())
 }
 
-func (i EndpointPropertiesCustomHeadersArray) ToEndpointPropertiesCustomHeadersArrayOutputWithContext(ctx context.Context) EndpointPropertiesCustomHeadersArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointPropertiesCustomHeadersArrayOutput)
+func (i EndpointPropertiesCustomHeadersItemArray) ToEndpointPropertiesCustomHeadersItemArrayOutputWithContext(ctx context.Context) EndpointPropertiesCustomHeadersItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointPropertiesCustomHeadersItemArrayOutput)
 }
 
 // Custom header name and value.
-type EndpointPropertiesCustomHeadersOutput struct{ *pulumi.OutputState }
+type EndpointPropertiesCustomHeadersItemOutput struct{ *pulumi.OutputState }
 
-func (EndpointPropertiesCustomHeadersOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EndpointPropertiesCustomHeaders)(nil)).Elem()
+func (EndpointPropertiesCustomHeadersItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointPropertiesCustomHeadersItem)(nil)).Elem()
 }
 
-func (o EndpointPropertiesCustomHeadersOutput) ToEndpointPropertiesCustomHeadersOutput() EndpointPropertiesCustomHeadersOutput {
+func (o EndpointPropertiesCustomHeadersItemOutput) ToEndpointPropertiesCustomHeadersItemOutput() EndpointPropertiesCustomHeadersItemOutput {
 	return o
 }
 
-func (o EndpointPropertiesCustomHeadersOutput) ToEndpointPropertiesCustomHeadersOutputWithContext(ctx context.Context) EndpointPropertiesCustomHeadersOutput {
+func (o EndpointPropertiesCustomHeadersItemOutput) ToEndpointPropertiesCustomHeadersItemOutputWithContext(ctx context.Context) EndpointPropertiesCustomHeadersItemOutput {
 	return o
 }
 
 // Header name.
-func (o EndpointPropertiesCustomHeadersOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EndpointPropertiesCustomHeaders) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o EndpointPropertiesCustomHeadersItemOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointPropertiesCustomHeadersItem) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // Header value.
-func (o EndpointPropertiesCustomHeadersOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EndpointPropertiesCustomHeaders) *string { return v.Value }).(pulumi.StringPtrOutput)
+func (o EndpointPropertiesCustomHeadersItemOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointPropertiesCustomHeadersItem) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
-type EndpointPropertiesCustomHeadersArrayOutput struct{ *pulumi.OutputState }
+type EndpointPropertiesCustomHeadersItemArrayOutput struct{ *pulumi.OutputState }
 
-func (EndpointPropertiesCustomHeadersArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EndpointPropertiesCustomHeaders)(nil)).Elem()
+func (EndpointPropertiesCustomHeadersItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EndpointPropertiesCustomHeadersItem)(nil)).Elem()
 }
 
-func (o EndpointPropertiesCustomHeadersArrayOutput) ToEndpointPropertiesCustomHeadersArrayOutput() EndpointPropertiesCustomHeadersArrayOutput {
+func (o EndpointPropertiesCustomHeadersItemArrayOutput) ToEndpointPropertiesCustomHeadersItemArrayOutput() EndpointPropertiesCustomHeadersItemArrayOutput {
 	return o
 }
 
-func (o EndpointPropertiesCustomHeadersArrayOutput) ToEndpointPropertiesCustomHeadersArrayOutputWithContext(ctx context.Context) EndpointPropertiesCustomHeadersArrayOutput {
+func (o EndpointPropertiesCustomHeadersItemArrayOutput) ToEndpointPropertiesCustomHeadersItemArrayOutputWithContext(ctx context.Context) EndpointPropertiesCustomHeadersItemArrayOutput {
 	return o
 }
 
-func (o EndpointPropertiesCustomHeadersArrayOutput) Index(i pulumi.IntInput) EndpointPropertiesCustomHeadersOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EndpointPropertiesCustomHeaders {
-		return vs[0].([]EndpointPropertiesCustomHeaders)[vs[1].(int)]
-	}).(EndpointPropertiesCustomHeadersOutput)
+func (o EndpointPropertiesCustomHeadersItemArrayOutput) Index(i pulumi.IntInput) EndpointPropertiesCustomHeadersItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EndpointPropertiesCustomHeadersItem {
+		return vs[0].([]EndpointPropertiesCustomHeadersItem)[vs[1].(int)]
+	}).(EndpointPropertiesCustomHeadersItemOutput)
 }
 
 // Custom header name and value.
-type EndpointPropertiesResponseCustomHeaders struct {
+type EndpointPropertiesCustomHeadersItemResponse struct {
 	// Header name.
 	Name *string `pulumi:"name"`
 	// Header value.
@@ -628,52 +628,52 @@ type EndpointPropertiesResponseCustomHeaders struct {
 }
 
 // Custom header name and value.
-type EndpointPropertiesResponseCustomHeadersOutput struct{ *pulumi.OutputState }
+type EndpointPropertiesCustomHeadersItemResponseOutput struct{ *pulumi.OutputState }
 
-func (EndpointPropertiesResponseCustomHeadersOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EndpointPropertiesResponseCustomHeaders)(nil)).Elem()
+func (EndpointPropertiesCustomHeadersItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointPropertiesCustomHeadersItemResponse)(nil)).Elem()
 }
 
-func (o EndpointPropertiesResponseCustomHeadersOutput) ToEndpointPropertiesResponseCustomHeadersOutput() EndpointPropertiesResponseCustomHeadersOutput {
+func (o EndpointPropertiesCustomHeadersItemResponseOutput) ToEndpointPropertiesCustomHeadersItemResponseOutput() EndpointPropertiesCustomHeadersItemResponseOutput {
 	return o
 }
 
-func (o EndpointPropertiesResponseCustomHeadersOutput) ToEndpointPropertiesResponseCustomHeadersOutputWithContext(ctx context.Context) EndpointPropertiesResponseCustomHeadersOutput {
+func (o EndpointPropertiesCustomHeadersItemResponseOutput) ToEndpointPropertiesCustomHeadersItemResponseOutputWithContext(ctx context.Context) EndpointPropertiesCustomHeadersItemResponseOutput {
 	return o
 }
 
 // Header name.
-func (o EndpointPropertiesResponseCustomHeadersOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EndpointPropertiesResponseCustomHeaders) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o EndpointPropertiesCustomHeadersItemResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointPropertiesCustomHeadersItemResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // Header value.
-func (o EndpointPropertiesResponseCustomHeadersOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EndpointPropertiesResponseCustomHeaders) *string { return v.Value }).(pulumi.StringPtrOutput)
+func (o EndpointPropertiesCustomHeadersItemResponseOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointPropertiesCustomHeadersItemResponse) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
-type EndpointPropertiesResponseCustomHeadersArrayOutput struct{ *pulumi.OutputState }
+type EndpointPropertiesCustomHeadersItemResponseArrayOutput struct{ *pulumi.OutputState }
 
-func (EndpointPropertiesResponseCustomHeadersArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EndpointPropertiesResponseCustomHeaders)(nil)).Elem()
+func (EndpointPropertiesCustomHeadersItemResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EndpointPropertiesCustomHeadersItemResponse)(nil)).Elem()
 }
 
-func (o EndpointPropertiesResponseCustomHeadersArrayOutput) ToEndpointPropertiesResponseCustomHeadersArrayOutput() EndpointPropertiesResponseCustomHeadersArrayOutput {
+func (o EndpointPropertiesCustomHeadersItemResponseArrayOutput) ToEndpointPropertiesCustomHeadersItemResponseArrayOutput() EndpointPropertiesCustomHeadersItemResponseArrayOutput {
 	return o
 }
 
-func (o EndpointPropertiesResponseCustomHeadersArrayOutput) ToEndpointPropertiesResponseCustomHeadersArrayOutputWithContext(ctx context.Context) EndpointPropertiesResponseCustomHeadersArrayOutput {
+func (o EndpointPropertiesCustomHeadersItemResponseArrayOutput) ToEndpointPropertiesCustomHeadersItemResponseArrayOutputWithContext(ctx context.Context) EndpointPropertiesCustomHeadersItemResponseArrayOutput {
 	return o
 }
 
-func (o EndpointPropertiesResponseCustomHeadersArrayOutput) Index(i pulumi.IntInput) EndpointPropertiesResponseCustomHeadersOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EndpointPropertiesResponseCustomHeaders {
-		return vs[0].([]EndpointPropertiesResponseCustomHeaders)[vs[1].(int)]
-	}).(EndpointPropertiesResponseCustomHeadersOutput)
+func (o EndpointPropertiesCustomHeadersItemResponseArrayOutput) Index(i pulumi.IntInput) EndpointPropertiesCustomHeadersItemResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EndpointPropertiesCustomHeadersItemResponse {
+		return vs[0].([]EndpointPropertiesCustomHeadersItemResponse)[vs[1].(int)]
+	}).(EndpointPropertiesCustomHeadersItemResponseOutput)
 }
 
 // Subnet first address, scope, and/or last address.
-type EndpointPropertiesResponseSubnets struct {
+type EndpointPropertiesSubnetsItem struct {
 	// First address in the subnet.
 	First *string `pulumi:"first"`
 	// Last address in the subnet.
@@ -682,79 +682,19 @@ type EndpointPropertiesResponseSubnets struct {
 	Scope *int `pulumi:"scope"`
 }
 
-// Subnet first address, scope, and/or last address.
-type EndpointPropertiesResponseSubnetsOutput struct{ *pulumi.OutputState }
-
-func (EndpointPropertiesResponseSubnetsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EndpointPropertiesResponseSubnets)(nil)).Elem()
-}
-
-func (o EndpointPropertiesResponseSubnetsOutput) ToEndpointPropertiesResponseSubnetsOutput() EndpointPropertiesResponseSubnetsOutput {
-	return o
-}
-
-func (o EndpointPropertiesResponseSubnetsOutput) ToEndpointPropertiesResponseSubnetsOutputWithContext(ctx context.Context) EndpointPropertiesResponseSubnetsOutput {
-	return o
-}
-
-// First address in the subnet.
-func (o EndpointPropertiesResponseSubnetsOutput) First() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EndpointPropertiesResponseSubnets) *string { return v.First }).(pulumi.StringPtrOutput)
-}
-
-// Last address in the subnet.
-func (o EndpointPropertiesResponseSubnetsOutput) Last() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EndpointPropertiesResponseSubnets) *string { return v.Last }).(pulumi.StringPtrOutput)
-}
-
-// Block size (number of leading bits in the subnet mask).
-func (o EndpointPropertiesResponseSubnetsOutput) Scope() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v EndpointPropertiesResponseSubnets) *int { return v.Scope }).(pulumi.IntPtrOutput)
-}
-
-type EndpointPropertiesResponseSubnetsArrayOutput struct{ *pulumi.OutputState }
-
-func (EndpointPropertiesResponseSubnetsArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EndpointPropertiesResponseSubnets)(nil)).Elem()
-}
-
-func (o EndpointPropertiesResponseSubnetsArrayOutput) ToEndpointPropertiesResponseSubnetsArrayOutput() EndpointPropertiesResponseSubnetsArrayOutput {
-	return o
-}
-
-func (o EndpointPropertiesResponseSubnetsArrayOutput) ToEndpointPropertiesResponseSubnetsArrayOutputWithContext(ctx context.Context) EndpointPropertiesResponseSubnetsArrayOutput {
-	return o
-}
-
-func (o EndpointPropertiesResponseSubnetsArrayOutput) Index(i pulumi.IntInput) EndpointPropertiesResponseSubnetsOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EndpointPropertiesResponseSubnets {
-		return vs[0].([]EndpointPropertiesResponseSubnets)[vs[1].(int)]
-	}).(EndpointPropertiesResponseSubnetsOutput)
-}
-
-// Subnet first address, scope, and/or last address.
-type EndpointPropertiesSubnets struct {
-	// First address in the subnet.
-	First *string `pulumi:"first"`
-	// Last address in the subnet.
-	Last *string `pulumi:"last"`
-	// Block size (number of leading bits in the subnet mask).
-	Scope *int `pulumi:"scope"`
-}
-
-// EndpointPropertiesSubnetsInput is an input type that accepts EndpointPropertiesSubnetsArgs and EndpointPropertiesSubnetsOutput values.
-// You can construct a concrete instance of `EndpointPropertiesSubnetsInput` via:
+// EndpointPropertiesSubnetsItemInput is an input type that accepts EndpointPropertiesSubnetsItemArgs and EndpointPropertiesSubnetsItemOutput values.
+// You can construct a concrete instance of `EndpointPropertiesSubnetsItemInput` via:
 //
-//	EndpointPropertiesSubnetsArgs{...}
-type EndpointPropertiesSubnetsInput interface {
+//	EndpointPropertiesSubnetsItemArgs{...}
+type EndpointPropertiesSubnetsItemInput interface {
 	pulumi.Input
 
-	ToEndpointPropertiesSubnetsOutput() EndpointPropertiesSubnetsOutput
-	ToEndpointPropertiesSubnetsOutputWithContext(context.Context) EndpointPropertiesSubnetsOutput
+	ToEndpointPropertiesSubnetsItemOutput() EndpointPropertiesSubnetsItemOutput
+	ToEndpointPropertiesSubnetsItemOutputWithContext(context.Context) EndpointPropertiesSubnetsItemOutput
 }
 
 // Subnet first address, scope, and/or last address.
-type EndpointPropertiesSubnetsArgs struct {
+type EndpointPropertiesSubnetsItemArgs struct {
 	// First address in the subnet.
 	First pulumi.StringPtrInput `pulumi:"first"`
 	// Last address in the subnet.
@@ -763,91 +703,151 @@ type EndpointPropertiesSubnetsArgs struct {
 	Scope pulumi.IntPtrInput `pulumi:"scope"`
 }
 
-func (EndpointPropertiesSubnetsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EndpointPropertiesSubnets)(nil)).Elem()
+func (EndpointPropertiesSubnetsItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointPropertiesSubnetsItem)(nil)).Elem()
 }
 
-func (i EndpointPropertiesSubnetsArgs) ToEndpointPropertiesSubnetsOutput() EndpointPropertiesSubnetsOutput {
-	return i.ToEndpointPropertiesSubnetsOutputWithContext(context.Background())
+func (i EndpointPropertiesSubnetsItemArgs) ToEndpointPropertiesSubnetsItemOutput() EndpointPropertiesSubnetsItemOutput {
+	return i.ToEndpointPropertiesSubnetsItemOutputWithContext(context.Background())
 }
 
-func (i EndpointPropertiesSubnetsArgs) ToEndpointPropertiesSubnetsOutputWithContext(ctx context.Context) EndpointPropertiesSubnetsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointPropertiesSubnetsOutput)
+func (i EndpointPropertiesSubnetsItemArgs) ToEndpointPropertiesSubnetsItemOutputWithContext(ctx context.Context) EndpointPropertiesSubnetsItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointPropertiesSubnetsItemOutput)
 }
 
-// EndpointPropertiesSubnetsArrayInput is an input type that accepts EndpointPropertiesSubnetsArray and EndpointPropertiesSubnetsArrayOutput values.
-// You can construct a concrete instance of `EndpointPropertiesSubnetsArrayInput` via:
+// EndpointPropertiesSubnetsItemArrayInput is an input type that accepts EndpointPropertiesSubnetsItemArray and EndpointPropertiesSubnetsItemArrayOutput values.
+// You can construct a concrete instance of `EndpointPropertiesSubnetsItemArrayInput` via:
 //
-//	EndpointPropertiesSubnetsArray{ EndpointPropertiesSubnetsArgs{...} }
-type EndpointPropertiesSubnetsArrayInput interface {
+//	EndpointPropertiesSubnetsItemArray{ EndpointPropertiesSubnetsItemArgs{...} }
+type EndpointPropertiesSubnetsItemArrayInput interface {
 	pulumi.Input
 
-	ToEndpointPropertiesSubnetsArrayOutput() EndpointPropertiesSubnetsArrayOutput
-	ToEndpointPropertiesSubnetsArrayOutputWithContext(context.Context) EndpointPropertiesSubnetsArrayOutput
+	ToEndpointPropertiesSubnetsItemArrayOutput() EndpointPropertiesSubnetsItemArrayOutput
+	ToEndpointPropertiesSubnetsItemArrayOutputWithContext(context.Context) EndpointPropertiesSubnetsItemArrayOutput
 }
 
-type EndpointPropertiesSubnetsArray []EndpointPropertiesSubnetsInput
+type EndpointPropertiesSubnetsItemArray []EndpointPropertiesSubnetsItemInput
 
-func (EndpointPropertiesSubnetsArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EndpointPropertiesSubnets)(nil)).Elem()
+func (EndpointPropertiesSubnetsItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EndpointPropertiesSubnetsItem)(nil)).Elem()
 }
 
-func (i EndpointPropertiesSubnetsArray) ToEndpointPropertiesSubnetsArrayOutput() EndpointPropertiesSubnetsArrayOutput {
-	return i.ToEndpointPropertiesSubnetsArrayOutputWithContext(context.Background())
+func (i EndpointPropertiesSubnetsItemArray) ToEndpointPropertiesSubnetsItemArrayOutput() EndpointPropertiesSubnetsItemArrayOutput {
+	return i.ToEndpointPropertiesSubnetsItemArrayOutputWithContext(context.Background())
 }
 
-func (i EndpointPropertiesSubnetsArray) ToEndpointPropertiesSubnetsArrayOutputWithContext(ctx context.Context) EndpointPropertiesSubnetsArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointPropertiesSubnetsArrayOutput)
+func (i EndpointPropertiesSubnetsItemArray) ToEndpointPropertiesSubnetsItemArrayOutputWithContext(ctx context.Context) EndpointPropertiesSubnetsItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointPropertiesSubnetsItemArrayOutput)
 }
 
 // Subnet first address, scope, and/or last address.
-type EndpointPropertiesSubnetsOutput struct{ *pulumi.OutputState }
+type EndpointPropertiesSubnetsItemOutput struct{ *pulumi.OutputState }
 
-func (EndpointPropertiesSubnetsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EndpointPropertiesSubnets)(nil)).Elem()
+func (EndpointPropertiesSubnetsItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointPropertiesSubnetsItem)(nil)).Elem()
 }
 
-func (o EndpointPropertiesSubnetsOutput) ToEndpointPropertiesSubnetsOutput() EndpointPropertiesSubnetsOutput {
+func (o EndpointPropertiesSubnetsItemOutput) ToEndpointPropertiesSubnetsItemOutput() EndpointPropertiesSubnetsItemOutput {
 	return o
 }
 
-func (o EndpointPropertiesSubnetsOutput) ToEndpointPropertiesSubnetsOutputWithContext(ctx context.Context) EndpointPropertiesSubnetsOutput {
+func (o EndpointPropertiesSubnetsItemOutput) ToEndpointPropertiesSubnetsItemOutputWithContext(ctx context.Context) EndpointPropertiesSubnetsItemOutput {
 	return o
 }
 
 // First address in the subnet.
-func (o EndpointPropertiesSubnetsOutput) First() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EndpointPropertiesSubnets) *string { return v.First }).(pulumi.StringPtrOutput)
+func (o EndpointPropertiesSubnetsItemOutput) First() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointPropertiesSubnetsItem) *string { return v.First }).(pulumi.StringPtrOutput)
 }
 
 // Last address in the subnet.
-func (o EndpointPropertiesSubnetsOutput) Last() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EndpointPropertiesSubnets) *string { return v.Last }).(pulumi.StringPtrOutput)
+func (o EndpointPropertiesSubnetsItemOutput) Last() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointPropertiesSubnetsItem) *string { return v.Last }).(pulumi.StringPtrOutput)
 }
 
 // Block size (number of leading bits in the subnet mask).
-func (o EndpointPropertiesSubnetsOutput) Scope() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v EndpointPropertiesSubnets) *int { return v.Scope }).(pulumi.IntPtrOutput)
+func (o EndpointPropertiesSubnetsItemOutput) Scope() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EndpointPropertiesSubnetsItem) *int { return v.Scope }).(pulumi.IntPtrOutput)
 }
 
-type EndpointPropertiesSubnetsArrayOutput struct{ *pulumi.OutputState }
+type EndpointPropertiesSubnetsItemArrayOutput struct{ *pulumi.OutputState }
 
-func (EndpointPropertiesSubnetsArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EndpointPropertiesSubnets)(nil)).Elem()
+func (EndpointPropertiesSubnetsItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EndpointPropertiesSubnetsItem)(nil)).Elem()
 }
 
-func (o EndpointPropertiesSubnetsArrayOutput) ToEndpointPropertiesSubnetsArrayOutput() EndpointPropertiesSubnetsArrayOutput {
+func (o EndpointPropertiesSubnetsItemArrayOutput) ToEndpointPropertiesSubnetsItemArrayOutput() EndpointPropertiesSubnetsItemArrayOutput {
 	return o
 }
 
-func (o EndpointPropertiesSubnetsArrayOutput) ToEndpointPropertiesSubnetsArrayOutputWithContext(ctx context.Context) EndpointPropertiesSubnetsArrayOutput {
+func (o EndpointPropertiesSubnetsItemArrayOutput) ToEndpointPropertiesSubnetsItemArrayOutputWithContext(ctx context.Context) EndpointPropertiesSubnetsItemArrayOutput {
 	return o
 }
 
-func (o EndpointPropertiesSubnetsArrayOutput) Index(i pulumi.IntInput) EndpointPropertiesSubnetsOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EndpointPropertiesSubnets {
-		return vs[0].([]EndpointPropertiesSubnets)[vs[1].(int)]
-	}).(EndpointPropertiesSubnetsOutput)
+func (o EndpointPropertiesSubnetsItemArrayOutput) Index(i pulumi.IntInput) EndpointPropertiesSubnetsItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EndpointPropertiesSubnetsItem {
+		return vs[0].([]EndpointPropertiesSubnetsItem)[vs[1].(int)]
+	}).(EndpointPropertiesSubnetsItemOutput)
+}
+
+// Subnet first address, scope, and/or last address.
+type EndpointPropertiesSubnetsItemResponse struct {
+	// First address in the subnet.
+	First *string `pulumi:"first"`
+	// Last address in the subnet.
+	Last *string `pulumi:"last"`
+	// Block size (number of leading bits in the subnet mask).
+	Scope *int `pulumi:"scope"`
+}
+
+// Subnet first address, scope, and/or last address.
+type EndpointPropertiesSubnetsItemResponseOutput struct{ *pulumi.OutputState }
+
+func (EndpointPropertiesSubnetsItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointPropertiesSubnetsItemResponse)(nil)).Elem()
+}
+
+func (o EndpointPropertiesSubnetsItemResponseOutput) ToEndpointPropertiesSubnetsItemResponseOutput() EndpointPropertiesSubnetsItemResponseOutput {
+	return o
+}
+
+func (o EndpointPropertiesSubnetsItemResponseOutput) ToEndpointPropertiesSubnetsItemResponseOutputWithContext(ctx context.Context) EndpointPropertiesSubnetsItemResponseOutput {
+	return o
+}
+
+// First address in the subnet.
+func (o EndpointPropertiesSubnetsItemResponseOutput) First() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointPropertiesSubnetsItemResponse) *string { return v.First }).(pulumi.StringPtrOutput)
+}
+
+// Last address in the subnet.
+func (o EndpointPropertiesSubnetsItemResponseOutput) Last() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointPropertiesSubnetsItemResponse) *string { return v.Last }).(pulumi.StringPtrOutput)
+}
+
+// Block size (number of leading bits in the subnet mask).
+func (o EndpointPropertiesSubnetsItemResponseOutput) Scope() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EndpointPropertiesSubnetsItemResponse) *int { return v.Scope }).(pulumi.IntPtrOutput)
+}
+
+type EndpointPropertiesSubnetsItemResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (EndpointPropertiesSubnetsItemResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EndpointPropertiesSubnetsItemResponse)(nil)).Elem()
+}
+
+func (o EndpointPropertiesSubnetsItemResponseArrayOutput) ToEndpointPropertiesSubnetsItemResponseArrayOutput() EndpointPropertiesSubnetsItemResponseArrayOutput {
+	return o
+}
+
+func (o EndpointPropertiesSubnetsItemResponseArrayOutput) ToEndpointPropertiesSubnetsItemResponseArrayOutputWithContext(ctx context.Context) EndpointPropertiesSubnetsItemResponseArrayOutput {
+	return o
+}
+
+func (o EndpointPropertiesSubnetsItemResponseArrayOutput) Index(i pulumi.IntInput) EndpointPropertiesSubnetsItemResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EndpointPropertiesSubnetsItemResponse {
+		return vs[0].([]EndpointPropertiesSubnetsItemResponse)[vs[1].(int)]
+	}).(EndpointPropertiesSubnetsItemResponseOutput)
 }
 
 // Class representing a Traffic Manager endpoint.
@@ -855,7 +855,7 @@ type EndpointResponse struct {
 	// If Always Serve is enabled, probing for endpoint health will be disabled and endpoints will be included in the traffic routing method.
 	AlwaysServe *string `pulumi:"alwaysServe"`
 	// List of custom headers.
-	CustomHeaders []EndpointPropertiesResponseCustomHeaders `pulumi:"customHeaders"`
+	CustomHeaders []EndpointPropertiesCustomHeadersItemResponse `pulumi:"customHeaders"`
 	// Specifies the location of the external or nested endpoints when using the 'Performance' traffic routing method.
 	EndpointLocation *string `pulumi:"endpointLocation"`
 	// The monitoring status of the endpoint.
@@ -877,7 +877,7 @@ type EndpointResponse struct {
 	// The priority of this endpoint when using the 'Priority' traffic routing method. Possible values are from 1 to 1000, lower values represent higher priority. This is an optional parameter.  If specified, it must be specified on all endpoints, and no two endpoints can share the same priority value.
 	Priority *float64 `pulumi:"priority"`
 	// The list of subnets, IP addresses, and/or address ranges mapped to this endpoint when using the 'Subnet' traffic routing method. An empty list will match all ranges not covered by other endpoints.
-	Subnets []EndpointPropertiesResponseSubnets `pulumi:"subnets"`
+	Subnets []EndpointPropertiesSubnetsItemResponse `pulumi:"subnets"`
 	// The fully-qualified DNS name or IP address of the endpoint. Traffic Manager returns this value in DNS responses to direct traffic to this endpoint.
 	Target *string `pulumi:"target"`
 	// The Azure Resource URI of the of the endpoint. Not applicable to endpoints of type 'ExternalEndpoints'.
@@ -909,8 +909,8 @@ func (o EndpointResponseOutput) AlwaysServe() pulumi.StringPtrOutput {
 }
 
 // List of custom headers.
-func (o EndpointResponseOutput) CustomHeaders() EndpointPropertiesResponseCustomHeadersArrayOutput {
-	return o.ApplyT(func(v EndpointResponse) []EndpointPropertiesResponseCustomHeaders { return v.CustomHeaders }).(EndpointPropertiesResponseCustomHeadersArrayOutput)
+func (o EndpointResponseOutput) CustomHeaders() EndpointPropertiesCustomHeadersItemResponseArrayOutput {
+	return o.ApplyT(func(v EndpointResponse) []EndpointPropertiesCustomHeadersItemResponse { return v.CustomHeaders }).(EndpointPropertiesCustomHeadersItemResponseArrayOutput)
 }
 
 // Specifies the location of the external or nested endpoints when using the 'Performance' traffic routing method.
@@ -964,8 +964,8 @@ func (o EndpointResponseOutput) Priority() pulumi.Float64PtrOutput {
 }
 
 // The list of subnets, IP addresses, and/or address ranges mapped to this endpoint when using the 'Subnet' traffic routing method. An empty list will match all ranges not covered by other endpoints.
-func (o EndpointResponseOutput) Subnets() EndpointPropertiesResponseSubnetsArrayOutput {
-	return o.ApplyT(func(v EndpointResponse) []EndpointPropertiesResponseSubnets { return v.Subnets }).(EndpointPropertiesResponseSubnetsArrayOutput)
+func (o EndpointResponseOutput) Subnets() EndpointPropertiesSubnetsItemResponseArrayOutput {
+	return o.ApplyT(func(v EndpointResponse) []EndpointPropertiesSubnetsItemResponse { return v.Subnets }).(EndpointPropertiesSubnetsItemResponseArrayOutput)
 }
 
 // The fully-qualified DNS name or IP address of the endpoint. Traffic Manager returns this value in DNS responses to direct traffic to this endpoint.
@@ -1011,9 +1011,9 @@ func (o EndpointResponseArrayOutput) Index(i pulumi.IntInput) EndpointResponseOu
 // Class containing endpoint monitoring settings in a Traffic Manager profile.
 type MonitorConfig struct {
 	// List of custom headers.
-	CustomHeaders []MonitorConfigCustomHeaders `pulumi:"customHeaders"`
+	CustomHeaders []MonitorConfigCustomHeadersItem `pulumi:"customHeaders"`
 	// List of expected status code ranges.
-	ExpectedStatusCodeRanges []MonitorConfigExpectedStatusCodeRanges `pulumi:"expectedStatusCodeRanges"`
+	ExpectedStatusCodeRanges []MonitorConfigExpectedStatusCodeRangesItem `pulumi:"expectedStatusCodeRanges"`
 	// The monitor interval for endpoints in this profile. This is the interval at which Traffic Manager will check the health of each endpoint in this profile.
 	IntervalInSeconds *float64 `pulumi:"intervalInSeconds"`
 	// The path relative to the endpoint domain name used to probe for endpoint health.
@@ -1044,9 +1044,9 @@ type MonitorConfigInput interface {
 // Class containing endpoint monitoring settings in a Traffic Manager profile.
 type MonitorConfigArgs struct {
 	// List of custom headers.
-	CustomHeaders MonitorConfigCustomHeadersArrayInput `pulumi:"customHeaders"`
+	CustomHeaders MonitorConfigCustomHeadersItemArrayInput `pulumi:"customHeaders"`
 	// List of expected status code ranges.
-	ExpectedStatusCodeRanges MonitorConfigExpectedStatusCodeRangesArrayInput `pulumi:"expectedStatusCodeRanges"`
+	ExpectedStatusCodeRanges MonitorConfigExpectedStatusCodeRangesItemArrayInput `pulumi:"expectedStatusCodeRanges"`
 	// The monitor interval for endpoints in this profile. This is the interval at which Traffic Manager will check the health of each endpoint in this profile.
 	IntervalInSeconds pulumi.Float64PtrInput `pulumi:"intervalInSeconds"`
 	// The path relative to the endpoint domain name used to probe for endpoint health.
@@ -1142,13 +1142,13 @@ func (o MonitorConfigOutput) ToMonitorConfigPtrOutputWithContext(ctx context.Con
 }
 
 // List of custom headers.
-func (o MonitorConfigOutput) CustomHeaders() MonitorConfigCustomHeadersArrayOutput {
-	return o.ApplyT(func(v MonitorConfig) []MonitorConfigCustomHeaders { return v.CustomHeaders }).(MonitorConfigCustomHeadersArrayOutput)
+func (o MonitorConfigOutput) CustomHeaders() MonitorConfigCustomHeadersItemArrayOutput {
+	return o.ApplyT(func(v MonitorConfig) []MonitorConfigCustomHeadersItem { return v.CustomHeaders }).(MonitorConfigCustomHeadersItemArrayOutput)
 }
 
 // List of expected status code ranges.
-func (o MonitorConfigOutput) ExpectedStatusCodeRanges() MonitorConfigExpectedStatusCodeRangesArrayOutput {
-	return o.ApplyT(func(v MonitorConfig) []MonitorConfigExpectedStatusCodeRanges { return v.ExpectedStatusCodeRanges }).(MonitorConfigExpectedStatusCodeRangesArrayOutput)
+func (o MonitorConfigOutput) ExpectedStatusCodeRanges() MonitorConfigExpectedStatusCodeRangesItemArrayOutput {
+	return o.ApplyT(func(v MonitorConfig) []MonitorConfigExpectedStatusCodeRangesItem { return v.ExpectedStatusCodeRanges }).(MonitorConfigExpectedStatusCodeRangesItemArrayOutput)
 }
 
 // The monitor interval for endpoints in this profile. This is the interval at which Traffic Manager will check the health of each endpoint in this profile.
@@ -1211,23 +1211,23 @@ func (o MonitorConfigPtrOutput) Elem() MonitorConfigOutput {
 }
 
 // List of custom headers.
-func (o MonitorConfigPtrOutput) CustomHeaders() MonitorConfigCustomHeadersArrayOutput {
-	return o.ApplyT(func(v *MonitorConfig) []MonitorConfigCustomHeaders {
+func (o MonitorConfigPtrOutput) CustomHeaders() MonitorConfigCustomHeadersItemArrayOutput {
+	return o.ApplyT(func(v *MonitorConfig) []MonitorConfigCustomHeadersItem {
 		if v == nil {
 			return nil
 		}
 		return v.CustomHeaders
-	}).(MonitorConfigCustomHeadersArrayOutput)
+	}).(MonitorConfigCustomHeadersItemArrayOutput)
 }
 
 // List of expected status code ranges.
-func (o MonitorConfigPtrOutput) ExpectedStatusCodeRanges() MonitorConfigExpectedStatusCodeRangesArrayOutput {
-	return o.ApplyT(func(v *MonitorConfig) []MonitorConfigExpectedStatusCodeRanges {
+func (o MonitorConfigPtrOutput) ExpectedStatusCodeRanges() MonitorConfigExpectedStatusCodeRangesItemArrayOutput {
+	return o.ApplyT(func(v *MonitorConfig) []MonitorConfigExpectedStatusCodeRangesItem {
 		if v == nil {
 			return nil
 		}
 		return v.ExpectedStatusCodeRanges
-	}).(MonitorConfigExpectedStatusCodeRangesArrayOutput)
+	}).(MonitorConfigExpectedStatusCodeRangesItemArrayOutput)
 }
 
 // The monitor interval for endpoints in this profile. This is the interval at which Traffic Manager will check the health of each endpoint in this profile.
@@ -1301,229 +1301,335 @@ func (o MonitorConfigPtrOutput) ToleratedNumberOfFailures() pulumi.Float64PtrOut
 }
 
 // Custom header name and value.
-type MonitorConfigCustomHeaders struct {
+type MonitorConfigCustomHeadersItem struct {
 	// Header name.
 	Name *string `pulumi:"name"`
 	// Header value.
 	Value *string `pulumi:"value"`
 }
 
-// MonitorConfigCustomHeadersInput is an input type that accepts MonitorConfigCustomHeadersArgs and MonitorConfigCustomHeadersOutput values.
-// You can construct a concrete instance of `MonitorConfigCustomHeadersInput` via:
+// MonitorConfigCustomHeadersItemInput is an input type that accepts MonitorConfigCustomHeadersItemArgs and MonitorConfigCustomHeadersItemOutput values.
+// You can construct a concrete instance of `MonitorConfigCustomHeadersItemInput` via:
 //
-//	MonitorConfigCustomHeadersArgs{...}
-type MonitorConfigCustomHeadersInput interface {
+//	MonitorConfigCustomHeadersItemArgs{...}
+type MonitorConfigCustomHeadersItemInput interface {
 	pulumi.Input
 
-	ToMonitorConfigCustomHeadersOutput() MonitorConfigCustomHeadersOutput
-	ToMonitorConfigCustomHeadersOutputWithContext(context.Context) MonitorConfigCustomHeadersOutput
+	ToMonitorConfigCustomHeadersItemOutput() MonitorConfigCustomHeadersItemOutput
+	ToMonitorConfigCustomHeadersItemOutputWithContext(context.Context) MonitorConfigCustomHeadersItemOutput
 }
 
 // Custom header name and value.
-type MonitorConfigCustomHeadersArgs struct {
+type MonitorConfigCustomHeadersItemArgs struct {
 	// Header name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Header value.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
-func (MonitorConfigCustomHeadersArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MonitorConfigCustomHeaders)(nil)).Elem()
+func (MonitorConfigCustomHeadersItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorConfigCustomHeadersItem)(nil)).Elem()
 }
 
-func (i MonitorConfigCustomHeadersArgs) ToMonitorConfigCustomHeadersOutput() MonitorConfigCustomHeadersOutput {
-	return i.ToMonitorConfigCustomHeadersOutputWithContext(context.Background())
+func (i MonitorConfigCustomHeadersItemArgs) ToMonitorConfigCustomHeadersItemOutput() MonitorConfigCustomHeadersItemOutput {
+	return i.ToMonitorConfigCustomHeadersItemOutputWithContext(context.Background())
 }
 
-func (i MonitorConfigCustomHeadersArgs) ToMonitorConfigCustomHeadersOutputWithContext(ctx context.Context) MonitorConfigCustomHeadersOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MonitorConfigCustomHeadersOutput)
+func (i MonitorConfigCustomHeadersItemArgs) ToMonitorConfigCustomHeadersItemOutputWithContext(ctx context.Context) MonitorConfigCustomHeadersItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorConfigCustomHeadersItemOutput)
 }
 
-// MonitorConfigCustomHeadersArrayInput is an input type that accepts MonitorConfigCustomHeadersArray and MonitorConfigCustomHeadersArrayOutput values.
-// You can construct a concrete instance of `MonitorConfigCustomHeadersArrayInput` via:
+// MonitorConfigCustomHeadersItemArrayInput is an input type that accepts MonitorConfigCustomHeadersItemArray and MonitorConfigCustomHeadersItemArrayOutput values.
+// You can construct a concrete instance of `MonitorConfigCustomHeadersItemArrayInput` via:
 //
-//	MonitorConfigCustomHeadersArray{ MonitorConfigCustomHeadersArgs{...} }
-type MonitorConfigCustomHeadersArrayInput interface {
+//	MonitorConfigCustomHeadersItemArray{ MonitorConfigCustomHeadersItemArgs{...} }
+type MonitorConfigCustomHeadersItemArrayInput interface {
 	pulumi.Input
 
-	ToMonitorConfigCustomHeadersArrayOutput() MonitorConfigCustomHeadersArrayOutput
-	ToMonitorConfigCustomHeadersArrayOutputWithContext(context.Context) MonitorConfigCustomHeadersArrayOutput
+	ToMonitorConfigCustomHeadersItemArrayOutput() MonitorConfigCustomHeadersItemArrayOutput
+	ToMonitorConfigCustomHeadersItemArrayOutputWithContext(context.Context) MonitorConfigCustomHeadersItemArrayOutput
 }
 
-type MonitorConfigCustomHeadersArray []MonitorConfigCustomHeadersInput
+type MonitorConfigCustomHeadersItemArray []MonitorConfigCustomHeadersItemInput
 
-func (MonitorConfigCustomHeadersArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MonitorConfigCustomHeaders)(nil)).Elem()
+func (MonitorConfigCustomHeadersItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MonitorConfigCustomHeadersItem)(nil)).Elem()
 }
 
-func (i MonitorConfigCustomHeadersArray) ToMonitorConfigCustomHeadersArrayOutput() MonitorConfigCustomHeadersArrayOutput {
-	return i.ToMonitorConfigCustomHeadersArrayOutputWithContext(context.Background())
+func (i MonitorConfigCustomHeadersItemArray) ToMonitorConfigCustomHeadersItemArrayOutput() MonitorConfigCustomHeadersItemArrayOutput {
+	return i.ToMonitorConfigCustomHeadersItemArrayOutputWithContext(context.Background())
 }
 
-func (i MonitorConfigCustomHeadersArray) ToMonitorConfigCustomHeadersArrayOutputWithContext(ctx context.Context) MonitorConfigCustomHeadersArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MonitorConfigCustomHeadersArrayOutput)
+func (i MonitorConfigCustomHeadersItemArray) ToMonitorConfigCustomHeadersItemArrayOutputWithContext(ctx context.Context) MonitorConfigCustomHeadersItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorConfigCustomHeadersItemArrayOutput)
 }
 
 // Custom header name and value.
-type MonitorConfigCustomHeadersOutput struct{ *pulumi.OutputState }
+type MonitorConfigCustomHeadersItemOutput struct{ *pulumi.OutputState }
 
-func (MonitorConfigCustomHeadersOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MonitorConfigCustomHeaders)(nil)).Elem()
+func (MonitorConfigCustomHeadersItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorConfigCustomHeadersItem)(nil)).Elem()
 }
 
-func (o MonitorConfigCustomHeadersOutput) ToMonitorConfigCustomHeadersOutput() MonitorConfigCustomHeadersOutput {
+func (o MonitorConfigCustomHeadersItemOutput) ToMonitorConfigCustomHeadersItemOutput() MonitorConfigCustomHeadersItemOutput {
 	return o
 }
 
-func (o MonitorConfigCustomHeadersOutput) ToMonitorConfigCustomHeadersOutputWithContext(ctx context.Context) MonitorConfigCustomHeadersOutput {
+func (o MonitorConfigCustomHeadersItemOutput) ToMonitorConfigCustomHeadersItemOutputWithContext(ctx context.Context) MonitorConfigCustomHeadersItemOutput {
 	return o
 }
 
 // Header name.
-func (o MonitorConfigCustomHeadersOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MonitorConfigCustomHeaders) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o MonitorConfigCustomHeadersItemOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MonitorConfigCustomHeadersItem) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // Header value.
-func (o MonitorConfigCustomHeadersOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MonitorConfigCustomHeaders) *string { return v.Value }).(pulumi.StringPtrOutput)
+func (o MonitorConfigCustomHeadersItemOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MonitorConfigCustomHeadersItem) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
-type MonitorConfigCustomHeadersArrayOutput struct{ *pulumi.OutputState }
+type MonitorConfigCustomHeadersItemArrayOutput struct{ *pulumi.OutputState }
 
-func (MonitorConfigCustomHeadersArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MonitorConfigCustomHeaders)(nil)).Elem()
+func (MonitorConfigCustomHeadersItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MonitorConfigCustomHeadersItem)(nil)).Elem()
 }
 
-func (o MonitorConfigCustomHeadersArrayOutput) ToMonitorConfigCustomHeadersArrayOutput() MonitorConfigCustomHeadersArrayOutput {
+func (o MonitorConfigCustomHeadersItemArrayOutput) ToMonitorConfigCustomHeadersItemArrayOutput() MonitorConfigCustomHeadersItemArrayOutput {
 	return o
 }
 
-func (o MonitorConfigCustomHeadersArrayOutput) ToMonitorConfigCustomHeadersArrayOutputWithContext(ctx context.Context) MonitorConfigCustomHeadersArrayOutput {
+func (o MonitorConfigCustomHeadersItemArrayOutput) ToMonitorConfigCustomHeadersItemArrayOutputWithContext(ctx context.Context) MonitorConfigCustomHeadersItemArrayOutput {
 	return o
 }
 
-func (o MonitorConfigCustomHeadersArrayOutput) Index(i pulumi.IntInput) MonitorConfigCustomHeadersOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MonitorConfigCustomHeaders {
-		return vs[0].([]MonitorConfigCustomHeaders)[vs[1].(int)]
-	}).(MonitorConfigCustomHeadersOutput)
+func (o MonitorConfigCustomHeadersItemArrayOutput) Index(i pulumi.IntInput) MonitorConfigCustomHeadersItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MonitorConfigCustomHeadersItem {
+		return vs[0].([]MonitorConfigCustomHeadersItem)[vs[1].(int)]
+	}).(MonitorConfigCustomHeadersItemOutput)
+}
+
+// Custom header name and value.
+type MonitorConfigCustomHeadersItemResponse struct {
+	// Header name.
+	Name *string `pulumi:"name"`
+	// Header value.
+	Value *string `pulumi:"value"`
+}
+
+// Custom header name and value.
+type MonitorConfigCustomHeadersItemResponseOutput struct{ *pulumi.OutputState }
+
+func (MonitorConfigCustomHeadersItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorConfigCustomHeadersItemResponse)(nil)).Elem()
+}
+
+func (o MonitorConfigCustomHeadersItemResponseOutput) ToMonitorConfigCustomHeadersItemResponseOutput() MonitorConfigCustomHeadersItemResponseOutput {
+	return o
+}
+
+func (o MonitorConfigCustomHeadersItemResponseOutput) ToMonitorConfigCustomHeadersItemResponseOutputWithContext(ctx context.Context) MonitorConfigCustomHeadersItemResponseOutput {
+	return o
+}
+
+// Header name.
+func (o MonitorConfigCustomHeadersItemResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MonitorConfigCustomHeadersItemResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Header value.
+func (o MonitorConfigCustomHeadersItemResponseOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MonitorConfigCustomHeadersItemResponse) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type MonitorConfigCustomHeadersItemResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (MonitorConfigCustomHeadersItemResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MonitorConfigCustomHeadersItemResponse)(nil)).Elem()
+}
+
+func (o MonitorConfigCustomHeadersItemResponseArrayOutput) ToMonitorConfigCustomHeadersItemResponseArrayOutput() MonitorConfigCustomHeadersItemResponseArrayOutput {
+	return o
+}
+
+func (o MonitorConfigCustomHeadersItemResponseArrayOutput) ToMonitorConfigCustomHeadersItemResponseArrayOutputWithContext(ctx context.Context) MonitorConfigCustomHeadersItemResponseArrayOutput {
+	return o
+}
+
+func (o MonitorConfigCustomHeadersItemResponseArrayOutput) Index(i pulumi.IntInput) MonitorConfigCustomHeadersItemResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MonitorConfigCustomHeadersItemResponse {
+		return vs[0].([]MonitorConfigCustomHeadersItemResponse)[vs[1].(int)]
+	}).(MonitorConfigCustomHeadersItemResponseOutput)
 }
 
 // Min and max value of a status code range.
-type MonitorConfigExpectedStatusCodeRanges struct {
+type MonitorConfigExpectedStatusCodeRangesItem struct {
 	// Max status code.
 	Max *int `pulumi:"max"`
 	// Min status code.
 	Min *int `pulumi:"min"`
 }
 
-// MonitorConfigExpectedStatusCodeRangesInput is an input type that accepts MonitorConfigExpectedStatusCodeRangesArgs and MonitorConfigExpectedStatusCodeRangesOutput values.
-// You can construct a concrete instance of `MonitorConfigExpectedStatusCodeRangesInput` via:
+// MonitorConfigExpectedStatusCodeRangesItemInput is an input type that accepts MonitorConfigExpectedStatusCodeRangesItemArgs and MonitorConfigExpectedStatusCodeRangesItemOutput values.
+// You can construct a concrete instance of `MonitorConfigExpectedStatusCodeRangesItemInput` via:
 //
-//	MonitorConfigExpectedStatusCodeRangesArgs{...}
-type MonitorConfigExpectedStatusCodeRangesInput interface {
+//	MonitorConfigExpectedStatusCodeRangesItemArgs{...}
+type MonitorConfigExpectedStatusCodeRangesItemInput interface {
 	pulumi.Input
 
-	ToMonitorConfigExpectedStatusCodeRangesOutput() MonitorConfigExpectedStatusCodeRangesOutput
-	ToMonitorConfigExpectedStatusCodeRangesOutputWithContext(context.Context) MonitorConfigExpectedStatusCodeRangesOutput
+	ToMonitorConfigExpectedStatusCodeRangesItemOutput() MonitorConfigExpectedStatusCodeRangesItemOutput
+	ToMonitorConfigExpectedStatusCodeRangesItemOutputWithContext(context.Context) MonitorConfigExpectedStatusCodeRangesItemOutput
 }
 
 // Min and max value of a status code range.
-type MonitorConfigExpectedStatusCodeRangesArgs struct {
+type MonitorConfigExpectedStatusCodeRangesItemArgs struct {
 	// Max status code.
 	Max pulumi.IntPtrInput `pulumi:"max"`
 	// Min status code.
 	Min pulumi.IntPtrInput `pulumi:"min"`
 }
 
-func (MonitorConfigExpectedStatusCodeRangesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MonitorConfigExpectedStatusCodeRanges)(nil)).Elem()
+func (MonitorConfigExpectedStatusCodeRangesItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorConfigExpectedStatusCodeRangesItem)(nil)).Elem()
 }
 
-func (i MonitorConfigExpectedStatusCodeRangesArgs) ToMonitorConfigExpectedStatusCodeRangesOutput() MonitorConfigExpectedStatusCodeRangesOutput {
-	return i.ToMonitorConfigExpectedStatusCodeRangesOutputWithContext(context.Background())
+func (i MonitorConfigExpectedStatusCodeRangesItemArgs) ToMonitorConfigExpectedStatusCodeRangesItemOutput() MonitorConfigExpectedStatusCodeRangesItemOutput {
+	return i.ToMonitorConfigExpectedStatusCodeRangesItemOutputWithContext(context.Background())
 }
 
-func (i MonitorConfigExpectedStatusCodeRangesArgs) ToMonitorConfigExpectedStatusCodeRangesOutputWithContext(ctx context.Context) MonitorConfigExpectedStatusCodeRangesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MonitorConfigExpectedStatusCodeRangesOutput)
+func (i MonitorConfigExpectedStatusCodeRangesItemArgs) ToMonitorConfigExpectedStatusCodeRangesItemOutputWithContext(ctx context.Context) MonitorConfigExpectedStatusCodeRangesItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorConfigExpectedStatusCodeRangesItemOutput)
 }
 
-// MonitorConfigExpectedStatusCodeRangesArrayInput is an input type that accepts MonitorConfigExpectedStatusCodeRangesArray and MonitorConfigExpectedStatusCodeRangesArrayOutput values.
-// You can construct a concrete instance of `MonitorConfigExpectedStatusCodeRangesArrayInput` via:
+// MonitorConfigExpectedStatusCodeRangesItemArrayInput is an input type that accepts MonitorConfigExpectedStatusCodeRangesItemArray and MonitorConfigExpectedStatusCodeRangesItemArrayOutput values.
+// You can construct a concrete instance of `MonitorConfigExpectedStatusCodeRangesItemArrayInput` via:
 //
-//	MonitorConfigExpectedStatusCodeRangesArray{ MonitorConfigExpectedStatusCodeRangesArgs{...} }
-type MonitorConfigExpectedStatusCodeRangesArrayInput interface {
+//	MonitorConfigExpectedStatusCodeRangesItemArray{ MonitorConfigExpectedStatusCodeRangesItemArgs{...} }
+type MonitorConfigExpectedStatusCodeRangesItemArrayInput interface {
 	pulumi.Input
 
-	ToMonitorConfigExpectedStatusCodeRangesArrayOutput() MonitorConfigExpectedStatusCodeRangesArrayOutput
-	ToMonitorConfigExpectedStatusCodeRangesArrayOutputWithContext(context.Context) MonitorConfigExpectedStatusCodeRangesArrayOutput
+	ToMonitorConfigExpectedStatusCodeRangesItemArrayOutput() MonitorConfigExpectedStatusCodeRangesItemArrayOutput
+	ToMonitorConfigExpectedStatusCodeRangesItemArrayOutputWithContext(context.Context) MonitorConfigExpectedStatusCodeRangesItemArrayOutput
 }
 
-type MonitorConfigExpectedStatusCodeRangesArray []MonitorConfigExpectedStatusCodeRangesInput
+type MonitorConfigExpectedStatusCodeRangesItemArray []MonitorConfigExpectedStatusCodeRangesItemInput
 
-func (MonitorConfigExpectedStatusCodeRangesArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MonitorConfigExpectedStatusCodeRanges)(nil)).Elem()
+func (MonitorConfigExpectedStatusCodeRangesItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MonitorConfigExpectedStatusCodeRangesItem)(nil)).Elem()
 }
 
-func (i MonitorConfigExpectedStatusCodeRangesArray) ToMonitorConfigExpectedStatusCodeRangesArrayOutput() MonitorConfigExpectedStatusCodeRangesArrayOutput {
-	return i.ToMonitorConfigExpectedStatusCodeRangesArrayOutputWithContext(context.Background())
+func (i MonitorConfigExpectedStatusCodeRangesItemArray) ToMonitorConfigExpectedStatusCodeRangesItemArrayOutput() MonitorConfigExpectedStatusCodeRangesItemArrayOutput {
+	return i.ToMonitorConfigExpectedStatusCodeRangesItemArrayOutputWithContext(context.Background())
 }
 
-func (i MonitorConfigExpectedStatusCodeRangesArray) ToMonitorConfigExpectedStatusCodeRangesArrayOutputWithContext(ctx context.Context) MonitorConfigExpectedStatusCodeRangesArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MonitorConfigExpectedStatusCodeRangesArrayOutput)
+func (i MonitorConfigExpectedStatusCodeRangesItemArray) ToMonitorConfigExpectedStatusCodeRangesItemArrayOutputWithContext(ctx context.Context) MonitorConfigExpectedStatusCodeRangesItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorConfigExpectedStatusCodeRangesItemArrayOutput)
 }
 
 // Min and max value of a status code range.
-type MonitorConfigExpectedStatusCodeRangesOutput struct{ *pulumi.OutputState }
+type MonitorConfigExpectedStatusCodeRangesItemOutput struct{ *pulumi.OutputState }
 
-func (MonitorConfigExpectedStatusCodeRangesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MonitorConfigExpectedStatusCodeRanges)(nil)).Elem()
+func (MonitorConfigExpectedStatusCodeRangesItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorConfigExpectedStatusCodeRangesItem)(nil)).Elem()
 }
 
-func (o MonitorConfigExpectedStatusCodeRangesOutput) ToMonitorConfigExpectedStatusCodeRangesOutput() MonitorConfigExpectedStatusCodeRangesOutput {
+func (o MonitorConfigExpectedStatusCodeRangesItemOutput) ToMonitorConfigExpectedStatusCodeRangesItemOutput() MonitorConfigExpectedStatusCodeRangesItemOutput {
 	return o
 }
 
-func (o MonitorConfigExpectedStatusCodeRangesOutput) ToMonitorConfigExpectedStatusCodeRangesOutputWithContext(ctx context.Context) MonitorConfigExpectedStatusCodeRangesOutput {
+func (o MonitorConfigExpectedStatusCodeRangesItemOutput) ToMonitorConfigExpectedStatusCodeRangesItemOutputWithContext(ctx context.Context) MonitorConfigExpectedStatusCodeRangesItemOutput {
 	return o
 }
 
 // Max status code.
-func (o MonitorConfigExpectedStatusCodeRangesOutput) Max() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MonitorConfigExpectedStatusCodeRanges) *int { return v.Max }).(pulumi.IntPtrOutput)
+func (o MonitorConfigExpectedStatusCodeRangesItemOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MonitorConfigExpectedStatusCodeRangesItem) *int { return v.Max }).(pulumi.IntPtrOutput)
 }
 
 // Min status code.
-func (o MonitorConfigExpectedStatusCodeRangesOutput) Min() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MonitorConfigExpectedStatusCodeRanges) *int { return v.Min }).(pulumi.IntPtrOutput)
+func (o MonitorConfigExpectedStatusCodeRangesItemOutput) Min() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MonitorConfigExpectedStatusCodeRangesItem) *int { return v.Min }).(pulumi.IntPtrOutput)
 }
 
-type MonitorConfigExpectedStatusCodeRangesArrayOutput struct{ *pulumi.OutputState }
+type MonitorConfigExpectedStatusCodeRangesItemArrayOutput struct{ *pulumi.OutputState }
 
-func (MonitorConfigExpectedStatusCodeRangesArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MonitorConfigExpectedStatusCodeRanges)(nil)).Elem()
+func (MonitorConfigExpectedStatusCodeRangesItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MonitorConfigExpectedStatusCodeRangesItem)(nil)).Elem()
 }
 
-func (o MonitorConfigExpectedStatusCodeRangesArrayOutput) ToMonitorConfigExpectedStatusCodeRangesArrayOutput() MonitorConfigExpectedStatusCodeRangesArrayOutput {
+func (o MonitorConfigExpectedStatusCodeRangesItemArrayOutput) ToMonitorConfigExpectedStatusCodeRangesItemArrayOutput() MonitorConfigExpectedStatusCodeRangesItemArrayOutput {
 	return o
 }
 
-func (o MonitorConfigExpectedStatusCodeRangesArrayOutput) ToMonitorConfigExpectedStatusCodeRangesArrayOutputWithContext(ctx context.Context) MonitorConfigExpectedStatusCodeRangesArrayOutput {
+func (o MonitorConfigExpectedStatusCodeRangesItemArrayOutput) ToMonitorConfigExpectedStatusCodeRangesItemArrayOutputWithContext(ctx context.Context) MonitorConfigExpectedStatusCodeRangesItemArrayOutput {
 	return o
 }
 
-func (o MonitorConfigExpectedStatusCodeRangesArrayOutput) Index(i pulumi.IntInput) MonitorConfigExpectedStatusCodeRangesOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MonitorConfigExpectedStatusCodeRanges {
-		return vs[0].([]MonitorConfigExpectedStatusCodeRanges)[vs[1].(int)]
-	}).(MonitorConfigExpectedStatusCodeRangesOutput)
+func (o MonitorConfigExpectedStatusCodeRangesItemArrayOutput) Index(i pulumi.IntInput) MonitorConfigExpectedStatusCodeRangesItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MonitorConfigExpectedStatusCodeRangesItem {
+		return vs[0].([]MonitorConfigExpectedStatusCodeRangesItem)[vs[1].(int)]
+	}).(MonitorConfigExpectedStatusCodeRangesItemOutput)
+}
+
+// Min and max value of a status code range.
+type MonitorConfigExpectedStatusCodeRangesItemResponse struct {
+	// Max status code.
+	Max *int `pulumi:"max"`
+	// Min status code.
+	Min *int `pulumi:"min"`
+}
+
+// Min and max value of a status code range.
+type MonitorConfigExpectedStatusCodeRangesItemResponseOutput struct{ *pulumi.OutputState }
+
+func (MonitorConfigExpectedStatusCodeRangesItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorConfigExpectedStatusCodeRangesItemResponse)(nil)).Elem()
+}
+
+func (o MonitorConfigExpectedStatusCodeRangesItemResponseOutput) ToMonitorConfigExpectedStatusCodeRangesItemResponseOutput() MonitorConfigExpectedStatusCodeRangesItemResponseOutput {
+	return o
+}
+
+func (o MonitorConfigExpectedStatusCodeRangesItemResponseOutput) ToMonitorConfigExpectedStatusCodeRangesItemResponseOutputWithContext(ctx context.Context) MonitorConfigExpectedStatusCodeRangesItemResponseOutput {
+	return o
+}
+
+// Max status code.
+func (o MonitorConfigExpectedStatusCodeRangesItemResponseOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MonitorConfigExpectedStatusCodeRangesItemResponse) *int { return v.Max }).(pulumi.IntPtrOutput)
+}
+
+// Min status code.
+func (o MonitorConfigExpectedStatusCodeRangesItemResponseOutput) Min() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MonitorConfigExpectedStatusCodeRangesItemResponse) *int { return v.Min }).(pulumi.IntPtrOutput)
+}
+
+type MonitorConfigExpectedStatusCodeRangesItemResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (MonitorConfigExpectedStatusCodeRangesItemResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MonitorConfigExpectedStatusCodeRangesItemResponse)(nil)).Elem()
+}
+
+func (o MonitorConfigExpectedStatusCodeRangesItemResponseArrayOutput) ToMonitorConfigExpectedStatusCodeRangesItemResponseArrayOutput() MonitorConfigExpectedStatusCodeRangesItemResponseArrayOutput {
+	return o
+}
+
+func (o MonitorConfigExpectedStatusCodeRangesItemResponseArrayOutput) ToMonitorConfigExpectedStatusCodeRangesItemResponseArrayOutputWithContext(ctx context.Context) MonitorConfigExpectedStatusCodeRangesItemResponseArrayOutput {
+	return o
+}
+
+func (o MonitorConfigExpectedStatusCodeRangesItemResponseArrayOutput) Index(i pulumi.IntInput) MonitorConfigExpectedStatusCodeRangesItemResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MonitorConfigExpectedStatusCodeRangesItemResponse {
+		return vs[0].([]MonitorConfigExpectedStatusCodeRangesItemResponse)[vs[1].(int)]
+	}).(MonitorConfigExpectedStatusCodeRangesItemResponseOutput)
 }
 
 // Class containing endpoint monitoring settings in a Traffic Manager profile.
 type MonitorConfigResponse struct {
 	// List of custom headers.
-	CustomHeaders []MonitorConfigResponseCustomHeaders `pulumi:"customHeaders"`
+	CustomHeaders []MonitorConfigCustomHeadersItemResponse `pulumi:"customHeaders"`
 	// List of expected status code ranges.
-	ExpectedStatusCodeRanges []MonitorConfigResponseExpectedStatusCodeRanges `pulumi:"expectedStatusCodeRanges"`
+	ExpectedStatusCodeRanges []MonitorConfigExpectedStatusCodeRangesItemResponse `pulumi:"expectedStatusCodeRanges"`
 	// The monitor interval for endpoints in this profile. This is the interval at which Traffic Manager will check the health of each endpoint in this profile.
 	IntervalInSeconds *float64 `pulumi:"intervalInSeconds"`
 	// The path relative to the endpoint domain name used to probe for endpoint health.
@@ -1556,15 +1662,15 @@ func (o MonitorConfigResponseOutput) ToMonitorConfigResponseOutputWithContext(ct
 }
 
 // List of custom headers.
-func (o MonitorConfigResponseOutput) CustomHeaders() MonitorConfigResponseCustomHeadersArrayOutput {
-	return o.ApplyT(func(v MonitorConfigResponse) []MonitorConfigResponseCustomHeaders { return v.CustomHeaders }).(MonitorConfigResponseCustomHeadersArrayOutput)
+func (o MonitorConfigResponseOutput) CustomHeaders() MonitorConfigCustomHeadersItemResponseArrayOutput {
+	return o.ApplyT(func(v MonitorConfigResponse) []MonitorConfigCustomHeadersItemResponse { return v.CustomHeaders }).(MonitorConfigCustomHeadersItemResponseArrayOutput)
 }
 
 // List of expected status code ranges.
-func (o MonitorConfigResponseOutput) ExpectedStatusCodeRanges() MonitorConfigResponseExpectedStatusCodeRangesArrayOutput {
-	return o.ApplyT(func(v MonitorConfigResponse) []MonitorConfigResponseExpectedStatusCodeRanges {
+func (o MonitorConfigResponseOutput) ExpectedStatusCodeRanges() MonitorConfigExpectedStatusCodeRangesItemResponseArrayOutput {
+	return o.ApplyT(func(v MonitorConfigResponse) []MonitorConfigExpectedStatusCodeRangesItemResponse {
 		return v.ExpectedStatusCodeRanges
-	}).(MonitorConfigResponseExpectedStatusCodeRangesArrayOutput)
+	}).(MonitorConfigExpectedStatusCodeRangesItemResponseArrayOutput)
 }
 
 // The monitor interval for endpoints in this profile. This is the interval at which Traffic Manager will check the health of each endpoint in this profile.
@@ -1627,23 +1733,23 @@ func (o MonitorConfigResponsePtrOutput) Elem() MonitorConfigResponseOutput {
 }
 
 // List of custom headers.
-func (o MonitorConfigResponsePtrOutput) CustomHeaders() MonitorConfigResponseCustomHeadersArrayOutput {
-	return o.ApplyT(func(v *MonitorConfigResponse) []MonitorConfigResponseCustomHeaders {
+func (o MonitorConfigResponsePtrOutput) CustomHeaders() MonitorConfigCustomHeadersItemResponseArrayOutput {
+	return o.ApplyT(func(v *MonitorConfigResponse) []MonitorConfigCustomHeadersItemResponse {
 		if v == nil {
 			return nil
 		}
 		return v.CustomHeaders
-	}).(MonitorConfigResponseCustomHeadersArrayOutput)
+	}).(MonitorConfigCustomHeadersItemResponseArrayOutput)
 }
 
 // List of expected status code ranges.
-func (o MonitorConfigResponsePtrOutput) ExpectedStatusCodeRanges() MonitorConfigResponseExpectedStatusCodeRangesArrayOutput {
-	return o.ApplyT(func(v *MonitorConfigResponse) []MonitorConfigResponseExpectedStatusCodeRanges {
+func (o MonitorConfigResponsePtrOutput) ExpectedStatusCodeRanges() MonitorConfigExpectedStatusCodeRangesItemResponseArrayOutput {
+	return o.ApplyT(func(v *MonitorConfigResponse) []MonitorConfigExpectedStatusCodeRangesItemResponse {
 		if v == nil {
 			return nil
 		}
 		return v.ExpectedStatusCodeRanges
-	}).(MonitorConfigResponseExpectedStatusCodeRangesArrayOutput)
+	}).(MonitorConfigExpectedStatusCodeRangesItemResponseArrayOutput)
 }
 
 // The monitor interval for endpoints in this profile. This is the interval at which Traffic Manager will check the health of each endpoint in this profile.
@@ -1716,112 +1822,6 @@ func (o MonitorConfigResponsePtrOutput) ToleratedNumberOfFailures() pulumi.Float
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Custom header name and value.
-type MonitorConfigResponseCustomHeaders struct {
-	// Header name.
-	Name *string `pulumi:"name"`
-	// Header value.
-	Value *string `pulumi:"value"`
-}
-
-// Custom header name and value.
-type MonitorConfigResponseCustomHeadersOutput struct{ *pulumi.OutputState }
-
-func (MonitorConfigResponseCustomHeadersOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MonitorConfigResponseCustomHeaders)(nil)).Elem()
-}
-
-func (o MonitorConfigResponseCustomHeadersOutput) ToMonitorConfigResponseCustomHeadersOutput() MonitorConfigResponseCustomHeadersOutput {
-	return o
-}
-
-func (o MonitorConfigResponseCustomHeadersOutput) ToMonitorConfigResponseCustomHeadersOutputWithContext(ctx context.Context) MonitorConfigResponseCustomHeadersOutput {
-	return o
-}
-
-// Header name.
-func (o MonitorConfigResponseCustomHeadersOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MonitorConfigResponseCustomHeaders) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// Header value.
-func (o MonitorConfigResponseCustomHeadersOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MonitorConfigResponseCustomHeaders) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-type MonitorConfigResponseCustomHeadersArrayOutput struct{ *pulumi.OutputState }
-
-func (MonitorConfigResponseCustomHeadersArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MonitorConfigResponseCustomHeaders)(nil)).Elem()
-}
-
-func (o MonitorConfigResponseCustomHeadersArrayOutput) ToMonitorConfigResponseCustomHeadersArrayOutput() MonitorConfigResponseCustomHeadersArrayOutput {
-	return o
-}
-
-func (o MonitorConfigResponseCustomHeadersArrayOutput) ToMonitorConfigResponseCustomHeadersArrayOutputWithContext(ctx context.Context) MonitorConfigResponseCustomHeadersArrayOutput {
-	return o
-}
-
-func (o MonitorConfigResponseCustomHeadersArrayOutput) Index(i pulumi.IntInput) MonitorConfigResponseCustomHeadersOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MonitorConfigResponseCustomHeaders {
-		return vs[0].([]MonitorConfigResponseCustomHeaders)[vs[1].(int)]
-	}).(MonitorConfigResponseCustomHeadersOutput)
-}
-
-// Min and max value of a status code range.
-type MonitorConfigResponseExpectedStatusCodeRanges struct {
-	// Max status code.
-	Max *int `pulumi:"max"`
-	// Min status code.
-	Min *int `pulumi:"min"`
-}
-
-// Min and max value of a status code range.
-type MonitorConfigResponseExpectedStatusCodeRangesOutput struct{ *pulumi.OutputState }
-
-func (MonitorConfigResponseExpectedStatusCodeRangesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MonitorConfigResponseExpectedStatusCodeRanges)(nil)).Elem()
-}
-
-func (o MonitorConfigResponseExpectedStatusCodeRangesOutput) ToMonitorConfigResponseExpectedStatusCodeRangesOutput() MonitorConfigResponseExpectedStatusCodeRangesOutput {
-	return o
-}
-
-func (o MonitorConfigResponseExpectedStatusCodeRangesOutput) ToMonitorConfigResponseExpectedStatusCodeRangesOutputWithContext(ctx context.Context) MonitorConfigResponseExpectedStatusCodeRangesOutput {
-	return o
-}
-
-// Max status code.
-func (o MonitorConfigResponseExpectedStatusCodeRangesOutput) Max() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MonitorConfigResponseExpectedStatusCodeRanges) *int { return v.Max }).(pulumi.IntPtrOutput)
-}
-
-// Min status code.
-func (o MonitorConfigResponseExpectedStatusCodeRangesOutput) Min() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MonitorConfigResponseExpectedStatusCodeRanges) *int { return v.Min }).(pulumi.IntPtrOutput)
-}
-
-type MonitorConfigResponseExpectedStatusCodeRangesArrayOutput struct{ *pulumi.OutputState }
-
-func (MonitorConfigResponseExpectedStatusCodeRangesArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MonitorConfigResponseExpectedStatusCodeRanges)(nil)).Elem()
-}
-
-func (o MonitorConfigResponseExpectedStatusCodeRangesArrayOutput) ToMonitorConfigResponseExpectedStatusCodeRangesArrayOutput() MonitorConfigResponseExpectedStatusCodeRangesArrayOutput {
-	return o
-}
-
-func (o MonitorConfigResponseExpectedStatusCodeRangesArrayOutput) ToMonitorConfigResponseExpectedStatusCodeRangesArrayOutputWithContext(ctx context.Context) MonitorConfigResponseExpectedStatusCodeRangesArrayOutput {
-	return o
-}
-
-func (o MonitorConfigResponseExpectedStatusCodeRangesArrayOutput) Index(i pulumi.IntInput) MonitorConfigResponseExpectedStatusCodeRangesOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MonitorConfigResponseExpectedStatusCodeRanges {
-		return vs[0].([]MonitorConfigResponseExpectedStatusCodeRanges)[vs[1].(int)]
-	}).(MonitorConfigResponseExpectedStatusCodeRangesOutput)
-}
-
 func init() {
 	pulumi.RegisterOutputType(DnsConfigOutput{})
 	pulumi.RegisterOutputType(DnsConfigPtrOutput{})
@@ -1829,26 +1829,26 @@ func init() {
 	pulumi.RegisterOutputType(DnsConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(EndpointTypeOutput{})
 	pulumi.RegisterOutputType(EndpointTypeArrayOutput{})
-	pulumi.RegisterOutputType(EndpointPropertiesCustomHeadersOutput{})
-	pulumi.RegisterOutputType(EndpointPropertiesCustomHeadersArrayOutput{})
-	pulumi.RegisterOutputType(EndpointPropertiesResponseCustomHeadersOutput{})
-	pulumi.RegisterOutputType(EndpointPropertiesResponseCustomHeadersArrayOutput{})
-	pulumi.RegisterOutputType(EndpointPropertiesResponseSubnetsOutput{})
-	pulumi.RegisterOutputType(EndpointPropertiesResponseSubnetsArrayOutput{})
-	pulumi.RegisterOutputType(EndpointPropertiesSubnetsOutput{})
-	pulumi.RegisterOutputType(EndpointPropertiesSubnetsArrayOutput{})
+	pulumi.RegisterOutputType(EndpointPropertiesCustomHeadersItemOutput{})
+	pulumi.RegisterOutputType(EndpointPropertiesCustomHeadersItemArrayOutput{})
+	pulumi.RegisterOutputType(EndpointPropertiesCustomHeadersItemResponseOutput{})
+	pulumi.RegisterOutputType(EndpointPropertiesCustomHeadersItemResponseArrayOutput{})
+	pulumi.RegisterOutputType(EndpointPropertiesSubnetsItemOutput{})
+	pulumi.RegisterOutputType(EndpointPropertiesSubnetsItemArrayOutput{})
+	pulumi.RegisterOutputType(EndpointPropertiesSubnetsItemResponseOutput{})
+	pulumi.RegisterOutputType(EndpointPropertiesSubnetsItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(EndpointResponseOutput{})
 	pulumi.RegisterOutputType(EndpointResponseArrayOutput{})
 	pulumi.RegisterOutputType(MonitorConfigOutput{})
 	pulumi.RegisterOutputType(MonitorConfigPtrOutput{})
-	pulumi.RegisterOutputType(MonitorConfigCustomHeadersOutput{})
-	pulumi.RegisterOutputType(MonitorConfigCustomHeadersArrayOutput{})
-	pulumi.RegisterOutputType(MonitorConfigExpectedStatusCodeRangesOutput{})
-	pulumi.RegisterOutputType(MonitorConfigExpectedStatusCodeRangesArrayOutput{})
+	pulumi.RegisterOutputType(MonitorConfigCustomHeadersItemOutput{})
+	pulumi.RegisterOutputType(MonitorConfigCustomHeadersItemArrayOutput{})
+	pulumi.RegisterOutputType(MonitorConfigCustomHeadersItemResponseOutput{})
+	pulumi.RegisterOutputType(MonitorConfigCustomHeadersItemResponseArrayOutput{})
+	pulumi.RegisterOutputType(MonitorConfigExpectedStatusCodeRangesItemOutput{})
+	pulumi.RegisterOutputType(MonitorConfigExpectedStatusCodeRangesItemArrayOutput{})
+	pulumi.RegisterOutputType(MonitorConfigExpectedStatusCodeRangesItemResponseOutput{})
+	pulumi.RegisterOutputType(MonitorConfigExpectedStatusCodeRangesItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(MonitorConfigResponseOutput{})
 	pulumi.RegisterOutputType(MonitorConfigResponsePtrOutput{})
-	pulumi.RegisterOutputType(MonitorConfigResponseCustomHeadersOutput{})
-	pulumi.RegisterOutputType(MonitorConfigResponseCustomHeadersArrayOutput{})
-	pulumi.RegisterOutputType(MonitorConfigResponseExpectedStatusCodeRangesOutput{})
-	pulumi.RegisterOutputType(MonitorConfigResponseExpectedStatusCodeRangesArrayOutput{})
 }

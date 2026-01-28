@@ -43,8 +43,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Bookmark{}
 	case "azure-native:securityinsights:BookmarkRelation":
 		r = &BookmarkRelation{}
-	case "azure-native:securityinsights:BusinessApplicationAgent":
-		r = &BusinessApplicationAgent{}
 	case "azure-native:securityinsights:ContentPackage":
 		r = &ContentPackage{}
 	case "azure-native:securityinsights:ContentTemplate":
@@ -95,8 +93,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SentinelOnboardingState{}
 	case "azure-native:securityinsights:SourceControl":
 		r = &SourceControl{}
-	case "azure-native:securityinsights:System":
-		r = &System{}
 	case "azure-native:securityinsights:TIDataConnector":
 		r = &TIDataConnector{}
 	case "azure-native:securityinsights:ThreatIntelligenceIndicator":

@@ -31,6 +31,7 @@ type LookupProviderMonitorSettingArgs struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
+// Concrete tracked resource types can be created by aliasing this type using a specific property type.
 type LookupProviderMonitorSettingResult struct {
 	// The Azure API version of the resource.
 	AzureApiVersion string `pulumi:"azureApiVersion"`
@@ -69,6 +70,7 @@ func (LookupProviderMonitorSettingOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupProviderMonitorSettingArgs)(nil)).Elem()
 }
 
+// Concrete tracked resource types can be created by aliasing this type using a specific property type.
 type LookupProviderMonitorSettingResultOutput struct{ *pulumi.OutputState }
 
 func (LookupProviderMonitorSettingResultOutput) ElementType() reflect.Type {

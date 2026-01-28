@@ -15,6 +15,8 @@ import (
 // Specifies Client Application - Product link assignment
 //
 // Uses Azure REST API version 2024-10-01-preview.
+//
+// Other available API versions: 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ClientApplicationProductLink struct {
 	pulumi.CustomResourceState
 
@@ -50,6 +52,9 @@ func NewClientApplicationProductLink(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20241001preview:ClientApplicationProductLink"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20250301preview:ClientApplicationProductLink"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -14,8 +14,6 @@ import (
 // Lists deployments for catalog.
 //
 // Uses Azure REST API version 2024-04-01.
-//
-// Other available API versions: 2022-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuresphere [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func ListCatalogDeployments(ctx *pulumi.Context, args *ListCatalogDeploymentsArgs, opts ...pulumi.InvokeOption) (*ListCatalogDeploymentsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListCatalogDeploymentsResult

@@ -27,11 +27,13 @@ type ManagementGroup struct {
 	Details ManagementGroupDetailsResponsePtrOutput `pulumi:"details"`
 	// The friendly name of the management group.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// The name of the management group. For example, 00000000-0000-0000-0000-000000000000
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The AAD Tenant ID associated with the management group. For example, 00000000-0000-0000-0000-000000000000
 	TenantId pulumi.StringPtrOutput `pulumi:"tenantId"`
-	// The type of the resource.  For example, Microsoft.Management/managementGroups
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -187,9 +189,14 @@ func (o ManagementGroupOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagementGroup) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// The name of the management group. For example, 00000000-0000-0000-0000-000000000000
+// The name of the resource
 func (o ManagementGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagementGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o ManagementGroupOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *ManagementGroup) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The AAD Tenant ID associated with the management group. For example, 00000000-0000-0000-0000-000000000000
@@ -197,7 +204,7 @@ func (o ManagementGroupOutput) TenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagementGroup) pulumi.StringPtrOutput { return v.TenantId }).(pulumi.StringPtrOutput)
 }
 
-// The type of the resource.  For example, Microsoft.Management/managementGroups
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o ManagementGroupOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagementGroup) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

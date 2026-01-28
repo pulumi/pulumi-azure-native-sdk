@@ -13,6 +13,146 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
+// SAP Business Warehouse Open Hub Destination Linked Service.
+type SapOpenHubLinkedServiceResponse struct {
+	// List of tags that can be used for describing the linked service.
+	Annotations []interface{} `pulumi:"annotations"`
+	// Client ID of the client on the BW system where the open hub destination is located. (Usually a three-digit decimal number represented as a string) Type: string (or Expression with resultType string).
+	ClientId interface{} `pulumi:"clientId"`
+	// The integration runtime reference.
+	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
+	// Linked service description.
+	Description *string `pulumi:"description"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// Language of the BW system where the open hub destination is located. The default value is EN. Type: string (or Expression with resultType string).
+	Language interface{} `pulumi:"language"`
+	// The Logon Group for the SAP System. Type: string (or Expression with resultType string).
+	LogonGroup interface{} `pulumi:"logonGroup"`
+	// The hostname of the SAP Message Server. Type: string (or Expression with resultType string).
+	MessageServer interface{} `pulumi:"messageServer"`
+	// The service name or port number of the Message Server. Type: string (or Expression with resultType string).
+	MessageServerService interface{} `pulumi:"messageServerService"`
+	// Parameters for linked service.
+	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
+	// Password to access the SAP BW server where the open hub destination is located.
+	Password interface{} `pulumi:"password"`
+	// Host name of the SAP BW instance where the open hub destination is located. Type: string (or Expression with resultType string).
+	Server interface{} `pulumi:"server"`
+	// SystemID of the SAP system where the table is located. Type: string (or Expression with resultType string).
+	SystemId interface{} `pulumi:"systemId"`
+	// System number of the BW system where the open hub destination is located. (Usually a two-digit decimal number represented as a string.) Type: string (or Expression with resultType string).
+	SystemNumber interface{} `pulumi:"systemNumber"`
+	// Type of linked service.
+	// Expected value is 'SapOpenHub'.
+	Type string `pulumi:"type"`
+	// Username to access the SAP BW server where the open hub destination is located. Type: string (or Expression with resultType string).
+	UserName interface{} `pulumi:"userName"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
+}
+
+// SAP Business Warehouse Open Hub Destination Linked Service.
+type SapOpenHubLinkedServiceResponseOutput struct{ *pulumi.OutputState }
+
+func (SapOpenHubLinkedServiceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapOpenHubLinkedServiceResponse)(nil)).Elem()
+}
+
+func (o SapOpenHubLinkedServiceResponseOutput) ToSapOpenHubLinkedServiceResponseOutput() SapOpenHubLinkedServiceResponseOutput {
+	return o
+}
+
+func (o SapOpenHubLinkedServiceResponseOutput) ToSapOpenHubLinkedServiceResponseOutputWithContext(ctx context.Context) SapOpenHubLinkedServiceResponseOutput {
+	return o
+}
+
+// List of tags that can be used for describing the linked service.
+func (o SapOpenHubLinkedServiceResponseOutput) Annotations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v SapOpenHubLinkedServiceResponse) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
+}
+
+// Client ID of the client on the BW system where the open hub destination is located. (Usually a three-digit decimal number represented as a string) Type: string (or Expression with resultType string).
+func (o SapOpenHubLinkedServiceResponseOutput) ClientId() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapOpenHubLinkedServiceResponse) interface{} { return v.ClientId }).(pulumi.AnyOutput)
+}
+
+// The integration runtime reference.
+func (o SapOpenHubLinkedServiceResponseOutput) ConnectVia() IntegrationRuntimeReferenceResponsePtrOutput {
+	return o.ApplyT(func(v SapOpenHubLinkedServiceResponse) *IntegrationRuntimeReferenceResponse { return v.ConnectVia }).(IntegrationRuntimeReferenceResponsePtrOutput)
+}
+
+// Linked service description.
+func (o SapOpenHubLinkedServiceResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapOpenHubLinkedServiceResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+func (o SapOpenHubLinkedServiceResponseOutput) EncryptedCredential() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapOpenHubLinkedServiceResponse) *string { return v.EncryptedCredential }).(pulumi.StringPtrOutput)
+}
+
+// Language of the BW system where the open hub destination is located. The default value is EN. Type: string (or Expression with resultType string).
+func (o SapOpenHubLinkedServiceResponseOutput) Language() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapOpenHubLinkedServiceResponse) interface{} { return v.Language }).(pulumi.AnyOutput)
+}
+
+// The Logon Group for the SAP System. Type: string (or Expression with resultType string).
+func (o SapOpenHubLinkedServiceResponseOutput) LogonGroup() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapOpenHubLinkedServiceResponse) interface{} { return v.LogonGroup }).(pulumi.AnyOutput)
+}
+
+// The hostname of the SAP Message Server. Type: string (or Expression with resultType string).
+func (o SapOpenHubLinkedServiceResponseOutput) MessageServer() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapOpenHubLinkedServiceResponse) interface{} { return v.MessageServer }).(pulumi.AnyOutput)
+}
+
+// The service name or port number of the Message Server. Type: string (or Expression with resultType string).
+func (o SapOpenHubLinkedServiceResponseOutput) MessageServerService() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapOpenHubLinkedServiceResponse) interface{} { return v.MessageServerService }).(pulumi.AnyOutput)
+}
+
+// Parameters for linked service.
+func (o SapOpenHubLinkedServiceResponseOutput) Parameters() ParameterSpecificationResponseMapOutput {
+	return o.ApplyT(func(v SapOpenHubLinkedServiceResponse) map[string]ParameterSpecificationResponse { return v.Parameters }).(ParameterSpecificationResponseMapOutput)
+}
+
+// Password to access the SAP BW server where the open hub destination is located.
+func (o SapOpenHubLinkedServiceResponseOutput) Password() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapOpenHubLinkedServiceResponse) interface{} { return v.Password }).(pulumi.AnyOutput)
+}
+
+// Host name of the SAP BW instance where the open hub destination is located. Type: string (or Expression with resultType string).
+func (o SapOpenHubLinkedServiceResponseOutput) Server() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapOpenHubLinkedServiceResponse) interface{} { return v.Server }).(pulumi.AnyOutput)
+}
+
+// SystemID of the SAP system where the table is located. Type: string (or Expression with resultType string).
+func (o SapOpenHubLinkedServiceResponseOutput) SystemId() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapOpenHubLinkedServiceResponse) interface{} { return v.SystemId }).(pulumi.AnyOutput)
+}
+
+// System number of the BW system where the open hub destination is located. (Usually a two-digit decimal number represented as a string.) Type: string (or Expression with resultType string).
+func (o SapOpenHubLinkedServiceResponseOutput) SystemNumber() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapOpenHubLinkedServiceResponse) interface{} { return v.SystemNumber }).(pulumi.AnyOutput)
+}
+
+// Type of linked service.
+// Expected value is 'SapOpenHub'.
+func (o SapOpenHubLinkedServiceResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SapOpenHubLinkedServiceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Username to access the SAP BW server where the open hub destination is located. Type: string (or Expression with resultType string).
+func (o SapOpenHubLinkedServiceResponseOutput) UserName() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapOpenHubLinkedServiceResponse) interface{} { return v.UserName }).(pulumi.AnyOutput)
+}
+
+// Version of the linked service.
+func (o SapOpenHubLinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapOpenHubLinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 // A copy activity source for SAP Business Warehouse Open Hub Destination source.
 type SapOpenHubSource struct {
 	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
@@ -33376,6 +33516,7 @@ func (o ZohoSourceResponseOutput) Type() pulumi.StringOutput {
 }
 
 func init() {
+	pulumi.RegisterOutputType(SapOpenHubLinkedServiceResponseOutput{})
 	pulumi.RegisterOutputType(SapOpenHubSourceOutput{})
 	pulumi.RegisterOutputType(SapOpenHubSourceResponseOutput{})
 	pulumi.RegisterOutputType(SapOpenHubTableDatasetOutput{})

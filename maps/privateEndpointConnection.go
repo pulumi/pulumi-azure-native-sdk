@@ -16,7 +16,7 @@ import (
 //
 // Uses Azure REST API version 2024-01-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-12-01-preview.
 //
-// Other available API versions: 2023-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native maps [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-12-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native maps [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type PrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
@@ -60,6 +60,9 @@ func NewPrivateEndpointConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:maps/v20240101preview:PrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:maps/v20251001preview:PrivateEndpointConnection"),
 		},
 	})
 	opts = append(opts, aliases)

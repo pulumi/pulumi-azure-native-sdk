@@ -45,12 +45,8 @@ type LookupDiscoverySourceResult struct {
 	Location string `pulumi:"location"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// Provisioning state of Discovery Source resource.
-	ProvisioningState string `pulumi:"provisioningState"`
-	// Source ArmId of Discovery Source resource
-	SourceId string `pulumi:"sourceId"`
-	// Source type of Discovery Source resource.
-	SourceType string `pulumi:"sourceType"`
+	// The resource-specific properties for this resource.
+	Properties OffAzureDiscoverySourceResourcePropertiesResponse `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
@@ -116,19 +112,11 @@ func (o LookupDiscoverySourceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiscoverySourceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Provisioning state of Discovery Source resource.
-func (o LookupDiscoverySourceResultOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDiscoverySourceResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// Source ArmId of Discovery Source resource
-func (o LookupDiscoverySourceResultOutput) SourceId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDiscoverySourceResult) string { return v.SourceId }).(pulumi.StringOutput)
-}
-
-// Source type of Discovery Source resource.
-func (o LookupDiscoverySourceResultOutput) SourceType() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDiscoverySourceResult) string { return v.SourceType }).(pulumi.StringOutput)
+// The resource-specific properties for this resource.
+func (o LookupDiscoverySourceResultOutput) Properties() OffAzureDiscoverySourceResourcePropertiesResponseOutput {
+	return o.ApplyT(func(v LookupDiscoverySourceResult) OffAzureDiscoverySourceResourcePropertiesResponse {
+		return v.Properties
+	}).(OffAzureDiscoverySourceResourcePropertiesResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

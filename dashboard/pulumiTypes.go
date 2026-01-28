@@ -159,6 +159,179 @@ func (o AzureMonitorWorkspaceIntegrationResponseArrayOutput) Index(i pulumi.IntI
 	}).(AzureMonitorWorkspaceIntegrationResponseOutput)
 }
 
+// Properties specific to the dashboard definition.
+type DashboardDefinitionProperties struct {
+	// The dashboard definition data in JSON format.
+	SerializedData *string `pulumi:"serializedData"`
+}
+
+// DashboardDefinitionPropertiesInput is an input type that accepts DashboardDefinitionPropertiesArgs and DashboardDefinitionPropertiesOutput values.
+// You can construct a concrete instance of `DashboardDefinitionPropertiesInput` via:
+//
+//	DashboardDefinitionPropertiesArgs{...}
+type DashboardDefinitionPropertiesInput interface {
+	pulumi.Input
+
+	ToDashboardDefinitionPropertiesOutput() DashboardDefinitionPropertiesOutput
+	ToDashboardDefinitionPropertiesOutputWithContext(context.Context) DashboardDefinitionPropertiesOutput
+}
+
+// Properties specific to the dashboard definition.
+type DashboardDefinitionPropertiesArgs struct {
+	// The dashboard definition data in JSON format.
+	SerializedData pulumi.StringPtrInput `pulumi:"serializedData"`
+}
+
+func (DashboardDefinitionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardDefinitionProperties)(nil)).Elem()
+}
+
+func (i DashboardDefinitionPropertiesArgs) ToDashboardDefinitionPropertiesOutput() DashboardDefinitionPropertiesOutput {
+	return i.ToDashboardDefinitionPropertiesOutputWithContext(context.Background())
+}
+
+func (i DashboardDefinitionPropertiesArgs) ToDashboardDefinitionPropertiesOutputWithContext(ctx context.Context) DashboardDefinitionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardDefinitionPropertiesOutput)
+}
+
+func (i DashboardDefinitionPropertiesArgs) ToDashboardDefinitionPropertiesPtrOutput() DashboardDefinitionPropertiesPtrOutput {
+	return i.ToDashboardDefinitionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i DashboardDefinitionPropertiesArgs) ToDashboardDefinitionPropertiesPtrOutputWithContext(ctx context.Context) DashboardDefinitionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardDefinitionPropertiesOutput).ToDashboardDefinitionPropertiesPtrOutputWithContext(ctx)
+}
+
+// DashboardDefinitionPropertiesPtrInput is an input type that accepts DashboardDefinitionPropertiesArgs, DashboardDefinitionPropertiesPtr and DashboardDefinitionPropertiesPtrOutput values.
+// You can construct a concrete instance of `DashboardDefinitionPropertiesPtrInput` via:
+//
+//	        DashboardDefinitionPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type DashboardDefinitionPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToDashboardDefinitionPropertiesPtrOutput() DashboardDefinitionPropertiesPtrOutput
+	ToDashboardDefinitionPropertiesPtrOutputWithContext(context.Context) DashboardDefinitionPropertiesPtrOutput
+}
+
+type dashboardDefinitionPropertiesPtrType DashboardDefinitionPropertiesArgs
+
+func DashboardDefinitionPropertiesPtr(v *DashboardDefinitionPropertiesArgs) DashboardDefinitionPropertiesPtrInput {
+	return (*dashboardDefinitionPropertiesPtrType)(v)
+}
+
+func (*dashboardDefinitionPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DashboardDefinitionProperties)(nil)).Elem()
+}
+
+func (i *dashboardDefinitionPropertiesPtrType) ToDashboardDefinitionPropertiesPtrOutput() DashboardDefinitionPropertiesPtrOutput {
+	return i.ToDashboardDefinitionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *dashboardDefinitionPropertiesPtrType) ToDashboardDefinitionPropertiesPtrOutputWithContext(ctx context.Context) DashboardDefinitionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardDefinitionPropertiesPtrOutput)
+}
+
+// Properties specific to the dashboard definition.
+type DashboardDefinitionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (DashboardDefinitionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardDefinitionProperties)(nil)).Elem()
+}
+
+func (o DashboardDefinitionPropertiesOutput) ToDashboardDefinitionPropertiesOutput() DashboardDefinitionPropertiesOutput {
+	return o
+}
+
+func (o DashboardDefinitionPropertiesOutput) ToDashboardDefinitionPropertiesOutputWithContext(ctx context.Context) DashboardDefinitionPropertiesOutput {
+	return o
+}
+
+func (o DashboardDefinitionPropertiesOutput) ToDashboardDefinitionPropertiesPtrOutput() DashboardDefinitionPropertiesPtrOutput {
+	return o.ToDashboardDefinitionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o DashboardDefinitionPropertiesOutput) ToDashboardDefinitionPropertiesPtrOutputWithContext(ctx context.Context) DashboardDefinitionPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DashboardDefinitionProperties) *DashboardDefinitionProperties {
+		return &v
+	}).(DashboardDefinitionPropertiesPtrOutput)
+}
+
+// The dashboard definition data in JSON format.
+func (o DashboardDefinitionPropertiesOutput) SerializedData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardDefinitionProperties) *string { return v.SerializedData }).(pulumi.StringPtrOutput)
+}
+
+type DashboardDefinitionPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (DashboardDefinitionPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DashboardDefinitionProperties)(nil)).Elem()
+}
+
+func (o DashboardDefinitionPropertiesPtrOutput) ToDashboardDefinitionPropertiesPtrOutput() DashboardDefinitionPropertiesPtrOutput {
+	return o
+}
+
+func (o DashboardDefinitionPropertiesPtrOutput) ToDashboardDefinitionPropertiesPtrOutputWithContext(ctx context.Context) DashboardDefinitionPropertiesPtrOutput {
+	return o
+}
+
+func (o DashboardDefinitionPropertiesPtrOutput) Elem() DashboardDefinitionPropertiesOutput {
+	return o.ApplyT(func(v *DashboardDefinitionProperties) DashboardDefinitionProperties {
+		if v != nil {
+			return *v
+		}
+		var ret DashboardDefinitionProperties
+		return ret
+	}).(DashboardDefinitionPropertiesOutput)
+}
+
+// The dashboard definition data in JSON format.
+func (o DashboardDefinitionPropertiesPtrOutput) SerializedData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DashboardDefinitionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SerializedData
+	}).(pulumi.StringPtrOutput)
+}
+
+// Properties specific to the dashboard definition.
+type DashboardDefinitionPropertiesResponse struct {
+	// The provisioning state of the dashboard definition resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The dashboard definition data in JSON format.
+	SerializedData *string `pulumi:"serializedData"`
+}
+
+// Properties specific to the dashboard definition.
+type DashboardDefinitionPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (DashboardDefinitionPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardDefinitionPropertiesResponse)(nil)).Elem()
+}
+
+func (o DashboardDefinitionPropertiesResponseOutput) ToDashboardDefinitionPropertiesResponseOutput() DashboardDefinitionPropertiesResponseOutput {
+	return o
+}
+
+func (o DashboardDefinitionPropertiesResponseOutput) ToDashboardDefinitionPropertiesResponseOutputWithContext(ctx context.Context) DashboardDefinitionPropertiesResponseOutput {
+	return o
+}
+
+// The provisioning state of the dashboard definition resource.
+func (o DashboardDefinitionPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardDefinitionPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The dashboard definition data in JSON format.
+func (o DashboardDefinitionPropertiesResponseOutput) SerializedData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardDefinitionPropertiesResponse) *string { return v.SerializedData }).(pulumi.StringPtrOutput)
+}
+
 // Enterprise settings of a Grafana instance
 type EnterpriseConfigurations struct {
 	// The AutoRenew setting of the Enterprise subscription
@@ -3680,6 +3853,9 @@ func init() {
 	pulumi.RegisterOutputType(AzureMonitorWorkspaceIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(AzureMonitorWorkspaceIntegrationResponseOutput{})
 	pulumi.RegisterOutputType(AzureMonitorWorkspaceIntegrationResponseArrayOutput{})
+	pulumi.RegisterOutputType(DashboardDefinitionPropertiesOutput{})
+	pulumi.RegisterOutputType(DashboardDefinitionPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(DashboardDefinitionPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(EnterpriseConfigurationsOutput{})
 	pulumi.RegisterOutputType(EnterpriseConfigurationsPtrOutput{})
 	pulumi.RegisterOutputType(EnterpriseConfigurationsResponseOutput{})
