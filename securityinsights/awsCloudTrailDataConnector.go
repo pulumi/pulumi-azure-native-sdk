@@ -23,7 +23,7 @@ type AwsCloudTrailDataConnector struct {
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The available data types for the connector.
-	DataTypes AwsCloudTrailDataConnectorDataTypesResponsePtrOutput `pulumi:"dataTypes"`
+	DataTypes AwsCloudTrailDataConnectorDataTypesResponseOutput `pulumi:"dataTypes"`
 	// Etag of the azure resource
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// The kind of the data connector
@@ -44,6 +44,9 @@ func NewAwsCloudTrailDataConnector(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.DataTypes == nil {
+		return nil, errors.New("invalid value for required argument 'DataTypes'")
+	}
 	if args.Kind == nil {
 		return nil, errors.New("invalid value for required argument 'Kind'")
 	}
@@ -947,7 +950,7 @@ type awsCloudTrailDataConnectorArgs struct {
 	// Connector ID
 	DataConnectorId *string `pulumi:"dataConnectorId"`
 	// The available data types for the connector.
-	DataTypes *AwsCloudTrailDataConnectorDataTypes `pulumi:"dataTypes"`
+	DataTypes AwsCloudTrailDataConnectorDataTypes `pulumi:"dataTypes"`
 	// The kind of the data connector
 	// Expected value is 'AmazonWebServicesCloudTrail'.
 	Kind string `pulumi:"kind"`
@@ -964,7 +967,7 @@ type AwsCloudTrailDataConnectorArgs struct {
 	// Connector ID
 	DataConnectorId pulumi.StringPtrInput
 	// The available data types for the connector.
-	DataTypes AwsCloudTrailDataConnectorDataTypesPtrInput
+	DataTypes AwsCloudTrailDataConnectorDataTypesInput
 	// The kind of the data connector
 	// Expected value is 'AmazonWebServicesCloudTrail'.
 	Kind pulumi.StringInput
@@ -1022,10 +1025,10 @@ func (o AwsCloudTrailDataConnectorOutput) AzureApiVersion() pulumi.StringOutput 
 }
 
 // The available data types for the connector.
-func (o AwsCloudTrailDataConnectorOutput) DataTypes() AwsCloudTrailDataConnectorDataTypesResponsePtrOutput {
-	return o.ApplyT(func(v *AwsCloudTrailDataConnector) AwsCloudTrailDataConnectorDataTypesResponsePtrOutput {
+func (o AwsCloudTrailDataConnectorOutput) DataTypes() AwsCloudTrailDataConnectorDataTypesResponseOutput {
+	return o.ApplyT(func(v *AwsCloudTrailDataConnector) AwsCloudTrailDataConnectorDataTypesResponseOutput {
 		return v.DataTypes
-	}).(AwsCloudTrailDataConnectorDataTypesResponsePtrOutput)
+	}).(AwsCloudTrailDataConnectorDataTypesResponseOutput)
 }
 
 // Etag of the azure resource

@@ -16,20 +16,16 @@ import (
 //
 // Uses Azure REST API version 2023-09-01. In version 2.x of the Azure Native provider, it used API version 2022-05-01.
 //
-// Other available API versions: 2022-05-01, 2023-03-01, 2024-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native avs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-05-01, 2023-03-01, 2024-09-01, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native avs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type PlacementPolicy struct {
 	pulumi.CustomResourceState
 
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
-	// Display name of the placement policy
-	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The provisioning state
-	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// Whether the placement policy is enabled or disabled
-	State pulumi.StringPtrOutput `pulumi:"state"`
+	// The resource-specific properties for this resource.
+	Properties pulumi.AnyOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -52,9 +48,6 @@ func NewPlacementPolicy(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if args.Type == nil {
-		return nil, errors.New("invalid value for required argument 'Type'")
-	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:avs/v20211201:PlacementPolicy"),
@@ -70,6 +63,9 @@ func NewPlacementPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:avs/v20240901:PlacementPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:avs/v20250901:PlacementPolicy"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -108,36 +104,28 @@ func (PlacementPolicyState) ElementType() reflect.Type {
 type placementPolicyArgs struct {
 	// Name of the cluster
 	ClusterName string `pulumi:"clusterName"`
-	// Display name of the placement policy
-	DisplayName *string `pulumi:"displayName"`
 	// Name of the placement policy.
 	PlacementPolicyName *string `pulumi:"placementPolicyName"`
 	// Name of the private cloud
 	PrivateCloudName string `pulumi:"privateCloudName"`
+	// The resource-specific properties for this resource.
+	Properties interface{} `pulumi:"properties"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Whether the placement policy is enabled or disabled
-	State *string `pulumi:"state"`
-	// Placement Policy type
-	Type string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a PlacementPolicy resource.
 type PlacementPolicyArgs struct {
 	// Name of the cluster
 	ClusterName pulumi.StringInput
-	// Display name of the placement policy
-	DisplayName pulumi.StringPtrInput
 	// Name of the placement policy.
 	PlacementPolicyName pulumi.StringPtrInput
 	// Name of the private cloud
 	PrivateCloudName pulumi.StringInput
+	// The resource-specific properties for this resource.
+	Properties pulumi.Input
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// Whether the placement policy is enabled or disabled
-	State pulumi.StringPtrInput
-	// Placement Policy type
-	Type pulumi.StringInput
 }
 
 func (PlacementPolicyArgs) ElementType() reflect.Type {
@@ -182,24 +170,14 @@ func (o PlacementPolicyOutput) AzureApiVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *PlacementPolicy) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
-// Display name of the placement policy
-func (o PlacementPolicyOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PlacementPolicy) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
-}
-
 // The name of the resource
 func (o PlacementPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PlacementPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The provisioning state
-func (o PlacementPolicyOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v *PlacementPolicy) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// Whether the placement policy is enabled or disabled
-func (o PlacementPolicyOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PlacementPolicy) pulumi.StringPtrOutput { return v.State }).(pulumi.StringPtrOutput)
+// The resource-specific properties for this resource.
+func (o PlacementPolicyOutput) Properties() pulumi.AnyOutput {
+	return o.ApplyT(func(v *PlacementPolicy) pulumi.AnyOutput { return v.Properties }).(pulumi.AnyOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Concrete tracked resource types can be created by aliasing this type using a specific property type.
+//
 // Uses Azure REST API version 2024-09-01.
 type ProviderMonitorSetting struct {
 	pulumi.CustomResourceState

@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2023-08-01.
 //
-// Other available API versions: 2023-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edgemarketplace [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-08-01-preview, 2024-10-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edgemarketplace [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func GetOfferAccessToken(ctx *pulumi.Context, args *GetOfferAccessTokenArgs, opts ...pulumi.InvokeOption) (*GetOfferAccessTokenResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetOfferAccessTokenResult

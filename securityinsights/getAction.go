@@ -41,7 +41,7 @@ type LookupActionArgs struct {
 type LookupActionResult struct {
 	// The Azure API version of the resource.
 	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// Etag of the action.
+	// ETag of the action.
 	Etag *string `pulumi:"etag"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
@@ -101,7 +101,7 @@ func (o LookupActionResultOutput) AzureApiVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupActionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
-// Etag of the action.
+// ETag of the action.
 func (o LookupActionResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupActionResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }

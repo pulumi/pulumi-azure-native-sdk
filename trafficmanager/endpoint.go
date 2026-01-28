@@ -25,7 +25,7 @@ type Endpoint struct {
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// List of custom headers.
-	CustomHeaders EndpointPropertiesResponseCustomHeadersArrayOutput `pulumi:"customHeaders"`
+	CustomHeaders EndpointPropertiesCustomHeadersItemResponseArrayOutput `pulumi:"customHeaders"`
 	// Specifies the location of the external or nested endpoints when using the 'Performance' traffic routing method.
 	EndpointLocation pulumi.StringPtrOutput `pulumi:"endpointLocation"`
 	// The monitoring status of the endpoint.
@@ -45,7 +45,7 @@ type Endpoint struct {
 	// The priority of this endpoint when using the 'Priority' traffic routing method. Possible values are from 1 to 1000, lower values represent higher priority. This is an optional parameter.  If specified, it must be specified on all endpoints, and no two endpoints can share the same priority value.
 	Priority pulumi.Float64PtrOutput `pulumi:"priority"`
 	// The list of subnets, IP addresses, and/or address ranges mapped to this endpoint when using the 'Subnet' traffic routing method. An empty list will match all ranges not covered by other endpoints.
-	Subnets EndpointPropertiesResponseSubnetsArrayOutput `pulumi:"subnets"`
+	Subnets EndpointPropertiesSubnetsItemResponseArrayOutput `pulumi:"subnets"`
 	// The fully-qualified DNS name or IP address of the endpoint. Traffic Manager returns this value in DNS responses to direct traffic to this endpoint.
 	Target pulumi.StringPtrOutput `pulumi:"target"`
 	// The Azure Resource URI of the of the endpoint. Not applicable to endpoints of type 'ExternalEndpoints'.
@@ -150,16 +150,16 @@ type endpointArgs struct {
 	// If Always Serve is enabled, probing for endpoint health will be disabled and endpoints will be included in the traffic routing method.
 	AlwaysServe *string `pulumi:"alwaysServe"`
 	// List of custom headers.
-	CustomHeaders []EndpointPropertiesCustomHeaders `pulumi:"customHeaders"`
+	CustomHeaders []EndpointPropertiesCustomHeadersItem `pulumi:"customHeaders"`
 	// Specifies the location of the external or nested endpoints when using the 'Performance' traffic routing method.
 	EndpointLocation *string `pulumi:"endpointLocation"`
 	// The monitoring status of the endpoint.
 	EndpointMonitorStatus *string `pulumi:"endpointMonitorStatus"`
-	// The name of the Traffic Manager endpoint to be created or updated.
+	// The name of the Traffic Manager endpoint.
 	EndpointName *string `pulumi:"endpointName"`
 	// The status of the endpoint. If the endpoint is Enabled, it is probed for endpoint health and is included in the traffic routing method.
 	EndpointStatus *string `pulumi:"endpointStatus"`
-	// The type of the Traffic Manager endpoint to be created or updated.
+	// The type of the Traffic Manager endpoint.
 	EndpointType string `pulumi:"endpointType"`
 	// The list of countries/regions mapped to this endpoint when using the 'Geographic' traffic routing method. Please consult Traffic Manager Geographic documentation for a full list of accepted values.
 	GeoMapping []string `pulumi:"geoMapping"`
@@ -180,7 +180,7 @@ type endpointArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The list of subnets, IP addresses, and/or address ranges mapped to this endpoint when using the 'Subnet' traffic routing method. An empty list will match all ranges not covered by other endpoints.
-	Subnets []EndpointPropertiesSubnets `pulumi:"subnets"`
+	Subnets []EndpointPropertiesSubnetsItem `pulumi:"subnets"`
 	// The fully-qualified DNS name or IP address of the endpoint. Traffic Manager returns this value in DNS responses to direct traffic to this endpoint.
 	Target *string `pulumi:"target"`
 	// The Azure Resource URI of the of the endpoint. Not applicable to endpoints of type 'ExternalEndpoints'.
@@ -196,16 +196,16 @@ type EndpointArgs struct {
 	// If Always Serve is enabled, probing for endpoint health will be disabled and endpoints will be included in the traffic routing method.
 	AlwaysServe pulumi.StringPtrInput
 	// List of custom headers.
-	CustomHeaders EndpointPropertiesCustomHeadersArrayInput
+	CustomHeaders EndpointPropertiesCustomHeadersItemArrayInput
 	// Specifies the location of the external or nested endpoints when using the 'Performance' traffic routing method.
 	EndpointLocation pulumi.StringPtrInput
 	// The monitoring status of the endpoint.
 	EndpointMonitorStatus pulumi.StringPtrInput
-	// The name of the Traffic Manager endpoint to be created or updated.
+	// The name of the Traffic Manager endpoint.
 	EndpointName pulumi.StringPtrInput
 	// The status of the endpoint. If the endpoint is Enabled, it is probed for endpoint health and is included in the traffic routing method.
 	EndpointStatus pulumi.StringPtrInput
-	// The type of the Traffic Manager endpoint to be created or updated.
+	// The type of the Traffic Manager endpoint.
 	EndpointType pulumi.StringInput
 	// The list of countries/regions mapped to this endpoint when using the 'Geographic' traffic routing method. Please consult Traffic Manager Geographic documentation for a full list of accepted values.
 	GeoMapping pulumi.StringArrayInput
@@ -226,7 +226,7 @@ type EndpointArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The list of subnets, IP addresses, and/or address ranges mapped to this endpoint when using the 'Subnet' traffic routing method. An empty list will match all ranges not covered by other endpoints.
-	Subnets EndpointPropertiesSubnetsArrayInput
+	Subnets EndpointPropertiesSubnetsItemArrayInput
 	// The fully-qualified DNS name or IP address of the endpoint. Traffic Manager returns this value in DNS responses to direct traffic to this endpoint.
 	Target pulumi.StringPtrInput
 	// The Azure Resource URI of the of the endpoint. Not applicable to endpoints of type 'ExternalEndpoints'.
@@ -285,8 +285,8 @@ func (o EndpointOutput) AzureApiVersion() pulumi.StringOutput {
 }
 
 // List of custom headers.
-func (o EndpointOutput) CustomHeaders() EndpointPropertiesResponseCustomHeadersArrayOutput {
-	return o.ApplyT(func(v *Endpoint) EndpointPropertiesResponseCustomHeadersArrayOutput { return v.CustomHeaders }).(EndpointPropertiesResponseCustomHeadersArrayOutput)
+func (o EndpointOutput) CustomHeaders() EndpointPropertiesCustomHeadersItemResponseArrayOutput {
+	return o.ApplyT(func(v *Endpoint) EndpointPropertiesCustomHeadersItemResponseArrayOutput { return v.CustomHeaders }).(EndpointPropertiesCustomHeadersItemResponseArrayOutput)
 }
 
 // Specifies the location of the external or nested endpoints when using the 'Performance' traffic routing method.
@@ -335,8 +335,8 @@ func (o EndpointOutput) Priority() pulumi.Float64PtrOutput {
 }
 
 // The list of subnets, IP addresses, and/or address ranges mapped to this endpoint when using the 'Subnet' traffic routing method. An empty list will match all ranges not covered by other endpoints.
-func (o EndpointOutput) Subnets() EndpointPropertiesResponseSubnetsArrayOutput {
-	return o.ApplyT(func(v *Endpoint) EndpointPropertiesResponseSubnetsArrayOutput { return v.Subnets }).(EndpointPropertiesResponseSubnetsArrayOutput)
+func (o EndpointOutput) Subnets() EndpointPropertiesSubnetsItemResponseArrayOutput {
+	return o.ApplyT(func(v *Endpoint) EndpointPropertiesSubnetsItemResponseArrayOutput { return v.Subnets }).(EndpointPropertiesSubnetsItemResponseArrayOutput)
 }
 
 // The fully-qualified DNS name or IP address of the endpoint. Traffic Manager returns this value in DNS responses to direct traffic to this endpoint.

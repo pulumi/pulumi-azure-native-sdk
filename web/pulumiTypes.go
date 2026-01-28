@@ -29840,6 +29840,66 @@ func (o ResponseMessageEnvelopeRemotePrivateEndpointConnectionResponseArrayOutpu
 	}).(ResponseMessageEnvelopeRemotePrivateEndpointConnectionResponseOutput)
 }
 
+// Represents details of a single instance in a server farm.
+type ServerFarmInstanceResponse struct {
+	// The instance name.
+	InstanceName *string `pulumi:"instanceName"`
+	// The instance IP address.
+	IpAddress *string `pulumi:"ipAddress"`
+	// The instance status.
+	Status *string `pulumi:"status"`
+}
+
+// Represents details of a single instance in a server farm.
+type ServerFarmInstanceResponseOutput struct{ *pulumi.OutputState }
+
+func (ServerFarmInstanceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerFarmInstanceResponse)(nil)).Elem()
+}
+
+func (o ServerFarmInstanceResponseOutput) ToServerFarmInstanceResponseOutput() ServerFarmInstanceResponseOutput {
+	return o
+}
+
+func (o ServerFarmInstanceResponseOutput) ToServerFarmInstanceResponseOutputWithContext(ctx context.Context) ServerFarmInstanceResponseOutput {
+	return o
+}
+
+// The instance name.
+func (o ServerFarmInstanceResponseOutput) InstanceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerFarmInstanceResponse) *string { return v.InstanceName }).(pulumi.StringPtrOutput)
+}
+
+// The instance IP address.
+func (o ServerFarmInstanceResponseOutput) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerFarmInstanceResponse) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
+}
+
+// The instance status.
+func (o ServerFarmInstanceResponseOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerFarmInstanceResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type ServerFarmInstanceResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ServerFarmInstanceResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerFarmInstanceResponse)(nil)).Elem()
+}
+
+func (o ServerFarmInstanceResponseArrayOutput) ToServerFarmInstanceResponseArrayOutput() ServerFarmInstanceResponseArrayOutput {
+	return o
+}
+
+func (o ServerFarmInstanceResponseArrayOutput) ToServerFarmInstanceResponseArrayOutputWithContext(ctx context.Context) ServerFarmInstanceResponseArrayOutput {
+	return o
+}
+
+func (o ServerFarmInstanceResponseArrayOutput) Index(i pulumi.IntInput) ServerFarmInstanceResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServerFarmInstanceResponse {
+		return vs[0].([]ServerFarmInstanceResponse)[vs[1].(int)]
+	}).(ServerFarmInstanceResponseOutput)
+}
+
 // Configuration of an App Service app.
 type SiteConfig struct {
 	// Flag to use Managed Identity Creds for ACR pull
@@ -39013,6 +39073,8 @@ func init() {
 	pulumi.RegisterOutputType(ResourceConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(ResponseMessageEnvelopeRemotePrivateEndpointConnectionResponseOutput{})
 	pulumi.RegisterOutputType(ResponseMessageEnvelopeRemotePrivateEndpointConnectionResponseArrayOutput{})
+	pulumi.RegisterOutputType(ServerFarmInstanceResponseOutput{})
+	pulumi.RegisterOutputType(ServerFarmInstanceResponseArrayOutput{})
 	pulumi.RegisterOutputType(SiteConfigOutput{})
 	pulumi.RegisterOutputType(SiteConfigPtrOutput{})
 	pulumi.RegisterOutputType(SiteConfigResponseOutput{})

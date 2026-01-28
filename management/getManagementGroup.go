@@ -47,13 +47,15 @@ type LookupManagementGroupResult struct {
 	Details *ManagementGroupDetailsResponse `pulumi:"details"`
 	// The friendly name of the management group.
 	DisplayName *string `pulumi:"displayName"`
-	// The fully qualified ID for the management group.  For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// The name of the management group. For example, 00000000-0000-0000-0000-000000000000
+	// The name of the resource
 	Name string `pulumi:"name"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The AAD Tenant ID associated with the management group. For example, 00000000-0000-0000-0000-000000000000
 	TenantId *string `pulumi:"tenantId"`
-	// The type of the resource.  For example, Microsoft.Management/managementGroups
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -116,14 +118,19 @@ func (o LookupManagementGroupResultOutput) DisplayName() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v LookupManagementGroupResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// The fully qualified ID for the management group.  For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupManagementGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagementGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The name of the management group. For example, 00000000-0000-0000-0000-000000000000
+// The name of the resource
 func (o LookupManagementGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagementGroupResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupManagementGroupResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupManagementGroupResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The AAD Tenant ID associated with the management group. For example, 00000000-0000-0000-0000-000000000000
@@ -131,7 +138,7 @@ func (o LookupManagementGroupResultOutput) TenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupManagementGroupResult) *string { return v.TenantId }).(pulumi.StringPtrOutput)
 }
 
-// The type of the resource.  For example, Microsoft.Management/managementGroups
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupManagementGroupResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagementGroupResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -28,7 +28,7 @@ type ApplicationPackage struct {
 	Format pulumi.StringOutput `pulumi:"format"`
 	// The time at which the package was last activated, if the package is active.
 	LastActivationTime pulumi.StringOutput `pulumi:"lastActivationTime"`
-	// The name of the resource.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The current state of the application package.
 	State pulumi.StringOutput `pulumi:"state"`
@@ -36,9 +36,11 @@ type ApplicationPackage struct {
 	StorageUrl pulumi.StringOutput `pulumi:"storageUrl"`
 	// The UTC time at which the Azure Storage URL will expire.
 	StorageUrlExpiry pulumi.StringOutput `pulumi:"storageUrlExpiry"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The tags of the resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The type of the resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -151,11 +153,11 @@ func (ApplicationPackageState) ElementType() reflect.Type {
 }
 
 type applicationPackageArgs struct {
-	// The name of the Batch account.
+	// A name for the Batch account which must be unique within the region. Batch account names must be between 3 and 24 characters in length and must use only numbers and lowercase letters. This name is used as part of the DNS name that is used to access the Batch service in the region in which the account is created. For example: http://accountname.region.batch.azure.com/.
 	AccountName string `pulumi:"accountName"`
 	// The name of the application. This must be unique within the account.
 	ApplicationName string `pulumi:"applicationName"`
-	// The name of the resource group that contains the Batch account.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The tags of the resource.
 	Tags map[string]string `pulumi:"tags"`
@@ -165,11 +167,11 @@ type applicationPackageArgs struct {
 
 // The set of arguments for constructing a ApplicationPackage resource.
 type ApplicationPackageArgs struct {
-	// The name of the Batch account.
+	// A name for the Batch account which must be unique within the region. Batch account names must be between 3 and 24 characters in length and must use only numbers and lowercase letters. This name is used as part of the DNS name that is used to access the Batch service in the region in which the account is created. For example: http://accountname.region.batch.azure.com/.
 	AccountName pulumi.StringInput
 	// The name of the application. This must be unique within the account.
 	ApplicationName pulumi.StringInput
-	// The name of the resource group that contains the Batch account.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The tags of the resource.
 	Tags pulumi.StringMapInput
@@ -234,7 +236,7 @@ func (o ApplicationPackageOutput) LastActivationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationPackage) pulumi.StringOutput { return v.LastActivationTime }).(pulumi.StringOutput)
 }
 
-// The name of the resource.
+// The name of the resource
 func (o ApplicationPackageOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationPackage) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -254,12 +256,17 @@ func (o ApplicationPackageOutput) StorageUrlExpiry() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationPackage) pulumi.StringOutput { return v.StorageUrlExpiry }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o ApplicationPackageOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *ApplicationPackage) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
 // The tags of the resource.
 func (o ApplicationPackageOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ApplicationPackage) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o ApplicationPackageOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationPackage) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

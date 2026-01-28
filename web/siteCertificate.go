@@ -15,6 +15,8 @@ import (
 // SSL certificate for an app.
 //
 // Uses Azure REST API version 2024-11-01.
+//
+// Other available API versions: 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type SiteCertificate struct {
 	pulumi.CustomResourceState
 
@@ -90,6 +92,12 @@ func NewSiteCertificate(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:web/v20241101:SiteCertificate"),
+		},
+		{
+			Type: pulumi.String("azure-native:web/v20250301:SiteCertificate"),
+		},
+		{
+			Type: pulumi.String("azure-native:web/v20250501:SiteCertificate"),
 		},
 	})
 	opts = append(opts, aliases)

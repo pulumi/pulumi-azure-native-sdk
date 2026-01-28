@@ -32,7 +32,7 @@ type MSTIDataConnector struct {
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The tenant id to connect to, and get the data from.
-	TenantId pulumi.StringPtrOutput `pulumi:"tenantId"`
+	TenantId pulumi.StringOutput `pulumi:"tenantId"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -52,6 +52,9 @@ func NewMSTIDataConnector(ctx *pulumi.Context,
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.TenantId == nil {
+		return nil, errors.New("invalid value for required argument 'TenantId'")
 	}
 	if args.WorkspaceName == nil {
 		return nil, errors.New("invalid value for required argument 'WorkspaceName'")
@@ -967,7 +970,7 @@ type mstidataConnectorArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The tenant id to connect to, and get the data from.
-	TenantId *string `pulumi:"tenantId"`
+	TenantId string `pulumi:"tenantId"`
 	// The name of the workspace.
 	WorkspaceName string `pulumi:"workspaceName"`
 }
@@ -984,7 +987,7 @@ type MSTIDataConnectorArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The tenant id to connect to, and get the data from.
-	TenantId pulumi.StringPtrInput
+	TenantId pulumi.StringInput
 	// The name of the workspace.
 	WorkspaceName pulumi.StringInput
 }
@@ -1058,8 +1061,8 @@ func (o MSTIDataConnectorOutput) SystemData() SystemDataResponseOutput {
 }
 
 // The tenant id to connect to, and get the data from.
-func (o MSTIDataConnectorOutput) TenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MSTIDataConnector) pulumi.StringPtrOutput { return v.TenantId }).(pulumi.StringPtrOutput)
+func (o MSTIDataConnectorOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v *MSTIDataConnector) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

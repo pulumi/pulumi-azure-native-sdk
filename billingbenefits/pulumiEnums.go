@@ -178,6 +178,1048 @@ func (in *applyDiscountOnPtr) ToApplyDiscountOnPtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(ApplyDiscountOnPtrOutput)
 }
 
+// The grain of the commitment.
+type CommitmentGrain string
+
+const (
+	CommitmentGrainUnknown  = CommitmentGrain("Unknown")
+	CommitmentGrainHourly   = CommitmentGrain("Hourly")
+	CommitmentGrainFullTerm = CommitmentGrain("FullTerm")
+)
+
+func (CommitmentGrain) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommitmentGrain)(nil)).Elem()
+}
+
+func (e CommitmentGrain) ToCommitmentGrainOutput() CommitmentGrainOutput {
+	return pulumi.ToOutput(e).(CommitmentGrainOutput)
+}
+
+func (e CommitmentGrain) ToCommitmentGrainOutputWithContext(ctx context.Context) CommitmentGrainOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(CommitmentGrainOutput)
+}
+
+func (e CommitmentGrain) ToCommitmentGrainPtrOutput() CommitmentGrainPtrOutput {
+	return e.ToCommitmentGrainPtrOutputWithContext(context.Background())
+}
+
+func (e CommitmentGrain) ToCommitmentGrainPtrOutputWithContext(ctx context.Context) CommitmentGrainPtrOutput {
+	return CommitmentGrain(e).ToCommitmentGrainOutputWithContext(ctx).ToCommitmentGrainPtrOutputWithContext(ctx)
+}
+
+func (e CommitmentGrain) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CommitmentGrain) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CommitmentGrain) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e CommitmentGrain) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type CommitmentGrainOutput struct{ *pulumi.OutputState }
+
+func (CommitmentGrainOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommitmentGrain)(nil)).Elem()
+}
+
+func (o CommitmentGrainOutput) ToCommitmentGrainOutput() CommitmentGrainOutput {
+	return o
+}
+
+func (o CommitmentGrainOutput) ToCommitmentGrainOutputWithContext(ctx context.Context) CommitmentGrainOutput {
+	return o
+}
+
+func (o CommitmentGrainOutput) ToCommitmentGrainPtrOutput() CommitmentGrainPtrOutput {
+	return o.ToCommitmentGrainPtrOutputWithContext(context.Background())
+}
+
+func (o CommitmentGrainOutput) ToCommitmentGrainPtrOutputWithContext(ctx context.Context) CommitmentGrainPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CommitmentGrain) *CommitmentGrain {
+		return &v
+	}).(CommitmentGrainPtrOutput)
+}
+
+func (o CommitmentGrainOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o CommitmentGrainOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CommitmentGrain) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o CommitmentGrainOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CommitmentGrainOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CommitmentGrain) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type CommitmentGrainPtrOutput struct{ *pulumi.OutputState }
+
+func (CommitmentGrainPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CommitmentGrain)(nil)).Elem()
+}
+
+func (o CommitmentGrainPtrOutput) ToCommitmentGrainPtrOutput() CommitmentGrainPtrOutput {
+	return o
+}
+
+func (o CommitmentGrainPtrOutput) ToCommitmentGrainPtrOutputWithContext(ctx context.Context) CommitmentGrainPtrOutput {
+	return o
+}
+
+func (o CommitmentGrainPtrOutput) Elem() CommitmentGrainOutput {
+	return o.ApplyT(func(v *CommitmentGrain) CommitmentGrain {
+		if v != nil {
+			return *v
+		}
+		var ret CommitmentGrain
+		return ret
+	}).(CommitmentGrainOutput)
+}
+
+func (o CommitmentGrainPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CommitmentGrainPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CommitmentGrain) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// CommitmentGrainInput is an input type that accepts values of the CommitmentGrain enum
+// A concrete instance of `CommitmentGrainInput` can be one of the following:
+//
+//	CommitmentGrainUnknown
+//	CommitmentGrainHourly
+//	CommitmentGrainFullTerm
+type CommitmentGrainInput interface {
+	pulumi.Input
+
+	ToCommitmentGrainOutput() CommitmentGrainOutput
+	ToCommitmentGrainOutputWithContext(context.Context) CommitmentGrainOutput
+}
+
+var commitmentGrainPtrType = reflect.TypeOf((**CommitmentGrain)(nil)).Elem()
+
+type CommitmentGrainPtrInput interface {
+	pulumi.Input
+
+	ToCommitmentGrainPtrOutput() CommitmentGrainPtrOutput
+	ToCommitmentGrainPtrOutputWithContext(context.Context) CommitmentGrainPtrOutput
+}
+
+type commitmentGrainPtr string
+
+func CommitmentGrainPtr(v string) CommitmentGrainPtrInput {
+	return (*commitmentGrainPtr)(&v)
+}
+
+func (*commitmentGrainPtr) ElementType() reflect.Type {
+	return commitmentGrainPtrType
+}
+
+func (in *commitmentGrainPtr) ToCommitmentGrainPtrOutput() CommitmentGrainPtrOutput {
+	return pulumi.ToOutput(in).(CommitmentGrainPtrOutput)
+}
+
+func (in *commitmentGrainPtr) ToCommitmentGrainPtrOutputWithContext(ctx context.Context) CommitmentGrainPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(CommitmentGrainPtrOutput)
+}
+
+// Type of conditional credit entity
+type ConditionalCreditEntityType string
+
+const (
+	ConditionalCreditEntityTypePrimary     = ConditionalCreditEntityType("Primary")
+	ConditionalCreditEntityTypeContributor = ConditionalCreditEntityType("Contributor")
+)
+
+func (ConditionalCreditEntityType) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConditionalCreditEntityType)(nil)).Elem()
+}
+
+func (e ConditionalCreditEntityType) ToConditionalCreditEntityTypeOutput() ConditionalCreditEntityTypeOutput {
+	return pulumi.ToOutput(e).(ConditionalCreditEntityTypeOutput)
+}
+
+func (e ConditionalCreditEntityType) ToConditionalCreditEntityTypeOutputWithContext(ctx context.Context) ConditionalCreditEntityTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ConditionalCreditEntityTypeOutput)
+}
+
+func (e ConditionalCreditEntityType) ToConditionalCreditEntityTypePtrOutput() ConditionalCreditEntityTypePtrOutput {
+	return e.ToConditionalCreditEntityTypePtrOutputWithContext(context.Background())
+}
+
+func (e ConditionalCreditEntityType) ToConditionalCreditEntityTypePtrOutputWithContext(ctx context.Context) ConditionalCreditEntityTypePtrOutput {
+	return ConditionalCreditEntityType(e).ToConditionalCreditEntityTypeOutputWithContext(ctx).ToConditionalCreditEntityTypePtrOutputWithContext(ctx)
+}
+
+func (e ConditionalCreditEntityType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ConditionalCreditEntityType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ConditionalCreditEntityType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ConditionalCreditEntityType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ConditionalCreditEntityTypeOutput struct{ *pulumi.OutputState }
+
+func (ConditionalCreditEntityTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConditionalCreditEntityType)(nil)).Elem()
+}
+
+func (o ConditionalCreditEntityTypeOutput) ToConditionalCreditEntityTypeOutput() ConditionalCreditEntityTypeOutput {
+	return o
+}
+
+func (o ConditionalCreditEntityTypeOutput) ToConditionalCreditEntityTypeOutputWithContext(ctx context.Context) ConditionalCreditEntityTypeOutput {
+	return o
+}
+
+func (o ConditionalCreditEntityTypeOutput) ToConditionalCreditEntityTypePtrOutput() ConditionalCreditEntityTypePtrOutput {
+	return o.ToConditionalCreditEntityTypePtrOutputWithContext(context.Background())
+}
+
+func (o ConditionalCreditEntityTypeOutput) ToConditionalCreditEntityTypePtrOutputWithContext(ctx context.Context) ConditionalCreditEntityTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConditionalCreditEntityType) *ConditionalCreditEntityType {
+		return &v
+	}).(ConditionalCreditEntityTypePtrOutput)
+}
+
+func (o ConditionalCreditEntityTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ConditionalCreditEntityTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ConditionalCreditEntityType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ConditionalCreditEntityTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ConditionalCreditEntityTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ConditionalCreditEntityType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConditionalCreditEntityTypePtrOutput struct{ *pulumi.OutputState }
+
+func (ConditionalCreditEntityTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConditionalCreditEntityType)(nil)).Elem()
+}
+
+func (o ConditionalCreditEntityTypePtrOutput) ToConditionalCreditEntityTypePtrOutput() ConditionalCreditEntityTypePtrOutput {
+	return o
+}
+
+func (o ConditionalCreditEntityTypePtrOutput) ToConditionalCreditEntityTypePtrOutputWithContext(ctx context.Context) ConditionalCreditEntityTypePtrOutput {
+	return o
+}
+
+func (o ConditionalCreditEntityTypePtrOutput) Elem() ConditionalCreditEntityTypeOutput {
+	return o.ApplyT(func(v *ConditionalCreditEntityType) ConditionalCreditEntityType {
+		if v != nil {
+			return *v
+		}
+		var ret ConditionalCreditEntityType
+		return ret
+	}).(ConditionalCreditEntityTypeOutput)
+}
+
+func (o ConditionalCreditEntityTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ConditionalCreditEntityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ConditionalCreditEntityType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ConditionalCreditEntityTypeInput is an input type that accepts values of the ConditionalCreditEntityType enum
+// A concrete instance of `ConditionalCreditEntityTypeInput` can be one of the following:
+//
+//	ConditionalCreditEntityTypePrimary
+//	ConditionalCreditEntityTypeContributor
+type ConditionalCreditEntityTypeInput interface {
+	pulumi.Input
+
+	ToConditionalCreditEntityTypeOutput() ConditionalCreditEntityTypeOutput
+	ToConditionalCreditEntityTypeOutputWithContext(context.Context) ConditionalCreditEntityTypeOutput
+}
+
+var conditionalCreditEntityTypePtrType = reflect.TypeOf((**ConditionalCreditEntityType)(nil)).Elem()
+
+type ConditionalCreditEntityTypePtrInput interface {
+	pulumi.Input
+
+	ToConditionalCreditEntityTypePtrOutput() ConditionalCreditEntityTypePtrOutput
+	ToConditionalCreditEntityTypePtrOutputWithContext(context.Context) ConditionalCreditEntityTypePtrOutput
+}
+
+type conditionalCreditEntityTypePtr string
+
+func ConditionalCreditEntityTypePtr(v string) ConditionalCreditEntityTypePtrInput {
+	return (*conditionalCreditEntityTypePtr)(&v)
+}
+
+func (*conditionalCreditEntityTypePtr) ElementType() reflect.Type {
+	return conditionalCreditEntityTypePtrType
+}
+
+func (in *conditionalCreditEntityTypePtr) ToConditionalCreditEntityTypePtrOutput() ConditionalCreditEntityTypePtrOutput {
+	return pulumi.ToOutput(in).(ConditionalCreditEntityTypePtrOutput)
+}
+
+func (in *conditionalCreditEntityTypePtr) ToConditionalCreditEntityTypePtrOutputWithContext(ctx context.Context) ConditionalCreditEntityTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ConditionalCreditEntityTypePtrOutput)
+}
+
+// The status of the conditional credit
+type ConditionalCreditStatus string
+
+const (
+	ConditionalCreditStatusUnknown           = ConditionalCreditStatus("Unknown")
+	ConditionalCreditStatusScheduled         = ConditionalCreditStatus("Scheduled")
+	ConditionalCreditStatusActive            = ConditionalCreditStatus("Active")
+	ConditionalCreditStatusPending           = ConditionalCreditStatus("Pending")
+	ConditionalCreditStatusFailed            = ConditionalCreditStatus("Failed")
+	ConditionalCreditStatusCanceled          = ConditionalCreditStatus("Canceled")
+	ConditionalCreditStatusCompleted         = ConditionalCreditStatus("Completed")
+	ConditionalCreditStatusStopped           = ConditionalCreditStatus("Stopped")
+	ConditionalCreditStatusPendingSettlement = ConditionalCreditStatus("PendingSettlement")
+)
+
+func (ConditionalCreditStatus) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConditionalCreditStatus)(nil)).Elem()
+}
+
+func (e ConditionalCreditStatus) ToConditionalCreditStatusOutput() ConditionalCreditStatusOutput {
+	return pulumi.ToOutput(e).(ConditionalCreditStatusOutput)
+}
+
+func (e ConditionalCreditStatus) ToConditionalCreditStatusOutputWithContext(ctx context.Context) ConditionalCreditStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ConditionalCreditStatusOutput)
+}
+
+func (e ConditionalCreditStatus) ToConditionalCreditStatusPtrOutput() ConditionalCreditStatusPtrOutput {
+	return e.ToConditionalCreditStatusPtrOutputWithContext(context.Background())
+}
+
+func (e ConditionalCreditStatus) ToConditionalCreditStatusPtrOutputWithContext(ctx context.Context) ConditionalCreditStatusPtrOutput {
+	return ConditionalCreditStatus(e).ToConditionalCreditStatusOutputWithContext(ctx).ToConditionalCreditStatusPtrOutputWithContext(ctx)
+}
+
+func (e ConditionalCreditStatus) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ConditionalCreditStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ConditionalCreditStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ConditionalCreditStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ConditionalCreditStatusOutput struct{ *pulumi.OutputState }
+
+func (ConditionalCreditStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConditionalCreditStatus)(nil)).Elem()
+}
+
+func (o ConditionalCreditStatusOutput) ToConditionalCreditStatusOutput() ConditionalCreditStatusOutput {
+	return o
+}
+
+func (o ConditionalCreditStatusOutput) ToConditionalCreditStatusOutputWithContext(ctx context.Context) ConditionalCreditStatusOutput {
+	return o
+}
+
+func (o ConditionalCreditStatusOutput) ToConditionalCreditStatusPtrOutput() ConditionalCreditStatusPtrOutput {
+	return o.ToConditionalCreditStatusPtrOutputWithContext(context.Background())
+}
+
+func (o ConditionalCreditStatusOutput) ToConditionalCreditStatusPtrOutputWithContext(ctx context.Context) ConditionalCreditStatusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConditionalCreditStatus) *ConditionalCreditStatus {
+		return &v
+	}).(ConditionalCreditStatusPtrOutput)
+}
+
+func (o ConditionalCreditStatusOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ConditionalCreditStatusOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ConditionalCreditStatus) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ConditionalCreditStatusOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ConditionalCreditStatusOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ConditionalCreditStatus) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConditionalCreditStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (ConditionalCreditStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConditionalCreditStatus)(nil)).Elem()
+}
+
+func (o ConditionalCreditStatusPtrOutput) ToConditionalCreditStatusPtrOutput() ConditionalCreditStatusPtrOutput {
+	return o
+}
+
+func (o ConditionalCreditStatusPtrOutput) ToConditionalCreditStatusPtrOutputWithContext(ctx context.Context) ConditionalCreditStatusPtrOutput {
+	return o
+}
+
+func (o ConditionalCreditStatusPtrOutput) Elem() ConditionalCreditStatusOutput {
+	return o.ApplyT(func(v *ConditionalCreditStatus) ConditionalCreditStatus {
+		if v != nil {
+			return *v
+		}
+		var ret ConditionalCreditStatus
+		return ret
+	}).(ConditionalCreditStatusOutput)
+}
+
+func (o ConditionalCreditStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ConditionalCreditStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ConditionalCreditStatus) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ConditionalCreditStatusInput is an input type that accepts values of the ConditionalCreditStatus enum
+// A concrete instance of `ConditionalCreditStatusInput` can be one of the following:
+//
+//	ConditionalCreditStatusUnknown
+//	ConditionalCreditStatusScheduled
+//	ConditionalCreditStatusActive
+//	ConditionalCreditStatusPending
+//	ConditionalCreditStatusFailed
+//	ConditionalCreditStatusCanceled
+//	ConditionalCreditStatusCompleted
+//	ConditionalCreditStatusStopped
+//	ConditionalCreditStatusPendingSettlement
+type ConditionalCreditStatusInput interface {
+	pulumi.Input
+
+	ToConditionalCreditStatusOutput() ConditionalCreditStatusOutput
+	ToConditionalCreditStatusOutputWithContext(context.Context) ConditionalCreditStatusOutput
+}
+
+var conditionalCreditStatusPtrType = reflect.TypeOf((**ConditionalCreditStatus)(nil)).Elem()
+
+type ConditionalCreditStatusPtrInput interface {
+	pulumi.Input
+
+	ToConditionalCreditStatusPtrOutput() ConditionalCreditStatusPtrOutput
+	ToConditionalCreditStatusPtrOutputWithContext(context.Context) ConditionalCreditStatusPtrOutput
+}
+
+type conditionalCreditStatusPtr string
+
+func ConditionalCreditStatusPtr(v string) ConditionalCreditStatusPtrInput {
+	return (*conditionalCreditStatusPtr)(&v)
+}
+
+func (*conditionalCreditStatusPtr) ElementType() reflect.Type {
+	return conditionalCreditStatusPtrType
+}
+
+func (in *conditionalCreditStatusPtr) ToConditionalCreditStatusPtrOutput() ConditionalCreditStatusPtrOutput {
+	return pulumi.ToOutput(in).(ConditionalCreditStatusPtrOutput)
+}
+
+func (in *conditionalCreditStatusPtr) ToConditionalCreditStatusPtrOutputWithContext(ctx context.Context) ConditionalCreditStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ConditionalCreditStatusPtrOutput)
+}
+
+// Expiration policy of the Credit
+type CreditExpirationPolicy string
+
+const (
+	// No policy applied to the expiration of this credit
+	CreditExpirationPolicyNone = CreditExpirationPolicy("None")
+	// Billing profile is suspended when the credit expires
+	CreditExpirationPolicySuspendBillingProfile = CreditExpirationPolicy("SuspendBillingProfile")
+)
+
+func (CreditExpirationPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*CreditExpirationPolicy)(nil)).Elem()
+}
+
+func (e CreditExpirationPolicy) ToCreditExpirationPolicyOutput() CreditExpirationPolicyOutput {
+	return pulumi.ToOutput(e).(CreditExpirationPolicyOutput)
+}
+
+func (e CreditExpirationPolicy) ToCreditExpirationPolicyOutputWithContext(ctx context.Context) CreditExpirationPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(CreditExpirationPolicyOutput)
+}
+
+func (e CreditExpirationPolicy) ToCreditExpirationPolicyPtrOutput() CreditExpirationPolicyPtrOutput {
+	return e.ToCreditExpirationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (e CreditExpirationPolicy) ToCreditExpirationPolicyPtrOutputWithContext(ctx context.Context) CreditExpirationPolicyPtrOutput {
+	return CreditExpirationPolicy(e).ToCreditExpirationPolicyOutputWithContext(ctx).ToCreditExpirationPolicyPtrOutputWithContext(ctx)
+}
+
+func (e CreditExpirationPolicy) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CreditExpirationPolicy) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CreditExpirationPolicy) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e CreditExpirationPolicy) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type CreditExpirationPolicyOutput struct{ *pulumi.OutputState }
+
+func (CreditExpirationPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CreditExpirationPolicy)(nil)).Elem()
+}
+
+func (o CreditExpirationPolicyOutput) ToCreditExpirationPolicyOutput() CreditExpirationPolicyOutput {
+	return o
+}
+
+func (o CreditExpirationPolicyOutput) ToCreditExpirationPolicyOutputWithContext(ctx context.Context) CreditExpirationPolicyOutput {
+	return o
+}
+
+func (o CreditExpirationPolicyOutput) ToCreditExpirationPolicyPtrOutput() CreditExpirationPolicyPtrOutput {
+	return o.ToCreditExpirationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o CreditExpirationPolicyOutput) ToCreditExpirationPolicyPtrOutputWithContext(ctx context.Context) CreditExpirationPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CreditExpirationPolicy) *CreditExpirationPolicy {
+		return &v
+	}).(CreditExpirationPolicyPtrOutput)
+}
+
+func (o CreditExpirationPolicyOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o CreditExpirationPolicyOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CreditExpirationPolicy) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o CreditExpirationPolicyOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CreditExpirationPolicyOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CreditExpirationPolicy) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type CreditExpirationPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (CreditExpirationPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CreditExpirationPolicy)(nil)).Elem()
+}
+
+func (o CreditExpirationPolicyPtrOutput) ToCreditExpirationPolicyPtrOutput() CreditExpirationPolicyPtrOutput {
+	return o
+}
+
+func (o CreditExpirationPolicyPtrOutput) ToCreditExpirationPolicyPtrOutputWithContext(ctx context.Context) CreditExpirationPolicyPtrOutput {
+	return o
+}
+
+func (o CreditExpirationPolicyPtrOutput) Elem() CreditExpirationPolicyOutput {
+	return o.ApplyT(func(v *CreditExpirationPolicy) CreditExpirationPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret CreditExpirationPolicy
+		return ret
+	}).(CreditExpirationPolicyOutput)
+}
+
+func (o CreditExpirationPolicyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CreditExpirationPolicyPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CreditExpirationPolicy) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// CreditExpirationPolicyInput is an input type that accepts values of the CreditExpirationPolicy enum
+// A concrete instance of `CreditExpirationPolicyInput` can be one of the following:
+//
+//	CreditExpirationPolicyNone
+//	CreditExpirationPolicySuspendBillingProfile
+type CreditExpirationPolicyInput interface {
+	pulumi.Input
+
+	ToCreditExpirationPolicyOutput() CreditExpirationPolicyOutput
+	ToCreditExpirationPolicyOutputWithContext(context.Context) CreditExpirationPolicyOutput
+}
+
+var creditExpirationPolicyPtrType = reflect.TypeOf((**CreditExpirationPolicy)(nil)).Elem()
+
+type CreditExpirationPolicyPtrInput interface {
+	pulumi.Input
+
+	ToCreditExpirationPolicyPtrOutput() CreditExpirationPolicyPtrOutput
+	ToCreditExpirationPolicyPtrOutputWithContext(context.Context) CreditExpirationPolicyPtrOutput
+}
+
+type creditExpirationPolicyPtr string
+
+func CreditExpirationPolicyPtr(v string) CreditExpirationPolicyPtrInput {
+	return (*creditExpirationPolicyPtr)(&v)
+}
+
+func (*creditExpirationPolicyPtr) ElementType() reflect.Type {
+	return creditExpirationPolicyPtrType
+}
+
+func (in *creditExpirationPolicyPtr) ToCreditExpirationPolicyPtrOutput() CreditExpirationPolicyPtrOutput {
+	return pulumi.ToOutput(in).(CreditExpirationPolicyPtrOutput)
+}
+
+func (in *creditExpirationPolicyPtr) ToCreditExpirationPolicyPtrOutputWithContext(ctx context.Context) CreditExpirationPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(CreditExpirationPolicyPtrOutput)
+}
+
+// Redemption policy of the Credit
+type CreditRedemptionPolicy string
+
+const (
+	// Redemption policy is not applicable for this credit
+	CreditRedemptionPolicyNotApplicable = CreditRedemptionPolicy("NotApplicable")
+	// Credit is automatically redeemed
+	CreditRedemptionPolicyAutoRedeem = CreditRedemptionPolicy("AutoRedeem")
+	// Credit is manually redeemed
+	CreditRedemptionPolicyManualRedeem = CreditRedemptionPolicy("ManualRedeem")
+)
+
+func (CreditRedemptionPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*CreditRedemptionPolicy)(nil)).Elem()
+}
+
+func (e CreditRedemptionPolicy) ToCreditRedemptionPolicyOutput() CreditRedemptionPolicyOutput {
+	return pulumi.ToOutput(e).(CreditRedemptionPolicyOutput)
+}
+
+func (e CreditRedemptionPolicy) ToCreditRedemptionPolicyOutputWithContext(ctx context.Context) CreditRedemptionPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(CreditRedemptionPolicyOutput)
+}
+
+func (e CreditRedemptionPolicy) ToCreditRedemptionPolicyPtrOutput() CreditRedemptionPolicyPtrOutput {
+	return e.ToCreditRedemptionPolicyPtrOutputWithContext(context.Background())
+}
+
+func (e CreditRedemptionPolicy) ToCreditRedemptionPolicyPtrOutputWithContext(ctx context.Context) CreditRedemptionPolicyPtrOutput {
+	return CreditRedemptionPolicy(e).ToCreditRedemptionPolicyOutputWithContext(ctx).ToCreditRedemptionPolicyPtrOutputWithContext(ctx)
+}
+
+func (e CreditRedemptionPolicy) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CreditRedemptionPolicy) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CreditRedemptionPolicy) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e CreditRedemptionPolicy) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type CreditRedemptionPolicyOutput struct{ *pulumi.OutputState }
+
+func (CreditRedemptionPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CreditRedemptionPolicy)(nil)).Elem()
+}
+
+func (o CreditRedemptionPolicyOutput) ToCreditRedemptionPolicyOutput() CreditRedemptionPolicyOutput {
+	return o
+}
+
+func (o CreditRedemptionPolicyOutput) ToCreditRedemptionPolicyOutputWithContext(ctx context.Context) CreditRedemptionPolicyOutput {
+	return o
+}
+
+func (o CreditRedemptionPolicyOutput) ToCreditRedemptionPolicyPtrOutput() CreditRedemptionPolicyPtrOutput {
+	return o.ToCreditRedemptionPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o CreditRedemptionPolicyOutput) ToCreditRedemptionPolicyPtrOutputWithContext(ctx context.Context) CreditRedemptionPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CreditRedemptionPolicy) *CreditRedemptionPolicy {
+		return &v
+	}).(CreditRedemptionPolicyPtrOutput)
+}
+
+func (o CreditRedemptionPolicyOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o CreditRedemptionPolicyOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CreditRedemptionPolicy) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o CreditRedemptionPolicyOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CreditRedemptionPolicyOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CreditRedemptionPolicy) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type CreditRedemptionPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (CreditRedemptionPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CreditRedemptionPolicy)(nil)).Elem()
+}
+
+func (o CreditRedemptionPolicyPtrOutput) ToCreditRedemptionPolicyPtrOutput() CreditRedemptionPolicyPtrOutput {
+	return o
+}
+
+func (o CreditRedemptionPolicyPtrOutput) ToCreditRedemptionPolicyPtrOutputWithContext(ctx context.Context) CreditRedemptionPolicyPtrOutput {
+	return o
+}
+
+func (o CreditRedemptionPolicyPtrOutput) Elem() CreditRedemptionPolicyOutput {
+	return o.ApplyT(func(v *CreditRedemptionPolicy) CreditRedemptionPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret CreditRedemptionPolicy
+		return ret
+	}).(CreditRedemptionPolicyOutput)
+}
+
+func (o CreditRedemptionPolicyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CreditRedemptionPolicyPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CreditRedemptionPolicy) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// CreditRedemptionPolicyInput is an input type that accepts values of the CreditRedemptionPolicy enum
+// A concrete instance of `CreditRedemptionPolicyInput` can be one of the following:
+//
+//	CreditRedemptionPolicyNotApplicable
+//	CreditRedemptionPolicyAutoRedeem
+//	CreditRedemptionPolicyManualRedeem
+type CreditRedemptionPolicyInput interface {
+	pulumi.Input
+
+	ToCreditRedemptionPolicyOutput() CreditRedemptionPolicyOutput
+	ToCreditRedemptionPolicyOutputWithContext(context.Context) CreditRedemptionPolicyOutput
+}
+
+var creditRedemptionPolicyPtrType = reflect.TypeOf((**CreditRedemptionPolicy)(nil)).Elem()
+
+type CreditRedemptionPolicyPtrInput interface {
+	pulumi.Input
+
+	ToCreditRedemptionPolicyPtrOutput() CreditRedemptionPolicyPtrOutput
+	ToCreditRedemptionPolicyPtrOutputWithContext(context.Context) CreditRedemptionPolicyPtrOutput
+}
+
+type creditRedemptionPolicyPtr string
+
+func CreditRedemptionPolicyPtr(v string) CreditRedemptionPolicyPtrInput {
+	return (*creditRedemptionPolicyPtr)(&v)
+}
+
+func (*creditRedemptionPolicyPtr) ElementType() reflect.Type {
+	return creditRedemptionPolicyPtrType
+}
+
+func (in *creditRedemptionPolicyPtr) ToCreditRedemptionPolicyPtrOutput() CreditRedemptionPolicyPtrOutput {
+	return pulumi.ToOutput(in).(CreditRedemptionPolicyPtrOutput)
+}
+
+func (in *creditRedemptionPolicyPtr) ToCreditRedemptionPolicyPtrOutputWithContext(ctx context.Context) CreditRedemptionPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(CreditRedemptionPolicyPtrOutput)
+}
+
+// Status of the credit
+type CreditStatus string
+
+const (
+	// Credit status is unknown
+	CreditStatusUnknown = CreditStatus("Unknown")
+	// Credit is pending activation
+	CreditStatusPending = CreditStatus("Pending")
+	// Credit is active and available for use
+	CreditStatusActive = CreditStatus("Active")
+	// Credit operation succeeded
+	CreditStatusSucceeded = CreditStatus("Succeeded")
+	// Credit has been cancelled
+	CreditStatusCanceled = CreditStatus("Canceled")
+	// Credit operation failed
+	CreditStatusFailed = CreditStatus("Failed")
+	// Credit has expired
+	CreditStatusExpired = CreditStatus("Expired")
+	// Credit has been fully consumed
+	CreditStatusExhausted = CreditStatus("Exhausted")
+	// Credit application has not started yet
+	CreditStatusNotStarted = CreditStatus("NotStarted")
+)
+
+func (CreditStatus) ElementType() reflect.Type {
+	return reflect.TypeOf((*CreditStatus)(nil)).Elem()
+}
+
+func (e CreditStatus) ToCreditStatusOutput() CreditStatusOutput {
+	return pulumi.ToOutput(e).(CreditStatusOutput)
+}
+
+func (e CreditStatus) ToCreditStatusOutputWithContext(ctx context.Context) CreditStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(CreditStatusOutput)
+}
+
+func (e CreditStatus) ToCreditStatusPtrOutput() CreditStatusPtrOutput {
+	return e.ToCreditStatusPtrOutputWithContext(context.Background())
+}
+
+func (e CreditStatus) ToCreditStatusPtrOutputWithContext(ctx context.Context) CreditStatusPtrOutput {
+	return CreditStatus(e).ToCreditStatusOutputWithContext(ctx).ToCreditStatusPtrOutputWithContext(ctx)
+}
+
+func (e CreditStatus) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CreditStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CreditStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e CreditStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type CreditStatusOutput struct{ *pulumi.OutputState }
+
+func (CreditStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CreditStatus)(nil)).Elem()
+}
+
+func (o CreditStatusOutput) ToCreditStatusOutput() CreditStatusOutput {
+	return o
+}
+
+func (o CreditStatusOutput) ToCreditStatusOutputWithContext(ctx context.Context) CreditStatusOutput {
+	return o
+}
+
+func (o CreditStatusOutput) ToCreditStatusPtrOutput() CreditStatusPtrOutput {
+	return o.ToCreditStatusPtrOutputWithContext(context.Background())
+}
+
+func (o CreditStatusOutput) ToCreditStatusPtrOutputWithContext(ctx context.Context) CreditStatusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CreditStatus) *CreditStatus {
+		return &v
+	}).(CreditStatusPtrOutput)
+}
+
+func (o CreditStatusOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o CreditStatusOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CreditStatus) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o CreditStatusOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CreditStatusOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CreditStatus) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type CreditStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (CreditStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CreditStatus)(nil)).Elem()
+}
+
+func (o CreditStatusPtrOutput) ToCreditStatusPtrOutput() CreditStatusPtrOutput {
+	return o
+}
+
+func (o CreditStatusPtrOutput) ToCreditStatusPtrOutputWithContext(ctx context.Context) CreditStatusPtrOutput {
+	return o
+}
+
+func (o CreditStatusPtrOutput) Elem() CreditStatusOutput {
+	return o.ApplyT(func(v *CreditStatus) CreditStatus {
+		if v != nil {
+			return *v
+		}
+		var ret CreditStatus
+		return ret
+	}).(CreditStatusOutput)
+}
+
+func (o CreditStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CreditStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CreditStatus) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// CreditStatusInput is an input type that accepts values of the CreditStatus enum
+// A concrete instance of `CreditStatusInput` can be one of the following:
+//
+//	CreditStatusUnknown
+//	CreditStatusPending
+//	CreditStatusActive
+//	CreditStatusSucceeded
+//	CreditStatusCanceled
+//	CreditStatusFailed
+//	CreditStatusExpired
+//	CreditStatusExhausted
+//	CreditStatusNotStarted
+type CreditStatusInput interface {
+	pulumi.Input
+
+	ToCreditStatusOutput() CreditStatusOutput
+	ToCreditStatusOutputWithContext(context.Context) CreditStatusOutput
+}
+
+var creditStatusPtrType = reflect.TypeOf((**CreditStatus)(nil)).Elem()
+
+type CreditStatusPtrInput interface {
+	pulumi.Input
+
+	ToCreditStatusPtrOutput() CreditStatusPtrOutput
+	ToCreditStatusPtrOutputWithContext(context.Context) CreditStatusPtrOutput
+}
+
+type creditStatusPtr string
+
+func CreditStatusPtr(v string) CreditStatusPtrInput {
+	return (*creditStatusPtr)(&v)
+}
+
+func (*creditStatusPtr) ElementType() reflect.Type {
+	return creditStatusPtrType
+}
+
+func (in *creditStatusPtr) ToCreditStatusPtrOutput() CreditStatusPtrOutput {
+	return pulumi.ToOutput(in).(CreditStatusPtrOutput)
+}
+
+func (in *creditStatusPtr) ToCreditStatusPtrOutputWithContext(ctx context.Context) CreditStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(CreditStatusPtrOutput)
+}
+
 // List of applied scopes supported for discounts.
 type DiscountAppliedScopeType string
 
@@ -699,6 +1741,885 @@ const (
 	DiscountTypeCustomPriceMultiCurrency = DiscountType("CustomPriceMultiCurrency")
 )
 
+// Setting this to 'Enable' enables automatic shortfall invoicing when milestone commitment is not met.
+type EnablementMode string
+
+const (
+	EnablementModeUnknown  = EnablementMode("Unknown")
+	EnablementModeEnabled  = EnablementMode("Enabled")
+	EnablementModeDisabled = EnablementMode("Disabled")
+)
+
+func (EnablementMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnablementMode)(nil)).Elem()
+}
+
+func (e EnablementMode) ToEnablementModeOutput() EnablementModeOutput {
+	return pulumi.ToOutput(e).(EnablementModeOutput)
+}
+
+func (e EnablementMode) ToEnablementModeOutputWithContext(ctx context.Context) EnablementModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(EnablementModeOutput)
+}
+
+func (e EnablementMode) ToEnablementModePtrOutput() EnablementModePtrOutput {
+	return e.ToEnablementModePtrOutputWithContext(context.Background())
+}
+
+func (e EnablementMode) ToEnablementModePtrOutputWithContext(ctx context.Context) EnablementModePtrOutput {
+	return EnablementMode(e).ToEnablementModeOutputWithContext(ctx).ToEnablementModePtrOutputWithContext(ctx)
+}
+
+func (e EnablementMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e EnablementMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e EnablementMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e EnablementMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type EnablementModeOutput struct{ *pulumi.OutputState }
+
+func (EnablementModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnablementMode)(nil)).Elem()
+}
+
+func (o EnablementModeOutput) ToEnablementModeOutput() EnablementModeOutput {
+	return o
+}
+
+func (o EnablementModeOutput) ToEnablementModeOutputWithContext(ctx context.Context) EnablementModeOutput {
+	return o
+}
+
+func (o EnablementModeOutput) ToEnablementModePtrOutput() EnablementModePtrOutput {
+	return o.ToEnablementModePtrOutputWithContext(context.Background())
+}
+
+func (o EnablementModeOutput) ToEnablementModePtrOutputWithContext(ctx context.Context) EnablementModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnablementMode) *EnablementMode {
+		return &v
+	}).(EnablementModePtrOutput)
+}
+
+func (o EnablementModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o EnablementModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EnablementMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o EnablementModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o EnablementModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EnablementMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type EnablementModePtrOutput struct{ *pulumi.OutputState }
+
+func (EnablementModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnablementMode)(nil)).Elem()
+}
+
+func (o EnablementModePtrOutput) ToEnablementModePtrOutput() EnablementModePtrOutput {
+	return o
+}
+
+func (o EnablementModePtrOutput) ToEnablementModePtrOutputWithContext(ctx context.Context) EnablementModePtrOutput {
+	return o
+}
+
+func (o EnablementModePtrOutput) Elem() EnablementModeOutput {
+	return o.ApplyT(func(v *EnablementMode) EnablementMode {
+		if v != nil {
+			return *v
+		}
+		var ret EnablementMode
+		return ret
+	}).(EnablementModeOutput)
+}
+
+func (o EnablementModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o EnablementModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *EnablementMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// EnablementModeInput is an input type that accepts values of the EnablementMode enum
+// A concrete instance of `EnablementModeInput` can be one of the following:
+//
+//	EnablementModeUnknown
+//	EnablementModeEnabled
+//	EnablementModeDisabled
+type EnablementModeInput interface {
+	pulumi.Input
+
+	ToEnablementModeOutput() EnablementModeOutput
+	ToEnablementModeOutputWithContext(context.Context) EnablementModeOutput
+}
+
+var enablementModePtrType = reflect.TypeOf((**EnablementMode)(nil)).Elem()
+
+type EnablementModePtrInput interface {
+	pulumi.Input
+
+	ToEnablementModePtrOutput() EnablementModePtrOutput
+	ToEnablementModePtrOutputWithContext(context.Context) EnablementModePtrOutput
+}
+
+type enablementModePtr string
+
+func EnablementModePtr(v string) EnablementModePtrInput {
+	return (*enablementModePtr)(&v)
+}
+
+func (*enablementModePtr) ElementType() reflect.Type {
+	return enablementModePtrType
+}
+
+func (in *enablementModePtr) ToEnablementModePtrOutput() EnablementModePtrOutput {
+	return pulumi.ToOutput(in).(EnablementModePtrOutput)
+}
+
+func (in *enablementModePtr) ToEnablementModePtrOutputWithContext(ctx context.Context) EnablementModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(EnablementModePtrOutput)
+}
+
+// Current status of the free services
+type FreeServicesStatus string
+
+const (
+	// Free services status is unknown
+	FreeServicesStatusUnknown = FreeServicesStatus("Unknown")
+	// Free services are pending activation
+	FreeServicesStatusPending = FreeServicesStatus("Pending")
+	// Free services are active
+	FreeServicesStatusActive = FreeServicesStatus("Active")
+	// Free services have been canceled
+	FreeServicesStatusCanceled = FreeServicesStatus("Canceled")
+	// Free services have been fully consumed or completed
+	FreeServicesStatusCompleted = FreeServicesStatus("Completed")
+)
+
+func (FreeServicesStatus) ElementType() reflect.Type {
+	return reflect.TypeOf((*FreeServicesStatus)(nil)).Elem()
+}
+
+func (e FreeServicesStatus) ToFreeServicesStatusOutput() FreeServicesStatusOutput {
+	return pulumi.ToOutput(e).(FreeServicesStatusOutput)
+}
+
+func (e FreeServicesStatus) ToFreeServicesStatusOutputWithContext(ctx context.Context) FreeServicesStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(FreeServicesStatusOutput)
+}
+
+func (e FreeServicesStatus) ToFreeServicesStatusPtrOutput() FreeServicesStatusPtrOutput {
+	return e.ToFreeServicesStatusPtrOutputWithContext(context.Background())
+}
+
+func (e FreeServicesStatus) ToFreeServicesStatusPtrOutputWithContext(ctx context.Context) FreeServicesStatusPtrOutput {
+	return FreeServicesStatus(e).ToFreeServicesStatusOutputWithContext(ctx).ToFreeServicesStatusPtrOutputWithContext(ctx)
+}
+
+func (e FreeServicesStatus) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e FreeServicesStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e FreeServicesStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e FreeServicesStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type FreeServicesStatusOutput struct{ *pulumi.OutputState }
+
+func (FreeServicesStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FreeServicesStatus)(nil)).Elem()
+}
+
+func (o FreeServicesStatusOutput) ToFreeServicesStatusOutput() FreeServicesStatusOutput {
+	return o
+}
+
+func (o FreeServicesStatusOutput) ToFreeServicesStatusOutputWithContext(ctx context.Context) FreeServicesStatusOutput {
+	return o
+}
+
+func (o FreeServicesStatusOutput) ToFreeServicesStatusPtrOutput() FreeServicesStatusPtrOutput {
+	return o.ToFreeServicesStatusPtrOutputWithContext(context.Background())
+}
+
+func (o FreeServicesStatusOutput) ToFreeServicesStatusPtrOutputWithContext(ctx context.Context) FreeServicesStatusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FreeServicesStatus) *FreeServicesStatus {
+		return &v
+	}).(FreeServicesStatusPtrOutput)
+}
+
+func (o FreeServicesStatusOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o FreeServicesStatusOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e FreeServicesStatus) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o FreeServicesStatusOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o FreeServicesStatusOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e FreeServicesStatus) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type FreeServicesStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (FreeServicesStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FreeServicesStatus)(nil)).Elem()
+}
+
+func (o FreeServicesStatusPtrOutput) ToFreeServicesStatusPtrOutput() FreeServicesStatusPtrOutput {
+	return o
+}
+
+func (o FreeServicesStatusPtrOutput) ToFreeServicesStatusPtrOutputWithContext(ctx context.Context) FreeServicesStatusPtrOutput {
+	return o
+}
+
+func (o FreeServicesStatusPtrOutput) Elem() FreeServicesStatusOutput {
+	return o.ApplyT(func(v *FreeServicesStatus) FreeServicesStatus {
+		if v != nil {
+			return *v
+		}
+		var ret FreeServicesStatus
+		return ret
+	}).(FreeServicesStatusOutput)
+}
+
+func (o FreeServicesStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o FreeServicesStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *FreeServicesStatus) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// FreeServicesStatusInput is an input type that accepts values of the FreeServicesStatus enum
+// A concrete instance of `FreeServicesStatusInput` can be one of the following:
+//
+//	FreeServicesStatusUnknown
+//	FreeServicesStatusPending
+//	FreeServicesStatusActive
+//	FreeServicesStatusCanceled
+//	FreeServicesStatusCompleted
+type FreeServicesStatusInput interface {
+	pulumi.Input
+
+	ToFreeServicesStatusOutput() FreeServicesStatusOutput
+	ToFreeServicesStatusOutputWithContext(context.Context) FreeServicesStatusOutput
+}
+
+var freeServicesStatusPtrType = reflect.TypeOf((**FreeServicesStatus)(nil)).Elem()
+
+type FreeServicesStatusPtrInput interface {
+	pulumi.Input
+
+	ToFreeServicesStatusPtrOutput() FreeServicesStatusPtrOutput
+	ToFreeServicesStatusPtrOutputWithContext(context.Context) FreeServicesStatusPtrOutput
+}
+
+type freeServicesStatusPtr string
+
+func FreeServicesStatusPtr(v string) FreeServicesStatusPtrInput {
+	return (*freeServicesStatusPtr)(&v)
+}
+
+func (*freeServicesStatusPtr) ElementType() reflect.Type {
+	return freeServicesStatusPtrType
+}
+
+func (in *freeServicesStatusPtr) ToFreeServicesStatusPtrOutput() FreeServicesStatusPtrOutput {
+	return pulumi.ToOutput(in).(FreeServicesStatusPtrOutput)
+}
+
+func (in *freeServicesStatusPtr) ToFreeServicesStatusPtrOutputWithContext(ctx context.Context) FreeServicesStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(FreeServicesStatusPtrOutput)
+}
+
+// Represents type of the object being operated on. Possible values are primary or contributor.
+type MaccEntityType string
+
+const (
+	MaccEntityTypePrimary     = MaccEntityType("Primary")
+	MaccEntityTypeContributor = MaccEntityType("Contributor")
+)
+
+func (MaccEntityType) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaccEntityType)(nil)).Elem()
+}
+
+func (e MaccEntityType) ToMaccEntityTypeOutput() MaccEntityTypeOutput {
+	return pulumi.ToOutput(e).(MaccEntityTypeOutput)
+}
+
+func (e MaccEntityType) ToMaccEntityTypeOutputWithContext(ctx context.Context) MaccEntityTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(MaccEntityTypeOutput)
+}
+
+func (e MaccEntityType) ToMaccEntityTypePtrOutput() MaccEntityTypePtrOutput {
+	return e.ToMaccEntityTypePtrOutputWithContext(context.Background())
+}
+
+func (e MaccEntityType) ToMaccEntityTypePtrOutputWithContext(ctx context.Context) MaccEntityTypePtrOutput {
+	return MaccEntityType(e).ToMaccEntityTypeOutputWithContext(ctx).ToMaccEntityTypePtrOutputWithContext(ctx)
+}
+
+func (e MaccEntityType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MaccEntityType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MaccEntityType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e MaccEntityType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type MaccEntityTypeOutput struct{ *pulumi.OutputState }
+
+func (MaccEntityTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaccEntityType)(nil)).Elem()
+}
+
+func (o MaccEntityTypeOutput) ToMaccEntityTypeOutput() MaccEntityTypeOutput {
+	return o
+}
+
+func (o MaccEntityTypeOutput) ToMaccEntityTypeOutputWithContext(ctx context.Context) MaccEntityTypeOutput {
+	return o
+}
+
+func (o MaccEntityTypeOutput) ToMaccEntityTypePtrOutput() MaccEntityTypePtrOutput {
+	return o.ToMaccEntityTypePtrOutputWithContext(context.Background())
+}
+
+func (o MaccEntityTypeOutput) ToMaccEntityTypePtrOutputWithContext(ctx context.Context) MaccEntityTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MaccEntityType) *MaccEntityType {
+		return &v
+	}).(MaccEntityTypePtrOutput)
+}
+
+func (o MaccEntityTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o MaccEntityTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MaccEntityType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o MaccEntityTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MaccEntityTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MaccEntityType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type MaccEntityTypePtrOutput struct{ *pulumi.OutputState }
+
+func (MaccEntityTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MaccEntityType)(nil)).Elem()
+}
+
+func (o MaccEntityTypePtrOutput) ToMaccEntityTypePtrOutput() MaccEntityTypePtrOutput {
+	return o
+}
+
+func (o MaccEntityTypePtrOutput) ToMaccEntityTypePtrOutputWithContext(ctx context.Context) MaccEntityTypePtrOutput {
+	return o
+}
+
+func (o MaccEntityTypePtrOutput) Elem() MaccEntityTypeOutput {
+	return o.ApplyT(func(v *MaccEntityType) MaccEntityType {
+		if v != nil {
+			return *v
+		}
+		var ret MaccEntityType
+		return ret
+	}).(MaccEntityTypeOutput)
+}
+
+func (o MaccEntityTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MaccEntityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *MaccEntityType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// MaccEntityTypeInput is an input type that accepts values of the MaccEntityType enum
+// A concrete instance of `MaccEntityTypeInput` can be one of the following:
+//
+//	MaccEntityTypePrimary
+//	MaccEntityTypeContributor
+type MaccEntityTypeInput interface {
+	pulumi.Input
+
+	ToMaccEntityTypeOutput() MaccEntityTypeOutput
+	ToMaccEntityTypeOutputWithContext(context.Context) MaccEntityTypeOutput
+}
+
+var maccEntityTypePtrType = reflect.TypeOf((**MaccEntityType)(nil)).Elem()
+
+type MaccEntityTypePtrInput interface {
+	pulumi.Input
+
+	ToMaccEntityTypePtrOutput() MaccEntityTypePtrOutput
+	ToMaccEntityTypePtrOutputWithContext(context.Context) MaccEntityTypePtrOutput
+}
+
+type maccEntityTypePtr string
+
+func MaccEntityTypePtr(v string) MaccEntityTypePtrInput {
+	return (*maccEntityTypePtr)(&v)
+}
+
+func (*maccEntityTypePtr) ElementType() reflect.Type {
+	return maccEntityTypePtrType
+}
+
+func (in *maccEntityTypePtr) ToMaccEntityTypePtrOutput() MaccEntityTypePtrOutput {
+	return pulumi.ToOutput(in).(MaccEntityTypePtrOutput)
+}
+
+func (in *maccEntityTypePtr) ToMaccEntityTypePtrOutputWithContext(ctx context.Context) MaccEntityTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(MaccEntityTypePtrOutput)
+}
+
+// Represents the current status of the Milestone.
+type MaccMilestoneStatus string
+
+const (
+	MaccMilestoneStatusUnknown           = MaccMilestoneStatus("Unknown")
+	MaccMilestoneStatusScheduled         = MaccMilestoneStatus("Scheduled")
+	MaccMilestoneStatusActive            = MaccMilestoneStatus("Active")
+	MaccMilestoneStatusPending           = MaccMilestoneStatus("Pending")
+	MaccMilestoneStatusFailed            = MaccMilestoneStatus("Failed")
+	MaccMilestoneStatusCompleted         = MaccMilestoneStatus("Completed")
+	MaccMilestoneStatusCanceled          = MaccMilestoneStatus("Canceled")
+	MaccMilestoneStatusRemoved           = MaccMilestoneStatus("Removed")
+	MaccMilestoneStatusPendingSettlement = MaccMilestoneStatus("PendingSettlement")
+	MaccMilestoneStatusShortfallCharged  = MaccMilestoneStatus("ShortfallCharged")
+	MaccMilestoneStatusShortfallWaived   = MaccMilestoneStatus("ShortfallWaived")
+)
+
+func (MaccMilestoneStatus) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaccMilestoneStatus)(nil)).Elem()
+}
+
+func (e MaccMilestoneStatus) ToMaccMilestoneStatusOutput() MaccMilestoneStatusOutput {
+	return pulumi.ToOutput(e).(MaccMilestoneStatusOutput)
+}
+
+func (e MaccMilestoneStatus) ToMaccMilestoneStatusOutputWithContext(ctx context.Context) MaccMilestoneStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(MaccMilestoneStatusOutput)
+}
+
+func (e MaccMilestoneStatus) ToMaccMilestoneStatusPtrOutput() MaccMilestoneStatusPtrOutput {
+	return e.ToMaccMilestoneStatusPtrOutputWithContext(context.Background())
+}
+
+func (e MaccMilestoneStatus) ToMaccMilestoneStatusPtrOutputWithContext(ctx context.Context) MaccMilestoneStatusPtrOutput {
+	return MaccMilestoneStatus(e).ToMaccMilestoneStatusOutputWithContext(ctx).ToMaccMilestoneStatusPtrOutputWithContext(ctx)
+}
+
+func (e MaccMilestoneStatus) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MaccMilestoneStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MaccMilestoneStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e MaccMilestoneStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type MaccMilestoneStatusOutput struct{ *pulumi.OutputState }
+
+func (MaccMilestoneStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaccMilestoneStatus)(nil)).Elem()
+}
+
+func (o MaccMilestoneStatusOutput) ToMaccMilestoneStatusOutput() MaccMilestoneStatusOutput {
+	return o
+}
+
+func (o MaccMilestoneStatusOutput) ToMaccMilestoneStatusOutputWithContext(ctx context.Context) MaccMilestoneStatusOutput {
+	return o
+}
+
+func (o MaccMilestoneStatusOutput) ToMaccMilestoneStatusPtrOutput() MaccMilestoneStatusPtrOutput {
+	return o.ToMaccMilestoneStatusPtrOutputWithContext(context.Background())
+}
+
+func (o MaccMilestoneStatusOutput) ToMaccMilestoneStatusPtrOutputWithContext(ctx context.Context) MaccMilestoneStatusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MaccMilestoneStatus) *MaccMilestoneStatus {
+		return &v
+	}).(MaccMilestoneStatusPtrOutput)
+}
+
+func (o MaccMilestoneStatusOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o MaccMilestoneStatusOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MaccMilestoneStatus) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o MaccMilestoneStatusOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MaccMilestoneStatusOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MaccMilestoneStatus) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type MaccMilestoneStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (MaccMilestoneStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MaccMilestoneStatus)(nil)).Elem()
+}
+
+func (o MaccMilestoneStatusPtrOutput) ToMaccMilestoneStatusPtrOutput() MaccMilestoneStatusPtrOutput {
+	return o
+}
+
+func (o MaccMilestoneStatusPtrOutput) ToMaccMilestoneStatusPtrOutputWithContext(ctx context.Context) MaccMilestoneStatusPtrOutput {
+	return o
+}
+
+func (o MaccMilestoneStatusPtrOutput) Elem() MaccMilestoneStatusOutput {
+	return o.ApplyT(func(v *MaccMilestoneStatus) MaccMilestoneStatus {
+		if v != nil {
+			return *v
+		}
+		var ret MaccMilestoneStatus
+		return ret
+	}).(MaccMilestoneStatusOutput)
+}
+
+func (o MaccMilestoneStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MaccMilestoneStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *MaccMilestoneStatus) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// MaccMilestoneStatusInput is an input type that accepts values of the MaccMilestoneStatus enum
+// A concrete instance of `MaccMilestoneStatusInput` can be one of the following:
+//
+//	MaccMilestoneStatusUnknown
+//	MaccMilestoneStatusScheduled
+//	MaccMilestoneStatusActive
+//	MaccMilestoneStatusPending
+//	MaccMilestoneStatusFailed
+//	MaccMilestoneStatusCompleted
+//	MaccMilestoneStatusCanceled
+//	MaccMilestoneStatusRemoved
+//	MaccMilestoneStatusPendingSettlement
+//	MaccMilestoneStatusShortfallCharged
+//	MaccMilestoneStatusShortfallWaived
+type MaccMilestoneStatusInput interface {
+	pulumi.Input
+
+	ToMaccMilestoneStatusOutput() MaccMilestoneStatusOutput
+	ToMaccMilestoneStatusOutputWithContext(context.Context) MaccMilestoneStatusOutput
+}
+
+var maccMilestoneStatusPtrType = reflect.TypeOf((**MaccMilestoneStatus)(nil)).Elem()
+
+type MaccMilestoneStatusPtrInput interface {
+	pulumi.Input
+
+	ToMaccMilestoneStatusPtrOutput() MaccMilestoneStatusPtrOutput
+	ToMaccMilestoneStatusPtrOutputWithContext(context.Context) MaccMilestoneStatusPtrOutput
+}
+
+type maccMilestoneStatusPtr string
+
+func MaccMilestoneStatusPtr(v string) MaccMilestoneStatusPtrInput {
+	return (*maccMilestoneStatusPtr)(&v)
+}
+
+func (*maccMilestoneStatusPtr) ElementType() reflect.Type {
+	return maccMilestoneStatusPtrType
+}
+
+func (in *maccMilestoneStatusPtr) ToMaccMilestoneStatusPtrOutput() MaccMilestoneStatusPtrOutput {
+	return pulumi.ToOutput(in).(MaccMilestoneStatusPtrOutput)
+}
+
+func (in *maccMilestoneStatusPtr) ToMaccMilestoneStatusPtrOutputWithContext(ctx context.Context) MaccMilestoneStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(MaccMilestoneStatusPtrOutput)
+}
+
+// Represents the current status of the MACC.
+type MaccStatus string
+
+const (
+	MaccStatusUnknown           = MaccStatus("Unknown")
+	MaccStatusScheduled         = MaccStatus("Scheduled")
+	MaccStatusActive            = MaccStatus("Active")
+	MaccStatusPending           = MaccStatus("Pending")
+	MaccStatusFailed            = MaccStatus("Failed")
+	MaccStatusCanceled          = MaccStatus("Canceled")
+	MaccStatusCompleted         = MaccStatus("Completed")
+	MaccStatusStopped           = MaccStatus("Stopped")
+	MaccStatusPendingSettlement = MaccStatus("PendingSettlement")
+	MaccStatusShortfallCharged  = MaccStatus("ShortfallCharged")
+	MaccStatusShortfallWaived   = MaccStatus("ShortfallWaived")
+)
+
+func (MaccStatus) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaccStatus)(nil)).Elem()
+}
+
+func (e MaccStatus) ToMaccStatusOutput() MaccStatusOutput {
+	return pulumi.ToOutput(e).(MaccStatusOutput)
+}
+
+func (e MaccStatus) ToMaccStatusOutputWithContext(ctx context.Context) MaccStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(MaccStatusOutput)
+}
+
+func (e MaccStatus) ToMaccStatusPtrOutput() MaccStatusPtrOutput {
+	return e.ToMaccStatusPtrOutputWithContext(context.Background())
+}
+
+func (e MaccStatus) ToMaccStatusPtrOutputWithContext(ctx context.Context) MaccStatusPtrOutput {
+	return MaccStatus(e).ToMaccStatusOutputWithContext(ctx).ToMaccStatusPtrOutputWithContext(ctx)
+}
+
+func (e MaccStatus) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MaccStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MaccStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e MaccStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type MaccStatusOutput struct{ *pulumi.OutputState }
+
+func (MaccStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaccStatus)(nil)).Elem()
+}
+
+func (o MaccStatusOutput) ToMaccStatusOutput() MaccStatusOutput {
+	return o
+}
+
+func (o MaccStatusOutput) ToMaccStatusOutputWithContext(ctx context.Context) MaccStatusOutput {
+	return o
+}
+
+func (o MaccStatusOutput) ToMaccStatusPtrOutput() MaccStatusPtrOutput {
+	return o.ToMaccStatusPtrOutputWithContext(context.Background())
+}
+
+func (o MaccStatusOutput) ToMaccStatusPtrOutputWithContext(ctx context.Context) MaccStatusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MaccStatus) *MaccStatus {
+		return &v
+	}).(MaccStatusPtrOutput)
+}
+
+func (o MaccStatusOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o MaccStatusOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MaccStatus) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o MaccStatusOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MaccStatusOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MaccStatus) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type MaccStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (MaccStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MaccStatus)(nil)).Elem()
+}
+
+func (o MaccStatusPtrOutput) ToMaccStatusPtrOutput() MaccStatusPtrOutput {
+	return o
+}
+
+func (o MaccStatusPtrOutput) ToMaccStatusPtrOutputWithContext(ctx context.Context) MaccStatusPtrOutput {
+	return o
+}
+
+func (o MaccStatusPtrOutput) Elem() MaccStatusOutput {
+	return o.ApplyT(func(v *MaccStatus) MaccStatus {
+		if v != nil {
+			return *v
+		}
+		var ret MaccStatus
+		return ret
+	}).(MaccStatusOutput)
+}
+
+func (o MaccStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MaccStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *MaccStatus) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// MaccStatusInput is an input type that accepts values of the MaccStatus enum
+// A concrete instance of `MaccStatusInput` can be one of the following:
+//
+//	MaccStatusUnknown
+//	MaccStatusScheduled
+//	MaccStatusActive
+//	MaccStatusPending
+//	MaccStatusFailed
+//	MaccStatusCanceled
+//	MaccStatusCompleted
+//	MaccStatusStopped
+//	MaccStatusPendingSettlement
+//	MaccStatusShortfallCharged
+//	MaccStatusShortfallWaived
+type MaccStatusInput interface {
+	pulumi.Input
+
+	ToMaccStatusOutput() MaccStatusOutput
+	ToMaccStatusOutputWithContext(context.Context) MaccStatusOutput
+}
+
+var maccStatusPtrType = reflect.TypeOf((**MaccStatus)(nil)).Elem()
+
+type MaccStatusPtrInput interface {
+	pulumi.Input
+
+	ToMaccStatusPtrOutput() MaccStatusPtrOutput
+	ToMaccStatusPtrOutputWithContext(context.Context) MaccStatusPtrOutput
+}
+
+type maccStatusPtr string
+
+func MaccStatusPtr(v string) MaccStatusPtrInput {
+	return (*maccStatusPtr)(&v)
+}
+
+func (*maccStatusPtr) ElementType() reflect.Type {
+	return maccStatusPtrType
+}
+
+func (in *maccStatusPtr) ToMaccStatusPtrOutput() MaccStatusPtrOutput {
+	return pulumi.ToOutput(in).(MaccStatusPtrOutput)
+}
+
+func (in *maccStatusPtr) ToMaccStatusPtrOutputWithContext(ctx context.Context) MaccStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(MaccStatusPtrOutput)
+}
+
 // Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 type ManagedServiceIdentityType string
 
@@ -1208,12 +3129,34 @@ func (in *skuTierPtr) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTier
 func init() {
 	pulumi.RegisterOutputType(ApplyDiscountOnOutput{})
 	pulumi.RegisterOutputType(ApplyDiscountOnPtrOutput{})
+	pulumi.RegisterOutputType(CommitmentGrainOutput{})
+	pulumi.RegisterOutputType(CommitmentGrainPtrOutput{})
+	pulumi.RegisterOutputType(ConditionalCreditEntityTypeOutput{})
+	pulumi.RegisterOutputType(ConditionalCreditEntityTypePtrOutput{})
+	pulumi.RegisterOutputType(ConditionalCreditStatusOutput{})
+	pulumi.RegisterOutputType(ConditionalCreditStatusPtrOutput{})
+	pulumi.RegisterOutputType(CreditExpirationPolicyOutput{})
+	pulumi.RegisterOutputType(CreditExpirationPolicyPtrOutput{})
+	pulumi.RegisterOutputType(CreditRedemptionPolicyOutput{})
+	pulumi.RegisterOutputType(CreditRedemptionPolicyPtrOutput{})
+	pulumi.RegisterOutputType(CreditStatusOutput{})
+	pulumi.RegisterOutputType(CreditStatusPtrOutput{})
 	pulumi.RegisterOutputType(DiscountAppliedScopeTypeOutput{})
 	pulumi.RegisterOutputType(DiscountAppliedScopeTypePtrOutput{})
 	pulumi.RegisterOutputType(DiscountCombinationRuleOutput{})
 	pulumi.RegisterOutputType(DiscountCombinationRulePtrOutput{})
 	pulumi.RegisterOutputType(DiscountRuleTypeOutput{})
 	pulumi.RegisterOutputType(DiscountRuleTypePtrOutput{})
+	pulumi.RegisterOutputType(EnablementModeOutput{})
+	pulumi.RegisterOutputType(EnablementModePtrOutput{})
+	pulumi.RegisterOutputType(FreeServicesStatusOutput{})
+	pulumi.RegisterOutputType(FreeServicesStatusPtrOutput{})
+	pulumi.RegisterOutputType(MaccEntityTypeOutput{})
+	pulumi.RegisterOutputType(MaccEntityTypePtrOutput{})
+	pulumi.RegisterOutputType(MaccMilestoneStatusOutput{})
+	pulumi.RegisterOutputType(MaccMilestoneStatusPtrOutput{})
+	pulumi.RegisterOutputType(MaccStatusOutput{})
+	pulumi.RegisterOutputType(MaccStatusPtrOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityTypeOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityTypePtrOutput{})
 	pulumi.RegisterOutputType(PricingPolicyOutput{})

@@ -22,7 +22,7 @@ type Action struct {
 
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
-	// Etag of the action.
+	// ETag of the action.
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// Logic App Resource Id, /subscriptions/{my-subscription}/resourceGroups/{my-resource-group}/providers/Microsoft.Logic/workflows/{my-workflow-id}.
 	LogicAppResourceId pulumi.StringOutput `pulumi:"logicAppResourceId"`
@@ -289,7 +289,7 @@ func (o ActionOutput) AzureApiVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Action) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
-// Etag of the action.
+// ETag of the action.
 func (o ActionOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Action) pulumi.StringPtrOutput { return v.Etag }).(pulumi.StringPtrOutput)
 }

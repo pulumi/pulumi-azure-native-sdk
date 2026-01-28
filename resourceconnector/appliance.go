@@ -16,7 +16,7 @@ import (
 //
 // Uses Azure REST API version 2022-10-27. In version 2.x of the Azure Native provider, it used API version 2022-10-27.
 //
-// Other available API versions: 2022-04-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native resourceconnector [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-04-15-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native resourceconnector [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Appliance struct {
 	pulumi.CustomResourceState
 
@@ -27,7 +27,7 @@ type Appliance struct {
 	// Identity for the resource.
 	Identity IdentityResponsePtrOutput `pulumi:"identity"`
 	// Contains infrastructure information about the Appliance
-	InfrastructureConfig AppliancePropertiesResponseInfrastructureConfigPtrOutput `pulumi:"infrastructureConfig"`
+	InfrastructureConfig AppliancePropertiesInfrastructureConfigResponsePtrOutput `pulumi:"infrastructureConfig"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -36,7 +36,7 @@ type Appliance struct {
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Certificates pair used to download MSI certificate from HIS. Can only be set once.
 	PublicKey pulumi.StringPtrOutput `pulumi:"publicKey"`
-	// Appliance’s health and state of connection to on-prem
+	// Appliance’s health and state of connection to on-prem. This list of values is not exhaustive.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
@@ -70,6 +70,9 @@ func NewAppliance(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:resourceconnector/v20221027:Appliance"),
+		},
+		{
+			Type: pulumi.String("azure-native:resourceconnector/v20250301preview:Appliance"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -201,10 +204,10 @@ func (o ApplianceOutput) Identity() IdentityResponsePtrOutput {
 }
 
 // Contains infrastructure information about the Appliance
-func (o ApplianceOutput) InfrastructureConfig() AppliancePropertiesResponseInfrastructureConfigPtrOutput {
-	return o.ApplyT(func(v *Appliance) AppliancePropertiesResponseInfrastructureConfigPtrOutput {
+func (o ApplianceOutput) InfrastructureConfig() AppliancePropertiesInfrastructureConfigResponsePtrOutput {
+	return o.ApplyT(func(v *Appliance) AppliancePropertiesInfrastructureConfigResponsePtrOutput {
 		return v.InfrastructureConfig
-	}).(AppliancePropertiesResponseInfrastructureConfigPtrOutput)
+	}).(AppliancePropertiesInfrastructureConfigResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -227,7 +230,7 @@ func (o ApplianceOutput) PublicKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Appliance) pulumi.StringPtrOutput { return v.PublicKey }).(pulumi.StringPtrOutput)
 }
 
-// Appliance’s health and state of connection to on-prem
+// Appliance’s health and state of connection to on-prem. This list of values is not exhaustive.
 func (o ApplianceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Appliance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

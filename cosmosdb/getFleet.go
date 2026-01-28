@@ -13,7 +13,9 @@ import (
 
 // Retrieves the properties of an existing Azure Cosmos DB fleet under a subscription
 //
-// Uses Azure REST API version 2025-05-01-preview.
+// Uses Azure REST API version 2025-10-15.
+//
+// Other available API versions: 2025-05-01-preview, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupFleet(ctx *pulumi.Context, args *LookupFleetArgs, opts ...pulumi.InvokeOption) (*LookupFleetResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFleetResult

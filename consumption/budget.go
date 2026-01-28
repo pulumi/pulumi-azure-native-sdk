@@ -34,15 +34,17 @@ type Budget struct {
 	Filter BudgetFilterResponsePtrOutput `pulumi:"filter"`
 	// The forecasted cost which is being tracked for a budget.
 	ForecastSpend ForecastSpendResponseOutput `pulumi:"forecastSpend"`
-	// Resource name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Dictionary of notifications associated with the budget. Budget can have up to five notifications.
 	Notifications NotificationResponseMapOutput `pulumi:"notifications"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The time covered by a budget. Tracking of the amount will be reset based on the time grain. BillingMonth, BillingQuarter, and BillingAnnual are only supported by WD customers
 	TimeGrain pulumi.StringOutput `pulumi:"timeGrain"`
 	// Has start and end date of the budget. The start date must be first of the month and should be less than the end date. Budget start date must be on or after June 1, 2017. Future start date should not be more than twelve months. Past start date should  be selected within the timegrain period. There are no restrictions on the end date.
 	TimePeriod BudgetTimePeriodResponseOutput `pulumi:"timePeriod"`
-	// Resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -158,7 +160,7 @@ type budgetArgs struct {
 	Filter *BudgetFilter `pulumi:"filter"`
 	// Dictionary of notifications associated with the budget. Budget can have up to five notifications.
 	Notifications map[string]Notification `pulumi:"notifications"`
-	// The scope associated with budget operations. This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, '/providers/Microsoft.Management/managementGroups/{managementGroupId}' for Management Group scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for invoiceSection scope.
+	// The fully qualified Azure Resource manager identifier of the resource.
 	Scope string `pulumi:"scope"`
 	// The time covered by a budget. Tracking of the amount will be reset based on the time grain. BillingMonth, BillingQuarter, and BillingAnnual are only supported by WD customers
 	TimeGrain string `pulumi:"timeGrain"`
@@ -180,7 +182,7 @@ type BudgetArgs struct {
 	Filter BudgetFilterPtrInput
 	// Dictionary of notifications associated with the budget. Budget can have up to five notifications.
 	Notifications NotificationMapInput
-	// The scope associated with budget operations. This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, '/providers/Microsoft.Management/managementGroups/{managementGroupId}' for Management Group scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for invoiceSection scope.
+	// The fully qualified Azure Resource manager identifier of the resource.
 	Scope pulumi.StringInput
 	// The time covered by a budget. Tracking of the amount will be reset based on the time grain. BillingMonth, BillingQuarter, and BillingAnnual are only supported by WD customers
 	TimeGrain pulumi.StringInput
@@ -260,7 +262,7 @@ func (o BudgetOutput) ForecastSpend() ForecastSpendResponseOutput {
 	return o.ApplyT(func(v *Budget) ForecastSpendResponseOutput { return v.ForecastSpend }).(ForecastSpendResponseOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o BudgetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Budget) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -268,6 +270,11 @@ func (o BudgetOutput) Name() pulumi.StringOutput {
 // Dictionary of notifications associated with the budget. Budget can have up to five notifications.
 func (o BudgetOutput) Notifications() NotificationResponseMapOutput {
 	return o.ApplyT(func(v *Budget) NotificationResponseMapOutput { return v.Notifications }).(NotificationResponseMapOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o BudgetOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Budget) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The time covered by a budget. Tracking of the amount will be reset based on the time grain. BillingMonth, BillingQuarter, and BillingAnnual are only supported by WD customers
@@ -280,7 +287,7 @@ func (o BudgetOutput) TimePeriod() BudgetTimePeriodResponseOutput {
 	return o.ApplyT(func(v *Budget) BudgetTimePeriodResponseOutput { return v.TimePeriod }).(BudgetTimePeriodResponseOutput)
 }
 
-// Resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o BudgetOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Budget) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

@@ -27,6 +27,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Cluster{}
 	case "azure-native:azurestackhci:DeploymentSetting":
 		r = &DeploymentSetting{}
+	case "azure-native:azurestackhci:EdgeMachine":
+		r = &EdgeMachine{}
+	case "azure-native:azurestackhci:EdgeMachineJob":
+		r = &EdgeMachineJob{}
 	case "azure-native:azurestackhci:Extension":
 		r = &Extension{}
 	case "azure-native:azurestackhci:GalleryImage":
@@ -39,16 +43,22 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &HciEdgeDeviceJob{}
 	case "azure-native:azurestackhci:HybridIdentityMetadatum":
 		r = &HybridIdentityMetadatum{}
+	case "azure-native:azurestackhci:LoadBalancer":
+		r = &LoadBalancer{}
 	case "azure-native:azurestackhci:LogicalNetwork":
 		r = &LogicalNetwork{}
 	case "azure-native:azurestackhci:MachineExtension":
 		r = &MachineExtension{}
 	case "azure-native:azurestackhci:MarketplaceGalleryImage":
 		r = &MarketplaceGalleryImage{}
+	case "azure-native:azurestackhci:NatGateway":
+		r = &NatGateway{}
 	case "azure-native:azurestackhci:NetworkInterface":
 		r = &NetworkInterface{}
 	case "azure-native:azurestackhci:NetworkSecurityGroup":
 		r = &NetworkSecurityGroup{}
+	case "azure-native:azurestackhci:PublicIPAddress":
+		r = &PublicIPAddress{}
 	case "azure-native:azurestackhci:SecurityRule":
 		r = &SecurityRule{}
 	case "azure-native:azurestackhci:SecuritySetting":
@@ -69,6 +79,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &VirtualMachineInstance{}
 	case "azure-native:azurestackhci:VirtualNetwork":
 		r = &VirtualNetwork{}
+	case "azure-native:azurestackhci:VirtualNetworkSubnet":
+		r = &VirtualNetworkSubnet{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

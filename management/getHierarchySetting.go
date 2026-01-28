@@ -37,15 +37,17 @@ type LookupHierarchySettingResult struct {
 	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Settings that sets the default Management Group under which new subscriptions get added in this tenant. For example, /providers/Microsoft.Management/managementGroups/defaultGroup
 	DefaultManagementGroup *string `pulumi:"defaultManagementGroup"`
-	// The fully qualified ID for the settings object.  For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000/settings/default.
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// The name of the object. In this case, default.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Indicates whether RBAC access is required upon group creation under the root Management Group. If set to true, user will require Microsoft.Management/managementGroups/write action on the root Management Group scope in order to create new Groups directly under the root. This will prevent new users from creating new Management Groups, unless they are given access.
 	RequireAuthorizationForGroupCreation *bool `pulumi:"requireAuthorizationForGroupCreation"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The AAD Tenant ID associated with the hierarchy settings. For example, 00000000-0000-0000-0000-000000000000
 	TenantId *string `pulumi:"tenantId"`
-	// The type of the resource.  For example, Microsoft.Management/managementGroups/settings.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -92,12 +94,12 @@ func (o LookupHierarchySettingResultOutput) DefaultManagementGroup() pulumi.Stri
 	return o.ApplyT(func(v LookupHierarchySettingResult) *string { return v.DefaultManagementGroup }).(pulumi.StringPtrOutput)
 }
 
-// The fully qualified ID for the settings object.  For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000/settings/default.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupHierarchySettingResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHierarchySettingResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The name of the object. In this case, default.
+// The name of the resource
 func (o LookupHierarchySettingResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHierarchySettingResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -107,12 +109,17 @@ func (o LookupHierarchySettingResultOutput) RequireAuthorizationForGroupCreation
 	return o.ApplyT(func(v LookupHierarchySettingResult) *bool { return v.RequireAuthorizationForGroupCreation }).(pulumi.BoolPtrOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupHierarchySettingResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupHierarchySettingResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
 // The AAD Tenant ID associated with the hierarchy settings. For example, 00000000-0000-0000-0000-000000000000
 func (o LookupHierarchySettingResultOutput) TenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupHierarchySettingResult) *string { return v.TenantId }).(pulumi.StringPtrOutput)
 }
 
-// The type of the resource.  For example, Microsoft.Management/managementGroups/settings.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupHierarchySettingResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHierarchySettingResult) string { return v.Type }).(pulumi.StringOutput)
 }

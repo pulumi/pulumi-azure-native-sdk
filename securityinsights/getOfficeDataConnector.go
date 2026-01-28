@@ -38,7 +38,7 @@ type LookupOfficeDataConnectorResult struct {
 	// The Azure API version of the resource.
 	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The available data types for the connector.
-	DataTypes *OfficeDataConnectorDataTypesResponse `pulumi:"dataTypes"`
+	DataTypes OfficeDataConnectorDataTypesResponse `pulumi:"dataTypes"`
 	// Etag of the azure resource
 	Etag *string `pulumi:"etag"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -51,7 +51,7 @@ type LookupOfficeDataConnectorResult struct {
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The tenant id to connect to, and get the data from.
-	TenantId *string `pulumi:"tenantId"`
+	TenantId string `pulumi:"tenantId"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -99,8 +99,8 @@ func (o LookupOfficeDataConnectorResultOutput) AzureApiVersion() pulumi.StringOu
 }
 
 // The available data types for the connector.
-func (o LookupOfficeDataConnectorResultOutput) DataTypes() OfficeDataConnectorDataTypesResponsePtrOutput {
-	return o.ApplyT(func(v LookupOfficeDataConnectorResult) *OfficeDataConnectorDataTypesResponse { return v.DataTypes }).(OfficeDataConnectorDataTypesResponsePtrOutput)
+func (o LookupOfficeDataConnectorResultOutput) DataTypes() OfficeDataConnectorDataTypesResponseOutput {
+	return o.ApplyT(func(v LookupOfficeDataConnectorResult) OfficeDataConnectorDataTypesResponse { return v.DataTypes }).(OfficeDataConnectorDataTypesResponseOutput)
 }
 
 // Etag of the azure resource
@@ -130,8 +130,8 @@ func (o LookupOfficeDataConnectorResultOutput) SystemData() SystemDataResponseOu
 }
 
 // The tenant id to connect to, and get the data from.
-func (o LookupOfficeDataConnectorResultOutput) TenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupOfficeDataConnectorResult) *string { return v.TenantId }).(pulumi.StringPtrOutput)
+func (o LookupOfficeDataConnectorResultOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOfficeDataConnectorResult) string { return v.TenantId }).(pulumi.StringOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

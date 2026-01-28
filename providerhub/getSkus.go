@@ -35,6 +35,7 @@ type LookupSkusArgs struct {
 	Sku string `pulumi:"sku"`
 }
 
+// Concrete proxy resource types can be created by aliasing this type using a specific property type.
 type LookupSkusResult struct {
 	// The Azure API version of the resource.
 	AzureApiVersion string `pulumi:"azureApiVersion"`
@@ -42,7 +43,7 @@ type LookupSkusResult struct {
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name       string                        `pulumi:"name"`
-	Properties SkuResourceResponseProperties `pulumi:"properties"`
+	Properties SkuResourcePropertiesResponse `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -71,6 +72,7 @@ func (LookupSkusOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupSkusArgs)(nil)).Elem()
 }
 
+// Concrete proxy resource types can be created by aliasing this type using a specific property type.
 type LookupSkusResultOutput struct{ *pulumi.OutputState }
 
 func (LookupSkusResultOutput) ElementType() reflect.Type {
@@ -100,8 +102,8 @@ func (o LookupSkusResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSkusResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o LookupSkusResultOutput) Properties() SkuResourceResponsePropertiesOutput {
-	return o.ApplyT(func(v LookupSkusResult) SkuResourceResponseProperties { return v.Properties }).(SkuResourceResponsePropertiesOutput)
+func (o LookupSkusResultOutput) Properties() SkuResourcePropertiesResponseOutput {
+	return o.ApplyT(func(v LookupSkusResult) SkuResourcePropertiesResponse { return v.Properties }).(SkuResourcePropertiesResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

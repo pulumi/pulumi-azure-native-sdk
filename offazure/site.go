@@ -74,6 +74,9 @@ func NewSite(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:offazure/v20240701preview:Site"),
 		},
 		{
+			Type: pulumi.String("azure-native:offazure/v20241201preview:Site"),
+		},
+		{
 			Type: pulumi.String("azure-native:offazure:SitesController"),
 		},
 	})

@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:dashboard:Dashboard":
 		r = &Dashboard{}
+	case "azure-native:dashboard:DashboardDefinition":
+		r = &DashboardDefinition{}
 	case "azure-native:dashboard:Grafana":
 		r = &Grafana{}
 	case "azure-native:dashboard:IntegrationFabric":

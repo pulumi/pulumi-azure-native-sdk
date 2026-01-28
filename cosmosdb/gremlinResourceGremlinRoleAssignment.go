@@ -15,6 +15,8 @@ import (
 // Parameters to create and update an Azure Cosmos DB Gremlin Role Assignment.
 //
 // Uses Azure REST API version 2025-05-01-preview.
+//
+// Other available API versions: 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type GremlinResourceGremlinRoleAssignment struct {
 	pulumi.CustomResourceState
 
@@ -52,6 +54,9 @@ func NewGremlinResourceGremlinRoleAssignment(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:cosmosdb/v20250501preview:GremlinResourceGremlinRoleAssignment"),
+		},
+		{
+			Type: pulumi.String("azure-native:cosmosdb/v20251101preview:GremlinResourceGremlinRoleAssignment"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2023-10-20.
 //
-// Other available API versions: 2023-01-01, 2023-07-07. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datadog [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-01-01, 2023-07-07, 2024-03-01, 2025-01-07, 2025-06-11, 2025-11-03-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datadog [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupMonitoredSubscription(ctx *pulumi.Context, args *LookupMonitoredSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupMonitoredSubscriptionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMonitoredSubscriptionResult

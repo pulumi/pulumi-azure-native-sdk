@@ -201,6 +201,12 @@ func NewDatabaseAccountSqlDatabase(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:cosmosdb/v20250501preview:DatabaseAccountSqlDatabase"),
 		},
 		{
+			Type: pulumi.String("azure-native:cosmosdb/v20251015:DatabaseAccountSqlDatabase"),
+		},
+		{
+			Type: pulumi.String("azure-native:cosmosdb/v20251101preview:DatabaseAccountSqlDatabase"),
+		},
+		{
 			Type: pulumi.String("azure-native:documentdb/v20230315preview:SqlResourceSqlDatabase"),
 		},
 		{

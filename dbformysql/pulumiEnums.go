@@ -174,6 +174,169 @@ func (in *administratorTypePtr) ToAdministratorTypePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(AdministratorTypePtrOutput)
 }
 
+type BackupType string
+
+const (
+	BackupTypeFULL = BackupType("FULL")
+)
+
+func (BackupType) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupType)(nil)).Elem()
+}
+
+func (e BackupType) ToBackupTypeOutput() BackupTypeOutput {
+	return pulumi.ToOutput(e).(BackupTypeOutput)
+}
+
+func (e BackupType) ToBackupTypeOutputWithContext(ctx context.Context) BackupTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(BackupTypeOutput)
+}
+
+func (e BackupType) ToBackupTypePtrOutput() BackupTypePtrOutput {
+	return e.ToBackupTypePtrOutputWithContext(context.Background())
+}
+
+func (e BackupType) ToBackupTypePtrOutputWithContext(ctx context.Context) BackupTypePtrOutput {
+	return BackupType(e).ToBackupTypeOutputWithContext(ctx).ToBackupTypePtrOutputWithContext(ctx)
+}
+
+func (e BackupType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BackupType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BackupType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e BackupType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type BackupTypeOutput struct{ *pulumi.OutputState }
+
+func (BackupTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupType)(nil)).Elem()
+}
+
+func (o BackupTypeOutput) ToBackupTypeOutput() BackupTypeOutput {
+	return o
+}
+
+func (o BackupTypeOutput) ToBackupTypeOutputWithContext(ctx context.Context) BackupTypeOutput {
+	return o
+}
+
+func (o BackupTypeOutput) ToBackupTypePtrOutput() BackupTypePtrOutput {
+	return o.ToBackupTypePtrOutputWithContext(context.Background())
+}
+
+func (o BackupTypeOutput) ToBackupTypePtrOutputWithContext(ctx context.Context) BackupTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackupType) *BackupType {
+		return &v
+	}).(BackupTypePtrOutput)
+}
+
+func (o BackupTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o BackupTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BackupType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o BackupTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BackupTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BackupType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type BackupTypePtrOutput struct{ *pulumi.OutputState }
+
+func (BackupTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupType)(nil)).Elem()
+}
+
+func (o BackupTypePtrOutput) ToBackupTypePtrOutput() BackupTypePtrOutput {
+	return o
+}
+
+func (o BackupTypePtrOutput) ToBackupTypePtrOutputWithContext(ctx context.Context) BackupTypePtrOutput {
+	return o
+}
+
+func (o BackupTypePtrOutput) Elem() BackupTypeOutput {
+	return o.ApplyT(func(v *BackupType) BackupType {
+		if v != nil {
+			return *v
+		}
+		var ret BackupType
+		return ret
+	}).(BackupTypeOutput)
+}
+
+func (o BackupTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BackupTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *BackupType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// BackupTypeInput is an input type that accepts values of the BackupType enum
+// A concrete instance of `BackupTypeInput` can be one of the following:
+//
+//	BackupTypeFULL
+type BackupTypeInput interface {
+	pulumi.Input
+
+	ToBackupTypeOutput() BackupTypeOutput
+	ToBackupTypeOutputWithContext(context.Context) BackupTypeOutput
+}
+
+var backupTypePtrType = reflect.TypeOf((**BackupType)(nil)).Elem()
+
+type BackupTypePtrInput interface {
+	pulumi.Input
+
+	ToBackupTypePtrOutput() BackupTypePtrOutput
+	ToBackupTypePtrOutputWithContext(context.Context) BackupTypePtrOutput
+}
+
+type backupTypePtr string
+
+func BackupTypePtr(v string) BackupTypePtrInput {
+	return (*backupTypePtr)(&v)
+}
+
+func (*backupTypePtr) ElementType() reflect.Type {
+	return backupTypePtrType
+}
+
+func (in *backupTypePtr) ToBackupTypePtrOutput() BackupTypePtrOutput {
+	return pulumi.ToOutput(in).(BackupTypePtrOutput)
+}
+
+func (in *backupTypePtr) ToBackupTypePtrOutputWithContext(ctx context.Context) BackupTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(BackupTypePtrOutput)
+}
+
 // Source of the configuration.
 type ConfigurationSource string
 
@@ -3679,6 +3842,8 @@ func (in *storageRedundancyEnumPtr) ToStorageRedundancyEnumPtrOutputWithContext(
 func init() {
 	pulumi.RegisterOutputType(AdministratorTypeOutput{})
 	pulumi.RegisterOutputType(AdministratorTypePtrOutput{})
+	pulumi.RegisterOutputType(BackupTypeOutput{})
+	pulumi.RegisterOutputType(BackupTypePtrOutput{})
 	pulumi.RegisterOutputType(ConfigurationSourceOutput{})
 	pulumi.RegisterOutputType(ConfigurationSourcePtrOutput{})
 	pulumi.RegisterOutputType(CreateModeOutput{})

@@ -16,7 +16,7 @@ import (
 //
 // Uses Azure REST API version 2021-06-01.
 //
-// Other available API versions: 2020-01-01, 2020-04-01, 2020-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native frontdoor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2020-01-01, 2020-04-01, 2020-05-01, 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native frontdoor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type RulesEngine struct {
 	pulumi.CustomResourceState
 
@@ -57,6 +57,9 @@ func NewRulesEngine(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:frontdoor/v20210601:RulesEngine"),
+		},
+		{
+			Type: pulumi.String("azure-native:frontdoor/v20251001:RulesEngine"),
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20210601:RulesEngine"),

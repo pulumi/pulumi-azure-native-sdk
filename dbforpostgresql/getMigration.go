@@ -13,9 +13,9 @@ import (
 
 // Gets information about a migration.
 //
-// Uses Azure REST API version 2024-08-01.
+// Uses Azure REST API version 2025-08-01.
 //
-// Other available API versions: 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-11-01-preview, 2025-01-01-preview, 2025-06-01-preview, 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-08-01, 2024-11-01-preview, 2025-01-01-preview, 2025-06-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupMigration(ctx *pulumi.Context, args *LookupMigrationArgs, opts ...pulumi.InvokeOption) (*LookupMigrationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMigrationResult
@@ -29,15 +29,13 @@ func LookupMigration(ctx *pulumi.Context, args *LookupMigrationArgs, opts ...pul
 type LookupMigrationArgs struct {
 	// Name of migration.
 	MigrationName string `pulumi:"migrationName"`
-	// Name of resource group of target database server.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Identifier of subscription of target database server.
-	SubscriptionId *string `pulumi:"subscriptionId"`
-	// Name of target database server.
-	TargetDbServerName string `pulumi:"targetDbServerName"`
+	// The name of the server.
+	ServerName string `pulumi:"serverName"`
 }
 
-// Migration.
+// Properties of a migration.
 type LookupMigrationResult struct {
 	// The Azure API version of the resource.
 	AzureApiVersion string `pulumi:"azureApiVersion"`
@@ -73,7 +71,7 @@ type LookupMigrationResult struct {
 	Name string `pulumi:"name"`
 	// Indicates if databases on the target server can be overwritten when already present. If set to 'False', when the migration workflow detects that the database already exists on the target server, it will wait for a confirmation.
 	OverwriteDbsInTarget *string `pulumi:"overwriteDbsInTarget"`
-	// Indicates whether to setup LogicalReplicationOnSourceDb, if needed.
+	// Indicates whether to setup logical replication on source server, if needed.
 	SetupLogicalReplicationOnSourceDbIfNeeded *string `pulumi:"setupLogicalReplicationOnSourceDbIfNeeded"`
 	// Fully qualified domain name (FQDN) or IP address of the source server. This property is optional. When provided, the migration service will always use it to connect to the source server.
 	SourceDbServerFullyQualifiedDomainName *string `pulumi:"sourceDbServerFullyQualifiedDomainName"`
@@ -115,19 +113,17 @@ func LookupMigrationOutput(ctx *pulumi.Context, args LookupMigrationOutputArgs, 
 type LookupMigrationOutputArgs struct {
 	// Name of migration.
 	MigrationName pulumi.StringInput `pulumi:"migrationName"`
-	// Name of resource group of target database server.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	// Identifier of subscription of target database server.
-	SubscriptionId pulumi.StringPtrInput `pulumi:"subscriptionId"`
-	// Name of target database server.
-	TargetDbServerName pulumi.StringInput `pulumi:"targetDbServerName"`
+	// The name of the server.
+	ServerName pulumi.StringInput `pulumi:"serverName"`
 }
 
 func (LookupMigrationOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupMigrationArgs)(nil)).Elem()
 }
 
-// Migration.
+// Properties of a migration.
 type LookupMigrationResultOutput struct{ *pulumi.OutputState }
 
 func (LookupMigrationResultOutput) ElementType() reflect.Type {
@@ -227,7 +223,7 @@ func (o LookupMigrationResultOutput) OverwriteDbsInTarget() pulumi.StringPtrOutp
 	return o.ApplyT(func(v LookupMigrationResult) *string { return v.OverwriteDbsInTarget }).(pulumi.StringPtrOutput)
 }
 
-// Indicates whether to setup LogicalReplicationOnSourceDb, if needed.
+// Indicates whether to setup logical replication on source server, if needed.
 func (o LookupMigrationResultOutput) SetupLogicalReplicationOnSourceDbIfNeeded() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupMigrationResult) *string { return v.SetupLogicalReplicationOnSourceDbIfNeeded }).(pulumi.StringPtrOutput)
 }

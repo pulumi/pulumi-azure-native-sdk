@@ -15,6 +15,8 @@ import (
 // A FluidRelay Server.
 //
 // Uses Azure REST API version 2022-06-01. In version 2.x of the Azure Native provider, it used API version 2022-06-01.
+//
+// Other available API versions: 2025-06-20-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native fluidrelay [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type FluidRelayServer struct {
 	pulumi.CustomResourceState
 
@@ -81,6 +83,9 @@ func NewFluidRelayServer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:fluidrelay/v20220601:FluidRelayServer"),
+		},
+		{
+			Type: pulumi.String("azure-native:fluidrelay/v20250620preview:FluidRelayServer"),
 		},
 	})
 	opts = append(opts, aliases)

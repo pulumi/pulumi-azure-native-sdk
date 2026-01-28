@@ -7961,6 +7961,237 @@ func (o GatewayConfigurationApiResponsePtrOutput) Hostname() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+type GatewayHostnameBindingCertificateResponse struct {
+	// The expiration date of the certificate.
+	Expiry string `pulumi:"expiry"`
+	// The subject of the certificate.
+	Subject string `pulumi:"subject"`
+	// The thumbprint of the certificate.
+	Thumbprint string `pulumi:"thumbprint"`
+}
+
+type GatewayHostnameBindingCertificateResponseOutput struct{ *pulumi.OutputState }
+
+func (GatewayHostnameBindingCertificateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayHostnameBindingCertificateResponse)(nil)).Elem()
+}
+
+func (o GatewayHostnameBindingCertificateResponseOutput) ToGatewayHostnameBindingCertificateResponseOutput() GatewayHostnameBindingCertificateResponseOutput {
+	return o
+}
+
+func (o GatewayHostnameBindingCertificateResponseOutput) ToGatewayHostnameBindingCertificateResponseOutputWithContext(ctx context.Context) GatewayHostnameBindingCertificateResponseOutput {
+	return o
+}
+
+// The expiration date of the certificate.
+func (o GatewayHostnameBindingCertificateResponseOutput) Expiry() pulumi.StringOutput {
+	return o.ApplyT(func(v GatewayHostnameBindingCertificateResponse) string { return v.Expiry }).(pulumi.StringOutput)
+}
+
+// The subject of the certificate.
+func (o GatewayHostnameBindingCertificateResponseOutput) Subject() pulumi.StringOutput {
+	return o.ApplyT(func(v GatewayHostnameBindingCertificateResponse) string { return v.Subject }).(pulumi.StringOutput)
+}
+
+// The thumbprint of the certificate.
+func (o GatewayHostnameBindingCertificateResponseOutput) Thumbprint() pulumi.StringOutput {
+	return o.ApplyT(func(v GatewayHostnameBindingCertificateResponse) string { return v.Thumbprint }).(pulumi.StringOutput)
+}
+
+type GatewayHostnameBindingKeyVault struct {
+	// The default hostname of the data-plane gateway.
+	IdentityClientId *string `pulumi:"identityClientId"`
+	// The current provisioning state of the API Management gateway hostname binding.
+	SecretId string `pulumi:"secretId"`
+}
+
+// GatewayHostnameBindingKeyVaultInput is an input type that accepts GatewayHostnameBindingKeyVaultArgs and GatewayHostnameBindingKeyVaultOutput values.
+// You can construct a concrete instance of `GatewayHostnameBindingKeyVaultInput` via:
+//
+//	GatewayHostnameBindingKeyVaultArgs{...}
+type GatewayHostnameBindingKeyVaultInput interface {
+	pulumi.Input
+
+	ToGatewayHostnameBindingKeyVaultOutput() GatewayHostnameBindingKeyVaultOutput
+	ToGatewayHostnameBindingKeyVaultOutputWithContext(context.Context) GatewayHostnameBindingKeyVaultOutput
+}
+
+type GatewayHostnameBindingKeyVaultArgs struct {
+	// The default hostname of the data-plane gateway.
+	IdentityClientId pulumi.StringPtrInput `pulumi:"identityClientId"`
+	// The current provisioning state of the API Management gateway hostname binding.
+	SecretId pulumi.StringInput `pulumi:"secretId"`
+}
+
+func (GatewayHostnameBindingKeyVaultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayHostnameBindingKeyVault)(nil)).Elem()
+}
+
+func (i GatewayHostnameBindingKeyVaultArgs) ToGatewayHostnameBindingKeyVaultOutput() GatewayHostnameBindingKeyVaultOutput {
+	return i.ToGatewayHostnameBindingKeyVaultOutputWithContext(context.Background())
+}
+
+func (i GatewayHostnameBindingKeyVaultArgs) ToGatewayHostnameBindingKeyVaultOutputWithContext(ctx context.Context) GatewayHostnameBindingKeyVaultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayHostnameBindingKeyVaultOutput)
+}
+
+type GatewayHostnameBindingKeyVaultOutput struct{ *pulumi.OutputState }
+
+func (GatewayHostnameBindingKeyVaultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayHostnameBindingKeyVault)(nil)).Elem()
+}
+
+func (o GatewayHostnameBindingKeyVaultOutput) ToGatewayHostnameBindingKeyVaultOutput() GatewayHostnameBindingKeyVaultOutput {
+	return o
+}
+
+func (o GatewayHostnameBindingKeyVaultOutput) ToGatewayHostnameBindingKeyVaultOutputWithContext(ctx context.Context) GatewayHostnameBindingKeyVaultOutput {
+	return o
+}
+
+// The default hostname of the data-plane gateway.
+func (o GatewayHostnameBindingKeyVaultOutput) IdentityClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayHostnameBindingKeyVault) *string { return v.IdentityClientId }).(pulumi.StringPtrOutput)
+}
+
+// The current provisioning state of the API Management gateway hostname binding.
+func (o GatewayHostnameBindingKeyVaultOutput) SecretId() pulumi.StringOutput {
+	return o.ApplyT(func(v GatewayHostnameBindingKeyVault) string { return v.SecretId }).(pulumi.StringOutput)
+}
+
+type GatewayHostnameBindingKeyVaultLastStatusResponse struct {
+	// The last status of the Key Vault certificate fetch process.
+	Code string `pulumi:"code"`
+	// The last time the Key Vault certificate fetch process was successful. Only when the fetch process has succeeded at least once and current state is failed.  The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
+	LastSuccessTimeStampUtc string `pulumi:"lastSuccessTimeStampUtc"`
+	// The last time the Key Vault certificate fetch process was attempted. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
+	TimeStampUtc string `pulumi:"timeStampUtc"`
+}
+
+type GatewayHostnameBindingKeyVaultLastStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (GatewayHostnameBindingKeyVaultLastStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayHostnameBindingKeyVaultLastStatusResponse)(nil)).Elem()
+}
+
+func (o GatewayHostnameBindingKeyVaultLastStatusResponseOutput) ToGatewayHostnameBindingKeyVaultLastStatusResponseOutput() GatewayHostnameBindingKeyVaultLastStatusResponseOutput {
+	return o
+}
+
+func (o GatewayHostnameBindingKeyVaultLastStatusResponseOutput) ToGatewayHostnameBindingKeyVaultLastStatusResponseOutputWithContext(ctx context.Context) GatewayHostnameBindingKeyVaultLastStatusResponseOutput {
+	return o
+}
+
+// The last status of the Key Vault certificate fetch process.
+func (o GatewayHostnameBindingKeyVaultLastStatusResponseOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v GatewayHostnameBindingKeyVaultLastStatusResponse) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// The last time the Key Vault certificate fetch process was successful. Only when the fetch process has succeeded at least once and current state is failed.  The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
+func (o GatewayHostnameBindingKeyVaultLastStatusResponseOutput) LastSuccessTimeStampUtc() pulumi.StringOutput {
+	return o.ApplyT(func(v GatewayHostnameBindingKeyVaultLastStatusResponse) string { return v.LastSuccessTimeStampUtc }).(pulumi.StringOutput)
+}
+
+// The last time the Key Vault certificate fetch process was attempted. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
+func (o GatewayHostnameBindingKeyVaultLastStatusResponseOutput) TimeStampUtc() pulumi.StringOutput {
+	return o.ApplyT(func(v GatewayHostnameBindingKeyVaultLastStatusResponse) string { return v.TimeStampUtc }).(pulumi.StringOutput)
+}
+
+type GatewayHostnameBindingKeyVaultLastStatusResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GatewayHostnameBindingKeyVaultLastStatusResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayHostnameBindingKeyVaultLastStatusResponse)(nil)).Elem()
+}
+
+func (o GatewayHostnameBindingKeyVaultLastStatusResponsePtrOutput) ToGatewayHostnameBindingKeyVaultLastStatusResponsePtrOutput() GatewayHostnameBindingKeyVaultLastStatusResponsePtrOutput {
+	return o
+}
+
+func (o GatewayHostnameBindingKeyVaultLastStatusResponsePtrOutput) ToGatewayHostnameBindingKeyVaultLastStatusResponsePtrOutputWithContext(ctx context.Context) GatewayHostnameBindingKeyVaultLastStatusResponsePtrOutput {
+	return o
+}
+
+func (o GatewayHostnameBindingKeyVaultLastStatusResponsePtrOutput) Elem() GatewayHostnameBindingKeyVaultLastStatusResponseOutput {
+	return o.ApplyT(func(v *GatewayHostnameBindingKeyVaultLastStatusResponse) GatewayHostnameBindingKeyVaultLastStatusResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GatewayHostnameBindingKeyVaultLastStatusResponse
+		return ret
+	}).(GatewayHostnameBindingKeyVaultLastStatusResponseOutput)
+}
+
+// The last status of the Key Vault certificate fetch process.
+func (o GatewayHostnameBindingKeyVaultLastStatusResponsePtrOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayHostnameBindingKeyVaultLastStatusResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Code
+	}).(pulumi.StringPtrOutput)
+}
+
+// The last time the Key Vault certificate fetch process was successful. Only when the fetch process has succeeded at least once and current state is failed.  The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
+func (o GatewayHostnameBindingKeyVaultLastStatusResponsePtrOutput) LastSuccessTimeStampUtc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayHostnameBindingKeyVaultLastStatusResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LastSuccessTimeStampUtc
+	}).(pulumi.StringPtrOutput)
+}
+
+// The last time the Key Vault certificate fetch process was attempted. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
+func (o GatewayHostnameBindingKeyVaultLastStatusResponsePtrOutput) TimeStampUtc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayHostnameBindingKeyVaultLastStatusResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TimeStampUtc
+	}).(pulumi.StringPtrOutput)
+}
+
+type GatewayHostnameBindingKeyVaultResponse struct {
+	// The default hostname of the data-plane gateway.
+	IdentityClientId *string `pulumi:"identityClientId"`
+	// The last status of the Key Vault certificate fetch process.
+	LastStatus *GatewayHostnameBindingKeyVaultLastStatusResponse `pulumi:"lastStatus"`
+	// The current provisioning state of the API Management gateway hostname binding.
+	SecretId string `pulumi:"secretId"`
+}
+
+type GatewayHostnameBindingKeyVaultResponseOutput struct{ *pulumi.OutputState }
+
+func (GatewayHostnameBindingKeyVaultResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayHostnameBindingKeyVaultResponse)(nil)).Elem()
+}
+
+func (o GatewayHostnameBindingKeyVaultResponseOutput) ToGatewayHostnameBindingKeyVaultResponseOutput() GatewayHostnameBindingKeyVaultResponseOutput {
+	return o
+}
+
+func (o GatewayHostnameBindingKeyVaultResponseOutput) ToGatewayHostnameBindingKeyVaultResponseOutputWithContext(ctx context.Context) GatewayHostnameBindingKeyVaultResponseOutput {
+	return o
+}
+
+// The default hostname of the data-plane gateway.
+func (o GatewayHostnameBindingKeyVaultResponseOutput) IdentityClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayHostnameBindingKeyVaultResponse) *string { return v.IdentityClientId }).(pulumi.StringPtrOutput)
+}
+
+// The last status of the Key Vault certificate fetch process.
+func (o GatewayHostnameBindingKeyVaultResponseOutput) LastStatus() GatewayHostnameBindingKeyVaultLastStatusResponsePtrOutput {
+	return o.ApplyT(func(v GatewayHostnameBindingKeyVaultResponse) *GatewayHostnameBindingKeyVaultLastStatusResponse {
+		return v.LastStatus
+	}).(GatewayHostnameBindingKeyVaultLastStatusResponsePtrOutput)
+}
+
+// The current provisioning state of the API Management gateway hostname binding.
+func (o GatewayHostnameBindingKeyVaultResponseOutput) SecretId() pulumi.StringOutput {
+	return o.ApplyT(func(v GatewayHostnameBindingKeyVaultResponse) string { return v.SecretId }).(pulumi.StringOutput)
+}
+
 // Group contract Properties.
 type GroupContractPropertiesResponse struct {
 	// true if the group is one of the three system groups (Administrators, Developers, or Guests); otherwise false.
@@ -14231,6 +14462,11 @@ func init() {
 	pulumi.RegisterOutputType(FrontendConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(GatewayConfigurationApiResponseOutput{})
 	pulumi.RegisterOutputType(GatewayConfigurationApiResponsePtrOutput{})
+	pulumi.RegisterOutputType(GatewayHostnameBindingCertificateResponseOutput{})
+	pulumi.RegisterOutputType(GatewayHostnameBindingKeyVaultOutput{})
+	pulumi.RegisterOutputType(GatewayHostnameBindingKeyVaultLastStatusResponseOutput{})
+	pulumi.RegisterOutputType(GatewayHostnameBindingKeyVaultLastStatusResponsePtrOutput{})
+	pulumi.RegisterOutputType(GatewayHostnameBindingKeyVaultResponseOutput{})
 	pulumi.RegisterOutputType(GroupContractPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(GroupContractPropertiesResponseArrayOutput{})
 	pulumi.RegisterOutputType(HostnameConfigurationOutput{})

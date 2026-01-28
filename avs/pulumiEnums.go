@@ -20,117 +20,127 @@ const (
 	AddonTypeArc = AddonType("Arc")
 )
 
-func (AddonType) ElementType() reflect.Type {
-	return reflect.TypeOf((*AddonType)(nil)).Elem()
+// vm-host placement policy affinity strength (should/must)
+type AffinityStrength string
+
+const (
+	// is should
+	AffinityStrengthShould = AffinityStrength("Should")
+	// is must
+	AffinityStrengthMust = AffinityStrength("Must")
+)
+
+func (AffinityStrength) ElementType() reflect.Type {
+	return reflect.TypeOf((*AffinityStrength)(nil)).Elem()
 }
 
-func (e AddonType) ToAddonTypeOutput() AddonTypeOutput {
-	return pulumi.ToOutput(e).(AddonTypeOutput)
+func (e AffinityStrength) ToAffinityStrengthOutput() AffinityStrengthOutput {
+	return pulumi.ToOutput(e).(AffinityStrengthOutput)
 }
 
-func (e AddonType) ToAddonTypeOutputWithContext(ctx context.Context) AddonTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(AddonTypeOutput)
+func (e AffinityStrength) ToAffinityStrengthOutputWithContext(ctx context.Context) AffinityStrengthOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AffinityStrengthOutput)
 }
 
-func (e AddonType) ToAddonTypePtrOutput() AddonTypePtrOutput {
-	return e.ToAddonTypePtrOutputWithContext(context.Background())
+func (e AffinityStrength) ToAffinityStrengthPtrOutput() AffinityStrengthPtrOutput {
+	return e.ToAffinityStrengthPtrOutputWithContext(context.Background())
 }
 
-func (e AddonType) ToAddonTypePtrOutputWithContext(ctx context.Context) AddonTypePtrOutput {
-	return AddonType(e).ToAddonTypeOutputWithContext(ctx).ToAddonTypePtrOutputWithContext(ctx)
+func (e AffinityStrength) ToAffinityStrengthPtrOutputWithContext(ctx context.Context) AffinityStrengthPtrOutput {
+	return AffinityStrength(e).ToAffinityStrengthOutputWithContext(ctx).ToAffinityStrengthPtrOutputWithContext(ctx)
 }
 
-func (e AddonType) ToStringOutput() pulumi.StringOutput {
+func (e AffinityStrength) ToStringOutput() pulumi.StringOutput {
 	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e AddonType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+func (e AffinityStrength) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
 	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e AddonType) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (e AffinityStrength) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
 }
 
-func (e AddonType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+func (e AffinityStrength) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-type AddonTypeOutput struct{ *pulumi.OutputState }
+type AffinityStrengthOutput struct{ *pulumi.OutputState }
 
-func (AddonTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AddonType)(nil)).Elem()
+func (AffinityStrengthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AffinityStrength)(nil)).Elem()
 }
 
-func (o AddonTypeOutput) ToAddonTypeOutput() AddonTypeOutput {
+func (o AffinityStrengthOutput) ToAffinityStrengthOutput() AffinityStrengthOutput {
 	return o
 }
 
-func (o AddonTypeOutput) ToAddonTypeOutputWithContext(ctx context.Context) AddonTypeOutput {
+func (o AffinityStrengthOutput) ToAffinityStrengthOutputWithContext(ctx context.Context) AffinityStrengthOutput {
 	return o
 }
 
-func (o AddonTypeOutput) ToAddonTypePtrOutput() AddonTypePtrOutput {
-	return o.ToAddonTypePtrOutputWithContext(context.Background())
+func (o AffinityStrengthOutput) ToAffinityStrengthPtrOutput() AffinityStrengthPtrOutput {
+	return o.ToAffinityStrengthPtrOutputWithContext(context.Background())
 }
 
-func (o AddonTypeOutput) ToAddonTypePtrOutputWithContext(ctx context.Context) AddonTypePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AddonType) *AddonType {
+func (o AffinityStrengthOutput) ToAffinityStrengthPtrOutputWithContext(ctx context.Context) AffinityStrengthPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AffinityStrength) *AffinityStrength {
 		return &v
-	}).(AddonTypePtrOutput)
+	}).(AffinityStrengthPtrOutput)
 }
 
-func (o AddonTypeOutput) ToStringOutput() pulumi.StringOutput {
+func (o AffinityStrengthOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
 
-func (o AddonTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e AddonType) string {
+func (o AffinityStrengthOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AffinityStrength) string {
 		return string(e)
 	}).(pulumi.StringOutput)
 }
 
-func (o AddonTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (o AffinityStrengthOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return o.ToStringPtrOutputWithContext(context.Background())
 }
 
-func (o AddonTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e AddonType) *string {
+func (o AffinityStrengthOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AffinityStrength) *string {
 		v := string(e)
 		return &v
 	}).(pulumi.StringPtrOutput)
 }
 
-type AddonTypePtrOutput struct{ *pulumi.OutputState }
+type AffinityStrengthPtrOutput struct{ *pulumi.OutputState }
 
-func (AddonTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AddonType)(nil)).Elem()
+func (AffinityStrengthPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AffinityStrength)(nil)).Elem()
 }
 
-func (o AddonTypePtrOutput) ToAddonTypePtrOutput() AddonTypePtrOutput {
+func (o AffinityStrengthPtrOutput) ToAffinityStrengthPtrOutput() AffinityStrengthPtrOutput {
 	return o
 }
 
-func (o AddonTypePtrOutput) ToAddonTypePtrOutputWithContext(ctx context.Context) AddonTypePtrOutput {
+func (o AffinityStrengthPtrOutput) ToAffinityStrengthPtrOutputWithContext(ctx context.Context) AffinityStrengthPtrOutput {
 	return o
 }
 
-func (o AddonTypePtrOutput) Elem() AddonTypeOutput {
-	return o.ApplyT(func(v *AddonType) AddonType {
+func (o AffinityStrengthPtrOutput) Elem() AffinityStrengthOutput {
+	return o.ApplyT(func(v *AffinityStrength) AffinityStrength {
 		if v != nil {
 			return *v
 		}
-		var ret AddonType
+		var ret AffinityStrength
 		return ret
-	}).(AddonTypeOutput)
+	}).(AffinityStrengthOutput)
 }
 
-func (o AddonTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (o AffinityStrengthPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return o.ToStringPtrOutputWithContext(context.Background())
 }
 
-func (o AddonTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AddonType) *string {
+func (o AffinityStrengthPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AffinityStrength) *string {
 		if e == nil {
 			return nil
 		}
@@ -139,45 +149,211 @@ func (o AddonTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// AddonTypeInput is an input type that accepts values of the AddonType enum
-// A concrete instance of `AddonTypeInput` can be one of the following:
+// AffinityStrengthInput is an input type that accepts values of the AffinityStrength enum
+// A concrete instance of `AffinityStrengthInput` can be one of the following:
 //
-//	AddonTypeSRM
-//	AddonTypeVR
-//	AddonTypeHCX
-//	AddonTypeArc
-type AddonTypeInput interface {
+//	AffinityStrengthShould
+//	AffinityStrengthMust
+type AffinityStrengthInput interface {
 	pulumi.Input
 
-	ToAddonTypeOutput() AddonTypeOutput
-	ToAddonTypeOutputWithContext(context.Context) AddonTypeOutput
+	ToAffinityStrengthOutput() AffinityStrengthOutput
+	ToAffinityStrengthOutputWithContext(context.Context) AffinityStrengthOutput
 }
 
-var addonTypePtrType = reflect.TypeOf((**AddonType)(nil)).Elem()
+var affinityStrengthPtrType = reflect.TypeOf((**AffinityStrength)(nil)).Elem()
 
-type AddonTypePtrInput interface {
+type AffinityStrengthPtrInput interface {
 	pulumi.Input
 
-	ToAddonTypePtrOutput() AddonTypePtrOutput
-	ToAddonTypePtrOutputWithContext(context.Context) AddonTypePtrOutput
+	ToAffinityStrengthPtrOutput() AffinityStrengthPtrOutput
+	ToAffinityStrengthPtrOutputWithContext(context.Context) AffinityStrengthPtrOutput
 }
 
-type addonTypePtr string
+type affinityStrengthPtr string
 
-func AddonTypePtr(v string) AddonTypePtrInput {
-	return (*addonTypePtr)(&v)
+func AffinityStrengthPtr(v string) AffinityStrengthPtrInput {
+	return (*affinityStrengthPtr)(&v)
 }
 
-func (*addonTypePtr) ElementType() reflect.Type {
-	return addonTypePtrType
+func (*affinityStrengthPtr) ElementType() reflect.Type {
+	return affinityStrengthPtrType
 }
 
-func (in *addonTypePtr) ToAddonTypePtrOutput() AddonTypePtrOutput {
-	return pulumi.ToOutput(in).(AddonTypePtrOutput)
+func (in *affinityStrengthPtr) ToAffinityStrengthPtrOutput() AffinityStrengthPtrOutput {
+	return pulumi.ToOutput(in).(AffinityStrengthPtrOutput)
 }
 
-func (in *addonTypePtr) ToAddonTypePtrOutputWithContext(ctx context.Context) AddonTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(AddonTypePtrOutput)
+func (in *affinityStrengthPtr) ToAffinityStrengthPtrOutputWithContext(ctx context.Context) AffinityStrengthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AffinityStrengthPtrOutput)
+}
+
+// placement policy affinity type
+type AffinityType string
+
+const (
+	// is affinity
+	AffinityTypeAffinity = AffinityType("Affinity")
+	// is anti-affinity
+	AffinityTypeAntiAffinity = AffinityType("AntiAffinity")
+)
+
+func (AffinityType) ElementType() reflect.Type {
+	return reflect.TypeOf((*AffinityType)(nil)).Elem()
+}
+
+func (e AffinityType) ToAffinityTypeOutput() AffinityTypeOutput {
+	return pulumi.ToOutput(e).(AffinityTypeOutput)
+}
+
+func (e AffinityType) ToAffinityTypeOutputWithContext(ctx context.Context) AffinityTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AffinityTypeOutput)
+}
+
+func (e AffinityType) ToAffinityTypePtrOutput() AffinityTypePtrOutput {
+	return e.ToAffinityTypePtrOutputWithContext(context.Background())
+}
+
+func (e AffinityType) ToAffinityTypePtrOutputWithContext(ctx context.Context) AffinityTypePtrOutput {
+	return AffinityType(e).ToAffinityTypeOutputWithContext(ctx).ToAffinityTypePtrOutputWithContext(ctx)
+}
+
+func (e AffinityType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AffinityType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AffinityType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AffinityType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AffinityTypeOutput struct{ *pulumi.OutputState }
+
+func (AffinityTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AffinityType)(nil)).Elem()
+}
+
+func (o AffinityTypeOutput) ToAffinityTypeOutput() AffinityTypeOutput {
+	return o
+}
+
+func (o AffinityTypeOutput) ToAffinityTypeOutputWithContext(ctx context.Context) AffinityTypeOutput {
+	return o
+}
+
+func (o AffinityTypeOutput) ToAffinityTypePtrOutput() AffinityTypePtrOutput {
+	return o.ToAffinityTypePtrOutputWithContext(context.Background())
+}
+
+func (o AffinityTypeOutput) ToAffinityTypePtrOutputWithContext(ctx context.Context) AffinityTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AffinityType) *AffinityType {
+		return &v
+	}).(AffinityTypePtrOutput)
+}
+
+func (o AffinityTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AffinityTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AffinityType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AffinityTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AffinityTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AffinityType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AffinityTypePtrOutput struct{ *pulumi.OutputState }
+
+func (AffinityTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AffinityType)(nil)).Elem()
+}
+
+func (o AffinityTypePtrOutput) ToAffinityTypePtrOutput() AffinityTypePtrOutput {
+	return o
+}
+
+func (o AffinityTypePtrOutput) ToAffinityTypePtrOutputWithContext(ctx context.Context) AffinityTypePtrOutput {
+	return o
+}
+
+func (o AffinityTypePtrOutput) Elem() AffinityTypeOutput {
+	return o.ApplyT(func(v *AffinityType) AffinityType {
+		if v != nil {
+			return *v
+		}
+		var ret AffinityType
+		return ret
+	}).(AffinityTypeOutput)
+}
+
+func (o AffinityTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AffinityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AffinityType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AffinityTypeInput is an input type that accepts values of the AffinityType enum
+// A concrete instance of `AffinityTypeInput` can be one of the following:
+//
+//	AffinityTypeAffinity
+//	AffinityTypeAntiAffinity
+type AffinityTypeInput interface {
+	pulumi.Input
+
+	ToAffinityTypeOutput() AffinityTypeOutput
+	ToAffinityTypeOutputWithContext(context.Context) AffinityTypeOutput
+}
+
+var affinityTypePtrType = reflect.TypeOf((**AffinityType)(nil)).Elem()
+
+type AffinityTypePtrInput interface {
+	pulumi.Input
+
+	ToAffinityTypePtrOutput() AffinityTypePtrOutput
+	ToAffinityTypePtrOutputWithContext(context.Context) AffinityTypePtrOutput
+}
+
+type affinityTypePtr string
+
+func AffinityTypePtr(v string) AffinityTypePtrInput {
+	return (*affinityTypePtr)(&v)
+}
+
+func (*affinityTypePtr) ElementType() reflect.Type {
+	return affinityTypePtrType
+}
+
+func (in *affinityTypePtr) ToAffinityTypePtrOutput() AffinityTypePtrOutput {
+	return pulumi.ToOutput(in).(AffinityTypePtrOutput)
+}
+
+func (in *affinityTypePtr) ToAffinityTypePtrOutputWithContext(ctx context.Context) AffinityTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AffinityTypePtrOutput)
 }
 
 // The availability strategy for the private cloud
@@ -348,125 +524,127 @@ func (in *availabilityStrategyPtr) ToAvailabilityStrategyPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(AvailabilityStrategyPtrOutput)
 }
 
-// Type of DHCP: SERVER or RELAY.
-type DhcpTypeEnum string
+// placement policy azure hybrid benefit opt-in type
+type AzureHybridBenefitType string
 
 const (
-	DhcpTypeEnumSERVER = DhcpTypeEnum("SERVER")
-	DhcpTypeEnumRELAY  = DhcpTypeEnum("RELAY")
+	// is SqlHost
+	AzureHybridBenefitTypeSqlHost = AzureHybridBenefitType("SqlHost")
+	// is None
+	AzureHybridBenefitTypeNone = AzureHybridBenefitType("None")
 )
 
-func (DhcpTypeEnum) ElementType() reflect.Type {
-	return reflect.TypeOf((*DhcpTypeEnum)(nil)).Elem()
+func (AzureHybridBenefitType) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureHybridBenefitType)(nil)).Elem()
 }
 
-func (e DhcpTypeEnum) ToDhcpTypeEnumOutput() DhcpTypeEnumOutput {
-	return pulumi.ToOutput(e).(DhcpTypeEnumOutput)
+func (e AzureHybridBenefitType) ToAzureHybridBenefitTypeOutput() AzureHybridBenefitTypeOutput {
+	return pulumi.ToOutput(e).(AzureHybridBenefitTypeOutput)
 }
 
-func (e DhcpTypeEnum) ToDhcpTypeEnumOutputWithContext(ctx context.Context) DhcpTypeEnumOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(DhcpTypeEnumOutput)
+func (e AzureHybridBenefitType) ToAzureHybridBenefitTypeOutputWithContext(ctx context.Context) AzureHybridBenefitTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AzureHybridBenefitTypeOutput)
 }
 
-func (e DhcpTypeEnum) ToDhcpTypeEnumPtrOutput() DhcpTypeEnumPtrOutput {
-	return e.ToDhcpTypeEnumPtrOutputWithContext(context.Background())
+func (e AzureHybridBenefitType) ToAzureHybridBenefitTypePtrOutput() AzureHybridBenefitTypePtrOutput {
+	return e.ToAzureHybridBenefitTypePtrOutputWithContext(context.Background())
 }
 
-func (e DhcpTypeEnum) ToDhcpTypeEnumPtrOutputWithContext(ctx context.Context) DhcpTypeEnumPtrOutput {
-	return DhcpTypeEnum(e).ToDhcpTypeEnumOutputWithContext(ctx).ToDhcpTypeEnumPtrOutputWithContext(ctx)
+func (e AzureHybridBenefitType) ToAzureHybridBenefitTypePtrOutputWithContext(ctx context.Context) AzureHybridBenefitTypePtrOutput {
+	return AzureHybridBenefitType(e).ToAzureHybridBenefitTypeOutputWithContext(ctx).ToAzureHybridBenefitTypePtrOutputWithContext(ctx)
 }
 
-func (e DhcpTypeEnum) ToStringOutput() pulumi.StringOutput {
+func (e AzureHybridBenefitType) ToStringOutput() pulumi.StringOutput {
 	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e DhcpTypeEnum) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+func (e AzureHybridBenefitType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
 	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e DhcpTypeEnum) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (e AzureHybridBenefitType) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
 }
 
-func (e DhcpTypeEnum) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+func (e AzureHybridBenefitType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-type DhcpTypeEnumOutput struct{ *pulumi.OutputState }
+type AzureHybridBenefitTypeOutput struct{ *pulumi.OutputState }
 
-func (DhcpTypeEnumOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DhcpTypeEnum)(nil)).Elem()
+func (AzureHybridBenefitTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureHybridBenefitType)(nil)).Elem()
 }
 
-func (o DhcpTypeEnumOutput) ToDhcpTypeEnumOutput() DhcpTypeEnumOutput {
+func (o AzureHybridBenefitTypeOutput) ToAzureHybridBenefitTypeOutput() AzureHybridBenefitTypeOutput {
 	return o
 }
 
-func (o DhcpTypeEnumOutput) ToDhcpTypeEnumOutputWithContext(ctx context.Context) DhcpTypeEnumOutput {
+func (o AzureHybridBenefitTypeOutput) ToAzureHybridBenefitTypeOutputWithContext(ctx context.Context) AzureHybridBenefitTypeOutput {
 	return o
 }
 
-func (o DhcpTypeEnumOutput) ToDhcpTypeEnumPtrOutput() DhcpTypeEnumPtrOutput {
-	return o.ToDhcpTypeEnumPtrOutputWithContext(context.Background())
+func (o AzureHybridBenefitTypeOutput) ToAzureHybridBenefitTypePtrOutput() AzureHybridBenefitTypePtrOutput {
+	return o.ToAzureHybridBenefitTypePtrOutputWithContext(context.Background())
 }
 
-func (o DhcpTypeEnumOutput) ToDhcpTypeEnumPtrOutputWithContext(ctx context.Context) DhcpTypeEnumPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DhcpTypeEnum) *DhcpTypeEnum {
+func (o AzureHybridBenefitTypeOutput) ToAzureHybridBenefitTypePtrOutputWithContext(ctx context.Context) AzureHybridBenefitTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureHybridBenefitType) *AzureHybridBenefitType {
 		return &v
-	}).(DhcpTypeEnumPtrOutput)
+	}).(AzureHybridBenefitTypePtrOutput)
 }
 
-func (o DhcpTypeEnumOutput) ToStringOutput() pulumi.StringOutput {
+func (o AzureHybridBenefitTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
 
-func (o DhcpTypeEnumOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e DhcpTypeEnum) string {
+func (o AzureHybridBenefitTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AzureHybridBenefitType) string {
 		return string(e)
 	}).(pulumi.StringOutput)
 }
 
-func (o DhcpTypeEnumOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (o AzureHybridBenefitTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return o.ToStringPtrOutputWithContext(context.Background())
 }
 
-func (o DhcpTypeEnumOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e DhcpTypeEnum) *string {
+func (o AzureHybridBenefitTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AzureHybridBenefitType) *string {
 		v := string(e)
 		return &v
 	}).(pulumi.StringPtrOutput)
 }
 
-type DhcpTypeEnumPtrOutput struct{ *pulumi.OutputState }
+type AzureHybridBenefitTypePtrOutput struct{ *pulumi.OutputState }
 
-func (DhcpTypeEnumPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DhcpTypeEnum)(nil)).Elem()
+func (AzureHybridBenefitTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureHybridBenefitType)(nil)).Elem()
 }
 
-func (o DhcpTypeEnumPtrOutput) ToDhcpTypeEnumPtrOutput() DhcpTypeEnumPtrOutput {
+func (o AzureHybridBenefitTypePtrOutput) ToAzureHybridBenefitTypePtrOutput() AzureHybridBenefitTypePtrOutput {
 	return o
 }
 
-func (o DhcpTypeEnumPtrOutput) ToDhcpTypeEnumPtrOutputWithContext(ctx context.Context) DhcpTypeEnumPtrOutput {
+func (o AzureHybridBenefitTypePtrOutput) ToAzureHybridBenefitTypePtrOutputWithContext(ctx context.Context) AzureHybridBenefitTypePtrOutput {
 	return o
 }
 
-func (o DhcpTypeEnumPtrOutput) Elem() DhcpTypeEnumOutput {
-	return o.ApplyT(func(v *DhcpTypeEnum) DhcpTypeEnum {
+func (o AzureHybridBenefitTypePtrOutput) Elem() AzureHybridBenefitTypeOutput {
+	return o.ApplyT(func(v *AzureHybridBenefitType) AzureHybridBenefitType {
 		if v != nil {
 			return *v
 		}
-		var ret DhcpTypeEnum
+		var ret AzureHybridBenefitType
 		return ret
-	}).(DhcpTypeEnumOutput)
+	}).(AzureHybridBenefitTypeOutput)
 }
 
-func (o DhcpTypeEnumPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (o AzureHybridBenefitTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return o.ToStringPtrOutputWithContext(context.Background())
 }
 
-func (o DhcpTypeEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DhcpTypeEnum) *string {
+func (o AzureHybridBenefitTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AzureHybridBenefitType) *string {
 		if e == nil {
 			return nil
 		}
@@ -475,44 +653,52 @@ func (o DhcpTypeEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 	}).(pulumi.StringPtrOutput)
 }
 
-// DhcpTypeEnumInput is an input type that accepts values of the DhcpTypeEnum enum
-// A concrete instance of `DhcpTypeEnumInput` can be one of the following:
+// AzureHybridBenefitTypeInput is an input type that accepts values of the AzureHybridBenefitType enum
+// A concrete instance of `AzureHybridBenefitTypeInput` can be one of the following:
 //
-//	DhcpTypeEnumSERVER
-//	DhcpTypeEnumRELAY
-type DhcpTypeEnumInput interface {
+//	AzureHybridBenefitTypeSqlHost
+//	AzureHybridBenefitTypeNone
+type AzureHybridBenefitTypeInput interface {
 	pulumi.Input
 
-	ToDhcpTypeEnumOutput() DhcpTypeEnumOutput
-	ToDhcpTypeEnumOutputWithContext(context.Context) DhcpTypeEnumOutput
+	ToAzureHybridBenefitTypeOutput() AzureHybridBenefitTypeOutput
+	ToAzureHybridBenefitTypeOutputWithContext(context.Context) AzureHybridBenefitTypeOutput
 }
 
-var dhcpTypeEnumPtrType = reflect.TypeOf((**DhcpTypeEnum)(nil)).Elem()
+var azureHybridBenefitTypePtrType = reflect.TypeOf((**AzureHybridBenefitType)(nil)).Elem()
 
-type DhcpTypeEnumPtrInput interface {
+type AzureHybridBenefitTypePtrInput interface {
 	pulumi.Input
 
-	ToDhcpTypeEnumPtrOutput() DhcpTypeEnumPtrOutput
-	ToDhcpTypeEnumPtrOutputWithContext(context.Context) DhcpTypeEnumPtrOutput
+	ToAzureHybridBenefitTypePtrOutput() AzureHybridBenefitTypePtrOutput
+	ToAzureHybridBenefitTypePtrOutputWithContext(context.Context) AzureHybridBenefitTypePtrOutput
 }
 
-type dhcpTypeEnumPtr string
+type azureHybridBenefitTypePtr string
 
-func DhcpTypeEnumPtr(v string) DhcpTypeEnumPtrInput {
-	return (*dhcpTypeEnumPtr)(&v)
+func AzureHybridBenefitTypePtr(v string) AzureHybridBenefitTypePtrInput {
+	return (*azureHybridBenefitTypePtr)(&v)
 }
 
-func (*dhcpTypeEnumPtr) ElementType() reflect.Type {
-	return dhcpTypeEnumPtrType
+func (*azureHybridBenefitTypePtr) ElementType() reflect.Type {
+	return azureHybridBenefitTypePtrType
 }
 
-func (in *dhcpTypeEnumPtr) ToDhcpTypeEnumPtrOutput() DhcpTypeEnumPtrOutput {
-	return pulumi.ToOutput(in).(DhcpTypeEnumPtrOutput)
+func (in *azureHybridBenefitTypePtr) ToAzureHybridBenefitTypePtrOutput() AzureHybridBenefitTypePtrOutput {
+	return pulumi.ToOutput(in).(AzureHybridBenefitTypePtrOutput)
 }
 
-func (in *dhcpTypeEnumPtr) ToDhcpTypeEnumPtrOutputWithContext(ctx context.Context) DhcpTypeEnumPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(DhcpTypeEnumPtrOutput)
+func (in *azureHybridBenefitTypePtr) ToAzureHybridBenefitTypePtrOutputWithContext(ctx context.Context) AzureHybridBenefitTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AzureHybridBenefitTypePtrOutput)
 }
+
+// Type of DHCP: SERVER or RELAY.
+type DhcpTypeEnum string
+
+const (
+	DhcpTypeEnumSERVER = DhcpTypeEnum("SERVER")
+	DhcpTypeEnumRELAY  = DhcpTypeEnum("RELAY")
+)
 
 // DNS Service log level.
 type DnsServiceLogLevelEnum string
@@ -1195,6 +1381,13 @@ func (in *internetEnumPtr) ToInternetEnumPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(InternetEnumPtrOutput)
 }
 
+// License kind
+type LicenseKind string
+
+const (
+	LicenseKindVmwareFirewall = LicenseKind("VmwareFirewall")
+)
+
 // Mode that describes whether the LUN has to be mounted as a datastore or
 // attached as a LUN
 type MountOptionEnum string
@@ -1539,164 +1732,6 @@ const (
 	PlacementPolicyTypeVmVm   = PlacementPolicyType("VmVm")
 	PlacementPolicyTypeVmHost = PlacementPolicyType("VmHost")
 )
-
-func (PlacementPolicyType) ElementType() reflect.Type {
-	return reflect.TypeOf((*PlacementPolicyType)(nil)).Elem()
-}
-
-func (e PlacementPolicyType) ToPlacementPolicyTypeOutput() PlacementPolicyTypeOutput {
-	return pulumi.ToOutput(e).(PlacementPolicyTypeOutput)
-}
-
-func (e PlacementPolicyType) ToPlacementPolicyTypeOutputWithContext(ctx context.Context) PlacementPolicyTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(PlacementPolicyTypeOutput)
-}
-
-func (e PlacementPolicyType) ToPlacementPolicyTypePtrOutput() PlacementPolicyTypePtrOutput {
-	return e.ToPlacementPolicyTypePtrOutputWithContext(context.Background())
-}
-
-func (e PlacementPolicyType) ToPlacementPolicyTypePtrOutputWithContext(ctx context.Context) PlacementPolicyTypePtrOutput {
-	return PlacementPolicyType(e).ToPlacementPolicyTypeOutputWithContext(ctx).ToPlacementPolicyTypePtrOutputWithContext(ctx)
-}
-
-func (e PlacementPolicyType) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e PlacementPolicyType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e PlacementPolicyType) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e PlacementPolicyType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type PlacementPolicyTypeOutput struct{ *pulumi.OutputState }
-
-func (PlacementPolicyTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PlacementPolicyType)(nil)).Elem()
-}
-
-func (o PlacementPolicyTypeOutput) ToPlacementPolicyTypeOutput() PlacementPolicyTypeOutput {
-	return o
-}
-
-func (o PlacementPolicyTypeOutput) ToPlacementPolicyTypeOutputWithContext(ctx context.Context) PlacementPolicyTypeOutput {
-	return o
-}
-
-func (o PlacementPolicyTypeOutput) ToPlacementPolicyTypePtrOutput() PlacementPolicyTypePtrOutput {
-	return o.ToPlacementPolicyTypePtrOutputWithContext(context.Background())
-}
-
-func (o PlacementPolicyTypeOutput) ToPlacementPolicyTypePtrOutputWithContext(ctx context.Context) PlacementPolicyTypePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PlacementPolicyType) *PlacementPolicyType {
-		return &v
-	}).(PlacementPolicyTypePtrOutput)
-}
-
-func (o PlacementPolicyTypeOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o PlacementPolicyTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e PlacementPolicyType) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o PlacementPolicyTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o PlacementPolicyTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e PlacementPolicyType) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type PlacementPolicyTypePtrOutput struct{ *pulumi.OutputState }
-
-func (PlacementPolicyTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PlacementPolicyType)(nil)).Elem()
-}
-
-func (o PlacementPolicyTypePtrOutput) ToPlacementPolicyTypePtrOutput() PlacementPolicyTypePtrOutput {
-	return o
-}
-
-func (o PlacementPolicyTypePtrOutput) ToPlacementPolicyTypePtrOutputWithContext(ctx context.Context) PlacementPolicyTypePtrOutput {
-	return o
-}
-
-func (o PlacementPolicyTypePtrOutput) Elem() PlacementPolicyTypeOutput {
-	return o.ApplyT(func(v *PlacementPolicyType) PlacementPolicyType {
-		if v != nil {
-			return *v
-		}
-		var ret PlacementPolicyType
-		return ret
-	}).(PlacementPolicyTypeOutput)
-}
-
-func (o PlacementPolicyTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o PlacementPolicyTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PlacementPolicyType) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// PlacementPolicyTypeInput is an input type that accepts values of the PlacementPolicyType enum
-// A concrete instance of `PlacementPolicyTypeInput` can be one of the following:
-//
-//	PlacementPolicyTypeVmVm
-//	PlacementPolicyTypeVmHost
-type PlacementPolicyTypeInput interface {
-	pulumi.Input
-
-	ToPlacementPolicyTypeOutput() PlacementPolicyTypeOutput
-	ToPlacementPolicyTypeOutputWithContext(context.Context) PlacementPolicyTypeOutput
-}
-
-var placementPolicyTypePtrType = reflect.TypeOf((**PlacementPolicyType)(nil)).Elem()
-
-type PlacementPolicyTypePtrInput interface {
-	pulumi.Input
-
-	ToPlacementPolicyTypePtrOutput() PlacementPolicyTypePtrOutput
-	ToPlacementPolicyTypePtrOutputWithContext(context.Context) PlacementPolicyTypePtrOutput
-}
-
-type placementPolicyTypePtr string
-
-func PlacementPolicyTypePtr(v string) PlacementPolicyTypePtrInput {
-	return (*placementPolicyTypePtr)(&v)
-}
-
-func (*placementPolicyTypePtr) ElementType() reflect.Type {
-	return placementPolicyTypePtrType
-}
-
-func (in *placementPolicyTypePtr) ToPlacementPolicyTypePtrOutput() PlacementPolicyTypePtrOutput {
-	return pulumi.ToOutput(in).(PlacementPolicyTypePtrOutput)
-}
-
-func (in *placementPolicyTypePtr) ToPlacementPolicyTypePtrOutputWithContext(ctx context.Context) PlacementPolicyTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(PlacementPolicyTypePtrOutput)
-}
 
 // Direction of port mirroring profile.
 type PortMirroringDirectionEnum string
@@ -2383,12 +2418,14 @@ func (in *systemAssignedServiceIdentityTypePtr) ToSystemAssignedServiceIdentityT
 }
 
 func init() {
-	pulumi.RegisterOutputType(AddonTypeOutput{})
-	pulumi.RegisterOutputType(AddonTypePtrOutput{})
+	pulumi.RegisterOutputType(AffinityStrengthOutput{})
+	pulumi.RegisterOutputType(AffinityStrengthPtrOutput{})
+	pulumi.RegisterOutputType(AffinityTypeOutput{})
+	pulumi.RegisterOutputType(AffinityTypePtrOutput{})
 	pulumi.RegisterOutputType(AvailabilityStrategyOutput{})
 	pulumi.RegisterOutputType(AvailabilityStrategyPtrOutput{})
-	pulumi.RegisterOutputType(DhcpTypeEnumOutput{})
-	pulumi.RegisterOutputType(DhcpTypeEnumPtrOutput{})
+	pulumi.RegisterOutputType(AzureHybridBenefitTypeOutput{})
+	pulumi.RegisterOutputType(AzureHybridBenefitTypePtrOutput{})
 	pulumi.RegisterOutputType(DnsServiceLogLevelEnumOutput{})
 	pulumi.RegisterOutputType(DnsServiceLogLevelEnumPtrOutput{})
 	pulumi.RegisterOutputType(DnsZoneTypeOutput{})
@@ -2401,8 +2438,6 @@ func init() {
 	pulumi.RegisterOutputType(MountOptionEnumPtrOutput{})
 	pulumi.RegisterOutputType(PlacementPolicyStateEnumOutput{})
 	pulumi.RegisterOutputType(PlacementPolicyStateEnumPtrOutput{})
-	pulumi.RegisterOutputType(PlacementPolicyTypeOutput{})
-	pulumi.RegisterOutputType(PlacementPolicyTypePtrOutput{})
 	pulumi.RegisterOutputType(PortMirroringDirectionEnumOutput{})
 	pulumi.RegisterOutputType(PortMirroringDirectionEnumPtrOutput{})
 	pulumi.RegisterOutputType(SkuTierOutput{})

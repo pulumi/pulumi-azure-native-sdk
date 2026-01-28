@@ -61,6 +61,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MigrateProject{}
 	case "azure-native:migrate:MigrateProjectsControllerMigrateProject":
 		r = &MigrateProjectsControllerMigrateProject{}
+	case "azure-native:migrate:MigrationEntity":
+		r = &MigrationEntity{}
+	case "azure-native:migrate:MigrationEntityGroup":
+		r = &MigrationEntityGroup{}
 	case "azure-native:migrate:ModernizeProject":
 		r = &ModernizeProject{}
 	case "azure-native:migrate:MoveCollection":
@@ -87,10 +91,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SqlAssessmentV3Operation{}
 	case "azure-native:migrate:SqlCollectorOperation":
 		r = &SqlCollectorOperation{}
+	case "azure-native:migrate:Task":
+		r = &Task{}
 	case "azure-native:migrate:VMwareCollector":
 		r = &VMwareCollector{}
 	case "azure-native:migrate:VmwareCollectorsOperation":
 		r = &VmwareCollectorsOperation{}
+	case "azure-native:migrate:Wave":
+		r = &Wave{}
 	case "azure-native:migrate:WebAppAssessmentV2Operation":
 		r = &WebAppAssessmentV2Operation{}
 	case "azure-native:migrate:WebAppAssessmentV3Operation":

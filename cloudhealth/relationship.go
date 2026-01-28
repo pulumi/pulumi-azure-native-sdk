@@ -15,6 +15,8 @@ import (
 // A relationship (aka edge) between two entities in a health model
 //
 // Uses Azure REST API version 2025-05-01-preview.
+//
+// Other available API versions: 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudhealth [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Relationship struct {
 	pulumi.CustomResourceState
 
@@ -46,6 +48,9 @@ func NewRelationship(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:cloudhealth/v20250501preview:Relationship"),
+		},
+		{
+			Type: pulumi.String("azure-native:cloudhealth/v20260101preview:Relationship"),
 		},
 	})
 	opts = append(opts, aliases)

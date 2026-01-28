@@ -16,18 +16,16 @@ import (
 //
 // Uses Azure REST API version 2023-09-01. In version 2.x of the Azure Native provider, it used API version 2022-05-01.
 //
-// Other available API versions: 2022-05-01, 2023-03-01, 2024-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native avs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-05-01, 2023-03-01, 2024-09-01, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native avs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Addon struct {
 	pulumi.CustomResourceState
 
-	// Addon type
-	AddonType pulumi.StringOutput `pulumi:"addonType"`
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The state of the addon provisioning
-	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// The resource-specific properties for this resource.
+	Properties pulumi.AnyOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -41,9 +39,6 @@ func NewAddon(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AddonType == nil {
-		return nil, errors.New("invalid value for required argument 'AddonType'")
-	}
 	if args.PrivateCloudName == nil {
 		return nil, errors.New("invalid value for required argument 'PrivateCloudName'")
 	}
@@ -74,6 +69,9 @@ func NewAddon(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:avs/v20240901:Addon"),
+		},
+		{
+			Type: pulumi.String("azure-native:avs/v20250901:Addon"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -112,10 +110,10 @@ func (AddonState) ElementType() reflect.Type {
 type addonArgs struct {
 	// Name of the addon.
 	AddonName *string `pulumi:"addonName"`
-	// Addon type
-	AddonType string `pulumi:"addonType"`
 	// Name of the private cloud
 	PrivateCloudName string `pulumi:"privateCloudName"`
+	// The resource-specific properties for this resource.
+	Properties interface{} `pulumi:"properties"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
@@ -124,10 +122,10 @@ type addonArgs struct {
 type AddonArgs struct {
 	// Name of the addon.
 	AddonName pulumi.StringPtrInput
-	// Addon type
-	AddonType pulumi.StringInput
 	// Name of the private cloud
 	PrivateCloudName pulumi.StringInput
+	// The resource-specific properties for this resource.
+	Properties pulumi.Input
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 }
@@ -169,11 +167,6 @@ func (o AddonOutput) ToAddonOutputWithContext(ctx context.Context) AddonOutput {
 	return o
 }
 
-// Addon type
-func (o AddonOutput) AddonType() pulumi.StringOutput {
-	return o.ApplyT(func(v *Addon) pulumi.StringOutput { return v.AddonType }).(pulumi.StringOutput)
-}
-
 // The Azure API version of the resource.
 func (o AddonOutput) AzureApiVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Addon) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
@@ -184,9 +177,9 @@ func (o AddonOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Addon) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The state of the addon provisioning
-func (o AddonOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v *Addon) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+// The resource-specific properties for this resource.
+func (o AddonOutput) Properties() pulumi.AnyOutput {
+	return o.ApplyT(func(v *Addon) pulumi.AnyOutput { return v.Properties }).(pulumi.AnyOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

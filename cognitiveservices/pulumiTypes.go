@@ -1370,6 +1370,629 @@ func (o AccountPropertiesResponseOutput) UserOwnedStorage() UserOwnedStorageResp
 	return o.ApplyT(func(v AccountPropertiesResponse) []UserOwnedStorageResponse { return v.UserOwnedStorage }).(UserOwnedStorageResponseArrayOutput)
 }
 
+// Type modeling the protocol and version used by an agent/exposed by a deployment.
+type AgentProtocolVersion struct {
+	// The protocol used by the agent/exposed by a deployment.
+	Protocol *string `pulumi:"protocol"`
+	// The version of the protocol.
+	Version *string `pulumi:"version"`
+}
+
+// AgentProtocolVersionInput is an input type that accepts AgentProtocolVersionArgs and AgentProtocolVersionOutput values.
+// You can construct a concrete instance of `AgentProtocolVersionInput` via:
+//
+//	AgentProtocolVersionArgs{...}
+type AgentProtocolVersionInput interface {
+	pulumi.Input
+
+	ToAgentProtocolVersionOutput() AgentProtocolVersionOutput
+	ToAgentProtocolVersionOutputWithContext(context.Context) AgentProtocolVersionOutput
+}
+
+// Type modeling the protocol and version used by an agent/exposed by a deployment.
+type AgentProtocolVersionArgs struct {
+	// The protocol used by the agent/exposed by a deployment.
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+	// The version of the protocol.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (AgentProtocolVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentProtocolVersion)(nil)).Elem()
+}
+
+func (i AgentProtocolVersionArgs) ToAgentProtocolVersionOutput() AgentProtocolVersionOutput {
+	return i.ToAgentProtocolVersionOutputWithContext(context.Background())
+}
+
+func (i AgentProtocolVersionArgs) ToAgentProtocolVersionOutputWithContext(ctx context.Context) AgentProtocolVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentProtocolVersionOutput)
+}
+
+// AgentProtocolVersionArrayInput is an input type that accepts AgentProtocolVersionArray and AgentProtocolVersionArrayOutput values.
+// You can construct a concrete instance of `AgentProtocolVersionArrayInput` via:
+//
+//	AgentProtocolVersionArray{ AgentProtocolVersionArgs{...} }
+type AgentProtocolVersionArrayInput interface {
+	pulumi.Input
+
+	ToAgentProtocolVersionArrayOutput() AgentProtocolVersionArrayOutput
+	ToAgentProtocolVersionArrayOutputWithContext(context.Context) AgentProtocolVersionArrayOutput
+}
+
+type AgentProtocolVersionArray []AgentProtocolVersionInput
+
+func (AgentProtocolVersionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AgentProtocolVersion)(nil)).Elem()
+}
+
+func (i AgentProtocolVersionArray) ToAgentProtocolVersionArrayOutput() AgentProtocolVersionArrayOutput {
+	return i.ToAgentProtocolVersionArrayOutputWithContext(context.Background())
+}
+
+func (i AgentProtocolVersionArray) ToAgentProtocolVersionArrayOutputWithContext(ctx context.Context) AgentProtocolVersionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentProtocolVersionArrayOutput)
+}
+
+// Type modeling the protocol and version used by an agent/exposed by a deployment.
+type AgentProtocolVersionOutput struct{ *pulumi.OutputState }
+
+func (AgentProtocolVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentProtocolVersion)(nil)).Elem()
+}
+
+func (o AgentProtocolVersionOutput) ToAgentProtocolVersionOutput() AgentProtocolVersionOutput {
+	return o
+}
+
+func (o AgentProtocolVersionOutput) ToAgentProtocolVersionOutputWithContext(ctx context.Context) AgentProtocolVersionOutput {
+	return o
+}
+
+// The protocol used by the agent/exposed by a deployment.
+func (o AgentProtocolVersionOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentProtocolVersion) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+// The version of the protocol.
+func (o AgentProtocolVersionOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentProtocolVersion) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type AgentProtocolVersionArrayOutput struct{ *pulumi.OutputState }
+
+func (AgentProtocolVersionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AgentProtocolVersion)(nil)).Elem()
+}
+
+func (o AgentProtocolVersionArrayOutput) ToAgentProtocolVersionArrayOutput() AgentProtocolVersionArrayOutput {
+	return o
+}
+
+func (o AgentProtocolVersionArrayOutput) ToAgentProtocolVersionArrayOutputWithContext(ctx context.Context) AgentProtocolVersionArrayOutput {
+	return o
+}
+
+func (o AgentProtocolVersionArrayOutput) Index(i pulumi.IntInput) AgentProtocolVersionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AgentProtocolVersion {
+		return vs[0].([]AgentProtocolVersion)[vs[1].(int)]
+	}).(AgentProtocolVersionOutput)
+}
+
+// Type modeling the protocol and version used by an agent/exposed by a deployment.
+type AgentProtocolVersionResponse struct {
+	// The protocol used by the agent/exposed by a deployment.
+	Protocol *string `pulumi:"protocol"`
+	// The version of the protocol.
+	Version *string `pulumi:"version"`
+}
+
+// Type modeling the protocol and version used by an agent/exposed by a deployment.
+type AgentProtocolVersionResponseOutput struct{ *pulumi.OutputState }
+
+func (AgentProtocolVersionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentProtocolVersionResponse)(nil)).Elem()
+}
+
+func (o AgentProtocolVersionResponseOutput) ToAgentProtocolVersionResponseOutput() AgentProtocolVersionResponseOutput {
+	return o
+}
+
+func (o AgentProtocolVersionResponseOutput) ToAgentProtocolVersionResponseOutputWithContext(ctx context.Context) AgentProtocolVersionResponseOutput {
+	return o
+}
+
+// The protocol used by the agent/exposed by a deployment.
+func (o AgentProtocolVersionResponseOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentProtocolVersionResponse) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+// The version of the protocol.
+func (o AgentProtocolVersionResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentProtocolVersionResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type AgentProtocolVersionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AgentProtocolVersionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AgentProtocolVersionResponse)(nil)).Elem()
+}
+
+func (o AgentProtocolVersionResponseArrayOutput) ToAgentProtocolVersionResponseArrayOutput() AgentProtocolVersionResponseArrayOutput {
+	return o
+}
+
+func (o AgentProtocolVersionResponseArrayOutput) ToAgentProtocolVersionResponseArrayOutputWithContext(ctx context.Context) AgentProtocolVersionResponseArrayOutput {
+	return o
+}
+
+func (o AgentProtocolVersionResponseArrayOutput) Index(i pulumi.IntInput) AgentProtocolVersionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AgentProtocolVersionResponse {
+		return vs[0].([]AgentProtocolVersionResponse)[vs[1].(int)]
+	}).(AgentProtocolVersionResponseOutput)
+}
+
+// Type modeling a reference to a version of an agent definition.
+type AgentReference struct {
+	// Gets the agent's unique identifier within the organization (subscription).
+	AgentId *string `pulumi:"agentId"`
+	// Gets the agent's name (unique within the project/app).
+	AgentName *string `pulumi:"agentName"`
+}
+
+// AgentReferenceInput is an input type that accepts AgentReferenceArgs and AgentReferenceOutput values.
+// You can construct a concrete instance of `AgentReferenceInput` via:
+//
+//	AgentReferenceArgs{...}
+type AgentReferenceInput interface {
+	pulumi.Input
+
+	ToAgentReferenceOutput() AgentReferenceOutput
+	ToAgentReferenceOutputWithContext(context.Context) AgentReferenceOutput
+}
+
+// Type modeling a reference to a version of an agent definition.
+type AgentReferenceArgs struct {
+	// Gets the agent's unique identifier within the organization (subscription).
+	AgentId pulumi.StringPtrInput `pulumi:"agentId"`
+	// Gets the agent's name (unique within the project/app).
+	AgentName pulumi.StringPtrInput `pulumi:"agentName"`
+}
+
+func (AgentReferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentReference)(nil)).Elem()
+}
+
+func (i AgentReferenceArgs) ToAgentReferenceOutput() AgentReferenceOutput {
+	return i.ToAgentReferenceOutputWithContext(context.Background())
+}
+
+func (i AgentReferenceArgs) ToAgentReferenceOutputWithContext(ctx context.Context) AgentReferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentReferenceOutput)
+}
+
+// AgentReferenceArrayInput is an input type that accepts AgentReferenceArray and AgentReferenceArrayOutput values.
+// You can construct a concrete instance of `AgentReferenceArrayInput` via:
+//
+//	AgentReferenceArray{ AgentReferenceArgs{...} }
+type AgentReferenceArrayInput interface {
+	pulumi.Input
+
+	ToAgentReferenceArrayOutput() AgentReferenceArrayOutput
+	ToAgentReferenceArrayOutputWithContext(context.Context) AgentReferenceArrayOutput
+}
+
+type AgentReferenceArray []AgentReferenceInput
+
+func (AgentReferenceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AgentReference)(nil)).Elem()
+}
+
+func (i AgentReferenceArray) ToAgentReferenceArrayOutput() AgentReferenceArrayOutput {
+	return i.ToAgentReferenceArrayOutputWithContext(context.Background())
+}
+
+func (i AgentReferenceArray) ToAgentReferenceArrayOutputWithContext(ctx context.Context) AgentReferenceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentReferenceArrayOutput)
+}
+
+// Type modeling a reference to a version of an agent definition.
+type AgentReferenceOutput struct{ *pulumi.OutputState }
+
+func (AgentReferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentReference)(nil)).Elem()
+}
+
+func (o AgentReferenceOutput) ToAgentReferenceOutput() AgentReferenceOutput {
+	return o
+}
+
+func (o AgentReferenceOutput) ToAgentReferenceOutputWithContext(ctx context.Context) AgentReferenceOutput {
+	return o
+}
+
+// Gets the agent's unique identifier within the organization (subscription).
+func (o AgentReferenceOutput) AgentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentReference) *string { return v.AgentId }).(pulumi.StringPtrOutput)
+}
+
+// Gets the agent's name (unique within the project/app).
+func (o AgentReferenceOutput) AgentName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentReference) *string { return v.AgentName }).(pulumi.StringPtrOutput)
+}
+
+type AgentReferenceArrayOutput struct{ *pulumi.OutputState }
+
+func (AgentReferenceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AgentReference)(nil)).Elem()
+}
+
+func (o AgentReferenceArrayOutput) ToAgentReferenceArrayOutput() AgentReferenceArrayOutput {
+	return o
+}
+
+func (o AgentReferenceArrayOutput) ToAgentReferenceArrayOutputWithContext(ctx context.Context) AgentReferenceArrayOutput {
+	return o
+}
+
+func (o AgentReferenceArrayOutput) Index(i pulumi.IntInput) AgentReferenceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AgentReference {
+		return vs[0].([]AgentReference)[vs[1].(int)]
+	}).(AgentReferenceOutput)
+}
+
+// Agent Reference resource
+type AgentReferenceResourceResponse struct {
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// [Required] Additional attributes of the entity.
+	Properties AgentReferenceResponse `pulumi:"properties"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
+}
+
+// Agent Reference resource
+type AgentReferenceResourceResponseOutput struct{ *pulumi.OutputState }
+
+func (AgentReferenceResourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentReferenceResourceResponse)(nil)).Elem()
+}
+
+func (o AgentReferenceResourceResponseOutput) ToAgentReferenceResourceResponseOutput() AgentReferenceResourceResponseOutput {
+	return o
+}
+
+func (o AgentReferenceResourceResponseOutput) ToAgentReferenceResourceResponseOutputWithContext(ctx context.Context) AgentReferenceResourceResponseOutput {
+	return o
+}
+
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+func (o AgentReferenceResourceResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v AgentReferenceResourceResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the resource
+func (o AgentReferenceResourceResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v AgentReferenceResourceResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// [Required] Additional attributes of the entity.
+func (o AgentReferenceResourceResponseOutput) Properties() AgentReferenceResponseOutput {
+	return o.ApplyT(func(v AgentReferenceResourceResponse) AgentReferenceResponse { return v.Properties }).(AgentReferenceResponseOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o AgentReferenceResourceResponseOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v AgentReferenceResourceResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+func (o AgentReferenceResourceResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v AgentReferenceResourceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type AgentReferenceResourceResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AgentReferenceResourceResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AgentReferenceResourceResponse)(nil)).Elem()
+}
+
+func (o AgentReferenceResourceResponseArrayOutput) ToAgentReferenceResourceResponseArrayOutput() AgentReferenceResourceResponseArrayOutput {
+	return o
+}
+
+func (o AgentReferenceResourceResponseArrayOutput) ToAgentReferenceResourceResponseArrayOutputWithContext(ctx context.Context) AgentReferenceResourceResponseArrayOutput {
+	return o
+}
+
+func (o AgentReferenceResourceResponseArrayOutput) Index(i pulumi.IntInput) AgentReferenceResourceResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AgentReferenceResourceResponse {
+		return vs[0].([]AgentReferenceResourceResponse)[vs[1].(int)]
+	}).(AgentReferenceResourceResponseOutput)
+}
+
+// Type modeling a reference to a version of an agent definition.
+type AgentReferenceResponse struct {
+	// Gets the agent's unique identifier within the organization (subscription).
+	AgentId *string `pulumi:"agentId"`
+	// Gets the agent's name (unique within the project/app).
+	AgentName *string `pulumi:"agentName"`
+}
+
+// Type modeling a reference to a version of an agent definition.
+type AgentReferenceResponseOutput struct{ *pulumi.OutputState }
+
+func (AgentReferenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentReferenceResponse)(nil)).Elem()
+}
+
+func (o AgentReferenceResponseOutput) ToAgentReferenceResponseOutput() AgentReferenceResponseOutput {
+	return o
+}
+
+func (o AgentReferenceResponseOutput) ToAgentReferenceResponseOutputWithContext(ctx context.Context) AgentReferenceResponseOutput {
+	return o
+}
+
+// Gets the agent's unique identifier within the organization (subscription).
+func (o AgentReferenceResponseOutput) AgentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentReferenceResponse) *string { return v.AgentId }).(pulumi.StringPtrOutput)
+}
+
+// Gets the agent's name (unique within the project/app).
+func (o AgentReferenceResponseOutput) AgentName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentReferenceResponse) *string { return v.AgentName }).(pulumi.StringPtrOutput)
+}
+
+type AgentReferenceResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AgentReferenceResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AgentReferenceResponse)(nil)).Elem()
+}
+
+func (o AgentReferenceResponseArrayOutput) ToAgentReferenceResponseArrayOutput() AgentReferenceResponseArrayOutput {
+	return o
+}
+
+func (o AgentReferenceResponseArrayOutput) ToAgentReferenceResponseArrayOutputWithContext(ctx context.Context) AgentReferenceResponseArrayOutput {
+	return o
+}
+
+func (o AgentReferenceResponseArrayOutput) Index(i pulumi.IntInput) AgentReferenceResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AgentReferenceResponse {
+		return vs[0].([]AgentReferenceResponse)[vs[1].(int)]
+	}).(AgentReferenceResponseOutput)
+}
+
+// Resource type representing an agentic application as a management construct.
+type AgenticApplication struct {
+	// The EntraId Agentic Blueprint of the application.
+	AgentIdentityBlueprint *AssignedIdentity `pulumi:"agentIdentityBlueprint"`
+	// The list of agent definitions comprising this application, returned as references to the objects under the parent project; use this to obtain a flat list of all agent-version pairs represented by this application.
+	Agents []AgentReference `pulumi:"agents"`
+	// Gets or sets the authorization policy associated with this agentic application instance.
+	AuthorizationPolicy interface{} `pulumi:"authorizationPolicy"`
+	// The application's dedicated invocation endpoint.
+	BaseUrl *string `pulumi:"baseUrl"`
+	// The (default) agent instance identity of the application.
+	DefaultInstanceIdentity *AssignedIdentity `pulumi:"defaultInstanceIdentity"`
+	// The asset description text.
+	Description *string `pulumi:"description"`
+	// The display name of the application.
+	DisplayName *string `pulumi:"displayName"`
+	// Tag dictionary. Tags can be added, removed, and updated.
+	Tags map[string]string `pulumi:"tags"`
+	// Gets or sets the traffic routing policy for the application's deployments.
+	TrafficRoutingPolicy *ApplicationTrafficRoutingPolicy `pulumi:"trafficRoutingPolicy"`
+}
+
+// AgenticApplicationInput is an input type that accepts AgenticApplicationArgs and AgenticApplicationOutput values.
+// You can construct a concrete instance of `AgenticApplicationInput` via:
+//
+//	AgenticApplicationArgs{...}
+type AgenticApplicationInput interface {
+	pulumi.Input
+
+	ToAgenticApplicationOutput() AgenticApplicationOutput
+	ToAgenticApplicationOutputWithContext(context.Context) AgenticApplicationOutput
+}
+
+// Resource type representing an agentic application as a management construct.
+type AgenticApplicationArgs struct {
+	// The EntraId Agentic Blueprint of the application.
+	AgentIdentityBlueprint AssignedIdentityPtrInput `pulumi:"agentIdentityBlueprint"`
+	// The list of agent definitions comprising this application, returned as references to the objects under the parent project; use this to obtain a flat list of all agent-version pairs represented by this application.
+	Agents AgentReferenceArrayInput `pulumi:"agents"`
+	// Gets or sets the authorization policy associated with this agentic application instance.
+	AuthorizationPolicy pulumi.Input `pulumi:"authorizationPolicy"`
+	// The application's dedicated invocation endpoint.
+	BaseUrl pulumi.StringPtrInput `pulumi:"baseUrl"`
+	// The (default) agent instance identity of the application.
+	DefaultInstanceIdentity AssignedIdentityPtrInput `pulumi:"defaultInstanceIdentity"`
+	// The asset description text.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The display name of the application.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Tag dictionary. Tags can be added, removed, and updated.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// Gets or sets the traffic routing policy for the application's deployments.
+	TrafficRoutingPolicy ApplicationTrafficRoutingPolicyPtrInput `pulumi:"trafficRoutingPolicy"`
+}
+
+func (AgenticApplicationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgenticApplication)(nil)).Elem()
+}
+
+func (i AgenticApplicationArgs) ToAgenticApplicationOutput() AgenticApplicationOutput {
+	return i.ToAgenticApplicationOutputWithContext(context.Background())
+}
+
+func (i AgenticApplicationArgs) ToAgenticApplicationOutputWithContext(ctx context.Context) AgenticApplicationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgenticApplicationOutput)
+}
+
+// Resource type representing an agentic application as a management construct.
+type AgenticApplicationOutput struct{ *pulumi.OutputState }
+
+func (AgenticApplicationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgenticApplication)(nil)).Elem()
+}
+
+func (o AgenticApplicationOutput) ToAgenticApplicationOutput() AgenticApplicationOutput {
+	return o
+}
+
+func (o AgenticApplicationOutput) ToAgenticApplicationOutputWithContext(ctx context.Context) AgenticApplicationOutput {
+	return o
+}
+
+// The EntraId Agentic Blueprint of the application.
+func (o AgenticApplicationOutput) AgentIdentityBlueprint() AssignedIdentityPtrOutput {
+	return o.ApplyT(func(v AgenticApplication) *AssignedIdentity { return v.AgentIdentityBlueprint }).(AssignedIdentityPtrOutput)
+}
+
+// The list of agent definitions comprising this application, returned as references to the objects under the parent project; use this to obtain a flat list of all agent-version pairs represented by this application.
+func (o AgenticApplicationOutput) Agents() AgentReferenceArrayOutput {
+	return o.ApplyT(func(v AgenticApplication) []AgentReference { return v.Agents }).(AgentReferenceArrayOutput)
+}
+
+// Gets or sets the authorization policy associated with this agentic application instance.
+func (o AgenticApplicationOutput) AuthorizationPolicy() pulumi.AnyOutput {
+	return o.ApplyT(func(v AgenticApplication) interface{} { return v.AuthorizationPolicy }).(pulumi.AnyOutput)
+}
+
+// The application's dedicated invocation endpoint.
+func (o AgenticApplicationOutput) BaseUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgenticApplication) *string { return v.BaseUrl }).(pulumi.StringPtrOutput)
+}
+
+// The (default) agent instance identity of the application.
+func (o AgenticApplicationOutput) DefaultInstanceIdentity() AssignedIdentityPtrOutput {
+	return o.ApplyT(func(v AgenticApplication) *AssignedIdentity { return v.DefaultInstanceIdentity }).(AssignedIdentityPtrOutput)
+}
+
+// The asset description text.
+func (o AgenticApplicationOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgenticApplication) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The display name of the application.
+func (o AgenticApplicationOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgenticApplication) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Tag dictionary. Tags can be added, removed, and updated.
+func (o AgenticApplicationOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AgenticApplication) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Gets or sets the traffic routing policy for the application's deployments.
+func (o AgenticApplicationOutput) TrafficRoutingPolicy() ApplicationTrafficRoutingPolicyPtrOutput {
+	return o.ApplyT(func(v AgenticApplication) *ApplicationTrafficRoutingPolicy { return v.TrafficRoutingPolicy }).(ApplicationTrafficRoutingPolicyPtrOutput)
+}
+
+// Resource type representing an agentic application as a management construct.
+type AgenticApplicationResponse struct {
+	// The EntraId Agentic Blueprint of the application.
+	AgentIdentityBlueprint *AssignedIdentityResponse `pulumi:"agentIdentityBlueprint"`
+	// The list of agent definitions comprising this application, returned as references to the objects under the parent project; use this to obtain a flat list of all agent-version pairs represented by this application.
+	Agents []AgentReferenceResponse `pulumi:"agents"`
+	// Gets or sets the authorization policy associated with this agentic application instance.
+	AuthorizationPolicy interface{} `pulumi:"authorizationPolicy"`
+	// The application's dedicated invocation endpoint.
+	BaseUrl *string `pulumi:"baseUrl"`
+	// The (default) agent instance identity of the application.
+	DefaultInstanceIdentity *AssignedIdentityResponse `pulumi:"defaultInstanceIdentity"`
+	// The asset description text.
+	Description *string `pulumi:"description"`
+	// The display name of the application.
+	DisplayName *string `pulumi:"displayName"`
+	// Enabledstate of the application.
+	IsEnabled bool `pulumi:"isEnabled"`
+	// Provisioning state of the application.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Tag dictionary. Tags can be added, removed, and updated.
+	Tags map[string]string `pulumi:"tags"`
+	// Gets or sets the traffic routing policy for the application's deployments.
+	TrafficRoutingPolicy *ApplicationTrafficRoutingPolicyResponse `pulumi:"trafficRoutingPolicy"`
+}
+
+// Resource type representing an agentic application as a management construct.
+type AgenticApplicationResponseOutput struct{ *pulumi.OutputState }
+
+func (AgenticApplicationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgenticApplicationResponse)(nil)).Elem()
+}
+
+func (o AgenticApplicationResponseOutput) ToAgenticApplicationResponseOutput() AgenticApplicationResponseOutput {
+	return o
+}
+
+func (o AgenticApplicationResponseOutput) ToAgenticApplicationResponseOutputWithContext(ctx context.Context) AgenticApplicationResponseOutput {
+	return o
+}
+
+// The EntraId Agentic Blueprint of the application.
+func (o AgenticApplicationResponseOutput) AgentIdentityBlueprint() AssignedIdentityResponsePtrOutput {
+	return o.ApplyT(func(v AgenticApplicationResponse) *AssignedIdentityResponse { return v.AgentIdentityBlueprint }).(AssignedIdentityResponsePtrOutput)
+}
+
+// The list of agent definitions comprising this application, returned as references to the objects under the parent project; use this to obtain a flat list of all agent-version pairs represented by this application.
+func (o AgenticApplicationResponseOutput) Agents() AgentReferenceResponseArrayOutput {
+	return o.ApplyT(func(v AgenticApplicationResponse) []AgentReferenceResponse { return v.Agents }).(AgentReferenceResponseArrayOutput)
+}
+
+// Gets or sets the authorization policy associated with this agentic application instance.
+func (o AgenticApplicationResponseOutput) AuthorizationPolicy() pulumi.AnyOutput {
+	return o.ApplyT(func(v AgenticApplicationResponse) interface{} { return v.AuthorizationPolicy }).(pulumi.AnyOutput)
+}
+
+// The application's dedicated invocation endpoint.
+func (o AgenticApplicationResponseOutput) BaseUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgenticApplicationResponse) *string { return v.BaseUrl }).(pulumi.StringPtrOutput)
+}
+
+// The (default) agent instance identity of the application.
+func (o AgenticApplicationResponseOutput) DefaultInstanceIdentity() AssignedIdentityResponsePtrOutput {
+	return o.ApplyT(func(v AgenticApplicationResponse) *AssignedIdentityResponse { return v.DefaultInstanceIdentity }).(AssignedIdentityResponsePtrOutput)
+}
+
+// The asset description text.
+func (o AgenticApplicationResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgenticApplicationResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The display name of the application.
+func (o AgenticApplicationResponseOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgenticApplicationResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Enabledstate of the application.
+func (o AgenticApplicationResponseOutput) IsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v AgenticApplicationResponse) bool { return v.IsEnabled }).(pulumi.BoolOutput)
+}
+
+// Provisioning state of the application.
+func (o AgenticApplicationResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v AgenticApplicationResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Tag dictionary. Tags can be added, removed, and updated.
+func (o AgenticApplicationResponseOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AgenticApplicationResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Gets or sets the traffic routing policy for the application's deployments.
+func (o AgenticApplicationResponseOutput) TrafficRoutingPolicy() ApplicationTrafficRoutingPolicyResponsePtrOutput {
+	return o.ApplyT(func(v AgenticApplicationResponse) *ApplicationTrafficRoutingPolicyResponse {
+		return v.TrafficRoutingPolicy
+	}).(ApplicationTrafficRoutingPolicyResponsePtrOutput)
+}
+
 // This connection type covers the generic ApiKey auth connection categories, for examples:
 // AzureOpenAI:
 //
@@ -2238,6 +2861,639 @@ func (o ApiPropertiesResponsePtrOutput) WebsiteName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Type representing an application traffic policy as a property of an agentic application.
+type ApplicationTrafficRoutingPolicy struct {
+	// Methodology used to route traffic to the application's deployments.
+	Protocol *string `pulumi:"protocol"`
+	// Gets or sets the collection of traffic routing rules.
+	Rules []TrafficRoutingRule `pulumi:"rules"`
+}
+
+// ApplicationTrafficRoutingPolicyInput is an input type that accepts ApplicationTrafficRoutingPolicyArgs and ApplicationTrafficRoutingPolicyOutput values.
+// You can construct a concrete instance of `ApplicationTrafficRoutingPolicyInput` via:
+//
+//	ApplicationTrafficRoutingPolicyArgs{...}
+type ApplicationTrafficRoutingPolicyInput interface {
+	pulumi.Input
+
+	ToApplicationTrafficRoutingPolicyOutput() ApplicationTrafficRoutingPolicyOutput
+	ToApplicationTrafficRoutingPolicyOutputWithContext(context.Context) ApplicationTrafficRoutingPolicyOutput
+}
+
+// Type representing an application traffic policy as a property of an agentic application.
+type ApplicationTrafficRoutingPolicyArgs struct {
+	// Methodology used to route traffic to the application's deployments.
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+	// Gets or sets the collection of traffic routing rules.
+	Rules TrafficRoutingRuleArrayInput `pulumi:"rules"`
+}
+
+func (ApplicationTrafficRoutingPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationTrafficRoutingPolicy)(nil)).Elem()
+}
+
+func (i ApplicationTrafficRoutingPolicyArgs) ToApplicationTrafficRoutingPolicyOutput() ApplicationTrafficRoutingPolicyOutput {
+	return i.ToApplicationTrafficRoutingPolicyOutputWithContext(context.Background())
+}
+
+func (i ApplicationTrafficRoutingPolicyArgs) ToApplicationTrafficRoutingPolicyOutputWithContext(ctx context.Context) ApplicationTrafficRoutingPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationTrafficRoutingPolicyOutput)
+}
+
+func (i ApplicationTrafficRoutingPolicyArgs) ToApplicationTrafficRoutingPolicyPtrOutput() ApplicationTrafficRoutingPolicyPtrOutput {
+	return i.ToApplicationTrafficRoutingPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationTrafficRoutingPolicyArgs) ToApplicationTrafficRoutingPolicyPtrOutputWithContext(ctx context.Context) ApplicationTrafficRoutingPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationTrafficRoutingPolicyOutput).ToApplicationTrafficRoutingPolicyPtrOutputWithContext(ctx)
+}
+
+// ApplicationTrafficRoutingPolicyPtrInput is an input type that accepts ApplicationTrafficRoutingPolicyArgs, ApplicationTrafficRoutingPolicyPtr and ApplicationTrafficRoutingPolicyPtrOutput values.
+// You can construct a concrete instance of `ApplicationTrafficRoutingPolicyPtrInput` via:
+//
+//	        ApplicationTrafficRoutingPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApplicationTrafficRoutingPolicyPtrInput interface {
+	pulumi.Input
+
+	ToApplicationTrafficRoutingPolicyPtrOutput() ApplicationTrafficRoutingPolicyPtrOutput
+	ToApplicationTrafficRoutingPolicyPtrOutputWithContext(context.Context) ApplicationTrafficRoutingPolicyPtrOutput
+}
+
+type applicationTrafficRoutingPolicyPtrType ApplicationTrafficRoutingPolicyArgs
+
+func ApplicationTrafficRoutingPolicyPtr(v *ApplicationTrafficRoutingPolicyArgs) ApplicationTrafficRoutingPolicyPtrInput {
+	return (*applicationTrafficRoutingPolicyPtrType)(v)
+}
+
+func (*applicationTrafficRoutingPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationTrafficRoutingPolicy)(nil)).Elem()
+}
+
+func (i *applicationTrafficRoutingPolicyPtrType) ToApplicationTrafficRoutingPolicyPtrOutput() ApplicationTrafficRoutingPolicyPtrOutput {
+	return i.ToApplicationTrafficRoutingPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *applicationTrafficRoutingPolicyPtrType) ToApplicationTrafficRoutingPolicyPtrOutputWithContext(ctx context.Context) ApplicationTrafficRoutingPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationTrafficRoutingPolicyPtrOutput)
+}
+
+// Type representing an application traffic policy as a property of an agentic application.
+type ApplicationTrafficRoutingPolicyOutput struct{ *pulumi.OutputState }
+
+func (ApplicationTrafficRoutingPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationTrafficRoutingPolicy)(nil)).Elem()
+}
+
+func (o ApplicationTrafficRoutingPolicyOutput) ToApplicationTrafficRoutingPolicyOutput() ApplicationTrafficRoutingPolicyOutput {
+	return o
+}
+
+func (o ApplicationTrafficRoutingPolicyOutput) ToApplicationTrafficRoutingPolicyOutputWithContext(ctx context.Context) ApplicationTrafficRoutingPolicyOutput {
+	return o
+}
+
+func (o ApplicationTrafficRoutingPolicyOutput) ToApplicationTrafficRoutingPolicyPtrOutput() ApplicationTrafficRoutingPolicyPtrOutput {
+	return o.ToApplicationTrafficRoutingPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationTrafficRoutingPolicyOutput) ToApplicationTrafficRoutingPolicyPtrOutputWithContext(ctx context.Context) ApplicationTrafficRoutingPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationTrafficRoutingPolicy) *ApplicationTrafficRoutingPolicy {
+		return &v
+	}).(ApplicationTrafficRoutingPolicyPtrOutput)
+}
+
+// Methodology used to route traffic to the application's deployments.
+func (o ApplicationTrafficRoutingPolicyOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationTrafficRoutingPolicy) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the collection of traffic routing rules.
+func (o ApplicationTrafficRoutingPolicyOutput) Rules() TrafficRoutingRuleArrayOutput {
+	return o.ApplyT(func(v ApplicationTrafficRoutingPolicy) []TrafficRoutingRule { return v.Rules }).(TrafficRoutingRuleArrayOutput)
+}
+
+type ApplicationTrafficRoutingPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationTrafficRoutingPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationTrafficRoutingPolicy)(nil)).Elem()
+}
+
+func (o ApplicationTrafficRoutingPolicyPtrOutput) ToApplicationTrafficRoutingPolicyPtrOutput() ApplicationTrafficRoutingPolicyPtrOutput {
+	return o
+}
+
+func (o ApplicationTrafficRoutingPolicyPtrOutput) ToApplicationTrafficRoutingPolicyPtrOutputWithContext(ctx context.Context) ApplicationTrafficRoutingPolicyPtrOutput {
+	return o
+}
+
+func (o ApplicationTrafficRoutingPolicyPtrOutput) Elem() ApplicationTrafficRoutingPolicyOutput {
+	return o.ApplyT(func(v *ApplicationTrafficRoutingPolicy) ApplicationTrafficRoutingPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationTrafficRoutingPolicy
+		return ret
+	}).(ApplicationTrafficRoutingPolicyOutput)
+}
+
+// Methodology used to route traffic to the application's deployments.
+func (o ApplicationTrafficRoutingPolicyPtrOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationTrafficRoutingPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Protocol
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the collection of traffic routing rules.
+func (o ApplicationTrafficRoutingPolicyPtrOutput) Rules() TrafficRoutingRuleArrayOutput {
+	return o.ApplyT(func(v *ApplicationTrafficRoutingPolicy) []TrafficRoutingRule {
+		if v == nil {
+			return nil
+		}
+		return v.Rules
+	}).(TrafficRoutingRuleArrayOutput)
+}
+
+// Type representing an application traffic policy as a property of an agentic application.
+type ApplicationTrafficRoutingPolicyResponse struct {
+	// Methodology used to route traffic to the application's deployments.
+	Protocol *string `pulumi:"protocol"`
+	// Gets or sets the collection of traffic routing rules.
+	Rules []TrafficRoutingRuleResponse `pulumi:"rules"`
+}
+
+// Type representing an application traffic policy as a property of an agentic application.
+type ApplicationTrafficRoutingPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (ApplicationTrafficRoutingPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationTrafficRoutingPolicyResponse)(nil)).Elem()
+}
+
+func (o ApplicationTrafficRoutingPolicyResponseOutput) ToApplicationTrafficRoutingPolicyResponseOutput() ApplicationTrafficRoutingPolicyResponseOutput {
+	return o
+}
+
+func (o ApplicationTrafficRoutingPolicyResponseOutput) ToApplicationTrafficRoutingPolicyResponseOutputWithContext(ctx context.Context) ApplicationTrafficRoutingPolicyResponseOutput {
+	return o
+}
+
+// Methodology used to route traffic to the application's deployments.
+func (o ApplicationTrafficRoutingPolicyResponseOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationTrafficRoutingPolicyResponse) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the collection of traffic routing rules.
+func (o ApplicationTrafficRoutingPolicyResponseOutput) Rules() TrafficRoutingRuleResponseArrayOutput {
+	return o.ApplyT(func(v ApplicationTrafficRoutingPolicyResponse) []TrafficRoutingRuleResponse { return v.Rules }).(TrafficRoutingRuleResponseArrayOutput)
+}
+
+type ApplicationTrafficRoutingPolicyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationTrafficRoutingPolicyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationTrafficRoutingPolicyResponse)(nil)).Elem()
+}
+
+func (o ApplicationTrafficRoutingPolicyResponsePtrOutput) ToApplicationTrafficRoutingPolicyResponsePtrOutput() ApplicationTrafficRoutingPolicyResponsePtrOutput {
+	return o
+}
+
+func (o ApplicationTrafficRoutingPolicyResponsePtrOutput) ToApplicationTrafficRoutingPolicyResponsePtrOutputWithContext(ctx context.Context) ApplicationTrafficRoutingPolicyResponsePtrOutput {
+	return o
+}
+
+func (o ApplicationTrafficRoutingPolicyResponsePtrOutput) Elem() ApplicationTrafficRoutingPolicyResponseOutput {
+	return o.ApplyT(func(v *ApplicationTrafficRoutingPolicyResponse) ApplicationTrafficRoutingPolicyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationTrafficRoutingPolicyResponse
+		return ret
+	}).(ApplicationTrafficRoutingPolicyResponseOutput)
+}
+
+// Methodology used to route traffic to the application's deployments.
+func (o ApplicationTrafficRoutingPolicyResponsePtrOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationTrafficRoutingPolicyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Protocol
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the collection of traffic routing rules.
+func (o ApplicationTrafficRoutingPolicyResponsePtrOutput) Rules() TrafficRoutingRuleResponseArrayOutput {
+	return o.ApplyT(func(v *ApplicationTrafficRoutingPolicyResponse) []TrafficRoutingRuleResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Rules
+	}).(TrafficRoutingRuleResponseArrayOutput)
+}
+
+// Type representing an identity assignment
+type AssignedIdentity struct {
+	// The client ID of the identity.
+	ClientId string `pulumi:"clientId"`
+	// Specifies the kind of Entra identity described by this object.
+	Kind string `pulumi:"kind"`
+	// The principal ID of the identity.
+	PrincipalId string `pulumi:"principalId"`
+	// The subject of this identity assignment.
+	Subject *string `pulumi:"subject"`
+	// The tenant ID of the identity.
+	TenantId string `pulumi:"tenantId"`
+	// Enumeration of identity types, from the perspective of management.
+	Type string `pulumi:"type"`
+}
+
+// AssignedIdentityInput is an input type that accepts AssignedIdentityArgs and AssignedIdentityOutput values.
+// You can construct a concrete instance of `AssignedIdentityInput` via:
+//
+//	AssignedIdentityArgs{...}
+type AssignedIdentityInput interface {
+	pulumi.Input
+
+	ToAssignedIdentityOutput() AssignedIdentityOutput
+	ToAssignedIdentityOutputWithContext(context.Context) AssignedIdentityOutput
+}
+
+// Type representing an identity assignment
+type AssignedIdentityArgs struct {
+	// The client ID of the identity.
+	ClientId pulumi.StringInput `pulumi:"clientId"`
+	// Specifies the kind of Entra identity described by this object.
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// The principal ID of the identity.
+	PrincipalId pulumi.StringInput `pulumi:"principalId"`
+	// The subject of this identity assignment.
+	Subject pulumi.StringPtrInput `pulumi:"subject"`
+	// The tenant ID of the identity.
+	TenantId pulumi.StringInput `pulumi:"tenantId"`
+	// Enumeration of identity types, from the perspective of management.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (AssignedIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssignedIdentity)(nil)).Elem()
+}
+
+func (i AssignedIdentityArgs) ToAssignedIdentityOutput() AssignedIdentityOutput {
+	return i.ToAssignedIdentityOutputWithContext(context.Background())
+}
+
+func (i AssignedIdentityArgs) ToAssignedIdentityOutputWithContext(ctx context.Context) AssignedIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssignedIdentityOutput)
+}
+
+func (i AssignedIdentityArgs) ToAssignedIdentityPtrOutput() AssignedIdentityPtrOutput {
+	return i.ToAssignedIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i AssignedIdentityArgs) ToAssignedIdentityPtrOutputWithContext(ctx context.Context) AssignedIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssignedIdentityOutput).ToAssignedIdentityPtrOutputWithContext(ctx)
+}
+
+// AssignedIdentityPtrInput is an input type that accepts AssignedIdentityArgs, AssignedIdentityPtr and AssignedIdentityPtrOutput values.
+// You can construct a concrete instance of `AssignedIdentityPtrInput` via:
+//
+//	        AssignedIdentityArgs{...}
+//
+//	or:
+//
+//	        nil
+type AssignedIdentityPtrInput interface {
+	pulumi.Input
+
+	ToAssignedIdentityPtrOutput() AssignedIdentityPtrOutput
+	ToAssignedIdentityPtrOutputWithContext(context.Context) AssignedIdentityPtrOutput
+}
+
+type assignedIdentityPtrType AssignedIdentityArgs
+
+func AssignedIdentityPtr(v *AssignedIdentityArgs) AssignedIdentityPtrInput {
+	return (*assignedIdentityPtrType)(v)
+}
+
+func (*assignedIdentityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssignedIdentity)(nil)).Elem()
+}
+
+func (i *assignedIdentityPtrType) ToAssignedIdentityPtrOutput() AssignedIdentityPtrOutput {
+	return i.ToAssignedIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i *assignedIdentityPtrType) ToAssignedIdentityPtrOutputWithContext(ctx context.Context) AssignedIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssignedIdentityPtrOutput)
+}
+
+// Type representing an identity assignment
+type AssignedIdentityOutput struct{ *pulumi.OutputState }
+
+func (AssignedIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssignedIdentity)(nil)).Elem()
+}
+
+func (o AssignedIdentityOutput) ToAssignedIdentityOutput() AssignedIdentityOutput {
+	return o
+}
+
+func (o AssignedIdentityOutput) ToAssignedIdentityOutputWithContext(ctx context.Context) AssignedIdentityOutput {
+	return o
+}
+
+func (o AssignedIdentityOutput) ToAssignedIdentityPtrOutput() AssignedIdentityPtrOutput {
+	return o.ToAssignedIdentityPtrOutputWithContext(context.Background())
+}
+
+func (o AssignedIdentityOutput) ToAssignedIdentityPtrOutputWithContext(ctx context.Context) AssignedIdentityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AssignedIdentity) *AssignedIdentity {
+		return &v
+	}).(AssignedIdentityPtrOutput)
+}
+
+// The client ID of the identity.
+func (o AssignedIdentityOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v AssignedIdentity) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// Specifies the kind of Entra identity described by this object.
+func (o AssignedIdentityOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v AssignedIdentity) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The principal ID of the identity.
+func (o AssignedIdentityOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v AssignedIdentity) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+// The subject of this identity assignment.
+func (o AssignedIdentityOutput) Subject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssignedIdentity) *string { return v.Subject }).(pulumi.StringPtrOutput)
+}
+
+// The tenant ID of the identity.
+func (o AssignedIdentityOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v AssignedIdentity) string { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// Enumeration of identity types, from the perspective of management.
+func (o AssignedIdentityOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v AssignedIdentity) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type AssignedIdentityPtrOutput struct{ *pulumi.OutputState }
+
+func (AssignedIdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssignedIdentity)(nil)).Elem()
+}
+
+func (o AssignedIdentityPtrOutput) ToAssignedIdentityPtrOutput() AssignedIdentityPtrOutput {
+	return o
+}
+
+func (o AssignedIdentityPtrOutput) ToAssignedIdentityPtrOutputWithContext(ctx context.Context) AssignedIdentityPtrOutput {
+	return o
+}
+
+func (o AssignedIdentityPtrOutput) Elem() AssignedIdentityOutput {
+	return o.ApplyT(func(v *AssignedIdentity) AssignedIdentity {
+		if v != nil {
+			return *v
+		}
+		var ret AssignedIdentity
+		return ret
+	}).(AssignedIdentityOutput)
+}
+
+// The client ID of the identity.
+func (o AssignedIdentityPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssignedIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the kind of Entra identity described by this object.
+func (o AssignedIdentityPtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssignedIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
+// The principal ID of the identity.
+func (o AssignedIdentityPtrOutput) PrincipalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssignedIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrincipalId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The subject of this identity assignment.
+func (o AssignedIdentityPtrOutput) Subject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssignedIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subject
+	}).(pulumi.StringPtrOutput)
+}
+
+// The tenant ID of the identity.
+func (o AssignedIdentityPtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssignedIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Enumeration of identity types, from the perspective of management.
+func (o AssignedIdentityPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssignedIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type representing an identity assignment
+type AssignedIdentityResponse struct {
+	// The client ID of the identity.
+	ClientId string `pulumi:"clientId"`
+	// Specifies the kind of Entra identity described by this object.
+	Kind string `pulumi:"kind"`
+	// The principal ID of the identity.
+	PrincipalId string `pulumi:"principalId"`
+	// Represents the provisioning state of an identity resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The subject of this identity assignment.
+	Subject *string `pulumi:"subject"`
+	// The tenant ID of the identity.
+	TenantId string `pulumi:"tenantId"`
+	// Enumeration of identity types, from the perspective of management.
+	Type string `pulumi:"type"`
+}
+
+// Type representing an identity assignment
+type AssignedIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (AssignedIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssignedIdentityResponse)(nil)).Elem()
+}
+
+func (o AssignedIdentityResponseOutput) ToAssignedIdentityResponseOutput() AssignedIdentityResponseOutput {
+	return o
+}
+
+func (o AssignedIdentityResponseOutput) ToAssignedIdentityResponseOutputWithContext(ctx context.Context) AssignedIdentityResponseOutput {
+	return o
+}
+
+// The client ID of the identity.
+func (o AssignedIdentityResponseOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v AssignedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// Specifies the kind of Entra identity described by this object.
+func (o AssignedIdentityResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v AssignedIdentityResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The principal ID of the identity.
+func (o AssignedIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v AssignedIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+// Represents the provisioning state of an identity resource.
+func (o AssignedIdentityResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v AssignedIdentityResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The subject of this identity assignment.
+func (o AssignedIdentityResponseOutput) Subject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssignedIdentityResponse) *string { return v.Subject }).(pulumi.StringPtrOutput)
+}
+
+// The tenant ID of the identity.
+func (o AssignedIdentityResponseOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v AssignedIdentityResponse) string { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// Enumeration of identity types, from the perspective of management.
+func (o AssignedIdentityResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v AssignedIdentityResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type AssignedIdentityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AssignedIdentityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssignedIdentityResponse)(nil)).Elem()
+}
+
+func (o AssignedIdentityResponsePtrOutput) ToAssignedIdentityResponsePtrOutput() AssignedIdentityResponsePtrOutput {
+	return o
+}
+
+func (o AssignedIdentityResponsePtrOutput) ToAssignedIdentityResponsePtrOutputWithContext(ctx context.Context) AssignedIdentityResponsePtrOutput {
+	return o
+}
+
+func (o AssignedIdentityResponsePtrOutput) Elem() AssignedIdentityResponseOutput {
+	return o.ApplyT(func(v *AssignedIdentityResponse) AssignedIdentityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AssignedIdentityResponse
+		return ret
+	}).(AssignedIdentityResponseOutput)
+}
+
+// The client ID of the identity.
+func (o AssignedIdentityResponsePtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssignedIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the kind of Entra identity described by this object.
+func (o AssignedIdentityResponsePtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssignedIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
+// The principal ID of the identity.
+func (o AssignedIdentityResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssignedIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrincipalId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents the provisioning state of an identity resource.
+func (o AssignedIdentityResponsePtrOutput) ProvisioningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssignedIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProvisioningState
+	}).(pulumi.StringPtrOutput)
+}
+
+// The subject of this identity assignment.
+func (o AssignedIdentityResponsePtrOutput) Subject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssignedIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subject
+	}).(pulumi.StringPtrOutput)
+}
+
+// The tenant ID of the identity.
+func (o AssignedIdentityResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssignedIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Enumeration of identity types, from the perspective of management.
+func (o AssignedIdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssignedIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 // The call rate limit Cognitive Services account.
 type CallRateLimitResponse struct {
 	// The count value of Call Rate Limit.
@@ -2559,6 +3815,213 @@ func (o CapabilityHostResponseOutput) ThreadStorageConnections() pulumi.StringAr
 // List of VectorStore connections.
 func (o CapabilityHostResponseOutput) VectorStoreConnections() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CapabilityHostResponse) []string { return v.VectorStoreConnections }).(pulumi.StringArrayOutput)
+}
+
+// Represents a built-in authorization policy specific to Azure Bot Service/Channels authentication.
+type ChannelsBuiltInAuthorizationPolicy struct {
+	// Authorization scheme type.
+	// Expected value is 'Channels'.
+	Type string `pulumi:"type"`
+}
+
+// ChannelsBuiltInAuthorizationPolicyInput is an input type that accepts ChannelsBuiltInAuthorizationPolicyArgs and ChannelsBuiltInAuthorizationPolicyOutput values.
+// You can construct a concrete instance of `ChannelsBuiltInAuthorizationPolicyInput` via:
+//
+//	ChannelsBuiltInAuthorizationPolicyArgs{...}
+type ChannelsBuiltInAuthorizationPolicyInput interface {
+	pulumi.Input
+
+	ToChannelsBuiltInAuthorizationPolicyOutput() ChannelsBuiltInAuthorizationPolicyOutput
+	ToChannelsBuiltInAuthorizationPolicyOutputWithContext(context.Context) ChannelsBuiltInAuthorizationPolicyOutput
+}
+
+// Represents a built-in authorization policy specific to Azure Bot Service/Channels authentication.
+type ChannelsBuiltInAuthorizationPolicyArgs struct {
+	// Authorization scheme type.
+	// Expected value is 'Channels'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ChannelsBuiltInAuthorizationPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChannelsBuiltInAuthorizationPolicy)(nil)).Elem()
+}
+
+func (i ChannelsBuiltInAuthorizationPolicyArgs) ToChannelsBuiltInAuthorizationPolicyOutput() ChannelsBuiltInAuthorizationPolicyOutput {
+	return i.ToChannelsBuiltInAuthorizationPolicyOutputWithContext(context.Background())
+}
+
+func (i ChannelsBuiltInAuthorizationPolicyArgs) ToChannelsBuiltInAuthorizationPolicyOutputWithContext(ctx context.Context) ChannelsBuiltInAuthorizationPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChannelsBuiltInAuthorizationPolicyOutput)
+}
+
+func (i ChannelsBuiltInAuthorizationPolicyArgs) ToChannelsBuiltInAuthorizationPolicyPtrOutput() ChannelsBuiltInAuthorizationPolicyPtrOutput {
+	return i.ToChannelsBuiltInAuthorizationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i ChannelsBuiltInAuthorizationPolicyArgs) ToChannelsBuiltInAuthorizationPolicyPtrOutputWithContext(ctx context.Context) ChannelsBuiltInAuthorizationPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChannelsBuiltInAuthorizationPolicyOutput).ToChannelsBuiltInAuthorizationPolicyPtrOutputWithContext(ctx)
+}
+
+// ChannelsBuiltInAuthorizationPolicyPtrInput is an input type that accepts ChannelsBuiltInAuthorizationPolicyArgs, ChannelsBuiltInAuthorizationPolicyPtr and ChannelsBuiltInAuthorizationPolicyPtrOutput values.
+// You can construct a concrete instance of `ChannelsBuiltInAuthorizationPolicyPtrInput` via:
+//
+//	        ChannelsBuiltInAuthorizationPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ChannelsBuiltInAuthorizationPolicyPtrInput interface {
+	pulumi.Input
+
+	ToChannelsBuiltInAuthorizationPolicyPtrOutput() ChannelsBuiltInAuthorizationPolicyPtrOutput
+	ToChannelsBuiltInAuthorizationPolicyPtrOutputWithContext(context.Context) ChannelsBuiltInAuthorizationPolicyPtrOutput
+}
+
+type channelsBuiltInAuthorizationPolicyPtrType ChannelsBuiltInAuthorizationPolicyArgs
+
+func ChannelsBuiltInAuthorizationPolicyPtr(v *ChannelsBuiltInAuthorizationPolicyArgs) ChannelsBuiltInAuthorizationPolicyPtrInput {
+	return (*channelsBuiltInAuthorizationPolicyPtrType)(v)
+}
+
+func (*channelsBuiltInAuthorizationPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ChannelsBuiltInAuthorizationPolicy)(nil)).Elem()
+}
+
+func (i *channelsBuiltInAuthorizationPolicyPtrType) ToChannelsBuiltInAuthorizationPolicyPtrOutput() ChannelsBuiltInAuthorizationPolicyPtrOutput {
+	return i.ToChannelsBuiltInAuthorizationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *channelsBuiltInAuthorizationPolicyPtrType) ToChannelsBuiltInAuthorizationPolicyPtrOutputWithContext(ctx context.Context) ChannelsBuiltInAuthorizationPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChannelsBuiltInAuthorizationPolicyPtrOutput)
+}
+
+// Represents a built-in authorization policy specific to Azure Bot Service/Channels authentication.
+type ChannelsBuiltInAuthorizationPolicyOutput struct{ *pulumi.OutputState }
+
+func (ChannelsBuiltInAuthorizationPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChannelsBuiltInAuthorizationPolicy)(nil)).Elem()
+}
+
+func (o ChannelsBuiltInAuthorizationPolicyOutput) ToChannelsBuiltInAuthorizationPolicyOutput() ChannelsBuiltInAuthorizationPolicyOutput {
+	return o
+}
+
+func (o ChannelsBuiltInAuthorizationPolicyOutput) ToChannelsBuiltInAuthorizationPolicyOutputWithContext(ctx context.Context) ChannelsBuiltInAuthorizationPolicyOutput {
+	return o
+}
+
+func (o ChannelsBuiltInAuthorizationPolicyOutput) ToChannelsBuiltInAuthorizationPolicyPtrOutput() ChannelsBuiltInAuthorizationPolicyPtrOutput {
+	return o.ToChannelsBuiltInAuthorizationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o ChannelsBuiltInAuthorizationPolicyOutput) ToChannelsBuiltInAuthorizationPolicyPtrOutputWithContext(ctx context.Context) ChannelsBuiltInAuthorizationPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ChannelsBuiltInAuthorizationPolicy) *ChannelsBuiltInAuthorizationPolicy {
+		return &v
+	}).(ChannelsBuiltInAuthorizationPolicyPtrOutput)
+}
+
+// Authorization scheme type.
+// Expected value is 'Channels'.
+func (o ChannelsBuiltInAuthorizationPolicyOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ChannelsBuiltInAuthorizationPolicy) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ChannelsBuiltInAuthorizationPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (ChannelsBuiltInAuthorizationPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ChannelsBuiltInAuthorizationPolicy)(nil)).Elem()
+}
+
+func (o ChannelsBuiltInAuthorizationPolicyPtrOutput) ToChannelsBuiltInAuthorizationPolicyPtrOutput() ChannelsBuiltInAuthorizationPolicyPtrOutput {
+	return o
+}
+
+func (o ChannelsBuiltInAuthorizationPolicyPtrOutput) ToChannelsBuiltInAuthorizationPolicyPtrOutputWithContext(ctx context.Context) ChannelsBuiltInAuthorizationPolicyPtrOutput {
+	return o
+}
+
+func (o ChannelsBuiltInAuthorizationPolicyPtrOutput) Elem() ChannelsBuiltInAuthorizationPolicyOutput {
+	return o.ApplyT(func(v *ChannelsBuiltInAuthorizationPolicy) ChannelsBuiltInAuthorizationPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ChannelsBuiltInAuthorizationPolicy
+		return ret
+	}).(ChannelsBuiltInAuthorizationPolicyOutput)
+}
+
+// Authorization scheme type.
+// Expected value is 'Channels'.
+func (o ChannelsBuiltInAuthorizationPolicyPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ChannelsBuiltInAuthorizationPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents a built-in authorization policy specific to Azure Bot Service/Channels authentication.
+type ChannelsBuiltInAuthorizationPolicyResponse struct {
+	// Authorization scheme type.
+	// Expected value is 'Channels'.
+	Type string `pulumi:"type"`
+}
+
+// Represents a built-in authorization policy specific to Azure Bot Service/Channels authentication.
+type ChannelsBuiltInAuthorizationPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (ChannelsBuiltInAuthorizationPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChannelsBuiltInAuthorizationPolicyResponse)(nil)).Elem()
+}
+
+func (o ChannelsBuiltInAuthorizationPolicyResponseOutput) ToChannelsBuiltInAuthorizationPolicyResponseOutput() ChannelsBuiltInAuthorizationPolicyResponseOutput {
+	return o
+}
+
+func (o ChannelsBuiltInAuthorizationPolicyResponseOutput) ToChannelsBuiltInAuthorizationPolicyResponseOutputWithContext(ctx context.Context) ChannelsBuiltInAuthorizationPolicyResponseOutput {
+	return o
+}
+
+// Authorization scheme type.
+// Expected value is 'Channels'.
+func (o ChannelsBuiltInAuthorizationPolicyResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ChannelsBuiltInAuthorizationPolicyResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ChannelsBuiltInAuthorizationPolicyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ChannelsBuiltInAuthorizationPolicyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ChannelsBuiltInAuthorizationPolicyResponse)(nil)).Elem()
+}
+
+func (o ChannelsBuiltInAuthorizationPolicyResponsePtrOutput) ToChannelsBuiltInAuthorizationPolicyResponsePtrOutput() ChannelsBuiltInAuthorizationPolicyResponsePtrOutput {
+	return o
+}
+
+func (o ChannelsBuiltInAuthorizationPolicyResponsePtrOutput) ToChannelsBuiltInAuthorizationPolicyResponsePtrOutputWithContext(ctx context.Context) ChannelsBuiltInAuthorizationPolicyResponsePtrOutput {
+	return o
+}
+
+func (o ChannelsBuiltInAuthorizationPolicyResponsePtrOutput) Elem() ChannelsBuiltInAuthorizationPolicyResponseOutput {
+	return o.ApplyT(func(v *ChannelsBuiltInAuthorizationPolicyResponse) ChannelsBuiltInAuthorizationPolicyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ChannelsBuiltInAuthorizationPolicyResponse
+		return ret
+	}).(ChannelsBuiltInAuthorizationPolicyResponseOutput)
+}
+
+// Authorization scheme type.
+// Expected value is 'Channels'.
+func (o ChannelsBuiltInAuthorizationPolicyResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ChannelsBuiltInAuthorizationPolicyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 // Cognitive Services account commitment period.
@@ -6072,6 +7535,184 @@ func (o CustomKeysResponsePtrOutput) Keys() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+// Gets or sets the source to which filter applies.
+type CustomTopicConfig struct {
+	// If blocking would occur.
+	Blocking *bool `pulumi:"blocking"`
+	// Content source to apply the Content Filters.
+	Source *string `pulumi:"source"`
+	// Name of RAI topic.
+	TopicName *string `pulumi:"topicName"`
+}
+
+// CustomTopicConfigInput is an input type that accepts CustomTopicConfigArgs and CustomTopicConfigOutput values.
+// You can construct a concrete instance of `CustomTopicConfigInput` via:
+//
+//	CustomTopicConfigArgs{...}
+type CustomTopicConfigInput interface {
+	pulumi.Input
+
+	ToCustomTopicConfigOutput() CustomTopicConfigOutput
+	ToCustomTopicConfigOutputWithContext(context.Context) CustomTopicConfigOutput
+}
+
+// Gets or sets the source to which filter applies.
+type CustomTopicConfigArgs struct {
+	// If blocking would occur.
+	Blocking pulumi.BoolPtrInput `pulumi:"blocking"`
+	// Content source to apply the Content Filters.
+	Source pulumi.StringPtrInput `pulumi:"source"`
+	// Name of RAI topic.
+	TopicName pulumi.StringPtrInput `pulumi:"topicName"`
+}
+
+func (CustomTopicConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomTopicConfig)(nil)).Elem()
+}
+
+func (i CustomTopicConfigArgs) ToCustomTopicConfigOutput() CustomTopicConfigOutput {
+	return i.ToCustomTopicConfigOutputWithContext(context.Background())
+}
+
+func (i CustomTopicConfigArgs) ToCustomTopicConfigOutputWithContext(ctx context.Context) CustomTopicConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomTopicConfigOutput)
+}
+
+// CustomTopicConfigArrayInput is an input type that accepts CustomTopicConfigArray and CustomTopicConfigArrayOutput values.
+// You can construct a concrete instance of `CustomTopicConfigArrayInput` via:
+//
+//	CustomTopicConfigArray{ CustomTopicConfigArgs{...} }
+type CustomTopicConfigArrayInput interface {
+	pulumi.Input
+
+	ToCustomTopicConfigArrayOutput() CustomTopicConfigArrayOutput
+	ToCustomTopicConfigArrayOutputWithContext(context.Context) CustomTopicConfigArrayOutput
+}
+
+type CustomTopicConfigArray []CustomTopicConfigInput
+
+func (CustomTopicConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomTopicConfig)(nil)).Elem()
+}
+
+func (i CustomTopicConfigArray) ToCustomTopicConfigArrayOutput() CustomTopicConfigArrayOutput {
+	return i.ToCustomTopicConfigArrayOutputWithContext(context.Background())
+}
+
+func (i CustomTopicConfigArray) ToCustomTopicConfigArrayOutputWithContext(ctx context.Context) CustomTopicConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomTopicConfigArrayOutput)
+}
+
+// Gets or sets the source to which filter applies.
+type CustomTopicConfigOutput struct{ *pulumi.OutputState }
+
+func (CustomTopicConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomTopicConfig)(nil)).Elem()
+}
+
+func (o CustomTopicConfigOutput) ToCustomTopicConfigOutput() CustomTopicConfigOutput {
+	return o
+}
+
+func (o CustomTopicConfigOutput) ToCustomTopicConfigOutputWithContext(ctx context.Context) CustomTopicConfigOutput {
+	return o
+}
+
+// If blocking would occur.
+func (o CustomTopicConfigOutput) Blocking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CustomTopicConfig) *bool { return v.Blocking }).(pulumi.BoolPtrOutput)
+}
+
+// Content source to apply the Content Filters.
+func (o CustomTopicConfigOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomTopicConfig) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+// Name of RAI topic.
+func (o CustomTopicConfigOutput) TopicName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomTopicConfig) *string { return v.TopicName }).(pulumi.StringPtrOutput)
+}
+
+type CustomTopicConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (CustomTopicConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomTopicConfig)(nil)).Elem()
+}
+
+func (o CustomTopicConfigArrayOutput) ToCustomTopicConfigArrayOutput() CustomTopicConfigArrayOutput {
+	return o
+}
+
+func (o CustomTopicConfigArrayOutput) ToCustomTopicConfigArrayOutputWithContext(ctx context.Context) CustomTopicConfigArrayOutput {
+	return o
+}
+
+func (o CustomTopicConfigArrayOutput) Index(i pulumi.IntInput) CustomTopicConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomTopicConfig {
+		return vs[0].([]CustomTopicConfig)[vs[1].(int)]
+	}).(CustomTopicConfigOutput)
+}
+
+// Gets or sets the source to which filter applies.
+type CustomTopicConfigResponse struct {
+	// If blocking would occur.
+	Blocking *bool `pulumi:"blocking"`
+	// Content source to apply the Content Filters.
+	Source *string `pulumi:"source"`
+	// Name of RAI topic.
+	TopicName *string `pulumi:"topicName"`
+}
+
+// Gets or sets the source to which filter applies.
+type CustomTopicConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (CustomTopicConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomTopicConfigResponse)(nil)).Elem()
+}
+
+func (o CustomTopicConfigResponseOutput) ToCustomTopicConfigResponseOutput() CustomTopicConfigResponseOutput {
+	return o
+}
+
+func (o CustomTopicConfigResponseOutput) ToCustomTopicConfigResponseOutputWithContext(ctx context.Context) CustomTopicConfigResponseOutput {
+	return o
+}
+
+// If blocking would occur.
+func (o CustomTopicConfigResponseOutput) Blocking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CustomTopicConfigResponse) *bool { return v.Blocking }).(pulumi.BoolPtrOutput)
+}
+
+// Content source to apply the Content Filters.
+func (o CustomTopicConfigResponseOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomTopicConfigResponse) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+// Name of RAI topic.
+func (o CustomTopicConfigResponseOutput) TopicName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomTopicConfigResponse) *string { return v.TopicName }).(pulumi.StringPtrOutput)
+}
+
+type CustomTopicConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (CustomTopicConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomTopicConfigResponse)(nil)).Elem()
+}
+
+func (o CustomTopicConfigResponseArrayOutput) ToCustomTopicConfigResponseArrayOutput() CustomTopicConfigResponseArrayOutput {
+	return o
+}
+
+func (o CustomTopicConfigResponseArrayOutput) ToCustomTopicConfigResponseArrayOutputWithContext(ctx context.Context) CustomTopicConfigResponseArrayOutput {
+	return o
+}
+
+func (o CustomTopicConfigResponseArrayOutput) Index(i pulumi.IntInput) CustomTopicConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomTopicConfigResponse {
+		return vs[0].([]CustomTopicConfigResponse)[vs[1].(int)]
+	}).(CustomTopicConfigResponseOutput)
+}
+
 // Internal use only.
 type DeploymentCapacitySettings struct {
 	// The designated capacity.
@@ -7848,6 +9489,384 @@ func (o EncryptionScopePropertiesResponseOutput) State() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v EncryptionScopePropertiesResponse) *string { return v.State }).(pulumi.StringPtrOutput)
 }
 
+// FQDN Outbound Rule for the managed network of a cognitive services account.
+type FqdnOutboundRule struct {
+	// Category of a managed network Outbound Rule of a cognitive services account.
+	Category    *string `pulumi:"category"`
+	Destination *string `pulumi:"destination"`
+	// Type of a managed network Outbound Rule of a cognitive services account.
+	Status *string `pulumi:"status"`
+	// Type of a managed network Outbound Rule of a cognitive services account.
+	// Expected value is 'FQDN'.
+	Type string `pulumi:"type"`
+}
+
+// FqdnOutboundRuleInput is an input type that accepts FqdnOutboundRuleArgs and FqdnOutboundRuleOutput values.
+// You can construct a concrete instance of `FqdnOutboundRuleInput` via:
+//
+//	FqdnOutboundRuleArgs{...}
+type FqdnOutboundRuleInput interface {
+	pulumi.Input
+
+	ToFqdnOutboundRuleOutput() FqdnOutboundRuleOutput
+	ToFqdnOutboundRuleOutputWithContext(context.Context) FqdnOutboundRuleOutput
+}
+
+// FQDN Outbound Rule for the managed network of a cognitive services account.
+type FqdnOutboundRuleArgs struct {
+	// Category of a managed network Outbound Rule of a cognitive services account.
+	Category    pulumi.StringPtrInput `pulumi:"category"`
+	Destination pulumi.StringPtrInput `pulumi:"destination"`
+	// Type of a managed network Outbound Rule of a cognitive services account.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// Type of a managed network Outbound Rule of a cognitive services account.
+	// Expected value is 'FQDN'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (FqdnOutboundRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FqdnOutboundRule)(nil)).Elem()
+}
+
+func (i FqdnOutboundRuleArgs) ToFqdnOutboundRuleOutput() FqdnOutboundRuleOutput {
+	return i.ToFqdnOutboundRuleOutputWithContext(context.Background())
+}
+
+func (i FqdnOutboundRuleArgs) ToFqdnOutboundRuleOutputWithContext(ctx context.Context) FqdnOutboundRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FqdnOutboundRuleOutput)
+}
+
+// FQDN Outbound Rule for the managed network of a cognitive services account.
+type FqdnOutboundRuleOutput struct{ *pulumi.OutputState }
+
+func (FqdnOutboundRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FqdnOutboundRule)(nil)).Elem()
+}
+
+func (o FqdnOutboundRuleOutput) ToFqdnOutboundRuleOutput() FqdnOutboundRuleOutput {
+	return o
+}
+
+func (o FqdnOutboundRuleOutput) ToFqdnOutboundRuleOutputWithContext(ctx context.Context) FqdnOutboundRuleOutput {
+	return o
+}
+
+// Category of a managed network Outbound Rule of a cognitive services account.
+func (o FqdnOutboundRuleOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FqdnOutboundRule) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+func (o FqdnOutboundRuleOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FqdnOutboundRule) *string { return v.Destination }).(pulumi.StringPtrOutput)
+}
+
+// Type of a managed network Outbound Rule of a cognitive services account.
+func (o FqdnOutboundRuleOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FqdnOutboundRule) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// Type of a managed network Outbound Rule of a cognitive services account.
+// Expected value is 'FQDN'.
+func (o FqdnOutboundRuleOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v FqdnOutboundRule) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// FQDN Outbound Rule for the managed network of a cognitive services account.
+type FqdnOutboundRuleResponse struct {
+	// Category of a managed network Outbound Rule of a cognitive services account.
+	Category    *string `pulumi:"category"`
+	Destination *string `pulumi:"destination"`
+	// Error information about an outbound rule of a cognitive services account if RuleStatus is failed.
+	ErrorInformation string   `pulumi:"errorInformation"`
+	ParentRuleNames  []string `pulumi:"parentRuleNames"`
+	// Type of a managed network Outbound Rule of a cognitive services account.
+	Status *string `pulumi:"status"`
+	// Type of a managed network Outbound Rule of a cognitive services account.
+	// Expected value is 'FQDN'.
+	Type string `pulumi:"type"`
+}
+
+// FQDN Outbound Rule for the managed network of a cognitive services account.
+type FqdnOutboundRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (FqdnOutboundRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FqdnOutboundRuleResponse)(nil)).Elem()
+}
+
+func (o FqdnOutboundRuleResponseOutput) ToFqdnOutboundRuleResponseOutput() FqdnOutboundRuleResponseOutput {
+	return o
+}
+
+func (o FqdnOutboundRuleResponseOutput) ToFqdnOutboundRuleResponseOutputWithContext(ctx context.Context) FqdnOutboundRuleResponseOutput {
+	return o
+}
+
+// Category of a managed network Outbound Rule of a cognitive services account.
+func (o FqdnOutboundRuleResponseOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FqdnOutboundRuleResponse) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+func (o FqdnOutboundRuleResponseOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FqdnOutboundRuleResponse) *string { return v.Destination }).(pulumi.StringPtrOutput)
+}
+
+// Error information about an outbound rule of a cognitive services account if RuleStatus is failed.
+func (o FqdnOutboundRuleResponseOutput) ErrorInformation() pulumi.StringOutput {
+	return o.ApplyT(func(v FqdnOutboundRuleResponse) string { return v.ErrorInformation }).(pulumi.StringOutput)
+}
+
+func (o FqdnOutboundRuleResponseOutput) ParentRuleNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FqdnOutboundRuleResponse) []string { return v.ParentRuleNames }).(pulumi.StringArrayOutput)
+}
+
+// Type of a managed network Outbound Rule of a cognitive services account.
+func (o FqdnOutboundRuleResponseOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FqdnOutboundRuleResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// Type of a managed network Outbound Rule of a cognitive services account.
+// Expected value is 'FQDN'.
+func (o FqdnOutboundRuleResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v FqdnOutboundRuleResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Represents a hosted agent deployment where the underlying infrastructure is owned by the platform.
+type HostedAgentDeployment struct {
+	// Returns a flat list of agent:version deployed in this deployment.
+	Agents []VersionedAgentReference `pulumi:"agents"`
+	// Gets or sets the unique identifier of the deployment.
+	DeploymentId *string `pulumi:"deploymentId"`
+	// Specifies the type of deployment for an agent, indicating how the underlying compute and network infrastructure is managed.
+	// Expected value is 'Hosted'.
+	DeploymentType string `pulumi:"deploymentType"`
+	// The asset description text.
+	Description *string `pulumi:"description"`
+	// Gets or sets the display name of the deployment.
+	DisplayName *string `pulumi:"displayName"`
+	// Gets or sets the maximum number of replicas for this hosted deployment.
+	MaxReplicas *int `pulumi:"maxReplicas"`
+	// Gets or sets the minimum number of replicas for this hosted deployment.
+	MinReplicas *int `pulumi:"minReplicas"`
+	// Gets or sets the supported protocol types and versions exposed by this deployment.
+	Protocols []AgentProtocolVersion `pulumi:"protocols"`
+	// Gets or sets the current operational state of the deployment (and, intrinsically, of the comprising agents).
+	State *string `pulumi:"state"`
+	// Tag dictionary. Tags can be added, removed, and updated.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// HostedAgentDeploymentInput is an input type that accepts HostedAgentDeploymentArgs and HostedAgentDeploymentOutput values.
+// You can construct a concrete instance of `HostedAgentDeploymentInput` via:
+//
+//	HostedAgentDeploymentArgs{...}
+type HostedAgentDeploymentInput interface {
+	pulumi.Input
+
+	ToHostedAgentDeploymentOutput() HostedAgentDeploymentOutput
+	ToHostedAgentDeploymentOutputWithContext(context.Context) HostedAgentDeploymentOutput
+}
+
+// Represents a hosted agent deployment where the underlying infrastructure is owned by the platform.
+type HostedAgentDeploymentArgs struct {
+	// Returns a flat list of agent:version deployed in this deployment.
+	Agents VersionedAgentReferenceArrayInput `pulumi:"agents"`
+	// Gets or sets the unique identifier of the deployment.
+	DeploymentId pulumi.StringPtrInput `pulumi:"deploymentId"`
+	// Specifies the type of deployment for an agent, indicating how the underlying compute and network infrastructure is managed.
+	// Expected value is 'Hosted'.
+	DeploymentType pulumi.StringInput `pulumi:"deploymentType"`
+	// The asset description text.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Gets or sets the display name of the deployment.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Gets or sets the maximum number of replicas for this hosted deployment.
+	MaxReplicas pulumi.IntPtrInput `pulumi:"maxReplicas"`
+	// Gets or sets the minimum number of replicas for this hosted deployment.
+	MinReplicas pulumi.IntPtrInput `pulumi:"minReplicas"`
+	// Gets or sets the supported protocol types and versions exposed by this deployment.
+	Protocols AgentProtocolVersionArrayInput `pulumi:"protocols"`
+	// Gets or sets the current operational state of the deployment (and, intrinsically, of the comprising agents).
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// Tag dictionary. Tags can be added, removed, and updated.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (HostedAgentDeploymentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostedAgentDeployment)(nil)).Elem()
+}
+
+func (i HostedAgentDeploymentArgs) ToHostedAgentDeploymentOutput() HostedAgentDeploymentOutput {
+	return i.ToHostedAgentDeploymentOutputWithContext(context.Background())
+}
+
+func (i HostedAgentDeploymentArgs) ToHostedAgentDeploymentOutputWithContext(ctx context.Context) HostedAgentDeploymentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostedAgentDeploymentOutput)
+}
+
+// Represents a hosted agent deployment where the underlying infrastructure is owned by the platform.
+type HostedAgentDeploymentOutput struct{ *pulumi.OutputState }
+
+func (HostedAgentDeploymentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostedAgentDeployment)(nil)).Elem()
+}
+
+func (o HostedAgentDeploymentOutput) ToHostedAgentDeploymentOutput() HostedAgentDeploymentOutput {
+	return o
+}
+
+func (o HostedAgentDeploymentOutput) ToHostedAgentDeploymentOutputWithContext(ctx context.Context) HostedAgentDeploymentOutput {
+	return o
+}
+
+// Returns a flat list of agent:version deployed in this deployment.
+func (o HostedAgentDeploymentOutput) Agents() VersionedAgentReferenceArrayOutput {
+	return o.ApplyT(func(v HostedAgentDeployment) []VersionedAgentReference { return v.Agents }).(VersionedAgentReferenceArrayOutput)
+}
+
+// Gets or sets the unique identifier of the deployment.
+func (o HostedAgentDeploymentOutput) DeploymentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HostedAgentDeployment) *string { return v.DeploymentId }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the type of deployment for an agent, indicating how the underlying compute and network infrastructure is managed.
+// Expected value is 'Hosted'.
+func (o HostedAgentDeploymentOutput) DeploymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v HostedAgentDeployment) string { return v.DeploymentType }).(pulumi.StringOutput)
+}
+
+// The asset description text.
+func (o HostedAgentDeploymentOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HostedAgentDeployment) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the display name of the deployment.
+func (o HostedAgentDeploymentOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HostedAgentDeployment) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the maximum number of replicas for this hosted deployment.
+func (o HostedAgentDeploymentOutput) MaxReplicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v HostedAgentDeployment) *int { return v.MaxReplicas }).(pulumi.IntPtrOutput)
+}
+
+// Gets or sets the minimum number of replicas for this hosted deployment.
+func (o HostedAgentDeploymentOutput) MinReplicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v HostedAgentDeployment) *int { return v.MinReplicas }).(pulumi.IntPtrOutput)
+}
+
+// Gets or sets the supported protocol types and versions exposed by this deployment.
+func (o HostedAgentDeploymentOutput) Protocols() AgentProtocolVersionArrayOutput {
+	return o.ApplyT(func(v HostedAgentDeployment) []AgentProtocolVersion { return v.Protocols }).(AgentProtocolVersionArrayOutput)
+}
+
+// Gets or sets the current operational state of the deployment (and, intrinsically, of the comprising agents).
+func (o HostedAgentDeploymentOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HostedAgentDeployment) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// Tag dictionary. Tags can be added, removed, and updated.
+func (o HostedAgentDeploymentOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v HostedAgentDeployment) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Represents a hosted agent deployment where the underlying infrastructure is owned by the platform.
+type HostedAgentDeploymentResponse struct {
+	// Returns a flat list of agent:version deployed in this deployment.
+	Agents []VersionedAgentReferenceResponse `pulumi:"agents"`
+	// Gets or sets the unique identifier of the deployment.
+	DeploymentId *string `pulumi:"deploymentId"`
+	// Specifies the type of deployment for an agent, indicating how the underlying compute and network infrastructure is managed.
+	// Expected value is 'Hosted'.
+	DeploymentType string `pulumi:"deploymentType"`
+	// The asset description text.
+	Description *string `pulumi:"description"`
+	// Gets or sets the display name of the deployment.
+	DisplayName *string `pulumi:"displayName"`
+	// Gets or sets the maximum number of replicas for this hosted deployment.
+	MaxReplicas *int `pulumi:"maxReplicas"`
+	// Gets or sets the minimum number of replicas for this hosted deployment.
+	MinReplicas *int `pulumi:"minReplicas"`
+	// Gets or sets the supported protocol types and versions exposed by this deployment.
+	Protocols []AgentProtocolVersionResponse `pulumi:"protocols"`
+	// Gets or sets the provisioning state of the agent deployment.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Gets or sets the current operational state of the deployment (and, intrinsically, of the comprising agents).
+	State *string `pulumi:"state"`
+	// Tag dictionary. Tags can be added, removed, and updated.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// Represents a hosted agent deployment where the underlying infrastructure is owned by the platform.
+type HostedAgentDeploymentResponseOutput struct{ *pulumi.OutputState }
+
+func (HostedAgentDeploymentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostedAgentDeploymentResponse)(nil)).Elem()
+}
+
+func (o HostedAgentDeploymentResponseOutput) ToHostedAgentDeploymentResponseOutput() HostedAgentDeploymentResponseOutput {
+	return o
+}
+
+func (o HostedAgentDeploymentResponseOutput) ToHostedAgentDeploymentResponseOutputWithContext(ctx context.Context) HostedAgentDeploymentResponseOutput {
+	return o
+}
+
+// Returns a flat list of agent:version deployed in this deployment.
+func (o HostedAgentDeploymentResponseOutput) Agents() VersionedAgentReferenceResponseArrayOutput {
+	return o.ApplyT(func(v HostedAgentDeploymentResponse) []VersionedAgentReferenceResponse { return v.Agents }).(VersionedAgentReferenceResponseArrayOutput)
+}
+
+// Gets or sets the unique identifier of the deployment.
+func (o HostedAgentDeploymentResponseOutput) DeploymentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HostedAgentDeploymentResponse) *string { return v.DeploymentId }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the type of deployment for an agent, indicating how the underlying compute and network infrastructure is managed.
+// Expected value is 'Hosted'.
+func (o HostedAgentDeploymentResponseOutput) DeploymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v HostedAgentDeploymentResponse) string { return v.DeploymentType }).(pulumi.StringOutput)
+}
+
+// The asset description text.
+func (o HostedAgentDeploymentResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HostedAgentDeploymentResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the display name of the deployment.
+func (o HostedAgentDeploymentResponseOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HostedAgentDeploymentResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the maximum number of replicas for this hosted deployment.
+func (o HostedAgentDeploymentResponseOutput) MaxReplicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v HostedAgentDeploymentResponse) *int { return v.MaxReplicas }).(pulumi.IntPtrOutput)
+}
+
+// Gets or sets the minimum number of replicas for this hosted deployment.
+func (o HostedAgentDeploymentResponseOutput) MinReplicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v HostedAgentDeploymentResponse) *int { return v.MinReplicas }).(pulumi.IntPtrOutput)
+}
+
+// Gets or sets the supported protocol types and versions exposed by this deployment.
+func (o HostedAgentDeploymentResponseOutput) Protocols() AgentProtocolVersionResponseArrayOutput {
+	return o.ApplyT(func(v HostedAgentDeploymentResponse) []AgentProtocolVersionResponse { return v.Protocols }).(AgentProtocolVersionResponseArrayOutput)
+}
+
+// Gets or sets the provisioning state of the agent deployment.
+func (o HostedAgentDeploymentResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v HostedAgentDeploymentResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Gets or sets the current operational state of the deployment (and, intrinsically, of the comprising agents).
+func (o HostedAgentDeploymentResponseOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HostedAgentDeploymentResponse) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// Tag dictionary. Tags can be added, removed, and updated.
+func (o HostedAgentDeploymentResponseOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v HostedAgentDeploymentResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
 // Identity for the resource.
 type Identity struct {
 	// The identity type.
@@ -8563,6 +10582,211 @@ func (o KeyVaultPropertiesResponsePtrOutput) KeyVersion() pulumi.StringPtrOutput
 		}
 		return v.KeyVersion
 	}).(pulumi.StringPtrOutput)
+}
+
+// Represents a managed agent deployment where the underlying infrastructure is managed by the platform in the deployer's subscription.
+type ManagedAgentDeployment struct {
+	// Returns a flat list of agent:version deployed in this deployment.
+	Agents []VersionedAgentReference `pulumi:"agents"`
+	// Gets or sets the unique identifier of the deployment.
+	DeploymentId *string `pulumi:"deploymentId"`
+	// Specifies the type of deployment for an agent, indicating how the underlying compute and network infrastructure is managed.
+	// Expected value is 'Managed'.
+	DeploymentType string `pulumi:"deploymentType"`
+	// The asset description text.
+	Description *string `pulumi:"description"`
+	// Gets or sets the display name of the deployment.
+	DisplayName *string `pulumi:"displayName"`
+	// Gets or sets the supported protocol types and versions exposed by this deployment.
+	Protocols []AgentProtocolVersion `pulumi:"protocols"`
+	// Gets or sets the current operational state of the deployment (and, intrinsically, of the comprising agents).
+	State *string `pulumi:"state"`
+	// Tag dictionary. Tags can be added, removed, and updated.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// ManagedAgentDeploymentInput is an input type that accepts ManagedAgentDeploymentArgs and ManagedAgentDeploymentOutput values.
+// You can construct a concrete instance of `ManagedAgentDeploymentInput` via:
+//
+//	ManagedAgentDeploymentArgs{...}
+type ManagedAgentDeploymentInput interface {
+	pulumi.Input
+
+	ToManagedAgentDeploymentOutput() ManagedAgentDeploymentOutput
+	ToManagedAgentDeploymentOutputWithContext(context.Context) ManagedAgentDeploymentOutput
+}
+
+// Represents a managed agent deployment where the underlying infrastructure is managed by the platform in the deployer's subscription.
+type ManagedAgentDeploymentArgs struct {
+	// Returns a flat list of agent:version deployed in this deployment.
+	Agents VersionedAgentReferenceArrayInput `pulumi:"agents"`
+	// Gets or sets the unique identifier of the deployment.
+	DeploymentId pulumi.StringPtrInput `pulumi:"deploymentId"`
+	// Specifies the type of deployment for an agent, indicating how the underlying compute and network infrastructure is managed.
+	// Expected value is 'Managed'.
+	DeploymentType pulumi.StringInput `pulumi:"deploymentType"`
+	// The asset description text.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Gets or sets the display name of the deployment.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Gets or sets the supported protocol types and versions exposed by this deployment.
+	Protocols AgentProtocolVersionArrayInput `pulumi:"protocols"`
+	// Gets or sets the current operational state of the deployment (and, intrinsically, of the comprising agents).
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// Tag dictionary. Tags can be added, removed, and updated.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (ManagedAgentDeploymentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedAgentDeployment)(nil)).Elem()
+}
+
+func (i ManagedAgentDeploymentArgs) ToManagedAgentDeploymentOutput() ManagedAgentDeploymentOutput {
+	return i.ToManagedAgentDeploymentOutputWithContext(context.Background())
+}
+
+func (i ManagedAgentDeploymentArgs) ToManagedAgentDeploymentOutputWithContext(ctx context.Context) ManagedAgentDeploymentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedAgentDeploymentOutput)
+}
+
+// Represents a managed agent deployment where the underlying infrastructure is managed by the platform in the deployer's subscription.
+type ManagedAgentDeploymentOutput struct{ *pulumi.OutputState }
+
+func (ManagedAgentDeploymentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedAgentDeployment)(nil)).Elem()
+}
+
+func (o ManagedAgentDeploymentOutput) ToManagedAgentDeploymentOutput() ManagedAgentDeploymentOutput {
+	return o
+}
+
+func (o ManagedAgentDeploymentOutput) ToManagedAgentDeploymentOutputWithContext(ctx context.Context) ManagedAgentDeploymentOutput {
+	return o
+}
+
+// Returns a flat list of agent:version deployed in this deployment.
+func (o ManagedAgentDeploymentOutput) Agents() VersionedAgentReferenceArrayOutput {
+	return o.ApplyT(func(v ManagedAgentDeployment) []VersionedAgentReference { return v.Agents }).(VersionedAgentReferenceArrayOutput)
+}
+
+// Gets or sets the unique identifier of the deployment.
+func (o ManagedAgentDeploymentOutput) DeploymentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedAgentDeployment) *string { return v.DeploymentId }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the type of deployment for an agent, indicating how the underlying compute and network infrastructure is managed.
+// Expected value is 'Managed'.
+func (o ManagedAgentDeploymentOutput) DeploymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedAgentDeployment) string { return v.DeploymentType }).(pulumi.StringOutput)
+}
+
+// The asset description text.
+func (o ManagedAgentDeploymentOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedAgentDeployment) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the display name of the deployment.
+func (o ManagedAgentDeploymentOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedAgentDeployment) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the supported protocol types and versions exposed by this deployment.
+func (o ManagedAgentDeploymentOutput) Protocols() AgentProtocolVersionArrayOutput {
+	return o.ApplyT(func(v ManagedAgentDeployment) []AgentProtocolVersion { return v.Protocols }).(AgentProtocolVersionArrayOutput)
+}
+
+// Gets or sets the current operational state of the deployment (and, intrinsically, of the comprising agents).
+func (o ManagedAgentDeploymentOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedAgentDeployment) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// Tag dictionary. Tags can be added, removed, and updated.
+func (o ManagedAgentDeploymentOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ManagedAgentDeployment) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Represents a managed agent deployment where the underlying infrastructure is managed by the platform in the deployer's subscription.
+type ManagedAgentDeploymentResponse struct {
+	// Returns a flat list of agent:version deployed in this deployment.
+	Agents []VersionedAgentReferenceResponse `pulumi:"agents"`
+	// Gets or sets the unique identifier of the deployment.
+	DeploymentId *string `pulumi:"deploymentId"`
+	// Specifies the type of deployment for an agent, indicating how the underlying compute and network infrastructure is managed.
+	// Expected value is 'Managed'.
+	DeploymentType string `pulumi:"deploymentType"`
+	// The asset description text.
+	Description *string `pulumi:"description"`
+	// Gets or sets the display name of the deployment.
+	DisplayName *string `pulumi:"displayName"`
+	// Gets or sets the supported protocol types and versions exposed by this deployment.
+	Protocols []AgentProtocolVersionResponse `pulumi:"protocols"`
+	// Gets or sets the provisioning state of the agent deployment.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Gets or sets the current operational state of the deployment (and, intrinsically, of the comprising agents).
+	State *string `pulumi:"state"`
+	// Tag dictionary. Tags can be added, removed, and updated.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// Represents a managed agent deployment where the underlying infrastructure is managed by the platform in the deployer's subscription.
+type ManagedAgentDeploymentResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedAgentDeploymentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedAgentDeploymentResponse)(nil)).Elem()
+}
+
+func (o ManagedAgentDeploymentResponseOutput) ToManagedAgentDeploymentResponseOutput() ManagedAgentDeploymentResponseOutput {
+	return o
+}
+
+func (o ManagedAgentDeploymentResponseOutput) ToManagedAgentDeploymentResponseOutputWithContext(ctx context.Context) ManagedAgentDeploymentResponseOutput {
+	return o
+}
+
+// Returns a flat list of agent:version deployed in this deployment.
+func (o ManagedAgentDeploymentResponseOutput) Agents() VersionedAgentReferenceResponseArrayOutput {
+	return o.ApplyT(func(v ManagedAgentDeploymentResponse) []VersionedAgentReferenceResponse { return v.Agents }).(VersionedAgentReferenceResponseArrayOutput)
+}
+
+// Gets or sets the unique identifier of the deployment.
+func (o ManagedAgentDeploymentResponseOutput) DeploymentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedAgentDeploymentResponse) *string { return v.DeploymentId }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the type of deployment for an agent, indicating how the underlying compute and network infrastructure is managed.
+// Expected value is 'Managed'.
+func (o ManagedAgentDeploymentResponseOutput) DeploymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedAgentDeploymentResponse) string { return v.DeploymentType }).(pulumi.StringOutput)
+}
+
+// The asset description text.
+func (o ManagedAgentDeploymentResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedAgentDeploymentResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the display name of the deployment.
+func (o ManagedAgentDeploymentResponseOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedAgentDeploymentResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the supported protocol types and versions exposed by this deployment.
+func (o ManagedAgentDeploymentResponseOutput) Protocols() AgentProtocolVersionResponseArrayOutput {
+	return o.ApplyT(func(v ManagedAgentDeploymentResponse) []AgentProtocolVersionResponse { return v.Protocols }).(AgentProtocolVersionResponseArrayOutput)
+}
+
+// Gets or sets the provisioning state of the agent deployment.
+func (o ManagedAgentDeploymentResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedAgentDeploymentResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Gets or sets the current operational state of the deployment (and, intrinsically, of the comprising agents).
+func (o ManagedAgentDeploymentResponseOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedAgentDeploymentResponse) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// Tag dictionary. Tags can be added, removed, and updated.
+func (o ManagedAgentDeploymentResponseOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ManagedAgentDeploymentResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type ManagedIdentityAuthTypeConnectionProperties struct {
@@ -9777,6 +12001,213 @@ func (o OAuth2AuthTypeConnectionPropertiesResponseOutput) UseWorkspaceManagedIde
 	return o.ApplyT(func(v OAuth2AuthTypeConnectionPropertiesResponse) *bool { return v.UseWorkspaceManagedIdentity }).(pulumi.BoolPtrOutput)
 }
 
+// Built-in authorization policy scoped to organization/tenant.
+type OrganizationSharedBuiltInAuthorizationPolicy struct {
+	// Authorization scheme type.
+	// Expected value is 'OrganizationScope'.
+	Type string `pulumi:"type"`
+}
+
+// OrganizationSharedBuiltInAuthorizationPolicyInput is an input type that accepts OrganizationSharedBuiltInAuthorizationPolicyArgs and OrganizationSharedBuiltInAuthorizationPolicyOutput values.
+// You can construct a concrete instance of `OrganizationSharedBuiltInAuthorizationPolicyInput` via:
+//
+//	OrganizationSharedBuiltInAuthorizationPolicyArgs{...}
+type OrganizationSharedBuiltInAuthorizationPolicyInput interface {
+	pulumi.Input
+
+	ToOrganizationSharedBuiltInAuthorizationPolicyOutput() OrganizationSharedBuiltInAuthorizationPolicyOutput
+	ToOrganizationSharedBuiltInAuthorizationPolicyOutputWithContext(context.Context) OrganizationSharedBuiltInAuthorizationPolicyOutput
+}
+
+// Built-in authorization policy scoped to organization/tenant.
+type OrganizationSharedBuiltInAuthorizationPolicyArgs struct {
+	// Authorization scheme type.
+	// Expected value is 'OrganizationScope'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (OrganizationSharedBuiltInAuthorizationPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationSharedBuiltInAuthorizationPolicy)(nil)).Elem()
+}
+
+func (i OrganizationSharedBuiltInAuthorizationPolicyArgs) ToOrganizationSharedBuiltInAuthorizationPolicyOutput() OrganizationSharedBuiltInAuthorizationPolicyOutput {
+	return i.ToOrganizationSharedBuiltInAuthorizationPolicyOutputWithContext(context.Background())
+}
+
+func (i OrganizationSharedBuiltInAuthorizationPolicyArgs) ToOrganizationSharedBuiltInAuthorizationPolicyOutputWithContext(ctx context.Context) OrganizationSharedBuiltInAuthorizationPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSharedBuiltInAuthorizationPolicyOutput)
+}
+
+func (i OrganizationSharedBuiltInAuthorizationPolicyArgs) ToOrganizationSharedBuiltInAuthorizationPolicyPtrOutput() OrganizationSharedBuiltInAuthorizationPolicyPtrOutput {
+	return i.ToOrganizationSharedBuiltInAuthorizationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i OrganizationSharedBuiltInAuthorizationPolicyArgs) ToOrganizationSharedBuiltInAuthorizationPolicyPtrOutputWithContext(ctx context.Context) OrganizationSharedBuiltInAuthorizationPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSharedBuiltInAuthorizationPolicyOutput).ToOrganizationSharedBuiltInAuthorizationPolicyPtrOutputWithContext(ctx)
+}
+
+// OrganizationSharedBuiltInAuthorizationPolicyPtrInput is an input type that accepts OrganizationSharedBuiltInAuthorizationPolicyArgs, OrganizationSharedBuiltInAuthorizationPolicyPtr and OrganizationSharedBuiltInAuthorizationPolicyPtrOutput values.
+// You can construct a concrete instance of `OrganizationSharedBuiltInAuthorizationPolicyPtrInput` via:
+//
+//	        OrganizationSharedBuiltInAuthorizationPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type OrganizationSharedBuiltInAuthorizationPolicyPtrInput interface {
+	pulumi.Input
+
+	ToOrganizationSharedBuiltInAuthorizationPolicyPtrOutput() OrganizationSharedBuiltInAuthorizationPolicyPtrOutput
+	ToOrganizationSharedBuiltInAuthorizationPolicyPtrOutputWithContext(context.Context) OrganizationSharedBuiltInAuthorizationPolicyPtrOutput
+}
+
+type organizationSharedBuiltInAuthorizationPolicyPtrType OrganizationSharedBuiltInAuthorizationPolicyArgs
+
+func OrganizationSharedBuiltInAuthorizationPolicyPtr(v *OrganizationSharedBuiltInAuthorizationPolicyArgs) OrganizationSharedBuiltInAuthorizationPolicyPtrInput {
+	return (*organizationSharedBuiltInAuthorizationPolicyPtrType)(v)
+}
+
+func (*organizationSharedBuiltInAuthorizationPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationSharedBuiltInAuthorizationPolicy)(nil)).Elem()
+}
+
+func (i *organizationSharedBuiltInAuthorizationPolicyPtrType) ToOrganizationSharedBuiltInAuthorizationPolicyPtrOutput() OrganizationSharedBuiltInAuthorizationPolicyPtrOutput {
+	return i.ToOrganizationSharedBuiltInAuthorizationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *organizationSharedBuiltInAuthorizationPolicyPtrType) ToOrganizationSharedBuiltInAuthorizationPolicyPtrOutputWithContext(ctx context.Context) OrganizationSharedBuiltInAuthorizationPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSharedBuiltInAuthorizationPolicyPtrOutput)
+}
+
+// Built-in authorization policy scoped to organization/tenant.
+type OrganizationSharedBuiltInAuthorizationPolicyOutput struct{ *pulumi.OutputState }
+
+func (OrganizationSharedBuiltInAuthorizationPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationSharedBuiltInAuthorizationPolicy)(nil)).Elem()
+}
+
+func (o OrganizationSharedBuiltInAuthorizationPolicyOutput) ToOrganizationSharedBuiltInAuthorizationPolicyOutput() OrganizationSharedBuiltInAuthorizationPolicyOutput {
+	return o
+}
+
+func (o OrganizationSharedBuiltInAuthorizationPolicyOutput) ToOrganizationSharedBuiltInAuthorizationPolicyOutputWithContext(ctx context.Context) OrganizationSharedBuiltInAuthorizationPolicyOutput {
+	return o
+}
+
+func (o OrganizationSharedBuiltInAuthorizationPolicyOutput) ToOrganizationSharedBuiltInAuthorizationPolicyPtrOutput() OrganizationSharedBuiltInAuthorizationPolicyPtrOutput {
+	return o.ToOrganizationSharedBuiltInAuthorizationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o OrganizationSharedBuiltInAuthorizationPolicyOutput) ToOrganizationSharedBuiltInAuthorizationPolicyPtrOutputWithContext(ctx context.Context) OrganizationSharedBuiltInAuthorizationPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationSharedBuiltInAuthorizationPolicy) *OrganizationSharedBuiltInAuthorizationPolicy {
+		return &v
+	}).(OrganizationSharedBuiltInAuthorizationPolicyPtrOutput)
+}
+
+// Authorization scheme type.
+// Expected value is 'OrganizationScope'.
+func (o OrganizationSharedBuiltInAuthorizationPolicyOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v OrganizationSharedBuiltInAuthorizationPolicy) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type OrganizationSharedBuiltInAuthorizationPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (OrganizationSharedBuiltInAuthorizationPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationSharedBuiltInAuthorizationPolicy)(nil)).Elem()
+}
+
+func (o OrganizationSharedBuiltInAuthorizationPolicyPtrOutput) ToOrganizationSharedBuiltInAuthorizationPolicyPtrOutput() OrganizationSharedBuiltInAuthorizationPolicyPtrOutput {
+	return o
+}
+
+func (o OrganizationSharedBuiltInAuthorizationPolicyPtrOutput) ToOrganizationSharedBuiltInAuthorizationPolicyPtrOutputWithContext(ctx context.Context) OrganizationSharedBuiltInAuthorizationPolicyPtrOutput {
+	return o
+}
+
+func (o OrganizationSharedBuiltInAuthorizationPolicyPtrOutput) Elem() OrganizationSharedBuiltInAuthorizationPolicyOutput {
+	return o.ApplyT(func(v *OrganizationSharedBuiltInAuthorizationPolicy) OrganizationSharedBuiltInAuthorizationPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret OrganizationSharedBuiltInAuthorizationPolicy
+		return ret
+	}).(OrganizationSharedBuiltInAuthorizationPolicyOutput)
+}
+
+// Authorization scheme type.
+// Expected value is 'OrganizationScope'.
+func (o OrganizationSharedBuiltInAuthorizationPolicyPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OrganizationSharedBuiltInAuthorizationPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Built-in authorization policy scoped to organization/tenant.
+type OrganizationSharedBuiltInAuthorizationPolicyResponse struct {
+	// Authorization scheme type.
+	// Expected value is 'OrganizationScope'.
+	Type string `pulumi:"type"`
+}
+
+// Built-in authorization policy scoped to organization/tenant.
+type OrganizationSharedBuiltInAuthorizationPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (OrganizationSharedBuiltInAuthorizationPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationSharedBuiltInAuthorizationPolicyResponse)(nil)).Elem()
+}
+
+func (o OrganizationSharedBuiltInAuthorizationPolicyResponseOutput) ToOrganizationSharedBuiltInAuthorizationPolicyResponseOutput() OrganizationSharedBuiltInAuthorizationPolicyResponseOutput {
+	return o
+}
+
+func (o OrganizationSharedBuiltInAuthorizationPolicyResponseOutput) ToOrganizationSharedBuiltInAuthorizationPolicyResponseOutputWithContext(ctx context.Context) OrganizationSharedBuiltInAuthorizationPolicyResponseOutput {
+	return o
+}
+
+// Authorization scheme type.
+// Expected value is 'OrganizationScope'.
+func (o OrganizationSharedBuiltInAuthorizationPolicyResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v OrganizationSharedBuiltInAuthorizationPolicyResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type OrganizationSharedBuiltInAuthorizationPolicyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (OrganizationSharedBuiltInAuthorizationPolicyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationSharedBuiltInAuthorizationPolicyResponse)(nil)).Elem()
+}
+
+func (o OrganizationSharedBuiltInAuthorizationPolicyResponsePtrOutput) ToOrganizationSharedBuiltInAuthorizationPolicyResponsePtrOutput() OrganizationSharedBuiltInAuthorizationPolicyResponsePtrOutput {
+	return o
+}
+
+func (o OrganizationSharedBuiltInAuthorizationPolicyResponsePtrOutput) ToOrganizationSharedBuiltInAuthorizationPolicyResponsePtrOutputWithContext(ctx context.Context) OrganizationSharedBuiltInAuthorizationPolicyResponsePtrOutput {
+	return o
+}
+
+func (o OrganizationSharedBuiltInAuthorizationPolicyResponsePtrOutput) Elem() OrganizationSharedBuiltInAuthorizationPolicyResponseOutput {
+	return o.ApplyT(func(v *OrganizationSharedBuiltInAuthorizationPolicyResponse) OrganizationSharedBuiltInAuthorizationPolicyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret OrganizationSharedBuiltInAuthorizationPolicyResponse
+		return ret
+	}).(OrganizationSharedBuiltInAuthorizationPolicyResponseOutput)
+}
+
+// Authorization scheme type.
+// Expected value is 'OrganizationScope'.
+func (o OrganizationSharedBuiltInAuthorizationPolicyResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OrganizationSharedBuiltInAuthorizationPolicyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 type PATAuthTypeConnectionProperties struct {
 	// Authentication type of the connection target
 	// Expected value is 'PAT'.
@@ -10699,6 +13130,137 @@ func (o PrivateLinkServiceConnectionStateResponsePtrOutput) Status() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+type ProjectCapabilityHostType struct {
+	// List of AI services connections.
+	AiServicesConnections []string `pulumi:"aiServicesConnections"`
+	// List of connection names from those available in the account or project to be used as a storage resource.
+	StorageConnections []string `pulumi:"storageConnections"`
+	// List of connection names from those available in the account or project to be used for Thread storage.
+	ThreadStorageConnections []string `pulumi:"threadStorageConnections"`
+	// List of connection names from those available in the account or project to be used for vector database (e.g. CosmosDB).
+	VectorStoreConnections []string `pulumi:"vectorStoreConnections"`
+}
+
+// ProjectCapabilityHostTypeInput is an input type that accepts ProjectCapabilityHostTypeArgs and ProjectCapabilityHostTypeOutput values.
+// You can construct a concrete instance of `ProjectCapabilityHostTypeInput` via:
+//
+//	ProjectCapabilityHostTypeArgs{...}
+type ProjectCapabilityHostTypeInput interface {
+	pulumi.Input
+
+	ToProjectCapabilityHostTypeOutput() ProjectCapabilityHostTypeOutput
+	ToProjectCapabilityHostTypeOutputWithContext(context.Context) ProjectCapabilityHostTypeOutput
+}
+
+type ProjectCapabilityHostTypeArgs struct {
+	// List of AI services connections.
+	AiServicesConnections pulumi.StringArrayInput `pulumi:"aiServicesConnections"`
+	// List of connection names from those available in the account or project to be used as a storage resource.
+	StorageConnections pulumi.StringArrayInput `pulumi:"storageConnections"`
+	// List of connection names from those available in the account or project to be used for Thread storage.
+	ThreadStorageConnections pulumi.StringArrayInput `pulumi:"threadStorageConnections"`
+	// List of connection names from those available in the account or project to be used for vector database (e.g. CosmosDB).
+	VectorStoreConnections pulumi.StringArrayInput `pulumi:"vectorStoreConnections"`
+}
+
+func (ProjectCapabilityHostTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectCapabilityHostType)(nil)).Elem()
+}
+
+func (i ProjectCapabilityHostTypeArgs) ToProjectCapabilityHostTypeOutput() ProjectCapabilityHostTypeOutput {
+	return i.ToProjectCapabilityHostTypeOutputWithContext(context.Background())
+}
+
+func (i ProjectCapabilityHostTypeArgs) ToProjectCapabilityHostTypeOutputWithContext(ctx context.Context) ProjectCapabilityHostTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectCapabilityHostTypeOutput)
+}
+
+type ProjectCapabilityHostTypeOutput struct{ *pulumi.OutputState }
+
+func (ProjectCapabilityHostTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectCapabilityHostType)(nil)).Elem()
+}
+
+func (o ProjectCapabilityHostTypeOutput) ToProjectCapabilityHostTypeOutput() ProjectCapabilityHostTypeOutput {
+	return o
+}
+
+func (o ProjectCapabilityHostTypeOutput) ToProjectCapabilityHostTypeOutputWithContext(ctx context.Context) ProjectCapabilityHostTypeOutput {
+	return o
+}
+
+// List of AI services connections.
+func (o ProjectCapabilityHostTypeOutput) AiServicesConnections() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ProjectCapabilityHostType) []string { return v.AiServicesConnections }).(pulumi.StringArrayOutput)
+}
+
+// List of connection names from those available in the account or project to be used as a storage resource.
+func (o ProjectCapabilityHostTypeOutput) StorageConnections() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ProjectCapabilityHostType) []string { return v.StorageConnections }).(pulumi.StringArrayOutput)
+}
+
+// List of connection names from those available in the account or project to be used for Thread storage.
+func (o ProjectCapabilityHostTypeOutput) ThreadStorageConnections() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ProjectCapabilityHostType) []string { return v.ThreadStorageConnections }).(pulumi.StringArrayOutput)
+}
+
+// List of connection names from those available in the account or project to be used for vector database (e.g. CosmosDB).
+func (o ProjectCapabilityHostTypeOutput) VectorStoreConnections() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ProjectCapabilityHostType) []string { return v.VectorStoreConnections }).(pulumi.StringArrayOutput)
+}
+
+type ProjectCapabilityHostResponse struct {
+	// List of AI services connections.
+	AiServicesConnections []string `pulumi:"aiServicesConnections"`
+	// Provisioning state for the CapabilityHost.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// List of connection names from those available in the account or project to be used as a storage resource.
+	StorageConnections []string `pulumi:"storageConnections"`
+	// List of connection names from those available in the account or project to be used for Thread storage.
+	ThreadStorageConnections []string `pulumi:"threadStorageConnections"`
+	// List of connection names from those available in the account or project to be used for vector database (e.g. CosmosDB).
+	VectorStoreConnections []string `pulumi:"vectorStoreConnections"`
+}
+
+type ProjectCapabilityHostResponseOutput struct{ *pulumi.OutputState }
+
+func (ProjectCapabilityHostResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectCapabilityHostResponse)(nil)).Elem()
+}
+
+func (o ProjectCapabilityHostResponseOutput) ToProjectCapabilityHostResponseOutput() ProjectCapabilityHostResponseOutput {
+	return o
+}
+
+func (o ProjectCapabilityHostResponseOutput) ToProjectCapabilityHostResponseOutputWithContext(ctx context.Context) ProjectCapabilityHostResponseOutput {
+	return o
+}
+
+// List of AI services connections.
+func (o ProjectCapabilityHostResponseOutput) AiServicesConnections() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ProjectCapabilityHostResponse) []string { return v.AiServicesConnections }).(pulumi.StringArrayOutput)
+}
+
+// Provisioning state for the CapabilityHost.
+func (o ProjectCapabilityHostResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v ProjectCapabilityHostResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// List of connection names from those available in the account or project to be used as a storage resource.
+func (o ProjectCapabilityHostResponseOutput) StorageConnections() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ProjectCapabilityHostResponse) []string { return v.StorageConnections }).(pulumi.StringArrayOutput)
+}
+
+// List of connection names from those available in the account or project to be used for Thread storage.
+func (o ProjectCapabilityHostResponseOutput) ThreadStorageConnections() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ProjectCapabilityHostResponse) []string { return v.ThreadStorageConnections }).(pulumi.StringArrayOutput)
+}
+
+// List of connection names from those available in the account or project to be used for vector database (e.g. CosmosDB).
+func (o ProjectCapabilityHostResponseOutput) VectorStoreConnections() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ProjectCapabilityHostResponse) []string { return v.VectorStoreConnections }).(pulumi.StringArrayOutput)
+}
+
 // Properties of Cognitive Services Project'.
 type ProjectProperties struct {
 	// The description of the Cognitive Services Project.
@@ -11302,6 +13864,342 @@ func (o RaiBlocklistPropertiesResponseOutput) Description() pulumi.StringPtrOutp
 	return o.ApplyT(func(v RaiBlocklistPropertiesResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// RAI External SafetyProvider schema properties.
+type RaiExternalSafetyProviderSchemaProperties struct {
+	// The Key Vault URI that contains the api key for safety provider urls.
+	KeyVaultUri *string `pulumi:"keyVaultUri"`
+	// The managed identity to access the Key Vault.
+	ManagedIdentity *string `pulumi:"managedIdentity"`
+	// Safety provider mode sync/async.
+	Mode *string `pulumi:"mode"`
+	// The unique identifier of the safety provider.
+	ProviderId *string `pulumi:"providerId"`
+	// Name of the safety provider.
+	ProviderName *string `pulumi:"providerName"`
+	// The name of the secret in Key Vault that contains the api key to access the webhook.
+	SecretName *string `pulumi:"secretName"`
+	// Webhook URL for the safety provider.
+	Url *string `pulumi:"url"`
+}
+
+// RaiExternalSafetyProviderSchemaPropertiesInput is an input type that accepts RaiExternalSafetyProviderSchemaPropertiesArgs and RaiExternalSafetyProviderSchemaPropertiesOutput values.
+// You can construct a concrete instance of `RaiExternalSafetyProviderSchemaPropertiesInput` via:
+//
+//	RaiExternalSafetyProviderSchemaPropertiesArgs{...}
+type RaiExternalSafetyProviderSchemaPropertiesInput interface {
+	pulumi.Input
+
+	ToRaiExternalSafetyProviderSchemaPropertiesOutput() RaiExternalSafetyProviderSchemaPropertiesOutput
+	ToRaiExternalSafetyProviderSchemaPropertiesOutputWithContext(context.Context) RaiExternalSafetyProviderSchemaPropertiesOutput
+}
+
+// RAI External SafetyProvider schema properties.
+type RaiExternalSafetyProviderSchemaPropertiesArgs struct {
+	// The Key Vault URI that contains the api key for safety provider urls.
+	KeyVaultUri pulumi.StringPtrInput `pulumi:"keyVaultUri"`
+	// The managed identity to access the Key Vault.
+	ManagedIdentity pulumi.StringPtrInput `pulumi:"managedIdentity"`
+	// Safety provider mode sync/async.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// The unique identifier of the safety provider.
+	ProviderId pulumi.StringPtrInput `pulumi:"providerId"`
+	// Name of the safety provider.
+	ProviderName pulumi.StringPtrInput `pulumi:"providerName"`
+	// The name of the secret in Key Vault that contains the api key to access the webhook.
+	SecretName pulumi.StringPtrInput `pulumi:"secretName"`
+	// Webhook URL for the safety provider.
+	Url pulumi.StringPtrInput `pulumi:"url"`
+}
+
+func (RaiExternalSafetyProviderSchemaPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiExternalSafetyProviderSchemaProperties)(nil)).Elem()
+}
+
+func (i RaiExternalSafetyProviderSchemaPropertiesArgs) ToRaiExternalSafetyProviderSchemaPropertiesOutput() RaiExternalSafetyProviderSchemaPropertiesOutput {
+	return i.ToRaiExternalSafetyProviderSchemaPropertiesOutputWithContext(context.Background())
+}
+
+func (i RaiExternalSafetyProviderSchemaPropertiesArgs) ToRaiExternalSafetyProviderSchemaPropertiesOutputWithContext(ctx context.Context) RaiExternalSafetyProviderSchemaPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RaiExternalSafetyProviderSchemaPropertiesOutput)
+}
+
+func (i RaiExternalSafetyProviderSchemaPropertiesArgs) ToRaiExternalSafetyProviderSchemaPropertiesPtrOutput() RaiExternalSafetyProviderSchemaPropertiesPtrOutput {
+	return i.ToRaiExternalSafetyProviderSchemaPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i RaiExternalSafetyProviderSchemaPropertiesArgs) ToRaiExternalSafetyProviderSchemaPropertiesPtrOutputWithContext(ctx context.Context) RaiExternalSafetyProviderSchemaPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RaiExternalSafetyProviderSchemaPropertiesOutput).ToRaiExternalSafetyProviderSchemaPropertiesPtrOutputWithContext(ctx)
+}
+
+// RaiExternalSafetyProviderSchemaPropertiesPtrInput is an input type that accepts RaiExternalSafetyProviderSchemaPropertiesArgs, RaiExternalSafetyProviderSchemaPropertiesPtr and RaiExternalSafetyProviderSchemaPropertiesPtrOutput values.
+// You can construct a concrete instance of `RaiExternalSafetyProviderSchemaPropertiesPtrInput` via:
+//
+//	        RaiExternalSafetyProviderSchemaPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type RaiExternalSafetyProviderSchemaPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToRaiExternalSafetyProviderSchemaPropertiesPtrOutput() RaiExternalSafetyProviderSchemaPropertiesPtrOutput
+	ToRaiExternalSafetyProviderSchemaPropertiesPtrOutputWithContext(context.Context) RaiExternalSafetyProviderSchemaPropertiesPtrOutput
+}
+
+type raiExternalSafetyProviderSchemaPropertiesPtrType RaiExternalSafetyProviderSchemaPropertiesArgs
+
+func RaiExternalSafetyProviderSchemaPropertiesPtr(v *RaiExternalSafetyProviderSchemaPropertiesArgs) RaiExternalSafetyProviderSchemaPropertiesPtrInput {
+	return (*raiExternalSafetyProviderSchemaPropertiesPtrType)(v)
+}
+
+func (*raiExternalSafetyProviderSchemaPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RaiExternalSafetyProviderSchemaProperties)(nil)).Elem()
+}
+
+func (i *raiExternalSafetyProviderSchemaPropertiesPtrType) ToRaiExternalSafetyProviderSchemaPropertiesPtrOutput() RaiExternalSafetyProviderSchemaPropertiesPtrOutput {
+	return i.ToRaiExternalSafetyProviderSchemaPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *raiExternalSafetyProviderSchemaPropertiesPtrType) ToRaiExternalSafetyProviderSchemaPropertiesPtrOutputWithContext(ctx context.Context) RaiExternalSafetyProviderSchemaPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RaiExternalSafetyProviderSchemaPropertiesPtrOutput)
+}
+
+// RAI External SafetyProvider schema properties.
+type RaiExternalSafetyProviderSchemaPropertiesOutput struct{ *pulumi.OutputState }
+
+func (RaiExternalSafetyProviderSchemaPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiExternalSafetyProviderSchemaProperties)(nil)).Elem()
+}
+
+func (o RaiExternalSafetyProviderSchemaPropertiesOutput) ToRaiExternalSafetyProviderSchemaPropertiesOutput() RaiExternalSafetyProviderSchemaPropertiesOutput {
+	return o
+}
+
+func (o RaiExternalSafetyProviderSchemaPropertiesOutput) ToRaiExternalSafetyProviderSchemaPropertiesOutputWithContext(ctx context.Context) RaiExternalSafetyProviderSchemaPropertiesOutput {
+	return o
+}
+
+func (o RaiExternalSafetyProviderSchemaPropertiesOutput) ToRaiExternalSafetyProviderSchemaPropertiesPtrOutput() RaiExternalSafetyProviderSchemaPropertiesPtrOutput {
+	return o.ToRaiExternalSafetyProviderSchemaPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o RaiExternalSafetyProviderSchemaPropertiesOutput) ToRaiExternalSafetyProviderSchemaPropertiesPtrOutputWithContext(ctx context.Context) RaiExternalSafetyProviderSchemaPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RaiExternalSafetyProviderSchemaProperties) *RaiExternalSafetyProviderSchemaProperties {
+		return &v
+	}).(RaiExternalSafetyProviderSchemaPropertiesPtrOutput)
+}
+
+// The Key Vault URI that contains the api key for safety provider urls.
+func (o RaiExternalSafetyProviderSchemaPropertiesOutput) KeyVaultUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiExternalSafetyProviderSchemaProperties) *string { return v.KeyVaultUri }).(pulumi.StringPtrOutput)
+}
+
+// The managed identity to access the Key Vault.
+func (o RaiExternalSafetyProviderSchemaPropertiesOutput) ManagedIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiExternalSafetyProviderSchemaProperties) *string { return v.ManagedIdentity }).(pulumi.StringPtrOutput)
+}
+
+// Safety provider mode sync/async.
+func (o RaiExternalSafetyProviderSchemaPropertiesOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiExternalSafetyProviderSchemaProperties) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// The unique identifier of the safety provider.
+func (o RaiExternalSafetyProviderSchemaPropertiesOutput) ProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiExternalSafetyProviderSchemaProperties) *string { return v.ProviderId }).(pulumi.StringPtrOutput)
+}
+
+// Name of the safety provider.
+func (o RaiExternalSafetyProviderSchemaPropertiesOutput) ProviderName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiExternalSafetyProviderSchemaProperties) *string { return v.ProviderName }).(pulumi.StringPtrOutput)
+}
+
+// The name of the secret in Key Vault that contains the api key to access the webhook.
+func (o RaiExternalSafetyProviderSchemaPropertiesOutput) SecretName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiExternalSafetyProviderSchemaProperties) *string { return v.SecretName }).(pulumi.StringPtrOutput)
+}
+
+// Webhook URL for the safety provider.
+func (o RaiExternalSafetyProviderSchemaPropertiesOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiExternalSafetyProviderSchemaProperties) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type RaiExternalSafetyProviderSchemaPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (RaiExternalSafetyProviderSchemaPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RaiExternalSafetyProviderSchemaProperties)(nil)).Elem()
+}
+
+func (o RaiExternalSafetyProviderSchemaPropertiesPtrOutput) ToRaiExternalSafetyProviderSchemaPropertiesPtrOutput() RaiExternalSafetyProviderSchemaPropertiesPtrOutput {
+	return o
+}
+
+func (o RaiExternalSafetyProviderSchemaPropertiesPtrOutput) ToRaiExternalSafetyProviderSchemaPropertiesPtrOutputWithContext(ctx context.Context) RaiExternalSafetyProviderSchemaPropertiesPtrOutput {
+	return o
+}
+
+func (o RaiExternalSafetyProviderSchemaPropertiesPtrOutput) Elem() RaiExternalSafetyProviderSchemaPropertiesOutput {
+	return o.ApplyT(func(v *RaiExternalSafetyProviderSchemaProperties) RaiExternalSafetyProviderSchemaProperties {
+		if v != nil {
+			return *v
+		}
+		var ret RaiExternalSafetyProviderSchemaProperties
+		return ret
+	}).(RaiExternalSafetyProviderSchemaPropertiesOutput)
+}
+
+// The Key Vault URI that contains the api key for safety provider urls.
+func (o RaiExternalSafetyProviderSchemaPropertiesPtrOutput) KeyVaultUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RaiExternalSafetyProviderSchemaProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyVaultUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The managed identity to access the Key Vault.
+func (o RaiExternalSafetyProviderSchemaPropertiesPtrOutput) ManagedIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RaiExternalSafetyProviderSchemaProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ManagedIdentity
+	}).(pulumi.StringPtrOutput)
+}
+
+// Safety provider mode sync/async.
+func (o RaiExternalSafetyProviderSchemaPropertiesPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RaiExternalSafetyProviderSchemaProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The unique identifier of the safety provider.
+func (o RaiExternalSafetyProviderSchemaPropertiesPtrOutput) ProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RaiExternalSafetyProviderSchemaProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProviderId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the safety provider.
+func (o RaiExternalSafetyProviderSchemaPropertiesPtrOutput) ProviderName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RaiExternalSafetyProviderSchemaProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProviderName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the secret in Key Vault that contains the api key to access the webhook.
+func (o RaiExternalSafetyProviderSchemaPropertiesPtrOutput) SecretName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RaiExternalSafetyProviderSchemaProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Webhook URL for the safety provider.
+func (o RaiExternalSafetyProviderSchemaPropertiesPtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RaiExternalSafetyProviderSchemaProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
+// RAI External SafetyProvider schema properties.
+type RaiExternalSafetyProviderSchemaPropertiesResponse struct {
+	// Creation time of the safety provider.
+	CreatedAt string `pulumi:"createdAt"`
+	// The Key Vault URI that contains the api key for safety provider urls.
+	KeyVaultUri *string `pulumi:"keyVaultUri"`
+	// Last modified time of the safety provider.
+	LastModifiedAt string `pulumi:"lastModifiedAt"`
+	// The managed identity to access the Key Vault.
+	ManagedIdentity *string `pulumi:"managedIdentity"`
+	// Safety provider mode sync/async.
+	Mode *string `pulumi:"mode"`
+	// The unique identifier of the safety provider.
+	ProviderId *string `pulumi:"providerId"`
+	// Name of the safety provider.
+	ProviderName *string `pulumi:"providerName"`
+	// The name of the secret in Key Vault that contains the api key to access the webhook.
+	SecretName *string `pulumi:"secretName"`
+	// Webhook URL for the safety provider.
+	Url *string `pulumi:"url"`
+}
+
+// RAI External SafetyProvider schema properties.
+type RaiExternalSafetyProviderSchemaPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (RaiExternalSafetyProviderSchemaPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiExternalSafetyProviderSchemaPropertiesResponse)(nil)).Elem()
+}
+
+func (o RaiExternalSafetyProviderSchemaPropertiesResponseOutput) ToRaiExternalSafetyProviderSchemaPropertiesResponseOutput() RaiExternalSafetyProviderSchemaPropertiesResponseOutput {
+	return o
+}
+
+func (o RaiExternalSafetyProviderSchemaPropertiesResponseOutput) ToRaiExternalSafetyProviderSchemaPropertiesResponseOutputWithContext(ctx context.Context) RaiExternalSafetyProviderSchemaPropertiesResponseOutput {
+	return o
+}
+
+// Creation time of the safety provider.
+func (o RaiExternalSafetyProviderSchemaPropertiesResponseOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v RaiExternalSafetyProviderSchemaPropertiesResponse) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The Key Vault URI that contains the api key for safety provider urls.
+func (o RaiExternalSafetyProviderSchemaPropertiesResponseOutput) KeyVaultUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiExternalSafetyProviderSchemaPropertiesResponse) *string { return v.KeyVaultUri }).(pulumi.StringPtrOutput)
+}
+
+// Last modified time of the safety provider.
+func (o RaiExternalSafetyProviderSchemaPropertiesResponseOutput) LastModifiedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v RaiExternalSafetyProviderSchemaPropertiesResponse) string { return v.LastModifiedAt }).(pulumi.StringOutput)
+}
+
+// The managed identity to access the Key Vault.
+func (o RaiExternalSafetyProviderSchemaPropertiesResponseOutput) ManagedIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiExternalSafetyProviderSchemaPropertiesResponse) *string { return v.ManagedIdentity }).(pulumi.StringPtrOutput)
+}
+
+// Safety provider mode sync/async.
+func (o RaiExternalSafetyProviderSchemaPropertiesResponseOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiExternalSafetyProviderSchemaPropertiesResponse) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// The unique identifier of the safety provider.
+func (o RaiExternalSafetyProviderSchemaPropertiesResponseOutput) ProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiExternalSafetyProviderSchemaPropertiesResponse) *string { return v.ProviderId }).(pulumi.StringPtrOutput)
+}
+
+// Name of the safety provider.
+func (o RaiExternalSafetyProviderSchemaPropertiesResponseOutput) ProviderName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiExternalSafetyProviderSchemaPropertiesResponse) *string { return v.ProviderName }).(pulumi.StringPtrOutput)
+}
+
+// The name of the secret in Key Vault that contains the api key to access the webhook.
+func (o RaiExternalSafetyProviderSchemaPropertiesResponseOutput) SecretName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiExternalSafetyProviderSchemaPropertiesResponse) *string { return v.SecretName }).(pulumi.StringPtrOutput)
+}
+
+// Webhook URL for the safety provider.
+func (o RaiExternalSafetyProviderSchemaPropertiesResponseOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiExternalSafetyProviderSchemaPropertiesResponse) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
 // Cognitive Services Rai Monitor Config.
 type RaiMonitorConfig struct {
 	// The storage resource Id.
@@ -11540,6 +14438,8 @@ func (o RaiMonitorConfigResponsePtrOutput) IdentityClientId() pulumi.StringPtrOu
 
 // Azure OpenAI Content Filter.
 type RaiPolicyContentFilter struct {
+	// The action types to apply to the content filters
+	Action *string `pulumi:"action"`
 	// If blocking would occur.
 	Blocking *bool `pulumi:"blocking"`
 	// If the ContentFilter is enabled.
@@ -11565,6 +14465,8 @@ type RaiPolicyContentFilterInput interface {
 
 // Azure OpenAI Content Filter.
 type RaiPolicyContentFilterArgs struct {
+	// The action types to apply to the content filters
+	Action pulumi.StringPtrInput `pulumi:"action"`
 	// If blocking would occur.
 	Blocking pulumi.BoolPtrInput `pulumi:"blocking"`
 	// If the ContentFilter is enabled.
@@ -11629,6 +14531,11 @@ func (o RaiPolicyContentFilterOutput) ToRaiPolicyContentFilterOutputWithContext(
 	return o
 }
 
+// The action types to apply to the content filters
+func (o RaiPolicyContentFilterOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiPolicyContentFilter) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
 // If blocking would occur.
 func (o RaiPolicyContentFilterOutput) Blocking() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RaiPolicyContentFilter) *bool { return v.Blocking }).(pulumi.BoolPtrOutput)
@@ -11676,6 +14583,8 @@ func (o RaiPolicyContentFilterArrayOutput) Index(i pulumi.IntInput) RaiPolicyCon
 
 // Azure OpenAI Content Filter.
 type RaiPolicyContentFilterResponse struct {
+	// The action types to apply to the content filters
+	Action *string `pulumi:"action"`
 	// If blocking would occur.
 	Blocking *bool `pulumi:"blocking"`
 	// If the ContentFilter is enabled.
@@ -11701,6 +14610,11 @@ func (o RaiPolicyContentFilterResponseOutput) ToRaiPolicyContentFilterResponseOu
 
 func (o RaiPolicyContentFilterResponseOutput) ToRaiPolicyContentFilterResponseOutputWithContext(ctx context.Context) RaiPolicyContentFilterResponseOutput {
 	return o
+}
+
+// The action types to apply to the content filters
+func (o RaiPolicyContentFilterResponseOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiPolicyContentFilterResponse) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
 
 // If blocking would occur.
@@ -11756,8 +14670,12 @@ type RaiPolicyProperties struct {
 	ContentFilters []RaiPolicyContentFilter `pulumi:"contentFilters"`
 	// The list of custom Blocklist.
 	CustomBlocklists []CustomBlocklistConfig `pulumi:"customBlocklists"`
-	// Rai policy mode. The enum value mapping is as below: Default = 0, Deferred=1, Blocking=2, Asynchronous_filter =3. Please use 'Asynchronous_filter' after 2024-10-01. It is the same as 'Deferred' in previous version.
+	// The list of custom rai topics.
+	CustomTopics []CustomTopicConfig `pulumi:"customTopics"`
+	// Rai policy mode. The enum value mapping is as below: Default = 0, Deferred=1, Blocking=2, Asynchronous_filter =3. Please use 'Asynchronous_filter' after 2025-06-01. It is the same as 'Deferred' in previous version.
 	Mode *string `pulumi:"mode"`
+	// The list of Safety Providers.
+	SafetyProviders []SafetyProviderConfig `pulumi:"safetyProviders"`
 }
 
 // RaiPolicyPropertiesInput is an input type that accepts RaiPolicyPropertiesArgs and RaiPolicyPropertiesOutput values.
@@ -11779,8 +14697,12 @@ type RaiPolicyPropertiesArgs struct {
 	ContentFilters RaiPolicyContentFilterArrayInput `pulumi:"contentFilters"`
 	// The list of custom Blocklist.
 	CustomBlocklists CustomBlocklistConfigArrayInput `pulumi:"customBlocklists"`
-	// Rai policy mode. The enum value mapping is as below: Default = 0, Deferred=1, Blocking=2, Asynchronous_filter =3. Please use 'Asynchronous_filter' after 2024-10-01. It is the same as 'Deferred' in previous version.
+	// The list of custom rai topics.
+	CustomTopics CustomTopicConfigArrayInput `pulumi:"customTopics"`
+	// Rai policy mode. The enum value mapping is as below: Default = 0, Deferred=1, Blocking=2, Asynchronous_filter =3. Please use 'Asynchronous_filter' after 2025-06-01. It is the same as 'Deferred' in previous version.
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// The list of Safety Providers.
+	SafetyProviders SafetyProviderConfigArrayInput `pulumi:"safetyProviders"`
 }
 
 func (RaiPolicyPropertiesArgs) ElementType() reflect.Type {
@@ -11876,9 +14798,19 @@ func (o RaiPolicyPropertiesOutput) CustomBlocklists() CustomBlocklistConfigArray
 	return o.ApplyT(func(v RaiPolicyProperties) []CustomBlocklistConfig { return v.CustomBlocklists }).(CustomBlocklistConfigArrayOutput)
 }
 
-// Rai policy mode. The enum value mapping is as below: Default = 0, Deferred=1, Blocking=2, Asynchronous_filter =3. Please use 'Asynchronous_filter' after 2024-10-01. It is the same as 'Deferred' in previous version.
+// The list of custom rai topics.
+func (o RaiPolicyPropertiesOutput) CustomTopics() CustomTopicConfigArrayOutput {
+	return o.ApplyT(func(v RaiPolicyProperties) []CustomTopicConfig { return v.CustomTopics }).(CustomTopicConfigArrayOutput)
+}
+
+// Rai policy mode. The enum value mapping is as below: Default = 0, Deferred=1, Blocking=2, Asynchronous_filter =3. Please use 'Asynchronous_filter' after 2025-06-01. It is the same as 'Deferred' in previous version.
 func (o RaiPolicyPropertiesOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RaiPolicyProperties) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// The list of Safety Providers.
+func (o RaiPolicyPropertiesOutput) SafetyProviders() SafetyProviderConfigArrayOutput {
+	return o.ApplyT(func(v RaiPolicyProperties) []SafetyProviderConfig { return v.SafetyProviders }).(SafetyProviderConfigArrayOutput)
 }
 
 type RaiPolicyPropertiesPtrOutput struct{ *pulumi.OutputState }
@@ -11935,7 +14867,17 @@ func (o RaiPolicyPropertiesPtrOutput) CustomBlocklists() CustomBlocklistConfigAr
 	}).(CustomBlocklistConfigArrayOutput)
 }
 
-// Rai policy mode. The enum value mapping is as below: Default = 0, Deferred=1, Blocking=2, Asynchronous_filter =3. Please use 'Asynchronous_filter' after 2024-10-01. It is the same as 'Deferred' in previous version.
+// The list of custom rai topics.
+func (o RaiPolicyPropertiesPtrOutput) CustomTopics() CustomTopicConfigArrayOutput {
+	return o.ApplyT(func(v *RaiPolicyProperties) []CustomTopicConfig {
+		if v == nil {
+			return nil
+		}
+		return v.CustomTopics
+	}).(CustomTopicConfigArrayOutput)
+}
+
+// Rai policy mode. The enum value mapping is as below: Default = 0, Deferred=1, Blocking=2, Asynchronous_filter =3. Please use 'Asynchronous_filter' after 2025-06-01. It is the same as 'Deferred' in previous version.
 func (o RaiPolicyPropertiesPtrOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RaiPolicyProperties) *string {
 		if v == nil {
@@ -11943,6 +14885,16 @@ func (o RaiPolicyPropertiesPtrOutput) Mode() pulumi.StringPtrOutput {
 		}
 		return v.Mode
 	}).(pulumi.StringPtrOutput)
+}
+
+// The list of Safety Providers.
+func (o RaiPolicyPropertiesPtrOutput) SafetyProviders() SafetyProviderConfigArrayOutput {
+	return o.ApplyT(func(v *RaiPolicyProperties) []SafetyProviderConfig {
+		if v == nil {
+			return nil
+		}
+		return v.SafetyProviders
+	}).(SafetyProviderConfigArrayOutput)
 }
 
 // Azure OpenAI Content Filters properties.
@@ -11953,8 +14905,12 @@ type RaiPolicyPropertiesResponse struct {
 	ContentFilters []RaiPolicyContentFilterResponse `pulumi:"contentFilters"`
 	// The list of custom Blocklist.
 	CustomBlocklists []CustomBlocklistConfigResponse `pulumi:"customBlocklists"`
-	// Rai policy mode. The enum value mapping is as below: Default = 0, Deferred=1, Blocking=2, Asynchronous_filter =3. Please use 'Asynchronous_filter' after 2024-10-01. It is the same as 'Deferred' in previous version.
+	// The list of custom rai topics.
+	CustomTopics []CustomTopicConfigResponse `pulumi:"customTopics"`
+	// Rai policy mode. The enum value mapping is as below: Default = 0, Deferred=1, Blocking=2, Asynchronous_filter =3. Please use 'Asynchronous_filter' after 2025-06-01. It is the same as 'Deferred' in previous version.
 	Mode *string `pulumi:"mode"`
+	// The list of Safety Providers.
+	SafetyProviders []SafetyProviderConfigResponse `pulumi:"safetyProviders"`
 	// Content Filters policy type.
 	Type string `pulumi:"type"`
 }
@@ -11989,14 +14945,603 @@ func (o RaiPolicyPropertiesResponseOutput) CustomBlocklists() CustomBlocklistCon
 	return o.ApplyT(func(v RaiPolicyPropertiesResponse) []CustomBlocklistConfigResponse { return v.CustomBlocklists }).(CustomBlocklistConfigResponseArrayOutput)
 }
 
-// Rai policy mode. The enum value mapping is as below: Default = 0, Deferred=1, Blocking=2, Asynchronous_filter =3. Please use 'Asynchronous_filter' after 2024-10-01. It is the same as 'Deferred' in previous version.
+// The list of custom rai topics.
+func (o RaiPolicyPropertiesResponseOutput) CustomTopics() CustomTopicConfigResponseArrayOutput {
+	return o.ApplyT(func(v RaiPolicyPropertiesResponse) []CustomTopicConfigResponse { return v.CustomTopics }).(CustomTopicConfigResponseArrayOutput)
+}
+
+// Rai policy mode. The enum value mapping is as below: Default = 0, Deferred=1, Blocking=2, Asynchronous_filter =3. Please use 'Asynchronous_filter' after 2025-06-01. It is the same as 'Deferred' in previous version.
 func (o RaiPolicyPropertiesResponseOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RaiPolicyPropertiesResponse) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// The list of Safety Providers.
+func (o RaiPolicyPropertiesResponseOutput) SafetyProviders() SafetyProviderConfigResponseArrayOutput {
+	return o.ApplyT(func(v RaiPolicyPropertiesResponse) []SafetyProviderConfigResponse { return v.SafetyProviders }).(SafetyProviderConfigResponseArrayOutput)
 }
 
 // Content Filters policy type.
 func (o RaiPolicyPropertiesResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v RaiPolicyPropertiesResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// RAI Tool Label properties.
+type RaiToolLabelProperties struct {
+	// Account-level tool label definition.
+	AccountScope *RaiToolLabelPropertiesAccountScope `pulumi:"accountScope"`
+	// List of project-level tool label definitions.
+	ProjectScopes []RaiToolLabelPropertiesProjectScopes `pulumi:"projectScopes"`
+	// The unique tool connection name, e.g., 'Web_Search'.
+	ToolConnectionName string `pulumi:"toolConnectionName"`
+}
+
+// RaiToolLabelPropertiesInput is an input type that accepts RaiToolLabelPropertiesArgs and RaiToolLabelPropertiesOutput values.
+// You can construct a concrete instance of `RaiToolLabelPropertiesInput` via:
+//
+//	RaiToolLabelPropertiesArgs{...}
+type RaiToolLabelPropertiesInput interface {
+	pulumi.Input
+
+	ToRaiToolLabelPropertiesOutput() RaiToolLabelPropertiesOutput
+	ToRaiToolLabelPropertiesOutputWithContext(context.Context) RaiToolLabelPropertiesOutput
+}
+
+// RAI Tool Label properties.
+type RaiToolLabelPropertiesArgs struct {
+	// Account-level tool label definition.
+	AccountScope RaiToolLabelPropertiesAccountScopePtrInput `pulumi:"accountScope"`
+	// List of project-level tool label definitions.
+	ProjectScopes RaiToolLabelPropertiesProjectScopesArrayInput `pulumi:"projectScopes"`
+	// The unique tool connection name, e.g., 'Web_Search'.
+	ToolConnectionName pulumi.StringInput `pulumi:"toolConnectionName"`
+}
+
+func (RaiToolLabelPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiToolLabelProperties)(nil)).Elem()
+}
+
+func (i RaiToolLabelPropertiesArgs) ToRaiToolLabelPropertiesOutput() RaiToolLabelPropertiesOutput {
+	return i.ToRaiToolLabelPropertiesOutputWithContext(context.Background())
+}
+
+func (i RaiToolLabelPropertiesArgs) ToRaiToolLabelPropertiesOutputWithContext(ctx context.Context) RaiToolLabelPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RaiToolLabelPropertiesOutput)
+}
+
+func (i RaiToolLabelPropertiesArgs) ToRaiToolLabelPropertiesPtrOutput() RaiToolLabelPropertiesPtrOutput {
+	return i.ToRaiToolLabelPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i RaiToolLabelPropertiesArgs) ToRaiToolLabelPropertiesPtrOutputWithContext(ctx context.Context) RaiToolLabelPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RaiToolLabelPropertiesOutput).ToRaiToolLabelPropertiesPtrOutputWithContext(ctx)
+}
+
+// RaiToolLabelPropertiesPtrInput is an input type that accepts RaiToolLabelPropertiesArgs, RaiToolLabelPropertiesPtr and RaiToolLabelPropertiesPtrOutput values.
+// You can construct a concrete instance of `RaiToolLabelPropertiesPtrInput` via:
+//
+//	        RaiToolLabelPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type RaiToolLabelPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToRaiToolLabelPropertiesPtrOutput() RaiToolLabelPropertiesPtrOutput
+	ToRaiToolLabelPropertiesPtrOutputWithContext(context.Context) RaiToolLabelPropertiesPtrOutput
+}
+
+type raiToolLabelPropertiesPtrType RaiToolLabelPropertiesArgs
+
+func RaiToolLabelPropertiesPtr(v *RaiToolLabelPropertiesArgs) RaiToolLabelPropertiesPtrInput {
+	return (*raiToolLabelPropertiesPtrType)(v)
+}
+
+func (*raiToolLabelPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RaiToolLabelProperties)(nil)).Elem()
+}
+
+func (i *raiToolLabelPropertiesPtrType) ToRaiToolLabelPropertiesPtrOutput() RaiToolLabelPropertiesPtrOutput {
+	return i.ToRaiToolLabelPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *raiToolLabelPropertiesPtrType) ToRaiToolLabelPropertiesPtrOutputWithContext(ctx context.Context) RaiToolLabelPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RaiToolLabelPropertiesPtrOutput)
+}
+
+// RAI Tool Label properties.
+type RaiToolLabelPropertiesOutput struct{ *pulumi.OutputState }
+
+func (RaiToolLabelPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiToolLabelProperties)(nil)).Elem()
+}
+
+func (o RaiToolLabelPropertiesOutput) ToRaiToolLabelPropertiesOutput() RaiToolLabelPropertiesOutput {
+	return o
+}
+
+func (o RaiToolLabelPropertiesOutput) ToRaiToolLabelPropertiesOutputWithContext(ctx context.Context) RaiToolLabelPropertiesOutput {
+	return o
+}
+
+func (o RaiToolLabelPropertiesOutput) ToRaiToolLabelPropertiesPtrOutput() RaiToolLabelPropertiesPtrOutput {
+	return o.ToRaiToolLabelPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o RaiToolLabelPropertiesOutput) ToRaiToolLabelPropertiesPtrOutputWithContext(ctx context.Context) RaiToolLabelPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RaiToolLabelProperties) *RaiToolLabelProperties {
+		return &v
+	}).(RaiToolLabelPropertiesPtrOutput)
+}
+
+// Account-level tool label definition.
+func (o RaiToolLabelPropertiesOutput) AccountScope() RaiToolLabelPropertiesAccountScopePtrOutput {
+	return o.ApplyT(func(v RaiToolLabelProperties) *RaiToolLabelPropertiesAccountScope { return v.AccountScope }).(RaiToolLabelPropertiesAccountScopePtrOutput)
+}
+
+// List of project-level tool label definitions.
+func (o RaiToolLabelPropertiesOutput) ProjectScopes() RaiToolLabelPropertiesProjectScopesArrayOutput {
+	return o.ApplyT(func(v RaiToolLabelProperties) []RaiToolLabelPropertiesProjectScopes { return v.ProjectScopes }).(RaiToolLabelPropertiesProjectScopesArrayOutput)
+}
+
+// The unique tool connection name, e.g., 'Web_Search'.
+func (o RaiToolLabelPropertiesOutput) ToolConnectionName() pulumi.StringOutput {
+	return o.ApplyT(func(v RaiToolLabelProperties) string { return v.ToolConnectionName }).(pulumi.StringOutput)
+}
+
+type RaiToolLabelPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (RaiToolLabelPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RaiToolLabelProperties)(nil)).Elem()
+}
+
+func (o RaiToolLabelPropertiesPtrOutput) ToRaiToolLabelPropertiesPtrOutput() RaiToolLabelPropertiesPtrOutput {
+	return o
+}
+
+func (o RaiToolLabelPropertiesPtrOutput) ToRaiToolLabelPropertiesPtrOutputWithContext(ctx context.Context) RaiToolLabelPropertiesPtrOutput {
+	return o
+}
+
+func (o RaiToolLabelPropertiesPtrOutput) Elem() RaiToolLabelPropertiesOutput {
+	return o.ApplyT(func(v *RaiToolLabelProperties) RaiToolLabelProperties {
+		if v != nil {
+			return *v
+		}
+		var ret RaiToolLabelProperties
+		return ret
+	}).(RaiToolLabelPropertiesOutput)
+}
+
+// Account-level tool label definition.
+func (o RaiToolLabelPropertiesPtrOutput) AccountScope() RaiToolLabelPropertiesAccountScopePtrOutput {
+	return o.ApplyT(func(v *RaiToolLabelProperties) *RaiToolLabelPropertiesAccountScope {
+		if v == nil {
+			return nil
+		}
+		return v.AccountScope
+	}).(RaiToolLabelPropertiesAccountScopePtrOutput)
+}
+
+// List of project-level tool label definitions.
+func (o RaiToolLabelPropertiesPtrOutput) ProjectScopes() RaiToolLabelPropertiesProjectScopesArrayOutput {
+	return o.ApplyT(func(v *RaiToolLabelProperties) []RaiToolLabelPropertiesProjectScopes {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectScopes
+	}).(RaiToolLabelPropertiesProjectScopesArrayOutput)
+}
+
+// The unique tool connection name, e.g., 'Web_Search'.
+func (o RaiToolLabelPropertiesPtrOutput) ToolConnectionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RaiToolLabelProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ToolConnectionName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Account-level tool label definition.
+type RaiToolLabelPropertiesAccountScope struct {
+	// Dictionary of label key-value pairs for the account scope.
+	LabelValues map[string]string `pulumi:"labelValues"`
+}
+
+// RaiToolLabelPropertiesAccountScopeInput is an input type that accepts RaiToolLabelPropertiesAccountScopeArgs and RaiToolLabelPropertiesAccountScopeOutput values.
+// You can construct a concrete instance of `RaiToolLabelPropertiesAccountScopeInput` via:
+//
+//	RaiToolLabelPropertiesAccountScopeArgs{...}
+type RaiToolLabelPropertiesAccountScopeInput interface {
+	pulumi.Input
+
+	ToRaiToolLabelPropertiesAccountScopeOutput() RaiToolLabelPropertiesAccountScopeOutput
+	ToRaiToolLabelPropertiesAccountScopeOutputWithContext(context.Context) RaiToolLabelPropertiesAccountScopeOutput
+}
+
+// Account-level tool label definition.
+type RaiToolLabelPropertiesAccountScopeArgs struct {
+	// Dictionary of label key-value pairs for the account scope.
+	LabelValues pulumi.StringMapInput `pulumi:"labelValues"`
+}
+
+func (RaiToolLabelPropertiesAccountScopeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiToolLabelPropertiesAccountScope)(nil)).Elem()
+}
+
+func (i RaiToolLabelPropertiesAccountScopeArgs) ToRaiToolLabelPropertiesAccountScopeOutput() RaiToolLabelPropertiesAccountScopeOutput {
+	return i.ToRaiToolLabelPropertiesAccountScopeOutputWithContext(context.Background())
+}
+
+func (i RaiToolLabelPropertiesAccountScopeArgs) ToRaiToolLabelPropertiesAccountScopeOutputWithContext(ctx context.Context) RaiToolLabelPropertiesAccountScopeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RaiToolLabelPropertiesAccountScopeOutput)
+}
+
+func (i RaiToolLabelPropertiesAccountScopeArgs) ToRaiToolLabelPropertiesAccountScopePtrOutput() RaiToolLabelPropertiesAccountScopePtrOutput {
+	return i.ToRaiToolLabelPropertiesAccountScopePtrOutputWithContext(context.Background())
+}
+
+func (i RaiToolLabelPropertiesAccountScopeArgs) ToRaiToolLabelPropertiesAccountScopePtrOutputWithContext(ctx context.Context) RaiToolLabelPropertiesAccountScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RaiToolLabelPropertiesAccountScopeOutput).ToRaiToolLabelPropertiesAccountScopePtrOutputWithContext(ctx)
+}
+
+// RaiToolLabelPropertiesAccountScopePtrInput is an input type that accepts RaiToolLabelPropertiesAccountScopeArgs, RaiToolLabelPropertiesAccountScopePtr and RaiToolLabelPropertiesAccountScopePtrOutput values.
+// You can construct a concrete instance of `RaiToolLabelPropertiesAccountScopePtrInput` via:
+//
+//	        RaiToolLabelPropertiesAccountScopeArgs{...}
+//
+//	or:
+//
+//	        nil
+type RaiToolLabelPropertiesAccountScopePtrInput interface {
+	pulumi.Input
+
+	ToRaiToolLabelPropertiesAccountScopePtrOutput() RaiToolLabelPropertiesAccountScopePtrOutput
+	ToRaiToolLabelPropertiesAccountScopePtrOutputWithContext(context.Context) RaiToolLabelPropertiesAccountScopePtrOutput
+}
+
+type raiToolLabelPropertiesAccountScopePtrType RaiToolLabelPropertiesAccountScopeArgs
+
+func RaiToolLabelPropertiesAccountScopePtr(v *RaiToolLabelPropertiesAccountScopeArgs) RaiToolLabelPropertiesAccountScopePtrInput {
+	return (*raiToolLabelPropertiesAccountScopePtrType)(v)
+}
+
+func (*raiToolLabelPropertiesAccountScopePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RaiToolLabelPropertiesAccountScope)(nil)).Elem()
+}
+
+func (i *raiToolLabelPropertiesAccountScopePtrType) ToRaiToolLabelPropertiesAccountScopePtrOutput() RaiToolLabelPropertiesAccountScopePtrOutput {
+	return i.ToRaiToolLabelPropertiesAccountScopePtrOutputWithContext(context.Background())
+}
+
+func (i *raiToolLabelPropertiesAccountScopePtrType) ToRaiToolLabelPropertiesAccountScopePtrOutputWithContext(ctx context.Context) RaiToolLabelPropertiesAccountScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RaiToolLabelPropertiesAccountScopePtrOutput)
+}
+
+// Account-level tool label definition.
+type RaiToolLabelPropertiesAccountScopeOutput struct{ *pulumi.OutputState }
+
+func (RaiToolLabelPropertiesAccountScopeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiToolLabelPropertiesAccountScope)(nil)).Elem()
+}
+
+func (o RaiToolLabelPropertiesAccountScopeOutput) ToRaiToolLabelPropertiesAccountScopeOutput() RaiToolLabelPropertiesAccountScopeOutput {
+	return o
+}
+
+func (o RaiToolLabelPropertiesAccountScopeOutput) ToRaiToolLabelPropertiesAccountScopeOutputWithContext(ctx context.Context) RaiToolLabelPropertiesAccountScopeOutput {
+	return o
+}
+
+func (o RaiToolLabelPropertiesAccountScopeOutput) ToRaiToolLabelPropertiesAccountScopePtrOutput() RaiToolLabelPropertiesAccountScopePtrOutput {
+	return o.ToRaiToolLabelPropertiesAccountScopePtrOutputWithContext(context.Background())
+}
+
+func (o RaiToolLabelPropertiesAccountScopeOutput) ToRaiToolLabelPropertiesAccountScopePtrOutputWithContext(ctx context.Context) RaiToolLabelPropertiesAccountScopePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RaiToolLabelPropertiesAccountScope) *RaiToolLabelPropertiesAccountScope {
+		return &v
+	}).(RaiToolLabelPropertiesAccountScopePtrOutput)
+}
+
+// Dictionary of label key-value pairs for the account scope.
+func (o RaiToolLabelPropertiesAccountScopeOutput) LabelValues() pulumi.StringMapOutput {
+	return o.ApplyT(func(v RaiToolLabelPropertiesAccountScope) map[string]string { return v.LabelValues }).(pulumi.StringMapOutput)
+}
+
+type RaiToolLabelPropertiesAccountScopePtrOutput struct{ *pulumi.OutputState }
+
+func (RaiToolLabelPropertiesAccountScopePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RaiToolLabelPropertiesAccountScope)(nil)).Elem()
+}
+
+func (o RaiToolLabelPropertiesAccountScopePtrOutput) ToRaiToolLabelPropertiesAccountScopePtrOutput() RaiToolLabelPropertiesAccountScopePtrOutput {
+	return o
+}
+
+func (o RaiToolLabelPropertiesAccountScopePtrOutput) ToRaiToolLabelPropertiesAccountScopePtrOutputWithContext(ctx context.Context) RaiToolLabelPropertiesAccountScopePtrOutput {
+	return o
+}
+
+func (o RaiToolLabelPropertiesAccountScopePtrOutput) Elem() RaiToolLabelPropertiesAccountScopeOutput {
+	return o.ApplyT(func(v *RaiToolLabelPropertiesAccountScope) RaiToolLabelPropertiesAccountScope {
+		if v != nil {
+			return *v
+		}
+		var ret RaiToolLabelPropertiesAccountScope
+		return ret
+	}).(RaiToolLabelPropertiesAccountScopeOutput)
+}
+
+// Dictionary of label key-value pairs for the account scope.
+func (o RaiToolLabelPropertiesAccountScopePtrOutput) LabelValues() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *RaiToolLabelPropertiesAccountScope) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.LabelValues
+	}).(pulumi.StringMapOutput)
+}
+
+type RaiToolLabelPropertiesProjectScopes struct {
+	// Dictionary of label key-value pairs for the project scope.
+	LabelValues map[string]string `pulumi:"labelValues"`
+	// Project name to which this scope applies.
+	Project string `pulumi:"project"`
+}
+
+// RaiToolLabelPropertiesProjectScopesInput is an input type that accepts RaiToolLabelPropertiesProjectScopesArgs and RaiToolLabelPropertiesProjectScopesOutput values.
+// You can construct a concrete instance of `RaiToolLabelPropertiesProjectScopesInput` via:
+//
+//	RaiToolLabelPropertiesProjectScopesArgs{...}
+type RaiToolLabelPropertiesProjectScopesInput interface {
+	pulumi.Input
+
+	ToRaiToolLabelPropertiesProjectScopesOutput() RaiToolLabelPropertiesProjectScopesOutput
+	ToRaiToolLabelPropertiesProjectScopesOutputWithContext(context.Context) RaiToolLabelPropertiesProjectScopesOutput
+}
+
+type RaiToolLabelPropertiesProjectScopesArgs struct {
+	// Dictionary of label key-value pairs for the project scope.
+	LabelValues pulumi.StringMapInput `pulumi:"labelValues"`
+	// Project name to which this scope applies.
+	Project pulumi.StringInput `pulumi:"project"`
+}
+
+func (RaiToolLabelPropertiesProjectScopesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiToolLabelPropertiesProjectScopes)(nil)).Elem()
+}
+
+func (i RaiToolLabelPropertiesProjectScopesArgs) ToRaiToolLabelPropertiesProjectScopesOutput() RaiToolLabelPropertiesProjectScopesOutput {
+	return i.ToRaiToolLabelPropertiesProjectScopesOutputWithContext(context.Background())
+}
+
+func (i RaiToolLabelPropertiesProjectScopesArgs) ToRaiToolLabelPropertiesProjectScopesOutputWithContext(ctx context.Context) RaiToolLabelPropertiesProjectScopesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RaiToolLabelPropertiesProjectScopesOutput)
+}
+
+// RaiToolLabelPropertiesProjectScopesArrayInput is an input type that accepts RaiToolLabelPropertiesProjectScopesArray and RaiToolLabelPropertiesProjectScopesArrayOutput values.
+// You can construct a concrete instance of `RaiToolLabelPropertiesProjectScopesArrayInput` via:
+//
+//	RaiToolLabelPropertiesProjectScopesArray{ RaiToolLabelPropertiesProjectScopesArgs{...} }
+type RaiToolLabelPropertiesProjectScopesArrayInput interface {
+	pulumi.Input
+
+	ToRaiToolLabelPropertiesProjectScopesArrayOutput() RaiToolLabelPropertiesProjectScopesArrayOutput
+	ToRaiToolLabelPropertiesProjectScopesArrayOutputWithContext(context.Context) RaiToolLabelPropertiesProjectScopesArrayOutput
+}
+
+type RaiToolLabelPropertiesProjectScopesArray []RaiToolLabelPropertiesProjectScopesInput
+
+func (RaiToolLabelPropertiesProjectScopesArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RaiToolLabelPropertiesProjectScopes)(nil)).Elem()
+}
+
+func (i RaiToolLabelPropertiesProjectScopesArray) ToRaiToolLabelPropertiesProjectScopesArrayOutput() RaiToolLabelPropertiesProjectScopesArrayOutput {
+	return i.ToRaiToolLabelPropertiesProjectScopesArrayOutputWithContext(context.Background())
+}
+
+func (i RaiToolLabelPropertiesProjectScopesArray) ToRaiToolLabelPropertiesProjectScopesArrayOutputWithContext(ctx context.Context) RaiToolLabelPropertiesProjectScopesArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RaiToolLabelPropertiesProjectScopesArrayOutput)
+}
+
+type RaiToolLabelPropertiesProjectScopesOutput struct{ *pulumi.OutputState }
+
+func (RaiToolLabelPropertiesProjectScopesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiToolLabelPropertiesProjectScopes)(nil)).Elem()
+}
+
+func (o RaiToolLabelPropertiesProjectScopesOutput) ToRaiToolLabelPropertiesProjectScopesOutput() RaiToolLabelPropertiesProjectScopesOutput {
+	return o
+}
+
+func (o RaiToolLabelPropertiesProjectScopesOutput) ToRaiToolLabelPropertiesProjectScopesOutputWithContext(ctx context.Context) RaiToolLabelPropertiesProjectScopesOutput {
+	return o
+}
+
+// Dictionary of label key-value pairs for the project scope.
+func (o RaiToolLabelPropertiesProjectScopesOutput) LabelValues() pulumi.StringMapOutput {
+	return o.ApplyT(func(v RaiToolLabelPropertiesProjectScopes) map[string]string { return v.LabelValues }).(pulumi.StringMapOutput)
+}
+
+// Project name to which this scope applies.
+func (o RaiToolLabelPropertiesProjectScopesOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v RaiToolLabelPropertiesProjectScopes) string { return v.Project }).(pulumi.StringOutput)
+}
+
+type RaiToolLabelPropertiesProjectScopesArrayOutput struct{ *pulumi.OutputState }
+
+func (RaiToolLabelPropertiesProjectScopesArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RaiToolLabelPropertiesProjectScopes)(nil)).Elem()
+}
+
+func (o RaiToolLabelPropertiesProjectScopesArrayOutput) ToRaiToolLabelPropertiesProjectScopesArrayOutput() RaiToolLabelPropertiesProjectScopesArrayOutput {
+	return o
+}
+
+func (o RaiToolLabelPropertiesProjectScopesArrayOutput) ToRaiToolLabelPropertiesProjectScopesArrayOutputWithContext(ctx context.Context) RaiToolLabelPropertiesProjectScopesArrayOutput {
+	return o
+}
+
+func (o RaiToolLabelPropertiesProjectScopesArrayOutput) Index(i pulumi.IntInput) RaiToolLabelPropertiesProjectScopesOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RaiToolLabelPropertiesProjectScopes {
+		return vs[0].([]RaiToolLabelPropertiesProjectScopes)[vs[1].(int)]
+	}).(RaiToolLabelPropertiesProjectScopesOutput)
+}
+
+// RAI Tool Label properties.
+type RaiToolLabelPropertiesResponse struct {
+	// Account-level tool label definition.
+	AccountScope *RaiToolLabelPropertiesResponseAccountScope `pulumi:"accountScope"`
+	// List of project-level tool label definitions.
+	ProjectScopes []RaiToolLabelPropertiesResponseProjectScopes `pulumi:"projectScopes"`
+	// The unique tool connection name, e.g., 'Web_Search'.
+	ToolConnectionName string `pulumi:"toolConnectionName"`
+}
+
+// RAI Tool Label properties.
+type RaiToolLabelPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (RaiToolLabelPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiToolLabelPropertiesResponse)(nil)).Elem()
+}
+
+func (o RaiToolLabelPropertiesResponseOutput) ToRaiToolLabelPropertiesResponseOutput() RaiToolLabelPropertiesResponseOutput {
+	return o
+}
+
+func (o RaiToolLabelPropertiesResponseOutput) ToRaiToolLabelPropertiesResponseOutputWithContext(ctx context.Context) RaiToolLabelPropertiesResponseOutput {
+	return o
+}
+
+// Account-level tool label definition.
+func (o RaiToolLabelPropertiesResponseOutput) AccountScope() RaiToolLabelPropertiesResponseAccountScopePtrOutput {
+	return o.ApplyT(func(v RaiToolLabelPropertiesResponse) *RaiToolLabelPropertiesResponseAccountScope {
+		return v.AccountScope
+	}).(RaiToolLabelPropertiesResponseAccountScopePtrOutput)
+}
+
+// List of project-level tool label definitions.
+func (o RaiToolLabelPropertiesResponseOutput) ProjectScopes() RaiToolLabelPropertiesResponseProjectScopesArrayOutput {
+	return o.ApplyT(func(v RaiToolLabelPropertiesResponse) []RaiToolLabelPropertiesResponseProjectScopes {
+		return v.ProjectScopes
+	}).(RaiToolLabelPropertiesResponseProjectScopesArrayOutput)
+}
+
+// The unique tool connection name, e.g., 'Web_Search'.
+func (o RaiToolLabelPropertiesResponseOutput) ToolConnectionName() pulumi.StringOutput {
+	return o.ApplyT(func(v RaiToolLabelPropertiesResponse) string { return v.ToolConnectionName }).(pulumi.StringOutput)
+}
+
+// Account-level tool label definition.
+type RaiToolLabelPropertiesResponseAccountScope struct {
+	// Dictionary of label key-value pairs for the account scope.
+	LabelValues map[string]string `pulumi:"labelValues"`
+}
+
+// Account-level tool label definition.
+type RaiToolLabelPropertiesResponseAccountScopeOutput struct{ *pulumi.OutputState }
+
+func (RaiToolLabelPropertiesResponseAccountScopeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiToolLabelPropertiesResponseAccountScope)(nil)).Elem()
+}
+
+func (o RaiToolLabelPropertiesResponseAccountScopeOutput) ToRaiToolLabelPropertiesResponseAccountScopeOutput() RaiToolLabelPropertiesResponseAccountScopeOutput {
+	return o
+}
+
+func (o RaiToolLabelPropertiesResponseAccountScopeOutput) ToRaiToolLabelPropertiesResponseAccountScopeOutputWithContext(ctx context.Context) RaiToolLabelPropertiesResponseAccountScopeOutput {
+	return o
+}
+
+// Dictionary of label key-value pairs for the account scope.
+func (o RaiToolLabelPropertiesResponseAccountScopeOutput) LabelValues() pulumi.StringMapOutput {
+	return o.ApplyT(func(v RaiToolLabelPropertiesResponseAccountScope) map[string]string { return v.LabelValues }).(pulumi.StringMapOutput)
+}
+
+type RaiToolLabelPropertiesResponseAccountScopePtrOutput struct{ *pulumi.OutputState }
+
+func (RaiToolLabelPropertiesResponseAccountScopePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RaiToolLabelPropertiesResponseAccountScope)(nil)).Elem()
+}
+
+func (o RaiToolLabelPropertiesResponseAccountScopePtrOutput) ToRaiToolLabelPropertiesResponseAccountScopePtrOutput() RaiToolLabelPropertiesResponseAccountScopePtrOutput {
+	return o
+}
+
+func (o RaiToolLabelPropertiesResponseAccountScopePtrOutput) ToRaiToolLabelPropertiesResponseAccountScopePtrOutputWithContext(ctx context.Context) RaiToolLabelPropertiesResponseAccountScopePtrOutput {
+	return o
+}
+
+func (o RaiToolLabelPropertiesResponseAccountScopePtrOutput) Elem() RaiToolLabelPropertiesResponseAccountScopeOutput {
+	return o.ApplyT(func(v *RaiToolLabelPropertiesResponseAccountScope) RaiToolLabelPropertiesResponseAccountScope {
+		if v != nil {
+			return *v
+		}
+		var ret RaiToolLabelPropertiesResponseAccountScope
+		return ret
+	}).(RaiToolLabelPropertiesResponseAccountScopeOutput)
+}
+
+// Dictionary of label key-value pairs for the account scope.
+func (o RaiToolLabelPropertiesResponseAccountScopePtrOutput) LabelValues() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *RaiToolLabelPropertiesResponseAccountScope) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.LabelValues
+	}).(pulumi.StringMapOutput)
+}
+
+type RaiToolLabelPropertiesResponseProjectScopes struct {
+	// Dictionary of label key-value pairs for the project scope.
+	LabelValues map[string]string `pulumi:"labelValues"`
+	// Project name to which this scope applies.
+	Project string `pulumi:"project"`
+}
+
+type RaiToolLabelPropertiesResponseProjectScopesOutput struct{ *pulumi.OutputState }
+
+func (RaiToolLabelPropertiesResponseProjectScopesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiToolLabelPropertiesResponseProjectScopes)(nil)).Elem()
+}
+
+func (o RaiToolLabelPropertiesResponseProjectScopesOutput) ToRaiToolLabelPropertiesResponseProjectScopesOutput() RaiToolLabelPropertiesResponseProjectScopesOutput {
+	return o
+}
+
+func (o RaiToolLabelPropertiesResponseProjectScopesOutput) ToRaiToolLabelPropertiesResponseProjectScopesOutputWithContext(ctx context.Context) RaiToolLabelPropertiesResponseProjectScopesOutput {
+	return o
+}
+
+// Dictionary of label key-value pairs for the project scope.
+func (o RaiToolLabelPropertiesResponseProjectScopesOutput) LabelValues() pulumi.StringMapOutput {
+	return o.ApplyT(func(v RaiToolLabelPropertiesResponseProjectScopes) map[string]string { return v.LabelValues }).(pulumi.StringMapOutput)
+}
+
+// Project name to which this scope applies.
+func (o RaiToolLabelPropertiesResponseProjectScopesOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v RaiToolLabelPropertiesResponseProjectScopes) string { return v.Project }).(pulumi.StringOutput)
+}
+
+type RaiToolLabelPropertiesResponseProjectScopesArrayOutput struct{ *pulumi.OutputState }
+
+func (RaiToolLabelPropertiesResponseProjectScopesArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RaiToolLabelPropertiesResponseProjectScopes)(nil)).Elem()
+}
+
+func (o RaiToolLabelPropertiesResponseProjectScopesArrayOutput) ToRaiToolLabelPropertiesResponseProjectScopesArrayOutput() RaiToolLabelPropertiesResponseProjectScopesArrayOutput {
+	return o
+}
+
+func (o RaiToolLabelPropertiesResponseProjectScopesArrayOutput) ToRaiToolLabelPropertiesResponseProjectScopesArrayOutputWithContext(ctx context.Context) RaiToolLabelPropertiesResponseProjectScopesArrayOutput {
+	return o
+}
+
+func (o RaiToolLabelPropertiesResponseProjectScopesArrayOutput) Index(i pulumi.IntInput) RaiToolLabelPropertiesResponseProjectScopesOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RaiToolLabelPropertiesResponseProjectScopes {
+		return vs[0].([]RaiToolLabelPropertiesResponseProjectScopes)[vs[1].(int)]
+	}).(RaiToolLabelPropertiesResponseProjectScopesOutput)
 }
 
 // RAI Custom Topic properties.
@@ -12572,6 +16117,213 @@ func (o RequestMatchPatternResponseArrayOutput) Index(i pulumi.IntInput) Request
 	}).(RequestMatchPatternResponseOutput)
 }
 
+// Built-in role-based authorization policy.
+type RoleBasedBuiltInAuthorizationPolicy struct {
+	// Authorization scheme type.
+	// Expected value is 'Default'.
+	Type string `pulumi:"type"`
+}
+
+// RoleBasedBuiltInAuthorizationPolicyInput is an input type that accepts RoleBasedBuiltInAuthorizationPolicyArgs and RoleBasedBuiltInAuthorizationPolicyOutput values.
+// You can construct a concrete instance of `RoleBasedBuiltInAuthorizationPolicyInput` via:
+//
+//	RoleBasedBuiltInAuthorizationPolicyArgs{...}
+type RoleBasedBuiltInAuthorizationPolicyInput interface {
+	pulumi.Input
+
+	ToRoleBasedBuiltInAuthorizationPolicyOutput() RoleBasedBuiltInAuthorizationPolicyOutput
+	ToRoleBasedBuiltInAuthorizationPolicyOutputWithContext(context.Context) RoleBasedBuiltInAuthorizationPolicyOutput
+}
+
+// Built-in role-based authorization policy.
+type RoleBasedBuiltInAuthorizationPolicyArgs struct {
+	// Authorization scheme type.
+	// Expected value is 'Default'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (RoleBasedBuiltInAuthorizationPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoleBasedBuiltInAuthorizationPolicy)(nil)).Elem()
+}
+
+func (i RoleBasedBuiltInAuthorizationPolicyArgs) ToRoleBasedBuiltInAuthorizationPolicyOutput() RoleBasedBuiltInAuthorizationPolicyOutput {
+	return i.ToRoleBasedBuiltInAuthorizationPolicyOutputWithContext(context.Background())
+}
+
+func (i RoleBasedBuiltInAuthorizationPolicyArgs) ToRoleBasedBuiltInAuthorizationPolicyOutputWithContext(ctx context.Context) RoleBasedBuiltInAuthorizationPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoleBasedBuiltInAuthorizationPolicyOutput)
+}
+
+func (i RoleBasedBuiltInAuthorizationPolicyArgs) ToRoleBasedBuiltInAuthorizationPolicyPtrOutput() RoleBasedBuiltInAuthorizationPolicyPtrOutput {
+	return i.ToRoleBasedBuiltInAuthorizationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i RoleBasedBuiltInAuthorizationPolicyArgs) ToRoleBasedBuiltInAuthorizationPolicyPtrOutputWithContext(ctx context.Context) RoleBasedBuiltInAuthorizationPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoleBasedBuiltInAuthorizationPolicyOutput).ToRoleBasedBuiltInAuthorizationPolicyPtrOutputWithContext(ctx)
+}
+
+// RoleBasedBuiltInAuthorizationPolicyPtrInput is an input type that accepts RoleBasedBuiltInAuthorizationPolicyArgs, RoleBasedBuiltInAuthorizationPolicyPtr and RoleBasedBuiltInAuthorizationPolicyPtrOutput values.
+// You can construct a concrete instance of `RoleBasedBuiltInAuthorizationPolicyPtrInput` via:
+//
+//	        RoleBasedBuiltInAuthorizationPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type RoleBasedBuiltInAuthorizationPolicyPtrInput interface {
+	pulumi.Input
+
+	ToRoleBasedBuiltInAuthorizationPolicyPtrOutput() RoleBasedBuiltInAuthorizationPolicyPtrOutput
+	ToRoleBasedBuiltInAuthorizationPolicyPtrOutputWithContext(context.Context) RoleBasedBuiltInAuthorizationPolicyPtrOutput
+}
+
+type roleBasedBuiltInAuthorizationPolicyPtrType RoleBasedBuiltInAuthorizationPolicyArgs
+
+func RoleBasedBuiltInAuthorizationPolicyPtr(v *RoleBasedBuiltInAuthorizationPolicyArgs) RoleBasedBuiltInAuthorizationPolicyPtrInput {
+	return (*roleBasedBuiltInAuthorizationPolicyPtrType)(v)
+}
+
+func (*roleBasedBuiltInAuthorizationPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RoleBasedBuiltInAuthorizationPolicy)(nil)).Elem()
+}
+
+func (i *roleBasedBuiltInAuthorizationPolicyPtrType) ToRoleBasedBuiltInAuthorizationPolicyPtrOutput() RoleBasedBuiltInAuthorizationPolicyPtrOutput {
+	return i.ToRoleBasedBuiltInAuthorizationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *roleBasedBuiltInAuthorizationPolicyPtrType) ToRoleBasedBuiltInAuthorizationPolicyPtrOutputWithContext(ctx context.Context) RoleBasedBuiltInAuthorizationPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoleBasedBuiltInAuthorizationPolicyPtrOutput)
+}
+
+// Built-in role-based authorization policy.
+type RoleBasedBuiltInAuthorizationPolicyOutput struct{ *pulumi.OutputState }
+
+func (RoleBasedBuiltInAuthorizationPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoleBasedBuiltInAuthorizationPolicy)(nil)).Elem()
+}
+
+func (o RoleBasedBuiltInAuthorizationPolicyOutput) ToRoleBasedBuiltInAuthorizationPolicyOutput() RoleBasedBuiltInAuthorizationPolicyOutput {
+	return o
+}
+
+func (o RoleBasedBuiltInAuthorizationPolicyOutput) ToRoleBasedBuiltInAuthorizationPolicyOutputWithContext(ctx context.Context) RoleBasedBuiltInAuthorizationPolicyOutput {
+	return o
+}
+
+func (o RoleBasedBuiltInAuthorizationPolicyOutput) ToRoleBasedBuiltInAuthorizationPolicyPtrOutput() RoleBasedBuiltInAuthorizationPolicyPtrOutput {
+	return o.ToRoleBasedBuiltInAuthorizationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o RoleBasedBuiltInAuthorizationPolicyOutput) ToRoleBasedBuiltInAuthorizationPolicyPtrOutputWithContext(ctx context.Context) RoleBasedBuiltInAuthorizationPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RoleBasedBuiltInAuthorizationPolicy) *RoleBasedBuiltInAuthorizationPolicy {
+		return &v
+	}).(RoleBasedBuiltInAuthorizationPolicyPtrOutput)
+}
+
+// Authorization scheme type.
+// Expected value is 'Default'.
+func (o RoleBasedBuiltInAuthorizationPolicyOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v RoleBasedBuiltInAuthorizationPolicy) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type RoleBasedBuiltInAuthorizationPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (RoleBasedBuiltInAuthorizationPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RoleBasedBuiltInAuthorizationPolicy)(nil)).Elem()
+}
+
+func (o RoleBasedBuiltInAuthorizationPolicyPtrOutput) ToRoleBasedBuiltInAuthorizationPolicyPtrOutput() RoleBasedBuiltInAuthorizationPolicyPtrOutput {
+	return o
+}
+
+func (o RoleBasedBuiltInAuthorizationPolicyPtrOutput) ToRoleBasedBuiltInAuthorizationPolicyPtrOutputWithContext(ctx context.Context) RoleBasedBuiltInAuthorizationPolicyPtrOutput {
+	return o
+}
+
+func (o RoleBasedBuiltInAuthorizationPolicyPtrOutput) Elem() RoleBasedBuiltInAuthorizationPolicyOutput {
+	return o.ApplyT(func(v *RoleBasedBuiltInAuthorizationPolicy) RoleBasedBuiltInAuthorizationPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret RoleBasedBuiltInAuthorizationPolicy
+		return ret
+	}).(RoleBasedBuiltInAuthorizationPolicyOutput)
+}
+
+// Authorization scheme type.
+// Expected value is 'Default'.
+func (o RoleBasedBuiltInAuthorizationPolicyPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RoleBasedBuiltInAuthorizationPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Built-in role-based authorization policy.
+type RoleBasedBuiltInAuthorizationPolicyResponse struct {
+	// Authorization scheme type.
+	// Expected value is 'Default'.
+	Type string `pulumi:"type"`
+}
+
+// Built-in role-based authorization policy.
+type RoleBasedBuiltInAuthorizationPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (RoleBasedBuiltInAuthorizationPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoleBasedBuiltInAuthorizationPolicyResponse)(nil)).Elem()
+}
+
+func (o RoleBasedBuiltInAuthorizationPolicyResponseOutput) ToRoleBasedBuiltInAuthorizationPolicyResponseOutput() RoleBasedBuiltInAuthorizationPolicyResponseOutput {
+	return o
+}
+
+func (o RoleBasedBuiltInAuthorizationPolicyResponseOutput) ToRoleBasedBuiltInAuthorizationPolicyResponseOutputWithContext(ctx context.Context) RoleBasedBuiltInAuthorizationPolicyResponseOutput {
+	return o
+}
+
+// Authorization scheme type.
+// Expected value is 'Default'.
+func (o RoleBasedBuiltInAuthorizationPolicyResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v RoleBasedBuiltInAuthorizationPolicyResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type RoleBasedBuiltInAuthorizationPolicyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (RoleBasedBuiltInAuthorizationPolicyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RoleBasedBuiltInAuthorizationPolicyResponse)(nil)).Elem()
+}
+
+func (o RoleBasedBuiltInAuthorizationPolicyResponsePtrOutput) ToRoleBasedBuiltInAuthorizationPolicyResponsePtrOutput() RoleBasedBuiltInAuthorizationPolicyResponsePtrOutput {
+	return o
+}
+
+func (o RoleBasedBuiltInAuthorizationPolicyResponsePtrOutput) ToRoleBasedBuiltInAuthorizationPolicyResponsePtrOutputWithContext(ctx context.Context) RoleBasedBuiltInAuthorizationPolicyResponsePtrOutput {
+	return o
+}
+
+func (o RoleBasedBuiltInAuthorizationPolicyResponsePtrOutput) Elem() RoleBasedBuiltInAuthorizationPolicyResponseOutput {
+	return o.ApplyT(func(v *RoleBasedBuiltInAuthorizationPolicyResponse) RoleBasedBuiltInAuthorizationPolicyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RoleBasedBuiltInAuthorizationPolicyResponse
+		return ret
+	}).(RoleBasedBuiltInAuthorizationPolicyResponseOutput)
+}
+
+// Authorization scheme type.
+// Expected value is 'Default'.
+func (o RoleBasedBuiltInAuthorizationPolicyResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RoleBasedBuiltInAuthorizationPolicyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 type SASAuthTypeConnectionProperties struct {
 	// Authentication type of the connection target
 	// Expected value is 'SAS'.
@@ -12796,6 +16548,184 @@ func (o SASAuthTypeConnectionPropertiesResponseOutput) Target() pulumi.StringPtr
 
 func (o SASAuthTypeConnectionPropertiesResponseOutput) UseWorkspaceManagedIdentity() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SASAuthTypeConnectionPropertiesResponse) *bool { return v.UseWorkspaceManagedIdentity }).(pulumi.BoolPtrOutput)
+}
+
+// Gets or sets the source to which safety providers applies.
+type SafetyProviderConfig struct {
+	// If blocking would occur.
+	Blocking *bool `pulumi:"blocking"`
+	// Name of RAI Safety Provider.
+	SafetyProviderName *string `pulumi:"safetyProviderName"`
+	// Content source to apply the Content Filters.
+	Source *string `pulumi:"source"`
+}
+
+// SafetyProviderConfigInput is an input type that accepts SafetyProviderConfigArgs and SafetyProviderConfigOutput values.
+// You can construct a concrete instance of `SafetyProviderConfigInput` via:
+//
+//	SafetyProviderConfigArgs{...}
+type SafetyProviderConfigInput interface {
+	pulumi.Input
+
+	ToSafetyProviderConfigOutput() SafetyProviderConfigOutput
+	ToSafetyProviderConfigOutputWithContext(context.Context) SafetyProviderConfigOutput
+}
+
+// Gets or sets the source to which safety providers applies.
+type SafetyProviderConfigArgs struct {
+	// If blocking would occur.
+	Blocking pulumi.BoolPtrInput `pulumi:"blocking"`
+	// Name of RAI Safety Provider.
+	SafetyProviderName pulumi.StringPtrInput `pulumi:"safetyProviderName"`
+	// Content source to apply the Content Filters.
+	Source pulumi.StringPtrInput `pulumi:"source"`
+}
+
+func (SafetyProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SafetyProviderConfig)(nil)).Elem()
+}
+
+func (i SafetyProviderConfigArgs) ToSafetyProviderConfigOutput() SafetyProviderConfigOutput {
+	return i.ToSafetyProviderConfigOutputWithContext(context.Background())
+}
+
+func (i SafetyProviderConfigArgs) ToSafetyProviderConfigOutputWithContext(ctx context.Context) SafetyProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SafetyProviderConfigOutput)
+}
+
+// SafetyProviderConfigArrayInput is an input type that accepts SafetyProviderConfigArray and SafetyProviderConfigArrayOutput values.
+// You can construct a concrete instance of `SafetyProviderConfigArrayInput` via:
+//
+//	SafetyProviderConfigArray{ SafetyProviderConfigArgs{...} }
+type SafetyProviderConfigArrayInput interface {
+	pulumi.Input
+
+	ToSafetyProviderConfigArrayOutput() SafetyProviderConfigArrayOutput
+	ToSafetyProviderConfigArrayOutputWithContext(context.Context) SafetyProviderConfigArrayOutput
+}
+
+type SafetyProviderConfigArray []SafetyProviderConfigInput
+
+func (SafetyProviderConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SafetyProviderConfig)(nil)).Elem()
+}
+
+func (i SafetyProviderConfigArray) ToSafetyProviderConfigArrayOutput() SafetyProviderConfigArrayOutput {
+	return i.ToSafetyProviderConfigArrayOutputWithContext(context.Background())
+}
+
+func (i SafetyProviderConfigArray) ToSafetyProviderConfigArrayOutputWithContext(ctx context.Context) SafetyProviderConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SafetyProviderConfigArrayOutput)
+}
+
+// Gets or sets the source to which safety providers applies.
+type SafetyProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (SafetyProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SafetyProviderConfig)(nil)).Elem()
+}
+
+func (o SafetyProviderConfigOutput) ToSafetyProviderConfigOutput() SafetyProviderConfigOutput {
+	return o
+}
+
+func (o SafetyProviderConfigOutput) ToSafetyProviderConfigOutputWithContext(ctx context.Context) SafetyProviderConfigOutput {
+	return o
+}
+
+// If blocking would occur.
+func (o SafetyProviderConfigOutput) Blocking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SafetyProviderConfig) *bool { return v.Blocking }).(pulumi.BoolPtrOutput)
+}
+
+// Name of RAI Safety Provider.
+func (o SafetyProviderConfigOutput) SafetyProviderName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SafetyProviderConfig) *string { return v.SafetyProviderName }).(pulumi.StringPtrOutput)
+}
+
+// Content source to apply the Content Filters.
+func (o SafetyProviderConfigOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SafetyProviderConfig) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+type SafetyProviderConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (SafetyProviderConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SafetyProviderConfig)(nil)).Elem()
+}
+
+func (o SafetyProviderConfigArrayOutput) ToSafetyProviderConfigArrayOutput() SafetyProviderConfigArrayOutput {
+	return o
+}
+
+func (o SafetyProviderConfigArrayOutput) ToSafetyProviderConfigArrayOutputWithContext(ctx context.Context) SafetyProviderConfigArrayOutput {
+	return o
+}
+
+func (o SafetyProviderConfigArrayOutput) Index(i pulumi.IntInput) SafetyProviderConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SafetyProviderConfig {
+		return vs[0].([]SafetyProviderConfig)[vs[1].(int)]
+	}).(SafetyProviderConfigOutput)
+}
+
+// Gets or sets the source to which safety providers applies.
+type SafetyProviderConfigResponse struct {
+	// If blocking would occur.
+	Blocking *bool `pulumi:"blocking"`
+	// Name of RAI Safety Provider.
+	SafetyProviderName *string `pulumi:"safetyProviderName"`
+	// Content source to apply the Content Filters.
+	Source *string `pulumi:"source"`
+}
+
+// Gets or sets the source to which safety providers applies.
+type SafetyProviderConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (SafetyProviderConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SafetyProviderConfigResponse)(nil)).Elem()
+}
+
+func (o SafetyProviderConfigResponseOutput) ToSafetyProviderConfigResponseOutput() SafetyProviderConfigResponseOutput {
+	return o
+}
+
+func (o SafetyProviderConfigResponseOutput) ToSafetyProviderConfigResponseOutputWithContext(ctx context.Context) SafetyProviderConfigResponseOutput {
+	return o
+}
+
+// If blocking would occur.
+func (o SafetyProviderConfigResponseOutput) Blocking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SafetyProviderConfigResponse) *bool { return v.Blocking }).(pulumi.BoolPtrOutput)
+}
+
+// Name of RAI Safety Provider.
+func (o SafetyProviderConfigResponseOutput) SafetyProviderName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SafetyProviderConfigResponse) *string { return v.SafetyProviderName }).(pulumi.StringPtrOutput)
+}
+
+// Content source to apply the Content Filters.
+func (o SafetyProviderConfigResponseOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SafetyProviderConfigResponse) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+type SafetyProviderConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SafetyProviderConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SafetyProviderConfigResponse)(nil)).Elem()
+}
+
+func (o SafetyProviderConfigResponseArrayOutput) ToSafetyProviderConfigResponseArrayOutput() SafetyProviderConfigResponseArrayOutput {
+	return o
+}
+
+func (o SafetyProviderConfigResponseArrayOutput) ToSafetyProviderConfigResponseArrayOutputWithContext(ctx context.Context) SafetyProviderConfigResponseArrayOutput {
+	return o
+}
+
+func (o SafetyProviderConfigResponseArrayOutput) Index(i pulumi.IntInput) SafetyProviderConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SafetyProviderConfigResponse {
+		return vs[0].([]SafetyProviderConfigResponse)[vs[1].(int)]
+	}).(SafetyProviderConfigResponseOutput)
 }
 
 type ServicePrincipalAuthTypeConnectionProperties struct {
@@ -13591,6 +17521,200 @@ func (o ThrottlingRuleResponseArrayOutput) Index(i pulumi.IntInput) ThrottlingRu
 	}).(ThrottlingRuleResponseOutput)
 }
 
+// Represents a rule for routing traffic to a specific deployment.
+type TrafficRoutingRule struct {
+	// The unique identifier of the deployment to which traffic is routed by this rule.
+	DeploymentId *string `pulumi:"deploymentId"`
+	// A user-provided description for this traffic routing rule.
+	Description *string `pulumi:"description"`
+	// The identifier of this traffic routing rule.
+	RuleId *string `pulumi:"ruleId"`
+	// Gets or sets the percentage of traffic allocated to this instance.
+	TrafficPercentage *int `pulumi:"trafficPercentage"`
+}
+
+// TrafficRoutingRuleInput is an input type that accepts TrafficRoutingRuleArgs and TrafficRoutingRuleOutput values.
+// You can construct a concrete instance of `TrafficRoutingRuleInput` via:
+//
+//	TrafficRoutingRuleArgs{...}
+type TrafficRoutingRuleInput interface {
+	pulumi.Input
+
+	ToTrafficRoutingRuleOutput() TrafficRoutingRuleOutput
+	ToTrafficRoutingRuleOutputWithContext(context.Context) TrafficRoutingRuleOutput
+}
+
+// Represents a rule for routing traffic to a specific deployment.
+type TrafficRoutingRuleArgs struct {
+	// The unique identifier of the deployment to which traffic is routed by this rule.
+	DeploymentId pulumi.StringPtrInput `pulumi:"deploymentId"`
+	// A user-provided description for this traffic routing rule.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The identifier of this traffic routing rule.
+	RuleId pulumi.StringPtrInput `pulumi:"ruleId"`
+	// Gets or sets the percentage of traffic allocated to this instance.
+	TrafficPercentage pulumi.IntPtrInput `pulumi:"trafficPercentage"`
+}
+
+func (TrafficRoutingRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrafficRoutingRule)(nil)).Elem()
+}
+
+func (i TrafficRoutingRuleArgs) ToTrafficRoutingRuleOutput() TrafficRoutingRuleOutput {
+	return i.ToTrafficRoutingRuleOutputWithContext(context.Background())
+}
+
+func (i TrafficRoutingRuleArgs) ToTrafficRoutingRuleOutputWithContext(ctx context.Context) TrafficRoutingRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrafficRoutingRuleOutput)
+}
+
+// TrafficRoutingRuleArrayInput is an input type that accepts TrafficRoutingRuleArray and TrafficRoutingRuleArrayOutput values.
+// You can construct a concrete instance of `TrafficRoutingRuleArrayInput` via:
+//
+//	TrafficRoutingRuleArray{ TrafficRoutingRuleArgs{...} }
+type TrafficRoutingRuleArrayInput interface {
+	pulumi.Input
+
+	ToTrafficRoutingRuleArrayOutput() TrafficRoutingRuleArrayOutput
+	ToTrafficRoutingRuleArrayOutputWithContext(context.Context) TrafficRoutingRuleArrayOutput
+}
+
+type TrafficRoutingRuleArray []TrafficRoutingRuleInput
+
+func (TrafficRoutingRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TrafficRoutingRule)(nil)).Elem()
+}
+
+func (i TrafficRoutingRuleArray) ToTrafficRoutingRuleArrayOutput() TrafficRoutingRuleArrayOutput {
+	return i.ToTrafficRoutingRuleArrayOutputWithContext(context.Background())
+}
+
+func (i TrafficRoutingRuleArray) ToTrafficRoutingRuleArrayOutputWithContext(ctx context.Context) TrafficRoutingRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrafficRoutingRuleArrayOutput)
+}
+
+// Represents a rule for routing traffic to a specific deployment.
+type TrafficRoutingRuleOutput struct{ *pulumi.OutputState }
+
+func (TrafficRoutingRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrafficRoutingRule)(nil)).Elem()
+}
+
+func (o TrafficRoutingRuleOutput) ToTrafficRoutingRuleOutput() TrafficRoutingRuleOutput {
+	return o
+}
+
+func (o TrafficRoutingRuleOutput) ToTrafficRoutingRuleOutputWithContext(ctx context.Context) TrafficRoutingRuleOutput {
+	return o
+}
+
+// The unique identifier of the deployment to which traffic is routed by this rule.
+func (o TrafficRoutingRuleOutput) DeploymentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TrafficRoutingRule) *string { return v.DeploymentId }).(pulumi.StringPtrOutput)
+}
+
+// A user-provided description for this traffic routing rule.
+func (o TrafficRoutingRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TrafficRoutingRule) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The identifier of this traffic routing rule.
+func (o TrafficRoutingRuleOutput) RuleId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TrafficRoutingRule) *string { return v.RuleId }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the percentage of traffic allocated to this instance.
+func (o TrafficRoutingRuleOutput) TrafficPercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TrafficRoutingRule) *int { return v.TrafficPercentage }).(pulumi.IntPtrOutput)
+}
+
+type TrafficRoutingRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (TrafficRoutingRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TrafficRoutingRule)(nil)).Elem()
+}
+
+func (o TrafficRoutingRuleArrayOutput) ToTrafficRoutingRuleArrayOutput() TrafficRoutingRuleArrayOutput {
+	return o
+}
+
+func (o TrafficRoutingRuleArrayOutput) ToTrafficRoutingRuleArrayOutputWithContext(ctx context.Context) TrafficRoutingRuleArrayOutput {
+	return o
+}
+
+func (o TrafficRoutingRuleArrayOutput) Index(i pulumi.IntInput) TrafficRoutingRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TrafficRoutingRule {
+		return vs[0].([]TrafficRoutingRule)[vs[1].(int)]
+	}).(TrafficRoutingRuleOutput)
+}
+
+// Represents a rule for routing traffic to a specific deployment.
+type TrafficRoutingRuleResponse struct {
+	// The unique identifier of the deployment to which traffic is routed by this rule.
+	DeploymentId *string `pulumi:"deploymentId"`
+	// A user-provided description for this traffic routing rule.
+	Description *string `pulumi:"description"`
+	// The identifier of this traffic routing rule.
+	RuleId *string `pulumi:"ruleId"`
+	// Gets or sets the percentage of traffic allocated to this instance.
+	TrafficPercentage *int `pulumi:"trafficPercentage"`
+}
+
+// Represents a rule for routing traffic to a specific deployment.
+type TrafficRoutingRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (TrafficRoutingRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrafficRoutingRuleResponse)(nil)).Elem()
+}
+
+func (o TrafficRoutingRuleResponseOutput) ToTrafficRoutingRuleResponseOutput() TrafficRoutingRuleResponseOutput {
+	return o
+}
+
+func (o TrafficRoutingRuleResponseOutput) ToTrafficRoutingRuleResponseOutputWithContext(ctx context.Context) TrafficRoutingRuleResponseOutput {
+	return o
+}
+
+// The unique identifier of the deployment to which traffic is routed by this rule.
+func (o TrafficRoutingRuleResponseOutput) DeploymentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TrafficRoutingRuleResponse) *string { return v.DeploymentId }).(pulumi.StringPtrOutput)
+}
+
+// A user-provided description for this traffic routing rule.
+func (o TrafficRoutingRuleResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TrafficRoutingRuleResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The identifier of this traffic routing rule.
+func (o TrafficRoutingRuleResponseOutput) RuleId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TrafficRoutingRuleResponse) *string { return v.RuleId }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the percentage of traffic allocated to this instance.
+func (o TrafficRoutingRuleResponseOutput) TrafficPercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TrafficRoutingRuleResponse) *int { return v.TrafficPercentage }).(pulumi.IntPtrOutput)
+}
+
+type TrafficRoutingRuleResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (TrafficRoutingRuleResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TrafficRoutingRuleResponse)(nil)).Elem()
+}
+
+func (o TrafficRoutingRuleResponseArrayOutput) ToTrafficRoutingRuleResponseArrayOutput() TrafficRoutingRuleResponseArrayOutput {
+	return o
+}
+
+func (o TrafficRoutingRuleResponseArrayOutput) ToTrafficRoutingRuleResponseArrayOutputWithContext(ctx context.Context) TrafficRoutingRuleResponseArrayOutput {
+	return o
+}
+
+func (o TrafficRoutingRuleResponseArrayOutput) Index(i pulumi.IntInput) TrafficRoutingRuleResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TrafficRoutingRuleResponse {
+		return vs[0].([]TrafficRoutingRuleResponse)[vs[1].(int)]
+	}).(TrafficRoutingRuleResponseOutput)
+}
+
 // User-assigned managed identity.
 type UserAssignedIdentityResponse struct {
 	// Client App Id associated with this identity.
@@ -14265,6 +18389,184 @@ func (o UsernamePasswordAuthTypeConnectionPropertiesResponseOutput) UseWorkspace
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Type modeling a reference to a version of an agent definition.
+type VersionedAgentReference struct {
+	// Gets the agent's unique identifier within the organization (subscription).
+	AgentId *string `pulumi:"agentId"`
+	// Gets the agent's name (unique within the project/app).
+	AgentName *string `pulumi:"agentName"`
+	// Gets the agent's version (unique for each agent lineage).
+	AgentVersion *string `pulumi:"agentVersion"`
+}
+
+// VersionedAgentReferenceInput is an input type that accepts VersionedAgentReferenceArgs and VersionedAgentReferenceOutput values.
+// You can construct a concrete instance of `VersionedAgentReferenceInput` via:
+//
+//	VersionedAgentReferenceArgs{...}
+type VersionedAgentReferenceInput interface {
+	pulumi.Input
+
+	ToVersionedAgentReferenceOutput() VersionedAgentReferenceOutput
+	ToVersionedAgentReferenceOutputWithContext(context.Context) VersionedAgentReferenceOutput
+}
+
+// Type modeling a reference to a version of an agent definition.
+type VersionedAgentReferenceArgs struct {
+	// Gets the agent's unique identifier within the organization (subscription).
+	AgentId pulumi.StringPtrInput `pulumi:"agentId"`
+	// Gets the agent's name (unique within the project/app).
+	AgentName pulumi.StringPtrInput `pulumi:"agentName"`
+	// Gets the agent's version (unique for each agent lineage).
+	AgentVersion pulumi.StringPtrInput `pulumi:"agentVersion"`
+}
+
+func (VersionedAgentReferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VersionedAgentReference)(nil)).Elem()
+}
+
+func (i VersionedAgentReferenceArgs) ToVersionedAgentReferenceOutput() VersionedAgentReferenceOutput {
+	return i.ToVersionedAgentReferenceOutputWithContext(context.Background())
+}
+
+func (i VersionedAgentReferenceArgs) ToVersionedAgentReferenceOutputWithContext(ctx context.Context) VersionedAgentReferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VersionedAgentReferenceOutput)
+}
+
+// VersionedAgentReferenceArrayInput is an input type that accepts VersionedAgentReferenceArray and VersionedAgentReferenceArrayOutput values.
+// You can construct a concrete instance of `VersionedAgentReferenceArrayInput` via:
+//
+//	VersionedAgentReferenceArray{ VersionedAgentReferenceArgs{...} }
+type VersionedAgentReferenceArrayInput interface {
+	pulumi.Input
+
+	ToVersionedAgentReferenceArrayOutput() VersionedAgentReferenceArrayOutput
+	ToVersionedAgentReferenceArrayOutputWithContext(context.Context) VersionedAgentReferenceArrayOutput
+}
+
+type VersionedAgentReferenceArray []VersionedAgentReferenceInput
+
+func (VersionedAgentReferenceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VersionedAgentReference)(nil)).Elem()
+}
+
+func (i VersionedAgentReferenceArray) ToVersionedAgentReferenceArrayOutput() VersionedAgentReferenceArrayOutput {
+	return i.ToVersionedAgentReferenceArrayOutputWithContext(context.Background())
+}
+
+func (i VersionedAgentReferenceArray) ToVersionedAgentReferenceArrayOutputWithContext(ctx context.Context) VersionedAgentReferenceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VersionedAgentReferenceArrayOutput)
+}
+
+// Type modeling a reference to a version of an agent definition.
+type VersionedAgentReferenceOutput struct{ *pulumi.OutputState }
+
+func (VersionedAgentReferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VersionedAgentReference)(nil)).Elem()
+}
+
+func (o VersionedAgentReferenceOutput) ToVersionedAgentReferenceOutput() VersionedAgentReferenceOutput {
+	return o
+}
+
+func (o VersionedAgentReferenceOutput) ToVersionedAgentReferenceOutputWithContext(ctx context.Context) VersionedAgentReferenceOutput {
+	return o
+}
+
+// Gets the agent's unique identifier within the organization (subscription).
+func (o VersionedAgentReferenceOutput) AgentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VersionedAgentReference) *string { return v.AgentId }).(pulumi.StringPtrOutput)
+}
+
+// Gets the agent's name (unique within the project/app).
+func (o VersionedAgentReferenceOutput) AgentName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VersionedAgentReference) *string { return v.AgentName }).(pulumi.StringPtrOutput)
+}
+
+// Gets the agent's version (unique for each agent lineage).
+func (o VersionedAgentReferenceOutput) AgentVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VersionedAgentReference) *string { return v.AgentVersion }).(pulumi.StringPtrOutput)
+}
+
+type VersionedAgentReferenceArrayOutput struct{ *pulumi.OutputState }
+
+func (VersionedAgentReferenceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VersionedAgentReference)(nil)).Elem()
+}
+
+func (o VersionedAgentReferenceArrayOutput) ToVersionedAgentReferenceArrayOutput() VersionedAgentReferenceArrayOutput {
+	return o
+}
+
+func (o VersionedAgentReferenceArrayOutput) ToVersionedAgentReferenceArrayOutputWithContext(ctx context.Context) VersionedAgentReferenceArrayOutput {
+	return o
+}
+
+func (o VersionedAgentReferenceArrayOutput) Index(i pulumi.IntInput) VersionedAgentReferenceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VersionedAgentReference {
+		return vs[0].([]VersionedAgentReference)[vs[1].(int)]
+	}).(VersionedAgentReferenceOutput)
+}
+
+// Type modeling a reference to a version of an agent definition.
+type VersionedAgentReferenceResponse struct {
+	// Gets the agent's unique identifier within the organization (subscription).
+	AgentId *string `pulumi:"agentId"`
+	// Gets the agent's name (unique within the project/app).
+	AgentName *string `pulumi:"agentName"`
+	// Gets the agent's version (unique for each agent lineage).
+	AgentVersion *string `pulumi:"agentVersion"`
+}
+
+// Type modeling a reference to a version of an agent definition.
+type VersionedAgentReferenceResponseOutput struct{ *pulumi.OutputState }
+
+func (VersionedAgentReferenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VersionedAgentReferenceResponse)(nil)).Elem()
+}
+
+func (o VersionedAgentReferenceResponseOutput) ToVersionedAgentReferenceResponseOutput() VersionedAgentReferenceResponseOutput {
+	return o
+}
+
+func (o VersionedAgentReferenceResponseOutput) ToVersionedAgentReferenceResponseOutputWithContext(ctx context.Context) VersionedAgentReferenceResponseOutput {
+	return o
+}
+
+// Gets the agent's unique identifier within the organization (subscription).
+func (o VersionedAgentReferenceResponseOutput) AgentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VersionedAgentReferenceResponse) *string { return v.AgentId }).(pulumi.StringPtrOutput)
+}
+
+// Gets the agent's name (unique within the project/app).
+func (o VersionedAgentReferenceResponseOutput) AgentName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VersionedAgentReferenceResponse) *string { return v.AgentName }).(pulumi.StringPtrOutput)
+}
+
+// Gets the agent's version (unique for each agent lineage).
+func (o VersionedAgentReferenceResponseOutput) AgentVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VersionedAgentReferenceResponse) *string { return v.AgentVersion }).(pulumi.StringPtrOutput)
+}
+
+type VersionedAgentReferenceResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (VersionedAgentReferenceResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VersionedAgentReferenceResponse)(nil)).Elem()
+}
+
+func (o VersionedAgentReferenceResponseArrayOutput) ToVersionedAgentReferenceResponseArrayOutput() VersionedAgentReferenceResponseArrayOutput {
+	return o
+}
+
+func (o VersionedAgentReferenceResponseArrayOutput) ToVersionedAgentReferenceResponseArrayOutputWithContext(ctx context.Context) VersionedAgentReferenceResponseArrayOutput {
+	return o
+}
+
+func (o VersionedAgentReferenceResponseArrayOutput) Index(i pulumi.IntInput) VersionedAgentReferenceResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VersionedAgentReferenceResponse {
+		return vs[0].([]VersionedAgentReferenceResponse)[vs[1].(int)]
+	}).(VersionedAgentReferenceResponseOutput)
+}
+
 // A rule governing the accessibility from a specific virtual network.
 type VirtualNetworkRule struct {
 	// Full resource id of a vnet subnet, such as '/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/subnet1'.
@@ -14454,16 +18756,40 @@ func init() {
 	pulumi.RegisterOutputType(AccountPropertiesOutput{})
 	pulumi.RegisterOutputType(AccountPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(AccountPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(AgentProtocolVersionOutput{})
+	pulumi.RegisterOutputType(AgentProtocolVersionArrayOutput{})
+	pulumi.RegisterOutputType(AgentProtocolVersionResponseOutput{})
+	pulumi.RegisterOutputType(AgentProtocolVersionResponseArrayOutput{})
+	pulumi.RegisterOutputType(AgentReferenceOutput{})
+	pulumi.RegisterOutputType(AgentReferenceArrayOutput{})
+	pulumi.RegisterOutputType(AgentReferenceResourceResponseOutput{})
+	pulumi.RegisterOutputType(AgentReferenceResourceResponseArrayOutput{})
+	pulumi.RegisterOutputType(AgentReferenceResponseOutput{})
+	pulumi.RegisterOutputType(AgentReferenceResponseArrayOutput{})
+	pulumi.RegisterOutputType(AgenticApplicationOutput{})
+	pulumi.RegisterOutputType(AgenticApplicationResponseOutput{})
 	pulumi.RegisterOutputType(ApiKeyAuthConnectionPropertiesOutput{})
 	pulumi.RegisterOutputType(ApiKeyAuthConnectionPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ApiPropertiesOutput{})
 	pulumi.RegisterOutputType(ApiPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(ApiPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ApiPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(ApplicationTrafficRoutingPolicyOutput{})
+	pulumi.RegisterOutputType(ApplicationTrafficRoutingPolicyPtrOutput{})
+	pulumi.RegisterOutputType(ApplicationTrafficRoutingPolicyResponseOutput{})
+	pulumi.RegisterOutputType(ApplicationTrafficRoutingPolicyResponsePtrOutput{})
+	pulumi.RegisterOutputType(AssignedIdentityOutput{})
+	pulumi.RegisterOutputType(AssignedIdentityPtrOutput{})
+	pulumi.RegisterOutputType(AssignedIdentityResponseOutput{})
+	pulumi.RegisterOutputType(AssignedIdentityResponsePtrOutput{})
 	pulumi.RegisterOutputType(CallRateLimitResponseOutput{})
 	pulumi.RegisterOutputType(CallRateLimitResponsePtrOutput{})
 	pulumi.RegisterOutputType(CapabilityHostOutput{})
 	pulumi.RegisterOutputType(CapabilityHostResponseOutput{})
+	pulumi.RegisterOutputType(ChannelsBuiltInAuthorizationPolicyOutput{})
+	pulumi.RegisterOutputType(ChannelsBuiltInAuthorizationPolicyPtrOutput{})
+	pulumi.RegisterOutputType(ChannelsBuiltInAuthorizationPolicyResponseOutput{})
+	pulumi.RegisterOutputType(ChannelsBuiltInAuthorizationPolicyResponsePtrOutput{})
 	pulumi.RegisterOutputType(CommitmentPeriodOutput{})
 	pulumi.RegisterOutputType(CommitmentPeriodPtrOutput{})
 	pulumi.RegisterOutputType(CommitmentPeriodResponseOutput{})
@@ -14521,6 +18847,10 @@ func init() {
 	pulumi.RegisterOutputType(CustomKeysConnectionPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(CustomKeysResponseOutput{})
 	pulumi.RegisterOutputType(CustomKeysResponsePtrOutput{})
+	pulumi.RegisterOutputType(CustomTopicConfigOutput{})
+	pulumi.RegisterOutputType(CustomTopicConfigArrayOutput{})
+	pulumi.RegisterOutputType(CustomTopicConfigResponseOutput{})
+	pulumi.RegisterOutputType(CustomTopicConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(DeploymentCapacitySettingsOutput{})
 	pulumi.RegisterOutputType(DeploymentCapacitySettingsPtrOutput{})
 	pulumi.RegisterOutputType(DeploymentCapacitySettingsResponseOutput{})
@@ -14543,6 +18873,10 @@ func init() {
 	pulumi.RegisterOutputType(EncryptionScopePropertiesOutput{})
 	pulumi.RegisterOutputType(EncryptionScopePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(EncryptionScopePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(FqdnOutboundRuleOutput{})
+	pulumi.RegisterOutputType(FqdnOutboundRuleResponseOutput{})
+	pulumi.RegisterOutputType(HostedAgentDeploymentOutput{})
+	pulumi.RegisterOutputType(HostedAgentDeploymentResponseOutput{})
 	pulumi.RegisterOutputType(IdentityOutput{})
 	pulumi.RegisterOutputType(IdentityPtrOutput{})
 	pulumi.RegisterOutputType(IdentityResponseOutput{})
@@ -14555,6 +18889,8 @@ func init() {
 	pulumi.RegisterOutputType(KeyVaultPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(KeyVaultPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(KeyVaultPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(ManagedAgentDeploymentOutput{})
+	pulumi.RegisterOutputType(ManagedAgentDeploymentResponseOutput{})
 	pulumi.RegisterOutputType(ManagedIdentityAuthTypeConnectionPropertiesOutput{})
 	pulumi.RegisterOutputType(ManagedIdentityAuthTypeConnectionPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(MultiRegionSettingsOutput{})
@@ -14569,6 +18905,10 @@ func init() {
 	pulumi.RegisterOutputType(NoneAuthTypeConnectionPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(OAuth2AuthTypeConnectionPropertiesOutput{})
 	pulumi.RegisterOutputType(OAuth2AuthTypeConnectionPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(OrganizationSharedBuiltInAuthorizationPolicyOutput{})
+	pulumi.RegisterOutputType(OrganizationSharedBuiltInAuthorizationPolicyPtrOutput{})
+	pulumi.RegisterOutputType(OrganizationSharedBuiltInAuthorizationPolicyResponseOutput{})
+	pulumi.RegisterOutputType(OrganizationSharedBuiltInAuthorizationPolicyResponsePtrOutput{})
 	pulumi.RegisterOutputType(PATAuthTypeConnectionPropertiesOutput{})
 	pulumi.RegisterOutputType(PATAuthTypeConnectionPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionPropertiesOutput{})
@@ -14583,6 +18923,8 @@ func init() {
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStatePtrOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateResponseOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateResponsePtrOutput{})
+	pulumi.RegisterOutputType(ProjectCapabilityHostTypeOutput{})
+	pulumi.RegisterOutputType(ProjectCapabilityHostResponseOutput{})
 	pulumi.RegisterOutputType(ProjectPropertiesOutput{})
 	pulumi.RegisterOutputType(ProjectPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(ProjectPropertiesResponseOutput{})
@@ -14593,6 +18935,9 @@ func init() {
 	pulumi.RegisterOutputType(RaiBlocklistPropertiesOutput{})
 	pulumi.RegisterOutputType(RaiBlocklistPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(RaiBlocklistPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(RaiExternalSafetyProviderSchemaPropertiesOutput{})
+	pulumi.RegisterOutputType(RaiExternalSafetyProviderSchemaPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(RaiExternalSafetyProviderSchemaPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(RaiMonitorConfigOutput{})
 	pulumi.RegisterOutputType(RaiMonitorConfigPtrOutput{})
 	pulumi.RegisterOutputType(RaiMonitorConfigResponseOutput{})
@@ -14604,6 +18949,17 @@ func init() {
 	pulumi.RegisterOutputType(RaiPolicyPropertiesOutput{})
 	pulumi.RegisterOutputType(RaiPolicyPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(RaiPolicyPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(RaiToolLabelPropertiesOutput{})
+	pulumi.RegisterOutputType(RaiToolLabelPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(RaiToolLabelPropertiesAccountScopeOutput{})
+	pulumi.RegisterOutputType(RaiToolLabelPropertiesAccountScopePtrOutput{})
+	pulumi.RegisterOutputType(RaiToolLabelPropertiesProjectScopesOutput{})
+	pulumi.RegisterOutputType(RaiToolLabelPropertiesProjectScopesArrayOutput{})
+	pulumi.RegisterOutputType(RaiToolLabelPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(RaiToolLabelPropertiesResponseAccountScopeOutput{})
+	pulumi.RegisterOutputType(RaiToolLabelPropertiesResponseAccountScopePtrOutput{})
+	pulumi.RegisterOutputType(RaiToolLabelPropertiesResponseProjectScopesOutput{})
+	pulumi.RegisterOutputType(RaiToolLabelPropertiesResponseProjectScopesArrayOutput{})
 	pulumi.RegisterOutputType(RaiTopicPropertiesOutput{})
 	pulumi.RegisterOutputType(RaiTopicPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(RaiTopicPropertiesResponseOutput{})
@@ -14613,8 +18969,16 @@ func init() {
 	pulumi.RegisterOutputType(RegionSettingResponseArrayOutput{})
 	pulumi.RegisterOutputType(RequestMatchPatternResponseOutput{})
 	pulumi.RegisterOutputType(RequestMatchPatternResponseArrayOutput{})
+	pulumi.RegisterOutputType(RoleBasedBuiltInAuthorizationPolicyOutput{})
+	pulumi.RegisterOutputType(RoleBasedBuiltInAuthorizationPolicyPtrOutput{})
+	pulumi.RegisterOutputType(RoleBasedBuiltInAuthorizationPolicyResponseOutput{})
+	pulumi.RegisterOutputType(RoleBasedBuiltInAuthorizationPolicyResponsePtrOutput{})
 	pulumi.RegisterOutputType(SASAuthTypeConnectionPropertiesOutput{})
 	pulumi.RegisterOutputType(SASAuthTypeConnectionPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(SafetyProviderConfigOutput{})
+	pulumi.RegisterOutputType(SafetyProviderConfigArrayOutput{})
+	pulumi.RegisterOutputType(SafetyProviderConfigResponseOutput{})
+	pulumi.RegisterOutputType(SafetyProviderConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(ServicePrincipalAuthTypeConnectionPropertiesOutput{})
 	pulumi.RegisterOutputType(ServicePrincipalAuthTypeConnectionPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(SkuOutput{})
@@ -14627,6 +18991,10 @@ func init() {
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(ThrottlingRuleResponseOutput{})
 	pulumi.RegisterOutputType(ThrottlingRuleResponseArrayOutput{})
+	pulumi.RegisterOutputType(TrafficRoutingRuleOutput{})
+	pulumi.RegisterOutputType(TrafficRoutingRuleArrayOutput{})
+	pulumi.RegisterOutputType(TrafficRoutingRuleResponseOutput{})
+	pulumi.RegisterOutputType(TrafficRoutingRuleResponseArrayOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})
 	pulumi.RegisterOutputType(UserOwnedAmlWorkspaceOutput{})
@@ -14639,6 +19007,10 @@ func init() {
 	pulumi.RegisterOutputType(UserOwnedStorageResponseArrayOutput{})
 	pulumi.RegisterOutputType(UsernamePasswordAuthTypeConnectionPropertiesOutput{})
 	pulumi.RegisterOutputType(UsernamePasswordAuthTypeConnectionPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(VersionedAgentReferenceOutput{})
+	pulumi.RegisterOutputType(VersionedAgentReferenceArrayOutput{})
+	pulumi.RegisterOutputType(VersionedAgentReferenceResponseOutput{})
+	pulumi.RegisterOutputType(VersionedAgentReferenceResponseArrayOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkRuleOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkRuleArrayOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkRuleResponseOutput{})

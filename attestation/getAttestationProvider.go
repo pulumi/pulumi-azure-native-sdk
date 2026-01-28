@@ -21,7 +21,7 @@ func LookupAttestationProvider(ctx *pulumi.Context, args *LookupAttestationProvi
 	if err != nil {
 		return nil, err
 	}
-	return &rv, nil
+	return rv.Defaults(), nil
 }
 
 type LookupAttestationProviderArgs struct {
@@ -49,7 +49,7 @@ type LookupAttestationProviderResult struct {
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// Status of attestation service.
 	Status *string `pulumi:"status"`
-	// The system metadata relating to this resource
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
@@ -61,6 +61,22 @@ type LookupAttestationProviderResult struct {
 	Type string `pulumi:"type"`
 }
 
+// Defaults sets the appropriate defaults for LookupAttestationProviderResult
+func (val *LookupAttestationProviderResult) Defaults() *LookupAttestationProviderResult {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.PublicNetworkAccess == nil {
+		publicNetworkAccess_ := "Enabled"
+		tmp.PublicNetworkAccess = &publicNetworkAccess_
+	}
+	if tmp.TpmAttestationAuthentication == nil {
+		tpmAttestationAuthentication_ := "Enabled"
+		tmp.TpmAttestationAuthentication = &tpmAttestationAuthentication_
+	}
+	return &tmp
+}
 func LookupAttestationProviderOutput(ctx *pulumi.Context, args LookupAttestationProviderOutputArgs, opts ...pulumi.InvokeOption) LookupAttestationProviderResultOutput {
 	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAttestationProviderResultOutput, error) {
@@ -138,7 +154,7 @@ func (o LookupAttestationProviderResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAttestationProviderResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-// The system metadata relating to this resource
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupAttestationProviderResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupAttestationProviderResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }

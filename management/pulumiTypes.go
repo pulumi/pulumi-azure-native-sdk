@@ -366,7 +366,8 @@ type EntityInfoResponse struct {
 	// Number of children is the number of Groups that are exactly one level underneath the current Group.
 	NumberOfChildGroups *int `pulumi:"numberOfChildGroups"`
 	// Number of children is the number of Groups and Subscriptions that are exactly one level underneath the current Group.
-	NumberOfChildren    *int `pulumi:"numberOfChildren"`
+	NumberOfChildren *int `pulumi:"numberOfChildren"`
+	// Number of Descendants
 	NumberOfDescendants *int `pulumi:"numberOfDescendants"`
 	// (Optional) The ID of the parent management group.
 	Parent *EntityParentGroupInfoResponse `pulumi:"parent"`
@@ -427,6 +428,7 @@ func (o EntityInfoResponseOutput) NumberOfChildren() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v EntityInfoResponse) *int { return v.NumberOfChildren }).(pulumi.IntPtrOutput)
 }
 
+// Number of Descendants
 func (o EntityInfoResponseOutput) NumberOfDescendants() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v EntityInfoResponse) *int { return v.NumberOfDescendants }).(pulumi.IntPtrOutput)
 }
@@ -630,7 +632,7 @@ type ManagementGroupDetailsResponse struct {
 	// The date and time when this object was last updated.
 	UpdatedTime *string `pulumi:"updatedTime"`
 	// The version number of the object.
-	Version *float64 `pulumi:"version"`
+	Version *int `pulumi:"version"`
 }
 
 // The details of a management group.
@@ -681,8 +683,8 @@ func (o ManagementGroupDetailsResponseOutput) UpdatedTime() pulumi.StringPtrOutp
 }
 
 // The version number of the object.
-func (o ManagementGroupDetailsResponseOutput) Version() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v ManagementGroupDetailsResponse) *float64 { return v.Version }).(pulumi.Float64PtrOutput)
+func (o ManagementGroupDetailsResponseOutput) Version() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ManagementGroupDetailsResponse) *int { return v.Version }).(pulumi.IntPtrOutput)
 }
 
 type ManagementGroupDetailsResponsePtrOutput struct{ *pulumi.OutputState }
@@ -770,13 +772,13 @@ func (o ManagementGroupDetailsResponsePtrOutput) UpdatedTime() pulumi.StringPtrO
 }
 
 // The version number of the object.
-func (o ManagementGroupDetailsResponsePtrOutput) Version() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *ManagementGroupDetailsResponse) *float64 {
+func (o ManagementGroupDetailsResponsePtrOutput) Version() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ManagementGroupDetailsResponse) *int {
 		if v == nil {
 			return nil
 		}
 		return v.Version
-	}).(pulumi.Float64PtrOutput)
+	}).(pulumi.IntPtrOutput)
 }
 
 // A path element of a management group ancestors.

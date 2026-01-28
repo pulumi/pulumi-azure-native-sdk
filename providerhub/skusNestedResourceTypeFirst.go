@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Concrete proxy resource types can be created by aliasing this type using a specific property type.
+//
 // Uses Azure REST API version 2024-09-01. In version 2.x of the Azure Native provider, it used API version 2021-09-01-preview.
 //
 // Other available API versions: 2021-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native providerhub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
@@ -22,7 +24,7 @@ type SkusNestedResourceTypeFirst struct {
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name       pulumi.StringOutput                 `pulumi:"name"`
-	Properties SkuResourceResponsePropertiesOutput `pulumi:"properties"`
+	Properties SkuResourcePropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -167,8 +169,8 @@ func (o SkusNestedResourceTypeFirstOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SkusNestedResourceTypeFirst) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o SkusNestedResourceTypeFirstOutput) Properties() SkuResourceResponsePropertiesOutput {
-	return o.ApplyT(func(v *SkusNestedResourceTypeFirst) SkuResourceResponsePropertiesOutput { return v.Properties }).(SkuResourceResponsePropertiesOutput)
+func (o SkusNestedResourceTypeFirstOutput) Properties() SkuResourcePropertiesResponseOutput {
+	return o.ApplyT(func(v *SkusNestedResourceTypeFirst) SkuResourcePropertiesResponseOutput { return v.Properties }).(SkuResourcePropertiesResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

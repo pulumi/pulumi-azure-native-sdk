@@ -16,7 +16,7 @@ import (
 //
 // Uses Azure REST API version 2025-02-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-12-15-preview.
 //
-// Other available API versions: 2022-12-15-preview, 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-12-15-preview, 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-06-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type GalleryImage struct {
 	pulumi.CustomResourceState
 
@@ -54,8 +54,6 @@ type GalleryImage struct {
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Specifies information about the gallery image version that you want to create or update.
 	Version GalleryImageVersionResponsePtrOutput `pulumi:"version"`
-	// The credentials used to login to the image repository that has access to the specified image
-	VmImageRepositoryCredentials VmImageRepositoryCredentialsResponsePtrOutput `pulumi:"vmImageRepositoryCredentials"`
 }
 
 // NewGalleryImage registers a new resource with the given unique name, arguments, and options.
@@ -116,6 +114,9 @@ func NewGalleryImage(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20250601preview:GalleryImage"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20250901preview:GalleryImage"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -178,8 +179,6 @@ type galleryImageArgs struct {
 	Tags map[string]string `pulumi:"tags"`
 	// Specifies information about the gallery image version that you want to create or update.
 	Version *GalleryImageVersion `pulumi:"version"`
-	// The credentials used to login to the image repository that has access to the specified image
-	VmImageRepositoryCredentials *VmImageRepositoryCredentials `pulumi:"vmImageRepositoryCredentials"`
 }
 
 // The set of arguments for constructing a GalleryImage resource.
@@ -210,8 +209,6 @@ type GalleryImageArgs struct {
 	Tags pulumi.StringMapInput
 	// Specifies information about the gallery image version that you want to create or update.
 	Version GalleryImageVersionPtrInput
-	// The credentials used to login to the image repository that has access to the specified image
-	VmImageRepositoryCredentials VmImageRepositoryCredentialsPtrInput
 }
 
 func (GalleryImageArgs) ElementType() reflect.Type {
@@ -334,13 +331,6 @@ func (o GalleryImageOutput) Type() pulumi.StringOutput {
 // Specifies information about the gallery image version that you want to create or update.
 func (o GalleryImageOutput) Version() GalleryImageVersionResponsePtrOutput {
 	return o.ApplyT(func(v *GalleryImage) GalleryImageVersionResponsePtrOutput { return v.Version }).(GalleryImageVersionResponsePtrOutput)
-}
-
-// The credentials used to login to the image repository that has access to the specified image
-func (o GalleryImageOutput) VmImageRepositoryCredentials() VmImageRepositoryCredentialsResponsePtrOutput {
-	return o.ApplyT(func(v *GalleryImage) VmImageRepositoryCredentialsResponsePtrOutput {
-		return v.VmImageRepositoryCredentials
-	}).(VmImageRepositoryCredentialsResponsePtrOutput)
 }
 
 func init() {

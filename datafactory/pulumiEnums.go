@@ -6276,6 +6276,174 @@ func (in *hdinsightClusterAuthenticationTypePtr) ToHDInsightClusterAuthenticatio
 	return pulumi.ToOutputWithContext(ctx, in).(HDInsightClusterAuthenticationTypePtrOutput)
 }
 
+// HDInsight On-demand cluster resource group authentication type.
+type HDInsightOndemandClusterResourceGroupAuthenticationType string
+
+const (
+	HDInsightOndemandClusterResourceGroupAuthenticationTypeServicePrincipalKey           = HDInsightOndemandClusterResourceGroupAuthenticationType("ServicePrincipalKey")
+	HDInsightOndemandClusterResourceGroupAuthenticationTypeSystemAssignedManagedIdentity = HDInsightOndemandClusterResourceGroupAuthenticationType("SystemAssignedManagedIdentity")
+	HDInsightOndemandClusterResourceGroupAuthenticationTypeUserAssignedManagedIdentity   = HDInsightOndemandClusterResourceGroupAuthenticationType("UserAssignedManagedIdentity")
+)
+
+func (HDInsightOndemandClusterResourceGroupAuthenticationType) ElementType() reflect.Type {
+	return reflect.TypeOf((*HDInsightOndemandClusterResourceGroupAuthenticationType)(nil)).Elem()
+}
+
+func (e HDInsightOndemandClusterResourceGroupAuthenticationType) ToHDInsightOndemandClusterResourceGroupAuthenticationTypeOutput() HDInsightOndemandClusterResourceGroupAuthenticationTypeOutput {
+	return pulumi.ToOutput(e).(HDInsightOndemandClusterResourceGroupAuthenticationTypeOutput)
+}
+
+func (e HDInsightOndemandClusterResourceGroupAuthenticationType) ToHDInsightOndemandClusterResourceGroupAuthenticationTypeOutputWithContext(ctx context.Context) HDInsightOndemandClusterResourceGroupAuthenticationTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(HDInsightOndemandClusterResourceGroupAuthenticationTypeOutput)
+}
+
+func (e HDInsightOndemandClusterResourceGroupAuthenticationType) ToHDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutput() HDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutput {
+	return e.ToHDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutputWithContext(context.Background())
+}
+
+func (e HDInsightOndemandClusterResourceGroupAuthenticationType) ToHDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutputWithContext(ctx context.Context) HDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutput {
+	return HDInsightOndemandClusterResourceGroupAuthenticationType(e).ToHDInsightOndemandClusterResourceGroupAuthenticationTypeOutputWithContext(ctx).ToHDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutputWithContext(ctx)
+}
+
+func (e HDInsightOndemandClusterResourceGroupAuthenticationType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e HDInsightOndemandClusterResourceGroupAuthenticationType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e HDInsightOndemandClusterResourceGroupAuthenticationType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e HDInsightOndemandClusterResourceGroupAuthenticationType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type HDInsightOndemandClusterResourceGroupAuthenticationTypeOutput struct{ *pulumi.OutputState }
+
+func (HDInsightOndemandClusterResourceGroupAuthenticationTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HDInsightOndemandClusterResourceGroupAuthenticationType)(nil)).Elem()
+}
+
+func (o HDInsightOndemandClusterResourceGroupAuthenticationTypeOutput) ToHDInsightOndemandClusterResourceGroupAuthenticationTypeOutput() HDInsightOndemandClusterResourceGroupAuthenticationTypeOutput {
+	return o
+}
+
+func (o HDInsightOndemandClusterResourceGroupAuthenticationTypeOutput) ToHDInsightOndemandClusterResourceGroupAuthenticationTypeOutputWithContext(ctx context.Context) HDInsightOndemandClusterResourceGroupAuthenticationTypeOutput {
+	return o
+}
+
+func (o HDInsightOndemandClusterResourceGroupAuthenticationTypeOutput) ToHDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutput() HDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutput {
+	return o.ToHDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutputWithContext(context.Background())
+}
+
+func (o HDInsightOndemandClusterResourceGroupAuthenticationTypeOutput) ToHDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutputWithContext(ctx context.Context) HDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HDInsightOndemandClusterResourceGroupAuthenticationType) *HDInsightOndemandClusterResourceGroupAuthenticationType {
+		return &v
+	}).(HDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutput)
+}
+
+func (o HDInsightOndemandClusterResourceGroupAuthenticationTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o HDInsightOndemandClusterResourceGroupAuthenticationTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e HDInsightOndemandClusterResourceGroupAuthenticationType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o HDInsightOndemandClusterResourceGroupAuthenticationTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o HDInsightOndemandClusterResourceGroupAuthenticationTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e HDInsightOndemandClusterResourceGroupAuthenticationType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type HDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutput struct{ *pulumi.OutputState }
+
+func (HDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HDInsightOndemandClusterResourceGroupAuthenticationType)(nil)).Elem()
+}
+
+func (o HDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutput) ToHDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutput() HDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutput {
+	return o
+}
+
+func (o HDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutput) ToHDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutputWithContext(ctx context.Context) HDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutput {
+	return o
+}
+
+func (o HDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutput) Elem() HDInsightOndemandClusterResourceGroupAuthenticationTypeOutput {
+	return o.ApplyT(func(v *HDInsightOndemandClusterResourceGroupAuthenticationType) HDInsightOndemandClusterResourceGroupAuthenticationType {
+		if v != nil {
+			return *v
+		}
+		var ret HDInsightOndemandClusterResourceGroupAuthenticationType
+		return ret
+	}).(HDInsightOndemandClusterResourceGroupAuthenticationTypeOutput)
+}
+
+func (o HDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o HDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *HDInsightOndemandClusterResourceGroupAuthenticationType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// HDInsightOndemandClusterResourceGroupAuthenticationTypeInput is an input type that accepts values of the HDInsightOndemandClusterResourceGroupAuthenticationType enum
+// A concrete instance of `HDInsightOndemandClusterResourceGroupAuthenticationTypeInput` can be one of the following:
+//
+//	HDInsightOndemandClusterResourceGroupAuthenticationTypeServicePrincipalKey
+//	HDInsightOndemandClusterResourceGroupAuthenticationTypeSystemAssignedManagedIdentity
+//	HDInsightOndemandClusterResourceGroupAuthenticationTypeUserAssignedManagedIdentity
+type HDInsightOndemandClusterResourceGroupAuthenticationTypeInput interface {
+	pulumi.Input
+
+	ToHDInsightOndemandClusterResourceGroupAuthenticationTypeOutput() HDInsightOndemandClusterResourceGroupAuthenticationTypeOutput
+	ToHDInsightOndemandClusterResourceGroupAuthenticationTypeOutputWithContext(context.Context) HDInsightOndemandClusterResourceGroupAuthenticationTypeOutput
+}
+
+var hdinsightOndemandClusterResourceGroupAuthenticationTypePtrType = reflect.TypeOf((**HDInsightOndemandClusterResourceGroupAuthenticationType)(nil)).Elem()
+
+type HDInsightOndemandClusterResourceGroupAuthenticationTypePtrInput interface {
+	pulumi.Input
+
+	ToHDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutput() HDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutput
+	ToHDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutputWithContext(context.Context) HDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutput
+}
+
+type hdinsightOndemandClusterResourceGroupAuthenticationTypePtr string
+
+func HDInsightOndemandClusterResourceGroupAuthenticationTypePtr(v string) HDInsightOndemandClusterResourceGroupAuthenticationTypePtrInput {
+	return (*hdinsightOndemandClusterResourceGroupAuthenticationTypePtr)(&v)
+}
+
+func (*hdinsightOndemandClusterResourceGroupAuthenticationTypePtr) ElementType() reflect.Type {
+	return hdinsightOndemandClusterResourceGroupAuthenticationTypePtrType
+}
+
+func (in *hdinsightOndemandClusterResourceGroupAuthenticationTypePtr) ToHDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutput() HDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutput {
+	return pulumi.ToOutput(in).(HDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutput)
+}
+
+func (in *hdinsightOndemandClusterResourceGroupAuthenticationTypePtr) ToHDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutputWithContext(ctx context.Context) HDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(HDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutput)
+}
+
 // The authentication method used to access the Hive server.
 type HiveAuthenticationType string
 
@@ -8628,6 +8796,172 @@ func (in *mongoDbAuthenticationTypePtr) ToMongoDbAuthenticationTypePtrOutput() M
 
 func (in *mongoDbAuthenticationTypePtr) ToMongoDbAuthenticationTypePtrOutputWithContext(ctx context.Context) MongoDbAuthenticationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MongoDbAuthenticationTypePtrOutput)
+}
+
+// Specifies the security level for the driver connection to the data store. PreferredUnSecured : prefer unsecured, allow fallback to secured connection if required. OnlyUnSecured : strictly unsecured, no fallback.
+type NetezzaSecurityLevelType string
+
+const (
+	NetezzaSecurityLevelTypePreferredUnSecured = NetezzaSecurityLevelType("PreferredUnSecured")
+	NetezzaSecurityLevelTypeOnlyUnSecured      = NetezzaSecurityLevelType("OnlyUnSecured")
+)
+
+func (NetezzaSecurityLevelType) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetezzaSecurityLevelType)(nil)).Elem()
+}
+
+func (e NetezzaSecurityLevelType) ToNetezzaSecurityLevelTypeOutput() NetezzaSecurityLevelTypeOutput {
+	return pulumi.ToOutput(e).(NetezzaSecurityLevelTypeOutput)
+}
+
+func (e NetezzaSecurityLevelType) ToNetezzaSecurityLevelTypeOutputWithContext(ctx context.Context) NetezzaSecurityLevelTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(NetezzaSecurityLevelTypeOutput)
+}
+
+func (e NetezzaSecurityLevelType) ToNetezzaSecurityLevelTypePtrOutput() NetezzaSecurityLevelTypePtrOutput {
+	return e.ToNetezzaSecurityLevelTypePtrOutputWithContext(context.Background())
+}
+
+func (e NetezzaSecurityLevelType) ToNetezzaSecurityLevelTypePtrOutputWithContext(ctx context.Context) NetezzaSecurityLevelTypePtrOutput {
+	return NetezzaSecurityLevelType(e).ToNetezzaSecurityLevelTypeOutputWithContext(ctx).ToNetezzaSecurityLevelTypePtrOutputWithContext(ctx)
+}
+
+func (e NetezzaSecurityLevelType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NetezzaSecurityLevelType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NetezzaSecurityLevelType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e NetezzaSecurityLevelType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type NetezzaSecurityLevelTypeOutput struct{ *pulumi.OutputState }
+
+func (NetezzaSecurityLevelTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetezzaSecurityLevelType)(nil)).Elem()
+}
+
+func (o NetezzaSecurityLevelTypeOutput) ToNetezzaSecurityLevelTypeOutput() NetezzaSecurityLevelTypeOutput {
+	return o
+}
+
+func (o NetezzaSecurityLevelTypeOutput) ToNetezzaSecurityLevelTypeOutputWithContext(ctx context.Context) NetezzaSecurityLevelTypeOutput {
+	return o
+}
+
+func (o NetezzaSecurityLevelTypeOutput) ToNetezzaSecurityLevelTypePtrOutput() NetezzaSecurityLevelTypePtrOutput {
+	return o.ToNetezzaSecurityLevelTypePtrOutputWithContext(context.Background())
+}
+
+func (o NetezzaSecurityLevelTypeOutput) ToNetezzaSecurityLevelTypePtrOutputWithContext(ctx context.Context) NetezzaSecurityLevelTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetezzaSecurityLevelType) *NetezzaSecurityLevelType {
+		return &v
+	}).(NetezzaSecurityLevelTypePtrOutput)
+}
+
+func (o NetezzaSecurityLevelTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o NetezzaSecurityLevelTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NetezzaSecurityLevelType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o NetezzaSecurityLevelTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NetezzaSecurityLevelTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NetezzaSecurityLevelType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type NetezzaSecurityLevelTypePtrOutput struct{ *pulumi.OutputState }
+
+func (NetezzaSecurityLevelTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetezzaSecurityLevelType)(nil)).Elem()
+}
+
+func (o NetezzaSecurityLevelTypePtrOutput) ToNetezzaSecurityLevelTypePtrOutput() NetezzaSecurityLevelTypePtrOutput {
+	return o
+}
+
+func (o NetezzaSecurityLevelTypePtrOutput) ToNetezzaSecurityLevelTypePtrOutputWithContext(ctx context.Context) NetezzaSecurityLevelTypePtrOutput {
+	return o
+}
+
+func (o NetezzaSecurityLevelTypePtrOutput) Elem() NetezzaSecurityLevelTypeOutput {
+	return o.ApplyT(func(v *NetezzaSecurityLevelType) NetezzaSecurityLevelType {
+		if v != nil {
+			return *v
+		}
+		var ret NetezzaSecurityLevelType
+		return ret
+	}).(NetezzaSecurityLevelTypeOutput)
+}
+
+func (o NetezzaSecurityLevelTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NetezzaSecurityLevelTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *NetezzaSecurityLevelType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// NetezzaSecurityLevelTypeInput is an input type that accepts values of the NetezzaSecurityLevelType enum
+// A concrete instance of `NetezzaSecurityLevelTypeInput` can be one of the following:
+//
+//	NetezzaSecurityLevelTypePreferredUnSecured
+//	NetezzaSecurityLevelTypeOnlyUnSecured
+type NetezzaSecurityLevelTypeInput interface {
+	pulumi.Input
+
+	ToNetezzaSecurityLevelTypeOutput() NetezzaSecurityLevelTypeOutput
+	ToNetezzaSecurityLevelTypeOutputWithContext(context.Context) NetezzaSecurityLevelTypeOutput
+}
+
+var netezzaSecurityLevelTypePtrType = reflect.TypeOf((**NetezzaSecurityLevelType)(nil)).Elem()
+
+type NetezzaSecurityLevelTypePtrInput interface {
+	pulumi.Input
+
+	ToNetezzaSecurityLevelTypePtrOutput() NetezzaSecurityLevelTypePtrOutput
+	ToNetezzaSecurityLevelTypePtrOutputWithContext(context.Context) NetezzaSecurityLevelTypePtrOutput
+}
+
+type netezzaSecurityLevelTypePtr string
+
+func NetezzaSecurityLevelTypePtr(v string) NetezzaSecurityLevelTypePtrInput {
+	return (*netezzaSecurityLevelTypePtr)(&v)
+}
+
+func (*netezzaSecurityLevelTypePtr) ElementType() reflect.Type {
+	return netezzaSecurityLevelTypePtrType
+}
+
+func (in *netezzaSecurityLevelTypePtr) ToNetezzaSecurityLevelTypePtrOutput() NetezzaSecurityLevelTypePtrOutput {
+	return pulumi.ToOutput(in).(NetezzaSecurityLevelTypePtrOutput)
+}
+
+func (in *netezzaSecurityLevelTypePtr) ToNetezzaSecurityLevelTypePtrOutputWithContext(ctx context.Context) NetezzaSecurityLevelTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(NetezzaSecurityLevelTypePtrOutput)
 }
 
 // Notebook parameter type.
@@ -16093,6 +16427,8 @@ func init() {
 	pulumi.RegisterOutputType(HDInsightActivityDebugInfoOptionPtrOutput{})
 	pulumi.RegisterOutputType(HDInsightClusterAuthenticationTypeOutput{})
 	pulumi.RegisterOutputType(HDInsightClusterAuthenticationTypePtrOutput{})
+	pulumi.RegisterOutputType(HDInsightOndemandClusterResourceGroupAuthenticationTypeOutput{})
+	pulumi.RegisterOutputType(HDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutput{})
 	pulumi.RegisterOutputType(HiveAuthenticationTypeOutput{})
 	pulumi.RegisterOutputType(HiveAuthenticationTypePtrOutput{})
 	pulumi.RegisterOutputType(HiveServerTypeOutput{})
@@ -16121,6 +16457,8 @@ func init() {
 	pulumi.RegisterOutputType(MappingTypePtrOutput{})
 	pulumi.RegisterOutputType(MongoDbAuthenticationTypeOutput{})
 	pulumi.RegisterOutputType(MongoDbAuthenticationTypePtrOutput{})
+	pulumi.RegisterOutputType(NetezzaSecurityLevelTypeOutput{})
+	pulumi.RegisterOutputType(NetezzaSecurityLevelTypePtrOutput{})
 	pulumi.RegisterOutputType(NotebookParameterTypeOutput{})
 	pulumi.RegisterOutputType(NotebookParameterTypePtrOutput{})
 	pulumi.RegisterOutputType(NotebookReferenceTypeOutput{})

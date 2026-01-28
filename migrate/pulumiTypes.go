@@ -3922,6 +3922,172 @@ func (o AppSvcNativeSettingsResponsePtrOutput) IsolationRequired() pulumi.BoolPt
 	}).(pulumi.BoolPtrOutput)
 }
 
+// ARG query and other details to create workloads within a wave.
+type Arg struct {
+	// The query to create workloads within the wave.
+	Query string `pulumi:"query"`
+}
+
+// ArgInput is an input type that accepts ArgArgs and ArgOutput values.
+// You can construct a concrete instance of `ArgInput` via:
+//
+//	ArgArgs{...}
+type ArgInput interface {
+	pulumi.Input
+
+	ToArgOutput() ArgOutput
+	ToArgOutputWithContext(context.Context) ArgOutput
+}
+
+// ARG query and other details to create workloads within a wave.
+type ArgArgs struct {
+	// The query to create workloads within the wave.
+	Query pulumi.StringInput `pulumi:"query"`
+}
+
+func (ArgArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Arg)(nil)).Elem()
+}
+
+func (i ArgArgs) ToArgOutput() ArgOutput {
+	return i.ToArgOutputWithContext(context.Background())
+}
+
+func (i ArgArgs) ToArgOutputWithContext(ctx context.Context) ArgOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ArgOutput)
+}
+
+func (i ArgArgs) ToArgPtrOutput() ArgPtrOutput {
+	return i.ToArgPtrOutputWithContext(context.Background())
+}
+
+func (i ArgArgs) ToArgPtrOutputWithContext(ctx context.Context) ArgPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ArgOutput).ToArgPtrOutputWithContext(ctx)
+}
+
+// ArgPtrInput is an input type that accepts ArgArgs, ArgPtr and ArgPtrOutput values.
+// You can construct a concrete instance of `ArgPtrInput` via:
+//
+//	        ArgArgs{...}
+//
+//	or:
+//
+//	        nil
+type ArgPtrInput interface {
+	pulumi.Input
+
+	ToArgPtrOutput() ArgPtrOutput
+	ToArgPtrOutputWithContext(context.Context) ArgPtrOutput
+}
+
+type argPtrType ArgArgs
+
+func ArgPtr(v *ArgArgs) ArgPtrInput {
+	return (*argPtrType)(v)
+}
+
+func (*argPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Arg)(nil)).Elem()
+}
+
+func (i *argPtrType) ToArgPtrOutput() ArgPtrOutput {
+	return i.ToArgPtrOutputWithContext(context.Background())
+}
+
+func (i *argPtrType) ToArgPtrOutputWithContext(ctx context.Context) ArgPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ArgPtrOutput)
+}
+
+// ARG query and other details to create workloads within a wave.
+type ArgOutput struct{ *pulumi.OutputState }
+
+func (ArgOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Arg)(nil)).Elem()
+}
+
+func (o ArgOutput) ToArgOutput() ArgOutput {
+	return o
+}
+
+func (o ArgOutput) ToArgOutputWithContext(ctx context.Context) ArgOutput {
+	return o
+}
+
+func (o ArgOutput) ToArgPtrOutput() ArgPtrOutput {
+	return o.ToArgPtrOutputWithContext(context.Background())
+}
+
+func (o ArgOutput) ToArgPtrOutputWithContext(ctx context.Context) ArgPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Arg) *Arg {
+		return &v
+	}).(ArgPtrOutput)
+}
+
+// The query to create workloads within the wave.
+func (o ArgOutput) Query() pulumi.StringOutput {
+	return o.ApplyT(func(v Arg) string { return v.Query }).(pulumi.StringOutput)
+}
+
+type ArgPtrOutput struct{ *pulumi.OutputState }
+
+func (ArgPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Arg)(nil)).Elem()
+}
+
+func (o ArgPtrOutput) ToArgPtrOutput() ArgPtrOutput {
+	return o
+}
+
+func (o ArgPtrOutput) ToArgPtrOutputWithContext(ctx context.Context) ArgPtrOutput {
+	return o
+}
+
+func (o ArgPtrOutput) Elem() ArgOutput {
+	return o.ApplyT(func(v *Arg) Arg {
+		if v != nil {
+			return *v
+		}
+		var ret Arg
+		return ret
+	}).(ArgOutput)
+}
+
+// The query to create workloads within the wave.
+func (o ArgPtrOutput) Query() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Arg) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Query
+	}).(pulumi.StringPtrOutput)
+}
+
+// ARG query and other details to create workloads within a wave.
+type ArgResponse struct {
+	// The query to create workloads within the wave.
+	Query string `pulumi:"query"`
+}
+
+// ARG query and other details to create workloads within a wave.
+type ArgResponseOutput struct{ *pulumi.OutputState }
+
+func (ArgResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ArgResponse)(nil)).Elem()
+}
+
+func (o ArgResponseOutput) ToArgResponseOutput() ArgResponseOutput {
+	return o
+}
+
+func (o ArgResponseOutput) ToArgResponseOutputWithContext(ctx context.Context) ArgResponseOutput {
+	return o
+}
+
+// The query to create workloads within the wave.
+func (o ArgResponseOutput) Query() pulumi.StringOutput {
+	return o.ApplyT(func(v ArgResponse) string { return v.Query }).(pulumi.StringOutput)
+}
+
 // Assessment details class.
 type AssessmentDetailsResponse struct {
 	// Confidence Rating in Percentage.
@@ -24608,6 +24774,795 @@ func (o MigrationConfigurationResponsePtrOutput) StorageAccountResourceId() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Migration Entity Group Properties class.
+type MigrationEntityGroupProperties struct {
+	// Display Name of the Workload.
+	ApplicationDisplayName string `pulumi:"applicationDisplayName"`
+	// Application id
+	ApplicationId string `pulumi:"applicationId"`
+	// Associated Assessment Id
+	AssociatedAssessmentId *string `pulumi:"associatedAssessmentId"`
+	// associated Wave Id
+	AssociatedWaveIds []string `pulumi:"associatedWaveIds"`
+	// Migration path
+	MigrationPath *string `pulumi:"migrationPath"`
+}
+
+// MigrationEntityGroupPropertiesInput is an input type that accepts MigrationEntityGroupPropertiesArgs and MigrationEntityGroupPropertiesOutput values.
+// You can construct a concrete instance of `MigrationEntityGroupPropertiesInput` via:
+//
+//	MigrationEntityGroupPropertiesArgs{...}
+type MigrationEntityGroupPropertiesInput interface {
+	pulumi.Input
+
+	ToMigrationEntityGroupPropertiesOutput() MigrationEntityGroupPropertiesOutput
+	ToMigrationEntityGroupPropertiesOutputWithContext(context.Context) MigrationEntityGroupPropertiesOutput
+}
+
+// Migration Entity Group Properties class.
+type MigrationEntityGroupPropertiesArgs struct {
+	// Display Name of the Workload.
+	ApplicationDisplayName pulumi.StringInput `pulumi:"applicationDisplayName"`
+	// Application id
+	ApplicationId pulumi.StringInput `pulumi:"applicationId"`
+	// Associated Assessment Id
+	AssociatedAssessmentId pulumi.StringPtrInput `pulumi:"associatedAssessmentId"`
+	// associated Wave Id
+	AssociatedWaveIds pulumi.StringArrayInput `pulumi:"associatedWaveIds"`
+	// Migration path
+	MigrationPath pulumi.StringPtrInput `pulumi:"migrationPath"`
+}
+
+func (MigrationEntityGroupPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MigrationEntityGroupProperties)(nil)).Elem()
+}
+
+func (i MigrationEntityGroupPropertiesArgs) ToMigrationEntityGroupPropertiesOutput() MigrationEntityGroupPropertiesOutput {
+	return i.ToMigrationEntityGroupPropertiesOutputWithContext(context.Background())
+}
+
+func (i MigrationEntityGroupPropertiesArgs) ToMigrationEntityGroupPropertiesOutputWithContext(ctx context.Context) MigrationEntityGroupPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MigrationEntityGroupPropertiesOutput)
+}
+
+func (i MigrationEntityGroupPropertiesArgs) ToMigrationEntityGroupPropertiesPtrOutput() MigrationEntityGroupPropertiesPtrOutput {
+	return i.ToMigrationEntityGroupPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i MigrationEntityGroupPropertiesArgs) ToMigrationEntityGroupPropertiesPtrOutputWithContext(ctx context.Context) MigrationEntityGroupPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MigrationEntityGroupPropertiesOutput).ToMigrationEntityGroupPropertiesPtrOutputWithContext(ctx)
+}
+
+// MigrationEntityGroupPropertiesPtrInput is an input type that accepts MigrationEntityGroupPropertiesArgs, MigrationEntityGroupPropertiesPtr and MigrationEntityGroupPropertiesPtrOutput values.
+// You can construct a concrete instance of `MigrationEntityGroupPropertiesPtrInput` via:
+//
+//	        MigrationEntityGroupPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type MigrationEntityGroupPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToMigrationEntityGroupPropertiesPtrOutput() MigrationEntityGroupPropertiesPtrOutput
+	ToMigrationEntityGroupPropertiesPtrOutputWithContext(context.Context) MigrationEntityGroupPropertiesPtrOutput
+}
+
+type migrationEntityGroupPropertiesPtrType MigrationEntityGroupPropertiesArgs
+
+func MigrationEntityGroupPropertiesPtr(v *MigrationEntityGroupPropertiesArgs) MigrationEntityGroupPropertiesPtrInput {
+	return (*migrationEntityGroupPropertiesPtrType)(v)
+}
+
+func (*migrationEntityGroupPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MigrationEntityGroupProperties)(nil)).Elem()
+}
+
+func (i *migrationEntityGroupPropertiesPtrType) ToMigrationEntityGroupPropertiesPtrOutput() MigrationEntityGroupPropertiesPtrOutput {
+	return i.ToMigrationEntityGroupPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *migrationEntityGroupPropertiesPtrType) ToMigrationEntityGroupPropertiesPtrOutputWithContext(ctx context.Context) MigrationEntityGroupPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MigrationEntityGroupPropertiesPtrOutput)
+}
+
+// Migration Entity Group Properties class.
+type MigrationEntityGroupPropertiesOutput struct{ *pulumi.OutputState }
+
+func (MigrationEntityGroupPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MigrationEntityGroupProperties)(nil)).Elem()
+}
+
+func (o MigrationEntityGroupPropertiesOutput) ToMigrationEntityGroupPropertiesOutput() MigrationEntityGroupPropertiesOutput {
+	return o
+}
+
+func (o MigrationEntityGroupPropertiesOutput) ToMigrationEntityGroupPropertiesOutputWithContext(ctx context.Context) MigrationEntityGroupPropertiesOutput {
+	return o
+}
+
+func (o MigrationEntityGroupPropertiesOutput) ToMigrationEntityGroupPropertiesPtrOutput() MigrationEntityGroupPropertiesPtrOutput {
+	return o.ToMigrationEntityGroupPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o MigrationEntityGroupPropertiesOutput) ToMigrationEntityGroupPropertiesPtrOutputWithContext(ctx context.Context) MigrationEntityGroupPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MigrationEntityGroupProperties) *MigrationEntityGroupProperties {
+		return &v
+	}).(MigrationEntityGroupPropertiesPtrOutput)
+}
+
+// Display Name of the Workload.
+func (o MigrationEntityGroupPropertiesOutput) ApplicationDisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v MigrationEntityGroupProperties) string { return v.ApplicationDisplayName }).(pulumi.StringOutput)
+}
+
+// Application id
+func (o MigrationEntityGroupPropertiesOutput) ApplicationId() pulumi.StringOutput {
+	return o.ApplyT(func(v MigrationEntityGroupProperties) string { return v.ApplicationId }).(pulumi.StringOutput)
+}
+
+// Associated Assessment Id
+func (o MigrationEntityGroupPropertiesOutput) AssociatedAssessmentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrationEntityGroupProperties) *string { return v.AssociatedAssessmentId }).(pulumi.StringPtrOutput)
+}
+
+// associated Wave Id
+func (o MigrationEntityGroupPropertiesOutput) AssociatedWaveIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MigrationEntityGroupProperties) []string { return v.AssociatedWaveIds }).(pulumi.StringArrayOutput)
+}
+
+// Migration path
+func (o MigrationEntityGroupPropertiesOutput) MigrationPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrationEntityGroupProperties) *string { return v.MigrationPath }).(pulumi.StringPtrOutput)
+}
+
+type MigrationEntityGroupPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (MigrationEntityGroupPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MigrationEntityGroupProperties)(nil)).Elem()
+}
+
+func (o MigrationEntityGroupPropertiesPtrOutput) ToMigrationEntityGroupPropertiesPtrOutput() MigrationEntityGroupPropertiesPtrOutput {
+	return o
+}
+
+func (o MigrationEntityGroupPropertiesPtrOutput) ToMigrationEntityGroupPropertiesPtrOutputWithContext(ctx context.Context) MigrationEntityGroupPropertiesPtrOutput {
+	return o
+}
+
+func (o MigrationEntityGroupPropertiesPtrOutput) Elem() MigrationEntityGroupPropertiesOutput {
+	return o.ApplyT(func(v *MigrationEntityGroupProperties) MigrationEntityGroupProperties {
+		if v != nil {
+			return *v
+		}
+		var ret MigrationEntityGroupProperties
+		return ret
+	}).(MigrationEntityGroupPropertiesOutput)
+}
+
+// Display Name of the Workload.
+func (o MigrationEntityGroupPropertiesPtrOutput) ApplicationDisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrationEntityGroupProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ApplicationDisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Application id
+func (o MigrationEntityGroupPropertiesPtrOutput) ApplicationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrationEntityGroupProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ApplicationId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Associated Assessment Id
+func (o MigrationEntityGroupPropertiesPtrOutput) AssociatedAssessmentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrationEntityGroupProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AssociatedAssessmentId
+	}).(pulumi.StringPtrOutput)
+}
+
+// associated Wave Id
+func (o MigrationEntityGroupPropertiesPtrOutput) AssociatedWaveIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MigrationEntityGroupProperties) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AssociatedWaveIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// Migration path
+func (o MigrationEntityGroupPropertiesPtrOutput) MigrationPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrationEntityGroupProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MigrationPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Migration Entity Group Properties class.
+type MigrationEntityGroupPropertiesResponse struct {
+	// Display Name of the Workload.
+	ApplicationDisplayName string `pulumi:"applicationDisplayName"`
+	// Application id
+	ApplicationId string `pulumi:"applicationId"`
+	// Associated Assessment Id
+	AssociatedAssessmentId *string `pulumi:"associatedAssessmentId"`
+	// associated Wave Id
+	AssociatedWaveIds []string `pulumi:"associatedWaveIds"`
+	// Execution Start Date
+	ExecutionStartDate string `pulumi:"executionStartDate"`
+	// Migration Entity Group Status
+	ExecutionStatus string `pulumi:"executionStatus"`
+	// Migration path
+	MigrationPath *string `pulumi:"migrationPath"`
+	// The status of the last operation.
+	ProvisioningState string `pulumi:"provisioningState"`
+}
+
+// Migration Entity Group Properties class.
+type MigrationEntityGroupPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (MigrationEntityGroupPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MigrationEntityGroupPropertiesResponse)(nil)).Elem()
+}
+
+func (o MigrationEntityGroupPropertiesResponseOutput) ToMigrationEntityGroupPropertiesResponseOutput() MigrationEntityGroupPropertiesResponseOutput {
+	return o
+}
+
+func (o MigrationEntityGroupPropertiesResponseOutput) ToMigrationEntityGroupPropertiesResponseOutputWithContext(ctx context.Context) MigrationEntityGroupPropertiesResponseOutput {
+	return o
+}
+
+// Display Name of the Workload.
+func (o MigrationEntityGroupPropertiesResponseOutput) ApplicationDisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v MigrationEntityGroupPropertiesResponse) string { return v.ApplicationDisplayName }).(pulumi.StringOutput)
+}
+
+// Application id
+func (o MigrationEntityGroupPropertiesResponseOutput) ApplicationId() pulumi.StringOutput {
+	return o.ApplyT(func(v MigrationEntityGroupPropertiesResponse) string { return v.ApplicationId }).(pulumi.StringOutput)
+}
+
+// Associated Assessment Id
+func (o MigrationEntityGroupPropertiesResponseOutput) AssociatedAssessmentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrationEntityGroupPropertiesResponse) *string { return v.AssociatedAssessmentId }).(pulumi.StringPtrOutput)
+}
+
+// associated Wave Id
+func (o MigrationEntityGroupPropertiesResponseOutput) AssociatedWaveIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MigrationEntityGroupPropertiesResponse) []string { return v.AssociatedWaveIds }).(pulumi.StringArrayOutput)
+}
+
+// Execution Start Date
+func (o MigrationEntityGroupPropertiesResponseOutput) ExecutionStartDate() pulumi.StringOutput {
+	return o.ApplyT(func(v MigrationEntityGroupPropertiesResponse) string { return v.ExecutionStartDate }).(pulumi.StringOutput)
+}
+
+// Migration Entity Group Status
+func (o MigrationEntityGroupPropertiesResponseOutput) ExecutionStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v MigrationEntityGroupPropertiesResponse) string { return v.ExecutionStatus }).(pulumi.StringOutput)
+}
+
+// Migration path
+func (o MigrationEntityGroupPropertiesResponseOutput) MigrationPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrationEntityGroupPropertiesResponse) *string { return v.MigrationPath }).(pulumi.StringPtrOutput)
+}
+
+// The status of the last operation.
+func (o MigrationEntityGroupPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v MigrationEntityGroupPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Migration Entity Properties class.
+type MigrationEntityProperties struct {
+	// Assessed Entity ARM Id
+	AssessedEntityArmId *string `pulumi:"assessedEntityArmId"`
+	// Associated Assessment Id
+	AssociatedAssessmentId *string `pulumi:"associatedAssessmentId"`
+	// inventory resource id
+	AssociatedInventoryResourceId string `pulumi:"associatedInventoryResourceId"`
+	// associated Migration Entity Group Id
+	AssociatedMigrationEntityGroupIds []string `pulumi:"associatedMigrationEntityGroupIds"`
+	// associated Wave Id
+	AssociatedWaveId *string `pulumi:"associatedWaveId"`
+	// Display Name of the Workload.
+	InventoryDisplayName string `pulumi:"inventoryDisplayName"`
+	// Migration path
+	MigrationPath *string `pulumi:"migrationPath"`
+	// Migration specific properties for the entity.
+	MigrationSpecificProperties *ServerMigrationSpecificProperties `pulumi:"migrationSpecificProperties"`
+	// Migration Tool of the Migration Entity.
+	MigrationTool *string `pulumi:"migrationTool"`
+	// ARM Resource Identifier for the partner resource.
+	PartnerResourceArmId *string `pulumi:"partnerResourceArmId"`
+	// Target of the Migration Entity.
+	Target *string `pulumi:"target"`
+	// target Azure Resource ARM Id.
+	TargetAzureResourceArmId *string `pulumi:"targetAzureResourceArmId"`
+}
+
+// MigrationEntityPropertiesInput is an input type that accepts MigrationEntityPropertiesArgs and MigrationEntityPropertiesOutput values.
+// You can construct a concrete instance of `MigrationEntityPropertiesInput` via:
+//
+//	MigrationEntityPropertiesArgs{...}
+type MigrationEntityPropertiesInput interface {
+	pulumi.Input
+
+	ToMigrationEntityPropertiesOutput() MigrationEntityPropertiesOutput
+	ToMigrationEntityPropertiesOutputWithContext(context.Context) MigrationEntityPropertiesOutput
+}
+
+// Migration Entity Properties class.
+type MigrationEntityPropertiesArgs struct {
+	// Assessed Entity ARM Id
+	AssessedEntityArmId pulumi.StringPtrInput `pulumi:"assessedEntityArmId"`
+	// Associated Assessment Id
+	AssociatedAssessmentId pulumi.StringPtrInput `pulumi:"associatedAssessmentId"`
+	// inventory resource id
+	AssociatedInventoryResourceId pulumi.StringInput `pulumi:"associatedInventoryResourceId"`
+	// associated Migration Entity Group Id
+	AssociatedMigrationEntityGroupIds pulumi.StringArrayInput `pulumi:"associatedMigrationEntityGroupIds"`
+	// associated Wave Id
+	AssociatedWaveId pulumi.StringPtrInput `pulumi:"associatedWaveId"`
+	// Display Name of the Workload.
+	InventoryDisplayName pulumi.StringInput `pulumi:"inventoryDisplayName"`
+	// Migration path
+	MigrationPath pulumi.StringPtrInput `pulumi:"migrationPath"`
+	// Migration specific properties for the entity.
+	MigrationSpecificProperties ServerMigrationSpecificPropertiesPtrInput `pulumi:"migrationSpecificProperties"`
+	// Migration Tool of the Migration Entity.
+	MigrationTool pulumi.StringPtrInput `pulumi:"migrationTool"`
+	// ARM Resource Identifier for the partner resource.
+	PartnerResourceArmId pulumi.StringPtrInput `pulumi:"partnerResourceArmId"`
+	// Target of the Migration Entity.
+	Target pulumi.StringPtrInput `pulumi:"target"`
+	// target Azure Resource ARM Id.
+	TargetAzureResourceArmId pulumi.StringPtrInput `pulumi:"targetAzureResourceArmId"`
+}
+
+func (MigrationEntityPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MigrationEntityProperties)(nil)).Elem()
+}
+
+func (i MigrationEntityPropertiesArgs) ToMigrationEntityPropertiesOutput() MigrationEntityPropertiesOutput {
+	return i.ToMigrationEntityPropertiesOutputWithContext(context.Background())
+}
+
+func (i MigrationEntityPropertiesArgs) ToMigrationEntityPropertiesOutputWithContext(ctx context.Context) MigrationEntityPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MigrationEntityPropertiesOutput)
+}
+
+func (i MigrationEntityPropertiesArgs) ToMigrationEntityPropertiesPtrOutput() MigrationEntityPropertiesPtrOutput {
+	return i.ToMigrationEntityPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i MigrationEntityPropertiesArgs) ToMigrationEntityPropertiesPtrOutputWithContext(ctx context.Context) MigrationEntityPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MigrationEntityPropertiesOutput).ToMigrationEntityPropertiesPtrOutputWithContext(ctx)
+}
+
+// MigrationEntityPropertiesPtrInput is an input type that accepts MigrationEntityPropertiesArgs, MigrationEntityPropertiesPtr and MigrationEntityPropertiesPtrOutput values.
+// You can construct a concrete instance of `MigrationEntityPropertiesPtrInput` via:
+//
+//	        MigrationEntityPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type MigrationEntityPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToMigrationEntityPropertiesPtrOutput() MigrationEntityPropertiesPtrOutput
+	ToMigrationEntityPropertiesPtrOutputWithContext(context.Context) MigrationEntityPropertiesPtrOutput
+}
+
+type migrationEntityPropertiesPtrType MigrationEntityPropertiesArgs
+
+func MigrationEntityPropertiesPtr(v *MigrationEntityPropertiesArgs) MigrationEntityPropertiesPtrInput {
+	return (*migrationEntityPropertiesPtrType)(v)
+}
+
+func (*migrationEntityPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MigrationEntityProperties)(nil)).Elem()
+}
+
+func (i *migrationEntityPropertiesPtrType) ToMigrationEntityPropertiesPtrOutput() MigrationEntityPropertiesPtrOutput {
+	return i.ToMigrationEntityPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *migrationEntityPropertiesPtrType) ToMigrationEntityPropertiesPtrOutputWithContext(ctx context.Context) MigrationEntityPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MigrationEntityPropertiesPtrOutput)
+}
+
+// Migration Entity Properties class.
+type MigrationEntityPropertiesOutput struct{ *pulumi.OutputState }
+
+func (MigrationEntityPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MigrationEntityProperties)(nil)).Elem()
+}
+
+func (o MigrationEntityPropertiesOutput) ToMigrationEntityPropertiesOutput() MigrationEntityPropertiesOutput {
+	return o
+}
+
+func (o MigrationEntityPropertiesOutput) ToMigrationEntityPropertiesOutputWithContext(ctx context.Context) MigrationEntityPropertiesOutput {
+	return o
+}
+
+func (o MigrationEntityPropertiesOutput) ToMigrationEntityPropertiesPtrOutput() MigrationEntityPropertiesPtrOutput {
+	return o.ToMigrationEntityPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o MigrationEntityPropertiesOutput) ToMigrationEntityPropertiesPtrOutputWithContext(ctx context.Context) MigrationEntityPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MigrationEntityProperties) *MigrationEntityProperties {
+		return &v
+	}).(MigrationEntityPropertiesPtrOutput)
+}
+
+// Assessed Entity ARM Id
+func (o MigrationEntityPropertiesOutput) AssessedEntityArmId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrationEntityProperties) *string { return v.AssessedEntityArmId }).(pulumi.StringPtrOutput)
+}
+
+// Associated Assessment Id
+func (o MigrationEntityPropertiesOutput) AssociatedAssessmentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrationEntityProperties) *string { return v.AssociatedAssessmentId }).(pulumi.StringPtrOutput)
+}
+
+// inventory resource id
+func (o MigrationEntityPropertiesOutput) AssociatedInventoryResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v MigrationEntityProperties) string { return v.AssociatedInventoryResourceId }).(pulumi.StringOutput)
+}
+
+// associated Migration Entity Group Id
+func (o MigrationEntityPropertiesOutput) AssociatedMigrationEntityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MigrationEntityProperties) []string { return v.AssociatedMigrationEntityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// associated Wave Id
+func (o MigrationEntityPropertiesOutput) AssociatedWaveId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrationEntityProperties) *string { return v.AssociatedWaveId }).(pulumi.StringPtrOutput)
+}
+
+// Display Name of the Workload.
+func (o MigrationEntityPropertiesOutput) InventoryDisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v MigrationEntityProperties) string { return v.InventoryDisplayName }).(pulumi.StringOutput)
+}
+
+// Migration path
+func (o MigrationEntityPropertiesOutput) MigrationPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrationEntityProperties) *string { return v.MigrationPath }).(pulumi.StringPtrOutput)
+}
+
+// Migration specific properties for the entity.
+func (o MigrationEntityPropertiesOutput) MigrationSpecificProperties() ServerMigrationSpecificPropertiesPtrOutput {
+	return o.ApplyT(func(v MigrationEntityProperties) *ServerMigrationSpecificProperties {
+		return v.MigrationSpecificProperties
+	}).(ServerMigrationSpecificPropertiesPtrOutput)
+}
+
+// Migration Tool of the Migration Entity.
+func (o MigrationEntityPropertiesOutput) MigrationTool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrationEntityProperties) *string { return v.MigrationTool }).(pulumi.StringPtrOutput)
+}
+
+// ARM Resource Identifier for the partner resource.
+func (o MigrationEntityPropertiesOutput) PartnerResourceArmId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrationEntityProperties) *string { return v.PartnerResourceArmId }).(pulumi.StringPtrOutput)
+}
+
+// Target of the Migration Entity.
+func (o MigrationEntityPropertiesOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrationEntityProperties) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+// target Azure Resource ARM Id.
+func (o MigrationEntityPropertiesOutput) TargetAzureResourceArmId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrationEntityProperties) *string { return v.TargetAzureResourceArmId }).(pulumi.StringPtrOutput)
+}
+
+type MigrationEntityPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (MigrationEntityPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MigrationEntityProperties)(nil)).Elem()
+}
+
+func (o MigrationEntityPropertiesPtrOutput) ToMigrationEntityPropertiesPtrOutput() MigrationEntityPropertiesPtrOutput {
+	return o
+}
+
+func (o MigrationEntityPropertiesPtrOutput) ToMigrationEntityPropertiesPtrOutputWithContext(ctx context.Context) MigrationEntityPropertiesPtrOutput {
+	return o
+}
+
+func (o MigrationEntityPropertiesPtrOutput) Elem() MigrationEntityPropertiesOutput {
+	return o.ApplyT(func(v *MigrationEntityProperties) MigrationEntityProperties {
+		if v != nil {
+			return *v
+		}
+		var ret MigrationEntityProperties
+		return ret
+	}).(MigrationEntityPropertiesOutput)
+}
+
+// Assessed Entity ARM Id
+func (o MigrationEntityPropertiesPtrOutput) AssessedEntityArmId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrationEntityProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AssessedEntityArmId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Associated Assessment Id
+func (o MigrationEntityPropertiesPtrOutput) AssociatedAssessmentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrationEntityProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AssociatedAssessmentId
+	}).(pulumi.StringPtrOutput)
+}
+
+// inventory resource id
+func (o MigrationEntityPropertiesPtrOutput) AssociatedInventoryResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrationEntityProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AssociatedInventoryResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// associated Migration Entity Group Id
+func (o MigrationEntityPropertiesPtrOutput) AssociatedMigrationEntityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MigrationEntityProperties) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AssociatedMigrationEntityGroupIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// associated Wave Id
+func (o MigrationEntityPropertiesPtrOutput) AssociatedWaveId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrationEntityProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AssociatedWaveId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Display Name of the Workload.
+func (o MigrationEntityPropertiesPtrOutput) InventoryDisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrationEntityProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.InventoryDisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Migration path
+func (o MigrationEntityPropertiesPtrOutput) MigrationPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrationEntityProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MigrationPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Migration specific properties for the entity.
+func (o MigrationEntityPropertiesPtrOutput) MigrationSpecificProperties() ServerMigrationSpecificPropertiesPtrOutput {
+	return o.ApplyT(func(v *MigrationEntityProperties) *ServerMigrationSpecificProperties {
+		if v == nil {
+			return nil
+		}
+		return v.MigrationSpecificProperties
+	}).(ServerMigrationSpecificPropertiesPtrOutput)
+}
+
+// Migration Tool of the Migration Entity.
+func (o MigrationEntityPropertiesPtrOutput) MigrationTool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrationEntityProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MigrationTool
+	}).(pulumi.StringPtrOutput)
+}
+
+// ARM Resource Identifier for the partner resource.
+func (o MigrationEntityPropertiesPtrOutput) PartnerResourceArmId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrationEntityProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PartnerResourceArmId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Target of the Migration Entity.
+func (o MigrationEntityPropertiesPtrOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrationEntityProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Target
+	}).(pulumi.StringPtrOutput)
+}
+
+// target Azure Resource ARM Id.
+func (o MigrationEntityPropertiesPtrOutput) TargetAzureResourceArmId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrationEntityProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetAzureResourceArmId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Migration Entity Properties class.
+type MigrationEntityPropertiesResponse struct {
+	// Assessed Entity ARM Id
+	AssessedEntityArmId *string `pulumi:"assessedEntityArmId"`
+	// Associated Assessment Id
+	AssociatedAssessmentId *string `pulumi:"associatedAssessmentId"`
+	// inventory resource id
+	AssociatedInventoryResourceId string `pulumi:"associatedInventoryResourceId"`
+	// associated Migration Entity Group Id
+	AssociatedMigrationEntityGroupIds []string `pulumi:"associatedMigrationEntityGroupIds"`
+	// associated Wave Id
+	AssociatedWaveId *string `pulumi:"associatedWaveId"`
+	// Execution Readiness of Migration Entity.
+	ExecutionReadiness string `pulumi:"executionReadiness"`
+	// Execution Stage of Migration Entity.
+	ExecutionStage string `pulumi:"executionStage"`
+	// Execution start date for Migration Entity.
+	ExecutionStartDate string `pulumi:"executionStartDate"`
+	// Execution Status of Migration Entity.
+	ExecutionStatus string `pulumi:"executionStatus"`
+	// Display Name of the Workload.
+	InventoryDisplayName string `pulumi:"inventoryDisplayName"`
+	// Migration path
+	MigrationPath *string `pulumi:"migrationPath"`
+	// Migration specific properties for the entity.
+	MigrationSpecificProperties *ServerMigrationSpecificPropertiesResponse `pulumi:"migrationSpecificProperties"`
+	// Strategy of Migration Entity.
+	MigrationStrategy string `pulumi:"migrationStrategy"`
+	// Migration Tool of the Migration Entity.
+	MigrationTool *string `pulumi:"migrationTool"`
+	// ARM Resource Identifier for the partner resource.
+	PartnerResourceArmId *string `pulumi:"partnerResourceArmId"`
+	// The status of the last operation.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Target of the Migration Entity.
+	Target *string `pulumi:"target"`
+	// target Azure Resource ARM Id.
+	TargetAzureResourceArmId *string `pulumi:"targetAzureResourceArmId"`
+}
+
+// Migration Entity Properties class.
+type MigrationEntityPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (MigrationEntityPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MigrationEntityPropertiesResponse)(nil)).Elem()
+}
+
+func (o MigrationEntityPropertiesResponseOutput) ToMigrationEntityPropertiesResponseOutput() MigrationEntityPropertiesResponseOutput {
+	return o
+}
+
+func (o MigrationEntityPropertiesResponseOutput) ToMigrationEntityPropertiesResponseOutputWithContext(ctx context.Context) MigrationEntityPropertiesResponseOutput {
+	return o
+}
+
+// Assessed Entity ARM Id
+func (o MigrationEntityPropertiesResponseOutput) AssessedEntityArmId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrationEntityPropertiesResponse) *string { return v.AssessedEntityArmId }).(pulumi.StringPtrOutput)
+}
+
+// Associated Assessment Id
+func (o MigrationEntityPropertiesResponseOutput) AssociatedAssessmentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrationEntityPropertiesResponse) *string { return v.AssociatedAssessmentId }).(pulumi.StringPtrOutput)
+}
+
+// inventory resource id
+func (o MigrationEntityPropertiesResponseOutput) AssociatedInventoryResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v MigrationEntityPropertiesResponse) string { return v.AssociatedInventoryResourceId }).(pulumi.StringOutput)
+}
+
+// associated Migration Entity Group Id
+func (o MigrationEntityPropertiesResponseOutput) AssociatedMigrationEntityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MigrationEntityPropertiesResponse) []string { return v.AssociatedMigrationEntityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// associated Wave Id
+func (o MigrationEntityPropertiesResponseOutput) AssociatedWaveId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrationEntityPropertiesResponse) *string { return v.AssociatedWaveId }).(pulumi.StringPtrOutput)
+}
+
+// Execution Readiness of Migration Entity.
+func (o MigrationEntityPropertiesResponseOutput) ExecutionReadiness() pulumi.StringOutput {
+	return o.ApplyT(func(v MigrationEntityPropertiesResponse) string { return v.ExecutionReadiness }).(pulumi.StringOutput)
+}
+
+// Execution Stage of Migration Entity.
+func (o MigrationEntityPropertiesResponseOutput) ExecutionStage() pulumi.StringOutput {
+	return o.ApplyT(func(v MigrationEntityPropertiesResponse) string { return v.ExecutionStage }).(pulumi.StringOutput)
+}
+
+// Execution start date for Migration Entity.
+func (o MigrationEntityPropertiesResponseOutput) ExecutionStartDate() pulumi.StringOutput {
+	return o.ApplyT(func(v MigrationEntityPropertiesResponse) string { return v.ExecutionStartDate }).(pulumi.StringOutput)
+}
+
+// Execution Status of Migration Entity.
+func (o MigrationEntityPropertiesResponseOutput) ExecutionStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v MigrationEntityPropertiesResponse) string { return v.ExecutionStatus }).(pulumi.StringOutput)
+}
+
+// Display Name of the Workload.
+func (o MigrationEntityPropertiesResponseOutput) InventoryDisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v MigrationEntityPropertiesResponse) string { return v.InventoryDisplayName }).(pulumi.StringOutput)
+}
+
+// Migration path
+func (o MigrationEntityPropertiesResponseOutput) MigrationPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrationEntityPropertiesResponse) *string { return v.MigrationPath }).(pulumi.StringPtrOutput)
+}
+
+// Migration specific properties for the entity.
+func (o MigrationEntityPropertiesResponseOutput) MigrationSpecificProperties() ServerMigrationSpecificPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v MigrationEntityPropertiesResponse) *ServerMigrationSpecificPropertiesResponse {
+		return v.MigrationSpecificProperties
+	}).(ServerMigrationSpecificPropertiesResponsePtrOutput)
+}
+
+// Strategy of Migration Entity.
+func (o MigrationEntityPropertiesResponseOutput) MigrationStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v MigrationEntityPropertiesResponse) string { return v.MigrationStrategy }).(pulumi.StringOutput)
+}
+
+// Migration Tool of the Migration Entity.
+func (o MigrationEntityPropertiesResponseOutput) MigrationTool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrationEntityPropertiesResponse) *string { return v.MigrationTool }).(pulumi.StringPtrOutput)
+}
+
+// ARM Resource Identifier for the partner resource.
+func (o MigrationEntityPropertiesResponseOutput) PartnerResourceArmId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrationEntityPropertiesResponse) *string { return v.PartnerResourceArmId }).(pulumi.StringPtrOutput)
+}
+
+// The status of the last operation.
+func (o MigrationEntityPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v MigrationEntityPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Target of the Migration Entity.
+func (o MigrationEntityPropertiesResponseOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrationEntityPropertiesResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+// target Azure Resource ARM Id.
+func (o MigrationEntityPropertiesResponseOutput) TargetAzureResourceArmId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrationEntityPropertiesResponse) *string { return v.TargetAzureResourceArmId }).(pulumi.StringPtrOutput)
+}
+
 // ModernizeProject properties.
 type ModernizeProjectModelProperties struct {
 	// MigrationConfiguration properties.
@@ -33280,6 +34235,285 @@ func (o SecuritySettingsResponsePtrOutput) SqlServerSecurityCostPerServerPerYear
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Represents a Server Migration Specific properties base model.
+type ServerMigrationSpecificProperties struct {
+	// A type definition that refers the id to an Azure Resource Manager resource.
+	CurrentJobId *string `pulumi:"currentJobId"`
+	// A type definition that refers the id to an Azure Resource Manager resource.
+	DrApplianceInventoryId *string `pulumi:"drApplianceInventoryId"`
+	// Migration Specific Properties Instance Types.
+	// Expected value is 'ServerMigration'.
+	InstanceType string `pulumi:"instanceType"`
+}
+
+// ServerMigrationSpecificPropertiesInput is an input type that accepts ServerMigrationSpecificPropertiesArgs and ServerMigrationSpecificPropertiesOutput values.
+// You can construct a concrete instance of `ServerMigrationSpecificPropertiesInput` via:
+//
+//	ServerMigrationSpecificPropertiesArgs{...}
+type ServerMigrationSpecificPropertiesInput interface {
+	pulumi.Input
+
+	ToServerMigrationSpecificPropertiesOutput() ServerMigrationSpecificPropertiesOutput
+	ToServerMigrationSpecificPropertiesOutputWithContext(context.Context) ServerMigrationSpecificPropertiesOutput
+}
+
+// Represents a Server Migration Specific properties base model.
+type ServerMigrationSpecificPropertiesArgs struct {
+	// A type definition that refers the id to an Azure Resource Manager resource.
+	CurrentJobId pulumi.StringPtrInput `pulumi:"currentJobId"`
+	// A type definition that refers the id to an Azure Resource Manager resource.
+	DrApplianceInventoryId pulumi.StringPtrInput `pulumi:"drApplianceInventoryId"`
+	// Migration Specific Properties Instance Types.
+	// Expected value is 'ServerMigration'.
+	InstanceType pulumi.StringInput `pulumi:"instanceType"`
+}
+
+func (ServerMigrationSpecificPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerMigrationSpecificProperties)(nil)).Elem()
+}
+
+func (i ServerMigrationSpecificPropertiesArgs) ToServerMigrationSpecificPropertiesOutput() ServerMigrationSpecificPropertiesOutput {
+	return i.ToServerMigrationSpecificPropertiesOutputWithContext(context.Background())
+}
+
+func (i ServerMigrationSpecificPropertiesArgs) ToServerMigrationSpecificPropertiesOutputWithContext(ctx context.Context) ServerMigrationSpecificPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerMigrationSpecificPropertiesOutput)
+}
+
+func (i ServerMigrationSpecificPropertiesArgs) ToServerMigrationSpecificPropertiesPtrOutput() ServerMigrationSpecificPropertiesPtrOutput {
+	return i.ToServerMigrationSpecificPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i ServerMigrationSpecificPropertiesArgs) ToServerMigrationSpecificPropertiesPtrOutputWithContext(ctx context.Context) ServerMigrationSpecificPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerMigrationSpecificPropertiesOutput).ToServerMigrationSpecificPropertiesPtrOutputWithContext(ctx)
+}
+
+// ServerMigrationSpecificPropertiesPtrInput is an input type that accepts ServerMigrationSpecificPropertiesArgs, ServerMigrationSpecificPropertiesPtr and ServerMigrationSpecificPropertiesPtrOutput values.
+// You can construct a concrete instance of `ServerMigrationSpecificPropertiesPtrInput` via:
+//
+//	        ServerMigrationSpecificPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServerMigrationSpecificPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToServerMigrationSpecificPropertiesPtrOutput() ServerMigrationSpecificPropertiesPtrOutput
+	ToServerMigrationSpecificPropertiesPtrOutputWithContext(context.Context) ServerMigrationSpecificPropertiesPtrOutput
+}
+
+type serverMigrationSpecificPropertiesPtrType ServerMigrationSpecificPropertiesArgs
+
+func ServerMigrationSpecificPropertiesPtr(v *ServerMigrationSpecificPropertiesArgs) ServerMigrationSpecificPropertiesPtrInput {
+	return (*serverMigrationSpecificPropertiesPtrType)(v)
+}
+
+func (*serverMigrationSpecificPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerMigrationSpecificProperties)(nil)).Elem()
+}
+
+func (i *serverMigrationSpecificPropertiesPtrType) ToServerMigrationSpecificPropertiesPtrOutput() ServerMigrationSpecificPropertiesPtrOutput {
+	return i.ToServerMigrationSpecificPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *serverMigrationSpecificPropertiesPtrType) ToServerMigrationSpecificPropertiesPtrOutputWithContext(ctx context.Context) ServerMigrationSpecificPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerMigrationSpecificPropertiesPtrOutput)
+}
+
+// Represents a Server Migration Specific properties base model.
+type ServerMigrationSpecificPropertiesOutput struct{ *pulumi.OutputState }
+
+func (ServerMigrationSpecificPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerMigrationSpecificProperties)(nil)).Elem()
+}
+
+func (o ServerMigrationSpecificPropertiesOutput) ToServerMigrationSpecificPropertiesOutput() ServerMigrationSpecificPropertiesOutput {
+	return o
+}
+
+func (o ServerMigrationSpecificPropertiesOutput) ToServerMigrationSpecificPropertiesOutputWithContext(ctx context.Context) ServerMigrationSpecificPropertiesOutput {
+	return o
+}
+
+func (o ServerMigrationSpecificPropertiesOutput) ToServerMigrationSpecificPropertiesPtrOutput() ServerMigrationSpecificPropertiesPtrOutput {
+	return o.ToServerMigrationSpecificPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o ServerMigrationSpecificPropertiesOutput) ToServerMigrationSpecificPropertiesPtrOutputWithContext(ctx context.Context) ServerMigrationSpecificPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServerMigrationSpecificProperties) *ServerMigrationSpecificProperties {
+		return &v
+	}).(ServerMigrationSpecificPropertiesPtrOutput)
+}
+
+// A type definition that refers the id to an Azure Resource Manager resource.
+func (o ServerMigrationSpecificPropertiesOutput) CurrentJobId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerMigrationSpecificProperties) *string { return v.CurrentJobId }).(pulumi.StringPtrOutput)
+}
+
+// A type definition that refers the id to an Azure Resource Manager resource.
+func (o ServerMigrationSpecificPropertiesOutput) DrApplianceInventoryId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerMigrationSpecificProperties) *string { return v.DrApplianceInventoryId }).(pulumi.StringPtrOutput)
+}
+
+// Migration Specific Properties Instance Types.
+// Expected value is 'ServerMigration'.
+func (o ServerMigrationSpecificPropertiesOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v ServerMigrationSpecificProperties) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+type ServerMigrationSpecificPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (ServerMigrationSpecificPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerMigrationSpecificProperties)(nil)).Elem()
+}
+
+func (o ServerMigrationSpecificPropertiesPtrOutput) ToServerMigrationSpecificPropertiesPtrOutput() ServerMigrationSpecificPropertiesPtrOutput {
+	return o
+}
+
+func (o ServerMigrationSpecificPropertiesPtrOutput) ToServerMigrationSpecificPropertiesPtrOutputWithContext(ctx context.Context) ServerMigrationSpecificPropertiesPtrOutput {
+	return o
+}
+
+func (o ServerMigrationSpecificPropertiesPtrOutput) Elem() ServerMigrationSpecificPropertiesOutput {
+	return o.ApplyT(func(v *ServerMigrationSpecificProperties) ServerMigrationSpecificProperties {
+		if v != nil {
+			return *v
+		}
+		var ret ServerMigrationSpecificProperties
+		return ret
+	}).(ServerMigrationSpecificPropertiesOutput)
+}
+
+// A type definition that refers the id to an Azure Resource Manager resource.
+func (o ServerMigrationSpecificPropertiesPtrOutput) CurrentJobId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerMigrationSpecificProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CurrentJobId
+	}).(pulumi.StringPtrOutput)
+}
+
+// A type definition that refers the id to an Azure Resource Manager resource.
+func (o ServerMigrationSpecificPropertiesPtrOutput) DrApplianceInventoryId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerMigrationSpecificProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DrApplianceInventoryId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Migration Specific Properties Instance Types.
+// Expected value is 'ServerMigration'.
+func (o ServerMigrationSpecificPropertiesPtrOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerMigrationSpecificProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.InstanceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents a Server Migration Specific properties base model.
+type ServerMigrationSpecificPropertiesResponse struct {
+	// A type definition that refers the id to an Azure Resource Manager resource.
+	CurrentJobId *string `pulumi:"currentJobId"`
+	// A type definition that refers the id to an Azure Resource Manager resource.
+	DrApplianceInventoryId *string `pulumi:"drApplianceInventoryId"`
+	// Migration Specific Properties Instance Types.
+	// Expected value is 'ServerMigration'.
+	InstanceType string `pulumi:"instanceType"`
+}
+
+// Represents a Server Migration Specific properties base model.
+type ServerMigrationSpecificPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (ServerMigrationSpecificPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerMigrationSpecificPropertiesResponse)(nil)).Elem()
+}
+
+func (o ServerMigrationSpecificPropertiesResponseOutput) ToServerMigrationSpecificPropertiesResponseOutput() ServerMigrationSpecificPropertiesResponseOutput {
+	return o
+}
+
+func (o ServerMigrationSpecificPropertiesResponseOutput) ToServerMigrationSpecificPropertiesResponseOutputWithContext(ctx context.Context) ServerMigrationSpecificPropertiesResponseOutput {
+	return o
+}
+
+// A type definition that refers the id to an Azure Resource Manager resource.
+func (o ServerMigrationSpecificPropertiesResponseOutput) CurrentJobId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerMigrationSpecificPropertiesResponse) *string { return v.CurrentJobId }).(pulumi.StringPtrOutput)
+}
+
+// A type definition that refers the id to an Azure Resource Manager resource.
+func (o ServerMigrationSpecificPropertiesResponseOutput) DrApplianceInventoryId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerMigrationSpecificPropertiesResponse) *string { return v.DrApplianceInventoryId }).(pulumi.StringPtrOutput)
+}
+
+// Migration Specific Properties Instance Types.
+// Expected value is 'ServerMigration'.
+func (o ServerMigrationSpecificPropertiesResponseOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v ServerMigrationSpecificPropertiesResponse) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+type ServerMigrationSpecificPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ServerMigrationSpecificPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerMigrationSpecificPropertiesResponse)(nil)).Elem()
+}
+
+func (o ServerMigrationSpecificPropertiesResponsePtrOutput) ToServerMigrationSpecificPropertiesResponsePtrOutput() ServerMigrationSpecificPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o ServerMigrationSpecificPropertiesResponsePtrOutput) ToServerMigrationSpecificPropertiesResponsePtrOutputWithContext(ctx context.Context) ServerMigrationSpecificPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o ServerMigrationSpecificPropertiesResponsePtrOutput) Elem() ServerMigrationSpecificPropertiesResponseOutput {
+	return o.ApplyT(func(v *ServerMigrationSpecificPropertiesResponse) ServerMigrationSpecificPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ServerMigrationSpecificPropertiesResponse
+		return ret
+	}).(ServerMigrationSpecificPropertiesResponseOutput)
+}
+
+// A type definition that refers the id to an Azure Resource Manager resource.
+func (o ServerMigrationSpecificPropertiesResponsePtrOutput) CurrentJobId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerMigrationSpecificPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CurrentJobId
+	}).(pulumi.StringPtrOutput)
+}
+
+// A type definition that refers the id to an Azure Resource Manager resource.
+func (o ServerMigrationSpecificPropertiesResponsePtrOutput) DrApplianceInventoryId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerMigrationSpecificPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DrApplianceInventoryId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Migration Specific Properties Instance Types.
+// Expected value is 'ServerMigration'.
+func (o ServerMigrationSpecificPropertiesResponsePtrOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerMigrationSpecificPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.InstanceType
+	}).(pulumi.StringPtrOutput)
+}
+
 // Class representing the servers project summary.
 type ServersProjectSummaryResponse struct {
 	// Gets or sets the count of entities assessed.
@@ -39528,6 +40762,330 @@ func (o TargetStorageProfileResponsePtrOutput) TargetSize() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// Task Properties class.
+type TaskProperties struct {
+	// Task Description
+	Description *string `pulumi:"description"`
+	// Task Dislay Name
+	DisplayName string `pulumi:"displayName"`
+	// Task Scope
+	Scope string `pulumi:"scope"`
+	// associated Wave Id
+	ScopeId string `pulumi:"scopeId"`
+	// Task Stage
+	Stage *string `pulumi:"stage"`
+	// Task Status
+	Status string `pulumi:"status"`
+}
+
+// TaskPropertiesInput is an input type that accepts TaskPropertiesArgs and TaskPropertiesOutput values.
+// You can construct a concrete instance of `TaskPropertiesInput` via:
+//
+//	TaskPropertiesArgs{...}
+type TaskPropertiesInput interface {
+	pulumi.Input
+
+	ToTaskPropertiesOutput() TaskPropertiesOutput
+	ToTaskPropertiesOutputWithContext(context.Context) TaskPropertiesOutput
+}
+
+// Task Properties class.
+type TaskPropertiesArgs struct {
+	// Task Description
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Task Dislay Name
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// Task Scope
+	Scope pulumi.StringInput `pulumi:"scope"`
+	// associated Wave Id
+	ScopeId pulumi.StringInput `pulumi:"scopeId"`
+	// Task Stage
+	Stage pulumi.StringPtrInput `pulumi:"stage"`
+	// Task Status
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (TaskPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskProperties)(nil)).Elem()
+}
+
+func (i TaskPropertiesArgs) ToTaskPropertiesOutput() TaskPropertiesOutput {
+	return i.ToTaskPropertiesOutputWithContext(context.Background())
+}
+
+func (i TaskPropertiesArgs) ToTaskPropertiesOutputWithContext(ctx context.Context) TaskPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskPropertiesOutput)
+}
+
+func (i TaskPropertiesArgs) ToTaskPropertiesPtrOutput() TaskPropertiesPtrOutput {
+	return i.ToTaskPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i TaskPropertiesArgs) ToTaskPropertiesPtrOutputWithContext(ctx context.Context) TaskPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskPropertiesOutput).ToTaskPropertiesPtrOutputWithContext(ctx)
+}
+
+// TaskPropertiesPtrInput is an input type that accepts TaskPropertiesArgs, TaskPropertiesPtr and TaskPropertiesPtrOutput values.
+// You can construct a concrete instance of `TaskPropertiesPtrInput` via:
+//
+//	        TaskPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type TaskPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToTaskPropertiesPtrOutput() TaskPropertiesPtrOutput
+	ToTaskPropertiesPtrOutputWithContext(context.Context) TaskPropertiesPtrOutput
+}
+
+type taskPropertiesPtrType TaskPropertiesArgs
+
+func TaskPropertiesPtr(v *TaskPropertiesArgs) TaskPropertiesPtrInput {
+	return (*taskPropertiesPtrType)(v)
+}
+
+func (*taskPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskProperties)(nil)).Elem()
+}
+
+func (i *taskPropertiesPtrType) ToTaskPropertiesPtrOutput() TaskPropertiesPtrOutput {
+	return i.ToTaskPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *taskPropertiesPtrType) ToTaskPropertiesPtrOutputWithContext(ctx context.Context) TaskPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskPropertiesPtrOutput)
+}
+
+// Task Properties class.
+type TaskPropertiesOutput struct{ *pulumi.OutputState }
+
+func (TaskPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskProperties)(nil)).Elem()
+}
+
+func (o TaskPropertiesOutput) ToTaskPropertiesOutput() TaskPropertiesOutput {
+	return o
+}
+
+func (o TaskPropertiesOutput) ToTaskPropertiesOutputWithContext(ctx context.Context) TaskPropertiesOutput {
+	return o
+}
+
+func (o TaskPropertiesOutput) ToTaskPropertiesPtrOutput() TaskPropertiesPtrOutput {
+	return o.ToTaskPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o TaskPropertiesOutput) ToTaskPropertiesPtrOutputWithContext(ctx context.Context) TaskPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TaskProperties) *TaskProperties {
+		return &v
+	}).(TaskPropertiesPtrOutput)
+}
+
+// Task Description
+func (o TaskPropertiesOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskProperties) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Task Dislay Name
+func (o TaskPropertiesOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v TaskProperties) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Task Scope
+func (o TaskPropertiesOutput) Scope() pulumi.StringOutput {
+	return o.ApplyT(func(v TaskProperties) string { return v.Scope }).(pulumi.StringOutput)
+}
+
+// associated Wave Id
+func (o TaskPropertiesOutput) ScopeId() pulumi.StringOutput {
+	return o.ApplyT(func(v TaskProperties) string { return v.ScopeId }).(pulumi.StringOutput)
+}
+
+// Task Stage
+func (o TaskPropertiesOutput) Stage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskProperties) *string { return v.Stage }).(pulumi.StringPtrOutput)
+}
+
+// Task Status
+func (o TaskPropertiesOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v TaskProperties) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type TaskPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (TaskPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskProperties)(nil)).Elem()
+}
+
+func (o TaskPropertiesPtrOutput) ToTaskPropertiesPtrOutput() TaskPropertiesPtrOutput {
+	return o
+}
+
+func (o TaskPropertiesPtrOutput) ToTaskPropertiesPtrOutputWithContext(ctx context.Context) TaskPropertiesPtrOutput {
+	return o
+}
+
+func (o TaskPropertiesPtrOutput) Elem() TaskPropertiesOutput {
+	return o.ApplyT(func(v *TaskProperties) TaskProperties {
+		if v != nil {
+			return *v
+		}
+		var ret TaskProperties
+		return ret
+	}).(TaskPropertiesOutput)
+}
+
+// Task Description
+func (o TaskPropertiesPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TaskProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Task Dislay Name
+func (o TaskPropertiesPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TaskProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Task Scope
+func (o TaskPropertiesPtrOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TaskProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Scope
+	}).(pulumi.StringPtrOutput)
+}
+
+// associated Wave Id
+func (o TaskPropertiesPtrOutput) ScopeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TaskProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ScopeId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Task Stage
+func (o TaskPropertiesPtrOutput) Stage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TaskProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Stage
+	}).(pulumi.StringPtrOutput)
+}
+
+// Task Status
+func (o TaskPropertiesPtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TaskProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+// Task Properties class.
+type TaskPropertiesResponse struct {
+	// Task completion Date
+	CompletionDate string `pulumi:"completionDate"`
+	// Task Description
+	Description *string `pulumi:"description"`
+	// Task Dislay Name
+	DisplayName string `pulumi:"displayName"`
+	// Indicates whether the task is editable.
+	IsEditable bool `pulumi:"isEditable"`
+	// The status of the last operation.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Task Scope
+	Scope string `pulumi:"scope"`
+	// associated Wave Id
+	ScopeId string `pulumi:"scopeId"`
+	// Task Stage
+	Stage *string `pulumi:"stage"`
+	// Task Status
+	Status string `pulumi:"status"`
+	// Task Type
+	TaskType string `pulumi:"taskType"`
+}
+
+// Task Properties class.
+type TaskPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (TaskPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskPropertiesResponse)(nil)).Elem()
+}
+
+func (o TaskPropertiesResponseOutput) ToTaskPropertiesResponseOutput() TaskPropertiesResponseOutput {
+	return o
+}
+
+func (o TaskPropertiesResponseOutput) ToTaskPropertiesResponseOutputWithContext(ctx context.Context) TaskPropertiesResponseOutput {
+	return o
+}
+
+// Task completion Date
+func (o TaskPropertiesResponseOutput) CompletionDate() pulumi.StringOutput {
+	return o.ApplyT(func(v TaskPropertiesResponse) string { return v.CompletionDate }).(pulumi.StringOutput)
+}
+
+// Task Description
+func (o TaskPropertiesResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskPropertiesResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Task Dislay Name
+func (o TaskPropertiesResponseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v TaskPropertiesResponse) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Indicates whether the task is editable.
+func (o TaskPropertiesResponseOutput) IsEditable() pulumi.BoolOutput {
+	return o.ApplyT(func(v TaskPropertiesResponse) bool { return v.IsEditable }).(pulumi.BoolOutput)
+}
+
+// The status of the last operation.
+func (o TaskPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v TaskPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Task Scope
+func (o TaskPropertiesResponseOutput) Scope() pulumi.StringOutput {
+	return o.ApplyT(func(v TaskPropertiesResponse) string { return v.Scope }).(pulumi.StringOutput)
+}
+
+// associated Wave Id
+func (o TaskPropertiesResponseOutput) ScopeId() pulumi.StringOutput {
+	return o.ApplyT(func(v TaskPropertiesResponse) string { return v.ScopeId }).(pulumi.StringOutput)
+}
+
+// Task Stage
+func (o TaskPropertiesResponseOutput) Stage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskPropertiesResponse) *string { return v.Stage }).(pulumi.StringPtrOutput)
+}
+
+// Task Status
+func (o TaskPropertiesResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v TaskPropertiesResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Task Type
+func (o TaskPropertiesResponseOutput) TaskType() pulumi.StringOutput {
+	return o.ApplyT(func(v TaskPropertiesResponse) string { return v.TaskType }).(pulumi.StringOutput)
+}
+
 // Third Party Management settings.
 type ThirdPartyManagementSettings struct {
 	// License Cost.
@@ -41556,6 +43114,304 @@ func (o VmUptimeResponsePtrOutput) HoursPerDay() pulumi.Float64PtrOutput {
 		}
 		return v.HoursPerDay
 	}).(pulumi.Float64PtrOutput)
+}
+
+// Migration Wave Properties class.
+type WaveProperties struct {
+	// ARG query and other details to create workloads within a wave
+	Arg Arg `pulumi:"arg"`
+	// Description of the wave.
+	Description *string `pulumi:"description"`
+	// Display Name of the wave.
+	DisplayName string `pulumi:"displayName"`
+	// Planned completion date of the wave.
+	PlannedCompletionDate *string `pulumi:"plannedCompletionDate"`
+	// Planned start date of the wave.
+	PlannedStartDate string `pulumi:"plannedStartDate"`
+}
+
+// WavePropertiesInput is an input type that accepts WavePropertiesArgs and WavePropertiesOutput values.
+// You can construct a concrete instance of `WavePropertiesInput` via:
+//
+//	WavePropertiesArgs{...}
+type WavePropertiesInput interface {
+	pulumi.Input
+
+	ToWavePropertiesOutput() WavePropertiesOutput
+	ToWavePropertiesOutputWithContext(context.Context) WavePropertiesOutput
+}
+
+// Migration Wave Properties class.
+type WavePropertiesArgs struct {
+	// ARG query and other details to create workloads within a wave
+	Arg ArgInput `pulumi:"arg"`
+	// Description of the wave.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Display Name of the wave.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// Planned completion date of the wave.
+	PlannedCompletionDate pulumi.StringPtrInput `pulumi:"plannedCompletionDate"`
+	// Planned start date of the wave.
+	PlannedStartDate pulumi.StringInput `pulumi:"plannedStartDate"`
+}
+
+func (WavePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WaveProperties)(nil)).Elem()
+}
+
+func (i WavePropertiesArgs) ToWavePropertiesOutput() WavePropertiesOutput {
+	return i.ToWavePropertiesOutputWithContext(context.Background())
+}
+
+func (i WavePropertiesArgs) ToWavePropertiesOutputWithContext(ctx context.Context) WavePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WavePropertiesOutput)
+}
+
+func (i WavePropertiesArgs) ToWavePropertiesPtrOutput() WavePropertiesPtrOutput {
+	return i.ToWavePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i WavePropertiesArgs) ToWavePropertiesPtrOutputWithContext(ctx context.Context) WavePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WavePropertiesOutput).ToWavePropertiesPtrOutputWithContext(ctx)
+}
+
+// WavePropertiesPtrInput is an input type that accepts WavePropertiesArgs, WavePropertiesPtr and WavePropertiesPtrOutput values.
+// You can construct a concrete instance of `WavePropertiesPtrInput` via:
+//
+//	        WavePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type WavePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToWavePropertiesPtrOutput() WavePropertiesPtrOutput
+	ToWavePropertiesPtrOutputWithContext(context.Context) WavePropertiesPtrOutput
+}
+
+type wavePropertiesPtrType WavePropertiesArgs
+
+func WavePropertiesPtr(v *WavePropertiesArgs) WavePropertiesPtrInput {
+	return (*wavePropertiesPtrType)(v)
+}
+
+func (*wavePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WaveProperties)(nil)).Elem()
+}
+
+func (i *wavePropertiesPtrType) ToWavePropertiesPtrOutput() WavePropertiesPtrOutput {
+	return i.ToWavePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *wavePropertiesPtrType) ToWavePropertiesPtrOutputWithContext(ctx context.Context) WavePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WavePropertiesPtrOutput)
+}
+
+// Migration Wave Properties class.
+type WavePropertiesOutput struct{ *pulumi.OutputState }
+
+func (WavePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WaveProperties)(nil)).Elem()
+}
+
+func (o WavePropertiesOutput) ToWavePropertiesOutput() WavePropertiesOutput {
+	return o
+}
+
+func (o WavePropertiesOutput) ToWavePropertiesOutputWithContext(ctx context.Context) WavePropertiesOutput {
+	return o
+}
+
+func (o WavePropertiesOutput) ToWavePropertiesPtrOutput() WavePropertiesPtrOutput {
+	return o.ToWavePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o WavePropertiesOutput) ToWavePropertiesPtrOutputWithContext(ctx context.Context) WavePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WaveProperties) *WaveProperties {
+		return &v
+	}).(WavePropertiesPtrOutput)
+}
+
+// ARG query and other details to create workloads within a wave
+func (o WavePropertiesOutput) Arg() ArgOutput {
+	return o.ApplyT(func(v WaveProperties) Arg { return v.Arg }).(ArgOutput)
+}
+
+// Description of the wave.
+func (o WavePropertiesOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WaveProperties) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Display Name of the wave.
+func (o WavePropertiesOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v WaveProperties) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Planned completion date of the wave.
+func (o WavePropertiesOutput) PlannedCompletionDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WaveProperties) *string { return v.PlannedCompletionDate }).(pulumi.StringPtrOutput)
+}
+
+// Planned start date of the wave.
+func (o WavePropertiesOutput) PlannedStartDate() pulumi.StringOutput {
+	return o.ApplyT(func(v WaveProperties) string { return v.PlannedStartDate }).(pulumi.StringOutput)
+}
+
+type WavePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (WavePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WaveProperties)(nil)).Elem()
+}
+
+func (o WavePropertiesPtrOutput) ToWavePropertiesPtrOutput() WavePropertiesPtrOutput {
+	return o
+}
+
+func (o WavePropertiesPtrOutput) ToWavePropertiesPtrOutputWithContext(ctx context.Context) WavePropertiesPtrOutput {
+	return o
+}
+
+func (o WavePropertiesPtrOutput) Elem() WavePropertiesOutput {
+	return o.ApplyT(func(v *WaveProperties) WaveProperties {
+		if v != nil {
+			return *v
+		}
+		var ret WaveProperties
+		return ret
+	}).(WavePropertiesOutput)
+}
+
+// ARG query and other details to create workloads within a wave
+func (o WavePropertiesPtrOutput) Arg() ArgPtrOutput {
+	return o.ApplyT(func(v *WaveProperties) *Arg {
+		if v == nil {
+			return nil
+		}
+		return &v.Arg
+	}).(ArgPtrOutput)
+}
+
+// Description of the wave.
+func (o WavePropertiesPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WaveProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Display Name of the wave.
+func (o WavePropertiesPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WaveProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Planned completion date of the wave.
+func (o WavePropertiesPtrOutput) PlannedCompletionDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WaveProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PlannedCompletionDate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Planned start date of the wave.
+func (o WavePropertiesPtrOutput) PlannedStartDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WaveProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PlannedStartDate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Migration Wave Properties class.
+type WavePropertiesResponse struct {
+	// Actual start date of the wave.
+	ActualStartDate string `pulumi:"actualStartDate"`
+	// ARG query and other details to create workloads within a wave
+	Arg ArgResponse `pulumi:"arg"`
+	// Description of the wave.
+	Description *string `pulumi:"description"`
+	// Display Name of the wave.
+	DisplayName string `pulumi:"displayName"`
+	// Planned completion date of the wave.
+	PlannedCompletionDate *string `pulumi:"plannedCompletionDate"`
+	// Planned start date of the wave.
+	PlannedStartDate string `pulumi:"plannedStartDate"`
+	// The status of the last operation.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The current stage of the wave.
+	Stage string `pulumi:"stage"`
+	// The status of the wave.
+	Status string `pulumi:"status"`
+}
+
+// Migration Wave Properties class.
+type WavePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (WavePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WavePropertiesResponse)(nil)).Elem()
+}
+
+func (o WavePropertiesResponseOutput) ToWavePropertiesResponseOutput() WavePropertiesResponseOutput {
+	return o
+}
+
+func (o WavePropertiesResponseOutput) ToWavePropertiesResponseOutputWithContext(ctx context.Context) WavePropertiesResponseOutput {
+	return o
+}
+
+// Actual start date of the wave.
+func (o WavePropertiesResponseOutput) ActualStartDate() pulumi.StringOutput {
+	return o.ApplyT(func(v WavePropertiesResponse) string { return v.ActualStartDate }).(pulumi.StringOutput)
+}
+
+// ARG query and other details to create workloads within a wave
+func (o WavePropertiesResponseOutput) Arg() ArgResponseOutput {
+	return o.ApplyT(func(v WavePropertiesResponse) ArgResponse { return v.Arg }).(ArgResponseOutput)
+}
+
+// Description of the wave.
+func (o WavePropertiesResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WavePropertiesResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Display Name of the wave.
+func (o WavePropertiesResponseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v WavePropertiesResponse) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Planned completion date of the wave.
+func (o WavePropertiesResponseOutput) PlannedCompletionDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WavePropertiesResponse) *string { return v.PlannedCompletionDate }).(pulumi.StringPtrOutput)
+}
+
+// Planned start date of the wave.
+func (o WavePropertiesResponseOutput) PlannedStartDate() pulumi.StringOutput {
+	return o.ApplyT(func(v WavePropertiesResponse) string { return v.PlannedStartDate }).(pulumi.StringOutput)
+}
+
+// The status of the last operation.
+func (o WavePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v WavePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The current stage of the wave.
+func (o WavePropertiesResponseOutput) Stage() pulumi.StringOutput {
+	return o.ApplyT(func(v WavePropertiesResponse) string { return v.Stage }).(pulumi.StringOutput)
+}
+
+// The status of the wave.
+func (o WavePropertiesResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v WavePropertiesResponse) string { return v.Status }).(pulumi.StringOutput)
 }
 
 // Web app assessment settings class.
@@ -44774,6 +46630,9 @@ func init() {
 	pulumi.RegisterOutputType(AppSvcNativeSettingsPtrOutput{})
 	pulumi.RegisterOutputType(AppSvcNativeSettingsResponseOutput{})
 	pulumi.RegisterOutputType(AppSvcNativeSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(ArgOutput{})
+	pulumi.RegisterOutputType(ArgPtrOutput{})
+	pulumi.RegisterOutputType(ArgResponseOutput{})
 	pulumi.RegisterOutputType(AssessmentDetailsResponseOutput{})
 	pulumi.RegisterOutputType(AssessmentDetailsResponsePtrOutput{})
 	pulumi.RegisterOutputType(AssessmentPropertiesOutput{})
@@ -45034,6 +46893,12 @@ func init() {
 	pulumi.RegisterOutputType(MigrationConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(MigrationConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(MigrationConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(MigrationEntityGroupPropertiesOutput{})
+	pulumi.RegisterOutputType(MigrationEntityGroupPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(MigrationEntityGroupPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(MigrationEntityPropertiesOutput{})
+	pulumi.RegisterOutputType(MigrationEntityPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(MigrationEntityPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ModernizeProjectModelPropertiesOutput{})
 	pulumi.RegisterOutputType(ModernizeProjectModelPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(ModernizeProjectModelPropertiesResponseOutput{})
@@ -45163,6 +47028,10 @@ func init() {
 	pulumi.RegisterOutputType(SecuritySettingsPtrOutput{})
 	pulumi.RegisterOutputType(SecuritySettingsResponseOutput{})
 	pulumi.RegisterOutputType(SecuritySettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(ServerMigrationSpecificPropertiesOutput{})
+	pulumi.RegisterOutputType(ServerMigrationSpecificPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(ServerMigrationSpecificPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(ServerMigrationSpecificPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(ServersProjectSummaryResponseOutput{})
 	pulumi.RegisterOutputType(ServersSolutionSummaryResponseOutput{})
 	pulumi.RegisterOutputType(ServersSolutionSummaryResponsePtrOutput{})
@@ -45241,6 +47110,9 @@ func init() {
 	pulumi.RegisterOutputType(TargetStorageProfilePtrOutput{})
 	pulumi.RegisterOutputType(TargetStorageProfileResponseOutput{})
 	pulumi.RegisterOutputType(TargetStorageProfileResponsePtrOutput{})
+	pulumi.RegisterOutputType(TaskPropertiesOutput{})
+	pulumi.RegisterOutputType(TaskPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(TaskPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ThirdPartyManagementSettingsOutput{})
 	pulumi.RegisterOutputType(ThirdPartyManagementSettingsPtrOutput{})
 	pulumi.RegisterOutputType(ThirdPartyManagementSettingsResponseOutput{})
@@ -45269,6 +47141,9 @@ func init() {
 	pulumi.RegisterOutputType(VmUptimePtrOutput{})
 	pulumi.RegisterOutputType(VmUptimeResponseOutput{})
 	pulumi.RegisterOutputType(VmUptimeResponsePtrOutput{})
+	pulumi.RegisterOutputType(WavePropertiesOutput{})
+	pulumi.RegisterOutputType(WavePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(WavePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(WebAppAssessmentSettingsOutput{})
 	pulumi.RegisterOutputType(WebAppAssessmentSettingsPtrOutput{})
 	pulumi.RegisterOutputType(WebAppAssessmentSettingsResponseOutput{})

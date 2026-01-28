@@ -11,11 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure Resource Manager resource envelope.
+// Azure Resource Manager resource envelope for Project CapabilityHost.
 //
 // Uses Azure REST API version 2025-04-01-preview.
 //
-// Other available API versions: 2025-06-01, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupProjectCapabilityHost(ctx *pulumi.Context, args *LookupProjectCapabilityHostArgs, opts ...pulumi.InvokeOption) (*LookupProjectCapabilityHostResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProjectCapabilityHostResult
@@ -23,7 +23,7 @@ func LookupProjectCapabilityHost(ctx *pulumi.Context, args *LookupProjectCapabil
 	if err != nil {
 		return nil, err
 	}
-	return rv.Defaults(), nil
+	return &rv, nil
 }
 
 type LookupProjectCapabilityHostArgs struct {
@@ -37,30 +37,20 @@ type LookupProjectCapabilityHostArgs struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
-// Azure Resource Manager resource envelope.
+// Azure Resource Manager resource envelope for Project CapabilityHost.
 type LookupProjectCapabilityHostResult struct {
 	// The Azure API version of the resource.
 	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// [Required] Additional attributes of the entity.
-	CapabilityHostProperties CapabilityHostResponse `pulumi:"capabilityHostProperties"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name string `pulumi:"name"`
+	// [Required] Additional attributes of the entity.
+	ProjectCapabilityHostProperties ProjectCapabilityHostResponse `pulumi:"projectCapabilityHostProperties"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
-// Defaults sets the appropriate defaults for LookupProjectCapabilityHostResult
-func (val *LookupProjectCapabilityHostResult) Defaults() *LookupProjectCapabilityHostResult {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	tmp.CapabilityHostProperties = *tmp.CapabilityHostProperties.Defaults()
-
-	return &tmp
-}
 func LookupProjectCapabilityHostOutput(ctx *pulumi.Context, args LookupProjectCapabilityHostOutputArgs, opts ...pulumi.InvokeOption) LookupProjectCapabilityHostResultOutput {
 	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupProjectCapabilityHostResultOutput, error) {
@@ -85,7 +75,7 @@ func (LookupProjectCapabilityHostOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupProjectCapabilityHostArgs)(nil)).Elem()
 }
 
-// Azure Resource Manager resource envelope.
+// Azure Resource Manager resource envelope for Project CapabilityHost.
 type LookupProjectCapabilityHostResultOutput struct{ *pulumi.OutputState }
 
 func (LookupProjectCapabilityHostResultOutput) ElementType() reflect.Type {
@@ -105,11 +95,6 @@ func (o LookupProjectCapabilityHostResultOutput) AzureApiVersion() pulumi.String
 	return o.ApplyT(func(v LookupProjectCapabilityHostResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
-// [Required] Additional attributes of the entity.
-func (o LookupProjectCapabilityHostResultOutput) CapabilityHostProperties() CapabilityHostResponseOutput {
-	return o.ApplyT(func(v LookupProjectCapabilityHostResult) CapabilityHostResponse { return v.CapabilityHostProperties }).(CapabilityHostResponseOutput)
-}
-
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupProjectCapabilityHostResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectCapabilityHostResult) string { return v.Id }).(pulumi.StringOutput)
@@ -118,6 +103,13 @@ func (o LookupProjectCapabilityHostResultOutput) Id() pulumi.StringOutput {
 // The name of the resource
 func (o LookupProjectCapabilityHostResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectCapabilityHostResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// [Required] Additional attributes of the entity.
+func (o LookupProjectCapabilityHostResultOutput) ProjectCapabilityHostProperties() ProjectCapabilityHostResponseOutput {
+	return o.ApplyT(func(v LookupProjectCapabilityHostResult) ProjectCapabilityHostResponse {
+		return v.ProjectCapabilityHostProperties
+	}).(ProjectCapabilityHostResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

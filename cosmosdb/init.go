@@ -63,6 +63,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Fleetspace{}
 	case "azure-native:cosmosdb:FleetspaceAccount":
 		r = &FleetspaceAccount{}
+	case "azure-native:cosmosdb:GarnetCluster":
+		r = &GarnetCluster{}
 	case "azure-native:cosmosdb:GraphResourceGraph":
 		r = &GraphResourceGraph{}
 	case "azure-native:cosmosdb:GremlinResourceGremlinDatabase":

@@ -53,11 +53,11 @@ type GetEntityArgs struct {
 
 // Describes the result of the request to view entities.
 type GetEntityResult struct {
-	// Total count of records that match the filter
-	Count int `pulumi:"count"`
-	// The URL to use for getting the next set of results.
-	NextLink string `pulumi:"nextLink"`
-	// The list of entities.
+	// Total count of records that match the filter.
+	Count *int `pulumi:"count"`
+	// The link to the next page of items
+	NextLink *string `pulumi:"nextLink"`
+	// The EntityInfo items on this page
 	Value []EntityInfoResponse `pulumi:"value"`
 }
 
@@ -114,17 +114,17 @@ func (o GetEntityResultOutput) ToGetEntityResultOutputWithContext(ctx context.Co
 	return o
 }
 
-// Total count of records that match the filter
-func (o GetEntityResultOutput) Count() pulumi.IntOutput {
-	return o.ApplyT(func(v GetEntityResult) int { return v.Count }).(pulumi.IntOutput)
+// Total count of records that match the filter.
+func (o GetEntityResultOutput) Count() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetEntityResult) *int { return v.Count }).(pulumi.IntPtrOutput)
 }
 
-// The URL to use for getting the next set of results.
-func (o GetEntityResultOutput) NextLink() pulumi.StringOutput {
-	return o.ApplyT(func(v GetEntityResult) string { return v.NextLink }).(pulumi.StringOutput)
+// The link to the next page of items
+func (o GetEntityResultOutput) NextLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEntityResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
 }
 
-// The list of entities.
+// The EntityInfo items on this page
 func (o GetEntityResultOutput) Value() EntityInfoResponseArrayOutput {
 	return o.ApplyT(func(v GetEntityResult) []EntityInfoResponse { return v.Value }).(EntityInfoResponseArrayOutput)
 }

@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Database{}
 	case "azure-native:dbformysql:FirewallRule":
 		r = &FirewallRule{}
+	case "azure-native:dbformysql:LongRunningBackup":
+		r = &LongRunningBackup{}
 	case "azure-native:dbformysql:PrivateEndpointConnection":
 		r = &PrivateEndpointConnection{}
 	case "azure-native:dbformysql:Server":

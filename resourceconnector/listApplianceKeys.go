@@ -14,6 +14,8 @@ import (
 // Returns the cluster customer credentials for the dedicated appliance.
 //
 // Uses Azure REST API version 2022-10-27.
+//
+// Other available API versions: 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native resourceconnector [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func ListApplianceKeys(ctx *pulumi.Context, args *ListApplianceKeysArgs, opts ...pulumi.InvokeOption) (*ListApplianceKeysResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListApplianceKeysResult

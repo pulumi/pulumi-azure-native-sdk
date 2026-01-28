@@ -22,6 +22,8 @@ type CertificateProfile struct {
 
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// List of renewed certificates.
+	Certificates CertificateResponseArrayOutput `pulumi:"certificates"`
 	// Identity validation id used for the certificate subject name.
 	IdentityValidationId pulumi.StringOutput `pulumi:"identityValidationId"`
 	// Whether to include L in the certificate subject name. Applicable only for private trust, private trust ci profile types
@@ -213,6 +215,11 @@ func (o CertificateProfileOutput) ToCertificateProfileOutputWithContext(ctx cont
 // The Azure API version of the resource.
 func (o CertificateProfileOutput) AzureApiVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *CertificateProfile) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// List of renewed certificates.
+func (o CertificateProfileOutput) Certificates() CertificateResponseArrayOutput {
+	return o.ApplyT(func(v *CertificateProfile) CertificateResponseArrayOutput { return v.Certificates }).(CertificateResponseArrayOutput)
 }
 
 // Identity validation id used for the certificate subject name.

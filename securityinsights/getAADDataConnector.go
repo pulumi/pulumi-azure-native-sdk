@@ -33,7 +33,7 @@ type LookupAADDataConnectorArgs struct {
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
-// Represents AAD (Azure Active Directory) data connector.
+// Represents Microsoft Entra ID data connector.
 type LookupAADDataConnectorResult struct {
 	// The Azure API version of the resource.
 	AzureApiVersion string `pulumi:"azureApiVersion"`
@@ -51,7 +51,7 @@ type LookupAADDataConnectorResult struct {
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The tenant id to connect to, and get the data from.
-	TenantId *string `pulumi:"tenantId"`
+	TenantId string `pulumi:"tenantId"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -78,7 +78,7 @@ func (LookupAADDataConnectorOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupAADDataConnectorArgs)(nil)).Elem()
 }
 
-// Represents AAD (Azure Active Directory) data connector.
+// Represents Microsoft Entra ID data connector.
 type LookupAADDataConnectorResultOutput struct{ *pulumi.OutputState }
 
 func (LookupAADDataConnectorResultOutput) ElementType() reflect.Type {
@@ -130,8 +130,8 @@ func (o LookupAADDataConnectorResultOutput) SystemData() SystemDataResponseOutpu
 }
 
 // The tenant id to connect to, and get the data from.
-func (o LookupAADDataConnectorResultOutput) TenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupAADDataConnectorResult) *string { return v.TenantId }).(pulumi.StringPtrOutput)
+func (o LookupAADDataConnectorResultOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAADDataConnectorResult) string { return v.TenantId }).(pulumi.StringOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

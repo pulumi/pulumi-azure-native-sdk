@@ -10,6 +10,172 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Allocation state of the cluster and data center resources. Active implies the virtual machines of the cluster are allocated, deallocated implies virtual machines and resources are deallocated.
+type AllocationState string
+
+const (
+	AllocationStateActive      = AllocationState("Active")
+	AllocationStateDeallocated = AllocationState("Deallocated")
+)
+
+func (AllocationState) ElementType() reflect.Type {
+	return reflect.TypeOf((*AllocationState)(nil)).Elem()
+}
+
+func (e AllocationState) ToAllocationStateOutput() AllocationStateOutput {
+	return pulumi.ToOutput(e).(AllocationStateOutput)
+}
+
+func (e AllocationState) ToAllocationStateOutputWithContext(ctx context.Context) AllocationStateOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AllocationStateOutput)
+}
+
+func (e AllocationState) ToAllocationStatePtrOutput() AllocationStatePtrOutput {
+	return e.ToAllocationStatePtrOutputWithContext(context.Background())
+}
+
+func (e AllocationState) ToAllocationStatePtrOutputWithContext(ctx context.Context) AllocationStatePtrOutput {
+	return AllocationState(e).ToAllocationStateOutputWithContext(ctx).ToAllocationStatePtrOutputWithContext(ctx)
+}
+
+func (e AllocationState) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AllocationState) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AllocationState) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AllocationState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AllocationStateOutput struct{ *pulumi.OutputState }
+
+func (AllocationStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AllocationState)(nil)).Elem()
+}
+
+func (o AllocationStateOutput) ToAllocationStateOutput() AllocationStateOutput {
+	return o
+}
+
+func (o AllocationStateOutput) ToAllocationStateOutputWithContext(ctx context.Context) AllocationStateOutput {
+	return o
+}
+
+func (o AllocationStateOutput) ToAllocationStatePtrOutput() AllocationStatePtrOutput {
+	return o.ToAllocationStatePtrOutputWithContext(context.Background())
+}
+
+func (o AllocationStateOutput) ToAllocationStatePtrOutputWithContext(ctx context.Context) AllocationStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AllocationState) *AllocationState {
+		return &v
+	}).(AllocationStatePtrOutput)
+}
+
+func (o AllocationStateOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AllocationStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AllocationState) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AllocationStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AllocationStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AllocationState) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AllocationStatePtrOutput struct{ *pulumi.OutputState }
+
+func (AllocationStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AllocationState)(nil)).Elem()
+}
+
+func (o AllocationStatePtrOutput) ToAllocationStatePtrOutput() AllocationStatePtrOutput {
+	return o
+}
+
+func (o AllocationStatePtrOutput) ToAllocationStatePtrOutputWithContext(ctx context.Context) AllocationStatePtrOutput {
+	return o
+}
+
+func (o AllocationStatePtrOutput) Elem() AllocationStateOutput {
+	return o.ApplyT(func(v *AllocationState) AllocationState {
+		if v != nil {
+			return *v
+		}
+		var ret AllocationState
+		return ret
+	}).(AllocationStateOutput)
+}
+
+func (o AllocationStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AllocationStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AllocationState) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AllocationStateInput is an input type that accepts values of the AllocationState enum
+// A concrete instance of `AllocationStateInput` can be one of the following:
+//
+//	AllocationStateActive
+//	AllocationStateDeallocated
+type AllocationStateInput interface {
+	pulumi.Input
+
+	ToAllocationStateOutput() AllocationStateOutput
+	ToAllocationStateOutputWithContext(context.Context) AllocationStateOutput
+}
+
+var allocationStatePtrType = reflect.TypeOf((**AllocationState)(nil)).Elem()
+
+type AllocationStatePtrInput interface {
+	pulumi.Input
+
+	ToAllocationStatePtrOutput() AllocationStatePtrOutput
+	ToAllocationStatePtrOutputWithContext(context.Context) AllocationStatePtrOutput
+}
+
+type allocationStatePtr string
+
+func AllocationStatePtr(v string) AllocationStatePtrInput {
+	return (*allocationStatePtr)(&v)
+}
+
+func (*allocationStatePtr) ElementType() reflect.Type {
+	return allocationStatePtrType
+}
+
+func (in *allocationStatePtr) ToAllocationStatePtrOutput() AllocationStatePtrOutput {
+	return pulumi.ToOutput(in).(AllocationStatePtrOutput)
+}
+
+func (in *allocationStatePtr) ToAllocationStatePtrOutputWithContext(ctx context.Context) AllocationStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AllocationStatePtrOutput)
+}
+
 // Describes the types of schema for analytical storage.
 type AnalyticalStorageSchemaType string
 
@@ -1012,6 +1178,172 @@ func (in *backupStorageRedundancyPtr) ToBackupStorageRedundancyPtrOutput() Backu
 
 func (in *backupStorageRedundancyPtr) ToBackupStorageRedundancyPtrOutputWithContext(ctx context.Context) BackupStorageRedundancyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BackupStorageRedundancyPtrOutput)
+}
+
+// Type of the cluster. If set to Production, some operations might not be permitted on cluster.
+type ClusterType string
+
+const (
+	ClusterTypeProduction    = ClusterType("Production")
+	ClusterTypeNonProduction = ClusterType("NonProduction")
+)
+
+func (ClusterType) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterType)(nil)).Elem()
+}
+
+func (e ClusterType) ToClusterTypeOutput() ClusterTypeOutput {
+	return pulumi.ToOutput(e).(ClusterTypeOutput)
+}
+
+func (e ClusterType) ToClusterTypeOutputWithContext(ctx context.Context) ClusterTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ClusterTypeOutput)
+}
+
+func (e ClusterType) ToClusterTypePtrOutput() ClusterTypePtrOutput {
+	return e.ToClusterTypePtrOutputWithContext(context.Background())
+}
+
+func (e ClusterType) ToClusterTypePtrOutputWithContext(ctx context.Context) ClusterTypePtrOutput {
+	return ClusterType(e).ToClusterTypeOutputWithContext(ctx).ToClusterTypePtrOutputWithContext(ctx)
+}
+
+func (e ClusterType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ClusterType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ClusterType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ClusterType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ClusterTypeOutput struct{ *pulumi.OutputState }
+
+func (ClusterTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterType)(nil)).Elem()
+}
+
+func (o ClusterTypeOutput) ToClusterTypeOutput() ClusterTypeOutput {
+	return o
+}
+
+func (o ClusterTypeOutput) ToClusterTypeOutputWithContext(ctx context.Context) ClusterTypeOutput {
+	return o
+}
+
+func (o ClusterTypeOutput) ToClusterTypePtrOutput() ClusterTypePtrOutput {
+	return o.ToClusterTypePtrOutputWithContext(context.Background())
+}
+
+func (o ClusterTypeOutput) ToClusterTypePtrOutputWithContext(ctx context.Context) ClusterTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterType) *ClusterType {
+		return &v
+	}).(ClusterTypePtrOutput)
+}
+
+func (o ClusterTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ClusterTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ClusterType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ClusterTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ClusterType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterTypePtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterType)(nil)).Elem()
+}
+
+func (o ClusterTypePtrOutput) ToClusterTypePtrOutput() ClusterTypePtrOutput {
+	return o
+}
+
+func (o ClusterTypePtrOutput) ToClusterTypePtrOutputWithContext(ctx context.Context) ClusterTypePtrOutput {
+	return o
+}
+
+func (o ClusterTypePtrOutput) Elem() ClusterTypeOutput {
+	return o.ApplyT(func(v *ClusterType) ClusterType {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterType
+		return ret
+	}).(ClusterTypeOutput)
+}
+
+func (o ClusterTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ClusterType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ClusterTypeInput is an input type that accepts values of the ClusterType enum
+// A concrete instance of `ClusterTypeInput` can be one of the following:
+//
+//	ClusterTypeProduction
+//	ClusterTypeNonProduction
+type ClusterTypeInput interface {
+	pulumi.Input
+
+	ToClusterTypeOutput() ClusterTypeOutput
+	ToClusterTypeOutputWithContext(context.Context) ClusterTypeOutput
+}
+
+var clusterTypePtrType = reflect.TypeOf((**ClusterType)(nil)).Elem()
+
+type ClusterTypePtrInput interface {
+	pulumi.Input
+
+	ToClusterTypePtrOutput() ClusterTypePtrOutput
+	ToClusterTypePtrOutputWithContext(context.Context) ClusterTypePtrOutput
+}
+
+type clusterTypePtr string
+
+func ClusterTypePtr(v string) ClusterTypePtrInput {
+	return (*clusterTypePtr)(&v)
+}
+
+func (*clusterTypePtr) ElementType() reflect.Type {
+	return clusterTypePtrType
+}
+
+func (in *clusterTypePtr) ToClusterTypePtrOutput() ClusterTypePtrOutput {
+	return pulumi.ToOutput(in).(ClusterTypePtrOutput)
+}
+
+func (in *clusterTypePtr) ToClusterTypePtrOutputWithContext(ctx context.Context) ClusterTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ClusterTypePtrOutput)
 }
 
 // Sort order for composite paths.
@@ -2684,6 +3016,172 @@ func (in *defaultConsistencyLevelPtr) ToDefaultConsistencyLevelPtrOutput() Defau
 
 func (in *defaultConsistencyLevelPtr) ToDefaultConsistencyLevelPtrOutputWithContext(ctx context.Context) DefaultConsistencyLevelPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DefaultConsistencyLevelPtrOutput)
+}
+
+// Enum to indicate default Priority Level of request for Priority Based Execution.
+type DefaultPriorityLevel string
+
+const (
+	DefaultPriorityLevelHigh = DefaultPriorityLevel("High")
+	DefaultPriorityLevelLow  = DefaultPriorityLevel("Low")
+)
+
+func (DefaultPriorityLevel) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultPriorityLevel)(nil)).Elem()
+}
+
+func (e DefaultPriorityLevel) ToDefaultPriorityLevelOutput() DefaultPriorityLevelOutput {
+	return pulumi.ToOutput(e).(DefaultPriorityLevelOutput)
+}
+
+func (e DefaultPriorityLevel) ToDefaultPriorityLevelOutputWithContext(ctx context.Context) DefaultPriorityLevelOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DefaultPriorityLevelOutput)
+}
+
+func (e DefaultPriorityLevel) ToDefaultPriorityLevelPtrOutput() DefaultPriorityLevelPtrOutput {
+	return e.ToDefaultPriorityLevelPtrOutputWithContext(context.Background())
+}
+
+func (e DefaultPriorityLevel) ToDefaultPriorityLevelPtrOutputWithContext(ctx context.Context) DefaultPriorityLevelPtrOutput {
+	return DefaultPriorityLevel(e).ToDefaultPriorityLevelOutputWithContext(ctx).ToDefaultPriorityLevelPtrOutputWithContext(ctx)
+}
+
+func (e DefaultPriorityLevel) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DefaultPriorityLevel) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DefaultPriorityLevel) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e DefaultPriorityLevel) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DefaultPriorityLevelOutput struct{ *pulumi.OutputState }
+
+func (DefaultPriorityLevelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultPriorityLevel)(nil)).Elem()
+}
+
+func (o DefaultPriorityLevelOutput) ToDefaultPriorityLevelOutput() DefaultPriorityLevelOutput {
+	return o
+}
+
+func (o DefaultPriorityLevelOutput) ToDefaultPriorityLevelOutputWithContext(ctx context.Context) DefaultPriorityLevelOutput {
+	return o
+}
+
+func (o DefaultPriorityLevelOutput) ToDefaultPriorityLevelPtrOutput() DefaultPriorityLevelPtrOutput {
+	return o.ToDefaultPriorityLevelPtrOutputWithContext(context.Background())
+}
+
+func (o DefaultPriorityLevelOutput) ToDefaultPriorityLevelPtrOutputWithContext(ctx context.Context) DefaultPriorityLevelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefaultPriorityLevel) *DefaultPriorityLevel {
+		return &v
+	}).(DefaultPriorityLevelPtrOutput)
+}
+
+func (o DefaultPriorityLevelOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DefaultPriorityLevelOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DefaultPriorityLevel) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DefaultPriorityLevelOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DefaultPriorityLevelOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DefaultPriorityLevel) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DefaultPriorityLevelPtrOutput struct{ *pulumi.OutputState }
+
+func (DefaultPriorityLevelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultPriorityLevel)(nil)).Elem()
+}
+
+func (o DefaultPriorityLevelPtrOutput) ToDefaultPriorityLevelPtrOutput() DefaultPriorityLevelPtrOutput {
+	return o
+}
+
+func (o DefaultPriorityLevelPtrOutput) ToDefaultPriorityLevelPtrOutputWithContext(ctx context.Context) DefaultPriorityLevelPtrOutput {
+	return o
+}
+
+func (o DefaultPriorityLevelPtrOutput) Elem() DefaultPriorityLevelOutput {
+	return o.ApplyT(func(v *DefaultPriorityLevel) DefaultPriorityLevel {
+		if v != nil {
+			return *v
+		}
+		var ret DefaultPriorityLevel
+		return ret
+	}).(DefaultPriorityLevelOutput)
+}
+
+func (o DefaultPriorityLevelPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DefaultPriorityLevelPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DefaultPriorityLevel) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// DefaultPriorityLevelInput is an input type that accepts values of the DefaultPriorityLevel enum
+// A concrete instance of `DefaultPriorityLevelInput` can be one of the following:
+//
+//	DefaultPriorityLevelHigh
+//	DefaultPriorityLevelLow
+type DefaultPriorityLevelInput interface {
+	pulumi.Input
+
+	ToDefaultPriorityLevelOutput() DefaultPriorityLevelOutput
+	ToDefaultPriorityLevelOutputWithContext(context.Context) DefaultPriorityLevelOutput
+}
+
+var defaultPriorityLevelPtrType = reflect.TypeOf((**DefaultPriorityLevel)(nil)).Elem()
+
+type DefaultPriorityLevelPtrInput interface {
+	pulumi.Input
+
+	ToDefaultPriorityLevelPtrOutput() DefaultPriorityLevelPtrOutput
+	ToDefaultPriorityLevelPtrOutputWithContext(context.Context) DefaultPriorityLevelPtrOutput
+}
+
+type defaultPriorityLevelPtr string
+
+func DefaultPriorityLevelPtr(v string) DefaultPriorityLevelPtrInput {
+	return (*defaultPriorityLevelPtr)(&v)
+}
+
+func (*defaultPriorityLevelPtr) ElementType() reflect.Type {
+	return defaultPriorityLevelPtrType
+}
+
+func (in *defaultPriorityLevelPtr) ToDefaultPriorityLevelPtrOutput() DefaultPriorityLevelPtrOutput {
+	return pulumi.ToOutput(in).(DefaultPriorityLevelPtrOutput)
+}
+
+func (in *defaultPriorityLevelPtr) ToDefaultPriorityLevelPtrOutputWithContext(ctx context.Context) DefaultPriorityLevelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DefaultPriorityLevelPtrOutput)
 }
 
 // The distance function to use for distance calculation in between vectors.
@@ -6561,6 +7059,7 @@ const (
 	VectorDataTypeFloat32 = VectorDataType("float32")
 	VectorDataTypeUint8   = VectorDataType("uint8")
 	VectorDataTypeInt8    = VectorDataType("int8")
+	VectorDataTypeFloat16 = VectorDataType("float16")
 )
 
 func (VectorDataType) ElementType() reflect.Type {
@@ -6688,6 +7187,7 @@ func (o VectorDataTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 //	VectorDataTypeFloat32
 //	VectorDataTypeUint8
 //	VectorDataTypeInt8
+//	VectorDataTypeFloat16
 type VectorDataTypeInput interface {
 	pulumi.Input
 
@@ -6891,6 +7391,8 @@ func (in *vectorIndexTypePtr) ToVectorIndexTypePtrOutputWithContext(ctx context.
 }
 
 func init() {
+	pulumi.RegisterOutputType(AllocationStateOutput{})
+	pulumi.RegisterOutputType(AllocationStatePtrOutput{})
 	pulumi.RegisterOutputType(AnalyticalStorageSchemaTypeOutput{})
 	pulumi.RegisterOutputType(AnalyticalStorageSchemaTypePtrOutput{})
 	pulumi.RegisterOutputType(AuthenticationMethodOutput{})
@@ -6903,6 +7405,8 @@ func init() {
 	pulumi.RegisterOutputType(BackupPolicyTypePtrOutput{})
 	pulumi.RegisterOutputType(BackupStorageRedundancyOutput{})
 	pulumi.RegisterOutputType(BackupStorageRedundancyPtrOutput{})
+	pulumi.RegisterOutputType(ClusterTypeOutput{})
+	pulumi.RegisterOutputType(ClusterTypePtrOutput{})
 	pulumi.RegisterOutputType(CompositePathSortOrderOutput{})
 	pulumi.RegisterOutputType(CompositePathSortOrderPtrOutput{})
 	pulumi.RegisterOutputType(ConflictResolutionModeOutput{})
@@ -6923,6 +7427,8 @@ func init() {
 	pulumi.RegisterOutputType(DedicatedGatewayTypePtrOutput{})
 	pulumi.RegisterOutputType(DefaultConsistencyLevelOutput{})
 	pulumi.RegisterOutputType(DefaultConsistencyLevelPtrOutput{})
+	pulumi.RegisterOutputType(DefaultPriorityLevelOutput{})
+	pulumi.RegisterOutputType(DefaultPriorityLevelPtrOutput{})
 	pulumi.RegisterOutputType(DistanceFunctionOutput{})
 	pulumi.RegisterOutputType(DistanceFunctionPtrOutput{})
 	pulumi.RegisterOutputType(FleetspaceApiKindOutput{})

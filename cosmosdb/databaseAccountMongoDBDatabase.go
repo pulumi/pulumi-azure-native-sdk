@@ -191,6 +191,12 @@ func NewDatabaseAccountMongoDBDatabase(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:cosmosdb/v20250501preview:DatabaseAccountMongoDBDatabase"),
 		},
 		{
+			Type: pulumi.String("azure-native:cosmosdb/v20251015:DatabaseAccountMongoDBDatabase"),
+		},
+		{
+			Type: pulumi.String("azure-native:cosmosdb/v20251101preview:DatabaseAccountMongoDBDatabase"),
+		},
+		{
 			Type: pulumi.String("azure-native:documentdb/v20230315preview:MongoDBResourceMongoDBDatabase"),
 		},
 		{

@@ -380,6 +380,211 @@ func (o GetDependencyViewForAllMachinesResultPropertiesResponseOutput) LayoutFil
 	return o.ApplyT(func(v GetDependencyViewForAllMachinesResultPropertiesResponse) string { return v.LayoutFileSasUrl }).(pulumi.StringOutput)
 }
 
+// OffAzure discovery source resource properties
+type OffAzureDiscoverySourceResourceProperties struct {
+	// Source ArmId of Discovery Source resource
+	SourceId string `pulumi:"sourceId"`
+	// Source type of the discoverySource
+	// Expected value is 'OffAzure'.
+	SourceType string `pulumi:"sourceType"`
+}
+
+// OffAzureDiscoverySourceResourcePropertiesInput is an input type that accepts OffAzureDiscoverySourceResourcePropertiesArgs and OffAzureDiscoverySourceResourcePropertiesOutput values.
+// You can construct a concrete instance of `OffAzureDiscoverySourceResourcePropertiesInput` via:
+//
+//	OffAzureDiscoverySourceResourcePropertiesArgs{...}
+type OffAzureDiscoverySourceResourcePropertiesInput interface {
+	pulumi.Input
+
+	ToOffAzureDiscoverySourceResourcePropertiesOutput() OffAzureDiscoverySourceResourcePropertiesOutput
+	ToOffAzureDiscoverySourceResourcePropertiesOutputWithContext(context.Context) OffAzureDiscoverySourceResourcePropertiesOutput
+}
+
+// OffAzure discovery source resource properties
+type OffAzureDiscoverySourceResourcePropertiesArgs struct {
+	// Source ArmId of Discovery Source resource
+	SourceId pulumi.StringInput `pulumi:"sourceId"`
+	// Source type of the discoverySource
+	// Expected value is 'OffAzure'.
+	SourceType pulumi.StringInput `pulumi:"sourceType"`
+}
+
+func (OffAzureDiscoverySourceResourcePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OffAzureDiscoverySourceResourceProperties)(nil)).Elem()
+}
+
+func (i OffAzureDiscoverySourceResourcePropertiesArgs) ToOffAzureDiscoverySourceResourcePropertiesOutput() OffAzureDiscoverySourceResourcePropertiesOutput {
+	return i.ToOffAzureDiscoverySourceResourcePropertiesOutputWithContext(context.Background())
+}
+
+func (i OffAzureDiscoverySourceResourcePropertiesArgs) ToOffAzureDiscoverySourceResourcePropertiesOutputWithContext(ctx context.Context) OffAzureDiscoverySourceResourcePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OffAzureDiscoverySourceResourcePropertiesOutput)
+}
+
+func (i OffAzureDiscoverySourceResourcePropertiesArgs) ToOffAzureDiscoverySourceResourcePropertiesPtrOutput() OffAzureDiscoverySourceResourcePropertiesPtrOutput {
+	return i.ToOffAzureDiscoverySourceResourcePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i OffAzureDiscoverySourceResourcePropertiesArgs) ToOffAzureDiscoverySourceResourcePropertiesPtrOutputWithContext(ctx context.Context) OffAzureDiscoverySourceResourcePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OffAzureDiscoverySourceResourcePropertiesOutput).ToOffAzureDiscoverySourceResourcePropertiesPtrOutputWithContext(ctx)
+}
+
+// OffAzureDiscoverySourceResourcePropertiesPtrInput is an input type that accepts OffAzureDiscoverySourceResourcePropertiesArgs, OffAzureDiscoverySourceResourcePropertiesPtr and OffAzureDiscoverySourceResourcePropertiesPtrOutput values.
+// You can construct a concrete instance of `OffAzureDiscoverySourceResourcePropertiesPtrInput` via:
+//
+//	        OffAzureDiscoverySourceResourcePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type OffAzureDiscoverySourceResourcePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToOffAzureDiscoverySourceResourcePropertiesPtrOutput() OffAzureDiscoverySourceResourcePropertiesPtrOutput
+	ToOffAzureDiscoverySourceResourcePropertiesPtrOutputWithContext(context.Context) OffAzureDiscoverySourceResourcePropertiesPtrOutput
+}
+
+type offAzureDiscoverySourceResourcePropertiesPtrType OffAzureDiscoverySourceResourcePropertiesArgs
+
+func OffAzureDiscoverySourceResourcePropertiesPtr(v *OffAzureDiscoverySourceResourcePropertiesArgs) OffAzureDiscoverySourceResourcePropertiesPtrInput {
+	return (*offAzureDiscoverySourceResourcePropertiesPtrType)(v)
+}
+
+func (*offAzureDiscoverySourceResourcePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OffAzureDiscoverySourceResourceProperties)(nil)).Elem()
+}
+
+func (i *offAzureDiscoverySourceResourcePropertiesPtrType) ToOffAzureDiscoverySourceResourcePropertiesPtrOutput() OffAzureDiscoverySourceResourcePropertiesPtrOutput {
+	return i.ToOffAzureDiscoverySourceResourcePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *offAzureDiscoverySourceResourcePropertiesPtrType) ToOffAzureDiscoverySourceResourcePropertiesPtrOutputWithContext(ctx context.Context) OffAzureDiscoverySourceResourcePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OffAzureDiscoverySourceResourcePropertiesPtrOutput)
+}
+
+// OffAzure discovery source resource properties
+type OffAzureDiscoverySourceResourcePropertiesOutput struct{ *pulumi.OutputState }
+
+func (OffAzureDiscoverySourceResourcePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OffAzureDiscoverySourceResourceProperties)(nil)).Elem()
+}
+
+func (o OffAzureDiscoverySourceResourcePropertiesOutput) ToOffAzureDiscoverySourceResourcePropertiesOutput() OffAzureDiscoverySourceResourcePropertiesOutput {
+	return o
+}
+
+func (o OffAzureDiscoverySourceResourcePropertiesOutput) ToOffAzureDiscoverySourceResourcePropertiesOutputWithContext(ctx context.Context) OffAzureDiscoverySourceResourcePropertiesOutput {
+	return o
+}
+
+func (o OffAzureDiscoverySourceResourcePropertiesOutput) ToOffAzureDiscoverySourceResourcePropertiesPtrOutput() OffAzureDiscoverySourceResourcePropertiesPtrOutput {
+	return o.ToOffAzureDiscoverySourceResourcePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o OffAzureDiscoverySourceResourcePropertiesOutput) ToOffAzureDiscoverySourceResourcePropertiesPtrOutputWithContext(ctx context.Context) OffAzureDiscoverySourceResourcePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OffAzureDiscoverySourceResourceProperties) *OffAzureDiscoverySourceResourceProperties {
+		return &v
+	}).(OffAzureDiscoverySourceResourcePropertiesPtrOutput)
+}
+
+// Source ArmId of Discovery Source resource
+func (o OffAzureDiscoverySourceResourcePropertiesOutput) SourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v OffAzureDiscoverySourceResourceProperties) string { return v.SourceId }).(pulumi.StringOutput)
+}
+
+// Source type of the discoverySource
+// Expected value is 'OffAzure'.
+func (o OffAzureDiscoverySourceResourcePropertiesOutput) SourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v OffAzureDiscoverySourceResourceProperties) string { return v.SourceType }).(pulumi.StringOutput)
+}
+
+type OffAzureDiscoverySourceResourcePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (OffAzureDiscoverySourceResourcePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OffAzureDiscoverySourceResourceProperties)(nil)).Elem()
+}
+
+func (o OffAzureDiscoverySourceResourcePropertiesPtrOutput) ToOffAzureDiscoverySourceResourcePropertiesPtrOutput() OffAzureDiscoverySourceResourcePropertiesPtrOutput {
+	return o
+}
+
+func (o OffAzureDiscoverySourceResourcePropertiesPtrOutput) ToOffAzureDiscoverySourceResourcePropertiesPtrOutputWithContext(ctx context.Context) OffAzureDiscoverySourceResourcePropertiesPtrOutput {
+	return o
+}
+
+func (o OffAzureDiscoverySourceResourcePropertiesPtrOutput) Elem() OffAzureDiscoverySourceResourcePropertiesOutput {
+	return o.ApplyT(func(v *OffAzureDiscoverySourceResourceProperties) OffAzureDiscoverySourceResourceProperties {
+		if v != nil {
+			return *v
+		}
+		var ret OffAzureDiscoverySourceResourceProperties
+		return ret
+	}).(OffAzureDiscoverySourceResourcePropertiesOutput)
+}
+
+// Source ArmId of Discovery Source resource
+func (o OffAzureDiscoverySourceResourcePropertiesPtrOutput) SourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OffAzureDiscoverySourceResourceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Source type of the discoverySource
+// Expected value is 'OffAzure'.
+func (o OffAzureDiscoverySourceResourcePropertiesPtrOutput) SourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OffAzureDiscoverySourceResourceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SourceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// OffAzure discovery source resource properties
+type OffAzureDiscoverySourceResourcePropertiesResponse struct {
+	// Provisioning state of Discovery Source resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Source ArmId of Discovery Source resource
+	SourceId string `pulumi:"sourceId"`
+	// Source type of the discoverySource
+	// Expected value is 'OffAzure'.
+	SourceType string `pulumi:"sourceType"`
+}
+
+// OffAzure discovery source resource properties
+type OffAzureDiscoverySourceResourcePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (OffAzureDiscoverySourceResourcePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OffAzureDiscoverySourceResourcePropertiesResponse)(nil)).Elem()
+}
+
+func (o OffAzureDiscoverySourceResourcePropertiesResponseOutput) ToOffAzureDiscoverySourceResourcePropertiesResponseOutput() OffAzureDiscoverySourceResourcePropertiesResponseOutput {
+	return o
+}
+
+func (o OffAzureDiscoverySourceResourcePropertiesResponseOutput) ToOffAzureDiscoverySourceResourcePropertiesResponseOutputWithContext(ctx context.Context) OffAzureDiscoverySourceResourcePropertiesResponseOutput {
+	return o
+}
+
+// Provisioning state of Discovery Source resource.
+func (o OffAzureDiscoverySourceResourcePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v OffAzureDiscoverySourceResourcePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Source ArmId of Discovery Source resource
+func (o OffAzureDiscoverySourceResourcePropertiesResponseOutput) SourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v OffAzureDiscoverySourceResourcePropertiesResponse) string { return v.SourceId }).(pulumi.StringOutput)
+}
+
+// Source type of the discoverySource
+// Expected value is 'OffAzure'.
+func (o OffAzureDiscoverySourceResourcePropertiesResponseOutput) SourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v OffAzureDiscoverySourceResourcePropertiesResponse) string { return v.SourceType }).(pulumi.StringOutput)
+}
+
 // Process name filter for dependency map visualization apis
 type ProcessNameFilter struct {
 	// Operator for process name filter
@@ -609,6 +814,9 @@ func init() {
 	pulumi.RegisterOutputType(ErrorDetailResponsePtrOutput{})
 	pulumi.RegisterOutputType(ErrorDetailResponseArrayOutput{})
 	pulumi.RegisterOutputType(GetDependencyViewForAllMachinesResultPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(OffAzureDiscoverySourceResourcePropertiesOutput{})
+	pulumi.RegisterOutputType(OffAzureDiscoverySourceResourcePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(OffAzureDiscoverySourceResourcePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ProcessNameFilterOutput{})
 	pulumi.RegisterOutputType(ProcessNameFilterPtrOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
