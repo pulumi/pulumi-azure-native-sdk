@@ -19,17 +19,21 @@ type AADAuthTypeConnectionProperties struct {
 	// Expected value is 'AAD'.
 	AuthType string `pulumi:"authType"`
 	// Category of the connection
-	Category      *string `pulumi:"category"`
+	Category *string `pulumi:"category"`
+	// Provides the error message if the connection fails
 	Error         *string `pulumi:"error"`
 	ExpiryTime    *string `pulumi:"expiryTime"`
 	IsSharedToAll *bool   `pulumi:"isSharedToAll"`
 	// Store user metadata for this connection
-	Metadata                    map[string]string `pulumi:"metadata"`
-	PeRequirement               *string           `pulumi:"peRequirement"`
-	PeStatus                    *string           `pulumi:"peStatus"`
-	SharedUserList              []string          `pulumi:"sharedUserList"`
-	Target                      *string           `pulumi:"target"`
-	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
+	Metadata map[string]string `pulumi:"metadata"`
+	// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
+	PeRequirement *string `pulumi:"peRequirement"`
+	// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
+	PeStatus       *string  `pulumi:"peStatus"`
+	SharedUserList []string `pulumi:"sharedUserList"`
+	// The connection URL to be used.
+	Target                      *string `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool   `pulumi:"useWorkspaceManagedIdentity"`
 }
 
 // AADAuthTypeConnectionPropertiesInput is an input type that accepts AADAuthTypeConnectionPropertiesArgs and AADAuthTypeConnectionPropertiesOutput values.
@@ -49,17 +53,21 @@ type AADAuthTypeConnectionPropertiesArgs struct {
 	// Expected value is 'AAD'.
 	AuthType pulumi.StringInput `pulumi:"authType"`
 	// Category of the connection
-	Category      pulumi.StringPtrInput `pulumi:"category"`
+	Category pulumi.StringPtrInput `pulumi:"category"`
+	// Provides the error message if the connection fails
 	Error         pulumi.StringPtrInput `pulumi:"error"`
 	ExpiryTime    pulumi.StringPtrInput `pulumi:"expiryTime"`
 	IsSharedToAll pulumi.BoolPtrInput   `pulumi:"isSharedToAll"`
 	// Store user metadata for this connection
-	Metadata                    pulumi.StringMapInput   `pulumi:"metadata"`
-	PeRequirement               pulumi.StringPtrInput   `pulumi:"peRequirement"`
-	PeStatus                    pulumi.StringPtrInput   `pulumi:"peStatus"`
-	SharedUserList              pulumi.StringArrayInput `pulumi:"sharedUserList"`
-	Target                      pulumi.StringPtrInput   `pulumi:"target"`
-	UseWorkspaceManagedIdentity pulumi.BoolPtrInput     `pulumi:"useWorkspaceManagedIdentity"`
+	Metadata pulumi.StringMapInput `pulumi:"metadata"`
+	// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
+	PeRequirement pulumi.StringPtrInput `pulumi:"peRequirement"`
+	// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
+	PeStatus       pulumi.StringPtrInput   `pulumi:"peStatus"`
+	SharedUserList pulumi.StringArrayInput `pulumi:"sharedUserList"`
+	// The connection URL to be used.
+	Target                      pulumi.StringPtrInput `pulumi:"target"`
+	UseWorkspaceManagedIdentity pulumi.BoolPtrInput   `pulumi:"useWorkspaceManagedIdentity"`
 }
 
 func (AADAuthTypeConnectionPropertiesArgs) ElementType() reflect.Type {
@@ -100,6 +108,7 @@ func (o AADAuthTypeConnectionPropertiesOutput) Category() pulumi.StringPtrOutput
 	return o.ApplyT(func(v AADAuthTypeConnectionProperties) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
 
+// Provides the error message if the connection fails
 func (o AADAuthTypeConnectionPropertiesOutput) Error() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AADAuthTypeConnectionProperties) *string { return v.Error }).(pulumi.StringPtrOutput)
 }
@@ -117,10 +126,12 @@ func (o AADAuthTypeConnectionPropertiesOutput) Metadata() pulumi.StringMapOutput
 	return o.ApplyT(func(v AADAuthTypeConnectionProperties) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
+// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
 func (o AADAuthTypeConnectionPropertiesOutput) PeRequirement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AADAuthTypeConnectionProperties) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
 func (o AADAuthTypeConnectionPropertiesOutput) PeStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AADAuthTypeConnectionProperties) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
 }
@@ -129,6 +140,7 @@ func (o AADAuthTypeConnectionPropertiesOutput) SharedUserList() pulumi.StringArr
 	return o.ApplyT(func(v AADAuthTypeConnectionProperties) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
 }
 
+// The connection URL to be used.
 func (o AADAuthTypeConnectionPropertiesOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AADAuthTypeConnectionProperties) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
@@ -145,18 +157,22 @@ type AADAuthTypeConnectionPropertiesResponse struct {
 	// Category of the connection
 	Category                *string `pulumi:"category"`
 	CreatedByWorkspaceArmId string  `pulumi:"createdByWorkspaceArmId"`
-	Error                   *string `pulumi:"error"`
-	ExpiryTime              *string `pulumi:"expiryTime"`
+	// Provides the error message if the connection fails
+	Error      *string `pulumi:"error"`
+	ExpiryTime *string `pulumi:"expiryTime"`
 	// Group based on connection category
 	Group         string `pulumi:"group"`
 	IsSharedToAll *bool  `pulumi:"isSharedToAll"`
 	// Store user metadata for this connection
-	Metadata                    map[string]string `pulumi:"metadata"`
-	PeRequirement               *string           `pulumi:"peRequirement"`
-	PeStatus                    *string           `pulumi:"peStatus"`
-	SharedUserList              []string          `pulumi:"sharedUserList"`
-	Target                      *string           `pulumi:"target"`
-	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
+	Metadata map[string]string `pulumi:"metadata"`
+	// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
+	PeRequirement *string `pulumi:"peRequirement"`
+	// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
+	PeStatus       *string  `pulumi:"peStatus"`
+	SharedUserList []string `pulumi:"sharedUserList"`
+	// The connection URL to be used.
+	Target                      *string `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool   `pulumi:"useWorkspaceManagedIdentity"`
 }
 
 // This connection type covers the AAD auth for any applicable Azure service
@@ -189,6 +205,7 @@ func (o AADAuthTypeConnectionPropertiesResponseOutput) CreatedByWorkspaceArmId()
 	return o.ApplyT(func(v AADAuthTypeConnectionPropertiesResponse) string { return v.CreatedByWorkspaceArmId }).(pulumi.StringOutput)
 }
 
+// Provides the error message if the connection fails
 func (o AADAuthTypeConnectionPropertiesResponseOutput) Error() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AADAuthTypeConnectionPropertiesResponse) *string { return v.Error }).(pulumi.StringPtrOutput)
 }
@@ -211,10 +228,12 @@ func (o AADAuthTypeConnectionPropertiesResponseOutput) Metadata() pulumi.StringM
 	return o.ApplyT(func(v AADAuthTypeConnectionPropertiesResponse) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
+// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
 func (o AADAuthTypeConnectionPropertiesResponseOutput) PeRequirement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AADAuthTypeConnectionPropertiesResponse) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
 func (o AADAuthTypeConnectionPropertiesResponseOutput) PeStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AADAuthTypeConnectionPropertiesResponse) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
 }
@@ -223,6 +242,7 @@ func (o AADAuthTypeConnectionPropertiesResponseOutput) SharedUserList() pulumi.S
 	return o.ApplyT(func(v AADAuthTypeConnectionPropertiesResponse) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
 }
 
+// The connection URL to be used.
 func (o AADAuthTypeConnectionPropertiesResponseOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AADAuthTypeConnectionPropertiesResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
@@ -276,18 +296,22 @@ type AccessKeyAuthTypeConnectionProperties struct {
 	// Expected value is 'AccessKey'.
 	AuthType string `pulumi:"authType"`
 	// Category of the connection
-	Category      *string              `pulumi:"category"`
-	Credentials   *ConnectionAccessKey `pulumi:"credentials"`
-	Error         *string              `pulumi:"error"`
-	ExpiryTime    *string              `pulumi:"expiryTime"`
-	IsSharedToAll *bool                `pulumi:"isSharedToAll"`
+	Category    *string              `pulumi:"category"`
+	Credentials *ConnectionAccessKey `pulumi:"credentials"`
+	// Provides the error message if the connection fails
+	Error         *string `pulumi:"error"`
+	ExpiryTime    *string `pulumi:"expiryTime"`
+	IsSharedToAll *bool   `pulumi:"isSharedToAll"`
 	// Store user metadata for this connection
-	Metadata                    map[string]string `pulumi:"metadata"`
-	PeRequirement               *string           `pulumi:"peRequirement"`
-	PeStatus                    *string           `pulumi:"peStatus"`
-	SharedUserList              []string          `pulumi:"sharedUserList"`
-	Target                      *string           `pulumi:"target"`
-	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
+	Metadata map[string]string `pulumi:"metadata"`
+	// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
+	PeRequirement *string `pulumi:"peRequirement"`
+	// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
+	PeStatus       *string  `pulumi:"peStatus"`
+	SharedUserList []string `pulumi:"sharedUserList"`
+	// The connection URL to be used.
+	Target                      *string `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool   `pulumi:"useWorkspaceManagedIdentity"`
 }
 
 // AccessKeyAuthTypeConnectionPropertiesInput is an input type that accepts AccessKeyAuthTypeConnectionPropertiesArgs and AccessKeyAuthTypeConnectionPropertiesOutput values.
@@ -306,18 +330,22 @@ type AccessKeyAuthTypeConnectionPropertiesArgs struct {
 	// Expected value is 'AccessKey'.
 	AuthType pulumi.StringInput `pulumi:"authType"`
 	// Category of the connection
-	Category      pulumi.StringPtrInput       `pulumi:"category"`
-	Credentials   ConnectionAccessKeyPtrInput `pulumi:"credentials"`
-	Error         pulumi.StringPtrInput       `pulumi:"error"`
-	ExpiryTime    pulumi.StringPtrInput       `pulumi:"expiryTime"`
-	IsSharedToAll pulumi.BoolPtrInput         `pulumi:"isSharedToAll"`
+	Category    pulumi.StringPtrInput       `pulumi:"category"`
+	Credentials ConnectionAccessKeyPtrInput `pulumi:"credentials"`
+	// Provides the error message if the connection fails
+	Error         pulumi.StringPtrInput `pulumi:"error"`
+	ExpiryTime    pulumi.StringPtrInput `pulumi:"expiryTime"`
+	IsSharedToAll pulumi.BoolPtrInput   `pulumi:"isSharedToAll"`
 	// Store user metadata for this connection
-	Metadata                    pulumi.StringMapInput   `pulumi:"metadata"`
-	PeRequirement               pulumi.StringPtrInput   `pulumi:"peRequirement"`
-	PeStatus                    pulumi.StringPtrInput   `pulumi:"peStatus"`
-	SharedUserList              pulumi.StringArrayInput `pulumi:"sharedUserList"`
-	Target                      pulumi.StringPtrInput   `pulumi:"target"`
-	UseWorkspaceManagedIdentity pulumi.BoolPtrInput     `pulumi:"useWorkspaceManagedIdentity"`
+	Metadata pulumi.StringMapInput `pulumi:"metadata"`
+	// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
+	PeRequirement pulumi.StringPtrInput `pulumi:"peRequirement"`
+	// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
+	PeStatus       pulumi.StringPtrInput   `pulumi:"peStatus"`
+	SharedUserList pulumi.StringArrayInput `pulumi:"sharedUserList"`
+	// The connection URL to be used.
+	Target                      pulumi.StringPtrInput `pulumi:"target"`
+	UseWorkspaceManagedIdentity pulumi.BoolPtrInput   `pulumi:"useWorkspaceManagedIdentity"`
 }
 
 func (AccessKeyAuthTypeConnectionPropertiesArgs) ElementType() reflect.Type {
@@ -361,6 +389,7 @@ func (o AccessKeyAuthTypeConnectionPropertiesOutput) Credentials() ConnectionAcc
 	return o.ApplyT(func(v AccessKeyAuthTypeConnectionProperties) *ConnectionAccessKey { return v.Credentials }).(ConnectionAccessKeyPtrOutput)
 }
 
+// Provides the error message if the connection fails
 func (o AccessKeyAuthTypeConnectionPropertiesOutput) Error() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessKeyAuthTypeConnectionProperties) *string { return v.Error }).(pulumi.StringPtrOutput)
 }
@@ -378,10 +407,12 @@ func (o AccessKeyAuthTypeConnectionPropertiesOutput) Metadata() pulumi.StringMap
 	return o.ApplyT(func(v AccessKeyAuthTypeConnectionProperties) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
+// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
 func (o AccessKeyAuthTypeConnectionPropertiesOutput) PeRequirement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessKeyAuthTypeConnectionProperties) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
 func (o AccessKeyAuthTypeConnectionPropertiesOutput) PeStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessKeyAuthTypeConnectionProperties) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
 }
@@ -390,6 +421,7 @@ func (o AccessKeyAuthTypeConnectionPropertiesOutput) SharedUserList() pulumi.Str
 	return o.ApplyT(func(v AccessKeyAuthTypeConnectionProperties) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
 }
 
+// The connection URL to be used.
 func (o AccessKeyAuthTypeConnectionPropertiesOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessKeyAuthTypeConnectionProperties) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
@@ -406,18 +438,22 @@ type AccessKeyAuthTypeConnectionPropertiesResponse struct {
 	Category                *string                      `pulumi:"category"`
 	CreatedByWorkspaceArmId string                       `pulumi:"createdByWorkspaceArmId"`
 	Credentials             *ConnectionAccessKeyResponse `pulumi:"credentials"`
-	Error                   *string                      `pulumi:"error"`
-	ExpiryTime              *string                      `pulumi:"expiryTime"`
+	// Provides the error message if the connection fails
+	Error      *string `pulumi:"error"`
+	ExpiryTime *string `pulumi:"expiryTime"`
 	// Group based on connection category
 	Group         string `pulumi:"group"`
 	IsSharedToAll *bool  `pulumi:"isSharedToAll"`
 	// Store user metadata for this connection
-	Metadata                    map[string]string `pulumi:"metadata"`
-	PeRequirement               *string           `pulumi:"peRequirement"`
-	PeStatus                    *string           `pulumi:"peStatus"`
-	SharedUserList              []string          `pulumi:"sharedUserList"`
-	Target                      *string           `pulumi:"target"`
-	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
+	Metadata map[string]string `pulumi:"metadata"`
+	// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
+	PeRequirement *string `pulumi:"peRequirement"`
+	// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
+	PeStatus       *string  `pulumi:"peStatus"`
+	SharedUserList []string `pulumi:"sharedUserList"`
+	// The connection URL to be used.
+	Target                      *string `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool   `pulumi:"useWorkspaceManagedIdentity"`
 }
 
 type AccessKeyAuthTypeConnectionPropertiesResponseOutput struct{ *pulumi.OutputState }
@@ -455,6 +491,7 @@ func (o AccessKeyAuthTypeConnectionPropertiesResponseOutput) Credentials() Conne
 	}).(ConnectionAccessKeyResponsePtrOutput)
 }
 
+// Provides the error message if the connection fails
 func (o AccessKeyAuthTypeConnectionPropertiesResponseOutput) Error() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessKeyAuthTypeConnectionPropertiesResponse) *string { return v.Error }).(pulumi.StringPtrOutput)
 }
@@ -477,10 +514,12 @@ func (o AccessKeyAuthTypeConnectionPropertiesResponseOutput) Metadata() pulumi.S
 	return o.ApplyT(func(v AccessKeyAuthTypeConnectionPropertiesResponse) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
+// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
 func (o AccessKeyAuthTypeConnectionPropertiesResponseOutput) PeRequirement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessKeyAuthTypeConnectionPropertiesResponse) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
 func (o AccessKeyAuthTypeConnectionPropertiesResponseOutput) PeStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessKeyAuthTypeConnectionPropertiesResponse) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
 }
@@ -489,6 +528,7 @@ func (o AccessKeyAuthTypeConnectionPropertiesResponseOutput) SharedUserList() pu
 	return o.ApplyT(func(v AccessKeyAuthTypeConnectionPropertiesResponse) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
 }
 
+// The connection URL to be used.
 func (o AccessKeyAuthTypeConnectionPropertiesResponseOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessKeyAuthTypeConnectionPropertiesResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
@@ -505,17 +545,21 @@ type AccountKeyAuthTypeConnectionProperties struct {
 	// Category of the connection
 	Category *string `pulumi:"category"`
 	// Account key object for connection credential.
-	Credentials   *ConnectionAccountKey `pulumi:"credentials"`
-	Error         *string               `pulumi:"error"`
-	ExpiryTime    *string               `pulumi:"expiryTime"`
-	IsSharedToAll *bool                 `pulumi:"isSharedToAll"`
+	Credentials *ConnectionAccountKey `pulumi:"credentials"`
+	// Provides the error message if the connection fails
+	Error         *string `pulumi:"error"`
+	ExpiryTime    *string `pulumi:"expiryTime"`
+	IsSharedToAll *bool   `pulumi:"isSharedToAll"`
 	// Store user metadata for this connection
-	Metadata                    map[string]string `pulumi:"metadata"`
-	PeRequirement               *string           `pulumi:"peRequirement"`
-	PeStatus                    *string           `pulumi:"peStatus"`
-	SharedUserList              []string          `pulumi:"sharedUserList"`
-	Target                      *string           `pulumi:"target"`
-	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
+	Metadata map[string]string `pulumi:"metadata"`
+	// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
+	PeRequirement *string `pulumi:"peRequirement"`
+	// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
+	PeStatus       *string  `pulumi:"peStatus"`
+	SharedUserList []string `pulumi:"sharedUserList"`
+	// The connection URL to be used.
+	Target                      *string `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool   `pulumi:"useWorkspaceManagedIdentity"`
 }
 
 // AccountKeyAuthTypeConnectionPropertiesInput is an input type that accepts AccountKeyAuthTypeConnectionPropertiesArgs and AccountKeyAuthTypeConnectionPropertiesOutput values.
@@ -537,17 +581,21 @@ type AccountKeyAuthTypeConnectionPropertiesArgs struct {
 	// Category of the connection
 	Category pulumi.StringPtrInput `pulumi:"category"`
 	// Account key object for connection credential.
-	Credentials   ConnectionAccountKeyPtrInput `pulumi:"credentials"`
-	Error         pulumi.StringPtrInput        `pulumi:"error"`
-	ExpiryTime    pulumi.StringPtrInput        `pulumi:"expiryTime"`
-	IsSharedToAll pulumi.BoolPtrInput          `pulumi:"isSharedToAll"`
+	Credentials ConnectionAccountKeyPtrInput `pulumi:"credentials"`
+	// Provides the error message if the connection fails
+	Error         pulumi.StringPtrInput `pulumi:"error"`
+	ExpiryTime    pulumi.StringPtrInput `pulumi:"expiryTime"`
+	IsSharedToAll pulumi.BoolPtrInput   `pulumi:"isSharedToAll"`
 	// Store user metadata for this connection
-	Metadata                    pulumi.StringMapInput   `pulumi:"metadata"`
-	PeRequirement               pulumi.StringPtrInput   `pulumi:"peRequirement"`
-	PeStatus                    pulumi.StringPtrInput   `pulumi:"peStatus"`
-	SharedUserList              pulumi.StringArrayInput `pulumi:"sharedUserList"`
-	Target                      pulumi.StringPtrInput   `pulumi:"target"`
-	UseWorkspaceManagedIdentity pulumi.BoolPtrInput     `pulumi:"useWorkspaceManagedIdentity"`
+	Metadata pulumi.StringMapInput `pulumi:"metadata"`
+	// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
+	PeRequirement pulumi.StringPtrInput `pulumi:"peRequirement"`
+	// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
+	PeStatus       pulumi.StringPtrInput   `pulumi:"peStatus"`
+	SharedUserList pulumi.StringArrayInput `pulumi:"sharedUserList"`
+	// The connection URL to be used.
+	Target                      pulumi.StringPtrInput `pulumi:"target"`
+	UseWorkspaceManagedIdentity pulumi.BoolPtrInput   `pulumi:"useWorkspaceManagedIdentity"`
 }
 
 func (AccountKeyAuthTypeConnectionPropertiesArgs) ElementType() reflect.Type {
@@ -593,6 +641,7 @@ func (o AccountKeyAuthTypeConnectionPropertiesOutput) Credentials() ConnectionAc
 	return o.ApplyT(func(v AccountKeyAuthTypeConnectionProperties) *ConnectionAccountKey { return v.Credentials }).(ConnectionAccountKeyPtrOutput)
 }
 
+// Provides the error message if the connection fails
 func (o AccountKeyAuthTypeConnectionPropertiesOutput) Error() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccountKeyAuthTypeConnectionProperties) *string { return v.Error }).(pulumi.StringPtrOutput)
 }
@@ -610,10 +659,12 @@ func (o AccountKeyAuthTypeConnectionPropertiesOutput) Metadata() pulumi.StringMa
 	return o.ApplyT(func(v AccountKeyAuthTypeConnectionProperties) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
+// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
 func (o AccountKeyAuthTypeConnectionPropertiesOutput) PeRequirement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccountKeyAuthTypeConnectionProperties) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
 func (o AccountKeyAuthTypeConnectionPropertiesOutput) PeStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccountKeyAuthTypeConnectionProperties) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
 }
@@ -622,6 +673,7 @@ func (o AccountKeyAuthTypeConnectionPropertiesOutput) SharedUserList() pulumi.St
 	return o.ApplyT(func(v AccountKeyAuthTypeConnectionProperties) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
 }
 
+// The connection URL to be used.
 func (o AccountKeyAuthTypeConnectionPropertiesOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccountKeyAuthTypeConnectionProperties) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
@@ -640,18 +692,22 @@ type AccountKeyAuthTypeConnectionPropertiesResponse struct {
 	CreatedByWorkspaceArmId string  `pulumi:"createdByWorkspaceArmId"`
 	// Account key object for connection credential.
 	Credentials *ConnectionAccountKeyResponse `pulumi:"credentials"`
-	Error       *string                       `pulumi:"error"`
-	ExpiryTime  *string                       `pulumi:"expiryTime"`
+	// Provides the error message if the connection fails
+	Error      *string `pulumi:"error"`
+	ExpiryTime *string `pulumi:"expiryTime"`
 	// Group based on connection category
 	Group         string `pulumi:"group"`
 	IsSharedToAll *bool  `pulumi:"isSharedToAll"`
 	// Store user metadata for this connection
-	Metadata                    map[string]string `pulumi:"metadata"`
-	PeRequirement               *string           `pulumi:"peRequirement"`
-	PeStatus                    *string           `pulumi:"peStatus"`
-	SharedUserList              []string          `pulumi:"sharedUserList"`
-	Target                      *string           `pulumi:"target"`
-	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
+	Metadata map[string]string `pulumi:"metadata"`
+	// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
+	PeRequirement *string `pulumi:"peRequirement"`
+	// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
+	PeStatus       *string  `pulumi:"peStatus"`
+	SharedUserList []string `pulumi:"sharedUserList"`
+	// The connection URL to be used.
+	Target                      *string `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool   `pulumi:"useWorkspaceManagedIdentity"`
 }
 
 // This connection type covers the account key connection for Azure storage
@@ -691,6 +747,7 @@ func (o AccountKeyAuthTypeConnectionPropertiesResponseOutput) Credentials() Conn
 	}).(ConnectionAccountKeyResponsePtrOutput)
 }
 
+// Provides the error message if the connection fails
 func (o AccountKeyAuthTypeConnectionPropertiesResponseOutput) Error() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccountKeyAuthTypeConnectionPropertiesResponse) *string { return v.Error }).(pulumi.StringPtrOutput)
 }
@@ -713,10 +770,12 @@ func (o AccountKeyAuthTypeConnectionPropertiesResponseOutput) Metadata() pulumi.
 	return o.ApplyT(func(v AccountKeyAuthTypeConnectionPropertiesResponse) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
+// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
 func (o AccountKeyAuthTypeConnectionPropertiesResponseOutput) PeRequirement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccountKeyAuthTypeConnectionPropertiesResponse) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
 func (o AccountKeyAuthTypeConnectionPropertiesResponseOutput) PeStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccountKeyAuthTypeConnectionPropertiesResponse) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
 }
@@ -725,6 +784,7 @@ func (o AccountKeyAuthTypeConnectionPropertiesResponseOutput) SharedUserList() p
 	return o.ApplyT(func(v AccountKeyAuthTypeConnectionPropertiesResponse) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
 }
 
+// The connection URL to be used.
 func (o AccountKeyAuthTypeConnectionPropertiesResponseOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccountKeyAuthTypeConnectionPropertiesResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
@@ -735,14 +795,20 @@ func (o AccountKeyAuthTypeConnectionPropertiesResponseOutput) UseWorkspaceManage
 
 // Properties of Cognitive Services account.
 type AccountProperties struct {
-	AllowedFqdnList []string `pulumi:"allowedFqdnList"`
-	// The user owned AML workspace properties.
+	// Specifies whether this resource support project management as child resources, used as containers for access management, data isolation and cost in AI Foundry.
+	AllowProjectManagement *bool    `pulumi:"allowProjectManagement"`
+	AllowedFqdnList        []string `pulumi:"allowedFqdnList"`
+	// The user owned AML account properties.
 	AmlWorkspace *UserOwnedAmlWorkspace `pulumi:"amlWorkspace"`
 	// The api properties for special APIs.
 	ApiProperties *ApiProperties `pulumi:"apiProperties"`
+	// Specifies the projects, by project name, that are associated with this resource.
+	AssociatedProjects []string `pulumi:"associatedProjects"`
 	// Optional subdomain name used for token-based authentication.
 	CustomSubDomainName *string `pulumi:"customSubDomainName"`
-	DisableLocalAuth    *bool   `pulumi:"disableLocalAuth"`
+	// Specifies the project, by project name, that is targeted when data plane endpoints are called without a project parameter.
+	DefaultProject   *string `pulumi:"defaultProject"`
+	DisableLocalAuth *bool   `pulumi:"disableLocalAuth"`
 	// The flag to enable dynamic throttling.
 	DynamicThrottlingEnabled *bool `pulumi:"dynamicThrottlingEnabled"`
 	// The encryption properties for this resource.
@@ -752,7 +818,8 @@ type AccountProperties struct {
 	// Resource migration token.
 	MigrationToken *string `pulumi:"migrationToken"`
 	// A collection of rules governing the accessibility from specific network locations.
-	NetworkAcls *NetworkRuleSet `pulumi:"networkAcls"`
+	NetworkAcls       *NetworkRuleSet    `pulumi:"networkAcls"`
+	NetworkInjections []NetworkInjection `pulumi:"networkInjections"`
 	// Whether or not public endpoint access is allowed for this account.
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// Cognitive Services Rai Monitor Config.
@@ -787,14 +854,20 @@ type AccountPropertiesInput interface {
 
 // Properties of Cognitive Services account.
 type AccountPropertiesArgs struct {
-	AllowedFqdnList pulumi.StringArrayInput `pulumi:"allowedFqdnList"`
-	// The user owned AML workspace properties.
+	// Specifies whether this resource support project management as child resources, used as containers for access management, data isolation and cost in AI Foundry.
+	AllowProjectManagement pulumi.BoolPtrInput     `pulumi:"allowProjectManagement"`
+	AllowedFqdnList        pulumi.StringArrayInput `pulumi:"allowedFqdnList"`
+	// The user owned AML account properties.
 	AmlWorkspace UserOwnedAmlWorkspacePtrInput `pulumi:"amlWorkspace"`
 	// The api properties for special APIs.
 	ApiProperties ApiPropertiesPtrInput `pulumi:"apiProperties"`
+	// Specifies the projects, by project name, that are associated with this resource.
+	AssociatedProjects pulumi.StringArrayInput `pulumi:"associatedProjects"`
 	// Optional subdomain name used for token-based authentication.
 	CustomSubDomainName pulumi.StringPtrInput `pulumi:"customSubDomainName"`
-	DisableLocalAuth    pulumi.BoolPtrInput   `pulumi:"disableLocalAuth"`
+	// Specifies the project, by project name, that is targeted when data plane endpoints are called without a project parameter.
+	DefaultProject   pulumi.StringPtrInput `pulumi:"defaultProject"`
+	DisableLocalAuth pulumi.BoolPtrInput   `pulumi:"disableLocalAuth"`
 	// The flag to enable dynamic throttling.
 	DynamicThrottlingEnabled pulumi.BoolPtrInput `pulumi:"dynamicThrottlingEnabled"`
 	// The encryption properties for this resource.
@@ -804,7 +877,8 @@ type AccountPropertiesArgs struct {
 	// Resource migration token.
 	MigrationToken pulumi.StringPtrInput `pulumi:"migrationToken"`
 	// A collection of rules governing the accessibility from specific network locations.
-	NetworkAcls NetworkRuleSetPtrInput `pulumi:"networkAcls"`
+	NetworkAcls       NetworkRuleSetPtrInput     `pulumi:"networkAcls"`
+	NetworkInjections NetworkInjectionArrayInput `pulumi:"networkInjections"`
 	// Whether or not public endpoint access is allowed for this account.
 	PublicNetworkAccess pulumi.StringPtrInput `pulumi:"publicNetworkAccess"`
 	// Cognitive Services Rai Monitor Config.
@@ -902,11 +976,16 @@ func (o AccountPropertiesOutput) ToAccountPropertiesPtrOutputWithContext(ctx con
 	}).(AccountPropertiesPtrOutput)
 }
 
+// Specifies whether this resource support project management as child resources, used as containers for access management, data isolation and cost in AI Foundry.
+func (o AccountPropertiesOutput) AllowProjectManagement() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccountProperties) *bool { return v.AllowProjectManagement }).(pulumi.BoolPtrOutput)
+}
+
 func (o AccountPropertiesOutput) AllowedFqdnList() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccountProperties) []string { return v.AllowedFqdnList }).(pulumi.StringArrayOutput)
 }
 
-// The user owned AML workspace properties.
+// The user owned AML account properties.
 func (o AccountPropertiesOutput) AmlWorkspace() UserOwnedAmlWorkspacePtrOutput {
 	return o.ApplyT(func(v AccountProperties) *UserOwnedAmlWorkspace { return v.AmlWorkspace }).(UserOwnedAmlWorkspacePtrOutput)
 }
@@ -916,9 +995,19 @@ func (o AccountPropertiesOutput) ApiProperties() ApiPropertiesPtrOutput {
 	return o.ApplyT(func(v AccountProperties) *ApiProperties { return v.ApiProperties }).(ApiPropertiesPtrOutput)
 }
 
+// Specifies the projects, by project name, that are associated with this resource.
+func (o AccountPropertiesOutput) AssociatedProjects() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccountProperties) []string { return v.AssociatedProjects }).(pulumi.StringArrayOutput)
+}
+
 // Optional subdomain name used for token-based authentication.
 func (o AccountPropertiesOutput) CustomSubDomainName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccountProperties) *string { return v.CustomSubDomainName }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the project, by project name, that is targeted when data plane endpoints are called without a project parameter.
+func (o AccountPropertiesOutput) DefaultProject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccountProperties) *string { return v.DefaultProject }).(pulumi.StringPtrOutput)
 }
 
 func (o AccountPropertiesOutput) DisableLocalAuth() pulumi.BoolPtrOutput {
@@ -948,6 +1037,10 @@ func (o AccountPropertiesOutput) MigrationToken() pulumi.StringPtrOutput {
 // A collection of rules governing the accessibility from specific network locations.
 func (o AccountPropertiesOutput) NetworkAcls() NetworkRuleSetPtrOutput {
 	return o.ApplyT(func(v AccountProperties) *NetworkRuleSet { return v.NetworkAcls }).(NetworkRuleSetPtrOutput)
+}
+
+func (o AccountPropertiesOutput) NetworkInjections() NetworkInjectionArrayOutput {
+	return o.ApplyT(func(v AccountProperties) []NetworkInjection { return v.NetworkInjections }).(NetworkInjectionArrayOutput)
 }
 
 // Whether or not public endpoint access is allowed for this account.
@@ -997,6 +1090,16 @@ func (o AccountPropertiesPtrOutput) Elem() AccountPropertiesOutput {
 	}).(AccountPropertiesOutput)
 }
 
+// Specifies whether this resource support project management as child resources, used as containers for access management, data isolation and cost in AI Foundry.
+func (o AccountPropertiesPtrOutput) AllowProjectManagement() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccountProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowProjectManagement
+	}).(pulumi.BoolPtrOutput)
+}
+
 func (o AccountPropertiesPtrOutput) AllowedFqdnList() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AccountProperties) []string {
 		if v == nil {
@@ -1006,7 +1109,7 @@ func (o AccountPropertiesPtrOutput) AllowedFqdnList() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// The user owned AML workspace properties.
+// The user owned AML account properties.
 func (o AccountPropertiesPtrOutput) AmlWorkspace() UserOwnedAmlWorkspacePtrOutput {
 	return o.ApplyT(func(v *AccountProperties) *UserOwnedAmlWorkspace {
 		if v == nil {
@@ -1026,6 +1129,16 @@ func (o AccountPropertiesPtrOutput) ApiProperties() ApiPropertiesPtrOutput {
 	}).(ApiPropertiesPtrOutput)
 }
 
+// Specifies the projects, by project name, that are associated with this resource.
+func (o AccountPropertiesPtrOutput) AssociatedProjects() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AccountProperties) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AssociatedProjects
+	}).(pulumi.StringArrayOutput)
+}
+
 // Optional subdomain name used for token-based authentication.
 func (o AccountPropertiesPtrOutput) CustomSubDomainName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccountProperties) *string {
@@ -1033,6 +1146,16 @@ func (o AccountPropertiesPtrOutput) CustomSubDomainName() pulumi.StringPtrOutput
 			return nil
 		}
 		return v.CustomSubDomainName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the project, by project name, that is targeted when data plane endpoints are called without a project parameter.
+func (o AccountPropertiesPtrOutput) DefaultProject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccountProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultProject
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1095,6 +1218,15 @@ func (o AccountPropertiesPtrOutput) NetworkAcls() NetworkRuleSetPtrOutput {
 	}).(NetworkRuleSetPtrOutput)
 }
 
+func (o AccountPropertiesPtrOutput) NetworkInjections() NetworkInjectionArrayOutput {
+	return o.ApplyT(func(v *AccountProperties) []NetworkInjection {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkInjections
+	}).(NetworkInjectionArrayOutput)
+}
+
 // Whether or not public endpoint access is allowed for this account.
 func (o AccountPropertiesPtrOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccountProperties) *string {
@@ -1146,12 +1278,16 @@ func (o AccountPropertiesPtrOutput) UserOwnedStorage() UserOwnedStorageArrayOutp
 // Properties of Cognitive Services account.
 type AccountPropertiesResponse struct {
 	// The abuse penalty.
-	AbusePenalty    AbusePenaltyResponse `pulumi:"abusePenalty"`
-	AllowedFqdnList []string             `pulumi:"allowedFqdnList"`
-	// The user owned AML workspace properties.
+	AbusePenalty AbusePenaltyResponse `pulumi:"abusePenalty"`
+	// Specifies whether this resource support project management as child resources, used as containers for access management, data isolation and cost in AI Foundry.
+	AllowProjectManagement *bool    `pulumi:"allowProjectManagement"`
+	AllowedFqdnList        []string `pulumi:"allowedFqdnList"`
+	// The user owned AML account properties.
 	AmlWorkspace *UserOwnedAmlWorkspaceResponse `pulumi:"amlWorkspace"`
 	// The api properties for special APIs.
 	ApiProperties *ApiPropertiesResponse `pulumi:"apiProperties"`
+	// Specifies the projects, by project name, that are associated with this resource.
+	AssociatedProjects []string `pulumi:"associatedProjects"`
 	// The call rate limit Cognitive Services account.
 	CallRateLimit CallRateLimitResponse `pulumi:"callRateLimit"`
 	// Gets the capabilities of the cognitive services account. Each item indicates the capability of a specific feature. The values are read-only and for reference only.
@@ -1162,6 +1298,8 @@ type AccountPropertiesResponse struct {
 	CustomSubDomainName *string `pulumi:"customSubDomainName"`
 	// Gets the date of cognitive services account creation.
 	DateCreated string `pulumi:"dateCreated"`
+	// Specifies the project, by project name, that is targeted when data plane endpoints are called without a project parameter.
+	DefaultProject *string `pulumi:"defaultProject"`
 	// The deletion date, only available for deleted account.
 	DeletionDate     string `pulumi:"deletionDate"`
 	DisableLocalAuth *bool  `pulumi:"disableLocalAuth"`
@@ -1181,7 +1319,8 @@ type AccountPropertiesResponse struct {
 	// Resource migration token.
 	MigrationToken *string `pulumi:"migrationToken"`
 	// A collection of rules governing the accessibility from specific network locations.
-	NetworkAcls *NetworkRuleSetResponse `pulumi:"networkAcls"`
+	NetworkAcls       *NetworkRuleSetResponse    `pulumi:"networkAcls"`
+	NetworkInjections []NetworkInjectionResponse `pulumi:"networkInjections"`
 	// The private endpoint connection associated with the Cognitive Services account.
 	PrivateEndpointConnections []PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
 	// Gets the status of the cognitive services account at the time the operation was called.
@@ -1231,11 +1370,16 @@ func (o AccountPropertiesResponseOutput) AbusePenalty() AbusePenaltyResponseOutp
 	return o.ApplyT(func(v AccountPropertiesResponse) AbusePenaltyResponse { return v.AbusePenalty }).(AbusePenaltyResponseOutput)
 }
 
+// Specifies whether this resource support project management as child resources, used as containers for access management, data isolation and cost in AI Foundry.
+func (o AccountPropertiesResponseOutput) AllowProjectManagement() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccountPropertiesResponse) *bool { return v.AllowProjectManagement }).(pulumi.BoolPtrOutput)
+}
+
 func (o AccountPropertiesResponseOutput) AllowedFqdnList() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccountPropertiesResponse) []string { return v.AllowedFqdnList }).(pulumi.StringArrayOutput)
 }
 
-// The user owned AML workspace properties.
+// The user owned AML account properties.
 func (o AccountPropertiesResponseOutput) AmlWorkspace() UserOwnedAmlWorkspaceResponsePtrOutput {
 	return o.ApplyT(func(v AccountPropertiesResponse) *UserOwnedAmlWorkspaceResponse { return v.AmlWorkspace }).(UserOwnedAmlWorkspaceResponsePtrOutput)
 }
@@ -1243,6 +1387,11 @@ func (o AccountPropertiesResponseOutput) AmlWorkspace() UserOwnedAmlWorkspaceRes
 // The api properties for special APIs.
 func (o AccountPropertiesResponseOutput) ApiProperties() ApiPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v AccountPropertiesResponse) *ApiPropertiesResponse { return v.ApiProperties }).(ApiPropertiesResponsePtrOutput)
+}
+
+// Specifies the projects, by project name, that are associated with this resource.
+func (o AccountPropertiesResponseOutput) AssociatedProjects() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccountPropertiesResponse) []string { return v.AssociatedProjects }).(pulumi.StringArrayOutput)
 }
 
 // The call rate limit Cognitive Services account.
@@ -1270,6 +1419,11 @@ func (o AccountPropertiesResponseOutput) CustomSubDomainName() pulumi.StringPtrO
 // Gets the date of cognitive services account creation.
 func (o AccountPropertiesResponseOutput) DateCreated() pulumi.StringOutput {
 	return o.ApplyT(func(v AccountPropertiesResponse) string { return v.DateCreated }).(pulumi.StringOutput)
+}
+
+// Specifies the project, by project name, that is targeted when data plane endpoints are called without a project parameter.
+func (o AccountPropertiesResponseOutput) DefaultProject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccountPropertiesResponse) *string { return v.DefaultProject }).(pulumi.StringPtrOutput)
 }
 
 // The deletion date, only available for deleted account.
@@ -1323,6 +1477,10 @@ func (o AccountPropertiesResponseOutput) MigrationToken() pulumi.StringPtrOutput
 // A collection of rules governing the accessibility from specific network locations.
 func (o AccountPropertiesResponseOutput) NetworkAcls() NetworkRuleSetResponsePtrOutput {
 	return o.ApplyT(func(v AccountPropertiesResponse) *NetworkRuleSetResponse { return v.NetworkAcls }).(NetworkRuleSetResponsePtrOutput)
+}
+
+func (o AccountPropertiesResponseOutput) NetworkInjections() NetworkInjectionResponseArrayOutput {
+	return o.ApplyT(func(v AccountPropertiesResponse) []NetworkInjectionResponse { return v.NetworkInjections }).(NetworkInjectionResponseArrayOutput)
 }
 
 // The private endpoint connection associated with the Cognitive Services account.
@@ -2023,17 +2181,21 @@ type ApiKeyAuthConnectionProperties struct {
 	// Category of the connection
 	Category *string `pulumi:"category"`
 	// Api key object for connection credential.
-	Credentials   *ConnectionApiKey `pulumi:"credentials"`
-	Error         *string           `pulumi:"error"`
-	ExpiryTime    *string           `pulumi:"expiryTime"`
-	IsSharedToAll *bool             `pulumi:"isSharedToAll"`
+	Credentials *ConnectionApiKey `pulumi:"credentials"`
+	// Provides the error message if the connection fails
+	Error         *string `pulumi:"error"`
+	ExpiryTime    *string `pulumi:"expiryTime"`
+	IsSharedToAll *bool   `pulumi:"isSharedToAll"`
 	// Store user metadata for this connection
-	Metadata                    map[string]string `pulumi:"metadata"`
-	PeRequirement               *string           `pulumi:"peRequirement"`
-	PeStatus                    *string           `pulumi:"peStatus"`
-	SharedUserList              []string          `pulumi:"sharedUserList"`
-	Target                      *string           `pulumi:"target"`
-	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
+	Metadata map[string]string `pulumi:"metadata"`
+	// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
+	PeRequirement *string `pulumi:"peRequirement"`
+	// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
+	PeStatus       *string  `pulumi:"peStatus"`
+	SharedUserList []string `pulumi:"sharedUserList"`
+	// The connection URL to be used.
+	Target                      *string `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool   `pulumi:"useWorkspaceManagedIdentity"`
 }
 
 // ApiKeyAuthConnectionPropertiesInput is an input type that accepts ApiKeyAuthConnectionPropertiesArgs and ApiKeyAuthConnectionPropertiesOutput values.
@@ -2077,17 +2239,21 @@ type ApiKeyAuthConnectionPropertiesArgs struct {
 	// Category of the connection
 	Category pulumi.StringPtrInput `pulumi:"category"`
 	// Api key object for connection credential.
-	Credentials   ConnectionApiKeyPtrInput `pulumi:"credentials"`
-	Error         pulumi.StringPtrInput    `pulumi:"error"`
-	ExpiryTime    pulumi.StringPtrInput    `pulumi:"expiryTime"`
-	IsSharedToAll pulumi.BoolPtrInput      `pulumi:"isSharedToAll"`
+	Credentials ConnectionApiKeyPtrInput `pulumi:"credentials"`
+	// Provides the error message if the connection fails
+	Error         pulumi.StringPtrInput `pulumi:"error"`
+	ExpiryTime    pulumi.StringPtrInput `pulumi:"expiryTime"`
+	IsSharedToAll pulumi.BoolPtrInput   `pulumi:"isSharedToAll"`
 	// Store user metadata for this connection
-	Metadata                    pulumi.StringMapInput   `pulumi:"metadata"`
-	PeRequirement               pulumi.StringPtrInput   `pulumi:"peRequirement"`
-	PeStatus                    pulumi.StringPtrInput   `pulumi:"peStatus"`
-	SharedUserList              pulumi.StringArrayInput `pulumi:"sharedUserList"`
-	Target                      pulumi.StringPtrInput   `pulumi:"target"`
-	UseWorkspaceManagedIdentity pulumi.BoolPtrInput     `pulumi:"useWorkspaceManagedIdentity"`
+	Metadata pulumi.StringMapInput `pulumi:"metadata"`
+	// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
+	PeRequirement pulumi.StringPtrInput `pulumi:"peRequirement"`
+	// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
+	PeStatus       pulumi.StringPtrInput   `pulumi:"peStatus"`
+	SharedUserList pulumi.StringArrayInput `pulumi:"sharedUserList"`
+	// The connection URL to be used.
+	Target                      pulumi.StringPtrInput `pulumi:"target"`
+	UseWorkspaceManagedIdentity pulumi.BoolPtrInput   `pulumi:"useWorkspaceManagedIdentity"`
 }
 
 func (ApiKeyAuthConnectionPropertiesArgs) ElementType() reflect.Type {
@@ -2155,6 +2321,7 @@ func (o ApiKeyAuthConnectionPropertiesOutput) Credentials() ConnectionApiKeyPtrO
 	return o.ApplyT(func(v ApiKeyAuthConnectionProperties) *ConnectionApiKey { return v.Credentials }).(ConnectionApiKeyPtrOutput)
 }
 
+// Provides the error message if the connection fails
 func (o ApiKeyAuthConnectionPropertiesOutput) Error() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiKeyAuthConnectionProperties) *string { return v.Error }).(pulumi.StringPtrOutput)
 }
@@ -2172,10 +2339,12 @@ func (o ApiKeyAuthConnectionPropertiesOutput) Metadata() pulumi.StringMapOutput 
 	return o.ApplyT(func(v ApiKeyAuthConnectionProperties) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
+// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
 func (o ApiKeyAuthConnectionPropertiesOutput) PeRequirement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiKeyAuthConnectionProperties) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
 func (o ApiKeyAuthConnectionPropertiesOutput) PeStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiKeyAuthConnectionProperties) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
 }
@@ -2184,6 +2353,7 @@ func (o ApiKeyAuthConnectionPropertiesOutput) SharedUserList() pulumi.StringArra
 	return o.ApplyT(func(v ApiKeyAuthConnectionProperties) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
 }
 
+// The connection URL to be used.
 func (o ApiKeyAuthConnectionPropertiesOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiKeyAuthConnectionProperties) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
@@ -2224,18 +2394,22 @@ type ApiKeyAuthConnectionPropertiesResponse struct {
 	CreatedByWorkspaceArmId string  `pulumi:"createdByWorkspaceArmId"`
 	// Api key object for connection credential.
 	Credentials *ConnectionApiKeyResponse `pulumi:"credentials"`
-	Error       *string                   `pulumi:"error"`
-	ExpiryTime  *string                   `pulumi:"expiryTime"`
+	// Provides the error message if the connection fails
+	Error      *string `pulumi:"error"`
+	ExpiryTime *string `pulumi:"expiryTime"`
 	// Group based on connection category
 	Group         string `pulumi:"group"`
 	IsSharedToAll *bool  `pulumi:"isSharedToAll"`
 	// Store user metadata for this connection
-	Metadata                    map[string]string `pulumi:"metadata"`
-	PeRequirement               *string           `pulumi:"peRequirement"`
-	PeStatus                    *string           `pulumi:"peStatus"`
-	SharedUserList              []string          `pulumi:"sharedUserList"`
-	Target                      *string           `pulumi:"target"`
-	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
+	Metadata map[string]string `pulumi:"metadata"`
+	// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
+	PeRequirement *string `pulumi:"peRequirement"`
+	// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
+	PeStatus       *string  `pulumi:"peStatus"`
+	SharedUserList []string `pulumi:"sharedUserList"`
+	// The connection URL to be used.
+	Target                      *string `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool   `pulumi:"useWorkspaceManagedIdentity"`
 }
 
 // This connection type covers the generic ApiKey auth connection categories, for examples:
@@ -2295,6 +2469,7 @@ func (o ApiKeyAuthConnectionPropertiesResponseOutput) Credentials() ConnectionAp
 	return o.ApplyT(func(v ApiKeyAuthConnectionPropertiesResponse) *ConnectionApiKeyResponse { return v.Credentials }).(ConnectionApiKeyResponsePtrOutput)
 }
 
+// Provides the error message if the connection fails
 func (o ApiKeyAuthConnectionPropertiesResponseOutput) Error() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiKeyAuthConnectionPropertiesResponse) *string { return v.Error }).(pulumi.StringPtrOutput)
 }
@@ -2317,10 +2492,12 @@ func (o ApiKeyAuthConnectionPropertiesResponseOutput) Metadata() pulumi.StringMa
 	return o.ApplyT(func(v ApiKeyAuthConnectionPropertiesResponse) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
+// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
 func (o ApiKeyAuthConnectionPropertiesResponseOutput) PeRequirement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiKeyAuthConnectionPropertiesResponse) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
 func (o ApiKeyAuthConnectionPropertiesResponseOutput) PeStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiKeyAuthConnectionPropertiesResponse) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
 }
@@ -2329,6 +2506,7 @@ func (o ApiKeyAuthConnectionPropertiesResponseOutput) SharedUserList() pulumi.St
 	return o.ApplyT(func(v ApiKeyAuthConnectionPropertiesResponse) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
 }
 
+// The connection URL to be used.
 func (o ApiKeyAuthConnectionPropertiesResponseOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiKeyAuthConnectionPropertiesResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
@@ -3594,27 +3772,14 @@ type CapabilityHost struct {
 	CustomerSubnet *string `pulumi:"customerSubnet"`
 	// The asset description text.
 	Description *string `pulumi:"description"`
-	// List of Storage connections.
+	// List of connection names from those available in the account or project to be used as a storage resource.
 	StorageConnections []string `pulumi:"storageConnections"`
 	// Tag dictionary. Tags can be added, removed, and updated.
 	Tags map[string]string `pulumi:"tags"`
-	// List of Thread storage connections.
+	// List of connection names from those available in the account or project to be used for Thread storage.
 	ThreadStorageConnections []string `pulumi:"threadStorageConnections"`
-	// List of VectorStore connections.
+	// List of connection names from those available in the account or project to be used for vector database (e.g. CosmosDB).
 	VectorStoreConnections []string `pulumi:"vectorStoreConnections"`
-}
-
-// Defaults sets the appropriate defaults for CapabilityHost
-func (val *CapabilityHost) Defaults() *CapabilityHost {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.CapabilityHostKind == nil {
-		capabilityHostKind_ := "Agents"
-		tmp.CapabilityHostKind = &capabilityHostKind_
-	}
-	return &tmp
 }
 
 // CapabilityHostInput is an input type that accepts CapabilityHostArgs and CapabilityHostOutput values.
@@ -3637,27 +3802,16 @@ type CapabilityHostArgs struct {
 	CustomerSubnet pulumi.StringPtrInput `pulumi:"customerSubnet"`
 	// The asset description text.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// List of Storage connections.
+	// List of connection names from those available in the account or project to be used as a storage resource.
 	StorageConnections pulumi.StringArrayInput `pulumi:"storageConnections"`
 	// Tag dictionary. Tags can be added, removed, and updated.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// List of Thread storage connections.
+	// List of connection names from those available in the account or project to be used for Thread storage.
 	ThreadStorageConnections pulumi.StringArrayInput `pulumi:"threadStorageConnections"`
-	// List of VectorStore connections.
+	// List of connection names from those available in the account or project to be used for vector database (e.g. CosmosDB).
 	VectorStoreConnections pulumi.StringArrayInput `pulumi:"vectorStoreConnections"`
 }
 
-// Defaults sets the appropriate defaults for CapabilityHostArgs
-func (val *CapabilityHostArgs) Defaults() *CapabilityHostArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.CapabilityHostKind == nil {
-		tmp.CapabilityHostKind = pulumi.StringPtr("Agents")
-	}
-	return &tmp
-}
 func (CapabilityHostArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*CapabilityHost)(nil)).Elem()
 }
@@ -3704,7 +3858,7 @@ func (o CapabilityHostOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CapabilityHost) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// List of Storage connections.
+// List of connection names from those available in the account or project to be used as a storage resource.
 func (o CapabilityHostOutput) StorageConnections() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CapabilityHost) []string { return v.StorageConnections }).(pulumi.StringArrayOutput)
 }
@@ -3714,12 +3868,12 @@ func (o CapabilityHostOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v CapabilityHost) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// List of Thread storage connections.
+// List of connection names from those available in the account or project to be used for Thread storage.
 func (o CapabilityHostOutput) ThreadStorageConnections() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CapabilityHost) []string { return v.ThreadStorageConnections }).(pulumi.StringArrayOutput)
 }
 
-// List of VectorStore connections.
+// List of connection names from those available in the account or project to be used for vector database (e.g. CosmosDB).
 func (o CapabilityHostOutput) VectorStoreConnections() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CapabilityHost) []string { return v.VectorStoreConnections }).(pulumi.StringArrayOutput)
 }
@@ -3735,27 +3889,14 @@ type CapabilityHostResponse struct {
 	Description *string `pulumi:"description"`
 	// Provisioning state for the CapabilityHost.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// List of Storage connections.
+	// List of connection names from those available in the account or project to be used as a storage resource.
 	StorageConnections []string `pulumi:"storageConnections"`
 	// Tag dictionary. Tags can be added, removed, and updated.
 	Tags map[string]string `pulumi:"tags"`
-	// List of Thread storage connections.
+	// List of connection names from those available in the account or project to be used for Thread storage.
 	ThreadStorageConnections []string `pulumi:"threadStorageConnections"`
-	// List of VectorStore connections.
+	// List of connection names from those available in the account or project to be used for vector database (e.g. CosmosDB).
 	VectorStoreConnections []string `pulumi:"vectorStoreConnections"`
-}
-
-// Defaults sets the appropriate defaults for CapabilityHostResponse
-func (val *CapabilityHostResponse) Defaults() *CapabilityHostResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.CapabilityHostKind == nil {
-		capabilityHostKind_ := "Agents"
-		tmp.CapabilityHostKind = &capabilityHostKind_
-	}
-	return &tmp
 }
 
 type CapabilityHostResponseOutput struct{ *pulumi.OutputState }
@@ -3797,7 +3938,7 @@ func (o CapabilityHostResponseOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v CapabilityHostResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// List of Storage connections.
+// List of connection names from those available in the account or project to be used as a storage resource.
 func (o CapabilityHostResponseOutput) StorageConnections() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CapabilityHostResponse) []string { return v.StorageConnections }).(pulumi.StringArrayOutput)
 }
@@ -3807,12 +3948,12 @@ func (o CapabilityHostResponseOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v CapabilityHostResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// List of Thread storage connections.
+// List of connection names from those available in the account or project to be used for Thread storage.
 func (o CapabilityHostResponseOutput) ThreadStorageConnections() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CapabilityHostResponse) []string { return v.ThreadStorageConnections }).(pulumi.StringArrayOutput)
 }
 
-// List of VectorStore connections.
+// List of connection names from those available in the account or project to be used for vector database (e.g. CosmosDB).
 func (o CapabilityHostResponseOutput) VectorStoreConnections() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CapabilityHostResponse) []string { return v.VectorStoreConnections }).(pulumi.StringArrayOutput)
 }
@@ -7236,17 +7377,21 @@ type CustomKeysConnectionProperties struct {
 	// Category of the connection
 	Category *string `pulumi:"category"`
 	// Custom Keys credential object
-	Credentials   *CustomKeys `pulumi:"credentials"`
-	Error         *string     `pulumi:"error"`
-	ExpiryTime    *string     `pulumi:"expiryTime"`
-	IsSharedToAll *bool       `pulumi:"isSharedToAll"`
+	Credentials *CustomKeys `pulumi:"credentials"`
+	// Provides the error message if the connection fails
+	Error         *string `pulumi:"error"`
+	ExpiryTime    *string `pulumi:"expiryTime"`
+	IsSharedToAll *bool   `pulumi:"isSharedToAll"`
 	// Store user metadata for this connection
-	Metadata                    map[string]string `pulumi:"metadata"`
-	PeRequirement               *string           `pulumi:"peRequirement"`
-	PeStatus                    *string           `pulumi:"peStatus"`
-	SharedUserList              []string          `pulumi:"sharedUserList"`
-	Target                      *string           `pulumi:"target"`
-	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
+	Metadata map[string]string `pulumi:"metadata"`
+	// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
+	PeRequirement *string `pulumi:"peRequirement"`
+	// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
+	PeStatus       *string  `pulumi:"peStatus"`
+	SharedUserList []string `pulumi:"sharedUserList"`
+	// The connection URL to be used.
+	Target                      *string `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool   `pulumi:"useWorkspaceManagedIdentity"`
 }
 
 // CustomKeysConnectionPropertiesInput is an input type that accepts CustomKeysConnectionPropertiesArgs and CustomKeysConnectionPropertiesOutput values.
@@ -7272,17 +7417,21 @@ type CustomKeysConnectionPropertiesArgs struct {
 	// Category of the connection
 	Category pulumi.StringPtrInput `pulumi:"category"`
 	// Custom Keys credential object
-	Credentials   CustomKeysPtrInput    `pulumi:"credentials"`
+	Credentials CustomKeysPtrInput `pulumi:"credentials"`
+	// Provides the error message if the connection fails
 	Error         pulumi.StringPtrInput `pulumi:"error"`
 	ExpiryTime    pulumi.StringPtrInput `pulumi:"expiryTime"`
 	IsSharedToAll pulumi.BoolPtrInput   `pulumi:"isSharedToAll"`
 	// Store user metadata for this connection
-	Metadata                    pulumi.StringMapInput   `pulumi:"metadata"`
-	PeRequirement               pulumi.StringPtrInput   `pulumi:"peRequirement"`
-	PeStatus                    pulumi.StringPtrInput   `pulumi:"peStatus"`
-	SharedUserList              pulumi.StringArrayInput `pulumi:"sharedUserList"`
-	Target                      pulumi.StringPtrInput   `pulumi:"target"`
-	UseWorkspaceManagedIdentity pulumi.BoolPtrInput     `pulumi:"useWorkspaceManagedIdentity"`
+	Metadata pulumi.StringMapInput `pulumi:"metadata"`
+	// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
+	PeRequirement pulumi.StringPtrInput `pulumi:"peRequirement"`
+	// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
+	PeStatus       pulumi.StringPtrInput   `pulumi:"peStatus"`
+	SharedUserList pulumi.StringArrayInput `pulumi:"sharedUserList"`
+	// The connection URL to be used.
+	Target                      pulumi.StringPtrInput `pulumi:"target"`
+	UseWorkspaceManagedIdentity pulumi.BoolPtrInput   `pulumi:"useWorkspaceManagedIdentity"`
 }
 
 func (CustomKeysConnectionPropertiesArgs) ElementType() reflect.Type {
@@ -7332,6 +7481,7 @@ func (o CustomKeysConnectionPropertiesOutput) Credentials() CustomKeysPtrOutput 
 	return o.ApplyT(func(v CustomKeysConnectionProperties) *CustomKeys { return v.Credentials }).(CustomKeysPtrOutput)
 }
 
+// Provides the error message if the connection fails
 func (o CustomKeysConnectionPropertiesOutput) Error() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomKeysConnectionProperties) *string { return v.Error }).(pulumi.StringPtrOutput)
 }
@@ -7349,10 +7499,12 @@ func (o CustomKeysConnectionPropertiesOutput) Metadata() pulumi.StringMapOutput 
 	return o.ApplyT(func(v CustomKeysConnectionProperties) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
+// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
 func (o CustomKeysConnectionPropertiesOutput) PeRequirement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomKeysConnectionProperties) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
 func (o CustomKeysConnectionPropertiesOutput) PeStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomKeysConnectionProperties) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
 }
@@ -7361,6 +7513,7 @@ func (o CustomKeysConnectionPropertiesOutput) SharedUserList() pulumi.StringArra
 	return o.ApplyT(func(v CustomKeysConnectionProperties) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
 }
 
+// The connection URL to be used.
 func (o CustomKeysConnectionPropertiesOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomKeysConnectionProperties) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
@@ -7383,18 +7536,22 @@ type CustomKeysConnectionPropertiesResponse struct {
 	CreatedByWorkspaceArmId string  `pulumi:"createdByWorkspaceArmId"`
 	// Custom Keys credential object
 	Credentials *CustomKeysResponse `pulumi:"credentials"`
-	Error       *string             `pulumi:"error"`
-	ExpiryTime  *string             `pulumi:"expiryTime"`
+	// Provides the error message if the connection fails
+	Error      *string `pulumi:"error"`
+	ExpiryTime *string `pulumi:"expiryTime"`
 	// Group based on connection category
 	Group         string `pulumi:"group"`
 	IsSharedToAll *bool  `pulumi:"isSharedToAll"`
 	// Store user metadata for this connection
-	Metadata                    map[string]string `pulumi:"metadata"`
-	PeRequirement               *string           `pulumi:"peRequirement"`
-	PeStatus                    *string           `pulumi:"peStatus"`
-	SharedUserList              []string          `pulumi:"sharedUserList"`
-	Target                      *string           `pulumi:"target"`
-	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
+	Metadata map[string]string `pulumi:"metadata"`
+	// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
+	PeRequirement *string `pulumi:"peRequirement"`
+	// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
+	PeStatus       *string  `pulumi:"peStatus"`
+	SharedUserList []string `pulumi:"sharedUserList"`
+	// The connection URL to be used.
+	Target                      *string `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool   `pulumi:"useWorkspaceManagedIdentity"`
 }
 
 // Category:= CustomKeys
@@ -7436,6 +7593,7 @@ func (o CustomKeysConnectionPropertiesResponseOutput) Credentials() CustomKeysRe
 	return o.ApplyT(func(v CustomKeysConnectionPropertiesResponse) *CustomKeysResponse { return v.Credentials }).(CustomKeysResponsePtrOutput)
 }
 
+// Provides the error message if the connection fails
 func (o CustomKeysConnectionPropertiesResponseOutput) Error() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomKeysConnectionPropertiesResponse) *string { return v.Error }).(pulumi.StringPtrOutput)
 }
@@ -7458,10 +7616,12 @@ func (o CustomKeysConnectionPropertiesResponseOutput) Metadata() pulumi.StringMa
 	return o.ApplyT(func(v CustomKeysConnectionPropertiesResponse) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
+// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
 func (o CustomKeysConnectionPropertiesResponseOutput) PeRequirement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomKeysConnectionPropertiesResponse) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
 func (o CustomKeysConnectionPropertiesResponseOutput) PeStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomKeysConnectionPropertiesResponse) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
 }
@@ -7470,6 +7630,7 @@ func (o CustomKeysConnectionPropertiesResponseOutput) SharedUserList() pulumi.St
 	return o.ApplyT(func(v CustomKeysConnectionPropertiesResponse) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
 }
 
+// The connection URL to be used.
 func (o CustomKeysConnectionPropertiesResponseOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomKeysConnectionPropertiesResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
@@ -8360,6 +8521,8 @@ type DeploymentProperties struct {
 	RaiPolicyName *string `pulumi:"raiPolicyName"`
 	// Properties of Cognitive Services account deployment model. (Deprecated, please use Deployment.sku instead.)
 	ScaleSettings *DeploymentScaleSettings `pulumi:"scaleSettings"`
+	// Specifies the deployment name that should serve requests when the request would have otherwise been throttled due to reaching current deployment throughput limit.
+	SpilloverDeploymentName *string `pulumi:"spilloverDeploymentName"`
 	// Deployment model version upgrade option.
 	VersionUpgradeOption *string `pulumi:"versionUpgradeOption"`
 }
@@ -8389,6 +8552,8 @@ type DeploymentPropertiesArgs struct {
 	RaiPolicyName pulumi.StringPtrInput `pulumi:"raiPolicyName"`
 	// Properties of Cognitive Services account deployment model. (Deprecated, please use Deployment.sku instead.)
 	ScaleSettings DeploymentScaleSettingsPtrInput `pulumi:"scaleSettings"`
+	// Specifies the deployment name that should serve requests when the request would have otherwise been throttled due to reaching current deployment throughput limit.
+	SpilloverDeploymentName pulumi.StringPtrInput `pulumi:"spilloverDeploymentName"`
 	// Deployment model version upgrade option.
 	VersionUpgradeOption pulumi.StringPtrInput `pulumi:"versionUpgradeOption"`
 }
@@ -8501,6 +8666,11 @@ func (o DeploymentPropertiesOutput) ScaleSettings() DeploymentScaleSettingsPtrOu
 	return o.ApplyT(func(v DeploymentProperties) *DeploymentScaleSettings { return v.ScaleSettings }).(DeploymentScaleSettingsPtrOutput)
 }
 
+// Specifies the deployment name that should serve requests when the request would have otherwise been throttled due to reaching current deployment throughput limit.
+func (o DeploymentPropertiesOutput) SpilloverDeploymentName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentProperties) *string { return v.SpilloverDeploymentName }).(pulumi.StringPtrOutput)
+}
+
 // Deployment model version upgrade option.
 func (o DeploymentPropertiesOutput) VersionUpgradeOption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeploymentProperties) *string { return v.VersionUpgradeOption }).(pulumi.StringPtrOutput)
@@ -8590,6 +8760,16 @@ func (o DeploymentPropertiesPtrOutput) ScaleSettings() DeploymentScaleSettingsPt
 	}).(DeploymentScaleSettingsPtrOutput)
 }
 
+// Specifies the deployment name that should serve requests when the request would have otherwise been throttled due to reaching current deployment throughput limit.
+func (o DeploymentPropertiesPtrOutput) SpilloverDeploymentName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SpilloverDeploymentName
+	}).(pulumi.StringPtrOutput)
+}
+
 // Deployment model version upgrade option.
 func (o DeploymentPropertiesPtrOutput) VersionUpgradeOption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeploymentProperties) *string {
@@ -8623,6 +8803,8 @@ type DeploymentPropertiesResponse struct {
 	RateLimits    []ThrottlingRuleResponse `pulumi:"rateLimits"`
 	// Properties of Cognitive Services account deployment model. (Deprecated, please use Deployment.sku instead.)
 	ScaleSettings *DeploymentScaleSettingsResponse `pulumi:"scaleSettings"`
+	// Specifies the deployment name that should serve requests when the request would have otherwise been throttled due to reaching current deployment throughput limit.
+	SpilloverDeploymentName *string `pulumi:"spilloverDeploymentName"`
 	// Deployment model version upgrade option.
 	VersionUpgradeOption *string `pulumi:"versionUpgradeOption"`
 }
@@ -8694,6 +8876,11 @@ func (o DeploymentPropertiesResponseOutput) RateLimits() ThrottlingRuleResponseA
 // Properties of Cognitive Services account deployment model. (Deprecated, please use Deployment.sku instead.)
 func (o DeploymentPropertiesResponseOutput) ScaleSettings() DeploymentScaleSettingsResponsePtrOutput {
 	return o.ApplyT(func(v DeploymentPropertiesResponse) *DeploymentScaleSettingsResponse { return v.ScaleSettings }).(DeploymentScaleSettingsResponsePtrOutput)
+}
+
+// Specifies the deployment name that should serve requests when the request would have otherwise been throttled due to reaching current deployment throughput limit.
+func (o DeploymentPropertiesResponseOutput) SpilloverDeploymentName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentPropertiesResponse) *string { return v.SpilloverDeploymentName }).(pulumi.StringPtrOutput)
 }
 
 // Deployment model version upgrade option.
@@ -10794,18 +10981,22 @@ type ManagedIdentityAuthTypeConnectionProperties struct {
 	// Expected value is 'ManagedIdentity'.
 	AuthType string `pulumi:"authType"`
 	// Category of the connection
-	Category      *string                    `pulumi:"category"`
-	Credentials   *ConnectionManagedIdentity `pulumi:"credentials"`
-	Error         *string                    `pulumi:"error"`
-	ExpiryTime    *string                    `pulumi:"expiryTime"`
-	IsSharedToAll *bool                      `pulumi:"isSharedToAll"`
+	Category    *string                    `pulumi:"category"`
+	Credentials *ConnectionManagedIdentity `pulumi:"credentials"`
+	// Provides the error message if the connection fails
+	Error         *string `pulumi:"error"`
+	ExpiryTime    *string `pulumi:"expiryTime"`
+	IsSharedToAll *bool   `pulumi:"isSharedToAll"`
 	// Store user metadata for this connection
-	Metadata                    map[string]string `pulumi:"metadata"`
-	PeRequirement               *string           `pulumi:"peRequirement"`
-	PeStatus                    *string           `pulumi:"peStatus"`
-	SharedUserList              []string          `pulumi:"sharedUserList"`
-	Target                      *string           `pulumi:"target"`
-	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
+	Metadata map[string]string `pulumi:"metadata"`
+	// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
+	PeRequirement *string `pulumi:"peRequirement"`
+	// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
+	PeStatus       *string  `pulumi:"peStatus"`
+	SharedUserList []string `pulumi:"sharedUserList"`
+	// The connection URL to be used.
+	Target                      *string `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool   `pulumi:"useWorkspaceManagedIdentity"`
 }
 
 // ManagedIdentityAuthTypeConnectionPropertiesInput is an input type that accepts ManagedIdentityAuthTypeConnectionPropertiesArgs and ManagedIdentityAuthTypeConnectionPropertiesOutput values.
@@ -10824,18 +11015,22 @@ type ManagedIdentityAuthTypeConnectionPropertiesArgs struct {
 	// Expected value is 'ManagedIdentity'.
 	AuthType pulumi.StringInput `pulumi:"authType"`
 	// Category of the connection
-	Category      pulumi.StringPtrInput             `pulumi:"category"`
-	Credentials   ConnectionManagedIdentityPtrInput `pulumi:"credentials"`
-	Error         pulumi.StringPtrInput             `pulumi:"error"`
-	ExpiryTime    pulumi.StringPtrInput             `pulumi:"expiryTime"`
-	IsSharedToAll pulumi.BoolPtrInput               `pulumi:"isSharedToAll"`
+	Category    pulumi.StringPtrInput             `pulumi:"category"`
+	Credentials ConnectionManagedIdentityPtrInput `pulumi:"credentials"`
+	// Provides the error message if the connection fails
+	Error         pulumi.StringPtrInput `pulumi:"error"`
+	ExpiryTime    pulumi.StringPtrInput `pulumi:"expiryTime"`
+	IsSharedToAll pulumi.BoolPtrInput   `pulumi:"isSharedToAll"`
 	// Store user metadata for this connection
-	Metadata                    pulumi.StringMapInput   `pulumi:"metadata"`
-	PeRequirement               pulumi.StringPtrInput   `pulumi:"peRequirement"`
-	PeStatus                    pulumi.StringPtrInput   `pulumi:"peStatus"`
-	SharedUserList              pulumi.StringArrayInput `pulumi:"sharedUserList"`
-	Target                      pulumi.StringPtrInput   `pulumi:"target"`
-	UseWorkspaceManagedIdentity pulumi.BoolPtrInput     `pulumi:"useWorkspaceManagedIdentity"`
+	Metadata pulumi.StringMapInput `pulumi:"metadata"`
+	// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
+	PeRequirement pulumi.StringPtrInput `pulumi:"peRequirement"`
+	// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
+	PeStatus       pulumi.StringPtrInput   `pulumi:"peStatus"`
+	SharedUserList pulumi.StringArrayInput `pulumi:"sharedUserList"`
+	// The connection URL to be used.
+	Target                      pulumi.StringPtrInput `pulumi:"target"`
+	UseWorkspaceManagedIdentity pulumi.BoolPtrInput   `pulumi:"useWorkspaceManagedIdentity"`
 }
 
 func (ManagedIdentityAuthTypeConnectionPropertiesArgs) ElementType() reflect.Type {
@@ -10879,6 +11074,7 @@ func (o ManagedIdentityAuthTypeConnectionPropertiesOutput) Credentials() Connect
 	return o.ApplyT(func(v ManagedIdentityAuthTypeConnectionProperties) *ConnectionManagedIdentity { return v.Credentials }).(ConnectionManagedIdentityPtrOutput)
 }
 
+// Provides the error message if the connection fails
 func (o ManagedIdentityAuthTypeConnectionPropertiesOutput) Error() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedIdentityAuthTypeConnectionProperties) *string { return v.Error }).(pulumi.StringPtrOutput)
 }
@@ -10896,10 +11092,12 @@ func (o ManagedIdentityAuthTypeConnectionPropertiesOutput) Metadata() pulumi.Str
 	return o.ApplyT(func(v ManagedIdentityAuthTypeConnectionProperties) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
+// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
 func (o ManagedIdentityAuthTypeConnectionPropertiesOutput) PeRequirement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedIdentityAuthTypeConnectionProperties) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
 func (o ManagedIdentityAuthTypeConnectionPropertiesOutput) PeStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedIdentityAuthTypeConnectionProperties) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
 }
@@ -10908,6 +11106,7 @@ func (o ManagedIdentityAuthTypeConnectionPropertiesOutput) SharedUserList() pulu
 	return o.ApplyT(func(v ManagedIdentityAuthTypeConnectionProperties) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
 }
 
+// The connection URL to be used.
 func (o ManagedIdentityAuthTypeConnectionPropertiesOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedIdentityAuthTypeConnectionProperties) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
@@ -10924,18 +11123,22 @@ type ManagedIdentityAuthTypeConnectionPropertiesResponse struct {
 	Category                *string                            `pulumi:"category"`
 	CreatedByWorkspaceArmId string                             `pulumi:"createdByWorkspaceArmId"`
 	Credentials             *ConnectionManagedIdentityResponse `pulumi:"credentials"`
-	Error                   *string                            `pulumi:"error"`
-	ExpiryTime              *string                            `pulumi:"expiryTime"`
+	// Provides the error message if the connection fails
+	Error      *string `pulumi:"error"`
+	ExpiryTime *string `pulumi:"expiryTime"`
 	// Group based on connection category
 	Group         string `pulumi:"group"`
 	IsSharedToAll *bool  `pulumi:"isSharedToAll"`
 	// Store user metadata for this connection
-	Metadata                    map[string]string `pulumi:"metadata"`
-	PeRequirement               *string           `pulumi:"peRequirement"`
-	PeStatus                    *string           `pulumi:"peStatus"`
-	SharedUserList              []string          `pulumi:"sharedUserList"`
-	Target                      *string           `pulumi:"target"`
-	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
+	Metadata map[string]string `pulumi:"metadata"`
+	// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
+	PeRequirement *string `pulumi:"peRequirement"`
+	// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
+	PeStatus       *string  `pulumi:"peStatus"`
+	SharedUserList []string `pulumi:"sharedUserList"`
+	// The connection URL to be used.
+	Target                      *string `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool   `pulumi:"useWorkspaceManagedIdentity"`
 }
 
 type ManagedIdentityAuthTypeConnectionPropertiesResponseOutput struct{ *pulumi.OutputState }
@@ -10973,6 +11176,7 @@ func (o ManagedIdentityAuthTypeConnectionPropertiesResponseOutput) Credentials()
 	}).(ConnectionManagedIdentityResponsePtrOutput)
 }
 
+// Provides the error message if the connection fails
 func (o ManagedIdentityAuthTypeConnectionPropertiesResponseOutput) Error() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedIdentityAuthTypeConnectionPropertiesResponse) *string { return v.Error }).(pulumi.StringPtrOutput)
 }
@@ -10995,10 +11199,12 @@ func (o ManagedIdentityAuthTypeConnectionPropertiesResponseOutput) Metadata() pu
 	return o.ApplyT(func(v ManagedIdentityAuthTypeConnectionPropertiesResponse) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
+// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
 func (o ManagedIdentityAuthTypeConnectionPropertiesResponseOutput) PeRequirement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedIdentityAuthTypeConnectionPropertiesResponse) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
 func (o ManagedIdentityAuthTypeConnectionPropertiesResponseOutput) PeStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedIdentityAuthTypeConnectionPropertiesResponse) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
 }
@@ -11007,6 +11213,7 @@ func (o ManagedIdentityAuthTypeConnectionPropertiesResponseOutput) SharedUserLis
 	return o.ApplyT(func(v ManagedIdentityAuthTypeConnectionPropertiesResponse) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
 }
 
+// The connection URL to be used.
 func (o ManagedIdentityAuthTypeConnectionPropertiesResponseOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedIdentityAuthTypeConnectionPropertiesResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
@@ -11244,6 +11451,184 @@ func (o MultiRegionSettingsResponsePtrOutput) RoutingMethod() pulumi.StringPtrOu
 		}
 		return v.RoutingMethod
 	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies in AI Foundry where virtual network injection occurs to secure scenarios like Agents entirely within the user's private network, eliminating public internet exposure while maintaining control over network configurations and resources.
+type NetworkInjection struct {
+	// Specifies what features in AI Foundry network injection applies to. Currently only supports 'agent' for agent scenarios. 'none' means no network injection.
+	Scenario *string `pulumi:"scenario"`
+	// Specify the subnet for which your Agent Client is injected into.
+	SubnetArmId *string `pulumi:"subnetArmId"`
+	// Boolean to enable Microsoft Managed Network for subnet delegation
+	UseMicrosoftManagedNetwork *bool `pulumi:"useMicrosoftManagedNetwork"`
+}
+
+// NetworkInjectionInput is an input type that accepts NetworkInjectionArgs and NetworkInjectionOutput values.
+// You can construct a concrete instance of `NetworkInjectionInput` via:
+//
+//	NetworkInjectionArgs{...}
+type NetworkInjectionInput interface {
+	pulumi.Input
+
+	ToNetworkInjectionOutput() NetworkInjectionOutput
+	ToNetworkInjectionOutputWithContext(context.Context) NetworkInjectionOutput
+}
+
+// Specifies in AI Foundry where virtual network injection occurs to secure scenarios like Agents entirely within the user's private network, eliminating public internet exposure while maintaining control over network configurations and resources.
+type NetworkInjectionArgs struct {
+	// Specifies what features in AI Foundry network injection applies to. Currently only supports 'agent' for agent scenarios. 'none' means no network injection.
+	Scenario pulumi.StringPtrInput `pulumi:"scenario"`
+	// Specify the subnet for which your Agent Client is injected into.
+	SubnetArmId pulumi.StringPtrInput `pulumi:"subnetArmId"`
+	// Boolean to enable Microsoft Managed Network for subnet delegation
+	UseMicrosoftManagedNetwork pulumi.BoolPtrInput `pulumi:"useMicrosoftManagedNetwork"`
+}
+
+func (NetworkInjectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkInjection)(nil)).Elem()
+}
+
+func (i NetworkInjectionArgs) ToNetworkInjectionOutput() NetworkInjectionOutput {
+	return i.ToNetworkInjectionOutputWithContext(context.Background())
+}
+
+func (i NetworkInjectionArgs) ToNetworkInjectionOutputWithContext(ctx context.Context) NetworkInjectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkInjectionOutput)
+}
+
+// NetworkInjectionArrayInput is an input type that accepts NetworkInjectionArray and NetworkInjectionArrayOutput values.
+// You can construct a concrete instance of `NetworkInjectionArrayInput` via:
+//
+//	NetworkInjectionArray{ NetworkInjectionArgs{...} }
+type NetworkInjectionArrayInput interface {
+	pulumi.Input
+
+	ToNetworkInjectionArrayOutput() NetworkInjectionArrayOutput
+	ToNetworkInjectionArrayOutputWithContext(context.Context) NetworkInjectionArrayOutput
+}
+
+type NetworkInjectionArray []NetworkInjectionInput
+
+func (NetworkInjectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkInjection)(nil)).Elem()
+}
+
+func (i NetworkInjectionArray) ToNetworkInjectionArrayOutput() NetworkInjectionArrayOutput {
+	return i.ToNetworkInjectionArrayOutputWithContext(context.Background())
+}
+
+func (i NetworkInjectionArray) ToNetworkInjectionArrayOutputWithContext(ctx context.Context) NetworkInjectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkInjectionArrayOutput)
+}
+
+// Specifies in AI Foundry where virtual network injection occurs to secure scenarios like Agents entirely within the user's private network, eliminating public internet exposure while maintaining control over network configurations and resources.
+type NetworkInjectionOutput struct{ *pulumi.OutputState }
+
+func (NetworkInjectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkInjection)(nil)).Elem()
+}
+
+func (o NetworkInjectionOutput) ToNetworkInjectionOutput() NetworkInjectionOutput {
+	return o
+}
+
+func (o NetworkInjectionOutput) ToNetworkInjectionOutputWithContext(ctx context.Context) NetworkInjectionOutput {
+	return o
+}
+
+// Specifies what features in AI Foundry network injection applies to. Currently only supports 'agent' for agent scenarios. 'none' means no network injection.
+func (o NetworkInjectionOutput) Scenario() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkInjection) *string { return v.Scenario }).(pulumi.StringPtrOutput)
+}
+
+// Specify the subnet for which your Agent Client is injected into.
+func (o NetworkInjectionOutput) SubnetArmId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkInjection) *string { return v.SubnetArmId }).(pulumi.StringPtrOutput)
+}
+
+// Boolean to enable Microsoft Managed Network for subnet delegation
+func (o NetworkInjectionOutput) UseMicrosoftManagedNetwork() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworkInjection) *bool { return v.UseMicrosoftManagedNetwork }).(pulumi.BoolPtrOutput)
+}
+
+type NetworkInjectionArrayOutput struct{ *pulumi.OutputState }
+
+func (NetworkInjectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkInjection)(nil)).Elem()
+}
+
+func (o NetworkInjectionArrayOutput) ToNetworkInjectionArrayOutput() NetworkInjectionArrayOutput {
+	return o
+}
+
+func (o NetworkInjectionArrayOutput) ToNetworkInjectionArrayOutputWithContext(ctx context.Context) NetworkInjectionArrayOutput {
+	return o
+}
+
+func (o NetworkInjectionArrayOutput) Index(i pulumi.IntInput) NetworkInjectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkInjection {
+		return vs[0].([]NetworkInjection)[vs[1].(int)]
+	}).(NetworkInjectionOutput)
+}
+
+// Specifies in AI Foundry where virtual network injection occurs to secure scenarios like Agents entirely within the user's private network, eliminating public internet exposure while maintaining control over network configurations and resources.
+type NetworkInjectionResponse struct {
+	// Specifies what features in AI Foundry network injection applies to. Currently only supports 'agent' for agent scenarios. 'none' means no network injection.
+	Scenario *string `pulumi:"scenario"`
+	// Specify the subnet for which your Agent Client is injected into.
+	SubnetArmId *string `pulumi:"subnetArmId"`
+	// Boolean to enable Microsoft Managed Network for subnet delegation
+	UseMicrosoftManagedNetwork *bool `pulumi:"useMicrosoftManagedNetwork"`
+}
+
+// Specifies in AI Foundry where virtual network injection occurs to secure scenarios like Agents entirely within the user's private network, eliminating public internet exposure while maintaining control over network configurations and resources.
+type NetworkInjectionResponseOutput struct{ *pulumi.OutputState }
+
+func (NetworkInjectionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkInjectionResponse)(nil)).Elem()
+}
+
+func (o NetworkInjectionResponseOutput) ToNetworkInjectionResponseOutput() NetworkInjectionResponseOutput {
+	return o
+}
+
+func (o NetworkInjectionResponseOutput) ToNetworkInjectionResponseOutputWithContext(ctx context.Context) NetworkInjectionResponseOutput {
+	return o
+}
+
+// Specifies what features in AI Foundry network injection applies to. Currently only supports 'agent' for agent scenarios. 'none' means no network injection.
+func (o NetworkInjectionResponseOutput) Scenario() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkInjectionResponse) *string { return v.Scenario }).(pulumi.StringPtrOutput)
+}
+
+// Specify the subnet for which your Agent Client is injected into.
+func (o NetworkInjectionResponseOutput) SubnetArmId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkInjectionResponse) *string { return v.SubnetArmId }).(pulumi.StringPtrOutput)
+}
+
+// Boolean to enable Microsoft Managed Network for subnet delegation
+func (o NetworkInjectionResponseOutput) UseMicrosoftManagedNetwork() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworkInjectionResponse) *bool { return v.UseMicrosoftManagedNetwork }).(pulumi.BoolPtrOutput)
+}
+
+type NetworkInjectionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (NetworkInjectionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkInjectionResponse)(nil)).Elem()
+}
+
+func (o NetworkInjectionResponseArrayOutput) ToNetworkInjectionResponseArrayOutput() NetworkInjectionResponseArrayOutput {
+	return o
+}
+
+func (o NetworkInjectionResponseArrayOutput) ToNetworkInjectionResponseArrayOutputWithContext(ctx context.Context) NetworkInjectionResponseArrayOutput {
+	return o
+}
+
+func (o NetworkInjectionResponseArrayOutput) Index(i pulumi.IntInput) NetworkInjectionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkInjectionResponse {
+		return vs[0].([]NetworkInjectionResponse)[vs[1].(int)]
+	}).(NetworkInjectionResponseOutput)
 }
 
 // A set of rules governing the network accessibility.
@@ -11559,17 +11944,21 @@ type NoneAuthTypeConnectionProperties struct {
 	// Expected value is 'None'.
 	AuthType string `pulumi:"authType"`
 	// Category of the connection
-	Category      *string `pulumi:"category"`
+	Category *string `pulumi:"category"`
+	// Provides the error message if the connection fails
 	Error         *string `pulumi:"error"`
 	ExpiryTime    *string `pulumi:"expiryTime"`
 	IsSharedToAll *bool   `pulumi:"isSharedToAll"`
 	// Store user metadata for this connection
-	Metadata                    map[string]string `pulumi:"metadata"`
-	PeRequirement               *string           `pulumi:"peRequirement"`
-	PeStatus                    *string           `pulumi:"peStatus"`
-	SharedUserList              []string          `pulumi:"sharedUserList"`
-	Target                      *string           `pulumi:"target"`
-	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
+	Metadata map[string]string `pulumi:"metadata"`
+	// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
+	PeRequirement *string `pulumi:"peRequirement"`
+	// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
+	PeStatus       *string  `pulumi:"peStatus"`
+	SharedUserList []string `pulumi:"sharedUserList"`
+	// The connection URL to be used.
+	Target                      *string `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool   `pulumi:"useWorkspaceManagedIdentity"`
 }
 
 // NoneAuthTypeConnectionPropertiesInput is an input type that accepts NoneAuthTypeConnectionPropertiesArgs and NoneAuthTypeConnectionPropertiesOutput values.
@@ -11588,17 +11977,21 @@ type NoneAuthTypeConnectionPropertiesArgs struct {
 	// Expected value is 'None'.
 	AuthType pulumi.StringInput `pulumi:"authType"`
 	// Category of the connection
-	Category      pulumi.StringPtrInput `pulumi:"category"`
+	Category pulumi.StringPtrInput `pulumi:"category"`
+	// Provides the error message if the connection fails
 	Error         pulumi.StringPtrInput `pulumi:"error"`
 	ExpiryTime    pulumi.StringPtrInput `pulumi:"expiryTime"`
 	IsSharedToAll pulumi.BoolPtrInput   `pulumi:"isSharedToAll"`
 	// Store user metadata for this connection
-	Metadata                    pulumi.StringMapInput   `pulumi:"metadata"`
-	PeRequirement               pulumi.StringPtrInput   `pulumi:"peRequirement"`
-	PeStatus                    pulumi.StringPtrInput   `pulumi:"peStatus"`
-	SharedUserList              pulumi.StringArrayInput `pulumi:"sharedUserList"`
-	Target                      pulumi.StringPtrInput   `pulumi:"target"`
-	UseWorkspaceManagedIdentity pulumi.BoolPtrInput     `pulumi:"useWorkspaceManagedIdentity"`
+	Metadata pulumi.StringMapInput `pulumi:"metadata"`
+	// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
+	PeRequirement pulumi.StringPtrInput `pulumi:"peRequirement"`
+	// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
+	PeStatus       pulumi.StringPtrInput   `pulumi:"peStatus"`
+	SharedUserList pulumi.StringArrayInput `pulumi:"sharedUserList"`
+	// The connection URL to be used.
+	Target                      pulumi.StringPtrInput `pulumi:"target"`
+	UseWorkspaceManagedIdentity pulumi.BoolPtrInput   `pulumi:"useWorkspaceManagedIdentity"`
 }
 
 func (NoneAuthTypeConnectionPropertiesArgs) ElementType() reflect.Type {
@@ -11638,6 +12031,7 @@ func (o NoneAuthTypeConnectionPropertiesOutput) Category() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v NoneAuthTypeConnectionProperties) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
 
+// Provides the error message if the connection fails
 func (o NoneAuthTypeConnectionPropertiesOutput) Error() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NoneAuthTypeConnectionProperties) *string { return v.Error }).(pulumi.StringPtrOutput)
 }
@@ -11655,10 +12049,12 @@ func (o NoneAuthTypeConnectionPropertiesOutput) Metadata() pulumi.StringMapOutpu
 	return o.ApplyT(func(v NoneAuthTypeConnectionProperties) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
+// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
 func (o NoneAuthTypeConnectionPropertiesOutput) PeRequirement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NoneAuthTypeConnectionProperties) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
 func (o NoneAuthTypeConnectionPropertiesOutput) PeStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NoneAuthTypeConnectionProperties) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
 }
@@ -11667,6 +12063,7 @@ func (o NoneAuthTypeConnectionPropertiesOutput) SharedUserList() pulumi.StringAr
 	return o.ApplyT(func(v NoneAuthTypeConnectionProperties) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
 }
 
+// The connection URL to be used.
 func (o NoneAuthTypeConnectionPropertiesOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NoneAuthTypeConnectionProperties) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
@@ -11682,18 +12079,22 @@ type NoneAuthTypeConnectionPropertiesResponse struct {
 	// Category of the connection
 	Category                *string `pulumi:"category"`
 	CreatedByWorkspaceArmId string  `pulumi:"createdByWorkspaceArmId"`
-	Error                   *string `pulumi:"error"`
-	ExpiryTime              *string `pulumi:"expiryTime"`
+	// Provides the error message if the connection fails
+	Error      *string `pulumi:"error"`
+	ExpiryTime *string `pulumi:"expiryTime"`
 	// Group based on connection category
 	Group         string `pulumi:"group"`
 	IsSharedToAll *bool  `pulumi:"isSharedToAll"`
 	// Store user metadata for this connection
-	Metadata                    map[string]string `pulumi:"metadata"`
-	PeRequirement               *string           `pulumi:"peRequirement"`
-	PeStatus                    *string           `pulumi:"peStatus"`
-	SharedUserList              []string          `pulumi:"sharedUserList"`
-	Target                      *string           `pulumi:"target"`
-	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
+	Metadata map[string]string `pulumi:"metadata"`
+	// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
+	PeRequirement *string `pulumi:"peRequirement"`
+	// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
+	PeStatus       *string  `pulumi:"peStatus"`
+	SharedUserList []string `pulumi:"sharedUserList"`
+	// The connection URL to be used.
+	Target                      *string `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool   `pulumi:"useWorkspaceManagedIdentity"`
 }
 
 type NoneAuthTypeConnectionPropertiesResponseOutput struct{ *pulumi.OutputState }
@@ -11725,6 +12126,7 @@ func (o NoneAuthTypeConnectionPropertiesResponseOutput) CreatedByWorkspaceArmId(
 	return o.ApplyT(func(v NoneAuthTypeConnectionPropertiesResponse) string { return v.CreatedByWorkspaceArmId }).(pulumi.StringOutput)
 }
 
+// Provides the error message if the connection fails
 func (o NoneAuthTypeConnectionPropertiesResponseOutput) Error() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NoneAuthTypeConnectionPropertiesResponse) *string { return v.Error }).(pulumi.StringPtrOutput)
 }
@@ -11747,10 +12149,12 @@ func (o NoneAuthTypeConnectionPropertiesResponseOutput) Metadata() pulumi.String
 	return o.ApplyT(func(v NoneAuthTypeConnectionPropertiesResponse) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
+// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
 func (o NoneAuthTypeConnectionPropertiesResponseOutput) PeRequirement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NoneAuthTypeConnectionPropertiesResponse) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
 func (o NoneAuthTypeConnectionPropertiesResponseOutput) PeStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NoneAuthTypeConnectionPropertiesResponse) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
 }
@@ -11759,6 +12163,7 @@ func (o NoneAuthTypeConnectionPropertiesResponseOutput) SharedUserList() pulumi.
 	return o.ApplyT(func(v NoneAuthTypeConnectionPropertiesResponse) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
 }
 
+// The connection URL to be used.
 func (o NoneAuthTypeConnectionPropertiesResponseOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NoneAuthTypeConnectionPropertiesResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
@@ -11775,17 +12180,21 @@ type OAuth2AuthTypeConnectionProperties struct {
 	Category *string `pulumi:"category"`
 	// ClientId and ClientSecret are required. Other properties are optional
 	// depending on each OAuth2 provider's implementation.
-	Credentials   *ConnectionOAuth2 `pulumi:"credentials"`
-	Error         *string           `pulumi:"error"`
-	ExpiryTime    *string           `pulumi:"expiryTime"`
-	IsSharedToAll *bool             `pulumi:"isSharedToAll"`
+	Credentials *ConnectionOAuth2 `pulumi:"credentials"`
+	// Provides the error message if the connection fails
+	Error         *string `pulumi:"error"`
+	ExpiryTime    *string `pulumi:"expiryTime"`
+	IsSharedToAll *bool   `pulumi:"isSharedToAll"`
 	// Store user metadata for this connection
-	Metadata                    map[string]string `pulumi:"metadata"`
-	PeRequirement               *string           `pulumi:"peRequirement"`
-	PeStatus                    *string           `pulumi:"peStatus"`
-	SharedUserList              []string          `pulumi:"sharedUserList"`
-	Target                      *string           `pulumi:"target"`
-	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
+	Metadata map[string]string `pulumi:"metadata"`
+	// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
+	PeRequirement *string `pulumi:"peRequirement"`
+	// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
+	PeStatus       *string  `pulumi:"peStatus"`
+	SharedUserList []string `pulumi:"sharedUserList"`
+	// The connection URL to be used.
+	Target                      *string `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool   `pulumi:"useWorkspaceManagedIdentity"`
 }
 
 // OAuth2AuthTypeConnectionPropertiesInput is an input type that accepts OAuth2AuthTypeConnectionPropertiesArgs and OAuth2AuthTypeConnectionPropertiesOutput values.
@@ -11807,17 +12216,21 @@ type OAuth2AuthTypeConnectionPropertiesArgs struct {
 	Category pulumi.StringPtrInput `pulumi:"category"`
 	// ClientId and ClientSecret are required. Other properties are optional
 	// depending on each OAuth2 provider's implementation.
-	Credentials   ConnectionOAuth2PtrInput `pulumi:"credentials"`
-	Error         pulumi.StringPtrInput    `pulumi:"error"`
-	ExpiryTime    pulumi.StringPtrInput    `pulumi:"expiryTime"`
-	IsSharedToAll pulumi.BoolPtrInput      `pulumi:"isSharedToAll"`
+	Credentials ConnectionOAuth2PtrInput `pulumi:"credentials"`
+	// Provides the error message if the connection fails
+	Error         pulumi.StringPtrInput `pulumi:"error"`
+	ExpiryTime    pulumi.StringPtrInput `pulumi:"expiryTime"`
+	IsSharedToAll pulumi.BoolPtrInput   `pulumi:"isSharedToAll"`
 	// Store user metadata for this connection
-	Metadata                    pulumi.StringMapInput   `pulumi:"metadata"`
-	PeRequirement               pulumi.StringPtrInput   `pulumi:"peRequirement"`
-	PeStatus                    pulumi.StringPtrInput   `pulumi:"peStatus"`
-	SharedUserList              pulumi.StringArrayInput `pulumi:"sharedUserList"`
-	Target                      pulumi.StringPtrInput   `pulumi:"target"`
-	UseWorkspaceManagedIdentity pulumi.BoolPtrInput     `pulumi:"useWorkspaceManagedIdentity"`
+	Metadata pulumi.StringMapInput `pulumi:"metadata"`
+	// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
+	PeRequirement pulumi.StringPtrInput `pulumi:"peRequirement"`
+	// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
+	PeStatus       pulumi.StringPtrInput   `pulumi:"peStatus"`
+	SharedUserList pulumi.StringArrayInput `pulumi:"sharedUserList"`
+	// The connection URL to be used.
+	Target                      pulumi.StringPtrInput `pulumi:"target"`
+	UseWorkspaceManagedIdentity pulumi.BoolPtrInput   `pulumi:"useWorkspaceManagedIdentity"`
 }
 
 func (OAuth2AuthTypeConnectionPropertiesArgs) ElementType() reflect.Type {
@@ -11863,6 +12276,7 @@ func (o OAuth2AuthTypeConnectionPropertiesOutput) Credentials() ConnectionOAuth2
 	return o.ApplyT(func(v OAuth2AuthTypeConnectionProperties) *ConnectionOAuth2 { return v.Credentials }).(ConnectionOAuth2PtrOutput)
 }
 
+// Provides the error message if the connection fails
 func (o OAuth2AuthTypeConnectionPropertiesOutput) Error() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OAuth2AuthTypeConnectionProperties) *string { return v.Error }).(pulumi.StringPtrOutput)
 }
@@ -11880,10 +12294,12 @@ func (o OAuth2AuthTypeConnectionPropertiesOutput) Metadata() pulumi.StringMapOut
 	return o.ApplyT(func(v OAuth2AuthTypeConnectionProperties) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
+// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
 func (o OAuth2AuthTypeConnectionPropertiesOutput) PeRequirement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OAuth2AuthTypeConnectionProperties) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
 func (o OAuth2AuthTypeConnectionPropertiesOutput) PeStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OAuth2AuthTypeConnectionProperties) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
 }
@@ -11892,6 +12308,7 @@ func (o OAuth2AuthTypeConnectionPropertiesOutput) SharedUserList() pulumi.String
 	return o.ApplyT(func(v OAuth2AuthTypeConnectionProperties) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
 }
 
+// The connection URL to be used.
 func (o OAuth2AuthTypeConnectionPropertiesOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OAuth2AuthTypeConnectionProperties) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
@@ -11910,18 +12327,22 @@ type OAuth2AuthTypeConnectionPropertiesResponse struct {
 	// ClientId and ClientSecret are required. Other properties are optional
 	// depending on each OAuth2 provider's implementation.
 	Credentials *ConnectionOAuth2Response `pulumi:"credentials"`
-	Error       *string                   `pulumi:"error"`
-	ExpiryTime  *string                   `pulumi:"expiryTime"`
+	// Provides the error message if the connection fails
+	Error      *string `pulumi:"error"`
+	ExpiryTime *string `pulumi:"expiryTime"`
 	// Group based on connection category
 	Group         string `pulumi:"group"`
 	IsSharedToAll *bool  `pulumi:"isSharedToAll"`
 	// Store user metadata for this connection
-	Metadata                    map[string]string `pulumi:"metadata"`
-	PeRequirement               *string           `pulumi:"peRequirement"`
-	PeStatus                    *string           `pulumi:"peStatus"`
-	SharedUserList              []string          `pulumi:"sharedUserList"`
-	Target                      *string           `pulumi:"target"`
-	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
+	Metadata map[string]string `pulumi:"metadata"`
+	// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
+	PeRequirement *string `pulumi:"peRequirement"`
+	// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
+	PeStatus       *string  `pulumi:"peStatus"`
+	SharedUserList []string `pulumi:"sharedUserList"`
+	// The connection URL to be used.
+	Target                      *string `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool   `pulumi:"useWorkspaceManagedIdentity"`
 }
 
 type OAuth2AuthTypeConnectionPropertiesResponseOutput struct{ *pulumi.OutputState }
@@ -11959,6 +12380,7 @@ func (o OAuth2AuthTypeConnectionPropertiesResponseOutput) Credentials() Connecti
 	return o.ApplyT(func(v OAuth2AuthTypeConnectionPropertiesResponse) *ConnectionOAuth2Response { return v.Credentials }).(ConnectionOAuth2ResponsePtrOutput)
 }
 
+// Provides the error message if the connection fails
 func (o OAuth2AuthTypeConnectionPropertiesResponseOutput) Error() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OAuth2AuthTypeConnectionPropertiesResponse) *string { return v.Error }).(pulumi.StringPtrOutput)
 }
@@ -11981,10 +12403,12 @@ func (o OAuth2AuthTypeConnectionPropertiesResponseOutput) Metadata() pulumi.Stri
 	return o.ApplyT(func(v OAuth2AuthTypeConnectionPropertiesResponse) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
+// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
 func (o OAuth2AuthTypeConnectionPropertiesResponseOutput) PeRequirement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OAuth2AuthTypeConnectionPropertiesResponse) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
 func (o OAuth2AuthTypeConnectionPropertiesResponseOutput) PeStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OAuth2AuthTypeConnectionPropertiesResponse) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
 }
@@ -11993,6 +12417,7 @@ func (o OAuth2AuthTypeConnectionPropertiesResponseOutput) SharedUserList() pulum
 	return o.ApplyT(func(v OAuth2AuthTypeConnectionPropertiesResponse) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
 }
 
+// The connection URL to be used.
 func (o OAuth2AuthTypeConnectionPropertiesResponseOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OAuth2AuthTypeConnectionPropertiesResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
@@ -12213,18 +12638,22 @@ type PATAuthTypeConnectionProperties struct {
 	// Expected value is 'PAT'.
 	AuthType string `pulumi:"authType"`
 	// Category of the connection
-	Category      *string                        `pulumi:"category"`
-	Credentials   *ConnectionPersonalAccessToken `pulumi:"credentials"`
-	Error         *string                        `pulumi:"error"`
-	ExpiryTime    *string                        `pulumi:"expiryTime"`
-	IsSharedToAll *bool                          `pulumi:"isSharedToAll"`
+	Category    *string                        `pulumi:"category"`
+	Credentials *ConnectionPersonalAccessToken `pulumi:"credentials"`
+	// Provides the error message if the connection fails
+	Error         *string `pulumi:"error"`
+	ExpiryTime    *string `pulumi:"expiryTime"`
+	IsSharedToAll *bool   `pulumi:"isSharedToAll"`
 	// Store user metadata for this connection
-	Metadata                    map[string]string `pulumi:"metadata"`
-	PeRequirement               *string           `pulumi:"peRequirement"`
-	PeStatus                    *string           `pulumi:"peStatus"`
-	SharedUserList              []string          `pulumi:"sharedUserList"`
-	Target                      *string           `pulumi:"target"`
-	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
+	Metadata map[string]string `pulumi:"metadata"`
+	// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
+	PeRequirement *string `pulumi:"peRequirement"`
+	// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
+	PeStatus       *string  `pulumi:"peStatus"`
+	SharedUserList []string `pulumi:"sharedUserList"`
+	// The connection URL to be used.
+	Target                      *string `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool   `pulumi:"useWorkspaceManagedIdentity"`
 }
 
 // PATAuthTypeConnectionPropertiesInput is an input type that accepts PATAuthTypeConnectionPropertiesArgs and PATAuthTypeConnectionPropertiesOutput values.
@@ -12243,18 +12672,22 @@ type PATAuthTypeConnectionPropertiesArgs struct {
 	// Expected value is 'PAT'.
 	AuthType pulumi.StringInput `pulumi:"authType"`
 	// Category of the connection
-	Category      pulumi.StringPtrInput                 `pulumi:"category"`
-	Credentials   ConnectionPersonalAccessTokenPtrInput `pulumi:"credentials"`
-	Error         pulumi.StringPtrInput                 `pulumi:"error"`
-	ExpiryTime    pulumi.StringPtrInput                 `pulumi:"expiryTime"`
-	IsSharedToAll pulumi.BoolPtrInput                   `pulumi:"isSharedToAll"`
+	Category    pulumi.StringPtrInput                 `pulumi:"category"`
+	Credentials ConnectionPersonalAccessTokenPtrInput `pulumi:"credentials"`
+	// Provides the error message if the connection fails
+	Error         pulumi.StringPtrInput `pulumi:"error"`
+	ExpiryTime    pulumi.StringPtrInput `pulumi:"expiryTime"`
+	IsSharedToAll pulumi.BoolPtrInput   `pulumi:"isSharedToAll"`
 	// Store user metadata for this connection
-	Metadata                    pulumi.StringMapInput   `pulumi:"metadata"`
-	PeRequirement               pulumi.StringPtrInput   `pulumi:"peRequirement"`
-	PeStatus                    pulumi.StringPtrInput   `pulumi:"peStatus"`
-	SharedUserList              pulumi.StringArrayInput `pulumi:"sharedUserList"`
-	Target                      pulumi.StringPtrInput   `pulumi:"target"`
-	UseWorkspaceManagedIdentity pulumi.BoolPtrInput     `pulumi:"useWorkspaceManagedIdentity"`
+	Metadata pulumi.StringMapInput `pulumi:"metadata"`
+	// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
+	PeRequirement pulumi.StringPtrInput `pulumi:"peRequirement"`
+	// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
+	PeStatus       pulumi.StringPtrInput   `pulumi:"peStatus"`
+	SharedUserList pulumi.StringArrayInput `pulumi:"sharedUserList"`
+	// The connection URL to be used.
+	Target                      pulumi.StringPtrInput `pulumi:"target"`
+	UseWorkspaceManagedIdentity pulumi.BoolPtrInput   `pulumi:"useWorkspaceManagedIdentity"`
 }
 
 func (PATAuthTypeConnectionPropertiesArgs) ElementType() reflect.Type {
@@ -12298,6 +12731,7 @@ func (o PATAuthTypeConnectionPropertiesOutput) Credentials() ConnectionPersonalA
 	return o.ApplyT(func(v PATAuthTypeConnectionProperties) *ConnectionPersonalAccessToken { return v.Credentials }).(ConnectionPersonalAccessTokenPtrOutput)
 }
 
+// Provides the error message if the connection fails
 func (o PATAuthTypeConnectionPropertiesOutput) Error() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PATAuthTypeConnectionProperties) *string { return v.Error }).(pulumi.StringPtrOutput)
 }
@@ -12315,10 +12749,12 @@ func (o PATAuthTypeConnectionPropertiesOutput) Metadata() pulumi.StringMapOutput
 	return o.ApplyT(func(v PATAuthTypeConnectionProperties) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
+// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
 func (o PATAuthTypeConnectionPropertiesOutput) PeRequirement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PATAuthTypeConnectionProperties) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
 func (o PATAuthTypeConnectionPropertiesOutput) PeStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PATAuthTypeConnectionProperties) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
 }
@@ -12327,6 +12763,7 @@ func (o PATAuthTypeConnectionPropertiesOutput) SharedUserList() pulumi.StringArr
 	return o.ApplyT(func(v PATAuthTypeConnectionProperties) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
 }
 
+// The connection URL to be used.
 func (o PATAuthTypeConnectionPropertiesOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PATAuthTypeConnectionProperties) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
@@ -12343,18 +12780,22 @@ type PATAuthTypeConnectionPropertiesResponse struct {
 	Category                *string                                `pulumi:"category"`
 	CreatedByWorkspaceArmId string                                 `pulumi:"createdByWorkspaceArmId"`
 	Credentials             *ConnectionPersonalAccessTokenResponse `pulumi:"credentials"`
-	Error                   *string                                `pulumi:"error"`
-	ExpiryTime              *string                                `pulumi:"expiryTime"`
+	// Provides the error message if the connection fails
+	Error      *string `pulumi:"error"`
+	ExpiryTime *string `pulumi:"expiryTime"`
 	// Group based on connection category
 	Group         string `pulumi:"group"`
 	IsSharedToAll *bool  `pulumi:"isSharedToAll"`
 	// Store user metadata for this connection
-	Metadata                    map[string]string `pulumi:"metadata"`
-	PeRequirement               *string           `pulumi:"peRequirement"`
-	PeStatus                    *string           `pulumi:"peStatus"`
-	SharedUserList              []string          `pulumi:"sharedUserList"`
-	Target                      *string           `pulumi:"target"`
-	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
+	Metadata map[string]string `pulumi:"metadata"`
+	// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
+	PeRequirement *string `pulumi:"peRequirement"`
+	// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
+	PeStatus       *string  `pulumi:"peStatus"`
+	SharedUserList []string `pulumi:"sharedUserList"`
+	// The connection URL to be used.
+	Target                      *string `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool   `pulumi:"useWorkspaceManagedIdentity"`
 }
 
 type PATAuthTypeConnectionPropertiesResponseOutput struct{ *pulumi.OutputState }
@@ -12392,6 +12833,7 @@ func (o PATAuthTypeConnectionPropertiesResponseOutput) Credentials() ConnectionP
 	}).(ConnectionPersonalAccessTokenResponsePtrOutput)
 }
 
+// Provides the error message if the connection fails
 func (o PATAuthTypeConnectionPropertiesResponseOutput) Error() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PATAuthTypeConnectionPropertiesResponse) *string { return v.Error }).(pulumi.StringPtrOutput)
 }
@@ -12414,10 +12856,12 @@ func (o PATAuthTypeConnectionPropertiesResponseOutput) Metadata() pulumi.StringM
 	return o.ApplyT(func(v PATAuthTypeConnectionPropertiesResponse) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
+// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
 func (o PATAuthTypeConnectionPropertiesResponseOutput) PeRequirement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PATAuthTypeConnectionPropertiesResponse) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
 func (o PATAuthTypeConnectionPropertiesResponseOutput) PeStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PATAuthTypeConnectionPropertiesResponse) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
 }
@@ -12426,6 +12870,7 @@ func (o PATAuthTypeConnectionPropertiesResponseOutput) SharedUserList() pulumi.S
 	return o.ApplyT(func(v PATAuthTypeConnectionPropertiesResponse) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
 }
 
+// The connection URL to be used.
 func (o PATAuthTypeConnectionPropertiesResponseOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PATAuthTypeConnectionPropertiesResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
@@ -16329,18 +16774,22 @@ type SASAuthTypeConnectionProperties struct {
 	// Expected value is 'SAS'.
 	AuthType string `pulumi:"authType"`
 	// Category of the connection
-	Category      *string                          `pulumi:"category"`
-	Credentials   *ConnectionSharedAccessSignature `pulumi:"credentials"`
-	Error         *string                          `pulumi:"error"`
-	ExpiryTime    *string                          `pulumi:"expiryTime"`
-	IsSharedToAll *bool                            `pulumi:"isSharedToAll"`
+	Category    *string                          `pulumi:"category"`
+	Credentials *ConnectionSharedAccessSignature `pulumi:"credentials"`
+	// Provides the error message if the connection fails
+	Error         *string `pulumi:"error"`
+	ExpiryTime    *string `pulumi:"expiryTime"`
+	IsSharedToAll *bool   `pulumi:"isSharedToAll"`
 	// Store user metadata for this connection
-	Metadata                    map[string]string `pulumi:"metadata"`
-	PeRequirement               *string           `pulumi:"peRequirement"`
-	PeStatus                    *string           `pulumi:"peStatus"`
-	SharedUserList              []string          `pulumi:"sharedUserList"`
-	Target                      *string           `pulumi:"target"`
-	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
+	Metadata map[string]string `pulumi:"metadata"`
+	// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
+	PeRequirement *string `pulumi:"peRequirement"`
+	// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
+	PeStatus       *string  `pulumi:"peStatus"`
+	SharedUserList []string `pulumi:"sharedUserList"`
+	// The connection URL to be used.
+	Target                      *string `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool   `pulumi:"useWorkspaceManagedIdentity"`
 }
 
 // SASAuthTypeConnectionPropertiesInput is an input type that accepts SASAuthTypeConnectionPropertiesArgs and SASAuthTypeConnectionPropertiesOutput values.
@@ -16359,18 +16808,22 @@ type SASAuthTypeConnectionPropertiesArgs struct {
 	// Expected value is 'SAS'.
 	AuthType pulumi.StringInput `pulumi:"authType"`
 	// Category of the connection
-	Category      pulumi.StringPtrInput                   `pulumi:"category"`
-	Credentials   ConnectionSharedAccessSignaturePtrInput `pulumi:"credentials"`
-	Error         pulumi.StringPtrInput                   `pulumi:"error"`
-	ExpiryTime    pulumi.StringPtrInput                   `pulumi:"expiryTime"`
-	IsSharedToAll pulumi.BoolPtrInput                     `pulumi:"isSharedToAll"`
+	Category    pulumi.StringPtrInput                   `pulumi:"category"`
+	Credentials ConnectionSharedAccessSignaturePtrInput `pulumi:"credentials"`
+	// Provides the error message if the connection fails
+	Error         pulumi.StringPtrInput `pulumi:"error"`
+	ExpiryTime    pulumi.StringPtrInput `pulumi:"expiryTime"`
+	IsSharedToAll pulumi.BoolPtrInput   `pulumi:"isSharedToAll"`
 	// Store user metadata for this connection
-	Metadata                    pulumi.StringMapInput   `pulumi:"metadata"`
-	PeRequirement               pulumi.StringPtrInput   `pulumi:"peRequirement"`
-	PeStatus                    pulumi.StringPtrInput   `pulumi:"peStatus"`
-	SharedUserList              pulumi.StringArrayInput `pulumi:"sharedUserList"`
-	Target                      pulumi.StringPtrInput   `pulumi:"target"`
-	UseWorkspaceManagedIdentity pulumi.BoolPtrInput     `pulumi:"useWorkspaceManagedIdentity"`
+	Metadata pulumi.StringMapInput `pulumi:"metadata"`
+	// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
+	PeRequirement pulumi.StringPtrInput `pulumi:"peRequirement"`
+	// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
+	PeStatus       pulumi.StringPtrInput   `pulumi:"peStatus"`
+	SharedUserList pulumi.StringArrayInput `pulumi:"sharedUserList"`
+	// The connection URL to be used.
+	Target                      pulumi.StringPtrInput `pulumi:"target"`
+	UseWorkspaceManagedIdentity pulumi.BoolPtrInput   `pulumi:"useWorkspaceManagedIdentity"`
 }
 
 func (SASAuthTypeConnectionPropertiesArgs) ElementType() reflect.Type {
@@ -16414,6 +16867,7 @@ func (o SASAuthTypeConnectionPropertiesOutput) Credentials() ConnectionSharedAcc
 	return o.ApplyT(func(v SASAuthTypeConnectionProperties) *ConnectionSharedAccessSignature { return v.Credentials }).(ConnectionSharedAccessSignaturePtrOutput)
 }
 
+// Provides the error message if the connection fails
 func (o SASAuthTypeConnectionPropertiesOutput) Error() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SASAuthTypeConnectionProperties) *string { return v.Error }).(pulumi.StringPtrOutput)
 }
@@ -16431,10 +16885,12 @@ func (o SASAuthTypeConnectionPropertiesOutput) Metadata() pulumi.StringMapOutput
 	return o.ApplyT(func(v SASAuthTypeConnectionProperties) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
+// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
 func (o SASAuthTypeConnectionPropertiesOutput) PeRequirement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SASAuthTypeConnectionProperties) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
 func (o SASAuthTypeConnectionPropertiesOutput) PeStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SASAuthTypeConnectionProperties) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
 }
@@ -16443,6 +16899,7 @@ func (o SASAuthTypeConnectionPropertiesOutput) SharedUserList() pulumi.StringArr
 	return o.ApplyT(func(v SASAuthTypeConnectionProperties) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
 }
 
+// The connection URL to be used.
 func (o SASAuthTypeConnectionPropertiesOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SASAuthTypeConnectionProperties) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
@@ -16459,18 +16916,22 @@ type SASAuthTypeConnectionPropertiesResponse struct {
 	Category                *string                                  `pulumi:"category"`
 	CreatedByWorkspaceArmId string                                   `pulumi:"createdByWorkspaceArmId"`
 	Credentials             *ConnectionSharedAccessSignatureResponse `pulumi:"credentials"`
-	Error                   *string                                  `pulumi:"error"`
-	ExpiryTime              *string                                  `pulumi:"expiryTime"`
+	// Provides the error message if the connection fails
+	Error      *string `pulumi:"error"`
+	ExpiryTime *string `pulumi:"expiryTime"`
 	// Group based on connection category
 	Group         string `pulumi:"group"`
 	IsSharedToAll *bool  `pulumi:"isSharedToAll"`
 	// Store user metadata for this connection
-	Metadata                    map[string]string `pulumi:"metadata"`
-	PeRequirement               *string           `pulumi:"peRequirement"`
-	PeStatus                    *string           `pulumi:"peStatus"`
-	SharedUserList              []string          `pulumi:"sharedUserList"`
-	Target                      *string           `pulumi:"target"`
-	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
+	Metadata map[string]string `pulumi:"metadata"`
+	// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
+	PeRequirement *string `pulumi:"peRequirement"`
+	// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
+	PeStatus       *string  `pulumi:"peStatus"`
+	SharedUserList []string `pulumi:"sharedUserList"`
+	// The connection URL to be used.
+	Target                      *string `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool   `pulumi:"useWorkspaceManagedIdentity"`
 }
 
 type SASAuthTypeConnectionPropertiesResponseOutput struct{ *pulumi.OutputState }
@@ -16508,6 +16969,7 @@ func (o SASAuthTypeConnectionPropertiesResponseOutput) Credentials() ConnectionS
 	}).(ConnectionSharedAccessSignatureResponsePtrOutput)
 }
 
+// Provides the error message if the connection fails
 func (o SASAuthTypeConnectionPropertiesResponseOutput) Error() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SASAuthTypeConnectionPropertiesResponse) *string { return v.Error }).(pulumi.StringPtrOutput)
 }
@@ -16530,10 +16992,12 @@ func (o SASAuthTypeConnectionPropertiesResponseOutput) Metadata() pulumi.StringM
 	return o.ApplyT(func(v SASAuthTypeConnectionPropertiesResponse) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
+// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
 func (o SASAuthTypeConnectionPropertiesResponseOutput) PeRequirement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SASAuthTypeConnectionPropertiesResponse) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
 func (o SASAuthTypeConnectionPropertiesResponseOutput) PeStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SASAuthTypeConnectionPropertiesResponse) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
 }
@@ -16542,6 +17006,7 @@ func (o SASAuthTypeConnectionPropertiesResponseOutput) SharedUserList() pulumi.S
 	return o.ApplyT(func(v SASAuthTypeConnectionPropertiesResponse) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
 }
 
+// The connection URL to be used.
 func (o SASAuthTypeConnectionPropertiesResponseOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SASAuthTypeConnectionPropertiesResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
@@ -16733,18 +17198,22 @@ type ServicePrincipalAuthTypeConnectionProperties struct {
 	// Expected value is 'ServicePrincipal'.
 	AuthType string `pulumi:"authType"`
 	// Category of the connection
-	Category      *string                     `pulumi:"category"`
-	Credentials   *ConnectionServicePrincipal `pulumi:"credentials"`
-	Error         *string                     `pulumi:"error"`
-	ExpiryTime    *string                     `pulumi:"expiryTime"`
-	IsSharedToAll *bool                       `pulumi:"isSharedToAll"`
+	Category    *string                     `pulumi:"category"`
+	Credentials *ConnectionServicePrincipal `pulumi:"credentials"`
+	// Provides the error message if the connection fails
+	Error         *string `pulumi:"error"`
+	ExpiryTime    *string `pulumi:"expiryTime"`
+	IsSharedToAll *bool   `pulumi:"isSharedToAll"`
 	// Store user metadata for this connection
-	Metadata                    map[string]string `pulumi:"metadata"`
-	PeRequirement               *string           `pulumi:"peRequirement"`
-	PeStatus                    *string           `pulumi:"peStatus"`
-	SharedUserList              []string          `pulumi:"sharedUserList"`
-	Target                      *string           `pulumi:"target"`
-	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
+	Metadata map[string]string `pulumi:"metadata"`
+	// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
+	PeRequirement *string `pulumi:"peRequirement"`
+	// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
+	PeStatus       *string  `pulumi:"peStatus"`
+	SharedUserList []string `pulumi:"sharedUserList"`
+	// The connection URL to be used.
+	Target                      *string `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool   `pulumi:"useWorkspaceManagedIdentity"`
 }
 
 // ServicePrincipalAuthTypeConnectionPropertiesInput is an input type that accepts ServicePrincipalAuthTypeConnectionPropertiesArgs and ServicePrincipalAuthTypeConnectionPropertiesOutput values.
@@ -16763,18 +17232,22 @@ type ServicePrincipalAuthTypeConnectionPropertiesArgs struct {
 	// Expected value is 'ServicePrincipal'.
 	AuthType pulumi.StringInput `pulumi:"authType"`
 	// Category of the connection
-	Category      pulumi.StringPtrInput              `pulumi:"category"`
-	Credentials   ConnectionServicePrincipalPtrInput `pulumi:"credentials"`
-	Error         pulumi.StringPtrInput              `pulumi:"error"`
-	ExpiryTime    pulumi.StringPtrInput              `pulumi:"expiryTime"`
-	IsSharedToAll pulumi.BoolPtrInput                `pulumi:"isSharedToAll"`
+	Category    pulumi.StringPtrInput              `pulumi:"category"`
+	Credentials ConnectionServicePrincipalPtrInput `pulumi:"credentials"`
+	// Provides the error message if the connection fails
+	Error         pulumi.StringPtrInput `pulumi:"error"`
+	ExpiryTime    pulumi.StringPtrInput `pulumi:"expiryTime"`
+	IsSharedToAll pulumi.BoolPtrInput   `pulumi:"isSharedToAll"`
 	// Store user metadata for this connection
-	Metadata                    pulumi.StringMapInput   `pulumi:"metadata"`
-	PeRequirement               pulumi.StringPtrInput   `pulumi:"peRequirement"`
-	PeStatus                    pulumi.StringPtrInput   `pulumi:"peStatus"`
-	SharedUserList              pulumi.StringArrayInput `pulumi:"sharedUserList"`
-	Target                      pulumi.StringPtrInput   `pulumi:"target"`
-	UseWorkspaceManagedIdentity pulumi.BoolPtrInput     `pulumi:"useWorkspaceManagedIdentity"`
+	Metadata pulumi.StringMapInput `pulumi:"metadata"`
+	// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
+	PeRequirement pulumi.StringPtrInput `pulumi:"peRequirement"`
+	// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
+	PeStatus       pulumi.StringPtrInput   `pulumi:"peStatus"`
+	SharedUserList pulumi.StringArrayInput `pulumi:"sharedUserList"`
+	// The connection URL to be used.
+	Target                      pulumi.StringPtrInput `pulumi:"target"`
+	UseWorkspaceManagedIdentity pulumi.BoolPtrInput   `pulumi:"useWorkspaceManagedIdentity"`
 }
 
 func (ServicePrincipalAuthTypeConnectionPropertiesArgs) ElementType() reflect.Type {
@@ -16818,6 +17291,7 @@ func (o ServicePrincipalAuthTypeConnectionPropertiesOutput) Credentials() Connec
 	return o.ApplyT(func(v ServicePrincipalAuthTypeConnectionProperties) *ConnectionServicePrincipal { return v.Credentials }).(ConnectionServicePrincipalPtrOutput)
 }
 
+// Provides the error message if the connection fails
 func (o ServicePrincipalAuthTypeConnectionPropertiesOutput) Error() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalAuthTypeConnectionProperties) *string { return v.Error }).(pulumi.StringPtrOutput)
 }
@@ -16835,10 +17309,12 @@ func (o ServicePrincipalAuthTypeConnectionPropertiesOutput) Metadata() pulumi.St
 	return o.ApplyT(func(v ServicePrincipalAuthTypeConnectionProperties) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
+// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
 func (o ServicePrincipalAuthTypeConnectionPropertiesOutput) PeRequirement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalAuthTypeConnectionProperties) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
 func (o ServicePrincipalAuthTypeConnectionPropertiesOutput) PeStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalAuthTypeConnectionProperties) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
 }
@@ -16847,6 +17323,7 @@ func (o ServicePrincipalAuthTypeConnectionPropertiesOutput) SharedUserList() pul
 	return o.ApplyT(func(v ServicePrincipalAuthTypeConnectionProperties) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
 }
 
+// The connection URL to be used.
 func (o ServicePrincipalAuthTypeConnectionPropertiesOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalAuthTypeConnectionProperties) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
@@ -16863,18 +17340,22 @@ type ServicePrincipalAuthTypeConnectionPropertiesResponse struct {
 	Category                *string                             `pulumi:"category"`
 	CreatedByWorkspaceArmId string                              `pulumi:"createdByWorkspaceArmId"`
 	Credentials             *ConnectionServicePrincipalResponse `pulumi:"credentials"`
-	Error                   *string                             `pulumi:"error"`
-	ExpiryTime              *string                             `pulumi:"expiryTime"`
+	// Provides the error message if the connection fails
+	Error      *string `pulumi:"error"`
+	ExpiryTime *string `pulumi:"expiryTime"`
 	// Group based on connection category
 	Group         string `pulumi:"group"`
 	IsSharedToAll *bool  `pulumi:"isSharedToAll"`
 	// Store user metadata for this connection
-	Metadata                    map[string]string `pulumi:"metadata"`
-	PeRequirement               *string           `pulumi:"peRequirement"`
-	PeStatus                    *string           `pulumi:"peStatus"`
-	SharedUserList              []string          `pulumi:"sharedUserList"`
-	Target                      *string           `pulumi:"target"`
-	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
+	Metadata map[string]string `pulumi:"metadata"`
+	// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
+	PeRequirement *string `pulumi:"peRequirement"`
+	// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
+	PeStatus       *string  `pulumi:"peStatus"`
+	SharedUserList []string `pulumi:"sharedUserList"`
+	// The connection URL to be used.
+	Target                      *string `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool   `pulumi:"useWorkspaceManagedIdentity"`
 }
 
 type ServicePrincipalAuthTypeConnectionPropertiesResponseOutput struct{ *pulumi.OutputState }
@@ -16912,6 +17393,7 @@ func (o ServicePrincipalAuthTypeConnectionPropertiesResponseOutput) Credentials(
 	}).(ConnectionServicePrincipalResponsePtrOutput)
 }
 
+// Provides the error message if the connection fails
 func (o ServicePrincipalAuthTypeConnectionPropertiesResponseOutput) Error() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalAuthTypeConnectionPropertiesResponse) *string { return v.Error }).(pulumi.StringPtrOutput)
 }
@@ -16934,10 +17416,12 @@ func (o ServicePrincipalAuthTypeConnectionPropertiesResponseOutput) Metadata() p
 	return o.ApplyT(func(v ServicePrincipalAuthTypeConnectionPropertiesResponse) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
+// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
 func (o ServicePrincipalAuthTypeConnectionPropertiesResponseOutput) PeRequirement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalAuthTypeConnectionPropertiesResponse) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
 func (o ServicePrincipalAuthTypeConnectionPropertiesResponseOutput) PeStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalAuthTypeConnectionPropertiesResponse) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
 }
@@ -16946,6 +17430,7 @@ func (o ServicePrincipalAuthTypeConnectionPropertiesResponseOutput) SharedUserLi
 	return o.ApplyT(func(v ServicePrincipalAuthTypeConnectionPropertiesResponse) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
 }
 
+// The connection URL to be used.
 func (o ServicePrincipalAuthTypeConnectionPropertiesResponseOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalAuthTypeConnectionPropertiesResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
@@ -17768,11 +18253,11 @@ func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) Us
 	}).(UserAssignedIdentityResponseOutput)
 }
 
-// The user owned AML workspace for Cognitive Services account.
+// The user owned AML account for Cognitive Services account.
 type UserOwnedAmlWorkspace struct {
-	// Identity Client id of a AML workspace resource.
+	// Identity Client id of a AML account resource.
 	IdentityClientId *string `pulumi:"identityClientId"`
-	// Full resource id of a AML workspace resource.
+	// Full resource id of a AML account resource.
 	ResourceId *string `pulumi:"resourceId"`
 }
 
@@ -17787,11 +18272,11 @@ type UserOwnedAmlWorkspaceInput interface {
 	ToUserOwnedAmlWorkspaceOutputWithContext(context.Context) UserOwnedAmlWorkspaceOutput
 }
 
-// The user owned AML workspace for Cognitive Services account.
+// The user owned AML account for Cognitive Services account.
 type UserOwnedAmlWorkspaceArgs struct {
-	// Identity Client id of a AML workspace resource.
+	// Identity Client id of a AML account resource.
 	IdentityClientId pulumi.StringPtrInput `pulumi:"identityClientId"`
-	// Full resource id of a AML workspace resource.
+	// Full resource id of a AML account resource.
 	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
 }
 
@@ -17848,7 +18333,7 @@ func (i *userOwnedAmlWorkspacePtrType) ToUserOwnedAmlWorkspacePtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(UserOwnedAmlWorkspacePtrOutput)
 }
 
-// The user owned AML workspace for Cognitive Services account.
+// The user owned AML account for Cognitive Services account.
 type UserOwnedAmlWorkspaceOutput struct{ *pulumi.OutputState }
 
 func (UserOwnedAmlWorkspaceOutput) ElementType() reflect.Type {
@@ -17873,12 +18358,12 @@ func (o UserOwnedAmlWorkspaceOutput) ToUserOwnedAmlWorkspacePtrOutputWithContext
 	}).(UserOwnedAmlWorkspacePtrOutput)
 }
 
-// Identity Client id of a AML workspace resource.
+// Identity Client id of a AML account resource.
 func (o UserOwnedAmlWorkspaceOutput) IdentityClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserOwnedAmlWorkspace) *string { return v.IdentityClientId }).(pulumi.StringPtrOutput)
 }
 
-// Full resource id of a AML workspace resource.
+// Full resource id of a AML account resource.
 func (o UserOwnedAmlWorkspaceOutput) ResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserOwnedAmlWorkspace) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
 }
@@ -17907,7 +18392,7 @@ func (o UserOwnedAmlWorkspacePtrOutput) Elem() UserOwnedAmlWorkspaceOutput {
 	}).(UserOwnedAmlWorkspaceOutput)
 }
 
-// Identity Client id of a AML workspace resource.
+// Identity Client id of a AML account resource.
 func (o UserOwnedAmlWorkspacePtrOutput) IdentityClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UserOwnedAmlWorkspace) *string {
 		if v == nil {
@@ -17917,7 +18402,7 @@ func (o UserOwnedAmlWorkspacePtrOutput) IdentityClientId() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Full resource id of a AML workspace resource.
+// Full resource id of a AML account resource.
 func (o UserOwnedAmlWorkspacePtrOutput) ResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UserOwnedAmlWorkspace) *string {
 		if v == nil {
@@ -17927,15 +18412,15 @@ func (o UserOwnedAmlWorkspacePtrOutput) ResourceId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The user owned AML workspace for Cognitive Services account.
+// The user owned AML account for Cognitive Services account.
 type UserOwnedAmlWorkspaceResponse struct {
-	// Identity Client id of a AML workspace resource.
+	// Identity Client id of a AML account resource.
 	IdentityClientId *string `pulumi:"identityClientId"`
-	// Full resource id of a AML workspace resource.
+	// Full resource id of a AML account resource.
 	ResourceId *string `pulumi:"resourceId"`
 }
 
-// The user owned AML workspace for Cognitive Services account.
+// The user owned AML account for Cognitive Services account.
 type UserOwnedAmlWorkspaceResponseOutput struct{ *pulumi.OutputState }
 
 func (UserOwnedAmlWorkspaceResponseOutput) ElementType() reflect.Type {
@@ -17950,12 +18435,12 @@ func (o UserOwnedAmlWorkspaceResponseOutput) ToUserOwnedAmlWorkspaceResponseOutp
 	return o
 }
 
-// Identity Client id of a AML workspace resource.
+// Identity Client id of a AML account resource.
 func (o UserOwnedAmlWorkspaceResponseOutput) IdentityClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserOwnedAmlWorkspaceResponse) *string { return v.IdentityClientId }).(pulumi.StringPtrOutput)
 }
 
-// Full resource id of a AML workspace resource.
+// Full resource id of a AML account resource.
 func (o UserOwnedAmlWorkspaceResponseOutput) ResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserOwnedAmlWorkspaceResponse) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
 }
@@ -17984,7 +18469,7 @@ func (o UserOwnedAmlWorkspaceResponsePtrOutput) Elem() UserOwnedAmlWorkspaceResp
 	}).(UserOwnedAmlWorkspaceResponseOutput)
 }
 
-// Identity Client id of a AML workspace resource.
+// Identity Client id of a AML account resource.
 func (o UserOwnedAmlWorkspaceResponsePtrOutput) IdentityClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UserOwnedAmlWorkspaceResponse) *string {
 		if v == nil {
@@ -17994,7 +18479,7 @@ func (o UserOwnedAmlWorkspaceResponsePtrOutput) IdentityClientId() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// Full resource id of a AML workspace resource.
+// Full resource id of a AML account resource.
 func (o UserOwnedAmlWorkspaceResponsePtrOutput) ResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UserOwnedAmlWorkspaceResponse) *string {
 		if v == nil {
@@ -18166,18 +18651,22 @@ type UsernamePasswordAuthTypeConnectionProperties struct {
 	// Expected value is 'UsernamePassword'.
 	AuthType string `pulumi:"authType"`
 	// Category of the connection
-	Category      *string                     `pulumi:"category"`
-	Credentials   *ConnectionUsernamePassword `pulumi:"credentials"`
-	Error         *string                     `pulumi:"error"`
-	ExpiryTime    *string                     `pulumi:"expiryTime"`
-	IsSharedToAll *bool                       `pulumi:"isSharedToAll"`
+	Category    *string                     `pulumi:"category"`
+	Credentials *ConnectionUsernamePassword `pulumi:"credentials"`
+	// Provides the error message if the connection fails
+	Error         *string `pulumi:"error"`
+	ExpiryTime    *string `pulumi:"expiryTime"`
+	IsSharedToAll *bool   `pulumi:"isSharedToAll"`
 	// Store user metadata for this connection
-	Metadata                    map[string]string `pulumi:"metadata"`
-	PeRequirement               *string           `pulumi:"peRequirement"`
-	PeStatus                    *string           `pulumi:"peStatus"`
-	SharedUserList              []string          `pulumi:"sharedUserList"`
-	Target                      *string           `pulumi:"target"`
-	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
+	Metadata map[string]string `pulumi:"metadata"`
+	// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
+	PeRequirement *string `pulumi:"peRequirement"`
+	// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
+	PeStatus       *string  `pulumi:"peStatus"`
+	SharedUserList []string `pulumi:"sharedUserList"`
+	// The connection URL to be used.
+	Target                      *string `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool   `pulumi:"useWorkspaceManagedIdentity"`
 }
 
 // UsernamePasswordAuthTypeConnectionPropertiesInput is an input type that accepts UsernamePasswordAuthTypeConnectionPropertiesArgs and UsernamePasswordAuthTypeConnectionPropertiesOutput values.
@@ -18196,18 +18685,22 @@ type UsernamePasswordAuthTypeConnectionPropertiesArgs struct {
 	// Expected value is 'UsernamePassword'.
 	AuthType pulumi.StringInput `pulumi:"authType"`
 	// Category of the connection
-	Category      pulumi.StringPtrInput              `pulumi:"category"`
-	Credentials   ConnectionUsernamePasswordPtrInput `pulumi:"credentials"`
-	Error         pulumi.StringPtrInput              `pulumi:"error"`
-	ExpiryTime    pulumi.StringPtrInput              `pulumi:"expiryTime"`
-	IsSharedToAll pulumi.BoolPtrInput                `pulumi:"isSharedToAll"`
+	Category    pulumi.StringPtrInput              `pulumi:"category"`
+	Credentials ConnectionUsernamePasswordPtrInput `pulumi:"credentials"`
+	// Provides the error message if the connection fails
+	Error         pulumi.StringPtrInput `pulumi:"error"`
+	ExpiryTime    pulumi.StringPtrInput `pulumi:"expiryTime"`
+	IsSharedToAll pulumi.BoolPtrInput   `pulumi:"isSharedToAll"`
 	// Store user metadata for this connection
-	Metadata                    pulumi.StringMapInput   `pulumi:"metadata"`
-	PeRequirement               pulumi.StringPtrInput   `pulumi:"peRequirement"`
-	PeStatus                    pulumi.StringPtrInput   `pulumi:"peStatus"`
-	SharedUserList              pulumi.StringArrayInput `pulumi:"sharedUserList"`
-	Target                      pulumi.StringPtrInput   `pulumi:"target"`
-	UseWorkspaceManagedIdentity pulumi.BoolPtrInput     `pulumi:"useWorkspaceManagedIdentity"`
+	Metadata pulumi.StringMapInput `pulumi:"metadata"`
+	// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
+	PeRequirement pulumi.StringPtrInput `pulumi:"peRequirement"`
+	// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
+	PeStatus       pulumi.StringPtrInput   `pulumi:"peStatus"`
+	SharedUserList pulumi.StringArrayInput `pulumi:"sharedUserList"`
+	// The connection URL to be used.
+	Target                      pulumi.StringPtrInput `pulumi:"target"`
+	UseWorkspaceManagedIdentity pulumi.BoolPtrInput   `pulumi:"useWorkspaceManagedIdentity"`
 }
 
 func (UsernamePasswordAuthTypeConnectionPropertiesArgs) ElementType() reflect.Type {
@@ -18251,6 +18744,7 @@ func (o UsernamePasswordAuthTypeConnectionPropertiesOutput) Credentials() Connec
 	return o.ApplyT(func(v UsernamePasswordAuthTypeConnectionProperties) *ConnectionUsernamePassword { return v.Credentials }).(ConnectionUsernamePasswordPtrOutput)
 }
 
+// Provides the error message if the connection fails
 func (o UsernamePasswordAuthTypeConnectionPropertiesOutput) Error() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UsernamePasswordAuthTypeConnectionProperties) *string { return v.Error }).(pulumi.StringPtrOutput)
 }
@@ -18268,10 +18762,12 @@ func (o UsernamePasswordAuthTypeConnectionPropertiesOutput) Metadata() pulumi.St
 	return o.ApplyT(func(v UsernamePasswordAuthTypeConnectionProperties) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
+// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
 func (o UsernamePasswordAuthTypeConnectionPropertiesOutput) PeRequirement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UsernamePasswordAuthTypeConnectionProperties) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
 func (o UsernamePasswordAuthTypeConnectionPropertiesOutput) PeStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UsernamePasswordAuthTypeConnectionProperties) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
 }
@@ -18280,6 +18776,7 @@ func (o UsernamePasswordAuthTypeConnectionPropertiesOutput) SharedUserList() pul
 	return o.ApplyT(func(v UsernamePasswordAuthTypeConnectionProperties) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
 }
 
+// The connection URL to be used.
 func (o UsernamePasswordAuthTypeConnectionPropertiesOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UsernamePasswordAuthTypeConnectionProperties) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
@@ -18296,18 +18793,22 @@ type UsernamePasswordAuthTypeConnectionPropertiesResponse struct {
 	Category                *string                             `pulumi:"category"`
 	CreatedByWorkspaceArmId string                              `pulumi:"createdByWorkspaceArmId"`
 	Credentials             *ConnectionUsernamePasswordResponse `pulumi:"credentials"`
-	Error                   *string                             `pulumi:"error"`
-	ExpiryTime              *string                             `pulumi:"expiryTime"`
+	// Provides the error message if the connection fails
+	Error      *string `pulumi:"error"`
+	ExpiryTime *string `pulumi:"expiryTime"`
 	// Group based on connection category
 	Group         string `pulumi:"group"`
 	IsSharedToAll *bool  `pulumi:"isSharedToAll"`
 	// Store user metadata for this connection
-	Metadata                    map[string]string `pulumi:"metadata"`
-	PeRequirement               *string           `pulumi:"peRequirement"`
-	PeStatus                    *string           `pulumi:"peStatus"`
-	SharedUserList              []string          `pulumi:"sharedUserList"`
-	Target                      *string           `pulumi:"target"`
-	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
+	Metadata map[string]string `pulumi:"metadata"`
+	// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
+	PeRequirement *string `pulumi:"peRequirement"`
+	// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
+	PeStatus       *string  `pulumi:"peStatus"`
+	SharedUserList []string `pulumi:"sharedUserList"`
+	// The connection URL to be used.
+	Target                      *string `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool   `pulumi:"useWorkspaceManagedIdentity"`
 }
 
 type UsernamePasswordAuthTypeConnectionPropertiesResponseOutput struct{ *pulumi.OutputState }
@@ -18345,6 +18846,7 @@ func (o UsernamePasswordAuthTypeConnectionPropertiesResponseOutput) Credentials(
 	}).(ConnectionUsernamePasswordResponsePtrOutput)
 }
 
+// Provides the error message if the connection fails
 func (o UsernamePasswordAuthTypeConnectionPropertiesResponseOutput) Error() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UsernamePasswordAuthTypeConnectionPropertiesResponse) *string { return v.Error }).(pulumi.StringPtrOutput)
 }
@@ -18367,10 +18869,12 @@ func (o UsernamePasswordAuthTypeConnectionPropertiesResponseOutput) Metadata() p
 	return o.ApplyT(func(v UsernamePasswordAuthTypeConnectionPropertiesResponse) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
+// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
 func (o UsernamePasswordAuthTypeConnectionPropertiesResponseOutput) PeRequirement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UsernamePasswordAuthTypeConnectionPropertiesResponse) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
 func (o UsernamePasswordAuthTypeConnectionPropertiesResponseOutput) PeStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UsernamePasswordAuthTypeConnectionPropertiesResponse) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
 }
@@ -18379,6 +18883,7 @@ func (o UsernamePasswordAuthTypeConnectionPropertiesResponseOutput) SharedUserLi
 	return o.ApplyT(func(v UsernamePasswordAuthTypeConnectionPropertiesResponse) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
 }
 
+// The connection URL to be used.
 func (o UsernamePasswordAuthTypeConnectionPropertiesResponseOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UsernamePasswordAuthTypeConnectionPropertiesResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
@@ -18897,6 +19402,10 @@ func init() {
 	pulumi.RegisterOutputType(MultiRegionSettingsPtrOutput{})
 	pulumi.RegisterOutputType(MultiRegionSettingsResponseOutput{})
 	pulumi.RegisterOutputType(MultiRegionSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(NetworkInjectionOutput{})
+	pulumi.RegisterOutputType(NetworkInjectionArrayOutput{})
+	pulumi.RegisterOutputType(NetworkInjectionResponseOutput{})
+	pulumi.RegisterOutputType(NetworkInjectionResponseArrayOutput{})
 	pulumi.RegisterOutputType(NetworkRuleSetOutput{})
 	pulumi.RegisterOutputType(NetworkRuleSetPtrOutput{})
 	pulumi.RegisterOutputType(NetworkRuleSetResponseOutput{})
