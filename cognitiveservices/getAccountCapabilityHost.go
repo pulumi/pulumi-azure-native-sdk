@@ -13,9 +13,9 @@ import (
 
 // Azure Resource Manager resource envelope.
 //
-// Uses Azure REST API version 2025-04-01-preview.
+// Uses Azure REST API version 2025-06-01.
 //
-// Other available API versions: 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2025-04-01-preview, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupAccountCapabilityHost(ctx *pulumi.Context, args *LookupAccountCapabilityHostArgs, opts ...pulumi.InvokeOption) (*LookupAccountCapabilityHostResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccountCapabilityHostResult
@@ -23,7 +23,7 @@ func LookupAccountCapabilityHost(ctx *pulumi.Context, args *LookupAccountCapabil
 	if err != nil {
 		return nil, err
 	}
-	return rv.Defaults(), nil
+	return &rv, nil
 }
 
 type LookupAccountCapabilityHostArgs struct {
@@ -49,16 +49,6 @@ type LookupAccountCapabilityHostResult struct {
 	Type string `pulumi:"type"`
 }
 
-// Defaults sets the appropriate defaults for LookupAccountCapabilityHostResult
-func (val *LookupAccountCapabilityHostResult) Defaults() *LookupAccountCapabilityHostResult {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	tmp.CapabilityHostProperties = *tmp.CapabilityHostProperties.Defaults()
-
-	return &tmp
-}
 func LookupAccountCapabilityHostOutput(ctx *pulumi.Context, args LookupAccountCapabilityHostOutputArgs, opts ...pulumi.InvokeOption) LookupAccountCapabilityHostResultOutput {
 	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAccountCapabilityHostResultOutput, error) {

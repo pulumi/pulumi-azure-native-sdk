@@ -2465,6 +2465,7 @@ func (in *keySourcePtr) ToKeySourcePtrOutputWithContext(ctx context.Context) Key
 	return pulumi.ToOutputWithContext(ctx, in).(KeySourcePtrOutput)
 }
 
+// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
 type ManagedPERequirement string
 
 const (
@@ -2632,6 +2633,7 @@ func (in *managedPERequirementPtr) ToManagedPERequirementPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedPERequirementPtrOutput)
 }
 
+// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
 type ManagedPEStatus string
 
 const (
@@ -4504,6 +4506,172 @@ const (
 	RuleTypeServiceTag      = RuleType("ServiceTag")
 )
 
+// Specifies what features in AI Foundry network injection applies to. Currently only supports 'agent' for agent scenarios. 'none' means no network injection.
+type ScenarioType string
+
+const (
+	ScenarioTypeNone  = ScenarioType("none")
+	ScenarioTypeAgent = ScenarioType("agent")
+)
+
+func (ScenarioType) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScenarioType)(nil)).Elem()
+}
+
+func (e ScenarioType) ToScenarioTypeOutput() ScenarioTypeOutput {
+	return pulumi.ToOutput(e).(ScenarioTypeOutput)
+}
+
+func (e ScenarioType) ToScenarioTypeOutputWithContext(ctx context.Context) ScenarioTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ScenarioTypeOutput)
+}
+
+func (e ScenarioType) ToScenarioTypePtrOutput() ScenarioTypePtrOutput {
+	return e.ToScenarioTypePtrOutputWithContext(context.Background())
+}
+
+func (e ScenarioType) ToScenarioTypePtrOutputWithContext(ctx context.Context) ScenarioTypePtrOutput {
+	return ScenarioType(e).ToScenarioTypeOutputWithContext(ctx).ToScenarioTypePtrOutputWithContext(ctx)
+}
+
+func (e ScenarioType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ScenarioType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ScenarioType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ScenarioType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ScenarioTypeOutput struct{ *pulumi.OutputState }
+
+func (ScenarioTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScenarioType)(nil)).Elem()
+}
+
+func (o ScenarioTypeOutput) ToScenarioTypeOutput() ScenarioTypeOutput {
+	return o
+}
+
+func (o ScenarioTypeOutput) ToScenarioTypeOutputWithContext(ctx context.Context) ScenarioTypeOutput {
+	return o
+}
+
+func (o ScenarioTypeOutput) ToScenarioTypePtrOutput() ScenarioTypePtrOutput {
+	return o.ToScenarioTypePtrOutputWithContext(context.Background())
+}
+
+func (o ScenarioTypeOutput) ToScenarioTypePtrOutputWithContext(ctx context.Context) ScenarioTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScenarioType) *ScenarioType {
+		return &v
+	}).(ScenarioTypePtrOutput)
+}
+
+func (o ScenarioTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ScenarioTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ScenarioType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ScenarioTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ScenarioTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ScenarioType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ScenarioTypePtrOutput struct{ *pulumi.OutputState }
+
+func (ScenarioTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScenarioType)(nil)).Elem()
+}
+
+func (o ScenarioTypePtrOutput) ToScenarioTypePtrOutput() ScenarioTypePtrOutput {
+	return o
+}
+
+func (o ScenarioTypePtrOutput) ToScenarioTypePtrOutputWithContext(ctx context.Context) ScenarioTypePtrOutput {
+	return o
+}
+
+func (o ScenarioTypePtrOutput) Elem() ScenarioTypeOutput {
+	return o.ApplyT(func(v *ScenarioType) ScenarioType {
+		if v != nil {
+			return *v
+		}
+		var ret ScenarioType
+		return ret
+	}).(ScenarioTypeOutput)
+}
+
+func (o ScenarioTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ScenarioTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ScenarioType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ScenarioTypeInput is an input type that accepts values of the ScenarioType enum
+// A concrete instance of `ScenarioTypeInput` can be one of the following:
+//
+//	ScenarioTypeNone
+//	ScenarioTypeAgent
+type ScenarioTypeInput interface {
+	pulumi.Input
+
+	ToScenarioTypeOutput() ScenarioTypeOutput
+	ToScenarioTypeOutputWithContext(context.Context) ScenarioTypeOutput
+}
+
+var scenarioTypePtrType = reflect.TypeOf((**ScenarioType)(nil)).Elem()
+
+type ScenarioTypePtrInput interface {
+	pulumi.Input
+
+	ToScenarioTypePtrOutput() ScenarioTypePtrOutput
+	ToScenarioTypePtrOutputWithContext(context.Context) ScenarioTypePtrOutput
+}
+
+type scenarioTypePtr string
+
+func ScenarioTypePtr(v string) ScenarioTypePtrInput {
+	return (*scenarioTypePtr)(&v)
+}
+
+func (*scenarioTypePtr) ElementType() reflect.Type {
+	return scenarioTypePtrType
+}
+
+func (in *scenarioTypePtr) ToScenarioTypePtrOutput() ScenarioTypePtrOutput {
+	return pulumi.ToOutput(in).(ScenarioTypePtrOutput)
+}
+
+func (in *scenarioTypePtr) ToScenarioTypePtrOutputWithContext(ctx context.Context) ScenarioTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ScenarioTypePtrOutput)
+}
+
 // This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
 type SkuTier string
 
@@ -4892,6 +5060,8 @@ func init() {
 	pulumi.RegisterOutputType(RuleCategoryPtrOutput{})
 	pulumi.RegisterOutputType(RuleStatusOutput{})
 	pulumi.RegisterOutputType(RuleStatusPtrOutput{})
+	pulumi.RegisterOutputType(ScenarioTypeOutput{})
+	pulumi.RegisterOutputType(ScenarioTypePtrOutput{})
 	pulumi.RegisterOutputType(SkuTierOutput{})
 	pulumi.RegisterOutputType(SkuTierPtrOutput{})
 	pulumi.RegisterOutputType(TrafficRoutingProtocolOutput{})

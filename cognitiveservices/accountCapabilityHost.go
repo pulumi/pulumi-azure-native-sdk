@@ -14,9 +14,9 @@ import (
 
 // Azure Resource Manager resource envelope.
 //
-// Uses Azure REST API version 2025-04-01-preview.
+// Uses Azure REST API version 2025-06-01.
 //
-// Other available API versions: 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2025-04-01-preview, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type AccountCapabilityHost struct {
 	pulumi.CustomResourceState
 
@@ -46,7 +46,6 @@ func NewAccountCapabilityHost(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	args.CapabilityHostProperties = args.CapabilityHostProperties.ToCapabilityHostOutput().ApplyT(func(v CapabilityHost) CapabilityHost { return *v.Defaults() }).(CapabilityHostOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:cognitiveservices/v20250401preview:AccountCapabilityHost"),
