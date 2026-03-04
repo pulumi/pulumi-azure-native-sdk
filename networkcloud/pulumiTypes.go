@@ -208,6 +208,276 @@ func (o AadConfigurationResponsePtrOutput) AdminGroupObjectIds() pulumi.StringAr
 	}).(pulumi.StringArrayOutput)
 }
 
+type AccessBridgeEndpointResponse struct {
+	// The fully qualified domain name used to describe the certificate name for the endpoint.
+	Fqdn string `pulumi:"fqdn"`
+	// The IPv4 address associated with the endpoint.
+	Ipv4Address string `pulumi:"ipv4Address"`
+	// The IPv6 address associated with the endpoint.
+	Ipv6Address string `pulumi:"ipv6Address"`
+	// The name that identifies the type of endpoint (for example VIP or host).
+	Name string `pulumi:"name"`
+}
+
+type AccessBridgeEndpointResponseOutput struct{ *pulumi.OutputState }
+
+func (AccessBridgeEndpointResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessBridgeEndpointResponse)(nil)).Elem()
+}
+
+func (o AccessBridgeEndpointResponseOutput) ToAccessBridgeEndpointResponseOutput() AccessBridgeEndpointResponseOutput {
+	return o
+}
+
+func (o AccessBridgeEndpointResponseOutput) ToAccessBridgeEndpointResponseOutputWithContext(ctx context.Context) AccessBridgeEndpointResponseOutput {
+	return o
+}
+
+// The fully qualified domain name used to describe the certificate name for the endpoint.
+func (o AccessBridgeEndpointResponseOutput) Fqdn() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessBridgeEndpointResponse) string { return v.Fqdn }).(pulumi.StringOutput)
+}
+
+// The IPv4 address associated with the endpoint.
+func (o AccessBridgeEndpointResponseOutput) Ipv4Address() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessBridgeEndpointResponse) string { return v.Ipv4Address }).(pulumi.StringOutput)
+}
+
+// The IPv6 address associated with the endpoint.
+func (o AccessBridgeEndpointResponseOutput) Ipv6Address() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessBridgeEndpointResponse) string { return v.Ipv6Address }).(pulumi.StringOutput)
+}
+
+// The name that identifies the type of endpoint (for example VIP or host).
+func (o AccessBridgeEndpointResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessBridgeEndpointResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type AccessBridgeEndpointResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessBridgeEndpointResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessBridgeEndpointResponse)(nil)).Elem()
+}
+
+func (o AccessBridgeEndpointResponseArrayOutput) ToAccessBridgeEndpointResponseArrayOutput() AccessBridgeEndpointResponseArrayOutput {
+	return o
+}
+
+func (o AccessBridgeEndpointResponseArrayOutput) ToAccessBridgeEndpointResponseArrayOutputWithContext(ctx context.Context) AccessBridgeEndpointResponseArrayOutput {
+	return o
+}
+
+func (o AccessBridgeEndpointResponseArrayOutput) Index(i pulumi.IntInput) AccessBridgeEndpointResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessBridgeEndpointResponse {
+		return vs[0].([]AccessBridgeEndpointResponse)[vs[1].(int)]
+	}).(AccessBridgeEndpointResponseOutput)
+}
+
+type AccessBridgeSecurityRule struct {
+	// The user provided value describing this rule.
+	Description *string `pulumi:"description"`
+	// The direction of allowed network traffic based on the rule.
+	Direction string `pulumi:"direction"`
+	// The set of IPv4 addresses permitted as the source or destination of the security rule. For as single address, utilize a /32 (CIDR notation). One or both Ipv4Addresses and Ipv6Addresses must be specified. Example formats: 10.10.10.10-10.10.10.20 or 10.10.10.10/24.
+	Ipv4Addresses []string `pulumi:"ipv4Addresses"`
+	// The set of IPv6 addresses permitted as the source or destination of the security rule. For as single address, utilize a /128 (CIDR notation). One or both Ipv4Addresses and Ipv6Addresses must be specified. Example formats: 2001:db8:abcd::1-2001:db8:abcd::ff or 2001:db8:abcd::1/64.
+	Ipv6Addresses []string `pulumi:"ipv6Addresses"`
+	// The source or destination port or port range. Example 24562 or 24562-24570.
+	Port string `pulumi:"port"`
+}
+
+// AccessBridgeSecurityRuleInput is an input type that accepts AccessBridgeSecurityRuleArgs and AccessBridgeSecurityRuleOutput values.
+// You can construct a concrete instance of `AccessBridgeSecurityRuleInput` via:
+//
+//	AccessBridgeSecurityRuleArgs{...}
+type AccessBridgeSecurityRuleInput interface {
+	pulumi.Input
+
+	ToAccessBridgeSecurityRuleOutput() AccessBridgeSecurityRuleOutput
+	ToAccessBridgeSecurityRuleOutputWithContext(context.Context) AccessBridgeSecurityRuleOutput
+}
+
+type AccessBridgeSecurityRuleArgs struct {
+	// The user provided value describing this rule.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The direction of allowed network traffic based on the rule.
+	Direction pulumi.StringInput `pulumi:"direction"`
+	// The set of IPv4 addresses permitted as the source or destination of the security rule. For as single address, utilize a /32 (CIDR notation). One or both Ipv4Addresses and Ipv6Addresses must be specified. Example formats: 10.10.10.10-10.10.10.20 or 10.10.10.10/24.
+	Ipv4Addresses pulumi.StringArrayInput `pulumi:"ipv4Addresses"`
+	// The set of IPv6 addresses permitted as the source or destination of the security rule. For as single address, utilize a /128 (CIDR notation). One or both Ipv4Addresses and Ipv6Addresses must be specified. Example formats: 2001:db8:abcd::1-2001:db8:abcd::ff or 2001:db8:abcd::1/64.
+	Ipv6Addresses pulumi.StringArrayInput `pulumi:"ipv6Addresses"`
+	// The source or destination port or port range. Example 24562 or 24562-24570.
+	Port pulumi.StringInput `pulumi:"port"`
+}
+
+func (AccessBridgeSecurityRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessBridgeSecurityRule)(nil)).Elem()
+}
+
+func (i AccessBridgeSecurityRuleArgs) ToAccessBridgeSecurityRuleOutput() AccessBridgeSecurityRuleOutput {
+	return i.ToAccessBridgeSecurityRuleOutputWithContext(context.Background())
+}
+
+func (i AccessBridgeSecurityRuleArgs) ToAccessBridgeSecurityRuleOutputWithContext(ctx context.Context) AccessBridgeSecurityRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessBridgeSecurityRuleOutput)
+}
+
+// AccessBridgeSecurityRuleArrayInput is an input type that accepts AccessBridgeSecurityRuleArray and AccessBridgeSecurityRuleArrayOutput values.
+// You can construct a concrete instance of `AccessBridgeSecurityRuleArrayInput` via:
+//
+//	AccessBridgeSecurityRuleArray{ AccessBridgeSecurityRuleArgs{...} }
+type AccessBridgeSecurityRuleArrayInput interface {
+	pulumi.Input
+
+	ToAccessBridgeSecurityRuleArrayOutput() AccessBridgeSecurityRuleArrayOutput
+	ToAccessBridgeSecurityRuleArrayOutputWithContext(context.Context) AccessBridgeSecurityRuleArrayOutput
+}
+
+type AccessBridgeSecurityRuleArray []AccessBridgeSecurityRuleInput
+
+func (AccessBridgeSecurityRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessBridgeSecurityRule)(nil)).Elem()
+}
+
+func (i AccessBridgeSecurityRuleArray) ToAccessBridgeSecurityRuleArrayOutput() AccessBridgeSecurityRuleArrayOutput {
+	return i.ToAccessBridgeSecurityRuleArrayOutputWithContext(context.Background())
+}
+
+func (i AccessBridgeSecurityRuleArray) ToAccessBridgeSecurityRuleArrayOutputWithContext(ctx context.Context) AccessBridgeSecurityRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessBridgeSecurityRuleArrayOutput)
+}
+
+type AccessBridgeSecurityRuleOutput struct{ *pulumi.OutputState }
+
+func (AccessBridgeSecurityRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessBridgeSecurityRule)(nil)).Elem()
+}
+
+func (o AccessBridgeSecurityRuleOutput) ToAccessBridgeSecurityRuleOutput() AccessBridgeSecurityRuleOutput {
+	return o
+}
+
+func (o AccessBridgeSecurityRuleOutput) ToAccessBridgeSecurityRuleOutputWithContext(ctx context.Context) AccessBridgeSecurityRuleOutput {
+	return o
+}
+
+// The user provided value describing this rule.
+func (o AccessBridgeSecurityRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessBridgeSecurityRule) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The direction of allowed network traffic based on the rule.
+func (o AccessBridgeSecurityRuleOutput) Direction() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessBridgeSecurityRule) string { return v.Direction }).(pulumi.StringOutput)
+}
+
+// The set of IPv4 addresses permitted as the source or destination of the security rule. For as single address, utilize a /32 (CIDR notation). One or both Ipv4Addresses and Ipv6Addresses must be specified. Example formats: 10.10.10.10-10.10.10.20 or 10.10.10.10/24.
+func (o AccessBridgeSecurityRuleOutput) Ipv4Addresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessBridgeSecurityRule) []string { return v.Ipv4Addresses }).(pulumi.StringArrayOutput)
+}
+
+// The set of IPv6 addresses permitted as the source or destination of the security rule. For as single address, utilize a /128 (CIDR notation). One or both Ipv4Addresses and Ipv6Addresses must be specified. Example formats: 2001:db8:abcd::1-2001:db8:abcd::ff or 2001:db8:abcd::1/64.
+func (o AccessBridgeSecurityRuleOutput) Ipv6Addresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessBridgeSecurityRule) []string { return v.Ipv6Addresses }).(pulumi.StringArrayOutput)
+}
+
+// The source or destination port or port range. Example 24562 or 24562-24570.
+func (o AccessBridgeSecurityRuleOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessBridgeSecurityRule) string { return v.Port }).(pulumi.StringOutput)
+}
+
+type AccessBridgeSecurityRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessBridgeSecurityRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessBridgeSecurityRule)(nil)).Elem()
+}
+
+func (o AccessBridgeSecurityRuleArrayOutput) ToAccessBridgeSecurityRuleArrayOutput() AccessBridgeSecurityRuleArrayOutput {
+	return o
+}
+
+func (o AccessBridgeSecurityRuleArrayOutput) ToAccessBridgeSecurityRuleArrayOutputWithContext(ctx context.Context) AccessBridgeSecurityRuleArrayOutput {
+	return o
+}
+
+func (o AccessBridgeSecurityRuleArrayOutput) Index(i pulumi.IntInput) AccessBridgeSecurityRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessBridgeSecurityRule {
+		return vs[0].([]AccessBridgeSecurityRule)[vs[1].(int)]
+	}).(AccessBridgeSecurityRuleOutput)
+}
+
+type AccessBridgeSecurityRuleResponse struct {
+	// The user provided value describing this rule.
+	Description *string `pulumi:"description"`
+	// The direction of allowed network traffic based on the rule.
+	Direction string `pulumi:"direction"`
+	// The set of IPv4 addresses permitted as the source or destination of the security rule. For as single address, utilize a /32 (CIDR notation). One or both Ipv4Addresses and Ipv6Addresses must be specified. Example formats: 10.10.10.10-10.10.10.20 or 10.10.10.10/24.
+	Ipv4Addresses []string `pulumi:"ipv4Addresses"`
+	// The set of IPv6 addresses permitted as the source or destination of the security rule. For as single address, utilize a /128 (CIDR notation). One or both Ipv4Addresses and Ipv6Addresses must be specified. Example formats: 2001:db8:abcd::1-2001:db8:abcd::ff or 2001:db8:abcd::1/64.
+	Ipv6Addresses []string `pulumi:"ipv6Addresses"`
+	// The source or destination port or port range. Example 24562 or 24562-24570.
+	Port string `pulumi:"port"`
+}
+
+type AccessBridgeSecurityRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (AccessBridgeSecurityRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessBridgeSecurityRuleResponse)(nil)).Elem()
+}
+
+func (o AccessBridgeSecurityRuleResponseOutput) ToAccessBridgeSecurityRuleResponseOutput() AccessBridgeSecurityRuleResponseOutput {
+	return o
+}
+
+func (o AccessBridgeSecurityRuleResponseOutput) ToAccessBridgeSecurityRuleResponseOutputWithContext(ctx context.Context) AccessBridgeSecurityRuleResponseOutput {
+	return o
+}
+
+// The user provided value describing this rule.
+func (o AccessBridgeSecurityRuleResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessBridgeSecurityRuleResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The direction of allowed network traffic based on the rule.
+func (o AccessBridgeSecurityRuleResponseOutput) Direction() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessBridgeSecurityRuleResponse) string { return v.Direction }).(pulumi.StringOutput)
+}
+
+// The set of IPv4 addresses permitted as the source or destination of the security rule. For as single address, utilize a /32 (CIDR notation). One or both Ipv4Addresses and Ipv6Addresses must be specified. Example formats: 10.10.10.10-10.10.10.20 or 10.10.10.10/24.
+func (o AccessBridgeSecurityRuleResponseOutput) Ipv4Addresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessBridgeSecurityRuleResponse) []string { return v.Ipv4Addresses }).(pulumi.StringArrayOutput)
+}
+
+// The set of IPv6 addresses permitted as the source or destination of the security rule. For as single address, utilize a /128 (CIDR notation). One or both Ipv4Addresses and Ipv6Addresses must be specified. Example formats: 2001:db8:abcd::1-2001:db8:abcd::ff or 2001:db8:abcd::1/64.
+func (o AccessBridgeSecurityRuleResponseOutput) Ipv6Addresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessBridgeSecurityRuleResponse) []string { return v.Ipv6Addresses }).(pulumi.StringArrayOutput)
+}
+
+// The source or destination port or port range. Example 24562 or 24562-24570.
+func (o AccessBridgeSecurityRuleResponseOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessBridgeSecurityRuleResponse) string { return v.Port }).(pulumi.StringOutput)
+}
+
+type AccessBridgeSecurityRuleResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessBridgeSecurityRuleResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessBridgeSecurityRuleResponse)(nil)).Elem()
+}
+
+func (o AccessBridgeSecurityRuleResponseArrayOutput) ToAccessBridgeSecurityRuleResponseArrayOutput() AccessBridgeSecurityRuleResponseArrayOutput {
+	return o
+}
+
+func (o AccessBridgeSecurityRuleResponseArrayOutput) ToAccessBridgeSecurityRuleResponseArrayOutputWithContext(ctx context.Context) AccessBridgeSecurityRuleResponseArrayOutput {
+	return o
+}
+
+func (o AccessBridgeSecurityRuleResponseArrayOutput) Index(i pulumi.IntInput) AccessBridgeSecurityRuleResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessBridgeSecurityRuleResponse {
+		return vs[0].([]AccessBridgeSecurityRuleResponse)[vs[1].(int)]
+	}).(AccessBridgeSecurityRuleResponseOutput)
+}
+
 type AdministrativeCredentials struct {
 	// The password of the administrator of the device used during initialization.
 	Password string `pulumi:"password"`
@@ -6039,6 +6309,57 @@ func (o KubernetesLabelResponseArrayOutput) Index(i pulumi.IntInput) KubernetesL
 	}).(KubernetesLabelResponseOutput)
 }
 
+type KubernetesVersionValueResponse struct {
+	// Additional description for the Kubernetes version.
+	Description string `pulumi:"description"`
+	// The Kubernetes version identifier.
+	Version string `pulumi:"version"`
+}
+
+type KubernetesVersionValueResponseOutput struct{ *pulumi.OutputState }
+
+func (KubernetesVersionValueResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesVersionValueResponse)(nil)).Elem()
+}
+
+func (o KubernetesVersionValueResponseOutput) ToKubernetesVersionValueResponseOutput() KubernetesVersionValueResponseOutput {
+	return o
+}
+
+func (o KubernetesVersionValueResponseOutput) ToKubernetesVersionValueResponseOutputWithContext(ctx context.Context) KubernetesVersionValueResponseOutput {
+	return o
+}
+
+// Additional description for the Kubernetes version.
+func (o KubernetesVersionValueResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesVersionValueResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The Kubernetes version identifier.
+func (o KubernetesVersionValueResponseOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesVersionValueResponse) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type KubernetesVersionValueResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (KubernetesVersionValueResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KubernetesVersionValueResponse)(nil)).Elem()
+}
+
+func (o KubernetesVersionValueResponseArrayOutput) ToKubernetesVersionValueResponseArrayOutput() KubernetesVersionValueResponseArrayOutput {
+	return o
+}
+
+func (o KubernetesVersionValueResponseArrayOutput) ToKubernetesVersionValueResponseArrayOutputWithContext(ctx context.Context) KubernetesVersionValueResponseArrayOutput {
+	return o
+}
+
+func (o KubernetesVersionValueResponseArrayOutput) Index(i pulumi.IntInput) KubernetesVersionValueResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KubernetesVersionValueResponse {
+		return vs[0].([]KubernetesVersionValueResponse)[vs[1].(int)]
+	}).(KubernetesVersionValueResponseOutput)
+}
+
 type L2NetworkAttachmentConfiguration struct {
 	// The resource ID of the network that is being configured for attachment.
 	NetworkId string `pulumi:"networkId"`
@@ -11092,6 +11413,12 @@ func init() {
 	pulumi.RegisterOutputType(AadConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(AadConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(AadConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(AccessBridgeEndpointResponseOutput{})
+	pulumi.RegisterOutputType(AccessBridgeEndpointResponseArrayOutput{})
+	pulumi.RegisterOutputType(AccessBridgeSecurityRuleOutput{})
+	pulumi.RegisterOutputType(AccessBridgeSecurityRuleArrayOutput{})
+	pulumi.RegisterOutputType(AccessBridgeSecurityRuleResponseOutput{})
+	pulumi.RegisterOutputType(AccessBridgeSecurityRuleResponseArrayOutput{})
 	pulumi.RegisterOutputType(AdministrativeCredentialsOutput{})
 	pulumi.RegisterOutputType(AdministrativeCredentialsResponseOutput{})
 	pulumi.RegisterOutputType(AdministratorConfigurationOutput{})
@@ -11193,6 +11520,8 @@ func init() {
 	pulumi.RegisterOutputType(KubernetesLabelArrayOutput{})
 	pulumi.RegisterOutputType(KubernetesLabelResponseOutput{})
 	pulumi.RegisterOutputType(KubernetesLabelResponseArrayOutput{})
+	pulumi.RegisterOutputType(KubernetesVersionValueResponseOutput{})
+	pulumi.RegisterOutputType(KubernetesVersionValueResponseArrayOutput{})
 	pulumi.RegisterOutputType(L2NetworkAttachmentConfigurationOutput{})
 	pulumi.RegisterOutputType(L2NetworkAttachmentConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(L2NetworkAttachmentConfigurationResponseOutput{})

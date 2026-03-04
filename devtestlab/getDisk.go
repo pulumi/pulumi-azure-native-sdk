@@ -29,7 +29,7 @@ type LookupDiskArgs struct {
 	Expand *string `pulumi:"expand"`
 	// The name of the lab.
 	LabName string `pulumi:"labName"`
-	// The name of the Disk
+	// The name of the disk.
 	Name string `pulumi:"name"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -53,23 +53,25 @@ type LookupDiskResult struct {
 	DiskUri *string `pulumi:"diskUri"`
 	// The host caching policy of the disk (i.e. None, ReadOnly, ReadWrite).
 	HostCaching *string `pulumi:"hostCaching"`
-	// The identifier of the resource.
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The resource ID of the VM to which this disk is leased.
 	LeasedByLabVmId *string `pulumi:"leasedByLabVmId"`
-	// The location of the resource.
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// When backed by managed disk, this is the ID of the compute disk resource.
 	ManagedDiskId *string `pulumi:"managedDiskId"`
-	// The name of the resource.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// The provisioning status of the resource.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// When backed by a blob, the storage account where the blob is.
 	StorageAccountId *string `pulumi:"storageAccountId"`
-	// The tags of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// The type of the resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// The unique immutable identifier of a resource (Guid).
 	UniqueIdentifier string `pulumi:"uniqueIdentifier"`
@@ -89,7 +91,7 @@ type LookupDiskOutputArgs struct {
 	Expand pulumi.StringPtrInput `pulumi:"expand"`
 	// The name of the lab.
 	LabName pulumi.StringInput `pulumi:"labName"`
-	// The name of the Disk
+	// The name of the disk.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
@@ -151,7 +153,7 @@ func (o LookupDiskResultOutput) HostCaching() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDiskResult) *string { return v.HostCaching }).(pulumi.StringPtrOutput)
 }
 
-// The identifier of the resource.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupDiskResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -161,7 +163,7 @@ func (o LookupDiskResultOutput) LeasedByLabVmId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDiskResult) *string { return v.LeasedByLabVmId }).(pulumi.StringPtrOutput)
 }
 
-// The location of the resource.
+// The geo-location where the resource lives
 func (o LookupDiskResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDiskResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
@@ -171,7 +173,7 @@ func (o LookupDiskResultOutput) ManagedDiskId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDiskResult) *string { return v.ManagedDiskId }).(pulumi.StringPtrOutput)
 }
 
-// The name of the resource.
+// The name of the resource
 func (o LookupDiskResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -186,12 +188,17 @@ func (o LookupDiskResultOutput) StorageAccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDiskResult) *string { return v.StorageAccountId }).(pulumi.StringPtrOutput)
 }
 
-// The tags of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupDiskResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupDiskResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// Resource tags.
 func (o LookupDiskResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupDiskResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupDiskResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.Type }).(pulumi.StringOutput)
 }

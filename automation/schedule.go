@@ -14,9 +14,9 @@ import (
 
 // Definition of the schedule.
 //
-// Uses Azure REST API version 2023-11-01. In version 2.x of the Azure Native provider, it used API version 2022-08-08.
+// Uses Azure REST API version 2024-10-23. In version 2.x of the Azure Native provider, it used API version 2022-08-08.
 //
-// Other available API versions: 2015-10-31, 2019-06-01, 2020-01-13-preview, 2022-08-08, 2023-05-15-preview, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2015-10-31, 2019-06-01, 2020-01-13-preview, 2022-08-08, 2023-05-15-preview, 2023-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Schedule struct {
 	pulumi.CustomResourceState
 
@@ -50,9 +50,11 @@ type Schedule struct {
 	StartTime pulumi.StringPtrOutput `pulumi:"startTime"`
 	// Gets the start time's offset in minutes.
 	StartTimeOffsetMinutes pulumi.Float64Output `pulumi:"startTimeOffsetMinutes"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Gets or sets the time zone of the schedule.
 	TimeZone pulumi.StringPtrOutput `pulumi:"timeZone"`
-	// The type of the resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -297,12 +299,17 @@ func (o ScheduleOutput) StartTimeOffsetMinutes() pulumi.Float64Output {
 	return o.ApplyT(func(v *Schedule) pulumi.Float64Output { return v.StartTimeOffsetMinutes }).(pulumi.Float64Output)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o ScheduleOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Schedule) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
 // Gets or sets the time zone of the schedule.
 func (o ScheduleOutput) TimeZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Schedule) pulumi.StringPtrOutput { return v.TimeZone }).(pulumi.StringPtrOutput)
 }
 
-// The type of the resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o ScheduleOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Schedule) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

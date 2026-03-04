@@ -31,7 +31,7 @@ type LookupKafkaConfigurationArgs struct {
 	AccountName string `pulumi:"accountName"`
 	// Name of kafka configuration.
 	KafkaConfigurationName string `pulumi:"kafkaConfigurationName"`
-	// The resource group name.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -45,20 +45,21 @@ type LookupKafkaConfigurationResult struct {
 	Credentials *CredentialsResponse `pulumi:"credentials"`
 	// Optional partition Id for notification event hub. If not set, all partitions will be leveraged.
 	EventHubPartitionId *string `pulumi:"eventHubPartitionId"`
-	EventHubResourceId  *string `pulumi:"eventHubResourceId"`
+	// A type definition that refers the id to an Azure Resource Manager resource.
+	EventHubResourceId *string `pulumi:"eventHubResourceId"`
 	// The event hub type.
 	EventHubType *string `pulumi:"eventHubType"`
 	// The state of the event streaming service
 	EventStreamingState *string `pulumi:"eventStreamingState"`
 	// The event streaming service type
 	EventStreamingType *string `pulumi:"eventStreamingType"`
-	// Gets or sets the identifier.
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// Gets or sets the name.
+	// The name of the resource
 	Name string `pulumi:"name"`
-	// Metadata pertaining to creation and last modification of the resource.
-	SystemData ProxyResourceResponseSystemData `pulumi:"systemData"`
-	// Gets or sets the type.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -92,7 +93,7 @@ type LookupKafkaConfigurationOutputArgs struct {
 	AccountName pulumi.StringInput `pulumi:"accountName"`
 	// Name of kafka configuration.
 	KafkaConfigurationName pulumi.StringInput `pulumi:"kafkaConfigurationName"`
-	// The resource group name.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -135,6 +136,7 @@ func (o LookupKafkaConfigurationResultOutput) EventHubPartitionId() pulumi.Strin
 	return o.ApplyT(func(v LookupKafkaConfigurationResult) *string { return v.EventHubPartitionId }).(pulumi.StringPtrOutput)
 }
 
+// A type definition that refers the id to an Azure Resource Manager resource.
 func (o LookupKafkaConfigurationResultOutput) EventHubResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupKafkaConfigurationResult) *string { return v.EventHubResourceId }).(pulumi.StringPtrOutput)
 }
@@ -154,22 +156,22 @@ func (o LookupKafkaConfigurationResultOutput) EventStreamingType() pulumi.String
 	return o.ApplyT(func(v LookupKafkaConfigurationResult) *string { return v.EventStreamingType }).(pulumi.StringPtrOutput)
 }
 
-// Gets or sets the identifier.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupKafkaConfigurationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaConfigurationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Gets or sets the name.
+// The name of the resource
 func (o LookupKafkaConfigurationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaConfigurationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
-func (o LookupKafkaConfigurationResultOutput) SystemData() ProxyResourceResponseSystemDataOutput {
-	return o.ApplyT(func(v LookupKafkaConfigurationResult) ProxyResourceResponseSystemData { return v.SystemData }).(ProxyResourceResponseSystemDataOutput)
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupKafkaConfigurationResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupKafkaConfigurationResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Gets or sets the type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupKafkaConfigurationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaConfigurationResult) string { return v.Type }).(pulumi.StringOutput)
 }

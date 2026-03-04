@@ -14,8 +14,10 @@ import (
 type AccountSkuName string
 
 const (
+	// Standard
 	AccountSkuNameStandard = AccountSkuName("Standard")
-	AccountSkuNameFree     = AccountSkuName("Free")
+	// Free
+	AccountSkuNameFree = AccountSkuName("Free")
 )
 
 func (AccountSkuName) ElementType() reflect.Type {
@@ -180,8 +182,10 @@ func (in *accountSkuNamePtr) ToAccountSkuNamePtrOutputWithContext(ctx context.Co
 type EventHubType string
 
 const (
+	// Notification
 	EventHubTypeNotification = EventHubType("Notification")
-	EventHubTypeHook         = EventHubType("Hook")
+	// Hook
+	EventHubTypeHook = EventHubType("Hook")
 )
 
 func (EventHubType) ElementType() reflect.Type {
@@ -346,8 +350,10 @@ func (in *eventHubTypePtr) ToEventHubTypePtrOutputWithContext(ctx context.Contex
 type EventStreamingState string
 
 const (
+	// Disabled
 	EventStreamingStateDisabled = EventStreamingState("Disabled")
-	EventStreamingStateEnabled  = EventStreamingState("Enabled")
+	// Enabled
+	EventStreamingStateEnabled = EventStreamingState("Enabled")
 )
 
 func (EventStreamingState) ElementType() reflect.Type {
@@ -512,9 +518,12 @@ func (in *eventStreamingStatePtr) ToEventStreamingStatePtrOutputWithContext(ctx 
 type EventStreamingType string
 
 const (
-	EventStreamingTypeNone    = EventStreamingType("None")
+	// None
+	EventStreamingTypeNone = EventStreamingType("None")
+	// Managed
 	EventStreamingTypeManaged = EventStreamingType("Managed")
-	EventStreamingTypeAzure   = EventStreamingType("Azure")
+	// Azure
+	EventStreamingTypeAzure = EventStreamingType("Azure")
 )
 
 func (EventStreamingType) ElementType() reflect.Type {
@@ -680,9 +689,12 @@ func (in *eventStreamingTypePtr) ToEventStreamingTypePtrOutputWithContext(ctx co
 type KafkaConfigurationIdentityType string
 
 const (
-	KafkaConfigurationIdentityTypeNone           = KafkaConfigurationIdentityType("None")
+	// None
+	KafkaConfigurationIdentityTypeNone = KafkaConfigurationIdentityType("None")
+	// SystemAssigned
 	KafkaConfigurationIdentityTypeSystemAssigned = KafkaConfigurationIdentityType("SystemAssigned")
-	KafkaConfigurationIdentityTypeUserAssigned   = KafkaConfigurationIdentityType("UserAssigned")
+	// UserAssigned
+	KafkaConfigurationIdentityTypeUserAssigned = KafkaConfigurationIdentityType("UserAssigned")
 )
 
 func (KafkaConfigurationIdentityType) ElementType() reflect.Type {
@@ -848,9 +860,12 @@ func (in *kafkaConfigurationIdentityTypePtr) ToKafkaConfigurationIdentityTypePtr
 type ManagedEventHubState string
 
 const (
+	// NotSpecified
 	ManagedEventHubStateNotSpecified = ManagedEventHubState("NotSpecified")
-	ManagedEventHubStateDisabled     = ManagedEventHubState("Disabled")
-	ManagedEventHubStateEnabled      = ManagedEventHubState("Enabled")
+	// Disabled
+	ManagedEventHubStateDisabled = ManagedEventHubState("Disabled")
+	// Enabled
+	ManagedEventHubStateEnabled = ManagedEventHubState("Enabled")
 )
 
 func (ManagedEventHubState) ElementType() reflect.Type {
@@ -1016,9 +1031,12 @@ func (in *managedEventHubStatePtr) ToManagedEventHubStatePtrOutputWithContext(ct
 type ManagedIdentityType string
 
 const (
-	ManagedIdentityTypeNone           = ManagedIdentityType("None")
+	// None
+	ManagedIdentityTypeNone = ManagedIdentityType("None")
+	// SystemAssigned
 	ManagedIdentityTypeSystemAssigned = ManagedIdentityType("SystemAssigned")
-	ManagedIdentityTypeUserAssigned   = ManagedIdentityType("UserAssigned")
+	// UserAssigned
+	ManagedIdentityTypeUserAssigned = ManagedIdentityType("UserAssigned")
 )
 
 func (ManagedIdentityType) ElementType() reflect.Type {
@@ -1184,10 +1202,15 @@ func (in *managedIdentityTypePtr) ToManagedIdentityTypePtrOutputWithContext(ctx 
 type PrivateEndpointConnectionStatus string
 
 const (
-	PrivateEndpointConnectionStatusUnknown      = PrivateEndpointConnectionStatus("Unknown")
-	PrivateEndpointConnectionStatusPending      = PrivateEndpointConnectionStatus("Pending")
-	PrivateEndpointConnectionStatusApproved     = PrivateEndpointConnectionStatus("Approved")
-	PrivateEndpointConnectionStatusRejected     = PrivateEndpointConnectionStatus("Rejected")
+	// Unknown
+	PrivateEndpointConnectionStatusUnknown = PrivateEndpointConnectionStatus("Unknown")
+	// Pending
+	PrivateEndpointConnectionStatusPending = PrivateEndpointConnectionStatus("Pending")
+	// Approved
+	PrivateEndpointConnectionStatusApproved = PrivateEndpointConnectionStatus("Approved")
+	// Rejected
+	PrivateEndpointConnectionStatusRejected = PrivateEndpointConnectionStatus("Rejected")
+	// Disconnected
 	PrivateEndpointConnectionStatusDisconnected = PrivateEndpointConnectionStatus("Disconnected")
 )
 
@@ -1356,9 +1379,12 @@ func (in *privateEndpointConnectionStatusPtr) ToPrivateEndpointConnectionStatusP
 type PublicNetworkAccess string
 
 const (
+	// NotSpecified
 	PublicNetworkAccessNotSpecified = PublicNetworkAccess("NotSpecified")
-	PublicNetworkAccessEnabled      = PublicNetworkAccess("Enabled")
-	PublicNetworkAccessDisabled     = PublicNetworkAccess("Disabled")
+	// Enabled
+	PublicNetworkAccessEnabled = PublicNetworkAccess("Enabled")
+	// Disabled
+	PublicNetworkAccessDisabled = PublicNetworkAccess("Disabled")
 )
 
 func (PublicNetworkAccess) ElementType() reflect.Type {
@@ -1524,9 +1550,12 @@ func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx 
 type TenantEndpointState string
 
 const (
+	// NotSpecified
 	TenantEndpointStateNotSpecified = TenantEndpointState("NotSpecified")
-	TenantEndpointStateDisabled     = TenantEndpointState("Disabled")
-	TenantEndpointStateEnabled      = TenantEndpointState("Enabled")
+	// Disabled
+	TenantEndpointStateDisabled = TenantEndpointState("Disabled")
+	// Enabled
+	TenantEndpointStateEnabled = TenantEndpointState("Enabled")
 )
 
 func (TenantEndpointState) ElementType() reflect.Type {

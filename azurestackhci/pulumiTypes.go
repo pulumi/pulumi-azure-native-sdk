@@ -1154,6 +1154,259 @@ func (o ClusterReportedPropertiesResponseOutput) SupportedCapabilities() pulumi.
 	return o.ApplyT(func(v ClusterReportedPropertiesResponse) []string { return v.SupportedCapabilities }).(pulumi.StringArrayOutput)
 }
 
+// Data used when creating a disk or snapshot
+type CreationData struct {
+	// This enumerates the possible sources of a disk's creation
+	CreateOption string `pulumi:"createOption"`
+	// ARM ID of the source resource used for disk creation. Required when createOption is Copy
+	SourceResourceId *string `pulumi:"sourceResourceId"`
+}
+
+// CreationDataInput is an input type that accepts CreationDataArgs and CreationDataOutput values.
+// You can construct a concrete instance of `CreationDataInput` via:
+//
+//	CreationDataArgs{...}
+type CreationDataInput interface {
+	pulumi.Input
+
+	ToCreationDataOutput() CreationDataOutput
+	ToCreationDataOutputWithContext(context.Context) CreationDataOutput
+}
+
+// Data used when creating a disk or snapshot
+type CreationDataArgs struct {
+	// This enumerates the possible sources of a disk's creation
+	CreateOption pulumi.StringInput `pulumi:"createOption"`
+	// ARM ID of the source resource used for disk creation. Required when createOption is Copy
+	SourceResourceId pulumi.StringPtrInput `pulumi:"sourceResourceId"`
+}
+
+func (CreationDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CreationData)(nil)).Elem()
+}
+
+func (i CreationDataArgs) ToCreationDataOutput() CreationDataOutput {
+	return i.ToCreationDataOutputWithContext(context.Background())
+}
+
+func (i CreationDataArgs) ToCreationDataOutputWithContext(ctx context.Context) CreationDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CreationDataOutput)
+}
+
+func (i CreationDataArgs) ToCreationDataPtrOutput() CreationDataPtrOutput {
+	return i.ToCreationDataPtrOutputWithContext(context.Background())
+}
+
+func (i CreationDataArgs) ToCreationDataPtrOutputWithContext(ctx context.Context) CreationDataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CreationDataOutput).ToCreationDataPtrOutputWithContext(ctx)
+}
+
+// CreationDataPtrInput is an input type that accepts CreationDataArgs, CreationDataPtr and CreationDataPtrOutput values.
+// You can construct a concrete instance of `CreationDataPtrInput` via:
+//
+//	        CreationDataArgs{...}
+//
+//	or:
+//
+//	        nil
+type CreationDataPtrInput interface {
+	pulumi.Input
+
+	ToCreationDataPtrOutput() CreationDataPtrOutput
+	ToCreationDataPtrOutputWithContext(context.Context) CreationDataPtrOutput
+}
+
+type creationDataPtrType CreationDataArgs
+
+func CreationDataPtr(v *CreationDataArgs) CreationDataPtrInput {
+	return (*creationDataPtrType)(v)
+}
+
+func (*creationDataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CreationData)(nil)).Elem()
+}
+
+func (i *creationDataPtrType) ToCreationDataPtrOutput() CreationDataPtrOutput {
+	return i.ToCreationDataPtrOutputWithContext(context.Background())
+}
+
+func (i *creationDataPtrType) ToCreationDataPtrOutputWithContext(ctx context.Context) CreationDataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CreationDataPtrOutput)
+}
+
+// Data used when creating a disk or snapshot
+type CreationDataOutput struct{ *pulumi.OutputState }
+
+func (CreationDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CreationData)(nil)).Elem()
+}
+
+func (o CreationDataOutput) ToCreationDataOutput() CreationDataOutput {
+	return o
+}
+
+func (o CreationDataOutput) ToCreationDataOutputWithContext(ctx context.Context) CreationDataOutput {
+	return o
+}
+
+func (o CreationDataOutput) ToCreationDataPtrOutput() CreationDataPtrOutput {
+	return o.ToCreationDataPtrOutputWithContext(context.Background())
+}
+
+func (o CreationDataOutput) ToCreationDataPtrOutputWithContext(ctx context.Context) CreationDataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CreationData) *CreationData {
+		return &v
+	}).(CreationDataPtrOutput)
+}
+
+// This enumerates the possible sources of a disk's creation
+func (o CreationDataOutput) CreateOption() pulumi.StringOutput {
+	return o.ApplyT(func(v CreationData) string { return v.CreateOption }).(pulumi.StringOutput)
+}
+
+// ARM ID of the source resource used for disk creation. Required when createOption is Copy
+func (o CreationDataOutput) SourceResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CreationData) *string { return v.SourceResourceId }).(pulumi.StringPtrOutput)
+}
+
+type CreationDataPtrOutput struct{ *pulumi.OutputState }
+
+func (CreationDataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CreationData)(nil)).Elem()
+}
+
+func (o CreationDataPtrOutput) ToCreationDataPtrOutput() CreationDataPtrOutput {
+	return o
+}
+
+func (o CreationDataPtrOutput) ToCreationDataPtrOutputWithContext(ctx context.Context) CreationDataPtrOutput {
+	return o
+}
+
+func (o CreationDataPtrOutput) Elem() CreationDataOutput {
+	return o.ApplyT(func(v *CreationData) CreationData {
+		if v != nil {
+			return *v
+		}
+		var ret CreationData
+		return ret
+	}).(CreationDataOutput)
+}
+
+// This enumerates the possible sources of a disk's creation
+func (o CreationDataPtrOutput) CreateOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CreationData) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CreateOption
+	}).(pulumi.StringPtrOutput)
+}
+
+// ARM ID of the source resource used for disk creation. Required when createOption is Copy
+func (o CreationDataPtrOutput) SourceResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CreationData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Data used when creating a disk or snapshot
+type CreationDataResponse struct {
+	// This enumerates the possible sources of a disk's creation
+	CreateOption string `pulumi:"createOption"`
+	// ARM ID of the source resource used for disk creation. Required when createOption is Copy
+	SourceResourceId *string `pulumi:"sourceResourceId"`
+	// Unique ID of the source resource used for disk creation. Read-only and not required for disk creation.
+	SourceUniqueId string `pulumi:"sourceUniqueId"`
+}
+
+// Data used when creating a disk or snapshot
+type CreationDataResponseOutput struct{ *pulumi.OutputState }
+
+func (CreationDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CreationDataResponse)(nil)).Elem()
+}
+
+func (o CreationDataResponseOutput) ToCreationDataResponseOutput() CreationDataResponseOutput {
+	return o
+}
+
+func (o CreationDataResponseOutput) ToCreationDataResponseOutputWithContext(ctx context.Context) CreationDataResponseOutput {
+	return o
+}
+
+// This enumerates the possible sources of a disk's creation
+func (o CreationDataResponseOutput) CreateOption() pulumi.StringOutput {
+	return o.ApplyT(func(v CreationDataResponse) string { return v.CreateOption }).(pulumi.StringOutput)
+}
+
+// ARM ID of the source resource used for disk creation. Required when createOption is Copy
+func (o CreationDataResponseOutput) SourceResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CreationDataResponse) *string { return v.SourceResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Unique ID of the source resource used for disk creation. Read-only and not required for disk creation.
+func (o CreationDataResponseOutput) SourceUniqueId() pulumi.StringOutput {
+	return o.ApplyT(func(v CreationDataResponse) string { return v.SourceUniqueId }).(pulumi.StringOutput)
+}
+
+type CreationDataResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CreationDataResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CreationDataResponse)(nil)).Elem()
+}
+
+func (o CreationDataResponsePtrOutput) ToCreationDataResponsePtrOutput() CreationDataResponsePtrOutput {
+	return o
+}
+
+func (o CreationDataResponsePtrOutput) ToCreationDataResponsePtrOutputWithContext(ctx context.Context) CreationDataResponsePtrOutput {
+	return o
+}
+
+func (o CreationDataResponsePtrOutput) Elem() CreationDataResponseOutput {
+	return o.ApplyT(func(v *CreationDataResponse) CreationDataResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CreationDataResponse
+		return ret
+	}).(CreationDataResponseOutput)
+}
+
+// This enumerates the possible sources of a disk's creation
+func (o CreationDataResponsePtrOutput) CreateOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CreationDataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CreateOption
+	}).(pulumi.StringPtrOutput)
+}
+
+// ARM ID of the source resource used for disk creation. Required when createOption is Copy
+func (o CreationDataResponsePtrOutput) SourceResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CreationDataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique ID of the source resource used for disk creation. Read-only and not required for disk creation.
+func (o CreationDataResponsePtrOutput) SourceUniqueId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CreationDataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SourceUniqueId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Properties for a particular default extension category.
 type DefaultExtensionDetailsResponse struct {
 	// Default extension category
@@ -2967,6 +3220,405 @@ func (o DeviceConfigurationResponsePtrOutput) NicDetails() NicDetailResponseArra
 		}
 		return v.NicDetails
 	}).(NicDetailResponseArrayOutput)
+}
+
+// Device details.
+type DeviceDetail struct {
+	// Resource Id of the device.
+	DeviceResourceId *string `pulumi:"deviceResourceId"`
+}
+
+// DeviceDetailInput is an input type that accepts DeviceDetailArgs and DeviceDetailOutput values.
+// You can construct a concrete instance of `DeviceDetailInput` via:
+//
+//	DeviceDetailArgs{...}
+type DeviceDetailInput interface {
+	pulumi.Input
+
+	ToDeviceDetailOutput() DeviceDetailOutput
+	ToDeviceDetailOutputWithContext(context.Context) DeviceDetailOutput
+}
+
+// Device details.
+type DeviceDetailArgs struct {
+	// Resource Id of the device.
+	DeviceResourceId pulumi.StringPtrInput `pulumi:"deviceResourceId"`
+}
+
+func (DeviceDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceDetail)(nil)).Elem()
+}
+
+func (i DeviceDetailArgs) ToDeviceDetailOutput() DeviceDetailOutput {
+	return i.ToDeviceDetailOutputWithContext(context.Background())
+}
+
+func (i DeviceDetailArgs) ToDeviceDetailOutputWithContext(ctx context.Context) DeviceDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceDetailOutput)
+}
+
+// DeviceDetailArrayInput is an input type that accepts DeviceDetailArray and DeviceDetailArrayOutput values.
+// You can construct a concrete instance of `DeviceDetailArrayInput` via:
+//
+//	DeviceDetailArray{ DeviceDetailArgs{...} }
+type DeviceDetailArrayInput interface {
+	pulumi.Input
+
+	ToDeviceDetailArrayOutput() DeviceDetailArrayOutput
+	ToDeviceDetailArrayOutputWithContext(context.Context) DeviceDetailArrayOutput
+}
+
+type DeviceDetailArray []DeviceDetailInput
+
+func (DeviceDetailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeviceDetail)(nil)).Elem()
+}
+
+func (i DeviceDetailArray) ToDeviceDetailArrayOutput() DeviceDetailArrayOutput {
+	return i.ToDeviceDetailArrayOutputWithContext(context.Background())
+}
+
+func (i DeviceDetailArray) ToDeviceDetailArrayOutputWithContext(ctx context.Context) DeviceDetailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceDetailArrayOutput)
+}
+
+// Device details.
+type DeviceDetailOutput struct{ *pulumi.OutputState }
+
+func (DeviceDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceDetail)(nil)).Elem()
+}
+
+func (o DeviceDetailOutput) ToDeviceDetailOutput() DeviceDetailOutput {
+	return o
+}
+
+func (o DeviceDetailOutput) ToDeviceDetailOutputWithContext(ctx context.Context) DeviceDetailOutput {
+	return o
+}
+
+// Resource Id of the device.
+func (o DeviceDetailOutput) DeviceResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceDetail) *string { return v.DeviceResourceId }).(pulumi.StringPtrOutput)
+}
+
+type DeviceDetailArrayOutput struct{ *pulumi.OutputState }
+
+func (DeviceDetailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeviceDetail)(nil)).Elem()
+}
+
+func (o DeviceDetailArrayOutput) ToDeviceDetailArrayOutput() DeviceDetailArrayOutput {
+	return o
+}
+
+func (o DeviceDetailArrayOutput) ToDeviceDetailArrayOutputWithContext(ctx context.Context) DeviceDetailArrayOutput {
+	return o
+}
+
+func (o DeviceDetailArrayOutput) Index(i pulumi.IntInput) DeviceDetailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeviceDetail {
+		return vs[0].([]DeviceDetail)[vs[1].(int)]
+	}).(DeviceDetailOutput)
+}
+
+// Device details.
+type DeviceDetailResponse struct {
+	// Resource Id of group device belongs to.
+	ClaimedBy string `pulumi:"claimedBy"`
+	// Resource Id of the device.
+	DeviceResourceId *string `pulumi:"deviceResourceId"`
+}
+
+// Device details.
+type DeviceDetailResponseOutput struct{ *pulumi.OutputState }
+
+func (DeviceDetailResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceDetailResponse)(nil)).Elem()
+}
+
+func (o DeviceDetailResponseOutput) ToDeviceDetailResponseOutput() DeviceDetailResponseOutput {
+	return o
+}
+
+func (o DeviceDetailResponseOutput) ToDeviceDetailResponseOutputWithContext(ctx context.Context) DeviceDetailResponseOutput {
+	return o
+}
+
+// Resource Id of group device belongs to.
+func (o DeviceDetailResponseOutput) ClaimedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v DeviceDetailResponse) string { return v.ClaimedBy }).(pulumi.StringOutput)
+}
+
+// Resource Id of the device.
+func (o DeviceDetailResponseOutput) DeviceResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceDetailResponse) *string { return v.DeviceResourceId }).(pulumi.StringPtrOutput)
+}
+
+type DeviceDetailResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DeviceDetailResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeviceDetailResponse)(nil)).Elem()
+}
+
+func (o DeviceDetailResponseArrayOutput) ToDeviceDetailResponseArrayOutput() DeviceDetailResponseArrayOutput {
+	return o
+}
+
+func (o DeviceDetailResponseArrayOutput) ToDeviceDetailResponseArrayOutputWithContext(ctx context.Context) DeviceDetailResponseArrayOutput {
+	return o
+}
+
+func (o DeviceDetailResponseArrayOutput) Index(i pulumi.IntInput) DeviceDetailResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeviceDetailResponse {
+		return vs[0].([]DeviceDetailResponse)[vs[1].(int)]
+	}).(DeviceDetailResponseOutput)
+}
+
+// Properties for device pool.
+type DevicePoolProperties struct {
+	// Custom Location Name for the pool, default: <DevicePoolName>-CL
+	CustomLocationName *string `pulumi:"customLocationName"`
+	// List of machines in device pool.
+	Devices []DeviceDetail `pulumi:"devices"`
+	// Managed resource group name for the pool
+	ManagedResourceGroup *string `pulumi:"managedResourceGroup"`
+}
+
+// DevicePoolPropertiesInput is an input type that accepts DevicePoolPropertiesArgs and DevicePoolPropertiesOutput values.
+// You can construct a concrete instance of `DevicePoolPropertiesInput` via:
+//
+//	DevicePoolPropertiesArgs{...}
+type DevicePoolPropertiesInput interface {
+	pulumi.Input
+
+	ToDevicePoolPropertiesOutput() DevicePoolPropertiesOutput
+	ToDevicePoolPropertiesOutputWithContext(context.Context) DevicePoolPropertiesOutput
+}
+
+// Properties for device pool.
+type DevicePoolPropertiesArgs struct {
+	// Custom Location Name for the pool, default: <DevicePoolName>-CL
+	CustomLocationName pulumi.StringPtrInput `pulumi:"customLocationName"`
+	// List of machines in device pool.
+	Devices DeviceDetailArrayInput `pulumi:"devices"`
+	// Managed resource group name for the pool
+	ManagedResourceGroup pulumi.StringPtrInput `pulumi:"managedResourceGroup"`
+}
+
+func (DevicePoolPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DevicePoolProperties)(nil)).Elem()
+}
+
+func (i DevicePoolPropertiesArgs) ToDevicePoolPropertiesOutput() DevicePoolPropertiesOutput {
+	return i.ToDevicePoolPropertiesOutputWithContext(context.Background())
+}
+
+func (i DevicePoolPropertiesArgs) ToDevicePoolPropertiesOutputWithContext(ctx context.Context) DevicePoolPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DevicePoolPropertiesOutput)
+}
+
+func (i DevicePoolPropertiesArgs) ToDevicePoolPropertiesPtrOutput() DevicePoolPropertiesPtrOutput {
+	return i.ToDevicePoolPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i DevicePoolPropertiesArgs) ToDevicePoolPropertiesPtrOutputWithContext(ctx context.Context) DevicePoolPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DevicePoolPropertiesOutput).ToDevicePoolPropertiesPtrOutputWithContext(ctx)
+}
+
+// DevicePoolPropertiesPtrInput is an input type that accepts DevicePoolPropertiesArgs, DevicePoolPropertiesPtr and DevicePoolPropertiesPtrOutput values.
+// You can construct a concrete instance of `DevicePoolPropertiesPtrInput` via:
+//
+//	        DevicePoolPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type DevicePoolPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToDevicePoolPropertiesPtrOutput() DevicePoolPropertiesPtrOutput
+	ToDevicePoolPropertiesPtrOutputWithContext(context.Context) DevicePoolPropertiesPtrOutput
+}
+
+type devicePoolPropertiesPtrType DevicePoolPropertiesArgs
+
+func DevicePoolPropertiesPtr(v *DevicePoolPropertiesArgs) DevicePoolPropertiesPtrInput {
+	return (*devicePoolPropertiesPtrType)(v)
+}
+
+func (*devicePoolPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DevicePoolProperties)(nil)).Elem()
+}
+
+func (i *devicePoolPropertiesPtrType) ToDevicePoolPropertiesPtrOutput() DevicePoolPropertiesPtrOutput {
+	return i.ToDevicePoolPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *devicePoolPropertiesPtrType) ToDevicePoolPropertiesPtrOutputWithContext(ctx context.Context) DevicePoolPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DevicePoolPropertiesPtrOutput)
+}
+
+// Properties for device pool.
+type DevicePoolPropertiesOutput struct{ *pulumi.OutputState }
+
+func (DevicePoolPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DevicePoolProperties)(nil)).Elem()
+}
+
+func (o DevicePoolPropertiesOutput) ToDevicePoolPropertiesOutput() DevicePoolPropertiesOutput {
+	return o
+}
+
+func (o DevicePoolPropertiesOutput) ToDevicePoolPropertiesOutputWithContext(ctx context.Context) DevicePoolPropertiesOutput {
+	return o
+}
+
+func (o DevicePoolPropertiesOutput) ToDevicePoolPropertiesPtrOutput() DevicePoolPropertiesPtrOutput {
+	return o.ToDevicePoolPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o DevicePoolPropertiesOutput) ToDevicePoolPropertiesPtrOutputWithContext(ctx context.Context) DevicePoolPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DevicePoolProperties) *DevicePoolProperties {
+		return &v
+	}).(DevicePoolPropertiesPtrOutput)
+}
+
+// Custom Location Name for the pool, default: <DevicePoolName>-CL
+func (o DevicePoolPropertiesOutput) CustomLocationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DevicePoolProperties) *string { return v.CustomLocationName }).(pulumi.StringPtrOutput)
+}
+
+// List of machines in device pool.
+func (o DevicePoolPropertiesOutput) Devices() DeviceDetailArrayOutput {
+	return o.ApplyT(func(v DevicePoolProperties) []DeviceDetail { return v.Devices }).(DeviceDetailArrayOutput)
+}
+
+// Managed resource group name for the pool
+func (o DevicePoolPropertiesOutput) ManagedResourceGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DevicePoolProperties) *string { return v.ManagedResourceGroup }).(pulumi.StringPtrOutput)
+}
+
+type DevicePoolPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (DevicePoolPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DevicePoolProperties)(nil)).Elem()
+}
+
+func (o DevicePoolPropertiesPtrOutput) ToDevicePoolPropertiesPtrOutput() DevicePoolPropertiesPtrOutput {
+	return o
+}
+
+func (o DevicePoolPropertiesPtrOutput) ToDevicePoolPropertiesPtrOutputWithContext(ctx context.Context) DevicePoolPropertiesPtrOutput {
+	return o
+}
+
+func (o DevicePoolPropertiesPtrOutput) Elem() DevicePoolPropertiesOutput {
+	return o.ApplyT(func(v *DevicePoolProperties) DevicePoolProperties {
+		if v != nil {
+			return *v
+		}
+		var ret DevicePoolProperties
+		return ret
+	}).(DevicePoolPropertiesOutput)
+}
+
+// Custom Location Name for the pool, default: <DevicePoolName>-CL
+func (o DevicePoolPropertiesPtrOutput) CustomLocationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DevicePoolProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomLocationName
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of machines in device pool.
+func (o DevicePoolPropertiesPtrOutput) Devices() DeviceDetailArrayOutput {
+	return o.ApplyT(func(v *DevicePoolProperties) []DeviceDetail {
+		if v == nil {
+			return nil
+		}
+		return v.Devices
+	}).(DeviceDetailArrayOutput)
+}
+
+// Managed resource group name for the pool
+func (o DevicePoolPropertiesPtrOutput) ManagedResourceGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DevicePoolProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ManagedResourceGroup
+	}).(pulumi.StringPtrOutput)
+}
+
+// Properties for device pool.
+type DevicePoolPropertiesResponse struct {
+	// Unique, immutable resource id.
+	CloudId string `pulumi:"cloudId"`
+	// Custom Location Name for the pool, default: <DevicePoolName>-CL
+	CustomLocationName *string `pulumi:"customLocationName"`
+	// Custom Location Resource Id for the pool
+	CustomLocationResourceId string `pulumi:"customLocationResourceId"`
+	// List of machines in device pool.
+	Devices []DeviceDetailResponse `pulumi:"devices"`
+	// Managed resource group name for the pool
+	ManagedResourceGroup *string `pulumi:"managedResourceGroup"`
+	// operation status details for device pool.
+	OperationDetails []OperationDetailResponse `pulumi:"operationDetails"`
+	// The provisioning state of a resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+}
+
+// Properties for device pool.
+type DevicePoolPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (DevicePoolPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DevicePoolPropertiesResponse)(nil)).Elem()
+}
+
+func (o DevicePoolPropertiesResponseOutput) ToDevicePoolPropertiesResponseOutput() DevicePoolPropertiesResponseOutput {
+	return o
+}
+
+func (o DevicePoolPropertiesResponseOutput) ToDevicePoolPropertiesResponseOutputWithContext(ctx context.Context) DevicePoolPropertiesResponseOutput {
+	return o
+}
+
+// Unique, immutable resource id.
+func (o DevicePoolPropertiesResponseOutput) CloudId() pulumi.StringOutput {
+	return o.ApplyT(func(v DevicePoolPropertiesResponse) string { return v.CloudId }).(pulumi.StringOutput)
+}
+
+// Custom Location Name for the pool, default: <DevicePoolName>-CL
+func (o DevicePoolPropertiesResponseOutput) CustomLocationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DevicePoolPropertiesResponse) *string { return v.CustomLocationName }).(pulumi.StringPtrOutput)
+}
+
+// Custom Location Resource Id for the pool
+func (o DevicePoolPropertiesResponseOutput) CustomLocationResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v DevicePoolPropertiesResponse) string { return v.CustomLocationResourceId }).(pulumi.StringOutput)
+}
+
+// List of machines in device pool.
+func (o DevicePoolPropertiesResponseOutput) Devices() DeviceDetailResponseArrayOutput {
+	return o.ApplyT(func(v DevicePoolPropertiesResponse) []DeviceDetailResponse { return v.Devices }).(DeviceDetailResponseArrayOutput)
+}
+
+// Managed resource group name for the pool
+func (o DevicePoolPropertiesResponseOutput) ManagedResourceGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DevicePoolPropertiesResponse) *string { return v.ManagedResourceGroup }).(pulumi.StringPtrOutput)
+}
+
+// operation status details for device pool.
+func (o DevicePoolPropertiesResponseOutput) OperationDetails() OperationDetailResponseArrayOutput {
+	return o.ApplyT(func(v DevicePoolPropertiesResponse) []OperationDetailResponse { return v.OperationDetails }).(OperationDetailResponseArrayOutput)
+}
+
+// The provisioning state of a resource.
+func (o DevicePoolPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v DevicePoolPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // Represents the properties of Download Os job.
@@ -8053,6 +8705,642 @@ func (o HciCollectLogJobPropertiesResponseOutput) ToDate() pulumi.StringOutput {
 	return o.ApplyT(func(v HciCollectLogJobPropertiesResponse) string { return v.ToDate }).(pulumi.StringOutput)
 }
 
+// Defines the customer's intent for updating confidential VM properties
+type HciConfigureCvmJobProperties struct {
+	// Defines the customer's intent for updating confidential VM properties
+	ConfidentialVmIntent string `pulumi:"confidentialVmIntent"`
+	// Deployment mode to trigger job.
+	DeploymentMode *string `pulumi:"deploymentMode"`
+	// ClusterJob Type supported.
+	// Expected value is 'ConfigureCVM'.
+	JobType string `pulumi:"jobType"`
+}
+
+// Defaults sets the appropriate defaults for HciConfigureCvmJobProperties
+func (val *HciConfigureCvmJobProperties) Defaults() *HciConfigureCvmJobProperties {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.DeploymentMode == nil {
+		deploymentMode_ := "Deploy"
+		tmp.DeploymentMode = &deploymentMode_
+	}
+	return &tmp
+}
+
+// HciConfigureCvmJobPropertiesInput is an input type that accepts HciConfigureCvmJobPropertiesArgs and HciConfigureCvmJobPropertiesOutput values.
+// You can construct a concrete instance of `HciConfigureCvmJobPropertiesInput` via:
+//
+//	HciConfigureCvmJobPropertiesArgs{...}
+type HciConfigureCvmJobPropertiesInput interface {
+	pulumi.Input
+
+	ToHciConfigureCvmJobPropertiesOutput() HciConfigureCvmJobPropertiesOutput
+	ToHciConfigureCvmJobPropertiesOutputWithContext(context.Context) HciConfigureCvmJobPropertiesOutput
+}
+
+// Defines the customer's intent for updating confidential VM properties
+type HciConfigureCvmJobPropertiesArgs struct {
+	// Defines the customer's intent for updating confidential VM properties
+	ConfidentialVmIntent pulumi.StringInput `pulumi:"confidentialVmIntent"`
+	// Deployment mode to trigger job.
+	DeploymentMode pulumi.StringPtrInput `pulumi:"deploymentMode"`
+	// ClusterJob Type supported.
+	// Expected value is 'ConfigureCVM'.
+	JobType pulumi.StringInput `pulumi:"jobType"`
+}
+
+// Defaults sets the appropriate defaults for HciConfigureCvmJobPropertiesArgs
+func (val *HciConfigureCvmJobPropertiesArgs) Defaults() *HciConfigureCvmJobPropertiesArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.DeploymentMode == nil {
+		tmp.DeploymentMode = pulumi.StringPtr("Deploy")
+	}
+	return &tmp
+}
+func (HciConfigureCvmJobPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HciConfigureCvmJobProperties)(nil)).Elem()
+}
+
+func (i HciConfigureCvmJobPropertiesArgs) ToHciConfigureCvmJobPropertiesOutput() HciConfigureCvmJobPropertiesOutput {
+	return i.ToHciConfigureCvmJobPropertiesOutputWithContext(context.Background())
+}
+
+func (i HciConfigureCvmJobPropertiesArgs) ToHciConfigureCvmJobPropertiesOutputWithContext(ctx context.Context) HciConfigureCvmJobPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HciConfigureCvmJobPropertiesOutput)
+}
+
+func (i HciConfigureCvmJobPropertiesArgs) ToHciConfigureCvmJobPropertiesPtrOutput() HciConfigureCvmJobPropertiesPtrOutput {
+	return i.ToHciConfigureCvmJobPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i HciConfigureCvmJobPropertiesArgs) ToHciConfigureCvmJobPropertiesPtrOutputWithContext(ctx context.Context) HciConfigureCvmJobPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HciConfigureCvmJobPropertiesOutput).ToHciConfigureCvmJobPropertiesPtrOutputWithContext(ctx)
+}
+
+// HciConfigureCvmJobPropertiesPtrInput is an input type that accepts HciConfigureCvmJobPropertiesArgs, HciConfigureCvmJobPropertiesPtr and HciConfigureCvmJobPropertiesPtrOutput values.
+// You can construct a concrete instance of `HciConfigureCvmJobPropertiesPtrInput` via:
+//
+//	        HciConfigureCvmJobPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type HciConfigureCvmJobPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToHciConfigureCvmJobPropertiesPtrOutput() HciConfigureCvmJobPropertiesPtrOutput
+	ToHciConfigureCvmJobPropertiesPtrOutputWithContext(context.Context) HciConfigureCvmJobPropertiesPtrOutput
+}
+
+type hciConfigureCvmJobPropertiesPtrType HciConfigureCvmJobPropertiesArgs
+
+func HciConfigureCvmJobPropertiesPtr(v *HciConfigureCvmJobPropertiesArgs) HciConfigureCvmJobPropertiesPtrInput {
+	return (*hciConfigureCvmJobPropertiesPtrType)(v)
+}
+
+func (*hciConfigureCvmJobPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HciConfigureCvmJobProperties)(nil)).Elem()
+}
+
+func (i *hciConfigureCvmJobPropertiesPtrType) ToHciConfigureCvmJobPropertiesPtrOutput() HciConfigureCvmJobPropertiesPtrOutput {
+	return i.ToHciConfigureCvmJobPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *hciConfigureCvmJobPropertiesPtrType) ToHciConfigureCvmJobPropertiesPtrOutputWithContext(ctx context.Context) HciConfigureCvmJobPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HciConfigureCvmJobPropertiesPtrOutput)
+}
+
+// Defines the customer's intent for updating confidential VM properties
+type HciConfigureCvmJobPropertiesOutput struct{ *pulumi.OutputState }
+
+func (HciConfigureCvmJobPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HciConfigureCvmJobProperties)(nil)).Elem()
+}
+
+func (o HciConfigureCvmJobPropertiesOutput) ToHciConfigureCvmJobPropertiesOutput() HciConfigureCvmJobPropertiesOutput {
+	return o
+}
+
+func (o HciConfigureCvmJobPropertiesOutput) ToHciConfigureCvmJobPropertiesOutputWithContext(ctx context.Context) HciConfigureCvmJobPropertiesOutput {
+	return o
+}
+
+func (o HciConfigureCvmJobPropertiesOutput) ToHciConfigureCvmJobPropertiesPtrOutput() HciConfigureCvmJobPropertiesPtrOutput {
+	return o.ToHciConfigureCvmJobPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o HciConfigureCvmJobPropertiesOutput) ToHciConfigureCvmJobPropertiesPtrOutputWithContext(ctx context.Context) HciConfigureCvmJobPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HciConfigureCvmJobProperties) *HciConfigureCvmJobProperties {
+		return &v
+	}).(HciConfigureCvmJobPropertiesPtrOutput)
+}
+
+// Defines the customer's intent for updating confidential VM properties
+func (o HciConfigureCvmJobPropertiesOutput) ConfidentialVmIntent() pulumi.StringOutput {
+	return o.ApplyT(func(v HciConfigureCvmJobProperties) string { return v.ConfidentialVmIntent }).(pulumi.StringOutput)
+}
+
+// Deployment mode to trigger job.
+func (o HciConfigureCvmJobPropertiesOutput) DeploymentMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HciConfigureCvmJobProperties) *string { return v.DeploymentMode }).(pulumi.StringPtrOutput)
+}
+
+// ClusterJob Type supported.
+// Expected value is 'ConfigureCVM'.
+func (o HciConfigureCvmJobPropertiesOutput) JobType() pulumi.StringOutput {
+	return o.ApplyT(func(v HciConfigureCvmJobProperties) string { return v.JobType }).(pulumi.StringOutput)
+}
+
+type HciConfigureCvmJobPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (HciConfigureCvmJobPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HciConfigureCvmJobProperties)(nil)).Elem()
+}
+
+func (o HciConfigureCvmJobPropertiesPtrOutput) ToHciConfigureCvmJobPropertiesPtrOutput() HciConfigureCvmJobPropertiesPtrOutput {
+	return o
+}
+
+func (o HciConfigureCvmJobPropertiesPtrOutput) ToHciConfigureCvmJobPropertiesPtrOutputWithContext(ctx context.Context) HciConfigureCvmJobPropertiesPtrOutput {
+	return o
+}
+
+func (o HciConfigureCvmJobPropertiesPtrOutput) Elem() HciConfigureCvmJobPropertiesOutput {
+	return o.ApplyT(func(v *HciConfigureCvmJobProperties) HciConfigureCvmJobProperties {
+		if v != nil {
+			return *v
+		}
+		var ret HciConfigureCvmJobProperties
+		return ret
+	}).(HciConfigureCvmJobPropertiesOutput)
+}
+
+// Defines the customer's intent for updating confidential VM properties
+func (o HciConfigureCvmJobPropertiesPtrOutput) ConfidentialVmIntent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HciConfigureCvmJobProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConfidentialVmIntent
+	}).(pulumi.StringPtrOutput)
+}
+
+// Deployment mode to trigger job.
+func (o HciConfigureCvmJobPropertiesPtrOutput) DeploymentMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HciConfigureCvmJobProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeploymentMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// ClusterJob Type supported.
+// Expected value is 'ConfigureCVM'.
+func (o HciConfigureCvmJobPropertiesPtrOutput) JobType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HciConfigureCvmJobProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.JobType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines the customer's intent for updating confidential VM properties
+type HciConfigureCvmJobPropertiesResponse struct {
+	// Defines the customer's intent for updating confidential VM properties
+	ConfidentialVmIntent string `pulumi:"confidentialVmIntent"`
+	// Deployment mode to trigger job.
+	DeploymentMode *string `pulumi:"deploymentMode"`
+	// The UTC date and time at which the job completed.
+	EndTimeUtc string `pulumi:"endTimeUtc"`
+	// Unique, immutable job id.
+	JobId string `pulumi:"jobId"`
+	// ClusterJob Type supported.
+	// Expected value is 'ConfigureCVM'.
+	JobType string `pulumi:"jobType"`
+	// Job provisioning state
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Reported properties for job
+	ReportedProperties JobReportedPropertiesResponse `pulumi:"reportedProperties"`
+	// The UTC date and time at which the job started.
+	StartTimeUtc string `pulumi:"startTimeUtc"`
+	// Status of Cluster job.
+	Status string `pulumi:"status"`
+}
+
+// Defaults sets the appropriate defaults for HciConfigureCvmJobPropertiesResponse
+func (val *HciConfigureCvmJobPropertiesResponse) Defaults() *HciConfigureCvmJobPropertiesResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.DeploymentMode == nil {
+		deploymentMode_ := "Deploy"
+		tmp.DeploymentMode = &deploymentMode_
+	}
+	return &tmp
+}
+
+// Defines the customer's intent for updating confidential VM properties
+type HciConfigureCvmJobPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (HciConfigureCvmJobPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HciConfigureCvmJobPropertiesResponse)(nil)).Elem()
+}
+
+func (o HciConfigureCvmJobPropertiesResponseOutput) ToHciConfigureCvmJobPropertiesResponseOutput() HciConfigureCvmJobPropertiesResponseOutput {
+	return o
+}
+
+func (o HciConfigureCvmJobPropertiesResponseOutput) ToHciConfigureCvmJobPropertiesResponseOutputWithContext(ctx context.Context) HciConfigureCvmJobPropertiesResponseOutput {
+	return o
+}
+
+// Defines the customer's intent for updating confidential VM properties
+func (o HciConfigureCvmJobPropertiesResponseOutput) ConfidentialVmIntent() pulumi.StringOutput {
+	return o.ApplyT(func(v HciConfigureCvmJobPropertiesResponse) string { return v.ConfidentialVmIntent }).(pulumi.StringOutput)
+}
+
+// Deployment mode to trigger job.
+func (o HciConfigureCvmJobPropertiesResponseOutput) DeploymentMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HciConfigureCvmJobPropertiesResponse) *string { return v.DeploymentMode }).(pulumi.StringPtrOutput)
+}
+
+// The UTC date and time at which the job completed.
+func (o HciConfigureCvmJobPropertiesResponseOutput) EndTimeUtc() pulumi.StringOutput {
+	return o.ApplyT(func(v HciConfigureCvmJobPropertiesResponse) string { return v.EndTimeUtc }).(pulumi.StringOutput)
+}
+
+// Unique, immutable job id.
+func (o HciConfigureCvmJobPropertiesResponseOutput) JobId() pulumi.StringOutput {
+	return o.ApplyT(func(v HciConfigureCvmJobPropertiesResponse) string { return v.JobId }).(pulumi.StringOutput)
+}
+
+// ClusterJob Type supported.
+// Expected value is 'ConfigureCVM'.
+func (o HciConfigureCvmJobPropertiesResponseOutput) JobType() pulumi.StringOutput {
+	return o.ApplyT(func(v HciConfigureCvmJobPropertiesResponse) string { return v.JobType }).(pulumi.StringOutput)
+}
+
+// Job provisioning state
+func (o HciConfigureCvmJobPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v HciConfigureCvmJobPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Reported properties for job
+func (o HciConfigureCvmJobPropertiesResponseOutput) ReportedProperties() JobReportedPropertiesResponseOutput {
+	return o.ApplyT(func(v HciConfigureCvmJobPropertiesResponse) JobReportedPropertiesResponse {
+		return v.ReportedProperties
+	}).(JobReportedPropertiesResponseOutput)
+}
+
+// The UTC date and time at which the job started.
+func (o HciConfigureCvmJobPropertiesResponseOutput) StartTimeUtc() pulumi.StringOutput {
+	return o.ApplyT(func(v HciConfigureCvmJobPropertiesResponse) string { return v.StartTimeUtc }).(pulumi.StringOutput)
+}
+
+// Status of Cluster job.
+func (o HciConfigureCvmJobPropertiesResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v HciConfigureCvmJobPropertiesResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Properties for configuring SDN integration intent for the cluster.
+type HciConfigureSdnIntegrationJobProperties struct {
+	// Deployment mode to trigger job.
+	DeploymentMode *string `pulumi:"deploymentMode"`
+	// ClusterJob Type supported.
+	// Expected value is 'ConfigureSdnIntegration'.
+	JobType string `pulumi:"jobType"`
+	// Defines the customer's intent for configuring SDN integration
+	SdnIntegrationIntent string `pulumi:"sdnIntegrationIntent"`
+	// A string identifier used to construct the Network Controller (NC) REST resource name. This prefix helps group and distinguish SDN-managed network components and must follow specific formatting rules.
+	SdnPrefix *string `pulumi:"sdnPrefix"`
+}
+
+// Defaults sets the appropriate defaults for HciConfigureSdnIntegrationJobProperties
+func (val *HciConfigureSdnIntegrationJobProperties) Defaults() *HciConfigureSdnIntegrationJobProperties {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.DeploymentMode == nil {
+		deploymentMode_ := "Deploy"
+		tmp.DeploymentMode = &deploymentMode_
+	}
+	return &tmp
+}
+
+// HciConfigureSdnIntegrationJobPropertiesInput is an input type that accepts HciConfigureSdnIntegrationJobPropertiesArgs and HciConfigureSdnIntegrationJobPropertiesOutput values.
+// You can construct a concrete instance of `HciConfigureSdnIntegrationJobPropertiesInput` via:
+//
+//	HciConfigureSdnIntegrationJobPropertiesArgs{...}
+type HciConfigureSdnIntegrationJobPropertiesInput interface {
+	pulumi.Input
+
+	ToHciConfigureSdnIntegrationJobPropertiesOutput() HciConfigureSdnIntegrationJobPropertiesOutput
+	ToHciConfigureSdnIntegrationJobPropertiesOutputWithContext(context.Context) HciConfigureSdnIntegrationJobPropertiesOutput
+}
+
+// Properties for configuring SDN integration intent for the cluster.
+type HciConfigureSdnIntegrationJobPropertiesArgs struct {
+	// Deployment mode to trigger job.
+	DeploymentMode pulumi.StringPtrInput `pulumi:"deploymentMode"`
+	// ClusterJob Type supported.
+	// Expected value is 'ConfigureSdnIntegration'.
+	JobType pulumi.StringInput `pulumi:"jobType"`
+	// Defines the customer's intent for configuring SDN integration
+	SdnIntegrationIntent pulumi.StringInput `pulumi:"sdnIntegrationIntent"`
+	// A string identifier used to construct the Network Controller (NC) REST resource name. This prefix helps group and distinguish SDN-managed network components and must follow specific formatting rules.
+	SdnPrefix pulumi.StringPtrInput `pulumi:"sdnPrefix"`
+}
+
+// Defaults sets the appropriate defaults for HciConfigureSdnIntegrationJobPropertiesArgs
+func (val *HciConfigureSdnIntegrationJobPropertiesArgs) Defaults() *HciConfigureSdnIntegrationJobPropertiesArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.DeploymentMode == nil {
+		tmp.DeploymentMode = pulumi.StringPtr("Deploy")
+	}
+	return &tmp
+}
+func (HciConfigureSdnIntegrationJobPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HciConfigureSdnIntegrationJobProperties)(nil)).Elem()
+}
+
+func (i HciConfigureSdnIntegrationJobPropertiesArgs) ToHciConfigureSdnIntegrationJobPropertiesOutput() HciConfigureSdnIntegrationJobPropertiesOutput {
+	return i.ToHciConfigureSdnIntegrationJobPropertiesOutputWithContext(context.Background())
+}
+
+func (i HciConfigureSdnIntegrationJobPropertiesArgs) ToHciConfigureSdnIntegrationJobPropertiesOutputWithContext(ctx context.Context) HciConfigureSdnIntegrationJobPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HciConfigureSdnIntegrationJobPropertiesOutput)
+}
+
+func (i HciConfigureSdnIntegrationJobPropertiesArgs) ToHciConfigureSdnIntegrationJobPropertiesPtrOutput() HciConfigureSdnIntegrationJobPropertiesPtrOutput {
+	return i.ToHciConfigureSdnIntegrationJobPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i HciConfigureSdnIntegrationJobPropertiesArgs) ToHciConfigureSdnIntegrationJobPropertiesPtrOutputWithContext(ctx context.Context) HciConfigureSdnIntegrationJobPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HciConfigureSdnIntegrationJobPropertiesOutput).ToHciConfigureSdnIntegrationJobPropertiesPtrOutputWithContext(ctx)
+}
+
+// HciConfigureSdnIntegrationJobPropertiesPtrInput is an input type that accepts HciConfigureSdnIntegrationJobPropertiesArgs, HciConfigureSdnIntegrationJobPropertiesPtr and HciConfigureSdnIntegrationJobPropertiesPtrOutput values.
+// You can construct a concrete instance of `HciConfigureSdnIntegrationJobPropertiesPtrInput` via:
+//
+//	        HciConfigureSdnIntegrationJobPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type HciConfigureSdnIntegrationJobPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToHciConfigureSdnIntegrationJobPropertiesPtrOutput() HciConfigureSdnIntegrationJobPropertiesPtrOutput
+	ToHciConfigureSdnIntegrationJobPropertiesPtrOutputWithContext(context.Context) HciConfigureSdnIntegrationJobPropertiesPtrOutput
+}
+
+type hciConfigureSdnIntegrationJobPropertiesPtrType HciConfigureSdnIntegrationJobPropertiesArgs
+
+func HciConfigureSdnIntegrationJobPropertiesPtr(v *HciConfigureSdnIntegrationJobPropertiesArgs) HciConfigureSdnIntegrationJobPropertiesPtrInput {
+	return (*hciConfigureSdnIntegrationJobPropertiesPtrType)(v)
+}
+
+func (*hciConfigureSdnIntegrationJobPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HciConfigureSdnIntegrationJobProperties)(nil)).Elem()
+}
+
+func (i *hciConfigureSdnIntegrationJobPropertiesPtrType) ToHciConfigureSdnIntegrationJobPropertiesPtrOutput() HciConfigureSdnIntegrationJobPropertiesPtrOutput {
+	return i.ToHciConfigureSdnIntegrationJobPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *hciConfigureSdnIntegrationJobPropertiesPtrType) ToHciConfigureSdnIntegrationJobPropertiesPtrOutputWithContext(ctx context.Context) HciConfigureSdnIntegrationJobPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HciConfigureSdnIntegrationJobPropertiesPtrOutput)
+}
+
+// Properties for configuring SDN integration intent for the cluster.
+type HciConfigureSdnIntegrationJobPropertiesOutput struct{ *pulumi.OutputState }
+
+func (HciConfigureSdnIntegrationJobPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HciConfigureSdnIntegrationJobProperties)(nil)).Elem()
+}
+
+func (o HciConfigureSdnIntegrationJobPropertiesOutput) ToHciConfigureSdnIntegrationJobPropertiesOutput() HciConfigureSdnIntegrationJobPropertiesOutput {
+	return o
+}
+
+func (o HciConfigureSdnIntegrationJobPropertiesOutput) ToHciConfigureSdnIntegrationJobPropertiesOutputWithContext(ctx context.Context) HciConfigureSdnIntegrationJobPropertiesOutput {
+	return o
+}
+
+func (o HciConfigureSdnIntegrationJobPropertiesOutput) ToHciConfigureSdnIntegrationJobPropertiesPtrOutput() HciConfigureSdnIntegrationJobPropertiesPtrOutput {
+	return o.ToHciConfigureSdnIntegrationJobPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o HciConfigureSdnIntegrationJobPropertiesOutput) ToHciConfigureSdnIntegrationJobPropertiesPtrOutputWithContext(ctx context.Context) HciConfigureSdnIntegrationJobPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HciConfigureSdnIntegrationJobProperties) *HciConfigureSdnIntegrationJobProperties {
+		return &v
+	}).(HciConfigureSdnIntegrationJobPropertiesPtrOutput)
+}
+
+// Deployment mode to trigger job.
+func (o HciConfigureSdnIntegrationJobPropertiesOutput) DeploymentMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HciConfigureSdnIntegrationJobProperties) *string { return v.DeploymentMode }).(pulumi.StringPtrOutput)
+}
+
+// ClusterJob Type supported.
+// Expected value is 'ConfigureSdnIntegration'.
+func (o HciConfigureSdnIntegrationJobPropertiesOutput) JobType() pulumi.StringOutput {
+	return o.ApplyT(func(v HciConfigureSdnIntegrationJobProperties) string { return v.JobType }).(pulumi.StringOutput)
+}
+
+// Defines the customer's intent for configuring SDN integration
+func (o HciConfigureSdnIntegrationJobPropertiesOutput) SdnIntegrationIntent() pulumi.StringOutput {
+	return o.ApplyT(func(v HciConfigureSdnIntegrationJobProperties) string { return v.SdnIntegrationIntent }).(pulumi.StringOutput)
+}
+
+// A string identifier used to construct the Network Controller (NC) REST resource name. This prefix helps group and distinguish SDN-managed network components and must follow specific formatting rules.
+func (o HciConfigureSdnIntegrationJobPropertiesOutput) SdnPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HciConfigureSdnIntegrationJobProperties) *string { return v.SdnPrefix }).(pulumi.StringPtrOutput)
+}
+
+type HciConfigureSdnIntegrationJobPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (HciConfigureSdnIntegrationJobPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HciConfigureSdnIntegrationJobProperties)(nil)).Elem()
+}
+
+func (o HciConfigureSdnIntegrationJobPropertiesPtrOutput) ToHciConfigureSdnIntegrationJobPropertiesPtrOutput() HciConfigureSdnIntegrationJobPropertiesPtrOutput {
+	return o
+}
+
+func (o HciConfigureSdnIntegrationJobPropertiesPtrOutput) ToHciConfigureSdnIntegrationJobPropertiesPtrOutputWithContext(ctx context.Context) HciConfigureSdnIntegrationJobPropertiesPtrOutput {
+	return o
+}
+
+func (o HciConfigureSdnIntegrationJobPropertiesPtrOutput) Elem() HciConfigureSdnIntegrationJobPropertiesOutput {
+	return o.ApplyT(func(v *HciConfigureSdnIntegrationJobProperties) HciConfigureSdnIntegrationJobProperties {
+		if v != nil {
+			return *v
+		}
+		var ret HciConfigureSdnIntegrationJobProperties
+		return ret
+	}).(HciConfigureSdnIntegrationJobPropertiesOutput)
+}
+
+// Deployment mode to trigger job.
+func (o HciConfigureSdnIntegrationJobPropertiesPtrOutput) DeploymentMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HciConfigureSdnIntegrationJobProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeploymentMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// ClusterJob Type supported.
+// Expected value is 'ConfigureSdnIntegration'.
+func (o HciConfigureSdnIntegrationJobPropertiesPtrOutput) JobType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HciConfigureSdnIntegrationJobProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.JobType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines the customer's intent for configuring SDN integration
+func (o HciConfigureSdnIntegrationJobPropertiesPtrOutput) SdnIntegrationIntent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HciConfigureSdnIntegrationJobProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SdnIntegrationIntent
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string identifier used to construct the Network Controller (NC) REST resource name. This prefix helps group and distinguish SDN-managed network components and must follow specific formatting rules.
+func (o HciConfigureSdnIntegrationJobPropertiesPtrOutput) SdnPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HciConfigureSdnIntegrationJobProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SdnPrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Properties for configuring SDN integration intent for the cluster.
+type HciConfigureSdnIntegrationJobPropertiesResponse struct {
+	// Deployment mode to trigger job.
+	DeploymentMode *string `pulumi:"deploymentMode"`
+	// The UTC date and time at which the job completed.
+	EndTimeUtc string `pulumi:"endTimeUtc"`
+	// Unique, immutable job id.
+	JobId string `pulumi:"jobId"`
+	// ClusterJob Type supported.
+	// Expected value is 'ConfigureSdnIntegration'.
+	JobType string `pulumi:"jobType"`
+	// Job provisioning state
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Reported properties for job
+	ReportedProperties JobReportedPropertiesResponse `pulumi:"reportedProperties"`
+	// Defines the customer's intent for configuring SDN integration
+	SdnIntegrationIntent string `pulumi:"sdnIntegrationIntent"`
+	// A string identifier used to construct the Network Controller (NC) REST resource name. This prefix helps group and distinguish SDN-managed network components and must follow specific formatting rules.
+	SdnPrefix *string `pulumi:"sdnPrefix"`
+	// The UTC date and time at which the job started.
+	StartTimeUtc string `pulumi:"startTimeUtc"`
+	// Status of Cluster job.
+	Status string `pulumi:"status"`
+}
+
+// Defaults sets the appropriate defaults for HciConfigureSdnIntegrationJobPropertiesResponse
+func (val *HciConfigureSdnIntegrationJobPropertiesResponse) Defaults() *HciConfigureSdnIntegrationJobPropertiesResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.DeploymentMode == nil {
+		deploymentMode_ := "Deploy"
+		tmp.DeploymentMode = &deploymentMode_
+	}
+	return &tmp
+}
+
+// Properties for configuring SDN integration intent for the cluster.
+type HciConfigureSdnIntegrationJobPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (HciConfigureSdnIntegrationJobPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HciConfigureSdnIntegrationJobPropertiesResponse)(nil)).Elem()
+}
+
+func (o HciConfigureSdnIntegrationJobPropertiesResponseOutput) ToHciConfigureSdnIntegrationJobPropertiesResponseOutput() HciConfigureSdnIntegrationJobPropertiesResponseOutput {
+	return o
+}
+
+func (o HciConfigureSdnIntegrationJobPropertiesResponseOutput) ToHciConfigureSdnIntegrationJobPropertiesResponseOutputWithContext(ctx context.Context) HciConfigureSdnIntegrationJobPropertiesResponseOutput {
+	return o
+}
+
+// Deployment mode to trigger job.
+func (o HciConfigureSdnIntegrationJobPropertiesResponseOutput) DeploymentMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HciConfigureSdnIntegrationJobPropertiesResponse) *string { return v.DeploymentMode }).(pulumi.StringPtrOutput)
+}
+
+// The UTC date and time at which the job completed.
+func (o HciConfigureSdnIntegrationJobPropertiesResponseOutput) EndTimeUtc() pulumi.StringOutput {
+	return o.ApplyT(func(v HciConfigureSdnIntegrationJobPropertiesResponse) string { return v.EndTimeUtc }).(pulumi.StringOutput)
+}
+
+// Unique, immutable job id.
+func (o HciConfigureSdnIntegrationJobPropertiesResponseOutput) JobId() pulumi.StringOutput {
+	return o.ApplyT(func(v HciConfigureSdnIntegrationJobPropertiesResponse) string { return v.JobId }).(pulumi.StringOutput)
+}
+
+// ClusterJob Type supported.
+// Expected value is 'ConfigureSdnIntegration'.
+func (o HciConfigureSdnIntegrationJobPropertiesResponseOutput) JobType() pulumi.StringOutput {
+	return o.ApplyT(func(v HciConfigureSdnIntegrationJobPropertiesResponse) string { return v.JobType }).(pulumi.StringOutput)
+}
+
+// Job provisioning state
+func (o HciConfigureSdnIntegrationJobPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v HciConfigureSdnIntegrationJobPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Reported properties for job
+func (o HciConfigureSdnIntegrationJobPropertiesResponseOutput) ReportedProperties() JobReportedPropertiesResponseOutput {
+	return o.ApplyT(func(v HciConfigureSdnIntegrationJobPropertiesResponse) JobReportedPropertiesResponse {
+		return v.ReportedProperties
+	}).(JobReportedPropertiesResponseOutput)
+}
+
+// Defines the customer's intent for configuring SDN integration
+func (o HciConfigureSdnIntegrationJobPropertiesResponseOutput) SdnIntegrationIntent() pulumi.StringOutput {
+	return o.ApplyT(func(v HciConfigureSdnIntegrationJobPropertiesResponse) string { return v.SdnIntegrationIntent }).(pulumi.StringOutput)
+}
+
+// A string identifier used to construct the Network Controller (NC) REST resource name. This prefix helps group and distinguish SDN-managed network components and must follow specific formatting rules.
+func (o HciConfigureSdnIntegrationJobPropertiesResponseOutput) SdnPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HciConfigureSdnIntegrationJobPropertiesResponse) *string { return v.SdnPrefix }).(pulumi.StringPtrOutput)
+}
+
+// The UTC date and time at which the job started.
+func (o HciConfigureSdnIntegrationJobPropertiesResponseOutput) StartTimeUtc() pulumi.StringOutput {
+	return o.ApplyT(func(v HciConfigureSdnIntegrationJobPropertiesResponse) string { return v.StartTimeUtc }).(pulumi.StringOutput)
+}
+
+// Status of Cluster job.
+func (o HciConfigureSdnIntegrationJobPropertiesResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v HciConfigureSdnIntegrationJobPropertiesResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
 // Arc extension installed on edge device.
 type HciEdgeDeviceArcExtensionResponse struct {
 	// Error details while installing Arc extension.
@@ -12438,6 +13726,46 @@ func (o IsolatedVmAttestationConfigurationResponseOutput) AttestationServiceEndp
 // Region specific endpoint for relying party service.
 func (o IsolatedVmAttestationConfigurationResponseOutput) RelyingPartyServiceEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v IsolatedVmAttestationConfigurationResponse) string { return v.RelyingPartyServiceEndpoint }).(pulumi.StringOutput)
+}
+
+// Reported Properties for job triggered from cloud.
+type JobReportedPropertiesResponse struct {
+	// Deployment status of job.
+	DeploymentStatus EceActionStatusResponse `pulumi:"deploymentStatus"`
+	// The percentage of the job that is complete.
+	PercentComplete int `pulumi:"percentComplete"`
+	// Validation status of job.
+	ValidationStatus EceActionStatusResponse `pulumi:"validationStatus"`
+}
+
+// Reported Properties for job triggered from cloud.
+type JobReportedPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (JobReportedPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobReportedPropertiesResponse)(nil)).Elem()
+}
+
+func (o JobReportedPropertiesResponseOutput) ToJobReportedPropertiesResponseOutput() JobReportedPropertiesResponseOutput {
+	return o
+}
+
+func (o JobReportedPropertiesResponseOutput) ToJobReportedPropertiesResponseOutputWithContext(ctx context.Context) JobReportedPropertiesResponseOutput {
+	return o
+}
+
+// Deployment status of job.
+func (o JobReportedPropertiesResponseOutput) DeploymentStatus() EceActionStatusResponseOutput {
+	return o.ApplyT(func(v JobReportedPropertiesResponse) EceActionStatusResponse { return v.DeploymentStatus }).(EceActionStatusResponseOutput)
+}
+
+// The percentage of the job that is complete.
+func (o JobReportedPropertiesResponseOutput) PercentComplete() pulumi.IntOutput {
+	return o.ApplyT(func(v JobReportedPropertiesResponse) int { return v.PercentComplete }).(pulumi.IntOutput)
+}
+
+// Validation status of job.
+func (o JobReportedPropertiesResponseOutput) ValidationStatus() EceActionStatusResponseOutput {
+	return o.ApplyT(func(v JobReportedPropertiesResponse) EceActionStatusResponse { return v.ValidationStatus }).(EceActionStatusResponseOutput)
 }
 
 // LoadBalancer Backend Address
@@ -24581,6 +25909,324 @@ func (o SiteDetailsResponsePtrOutput) SiteResourceId() pulumi.StringPtrOutput {
 		}
 		return &v.SiteResourceId
 	}).(pulumi.StringPtrOutput)
+}
+
+// Properties under the snapshot resource
+type SnapshotProperties struct {
+	// Data used when creating a snapshot
+	CreationData *CreationData `pulumi:"creationData"`
+}
+
+// SnapshotPropertiesInput is an input type that accepts SnapshotPropertiesArgs and SnapshotPropertiesOutput values.
+// You can construct a concrete instance of `SnapshotPropertiesInput` via:
+//
+//	SnapshotPropertiesArgs{...}
+type SnapshotPropertiesInput interface {
+	pulumi.Input
+
+	ToSnapshotPropertiesOutput() SnapshotPropertiesOutput
+	ToSnapshotPropertiesOutputWithContext(context.Context) SnapshotPropertiesOutput
+}
+
+// Properties under the snapshot resource
+type SnapshotPropertiesArgs struct {
+	// Data used when creating a snapshot
+	CreationData CreationDataPtrInput `pulumi:"creationData"`
+}
+
+func (SnapshotPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnapshotProperties)(nil)).Elem()
+}
+
+func (i SnapshotPropertiesArgs) ToSnapshotPropertiesOutput() SnapshotPropertiesOutput {
+	return i.ToSnapshotPropertiesOutputWithContext(context.Background())
+}
+
+func (i SnapshotPropertiesArgs) ToSnapshotPropertiesOutputWithContext(ctx context.Context) SnapshotPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotPropertiesOutput)
+}
+
+func (i SnapshotPropertiesArgs) ToSnapshotPropertiesPtrOutput() SnapshotPropertiesPtrOutput {
+	return i.ToSnapshotPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i SnapshotPropertiesArgs) ToSnapshotPropertiesPtrOutputWithContext(ctx context.Context) SnapshotPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotPropertiesOutput).ToSnapshotPropertiesPtrOutputWithContext(ctx)
+}
+
+// SnapshotPropertiesPtrInput is an input type that accepts SnapshotPropertiesArgs, SnapshotPropertiesPtr and SnapshotPropertiesPtrOutput values.
+// You can construct a concrete instance of `SnapshotPropertiesPtrInput` via:
+//
+//	        SnapshotPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type SnapshotPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToSnapshotPropertiesPtrOutput() SnapshotPropertiesPtrOutput
+	ToSnapshotPropertiesPtrOutputWithContext(context.Context) SnapshotPropertiesPtrOutput
+}
+
+type snapshotPropertiesPtrType SnapshotPropertiesArgs
+
+func SnapshotPropertiesPtr(v *SnapshotPropertiesArgs) SnapshotPropertiesPtrInput {
+	return (*snapshotPropertiesPtrType)(v)
+}
+
+func (*snapshotPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SnapshotProperties)(nil)).Elem()
+}
+
+func (i *snapshotPropertiesPtrType) ToSnapshotPropertiesPtrOutput() SnapshotPropertiesPtrOutput {
+	return i.ToSnapshotPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *snapshotPropertiesPtrType) ToSnapshotPropertiesPtrOutputWithContext(ctx context.Context) SnapshotPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotPropertiesPtrOutput)
+}
+
+// Properties under the snapshot resource
+type SnapshotPropertiesOutput struct{ *pulumi.OutputState }
+
+func (SnapshotPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnapshotProperties)(nil)).Elem()
+}
+
+func (o SnapshotPropertiesOutput) ToSnapshotPropertiesOutput() SnapshotPropertiesOutput {
+	return o
+}
+
+func (o SnapshotPropertiesOutput) ToSnapshotPropertiesOutputWithContext(ctx context.Context) SnapshotPropertiesOutput {
+	return o
+}
+
+func (o SnapshotPropertiesOutput) ToSnapshotPropertiesPtrOutput() SnapshotPropertiesPtrOutput {
+	return o.ToSnapshotPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o SnapshotPropertiesOutput) ToSnapshotPropertiesPtrOutputWithContext(ctx context.Context) SnapshotPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SnapshotProperties) *SnapshotProperties {
+		return &v
+	}).(SnapshotPropertiesPtrOutput)
+}
+
+// Data used when creating a snapshot
+func (o SnapshotPropertiesOutput) CreationData() CreationDataPtrOutput {
+	return o.ApplyT(func(v SnapshotProperties) *CreationData { return v.CreationData }).(CreationDataPtrOutput)
+}
+
+type SnapshotPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (SnapshotPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SnapshotProperties)(nil)).Elem()
+}
+
+func (o SnapshotPropertiesPtrOutput) ToSnapshotPropertiesPtrOutput() SnapshotPropertiesPtrOutput {
+	return o
+}
+
+func (o SnapshotPropertiesPtrOutput) ToSnapshotPropertiesPtrOutputWithContext(ctx context.Context) SnapshotPropertiesPtrOutput {
+	return o
+}
+
+func (o SnapshotPropertiesPtrOutput) Elem() SnapshotPropertiesOutput {
+	return o.ApplyT(func(v *SnapshotProperties) SnapshotProperties {
+		if v != nil {
+			return *v
+		}
+		var ret SnapshotProperties
+		return ret
+	}).(SnapshotPropertiesOutput)
+}
+
+// Data used when creating a snapshot
+func (o SnapshotPropertiesPtrOutput) CreationData() CreationDataPtrOutput {
+	return o.ApplyT(func(v *SnapshotProperties) *CreationData {
+		if v == nil {
+			return nil
+		}
+		return v.CreationData
+	}).(CreationDataPtrOutput)
+}
+
+// Properties under the snapshot resource
+type SnapshotPropertiesResponse struct {
+	// Data used when creating a snapshot
+	CreationData *CreationDataResponse `pulumi:"creationData"`
+	// The size of the disk in bytes.
+	DiskSizeBytes float64 `pulumi:"diskSizeBytes"`
+	// Provisioning state of the snapshot.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The observed state of snapshots
+	Status SnapshotStatusResponse `pulumi:"status"`
+	// The time when the snapshot was created.
+	TimeCreated string `pulumi:"timeCreated"`
+	// Unique identifier for the snapshot.
+	UniqueId string `pulumi:"uniqueId"`
+}
+
+// Properties under the snapshot resource
+type SnapshotPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (SnapshotPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnapshotPropertiesResponse)(nil)).Elem()
+}
+
+func (o SnapshotPropertiesResponseOutput) ToSnapshotPropertiesResponseOutput() SnapshotPropertiesResponseOutput {
+	return o
+}
+
+func (o SnapshotPropertiesResponseOutput) ToSnapshotPropertiesResponseOutputWithContext(ctx context.Context) SnapshotPropertiesResponseOutput {
+	return o
+}
+
+// Data used when creating a snapshot
+func (o SnapshotPropertiesResponseOutput) CreationData() CreationDataResponsePtrOutput {
+	return o.ApplyT(func(v SnapshotPropertiesResponse) *CreationDataResponse { return v.CreationData }).(CreationDataResponsePtrOutput)
+}
+
+// The size of the disk in bytes.
+func (o SnapshotPropertiesResponseOutput) DiskSizeBytes() pulumi.Float64Output {
+	return o.ApplyT(func(v SnapshotPropertiesResponse) float64 { return v.DiskSizeBytes }).(pulumi.Float64Output)
+}
+
+// Provisioning state of the snapshot.
+func (o SnapshotPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v SnapshotPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The observed state of snapshots
+func (o SnapshotPropertiesResponseOutput) Status() SnapshotStatusResponseOutput {
+	return o.ApplyT(func(v SnapshotPropertiesResponse) SnapshotStatusResponse { return v.Status }).(SnapshotStatusResponseOutput)
+}
+
+// The time when the snapshot was created.
+func (o SnapshotPropertiesResponseOutput) TimeCreated() pulumi.StringOutput {
+	return o.ApplyT(func(v SnapshotPropertiesResponse) string { return v.TimeCreated }).(pulumi.StringOutput)
+}
+
+// Unique identifier for the snapshot.
+func (o SnapshotPropertiesResponseOutput) UniqueId() pulumi.StringOutput {
+	return o.ApplyT(func(v SnapshotPropertiesResponse) string { return v.UniqueId }).(pulumi.StringOutput)
+}
+
+// Snapshot Status provisioning status
+type SnapshotStatusProvisioningStatusResponse struct {
+	// The ID of the operation performed on the snapshot
+	OperationId *string `pulumi:"operationId"`
+	// The status of the operation performed on the snapshot [Succeeded, Failed, InProgress]
+	Status string `pulumi:"status"`
+}
+
+// Snapshot Status provisioning status
+type SnapshotStatusProvisioningStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (SnapshotStatusProvisioningStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnapshotStatusProvisioningStatusResponse)(nil)).Elem()
+}
+
+func (o SnapshotStatusProvisioningStatusResponseOutput) ToSnapshotStatusProvisioningStatusResponseOutput() SnapshotStatusProvisioningStatusResponseOutput {
+	return o
+}
+
+func (o SnapshotStatusProvisioningStatusResponseOutput) ToSnapshotStatusProvisioningStatusResponseOutputWithContext(ctx context.Context) SnapshotStatusProvisioningStatusResponseOutput {
+	return o
+}
+
+// The ID of the operation performed on the snapshot
+func (o SnapshotStatusProvisioningStatusResponseOutput) OperationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SnapshotStatusProvisioningStatusResponse) *string { return v.OperationId }).(pulumi.StringPtrOutput)
+}
+
+// The status of the operation performed on the snapshot [Succeeded, Failed, InProgress]
+func (o SnapshotStatusProvisioningStatusResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v SnapshotStatusProvisioningStatusResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type SnapshotStatusProvisioningStatusResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SnapshotStatusProvisioningStatusResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SnapshotStatusProvisioningStatusResponse)(nil)).Elem()
+}
+
+func (o SnapshotStatusProvisioningStatusResponsePtrOutput) ToSnapshotStatusProvisioningStatusResponsePtrOutput() SnapshotStatusProvisioningStatusResponsePtrOutput {
+	return o
+}
+
+func (o SnapshotStatusProvisioningStatusResponsePtrOutput) ToSnapshotStatusProvisioningStatusResponsePtrOutputWithContext(ctx context.Context) SnapshotStatusProvisioningStatusResponsePtrOutput {
+	return o
+}
+
+func (o SnapshotStatusProvisioningStatusResponsePtrOutput) Elem() SnapshotStatusProvisioningStatusResponseOutput {
+	return o.ApplyT(func(v *SnapshotStatusProvisioningStatusResponse) SnapshotStatusProvisioningStatusResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SnapshotStatusProvisioningStatusResponse
+		return ret
+	}).(SnapshotStatusProvisioningStatusResponseOutput)
+}
+
+// The ID of the operation performed on the snapshot
+func (o SnapshotStatusProvisioningStatusResponsePtrOutput) OperationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SnapshotStatusProvisioningStatusResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OperationId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The status of the operation performed on the snapshot [Succeeded, Failed, InProgress]
+func (o SnapshotStatusProvisioningStatusResponsePtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SnapshotStatusProvisioningStatusResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+// The observed state of snapshots
+type SnapshotStatusResponse struct {
+	// Snapshot provisioning error code
+	ErrorCode *string `pulumi:"errorCode"`
+	// Descriptive error message
+	ErrorMessage *string `pulumi:"errorMessage"`
+	// Provisioning status of the snapshot
+	ProvisioningStatus *SnapshotStatusProvisioningStatusResponse `pulumi:"provisioningStatus"`
+}
+
+// The observed state of snapshots
+type SnapshotStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (SnapshotStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnapshotStatusResponse)(nil)).Elem()
+}
+
+func (o SnapshotStatusResponseOutput) ToSnapshotStatusResponseOutput() SnapshotStatusResponseOutput {
+	return o
+}
+
+func (o SnapshotStatusResponseOutput) ToSnapshotStatusResponseOutputWithContext(ctx context.Context) SnapshotStatusResponseOutput {
+	return o
+}
+
+// Snapshot provisioning error code
+func (o SnapshotStatusResponseOutput) ErrorCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SnapshotStatusResponse) *string { return v.ErrorCode }).(pulumi.StringPtrOutput)
+}
+
+// Descriptive error message
+func (o SnapshotStatusResponseOutput) ErrorMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SnapshotStatusResponse) *string { return v.ErrorMessage }).(pulumi.StringPtrOutput)
+}
+
+// Provisioning status of the snapshot
+func (o SnapshotStatusResponseOutput) ProvisioningStatus() SnapshotStatusProvisioningStatusResponsePtrOutput {
+	return o.ApplyT(func(v SnapshotStatusResponse) *SnapshotStatusProvisioningStatusResponse { return v.ProvisioningStatus }).(SnapshotStatusProvisioningStatusResponsePtrOutput)
 }
 
 // Software Assurance properties of the cluster.
@@ -39191,6 +40837,10 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodeResponseOutput{})
 	pulumi.RegisterOutputType(ClusterNodeResponseArrayOutput{})
 	pulumi.RegisterOutputType(ClusterReportedPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(CreationDataOutput{})
+	pulumi.RegisterOutputType(CreationDataPtrOutput{})
+	pulumi.RegisterOutputType(CreationDataResponseOutput{})
+	pulumi.RegisterOutputType(CreationDataResponsePtrOutput{})
 	pulumi.RegisterOutputType(DefaultExtensionDetailsResponseOutput{})
 	pulumi.RegisterOutputType(DefaultExtensionDetailsResponseArrayOutput{})
 	pulumi.RegisterOutputType(DeploymentClusterOutput{})
@@ -39211,6 +40861,13 @@ func init() {
 	pulumi.RegisterOutputType(DeviceConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(DeviceConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(DeviceConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(DeviceDetailOutput{})
+	pulumi.RegisterOutputType(DeviceDetailArrayOutput{})
+	pulumi.RegisterOutputType(DeviceDetailResponseOutput{})
+	pulumi.RegisterOutputType(DeviceDetailResponseArrayOutput{})
+	pulumi.RegisterOutputType(DevicePoolPropertiesOutput{})
+	pulumi.RegisterOutputType(DevicePoolPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(DevicePoolPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(DownloadOsJobPropertiesOutput{})
 	pulumi.RegisterOutputType(DownloadOsJobPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(DownloadOsJobPropertiesResponseOutput{})
@@ -39292,6 +40949,12 @@ func init() {
 	pulumi.RegisterOutputType(HardwareProfileResponseOutput{})
 	pulumi.RegisterOutputType(HciCollectLogJobPropertiesOutput{})
 	pulumi.RegisterOutputType(HciCollectLogJobPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(HciConfigureCvmJobPropertiesOutput{})
+	pulumi.RegisterOutputType(HciConfigureCvmJobPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(HciConfigureCvmJobPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(HciConfigureSdnIntegrationJobPropertiesOutput{})
+	pulumi.RegisterOutputType(HciConfigureSdnIntegrationJobPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(HciConfigureSdnIntegrationJobPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(HciEdgeDeviceArcExtensionResponseOutput{})
 	pulumi.RegisterOutputType(HciEdgeDeviceArcExtensionResponseArrayOutput{})
 	pulumi.RegisterOutputType(HciEdgeDevicePropertiesOutput{})
@@ -39369,6 +41032,7 @@ func init() {
 	pulumi.RegisterOutputType(IpPoolsResponseOutput{})
 	pulumi.RegisterOutputType(IpPoolsResponseArrayOutput{})
 	pulumi.RegisterOutputType(IsolatedVmAttestationConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(JobReportedPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(LoadBalancerBackendAddressOutput{})
 	pulumi.RegisterOutputType(LoadBalancerBackendAddressArrayOutput{})
 	pulumi.RegisterOutputType(LoadBalancerBackendAddressPoolReferenceOutput{})
@@ -39581,6 +41245,12 @@ func init() {
 	pulumi.RegisterOutputType(SiteDetailsPtrOutput{})
 	pulumi.RegisterOutputType(SiteDetailsResponseOutput{})
 	pulumi.RegisterOutputType(SiteDetailsResponsePtrOutput{})
+	pulumi.RegisterOutputType(SnapshotPropertiesOutput{})
+	pulumi.RegisterOutputType(SnapshotPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(SnapshotPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(SnapshotStatusProvisioningStatusResponseOutput{})
+	pulumi.RegisterOutputType(SnapshotStatusProvisioningStatusResponsePtrOutput{})
+	pulumi.RegisterOutputType(SnapshotStatusResponseOutput{})
 	pulumi.RegisterOutputType(SoftwareAssurancePropertiesOutput{})
 	pulumi.RegisterOutputType(SoftwareAssurancePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(SoftwareAssurancePropertiesResponseOutput{})

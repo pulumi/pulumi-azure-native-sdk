@@ -13,59 +13,775 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
-// The Private Endpoint resource.
-type PrivateEndpointResponse struct {
-	// The ARM identifier for Private Endpoint
+// The Private Endpoint Connection resource.
+type PrivateEndpointConnectionResponse struct {
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
+	// The managed service identities assigned to this resource.
+	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
+	// *Same as workspace location.
+	Location *string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The Private Endpoint resource.
+	PrivateEndpoint *WorkspacePrivateEndpointResourceResponse `pulumi:"privateEndpoint"`
+	// The connection state.
+	PrivateLinkServiceConnectionState *PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
+	// The current provisioning state.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Optional. This field is required to be implemented by the RP because AML is supporting more than one tier
+	Sku *SkuResponse `pulumi:"sku"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	Tags       map[string]string  `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
+}
+
+// The Private Endpoint Connection resource.
+type PrivateEndpointConnectionResponseOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointConnectionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointConnectionResponse)(nil)).Elem()
+}
+
+func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResponseOutput() PrivateEndpointConnectionResponseOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResponseOutputWithContext(ctx context.Context) PrivateEndpointConnectionResponseOutput {
+	return o
+}
+
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+func (o PrivateEndpointConnectionResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The managed service identities assigned to this resource.
+func (o PrivateEndpointConnectionResponseOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+}
+
+// *Same as workspace location.
+func (o PrivateEndpointConnectionResponseOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// The name of the resource
+func (o PrivateEndpointConnectionResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The Private Endpoint resource.
-type PrivateEndpointResponseOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointResponse)(nil)).Elem()
+func (o PrivateEndpointConnectionResponseOutput) PrivateEndpoint() WorkspacePrivateEndpointResourceResponsePtrOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) *WorkspacePrivateEndpointResourceResponse {
+		return v.PrivateEndpoint
+	}).(WorkspacePrivateEndpointResourceResponsePtrOutput)
 }
 
-func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutput() PrivateEndpointResponseOutput {
+// The connection state.
+func (o PrivateEndpointConnectionResponseOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStateResponsePtrOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) *PrivateLinkServiceConnectionStateResponse {
+		return v.PrivateLinkServiceConnectionState
+	}).(PrivateLinkServiceConnectionStateResponsePtrOutput)
+}
+
+// The current provisioning state.
+func (o PrivateEndpointConnectionResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Optional. This field is required to be implemented by the RP because AML is supporting more than one tier
+func (o PrivateEndpointConnectionResponseOutput) Sku() SkuResponsePtrOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o PrivateEndpointConnectionResponseOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+func (o PrivateEndpointConnectionResponseOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+func (o PrivateEndpointConnectionResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type PrivateEndpointConnectionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointConnectionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrivateEndpointConnectionResponse)(nil)).Elem()
+}
+
+func (o PrivateEndpointConnectionResponseArrayOutput) ToPrivateEndpointConnectionResponseArrayOutput() PrivateEndpointConnectionResponseArrayOutput {
 	return o
 }
 
-func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutputWithContext(ctx context.Context) PrivateEndpointResponseOutput {
+func (o PrivateEndpointConnectionResponseArrayOutput) ToPrivateEndpointConnectionResponseArrayOutputWithContext(ctx context.Context) PrivateEndpointConnectionResponseArrayOutput {
 	return o
 }
 
-// The ARM identifier for Private Endpoint
-func (o PrivateEndpointResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointResponse) string { return v.Id }).(pulumi.StringOutput)
+func (o PrivateEndpointConnectionResponseArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnectionResponse {
+		return vs[0].([]PrivateEndpointConnectionResponse)[vs[1].(int)]
+	}).(PrivateEndpointConnectionResponseOutput)
 }
 
-type PrivateEndpointResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PrivateEndpointResponse)(nil)).Elem()
+// Private Endpoint destination for a Private Endpoint Outbound Rule for the managed network of a machine learning workspace.
+type PrivateEndpointDestination struct {
+	// A type definition that refers the id to an Azure Resource Manager resource.
+	ServiceResourceId *string `pulumi:"serviceResourceId"`
+	SparkEnabled      *bool   `pulumi:"sparkEnabled"`
+	// Type of a managed network Outbound Rule of a machine learning workspace.
+	SparkStatus       *string `pulumi:"sparkStatus"`
+	SubresourceTarget *string `pulumi:"subresourceTarget"`
 }
 
-func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutput() PrivateEndpointResponsePtrOutput {
+// PrivateEndpointDestinationInput is an input type that accepts PrivateEndpointDestinationArgs and PrivateEndpointDestinationOutput values.
+// You can construct a concrete instance of `PrivateEndpointDestinationInput` via:
+//
+//	PrivateEndpointDestinationArgs{...}
+type PrivateEndpointDestinationInput interface {
+	pulumi.Input
+
+	ToPrivateEndpointDestinationOutput() PrivateEndpointDestinationOutput
+	ToPrivateEndpointDestinationOutputWithContext(context.Context) PrivateEndpointDestinationOutput
+}
+
+// Private Endpoint destination for a Private Endpoint Outbound Rule for the managed network of a machine learning workspace.
+type PrivateEndpointDestinationArgs struct {
+	// A type definition that refers the id to an Azure Resource Manager resource.
+	ServiceResourceId pulumi.StringPtrInput `pulumi:"serviceResourceId"`
+	SparkEnabled      pulumi.BoolPtrInput   `pulumi:"sparkEnabled"`
+	// Type of a managed network Outbound Rule of a machine learning workspace.
+	SparkStatus       pulumi.StringPtrInput `pulumi:"sparkStatus"`
+	SubresourceTarget pulumi.StringPtrInput `pulumi:"subresourceTarget"`
+}
+
+func (PrivateEndpointDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointDestination)(nil)).Elem()
+}
+
+func (i PrivateEndpointDestinationArgs) ToPrivateEndpointDestinationOutput() PrivateEndpointDestinationOutput {
+	return i.ToPrivateEndpointDestinationOutputWithContext(context.Background())
+}
+
+func (i PrivateEndpointDestinationArgs) ToPrivateEndpointDestinationOutputWithContext(ctx context.Context) PrivateEndpointDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointDestinationOutput)
+}
+
+func (i PrivateEndpointDestinationArgs) ToPrivateEndpointDestinationPtrOutput() PrivateEndpointDestinationPtrOutput {
+	return i.ToPrivateEndpointDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i PrivateEndpointDestinationArgs) ToPrivateEndpointDestinationPtrOutputWithContext(ctx context.Context) PrivateEndpointDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointDestinationOutput).ToPrivateEndpointDestinationPtrOutputWithContext(ctx)
+}
+
+// PrivateEndpointDestinationPtrInput is an input type that accepts PrivateEndpointDestinationArgs, PrivateEndpointDestinationPtr and PrivateEndpointDestinationPtrOutput values.
+// You can construct a concrete instance of `PrivateEndpointDestinationPtrInput` via:
+//
+//	        PrivateEndpointDestinationArgs{...}
+//
+//	or:
+//
+//	        nil
+type PrivateEndpointDestinationPtrInput interface {
+	pulumi.Input
+
+	ToPrivateEndpointDestinationPtrOutput() PrivateEndpointDestinationPtrOutput
+	ToPrivateEndpointDestinationPtrOutputWithContext(context.Context) PrivateEndpointDestinationPtrOutput
+}
+
+type privateEndpointDestinationPtrType PrivateEndpointDestinationArgs
+
+func PrivateEndpointDestinationPtr(v *PrivateEndpointDestinationArgs) PrivateEndpointDestinationPtrInput {
+	return (*privateEndpointDestinationPtrType)(v)
+}
+
+func (*privateEndpointDestinationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateEndpointDestination)(nil)).Elem()
+}
+
+func (i *privateEndpointDestinationPtrType) ToPrivateEndpointDestinationPtrOutput() PrivateEndpointDestinationPtrOutput {
+	return i.ToPrivateEndpointDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i *privateEndpointDestinationPtrType) ToPrivateEndpointDestinationPtrOutputWithContext(ctx context.Context) PrivateEndpointDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointDestinationPtrOutput)
+}
+
+// Private Endpoint destination for a Private Endpoint Outbound Rule for the managed network of a machine learning workspace.
+type PrivateEndpointDestinationOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointDestination)(nil)).Elem()
+}
+
+func (o PrivateEndpointDestinationOutput) ToPrivateEndpointDestinationOutput() PrivateEndpointDestinationOutput {
 	return o
 }
 
-func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutputWithContext(ctx context.Context) PrivateEndpointResponsePtrOutput {
+func (o PrivateEndpointDestinationOutput) ToPrivateEndpointDestinationOutputWithContext(ctx context.Context) PrivateEndpointDestinationOutput {
 	return o
 }
 
-func (o PrivateEndpointResponsePtrOutput) Elem() PrivateEndpointResponseOutput {
-	return o.ApplyT(func(v *PrivateEndpointResponse) PrivateEndpointResponse {
+func (o PrivateEndpointDestinationOutput) ToPrivateEndpointDestinationPtrOutput() PrivateEndpointDestinationPtrOutput {
+	return o.ToPrivateEndpointDestinationPtrOutputWithContext(context.Background())
+}
+
+func (o PrivateEndpointDestinationOutput) ToPrivateEndpointDestinationPtrOutputWithContext(ctx context.Context) PrivateEndpointDestinationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateEndpointDestination) *PrivateEndpointDestination {
+		return &v
+	}).(PrivateEndpointDestinationPtrOutput)
+}
+
+// A type definition that refers the id to an Azure Resource Manager resource.
+func (o PrivateEndpointDestinationOutput) ServiceResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateEndpointDestination) *string { return v.ServiceResourceId }).(pulumi.StringPtrOutput)
+}
+
+func (o PrivateEndpointDestinationOutput) SparkEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PrivateEndpointDestination) *bool { return v.SparkEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Type of a managed network Outbound Rule of a machine learning workspace.
+func (o PrivateEndpointDestinationOutput) SparkStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateEndpointDestination) *string { return v.SparkStatus }).(pulumi.StringPtrOutput)
+}
+
+func (o PrivateEndpointDestinationOutput) SubresourceTarget() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateEndpointDestination) *string { return v.SubresourceTarget }).(pulumi.StringPtrOutput)
+}
+
+type PrivateEndpointDestinationPtrOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointDestinationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateEndpointDestination)(nil)).Elem()
+}
+
+func (o PrivateEndpointDestinationPtrOutput) ToPrivateEndpointDestinationPtrOutput() PrivateEndpointDestinationPtrOutput {
+	return o
+}
+
+func (o PrivateEndpointDestinationPtrOutput) ToPrivateEndpointDestinationPtrOutputWithContext(ctx context.Context) PrivateEndpointDestinationPtrOutput {
+	return o
+}
+
+func (o PrivateEndpointDestinationPtrOutput) Elem() PrivateEndpointDestinationOutput {
+	return o.ApplyT(func(v *PrivateEndpointDestination) PrivateEndpointDestination {
 		if v != nil {
 			return *v
 		}
-		var ret PrivateEndpointResponse
+		var ret PrivateEndpointDestination
 		return ret
-	}).(PrivateEndpointResponseOutput)
+	}).(PrivateEndpointDestinationOutput)
+}
+
+// A type definition that refers the id to an Azure Resource Manager resource.
+func (o PrivateEndpointDestinationPtrOutput) ServiceResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateEndpointDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PrivateEndpointDestinationPtrOutput) SparkEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PrivateEndpointDestination) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SparkEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Type of a managed network Outbound Rule of a machine learning workspace.
+func (o PrivateEndpointDestinationPtrOutput) SparkStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateEndpointDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SparkStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PrivateEndpointDestinationPtrOutput) SubresourceTarget() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateEndpointDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubresourceTarget
+	}).(pulumi.StringPtrOutput)
+}
+
+// Private Endpoint destination for a Private Endpoint Outbound Rule for the managed network of a machine learning workspace.
+type PrivateEndpointDestinationResponse struct {
+	// A type definition that refers the id to an Azure Resource Manager resource.
+	ServiceResourceId *string `pulumi:"serviceResourceId"`
+	SparkEnabled      *bool   `pulumi:"sparkEnabled"`
+	// Type of a managed network Outbound Rule of a machine learning workspace.
+	SparkStatus       *string `pulumi:"sparkStatus"`
+	SubresourceTarget *string `pulumi:"subresourceTarget"`
+}
+
+// Private Endpoint destination for a Private Endpoint Outbound Rule for the managed network of a machine learning workspace.
+type PrivateEndpointDestinationResponseOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointDestinationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointDestinationResponse)(nil)).Elem()
+}
+
+func (o PrivateEndpointDestinationResponseOutput) ToPrivateEndpointDestinationResponseOutput() PrivateEndpointDestinationResponseOutput {
+	return o
+}
+
+func (o PrivateEndpointDestinationResponseOutput) ToPrivateEndpointDestinationResponseOutputWithContext(ctx context.Context) PrivateEndpointDestinationResponseOutput {
+	return o
+}
+
+// A type definition that refers the id to an Azure Resource Manager resource.
+func (o PrivateEndpointDestinationResponseOutput) ServiceResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateEndpointDestinationResponse) *string { return v.ServiceResourceId }).(pulumi.StringPtrOutput)
+}
+
+func (o PrivateEndpointDestinationResponseOutput) SparkEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PrivateEndpointDestinationResponse) *bool { return v.SparkEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Type of a managed network Outbound Rule of a machine learning workspace.
+func (o PrivateEndpointDestinationResponseOutput) SparkStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateEndpointDestinationResponse) *string { return v.SparkStatus }).(pulumi.StringPtrOutput)
+}
+
+func (o PrivateEndpointDestinationResponseOutput) SubresourceTarget() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateEndpointDestinationResponse) *string { return v.SubresourceTarget }).(pulumi.StringPtrOutput)
+}
+
+type PrivateEndpointDestinationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointDestinationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateEndpointDestinationResponse)(nil)).Elem()
+}
+
+func (o PrivateEndpointDestinationResponsePtrOutput) ToPrivateEndpointDestinationResponsePtrOutput() PrivateEndpointDestinationResponsePtrOutput {
+	return o
+}
+
+func (o PrivateEndpointDestinationResponsePtrOutput) ToPrivateEndpointDestinationResponsePtrOutputWithContext(ctx context.Context) PrivateEndpointDestinationResponsePtrOutput {
+	return o
+}
+
+func (o PrivateEndpointDestinationResponsePtrOutput) Elem() PrivateEndpointDestinationResponseOutput {
+	return o.ApplyT(func(v *PrivateEndpointDestinationResponse) PrivateEndpointDestinationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateEndpointDestinationResponse
+		return ret
+	}).(PrivateEndpointDestinationResponseOutput)
+}
+
+// A type definition that refers the id to an Azure Resource Manager resource.
+func (o PrivateEndpointDestinationResponsePtrOutput) ServiceResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateEndpointDestinationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PrivateEndpointDestinationResponsePtrOutput) SparkEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PrivateEndpointDestinationResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SparkEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Type of a managed network Outbound Rule of a machine learning workspace.
+func (o PrivateEndpointDestinationResponsePtrOutput) SparkStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateEndpointDestinationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SparkStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PrivateEndpointDestinationResponsePtrOutput) SubresourceTarget() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateEndpointDestinationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubresourceTarget
+	}).(pulumi.StringPtrOutput)
+}
+
+// Private Endpoint Outbound Rule for the managed network of a machine learning workspace.
+type PrivateEndpointOutboundRule struct {
+	// Category of a managed network Outbound Rule of a machine learning workspace.
+	Category *string `pulumi:"category"`
+	// Private Endpoint destination for a Private Endpoint Outbound Rule for the managed network of a machine learning workspace.
+	Destination *PrivateEndpointDestination `pulumi:"destination"`
+	Fqdns       []string                    `pulumi:"fqdns"`
+	// Type of a managed network Outbound Rule of a machine learning workspace.
+	Status *string `pulumi:"status"`
+	// Type of a managed network Outbound Rule of a machine learning workspace.
+	// Expected value is 'PrivateEndpoint'.
+	Type string `pulumi:"type"`
+}
+
+// PrivateEndpointOutboundRuleInput is an input type that accepts PrivateEndpointOutboundRuleArgs and PrivateEndpointOutboundRuleOutput values.
+// You can construct a concrete instance of `PrivateEndpointOutboundRuleInput` via:
+//
+//	PrivateEndpointOutboundRuleArgs{...}
+type PrivateEndpointOutboundRuleInput interface {
+	pulumi.Input
+
+	ToPrivateEndpointOutboundRuleOutput() PrivateEndpointOutboundRuleOutput
+	ToPrivateEndpointOutboundRuleOutputWithContext(context.Context) PrivateEndpointOutboundRuleOutput
+}
+
+// Private Endpoint Outbound Rule for the managed network of a machine learning workspace.
+type PrivateEndpointOutboundRuleArgs struct {
+	// Category of a managed network Outbound Rule of a machine learning workspace.
+	Category pulumi.StringPtrInput `pulumi:"category"`
+	// Private Endpoint destination for a Private Endpoint Outbound Rule for the managed network of a machine learning workspace.
+	Destination PrivateEndpointDestinationPtrInput `pulumi:"destination"`
+	Fqdns       pulumi.StringArrayInput            `pulumi:"fqdns"`
+	// Type of a managed network Outbound Rule of a machine learning workspace.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// Type of a managed network Outbound Rule of a machine learning workspace.
+	// Expected value is 'PrivateEndpoint'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (PrivateEndpointOutboundRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointOutboundRule)(nil)).Elem()
+}
+
+func (i PrivateEndpointOutboundRuleArgs) ToPrivateEndpointOutboundRuleOutput() PrivateEndpointOutboundRuleOutput {
+	return i.ToPrivateEndpointOutboundRuleOutputWithContext(context.Background())
+}
+
+func (i PrivateEndpointOutboundRuleArgs) ToPrivateEndpointOutboundRuleOutputWithContext(ctx context.Context) PrivateEndpointOutboundRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointOutboundRuleOutput)
+}
+
+// Private Endpoint Outbound Rule for the managed network of a machine learning workspace.
+type PrivateEndpointOutboundRuleOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointOutboundRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointOutboundRule)(nil)).Elem()
+}
+
+func (o PrivateEndpointOutboundRuleOutput) ToPrivateEndpointOutboundRuleOutput() PrivateEndpointOutboundRuleOutput {
+	return o
+}
+
+func (o PrivateEndpointOutboundRuleOutput) ToPrivateEndpointOutboundRuleOutputWithContext(ctx context.Context) PrivateEndpointOutboundRuleOutput {
+	return o
+}
+
+// Category of a managed network Outbound Rule of a machine learning workspace.
+func (o PrivateEndpointOutboundRuleOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateEndpointOutboundRule) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+// Private Endpoint destination for a Private Endpoint Outbound Rule for the managed network of a machine learning workspace.
+func (o PrivateEndpointOutboundRuleOutput) Destination() PrivateEndpointDestinationPtrOutput {
+	return o.ApplyT(func(v PrivateEndpointOutboundRule) *PrivateEndpointDestination { return v.Destination }).(PrivateEndpointDestinationPtrOutput)
+}
+
+func (o PrivateEndpointOutboundRuleOutput) Fqdns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PrivateEndpointOutboundRule) []string { return v.Fqdns }).(pulumi.StringArrayOutput)
+}
+
+// Type of a managed network Outbound Rule of a machine learning workspace.
+func (o PrivateEndpointOutboundRuleOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateEndpointOutboundRule) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// Type of a managed network Outbound Rule of a machine learning workspace.
+// Expected value is 'PrivateEndpoint'.
+func (o PrivateEndpointOutboundRuleOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointOutboundRule) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Private Endpoint Outbound Rule for the managed network of a machine learning workspace.
+type PrivateEndpointOutboundRuleResponse struct {
+	// Category of a managed network Outbound Rule of a machine learning workspace.
+	Category *string `pulumi:"category"`
+	// Private Endpoint destination for a Private Endpoint Outbound Rule for the managed network of a machine learning workspace.
+	Destination *PrivateEndpointDestinationResponse `pulumi:"destination"`
+	// Error information about an outbound rule of a machine learning workspace if RuleStatus is failed.
+	ErrorInformation string   `pulumi:"errorInformation"`
+	Fqdns            []string `pulumi:"fqdns"`
+	ParentRuleNames  []string `pulumi:"parentRuleNames"`
+	// Type of a managed network Outbound Rule of a machine learning workspace.
+	Status *string `pulumi:"status"`
+	// Type of a managed network Outbound Rule of a machine learning workspace.
+	// Expected value is 'PrivateEndpoint'.
+	Type string `pulumi:"type"`
+}
+
+// Private Endpoint Outbound Rule for the managed network of a machine learning workspace.
+type PrivateEndpointOutboundRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointOutboundRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointOutboundRuleResponse)(nil)).Elem()
+}
+
+func (o PrivateEndpointOutboundRuleResponseOutput) ToPrivateEndpointOutboundRuleResponseOutput() PrivateEndpointOutboundRuleResponseOutput {
+	return o
+}
+
+func (o PrivateEndpointOutboundRuleResponseOutput) ToPrivateEndpointOutboundRuleResponseOutputWithContext(ctx context.Context) PrivateEndpointOutboundRuleResponseOutput {
+	return o
+}
+
+// Category of a managed network Outbound Rule of a machine learning workspace.
+func (o PrivateEndpointOutboundRuleResponseOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateEndpointOutboundRuleResponse) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+// Private Endpoint destination for a Private Endpoint Outbound Rule for the managed network of a machine learning workspace.
+func (o PrivateEndpointOutboundRuleResponseOutput) Destination() PrivateEndpointDestinationResponsePtrOutput {
+	return o.ApplyT(func(v PrivateEndpointOutboundRuleResponse) *PrivateEndpointDestinationResponse { return v.Destination }).(PrivateEndpointDestinationResponsePtrOutput)
+}
+
+// Error information about an outbound rule of a machine learning workspace if RuleStatus is failed.
+func (o PrivateEndpointOutboundRuleResponseOutput) ErrorInformation() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointOutboundRuleResponse) string { return v.ErrorInformation }).(pulumi.StringOutput)
+}
+
+func (o PrivateEndpointOutboundRuleResponseOutput) Fqdns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PrivateEndpointOutboundRuleResponse) []string { return v.Fqdns }).(pulumi.StringArrayOutput)
+}
+
+func (o PrivateEndpointOutboundRuleResponseOutput) ParentRuleNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PrivateEndpointOutboundRuleResponse) []string { return v.ParentRuleNames }).(pulumi.StringArrayOutput)
+}
+
+// Type of a managed network Outbound Rule of a machine learning workspace.
+func (o PrivateEndpointOutboundRuleResponseOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateEndpointOutboundRuleResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// Type of a managed network Outbound Rule of a machine learning workspace.
+// Expected value is 'PrivateEndpoint'.
+func (o PrivateEndpointOutboundRuleResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointOutboundRuleResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The PE network resource that is linked to this PE connection.
+type PrivateEndpointResource struct {
+	// The subnetId that the private endpoint is connected to.
+	SubnetArmId *string `pulumi:"subnetArmId"`
+}
+
+// PrivateEndpointResourceInput is an input type that accepts PrivateEndpointResourceArgs and PrivateEndpointResourceOutput values.
+// You can construct a concrete instance of `PrivateEndpointResourceInput` via:
+//
+//	PrivateEndpointResourceArgs{...}
+type PrivateEndpointResourceInput interface {
+	pulumi.Input
+
+	ToPrivateEndpointResourceOutput() PrivateEndpointResourceOutput
+	ToPrivateEndpointResourceOutputWithContext(context.Context) PrivateEndpointResourceOutput
+}
+
+// The PE network resource that is linked to this PE connection.
+type PrivateEndpointResourceArgs struct {
+	// The subnetId that the private endpoint is connected to.
+	SubnetArmId pulumi.StringPtrInput `pulumi:"subnetArmId"`
+}
+
+func (PrivateEndpointResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointResource)(nil)).Elem()
+}
+
+func (i PrivateEndpointResourceArgs) ToPrivateEndpointResourceOutput() PrivateEndpointResourceOutput {
+	return i.ToPrivateEndpointResourceOutputWithContext(context.Background())
+}
+
+func (i PrivateEndpointResourceArgs) ToPrivateEndpointResourceOutputWithContext(ctx context.Context) PrivateEndpointResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointResourceOutput)
+}
+
+func (i PrivateEndpointResourceArgs) ToPrivateEndpointResourcePtrOutput() PrivateEndpointResourcePtrOutput {
+	return i.ToPrivateEndpointResourcePtrOutputWithContext(context.Background())
+}
+
+func (i PrivateEndpointResourceArgs) ToPrivateEndpointResourcePtrOutputWithContext(ctx context.Context) PrivateEndpointResourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointResourceOutput).ToPrivateEndpointResourcePtrOutputWithContext(ctx)
+}
+
+// PrivateEndpointResourcePtrInput is an input type that accepts PrivateEndpointResourceArgs, PrivateEndpointResourcePtr and PrivateEndpointResourcePtrOutput values.
+// You can construct a concrete instance of `PrivateEndpointResourcePtrInput` via:
+//
+//	        PrivateEndpointResourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type PrivateEndpointResourcePtrInput interface {
+	pulumi.Input
+
+	ToPrivateEndpointResourcePtrOutput() PrivateEndpointResourcePtrOutput
+	ToPrivateEndpointResourcePtrOutputWithContext(context.Context) PrivateEndpointResourcePtrOutput
+}
+
+type privateEndpointResourcePtrType PrivateEndpointResourceArgs
+
+func PrivateEndpointResourcePtr(v *PrivateEndpointResourceArgs) PrivateEndpointResourcePtrInput {
+	return (*privateEndpointResourcePtrType)(v)
+}
+
+func (*privateEndpointResourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateEndpointResource)(nil)).Elem()
+}
+
+func (i *privateEndpointResourcePtrType) ToPrivateEndpointResourcePtrOutput() PrivateEndpointResourcePtrOutput {
+	return i.ToPrivateEndpointResourcePtrOutputWithContext(context.Background())
+}
+
+func (i *privateEndpointResourcePtrType) ToPrivateEndpointResourcePtrOutputWithContext(ctx context.Context) PrivateEndpointResourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointResourcePtrOutput)
+}
+
+// The PE network resource that is linked to this PE connection.
+type PrivateEndpointResourceOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointResource)(nil)).Elem()
+}
+
+func (o PrivateEndpointResourceOutput) ToPrivateEndpointResourceOutput() PrivateEndpointResourceOutput {
+	return o
+}
+
+func (o PrivateEndpointResourceOutput) ToPrivateEndpointResourceOutputWithContext(ctx context.Context) PrivateEndpointResourceOutput {
+	return o
+}
+
+func (o PrivateEndpointResourceOutput) ToPrivateEndpointResourcePtrOutput() PrivateEndpointResourcePtrOutput {
+	return o.ToPrivateEndpointResourcePtrOutputWithContext(context.Background())
+}
+
+func (o PrivateEndpointResourceOutput) ToPrivateEndpointResourcePtrOutputWithContext(ctx context.Context) PrivateEndpointResourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateEndpointResource) *PrivateEndpointResource {
+		return &v
+	}).(PrivateEndpointResourcePtrOutput)
+}
+
+// The subnetId that the private endpoint is connected to.
+func (o PrivateEndpointResourceOutput) SubnetArmId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateEndpointResource) *string { return v.SubnetArmId }).(pulumi.StringPtrOutput)
+}
+
+type PrivateEndpointResourcePtrOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointResourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateEndpointResource)(nil)).Elem()
+}
+
+func (o PrivateEndpointResourcePtrOutput) ToPrivateEndpointResourcePtrOutput() PrivateEndpointResourcePtrOutput {
+	return o
+}
+
+func (o PrivateEndpointResourcePtrOutput) ToPrivateEndpointResourcePtrOutputWithContext(ctx context.Context) PrivateEndpointResourcePtrOutput {
+	return o
+}
+
+func (o PrivateEndpointResourcePtrOutput) Elem() PrivateEndpointResourceOutput {
+	return o.ApplyT(func(v *PrivateEndpointResource) PrivateEndpointResource {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateEndpointResource
+		return ret
+	}).(PrivateEndpointResourceOutput)
+}
+
+// The subnetId that the private endpoint is connected to.
+func (o PrivateEndpointResourcePtrOutput) SubnetArmId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateEndpointResource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubnetArmId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The PE network resource that is linked to this PE connection.
+type PrivateEndpointResourceResponse struct {
+	// The ARM identifier for Private Endpoint
+	Id string `pulumi:"id"`
+	// The subnetId that the private endpoint is connected to.
+	SubnetArmId *string `pulumi:"subnetArmId"`
+}
+
+// The PE network resource that is linked to this PE connection.
+type PrivateEndpointResourceResponseOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointResourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointResourceResponse)(nil)).Elem()
+}
+
+func (o PrivateEndpointResourceResponseOutput) ToPrivateEndpointResourceResponseOutput() PrivateEndpointResourceResponseOutput {
+	return o
+}
+
+func (o PrivateEndpointResourceResponseOutput) ToPrivateEndpointResourceResponseOutputWithContext(ctx context.Context) PrivateEndpointResourceResponseOutput {
+	return o
 }
 
 // The ARM identifier for Private Endpoint
-func (o PrivateEndpointResponsePtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateEndpointResponse) *string {
+func (o PrivateEndpointResourceResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointResourceResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The subnetId that the private endpoint is connected to.
+func (o PrivateEndpointResourceResponseOutput) SubnetArmId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateEndpointResourceResponse) *string { return v.SubnetArmId }).(pulumi.StringPtrOutput)
+}
+
+type PrivateEndpointResourceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointResourceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateEndpointResourceResponse)(nil)).Elem()
+}
+
+func (o PrivateEndpointResourceResponsePtrOutput) ToPrivateEndpointResourceResponsePtrOutput() PrivateEndpointResourceResponsePtrOutput {
+	return o
+}
+
+func (o PrivateEndpointResourceResponsePtrOutput) ToPrivateEndpointResourceResponsePtrOutputWithContext(ctx context.Context) PrivateEndpointResourceResponsePtrOutput {
+	return o
+}
+
+func (o PrivateEndpointResourceResponsePtrOutput) Elem() PrivateEndpointResourceResponseOutput {
+	return o.ApplyT(func(v *PrivateEndpointResourceResponse) PrivateEndpointResourceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateEndpointResourceResponse
+		return ret
+	}).(PrivateEndpointResourceResponseOutput)
+}
+
+// The ARM identifier for Private Endpoint
+func (o PrivateEndpointResourceResponsePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateEndpointResourceResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -73,13 +789,23 @@ func (o PrivateEndpointResponsePtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The subnetId that the private endpoint is connected to.
+func (o PrivateEndpointResourceResponsePtrOutput) SubnetArmId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateEndpointResourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubnetArmId
+	}).(pulumi.StringPtrOutput)
+}
+
 // A collection of information about the state of the connection between service consumer and provider.
 type PrivateLinkServiceConnectionState struct {
-	// A message indicating if changes on the service provider require any updates on the consumer.
+	// Some RP chose "None". Other RPs use this for region expansion.
 	ActionsRequired *string `pulumi:"actionsRequired"`
-	// The reason for approval/rejection of the connection.
+	// User-defined message that, per NRP doc, may be used for approval-related message.
 	Description *string `pulumi:"description"`
-	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+	// Connection status of the service consumer with the service provider\r\nPossible state transitions\r\nPending -> Approved (Service provider approves the connection request)\r\nPending -> Rejected (Service provider rejects the connection request)\r\nPending -> Disconnected (Service provider deletes the connection)\r\nApproved -> Rejected (Service provider rejects the approved connection)\r\nApproved -> Disconnected (Service provider deletes the connection)\r\nRejected -> Pending (Service consumer re-initiates the connection request that was rejected)\r\nRejected -> Disconnected (Service provider deletes the connection)
 	Status *string `pulumi:"status"`
 }
 
@@ -96,11 +822,11 @@ type PrivateLinkServiceConnectionStateInput interface {
 
 // A collection of information about the state of the connection between service consumer and provider.
 type PrivateLinkServiceConnectionStateArgs struct {
-	// A message indicating if changes on the service provider require any updates on the consumer.
+	// Some RP chose "None". Other RPs use this for region expansion.
 	ActionsRequired pulumi.StringPtrInput `pulumi:"actionsRequired"`
-	// The reason for approval/rejection of the connection.
+	// User-defined message that, per NRP doc, may be used for approval-related message.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+	// Connection status of the service consumer with the service provider\r\nPossible state transitions\r\nPending -> Approved (Service provider approves the connection request)\r\nPending -> Rejected (Service provider rejects the connection request)\r\nPending -> Disconnected (Service provider deletes the connection)\r\nApproved -> Rejected (Service provider rejects the approved connection)\r\nApproved -> Disconnected (Service provider deletes the connection)\r\nRejected -> Pending (Service consumer re-initiates the connection request that was rejected)\r\nRejected -> Disconnected (Service provider deletes the connection)
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
@@ -114,6 +840,47 @@ func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionSta
 
 func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionStateOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStateOutput)
+}
+
+func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionStatePtrOutput() PrivateLinkServiceConnectionStatePtrOutput {
+	return i.ToPrivateLinkServiceConnectionStatePtrOutputWithContext(context.Background())
+}
+
+func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionStatePtrOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStateOutput).ToPrivateLinkServiceConnectionStatePtrOutputWithContext(ctx)
+}
+
+// PrivateLinkServiceConnectionStatePtrInput is an input type that accepts PrivateLinkServiceConnectionStateArgs, PrivateLinkServiceConnectionStatePtr and PrivateLinkServiceConnectionStatePtrOutput values.
+// You can construct a concrete instance of `PrivateLinkServiceConnectionStatePtrInput` via:
+//
+//	        PrivateLinkServiceConnectionStateArgs{...}
+//
+//	or:
+//
+//	        nil
+type PrivateLinkServiceConnectionStatePtrInput interface {
+	pulumi.Input
+
+	ToPrivateLinkServiceConnectionStatePtrOutput() PrivateLinkServiceConnectionStatePtrOutput
+	ToPrivateLinkServiceConnectionStatePtrOutputWithContext(context.Context) PrivateLinkServiceConnectionStatePtrOutput
+}
+
+type privateLinkServiceConnectionStatePtrType PrivateLinkServiceConnectionStateArgs
+
+func PrivateLinkServiceConnectionStatePtr(v *PrivateLinkServiceConnectionStateArgs) PrivateLinkServiceConnectionStatePtrInput {
+	return (*privateLinkServiceConnectionStatePtrType)(v)
+}
+
+func (*privateLinkServiceConnectionStatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateLinkServiceConnectionState)(nil)).Elem()
+}
+
+func (i *privateLinkServiceConnectionStatePtrType) ToPrivateLinkServiceConnectionStatePtrOutput() PrivateLinkServiceConnectionStatePtrOutput {
+	return i.ToPrivateLinkServiceConnectionStatePtrOutputWithContext(context.Background())
+}
+
+func (i *privateLinkServiceConnectionStatePtrType) ToPrivateLinkServiceConnectionStatePtrOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStatePtrOutput)
 }
 
 // A collection of information about the state of the connection between service consumer and provider.
@@ -131,28 +898,92 @@ func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionS
 	return o
 }
 
-// A message indicating if changes on the service provider require any updates on the consumer.
+func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStatePtrOutput() PrivateLinkServiceConnectionStatePtrOutput {
+	return o.ToPrivateLinkServiceConnectionStatePtrOutputWithContext(context.Background())
+}
+
+func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStatePtrOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateLinkServiceConnectionState) *PrivateLinkServiceConnectionState {
+		return &v
+	}).(PrivateLinkServiceConnectionStatePtrOutput)
+}
+
+// Some RP chose "None". Other RPs use this for region expansion.
 func (o PrivateLinkServiceConnectionStateOutput) ActionsRequired() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
 }
 
-// The reason for approval/rejection of the connection.
+// User-defined message that, per NRP doc, may be used for approval-related message.
 func (o PrivateLinkServiceConnectionStateOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+// Connection status of the service consumer with the service provider\r\nPossible state transitions\r\nPending -> Approved (Service provider approves the connection request)\r\nPending -> Rejected (Service provider rejects the connection request)\r\nPending -> Disconnected (Service provider deletes the connection)\r\nApproved -> Rejected (Service provider rejects the approved connection)\r\nApproved -> Disconnected (Service provider deletes the connection)\r\nRejected -> Pending (Service consumer re-initiates the connection request that was rejected)\r\nRejected -> Disconnected (Service provider deletes the connection)
 func (o PrivateLinkServiceConnectionStateOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+type PrivateLinkServiceConnectionStatePtrOutput struct{ *pulumi.OutputState }
+
+func (PrivateLinkServiceConnectionStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateLinkServiceConnectionState)(nil)).Elem()
+}
+
+func (o PrivateLinkServiceConnectionStatePtrOutput) ToPrivateLinkServiceConnectionStatePtrOutput() PrivateLinkServiceConnectionStatePtrOutput {
+	return o
+}
+
+func (o PrivateLinkServiceConnectionStatePtrOutput) ToPrivateLinkServiceConnectionStatePtrOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStatePtrOutput {
+	return o
+}
+
+func (o PrivateLinkServiceConnectionStatePtrOutput) Elem() PrivateLinkServiceConnectionStateOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceConnectionState) PrivateLinkServiceConnectionState {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateLinkServiceConnectionState
+		return ret
+	}).(PrivateLinkServiceConnectionStateOutput)
+}
+
+// Some RP chose "None". Other RPs use this for region expansion.
+func (o PrivateLinkServiceConnectionStatePtrOutput) ActionsRequired() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceConnectionState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ActionsRequired
+	}).(pulumi.StringPtrOutput)
+}
+
+// User-defined message that, per NRP doc, may be used for approval-related message.
+func (o PrivateLinkServiceConnectionStatePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceConnectionState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Connection status of the service consumer with the service provider\r\nPossible state transitions\r\nPending -> Approved (Service provider approves the connection request)\r\nPending -> Rejected (Service provider rejects the connection request)\r\nPending -> Disconnected (Service provider deletes the connection)\r\nApproved -> Rejected (Service provider rejects the approved connection)\r\nApproved -> Disconnected (Service provider deletes the connection)\r\nRejected -> Pending (Service consumer re-initiates the connection request that was rejected)\r\nRejected -> Disconnected (Service provider deletes the connection)
+func (o PrivateLinkServiceConnectionStatePtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceConnectionState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
 // A collection of information about the state of the connection between service consumer and provider.
 type PrivateLinkServiceConnectionStateResponse struct {
-	// A message indicating if changes on the service provider require any updates on the consumer.
+	// Some RP chose "None". Other RPs use this for region expansion.
 	ActionsRequired *string `pulumi:"actionsRequired"`
-	// The reason for approval/rejection of the connection.
+	// User-defined message that, per NRP doc, may be used for approval-related message.
 	Description *string `pulumi:"description"`
-	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+	// Connection status of the service consumer with the service provider\r\nPossible state transitions\r\nPending -> Approved (Service provider approves the connection request)\r\nPending -> Rejected (Service provider rejects the connection request)\r\nPending -> Disconnected (Service provider deletes the connection)\r\nApproved -> Rejected (Service provider rejects the approved connection)\r\nApproved -> Disconnected (Service provider deletes the connection)\r\nRejected -> Pending (Service consumer re-initiates the connection request that was rejected)\r\nRejected -> Disconnected (Service provider deletes the connection)
 	Status *string `pulumi:"status"`
 }
 
@@ -171,19 +1002,73 @@ func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceCon
 	return o
 }
 
-// A message indicating if changes on the service provider require any updates on the consumer.
+// Some RP chose "None". Other RPs use this for region expansion.
 func (o PrivateLinkServiceConnectionStateResponseOutput) ActionsRequired() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
 }
 
-// The reason for approval/rejection of the connection.
+// User-defined message that, per NRP doc, may be used for approval-related message.
 func (o PrivateLinkServiceConnectionStateResponseOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+// Connection status of the service consumer with the service provider\r\nPossible state transitions\r\nPending -> Approved (Service provider approves the connection request)\r\nPending -> Rejected (Service provider rejects the connection request)\r\nPending -> Disconnected (Service provider deletes the connection)\r\nApproved -> Rejected (Service provider rejects the approved connection)\r\nApproved -> Disconnected (Service provider deletes the connection)\r\nRejected -> Pending (Service consumer re-initiates the connection request that was rejected)\r\nRejected -> Disconnected (Service provider deletes the connection)
 func (o PrivateLinkServiceConnectionStateResponseOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type PrivateLinkServiceConnectionStateResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PrivateLinkServiceConnectionStateResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateLinkServiceConnectionStateResponse)(nil)).Elem()
+}
+
+func (o PrivateLinkServiceConnectionStateResponsePtrOutput) ToPrivateLinkServiceConnectionStateResponsePtrOutput() PrivateLinkServiceConnectionStateResponsePtrOutput {
+	return o
+}
+
+func (o PrivateLinkServiceConnectionStateResponsePtrOutput) ToPrivateLinkServiceConnectionStateResponsePtrOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateResponsePtrOutput {
+	return o
+}
+
+func (o PrivateLinkServiceConnectionStateResponsePtrOutput) Elem() PrivateLinkServiceConnectionStateResponseOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceConnectionStateResponse) PrivateLinkServiceConnectionStateResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateLinkServiceConnectionStateResponse
+		return ret
+	}).(PrivateLinkServiceConnectionStateResponseOutput)
+}
+
+// Some RP chose "None". Other RPs use this for region expansion.
+func (o PrivateLinkServiceConnectionStateResponsePtrOutput) ActionsRequired() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceConnectionStateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ActionsRequired
+	}).(pulumi.StringPtrOutput)
+}
+
+// User-defined message that, per NRP doc, may be used for approval-related message.
+func (o PrivateLinkServiceConnectionStateResponsePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceConnectionStateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Connection status of the service consumer with the service provider\r\nPossible state transitions\r\nPending -> Approved (Service provider approves the connection request)\r\nPending -> Rejected (Service provider rejects the connection request)\r\nPending -> Disconnected (Service provider deletes the connection)\r\nApproved -> Rejected (Service provider rejects the approved connection)\r\nApproved -> Disconnected (Service provider deletes the connection)\r\nRejected -> Pending (Service consumer re-initiates the connection request that was rejected)\r\nRejected -> Disconnected (Service provider deletes the connection)
+func (o PrivateLinkServiceConnectionStateResponsePtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceConnectionStateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
 }
 
 // Deployment container liveness/readiness probe configuration.
@@ -891,7 +1776,7 @@ func (o PyTorchResponsePtrOutput) ProcessCountPerInstance() pulumi.IntPtrOutput 
 }
 
 type QueueSettings struct {
-	// Controls the compute job tier
+	// Enum to determine the job tier.
 	JobTier *string `pulumi:"jobTier"`
 }
 
@@ -920,7 +1805,7 @@ type QueueSettingsInput interface {
 }
 
 type QueueSettingsArgs struct {
-	// Controls the compute job tier
+	// Enum to determine the job tier.
 	JobTier pulumi.StringPtrInput `pulumi:"jobTier"`
 }
 
@@ -1012,7 +1897,7 @@ func (o QueueSettingsOutput) ToQueueSettingsPtrOutputWithContext(ctx context.Con
 	}).(QueueSettingsPtrOutput)
 }
 
-// Controls the compute job tier
+// Enum to determine the job tier.
 func (o QueueSettingsOutput) JobTier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v QueueSettings) *string { return v.JobTier }).(pulumi.StringPtrOutput)
 }
@@ -1041,7 +1926,7 @@ func (o QueueSettingsPtrOutput) Elem() QueueSettingsOutput {
 	}).(QueueSettingsOutput)
 }
 
-// Controls the compute job tier
+// Enum to determine the job tier.
 func (o QueueSettingsPtrOutput) JobTier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *QueueSettings) *string {
 		if v == nil {
@@ -1052,7 +1937,7 @@ func (o QueueSettingsPtrOutput) JobTier() pulumi.StringPtrOutput {
 }
 
 type QueueSettingsResponse struct {
-	// Controls the compute job tier
+	// Enum to determine the job tier.
 	JobTier *string `pulumi:"jobTier"`
 }
 
@@ -1083,7 +1968,7 @@ func (o QueueSettingsResponseOutput) ToQueueSettingsResponseOutputWithContext(ct
 	return o
 }
 
-// Controls the compute job tier
+// Enum to determine the job tier.
 func (o QueueSettingsResponseOutput) JobTier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v QueueSettingsResponse) *string { return v.JobTier }).(pulumi.StringPtrOutput)
 }
@@ -1112,7 +1997,7 @@ func (o QueueSettingsResponsePtrOutput) Elem() QueueSettingsResponseOutput {
 	}).(QueueSettingsResponseOutput)
 }
 
-// Controls the compute job tier
+// Enum to determine the job tier.
 func (o QueueSettingsResponsePtrOutput) JobTier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *QueueSettingsResponse) *string {
 		if v == nil {
@@ -3128,122 +4013,12 @@ func (o RecurrenceTriggerResponsePtrOutput) TriggerType() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// Details of the Registry
-type RegistryType struct {
-	// Discovery URL for the Registry
-	DiscoveryUrl *string `pulumi:"discoveryUrl"`
-	// IntellectualPropertyPublisher for the registry
-	IntellectualPropertyPublisher *string `pulumi:"intellectualPropertyPublisher"`
-	// ResourceId of the managed RG if the registry has system created resources
-	ManagedResourceGroup *ArmResourceId `pulumi:"managedResourceGroup"`
-	// MLFlow Registry URI for the Registry
-	MlFlowRegistryUri *string `pulumi:"mlFlowRegistryUri"`
-	// Is the Registry accessible from the internet?
-	// Possible values: "Enabled" or "Disabled"
-	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
-	// Details of each region the registry is in
-	RegionDetails []RegistryRegionArmDetails `pulumi:"regionDetails"`
-	// Private endpoint connections info used for pending connections in private link portal
-	RegistryPrivateEndpointConnections []RegistryPrivateEndpointConnection `pulumi:"registryPrivateEndpointConnections"`
-}
-
-// RegistryTypeInput is an input type that accepts RegistryTypeArgs and RegistryTypeOutput values.
-// You can construct a concrete instance of `RegistryTypeInput` via:
-//
-//	RegistryTypeArgs{...}
-type RegistryTypeInput interface {
-	pulumi.Input
-
-	ToRegistryTypeOutput() RegistryTypeOutput
-	ToRegistryTypeOutputWithContext(context.Context) RegistryTypeOutput
-}
-
-// Details of the Registry
-type RegistryTypeArgs struct {
-	// Discovery URL for the Registry
-	DiscoveryUrl pulumi.StringPtrInput `pulumi:"discoveryUrl"`
-	// IntellectualPropertyPublisher for the registry
-	IntellectualPropertyPublisher pulumi.StringPtrInput `pulumi:"intellectualPropertyPublisher"`
-	// ResourceId of the managed RG if the registry has system created resources
-	ManagedResourceGroup ArmResourceIdPtrInput `pulumi:"managedResourceGroup"`
-	// MLFlow Registry URI for the Registry
-	MlFlowRegistryUri pulumi.StringPtrInput `pulumi:"mlFlowRegistryUri"`
-	// Is the Registry accessible from the internet?
-	// Possible values: "Enabled" or "Disabled"
-	PublicNetworkAccess pulumi.StringPtrInput `pulumi:"publicNetworkAccess"`
-	// Details of each region the registry is in
-	RegionDetails RegistryRegionArmDetailsArrayInput `pulumi:"regionDetails"`
-	// Private endpoint connections info used for pending connections in private link portal
-	RegistryPrivateEndpointConnections RegistryPrivateEndpointConnectionArrayInput `pulumi:"registryPrivateEndpointConnections"`
-}
-
-func (RegistryTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegistryType)(nil)).Elem()
-}
-
-func (i RegistryTypeArgs) ToRegistryTypeOutput() RegistryTypeOutput {
-	return i.ToRegistryTypeOutputWithContext(context.Background())
-}
-
-func (i RegistryTypeArgs) ToRegistryTypeOutputWithContext(ctx context.Context) RegistryTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegistryTypeOutput)
-}
-
-// Details of the Registry
-type RegistryTypeOutput struct{ *pulumi.OutputState }
-
-func (RegistryTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegistryType)(nil)).Elem()
-}
-
-func (o RegistryTypeOutput) ToRegistryTypeOutput() RegistryTypeOutput {
-	return o
-}
-
-func (o RegistryTypeOutput) ToRegistryTypeOutputWithContext(ctx context.Context) RegistryTypeOutput {
-	return o
-}
-
-// Discovery URL for the Registry
-func (o RegistryTypeOutput) DiscoveryUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegistryType) *string { return v.DiscoveryUrl }).(pulumi.StringPtrOutput)
-}
-
-// IntellectualPropertyPublisher for the registry
-func (o RegistryTypeOutput) IntellectualPropertyPublisher() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegistryType) *string { return v.IntellectualPropertyPublisher }).(pulumi.StringPtrOutput)
-}
-
-// ResourceId of the managed RG if the registry has system created resources
-func (o RegistryTypeOutput) ManagedResourceGroup() ArmResourceIdPtrOutput {
-	return o.ApplyT(func(v RegistryType) *ArmResourceId { return v.ManagedResourceGroup }).(ArmResourceIdPtrOutput)
-}
-
-// MLFlow Registry URI for the Registry
-func (o RegistryTypeOutput) MlFlowRegistryUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegistryType) *string { return v.MlFlowRegistryUri }).(pulumi.StringPtrOutput)
-}
-
-// Is the Registry accessible from the internet?
-// Possible values: "Enabled" or "Disabled"
-func (o RegistryTypeOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegistryType) *string { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
-}
-
-// Details of each region the registry is in
-func (o RegistryTypeOutput) RegionDetails() RegistryRegionArmDetailsArrayOutput {
-	return o.ApplyT(func(v RegistryType) []RegistryRegionArmDetails { return v.RegionDetails }).(RegistryRegionArmDetailsArrayOutput)
-}
-
-// Private endpoint connections info used for pending connections in private link portal
-func (o RegistryTypeOutput) RegistryPrivateEndpointConnections() RegistryPrivateEndpointConnectionArrayOutput {
-	return o.ApplyT(func(v RegistryType) []RegistryPrivateEndpointConnection { return v.RegistryPrivateEndpointConnections }).(RegistryPrivateEndpointConnectionArrayOutput)
-}
-
 type RegistryListCredentialsResultResponse struct {
+	// The location of the workspace ACR
 	Location  string             `pulumi:"location"`
 	Passwords []PasswordResponse `pulumi:"passwords"`
-	Username  string             `pulumi:"username"`
+	// The username of the workspace ACR
+	Username string `pulumi:"username"`
 }
 
 type RegistryListCredentialsResultResponseOutput struct{ *pulumi.OutputState }
@@ -3260,6 +4035,7 @@ func (o RegistryListCredentialsResultResponseOutput) ToRegistryListCredentialsRe
 	return o
 }
 
+// The location of the workspace ACR
 func (o RegistryListCredentialsResultResponseOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v RegistryListCredentialsResultResponse) string { return v.Location }).(pulumi.StringOutput)
 }
@@ -3268,19 +4044,79 @@ func (o RegistryListCredentialsResultResponseOutput) Passwords() PasswordRespons
 	return o.ApplyT(func(v RegistryListCredentialsResultResponse) []PasswordResponse { return v.Passwords }).(PasswordResponseArrayOutput)
 }
 
+// The username of the workspace ACR
 func (o RegistryListCredentialsResultResponseOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v RegistryListCredentialsResultResponse) string { return v.Username }).(pulumi.StringOutput)
 }
 
+type RegistryListCredentialsResultResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (RegistryListCredentialsResultResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegistryListCredentialsResultResponse)(nil)).Elem()
+}
+
+func (o RegistryListCredentialsResultResponsePtrOutput) ToRegistryListCredentialsResultResponsePtrOutput() RegistryListCredentialsResultResponsePtrOutput {
+	return o
+}
+
+func (o RegistryListCredentialsResultResponsePtrOutput) ToRegistryListCredentialsResultResponsePtrOutputWithContext(ctx context.Context) RegistryListCredentialsResultResponsePtrOutput {
+	return o
+}
+
+func (o RegistryListCredentialsResultResponsePtrOutput) Elem() RegistryListCredentialsResultResponseOutput {
+	return o.ApplyT(func(v *RegistryListCredentialsResultResponse) RegistryListCredentialsResultResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RegistryListCredentialsResultResponse
+		return ret
+	}).(RegistryListCredentialsResultResponseOutput)
+}
+
+// The location of the workspace ACR
+func (o RegistryListCredentialsResultResponsePtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegistryListCredentialsResultResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RegistryListCredentialsResultResponsePtrOutput) Passwords() PasswordResponseArrayOutput {
+	return o.ApplyT(func(v *RegistryListCredentialsResultResponse) []PasswordResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Passwords
+	}).(PasswordResponseArrayOutput)
+}
+
+// The username of the workspace ACR
+func (o RegistryListCredentialsResultResponsePtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegistryListCredentialsResultResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
 // Private endpoint connection definition.
 type RegistryPrivateEndpointConnection struct {
+	// The group ids
+	GroupIds []string `pulumi:"groupIds"`
 	// This is the private endpoint connection name created on SRP
 	// Full resource id: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.MachineLearningServices/{resourceType}/{resourceName}/registryPrivateEndpointConnections/{peConnectionName}
 	Id *string `pulumi:"id"`
 	// Same as workspace location.
 	Location *string `pulumi:"location"`
-	// Properties of the Private Endpoint Connection
-	Properties *RegistryPrivateEndpointConnectionProperties `pulumi:"properties"`
+	// The PE network resource that is linked to this PE connection.
+	PrivateEndpoint *PrivateEndpointResource `pulumi:"privateEndpoint"`
+	// One of null, "Succeeded", "Provisioning", "Failed". While not approved, it's null.
+	ProvisioningState *string `pulumi:"provisioningState"`
+	// The connection state.
+	RegistryPrivateLinkServiceConnectionState *RegistryPrivateLinkServiceConnectionState `pulumi:"registryPrivateLinkServiceConnectionState"`
 }
 
 // RegistryPrivateEndpointConnectionInput is an input type that accepts RegistryPrivateEndpointConnectionArgs and RegistryPrivateEndpointConnectionOutput values.
@@ -3296,13 +4132,19 @@ type RegistryPrivateEndpointConnectionInput interface {
 
 // Private endpoint connection definition.
 type RegistryPrivateEndpointConnectionArgs struct {
+	// The group ids
+	GroupIds pulumi.StringArrayInput `pulumi:"groupIds"`
 	// This is the private endpoint connection name created on SRP
 	// Full resource id: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.MachineLearningServices/{resourceType}/{resourceName}/registryPrivateEndpointConnections/{peConnectionName}
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Same as workspace location.
 	Location pulumi.StringPtrInput `pulumi:"location"`
-	// Properties of the Private Endpoint Connection
-	Properties RegistryPrivateEndpointConnectionPropertiesPtrInput `pulumi:"properties"`
+	// The PE network resource that is linked to this PE connection.
+	PrivateEndpoint PrivateEndpointResourcePtrInput `pulumi:"privateEndpoint"`
+	// One of null, "Succeeded", "Provisioning", "Failed". While not approved, it's null.
+	ProvisioningState pulumi.StringPtrInput `pulumi:"provisioningState"`
+	// The connection state.
+	RegistryPrivateLinkServiceConnectionState RegistryPrivateLinkServiceConnectionStatePtrInput `pulumi:"registryPrivateLinkServiceConnectionState"`
 }
 
 func (RegistryPrivateEndpointConnectionArgs) ElementType() reflect.Type {
@@ -3357,6 +4199,11 @@ func (o RegistryPrivateEndpointConnectionOutput) ToRegistryPrivateEndpointConnec
 	return o
 }
 
+// The group ids
+func (o RegistryPrivateEndpointConnectionOutput) GroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RegistryPrivateEndpointConnection) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
+}
+
 // This is the private endpoint connection name created on SRP
 // Full resource id: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.MachineLearningServices/{resourceType}/{resourceName}/registryPrivateEndpointConnections/{peConnectionName}
 func (o RegistryPrivateEndpointConnectionOutput) Id() pulumi.StringPtrOutput {
@@ -3368,11 +4215,21 @@ func (o RegistryPrivateEndpointConnectionOutput) Location() pulumi.StringPtrOutp
 	return o.ApplyT(func(v RegistryPrivateEndpointConnection) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// Properties of the Private Endpoint Connection
-func (o RegistryPrivateEndpointConnectionOutput) Properties() RegistryPrivateEndpointConnectionPropertiesPtrOutput {
-	return o.ApplyT(func(v RegistryPrivateEndpointConnection) *RegistryPrivateEndpointConnectionProperties {
-		return v.Properties
-	}).(RegistryPrivateEndpointConnectionPropertiesPtrOutput)
+// The PE network resource that is linked to this PE connection.
+func (o RegistryPrivateEndpointConnectionOutput) PrivateEndpoint() PrivateEndpointResourcePtrOutput {
+	return o.ApplyT(func(v RegistryPrivateEndpointConnection) *PrivateEndpointResource { return v.PrivateEndpoint }).(PrivateEndpointResourcePtrOutput)
+}
+
+// One of null, "Succeeded", "Provisioning", "Failed". While not approved, it's null.
+func (o RegistryPrivateEndpointConnectionOutput) ProvisioningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegistryPrivateEndpointConnection) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
+}
+
+// The connection state.
+func (o RegistryPrivateEndpointConnectionOutput) RegistryPrivateLinkServiceConnectionState() RegistryPrivateLinkServiceConnectionStatePtrOutput {
+	return o.ApplyT(func(v RegistryPrivateEndpointConnection) *RegistryPrivateLinkServiceConnectionState {
+		return v.RegistryPrivateLinkServiceConnectionState
+	}).(RegistryPrivateLinkServiceConnectionStatePtrOutput)
 }
 
 type RegistryPrivateEndpointConnectionArrayOutput struct{ *pulumi.OutputState }
@@ -3395,329 +4252,21 @@ func (o RegistryPrivateEndpointConnectionArrayOutput) Index(i pulumi.IntInput) R
 	}).(RegistryPrivateEndpointConnectionOutput)
 }
 
-// Properties of the Private Endpoint Connection
-type RegistryPrivateEndpointConnectionProperties struct {
+// Private endpoint connection definition.
+type RegistryPrivateEndpointConnectionResponse struct {
 	// The group ids
 	GroupIds []string `pulumi:"groupIds"`
-	// The PE network resource that is linked to this PE connection.
-	PrivateEndpoint *PrivateEndpointResource `pulumi:"privateEndpoint"`
-	// One of null, "Succeeded", "Provisioning", "Failed". While not approved, it's null.
-	ProvisioningState *string `pulumi:"provisioningState"`
-	// The connection state.
-	RegistryPrivateLinkServiceConnectionState *RegistryPrivateLinkServiceConnectionState `pulumi:"registryPrivateLinkServiceConnectionState"`
-}
-
-// RegistryPrivateEndpointConnectionPropertiesInput is an input type that accepts RegistryPrivateEndpointConnectionPropertiesArgs and RegistryPrivateEndpointConnectionPropertiesOutput values.
-// You can construct a concrete instance of `RegistryPrivateEndpointConnectionPropertiesInput` via:
-//
-//	RegistryPrivateEndpointConnectionPropertiesArgs{...}
-type RegistryPrivateEndpointConnectionPropertiesInput interface {
-	pulumi.Input
-
-	ToRegistryPrivateEndpointConnectionPropertiesOutput() RegistryPrivateEndpointConnectionPropertiesOutput
-	ToRegistryPrivateEndpointConnectionPropertiesOutputWithContext(context.Context) RegistryPrivateEndpointConnectionPropertiesOutput
-}
-
-// Properties of the Private Endpoint Connection
-type RegistryPrivateEndpointConnectionPropertiesArgs struct {
-	// The group ids
-	GroupIds pulumi.StringArrayInput `pulumi:"groupIds"`
-	// The PE network resource that is linked to this PE connection.
-	PrivateEndpoint PrivateEndpointResourcePtrInput `pulumi:"privateEndpoint"`
-	// One of null, "Succeeded", "Provisioning", "Failed". While not approved, it's null.
-	ProvisioningState pulumi.StringPtrInput `pulumi:"provisioningState"`
-	// The connection state.
-	RegistryPrivateLinkServiceConnectionState RegistryPrivateLinkServiceConnectionStatePtrInput `pulumi:"registryPrivateLinkServiceConnectionState"`
-}
-
-func (RegistryPrivateEndpointConnectionPropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegistryPrivateEndpointConnectionProperties)(nil)).Elem()
-}
-
-func (i RegistryPrivateEndpointConnectionPropertiesArgs) ToRegistryPrivateEndpointConnectionPropertiesOutput() RegistryPrivateEndpointConnectionPropertiesOutput {
-	return i.ToRegistryPrivateEndpointConnectionPropertiesOutputWithContext(context.Background())
-}
-
-func (i RegistryPrivateEndpointConnectionPropertiesArgs) ToRegistryPrivateEndpointConnectionPropertiesOutputWithContext(ctx context.Context) RegistryPrivateEndpointConnectionPropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegistryPrivateEndpointConnectionPropertiesOutput)
-}
-
-func (i RegistryPrivateEndpointConnectionPropertiesArgs) ToRegistryPrivateEndpointConnectionPropertiesPtrOutput() RegistryPrivateEndpointConnectionPropertiesPtrOutput {
-	return i.ToRegistryPrivateEndpointConnectionPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i RegistryPrivateEndpointConnectionPropertiesArgs) ToRegistryPrivateEndpointConnectionPropertiesPtrOutputWithContext(ctx context.Context) RegistryPrivateEndpointConnectionPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegistryPrivateEndpointConnectionPropertiesOutput).ToRegistryPrivateEndpointConnectionPropertiesPtrOutputWithContext(ctx)
-}
-
-// RegistryPrivateEndpointConnectionPropertiesPtrInput is an input type that accepts RegistryPrivateEndpointConnectionPropertiesArgs, RegistryPrivateEndpointConnectionPropertiesPtr and RegistryPrivateEndpointConnectionPropertiesPtrOutput values.
-// You can construct a concrete instance of `RegistryPrivateEndpointConnectionPropertiesPtrInput` via:
-//
-//	        RegistryPrivateEndpointConnectionPropertiesArgs{...}
-//
-//	or:
-//
-//	        nil
-type RegistryPrivateEndpointConnectionPropertiesPtrInput interface {
-	pulumi.Input
-
-	ToRegistryPrivateEndpointConnectionPropertiesPtrOutput() RegistryPrivateEndpointConnectionPropertiesPtrOutput
-	ToRegistryPrivateEndpointConnectionPropertiesPtrOutputWithContext(context.Context) RegistryPrivateEndpointConnectionPropertiesPtrOutput
-}
-
-type registryPrivateEndpointConnectionPropertiesPtrType RegistryPrivateEndpointConnectionPropertiesArgs
-
-func RegistryPrivateEndpointConnectionPropertiesPtr(v *RegistryPrivateEndpointConnectionPropertiesArgs) RegistryPrivateEndpointConnectionPropertiesPtrInput {
-	return (*registryPrivateEndpointConnectionPropertiesPtrType)(v)
-}
-
-func (*registryPrivateEndpointConnectionPropertiesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RegistryPrivateEndpointConnectionProperties)(nil)).Elem()
-}
-
-func (i *registryPrivateEndpointConnectionPropertiesPtrType) ToRegistryPrivateEndpointConnectionPropertiesPtrOutput() RegistryPrivateEndpointConnectionPropertiesPtrOutput {
-	return i.ToRegistryPrivateEndpointConnectionPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i *registryPrivateEndpointConnectionPropertiesPtrType) ToRegistryPrivateEndpointConnectionPropertiesPtrOutputWithContext(ctx context.Context) RegistryPrivateEndpointConnectionPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegistryPrivateEndpointConnectionPropertiesPtrOutput)
-}
-
-// Properties of the Private Endpoint Connection
-type RegistryPrivateEndpointConnectionPropertiesOutput struct{ *pulumi.OutputState }
-
-func (RegistryPrivateEndpointConnectionPropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegistryPrivateEndpointConnectionProperties)(nil)).Elem()
-}
-
-func (o RegistryPrivateEndpointConnectionPropertiesOutput) ToRegistryPrivateEndpointConnectionPropertiesOutput() RegistryPrivateEndpointConnectionPropertiesOutput {
-	return o
-}
-
-func (o RegistryPrivateEndpointConnectionPropertiesOutput) ToRegistryPrivateEndpointConnectionPropertiesOutputWithContext(ctx context.Context) RegistryPrivateEndpointConnectionPropertiesOutput {
-	return o
-}
-
-func (o RegistryPrivateEndpointConnectionPropertiesOutput) ToRegistryPrivateEndpointConnectionPropertiesPtrOutput() RegistryPrivateEndpointConnectionPropertiesPtrOutput {
-	return o.ToRegistryPrivateEndpointConnectionPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (o RegistryPrivateEndpointConnectionPropertiesOutput) ToRegistryPrivateEndpointConnectionPropertiesPtrOutputWithContext(ctx context.Context) RegistryPrivateEndpointConnectionPropertiesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegistryPrivateEndpointConnectionProperties) *RegistryPrivateEndpointConnectionProperties {
-		return &v
-	}).(RegistryPrivateEndpointConnectionPropertiesPtrOutput)
-}
-
-// The group ids
-func (o RegistryPrivateEndpointConnectionPropertiesOutput) GroupIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v RegistryPrivateEndpointConnectionProperties) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
-}
-
-// The PE network resource that is linked to this PE connection.
-func (o RegistryPrivateEndpointConnectionPropertiesOutput) PrivateEndpoint() PrivateEndpointResourcePtrOutput {
-	return o.ApplyT(func(v RegistryPrivateEndpointConnectionProperties) *PrivateEndpointResource { return v.PrivateEndpoint }).(PrivateEndpointResourcePtrOutput)
-}
-
-// One of null, "Succeeded", "Provisioning", "Failed". While not approved, it's null.
-func (o RegistryPrivateEndpointConnectionPropertiesOutput) ProvisioningState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegistryPrivateEndpointConnectionProperties) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
-}
-
-// The connection state.
-func (o RegistryPrivateEndpointConnectionPropertiesOutput) RegistryPrivateLinkServiceConnectionState() RegistryPrivateLinkServiceConnectionStatePtrOutput {
-	return o.ApplyT(func(v RegistryPrivateEndpointConnectionProperties) *RegistryPrivateLinkServiceConnectionState {
-		return v.RegistryPrivateLinkServiceConnectionState
-	}).(RegistryPrivateLinkServiceConnectionStatePtrOutput)
-}
-
-type RegistryPrivateEndpointConnectionPropertiesPtrOutput struct{ *pulumi.OutputState }
-
-func (RegistryPrivateEndpointConnectionPropertiesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RegistryPrivateEndpointConnectionProperties)(nil)).Elem()
-}
-
-func (o RegistryPrivateEndpointConnectionPropertiesPtrOutput) ToRegistryPrivateEndpointConnectionPropertiesPtrOutput() RegistryPrivateEndpointConnectionPropertiesPtrOutput {
-	return o
-}
-
-func (o RegistryPrivateEndpointConnectionPropertiesPtrOutput) ToRegistryPrivateEndpointConnectionPropertiesPtrOutputWithContext(ctx context.Context) RegistryPrivateEndpointConnectionPropertiesPtrOutput {
-	return o
-}
-
-func (o RegistryPrivateEndpointConnectionPropertiesPtrOutput) Elem() RegistryPrivateEndpointConnectionPropertiesOutput {
-	return o.ApplyT(func(v *RegistryPrivateEndpointConnectionProperties) RegistryPrivateEndpointConnectionProperties {
-		if v != nil {
-			return *v
-		}
-		var ret RegistryPrivateEndpointConnectionProperties
-		return ret
-	}).(RegistryPrivateEndpointConnectionPropertiesOutput)
-}
-
-// The group ids
-func (o RegistryPrivateEndpointConnectionPropertiesPtrOutput) GroupIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *RegistryPrivateEndpointConnectionProperties) []string {
-		if v == nil {
-			return nil
-		}
-		return v.GroupIds
-	}).(pulumi.StringArrayOutput)
-}
-
-// The PE network resource that is linked to this PE connection.
-func (o RegistryPrivateEndpointConnectionPropertiesPtrOutput) PrivateEndpoint() PrivateEndpointResourcePtrOutput {
-	return o.ApplyT(func(v *RegistryPrivateEndpointConnectionProperties) *PrivateEndpointResource {
-		if v == nil {
-			return nil
-		}
-		return v.PrivateEndpoint
-	}).(PrivateEndpointResourcePtrOutput)
-}
-
-// One of null, "Succeeded", "Provisioning", "Failed". While not approved, it's null.
-func (o RegistryPrivateEndpointConnectionPropertiesPtrOutput) ProvisioningState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RegistryPrivateEndpointConnectionProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ProvisioningState
-	}).(pulumi.StringPtrOutput)
-}
-
-// The connection state.
-func (o RegistryPrivateEndpointConnectionPropertiesPtrOutput) RegistryPrivateLinkServiceConnectionState() RegistryPrivateLinkServiceConnectionStatePtrOutput {
-	return o.ApplyT(func(v *RegistryPrivateEndpointConnectionProperties) *RegistryPrivateLinkServiceConnectionState {
-		if v == nil {
-			return nil
-		}
-		return v.RegistryPrivateLinkServiceConnectionState
-	}).(RegistryPrivateLinkServiceConnectionStatePtrOutput)
-}
-
-// Properties of the Private Endpoint Connection
-type RegistryPrivateEndpointConnectionPropertiesResponse struct {
-	// The group ids
-	GroupIds []string `pulumi:"groupIds"`
+	// This is the private endpoint connection name created on SRP
+	// Full resource id: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.MachineLearningServices/{resourceType}/{resourceName}/registryPrivateEndpointConnections/{peConnectionName}
+	Id *string `pulumi:"id"`
+	// Same as workspace location.
+	Location *string `pulumi:"location"`
 	// The PE network resource that is linked to this PE connection.
 	PrivateEndpoint *PrivateEndpointResourceResponse `pulumi:"privateEndpoint"`
 	// One of null, "Succeeded", "Provisioning", "Failed". While not approved, it's null.
 	ProvisioningState *string `pulumi:"provisioningState"`
 	// The connection state.
 	RegistryPrivateLinkServiceConnectionState *RegistryPrivateLinkServiceConnectionStateResponse `pulumi:"registryPrivateLinkServiceConnectionState"`
-}
-
-// Properties of the Private Endpoint Connection
-type RegistryPrivateEndpointConnectionPropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (RegistryPrivateEndpointConnectionPropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegistryPrivateEndpointConnectionPropertiesResponse)(nil)).Elem()
-}
-
-func (o RegistryPrivateEndpointConnectionPropertiesResponseOutput) ToRegistryPrivateEndpointConnectionPropertiesResponseOutput() RegistryPrivateEndpointConnectionPropertiesResponseOutput {
-	return o
-}
-
-func (o RegistryPrivateEndpointConnectionPropertiesResponseOutput) ToRegistryPrivateEndpointConnectionPropertiesResponseOutputWithContext(ctx context.Context) RegistryPrivateEndpointConnectionPropertiesResponseOutput {
-	return o
-}
-
-// The group ids
-func (o RegistryPrivateEndpointConnectionPropertiesResponseOutput) GroupIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v RegistryPrivateEndpointConnectionPropertiesResponse) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
-}
-
-// The PE network resource that is linked to this PE connection.
-func (o RegistryPrivateEndpointConnectionPropertiesResponseOutput) PrivateEndpoint() PrivateEndpointResourceResponsePtrOutput {
-	return o.ApplyT(func(v RegistryPrivateEndpointConnectionPropertiesResponse) *PrivateEndpointResourceResponse {
-		return v.PrivateEndpoint
-	}).(PrivateEndpointResourceResponsePtrOutput)
-}
-
-// One of null, "Succeeded", "Provisioning", "Failed". While not approved, it's null.
-func (o RegistryPrivateEndpointConnectionPropertiesResponseOutput) ProvisioningState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegistryPrivateEndpointConnectionPropertiesResponse) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
-}
-
-// The connection state.
-func (o RegistryPrivateEndpointConnectionPropertiesResponseOutput) RegistryPrivateLinkServiceConnectionState() RegistryPrivateLinkServiceConnectionStateResponsePtrOutput {
-	return o.ApplyT(func(v RegistryPrivateEndpointConnectionPropertiesResponse) *RegistryPrivateLinkServiceConnectionStateResponse {
-		return v.RegistryPrivateLinkServiceConnectionState
-	}).(RegistryPrivateLinkServiceConnectionStateResponsePtrOutput)
-}
-
-type RegistryPrivateEndpointConnectionPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (RegistryPrivateEndpointConnectionPropertiesResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RegistryPrivateEndpointConnectionPropertiesResponse)(nil)).Elem()
-}
-
-func (o RegistryPrivateEndpointConnectionPropertiesResponsePtrOutput) ToRegistryPrivateEndpointConnectionPropertiesResponsePtrOutput() RegistryPrivateEndpointConnectionPropertiesResponsePtrOutput {
-	return o
-}
-
-func (o RegistryPrivateEndpointConnectionPropertiesResponsePtrOutput) ToRegistryPrivateEndpointConnectionPropertiesResponsePtrOutputWithContext(ctx context.Context) RegistryPrivateEndpointConnectionPropertiesResponsePtrOutput {
-	return o
-}
-
-func (o RegistryPrivateEndpointConnectionPropertiesResponsePtrOutput) Elem() RegistryPrivateEndpointConnectionPropertiesResponseOutput {
-	return o.ApplyT(func(v *RegistryPrivateEndpointConnectionPropertiesResponse) RegistryPrivateEndpointConnectionPropertiesResponse {
-		if v != nil {
-			return *v
-		}
-		var ret RegistryPrivateEndpointConnectionPropertiesResponse
-		return ret
-	}).(RegistryPrivateEndpointConnectionPropertiesResponseOutput)
-}
-
-// The group ids
-func (o RegistryPrivateEndpointConnectionPropertiesResponsePtrOutput) GroupIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *RegistryPrivateEndpointConnectionPropertiesResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.GroupIds
-	}).(pulumi.StringArrayOutput)
-}
-
-// The PE network resource that is linked to this PE connection.
-func (o RegistryPrivateEndpointConnectionPropertiesResponsePtrOutput) PrivateEndpoint() PrivateEndpointResourceResponsePtrOutput {
-	return o.ApplyT(func(v *RegistryPrivateEndpointConnectionPropertiesResponse) *PrivateEndpointResourceResponse {
-		if v == nil {
-			return nil
-		}
-		return v.PrivateEndpoint
-	}).(PrivateEndpointResourceResponsePtrOutput)
-}
-
-// One of null, "Succeeded", "Provisioning", "Failed". While not approved, it's null.
-func (o RegistryPrivateEndpointConnectionPropertiesResponsePtrOutput) ProvisioningState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RegistryPrivateEndpointConnectionPropertiesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ProvisioningState
-	}).(pulumi.StringPtrOutput)
-}
-
-// The connection state.
-func (o RegistryPrivateEndpointConnectionPropertiesResponsePtrOutput) RegistryPrivateLinkServiceConnectionState() RegistryPrivateLinkServiceConnectionStateResponsePtrOutput {
-	return o.ApplyT(func(v *RegistryPrivateEndpointConnectionPropertiesResponse) *RegistryPrivateLinkServiceConnectionStateResponse {
-		if v == nil {
-			return nil
-		}
-		return v.RegistryPrivateLinkServiceConnectionState
-	}).(RegistryPrivateLinkServiceConnectionStateResponsePtrOutput)
-}
-
-// Private endpoint connection definition.
-type RegistryPrivateEndpointConnectionResponse struct {
-	// This is the private endpoint connection name created on SRP
-	// Full resource id: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.MachineLearningServices/{resourceType}/{resourceName}/registryPrivateEndpointConnections/{peConnectionName}
-	Id *string `pulumi:"id"`
-	// Same as workspace location.
-	Location *string `pulumi:"location"`
-	// Properties of the Private Endpoint Connection
-	Properties *RegistryPrivateEndpointConnectionPropertiesResponse `pulumi:"properties"`
 }
 
 // Private endpoint connection definition.
@@ -3735,6 +4284,11 @@ func (o RegistryPrivateEndpointConnectionResponseOutput) ToRegistryPrivateEndpoi
 	return o
 }
 
+// The group ids
+func (o RegistryPrivateEndpointConnectionResponseOutput) GroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RegistryPrivateEndpointConnectionResponse) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
+}
+
 // This is the private endpoint connection name created on SRP
 // Full resource id: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.MachineLearningServices/{resourceType}/{resourceName}/registryPrivateEndpointConnections/{peConnectionName}
 func (o RegistryPrivateEndpointConnectionResponseOutput) Id() pulumi.StringPtrOutput {
@@ -3746,11 +4300,23 @@ func (o RegistryPrivateEndpointConnectionResponseOutput) Location() pulumi.Strin
 	return o.ApplyT(func(v RegistryPrivateEndpointConnectionResponse) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// Properties of the Private Endpoint Connection
-func (o RegistryPrivateEndpointConnectionResponseOutput) Properties() RegistryPrivateEndpointConnectionPropertiesResponsePtrOutput {
-	return o.ApplyT(func(v RegistryPrivateEndpointConnectionResponse) *RegistryPrivateEndpointConnectionPropertiesResponse {
-		return v.Properties
-	}).(RegistryPrivateEndpointConnectionPropertiesResponsePtrOutput)
+// The PE network resource that is linked to this PE connection.
+func (o RegistryPrivateEndpointConnectionResponseOutput) PrivateEndpoint() PrivateEndpointResourceResponsePtrOutput {
+	return o.ApplyT(func(v RegistryPrivateEndpointConnectionResponse) *PrivateEndpointResourceResponse {
+		return v.PrivateEndpoint
+	}).(PrivateEndpointResourceResponsePtrOutput)
+}
+
+// One of null, "Succeeded", "Provisioning", "Failed". While not approved, it's null.
+func (o RegistryPrivateEndpointConnectionResponseOutput) ProvisioningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegistryPrivateEndpointConnectionResponse) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
+}
+
+// The connection state.
+func (o RegistryPrivateEndpointConnectionResponseOutput) RegistryPrivateLinkServiceConnectionState() RegistryPrivateLinkServiceConnectionStateResponsePtrOutput {
+	return o.ApplyT(func(v RegistryPrivateEndpointConnectionResponse) *RegistryPrivateLinkServiceConnectionStateResponse {
+		return v.RegistryPrivateLinkServiceConnectionState
+	}).(RegistryPrivateLinkServiceConnectionStateResponsePtrOutput)
 }
 
 type RegistryPrivateEndpointConnectionResponseArrayOutput struct{ *pulumi.OutputState }
@@ -4225,85 +4791,6 @@ func (o RegistryRegionArmDetailsResponseArrayOutput) Index(i pulumi.IntInput) Re
 	}).(RegistryRegionArmDetailsResponseOutput)
 }
 
-// Details of the Registry
-type RegistryResponse struct {
-	// Discovery URL for the Registry
-	DiscoveryUrl *string `pulumi:"discoveryUrl"`
-	// IntellectualPropertyPublisher for the registry
-	IntellectualPropertyPublisher *string `pulumi:"intellectualPropertyPublisher"`
-	// ResourceId of the managed RG if the registry has system created resources
-	ManagedResourceGroup *ArmResourceIdResponse `pulumi:"managedResourceGroup"`
-	// Managed resource group specific settings
-	ManagedResourceGroupSettings *ManagedResourceGroupSettingsResponse `pulumi:"managedResourceGroupSettings"`
-	// MLFlow Registry URI for the Registry
-	MlFlowRegistryUri *string `pulumi:"mlFlowRegistryUri"`
-	// Is the Registry accessible from the internet?
-	// Possible values: "Enabled" or "Disabled"
-	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
-	// Details of each region the registry is in
-	RegionDetails []RegistryRegionArmDetailsResponse `pulumi:"regionDetails"`
-	// Private endpoint connections info used for pending connections in private link portal
-	RegistryPrivateEndpointConnections []RegistryPrivateEndpointConnectionResponse `pulumi:"registryPrivateEndpointConnections"`
-}
-
-// Details of the Registry
-type RegistryResponseOutput struct{ *pulumi.OutputState }
-
-func (RegistryResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegistryResponse)(nil)).Elem()
-}
-
-func (o RegistryResponseOutput) ToRegistryResponseOutput() RegistryResponseOutput {
-	return o
-}
-
-func (o RegistryResponseOutput) ToRegistryResponseOutputWithContext(ctx context.Context) RegistryResponseOutput {
-	return o
-}
-
-// Discovery URL for the Registry
-func (o RegistryResponseOutput) DiscoveryUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegistryResponse) *string { return v.DiscoveryUrl }).(pulumi.StringPtrOutput)
-}
-
-// IntellectualPropertyPublisher for the registry
-func (o RegistryResponseOutput) IntellectualPropertyPublisher() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegistryResponse) *string { return v.IntellectualPropertyPublisher }).(pulumi.StringPtrOutput)
-}
-
-// ResourceId of the managed RG if the registry has system created resources
-func (o RegistryResponseOutput) ManagedResourceGroup() ArmResourceIdResponsePtrOutput {
-	return o.ApplyT(func(v RegistryResponse) *ArmResourceIdResponse { return v.ManagedResourceGroup }).(ArmResourceIdResponsePtrOutput)
-}
-
-// Managed resource group specific settings
-func (o RegistryResponseOutput) ManagedResourceGroupSettings() ManagedResourceGroupSettingsResponsePtrOutput {
-	return o.ApplyT(func(v RegistryResponse) *ManagedResourceGroupSettingsResponse { return v.ManagedResourceGroupSettings }).(ManagedResourceGroupSettingsResponsePtrOutput)
-}
-
-// MLFlow Registry URI for the Registry
-func (o RegistryResponseOutput) MlFlowRegistryUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegistryResponse) *string { return v.MlFlowRegistryUri }).(pulumi.StringPtrOutput)
-}
-
-// Is the Registry accessible from the internet?
-// Possible values: "Enabled" or "Disabled"
-func (o RegistryResponseOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegistryResponse) *string { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
-}
-
-// Details of each region the registry is in
-func (o RegistryResponseOutput) RegionDetails() RegistryRegionArmDetailsResponseArrayOutput {
-	return o.ApplyT(func(v RegistryResponse) []RegistryRegionArmDetailsResponse { return v.RegionDetails }).(RegistryRegionArmDetailsResponseArrayOutput)
-}
-
-// Private endpoint connections info used for pending connections in private link portal
-func (o RegistryResponseOutput) RegistryPrivateEndpointConnections() RegistryPrivateEndpointConnectionResponseArrayOutput {
-	return o.ApplyT(func(v RegistryResponse) []RegistryPrivateEndpointConnectionResponse {
-		return v.RegistryPrivateEndpointConnections
-	}).(RegistryPrivateEndpointConnectionResponseArrayOutput)
-}
-
 // Regression task in AutoML Table vertical.
 type Regression struct {
 	// Columns to use for CVSplit data.
@@ -4312,12 +4799,12 @@ type Regression struct {
 	FeaturizationSettings *TableVerticalFeaturizationSettings `pulumi:"featurizationSettings"`
 	// Execution constraints for AutoMLJob.
 	LimitSettings *TableVerticalLimitSettings `pulumi:"limitSettings"`
-	// Log verbosity for the job.
+	// Enum for setting log verbosity.
 	LogVerbosity *string `pulumi:"logVerbosity"`
 	// Number of cross validation folds to be applied on training dataset
 	// when validation dataset is not provided.
 	NCrossValidations interface{} `pulumi:"nCrossValidations"`
-	// Primary metric for regression task.
+	// Primary metrics for Regression task.
 	PrimaryMetric *string `pulumi:"primaryMetric"`
 	// Target column name: This is prediction values column.
 	// Also known as label column name in context of classification tasks.
@@ -4393,12 +4880,12 @@ type RegressionArgs struct {
 	FeaturizationSettings TableVerticalFeaturizationSettingsPtrInput `pulumi:"featurizationSettings"`
 	// Execution constraints for AutoMLJob.
 	LimitSettings TableVerticalLimitSettingsPtrInput `pulumi:"limitSettings"`
-	// Log verbosity for the job.
+	// Enum for setting log verbosity.
 	LogVerbosity pulumi.StringPtrInput `pulumi:"logVerbosity"`
 	// Number of cross validation folds to be applied on training dataset
 	// when validation dataset is not provided.
 	NCrossValidations pulumi.Input `pulumi:"nCrossValidations"`
-	// Primary metric for regression task.
+	// Primary metrics for Regression task.
 	PrimaryMetric pulumi.StringPtrInput `pulumi:"primaryMetric"`
 	// Target column name: This is prediction values column.
 	// Also known as label column name in context of classification tasks.
@@ -4484,7 +4971,7 @@ func (o RegressionOutput) LimitSettings() TableVerticalLimitSettingsPtrOutput {
 	return o.ApplyT(func(v Regression) *TableVerticalLimitSettings { return v.LimitSettings }).(TableVerticalLimitSettingsPtrOutput)
 }
 
-// Log verbosity for the job.
+// Enum for setting log verbosity.
 func (o RegressionOutput) LogVerbosity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Regression) *string { return v.LogVerbosity }).(pulumi.StringPtrOutput)
 }
@@ -4495,7 +4982,7 @@ func (o RegressionOutput) NCrossValidations() pulumi.AnyOutput {
 	return o.ApplyT(func(v Regression) interface{} { return v.NCrossValidations }).(pulumi.AnyOutput)
 }
 
-// Primary metric for regression task.
+// Primary metrics for Regression task.
 func (o RegressionOutput) PrimaryMetric() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Regression) *string { return v.PrimaryMetric }).(pulumi.StringPtrOutput)
 }
@@ -4559,12 +5046,12 @@ type RegressionResponse struct {
 	FeaturizationSettings *TableVerticalFeaturizationSettingsResponse `pulumi:"featurizationSettings"`
 	// Execution constraints for AutoMLJob.
 	LimitSettings *TableVerticalLimitSettingsResponse `pulumi:"limitSettings"`
-	// Log verbosity for the job.
+	// Enum for setting log verbosity.
 	LogVerbosity *string `pulumi:"logVerbosity"`
 	// Number of cross validation folds to be applied on training dataset
 	// when validation dataset is not provided.
 	NCrossValidations interface{} `pulumi:"nCrossValidations"`
-	// Primary metric for regression task.
+	// Primary metrics for Regression task.
 	PrimaryMetric *string `pulumi:"primaryMetric"`
 	// Target column name: This is prediction values column.
 	// Also known as label column name in context of classification tasks.
@@ -4651,7 +5138,7 @@ func (o RegressionResponseOutput) LimitSettings() TableVerticalLimitSettingsResp
 	return o.ApplyT(func(v RegressionResponse) *TableVerticalLimitSettingsResponse { return v.LimitSettings }).(TableVerticalLimitSettingsResponsePtrOutput)
 }
 
-// Log verbosity for the job.
+// Enum for setting log verbosity.
 func (o RegressionResponseOutput) LogVerbosity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegressionResponse) *string { return v.LogVerbosity }).(pulumi.StringPtrOutput)
 }
@@ -4662,7 +5149,7 @@ func (o RegressionResponseOutput) NCrossValidations() pulumi.AnyOutput {
 	return o.ApplyT(func(v RegressionResponse) interface{} { return v.NCrossValidations }).(pulumi.AnyOutput)
 }
 
-// Primary metric for regression task.
+// Primary metrics for Regression task.
 func (o RegressionResponseOutput) PrimaryMetric() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegressionResponse) *string { return v.PrimaryMetric }).(pulumi.StringPtrOutput)
 }
@@ -6434,16 +6921,16 @@ type SASAuthTypeWorkspaceConnectionProperties struct {
 	// Category of the connection
 	Category      *string                                   `pulumi:"category"`
 	Credentials   *WorkspaceConnectionSharedAccessSignature `pulumi:"credentials"`
+	Error         *string                                   `pulumi:"error"`
 	ExpiryTime    *string                                   `pulumi:"expiryTime"`
 	IsSharedToAll *bool                                     `pulumi:"isSharedToAll"`
 	// Store user metadata for this connection
-	Metadata       map[string]string `pulumi:"metadata"`
-	SharedUserList []string          `pulumi:"sharedUserList"`
-	Target         *string           `pulumi:"target"`
-	// Value details of the workspace connection.
-	Value *string `pulumi:"value"`
-	// format for the workspace connection value
-	ValueFormat *string `pulumi:"valueFormat"`
+	Metadata                    map[string]string `pulumi:"metadata"`
+	PeRequirement               *string           `pulumi:"peRequirement"`
+	PeStatus                    *string           `pulumi:"peStatus"`
+	SharedUserList              []string          `pulumi:"sharedUserList"`
+	Target                      *string           `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
 }
 
 // SASAuthTypeWorkspaceConnectionPropertiesInput is an input type that accepts SASAuthTypeWorkspaceConnectionPropertiesArgs and SASAuthTypeWorkspaceConnectionPropertiesOutput values.
@@ -6464,16 +6951,16 @@ type SASAuthTypeWorkspaceConnectionPropertiesArgs struct {
 	// Category of the connection
 	Category      pulumi.StringPtrInput                            `pulumi:"category"`
 	Credentials   WorkspaceConnectionSharedAccessSignaturePtrInput `pulumi:"credentials"`
+	Error         pulumi.StringPtrInput                            `pulumi:"error"`
 	ExpiryTime    pulumi.StringPtrInput                            `pulumi:"expiryTime"`
 	IsSharedToAll pulumi.BoolPtrInput                              `pulumi:"isSharedToAll"`
 	// Store user metadata for this connection
-	Metadata       pulumi.StringMapInput   `pulumi:"metadata"`
-	SharedUserList pulumi.StringArrayInput `pulumi:"sharedUserList"`
-	Target         pulumi.StringPtrInput   `pulumi:"target"`
-	// Value details of the workspace connection.
-	Value pulumi.StringPtrInput `pulumi:"value"`
-	// format for the workspace connection value
-	ValueFormat pulumi.StringPtrInput `pulumi:"valueFormat"`
+	Metadata                    pulumi.StringMapInput   `pulumi:"metadata"`
+	PeRequirement               pulumi.StringPtrInput   `pulumi:"peRequirement"`
+	PeStatus                    pulumi.StringPtrInput   `pulumi:"peStatus"`
+	SharedUserList              pulumi.StringArrayInput `pulumi:"sharedUserList"`
+	Target                      pulumi.StringPtrInput   `pulumi:"target"`
+	UseWorkspaceManagedIdentity pulumi.BoolPtrInput     `pulumi:"useWorkspaceManagedIdentity"`
 }
 
 func (SASAuthTypeWorkspaceConnectionPropertiesArgs) ElementType() reflect.Type {
@@ -6519,6 +7006,10 @@ func (o SASAuthTypeWorkspaceConnectionPropertiesOutput) Credentials() WorkspaceC
 	}).(WorkspaceConnectionSharedAccessSignaturePtrOutput)
 }
 
+func (o SASAuthTypeWorkspaceConnectionPropertiesOutput) Error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionProperties) *string { return v.Error }).(pulumi.StringPtrOutput)
+}
+
 func (o SASAuthTypeWorkspaceConnectionPropertiesOutput) ExpiryTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionProperties) *string { return v.ExpiryTime }).(pulumi.StringPtrOutput)
 }
@@ -6532,6 +7023,14 @@ func (o SASAuthTypeWorkspaceConnectionPropertiesOutput) Metadata() pulumi.String
 	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionProperties) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
+func (o SASAuthTypeWorkspaceConnectionPropertiesOutput) PeRequirement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionProperties) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
+}
+
+func (o SASAuthTypeWorkspaceConnectionPropertiesOutput) PeStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionProperties) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
+}
+
 func (o SASAuthTypeWorkspaceConnectionPropertiesOutput) SharedUserList() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionProperties) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
 }
@@ -6540,14 +7039,8 @@ func (o SASAuthTypeWorkspaceConnectionPropertiesOutput) Target() pulumi.StringPt
 	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionProperties) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
 
-// Value details of the workspace connection.
-func (o SASAuthTypeWorkspaceConnectionPropertiesOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionProperties) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-// format for the workspace connection value
-func (o SASAuthTypeWorkspaceConnectionPropertiesOutput) ValueFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionProperties) *string { return v.ValueFormat }).(pulumi.StringPtrOutput)
+func (o SASAuthTypeWorkspaceConnectionPropertiesOutput) UseWorkspaceManagedIdentity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionProperties) *bool { return v.UseWorkspaceManagedIdentity }).(pulumi.BoolPtrOutput)
 }
 
 type SASAuthTypeWorkspaceConnectionPropertiesResponse struct {
@@ -6555,21 +7048,22 @@ type SASAuthTypeWorkspaceConnectionPropertiesResponse struct {
 	// Expected value is 'SAS'.
 	AuthType string `pulumi:"authType"`
 	// Category of the connection
-	Category                *string                                           `pulumi:"category"`
+	Category *string `pulumi:"category"`
+	// A type definition that refers the id to an Azure Resource Manager resource.
 	CreatedByWorkspaceArmId string                                            `pulumi:"createdByWorkspaceArmId"`
 	Credentials             *WorkspaceConnectionSharedAccessSignatureResponse `pulumi:"credentials"`
+	Error                   *string                                           `pulumi:"error"`
 	ExpiryTime              *string                                           `pulumi:"expiryTime"`
 	// Group based on connection category
 	Group         string `pulumi:"group"`
 	IsSharedToAll *bool  `pulumi:"isSharedToAll"`
 	// Store user metadata for this connection
-	Metadata       map[string]string `pulumi:"metadata"`
-	SharedUserList []string          `pulumi:"sharedUserList"`
-	Target         *string           `pulumi:"target"`
-	// Value details of the workspace connection.
-	Value *string `pulumi:"value"`
-	// format for the workspace connection value
-	ValueFormat *string `pulumi:"valueFormat"`
+	Metadata                    map[string]string `pulumi:"metadata"`
+	PeRequirement               *string           `pulumi:"peRequirement"`
+	PeStatus                    *string           `pulumi:"peStatus"`
+	SharedUserList              []string          `pulumi:"sharedUserList"`
+	Target                      *string           `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
 }
 
 type SASAuthTypeWorkspaceConnectionPropertiesResponseOutput struct{ *pulumi.OutputState }
@@ -6597,6 +7091,7 @@ func (o SASAuthTypeWorkspaceConnectionPropertiesResponseOutput) Category() pulum
 	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionPropertiesResponse) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
 
+// A type definition that refers the id to an Azure Resource Manager resource.
 func (o SASAuthTypeWorkspaceConnectionPropertiesResponseOutput) CreatedByWorkspaceArmId() pulumi.StringOutput {
 	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionPropertiesResponse) string { return v.CreatedByWorkspaceArmId }).(pulumi.StringOutput)
 }
@@ -6605,6 +7100,10 @@ func (o SASAuthTypeWorkspaceConnectionPropertiesResponseOutput) Credentials() Wo
 	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionPropertiesResponse) *WorkspaceConnectionSharedAccessSignatureResponse {
 		return v.Credentials
 	}).(WorkspaceConnectionSharedAccessSignatureResponsePtrOutput)
+}
+
+func (o SASAuthTypeWorkspaceConnectionPropertiesResponseOutput) Error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionPropertiesResponse) *string { return v.Error }).(pulumi.StringPtrOutput)
 }
 
 func (o SASAuthTypeWorkspaceConnectionPropertiesResponseOutput) ExpiryTime() pulumi.StringPtrOutput {
@@ -6625,6 +7124,14 @@ func (o SASAuthTypeWorkspaceConnectionPropertiesResponseOutput) Metadata() pulum
 	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionPropertiesResponse) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
+func (o SASAuthTypeWorkspaceConnectionPropertiesResponseOutput) PeRequirement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionPropertiesResponse) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
+}
+
+func (o SASAuthTypeWorkspaceConnectionPropertiesResponseOutput) PeStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionPropertiesResponse) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
+}
+
 func (o SASAuthTypeWorkspaceConnectionPropertiesResponseOutput) SharedUserList() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionPropertiesResponse) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
 }
@@ -6633,14 +7140,8 @@ func (o SASAuthTypeWorkspaceConnectionPropertiesResponseOutput) Target() pulumi.
 	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionPropertiesResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
 
-// Value details of the workspace connection.
-func (o SASAuthTypeWorkspaceConnectionPropertiesResponseOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionPropertiesResponse) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-// format for the workspace connection value
-func (o SASAuthTypeWorkspaceConnectionPropertiesResponseOutput) ValueFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionPropertiesResponse) *string { return v.ValueFormat }).(pulumi.StringPtrOutput)
+func (o SASAuthTypeWorkspaceConnectionPropertiesResponseOutput) UseWorkspaceManagedIdentity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionPropertiesResponse) *bool { return v.UseWorkspaceManagedIdentity }).(pulumi.BoolPtrOutput)
 }
 
 // SAS datastore credentials configuration.
@@ -7387,139 +7888,6 @@ func (o ScaleUnitConfigurationResponsePtrOutput) Registries() pulumi.StringArray
 	}).(pulumi.StringArrayOutput)
 }
 
-// Base definition of a schedule
-type ScheduleType struct {
-	// [Required] Specifies the action of the schedule
-	Action interface{} `pulumi:"action"`
-	// The asset description text.
-	Description *string `pulumi:"description"`
-	// Display name of schedule.
-	DisplayName *string `pulumi:"displayName"`
-	// Is the schedule enabled?
-	IsEnabled *bool `pulumi:"isEnabled"`
-	// The asset property dictionary.
-	Properties map[string]string `pulumi:"properties"`
-	// Tag dictionary. Tags can be added, removed, and updated.
-	Tags map[string]string `pulumi:"tags"`
-	// [Required] Specifies the trigger details
-	Trigger interface{} `pulumi:"trigger"`
-}
-
-// Defaults sets the appropriate defaults for ScheduleType
-func (val *ScheduleType) Defaults() *ScheduleType {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.IsEnabled == nil {
-		isEnabled_ := true
-		tmp.IsEnabled = &isEnabled_
-	}
-	return &tmp
-}
-
-// ScheduleTypeInput is an input type that accepts ScheduleTypeArgs and ScheduleTypeOutput values.
-// You can construct a concrete instance of `ScheduleTypeInput` via:
-//
-//	ScheduleTypeArgs{...}
-type ScheduleTypeInput interface {
-	pulumi.Input
-
-	ToScheduleTypeOutput() ScheduleTypeOutput
-	ToScheduleTypeOutputWithContext(context.Context) ScheduleTypeOutput
-}
-
-// Base definition of a schedule
-type ScheduleTypeArgs struct {
-	// [Required] Specifies the action of the schedule
-	Action pulumi.Input `pulumi:"action"`
-	// The asset description text.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Display name of schedule.
-	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	// Is the schedule enabled?
-	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
-	// The asset property dictionary.
-	Properties pulumi.StringMapInput `pulumi:"properties"`
-	// Tag dictionary. Tags can be added, removed, and updated.
-	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// [Required] Specifies the trigger details
-	Trigger pulumi.Input `pulumi:"trigger"`
-}
-
-// Defaults sets the appropriate defaults for ScheduleTypeArgs
-func (val *ScheduleTypeArgs) Defaults() *ScheduleTypeArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.IsEnabled == nil {
-		tmp.IsEnabled = pulumi.BoolPtr(true)
-	}
-	return &tmp
-}
-func (ScheduleTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScheduleType)(nil)).Elem()
-}
-
-func (i ScheduleTypeArgs) ToScheduleTypeOutput() ScheduleTypeOutput {
-	return i.ToScheduleTypeOutputWithContext(context.Background())
-}
-
-func (i ScheduleTypeArgs) ToScheduleTypeOutputWithContext(ctx context.Context) ScheduleTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScheduleTypeOutput)
-}
-
-// Base definition of a schedule
-type ScheduleTypeOutput struct{ *pulumi.OutputState }
-
-func (ScheduleTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScheduleType)(nil)).Elem()
-}
-
-func (o ScheduleTypeOutput) ToScheduleTypeOutput() ScheduleTypeOutput {
-	return o
-}
-
-func (o ScheduleTypeOutput) ToScheduleTypeOutputWithContext(ctx context.Context) ScheduleTypeOutput {
-	return o
-}
-
-// [Required] Specifies the action of the schedule
-func (o ScheduleTypeOutput) Action() pulumi.AnyOutput {
-	return o.ApplyT(func(v ScheduleType) interface{} { return v.Action }).(pulumi.AnyOutput)
-}
-
-// The asset description text.
-func (o ScheduleTypeOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScheduleType) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Display name of schedule.
-func (o ScheduleTypeOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScheduleType) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
-}
-
-// Is the schedule enabled?
-func (o ScheduleTypeOutput) IsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ScheduleType) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
-}
-
-// The asset property dictionary.
-func (o ScheduleTypeOutput) Properties() pulumi.StringMapOutput {
-	return o.ApplyT(func(v ScheduleType) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
-}
-
-// Tag dictionary. Tags can be added, removed, and updated.
-func (o ScheduleTypeOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v ScheduleType) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
-}
-
-// [Required] Specifies the trigger details
-func (o ScheduleTypeOutput) Trigger() pulumi.AnyOutput {
-	return o.ApplyT(func(v ScheduleType) interface{} { return v.Trigger }).(pulumi.AnyOutput)
-}
-
 type ScheduleBase struct {
 	// A system assigned id for the schedule.
 	Id *string `pulumi:"id"`
@@ -7788,7 +8156,140 @@ func (o ScheduleBaseResponsePtrOutput) Status() pulumi.StringPtrOutput {
 }
 
 // Base definition of a schedule
-type ScheduleResponse struct {
+type ScheduleProperties struct {
+	// [Required] Specifies the action of the schedule
+	Action interface{} `pulumi:"action"`
+	// The asset description text.
+	Description *string `pulumi:"description"`
+	// Display name of schedule.
+	DisplayName *string `pulumi:"displayName"`
+	// Is the schedule enabled?
+	IsEnabled *bool `pulumi:"isEnabled"`
+	// The asset property dictionary.
+	Properties map[string]string `pulumi:"properties"`
+	// Tag dictionary. Tags can be added, removed, and updated.
+	Tags map[string]string `pulumi:"tags"`
+	// [Required] Specifies the trigger details
+	Trigger interface{} `pulumi:"trigger"`
+}
+
+// Defaults sets the appropriate defaults for ScheduleProperties
+func (val *ScheduleProperties) Defaults() *ScheduleProperties {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.IsEnabled == nil {
+		isEnabled_ := true
+		tmp.IsEnabled = &isEnabled_
+	}
+	return &tmp
+}
+
+// SchedulePropertiesInput is an input type that accepts SchedulePropertiesArgs and SchedulePropertiesOutput values.
+// You can construct a concrete instance of `SchedulePropertiesInput` via:
+//
+//	SchedulePropertiesArgs{...}
+type SchedulePropertiesInput interface {
+	pulumi.Input
+
+	ToSchedulePropertiesOutput() SchedulePropertiesOutput
+	ToSchedulePropertiesOutputWithContext(context.Context) SchedulePropertiesOutput
+}
+
+// Base definition of a schedule
+type SchedulePropertiesArgs struct {
+	// [Required] Specifies the action of the schedule
+	Action pulumi.Input `pulumi:"action"`
+	// The asset description text.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Display name of schedule.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Is the schedule enabled?
+	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
+	// The asset property dictionary.
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+	// Tag dictionary. Tags can be added, removed, and updated.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// [Required] Specifies the trigger details
+	Trigger pulumi.Input `pulumi:"trigger"`
+}
+
+// Defaults sets the appropriate defaults for SchedulePropertiesArgs
+func (val *SchedulePropertiesArgs) Defaults() *SchedulePropertiesArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.IsEnabled == nil {
+		tmp.IsEnabled = pulumi.BoolPtr(true)
+	}
+	return &tmp
+}
+func (SchedulePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleProperties)(nil)).Elem()
+}
+
+func (i SchedulePropertiesArgs) ToSchedulePropertiesOutput() SchedulePropertiesOutput {
+	return i.ToSchedulePropertiesOutputWithContext(context.Background())
+}
+
+func (i SchedulePropertiesArgs) ToSchedulePropertiesOutputWithContext(ctx context.Context) SchedulePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchedulePropertiesOutput)
+}
+
+// Base definition of a schedule
+type SchedulePropertiesOutput struct{ *pulumi.OutputState }
+
+func (SchedulePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleProperties)(nil)).Elem()
+}
+
+func (o SchedulePropertiesOutput) ToSchedulePropertiesOutput() SchedulePropertiesOutput {
+	return o
+}
+
+func (o SchedulePropertiesOutput) ToSchedulePropertiesOutputWithContext(ctx context.Context) SchedulePropertiesOutput {
+	return o
+}
+
+// [Required] Specifies the action of the schedule
+func (o SchedulePropertiesOutput) Action() pulumi.AnyOutput {
+	return o.ApplyT(func(v ScheduleProperties) interface{} { return v.Action }).(pulumi.AnyOutput)
+}
+
+// The asset description text.
+func (o SchedulePropertiesOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduleProperties) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Display name of schedule.
+func (o SchedulePropertiesOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduleProperties) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Is the schedule enabled?
+func (o SchedulePropertiesOutput) IsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ScheduleProperties) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The asset property dictionary.
+func (o SchedulePropertiesOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ScheduleProperties) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// Tag dictionary. Tags can be added, removed, and updated.
+func (o SchedulePropertiesOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ScheduleProperties) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// [Required] Specifies the trigger details
+func (o SchedulePropertiesOutput) Trigger() pulumi.AnyOutput {
+	return o.ApplyT(func(v ScheduleProperties) interface{} { return v.Trigger }).(pulumi.AnyOutput)
+}
+
+// Base definition of a schedule
+type SchedulePropertiesResponse struct {
 	// [Required] Specifies the action of the schedule
 	Action interface{} `pulumi:"action"`
 	// The asset description text.
@@ -7807,8 +8308,8 @@ type ScheduleResponse struct {
 	Trigger interface{} `pulumi:"trigger"`
 }
 
-// Defaults sets the appropriate defaults for ScheduleResponse
-func (val *ScheduleResponse) Defaults() *ScheduleResponse {
+// Defaults sets the appropriate defaults for SchedulePropertiesResponse
+func (val *SchedulePropertiesResponse) Defaults() *SchedulePropertiesResponse {
 	if val == nil {
 		return nil
 	}
@@ -7821,58 +8322,58 @@ func (val *ScheduleResponse) Defaults() *ScheduleResponse {
 }
 
 // Base definition of a schedule
-type ScheduleResponseOutput struct{ *pulumi.OutputState }
+type SchedulePropertiesResponseOutput struct{ *pulumi.OutputState }
 
-func (ScheduleResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScheduleResponse)(nil)).Elem()
+func (SchedulePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchedulePropertiesResponse)(nil)).Elem()
 }
 
-func (o ScheduleResponseOutput) ToScheduleResponseOutput() ScheduleResponseOutput {
+func (o SchedulePropertiesResponseOutput) ToSchedulePropertiesResponseOutput() SchedulePropertiesResponseOutput {
 	return o
 }
 
-func (o ScheduleResponseOutput) ToScheduleResponseOutputWithContext(ctx context.Context) ScheduleResponseOutput {
+func (o SchedulePropertiesResponseOutput) ToSchedulePropertiesResponseOutputWithContext(ctx context.Context) SchedulePropertiesResponseOutput {
 	return o
 }
 
 // [Required] Specifies the action of the schedule
-func (o ScheduleResponseOutput) Action() pulumi.AnyOutput {
-	return o.ApplyT(func(v ScheduleResponse) interface{} { return v.Action }).(pulumi.AnyOutput)
+func (o SchedulePropertiesResponseOutput) Action() pulumi.AnyOutput {
+	return o.ApplyT(func(v SchedulePropertiesResponse) interface{} { return v.Action }).(pulumi.AnyOutput)
 }
 
 // The asset description text.
-func (o ScheduleResponseOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScheduleResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o SchedulePropertiesResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SchedulePropertiesResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // Display name of schedule.
-func (o ScheduleResponseOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScheduleResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+func (o SchedulePropertiesResponseOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SchedulePropertiesResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
 // Is the schedule enabled?
-func (o ScheduleResponseOutput) IsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ScheduleResponse) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
+func (o SchedulePropertiesResponseOutput) IsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SchedulePropertiesResponse) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // The asset property dictionary.
-func (o ScheduleResponseOutput) Properties() pulumi.StringMapOutput {
-	return o.ApplyT(func(v ScheduleResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+func (o SchedulePropertiesResponseOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SchedulePropertiesResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
 
 // Provisioning state for the schedule.
-func (o ScheduleResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v ScheduleResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+func (o SchedulePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v SchedulePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // Tag dictionary. Tags can be added, removed, and updated.
-func (o ScheduleResponseOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v ScheduleResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+func (o SchedulePropertiesResponseOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SchedulePropertiesResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // [Required] Specifies the trigger details
-func (o ScheduleResponseOutput) Trigger() pulumi.AnyOutput {
-	return o.ApplyT(func(v ScheduleResponse) interface{} { return v.Trigger }).(pulumi.AnyOutput)
+func (o SchedulePropertiesResponseOutput) Trigger() pulumi.AnyOutput {
+	return o.ApplyT(func(v SchedulePropertiesResponse) interface{} { return v.Trigger }).(pulumi.AnyOutput)
 }
 
 // Script reference
@@ -7881,7 +8382,7 @@ type ScriptReference struct {
 	ScriptArguments *string `pulumi:"scriptArguments"`
 	// The location of scripts in the mounted volume.
 	ScriptData *string `pulumi:"scriptData"`
-	// The storage source of the script: workspace.
+	// The storage source of the script: inline, workspace.
 	ScriptSource *string `pulumi:"scriptSource"`
 	// Optional time period passed to timeout command.
 	Timeout *string `pulumi:"timeout"`
@@ -7904,7 +8405,7 @@ type ScriptReferenceArgs struct {
 	ScriptArguments pulumi.StringPtrInput `pulumi:"scriptArguments"`
 	// The location of scripts in the mounted volume.
 	ScriptData pulumi.StringPtrInput `pulumi:"scriptData"`
-	// The storage source of the script: workspace.
+	// The storage source of the script: inline, workspace.
 	ScriptSource pulumi.StringPtrInput `pulumi:"scriptSource"`
 	// Optional time period passed to timeout command.
 	Timeout pulumi.StringPtrInput `pulumi:"timeout"`
@@ -7998,7 +8499,7 @@ func (o ScriptReferenceOutput) ScriptData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScriptReference) *string { return v.ScriptData }).(pulumi.StringPtrOutput)
 }
 
-// The storage source of the script: workspace.
+// The storage source of the script: inline, workspace.
 func (o ScriptReferenceOutput) ScriptSource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScriptReference) *string { return v.ScriptSource }).(pulumi.StringPtrOutput)
 }
@@ -8052,7 +8553,7 @@ func (o ScriptReferencePtrOutput) ScriptData() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The storage source of the script: workspace.
+// The storage source of the script: inline, workspace.
 func (o ScriptReferencePtrOutput) ScriptSource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScriptReference) *string {
 		if v == nil {
@@ -8078,7 +8579,7 @@ type ScriptReferenceResponse struct {
 	ScriptArguments *string `pulumi:"scriptArguments"`
 	// The location of scripts in the mounted volume.
 	ScriptData *string `pulumi:"scriptData"`
-	// The storage source of the script: workspace.
+	// The storage source of the script: inline, workspace.
 	ScriptSource *string `pulumi:"scriptSource"`
 	// Optional time period passed to timeout command.
 	Timeout *string `pulumi:"timeout"`
@@ -8109,7 +8610,7 @@ func (o ScriptReferenceResponseOutput) ScriptData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScriptReferenceResponse) *string { return v.ScriptData }).(pulumi.StringPtrOutput)
 }
 
-// The storage source of the script: workspace.
+// The storage source of the script: inline, workspace.
 func (o ScriptReferenceResponseOutput) ScriptSource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScriptReferenceResponse) *string { return v.ScriptSource }).(pulumi.StringPtrOutput)
 }
@@ -8163,7 +8664,7 @@ func (o ScriptReferenceResponsePtrOutput) ScriptData() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The storage source of the script: workspace.
+// The storage source of the script: inline, workspace.
 func (o ScriptReferenceResponsePtrOutput) ScriptSource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScriptReferenceResponse) *string {
 		if v == nil {
@@ -8817,7 +9318,7 @@ func (o ServerlessComputeSettingsResponsePtrOutput) ServerlessComputeNoPublicIP(
 	}).(pulumi.BoolPtrOutput)
 }
 
-type ServerlessEndpointType struct {
+type ServerlessEndpointProperties struct {
 	// [Required] Specifies the authentication mode for the Serverless endpoint.
 	AuthMode string `pulumi:"authMode"`
 	// Specifies the content safety options. If omitted, the default content safety settings will be configured
@@ -8826,18 +9327,18 @@ type ServerlessEndpointType struct {
 	ModelSettings *ModelSettings `pulumi:"modelSettings"`
 }
 
-// ServerlessEndpointTypeInput is an input type that accepts ServerlessEndpointTypeArgs and ServerlessEndpointTypeOutput values.
-// You can construct a concrete instance of `ServerlessEndpointTypeInput` via:
+// ServerlessEndpointPropertiesInput is an input type that accepts ServerlessEndpointPropertiesArgs and ServerlessEndpointPropertiesOutput values.
+// You can construct a concrete instance of `ServerlessEndpointPropertiesInput` via:
 //
-//	ServerlessEndpointTypeArgs{...}
-type ServerlessEndpointTypeInput interface {
+//	ServerlessEndpointPropertiesArgs{...}
+type ServerlessEndpointPropertiesInput interface {
 	pulumi.Input
 
-	ToServerlessEndpointTypeOutput() ServerlessEndpointTypeOutput
-	ToServerlessEndpointTypeOutputWithContext(context.Context) ServerlessEndpointTypeOutput
+	ToServerlessEndpointPropertiesOutput() ServerlessEndpointPropertiesOutput
+	ToServerlessEndpointPropertiesOutputWithContext(context.Context) ServerlessEndpointPropertiesOutput
 }
 
-type ServerlessEndpointTypeArgs struct {
+type ServerlessEndpointPropertiesArgs struct {
 	// [Required] Specifies the authentication mode for the Serverless endpoint.
 	AuthMode pulumi.StringInput `pulumi:"authMode"`
 	// Specifies the content safety options. If omitted, the default content safety settings will be configured
@@ -8846,48 +9347,48 @@ type ServerlessEndpointTypeArgs struct {
 	ModelSettings ModelSettingsPtrInput `pulumi:"modelSettings"`
 }
 
-func (ServerlessEndpointTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerlessEndpointType)(nil)).Elem()
+func (ServerlessEndpointPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerlessEndpointProperties)(nil)).Elem()
 }
 
-func (i ServerlessEndpointTypeArgs) ToServerlessEndpointTypeOutput() ServerlessEndpointTypeOutput {
-	return i.ToServerlessEndpointTypeOutputWithContext(context.Background())
+func (i ServerlessEndpointPropertiesArgs) ToServerlessEndpointPropertiesOutput() ServerlessEndpointPropertiesOutput {
+	return i.ToServerlessEndpointPropertiesOutputWithContext(context.Background())
 }
 
-func (i ServerlessEndpointTypeArgs) ToServerlessEndpointTypeOutputWithContext(ctx context.Context) ServerlessEndpointTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServerlessEndpointTypeOutput)
+func (i ServerlessEndpointPropertiesArgs) ToServerlessEndpointPropertiesOutputWithContext(ctx context.Context) ServerlessEndpointPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerlessEndpointPropertiesOutput)
 }
 
-type ServerlessEndpointTypeOutput struct{ *pulumi.OutputState }
+type ServerlessEndpointPropertiesOutput struct{ *pulumi.OutputState }
 
-func (ServerlessEndpointTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerlessEndpointType)(nil)).Elem()
+func (ServerlessEndpointPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerlessEndpointProperties)(nil)).Elem()
 }
 
-func (o ServerlessEndpointTypeOutput) ToServerlessEndpointTypeOutput() ServerlessEndpointTypeOutput {
+func (o ServerlessEndpointPropertiesOutput) ToServerlessEndpointPropertiesOutput() ServerlessEndpointPropertiesOutput {
 	return o
 }
 
-func (o ServerlessEndpointTypeOutput) ToServerlessEndpointTypeOutputWithContext(ctx context.Context) ServerlessEndpointTypeOutput {
+func (o ServerlessEndpointPropertiesOutput) ToServerlessEndpointPropertiesOutputWithContext(ctx context.Context) ServerlessEndpointPropertiesOutput {
 	return o
 }
 
 // [Required] Specifies the authentication mode for the Serverless endpoint.
-func (o ServerlessEndpointTypeOutput) AuthMode() pulumi.StringOutput {
-	return o.ApplyT(func(v ServerlessEndpointType) string { return v.AuthMode }).(pulumi.StringOutput)
+func (o ServerlessEndpointPropertiesOutput) AuthMode() pulumi.StringOutput {
+	return o.ApplyT(func(v ServerlessEndpointProperties) string { return v.AuthMode }).(pulumi.StringOutput)
 }
 
 // Specifies the content safety options. If omitted, the default content safety settings will be configured
-func (o ServerlessEndpointTypeOutput) ContentSafety() ContentSafetyPtrOutput {
-	return o.ApplyT(func(v ServerlessEndpointType) *ContentSafety { return v.ContentSafety }).(ContentSafetyPtrOutput)
+func (o ServerlessEndpointPropertiesOutput) ContentSafety() ContentSafetyPtrOutput {
+	return o.ApplyT(func(v ServerlessEndpointProperties) *ContentSafety { return v.ContentSafety }).(ContentSafetyPtrOutput)
 }
 
 // The model settings (model id) for the model being serviced on the ServerlessEndpoint.
-func (o ServerlessEndpointTypeOutput) ModelSettings() ModelSettingsPtrOutput {
-	return o.ApplyT(func(v ServerlessEndpointType) *ModelSettings { return v.ModelSettings }).(ModelSettingsPtrOutput)
+func (o ServerlessEndpointPropertiesOutput) ModelSettings() ModelSettingsPtrOutput {
+	return o.ApplyT(func(v ServerlessEndpointProperties) *ModelSettings { return v.ModelSettings }).(ModelSettingsPtrOutput)
 }
 
-type ServerlessEndpointResponse struct {
+type ServerlessEndpointPropertiesResponse struct {
 	// [Required] Specifies the authentication mode for the Serverless endpoint.
 	AuthMode string `pulumi:"authMode"`
 	// Specifies the content safety options. If omitted, the default content safety settings will be configured
@@ -8900,57 +9401,59 @@ type ServerlessEndpointResponse struct {
 	MarketplaceSubscriptionId string `pulumi:"marketplaceSubscriptionId"`
 	// The model settings (model id) for the model being serviced on the ServerlessEndpoint.
 	ModelSettings *ModelSettingsResponse `pulumi:"modelSettings"`
-	// Provisioning state for the endpoint.
+	// State of endpoint provisioning.
 	ProvisioningState string `pulumi:"provisioningState"`
 }
 
-type ServerlessEndpointResponseOutput struct{ *pulumi.OutputState }
+type ServerlessEndpointPropertiesResponseOutput struct{ *pulumi.OutputState }
 
-func (ServerlessEndpointResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerlessEndpointResponse)(nil)).Elem()
+func (ServerlessEndpointPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerlessEndpointPropertiesResponse)(nil)).Elem()
 }
 
-func (o ServerlessEndpointResponseOutput) ToServerlessEndpointResponseOutput() ServerlessEndpointResponseOutput {
+func (o ServerlessEndpointPropertiesResponseOutput) ToServerlessEndpointPropertiesResponseOutput() ServerlessEndpointPropertiesResponseOutput {
 	return o
 }
 
-func (o ServerlessEndpointResponseOutput) ToServerlessEndpointResponseOutputWithContext(ctx context.Context) ServerlessEndpointResponseOutput {
+func (o ServerlessEndpointPropertiesResponseOutput) ToServerlessEndpointPropertiesResponseOutputWithContext(ctx context.Context) ServerlessEndpointPropertiesResponseOutput {
 	return o
 }
 
 // [Required] Specifies the authentication mode for the Serverless endpoint.
-func (o ServerlessEndpointResponseOutput) AuthMode() pulumi.StringOutput {
-	return o.ApplyT(func(v ServerlessEndpointResponse) string { return v.AuthMode }).(pulumi.StringOutput)
+func (o ServerlessEndpointPropertiesResponseOutput) AuthMode() pulumi.StringOutput {
+	return o.ApplyT(func(v ServerlessEndpointPropertiesResponse) string { return v.AuthMode }).(pulumi.StringOutput)
 }
 
 // Specifies the content safety options. If omitted, the default content safety settings will be configured
-func (o ServerlessEndpointResponseOutput) ContentSafety() ContentSafetyResponsePtrOutput {
-	return o.ApplyT(func(v ServerlessEndpointResponse) *ContentSafetyResponse { return v.ContentSafety }).(ContentSafetyResponsePtrOutput)
+func (o ServerlessEndpointPropertiesResponseOutput) ContentSafety() ContentSafetyResponsePtrOutput {
+	return o.ApplyT(func(v ServerlessEndpointPropertiesResponse) *ContentSafetyResponse { return v.ContentSafety }).(ContentSafetyResponsePtrOutput)
 }
 
 // The current state of the ServerlessEndpoint.
-func (o ServerlessEndpointResponseOutput) EndpointState() pulumi.StringOutput {
-	return o.ApplyT(func(v ServerlessEndpointResponse) string { return v.EndpointState }).(pulumi.StringOutput)
+func (o ServerlessEndpointPropertiesResponseOutput) EndpointState() pulumi.StringOutput {
+	return o.ApplyT(func(v ServerlessEndpointPropertiesResponse) string { return v.EndpointState }).(pulumi.StringOutput)
 }
 
 // The inference uri to target when making requests against the serverless endpoint
-func (o ServerlessEndpointResponseOutput) InferenceEndpoint() ServerlessInferenceEndpointResponseOutput {
-	return o.ApplyT(func(v ServerlessEndpointResponse) ServerlessInferenceEndpointResponse { return v.InferenceEndpoint }).(ServerlessInferenceEndpointResponseOutput)
+func (o ServerlessEndpointPropertiesResponseOutput) InferenceEndpoint() ServerlessInferenceEndpointResponseOutput {
+	return o.ApplyT(func(v ServerlessEndpointPropertiesResponse) ServerlessInferenceEndpointResponse {
+		return v.InferenceEndpoint
+	}).(ServerlessInferenceEndpointResponseOutput)
 }
 
 // The MarketplaceSubscription Azure ID associated to this ServerlessEndpoint.
-func (o ServerlessEndpointResponseOutput) MarketplaceSubscriptionId() pulumi.StringOutput {
-	return o.ApplyT(func(v ServerlessEndpointResponse) string { return v.MarketplaceSubscriptionId }).(pulumi.StringOutput)
+func (o ServerlessEndpointPropertiesResponseOutput) MarketplaceSubscriptionId() pulumi.StringOutput {
+	return o.ApplyT(func(v ServerlessEndpointPropertiesResponse) string { return v.MarketplaceSubscriptionId }).(pulumi.StringOutput)
 }
 
 // The model settings (model id) for the model being serviced on the ServerlessEndpoint.
-func (o ServerlessEndpointResponseOutput) ModelSettings() ModelSettingsResponsePtrOutput {
-	return o.ApplyT(func(v ServerlessEndpointResponse) *ModelSettingsResponse { return v.ModelSettings }).(ModelSettingsResponsePtrOutput)
+func (o ServerlessEndpointPropertiesResponseOutput) ModelSettings() ModelSettingsResponsePtrOutput {
+	return o.ApplyT(func(v ServerlessEndpointPropertiesResponse) *ModelSettingsResponse { return v.ModelSettings }).(ModelSettingsResponsePtrOutput)
 }
 
-// Provisioning state for the endpoint.
-func (o ServerlessEndpointResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v ServerlessEndpointResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+// State of endpoint provisioning.
+func (o ServerlessEndpointPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v ServerlessEndpointPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 type ServerlessInferenceEndpointResponse struct {
@@ -9216,7 +9719,6 @@ func (o ServerlessOfferResponsePtrOutput) Publisher() pulumi.StringPtrOutput {
 }
 
 type ServiceManagedResourcesSettings struct {
-	// The settings for the service managed cosmosdb account.
 	CosmosDb *CosmosDbSettings `pulumi:"cosmosDb"`
 }
 
@@ -9232,7 +9734,6 @@ type ServiceManagedResourcesSettingsInput interface {
 }
 
 type ServiceManagedResourcesSettingsArgs struct {
-	// The settings for the service managed cosmosdb account.
 	CosmosDb CosmosDbSettingsPtrInput `pulumi:"cosmosDb"`
 }
 
@@ -9313,7 +9814,6 @@ func (o ServiceManagedResourcesSettingsOutput) ToServiceManagedResourcesSettings
 	}).(ServiceManagedResourcesSettingsPtrOutput)
 }
 
-// The settings for the service managed cosmosdb account.
 func (o ServiceManagedResourcesSettingsOutput) CosmosDb() CosmosDbSettingsPtrOutput {
 	return o.ApplyT(func(v ServiceManagedResourcesSettings) *CosmosDbSettings { return v.CosmosDb }).(CosmosDbSettingsPtrOutput)
 }
@@ -9342,7 +9842,6 @@ func (o ServiceManagedResourcesSettingsPtrOutput) Elem() ServiceManagedResources
 	}).(ServiceManagedResourcesSettingsOutput)
 }
 
-// The settings for the service managed cosmosdb account.
 func (o ServiceManagedResourcesSettingsPtrOutput) CosmosDb() CosmosDbSettingsPtrOutput {
 	return o.ApplyT(func(v *ServiceManagedResourcesSettings) *CosmosDbSettings {
 		if v == nil {
@@ -9353,7 +9852,6 @@ func (o ServiceManagedResourcesSettingsPtrOutput) CosmosDb() CosmosDbSettingsPtr
 }
 
 type ServiceManagedResourcesSettingsResponse struct {
-	// The settings for the service managed cosmosdb account.
 	CosmosDb *CosmosDbSettingsResponse `pulumi:"cosmosDb"`
 }
 
@@ -9371,7 +9869,6 @@ func (o ServiceManagedResourcesSettingsResponseOutput) ToServiceManagedResources
 	return o
 }
 
-// The settings for the service managed cosmosdb account.
 func (o ServiceManagedResourcesSettingsResponseOutput) CosmosDb() CosmosDbSettingsResponsePtrOutput {
 	return o.ApplyT(func(v ServiceManagedResourcesSettingsResponse) *CosmosDbSettingsResponse { return v.CosmosDb }).(CosmosDbSettingsResponsePtrOutput)
 }
@@ -9400,7 +9897,6 @@ func (o ServiceManagedResourcesSettingsResponsePtrOutput) Elem() ServiceManagedR
 	}).(ServiceManagedResourcesSettingsResponseOutput)
 }
 
-// The settings for the service managed cosmosdb account.
 func (o ServiceManagedResourcesSettingsResponsePtrOutput) CosmosDb() CosmosDbSettingsResponsePtrOutput {
 	return o.ApplyT(func(v *ServiceManagedResourcesSettingsResponse) *CosmosDbSettingsResponse {
 		if v == nil {
@@ -9417,16 +9913,16 @@ type ServicePrincipalAuthTypeWorkspaceConnectionProperties struct {
 	// Category of the connection
 	Category      *string                              `pulumi:"category"`
 	Credentials   *WorkspaceConnectionServicePrincipal `pulumi:"credentials"`
+	Error         *string                              `pulumi:"error"`
 	ExpiryTime    *string                              `pulumi:"expiryTime"`
 	IsSharedToAll *bool                                `pulumi:"isSharedToAll"`
 	// Store user metadata for this connection
-	Metadata       map[string]string `pulumi:"metadata"`
-	SharedUserList []string          `pulumi:"sharedUserList"`
-	Target         *string           `pulumi:"target"`
-	// Value details of the workspace connection.
-	Value *string `pulumi:"value"`
-	// format for the workspace connection value
-	ValueFormat *string `pulumi:"valueFormat"`
+	Metadata                    map[string]string `pulumi:"metadata"`
+	PeRequirement               *string           `pulumi:"peRequirement"`
+	PeStatus                    *string           `pulumi:"peStatus"`
+	SharedUserList              []string          `pulumi:"sharedUserList"`
+	Target                      *string           `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
 }
 
 // ServicePrincipalAuthTypeWorkspaceConnectionPropertiesInput is an input type that accepts ServicePrincipalAuthTypeWorkspaceConnectionPropertiesArgs and ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput values.
@@ -9447,16 +9943,16 @@ type ServicePrincipalAuthTypeWorkspaceConnectionPropertiesArgs struct {
 	// Category of the connection
 	Category      pulumi.StringPtrInput                       `pulumi:"category"`
 	Credentials   WorkspaceConnectionServicePrincipalPtrInput `pulumi:"credentials"`
+	Error         pulumi.StringPtrInput                       `pulumi:"error"`
 	ExpiryTime    pulumi.StringPtrInput                       `pulumi:"expiryTime"`
 	IsSharedToAll pulumi.BoolPtrInput                         `pulumi:"isSharedToAll"`
 	// Store user metadata for this connection
-	Metadata       pulumi.StringMapInput   `pulumi:"metadata"`
-	SharedUserList pulumi.StringArrayInput `pulumi:"sharedUserList"`
-	Target         pulumi.StringPtrInput   `pulumi:"target"`
-	// Value details of the workspace connection.
-	Value pulumi.StringPtrInput `pulumi:"value"`
-	// format for the workspace connection value
-	ValueFormat pulumi.StringPtrInput `pulumi:"valueFormat"`
+	Metadata                    pulumi.StringMapInput   `pulumi:"metadata"`
+	PeRequirement               pulumi.StringPtrInput   `pulumi:"peRequirement"`
+	PeStatus                    pulumi.StringPtrInput   `pulumi:"peStatus"`
+	SharedUserList              pulumi.StringArrayInput `pulumi:"sharedUserList"`
+	Target                      pulumi.StringPtrInput   `pulumi:"target"`
+	UseWorkspaceManagedIdentity pulumi.BoolPtrInput     `pulumi:"useWorkspaceManagedIdentity"`
 }
 
 func (ServicePrincipalAuthTypeWorkspaceConnectionPropertiesArgs) ElementType() reflect.Type {
@@ -9502,6 +9998,10 @@ func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput) Credentials
 	}).(WorkspaceConnectionServicePrincipalPtrOutput)
 }
 
+func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput) Error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionProperties) *string { return v.Error }).(pulumi.StringPtrOutput)
+}
+
 func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput) ExpiryTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionProperties) *string { return v.ExpiryTime }).(pulumi.StringPtrOutput)
 }
@@ -9515,6 +10015,14 @@ func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput) Metadata() 
 	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionProperties) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
+func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput) PeRequirement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionProperties) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput) PeStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionProperties) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
+}
+
 func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput) SharedUserList() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionProperties) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
 }
@@ -9523,14 +10031,10 @@ func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput) Target() pu
 	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionProperties) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
 
-// Value details of the workspace connection.
-func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionProperties) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-// format for the workspace connection value
-func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput) ValueFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionProperties) *string { return v.ValueFormat }).(pulumi.StringPtrOutput)
+func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput) UseWorkspaceManagedIdentity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionProperties) *bool {
+		return v.UseWorkspaceManagedIdentity
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse struct {
@@ -9538,21 +10042,22 @@ type ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse struct {
 	// Expected value is 'ServicePrincipal'.
 	AuthType string `pulumi:"authType"`
 	// Category of the connection
-	Category                *string                                      `pulumi:"category"`
+	Category *string `pulumi:"category"`
+	// A type definition that refers the id to an Azure Resource Manager resource.
 	CreatedByWorkspaceArmId string                                       `pulumi:"createdByWorkspaceArmId"`
 	Credentials             *WorkspaceConnectionServicePrincipalResponse `pulumi:"credentials"`
+	Error                   *string                                      `pulumi:"error"`
 	ExpiryTime              *string                                      `pulumi:"expiryTime"`
 	// Group based on connection category
 	Group         string `pulumi:"group"`
 	IsSharedToAll *bool  `pulumi:"isSharedToAll"`
 	// Store user metadata for this connection
-	Metadata       map[string]string `pulumi:"metadata"`
-	SharedUserList []string          `pulumi:"sharedUserList"`
-	Target         *string           `pulumi:"target"`
-	// Value details of the workspace connection.
-	Value *string `pulumi:"value"`
-	// format for the workspace connection value
-	ValueFormat *string `pulumi:"valueFormat"`
+	Metadata                    map[string]string `pulumi:"metadata"`
+	PeRequirement               *string           `pulumi:"peRequirement"`
+	PeStatus                    *string           `pulumi:"peStatus"`
+	SharedUserList              []string          `pulumi:"sharedUserList"`
+	Target                      *string           `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
 }
 
 type ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutput struct{ *pulumi.OutputState }
@@ -9580,6 +10085,7 @@ func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutput) Cat
 	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
 
+// A type definition that refers the id to an Azure Resource Manager resource.
 func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutput) CreatedByWorkspaceArmId() pulumi.StringOutput {
 	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse) string {
 		return v.CreatedByWorkspaceArmId
@@ -9590,6 +10096,10 @@ func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutput) Cre
 	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse) *WorkspaceConnectionServicePrincipalResponse {
 		return v.Credentials
 	}).(WorkspaceConnectionServicePrincipalResponsePtrOutput)
+}
+
+func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutput) Error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse) *string { return v.Error }).(pulumi.StringPtrOutput)
 }
 
 func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutput) ExpiryTime() pulumi.StringPtrOutput {
@@ -9612,6 +10122,14 @@ func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutput) Met
 	}).(pulumi.StringMapOutput)
 }
 
+func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutput) PeRequirement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutput) PeStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
+}
+
 func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutput) SharedUserList() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse) []string {
 		return v.SharedUserList
@@ -9622,14 +10140,10 @@ func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutput) Tar
 	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
 
-// Value details of the workspace connection.
-func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-// format for the workspace connection value
-func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutput) ValueFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse) *string { return v.ValueFormat }).(pulumi.StringPtrOutput)
+func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutput) UseWorkspaceManagedIdentity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse) *bool {
+		return v.UseWorkspaceManagedIdentity
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Service Principal datastore credentials configuration.
@@ -10528,15 +11042,15 @@ func (o SetupScriptsResponsePtrOutput) Scripts() ScriptsToExecuteResponsePtrOutp
 }
 
 type SharedPrivateLinkResource struct {
-	// The private link resource group id.
+	// group id of the private link
 	GroupId *string `pulumi:"groupId"`
-	// Unique name of the private link.
+	// Unique name of the private link
 	Name *string `pulumi:"name"`
-	// The resource id that private link links to.
+	// the resource id that private link links to
 	PrivateLinkResourceId *string `pulumi:"privateLinkResourceId"`
-	// Request message.
+	// Request message
 	RequestMessage *string `pulumi:"requestMessage"`
-	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+	// Connection status of the service consumer with the service provider\r\nPossible state transitions\r\nPending -> Approved (Service provider approves the connection request)\r\nPending -> Rejected (Service provider rejects the connection request)\r\nPending -> Disconnected (Service provider deletes the connection)\r\nApproved -> Rejected (Service provider rejects the approved connection)\r\nApproved -> Disconnected (Service provider deletes the connection)\r\nRejected -> Pending (Service consumer re-initiates the connection request that was rejected)\r\nRejected -> Disconnected (Service provider deletes the connection)
 	Status *string `pulumi:"status"`
 }
 
@@ -10552,15 +11066,15 @@ type SharedPrivateLinkResourceInput interface {
 }
 
 type SharedPrivateLinkResourceArgs struct {
-	// The private link resource group id.
+	// group id of the private link
 	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
-	// Unique name of the private link.
+	// Unique name of the private link
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The resource id that private link links to.
+	// the resource id that private link links to
 	PrivateLinkResourceId pulumi.StringPtrInput `pulumi:"privateLinkResourceId"`
-	// Request message.
+	// Request message
 	RequestMessage pulumi.StringPtrInput `pulumi:"requestMessage"`
-	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+	// Connection status of the service consumer with the service provider\r\nPossible state transitions\r\nPending -> Approved (Service provider approves the connection request)\r\nPending -> Rejected (Service provider rejects the connection request)\r\nPending -> Disconnected (Service provider deletes the connection)\r\nApproved -> Rejected (Service provider rejects the approved connection)\r\nApproved -> Disconnected (Service provider deletes the connection)\r\nRejected -> Pending (Service consumer re-initiates the connection request that was rejected)\r\nRejected -> Disconnected (Service provider deletes the connection)
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
@@ -10615,27 +11129,27 @@ func (o SharedPrivateLinkResourceOutput) ToSharedPrivateLinkResourceOutputWithCo
 	return o
 }
 
-// The private link resource group id.
+// group id of the private link
 func (o SharedPrivateLinkResourceOutput) GroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SharedPrivateLinkResource) *string { return v.GroupId }).(pulumi.StringPtrOutput)
 }
 
-// Unique name of the private link.
+// Unique name of the private link
 func (o SharedPrivateLinkResourceOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SharedPrivateLinkResource) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The resource id that private link links to.
+// the resource id that private link links to
 func (o SharedPrivateLinkResourceOutput) PrivateLinkResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SharedPrivateLinkResource) *string { return v.PrivateLinkResourceId }).(pulumi.StringPtrOutput)
 }
 
-// Request message.
+// Request message
 func (o SharedPrivateLinkResourceOutput) RequestMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SharedPrivateLinkResource) *string { return v.RequestMessage }).(pulumi.StringPtrOutput)
 }
 
-// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+// Connection status of the service consumer with the service provider\r\nPossible state transitions\r\nPending -> Approved (Service provider approves the connection request)\r\nPending -> Rejected (Service provider rejects the connection request)\r\nPending -> Disconnected (Service provider deletes the connection)\r\nApproved -> Rejected (Service provider rejects the approved connection)\r\nApproved -> Disconnected (Service provider deletes the connection)\r\nRejected -> Pending (Service consumer re-initiates the connection request that was rejected)\r\nRejected -> Disconnected (Service provider deletes the connection)
 func (o SharedPrivateLinkResourceOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SharedPrivateLinkResource) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
@@ -10661,15 +11175,15 @@ func (o SharedPrivateLinkResourceArrayOutput) Index(i pulumi.IntInput) SharedPri
 }
 
 type SharedPrivateLinkResourceResponse struct {
-	// The private link resource group id.
+	// group id of the private link
 	GroupId *string `pulumi:"groupId"`
-	// Unique name of the private link.
+	// Unique name of the private link
 	Name *string `pulumi:"name"`
-	// The resource id that private link links to.
+	// the resource id that private link links to
 	PrivateLinkResourceId *string `pulumi:"privateLinkResourceId"`
-	// Request message.
+	// Request message
 	RequestMessage *string `pulumi:"requestMessage"`
-	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+	// Connection status of the service consumer with the service provider\r\nPossible state transitions\r\nPending -> Approved (Service provider approves the connection request)\r\nPending -> Rejected (Service provider rejects the connection request)\r\nPending -> Disconnected (Service provider deletes the connection)\r\nApproved -> Rejected (Service provider rejects the approved connection)\r\nApproved -> Disconnected (Service provider deletes the connection)\r\nRejected -> Pending (Service consumer re-initiates the connection request that was rejected)\r\nRejected -> Disconnected (Service provider deletes the connection)
 	Status *string `pulumi:"status"`
 }
 
@@ -10687,27 +11201,27 @@ func (o SharedPrivateLinkResourceResponseOutput) ToSharedPrivateLinkResourceResp
 	return o
 }
 
-// The private link resource group id.
+// group id of the private link
 func (o SharedPrivateLinkResourceResponseOutput) GroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SharedPrivateLinkResourceResponse) *string { return v.GroupId }).(pulumi.StringPtrOutput)
 }
 
-// Unique name of the private link.
+// Unique name of the private link
 func (o SharedPrivateLinkResourceResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SharedPrivateLinkResourceResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The resource id that private link links to.
+// the resource id that private link links to
 func (o SharedPrivateLinkResourceResponseOutput) PrivateLinkResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SharedPrivateLinkResourceResponse) *string { return v.PrivateLinkResourceId }).(pulumi.StringPtrOutput)
 }
 
-// Request message.
+// Request message
 func (o SharedPrivateLinkResourceResponseOutput) RequestMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SharedPrivateLinkResourceResponse) *string { return v.RequestMessage }).(pulumi.StringPtrOutput)
 }
 
-// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+// Connection status of the service consumer with the service provider\r\nPossible state transitions\r\nPending -> Approved (Service provider approves the connection request)\r\nPending -> Rejected (Service provider rejects the connection request)\r\nPending -> Disconnected (Service provider deletes the connection)\r\nApproved -> Rejected (Service provider rejects the approved connection)\r\nApproved -> Disconnected (Service provider deletes the connection)\r\nRejected -> Pending (Service consumer re-initiates the connection request that was rejected)\r\nRejected -> Disconnected (Service provider deletes the connection)
 func (o SharedPrivateLinkResourceResponseOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SharedPrivateLinkResourceResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
@@ -12639,7 +13153,7 @@ type StackEnsembleSettings struct {
 	StackMetaLearnerKWargs interface{} `pulumi:"stackMetaLearnerKWargs"`
 	// Specifies the proportion of the training set (when choosing train and validation type of training) to be reserved for training the meta-learner. Default value is 0.2.
 	StackMetaLearnerTrainPercentage *float64 `pulumi:"stackMetaLearnerTrainPercentage"`
-	// The meta-learner is a model trained on the output of the individual heterogeneous models.
+	// The meta-learner is a model trained on the output of the individual heterogeneous models.\r\nDefault meta-learners are LogisticRegression for classification tasks (or LogisticRegressionCV if cross-validation is enabled) and ElasticNet for regression/forecasting tasks (or ElasticNetCV if cross-validation is enabled).\r\nThis parameter can be one of the following strings: LogisticRegression, LogisticRegressionCV, LightGBMClassifier, ElasticNet, ElasticNetCV, LightGBMRegressor, or LinearRegression
 	StackMetaLearnerType *string `pulumi:"stackMetaLearnerType"`
 }
 
@@ -12677,7 +13191,7 @@ type StackEnsembleSettingsArgs struct {
 	StackMetaLearnerKWargs pulumi.Input `pulumi:"stackMetaLearnerKWargs"`
 	// Specifies the proportion of the training set (when choosing train and validation type of training) to be reserved for training the meta-learner. Default value is 0.2.
 	StackMetaLearnerTrainPercentage pulumi.Float64PtrInput `pulumi:"stackMetaLearnerTrainPercentage"`
-	// The meta-learner is a model trained on the output of the individual heterogeneous models.
+	// The meta-learner is a model trained on the output of the individual heterogeneous models.\r\nDefault meta-learners are LogisticRegression for classification tasks (or LogisticRegressionCV if cross-validation is enabled) and ElasticNet for regression/forecasting tasks (or ElasticNetCV if cross-validation is enabled).\r\nThis parameter can be one of the following strings: LogisticRegression, LogisticRegressionCV, LightGBMClassifier, ElasticNet, ElasticNetCV, LightGBMRegressor, or LinearRegression
 	StackMetaLearnerType pulumi.StringPtrInput `pulumi:"stackMetaLearnerType"`
 }
 
@@ -12783,7 +13297,7 @@ func (o StackEnsembleSettingsOutput) StackMetaLearnerTrainPercentage() pulumi.Fl
 	return o.ApplyT(func(v StackEnsembleSettings) *float64 { return v.StackMetaLearnerTrainPercentage }).(pulumi.Float64PtrOutput)
 }
 
-// The meta-learner is a model trained on the output of the individual heterogeneous models.
+// The meta-learner is a model trained on the output of the individual heterogeneous models.\r\nDefault meta-learners are LogisticRegression for classification tasks (or LogisticRegressionCV if cross-validation is enabled) and ElasticNet for regression/forecasting tasks (or ElasticNetCV if cross-validation is enabled).\r\nThis parameter can be one of the following strings: LogisticRegression, LogisticRegressionCV, LightGBMClassifier, ElasticNet, ElasticNetCV, LightGBMRegressor, or LinearRegression
 func (o StackEnsembleSettingsOutput) StackMetaLearnerType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StackEnsembleSettings) *string { return v.StackMetaLearnerType }).(pulumi.StringPtrOutput)
 }
@@ -12832,7 +13346,7 @@ func (o StackEnsembleSettingsPtrOutput) StackMetaLearnerTrainPercentage() pulumi
 	}).(pulumi.Float64PtrOutput)
 }
 
-// The meta-learner is a model trained on the output of the individual heterogeneous models.
+// The meta-learner is a model trained on the output of the individual heterogeneous models.\r\nDefault meta-learners are LogisticRegression for classification tasks (or LogisticRegressionCV if cross-validation is enabled) and ElasticNet for regression/forecasting tasks (or ElasticNetCV if cross-validation is enabled).\r\nThis parameter can be one of the following strings: LogisticRegression, LogisticRegressionCV, LightGBMClassifier, ElasticNet, ElasticNetCV, LightGBMRegressor, or LinearRegression
 func (o StackEnsembleSettingsPtrOutput) StackMetaLearnerType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StackEnsembleSettings) *string {
 		if v == nil {
@@ -12848,7 +13362,7 @@ type StackEnsembleSettingsResponse struct {
 	StackMetaLearnerKWargs interface{} `pulumi:"stackMetaLearnerKWargs"`
 	// Specifies the proportion of the training set (when choosing train and validation type of training) to be reserved for training the meta-learner. Default value is 0.2.
 	StackMetaLearnerTrainPercentage *float64 `pulumi:"stackMetaLearnerTrainPercentage"`
-	// The meta-learner is a model trained on the output of the individual heterogeneous models.
+	// The meta-learner is a model trained on the output of the individual heterogeneous models.\r\nDefault meta-learners are LogisticRegression for classification tasks (or LogisticRegressionCV if cross-validation is enabled) and ElasticNet for regression/forecasting tasks (or ElasticNetCV if cross-validation is enabled).\r\nThis parameter can be one of the following strings: LogisticRegression, LogisticRegressionCV, LightGBMClassifier, ElasticNet, ElasticNetCV, LightGBMRegressor, or LinearRegression
 	StackMetaLearnerType *string `pulumi:"stackMetaLearnerType"`
 }
 
@@ -12894,7 +13408,7 @@ func (o StackEnsembleSettingsResponseOutput) StackMetaLearnerTrainPercentage() p
 	return o.ApplyT(func(v StackEnsembleSettingsResponse) *float64 { return v.StackMetaLearnerTrainPercentage }).(pulumi.Float64PtrOutput)
 }
 
-// The meta-learner is a model trained on the output of the individual heterogeneous models.
+// The meta-learner is a model trained on the output of the individual heterogeneous models.\r\nDefault meta-learners are LogisticRegression for classification tasks (or LogisticRegressionCV if cross-validation is enabled) and ElasticNet for regression/forecasting tasks (or ElasticNetCV if cross-validation is enabled).\r\nThis parameter can be one of the following strings: LogisticRegression, LogisticRegressionCV, LightGBMClassifier, ElasticNet, ElasticNetCV, LightGBMRegressor, or LinearRegression
 func (o StackEnsembleSettingsResponseOutput) StackMetaLearnerType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StackEnsembleSettingsResponse) *string { return v.StackMetaLearnerType }).(pulumi.StringPtrOutput)
 }
@@ -12943,7 +13457,7 @@ func (o StackEnsembleSettingsResponsePtrOutput) StackMetaLearnerTrainPercentage(
 	}).(pulumi.Float64PtrOutput)
 }
 
-// The meta-learner is a model trained on the output of the individual heterogeneous models.
+// The meta-learner is a model trained on the output of the individual heterogeneous models.\r\nDefault meta-learners are LogisticRegression for classification tasks (or LogisticRegressionCV if cross-validation is enabled) and ElasticNet for regression/forecasting tasks (or ElasticNetCV if cross-validation is enabled).\r\nThis parameter can be one of the following strings: LogisticRegression, LogisticRegressionCV, LightGBMClassifier, ElasticNet, ElasticNetCV, LightGBMRegressor, or LinearRegression
 func (o StackEnsembleSettingsResponsePtrOutput) StackMetaLearnerType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StackEnsembleSettingsResponse) *string {
 		if v == nil {
@@ -14880,6 +15394,217 @@ func (o SynapseSparkPropertiesPtrOutput) WorkspaceName() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+type SynapseSparkPropertiesResponse struct {
+	// Auto pause properties.
+	AutoPauseProperties *AutoPausePropertiesResponse `pulumi:"autoPauseProperties"`
+	// Auto scale properties.
+	AutoScaleProperties *AutoScalePropertiesResponse `pulumi:"autoScaleProperties"`
+	// The number of compute nodes currently assigned to the compute.
+	NodeCount *int `pulumi:"nodeCount"`
+	// Node size.
+	NodeSize *string `pulumi:"nodeSize"`
+	// Node size family.
+	NodeSizeFamily *string `pulumi:"nodeSizeFamily"`
+	// Pool name.
+	PoolName *string `pulumi:"poolName"`
+	// Name of the resource group in which workspace is located.
+	ResourceGroup *string `pulumi:"resourceGroup"`
+	// Spark version.
+	SparkVersion *string `pulumi:"sparkVersion"`
+	// Azure subscription identifier.
+	SubscriptionId *string `pulumi:"subscriptionId"`
+	// Name of Azure Machine Learning workspace.
+	WorkspaceName *string `pulumi:"workspaceName"`
+}
+
+type SynapseSparkPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (SynapseSparkPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SynapseSparkPropertiesResponse)(nil)).Elem()
+}
+
+func (o SynapseSparkPropertiesResponseOutput) ToSynapseSparkPropertiesResponseOutput() SynapseSparkPropertiesResponseOutput {
+	return o
+}
+
+func (o SynapseSparkPropertiesResponseOutput) ToSynapseSparkPropertiesResponseOutputWithContext(ctx context.Context) SynapseSparkPropertiesResponseOutput {
+	return o
+}
+
+// Auto pause properties.
+func (o SynapseSparkPropertiesResponseOutput) AutoPauseProperties() AutoPausePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v SynapseSparkPropertiesResponse) *AutoPausePropertiesResponse { return v.AutoPauseProperties }).(AutoPausePropertiesResponsePtrOutput)
+}
+
+// Auto scale properties.
+func (o SynapseSparkPropertiesResponseOutput) AutoScaleProperties() AutoScalePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v SynapseSparkPropertiesResponse) *AutoScalePropertiesResponse { return v.AutoScaleProperties }).(AutoScalePropertiesResponsePtrOutput)
+}
+
+// The number of compute nodes currently assigned to the compute.
+func (o SynapseSparkPropertiesResponseOutput) NodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SynapseSparkPropertiesResponse) *int { return v.NodeCount }).(pulumi.IntPtrOutput)
+}
+
+// Node size.
+func (o SynapseSparkPropertiesResponseOutput) NodeSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSparkPropertiesResponse) *string { return v.NodeSize }).(pulumi.StringPtrOutput)
+}
+
+// Node size family.
+func (o SynapseSparkPropertiesResponseOutput) NodeSizeFamily() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSparkPropertiesResponse) *string { return v.NodeSizeFamily }).(pulumi.StringPtrOutput)
+}
+
+// Pool name.
+func (o SynapseSparkPropertiesResponseOutput) PoolName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSparkPropertiesResponse) *string { return v.PoolName }).(pulumi.StringPtrOutput)
+}
+
+// Name of the resource group in which workspace is located.
+func (o SynapseSparkPropertiesResponseOutput) ResourceGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSparkPropertiesResponse) *string { return v.ResourceGroup }).(pulumi.StringPtrOutput)
+}
+
+// Spark version.
+func (o SynapseSparkPropertiesResponseOutput) SparkVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSparkPropertiesResponse) *string { return v.SparkVersion }).(pulumi.StringPtrOutput)
+}
+
+// Azure subscription identifier.
+func (o SynapseSparkPropertiesResponseOutput) SubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSparkPropertiesResponse) *string { return v.SubscriptionId }).(pulumi.StringPtrOutput)
+}
+
+// Name of Azure Machine Learning workspace.
+func (o SynapseSparkPropertiesResponseOutput) WorkspaceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSparkPropertiesResponse) *string { return v.WorkspaceName }).(pulumi.StringPtrOutput)
+}
+
+type SynapseSparkPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SynapseSparkPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SynapseSparkPropertiesResponse)(nil)).Elem()
+}
+
+func (o SynapseSparkPropertiesResponsePtrOutput) ToSynapseSparkPropertiesResponsePtrOutput() SynapseSparkPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o SynapseSparkPropertiesResponsePtrOutput) ToSynapseSparkPropertiesResponsePtrOutputWithContext(ctx context.Context) SynapseSparkPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o SynapseSparkPropertiesResponsePtrOutput) Elem() SynapseSparkPropertiesResponseOutput {
+	return o.ApplyT(func(v *SynapseSparkPropertiesResponse) SynapseSparkPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SynapseSparkPropertiesResponse
+		return ret
+	}).(SynapseSparkPropertiesResponseOutput)
+}
+
+// Auto pause properties.
+func (o SynapseSparkPropertiesResponsePtrOutput) AutoPauseProperties() AutoPausePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *SynapseSparkPropertiesResponse) *AutoPausePropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AutoPauseProperties
+	}).(AutoPausePropertiesResponsePtrOutput)
+}
+
+// Auto scale properties.
+func (o SynapseSparkPropertiesResponsePtrOutput) AutoScaleProperties() AutoScalePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *SynapseSparkPropertiesResponse) *AutoScalePropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AutoScaleProperties
+	}).(AutoScalePropertiesResponsePtrOutput)
+}
+
+// The number of compute nodes currently assigned to the compute.
+func (o SynapseSparkPropertiesResponsePtrOutput) NodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SynapseSparkPropertiesResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Node size.
+func (o SynapseSparkPropertiesResponsePtrOutput) NodeSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynapseSparkPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NodeSize
+	}).(pulumi.StringPtrOutput)
+}
+
+// Node size family.
+func (o SynapseSparkPropertiesResponsePtrOutput) NodeSizeFamily() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynapseSparkPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NodeSizeFamily
+	}).(pulumi.StringPtrOutput)
+}
+
+// Pool name.
+func (o SynapseSparkPropertiesResponsePtrOutput) PoolName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynapseSparkPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PoolName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the resource group in which workspace is located.
+func (o SynapseSparkPropertiesResponsePtrOutput) ResourceGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynapseSparkPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceGroup
+	}).(pulumi.StringPtrOutput)
+}
+
+// Spark version.
+func (o SynapseSparkPropertiesResponsePtrOutput) SparkVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynapseSparkPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SparkVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure subscription identifier.
+func (o SynapseSparkPropertiesResponsePtrOutput) SubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynapseSparkPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubscriptionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of Azure Machine Learning workspace.
+func (o SynapseSparkPropertiesResponsePtrOutput) WorkspaceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynapseSparkPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkspaceName
+	}).(pulumi.StringPtrOutput)
+}
+
 // A SynapseSpark compute.
 type SynapseSparkResponse struct {
 	// Location for the underlying compute
@@ -14897,7 +15622,7 @@ type SynapseSparkResponse struct {
 	IsAttachedCompute bool `pulumi:"isAttachedCompute"`
 	// The time at which the compute was last modified.
 	ModifiedOn string                          `pulumi:"modifiedOn"`
-	Properties *SynapseSparkResponseProperties `pulumi:"properties"`
+	Properties *SynapseSparkPropertiesResponse `pulumi:"properties"`
 	// Errors during provisioning
 	ProvisioningErrors []ErrorResponseResponse `pulumi:"provisioningErrors"`
 	// The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
@@ -14957,8 +15682,8 @@ func (o SynapseSparkResponseOutput) ModifiedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v SynapseSparkResponse) string { return v.ModifiedOn }).(pulumi.StringOutput)
 }
 
-func (o SynapseSparkResponseOutput) Properties() SynapseSparkResponsePropertiesPtrOutput {
-	return o.ApplyT(func(v SynapseSparkResponse) *SynapseSparkResponseProperties { return v.Properties }).(SynapseSparkResponsePropertiesPtrOutput)
+func (o SynapseSparkResponseOutput) Properties() SynapseSparkPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v SynapseSparkResponse) *SynapseSparkPropertiesResponse { return v.Properties }).(SynapseSparkPropertiesResponsePtrOutput)
 }
 
 // Errors during provisioning
@@ -14974,217 +15699,6 @@ func (o SynapseSparkResponseOutput) ProvisioningState() pulumi.StringOutput {
 // ARM resource id of the underlying compute
 func (o SynapseSparkResponseOutput) ResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SynapseSparkResponse) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
-}
-
-type SynapseSparkResponseProperties struct {
-	// Auto pause properties.
-	AutoPauseProperties *AutoPausePropertiesResponse `pulumi:"autoPauseProperties"`
-	// Auto scale properties.
-	AutoScaleProperties *AutoScalePropertiesResponse `pulumi:"autoScaleProperties"`
-	// The number of compute nodes currently assigned to the compute.
-	NodeCount *int `pulumi:"nodeCount"`
-	// Node size.
-	NodeSize *string `pulumi:"nodeSize"`
-	// Node size family.
-	NodeSizeFamily *string `pulumi:"nodeSizeFamily"`
-	// Pool name.
-	PoolName *string `pulumi:"poolName"`
-	// Name of the resource group in which workspace is located.
-	ResourceGroup *string `pulumi:"resourceGroup"`
-	// Spark version.
-	SparkVersion *string `pulumi:"sparkVersion"`
-	// Azure subscription identifier.
-	SubscriptionId *string `pulumi:"subscriptionId"`
-	// Name of Azure Machine Learning workspace.
-	WorkspaceName *string `pulumi:"workspaceName"`
-}
-
-type SynapseSparkResponsePropertiesOutput struct{ *pulumi.OutputState }
-
-func (SynapseSparkResponsePropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SynapseSparkResponseProperties)(nil)).Elem()
-}
-
-func (o SynapseSparkResponsePropertiesOutput) ToSynapseSparkResponsePropertiesOutput() SynapseSparkResponsePropertiesOutput {
-	return o
-}
-
-func (o SynapseSparkResponsePropertiesOutput) ToSynapseSparkResponsePropertiesOutputWithContext(ctx context.Context) SynapseSparkResponsePropertiesOutput {
-	return o
-}
-
-// Auto pause properties.
-func (o SynapseSparkResponsePropertiesOutput) AutoPauseProperties() AutoPausePropertiesResponsePtrOutput {
-	return o.ApplyT(func(v SynapseSparkResponseProperties) *AutoPausePropertiesResponse { return v.AutoPauseProperties }).(AutoPausePropertiesResponsePtrOutput)
-}
-
-// Auto scale properties.
-func (o SynapseSparkResponsePropertiesOutput) AutoScaleProperties() AutoScalePropertiesResponsePtrOutput {
-	return o.ApplyT(func(v SynapseSparkResponseProperties) *AutoScalePropertiesResponse { return v.AutoScaleProperties }).(AutoScalePropertiesResponsePtrOutput)
-}
-
-// The number of compute nodes currently assigned to the compute.
-func (o SynapseSparkResponsePropertiesOutput) NodeCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SynapseSparkResponseProperties) *int { return v.NodeCount }).(pulumi.IntPtrOutput)
-}
-
-// Node size.
-func (o SynapseSparkResponsePropertiesOutput) NodeSize() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SynapseSparkResponseProperties) *string { return v.NodeSize }).(pulumi.StringPtrOutput)
-}
-
-// Node size family.
-func (o SynapseSparkResponsePropertiesOutput) NodeSizeFamily() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SynapseSparkResponseProperties) *string { return v.NodeSizeFamily }).(pulumi.StringPtrOutput)
-}
-
-// Pool name.
-func (o SynapseSparkResponsePropertiesOutput) PoolName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SynapseSparkResponseProperties) *string { return v.PoolName }).(pulumi.StringPtrOutput)
-}
-
-// Name of the resource group in which workspace is located.
-func (o SynapseSparkResponsePropertiesOutput) ResourceGroup() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SynapseSparkResponseProperties) *string { return v.ResourceGroup }).(pulumi.StringPtrOutput)
-}
-
-// Spark version.
-func (o SynapseSparkResponsePropertiesOutput) SparkVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SynapseSparkResponseProperties) *string { return v.SparkVersion }).(pulumi.StringPtrOutput)
-}
-
-// Azure subscription identifier.
-func (o SynapseSparkResponsePropertiesOutput) SubscriptionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SynapseSparkResponseProperties) *string { return v.SubscriptionId }).(pulumi.StringPtrOutput)
-}
-
-// Name of Azure Machine Learning workspace.
-func (o SynapseSparkResponsePropertiesOutput) WorkspaceName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SynapseSparkResponseProperties) *string { return v.WorkspaceName }).(pulumi.StringPtrOutput)
-}
-
-type SynapseSparkResponsePropertiesPtrOutput struct{ *pulumi.OutputState }
-
-func (SynapseSparkResponsePropertiesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SynapseSparkResponseProperties)(nil)).Elem()
-}
-
-func (o SynapseSparkResponsePropertiesPtrOutput) ToSynapseSparkResponsePropertiesPtrOutput() SynapseSparkResponsePropertiesPtrOutput {
-	return o
-}
-
-func (o SynapseSparkResponsePropertiesPtrOutput) ToSynapseSparkResponsePropertiesPtrOutputWithContext(ctx context.Context) SynapseSparkResponsePropertiesPtrOutput {
-	return o
-}
-
-func (o SynapseSparkResponsePropertiesPtrOutput) Elem() SynapseSparkResponsePropertiesOutput {
-	return o.ApplyT(func(v *SynapseSparkResponseProperties) SynapseSparkResponseProperties {
-		if v != nil {
-			return *v
-		}
-		var ret SynapseSparkResponseProperties
-		return ret
-	}).(SynapseSparkResponsePropertiesOutput)
-}
-
-// Auto pause properties.
-func (o SynapseSparkResponsePropertiesPtrOutput) AutoPauseProperties() AutoPausePropertiesResponsePtrOutput {
-	return o.ApplyT(func(v *SynapseSparkResponseProperties) *AutoPausePropertiesResponse {
-		if v == nil {
-			return nil
-		}
-		return v.AutoPauseProperties
-	}).(AutoPausePropertiesResponsePtrOutput)
-}
-
-// Auto scale properties.
-func (o SynapseSparkResponsePropertiesPtrOutput) AutoScaleProperties() AutoScalePropertiesResponsePtrOutput {
-	return o.ApplyT(func(v *SynapseSparkResponseProperties) *AutoScalePropertiesResponse {
-		if v == nil {
-			return nil
-		}
-		return v.AutoScaleProperties
-	}).(AutoScalePropertiesResponsePtrOutput)
-}
-
-// The number of compute nodes currently assigned to the compute.
-func (o SynapseSparkResponsePropertiesPtrOutput) NodeCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *SynapseSparkResponseProperties) *int {
-		if v == nil {
-			return nil
-		}
-		return v.NodeCount
-	}).(pulumi.IntPtrOutput)
-}
-
-// Node size.
-func (o SynapseSparkResponsePropertiesPtrOutput) NodeSize() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SynapseSparkResponseProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.NodeSize
-	}).(pulumi.StringPtrOutput)
-}
-
-// Node size family.
-func (o SynapseSparkResponsePropertiesPtrOutput) NodeSizeFamily() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SynapseSparkResponseProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.NodeSizeFamily
-	}).(pulumi.StringPtrOutput)
-}
-
-// Pool name.
-func (o SynapseSparkResponsePropertiesPtrOutput) PoolName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SynapseSparkResponseProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PoolName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Name of the resource group in which workspace is located.
-func (o SynapseSparkResponsePropertiesPtrOutput) ResourceGroup() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SynapseSparkResponseProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ResourceGroup
-	}).(pulumi.StringPtrOutput)
-}
-
-// Spark version.
-func (o SynapseSparkResponsePropertiesPtrOutput) SparkVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SynapseSparkResponseProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SparkVersion
-	}).(pulumi.StringPtrOutput)
-}
-
-// Azure subscription identifier.
-func (o SynapseSparkResponsePropertiesPtrOutput) SubscriptionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SynapseSparkResponseProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SubscriptionId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Name of Azure Machine Learning workspace.
-func (o SynapseSparkResponsePropertiesPtrOutput) WorkspaceName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SynapseSparkResponseProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.WorkspaceName
-	}).(pulumi.StringPtrOutput)
 }
 
 type SystemCreatedAcrAccount struct {
@@ -17654,9 +18168,9 @@ type TextClassification struct {
 	FeaturizationSettings *NlpVerticalFeaturizationSettings `pulumi:"featurizationSettings"`
 	// Execution constraints for AutoMLJob.
 	LimitSettings *NlpVerticalLimitSettings `pulumi:"limitSettings"`
-	// Log verbosity for the job.
+	// Enum for setting log verbosity.
 	LogVerbosity *string `pulumi:"logVerbosity"`
-	// Primary metric for Text-Classification task.
+	// Primary metrics for classification tasks.
 	PrimaryMetric *string `pulumi:"primaryMetric"`
 	// Target column name: This is prediction values column.
 	// Also known as label column name in context of classification tasks.
@@ -17711,9 +18225,9 @@ type TextClassificationArgs struct {
 	FeaturizationSettings NlpVerticalFeaturizationSettingsPtrInput `pulumi:"featurizationSettings"`
 	// Execution constraints for AutoMLJob.
 	LimitSettings NlpVerticalLimitSettingsPtrInput `pulumi:"limitSettings"`
-	// Log verbosity for the job.
+	// Enum for setting log verbosity.
 	LogVerbosity pulumi.StringPtrInput `pulumi:"logVerbosity"`
-	// Primary metric for Text-Classification task.
+	// Primary metrics for classification tasks.
 	PrimaryMetric pulumi.StringPtrInput `pulumi:"primaryMetric"`
 	// Target column name: This is prediction values column.
 	// Also known as label column name in context of classification tasks.
@@ -17781,12 +18295,12 @@ func (o TextClassificationOutput) LimitSettings() NlpVerticalLimitSettingsPtrOut
 	return o.ApplyT(func(v TextClassification) *NlpVerticalLimitSettings { return v.LimitSettings }).(NlpVerticalLimitSettingsPtrOutput)
 }
 
-// Log verbosity for the job.
+// Enum for setting log verbosity.
 func (o TextClassificationOutput) LogVerbosity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TextClassification) *string { return v.LogVerbosity }).(pulumi.StringPtrOutput)
 }
 
-// Primary metric for Text-Classification task.
+// Primary metrics for classification tasks.
 func (o TextClassificationOutput) PrimaryMetric() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TextClassification) *string { return v.PrimaryMetric }).(pulumi.StringPtrOutput)
 }
@@ -17820,7 +18334,7 @@ type TextClassificationMultilabel struct {
 	FeaturizationSettings *NlpVerticalFeaturizationSettings `pulumi:"featurizationSettings"`
 	// Execution constraints for AutoMLJob.
 	LimitSettings *NlpVerticalLimitSettings `pulumi:"limitSettings"`
-	// Log verbosity for the job.
+	// Enum for setting log verbosity.
 	LogVerbosity *string `pulumi:"logVerbosity"`
 	// Target column name: This is prediction values column.
 	// Also known as label column name in context of classification tasks.
@@ -17871,7 +18385,7 @@ type TextClassificationMultilabelArgs struct {
 	FeaturizationSettings NlpVerticalFeaturizationSettingsPtrInput `pulumi:"featurizationSettings"`
 	// Execution constraints for AutoMLJob.
 	LimitSettings NlpVerticalLimitSettingsPtrInput `pulumi:"limitSettings"`
-	// Log verbosity for the job.
+	// Enum for setting log verbosity.
 	LogVerbosity pulumi.StringPtrInput `pulumi:"logVerbosity"`
 	// Target column name: This is prediction values column.
 	// Also known as label column name in context of classification tasks.
@@ -17936,7 +18450,7 @@ func (o TextClassificationMultilabelOutput) LimitSettings() NlpVerticalLimitSett
 	return o.ApplyT(func(v TextClassificationMultilabel) *NlpVerticalLimitSettings { return v.LimitSettings }).(NlpVerticalLimitSettingsPtrOutput)
 }
 
-// Log verbosity for the job.
+// Enum for setting log verbosity.
 func (o TextClassificationMultilabelOutput) LogVerbosity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TextClassificationMultilabel) *string { return v.LogVerbosity }).(pulumi.StringPtrOutput)
 }
@@ -17970,7 +18484,7 @@ type TextClassificationMultilabelResponse struct {
 	FeaturizationSettings *NlpVerticalFeaturizationSettingsResponse `pulumi:"featurizationSettings"`
 	// Execution constraints for AutoMLJob.
 	LimitSettings *NlpVerticalLimitSettingsResponse `pulumi:"limitSettings"`
-	// Log verbosity for the job.
+	// Enum for setting log verbosity.
 	LogVerbosity *string `pulumi:"logVerbosity"`
 	// Primary metric for Text-Classification-Multilabel task.
 	// Currently only Accuracy is supported as primary metric, hence user need not set it explicitly.
@@ -18034,7 +18548,7 @@ func (o TextClassificationMultilabelResponseOutput) LimitSettings() NlpVerticalL
 	return o.ApplyT(func(v TextClassificationMultilabelResponse) *NlpVerticalLimitSettingsResponse { return v.LimitSettings }).(NlpVerticalLimitSettingsResponsePtrOutput)
 }
 
-// Log verbosity for the job.
+// Enum for setting log verbosity.
 func (o TextClassificationMultilabelResponseOutput) LogVerbosity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TextClassificationMultilabelResponse) *string { return v.LogVerbosity }).(pulumi.StringPtrOutput)
 }
@@ -18074,9 +18588,9 @@ type TextClassificationResponse struct {
 	FeaturizationSettings *NlpVerticalFeaturizationSettingsResponse `pulumi:"featurizationSettings"`
 	// Execution constraints for AutoMLJob.
 	LimitSettings *NlpVerticalLimitSettingsResponse `pulumi:"limitSettings"`
-	// Log verbosity for the job.
+	// Enum for setting log verbosity.
 	LogVerbosity *string `pulumi:"logVerbosity"`
-	// Primary metric for Text-Classification task.
+	// Primary metrics for classification tasks.
 	PrimaryMetric *string `pulumi:"primaryMetric"`
 	// Target column name: This is prediction values column.
 	// Also known as label column name in context of classification tasks.
@@ -18141,12 +18655,12 @@ func (o TextClassificationResponseOutput) LimitSettings() NlpVerticalLimitSettin
 	return o.ApplyT(func(v TextClassificationResponse) *NlpVerticalLimitSettingsResponse { return v.LimitSettings }).(NlpVerticalLimitSettingsResponsePtrOutput)
 }
 
-// Log verbosity for the job.
+// Enum for setting log verbosity.
 func (o TextClassificationResponseOutput) LogVerbosity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TextClassificationResponse) *string { return v.LogVerbosity }).(pulumi.StringPtrOutput)
 }
 
-// Primary metric for Text-Classification task.
+// Primary metrics for classification tasks.
 func (o TextClassificationResponseOutput) PrimaryMetric() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TextClassificationResponse) *string { return v.PrimaryMetric }).(pulumi.StringPtrOutput)
 }
@@ -18181,7 +18695,7 @@ type TextNer struct {
 	FeaturizationSettings *NlpVerticalFeaturizationSettings `pulumi:"featurizationSettings"`
 	// Execution constraints for AutoMLJob.
 	LimitSettings *NlpVerticalLimitSettings `pulumi:"limitSettings"`
-	// Log verbosity for the job.
+	// Enum for setting log verbosity.
 	LogVerbosity *string `pulumi:"logVerbosity"`
 	// Target column name: This is prediction values column.
 	// Also known as label column name in context of classification tasks.
@@ -18233,7 +18747,7 @@ type TextNerArgs struct {
 	FeaturizationSettings NlpVerticalFeaturizationSettingsPtrInput `pulumi:"featurizationSettings"`
 	// Execution constraints for AutoMLJob.
 	LimitSettings NlpVerticalLimitSettingsPtrInput `pulumi:"limitSettings"`
-	// Log verbosity for the job.
+	// Enum for setting log verbosity.
 	LogVerbosity pulumi.StringPtrInput `pulumi:"logVerbosity"`
 	// Target column name: This is prediction values column.
 	// Also known as label column name in context of classification tasks.
@@ -18299,7 +18813,7 @@ func (o TextNerOutput) LimitSettings() NlpVerticalLimitSettingsPtrOutput {
 	return o.ApplyT(func(v TextNer) *NlpVerticalLimitSettings { return v.LimitSettings }).(NlpVerticalLimitSettingsPtrOutput)
 }
 
-// Log verbosity for the job.
+// Enum for setting log verbosity.
 func (o TextNerOutput) LogVerbosity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TextNer) *string { return v.LogVerbosity }).(pulumi.StringPtrOutput)
 }
@@ -18334,7 +18848,7 @@ type TextNerResponse struct {
 	FeaturizationSettings *NlpVerticalFeaturizationSettingsResponse `pulumi:"featurizationSettings"`
 	// Execution constraints for AutoMLJob.
 	LimitSettings *NlpVerticalLimitSettingsResponse `pulumi:"limitSettings"`
-	// Log verbosity for the job.
+	// Enum for setting log verbosity.
 	LogVerbosity *string `pulumi:"logVerbosity"`
 	// Primary metric for Text-NER task.
 	// Only 'Accuracy' is supported for Text-NER, so user need not set this explicitly.
@@ -18397,7 +18911,7 @@ func (o TextNerResponseOutput) LimitSettings() NlpVerticalLimitSettingsResponseP
 	return o.ApplyT(func(v TextNerResponse) *NlpVerticalLimitSettingsResponse { return v.LimitSettings }).(NlpVerticalLimitSettingsResponsePtrOutput)
 }
 
-// Log verbosity for the job.
+// Enum for setting log verbosity.
 func (o TextNerResponseOutput) LogVerbosity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TextNerResponse) *string { return v.LogVerbosity }).(pulumi.StringPtrOutput)
 }
@@ -18430,7 +18944,6 @@ func (o TextNerResponseOutput) ValidationData() MLTableJobInputResponsePtrOutput
 	return o.ApplyT(func(v TextNerResponse) *MLTableJobInputResponse { return v.ValidationData }).(MLTableJobInputResponsePtrOutput)
 }
 
-// Describes the tmpfs options for the container
 type TmpfsOptions struct {
 	// Mention the Tmpfs size
 	Size *int `pulumi:"size"`
@@ -18447,7 +18960,6 @@ type TmpfsOptionsInput interface {
 	ToTmpfsOptionsOutputWithContext(context.Context) TmpfsOptionsOutput
 }
 
-// Describes the tmpfs options for the container
 type TmpfsOptionsArgs struct {
 	// Mention the Tmpfs size
 	Size pulumi.IntPtrInput `pulumi:"size"`
@@ -18506,7 +19018,6 @@ func (i *tmpfsOptionsPtrType) ToTmpfsOptionsPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(TmpfsOptionsPtrOutput)
 }
 
-// Describes the tmpfs options for the container
 type TmpfsOptionsOutput struct{ *pulumi.OutputState }
 
 func (TmpfsOptionsOutput) ElementType() reflect.Type {
@@ -18570,13 +19081,11 @@ func (o TmpfsOptionsPtrOutput) Size() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Describes the tmpfs options for the container
 type TmpfsOptionsResponse struct {
 	// Mention the Tmpfs size
 	Size *int `pulumi:"size"`
 }
 
-// Describes the tmpfs options for the container
 type TmpfsOptionsResponseOutput struct{ *pulumi.OutputState }
 
 func (TmpfsOptionsResponseOutput) ElementType() reflect.Type {
@@ -19096,7 +19605,7 @@ type TritonModelJobInput struct {
 	// Enum to determine the Job Input Type.
 	// Expected value is 'triton_model'.
 	JobInputType string `pulumi:"jobInputType"`
-	// Input Asset Delivery Mode.
+	// Enum to determine the input data delivery mode.
 	Mode *string `pulumi:"mode"`
 	// [Required] Input Asset URI.
 	Uri string `pulumi:"uri"`
@@ -19132,7 +19641,7 @@ type TritonModelJobInputArgs struct {
 	// Enum to determine the Job Input Type.
 	// Expected value is 'triton_model'.
 	JobInputType pulumi.StringInput `pulumi:"jobInputType"`
-	// Input Asset Delivery Mode.
+	// Enum to determine the input data delivery mode.
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
 	// [Required] Input Asset URI.
 	Uri pulumi.StringInput `pulumi:"uri"`
@@ -19186,7 +19695,7 @@ func (o TritonModelJobInputOutput) JobInputType() pulumi.StringOutput {
 	return o.ApplyT(func(v TritonModelJobInput) string { return v.JobInputType }).(pulumi.StringOutput)
 }
 
-// Input Asset Delivery Mode.
+// Enum to determine the input data delivery mode.
 func (o TritonModelJobInputOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TritonModelJobInput) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
@@ -19202,7 +19711,7 @@ type TritonModelJobInputResponse struct {
 	// Enum to determine the Job Input Type.
 	// Expected value is 'triton_model'.
 	JobInputType string `pulumi:"jobInputType"`
-	// Input Asset Delivery Mode.
+	// Enum to determine the input data delivery mode.
 	Mode *string `pulumi:"mode"`
 	// [Required] Input Asset URI.
 	Uri string `pulumi:"uri"`
@@ -19246,7 +19755,7 @@ func (o TritonModelJobInputResponseOutput) JobInputType() pulumi.StringOutput {
 	return o.ApplyT(func(v TritonModelJobInputResponse) string { return v.JobInputType }).(pulumi.StringOutput)
 }
 
-// Input Asset Delivery Mode.
+// Enum to determine the input data delivery mode.
 func (o TritonModelJobInputResponseOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TritonModelJobInputResponse) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
@@ -19257,12 +19766,14 @@ func (o TritonModelJobInputResponseOutput) Uri() pulumi.StringOutput {
 }
 
 type TritonModelJobOutput struct {
+	// Output Asset Name.
+	AssetName *string `pulumi:"assetName"`
 	// Description for the output.
 	Description *string `pulumi:"description"`
 	// Enum to determine the Job Output Type.
 	// Expected value is 'triton_model'.
 	JobOutputType string `pulumi:"jobOutputType"`
-	// Output Asset Delivery Mode.
+	// Output data delivery mode enums.
 	Mode *string `pulumi:"mode"`
 	// Output Asset URI.
 	Uri *string `pulumi:"uri"`
@@ -19293,12 +19804,14 @@ type TritonModelJobOutputInput interface {
 }
 
 type TritonModelJobOutputArgs struct {
+	// Output Asset Name.
+	AssetName pulumi.StringPtrInput `pulumi:"assetName"`
 	// Description for the output.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Enum to determine the Job Output Type.
 	// Expected value is 'triton_model'.
 	JobOutputType pulumi.StringInput `pulumi:"jobOutputType"`
-	// Output Asset Delivery Mode.
+	// Output data delivery mode enums.
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
 	// Output Asset URI.
 	Uri pulumi.StringPtrInput `pulumi:"uri"`
@@ -19341,6 +19854,11 @@ func (o TritonModelJobOutputOutput) ToTritonModelJobOutputOutputWithContext(ctx 
 	return o
 }
 
+// Output Asset Name.
+func (o TritonModelJobOutputOutput) AssetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TritonModelJobOutput) *string { return v.AssetName }).(pulumi.StringPtrOutput)
+}
+
 // Description for the output.
 func (o TritonModelJobOutputOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TritonModelJobOutput) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -19352,7 +19870,7 @@ func (o TritonModelJobOutputOutput) JobOutputType() pulumi.StringOutput {
 	return o.ApplyT(func(v TritonModelJobOutput) string { return v.JobOutputType }).(pulumi.StringOutput)
 }
 
-// Output Asset Delivery Mode.
+// Output data delivery mode enums.
 func (o TritonModelJobOutputOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TritonModelJobOutput) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
@@ -19363,12 +19881,14 @@ func (o TritonModelJobOutputOutput) Uri() pulumi.StringPtrOutput {
 }
 
 type TritonModelJobOutputResponse struct {
+	// Output Asset Name.
+	AssetName *string `pulumi:"assetName"`
 	// Description for the output.
 	Description *string `pulumi:"description"`
 	// Enum to determine the Job Output Type.
 	// Expected value is 'triton_model'.
 	JobOutputType string `pulumi:"jobOutputType"`
-	// Output Asset Delivery Mode.
+	// Output data delivery mode enums.
 	Mode *string `pulumi:"mode"`
 	// Output Asset URI.
 	Uri *string `pulumi:"uri"`
@@ -19401,6 +19921,11 @@ func (o TritonModelJobOutputResponseOutput) ToTritonModelJobOutputResponseOutput
 	return o
 }
 
+// Output Asset Name.
+func (o TritonModelJobOutputResponseOutput) AssetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TritonModelJobOutputResponse) *string { return v.AssetName }).(pulumi.StringPtrOutput)
+}
+
 // Description for the output.
 func (o TritonModelJobOutputResponseOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TritonModelJobOutputResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -19412,7 +19937,7 @@ func (o TritonModelJobOutputResponseOutput) JobOutputType() pulumi.StringOutput 
 	return o.ApplyT(func(v TritonModelJobOutputResponse) string { return v.JobOutputType }).(pulumi.StringOutput)
 }
 
-// Output Asset Delivery Mode.
+// Output data delivery mode enums.
 func (o TritonModelJobOutputResponseOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TritonModelJobOutputResponse) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
@@ -20025,7 +20550,7 @@ type UriFileJobInput struct {
 	// Enum to determine the Job Input Type.
 	// Expected value is 'uri_file'.
 	JobInputType string `pulumi:"jobInputType"`
-	// Input Asset Delivery Mode.
+	// Enum to determine the input data delivery mode.
 	Mode *string `pulumi:"mode"`
 	// [Required] Input Asset URI.
 	Uri string `pulumi:"uri"`
@@ -20061,7 +20586,7 @@ type UriFileJobInputArgs struct {
 	// Enum to determine the Job Input Type.
 	// Expected value is 'uri_file'.
 	JobInputType pulumi.StringInput `pulumi:"jobInputType"`
-	// Input Asset Delivery Mode.
+	// Enum to determine the input data delivery mode.
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
 	// [Required] Input Asset URI.
 	Uri pulumi.StringInput `pulumi:"uri"`
@@ -20115,7 +20640,7 @@ func (o UriFileJobInputOutput) JobInputType() pulumi.StringOutput {
 	return o.ApplyT(func(v UriFileJobInput) string { return v.JobInputType }).(pulumi.StringOutput)
 }
 
-// Input Asset Delivery Mode.
+// Enum to determine the input data delivery mode.
 func (o UriFileJobInputOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UriFileJobInput) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
@@ -20131,7 +20656,7 @@ type UriFileJobInputResponse struct {
 	// Enum to determine the Job Input Type.
 	// Expected value is 'uri_file'.
 	JobInputType string `pulumi:"jobInputType"`
-	// Input Asset Delivery Mode.
+	// Enum to determine the input data delivery mode.
 	Mode *string `pulumi:"mode"`
 	// [Required] Input Asset URI.
 	Uri string `pulumi:"uri"`
@@ -20175,7 +20700,7 @@ func (o UriFileJobInputResponseOutput) JobInputType() pulumi.StringOutput {
 	return o.ApplyT(func(v UriFileJobInputResponse) string { return v.JobInputType }).(pulumi.StringOutput)
 }
 
-// Input Asset Delivery Mode.
+// Enum to determine the input data delivery mode.
 func (o UriFileJobInputResponseOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UriFileJobInputResponse) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
@@ -20186,12 +20711,14 @@ func (o UriFileJobInputResponseOutput) Uri() pulumi.StringOutput {
 }
 
 type UriFileJobOutput struct {
+	// Output Asset Name.
+	AssetName *string `pulumi:"assetName"`
 	// Description for the output.
 	Description *string `pulumi:"description"`
 	// Enum to determine the Job Output Type.
 	// Expected value is 'uri_file'.
 	JobOutputType string `pulumi:"jobOutputType"`
-	// Output Asset Delivery Mode.
+	// Output data delivery mode enums.
 	Mode *string `pulumi:"mode"`
 	// Output Asset URI.
 	Uri *string `pulumi:"uri"`
@@ -20222,12 +20749,14 @@ type UriFileJobOutputInput interface {
 }
 
 type UriFileJobOutputArgs struct {
+	// Output Asset Name.
+	AssetName pulumi.StringPtrInput `pulumi:"assetName"`
 	// Description for the output.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Enum to determine the Job Output Type.
 	// Expected value is 'uri_file'.
 	JobOutputType pulumi.StringInput `pulumi:"jobOutputType"`
-	// Output Asset Delivery Mode.
+	// Output data delivery mode enums.
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
 	// Output Asset URI.
 	Uri pulumi.StringPtrInput `pulumi:"uri"`
@@ -20270,6 +20799,11 @@ func (o UriFileJobOutputOutput) ToUriFileJobOutputOutputWithContext(ctx context.
 	return o
 }
 
+// Output Asset Name.
+func (o UriFileJobOutputOutput) AssetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UriFileJobOutput) *string { return v.AssetName }).(pulumi.StringPtrOutput)
+}
+
 // Description for the output.
 func (o UriFileJobOutputOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UriFileJobOutput) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -20281,7 +20815,7 @@ func (o UriFileJobOutputOutput) JobOutputType() pulumi.StringOutput {
 	return o.ApplyT(func(v UriFileJobOutput) string { return v.JobOutputType }).(pulumi.StringOutput)
 }
 
-// Output Asset Delivery Mode.
+// Output data delivery mode enums.
 func (o UriFileJobOutputOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UriFileJobOutput) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
@@ -20292,12 +20826,14 @@ func (o UriFileJobOutputOutput) Uri() pulumi.StringPtrOutput {
 }
 
 type UriFileJobOutputResponse struct {
+	// Output Asset Name.
+	AssetName *string `pulumi:"assetName"`
 	// Description for the output.
 	Description *string `pulumi:"description"`
 	// Enum to determine the Job Output Type.
 	// Expected value is 'uri_file'.
 	JobOutputType string `pulumi:"jobOutputType"`
-	// Output Asset Delivery Mode.
+	// Output data delivery mode enums.
 	Mode *string `pulumi:"mode"`
 	// Output Asset URI.
 	Uri *string `pulumi:"uri"`
@@ -20330,6 +20866,11 @@ func (o UriFileJobOutputResponseOutput) ToUriFileJobOutputResponseOutputWithCont
 	return o
 }
 
+// Output Asset Name.
+func (o UriFileJobOutputResponseOutput) AssetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UriFileJobOutputResponse) *string { return v.AssetName }).(pulumi.StringPtrOutput)
+}
+
 // Description for the output.
 func (o UriFileJobOutputResponseOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UriFileJobOutputResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -20341,7 +20882,7 @@ func (o UriFileJobOutputResponseOutput) JobOutputType() pulumi.StringOutput {
 	return o.ApplyT(func(v UriFileJobOutputResponse) string { return v.JobOutputType }).(pulumi.StringOutput)
 }
 
-// Output Asset Delivery Mode.
+// Output data delivery mode enums.
 func (o UriFileJobOutputResponseOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UriFileJobOutputResponse) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
@@ -20587,7 +21128,7 @@ type UriFolderJobInput struct {
 	// Enum to determine the Job Input Type.
 	// Expected value is 'uri_folder'.
 	JobInputType string `pulumi:"jobInputType"`
-	// Input Asset Delivery Mode.
+	// Enum to determine the input data delivery mode.
 	Mode *string `pulumi:"mode"`
 	// [Required] Input Asset URI.
 	Uri string `pulumi:"uri"`
@@ -20623,7 +21164,7 @@ type UriFolderJobInputArgs struct {
 	// Enum to determine the Job Input Type.
 	// Expected value is 'uri_folder'.
 	JobInputType pulumi.StringInput `pulumi:"jobInputType"`
-	// Input Asset Delivery Mode.
+	// Enum to determine the input data delivery mode.
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
 	// [Required] Input Asset URI.
 	Uri pulumi.StringInput `pulumi:"uri"`
@@ -20677,7 +21218,7 @@ func (o UriFolderJobInputOutput) JobInputType() pulumi.StringOutput {
 	return o.ApplyT(func(v UriFolderJobInput) string { return v.JobInputType }).(pulumi.StringOutput)
 }
 
-// Input Asset Delivery Mode.
+// Enum to determine the input data delivery mode.
 func (o UriFolderJobInputOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UriFolderJobInput) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
@@ -20693,7 +21234,7 @@ type UriFolderJobInputResponse struct {
 	// Enum to determine the Job Input Type.
 	// Expected value is 'uri_folder'.
 	JobInputType string `pulumi:"jobInputType"`
-	// Input Asset Delivery Mode.
+	// Enum to determine the input data delivery mode.
 	Mode *string `pulumi:"mode"`
 	// [Required] Input Asset URI.
 	Uri string `pulumi:"uri"`
@@ -20737,7 +21278,7 @@ func (o UriFolderJobInputResponseOutput) JobInputType() pulumi.StringOutput {
 	return o.ApplyT(func(v UriFolderJobInputResponse) string { return v.JobInputType }).(pulumi.StringOutput)
 }
 
-// Input Asset Delivery Mode.
+// Enum to determine the input data delivery mode.
 func (o UriFolderJobInputResponseOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UriFolderJobInputResponse) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
@@ -20748,12 +21289,14 @@ func (o UriFolderJobInputResponseOutput) Uri() pulumi.StringOutput {
 }
 
 type UriFolderJobOutput struct {
+	// Output Asset Name.
+	AssetName *string `pulumi:"assetName"`
 	// Description for the output.
 	Description *string `pulumi:"description"`
 	// Enum to determine the Job Output Type.
 	// Expected value is 'uri_folder'.
 	JobOutputType string `pulumi:"jobOutputType"`
-	// Output Asset Delivery Mode.
+	// Output data delivery mode enums.
 	Mode *string `pulumi:"mode"`
 	// Output Asset URI.
 	Uri *string `pulumi:"uri"`
@@ -20784,12 +21327,14 @@ type UriFolderJobOutputInput interface {
 }
 
 type UriFolderJobOutputArgs struct {
+	// Output Asset Name.
+	AssetName pulumi.StringPtrInput `pulumi:"assetName"`
 	// Description for the output.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Enum to determine the Job Output Type.
 	// Expected value is 'uri_folder'.
 	JobOutputType pulumi.StringInput `pulumi:"jobOutputType"`
-	// Output Asset Delivery Mode.
+	// Output data delivery mode enums.
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
 	// Output Asset URI.
 	Uri pulumi.StringPtrInput `pulumi:"uri"`
@@ -20832,6 +21377,11 @@ func (o UriFolderJobOutputOutput) ToUriFolderJobOutputOutputWithContext(ctx cont
 	return o
 }
 
+// Output Asset Name.
+func (o UriFolderJobOutputOutput) AssetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UriFolderJobOutput) *string { return v.AssetName }).(pulumi.StringPtrOutput)
+}
+
 // Description for the output.
 func (o UriFolderJobOutputOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UriFolderJobOutput) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -20843,7 +21393,7 @@ func (o UriFolderJobOutputOutput) JobOutputType() pulumi.StringOutput {
 	return o.ApplyT(func(v UriFolderJobOutput) string { return v.JobOutputType }).(pulumi.StringOutput)
 }
 
-// Output Asset Delivery Mode.
+// Output data delivery mode enums.
 func (o UriFolderJobOutputOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UriFolderJobOutput) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
@@ -20854,12 +21404,14 @@ func (o UriFolderJobOutputOutput) Uri() pulumi.StringPtrOutput {
 }
 
 type UriFolderJobOutputResponse struct {
+	// Output Asset Name.
+	AssetName *string `pulumi:"assetName"`
 	// Description for the output.
 	Description *string `pulumi:"description"`
 	// Enum to determine the Job Output Type.
 	// Expected value is 'uri_folder'.
 	JobOutputType string `pulumi:"jobOutputType"`
-	// Output Asset Delivery Mode.
+	// Output data delivery mode enums.
 	Mode *string `pulumi:"mode"`
 	// Output Asset URI.
 	Uri *string `pulumi:"uri"`
@@ -20892,6 +21444,11 @@ func (o UriFolderJobOutputResponseOutput) ToUriFolderJobOutputResponseOutputWith
 	return o
 }
 
+// Output Asset Name.
+func (o UriFolderJobOutputResponseOutput) AssetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UriFolderJobOutputResponse) *string { return v.AssetName }).(pulumi.StringPtrOutput)
+}
+
 // Description for the output.
 func (o UriFolderJobOutputResponseOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UriFolderJobOutputResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -20903,7 +21460,7 @@ func (o UriFolderJobOutputResponseOutput) JobOutputType() pulumi.StringOutput {
 	return o.ApplyT(func(v UriFolderJobOutputResponse) string { return v.JobOutputType }).(pulumi.StringOutput)
 }
 
-// Output Asset Delivery Mode.
+// Output data delivery mode enums.
 func (o UriFolderJobOutputResponseOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UriFolderJobOutputResponse) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
@@ -21621,16 +22178,16 @@ type UsernamePasswordAuthTypeWorkspaceConnectionProperties struct {
 	// Category of the connection
 	Category      *string                              `pulumi:"category"`
 	Credentials   *WorkspaceConnectionUsernamePassword `pulumi:"credentials"`
+	Error         *string                              `pulumi:"error"`
 	ExpiryTime    *string                              `pulumi:"expiryTime"`
 	IsSharedToAll *bool                                `pulumi:"isSharedToAll"`
 	// Store user metadata for this connection
-	Metadata       map[string]string `pulumi:"metadata"`
-	SharedUserList []string          `pulumi:"sharedUserList"`
-	Target         *string           `pulumi:"target"`
-	// Value details of the workspace connection.
-	Value *string `pulumi:"value"`
-	// format for the workspace connection value
-	ValueFormat *string `pulumi:"valueFormat"`
+	Metadata                    map[string]string `pulumi:"metadata"`
+	PeRequirement               *string           `pulumi:"peRequirement"`
+	PeStatus                    *string           `pulumi:"peStatus"`
+	SharedUserList              []string          `pulumi:"sharedUserList"`
+	Target                      *string           `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
 }
 
 // UsernamePasswordAuthTypeWorkspaceConnectionPropertiesInput is an input type that accepts UsernamePasswordAuthTypeWorkspaceConnectionPropertiesArgs and UsernamePasswordAuthTypeWorkspaceConnectionPropertiesOutput values.
@@ -21651,16 +22208,16 @@ type UsernamePasswordAuthTypeWorkspaceConnectionPropertiesArgs struct {
 	// Category of the connection
 	Category      pulumi.StringPtrInput                       `pulumi:"category"`
 	Credentials   WorkspaceConnectionUsernamePasswordPtrInput `pulumi:"credentials"`
+	Error         pulumi.StringPtrInput                       `pulumi:"error"`
 	ExpiryTime    pulumi.StringPtrInput                       `pulumi:"expiryTime"`
 	IsSharedToAll pulumi.BoolPtrInput                         `pulumi:"isSharedToAll"`
 	// Store user metadata for this connection
-	Metadata       pulumi.StringMapInput   `pulumi:"metadata"`
-	SharedUserList pulumi.StringArrayInput `pulumi:"sharedUserList"`
-	Target         pulumi.StringPtrInput   `pulumi:"target"`
-	// Value details of the workspace connection.
-	Value pulumi.StringPtrInput `pulumi:"value"`
-	// format for the workspace connection value
-	ValueFormat pulumi.StringPtrInput `pulumi:"valueFormat"`
+	Metadata                    pulumi.StringMapInput   `pulumi:"metadata"`
+	PeRequirement               pulumi.StringPtrInput   `pulumi:"peRequirement"`
+	PeStatus                    pulumi.StringPtrInput   `pulumi:"peStatus"`
+	SharedUserList              pulumi.StringArrayInput `pulumi:"sharedUserList"`
+	Target                      pulumi.StringPtrInput   `pulumi:"target"`
+	UseWorkspaceManagedIdentity pulumi.BoolPtrInput     `pulumi:"useWorkspaceManagedIdentity"`
 }
 
 func (UsernamePasswordAuthTypeWorkspaceConnectionPropertiesArgs) ElementType() reflect.Type {
@@ -21706,6 +22263,10 @@ func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesOutput) Credentials
 	}).(WorkspaceConnectionUsernamePasswordPtrOutput)
 }
 
+func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesOutput) Error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionProperties) *string { return v.Error }).(pulumi.StringPtrOutput)
+}
+
 func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesOutput) ExpiryTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionProperties) *string { return v.ExpiryTime }).(pulumi.StringPtrOutput)
 }
@@ -21719,6 +22280,14 @@ func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesOutput) Metadata() 
 	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionProperties) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
+func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesOutput) PeRequirement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionProperties) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
+}
+
+func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesOutput) PeStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionProperties) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
+}
+
 func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesOutput) SharedUserList() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionProperties) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
 }
@@ -21727,14 +22296,10 @@ func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesOutput) Target() pu
 	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionProperties) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
 
-// Value details of the workspace connection.
-func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionProperties) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-// format for the workspace connection value
-func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesOutput) ValueFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionProperties) *string { return v.ValueFormat }).(pulumi.StringPtrOutput)
+func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesOutput) UseWorkspaceManagedIdentity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionProperties) *bool {
+		return v.UseWorkspaceManagedIdentity
+	}).(pulumi.BoolPtrOutput)
 }
 
 type UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse struct {
@@ -21742,21 +22307,22 @@ type UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse struct {
 	// Expected value is 'UsernamePassword'.
 	AuthType string `pulumi:"authType"`
 	// Category of the connection
-	Category                *string                                      `pulumi:"category"`
+	Category *string `pulumi:"category"`
+	// A type definition that refers the id to an Azure Resource Manager resource.
 	CreatedByWorkspaceArmId string                                       `pulumi:"createdByWorkspaceArmId"`
 	Credentials             *WorkspaceConnectionUsernamePasswordResponse `pulumi:"credentials"`
+	Error                   *string                                      `pulumi:"error"`
 	ExpiryTime              *string                                      `pulumi:"expiryTime"`
 	// Group based on connection category
 	Group         string `pulumi:"group"`
 	IsSharedToAll *bool  `pulumi:"isSharedToAll"`
 	// Store user metadata for this connection
-	Metadata       map[string]string `pulumi:"metadata"`
-	SharedUserList []string          `pulumi:"sharedUserList"`
-	Target         *string           `pulumi:"target"`
-	// Value details of the workspace connection.
-	Value *string `pulumi:"value"`
-	// format for the workspace connection value
-	ValueFormat *string `pulumi:"valueFormat"`
+	Metadata                    map[string]string `pulumi:"metadata"`
+	PeRequirement               *string           `pulumi:"peRequirement"`
+	PeStatus                    *string           `pulumi:"peStatus"`
+	SharedUserList              []string          `pulumi:"sharedUserList"`
+	Target                      *string           `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
 }
 
 type UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponseOutput struct{ *pulumi.OutputState }
@@ -21784,6 +22350,7 @@ func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponseOutput) Cat
 	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
 
+// A type definition that refers the id to an Azure Resource Manager resource.
 func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponseOutput) CreatedByWorkspaceArmId() pulumi.StringOutput {
 	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse) string {
 		return v.CreatedByWorkspaceArmId
@@ -21794,6 +22361,10 @@ func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponseOutput) Cre
 	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse) *WorkspaceConnectionUsernamePasswordResponse {
 		return v.Credentials
 	}).(WorkspaceConnectionUsernamePasswordResponsePtrOutput)
+}
+
+func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponseOutput) Error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse) *string { return v.Error }).(pulumi.StringPtrOutput)
 }
 
 func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponseOutput) ExpiryTime() pulumi.StringPtrOutput {
@@ -21816,6 +22387,14 @@ func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponseOutput) Met
 	}).(pulumi.StringMapOutput)
 }
 
+func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponseOutput) PeRequirement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
+}
+
+func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponseOutput) PeStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
+}
+
 func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponseOutput) SharedUserList() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse) []string {
 		return v.SharedUserList
@@ -21826,14 +22405,10 @@ func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponseOutput) Tar
 	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
 
-// Value details of the workspace connection.
-func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponseOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-// format for the workspace connection value
-func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponseOutput) ValueFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse) *string { return v.ValueFormat }).(pulumi.StringPtrOutput)
+func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponseOutput) UseWorkspaceManagedIdentity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse) *bool {
+		return v.UseWorkspaceManagedIdentity
+	}).(pulumi.BoolPtrOutput)
 }
 
 // A Machine Learning compute based on Azure Virtual Machines.
@@ -22288,7 +22863,7 @@ type VirtualMachineResponse struct {
 	IsAttachedCompute bool `pulumi:"isAttachedCompute"`
 	// The time at which the compute was last modified.
 	ModifiedOn string                                  `pulumi:"modifiedOn"`
-	Properties *VirtualMachineSchemaResponseProperties `pulumi:"properties"`
+	Properties *VirtualMachineSchemaPropertiesResponse `pulumi:"properties"`
 	// Errors during provisioning
 	ProvisioningErrors []ErrorResponseResponse `pulumi:"provisioningErrors"`
 	// The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
@@ -22348,8 +22923,8 @@ func (o VirtualMachineResponseOutput) ModifiedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v VirtualMachineResponse) string { return v.ModifiedOn }).(pulumi.StringOutput)
 }
 
-func (o VirtualMachineResponseOutput) Properties() VirtualMachineSchemaResponsePropertiesPtrOutput {
-	return o.ApplyT(func(v VirtualMachineResponse) *VirtualMachineSchemaResponseProperties { return v.Properties }).(VirtualMachineSchemaResponsePropertiesPtrOutput)
+func (o VirtualMachineResponseOutput) Properties() VirtualMachineSchemaPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v VirtualMachineResponse) *VirtualMachineSchemaPropertiesResponse { return v.Properties }).(VirtualMachineSchemaPropertiesResponsePtrOutput)
 }
 
 // Errors during provisioning
@@ -22599,7 +23174,7 @@ func (o VirtualMachineSchemaPropertiesPtrOutput) VirtualMachineSize() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
-type VirtualMachineSchemaResponseProperties struct {
+type VirtualMachineSchemaPropertiesResponse struct {
 	// Public IP address of the virtual machine.
 	Address *string `pulumi:"address"`
 	// Admin credentials for virtual machine
@@ -22614,79 +23189,79 @@ type VirtualMachineSchemaResponseProperties struct {
 	VirtualMachineSize *string `pulumi:"virtualMachineSize"`
 }
 
-type VirtualMachineSchemaResponsePropertiesOutput struct{ *pulumi.OutputState }
+type VirtualMachineSchemaPropertiesResponseOutput struct{ *pulumi.OutputState }
 
-func (VirtualMachineSchemaResponsePropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualMachineSchemaResponseProperties)(nil)).Elem()
+func (VirtualMachineSchemaPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineSchemaPropertiesResponse)(nil)).Elem()
 }
 
-func (o VirtualMachineSchemaResponsePropertiesOutput) ToVirtualMachineSchemaResponsePropertiesOutput() VirtualMachineSchemaResponsePropertiesOutput {
+func (o VirtualMachineSchemaPropertiesResponseOutput) ToVirtualMachineSchemaPropertiesResponseOutput() VirtualMachineSchemaPropertiesResponseOutput {
 	return o
 }
 
-func (o VirtualMachineSchemaResponsePropertiesOutput) ToVirtualMachineSchemaResponsePropertiesOutputWithContext(ctx context.Context) VirtualMachineSchemaResponsePropertiesOutput {
+func (o VirtualMachineSchemaPropertiesResponseOutput) ToVirtualMachineSchemaPropertiesResponseOutputWithContext(ctx context.Context) VirtualMachineSchemaPropertiesResponseOutput {
 	return o
 }
 
 // Public IP address of the virtual machine.
-func (o VirtualMachineSchemaResponsePropertiesOutput) Address() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineSchemaResponseProperties) *string { return v.Address }).(pulumi.StringPtrOutput)
+func (o VirtualMachineSchemaPropertiesResponseOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineSchemaPropertiesResponse) *string { return v.Address }).(pulumi.StringPtrOutput)
 }
 
 // Admin credentials for virtual machine
-func (o VirtualMachineSchemaResponsePropertiesOutput) AdministratorAccount() VirtualMachineSshCredentialsResponsePtrOutput {
-	return o.ApplyT(func(v VirtualMachineSchemaResponseProperties) *VirtualMachineSshCredentialsResponse {
+func (o VirtualMachineSchemaPropertiesResponseOutput) AdministratorAccount() VirtualMachineSshCredentialsResponsePtrOutput {
+	return o.ApplyT(func(v VirtualMachineSchemaPropertiesResponse) *VirtualMachineSshCredentialsResponse {
 		return v.AdministratorAccount
 	}).(VirtualMachineSshCredentialsResponsePtrOutput)
 }
 
 // Indicates whether this compute will be used for running notebooks.
-func (o VirtualMachineSchemaResponsePropertiesOutput) IsNotebookInstanceCompute() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v VirtualMachineSchemaResponseProperties) *bool { return v.IsNotebookInstanceCompute }).(pulumi.BoolPtrOutput)
+func (o VirtualMachineSchemaPropertiesResponseOutput) IsNotebookInstanceCompute() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineSchemaPropertiesResponse) *bool { return v.IsNotebookInstanceCompute }).(pulumi.BoolPtrOutput)
 }
 
 // Notebook server port open for ssh connections.
-func (o VirtualMachineSchemaResponsePropertiesOutput) NotebookServerPort() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v VirtualMachineSchemaResponseProperties) *int { return v.NotebookServerPort }).(pulumi.IntPtrOutput)
+func (o VirtualMachineSchemaPropertiesResponseOutput) NotebookServerPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VirtualMachineSchemaPropertiesResponse) *int { return v.NotebookServerPort }).(pulumi.IntPtrOutput)
 }
 
 // Port open for ssh connections.
-func (o VirtualMachineSchemaResponsePropertiesOutput) SshPort() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v VirtualMachineSchemaResponseProperties) *int { return v.SshPort }).(pulumi.IntPtrOutput)
+func (o VirtualMachineSchemaPropertiesResponseOutput) SshPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VirtualMachineSchemaPropertiesResponse) *int { return v.SshPort }).(pulumi.IntPtrOutput)
 }
 
 // Virtual Machine size
-func (o VirtualMachineSchemaResponsePropertiesOutput) VirtualMachineSize() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineSchemaResponseProperties) *string { return v.VirtualMachineSize }).(pulumi.StringPtrOutput)
+func (o VirtualMachineSchemaPropertiesResponseOutput) VirtualMachineSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineSchemaPropertiesResponse) *string { return v.VirtualMachineSize }).(pulumi.StringPtrOutput)
 }
 
-type VirtualMachineSchemaResponsePropertiesPtrOutput struct{ *pulumi.OutputState }
+type VirtualMachineSchemaPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
 
-func (VirtualMachineSchemaResponsePropertiesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**VirtualMachineSchemaResponseProperties)(nil)).Elem()
+func (VirtualMachineSchemaPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineSchemaPropertiesResponse)(nil)).Elem()
 }
 
-func (o VirtualMachineSchemaResponsePropertiesPtrOutput) ToVirtualMachineSchemaResponsePropertiesPtrOutput() VirtualMachineSchemaResponsePropertiesPtrOutput {
+func (o VirtualMachineSchemaPropertiesResponsePtrOutput) ToVirtualMachineSchemaPropertiesResponsePtrOutput() VirtualMachineSchemaPropertiesResponsePtrOutput {
 	return o
 }
 
-func (o VirtualMachineSchemaResponsePropertiesPtrOutput) ToVirtualMachineSchemaResponsePropertiesPtrOutputWithContext(ctx context.Context) VirtualMachineSchemaResponsePropertiesPtrOutput {
+func (o VirtualMachineSchemaPropertiesResponsePtrOutput) ToVirtualMachineSchemaPropertiesResponsePtrOutputWithContext(ctx context.Context) VirtualMachineSchemaPropertiesResponsePtrOutput {
 	return o
 }
 
-func (o VirtualMachineSchemaResponsePropertiesPtrOutput) Elem() VirtualMachineSchemaResponsePropertiesOutput {
-	return o.ApplyT(func(v *VirtualMachineSchemaResponseProperties) VirtualMachineSchemaResponseProperties {
+func (o VirtualMachineSchemaPropertiesResponsePtrOutput) Elem() VirtualMachineSchemaPropertiesResponseOutput {
+	return o.ApplyT(func(v *VirtualMachineSchemaPropertiesResponse) VirtualMachineSchemaPropertiesResponse {
 		if v != nil {
 			return *v
 		}
-		var ret VirtualMachineSchemaResponseProperties
+		var ret VirtualMachineSchemaPropertiesResponse
 		return ret
-	}).(VirtualMachineSchemaResponsePropertiesOutput)
+	}).(VirtualMachineSchemaPropertiesResponseOutput)
 }
 
 // Public IP address of the virtual machine.
-func (o VirtualMachineSchemaResponsePropertiesPtrOutput) Address() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VirtualMachineSchemaResponseProperties) *string {
+func (o VirtualMachineSchemaPropertiesResponsePtrOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineSchemaPropertiesResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -22695,8 +23270,8 @@ func (o VirtualMachineSchemaResponsePropertiesPtrOutput) Address() pulumi.String
 }
 
 // Admin credentials for virtual machine
-func (o VirtualMachineSchemaResponsePropertiesPtrOutput) AdministratorAccount() VirtualMachineSshCredentialsResponsePtrOutput {
-	return o.ApplyT(func(v *VirtualMachineSchemaResponseProperties) *VirtualMachineSshCredentialsResponse {
+func (o VirtualMachineSchemaPropertiesResponsePtrOutput) AdministratorAccount() VirtualMachineSshCredentialsResponsePtrOutput {
+	return o.ApplyT(func(v *VirtualMachineSchemaPropertiesResponse) *VirtualMachineSshCredentialsResponse {
 		if v == nil {
 			return nil
 		}
@@ -22705,8 +23280,8 @@ func (o VirtualMachineSchemaResponsePropertiesPtrOutput) AdministratorAccount() 
 }
 
 // Indicates whether this compute will be used for running notebooks.
-func (o VirtualMachineSchemaResponsePropertiesPtrOutput) IsNotebookInstanceCompute() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *VirtualMachineSchemaResponseProperties) *bool {
+func (o VirtualMachineSchemaPropertiesResponsePtrOutput) IsNotebookInstanceCompute() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineSchemaPropertiesResponse) *bool {
 		if v == nil {
 			return nil
 		}
@@ -22715,8 +23290,8 @@ func (o VirtualMachineSchemaResponsePropertiesPtrOutput) IsNotebookInstanceCompu
 }
 
 // Notebook server port open for ssh connections.
-func (o VirtualMachineSchemaResponsePropertiesPtrOutput) NotebookServerPort() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *VirtualMachineSchemaResponseProperties) *int {
+func (o VirtualMachineSchemaPropertiesResponsePtrOutput) NotebookServerPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineSchemaPropertiesResponse) *int {
 		if v == nil {
 			return nil
 		}
@@ -22725,8 +23300,8 @@ func (o VirtualMachineSchemaResponsePropertiesPtrOutput) NotebookServerPort() pu
 }
 
 // Port open for ssh connections.
-func (o VirtualMachineSchemaResponsePropertiesPtrOutput) SshPort() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *VirtualMachineSchemaResponseProperties) *int {
+func (o VirtualMachineSchemaPropertiesResponsePtrOutput) SshPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineSchemaPropertiesResponse) *int {
 		if v == nil {
 			return nil
 		}
@@ -22735,8 +23310,8 @@ func (o VirtualMachineSchemaResponsePropertiesPtrOutput) SshPort() pulumi.IntPtr
 }
 
 // Virtual Machine size
-func (o VirtualMachineSchemaResponsePropertiesPtrOutput) VirtualMachineSize() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VirtualMachineSchemaResponseProperties) *string {
+func (o VirtualMachineSchemaPropertiesResponsePtrOutput) VirtualMachineSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineSchemaPropertiesResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -23168,7 +23743,6 @@ func (o VirtualMachineSshCredentialsResponsePtrOutput) Username() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// Describes the volume configuration for the container
 type VolumeDefinition struct {
 	// Bind Options of the mount
 	Bind *BindOptions `pulumi:"bind"`
@@ -23212,7 +23786,6 @@ type VolumeDefinitionInput interface {
 	ToVolumeDefinitionOutputWithContext(context.Context) VolumeDefinitionOutput
 }
 
-// Describes the volume configuration for the container
 type VolumeDefinitionArgs struct {
 	// Bind Options of the mount
 	Bind BindOptionsPtrInput `pulumi:"bind"`
@@ -23280,7 +23853,6 @@ func (i VolumeDefinitionArray) ToVolumeDefinitionArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeDefinitionArrayOutput)
 }
 
-// Describes the volume configuration for the container
 type VolumeDefinitionOutput struct{ *pulumi.OutputState }
 
 func (VolumeDefinitionOutput) ElementType() reflect.Type {
@@ -23355,7 +23927,6 @@ func (o VolumeDefinitionArrayOutput) Index(i pulumi.IntInput) VolumeDefinitionOu
 	}).(VolumeDefinitionOutput)
 }
 
-// Describes the volume configuration for the container
 type VolumeDefinitionResponse struct {
 	// Bind Options of the mount
 	Bind *BindOptionsResponse `pulumi:"bind"`
@@ -23388,7 +23959,6 @@ func (val *VolumeDefinitionResponse) Defaults() *VolumeDefinitionResponse {
 	return &tmp
 }
 
-// Describes the volume configuration for the container
 type VolumeDefinitionResponseOutput struct{ *pulumi.OutputState }
 
 func (VolumeDefinitionResponseOutput) ElementType() reflect.Type {
@@ -23463,7 +24033,6 @@ func (o VolumeDefinitionResponseArrayOutput) Index(i pulumi.IntInput) VolumeDefi
 	}).(VolumeDefinitionResponseOutput)
 }
 
-// Describes the volume options for the container
 type VolumeOptions struct {
 	// Indicate whether volume is nocopy
 	Nocopy *bool `pulumi:"nocopy"`
@@ -23480,7 +24049,6 @@ type VolumeOptionsInput interface {
 	ToVolumeOptionsOutputWithContext(context.Context) VolumeOptionsOutput
 }
 
-// Describes the volume options for the container
 type VolumeOptionsArgs struct {
 	// Indicate whether volume is nocopy
 	Nocopy pulumi.BoolPtrInput `pulumi:"nocopy"`
@@ -23539,7 +24107,6 @@ func (i *volumeOptionsPtrType) ToVolumeOptionsPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeOptionsPtrOutput)
 }
 
-// Describes the volume options for the container
 type VolumeOptionsOutput struct{ *pulumi.OutputState }
 
 func (VolumeOptionsOutput) ElementType() reflect.Type {
@@ -23603,13 +24170,11 @@ func (o VolumeOptionsPtrOutput) Nocopy() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Describes the volume options for the container
 type VolumeOptionsResponse struct {
 	// Indicate whether volume is nocopy
 	Nocopy *bool `pulumi:"nocopy"`
 }
 
-// Describes the volume options for the container
 type VolumeOptionsResponseOutput struct{ *pulumi.OutputState }
 
 func (VolumeOptionsResponseOutput) ElementType() reflect.Type {
@@ -23880,6 +24445,7 @@ func (o WorkspaceConnectionAccessKeyResponsePtrOutput) SecretAccessKey() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+// Account key object for workspace connection credential.
 type WorkspaceConnectionAccountKey struct {
 	Key *string `pulumi:"key"`
 }
@@ -23895,6 +24461,7 @@ type WorkspaceConnectionAccountKeyInput interface {
 	ToWorkspaceConnectionAccountKeyOutputWithContext(context.Context) WorkspaceConnectionAccountKeyOutput
 }
 
+// Account key object for workspace connection credential.
 type WorkspaceConnectionAccountKeyArgs struct {
 	Key pulumi.StringPtrInput `pulumi:"key"`
 }
@@ -23952,6 +24519,7 @@ func (i *workspaceConnectionAccountKeyPtrType) ToWorkspaceConnectionAccountKeyPt
 	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceConnectionAccountKeyPtrOutput)
 }
 
+// Account key object for workspace connection credential.
 type WorkspaceConnectionAccountKeyOutput struct{ *pulumi.OutputState }
 
 func (WorkspaceConnectionAccountKeyOutput) ElementType() reflect.Type {
@@ -24013,10 +24581,12 @@ func (o WorkspaceConnectionAccountKeyPtrOutput) Key() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Account key object for workspace connection credential.
 type WorkspaceConnectionAccountKeyResponse struct {
 	Key *string `pulumi:"key"`
 }
 
+// Account key object for workspace connection credential.
 type WorkspaceConnectionAccountKeyResponseOutput struct{ *pulumi.OutputState }
 
 func (WorkspaceConnectionAccountKeyResponseOutput) ElementType() reflect.Type {
@@ -26032,11 +26602,100 @@ func (o WorkspaceHubConfigResponsePtrOutput) DefaultWorkspaceResourceGroup() pul
 	}).(pulumi.StringPtrOutput)
 }
 
+// The Private Endpoint resource.
+type WorkspacePrivateEndpointResourceResponse struct {
+	// e.g. /subscriptions/{networkSubscriptionId}/resourceGroups/{rgName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}
+	Id string `pulumi:"id"`
+	// The subnetId that the private endpoint is connected to.
+	SubnetArmId string `pulumi:"subnetArmId"`
+}
+
+// The Private Endpoint resource.
+type WorkspacePrivateEndpointResourceResponseOutput struct{ *pulumi.OutputState }
+
+func (WorkspacePrivateEndpointResourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspacePrivateEndpointResourceResponse)(nil)).Elem()
+}
+
+func (o WorkspacePrivateEndpointResourceResponseOutput) ToWorkspacePrivateEndpointResourceResponseOutput() WorkspacePrivateEndpointResourceResponseOutput {
+	return o
+}
+
+func (o WorkspacePrivateEndpointResourceResponseOutput) ToWorkspacePrivateEndpointResourceResponseOutputWithContext(ctx context.Context) WorkspacePrivateEndpointResourceResponseOutput {
+	return o
+}
+
+// e.g. /subscriptions/{networkSubscriptionId}/resourceGroups/{rgName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}
+func (o WorkspacePrivateEndpointResourceResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkspacePrivateEndpointResourceResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The subnetId that the private endpoint is connected to.
+func (o WorkspacePrivateEndpointResourceResponseOutput) SubnetArmId() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkspacePrivateEndpointResourceResponse) string { return v.SubnetArmId }).(pulumi.StringOutput)
+}
+
+type WorkspacePrivateEndpointResourceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (WorkspacePrivateEndpointResourceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkspacePrivateEndpointResourceResponse)(nil)).Elem()
+}
+
+func (o WorkspacePrivateEndpointResourceResponsePtrOutput) ToWorkspacePrivateEndpointResourceResponsePtrOutput() WorkspacePrivateEndpointResourceResponsePtrOutput {
+	return o
+}
+
+func (o WorkspacePrivateEndpointResourceResponsePtrOutput) ToWorkspacePrivateEndpointResourceResponsePtrOutputWithContext(ctx context.Context) WorkspacePrivateEndpointResourceResponsePtrOutput {
+	return o
+}
+
+func (o WorkspacePrivateEndpointResourceResponsePtrOutput) Elem() WorkspacePrivateEndpointResourceResponseOutput {
+	return o.ApplyT(func(v *WorkspacePrivateEndpointResourceResponse) WorkspacePrivateEndpointResourceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret WorkspacePrivateEndpointResourceResponse
+		return ret
+	}).(WorkspacePrivateEndpointResourceResponseOutput)
+}
+
+// e.g. /subscriptions/{networkSubscriptionId}/resourceGroups/{rgName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}
+func (o WorkspacePrivateEndpointResourceResponsePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkspacePrivateEndpointResourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// The subnetId that the private endpoint is connected to.
+func (o WorkspacePrivateEndpointResourceResponsePtrOutput) SubnetArmId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkspacePrivateEndpointResourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SubnetArmId
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
-	pulumi.RegisterOutputType(PrivateEndpointResponseOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointResponsePtrOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseArrayOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointDestinationOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointDestinationPtrOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointDestinationResponseOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointDestinationResponsePtrOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointOutboundRuleOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointOutboundRuleResponseOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointResourceOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointResourcePtrOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointResourceResponseOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointResourceResponsePtrOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateOutput{})
+	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStatePtrOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateResponseOutput{})
+	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateResponsePtrOutput{})
 	pulumi.RegisterOutputType(ProbeSettingsOutput{})
 	pulumi.RegisterOutputType(ProbeSettingsPtrOutput{})
 	pulumi.RegisterOutputType(ProbeSettingsResponseOutput{})
@@ -26078,14 +26737,10 @@ func init() {
 	pulumi.RegisterOutputType(RecurrenceTriggerPtrOutput{})
 	pulumi.RegisterOutputType(RecurrenceTriggerResponseOutput{})
 	pulumi.RegisterOutputType(RecurrenceTriggerResponsePtrOutput{})
-	pulumi.RegisterOutputType(RegistryTypeOutput{})
 	pulumi.RegisterOutputType(RegistryListCredentialsResultResponseOutput{})
+	pulumi.RegisterOutputType(RegistryListCredentialsResultResponsePtrOutput{})
 	pulumi.RegisterOutputType(RegistryPrivateEndpointConnectionOutput{})
 	pulumi.RegisterOutputType(RegistryPrivateEndpointConnectionArrayOutput{})
-	pulumi.RegisterOutputType(RegistryPrivateEndpointConnectionPropertiesOutput{})
-	pulumi.RegisterOutputType(RegistryPrivateEndpointConnectionPropertiesPtrOutput{})
-	pulumi.RegisterOutputType(RegistryPrivateEndpointConnectionPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(RegistryPrivateEndpointConnectionPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(RegistryPrivateEndpointConnectionResponseOutput{})
 	pulumi.RegisterOutputType(RegistryPrivateEndpointConnectionResponseArrayOutput{})
 	pulumi.RegisterOutputType(RegistryPrivateLinkServiceConnectionStateOutput{})
@@ -26096,7 +26751,6 @@ func init() {
 	pulumi.RegisterOutputType(RegistryRegionArmDetailsArrayOutput{})
 	pulumi.RegisterOutputType(RegistryRegionArmDetailsResponseOutput{})
 	pulumi.RegisterOutputType(RegistryRegionArmDetailsResponseArrayOutput{})
-	pulumi.RegisterOutputType(RegistryResponseOutput{})
 	pulumi.RegisterOutputType(RegressionOutput{})
 	pulumi.RegisterOutputType(RegressionResponseOutput{})
 	pulumi.RegisterOutputType(RegressionTrainingSettingsOutput{})
@@ -26134,12 +26788,12 @@ func init() {
 	pulumi.RegisterOutputType(ScaleUnitConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(ScaleUnitConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(ScaleUnitConfigurationResponsePtrOutput{})
-	pulumi.RegisterOutputType(ScheduleTypeOutput{})
 	pulumi.RegisterOutputType(ScheduleBaseOutput{})
 	pulumi.RegisterOutputType(ScheduleBasePtrOutput{})
 	pulumi.RegisterOutputType(ScheduleBaseResponseOutput{})
 	pulumi.RegisterOutputType(ScheduleBaseResponsePtrOutput{})
-	pulumi.RegisterOutputType(ScheduleResponseOutput{})
+	pulumi.RegisterOutputType(SchedulePropertiesOutput{})
+	pulumi.RegisterOutputType(SchedulePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ScriptReferenceOutput{})
 	pulumi.RegisterOutputType(ScriptReferencePtrOutput{})
 	pulumi.RegisterOutputType(ScriptReferenceResponseOutput{})
@@ -26156,8 +26810,8 @@ func init() {
 	pulumi.RegisterOutputType(ServerlessComputeSettingsPtrOutput{})
 	pulumi.RegisterOutputType(ServerlessComputeSettingsResponseOutput{})
 	pulumi.RegisterOutputType(ServerlessComputeSettingsResponsePtrOutput{})
-	pulumi.RegisterOutputType(ServerlessEndpointTypeOutput{})
-	pulumi.RegisterOutputType(ServerlessEndpointResponseOutput{})
+	pulumi.RegisterOutputType(ServerlessEndpointPropertiesOutput{})
+	pulumi.RegisterOutputType(ServerlessEndpointPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ServerlessInferenceEndpointResponseOutput{})
 	pulumi.RegisterOutputType(ServerlessOfferOutput{})
 	pulumi.RegisterOutputType(ServerlessOfferPtrOutput{})
@@ -26232,9 +26886,9 @@ func init() {
 	pulumi.RegisterOutputType(SynapseSparkPtrOutput{})
 	pulumi.RegisterOutputType(SynapseSparkPropertiesOutput{})
 	pulumi.RegisterOutputType(SynapseSparkPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(SynapseSparkPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(SynapseSparkPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(SynapseSparkResponseOutput{})
-	pulumi.RegisterOutputType(SynapseSparkResponsePropertiesOutput{})
-	pulumi.RegisterOutputType(SynapseSparkResponsePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(SystemCreatedAcrAccountOutput{})
 	pulumi.RegisterOutputType(SystemCreatedAcrAccountPtrOutput{})
 	pulumi.RegisterOutputType(SystemCreatedAcrAccountResponseOutput{})
@@ -26321,8 +26975,8 @@ func init() {
 	pulumi.RegisterOutputType(VirtualMachineResponseOutput{})
 	pulumi.RegisterOutputType(VirtualMachineSchemaPropertiesOutput{})
 	pulumi.RegisterOutputType(VirtualMachineSchemaPropertiesPtrOutput{})
-	pulumi.RegisterOutputType(VirtualMachineSchemaResponsePropertiesOutput{})
-	pulumi.RegisterOutputType(VirtualMachineSchemaResponsePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineSchemaPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(VirtualMachineSchemaPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachineSizeResponseOutput{})
 	pulumi.RegisterOutputType(VirtualMachineSizeResponseArrayOutput{})
 	pulumi.RegisterOutputType(VirtualMachineSshCredentialsOutput{})
@@ -26377,4 +27031,6 @@ func init() {
 	pulumi.RegisterOutputType(WorkspaceHubConfigPtrOutput{})
 	pulumi.RegisterOutputType(WorkspaceHubConfigResponseOutput{})
 	pulumi.RegisterOutputType(WorkspaceHubConfigResponsePtrOutput{})
+	pulumi.RegisterOutputType(WorkspacePrivateEndpointResourceResponseOutput{})
+	pulumi.RegisterOutputType(WorkspacePrivateEndpointResourceResponsePtrOutput{})
 }

@@ -23,7 +23,7 @@ type AgentApplication struct {
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// [Required] Additional attributes of the entity.
-	Properties AgenticApplicationResponseOutput `pulumi:"properties"`
+	Properties AgenticApplicationPropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -95,7 +95,7 @@ type agentApplicationArgs struct {
 	// The name of Cognitive Services account's project.
 	ProjectName string `pulumi:"projectName"`
 	// [Required] Additional attributes of the entity.
-	Properties AgenticApplication `pulumi:"properties"`
+	Properties AgenticApplicationProperties `pulumi:"properties"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
@@ -109,7 +109,7 @@ type AgentApplicationArgs struct {
 	// The name of Cognitive Services account's project.
 	ProjectName pulumi.StringInput
 	// [Required] Additional attributes of the entity.
-	Properties AgenticApplicationInput
+	Properties AgenticApplicationPropertiesInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 }
@@ -162,8 +162,8 @@ func (o AgentApplicationOutput) Name() pulumi.StringOutput {
 }
 
 // [Required] Additional attributes of the entity.
-func (o AgentApplicationOutput) Properties() AgenticApplicationResponseOutput {
-	return o.ApplyT(func(v *AgentApplication) AgenticApplicationResponseOutput { return v.Properties }).(AgenticApplicationResponseOutput)
+func (o AgentApplicationOutput) Properties() AgenticApplicationPropertiesResponseOutput {
+	return o.ApplyT(func(v *AgentApplication) AgenticApplicationPropertiesResponseOutput { return v.Properties }).(AgenticApplicationPropertiesResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

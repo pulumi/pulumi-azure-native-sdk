@@ -49,23 +49,25 @@ type LookupCustomImageResult struct {
 	DataDiskStorageInfo []DataDiskStorageTypeInfoResponse `pulumi:"dataDiskStorageInfo"`
 	// The description of the custom image.
 	Description *string `pulumi:"description"`
-	// The identifier of the resource.
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Whether or not the custom images underlying offer/plan has been enabled for programmatic deployment
 	IsPlanAuthorized *bool `pulumi:"isPlanAuthorized"`
-	// The location of the resource.
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The Managed Image Id backing the custom image.
 	ManagedImageId *string `pulumi:"managedImageId"`
 	// The Managed Snapshot Id backing the custom image.
 	ManagedSnapshotId *string `pulumi:"managedSnapshotId"`
-	// The name of the resource.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// The provisioning status of the resource.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// The tags of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// The type of the resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// The unique immutable identifier of a resource (Guid).
 	UniqueIdentifier string `pulumi:"uniqueIdentifier"`
@@ -144,7 +146,7 @@ func (o LookupCustomImageResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCustomImageResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The identifier of the resource.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupCustomImageResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomImageResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -154,7 +156,7 @@ func (o LookupCustomImageResultOutput) IsPlanAuthorized() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupCustomImageResult) *bool { return v.IsPlanAuthorized }).(pulumi.BoolPtrOutput)
 }
 
-// The location of the resource.
+// The geo-location where the resource lives
 func (o LookupCustomImageResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCustomImageResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
@@ -169,7 +171,7 @@ func (o LookupCustomImageResultOutput) ManagedSnapshotId() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v LookupCustomImageResult) *string { return v.ManagedSnapshotId }).(pulumi.StringPtrOutput)
 }
 
-// The name of the resource.
+// The name of the resource
 func (o LookupCustomImageResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomImageResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -179,12 +181,17 @@ func (o LookupCustomImageResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomImageResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// The tags of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupCustomImageResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupCustomImageResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// Resource tags.
 func (o LookupCustomImageResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupCustomImageResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupCustomImageResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomImageResult) string { return v.Type }).(pulumi.StringOutput)
 }

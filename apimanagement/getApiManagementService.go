@@ -13,9 +13,9 @@ import (
 
 // Gets an API Management service resource description.
 //
-// Uses Azure REST API version 2022-09-01-preview.
+// Uses Azure REST API version 2024-05-01.
 //
-// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupApiManagementService(ctx *pulumi.Context, args *LookupApiManagementServiceArgs, opts ...pulumi.InvokeOption) (*LookupApiManagementServiceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupApiManagementServiceResult
@@ -43,10 +43,14 @@ type LookupApiManagementServiceResult struct {
 	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// List of Certificates that need to be installed in the API Management service. Max supported certificates that can be installed is 10.
 	Certificates []CertificateConfigurationResponse `pulumi:"certificates"`
+	// Configuration API configuration of the API Management service.
+	ConfigurationApi *ConfigurationApiResponse `pulumi:"configurationApi"`
 	// Creation UTC date of the API Management service.The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
 	CreatedAtUtc string `pulumi:"createdAtUtc"`
 	// Custom properties of the API Management service.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168` will disable the cipher TLS_RSA_WITH_3DES_EDE_CBC_SHA for all TLS(1.0, 1.1 and 1.2).</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls11` can be used to disable just TLS 1.1.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10` can be used to disable TLS 1.0 on an API Management service.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls11` can be used to disable just TLS 1.1 for communications with backends.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls10` can be used to disable TLS 1.0 for communications with backends.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2` can be used to enable HTTP2 protocol on an API Management service.</br>Not specifying any of these properties on PATCH operation will reset omitted properties' values to their defaults. For all the settings except Http2 the default value is `True` if the service was created on or before April 1, 2018 and `False` otherwise. Http2 setting's default value is `False`.</br></br>You can disable any of the following ciphers by using settings `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.[cipher_name]`: TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, TLS_RSA_WITH_AES_128_GCM_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA256, TLS_RSA_WITH_AES_128_CBC_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA, TLS_RSA_WITH_AES_128_CBC_SHA. For example, `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA256`:`false`. The default value is `true` for them.</br> Note: The following ciphers can't be disabled since they are required by internal platform components: TLS_AES_256_GCM_SHA384,TLS_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 	CustomProperties map[string]string `pulumi:"customProperties"`
+	// Status of developer portal in this API Management service.
+	DeveloperPortalStatus *string `pulumi:"developerPortalStatus"`
 	// DEveloper Portal endpoint URL of the API Management service.
 	DeveloperPortalUrl string `pulumi:"developerPortalUrl"`
 	// Property only valid for an Api Management service deployed in multiple locations. This can be used to disable the gateway in master region.
@@ -65,6 +69,8 @@ type LookupApiManagementServiceResult struct {
 	Id string `pulumi:"id"`
 	// Managed service identity of the Api Management service.
 	Identity *ApiManagementServiceIdentityResponse `pulumi:"identity"`
+	// Status of legacy portal in the API Management service.
+	LegacyPortalStatus *string `pulumi:"legacyPortalStatus"`
 	// Resource location.
 	Location string `pulumi:"location"`
 	// Management API endpoint URL of the API Management service.
@@ -125,6 +131,12 @@ func (val *LookupApiManagementServiceResult) Defaults() *LookupApiManagementServ
 		return nil
 	}
 	tmp := *val
+	tmp.ConfigurationApi = tmp.ConfigurationApi.Defaults()
+
+	if tmp.DeveloperPortalStatus == nil {
+		developerPortalStatus_ := "Enabled"
+		tmp.DeveloperPortalStatus = &developerPortalStatus_
+	}
 	if tmp.DisableGateway == nil {
 		disableGateway_ := false
 		tmp.DisableGateway = &disableGateway_
@@ -132,6 +144,10 @@ func (val *LookupApiManagementServiceResult) Defaults() *LookupApiManagementServ
 	if tmp.EnableClientCertificate == nil {
 		enableClientCertificate_ := false
 		tmp.EnableClientCertificate = &enableClientCertificate_
+	}
+	if tmp.LegacyPortalStatus == nil {
+		legacyPortalStatus_ := "Enabled"
+		tmp.LegacyPortalStatus = &legacyPortalStatus_
 	}
 	if tmp.NatGatewayState == nil {
 		natGatewayState_ := "Disabled"
@@ -202,6 +218,11 @@ func (o LookupApiManagementServiceResultOutput) Certificates() CertificateConfig
 	return o.ApplyT(func(v LookupApiManagementServiceResult) []CertificateConfigurationResponse { return v.Certificates }).(CertificateConfigurationResponseArrayOutput)
 }
 
+// Configuration API configuration of the API Management service.
+func (o LookupApiManagementServiceResultOutput) ConfigurationApi() ConfigurationApiResponsePtrOutput {
+	return o.ApplyT(func(v LookupApiManagementServiceResult) *ConfigurationApiResponse { return v.ConfigurationApi }).(ConfigurationApiResponsePtrOutput)
+}
+
 // Creation UTC date of the API Management service.The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
 func (o LookupApiManagementServiceResultOutput) CreatedAtUtc() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiManagementServiceResult) string { return v.CreatedAtUtc }).(pulumi.StringOutput)
@@ -210,6 +231,11 @@ func (o LookupApiManagementServiceResultOutput) CreatedAtUtc() pulumi.StringOutp
 // Custom properties of the API Management service.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168` will disable the cipher TLS_RSA_WITH_3DES_EDE_CBC_SHA for all TLS(1.0, 1.1 and 1.2).</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls11` can be used to disable just TLS 1.1.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10` can be used to disable TLS 1.0 on an API Management service.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls11` can be used to disable just TLS 1.1 for communications with backends.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls10` can be used to disable TLS 1.0 for communications with backends.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2` can be used to enable HTTP2 protocol on an API Management service.</br>Not specifying any of these properties on PATCH operation will reset omitted properties' values to their defaults. For all the settings except Http2 the default value is `True` if the service was created on or before April 1, 2018 and `False` otherwise. Http2 setting's default value is `False`.</br></br>You can disable any of the following ciphers by using settings `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.[cipher_name]`: TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, TLS_RSA_WITH_AES_128_GCM_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA256, TLS_RSA_WITH_AES_128_CBC_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA, TLS_RSA_WITH_AES_128_CBC_SHA. For example, `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA256`:`false`. The default value is `true` for them.</br> Note: The following ciphers can't be disabled since they are required by internal platform components: TLS_AES_256_GCM_SHA384,TLS_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 func (o LookupApiManagementServiceResultOutput) CustomProperties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupApiManagementServiceResult) map[string]string { return v.CustomProperties }).(pulumi.StringMapOutput)
+}
+
+// Status of developer portal in this API Management service.
+func (o LookupApiManagementServiceResultOutput) DeveloperPortalStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupApiManagementServiceResult) *string { return v.DeveloperPortalStatus }).(pulumi.StringPtrOutput)
 }
 
 // DEveloper Portal endpoint URL of the API Management service.
@@ -257,6 +283,11 @@ func (o LookupApiManagementServiceResultOutput) Id() pulumi.StringOutput {
 // Managed service identity of the Api Management service.
 func (o LookupApiManagementServiceResultOutput) Identity() ApiManagementServiceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupApiManagementServiceResult) *ApiManagementServiceIdentityResponse { return v.Identity }).(ApiManagementServiceIdentityResponsePtrOutput)
+}
+
+// Status of legacy portal in the API Management service.
+func (o LookupApiManagementServiceResultOutput) LegacyPortalStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupApiManagementServiceResult) *string { return v.LegacyPortalStatus }).(pulumi.StringPtrOutput)
 }
 
 // Resource location.

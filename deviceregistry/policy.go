@@ -15,19 +15,19 @@ import (
 // A Credential Policy
 //
 // Uses Azure REST API version 2025-11-01-preview.
+//
+// Other available API versions: 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Policy struct {
 	pulumi.CustomResourceState
 
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
-	// The certificate configuration.
-	Certificate CertificateConfigurationResponsePtrOutput `pulumi:"certificate"`
 	// The geo-location where the resource lives
-	Location pulumi.StringOutput `pulumi:"location"`
+	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The status of the last operation.
-	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// The RP-specific properties for this resource.
+	Properties PolicyPropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
@@ -52,6 +52,9 @@ func NewPolicy(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:deviceregistry/v20251101preview:Policy"),
+		},
+		{
+			Type: pulumi.String("azure-native:deviceregistry/v20260301preview:Policy"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -88,14 +91,14 @@ func (PolicyState) ElementType() reflect.Type {
 }
 
 type policyArgs struct {
-	// The certificate configuration.
-	Certificate *CertificateConfiguration `pulumi:"certificate"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The name of the namespace.
 	NamespaceName string `pulumi:"namespaceName"`
 	// The name of the Policy tracked resource.
 	PolicyName *string `pulumi:"policyName"`
+	// The RP-specific properties for this resource.
+	Properties *PolicyProperties `pulumi:"properties"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Resource tags.
@@ -104,14 +107,14 @@ type policyArgs struct {
 
 // The set of arguments for constructing a Policy resource.
 type PolicyArgs struct {
-	// The certificate configuration.
-	Certificate CertificateConfigurationPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The name of the namespace.
 	NamespaceName pulumi.StringInput
 	// The name of the Policy tracked resource.
 	PolicyName pulumi.StringPtrInput
+	// The RP-specific properties for this resource.
+	Properties PolicyPropertiesPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Resource tags.
@@ -160,14 +163,9 @@ func (o PolicyOutput) AzureApiVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
-// The certificate configuration.
-func (o PolicyOutput) Certificate() CertificateConfigurationResponsePtrOutput {
-	return o.ApplyT(func(v *Policy) CertificateConfigurationResponsePtrOutput { return v.Certificate }).(CertificateConfigurationResponsePtrOutput)
-}
-
 // The geo-location where the resource lives
-func (o PolicyOutput) Location() pulumi.StringOutput {
-	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+func (o PolicyOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
 
 // The name of the resource
@@ -175,9 +173,9 @@ func (o PolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The status of the last operation.
-func (o PolicyOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+// The RP-specific properties for this resource.
+func (o PolicyOutput) Properties() PolicyPropertiesResponseOutput {
+	return o.ApplyT(func(v *Policy) PolicyPropertiesResponseOutput { return v.Properties }).(PolicyPropertiesResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

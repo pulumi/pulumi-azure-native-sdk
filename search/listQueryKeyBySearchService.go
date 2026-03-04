@@ -27,7 +27,7 @@ func ListQueryKeyBySearchService(ctx *pulumi.Context, args *ListQueryKeyBySearch
 }
 
 type ListQueryKeyBySearchServiceArgs struct {
-	// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the Azure AI Search service associated with the specified resource group.
 	SearchServiceName string `pulumi:"searchServiceName"`
@@ -51,7 +51,7 @@ func ListQueryKeyBySearchServiceOutput(ctx *pulumi.Context, args ListQueryKeyByS
 }
 
 type ListQueryKeyBySearchServiceOutputArgs struct {
-	// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the Azure AI Search service associated with the specified resource group.
 	SearchServiceName pulumi.StringInput `pulumi:"searchServiceName"`

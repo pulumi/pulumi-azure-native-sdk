@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Get Site at SG scope
+// Get a Site
 //
 // Uses Azure REST API version 2025-03-01-preview.
 //
@@ -33,7 +33,7 @@ type LookupSitesByServiceGroupArgs struct {
 	SiteName string `pulumi:"siteName"`
 }
 
-// Site as ARM Resource
+// Site as Extension Resource
 type LookupSitesByServiceGroupResult struct {
 	// The Azure API version of the resource.
 	AzureApiVersion string `pulumi:"azureApiVersion"`
@@ -69,7 +69,7 @@ func (LookupSitesByServiceGroupOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupSitesByServiceGroupArgs)(nil)).Elem()
 }
 
-// Site as ARM Resource
+// Site as Extension Resource
 type LookupSitesByServiceGroupResultOutput struct{ *pulumi.OutputState }
 
 func (LookupSitesByServiceGroupResultOutput) ElementType() reflect.Type {

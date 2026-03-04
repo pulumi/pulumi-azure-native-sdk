@@ -4017,6 +4017,174 @@ func (in *runtimeProtectionEnforcementLevelPtr) ToRuntimeProtectionEnforcementLe
 	return pulumi.ToOutputWithContext(ctx, in).(RuntimeProtectionEnforcementLevelPtrOutput)
 }
 
+// The direction of allowed network traffic based on the rule.
+type SecurityRuleDirection string
+
+const (
+	// Inbound traffic toward the on-premsises cluster.
+	SecurityRuleDirectionInbound = SecurityRuleDirection("Inbound")
+	// Outbound traffic from the on-premises cluster.
+	SecurityRuleDirectionOutbound = SecurityRuleDirection("Outbound")
+)
+
+func (SecurityRuleDirection) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityRuleDirection)(nil)).Elem()
+}
+
+func (e SecurityRuleDirection) ToSecurityRuleDirectionOutput() SecurityRuleDirectionOutput {
+	return pulumi.ToOutput(e).(SecurityRuleDirectionOutput)
+}
+
+func (e SecurityRuleDirection) ToSecurityRuleDirectionOutputWithContext(ctx context.Context) SecurityRuleDirectionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SecurityRuleDirectionOutput)
+}
+
+func (e SecurityRuleDirection) ToSecurityRuleDirectionPtrOutput() SecurityRuleDirectionPtrOutput {
+	return e.ToSecurityRuleDirectionPtrOutputWithContext(context.Background())
+}
+
+func (e SecurityRuleDirection) ToSecurityRuleDirectionPtrOutputWithContext(ctx context.Context) SecurityRuleDirectionPtrOutput {
+	return SecurityRuleDirection(e).ToSecurityRuleDirectionOutputWithContext(ctx).ToSecurityRuleDirectionPtrOutputWithContext(ctx)
+}
+
+func (e SecurityRuleDirection) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SecurityRuleDirection) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SecurityRuleDirection) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SecurityRuleDirection) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SecurityRuleDirectionOutput struct{ *pulumi.OutputState }
+
+func (SecurityRuleDirectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityRuleDirection)(nil)).Elem()
+}
+
+func (o SecurityRuleDirectionOutput) ToSecurityRuleDirectionOutput() SecurityRuleDirectionOutput {
+	return o
+}
+
+func (o SecurityRuleDirectionOutput) ToSecurityRuleDirectionOutputWithContext(ctx context.Context) SecurityRuleDirectionOutput {
+	return o
+}
+
+func (o SecurityRuleDirectionOutput) ToSecurityRuleDirectionPtrOutput() SecurityRuleDirectionPtrOutput {
+	return o.ToSecurityRuleDirectionPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityRuleDirectionOutput) ToSecurityRuleDirectionPtrOutputWithContext(ctx context.Context) SecurityRuleDirectionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityRuleDirection) *SecurityRuleDirection {
+		return &v
+	}).(SecurityRuleDirectionPtrOutput)
+}
+
+func (o SecurityRuleDirectionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SecurityRuleDirectionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SecurityRuleDirection) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SecurityRuleDirectionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityRuleDirectionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SecurityRuleDirection) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecurityRuleDirectionPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityRuleDirectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityRuleDirection)(nil)).Elem()
+}
+
+func (o SecurityRuleDirectionPtrOutput) ToSecurityRuleDirectionPtrOutput() SecurityRuleDirectionPtrOutput {
+	return o
+}
+
+func (o SecurityRuleDirectionPtrOutput) ToSecurityRuleDirectionPtrOutputWithContext(ctx context.Context) SecurityRuleDirectionPtrOutput {
+	return o
+}
+
+func (o SecurityRuleDirectionPtrOutput) Elem() SecurityRuleDirectionOutput {
+	return o.ApplyT(func(v *SecurityRuleDirection) SecurityRuleDirection {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityRuleDirection
+		return ret
+	}).(SecurityRuleDirectionOutput)
+}
+
+func (o SecurityRuleDirectionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityRuleDirectionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SecurityRuleDirection) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SecurityRuleDirectionInput is an input type that accepts values of the SecurityRuleDirection enum
+// A concrete instance of `SecurityRuleDirectionInput` can be one of the following:
+//
+//	SecurityRuleDirectionInbound
+//	SecurityRuleDirectionOutbound
+type SecurityRuleDirectionInput interface {
+	pulumi.Input
+
+	ToSecurityRuleDirectionOutput() SecurityRuleDirectionOutput
+	ToSecurityRuleDirectionOutputWithContext(context.Context) SecurityRuleDirectionOutput
+}
+
+var securityRuleDirectionPtrType = reflect.TypeOf((**SecurityRuleDirection)(nil)).Elem()
+
+type SecurityRuleDirectionPtrInput interface {
+	pulumi.Input
+
+	ToSecurityRuleDirectionPtrOutput() SecurityRuleDirectionPtrOutput
+	ToSecurityRuleDirectionPtrOutputWithContext(context.Context) SecurityRuleDirectionPtrOutput
+}
+
+type securityRuleDirectionPtr string
+
+func SecurityRuleDirectionPtr(v string) SecurityRuleDirectionPtrInput {
+	return (*securityRuleDirectionPtr)(&v)
+}
+
+func (*securityRuleDirectionPtr) ElementType() reflect.Type {
+	return securityRuleDirectionPtrType
+}
+
+func (in *securityRuleDirectionPtr) ToSecurityRuleDirectionPtrOutput() SecurityRuleDirectionPtrOutput {
+	return pulumi.ToOutput(in).(SecurityRuleDirectionPtrOutput)
+}
+
+func (in *securityRuleDirectionPtr) ToSecurityRuleDirectionPtrOutputWithContext(ctx context.Context) SecurityRuleDirectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SecurityRuleDirectionPtrOutput)
+}
+
 // Selection of how the type evaluation is applied to the cluster calculation.
 type ValidationThresholdGrouping string
 
@@ -5901,6 +6069,8 @@ func init() {
 	pulumi.RegisterOutputType(OsDiskDeleteOptionPtrOutput{})
 	pulumi.RegisterOutputType(RuntimeProtectionEnforcementLevelOutput{})
 	pulumi.RegisterOutputType(RuntimeProtectionEnforcementLevelPtrOutput{})
+	pulumi.RegisterOutputType(SecurityRuleDirectionOutput{})
+	pulumi.RegisterOutputType(SecurityRuleDirectionPtrOutput{})
 	pulumi.RegisterOutputType(ValidationThresholdGroupingOutput{})
 	pulumi.RegisterOutputType(ValidationThresholdGroupingPtrOutput{})
 	pulumi.RegisterOutputType(ValidationThresholdTypeOutput{})

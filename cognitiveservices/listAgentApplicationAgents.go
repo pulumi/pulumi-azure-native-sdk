@@ -40,7 +40,7 @@ type ListAgentApplicationAgentsResult struct {
 	// The link to the next page of Agent Reference objects. If null, there are no additional pages.
 	NextLink *string `pulumi:"nextLink"`
 	// An array of objects of type Agent Reference.
-	Value []AgentReferenceResourceResponse `pulumi:"value"`
+	Value []AgentReferenceResponse `pulumi:"value"`
 }
 
 func ListAgentApplicationAgentsOutput(ctx *pulumi.Context, args ListAgentApplicationAgentsOutputArgs, opts ...pulumi.InvokeOption) ListAgentApplicationAgentsResultOutput {
@@ -88,8 +88,8 @@ func (o ListAgentApplicationAgentsResultOutput) NextLink() pulumi.StringPtrOutpu
 }
 
 // An array of objects of type Agent Reference.
-func (o ListAgentApplicationAgentsResultOutput) Value() AgentReferenceResourceResponseArrayOutput {
-	return o.ApplyT(func(v ListAgentApplicationAgentsResult) []AgentReferenceResourceResponse { return v.Value }).(AgentReferenceResourceResponseArrayOutput)
+func (o ListAgentApplicationAgentsResultOutput) Value() AgentReferenceResponseArrayOutput {
+	return o.ApplyT(func(v ListAgentApplicationAgentsResult) []AgentReferenceResponse { return v.Value }).(AgentReferenceResponseArrayOutput)
 }
 
 func init() {

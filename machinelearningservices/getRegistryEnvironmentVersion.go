@@ -11,11 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure Resource Manager resource envelope.
+// Get version.
 //
-// Uses Azure REST API version 2025-09-01.
+// Uses Azure REST API version 2025-12-01.
 //
-// Other available API versions: 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupRegistryEnvironmentVersion(ctx *pulumi.Context, args *LookupRegistryEnvironmentVersionArgs, opts ...pulumi.InvokeOption) (*LookupRegistryEnvironmentVersionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRegistryEnvironmentVersionResult
@@ -41,12 +41,12 @@ type LookupRegistryEnvironmentVersionArgs struct {
 type LookupRegistryEnvironmentVersionResult struct {
 	// The Azure API version of the resource.
 	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// [Required] Additional attributes of the entity.
-	EnvironmentVersionProperties EnvironmentVersionResponse `pulumi:"environmentVersionProperties"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name string `pulumi:"name"`
+	// [Required] Additional attributes of the entity.
+	Properties EnvironmentVersionPropertiesResponse `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -59,7 +59,7 @@ func (val *LookupRegistryEnvironmentVersionResult) Defaults() *LookupRegistryEnv
 		return nil
 	}
 	tmp := *val
-	tmp.EnvironmentVersionProperties = *tmp.EnvironmentVersionProperties.Defaults()
+	tmp.Properties = *tmp.Properties.Defaults()
 
 	return &tmp
 }
@@ -107,13 +107,6 @@ func (o LookupRegistryEnvironmentVersionResultOutput) AzureApiVersion() pulumi.S
 	return o.ApplyT(func(v LookupRegistryEnvironmentVersionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
-// [Required] Additional attributes of the entity.
-func (o LookupRegistryEnvironmentVersionResultOutput) EnvironmentVersionProperties() EnvironmentVersionResponseOutput {
-	return o.ApplyT(func(v LookupRegistryEnvironmentVersionResult) EnvironmentVersionResponse {
-		return v.EnvironmentVersionProperties
-	}).(EnvironmentVersionResponseOutput)
-}
-
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupRegistryEnvironmentVersionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegistryEnvironmentVersionResult) string { return v.Id }).(pulumi.StringOutput)
@@ -122,6 +115,13 @@ func (o LookupRegistryEnvironmentVersionResultOutput) Id() pulumi.StringOutput {
 // The name of the resource
 func (o LookupRegistryEnvironmentVersionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegistryEnvironmentVersionResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// [Required] Additional attributes of the entity.
+func (o LookupRegistryEnvironmentVersionResultOutput) Properties() EnvironmentVersionPropertiesResponseOutput {
+	return o.ApplyT(func(v LookupRegistryEnvironmentVersionResult) EnvironmentVersionPropertiesResponse {
+		return v.Properties
+	}).(EnvironmentVersionPropertiesResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

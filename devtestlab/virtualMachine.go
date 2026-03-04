@@ -60,9 +60,9 @@ type VirtualMachine struct {
 	LabVirtualNetworkId pulumi.StringPtrOutput `pulumi:"labVirtualNetworkId"`
 	// Last known compute power state captured in DTL
 	LastKnownPowerState pulumi.StringOutput `pulumi:"lastKnownPowerState"`
-	// The location of the resource.
+	// The geo-location where the resource lives
 	Location pulumi.StringPtrOutput `pulumi:"location"`
-	// The name of the resource.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The network interface properties.
 	NetworkInterface NetworkInterfacePropertiesResponsePtrOutput `pulumi:"networkInterface"`
@@ -88,9 +88,11 @@ type VirtualMachine struct {
 	SshKey pulumi.StringPtrOutput `pulumi:"sshKey"`
 	// Storage type to use for virtual machine (i.e. Standard, Premium).
 	StorageType pulumi.StringPtrOutput `pulumi:"storageType"`
-	// The tags of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The type of the resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The unique immutable identifier of a resource (Guid).
 	UniqueIdentifier pulumi.StringOutput `pulumi:"uniqueIdentifier"`
@@ -196,9 +198,9 @@ type virtualMachineArgs struct {
 	LabSubnetName *string `pulumi:"labSubnetName"`
 	// The lab virtual network identifier of the virtual machine.
 	LabVirtualNetworkId *string `pulumi:"labVirtualNetworkId"`
-	// The location of the resource.
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// The name of the LabVirtualMachine
+	// The name of the virtual machine.
 	Name *string `pulumi:"name"`
 	// The network interface properties.
 	NetworkInterface *NetworkInterfaceProperties `pulumi:"networkInterface"`
@@ -222,7 +224,7 @@ type virtualMachineArgs struct {
 	SshKey *string `pulumi:"sshKey"`
 	// Storage type to use for virtual machine (i.e. Standard, Premium).
 	StorageType *string `pulumi:"storageType"`
-	// The tags of the resource.
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The user name of the virtual machine.
 	UserName *string `pulumi:"userName"`
@@ -256,9 +258,9 @@ type VirtualMachineArgs struct {
 	LabSubnetName pulumi.StringPtrInput
 	// The lab virtual network identifier of the virtual machine.
 	LabVirtualNetworkId pulumi.StringPtrInput
-	// The location of the resource.
+	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
-	// The name of the LabVirtualMachine
+	// The name of the virtual machine.
 	Name pulumi.StringPtrInput
 	// The network interface properties.
 	NetworkInterface NetworkInterfacePropertiesPtrInput
@@ -282,7 +284,7 @@ type VirtualMachineArgs struct {
 	SshKey pulumi.StringPtrInput
 	// Storage type to use for virtual machine (i.e. Standard, Premium).
 	StorageType pulumi.StringPtrInput
-	// The tags of the resource.
+	// Resource tags.
 	Tags pulumi.StringMapInput
 	// The user name of the virtual machine.
 	UserName pulumi.StringPtrInput
@@ -432,12 +434,12 @@ func (o VirtualMachineOutput) LastKnownPowerState() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.LastKnownPowerState }).(pulumi.StringOutput)
 }
 
-// The location of the resource.
+// The geo-location where the resource lives
 func (o VirtualMachineOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// The name of the resource.
+// The name of the resource
 func (o VirtualMachineOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -502,12 +504,17 @@ func (o VirtualMachineOutput) StorageType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringPtrOutput { return v.StorageType }).(pulumi.StringPtrOutput)
 }
 
-// The tags of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o VirtualMachineOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *VirtualMachine) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// Resource tags.
 func (o VirtualMachineOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o VirtualMachineOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

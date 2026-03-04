@@ -28,15 +28,15 @@ type CollectorPolicy struct {
 	IngestionPolicy IngestionPolicyPropertiesFormatResponsePtrOutput `pulumi:"ingestionPolicy"`
 	// Resource location.
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Resource name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning state.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// Metadata pertaining to creation and last modification of the resource.
-	SystemData TrackedResourceResponseSystemDataOutput `pulumi:"systemData"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -111,7 +111,7 @@ type collectorPolicyArgs struct {
 	IngestionPolicy *IngestionPolicyPropertiesFormat `pulumi:"ingestionPolicy"`
 	// Resource location.
 	Location *string `pulumi:"location"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
@@ -129,7 +129,7 @@ type CollectorPolicyArgs struct {
 	IngestionPolicy IngestionPolicyPropertiesFormatPtrInput
 	// Resource location.
 	Location pulumi.StringPtrInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
@@ -199,7 +199,7 @@ func (o CollectorPolicyOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *CollectorPolicy) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o CollectorPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CollectorPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -209,9 +209,9 @@ func (o CollectorPolicyOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *CollectorPolicy) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
-func (o CollectorPolicyOutput) SystemData() TrackedResourceResponseSystemDataOutput {
-	return o.ApplyT(func(v *CollectorPolicy) TrackedResourceResponseSystemDataOutput { return v.SystemData }).(TrackedResourceResponseSystemDataOutput)
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o CollectorPolicyOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *CollectorPolicy) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.
@@ -219,7 +219,7 @@ func (o CollectorPolicyOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CollectorPolicy) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o CollectorPolicyOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *CollectorPolicy) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

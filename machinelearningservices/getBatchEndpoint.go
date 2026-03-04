@@ -11,9 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Uses Azure REST API version 2025-09-01.
+// Gets a batch inference endpoint by name.
 //
-// Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Uses Azure REST API version 2025-12-01.
+//
+// Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupBatchEndpoint(ctx *pulumi.Context, args *LookupBatchEndpointArgs, opts ...pulumi.InvokeOption) (*LookupBatchEndpointResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBatchEndpointResult
@@ -29,15 +31,14 @@ type LookupBatchEndpointArgs struct {
 	EndpointName string `pulumi:"endpointName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Name of Azure Machine Learning workspace.
+	// Azure Machine Learning Workspace Name
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
+// Concrete tracked resource types can be created by aliasing this type using a specific property type.
 type LookupBatchEndpointResult struct {
 	// The Azure API version of the resource.
 	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// [Required] Additional attributes of the entity.
-	BatchEndpointProperties BatchEndpointResponse `pulumi:"batchEndpointProperties"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Managed service identity (system assigned and/or user assigned identities)
@@ -48,6 +49,8 @@ type LookupBatchEndpointResult struct {
 	Location string `pulumi:"location"`
 	// The name of the resource
 	Name string `pulumi:"name"`
+	// [Required] Additional attributes of the entity.
+	Properties BatchEndpointPropertiesResponse `pulumi:"properties"`
 	// Sku details required for ARM contract for Autoscaling.
 	Sku *SkuResponse `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -72,7 +75,7 @@ type LookupBatchEndpointOutputArgs struct {
 	EndpointName pulumi.StringInput `pulumi:"endpointName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	// Name of Azure Machine Learning workspace.
+	// Azure Machine Learning Workspace Name
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
@@ -80,6 +83,7 @@ func (LookupBatchEndpointOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupBatchEndpointArgs)(nil)).Elem()
 }
 
+// Concrete tracked resource types can be created by aliasing this type using a specific property type.
 type LookupBatchEndpointResultOutput struct{ *pulumi.OutputState }
 
 func (LookupBatchEndpointResultOutput) ElementType() reflect.Type {
@@ -97,11 +101,6 @@ func (o LookupBatchEndpointResultOutput) ToLookupBatchEndpointResultOutputWithCo
 // The Azure API version of the resource.
 func (o LookupBatchEndpointResultOutput) AzureApiVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBatchEndpointResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// [Required] Additional attributes of the entity.
-func (o LookupBatchEndpointResultOutput) BatchEndpointProperties() BatchEndpointResponseOutput {
-	return o.ApplyT(func(v LookupBatchEndpointResult) BatchEndpointResponse { return v.BatchEndpointProperties }).(BatchEndpointResponseOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -127,6 +126,11 @@ func (o LookupBatchEndpointResultOutput) Location() pulumi.StringOutput {
 // The name of the resource
 func (o LookupBatchEndpointResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBatchEndpointResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// [Required] Additional attributes of the entity.
+func (o LookupBatchEndpointResultOutput) Properties() BatchEndpointPropertiesResponseOutput {
+	return o.ApplyT(func(v LookupBatchEndpointResult) BatchEndpointPropertiesResponse { return v.Properties }).(BatchEndpointPropertiesResponseOutput)
 }
 
 // Sku details required for ARM contract for Autoscaling.

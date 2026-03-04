@@ -27,7 +27,7 @@ func LookupServiceRunner(ctx *pulumi.Context, args *LookupServiceRunnerArgs, opt
 type LookupServiceRunnerArgs struct {
 	// The name of the lab.
 	LabName string `pulumi:"labName"`
-	// The name of the ServiceRunner
+	// The name of the service runner.
 	Name string `pulumi:"name"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -37,17 +37,19 @@ type LookupServiceRunnerArgs struct {
 type LookupServiceRunnerResult struct {
 	// The Azure API version of the resource.
 	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// The identifier of the resource.
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The identity of the resource.
 	Identity *IdentityPropertiesResponse `pulumi:"identity"`
-	// The location of the resource.
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// The name of the resource.
+	// The name of the resource
 	Name string `pulumi:"name"`
-	// The tags of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// The type of the resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -63,7 +65,7 @@ func LookupServiceRunnerOutput(ctx *pulumi.Context, args LookupServiceRunnerOutp
 type LookupServiceRunnerOutputArgs struct {
 	// The name of the lab.
 	LabName pulumi.StringInput `pulumi:"labName"`
-	// The name of the ServiceRunner
+	// The name of the service runner.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
@@ -93,7 +95,7 @@ func (o LookupServiceRunnerResultOutput) AzureApiVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceRunnerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
-// The identifier of the resource.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupServiceRunnerResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceRunnerResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -103,22 +105,27 @@ func (o LookupServiceRunnerResultOutput) Identity() IdentityPropertiesResponsePt
 	return o.ApplyT(func(v LookupServiceRunnerResult) *IdentityPropertiesResponse { return v.Identity }).(IdentityPropertiesResponsePtrOutput)
 }
 
-// The location of the resource.
+// The geo-location where the resource lives
 func (o LookupServiceRunnerResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServiceRunnerResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// The name of the resource.
+// The name of the resource
 func (o LookupServiceRunnerResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceRunnerResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The tags of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupServiceRunnerResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupServiceRunnerResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// Resource tags.
 func (o LookupServiceRunnerResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupServiceRunnerResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupServiceRunnerResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceRunnerResult) string { return v.Type }).(pulumi.StringOutput)
 }

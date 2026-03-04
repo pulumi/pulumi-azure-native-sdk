@@ -41,6 +41,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ScalingPlanPersonalSchedule{}
 	case "azure-native:desktopvirtualization:ScalingPlanPooledSchedule":
 		r = &ScalingPlanPooledSchedule{}
+	case "azure-native:desktopvirtualization:SessionHost":
+		r = &SessionHost{}
 	case "azure-native:desktopvirtualization:Workspace":
 		r = &Workspace{}
 	default:

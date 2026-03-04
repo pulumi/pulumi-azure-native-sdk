@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A long-running resource action.
+// Get the version code for the edge action version.
 //
 // Uses Azure REST API version 2025-09-01-preview.
 //

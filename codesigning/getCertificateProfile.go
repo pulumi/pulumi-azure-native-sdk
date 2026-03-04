@@ -27,7 +27,7 @@ func LookupCertificateProfile(ctx *pulumi.Context, args *LookupCertificateProfil
 }
 
 type LookupCertificateProfileArgs struct {
-	// Trusted Signing account name.
+	// Artifact Signing account name.
 	AccountName string `pulumi:"accountName"`
 	// Certificate profile name.
 	ProfileName string `pulumi:"profileName"`
@@ -107,7 +107,7 @@ func LookupCertificateProfileOutput(ctx *pulumi.Context, args LookupCertificateP
 }
 
 type LookupCertificateProfileOutputArgs struct {
-	// Trusted Signing account name.
+	// Artifact Signing account name.
 	AccountName pulumi.StringInput `pulumi:"accountName"`
 	// Certificate profile name.
 	ProfileName pulumi.StringInput `pulumi:"profileName"`

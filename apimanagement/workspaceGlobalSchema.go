@@ -14,9 +14,9 @@ import (
 
 // Global Schema Contract details.
 //
-// Uses Azure REST API version 2022-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-09-01-preview.
+// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01-preview.
 //
-// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type WorkspaceGlobalSchema struct {
 	pulumi.CustomResourceState
 
@@ -26,6 +26,8 @@ type WorkspaceGlobalSchema struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The provisioning state
+	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Schema Type. Immutable.
 	SchemaType pulumi.StringOutput `pulumi:"schemaType"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -197,6 +199,11 @@ func (o WorkspaceGlobalSchemaOutput) Description() pulumi.StringPtrOutput {
 // The name of the resource
 func (o WorkspaceGlobalSchemaOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkspaceGlobalSchema) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The provisioning state
+func (o WorkspaceGlobalSchemaOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkspaceGlobalSchema) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // Schema Type. Immutable.

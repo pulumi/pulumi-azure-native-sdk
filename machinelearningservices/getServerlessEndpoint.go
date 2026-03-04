@@ -11,9 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Uses Azure REST API version 2025-09-01.
+// Get Serverless Endpoint.
 //
-// Other available API versions: 2023-08-01-preview, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Uses Azure REST API version 2025-12-01.
+//
+// Other available API versions: 2023-08-01-preview, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupServerlessEndpoint(ctx *pulumi.Context, args *LookupServerlessEndpointArgs, opts ...pulumi.InvokeOption) (*LookupServerlessEndpointResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupServerlessEndpointResult
@@ -29,10 +31,11 @@ type LookupServerlessEndpointArgs struct {
 	Name string `pulumi:"name"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Name of Azure Machine Learning workspace.
+	// Azure Machine Learning Workspace Name
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
+// Concrete tracked resource types can be created by aliasing this type using a specific property type.
 type LookupServerlessEndpointResult struct {
 	// The Azure API version of the resource.
 	AzureApiVersion string `pulumi:"azureApiVersion"`
@@ -47,7 +50,7 @@ type LookupServerlessEndpointResult struct {
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// [Required] Additional attributes of the entity.
-	ServerlessEndpointProperties ServerlessEndpointResponse `pulumi:"serverlessEndpointProperties"`
+	Properties ServerlessEndpointPropertiesResponse `pulumi:"properties"`
 	// Sku details required for ARM contract for Autoscaling.
 	Sku *SkuResponse `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -72,7 +75,7 @@ type LookupServerlessEndpointOutputArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	// Name of Azure Machine Learning workspace.
+	// Azure Machine Learning Workspace Name
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
@@ -80,6 +83,7 @@ func (LookupServerlessEndpointOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupServerlessEndpointArgs)(nil)).Elem()
 }
 
+// Concrete tracked resource types can be created by aliasing this type using a specific property type.
 type LookupServerlessEndpointResultOutput struct{ *pulumi.OutputState }
 
 func (LookupServerlessEndpointResultOutput) ElementType() reflect.Type {
@@ -125,10 +129,8 @@ func (o LookupServerlessEndpointResultOutput) Name() pulumi.StringOutput {
 }
 
 // [Required] Additional attributes of the entity.
-func (o LookupServerlessEndpointResultOutput) ServerlessEndpointProperties() ServerlessEndpointResponseOutput {
-	return o.ApplyT(func(v LookupServerlessEndpointResult) ServerlessEndpointResponse {
-		return v.ServerlessEndpointProperties
-	}).(ServerlessEndpointResponseOutput)
+func (o LookupServerlessEndpointResultOutput) Properties() ServerlessEndpointPropertiesResponseOutput {
+	return o.ApplyT(func(v LookupServerlessEndpointResult) ServerlessEndpointPropertiesResponse { return v.Properties }).(ServerlessEndpointPropertiesResponseOutput)
 }
 
 // Sku details required for ARM contract for Autoscaling.

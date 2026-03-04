@@ -14,9 +14,9 @@ import (
 
 // Machine Learning compute object wrapped into ARM resource envelope.
 //
-// Uses Azure REST API version 2025-09-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
+// Uses Azure REST API version 2025-12-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
 //
-// Other available API versions: 2021-03-01-preview, 2021-07-01, 2022-01-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-03-01-preview, 2021-07-01, 2022-01-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Compute struct {
 	pulumi.CustomResourceState
 
@@ -28,7 +28,7 @@ type Compute struct {
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Compute properties
+	// The resource-specific properties for this resource.
 	Properties pulumi.AnyOutput `pulumi:"properties"`
 	// The sku of the workspace.
 	Sku SkuResponsePtrOutput `pulumi:"sku"`
@@ -189,6 +189,9 @@ func NewCompute(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20251001preview:Compute"),
 		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20251201:Compute"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -230,7 +233,7 @@ type computeArgs struct {
 	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// Specifies the location of the resource.
 	Location *string `pulumi:"location"`
-	// Compute properties
+	// The resource-specific properties for this resource.
 	Properties interface{} `pulumi:"properties"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -238,7 +241,7 @@ type computeArgs struct {
 	Sku *Sku `pulumi:"sku"`
 	// Contains resource tags defined as key/value pairs.
 	Tags map[string]string `pulumi:"tags"`
-	// Name of Azure Machine Learning workspace.
+	// Azure Machine Learning Workspace Name
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
@@ -250,7 +253,7 @@ type ComputeArgs struct {
 	Identity ManagedServiceIdentityPtrInput
 	// Specifies the location of the resource.
 	Location pulumi.StringPtrInput
-	// Compute properties
+	// The resource-specific properties for this resource.
 	Properties pulumi.Input
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
@@ -258,7 +261,7 @@ type ComputeArgs struct {
 	Sku SkuPtrInput
 	// Contains resource tags defined as key/value pairs.
 	Tags pulumi.StringMapInput
-	// Name of Azure Machine Learning workspace.
+	// Azure Machine Learning Workspace Name
 	WorkspaceName pulumi.StringInput
 }
 
@@ -319,7 +322,7 @@ func (o ComputeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Compute) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Compute properties
+// The resource-specific properties for this resource.
 func (o ComputeOutput) Properties() pulumi.AnyOutput {
 	return o.ApplyT(func(v *Compute) pulumi.AnyOutput { return v.Properties }).(pulumi.AnyOutput)
 }

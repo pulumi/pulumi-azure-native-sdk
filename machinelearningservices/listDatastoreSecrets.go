@@ -11,15 +11,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Base definition for datastore secrets.
+// Get datastore secrets.
 //
-// Uses Azure REST API version 2025-09-01.
+// Uses Azure REST API version 2025-12-01.
 //
-// Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func ListDatastoreSecrets(ctx *pulumi.Context, args *ListDatastoreSecretsArgs, opts ...pulumi.InvokeOption) (*ListDatastoreSecretsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListDatastoreSecretsResult
-	err := ctx.Invoke("azure-native:machinelearningservices:listDatastoreSecrets", args, &rv, opts...)
+	err := ctx.Invoke("azure-native:machinelearningservices:listDatastoreSecrets", args.Defaults(), &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -27,12 +27,33 @@ func ListDatastoreSecrets(ctx *pulumi.Context, args *ListDatastoreSecretsArgs, o
 }
 
 type ListDatastoreSecretsArgs struct {
+	// Indicates if the secret is expirable.
+	ExpirableSecret *bool `pulumi:"expirableSecret"`
+	// Number of hours after which the secret will expire.
+	ExpireAfterHours *int `pulumi:"expireAfterHours"`
 	// Datastore name.
 	Name string `pulumi:"name"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Name of Azure Machine Learning workspace.
+	// Azure Machine Learning Workspace Name
 	WorkspaceName string `pulumi:"workspaceName"`
+}
+
+// Defaults sets the appropriate defaults for ListDatastoreSecretsArgs
+func (val *ListDatastoreSecretsArgs) Defaults() *ListDatastoreSecretsArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ExpirableSecret == nil {
+		expirableSecret_ := false
+		tmp.ExpirableSecret = &expirableSecret_
+	}
+	if tmp.ExpireAfterHours == nil {
+		expireAfterHours_ := 1
+		tmp.ExpireAfterHours = &expireAfterHours_
+	}
+	return &tmp
 }
 
 // Base definition for datastore secrets.
@@ -46,16 +67,20 @@ func ListDatastoreSecretsOutput(ctx *pulumi.Context, args ListDatastoreSecretsOu
 		ApplyT(func(v interface{}) (ListDatastoreSecretsResultOutput, error) {
 			args := v.(ListDatastoreSecretsArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azure-native:machinelearningservices:listDatastoreSecrets", args, ListDatastoreSecretsResultOutput{}, options).(ListDatastoreSecretsResultOutput), nil
+			return ctx.InvokeOutput("azure-native:machinelearningservices:listDatastoreSecrets", args.Defaults(), ListDatastoreSecretsResultOutput{}, options).(ListDatastoreSecretsResultOutput), nil
 		}).(ListDatastoreSecretsResultOutput)
 }
 
 type ListDatastoreSecretsOutputArgs struct {
+	// Indicates if the secret is expirable.
+	ExpirableSecret pulumi.BoolPtrInput `pulumi:"expirableSecret"`
+	// Number of hours after which the secret will expire.
+	ExpireAfterHours pulumi.IntPtrInput `pulumi:"expireAfterHours"`
 	// Datastore name.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	// Name of Azure Machine Learning workspace.
+	// Azure Machine Learning Workspace Name
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 

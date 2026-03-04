@@ -14,6 +14,8 @@ import (
 // Get the default application key.
 //
 // Uses Azure REST API version 2025-11-03-preview.
+//
+// Other available API versions: 2025-12-26-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datadog [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func GetMonitorDefaultApplicationKey(ctx *pulumi.Context, args *GetMonitorDefaultApplicationKeyArgs, opts ...pulumi.InvokeOption) (*GetMonitorDefaultApplicationKeyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetMonitorDefaultApplicationKeyResult

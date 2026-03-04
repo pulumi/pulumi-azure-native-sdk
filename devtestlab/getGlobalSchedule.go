@@ -43,11 +43,11 @@ type LookupGlobalScheduleResult struct {
 	DailyRecurrence *DayDetailsResponse `pulumi:"dailyRecurrence"`
 	// If the schedule will occur multiple times a day, specify the hourly recurrence.
 	HourlyRecurrence *HourDetailsResponse `pulumi:"hourlyRecurrence"`
-	// The identifier of the resource.
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// The location of the resource.
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// The name of the resource.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Notification settings.
 	NotificationSettings *NotificationSettingsResponse `pulumi:"notificationSettings"`
@@ -55,7 +55,9 @@ type LookupGlobalScheduleResult struct {
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The status of the schedule (i.e. Enabled, Disabled)
 	Status *string `pulumi:"status"`
-	// The tags of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The resource ID to which the schedule belongs
 	TargetResourceId *string `pulumi:"targetResourceId"`
@@ -63,7 +65,7 @@ type LookupGlobalScheduleResult struct {
 	TaskType *string `pulumi:"taskType"`
 	// The time zone ID (e.g. China Standard Time, Greenland Standard Time, Pacific Standard time, etc.). The possible values for this property can be found in `IReadOnlyCollection<string> TimeZoneConverter.TZConvert.KnownWindowsTimeZoneIds` (https://github.com/mattjohnsonpint/TimeZoneConverter/blob/main/README.md)
 	TimeZoneId *string `pulumi:"timeZoneId"`
-	// The type of the resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// The unique immutable identifier of a resource (Guid).
 	UniqueIdentifier string `pulumi:"uniqueIdentifier"`
@@ -142,17 +144,17 @@ func (o LookupGlobalScheduleResultOutput) HourlyRecurrence() HourDetailsResponse
 	return o.ApplyT(func(v LookupGlobalScheduleResult) *HourDetailsResponse { return v.HourlyRecurrence }).(HourDetailsResponsePtrOutput)
 }
 
-// The identifier of the resource.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupGlobalScheduleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGlobalScheduleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The location of the resource.
+// The geo-location where the resource lives
 func (o LookupGlobalScheduleResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupGlobalScheduleResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// The name of the resource.
+// The name of the resource
 func (o LookupGlobalScheduleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGlobalScheduleResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -172,7 +174,12 @@ func (o LookupGlobalScheduleResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupGlobalScheduleResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-// The tags of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupGlobalScheduleResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupGlobalScheduleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// Resource tags.
 func (o LookupGlobalScheduleResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupGlobalScheduleResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -192,7 +199,7 @@ func (o LookupGlobalScheduleResultOutput) TimeZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupGlobalScheduleResult) *string { return v.TimeZoneId }).(pulumi.StringPtrOutput)
 }
 
-// The type of the resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupGlobalScheduleResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGlobalScheduleResult) string { return v.Type }).(pulumi.StringOutput)
 }

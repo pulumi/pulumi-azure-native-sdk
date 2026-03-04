@@ -605,6 +605,147 @@ func (o AzureStorageSmbFileShareEndpointPropertiesResponseOutput) StorageAccount
 	return o.ApplyT(func(v AzureStorageSmbFileShareEndpointPropertiesResponse) string { return v.StorageAccountResourceId }).(pulumi.StringOutput)
 }
 
+// Properties of the Connection resource.
+type ConnectionProperties struct {
+	// A description for the Connection.
+	Description *string `pulumi:"description"`
+	// List of job definitions associated with this connection.
+	JobList []string `pulumi:"jobList"`
+	// The PrivateLinkServiceId for the connection.
+	PrivateLinkServiceId string `pulumi:"privateLinkServiceId"`
+}
+
+// ConnectionPropertiesInput is an input type that accepts ConnectionPropertiesArgs and ConnectionPropertiesOutput values.
+// You can construct a concrete instance of `ConnectionPropertiesInput` via:
+//
+//	ConnectionPropertiesArgs{...}
+type ConnectionPropertiesInput interface {
+	pulumi.Input
+
+	ToConnectionPropertiesOutput() ConnectionPropertiesOutput
+	ToConnectionPropertiesOutputWithContext(context.Context) ConnectionPropertiesOutput
+}
+
+// Properties of the Connection resource.
+type ConnectionPropertiesArgs struct {
+	// A description for the Connection.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// List of job definitions associated with this connection.
+	JobList pulumi.StringArrayInput `pulumi:"jobList"`
+	// The PrivateLinkServiceId for the connection.
+	PrivateLinkServiceId pulumi.StringInput `pulumi:"privateLinkServiceId"`
+}
+
+func (ConnectionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProperties)(nil)).Elem()
+}
+
+func (i ConnectionPropertiesArgs) ToConnectionPropertiesOutput() ConnectionPropertiesOutput {
+	return i.ToConnectionPropertiesOutputWithContext(context.Background())
+}
+
+func (i ConnectionPropertiesArgs) ToConnectionPropertiesOutputWithContext(ctx context.Context) ConnectionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionPropertiesOutput)
+}
+
+// Properties of the Connection resource.
+type ConnectionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (ConnectionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProperties)(nil)).Elem()
+}
+
+func (o ConnectionPropertiesOutput) ToConnectionPropertiesOutput() ConnectionPropertiesOutput {
+	return o
+}
+
+func (o ConnectionPropertiesOutput) ToConnectionPropertiesOutputWithContext(ctx context.Context) ConnectionPropertiesOutput {
+	return o
+}
+
+// A description for the Connection.
+func (o ConnectionPropertiesOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionProperties) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// List of job definitions associated with this connection.
+func (o ConnectionPropertiesOutput) JobList() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectionProperties) []string { return v.JobList }).(pulumi.StringArrayOutput)
+}
+
+// The PrivateLinkServiceId for the connection.
+func (o ConnectionPropertiesOutput) PrivateLinkServiceId() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionProperties) string { return v.PrivateLinkServiceId }).(pulumi.StringOutput)
+}
+
+// Properties of the Connection resource.
+type ConnectionPropertiesResponse struct {
+	// The connection status.
+	ConnectionStatus string `pulumi:"connectionStatus"`
+	// A description for the Connection.
+	Description *string `pulumi:"description"`
+	// List of job definitions associated with this connection.
+	JobList []string `pulumi:"jobList"`
+	// The PrivateEndpointName associated with the connection.
+	PrivateEndpointName string `pulumi:"privateEndpointName"`
+	// The privateEndpoint resource Id
+	PrivateEndpointResourceId string `pulumi:"privateEndpointResourceId"`
+	// The PrivateLinkServiceId for the connection.
+	PrivateLinkServiceId string `pulumi:"privateLinkServiceId"`
+	// The provisioning state of this resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+}
+
+// Properties of the Connection resource.
+type ConnectionPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (ConnectionPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionPropertiesResponse)(nil)).Elem()
+}
+
+func (o ConnectionPropertiesResponseOutput) ToConnectionPropertiesResponseOutput() ConnectionPropertiesResponseOutput {
+	return o
+}
+
+func (o ConnectionPropertiesResponseOutput) ToConnectionPropertiesResponseOutputWithContext(ctx context.Context) ConnectionPropertiesResponseOutput {
+	return o
+}
+
+// The connection status.
+func (o ConnectionPropertiesResponseOutput) ConnectionStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionPropertiesResponse) string { return v.ConnectionStatus }).(pulumi.StringOutput)
+}
+
+// A description for the Connection.
+func (o ConnectionPropertiesResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionPropertiesResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// List of job definitions associated with this connection.
+func (o ConnectionPropertiesResponseOutput) JobList() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectionPropertiesResponse) []string { return v.JobList }).(pulumi.StringArrayOutput)
+}
+
+// The PrivateEndpointName associated with the connection.
+func (o ConnectionPropertiesResponseOutput) PrivateEndpointName() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionPropertiesResponse) string { return v.PrivateEndpointName }).(pulumi.StringOutput)
+}
+
+// The privateEndpoint resource Id
+func (o ConnectionPropertiesResponseOutput) PrivateEndpointResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionPropertiesResponse) string { return v.PrivateEndpointResourceId }).(pulumi.StringOutput)
+}
+
+// The PrivateLinkServiceId for the connection.
+func (o ConnectionPropertiesResponseOutput) PrivateLinkServiceId() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionPropertiesResponse) string { return v.PrivateLinkServiceId }).(pulumi.StringOutput)
+}
+
+// The provisioning state of this resource.
+func (o ConnectionPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
 // The properties of NFS share endpoint.
 type NfsMountEndpointProperties struct {
 	// A description for the Endpoint.
@@ -1553,6 +1694,8 @@ func init() {
 	pulumi.RegisterOutputType(AzureStorageBlobContainerEndpointPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(AzureStorageSmbFileShareEndpointPropertiesOutput{})
 	pulumi.RegisterOutputType(AzureStorageSmbFileShareEndpointPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(ConnectionPropertiesOutput{})
+	pulumi.RegisterOutputType(ConnectionPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(NfsMountEndpointPropertiesOutput{})
 	pulumi.RegisterOutputType(NfsMountEndpointPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(SmbMountEndpointPropertiesOutput{})

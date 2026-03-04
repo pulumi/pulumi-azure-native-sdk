@@ -10,291 +10,127 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Desired enablement state of the Defender Cloud Security Posture Management (CSPM) service.
-type DefenderCspm string
-
-const (
-	DefenderCspmEnable  = DefenderCspm("Enable")
-	DefenderCspmDisable = DefenderCspm("Disable")
-)
-
-func (DefenderCspm) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefenderCspm)(nil)).Elem()
-}
-
-func (e DefenderCspm) ToDefenderCspmOutput() DefenderCspmOutput {
-	return pulumi.ToOutput(e).(DefenderCspmOutput)
-}
-
-func (e DefenderCspm) ToDefenderCspmOutputWithContext(ctx context.Context) DefenderCspmOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(DefenderCspmOutput)
-}
-
-func (e DefenderCspm) ToDefenderCspmPtrOutput() DefenderCspmPtrOutput {
-	return e.ToDefenderCspmPtrOutputWithContext(context.Background())
-}
-
-func (e DefenderCspm) ToDefenderCspmPtrOutputWithContext(ctx context.Context) DefenderCspmPtrOutput {
-	return DefenderCspm(e).ToDefenderCspmOutputWithContext(ctx).ToDefenderCspmPtrOutputWithContext(ctx)
-}
-
-func (e DefenderCspm) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e DefenderCspm) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e DefenderCspm) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e DefenderCspm) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type DefenderCspmOutput struct{ *pulumi.OutputState }
-
-func (DefenderCspmOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefenderCspm)(nil)).Elem()
-}
-
-func (o DefenderCspmOutput) ToDefenderCspmOutput() DefenderCspmOutput {
-	return o
-}
-
-func (o DefenderCspmOutput) ToDefenderCspmOutputWithContext(ctx context.Context) DefenderCspmOutput {
-	return o
-}
-
-func (o DefenderCspmOutput) ToDefenderCspmPtrOutput() DefenderCspmPtrOutput {
-	return o.ToDefenderCspmPtrOutputWithContext(context.Background())
-}
-
-func (o DefenderCspmOutput) ToDefenderCspmPtrOutputWithContext(ctx context.Context) DefenderCspmPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefenderCspm) *DefenderCspm {
-		return &v
-	}).(DefenderCspmPtrOutput)
-}
-
-func (o DefenderCspmOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o DefenderCspmOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e DefenderCspm) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o DefenderCspmOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o DefenderCspmOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e DefenderCspm) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type DefenderCspmPtrOutput struct{ *pulumi.OutputState }
-
-func (DefenderCspmPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DefenderCspm)(nil)).Elem()
-}
-
-func (o DefenderCspmPtrOutput) ToDefenderCspmPtrOutput() DefenderCspmPtrOutput {
-	return o
-}
-
-func (o DefenderCspmPtrOutput) ToDefenderCspmPtrOutputWithContext(ctx context.Context) DefenderCspmPtrOutput {
-	return o
-}
-
-func (o DefenderCspmPtrOutput) Elem() DefenderCspmOutput {
-	return o.ApplyT(func(v *DefenderCspm) DefenderCspm {
-		if v != nil {
-			return *v
-		}
-		var ret DefenderCspm
-		return ret
-	}).(DefenderCspmOutput)
-}
-
-func (o DefenderCspmPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o DefenderCspmPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DefenderCspm) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// DefenderCspmInput is an input type that accepts values of the DefenderCspm enum
-// A concrete instance of `DefenderCspmInput` can be one of the following:
-//
-//	DefenderCspmEnable
-//	DefenderCspmDisable
-type DefenderCspmInput interface {
-	pulumi.Input
-
-	ToDefenderCspmOutput() DefenderCspmOutput
-	ToDefenderCspmOutputWithContext(context.Context) DefenderCspmOutput
-}
-
-var defenderCspmPtrType = reflect.TypeOf((**DefenderCspm)(nil)).Elem()
-
-type DefenderCspmPtrInput interface {
-	pulumi.Input
-
-	ToDefenderCspmPtrOutput() DefenderCspmPtrOutput
-	ToDefenderCspmPtrOutputWithContext(context.Context) DefenderCspmPtrOutput
-}
-
-type defenderCspmPtr string
-
-func DefenderCspmPtr(v string) DefenderCspmPtrInput {
-	return (*defenderCspmPtr)(&v)
-}
-
-func (*defenderCspmPtr) ElementType() reflect.Type {
-	return defenderCspmPtrType
-}
-
-func (in *defenderCspmPtr) ToDefenderCspmPtrOutput() DefenderCspmPtrOutput {
-	return pulumi.ToOutput(in).(DefenderCspmPtrOutput)
-}
-
-func (in *defenderCspmPtr) ToDefenderCspmPtrOutputWithContext(ctx context.Context) DefenderCspmPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(DefenderCspmPtrOutput)
-}
-
 // Desired enablement state of the Defender For Servers service.
-type DefenderForServers string
+type DesiredEnablementState string
 
 const (
-	DefenderForServersEnable  = DefenderForServers("Enable")
-	DefenderForServersDisable = DefenderForServers("Disable")
+	// Enable the service.
+	DesiredEnablementStateEnable = DesiredEnablementState("Enable")
+	// Disable the service.
+	DesiredEnablementStateDisable = DesiredEnablementState("Disable")
 )
 
-func (DefenderForServers) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefenderForServers)(nil)).Elem()
+func (DesiredEnablementState) ElementType() reflect.Type {
+	return reflect.TypeOf((*DesiredEnablementState)(nil)).Elem()
 }
 
-func (e DefenderForServers) ToDefenderForServersOutput() DefenderForServersOutput {
-	return pulumi.ToOutput(e).(DefenderForServersOutput)
+func (e DesiredEnablementState) ToDesiredEnablementStateOutput() DesiredEnablementStateOutput {
+	return pulumi.ToOutput(e).(DesiredEnablementStateOutput)
 }
 
-func (e DefenderForServers) ToDefenderForServersOutputWithContext(ctx context.Context) DefenderForServersOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(DefenderForServersOutput)
+func (e DesiredEnablementState) ToDesiredEnablementStateOutputWithContext(ctx context.Context) DesiredEnablementStateOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DesiredEnablementStateOutput)
 }
 
-func (e DefenderForServers) ToDefenderForServersPtrOutput() DefenderForServersPtrOutput {
-	return e.ToDefenderForServersPtrOutputWithContext(context.Background())
+func (e DesiredEnablementState) ToDesiredEnablementStatePtrOutput() DesiredEnablementStatePtrOutput {
+	return e.ToDesiredEnablementStatePtrOutputWithContext(context.Background())
 }
 
-func (e DefenderForServers) ToDefenderForServersPtrOutputWithContext(ctx context.Context) DefenderForServersPtrOutput {
-	return DefenderForServers(e).ToDefenderForServersOutputWithContext(ctx).ToDefenderForServersPtrOutputWithContext(ctx)
+func (e DesiredEnablementState) ToDesiredEnablementStatePtrOutputWithContext(ctx context.Context) DesiredEnablementStatePtrOutput {
+	return DesiredEnablementState(e).ToDesiredEnablementStateOutputWithContext(ctx).ToDesiredEnablementStatePtrOutputWithContext(ctx)
 }
 
-func (e DefenderForServers) ToStringOutput() pulumi.StringOutput {
+func (e DesiredEnablementState) ToStringOutput() pulumi.StringOutput {
 	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e DefenderForServers) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+func (e DesiredEnablementState) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
 	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e DefenderForServers) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (e DesiredEnablementState) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
 }
 
-func (e DefenderForServers) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+func (e DesiredEnablementState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-type DefenderForServersOutput struct{ *pulumi.OutputState }
+type DesiredEnablementStateOutput struct{ *pulumi.OutputState }
 
-func (DefenderForServersOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefenderForServers)(nil)).Elem()
+func (DesiredEnablementStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DesiredEnablementState)(nil)).Elem()
 }
 
-func (o DefenderForServersOutput) ToDefenderForServersOutput() DefenderForServersOutput {
+func (o DesiredEnablementStateOutput) ToDesiredEnablementStateOutput() DesiredEnablementStateOutput {
 	return o
 }
 
-func (o DefenderForServersOutput) ToDefenderForServersOutputWithContext(ctx context.Context) DefenderForServersOutput {
+func (o DesiredEnablementStateOutput) ToDesiredEnablementStateOutputWithContext(ctx context.Context) DesiredEnablementStateOutput {
 	return o
 }
 
-func (o DefenderForServersOutput) ToDefenderForServersPtrOutput() DefenderForServersPtrOutput {
-	return o.ToDefenderForServersPtrOutputWithContext(context.Background())
+func (o DesiredEnablementStateOutput) ToDesiredEnablementStatePtrOutput() DesiredEnablementStatePtrOutput {
+	return o.ToDesiredEnablementStatePtrOutputWithContext(context.Background())
 }
 
-func (o DefenderForServersOutput) ToDefenderForServersPtrOutputWithContext(ctx context.Context) DefenderForServersPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefenderForServers) *DefenderForServers {
+func (o DesiredEnablementStateOutput) ToDesiredEnablementStatePtrOutputWithContext(ctx context.Context) DesiredEnablementStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DesiredEnablementState) *DesiredEnablementState {
 		return &v
-	}).(DefenderForServersPtrOutput)
+	}).(DesiredEnablementStatePtrOutput)
 }
 
-func (o DefenderForServersOutput) ToStringOutput() pulumi.StringOutput {
+func (o DesiredEnablementStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
 
-func (o DefenderForServersOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e DefenderForServers) string {
+func (o DesiredEnablementStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DesiredEnablementState) string {
 		return string(e)
 	}).(pulumi.StringOutput)
 }
 
-func (o DefenderForServersOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (o DesiredEnablementStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return o.ToStringPtrOutputWithContext(context.Background())
 }
 
-func (o DefenderForServersOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e DefenderForServers) *string {
+func (o DesiredEnablementStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DesiredEnablementState) *string {
 		v := string(e)
 		return &v
 	}).(pulumi.StringPtrOutput)
 }
 
-type DefenderForServersPtrOutput struct{ *pulumi.OutputState }
+type DesiredEnablementStatePtrOutput struct{ *pulumi.OutputState }
 
-func (DefenderForServersPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DefenderForServers)(nil)).Elem()
+func (DesiredEnablementStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DesiredEnablementState)(nil)).Elem()
 }
 
-func (o DefenderForServersPtrOutput) ToDefenderForServersPtrOutput() DefenderForServersPtrOutput {
+func (o DesiredEnablementStatePtrOutput) ToDesiredEnablementStatePtrOutput() DesiredEnablementStatePtrOutput {
 	return o
 }
 
-func (o DefenderForServersPtrOutput) ToDefenderForServersPtrOutputWithContext(ctx context.Context) DefenderForServersPtrOutput {
+func (o DesiredEnablementStatePtrOutput) ToDesiredEnablementStatePtrOutputWithContext(ctx context.Context) DesiredEnablementStatePtrOutput {
 	return o
 }
 
-func (o DefenderForServersPtrOutput) Elem() DefenderForServersOutput {
-	return o.ApplyT(func(v *DefenderForServers) DefenderForServers {
+func (o DesiredEnablementStatePtrOutput) Elem() DesiredEnablementStateOutput {
+	return o.ApplyT(func(v *DesiredEnablementState) DesiredEnablementState {
 		if v != nil {
 			return *v
 		}
-		var ret DefenderForServers
+		var ret DesiredEnablementState
 		return ret
-	}).(DefenderForServersOutput)
+	}).(DesiredEnablementStateOutput)
 }
 
-func (o DefenderForServersPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (o DesiredEnablementStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return o.ToStringPtrOutputWithContext(context.Background())
 }
 
-func (o DefenderForServersPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DefenderForServers) *string {
+func (o DesiredEnablementStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DesiredEnablementState) *string {
 		if e == nil {
 			return nil
 		}
@@ -303,48 +139,46 @@ func (o DefenderForServersPtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 	}).(pulumi.StringPtrOutput)
 }
 
-// DefenderForServersInput is an input type that accepts values of the DefenderForServers enum
-// A concrete instance of `DefenderForServersInput` can be one of the following:
+// DesiredEnablementStateInput is an input type that accepts values of the DesiredEnablementState enum
+// A concrete instance of `DesiredEnablementStateInput` can be one of the following:
 //
-//	DefenderForServersEnable
-//	DefenderForServersDisable
-type DefenderForServersInput interface {
+//	DesiredEnablementStateEnable
+//	DesiredEnablementStateDisable
+type DesiredEnablementStateInput interface {
 	pulumi.Input
 
-	ToDefenderForServersOutput() DefenderForServersOutput
-	ToDefenderForServersOutputWithContext(context.Context) DefenderForServersOutput
+	ToDesiredEnablementStateOutput() DesiredEnablementStateOutput
+	ToDesiredEnablementStateOutputWithContext(context.Context) DesiredEnablementStateOutput
 }
 
-var defenderForServersPtrType = reflect.TypeOf((**DefenderForServers)(nil)).Elem()
+var desiredEnablementStatePtrType = reflect.TypeOf((**DesiredEnablementState)(nil)).Elem()
 
-type DefenderForServersPtrInput interface {
+type DesiredEnablementStatePtrInput interface {
 	pulumi.Input
 
-	ToDefenderForServersPtrOutput() DefenderForServersPtrOutput
-	ToDefenderForServersPtrOutputWithContext(context.Context) DefenderForServersPtrOutput
+	ToDesiredEnablementStatePtrOutput() DesiredEnablementStatePtrOutput
+	ToDesiredEnablementStatePtrOutputWithContext(context.Context) DesiredEnablementStatePtrOutput
 }
 
-type defenderForServersPtr string
+type desiredEnablementStatePtr string
 
-func DefenderForServersPtr(v string) DefenderForServersPtrInput {
-	return (*defenderForServersPtr)(&v)
+func DesiredEnablementStatePtr(v string) DesiredEnablementStatePtrInput {
+	return (*desiredEnablementStatePtr)(&v)
 }
 
-func (*defenderForServersPtr) ElementType() reflect.Type {
-	return defenderForServersPtrType
+func (*desiredEnablementStatePtr) ElementType() reflect.Type {
+	return desiredEnablementStatePtrType
 }
 
-func (in *defenderForServersPtr) ToDefenderForServersPtrOutput() DefenderForServersPtrOutput {
-	return pulumi.ToOutput(in).(DefenderForServersPtrOutput)
+func (in *desiredEnablementStatePtr) ToDesiredEnablementStatePtrOutput() DesiredEnablementStatePtrOutput {
+	return pulumi.ToOutput(in).(DesiredEnablementStatePtrOutput)
 }
 
-func (in *defenderForServersPtr) ToDefenderForServersPtrOutputWithContext(ctx context.Context) DefenderForServersPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(DefenderForServersPtrOutput)
+func (in *desiredEnablementStatePtr) ToDesiredEnablementStatePtrOutputWithContext(ctx context.Context) DesiredEnablementStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DesiredEnablementStatePtrOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(DefenderCspmOutput{})
-	pulumi.RegisterOutputType(DefenderCspmPtrOutput{})
-	pulumi.RegisterOutputType(DefenderForServersOutput{})
-	pulumi.RegisterOutputType(DefenderForServersPtrOutput{})
+	pulumi.RegisterOutputType(DesiredEnablementStateOutput{})
+	pulumi.RegisterOutputType(DesiredEnablementStatePtrOutput{})
 }
