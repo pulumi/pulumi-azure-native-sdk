@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Site as ARM Resource
+// Site as Extension Resource
 //
 // Uses Azure REST API version 2025-03-01-preview.
 //

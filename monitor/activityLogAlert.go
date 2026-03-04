@@ -15,6 +15,8 @@ import (
 // An Activity Log Alert rule resource.
 //
 // Uses Azure REST API version 2020-10-01.
+//
+// Other available API versions: 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native monitor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ActivityLogAlert struct {
 	pulumi.CustomResourceState
 
@@ -86,6 +88,9 @@ func NewActivityLogAlert(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:monitor/v20230101preview:ActivityLogAlert"),
+		},
+		{
+			Type: pulumi.String("azure-native:monitor/v20260101:ActivityLogAlert"),
 		},
 	})
 	opts = append(opts, aliases)

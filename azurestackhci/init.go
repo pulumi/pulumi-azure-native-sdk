@@ -25,8 +25,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ArcSetting{}
 	case "azure-native:azurestackhci:Cluster":
 		r = &Cluster{}
+	case "azure-native:azurestackhci:ClusterJob":
+		r = &ClusterJob{}
 	case "azure-native:azurestackhci:DeploymentSetting":
 		r = &DeploymentSetting{}
+	case "azure-native:azurestackhci:DevicePool":
+		r = &DevicePool{}
 	case "azure-native:azurestackhci:EdgeMachine":
 		r = &EdgeMachine{}
 	case "azure-native:azurestackhci:EdgeMachineJob":
@@ -63,6 +67,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SecurityRule{}
 	case "azure-native:azurestackhci:SecuritySetting":
 		r = &SecuritySetting{}
+	case "azure-native:azurestackhci:Snapshot":
+		r = &Snapshot{}
 	case "azure-native:azurestackhci:StorageContainer":
 		r = &StorageContainer{}
 	case "azure-native:azurestackhci:Update":

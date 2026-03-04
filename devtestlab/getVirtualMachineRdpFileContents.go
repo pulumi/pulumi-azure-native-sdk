@@ -27,7 +27,7 @@ func GetVirtualMachineRdpFileContents(ctx *pulumi.Context, args *GetVirtualMachi
 type GetVirtualMachineRdpFileContentsArgs struct {
 	// The name of the lab.
 	LabName string `pulumi:"labName"`
-	// The name of the LabVirtualMachine
+	// The name of the virtual machine.
 	Name string `pulumi:"name"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -51,7 +51,7 @@ func GetVirtualMachineRdpFileContentsOutput(ctx *pulumi.Context, args GetVirtual
 type GetVirtualMachineRdpFileContentsOutputArgs struct {
 	// The name of the lab.
 	LabName pulumi.StringInput `pulumi:"labName"`
-	// The name of the LabVirtualMachine
+	// The name of the virtual machine.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`

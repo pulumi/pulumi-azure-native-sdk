@@ -16,7 +16,7 @@ import (
 //
 // Uses Azure REST API version 2025-04-01-preview.
 //
-// Other available API versions: 2025-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native durabletask [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2025-11-01, 2026-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native durabletask [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type RetentionPolicy struct {
 	pulumi.CustomResourceState
 
@@ -51,6 +51,9 @@ func NewRetentionPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:durabletask/v20251101:RetentionPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:durabletask/v20260201:RetentionPolicy"),
 		},
 	})
 	opts = append(opts, aliases)

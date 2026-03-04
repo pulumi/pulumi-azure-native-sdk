@@ -13,9 +13,9 @@ import (
 
 // Retrieve a hybrid runbook worker.
 //
-// Uses Azure REST API version 2023-11-01.
+// Uses Azure REST API version 2024-10-23.
 //
-// Other available API versions: 2021-06-22, 2022-08-08, 2023-05-15-preview, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-06-22, 2022-08-08, 2023-05-15-preview, 2023-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupHybridRunbookWorker(ctx *pulumi.Context, args *LookupHybridRunbookWorkerArgs, opts ...pulumi.InvokeOption) (*LookupHybridRunbookWorkerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupHybridRunbookWorkerResult
@@ -41,19 +41,23 @@ type LookupHybridRunbookWorkerArgs struct {
 type LookupHybridRunbookWorkerResult struct {
 	// The Azure API version of the resource.
 	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// Fully qualified resource Id for the resource
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Gets or sets the assigned machine IP address.
 	Ip *string `pulumi:"ip"`
 	// Last Heartbeat from the Worker
 	LastSeenDateTime *string `pulumi:"lastSeenDateTime"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// Gets or sets the registration time of the worker machine.
 	RegisteredDateTime *string `pulumi:"registeredDateTime"`
-	// Resource system metadata.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// The type of the resource.
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// Azure Resource Manager Id for a virtual machine.
 	VmResourceId *string `pulumi:"vmResourceId"`
@@ -107,7 +111,7 @@ func (o LookupHybridRunbookWorkerResultOutput) AzureApiVersion() pulumi.StringOu
 	return o.ApplyT(func(v LookupHybridRunbookWorkerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource Id for the resource
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupHybridRunbookWorkerResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHybridRunbookWorkerResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -122,6 +126,11 @@ func (o LookupHybridRunbookWorkerResultOutput) LastSeenDateTime() pulumi.StringP
 	return o.ApplyT(func(v LookupHybridRunbookWorkerResult) *string { return v.LastSeenDateTime }).(pulumi.StringPtrOutput)
 }
 
+// The geo-location where the resource lives
+func (o LookupHybridRunbookWorkerResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHybridRunbookWorkerResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
 // The name of the resource
 func (o LookupHybridRunbookWorkerResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHybridRunbookWorkerResult) string { return v.Name }).(pulumi.StringOutput)
@@ -132,12 +141,17 @@ func (o LookupHybridRunbookWorkerResultOutput) RegisteredDateTime() pulumi.Strin
 	return o.ApplyT(func(v LookupHybridRunbookWorkerResult) *string { return v.RegisteredDateTime }).(pulumi.StringPtrOutput)
 }
 
-// Resource system metadata.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupHybridRunbookWorkerResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupHybridRunbookWorkerResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// The type of the resource.
+// Resource tags.
+func (o LookupHybridRunbookWorkerResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupHybridRunbookWorkerResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupHybridRunbookWorkerResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHybridRunbookWorkerResult) string { return v.Type }).(pulumi.StringOutput)
 }

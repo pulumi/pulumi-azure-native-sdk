@@ -564,7 +564,7 @@ type AlertProcessingRuleProperties struct {
 	Actions []interface{} `pulumi:"actions"`
 	// Conditions on which alerts will be filtered.
 	Conditions []Condition `pulumi:"conditions"`
-	// Description of alert processing rule.
+	// Actions to be applied.Description of alert processing rule.
 	Description *string `pulumi:"description"`
 	// Indicates if the given alert processing rule is enabled or disabled.
 	Enabled *bool `pulumi:"enabled"`
@@ -604,7 +604,7 @@ type AlertProcessingRulePropertiesArgs struct {
 	Actions pulumi.ArrayInput `pulumi:"actions"`
 	// Conditions on which alerts will be filtered.
 	Conditions ConditionArrayInput `pulumi:"conditions"`
-	// Description of alert processing rule.
+	// Actions to be applied.Description of alert processing rule.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Indicates if the given alert processing rule is enabled or disabled.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
@@ -713,7 +713,7 @@ func (o AlertProcessingRulePropertiesOutput) Conditions() ConditionArrayOutput {
 	return o.ApplyT(func(v AlertProcessingRuleProperties) []Condition { return v.Conditions }).(ConditionArrayOutput)
 }
 
-// Description of alert processing rule.
+// Actions to be applied.Description of alert processing rule.
 func (o AlertProcessingRulePropertiesOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertProcessingRuleProperties) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -777,7 +777,7 @@ func (o AlertProcessingRulePropertiesPtrOutput) Conditions() ConditionArrayOutpu
 	}).(ConditionArrayOutput)
 }
 
-// Description of alert processing rule.
+// Actions to be applied.Description of alert processing rule.
 func (o AlertProcessingRulePropertiesPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertProcessingRuleProperties) *string {
 		if v == nil {
@@ -823,7 +823,7 @@ type AlertProcessingRulePropertiesResponse struct {
 	Actions []interface{} `pulumi:"actions"`
 	// Conditions on which alerts will be filtered.
 	Conditions []ConditionResponse `pulumi:"conditions"`
-	// Description of alert processing rule.
+	// Actions to be applied.Description of alert processing rule.
 	Description *string `pulumi:"description"`
 	// Indicates if the given alert processing rule is enabled or disabled.
 	Enabled *bool `pulumi:"enabled"`
@@ -871,7 +871,7 @@ func (o AlertProcessingRulePropertiesResponseOutput) Conditions() ConditionRespo
 	return o.ApplyT(func(v AlertProcessingRulePropertiesResponse) []ConditionResponse { return v.Conditions }).(ConditionResponseArrayOutput)
 }
 
-// Description of alert processing rule.
+// Actions to be applied.Description of alert processing rule.
 func (o AlertProcessingRulePropertiesResponseOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertProcessingRulePropertiesResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -1683,12 +1683,12 @@ func (o ConditionsResponsePtrOutput) TargetResourceType() ConditionResponsePtrOu
 // Daily recurrence object.
 type DailyRecurrence struct {
 	// End time for recurrence.
-	EndTime string `pulumi:"endTime"`
+	EndTime *string `pulumi:"endTime"`
 	// Specifies when the recurrence should be applied.
 	// Expected value is 'Daily'.
 	RecurrenceType string `pulumi:"recurrenceType"`
 	// Start time for recurrence.
-	StartTime string `pulumi:"startTime"`
+	StartTime *string `pulumi:"startTime"`
 }
 
 // DailyRecurrenceInput is an input type that accepts DailyRecurrenceArgs and DailyRecurrenceOutput values.
@@ -1705,12 +1705,12 @@ type DailyRecurrenceInput interface {
 // Daily recurrence object.
 type DailyRecurrenceArgs struct {
 	// End time for recurrence.
-	EndTime pulumi.StringInput `pulumi:"endTime"`
+	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
 	// Specifies when the recurrence should be applied.
 	// Expected value is 'Daily'.
 	RecurrenceType pulumi.StringInput `pulumi:"recurrenceType"`
 	// Start time for recurrence.
-	StartTime pulumi.StringInput `pulumi:"startTime"`
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
 }
 
 func (DailyRecurrenceArgs) ElementType() reflect.Type {
@@ -1741,8 +1741,8 @@ func (o DailyRecurrenceOutput) ToDailyRecurrenceOutputWithContext(ctx context.Co
 }
 
 // End time for recurrence.
-func (o DailyRecurrenceOutput) EndTime() pulumi.StringOutput {
-	return o.ApplyT(func(v DailyRecurrence) string { return v.EndTime }).(pulumi.StringOutput)
+func (o DailyRecurrenceOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DailyRecurrence) *string { return v.EndTime }).(pulumi.StringPtrOutput)
 }
 
 // Specifies when the recurrence should be applied.
@@ -1752,19 +1752,19 @@ func (o DailyRecurrenceOutput) RecurrenceType() pulumi.StringOutput {
 }
 
 // Start time for recurrence.
-func (o DailyRecurrenceOutput) StartTime() pulumi.StringOutput {
-	return o.ApplyT(func(v DailyRecurrence) string { return v.StartTime }).(pulumi.StringOutput)
+func (o DailyRecurrenceOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DailyRecurrence) *string { return v.StartTime }).(pulumi.StringPtrOutput)
 }
 
 // Daily recurrence object.
 type DailyRecurrenceResponse struct {
 	// End time for recurrence.
-	EndTime string `pulumi:"endTime"`
+	EndTime *string `pulumi:"endTime"`
 	// Specifies when the recurrence should be applied.
 	// Expected value is 'Daily'.
 	RecurrenceType string `pulumi:"recurrenceType"`
 	// Start time for recurrence.
-	StartTime string `pulumi:"startTime"`
+	StartTime *string `pulumi:"startTime"`
 }
 
 // Daily recurrence object.
@@ -1783,8 +1783,8 @@ func (o DailyRecurrenceResponseOutput) ToDailyRecurrenceResponseOutputWithContex
 }
 
 // End time for recurrence.
-func (o DailyRecurrenceResponseOutput) EndTime() pulumi.StringOutput {
-	return o.ApplyT(func(v DailyRecurrenceResponse) string { return v.EndTime }).(pulumi.StringOutput)
+func (o DailyRecurrenceResponseOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DailyRecurrenceResponse) *string { return v.EndTime }).(pulumi.StringPtrOutput)
 }
 
 // Specifies when the recurrence should be applied.
@@ -1794,8 +1794,8 @@ func (o DailyRecurrenceResponseOutput) RecurrenceType() pulumi.StringOutput {
 }
 
 // Start time for recurrence.
-func (o DailyRecurrenceResponseOutput) StartTime() pulumi.StringOutput {
-	return o.ApplyT(func(v DailyRecurrenceResponse) string { return v.StartTime }).(pulumi.StringOutput)
+func (o DailyRecurrenceResponseOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DailyRecurrenceResponse) *string { return v.StartTime }).(pulumi.StringPtrOutput)
 }
 
 // The detector information. By default this is not populated, unless it's specified in expandDetector

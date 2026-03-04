@@ -14,6 +14,8 @@ import (
 // The operation to get a virtual network subnet.
 //
 // Uses Azure REST API version 2025-09-01-preview.
+//
+// Other available API versions: 2026-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupVirtualNetworkSubnet(ctx *pulumi.Context, args *LookupVirtualNetworkSubnetArgs, opts ...pulumi.InvokeOption) (*LookupVirtualNetworkSubnetResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVirtualNetworkSubnetResult

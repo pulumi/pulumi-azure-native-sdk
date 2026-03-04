@@ -11,11 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure Resource Manager resource envelope.
+// Get container.
 //
-// Uses Azure REST API version 2025-09-01.
+// Uses Azure REST API version 2025-12-01.
 //
-// Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupCodeContainer(ctx *pulumi.Context, args *LookupCodeContainerArgs, opts ...pulumi.InvokeOption) (*LookupCodeContainerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCodeContainerResult
@@ -39,12 +39,12 @@ type LookupCodeContainerArgs struct {
 type LookupCodeContainerResult struct {
 	// The Azure API version of the resource.
 	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// [Required] Additional attributes of the entity.
-	CodeContainerProperties CodeContainerResponse `pulumi:"codeContainerProperties"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name string `pulumi:"name"`
+	// [Required] Additional attributes of the entity.
+	Properties CodeContainerPropertiesResponse `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -57,7 +57,7 @@ func (val *LookupCodeContainerResult) Defaults() *LookupCodeContainerResult {
 		return nil
 	}
 	tmp := *val
-	tmp.CodeContainerProperties = *tmp.CodeContainerProperties.Defaults()
+	tmp.Properties = *tmp.Properties.Defaults()
 
 	return &tmp
 }
@@ -103,11 +103,6 @@ func (o LookupCodeContainerResultOutput) AzureApiVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCodeContainerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
-// [Required] Additional attributes of the entity.
-func (o LookupCodeContainerResultOutput) CodeContainerProperties() CodeContainerResponseOutput {
-	return o.ApplyT(func(v LookupCodeContainerResult) CodeContainerResponse { return v.CodeContainerProperties }).(CodeContainerResponseOutput)
-}
-
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupCodeContainerResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCodeContainerResult) string { return v.Id }).(pulumi.StringOutput)
@@ -116,6 +111,11 @@ func (o LookupCodeContainerResultOutput) Id() pulumi.StringOutput {
 // The name of the resource
 func (o LookupCodeContainerResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCodeContainerResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// [Required] Additional attributes of the entity.
+func (o LookupCodeContainerResultOutput) Properties() CodeContainerPropertiesResponseOutput {
+	return o.ApplyT(func(v LookupCodeContainerResult) CodeContainerPropertiesResponse { return v.Properties }).(CodeContainerPropertiesResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

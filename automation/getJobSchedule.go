@@ -13,9 +13,9 @@ import (
 
 // Retrieve the job schedule identified by job schedule name.
 //
-// Uses Azure REST API version 2023-11-01.
+// Uses Azure REST API version 2024-10-23.
 //
-// Other available API versions: 2015-10-31, 2019-06-01, 2020-01-13-preview, 2022-08-08, 2023-05-15-preview, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2015-10-31, 2019-06-01, 2020-01-13-preview, 2022-08-08, 2023-05-15-preview, 2023-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupJobSchedule(ctx *pulumi.Context, args *LookupJobScheduleArgs, opts ...pulumi.InvokeOption) (*LookupJobScheduleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupJobScheduleResult

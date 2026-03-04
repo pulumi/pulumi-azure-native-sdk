@@ -14,6 +14,8 @@ import (
 // Get issue properties
 //
 // Uses Azure REST API version 2025-05-03-preview.
+//
+// Other available API versions: 2025-10-03-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native monitor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupIssue(ctx *pulumi.Context, args *LookupIssueArgs, opts ...pulumi.InvokeOption) (*LookupIssueResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIssueResult

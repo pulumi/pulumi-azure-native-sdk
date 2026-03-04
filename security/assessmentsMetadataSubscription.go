@@ -76,7 +76,7 @@ func NewAssessmentsMetadataSubscription(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:security/v20210601:AssessmentsMetadataSubscription"),
 		},
 		{
-			Type: pulumi.String("azure-native:security/v20250504preview:AssessmentsMetadataSubscription"),
+			Type: pulumi.String("azure-native:security/v20250504:AssessmentsMetadataSubscription"),
 		},
 		{
 			Type: pulumi.String("azure-native:security:AssessmentMetadataInSubscription"),

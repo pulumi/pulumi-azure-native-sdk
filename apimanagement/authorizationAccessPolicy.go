@@ -14,12 +14,14 @@ import (
 
 // Authorization access policy contract.
 //
-// Uses Azure REST API version 2022-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
+// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
 //
-// Other available API versions: 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type AuthorizationAccessPolicy struct {
 	pulumi.CustomResourceState
 
+	// The allowed Azure Active Directory Application IDs
+	AppIds pulumi.StringArrayOutput `pulumi:"appIds"`
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
@@ -117,6 +119,8 @@ func (AuthorizationAccessPolicyState) ElementType() reflect.Type {
 }
 
 type authorizationAccessPolicyArgs struct {
+	// The allowed Azure Active Directory Application IDs
+	AppIds []string `pulumi:"appIds"`
 	// Identifier of the authorization access policy.
 	AuthorizationAccessPolicyId *string `pulumi:"authorizationAccessPolicyId"`
 	// Identifier of the authorization.
@@ -135,6 +139,8 @@ type authorizationAccessPolicyArgs struct {
 
 // The set of arguments for constructing a AuthorizationAccessPolicy resource.
 type AuthorizationAccessPolicyArgs struct {
+	// The allowed Azure Active Directory Application IDs
+	AppIds pulumi.StringArrayInput
 	// Identifier of the authorization access policy.
 	AuthorizationAccessPolicyId pulumi.StringPtrInput
 	// Identifier of the authorization.
@@ -186,6 +192,11 @@ func (o AuthorizationAccessPolicyOutput) ToAuthorizationAccessPolicyOutput() Aut
 
 func (o AuthorizationAccessPolicyOutput) ToAuthorizationAccessPolicyOutputWithContext(ctx context.Context) AuthorizationAccessPolicyOutput {
 	return o
+}
+
+// The allowed Azure Active Directory Application IDs
+func (o AuthorizationAccessPolicyOutput) AppIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AuthorizationAccessPolicy) pulumi.StringArrayOutput { return v.AppIds }).(pulumi.StringArrayOutput)
 }
 
 // The Azure API version of the resource.

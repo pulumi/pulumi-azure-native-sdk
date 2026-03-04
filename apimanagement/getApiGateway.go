@@ -13,9 +13,9 @@ import (
 
 // Gets an API Management gateway resource description.
 //
-// Uses Azure REST API version 2024-06-01-preview.
+// Uses Azure REST API version 2024-05-01.
 //
-// Other available API versions: 2023-09-01-preview, 2024-05-01, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupApiGateway(ctx *pulumi.Context, args *LookupApiGatewayArgs, opts ...pulumi.InvokeOption) (*LookupApiGatewayResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupApiGatewayResult

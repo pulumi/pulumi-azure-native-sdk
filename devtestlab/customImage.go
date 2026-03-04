@@ -32,19 +32,21 @@ type CustomImage struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Whether or not the custom images underlying offer/plan has been enabled for programmatic deployment
 	IsPlanAuthorized pulumi.BoolPtrOutput `pulumi:"isPlanAuthorized"`
-	// The location of the resource.
+	// The geo-location where the resource lives
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The Managed Image Id backing the custom image.
 	ManagedImageId pulumi.StringPtrOutput `pulumi:"managedImageId"`
 	// The Managed Snapshot Id backing the custom image.
 	ManagedSnapshotId pulumi.StringPtrOutput `pulumi:"managedSnapshotId"`
-	// The name of the resource.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning status of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// The tags of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The type of the resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The unique immutable identifier of a resource (Guid).
 	UniqueIdentifier pulumi.StringOutput `pulumi:"uniqueIdentifier"`
@@ -124,7 +126,7 @@ type customImageArgs struct {
 	IsPlanAuthorized *bool `pulumi:"isPlanAuthorized"`
 	// The name of the lab.
 	LabName string `pulumi:"labName"`
-	// The location of the resource.
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The Managed Image Id backing the custom image.
 	ManagedImageId *string `pulumi:"managedImageId"`
@@ -134,7 +136,7 @@ type customImageArgs struct {
 	Name *string `pulumi:"name"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// The tags of the resource.
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The VHD from which the image is to be created.
 	Vhd *CustomImagePropertiesCustom `pulumi:"vhd"`
@@ -156,7 +158,7 @@ type CustomImageArgs struct {
 	IsPlanAuthorized pulumi.BoolPtrInput
 	// The name of the lab.
 	LabName pulumi.StringInput
-	// The location of the resource.
+	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The Managed Image Id backing the custom image.
 	ManagedImageId pulumi.StringPtrInput
@@ -166,7 +168,7 @@ type CustomImageArgs struct {
 	Name pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// The tags of the resource.
+	// Resource tags.
 	Tags pulumi.StringMapInput
 	// The VHD from which the image is to be created.
 	Vhd CustomImagePropertiesCustomPtrInput
@@ -246,7 +248,7 @@ func (o CustomImageOutput) IsPlanAuthorized() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CustomImage) pulumi.BoolPtrOutput { return v.IsPlanAuthorized }).(pulumi.BoolPtrOutput)
 }
 
-// The location of the resource.
+// The geo-location where the resource lives
 func (o CustomImageOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomImage) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
@@ -261,7 +263,7 @@ func (o CustomImageOutput) ManagedSnapshotId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomImage) pulumi.StringPtrOutput { return v.ManagedSnapshotId }).(pulumi.StringPtrOutput)
 }
 
-// The name of the resource.
+// The name of the resource
 func (o CustomImageOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomImage) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -271,12 +273,17 @@ func (o CustomImageOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomImage) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// The tags of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o CustomImageOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *CustomImage) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// Resource tags.
 func (o CustomImageOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CustomImage) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o CustomImageOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomImage) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

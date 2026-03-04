@@ -11,9 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Uses Azure REST API version 2025-09-01.
+// Polls an Endpoint operation.
 //
-// Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Uses Azure REST API version 2025-12-01.
+//
+// Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func GetOnlineDeploymentLogs(ctx *pulumi.Context, args *GetOnlineDeploymentLogsArgs, opts ...pulumi.InvokeOption) (*GetOnlineDeploymentLogsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetOnlineDeploymentLogsResult
@@ -27,15 +29,15 @@ func GetOnlineDeploymentLogs(ctx *pulumi.Context, args *GetOnlineDeploymentLogsA
 type GetOnlineDeploymentLogsArgs struct {
 	// The type of container to retrieve logs from.
 	ContainerType *string `pulumi:"containerType"`
-	// The name and identifier for the endpoint.
+	// Inference Endpoint Deployment name.
 	DeploymentName string `pulumi:"deploymentName"`
-	// Inference endpoint name.
+	// Online Endpoint name.
 	EndpointName string `pulumi:"endpointName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The maximum number of lines to tail.
 	Tail *int `pulumi:"tail"`
-	// Name of Azure Machine Learning workspace.
+	// Azure Machine Learning Workspace Name
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
@@ -69,15 +71,15 @@ func GetOnlineDeploymentLogsOutput(ctx *pulumi.Context, args GetOnlineDeployment
 type GetOnlineDeploymentLogsOutputArgs struct {
 	// The type of container to retrieve logs from.
 	ContainerType pulumi.StringPtrInput `pulumi:"containerType"`
-	// The name and identifier for the endpoint.
+	// Inference Endpoint Deployment name.
 	DeploymentName pulumi.StringInput `pulumi:"deploymentName"`
-	// Inference endpoint name.
+	// Online Endpoint name.
 	EndpointName pulumi.StringInput `pulumi:"endpointName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The maximum number of lines to tail.
 	Tail pulumi.IntPtrInput `pulumi:"tail"`
-	// Name of Azure Machine Learning workspace.
+	// Azure Machine Learning Workspace Name
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 

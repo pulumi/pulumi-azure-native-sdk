@@ -14,9 +14,9 @@ import (
 
 // Azure Resource Manager resource envelope.
 //
-// Uses Azure REST API version 2025-09-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
+// Uses Azure REST API version 2025-12-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
 //
-// Other available API versions: 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Schedule struct {
 	pulumi.CustomResourceState
 
@@ -25,7 +25,7 @@ type Schedule struct {
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// [Required] Additional attributes of the entity.
-	ScheduleProperties ScheduleResponseOutput `pulumi:"scheduleProperties"`
+	Properties SchedulePropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -39,16 +39,16 @@ func NewSchedule(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Properties == nil {
+		return nil, errors.New("invalid value for required argument 'Properties'")
+	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
-	}
-	if args.ScheduleProperties == nil {
-		return nil, errors.New("invalid value for required argument 'ScheduleProperties'")
 	}
 	if args.WorkspaceName == nil {
 		return nil, errors.New("invalid value for required argument 'WorkspaceName'")
 	}
-	args.ScheduleProperties = args.ScheduleProperties.ToScheduleTypeOutput().ApplyT(func(v ScheduleType) ScheduleType { return *v.Defaults() }).(ScheduleTypeOutput)
+	args.Properties = args.Properties.ToSchedulePropertiesOutput().ApplyT(func(v ScheduleProperties) ScheduleProperties { return *v.Defaults() }).(SchedulePropertiesOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20220601preview:Schedule"),
@@ -119,6 +119,9 @@ func NewSchedule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20251001preview:Schedule"),
 		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20251201:Schedule"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -156,11 +159,11 @@ func (ScheduleState) ElementType() reflect.Type {
 type scheduleArgs struct {
 	// Schedule name.
 	Name *string `pulumi:"name"`
+	// [Required] Additional attributes of the entity.
+	Properties ScheduleProperties `pulumi:"properties"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// [Required] Additional attributes of the entity.
-	ScheduleProperties ScheduleType `pulumi:"scheduleProperties"`
-	// Name of Azure Machine Learning workspace.
+	// Azure Machine Learning Workspace Name
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
@@ -168,11 +171,11 @@ type scheduleArgs struct {
 type ScheduleArgs struct {
 	// Schedule name.
 	Name pulumi.StringPtrInput
+	// [Required] Additional attributes of the entity.
+	Properties SchedulePropertiesInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// [Required] Additional attributes of the entity.
-	ScheduleProperties ScheduleTypeInput
-	// Name of Azure Machine Learning workspace.
+	// Azure Machine Learning Workspace Name
 	WorkspaceName pulumi.StringInput
 }
 
@@ -224,8 +227,8 @@ func (o ScheduleOutput) Name() pulumi.StringOutput {
 }
 
 // [Required] Additional attributes of the entity.
-func (o ScheduleOutput) ScheduleProperties() ScheduleResponseOutput {
-	return o.ApplyT(func(v *Schedule) ScheduleResponseOutput { return v.ScheduleProperties }).(ScheduleResponseOutput)
+func (o ScheduleOutput) Properties() SchedulePropertiesResponseOutput {
+	return o.ApplyT(func(v *Schedule) SchedulePropertiesResponseOutput { return v.Properties }).(SchedulePropertiesResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

@@ -189,7 +189,9 @@ const (
 type ActionType string
 
 const (
-	ActionTypeAddActionGroups       = ActionType("AddActionGroups")
+	// AddActionGroups
+	ActionTypeAddActionGroups = ActionType("AddActionGroups")
+	// RemoveAllActionGroups
 	ActionTypeRemoveAllActionGroups = ActionType("RemoveAllActionGroups")
 )
 
@@ -363,13 +365,20 @@ func (in *alertRuleStatePtr) ToAlertRuleStatePtrOutputWithContext(ctx context.Co
 type DaysOfWeek string
 
 const (
-	DaysOfWeekSunday    = DaysOfWeek("Sunday")
-	DaysOfWeekMonday    = DaysOfWeek("Monday")
-	DaysOfWeekTuesday   = DaysOfWeek("Tuesday")
+	// Sunday
+	DaysOfWeekSunday = DaysOfWeek("Sunday")
+	// Monday
+	DaysOfWeekMonday = DaysOfWeek("Monday")
+	// Tuesday
+	DaysOfWeekTuesday = DaysOfWeek("Tuesday")
+	// Wednesday
 	DaysOfWeekWednesday = DaysOfWeek("Wednesday")
-	DaysOfWeekThursday  = DaysOfWeek("Thursday")
-	DaysOfWeekFriday    = DaysOfWeek("Friday")
-	DaysOfWeekSaturday  = DaysOfWeek("Saturday")
+	// Thursday
+	DaysOfWeekThursday = DaysOfWeek("Thursday")
+	// Friday
+	DaysOfWeekFriday = DaysOfWeek("Friday")
+	// Saturday
+	DaysOfWeekSaturday = DaysOfWeek("Saturday")
 )
 
 func (DaysOfWeek) ElementType() reflect.Type {
@@ -539,17 +548,28 @@ func (in *daysOfWeekPtr) ToDaysOfWeekPtrOutputWithContext(ctx context.Context) D
 type Field string
 
 const (
-	FieldSeverity            = Field("Severity")
-	FieldMonitorService      = Field("MonitorService")
-	FieldMonitorCondition    = Field("MonitorCondition")
-	FieldSignalType          = Field("SignalType")
-	FieldTargetResourceType  = Field("TargetResourceType")
-	FieldTargetResource      = Field("TargetResource")
+	// Severity
+	FieldSeverity = Field("Severity")
+	// MonitorService
+	FieldMonitorService = Field("MonitorService")
+	// MonitorCondition
+	FieldMonitorCondition = Field("MonitorCondition")
+	// SignalType
+	FieldSignalType = Field("SignalType")
+	// TargetResourceType
+	FieldTargetResourceType = Field("TargetResourceType")
+	// TargetResource
+	FieldTargetResource = Field("TargetResource")
+	// TargetResourceGroup
 	FieldTargetResourceGroup = Field("TargetResourceGroup")
-	FieldAlertRuleId         = Field("AlertRuleId")
-	FieldAlertRuleName       = Field("AlertRuleName")
-	FieldDescription         = Field("Description")
-	FieldAlertContext        = Field("AlertContext")
+	// AlertRuleId
+	FieldAlertRuleId = Field("AlertRuleId")
+	// AlertRuleName
+	FieldAlertRuleName = Field("AlertRuleName")
+	// Description
+	FieldDescription = Field("Description")
+	// AlertContext
+	FieldAlertContext = Field("AlertContext")
 )
 
 func (Field) ElementType() reflect.Type {
@@ -723,9 +743,13 @@ func (in *fieldPtr) ToFieldPtrOutputWithContext(ctx context.Context) FieldPtrOut
 type Operator string
 
 const (
-	OperatorEquals         = Operator("Equals")
-	OperatorNotEquals      = Operator("NotEquals")
-	OperatorContains       = Operator("Contains")
+	// Equals
+	OperatorEquals = Operator("Equals")
+	// NotEquals
+	OperatorNotEquals = Operator("NotEquals")
+	// Contains
+	OperatorContains = Operator("Contains")
+	// DoesNotContain
 	OperatorDoesNotContain = Operator("DoesNotContain")
 )
 
@@ -893,8 +917,11 @@ func (in *operatorPtr) ToOperatorPtrOutputWithContext(ctx context.Context) Opera
 type RecurrenceType string
 
 const (
-	RecurrenceTypeDaily   = RecurrenceType("Daily")
-	RecurrenceTypeWeekly  = RecurrenceType("Weekly")
+	// Daily
+	RecurrenceTypeDaily = RecurrenceType("Daily")
+	// Weekly
+	RecurrenceTypeWeekly = RecurrenceType("Weekly")
+	// Monthly
 	RecurrenceTypeMonthly = RecurrenceType("Monthly")
 )
 

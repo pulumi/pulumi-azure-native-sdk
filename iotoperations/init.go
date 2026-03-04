@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AkriConnector{}
 	case "azure-native:iotoperations:AkriConnectorTemplate":
 		r = &AkriConnectorTemplate{}
+	case "azure-native:iotoperations:AkriService":
+		r = &AkriService{}
 	case "azure-native:iotoperations:Broker":
 		r = &Broker{}
 	case "azure-native:iotoperations:BrokerAuthentication":

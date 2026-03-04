@@ -110,7 +110,7 @@ func (SharedPrivateLinkResourceState) ElementType() reflect.Type {
 type sharedPrivateLinkResourceArgs struct {
 	// Describes the properties of a shared private link resource managed by the Azure AI Search service.
 	Properties *SharedPrivateLinkResourceProperties `pulumi:"properties"`
-	// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the Azure AI Search service associated with the specified resource group.
 	SearchServiceName string `pulumi:"searchServiceName"`
@@ -122,7 +122,7 @@ type sharedPrivateLinkResourceArgs struct {
 type SharedPrivateLinkResourceArgs struct {
 	// Describes the properties of a shared private link resource managed by the Azure AI Search service.
 	Properties SharedPrivateLinkResourcePropertiesPtrInput
-	// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of the Azure AI Search service associated with the specified resource group.
 	SearchServiceName pulumi.StringInput

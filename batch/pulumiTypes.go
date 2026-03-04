@@ -7445,6 +7445,7 @@ func (o LinuxUserConfigurationResponsePtrOutput) Uid() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// The managed disk parameters.
 type ManagedDisk struct {
 	// Specifies the security profile settings for the managed disk. **Note**: It can only be set for Confidential VMs and is required when using Confidential VMs.
 	SecurityProfile *VMDiskSecurityProfile `pulumi:"securityProfile"`
@@ -7463,6 +7464,7 @@ type ManagedDiskInput interface {
 	ToManagedDiskOutputWithContext(context.Context) ManagedDiskOutput
 }
 
+// The managed disk parameters.
 type ManagedDiskArgs struct {
 	// Specifies the security profile settings for the managed disk. **Note**: It can only be set for Confidential VMs and is required when using Confidential VMs.
 	SecurityProfile VMDiskSecurityProfilePtrInput `pulumi:"securityProfile"`
@@ -7523,6 +7525,7 @@ func (i *managedDiskPtrType) ToManagedDiskPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedDiskPtrOutput)
 }
 
+// The managed disk parameters.
 type ManagedDiskOutput struct{ *pulumi.OutputState }
 
 func (ManagedDiskOutput) ElementType() reflect.Type {
@@ -7601,6 +7604,7 @@ func (o ManagedDiskPtrOutput) StorageAccountType() StorageAccountTypePtrOutput {
 	}).(StorageAccountTypePtrOutput)
 }
 
+// The managed disk parameters.
 type ManagedDiskResponse struct {
 	// Specifies the security profile settings for the managed disk. **Note**: It can only be set for Confidential VMs and is required when using Confidential VMs.
 	SecurityProfile *VMDiskSecurityProfileResponse `pulumi:"securityProfile"`
@@ -7608,6 +7612,7 @@ type ManagedDiskResponse struct {
 	StorageAccountType *string `pulumi:"storageAccountType"`
 }
 
+// The managed disk parameters.
 type ManagedDiskResponseOutput struct{ *pulumi.OutputState }
 
 func (ManagedDiskResponseOutput) ElementType() reflect.Type {
@@ -9333,7 +9338,8 @@ type OSDisk struct {
 	DiskSizeGB *int `pulumi:"diskSizeGB"`
 	// Specifies the ephemeral Disk Settings for the operating system disk used by the virtual machine.
 	EphemeralOSDiskSettings *DiffDiskSettings `pulumi:"ephemeralOSDiskSettings"`
-	ManagedDisk             *ManagedDisk      `pulumi:"managedDisk"`
+	// The managed disk parameters.
+	ManagedDisk *ManagedDisk `pulumi:"managedDisk"`
 	// Specifies whether writeAccelerator should be enabled or disabled on the disk.
 	WriteAcceleratorEnabled *bool `pulumi:"writeAcceleratorEnabled"`
 }
@@ -9357,7 +9363,8 @@ type OSDiskArgs struct {
 	DiskSizeGB pulumi.IntPtrInput `pulumi:"diskSizeGB"`
 	// Specifies the ephemeral Disk Settings for the operating system disk used by the virtual machine.
 	EphemeralOSDiskSettings DiffDiskSettingsPtrInput `pulumi:"ephemeralOSDiskSettings"`
-	ManagedDisk             ManagedDiskPtrInput      `pulumi:"managedDisk"`
+	// The managed disk parameters.
+	ManagedDisk ManagedDiskPtrInput `pulumi:"managedDisk"`
 	// Specifies whether writeAccelerator should be enabled or disabled on the disk.
 	WriteAcceleratorEnabled pulumi.BoolPtrInput `pulumi:"writeAcceleratorEnabled"`
 }
@@ -9455,6 +9462,7 @@ func (o OSDiskOutput) EphemeralOSDiskSettings() DiffDiskSettingsPtrOutput {
 	return o.ApplyT(func(v OSDisk) *DiffDiskSettings { return v.EphemeralOSDiskSettings }).(DiffDiskSettingsPtrOutput)
 }
 
+// The managed disk parameters.
 func (o OSDiskOutput) ManagedDisk() ManagedDiskPtrOutput {
 	return o.ApplyT(func(v OSDisk) *ManagedDisk { return v.ManagedDisk }).(ManagedDiskPtrOutput)
 }
@@ -9518,6 +9526,7 @@ func (o OSDiskPtrOutput) EphemeralOSDiskSettings() DiffDiskSettingsPtrOutput {
 	}).(DiffDiskSettingsPtrOutput)
 }
 
+// The managed disk parameters.
 func (o OSDiskPtrOutput) ManagedDisk() ManagedDiskPtrOutput {
 	return o.ApplyT(func(v *OSDisk) *ManagedDisk {
 		if v == nil {
@@ -9545,7 +9554,8 @@ type OSDiskResponse struct {
 	DiskSizeGB *int `pulumi:"diskSizeGB"`
 	// Specifies the ephemeral Disk Settings for the operating system disk used by the virtual machine.
 	EphemeralOSDiskSettings *DiffDiskSettingsResponse `pulumi:"ephemeralOSDiskSettings"`
-	ManagedDisk             *ManagedDiskResponse      `pulumi:"managedDisk"`
+	// The managed disk parameters.
+	ManagedDisk *ManagedDiskResponse `pulumi:"managedDisk"`
 	// Specifies whether writeAccelerator should be enabled or disabled on the disk.
 	WriteAcceleratorEnabled *bool `pulumi:"writeAcceleratorEnabled"`
 }
@@ -9580,6 +9590,7 @@ func (o OSDiskResponseOutput) EphemeralOSDiskSettings() DiffDiskSettingsResponse
 	return o.ApplyT(func(v OSDiskResponse) *DiffDiskSettingsResponse { return v.EphemeralOSDiskSettings }).(DiffDiskSettingsResponsePtrOutput)
 }
 
+// The managed disk parameters.
 func (o OSDiskResponseOutput) ManagedDisk() ManagedDiskResponsePtrOutput {
 	return o.ApplyT(func(v OSDiskResponse) *ManagedDiskResponse { return v.ManagedDisk }).(ManagedDiskResponsePtrOutput)
 }
@@ -9643,6 +9654,7 @@ func (o OSDiskResponsePtrOutput) EphemeralOSDiskSettings() DiffDiskSettingsRespo
 	}).(DiffDiskSettingsResponsePtrOutput)
 }
 
+// The managed disk parameters.
 func (o OSDiskResponsePtrOutput) ManagedDisk() ManagedDiskResponsePtrOutput {
 	return o.ApplyT(func(v *OSDiskResponse) *ManagedDiskResponse {
 		if v == nil {

@@ -15,6 +15,8 @@ import (
 // The NatGateway resource definition.
 //
 // Uses Azure REST API version 2025-09-01-preview.
+//
+// Other available API versions: 2026-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type NatGateway struct {
 	pulumi.CustomResourceState
 
@@ -49,6 +51,9 @@ func NewNatGateway(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20250901preview:NatGateway"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20260201preview:NatGateway"),
 		},
 	})
 	opts = append(opts, aliases)

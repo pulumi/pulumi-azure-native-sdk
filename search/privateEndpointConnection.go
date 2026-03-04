@@ -121,7 +121,7 @@ type privateEndpointConnectionArgs struct {
 	PrivateEndpointConnectionName *string `pulumi:"privateEndpointConnectionName"`
 	// Describes the properties of an existing private endpoint connection to the Azure AI Search service.
 	Properties *PrivateEndpointConnectionProperties `pulumi:"properties"`
-	// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the Azure AI Search service associated with the specified resource group.
 	SearchServiceName string `pulumi:"searchServiceName"`
@@ -133,7 +133,7 @@ type PrivateEndpointConnectionArgs struct {
 	PrivateEndpointConnectionName pulumi.StringPtrInput
 	// Describes the properties of an existing private endpoint connection to the Azure AI Search service.
 	Properties PrivateEndpointConnectionPropertiesPtrInput
-	// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of the Azure AI Search service associated with the specified resource group.
 	SearchServiceName pulumi.StringInput

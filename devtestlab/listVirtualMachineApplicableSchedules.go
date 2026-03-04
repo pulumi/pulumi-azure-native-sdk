@@ -27,7 +27,7 @@ func ListVirtualMachineApplicableSchedules(ctx *pulumi.Context, args *ListVirtua
 type ListVirtualMachineApplicableSchedulesArgs struct {
 	// The name of the lab.
 	LabName string `pulumi:"labName"`
-	// The name of the LabVirtualMachine
+	// The name of the virtual machine.
 	Name string `pulumi:"name"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -35,7 +35,7 @@ type ListVirtualMachineApplicableSchedulesArgs struct {
 
 // Schedules applicable to a virtual machine. The schedules may have been defined on a VM or on lab level.
 type ListVirtualMachineApplicableSchedulesResult struct {
-	// The identifier of the resource.
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The auto-shutdown schedule, if one has been set at the lab or lab resource level.
 	LabVmsShutdown *ScheduleResponse `pulumi:"labVmsShutdown"`
@@ -43,11 +43,13 @@ type ListVirtualMachineApplicableSchedulesResult struct {
 	LabVmsStartup *ScheduleResponse `pulumi:"labVmsStartup"`
 	// The location of the resource.
 	Location *string `pulumi:"location"`
-	// The name of the resource.
+	// The name of the resource
 	Name string `pulumi:"name"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The tags of the resource.
 	Tags map[string]string `pulumi:"tags"`
-	// The type of the resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -75,7 +77,7 @@ func ListVirtualMachineApplicableSchedulesOutput(ctx *pulumi.Context, args ListV
 type ListVirtualMachineApplicableSchedulesOutputArgs struct {
 	// The name of the lab.
 	LabName pulumi.StringInput `pulumi:"labName"`
-	// The name of the LabVirtualMachine
+	// The name of the virtual machine.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
@@ -100,7 +102,7 @@ func (o ListVirtualMachineApplicableSchedulesResultOutput) ToListVirtualMachineA
 	return o
 }
 
-// The identifier of the resource.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o ListVirtualMachineApplicableSchedulesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ListVirtualMachineApplicableSchedulesResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -120,9 +122,14 @@ func (o ListVirtualMachineApplicableSchedulesResultOutput) Location() pulumi.Str
 	return o.ApplyT(func(v ListVirtualMachineApplicableSchedulesResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// The name of the resource.
+// The name of the resource
 func (o ListVirtualMachineApplicableSchedulesResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ListVirtualMachineApplicableSchedulesResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o ListVirtualMachineApplicableSchedulesResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v ListVirtualMachineApplicableSchedulesResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The tags of the resource.
@@ -130,7 +137,7 @@ func (o ListVirtualMachineApplicableSchedulesResultOutput) Tags() pulumi.StringM
 	return o.ApplyT(func(v ListVirtualMachineApplicableSchedulesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o ListVirtualMachineApplicableSchedulesResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ListVirtualMachineApplicableSchedulesResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -29,14 +29,14 @@ func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.
 type LookupAccountArgs struct {
 	// The name of the account.
 	AccountName string `pulumi:"accountName"`
-	// The resource group name.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Account resource
 type LookupAccountResult struct {
 	// Gets or sets the status of the account.
-	AccountStatus AccountPropertiesResponseAccountStatus `pulumi:"accountStatus"`
+	AccountStatus AccountPropertiesAccountStatusResponse `pulumi:"accountStatus"`
 	// The Azure API version of the resource.
 	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// External Cloud Service connectors
@@ -50,28 +50,28 @@ type LookupAccountResult struct {
 	// Gets the default domain in the account.
 	DefaultDomain string `pulumi:"defaultDomain"`
 	// The URIs that are the public endpoints of the account.
-	Endpoints AccountPropertiesResponseEndpoints `pulumi:"endpoints"`
+	Endpoints AccountPropertiesEndpointsResponse `pulumi:"endpoints"`
 	// Gets or sets the friendly name.
 	FriendlyName string `pulumi:"friendlyName"`
-	// Gets or sets the identifier.
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The Managed Identity of the resource
 	Identity *IdentityResponse `pulumi:"identity"`
 	// Ingestion Storage Account Info
 	IngestionStorage *IngestionStorageResponse `pulumi:"ingestionStorage"`
-	// Gets or sets the location.
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// Gets or sets the state of managed eventhub. If enabled managed eventhub will be created, if disabled the managed eventhub will be removed.
 	ManagedEventHubState *string `pulumi:"managedEventHubState"`
 	// Gets or sets the managed resource group name
 	ManagedResourceGroupName *string `pulumi:"managedResourceGroupName"`
 	// Gets the resource identifiers of the managed resources.
-	ManagedResources AccountPropertiesResponseManagedResources `pulumi:"managedResources"`
+	ManagedResources AccountPropertiesManagedResourcesResponse `pulumi:"managedResources"`
 	// Gets or sets the public network access for managed resources.
 	ManagedResourcesPublicNetworkAccess *string `pulumi:"managedResourcesPublicNetworkAccess"`
 	// Gets or sets the Merge Info.
 	MergeInfo *AccountMergeInfoResponse `pulumi:"mergeInfo"`
-	// Gets or sets the name.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Gets the private endpoint connections information.
 	PrivateEndpointConnections []PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
@@ -80,14 +80,14 @@ type LookupAccountResult struct {
 	// Gets or sets the public network access.
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// Gets or sets the Sku.
-	Sku *AccountResponseSku `pulumi:"sku"`
-	// Metadata pertaining to creation and last modification of the resource.
-	SystemData TrackedResourceResponseSystemData `pulumi:"systemData"`
-	// Tags on the azure resource.
+	Sku *AccountSkuResponse `pulumi:"sku"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Gets or sets the state of tenant endpoint.
 	TenantEndpointState *string `pulumi:"tenantEndpointState"`
-	// Gets or sets the type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -123,7 +123,7 @@ func LookupAccountOutput(ctx *pulumi.Context, args LookupAccountOutputArgs, opts
 type LookupAccountOutputArgs struct {
 	// The name of the account.
 	AccountName pulumi.StringInput `pulumi:"accountName"`
-	// The resource group name.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -147,8 +147,8 @@ func (o LookupAccountResultOutput) ToLookupAccountResultOutputWithContext(ctx co
 }
 
 // Gets or sets the status of the account.
-func (o LookupAccountResultOutput) AccountStatus() AccountPropertiesResponseAccountStatusOutput {
-	return o.ApplyT(func(v LookupAccountResult) AccountPropertiesResponseAccountStatus { return v.AccountStatus }).(AccountPropertiesResponseAccountStatusOutput)
+func (o LookupAccountResultOutput) AccountStatus() AccountPropertiesAccountStatusResponseOutput {
+	return o.ApplyT(func(v LookupAccountResult) AccountPropertiesAccountStatusResponse { return v.AccountStatus }).(AccountPropertiesAccountStatusResponseOutput)
 }
 
 // The Azure API version of the resource.
@@ -182,8 +182,8 @@ func (o LookupAccountResultOutput) DefaultDomain() pulumi.StringOutput {
 }
 
 // The URIs that are the public endpoints of the account.
-func (o LookupAccountResultOutput) Endpoints() AccountPropertiesResponseEndpointsOutput {
-	return o.ApplyT(func(v LookupAccountResult) AccountPropertiesResponseEndpoints { return v.Endpoints }).(AccountPropertiesResponseEndpointsOutput)
+func (o LookupAccountResultOutput) Endpoints() AccountPropertiesEndpointsResponseOutput {
+	return o.ApplyT(func(v LookupAccountResult) AccountPropertiesEndpointsResponse { return v.Endpoints }).(AccountPropertiesEndpointsResponseOutput)
 }
 
 // Gets or sets the friendly name.
@@ -191,7 +191,7 @@ func (o LookupAccountResultOutput) FriendlyName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.FriendlyName }).(pulumi.StringOutput)
 }
 
-// Gets or sets the identifier.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupAccountResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -206,7 +206,7 @@ func (o LookupAccountResultOutput) IngestionStorage() IngestionStorageResponsePt
 	return o.ApplyT(func(v LookupAccountResult) *IngestionStorageResponse { return v.IngestionStorage }).(IngestionStorageResponsePtrOutput)
 }
 
-// Gets or sets the location.
+// The geo-location where the resource lives
 func (o LookupAccountResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAccountResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
@@ -222,8 +222,8 @@ func (o LookupAccountResultOutput) ManagedResourceGroupName() pulumi.StringPtrOu
 }
 
 // Gets the resource identifiers of the managed resources.
-func (o LookupAccountResultOutput) ManagedResources() AccountPropertiesResponseManagedResourcesOutput {
-	return o.ApplyT(func(v LookupAccountResult) AccountPropertiesResponseManagedResources { return v.ManagedResources }).(AccountPropertiesResponseManagedResourcesOutput)
+func (o LookupAccountResultOutput) ManagedResources() AccountPropertiesManagedResourcesResponseOutput {
+	return o.ApplyT(func(v LookupAccountResult) AccountPropertiesManagedResourcesResponse { return v.ManagedResources }).(AccountPropertiesManagedResourcesResponseOutput)
 }
 
 // Gets or sets the public network access for managed resources.
@@ -236,7 +236,7 @@ func (o LookupAccountResultOutput) MergeInfo() AccountMergeInfoResponsePtrOutput
 	return o.ApplyT(func(v LookupAccountResult) *AccountMergeInfoResponse { return v.MergeInfo }).(AccountMergeInfoResponsePtrOutput)
 }
 
-// Gets or sets the name.
+// The name of the resource
 func (o LookupAccountResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -257,16 +257,16 @@ func (o LookupAccountResultOutput) PublicNetworkAccess() pulumi.StringPtrOutput 
 }
 
 // Gets or sets the Sku.
-func (o LookupAccountResultOutput) Sku() AccountResponseSkuPtrOutput {
-	return o.ApplyT(func(v LookupAccountResult) *AccountResponseSku { return v.Sku }).(AccountResponseSkuPtrOutput)
+func (o LookupAccountResultOutput) Sku() AccountSkuResponsePtrOutput {
+	return o.ApplyT(func(v LookupAccountResult) *AccountSkuResponse { return v.Sku }).(AccountSkuResponsePtrOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
-func (o LookupAccountResultOutput) SystemData() TrackedResourceResponseSystemDataOutput {
-	return o.ApplyT(func(v LookupAccountResult) TrackedResourceResponseSystemData { return v.SystemData }).(TrackedResourceResponseSystemDataOutput)
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupAccountResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupAccountResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Tags on the azure resource.
+// Resource tags.
 func (o LookupAccountResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupAccountResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -276,7 +276,7 @@ func (o LookupAccountResultOutput) TenantEndpointState() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v LookupAccountResult) *string { return v.TenantEndpointState }).(pulumi.StringPtrOutput)
 }
 
-// Gets or sets the type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupAccountResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.Type }).(pulumi.StringOutput)
 }

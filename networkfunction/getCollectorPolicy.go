@@ -29,7 +29,7 @@ type LookupCollectorPolicyArgs struct {
 	AzureTrafficCollectorName string `pulumi:"azureTrafficCollectorName"`
 	// Collector Policy Name
 	CollectorPolicyName string `pulumi:"collectorPolicyName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -41,21 +41,21 @@ type LookupCollectorPolicyResult struct {
 	EmissionPolicies []EmissionPoliciesPropertiesFormatResponse `pulumi:"emissionPolicies"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag string `pulumi:"etag"`
-	// Resource ID.
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Ingestion policies.
 	IngestionPolicy *IngestionPolicyPropertiesFormatResponse `pulumi:"ingestionPolicy"`
 	// Resource location.
 	Location string `pulumi:"location"`
-	// Resource name.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// The provisioning state.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// Metadata pertaining to creation and last modification of the resource.
-	SystemData TrackedResourceResponseSystemData `pulumi:"systemData"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// Resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -73,7 +73,7 @@ type LookupCollectorPolicyOutputArgs struct {
 	AzureTrafficCollectorName pulumi.StringInput `pulumi:"azureTrafficCollectorName"`
 	// Collector Policy Name
 	CollectorPolicyName pulumi.StringInput `pulumi:"collectorPolicyName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -113,7 +113,7 @@ func (o LookupCollectorPolicyResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCollectorPolicyResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
-// Resource ID.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupCollectorPolicyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCollectorPolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -128,7 +128,7 @@ func (o LookupCollectorPolicyResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCollectorPolicyResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o LookupCollectorPolicyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCollectorPolicyResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -138,9 +138,9 @@ func (o LookupCollectorPolicyResultOutput) ProvisioningState() pulumi.StringOutp
 	return o.ApplyT(func(v LookupCollectorPolicyResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
-func (o LookupCollectorPolicyResultOutput) SystemData() TrackedResourceResponseSystemDataOutput {
-	return o.ApplyT(func(v LookupCollectorPolicyResult) TrackedResourceResponseSystemData { return v.SystemData }).(TrackedResourceResponseSystemDataOutput)
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupCollectorPolicyResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupCollectorPolicyResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.
@@ -148,7 +148,7 @@ func (o LookupCollectorPolicyResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupCollectorPolicyResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupCollectorPolicyResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCollectorPolicyResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -73,6 +73,8 @@ type providerArgs struct {
 	OidcRequestUrl *string `pulumi:"oidcRequestUrl"`
 	// The OIDC token to exchange for an Azure token.
 	OidcToken *string `pulumi:"oidcToken"`
+	// The path to a file containing an OIDC token to exchange for an Azure token.
+	OidcTokenFilePath *string `pulumi:"oidcTokenFilePath"`
 	// A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.
 	PartnerId *string `pulumi:"partnerId"`
 	// The Subscription ID which should be used.
@@ -117,6 +119,8 @@ type ProviderArgs struct {
 	OidcRequestUrl pulumi.StringPtrInput
 	// The OIDC token to exchange for an Azure token.
 	OidcToken pulumi.StringPtrInput
+	// The path to a file containing an OIDC token to exchange for an Azure token.
+	OidcTokenFilePath pulumi.StringPtrInput
 	// A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.
 	PartnerId pulumi.StringPtrInput
 	// The Subscription ID which should be used.

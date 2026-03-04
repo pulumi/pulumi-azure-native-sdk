@@ -9941,6 +9941,179 @@ func (o OutboundEndpointsResponsePtrOutput) Unassigned() DeviceMessagingEndpoint
 	}).(DeviceMessagingEndpointResponseMapOutput)
 }
 
+// Details of the Credential Policy.
+type PolicyProperties struct {
+	// The certificate configuration.
+	Certificate *CertificateConfiguration `pulumi:"certificate"`
+}
+
+// PolicyPropertiesInput is an input type that accepts PolicyPropertiesArgs and PolicyPropertiesOutput values.
+// You can construct a concrete instance of `PolicyPropertiesInput` via:
+//
+//	PolicyPropertiesArgs{...}
+type PolicyPropertiesInput interface {
+	pulumi.Input
+
+	ToPolicyPropertiesOutput() PolicyPropertiesOutput
+	ToPolicyPropertiesOutputWithContext(context.Context) PolicyPropertiesOutput
+}
+
+// Details of the Credential Policy.
+type PolicyPropertiesArgs struct {
+	// The certificate configuration.
+	Certificate CertificateConfigurationPtrInput `pulumi:"certificate"`
+}
+
+func (PolicyPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyProperties)(nil)).Elem()
+}
+
+func (i PolicyPropertiesArgs) ToPolicyPropertiesOutput() PolicyPropertiesOutput {
+	return i.ToPolicyPropertiesOutputWithContext(context.Background())
+}
+
+func (i PolicyPropertiesArgs) ToPolicyPropertiesOutputWithContext(ctx context.Context) PolicyPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyPropertiesOutput)
+}
+
+func (i PolicyPropertiesArgs) ToPolicyPropertiesPtrOutput() PolicyPropertiesPtrOutput {
+	return i.ToPolicyPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i PolicyPropertiesArgs) ToPolicyPropertiesPtrOutputWithContext(ctx context.Context) PolicyPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyPropertiesOutput).ToPolicyPropertiesPtrOutputWithContext(ctx)
+}
+
+// PolicyPropertiesPtrInput is an input type that accepts PolicyPropertiesArgs, PolicyPropertiesPtr and PolicyPropertiesPtrOutput values.
+// You can construct a concrete instance of `PolicyPropertiesPtrInput` via:
+//
+//	        PolicyPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type PolicyPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToPolicyPropertiesPtrOutput() PolicyPropertiesPtrOutput
+	ToPolicyPropertiesPtrOutputWithContext(context.Context) PolicyPropertiesPtrOutput
+}
+
+type policyPropertiesPtrType PolicyPropertiesArgs
+
+func PolicyPropertiesPtr(v *PolicyPropertiesArgs) PolicyPropertiesPtrInput {
+	return (*policyPropertiesPtrType)(v)
+}
+
+func (*policyPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyProperties)(nil)).Elem()
+}
+
+func (i *policyPropertiesPtrType) ToPolicyPropertiesPtrOutput() PolicyPropertiesPtrOutput {
+	return i.ToPolicyPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *policyPropertiesPtrType) ToPolicyPropertiesPtrOutputWithContext(ctx context.Context) PolicyPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyPropertiesPtrOutput)
+}
+
+// Details of the Credential Policy.
+type PolicyPropertiesOutput struct{ *pulumi.OutputState }
+
+func (PolicyPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyProperties)(nil)).Elem()
+}
+
+func (o PolicyPropertiesOutput) ToPolicyPropertiesOutput() PolicyPropertiesOutput {
+	return o
+}
+
+func (o PolicyPropertiesOutput) ToPolicyPropertiesOutputWithContext(ctx context.Context) PolicyPropertiesOutput {
+	return o
+}
+
+func (o PolicyPropertiesOutput) ToPolicyPropertiesPtrOutput() PolicyPropertiesPtrOutput {
+	return o.ToPolicyPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o PolicyPropertiesOutput) ToPolicyPropertiesPtrOutputWithContext(ctx context.Context) PolicyPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PolicyProperties) *PolicyProperties {
+		return &v
+	}).(PolicyPropertiesPtrOutput)
+}
+
+// The certificate configuration.
+func (o PolicyPropertiesOutput) Certificate() CertificateConfigurationPtrOutput {
+	return o.ApplyT(func(v PolicyProperties) *CertificateConfiguration { return v.Certificate }).(CertificateConfigurationPtrOutput)
+}
+
+type PolicyPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (PolicyPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyProperties)(nil)).Elem()
+}
+
+func (o PolicyPropertiesPtrOutput) ToPolicyPropertiesPtrOutput() PolicyPropertiesPtrOutput {
+	return o
+}
+
+func (o PolicyPropertiesPtrOutput) ToPolicyPropertiesPtrOutputWithContext(ctx context.Context) PolicyPropertiesPtrOutput {
+	return o
+}
+
+func (o PolicyPropertiesPtrOutput) Elem() PolicyPropertiesOutput {
+	return o.ApplyT(func(v *PolicyProperties) PolicyProperties {
+		if v != nil {
+			return *v
+		}
+		var ret PolicyProperties
+		return ret
+	}).(PolicyPropertiesOutput)
+}
+
+// The certificate configuration.
+func (o PolicyPropertiesPtrOutput) Certificate() CertificateConfigurationPtrOutput {
+	return o.ApplyT(func(v *PolicyProperties) *CertificateConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.Certificate
+	}).(CertificateConfigurationPtrOutput)
+}
+
+// Details of the Credential Policy.
+type PolicyPropertiesResponse struct {
+	// The certificate configuration.
+	Certificate *CertificateConfigurationResponse `pulumi:"certificate"`
+	// The status of the last operation.
+	ProvisioningState string `pulumi:"provisioningState"`
+}
+
+// Details of the Credential Policy.
+type PolicyPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (PolicyPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyPropertiesResponse)(nil)).Elem()
+}
+
+func (o PolicyPropertiesResponseOutput) ToPolicyPropertiesResponseOutput() PolicyPropertiesResponseOutput {
+	return o
+}
+
+func (o PolicyPropertiesResponseOutput) ToPolicyPropertiesResponseOutputWithContext(ctx context.Context) PolicyPropertiesResponseOutput {
+	return o
+}
+
+// The certificate configuration.
+func (o PolicyPropertiesResponseOutput) Certificate() CertificateConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v PolicyPropertiesResponse) *CertificateConfigurationResponse { return v.Certificate }).(CertificateConfigurationResponsePtrOutput)
+}
+
+// The status of the last operation.
+func (o PolicyPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
 // Defines the status config properties.
 type StatusConfigResponse struct {
 	// Object to transfer and persist errors that originate from the edge.
@@ -11729,6 +11902,9 @@ func init() {
 	pulumi.RegisterOutputType(OutboundEndpointsPtrOutput{})
 	pulumi.RegisterOutputType(OutboundEndpointsResponseOutput{})
 	pulumi.RegisterOutputType(OutboundEndpointsResponsePtrOutput{})
+	pulumi.RegisterOutputType(PolicyPropertiesOutput{})
+	pulumi.RegisterOutputType(PolicyPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(PolicyPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(StatusConfigResponseOutput{})
 	pulumi.RegisterOutputType(StatusErrorResponseOutput{})
 	pulumi.RegisterOutputType(StorageDestinationConfigurationOutput{})

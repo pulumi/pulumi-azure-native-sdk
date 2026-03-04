@@ -29,7 +29,7 @@ func ListAccountKeys(ctx *pulumi.Context, args *ListAccountKeysArgs, opts ...pul
 type ListAccountKeysArgs struct {
 	// The name of the account.
 	AccountName string `pulumi:"accountName"`
-	// The resource group name.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -53,7 +53,7 @@ func ListAccountKeysOutput(ctx *pulumi.Context, args ListAccountKeysOutputArgs, 
 type ListAccountKeysOutputArgs struct {
 	// The name of the account.
 	AccountName pulumi.StringInput `pulumi:"accountName"`
-	// The resource group name.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 

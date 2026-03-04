@@ -11,9 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Uses Azure REST API version 2025-09-01.
+// Get Inference Deployment Deployment.
 //
-// Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Uses Azure REST API version 2025-12-01.
+//
+// Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupOnlineDeployment(ctx *pulumi.Context, args *LookupOnlineDeploymentArgs, opts ...pulumi.InvokeOption) (*LookupOnlineDeploymentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupOnlineDeploymentResult
@@ -27,14 +29,15 @@ func LookupOnlineDeployment(ctx *pulumi.Context, args *LookupOnlineDeploymentArg
 type LookupOnlineDeploymentArgs struct {
 	// Inference Endpoint Deployment name.
 	DeploymentName string `pulumi:"deploymentName"`
-	// Inference endpoint name.
+	// Online Endpoint name.
 	EndpointName string `pulumi:"endpointName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Name of Azure Machine Learning workspace.
+	// Azure Machine Learning Workspace Name
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
+// Concrete tracked resource types can be created by aliasing this type using a specific property type.
 type LookupOnlineDeploymentResult struct {
 	// The Azure API version of the resource.
 	AzureApiVersion string `pulumi:"azureApiVersion"`
@@ -49,7 +52,7 @@ type LookupOnlineDeploymentResult struct {
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// [Required] Additional attributes of the entity.
-	OnlineDeploymentProperties interface{} `pulumi:"onlineDeploymentProperties"`
+	Properties interface{} `pulumi:"properties"`
 	// Sku details required for ARM contract for Autoscaling.
 	Sku *SkuResponse `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -72,11 +75,11 @@ func LookupOnlineDeploymentOutput(ctx *pulumi.Context, args LookupOnlineDeployme
 type LookupOnlineDeploymentOutputArgs struct {
 	// Inference Endpoint Deployment name.
 	DeploymentName pulumi.StringInput `pulumi:"deploymentName"`
-	// Inference endpoint name.
+	// Online Endpoint name.
 	EndpointName pulumi.StringInput `pulumi:"endpointName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	// Name of Azure Machine Learning workspace.
+	// Azure Machine Learning Workspace Name
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
@@ -84,6 +87,7 @@ func (LookupOnlineDeploymentOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupOnlineDeploymentArgs)(nil)).Elem()
 }
 
+// Concrete tracked resource types can be created by aliasing this type using a specific property type.
 type LookupOnlineDeploymentResultOutput struct{ *pulumi.OutputState }
 
 func (LookupOnlineDeploymentResultOutput) ElementType() reflect.Type {
@@ -129,8 +133,8 @@ func (o LookupOnlineDeploymentResultOutput) Name() pulumi.StringOutput {
 }
 
 // [Required] Additional attributes of the entity.
-func (o LookupOnlineDeploymentResultOutput) OnlineDeploymentProperties() pulumi.AnyOutput {
-	return o.ApplyT(func(v LookupOnlineDeploymentResult) interface{} { return v.OnlineDeploymentProperties }).(pulumi.AnyOutput)
+func (o LookupOnlineDeploymentResultOutput) Properties() pulumi.AnyOutput {
+	return o.ApplyT(func(v LookupOnlineDeploymentResult) interface{} { return v.Properties }).(pulumi.AnyOutput)
 }
 
 // Sku details required for ARM contract for Autoscaling.

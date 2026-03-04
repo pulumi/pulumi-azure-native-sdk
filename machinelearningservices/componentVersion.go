@@ -14,18 +14,18 @@ import (
 
 // Azure Resource Manager resource envelope.
 //
-// Uses Azure REST API version 2025-09-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
+// Uses Azure REST API version 2025-12-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
 //
-// Other available API versions: 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ComponentVersion struct {
 	pulumi.CustomResourceState
 
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
-	// [Required] Additional attributes of the entity.
-	ComponentVersionProperties ComponentVersionResponseOutput `pulumi:"componentVersionProperties"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
+	// [Required] Additional attributes of the entity.
+	Properties ComponentVersionPropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -39,11 +39,11 @@ func NewComponentVersion(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ComponentVersionProperties == nil {
-		return nil, errors.New("invalid value for required argument 'ComponentVersionProperties'")
-	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
+	}
+	if args.Properties == nil {
+		return nil, errors.New("invalid value for required argument 'Properties'")
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
@@ -51,7 +51,7 @@ func NewComponentVersion(ctx *pulumi.Context,
 	if args.WorkspaceName == nil {
 		return nil, errors.New("invalid value for required argument 'WorkspaceName'")
 	}
-	args.ComponentVersionProperties = args.ComponentVersionProperties.ToComponentVersionTypeOutput().ApplyT(func(v ComponentVersionType) ComponentVersionType { return *v.Defaults() }).(ComponentVersionTypeOutput)
+	args.Properties = args.Properties.ToComponentVersionPropertiesOutput().ApplyT(func(v ComponentVersionProperties) ComponentVersionProperties { return *v.Defaults() }).(ComponentVersionPropertiesOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20220201preview:ComponentVersion"),
@@ -128,6 +128,9 @@ func NewComponentVersion(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20251001preview:ComponentVersion"),
 		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20251201:ComponentVersion"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -163,10 +166,10 @@ func (ComponentVersionState) ElementType() reflect.Type {
 }
 
 type componentVersionArgs struct {
-	// [Required] Additional attributes of the entity.
-	ComponentVersionProperties ComponentVersionType `pulumi:"componentVersionProperties"`
 	// Container name.
 	Name string `pulumi:"name"`
+	// [Required] Additional attributes of the entity.
+	Properties ComponentVersionProperties `pulumi:"properties"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Version identifier.
@@ -177,10 +180,10 @@ type componentVersionArgs struct {
 
 // The set of arguments for constructing a ComponentVersion resource.
 type ComponentVersionArgs struct {
-	// [Required] Additional attributes of the entity.
-	ComponentVersionProperties ComponentVersionTypeInput
 	// Container name.
 	Name pulumi.StringInput
+	// [Required] Additional attributes of the entity.
+	Properties ComponentVersionPropertiesInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Version identifier.
@@ -231,14 +234,14 @@ func (o ComponentVersionOutput) AzureApiVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *ComponentVersion) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
-// [Required] Additional attributes of the entity.
-func (o ComponentVersionOutput) ComponentVersionProperties() ComponentVersionResponseOutput {
-	return o.ApplyT(func(v *ComponentVersion) ComponentVersionResponseOutput { return v.ComponentVersionProperties }).(ComponentVersionResponseOutput)
-}
-
 // The name of the resource
 func (o ComponentVersionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ComponentVersion) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// [Required] Additional attributes of the entity.
+func (o ComponentVersionOutput) Properties() ComponentVersionPropertiesResponseOutput {
+	return o.ApplyT(func(v *ComponentVersion) ComponentVersionPropertiesResponseOutput { return v.Properties }).(ComponentVersionPropertiesResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

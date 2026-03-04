@@ -16,7 +16,7 @@ import (
 //
 // Uses Azure REST API version 2024-07-01.
 //
-// Other available API versions: 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagecache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2025-07-01, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagecache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type AutoExportJob struct {
 	pulumi.CustomResourceState
 
@@ -92,6 +92,9 @@ func NewAutoExportJob(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:storagecache/v20250701:AutoExportJob"),
+		},
+		{
+			Type: pulumi.String("azure-native:storagecache/v20260101:AutoExportJob"),
 		},
 	})
 	opts = append(opts, aliases)

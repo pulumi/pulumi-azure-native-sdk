@@ -13,7 +13,7 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
-// SKU of the trusted signing account.
+// SKU of the artifact signing account.
 type AccountSku struct {
 	// Name of the SKU.
 	Name string `pulumi:"name"`
@@ -30,7 +30,7 @@ type AccountSkuInput interface {
 	ToAccountSkuOutputWithContext(context.Context) AccountSkuOutput
 }
 
-// SKU of the trusted signing account.
+// SKU of the artifact signing account.
 type AccountSkuArgs struct {
 	// Name of the SKU.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -89,7 +89,7 @@ func (i *accountSkuPtrType) ToAccountSkuPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(AccountSkuPtrOutput)
 }
 
-// SKU of the trusted signing account.
+// SKU of the artifact signing account.
 type AccountSkuOutput struct{ *pulumi.OutputState }
 
 func (AccountSkuOutput) ElementType() reflect.Type {
@@ -153,13 +153,13 @@ func (o AccountSkuPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// SKU of the trusted signing account.
+// SKU of the artifact signing account.
 type AccountSkuResponse struct {
 	// Name of the SKU.
 	Name string `pulumi:"name"`
 }
 
-// SKU of the trusted signing account.
+// SKU of the artifact signing account.
 type AccountSkuResponseOutput struct{ *pulumi.OutputState }
 
 func (AccountSkuResponseOutput) ElementType() reflect.Type {

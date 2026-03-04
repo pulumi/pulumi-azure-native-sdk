@@ -13,9 +13,9 @@ import (
 
 // Retrieve the watcher identified by watcher name.
 //
-// Uses Azure REST API version 2023-05-15-preview.
+// Uses Azure REST API version 2024-10-23.
 //
-// Other available API versions: 2015-10-31, 2019-06-01, 2020-01-13-preview, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2015-10-31, 2019-06-01, 2020-01-13-preview, 2023-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupWatcher(ctx *pulumi.Context, args *LookupWatcherArgs, opts ...pulumi.InvokeOption) (*LookupWatcherResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWatcherResult

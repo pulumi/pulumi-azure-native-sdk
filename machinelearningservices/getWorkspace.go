@@ -13,9 +13,9 @@ import (
 
 // Gets the properties of the specified machine learning workspace.
 //
-// Uses Azure REST API version 2025-09-01.
+// Uses Azure REST API version 2025-12-01.
 //
-// Other available API versions: 2020-05-01-preview, 2020-05-15-preview, 2020-06-01, 2020-08-01, 2020-09-01-preview, 2021-01-01, 2021-03-01-preview, 2021-04-01, 2021-07-01, 2022-01-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2020-05-01-preview, 2020-05-15-preview, 2020-06-01, 2020-08-01, 2020-09-01-preview, 2021-01-01, 2021-03-01-preview, 2021-04-01, 2021-07-01, 2022-01-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupWorkspace(ctx *pulumi.Context, args *LookupWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceResult
@@ -29,7 +29,7 @@ func LookupWorkspace(ctx *pulumi.Context, args *LookupWorkspaceArgs, opts ...pul
 type LookupWorkspaceArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Name of Azure Machine Learning workspace.
+	// Azure Machine Learning Workspace Name
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
@@ -47,11 +47,10 @@ type LookupWorkspaceResult struct {
 	// The description of this workspace.
 	Description *string `pulumi:"description"`
 	// Url for the discovery service to identify regional endpoints for machine learning experimentation services
-	DiscoveryUrl                   *string `pulumi:"discoveryUrl"`
-	EnableDataIsolation            *bool   `pulumi:"enableDataIsolation"`
-	EnableServiceSideCMKEncryption *bool   `pulumi:"enableServiceSideCMKEncryption"`
-	// The encryption settings of Azure ML workspace.
-	Encryption *EncryptionPropertyResponse `pulumi:"encryption"`
+	DiscoveryUrl                   *string                     `pulumi:"discoveryUrl"`
+	EnableDataIsolation            *bool                       `pulumi:"enableDataIsolation"`
+	EnableServiceSideCMKEncryption *bool                       `pulumi:"enableServiceSideCMKEncryption"`
+	Encryption                     *EncryptionPropertyResponse `pulumi:"encryption"`
 	// Settings for feature store type workspace.
 	FeatureStoreSettings *FeatureStoreSettingsResponse `pulumi:"featureStoreSettings"`
 	// The friendly name for this workspace. This name in mutable
@@ -61,14 +60,13 @@ type LookupWorkspaceResult struct {
 	HubResourceId *string `pulumi:"hubResourceId"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// The identity of the resource.
+	// The managed service identities assigned to this resource.
 	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
 	// The compute name for image build
 	ImageBuildCompute *string `pulumi:"imageBuildCompute"`
 	// ARM id of the key vault associated with this workspace. This cannot be changed once the workspace has been created
 	KeyVault *string `pulumi:"keyVault"`
 	Kind     *string `pulumi:"kind"`
-	// Specifies the location of the resource.
 	Location *string `pulumi:"location"`
 	// Managed Network settings for a machine learning workspace.
 	ManagedNetwork *ManagedNetworkSettingsResponse `pulumi:"managedNetwork"`
@@ -90,7 +88,7 @@ type LookupWorkspaceResult struct {
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Whether requests from Public Network are allowed.
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
-	// Settings for serverless compute created in the workspace
+	// Settings for serverless compute in a workspace
 	ServerlessComputeSettings *ServerlessComputeSettingsResponse `pulumi:"serverlessComputeSettings"`
 	// The service managed resource settings.
 	ServiceManagedResourcesSettings *ServiceManagedResourcesSettingsResponse `pulumi:"serviceManagedResourcesSettings"`
@@ -98,7 +96,7 @@ type LookupWorkspaceResult struct {
 	ServiceProvisionedResourceGroup string `pulumi:"serviceProvisionedResourceGroup"`
 	// The list of shared private link resources in this workspace.
 	SharedPrivateLinkResources []SharedPrivateLinkResourceResponse `pulumi:"sharedPrivateLinkResources"`
-	// The sku of the workspace.
+	// Optional. This field is required to be implemented by the RP because AML is supporting more than one tier
 	Sku *SkuResponse `pulumi:"sku"`
 	// ARM id of the storage account associated with this workspace. This cannot be changed once the workspace has been created
 	StorageAccount *string `pulumi:"storageAccount"`
@@ -107,9 +105,8 @@ type LookupWorkspaceResult struct {
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The auth mode used for accessing the system datastores of the workspace.
-	SystemDatastoresAuthMode *string `pulumi:"systemDatastoresAuthMode"`
-	// Contains resource tags defined as key/value pairs.
-	Tags map[string]string `pulumi:"tags"`
+	SystemDatastoresAuthMode *string           `pulumi:"systemDatastoresAuthMode"`
+	Tags                     map[string]string `pulumi:"tags"`
 	// The tenant id associated with this workspace.
 	TenantId string `pulumi:"tenantId"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -128,20 +125,8 @@ func (val *LookupWorkspaceResult) Defaults() *LookupWorkspaceResult {
 		return nil
 	}
 	tmp := *val
-	if tmp.AllowPublicAccessWhenBehindVnet == nil {
-		allowPublicAccessWhenBehindVnet_ := false
-		tmp.AllowPublicAccessWhenBehindVnet = &allowPublicAccessWhenBehindVnet_
-	}
-	if tmp.HbiWorkspace == nil {
-		hbiWorkspace_ := false
-		tmp.HbiWorkspace = &hbiWorkspace_
-	}
 	tmp.ManagedNetwork = tmp.ManagedNetwork.Defaults()
 
-	if tmp.V1LegacyMode == nil {
-		v1LegacyMode_ := false
-		tmp.V1LegacyMode = &v1LegacyMode_
-	}
 	return &tmp
 }
 func LookupWorkspaceOutput(ctx *pulumi.Context, args LookupWorkspaceOutputArgs, opts ...pulumi.InvokeOption) LookupWorkspaceResultOutput {
@@ -156,7 +141,7 @@ func LookupWorkspaceOutput(ctx *pulumi.Context, args LookupWorkspaceOutputArgs, 
 type LookupWorkspaceOutputArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	// Name of Azure Machine Learning workspace.
+	// Azure Machine Learning Workspace Name
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
@@ -221,7 +206,6 @@ func (o LookupWorkspaceResultOutput) EnableServiceSideCMKEncryption() pulumi.Boo
 	return o.ApplyT(func(v LookupWorkspaceResult) *bool { return v.EnableServiceSideCMKEncryption }).(pulumi.BoolPtrOutput)
 }
 
-// The encryption settings of Azure ML workspace.
 func (o LookupWorkspaceResultOutput) Encryption() EncryptionPropertyResponsePtrOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) *EncryptionPropertyResponse { return v.Encryption }).(EncryptionPropertyResponsePtrOutput)
 }
@@ -250,7 +234,7 @@ func (o LookupWorkspaceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The identity of the resource.
+// The managed service identities assigned to this resource.
 func (o LookupWorkspaceResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
@@ -269,7 +253,6 @@ func (o LookupWorkspaceResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the location of the resource.
 func (o LookupWorkspaceResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
@@ -324,7 +307,7 @@ func (o LookupWorkspaceResultOutput) PublicNetworkAccess() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v LookupWorkspaceResult) *string { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
 }
 
-// Settings for serverless compute created in the workspace
+// Settings for serverless compute in a workspace
 func (o LookupWorkspaceResultOutput) ServerlessComputeSettings() ServerlessComputeSettingsResponsePtrOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) *ServerlessComputeSettingsResponse { return v.ServerlessComputeSettings }).(ServerlessComputeSettingsResponsePtrOutput)
 }
@@ -346,7 +329,7 @@ func (o LookupWorkspaceResultOutput) SharedPrivateLinkResources() SharedPrivateL
 	return o.ApplyT(func(v LookupWorkspaceResult) []SharedPrivateLinkResourceResponse { return v.SharedPrivateLinkResources }).(SharedPrivateLinkResourceResponseArrayOutput)
 }
 
-// The sku of the workspace.
+// Optional. This field is required to be implemented by the RP because AML is supporting more than one tier
 func (o LookupWorkspaceResultOutput) Sku() SkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
 }
@@ -371,7 +354,6 @@ func (o LookupWorkspaceResultOutput) SystemDatastoresAuthMode() pulumi.StringPtr
 	return o.ApplyT(func(v LookupWorkspaceResult) *string { return v.SystemDatastoresAuthMode }).(pulumi.StringPtrOutput)
 }
 
-// Contains resource tags defined as key/value pairs.
 func (o LookupWorkspaceResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }

@@ -514,6 +514,174 @@ func (in *complianceAssignmentTypePtr) ToComplianceAssignmentTypePtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(ComplianceAssignmentTypePtrOutput)
 }
 
+// Defines the customer's intent for updating confidential VM properties
+type ConfidentialVmIntent string
+
+const (
+	// Indicates that the customer intends to enable CVM support on the cluster.
+	ConfidentialVmIntentEnable = ConfidentialVmIntent("Enable")
+	// Indicates that the customer intends to disable CVM support on the cluster.
+	ConfidentialVmIntentDisable = ConfidentialVmIntent("Disable")
+)
+
+func (ConfidentialVmIntent) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfidentialVmIntent)(nil)).Elem()
+}
+
+func (e ConfidentialVmIntent) ToConfidentialVmIntentOutput() ConfidentialVmIntentOutput {
+	return pulumi.ToOutput(e).(ConfidentialVmIntentOutput)
+}
+
+func (e ConfidentialVmIntent) ToConfidentialVmIntentOutputWithContext(ctx context.Context) ConfidentialVmIntentOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ConfidentialVmIntentOutput)
+}
+
+func (e ConfidentialVmIntent) ToConfidentialVmIntentPtrOutput() ConfidentialVmIntentPtrOutput {
+	return e.ToConfidentialVmIntentPtrOutputWithContext(context.Background())
+}
+
+func (e ConfidentialVmIntent) ToConfidentialVmIntentPtrOutputWithContext(ctx context.Context) ConfidentialVmIntentPtrOutput {
+	return ConfidentialVmIntent(e).ToConfidentialVmIntentOutputWithContext(ctx).ToConfidentialVmIntentPtrOutputWithContext(ctx)
+}
+
+func (e ConfidentialVmIntent) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ConfidentialVmIntent) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ConfidentialVmIntent) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ConfidentialVmIntent) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ConfidentialVmIntentOutput struct{ *pulumi.OutputState }
+
+func (ConfidentialVmIntentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfidentialVmIntent)(nil)).Elem()
+}
+
+func (o ConfidentialVmIntentOutput) ToConfidentialVmIntentOutput() ConfidentialVmIntentOutput {
+	return o
+}
+
+func (o ConfidentialVmIntentOutput) ToConfidentialVmIntentOutputWithContext(ctx context.Context) ConfidentialVmIntentOutput {
+	return o
+}
+
+func (o ConfidentialVmIntentOutput) ToConfidentialVmIntentPtrOutput() ConfidentialVmIntentPtrOutput {
+	return o.ToConfidentialVmIntentPtrOutputWithContext(context.Background())
+}
+
+func (o ConfidentialVmIntentOutput) ToConfidentialVmIntentPtrOutputWithContext(ctx context.Context) ConfidentialVmIntentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfidentialVmIntent) *ConfidentialVmIntent {
+		return &v
+	}).(ConfidentialVmIntentPtrOutput)
+}
+
+func (o ConfidentialVmIntentOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ConfidentialVmIntentOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ConfidentialVmIntent) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ConfidentialVmIntentOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ConfidentialVmIntentOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ConfidentialVmIntent) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConfidentialVmIntentPtrOutput struct{ *pulumi.OutputState }
+
+func (ConfidentialVmIntentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfidentialVmIntent)(nil)).Elem()
+}
+
+func (o ConfidentialVmIntentPtrOutput) ToConfidentialVmIntentPtrOutput() ConfidentialVmIntentPtrOutput {
+	return o
+}
+
+func (o ConfidentialVmIntentPtrOutput) ToConfidentialVmIntentPtrOutputWithContext(ctx context.Context) ConfidentialVmIntentPtrOutput {
+	return o
+}
+
+func (o ConfidentialVmIntentPtrOutput) Elem() ConfidentialVmIntentOutput {
+	return o.ApplyT(func(v *ConfidentialVmIntent) ConfidentialVmIntent {
+		if v != nil {
+			return *v
+		}
+		var ret ConfidentialVmIntent
+		return ret
+	}).(ConfidentialVmIntentOutput)
+}
+
+func (o ConfidentialVmIntentPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ConfidentialVmIntentPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ConfidentialVmIntent) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ConfidentialVmIntentInput is an input type that accepts values of the ConfidentialVmIntent enum
+// A concrete instance of `ConfidentialVmIntentInput` can be one of the following:
+//
+//	ConfidentialVmIntentEnable
+//	ConfidentialVmIntentDisable
+type ConfidentialVmIntentInput interface {
+	pulumi.Input
+
+	ToConfidentialVmIntentOutput() ConfidentialVmIntentOutput
+	ToConfidentialVmIntentOutputWithContext(context.Context) ConfidentialVmIntentOutput
+}
+
+var confidentialVmIntentPtrType = reflect.TypeOf((**ConfidentialVmIntent)(nil)).Elem()
+
+type ConfidentialVmIntentPtrInput interface {
+	pulumi.Input
+
+	ToConfidentialVmIntentPtrOutput() ConfidentialVmIntentPtrOutput
+	ToConfidentialVmIntentPtrOutputWithContext(context.Context) ConfidentialVmIntentPtrOutput
+}
+
+type confidentialVmIntentPtr string
+
+func ConfidentialVmIntentPtr(v string) ConfidentialVmIntentPtrInput {
+	return (*confidentialVmIntentPtr)(&v)
+}
+
+func (*confidentialVmIntentPtr) ElementType() reflect.Type {
+	return confidentialVmIntentPtrType
+}
+
+func (in *confidentialVmIntentPtr) ToConfidentialVmIntentPtrOutput() ConfidentialVmIntentPtrOutput {
+	return pulumi.ToOutput(in).(ConfidentialVmIntentPtrOutput)
+}
+
+func (in *confidentialVmIntentPtr) ToConfidentialVmIntentPtrOutputWithContext(ctx context.Context) ConfidentialVmIntentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ConfidentialVmIntentPtrOutput)
+}
+
 // Deployment mode to trigger job.
 type DeploymentMode string
 
@@ -856,6 +1024,174 @@ func (in *diagnosticLevelPtr) ToDiagnosticLevelPtrOutput() DiagnosticLevelPtrOut
 
 func (in *diagnosticLevelPtr) ToDiagnosticLevelPtrOutputWithContext(ctx context.Context) DiagnosticLevelPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DiagnosticLevelPtrOutput)
+}
+
+// This enumerates the possible sources of a disk's creation
+type DiskCreateOption string
+
+const (
+	// Create a disk by copying from a source resource
+	DiskCreateOptionCopy = DiskCreateOption("Copy")
+	// Create an empty disk
+	DiskCreateOptionEmpty = DiskCreateOption("Empty")
+)
+
+func (DiskCreateOption) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskCreateOption)(nil)).Elem()
+}
+
+func (e DiskCreateOption) ToDiskCreateOptionOutput() DiskCreateOptionOutput {
+	return pulumi.ToOutput(e).(DiskCreateOptionOutput)
+}
+
+func (e DiskCreateOption) ToDiskCreateOptionOutputWithContext(ctx context.Context) DiskCreateOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DiskCreateOptionOutput)
+}
+
+func (e DiskCreateOption) ToDiskCreateOptionPtrOutput() DiskCreateOptionPtrOutput {
+	return e.ToDiskCreateOptionPtrOutputWithContext(context.Background())
+}
+
+func (e DiskCreateOption) ToDiskCreateOptionPtrOutputWithContext(ctx context.Context) DiskCreateOptionPtrOutput {
+	return DiskCreateOption(e).ToDiskCreateOptionOutputWithContext(ctx).ToDiskCreateOptionPtrOutputWithContext(ctx)
+}
+
+func (e DiskCreateOption) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DiskCreateOption) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DiskCreateOption) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e DiskCreateOption) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DiskCreateOptionOutput struct{ *pulumi.OutputState }
+
+func (DiskCreateOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskCreateOption)(nil)).Elem()
+}
+
+func (o DiskCreateOptionOutput) ToDiskCreateOptionOutput() DiskCreateOptionOutput {
+	return o
+}
+
+func (o DiskCreateOptionOutput) ToDiskCreateOptionOutputWithContext(ctx context.Context) DiskCreateOptionOutput {
+	return o
+}
+
+func (o DiskCreateOptionOutput) ToDiskCreateOptionPtrOutput() DiskCreateOptionPtrOutput {
+	return o.ToDiskCreateOptionPtrOutputWithContext(context.Background())
+}
+
+func (o DiskCreateOptionOutput) ToDiskCreateOptionPtrOutputWithContext(ctx context.Context) DiskCreateOptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiskCreateOption) *DiskCreateOption {
+		return &v
+	}).(DiskCreateOptionPtrOutput)
+}
+
+func (o DiskCreateOptionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DiskCreateOptionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DiskCreateOption) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DiskCreateOptionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DiskCreateOptionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DiskCreateOption) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DiskCreateOptionPtrOutput struct{ *pulumi.OutputState }
+
+func (DiskCreateOptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiskCreateOption)(nil)).Elem()
+}
+
+func (o DiskCreateOptionPtrOutput) ToDiskCreateOptionPtrOutput() DiskCreateOptionPtrOutput {
+	return o
+}
+
+func (o DiskCreateOptionPtrOutput) ToDiskCreateOptionPtrOutputWithContext(ctx context.Context) DiskCreateOptionPtrOutput {
+	return o
+}
+
+func (o DiskCreateOptionPtrOutput) Elem() DiskCreateOptionOutput {
+	return o.ApplyT(func(v *DiskCreateOption) DiskCreateOption {
+		if v != nil {
+			return *v
+		}
+		var ret DiskCreateOption
+		return ret
+	}).(DiskCreateOptionOutput)
+}
+
+func (o DiskCreateOptionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DiskCreateOptionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DiskCreateOption) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// DiskCreateOptionInput is an input type that accepts values of the DiskCreateOption enum
+// A concrete instance of `DiskCreateOptionInput` can be one of the following:
+//
+//	DiskCreateOptionCopy
+//	DiskCreateOptionEmpty
+type DiskCreateOptionInput interface {
+	pulumi.Input
+
+	ToDiskCreateOptionOutput() DiskCreateOptionOutput
+	ToDiskCreateOptionOutputWithContext(context.Context) DiskCreateOptionOutput
+}
+
+var diskCreateOptionPtrType = reflect.TypeOf((**DiskCreateOption)(nil)).Elem()
+
+type DiskCreateOptionPtrInput interface {
+	pulumi.Input
+
+	ToDiskCreateOptionPtrOutput() DiskCreateOptionPtrOutput
+	ToDiskCreateOptionPtrOutputWithContext(context.Context) DiskCreateOptionPtrOutput
+}
+
+type diskCreateOptionPtr string
+
+func DiskCreateOptionPtr(v string) DiskCreateOptionPtrInput {
+	return (*diskCreateOptionPtr)(&v)
+}
+
+func (*diskCreateOptionPtr) ElementType() reflect.Type {
+	return diskCreateOptionPtrType
+}
+
+func (in *diskCreateOptionPtr) ToDiskCreateOptionPtrOutput() DiskCreateOptionPtrOutput {
+	return pulumi.ToOutput(in).(DiskCreateOptionPtrOutput)
+}
+
+func (in *diskCreateOptionPtr) ToDiskCreateOptionPtrOutputWithContext(ctx context.Context) DiskCreateOptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DiskCreateOptionPtrOutput)
 }
 
 // The format of the actual VHD file [vhd, vhdx]
@@ -1731,6 +2067,16 @@ const (
 	HciEdgeDeviceJobTypeCollectLog = HciEdgeDeviceJobType("CollectLog")
 	// Job to provide remote support to the device.
 	HciEdgeDeviceJobTypeRemoteSupport = HciEdgeDeviceJobType("RemoteSupport")
+)
+
+// Job Type to support polymorphic resource.
+type HciJobType string
+
+const (
+	// Job to CVM  intent for the cluster.
+	HciJobTypeConfigureCVM = HciJobType("ConfigureCVM")
+	// Job to configure SDN (Software Defined Networking) integration for the cluster.
+	HciJobTypeConfigureSdnIntegration = HciJobType("ConfigureSdnIntegration")
 )
 
 // The hypervisor generation of the Virtual Machine [V1, V2]
@@ -5612,6 +5958,174 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
 }
 
+// Defines the customer's intent for configuring SDN integration
+type SdnIntegrationIntent string
+
+const (
+	// Enable SDN integration for the deployment.
+	SdnIntegrationIntentEnable = SdnIntegrationIntent("Enable")
+	// Disable SDN integration for the deployment.
+	SdnIntegrationIntentDisable = SdnIntegrationIntent("Disable")
+)
+
+func (SdnIntegrationIntent) ElementType() reflect.Type {
+	return reflect.TypeOf((*SdnIntegrationIntent)(nil)).Elem()
+}
+
+func (e SdnIntegrationIntent) ToSdnIntegrationIntentOutput() SdnIntegrationIntentOutput {
+	return pulumi.ToOutput(e).(SdnIntegrationIntentOutput)
+}
+
+func (e SdnIntegrationIntent) ToSdnIntegrationIntentOutputWithContext(ctx context.Context) SdnIntegrationIntentOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SdnIntegrationIntentOutput)
+}
+
+func (e SdnIntegrationIntent) ToSdnIntegrationIntentPtrOutput() SdnIntegrationIntentPtrOutput {
+	return e.ToSdnIntegrationIntentPtrOutputWithContext(context.Background())
+}
+
+func (e SdnIntegrationIntent) ToSdnIntegrationIntentPtrOutputWithContext(ctx context.Context) SdnIntegrationIntentPtrOutput {
+	return SdnIntegrationIntent(e).ToSdnIntegrationIntentOutputWithContext(ctx).ToSdnIntegrationIntentPtrOutputWithContext(ctx)
+}
+
+func (e SdnIntegrationIntent) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SdnIntegrationIntent) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SdnIntegrationIntent) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SdnIntegrationIntent) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SdnIntegrationIntentOutput struct{ *pulumi.OutputState }
+
+func (SdnIntegrationIntentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SdnIntegrationIntent)(nil)).Elem()
+}
+
+func (o SdnIntegrationIntentOutput) ToSdnIntegrationIntentOutput() SdnIntegrationIntentOutput {
+	return o
+}
+
+func (o SdnIntegrationIntentOutput) ToSdnIntegrationIntentOutputWithContext(ctx context.Context) SdnIntegrationIntentOutput {
+	return o
+}
+
+func (o SdnIntegrationIntentOutput) ToSdnIntegrationIntentPtrOutput() SdnIntegrationIntentPtrOutput {
+	return o.ToSdnIntegrationIntentPtrOutputWithContext(context.Background())
+}
+
+func (o SdnIntegrationIntentOutput) ToSdnIntegrationIntentPtrOutputWithContext(ctx context.Context) SdnIntegrationIntentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SdnIntegrationIntent) *SdnIntegrationIntent {
+		return &v
+	}).(SdnIntegrationIntentPtrOutput)
+}
+
+func (o SdnIntegrationIntentOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SdnIntegrationIntentOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SdnIntegrationIntent) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SdnIntegrationIntentOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SdnIntegrationIntentOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SdnIntegrationIntent) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SdnIntegrationIntentPtrOutput struct{ *pulumi.OutputState }
+
+func (SdnIntegrationIntentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SdnIntegrationIntent)(nil)).Elem()
+}
+
+func (o SdnIntegrationIntentPtrOutput) ToSdnIntegrationIntentPtrOutput() SdnIntegrationIntentPtrOutput {
+	return o
+}
+
+func (o SdnIntegrationIntentPtrOutput) ToSdnIntegrationIntentPtrOutputWithContext(ctx context.Context) SdnIntegrationIntentPtrOutput {
+	return o
+}
+
+func (o SdnIntegrationIntentPtrOutput) Elem() SdnIntegrationIntentOutput {
+	return o.ApplyT(func(v *SdnIntegrationIntent) SdnIntegrationIntent {
+		if v != nil {
+			return *v
+		}
+		var ret SdnIntegrationIntent
+		return ret
+	}).(SdnIntegrationIntentOutput)
+}
+
+func (o SdnIntegrationIntentPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SdnIntegrationIntentPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SdnIntegrationIntent) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SdnIntegrationIntentInput is an input type that accepts values of the SdnIntegrationIntent enum
+// A concrete instance of `SdnIntegrationIntentInput` can be one of the following:
+//
+//	SdnIntegrationIntentEnable
+//	SdnIntegrationIntentDisable
+type SdnIntegrationIntentInput interface {
+	pulumi.Input
+
+	ToSdnIntegrationIntentOutput() SdnIntegrationIntentOutput
+	ToSdnIntegrationIntentOutputWithContext(context.Context) SdnIntegrationIntentOutput
+}
+
+var sdnIntegrationIntentPtrType = reflect.TypeOf((**SdnIntegrationIntent)(nil)).Elem()
+
+type SdnIntegrationIntentPtrInput interface {
+	pulumi.Input
+
+	ToSdnIntegrationIntentPtrOutput() SdnIntegrationIntentPtrOutput
+	ToSdnIntegrationIntentPtrOutputWithContext(context.Context) SdnIntegrationIntentPtrOutput
+}
+
+type sdnIntegrationIntentPtr string
+
+func SdnIntegrationIntentPtr(v string) SdnIntegrationIntentPtrInput {
+	return (*sdnIntegrationIntentPtr)(&v)
+}
+
+func (*sdnIntegrationIntentPtr) ElementType() reflect.Type {
+	return sdnIntegrationIntentPtrType
+}
+
+func (in *sdnIntegrationIntentPtr) ToSdnIntegrationIntentPtrOutput() SdnIntegrationIntentPtrOutput {
+	return pulumi.ToOutput(in).(SdnIntegrationIntentPtrOutput)
+}
+
+func (in *sdnIntegrationIntentPtr) ToSdnIntegrationIntentPtrOutputWithContext(ctx context.Context) SdnIntegrationIntentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SdnIntegrationIntentPtrOutput)
+}
+
 // Type of the secret used for authentication.
 type SecretType string
 
@@ -7905,10 +8419,14 @@ func init() {
 	pulumi.RegisterOutputType(CloudInitDataSourcePtrOutput{})
 	pulumi.RegisterOutputType(ComplianceAssignmentTypeOutput{})
 	pulumi.RegisterOutputType(ComplianceAssignmentTypePtrOutput{})
+	pulumi.RegisterOutputType(ConfidentialVmIntentOutput{})
+	pulumi.RegisterOutputType(ConfidentialVmIntentPtrOutput{})
 	pulumi.RegisterOutputType(DeploymentModeOutput{})
 	pulumi.RegisterOutputType(DeploymentModePtrOutput{})
 	pulumi.RegisterOutputType(DiagnosticLevelOutput{})
 	pulumi.RegisterOutputType(DiagnosticLevelPtrOutput{})
+	pulumi.RegisterOutputType(DiskCreateOptionOutput{})
+	pulumi.RegisterOutputType(DiskCreateOptionPtrOutput{})
 	pulumi.RegisterOutputType(DiskFileFormatOutput{})
 	pulumi.RegisterOutputType(DiskFileFormatPtrOutput{})
 	pulumi.RegisterOutputType(EceSecretsOutput{})
@@ -7965,6 +8483,8 @@ func init() {
 	pulumi.RegisterOutputType(RemoteSupportTypePtrOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityTypeOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityTypePtrOutput{})
+	pulumi.RegisterOutputType(SdnIntegrationIntentOutput{})
+	pulumi.RegisterOutputType(SdnIntegrationIntentPtrOutput{})
 	pulumi.RegisterOutputType(SecretTypeOutput{})
 	pulumi.RegisterOutputType(SecretTypePtrOutput{})
 	pulumi.RegisterOutputType(SecurityEncryptionTypeOutput{})

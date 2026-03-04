@@ -11,9 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Uses Azure REST API version 2025-09-01.
+// List all the secrets of a machine learning workspaces connections.
 //
-// Other available API versions: 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Uses Azure REST API version 2025-12-01.
+//
+// Other available API versions: 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func ListWorkspaceConnectionSecrets(ctx *pulumi.Context, args *ListWorkspaceConnectionSecretsArgs, opts ...pulumi.InvokeOption) (*ListWorkspaceConnectionSecretsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListWorkspaceConnectionSecretsResult
@@ -29,10 +31,11 @@ type ListWorkspaceConnectionSecretsArgs struct {
 	ConnectionName string `pulumi:"connectionName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Name of Azure Machine Learning workspace.
+	// Azure Machine Learning Workspace Name
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
+// Concrete proxy resource types can be created by aliasing this type using a specific property type.
 type ListWorkspaceConnectionSecretsResult struct {
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
@@ -59,7 +62,7 @@ type ListWorkspaceConnectionSecretsOutputArgs struct {
 	ConnectionName pulumi.StringInput `pulumi:"connectionName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	// Name of Azure Machine Learning workspace.
+	// Azure Machine Learning Workspace Name
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
@@ -67,6 +70,7 @@ func (ListWorkspaceConnectionSecretsOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*ListWorkspaceConnectionSecretsArgs)(nil)).Elem()
 }
 
+// Concrete proxy resource types can be created by aliasing this type using a specific property type.
 type ListWorkspaceConnectionSecretsResultOutput struct{ *pulumi.OutputState }
 
 func (ListWorkspaceConnectionSecretsResultOutput) ElementType() reflect.Type {

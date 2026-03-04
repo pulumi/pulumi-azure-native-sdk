@@ -31,7 +31,7 @@ type ListFeatureAccountArgs struct {
 	AccountName string `pulumi:"accountName"`
 	// Set of features
 	Features []string `pulumi:"features"`
-	// The resource group name.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -55,7 +55,7 @@ type ListFeatureAccountOutputArgs struct {
 	AccountName pulumi.StringInput `pulumi:"accountName"`
 	// Set of features
 	Features pulumi.StringArrayInput `pulumi:"features"`
-	// The resource group name.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 

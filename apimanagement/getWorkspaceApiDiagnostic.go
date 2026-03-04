@@ -13,9 +13,9 @@ import (
 
 // Gets the details of the Diagnostic for an API specified by its identifier.
 //
-// Uses Azure REST API version 2024-06-01-preview.
+// Uses Azure REST API version 2024-05-01.
 //
-// Other available API versions: 2023-09-01-preview, 2024-05-01, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupWorkspaceApiDiagnostic(ctx *pulumi.Context, args *LookupWorkspaceApiDiagnosticArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceApiDiagnosticResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceApiDiagnosticResult
@@ -53,8 +53,6 @@ type LookupWorkspaceApiDiagnosticResult struct {
 	HttpCorrelationProtocol *string `pulumi:"httpCorrelationProtocol"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// Large Language Models diagnostic settings
-	LargeLanguageModel *LLMDiagnosticSettingsResponse `pulumi:"largeLanguageModel"`
 	// Log the ClientIP. Default is false.
 	LogClientIp *bool `pulumi:"logClientIp"`
 	// Resource Id of a target logger.
@@ -142,11 +140,6 @@ func (o LookupWorkspaceApiDiagnosticResultOutput) HttpCorrelationProtocol() pulu
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupWorkspaceApiDiagnosticResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceApiDiagnosticResult) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// Large Language Models diagnostic settings
-func (o LookupWorkspaceApiDiagnosticResultOutput) LargeLanguageModel() LLMDiagnosticSettingsResponsePtrOutput {
-	return o.ApplyT(func(v LookupWorkspaceApiDiagnosticResult) *LLMDiagnosticSettingsResponse { return v.LargeLanguageModel }).(LLMDiagnosticSettingsResponsePtrOutput)
 }
 
 // Log the ClientIP. Default is false.

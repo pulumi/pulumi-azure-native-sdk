@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Get a trusted Signing Account.
+// Get an artifact Signing Account.
 //
 // Uses Azure REST API version 2024-09-30-preview.
 //
@@ -27,15 +27,15 @@ func LookupCodeSigningAccount(ctx *pulumi.Context, args *LookupCodeSigningAccoun
 }
 
 type LookupCodeSigningAccountArgs struct {
-	// Trusted Signing account name.
+	// Artifact Signing account name.
 	AccountName string `pulumi:"accountName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
-// Trusted signing account resource.
+// Artifact signing account resource.
 type LookupCodeSigningAccountResult struct {
-	// The URI of the trusted signing account which is used during signing files.
+	// The URI of the artifact signing account which is used during signing files.
 	AccountUri string `pulumi:"accountUri"`
 	// The Azure API version of the resource.
 	AzureApiVersion string `pulumi:"azureApiVersion"`
@@ -45,9 +45,9 @@ type LookupCodeSigningAccountResult struct {
 	Location string `pulumi:"location"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// Status of the current operation on trusted signing account.
+	// Status of the current operation on artifact signing account.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// SKU of the trusted signing account.
+	// SKU of the artifact signing account.
 	Sku *AccountSkuResponse `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
@@ -67,7 +67,7 @@ func LookupCodeSigningAccountOutput(ctx *pulumi.Context, args LookupCodeSigningA
 }
 
 type LookupCodeSigningAccountOutputArgs struct {
-	// Trusted Signing account name.
+	// Artifact Signing account name.
 	AccountName pulumi.StringInput `pulumi:"accountName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
@@ -77,7 +77,7 @@ func (LookupCodeSigningAccountOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupCodeSigningAccountArgs)(nil)).Elem()
 }
 
-// Trusted signing account resource.
+// Artifact signing account resource.
 type LookupCodeSigningAccountResultOutput struct{ *pulumi.OutputState }
 
 func (LookupCodeSigningAccountResultOutput) ElementType() reflect.Type {
@@ -92,7 +92,7 @@ func (o LookupCodeSigningAccountResultOutput) ToLookupCodeSigningAccountResultOu
 	return o
 }
 
-// The URI of the trusted signing account which is used during signing files.
+// The URI of the artifact signing account which is used during signing files.
 func (o LookupCodeSigningAccountResultOutput) AccountUri() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCodeSigningAccountResult) string { return v.AccountUri }).(pulumi.StringOutput)
 }
@@ -117,12 +117,12 @@ func (o LookupCodeSigningAccountResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCodeSigningAccountResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Status of the current operation on trusted signing account.
+// Status of the current operation on artifact signing account.
 func (o LookupCodeSigningAccountResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCodeSigningAccountResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// SKU of the trusted signing account.
+// SKU of the artifact signing account.
 func (o LookupCodeSigningAccountResultOutput) Sku() AccountSkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupCodeSigningAccountResult) *AccountSkuResponse { return v.Sku }).(AccountSkuResponsePtrOutput)
 }

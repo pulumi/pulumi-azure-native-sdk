@@ -22,7 +22,7 @@ type PrivateEndpointConnection struct {
 
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
-	// Gets or sets the name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The private endpoint information.
 	PrivateEndpoint PrivateEndpointResponsePtrOutput `pulumi:"privateEndpoint"`
@@ -30,9 +30,9 @@ type PrivateEndpointConnection struct {
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateResponsePtrOutput `pulumi:"privateLinkServiceConnectionState"`
 	// The provisioning state.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// Metadata pertaining to creation and last modification of the resource.
-	SystemData ProxyResourceResponseSystemDataOutput `pulumi:"systemData"`
-	// Gets or sets the type.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -108,7 +108,7 @@ type privateEndpointConnectionArgs struct {
 	PrivateEndpointConnectionName *string `pulumi:"privateEndpointConnectionName"`
 	// The private link service connection state.
 	PrivateLinkServiceConnectionState *PrivateLinkServiceConnectionState `pulumi:"privateLinkServiceConnectionState"`
-	// The resource group name.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -122,7 +122,7 @@ type PrivateEndpointConnectionArgs struct {
 	PrivateEndpointConnectionName pulumi.StringPtrInput
 	// The private link service connection state.
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStatePtrInput
-	// The resource group name.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 }
 
@@ -168,7 +168,7 @@ func (o PrivateEndpointConnectionOutput) AzureApiVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateEndpointConnection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
-// Gets or sets the name.
+// The name of the resource
 func (o PrivateEndpointConnectionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateEndpointConnection) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -190,12 +190,12 @@ func (o PrivateEndpointConnectionOutput) ProvisioningState() pulumi.StringOutput
 	return o.ApplyT(func(v *PrivateEndpointConnection) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
-func (o PrivateEndpointConnectionOutput) SystemData() ProxyResourceResponseSystemDataOutput {
-	return o.ApplyT(func(v *PrivateEndpointConnection) ProxyResourceResponseSystemDataOutput { return v.SystemData }).(ProxyResourceResponseSystemDataOutput)
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o PrivateEndpointConnectionOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnection) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Gets or sets the type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o PrivateEndpointConnectionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateEndpointConnection) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

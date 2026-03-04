@@ -16,7 +16,7 @@ import (
 //
 // Uses Azure REST API version 2025-01-01-preview.
 //
-// Other available API versions: 2023-12-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native monitor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-12-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native monitor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ScheduledQueryRule struct {
 	pulumi.CustomResourceState
 
@@ -145,6 +145,9 @@ func NewScheduledQueryRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:monitor/v20250101preview:ScheduledQueryRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:monitor/v20260301:ScheduledQueryRule"),
 		},
 	})
 	opts = append(opts, aliases)

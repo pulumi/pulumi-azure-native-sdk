@@ -901,6 +901,7 @@ func (in *certificateStoreLocationPtr) ToCertificateStoreLocationPtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(CertificateStoreLocationPtrOutput)
 }
 
+// The visibility of the certificate.
 type CertificateVisibility string
 
 const (
@@ -1126,7 +1127,7 @@ const (
 	ComputeNodeDeallocationOptionTerminate = ComputeNodeDeallocationOption("Terminate")
 	// Allow currently running tasks to complete. Schedule no new tasks while waiting. Remove nodes when all tasks have completed.
 	ComputeNodeDeallocationOptionTaskCompletion = ComputeNodeDeallocationOption("TaskCompletion")
-	// Deprecated, we encourage you to upload task data to Azure Storage in your task and use `TaskCompletion` instead. Allow currently running tasks to complete, then wait for all task data retention periods to expire. Schedule no new tasks while waiting. Remove nodes when all task retention periods have expired.
+	// Allow currently running tasks to complete, then wait for all task data retention periods to expire. Schedule no new tasks while waiting. Remove nodes when all task retention periods have expired.
 	ComputeNodeDeallocationOptionRetainedData = ComputeNodeDeallocationOption("RetainedData")
 )
 
@@ -5053,7 +5054,9 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ct
 type SecurityEncryptionTypes string
 
 const (
-	SecurityEncryptionTypesNonPersistedTPM  = SecurityEncryptionTypes("NonPersistedTPM")
+	// EncryptionType of the managed disk is set to NonPersistedTPM for not persisting firmware state in the VMGuestState blob.
+	SecurityEncryptionTypesNonPersistedTPM = SecurityEncryptionTypes("NonPersistedTPM")
+	// EncryptionType of the managed disk is set to VMGuestStateOnly for encryption of just the VMGuestState blob.
 	SecurityEncryptionTypesVMGuestStateOnly = SecurityEncryptionTypes("VMGuestStateOnly")
 )
 
