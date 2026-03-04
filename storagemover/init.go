@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:storagemover:Agent":
 		r = &Agent{}
+	case "azure-native:storagemover:Connection":
+		r = &Connection{}
 	case "azure-native:storagemover:Endpoint":
 		r = &Endpoint{}
 	case "azure-native:storagemover:JobDefinition":

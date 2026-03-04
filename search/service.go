@@ -198,9 +198,9 @@ type serviceArgs struct {
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// The number of replicas in the search service. If specified, it must be a value between 1 and 12 inclusive for standard SKUs or between 1 and 3 inclusive for basic SKU.
 	ReplicaCount *int `pulumi:"replicaCount"`
-	// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// The name of the Azure AI Search service to create or update. Search service names must only contain lowercase letters, digits or dashes, cannot use dash as the first two or last one characters, cannot contain consecutive dashes, and must be between 2 and 60 characters in length. Search service names must be unique since they are part of the service URI (https://<name>.search.windows.net). You cannot change the service name after the service is created.
+	// The name of the Azure AI Search service associated with the specified resource group.
 	SearchServiceName *string `pulumi:"searchServiceName"`
 	// Sets options that control the availability of semantic search. This configuration is only possible for certain Azure AI Search SKUs in certain locations.
 	SemanticSearch *string `pulumi:"semanticSearch"`
@@ -240,9 +240,9 @@ type ServiceArgs struct {
 	PublicNetworkAccess pulumi.StringPtrInput
 	// The number of replicas in the search service. If specified, it must be a value between 1 and 12 inclusive for standard SKUs or between 1 and 3 inclusive for basic SKU.
 	ReplicaCount pulumi.IntPtrInput
-	// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// The name of the Azure AI Search service to create or update. Search service names must only contain lowercase letters, digits or dashes, cannot use dash as the first two or last one characters, cannot contain consecutive dashes, and must be between 2 and 60 characters in length. Search service names must be unique since they are part of the service URI (https://<name>.search.windows.net). You cannot change the service name after the service is created.
+	// The name of the Azure AI Search service associated with the specified resource group.
 	SearchServiceName pulumi.StringPtrInput
 	// Sets options that control the availability of semantic search. This configuration is only possible for certain Azure AI Search SKUs in certain locations.
 	SemanticSearch pulumi.StringPtrInput

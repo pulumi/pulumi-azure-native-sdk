@@ -129,7 +129,7 @@ func (CertificateProfileState) ElementType() reflect.Type {
 }
 
 type certificateProfileArgs struct {
-	// Trusted Signing account name.
+	// Artifact Signing account name.
 	AccountName string `pulumi:"accountName"`
 	// Identity validation id used for the certificate subject name.
 	IdentityValidationId string `pulumi:"identityValidationId"`
@@ -153,7 +153,7 @@ type certificateProfileArgs struct {
 
 // The set of arguments for constructing a CertificateProfile resource.
 type CertificateProfileArgs struct {
-	// Trusted Signing account name.
+	// Artifact Signing account name.
 	AccountName pulumi.StringInput
 	// Identity validation id used for the certificate subject name.
 	IdentityValidationId pulumi.StringInput

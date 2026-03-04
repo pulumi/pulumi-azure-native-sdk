@@ -14,9 +14,9 @@ import (
 
 // Diagnostic details.
 //
-// Uses Azure REST API version 2024-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-09-01-preview.
+// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-09-01-preview.
 //
-// Other available API versions: 2023-09-01-preview, 2024-05-01, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type WorkspaceApiDiagnostic struct {
 	pulumi.CustomResourceState
 
@@ -30,8 +30,6 @@ type WorkspaceApiDiagnostic struct {
 	Frontend PipelineDiagnosticSettingsResponsePtrOutput `pulumi:"frontend"`
 	// Sets correlation protocol to use for Application Insights diagnostics.
 	HttpCorrelationProtocol pulumi.StringPtrOutput `pulumi:"httpCorrelationProtocol"`
-	// Large Language Models diagnostic settings
-	LargeLanguageModel LLMDiagnosticSettingsResponsePtrOutput `pulumi:"largeLanguageModel"`
 	// Log the ClientIP. Default is false.
 	LogClientIp pulumi.BoolPtrOutput `pulumi:"logClientIp"`
 	// Resource Id of a target logger.
@@ -135,8 +133,6 @@ type workspaceApiDiagnosticArgs struct {
 	Frontend *PipelineDiagnosticSettings `pulumi:"frontend"`
 	// Sets correlation protocol to use for Application Insights diagnostics.
 	HttpCorrelationProtocol *string `pulumi:"httpCorrelationProtocol"`
-	// Large Language Models diagnostic settings
-	LargeLanguageModel *LLMDiagnosticSettings `pulumi:"largeLanguageModel"`
 	// Log the ClientIP. Default is false.
 	LogClientIp *bool `pulumi:"logClientIp"`
 	// Resource Id of a target logger.
@@ -171,8 +167,6 @@ type WorkspaceApiDiagnosticArgs struct {
 	Frontend PipelineDiagnosticSettingsPtrInput
 	// Sets correlation protocol to use for Application Insights diagnostics.
 	HttpCorrelationProtocol pulumi.StringPtrInput
-	// Large Language Models diagnostic settings
-	LargeLanguageModel LLMDiagnosticSettingsPtrInput
 	// Log the ClientIP. Default is false.
 	LogClientIp pulumi.BoolPtrInput
 	// Resource Id of a target logger.
@@ -253,11 +247,6 @@ func (o WorkspaceApiDiagnosticOutput) Frontend() PipelineDiagnosticSettingsRespo
 // Sets correlation protocol to use for Application Insights diagnostics.
 func (o WorkspaceApiDiagnosticOutput) HttpCorrelationProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkspaceApiDiagnostic) pulumi.StringPtrOutput { return v.HttpCorrelationProtocol }).(pulumi.StringPtrOutput)
-}
-
-// Large Language Models diagnostic settings
-func (o WorkspaceApiDiagnosticOutput) LargeLanguageModel() LLMDiagnosticSettingsResponsePtrOutput {
-	return o.ApplyT(func(v *WorkspaceApiDiagnostic) LLMDiagnosticSettingsResponsePtrOutput { return v.LargeLanguageModel }).(LLMDiagnosticSettingsResponsePtrOutput)
 }
 
 // Log the ClientIP. Default is false.

@@ -14,18 +14,18 @@ import (
 
 // Azure Resource Manager resource envelope.
 //
-// Uses Azure REST API version 2025-09-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01-preview.
+// Uses Azure REST API version 2025-12-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01-preview.
 //
-// Other available API versions: 2023-02-01-preview, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-02-01-preview, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type FeaturestoreEntityVersion struct {
 	pulumi.CustomResourceState
 
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
-	// [Required] Additional attributes of the entity.
-	FeaturestoreEntityVersionProperties FeaturestoreEntityVersionResponseOutput `pulumi:"featurestoreEntityVersionProperties"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
+	// [Required] Additional attributes of the entity.
+	Properties FeaturestoreEntityVersionPropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -39,11 +39,11 @@ func NewFeaturestoreEntityVersion(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.FeaturestoreEntityVersionProperties == nil {
-		return nil, errors.New("invalid value for required argument 'FeaturestoreEntityVersionProperties'")
-	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
+	}
+	if args.Properties == nil {
+		return nil, errors.New("invalid value for required argument 'Properties'")
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
@@ -51,7 +51,7 @@ func NewFeaturestoreEntityVersion(ctx *pulumi.Context,
 	if args.WorkspaceName == nil {
 		return nil, errors.New("invalid value for required argument 'WorkspaceName'")
 	}
-	args.FeaturestoreEntityVersionProperties = args.FeaturestoreEntityVersionProperties.ToFeaturestoreEntityVersionTypeOutput().ApplyT(func(v FeaturestoreEntityVersionType) FeaturestoreEntityVersionType { return *v.Defaults() }).(FeaturestoreEntityVersionTypeOutput)
+	args.Properties = args.Properties.ToFeaturestoreEntityVersionPropertiesOutput().ApplyT(func(v FeaturestoreEntityVersionProperties) FeaturestoreEntityVersionProperties { return *v.Defaults() }).(FeaturestoreEntityVersionPropertiesOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:FeaturestoreEntityVersion"),
@@ -107,6 +107,9 @@ func NewFeaturestoreEntityVersion(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20251001preview:FeaturestoreEntityVersion"),
 		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20251201:FeaturestoreEntityVersion"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -142,29 +145,29 @@ func (FeaturestoreEntityVersionState) ElementType() reflect.Type {
 }
 
 type featurestoreEntityVersionArgs struct {
-	// [Required] Additional attributes of the entity.
-	FeaturestoreEntityVersionProperties FeaturestoreEntityVersionType `pulumi:"featurestoreEntityVersionProperties"`
 	// Container name. This is case-sensitive.
 	Name string `pulumi:"name"`
+	// [Required] Additional attributes of the entity.
+	Properties FeaturestoreEntityVersionProperties `pulumi:"properties"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Version identifier. This is case-sensitive.
 	Version *string `pulumi:"version"`
-	// Name of Azure Machine Learning workspace.
+	// Azure Machine Learning Workspace Name
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // The set of arguments for constructing a FeaturestoreEntityVersion resource.
 type FeaturestoreEntityVersionArgs struct {
-	// [Required] Additional attributes of the entity.
-	FeaturestoreEntityVersionProperties FeaturestoreEntityVersionTypeInput
 	// Container name. This is case-sensitive.
 	Name pulumi.StringInput
+	// [Required] Additional attributes of the entity.
+	Properties FeaturestoreEntityVersionPropertiesInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Version identifier. This is case-sensitive.
 	Version pulumi.StringPtrInput
-	// Name of Azure Machine Learning workspace.
+	// Azure Machine Learning Workspace Name
 	WorkspaceName pulumi.StringInput
 }
 
@@ -210,16 +213,16 @@ func (o FeaturestoreEntityVersionOutput) AzureApiVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *FeaturestoreEntityVersion) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
-// [Required] Additional attributes of the entity.
-func (o FeaturestoreEntityVersionOutput) FeaturestoreEntityVersionProperties() FeaturestoreEntityVersionResponseOutput {
-	return o.ApplyT(func(v *FeaturestoreEntityVersion) FeaturestoreEntityVersionResponseOutput {
-		return v.FeaturestoreEntityVersionProperties
-	}).(FeaturestoreEntityVersionResponseOutput)
-}
-
 // The name of the resource
 func (o FeaturestoreEntityVersionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *FeaturestoreEntityVersion) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// [Required] Additional attributes of the entity.
+func (o FeaturestoreEntityVersionOutput) Properties() FeaturestoreEntityVersionPropertiesResponseOutput {
+	return o.ApplyT(func(v *FeaturestoreEntityVersion) FeaturestoreEntityVersionPropertiesResponseOutput {
+		return v.Properties
+	}).(FeaturestoreEntityVersionPropertiesResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

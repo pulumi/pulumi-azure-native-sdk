@@ -1691,122 +1691,175 @@ func (o AgentProtocolVersionResponseArrayOutput) Index(i pulumi.IntInput) AgentP
 }
 
 // Type modeling a reference to a version of an agent definition.
-type AgentReference struct {
+type AgentReferenceProperties struct {
 	// Gets the agent's unique identifier within the organization (subscription).
 	AgentId *string `pulumi:"agentId"`
 	// Gets the agent's name (unique within the project/app).
 	AgentName *string `pulumi:"agentName"`
 }
 
-// AgentReferenceInput is an input type that accepts AgentReferenceArgs and AgentReferenceOutput values.
-// You can construct a concrete instance of `AgentReferenceInput` via:
+// AgentReferencePropertiesInput is an input type that accepts AgentReferencePropertiesArgs and AgentReferencePropertiesOutput values.
+// You can construct a concrete instance of `AgentReferencePropertiesInput` via:
 //
-//	AgentReferenceArgs{...}
-type AgentReferenceInput interface {
+//	AgentReferencePropertiesArgs{...}
+type AgentReferencePropertiesInput interface {
 	pulumi.Input
 
-	ToAgentReferenceOutput() AgentReferenceOutput
-	ToAgentReferenceOutputWithContext(context.Context) AgentReferenceOutput
+	ToAgentReferencePropertiesOutput() AgentReferencePropertiesOutput
+	ToAgentReferencePropertiesOutputWithContext(context.Context) AgentReferencePropertiesOutput
 }
 
 // Type modeling a reference to a version of an agent definition.
-type AgentReferenceArgs struct {
+type AgentReferencePropertiesArgs struct {
 	// Gets the agent's unique identifier within the organization (subscription).
 	AgentId pulumi.StringPtrInput `pulumi:"agentId"`
 	// Gets the agent's name (unique within the project/app).
 	AgentName pulumi.StringPtrInput `pulumi:"agentName"`
 }
 
-func (AgentReferenceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AgentReference)(nil)).Elem()
+func (AgentReferencePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentReferenceProperties)(nil)).Elem()
 }
 
-func (i AgentReferenceArgs) ToAgentReferenceOutput() AgentReferenceOutput {
-	return i.ToAgentReferenceOutputWithContext(context.Background())
+func (i AgentReferencePropertiesArgs) ToAgentReferencePropertiesOutput() AgentReferencePropertiesOutput {
+	return i.ToAgentReferencePropertiesOutputWithContext(context.Background())
 }
 
-func (i AgentReferenceArgs) ToAgentReferenceOutputWithContext(ctx context.Context) AgentReferenceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AgentReferenceOutput)
+func (i AgentReferencePropertiesArgs) ToAgentReferencePropertiesOutputWithContext(ctx context.Context) AgentReferencePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentReferencePropertiesOutput)
 }
 
-// AgentReferenceArrayInput is an input type that accepts AgentReferenceArray and AgentReferenceArrayOutput values.
-// You can construct a concrete instance of `AgentReferenceArrayInput` via:
+// AgentReferencePropertiesArrayInput is an input type that accepts AgentReferencePropertiesArray and AgentReferencePropertiesArrayOutput values.
+// You can construct a concrete instance of `AgentReferencePropertiesArrayInput` via:
 //
-//	AgentReferenceArray{ AgentReferenceArgs{...} }
-type AgentReferenceArrayInput interface {
+//	AgentReferencePropertiesArray{ AgentReferencePropertiesArgs{...} }
+type AgentReferencePropertiesArrayInput interface {
 	pulumi.Input
 
-	ToAgentReferenceArrayOutput() AgentReferenceArrayOutput
-	ToAgentReferenceArrayOutputWithContext(context.Context) AgentReferenceArrayOutput
+	ToAgentReferencePropertiesArrayOutput() AgentReferencePropertiesArrayOutput
+	ToAgentReferencePropertiesArrayOutputWithContext(context.Context) AgentReferencePropertiesArrayOutput
 }
 
-type AgentReferenceArray []AgentReferenceInput
+type AgentReferencePropertiesArray []AgentReferencePropertiesInput
 
-func (AgentReferenceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AgentReference)(nil)).Elem()
+func (AgentReferencePropertiesArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AgentReferenceProperties)(nil)).Elem()
 }
 
-func (i AgentReferenceArray) ToAgentReferenceArrayOutput() AgentReferenceArrayOutput {
-	return i.ToAgentReferenceArrayOutputWithContext(context.Background())
+func (i AgentReferencePropertiesArray) ToAgentReferencePropertiesArrayOutput() AgentReferencePropertiesArrayOutput {
+	return i.ToAgentReferencePropertiesArrayOutputWithContext(context.Background())
 }
 
-func (i AgentReferenceArray) ToAgentReferenceArrayOutputWithContext(ctx context.Context) AgentReferenceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AgentReferenceArrayOutput)
+func (i AgentReferencePropertiesArray) ToAgentReferencePropertiesArrayOutputWithContext(ctx context.Context) AgentReferencePropertiesArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentReferencePropertiesArrayOutput)
 }
 
 // Type modeling a reference to a version of an agent definition.
-type AgentReferenceOutput struct{ *pulumi.OutputState }
+type AgentReferencePropertiesOutput struct{ *pulumi.OutputState }
 
-func (AgentReferenceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AgentReference)(nil)).Elem()
+func (AgentReferencePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentReferenceProperties)(nil)).Elem()
 }
 
-func (o AgentReferenceOutput) ToAgentReferenceOutput() AgentReferenceOutput {
+func (o AgentReferencePropertiesOutput) ToAgentReferencePropertiesOutput() AgentReferencePropertiesOutput {
 	return o
 }
 
-func (o AgentReferenceOutput) ToAgentReferenceOutputWithContext(ctx context.Context) AgentReferenceOutput {
+func (o AgentReferencePropertiesOutput) ToAgentReferencePropertiesOutputWithContext(ctx context.Context) AgentReferencePropertiesOutput {
 	return o
 }
 
 // Gets the agent's unique identifier within the organization (subscription).
-func (o AgentReferenceOutput) AgentId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AgentReference) *string { return v.AgentId }).(pulumi.StringPtrOutput)
+func (o AgentReferencePropertiesOutput) AgentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentReferenceProperties) *string { return v.AgentId }).(pulumi.StringPtrOutput)
 }
 
 // Gets the agent's name (unique within the project/app).
-func (o AgentReferenceOutput) AgentName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AgentReference) *string { return v.AgentName }).(pulumi.StringPtrOutput)
+func (o AgentReferencePropertiesOutput) AgentName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentReferenceProperties) *string { return v.AgentName }).(pulumi.StringPtrOutput)
 }
 
-type AgentReferenceArrayOutput struct{ *pulumi.OutputState }
+type AgentReferencePropertiesArrayOutput struct{ *pulumi.OutputState }
 
-func (AgentReferenceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AgentReference)(nil)).Elem()
+func (AgentReferencePropertiesArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AgentReferenceProperties)(nil)).Elem()
 }
 
-func (o AgentReferenceArrayOutput) ToAgentReferenceArrayOutput() AgentReferenceArrayOutput {
+func (o AgentReferencePropertiesArrayOutput) ToAgentReferencePropertiesArrayOutput() AgentReferencePropertiesArrayOutput {
 	return o
 }
 
-func (o AgentReferenceArrayOutput) ToAgentReferenceArrayOutputWithContext(ctx context.Context) AgentReferenceArrayOutput {
+func (o AgentReferencePropertiesArrayOutput) ToAgentReferencePropertiesArrayOutputWithContext(ctx context.Context) AgentReferencePropertiesArrayOutput {
 	return o
 }
 
-func (o AgentReferenceArrayOutput) Index(i pulumi.IntInput) AgentReferenceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AgentReference {
-		return vs[0].([]AgentReference)[vs[1].(int)]
-	}).(AgentReferenceOutput)
+func (o AgentReferencePropertiesArrayOutput) Index(i pulumi.IntInput) AgentReferencePropertiesOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AgentReferenceProperties {
+		return vs[0].([]AgentReferenceProperties)[vs[1].(int)]
+	}).(AgentReferencePropertiesOutput)
+}
+
+// Type modeling a reference to a version of an agent definition.
+type AgentReferencePropertiesResponse struct {
+	// Gets the agent's unique identifier within the organization (subscription).
+	AgentId *string `pulumi:"agentId"`
+	// Gets the agent's name (unique within the project/app).
+	AgentName *string `pulumi:"agentName"`
+}
+
+// Type modeling a reference to a version of an agent definition.
+type AgentReferencePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (AgentReferencePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentReferencePropertiesResponse)(nil)).Elem()
+}
+
+func (o AgentReferencePropertiesResponseOutput) ToAgentReferencePropertiesResponseOutput() AgentReferencePropertiesResponseOutput {
+	return o
+}
+
+func (o AgentReferencePropertiesResponseOutput) ToAgentReferencePropertiesResponseOutputWithContext(ctx context.Context) AgentReferencePropertiesResponseOutput {
+	return o
+}
+
+// Gets the agent's unique identifier within the organization (subscription).
+func (o AgentReferencePropertiesResponseOutput) AgentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentReferencePropertiesResponse) *string { return v.AgentId }).(pulumi.StringPtrOutput)
+}
+
+// Gets the agent's name (unique within the project/app).
+func (o AgentReferencePropertiesResponseOutput) AgentName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentReferencePropertiesResponse) *string { return v.AgentName }).(pulumi.StringPtrOutput)
+}
+
+type AgentReferencePropertiesResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AgentReferencePropertiesResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AgentReferencePropertiesResponse)(nil)).Elem()
+}
+
+func (o AgentReferencePropertiesResponseArrayOutput) ToAgentReferencePropertiesResponseArrayOutput() AgentReferencePropertiesResponseArrayOutput {
+	return o
+}
+
+func (o AgentReferencePropertiesResponseArrayOutput) ToAgentReferencePropertiesResponseArrayOutputWithContext(ctx context.Context) AgentReferencePropertiesResponseArrayOutput {
+	return o
+}
+
+func (o AgentReferencePropertiesResponseArrayOutput) Index(i pulumi.IntInput) AgentReferencePropertiesResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AgentReferencePropertiesResponse {
+		return vs[0].([]AgentReferencePropertiesResponse)[vs[1].(int)]
+	}).(AgentReferencePropertiesResponseOutput)
 }
 
 // Agent Reference resource
-type AgentReferenceResourceResponse struct {
+type AgentReferenceResponse struct {
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// [Required] Additional attributes of the entity.
-	Properties AgentReferenceResponse `pulumi:"properties"`
+	Properties AgentReferencePropertiesResponse `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -1814,74 +1867,6 @@ type AgentReferenceResourceResponse struct {
 }
 
 // Agent Reference resource
-type AgentReferenceResourceResponseOutput struct{ *pulumi.OutputState }
-
-func (AgentReferenceResourceResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AgentReferenceResourceResponse)(nil)).Elem()
-}
-
-func (o AgentReferenceResourceResponseOutput) ToAgentReferenceResourceResponseOutput() AgentReferenceResourceResponseOutput {
-	return o
-}
-
-func (o AgentReferenceResourceResponseOutput) ToAgentReferenceResourceResponseOutputWithContext(ctx context.Context) AgentReferenceResourceResponseOutput {
-	return o
-}
-
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-func (o AgentReferenceResourceResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v AgentReferenceResourceResponse) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// The name of the resource
-func (o AgentReferenceResourceResponseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v AgentReferenceResourceResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// [Required] Additional attributes of the entity.
-func (o AgentReferenceResourceResponseOutput) Properties() AgentReferenceResponseOutput {
-	return o.ApplyT(func(v AgentReferenceResourceResponse) AgentReferenceResponse { return v.Properties }).(AgentReferenceResponseOutput)
-}
-
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o AgentReferenceResourceResponseOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v AgentReferenceResourceResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
-}
-
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-func (o AgentReferenceResourceResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v AgentReferenceResourceResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type AgentReferenceResourceResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (AgentReferenceResourceResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AgentReferenceResourceResponse)(nil)).Elem()
-}
-
-func (o AgentReferenceResourceResponseArrayOutput) ToAgentReferenceResourceResponseArrayOutput() AgentReferenceResourceResponseArrayOutput {
-	return o
-}
-
-func (o AgentReferenceResourceResponseArrayOutput) ToAgentReferenceResourceResponseArrayOutputWithContext(ctx context.Context) AgentReferenceResourceResponseArrayOutput {
-	return o
-}
-
-func (o AgentReferenceResourceResponseArrayOutput) Index(i pulumi.IntInput) AgentReferenceResourceResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AgentReferenceResourceResponse {
-		return vs[0].([]AgentReferenceResourceResponse)[vs[1].(int)]
-	}).(AgentReferenceResourceResponseOutput)
-}
-
-// Type modeling a reference to a version of an agent definition.
-type AgentReferenceResponse struct {
-	// Gets the agent's unique identifier within the organization (subscription).
-	AgentId *string `pulumi:"agentId"`
-	// Gets the agent's name (unique within the project/app).
-	AgentName *string `pulumi:"agentName"`
-}
-
-// Type modeling a reference to a version of an agent definition.
 type AgentReferenceResponseOutput struct{ *pulumi.OutputState }
 
 func (AgentReferenceResponseOutput) ElementType() reflect.Type {
@@ -1896,14 +1881,29 @@ func (o AgentReferenceResponseOutput) ToAgentReferenceResponseOutputWithContext(
 	return o
 }
 
-// Gets the agent's unique identifier within the organization (subscription).
-func (o AgentReferenceResponseOutput) AgentId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AgentReferenceResponse) *string { return v.AgentId }).(pulumi.StringPtrOutput)
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+func (o AgentReferenceResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v AgentReferenceResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Gets the agent's name (unique within the project/app).
-func (o AgentReferenceResponseOutput) AgentName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AgentReferenceResponse) *string { return v.AgentName }).(pulumi.StringPtrOutput)
+// The name of the resource
+func (o AgentReferenceResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v AgentReferenceResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// [Required] Additional attributes of the entity.
+func (o AgentReferenceResponseOutput) Properties() AgentReferencePropertiesResponseOutput {
+	return o.ApplyT(func(v AgentReferenceResponse) AgentReferencePropertiesResponse { return v.Properties }).(AgentReferencePropertiesResponseOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o AgentReferenceResponseOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v AgentReferenceResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+func (o AgentReferenceResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v AgentReferenceResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
 type AgentReferenceResponseArrayOutput struct{ *pulumi.OutputState }
@@ -1927,11 +1927,11 @@ func (o AgentReferenceResponseArrayOutput) Index(i pulumi.IntInput) AgentReferen
 }
 
 // Resource type representing an agentic application as a management construct.
-type AgenticApplication struct {
+type AgenticApplicationProperties struct {
 	// The EntraId Agentic Blueprint of the application.
 	AgentIdentityBlueprint *AssignedIdentity `pulumi:"agentIdentityBlueprint"`
 	// The list of agent definitions comprising this application, returned as references to the objects under the parent project; use this to obtain a flat list of all agent-version pairs represented by this application.
-	Agents []AgentReference `pulumi:"agents"`
+	Agents []AgentReferenceProperties `pulumi:"agents"`
 	// Gets or sets the authorization policy associated with this agentic application instance.
 	AuthorizationPolicy interface{} `pulumi:"authorizationPolicy"`
 	// The application's dedicated invocation endpoint.
@@ -1948,23 +1948,23 @@ type AgenticApplication struct {
 	TrafficRoutingPolicy *ApplicationTrafficRoutingPolicy `pulumi:"trafficRoutingPolicy"`
 }
 
-// AgenticApplicationInput is an input type that accepts AgenticApplicationArgs and AgenticApplicationOutput values.
-// You can construct a concrete instance of `AgenticApplicationInput` via:
+// AgenticApplicationPropertiesInput is an input type that accepts AgenticApplicationPropertiesArgs and AgenticApplicationPropertiesOutput values.
+// You can construct a concrete instance of `AgenticApplicationPropertiesInput` via:
 //
-//	AgenticApplicationArgs{...}
-type AgenticApplicationInput interface {
+//	AgenticApplicationPropertiesArgs{...}
+type AgenticApplicationPropertiesInput interface {
 	pulumi.Input
 
-	ToAgenticApplicationOutput() AgenticApplicationOutput
-	ToAgenticApplicationOutputWithContext(context.Context) AgenticApplicationOutput
+	ToAgenticApplicationPropertiesOutput() AgenticApplicationPropertiesOutput
+	ToAgenticApplicationPropertiesOutputWithContext(context.Context) AgenticApplicationPropertiesOutput
 }
 
 // Resource type representing an agentic application as a management construct.
-type AgenticApplicationArgs struct {
+type AgenticApplicationPropertiesArgs struct {
 	// The EntraId Agentic Blueprint of the application.
 	AgentIdentityBlueprint AssignedIdentityPtrInput `pulumi:"agentIdentityBlueprint"`
 	// The list of agent definitions comprising this application, returned as references to the objects under the parent project; use this to obtain a flat list of all agent-version pairs represented by this application.
-	Agents AgentReferenceArrayInput `pulumi:"agents"`
+	Agents AgentReferencePropertiesArrayInput `pulumi:"agents"`
 	// Gets or sets the authorization policy associated with this agentic application instance.
 	AuthorizationPolicy pulumi.Input `pulumi:"authorizationPolicy"`
 	// The application's dedicated invocation endpoint.
@@ -1981,84 +1981,84 @@ type AgenticApplicationArgs struct {
 	TrafficRoutingPolicy ApplicationTrafficRoutingPolicyPtrInput `pulumi:"trafficRoutingPolicy"`
 }
 
-func (AgenticApplicationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AgenticApplication)(nil)).Elem()
+func (AgenticApplicationPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgenticApplicationProperties)(nil)).Elem()
 }
 
-func (i AgenticApplicationArgs) ToAgenticApplicationOutput() AgenticApplicationOutput {
-	return i.ToAgenticApplicationOutputWithContext(context.Background())
+func (i AgenticApplicationPropertiesArgs) ToAgenticApplicationPropertiesOutput() AgenticApplicationPropertiesOutput {
+	return i.ToAgenticApplicationPropertiesOutputWithContext(context.Background())
 }
 
-func (i AgenticApplicationArgs) ToAgenticApplicationOutputWithContext(ctx context.Context) AgenticApplicationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AgenticApplicationOutput)
+func (i AgenticApplicationPropertiesArgs) ToAgenticApplicationPropertiesOutputWithContext(ctx context.Context) AgenticApplicationPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgenticApplicationPropertiesOutput)
 }
 
 // Resource type representing an agentic application as a management construct.
-type AgenticApplicationOutput struct{ *pulumi.OutputState }
+type AgenticApplicationPropertiesOutput struct{ *pulumi.OutputState }
 
-func (AgenticApplicationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AgenticApplication)(nil)).Elem()
+func (AgenticApplicationPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgenticApplicationProperties)(nil)).Elem()
 }
 
-func (o AgenticApplicationOutput) ToAgenticApplicationOutput() AgenticApplicationOutput {
+func (o AgenticApplicationPropertiesOutput) ToAgenticApplicationPropertiesOutput() AgenticApplicationPropertiesOutput {
 	return o
 }
 
-func (o AgenticApplicationOutput) ToAgenticApplicationOutputWithContext(ctx context.Context) AgenticApplicationOutput {
+func (o AgenticApplicationPropertiesOutput) ToAgenticApplicationPropertiesOutputWithContext(ctx context.Context) AgenticApplicationPropertiesOutput {
 	return o
 }
 
 // The EntraId Agentic Blueprint of the application.
-func (o AgenticApplicationOutput) AgentIdentityBlueprint() AssignedIdentityPtrOutput {
-	return o.ApplyT(func(v AgenticApplication) *AssignedIdentity { return v.AgentIdentityBlueprint }).(AssignedIdentityPtrOutput)
+func (o AgenticApplicationPropertiesOutput) AgentIdentityBlueprint() AssignedIdentityPtrOutput {
+	return o.ApplyT(func(v AgenticApplicationProperties) *AssignedIdentity { return v.AgentIdentityBlueprint }).(AssignedIdentityPtrOutput)
 }
 
 // The list of agent definitions comprising this application, returned as references to the objects under the parent project; use this to obtain a flat list of all agent-version pairs represented by this application.
-func (o AgenticApplicationOutput) Agents() AgentReferenceArrayOutput {
-	return o.ApplyT(func(v AgenticApplication) []AgentReference { return v.Agents }).(AgentReferenceArrayOutput)
+func (o AgenticApplicationPropertiesOutput) Agents() AgentReferencePropertiesArrayOutput {
+	return o.ApplyT(func(v AgenticApplicationProperties) []AgentReferenceProperties { return v.Agents }).(AgentReferencePropertiesArrayOutput)
 }
 
 // Gets or sets the authorization policy associated with this agentic application instance.
-func (o AgenticApplicationOutput) AuthorizationPolicy() pulumi.AnyOutput {
-	return o.ApplyT(func(v AgenticApplication) interface{} { return v.AuthorizationPolicy }).(pulumi.AnyOutput)
+func (o AgenticApplicationPropertiesOutput) AuthorizationPolicy() pulumi.AnyOutput {
+	return o.ApplyT(func(v AgenticApplicationProperties) interface{} { return v.AuthorizationPolicy }).(pulumi.AnyOutput)
 }
 
 // The application's dedicated invocation endpoint.
-func (o AgenticApplicationOutput) BaseUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AgenticApplication) *string { return v.BaseUrl }).(pulumi.StringPtrOutput)
+func (o AgenticApplicationPropertiesOutput) BaseUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgenticApplicationProperties) *string { return v.BaseUrl }).(pulumi.StringPtrOutput)
 }
 
 // The (default) agent instance identity of the application.
-func (o AgenticApplicationOutput) DefaultInstanceIdentity() AssignedIdentityPtrOutput {
-	return o.ApplyT(func(v AgenticApplication) *AssignedIdentity { return v.DefaultInstanceIdentity }).(AssignedIdentityPtrOutput)
+func (o AgenticApplicationPropertiesOutput) DefaultInstanceIdentity() AssignedIdentityPtrOutput {
+	return o.ApplyT(func(v AgenticApplicationProperties) *AssignedIdentity { return v.DefaultInstanceIdentity }).(AssignedIdentityPtrOutput)
 }
 
 // The asset description text.
-func (o AgenticApplicationOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AgenticApplication) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o AgenticApplicationPropertiesOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgenticApplicationProperties) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // The display name of the application.
-func (o AgenticApplicationOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AgenticApplication) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+func (o AgenticApplicationPropertiesOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgenticApplicationProperties) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
 // Tag dictionary. Tags can be added, removed, and updated.
-func (o AgenticApplicationOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v AgenticApplication) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+func (o AgenticApplicationPropertiesOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AgenticApplicationProperties) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // Gets or sets the traffic routing policy for the application's deployments.
-func (o AgenticApplicationOutput) TrafficRoutingPolicy() ApplicationTrafficRoutingPolicyPtrOutput {
-	return o.ApplyT(func(v AgenticApplication) *ApplicationTrafficRoutingPolicy { return v.TrafficRoutingPolicy }).(ApplicationTrafficRoutingPolicyPtrOutput)
+func (o AgenticApplicationPropertiesOutput) TrafficRoutingPolicy() ApplicationTrafficRoutingPolicyPtrOutput {
+	return o.ApplyT(func(v AgenticApplicationProperties) *ApplicationTrafficRoutingPolicy { return v.TrafficRoutingPolicy }).(ApplicationTrafficRoutingPolicyPtrOutput)
 }
 
 // Resource type representing an agentic application as a management construct.
-type AgenticApplicationResponse struct {
+type AgenticApplicationPropertiesResponse struct {
 	// The EntraId Agentic Blueprint of the application.
 	AgentIdentityBlueprint *AssignedIdentityResponse `pulumi:"agentIdentityBlueprint"`
 	// The list of agent definitions comprising this application, returned as references to the objects under the parent project; use this to obtain a flat list of all agent-version pairs represented by this application.
-	Agents []AgentReferenceResponse `pulumi:"agents"`
+	Agents []AgentReferencePropertiesResponse `pulumi:"agents"`
 	// Gets or sets the authorization policy associated with this agentic application instance.
 	AuthorizationPolicy interface{} `pulumi:"authorizationPolicy"`
 	// The application's dedicated invocation endpoint.
@@ -2080,73 +2080,77 @@ type AgenticApplicationResponse struct {
 }
 
 // Resource type representing an agentic application as a management construct.
-type AgenticApplicationResponseOutput struct{ *pulumi.OutputState }
+type AgenticApplicationPropertiesResponseOutput struct{ *pulumi.OutputState }
 
-func (AgenticApplicationResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AgenticApplicationResponse)(nil)).Elem()
+func (AgenticApplicationPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgenticApplicationPropertiesResponse)(nil)).Elem()
 }
 
-func (o AgenticApplicationResponseOutput) ToAgenticApplicationResponseOutput() AgenticApplicationResponseOutput {
+func (o AgenticApplicationPropertiesResponseOutput) ToAgenticApplicationPropertiesResponseOutput() AgenticApplicationPropertiesResponseOutput {
 	return o
 }
 
-func (o AgenticApplicationResponseOutput) ToAgenticApplicationResponseOutputWithContext(ctx context.Context) AgenticApplicationResponseOutput {
+func (o AgenticApplicationPropertiesResponseOutput) ToAgenticApplicationPropertiesResponseOutputWithContext(ctx context.Context) AgenticApplicationPropertiesResponseOutput {
 	return o
 }
 
 // The EntraId Agentic Blueprint of the application.
-func (o AgenticApplicationResponseOutput) AgentIdentityBlueprint() AssignedIdentityResponsePtrOutput {
-	return o.ApplyT(func(v AgenticApplicationResponse) *AssignedIdentityResponse { return v.AgentIdentityBlueprint }).(AssignedIdentityResponsePtrOutput)
+func (o AgenticApplicationPropertiesResponseOutput) AgentIdentityBlueprint() AssignedIdentityResponsePtrOutput {
+	return o.ApplyT(func(v AgenticApplicationPropertiesResponse) *AssignedIdentityResponse {
+		return v.AgentIdentityBlueprint
+	}).(AssignedIdentityResponsePtrOutput)
 }
 
 // The list of agent definitions comprising this application, returned as references to the objects under the parent project; use this to obtain a flat list of all agent-version pairs represented by this application.
-func (o AgenticApplicationResponseOutput) Agents() AgentReferenceResponseArrayOutput {
-	return o.ApplyT(func(v AgenticApplicationResponse) []AgentReferenceResponse { return v.Agents }).(AgentReferenceResponseArrayOutput)
+func (o AgenticApplicationPropertiesResponseOutput) Agents() AgentReferencePropertiesResponseArrayOutput {
+	return o.ApplyT(func(v AgenticApplicationPropertiesResponse) []AgentReferencePropertiesResponse { return v.Agents }).(AgentReferencePropertiesResponseArrayOutput)
 }
 
 // Gets or sets the authorization policy associated with this agentic application instance.
-func (o AgenticApplicationResponseOutput) AuthorizationPolicy() pulumi.AnyOutput {
-	return o.ApplyT(func(v AgenticApplicationResponse) interface{} { return v.AuthorizationPolicy }).(pulumi.AnyOutput)
+func (o AgenticApplicationPropertiesResponseOutput) AuthorizationPolicy() pulumi.AnyOutput {
+	return o.ApplyT(func(v AgenticApplicationPropertiesResponse) interface{} { return v.AuthorizationPolicy }).(pulumi.AnyOutput)
 }
 
 // The application's dedicated invocation endpoint.
-func (o AgenticApplicationResponseOutput) BaseUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AgenticApplicationResponse) *string { return v.BaseUrl }).(pulumi.StringPtrOutput)
+func (o AgenticApplicationPropertiesResponseOutput) BaseUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgenticApplicationPropertiesResponse) *string { return v.BaseUrl }).(pulumi.StringPtrOutput)
 }
 
 // The (default) agent instance identity of the application.
-func (o AgenticApplicationResponseOutput) DefaultInstanceIdentity() AssignedIdentityResponsePtrOutput {
-	return o.ApplyT(func(v AgenticApplicationResponse) *AssignedIdentityResponse { return v.DefaultInstanceIdentity }).(AssignedIdentityResponsePtrOutput)
+func (o AgenticApplicationPropertiesResponseOutput) DefaultInstanceIdentity() AssignedIdentityResponsePtrOutput {
+	return o.ApplyT(func(v AgenticApplicationPropertiesResponse) *AssignedIdentityResponse {
+		return v.DefaultInstanceIdentity
+	}).(AssignedIdentityResponsePtrOutput)
 }
 
 // The asset description text.
-func (o AgenticApplicationResponseOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AgenticApplicationResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o AgenticApplicationPropertiesResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgenticApplicationPropertiesResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // The display name of the application.
-func (o AgenticApplicationResponseOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AgenticApplicationResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+func (o AgenticApplicationPropertiesResponseOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgenticApplicationPropertiesResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
 // Enabledstate of the application.
-func (o AgenticApplicationResponseOutput) IsEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v AgenticApplicationResponse) bool { return v.IsEnabled }).(pulumi.BoolOutput)
+func (o AgenticApplicationPropertiesResponseOutput) IsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v AgenticApplicationPropertiesResponse) bool { return v.IsEnabled }).(pulumi.BoolOutput)
 }
 
 // Provisioning state of the application.
-func (o AgenticApplicationResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v AgenticApplicationResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+func (o AgenticApplicationPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v AgenticApplicationPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // Tag dictionary. Tags can be added, removed, and updated.
-func (o AgenticApplicationResponseOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v AgenticApplicationResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+func (o AgenticApplicationPropertiesResponseOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AgenticApplicationPropertiesResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // Gets or sets the traffic routing policy for the application's deployments.
-func (o AgenticApplicationResponseOutput) TrafficRoutingPolicy() ApplicationTrafficRoutingPolicyResponsePtrOutput {
-	return o.ApplyT(func(v AgenticApplicationResponse) *ApplicationTrafficRoutingPolicyResponse {
+func (o AgenticApplicationPropertiesResponseOutput) TrafficRoutingPolicy() ApplicationTrafficRoutingPolicyResponsePtrOutput {
+	return o.ApplyT(func(v AgenticApplicationPropertiesResponse) *ApplicationTrafficRoutingPolicyResponse {
 		return v.TrafficRoutingPolicy
 	}).(ApplicationTrafficRoutingPolicyResponsePtrOutput)
 }
@@ -19265,14 +19269,14 @@ func init() {
 	pulumi.RegisterOutputType(AgentProtocolVersionArrayOutput{})
 	pulumi.RegisterOutputType(AgentProtocolVersionResponseOutput{})
 	pulumi.RegisterOutputType(AgentProtocolVersionResponseArrayOutput{})
-	pulumi.RegisterOutputType(AgentReferenceOutput{})
-	pulumi.RegisterOutputType(AgentReferenceArrayOutput{})
-	pulumi.RegisterOutputType(AgentReferenceResourceResponseOutput{})
-	pulumi.RegisterOutputType(AgentReferenceResourceResponseArrayOutput{})
+	pulumi.RegisterOutputType(AgentReferencePropertiesOutput{})
+	pulumi.RegisterOutputType(AgentReferencePropertiesArrayOutput{})
+	pulumi.RegisterOutputType(AgentReferencePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(AgentReferencePropertiesResponseArrayOutput{})
 	pulumi.RegisterOutputType(AgentReferenceResponseOutput{})
 	pulumi.RegisterOutputType(AgentReferenceResponseArrayOutput{})
-	pulumi.RegisterOutputType(AgenticApplicationOutput{})
-	pulumi.RegisterOutputType(AgenticApplicationResponseOutput{})
+	pulumi.RegisterOutputType(AgenticApplicationPropertiesOutput{})
+	pulumi.RegisterOutputType(AgenticApplicationPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ApiKeyAuthConnectionPropertiesOutput{})
 	pulumi.RegisterOutputType(ApiKeyAuthConnectionPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ApiPropertiesOutput{})

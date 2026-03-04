@@ -31,7 +31,7 @@ type LookupSitesBySubscriptionArgs struct {
 	SiteName string `pulumi:"siteName"`
 }
 
-// Site as ARM Resource
+// Site as Extension Resource
 type LookupSitesBySubscriptionResult struct {
 	// The Azure API version of the resource.
 	AzureApiVersion string `pulumi:"azureApiVersion"`
@@ -65,7 +65,7 @@ func (LookupSitesBySubscriptionOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupSitesBySubscriptionArgs)(nil)).Elem()
 }
 
-// Site as ARM Resource
+// Site as Extension Resource
 type LookupSitesBySubscriptionResultOutput struct{ *pulumi.OutputState }
 
 func (LookupSitesBySubscriptionResultOutput) ElementType() reflect.Type {

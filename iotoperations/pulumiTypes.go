@@ -9070,6 +9070,65 @@ func (o AkriConnectorsTagResponsePtrOutput) TagDigestType() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// AkriService properties.
+type AkriServicePropertiesResponse struct {
+	// The status of the last operation.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The status for the service.
+	Status AkriServiceStatusResponse `pulumi:"status"`
+}
+
+// AkriService properties.
+type AkriServicePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (AkriServicePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriServicePropertiesResponse)(nil)).Elem()
+}
+
+func (o AkriServicePropertiesResponseOutput) ToAkriServicePropertiesResponseOutput() AkriServicePropertiesResponseOutput {
+	return o
+}
+
+func (o AkriServicePropertiesResponseOutput) ToAkriServicePropertiesResponseOutputWithContext(ctx context.Context) AkriServicePropertiesResponseOutput {
+	return o
+}
+
+// The status of the last operation.
+func (o AkriServicePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriServicePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The status for the service.
+func (o AkriServicePropertiesResponseOutput) Status() AkriServiceStatusResponseOutput {
+	return o.ApplyT(func(v AkriServicePropertiesResponse) AkriServiceStatusResponse { return v.Status }).(AkriServiceStatusResponseOutput)
+}
+
+// AkriService status.
+type AkriServiceStatusResponse struct {
+	// The health state of the AkriService.
+	HealthState ResourceHealthStatusResponse `pulumi:"healthState"`
+}
+
+// AkriService status.
+type AkriServiceStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (AkriServiceStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriServiceStatusResponse)(nil)).Elem()
+}
+
+func (o AkriServiceStatusResponseOutput) ToAkriServiceStatusResponseOutput() AkriServiceStatusResponseOutput {
+	return o
+}
+
+func (o AkriServiceStatusResponseOutput) ToAkriServiceStatusResponseOutputWithContext(ctx context.Context) AkriServiceStatusResponseOutput {
+	return o
+}
+
+// The health state of the AkriService.
+func (o AkriServiceStatusResponseOutput) HealthState() ResourceHealthStatusResponseOutput {
+	return o.ApplyT(func(v AkriServiceStatusResponse) ResourceHealthStatusResponse { return v.HealthState }).(ResourceHealthStatusResponseOutput)
+}
+
 // Broker AuthorizationConfig properties
 type AuthorizationConfig struct {
 	// Enable caching of the authorization rules.
@@ -31097,6 +31156,60 @@ func (o RegistryEndpointUserAssignedManagedIdentitySettingsResponseOutput) Tenan
 	return o.ApplyT(func(v RegistryEndpointUserAssignedManagedIdentitySettingsResponse) string { return v.TenantId }).(pulumi.StringOutput)
 }
 
+// Represents the health state of a resource.
+type ResourceHealthStatusResponse struct {
+	// The timestamp (RFC3339) when the health status last changed.
+	LastTransitionTime string `pulumi:"lastTransitionTime"`
+	// The timestamp (RFC3339) when the health status was last updated, even if the status did not change.
+	LastUpdateTime string `pulumi:"lastUpdateTime"`
+	// A human-readable message describing the last transition.
+	Message string `pulumi:"message"`
+	// Unique, CamelCase reason code describing the cause of the last health state transition.
+	ReasonCode string `pulumi:"reasonCode"`
+	// The high-level health status of the resource.
+	Status string `pulumi:"status"`
+}
+
+// Represents the health state of a resource.
+type ResourceHealthStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (ResourceHealthStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceHealthStatusResponse)(nil)).Elem()
+}
+
+func (o ResourceHealthStatusResponseOutput) ToResourceHealthStatusResponseOutput() ResourceHealthStatusResponseOutput {
+	return o
+}
+
+func (o ResourceHealthStatusResponseOutput) ToResourceHealthStatusResponseOutputWithContext(ctx context.Context) ResourceHealthStatusResponseOutput {
+	return o
+}
+
+// The timestamp (RFC3339) when the health status last changed.
+func (o ResourceHealthStatusResponseOutput) LastTransitionTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceHealthStatusResponse) string { return v.LastTransitionTime }).(pulumi.StringOutput)
+}
+
+// The timestamp (RFC3339) when the health status was last updated, even if the status did not change.
+func (o ResourceHealthStatusResponseOutput) LastUpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceHealthStatusResponse) string { return v.LastUpdateTime }).(pulumi.StringOutput)
+}
+
+// A human-readable message describing the last transition.
+func (o ResourceHealthStatusResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceHealthStatusResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// Unique, CamelCase reason code describing the cause of the last health state transition.
+func (o ResourceHealthStatusResponseOutput) ReasonCode() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceHealthStatusResponse) string { return v.ReasonCode }).(pulumi.StringOutput)
+}
+
+// The high-level health status of the resource.
+func (o ResourceHealthStatusResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceHealthStatusResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
 // Subject Alternative Names (SANs) for certificate.
 type SanForCert struct {
 	// DNS SANs.
@@ -35062,6 +35175,8 @@ func init() {
 	pulumi.RegisterOutputType(AkriConnectorsTagPtrOutput{})
 	pulumi.RegisterOutputType(AkriConnectorsTagResponseOutput{})
 	pulumi.RegisterOutputType(AkriConnectorsTagResponsePtrOutput{})
+	pulumi.RegisterOutputType(AkriServicePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(AkriServiceStatusResponseOutput{})
 	pulumi.RegisterOutputType(AuthorizationConfigOutput{})
 	pulumi.RegisterOutputType(AuthorizationConfigPtrOutput{})
 	pulumi.RegisterOutputType(AuthorizationConfigResponseOutput{})
@@ -35378,6 +35493,7 @@ func init() {
 	pulumi.RegisterOutputType(RegistryEndpointUserAssignedManagedIdentitySettingsOutput{})
 	pulumi.RegisterOutputType(RegistryEndpointUserAssignedManagedIdentitySettingsPtrOutput{})
 	pulumi.RegisterOutputType(RegistryEndpointUserAssignedManagedIdentitySettingsResponseOutput{})
+	pulumi.RegisterOutputType(ResourceHealthStatusResponseOutput{})
 	pulumi.RegisterOutputType(SanForCertOutput{})
 	pulumi.RegisterOutputType(SanForCertPtrOutput{})
 	pulumi.RegisterOutputType(SanForCertResponseOutput{})

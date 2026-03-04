@@ -97,6 +97,12 @@ func NewHciEdgeDevice(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:azurestackhci/v20260201:HciEdgeDevice"),
 		},
 		{
+			Type: pulumi.String("azure-native:azurestackhci/v20260215preview:HciEdgeDevice"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20260301preview:HciEdgeDevice"),
+		},
+		{
 			Type: pulumi.String("azure-native:azurestackhci:EdgeDevice"),
 		},
 	})

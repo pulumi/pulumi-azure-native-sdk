@@ -26,15 +26,15 @@ type AzureTrafficCollector struct {
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Resource location.
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Resource name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning state of the application rule collection resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// Metadata pertaining to creation and last modification of the resource.
-	SystemData TrackedResourceResponseSystemDataOutput `pulumi:"systemData"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The virtualHub to which the Azure Traffic Collector belongs.
 	VirtualHub ResourceReferenceResponsePtrOutput `pulumi:"virtualHub"`
@@ -102,7 +102,7 @@ type azureTrafficCollectorArgs struct {
 	AzureTrafficCollectorName *string `pulumi:"azureTrafficCollectorName"`
 	// Resource location.
 	Location *string `pulumi:"location"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
@@ -114,7 +114,7 @@ type AzureTrafficCollectorArgs struct {
 	AzureTrafficCollectorName pulumi.StringPtrInput
 	// Resource location.
 	Location pulumi.StringPtrInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
@@ -177,7 +177,7 @@ func (o AzureTrafficCollectorOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureTrafficCollector) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o AzureTrafficCollectorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureTrafficCollector) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -187,9 +187,9 @@ func (o AzureTrafficCollectorOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureTrafficCollector) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
-func (o AzureTrafficCollectorOutput) SystemData() TrackedResourceResponseSystemDataOutput {
-	return o.ApplyT(func(v *AzureTrafficCollector) TrackedResourceResponseSystemDataOutput { return v.SystemData }).(TrackedResourceResponseSystemDataOutput)
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o AzureTrafficCollectorOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *AzureTrafficCollector) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.
@@ -197,7 +197,7 @@ func (o AzureTrafficCollectorOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AzureTrafficCollector) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o AzureTrafficCollectorOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureTrafficCollector) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

@@ -508,7 +508,7 @@ func (in *authModePtr) ToAuthModePtrOutputWithContext(ctx context.Context) AuthM
 	return pulumi.ToOutputWithContext(ctx, in).(AuthModePtrOutput)
 }
 
-// Defines if image needs to be rebuilt based on base image changes.
+// AutoRebuild setting for the derived image
 type AutoRebuildSetting string
 
 const (
@@ -682,7 +682,9 @@ const (
 	BatchDeploymentConfigurationTypePipelineComponent = BatchDeploymentConfigurationType("PipelineComponent")
 )
 
-// Logging level for batch inference operation.
+// Log verbosity for batch inferencing.
+// Increasing verbosity order for logging is : Warning, Info and Debug.
+// The default value is Info.
 type BatchLoggingLevel string
 
 const (
@@ -850,7 +852,7 @@ func (in *batchLoggingLevelPtr) ToBatchLoggingLevelPtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(BatchLoggingLevelPtrOutput)
 }
 
-// Indicates how the output will be organized.
+// Enum to determine how batch inferencing will handle output
 type BatchOutputAction string
 
 const (
@@ -2098,7 +2100,7 @@ func (in *classificationModelsPtr) ToClassificationModelsPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(ClassificationModelsPtrOutput)
 }
 
-// Primary metric to optimize for this task.
+// Primary metrics for classification multilabel tasks.
 type ClassificationMultilabelPrimaryMetrics string
 
 const (
@@ -2282,7 +2284,7 @@ func (in *classificationMultilabelPrimaryMetricsPtr) ToClassificationMultilabelP
 	return pulumi.ToOutputWithContext(ctx, in).(ClassificationMultilabelPrimaryMetricsPtrOutput)
 }
 
-// Primary metric for Text-Classification task.
+// Primary metrics for classification tasks.
 type ClassificationPrimaryMetrics string
 
 const (
@@ -3507,129 +3509,151 @@ func (in *computeWeekDayPtr) ToComputeWeekDayPtrOutputWithContext(ctx context.Co
 type ConnectionAuthType string
 
 const (
-	ConnectionAuthTypePAT              = ConnectionAuthType("PAT")
-	ConnectionAuthTypeManagedIdentity  = ConnectionAuthType("ManagedIdentity")
-	ConnectionAuthTypeUsernamePassword = ConnectionAuthType("UsernamePassword")
-	ConnectionAuthTypeNone             = ConnectionAuthType("None")
-	ConnectionAuthTypeSAS              = ConnectionAuthType("SAS")
-	ConnectionAuthTypeAccountKey       = ConnectionAuthType("AccountKey")
-	ConnectionAuthTypeServicePrincipal = ConnectionAuthType("ServicePrincipal")
-	ConnectionAuthTypeAccessKey        = ConnectionAuthType("AccessKey")
-	ConnectionAuthTypeApiKey           = ConnectionAuthType("ApiKey")
-	ConnectionAuthTypeCustomKeys       = ConnectionAuthType("CustomKeys")
-	ConnectionAuthTypeOAuth2           = ConnectionAuthType("OAuth2")
-	ConnectionAuthTypeAAD              = ConnectionAuthType("AAD")
+	ConnectionAuthTypePAT                    = ConnectionAuthType("PAT")
+	ConnectionAuthTypeManagedIdentity        = ConnectionAuthType("ManagedIdentity")
+	ConnectionAuthTypeUsernamePassword       = ConnectionAuthType("UsernamePassword")
+	ConnectionAuthTypeNone                   = ConnectionAuthType("None")
+	ConnectionAuthTypeSAS                    = ConnectionAuthType("SAS")
+	ConnectionAuthTypeAccountKey             = ConnectionAuthType("AccountKey")
+	ConnectionAuthTypeServicePrincipal       = ConnectionAuthType("ServicePrincipal")
+	ConnectionAuthTypeAccessKey              = ConnectionAuthType("AccessKey")
+	ConnectionAuthTypeApiKey                 = ConnectionAuthType("ApiKey")
+	ConnectionAuthTypeCustomKeys             = ConnectionAuthType("CustomKeys")
+	ConnectionAuthTypeOAuth2                 = ConnectionAuthType("OAuth2")
+	ConnectionAuthTypeAAD                    = ConnectionAuthType("AAD")
+	ConnectionAuthTypeDelegatedSAS           = ConnectionAuthType("DelegatedSAS")
+	ConnectionAuthTypeProjectManagedIdentity = ConnectionAuthType("ProjectManagedIdentity")
+	ConnectionAuthTypeAccountManagedIdentity = ConnectionAuthType("AccountManagedIdentity")
+	ConnectionAuthTypeUserEntraToken         = ConnectionAuthType("UserEntraToken")
+	ConnectionAuthTypeAgentUserImpersonation = ConnectionAuthType("AgentUserImpersonation")
+	ConnectionAuthTypeAgenticIdentityToken   = ConnectionAuthType("AgenticIdentityToken")
+	ConnectionAuthTypeAgenticUser            = ConnectionAuthType("AgenticUser")
 )
 
 // Category of the connection
 type ConnectionCategory string
 
 const (
-	ConnectionCategoryPythonFeed               = ConnectionCategory("PythonFeed")
-	ConnectionCategoryContainerRegistry        = ConnectionCategory("ContainerRegistry")
-	ConnectionCategoryGit                      = ConnectionCategory("Git")
-	ConnectionCategoryS3                       = ConnectionCategory("S3")
-	ConnectionCategorySnowflake                = ConnectionCategory("Snowflake")
-	ConnectionCategoryAzureSqlDb               = ConnectionCategory("AzureSqlDb")
-	ConnectionCategoryAzureSynapseAnalytics    = ConnectionCategory("AzureSynapseAnalytics")
-	ConnectionCategoryAzureMySqlDb             = ConnectionCategory("AzureMySqlDb")
-	ConnectionCategoryAzurePostgresDb          = ConnectionCategory("AzurePostgresDb")
-	ConnectionCategoryADLSGen2                 = ConnectionCategory("ADLSGen2")
-	ConnectionCategoryRedis                    = ConnectionCategory("Redis")
-	ConnectionCategoryApiKey                   = ConnectionCategory("ApiKey")
-	ConnectionCategoryAzureOpenAI              = ConnectionCategory("AzureOpenAI")
-	ConnectionCategoryAIServices               = ConnectionCategory("AIServices")
-	ConnectionCategoryCognitiveSearch          = ConnectionCategory("CognitiveSearch")
-	ConnectionCategoryCognitiveService         = ConnectionCategory("CognitiveService")
-	ConnectionCategoryCustomKeys               = ConnectionCategory("CustomKeys")
-	ConnectionCategoryAzureBlob                = ConnectionCategory("AzureBlob")
-	ConnectionCategoryAzureOneLake             = ConnectionCategory("AzureOneLake")
-	ConnectionCategoryCosmosDb                 = ConnectionCategory("CosmosDb")
-	ConnectionCategoryCosmosDbMongoDbApi       = ConnectionCategory("CosmosDbMongoDbApi")
-	ConnectionCategoryAzureDataExplorer        = ConnectionCategory("AzureDataExplorer")
-	ConnectionCategoryAzureMariaDb             = ConnectionCategory("AzureMariaDb")
-	ConnectionCategoryAzureDatabricksDeltaLake = ConnectionCategory("AzureDatabricksDeltaLake")
-	ConnectionCategoryAzureSqlMi               = ConnectionCategory("AzureSqlMi")
-	ConnectionCategoryAzureTableStorage        = ConnectionCategory("AzureTableStorage")
-	ConnectionCategoryAmazonRdsForOracle       = ConnectionCategory("AmazonRdsForOracle")
-	ConnectionCategoryAmazonRdsForSqlServer    = ConnectionCategory("AmazonRdsForSqlServer")
-	ConnectionCategoryAmazonRedshift           = ConnectionCategory("AmazonRedshift")
-	ConnectionCategoryDb2                      = ConnectionCategory("Db2")
-	ConnectionCategoryDrill                    = ConnectionCategory("Drill")
-	ConnectionCategoryGoogleBigQuery           = ConnectionCategory("GoogleBigQuery")
-	ConnectionCategoryGreenplum                = ConnectionCategory("Greenplum")
-	ConnectionCategoryHbase                    = ConnectionCategory("Hbase")
-	ConnectionCategoryHive                     = ConnectionCategory("Hive")
-	ConnectionCategoryImpala                   = ConnectionCategory("Impala")
-	ConnectionCategoryInformix                 = ConnectionCategory("Informix")
-	ConnectionCategoryMariaDb                  = ConnectionCategory("MariaDb")
-	ConnectionCategoryMicrosoftAccess          = ConnectionCategory("MicrosoftAccess")
-	ConnectionCategoryMySql                    = ConnectionCategory("MySql")
-	ConnectionCategoryNetezza                  = ConnectionCategory("Netezza")
-	ConnectionCategoryOracle                   = ConnectionCategory("Oracle")
-	ConnectionCategoryPhoenix                  = ConnectionCategory("Phoenix")
-	ConnectionCategoryPostgreSql               = ConnectionCategory("PostgreSql")
-	ConnectionCategoryPresto                   = ConnectionCategory("Presto")
-	ConnectionCategorySapOpenHub               = ConnectionCategory("SapOpenHub")
-	ConnectionCategorySapBw                    = ConnectionCategory("SapBw")
-	ConnectionCategorySapHana                  = ConnectionCategory("SapHana")
-	ConnectionCategorySapTable                 = ConnectionCategory("SapTable")
-	ConnectionCategorySpark                    = ConnectionCategory("Spark")
-	ConnectionCategorySqlServer                = ConnectionCategory("SqlServer")
-	ConnectionCategorySybase                   = ConnectionCategory("Sybase")
-	ConnectionCategoryTeradata                 = ConnectionCategory("Teradata")
-	ConnectionCategoryVertica                  = ConnectionCategory("Vertica")
-	ConnectionCategoryPinecone                 = ConnectionCategory("Pinecone")
-	ConnectionCategoryCassandra                = ConnectionCategory("Cassandra")
-	ConnectionCategoryCouchbase                = ConnectionCategory("Couchbase")
-	ConnectionCategoryMongoDbV2                = ConnectionCategory("MongoDbV2")
-	ConnectionCategoryMongoDbAtlas             = ConnectionCategory("MongoDbAtlas")
-	ConnectionCategoryAmazonS3Compatible       = ConnectionCategory("AmazonS3Compatible")
-	ConnectionCategoryFileServer               = ConnectionCategory("FileServer")
-	ConnectionCategoryFtpServer                = ConnectionCategory("FtpServer")
-	ConnectionCategoryGoogleCloudStorage       = ConnectionCategory("GoogleCloudStorage")
-	ConnectionCategoryHdfs                     = ConnectionCategory("Hdfs")
-	ConnectionCategoryOracleCloudStorage       = ConnectionCategory("OracleCloudStorage")
-	ConnectionCategorySftp                     = ConnectionCategory("Sftp")
-	ConnectionCategoryGenericHttp              = ConnectionCategory("GenericHttp")
-	ConnectionCategoryODataRest                = ConnectionCategory("ODataRest")
-	ConnectionCategoryOdbc                     = ConnectionCategory("Odbc")
-	ConnectionCategoryGenericRest              = ConnectionCategory("GenericRest")
-	ConnectionCategoryAmazonMws                = ConnectionCategory("AmazonMws")
-	ConnectionCategoryConcur                   = ConnectionCategory("Concur")
-	ConnectionCategoryDynamics                 = ConnectionCategory("Dynamics")
-	ConnectionCategoryDynamicsAx               = ConnectionCategory("DynamicsAx")
-	ConnectionCategoryDynamicsCrm              = ConnectionCategory("DynamicsCrm")
-	ConnectionCategoryGoogleAdWords            = ConnectionCategory("GoogleAdWords")
-	ConnectionCategoryHubspot                  = ConnectionCategory("Hubspot")
-	ConnectionCategoryJira                     = ConnectionCategory("Jira")
-	ConnectionCategoryMagento                  = ConnectionCategory("Magento")
-	ConnectionCategoryMarketo                  = ConnectionCategory("Marketo")
-	ConnectionCategoryOffice365                = ConnectionCategory("Office365")
-	ConnectionCategoryEloqua                   = ConnectionCategory("Eloqua")
-	ConnectionCategoryResponsys                = ConnectionCategory("Responsys")
-	ConnectionCategoryOracleServiceCloud       = ConnectionCategory("OracleServiceCloud")
-	ConnectionCategoryPayPal                   = ConnectionCategory("PayPal")
-	ConnectionCategoryQuickBooks               = ConnectionCategory("QuickBooks")
-	ConnectionCategorySalesforce               = ConnectionCategory("Salesforce")
-	ConnectionCategorySalesforceServiceCloud   = ConnectionCategory("SalesforceServiceCloud")
-	ConnectionCategorySalesforceMarketingCloud = ConnectionCategory("SalesforceMarketingCloud")
-	ConnectionCategorySapCloudForCustomer      = ConnectionCategory("SapCloudForCustomer")
-	ConnectionCategorySapEcc                   = ConnectionCategory("SapEcc")
-	ConnectionCategoryServiceNow               = ConnectionCategory("ServiceNow")
-	ConnectionCategorySharePointOnlineList     = ConnectionCategory("SharePointOnlineList")
-	ConnectionCategoryShopify                  = ConnectionCategory("Shopify")
-	ConnectionCategorySquare                   = ConnectionCategory("Square")
-	ConnectionCategoryWebTable                 = ConnectionCategory("WebTable")
-	ConnectionCategoryXero                     = ConnectionCategory("Xero")
-	ConnectionCategoryZoho                     = ConnectionCategory("Zoho")
-	ConnectionCategoryGenericContainerRegistry = ConnectionCategory("GenericContainerRegistry")
-	ConnectionCategoryElasticsearch            = ConnectionCategory("Elasticsearch")
-	ConnectionCategoryOpenAI                   = ConnectionCategory("OpenAI")
-	ConnectionCategorySerp                     = ConnectionCategory("Serp")
-	ConnectionCategoryBingLLMSearch            = ConnectionCategory("BingLLMSearch")
-	ConnectionCategoryServerless               = ConnectionCategory("Serverless")
-	ConnectionCategoryManagedOnlineEndpoint    = ConnectionCategory("ManagedOnlineEndpoint")
+	ConnectionCategoryPythonFeed                   = ConnectionCategory("PythonFeed")
+	ConnectionCategoryContainerRegistry            = ConnectionCategory("ContainerRegistry")
+	ConnectionCategoryGit                          = ConnectionCategory("Git")
+	ConnectionCategoryS3                           = ConnectionCategory("S3")
+	ConnectionCategorySnowflake                    = ConnectionCategory("Snowflake")
+	ConnectionCategoryAzureKeyVault                = ConnectionCategory("AzureKeyVault")
+	ConnectionCategoryAzureSqlDb                   = ConnectionCategory("AzureSqlDb")
+	ConnectionCategoryAzureSynapseAnalytics        = ConnectionCategory("AzureSynapseAnalytics")
+	ConnectionCategoryAzureMySqlDb                 = ConnectionCategory("AzureMySqlDb")
+	ConnectionCategoryAzurePostgresDb              = ConnectionCategory("AzurePostgresDb")
+	ConnectionCategoryADLSGen2                     = ConnectionCategory("ADLSGen2")
+	ConnectionCategoryAzureContainerAppEnvironment = ConnectionCategory("AzureContainerAppEnvironment")
+	ConnectionCategoryRedis                        = ConnectionCategory("Redis")
+	ConnectionCategoryApiKey                       = ConnectionCategory("ApiKey")
+	ConnectionCategoryAzureOpenAI                  = ConnectionCategory("AzureOpenAI")
+	ConnectionCategoryAIServices                   = ConnectionCategory("AIServices")
+	ConnectionCategoryCognitiveSearch              = ConnectionCategory("CognitiveSearch")
+	ConnectionCategoryCognitiveService             = ConnectionCategory("CognitiveService")
+	ConnectionCategoryCustomKeys                   = ConnectionCategory("CustomKeys")
+	ConnectionCategoryAzureBlob                    = ConnectionCategory("AzureBlob")
+	ConnectionCategoryAzureStorageAccount          = ConnectionCategory("AzureStorageAccount")
+	ConnectionCategoryAzureOneLake                 = ConnectionCategory("AzureOneLake")
+	ConnectionCategoryCosmosDb                     = ConnectionCategory("CosmosDb")
+	ConnectionCategoryCosmosDbMongoDbApi           = ConnectionCategory("CosmosDbMongoDbApi")
+	ConnectionCategoryAzureDataExplorer            = ConnectionCategory("AzureDataExplorer")
+	ConnectionCategoryAzureMariaDb                 = ConnectionCategory("AzureMariaDb")
+	ConnectionCategoryAzureDatabricksDeltaLake     = ConnectionCategory("AzureDatabricksDeltaLake")
+	ConnectionCategoryAzureSqlMi                   = ConnectionCategory("AzureSqlMi")
+	ConnectionCategoryAzureTableStorage            = ConnectionCategory("AzureTableStorage")
+	ConnectionCategoryAmazonRdsForOracle           = ConnectionCategory("AmazonRdsForOracle")
+	ConnectionCategoryAmazonRdsForSqlServer        = ConnectionCategory("AmazonRdsForSqlServer")
+	ConnectionCategoryAmazonRedshift               = ConnectionCategory("AmazonRedshift")
+	ConnectionCategoryDb2                          = ConnectionCategory("Db2")
+	ConnectionCategoryDrill                        = ConnectionCategory("Drill")
+	ConnectionCategoryGoogleBigQuery               = ConnectionCategory("GoogleBigQuery")
+	ConnectionCategoryGreenplum                    = ConnectionCategory("Greenplum")
+	ConnectionCategoryHbase                        = ConnectionCategory("Hbase")
+	ConnectionCategoryHive                         = ConnectionCategory("Hive")
+	ConnectionCategoryImpala                       = ConnectionCategory("Impala")
+	ConnectionCategoryInformix                     = ConnectionCategory("Informix")
+	ConnectionCategoryMariaDb                      = ConnectionCategory("MariaDb")
+	ConnectionCategoryMicrosoftAccess              = ConnectionCategory("MicrosoftAccess")
+	ConnectionCategoryMySql                        = ConnectionCategory("MySql")
+	ConnectionCategoryNetezza                      = ConnectionCategory("Netezza")
+	ConnectionCategoryOracle                       = ConnectionCategory("Oracle")
+	ConnectionCategoryPhoenix                      = ConnectionCategory("Phoenix")
+	ConnectionCategoryPostgreSql                   = ConnectionCategory("PostgreSql")
+	ConnectionCategoryPresto                       = ConnectionCategory("Presto")
+	ConnectionCategorySapOpenHub                   = ConnectionCategory("SapOpenHub")
+	ConnectionCategorySapBw                        = ConnectionCategory("SapBw")
+	ConnectionCategorySapHana                      = ConnectionCategory("SapHana")
+	ConnectionCategorySapTable                     = ConnectionCategory("SapTable")
+	ConnectionCategorySpark                        = ConnectionCategory("Spark")
+	ConnectionCategorySqlServer                    = ConnectionCategory("SqlServer")
+	ConnectionCategorySybase                       = ConnectionCategory("Sybase")
+	ConnectionCategoryTeradata                     = ConnectionCategory("Teradata")
+	ConnectionCategoryVertica                      = ConnectionCategory("Vertica")
+	ConnectionCategoryPinecone                     = ConnectionCategory("Pinecone")
+	ConnectionCategoryDatabricks                   = ConnectionCategory("Databricks")
+	ConnectionCategoryCassandra                    = ConnectionCategory("Cassandra")
+	ConnectionCategoryCouchbase                    = ConnectionCategory("Couchbase")
+	ConnectionCategoryMongoDbV2                    = ConnectionCategory("MongoDbV2")
+	ConnectionCategoryMongoDbAtlas                 = ConnectionCategory("MongoDbAtlas")
+	ConnectionCategoryAmazonS3Compatible           = ConnectionCategory("AmazonS3Compatible")
+	ConnectionCategoryFileServer                   = ConnectionCategory("FileServer")
+	ConnectionCategoryFtpServer                    = ConnectionCategory("FtpServer")
+	ConnectionCategoryGoogleCloudStorage           = ConnectionCategory("GoogleCloudStorage")
+	ConnectionCategoryHdfs                         = ConnectionCategory("Hdfs")
+	ConnectionCategoryOracleCloudStorage           = ConnectionCategory("OracleCloudStorage")
+	ConnectionCategorySftp                         = ConnectionCategory("Sftp")
+	ConnectionCategoryGenericHttp                  = ConnectionCategory("GenericHttp")
+	ConnectionCategoryODataRest                    = ConnectionCategory("ODataRest")
+	ConnectionCategoryOdbc                         = ConnectionCategory("Odbc")
+	ConnectionCategoryGenericRest                  = ConnectionCategory("GenericRest")
+	ConnectionCategoryRemoteTool                   = ConnectionCategory("RemoteTool")
+	ConnectionCategoryAmazonMws                    = ConnectionCategory("AmazonMws")
+	ConnectionCategoryConcur                       = ConnectionCategory("Concur")
+	ConnectionCategoryDynamics                     = ConnectionCategory("Dynamics")
+	ConnectionCategoryDynamicsAx                   = ConnectionCategory("DynamicsAx")
+	ConnectionCategoryDynamicsCrm                  = ConnectionCategory("DynamicsCrm")
+	ConnectionCategoryGoogleAdWords                = ConnectionCategory("GoogleAdWords")
+	ConnectionCategoryHubspot                      = ConnectionCategory("Hubspot")
+	ConnectionCategoryJira                         = ConnectionCategory("Jira")
+	ConnectionCategoryMagento                      = ConnectionCategory("Magento")
+	ConnectionCategoryMarketo                      = ConnectionCategory("Marketo")
+	ConnectionCategoryOffice365                    = ConnectionCategory("Office365")
+	ConnectionCategoryEloqua                       = ConnectionCategory("Eloqua")
+	ConnectionCategoryResponsys                    = ConnectionCategory("Responsys")
+	ConnectionCategoryOracleServiceCloud           = ConnectionCategory("OracleServiceCloud")
+	ConnectionCategoryPayPal                       = ConnectionCategory("PayPal")
+	ConnectionCategoryQuickBooks                   = ConnectionCategory("QuickBooks")
+	ConnectionCategorySalesforce                   = ConnectionCategory("Salesforce")
+	ConnectionCategorySalesforceServiceCloud       = ConnectionCategory("SalesforceServiceCloud")
+	ConnectionCategorySalesforceMarketingCloud     = ConnectionCategory("SalesforceMarketingCloud")
+	ConnectionCategorySapCloudForCustomer          = ConnectionCategory("SapCloudForCustomer")
+	ConnectionCategorySapEcc                       = ConnectionCategory("SapEcc")
+	ConnectionCategoryServiceNow                   = ConnectionCategory("ServiceNow")
+	ConnectionCategorySharePointOnlineList         = ConnectionCategory("SharePointOnlineList")
+	ConnectionCategoryShopify                      = ConnectionCategory("Shopify")
+	ConnectionCategorySquare                       = ConnectionCategory("Square")
+	ConnectionCategoryWebTable                     = ConnectionCategory("WebTable")
+	ConnectionCategoryXero                         = ConnectionCategory("Xero")
+	ConnectionCategoryZoho                         = ConnectionCategory("Zoho")
+	ConnectionCategoryGenericContainerRegistry     = ConnectionCategory("GenericContainerRegistry")
+	ConnectionCategoryElasticsearch                = ConnectionCategory("Elasticsearch")
+	ConnectionCategoryAppInsights                  = ConnectionCategory("AppInsights")
+	ConnectionCategoryAppConfig                    = ConnectionCategory("AppConfig")
+	ConnectionCategoryOpenAI                       = ConnectionCategory("OpenAI")
+	ConnectionCategorySerp                         = ConnectionCategory("Serp")
+	ConnectionCategoryBingLLMSearch                = ConnectionCategory("BingLLMSearch")
+	ConnectionCategoryServerless                   = ConnectionCategory("Serverless")
+	ConnectionCategoryManagedOnlineEndpoint        = ConnectionCategory("ManagedOnlineEndpoint")
+	ConnectionCategoryApiManagement                = ConnectionCategory("ApiManagement")
+	ConnectionCategoryModelGateway                 = ConnectionCategory("ModelGateway")
+	ConnectionCategoryGroundingWithBingSearch      = ConnectionCategory("GroundingWithBingSearch")
+	ConnectionCategoryGroundingWithCustomSearch    = ConnectionCategory("GroundingWithCustomSearch")
+	ConnectionCategorySharepoint                   = ConnectionCategory("Sharepoint")
+	ConnectionCategoryMicrosoftFabric              = ConnectionCategory("MicrosoftFabric")
+	ConnectionCategoryPowerPlatformEnvironment     = ConnectionCategory("PowerPlatformEnvironment")
+	ConnectionCategoryRemoteA2A                    = ConnectionCategory("RemoteA2A")
 )
 
 func (ConnectionCategory) ElementType() reflect.Type {
@@ -3759,11 +3783,13 @@ func (o ConnectionCategoryPtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 //	ConnectionCategoryGit
 //	ConnectionCategoryS3
 //	ConnectionCategorySnowflake
+//	ConnectionCategoryAzureKeyVault
 //	ConnectionCategoryAzureSqlDb
 //	ConnectionCategoryAzureSynapseAnalytics
 //	ConnectionCategoryAzureMySqlDb
 //	ConnectionCategoryAzurePostgresDb
 //	ConnectionCategoryADLSGen2
+//	ConnectionCategoryAzureContainerAppEnvironment
 //	ConnectionCategoryRedis
 //	ConnectionCategoryApiKey
 //	ConnectionCategoryAzureOpenAI
@@ -3772,6 +3798,7 @@ func (o ConnectionCategoryPtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 //	ConnectionCategoryCognitiveService
 //	ConnectionCategoryCustomKeys
 //	ConnectionCategoryAzureBlob
+//	ConnectionCategoryAzureStorageAccount
 //	ConnectionCategoryAzureOneLake
 //	ConnectionCategoryCosmosDb
 //	ConnectionCategoryCosmosDbMongoDbApi
@@ -3809,6 +3836,7 @@ func (o ConnectionCategoryPtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 //	ConnectionCategoryTeradata
 //	ConnectionCategoryVertica
 //	ConnectionCategoryPinecone
+//	ConnectionCategoryDatabricks
 //	ConnectionCategoryCassandra
 //	ConnectionCategoryCouchbase
 //	ConnectionCategoryMongoDbV2
@@ -3824,6 +3852,7 @@ func (o ConnectionCategoryPtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 //	ConnectionCategoryODataRest
 //	ConnectionCategoryOdbc
 //	ConnectionCategoryGenericRest
+//	ConnectionCategoryRemoteTool
 //	ConnectionCategoryAmazonMws
 //	ConnectionCategoryConcur
 //	ConnectionCategoryDynamics
@@ -3854,11 +3883,21 @@ func (o ConnectionCategoryPtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 //	ConnectionCategoryZoho
 //	ConnectionCategoryGenericContainerRegistry
 //	ConnectionCategoryElasticsearch
+//	ConnectionCategoryAppInsights
+//	ConnectionCategoryAppConfig
 //	ConnectionCategoryOpenAI
 //	ConnectionCategorySerp
 //	ConnectionCategoryBingLLMSearch
 //	ConnectionCategoryServerless
 //	ConnectionCategoryManagedOnlineEndpoint
+//	ConnectionCategoryApiManagement
+//	ConnectionCategoryModelGateway
+//	ConnectionCategoryGroundingWithBingSearch
+//	ConnectionCategoryGroundingWithCustomSearch
+//	ConnectionCategorySharepoint
+//	ConnectionCategoryMicrosoftFabric
+//	ConnectionCategoryPowerPlatformEnvironment
+//	ConnectionCategoryRemoteA2A
 type ConnectionCategoryInput interface {
 	pulumi.Input
 
@@ -4736,7 +4775,7 @@ func (in *datasetTypePtr) ToDatasetTypePtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(DatasetTypePtrOutput)
 }
 
-// [Required] Storage type backing the datastore.
+// Enum to determine the datastore contents type.
 type DatastoreType string
 
 const (
@@ -5119,7 +5158,7 @@ const (
 	EarlyTerminationPolicyTypeTruncationSelection = EarlyTerminationPolicyType("TruncationSelection")
 )
 
-// If Enabled, allow egress public network access. If Disabled, this will create secure egress. Default: Enabled.
+// Enum to determine whether PublicNetworkAccess is Enabled or Disabled for egress of a deployment.
 type EgressPublicNetworkAccessType string
 
 const (
@@ -5955,7 +5994,7 @@ func (in *endpointComputeTypePtr) ToEndpointComputeTypePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(EndpointComputeTypePtrOutput)
 }
 
-// Connection status of the service consumer with the service provider
+// Connection status of the service consumer with the service provider\r\nPossible state transitions\r\nPending -> Approved (Service provider approves the connection request)\r\nPending -> Rejected (Service provider rejects the connection request)\r\nPending -> Disconnected (Service provider deletes the connection)\r\nApproved -> Rejected (Service provider rejects the approved connection)\r\nApproved -> Disconnected (Service provider deletes the connection)\r\nRejected -> Pending (Service consumer re-initiates the connection request that was rejected)\r\nRejected -> Disconnected (Service provider deletes the connection)
 type EndpointServiceConnectionStatus string
 
 const (
@@ -5963,6 +6002,7 @@ const (
 	EndpointServiceConnectionStatusPending      = EndpointServiceConnectionStatus("Pending")
 	EndpointServiceConnectionStatusRejected     = EndpointServiceConnectionStatus("Rejected")
 	EndpointServiceConnectionStatusDisconnected = EndpointServiceConnectionStatus("Disconnected")
+	EndpointServiceConnectionStatusTimeout      = EndpointServiceConnectionStatus("Timeout")
 )
 
 func (EndpointServiceConnectionStatus) ElementType() reflect.Type {
@@ -6091,6 +6131,7 @@ func (o EndpointServiceConnectionStatusPtrOutput) ToStringPtrOutputWithContext(c
 //	EndpointServiceConnectionStatusPending
 //	EndpointServiceConnectionStatusRejected
 //	EndpointServiceConnectionStatusDisconnected
+//	EndpointServiceConnectionStatusTimeout
 type EndpointServiceConnectionStatusInput interface {
 	pulumi.Input
 
@@ -6800,7 +6841,7 @@ func (in *featureImportanceModePtr) ToFeatureImportanceModePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(FeatureImportanceModePtrOutput)
 }
 
-// Flag for generating lags for the numeric features with 'auto' or null.
+// Flag for generating lags for the numeric features.
 type FeatureLags string
 
 const (
@@ -7545,7 +7586,7 @@ func (in *forecastingModelsPtr) ToForecastingModelsPtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(ForecastingModelsPtrOutput)
 }
 
-// Primary metric for forecasting task.
+// Primary metrics for Forecasting task.
 type ForecastingPrimaryMetrics string
 
 const (
@@ -8232,7 +8273,7 @@ func (in *imageAnnotationTypePtr) ToImageAnnotationTypePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(ImageAnnotationTypePtrOutput)
 }
 
-// Type of the image. Possible values are: docker - For docker images. azureml - For AzureML images
+// Type of the image. Possible values are: docker - For docker images. azureml - For AzureML Environment images (custom and curated)
 type ImageType string
 
 const (
@@ -8564,7 +8605,7 @@ func (in *incrementalDataRefreshPtr) ToIncrementalDataRefreshPtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(IncrementalDataRefreshPtrOutput)
 }
 
-// Input Asset Delivery Mode.
+// Enum to determine the input data delivery mode.
 type InputDeliveryMode string
 
 const (
@@ -8738,7 +8779,7 @@ func (in *inputDeliveryModePtr) ToInputDeliveryModePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(InputDeliveryModePtrOutput)
 }
 
-// Primary metric to optimize for this task.
+// Primary metrics for InstanceSegmentation tasks.
 type InstanceSegmentationPrimaryMetrics string
 
 const (
@@ -9268,7 +9309,7 @@ const (
 	JobOutputType_Triton_model = JobOutputType("triton_model")
 )
 
-// Controls the compute job tier
+// Enum to determine the job tier.
 type JobTier string
 
 const (
@@ -9451,7 +9492,7 @@ const (
 	JobTypeSpark    = JobType("Spark")
 )
 
-// Type of learning rate scheduler. Must be 'warmup_cosine' or 'step'.
+// Learning rate scheduler enum.
 type LearningRateScheduler string
 
 const (
@@ -9952,7 +9993,7 @@ func (in *loadBalancerTypePtr) ToLoadBalancerTypePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(LoadBalancerTypePtrOutput)
 }
 
-// Log verbosity for the job.
+// Enum for setting log verbosity.
 type LogVerbosity string
 
 const (
@@ -10472,6 +10513,340 @@ func (in *managedNetworkStatusPtr) ToManagedNetworkStatusPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedNetworkStatusPtrOutput)
 }
 
+type ManagedPERequirement string
+
+const (
+	ManagedPERequirementRequired      = ManagedPERequirement("Required")
+	ManagedPERequirementNotRequired   = ManagedPERequirement("NotRequired")
+	ManagedPERequirementNotApplicable = ManagedPERequirement("NotApplicable")
+)
+
+func (ManagedPERequirement) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedPERequirement)(nil)).Elem()
+}
+
+func (e ManagedPERequirement) ToManagedPERequirementOutput() ManagedPERequirementOutput {
+	return pulumi.ToOutput(e).(ManagedPERequirementOutput)
+}
+
+func (e ManagedPERequirement) ToManagedPERequirementOutputWithContext(ctx context.Context) ManagedPERequirementOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ManagedPERequirementOutput)
+}
+
+func (e ManagedPERequirement) ToManagedPERequirementPtrOutput() ManagedPERequirementPtrOutput {
+	return e.ToManagedPERequirementPtrOutputWithContext(context.Background())
+}
+
+func (e ManagedPERequirement) ToManagedPERequirementPtrOutputWithContext(ctx context.Context) ManagedPERequirementPtrOutput {
+	return ManagedPERequirement(e).ToManagedPERequirementOutputWithContext(ctx).ToManagedPERequirementPtrOutputWithContext(ctx)
+}
+
+func (e ManagedPERequirement) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ManagedPERequirement) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ManagedPERequirement) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ManagedPERequirement) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ManagedPERequirementOutput struct{ *pulumi.OutputState }
+
+func (ManagedPERequirementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedPERequirement)(nil)).Elem()
+}
+
+func (o ManagedPERequirementOutput) ToManagedPERequirementOutput() ManagedPERequirementOutput {
+	return o
+}
+
+func (o ManagedPERequirementOutput) ToManagedPERequirementOutputWithContext(ctx context.Context) ManagedPERequirementOutput {
+	return o
+}
+
+func (o ManagedPERequirementOutput) ToManagedPERequirementPtrOutput() ManagedPERequirementPtrOutput {
+	return o.ToManagedPERequirementPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedPERequirementOutput) ToManagedPERequirementPtrOutputWithContext(ctx context.Context) ManagedPERequirementPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedPERequirement) *ManagedPERequirement {
+		return &v
+	}).(ManagedPERequirementPtrOutput)
+}
+
+func (o ManagedPERequirementOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ManagedPERequirementOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ManagedPERequirement) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ManagedPERequirementOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedPERequirementOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ManagedPERequirement) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ManagedPERequirementPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedPERequirementPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedPERequirement)(nil)).Elem()
+}
+
+func (o ManagedPERequirementPtrOutput) ToManagedPERequirementPtrOutput() ManagedPERequirementPtrOutput {
+	return o
+}
+
+func (o ManagedPERequirementPtrOutput) ToManagedPERequirementPtrOutputWithContext(ctx context.Context) ManagedPERequirementPtrOutput {
+	return o
+}
+
+func (o ManagedPERequirementPtrOutput) Elem() ManagedPERequirementOutput {
+	return o.ApplyT(func(v *ManagedPERequirement) ManagedPERequirement {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedPERequirement
+		return ret
+	}).(ManagedPERequirementOutput)
+}
+
+func (o ManagedPERequirementPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedPERequirementPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ManagedPERequirement) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ManagedPERequirementInput is an input type that accepts values of the ManagedPERequirement enum
+// A concrete instance of `ManagedPERequirementInput` can be one of the following:
+//
+//	ManagedPERequirementRequired
+//	ManagedPERequirementNotRequired
+//	ManagedPERequirementNotApplicable
+type ManagedPERequirementInput interface {
+	pulumi.Input
+
+	ToManagedPERequirementOutput() ManagedPERequirementOutput
+	ToManagedPERequirementOutputWithContext(context.Context) ManagedPERequirementOutput
+}
+
+var managedPERequirementPtrType = reflect.TypeOf((**ManagedPERequirement)(nil)).Elem()
+
+type ManagedPERequirementPtrInput interface {
+	pulumi.Input
+
+	ToManagedPERequirementPtrOutput() ManagedPERequirementPtrOutput
+	ToManagedPERequirementPtrOutputWithContext(context.Context) ManagedPERequirementPtrOutput
+}
+
+type managedPERequirementPtr string
+
+func ManagedPERequirementPtr(v string) ManagedPERequirementPtrInput {
+	return (*managedPERequirementPtr)(&v)
+}
+
+func (*managedPERequirementPtr) ElementType() reflect.Type {
+	return managedPERequirementPtrType
+}
+
+func (in *managedPERequirementPtr) ToManagedPERequirementPtrOutput() ManagedPERequirementPtrOutput {
+	return pulumi.ToOutput(in).(ManagedPERequirementPtrOutput)
+}
+
+func (in *managedPERequirementPtr) ToManagedPERequirementPtrOutputWithContext(ctx context.Context) ManagedPERequirementPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ManagedPERequirementPtrOutput)
+}
+
+type ManagedPEStatus string
+
+const (
+	ManagedPEStatusInactive      = ManagedPEStatus("Inactive")
+	ManagedPEStatusActive        = ManagedPEStatus("Active")
+	ManagedPEStatusNotApplicable = ManagedPEStatus("NotApplicable")
+)
+
+func (ManagedPEStatus) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedPEStatus)(nil)).Elem()
+}
+
+func (e ManagedPEStatus) ToManagedPEStatusOutput() ManagedPEStatusOutput {
+	return pulumi.ToOutput(e).(ManagedPEStatusOutput)
+}
+
+func (e ManagedPEStatus) ToManagedPEStatusOutputWithContext(ctx context.Context) ManagedPEStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ManagedPEStatusOutput)
+}
+
+func (e ManagedPEStatus) ToManagedPEStatusPtrOutput() ManagedPEStatusPtrOutput {
+	return e.ToManagedPEStatusPtrOutputWithContext(context.Background())
+}
+
+func (e ManagedPEStatus) ToManagedPEStatusPtrOutputWithContext(ctx context.Context) ManagedPEStatusPtrOutput {
+	return ManagedPEStatus(e).ToManagedPEStatusOutputWithContext(ctx).ToManagedPEStatusPtrOutputWithContext(ctx)
+}
+
+func (e ManagedPEStatus) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ManagedPEStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ManagedPEStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ManagedPEStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ManagedPEStatusOutput struct{ *pulumi.OutputState }
+
+func (ManagedPEStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedPEStatus)(nil)).Elem()
+}
+
+func (o ManagedPEStatusOutput) ToManagedPEStatusOutput() ManagedPEStatusOutput {
+	return o
+}
+
+func (o ManagedPEStatusOutput) ToManagedPEStatusOutputWithContext(ctx context.Context) ManagedPEStatusOutput {
+	return o
+}
+
+func (o ManagedPEStatusOutput) ToManagedPEStatusPtrOutput() ManagedPEStatusPtrOutput {
+	return o.ToManagedPEStatusPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedPEStatusOutput) ToManagedPEStatusPtrOutputWithContext(ctx context.Context) ManagedPEStatusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedPEStatus) *ManagedPEStatus {
+		return &v
+	}).(ManagedPEStatusPtrOutput)
+}
+
+func (o ManagedPEStatusOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ManagedPEStatusOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ManagedPEStatus) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ManagedPEStatusOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedPEStatusOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ManagedPEStatus) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ManagedPEStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedPEStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedPEStatus)(nil)).Elem()
+}
+
+func (o ManagedPEStatusPtrOutput) ToManagedPEStatusPtrOutput() ManagedPEStatusPtrOutput {
+	return o
+}
+
+func (o ManagedPEStatusPtrOutput) ToManagedPEStatusPtrOutputWithContext(ctx context.Context) ManagedPEStatusPtrOutput {
+	return o
+}
+
+func (o ManagedPEStatusPtrOutput) Elem() ManagedPEStatusOutput {
+	return o.ApplyT(func(v *ManagedPEStatus) ManagedPEStatus {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedPEStatus
+		return ret
+	}).(ManagedPEStatusOutput)
+}
+
+func (o ManagedPEStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedPEStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ManagedPEStatus) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ManagedPEStatusInput is an input type that accepts values of the ManagedPEStatus enum
+// A concrete instance of `ManagedPEStatusInput` can be one of the following:
+//
+//	ManagedPEStatusInactive
+//	ManagedPEStatusActive
+//	ManagedPEStatusNotApplicable
+type ManagedPEStatusInput interface {
+	pulumi.Input
+
+	ToManagedPEStatusOutput() ManagedPEStatusOutput
+	ToManagedPEStatusOutputWithContext(context.Context) ManagedPEStatusOutput
+}
+
+var managedPEStatusPtrType = reflect.TypeOf((**ManagedPEStatus)(nil)).Elem()
+
+type ManagedPEStatusPtrInput interface {
+	pulumi.Input
+
+	ToManagedPEStatusPtrOutput() ManagedPEStatusPtrOutput
+	ToManagedPEStatusPtrOutputWithContext(context.Context) ManagedPEStatusPtrOutput
+}
+
+type managedPEStatusPtr string
+
+func ManagedPEStatusPtr(v string) ManagedPEStatusPtrInput {
+	return (*managedPEStatusPtr)(&v)
+}
+
+func (*managedPEStatusPtr) ElementType() reflect.Type {
+	return managedPEStatusPtrType
+}
+
+func (in *managedPEStatusPtr) ToManagedPEStatusPtrOutput() ManagedPEStatusPtrOutput {
+	return pulumi.ToOutput(in).(ManagedPEStatusPtrOutput)
+}
+
+func (in *managedPEStatusPtr) ToManagedPEStatusPtrOutputWithContext(ctx context.Context) ManagedPEStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ManagedPEStatusPtrOutput)
+}
+
 // Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 type ManagedServiceIdentityType string
 
@@ -10820,9 +11195,7 @@ const (
 	MediaTypeText  = MediaType("Text")
 )
 
-// Model size. Must be 'small', 'medium', 'large', or 'xlarge'.
-// Note: training run may get into CUDA OOM if the model size is too big.
-// Note: This settings is only supported for the 'yolov5' algorithm.
+// Image model size.
 type ModelSize string
 
 const (
@@ -12257,7 +12630,7 @@ func (in *numericalPredictionDriftMetricPtr) ToNumericalPredictionDriftMetricPtr
 	return pulumi.ToOutputWithContext(ctx, in).(NumericalPredictionDriftMetricPtrOutput)
 }
 
-// Primary metric to optimize for this task.
+// Primary metrics for Image ObjectDetection task.
 type ObjectDetectionPrimaryMetrics string
 
 const (
@@ -12430,7 +12803,7 @@ const (
 	OneLakeArtifactTypeLakeHouse = OneLakeArtifactType("LakeHouse")
 )
 
-// The OS type of the environment.
+// The type of operating system.
 type OperatingSystemType string
 
 const (
@@ -12762,7 +13135,7 @@ func (in *osTypePtr) ToOsTypePtrOutputWithContext(ctx context.Context) OsTypePtr
 	return pulumi.ToOutputWithContext(ctx, in).(OsTypePtrOutput)
 }
 
-// Output Asset Delivery Mode.
+// Output data delivery mode enums.
 type OutputDeliveryMode string
 
 const (
@@ -12928,178 +13301,6 @@ func (in *outputDeliveryModePtr) ToOutputDeliveryModePtrOutput() OutputDeliveryM
 
 func (in *outputDeliveryModePtr) ToOutputDeliveryModePtrOutputWithContext(ctx context.Context) OutputDeliveryModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OutputDeliveryModePtrOutput)
-}
-
-// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-type PrivateEndpointServiceConnectionStatus string
-
-const (
-	PrivateEndpointServiceConnectionStatusPending      = PrivateEndpointServiceConnectionStatus("Pending")
-	PrivateEndpointServiceConnectionStatusApproved     = PrivateEndpointServiceConnectionStatus("Approved")
-	PrivateEndpointServiceConnectionStatusRejected     = PrivateEndpointServiceConnectionStatus("Rejected")
-	PrivateEndpointServiceConnectionStatusDisconnected = PrivateEndpointServiceConnectionStatus("Disconnected")
-	PrivateEndpointServiceConnectionStatusTimeout      = PrivateEndpointServiceConnectionStatus("Timeout")
-)
-
-func (PrivateEndpointServiceConnectionStatus) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointServiceConnectionStatus)(nil)).Elem()
-}
-
-func (e PrivateEndpointServiceConnectionStatus) ToPrivateEndpointServiceConnectionStatusOutput() PrivateEndpointServiceConnectionStatusOutput {
-	return pulumi.ToOutput(e).(PrivateEndpointServiceConnectionStatusOutput)
-}
-
-func (e PrivateEndpointServiceConnectionStatus) ToPrivateEndpointServiceConnectionStatusOutputWithContext(ctx context.Context) PrivateEndpointServiceConnectionStatusOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(PrivateEndpointServiceConnectionStatusOutput)
-}
-
-func (e PrivateEndpointServiceConnectionStatus) ToPrivateEndpointServiceConnectionStatusPtrOutput() PrivateEndpointServiceConnectionStatusPtrOutput {
-	return e.ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(context.Background())
-}
-
-func (e PrivateEndpointServiceConnectionStatus) ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx context.Context) PrivateEndpointServiceConnectionStatusPtrOutput {
-	return PrivateEndpointServiceConnectionStatus(e).ToPrivateEndpointServiceConnectionStatusOutputWithContext(ctx).ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx)
-}
-
-func (e PrivateEndpointServiceConnectionStatus) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e PrivateEndpointServiceConnectionStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e PrivateEndpointServiceConnectionStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e PrivateEndpointServiceConnectionStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type PrivateEndpointServiceConnectionStatusOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointServiceConnectionStatusOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointServiceConnectionStatus)(nil)).Elem()
-}
-
-func (o PrivateEndpointServiceConnectionStatusOutput) ToPrivateEndpointServiceConnectionStatusOutput() PrivateEndpointServiceConnectionStatusOutput {
-	return o
-}
-
-func (o PrivateEndpointServiceConnectionStatusOutput) ToPrivateEndpointServiceConnectionStatusOutputWithContext(ctx context.Context) PrivateEndpointServiceConnectionStatusOutput {
-	return o
-}
-
-func (o PrivateEndpointServiceConnectionStatusOutput) ToPrivateEndpointServiceConnectionStatusPtrOutput() PrivateEndpointServiceConnectionStatusPtrOutput {
-	return o.ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(context.Background())
-}
-
-func (o PrivateEndpointServiceConnectionStatusOutput) ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx context.Context) PrivateEndpointServiceConnectionStatusPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateEndpointServiceConnectionStatus) *PrivateEndpointServiceConnectionStatus {
-		return &v
-	}).(PrivateEndpointServiceConnectionStatusPtrOutput)
-}
-
-func (o PrivateEndpointServiceConnectionStatusOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o PrivateEndpointServiceConnectionStatusOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e PrivateEndpointServiceConnectionStatus) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o PrivateEndpointServiceConnectionStatusOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o PrivateEndpointServiceConnectionStatusOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e PrivateEndpointServiceConnectionStatus) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type PrivateEndpointServiceConnectionStatusPtrOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointServiceConnectionStatusPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PrivateEndpointServiceConnectionStatus)(nil)).Elem()
-}
-
-func (o PrivateEndpointServiceConnectionStatusPtrOutput) ToPrivateEndpointServiceConnectionStatusPtrOutput() PrivateEndpointServiceConnectionStatusPtrOutput {
-	return o
-}
-
-func (o PrivateEndpointServiceConnectionStatusPtrOutput) ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx context.Context) PrivateEndpointServiceConnectionStatusPtrOutput {
-	return o
-}
-
-func (o PrivateEndpointServiceConnectionStatusPtrOutput) Elem() PrivateEndpointServiceConnectionStatusOutput {
-	return o.ApplyT(func(v *PrivateEndpointServiceConnectionStatus) PrivateEndpointServiceConnectionStatus {
-		if v != nil {
-			return *v
-		}
-		var ret PrivateEndpointServiceConnectionStatus
-		return ret
-	}).(PrivateEndpointServiceConnectionStatusOutput)
-}
-
-func (o PrivateEndpointServiceConnectionStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o PrivateEndpointServiceConnectionStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PrivateEndpointServiceConnectionStatus) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// PrivateEndpointServiceConnectionStatusInput is an input type that accepts values of the PrivateEndpointServiceConnectionStatus enum
-// A concrete instance of `PrivateEndpointServiceConnectionStatusInput` can be one of the following:
-//
-//	PrivateEndpointServiceConnectionStatusPending
-//	PrivateEndpointServiceConnectionStatusApproved
-//	PrivateEndpointServiceConnectionStatusRejected
-//	PrivateEndpointServiceConnectionStatusDisconnected
-//	PrivateEndpointServiceConnectionStatusTimeout
-type PrivateEndpointServiceConnectionStatusInput interface {
-	pulumi.Input
-
-	ToPrivateEndpointServiceConnectionStatusOutput() PrivateEndpointServiceConnectionStatusOutput
-	ToPrivateEndpointServiceConnectionStatusOutputWithContext(context.Context) PrivateEndpointServiceConnectionStatusOutput
-}
-
-var privateEndpointServiceConnectionStatusPtrType = reflect.TypeOf((**PrivateEndpointServiceConnectionStatus)(nil)).Elem()
-
-type PrivateEndpointServiceConnectionStatusPtrInput interface {
-	pulumi.Input
-
-	ToPrivateEndpointServiceConnectionStatusPtrOutput() PrivateEndpointServiceConnectionStatusPtrOutput
-	ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(context.Context) PrivateEndpointServiceConnectionStatusPtrOutput
-}
-
-type privateEndpointServiceConnectionStatusPtr string
-
-func PrivateEndpointServiceConnectionStatusPtr(v string) PrivateEndpointServiceConnectionStatusPtrInput {
-	return (*privateEndpointServiceConnectionStatusPtr)(&v)
-}
-
-func (*privateEndpointServiceConnectionStatusPtr) ElementType() reflect.Type {
-	return privateEndpointServiceConnectionStatusPtrType
-}
-
-func (in *privateEndpointServiceConnectionStatusPtr) ToPrivateEndpointServiceConnectionStatusPtrOutput() PrivateEndpointServiceConnectionStatusPtrOutput {
-	return pulumi.ToOutput(in).(PrivateEndpointServiceConnectionStatusPtrOutput)
-}
-
-func (in *privateEndpointServiceConnectionStatusPtr) ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx context.Context) PrivateEndpointServiceConnectionStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(PrivateEndpointServiceConnectionStatusPtrOutput)
 }
 
 // Protocol over which communication will happen over this endpoint
@@ -13271,172 +13472,6 @@ func (in *protocolPtr) ToProtocolPtrOutputWithContext(ctx context.Context) Proto
 }
 
 // Whether requests from Public Network are allowed.
-type PublicNetworkAccess string
-
-const (
-	PublicNetworkAccessEnabled  = PublicNetworkAccess("Enabled")
-	PublicNetworkAccessDisabled = PublicNetworkAccess("Disabled")
-)
-
-func (PublicNetworkAccess) ElementType() reflect.Type {
-	return reflect.TypeOf((*PublicNetworkAccess)(nil)).Elem()
-}
-
-func (e PublicNetworkAccess) ToPublicNetworkAccessOutput() PublicNetworkAccessOutput {
-	return pulumi.ToOutput(e).(PublicNetworkAccessOutput)
-}
-
-func (e PublicNetworkAccess) ToPublicNetworkAccessOutputWithContext(ctx context.Context) PublicNetworkAccessOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(PublicNetworkAccessOutput)
-}
-
-func (e PublicNetworkAccess) ToPublicNetworkAccessPtrOutput() PublicNetworkAccessPtrOutput {
-	return e.ToPublicNetworkAccessPtrOutputWithContext(context.Background())
-}
-
-func (e PublicNetworkAccess) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
-	return PublicNetworkAccess(e).ToPublicNetworkAccessOutputWithContext(ctx).ToPublicNetworkAccessPtrOutputWithContext(ctx)
-}
-
-func (e PublicNetworkAccess) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e PublicNetworkAccess) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e PublicNetworkAccess) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e PublicNetworkAccess) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type PublicNetworkAccessOutput struct{ *pulumi.OutputState }
-
-func (PublicNetworkAccessOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PublicNetworkAccess)(nil)).Elem()
-}
-
-func (o PublicNetworkAccessOutput) ToPublicNetworkAccessOutput() PublicNetworkAccessOutput {
-	return o
-}
-
-func (o PublicNetworkAccessOutput) ToPublicNetworkAccessOutputWithContext(ctx context.Context) PublicNetworkAccessOutput {
-	return o
-}
-
-func (o PublicNetworkAccessOutput) ToPublicNetworkAccessPtrOutput() PublicNetworkAccessPtrOutput {
-	return o.ToPublicNetworkAccessPtrOutputWithContext(context.Background())
-}
-
-func (o PublicNetworkAccessOutput) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PublicNetworkAccess) *PublicNetworkAccess {
-		return &v
-	}).(PublicNetworkAccessPtrOutput)
-}
-
-func (o PublicNetworkAccessOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o PublicNetworkAccessOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e PublicNetworkAccess) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o PublicNetworkAccessOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o PublicNetworkAccessOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e PublicNetworkAccess) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type PublicNetworkAccessPtrOutput struct{ *pulumi.OutputState }
-
-func (PublicNetworkAccessPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PublicNetworkAccess)(nil)).Elem()
-}
-
-func (o PublicNetworkAccessPtrOutput) ToPublicNetworkAccessPtrOutput() PublicNetworkAccessPtrOutput {
-	return o
-}
-
-func (o PublicNetworkAccessPtrOutput) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
-	return o
-}
-
-func (o PublicNetworkAccessPtrOutput) Elem() PublicNetworkAccessOutput {
-	return o.ApplyT(func(v *PublicNetworkAccess) PublicNetworkAccess {
-		if v != nil {
-			return *v
-		}
-		var ret PublicNetworkAccess
-		return ret
-	}).(PublicNetworkAccessOutput)
-}
-
-func (o PublicNetworkAccessPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o PublicNetworkAccessPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PublicNetworkAccess) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// PublicNetworkAccessInput is an input type that accepts values of the PublicNetworkAccess enum
-// A concrete instance of `PublicNetworkAccessInput` can be one of the following:
-//
-//	PublicNetworkAccessEnabled
-//	PublicNetworkAccessDisabled
-type PublicNetworkAccessInput interface {
-	pulumi.Input
-
-	ToPublicNetworkAccessOutput() PublicNetworkAccessOutput
-	ToPublicNetworkAccessOutputWithContext(context.Context) PublicNetworkAccessOutput
-}
-
-var publicNetworkAccessPtrType = reflect.TypeOf((**PublicNetworkAccess)(nil)).Elem()
-
-type PublicNetworkAccessPtrInput interface {
-	pulumi.Input
-
-	ToPublicNetworkAccessPtrOutput() PublicNetworkAccessPtrOutput
-	ToPublicNetworkAccessPtrOutputWithContext(context.Context) PublicNetworkAccessPtrOutput
-}
-
-type publicNetworkAccessPtr string
-
-func PublicNetworkAccessPtr(v string) PublicNetworkAccessPtrInput {
-	return (*publicNetworkAccessPtr)(&v)
-}
-
-func (*publicNetworkAccessPtr) ElementType() reflect.Type {
-	return publicNetworkAccessPtrType
-}
-
-func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutput() PublicNetworkAccessPtrOutput {
-	return pulumi.ToOutput(in).(PublicNetworkAccessPtrOutput)
-}
-
-func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
-}
-
-// Set to "Enabled" for endpoints that should allow public access when Private Link is enabled.
 type PublicNetworkAccessType string
 
 const (
@@ -14652,7 +14687,7 @@ func (in *regressionModelsPtr) ToRegressionModelsPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(RegressionModelsPtrOutput)
 }
 
-// Primary metric for regression task.
+// Primary metrics for Regression task.
 type RegressionPrimaryMetrics string
 
 const (
@@ -16399,7 +16434,9 @@ const (
 type ServerlessInferenceEndpointAuthMode string
 
 const (
-	ServerlessInferenceEndpointAuthModeKey = ServerlessInferenceEndpointAuthMode("Key")
+	ServerlessInferenceEndpointAuthModeKey       = ServerlessInferenceEndpointAuthMode("Key")
+	ServerlessInferenceEndpointAuthModeAAD       = ServerlessInferenceEndpointAuthMode("AAD")
+	ServerlessInferenceEndpointAuthModeKeyAndAAD = ServerlessInferenceEndpointAuthMode("KeyAndAAD")
 )
 
 func (ServerlessInferenceEndpointAuthMode) ElementType() reflect.Type {
@@ -16525,6 +16562,8 @@ func (o ServerlessInferenceEndpointAuthModePtrOutput) ToStringPtrOutputWithConte
 // A concrete instance of `ServerlessInferenceEndpointAuthModeInput` can be one of the following:
 //
 //	ServerlessInferenceEndpointAuthModeKey
+//	ServerlessInferenceEndpointAuthModeAAD
+//	ServerlessInferenceEndpointAuthModeKeyAndAAD
 type ServerlessInferenceEndpointAuthModeInput interface {
 	pulumi.Input
 
@@ -17584,7 +17623,7 @@ func (in *sslConfigStatusPtr) ToSslConfigStatusPtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(SslConfigStatusPtrOutput)
 }
 
-// The meta-learner is a model trained on the output of the individual heterogeneous models.
+// The meta-learner is a model trained on the output of the individual heterogeneous models.\r\nDefault meta-learners are LogisticRegression for classification tasks (or LogisticRegressionCV if cross-validation is enabled) and ElasticNet for regression/forecasting tasks (or ElasticNetCV if cross-validation is enabled).\r\nThis parameter can be one of the following strings: LogisticRegression, LogisticRegressionCV, LightGBMClassifier, ElasticNet, ElasticNetCV, LightGBMRegressor, or LinearRegression
 type StackMetaLearnerType string
 
 const (
@@ -17766,7 +17805,7 @@ func (in *stackMetaLearnerTypePtr) ToStackMetaLearnerTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(StackMetaLearnerTypePtrOutput)
 }
 
-// Type of optimizer.
+// Stochastic optimizer for image models.
 type StochasticOptimizer string
 
 const (
@@ -18108,8 +18147,7 @@ func (in *systemDatastoresAuthModePtr) ToSystemDatastoresAuthModePtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(SystemDatastoresAuthModePtrOutput)
 }
 
-// The function to be used to aggregate the time series target column to conform to a user specified frequency.
-// If the TargetAggregateFunction is set i.e. not 'None', but the freq parameter is not set, the error is raised. The possible target aggregation functions are: "sum", "max", "min" and "mean".
+// Target aggregate function.
 type TargetAggregationFunction string
 
 const (
@@ -18679,7 +18717,7 @@ func (in *useStlPtr) ToUseStlPtrOutputWithContext(ctx context.Context) UseStlPtr
 	return pulumi.ToOutputWithContext(ctx, in).(UseStlPtrOutput)
 }
 
-// Metric computation method to use for validation metrics.
+// Metric computation method to use for validation metrics in image tasks.
 type ValidationMetricType string
 
 const (
@@ -18851,170 +18889,6 @@ func (in *validationMetricTypePtr) ToValidationMetricTypePtrOutput() ValidationM
 
 func (in *validationMetricTypePtr) ToValidationMetricTypePtrOutputWithContext(ctx context.Context) ValidationMetricTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ValidationMetricTypePtrOutput)
-}
-
-// format for the workspace connection value
-type ValueFormat string
-
-const (
-	ValueFormatJSON = ValueFormat("JSON")
-)
-
-func (ValueFormat) ElementType() reflect.Type {
-	return reflect.TypeOf((*ValueFormat)(nil)).Elem()
-}
-
-func (e ValueFormat) ToValueFormatOutput() ValueFormatOutput {
-	return pulumi.ToOutput(e).(ValueFormatOutput)
-}
-
-func (e ValueFormat) ToValueFormatOutputWithContext(ctx context.Context) ValueFormatOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(ValueFormatOutput)
-}
-
-func (e ValueFormat) ToValueFormatPtrOutput() ValueFormatPtrOutput {
-	return e.ToValueFormatPtrOutputWithContext(context.Background())
-}
-
-func (e ValueFormat) ToValueFormatPtrOutputWithContext(ctx context.Context) ValueFormatPtrOutput {
-	return ValueFormat(e).ToValueFormatOutputWithContext(ctx).ToValueFormatPtrOutputWithContext(ctx)
-}
-
-func (e ValueFormat) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e ValueFormat) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e ValueFormat) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e ValueFormat) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type ValueFormatOutput struct{ *pulumi.OutputState }
-
-func (ValueFormatOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ValueFormat)(nil)).Elem()
-}
-
-func (o ValueFormatOutput) ToValueFormatOutput() ValueFormatOutput {
-	return o
-}
-
-func (o ValueFormatOutput) ToValueFormatOutputWithContext(ctx context.Context) ValueFormatOutput {
-	return o
-}
-
-func (o ValueFormatOutput) ToValueFormatPtrOutput() ValueFormatPtrOutput {
-	return o.ToValueFormatPtrOutputWithContext(context.Background())
-}
-
-func (o ValueFormatOutput) ToValueFormatPtrOutputWithContext(ctx context.Context) ValueFormatPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ValueFormat) *ValueFormat {
-		return &v
-	}).(ValueFormatPtrOutput)
-}
-
-func (o ValueFormatOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o ValueFormatOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e ValueFormat) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o ValueFormatOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o ValueFormatOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e ValueFormat) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type ValueFormatPtrOutput struct{ *pulumi.OutputState }
-
-func (ValueFormatPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ValueFormat)(nil)).Elem()
-}
-
-func (o ValueFormatPtrOutput) ToValueFormatPtrOutput() ValueFormatPtrOutput {
-	return o
-}
-
-func (o ValueFormatPtrOutput) ToValueFormatPtrOutputWithContext(ctx context.Context) ValueFormatPtrOutput {
-	return o
-}
-
-func (o ValueFormatPtrOutput) Elem() ValueFormatOutput {
-	return o.ApplyT(func(v *ValueFormat) ValueFormat {
-		if v != nil {
-			return *v
-		}
-		var ret ValueFormat
-		return ret
-	}).(ValueFormatOutput)
-}
-
-func (o ValueFormatPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o ValueFormatPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ValueFormat) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// ValueFormatInput is an input type that accepts values of the ValueFormat enum
-// A concrete instance of `ValueFormatInput` can be one of the following:
-//
-//	ValueFormatJSON
-type ValueFormatInput interface {
-	pulumi.Input
-
-	ToValueFormatOutput() ValueFormatOutput
-	ToValueFormatOutputWithContext(context.Context) ValueFormatOutput
-}
-
-var valueFormatPtrType = reflect.TypeOf((**ValueFormat)(nil)).Elem()
-
-type ValueFormatPtrInput interface {
-	pulumi.Input
-
-	ToValueFormatPtrOutput() ValueFormatPtrOutput
-	ToValueFormatPtrOutputWithContext(context.Context) ValueFormatPtrOutput
-}
-
-type valueFormatPtr string
-
-func ValueFormatPtr(v string) ValueFormatPtrInput {
-	return (*valueFormatPtr)(&v)
-}
-
-func (*valueFormatPtr) ElementType() reflect.Type {
-	return valueFormatPtrType
-}
-
-func (in *valueFormatPtr) ToValueFormatPtrOutput() ValueFormatPtrOutput {
-	return pulumi.ToOutput(in).(ValueFormatPtrOutput)
-}
-
-func (in *valueFormatPtr) ToValueFormatPtrOutputWithContext(ctx context.Context) ValueFormatPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(ValueFormatPtrOutput)
 }
 
 // Virtual Machine priority
@@ -19662,6 +19536,10 @@ func init() {
 	pulumi.RegisterOutputType(ManagedNetworkKindPtrOutput{})
 	pulumi.RegisterOutputType(ManagedNetworkStatusOutput{})
 	pulumi.RegisterOutputType(ManagedNetworkStatusPtrOutput{})
+	pulumi.RegisterOutputType(ManagedPERequirementOutput{})
+	pulumi.RegisterOutputType(ManagedPERequirementPtrOutput{})
+	pulumi.RegisterOutputType(ManagedPEStatusOutput{})
+	pulumi.RegisterOutputType(ManagedPEStatusPtrOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityTypeOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityTypePtrOutput{})
 	pulumi.RegisterOutputType(MaterializationStoreTypeOutput{})
@@ -19690,12 +19568,8 @@ func init() {
 	pulumi.RegisterOutputType(OsTypePtrOutput{})
 	pulumi.RegisterOutputType(OutputDeliveryModeOutput{})
 	pulumi.RegisterOutputType(OutputDeliveryModePtrOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointServiceConnectionStatusOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointServiceConnectionStatusPtrOutput{})
 	pulumi.RegisterOutputType(ProtocolOutput{})
 	pulumi.RegisterOutputType(ProtocolPtrOutput{})
-	pulumi.RegisterOutputType(PublicNetworkAccessOutput{})
-	pulumi.RegisterOutputType(PublicNetworkAccessPtrOutput{})
 	pulumi.RegisterOutputType(PublicNetworkAccessTypeOutput{})
 	pulumi.RegisterOutputType(PublicNetworkAccessTypePtrOutput{})
 	pulumi.RegisterOutputType(RaiPolicyContentSourceOutput{})
@@ -19758,8 +19632,6 @@ func init() {
 	pulumi.RegisterOutputType(UseStlPtrOutput{})
 	pulumi.RegisterOutputType(ValidationMetricTypeOutput{})
 	pulumi.RegisterOutputType(ValidationMetricTypePtrOutput{})
-	pulumi.RegisterOutputType(ValueFormatOutput{})
-	pulumi.RegisterOutputType(ValueFormatPtrOutput{})
 	pulumi.RegisterOutputType(VmPriorityOutput{})
 	pulumi.RegisterOutputType(VmPriorityPtrOutput{})
 	pulumi.RegisterOutputType(VolumeDefinitionTypeOutput{})

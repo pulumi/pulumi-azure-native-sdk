@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RetentionPolicy{}
 	case "azure-native:durabletask:Scheduler":
 		r = &Scheduler{}
+	case "azure-native:durabletask:SchedulerPrivateEndpointConnection":
+		r = &SchedulerPrivateEndpointConnection{}
 	case "azure-native:durabletask:TaskHub":
 		r = &TaskHub{}
 	default:

@@ -8075,7 +8075,7 @@ func (o ServicePlacementInvalidDomainPolicyResponseOutput) Type() pulumi.StringO
 	return o.ApplyT(func(v ServicePlacementInvalidDomainPolicyResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// The type of placement policy for a service fabric service. Following are the possible values.
+// The name of the domain that should used for placement as per this policy.
 type ServicePlacementNonPartiallyPlaceServicePolicy struct {
 	// The type of placement policy for a service fabric service. Following are the possible values.
 	// Expected value is 'NonPartiallyPlaceService'.
@@ -8093,7 +8093,7 @@ type ServicePlacementNonPartiallyPlaceServicePolicyInput interface {
 	ToServicePlacementNonPartiallyPlaceServicePolicyOutputWithContext(context.Context) ServicePlacementNonPartiallyPlaceServicePolicyOutput
 }
 
-// The type of placement policy for a service fabric service. Following are the possible values.
+// The name of the domain that should used for placement as per this policy.
 type ServicePlacementNonPartiallyPlaceServicePolicyArgs struct {
 	// The type of placement policy for a service fabric service. Following are the possible values.
 	// Expected value is 'NonPartiallyPlaceService'.
@@ -8112,7 +8112,7 @@ func (i ServicePlacementNonPartiallyPlaceServicePolicyArgs) ToServicePlacementNo
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePlacementNonPartiallyPlaceServicePolicyOutput)
 }
 
-// The type of placement policy for a service fabric service. Following are the possible values.
+// The name of the domain that should used for placement as per this policy.
 type ServicePlacementNonPartiallyPlaceServicePolicyOutput struct{ *pulumi.OutputState }
 
 func (ServicePlacementNonPartiallyPlaceServicePolicyOutput) ElementType() reflect.Type {
@@ -8133,14 +8133,14 @@ func (o ServicePlacementNonPartiallyPlaceServicePolicyOutput) Type() pulumi.Stri
 	return o.ApplyT(func(v ServicePlacementNonPartiallyPlaceServicePolicy) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// The type of placement policy for a service fabric service. Following are the possible values.
+// The name of the domain that should used for placement as per this policy.
 type ServicePlacementNonPartiallyPlaceServicePolicyResponse struct {
 	// The type of placement policy for a service fabric service. Following are the possible values.
 	// Expected value is 'NonPartiallyPlaceService'.
 	Type string `pulumi:"type"`
 }
 
-// The type of placement policy for a service fabric service. Following are the possible values.
+// The name of the domain that should used for placement as per this policy.
 type ServicePlacementNonPartiallyPlaceServicePolicyResponseOutput struct{ *pulumi.OutputState }
 
 func (ServicePlacementNonPartiallyPlaceServicePolicyResponseOutput) ElementType() reflect.Type {
@@ -11218,7 +11218,7 @@ type SystemDataResponse struct {
 	CreatedBy *string `pulumi:"createdBy"`
 	// The type of identity that created the resource.
 	CreatedByType *string `pulumi:"createdByType"`
-	// The timestamp of resource last modification (UTC)
+	// The timestamp of resource last modification (UTC).
 	LastModifiedAt *string `pulumi:"lastModifiedAt"`
 	// The identity that last modified the resource.
 	LastModifiedBy *string `pulumi:"lastModifiedBy"`
@@ -11256,7 +11256,7 @@ func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
 }
 
-// The timestamp of resource last modification (UTC)
+// The timestamp of resource last modification (UTC).
 func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
 }

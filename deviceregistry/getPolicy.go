@@ -14,6 +14,8 @@ import (
 // Get a Policy
 //
 // Uses Azure REST API version 2025-11-01-preview.
+//
+// Other available API versions: 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupPolicy(ctx *pulumi.Context, args *LookupPolicyArgs, opts ...pulumi.InvokeOption) (*LookupPolicyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPolicyResult
@@ -37,16 +39,14 @@ type LookupPolicyArgs struct {
 type LookupPolicyResult struct {
 	// The Azure API version of the resource.
 	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// The certificate configuration.
-	Certificate *CertificateConfigurationResponse `pulumi:"certificate"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
-	Location string `pulumi:"location"`
+	Location *string `pulumi:"location"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// The status of the last operation.
-	ProvisioningState string `pulumi:"provisioningState"`
+	// The RP-specific properties for this resource.
+	Properties PolicyPropertiesResponse `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
@@ -97,19 +97,14 @@ func (o LookupPolicyResultOutput) AzureApiVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPolicyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
-// The certificate configuration.
-func (o LookupPolicyResultOutput) Certificate() CertificateConfigurationResponsePtrOutput {
-	return o.ApplyT(func(v LookupPolicyResult) *CertificateConfigurationResponse { return v.Certificate }).(CertificateConfigurationResponsePtrOutput)
-}
-
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupPolicyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The geo-location where the resource lives
-func (o LookupPolicyResultOutput) Location() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupPolicyResult) string { return v.Location }).(pulumi.StringOutput)
+func (o LookupPolicyResultOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupPolicyResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
 // The name of the resource
@@ -117,9 +112,9 @@ func (o LookupPolicyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPolicyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The status of the last operation.
-func (o LookupPolicyResultOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupPolicyResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
+// The RP-specific properties for this resource.
+func (o LookupPolicyResultOutput) Properties() PolicyPropertiesResponseOutput {
+	return o.ApplyT(func(v LookupPolicyResult) PolicyPropertiesResponse { return v.Properties }).(PolicyPropertiesResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

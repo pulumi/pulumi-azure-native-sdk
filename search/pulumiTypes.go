@@ -1679,6 +1679,66 @@ func (o PrivateEndpointConnectionPropertiesPrivateEndpointPtrOutput) Id() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+// The private endpoint resource from Microsoft.Network provider.
+type PrivateEndpointConnectionPropertiesPrivateEndpointResponse struct {
+	// The resource ID of the private endpoint resource from Microsoft.Network provider.
+	Id *string `pulumi:"id"`
+}
+
+// The private endpoint resource from Microsoft.Network provider.
+type PrivateEndpointConnectionPropertiesPrivateEndpointResponseOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointConnectionPropertiesPrivateEndpointResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointConnectionPropertiesPrivateEndpointResponse)(nil)).Elem()
+}
+
+func (o PrivateEndpointConnectionPropertiesPrivateEndpointResponseOutput) ToPrivateEndpointConnectionPropertiesPrivateEndpointResponseOutput() PrivateEndpointConnectionPropertiesPrivateEndpointResponseOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionPropertiesPrivateEndpointResponseOutput) ToPrivateEndpointConnectionPropertiesPrivateEndpointResponseOutputWithContext(ctx context.Context) PrivateEndpointConnectionPropertiesPrivateEndpointResponseOutput {
+	return o
+}
+
+// The resource ID of the private endpoint resource from Microsoft.Network provider.
+func (o PrivateEndpointConnectionPropertiesPrivateEndpointResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionPropertiesPrivateEndpointResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type PrivateEndpointConnectionPropertiesPrivateEndpointResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointConnectionPropertiesPrivateEndpointResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateEndpointConnectionPropertiesPrivateEndpointResponse)(nil)).Elem()
+}
+
+func (o PrivateEndpointConnectionPropertiesPrivateEndpointResponsePtrOutput) ToPrivateEndpointConnectionPropertiesPrivateEndpointResponsePtrOutput() PrivateEndpointConnectionPropertiesPrivateEndpointResponsePtrOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionPropertiesPrivateEndpointResponsePtrOutput) ToPrivateEndpointConnectionPropertiesPrivateEndpointResponsePtrOutputWithContext(ctx context.Context) PrivateEndpointConnectionPropertiesPrivateEndpointResponsePtrOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionPropertiesPrivateEndpointResponsePtrOutput) Elem() PrivateEndpointConnectionPropertiesPrivateEndpointResponseOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnectionPropertiesPrivateEndpointResponse) PrivateEndpointConnectionPropertiesPrivateEndpointResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateEndpointConnectionPropertiesPrivateEndpointResponse
+		return ret
+	}).(PrivateEndpointConnectionPropertiesPrivateEndpointResponseOutput)
+}
+
+// The resource ID of the private endpoint resource from Microsoft.Network provider.
+func (o PrivateEndpointConnectionPropertiesPrivateEndpointResponsePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnectionPropertiesPrivateEndpointResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
 // Describes the current state of an existing Azure Private Link service connection to the private endpoint.
 type PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionState struct {
 	// A description of any extra actions that may be required.
@@ -1887,14 +1947,127 @@ func (o PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStatePtrO
 	}).(PrivateLinkServiceConnectionStatusPtrOutput)
 }
 
+// Describes the current state of an existing Azure Private Link service connection to the private endpoint.
+type PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponse struct {
+	// A description of any extra actions that may be required.
+	ActionsRequired *string `pulumi:"actionsRequired"`
+	// The description for the private link service connection state.
+	Description *string `pulumi:"description"`
+	// Status of the the private link service connection. Valid values are Pending, Approved, Rejected, or Disconnected.
+	Status *string `pulumi:"status"`
+}
+
+// Defaults sets the appropriate defaults for PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponse
+func (val *PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponse) Defaults() *PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ActionsRequired == nil {
+		actionsRequired_ := "None"
+		tmp.ActionsRequired = &actionsRequired_
+	}
+	return &tmp
+}
+
+// Describes the current state of an existing Azure Private Link service connection to the private endpoint.
+type PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponseOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponse)(nil)).Elem()
+}
+
+func (o PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponseOutput) ToPrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponseOutput() PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponseOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponseOutput) ToPrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponseOutputWithContext(ctx context.Context) PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponseOutput {
+	return o
+}
+
+// A description of any extra actions that may be required.
+func (o PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponseOutput) ActionsRequired() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponse) *string {
+		return v.ActionsRequired
+	}).(pulumi.StringPtrOutput)
+}
+
+// The description for the private link service connection state.
+func (o PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponse) *string {
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Status of the the private link service connection. Valid values are Pending, Approved, Rejected, or Disconnected.
+func (o PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponseOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponse) *string {
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+type PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponse)(nil)).Elem()
+}
+
+func (o PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponsePtrOutput) ToPrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponsePtrOutput() PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponsePtrOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponsePtrOutput) ToPrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponsePtrOutputWithContext(ctx context.Context) PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponsePtrOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponsePtrOutput) Elem() PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponseOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponse) PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponse
+		return ret
+	}).(PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponseOutput)
+}
+
+// A description of any extra actions that may be required.
+func (o PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponsePtrOutput) ActionsRequired() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ActionsRequired
+	}).(pulumi.StringPtrOutput)
+}
+
+// The description for the private link service connection state.
+func (o PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponsePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Status of the the private link service connection. Valid values are Pending, Approved, Rejected, or Disconnected.
+func (o PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponsePtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
 // Describes the properties of an existing private endpoint connection to the search service.
 type PrivateEndpointConnectionPropertiesResponse struct {
 	// The group ID of the Azure resource for which the private link service is for.
 	GroupId *string `pulumi:"groupId"`
 	// The private endpoint resource from Microsoft.Network provider.
-	PrivateEndpoint *PrivateEndpointConnectionPropertiesResponsePrivateEndpoint `pulumi:"privateEndpoint"`
+	PrivateEndpoint *PrivateEndpointConnectionPropertiesPrivateEndpointResponse `pulumi:"privateEndpoint"`
 	// Describes the current state of an existing Azure Private Link service connection to the private endpoint.
-	PrivateLinkServiceConnectionState *PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionState `pulumi:"privateLinkServiceConnectionState"`
+	PrivateLinkServiceConnectionState *PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
 	// The provisioning state of the private link service connection. Valid values are Updating, Deleting, Failed, Succeeded, Incomplete, or Canceled.
 	ProvisioningState *string `pulumi:"provisioningState"`
 }
@@ -1931,17 +2104,17 @@ func (o PrivateEndpointConnectionPropertiesResponseOutput) GroupId() pulumi.Stri
 }
 
 // The private endpoint resource from Microsoft.Network provider.
-func (o PrivateEndpointConnectionPropertiesResponseOutput) PrivateEndpoint() PrivateEndpointConnectionPropertiesResponsePrivateEndpointPtrOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionPropertiesResponse) *PrivateEndpointConnectionPropertiesResponsePrivateEndpoint {
+func (o PrivateEndpointConnectionPropertiesResponseOutput) PrivateEndpoint() PrivateEndpointConnectionPropertiesPrivateEndpointResponsePtrOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionPropertiesResponse) *PrivateEndpointConnectionPropertiesPrivateEndpointResponse {
 		return v.PrivateEndpoint
-	}).(PrivateEndpointConnectionPropertiesResponsePrivateEndpointPtrOutput)
+	}).(PrivateEndpointConnectionPropertiesPrivateEndpointResponsePtrOutput)
 }
 
 // Describes the current state of an existing Azure Private Link service connection to the private endpoint.
-func (o PrivateEndpointConnectionPropertiesResponseOutput) PrivateLinkServiceConnectionState() PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionStatePtrOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionPropertiesResponse) *PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionState {
+func (o PrivateEndpointConnectionPropertiesResponseOutput) PrivateLinkServiceConnectionState() PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponsePtrOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionPropertiesResponse) *PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponse {
 		return v.PrivateLinkServiceConnectionState
-	}).(PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionStatePtrOutput)
+	}).(PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponsePtrOutput)
 }
 
 // The provisioning state of the private link service connection. Valid values are Updating, Deleting, Failed, Succeeded, Incomplete, or Canceled.
@@ -1984,23 +2157,23 @@ func (o PrivateEndpointConnectionPropertiesResponsePtrOutput) GroupId() pulumi.S
 }
 
 // The private endpoint resource from Microsoft.Network provider.
-func (o PrivateEndpointConnectionPropertiesResponsePtrOutput) PrivateEndpoint() PrivateEndpointConnectionPropertiesResponsePrivateEndpointPtrOutput {
-	return o.ApplyT(func(v *PrivateEndpointConnectionPropertiesResponse) *PrivateEndpointConnectionPropertiesResponsePrivateEndpoint {
+func (o PrivateEndpointConnectionPropertiesResponsePtrOutput) PrivateEndpoint() PrivateEndpointConnectionPropertiesPrivateEndpointResponsePtrOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnectionPropertiesResponse) *PrivateEndpointConnectionPropertiesPrivateEndpointResponse {
 		if v == nil {
 			return nil
 		}
 		return v.PrivateEndpoint
-	}).(PrivateEndpointConnectionPropertiesResponsePrivateEndpointPtrOutput)
+	}).(PrivateEndpointConnectionPropertiesPrivateEndpointResponsePtrOutput)
 }
 
 // Describes the current state of an existing Azure Private Link service connection to the private endpoint.
-func (o PrivateEndpointConnectionPropertiesResponsePtrOutput) PrivateLinkServiceConnectionState() PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionStatePtrOutput {
-	return o.ApplyT(func(v *PrivateEndpointConnectionPropertiesResponse) *PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionState {
+func (o PrivateEndpointConnectionPropertiesResponsePtrOutput) PrivateLinkServiceConnectionState() PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponsePtrOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnectionPropertiesResponse) *PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponse {
 		if v == nil {
 			return nil
 		}
 		return v.PrivateLinkServiceConnectionState
-	}).(PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionStatePtrOutput)
+	}).(PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponsePtrOutput)
 }
 
 // The provisioning state of the private link service connection. Valid values are Updating, Deleting, Failed, Succeeded, Incomplete, or Canceled.
@@ -2010,179 +2183,6 @@ func (o PrivateEndpointConnectionPropertiesResponsePtrOutput) ProvisioningState(
 			return nil
 		}
 		return v.ProvisioningState
-	}).(pulumi.StringPtrOutput)
-}
-
-// The private endpoint resource from Microsoft.Network provider.
-type PrivateEndpointConnectionPropertiesResponsePrivateEndpoint struct {
-	// The resource ID of the private endpoint resource from Microsoft.Network provider.
-	Id *string `pulumi:"id"`
-}
-
-// The private endpoint resource from Microsoft.Network provider.
-type PrivateEndpointConnectionPropertiesResponsePrivateEndpointOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointConnectionPropertiesResponsePrivateEndpointOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointConnectionPropertiesResponsePrivateEndpoint)(nil)).Elem()
-}
-
-func (o PrivateEndpointConnectionPropertiesResponsePrivateEndpointOutput) ToPrivateEndpointConnectionPropertiesResponsePrivateEndpointOutput() PrivateEndpointConnectionPropertiesResponsePrivateEndpointOutput {
-	return o
-}
-
-func (o PrivateEndpointConnectionPropertiesResponsePrivateEndpointOutput) ToPrivateEndpointConnectionPropertiesResponsePrivateEndpointOutputWithContext(ctx context.Context) PrivateEndpointConnectionPropertiesResponsePrivateEndpointOutput {
-	return o
-}
-
-// The resource ID of the private endpoint resource from Microsoft.Network provider.
-func (o PrivateEndpointConnectionPropertiesResponsePrivateEndpointOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionPropertiesResponsePrivateEndpoint) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-type PrivateEndpointConnectionPropertiesResponsePrivateEndpointPtrOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointConnectionPropertiesResponsePrivateEndpointPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PrivateEndpointConnectionPropertiesResponsePrivateEndpoint)(nil)).Elem()
-}
-
-func (o PrivateEndpointConnectionPropertiesResponsePrivateEndpointPtrOutput) ToPrivateEndpointConnectionPropertiesResponsePrivateEndpointPtrOutput() PrivateEndpointConnectionPropertiesResponsePrivateEndpointPtrOutput {
-	return o
-}
-
-func (o PrivateEndpointConnectionPropertiesResponsePrivateEndpointPtrOutput) ToPrivateEndpointConnectionPropertiesResponsePrivateEndpointPtrOutputWithContext(ctx context.Context) PrivateEndpointConnectionPropertiesResponsePrivateEndpointPtrOutput {
-	return o
-}
-
-func (o PrivateEndpointConnectionPropertiesResponsePrivateEndpointPtrOutput) Elem() PrivateEndpointConnectionPropertiesResponsePrivateEndpointOutput {
-	return o.ApplyT(func(v *PrivateEndpointConnectionPropertiesResponsePrivateEndpoint) PrivateEndpointConnectionPropertiesResponsePrivateEndpoint {
-		if v != nil {
-			return *v
-		}
-		var ret PrivateEndpointConnectionPropertiesResponsePrivateEndpoint
-		return ret
-	}).(PrivateEndpointConnectionPropertiesResponsePrivateEndpointOutput)
-}
-
-// The resource ID of the private endpoint resource from Microsoft.Network provider.
-func (o PrivateEndpointConnectionPropertiesResponsePrivateEndpointPtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateEndpointConnectionPropertiesResponsePrivateEndpoint) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-// Describes the current state of an existing Azure Private Link service connection to the private endpoint.
-type PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionState struct {
-	// A description of any extra actions that may be required.
-	ActionsRequired *string `pulumi:"actionsRequired"`
-	// The description for the private link service connection state.
-	Description *string `pulumi:"description"`
-	// Status of the the private link service connection. Valid values are Pending, Approved, Rejected, or Disconnected.
-	Status *string `pulumi:"status"`
-}
-
-// Defaults sets the appropriate defaults for PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionState
-func (val *PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionState) Defaults() *PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionState {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.ActionsRequired == nil {
-		actionsRequired_ := "None"
-		tmp.ActionsRequired = &actionsRequired_
-	}
-	return &tmp
-}
-
-// Describes the current state of an existing Azure Private Link service connection to the private endpoint.
-type PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionStateOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionStateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionState)(nil)).Elem()
-}
-
-func (o PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionStateOutput) ToPrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionStateOutput() PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionStateOutput {
-	return o
-}
-
-func (o PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionStateOutput) ToPrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionStateOutputWithContext(ctx context.Context) PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionStateOutput {
-	return o
-}
-
-// A description of any extra actions that may be required.
-func (o PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionStateOutput) ActionsRequired() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionState) *string {
-		return v.ActionsRequired
-	}).(pulumi.StringPtrOutput)
-}
-
-// The description for the private link service connection state.
-func (o PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionStateOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionState) *string {
-		return v.Description
-	}).(pulumi.StringPtrOutput)
-}
-
-// Status of the the private link service connection. Valid values are Pending, Approved, Rejected, or Disconnected.
-func (o PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionStateOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionState) *string {
-		return v.Status
-	}).(pulumi.StringPtrOutput)
-}
-
-type PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionStatePtrOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionStatePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionState)(nil)).Elem()
-}
-
-func (o PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionStatePtrOutput) ToPrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionStatePtrOutput() PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionStatePtrOutput {
-	return o
-}
-
-func (o PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionStatePtrOutput) ToPrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionStatePtrOutputWithContext(ctx context.Context) PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionStatePtrOutput {
-	return o
-}
-
-func (o PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionStatePtrOutput) Elem() PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionStateOutput {
-	return o.ApplyT(func(v *PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionState) PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionState {
-		if v != nil {
-			return *v
-		}
-		var ret PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionState
-		return ret
-	}).(PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionStateOutput)
-}
-
-// A description of any extra actions that may be required.
-func (o PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionStatePtrOutput) ActionsRequired() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionState) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ActionsRequired
-	}).(pulumi.StringPtrOutput)
-}
-
-// The description for the private link service connection state.
-func (o PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionStatePtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionState) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Description
-	}).(pulumi.StringPtrOutput)
-}
-
-// Status of the the private link service connection. Valid values are Pending, Approved, Rejected, or Disconnected.
-func (o PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionStatePtrOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionState) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Status
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3125,14 +3125,14 @@ func init() {
 	pulumi.RegisterOutputType(PrivateEndpointConnectionPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionPropertiesPrivateEndpointOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionPropertiesPrivateEndpointPtrOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointConnectionPropertiesPrivateEndpointResponseOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointConnectionPropertiesPrivateEndpointResponsePtrOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStatePtrOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponseOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponsePtrOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionPropertiesResponsePtrOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointConnectionPropertiesResponsePrivateEndpointOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointConnectionPropertiesResponsePrivateEndpointPtrOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionStateOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionStatePtrOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseArrayOutput{})
 	pulumi.RegisterOutputType(QueryKeyResponseOutput{})

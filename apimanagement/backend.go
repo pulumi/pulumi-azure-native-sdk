@@ -14,9 +14,9 @@ import (
 
 // Backend details.
 //
-// Uses Azure REST API version 2022-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
+// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
 //
-// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Backend struct {
 	pulumi.CustomResourceState
 
@@ -29,11 +29,12 @@ type Backend struct {
 	// Backend Description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The name of the resource
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringOutput                        `pulumi:"name"`
+	Pool BackendBaseParametersResponsePoolPtrOutput `pulumi:"pool"`
 	// Backend Properties contract
 	Properties BackendPropertiesResponseOutput `pulumi:"properties"`
-	// Backend communication protocol.
-	Protocol pulumi.StringOutput `pulumi:"protocol"`
+	// Backend communication protocol. Required when backend type is 'Single'.
+	Protocol pulumi.StringPtrOutput `pulumi:"protocol"`
 	// Backend gateway Contract Properties
 	Proxy BackendProxyContractResponsePtrOutput `pulumi:"proxy"`
 	// Management Uri of the Resource in External System. This URL can be the Arm Resource Id of Logic Apps, Function Apps or API Apps.
@@ -44,8 +45,8 @@ type Backend struct {
 	Tls BackendTlsPropertiesResponsePtrOutput `pulumi:"tls"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
-	// Runtime Url of the Backend.
-	Url pulumi.StringOutput `pulumi:"url"`
+	// Runtime Url of the Backend. Required when backend type is 'Single'.
+	Url pulumi.StringPtrOutput `pulumi:"url"`
 }
 
 // NewBackend registers a new resource with the given unique name, arguments, and options.
@@ -55,17 +56,11 @@ func NewBackend(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Protocol == nil {
-		return nil, errors.New("invalid value for required argument 'Protocol'")
-	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
-	}
-	if args.Url == nil {
-		return nil, errors.New("invalid value for required argument 'Url'")
 	}
 	if args.Tls != nil {
 		args.Tls = args.Tls.ToBackendTlsPropertiesPtrOutput().ApplyT(func(v *BackendTlsProperties) *BackendTlsProperties { return v.Defaults() }).(BackendTlsPropertiesPtrOutput)
@@ -185,11 +180,12 @@ type backendArgs struct {
 	// Backend Credentials Contract Properties
 	Credentials *BackendCredentialsContract `pulumi:"credentials"`
 	// Backend Description.
-	Description *string `pulumi:"description"`
+	Description *string                    `pulumi:"description"`
+	Pool        *BackendBaseParametersPool `pulumi:"pool"`
 	// Backend Properties contract
 	Properties *BackendProperties `pulumi:"properties"`
-	// Backend communication protocol.
-	Protocol string `pulumi:"protocol"`
+	// Backend communication protocol. Required when backend type is 'Single'.
+	Protocol *string `pulumi:"protocol"`
 	// Backend gateway Contract Properties
 	Proxy *BackendProxyContract `pulumi:"proxy"`
 	// The name of the resource group. The name is case insensitive.
@@ -202,8 +198,10 @@ type backendArgs struct {
 	Title *string `pulumi:"title"`
 	// Backend TLS Properties
 	Tls *BackendTlsProperties `pulumi:"tls"`
-	// Runtime Url of the Backend.
-	Url string `pulumi:"url"`
+	// Type of the backend. A backend can be either Single or Pool.
+	Type *string `pulumi:"type"`
+	// Runtime Url of the Backend. Required when backend type is 'Single'.
+	Url *string `pulumi:"url"`
 }
 
 // The set of arguments for constructing a Backend resource.
@@ -216,10 +214,11 @@ type BackendArgs struct {
 	Credentials BackendCredentialsContractPtrInput
 	// Backend Description.
 	Description pulumi.StringPtrInput
+	Pool        BackendBaseParametersPoolPtrInput
 	// Backend Properties contract
 	Properties BackendPropertiesPtrInput
-	// Backend communication protocol.
-	Protocol pulumi.StringInput
+	// Backend communication protocol. Required when backend type is 'Single'.
+	Protocol pulumi.StringPtrInput
 	// Backend gateway Contract Properties
 	Proxy BackendProxyContractPtrInput
 	// The name of the resource group. The name is case insensitive.
@@ -232,8 +231,10 @@ type BackendArgs struct {
 	Title pulumi.StringPtrInput
 	// Backend TLS Properties
 	Tls BackendTlsPropertiesPtrInput
-	// Runtime Url of the Backend.
-	Url pulumi.StringInput
+	// Type of the backend. A backend can be either Single or Pool.
+	Type pulumi.StringPtrInput
+	// Runtime Url of the Backend. Required when backend type is 'Single'.
+	Url pulumi.StringPtrInput
 }
 
 func (BackendArgs) ElementType() reflect.Type {
@@ -298,14 +299,18 @@ func (o BackendOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backend) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o BackendOutput) Pool() BackendBaseParametersResponsePoolPtrOutput {
+	return o.ApplyT(func(v *Backend) BackendBaseParametersResponsePoolPtrOutput { return v.Pool }).(BackendBaseParametersResponsePoolPtrOutput)
+}
+
 // Backend Properties contract
 func (o BackendOutput) Properties() BackendPropertiesResponseOutput {
 	return o.ApplyT(func(v *Backend) BackendPropertiesResponseOutput { return v.Properties }).(BackendPropertiesResponseOutput)
 }
 
-// Backend communication protocol.
-func (o BackendOutput) Protocol() pulumi.StringOutput {
-	return o.ApplyT(func(v *Backend) pulumi.StringOutput { return v.Protocol }).(pulumi.StringOutput)
+// Backend communication protocol. Required when backend type is 'Single'.
+func (o BackendOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Backend) pulumi.StringPtrOutput { return v.Protocol }).(pulumi.StringPtrOutput)
 }
 
 // Backend gateway Contract Properties
@@ -333,9 +338,9 @@ func (o BackendOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backend) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// Runtime Url of the Backend.
-func (o BackendOutput) Url() pulumi.StringOutput {
-	return o.ApplyT(func(v *Backend) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
+// Runtime Url of the Backend. Required when backend type is 'Single'.
+func (o BackendOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Backend) pulumi.StringPtrOutput { return v.Url }).(pulumi.StringPtrOutput)
 }
 
 func init() {

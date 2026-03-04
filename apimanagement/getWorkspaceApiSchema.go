@@ -13,9 +13,9 @@ import (
 
 // Get the schema configuration at the API level.
 //
-// Uses Azure REST API version 2022-09-01-preview.
+// Uses Azure REST API version 2024-05-01.
 //
-// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupWorkspaceApiSchema(ctx *pulumi.Context, args *LookupWorkspaceApiSchemaArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceApiSchemaResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceApiSchemaResult
@@ -45,7 +45,7 @@ type LookupWorkspaceApiSchemaResult struct {
 	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Types definitions. Used for Swagger/OpenAPI v2/v3 schemas only, null otherwise.
 	Components interface{} `pulumi:"components"`
-	// Must be a valid a media type used in a Content-Type header as defined in the RFC 2616. Media type of the schema document (e.g. application/json, application/xml). </br> - `Swagger` Schema use `application/vnd.ms-azure-apim.swagger.definitions+json` </br> - `WSDL` Schema use `application/vnd.ms-azure-apim.xsd+xml` </br> - `OpenApi` Schema use `application/vnd.oai.openapi.components+json` </br> - `WADL Schema` use `application/vnd.ms-azure-apim.wadl.grammars+xml`.
+	// Must be a valid a media type used in a Content-Type header as defined in the RFC 2616. Media type of the schema document (e.g. application/json, application/xml). </br> - `Swagger` Schema use `application/vnd.ms-azure-apim.swagger.definitions+json` </br> - `WSDL` Schema use `application/vnd.ms-azure-apim.xsd+xml` </br> - `OpenApi` Schema use `application/vnd.oai.openapi.components+json` </br> - `WADL Schema` use `application/vnd.ms-azure-apim.wadl.grammars+xml` </br> - `OData Schema` use `application/vnd.ms-azure-apim.odata.schema` </br> - `gRPC Schema` use `text/protobuf`.
 	ContentType string `pulumi:"contentType"`
 	// Types definitions. Used for Swagger/OpenAPI v1 schemas only, null otherwise.
 	Definitions interface{} `pulumi:"definitions"`
@@ -53,6 +53,8 @@ type LookupWorkspaceApiSchemaResult struct {
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name string `pulumi:"name"`
+	// The provisioning state
+	ProvisioningState string `pulumi:"provisioningState"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// Json escaped string defining the document representing the Schema. Used for schemas other than Swagger/OpenAPI.
@@ -110,7 +112,7 @@ func (o LookupWorkspaceApiSchemaResultOutput) Components() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupWorkspaceApiSchemaResult) interface{} { return v.Components }).(pulumi.AnyOutput)
 }
 
-// Must be a valid a media type used in a Content-Type header as defined in the RFC 2616. Media type of the schema document (e.g. application/json, application/xml). </br> - `Swagger` Schema use `application/vnd.ms-azure-apim.swagger.definitions+json` </br> - `WSDL` Schema use `application/vnd.ms-azure-apim.xsd+xml` </br> - `OpenApi` Schema use `application/vnd.oai.openapi.components+json` </br> - `WADL Schema` use `application/vnd.ms-azure-apim.wadl.grammars+xml`.
+// Must be a valid a media type used in a Content-Type header as defined in the RFC 2616. Media type of the schema document (e.g. application/json, application/xml). </br> - `Swagger` Schema use `application/vnd.ms-azure-apim.swagger.definitions+json` </br> - `WSDL` Schema use `application/vnd.ms-azure-apim.xsd+xml` </br> - `OpenApi` Schema use `application/vnd.oai.openapi.components+json` </br> - `WADL Schema` use `application/vnd.ms-azure-apim.wadl.grammars+xml` </br> - `OData Schema` use `application/vnd.ms-azure-apim.odata.schema` </br> - `gRPC Schema` use `text/protobuf`.
 func (o LookupWorkspaceApiSchemaResultOutput) ContentType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceApiSchemaResult) string { return v.ContentType }).(pulumi.StringOutput)
 }
@@ -128,6 +130,11 @@ func (o LookupWorkspaceApiSchemaResultOutput) Id() pulumi.StringOutput {
 // The name of the resource
 func (o LookupWorkspaceApiSchemaResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceApiSchemaResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The provisioning state
+func (o LookupWorkspaceApiSchemaResultOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkspaceApiSchemaResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

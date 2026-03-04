@@ -32,17 +32,19 @@ type Policy struct {
 	FactName pulumi.StringPtrOutput `pulumi:"factName"`
 	// The location of the resource.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
-	// The name of the resource.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning status of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The status of the policy.
 	Status pulumi.StringPtrOutput `pulumi:"status"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The tags of the resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The threshold of the policy (i.e. a number for MaxValuePolicy, and a JSON array of values for AllowedValuesPolicy).
 	Threshold pulumi.StringPtrOutput `pulumi:"threshold"`
-	// The type of the resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The unique immutable identifier of a resource (Guid).
 	UniqueIdentifier pulumi.StringOutput `pulumi:"uniqueIdentifier"`
@@ -121,7 +123,7 @@ type policyArgs struct {
 	LabName string `pulumi:"labName"`
 	// The location of the resource.
 	Location *string `pulumi:"location"`
-	// The name of the Schedule
+	// The name of the Policy
 	Name *string `pulumi:"name"`
 	// policysets
 	PolicySetName string `pulumi:"policySetName"`
@@ -149,7 +151,7 @@ type PolicyArgs struct {
 	LabName pulumi.StringInput
 	// The location of the resource.
 	Location pulumi.StringPtrInput
-	// The name of the Schedule
+	// The name of the Policy
 	Name pulumi.StringPtrInput
 	// policysets
 	PolicySetName pulumi.StringInput
@@ -235,7 +237,7 @@ func (o PolicyOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// The name of the resource.
+// The name of the resource
 func (o PolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -250,6 +252,11 @@ func (o PolicyOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringPtrOutput { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o PolicyOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Policy) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
 // The tags of the resource.
 func (o PolicyOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
@@ -260,7 +267,7 @@ func (o PolicyOutput) Threshold() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringPtrOutput { return v.Threshold }).(pulumi.StringPtrOutput)
 }
 
-// The type of the resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o PolicyOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

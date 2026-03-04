@@ -3973,14 +3973,10 @@ func (o ClusterKeyResponseArrayOutput) Index(i pulumi.IntInput) ClusterKeyRespon
 	}).(ClusterKeyResponseOutput)
 }
 
-// Properties of a Garnet cache cluster.
+// Properties of a managed Cassandra cluster.
 type ClusterResourceProperties struct {
-	// Allocation state of the cluster and data center resources. Active implies the virtual machines of the cluster are allocated, deallocated implies virtual machines and resources are deallocated.
-	AllocationState *string `pulumi:"allocationState"`
 	// Which authentication method Cassandra should use to authenticate clients. 'None' turns off authentication, so should not be used except in emergencies. 'Cassandra' is the default password based authentication. The default is 'Cassandra'.
 	AuthenticationMethod *string `pulumi:"authenticationMethod"`
-	// If the data center has Availability Zone support, apply it to the Virtual Machine ScaleSet that host the garnet cluster virtual machines.
-	AvailabilityZone *bool `pulumi:"availabilityZone"`
 	// How to connect to the azure services needed for running the cluster
 	AzureConnectionMethod *string `pulumi:"azureConnectionMethod"`
 	// Whether Cassandra audit logging is enabled
@@ -3991,14 +3987,10 @@ type ClusterResourceProperties struct {
 	ClientCertificates []Certificate `pulumi:"clientCertificates"`
 	// If you need to set the clusterName property in cassandra.yaml to something besides the resource name of the cluster, set the value to use on this property.
 	ClusterNameOverride *string `pulumi:"clusterNameOverride"`
-	// Type of the cluster. If set to Production, some operations might not be permitted on cluster.
-	ClusterType *string `pulumi:"clusterType"`
 	// Whether the cluster and associated data centers has been deallocated.
 	Deallocated *bool `pulumi:"deallocated"`
 	// Resource id of a subnet that this cluster's management service should have its network interface attached to. The subnet must be routable to all subnets that will be delegated to data centers. The resource id must be of the form '/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Network/virtualNetworks/<virtual network>/subnets/<subnet>'
 	DelegatedManagementSubnetId *string `pulumi:"delegatedManagementSubnetId"`
-	// Extensions to be added or updated on cluster.
-	Extensions []string `pulumi:"extensions"`
 	// List of TLS certificates used to authorize gossip from unmanaged data centers. The TLS certificates of all nodes in unmanaged data centers must be verifiable using one of the certificates provided in this property.
 	ExternalGossipCertificates []Certificate `pulumi:"externalGossipCertificates"`
 	// List of IP addresses of seed nodes in unmanaged data centers. These will be added to the seed node lists of all managed nodes.
@@ -4007,10 +3999,6 @@ type ClusterResourceProperties struct {
 	HoursBetweenBackups *int `pulumi:"hoursBetweenBackups"`
 	// Initial password for clients connecting as admin to the cluster. Should be changed after cluster creation. Returns null on GET. This field only applies when the authenticationMethod field is 'Cassandra'.
 	InitialCassandraAdminPassword *string `pulumi:"initialCassandraAdminPassword"`
-	// Number of nodes
-	NodeCount *int `pulumi:"nodeCount"`
-	// Virtual Machine SKU used for clusters. Default value is Standard_DS14_v2
-	NodeSku *string `pulumi:"nodeSku"`
 	// Hostname or IP address where the Prometheus endpoint containing data about the managed Cassandra nodes can be reached.
 	PrometheusEndpoint *SeedNode `pulumi:"prometheusEndpoint"`
 	// Error related to resource provisioning.
@@ -4019,12 +4007,8 @@ type ClusterResourceProperties struct {
 	ProvisioningState *string `pulumi:"provisioningState"`
 	// Should automatic repairs run on this cluster? If omitted, this is true, and should stay true unless you are running a hybrid cluster where you are already doing your own repairs.
 	RepairEnabled *bool `pulumi:"repairEnabled"`
-	// Number of copies of data maintained by the cluster
-	ReplicationFactor *int `pulumi:"replicationFactor"`
 	// To create an empty cluster, omit this field or set it to null. To restore a backup into a new cluster, set this field to the resource id of the backup.
 	RestoreFromBackupId *string `pulumi:"restoreFromBackupId"`
-	// Resource id of a subnet that this cluster's management service should have its network interface attached to. The subnet must be routable to all subnets that will be delegated to data centers. The resource id must be of the form '/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Network/virtualNetworks/<virtual network>/subnets/<subnet>'
-	SubnetId *string `pulumi:"subnetId"`
 }
 
 // ClusterResourcePropertiesInput is an input type that accepts ClusterResourcePropertiesArgs and ClusterResourcePropertiesOutput values.
@@ -4038,14 +4022,10 @@ type ClusterResourcePropertiesInput interface {
 	ToClusterResourcePropertiesOutputWithContext(context.Context) ClusterResourcePropertiesOutput
 }
 
-// Properties of a Garnet cache cluster.
+// Properties of a managed Cassandra cluster.
 type ClusterResourcePropertiesArgs struct {
-	// Allocation state of the cluster and data center resources. Active implies the virtual machines of the cluster are allocated, deallocated implies virtual machines and resources are deallocated.
-	AllocationState pulumi.StringPtrInput `pulumi:"allocationState"`
 	// Which authentication method Cassandra should use to authenticate clients. 'None' turns off authentication, so should not be used except in emergencies. 'Cassandra' is the default password based authentication. The default is 'Cassandra'.
 	AuthenticationMethod pulumi.StringPtrInput `pulumi:"authenticationMethod"`
-	// If the data center has Availability Zone support, apply it to the Virtual Machine ScaleSet that host the garnet cluster virtual machines.
-	AvailabilityZone pulumi.BoolPtrInput `pulumi:"availabilityZone"`
 	// How to connect to the azure services needed for running the cluster
 	AzureConnectionMethod pulumi.StringPtrInput `pulumi:"azureConnectionMethod"`
 	// Whether Cassandra audit logging is enabled
@@ -4056,14 +4036,10 @@ type ClusterResourcePropertiesArgs struct {
 	ClientCertificates CertificateArrayInput `pulumi:"clientCertificates"`
 	// If you need to set the clusterName property in cassandra.yaml to something besides the resource name of the cluster, set the value to use on this property.
 	ClusterNameOverride pulumi.StringPtrInput `pulumi:"clusterNameOverride"`
-	// Type of the cluster. If set to Production, some operations might not be permitted on cluster.
-	ClusterType pulumi.StringPtrInput `pulumi:"clusterType"`
 	// Whether the cluster and associated data centers has been deallocated.
 	Deallocated pulumi.BoolPtrInput `pulumi:"deallocated"`
 	// Resource id of a subnet that this cluster's management service should have its network interface attached to. The subnet must be routable to all subnets that will be delegated to data centers. The resource id must be of the form '/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Network/virtualNetworks/<virtual network>/subnets/<subnet>'
 	DelegatedManagementSubnetId pulumi.StringPtrInput `pulumi:"delegatedManagementSubnetId"`
-	// Extensions to be added or updated on cluster.
-	Extensions pulumi.StringArrayInput `pulumi:"extensions"`
 	// List of TLS certificates used to authorize gossip from unmanaged data centers. The TLS certificates of all nodes in unmanaged data centers must be verifiable using one of the certificates provided in this property.
 	ExternalGossipCertificates CertificateArrayInput `pulumi:"externalGossipCertificates"`
 	// List of IP addresses of seed nodes in unmanaged data centers. These will be added to the seed node lists of all managed nodes.
@@ -4072,10 +4048,6 @@ type ClusterResourcePropertiesArgs struct {
 	HoursBetweenBackups pulumi.IntPtrInput `pulumi:"hoursBetweenBackups"`
 	// Initial password for clients connecting as admin to the cluster. Should be changed after cluster creation. Returns null on GET. This field only applies when the authenticationMethod field is 'Cassandra'.
 	InitialCassandraAdminPassword pulumi.StringPtrInput `pulumi:"initialCassandraAdminPassword"`
-	// Number of nodes
-	NodeCount pulumi.IntPtrInput `pulumi:"nodeCount"`
-	// Virtual Machine SKU used for clusters. Default value is Standard_DS14_v2
-	NodeSku pulumi.StringPtrInput `pulumi:"nodeSku"`
 	// Hostname or IP address where the Prometheus endpoint containing data about the managed Cassandra nodes can be reached.
 	PrometheusEndpoint SeedNodePtrInput `pulumi:"prometheusEndpoint"`
 	// Error related to resource provisioning.
@@ -4084,12 +4056,8 @@ type ClusterResourcePropertiesArgs struct {
 	ProvisioningState pulumi.StringPtrInput `pulumi:"provisioningState"`
 	// Should automatic repairs run on this cluster? If omitted, this is true, and should stay true unless you are running a hybrid cluster where you are already doing your own repairs.
 	RepairEnabled pulumi.BoolPtrInput `pulumi:"repairEnabled"`
-	// Number of copies of data maintained by the cluster
-	ReplicationFactor pulumi.IntPtrInput `pulumi:"replicationFactor"`
 	// To create an empty cluster, omit this field or set it to null. To restore a backup into a new cluster, set this field to the resource id of the backup.
 	RestoreFromBackupId pulumi.StringPtrInput `pulumi:"restoreFromBackupId"`
-	// Resource id of a subnet that this cluster's management service should have its network interface attached to. The subnet must be routable to all subnets that will be delegated to data centers. The resource id must be of the form '/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Network/virtualNetworks/<virtual network>/subnets/<subnet>'
-	SubnetId pulumi.StringPtrInput `pulumi:"subnetId"`
 }
 
 func (ClusterResourcePropertiesArgs) ElementType() reflect.Type {
@@ -4145,7 +4113,7 @@ func (i *clusterResourcePropertiesPtrType) ToClusterResourcePropertiesPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterResourcePropertiesPtrOutput)
 }
 
-// Properties of a Garnet cache cluster.
+// Properties of a managed Cassandra cluster.
 type ClusterResourcePropertiesOutput struct{ *pulumi.OutputState }
 
 func (ClusterResourcePropertiesOutput) ElementType() reflect.Type {
@@ -4170,19 +4138,9 @@ func (o ClusterResourcePropertiesOutput) ToClusterResourcePropertiesPtrOutputWit
 	}).(ClusterResourcePropertiesPtrOutput)
 }
 
-// Allocation state of the cluster and data center resources. Active implies the virtual machines of the cluster are allocated, deallocated implies virtual machines and resources are deallocated.
-func (o ClusterResourcePropertiesOutput) AllocationState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterResourceProperties) *string { return v.AllocationState }).(pulumi.StringPtrOutput)
-}
-
 // Which authentication method Cassandra should use to authenticate clients. 'None' turns off authentication, so should not be used except in emergencies. 'Cassandra' is the default password based authentication. The default is 'Cassandra'.
 func (o ClusterResourcePropertiesOutput) AuthenticationMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterResourceProperties) *string { return v.AuthenticationMethod }).(pulumi.StringPtrOutput)
-}
-
-// If the data center has Availability Zone support, apply it to the Virtual Machine ScaleSet that host the garnet cluster virtual machines.
-func (o ClusterResourcePropertiesOutput) AvailabilityZone() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ClusterResourceProperties) *bool { return v.AvailabilityZone }).(pulumi.BoolPtrOutput)
 }
 
 // How to connect to the azure services needed for running the cluster
@@ -4210,11 +4168,6 @@ func (o ClusterResourcePropertiesOutput) ClusterNameOverride() pulumi.StringPtrO
 	return o.ApplyT(func(v ClusterResourceProperties) *string { return v.ClusterNameOverride }).(pulumi.StringPtrOutput)
 }
 
-// Type of the cluster. If set to Production, some operations might not be permitted on cluster.
-func (o ClusterResourcePropertiesOutput) ClusterType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterResourceProperties) *string { return v.ClusterType }).(pulumi.StringPtrOutput)
-}
-
 // Whether the cluster and associated data centers has been deallocated.
 func (o ClusterResourcePropertiesOutput) Deallocated() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterResourceProperties) *bool { return v.Deallocated }).(pulumi.BoolPtrOutput)
@@ -4223,11 +4176,6 @@ func (o ClusterResourcePropertiesOutput) Deallocated() pulumi.BoolPtrOutput {
 // Resource id of a subnet that this cluster's management service should have its network interface attached to. The subnet must be routable to all subnets that will be delegated to data centers. The resource id must be of the form '/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Network/virtualNetworks/<virtual network>/subnets/<subnet>'
 func (o ClusterResourcePropertiesOutput) DelegatedManagementSubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterResourceProperties) *string { return v.DelegatedManagementSubnetId }).(pulumi.StringPtrOutput)
-}
-
-// Extensions to be added or updated on cluster.
-func (o ClusterResourcePropertiesOutput) Extensions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ClusterResourceProperties) []string { return v.Extensions }).(pulumi.StringArrayOutput)
 }
 
 // List of TLS certificates used to authorize gossip from unmanaged data centers. The TLS certificates of all nodes in unmanaged data centers must be verifiable using one of the certificates provided in this property.
@@ -4250,16 +4198,6 @@ func (o ClusterResourcePropertiesOutput) InitialCassandraAdminPassword() pulumi.
 	return o.ApplyT(func(v ClusterResourceProperties) *string { return v.InitialCassandraAdminPassword }).(pulumi.StringPtrOutput)
 }
 
-// Number of nodes
-func (o ClusterResourcePropertiesOutput) NodeCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ClusterResourceProperties) *int { return v.NodeCount }).(pulumi.IntPtrOutput)
-}
-
-// Virtual Machine SKU used for clusters. Default value is Standard_DS14_v2
-func (o ClusterResourcePropertiesOutput) NodeSku() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterResourceProperties) *string { return v.NodeSku }).(pulumi.StringPtrOutput)
-}
-
 // Hostname or IP address where the Prometheus endpoint containing data about the managed Cassandra nodes can be reached.
 func (o ClusterResourcePropertiesOutput) PrometheusEndpoint() SeedNodePtrOutput {
 	return o.ApplyT(func(v ClusterResourceProperties) *SeedNode { return v.PrometheusEndpoint }).(SeedNodePtrOutput)
@@ -4280,19 +4218,9 @@ func (o ClusterResourcePropertiesOutput) RepairEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterResourceProperties) *bool { return v.RepairEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Number of copies of data maintained by the cluster
-func (o ClusterResourcePropertiesOutput) ReplicationFactor() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ClusterResourceProperties) *int { return v.ReplicationFactor }).(pulumi.IntPtrOutput)
-}
-
 // To create an empty cluster, omit this field or set it to null. To restore a backup into a new cluster, set this field to the resource id of the backup.
 func (o ClusterResourcePropertiesOutput) RestoreFromBackupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterResourceProperties) *string { return v.RestoreFromBackupId }).(pulumi.StringPtrOutput)
-}
-
-// Resource id of a subnet that this cluster's management service should have its network interface attached to. The subnet must be routable to all subnets that will be delegated to data centers. The resource id must be of the form '/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Network/virtualNetworks/<virtual network>/subnets/<subnet>'
-func (o ClusterResourcePropertiesOutput) SubnetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterResourceProperties) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
 }
 
 type ClusterResourcePropertiesPtrOutput struct{ *pulumi.OutputState }
@@ -4319,16 +4247,6 @@ func (o ClusterResourcePropertiesPtrOutput) Elem() ClusterResourcePropertiesOutp
 	}).(ClusterResourcePropertiesOutput)
 }
 
-// Allocation state of the cluster and data center resources. Active implies the virtual machines of the cluster are allocated, deallocated implies virtual machines and resources are deallocated.
-func (o ClusterResourcePropertiesPtrOutput) AllocationState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ClusterResourceProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AllocationState
-	}).(pulumi.StringPtrOutput)
-}
-
 // Which authentication method Cassandra should use to authenticate clients. 'None' turns off authentication, so should not be used except in emergencies. 'Cassandra' is the default password based authentication. The default is 'Cassandra'.
 func (o ClusterResourcePropertiesPtrOutput) AuthenticationMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterResourceProperties) *string {
@@ -4337,16 +4255,6 @@ func (o ClusterResourcePropertiesPtrOutput) AuthenticationMethod() pulumi.String
 		}
 		return v.AuthenticationMethod
 	}).(pulumi.StringPtrOutput)
-}
-
-// If the data center has Availability Zone support, apply it to the Virtual Machine ScaleSet that host the garnet cluster virtual machines.
-func (o ClusterResourcePropertiesPtrOutput) AvailabilityZone() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ClusterResourceProperties) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.AvailabilityZone
-	}).(pulumi.BoolPtrOutput)
 }
 
 // How to connect to the azure services needed for running the cluster
@@ -4399,16 +4307,6 @@ func (o ClusterResourcePropertiesPtrOutput) ClusterNameOverride() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// Type of the cluster. If set to Production, some operations might not be permitted on cluster.
-func (o ClusterResourcePropertiesPtrOutput) ClusterType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ClusterResourceProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ClusterType
-	}).(pulumi.StringPtrOutput)
-}
-
 // Whether the cluster and associated data centers has been deallocated.
 func (o ClusterResourcePropertiesPtrOutput) Deallocated() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterResourceProperties) *bool {
@@ -4427,16 +4325,6 @@ func (o ClusterResourcePropertiesPtrOutput) DelegatedManagementSubnetId() pulumi
 		}
 		return v.DelegatedManagementSubnetId
 	}).(pulumi.StringPtrOutput)
-}
-
-// Extensions to be added or updated on cluster.
-func (o ClusterResourcePropertiesPtrOutput) Extensions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ClusterResourceProperties) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Extensions
-	}).(pulumi.StringArrayOutput)
 }
 
 // List of TLS certificates used to authorize gossip from unmanaged data centers. The TLS certificates of all nodes in unmanaged data centers must be verifiable using one of the certificates provided in this property.
@@ -4476,26 +4364,6 @@ func (o ClusterResourcePropertiesPtrOutput) InitialCassandraAdminPassword() pulu
 			return nil
 		}
 		return v.InitialCassandraAdminPassword
-	}).(pulumi.StringPtrOutput)
-}
-
-// Number of nodes
-func (o ClusterResourcePropertiesPtrOutput) NodeCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ClusterResourceProperties) *int {
-		if v == nil {
-			return nil
-		}
-		return v.NodeCount
-	}).(pulumi.IntPtrOutput)
-}
-
-// Virtual Machine SKU used for clusters. Default value is Standard_DS14_v2
-func (o ClusterResourcePropertiesPtrOutput) NodeSku() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ClusterResourceProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.NodeSku
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4539,16 +4407,6 @@ func (o ClusterResourcePropertiesPtrOutput) RepairEnabled() pulumi.BoolPtrOutput
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Number of copies of data maintained by the cluster
-func (o ClusterResourcePropertiesPtrOutput) ReplicationFactor() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ClusterResourceProperties) *int {
-		if v == nil {
-			return nil
-		}
-		return v.ReplicationFactor
-	}).(pulumi.IntPtrOutput)
-}
-
 // To create an empty cluster, omit this field or set it to null. To restore a backup into a new cluster, set this field to the resource id of the backup.
 func (o ClusterResourcePropertiesPtrOutput) RestoreFromBackupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterResourceProperties) *string {
@@ -4557,67 +4415,6 @@ func (o ClusterResourcePropertiesPtrOutput) RestoreFromBackupId() pulumi.StringP
 		}
 		return v.RestoreFromBackupId
 	}).(pulumi.StringPtrOutput)
-}
-
-// Resource id of a subnet that this cluster's management service should have its network interface attached to. The subnet must be routable to all subnets that will be delegated to data centers. The resource id must be of the form '/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Network/virtualNetworks/<virtual network>/subnets/<subnet>'
-func (o ClusterResourcePropertiesPtrOutput) SubnetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ClusterResourceProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SubnetId
-	}).(pulumi.StringPtrOutput)
-}
-
-type ClusterResourceResponseEndPoints struct {
-	// Ipv4 address of the endpoint
-	IpAddress *string `pulumi:"ipAddress"`
-	// Port number
-	Port *int `pulumi:"port"`
-}
-
-type ClusterResourceResponseEndPointsOutput struct{ *pulumi.OutputState }
-
-func (ClusterResourceResponseEndPointsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterResourceResponseEndPoints)(nil)).Elem()
-}
-
-func (o ClusterResourceResponseEndPointsOutput) ToClusterResourceResponseEndPointsOutput() ClusterResourceResponseEndPointsOutput {
-	return o
-}
-
-func (o ClusterResourceResponseEndPointsOutput) ToClusterResourceResponseEndPointsOutputWithContext(ctx context.Context) ClusterResourceResponseEndPointsOutput {
-	return o
-}
-
-// Ipv4 address of the endpoint
-func (o ClusterResourceResponseEndPointsOutput) IpAddress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterResourceResponseEndPoints) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
-}
-
-// Port number
-func (o ClusterResourceResponseEndPointsOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ClusterResourceResponseEndPoints) *int { return v.Port }).(pulumi.IntPtrOutput)
-}
-
-type ClusterResourceResponseEndPointsArrayOutput struct{ *pulumi.OutputState }
-
-func (ClusterResourceResponseEndPointsArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ClusterResourceResponseEndPoints)(nil)).Elem()
-}
-
-func (o ClusterResourceResponseEndPointsArrayOutput) ToClusterResourceResponseEndPointsArrayOutput() ClusterResourceResponseEndPointsArrayOutput {
-	return o
-}
-
-func (o ClusterResourceResponseEndPointsArrayOutput) ToClusterResourceResponseEndPointsArrayOutputWithContext(ctx context.Context) ClusterResourceResponseEndPointsArrayOutput {
-	return o
-}
-
-func (o ClusterResourceResponseEndPointsArrayOutput) Index(i pulumi.IntInput) ClusterResourceResponseEndPointsOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterResourceResponseEndPoints {
-		return vs[0].([]ClusterResourceResponseEndPoints)[vs[1].(int)]
-	}).(ClusterResourceResponseEndPointsOutput)
 }
 
 // Properties of a managed Cassandra cluster.
@@ -4763,102 +4560,6 @@ func (o ClusterResourceResponsePropertiesOutput) RepairEnabled() pulumi.BoolPtrO
 // List of IP addresses of seed nodes in the managed data centers. These should be added to the seed node lists of all unmanaged nodes.
 func (o ClusterResourceResponsePropertiesOutput) SeedNodes() SeedNodeResponseArrayOutput {
 	return o.ApplyT(func(v ClusterResourceResponseProperties) []SeedNodeResponse { return v.SeedNodes }).(SeedNodeResponseArrayOutput)
-}
-
-// Properties of a Garnet cache cluster.
-type ClusterResourceResponsePropertiesV1 struct {
-	// Allocation state of the cluster and data center resources. Active implies the virtual machines of the cluster are allocated, deallocated implies virtual machines and resources are deallocated.
-	AllocationState *string `pulumi:"allocationState"`
-	// If the data center has Availability Zone support, apply it to the Virtual Machine ScaleSet that host the garnet cluster virtual machines.
-	AvailabilityZone *bool `pulumi:"availabilityZone"`
-	// Type of the cluster. If set to Production, some operations might not be permitted on cluster.
-	ClusterType *string `pulumi:"clusterType"`
-	// endpoints for clients to connect to the cluster.
-	EndPoints []ClusterResourceResponseEndPoints `pulumi:"endPoints"`
-	// Extensions to be added or updated on cluster.
-	Extensions []string `pulumi:"extensions"`
-	// Number of nodes
-	NodeCount *int `pulumi:"nodeCount"`
-	// Virtual Machine SKU used for clusters. Default value is Standard_DS14_v2
-	NodeSku *string `pulumi:"nodeSku"`
-	// Error related to resource provisioning.
-	ProvisionError *ErrorDetailResponse `pulumi:"provisionError"`
-	// The status of the resource at the time the operation was called.
-	ProvisioningState string `pulumi:"provisioningState"`
-	// Number of copies of data maintained by the cluster
-	ReplicationFactor *int `pulumi:"replicationFactor"`
-	// Resource id of a subnet that this cluster's management service should have its network interface attached to. The subnet must be routable to all subnets that will be delegated to data centers. The resource id must be of the form '/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Network/virtualNetworks/<virtual network>/subnets/<subnet>'
-	SubnetId *string `pulumi:"subnetId"`
-}
-
-// Properties of a Garnet cache cluster.
-type ClusterResourceResponsePropertiesV1Output struct{ *pulumi.OutputState }
-
-func (ClusterResourceResponsePropertiesV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterResourceResponsePropertiesV1)(nil)).Elem()
-}
-
-func (o ClusterResourceResponsePropertiesV1Output) ToClusterResourceResponsePropertiesV1Output() ClusterResourceResponsePropertiesV1Output {
-	return o
-}
-
-func (o ClusterResourceResponsePropertiesV1Output) ToClusterResourceResponsePropertiesV1OutputWithContext(ctx context.Context) ClusterResourceResponsePropertiesV1Output {
-	return o
-}
-
-// Allocation state of the cluster and data center resources. Active implies the virtual machines of the cluster are allocated, deallocated implies virtual machines and resources are deallocated.
-func (o ClusterResourceResponsePropertiesV1Output) AllocationState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterResourceResponsePropertiesV1) *string { return v.AllocationState }).(pulumi.StringPtrOutput)
-}
-
-// If the data center has Availability Zone support, apply it to the Virtual Machine ScaleSet that host the garnet cluster virtual machines.
-func (o ClusterResourceResponsePropertiesV1Output) AvailabilityZone() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ClusterResourceResponsePropertiesV1) *bool { return v.AvailabilityZone }).(pulumi.BoolPtrOutput)
-}
-
-// Type of the cluster. If set to Production, some operations might not be permitted on cluster.
-func (o ClusterResourceResponsePropertiesV1Output) ClusterType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterResourceResponsePropertiesV1) *string { return v.ClusterType }).(pulumi.StringPtrOutput)
-}
-
-// endpoints for clients to connect to the cluster.
-func (o ClusterResourceResponsePropertiesV1Output) EndPoints() ClusterResourceResponseEndPointsArrayOutput {
-	return o.ApplyT(func(v ClusterResourceResponsePropertiesV1) []ClusterResourceResponseEndPoints { return v.EndPoints }).(ClusterResourceResponseEndPointsArrayOutput)
-}
-
-// Extensions to be added or updated on cluster.
-func (o ClusterResourceResponsePropertiesV1Output) Extensions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ClusterResourceResponsePropertiesV1) []string { return v.Extensions }).(pulumi.StringArrayOutput)
-}
-
-// Number of nodes
-func (o ClusterResourceResponsePropertiesV1Output) NodeCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ClusterResourceResponsePropertiesV1) *int { return v.NodeCount }).(pulumi.IntPtrOutput)
-}
-
-// Virtual Machine SKU used for clusters. Default value is Standard_DS14_v2
-func (o ClusterResourceResponsePropertiesV1Output) NodeSku() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterResourceResponsePropertiesV1) *string { return v.NodeSku }).(pulumi.StringPtrOutput)
-}
-
-// Error related to resource provisioning.
-func (o ClusterResourceResponsePropertiesV1Output) ProvisionError() ErrorDetailResponsePtrOutput {
-	return o.ApplyT(func(v ClusterResourceResponsePropertiesV1) *ErrorDetailResponse { return v.ProvisionError }).(ErrorDetailResponsePtrOutput)
-}
-
-// The status of the resource at the time the operation was called.
-func (o ClusterResourceResponsePropertiesV1Output) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v ClusterResourceResponsePropertiesV1) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// Number of copies of data maintained by the cluster
-func (o ClusterResourceResponsePropertiesV1Output) ReplicationFactor() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ClusterResourceResponsePropertiesV1) *int { return v.ReplicationFactor }).(pulumi.IntPtrOutput)
-}
-
-// Resource id of a subnet that this cluster's management service should have its network interface attached to. The subnet must be routable to all subnets that will be delegated to data centers. The resource id must be of the form '/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Network/virtualNetworks/<virtual network>/subnets/<subnet>'
-func (o ClusterResourceResponsePropertiesV1Output) SubnetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterResourceResponsePropertiesV1) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
 }
 
 // Cosmos DB Cassandra table column
@@ -9702,6 +9403,428 @@ func (o FullTextPolicyResponsePtrOutput) FullTextPaths() FullTextPathResponseArr
 		}
 		return v.FullTextPaths
 	}).(FullTextPathResponseArrayOutput)
+}
+
+// Properties of a Garnet cache cluster.
+type GarnetClusterResourceProperties struct {
+	// Allocation state of the cluster and data center resources. Active implies the virtual machines of the cluster are allocated, deallocated implies virtual machines and resources are deallocated.
+	AllocationState *string `pulumi:"allocationState"`
+	// If the data center has Availability Zone support, apply it to the Virtual Machine ScaleSet that host the garnet cluster virtual machines.
+	AvailabilityZone *bool `pulumi:"availabilityZone"`
+	// Type of the cluster. If set to Production, some operations might not be permitted on cluster.
+	ClusterType *string `pulumi:"clusterType"`
+	// Extensions to be added or updated on cluster.
+	Extensions []string `pulumi:"extensions"`
+	// Number of nodes
+	NodeCount *int `pulumi:"nodeCount"`
+	// Virtual Machine SKU used for clusters. Default value is Standard_DS14_v2
+	NodeSku *string `pulumi:"nodeSku"`
+	// Number of copies of data maintained by the cluster
+	ReplicationFactor *int `pulumi:"replicationFactor"`
+	// Resource id of a subnet that this cluster's management service should have its network interface attached to. The subnet must be routable to all subnets that will be delegated to data centers. The resource id must be of the form '/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Network/virtualNetworks/<virtual network>/subnets/<subnet>'
+	SubnetId *string `pulumi:"subnetId"`
+}
+
+// GarnetClusterResourcePropertiesInput is an input type that accepts GarnetClusterResourcePropertiesArgs and GarnetClusterResourcePropertiesOutput values.
+// You can construct a concrete instance of `GarnetClusterResourcePropertiesInput` via:
+//
+//	GarnetClusterResourcePropertiesArgs{...}
+type GarnetClusterResourcePropertiesInput interface {
+	pulumi.Input
+
+	ToGarnetClusterResourcePropertiesOutput() GarnetClusterResourcePropertiesOutput
+	ToGarnetClusterResourcePropertiesOutputWithContext(context.Context) GarnetClusterResourcePropertiesOutput
+}
+
+// Properties of a Garnet cache cluster.
+type GarnetClusterResourcePropertiesArgs struct {
+	// Allocation state of the cluster and data center resources. Active implies the virtual machines of the cluster are allocated, deallocated implies virtual machines and resources are deallocated.
+	AllocationState pulumi.StringPtrInput `pulumi:"allocationState"`
+	// If the data center has Availability Zone support, apply it to the Virtual Machine ScaleSet that host the garnet cluster virtual machines.
+	AvailabilityZone pulumi.BoolPtrInput `pulumi:"availabilityZone"`
+	// Type of the cluster. If set to Production, some operations might not be permitted on cluster.
+	ClusterType pulumi.StringPtrInput `pulumi:"clusterType"`
+	// Extensions to be added or updated on cluster.
+	Extensions pulumi.StringArrayInput `pulumi:"extensions"`
+	// Number of nodes
+	NodeCount pulumi.IntPtrInput `pulumi:"nodeCount"`
+	// Virtual Machine SKU used for clusters. Default value is Standard_DS14_v2
+	NodeSku pulumi.StringPtrInput `pulumi:"nodeSku"`
+	// Number of copies of data maintained by the cluster
+	ReplicationFactor pulumi.IntPtrInput `pulumi:"replicationFactor"`
+	// Resource id of a subnet that this cluster's management service should have its network interface attached to. The subnet must be routable to all subnets that will be delegated to data centers. The resource id must be of the form '/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Network/virtualNetworks/<virtual network>/subnets/<subnet>'
+	SubnetId pulumi.StringPtrInput `pulumi:"subnetId"`
+}
+
+func (GarnetClusterResourcePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GarnetClusterResourceProperties)(nil)).Elem()
+}
+
+func (i GarnetClusterResourcePropertiesArgs) ToGarnetClusterResourcePropertiesOutput() GarnetClusterResourcePropertiesOutput {
+	return i.ToGarnetClusterResourcePropertiesOutputWithContext(context.Background())
+}
+
+func (i GarnetClusterResourcePropertiesArgs) ToGarnetClusterResourcePropertiesOutputWithContext(ctx context.Context) GarnetClusterResourcePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GarnetClusterResourcePropertiesOutput)
+}
+
+func (i GarnetClusterResourcePropertiesArgs) ToGarnetClusterResourcePropertiesPtrOutput() GarnetClusterResourcePropertiesPtrOutput {
+	return i.ToGarnetClusterResourcePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i GarnetClusterResourcePropertiesArgs) ToGarnetClusterResourcePropertiesPtrOutputWithContext(ctx context.Context) GarnetClusterResourcePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GarnetClusterResourcePropertiesOutput).ToGarnetClusterResourcePropertiesPtrOutputWithContext(ctx)
+}
+
+// GarnetClusterResourcePropertiesPtrInput is an input type that accepts GarnetClusterResourcePropertiesArgs, GarnetClusterResourcePropertiesPtr and GarnetClusterResourcePropertiesPtrOutput values.
+// You can construct a concrete instance of `GarnetClusterResourcePropertiesPtrInput` via:
+//
+//	        GarnetClusterResourcePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GarnetClusterResourcePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToGarnetClusterResourcePropertiesPtrOutput() GarnetClusterResourcePropertiesPtrOutput
+	ToGarnetClusterResourcePropertiesPtrOutputWithContext(context.Context) GarnetClusterResourcePropertiesPtrOutput
+}
+
+type garnetClusterResourcePropertiesPtrType GarnetClusterResourcePropertiesArgs
+
+func GarnetClusterResourcePropertiesPtr(v *GarnetClusterResourcePropertiesArgs) GarnetClusterResourcePropertiesPtrInput {
+	return (*garnetClusterResourcePropertiesPtrType)(v)
+}
+
+func (*garnetClusterResourcePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GarnetClusterResourceProperties)(nil)).Elem()
+}
+
+func (i *garnetClusterResourcePropertiesPtrType) ToGarnetClusterResourcePropertiesPtrOutput() GarnetClusterResourcePropertiesPtrOutput {
+	return i.ToGarnetClusterResourcePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *garnetClusterResourcePropertiesPtrType) ToGarnetClusterResourcePropertiesPtrOutputWithContext(ctx context.Context) GarnetClusterResourcePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GarnetClusterResourcePropertiesPtrOutput)
+}
+
+// Properties of a Garnet cache cluster.
+type GarnetClusterResourcePropertiesOutput struct{ *pulumi.OutputState }
+
+func (GarnetClusterResourcePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GarnetClusterResourceProperties)(nil)).Elem()
+}
+
+func (o GarnetClusterResourcePropertiesOutput) ToGarnetClusterResourcePropertiesOutput() GarnetClusterResourcePropertiesOutput {
+	return o
+}
+
+func (o GarnetClusterResourcePropertiesOutput) ToGarnetClusterResourcePropertiesOutputWithContext(ctx context.Context) GarnetClusterResourcePropertiesOutput {
+	return o
+}
+
+func (o GarnetClusterResourcePropertiesOutput) ToGarnetClusterResourcePropertiesPtrOutput() GarnetClusterResourcePropertiesPtrOutput {
+	return o.ToGarnetClusterResourcePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o GarnetClusterResourcePropertiesOutput) ToGarnetClusterResourcePropertiesPtrOutputWithContext(ctx context.Context) GarnetClusterResourcePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GarnetClusterResourceProperties) *GarnetClusterResourceProperties {
+		return &v
+	}).(GarnetClusterResourcePropertiesPtrOutput)
+}
+
+// Allocation state of the cluster and data center resources. Active implies the virtual machines of the cluster are allocated, deallocated implies virtual machines and resources are deallocated.
+func (o GarnetClusterResourcePropertiesOutput) AllocationState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GarnetClusterResourceProperties) *string { return v.AllocationState }).(pulumi.StringPtrOutput)
+}
+
+// If the data center has Availability Zone support, apply it to the Virtual Machine ScaleSet that host the garnet cluster virtual machines.
+func (o GarnetClusterResourcePropertiesOutput) AvailabilityZone() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GarnetClusterResourceProperties) *bool { return v.AvailabilityZone }).(pulumi.BoolPtrOutput)
+}
+
+// Type of the cluster. If set to Production, some operations might not be permitted on cluster.
+func (o GarnetClusterResourcePropertiesOutput) ClusterType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GarnetClusterResourceProperties) *string { return v.ClusterType }).(pulumi.StringPtrOutput)
+}
+
+// Extensions to be added or updated on cluster.
+func (o GarnetClusterResourcePropertiesOutput) Extensions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GarnetClusterResourceProperties) []string { return v.Extensions }).(pulumi.StringArrayOutput)
+}
+
+// Number of nodes
+func (o GarnetClusterResourcePropertiesOutput) NodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GarnetClusterResourceProperties) *int { return v.NodeCount }).(pulumi.IntPtrOutput)
+}
+
+// Virtual Machine SKU used for clusters. Default value is Standard_DS14_v2
+func (o GarnetClusterResourcePropertiesOutput) NodeSku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GarnetClusterResourceProperties) *string { return v.NodeSku }).(pulumi.StringPtrOutput)
+}
+
+// Number of copies of data maintained by the cluster
+func (o GarnetClusterResourcePropertiesOutput) ReplicationFactor() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GarnetClusterResourceProperties) *int { return v.ReplicationFactor }).(pulumi.IntPtrOutput)
+}
+
+// Resource id of a subnet that this cluster's management service should have its network interface attached to. The subnet must be routable to all subnets that will be delegated to data centers. The resource id must be of the form '/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Network/virtualNetworks/<virtual network>/subnets/<subnet>'
+func (o GarnetClusterResourcePropertiesOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GarnetClusterResourceProperties) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
+}
+
+type GarnetClusterResourcePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (GarnetClusterResourcePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GarnetClusterResourceProperties)(nil)).Elem()
+}
+
+func (o GarnetClusterResourcePropertiesPtrOutput) ToGarnetClusterResourcePropertiesPtrOutput() GarnetClusterResourcePropertiesPtrOutput {
+	return o
+}
+
+func (o GarnetClusterResourcePropertiesPtrOutput) ToGarnetClusterResourcePropertiesPtrOutputWithContext(ctx context.Context) GarnetClusterResourcePropertiesPtrOutput {
+	return o
+}
+
+func (o GarnetClusterResourcePropertiesPtrOutput) Elem() GarnetClusterResourcePropertiesOutput {
+	return o.ApplyT(func(v *GarnetClusterResourceProperties) GarnetClusterResourceProperties {
+		if v != nil {
+			return *v
+		}
+		var ret GarnetClusterResourceProperties
+		return ret
+	}).(GarnetClusterResourcePropertiesOutput)
+}
+
+// Allocation state of the cluster and data center resources. Active implies the virtual machines of the cluster are allocated, deallocated implies virtual machines and resources are deallocated.
+func (o GarnetClusterResourcePropertiesPtrOutput) AllocationState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GarnetClusterResourceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AllocationState
+	}).(pulumi.StringPtrOutput)
+}
+
+// If the data center has Availability Zone support, apply it to the Virtual Machine ScaleSet that host the garnet cluster virtual machines.
+func (o GarnetClusterResourcePropertiesPtrOutput) AvailabilityZone() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GarnetClusterResourceProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AvailabilityZone
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Type of the cluster. If set to Production, some operations might not be permitted on cluster.
+func (o GarnetClusterResourcePropertiesPtrOutput) ClusterType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GarnetClusterResourceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Extensions to be added or updated on cluster.
+func (o GarnetClusterResourcePropertiesPtrOutput) Extensions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GarnetClusterResourceProperties) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Extensions
+	}).(pulumi.StringArrayOutput)
+}
+
+// Number of nodes
+func (o GarnetClusterResourcePropertiesPtrOutput) NodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GarnetClusterResourceProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Virtual Machine SKU used for clusters. Default value is Standard_DS14_v2
+func (o GarnetClusterResourcePropertiesPtrOutput) NodeSku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GarnetClusterResourceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NodeSku
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of copies of data maintained by the cluster
+func (o GarnetClusterResourcePropertiesPtrOutput) ReplicationFactor() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GarnetClusterResourceProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ReplicationFactor
+	}).(pulumi.IntPtrOutput)
+}
+
+// Resource id of a subnet that this cluster's management service should have its network interface attached to. The subnet must be routable to all subnets that will be delegated to data centers. The resource id must be of the form '/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Network/virtualNetworks/<virtual network>/subnets/<subnet>'
+func (o GarnetClusterResourcePropertiesPtrOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GarnetClusterResourceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubnetId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GarnetClusterResourceResponseEndPoints struct {
+	// Ipv4 address of the endpoint
+	IpAddress *string `pulumi:"ipAddress"`
+	// Port number
+	Port *int `pulumi:"port"`
+}
+
+type GarnetClusterResourceResponseEndPointsOutput struct{ *pulumi.OutputState }
+
+func (GarnetClusterResourceResponseEndPointsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GarnetClusterResourceResponseEndPoints)(nil)).Elem()
+}
+
+func (o GarnetClusterResourceResponseEndPointsOutput) ToGarnetClusterResourceResponseEndPointsOutput() GarnetClusterResourceResponseEndPointsOutput {
+	return o
+}
+
+func (o GarnetClusterResourceResponseEndPointsOutput) ToGarnetClusterResourceResponseEndPointsOutputWithContext(ctx context.Context) GarnetClusterResourceResponseEndPointsOutput {
+	return o
+}
+
+// Ipv4 address of the endpoint
+func (o GarnetClusterResourceResponseEndPointsOutput) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GarnetClusterResourceResponseEndPoints) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
+}
+
+// Port number
+func (o GarnetClusterResourceResponseEndPointsOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GarnetClusterResourceResponseEndPoints) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+type GarnetClusterResourceResponseEndPointsArrayOutput struct{ *pulumi.OutputState }
+
+func (GarnetClusterResourceResponseEndPointsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GarnetClusterResourceResponseEndPoints)(nil)).Elem()
+}
+
+func (o GarnetClusterResourceResponseEndPointsArrayOutput) ToGarnetClusterResourceResponseEndPointsArrayOutput() GarnetClusterResourceResponseEndPointsArrayOutput {
+	return o
+}
+
+func (o GarnetClusterResourceResponseEndPointsArrayOutput) ToGarnetClusterResourceResponseEndPointsArrayOutputWithContext(ctx context.Context) GarnetClusterResourceResponseEndPointsArrayOutput {
+	return o
+}
+
+func (o GarnetClusterResourceResponseEndPointsArrayOutput) Index(i pulumi.IntInput) GarnetClusterResourceResponseEndPointsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GarnetClusterResourceResponseEndPoints {
+		return vs[0].([]GarnetClusterResourceResponseEndPoints)[vs[1].(int)]
+	}).(GarnetClusterResourceResponseEndPointsOutput)
+}
+
+// Properties of a Garnet cache cluster.
+type GarnetClusterResourceResponseProperties struct {
+	// Allocation state of the cluster and data center resources. Active implies the virtual machines of the cluster are allocated, deallocated implies virtual machines and resources are deallocated.
+	AllocationState *string `pulumi:"allocationState"`
+	// If the data center has Availability Zone support, apply it to the Virtual Machine ScaleSet that host the garnet cluster virtual machines.
+	AvailabilityZone *bool `pulumi:"availabilityZone"`
+	// Type of the cluster. If set to Production, some operations might not be permitted on cluster.
+	ClusterType *string `pulumi:"clusterType"`
+	// endpoints for clients to connect to the cluster.
+	EndPoints []GarnetClusterResourceResponseEndPoints `pulumi:"endPoints"`
+	// Extensions to be added or updated on cluster.
+	Extensions []string `pulumi:"extensions"`
+	// Number of nodes
+	NodeCount *int `pulumi:"nodeCount"`
+	// Virtual Machine SKU used for clusters. Default value is Standard_DS14_v2
+	NodeSku *string `pulumi:"nodeSku"`
+	// Error related to resource provisioning.
+	ProvisionError *ErrorDetailResponse `pulumi:"provisionError"`
+	// The status of the resource at the time the operation was called.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Number of copies of data maintained by the cluster
+	ReplicationFactor *int `pulumi:"replicationFactor"`
+	// Resource id of a subnet that this cluster's management service should have its network interface attached to. The subnet must be routable to all subnets that will be delegated to data centers. The resource id must be of the form '/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Network/virtualNetworks/<virtual network>/subnets/<subnet>'
+	SubnetId *string `pulumi:"subnetId"`
+}
+
+// Properties of a Garnet cache cluster.
+type GarnetClusterResourceResponsePropertiesOutput struct{ *pulumi.OutputState }
+
+func (GarnetClusterResourceResponsePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GarnetClusterResourceResponseProperties)(nil)).Elem()
+}
+
+func (o GarnetClusterResourceResponsePropertiesOutput) ToGarnetClusterResourceResponsePropertiesOutput() GarnetClusterResourceResponsePropertiesOutput {
+	return o
+}
+
+func (o GarnetClusterResourceResponsePropertiesOutput) ToGarnetClusterResourceResponsePropertiesOutputWithContext(ctx context.Context) GarnetClusterResourceResponsePropertiesOutput {
+	return o
+}
+
+// Allocation state of the cluster and data center resources. Active implies the virtual machines of the cluster are allocated, deallocated implies virtual machines and resources are deallocated.
+func (o GarnetClusterResourceResponsePropertiesOutput) AllocationState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GarnetClusterResourceResponseProperties) *string { return v.AllocationState }).(pulumi.StringPtrOutput)
+}
+
+// If the data center has Availability Zone support, apply it to the Virtual Machine ScaleSet that host the garnet cluster virtual machines.
+func (o GarnetClusterResourceResponsePropertiesOutput) AvailabilityZone() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GarnetClusterResourceResponseProperties) *bool { return v.AvailabilityZone }).(pulumi.BoolPtrOutput)
+}
+
+// Type of the cluster. If set to Production, some operations might not be permitted on cluster.
+func (o GarnetClusterResourceResponsePropertiesOutput) ClusterType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GarnetClusterResourceResponseProperties) *string { return v.ClusterType }).(pulumi.StringPtrOutput)
+}
+
+// endpoints for clients to connect to the cluster.
+func (o GarnetClusterResourceResponsePropertiesOutput) EndPoints() GarnetClusterResourceResponseEndPointsArrayOutput {
+	return o.ApplyT(func(v GarnetClusterResourceResponseProperties) []GarnetClusterResourceResponseEndPoints {
+		return v.EndPoints
+	}).(GarnetClusterResourceResponseEndPointsArrayOutput)
+}
+
+// Extensions to be added or updated on cluster.
+func (o GarnetClusterResourceResponsePropertiesOutput) Extensions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GarnetClusterResourceResponseProperties) []string { return v.Extensions }).(pulumi.StringArrayOutput)
+}
+
+// Number of nodes
+func (o GarnetClusterResourceResponsePropertiesOutput) NodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GarnetClusterResourceResponseProperties) *int { return v.NodeCount }).(pulumi.IntPtrOutput)
+}
+
+// Virtual Machine SKU used for clusters. Default value is Standard_DS14_v2
+func (o GarnetClusterResourceResponsePropertiesOutput) NodeSku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GarnetClusterResourceResponseProperties) *string { return v.NodeSku }).(pulumi.StringPtrOutput)
+}
+
+// Error related to resource provisioning.
+func (o GarnetClusterResourceResponsePropertiesOutput) ProvisionError() ErrorDetailResponsePtrOutput {
+	return o.ApplyT(func(v GarnetClusterResourceResponseProperties) *ErrorDetailResponse { return v.ProvisionError }).(ErrorDetailResponsePtrOutput)
+}
+
+// The status of the resource at the time the operation was called.
+func (o GarnetClusterResourceResponsePropertiesOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v GarnetClusterResourceResponseProperties) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Number of copies of data maintained by the cluster
+func (o GarnetClusterResourceResponsePropertiesOutput) ReplicationFactor() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GarnetClusterResourceResponseProperties) *int { return v.ReplicationFactor }).(pulumi.IntPtrOutput)
+}
+
+// Resource id of a subnet that this cluster's management service should have its network interface attached to. The subnet must be routable to all subnets that will be delegated to data centers. The resource id must be of the form '/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Network/virtualNetworks/<virtual network>/subnets/<subnet>'
+func (o GarnetClusterResourceResponsePropertiesOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GarnetClusterResourceResponseProperties) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
 }
 
 // Resource for a regional service location.
@@ -21408,10 +21531,7 @@ func init() {
 	pulumi.RegisterOutputType(ClusterKeyResponseArrayOutput{})
 	pulumi.RegisterOutputType(ClusterResourcePropertiesOutput{})
 	pulumi.RegisterOutputType(ClusterResourcePropertiesPtrOutput{})
-	pulumi.RegisterOutputType(ClusterResourceResponseEndPointsOutput{})
-	pulumi.RegisterOutputType(ClusterResourceResponseEndPointsArrayOutput{})
 	pulumi.RegisterOutputType(ClusterResourceResponsePropertiesOutput{})
-	pulumi.RegisterOutputType(ClusterResourceResponsePropertiesV1Output{})
 	pulumi.RegisterOutputType(ColumnOutput{})
 	pulumi.RegisterOutputType(ColumnArrayOutput{})
 	pulumi.RegisterOutputType(ColumnResponseOutput{})
@@ -21498,6 +21618,11 @@ func init() {
 	pulumi.RegisterOutputType(FullTextPolicyPtrOutput{})
 	pulumi.RegisterOutputType(FullTextPolicyResponseOutput{})
 	pulumi.RegisterOutputType(FullTextPolicyResponsePtrOutput{})
+	pulumi.RegisterOutputType(GarnetClusterResourcePropertiesOutput{})
+	pulumi.RegisterOutputType(GarnetClusterResourcePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(GarnetClusterResourceResponseEndPointsOutput{})
+	pulumi.RegisterOutputType(GarnetClusterResourceResponseEndPointsArrayOutput{})
+	pulumi.RegisterOutputType(GarnetClusterResourceResponsePropertiesOutput{})
 	pulumi.RegisterOutputType(GraphAPIComputeRegionalServiceResourceResponseOutput{})
 	pulumi.RegisterOutputType(GraphAPIComputeRegionalServiceResourceResponseArrayOutput{})
 	pulumi.RegisterOutputType(GraphAPIComputeServiceResourceCreateUpdatePropertiesOutput{})

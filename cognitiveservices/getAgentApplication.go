@@ -44,7 +44,7 @@ type LookupAgentApplicationResult struct {
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// [Required] Additional attributes of the entity.
-	Properties AgenticApplicationResponse `pulumi:"properties"`
+	Properties AgenticApplicationPropertiesResponse `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -106,8 +106,8 @@ func (o LookupAgentApplicationResultOutput) Name() pulumi.StringOutput {
 }
 
 // [Required] Additional attributes of the entity.
-func (o LookupAgentApplicationResultOutput) Properties() AgenticApplicationResponseOutput {
-	return o.ApplyT(func(v LookupAgentApplicationResult) AgenticApplicationResponse { return v.Properties }).(AgenticApplicationResponseOutput)
+func (o LookupAgentApplicationResultOutput) Properties() AgenticApplicationPropertiesResponseOutput {
+	return o.ApplyT(func(v LookupAgentApplicationResult) AgenticApplicationPropertiesResponse { return v.Properties }).(AgenticApplicationPropertiesResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

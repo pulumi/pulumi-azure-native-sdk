@@ -14,6 +14,8 @@ import (
 // Returns an auto import job.
 //
 // Uses Azure REST API version 2025-07-01.
+//
+// Other available API versions: 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagecache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupAutoImportJob(ctx *pulumi.Context, args *LookupAutoImportJobArgs, opts ...pulumi.InvokeOption) (*LookupAutoImportJobResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAutoImportJobResult

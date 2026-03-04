@@ -13,9 +13,9 @@ import (
 
 // Retrieve the connection identified by connection name.
 //
-// Uses Azure REST API version 2023-11-01.
+// Uses Azure REST API version 2024-10-23.
 //
-// Other available API versions: 2015-10-31, 2019-06-01, 2020-01-13-preview, 2022-08-08, 2023-05-15-preview, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2015-10-31, 2019-06-01, 2020-01-13-preview, 2022-08-08, 2023-05-15-preview, 2023-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupConnection(ctx *pulumi.Context, args *LookupConnectionArgs, opts ...pulumi.InvokeOption) (*LookupConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConnectionResult
@@ -47,13 +47,15 @@ type LookupConnectionResult struct {
 	Description *string `pulumi:"description"`
 	// Gets the field definition values of the connection.
 	FieldDefinitionValues map[string]string `pulumi:"fieldDefinitionValues"`
-	// Fully qualified resource Id for the resource
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Gets the last modified time.
 	LastModifiedTime string `pulumi:"lastModifiedTime"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// The type of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -119,7 +121,7 @@ func (o LookupConnectionResultOutput) FieldDefinitionValues() pulumi.StringMapOu
 	return o.ApplyT(func(v LookupConnectionResult) map[string]string { return v.FieldDefinitionValues }).(pulumi.StringMapOutput)
 }
 
-// Fully qualified resource Id for the resource
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupConnectionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -134,7 +136,12 @@ func (o LookupConnectionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The type of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupConnectionResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupConnectionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupConnectionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -15,7 +15,7 @@ var _ = utilities.GetEnvOrDefault
 
 // Schedules applicable to a virtual machine. The schedules may have been defined on a VM or on lab level.
 type ApplicableScheduleResponse struct {
-	// The identifier of the resource.
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The auto-shutdown schedule, if one has been set at the lab or lab resource level.
 	LabVmsShutdown *ScheduleResponse `pulumi:"labVmsShutdown"`
@@ -23,11 +23,13 @@ type ApplicableScheduleResponse struct {
 	LabVmsStartup *ScheduleResponse `pulumi:"labVmsStartup"`
 	// The location of the resource.
 	Location *string `pulumi:"location"`
-	// The name of the resource.
+	// The name of the resource
 	Name string `pulumi:"name"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The tags of the resource.
 	Tags map[string]string `pulumi:"tags"`
-	// The type of the resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -59,7 +61,7 @@ func (o ApplicableScheduleResponseOutput) ToApplicableScheduleResponseOutputWith
 	return o
 }
 
-// The identifier of the resource.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o ApplicableScheduleResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ApplicableScheduleResponse) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -79,9 +81,14 @@ func (o ApplicableScheduleResponseOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicableScheduleResponse) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// The name of the resource.
+// The name of the resource
 func (o ApplicableScheduleResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ApplicableScheduleResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o ApplicableScheduleResponseOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v ApplicableScheduleResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The tags of the resource.
@@ -89,7 +96,7 @@ func (o ApplicableScheduleResponseOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ApplicableScheduleResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o ApplicableScheduleResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ApplicableScheduleResponse) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -7852,11 +7859,11 @@ type ScheduleResponse struct {
 	DailyRecurrence *DayDetailsResponse `pulumi:"dailyRecurrence"`
 	// If the schedule will occur multiple times a day, specify the hourly recurrence.
 	HourlyRecurrence *HourDetailsResponse `pulumi:"hourlyRecurrence"`
-	// The identifier of the resource.
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// The location of the resource.
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// The name of the resource.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Notification settings.
 	NotificationSettings *NotificationSettingsResponse `pulumi:"notificationSettings"`
@@ -7864,7 +7871,9 @@ type ScheduleResponse struct {
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The status of the schedule (i.e. Enabled, Disabled)
 	Status *string `pulumi:"status"`
-	// The tags of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The resource ID to which the schedule belongs
 	TargetResourceId *string `pulumi:"targetResourceId"`
@@ -7872,7 +7881,7 @@ type ScheduleResponse struct {
 	TaskType *string `pulumi:"taskType"`
 	// The time zone ID (e.g. China Standard Time, Greenland Standard Time, Pacific Standard time, etc.). The possible values for this property can be found in `IReadOnlyCollection<string> TimeZoneConverter.TZConvert.KnownWindowsTimeZoneIds` (https://github.com/mattjohnsonpint/TimeZoneConverter/blob/main/README.md)
 	TimeZoneId *string `pulumi:"timeZoneId"`
-	// The type of the resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// The unique immutable identifier of a resource (Guid).
 	UniqueIdentifier string `pulumi:"uniqueIdentifier"`
@@ -7925,17 +7934,17 @@ func (o ScheduleResponseOutput) HourlyRecurrence() HourDetailsResponsePtrOutput 
 	return o.ApplyT(func(v ScheduleResponse) *HourDetailsResponse { return v.HourlyRecurrence }).(HourDetailsResponsePtrOutput)
 }
 
-// The identifier of the resource.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o ScheduleResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ScheduleResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The location of the resource.
+// The geo-location where the resource lives
 func (o ScheduleResponseOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScheduleResponse) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// The name of the resource.
+// The name of the resource
 func (o ScheduleResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ScheduleResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -7955,7 +7964,12 @@ func (o ScheduleResponseOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScheduleResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-// The tags of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o ScheduleResponseOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v ScheduleResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// Resource tags.
 func (o ScheduleResponseOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ScheduleResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -7975,7 +7989,7 @@ func (o ScheduleResponseOutput) TimeZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScheduleResponse) *string { return v.TimeZoneId }).(pulumi.StringPtrOutput)
 }
 
-// The type of the resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o ScheduleResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ScheduleResponse) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -8044,7 +8058,7 @@ func (o ScheduleResponsePtrOutput) HourlyRecurrence() HourDetailsResponsePtrOutp
 	}).(HourDetailsResponsePtrOutput)
 }
 
-// The identifier of the resource.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o ScheduleResponsePtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScheduleResponse) *string {
 		if v == nil {
@@ -8054,7 +8068,7 @@ func (o ScheduleResponsePtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The location of the resource.
+// The geo-location where the resource lives
 func (o ScheduleResponsePtrOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScheduleResponse) *string {
 		if v == nil {
@@ -8064,7 +8078,7 @@ func (o ScheduleResponsePtrOutput) Location() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The name of the resource.
+// The name of the resource
 func (o ScheduleResponsePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScheduleResponse) *string {
 		if v == nil {
@@ -8104,7 +8118,17 @@ func (o ScheduleResponsePtrOutput) Status() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The tags of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o ScheduleResponsePtrOutput) SystemData() SystemDataResponsePtrOutput {
+	return o.ApplyT(func(v *ScheduleResponse) *SystemDataResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.SystemData
+	}).(SystemDataResponsePtrOutput)
+}
+
+// Resource tags.
 func (o ScheduleResponsePtrOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ScheduleResponse) map[string]string {
 		if v == nil {
@@ -8144,7 +8168,7 @@ func (o ScheduleResponsePtrOutput) TimeZoneId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The type of the resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o ScheduleResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScheduleResponse) *string {
 		if v == nil {
@@ -9000,6 +9024,151 @@ func (o SubnetSharedPublicIpAddressConfigurationResponsePtrOutput) AllowedPorts(
 		}
 		return v.AllowedPorts
 	}).(PortResponseArrayOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+type SystemDataResponse struct {
+	// The timestamp of resource creation (UTC).
+	CreatedAt *string `pulumi:"createdAt"`
+	// The identity that created the resource.
+	CreatedBy *string `pulumi:"createdBy"`
+	// The type of identity that created the resource.
+	CreatedByType *string `pulumi:"createdByType"`
+	// The timestamp of resource last modification (UTC)
+	LastModifiedAt *string `pulumi:"lastModifiedAt"`
+	// The identity that last modified the resource.
+	LastModifiedBy *string `pulumi:"lastModifiedBy"`
+	// The type of identity that last modified the resource.
+	LastModifiedByType *string `pulumi:"lastModifiedByType"`
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+type SystemDataResponseOutput struct{ *pulumi.OutputState }
+
+func (SystemDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemDataResponse)(nil)).Elem()
+}
+
+func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataResponseOutput {
+	return o
+}
+
+func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
+	return o
+}
+
+// The timestamp of resource creation (UTC).
+func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// The identity that created the resource.
+func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that created the resource.
+func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
+}
+
+// The timestamp of resource last modification (UTC)
+func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
+}
+
+// The identity that last modified the resource.
+func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that last modified the resource.
+func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
+}
+
+type SystemDataResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SystemDataResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SystemDataResponse)(nil)).Elem()
+}
+
+func (o SystemDataResponsePtrOutput) ToSystemDataResponsePtrOutput() SystemDataResponsePtrOutput {
+	return o
+}
+
+func (o SystemDataResponsePtrOutput) ToSystemDataResponsePtrOutputWithContext(ctx context.Context) SystemDataResponsePtrOutput {
+	return o
+}
+
+func (o SystemDataResponsePtrOutput) Elem() SystemDataResponseOutput {
+	return o.ApplyT(func(v *SystemDataResponse) SystemDataResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SystemDataResponse
+		return ret
+	}).(SystemDataResponseOutput)
+}
+
+// The timestamp of resource creation (UTC).
+func (o SystemDataResponsePtrOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemDataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedAt
+	}).(pulumi.StringPtrOutput)
+}
+
+// The identity that created the resource.
+func (o SystemDataResponsePtrOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemDataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that created the resource.
+func (o SystemDataResponsePtrOutput) CreatedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemDataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedByType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The timestamp of resource last modification (UTC)
+func (o SystemDataResponsePtrOutput) LastModifiedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemDataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastModifiedAt
+	}).(pulumi.StringPtrOutput)
+}
+
+// The identity that last modified the resource.
+func (o SystemDataResponsePtrOutput) LastModifiedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemDataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastModifiedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that last modified the resource.
+func (o SystemDataResponsePtrOutput) LastModifiedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemDataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastModifiedByType
+	}).(pulumi.StringPtrOutput)
 }
 
 // Identity attributes of a lab user.
@@ -10153,6 +10322,8 @@ func init() {
 	pulumi.RegisterOutputType(SubnetSharedPublicIpAddressConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(SubnetSharedPublicIpAddressConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(SubnetSharedPublicIpAddressConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(SystemDataResponsePtrOutput{})
 	pulumi.RegisterOutputType(UserIdentityOutput{})
 	pulumi.RegisterOutputType(UserIdentityPtrOutput{})
 	pulumi.RegisterOutputType(UserIdentityResponseOutput{})

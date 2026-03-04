@@ -14,6 +14,8 @@ import (
 // Get file shares usage data.
 //
 // Uses Azure REST API version 2025-06-01-preview.
+//
+// Other available API versions: 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native fileshares [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func GetFileShareUsageData(ctx *pulumi.Context, args *GetFileShareUsageDataArgs, opts ...pulumi.InvokeOption) (*GetFileShareUsageDataResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetFileShareUsageDataResult

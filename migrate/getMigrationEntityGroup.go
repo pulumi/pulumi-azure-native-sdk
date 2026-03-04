@@ -14,6 +14,8 @@ import (
 // Get a MigrationEntityGroup
 //
 // Uses Azure REST API version 2025-03-30-preview.
+//
+// Other available API versions: 2025-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native migrate [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupMigrationEntityGroup(ctx *pulumi.Context, args *LookupMigrationEntityGroupArgs, opts ...pulumi.InvokeOption) (*LookupMigrationEntityGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMigrationEntityGroupResult

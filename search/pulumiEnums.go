@@ -2251,7 +2251,7 @@ const (
 	SkuNameStandard = SkuName("standard")
 	// Similar to 'standard', but with more capacity per search unit.
 	SkuNameStandard2 = SkuName("standard2")
-	//  The largest Standard offering with up to 12 partitions and 12 replicas (or up to 3 partitions with more indexes if you also set the hostingMode property to 'highDensity').
+	// The largest Standard offering with up to 12 partitions and 12 replicas (or up to 3 partitions with more indexes if you also set the hostingMode property to 'highDensity').
 	SkuNameStandard3 = SkuName("standard3")
 	// Billable tier for a dedicated service that supports 1TB per partition, up to 12 partitions.
 	SkuNameStorageOptimizedL1 = SkuName("storage_optimized_l1")

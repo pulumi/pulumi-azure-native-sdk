@@ -14,9 +14,9 @@ import (
 
 // Definition of hybrid runbook worker group.
 //
-// Uses Azure REST API version 2023-11-01. In version 2.x of the Azure Native provider, it used API version 2022-08-08.
+// Uses Azure REST API version 2024-10-23. In version 2.x of the Azure Native provider, it used API version 2022-08-08.
 //
-// Other available API versions: 2021-06-22, 2022-02-22, 2022-08-08, 2023-05-15-preview, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-06-22, 2022-02-22, 2022-08-08, 2023-05-15-preview, 2023-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type HybridRunbookWorkerGroup struct {
 	pulumi.CustomResourceState
 
@@ -26,11 +26,15 @@ type HybridRunbookWorkerGroup struct {
 	Credential RunAsCredentialAssociationPropertyResponsePtrOutput `pulumi:"credential"`
 	// Type of the HybridWorkerGroup.
 	GroupType pulumi.StringPtrOutput `pulumi:"groupType"`
+	// The geo-location where the resource lives
+	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Resource system metadata.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// The type of the resource.
+	// Resource tags.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -181,17 +185,27 @@ func (o HybridRunbookWorkerGroupOutput) GroupType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HybridRunbookWorkerGroup) pulumi.StringPtrOutput { return v.GroupType }).(pulumi.StringPtrOutput)
 }
 
+// The geo-location where the resource lives
+func (o HybridRunbookWorkerGroupOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *HybridRunbookWorkerGroup) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The name of the resource
 func (o HybridRunbookWorkerGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *HybridRunbookWorkerGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Resource system metadata.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o HybridRunbookWorkerGroupOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *HybridRunbookWorkerGroup) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// The type of the resource.
+// Resource tags.
+func (o HybridRunbookWorkerGroupOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *HybridRunbookWorkerGroup) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o HybridRunbookWorkerGroupOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *HybridRunbookWorkerGroup) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

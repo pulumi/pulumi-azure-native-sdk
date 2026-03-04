@@ -14,18 +14,18 @@ import (
 
 // Azure Resource Manager resource envelope.
 //
-// Uses Azure REST API version 2025-09-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
+// Uses Azure REST API version 2025-12-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
 //
-// Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type CodeContainer struct {
 	pulumi.CustomResourceState
 
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
-	// [Required] Additional attributes of the entity.
-	CodeContainerProperties CodeContainerResponseOutput `pulumi:"codeContainerProperties"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
+	// [Required] Additional attributes of the entity.
+	Properties CodeContainerPropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -39,8 +39,8 @@ func NewCodeContainer(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.CodeContainerProperties == nil {
-		return nil, errors.New("invalid value for required argument 'CodeContainerProperties'")
+	if args.Properties == nil {
+		return nil, errors.New("invalid value for required argument 'Properties'")
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
@@ -48,7 +48,7 @@ func NewCodeContainer(ctx *pulumi.Context,
 	if args.WorkspaceName == nil {
 		return nil, errors.New("invalid value for required argument 'WorkspaceName'")
 	}
-	args.CodeContainerProperties = args.CodeContainerProperties.ToCodeContainerTypeOutput().ApplyT(func(v CodeContainerType) CodeContainerType { return *v.Defaults() }).(CodeContainerTypeOutput)
+	args.Properties = args.Properties.ToCodeContainerPropertiesOutput().ApplyT(func(v CodeContainerProperties) CodeContainerProperties { return *v.Defaults() }).(CodeContainerPropertiesOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20210301preview:CodeContainer"),
@@ -128,6 +128,9 @@ func NewCodeContainer(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20251001preview:CodeContainer"),
 		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20251201:CodeContainer"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -163,10 +166,10 @@ func (CodeContainerState) ElementType() reflect.Type {
 }
 
 type codeContainerArgs struct {
-	// [Required] Additional attributes of the entity.
-	CodeContainerProperties CodeContainerType `pulumi:"codeContainerProperties"`
 	// Container name. This is case-sensitive.
 	Name *string `pulumi:"name"`
+	// [Required] Additional attributes of the entity.
+	Properties CodeContainerProperties `pulumi:"properties"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Name of Azure Machine Learning workspace.
@@ -175,10 +178,10 @@ type codeContainerArgs struct {
 
 // The set of arguments for constructing a CodeContainer resource.
 type CodeContainerArgs struct {
-	// [Required] Additional attributes of the entity.
-	CodeContainerProperties CodeContainerTypeInput
 	// Container name. This is case-sensitive.
 	Name pulumi.StringPtrInput
+	// [Required] Additional attributes of the entity.
+	Properties CodeContainerPropertiesInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Name of Azure Machine Learning workspace.
@@ -227,14 +230,14 @@ func (o CodeContainerOutput) AzureApiVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *CodeContainer) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
-// [Required] Additional attributes of the entity.
-func (o CodeContainerOutput) CodeContainerProperties() CodeContainerResponseOutput {
-	return o.ApplyT(func(v *CodeContainer) CodeContainerResponseOutput { return v.CodeContainerProperties }).(CodeContainerResponseOutput)
-}
-
 // The name of the resource
 func (o CodeContainerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CodeContainer) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// [Required] Additional attributes of the entity.
+func (o CodeContainerOutput) Properties() CodeContainerPropertiesResponseOutput {
+	return o.ApplyT(func(v *CodeContainer) CodeContainerPropertiesResponseOutput { return v.Properties }).(CodeContainerPropertiesResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

@@ -980,11 +980,11 @@ func (o ContentHashResponsePtrOutput) Value() pulumi.StringPtrOutput {
 
 // Definition of the content link.
 type ContentLink struct {
-	// Sets the hash.
+	// Gets or sets the hash.
 	ContentHash *ContentHash `pulumi:"contentHash"`
-	// Sets the uri of the content.
+	// Gets or sets the uri of content.
 	Uri *string `pulumi:"uri"`
-	// Sets the version of the content.
+	// Gets or sets the version of the content.
 	Version *string `pulumi:"version"`
 }
 
@@ -1001,11 +1001,11 @@ type ContentLinkInput interface {
 
 // Definition of the content link.
 type ContentLinkArgs struct {
-	// Sets the hash.
+	// Gets or sets the hash.
 	ContentHash ContentHashPtrInput `pulumi:"contentHash"`
-	// Sets the uri of the content.
+	// Gets or sets the uri of content.
 	Uri pulumi.StringPtrInput `pulumi:"uri"`
-	// Sets the version of the content.
+	// Gets or sets the version of the content.
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
@@ -1087,17 +1087,17 @@ func (o ContentLinkOutput) ToContentLinkPtrOutputWithContext(ctx context.Context
 	}).(ContentLinkPtrOutput)
 }
 
-// Sets the hash.
+// Gets or sets the hash.
 func (o ContentLinkOutput) ContentHash() ContentHashPtrOutput {
 	return o.ApplyT(func(v ContentLink) *ContentHash { return v.ContentHash }).(ContentHashPtrOutput)
 }
 
-// Sets the uri of the content.
+// Gets or sets the uri of content.
 func (o ContentLinkOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContentLink) *string { return v.Uri }).(pulumi.StringPtrOutput)
 }
 
-// Sets the version of the content.
+// Gets or sets the version of the content.
 func (o ContentLinkOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContentLink) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -1126,7 +1126,7 @@ func (o ContentLinkPtrOutput) Elem() ContentLinkOutput {
 	}).(ContentLinkOutput)
 }
 
-// Sets the hash.
+// Gets or sets the hash.
 func (o ContentLinkPtrOutput) ContentHash() ContentHashPtrOutput {
 	return o.ApplyT(func(v *ContentLink) *ContentHash {
 		if v == nil {
@@ -1136,7 +1136,7 @@ func (o ContentLinkPtrOutput) ContentHash() ContentHashPtrOutput {
 	}).(ContentHashPtrOutput)
 }
 
-// Sets the uri of the content.
+// Gets or sets the uri of content.
 func (o ContentLinkPtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContentLink) *string {
 		if v == nil {
@@ -1146,7 +1146,7 @@ func (o ContentLinkPtrOutput) Uri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Sets the version of the content.
+// Gets or sets the version of the content.
 func (o ContentLinkPtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContentLink) *string {
 		if v == nil {
@@ -2901,7 +2901,7 @@ func (o IdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
 
 // Identity for the resource.
 type IdentityResponse struct {
-	// The principal ID of resource identity.
+	// The principal ID of resource identity. The value must be an UUID.
 	PrincipalId string `pulumi:"principalId"`
 	// The tenant ID of resource.
 	TenantId string `pulumi:"tenantId"`
@@ -2926,7 +2926,7 @@ func (o IdentityResponseOutput) ToIdentityResponseOutputWithContext(ctx context.
 	return o
 }
 
-// The principal ID of resource identity.
+// The principal ID of resource identity. The value must be an UUID.
 func (o IdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
 }
@@ -2972,7 +2972,7 @@ func (o IdentityResponsePtrOutput) Elem() IdentityResponseOutput {
 	}).(IdentityResponseOutput)
 }
 
-// The principal ID of resource identity.
+// The principal ID of resource identity. The value must be an UUID.
 func (o IdentityResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IdentityResponse) *string {
 		if v == nil {
@@ -3654,9 +3654,9 @@ func (o LinuxPropertiesResponsePtrOutput) RebootSetting() pulumi.StringPtrOutput
 
 // Definition of the module error info type.
 type ModuleErrorInfoResponse struct {
-	// Gets the error code.
+	// Gets or sets the error code.
 	Code *string `pulumi:"code"`
-	// Gets the error message.
+	// Gets or sets the error message.
 	Message *string `pulumi:"message"`
 }
 
@@ -3675,12 +3675,12 @@ func (o ModuleErrorInfoResponseOutput) ToModuleErrorInfoResponseOutputWithContex
 	return o
 }
 
-// Gets the error code.
+// Gets or sets the error code.
 func (o ModuleErrorInfoResponseOutput) Code() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ModuleErrorInfoResponse) *string { return v.Code }).(pulumi.StringPtrOutput)
 }
 
-// Gets the error message.
+// Gets or sets the error message.
 func (o ModuleErrorInfoResponseOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ModuleErrorInfoResponse) *string { return v.Message }).(pulumi.StringPtrOutput)
 }
@@ -3709,7 +3709,7 @@ func (o ModuleErrorInfoResponsePtrOutput) Elem() ModuleErrorInfoResponseOutput {
 	}).(ModuleErrorInfoResponseOutput)
 }
 
-// Gets the error code.
+// Gets or sets the error code.
 func (o ModuleErrorInfoResponsePtrOutput) Code() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModuleErrorInfoResponse) *string {
 		if v == nil {
@@ -3719,7 +3719,7 @@ func (o ModuleErrorInfoResponsePtrOutput) Code() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Gets the error message.
+// Gets or sets the error message.
 func (o ModuleErrorInfoResponsePtrOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModuleErrorInfoResponse) *string {
 		if v == nil {
@@ -3972,7 +3972,7 @@ func (o PackageErrorInfoResponsePtrOutput) Message() pulumi.StringPtrOutput {
 type PrivateEndpointConnectionResponse struct {
 	// Gets the groupIds.
 	GroupIds []string `pulumi:"groupIds"`
-	// Fully qualified resource Id for the resource
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name string `pulumi:"name"`
@@ -3980,7 +3980,9 @@ type PrivateEndpointConnectionResponse struct {
 	PrivateEndpoint *PrivateEndpointPropertyResponse `pulumi:"privateEndpoint"`
 	// Connection State of the Private Endpoint Connection.
 	PrivateLinkServiceConnectionState *PrivateLinkServiceConnectionStatePropertyResponse `pulumi:"privateLinkServiceConnectionState"`
-	// The type of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -4004,7 +4006,7 @@ func (o PrivateEndpointConnectionResponseOutput) GroupIds() pulumi.StringArrayOu
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
 }
 
-// Fully qualified resource Id for the resource
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o PrivateEndpointConnectionResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -4026,7 +4028,12 @@ func (o PrivateEndpointConnectionResponseOutput) PrivateLinkServiceConnectionSta
 	}).(PrivateLinkServiceConnectionStatePropertyResponsePtrOutput)
 }
 
-// The type of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o PrivateEndpointConnectionResponseOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o PrivateEndpointConnectionResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -5139,6 +5146,8 @@ func (o RunbookDraftPtrOutput) Parameters() RunbookParameterMapOutput {
 type RunbookDraftResponse struct {
 	// Gets or sets the creation time of the runbook draft.
 	CreationTime *string `pulumi:"creationTime"`
+	// Gets or sets the draft runbook content link.
+	DraftContentLink *ContentLinkResponse `pulumi:"draftContentLink"`
 	// Gets or sets whether runbook is in edit mode.
 	InEdit *bool `pulumi:"inEdit"`
 	// Gets or sets the last modified time of the runbook draft.
@@ -5166,6 +5175,11 @@ func (o RunbookDraftResponseOutput) ToRunbookDraftResponseOutputWithContext(ctx 
 // Gets or sets the creation time of the runbook draft.
 func (o RunbookDraftResponseOutput) CreationTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RunbookDraftResponse) *string { return v.CreationTime }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the draft runbook content link.
+func (o RunbookDraftResponseOutput) DraftContentLink() ContentLinkResponsePtrOutput {
+	return o.ApplyT(func(v RunbookDraftResponse) *ContentLinkResponse { return v.DraftContentLink }).(ContentLinkResponsePtrOutput)
 }
 
 // Gets or sets whether runbook is in edit mode.
@@ -5220,6 +5234,16 @@ func (o RunbookDraftResponsePtrOutput) CreationTime() pulumi.StringPtrOutput {
 		}
 		return v.CreationTime
 	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the draft runbook content link.
+func (o RunbookDraftResponsePtrOutput) DraftContentLink() ContentLinkResponsePtrOutput {
+	return o.ApplyT(func(v *RunbookDraftResponse) *ContentLinkResponse {
+		if v == nil {
+			return nil
+		}
+		return v.DraftContentLink
+	}).(ContentLinkResponsePtrOutput)
 }
 
 // Gets or sets whether runbook is in edit mode.

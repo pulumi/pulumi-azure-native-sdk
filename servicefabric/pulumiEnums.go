@@ -2051,7 +2051,7 @@ func (in *nsgProtocolPtr) ToNsgProtocolPtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(NsgProtocolPtrOutput)
 }
 
-// Enumerates the ways that a service can be partitioned.
+// Specifies how the service is partitioned.
 type PartitionScheme string
 
 const (
@@ -3933,7 +3933,7 @@ const (
 	ServicePlacementPolicyTypeNonPartiallyPlaceService = ServicePlacementPolicyType("NonPartiallyPlaceService")
 )
 
-// Enumerates the ways that a service can be partitioned.
+// Specifies the mechanism associated with this scaling policy.
 type ServiceScalingMechanismKind string
 
 const (
@@ -3943,7 +3943,7 @@ const (
 	ServiceScalingMechanismKindAddRemoveIncrementalNamedPartition = ServiceScalingMechanismKind("AddRemoveIncrementalNamedPartition")
 )
 
-// Enumerates the ways that a service can be partitioned.
+// Specifies the trigger associated with this scaling policy.
 type ServiceScalingTriggerKind string
 
 const (

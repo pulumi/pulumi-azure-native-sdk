@@ -26,17 +26,19 @@ type Environment struct {
 	CreatedByUser pulumi.StringOutput `pulumi:"createdByUser"`
 	// The deployment properties of the environment.
 	DeploymentProperties EnvironmentDeploymentPropertiesResponsePtrOutput `pulumi:"deploymentProperties"`
-	// The location of the resource.
+	// The geo-location where the resource lives
 	Location pulumi.StringPtrOutput `pulumi:"location"`
-	// The name of the resource.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning status of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The identifier of the resource group containing the environment's resources.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
-	// The tags of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The type of the resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The unique immutable identifier of a resource (Guid).
 	UniqueIdentifier pulumi.StringOutput `pulumi:"uniqueIdentifier"`
@@ -106,13 +108,13 @@ type environmentArgs struct {
 	DeploymentProperties *EnvironmentDeploymentProperties `pulumi:"deploymentProperties"`
 	// The name of the lab.
 	LabName string `pulumi:"labName"`
-	// The location of the resource.
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// The name of the DtlEnvironment
+	// The name of the environment.
 	Name *string `pulumi:"name"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// The tags of the resource.
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The name of the user profile.
 	UserName string `pulumi:"userName"`
@@ -126,13 +128,13 @@ type EnvironmentArgs struct {
 	DeploymentProperties EnvironmentDeploymentPropertiesPtrInput
 	// The name of the lab.
 	LabName pulumi.StringInput
-	// The location of the resource.
+	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
-	// The name of the DtlEnvironment
+	// The name of the environment.
 	Name pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// The tags of the resource.
+	// Resource tags.
 	Tags pulumi.StringMapInput
 	// The name of the user profile.
 	UserName pulumi.StringInput
@@ -195,12 +197,12 @@ func (o EnvironmentOutput) DeploymentProperties() EnvironmentDeploymentPropertie
 	return o.ApplyT(func(v *Environment) EnvironmentDeploymentPropertiesResponsePtrOutput { return v.DeploymentProperties }).(EnvironmentDeploymentPropertiesResponsePtrOutput)
 }
 
-// The location of the resource.
+// The geo-location where the resource lives
 func (o EnvironmentOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// The name of the resource.
+// The name of the resource
 func (o EnvironmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -215,12 +217,17 @@ func (o EnvironmentOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// The tags of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o EnvironmentOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Environment) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// Resource tags.
 func (o EnvironmentOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o EnvironmentOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

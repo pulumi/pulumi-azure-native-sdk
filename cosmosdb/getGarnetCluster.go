@@ -42,7 +42,7 @@ type LookupGarnetClusterResult struct {
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// Properties of a Garnet cache cluster.
-	Properties ClusterResourceResponseProperties `pulumi:"properties"`
+	Properties GarnetClusterResourceResponseProperties `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
@@ -107,8 +107,8 @@ func (o LookupGarnetClusterResultOutput) Name() pulumi.StringOutput {
 }
 
 // Properties of a Garnet cache cluster.
-func (o LookupGarnetClusterResultOutput) Properties() ClusterResourceResponsePropertiesOutput {
-	return o.ApplyT(func(v LookupGarnetClusterResult) ClusterResourceResponseProperties { return v.Properties }).(ClusterResourceResponsePropertiesOutput)
+func (o LookupGarnetClusterResultOutput) Properties() GarnetClusterResourceResponsePropertiesOutput {
+	return o.ApplyT(func(v LookupGarnetClusterResult) GarnetClusterResourceResponseProperties { return v.Properties }).(GarnetClusterResourceResponsePropertiesOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

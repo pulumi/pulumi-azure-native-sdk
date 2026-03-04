@@ -29,7 +29,7 @@ type LookupPolicyArgs struct {
 	Expand *string `pulumi:"expand"`
 	// labs
 	LabName string `pulumi:"labName"`
-	// The name of the Schedule
+	// The name of the Policy
 	Name string `pulumi:"name"`
 	// policysets
 	PolicySetName string `pulumi:"policySetName"`
@@ -51,21 +51,23 @@ type LookupPolicyResult struct {
 	FactData *string `pulumi:"factData"`
 	// The fact name of the policy (e.g. LabVmCount, LabVmSize, MaxVmsAllowedPerLab, etc.
 	FactName *string `pulumi:"factName"`
-	// The identifier of the resource.
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The location of the resource.
 	Location *string `pulumi:"location"`
-	// The name of the resource.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// The provisioning status of the resource.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The status of the policy.
 	Status *string `pulumi:"status"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The tags of the resource.
 	Tags map[string]string `pulumi:"tags"`
 	// The threshold of the policy (i.e. a number for MaxValuePolicy, and a JSON array of values for AllowedValuesPolicy).
 	Threshold *string `pulumi:"threshold"`
-	// The type of the resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// The unique immutable identifier of a resource (Guid).
 	UniqueIdentifier string `pulumi:"uniqueIdentifier"`
@@ -85,7 +87,7 @@ type LookupPolicyOutputArgs struct {
 	Expand pulumi.StringPtrInput `pulumi:"expand"`
 	// labs
 	LabName pulumi.StringInput `pulumi:"labName"`
-	// The name of the Schedule
+	// The name of the Policy
 	Name pulumi.StringInput `pulumi:"name"`
 	// policysets
 	PolicySetName pulumi.StringInput `pulumi:"policySetName"`
@@ -142,7 +144,7 @@ func (o LookupPolicyResultOutput) FactName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPolicyResult) *string { return v.FactName }).(pulumi.StringPtrOutput)
 }
 
-// The identifier of the resource.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupPolicyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -152,7 +154,7 @@ func (o LookupPolicyResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPolicyResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// The name of the resource.
+// The name of the resource
 func (o LookupPolicyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPolicyResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -167,6 +169,11 @@ func (o LookupPolicyResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPolicyResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupPolicyResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupPolicyResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
 // The tags of the resource.
 func (o LookupPolicyResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupPolicyResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
@@ -177,7 +184,7 @@ func (o LookupPolicyResultOutput) Threshold() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPolicyResult) *string { return v.Threshold }).(pulumi.StringPtrOutput)
 }
 
-// The type of the resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupPolicyResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPolicyResult) string { return v.Type }).(pulumi.StringOutput)
 }

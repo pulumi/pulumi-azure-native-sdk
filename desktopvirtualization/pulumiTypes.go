@@ -3867,6 +3867,108 @@ func (o ScalingScheduleResponseArrayOutput) Index(i pulumi.IntInput) ScalingSche
 	}).(ScalingScheduleResponseOutput)
 }
 
+// Contains details on the failure.
+type SessionHostHealthCheckFailureDetailsResponse struct {
+	// Error code corresponding for the failure.
+	ErrorCode int `pulumi:"errorCode"`
+	// The timestamp of the last update.
+	LastHealthCheckDateTime string `pulumi:"lastHealthCheckDateTime"`
+	// Failure message: hints on what is wrong and how to recover.
+	Message string `pulumi:"message"`
+}
+
+// Contains details on the failure.
+type SessionHostHealthCheckFailureDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (SessionHostHealthCheckFailureDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SessionHostHealthCheckFailureDetailsResponse)(nil)).Elem()
+}
+
+func (o SessionHostHealthCheckFailureDetailsResponseOutput) ToSessionHostHealthCheckFailureDetailsResponseOutput() SessionHostHealthCheckFailureDetailsResponseOutput {
+	return o
+}
+
+func (o SessionHostHealthCheckFailureDetailsResponseOutput) ToSessionHostHealthCheckFailureDetailsResponseOutputWithContext(ctx context.Context) SessionHostHealthCheckFailureDetailsResponseOutput {
+	return o
+}
+
+// Error code corresponding for the failure.
+func (o SessionHostHealthCheckFailureDetailsResponseOutput) ErrorCode() pulumi.IntOutput {
+	return o.ApplyT(func(v SessionHostHealthCheckFailureDetailsResponse) int { return v.ErrorCode }).(pulumi.IntOutput)
+}
+
+// The timestamp of the last update.
+func (o SessionHostHealthCheckFailureDetailsResponseOutput) LastHealthCheckDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v SessionHostHealthCheckFailureDetailsResponse) string { return v.LastHealthCheckDateTime }).(pulumi.StringOutput)
+}
+
+// Failure message: hints on what is wrong and how to recover.
+func (o SessionHostHealthCheckFailureDetailsResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v SessionHostHealthCheckFailureDetailsResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// The report for session host information.
+type SessionHostHealthCheckReportResponse struct {
+	// Additional detailed information on the failure.
+	AdditionalFailureDetails SessionHostHealthCheckFailureDetailsResponse `pulumi:"additionalFailureDetails"`
+	// Represents the name of the health check operation performed.
+	HealthCheckName string `pulumi:"healthCheckName"`
+	// Represents the Health state of the health check we performed.
+	HealthCheckResult string `pulumi:"healthCheckResult"`
+}
+
+// The report for session host information.
+type SessionHostHealthCheckReportResponseOutput struct{ *pulumi.OutputState }
+
+func (SessionHostHealthCheckReportResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SessionHostHealthCheckReportResponse)(nil)).Elem()
+}
+
+func (o SessionHostHealthCheckReportResponseOutput) ToSessionHostHealthCheckReportResponseOutput() SessionHostHealthCheckReportResponseOutput {
+	return o
+}
+
+func (o SessionHostHealthCheckReportResponseOutput) ToSessionHostHealthCheckReportResponseOutputWithContext(ctx context.Context) SessionHostHealthCheckReportResponseOutput {
+	return o
+}
+
+// Additional detailed information on the failure.
+func (o SessionHostHealthCheckReportResponseOutput) AdditionalFailureDetails() SessionHostHealthCheckFailureDetailsResponseOutput {
+	return o.ApplyT(func(v SessionHostHealthCheckReportResponse) SessionHostHealthCheckFailureDetailsResponse {
+		return v.AdditionalFailureDetails
+	}).(SessionHostHealthCheckFailureDetailsResponseOutput)
+}
+
+// Represents the name of the health check operation performed.
+func (o SessionHostHealthCheckReportResponseOutput) HealthCheckName() pulumi.StringOutput {
+	return o.ApplyT(func(v SessionHostHealthCheckReportResponse) string { return v.HealthCheckName }).(pulumi.StringOutput)
+}
+
+// Represents the Health state of the health check we performed.
+func (o SessionHostHealthCheckReportResponseOutput) HealthCheckResult() pulumi.StringOutput {
+	return o.ApplyT(func(v SessionHostHealthCheckReportResponse) string { return v.HealthCheckResult }).(pulumi.StringOutput)
+}
+
+type SessionHostHealthCheckReportResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SessionHostHealthCheckReportResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SessionHostHealthCheckReportResponse)(nil)).Elem()
+}
+
+func (o SessionHostHealthCheckReportResponseArrayOutput) ToSessionHostHealthCheckReportResponseArrayOutput() SessionHostHealthCheckReportResponseArrayOutput {
+	return o
+}
+
+func (o SessionHostHealthCheckReportResponseArrayOutput) ToSessionHostHealthCheckReportResponseArrayOutputWithContext(ctx context.Context) SessionHostHealthCheckReportResponseArrayOutput {
+	return o
+}
+
+func (o SessionHostHealthCheckReportResponseArrayOutput) Index(i pulumi.IntInput) SessionHostHealthCheckReportResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SessionHostHealthCheckReportResponse {
+		return vs[0].([]SessionHostHealthCheckReportResponse)[vs[1].(int)]
+	}).(SessionHostHealthCheckReportResponseOutput)
+}
+
 // Metadata pertaining to creation and last modification of the resource.
 type SystemDataResponse struct {
 	// The timestamp of resource creation (UTC).
@@ -4219,6 +4321,9 @@ func init() {
 	pulumi.RegisterOutputType(ScalingScheduleArrayOutput{})
 	pulumi.RegisterOutputType(ScalingScheduleResponseOutput{})
 	pulumi.RegisterOutputType(ScalingScheduleResponseArrayOutput{})
+	pulumi.RegisterOutputType(SessionHostHealthCheckFailureDetailsResponseOutput{})
+	pulumi.RegisterOutputType(SessionHostHealthCheckReportResponseOutput{})
+	pulumi.RegisterOutputType(SessionHostHealthCheckReportResponseArrayOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(TimeOutput{})
 	pulumi.RegisterOutputType(TimePtrOutput{})

@@ -11,11 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Outbound Rule Basic Resource for the managed network of a machine learning workspace.
+// Gets an outbound rule from the managed network of a machine learning workspace.
 //
-// Uses Azure REST API version 2025-09-01.
+// Uses Azure REST API version 2025-12-01.
 //
-// Other available API versions: 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupManagedNetworkSettingsRule(ctx *pulumi.Context, args *LookupManagedNetworkSettingsRuleArgs, opts ...pulumi.InvokeOption) (*LookupManagedNetworkSettingsRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagedNetworkSettingsRuleResult
@@ -31,11 +31,11 @@ type LookupManagedNetworkSettingsRuleArgs struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Name of the workspace managed network outbound rule
 	RuleName string `pulumi:"ruleName"`
-	// Name of Azure Machine Learning workspace.
+	// Azure Machine Learning Workspace Name
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
-// Outbound Rule Basic Resource for the managed network of a machine learning workspace.
+// Concrete proxy resource types can be created by aliasing this type using a specific property type.
 type LookupManagedNetworkSettingsRuleResult struct {
 	// The Azure API version of the resource.
 	AzureApiVersion string `pulumi:"azureApiVersion"`
@@ -65,7 +65,7 @@ type LookupManagedNetworkSettingsRuleOutputArgs struct {
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// Name of the workspace managed network outbound rule
 	RuleName pulumi.StringInput `pulumi:"ruleName"`
-	// Name of Azure Machine Learning workspace.
+	// Azure Machine Learning Workspace Name
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
@@ -73,7 +73,7 @@ func (LookupManagedNetworkSettingsRuleOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupManagedNetworkSettingsRuleArgs)(nil)).Elem()
 }
 
-// Outbound Rule Basic Resource for the managed network of a machine learning workspace.
+// Concrete proxy resource types can be created by aliasing this type using a specific property type.
 type LookupManagedNetworkSettingsRuleResultOutput struct{ *pulumi.OutputState }
 
 func (LookupManagedNetworkSettingsRuleResultOutput) ElementType() reflect.Type {

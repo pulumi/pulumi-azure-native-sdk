@@ -3076,6 +3076,73 @@ func (o HealthModelPropertiesResponseOutput) ProvisioningState() pulumi.StringOu
 	return o.ApplyT(func(v HealthModelPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// A health state transition record
+type HealthStateTransitionResponse struct {
+	// New health state after the transition
+	NewState string `pulumi:"newState"`
+	// Timestamp when the transition occurred
+	OccurredAt string `pulumi:"occurredAt"`
+	// Previous health state before the transition
+	PreviousState string `pulumi:"previousState"`
+	// Reason of the transition
+	Reason *string `pulumi:"reason"`
+}
+
+// A health state transition record
+type HealthStateTransitionResponseOutput struct{ *pulumi.OutputState }
+
+func (HealthStateTransitionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HealthStateTransitionResponse)(nil)).Elem()
+}
+
+func (o HealthStateTransitionResponseOutput) ToHealthStateTransitionResponseOutput() HealthStateTransitionResponseOutput {
+	return o
+}
+
+func (o HealthStateTransitionResponseOutput) ToHealthStateTransitionResponseOutputWithContext(ctx context.Context) HealthStateTransitionResponseOutput {
+	return o
+}
+
+// New health state after the transition
+func (o HealthStateTransitionResponseOutput) NewState() pulumi.StringOutput {
+	return o.ApplyT(func(v HealthStateTransitionResponse) string { return v.NewState }).(pulumi.StringOutput)
+}
+
+// Timestamp when the transition occurred
+func (o HealthStateTransitionResponseOutput) OccurredAt() pulumi.StringOutput {
+	return o.ApplyT(func(v HealthStateTransitionResponse) string { return v.OccurredAt }).(pulumi.StringOutput)
+}
+
+// Previous health state before the transition
+func (o HealthStateTransitionResponseOutput) PreviousState() pulumi.StringOutput {
+	return o.ApplyT(func(v HealthStateTransitionResponse) string { return v.PreviousState }).(pulumi.StringOutput)
+}
+
+// Reason of the transition
+func (o HealthStateTransitionResponseOutput) Reason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HealthStateTransitionResponse) *string { return v.Reason }).(pulumi.StringPtrOutput)
+}
+
+type HealthStateTransitionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (HealthStateTransitionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HealthStateTransitionResponse)(nil)).Elem()
+}
+
+func (o HealthStateTransitionResponseArrayOutput) ToHealthStateTransitionResponseArrayOutput() HealthStateTransitionResponseArrayOutput {
+	return o
+}
+
+func (o HealthStateTransitionResponseArrayOutput) ToHealthStateTransitionResponseArrayOutputWithContext(ctx context.Context) HealthStateTransitionResponseArrayOutput {
+	return o
+}
+
+func (o HealthStateTransitionResponseArrayOutput) Index(i pulumi.IntInput) HealthStateTransitionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HealthStateTransitionResponse {
+		return vs[0].([]HealthStateTransitionResponse)[vs[1].(int)]
+	}).(HealthStateTransitionResponseOutput)
+}
+
 // Visual icon definition of an entity
 type IconDefinition struct {
 	// Custom data. Base64-encoded SVG data. If set, this overrides the built-in icon.
@@ -6460,6 +6527,73 @@ func (o SignalGroupResponsePtrOutput) Dependencies() DependenciesSignalGroupResp
 	}).(DependenciesSignalGroupResponsePtrOutput)
 }
 
+// A data point in the signal time series
+type SignalHistoryDataPointResponse struct {
+	// Additional context as provided by the submitter
+	AdditionalContext *string `pulumi:"additionalContext"`
+	// Health state at this point in time
+	HealthState string `pulumi:"healthState"`
+	// Timestamp of the data point
+	OccurredAt string `pulumi:"occurredAt"`
+	// Signal value at this point in time
+	Value *float64 `pulumi:"value"`
+}
+
+// A data point in the signal time series
+type SignalHistoryDataPointResponseOutput struct{ *pulumi.OutputState }
+
+func (SignalHistoryDataPointResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SignalHistoryDataPointResponse)(nil)).Elem()
+}
+
+func (o SignalHistoryDataPointResponseOutput) ToSignalHistoryDataPointResponseOutput() SignalHistoryDataPointResponseOutput {
+	return o
+}
+
+func (o SignalHistoryDataPointResponseOutput) ToSignalHistoryDataPointResponseOutputWithContext(ctx context.Context) SignalHistoryDataPointResponseOutput {
+	return o
+}
+
+// Additional context as provided by the submitter
+func (o SignalHistoryDataPointResponseOutput) AdditionalContext() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SignalHistoryDataPointResponse) *string { return v.AdditionalContext }).(pulumi.StringPtrOutput)
+}
+
+// Health state at this point in time
+func (o SignalHistoryDataPointResponseOutput) HealthState() pulumi.StringOutput {
+	return o.ApplyT(func(v SignalHistoryDataPointResponse) string { return v.HealthState }).(pulumi.StringOutput)
+}
+
+// Timestamp of the data point
+func (o SignalHistoryDataPointResponseOutput) OccurredAt() pulumi.StringOutput {
+	return o.ApplyT(func(v SignalHistoryDataPointResponse) string { return v.OccurredAt }).(pulumi.StringOutput)
+}
+
+// Signal value at this point in time
+func (o SignalHistoryDataPointResponseOutput) Value() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SignalHistoryDataPointResponse) *float64 { return v.Value }).(pulumi.Float64PtrOutput)
+}
+
+type SignalHistoryDataPointResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SignalHistoryDataPointResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SignalHistoryDataPointResponse)(nil)).Elem()
+}
+
+func (o SignalHistoryDataPointResponseArrayOutput) ToSignalHistoryDataPointResponseArrayOutput() SignalHistoryDataPointResponseArrayOutput {
+	return o
+}
+
+func (o SignalHistoryDataPointResponseArrayOutput) ToSignalHistoryDataPointResponseArrayOutputWithContext(ctx context.Context) SignalHistoryDataPointResponseArrayOutput {
+	return o
+}
+
+func (o SignalHistoryDataPointResponseArrayOutput) Index(i pulumi.IntInput) SignalHistoryDataPointResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SignalHistoryDataPointResponse {
+		return vs[0].([]SignalHistoryDataPointResponse)[vs[1].(int)]
+	}).(SignalHistoryDataPointResponseOutput)
+}
+
 // Metadata pertaining to creation and last modification of the resource.
 type SystemDataResponse struct {
 	// The timestamp of resource creation (UTC).
@@ -6851,6 +6985,8 @@ func init() {
 	pulumi.RegisterOutputType(HealthModelPropertiesOutput{})
 	pulumi.RegisterOutputType(HealthModelPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(HealthModelPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(HealthStateTransitionResponseOutput{})
+	pulumi.RegisterOutputType(HealthStateTransitionResponseArrayOutput{})
 	pulumi.RegisterOutputType(IconDefinitionOutput{})
 	pulumi.RegisterOutputType(IconDefinitionPtrOutput{})
 	pulumi.RegisterOutputType(IconDefinitionResponseOutput{})
@@ -6890,6 +7026,8 @@ func init() {
 	pulumi.RegisterOutputType(SignalGroupPtrOutput{})
 	pulumi.RegisterOutputType(SignalGroupResponseOutput{})
 	pulumi.RegisterOutputType(SignalGroupResponsePtrOutput{})
+	pulumi.RegisterOutputType(SignalHistoryDataPointResponseOutput{})
+	pulumi.RegisterOutputType(SignalHistoryDataPointResponseArrayOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(ThresholdRuleOutput{})
 	pulumi.RegisterOutputType(ThresholdRulePtrOutput{})
