@@ -7069,8 +7069,6 @@ type ErrorDefinitionResponse struct {
 	Details []ErrorDefinitionResponse `pulumi:"details"`
 	// Description of the error.
 	Message string `pulumi:"message"`
-	// Description of the recommendation.
-	Recommendation string `pulumi:"recommendation"`
 }
 
 // Error definition.
@@ -7101,11 +7099,6 @@ func (o ErrorDefinitionResponseOutput) Details() ErrorDefinitionResponseArrayOut
 // Description of the error.
 func (o ErrorDefinitionResponseOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v ErrorDefinitionResponse) string { return v.Message }).(pulumi.StringOutput)
-}
-
-// Description of the recommendation.
-func (o ErrorDefinitionResponseOutput) Recommendation() pulumi.StringOutput {
-	return o.ApplyT(func(v ErrorDefinitionResponse) string { return v.Recommendation }).(pulumi.StringOutput)
 }
 
 type ErrorDefinitionResponsePtrOutput struct{ *pulumi.OutputState }
@@ -7162,16 +7155,6 @@ func (o ErrorDefinitionResponsePtrOutput) Message() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Description of the recommendation.
-func (o ErrorDefinitionResponsePtrOutput) Recommendation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ErrorDefinitionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Recommendation
-	}).(pulumi.StringPtrOutput)
-}
-
 type ErrorDefinitionResponseArrayOutput struct{ *pulumi.OutputState }
 
 func (ErrorDefinitionResponseArrayOutput) ElementType() reflect.Type {
@@ -7190,6 +7173,207 @@ func (o ErrorDefinitionResponseArrayOutput) Index(i pulumi.IntInput) ErrorDefini
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ErrorDefinitionResponse {
 		return vs[0].([]ErrorDefinitionResponse)[vs[1].(int)]
 	}).(ErrorDefinitionResponseOutput)
+}
+
+// Error definition.
+type ErrorDefinitionResponseV1 struct {
+	// Service specific error code which serves as the substatus for the HTTP error code.
+	Code string `pulumi:"code"`
+	// Internal error details.
+	Details []ErrorDefinitionResponse `pulumi:"details"`
+	// Description of the error.
+	Message string `pulumi:"message"`
+	// Description of the recommendation.
+	Recommendation string `pulumi:"recommendation"`
+}
+
+// Error definition.
+type ErrorDefinitionResponseV1Output struct{ *pulumi.OutputState }
+
+func (ErrorDefinitionResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErrorDefinitionResponseV1)(nil)).Elem()
+}
+
+func (o ErrorDefinitionResponseV1Output) ToErrorDefinitionResponseV1Output() ErrorDefinitionResponseV1Output {
+	return o
+}
+
+func (o ErrorDefinitionResponseV1Output) ToErrorDefinitionResponseV1OutputWithContext(ctx context.Context) ErrorDefinitionResponseV1Output {
+	return o
+}
+
+// Service specific error code which serves as the substatus for the HTTP error code.
+func (o ErrorDefinitionResponseV1Output) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorDefinitionResponseV1) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// Internal error details.
+func (o ErrorDefinitionResponseV1Output) Details() ErrorDefinitionResponseArrayOutput {
+	return o.ApplyT(func(v ErrorDefinitionResponseV1) []ErrorDefinitionResponse { return v.Details }).(ErrorDefinitionResponseArrayOutput)
+}
+
+// Description of the error.
+func (o ErrorDefinitionResponseV1Output) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorDefinitionResponseV1) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// Description of the recommendation.
+func (o ErrorDefinitionResponseV1Output) Recommendation() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorDefinitionResponseV1) string { return v.Recommendation }).(pulumi.StringOutput)
+}
+
+type ErrorDefinitionResponseV1ArrayOutput struct{ *pulumi.OutputState }
+
+func (ErrorDefinitionResponseV1ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ErrorDefinitionResponseV1)(nil)).Elem()
+}
+
+func (o ErrorDefinitionResponseV1ArrayOutput) ToErrorDefinitionResponseV1ArrayOutput() ErrorDefinitionResponseV1ArrayOutput {
+	return o
+}
+
+func (o ErrorDefinitionResponseV1ArrayOutput) ToErrorDefinitionResponseV1ArrayOutputWithContext(ctx context.Context) ErrorDefinitionResponseV1ArrayOutput {
+	return o
+}
+
+func (o ErrorDefinitionResponseV1ArrayOutput) Index(i pulumi.IntInput) ErrorDefinitionResponseV1Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ErrorDefinitionResponseV1 {
+		return vs[0].([]ErrorDefinitionResponseV1)[vs[1].(int)]
+	}).(ErrorDefinitionResponseV1Output)
+}
+
+// Error definition.
+type ErrorDefinitionResponseV2 struct {
+	// Service specific error code which serves as the substatus for the HTTP error code.
+	Code string `pulumi:"code"`
+	// Internal error details.
+	Details []ErrorDefinitionResponse `pulumi:"details"`
+	// Description of the error.
+	Message string `pulumi:"message"`
+	// Description of the recommendation.
+	Recommendation string `pulumi:"recommendation"`
+}
+
+// Error definition.
+type ErrorDefinitionResponseV2Output struct{ *pulumi.OutputState }
+
+func (ErrorDefinitionResponseV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErrorDefinitionResponseV2)(nil)).Elem()
+}
+
+func (o ErrorDefinitionResponseV2Output) ToErrorDefinitionResponseV2Output() ErrorDefinitionResponseV2Output {
+	return o
+}
+
+func (o ErrorDefinitionResponseV2Output) ToErrorDefinitionResponseV2OutputWithContext(ctx context.Context) ErrorDefinitionResponseV2Output {
+	return o
+}
+
+// Service specific error code which serves as the substatus for the HTTP error code.
+func (o ErrorDefinitionResponseV2Output) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorDefinitionResponseV2) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// Internal error details.
+func (o ErrorDefinitionResponseV2Output) Details() ErrorDefinitionResponseArrayOutput {
+	return o.ApplyT(func(v ErrorDefinitionResponseV2) []ErrorDefinitionResponse { return v.Details }).(ErrorDefinitionResponseArrayOutput)
+}
+
+// Description of the error.
+func (o ErrorDefinitionResponseV2Output) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorDefinitionResponseV2) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// Description of the recommendation.
+func (o ErrorDefinitionResponseV2Output) Recommendation() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorDefinitionResponseV2) string { return v.Recommendation }).(pulumi.StringOutput)
+}
+
+type ErrorDefinitionResponseV2ArrayOutput struct{ *pulumi.OutputState }
+
+func (ErrorDefinitionResponseV2ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ErrorDefinitionResponseV2)(nil)).Elem()
+}
+
+func (o ErrorDefinitionResponseV2ArrayOutput) ToErrorDefinitionResponseV2ArrayOutput() ErrorDefinitionResponseV2ArrayOutput {
+	return o
+}
+
+func (o ErrorDefinitionResponseV2ArrayOutput) ToErrorDefinitionResponseV2ArrayOutputWithContext(ctx context.Context) ErrorDefinitionResponseV2ArrayOutput {
+	return o
+}
+
+func (o ErrorDefinitionResponseV2ArrayOutput) Index(i pulumi.IntInput) ErrorDefinitionResponseV2Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ErrorDefinitionResponseV2 {
+		return vs[0].([]ErrorDefinitionResponseV2)[vs[1].(int)]
+	}).(ErrorDefinitionResponseV2Output)
+}
+
+// Error definition.
+type ErrorDefinitionResponseV3 struct {
+	// Service specific error code which serves as the substatus for the HTTP error code.
+	Code string `pulumi:"code"`
+	// Internal error details.
+	Details []ErrorDefinitionResponse `pulumi:"details"`
+	// Description of the error.
+	Message string `pulumi:"message"`
+	// Description of the recommendation.
+	Recommendation string `pulumi:"recommendation"`
+}
+
+// Error definition.
+type ErrorDefinitionResponseV3Output struct{ *pulumi.OutputState }
+
+func (ErrorDefinitionResponseV3Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErrorDefinitionResponseV3)(nil)).Elem()
+}
+
+func (o ErrorDefinitionResponseV3Output) ToErrorDefinitionResponseV3Output() ErrorDefinitionResponseV3Output {
+	return o
+}
+
+func (o ErrorDefinitionResponseV3Output) ToErrorDefinitionResponseV3OutputWithContext(ctx context.Context) ErrorDefinitionResponseV3Output {
+	return o
+}
+
+// Service specific error code which serves as the substatus for the HTTP error code.
+func (o ErrorDefinitionResponseV3Output) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorDefinitionResponseV3) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// Internal error details.
+func (o ErrorDefinitionResponseV3Output) Details() ErrorDefinitionResponseArrayOutput {
+	return o.ApplyT(func(v ErrorDefinitionResponseV3) []ErrorDefinitionResponse { return v.Details }).(ErrorDefinitionResponseArrayOutput)
+}
+
+// Description of the error.
+func (o ErrorDefinitionResponseV3Output) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorDefinitionResponseV3) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// Description of the recommendation.
+func (o ErrorDefinitionResponseV3Output) Recommendation() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorDefinitionResponseV3) string { return v.Recommendation }).(pulumi.StringOutput)
+}
+
+type ErrorDefinitionResponseV3ArrayOutput struct{ *pulumi.OutputState }
+
+func (ErrorDefinitionResponseV3ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ErrorDefinitionResponseV3)(nil)).Elem()
+}
+
+func (o ErrorDefinitionResponseV3ArrayOutput) ToErrorDefinitionResponseV3ArrayOutput() ErrorDefinitionResponseV3ArrayOutput {
+	return o
+}
+
+func (o ErrorDefinitionResponseV3ArrayOutput) ToErrorDefinitionResponseV3ArrayOutputWithContext(ctx context.Context) ErrorDefinitionResponseV3ArrayOutput {
+	return o
+}
+
+func (o ErrorDefinitionResponseV3ArrayOutput) Index(i pulumi.IntInput) ErrorDefinitionResponseV3Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ErrorDefinitionResponseV3 {
+		return vs[0].([]ErrorDefinitionResponseV3)[vs[1].(int)]
+	}).(ErrorDefinitionResponseV3Output)
 }
 
 // The error detail.
@@ -17091,7 +17275,7 @@ type SAPMigrateErrorResponse struct {
 	// Service specific error code which serves as the substatus for the HTTP error code.
 	Code string `pulumi:"code"`
 	// Internal error details.
-	Details []ErrorDefinitionResponse `pulumi:"details"`
+	Details []ErrorDefinitionResponseV1 `pulumi:"details"`
 	// Description of the error.
 	Message string `pulumi:"message"`
 	// Description of the recommendation.
@@ -17119,8 +17303,8 @@ func (o SAPMigrateErrorResponseOutput) Code() pulumi.StringOutput {
 }
 
 // Internal error details.
-func (o SAPMigrateErrorResponseOutput) Details() ErrorDefinitionResponseArrayOutput {
-	return o.ApplyT(func(v SAPMigrateErrorResponse) []ErrorDefinitionResponse { return v.Details }).(ErrorDefinitionResponseArrayOutput)
+func (o SAPMigrateErrorResponseOutput) Details() ErrorDefinitionResponseV1ArrayOutput {
+	return o.ApplyT(func(v SAPMigrateErrorResponse) []ErrorDefinitionResponseV1 { return v.Details }).(ErrorDefinitionResponseV1ArrayOutput)
 }
 
 // Description of the error.
@@ -17131,6 +17315,100 @@ func (o SAPMigrateErrorResponseOutput) Message() pulumi.StringOutput {
 // Description of the recommendation.
 func (o SAPMigrateErrorResponseOutput) Recommendation() pulumi.StringOutput {
 	return o.ApplyT(func(v SAPMigrateErrorResponse) string { return v.Recommendation }).(pulumi.StringOutput)
+}
+
+// An error response from the SAP migrate resources.
+type SAPMigrateErrorResponseV1 struct {
+	// Service specific error code which serves as the substatus for the HTTP error code.
+	Code string `pulumi:"code"`
+	// Internal error details.
+	Details []ErrorDefinitionResponseV2 `pulumi:"details"`
+	// Description of the error.
+	Message string `pulumi:"message"`
+	// Description of the recommendation.
+	Recommendation string `pulumi:"recommendation"`
+}
+
+// An error response from the SAP migrate resources.
+type SAPMigrateErrorResponseV1Output struct{ *pulumi.OutputState }
+
+func (SAPMigrateErrorResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*SAPMigrateErrorResponseV1)(nil)).Elem()
+}
+
+func (o SAPMigrateErrorResponseV1Output) ToSAPMigrateErrorResponseV1Output() SAPMigrateErrorResponseV1Output {
+	return o
+}
+
+func (o SAPMigrateErrorResponseV1Output) ToSAPMigrateErrorResponseV1OutputWithContext(ctx context.Context) SAPMigrateErrorResponseV1Output {
+	return o
+}
+
+// Service specific error code which serves as the substatus for the HTTP error code.
+func (o SAPMigrateErrorResponseV1Output) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v SAPMigrateErrorResponseV1) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// Internal error details.
+func (o SAPMigrateErrorResponseV1Output) Details() ErrorDefinitionResponseV2ArrayOutput {
+	return o.ApplyT(func(v SAPMigrateErrorResponseV1) []ErrorDefinitionResponseV2 { return v.Details }).(ErrorDefinitionResponseV2ArrayOutput)
+}
+
+// Description of the error.
+func (o SAPMigrateErrorResponseV1Output) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v SAPMigrateErrorResponseV1) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// Description of the recommendation.
+func (o SAPMigrateErrorResponseV1Output) Recommendation() pulumi.StringOutput {
+	return o.ApplyT(func(v SAPMigrateErrorResponseV1) string { return v.Recommendation }).(pulumi.StringOutput)
+}
+
+// An error response from the SAP migrate resources.
+type SAPMigrateErrorResponseV2 struct {
+	// Service specific error code which serves as the substatus for the HTTP error code.
+	Code string `pulumi:"code"`
+	// Internal error details.
+	Details []ErrorDefinitionResponseV3 `pulumi:"details"`
+	// Description of the error.
+	Message string `pulumi:"message"`
+	// Description of the recommendation.
+	Recommendation string `pulumi:"recommendation"`
+}
+
+// An error response from the SAP migrate resources.
+type SAPMigrateErrorResponseV2Output struct{ *pulumi.OutputState }
+
+func (SAPMigrateErrorResponseV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*SAPMigrateErrorResponseV2)(nil)).Elem()
+}
+
+func (o SAPMigrateErrorResponseV2Output) ToSAPMigrateErrorResponseV2Output() SAPMigrateErrorResponseV2Output {
+	return o
+}
+
+func (o SAPMigrateErrorResponseV2Output) ToSAPMigrateErrorResponseV2OutputWithContext(ctx context.Context) SAPMigrateErrorResponseV2Output {
+	return o
+}
+
+// Service specific error code which serves as the substatus for the HTTP error code.
+func (o SAPMigrateErrorResponseV2Output) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v SAPMigrateErrorResponseV2) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// Internal error details.
+func (o SAPMigrateErrorResponseV2Output) Details() ErrorDefinitionResponseV3ArrayOutput {
+	return o.ApplyT(func(v SAPMigrateErrorResponseV2) []ErrorDefinitionResponseV3 { return v.Details }).(ErrorDefinitionResponseV3ArrayOutput)
+}
+
+// Description of the error.
+func (o SAPMigrateErrorResponseV2Output) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v SAPMigrateErrorResponseV2) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// Description of the recommendation.
+func (o SAPMigrateErrorResponseV2Output) Recommendation() pulumi.StringOutput {
+	return o.ApplyT(func(v SAPMigrateErrorResponseV2) string { return v.Recommendation }).(pulumi.StringOutput)
 }
 
 // The SAP supported SKU.
@@ -28397,6 +28675,12 @@ func init() {
 	pulumi.RegisterOutputType(ErrorDefinitionResponseOutput{})
 	pulumi.RegisterOutputType(ErrorDefinitionResponsePtrOutput{})
 	pulumi.RegisterOutputType(ErrorDefinitionResponseArrayOutput{})
+	pulumi.RegisterOutputType(ErrorDefinitionResponseV1Output{})
+	pulumi.RegisterOutputType(ErrorDefinitionResponseV1ArrayOutput{})
+	pulumi.RegisterOutputType(ErrorDefinitionResponseV2Output{})
+	pulumi.RegisterOutputType(ErrorDefinitionResponseV2ArrayOutput{})
+	pulumi.RegisterOutputType(ErrorDefinitionResponseV3Output{})
+	pulumi.RegisterOutputType(ErrorDefinitionResponseV3ArrayOutput{})
 	pulumi.RegisterOutputType(ErrorDetailResponseOutput{})
 	pulumi.RegisterOutputType(ErrorDetailResponseArrayOutput{})
 	pulumi.RegisterOutputType(ExcelPerformanceDataResponseOutput{})
@@ -28536,6 +28820,8 @@ func init() {
 	pulumi.RegisterOutputType(SAPInstallWithoutOSConfigSoftwareConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(SAPInstallWithoutOSConfigSoftwareConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(SAPMigrateErrorResponseOutput{})
+	pulumi.RegisterOutputType(SAPMigrateErrorResponseV1Output{})
+	pulumi.RegisterOutputType(SAPMigrateErrorResponseV2Output{})
 	pulumi.RegisterOutputType(SAPSupportedSkuResponseOutput{})
 	pulumi.RegisterOutputType(SAPSupportedSkuResponseArrayOutput{})
 	pulumi.RegisterOutputType(SAPVirtualInstanceErrorResponseOutput{})

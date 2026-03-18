@@ -23,7 +23,7 @@ type ServerInstance struct {
 	// Configuration data for this server instance.
 	ConfigurationData ConfigurationDataResponseOutput `pulumi:"configurationData"`
 	// Defines the errors related to SAP Instance resource.
-	Errors SAPMigrateErrorResponseOutput `pulumi:"errors"`
+	Errors SAPMigrateErrorResponseV2Output `pulumi:"errors"`
 	// This is the Instance SID for ASCS/AP/DB instance.  An SAP system with HANA database for example could have a different SID for database Instance than that of ASCS instance.
 	InstanceSid pulumi.StringOutput `pulumi:"instanceSid"`
 	// The name of the resource
@@ -173,8 +173,8 @@ func (o ServerInstanceOutput) ConfigurationData() ConfigurationDataResponseOutpu
 }
 
 // Defines the errors related to SAP Instance resource.
-func (o ServerInstanceOutput) Errors() SAPMigrateErrorResponseOutput {
-	return o.ApplyT(func(v *ServerInstance) SAPMigrateErrorResponseOutput { return v.Errors }).(SAPMigrateErrorResponseOutput)
+func (o ServerInstanceOutput) Errors() SAPMigrateErrorResponseV2Output {
+	return o.ApplyT(func(v *ServerInstance) SAPMigrateErrorResponseV2Output { return v.Errors }).(SAPMigrateErrorResponseV2Output)
 }
 
 // This is the Instance SID for ASCS/AP/DB instance.  An SAP system with HANA database for example could have a different SID for database Instance than that of ASCS instance.
