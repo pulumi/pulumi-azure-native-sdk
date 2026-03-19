@@ -941,6 +941,228 @@ func (o AzureFileVolumeResponsePtrOutput) StorageAccountName() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// The properties of the Azure File volume. Azure File shares are mounted as volumes.
+type AzureFileVolumeResponseV1 struct {
+	// The flag indicating whether the Azure File shared mounted as a volume is read-only.
+	ReadOnly *bool `pulumi:"readOnly"`
+	// The name of the Azure File share to be mounted as a volume.
+	ShareName string `pulumi:"shareName"`
+	// The storage account access key used to access the Azure File share.
+	StorageAccountKey *string `pulumi:"storageAccountKey"`
+	// The name of the storage account that contains the Azure File share.
+	StorageAccountName string `pulumi:"storageAccountName"`
+}
+
+// The properties of the Azure File volume. Azure File shares are mounted as volumes.
+type AzureFileVolumeResponseV1Output struct{ *pulumi.OutputState }
+
+func (AzureFileVolumeResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureFileVolumeResponseV1)(nil)).Elem()
+}
+
+func (o AzureFileVolumeResponseV1Output) ToAzureFileVolumeResponseV1Output() AzureFileVolumeResponseV1Output {
+	return o
+}
+
+func (o AzureFileVolumeResponseV1Output) ToAzureFileVolumeResponseV1OutputWithContext(ctx context.Context) AzureFileVolumeResponseV1Output {
+	return o
+}
+
+// The flag indicating whether the Azure File shared mounted as a volume is read-only.
+func (o AzureFileVolumeResponseV1Output) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AzureFileVolumeResponseV1) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the Azure File share to be mounted as a volume.
+func (o AzureFileVolumeResponseV1Output) ShareName() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureFileVolumeResponseV1) string { return v.ShareName }).(pulumi.StringOutput)
+}
+
+// The storage account access key used to access the Azure File share.
+func (o AzureFileVolumeResponseV1Output) StorageAccountKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureFileVolumeResponseV1) *string { return v.StorageAccountKey }).(pulumi.StringPtrOutput)
+}
+
+// The name of the storage account that contains the Azure File share.
+func (o AzureFileVolumeResponseV1Output) StorageAccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureFileVolumeResponseV1) string { return v.StorageAccountName }).(pulumi.StringOutput)
+}
+
+type AzureFileVolumeResponseV1PtrOutput struct{ *pulumi.OutputState }
+
+func (AzureFileVolumeResponseV1PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureFileVolumeResponseV1)(nil)).Elem()
+}
+
+func (o AzureFileVolumeResponseV1PtrOutput) ToAzureFileVolumeResponseV1PtrOutput() AzureFileVolumeResponseV1PtrOutput {
+	return o
+}
+
+func (o AzureFileVolumeResponseV1PtrOutput) ToAzureFileVolumeResponseV1PtrOutputWithContext(ctx context.Context) AzureFileVolumeResponseV1PtrOutput {
+	return o
+}
+
+func (o AzureFileVolumeResponseV1PtrOutput) Elem() AzureFileVolumeResponseV1Output {
+	return o.ApplyT(func(v *AzureFileVolumeResponseV1) AzureFileVolumeResponseV1 {
+		if v != nil {
+			return *v
+		}
+		var ret AzureFileVolumeResponseV1
+		return ret
+	}).(AzureFileVolumeResponseV1Output)
+}
+
+// The flag indicating whether the Azure File shared mounted as a volume is read-only.
+func (o AzureFileVolumeResponseV1PtrOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AzureFileVolumeResponseV1) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ReadOnly
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The name of the Azure File share to be mounted as a volume.
+func (o AzureFileVolumeResponseV1PtrOutput) ShareName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureFileVolumeResponseV1) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ShareName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The storage account access key used to access the Azure File share.
+func (o AzureFileVolumeResponseV1PtrOutput) StorageAccountKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureFileVolumeResponseV1) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageAccountKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the storage account that contains the Azure File share.
+func (o AzureFileVolumeResponseV1PtrOutput) StorageAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureFileVolumeResponseV1) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StorageAccountName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The properties of the Azure File volume. Azure File shares are mounted as volumes.
+type AzureFileVolumeResponseV2 struct {
+	// The flag indicating whether the Azure File shared mounted as a volume is read-only.
+	ReadOnly *bool `pulumi:"readOnly"`
+	// The name of the Azure File share to be mounted as a volume.
+	ShareName string `pulumi:"shareName"`
+	// The storage account access key used to access the Azure File share.
+	StorageAccountKey *string `pulumi:"storageAccountKey"`
+	// The name of the storage account that contains the Azure File share.
+	StorageAccountName string `pulumi:"storageAccountName"`
+}
+
+// The properties of the Azure File volume. Azure File shares are mounted as volumes.
+type AzureFileVolumeResponseV2Output struct{ *pulumi.OutputState }
+
+func (AzureFileVolumeResponseV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureFileVolumeResponseV2)(nil)).Elem()
+}
+
+func (o AzureFileVolumeResponseV2Output) ToAzureFileVolumeResponseV2Output() AzureFileVolumeResponseV2Output {
+	return o
+}
+
+func (o AzureFileVolumeResponseV2Output) ToAzureFileVolumeResponseV2OutputWithContext(ctx context.Context) AzureFileVolumeResponseV2Output {
+	return o
+}
+
+// The flag indicating whether the Azure File shared mounted as a volume is read-only.
+func (o AzureFileVolumeResponseV2Output) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AzureFileVolumeResponseV2) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the Azure File share to be mounted as a volume.
+func (o AzureFileVolumeResponseV2Output) ShareName() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureFileVolumeResponseV2) string { return v.ShareName }).(pulumi.StringOutput)
+}
+
+// The storage account access key used to access the Azure File share.
+func (o AzureFileVolumeResponseV2Output) StorageAccountKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureFileVolumeResponseV2) *string { return v.StorageAccountKey }).(pulumi.StringPtrOutput)
+}
+
+// The name of the storage account that contains the Azure File share.
+func (o AzureFileVolumeResponseV2Output) StorageAccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureFileVolumeResponseV2) string { return v.StorageAccountName }).(pulumi.StringOutput)
+}
+
+type AzureFileVolumeResponseV2PtrOutput struct{ *pulumi.OutputState }
+
+func (AzureFileVolumeResponseV2PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureFileVolumeResponseV2)(nil)).Elem()
+}
+
+func (o AzureFileVolumeResponseV2PtrOutput) ToAzureFileVolumeResponseV2PtrOutput() AzureFileVolumeResponseV2PtrOutput {
+	return o
+}
+
+func (o AzureFileVolumeResponseV2PtrOutput) ToAzureFileVolumeResponseV2PtrOutputWithContext(ctx context.Context) AzureFileVolumeResponseV2PtrOutput {
+	return o
+}
+
+func (o AzureFileVolumeResponseV2PtrOutput) Elem() AzureFileVolumeResponseV2Output {
+	return o.ApplyT(func(v *AzureFileVolumeResponseV2) AzureFileVolumeResponseV2 {
+		if v != nil {
+			return *v
+		}
+		var ret AzureFileVolumeResponseV2
+		return ret
+	}).(AzureFileVolumeResponseV2Output)
+}
+
+// The flag indicating whether the Azure File shared mounted as a volume is read-only.
+func (o AzureFileVolumeResponseV2PtrOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AzureFileVolumeResponseV2) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ReadOnly
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The name of the Azure File share to be mounted as a volume.
+func (o AzureFileVolumeResponseV2PtrOutput) ShareName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureFileVolumeResponseV2) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ShareName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The storage account access key used to access the Azure File share.
+func (o AzureFileVolumeResponseV2PtrOutput) StorageAccountKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureFileVolumeResponseV2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageAccountKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the storage account that contains the Azure File share.
+func (o AzureFileVolumeResponseV2PtrOutput) StorageAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureFileVolumeResponseV2) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StorageAccountName
+	}).(pulumi.StringPtrOutput)
+}
+
 // The properties for confidential container group
 type ConfidentialComputeProperties struct {
 	// The base64 encoded confidential compute enforcement policy
@@ -3902,6 +4124,252 @@ func (o ContainerResponseArrayOutput) Index(i pulumi.IntInput) ContainerResponse
 	}).(ContainerResponseOutput)
 }
 
+// A container instance.
+type ContainerResponseV1 struct {
+	// The commands to execute within the container instance in exec form.
+	Command []string `pulumi:"command"`
+	// The config map.
+	ConfigMap *ConfigMapResponse `pulumi:"configMap"`
+	// The environment variables to set in the container instance.
+	EnvironmentVariables []EnvironmentVariableResponseV1 `pulumi:"environmentVariables"`
+	// The name of the image used to create the container instance.
+	Image *string `pulumi:"image"`
+	// The instance view of the container instance. Only valid in response.
+	InstanceView ContainerPropertiesResponseInstanceView `pulumi:"instanceView"`
+	// The liveness probe.
+	LivenessProbe *ContainerProbeResponse `pulumi:"livenessProbe"`
+	// The user-provided name of the container instance.
+	Name string `pulumi:"name"`
+	// The exposed ports on the container instance.
+	Ports []ContainerPortResponse `pulumi:"ports"`
+	// The readiness probe.
+	ReadinessProbe *ContainerProbeResponse `pulumi:"readinessProbe"`
+	// The resource requirements of the container instance.
+	Resources *ResourceRequirementsResponse `pulumi:"resources"`
+	// The container security properties.
+	SecurityContext *SecurityContextDefinitionResponse `pulumi:"securityContext"`
+	// The volume mounts available to the container instance.
+	VolumeMounts []VolumeMountResponse `pulumi:"volumeMounts"`
+}
+
+// A container instance.
+type ContainerResponseV1Output struct{ *pulumi.OutputState }
+
+func (ContainerResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerResponseV1)(nil)).Elem()
+}
+
+func (o ContainerResponseV1Output) ToContainerResponseV1Output() ContainerResponseV1Output {
+	return o
+}
+
+func (o ContainerResponseV1Output) ToContainerResponseV1OutputWithContext(ctx context.Context) ContainerResponseV1Output {
+	return o
+}
+
+// The commands to execute within the container instance in exec form.
+func (o ContainerResponseV1Output) Command() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ContainerResponseV1) []string { return v.Command }).(pulumi.StringArrayOutput)
+}
+
+// The config map.
+func (o ContainerResponseV1Output) ConfigMap() ConfigMapResponsePtrOutput {
+	return o.ApplyT(func(v ContainerResponseV1) *ConfigMapResponse { return v.ConfigMap }).(ConfigMapResponsePtrOutput)
+}
+
+// The environment variables to set in the container instance.
+func (o ContainerResponseV1Output) EnvironmentVariables() EnvironmentVariableResponseV1ArrayOutput {
+	return o.ApplyT(func(v ContainerResponseV1) []EnvironmentVariableResponseV1 { return v.EnvironmentVariables }).(EnvironmentVariableResponseV1ArrayOutput)
+}
+
+// The name of the image used to create the container instance.
+func (o ContainerResponseV1Output) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContainerResponseV1) *string { return v.Image }).(pulumi.StringPtrOutput)
+}
+
+// The instance view of the container instance. Only valid in response.
+func (o ContainerResponseV1Output) InstanceView() ContainerPropertiesResponseInstanceViewOutput {
+	return o.ApplyT(func(v ContainerResponseV1) ContainerPropertiesResponseInstanceView { return v.InstanceView }).(ContainerPropertiesResponseInstanceViewOutput)
+}
+
+// The liveness probe.
+func (o ContainerResponseV1Output) LivenessProbe() ContainerProbeResponsePtrOutput {
+	return o.ApplyT(func(v ContainerResponseV1) *ContainerProbeResponse { return v.LivenessProbe }).(ContainerProbeResponsePtrOutput)
+}
+
+// The user-provided name of the container instance.
+func (o ContainerResponseV1Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ContainerResponseV1) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The exposed ports on the container instance.
+func (o ContainerResponseV1Output) Ports() ContainerPortResponseArrayOutput {
+	return o.ApplyT(func(v ContainerResponseV1) []ContainerPortResponse { return v.Ports }).(ContainerPortResponseArrayOutput)
+}
+
+// The readiness probe.
+func (o ContainerResponseV1Output) ReadinessProbe() ContainerProbeResponsePtrOutput {
+	return o.ApplyT(func(v ContainerResponseV1) *ContainerProbeResponse { return v.ReadinessProbe }).(ContainerProbeResponsePtrOutput)
+}
+
+// The resource requirements of the container instance.
+func (o ContainerResponseV1Output) Resources() ResourceRequirementsResponsePtrOutput {
+	return o.ApplyT(func(v ContainerResponseV1) *ResourceRequirementsResponse { return v.Resources }).(ResourceRequirementsResponsePtrOutput)
+}
+
+// The container security properties.
+func (o ContainerResponseV1Output) SecurityContext() SecurityContextDefinitionResponsePtrOutput {
+	return o.ApplyT(func(v ContainerResponseV1) *SecurityContextDefinitionResponse { return v.SecurityContext }).(SecurityContextDefinitionResponsePtrOutput)
+}
+
+// The volume mounts available to the container instance.
+func (o ContainerResponseV1Output) VolumeMounts() VolumeMountResponseArrayOutput {
+	return o.ApplyT(func(v ContainerResponseV1) []VolumeMountResponse { return v.VolumeMounts }).(VolumeMountResponseArrayOutput)
+}
+
+type ContainerResponseV1ArrayOutput struct{ *pulumi.OutputState }
+
+func (ContainerResponseV1ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerResponseV1)(nil)).Elem()
+}
+
+func (o ContainerResponseV1ArrayOutput) ToContainerResponseV1ArrayOutput() ContainerResponseV1ArrayOutput {
+	return o
+}
+
+func (o ContainerResponseV1ArrayOutput) ToContainerResponseV1ArrayOutputWithContext(ctx context.Context) ContainerResponseV1ArrayOutput {
+	return o
+}
+
+func (o ContainerResponseV1ArrayOutput) Index(i pulumi.IntInput) ContainerResponseV1Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerResponseV1 {
+		return vs[0].([]ContainerResponseV1)[vs[1].(int)]
+	}).(ContainerResponseV1Output)
+}
+
+// A container instance.
+type ContainerResponseV2 struct {
+	// The commands to execute within the container instance in exec form.
+	Command []string `pulumi:"command"`
+	// The config map.
+	ConfigMap *ConfigMapResponse `pulumi:"configMap"`
+	// The environment variables to set in the container instance.
+	EnvironmentVariables []EnvironmentVariableResponseV2 `pulumi:"environmentVariables"`
+	// The name of the image used to create the container instance.
+	Image *string `pulumi:"image"`
+	// The instance view of the container instance. Only valid in response.
+	InstanceView ContainerPropertiesResponseInstanceView `pulumi:"instanceView"`
+	// The liveness probe.
+	LivenessProbe *ContainerProbeResponse `pulumi:"livenessProbe"`
+	// The user-provided name of the container instance.
+	Name string `pulumi:"name"`
+	// The exposed ports on the container instance.
+	Ports []ContainerPortResponse `pulumi:"ports"`
+	// The readiness probe.
+	ReadinessProbe *ContainerProbeResponse `pulumi:"readinessProbe"`
+	// The resource requirements of the container instance.
+	Resources *ResourceRequirementsResponse `pulumi:"resources"`
+	// The container security properties.
+	SecurityContext *SecurityContextDefinitionResponse `pulumi:"securityContext"`
+	// The volume mounts available to the container instance.
+	VolumeMounts []VolumeMountResponse `pulumi:"volumeMounts"`
+}
+
+// A container instance.
+type ContainerResponseV2Output struct{ *pulumi.OutputState }
+
+func (ContainerResponseV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerResponseV2)(nil)).Elem()
+}
+
+func (o ContainerResponseV2Output) ToContainerResponseV2Output() ContainerResponseV2Output {
+	return o
+}
+
+func (o ContainerResponseV2Output) ToContainerResponseV2OutputWithContext(ctx context.Context) ContainerResponseV2Output {
+	return o
+}
+
+// The commands to execute within the container instance in exec form.
+func (o ContainerResponseV2Output) Command() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ContainerResponseV2) []string { return v.Command }).(pulumi.StringArrayOutput)
+}
+
+// The config map.
+func (o ContainerResponseV2Output) ConfigMap() ConfigMapResponsePtrOutput {
+	return o.ApplyT(func(v ContainerResponseV2) *ConfigMapResponse { return v.ConfigMap }).(ConfigMapResponsePtrOutput)
+}
+
+// The environment variables to set in the container instance.
+func (o ContainerResponseV2Output) EnvironmentVariables() EnvironmentVariableResponseV2ArrayOutput {
+	return o.ApplyT(func(v ContainerResponseV2) []EnvironmentVariableResponseV2 { return v.EnvironmentVariables }).(EnvironmentVariableResponseV2ArrayOutput)
+}
+
+// The name of the image used to create the container instance.
+func (o ContainerResponseV2Output) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContainerResponseV2) *string { return v.Image }).(pulumi.StringPtrOutput)
+}
+
+// The instance view of the container instance. Only valid in response.
+func (o ContainerResponseV2Output) InstanceView() ContainerPropertiesResponseInstanceViewOutput {
+	return o.ApplyT(func(v ContainerResponseV2) ContainerPropertiesResponseInstanceView { return v.InstanceView }).(ContainerPropertiesResponseInstanceViewOutput)
+}
+
+// The liveness probe.
+func (o ContainerResponseV2Output) LivenessProbe() ContainerProbeResponsePtrOutput {
+	return o.ApplyT(func(v ContainerResponseV2) *ContainerProbeResponse { return v.LivenessProbe }).(ContainerProbeResponsePtrOutput)
+}
+
+// The user-provided name of the container instance.
+func (o ContainerResponseV2Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ContainerResponseV2) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The exposed ports on the container instance.
+func (o ContainerResponseV2Output) Ports() ContainerPortResponseArrayOutput {
+	return o.ApplyT(func(v ContainerResponseV2) []ContainerPortResponse { return v.Ports }).(ContainerPortResponseArrayOutput)
+}
+
+// The readiness probe.
+func (o ContainerResponseV2Output) ReadinessProbe() ContainerProbeResponsePtrOutput {
+	return o.ApplyT(func(v ContainerResponseV2) *ContainerProbeResponse { return v.ReadinessProbe }).(ContainerProbeResponsePtrOutput)
+}
+
+// The resource requirements of the container instance.
+func (o ContainerResponseV2Output) Resources() ResourceRequirementsResponsePtrOutput {
+	return o.ApplyT(func(v ContainerResponseV2) *ResourceRequirementsResponse { return v.Resources }).(ResourceRequirementsResponsePtrOutput)
+}
+
+// The container security properties.
+func (o ContainerResponseV2Output) SecurityContext() SecurityContextDefinitionResponsePtrOutput {
+	return o.ApplyT(func(v ContainerResponseV2) *SecurityContextDefinitionResponse { return v.SecurityContext }).(SecurityContextDefinitionResponsePtrOutput)
+}
+
+// The volume mounts available to the container instance.
+func (o ContainerResponseV2Output) VolumeMounts() VolumeMountResponseArrayOutput {
+	return o.ApplyT(func(v ContainerResponseV2) []VolumeMountResponse { return v.VolumeMounts }).(VolumeMountResponseArrayOutput)
+}
+
+type ContainerResponseV2ArrayOutput struct{ *pulumi.OutputState }
+
+func (ContainerResponseV2ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerResponseV2)(nil)).Elem()
+}
+
+func (o ContainerResponseV2ArrayOutput) ToContainerResponseV2ArrayOutput() ContainerResponseV2ArrayOutput {
+	return o
+}
+
+func (o ContainerResponseV2ArrayOutput) ToContainerResponseV2ArrayOutputWithContext(ctx context.Context) ContainerResponseV2ArrayOutput {
+	return o
+}
+
+func (o ContainerResponseV2ArrayOutput) Index(i pulumi.IntInput) ContainerResponseV2Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerResponseV2 {
+		return vs[0].([]ContainerResponseV2)[vs[1].(int)]
+	}).(ContainerResponseV2Output)
+}
+
 // The container instance state.
 type ContainerStateResponse struct {
 	// The human-readable status of the container instance state.
@@ -5599,6 +6067,126 @@ func (o EnvironmentVariableResponseArrayOutput) Index(i pulumi.IntInput) Environ
 	}).(EnvironmentVariableResponseOutput)
 }
 
+// The environment variable to set within the container instance.
+type EnvironmentVariableResponseV1 struct {
+	// The name of the environment variable.
+	Name string `pulumi:"name"`
+	// The value of the secure environment variable.
+	SecureValue *string `pulumi:"secureValue"`
+	// The value of the environment variable.
+	Value *string `pulumi:"value"`
+}
+
+// The environment variable to set within the container instance.
+type EnvironmentVariableResponseV1Output struct{ *pulumi.OutputState }
+
+func (EnvironmentVariableResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentVariableResponseV1)(nil)).Elem()
+}
+
+func (o EnvironmentVariableResponseV1Output) ToEnvironmentVariableResponseV1Output() EnvironmentVariableResponseV1Output {
+	return o
+}
+
+func (o EnvironmentVariableResponseV1Output) ToEnvironmentVariableResponseV1OutputWithContext(ctx context.Context) EnvironmentVariableResponseV1Output {
+	return o
+}
+
+// The name of the environment variable.
+func (o EnvironmentVariableResponseV1Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v EnvironmentVariableResponseV1) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The value of the secure environment variable.
+func (o EnvironmentVariableResponseV1Output) SecureValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentVariableResponseV1) *string { return v.SecureValue }).(pulumi.StringPtrOutput)
+}
+
+// The value of the environment variable.
+func (o EnvironmentVariableResponseV1Output) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentVariableResponseV1) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type EnvironmentVariableResponseV1ArrayOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentVariableResponseV1ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnvironmentVariableResponseV1)(nil)).Elem()
+}
+
+func (o EnvironmentVariableResponseV1ArrayOutput) ToEnvironmentVariableResponseV1ArrayOutput() EnvironmentVariableResponseV1ArrayOutput {
+	return o
+}
+
+func (o EnvironmentVariableResponseV1ArrayOutput) ToEnvironmentVariableResponseV1ArrayOutputWithContext(ctx context.Context) EnvironmentVariableResponseV1ArrayOutput {
+	return o
+}
+
+func (o EnvironmentVariableResponseV1ArrayOutput) Index(i pulumi.IntInput) EnvironmentVariableResponseV1Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnvironmentVariableResponseV1 {
+		return vs[0].([]EnvironmentVariableResponseV1)[vs[1].(int)]
+	}).(EnvironmentVariableResponseV1Output)
+}
+
+// The environment variable to set within the container instance.
+type EnvironmentVariableResponseV2 struct {
+	// The name of the environment variable.
+	Name string `pulumi:"name"`
+	// The value of the secure environment variable.
+	SecureValue *string `pulumi:"secureValue"`
+	// The value of the environment variable.
+	Value *string `pulumi:"value"`
+}
+
+// The environment variable to set within the container instance.
+type EnvironmentVariableResponseV2Output struct{ *pulumi.OutputState }
+
+func (EnvironmentVariableResponseV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentVariableResponseV2)(nil)).Elem()
+}
+
+func (o EnvironmentVariableResponseV2Output) ToEnvironmentVariableResponseV2Output() EnvironmentVariableResponseV2Output {
+	return o
+}
+
+func (o EnvironmentVariableResponseV2Output) ToEnvironmentVariableResponseV2OutputWithContext(ctx context.Context) EnvironmentVariableResponseV2Output {
+	return o
+}
+
+// The name of the environment variable.
+func (o EnvironmentVariableResponseV2Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v EnvironmentVariableResponseV2) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The value of the secure environment variable.
+func (o EnvironmentVariableResponseV2Output) SecureValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentVariableResponseV2) *string { return v.SecureValue }).(pulumi.StringPtrOutput)
+}
+
+// The value of the environment variable.
+func (o EnvironmentVariableResponseV2Output) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentVariableResponseV2) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type EnvironmentVariableResponseV2ArrayOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentVariableResponseV2ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnvironmentVariableResponseV2)(nil)).Elem()
+}
+
+func (o EnvironmentVariableResponseV2ArrayOutput) ToEnvironmentVariableResponseV2ArrayOutput() EnvironmentVariableResponseV2ArrayOutput {
+	return o
+}
+
+func (o EnvironmentVariableResponseV2ArrayOutput) ToEnvironmentVariableResponseV2ArrayOutputWithContext(ctx context.Context) EnvironmentVariableResponseV2ArrayOutput {
+	return o
+}
+
+func (o EnvironmentVariableResponseV2ArrayOutput) Index(i pulumi.IntInput) EnvironmentVariableResponseV2Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnvironmentVariableResponseV2 {
+		return vs[0].([]EnvironmentVariableResponseV2)[vs[1].(int)]
+	}).(EnvironmentVariableResponseV2Output)
+}
+
 // A container group or container instance event.
 type EventResponse struct {
 	// The count of the event.
@@ -7047,6 +7635,154 @@ func (o ImageRegistryCredentialResponseArrayOutput) Index(i pulumi.IntInput) Ima
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ImageRegistryCredentialResponse {
 		return vs[0].([]ImageRegistryCredentialResponse)[vs[1].(int)]
 	}).(ImageRegistryCredentialResponseOutput)
+}
+
+// Image registry credential.
+type ImageRegistryCredentialResponseV1 struct {
+	// The identity for the private registry.
+	Identity *string `pulumi:"identity"`
+	// The identity URL for the private registry.
+	IdentityUrl *string `pulumi:"identityUrl"`
+	// The password for the private registry.
+	Password *string `pulumi:"password"`
+	// The Docker image registry server without a protocol such as "http" and "https".
+	Server string `pulumi:"server"`
+	// The username for the private registry.
+	Username *string `pulumi:"username"`
+}
+
+// Image registry credential.
+type ImageRegistryCredentialResponseV1Output struct{ *pulumi.OutputState }
+
+func (ImageRegistryCredentialResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageRegistryCredentialResponseV1)(nil)).Elem()
+}
+
+func (o ImageRegistryCredentialResponseV1Output) ToImageRegistryCredentialResponseV1Output() ImageRegistryCredentialResponseV1Output {
+	return o
+}
+
+func (o ImageRegistryCredentialResponseV1Output) ToImageRegistryCredentialResponseV1OutputWithContext(ctx context.Context) ImageRegistryCredentialResponseV1Output {
+	return o
+}
+
+// The identity for the private registry.
+func (o ImageRegistryCredentialResponseV1Output) Identity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageRegistryCredentialResponseV1) *string { return v.Identity }).(pulumi.StringPtrOutput)
+}
+
+// The identity URL for the private registry.
+func (o ImageRegistryCredentialResponseV1Output) IdentityUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageRegistryCredentialResponseV1) *string { return v.IdentityUrl }).(pulumi.StringPtrOutput)
+}
+
+// The password for the private registry.
+func (o ImageRegistryCredentialResponseV1Output) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageRegistryCredentialResponseV1) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The Docker image registry server without a protocol such as "http" and "https".
+func (o ImageRegistryCredentialResponseV1Output) Server() pulumi.StringOutput {
+	return o.ApplyT(func(v ImageRegistryCredentialResponseV1) string { return v.Server }).(pulumi.StringOutput)
+}
+
+// The username for the private registry.
+func (o ImageRegistryCredentialResponseV1Output) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageRegistryCredentialResponseV1) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type ImageRegistryCredentialResponseV1ArrayOutput struct{ *pulumi.OutputState }
+
+func (ImageRegistryCredentialResponseV1ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImageRegistryCredentialResponseV1)(nil)).Elem()
+}
+
+func (o ImageRegistryCredentialResponseV1ArrayOutput) ToImageRegistryCredentialResponseV1ArrayOutput() ImageRegistryCredentialResponseV1ArrayOutput {
+	return o
+}
+
+func (o ImageRegistryCredentialResponseV1ArrayOutput) ToImageRegistryCredentialResponseV1ArrayOutputWithContext(ctx context.Context) ImageRegistryCredentialResponseV1ArrayOutput {
+	return o
+}
+
+func (o ImageRegistryCredentialResponseV1ArrayOutput) Index(i pulumi.IntInput) ImageRegistryCredentialResponseV1Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ImageRegistryCredentialResponseV1 {
+		return vs[0].([]ImageRegistryCredentialResponseV1)[vs[1].(int)]
+	}).(ImageRegistryCredentialResponseV1Output)
+}
+
+// Image registry credential.
+type ImageRegistryCredentialResponseV2 struct {
+	// The identity for the private registry.
+	Identity *string `pulumi:"identity"`
+	// The identity URL for the private registry.
+	IdentityUrl *string `pulumi:"identityUrl"`
+	// The password for the private registry.
+	Password *string `pulumi:"password"`
+	// The Docker image registry server without a protocol such as "http" and "https".
+	Server string `pulumi:"server"`
+	// The username for the private registry.
+	Username *string `pulumi:"username"`
+}
+
+// Image registry credential.
+type ImageRegistryCredentialResponseV2Output struct{ *pulumi.OutputState }
+
+func (ImageRegistryCredentialResponseV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageRegistryCredentialResponseV2)(nil)).Elem()
+}
+
+func (o ImageRegistryCredentialResponseV2Output) ToImageRegistryCredentialResponseV2Output() ImageRegistryCredentialResponseV2Output {
+	return o
+}
+
+func (o ImageRegistryCredentialResponseV2Output) ToImageRegistryCredentialResponseV2OutputWithContext(ctx context.Context) ImageRegistryCredentialResponseV2Output {
+	return o
+}
+
+// The identity for the private registry.
+func (o ImageRegistryCredentialResponseV2Output) Identity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageRegistryCredentialResponseV2) *string { return v.Identity }).(pulumi.StringPtrOutput)
+}
+
+// The identity URL for the private registry.
+func (o ImageRegistryCredentialResponseV2Output) IdentityUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageRegistryCredentialResponseV2) *string { return v.IdentityUrl }).(pulumi.StringPtrOutput)
+}
+
+// The password for the private registry.
+func (o ImageRegistryCredentialResponseV2Output) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageRegistryCredentialResponseV2) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The Docker image registry server without a protocol such as "http" and "https".
+func (o ImageRegistryCredentialResponseV2Output) Server() pulumi.StringOutput {
+	return o.ApplyT(func(v ImageRegistryCredentialResponseV2) string { return v.Server }).(pulumi.StringOutput)
+}
+
+// The username for the private registry.
+func (o ImageRegistryCredentialResponseV2Output) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageRegistryCredentialResponseV2) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type ImageRegistryCredentialResponseV2ArrayOutput struct{ *pulumi.OutputState }
+
+func (ImageRegistryCredentialResponseV2ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImageRegistryCredentialResponseV2)(nil)).Elem()
+}
+
+func (o ImageRegistryCredentialResponseV2ArrayOutput) ToImageRegistryCredentialResponseV2ArrayOutput() ImageRegistryCredentialResponseV2ArrayOutput {
+	return o
+}
+
+func (o ImageRegistryCredentialResponseV2ArrayOutput) ToImageRegistryCredentialResponseV2ArrayOutputWithContext(ctx context.Context) ImageRegistryCredentialResponseV2ArrayOutput {
+	return o
+}
+
+func (o ImageRegistryCredentialResponseV2ArrayOutput) Index(i pulumi.IntInput) ImageRegistryCredentialResponseV2Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ImageRegistryCredentialResponseV2 {
+		return vs[0].([]ImageRegistryCredentialResponseV2)[vs[1].(int)]
+	}).(ImageRegistryCredentialResponseV2Output)
 }
 
 // The init container definition.
@@ -12970,6 +13706,154 @@ func (o VolumeResponseArrayOutput) Index(i pulumi.IntInput) VolumeResponseOutput
 	}).(VolumeResponseOutput)
 }
 
+// The properties of the volume.
+type VolumeResponseV1 struct {
+	// The Azure File volume.
+	AzureFile *AzureFileVolumeResponseV1 `pulumi:"azureFile"`
+	// The empty directory volume.
+	EmptyDir interface{} `pulumi:"emptyDir"`
+	// The git repo volume.
+	GitRepo *GitRepoVolumeResponse `pulumi:"gitRepo"`
+	// The name of the volume.
+	Name string `pulumi:"name"`
+	// The secret volume.
+	Secret map[string]string `pulumi:"secret"`
+}
+
+// The properties of the volume.
+type VolumeResponseV1Output struct{ *pulumi.OutputState }
+
+func (VolumeResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeResponseV1)(nil)).Elem()
+}
+
+func (o VolumeResponseV1Output) ToVolumeResponseV1Output() VolumeResponseV1Output {
+	return o
+}
+
+func (o VolumeResponseV1Output) ToVolumeResponseV1OutputWithContext(ctx context.Context) VolumeResponseV1Output {
+	return o
+}
+
+// The Azure File volume.
+func (o VolumeResponseV1Output) AzureFile() AzureFileVolumeResponseV1PtrOutput {
+	return o.ApplyT(func(v VolumeResponseV1) *AzureFileVolumeResponseV1 { return v.AzureFile }).(AzureFileVolumeResponseV1PtrOutput)
+}
+
+// The empty directory volume.
+func (o VolumeResponseV1Output) EmptyDir() pulumi.AnyOutput {
+	return o.ApplyT(func(v VolumeResponseV1) interface{} { return v.EmptyDir }).(pulumi.AnyOutput)
+}
+
+// The git repo volume.
+func (o VolumeResponseV1Output) GitRepo() GitRepoVolumeResponsePtrOutput {
+	return o.ApplyT(func(v VolumeResponseV1) *GitRepoVolumeResponse { return v.GitRepo }).(GitRepoVolumeResponsePtrOutput)
+}
+
+// The name of the volume.
+func (o VolumeResponseV1Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v VolumeResponseV1) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The secret volume.
+func (o VolumeResponseV1Output) Secret() pulumi.StringMapOutput {
+	return o.ApplyT(func(v VolumeResponseV1) map[string]string { return v.Secret }).(pulumi.StringMapOutput)
+}
+
+type VolumeResponseV1ArrayOutput struct{ *pulumi.OutputState }
+
+func (VolumeResponseV1ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VolumeResponseV1)(nil)).Elem()
+}
+
+func (o VolumeResponseV1ArrayOutput) ToVolumeResponseV1ArrayOutput() VolumeResponseV1ArrayOutput {
+	return o
+}
+
+func (o VolumeResponseV1ArrayOutput) ToVolumeResponseV1ArrayOutputWithContext(ctx context.Context) VolumeResponseV1ArrayOutput {
+	return o
+}
+
+func (o VolumeResponseV1ArrayOutput) Index(i pulumi.IntInput) VolumeResponseV1Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VolumeResponseV1 {
+		return vs[0].([]VolumeResponseV1)[vs[1].(int)]
+	}).(VolumeResponseV1Output)
+}
+
+// The properties of the volume.
+type VolumeResponseV2 struct {
+	// The Azure File volume.
+	AzureFile *AzureFileVolumeResponseV2 `pulumi:"azureFile"`
+	// The empty directory volume.
+	EmptyDir interface{} `pulumi:"emptyDir"`
+	// The git repo volume.
+	GitRepo *GitRepoVolumeResponse `pulumi:"gitRepo"`
+	// The name of the volume.
+	Name string `pulumi:"name"`
+	// The secret volume.
+	Secret map[string]string `pulumi:"secret"`
+}
+
+// The properties of the volume.
+type VolumeResponseV2Output struct{ *pulumi.OutputState }
+
+func (VolumeResponseV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeResponseV2)(nil)).Elem()
+}
+
+func (o VolumeResponseV2Output) ToVolumeResponseV2Output() VolumeResponseV2Output {
+	return o
+}
+
+func (o VolumeResponseV2Output) ToVolumeResponseV2OutputWithContext(ctx context.Context) VolumeResponseV2Output {
+	return o
+}
+
+// The Azure File volume.
+func (o VolumeResponseV2Output) AzureFile() AzureFileVolumeResponseV2PtrOutput {
+	return o.ApplyT(func(v VolumeResponseV2) *AzureFileVolumeResponseV2 { return v.AzureFile }).(AzureFileVolumeResponseV2PtrOutput)
+}
+
+// The empty directory volume.
+func (o VolumeResponseV2Output) EmptyDir() pulumi.AnyOutput {
+	return o.ApplyT(func(v VolumeResponseV2) interface{} { return v.EmptyDir }).(pulumi.AnyOutput)
+}
+
+// The git repo volume.
+func (o VolumeResponseV2Output) GitRepo() GitRepoVolumeResponsePtrOutput {
+	return o.ApplyT(func(v VolumeResponseV2) *GitRepoVolumeResponse { return v.GitRepo }).(GitRepoVolumeResponsePtrOutput)
+}
+
+// The name of the volume.
+func (o VolumeResponseV2Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v VolumeResponseV2) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The secret volume.
+func (o VolumeResponseV2Output) Secret() pulumi.StringMapOutput {
+	return o.ApplyT(func(v VolumeResponseV2) map[string]string { return v.Secret }).(pulumi.StringMapOutput)
+}
+
+type VolumeResponseV2ArrayOutput struct{ *pulumi.OutputState }
+
+func (VolumeResponseV2ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VolumeResponseV2)(nil)).Elem()
+}
+
+func (o VolumeResponseV2ArrayOutput) ToVolumeResponseV2ArrayOutput() VolumeResponseV2ArrayOutput {
+	return o
+}
+
+func (o VolumeResponseV2ArrayOutput) ToVolumeResponseV2ArrayOutputWithContext(ctx context.Context) VolumeResponseV2ArrayOutput {
+	return o
+}
+
+func (o VolumeResponseV2ArrayOutput) Index(i pulumi.IntInput) VolumeResponseV2Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VolumeResponseV2 {
+		return vs[0].([]VolumeResponseV2)[vs[1].(int)]
+	}).(VolumeResponseV2Output)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ApiEntityReferenceOutput{})
 	pulumi.RegisterOutputType(ApiEntityReferencePtrOutput{})
@@ -12987,6 +13871,10 @@ func init() {
 	pulumi.RegisterOutputType(AzureFileVolumePtrOutput{})
 	pulumi.RegisterOutputType(AzureFileVolumeResponseOutput{})
 	pulumi.RegisterOutputType(AzureFileVolumeResponsePtrOutput{})
+	pulumi.RegisterOutputType(AzureFileVolumeResponseV1Output{})
+	pulumi.RegisterOutputType(AzureFileVolumeResponseV1PtrOutput{})
+	pulumi.RegisterOutputType(AzureFileVolumeResponseV2Output{})
+	pulumi.RegisterOutputType(AzureFileVolumeResponseV2PtrOutput{})
 	pulumi.RegisterOutputType(ConfidentialComputePropertiesOutput{})
 	pulumi.RegisterOutputType(ConfidentialComputePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(ConfidentialComputePropertiesResponseOutput{})
@@ -13037,6 +13925,10 @@ func init() {
 	pulumi.RegisterOutputType(ContainerPropertiesResponseInstanceViewOutput{})
 	pulumi.RegisterOutputType(ContainerResponseOutput{})
 	pulumi.RegisterOutputType(ContainerResponseArrayOutput{})
+	pulumi.RegisterOutputType(ContainerResponseV1Output{})
+	pulumi.RegisterOutputType(ContainerResponseV1ArrayOutput{})
+	pulumi.RegisterOutputType(ContainerResponseV2Output{})
+	pulumi.RegisterOutputType(ContainerResponseV2ArrayOutput{})
 	pulumi.RegisterOutputType(ContainerStateResponseOutput{})
 	pulumi.RegisterOutputType(DeploymentExtensionSpecOutput{})
 	pulumi.RegisterOutputType(DeploymentExtensionSpecArrayOutput{})
@@ -13066,6 +13958,10 @@ func init() {
 	pulumi.RegisterOutputType(EnvironmentVariableArrayOutput{})
 	pulumi.RegisterOutputType(EnvironmentVariableResponseOutput{})
 	pulumi.RegisterOutputType(EnvironmentVariableResponseArrayOutput{})
+	pulumi.RegisterOutputType(EnvironmentVariableResponseV1Output{})
+	pulumi.RegisterOutputType(EnvironmentVariableResponseV1ArrayOutput{})
+	pulumi.RegisterOutputType(EnvironmentVariableResponseV2Output{})
+	pulumi.RegisterOutputType(EnvironmentVariableResponseV2ArrayOutput{})
 	pulumi.RegisterOutputType(EventResponseOutput{})
 	pulumi.RegisterOutputType(EventResponseArrayOutput{})
 	pulumi.RegisterOutputType(FileShareOutput{})
@@ -13092,6 +13988,10 @@ func init() {
 	pulumi.RegisterOutputType(ImageRegistryCredentialArrayOutput{})
 	pulumi.RegisterOutputType(ImageRegistryCredentialResponseOutput{})
 	pulumi.RegisterOutputType(ImageRegistryCredentialResponseArrayOutput{})
+	pulumi.RegisterOutputType(ImageRegistryCredentialResponseV1Output{})
+	pulumi.RegisterOutputType(ImageRegistryCredentialResponseV1ArrayOutput{})
+	pulumi.RegisterOutputType(ImageRegistryCredentialResponseV2Output{})
+	pulumi.RegisterOutputType(ImageRegistryCredentialResponseV2ArrayOutput{})
 	pulumi.RegisterOutputType(InitContainerDefinitionOutput{})
 	pulumi.RegisterOutputType(InitContainerDefinitionArrayOutput{})
 	pulumi.RegisterOutputType(InitContainerDefinitionResponseOutput{})
@@ -13192,4 +14092,8 @@ func init() {
 	pulumi.RegisterOutputType(VolumeMountResponseArrayOutput{})
 	pulumi.RegisterOutputType(VolumeResponseOutput{})
 	pulumi.RegisterOutputType(VolumeResponseArrayOutput{})
+	pulumi.RegisterOutputType(VolumeResponseV1Output{})
+	pulumi.RegisterOutputType(VolumeResponseV1ArrayOutput{})
+	pulumi.RegisterOutputType(VolumeResponseV2Output{})
+	pulumi.RegisterOutputType(VolumeResponseV2ArrayOutput{})
 }

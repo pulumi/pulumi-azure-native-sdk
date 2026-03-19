@@ -22505,27 +22505,27 @@ func (o PredictiveAutoscalePolicyResponsePtrOutput) ScaleMode() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Private Endpoint Connection resource.
+// The private endpoint connection resource.
 type PrivateEndpointConnectionResponse struct {
 	// The group ids for the private endpoint resource.
 	GroupIds []string `pulumi:"groupIds"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// The resource of private end point.
+	// The private endpoint resource.
 	PrivateEndpoint *PrivateEndpointResponse `pulumi:"privateEndpoint"`
 	// A collection of information about the state of the connection between service consumer and provider.
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
 	// The provisioning state of the private endpoint connection resource.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData *SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
-// The Private Endpoint Connection resource.
+// The private endpoint connection resource.
 type PrivateEndpointConnectionResponseOutput struct{ *pulumi.OutputState }
 
 func (PrivateEndpointConnectionResponseOutput) ElementType() reflect.Type {
@@ -22545,7 +22545,7 @@ func (o PrivateEndpointConnectionResponseOutput) GroupIds() pulumi.StringArrayOu
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o PrivateEndpointConnectionResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -22555,7 +22555,7 @@ func (o PrivateEndpointConnectionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The resource of private end point.
+// The private endpoint resource.
 func (o PrivateEndpointConnectionResponseOutput) PrivateEndpoint() PrivateEndpointResponsePtrOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) *PrivateEndpointResponse { return v.PrivateEndpoint }).(PrivateEndpointResponsePtrOutput)
 }
@@ -22573,8 +22573,8 @@ func (o PrivateEndpointConnectionResponseOutput) ProvisioningState() pulumi.Stri
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o PrivateEndpointConnectionResponseOutput) SystemData() SystemDataResponsePtrOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) *SystemDataResponse { return v.SystemData }).(SystemDataResponsePtrOutput)
+func (o PrivateEndpointConnectionResponseOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -22600,6 +22600,89 @@ func (o PrivateEndpointConnectionResponseArrayOutput) Index(i pulumi.IntInput) P
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnectionResponse {
 		return vs[0].([]PrivateEndpointConnectionResponse)[vs[1].(int)]
 	}).(PrivateEndpointConnectionResponseOutput)
+}
+
+// The Private Endpoint Connection resource.
+type PrivateEndpointConnectionResponseV1 struct {
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The resource of private end point.
+	PrivateEndpoint *PrivateEndpointResponse `pulumi:"privateEndpoint"`
+	// A collection of information about the state of the connection between service consumer and provider.
+	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
+	// The provisioning state of the private endpoint connection resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
+}
+
+// The Private Endpoint Connection resource.
+type PrivateEndpointConnectionResponseV1Output struct{ *pulumi.OutputState }
+
+func (PrivateEndpointConnectionResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointConnectionResponseV1)(nil)).Elem()
+}
+
+func (o PrivateEndpointConnectionResponseV1Output) ToPrivateEndpointConnectionResponseV1Output() PrivateEndpointConnectionResponseV1Output {
+	return o
+}
+
+func (o PrivateEndpointConnectionResponseV1Output) ToPrivateEndpointConnectionResponseV1OutputWithContext(ctx context.Context) PrivateEndpointConnectionResponseV1Output {
+	return o
+}
+
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+func (o PrivateEndpointConnectionResponseV1Output) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponseV1) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the resource
+func (o PrivateEndpointConnectionResponseV1Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponseV1) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The resource of private end point.
+func (o PrivateEndpointConnectionResponseV1Output) PrivateEndpoint() PrivateEndpointResponsePtrOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponseV1) *PrivateEndpointResponse { return v.PrivateEndpoint }).(PrivateEndpointResponsePtrOutput)
+}
+
+// A collection of information about the state of the connection between service consumer and provider.
+func (o PrivateEndpointConnectionResponseV1Output) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStateResponseOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponseV1) PrivateLinkServiceConnectionStateResponse {
+		return v.PrivateLinkServiceConnectionState
+	}).(PrivateLinkServiceConnectionStateResponseOutput)
+}
+
+// The provisioning state of the private endpoint connection resource.
+func (o PrivateEndpointConnectionResponseV1Output) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponseV1) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+func (o PrivateEndpointConnectionResponseV1Output) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponseV1) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type PrivateEndpointConnectionResponseV1ArrayOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointConnectionResponseV1ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrivateEndpointConnectionResponseV1)(nil)).Elem()
+}
+
+func (o PrivateEndpointConnectionResponseV1ArrayOutput) ToPrivateEndpointConnectionResponseV1ArrayOutput() PrivateEndpointConnectionResponseV1ArrayOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionResponseV1ArrayOutput) ToPrivateEndpointConnectionResponseV1ArrayOutputWithContext(ctx context.Context) PrivateEndpointConnectionResponseV1ArrayOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionResponseV1ArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionResponseV1Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnectionResponseV1 {
+		return vs[0].([]PrivateEndpointConnectionResponseV1)[vs[1].(int)]
+	}).(PrivateEndpointConnectionResponseV1Output)
 }
 
 // The Private Endpoint resource.
@@ -29764,90 +29847,6 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
 
-type SystemDataResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SystemDataResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SystemDataResponse)(nil)).Elem()
-}
-
-func (o SystemDataResponsePtrOutput) ToSystemDataResponsePtrOutput() SystemDataResponsePtrOutput {
-	return o
-}
-
-func (o SystemDataResponsePtrOutput) ToSystemDataResponsePtrOutputWithContext(ctx context.Context) SystemDataResponsePtrOutput {
-	return o
-}
-
-func (o SystemDataResponsePtrOutput) Elem() SystemDataResponseOutput {
-	return o.ApplyT(func(v *SystemDataResponse) SystemDataResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SystemDataResponse
-		return ret
-	}).(SystemDataResponseOutput)
-}
-
-// The timestamp of resource creation (UTC).
-func (o SystemDataResponsePtrOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SystemDataResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CreatedAt
-	}).(pulumi.StringPtrOutput)
-}
-
-// The identity that created the resource.
-func (o SystemDataResponsePtrOutput) CreatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SystemDataResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CreatedBy
-	}).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that created the resource.
-func (o SystemDataResponsePtrOutput) CreatedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SystemDataResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CreatedByType
-	}).(pulumi.StringPtrOutput)
-}
-
-// The timestamp of resource last modification (UTC)
-func (o SystemDataResponsePtrOutput) LastModifiedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SystemDataResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LastModifiedAt
-	}).(pulumi.StringPtrOutput)
-}
-
-// The identity that last modified the resource.
-func (o SystemDataResponsePtrOutput) LastModifiedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SystemDataResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LastModifiedBy
-	}).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that last modified the resource.
-func (o SystemDataResponsePtrOutput) LastModifiedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SystemDataResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LastModifiedByType
-	}).(pulumi.StringPtrOutput)
-}
-
 // Base exporter using TCP as transport protocol.
 type TcpExporter struct {
 	// TCP url to export.
@@ -31563,7 +31562,7 @@ type WebhookReceiverResponse struct {
 	IdentifierUri *string `pulumi:"identifierUri"`
 	// The principal id of the managed identity. The value can be "None", "SystemAssigned"
 	ManagedIdentity *string `pulumi:"managedIdentity"`
-	// The name of the webhook receiver. Names must be unique across all receivers within a tenant action group.
+	// The name of the webhook receiver. Names must be unique across all receivers within an action group.
 	Name string `pulumi:"name"`
 	// Indicates the webhook app object Id for aad auth.
 	ObjectId *string `pulumi:"objectId"`
@@ -31619,7 +31618,7 @@ func (o WebhookReceiverResponseOutput) ManagedIdentity() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v WebhookReceiverResponse) *string { return v.ManagedIdentity }).(pulumi.StringPtrOutput)
 }
 
-// The name of the webhook receiver. Names must be unique across all receivers within a tenant action group.
+// The name of the webhook receiver. Names must be unique across all receivers within an action group.
 func (o WebhookReceiverResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v WebhookReceiverResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -31667,6 +31666,111 @@ func (o WebhookReceiverResponseArrayOutput) Index(i pulumi.IntInput) WebhookRece
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WebhookReceiverResponse {
 		return vs[0].([]WebhookReceiverResponse)[vs[1].(int)]
 	}).(WebhookReceiverResponseOutput)
+}
+
+// A webhook receiver.
+type WebhookReceiverResponseV1 struct {
+	// Indicates the identifier uri for aad auth.
+	IdentifierUri *string `pulumi:"identifierUri"`
+	// The name of the webhook receiver. Names must be unique across all receivers within a tenant action group.
+	Name string `pulumi:"name"`
+	// Indicates the webhook app object Id for aad auth.
+	ObjectId *string `pulumi:"objectId"`
+	// The URI where webhooks should be sent.
+	ServiceUri string `pulumi:"serviceUri"`
+	// Indicates the tenant id for aad auth.
+	TenantId *string `pulumi:"tenantId"`
+	// Indicates whether or not use AAD authentication.
+	UseAadAuth *bool `pulumi:"useAadAuth"`
+	// Indicates whether to use common alert schema.
+	UseCommonAlertSchema *bool `pulumi:"useCommonAlertSchema"`
+}
+
+// Defaults sets the appropriate defaults for WebhookReceiverResponseV1
+func (val *WebhookReceiverResponseV1) Defaults() *WebhookReceiverResponseV1 {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.UseAadAuth == nil {
+		useAadAuth_ := false
+		tmp.UseAadAuth = &useAadAuth_
+	}
+	if tmp.UseCommonAlertSchema == nil {
+		useCommonAlertSchema_ := false
+		tmp.UseCommonAlertSchema = &useCommonAlertSchema_
+	}
+	return &tmp
+}
+
+// A webhook receiver.
+type WebhookReceiverResponseV1Output struct{ *pulumi.OutputState }
+
+func (WebhookReceiverResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebhookReceiverResponseV1)(nil)).Elem()
+}
+
+func (o WebhookReceiverResponseV1Output) ToWebhookReceiverResponseV1Output() WebhookReceiverResponseV1Output {
+	return o
+}
+
+func (o WebhookReceiverResponseV1Output) ToWebhookReceiverResponseV1OutputWithContext(ctx context.Context) WebhookReceiverResponseV1Output {
+	return o
+}
+
+// Indicates the identifier uri for aad auth.
+func (o WebhookReceiverResponseV1Output) IdentifierUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebhookReceiverResponseV1) *string { return v.IdentifierUri }).(pulumi.StringPtrOutput)
+}
+
+// The name of the webhook receiver. Names must be unique across all receivers within a tenant action group.
+func (o WebhookReceiverResponseV1Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WebhookReceiverResponseV1) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Indicates the webhook app object Id for aad auth.
+func (o WebhookReceiverResponseV1Output) ObjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebhookReceiverResponseV1) *string { return v.ObjectId }).(pulumi.StringPtrOutput)
+}
+
+// The URI where webhooks should be sent.
+func (o WebhookReceiverResponseV1Output) ServiceUri() pulumi.StringOutput {
+	return o.ApplyT(func(v WebhookReceiverResponseV1) string { return v.ServiceUri }).(pulumi.StringOutput)
+}
+
+// Indicates the tenant id for aad auth.
+func (o WebhookReceiverResponseV1Output) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebhookReceiverResponseV1) *string { return v.TenantId }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether or not use AAD authentication.
+func (o WebhookReceiverResponseV1Output) UseAadAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WebhookReceiverResponseV1) *bool { return v.UseAadAuth }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether to use common alert schema.
+func (o WebhookReceiverResponseV1Output) UseCommonAlertSchema() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WebhookReceiverResponseV1) *bool { return v.UseCommonAlertSchema }).(pulumi.BoolPtrOutput)
+}
+
+type WebhookReceiverResponseV1ArrayOutput struct{ *pulumi.OutputState }
+
+func (WebhookReceiverResponseV1ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WebhookReceiverResponseV1)(nil)).Elem()
+}
+
+func (o WebhookReceiverResponseV1ArrayOutput) ToWebhookReceiverResponseV1ArrayOutput() WebhookReceiverResponseV1ArrayOutput {
+	return o
+}
+
+func (o WebhookReceiverResponseV1ArrayOutput) ToWebhookReceiverResponseV1ArrayOutputWithContext(ctx context.Context) WebhookReceiverResponseV1ArrayOutput {
+	return o
+}
+
+func (o WebhookReceiverResponseV1ArrayOutput) Index(i pulumi.IntInput) WebhookReceiverResponseV1Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WebhookReceiverResponseV1 {
+		return vs[0].([]WebhookReceiverResponseV1)[vs[1].(int)]
+	}).(WebhookReceiverResponseV1Output)
 }
 
 // Specifies the metric alert rule criteria for a web test resource.
@@ -32535,6 +32639,8 @@ func init() {
 	pulumi.RegisterOutputType(PredictiveAutoscalePolicyResponsePtrOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseArrayOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseV1Output{})
+	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseV1ArrayOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointResponsePtrOutput{})
 	pulumi.RegisterOutputType(PrivateLinkScopedResourceResponseOutput{})
@@ -32656,7 +32762,6 @@ func init() {
 	pulumi.RegisterOutputType(SyslogReceiverResponseOutput{})
 	pulumi.RegisterOutputType(SyslogReceiverResponsePtrOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
-	pulumi.RegisterOutputType(SystemDataResponsePtrOutput{})
 	pulumi.RegisterOutputType(TcpExporterOutput{})
 	pulumi.RegisterOutputType(TcpExporterPtrOutput{})
 	pulumi.RegisterOutputType(TcpExporterResponseOutput{})
@@ -32689,6 +32794,8 @@ func init() {
 	pulumi.RegisterOutputType(WebhookReceiverArrayOutput{})
 	pulumi.RegisterOutputType(WebhookReceiverResponseOutput{})
 	pulumi.RegisterOutputType(WebhookReceiverResponseArrayOutput{})
+	pulumi.RegisterOutputType(WebhookReceiverResponseV1Output{})
+	pulumi.RegisterOutputType(WebhookReceiverResponseV1ArrayOutput{})
 	pulumi.RegisterOutputType(WebtestLocationAvailabilityCriteriaOutput{})
 	pulumi.RegisterOutputType(WebtestLocationAvailabilityCriteriaResponseOutput{})
 	pulumi.RegisterOutputType(WindowsEventLogDataSourceOutput{})

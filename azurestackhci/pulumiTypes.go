@@ -194,11 +194,11 @@ func (o AdapterPropertyOverridesPtrOutput) NetworkDirectTechnology() pulumi.Stri
 // The AdapterPropertyOverrides of a cluster.
 type AdapterPropertyOverridesResponse struct {
 	// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
-	JumboPacket string `pulumi:"jumboPacket"`
+	JumboPacket *string `pulumi:"jumboPacket"`
 	// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
-	NetworkDirect string `pulumi:"networkDirect"`
+	NetworkDirect *string `pulumi:"networkDirect"`
 	// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation. Expected values are 'iWARP', 'RoCEv2', 'RoCE'
-	NetworkDirectTechnology string `pulumi:"networkDirectTechnology"`
+	NetworkDirectTechnology *string `pulumi:"networkDirectTechnology"`
 }
 
 // The AdapterPropertyOverrides of a cluster.
@@ -217,18 +217,112 @@ func (o AdapterPropertyOverridesResponseOutput) ToAdapterPropertyOverridesRespon
 }
 
 // This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
-func (o AdapterPropertyOverridesResponseOutput) JumboPacket() pulumi.StringOutput {
-	return o.ApplyT(func(v AdapterPropertyOverridesResponse) string { return v.JumboPacket }).(pulumi.StringOutput)
+func (o AdapterPropertyOverridesResponseOutput) JumboPacket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AdapterPropertyOverridesResponse) *string { return v.JumboPacket }).(pulumi.StringPtrOutput)
 }
 
 // This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
-func (o AdapterPropertyOverridesResponseOutput) NetworkDirect() pulumi.StringOutput {
-	return o.ApplyT(func(v AdapterPropertyOverridesResponse) string { return v.NetworkDirect }).(pulumi.StringOutput)
+func (o AdapterPropertyOverridesResponseOutput) NetworkDirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AdapterPropertyOverridesResponse) *string { return v.NetworkDirect }).(pulumi.StringPtrOutput)
 }
 
 // This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation. Expected values are 'iWARP', 'RoCEv2', 'RoCE'
-func (o AdapterPropertyOverridesResponseOutput) NetworkDirectTechnology() pulumi.StringOutput {
-	return o.ApplyT(func(v AdapterPropertyOverridesResponse) string { return v.NetworkDirectTechnology }).(pulumi.StringOutput)
+func (o AdapterPropertyOverridesResponseOutput) NetworkDirectTechnology() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AdapterPropertyOverridesResponse) *string { return v.NetworkDirectTechnology }).(pulumi.StringPtrOutput)
+}
+
+type AdapterPropertyOverridesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AdapterPropertyOverridesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AdapterPropertyOverridesResponse)(nil)).Elem()
+}
+
+func (o AdapterPropertyOverridesResponsePtrOutput) ToAdapterPropertyOverridesResponsePtrOutput() AdapterPropertyOverridesResponsePtrOutput {
+	return o
+}
+
+func (o AdapterPropertyOverridesResponsePtrOutput) ToAdapterPropertyOverridesResponsePtrOutputWithContext(ctx context.Context) AdapterPropertyOverridesResponsePtrOutput {
+	return o
+}
+
+func (o AdapterPropertyOverridesResponsePtrOutput) Elem() AdapterPropertyOverridesResponseOutput {
+	return o.ApplyT(func(v *AdapterPropertyOverridesResponse) AdapterPropertyOverridesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AdapterPropertyOverridesResponse
+		return ret
+	}).(AdapterPropertyOverridesResponseOutput)
+}
+
+// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+func (o AdapterPropertyOverridesResponsePtrOutput) JumboPacket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AdapterPropertyOverridesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.JumboPacket
+	}).(pulumi.StringPtrOutput)
+}
+
+// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+func (o AdapterPropertyOverridesResponsePtrOutput) NetworkDirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AdapterPropertyOverridesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkDirect
+	}).(pulumi.StringPtrOutput)
+}
+
+// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation. Expected values are 'iWARP', 'RoCEv2', 'RoCE'
+func (o AdapterPropertyOverridesResponsePtrOutput) NetworkDirectTechnology() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AdapterPropertyOverridesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkDirectTechnology
+	}).(pulumi.StringPtrOutput)
+}
+
+// The AdapterPropertyOverrides of a cluster.
+type AdapterPropertyOverridesResponseV1 struct {
+	// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+	JumboPacket string `pulumi:"jumboPacket"`
+	// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+	NetworkDirect string `pulumi:"networkDirect"`
+	// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation. Expected values are 'iWARP', 'RoCEv2', 'RoCE'
+	NetworkDirectTechnology string `pulumi:"networkDirectTechnology"`
+}
+
+// The AdapterPropertyOverrides of a cluster.
+type AdapterPropertyOverridesResponseV1Output struct{ *pulumi.OutputState }
+
+func (AdapterPropertyOverridesResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdapterPropertyOverridesResponseV1)(nil)).Elem()
+}
+
+func (o AdapterPropertyOverridesResponseV1Output) ToAdapterPropertyOverridesResponseV1Output() AdapterPropertyOverridesResponseV1Output {
+	return o
+}
+
+func (o AdapterPropertyOverridesResponseV1Output) ToAdapterPropertyOverridesResponseV1OutputWithContext(ctx context.Context) AdapterPropertyOverridesResponseV1Output {
+	return o
+}
+
+// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+func (o AdapterPropertyOverridesResponseV1Output) JumboPacket() pulumi.StringOutput {
+	return o.ApplyT(func(v AdapterPropertyOverridesResponseV1) string { return v.JumboPacket }).(pulumi.StringOutput)
+}
+
+// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+func (o AdapterPropertyOverridesResponseV1Output) NetworkDirect() pulumi.StringOutput {
+	return o.ApplyT(func(v AdapterPropertyOverridesResponseV1) string { return v.NetworkDirect }).(pulumi.StringOutput)
+}
+
+// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation. Expected values are 'iWARP', 'RoCEv2', 'RoCE'
+func (o AdapterPropertyOverridesResponseV1Output) NetworkDirectTechnology() pulumi.StringOutput {
+	return o.ApplyT(func(v AdapterPropertyOverridesResponseV1) string { return v.NetworkDirectTechnology }).(pulumi.StringOutput)
 }
 
 // Connectivity related configuration required by arc server.
@@ -2137,6 +2231,8 @@ func (val *DeploymentDataResponse) Defaults() *DeploymentDataResponse {
 		return nil
 	}
 	tmp := *val
+	tmp.HostNetwork = tmp.HostNetwork.Defaults()
+
 	tmp.Observability = tmp.Observability.Defaults()
 
 	tmp.SecuritySettings = tmp.SecuritySettings.Defaults()
@@ -6251,8 +6347,6 @@ type ErrorDetailResponse struct {
 	Code string `pulumi:"code"`
 	// The error details.
 	Details []ErrorDetailResponse `pulumi:"details"`
-	// Exception details while installing extension.
-	Exception *string `pulumi:"exception"`
 	// The error message.
 	Message string `pulumi:"message"`
 	// The error target.
@@ -6289,11 +6383,6 @@ func (o ErrorDetailResponseOutput) Details() ErrorDetailResponseArrayOutput {
 	return o.ApplyT(func(v ErrorDetailResponse) []ErrorDetailResponse { return v.Details }).(ErrorDetailResponseArrayOutput)
 }
 
-// Exception details while installing extension.
-func (o ErrorDetailResponseOutput) Exception() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ErrorDetailResponse) *string { return v.Exception }).(pulumi.StringPtrOutput)
-}
-
 // The error message.
 func (o ErrorDetailResponseOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v ErrorDetailResponse) string { return v.Message }).(pulumi.StringOutput)
@@ -6322,6 +6411,52 @@ func (o ErrorDetailResponseArrayOutput) Index(i pulumi.IntInput) ErrorDetailResp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ErrorDetailResponse {
 		return vs[0].([]ErrorDetailResponse)[vs[1].(int)]
 	}).(ErrorDetailResponseOutput)
+}
+
+// details of validation failure
+type ErrorDetailResponseV1 struct {
+	// Exception details while installing extension.
+	Exception string `pulumi:"exception"`
+}
+
+// details of validation failure
+type ErrorDetailResponseV1Output struct{ *pulumi.OutputState }
+
+func (ErrorDetailResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErrorDetailResponseV1)(nil)).Elem()
+}
+
+func (o ErrorDetailResponseV1Output) ToErrorDetailResponseV1Output() ErrorDetailResponseV1Output {
+	return o
+}
+
+func (o ErrorDetailResponseV1Output) ToErrorDetailResponseV1OutputWithContext(ctx context.Context) ErrorDetailResponseV1Output {
+	return o
+}
+
+// Exception details while installing extension.
+func (o ErrorDetailResponseV1Output) Exception() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorDetailResponseV1) string { return v.Exception }).(pulumi.StringOutput)
+}
+
+type ErrorDetailResponseV1ArrayOutput struct{ *pulumi.OutputState }
+
+func (ErrorDetailResponseV1ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ErrorDetailResponseV1)(nil)).Elem()
+}
+
+func (o ErrorDetailResponseV1ArrayOutput) ToErrorDetailResponseV1ArrayOutput() ErrorDetailResponseV1ArrayOutput {
+	return o
+}
+
+func (o ErrorDetailResponseV1ArrayOutput) ToErrorDetailResponseV1ArrayOutputWithContext(ctx context.Context) ErrorDetailResponseV1ArrayOutput {
+	return o
+}
+
+func (o ErrorDetailResponseV1ArrayOutput) Index(i pulumi.IntInput) ErrorDetailResponseV1Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ErrorDetailResponseV1 {
+		return vs[0].([]ErrorDetailResponseV1)[vs[1].(int)]
+	}).(ErrorDetailResponseV1Output)
 }
 
 // The complex type of the extended location.
@@ -6790,7 +6925,7 @@ func (o ExtensionProfileResponseV1Output) Extensions() HciEdgeDeviceArcExtension
 // Arc extension installed on edge device.
 type ExtensionResponse struct {
 	// Error details while installing Arc extension.
-	ErrorDetails []ErrorDetailResponse `pulumi:"errorDetails"`
+	ErrorDetails []ErrorDetailResponseV1 `pulumi:"errorDetails"`
 	// Arc extension name installed on edge device.
 	ExtensionName string `pulumi:"extensionName"`
 	// Arc Extension Azure resource id.
@@ -6831,8 +6966,8 @@ func (o ExtensionResponseOutput) ToExtensionResponseOutputWithContext(ctx contex
 }
 
 // Error details while installing Arc extension.
-func (o ExtensionResponseOutput) ErrorDetails() ErrorDetailResponseArrayOutput {
-	return o.ApplyT(func(v ExtensionResponse) []ErrorDetailResponse { return v.ErrorDetails }).(ErrorDetailResponseArrayOutput)
+func (o ExtensionResponseOutput) ErrorDetails() ErrorDetailResponseV1ArrayOutput {
+	return o.ApplyT(func(v ExtensionResponse) []ErrorDetailResponseV1 { return v.ErrorDetails }).(ErrorDetailResponseV1ArrayOutput)
 }
 
 // Arc extension name installed on edge device.
@@ -9605,7 +9740,7 @@ func (o HciEdgeDevicePropertiesResponseOutput) ReportedProperties() HciReportedP
 // The network profile of a device.
 type HciNetworkProfileResponse struct {
 	// HostNetwork config to deploy AzureStackHCI Cluster.
-	HostNetwork HostNetworkResponse `pulumi:"hostNetwork"`
+	HostNetwork HostNetworkResponseV1 `pulumi:"hostNetwork"`
 	// List of NIC Details of device.
 	NicDetails []HciNicDetailResponse `pulumi:"nicDetails"`
 	// List of switch details for edge device.
@@ -9628,8 +9763,8 @@ func (o HciNetworkProfileResponseOutput) ToHciNetworkProfileResponseOutputWithCo
 }
 
 // HostNetwork config to deploy AzureStackHCI Cluster.
-func (o HciNetworkProfileResponseOutput) HostNetwork() HostNetworkResponseOutput {
-	return o.ApplyT(func(v HciNetworkProfileResponse) HostNetworkResponse { return v.HostNetwork }).(HostNetworkResponseOutput)
+func (o HciNetworkProfileResponseOutput) HostNetwork() HostNetworkResponseV1Output {
+	return o.ApplyT(func(v HciNetworkProfileResponse) HostNetworkResponseV1 { return v.HostNetwork }).(HostNetworkResponseV1Output)
 }
 
 // List of NIC Details of device.
@@ -10346,13 +10481,30 @@ func (o HostNetworkPtrOutput) StorageNetworks() StorageNetworksArrayOutput {
 // The HostNetwork of a cluster.
 type HostNetworkResponse struct {
 	// Optional parameter required only for 3 Nodes Switchless deployments. This allows users to specify IPs and Mask for Storage NICs when Network ATC is not assigning the IPs for storage automatically.
-	EnableStorageAutoIp bool `pulumi:"enableStorageAutoIp"`
+	EnableStorageAutoIp *bool `pulumi:"enableStorageAutoIp"`
 	// The network intents assigned to the network reference pattern used for the deployment. Each intent will define its own name, traffic type, adapter names, and overrides as recommended by your OEM.
 	Intents []IntentsResponse `pulumi:"intents"`
-	// Defines how the storage adapters between nodes are connected either switch or switch less.
-	StorageConnectivitySwitchless bool `pulumi:"storageConnectivitySwitchless"`
+	// Defines how the storage adapters between nodes are connected either switch or switch less..
+	StorageConnectivitySwitchless *bool `pulumi:"storageConnectivitySwitchless"`
 	// List of StorageNetworks config to deploy AzureStackHCI Cluster.
 	StorageNetworks []StorageNetworksResponse `pulumi:"storageNetworks"`
+}
+
+// Defaults sets the appropriate defaults for HostNetworkResponse
+func (val *HostNetworkResponse) Defaults() *HostNetworkResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.EnableStorageAutoIp == nil {
+		enableStorageAutoIp_ := false
+		tmp.EnableStorageAutoIp = &enableStorageAutoIp_
+	}
+	if tmp.StorageConnectivitySwitchless == nil {
+		storageConnectivitySwitchless_ := false
+		tmp.StorageConnectivitySwitchless = &storageConnectivitySwitchless_
+	}
+	return &tmp
 }
 
 // The HostNetwork of a cluster.
@@ -10371,8 +10523,8 @@ func (o HostNetworkResponseOutput) ToHostNetworkResponseOutputWithContext(ctx co
 }
 
 // Optional parameter required only for 3 Nodes Switchless deployments. This allows users to specify IPs and Mask for Storage NICs when Network ATC is not assigning the IPs for storage automatically.
-func (o HostNetworkResponseOutput) EnableStorageAutoIp() pulumi.BoolOutput {
-	return o.ApplyT(func(v HostNetworkResponse) bool { return v.EnableStorageAutoIp }).(pulumi.BoolOutput)
+func (o HostNetworkResponseOutput) EnableStorageAutoIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v HostNetworkResponse) *bool { return v.EnableStorageAutoIp }).(pulumi.BoolPtrOutput)
 }
 
 // The network intents assigned to the network reference pattern used for the deployment. Each intent will define its own name, traffic type, adapter names, and overrides as recommended by your OEM.
@@ -10380,9 +10532,9 @@ func (o HostNetworkResponseOutput) Intents() IntentsResponseArrayOutput {
 	return o.ApplyT(func(v HostNetworkResponse) []IntentsResponse { return v.Intents }).(IntentsResponseArrayOutput)
 }
 
-// Defines how the storage adapters between nodes are connected either switch or switch less.
-func (o HostNetworkResponseOutput) StorageConnectivitySwitchless() pulumi.BoolOutput {
-	return o.ApplyT(func(v HostNetworkResponse) bool { return v.StorageConnectivitySwitchless }).(pulumi.BoolOutput)
+// Defines how the storage adapters between nodes are connected either switch or switch less..
+func (o HostNetworkResponseOutput) StorageConnectivitySwitchless() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v HostNetworkResponse) *bool { return v.StorageConnectivitySwitchless }).(pulumi.BoolPtrOutput)
 }
 
 // List of StorageNetworks config to deploy AzureStackHCI Cluster.
@@ -10420,7 +10572,7 @@ func (o HostNetworkResponsePtrOutput) EnableStorageAutoIp() pulumi.BoolPtrOutput
 		if v == nil {
 			return nil
 		}
-		return &v.EnableStorageAutoIp
+		return v.EnableStorageAutoIp
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -10434,13 +10586,13 @@ func (o HostNetworkResponsePtrOutput) Intents() IntentsResponseArrayOutput {
 	}).(IntentsResponseArrayOutput)
 }
 
-// Defines how the storage adapters between nodes are connected either switch or switch less.
+// Defines how the storage adapters between nodes are connected either switch or switch less..
 func (o HostNetworkResponsePtrOutput) StorageConnectivitySwitchless() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *HostNetworkResponse) *bool {
 		if v == nil {
 			return nil
 		}
-		return &v.StorageConnectivitySwitchless
+		return v.StorageConnectivitySwitchless
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -10452,6 +10604,53 @@ func (o HostNetworkResponsePtrOutput) StorageNetworks() StorageNetworksResponseA
 		}
 		return v.StorageNetworks
 	}).(StorageNetworksResponseArrayOutput)
+}
+
+// The HostNetwork of a cluster.
+type HostNetworkResponseV1 struct {
+	// Optional parameter required only for 3 Nodes Switchless deployments. This allows users to specify IPs and Mask for Storage NICs when Network ATC is not assigning the IPs for storage automatically.
+	EnableStorageAutoIp bool `pulumi:"enableStorageAutoIp"`
+	// The network intents assigned to the network reference pattern used for the deployment. Each intent will define its own name, traffic type, adapter names, and overrides as recommended by your OEM.
+	Intents []IntentsResponseV1 `pulumi:"intents"`
+	// Defines how the storage adapters between nodes are connected either switch or switch less.
+	StorageConnectivitySwitchless bool `pulumi:"storageConnectivitySwitchless"`
+	// List of StorageNetworks config to deploy AzureStackHCI Cluster.
+	StorageNetworks []StorageNetworksResponseV1 `pulumi:"storageNetworks"`
+}
+
+// The HostNetwork of a cluster.
+type HostNetworkResponseV1Output struct{ *pulumi.OutputState }
+
+func (HostNetworkResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostNetworkResponseV1)(nil)).Elem()
+}
+
+func (o HostNetworkResponseV1Output) ToHostNetworkResponseV1Output() HostNetworkResponseV1Output {
+	return o
+}
+
+func (o HostNetworkResponseV1Output) ToHostNetworkResponseV1OutputWithContext(ctx context.Context) HostNetworkResponseV1Output {
+	return o
+}
+
+// Optional parameter required only for 3 Nodes Switchless deployments. This allows users to specify IPs and Mask for Storage NICs when Network ATC is not assigning the IPs for storage automatically.
+func (o HostNetworkResponseV1Output) EnableStorageAutoIp() pulumi.BoolOutput {
+	return o.ApplyT(func(v HostNetworkResponseV1) bool { return v.EnableStorageAutoIp }).(pulumi.BoolOutput)
+}
+
+// The network intents assigned to the network reference pattern used for the deployment. Each intent will define its own name, traffic type, adapter names, and overrides as recommended by your OEM.
+func (o HostNetworkResponseV1Output) Intents() IntentsResponseV1ArrayOutput {
+	return o.ApplyT(func(v HostNetworkResponseV1) []IntentsResponseV1 { return v.Intents }).(IntentsResponseV1ArrayOutput)
+}
+
+// Defines how the storage adapters between nodes are connected either switch or switch less.
+func (o HostNetworkResponseV1Output) StorageConnectivitySwitchless() pulumi.BoolOutput {
+	return o.ApplyT(func(v HostNetworkResponseV1) bool { return v.StorageConnectivitySwitchless }).(pulumi.BoolOutput)
+}
+
+// List of StorageNetworks config to deploy AzureStackHCI Cluster.
+func (o HostNetworkResponseV1Output) StorageNetworks() StorageNetworksResponseV1ArrayOutput {
+	return o.ApplyT(func(v HostNetworkResponseV1) []StorageNetworksResponseV1 { return v.StorageNetworks }).(StorageNetworksResponseV1ArrayOutput)
 }
 
 // HTTP Proxy configuration for the VM.
@@ -12914,43 +13113,42 @@ type IntentsResponse struct {
 	// Array of network interfaces used for the network intent.
 	Adapter []string `pulumi:"adapter"`
 	// Set Adapter PropertyOverrides for cluster.
-	AdapterPropertyOverrides AdapterPropertyOverridesResponse `pulumi:"adapterPropertyOverrides"`
-	// Array of adapters used for the network intent.
-	IntentAdapters []string `pulumi:"intentAdapters"`
-	// Name of the network intent you wish to create.
-	IntentName string `pulumi:"intentName"`
-	// IntentType for host network intent.
-	IntentType float64 `pulumi:"intentType"`
-	// IsComputeIntentSet for host network intent.
-	IsComputeIntentSet bool `pulumi:"isComputeIntentSet"`
-	// IsManagementIntentSet for host network intent.
-	IsManagementIntentSet bool `pulumi:"isManagementIntentSet"`
-	// IsNetworkIntentType for host network intent.
-	IsNetworkIntentType bool `pulumi:"isNetworkIntentType"`
-	// IntentType for host network intent.
-	IsOnlyStorage bool `pulumi:"isOnlyStorage"`
-	// IsOnlyStretch for host network intent.
-	IsOnlyStretch bool `pulumi:"isOnlyStretch"`
-	// IsStorageIntentSet for host network intent.
-	IsStorageIntentSet bool `pulumi:"isStorageIntentSet"`
-	// IsStretchIntentSet for host network intent.
-	IsStretchIntentSet bool `pulumi:"isStretchIntentSet"`
+	AdapterPropertyOverrides *AdapterPropertyOverridesResponse `pulumi:"adapterPropertyOverrides"`
 	// Name of the network intent you wish to create.
 	Name *string `pulumi:"name"`
 	// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
-	OverrideAdapterProperty bool `pulumi:"overrideAdapterProperty"`
+	OverrideAdapterProperty *bool `pulumi:"overrideAdapterProperty"`
 	// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
-	OverrideQosPolicy bool `pulumi:"overrideQosPolicy"`
+	OverrideQosPolicy *bool `pulumi:"overrideQosPolicy"`
 	// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
-	OverrideVirtualSwitchConfiguration bool `pulumi:"overrideVirtualSwitchConfiguration"`
+	OverrideVirtualSwitchConfiguration *bool `pulumi:"overrideVirtualSwitchConfiguration"`
 	// Set QoS PolicyOverrides for cluster.
-	QosPolicyOverrides QosPolicyOverridesResponse `pulumi:"qosPolicyOverrides"`
-	// Scope for host network intent.
-	Scope float64 `pulumi:"scope"`
+	QosPolicyOverrides *QosPolicyOverridesResponse `pulumi:"qosPolicyOverrides"`
 	// List of network traffic types. Only allowed values are 'Compute', 'Storage', 'Management'.
 	TrafficType []string `pulumi:"trafficType"`
 	// Set virtualSwitch ConfigurationOverrides for cluster.
-	VirtualSwitchConfigurationOverrides VirtualSwitchConfigurationOverridesResponse `pulumi:"virtualSwitchConfigurationOverrides"`
+	VirtualSwitchConfigurationOverrides *VirtualSwitchConfigurationOverridesResponse `pulumi:"virtualSwitchConfigurationOverrides"`
+}
+
+// Defaults sets the appropriate defaults for IntentsResponse
+func (val *IntentsResponse) Defaults() *IntentsResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.OverrideAdapterProperty == nil {
+		overrideAdapterProperty_ := false
+		tmp.OverrideAdapterProperty = &overrideAdapterProperty_
+	}
+	if tmp.OverrideQosPolicy == nil {
+		overrideQosPolicy_ := false
+		tmp.OverrideQosPolicy = &overrideQosPolicy_
+	}
+	if tmp.OverrideVirtualSwitchConfiguration == nil {
+		overrideVirtualSwitchConfiguration_ := false
+		tmp.OverrideVirtualSwitchConfiguration = &overrideVirtualSwitchConfiguration_
+	}
+	return &tmp
 }
 
 // The Intents of a cluster.
@@ -12974,58 +13172,8 @@ func (o IntentsResponseOutput) Adapter() pulumi.StringArrayOutput {
 }
 
 // Set Adapter PropertyOverrides for cluster.
-func (o IntentsResponseOutput) AdapterPropertyOverrides() AdapterPropertyOverridesResponseOutput {
-	return o.ApplyT(func(v IntentsResponse) AdapterPropertyOverridesResponse { return v.AdapterPropertyOverrides }).(AdapterPropertyOverridesResponseOutput)
-}
-
-// Array of adapters used for the network intent.
-func (o IntentsResponseOutput) IntentAdapters() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v IntentsResponse) []string { return v.IntentAdapters }).(pulumi.StringArrayOutput)
-}
-
-// Name of the network intent you wish to create.
-func (o IntentsResponseOutput) IntentName() pulumi.StringOutput {
-	return o.ApplyT(func(v IntentsResponse) string { return v.IntentName }).(pulumi.StringOutput)
-}
-
-// IntentType for host network intent.
-func (o IntentsResponseOutput) IntentType() pulumi.Float64Output {
-	return o.ApplyT(func(v IntentsResponse) float64 { return v.IntentType }).(pulumi.Float64Output)
-}
-
-// IsComputeIntentSet for host network intent.
-func (o IntentsResponseOutput) IsComputeIntentSet() pulumi.BoolOutput {
-	return o.ApplyT(func(v IntentsResponse) bool { return v.IsComputeIntentSet }).(pulumi.BoolOutput)
-}
-
-// IsManagementIntentSet for host network intent.
-func (o IntentsResponseOutput) IsManagementIntentSet() pulumi.BoolOutput {
-	return o.ApplyT(func(v IntentsResponse) bool { return v.IsManagementIntentSet }).(pulumi.BoolOutput)
-}
-
-// IsNetworkIntentType for host network intent.
-func (o IntentsResponseOutput) IsNetworkIntentType() pulumi.BoolOutput {
-	return o.ApplyT(func(v IntentsResponse) bool { return v.IsNetworkIntentType }).(pulumi.BoolOutput)
-}
-
-// IntentType for host network intent.
-func (o IntentsResponseOutput) IsOnlyStorage() pulumi.BoolOutput {
-	return o.ApplyT(func(v IntentsResponse) bool { return v.IsOnlyStorage }).(pulumi.BoolOutput)
-}
-
-// IsOnlyStretch for host network intent.
-func (o IntentsResponseOutput) IsOnlyStretch() pulumi.BoolOutput {
-	return o.ApplyT(func(v IntentsResponse) bool { return v.IsOnlyStretch }).(pulumi.BoolOutput)
-}
-
-// IsStorageIntentSet for host network intent.
-func (o IntentsResponseOutput) IsStorageIntentSet() pulumi.BoolOutput {
-	return o.ApplyT(func(v IntentsResponse) bool { return v.IsStorageIntentSet }).(pulumi.BoolOutput)
-}
-
-// IsStretchIntentSet for host network intent.
-func (o IntentsResponseOutput) IsStretchIntentSet() pulumi.BoolOutput {
-	return o.ApplyT(func(v IntentsResponse) bool { return v.IsStretchIntentSet }).(pulumi.BoolOutput)
+func (o IntentsResponseOutput) AdapterPropertyOverrides() AdapterPropertyOverridesResponsePtrOutput {
+	return o.ApplyT(func(v IntentsResponse) *AdapterPropertyOverridesResponse { return v.AdapterPropertyOverrides }).(AdapterPropertyOverridesResponsePtrOutput)
 }
 
 // Name of the network intent you wish to create.
@@ -13034,28 +13182,23 @@ func (o IntentsResponseOutput) Name() pulumi.StringPtrOutput {
 }
 
 // This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
-func (o IntentsResponseOutput) OverrideAdapterProperty() pulumi.BoolOutput {
-	return o.ApplyT(func(v IntentsResponse) bool { return v.OverrideAdapterProperty }).(pulumi.BoolOutput)
+func (o IntentsResponseOutput) OverrideAdapterProperty() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v IntentsResponse) *bool { return v.OverrideAdapterProperty }).(pulumi.BoolPtrOutput)
 }
 
 // This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
-func (o IntentsResponseOutput) OverrideQosPolicy() pulumi.BoolOutput {
-	return o.ApplyT(func(v IntentsResponse) bool { return v.OverrideQosPolicy }).(pulumi.BoolOutput)
+func (o IntentsResponseOutput) OverrideQosPolicy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v IntentsResponse) *bool { return v.OverrideQosPolicy }).(pulumi.BoolPtrOutput)
 }
 
 // This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
-func (o IntentsResponseOutput) OverrideVirtualSwitchConfiguration() pulumi.BoolOutput {
-	return o.ApplyT(func(v IntentsResponse) bool { return v.OverrideVirtualSwitchConfiguration }).(pulumi.BoolOutput)
+func (o IntentsResponseOutput) OverrideVirtualSwitchConfiguration() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v IntentsResponse) *bool { return v.OverrideVirtualSwitchConfiguration }).(pulumi.BoolPtrOutput)
 }
 
 // Set QoS PolicyOverrides for cluster.
-func (o IntentsResponseOutput) QosPolicyOverrides() QosPolicyOverridesResponseOutput {
-	return o.ApplyT(func(v IntentsResponse) QosPolicyOverridesResponse { return v.QosPolicyOverrides }).(QosPolicyOverridesResponseOutput)
-}
-
-// Scope for host network intent.
-func (o IntentsResponseOutput) Scope() pulumi.Float64Output {
-	return o.ApplyT(func(v IntentsResponse) float64 { return v.Scope }).(pulumi.Float64Output)
+func (o IntentsResponseOutput) QosPolicyOverrides() QosPolicyOverridesResponsePtrOutput {
+	return o.ApplyT(func(v IntentsResponse) *QosPolicyOverridesResponse { return v.QosPolicyOverrides }).(QosPolicyOverridesResponsePtrOutput)
 }
 
 // List of network traffic types. Only allowed values are 'Compute', 'Storage', 'Management'.
@@ -13064,10 +13207,10 @@ func (o IntentsResponseOutput) TrafficType() pulumi.StringArrayOutput {
 }
 
 // Set virtualSwitch ConfigurationOverrides for cluster.
-func (o IntentsResponseOutput) VirtualSwitchConfigurationOverrides() VirtualSwitchConfigurationOverridesResponseOutput {
-	return o.ApplyT(func(v IntentsResponse) VirtualSwitchConfigurationOverridesResponse {
+func (o IntentsResponseOutput) VirtualSwitchConfigurationOverrides() VirtualSwitchConfigurationOverridesResponsePtrOutput {
+	return o.ApplyT(func(v IntentsResponse) *VirtualSwitchConfigurationOverridesResponse {
 		return v.VirtualSwitchConfigurationOverrides
-	}).(VirtualSwitchConfigurationOverridesResponseOutput)
+	}).(VirtualSwitchConfigurationOverridesResponsePtrOutput)
 }
 
 type IntentsResponseArrayOutput struct{ *pulumi.OutputState }
@@ -13088,6 +13231,166 @@ func (o IntentsResponseArrayOutput) Index(i pulumi.IntInput) IntentsResponseOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IntentsResponse {
 		return vs[0].([]IntentsResponse)[vs[1].(int)]
 	}).(IntentsResponseOutput)
+}
+
+// The Intents of a cluster.
+type IntentsResponseV1 struct {
+	// Set Adapter PropertyOverrides for cluster.
+	AdapterPropertyOverrides AdapterPropertyOverridesResponseV1 `pulumi:"adapterPropertyOverrides"`
+	// Array of adapters used for the network intent.
+	IntentAdapters []string `pulumi:"intentAdapters"`
+	// Name of the network intent you wish to create.
+	IntentName string `pulumi:"intentName"`
+	// IntentType for host network intent.
+	IntentType float64 `pulumi:"intentType"`
+	// IsComputeIntentSet for host network intent.
+	IsComputeIntentSet bool `pulumi:"isComputeIntentSet"`
+	// IsManagementIntentSet for host network intent.
+	IsManagementIntentSet bool `pulumi:"isManagementIntentSet"`
+	// IsNetworkIntentType for host network intent.
+	IsNetworkIntentType bool `pulumi:"isNetworkIntentType"`
+	// IntentType for host network intent.
+	IsOnlyStorage bool `pulumi:"isOnlyStorage"`
+	// IsOnlyStretch for host network intent.
+	IsOnlyStretch bool `pulumi:"isOnlyStretch"`
+	// IsStorageIntentSet for host network intent.
+	IsStorageIntentSet bool `pulumi:"isStorageIntentSet"`
+	// IsStretchIntentSet for host network intent.
+	IsStretchIntentSet bool `pulumi:"isStretchIntentSet"`
+	// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+	OverrideAdapterProperty bool `pulumi:"overrideAdapterProperty"`
+	// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+	OverrideQosPolicy bool `pulumi:"overrideQosPolicy"`
+	// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+	OverrideVirtualSwitchConfiguration bool `pulumi:"overrideVirtualSwitchConfiguration"`
+	// Set QoS PolicyOverrides for cluster.
+	QosPolicyOverrides QosPolicyOverridesResponse `pulumi:"qosPolicyOverrides"`
+	// Scope for host network intent.
+	Scope float64 `pulumi:"scope"`
+	// Set virtualSwitch ConfigurationOverrides for cluster.
+	VirtualSwitchConfigurationOverrides VirtualSwitchConfigurationOverridesResponseV1 `pulumi:"virtualSwitchConfigurationOverrides"`
+}
+
+// The Intents of a cluster.
+type IntentsResponseV1Output struct{ *pulumi.OutputState }
+
+func (IntentsResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntentsResponseV1)(nil)).Elem()
+}
+
+func (o IntentsResponseV1Output) ToIntentsResponseV1Output() IntentsResponseV1Output {
+	return o
+}
+
+func (o IntentsResponseV1Output) ToIntentsResponseV1OutputWithContext(ctx context.Context) IntentsResponseV1Output {
+	return o
+}
+
+// Set Adapter PropertyOverrides for cluster.
+func (o IntentsResponseV1Output) AdapterPropertyOverrides() AdapterPropertyOverridesResponseV1Output {
+	return o.ApplyT(func(v IntentsResponseV1) AdapterPropertyOverridesResponseV1 { return v.AdapterPropertyOverrides }).(AdapterPropertyOverridesResponseV1Output)
+}
+
+// Array of adapters used for the network intent.
+func (o IntentsResponseV1Output) IntentAdapters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IntentsResponseV1) []string { return v.IntentAdapters }).(pulumi.StringArrayOutput)
+}
+
+// Name of the network intent you wish to create.
+func (o IntentsResponseV1Output) IntentName() pulumi.StringOutput {
+	return o.ApplyT(func(v IntentsResponseV1) string { return v.IntentName }).(pulumi.StringOutput)
+}
+
+// IntentType for host network intent.
+func (o IntentsResponseV1Output) IntentType() pulumi.Float64Output {
+	return o.ApplyT(func(v IntentsResponseV1) float64 { return v.IntentType }).(pulumi.Float64Output)
+}
+
+// IsComputeIntentSet for host network intent.
+func (o IntentsResponseV1Output) IsComputeIntentSet() pulumi.BoolOutput {
+	return o.ApplyT(func(v IntentsResponseV1) bool { return v.IsComputeIntentSet }).(pulumi.BoolOutput)
+}
+
+// IsManagementIntentSet for host network intent.
+func (o IntentsResponseV1Output) IsManagementIntentSet() pulumi.BoolOutput {
+	return o.ApplyT(func(v IntentsResponseV1) bool { return v.IsManagementIntentSet }).(pulumi.BoolOutput)
+}
+
+// IsNetworkIntentType for host network intent.
+func (o IntentsResponseV1Output) IsNetworkIntentType() pulumi.BoolOutput {
+	return o.ApplyT(func(v IntentsResponseV1) bool { return v.IsNetworkIntentType }).(pulumi.BoolOutput)
+}
+
+// IntentType for host network intent.
+func (o IntentsResponseV1Output) IsOnlyStorage() pulumi.BoolOutput {
+	return o.ApplyT(func(v IntentsResponseV1) bool { return v.IsOnlyStorage }).(pulumi.BoolOutput)
+}
+
+// IsOnlyStretch for host network intent.
+func (o IntentsResponseV1Output) IsOnlyStretch() pulumi.BoolOutput {
+	return o.ApplyT(func(v IntentsResponseV1) bool { return v.IsOnlyStretch }).(pulumi.BoolOutput)
+}
+
+// IsStorageIntentSet for host network intent.
+func (o IntentsResponseV1Output) IsStorageIntentSet() pulumi.BoolOutput {
+	return o.ApplyT(func(v IntentsResponseV1) bool { return v.IsStorageIntentSet }).(pulumi.BoolOutput)
+}
+
+// IsStretchIntentSet for host network intent.
+func (o IntentsResponseV1Output) IsStretchIntentSet() pulumi.BoolOutput {
+	return o.ApplyT(func(v IntentsResponseV1) bool { return v.IsStretchIntentSet }).(pulumi.BoolOutput)
+}
+
+// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+func (o IntentsResponseV1Output) OverrideAdapterProperty() pulumi.BoolOutput {
+	return o.ApplyT(func(v IntentsResponseV1) bool { return v.OverrideAdapterProperty }).(pulumi.BoolOutput)
+}
+
+// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+func (o IntentsResponseV1Output) OverrideQosPolicy() pulumi.BoolOutput {
+	return o.ApplyT(func(v IntentsResponseV1) bool { return v.OverrideQosPolicy }).(pulumi.BoolOutput)
+}
+
+// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+func (o IntentsResponseV1Output) OverrideVirtualSwitchConfiguration() pulumi.BoolOutput {
+	return o.ApplyT(func(v IntentsResponseV1) bool { return v.OverrideVirtualSwitchConfiguration }).(pulumi.BoolOutput)
+}
+
+// Set QoS PolicyOverrides for cluster.
+func (o IntentsResponseV1Output) QosPolicyOverrides() QosPolicyOverridesResponseOutput {
+	return o.ApplyT(func(v IntentsResponseV1) QosPolicyOverridesResponse { return v.QosPolicyOverrides }).(QosPolicyOverridesResponseOutput)
+}
+
+// Scope for host network intent.
+func (o IntentsResponseV1Output) Scope() pulumi.Float64Output {
+	return o.ApplyT(func(v IntentsResponseV1) float64 { return v.Scope }).(pulumi.Float64Output)
+}
+
+// Set virtualSwitch ConfigurationOverrides for cluster.
+func (o IntentsResponseV1Output) VirtualSwitchConfigurationOverrides() VirtualSwitchConfigurationOverridesResponseV1Output {
+	return o.ApplyT(func(v IntentsResponseV1) VirtualSwitchConfigurationOverridesResponseV1 {
+		return v.VirtualSwitchConfigurationOverrides
+	}).(VirtualSwitchConfigurationOverridesResponseV1Output)
+}
+
+type IntentsResponseV1ArrayOutput struct{ *pulumi.OutputState }
+
+func (IntentsResponseV1ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IntentsResponseV1)(nil)).Elem()
+}
+
+func (o IntentsResponseV1ArrayOutput) ToIntentsResponseV1ArrayOutput() IntentsResponseV1ArrayOutput {
+	return o
+}
+
+func (o IntentsResponseV1ArrayOutput) ToIntentsResponseV1ArrayOutputWithContext(ctx context.Context) IntentsResponseV1ArrayOutput {
+	return o
+}
+
+func (o IntentsResponseV1ArrayOutput) Index(i pulumi.IntInput) IntentsResponseV1Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IntentsResponseV1 {
+		return vs[0].([]IntentsResponseV1)[vs[1].(int)]
+	}).(IntentsResponseV1Output)
 }
 
 // DNS Settings of the interface
@@ -23241,6 +23544,60 @@ func (o QosPolicyOverridesResponseOutput) PriorityValue8021ActionSMB() pulumi.St
 	return o.ApplyT(func(v QosPolicyOverridesResponse) *string { return v.PriorityValue8021ActionSMB }).(pulumi.StringPtrOutput)
 }
 
+type QosPolicyOverridesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (QosPolicyOverridesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**QosPolicyOverridesResponse)(nil)).Elem()
+}
+
+func (o QosPolicyOverridesResponsePtrOutput) ToQosPolicyOverridesResponsePtrOutput() QosPolicyOverridesResponsePtrOutput {
+	return o
+}
+
+func (o QosPolicyOverridesResponsePtrOutput) ToQosPolicyOverridesResponsePtrOutputWithContext(ctx context.Context) QosPolicyOverridesResponsePtrOutput {
+	return o
+}
+
+func (o QosPolicyOverridesResponsePtrOutput) Elem() QosPolicyOverridesResponseOutput {
+	return o.ApplyT(func(v *QosPolicyOverridesResponse) QosPolicyOverridesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret QosPolicyOverridesResponse
+		return ret
+	}).(QosPolicyOverridesResponseOutput)
+}
+
+// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+func (o QosPolicyOverridesResponsePtrOutput) BandwidthPercentageSMB() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QosPolicyOverridesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BandwidthPercentageSMB
+	}).(pulumi.StringPtrOutput)
+}
+
+// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+func (o QosPolicyOverridesResponsePtrOutput) PriorityValue8021ActionCluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QosPolicyOverridesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PriorityValue8021ActionCluster
+	}).(pulumi.StringPtrOutput)
+}
+
+// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+func (o QosPolicyOverridesResponsePtrOutput) PriorityValue8021ActionSMB() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QosPolicyOverridesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PriorityValue8021ActionSMB
+	}).(pulumi.StringPtrOutput)
+}
+
 // Represents the settings of a remote support node.
 type RemoteSupportJobNodeSettingsResponse struct {
 	// The error message, if any, from the last connection attempt.
@@ -27384,11 +27741,11 @@ func (o StorageAdapterIPInfoArrayOutput) Index(i pulumi.IntInput) StorageAdapter
 // The StorageAdapter physical nodes of a cluster.
 type StorageAdapterIPInfoResponse struct {
 	// The IPv4 address assigned to each storage adapter physical node on your Azure Stack HCI cluster.
-	Ipv4Address string `pulumi:"ipv4Address"`
+	Ipv4Address *string `pulumi:"ipv4Address"`
 	// storage adapter physical node name.
-	PhysicalNode string `pulumi:"physicalNode"`
+	PhysicalNode *string `pulumi:"physicalNode"`
 	// The SubnetMask address assigned to each storage adapter physical node on your Azure Stack HCI cluster.
-	SubnetMask string `pulumi:"subnetMask"`
+	SubnetMask *string `pulumi:"subnetMask"`
 }
 
 // The StorageAdapter physical nodes of a cluster.
@@ -27407,18 +27764,18 @@ func (o StorageAdapterIPInfoResponseOutput) ToStorageAdapterIPInfoResponseOutput
 }
 
 // The IPv4 address assigned to each storage adapter physical node on your Azure Stack HCI cluster.
-func (o StorageAdapterIPInfoResponseOutput) Ipv4Address() pulumi.StringOutput {
-	return o.ApplyT(func(v StorageAdapterIPInfoResponse) string { return v.Ipv4Address }).(pulumi.StringOutput)
+func (o StorageAdapterIPInfoResponseOutput) Ipv4Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageAdapterIPInfoResponse) *string { return v.Ipv4Address }).(pulumi.StringPtrOutput)
 }
 
 // storage adapter physical node name.
-func (o StorageAdapterIPInfoResponseOutput) PhysicalNode() pulumi.StringOutput {
-	return o.ApplyT(func(v StorageAdapterIPInfoResponse) string { return v.PhysicalNode }).(pulumi.StringOutput)
+func (o StorageAdapterIPInfoResponseOutput) PhysicalNode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageAdapterIPInfoResponse) *string { return v.PhysicalNode }).(pulumi.StringPtrOutput)
 }
 
 // The SubnetMask address assigned to each storage adapter physical node on your Azure Stack HCI cluster.
-func (o StorageAdapterIPInfoResponseOutput) SubnetMask() pulumi.StringOutput {
-	return o.ApplyT(func(v StorageAdapterIPInfoResponse) string { return v.SubnetMask }).(pulumi.StringOutput)
+func (o StorageAdapterIPInfoResponseOutput) SubnetMask() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageAdapterIPInfoResponse) *string { return v.SubnetMask }).(pulumi.StringPtrOutput)
 }
 
 type StorageAdapterIPInfoResponseArrayOutput struct{ *pulumi.OutputState }
@@ -27439,6 +27796,66 @@ func (o StorageAdapterIPInfoResponseArrayOutput) Index(i pulumi.IntInput) Storag
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StorageAdapterIPInfoResponse {
 		return vs[0].([]StorageAdapterIPInfoResponse)[vs[1].(int)]
 	}).(StorageAdapterIPInfoResponseOutput)
+}
+
+// The StorageAdapter physical nodes of a cluster.
+type StorageAdapterIPInfoResponseV1 struct {
+	// The IPv4 address assigned to each storage adapter physical node on your Azure Stack HCI cluster.
+	Ipv4Address string `pulumi:"ipv4Address"`
+	// storage adapter physical node name.
+	PhysicalNode string `pulumi:"physicalNode"`
+	// The SubnetMask address assigned to each storage adapter physical node on your Azure Stack HCI cluster.
+	SubnetMask string `pulumi:"subnetMask"`
+}
+
+// The StorageAdapter physical nodes of a cluster.
+type StorageAdapterIPInfoResponseV1Output struct{ *pulumi.OutputState }
+
+func (StorageAdapterIPInfoResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageAdapterIPInfoResponseV1)(nil)).Elem()
+}
+
+func (o StorageAdapterIPInfoResponseV1Output) ToStorageAdapterIPInfoResponseV1Output() StorageAdapterIPInfoResponseV1Output {
+	return o
+}
+
+func (o StorageAdapterIPInfoResponseV1Output) ToStorageAdapterIPInfoResponseV1OutputWithContext(ctx context.Context) StorageAdapterIPInfoResponseV1Output {
+	return o
+}
+
+// The IPv4 address assigned to each storage adapter physical node on your Azure Stack HCI cluster.
+func (o StorageAdapterIPInfoResponseV1Output) Ipv4Address() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageAdapterIPInfoResponseV1) string { return v.Ipv4Address }).(pulumi.StringOutput)
+}
+
+// storage adapter physical node name.
+func (o StorageAdapterIPInfoResponseV1Output) PhysicalNode() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageAdapterIPInfoResponseV1) string { return v.PhysicalNode }).(pulumi.StringOutput)
+}
+
+// The SubnetMask address assigned to each storage adapter physical node on your Azure Stack HCI cluster.
+func (o StorageAdapterIPInfoResponseV1Output) SubnetMask() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageAdapterIPInfoResponseV1) string { return v.SubnetMask }).(pulumi.StringOutput)
+}
+
+type StorageAdapterIPInfoResponseV1ArrayOutput struct{ *pulumi.OutputState }
+
+func (StorageAdapterIPInfoResponseV1ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StorageAdapterIPInfoResponseV1)(nil)).Elem()
+}
+
+func (o StorageAdapterIPInfoResponseV1ArrayOutput) ToStorageAdapterIPInfoResponseV1ArrayOutput() StorageAdapterIPInfoResponseV1ArrayOutput {
+	return o
+}
+
+func (o StorageAdapterIPInfoResponseV1ArrayOutput) ToStorageAdapterIPInfoResponseV1ArrayOutputWithContext(ctx context.Context) StorageAdapterIPInfoResponseV1ArrayOutput {
+	return o
+}
+
+func (o StorageAdapterIPInfoResponseV1ArrayOutput) Index(i pulumi.IntInput) StorageAdapterIPInfoResponseV1Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StorageAdapterIPInfoResponseV1 {
+		return vs[0].([]StorageAdapterIPInfoResponseV1)[vs[1].(int)]
+	}).(StorageAdapterIPInfoResponseV1Output)
 }
 
 // Storage configuration.
@@ -27904,13 +28321,11 @@ func (o StorageNetworksArrayOutput) Index(i pulumi.IntInput) StorageNetworksOutp
 // The StorageNetworks of a cluster.
 type StorageNetworksResponse struct {
 	// Name of the storage network.
-	Name string `pulumi:"name"`
+	Name *string `pulumi:"name"`
 	// Name of the storage network adapter.
-	NetworkAdapterName string `pulumi:"networkAdapterName"`
+	NetworkAdapterName *string `pulumi:"networkAdapterName"`
 	// List of Storage adapter physical nodes config to deploy AzureStackHCI Cluster.
 	StorageAdapterIPInfo []StorageAdapterIPInfoResponse `pulumi:"storageAdapterIPInfo"`
-	// ID specified for the VLAN storage network. This setting is applied to the network interfaces that route the storage and VM migration traffic.
-	StorageVlanId string `pulumi:"storageVlanId"`
 	// ID specified for the VLAN storage network. This setting is applied to the network interfaces that route the storage and VM migration traffic.
 	VlanId *string `pulumi:"vlanId"`
 }
@@ -27931,23 +28346,18 @@ func (o StorageNetworksResponseOutput) ToStorageNetworksResponseOutputWithContex
 }
 
 // Name of the storage network.
-func (o StorageNetworksResponseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v StorageNetworksResponse) string { return v.Name }).(pulumi.StringOutput)
+func (o StorageNetworksResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageNetworksResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // Name of the storage network adapter.
-func (o StorageNetworksResponseOutput) NetworkAdapterName() pulumi.StringOutput {
-	return o.ApplyT(func(v StorageNetworksResponse) string { return v.NetworkAdapterName }).(pulumi.StringOutput)
+func (o StorageNetworksResponseOutput) NetworkAdapterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageNetworksResponse) *string { return v.NetworkAdapterName }).(pulumi.StringPtrOutput)
 }
 
 // List of Storage adapter physical nodes config to deploy AzureStackHCI Cluster.
 func (o StorageNetworksResponseOutput) StorageAdapterIPInfo() StorageAdapterIPInfoResponseArrayOutput {
 	return o.ApplyT(func(v StorageNetworksResponse) []StorageAdapterIPInfoResponse { return v.StorageAdapterIPInfo }).(StorageAdapterIPInfoResponseArrayOutput)
-}
-
-// ID specified for the VLAN storage network. This setting is applied to the network interfaces that route the storage and VM migration traffic.
-func (o StorageNetworksResponseOutput) StorageVlanId() pulumi.StringOutput {
-	return o.ApplyT(func(v StorageNetworksResponse) string { return v.StorageVlanId }).(pulumi.StringOutput)
 }
 
 // ID specified for the VLAN storage network. This setting is applied to the network interfaces that route the storage and VM migration traffic.
@@ -27973,6 +28383,73 @@ func (o StorageNetworksResponseArrayOutput) Index(i pulumi.IntInput) StorageNetw
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StorageNetworksResponse {
 		return vs[0].([]StorageNetworksResponse)[vs[1].(int)]
 	}).(StorageNetworksResponseOutput)
+}
+
+// The StorageNetworks of a cluster.
+type StorageNetworksResponseV1 struct {
+	// Name of the storage network.
+	Name string `pulumi:"name"`
+	// Name of the storage network adapter.
+	NetworkAdapterName string `pulumi:"networkAdapterName"`
+	// List of Storage adapter physical nodes config to deploy AzureStackHCI Cluster.
+	StorageAdapterIPInfo []StorageAdapterIPInfoResponseV1 `pulumi:"storageAdapterIPInfo"`
+	// ID specified for the VLAN storage network. This setting is applied to the network interfaces that route the storage and VM migration traffic.
+	StorageVlanId string `pulumi:"storageVlanId"`
+}
+
+// The StorageNetworks of a cluster.
+type StorageNetworksResponseV1Output struct{ *pulumi.OutputState }
+
+func (StorageNetworksResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageNetworksResponseV1)(nil)).Elem()
+}
+
+func (o StorageNetworksResponseV1Output) ToStorageNetworksResponseV1Output() StorageNetworksResponseV1Output {
+	return o
+}
+
+func (o StorageNetworksResponseV1Output) ToStorageNetworksResponseV1OutputWithContext(ctx context.Context) StorageNetworksResponseV1Output {
+	return o
+}
+
+// Name of the storage network.
+func (o StorageNetworksResponseV1Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageNetworksResponseV1) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Name of the storage network adapter.
+func (o StorageNetworksResponseV1Output) NetworkAdapterName() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageNetworksResponseV1) string { return v.NetworkAdapterName }).(pulumi.StringOutput)
+}
+
+// List of Storage adapter physical nodes config to deploy AzureStackHCI Cluster.
+func (o StorageNetworksResponseV1Output) StorageAdapterIPInfo() StorageAdapterIPInfoResponseV1ArrayOutput {
+	return o.ApplyT(func(v StorageNetworksResponseV1) []StorageAdapterIPInfoResponseV1 { return v.StorageAdapterIPInfo }).(StorageAdapterIPInfoResponseV1ArrayOutput)
+}
+
+// ID specified for the VLAN storage network. This setting is applied to the network interfaces that route the storage and VM migration traffic.
+func (o StorageNetworksResponseV1Output) StorageVlanId() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageNetworksResponseV1) string { return v.StorageVlanId }).(pulumi.StringOutput)
+}
+
+type StorageNetworksResponseV1ArrayOutput struct{ *pulumi.OutputState }
+
+func (StorageNetworksResponseV1ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StorageNetworksResponseV1)(nil)).Elem()
+}
+
+func (o StorageNetworksResponseV1ArrayOutput) ToStorageNetworksResponseV1ArrayOutput() StorageNetworksResponseV1ArrayOutput {
+	return o
+}
+
+func (o StorageNetworksResponseV1ArrayOutput) ToStorageNetworksResponseV1ArrayOutputWithContext(ctx context.Context) StorageNetworksResponseV1ArrayOutput {
+	return o
+}
+
+func (o StorageNetworksResponseV1ArrayOutput) Index(i pulumi.IntInput) StorageNetworksResponseV1Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StorageNetworksResponseV1 {
+		return vs[0].([]StorageNetworksResponseV1)[vs[1].(int)]
+	}).(StorageNetworksResponseV1Output)
 }
 
 // StorageProfile of edge machine.
@@ -40514,9 +40991,9 @@ func (o VirtualSwitchConfigurationOverridesPtrOutput) LoadBalancingAlgorithm() p
 // The VirtualSwitchConfigurationOverrides of a cluster.
 type VirtualSwitchConfigurationOverridesResponse struct {
 	// Enable IoV for Virtual Switch
-	EnableIov string `pulumi:"enableIov"`
+	EnableIov *string `pulumi:"enableIov"`
 	// Load Balancing Algorithm for Virtual Switch
-	LoadBalancingAlgorithm string `pulumi:"loadBalancingAlgorithm"`
+	LoadBalancingAlgorithm *string `pulumi:"loadBalancingAlgorithm"`
 }
 
 // The VirtualSwitchConfigurationOverrides of a cluster.
@@ -40535,13 +41012,90 @@ func (o VirtualSwitchConfigurationOverridesResponseOutput) ToVirtualSwitchConfig
 }
 
 // Enable IoV for Virtual Switch
-func (o VirtualSwitchConfigurationOverridesResponseOutput) EnableIov() pulumi.StringOutput {
-	return o.ApplyT(func(v VirtualSwitchConfigurationOverridesResponse) string { return v.EnableIov }).(pulumi.StringOutput)
+func (o VirtualSwitchConfigurationOverridesResponseOutput) EnableIov() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualSwitchConfigurationOverridesResponse) *string { return v.EnableIov }).(pulumi.StringPtrOutput)
 }
 
 // Load Balancing Algorithm for Virtual Switch
-func (o VirtualSwitchConfigurationOverridesResponseOutput) LoadBalancingAlgorithm() pulumi.StringOutput {
-	return o.ApplyT(func(v VirtualSwitchConfigurationOverridesResponse) string { return v.LoadBalancingAlgorithm }).(pulumi.StringOutput)
+func (o VirtualSwitchConfigurationOverridesResponseOutput) LoadBalancingAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualSwitchConfigurationOverridesResponse) *string { return v.LoadBalancingAlgorithm }).(pulumi.StringPtrOutput)
+}
+
+type VirtualSwitchConfigurationOverridesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualSwitchConfigurationOverridesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualSwitchConfigurationOverridesResponse)(nil)).Elem()
+}
+
+func (o VirtualSwitchConfigurationOverridesResponsePtrOutput) ToVirtualSwitchConfigurationOverridesResponsePtrOutput() VirtualSwitchConfigurationOverridesResponsePtrOutput {
+	return o
+}
+
+func (o VirtualSwitchConfigurationOverridesResponsePtrOutput) ToVirtualSwitchConfigurationOverridesResponsePtrOutputWithContext(ctx context.Context) VirtualSwitchConfigurationOverridesResponsePtrOutput {
+	return o
+}
+
+func (o VirtualSwitchConfigurationOverridesResponsePtrOutput) Elem() VirtualSwitchConfigurationOverridesResponseOutput {
+	return o.ApplyT(func(v *VirtualSwitchConfigurationOverridesResponse) VirtualSwitchConfigurationOverridesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualSwitchConfigurationOverridesResponse
+		return ret
+	}).(VirtualSwitchConfigurationOverridesResponseOutput)
+}
+
+// Enable IoV for Virtual Switch
+func (o VirtualSwitchConfigurationOverridesResponsePtrOutput) EnableIov() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualSwitchConfigurationOverridesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EnableIov
+	}).(pulumi.StringPtrOutput)
+}
+
+// Load Balancing Algorithm for Virtual Switch
+func (o VirtualSwitchConfigurationOverridesResponsePtrOutput) LoadBalancingAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualSwitchConfigurationOverridesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LoadBalancingAlgorithm
+	}).(pulumi.StringPtrOutput)
+}
+
+// The VirtualSwitchConfigurationOverrides of a cluster.
+type VirtualSwitchConfigurationOverridesResponseV1 struct {
+	// Enable IoV for Virtual Switch
+	EnableIov string `pulumi:"enableIov"`
+	// Load Balancing Algorithm for Virtual Switch
+	LoadBalancingAlgorithm string `pulumi:"loadBalancingAlgorithm"`
+}
+
+// The VirtualSwitchConfigurationOverrides of a cluster.
+type VirtualSwitchConfigurationOverridesResponseV1Output struct{ *pulumi.OutputState }
+
+func (VirtualSwitchConfigurationOverridesResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualSwitchConfigurationOverridesResponseV1)(nil)).Elem()
+}
+
+func (o VirtualSwitchConfigurationOverridesResponseV1Output) ToVirtualSwitchConfigurationOverridesResponseV1Output() VirtualSwitchConfigurationOverridesResponseV1Output {
+	return o
+}
+
+func (o VirtualSwitchConfigurationOverridesResponseV1Output) ToVirtualSwitchConfigurationOverridesResponseV1OutputWithContext(ctx context.Context) VirtualSwitchConfigurationOverridesResponseV1Output {
+	return o
+}
+
+// Enable IoV for Virtual Switch
+func (o VirtualSwitchConfigurationOverridesResponseV1Output) EnableIov() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualSwitchConfigurationOverridesResponseV1) string { return v.EnableIov }).(pulumi.StringOutput)
+}
+
+// Load Balancing Algorithm for Virtual Switch
+func (o VirtualSwitchConfigurationOverridesResponseV1Output) LoadBalancingAlgorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualSwitchConfigurationOverridesResponseV1) string { return v.LoadBalancingAlgorithm }).(pulumi.StringOutput)
 }
 
 // Web proxy configuration.
@@ -40820,6 +41374,8 @@ func init() {
 	pulumi.RegisterOutputType(AdapterPropertyOverridesOutput{})
 	pulumi.RegisterOutputType(AdapterPropertyOverridesPtrOutput{})
 	pulumi.RegisterOutputType(AdapterPropertyOverridesResponseOutput{})
+	pulumi.RegisterOutputType(AdapterPropertyOverridesResponsePtrOutput{})
+	pulumi.RegisterOutputType(AdapterPropertyOverridesResponseV1Output{})
 	pulumi.RegisterOutputType(ArcConnectivityPropertiesOutput{})
 	pulumi.RegisterOutputType(ArcConnectivityPropertiesArrayOutput{})
 	pulumi.RegisterOutputType(ArcConnectivityPropertiesResponseOutput{})
@@ -40904,6 +41460,8 @@ func init() {
 	pulumi.RegisterOutputType(ErrorAdditionalInfoResponseArrayOutput{})
 	pulumi.RegisterOutputType(ErrorDetailResponseOutput{})
 	pulumi.RegisterOutputType(ErrorDetailResponseArrayOutput{})
+	pulumi.RegisterOutputType(ErrorDetailResponseV1Output{})
+	pulumi.RegisterOutputType(ErrorDetailResponseV1ArrayOutput{})
 	pulumi.RegisterOutputType(ExtendedLocationOutput{})
 	pulumi.RegisterOutputType(ExtendedLocationPtrOutput{})
 	pulumi.RegisterOutputType(ExtendedLocationResponseOutput{})
@@ -40973,6 +41531,7 @@ func init() {
 	pulumi.RegisterOutputType(HostNetworkPtrOutput{})
 	pulumi.RegisterOutputType(HostNetworkResponseOutput{})
 	pulumi.RegisterOutputType(HostNetworkResponsePtrOutput{})
+	pulumi.RegisterOutputType(HostNetworkResponseV1Output{})
 	pulumi.RegisterOutputType(HttpProxyConfigurationOutput{})
 	pulumi.RegisterOutputType(HttpProxyConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(HttpProxyConfigurationResponseOutput{})
@@ -41019,6 +41578,8 @@ func init() {
 	pulumi.RegisterOutputType(IntentsArrayOutput{})
 	pulumi.RegisterOutputType(IntentsResponseOutput{})
 	pulumi.RegisterOutputType(IntentsResponseArrayOutput{})
+	pulumi.RegisterOutputType(IntentsResponseV1Output{})
+	pulumi.RegisterOutputType(IntentsResponseV1ArrayOutput{})
 	pulumi.RegisterOutputType(InterfaceDNSSettingsOutput{})
 	pulumi.RegisterOutputType(InterfaceDNSSettingsPtrOutput{})
 	pulumi.RegisterOutputType(InterfaceDNSSettingsResponseOutput{})
@@ -41195,6 +41756,7 @@ func init() {
 	pulumi.RegisterOutputType(QosPolicyOverridesOutput{})
 	pulumi.RegisterOutputType(QosPolicyOverridesPtrOutput{})
 	pulumi.RegisterOutputType(QosPolicyOverridesResponseOutput{})
+	pulumi.RegisterOutputType(QosPolicyOverridesResponsePtrOutput{})
 	pulumi.RegisterOutputType(RemoteSupportJobNodeSettingsResponseOutput{})
 	pulumi.RegisterOutputType(RemoteSupportJobReportedPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(RemoteSupportNodeSettingsResponseOutput{})
@@ -41273,6 +41835,8 @@ func init() {
 	pulumi.RegisterOutputType(StorageAdapterIPInfoArrayOutput{})
 	pulumi.RegisterOutputType(StorageAdapterIPInfoResponseOutput{})
 	pulumi.RegisterOutputType(StorageAdapterIPInfoResponseArrayOutput{})
+	pulumi.RegisterOutputType(StorageAdapterIPInfoResponseV1Output{})
+	pulumi.RegisterOutputType(StorageAdapterIPInfoResponseV1ArrayOutput{})
 	pulumi.RegisterOutputType(StorageConfigurationOutput{})
 	pulumi.RegisterOutputType(StorageConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(StorageConfigurationResponseOutput{})
@@ -41284,6 +41848,8 @@ func init() {
 	pulumi.RegisterOutputType(StorageNetworksArrayOutput{})
 	pulumi.RegisterOutputType(StorageNetworksResponseOutput{})
 	pulumi.RegisterOutputType(StorageNetworksResponseArrayOutput{})
+	pulumi.RegisterOutputType(StorageNetworksResponseV1Output{})
+	pulumi.RegisterOutputType(StorageNetworksResponseV1ArrayOutput{})
 	pulumi.RegisterOutputType(StorageProfileResponseOutput{})
 	pulumi.RegisterOutputType(StorageResponseOutput{})
 	pulumi.RegisterOutputType(StorageResponsePtrOutput{})
@@ -41501,6 +42067,8 @@ func init() {
 	pulumi.RegisterOutputType(VirtualSwitchConfigurationOverridesOutput{})
 	pulumi.RegisterOutputType(VirtualSwitchConfigurationOverridesPtrOutput{})
 	pulumi.RegisterOutputType(VirtualSwitchConfigurationOverridesResponseOutput{})
+	pulumi.RegisterOutputType(VirtualSwitchConfigurationOverridesResponsePtrOutput{})
+	pulumi.RegisterOutputType(VirtualSwitchConfigurationOverridesResponseV1Output{})
 	pulumi.RegisterOutputType(WebProxyConfigurationOutput{})
 	pulumi.RegisterOutputType(WebProxyConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(WebProxyConfigurationResponseOutput{})

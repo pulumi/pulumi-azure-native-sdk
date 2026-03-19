@@ -21,7 +21,7 @@ type Connector struct {
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Collection information
-	Collection ConnectorCollectionInfoResponseOutput `pulumi:"collection"`
+	Collection ConnectorCollectionInfoResponseV1Output `pulumi:"collection"`
 	// Connector definition creation datetime
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
 	// Credentials authentication key (eg AWS ARN)
@@ -195,8 +195,8 @@ func (o ConnectorOutput) AzureApiVersion() pulumi.StringOutput {
 }
 
 // Collection information
-func (o ConnectorOutput) Collection() ConnectorCollectionInfoResponseOutput {
-	return o.ApplyT(func(v *Connector) ConnectorCollectionInfoResponseOutput { return v.Collection }).(ConnectorCollectionInfoResponseOutput)
+func (o ConnectorOutput) Collection() ConnectorCollectionInfoResponseV1Output {
+	return o.ApplyT(func(v *Connector) ConnectorCollectionInfoResponseV1Output { return v.Collection }).(ConnectorCollectionInfoResponseV1Output)
 }
 
 // Connector definition creation datetime

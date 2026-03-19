@@ -13,6 +13,2361 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
+// Definition of SoftwareUpdateOptions
+type SoftwareUpdateOptionsResponse struct {
+	// <p>Whether automatic service software updates are enabled for the domain.</p>
+	AutoSoftwareUpdateEnabled *bool `pulumi:"autoSoftwareUpdateEnabled"`
+}
+
+// Definition of SoftwareUpdateOptions
+type SoftwareUpdateOptionsResponseOutput struct{ *pulumi.OutputState }
+
+func (SoftwareUpdateOptionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SoftwareUpdateOptionsResponse)(nil)).Elem()
+}
+
+func (o SoftwareUpdateOptionsResponseOutput) ToSoftwareUpdateOptionsResponseOutput() SoftwareUpdateOptionsResponseOutput {
+	return o
+}
+
+func (o SoftwareUpdateOptionsResponseOutput) ToSoftwareUpdateOptionsResponseOutputWithContext(ctx context.Context) SoftwareUpdateOptionsResponseOutput {
+	return o
+}
+
+// <p>Whether automatic service software updates are enabled for the domain.</p>
+func (o SoftwareUpdateOptionsResponseOutput) AutoSoftwareUpdateEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SoftwareUpdateOptionsResponse) *bool { return v.AutoSoftwareUpdateEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type SoftwareUpdateOptionsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SoftwareUpdateOptionsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SoftwareUpdateOptionsResponse)(nil)).Elem()
+}
+
+func (o SoftwareUpdateOptionsResponsePtrOutput) ToSoftwareUpdateOptionsResponsePtrOutput() SoftwareUpdateOptionsResponsePtrOutput {
+	return o
+}
+
+func (o SoftwareUpdateOptionsResponsePtrOutput) ToSoftwareUpdateOptionsResponsePtrOutputWithContext(ctx context.Context) SoftwareUpdateOptionsResponsePtrOutput {
+	return o
+}
+
+func (o SoftwareUpdateOptionsResponsePtrOutput) Elem() SoftwareUpdateOptionsResponseOutput {
+	return o.ApplyT(func(v *SoftwareUpdateOptionsResponse) SoftwareUpdateOptionsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SoftwareUpdateOptionsResponse
+		return ret
+	}).(SoftwareUpdateOptionsResponseOutput)
+}
+
+// <p>Whether automatic service software updates are enabled for the domain.</p>
+func (o SoftwareUpdateOptionsResponsePtrOutput) AutoSoftwareUpdateEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SoftwareUpdateOptionsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoSoftwareUpdateEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Definition of SourceAuth
+type SourceAuth struct {
+	// <p>The resource value that applies to the specified authorization type.</p>
+	Resource *string `pulumi:"resource"`
+	// <p>The authorization type to use. Valid options are OAUTH or CODECONNECTIONS.</p>
+	Type *SourceAuthTypeEnumValue `pulumi:"type"`
+}
+
+// SourceAuthInput is an input type that accepts SourceAuthArgs and SourceAuthOutput values.
+// You can construct a concrete instance of `SourceAuthInput` via:
+//
+//	SourceAuthArgs{...}
+type SourceAuthInput interface {
+	pulumi.Input
+
+	ToSourceAuthOutput() SourceAuthOutput
+	ToSourceAuthOutputWithContext(context.Context) SourceAuthOutput
+}
+
+// Definition of SourceAuth
+type SourceAuthArgs struct {
+	// <p>The resource value that applies to the specified authorization type.</p>
+	Resource pulumi.StringPtrInput `pulumi:"resource"`
+	// <p>The authorization type to use. Valid options are OAUTH or CODECONNECTIONS.</p>
+	Type SourceAuthTypeEnumValuePtrInput `pulumi:"type"`
+}
+
+func (SourceAuthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceAuth)(nil)).Elem()
+}
+
+func (i SourceAuthArgs) ToSourceAuthOutput() SourceAuthOutput {
+	return i.ToSourceAuthOutputWithContext(context.Background())
+}
+
+func (i SourceAuthArgs) ToSourceAuthOutputWithContext(ctx context.Context) SourceAuthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceAuthOutput)
+}
+
+func (i SourceAuthArgs) ToSourceAuthPtrOutput() SourceAuthPtrOutput {
+	return i.ToSourceAuthPtrOutputWithContext(context.Background())
+}
+
+func (i SourceAuthArgs) ToSourceAuthPtrOutputWithContext(ctx context.Context) SourceAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceAuthOutput).ToSourceAuthPtrOutputWithContext(ctx)
+}
+
+// SourceAuthPtrInput is an input type that accepts SourceAuthArgs, SourceAuthPtr and SourceAuthPtrOutput values.
+// You can construct a concrete instance of `SourceAuthPtrInput` via:
+//
+//	        SourceAuthArgs{...}
+//
+//	or:
+//
+//	        nil
+type SourceAuthPtrInput interface {
+	pulumi.Input
+
+	ToSourceAuthPtrOutput() SourceAuthPtrOutput
+	ToSourceAuthPtrOutputWithContext(context.Context) SourceAuthPtrOutput
+}
+
+type sourceAuthPtrType SourceAuthArgs
+
+func SourceAuthPtr(v *SourceAuthArgs) SourceAuthPtrInput {
+	return (*sourceAuthPtrType)(v)
+}
+
+func (*sourceAuthPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceAuth)(nil)).Elem()
+}
+
+func (i *sourceAuthPtrType) ToSourceAuthPtrOutput() SourceAuthPtrOutput {
+	return i.ToSourceAuthPtrOutputWithContext(context.Background())
+}
+
+func (i *sourceAuthPtrType) ToSourceAuthPtrOutputWithContext(ctx context.Context) SourceAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceAuthPtrOutput)
+}
+
+// Definition of SourceAuth
+type SourceAuthOutput struct{ *pulumi.OutputState }
+
+func (SourceAuthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceAuth)(nil)).Elem()
+}
+
+func (o SourceAuthOutput) ToSourceAuthOutput() SourceAuthOutput {
+	return o
+}
+
+func (o SourceAuthOutput) ToSourceAuthOutputWithContext(ctx context.Context) SourceAuthOutput {
+	return o
+}
+
+func (o SourceAuthOutput) ToSourceAuthPtrOutput() SourceAuthPtrOutput {
+	return o.ToSourceAuthPtrOutputWithContext(context.Background())
+}
+
+func (o SourceAuthOutput) ToSourceAuthPtrOutputWithContext(ctx context.Context) SourceAuthPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceAuth) *SourceAuth {
+		return &v
+	}).(SourceAuthPtrOutput)
+}
+
+// <p>The resource value that applies to the specified authorization type.</p>
+func (o SourceAuthOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SourceAuth) *string { return v.Resource }).(pulumi.StringPtrOutput)
+}
+
+// <p>The authorization type to use. Valid options are OAUTH or CODECONNECTIONS.</p>
+func (o SourceAuthOutput) Type() SourceAuthTypeEnumValuePtrOutput {
+	return o.ApplyT(func(v SourceAuth) *SourceAuthTypeEnumValue { return v.Type }).(SourceAuthTypeEnumValuePtrOutput)
+}
+
+type SourceAuthPtrOutput struct{ *pulumi.OutputState }
+
+func (SourceAuthPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceAuth)(nil)).Elem()
+}
+
+func (o SourceAuthPtrOutput) ToSourceAuthPtrOutput() SourceAuthPtrOutput {
+	return o
+}
+
+func (o SourceAuthPtrOutput) ToSourceAuthPtrOutputWithContext(ctx context.Context) SourceAuthPtrOutput {
+	return o
+}
+
+func (o SourceAuthPtrOutput) Elem() SourceAuthOutput {
+	return o.ApplyT(func(v *SourceAuth) SourceAuth {
+		if v != nil {
+			return *v
+		}
+		var ret SourceAuth
+		return ret
+	}).(SourceAuthOutput)
+}
+
+// <p>The resource value that applies to the specified authorization type.</p>
+func (o SourceAuthPtrOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Resource
+	}).(pulumi.StringPtrOutput)
+}
+
+// <p>The authorization type to use. Valid options are OAUTH or CODECONNECTIONS.</p>
+func (o SourceAuthPtrOutput) Type() SourceAuthTypeEnumValuePtrOutput {
+	return o.ApplyT(func(v *SourceAuth) *SourceAuthTypeEnumValue {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(SourceAuthTypeEnumValuePtrOutput)
+}
+
+// Definition of SourceAuth
+type SourceAuthResponse struct {
+	// <p>The resource value that applies to the specified authorization type.</p>
+	Resource *string `pulumi:"resource"`
+	// <p>The authorization type to use. Valid options are OAUTH or CODECONNECTIONS.</p>
+	Type *SourceAuthTypeEnumValueResponse `pulumi:"type"`
+}
+
+// Definition of SourceAuth
+type SourceAuthResponseOutput struct{ *pulumi.OutputState }
+
+func (SourceAuthResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceAuthResponse)(nil)).Elem()
+}
+
+func (o SourceAuthResponseOutput) ToSourceAuthResponseOutput() SourceAuthResponseOutput {
+	return o
+}
+
+func (o SourceAuthResponseOutput) ToSourceAuthResponseOutputWithContext(ctx context.Context) SourceAuthResponseOutput {
+	return o
+}
+
+// <p>The resource value that applies to the specified authorization type.</p>
+func (o SourceAuthResponseOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SourceAuthResponse) *string { return v.Resource }).(pulumi.StringPtrOutput)
+}
+
+// <p>The authorization type to use. Valid options are OAUTH or CODECONNECTIONS.</p>
+func (o SourceAuthResponseOutput) Type() SourceAuthTypeEnumValueResponsePtrOutput {
+	return o.ApplyT(func(v SourceAuthResponse) *SourceAuthTypeEnumValueResponse { return v.Type }).(SourceAuthTypeEnumValueResponsePtrOutput)
+}
+
+type SourceAuthResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SourceAuthResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceAuthResponse)(nil)).Elem()
+}
+
+func (o SourceAuthResponsePtrOutput) ToSourceAuthResponsePtrOutput() SourceAuthResponsePtrOutput {
+	return o
+}
+
+func (o SourceAuthResponsePtrOutput) ToSourceAuthResponsePtrOutputWithContext(ctx context.Context) SourceAuthResponsePtrOutput {
+	return o
+}
+
+func (o SourceAuthResponsePtrOutput) Elem() SourceAuthResponseOutput {
+	return o.ApplyT(func(v *SourceAuthResponse) SourceAuthResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SourceAuthResponse
+		return ret
+	}).(SourceAuthResponseOutput)
+}
+
+// <p>The resource value that applies to the specified authorization type.</p>
+func (o SourceAuthResponsePtrOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceAuthResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Resource
+	}).(pulumi.StringPtrOutput)
+}
+
+// <p>The authorization type to use. Valid options are OAUTH or CODECONNECTIONS.</p>
+func (o SourceAuthResponsePtrOutput) Type() SourceAuthTypeEnumValueResponsePtrOutput {
+	return o.ApplyT(func(v *SourceAuthResponse) *SourceAuthTypeEnumValueResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(SourceAuthTypeEnumValueResponsePtrOutput)
+}
+
+// Definition of SourceAuthTypeEnumValue
+type SourceAuthTypeEnumValue struct {
+	// Property value
+	Value *string `pulumi:"value"`
+}
+
+// SourceAuthTypeEnumValueInput is an input type that accepts SourceAuthTypeEnumValueArgs and SourceAuthTypeEnumValueOutput values.
+// You can construct a concrete instance of `SourceAuthTypeEnumValueInput` via:
+//
+//	SourceAuthTypeEnumValueArgs{...}
+type SourceAuthTypeEnumValueInput interface {
+	pulumi.Input
+
+	ToSourceAuthTypeEnumValueOutput() SourceAuthTypeEnumValueOutput
+	ToSourceAuthTypeEnumValueOutputWithContext(context.Context) SourceAuthTypeEnumValueOutput
+}
+
+// Definition of SourceAuthTypeEnumValue
+type SourceAuthTypeEnumValueArgs struct {
+	// Property value
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (SourceAuthTypeEnumValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceAuthTypeEnumValue)(nil)).Elem()
+}
+
+func (i SourceAuthTypeEnumValueArgs) ToSourceAuthTypeEnumValueOutput() SourceAuthTypeEnumValueOutput {
+	return i.ToSourceAuthTypeEnumValueOutputWithContext(context.Background())
+}
+
+func (i SourceAuthTypeEnumValueArgs) ToSourceAuthTypeEnumValueOutputWithContext(ctx context.Context) SourceAuthTypeEnumValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceAuthTypeEnumValueOutput)
+}
+
+func (i SourceAuthTypeEnumValueArgs) ToSourceAuthTypeEnumValuePtrOutput() SourceAuthTypeEnumValuePtrOutput {
+	return i.ToSourceAuthTypeEnumValuePtrOutputWithContext(context.Background())
+}
+
+func (i SourceAuthTypeEnumValueArgs) ToSourceAuthTypeEnumValuePtrOutputWithContext(ctx context.Context) SourceAuthTypeEnumValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceAuthTypeEnumValueOutput).ToSourceAuthTypeEnumValuePtrOutputWithContext(ctx)
+}
+
+// SourceAuthTypeEnumValuePtrInput is an input type that accepts SourceAuthTypeEnumValueArgs, SourceAuthTypeEnumValuePtr and SourceAuthTypeEnumValuePtrOutput values.
+// You can construct a concrete instance of `SourceAuthTypeEnumValuePtrInput` via:
+//
+//	        SourceAuthTypeEnumValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type SourceAuthTypeEnumValuePtrInput interface {
+	pulumi.Input
+
+	ToSourceAuthTypeEnumValuePtrOutput() SourceAuthTypeEnumValuePtrOutput
+	ToSourceAuthTypeEnumValuePtrOutputWithContext(context.Context) SourceAuthTypeEnumValuePtrOutput
+}
+
+type sourceAuthTypeEnumValuePtrType SourceAuthTypeEnumValueArgs
+
+func SourceAuthTypeEnumValuePtr(v *SourceAuthTypeEnumValueArgs) SourceAuthTypeEnumValuePtrInput {
+	return (*sourceAuthTypeEnumValuePtrType)(v)
+}
+
+func (*sourceAuthTypeEnumValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceAuthTypeEnumValue)(nil)).Elem()
+}
+
+func (i *sourceAuthTypeEnumValuePtrType) ToSourceAuthTypeEnumValuePtrOutput() SourceAuthTypeEnumValuePtrOutput {
+	return i.ToSourceAuthTypeEnumValuePtrOutputWithContext(context.Background())
+}
+
+func (i *sourceAuthTypeEnumValuePtrType) ToSourceAuthTypeEnumValuePtrOutputWithContext(ctx context.Context) SourceAuthTypeEnumValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceAuthTypeEnumValuePtrOutput)
+}
+
+// Definition of SourceAuthTypeEnumValue
+type SourceAuthTypeEnumValueOutput struct{ *pulumi.OutputState }
+
+func (SourceAuthTypeEnumValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceAuthTypeEnumValue)(nil)).Elem()
+}
+
+func (o SourceAuthTypeEnumValueOutput) ToSourceAuthTypeEnumValueOutput() SourceAuthTypeEnumValueOutput {
+	return o
+}
+
+func (o SourceAuthTypeEnumValueOutput) ToSourceAuthTypeEnumValueOutputWithContext(ctx context.Context) SourceAuthTypeEnumValueOutput {
+	return o
+}
+
+func (o SourceAuthTypeEnumValueOutput) ToSourceAuthTypeEnumValuePtrOutput() SourceAuthTypeEnumValuePtrOutput {
+	return o.ToSourceAuthTypeEnumValuePtrOutputWithContext(context.Background())
+}
+
+func (o SourceAuthTypeEnumValueOutput) ToSourceAuthTypeEnumValuePtrOutputWithContext(ctx context.Context) SourceAuthTypeEnumValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceAuthTypeEnumValue) *SourceAuthTypeEnumValue {
+		return &v
+	}).(SourceAuthTypeEnumValuePtrOutput)
+}
+
+// Property value
+func (o SourceAuthTypeEnumValueOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SourceAuthTypeEnumValue) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type SourceAuthTypeEnumValuePtrOutput struct{ *pulumi.OutputState }
+
+func (SourceAuthTypeEnumValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceAuthTypeEnumValue)(nil)).Elem()
+}
+
+func (o SourceAuthTypeEnumValuePtrOutput) ToSourceAuthTypeEnumValuePtrOutput() SourceAuthTypeEnumValuePtrOutput {
+	return o
+}
+
+func (o SourceAuthTypeEnumValuePtrOutput) ToSourceAuthTypeEnumValuePtrOutputWithContext(ctx context.Context) SourceAuthTypeEnumValuePtrOutput {
+	return o
+}
+
+func (o SourceAuthTypeEnumValuePtrOutput) Elem() SourceAuthTypeEnumValueOutput {
+	return o.ApplyT(func(v *SourceAuthTypeEnumValue) SourceAuthTypeEnumValue {
+		if v != nil {
+			return *v
+		}
+		var ret SourceAuthTypeEnumValue
+		return ret
+	}).(SourceAuthTypeEnumValueOutput)
+}
+
+// Property value
+func (o SourceAuthTypeEnumValuePtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceAuthTypeEnumValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+// Definition of SourceAuthTypeEnumValue
+type SourceAuthTypeEnumValueResponse struct {
+	// Property value
+	Value *string `pulumi:"value"`
+}
+
+// Definition of SourceAuthTypeEnumValue
+type SourceAuthTypeEnumValueResponseOutput struct{ *pulumi.OutputState }
+
+func (SourceAuthTypeEnumValueResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceAuthTypeEnumValueResponse)(nil)).Elem()
+}
+
+func (o SourceAuthTypeEnumValueResponseOutput) ToSourceAuthTypeEnumValueResponseOutput() SourceAuthTypeEnumValueResponseOutput {
+	return o
+}
+
+func (o SourceAuthTypeEnumValueResponseOutput) ToSourceAuthTypeEnumValueResponseOutputWithContext(ctx context.Context) SourceAuthTypeEnumValueResponseOutput {
+	return o
+}
+
+// Property value
+func (o SourceAuthTypeEnumValueResponseOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SourceAuthTypeEnumValueResponse) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type SourceAuthTypeEnumValueResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SourceAuthTypeEnumValueResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceAuthTypeEnumValueResponse)(nil)).Elem()
+}
+
+func (o SourceAuthTypeEnumValueResponsePtrOutput) ToSourceAuthTypeEnumValueResponsePtrOutput() SourceAuthTypeEnumValueResponsePtrOutput {
+	return o
+}
+
+func (o SourceAuthTypeEnumValueResponsePtrOutput) ToSourceAuthTypeEnumValueResponsePtrOutputWithContext(ctx context.Context) SourceAuthTypeEnumValueResponsePtrOutput {
+	return o
+}
+
+func (o SourceAuthTypeEnumValueResponsePtrOutput) Elem() SourceAuthTypeEnumValueResponseOutput {
+	return o.ApplyT(func(v *SourceAuthTypeEnumValueResponse) SourceAuthTypeEnumValueResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SourceAuthTypeEnumValueResponse
+		return ret
+	}).(SourceAuthTypeEnumValueResponseOutput)
+}
+
+// Property value
+func (o SourceAuthTypeEnumValueResponsePtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceAuthTypeEnumValueResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+// Definition of SourceConfiguration
+type SourceConfiguration struct {
+	// The name of the application associated with the configuration.
+	ApplicationName *string `pulumi:"applicationName"`
+	// The name of the configuration template.
+	TemplateName *string `pulumi:"templateName"`
+}
+
+// SourceConfigurationInput is an input type that accepts SourceConfigurationArgs and SourceConfigurationOutput values.
+// You can construct a concrete instance of `SourceConfigurationInput` via:
+//
+//	SourceConfigurationArgs{...}
+type SourceConfigurationInput interface {
+	pulumi.Input
+
+	ToSourceConfigurationOutput() SourceConfigurationOutput
+	ToSourceConfigurationOutputWithContext(context.Context) SourceConfigurationOutput
+}
+
+// Definition of SourceConfiguration
+type SourceConfigurationArgs struct {
+	// The name of the application associated with the configuration.
+	ApplicationName pulumi.StringPtrInput `pulumi:"applicationName"`
+	// The name of the configuration template.
+	TemplateName pulumi.StringPtrInput `pulumi:"templateName"`
+}
+
+func (SourceConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceConfiguration)(nil)).Elem()
+}
+
+func (i SourceConfigurationArgs) ToSourceConfigurationOutput() SourceConfigurationOutput {
+	return i.ToSourceConfigurationOutputWithContext(context.Background())
+}
+
+func (i SourceConfigurationArgs) ToSourceConfigurationOutputWithContext(ctx context.Context) SourceConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceConfigurationOutput)
+}
+
+func (i SourceConfigurationArgs) ToSourceConfigurationPtrOutput() SourceConfigurationPtrOutput {
+	return i.ToSourceConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i SourceConfigurationArgs) ToSourceConfigurationPtrOutputWithContext(ctx context.Context) SourceConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceConfigurationOutput).ToSourceConfigurationPtrOutputWithContext(ctx)
+}
+
+// SourceConfigurationPtrInput is an input type that accepts SourceConfigurationArgs, SourceConfigurationPtr and SourceConfigurationPtrOutput values.
+// You can construct a concrete instance of `SourceConfigurationPtrInput` via:
+//
+//	        SourceConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type SourceConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToSourceConfigurationPtrOutput() SourceConfigurationPtrOutput
+	ToSourceConfigurationPtrOutputWithContext(context.Context) SourceConfigurationPtrOutput
+}
+
+type sourceConfigurationPtrType SourceConfigurationArgs
+
+func SourceConfigurationPtr(v *SourceConfigurationArgs) SourceConfigurationPtrInput {
+	return (*sourceConfigurationPtrType)(v)
+}
+
+func (*sourceConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceConfiguration)(nil)).Elem()
+}
+
+func (i *sourceConfigurationPtrType) ToSourceConfigurationPtrOutput() SourceConfigurationPtrOutput {
+	return i.ToSourceConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *sourceConfigurationPtrType) ToSourceConfigurationPtrOutputWithContext(ctx context.Context) SourceConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceConfigurationPtrOutput)
+}
+
+// Definition of SourceConfiguration
+type SourceConfigurationOutput struct{ *pulumi.OutputState }
+
+func (SourceConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceConfiguration)(nil)).Elem()
+}
+
+func (o SourceConfigurationOutput) ToSourceConfigurationOutput() SourceConfigurationOutput {
+	return o
+}
+
+func (o SourceConfigurationOutput) ToSourceConfigurationOutputWithContext(ctx context.Context) SourceConfigurationOutput {
+	return o
+}
+
+func (o SourceConfigurationOutput) ToSourceConfigurationPtrOutput() SourceConfigurationPtrOutput {
+	return o.ToSourceConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o SourceConfigurationOutput) ToSourceConfigurationPtrOutputWithContext(ctx context.Context) SourceConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceConfiguration) *SourceConfiguration {
+		return &v
+	}).(SourceConfigurationPtrOutput)
+}
+
+// The name of the application associated with the configuration.
+func (o SourceConfigurationOutput) ApplicationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SourceConfiguration) *string { return v.ApplicationName }).(pulumi.StringPtrOutput)
+}
+
+// The name of the configuration template.
+func (o SourceConfigurationOutput) TemplateName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SourceConfiguration) *string { return v.TemplateName }).(pulumi.StringPtrOutput)
+}
+
+type SourceConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (SourceConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceConfiguration)(nil)).Elem()
+}
+
+func (o SourceConfigurationPtrOutput) ToSourceConfigurationPtrOutput() SourceConfigurationPtrOutput {
+	return o
+}
+
+func (o SourceConfigurationPtrOutput) ToSourceConfigurationPtrOutputWithContext(ctx context.Context) SourceConfigurationPtrOutput {
+	return o
+}
+
+func (o SourceConfigurationPtrOutput) Elem() SourceConfigurationOutput {
+	return o.ApplyT(func(v *SourceConfiguration) SourceConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret SourceConfiguration
+		return ret
+	}).(SourceConfigurationOutput)
+}
+
+// The name of the application associated with the configuration.
+func (o SourceConfigurationPtrOutput) ApplicationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApplicationName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the configuration template.
+func (o SourceConfigurationPtrOutput) TemplateName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TemplateName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Definition of SourceConfiguration
+type SourceConfigurationResponse struct {
+	// The name of the application associated with the configuration.
+	ApplicationName *string `pulumi:"applicationName"`
+	// The name of the configuration template.
+	TemplateName *string `pulumi:"templateName"`
+}
+
+// Definition of SourceConfiguration
+type SourceConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (SourceConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceConfigurationResponse)(nil)).Elem()
+}
+
+func (o SourceConfigurationResponseOutput) ToSourceConfigurationResponseOutput() SourceConfigurationResponseOutput {
+	return o
+}
+
+func (o SourceConfigurationResponseOutput) ToSourceConfigurationResponseOutputWithContext(ctx context.Context) SourceConfigurationResponseOutput {
+	return o
+}
+
+// The name of the application associated with the configuration.
+func (o SourceConfigurationResponseOutput) ApplicationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SourceConfigurationResponse) *string { return v.ApplicationName }).(pulumi.StringPtrOutput)
+}
+
+// The name of the configuration template.
+func (o SourceConfigurationResponseOutput) TemplateName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SourceConfigurationResponse) *string { return v.TemplateName }).(pulumi.StringPtrOutput)
+}
+
+type SourceConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SourceConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceConfigurationResponse)(nil)).Elem()
+}
+
+func (o SourceConfigurationResponsePtrOutput) ToSourceConfigurationResponsePtrOutput() SourceConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o SourceConfigurationResponsePtrOutput) ToSourceConfigurationResponsePtrOutputWithContext(ctx context.Context) SourceConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o SourceConfigurationResponsePtrOutput) Elem() SourceConfigurationResponseOutput {
+	return o.ApplyT(func(v *SourceConfigurationResponse) SourceConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SourceConfigurationResponse
+		return ret
+	}).(SourceConfigurationResponseOutput)
+}
+
+// The name of the application associated with the configuration.
+func (o SourceConfigurationResponsePtrOutput) ApplicationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApplicationName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the configuration template.
+func (o SourceConfigurationResponsePtrOutput) TemplateName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TemplateName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Definition of SourceSelectionCriteria
+type SourceSelectionCriteria struct {
+	// A filter that you can specify for selection for modifications on replicas. A filter that you can specify for selection for modifications on replicas.
+	ReplicaModifications *ReplicaModifications `pulumi:"replicaModifications"`
+	// A container for filter information for the selection of Amazon S3 objects encrypted with AWS KMS. A container for filter information for the selection of S3 objects encrypted with AWS KMS.
+	SseKmsEncryptedObjects *SseKmsEncryptedObjects `pulumi:"sseKmsEncryptedObjects"`
+}
+
+// SourceSelectionCriteriaInput is an input type that accepts SourceSelectionCriteriaArgs and SourceSelectionCriteriaOutput values.
+// You can construct a concrete instance of `SourceSelectionCriteriaInput` via:
+//
+//	SourceSelectionCriteriaArgs{...}
+type SourceSelectionCriteriaInput interface {
+	pulumi.Input
+
+	ToSourceSelectionCriteriaOutput() SourceSelectionCriteriaOutput
+	ToSourceSelectionCriteriaOutputWithContext(context.Context) SourceSelectionCriteriaOutput
+}
+
+// Definition of SourceSelectionCriteria
+type SourceSelectionCriteriaArgs struct {
+	// A filter that you can specify for selection for modifications on replicas. A filter that you can specify for selection for modifications on replicas.
+	ReplicaModifications ReplicaModificationsPtrInput `pulumi:"replicaModifications"`
+	// A container for filter information for the selection of Amazon S3 objects encrypted with AWS KMS. A container for filter information for the selection of S3 objects encrypted with AWS KMS.
+	SseKmsEncryptedObjects SseKmsEncryptedObjectsPtrInput `pulumi:"sseKmsEncryptedObjects"`
+}
+
+func (SourceSelectionCriteriaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceSelectionCriteria)(nil)).Elem()
+}
+
+func (i SourceSelectionCriteriaArgs) ToSourceSelectionCriteriaOutput() SourceSelectionCriteriaOutput {
+	return i.ToSourceSelectionCriteriaOutputWithContext(context.Background())
+}
+
+func (i SourceSelectionCriteriaArgs) ToSourceSelectionCriteriaOutputWithContext(ctx context.Context) SourceSelectionCriteriaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceSelectionCriteriaOutput)
+}
+
+func (i SourceSelectionCriteriaArgs) ToSourceSelectionCriteriaPtrOutput() SourceSelectionCriteriaPtrOutput {
+	return i.ToSourceSelectionCriteriaPtrOutputWithContext(context.Background())
+}
+
+func (i SourceSelectionCriteriaArgs) ToSourceSelectionCriteriaPtrOutputWithContext(ctx context.Context) SourceSelectionCriteriaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceSelectionCriteriaOutput).ToSourceSelectionCriteriaPtrOutputWithContext(ctx)
+}
+
+// SourceSelectionCriteriaPtrInput is an input type that accepts SourceSelectionCriteriaArgs, SourceSelectionCriteriaPtr and SourceSelectionCriteriaPtrOutput values.
+// You can construct a concrete instance of `SourceSelectionCriteriaPtrInput` via:
+//
+//	        SourceSelectionCriteriaArgs{...}
+//
+//	or:
+//
+//	        nil
+type SourceSelectionCriteriaPtrInput interface {
+	pulumi.Input
+
+	ToSourceSelectionCriteriaPtrOutput() SourceSelectionCriteriaPtrOutput
+	ToSourceSelectionCriteriaPtrOutputWithContext(context.Context) SourceSelectionCriteriaPtrOutput
+}
+
+type sourceSelectionCriteriaPtrType SourceSelectionCriteriaArgs
+
+func SourceSelectionCriteriaPtr(v *SourceSelectionCriteriaArgs) SourceSelectionCriteriaPtrInput {
+	return (*sourceSelectionCriteriaPtrType)(v)
+}
+
+func (*sourceSelectionCriteriaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceSelectionCriteria)(nil)).Elem()
+}
+
+func (i *sourceSelectionCriteriaPtrType) ToSourceSelectionCriteriaPtrOutput() SourceSelectionCriteriaPtrOutput {
+	return i.ToSourceSelectionCriteriaPtrOutputWithContext(context.Background())
+}
+
+func (i *sourceSelectionCriteriaPtrType) ToSourceSelectionCriteriaPtrOutputWithContext(ctx context.Context) SourceSelectionCriteriaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceSelectionCriteriaPtrOutput)
+}
+
+// Definition of SourceSelectionCriteria
+type SourceSelectionCriteriaOutput struct{ *pulumi.OutputState }
+
+func (SourceSelectionCriteriaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceSelectionCriteria)(nil)).Elem()
+}
+
+func (o SourceSelectionCriteriaOutput) ToSourceSelectionCriteriaOutput() SourceSelectionCriteriaOutput {
+	return o
+}
+
+func (o SourceSelectionCriteriaOutput) ToSourceSelectionCriteriaOutputWithContext(ctx context.Context) SourceSelectionCriteriaOutput {
+	return o
+}
+
+func (o SourceSelectionCriteriaOutput) ToSourceSelectionCriteriaPtrOutput() SourceSelectionCriteriaPtrOutput {
+	return o.ToSourceSelectionCriteriaPtrOutputWithContext(context.Background())
+}
+
+func (o SourceSelectionCriteriaOutput) ToSourceSelectionCriteriaPtrOutputWithContext(ctx context.Context) SourceSelectionCriteriaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceSelectionCriteria) *SourceSelectionCriteria {
+		return &v
+	}).(SourceSelectionCriteriaPtrOutput)
+}
+
+// A filter that you can specify for selection for modifications on replicas. A filter that you can specify for selection for modifications on replicas.
+func (o SourceSelectionCriteriaOutput) ReplicaModifications() ReplicaModificationsPtrOutput {
+	return o.ApplyT(func(v SourceSelectionCriteria) *ReplicaModifications { return v.ReplicaModifications }).(ReplicaModificationsPtrOutput)
+}
+
+// A container for filter information for the selection of Amazon S3 objects encrypted with AWS KMS. A container for filter information for the selection of S3 objects encrypted with AWS KMS.
+func (o SourceSelectionCriteriaOutput) SseKmsEncryptedObjects() SseKmsEncryptedObjectsPtrOutput {
+	return o.ApplyT(func(v SourceSelectionCriteria) *SseKmsEncryptedObjects { return v.SseKmsEncryptedObjects }).(SseKmsEncryptedObjectsPtrOutput)
+}
+
+type SourceSelectionCriteriaPtrOutput struct{ *pulumi.OutputState }
+
+func (SourceSelectionCriteriaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceSelectionCriteria)(nil)).Elem()
+}
+
+func (o SourceSelectionCriteriaPtrOutput) ToSourceSelectionCriteriaPtrOutput() SourceSelectionCriteriaPtrOutput {
+	return o
+}
+
+func (o SourceSelectionCriteriaPtrOutput) ToSourceSelectionCriteriaPtrOutputWithContext(ctx context.Context) SourceSelectionCriteriaPtrOutput {
+	return o
+}
+
+func (o SourceSelectionCriteriaPtrOutput) Elem() SourceSelectionCriteriaOutput {
+	return o.ApplyT(func(v *SourceSelectionCriteria) SourceSelectionCriteria {
+		if v != nil {
+			return *v
+		}
+		var ret SourceSelectionCriteria
+		return ret
+	}).(SourceSelectionCriteriaOutput)
+}
+
+// A filter that you can specify for selection for modifications on replicas. A filter that you can specify for selection for modifications on replicas.
+func (o SourceSelectionCriteriaPtrOutput) ReplicaModifications() ReplicaModificationsPtrOutput {
+	return o.ApplyT(func(v *SourceSelectionCriteria) *ReplicaModifications {
+		if v == nil {
+			return nil
+		}
+		return v.ReplicaModifications
+	}).(ReplicaModificationsPtrOutput)
+}
+
+// A container for filter information for the selection of Amazon S3 objects encrypted with AWS KMS. A container for filter information for the selection of S3 objects encrypted with AWS KMS.
+func (o SourceSelectionCriteriaPtrOutput) SseKmsEncryptedObjects() SseKmsEncryptedObjectsPtrOutput {
+	return o.ApplyT(func(v *SourceSelectionCriteria) *SseKmsEncryptedObjects {
+		if v == nil {
+			return nil
+		}
+		return v.SseKmsEncryptedObjects
+	}).(SseKmsEncryptedObjectsPtrOutput)
+}
+
+// Definition of SourceSelectionCriteria
+type SourceSelectionCriteriaResponse struct {
+	// A filter that you can specify for selection for modifications on replicas. A filter that you can specify for selection for modifications on replicas.
+	ReplicaModifications *ReplicaModificationsResponse `pulumi:"replicaModifications"`
+	// A container for filter information for the selection of Amazon S3 objects encrypted with AWS KMS. A container for filter information for the selection of S3 objects encrypted with AWS KMS.
+	SseKmsEncryptedObjects *SseKmsEncryptedObjectsResponse `pulumi:"sseKmsEncryptedObjects"`
+}
+
+// Definition of SourceSelectionCriteria
+type SourceSelectionCriteriaResponseOutput struct{ *pulumi.OutputState }
+
+func (SourceSelectionCriteriaResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceSelectionCriteriaResponse)(nil)).Elem()
+}
+
+func (o SourceSelectionCriteriaResponseOutput) ToSourceSelectionCriteriaResponseOutput() SourceSelectionCriteriaResponseOutput {
+	return o
+}
+
+func (o SourceSelectionCriteriaResponseOutput) ToSourceSelectionCriteriaResponseOutputWithContext(ctx context.Context) SourceSelectionCriteriaResponseOutput {
+	return o
+}
+
+// A filter that you can specify for selection for modifications on replicas. A filter that you can specify for selection for modifications on replicas.
+func (o SourceSelectionCriteriaResponseOutput) ReplicaModifications() ReplicaModificationsResponsePtrOutput {
+	return o.ApplyT(func(v SourceSelectionCriteriaResponse) *ReplicaModificationsResponse { return v.ReplicaModifications }).(ReplicaModificationsResponsePtrOutput)
+}
+
+// A container for filter information for the selection of Amazon S3 objects encrypted with AWS KMS. A container for filter information for the selection of S3 objects encrypted with AWS KMS.
+func (o SourceSelectionCriteriaResponseOutput) SseKmsEncryptedObjects() SseKmsEncryptedObjectsResponsePtrOutput {
+	return o.ApplyT(func(v SourceSelectionCriteriaResponse) *SseKmsEncryptedObjectsResponse {
+		return v.SseKmsEncryptedObjects
+	}).(SseKmsEncryptedObjectsResponsePtrOutput)
+}
+
+type SourceSelectionCriteriaResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SourceSelectionCriteriaResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceSelectionCriteriaResponse)(nil)).Elem()
+}
+
+func (o SourceSelectionCriteriaResponsePtrOutput) ToSourceSelectionCriteriaResponsePtrOutput() SourceSelectionCriteriaResponsePtrOutput {
+	return o
+}
+
+func (o SourceSelectionCriteriaResponsePtrOutput) ToSourceSelectionCriteriaResponsePtrOutputWithContext(ctx context.Context) SourceSelectionCriteriaResponsePtrOutput {
+	return o
+}
+
+func (o SourceSelectionCriteriaResponsePtrOutput) Elem() SourceSelectionCriteriaResponseOutput {
+	return o.ApplyT(func(v *SourceSelectionCriteriaResponse) SourceSelectionCriteriaResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SourceSelectionCriteriaResponse
+		return ret
+	}).(SourceSelectionCriteriaResponseOutput)
+}
+
+// A filter that you can specify for selection for modifications on replicas. A filter that you can specify for selection for modifications on replicas.
+func (o SourceSelectionCriteriaResponsePtrOutput) ReplicaModifications() ReplicaModificationsResponsePtrOutput {
+	return o.ApplyT(func(v *SourceSelectionCriteriaResponse) *ReplicaModificationsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ReplicaModifications
+	}).(ReplicaModificationsResponsePtrOutput)
+}
+
+// A container for filter information for the selection of Amazon S3 objects encrypted with AWS KMS. A container for filter information for the selection of S3 objects encrypted with AWS KMS.
+func (o SourceSelectionCriteriaResponsePtrOutput) SseKmsEncryptedObjects() SseKmsEncryptedObjectsResponsePtrOutput {
+	return o.ApplyT(func(v *SourceSelectionCriteriaResponse) *SseKmsEncryptedObjectsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.SseKmsEncryptedObjects
+	}).(SseKmsEncryptedObjectsResponsePtrOutput)
+}
+
+// Definition of SourceTypeEnumValue
+type SourceTypeEnumValue struct {
+	// Property value
+	Value *string `pulumi:"value"`
+}
+
+// SourceTypeEnumValueInput is an input type that accepts SourceTypeEnumValueArgs and SourceTypeEnumValueOutput values.
+// You can construct a concrete instance of `SourceTypeEnumValueInput` via:
+//
+//	SourceTypeEnumValueArgs{...}
+type SourceTypeEnumValueInput interface {
+	pulumi.Input
+
+	ToSourceTypeEnumValueOutput() SourceTypeEnumValueOutput
+	ToSourceTypeEnumValueOutputWithContext(context.Context) SourceTypeEnumValueOutput
+}
+
+// Definition of SourceTypeEnumValue
+type SourceTypeEnumValueArgs struct {
+	// Property value
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (SourceTypeEnumValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceTypeEnumValue)(nil)).Elem()
+}
+
+func (i SourceTypeEnumValueArgs) ToSourceTypeEnumValueOutput() SourceTypeEnumValueOutput {
+	return i.ToSourceTypeEnumValueOutputWithContext(context.Background())
+}
+
+func (i SourceTypeEnumValueArgs) ToSourceTypeEnumValueOutputWithContext(ctx context.Context) SourceTypeEnumValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceTypeEnumValueOutput)
+}
+
+func (i SourceTypeEnumValueArgs) ToSourceTypeEnumValuePtrOutput() SourceTypeEnumValuePtrOutput {
+	return i.ToSourceTypeEnumValuePtrOutputWithContext(context.Background())
+}
+
+func (i SourceTypeEnumValueArgs) ToSourceTypeEnumValuePtrOutputWithContext(ctx context.Context) SourceTypeEnumValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceTypeEnumValueOutput).ToSourceTypeEnumValuePtrOutputWithContext(ctx)
+}
+
+// SourceTypeEnumValuePtrInput is an input type that accepts SourceTypeEnumValueArgs, SourceTypeEnumValuePtr and SourceTypeEnumValuePtrOutput values.
+// You can construct a concrete instance of `SourceTypeEnumValuePtrInput` via:
+//
+//	        SourceTypeEnumValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type SourceTypeEnumValuePtrInput interface {
+	pulumi.Input
+
+	ToSourceTypeEnumValuePtrOutput() SourceTypeEnumValuePtrOutput
+	ToSourceTypeEnumValuePtrOutputWithContext(context.Context) SourceTypeEnumValuePtrOutput
+}
+
+type sourceTypeEnumValuePtrType SourceTypeEnumValueArgs
+
+func SourceTypeEnumValuePtr(v *SourceTypeEnumValueArgs) SourceTypeEnumValuePtrInput {
+	return (*sourceTypeEnumValuePtrType)(v)
+}
+
+func (*sourceTypeEnumValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceTypeEnumValue)(nil)).Elem()
+}
+
+func (i *sourceTypeEnumValuePtrType) ToSourceTypeEnumValuePtrOutput() SourceTypeEnumValuePtrOutput {
+	return i.ToSourceTypeEnumValuePtrOutputWithContext(context.Background())
+}
+
+func (i *sourceTypeEnumValuePtrType) ToSourceTypeEnumValuePtrOutputWithContext(ctx context.Context) SourceTypeEnumValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceTypeEnumValuePtrOutput)
+}
+
+// Definition of SourceTypeEnumValue
+type SourceTypeEnumValueOutput struct{ *pulumi.OutputState }
+
+func (SourceTypeEnumValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceTypeEnumValue)(nil)).Elem()
+}
+
+func (o SourceTypeEnumValueOutput) ToSourceTypeEnumValueOutput() SourceTypeEnumValueOutput {
+	return o
+}
+
+func (o SourceTypeEnumValueOutput) ToSourceTypeEnumValueOutputWithContext(ctx context.Context) SourceTypeEnumValueOutput {
+	return o
+}
+
+func (o SourceTypeEnumValueOutput) ToSourceTypeEnumValuePtrOutput() SourceTypeEnumValuePtrOutput {
+	return o.ToSourceTypeEnumValuePtrOutputWithContext(context.Background())
+}
+
+func (o SourceTypeEnumValueOutput) ToSourceTypeEnumValuePtrOutputWithContext(ctx context.Context) SourceTypeEnumValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceTypeEnumValue) *SourceTypeEnumValue {
+		return &v
+	}).(SourceTypeEnumValuePtrOutput)
+}
+
+// Property value
+func (o SourceTypeEnumValueOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SourceTypeEnumValue) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type SourceTypeEnumValuePtrOutput struct{ *pulumi.OutputState }
+
+func (SourceTypeEnumValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceTypeEnumValue)(nil)).Elem()
+}
+
+func (o SourceTypeEnumValuePtrOutput) ToSourceTypeEnumValuePtrOutput() SourceTypeEnumValuePtrOutput {
+	return o
+}
+
+func (o SourceTypeEnumValuePtrOutput) ToSourceTypeEnumValuePtrOutputWithContext(ctx context.Context) SourceTypeEnumValuePtrOutput {
+	return o
+}
+
+func (o SourceTypeEnumValuePtrOutput) Elem() SourceTypeEnumValueOutput {
+	return o.ApplyT(func(v *SourceTypeEnumValue) SourceTypeEnumValue {
+		if v != nil {
+			return *v
+		}
+		var ret SourceTypeEnumValue
+		return ret
+	}).(SourceTypeEnumValueOutput)
+}
+
+// Property value
+func (o SourceTypeEnumValuePtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceTypeEnumValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+// Definition of SourceTypeEnumValue
+type SourceTypeEnumValueResponse struct {
+	// Property value
+	Value *string `pulumi:"value"`
+}
+
+// Definition of SourceTypeEnumValue
+type SourceTypeEnumValueResponseOutput struct{ *pulumi.OutputState }
+
+func (SourceTypeEnumValueResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceTypeEnumValueResponse)(nil)).Elem()
+}
+
+func (o SourceTypeEnumValueResponseOutput) ToSourceTypeEnumValueResponseOutput() SourceTypeEnumValueResponseOutput {
+	return o
+}
+
+func (o SourceTypeEnumValueResponseOutput) ToSourceTypeEnumValueResponseOutputWithContext(ctx context.Context) SourceTypeEnumValueResponseOutput {
+	return o
+}
+
+// Property value
+func (o SourceTypeEnumValueResponseOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SourceTypeEnumValueResponse) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type SourceTypeEnumValueResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SourceTypeEnumValueResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceTypeEnumValueResponse)(nil)).Elem()
+}
+
+func (o SourceTypeEnumValueResponsePtrOutput) ToSourceTypeEnumValueResponsePtrOutput() SourceTypeEnumValueResponsePtrOutput {
+	return o
+}
+
+func (o SourceTypeEnumValueResponsePtrOutput) ToSourceTypeEnumValueResponsePtrOutputWithContext(ctx context.Context) SourceTypeEnumValueResponsePtrOutput {
+	return o
+}
+
+func (o SourceTypeEnumValueResponsePtrOutput) Elem() SourceTypeEnumValueResponseOutput {
+	return o.ApplyT(func(v *SourceTypeEnumValueResponse) SourceTypeEnumValueResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SourceTypeEnumValueResponse
+		return ret
+	}).(SourceTypeEnumValueResponseOutput)
+}
+
+// Property value
+func (o SourceTypeEnumValueResponsePtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceTypeEnumValueResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+// Definition of SqsQueue
+type SqsQueueProperties struct {
+	// Amazon Resource Name (ARN)
+	Arn *string `pulumi:"arn"`
+	// AWS Account ID
+	AwsAccountId *string `pulumi:"awsAccountId"`
+	// AWS Properties
+	AwsProperties *AwsSqsQueueProperties `pulumi:"awsProperties"`
+	// AWS Region
+	AwsRegion *string `pulumi:"awsRegion"`
+	// AWS Source Schema
+	AwsSourceSchema *string `pulumi:"awsSourceSchema"`
+	// AWS Tags
+	AwsTags map[string]string `pulumi:"awsTags"`
+	// Public Cloud Connectors Resource ID
+	PublicCloudConnectorsResourceId *string `pulumi:"publicCloudConnectorsResourceId"`
+	// Public Cloud Resource Name
+	PublicCloudResourceName *string `pulumi:"publicCloudResourceName"`
+}
+
+// SqsQueuePropertiesInput is an input type that accepts SqsQueuePropertiesArgs and SqsQueuePropertiesOutput values.
+// You can construct a concrete instance of `SqsQueuePropertiesInput` via:
+//
+//	SqsQueuePropertiesArgs{...}
+type SqsQueuePropertiesInput interface {
+	pulumi.Input
+
+	ToSqsQueuePropertiesOutput() SqsQueuePropertiesOutput
+	ToSqsQueuePropertiesOutputWithContext(context.Context) SqsQueuePropertiesOutput
+}
+
+// Definition of SqsQueue
+type SqsQueuePropertiesArgs struct {
+	// Amazon Resource Name (ARN)
+	Arn pulumi.StringPtrInput `pulumi:"arn"`
+	// AWS Account ID
+	AwsAccountId pulumi.StringPtrInput `pulumi:"awsAccountId"`
+	// AWS Properties
+	AwsProperties AwsSqsQueuePropertiesPtrInput `pulumi:"awsProperties"`
+	// AWS Region
+	AwsRegion pulumi.StringPtrInput `pulumi:"awsRegion"`
+	// AWS Source Schema
+	AwsSourceSchema pulumi.StringPtrInput `pulumi:"awsSourceSchema"`
+	// AWS Tags
+	AwsTags pulumi.StringMapInput `pulumi:"awsTags"`
+	// Public Cloud Connectors Resource ID
+	PublicCloudConnectorsResourceId pulumi.StringPtrInput `pulumi:"publicCloudConnectorsResourceId"`
+	// Public Cloud Resource Name
+	PublicCloudResourceName pulumi.StringPtrInput `pulumi:"publicCloudResourceName"`
+}
+
+func (SqsQueuePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqsQueueProperties)(nil)).Elem()
+}
+
+func (i SqsQueuePropertiesArgs) ToSqsQueuePropertiesOutput() SqsQueuePropertiesOutput {
+	return i.ToSqsQueuePropertiesOutputWithContext(context.Background())
+}
+
+func (i SqsQueuePropertiesArgs) ToSqsQueuePropertiesOutputWithContext(ctx context.Context) SqsQueuePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqsQueuePropertiesOutput)
+}
+
+func (i SqsQueuePropertiesArgs) ToSqsQueuePropertiesPtrOutput() SqsQueuePropertiesPtrOutput {
+	return i.ToSqsQueuePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i SqsQueuePropertiesArgs) ToSqsQueuePropertiesPtrOutputWithContext(ctx context.Context) SqsQueuePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqsQueuePropertiesOutput).ToSqsQueuePropertiesPtrOutputWithContext(ctx)
+}
+
+// SqsQueuePropertiesPtrInput is an input type that accepts SqsQueuePropertiesArgs, SqsQueuePropertiesPtr and SqsQueuePropertiesPtrOutput values.
+// You can construct a concrete instance of `SqsQueuePropertiesPtrInput` via:
+//
+//	        SqsQueuePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type SqsQueuePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToSqsQueuePropertiesPtrOutput() SqsQueuePropertiesPtrOutput
+	ToSqsQueuePropertiesPtrOutputWithContext(context.Context) SqsQueuePropertiesPtrOutput
+}
+
+type sqsQueuePropertiesPtrType SqsQueuePropertiesArgs
+
+func SqsQueuePropertiesPtr(v *SqsQueuePropertiesArgs) SqsQueuePropertiesPtrInput {
+	return (*sqsQueuePropertiesPtrType)(v)
+}
+
+func (*sqsQueuePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqsQueueProperties)(nil)).Elem()
+}
+
+func (i *sqsQueuePropertiesPtrType) ToSqsQueuePropertiesPtrOutput() SqsQueuePropertiesPtrOutput {
+	return i.ToSqsQueuePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *sqsQueuePropertiesPtrType) ToSqsQueuePropertiesPtrOutputWithContext(ctx context.Context) SqsQueuePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqsQueuePropertiesPtrOutput)
+}
+
+// Definition of SqsQueue
+type SqsQueuePropertiesOutput struct{ *pulumi.OutputState }
+
+func (SqsQueuePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqsQueueProperties)(nil)).Elem()
+}
+
+func (o SqsQueuePropertiesOutput) ToSqsQueuePropertiesOutput() SqsQueuePropertiesOutput {
+	return o
+}
+
+func (o SqsQueuePropertiesOutput) ToSqsQueuePropertiesOutputWithContext(ctx context.Context) SqsQueuePropertiesOutput {
+	return o
+}
+
+func (o SqsQueuePropertiesOutput) ToSqsQueuePropertiesPtrOutput() SqsQueuePropertiesPtrOutput {
+	return o.ToSqsQueuePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o SqsQueuePropertiesOutput) ToSqsQueuePropertiesPtrOutputWithContext(ctx context.Context) SqsQueuePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqsQueueProperties) *SqsQueueProperties {
+		return &v
+	}).(SqsQueuePropertiesPtrOutput)
+}
+
+// Amazon Resource Name (ARN)
+func (o SqsQueuePropertiesOutput) Arn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqsQueueProperties) *string { return v.Arn }).(pulumi.StringPtrOutput)
+}
+
+// AWS Account ID
+func (o SqsQueuePropertiesOutput) AwsAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqsQueueProperties) *string { return v.AwsAccountId }).(pulumi.StringPtrOutput)
+}
+
+// AWS Properties
+func (o SqsQueuePropertiesOutput) AwsProperties() AwsSqsQueuePropertiesPtrOutput {
+	return o.ApplyT(func(v SqsQueueProperties) *AwsSqsQueueProperties { return v.AwsProperties }).(AwsSqsQueuePropertiesPtrOutput)
+}
+
+// AWS Region
+func (o SqsQueuePropertiesOutput) AwsRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqsQueueProperties) *string { return v.AwsRegion }).(pulumi.StringPtrOutput)
+}
+
+// AWS Source Schema
+func (o SqsQueuePropertiesOutput) AwsSourceSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqsQueueProperties) *string { return v.AwsSourceSchema }).(pulumi.StringPtrOutput)
+}
+
+// AWS Tags
+func (o SqsQueuePropertiesOutput) AwsTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SqsQueueProperties) map[string]string { return v.AwsTags }).(pulumi.StringMapOutput)
+}
+
+// Public Cloud Connectors Resource ID
+func (o SqsQueuePropertiesOutput) PublicCloudConnectorsResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqsQueueProperties) *string { return v.PublicCloudConnectorsResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Public Cloud Resource Name
+func (o SqsQueuePropertiesOutput) PublicCloudResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqsQueueProperties) *string { return v.PublicCloudResourceName }).(pulumi.StringPtrOutput)
+}
+
+type SqsQueuePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (SqsQueuePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqsQueueProperties)(nil)).Elem()
+}
+
+func (o SqsQueuePropertiesPtrOutput) ToSqsQueuePropertiesPtrOutput() SqsQueuePropertiesPtrOutput {
+	return o
+}
+
+func (o SqsQueuePropertiesPtrOutput) ToSqsQueuePropertiesPtrOutputWithContext(ctx context.Context) SqsQueuePropertiesPtrOutput {
+	return o
+}
+
+func (o SqsQueuePropertiesPtrOutput) Elem() SqsQueuePropertiesOutput {
+	return o.ApplyT(func(v *SqsQueueProperties) SqsQueueProperties {
+		if v != nil {
+			return *v
+		}
+		var ret SqsQueueProperties
+		return ret
+	}).(SqsQueuePropertiesOutput)
+}
+
+// Amazon Resource Name (ARN)
+func (o SqsQueuePropertiesPtrOutput) Arn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqsQueueProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Arn
+	}).(pulumi.StringPtrOutput)
+}
+
+// AWS Account ID
+func (o SqsQueuePropertiesPtrOutput) AwsAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqsQueueProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsAccountId
+	}).(pulumi.StringPtrOutput)
+}
+
+// AWS Properties
+func (o SqsQueuePropertiesPtrOutput) AwsProperties() AwsSqsQueuePropertiesPtrOutput {
+	return o.ApplyT(func(v *SqsQueueProperties) *AwsSqsQueueProperties {
+		if v == nil {
+			return nil
+		}
+		return v.AwsProperties
+	}).(AwsSqsQueuePropertiesPtrOutput)
+}
+
+// AWS Region
+func (o SqsQueuePropertiesPtrOutput) AwsRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqsQueueProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsRegion
+	}).(pulumi.StringPtrOutput)
+}
+
+// AWS Source Schema
+func (o SqsQueuePropertiesPtrOutput) AwsSourceSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqsQueueProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsSourceSchema
+	}).(pulumi.StringPtrOutput)
+}
+
+// AWS Tags
+func (o SqsQueuePropertiesPtrOutput) AwsTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SqsQueueProperties) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsTags
+	}).(pulumi.StringMapOutput)
+}
+
+// Public Cloud Connectors Resource ID
+func (o SqsQueuePropertiesPtrOutput) PublicCloudConnectorsResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqsQueueProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicCloudConnectorsResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Public Cloud Resource Name
+func (o SqsQueuePropertiesPtrOutput) PublicCloudResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqsQueueProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicCloudResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Definition of SqsQueue
+type SqsQueuePropertiesResponse struct {
+	// Amazon Resource Name (ARN)
+	Arn *string `pulumi:"arn"`
+	// AWS Account ID
+	AwsAccountId *string `pulumi:"awsAccountId"`
+	// AWS Properties
+	AwsProperties *AwsSqsQueuePropertiesResponse `pulumi:"awsProperties"`
+	// AWS Region
+	AwsRegion *string `pulumi:"awsRegion"`
+	// AWS Source Schema
+	AwsSourceSchema *string `pulumi:"awsSourceSchema"`
+	// AWS Tags
+	AwsTags map[string]string `pulumi:"awsTags"`
+	// The status of the last operation.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Public Cloud Connectors Resource ID
+	PublicCloudConnectorsResourceId *string `pulumi:"publicCloudConnectorsResourceId"`
+	// Public Cloud Resource Name
+	PublicCloudResourceName *string `pulumi:"publicCloudResourceName"`
+}
+
+// Definition of SqsQueue
+type SqsQueuePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (SqsQueuePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqsQueuePropertiesResponse)(nil)).Elem()
+}
+
+func (o SqsQueuePropertiesResponseOutput) ToSqsQueuePropertiesResponseOutput() SqsQueuePropertiesResponseOutput {
+	return o
+}
+
+func (o SqsQueuePropertiesResponseOutput) ToSqsQueuePropertiesResponseOutputWithContext(ctx context.Context) SqsQueuePropertiesResponseOutput {
+	return o
+}
+
+// Amazon Resource Name (ARN)
+func (o SqsQueuePropertiesResponseOutput) Arn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqsQueuePropertiesResponse) *string { return v.Arn }).(pulumi.StringPtrOutput)
+}
+
+// AWS Account ID
+func (o SqsQueuePropertiesResponseOutput) AwsAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqsQueuePropertiesResponse) *string { return v.AwsAccountId }).(pulumi.StringPtrOutput)
+}
+
+// AWS Properties
+func (o SqsQueuePropertiesResponseOutput) AwsProperties() AwsSqsQueuePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v SqsQueuePropertiesResponse) *AwsSqsQueuePropertiesResponse { return v.AwsProperties }).(AwsSqsQueuePropertiesResponsePtrOutput)
+}
+
+// AWS Region
+func (o SqsQueuePropertiesResponseOutput) AwsRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqsQueuePropertiesResponse) *string { return v.AwsRegion }).(pulumi.StringPtrOutput)
+}
+
+// AWS Source Schema
+func (o SqsQueuePropertiesResponseOutput) AwsSourceSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqsQueuePropertiesResponse) *string { return v.AwsSourceSchema }).(pulumi.StringPtrOutput)
+}
+
+// AWS Tags
+func (o SqsQueuePropertiesResponseOutput) AwsTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SqsQueuePropertiesResponse) map[string]string { return v.AwsTags }).(pulumi.StringMapOutput)
+}
+
+// The status of the last operation.
+func (o SqsQueuePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v SqsQueuePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Public Cloud Connectors Resource ID
+func (o SqsQueuePropertiesResponseOutput) PublicCloudConnectorsResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqsQueuePropertiesResponse) *string { return v.PublicCloudConnectorsResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Public Cloud Resource Name
+func (o SqsQueuePropertiesResponseOutput) PublicCloudResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqsQueuePropertiesResponse) *string { return v.PublicCloudResourceName }).(pulumi.StringPtrOutput)
+}
+
+// Definition of SseKmsEncryptedObjects
+type SseKmsEncryptedObjects struct {
+	// Specifies whether Amazon S3 replicates objects created with server-side encryption using an AWS KMS key stored in AWS Key Management Service.
+	Status *string `pulumi:"status"`
+}
+
+// SseKmsEncryptedObjectsInput is an input type that accepts SseKmsEncryptedObjectsArgs and SseKmsEncryptedObjectsOutput values.
+// You can construct a concrete instance of `SseKmsEncryptedObjectsInput` via:
+//
+//	SseKmsEncryptedObjectsArgs{...}
+type SseKmsEncryptedObjectsInput interface {
+	pulumi.Input
+
+	ToSseKmsEncryptedObjectsOutput() SseKmsEncryptedObjectsOutput
+	ToSseKmsEncryptedObjectsOutputWithContext(context.Context) SseKmsEncryptedObjectsOutput
+}
+
+// Definition of SseKmsEncryptedObjects
+type SseKmsEncryptedObjectsArgs struct {
+	// Specifies whether Amazon S3 replicates objects created with server-side encryption using an AWS KMS key stored in AWS Key Management Service.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (SseKmsEncryptedObjectsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SseKmsEncryptedObjects)(nil)).Elem()
+}
+
+func (i SseKmsEncryptedObjectsArgs) ToSseKmsEncryptedObjectsOutput() SseKmsEncryptedObjectsOutput {
+	return i.ToSseKmsEncryptedObjectsOutputWithContext(context.Background())
+}
+
+func (i SseKmsEncryptedObjectsArgs) ToSseKmsEncryptedObjectsOutputWithContext(ctx context.Context) SseKmsEncryptedObjectsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SseKmsEncryptedObjectsOutput)
+}
+
+func (i SseKmsEncryptedObjectsArgs) ToSseKmsEncryptedObjectsPtrOutput() SseKmsEncryptedObjectsPtrOutput {
+	return i.ToSseKmsEncryptedObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i SseKmsEncryptedObjectsArgs) ToSseKmsEncryptedObjectsPtrOutputWithContext(ctx context.Context) SseKmsEncryptedObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SseKmsEncryptedObjectsOutput).ToSseKmsEncryptedObjectsPtrOutputWithContext(ctx)
+}
+
+// SseKmsEncryptedObjectsPtrInput is an input type that accepts SseKmsEncryptedObjectsArgs, SseKmsEncryptedObjectsPtr and SseKmsEncryptedObjectsPtrOutput values.
+// You can construct a concrete instance of `SseKmsEncryptedObjectsPtrInput` via:
+//
+//	        SseKmsEncryptedObjectsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SseKmsEncryptedObjectsPtrInput interface {
+	pulumi.Input
+
+	ToSseKmsEncryptedObjectsPtrOutput() SseKmsEncryptedObjectsPtrOutput
+	ToSseKmsEncryptedObjectsPtrOutputWithContext(context.Context) SseKmsEncryptedObjectsPtrOutput
+}
+
+type sseKmsEncryptedObjectsPtrType SseKmsEncryptedObjectsArgs
+
+func SseKmsEncryptedObjectsPtr(v *SseKmsEncryptedObjectsArgs) SseKmsEncryptedObjectsPtrInput {
+	return (*sseKmsEncryptedObjectsPtrType)(v)
+}
+
+func (*sseKmsEncryptedObjectsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SseKmsEncryptedObjects)(nil)).Elem()
+}
+
+func (i *sseKmsEncryptedObjectsPtrType) ToSseKmsEncryptedObjectsPtrOutput() SseKmsEncryptedObjectsPtrOutput {
+	return i.ToSseKmsEncryptedObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i *sseKmsEncryptedObjectsPtrType) ToSseKmsEncryptedObjectsPtrOutputWithContext(ctx context.Context) SseKmsEncryptedObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SseKmsEncryptedObjectsPtrOutput)
+}
+
+// Definition of SseKmsEncryptedObjects
+type SseKmsEncryptedObjectsOutput struct{ *pulumi.OutputState }
+
+func (SseKmsEncryptedObjectsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SseKmsEncryptedObjects)(nil)).Elem()
+}
+
+func (o SseKmsEncryptedObjectsOutput) ToSseKmsEncryptedObjectsOutput() SseKmsEncryptedObjectsOutput {
+	return o
+}
+
+func (o SseKmsEncryptedObjectsOutput) ToSseKmsEncryptedObjectsOutputWithContext(ctx context.Context) SseKmsEncryptedObjectsOutput {
+	return o
+}
+
+func (o SseKmsEncryptedObjectsOutput) ToSseKmsEncryptedObjectsPtrOutput() SseKmsEncryptedObjectsPtrOutput {
+	return o.ToSseKmsEncryptedObjectsPtrOutputWithContext(context.Background())
+}
+
+func (o SseKmsEncryptedObjectsOutput) ToSseKmsEncryptedObjectsPtrOutputWithContext(ctx context.Context) SseKmsEncryptedObjectsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SseKmsEncryptedObjects) *SseKmsEncryptedObjects {
+		return &v
+	}).(SseKmsEncryptedObjectsPtrOutput)
+}
+
+// Specifies whether Amazon S3 replicates objects created with server-side encryption using an AWS KMS key stored in AWS Key Management Service.
+func (o SseKmsEncryptedObjectsOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SseKmsEncryptedObjects) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type SseKmsEncryptedObjectsPtrOutput struct{ *pulumi.OutputState }
+
+func (SseKmsEncryptedObjectsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SseKmsEncryptedObjects)(nil)).Elem()
+}
+
+func (o SseKmsEncryptedObjectsPtrOutput) ToSseKmsEncryptedObjectsPtrOutput() SseKmsEncryptedObjectsPtrOutput {
+	return o
+}
+
+func (o SseKmsEncryptedObjectsPtrOutput) ToSseKmsEncryptedObjectsPtrOutputWithContext(ctx context.Context) SseKmsEncryptedObjectsPtrOutput {
+	return o
+}
+
+func (o SseKmsEncryptedObjectsPtrOutput) Elem() SseKmsEncryptedObjectsOutput {
+	return o.ApplyT(func(v *SseKmsEncryptedObjects) SseKmsEncryptedObjects {
+		if v != nil {
+			return *v
+		}
+		var ret SseKmsEncryptedObjects
+		return ret
+	}).(SseKmsEncryptedObjectsOutput)
+}
+
+// Specifies whether Amazon S3 replicates objects created with server-side encryption using an AWS KMS key stored in AWS Key Management Service.
+func (o SseKmsEncryptedObjectsPtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SseKmsEncryptedObjects) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+// Definition of SseKmsEncryptedObjects
+type SseKmsEncryptedObjectsResponse struct {
+	// Specifies whether Amazon S3 replicates objects created with server-side encryption using an AWS KMS key stored in AWS Key Management Service.
+	Status *string `pulumi:"status"`
+}
+
+// Definition of SseKmsEncryptedObjects
+type SseKmsEncryptedObjectsResponseOutput struct{ *pulumi.OutputState }
+
+func (SseKmsEncryptedObjectsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SseKmsEncryptedObjectsResponse)(nil)).Elem()
+}
+
+func (o SseKmsEncryptedObjectsResponseOutput) ToSseKmsEncryptedObjectsResponseOutput() SseKmsEncryptedObjectsResponseOutput {
+	return o
+}
+
+func (o SseKmsEncryptedObjectsResponseOutput) ToSseKmsEncryptedObjectsResponseOutputWithContext(ctx context.Context) SseKmsEncryptedObjectsResponseOutput {
+	return o
+}
+
+// Specifies whether Amazon S3 replicates objects created with server-side encryption using an AWS KMS key stored in AWS Key Management Service.
+func (o SseKmsEncryptedObjectsResponseOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SseKmsEncryptedObjectsResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type SseKmsEncryptedObjectsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SseKmsEncryptedObjectsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SseKmsEncryptedObjectsResponse)(nil)).Elem()
+}
+
+func (o SseKmsEncryptedObjectsResponsePtrOutput) ToSseKmsEncryptedObjectsResponsePtrOutput() SseKmsEncryptedObjectsResponsePtrOutput {
+	return o
+}
+
+func (o SseKmsEncryptedObjectsResponsePtrOutput) ToSseKmsEncryptedObjectsResponsePtrOutputWithContext(ctx context.Context) SseKmsEncryptedObjectsResponsePtrOutput {
+	return o
+}
+
+func (o SseKmsEncryptedObjectsResponsePtrOutput) Elem() SseKmsEncryptedObjectsResponseOutput {
+	return o.ApplyT(func(v *SseKmsEncryptedObjectsResponse) SseKmsEncryptedObjectsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SseKmsEncryptedObjectsResponse
+		return ret
+	}).(SseKmsEncryptedObjectsResponseOutput)
+}
+
+// Specifies whether Amazon S3 replicates objects created with server-side encryption using an AWS KMS key stored in AWS Key Management Service.
+func (o SseKmsEncryptedObjectsResponsePtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SseKmsEncryptedObjectsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+// Definition of SsmInstanceInformation
+type SsmInstanceInformationProperties struct {
+	// Amazon Resource Name (ARN)
+	Arn *string `pulumi:"arn"`
+	// AWS Account ID
+	AwsAccountId *string `pulumi:"awsAccountId"`
+	// AWS Properties
+	AwsProperties *AwsSsmInstanceInformationProperties `pulumi:"awsProperties"`
+	// AWS Region
+	AwsRegion *string `pulumi:"awsRegion"`
+	// AWS Source Schema
+	AwsSourceSchema *string `pulumi:"awsSourceSchema"`
+	// AWS Tags
+	AwsTags map[string]string `pulumi:"awsTags"`
+	// Public Cloud Connectors Resource ID
+	PublicCloudConnectorsResourceId *string `pulumi:"publicCloudConnectorsResourceId"`
+	// Public Cloud Resource Name
+	PublicCloudResourceName *string `pulumi:"publicCloudResourceName"`
+}
+
+// SsmInstanceInformationPropertiesInput is an input type that accepts SsmInstanceInformationPropertiesArgs and SsmInstanceInformationPropertiesOutput values.
+// You can construct a concrete instance of `SsmInstanceInformationPropertiesInput` via:
+//
+//	SsmInstanceInformationPropertiesArgs{...}
+type SsmInstanceInformationPropertiesInput interface {
+	pulumi.Input
+
+	ToSsmInstanceInformationPropertiesOutput() SsmInstanceInformationPropertiesOutput
+	ToSsmInstanceInformationPropertiesOutputWithContext(context.Context) SsmInstanceInformationPropertiesOutput
+}
+
+// Definition of SsmInstanceInformation
+type SsmInstanceInformationPropertiesArgs struct {
+	// Amazon Resource Name (ARN)
+	Arn pulumi.StringPtrInput `pulumi:"arn"`
+	// AWS Account ID
+	AwsAccountId pulumi.StringPtrInput `pulumi:"awsAccountId"`
+	// AWS Properties
+	AwsProperties AwsSsmInstanceInformationPropertiesPtrInput `pulumi:"awsProperties"`
+	// AWS Region
+	AwsRegion pulumi.StringPtrInput `pulumi:"awsRegion"`
+	// AWS Source Schema
+	AwsSourceSchema pulumi.StringPtrInput `pulumi:"awsSourceSchema"`
+	// AWS Tags
+	AwsTags pulumi.StringMapInput `pulumi:"awsTags"`
+	// Public Cloud Connectors Resource ID
+	PublicCloudConnectorsResourceId pulumi.StringPtrInput `pulumi:"publicCloudConnectorsResourceId"`
+	// Public Cloud Resource Name
+	PublicCloudResourceName pulumi.StringPtrInput `pulumi:"publicCloudResourceName"`
+}
+
+func (SsmInstanceInformationPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SsmInstanceInformationProperties)(nil)).Elem()
+}
+
+func (i SsmInstanceInformationPropertiesArgs) ToSsmInstanceInformationPropertiesOutput() SsmInstanceInformationPropertiesOutput {
+	return i.ToSsmInstanceInformationPropertiesOutputWithContext(context.Background())
+}
+
+func (i SsmInstanceInformationPropertiesArgs) ToSsmInstanceInformationPropertiesOutputWithContext(ctx context.Context) SsmInstanceInformationPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SsmInstanceInformationPropertiesOutput)
+}
+
+func (i SsmInstanceInformationPropertiesArgs) ToSsmInstanceInformationPropertiesPtrOutput() SsmInstanceInformationPropertiesPtrOutput {
+	return i.ToSsmInstanceInformationPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i SsmInstanceInformationPropertiesArgs) ToSsmInstanceInformationPropertiesPtrOutputWithContext(ctx context.Context) SsmInstanceInformationPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SsmInstanceInformationPropertiesOutput).ToSsmInstanceInformationPropertiesPtrOutputWithContext(ctx)
+}
+
+// SsmInstanceInformationPropertiesPtrInput is an input type that accepts SsmInstanceInformationPropertiesArgs, SsmInstanceInformationPropertiesPtr and SsmInstanceInformationPropertiesPtrOutput values.
+// You can construct a concrete instance of `SsmInstanceInformationPropertiesPtrInput` via:
+//
+//	        SsmInstanceInformationPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type SsmInstanceInformationPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToSsmInstanceInformationPropertiesPtrOutput() SsmInstanceInformationPropertiesPtrOutput
+	ToSsmInstanceInformationPropertiesPtrOutputWithContext(context.Context) SsmInstanceInformationPropertiesPtrOutput
+}
+
+type ssmInstanceInformationPropertiesPtrType SsmInstanceInformationPropertiesArgs
+
+func SsmInstanceInformationPropertiesPtr(v *SsmInstanceInformationPropertiesArgs) SsmInstanceInformationPropertiesPtrInput {
+	return (*ssmInstanceInformationPropertiesPtrType)(v)
+}
+
+func (*ssmInstanceInformationPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SsmInstanceInformationProperties)(nil)).Elem()
+}
+
+func (i *ssmInstanceInformationPropertiesPtrType) ToSsmInstanceInformationPropertiesPtrOutput() SsmInstanceInformationPropertiesPtrOutput {
+	return i.ToSsmInstanceInformationPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *ssmInstanceInformationPropertiesPtrType) ToSsmInstanceInformationPropertiesPtrOutputWithContext(ctx context.Context) SsmInstanceInformationPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SsmInstanceInformationPropertiesPtrOutput)
+}
+
+// Definition of SsmInstanceInformation
+type SsmInstanceInformationPropertiesOutput struct{ *pulumi.OutputState }
+
+func (SsmInstanceInformationPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SsmInstanceInformationProperties)(nil)).Elem()
+}
+
+func (o SsmInstanceInformationPropertiesOutput) ToSsmInstanceInformationPropertiesOutput() SsmInstanceInformationPropertiesOutput {
+	return o
+}
+
+func (o SsmInstanceInformationPropertiesOutput) ToSsmInstanceInformationPropertiesOutputWithContext(ctx context.Context) SsmInstanceInformationPropertiesOutput {
+	return o
+}
+
+func (o SsmInstanceInformationPropertiesOutput) ToSsmInstanceInformationPropertiesPtrOutput() SsmInstanceInformationPropertiesPtrOutput {
+	return o.ToSsmInstanceInformationPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o SsmInstanceInformationPropertiesOutput) ToSsmInstanceInformationPropertiesPtrOutputWithContext(ctx context.Context) SsmInstanceInformationPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SsmInstanceInformationProperties) *SsmInstanceInformationProperties {
+		return &v
+	}).(SsmInstanceInformationPropertiesPtrOutput)
+}
+
+// Amazon Resource Name (ARN)
+func (o SsmInstanceInformationPropertiesOutput) Arn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmInstanceInformationProperties) *string { return v.Arn }).(pulumi.StringPtrOutput)
+}
+
+// AWS Account ID
+func (o SsmInstanceInformationPropertiesOutput) AwsAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmInstanceInformationProperties) *string { return v.AwsAccountId }).(pulumi.StringPtrOutput)
+}
+
+// AWS Properties
+func (o SsmInstanceInformationPropertiesOutput) AwsProperties() AwsSsmInstanceInformationPropertiesPtrOutput {
+	return o.ApplyT(func(v SsmInstanceInformationProperties) *AwsSsmInstanceInformationProperties { return v.AwsProperties }).(AwsSsmInstanceInformationPropertiesPtrOutput)
+}
+
+// AWS Region
+func (o SsmInstanceInformationPropertiesOutput) AwsRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmInstanceInformationProperties) *string { return v.AwsRegion }).(pulumi.StringPtrOutput)
+}
+
+// AWS Source Schema
+func (o SsmInstanceInformationPropertiesOutput) AwsSourceSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmInstanceInformationProperties) *string { return v.AwsSourceSchema }).(pulumi.StringPtrOutput)
+}
+
+// AWS Tags
+func (o SsmInstanceInformationPropertiesOutput) AwsTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SsmInstanceInformationProperties) map[string]string { return v.AwsTags }).(pulumi.StringMapOutput)
+}
+
+// Public Cloud Connectors Resource ID
+func (o SsmInstanceInformationPropertiesOutput) PublicCloudConnectorsResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmInstanceInformationProperties) *string { return v.PublicCloudConnectorsResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Public Cloud Resource Name
+func (o SsmInstanceInformationPropertiesOutput) PublicCloudResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmInstanceInformationProperties) *string { return v.PublicCloudResourceName }).(pulumi.StringPtrOutput)
+}
+
+type SsmInstanceInformationPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (SsmInstanceInformationPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SsmInstanceInformationProperties)(nil)).Elem()
+}
+
+func (o SsmInstanceInformationPropertiesPtrOutput) ToSsmInstanceInformationPropertiesPtrOutput() SsmInstanceInformationPropertiesPtrOutput {
+	return o
+}
+
+func (o SsmInstanceInformationPropertiesPtrOutput) ToSsmInstanceInformationPropertiesPtrOutputWithContext(ctx context.Context) SsmInstanceInformationPropertiesPtrOutput {
+	return o
+}
+
+func (o SsmInstanceInformationPropertiesPtrOutput) Elem() SsmInstanceInformationPropertiesOutput {
+	return o.ApplyT(func(v *SsmInstanceInformationProperties) SsmInstanceInformationProperties {
+		if v != nil {
+			return *v
+		}
+		var ret SsmInstanceInformationProperties
+		return ret
+	}).(SsmInstanceInformationPropertiesOutput)
+}
+
+// Amazon Resource Name (ARN)
+func (o SsmInstanceInformationPropertiesPtrOutput) Arn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SsmInstanceInformationProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Arn
+	}).(pulumi.StringPtrOutput)
+}
+
+// AWS Account ID
+func (o SsmInstanceInformationPropertiesPtrOutput) AwsAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SsmInstanceInformationProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsAccountId
+	}).(pulumi.StringPtrOutput)
+}
+
+// AWS Properties
+func (o SsmInstanceInformationPropertiesPtrOutput) AwsProperties() AwsSsmInstanceInformationPropertiesPtrOutput {
+	return o.ApplyT(func(v *SsmInstanceInformationProperties) *AwsSsmInstanceInformationProperties {
+		if v == nil {
+			return nil
+		}
+		return v.AwsProperties
+	}).(AwsSsmInstanceInformationPropertiesPtrOutput)
+}
+
+// AWS Region
+func (o SsmInstanceInformationPropertiesPtrOutput) AwsRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SsmInstanceInformationProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsRegion
+	}).(pulumi.StringPtrOutput)
+}
+
+// AWS Source Schema
+func (o SsmInstanceInformationPropertiesPtrOutput) AwsSourceSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SsmInstanceInformationProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsSourceSchema
+	}).(pulumi.StringPtrOutput)
+}
+
+// AWS Tags
+func (o SsmInstanceInformationPropertiesPtrOutput) AwsTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SsmInstanceInformationProperties) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsTags
+	}).(pulumi.StringMapOutput)
+}
+
+// Public Cloud Connectors Resource ID
+func (o SsmInstanceInformationPropertiesPtrOutput) PublicCloudConnectorsResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SsmInstanceInformationProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicCloudConnectorsResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Public Cloud Resource Name
+func (o SsmInstanceInformationPropertiesPtrOutput) PublicCloudResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SsmInstanceInformationProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicCloudResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Definition of SsmInstanceInformation
+type SsmInstanceInformationPropertiesResponse struct {
+	// Amazon Resource Name (ARN)
+	Arn *string `pulumi:"arn"`
+	// AWS Account ID
+	AwsAccountId *string `pulumi:"awsAccountId"`
+	// AWS Properties
+	AwsProperties *AwsSsmInstanceInformationPropertiesResponse `pulumi:"awsProperties"`
+	// AWS Region
+	AwsRegion *string `pulumi:"awsRegion"`
+	// AWS Source Schema
+	AwsSourceSchema *string `pulumi:"awsSourceSchema"`
+	// AWS Tags
+	AwsTags map[string]string `pulumi:"awsTags"`
+	// The status of the last operation.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Public Cloud Connectors Resource ID
+	PublicCloudConnectorsResourceId *string `pulumi:"publicCloudConnectorsResourceId"`
+	// Public Cloud Resource Name
+	PublicCloudResourceName *string `pulumi:"publicCloudResourceName"`
+}
+
+// Definition of SsmInstanceInformation
+type SsmInstanceInformationPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (SsmInstanceInformationPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SsmInstanceInformationPropertiesResponse)(nil)).Elem()
+}
+
+func (o SsmInstanceInformationPropertiesResponseOutput) ToSsmInstanceInformationPropertiesResponseOutput() SsmInstanceInformationPropertiesResponseOutput {
+	return o
+}
+
+func (o SsmInstanceInformationPropertiesResponseOutput) ToSsmInstanceInformationPropertiesResponseOutputWithContext(ctx context.Context) SsmInstanceInformationPropertiesResponseOutput {
+	return o
+}
+
+// Amazon Resource Name (ARN)
+func (o SsmInstanceInformationPropertiesResponseOutput) Arn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmInstanceInformationPropertiesResponse) *string { return v.Arn }).(pulumi.StringPtrOutput)
+}
+
+// AWS Account ID
+func (o SsmInstanceInformationPropertiesResponseOutput) AwsAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmInstanceInformationPropertiesResponse) *string { return v.AwsAccountId }).(pulumi.StringPtrOutput)
+}
+
+// AWS Properties
+func (o SsmInstanceInformationPropertiesResponseOutput) AwsProperties() AwsSsmInstanceInformationPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v SsmInstanceInformationPropertiesResponse) *AwsSsmInstanceInformationPropertiesResponse {
+		return v.AwsProperties
+	}).(AwsSsmInstanceInformationPropertiesResponsePtrOutput)
+}
+
+// AWS Region
+func (o SsmInstanceInformationPropertiesResponseOutput) AwsRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmInstanceInformationPropertiesResponse) *string { return v.AwsRegion }).(pulumi.StringPtrOutput)
+}
+
+// AWS Source Schema
+func (o SsmInstanceInformationPropertiesResponseOutput) AwsSourceSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmInstanceInformationPropertiesResponse) *string { return v.AwsSourceSchema }).(pulumi.StringPtrOutput)
+}
+
+// AWS Tags
+func (o SsmInstanceInformationPropertiesResponseOutput) AwsTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SsmInstanceInformationPropertiesResponse) map[string]string { return v.AwsTags }).(pulumi.StringMapOutput)
+}
+
+// The status of the last operation.
+func (o SsmInstanceInformationPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v SsmInstanceInformationPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Public Cloud Connectors Resource ID
+func (o SsmInstanceInformationPropertiesResponseOutput) PublicCloudConnectorsResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmInstanceInformationPropertiesResponse) *string { return v.PublicCloudConnectorsResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Public Cloud Resource Name
+func (o SsmInstanceInformationPropertiesResponseOutput) PublicCloudResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmInstanceInformationPropertiesResponse) *string { return v.PublicCloudResourceName }).(pulumi.StringPtrOutput)
+}
+
+// Definition of SsmParameter
+type SsmParameterProperties struct {
+	// Amazon Resource Name (ARN)
+	Arn *string `pulumi:"arn"`
+	// AWS Account ID
+	AwsAccountId *string `pulumi:"awsAccountId"`
+	// AWS Properties
+	AwsProperties *AwsSsmParameterProperties `pulumi:"awsProperties"`
+	// AWS Region
+	AwsRegion *string `pulumi:"awsRegion"`
+	// AWS Source Schema
+	AwsSourceSchema *string `pulumi:"awsSourceSchema"`
+	// AWS Tags
+	AwsTags map[string]string `pulumi:"awsTags"`
+	// Public Cloud Connectors Resource ID
+	PublicCloudConnectorsResourceId *string `pulumi:"publicCloudConnectorsResourceId"`
+	// Public Cloud Resource Name
+	PublicCloudResourceName *string `pulumi:"publicCloudResourceName"`
+}
+
+// SsmParameterPropertiesInput is an input type that accepts SsmParameterPropertiesArgs and SsmParameterPropertiesOutput values.
+// You can construct a concrete instance of `SsmParameterPropertiesInput` via:
+//
+//	SsmParameterPropertiesArgs{...}
+type SsmParameterPropertiesInput interface {
+	pulumi.Input
+
+	ToSsmParameterPropertiesOutput() SsmParameterPropertiesOutput
+	ToSsmParameterPropertiesOutputWithContext(context.Context) SsmParameterPropertiesOutput
+}
+
+// Definition of SsmParameter
+type SsmParameterPropertiesArgs struct {
+	// Amazon Resource Name (ARN)
+	Arn pulumi.StringPtrInput `pulumi:"arn"`
+	// AWS Account ID
+	AwsAccountId pulumi.StringPtrInput `pulumi:"awsAccountId"`
+	// AWS Properties
+	AwsProperties AwsSsmParameterPropertiesPtrInput `pulumi:"awsProperties"`
+	// AWS Region
+	AwsRegion pulumi.StringPtrInput `pulumi:"awsRegion"`
+	// AWS Source Schema
+	AwsSourceSchema pulumi.StringPtrInput `pulumi:"awsSourceSchema"`
+	// AWS Tags
+	AwsTags pulumi.StringMapInput `pulumi:"awsTags"`
+	// Public Cloud Connectors Resource ID
+	PublicCloudConnectorsResourceId pulumi.StringPtrInput `pulumi:"publicCloudConnectorsResourceId"`
+	// Public Cloud Resource Name
+	PublicCloudResourceName pulumi.StringPtrInput `pulumi:"publicCloudResourceName"`
+}
+
+func (SsmParameterPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SsmParameterProperties)(nil)).Elem()
+}
+
+func (i SsmParameterPropertiesArgs) ToSsmParameterPropertiesOutput() SsmParameterPropertiesOutput {
+	return i.ToSsmParameterPropertiesOutputWithContext(context.Background())
+}
+
+func (i SsmParameterPropertiesArgs) ToSsmParameterPropertiesOutputWithContext(ctx context.Context) SsmParameterPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SsmParameterPropertiesOutput)
+}
+
+func (i SsmParameterPropertiesArgs) ToSsmParameterPropertiesPtrOutput() SsmParameterPropertiesPtrOutput {
+	return i.ToSsmParameterPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i SsmParameterPropertiesArgs) ToSsmParameterPropertiesPtrOutputWithContext(ctx context.Context) SsmParameterPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SsmParameterPropertiesOutput).ToSsmParameterPropertiesPtrOutputWithContext(ctx)
+}
+
+// SsmParameterPropertiesPtrInput is an input type that accepts SsmParameterPropertiesArgs, SsmParameterPropertiesPtr and SsmParameterPropertiesPtrOutput values.
+// You can construct a concrete instance of `SsmParameterPropertiesPtrInput` via:
+//
+//	        SsmParameterPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type SsmParameterPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToSsmParameterPropertiesPtrOutput() SsmParameterPropertiesPtrOutput
+	ToSsmParameterPropertiesPtrOutputWithContext(context.Context) SsmParameterPropertiesPtrOutput
+}
+
+type ssmParameterPropertiesPtrType SsmParameterPropertiesArgs
+
+func SsmParameterPropertiesPtr(v *SsmParameterPropertiesArgs) SsmParameterPropertiesPtrInput {
+	return (*ssmParameterPropertiesPtrType)(v)
+}
+
+func (*ssmParameterPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SsmParameterProperties)(nil)).Elem()
+}
+
+func (i *ssmParameterPropertiesPtrType) ToSsmParameterPropertiesPtrOutput() SsmParameterPropertiesPtrOutput {
+	return i.ToSsmParameterPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *ssmParameterPropertiesPtrType) ToSsmParameterPropertiesPtrOutputWithContext(ctx context.Context) SsmParameterPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SsmParameterPropertiesPtrOutput)
+}
+
+// Definition of SsmParameter
+type SsmParameterPropertiesOutput struct{ *pulumi.OutputState }
+
+func (SsmParameterPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SsmParameterProperties)(nil)).Elem()
+}
+
+func (o SsmParameterPropertiesOutput) ToSsmParameterPropertiesOutput() SsmParameterPropertiesOutput {
+	return o
+}
+
+func (o SsmParameterPropertiesOutput) ToSsmParameterPropertiesOutputWithContext(ctx context.Context) SsmParameterPropertiesOutput {
+	return o
+}
+
+func (o SsmParameterPropertiesOutput) ToSsmParameterPropertiesPtrOutput() SsmParameterPropertiesPtrOutput {
+	return o.ToSsmParameterPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o SsmParameterPropertiesOutput) ToSsmParameterPropertiesPtrOutputWithContext(ctx context.Context) SsmParameterPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SsmParameterProperties) *SsmParameterProperties {
+		return &v
+	}).(SsmParameterPropertiesPtrOutput)
+}
+
+// Amazon Resource Name (ARN)
+func (o SsmParameterPropertiesOutput) Arn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmParameterProperties) *string { return v.Arn }).(pulumi.StringPtrOutput)
+}
+
+// AWS Account ID
+func (o SsmParameterPropertiesOutput) AwsAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmParameterProperties) *string { return v.AwsAccountId }).(pulumi.StringPtrOutput)
+}
+
+// AWS Properties
+func (o SsmParameterPropertiesOutput) AwsProperties() AwsSsmParameterPropertiesPtrOutput {
+	return o.ApplyT(func(v SsmParameterProperties) *AwsSsmParameterProperties { return v.AwsProperties }).(AwsSsmParameterPropertiesPtrOutput)
+}
+
+// AWS Region
+func (o SsmParameterPropertiesOutput) AwsRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmParameterProperties) *string { return v.AwsRegion }).(pulumi.StringPtrOutput)
+}
+
+// AWS Source Schema
+func (o SsmParameterPropertiesOutput) AwsSourceSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmParameterProperties) *string { return v.AwsSourceSchema }).(pulumi.StringPtrOutput)
+}
+
+// AWS Tags
+func (o SsmParameterPropertiesOutput) AwsTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SsmParameterProperties) map[string]string { return v.AwsTags }).(pulumi.StringMapOutput)
+}
+
+// Public Cloud Connectors Resource ID
+func (o SsmParameterPropertiesOutput) PublicCloudConnectorsResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmParameterProperties) *string { return v.PublicCloudConnectorsResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Public Cloud Resource Name
+func (o SsmParameterPropertiesOutput) PublicCloudResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmParameterProperties) *string { return v.PublicCloudResourceName }).(pulumi.StringPtrOutput)
+}
+
+type SsmParameterPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (SsmParameterPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SsmParameterProperties)(nil)).Elem()
+}
+
+func (o SsmParameterPropertiesPtrOutput) ToSsmParameterPropertiesPtrOutput() SsmParameterPropertiesPtrOutput {
+	return o
+}
+
+func (o SsmParameterPropertiesPtrOutput) ToSsmParameterPropertiesPtrOutputWithContext(ctx context.Context) SsmParameterPropertiesPtrOutput {
+	return o
+}
+
+func (o SsmParameterPropertiesPtrOutput) Elem() SsmParameterPropertiesOutput {
+	return o.ApplyT(func(v *SsmParameterProperties) SsmParameterProperties {
+		if v != nil {
+			return *v
+		}
+		var ret SsmParameterProperties
+		return ret
+	}).(SsmParameterPropertiesOutput)
+}
+
+// Amazon Resource Name (ARN)
+func (o SsmParameterPropertiesPtrOutput) Arn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SsmParameterProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Arn
+	}).(pulumi.StringPtrOutput)
+}
+
+// AWS Account ID
+func (o SsmParameterPropertiesPtrOutput) AwsAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SsmParameterProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsAccountId
+	}).(pulumi.StringPtrOutput)
+}
+
+// AWS Properties
+func (o SsmParameterPropertiesPtrOutput) AwsProperties() AwsSsmParameterPropertiesPtrOutput {
+	return o.ApplyT(func(v *SsmParameterProperties) *AwsSsmParameterProperties {
+		if v == nil {
+			return nil
+		}
+		return v.AwsProperties
+	}).(AwsSsmParameterPropertiesPtrOutput)
+}
+
+// AWS Region
+func (o SsmParameterPropertiesPtrOutput) AwsRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SsmParameterProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsRegion
+	}).(pulumi.StringPtrOutput)
+}
+
+// AWS Source Schema
+func (o SsmParameterPropertiesPtrOutput) AwsSourceSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SsmParameterProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsSourceSchema
+	}).(pulumi.StringPtrOutput)
+}
+
+// AWS Tags
+func (o SsmParameterPropertiesPtrOutput) AwsTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SsmParameterProperties) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsTags
+	}).(pulumi.StringMapOutput)
+}
+
+// Public Cloud Connectors Resource ID
+func (o SsmParameterPropertiesPtrOutput) PublicCloudConnectorsResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SsmParameterProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicCloudConnectorsResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Public Cloud Resource Name
+func (o SsmParameterPropertiesPtrOutput) PublicCloudResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SsmParameterProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicCloudResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
 // Definition of SsmParameter
 type SsmParameterPropertiesResponse struct {
 	// Amazon Resource Name (ARN)
@@ -2584,7 +4939,7 @@ func (o StatelessRulesAndCustomActionsPtrOutput) StatelessRules() StatelessRuleA
 // Definition of StatelessRulesAndCustomActions
 type StatelessRulesAndCustomActionsResponse struct {
 	// Property customActions
-	CustomActions []CustomActionResponse `pulumi:"customActions"`
+	CustomActions []CustomActionResponseV1 `pulumi:"customActions"`
 	// Property statelessRules
 	StatelessRules []StatelessRuleResponse `pulumi:"statelessRules"`
 }
@@ -2605,8 +4960,8 @@ func (o StatelessRulesAndCustomActionsResponseOutput) ToStatelessRulesAndCustomA
 }
 
 // Property customActions
-func (o StatelessRulesAndCustomActionsResponseOutput) CustomActions() CustomActionResponseArrayOutput {
-	return o.ApplyT(func(v StatelessRulesAndCustomActionsResponse) []CustomActionResponse { return v.CustomActions }).(CustomActionResponseArrayOutput)
+func (o StatelessRulesAndCustomActionsResponseOutput) CustomActions() CustomActionResponseV1ArrayOutput {
+	return o.ApplyT(func(v StatelessRulesAndCustomActionsResponse) []CustomActionResponseV1 { return v.CustomActions }).(CustomActionResponseV1ArrayOutput)
 }
 
 // Property statelessRules
@@ -2639,13 +4994,13 @@ func (o StatelessRulesAndCustomActionsResponsePtrOutput) Elem() StatelessRulesAn
 }
 
 // Property customActions
-func (o StatelessRulesAndCustomActionsResponsePtrOutput) CustomActions() CustomActionResponseArrayOutput {
-	return o.ApplyT(func(v *StatelessRulesAndCustomActionsResponse) []CustomActionResponse {
+func (o StatelessRulesAndCustomActionsResponsePtrOutput) CustomActions() CustomActionResponseV1ArrayOutput {
+	return o.ApplyT(func(v *StatelessRulesAndCustomActionsResponse) []CustomActionResponseV1 {
 		if v == nil {
 			return nil
 		}
 		return v.CustomActions
-	}).(CustomActionResponseArrayOutput)
+	}).(CustomActionResponseV1ArrayOutput)
 }
 
 // Property statelessRules
@@ -4190,11 +6545,9 @@ type SubnetMappingResponse struct {
 	AllocationId *string `pulumi:"allocationId"`
 	// [Network Load Balancers] The IPv6 address.
 	IPv6Address *string `pulumi:"iPv6Address"`
-	// A IPAddressType
-	IpAddressType *string `pulumi:"ipAddressType"`
 	// [Network Load Balancers] The private IPv4 address for an internal load balancer.
 	PrivateIPv4Address *string `pulumi:"privateIPv4Address"`
-	// A SubnetId.
+	// The ID of the subnet.
 	SubnetId *string `pulumi:"subnetId"`
 }
 
@@ -4223,17 +6576,12 @@ func (o SubnetMappingResponseOutput) IPv6Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubnetMappingResponse) *string { return v.IPv6Address }).(pulumi.StringPtrOutput)
 }
 
-// A IPAddressType
-func (o SubnetMappingResponseOutput) IpAddressType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SubnetMappingResponse) *string { return v.IpAddressType }).(pulumi.StringPtrOutput)
-}
-
 // [Network Load Balancers] The private IPv4 address for an internal load balancer.
 func (o SubnetMappingResponseOutput) PrivateIPv4Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubnetMappingResponse) *string { return v.PrivateIPv4Address }).(pulumi.StringPtrOutput)
 }
 
-// A SubnetId.
+// The ID of the subnet.
 func (o SubnetMappingResponseOutput) SubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubnetMappingResponse) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
 }
@@ -4256,6 +6604,59 @@ func (o SubnetMappingResponseArrayOutput) Index(i pulumi.IntInput) SubnetMapping
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SubnetMappingResponse {
 		return vs[0].([]SubnetMappingResponse)[vs[1].(int)]
 	}).(SubnetMappingResponseOutput)
+}
+
+// Definition of SubnetMapping
+type SubnetMappingResponseV1 struct {
+	// A IPAddressType
+	IpAddressType *string `pulumi:"ipAddressType"`
+	// A SubnetId.
+	SubnetId *string `pulumi:"subnetId"`
+}
+
+// Definition of SubnetMapping
+type SubnetMappingResponseV1Output struct{ *pulumi.OutputState }
+
+func (SubnetMappingResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetMappingResponseV1)(nil)).Elem()
+}
+
+func (o SubnetMappingResponseV1Output) ToSubnetMappingResponseV1Output() SubnetMappingResponseV1Output {
+	return o
+}
+
+func (o SubnetMappingResponseV1Output) ToSubnetMappingResponseV1OutputWithContext(ctx context.Context) SubnetMappingResponseV1Output {
+	return o
+}
+
+// A IPAddressType
+func (o SubnetMappingResponseV1Output) IpAddressType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubnetMappingResponseV1) *string { return v.IpAddressType }).(pulumi.StringPtrOutput)
+}
+
+// A SubnetId.
+func (o SubnetMappingResponseV1Output) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubnetMappingResponseV1) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
+}
+
+type SubnetMappingResponseV1ArrayOutput struct{ *pulumi.OutputState }
+
+func (SubnetMappingResponseV1ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SubnetMappingResponseV1)(nil)).Elem()
+}
+
+func (o SubnetMappingResponseV1ArrayOutput) ToSubnetMappingResponseV1ArrayOutput() SubnetMappingResponseV1ArrayOutput {
+	return o
+}
+
+func (o SubnetMappingResponseV1ArrayOutput) ToSubnetMappingResponseV1ArrayOutputWithContext(ctx context.Context) SubnetMappingResponseV1ArrayOutput {
+	return o
+}
+
+func (o SubnetMappingResponseV1ArrayOutput) Index(i pulumi.IntInput) SubnetMappingResponseV1Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SubnetMappingResponseV1 {
+		return vs[0].([]SubnetMappingResponseV1)[vs[1].(int)]
+	}).(SubnetMappingResponseV1Output)
 }
 
 // Definition of Subnet
@@ -14531,7 +16932,7 @@ func (o VpcConfigPtrOutput) VpcId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Definition of VpcConfig
+// Definition of VpcConfigResponse
 type VpcConfigResponse struct {
 	// <p>The cluster security group that was created by Amazon EKS for the cluster. Managed node groups use this security group for control-plane-to-data-plane communication.</p>
 	ClusterSecurityGroupId *string `pulumi:"clusterSecurityGroupId"`
@@ -14539,13 +16940,11 @@ type VpcConfigResponse struct {
 	EndpointPrivateAccess *bool `pulumi:"endpointPrivateAccess"`
 	// <p>Whether the public API server endpoint is enabled.</p>
 	EndpointPublicAccess *bool `pulumi:"endpointPublicAccess"`
-	// Allows outbound IPv6 traffic on VPC functions that are connected to dual-stack subnets.
-	Ipv6AllowedForDualStack *bool `pulumi:"ipv6AllowedForDualStack"`
 	// <p>The CIDR blocks that are allowed access to your cluster's public Kubernetes API server endpoint.</p>
 	PublicAccessCidrs []string `pulumi:"publicAccessCidrs"`
-	// A list of VPC security group IDs.
+	// <p>The security groups associated with the cross-account elastic network interfaces that are used to allow communication between your nodes and the Kubernetes control plane.</p>
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	// A list of VPC subnet IDs.
+	// <p>The subnets associated with your cluster.</p>
 	SubnetIds []string `pulumi:"subnetIds"`
 	// <p>A list of one or more subnet IDs in your Amazon VPC.</p>
 	Subnets []string `pulumi:"subnets"`
@@ -14564,7 +16963,7 @@ type VpcConfigResponseInput interface {
 	ToVpcConfigResponseOutputWithContext(context.Context) VpcConfigResponseOutput
 }
 
-// Definition of VpcConfig
+// Definition of VpcConfigResponse
 type VpcConfigResponseArgs struct {
 	// <p>The cluster security group that was created by Amazon EKS for the cluster. Managed node groups use this security group for control-plane-to-data-plane communication.</p>
 	ClusterSecurityGroupId pulumi.StringPtrInput `pulumi:"clusterSecurityGroupId"`
@@ -14572,13 +16971,11 @@ type VpcConfigResponseArgs struct {
 	EndpointPrivateAccess pulumi.BoolPtrInput `pulumi:"endpointPrivateAccess"`
 	// <p>Whether the public API server endpoint is enabled.</p>
 	EndpointPublicAccess pulumi.BoolPtrInput `pulumi:"endpointPublicAccess"`
-	// Allows outbound IPv6 traffic on VPC functions that are connected to dual-stack subnets.
-	Ipv6AllowedForDualStack pulumi.BoolPtrInput `pulumi:"ipv6AllowedForDualStack"`
 	// <p>The CIDR blocks that are allowed access to your cluster's public Kubernetes API server endpoint.</p>
 	PublicAccessCidrs pulumi.StringArrayInput `pulumi:"publicAccessCidrs"`
-	// A list of VPC security group IDs.
+	// <p>The security groups associated with the cross-account elastic network interfaces that are used to allow communication between your nodes and the Kubernetes control plane.</p>
 	SecurityGroupIds pulumi.StringArrayInput `pulumi:"securityGroupIds"`
-	// A list of VPC subnet IDs.
+	// <p>The subnets associated with your cluster.</p>
 	SubnetIds pulumi.StringArrayInput `pulumi:"subnetIds"`
 	// <p>A list of one or more subnet IDs in your Amazon VPC.</p>
 	Subnets pulumi.StringArrayInput `pulumi:"subnets"`
@@ -14639,7 +17036,7 @@ func (i *vpcConfigResponsePtrType) ToVpcConfigResponsePtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(VpcConfigResponsePtrOutput)
 }
 
-// Definition of VpcConfig
+// Definition of VpcConfigResponse
 type VpcConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (VpcConfigResponseOutput) ElementType() reflect.Type {
@@ -14679,22 +17076,17 @@ func (o VpcConfigResponseOutput) EndpointPublicAccess() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VpcConfigResponse) *bool { return v.EndpointPublicAccess }).(pulumi.BoolPtrOutput)
 }
 
-// Allows outbound IPv6 traffic on VPC functions that are connected to dual-stack subnets.
-func (o VpcConfigResponseOutput) Ipv6AllowedForDualStack() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v VpcConfigResponse) *bool { return v.Ipv6AllowedForDualStack }).(pulumi.BoolPtrOutput)
-}
-
 // <p>The CIDR blocks that are allowed access to your cluster's public Kubernetes API server endpoint.</p>
 func (o VpcConfigResponseOutput) PublicAccessCidrs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v VpcConfigResponse) []string { return v.PublicAccessCidrs }).(pulumi.StringArrayOutput)
 }
 
-// A list of VPC security group IDs.
+// <p>The security groups associated with the cross-account elastic network interfaces that are used to allow communication between your nodes and the Kubernetes control plane.</p>
 func (o VpcConfigResponseOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v VpcConfigResponse) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
 }
 
-// A list of VPC subnet IDs.
+// <p>The subnets associated with your cluster.</p>
 func (o VpcConfigResponseOutput) SubnetIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v VpcConfigResponse) []string { return v.SubnetIds }).(pulumi.StringArrayOutput)
 }
@@ -14763,16 +17155,6 @@ func (o VpcConfigResponsePtrOutput) EndpointPublicAccess() pulumi.BoolPtrOutput 
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Allows outbound IPv6 traffic on VPC functions that are connected to dual-stack subnets.
-func (o VpcConfigResponsePtrOutput) Ipv6AllowedForDualStack() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *VpcConfigResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Ipv6AllowedForDualStack
-	}).(pulumi.BoolPtrOutput)
-}
-
 // <p>The CIDR blocks that are allowed access to your cluster's public Kubernetes API server endpoint.</p>
 func (o VpcConfigResponsePtrOutput) PublicAccessCidrs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VpcConfigResponse) []string {
@@ -14783,7 +17165,7 @@ func (o VpcConfigResponsePtrOutput) PublicAccessCidrs() pulumi.StringArrayOutput
 	}).(pulumi.StringArrayOutput)
 }
 
-// A list of VPC security group IDs.
+// <p>The security groups associated with the cross-account elastic network interfaces that are used to allow communication between your nodes and the Kubernetes control plane.</p>
 func (o VpcConfigResponsePtrOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VpcConfigResponse) []string {
 		if v == nil {
@@ -14793,7 +17175,7 @@ func (o VpcConfigResponsePtrOutput) SecurityGroupIds() pulumi.StringArrayOutput 
 	}).(pulumi.StringArrayOutput)
 }
 
-// A list of VPC subnet IDs.
+// <p>The subnets associated with your cluster.</p>
 func (o VpcConfigResponsePtrOutput) SubnetIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VpcConfigResponse) []string {
 		if v == nil {
@@ -14983,6 +17365,100 @@ func (o VpcConfigResponseResponsePtrOutput) VpcId() pulumi.StringPtrOutput {
 		}
 		return v.VpcId
 	}).(pulumi.StringPtrOutput)
+}
+
+// Definition of VpcConfig
+type VpcConfigResponseV1 struct {
+	// Allows outbound IPv6 traffic on VPC functions that are connected to dual-stack subnets.
+	Ipv6AllowedForDualStack *bool `pulumi:"ipv6AllowedForDualStack"`
+	// A list of VPC security group IDs.
+	SecurityGroupIds []string `pulumi:"securityGroupIds"`
+	// A list of VPC subnet IDs.
+	SubnetIds []string `pulumi:"subnetIds"`
+}
+
+// Definition of VpcConfig
+type VpcConfigResponseV1Output struct{ *pulumi.OutputState }
+
+func (VpcConfigResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcConfigResponseV1)(nil)).Elem()
+}
+
+func (o VpcConfigResponseV1Output) ToVpcConfigResponseV1Output() VpcConfigResponseV1Output {
+	return o
+}
+
+func (o VpcConfigResponseV1Output) ToVpcConfigResponseV1OutputWithContext(ctx context.Context) VpcConfigResponseV1Output {
+	return o
+}
+
+// Allows outbound IPv6 traffic on VPC functions that are connected to dual-stack subnets.
+func (o VpcConfigResponseV1Output) Ipv6AllowedForDualStack() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VpcConfigResponseV1) *bool { return v.Ipv6AllowedForDualStack }).(pulumi.BoolPtrOutput)
+}
+
+// A list of VPC security group IDs.
+func (o VpcConfigResponseV1Output) SecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VpcConfigResponseV1) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// A list of VPC subnet IDs.
+func (o VpcConfigResponseV1Output) SubnetIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VpcConfigResponseV1) []string { return v.SubnetIds }).(pulumi.StringArrayOutput)
+}
+
+type VpcConfigResponseV1PtrOutput struct{ *pulumi.OutputState }
+
+func (VpcConfigResponseV1PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpcConfigResponseV1)(nil)).Elem()
+}
+
+func (o VpcConfigResponseV1PtrOutput) ToVpcConfigResponseV1PtrOutput() VpcConfigResponseV1PtrOutput {
+	return o
+}
+
+func (o VpcConfigResponseV1PtrOutput) ToVpcConfigResponseV1PtrOutputWithContext(ctx context.Context) VpcConfigResponseV1PtrOutput {
+	return o
+}
+
+func (o VpcConfigResponseV1PtrOutput) Elem() VpcConfigResponseV1Output {
+	return o.ApplyT(func(v *VpcConfigResponseV1) VpcConfigResponseV1 {
+		if v != nil {
+			return *v
+		}
+		var ret VpcConfigResponseV1
+		return ret
+	}).(VpcConfigResponseV1Output)
+}
+
+// Allows outbound IPv6 traffic on VPC functions that are connected to dual-stack subnets.
+func (o VpcConfigResponseV1PtrOutput) Ipv6AllowedForDualStack() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VpcConfigResponseV1) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv6AllowedForDualStack
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A list of VPC security group IDs.
+func (o VpcConfigResponseV1PtrOutput) SecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VpcConfigResponseV1) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityGroupIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of VPC subnet IDs.
+func (o VpcConfigResponseV1PtrOutput) SubnetIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VpcConfigResponseV1) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SubnetIds
+	}).(pulumi.StringArrayOutput)
 }
 
 // Definition of VpcConfiguration
@@ -17896,6 +20372,40 @@ func (o ZoneAwarenessConfigResponsePtrOutput) AvailabilityZoneCount() pulumi.Int
 }
 
 func init() {
+	pulumi.RegisterOutputType(SoftwareUpdateOptionsResponseOutput{})
+	pulumi.RegisterOutputType(SoftwareUpdateOptionsResponsePtrOutput{})
+	pulumi.RegisterOutputType(SourceAuthOutput{})
+	pulumi.RegisterOutputType(SourceAuthPtrOutput{})
+	pulumi.RegisterOutputType(SourceAuthResponseOutput{})
+	pulumi.RegisterOutputType(SourceAuthResponsePtrOutput{})
+	pulumi.RegisterOutputType(SourceAuthTypeEnumValueOutput{})
+	pulumi.RegisterOutputType(SourceAuthTypeEnumValuePtrOutput{})
+	pulumi.RegisterOutputType(SourceAuthTypeEnumValueResponseOutput{})
+	pulumi.RegisterOutputType(SourceAuthTypeEnumValueResponsePtrOutput{})
+	pulumi.RegisterOutputType(SourceConfigurationOutput{})
+	pulumi.RegisterOutputType(SourceConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(SourceConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(SourceConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(SourceSelectionCriteriaOutput{})
+	pulumi.RegisterOutputType(SourceSelectionCriteriaPtrOutput{})
+	pulumi.RegisterOutputType(SourceSelectionCriteriaResponseOutput{})
+	pulumi.RegisterOutputType(SourceSelectionCriteriaResponsePtrOutput{})
+	pulumi.RegisterOutputType(SourceTypeEnumValueOutput{})
+	pulumi.RegisterOutputType(SourceTypeEnumValuePtrOutput{})
+	pulumi.RegisterOutputType(SourceTypeEnumValueResponseOutput{})
+	pulumi.RegisterOutputType(SourceTypeEnumValueResponsePtrOutput{})
+	pulumi.RegisterOutputType(SqsQueuePropertiesOutput{})
+	pulumi.RegisterOutputType(SqsQueuePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(SqsQueuePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(SseKmsEncryptedObjectsOutput{})
+	pulumi.RegisterOutputType(SseKmsEncryptedObjectsPtrOutput{})
+	pulumi.RegisterOutputType(SseKmsEncryptedObjectsResponseOutput{})
+	pulumi.RegisterOutputType(SseKmsEncryptedObjectsResponsePtrOutput{})
+	pulumi.RegisterOutputType(SsmInstanceInformationPropertiesOutput{})
+	pulumi.RegisterOutputType(SsmInstanceInformationPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(SsmInstanceInformationPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(SsmParameterPropertiesOutput{})
+	pulumi.RegisterOutputType(SsmParameterPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(SsmParameterPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(SsmResourceComplianceSummaryItemPropertiesOutput{})
 	pulumi.RegisterOutputType(SsmResourceComplianceSummaryItemPropertiesPtrOutput{})
@@ -17974,6 +20484,8 @@ func init() {
 	pulumi.RegisterOutputType(SubnetMappingArrayOutput{})
 	pulumi.RegisterOutputType(SubnetMappingResponseOutput{})
 	pulumi.RegisterOutputType(SubnetMappingResponseArrayOutput{})
+	pulumi.RegisterOutputType(SubnetMappingResponseV1Output{})
+	pulumi.RegisterOutputType(SubnetMappingResponseV1ArrayOutput{})
 	pulumi.RegisterOutputType(SubnetResponseOutput{})
 	pulumi.RegisterOutputType(SubnetResponseArrayOutput{})
 	pulumi.RegisterOutputType(SubscriptionOutput{})
@@ -18175,6 +20687,8 @@ func init() {
 	pulumi.RegisterOutputType(VpcConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(VpcConfigResponseResponseOutput{})
 	pulumi.RegisterOutputType(VpcConfigResponseResponsePtrOutput{})
+	pulumi.RegisterOutputType(VpcConfigResponseV1Output{})
+	pulumi.RegisterOutputType(VpcConfigResponseV1PtrOutput{})
 	pulumi.RegisterOutputType(VpcConfigurationOutput{})
 	pulumi.RegisterOutputType(VpcConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(VpcConfigurationResponseOutput{})
