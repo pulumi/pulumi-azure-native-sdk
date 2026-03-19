@@ -42,7 +42,7 @@ type ListApplianceKeysResult struct {
 	// The list of appliance kubeconfigs.
 	Kubeconfigs []ApplianceCredentialKubeconfigResponse `pulumi:"kubeconfigs"`
 	// Map of Customer User Public, Private SSH Keys and Certificate when available.
-	SshKeys map[string]SSHKeyResponse `pulumi:"sshKeys"`
+	SshKeys map[string]SSHKeyResponseV1 `pulumi:"sshKeys"`
 }
 
 func ListApplianceKeysOutput(ctx *pulumi.Context, args ListApplianceKeysOutputArgs, opts ...pulumi.InvokeOption) ListApplianceKeysResultOutput {
@@ -93,8 +93,8 @@ func (o ListApplianceKeysResultOutput) Kubeconfigs() ApplianceCredentialKubeconf
 }
 
 // Map of Customer User Public, Private SSH Keys and Certificate when available.
-func (o ListApplianceKeysResultOutput) SshKeys() SSHKeyResponseMapOutput {
-	return o.ApplyT(func(v ListApplianceKeysResult) map[string]SSHKeyResponse { return v.SshKeys }).(SSHKeyResponseMapOutput)
+func (o ListApplianceKeysResultOutput) SshKeys() SSHKeyResponseV1MapOutput {
+	return o.ApplyT(func(v ListApplianceKeysResult) map[string]SSHKeyResponseV1 { return v.SshKeys }).(SSHKeyResponseV1MapOutput)
 }
 
 func init() {

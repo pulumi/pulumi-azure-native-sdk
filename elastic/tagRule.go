@@ -25,7 +25,7 @@ type TagRule struct {
 	// Name of the rule set.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Properties of the monitoring tag rules.
-	Properties MonitoringTagRulesPropertiesResponseOutput `pulumi:"properties"`
+	Properties MonitoringTagRulesPropertiesResponseV1Output `pulumi:"properties"`
 	// The system metadata relating to this resource
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the rule set.
@@ -214,8 +214,8 @@ func (o TagRuleOutput) Name() pulumi.StringOutput {
 }
 
 // Properties of the monitoring tag rules.
-func (o TagRuleOutput) Properties() MonitoringTagRulesPropertiesResponseOutput {
-	return o.ApplyT(func(v *TagRule) MonitoringTagRulesPropertiesResponseOutput { return v.Properties }).(MonitoringTagRulesPropertiesResponseOutput)
+func (o TagRuleOutput) Properties() MonitoringTagRulesPropertiesResponseV1Output {
+	return o.ApplyT(func(v *TagRule) MonitoringTagRulesPropertiesResponseV1Output { return v.Properties }).(MonitoringTagRulesPropertiesResponseV1Output)
 }
 
 // The system metadata relating to this resource

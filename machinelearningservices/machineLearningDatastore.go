@@ -21,7 +21,7 @@ type MachineLearningDatastore struct {
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The identity of the resource.
-	Identity IdentityResponsePtrOutput `pulumi:"identity"`
+	Identity IdentityResponseV2PtrOutput `pulumi:"identity"`
 	// Specifies the location of the resource.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Specifies the name of the resource.
@@ -29,7 +29,7 @@ type MachineLearningDatastore struct {
 	// Datastore properties
 	Properties DatastoreResponseOutput `pulumi:"properties"`
 	// The sku of the workspace.
-	Sku SkuResponsePtrOutput `pulumi:"sku"`
+	Sku SkuResponseV2PtrOutput `pulumi:"sku"`
 	// Contains resource tags defined as key/value pairs.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Specifies the type of the resource.
@@ -405,8 +405,8 @@ func (o MachineLearningDatastoreOutput) AzureApiVersion() pulumi.StringOutput {
 }
 
 // The identity of the resource.
-func (o MachineLearningDatastoreOutput) Identity() IdentityResponsePtrOutput {
-	return o.ApplyT(func(v *MachineLearningDatastore) IdentityResponsePtrOutput { return v.Identity }).(IdentityResponsePtrOutput)
+func (o MachineLearningDatastoreOutput) Identity() IdentityResponseV2PtrOutput {
+	return o.ApplyT(func(v *MachineLearningDatastore) IdentityResponseV2PtrOutput { return v.Identity }).(IdentityResponseV2PtrOutput)
 }
 
 // Specifies the location of the resource.
@@ -425,8 +425,8 @@ func (o MachineLearningDatastoreOutput) Properties() DatastoreResponseOutput {
 }
 
 // The sku of the workspace.
-func (o MachineLearningDatastoreOutput) Sku() SkuResponsePtrOutput {
-	return o.ApplyT(func(v *MachineLearningDatastore) SkuResponsePtrOutput { return v.Sku }).(SkuResponsePtrOutput)
+func (o MachineLearningDatastoreOutput) Sku() SkuResponseV2PtrOutput {
+	return o.ApplyT(func(v *MachineLearningDatastore) SkuResponseV2PtrOutput { return v.Sku }).(SkuResponseV2PtrOutput)
 }
 
 // Contains resource tags defined as key/value pairs.

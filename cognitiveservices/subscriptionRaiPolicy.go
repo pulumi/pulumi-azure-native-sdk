@@ -24,7 +24,7 @@ type SubscriptionRaiPolicy struct {
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Properties of Cognitive Services RaiPolicy.
-	Properties RaiPolicyPropertiesResponseOutput `pulumi:"properties"`
+	Properties RaiPolicyPropertiesResponseV1Output `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
@@ -150,8 +150,8 @@ func (o SubscriptionRaiPolicyOutput) Name() pulumi.StringOutput {
 }
 
 // Properties of Cognitive Services RaiPolicy.
-func (o SubscriptionRaiPolicyOutput) Properties() RaiPolicyPropertiesResponseOutput {
-	return o.ApplyT(func(v *SubscriptionRaiPolicy) RaiPolicyPropertiesResponseOutput { return v.Properties }).(RaiPolicyPropertiesResponseOutput)
+func (o SubscriptionRaiPolicyOutput) Properties() RaiPolicyPropertiesResponseV1Output {
+	return o.ApplyT(func(v *SubscriptionRaiPolicy) RaiPolicyPropertiesResponseV1Output { return v.Properties }).(RaiPolicyPropertiesResponseV1Output)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

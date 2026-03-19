@@ -29,7 +29,7 @@ type PrivateLinkScope struct {
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// List of private endpoint connections.
-	PrivateEndpointConnections PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
+	PrivateEndpointConnections PrivateEndpointConnectionResponseV1ArrayOutput `pulumi:"privateEndpointConnections"`
 	// Current state of this PrivateLinkScope: whether or not is has been provisioned within the resource group it is defined. Users cannot change this value but are able to read from it.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// System data
@@ -200,10 +200,10 @@ func (o PrivateLinkScopeOutput) Name() pulumi.StringOutput {
 }
 
 // List of private endpoint connections.
-func (o PrivateLinkScopeOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
-	return o.ApplyT(func(v *PrivateLinkScope) PrivateEndpointConnectionResponseArrayOutput {
+func (o PrivateLinkScopeOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseV1ArrayOutput {
+	return o.ApplyT(func(v *PrivateLinkScope) PrivateEndpointConnectionResponseV1ArrayOutput {
 		return v.PrivateEndpointConnections
-	}).(PrivateEndpointConnectionResponseArrayOutput)
+	}).(PrivateEndpointConnectionResponseV1ArrayOutput)
 }
 
 // Current state of this PrivateLinkScope: whether or not is has been provisioned within the resource group it is defined. Users cannot change this value but are able to read from it.

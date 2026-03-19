@@ -25,7 +25,7 @@ type SapInstance struct {
 	// The Environment; PRD, QA, DEV, etc to which SAP system belongs to. Select from the list of available dropdown values.
 	Environment pulumi.StringOutput `pulumi:"environment"`
 	// Defines the errors related to SAP Instance resource.
-	Errors SAPMigrateErrorResponseOutput `pulumi:"errors"`
+	Errors SAPMigrateErrorResponseV1Output `pulumi:"errors"`
 	// This is the SID of the production system in a landscape.  An SAP system could itself be a production SID or a part of a landscape with a different Production SID. This field can be used to relate non-prod SIDs, other components, SID (WEBDISP) to the prod SID. Enter the value of Production SID.
 	LandscapeSid pulumi.StringOutput `pulumi:"landscapeSid"`
 	// The geo-location where the resource lives
@@ -175,8 +175,8 @@ func (o SapInstanceOutput) Environment() pulumi.StringOutput {
 }
 
 // Defines the errors related to SAP Instance resource.
-func (o SapInstanceOutput) Errors() SAPMigrateErrorResponseOutput {
-	return o.ApplyT(func(v *SapInstance) SAPMigrateErrorResponseOutput { return v.Errors }).(SAPMigrateErrorResponseOutput)
+func (o SapInstanceOutput) Errors() SAPMigrateErrorResponseV1Output {
+	return o.ApplyT(func(v *SapInstance) SAPMigrateErrorResponseV1Output { return v.Errors }).(SAPMigrateErrorResponseV1Output)
 }
 
 // This is the SID of the production system in a landscape.  An SAP system could itself be a production SID or a part of a landscape with a different Production SID. This field can be used to relate non-prod SIDs, other components, SID (WEBDISP) to the prod SID. Enter the value of Production SID.
