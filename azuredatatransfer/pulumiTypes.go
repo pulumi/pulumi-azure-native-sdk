@@ -2782,6 +2782,193 @@ func (o FlowPropertiesPtrOutput) StreamProtocol() pulumi.StringPtrOutput {
 
 // Properties of flow
 type FlowPropertiesResponse struct {
+	// The connection associated with this flow
+	Connection *SelectedResourceResponse `pulumi:"connection"`
+	// The URI to the customer managed key for this flow
+	CustomerManagedKeyVaultUri *string `pulumi:"customerManagedKeyVaultUri"`
+	// Transfer Storage Blobs or Tables
+	DataType *string `pulumi:"dataType"`
+	// The destination endpoint ports of the stream
+	DestinationEndpointPorts []float64 `pulumi:"destinationEndpointPorts"`
+	// The destination endpoints of the stream
+	DestinationEndpoints []string `pulumi:"destinationEndpoints"`
+	// Dataflow GUID associated with this flow
+	FlowId string `pulumi:"flowId"`
+	// The flow type for this flow
+	FlowType *string `pulumi:"flowType"`
+	// AME, PME, or TORUS only! AKV Chain Containing SAS Token
+	KeyVaultUri *string `pulumi:"keyVaultUri"`
+	// Link status of the current flow
+	LinkStatus string `pulumi:"linkStatus"`
+	// Resource ID of the linked flow
+	LinkedFlowId string `pulumi:"linkedFlowId"`
+	// The messaging options for this flow
+	MessagingOptions *MessagingOptionsResponse `pulumi:"messagingOptions"`
+	// The passphrase used for SRT streams
+	Passphrase *string `pulumi:"passphrase"`
+	// The policies for this flow
+	Policies []string `pulumi:"policies"`
+	// Provisioning state of the flow
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The selected schema for this flow
+	Schema *SchemaResponse `pulumi:"schema"`
+	// Service Bus Queue ID
+	ServiceBusQueueId *string `pulumi:"serviceBusQueueId"`
+	// The source IP address and CIDR ranges of the stream
+	SourceAddresses *StreamSourceAddressesResponse `pulumi:"sourceAddresses"`
+	// Status of the current flow
+	Status *string `pulumi:"status"`
+	// Storage Account ID
+	StorageAccountId *string `pulumi:"storageAccountId"`
+	// Storage Account
+	StorageAccountName *string `pulumi:"storageAccountName"`
+	// Storage Container Name
+	StorageContainerName *string `pulumi:"storageContainerName"`
+	// The flow stream identifier
+	StreamId *string `pulumi:"streamId"`
+	// The latency of the stream in milliseconds
+	StreamLatency *float64 `pulumi:"streamLatency"`
+	// The protocol of the stream
+	StreamProtocol *string `pulumi:"streamProtocol"`
+}
+
+// Properties of flow
+type FlowPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (FlowPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlowPropertiesResponse)(nil)).Elem()
+}
+
+func (o FlowPropertiesResponseOutput) ToFlowPropertiesResponseOutput() FlowPropertiesResponseOutput {
+	return o
+}
+
+func (o FlowPropertiesResponseOutput) ToFlowPropertiesResponseOutputWithContext(ctx context.Context) FlowPropertiesResponseOutput {
+	return o
+}
+
+// The connection associated with this flow
+func (o FlowPropertiesResponseOutput) Connection() SelectedResourceResponsePtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponse) *SelectedResourceResponse { return v.Connection }).(SelectedResourceResponsePtrOutput)
+}
+
+// The URI to the customer managed key for this flow
+func (o FlowPropertiesResponseOutput) CustomerManagedKeyVaultUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.CustomerManagedKeyVaultUri }).(pulumi.StringPtrOutput)
+}
+
+// Transfer Storage Blobs or Tables
+func (o FlowPropertiesResponseOutput) DataType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.DataType }).(pulumi.StringPtrOutput)
+}
+
+// The destination endpoint ports of the stream
+func (o FlowPropertiesResponseOutput) DestinationEndpointPorts() pulumi.Float64ArrayOutput {
+	return o.ApplyT(func(v FlowPropertiesResponse) []float64 { return v.DestinationEndpointPorts }).(pulumi.Float64ArrayOutput)
+}
+
+// The destination endpoints of the stream
+func (o FlowPropertiesResponseOutput) DestinationEndpoints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FlowPropertiesResponse) []string { return v.DestinationEndpoints }).(pulumi.StringArrayOutput)
+}
+
+// Dataflow GUID associated with this flow
+func (o FlowPropertiesResponseOutput) FlowId() pulumi.StringOutput {
+	return o.ApplyT(func(v FlowPropertiesResponse) string { return v.FlowId }).(pulumi.StringOutput)
+}
+
+// The flow type for this flow
+func (o FlowPropertiesResponseOutput) FlowType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.FlowType }).(pulumi.StringPtrOutput)
+}
+
+// AME, PME, or TORUS only! AKV Chain Containing SAS Token
+func (o FlowPropertiesResponseOutput) KeyVaultUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.KeyVaultUri }).(pulumi.StringPtrOutput)
+}
+
+// Link status of the current flow
+func (o FlowPropertiesResponseOutput) LinkStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v FlowPropertiesResponse) string { return v.LinkStatus }).(pulumi.StringOutput)
+}
+
+// Resource ID of the linked flow
+func (o FlowPropertiesResponseOutput) LinkedFlowId() pulumi.StringOutput {
+	return o.ApplyT(func(v FlowPropertiesResponse) string { return v.LinkedFlowId }).(pulumi.StringOutput)
+}
+
+// The messaging options for this flow
+func (o FlowPropertiesResponseOutput) MessagingOptions() MessagingOptionsResponsePtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponse) *MessagingOptionsResponse { return v.MessagingOptions }).(MessagingOptionsResponsePtrOutput)
+}
+
+// The passphrase used for SRT streams
+func (o FlowPropertiesResponseOutput) Passphrase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.Passphrase }).(pulumi.StringPtrOutput)
+}
+
+// The policies for this flow
+func (o FlowPropertiesResponseOutput) Policies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FlowPropertiesResponse) []string { return v.Policies }).(pulumi.StringArrayOutput)
+}
+
+// Provisioning state of the flow
+func (o FlowPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v FlowPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The selected schema for this flow
+func (o FlowPropertiesResponseOutput) Schema() SchemaResponsePtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponse) *SchemaResponse { return v.Schema }).(SchemaResponsePtrOutput)
+}
+
+// Service Bus Queue ID
+func (o FlowPropertiesResponseOutput) ServiceBusQueueId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.ServiceBusQueueId }).(pulumi.StringPtrOutput)
+}
+
+// The source IP address and CIDR ranges of the stream
+func (o FlowPropertiesResponseOutput) SourceAddresses() StreamSourceAddressesResponsePtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponse) *StreamSourceAddressesResponse { return v.SourceAddresses }).(StreamSourceAddressesResponsePtrOutput)
+}
+
+// Status of the current flow
+func (o FlowPropertiesResponseOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// Storage Account ID
+func (o FlowPropertiesResponseOutput) StorageAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.StorageAccountId }).(pulumi.StringPtrOutput)
+}
+
+// Storage Account
+func (o FlowPropertiesResponseOutput) StorageAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.StorageAccountName }).(pulumi.StringPtrOutput)
+}
+
+// Storage Container Name
+func (o FlowPropertiesResponseOutput) StorageContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.StorageContainerName }).(pulumi.StringPtrOutput)
+}
+
+// The flow stream identifier
+func (o FlowPropertiesResponseOutput) StreamId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.StreamId }).(pulumi.StringPtrOutput)
+}
+
+// The latency of the stream in milliseconds
+func (o FlowPropertiesResponseOutput) StreamLatency() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponse) *float64 { return v.StreamLatency }).(pulumi.Float64PtrOutput)
+}
+
+// The protocol of the stream
+func (o FlowPropertiesResponseOutput) StreamProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.StreamProtocol }).(pulumi.StringPtrOutput)
+}
+
+// Properties of flow
+type FlowPropertiesResponseV1 struct {
 	// The API Flow configuration options for Azure Data Transfer API Flow type.
 	ApiFlowOptions *ApiFlowOptionsResponse `pulumi:"apiFlowOptions"`
 	// The connection associated with this flow
@@ -2843,192 +3030,192 @@ type FlowPropertiesResponse struct {
 }
 
 // Properties of flow
-type FlowPropertiesResponseOutput struct{ *pulumi.OutputState }
+type FlowPropertiesResponseV1Output struct{ *pulumi.OutputState }
 
-func (FlowPropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FlowPropertiesResponse)(nil)).Elem()
+func (FlowPropertiesResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlowPropertiesResponseV1)(nil)).Elem()
 }
 
-func (o FlowPropertiesResponseOutput) ToFlowPropertiesResponseOutput() FlowPropertiesResponseOutput {
+func (o FlowPropertiesResponseV1Output) ToFlowPropertiesResponseV1Output() FlowPropertiesResponseV1Output {
 	return o
 }
 
-func (o FlowPropertiesResponseOutput) ToFlowPropertiesResponseOutputWithContext(ctx context.Context) FlowPropertiesResponseOutput {
+func (o FlowPropertiesResponseV1Output) ToFlowPropertiesResponseV1OutputWithContext(ctx context.Context) FlowPropertiesResponseV1Output {
 	return o
 }
 
 // The API Flow configuration options for Azure Data Transfer API Flow type.
-func (o FlowPropertiesResponseOutput) ApiFlowOptions() ApiFlowOptionsResponsePtrOutput {
-	return o.ApplyT(func(v FlowPropertiesResponse) *ApiFlowOptionsResponse { return v.ApiFlowOptions }).(ApiFlowOptionsResponsePtrOutput)
+func (o FlowPropertiesResponseV1Output) ApiFlowOptions() ApiFlowOptionsResponsePtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponseV1) *ApiFlowOptionsResponse { return v.ApiFlowOptions }).(ApiFlowOptionsResponsePtrOutput)
 }
 
 // The connection associated with this flow
-func (o FlowPropertiesResponseOutput) Connection() SelectedResourceResponsePtrOutput {
-	return o.ApplyT(func(v FlowPropertiesResponse) *SelectedResourceResponse { return v.Connection }).(SelectedResourceResponsePtrOutput)
+func (o FlowPropertiesResponseV1Output) Connection() SelectedResourceResponsePtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponseV1) *SelectedResourceResponse { return v.Connection }).(SelectedResourceResponsePtrOutput)
 }
 
 // Event Hub Consumer Group
-func (o FlowPropertiesResponseOutput) ConsumerGroup() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.ConsumerGroup }).(pulumi.StringPtrOutput)
+func (o FlowPropertiesResponseV1Output) ConsumerGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponseV1) *string { return v.ConsumerGroup }).(pulumi.StringPtrOutput)
 }
 
 // The URI to the customer managed key for this flow
-func (o FlowPropertiesResponseOutput) CustomerManagedKeyVaultUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.CustomerManagedKeyVaultUri }).(pulumi.StringPtrOutput)
+func (o FlowPropertiesResponseV1Output) CustomerManagedKeyVaultUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponseV1) *string { return v.CustomerManagedKeyVaultUri }).(pulumi.StringPtrOutput)
 }
 
 // Type of data to transfer via the flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.
-func (o FlowPropertiesResponseOutput) DataType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.DataType }).(pulumi.StringPtrOutput)
+func (o FlowPropertiesResponseV1Output) DataType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponseV1) *string { return v.DataType }).(pulumi.StringPtrOutput)
 }
 
 // The destination endpoint ports of the stream
-func (o FlowPropertiesResponseOutput) DestinationEndpointPorts() pulumi.Float64ArrayOutput {
-	return o.ApplyT(func(v FlowPropertiesResponse) []float64 { return v.DestinationEndpointPorts }).(pulumi.Float64ArrayOutput)
+func (o FlowPropertiesResponseV1Output) DestinationEndpointPorts() pulumi.Float64ArrayOutput {
+	return o.ApplyT(func(v FlowPropertiesResponseV1) []float64 { return v.DestinationEndpointPorts }).(pulumi.Float64ArrayOutput)
 }
 
 // The destination endpoints of the stream
-func (o FlowPropertiesResponseOutput) DestinationEndpoints() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FlowPropertiesResponse) []string { return v.DestinationEndpoints }).(pulumi.StringArrayOutput)
+func (o FlowPropertiesResponseV1Output) DestinationEndpoints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FlowPropertiesResponseV1) []string { return v.DestinationEndpoints }).(pulumi.StringArrayOutput)
 }
 
 // Event Hub ID
-func (o FlowPropertiesResponseOutput) EventHubId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.EventHubId }).(pulumi.StringPtrOutput)
+func (o FlowPropertiesResponseV1Output) EventHubId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponseV1) *string { return v.EventHubId }).(pulumi.StringPtrOutput)
 }
 
 // Dataflow GUID associated with this flow
-func (o FlowPropertiesResponseOutput) FlowId() pulumi.StringOutput {
-	return o.ApplyT(func(v FlowPropertiesResponse) string { return v.FlowId }).(pulumi.StringOutput)
+func (o FlowPropertiesResponseV1Output) FlowId() pulumi.StringOutput {
+	return o.ApplyT(func(v FlowPropertiesResponseV1) string { return v.FlowId }).(pulumi.StringOutput)
 }
 
 // The flow type for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.
-func (o FlowPropertiesResponseOutput) FlowType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.FlowType }).(pulumi.StringPtrOutput)
+func (o FlowPropertiesResponseV1Output) FlowType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponseV1) *string { return v.FlowType }).(pulumi.StringPtrOutput)
 }
 
 // Force disablement status of the current flow
-func (o FlowPropertiesResponseOutput) ForceDisabledStatus() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FlowPropertiesResponse) []string { return v.ForceDisabledStatus }).(pulumi.StringArrayOutput)
+func (o FlowPropertiesResponseV1Output) ForceDisabledStatus() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FlowPropertiesResponseV1) []string { return v.ForceDisabledStatus }).(pulumi.StringArrayOutput)
 }
 
 // URI to a Key Vault Secret containing a SAS token.
-func (o FlowPropertiesResponseOutput) KeyVaultUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.KeyVaultUri }).(pulumi.StringPtrOutput)
+func (o FlowPropertiesResponseV1Output) KeyVaultUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponseV1) *string { return v.KeyVaultUri }).(pulumi.StringPtrOutput)
 }
 
 // Link status of the current flow
-func (o FlowPropertiesResponseOutput) LinkStatus() pulumi.StringOutput {
-	return o.ApplyT(func(v FlowPropertiesResponse) string { return v.LinkStatus }).(pulumi.StringOutput)
+func (o FlowPropertiesResponseV1Output) LinkStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v FlowPropertiesResponseV1) string { return v.LinkStatus }).(pulumi.StringOutput)
 }
 
 // Resource ID of the linked flow
-func (o FlowPropertiesResponseOutput) LinkedFlowId() pulumi.StringOutput {
-	return o.ApplyT(func(v FlowPropertiesResponse) string { return v.LinkedFlowId }).(pulumi.StringOutput)
+func (o FlowPropertiesResponseV1Output) LinkedFlowId() pulumi.StringOutput {
+	return o.ApplyT(func(v FlowPropertiesResponseV1) string { return v.LinkedFlowId }).(pulumi.StringOutput)
 }
 
 // The messaging options for this flow
-func (o FlowPropertiesResponseOutput) MessagingOptions() MessagingOptionsResponsePtrOutput {
-	return o.ApplyT(func(v FlowPropertiesResponse) *MessagingOptionsResponse { return v.MessagingOptions }).(MessagingOptionsResponsePtrOutput)
+func (o FlowPropertiesResponseV1Output) MessagingOptions() MessagingOptionsResponsePtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponseV1) *MessagingOptionsResponse { return v.MessagingOptions }).(MessagingOptionsResponsePtrOutput)
 }
 
 // The passphrase used for SRT streams
-func (o FlowPropertiesResponseOutput) Passphrase() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.Passphrase }).(pulumi.StringPtrOutput)
+func (o FlowPropertiesResponseV1Output) Passphrase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponseV1) *string { return v.Passphrase }).(pulumi.StringPtrOutput)
 }
 
 // The policies for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.
-func (o FlowPropertiesResponseOutput) Policies() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FlowPropertiesResponse) []string { return v.Policies }).(pulumi.StringArrayOutput)
+func (o FlowPropertiesResponseV1Output) Policies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FlowPropertiesResponseV1) []string { return v.Policies }).(pulumi.StringArrayOutput)
 }
 
 // Provisioning state of the flow
-func (o FlowPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v FlowPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+func (o FlowPropertiesResponseV1Output) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v FlowPropertiesResponseV1) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // The selected schema for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.
-func (o FlowPropertiesResponseOutput) Schema() SchemaResponsePtrOutput {
-	return o.ApplyT(func(v FlowPropertiesResponse) *SchemaResponse { return v.Schema }).(SchemaResponsePtrOutput)
+func (o FlowPropertiesResponseV1Output) Schema() SchemaResponsePtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponseV1) *SchemaResponse { return v.Schema }).(SchemaResponsePtrOutput)
 }
 
 // Service Bus Queue ID
-func (o FlowPropertiesResponseOutput) ServiceBusQueueId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.ServiceBusQueueId }).(pulumi.StringPtrOutput)
+func (o FlowPropertiesResponseV1Output) ServiceBusQueueId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponseV1) *string { return v.ServiceBusQueueId }).(pulumi.StringPtrOutput)
 }
 
 // The source IP address and CIDR ranges of the stream
-func (o FlowPropertiesResponseOutput) SourceAddresses() StreamSourceAddressesResponsePtrOutput {
-	return o.ApplyT(func(v FlowPropertiesResponse) *StreamSourceAddressesResponse { return v.SourceAddresses }).(StreamSourceAddressesResponsePtrOutput)
+func (o FlowPropertiesResponseV1Output) SourceAddresses() StreamSourceAddressesResponsePtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponseV1) *StreamSourceAddressesResponse { return v.SourceAddresses }).(StreamSourceAddressesResponsePtrOutput)
 }
 
 // Status of the current flow
-func (o FlowPropertiesResponseOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
+func (o FlowPropertiesResponseV1Output) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponseV1) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
 // Storage Account ID
-func (o FlowPropertiesResponseOutput) StorageAccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.StorageAccountId }).(pulumi.StringPtrOutput)
+func (o FlowPropertiesResponseV1Output) StorageAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponseV1) *string { return v.StorageAccountId }).(pulumi.StringPtrOutput)
 }
 
 // Storage Account
-func (o FlowPropertiesResponseOutput) StorageAccountName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.StorageAccountName }).(pulumi.StringPtrOutput)
+func (o FlowPropertiesResponseV1Output) StorageAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponseV1) *string { return v.StorageAccountName }).(pulumi.StringPtrOutput)
 }
 
 // Storage Container Name
-func (o FlowPropertiesResponseOutput) StorageContainerName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.StorageContainerName }).(pulumi.StringPtrOutput)
+func (o FlowPropertiesResponseV1Output) StorageContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponseV1) *string { return v.StorageContainerName }).(pulumi.StringPtrOutput)
 }
 
 // Storage Table Name
-func (o FlowPropertiesResponseOutput) StorageTableName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.StorageTableName }).(pulumi.StringPtrOutput)
+func (o FlowPropertiesResponseV1Output) StorageTableName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponseV1) *string { return v.StorageTableName }).(pulumi.StringPtrOutput)
 }
 
 // The flow stream identifier
-func (o FlowPropertiesResponseOutput) StreamId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.StreamId }).(pulumi.StringPtrOutput)
+func (o FlowPropertiesResponseV1Output) StreamId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponseV1) *string { return v.StreamId }).(pulumi.StringPtrOutput)
 }
 
 // The latency of the stream in milliseconds
-func (o FlowPropertiesResponseOutput) StreamLatency() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v FlowPropertiesResponse) *float64 { return v.StreamLatency }).(pulumi.Float64PtrOutput)
+func (o FlowPropertiesResponseV1Output) StreamLatency() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponseV1) *float64 { return v.StreamLatency }).(pulumi.Float64PtrOutput)
 }
 
 // The protocol of the stream
-func (o FlowPropertiesResponseOutput) StreamProtocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.StreamProtocol }).(pulumi.StringPtrOutput)
+func (o FlowPropertiesResponseV1Output) StreamProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponseV1) *string { return v.StreamProtocol }).(pulumi.StringPtrOutput)
 }
 
-type FlowPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+type FlowPropertiesResponseV1PtrOutput struct{ *pulumi.OutputState }
 
-func (FlowPropertiesResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**FlowPropertiesResponse)(nil)).Elem()
+func (FlowPropertiesResponseV1PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlowPropertiesResponseV1)(nil)).Elem()
 }
 
-func (o FlowPropertiesResponsePtrOutput) ToFlowPropertiesResponsePtrOutput() FlowPropertiesResponsePtrOutput {
+func (o FlowPropertiesResponseV1PtrOutput) ToFlowPropertiesResponseV1PtrOutput() FlowPropertiesResponseV1PtrOutput {
 	return o
 }
 
-func (o FlowPropertiesResponsePtrOutput) ToFlowPropertiesResponsePtrOutputWithContext(ctx context.Context) FlowPropertiesResponsePtrOutput {
+func (o FlowPropertiesResponseV1PtrOutput) ToFlowPropertiesResponseV1PtrOutputWithContext(ctx context.Context) FlowPropertiesResponseV1PtrOutput {
 	return o
 }
 
-func (o FlowPropertiesResponsePtrOutput) Elem() FlowPropertiesResponseOutput {
-	return o.ApplyT(func(v *FlowPropertiesResponse) FlowPropertiesResponse {
+func (o FlowPropertiesResponseV1PtrOutput) Elem() FlowPropertiesResponseV1Output {
+	return o.ApplyT(func(v *FlowPropertiesResponseV1) FlowPropertiesResponseV1 {
 		if v != nil {
 			return *v
 		}
-		var ret FlowPropertiesResponse
+		var ret FlowPropertiesResponseV1
 		return ret
-	}).(FlowPropertiesResponseOutput)
+	}).(FlowPropertiesResponseV1Output)
 }
 
 // The API Flow configuration options for Azure Data Transfer API Flow type.
-func (o FlowPropertiesResponsePtrOutput) ApiFlowOptions() ApiFlowOptionsResponsePtrOutput {
-	return o.ApplyT(func(v *FlowPropertiesResponse) *ApiFlowOptionsResponse {
+func (o FlowPropertiesResponseV1PtrOutput) ApiFlowOptions() ApiFlowOptionsResponsePtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponseV1) *ApiFlowOptionsResponse {
 		if v == nil {
 			return nil
 		}
@@ -3037,8 +3224,8 @@ func (o FlowPropertiesResponsePtrOutput) ApiFlowOptions() ApiFlowOptionsResponse
 }
 
 // The connection associated with this flow
-func (o FlowPropertiesResponsePtrOutput) Connection() SelectedResourceResponsePtrOutput {
-	return o.ApplyT(func(v *FlowPropertiesResponse) *SelectedResourceResponse {
+func (o FlowPropertiesResponseV1PtrOutput) Connection() SelectedResourceResponsePtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponseV1) *SelectedResourceResponse {
 		if v == nil {
 			return nil
 		}
@@ -3047,8 +3234,8 @@ func (o FlowPropertiesResponsePtrOutput) Connection() SelectedResourceResponsePt
 }
 
 // Event Hub Consumer Group
-func (o FlowPropertiesResponsePtrOutput) ConsumerGroup() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+func (o FlowPropertiesResponseV1PtrOutput) ConsumerGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponseV1) *string {
 		if v == nil {
 			return nil
 		}
@@ -3057,8 +3244,8 @@ func (o FlowPropertiesResponsePtrOutput) ConsumerGroup() pulumi.StringPtrOutput 
 }
 
 // The URI to the customer managed key for this flow
-func (o FlowPropertiesResponsePtrOutput) CustomerManagedKeyVaultUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+func (o FlowPropertiesResponseV1PtrOutput) CustomerManagedKeyVaultUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponseV1) *string {
 		if v == nil {
 			return nil
 		}
@@ -3067,8 +3254,8 @@ func (o FlowPropertiesResponsePtrOutput) CustomerManagedKeyVaultUri() pulumi.Str
 }
 
 // Type of data to transfer via the flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.
-func (o FlowPropertiesResponsePtrOutput) DataType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+func (o FlowPropertiesResponseV1PtrOutput) DataType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponseV1) *string {
 		if v == nil {
 			return nil
 		}
@@ -3077,8 +3264,8 @@ func (o FlowPropertiesResponsePtrOutput) DataType() pulumi.StringPtrOutput {
 }
 
 // The destination endpoint ports of the stream
-func (o FlowPropertiesResponsePtrOutput) DestinationEndpointPorts() pulumi.Float64ArrayOutput {
-	return o.ApplyT(func(v *FlowPropertiesResponse) []float64 {
+func (o FlowPropertiesResponseV1PtrOutput) DestinationEndpointPorts() pulumi.Float64ArrayOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponseV1) []float64 {
 		if v == nil {
 			return nil
 		}
@@ -3087,8 +3274,8 @@ func (o FlowPropertiesResponsePtrOutput) DestinationEndpointPorts() pulumi.Float
 }
 
 // The destination endpoints of the stream
-func (o FlowPropertiesResponsePtrOutput) DestinationEndpoints() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FlowPropertiesResponse) []string {
+func (o FlowPropertiesResponseV1PtrOutput) DestinationEndpoints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponseV1) []string {
 		if v == nil {
 			return nil
 		}
@@ -3097,8 +3284,8 @@ func (o FlowPropertiesResponsePtrOutput) DestinationEndpoints() pulumi.StringArr
 }
 
 // Event Hub ID
-func (o FlowPropertiesResponsePtrOutput) EventHubId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+func (o FlowPropertiesResponseV1PtrOutput) EventHubId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponseV1) *string {
 		if v == nil {
 			return nil
 		}
@@ -3107,8 +3294,8 @@ func (o FlowPropertiesResponsePtrOutput) EventHubId() pulumi.StringPtrOutput {
 }
 
 // Dataflow GUID associated with this flow
-func (o FlowPropertiesResponsePtrOutput) FlowId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+func (o FlowPropertiesResponseV1PtrOutput) FlowId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponseV1) *string {
 		if v == nil {
 			return nil
 		}
@@ -3117,8 +3304,8 @@ func (o FlowPropertiesResponsePtrOutput) FlowId() pulumi.StringPtrOutput {
 }
 
 // The flow type for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.
-func (o FlowPropertiesResponsePtrOutput) FlowType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+func (o FlowPropertiesResponseV1PtrOutput) FlowType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponseV1) *string {
 		if v == nil {
 			return nil
 		}
@@ -3127,8 +3314,8 @@ func (o FlowPropertiesResponsePtrOutput) FlowType() pulumi.StringPtrOutput {
 }
 
 // Force disablement status of the current flow
-func (o FlowPropertiesResponsePtrOutput) ForceDisabledStatus() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FlowPropertiesResponse) []string {
+func (o FlowPropertiesResponseV1PtrOutput) ForceDisabledStatus() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponseV1) []string {
 		if v == nil {
 			return nil
 		}
@@ -3137,8 +3324,8 @@ func (o FlowPropertiesResponsePtrOutput) ForceDisabledStatus() pulumi.StringArra
 }
 
 // URI to a Key Vault Secret containing a SAS token.
-func (o FlowPropertiesResponsePtrOutput) KeyVaultUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+func (o FlowPropertiesResponseV1PtrOutput) KeyVaultUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponseV1) *string {
 		if v == nil {
 			return nil
 		}
@@ -3147,8 +3334,8 @@ func (o FlowPropertiesResponsePtrOutput) KeyVaultUri() pulumi.StringPtrOutput {
 }
 
 // Link status of the current flow
-func (o FlowPropertiesResponsePtrOutput) LinkStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+func (o FlowPropertiesResponseV1PtrOutput) LinkStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponseV1) *string {
 		if v == nil {
 			return nil
 		}
@@ -3157,8 +3344,8 @@ func (o FlowPropertiesResponsePtrOutput) LinkStatus() pulumi.StringPtrOutput {
 }
 
 // Resource ID of the linked flow
-func (o FlowPropertiesResponsePtrOutput) LinkedFlowId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+func (o FlowPropertiesResponseV1PtrOutput) LinkedFlowId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponseV1) *string {
 		if v == nil {
 			return nil
 		}
@@ -3167,8 +3354,8 @@ func (o FlowPropertiesResponsePtrOutput) LinkedFlowId() pulumi.StringPtrOutput {
 }
 
 // The messaging options for this flow
-func (o FlowPropertiesResponsePtrOutput) MessagingOptions() MessagingOptionsResponsePtrOutput {
-	return o.ApplyT(func(v *FlowPropertiesResponse) *MessagingOptionsResponse {
+func (o FlowPropertiesResponseV1PtrOutput) MessagingOptions() MessagingOptionsResponsePtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponseV1) *MessagingOptionsResponse {
 		if v == nil {
 			return nil
 		}
@@ -3177,8 +3364,8 @@ func (o FlowPropertiesResponsePtrOutput) MessagingOptions() MessagingOptionsResp
 }
 
 // The passphrase used for SRT streams
-func (o FlowPropertiesResponsePtrOutput) Passphrase() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+func (o FlowPropertiesResponseV1PtrOutput) Passphrase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponseV1) *string {
 		if v == nil {
 			return nil
 		}
@@ -3187,8 +3374,8 @@ func (o FlowPropertiesResponsePtrOutput) Passphrase() pulumi.StringPtrOutput {
 }
 
 // The policies for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.
-func (o FlowPropertiesResponsePtrOutput) Policies() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FlowPropertiesResponse) []string {
+func (o FlowPropertiesResponseV1PtrOutput) Policies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponseV1) []string {
 		if v == nil {
 			return nil
 		}
@@ -3197,8 +3384,8 @@ func (o FlowPropertiesResponsePtrOutput) Policies() pulumi.StringArrayOutput {
 }
 
 // Provisioning state of the flow
-func (o FlowPropertiesResponsePtrOutput) ProvisioningState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+func (o FlowPropertiesResponseV1PtrOutput) ProvisioningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponseV1) *string {
 		if v == nil {
 			return nil
 		}
@@ -3207,8 +3394,8 @@ func (o FlowPropertiesResponsePtrOutput) ProvisioningState() pulumi.StringPtrOut
 }
 
 // The selected schema for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.
-func (o FlowPropertiesResponsePtrOutput) Schema() SchemaResponsePtrOutput {
-	return o.ApplyT(func(v *FlowPropertiesResponse) *SchemaResponse {
+func (o FlowPropertiesResponseV1PtrOutput) Schema() SchemaResponsePtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponseV1) *SchemaResponse {
 		if v == nil {
 			return nil
 		}
@@ -3217,8 +3404,8 @@ func (o FlowPropertiesResponsePtrOutput) Schema() SchemaResponsePtrOutput {
 }
 
 // Service Bus Queue ID
-func (o FlowPropertiesResponsePtrOutput) ServiceBusQueueId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+func (o FlowPropertiesResponseV1PtrOutput) ServiceBusQueueId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponseV1) *string {
 		if v == nil {
 			return nil
 		}
@@ -3227,8 +3414,8 @@ func (o FlowPropertiesResponsePtrOutput) ServiceBusQueueId() pulumi.StringPtrOut
 }
 
 // The source IP address and CIDR ranges of the stream
-func (o FlowPropertiesResponsePtrOutput) SourceAddresses() StreamSourceAddressesResponsePtrOutput {
-	return o.ApplyT(func(v *FlowPropertiesResponse) *StreamSourceAddressesResponse {
+func (o FlowPropertiesResponseV1PtrOutput) SourceAddresses() StreamSourceAddressesResponsePtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponseV1) *StreamSourceAddressesResponse {
 		if v == nil {
 			return nil
 		}
@@ -3237,8 +3424,8 @@ func (o FlowPropertiesResponsePtrOutput) SourceAddresses() StreamSourceAddresses
 }
 
 // Status of the current flow
-func (o FlowPropertiesResponsePtrOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+func (o FlowPropertiesResponseV1PtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponseV1) *string {
 		if v == nil {
 			return nil
 		}
@@ -3247,8 +3434,8 @@ func (o FlowPropertiesResponsePtrOutput) Status() pulumi.StringPtrOutput {
 }
 
 // Storage Account ID
-func (o FlowPropertiesResponsePtrOutput) StorageAccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+func (o FlowPropertiesResponseV1PtrOutput) StorageAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponseV1) *string {
 		if v == nil {
 			return nil
 		}
@@ -3257,8 +3444,8 @@ func (o FlowPropertiesResponsePtrOutput) StorageAccountId() pulumi.StringPtrOutp
 }
 
 // Storage Account
-func (o FlowPropertiesResponsePtrOutput) StorageAccountName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+func (o FlowPropertiesResponseV1PtrOutput) StorageAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponseV1) *string {
 		if v == nil {
 			return nil
 		}
@@ -3267,8 +3454,8 @@ func (o FlowPropertiesResponsePtrOutput) StorageAccountName() pulumi.StringPtrOu
 }
 
 // Storage Container Name
-func (o FlowPropertiesResponsePtrOutput) StorageContainerName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+func (o FlowPropertiesResponseV1PtrOutput) StorageContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponseV1) *string {
 		if v == nil {
 			return nil
 		}
@@ -3277,8 +3464,8 @@ func (o FlowPropertiesResponsePtrOutput) StorageContainerName() pulumi.StringPtr
 }
 
 // Storage Table Name
-func (o FlowPropertiesResponsePtrOutput) StorageTableName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+func (o FlowPropertiesResponseV1PtrOutput) StorageTableName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponseV1) *string {
 		if v == nil {
 			return nil
 		}
@@ -3287,8 +3474,8 @@ func (o FlowPropertiesResponsePtrOutput) StorageTableName() pulumi.StringPtrOutp
 }
 
 // The flow stream identifier
-func (o FlowPropertiesResponsePtrOutput) StreamId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+func (o FlowPropertiesResponseV1PtrOutput) StreamId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponseV1) *string {
 		if v == nil {
 			return nil
 		}
@@ -3297,8 +3484,8 @@ func (o FlowPropertiesResponsePtrOutput) StreamId() pulumi.StringPtrOutput {
 }
 
 // The latency of the stream in milliseconds
-func (o FlowPropertiesResponsePtrOutput) StreamLatency() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *FlowPropertiesResponse) *float64 {
+func (o FlowPropertiesResponseV1PtrOutput) StreamLatency() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponseV1) *float64 {
 		if v == nil {
 			return nil
 		}
@@ -3307,8 +3494,8 @@ func (o FlowPropertiesResponsePtrOutput) StreamLatency() pulumi.Float64PtrOutput
 }
 
 // The protocol of the stream
-func (o FlowPropertiesResponsePtrOutput) StreamProtocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+func (o FlowPropertiesResponseV1PtrOutput) StreamProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponseV1) *string {
 		if v == nil {
 			return nil
 		}
@@ -3329,7 +3516,7 @@ type FlowResponse struct {
 	// Details of the resource plan.
 	Plan *PlanResponse `pulumi:"plan"`
 	// Properties of flow
-	Properties *FlowPropertiesResponse `pulumi:"properties"`
+	Properties *FlowPropertiesResponseV1 `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
@@ -3379,8 +3566,8 @@ func (o FlowResponseOutput) Plan() PlanResponsePtrOutput {
 }
 
 // Properties of flow
-func (o FlowResponseOutput) Properties() FlowPropertiesResponsePtrOutput {
-	return o.ApplyT(func(v FlowResponse) *FlowPropertiesResponse { return v.Properties }).(FlowPropertiesResponsePtrOutput)
+func (o FlowResponseOutput) Properties() FlowPropertiesResponseV1PtrOutput {
+	return o.ApplyT(func(v FlowResponse) *FlowPropertiesResponseV1 { return v.Properties }).(FlowPropertiesResponseV1PtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -7796,7 +7983,8 @@ func init() {
 	pulumi.RegisterOutputType(FlowPropertiesOutput{})
 	pulumi.RegisterOutputType(FlowPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(FlowPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(FlowPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(FlowPropertiesResponseV1Output{})
+	pulumi.RegisterOutputType(FlowPropertiesResponseV1PtrOutput{})
 	pulumi.RegisterOutputType(FlowResponseOutput{})
 	pulumi.RegisterOutputType(FlowResponseArrayOutput{})
 	pulumi.RegisterOutputType(InternalMetadataPropertiesResponseOutput{})

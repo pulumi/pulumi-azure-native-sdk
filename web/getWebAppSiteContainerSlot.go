@@ -13,9 +13,9 @@ import (
 
 // Container of a site
 //
-// Uses Azure REST API version 2024-04-01.
+// Uses Azure REST API version 2024-11-01.
 //
-// Other available API versions: 2023-12-01, 2024-11-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupWebAppSiteContainerSlot(ctx *pulumi.Context, args *LookupWebAppSiteContainerSlotArgs, opts ...pulumi.InvokeOption) (*LookupWebAppSiteContainerSlotResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppSiteContainerSlotResult
@@ -51,6 +51,8 @@ type LookupWebAppSiteContainerSlotResult struct {
 	Id string `pulumi:"id"`
 	// Image Name
 	Image string `pulumi:"image"`
+	// <code>true</code> if all AppSettings and ConnectionStrings have to be passed to the container as environment variables; <code>false</code> otherwise.
+	InheritAppSettingsAndConnectionStrings *bool `pulumi:"inheritAppSettingsAndConnectionStrings"`
 	// <code>true</code> if the container is the main site container; <code>false</code> otherwise.
 	IsMain bool `pulumi:"isMain"`
 	// Kind of resource.
@@ -144,6 +146,11 @@ func (o LookupWebAppSiteContainerSlotResultOutput) Id() pulumi.StringOutput {
 // Image Name
 func (o LookupWebAppSiteContainerSlotResultOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppSiteContainerSlotResult) string { return v.Image }).(pulumi.StringOutput)
+}
+
+// <code>true</code> if all AppSettings and ConnectionStrings have to be passed to the container as environment variables; <code>false</code> otherwise.
+func (o LookupWebAppSiteContainerSlotResultOutput) InheritAppSettingsAndConnectionStrings() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupWebAppSiteContainerSlotResult) *bool { return v.InheritAppSettingsAndConnectionStrings }).(pulumi.BoolPtrOutput)
 }
 
 // <code>true</code> if the container is the main site container; <code>false</code> otherwise.

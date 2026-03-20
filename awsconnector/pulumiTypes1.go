@@ -13,6 +13,290 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
+// Definition of CustomAction
+type CustomActionResponseV1 struct {
+	// Property actionDefinition
+	ActionDefinition *ActionDefinitionResponseV1 `pulumi:"actionDefinition"`
+	// Property actionName
+	ActionName *string `pulumi:"actionName"`
+}
+
+// Definition of CustomAction
+type CustomActionResponseV1Output struct{ *pulumi.OutputState }
+
+func (CustomActionResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomActionResponseV1)(nil)).Elem()
+}
+
+func (o CustomActionResponseV1Output) ToCustomActionResponseV1Output() CustomActionResponseV1Output {
+	return o
+}
+
+func (o CustomActionResponseV1Output) ToCustomActionResponseV1OutputWithContext(ctx context.Context) CustomActionResponseV1Output {
+	return o
+}
+
+// Property actionDefinition
+func (o CustomActionResponseV1Output) ActionDefinition() ActionDefinitionResponseV1PtrOutput {
+	return o.ApplyT(func(v CustomActionResponseV1) *ActionDefinitionResponseV1 { return v.ActionDefinition }).(ActionDefinitionResponseV1PtrOutput)
+}
+
+// Property actionName
+func (o CustomActionResponseV1Output) ActionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomActionResponseV1) *string { return v.ActionName }).(pulumi.StringPtrOutput)
+}
+
+type CustomActionResponseV1ArrayOutput struct{ *pulumi.OutputState }
+
+func (CustomActionResponseV1ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomActionResponseV1)(nil)).Elem()
+}
+
+func (o CustomActionResponseV1ArrayOutput) ToCustomActionResponseV1ArrayOutput() CustomActionResponseV1ArrayOutput {
+	return o
+}
+
+func (o CustomActionResponseV1ArrayOutput) ToCustomActionResponseV1ArrayOutputWithContext(ctx context.Context) CustomActionResponseV1ArrayOutput {
+	return o
+}
+
+func (o CustomActionResponseV1ArrayOutput) Index(i pulumi.IntInput) CustomActionResponseV1Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomActionResponseV1 {
+		return vs[0].([]CustomActionResponseV1)[vs[1].(int)]
+	}).(CustomActionResponseV1Output)
+}
+
+// Definition of CustomErrorResponse
+type CustomErrorResponse struct {
+	// The minimum amount of time, in seconds, that you want CloudFront to cache the HTTP status code specified in ``ErrorCode``. When this time period has elapsed, CloudFront queries your origin to see whether the problem that caused the error has been resolved and the requested object is now available. For more information, see [Customizing Error Responses](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/custom-error-pages.html) in the *Amazon CloudFront Developer Guide*.
+	ErrorCachingMinTTL *int `pulumi:"errorCachingMinTTL"`
+	// The HTTP status code for which you want to specify a custom error page and/or a caching duration.
+	ErrorCode *int `pulumi:"errorCode"`
+	// The HTTP status code that you want CloudFront to return to the viewer along with the custom error page. There are a variety of reasons that you might want CloudFront to return a status code different from the status code that your origin returned to CloudFront, for example:  +  Some Internet devices (some firewalls and corporate proxies, for example) intercept HTTP 4xx and 5xx and prevent the response from being returned to the viewer. If you substitute ``200``, the response typically won't be intercepted.  +  If you don't care about distinguishing among different client errors or server errors, you can specify ``400`` or ``500`` as the ``ResponseCode`` for all 4xx or 5xx errors.  +  You might want to return a ``200`` status code (OK) and static website so your customers don't know that your website is down.   If you specify a value for ``ResponseCode``, you must also specify a value for ``ResponsePagePath``.
+	ResponseCode *int `pulumi:"responseCode"`
+	// The path to the custom error page that you want CloudFront to return to a viewer when your origin returns the HTTP status code specified by ``ErrorCode``, for example, ``/4xx-errors/403-forbidden.html``. If you want to store your objects and your custom error pages in different locations, your distribution must include a cache behavior for which the following is true:  +  The value of ``PathPattern`` matches the path to your custom error messages. For example, suppose you saved custom error pages for 4xx errors in an Amazon S3 bucket in a directory named ``/4xx-errors``. Your distribution must include a cache behavior for which the path pattern routes requests for your custom error pages to that location, for example, ``/4xx-errors/*``.  +  The value of ``TargetOriginId`` specifies the value of the ``ID`` element for the origin that contains your custom error pages.   If you specify a value for ``ResponsePagePath``, you must also specify a value for ``ResponseCode``. We recommend that you store custom error pages in an Amazon S3 bucket. If you store custom error pages on an HTTP server and the server starts to return 5xx errors, CloudFront can't get the files that you want to return to viewers because the origin server is unavailable.
+	ResponsePagePath *string `pulumi:"responsePagePath"`
+}
+
+// Defaults sets the appropriate defaults for CustomErrorResponse
+func (val *CustomErrorResponse) Defaults() *CustomErrorResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ErrorCachingMinTTL == nil {
+		errorCachingMinTTL_ := 300
+		tmp.ErrorCachingMinTTL = &errorCachingMinTTL_
+	}
+	return &tmp
+}
+
+// CustomErrorResponseInput is an input type that accepts CustomErrorResponseArgs and CustomErrorResponseOutput values.
+// You can construct a concrete instance of `CustomErrorResponseInput` via:
+//
+//	CustomErrorResponseArgs{...}
+type CustomErrorResponseInput interface {
+	pulumi.Input
+
+	ToCustomErrorResponseOutput() CustomErrorResponseOutput
+	ToCustomErrorResponseOutputWithContext(context.Context) CustomErrorResponseOutput
+}
+
+// Definition of CustomErrorResponse
+type CustomErrorResponseArgs struct {
+	// The minimum amount of time, in seconds, that you want CloudFront to cache the HTTP status code specified in ``ErrorCode``. When this time period has elapsed, CloudFront queries your origin to see whether the problem that caused the error has been resolved and the requested object is now available. For more information, see [Customizing Error Responses](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/custom-error-pages.html) in the *Amazon CloudFront Developer Guide*.
+	ErrorCachingMinTTL pulumi.IntPtrInput `pulumi:"errorCachingMinTTL"`
+	// The HTTP status code for which you want to specify a custom error page and/or a caching duration.
+	ErrorCode pulumi.IntPtrInput `pulumi:"errorCode"`
+	// The HTTP status code that you want CloudFront to return to the viewer along with the custom error page. There are a variety of reasons that you might want CloudFront to return a status code different from the status code that your origin returned to CloudFront, for example:  +  Some Internet devices (some firewalls and corporate proxies, for example) intercept HTTP 4xx and 5xx and prevent the response from being returned to the viewer. If you substitute ``200``, the response typically won't be intercepted.  +  If you don't care about distinguishing among different client errors or server errors, you can specify ``400`` or ``500`` as the ``ResponseCode`` for all 4xx or 5xx errors.  +  You might want to return a ``200`` status code (OK) and static website so your customers don't know that your website is down.   If you specify a value for ``ResponseCode``, you must also specify a value for ``ResponsePagePath``.
+	ResponseCode pulumi.IntPtrInput `pulumi:"responseCode"`
+	// The path to the custom error page that you want CloudFront to return to a viewer when your origin returns the HTTP status code specified by ``ErrorCode``, for example, ``/4xx-errors/403-forbidden.html``. If you want to store your objects and your custom error pages in different locations, your distribution must include a cache behavior for which the following is true:  +  The value of ``PathPattern`` matches the path to your custom error messages. For example, suppose you saved custom error pages for 4xx errors in an Amazon S3 bucket in a directory named ``/4xx-errors``. Your distribution must include a cache behavior for which the path pattern routes requests for your custom error pages to that location, for example, ``/4xx-errors/*``.  +  The value of ``TargetOriginId`` specifies the value of the ``ID`` element for the origin that contains your custom error pages.   If you specify a value for ``ResponsePagePath``, you must also specify a value for ``ResponseCode``. We recommend that you store custom error pages in an Amazon S3 bucket. If you store custom error pages on an HTTP server and the server starts to return 5xx errors, CloudFront can't get the files that you want to return to viewers because the origin server is unavailable.
+	ResponsePagePath pulumi.StringPtrInput `pulumi:"responsePagePath"`
+}
+
+// Defaults sets the appropriate defaults for CustomErrorResponseArgs
+func (val *CustomErrorResponseArgs) Defaults() *CustomErrorResponseArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ErrorCachingMinTTL == nil {
+		tmp.ErrorCachingMinTTL = pulumi.IntPtr(300)
+	}
+	return &tmp
+}
+func (CustomErrorResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomErrorResponse)(nil)).Elem()
+}
+
+func (i CustomErrorResponseArgs) ToCustomErrorResponseOutput() CustomErrorResponseOutput {
+	return i.ToCustomErrorResponseOutputWithContext(context.Background())
+}
+
+func (i CustomErrorResponseArgs) ToCustomErrorResponseOutputWithContext(ctx context.Context) CustomErrorResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomErrorResponseOutput)
+}
+
+// CustomErrorResponseArrayInput is an input type that accepts CustomErrorResponseArray and CustomErrorResponseArrayOutput values.
+// You can construct a concrete instance of `CustomErrorResponseArrayInput` via:
+//
+//	CustomErrorResponseArray{ CustomErrorResponseArgs{...} }
+type CustomErrorResponseArrayInput interface {
+	pulumi.Input
+
+	ToCustomErrorResponseArrayOutput() CustomErrorResponseArrayOutput
+	ToCustomErrorResponseArrayOutputWithContext(context.Context) CustomErrorResponseArrayOutput
+}
+
+type CustomErrorResponseArray []CustomErrorResponseInput
+
+func (CustomErrorResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomErrorResponse)(nil)).Elem()
+}
+
+func (i CustomErrorResponseArray) ToCustomErrorResponseArrayOutput() CustomErrorResponseArrayOutput {
+	return i.ToCustomErrorResponseArrayOutputWithContext(context.Background())
+}
+
+func (i CustomErrorResponseArray) ToCustomErrorResponseArrayOutputWithContext(ctx context.Context) CustomErrorResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomErrorResponseArrayOutput)
+}
+
+// Definition of CustomErrorResponse
+type CustomErrorResponseOutput struct{ *pulumi.OutputState }
+
+func (CustomErrorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomErrorResponse)(nil)).Elem()
+}
+
+func (o CustomErrorResponseOutput) ToCustomErrorResponseOutput() CustomErrorResponseOutput {
+	return o
+}
+
+func (o CustomErrorResponseOutput) ToCustomErrorResponseOutputWithContext(ctx context.Context) CustomErrorResponseOutput {
+	return o
+}
+
+// The minimum amount of time, in seconds, that you want CloudFront to cache the HTTP status code specified in “ErrorCode“. When this time period has elapsed, CloudFront queries your origin to see whether the problem that caused the error has been resolved and the requested object is now available. For more information, see [Customizing Error Responses](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/custom-error-pages.html) in the *Amazon CloudFront Developer Guide*.
+func (o CustomErrorResponseOutput) ErrorCachingMinTTL() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CustomErrorResponse) *int { return v.ErrorCachingMinTTL }).(pulumi.IntPtrOutput)
+}
+
+// The HTTP status code for which you want to specify a custom error page and/or a caching duration.
+func (o CustomErrorResponseOutput) ErrorCode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CustomErrorResponse) *int { return v.ErrorCode }).(pulumi.IntPtrOutput)
+}
+
+// The HTTP status code that you want CloudFront to return to the viewer along with the custom error page. There are a variety of reasons that you might want CloudFront to return a status code different from the status code that your origin returned to CloudFront, for example:  +  Some Internet devices (some firewalls and corporate proxies, for example) intercept HTTP 4xx and 5xx and prevent the response from being returned to the viewer. If you substitute “200“, the response typically won't be intercepted.  +  If you don't care about distinguishing among different client errors or server errors, you can specify “400“ or “500“ as the “ResponseCode“ for all 4xx or 5xx errors.  +  You might want to return a “200“ status code (OK) and static website so your customers don't know that your website is down.   If you specify a value for “ResponseCode“, you must also specify a value for “ResponsePagePath“.
+func (o CustomErrorResponseOutput) ResponseCode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CustomErrorResponse) *int { return v.ResponseCode }).(pulumi.IntPtrOutput)
+}
+
+// The path to the custom error page that you want CloudFront to return to a viewer when your origin returns the HTTP status code specified by “ErrorCode“, for example, “/4xx-errors/403-forbidden.html“. If you want to store your objects and your custom error pages in different locations, your distribution must include a cache behavior for which the following is true:  +  The value of “PathPattern“ matches the path to your custom error messages. For example, suppose you saved custom error pages for 4xx errors in an Amazon S3 bucket in a directory named “/4xx-errors“. Your distribution must include a cache behavior for which the path pattern routes requests for your custom error pages to that location, for example, “/4xx-errors/*“.  +  The value of “TargetOriginId“ specifies the value of the “ID“ element for the origin that contains your custom error pages.   If you specify a value for “ResponsePagePath“, you must also specify a value for “ResponseCode“. We recommend that you store custom error pages in an Amazon S3 bucket. If you store custom error pages on an HTTP server and the server starts to return 5xx errors, CloudFront can't get the files that you want to return to viewers because the origin server is unavailable.
+func (o CustomErrorResponseOutput) ResponsePagePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomErrorResponse) *string { return v.ResponsePagePath }).(pulumi.StringPtrOutput)
+}
+
+type CustomErrorResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (CustomErrorResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomErrorResponse)(nil)).Elem()
+}
+
+func (o CustomErrorResponseArrayOutput) ToCustomErrorResponseArrayOutput() CustomErrorResponseArrayOutput {
+	return o
+}
+
+func (o CustomErrorResponseArrayOutput) ToCustomErrorResponseArrayOutputWithContext(ctx context.Context) CustomErrorResponseArrayOutput {
+	return o
+}
+
+func (o CustomErrorResponseArrayOutput) Index(i pulumi.IntInput) CustomErrorResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomErrorResponse {
+		return vs[0].([]CustomErrorResponse)[vs[1].(int)]
+	}).(CustomErrorResponseOutput)
+}
+
+// Definition of CustomErrorResponse
+type CustomErrorResponseResponse struct {
+	// The minimum amount of time, in seconds, that you want CloudFront to cache the HTTP status code specified in ``ErrorCode``. When this time period has elapsed, CloudFront queries your origin to see whether the problem that caused the error has been resolved and the requested object is now available. For more information, see [Customizing Error Responses](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/custom-error-pages.html) in the *Amazon CloudFront Developer Guide*.
+	ErrorCachingMinTTL *int `pulumi:"errorCachingMinTTL"`
+	// The HTTP status code for which you want to specify a custom error page and/or a caching duration.
+	ErrorCode *int `pulumi:"errorCode"`
+	// The HTTP status code that you want CloudFront to return to the viewer along with the custom error page. There are a variety of reasons that you might want CloudFront to return a status code different from the status code that your origin returned to CloudFront, for example:  +  Some Internet devices (some firewalls and corporate proxies, for example) intercept HTTP 4xx and 5xx and prevent the response from being returned to the viewer. If you substitute ``200``, the response typically won't be intercepted.  +  If you don't care about distinguishing among different client errors or server errors, you can specify ``400`` or ``500`` as the ``ResponseCode`` for all 4xx or 5xx errors.  +  You might want to return a ``200`` status code (OK) and static website so your customers don't know that your website is down.   If you specify a value for ``ResponseCode``, you must also specify a value for ``ResponsePagePath``.
+	ResponseCode *int `pulumi:"responseCode"`
+	// The path to the custom error page that you want CloudFront to return to a viewer when your origin returns the HTTP status code specified by ``ErrorCode``, for example, ``/4xx-errors/403-forbidden.html``. If you want to store your objects and your custom error pages in different locations, your distribution must include a cache behavior for which the following is true:  +  The value of ``PathPattern`` matches the path to your custom error messages. For example, suppose you saved custom error pages for 4xx errors in an Amazon S3 bucket in a directory named ``/4xx-errors``. Your distribution must include a cache behavior for which the path pattern routes requests for your custom error pages to that location, for example, ``/4xx-errors/*``.  +  The value of ``TargetOriginId`` specifies the value of the ``ID`` element for the origin that contains your custom error pages.   If you specify a value for ``ResponsePagePath``, you must also specify a value for ``ResponseCode``. We recommend that you store custom error pages in an Amazon S3 bucket. If you store custom error pages on an HTTP server and the server starts to return 5xx errors, CloudFront can't get the files that you want to return to viewers because the origin server is unavailable.
+	ResponsePagePath *string `pulumi:"responsePagePath"`
+}
+
+// Defaults sets the appropriate defaults for CustomErrorResponseResponse
+func (val *CustomErrorResponseResponse) Defaults() *CustomErrorResponseResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ErrorCachingMinTTL == nil {
+		errorCachingMinTTL_ := 300
+		tmp.ErrorCachingMinTTL = &errorCachingMinTTL_
+	}
+	return &tmp
+}
+
+// Definition of CustomErrorResponse
+type CustomErrorResponseResponseOutput struct{ *pulumi.OutputState }
+
+func (CustomErrorResponseResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomErrorResponseResponse)(nil)).Elem()
+}
+
+func (o CustomErrorResponseResponseOutput) ToCustomErrorResponseResponseOutput() CustomErrorResponseResponseOutput {
+	return o
+}
+
+func (o CustomErrorResponseResponseOutput) ToCustomErrorResponseResponseOutputWithContext(ctx context.Context) CustomErrorResponseResponseOutput {
+	return o
+}
+
+// The minimum amount of time, in seconds, that you want CloudFront to cache the HTTP status code specified in “ErrorCode“. When this time period has elapsed, CloudFront queries your origin to see whether the problem that caused the error has been resolved and the requested object is now available. For more information, see [Customizing Error Responses](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/custom-error-pages.html) in the *Amazon CloudFront Developer Guide*.
+func (o CustomErrorResponseResponseOutput) ErrorCachingMinTTL() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CustomErrorResponseResponse) *int { return v.ErrorCachingMinTTL }).(pulumi.IntPtrOutput)
+}
+
+// The HTTP status code for which you want to specify a custom error page and/or a caching duration.
+func (o CustomErrorResponseResponseOutput) ErrorCode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CustomErrorResponseResponse) *int { return v.ErrorCode }).(pulumi.IntPtrOutput)
+}
+
+// The HTTP status code that you want CloudFront to return to the viewer along with the custom error page. There are a variety of reasons that you might want CloudFront to return a status code different from the status code that your origin returned to CloudFront, for example:  +  Some Internet devices (some firewalls and corporate proxies, for example) intercept HTTP 4xx and 5xx and prevent the response from being returned to the viewer. If you substitute “200“, the response typically won't be intercepted.  +  If you don't care about distinguishing among different client errors or server errors, you can specify “400“ or “500“ as the “ResponseCode“ for all 4xx or 5xx errors.  +  You might want to return a “200“ status code (OK) and static website so your customers don't know that your website is down.   If you specify a value for “ResponseCode“, you must also specify a value for “ResponsePagePath“.
+func (o CustomErrorResponseResponseOutput) ResponseCode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CustomErrorResponseResponse) *int { return v.ResponseCode }).(pulumi.IntPtrOutput)
+}
+
+// The path to the custom error page that you want CloudFront to return to a viewer when your origin returns the HTTP status code specified by “ErrorCode“, for example, “/4xx-errors/403-forbidden.html“. If you want to store your objects and your custom error pages in different locations, your distribution must include a cache behavior for which the following is true:  +  The value of “PathPattern“ matches the path to your custom error messages. For example, suppose you saved custom error pages for 4xx errors in an Amazon S3 bucket in a directory named “/4xx-errors“. Your distribution must include a cache behavior for which the path pattern routes requests for your custom error pages to that location, for example, “/4xx-errors/*“.  +  The value of “TargetOriginId“ specifies the value of the “ID“ element for the origin that contains your custom error pages.   If you specify a value for “ResponsePagePath“, you must also specify a value for “ResponseCode“. We recommend that you store custom error pages in an Amazon S3 bucket. If you store custom error pages on an HTTP server and the server starts to return 5xx errors, CloudFront can't get the files that you want to return to viewers because the origin server is unavailable.
+func (o CustomErrorResponseResponseOutput) ResponsePagePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomErrorResponseResponse) *string { return v.ResponsePagePath }).(pulumi.StringPtrOutput)
+}
+
+type CustomErrorResponseResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (CustomErrorResponseResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomErrorResponseResponse)(nil)).Elem()
+}
+
+func (o CustomErrorResponseResponseArrayOutput) ToCustomErrorResponseResponseArrayOutput() CustomErrorResponseResponseArrayOutput {
+	return o
+}
+
+func (o CustomErrorResponseResponseArrayOutput) ToCustomErrorResponseResponseArrayOutputWithContext(ctx context.Context) CustomErrorResponseResponseArrayOutput {
+	return o
+}
+
+func (o CustomErrorResponseResponseArrayOutput) Index(i pulumi.IntInput) CustomErrorResponseResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomErrorResponseResponse {
+		return vs[0].([]CustomErrorResponseResponse)[vs[1].(int)]
+	}).(CustomErrorResponseResponseOutput)
+}
+
 // Definition of CustomOriginConfig
 type CustomOriginConfigResponse struct {
 	// The HTTP port that CloudFront uses to connect to the origin. Specify the HTTP port that the origin listens on.
@@ -6877,11 +7161,9 @@ func (o DimensionArrayOutput) Index(i pulumi.IntInput) DimensionOutput {
 
 // Definition of Dimension
 type DimensionResponse struct {
-	// The name for the CW metric dimension that the metric filter creates. Dimension names must contain only ASCII characters, must include at least one non-whitespace character, and cannot start with a colon (:).
-	Key *string `pulumi:"key"`
 	// The name of the dimension, from 1–255 characters in length. This dimension name must have been included when the metric was published.
 	Name *string `pulumi:"name"`
-	// Property value
+	// The value for the dimension, from 1–255 characters in length.
 	Value *string `pulumi:"value"`
 }
 
@@ -6900,17 +7182,12 @@ func (o DimensionResponseOutput) ToDimensionResponseOutputWithContext(ctx contex
 	return o
 }
 
-// The name for the CW metric dimension that the metric filter creates. Dimension names must contain only ASCII characters, must include at least one non-whitespace character, and cannot start with a colon (:).
-func (o DimensionResponseOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DimensionResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
-}
-
 // The name of the dimension, from 1–255 characters in length. This dimension name must have been included when the metric was published.
 func (o DimensionResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DimensionResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Property value
+// The value for the dimension, from 1–255 characters in length.
 func (o DimensionResponseOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DimensionResponse) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -6933,6 +7210,151 @@ func (o DimensionResponseArrayOutput) Index(i pulumi.IntInput) DimensionResponse
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DimensionResponse {
 		return vs[0].([]DimensionResponse)[vs[1].(int)]
 	}).(DimensionResponseOutput)
+}
+
+// Definition of Dimension
+type DimensionResponseV1 struct {
+	// The name for the CW metric dimension that the metric filter creates. Dimension names must contain only ASCII characters, must include at least one non-whitespace character, and cannot start with a colon (:).
+	Key *string `pulumi:"key"`
+	// The log event field that will contain the value for this dimension. This dimension will only be published for a metric if the value is found in the log event. For example, ``$.eventType`` for JSON log events, or ``$server`` for space-delimited log events.
+	Value *string `pulumi:"value"`
+}
+
+// Definition of Dimension
+type DimensionResponseV1Output struct{ *pulumi.OutputState }
+
+func (DimensionResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*DimensionResponseV1)(nil)).Elem()
+}
+
+func (o DimensionResponseV1Output) ToDimensionResponseV1Output() DimensionResponseV1Output {
+	return o
+}
+
+func (o DimensionResponseV1Output) ToDimensionResponseV1OutputWithContext(ctx context.Context) DimensionResponseV1Output {
+	return o
+}
+
+// The name for the CW metric dimension that the metric filter creates. Dimension names must contain only ASCII characters, must include at least one non-whitespace character, and cannot start with a colon (:).
+func (o DimensionResponseV1Output) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DimensionResponseV1) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The log event field that will contain the value for this dimension. This dimension will only be published for a metric if the value is found in the log event. For example, “$.eventType“ for JSON log events, or “$server“ for space-delimited log events.
+func (o DimensionResponseV1Output) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DimensionResponseV1) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type DimensionResponseV1ArrayOutput struct{ *pulumi.OutputState }
+
+func (DimensionResponseV1ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DimensionResponseV1)(nil)).Elem()
+}
+
+func (o DimensionResponseV1ArrayOutput) ToDimensionResponseV1ArrayOutput() DimensionResponseV1ArrayOutput {
+	return o
+}
+
+func (o DimensionResponseV1ArrayOutput) ToDimensionResponseV1ArrayOutputWithContext(ctx context.Context) DimensionResponseV1ArrayOutput {
+	return o
+}
+
+func (o DimensionResponseV1ArrayOutput) Index(i pulumi.IntInput) DimensionResponseV1Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DimensionResponseV1 {
+		return vs[0].([]DimensionResponseV1)[vs[1].(int)]
+	}).(DimensionResponseV1Output)
+}
+
+// Definition of Dimension
+type DimensionResponseV2 struct {
+	// Property value
+	Value *string `pulumi:"value"`
+}
+
+// Definition of Dimension
+type DimensionResponseV2Output struct{ *pulumi.OutputState }
+
+func (DimensionResponseV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*DimensionResponseV2)(nil)).Elem()
+}
+
+func (o DimensionResponseV2Output) ToDimensionResponseV2Output() DimensionResponseV2Output {
+	return o
+}
+
+func (o DimensionResponseV2Output) ToDimensionResponseV2OutputWithContext(ctx context.Context) DimensionResponseV2Output {
+	return o
+}
+
+// Property value
+func (o DimensionResponseV2Output) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DimensionResponseV2) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type DimensionResponseV2ArrayOutput struct{ *pulumi.OutputState }
+
+func (DimensionResponseV2ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DimensionResponseV2)(nil)).Elem()
+}
+
+func (o DimensionResponseV2ArrayOutput) ToDimensionResponseV2ArrayOutput() DimensionResponseV2ArrayOutput {
+	return o
+}
+
+func (o DimensionResponseV2ArrayOutput) ToDimensionResponseV2ArrayOutputWithContext(ctx context.Context) DimensionResponseV2ArrayOutput {
+	return o
+}
+
+func (o DimensionResponseV2ArrayOutput) Index(i pulumi.IntInput) DimensionResponseV2Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DimensionResponseV2 {
+		return vs[0].([]DimensionResponseV2)[vs[1].(int)]
+	}).(DimensionResponseV2Output)
+}
+
+// Definition of Dimension
+type DimensionResponseV3 struct {
+	// Property value
+	Value *string `pulumi:"value"`
+}
+
+// Definition of Dimension
+type DimensionResponseV3Output struct{ *pulumi.OutputState }
+
+func (DimensionResponseV3Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*DimensionResponseV3)(nil)).Elem()
+}
+
+func (o DimensionResponseV3Output) ToDimensionResponseV3Output() DimensionResponseV3Output {
+	return o
+}
+
+func (o DimensionResponseV3Output) ToDimensionResponseV3OutputWithContext(ctx context.Context) DimensionResponseV3Output {
+	return o
+}
+
+// Property value
+func (o DimensionResponseV3Output) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DimensionResponseV3) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type DimensionResponseV3ArrayOutput struct{ *pulumi.OutputState }
+
+func (DimensionResponseV3ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DimensionResponseV3)(nil)).Elem()
+}
+
+func (o DimensionResponseV3ArrayOutput) ToDimensionResponseV3ArrayOutput() DimensionResponseV3ArrayOutput {
+	return o
+}
+
+func (o DimensionResponseV3ArrayOutput) ToDimensionResponseV3ArrayOutputWithContext(ctx context.Context) DimensionResponseV3ArrayOutput {
+	return o
+}
+
+func (o DimensionResponseV3ArrayOutput) Index(i pulumi.IntInput) DimensionResponseV3Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DimensionResponseV3 {
+		return vs[0].([]DimensionResponseV3)[vs[1].(int)]
+	}).(DimensionResponseV3Output)
 }
 
 // Definition of Disk
@@ -26500,8 +26922,6 @@ type EncryptionConfigurationResponse struct {
 	EncryptionType *string `pulumi:"encryptionType"`
 	// If you use the ``KMS`` encryption type, specify the KMS key to use for encryption. The alias, key ID, or full ARN of the KMS key can be specified. The key must exist in the same Region as the repository. If no key is specified, the default AWS managed KMS key for Amazon ECR will be used. If you use the KMS encryption type, specify the CMK to use for encryption. The alias, key ID, or full ARN of the CMK can be specified. The key must exist in the same Region as the repository. If no key is specified, the default AWS managed CMK for Amazon ECR will be used.
 	KmsKey *string `pulumi:"kmsKey"`
-	// Specifies the ID (Key ARN or Alias ARN) of the customer managed AWS KMS key stored in AWS Key Management Service (KMS) for the destination bucket. Amazon S3 uses this key to encrypt replica objects. Amazon S3 only supports symmetric encryption KMS keys. For more information, see [Asymmetric keys in KMS](https://docs.aws.amazon.com//kms/latest/developerguide/symmetric-asymmetric.html) in the *Key Management Service Developer Guide*.
-	ReplicaKmsKeyID *string `pulumi:"replicaKmsKeyID"`
 }
 
 // Definition of EncryptionConfiguration
@@ -26527,11 +26947,6 @@ func (o EncryptionConfigurationResponseOutput) EncryptionType() pulumi.StringPtr
 // If you use the “KMS“ encryption type, specify the KMS key to use for encryption. The alias, key ID, or full ARN of the KMS key can be specified. The key must exist in the same Region as the repository. If no key is specified, the default AWS managed KMS key for Amazon ECR will be used. If you use the KMS encryption type, specify the CMK to use for encryption. The alias, key ID, or full ARN of the CMK can be specified. The key must exist in the same Region as the repository. If no key is specified, the default AWS managed CMK for Amazon ECR will be used.
 func (o EncryptionConfigurationResponseOutput) KmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EncryptionConfigurationResponse) *string { return v.KmsKey }).(pulumi.StringPtrOutput)
-}
-
-// Specifies the ID (Key ARN or Alias ARN) of the customer managed AWS KMS key stored in AWS Key Management Service (KMS) for the destination bucket. Amazon S3 uses this key to encrypt replica objects. Amazon S3 only supports symmetric encryption KMS keys. For more information, see [Asymmetric keys in KMS](https://docs.aws.amazon.com//kms/latest/developerguide/symmetric-asymmetric.html) in the *Key Management Service Developer Guide*.
-func (o EncryptionConfigurationResponseOutput) ReplicaKmsKeyID() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EncryptionConfigurationResponse) *string { return v.ReplicaKmsKeyID }).(pulumi.StringPtrOutput)
 }
 
 type EncryptionConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
@@ -26578,9 +26993,59 @@ func (o EncryptionConfigurationResponsePtrOutput) KmsKey() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Definition of EncryptionConfiguration
+type EncryptionConfigurationResponseV1 struct {
+	// Specifies the ID (Key ARN or Alias ARN) of the customer managed AWS KMS key stored in AWS Key Management Service (KMS) for the destination bucket. Amazon S3 uses this key to encrypt replica objects. Amazon S3 only supports symmetric encryption KMS keys. For more information, see [Asymmetric keys in KMS](https://docs.aws.amazon.com//kms/latest/developerguide/symmetric-asymmetric.html) in the *Key Management Service Developer Guide*.
+	ReplicaKmsKeyID *string `pulumi:"replicaKmsKeyID"`
+}
+
+// Definition of EncryptionConfiguration
+type EncryptionConfigurationResponseV1Output struct{ *pulumi.OutputState }
+
+func (EncryptionConfigurationResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionConfigurationResponseV1)(nil)).Elem()
+}
+
+func (o EncryptionConfigurationResponseV1Output) ToEncryptionConfigurationResponseV1Output() EncryptionConfigurationResponseV1Output {
+	return o
+}
+
+func (o EncryptionConfigurationResponseV1Output) ToEncryptionConfigurationResponseV1OutputWithContext(ctx context.Context) EncryptionConfigurationResponseV1Output {
+	return o
+}
+
 // Specifies the ID (Key ARN or Alias ARN) of the customer managed AWS KMS key stored in AWS Key Management Service (KMS) for the destination bucket. Amazon S3 uses this key to encrypt replica objects. Amazon S3 only supports symmetric encryption KMS keys. For more information, see [Asymmetric keys in KMS](https://docs.aws.amazon.com//kms/latest/developerguide/symmetric-asymmetric.html) in the *Key Management Service Developer Guide*.
-func (o EncryptionConfigurationResponsePtrOutput) ReplicaKmsKeyID() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EncryptionConfigurationResponse) *string {
+func (o EncryptionConfigurationResponseV1Output) ReplicaKmsKeyID() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncryptionConfigurationResponseV1) *string { return v.ReplicaKmsKeyID }).(pulumi.StringPtrOutput)
+}
+
+type EncryptionConfigurationResponseV1PtrOutput struct{ *pulumi.OutputState }
+
+func (EncryptionConfigurationResponseV1PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncryptionConfigurationResponseV1)(nil)).Elem()
+}
+
+func (o EncryptionConfigurationResponseV1PtrOutput) ToEncryptionConfigurationResponseV1PtrOutput() EncryptionConfigurationResponseV1PtrOutput {
+	return o
+}
+
+func (o EncryptionConfigurationResponseV1PtrOutput) ToEncryptionConfigurationResponseV1PtrOutputWithContext(ctx context.Context) EncryptionConfigurationResponseV1PtrOutput {
+	return o
+}
+
+func (o EncryptionConfigurationResponseV1PtrOutput) Elem() EncryptionConfigurationResponseV1Output {
+	return o.ApplyT(func(v *EncryptionConfigurationResponseV1) EncryptionConfigurationResponseV1 {
+		if v != nil {
+			return *v
+		}
+		var ret EncryptionConfigurationResponseV1
+		return ret
+	}).(EncryptionConfigurationResponseV1Output)
+}
+
+// Specifies the ID (Key ARN or Alias ARN) of the customer managed AWS KMS key stored in AWS Key Management Service (KMS) for the destination bucket. Amazon S3 uses this key to encrypt replica objects. Amazon S3 only supports symmetric encryption KMS keys. For more information, see [Asymmetric keys in KMS](https://docs.aws.amazon.com//kms/latest/developerguide/symmetric-asymmetric.html) in the *Key Management Service Developer Guide*.
+func (o EncryptionConfigurationResponseV1PtrOutput) ReplicaKmsKeyID() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncryptionConfigurationResponseV1) *string {
 		if v == nil {
 			return nil
 		}
@@ -28209,8 +28674,6 @@ func (o EphemeralStoragePtrOutput) SizeInGiB() pulumi.IntPtrOutput {
 
 // Definition of EphemeralStorage
 type EphemeralStorageResponse struct {
-	// The size of the function's ``/tmp`` directory.
-	Size *int `pulumi:"size"`
 	// The total amount, in GiB, of ephemeral storage to set for the task. The minimum supported value is ``20`` GiB and the maximum supported value is ``200`` GiB.
 	SizeInGiB *int `pulumi:"sizeInGiB"`
 }
@@ -28228,11 +28691,6 @@ func (o EphemeralStorageResponseOutput) ToEphemeralStorageResponseOutput() Ephem
 
 func (o EphemeralStorageResponseOutput) ToEphemeralStorageResponseOutputWithContext(ctx context.Context) EphemeralStorageResponseOutput {
 	return o
-}
-
-// The size of the function's “/tmp“ directory.
-func (o EphemeralStorageResponseOutput) Size() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v EphemeralStorageResponse) *int { return v.Size }).(pulumi.IntPtrOutput)
 }
 
 // The total amount, in GiB, of ephemeral storage to set for the task. The minimum supported value is “20“ GiB and the maximum supported value is “200“ GiB.
@@ -28264,16 +28722,6 @@ func (o EphemeralStorageResponsePtrOutput) Elem() EphemeralStorageResponseOutput
 	}).(EphemeralStorageResponseOutput)
 }
 
-// The size of the function's “/tmp“ directory.
-func (o EphemeralStorageResponsePtrOutput) Size() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *EphemeralStorageResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Size
-	}).(pulumi.IntPtrOutput)
-}
-
 // The total amount, in GiB, of ephemeral storage to set for the task. The minimum supported value is “20“ GiB and the maximum supported value is “200“ GiB.
 func (o EphemeralStorageResponsePtrOutput) SizeInGiB() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *EphemeralStorageResponse) *int {
@@ -28281,6 +28729,66 @@ func (o EphemeralStorageResponsePtrOutput) SizeInGiB() pulumi.IntPtrOutput {
 			return nil
 		}
 		return v.SizeInGiB
+	}).(pulumi.IntPtrOutput)
+}
+
+// Definition of EphemeralStorage
+type EphemeralStorageResponseV1 struct {
+	// The size of the function's ``/tmp`` directory.
+	Size *int `pulumi:"size"`
+}
+
+// Definition of EphemeralStorage
+type EphemeralStorageResponseV1Output struct{ *pulumi.OutputState }
+
+func (EphemeralStorageResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*EphemeralStorageResponseV1)(nil)).Elem()
+}
+
+func (o EphemeralStorageResponseV1Output) ToEphemeralStorageResponseV1Output() EphemeralStorageResponseV1Output {
+	return o
+}
+
+func (o EphemeralStorageResponseV1Output) ToEphemeralStorageResponseV1OutputWithContext(ctx context.Context) EphemeralStorageResponseV1Output {
+	return o
+}
+
+// The size of the function's “/tmp“ directory.
+func (o EphemeralStorageResponseV1Output) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EphemeralStorageResponseV1) *int { return v.Size }).(pulumi.IntPtrOutput)
+}
+
+type EphemeralStorageResponseV1PtrOutput struct{ *pulumi.OutputState }
+
+func (EphemeralStorageResponseV1PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EphemeralStorageResponseV1)(nil)).Elem()
+}
+
+func (o EphemeralStorageResponseV1PtrOutput) ToEphemeralStorageResponseV1PtrOutput() EphemeralStorageResponseV1PtrOutput {
+	return o
+}
+
+func (o EphemeralStorageResponseV1PtrOutput) ToEphemeralStorageResponseV1PtrOutputWithContext(ctx context.Context) EphemeralStorageResponseV1PtrOutput {
+	return o
+}
+
+func (o EphemeralStorageResponseV1PtrOutput) Elem() EphemeralStorageResponseV1Output {
+	return o.ApplyT(func(v *EphemeralStorageResponseV1) EphemeralStorageResponseV1 {
+		if v != nil {
+			return *v
+		}
+		var ret EphemeralStorageResponseV1
+		return ret
+	}).(EphemeralStorageResponseV1Output)
+}
+
+// The size of the function's “/tmp“ directory.
+func (o EphemeralStorageResponseV1PtrOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EphemeralStorageResponseV1) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Size
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -32088,10 +32596,6 @@ func (o FilterGroupResponseArrayOutput) Index(i pulumi.IntInput) FilterGroupResp
 
 // Definition of Filter
 type FilterResponse struct {
-	// How to handle logs that satisfy the filter's conditions and requirement.
-	Behavior *string `pulumi:"behavior"`
-	// Match conditions for the filter.
-	Conditions []ConditionResponse `pulumi:"conditions"`
 	// Property contains
 	Contains []string `pulumi:"contains"`
 	// Property eq
@@ -32102,8 +32606,6 @@ type FilterResponse struct {
 	Neq []string `pulumi:"neq"`
 	// Property property
 	Property *string `pulumi:"property"`
-	// Logic to apply to the filtering conditions. You can specify that, in order to satisfy the filter, a log must match all conditions or must match at least one condition.
-	Requirement *string `pulumi:"requirement"`
 }
 
 // Definition of Filter
@@ -32119,16 +32621,6 @@ func (o FilterResponseOutput) ToFilterResponseOutput() FilterResponseOutput {
 
 func (o FilterResponseOutput) ToFilterResponseOutputWithContext(ctx context.Context) FilterResponseOutput {
 	return o
-}
-
-// How to handle logs that satisfy the filter's conditions and requirement.
-func (o FilterResponseOutput) Behavior() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FilterResponse) *string { return v.Behavior }).(pulumi.StringPtrOutput)
-}
-
-// Match conditions for the filter.
-func (o FilterResponseOutput) Conditions() ConditionResponseArrayOutput {
-	return o.ApplyT(func(v FilterResponse) []ConditionResponse { return v.Conditions }).(ConditionResponseArrayOutput)
 }
 
 // Property contains
@@ -32156,11 +32648,6 @@ func (o FilterResponseOutput) Property() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FilterResponse) *string { return v.Property }).(pulumi.StringPtrOutput)
 }
 
-// Logic to apply to the filtering conditions. You can specify that, in order to satisfy the filter, a log must match all conditions or must match at least one condition.
-func (o FilterResponseOutput) Requirement() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FilterResponse) *string { return v.Requirement }).(pulumi.StringPtrOutput)
-}
-
 type FilterResponseArrayOutput struct{ *pulumi.OutputState }
 
 func (FilterResponseArrayOutput) ElementType() reflect.Type {
@@ -32179,6 +32666,66 @@ func (o FilterResponseArrayOutput) Index(i pulumi.IntInput) FilterResponseOutput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FilterResponse {
 		return vs[0].([]FilterResponse)[vs[1].(int)]
 	}).(FilterResponseOutput)
+}
+
+// Definition of Filter
+type FilterResponseV1 struct {
+	// How to handle logs that satisfy the filter's conditions and requirement.
+	Behavior *string `pulumi:"behavior"`
+	// Match conditions for the filter.
+	Conditions []ConditionResponse `pulumi:"conditions"`
+	// Logic to apply to the filtering conditions. You can specify that, in order to satisfy the filter, a log must match all conditions or must match at least one condition.
+	Requirement *string `pulumi:"requirement"`
+}
+
+// Definition of Filter
+type FilterResponseV1Output struct{ *pulumi.OutputState }
+
+func (FilterResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*FilterResponseV1)(nil)).Elem()
+}
+
+func (o FilterResponseV1Output) ToFilterResponseV1Output() FilterResponseV1Output {
+	return o
+}
+
+func (o FilterResponseV1Output) ToFilterResponseV1OutputWithContext(ctx context.Context) FilterResponseV1Output {
+	return o
+}
+
+// How to handle logs that satisfy the filter's conditions and requirement.
+func (o FilterResponseV1Output) Behavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FilterResponseV1) *string { return v.Behavior }).(pulumi.StringPtrOutput)
+}
+
+// Match conditions for the filter.
+func (o FilterResponseV1Output) Conditions() ConditionResponseArrayOutput {
+	return o.ApplyT(func(v FilterResponseV1) []ConditionResponse { return v.Conditions }).(ConditionResponseArrayOutput)
+}
+
+// Logic to apply to the filtering conditions. You can specify that, in order to satisfy the filter, a log must match all conditions or must match at least one condition.
+func (o FilterResponseV1Output) Requirement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FilterResponseV1) *string { return v.Requirement }).(pulumi.StringPtrOutput)
+}
+
+type FilterResponseV1ArrayOutput struct{ *pulumi.OutputState }
+
+func (FilterResponseV1ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FilterResponseV1)(nil)).Elem()
+}
+
+func (o FilterResponseV1ArrayOutput) ToFilterResponseV1ArrayOutput() FilterResponseV1ArrayOutput {
+	return o
+}
+
+func (o FilterResponseV1ArrayOutput) ToFilterResponseV1ArrayOutputWithContext(ctx context.Context) FilterResponseV1ArrayOutput {
+	return o
+}
+
+func (o FilterResponseV1ArrayOutput) Index(i pulumi.IntInput) FilterResponseV1Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FilterResponseV1 {
+		return vs[0].([]FilterResponseV1)[vs[1].(int)]
+	}).(FilterResponseV1Output)
 }
 
 // Definition of FilterRule
@@ -48631,7 +49178,7 @@ func (o InstanceIpv6AddressArrayOutput) Index(i pulumi.IntInput) InstanceIpv6Add
 
 // Definition of InstanceIpv6Address
 type InstanceIpv6AddressResponse struct {
-	// Property ipv6Address
+	// <p>The IPv6 address.</p>
 	Ipv6Address *string `pulumi:"ipv6Address"`
 	// <p>Determines if an IPv6 address associated with a network interface is the primary IPv6 address. When you enable an IPv6 GUA address to be a primary IPv6, the first IPv6 GUA will be made the primary IPv6 address until the instance is terminated or the network interface is detached. For more information, see <a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RunInstances.html'>RunInstances</a>.</p>
 	IsPrimaryIpv6 *bool `pulumi:"isPrimaryIpv6"`
@@ -48652,7 +49199,7 @@ func (o InstanceIpv6AddressResponseOutput) ToInstanceIpv6AddressResponseOutputWi
 	return o
 }
 
-// Property ipv6Address
+// <p>The IPv6 address.</p>
 func (o InstanceIpv6AddressResponseOutput) Ipv6Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceIpv6AddressResponse) *string { return v.Ipv6Address }).(pulumi.StringPtrOutput)
 }
@@ -48680,6 +49227,52 @@ func (o InstanceIpv6AddressResponseArrayOutput) Index(i pulumi.IntInput) Instanc
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceIpv6AddressResponse {
 		return vs[0].([]InstanceIpv6AddressResponse)[vs[1].(int)]
 	}).(InstanceIpv6AddressResponseOutput)
+}
+
+// Definition of InstanceIpv6Address
+type InstanceIpv6AddressResponseV1 struct {
+	// Property ipv6Address
+	Ipv6Address *string `pulumi:"ipv6Address"`
+}
+
+// Definition of InstanceIpv6Address
+type InstanceIpv6AddressResponseV1Output struct{ *pulumi.OutputState }
+
+func (InstanceIpv6AddressResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceIpv6AddressResponseV1)(nil)).Elem()
+}
+
+func (o InstanceIpv6AddressResponseV1Output) ToInstanceIpv6AddressResponseV1Output() InstanceIpv6AddressResponseV1Output {
+	return o
+}
+
+func (o InstanceIpv6AddressResponseV1Output) ToInstanceIpv6AddressResponseV1OutputWithContext(ctx context.Context) InstanceIpv6AddressResponseV1Output {
+	return o
+}
+
+// Property ipv6Address
+func (o InstanceIpv6AddressResponseV1Output) Ipv6Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceIpv6AddressResponseV1) *string { return v.Ipv6Address }).(pulumi.StringPtrOutput)
+}
+
+type InstanceIpv6AddressResponseV1ArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceIpv6AddressResponseV1ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceIpv6AddressResponseV1)(nil)).Elem()
+}
+
+func (o InstanceIpv6AddressResponseV1ArrayOutput) ToInstanceIpv6AddressResponseV1ArrayOutput() InstanceIpv6AddressResponseV1ArrayOutput {
+	return o
+}
+
+func (o InstanceIpv6AddressResponseV1ArrayOutput) ToInstanceIpv6AddressResponseV1ArrayOutputWithContext(ctx context.Context) InstanceIpv6AddressResponseV1ArrayOutput {
+	return o
+}
+
+func (o InstanceIpv6AddressResponseV1ArrayOutput) Index(i pulumi.IntInput) InstanceIpv6AddressResponseV1Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceIpv6AddressResponseV1 {
+		return vs[0].([]InstanceIpv6AddressResponseV1)[vs[1].(int)]
+	}).(InstanceIpv6AddressResponseV1Output)
 }
 
 // Definition of InstanceIpv6Prefix
@@ -62636,15 +63229,11 @@ func (o LaunchTemplateSpecificationPtrOutput) Version() pulumi.StringPtrOutput {
 
 // Definition of LaunchTemplateSpecification
 type LaunchTemplateSpecificationResponse struct {
-	// Property id
-	Id *string `pulumi:"id"`
 	// The ID of the launch template. You must specify the ``LaunchTemplateID`` or the ``LaunchTemplateName``, but not both.
 	LaunchTemplateId *string `pulumi:"launchTemplateId"`
 	// The name of the launch template. You must specify the ``LaunchTemplateName`` or the ``LaunchTemplateID``, but not both.
 	LaunchTemplateName *string `pulumi:"launchTemplateName"`
-	// Property name
-	Name *string `pulumi:"name"`
-	// Property version
+	// The version number of the launch template. Specifying ``$Latest`` or ``$Default`` for the template version number is not supported. However, you can specify ``LatestVersionNumber`` or ``DefaultVersionNumber`` using the ``Fn::GetAtt`` intrinsic function. For more information, see [Fn::GetAtt](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-getatt.html).  For an example of using the ``Fn::GetAtt`` function, see the [Examples](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-autoscaling-autoscalinggroup.html#aws-resource-autoscaling-autoscalinggroup--examples) section of the ``AWS::AutoScaling::AutoScalingGroup`` resource.
 	Version *string `pulumi:"version"`
 }
 
@@ -62663,11 +63252,6 @@ func (o LaunchTemplateSpecificationResponseOutput) ToLaunchTemplateSpecification
 	return o
 }
 
-// Property id
-func (o LaunchTemplateSpecificationResponseOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LaunchTemplateSpecificationResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
 // The ID of the launch template. You must specify the “LaunchTemplateID“ or the “LaunchTemplateName“, but not both.
 func (o LaunchTemplateSpecificationResponseOutput) LaunchTemplateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LaunchTemplateSpecificationResponse) *string { return v.LaunchTemplateId }).(pulumi.StringPtrOutput)
@@ -62678,12 +63262,7 @@ func (o LaunchTemplateSpecificationResponseOutput) LaunchTemplateName() pulumi.S
 	return o.ApplyT(func(v LaunchTemplateSpecificationResponse) *string { return v.LaunchTemplateName }).(pulumi.StringPtrOutput)
 }
 
-// Property name
-func (o LaunchTemplateSpecificationResponseOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LaunchTemplateSpecificationResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// Property version
+// The version number of the launch template. Specifying “$Latest“ or “$Default“ for the template version number is not supported. However, you can specify “LatestVersionNumber“ or “DefaultVersionNumber“ using the “Fn::GetAtt“ intrinsic function. For more information, see [Fn::GetAtt](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-getatt.html).  For an example of using the “Fn::GetAtt“ function, see the [Examples](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-autoscaling-autoscalinggroup.html#aws-resource-autoscaling-autoscalinggroup--examples) section of the “AWS::AutoScaling::AutoScalingGroup“ resource.
 func (o LaunchTemplateSpecificationResponseOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LaunchTemplateSpecificationResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -62712,16 +63291,6 @@ func (o LaunchTemplateSpecificationResponsePtrOutput) Elem() LaunchTemplateSpeci
 	}).(LaunchTemplateSpecificationResponseOutput)
 }
 
-// Property id
-func (o LaunchTemplateSpecificationResponsePtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LaunchTemplateSpecificationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
 // The ID of the launch template. You must specify the “LaunchTemplateID“ or the “LaunchTemplateName“, but not both.
 func (o LaunchTemplateSpecificationResponsePtrOutput) LaunchTemplateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LaunchTemplateSpecificationResponse) *string {
@@ -62742,9 +63311,93 @@ func (o LaunchTemplateSpecificationResponsePtrOutput) LaunchTemplateName() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
-// Property name
-func (o LaunchTemplateSpecificationResponsePtrOutput) Name() pulumi.StringPtrOutput {
+// The version number of the launch template. Specifying “$Latest“ or “$Default“ for the template version number is not supported. However, you can specify “LatestVersionNumber“ or “DefaultVersionNumber“ using the “Fn::GetAtt“ intrinsic function. For more information, see [Fn::GetAtt](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-getatt.html).  For an example of using the “Fn::GetAtt“ function, see the [Examples](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-autoscaling-autoscalinggroup.html#aws-resource-autoscaling-autoscalinggroup--examples) section of the “AWS::AutoScaling::AutoScalingGroup“ resource.
+func (o LaunchTemplateSpecificationResponsePtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LaunchTemplateSpecificationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+// Definition of LaunchTemplateSpecification
+type LaunchTemplateSpecificationResponseV1 struct {
+	// Property id
+	Id *string `pulumi:"id"`
+	// Property name
+	Name *string `pulumi:"name"`
+	// Property version
+	Version *string `pulumi:"version"`
+}
+
+// Definition of LaunchTemplateSpecification
+type LaunchTemplateSpecificationResponseV1Output struct{ *pulumi.OutputState }
+
+func (LaunchTemplateSpecificationResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*LaunchTemplateSpecificationResponseV1)(nil)).Elem()
+}
+
+func (o LaunchTemplateSpecificationResponseV1Output) ToLaunchTemplateSpecificationResponseV1Output() LaunchTemplateSpecificationResponseV1Output {
+	return o
+}
+
+func (o LaunchTemplateSpecificationResponseV1Output) ToLaunchTemplateSpecificationResponseV1OutputWithContext(ctx context.Context) LaunchTemplateSpecificationResponseV1Output {
+	return o
+}
+
+// Property id
+func (o LaunchTemplateSpecificationResponseV1Output) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LaunchTemplateSpecificationResponseV1) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Property name
+func (o LaunchTemplateSpecificationResponseV1Output) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LaunchTemplateSpecificationResponseV1) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Property version
+func (o LaunchTemplateSpecificationResponseV1Output) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LaunchTemplateSpecificationResponseV1) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type LaunchTemplateSpecificationResponseV1PtrOutput struct{ *pulumi.OutputState }
+
+func (LaunchTemplateSpecificationResponseV1PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LaunchTemplateSpecificationResponseV1)(nil)).Elem()
+}
+
+func (o LaunchTemplateSpecificationResponseV1PtrOutput) ToLaunchTemplateSpecificationResponseV1PtrOutput() LaunchTemplateSpecificationResponseV1PtrOutput {
+	return o
+}
+
+func (o LaunchTemplateSpecificationResponseV1PtrOutput) ToLaunchTemplateSpecificationResponseV1PtrOutputWithContext(ctx context.Context) LaunchTemplateSpecificationResponseV1PtrOutput {
+	return o
+}
+
+func (o LaunchTemplateSpecificationResponseV1PtrOutput) Elem() LaunchTemplateSpecificationResponseV1Output {
+	return o.ApplyT(func(v *LaunchTemplateSpecificationResponseV1) LaunchTemplateSpecificationResponseV1 {
+		if v != nil {
+			return *v
+		}
+		var ret LaunchTemplateSpecificationResponseV1
+		return ret
+	}).(LaunchTemplateSpecificationResponseV1Output)
+}
+
+// Property id
+func (o LaunchTemplateSpecificationResponseV1PtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LaunchTemplateSpecificationResponseV1) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Property name
+func (o LaunchTemplateSpecificationResponseV1PtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LaunchTemplateSpecificationResponseV1) *string {
 		if v == nil {
 			return nil
 		}
@@ -62753,8 +63406,8 @@ func (o LaunchTemplateSpecificationResponsePtrOutput) Name() pulumi.StringPtrOut
 }
 
 // Property version
-func (o LaunchTemplateSpecificationResponsePtrOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LaunchTemplateSpecificationResponse) *string {
+func (o LaunchTemplateSpecificationResponseV1PtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LaunchTemplateSpecificationResponseV1) *string {
 		if v == nil {
 			return nil
 		}
@@ -64245,12 +64898,6 @@ type LifecyclePolicyResponse struct {
 	LifecyclePolicyText *string `pulumi:"lifecyclePolicyText"`
 	// The AWS account ID associated with the registry that contains the repository. If you do not specify a registry, the default registry is assumed. The AWS account ID associated with the registry that contains the repository. If you do not specify a registry, the default registry is assumed.
 	RegistryId *string `pulumi:"registryId"`
-	// The number of days after files were last accessed in primary storage (the Standard storage class) at which to move them to Archive storage. Metadata operations such as listing the contents of a directory don't count as file access events.
-	TransitionToArchive *string `pulumi:"transitionToArchive"`
-	// The number of days after files were last accessed in primary storage (the Standard storage class) at which to move them to Infrequent Access (IA) storage. Metadata operations such as listing the contents of a directory don't count as file access events.
-	TransitionToIA *string `pulumi:"transitionToIA"`
-	// Whether to move files back to primary (Standard) storage after they are accessed in IA or Archive storage. Metadata operations such as listing the contents of a directory don't count as file access events.
-	TransitionToPrimaryStorageClass *string `pulumi:"transitionToPrimaryStorageClass"`
 }
 
 // Definition of LifecyclePolicy
@@ -64276,21 +64923,6 @@ func (o LifecyclePolicyResponseOutput) LifecyclePolicyText() pulumi.StringPtrOut
 // The AWS account ID associated with the registry that contains the repository. If you do not specify a registry, the default registry is assumed. The AWS account ID associated with the registry that contains the repository. If you do not specify a registry, the default registry is assumed.
 func (o LifecyclePolicyResponseOutput) RegistryId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LifecyclePolicyResponse) *string { return v.RegistryId }).(pulumi.StringPtrOutput)
-}
-
-// The number of days after files were last accessed in primary storage (the Standard storage class) at which to move them to Archive storage. Metadata operations such as listing the contents of a directory don't count as file access events.
-func (o LifecyclePolicyResponseOutput) TransitionToArchive() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LifecyclePolicyResponse) *string { return v.TransitionToArchive }).(pulumi.StringPtrOutput)
-}
-
-// The number of days after files were last accessed in primary storage (the Standard storage class) at which to move them to Infrequent Access (IA) storage. Metadata operations such as listing the contents of a directory don't count as file access events.
-func (o LifecyclePolicyResponseOutput) TransitionToIA() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LifecyclePolicyResponse) *string { return v.TransitionToIA }).(pulumi.StringPtrOutput)
-}
-
-// Whether to move files back to primary (Standard) storage after they are accessed in IA or Archive storage. Metadata operations such as listing the contents of a directory don't count as file access events.
-func (o LifecyclePolicyResponseOutput) TransitionToPrimaryStorageClass() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LifecyclePolicyResponse) *string { return v.TransitionToPrimaryStorageClass }).(pulumi.StringPtrOutput)
 }
 
 type LifecyclePolicyResponsePtrOutput struct{ *pulumi.OutputState }
@@ -64337,54 +64969,64 @@ func (o LifecyclePolicyResponsePtrOutput) RegistryId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Definition of LifecyclePolicy
+type LifecyclePolicyResponseV1 struct {
+	// The number of days after files were last accessed in primary storage (the Standard storage class) at which to move them to Archive storage. Metadata operations such as listing the contents of a directory don't count as file access events.
+	TransitionToArchive *string `pulumi:"transitionToArchive"`
+	// The number of days after files were last accessed in primary storage (the Standard storage class) at which to move them to Infrequent Access (IA) storage. Metadata operations such as listing the contents of a directory don't count as file access events.
+	TransitionToIA *string `pulumi:"transitionToIA"`
+	// Whether to move files back to primary (Standard) storage after they are accessed in IA or Archive storage. Metadata operations such as listing the contents of a directory don't count as file access events.
+	TransitionToPrimaryStorageClass *string `pulumi:"transitionToPrimaryStorageClass"`
+}
+
+// Definition of LifecyclePolicy
+type LifecyclePolicyResponseV1Output struct{ *pulumi.OutputState }
+
+func (LifecyclePolicyResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*LifecyclePolicyResponseV1)(nil)).Elem()
+}
+
+func (o LifecyclePolicyResponseV1Output) ToLifecyclePolicyResponseV1Output() LifecyclePolicyResponseV1Output {
+	return o
+}
+
+func (o LifecyclePolicyResponseV1Output) ToLifecyclePolicyResponseV1OutputWithContext(ctx context.Context) LifecyclePolicyResponseV1Output {
+	return o
+}
+
 // The number of days after files were last accessed in primary storage (the Standard storage class) at which to move them to Archive storage. Metadata operations such as listing the contents of a directory don't count as file access events.
-func (o LifecyclePolicyResponsePtrOutput) TransitionToArchive() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LifecyclePolicyResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TransitionToArchive
-	}).(pulumi.StringPtrOutput)
+func (o LifecyclePolicyResponseV1Output) TransitionToArchive() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LifecyclePolicyResponseV1) *string { return v.TransitionToArchive }).(pulumi.StringPtrOutput)
 }
 
 // The number of days after files were last accessed in primary storage (the Standard storage class) at which to move them to Infrequent Access (IA) storage. Metadata operations such as listing the contents of a directory don't count as file access events.
-func (o LifecyclePolicyResponsePtrOutput) TransitionToIA() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LifecyclePolicyResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TransitionToIA
-	}).(pulumi.StringPtrOutput)
+func (o LifecyclePolicyResponseV1Output) TransitionToIA() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LifecyclePolicyResponseV1) *string { return v.TransitionToIA }).(pulumi.StringPtrOutput)
 }
 
 // Whether to move files back to primary (Standard) storage after they are accessed in IA or Archive storage. Metadata operations such as listing the contents of a directory don't count as file access events.
-func (o LifecyclePolicyResponsePtrOutput) TransitionToPrimaryStorageClass() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LifecyclePolicyResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TransitionToPrimaryStorageClass
-	}).(pulumi.StringPtrOutput)
+func (o LifecyclePolicyResponseV1Output) TransitionToPrimaryStorageClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LifecyclePolicyResponseV1) *string { return v.TransitionToPrimaryStorageClass }).(pulumi.StringPtrOutput)
 }
 
-type LifecyclePolicyResponseArrayOutput struct{ *pulumi.OutputState }
+type LifecyclePolicyResponseV1ArrayOutput struct{ *pulumi.OutputState }
 
-func (LifecyclePolicyResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]LifecyclePolicyResponse)(nil)).Elem()
+func (LifecyclePolicyResponseV1ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LifecyclePolicyResponseV1)(nil)).Elem()
 }
 
-func (o LifecyclePolicyResponseArrayOutput) ToLifecyclePolicyResponseArrayOutput() LifecyclePolicyResponseArrayOutput {
+func (o LifecyclePolicyResponseV1ArrayOutput) ToLifecyclePolicyResponseV1ArrayOutput() LifecyclePolicyResponseV1ArrayOutput {
 	return o
 }
 
-func (o LifecyclePolicyResponseArrayOutput) ToLifecyclePolicyResponseArrayOutputWithContext(ctx context.Context) LifecyclePolicyResponseArrayOutput {
+func (o LifecyclePolicyResponseV1ArrayOutput) ToLifecyclePolicyResponseV1ArrayOutputWithContext(ctx context.Context) LifecyclePolicyResponseV1ArrayOutput {
 	return o
 }
 
-func (o LifecyclePolicyResponseArrayOutput) Index(i pulumi.IntInput) LifecyclePolicyResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LifecyclePolicyResponse {
-		return vs[0].([]LifecyclePolicyResponse)[vs[1].(int)]
-	}).(LifecyclePolicyResponseOutput)
+func (o LifecyclePolicyResponseV1ArrayOutput) Index(i pulumi.IntInput) LifecyclePolicyResponseV1Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LifecyclePolicyResponseV1 {
+		return vs[0].([]LifecyclePolicyResponseV1)[vs[1].(int)]
+	}).(LifecyclePolicyResponseV1Output)
 }
 
 // Definition of LightsailBucket
@@ -65991,1368 +66633,13 @@ func (o LocalSecondaryIndexArrayOutput) Index(i pulumi.IntInput) LocalSecondaryI
 	}).(LocalSecondaryIndexOutput)
 }
 
-// Definition of LocalSecondaryIndex
-type LocalSecondaryIndexResponse struct {
-	// The name of the local secondary index. The name must be unique among all other indexes on this table.
-	IndexName *string `pulumi:"indexName"`
-	// The complete key schema for the local secondary index, consisting of one or more pairs of attribute names and key types:  +   ``HASH`` - partition key  +   ``RANGE`` - sort key    The partition key of an item is also known as its *hash attribute*. The term 'hash attribute' derives from DynamoDB's usage of an internal hash function to evenly distribute data items across partitions, based on their partition key values. The sort key of an item is also known as its *range attribute*. The term 'range attribute' derives from the way DynamoDB stores items with the same partition key physically close together, in sorted order by the sort key value.
-	KeySchema []KeySchemaResponse `pulumi:"keySchema"`
-	// Represents attributes that are copied (projected) from the table into the local secondary index. These are in addition to the primary key attributes and index key attributes, which are automatically projected. Represents attributes that are copied (projected) from the table into an index. These are in addition to the primary key attributes and index key attributes, which are automatically projected.
-	Projection *ProjectionResponse `pulumi:"projection"`
-}
-
-// Definition of LocalSecondaryIndex
-type LocalSecondaryIndexResponseOutput struct{ *pulumi.OutputState }
-
-func (LocalSecondaryIndexResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LocalSecondaryIndexResponse)(nil)).Elem()
-}
-
-func (o LocalSecondaryIndexResponseOutput) ToLocalSecondaryIndexResponseOutput() LocalSecondaryIndexResponseOutput {
-	return o
-}
-
-func (o LocalSecondaryIndexResponseOutput) ToLocalSecondaryIndexResponseOutputWithContext(ctx context.Context) LocalSecondaryIndexResponseOutput {
-	return o
-}
-
-// The name of the local secondary index. The name must be unique among all other indexes on this table.
-func (o LocalSecondaryIndexResponseOutput) IndexName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LocalSecondaryIndexResponse) *string { return v.IndexName }).(pulumi.StringPtrOutput)
-}
-
-// The complete key schema for the local secondary index, consisting of one or more pairs of attribute names and key types:  +   “HASH“ - partition key  +   “RANGE“ - sort key    The partition key of an item is also known as its *hash attribute*. The term 'hash attribute' derives from DynamoDB's usage of an internal hash function to evenly distribute data items across partitions, based on their partition key values. The sort key of an item is also known as its *range attribute*. The term 'range attribute' derives from the way DynamoDB stores items with the same partition key physically close together, in sorted order by the sort key value.
-func (o LocalSecondaryIndexResponseOutput) KeySchema() KeySchemaResponseArrayOutput {
-	return o.ApplyT(func(v LocalSecondaryIndexResponse) []KeySchemaResponse { return v.KeySchema }).(KeySchemaResponseArrayOutput)
-}
-
-// Represents attributes that are copied (projected) from the table into the local secondary index. These are in addition to the primary key attributes and index key attributes, which are automatically projected. Represents attributes that are copied (projected) from the table into an index. These are in addition to the primary key attributes and index key attributes, which are automatically projected.
-func (o LocalSecondaryIndexResponseOutput) Projection() ProjectionResponsePtrOutput {
-	return o.ApplyT(func(v LocalSecondaryIndexResponse) *ProjectionResponse { return v.Projection }).(ProjectionResponsePtrOutput)
-}
-
-type LocalSecondaryIndexResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (LocalSecondaryIndexResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]LocalSecondaryIndexResponse)(nil)).Elem()
-}
-
-func (o LocalSecondaryIndexResponseArrayOutput) ToLocalSecondaryIndexResponseArrayOutput() LocalSecondaryIndexResponseArrayOutput {
-	return o
-}
-
-func (o LocalSecondaryIndexResponseArrayOutput) ToLocalSecondaryIndexResponseArrayOutputWithContext(ctx context.Context) LocalSecondaryIndexResponseArrayOutput {
-	return o
-}
-
-func (o LocalSecondaryIndexResponseArrayOutput) Index(i pulumi.IntInput) LocalSecondaryIndexResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LocalSecondaryIndexResponse {
-		return vs[0].([]LocalSecondaryIndexResponse)[vs[1].(int)]
-	}).(LocalSecondaryIndexResponseOutput)
-}
-
-// Definition of Location
-type Location struct {
-	// The Availability Zone in which to create your instance. Use the following format: us-east-2a (case sensitive). Be sure to add the include Availability Zones parameter to your request.
-	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// The Region Name in which to create your instance.
-	RegionName *string `pulumi:"regionName"`
-}
-
-// LocationInput is an input type that accepts LocationArgs and LocationOutput values.
-// You can construct a concrete instance of `LocationInput` via:
-//
-//	LocationArgs{...}
-type LocationInput interface {
-	pulumi.Input
-
-	ToLocationOutput() LocationOutput
-	ToLocationOutputWithContext(context.Context) LocationOutput
-}
-
-// Definition of Location
-type LocationArgs struct {
-	// The Availability Zone in which to create your instance. Use the following format: us-east-2a (case sensitive). Be sure to add the include Availability Zones parameter to your request.
-	AvailabilityZone pulumi.StringPtrInput `pulumi:"availabilityZone"`
-	// The Region Name in which to create your instance.
-	RegionName pulumi.StringPtrInput `pulumi:"regionName"`
-}
-
-func (LocationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Location)(nil)).Elem()
-}
-
-func (i LocationArgs) ToLocationOutput() LocationOutput {
-	return i.ToLocationOutputWithContext(context.Background())
-}
-
-func (i LocationArgs) ToLocationOutputWithContext(ctx context.Context) LocationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LocationOutput)
-}
-
-func (i LocationArgs) ToLocationPtrOutput() LocationPtrOutput {
-	return i.ToLocationPtrOutputWithContext(context.Background())
-}
-
-func (i LocationArgs) ToLocationPtrOutputWithContext(ctx context.Context) LocationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LocationOutput).ToLocationPtrOutputWithContext(ctx)
-}
-
-// LocationPtrInput is an input type that accepts LocationArgs, LocationPtr and LocationPtrOutput values.
-// You can construct a concrete instance of `LocationPtrInput` via:
-//
-//	        LocationArgs{...}
-//
-//	or:
-//
-//	        nil
-type LocationPtrInput interface {
-	pulumi.Input
-
-	ToLocationPtrOutput() LocationPtrOutput
-	ToLocationPtrOutputWithContext(context.Context) LocationPtrOutput
-}
-
-type locationPtrType LocationArgs
-
-func LocationPtr(v *LocationArgs) LocationPtrInput {
-	return (*locationPtrType)(v)
-}
-
-func (*locationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Location)(nil)).Elem()
-}
-
-func (i *locationPtrType) ToLocationPtrOutput() LocationPtrOutput {
-	return i.ToLocationPtrOutputWithContext(context.Background())
-}
-
-func (i *locationPtrType) ToLocationPtrOutputWithContext(ctx context.Context) LocationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LocationPtrOutput)
-}
-
-// Definition of Location
-type LocationOutput struct{ *pulumi.OutputState }
-
-func (LocationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Location)(nil)).Elem()
-}
-
-func (o LocationOutput) ToLocationOutput() LocationOutput {
-	return o
-}
-
-func (o LocationOutput) ToLocationOutputWithContext(ctx context.Context) LocationOutput {
-	return o
-}
-
-func (o LocationOutput) ToLocationPtrOutput() LocationPtrOutput {
-	return o.ToLocationPtrOutputWithContext(context.Background())
-}
-
-func (o LocationOutput) ToLocationPtrOutputWithContext(ctx context.Context) LocationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Location) *Location {
-		return &v
-	}).(LocationPtrOutput)
-}
-
-// The Availability Zone in which to create your instance. Use the following format: us-east-2a (case sensitive). Be sure to add the include Availability Zones parameter to your request.
-func (o LocationOutput) AvailabilityZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Location) *string { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
-}
-
-// The Region Name in which to create your instance.
-func (o LocationOutput) RegionName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Location) *string { return v.RegionName }).(pulumi.StringPtrOutput)
-}
-
-type LocationPtrOutput struct{ *pulumi.OutputState }
-
-func (LocationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Location)(nil)).Elem()
-}
-
-func (o LocationPtrOutput) ToLocationPtrOutput() LocationPtrOutput {
-	return o
-}
-
-func (o LocationPtrOutput) ToLocationPtrOutputWithContext(ctx context.Context) LocationPtrOutput {
-	return o
-}
-
-func (o LocationPtrOutput) Elem() LocationOutput {
-	return o.ApplyT(func(v *Location) Location {
-		if v != nil {
-			return *v
-		}
-		var ret Location
-		return ret
-	}).(LocationOutput)
-}
-
-// The Availability Zone in which to create your instance. Use the following format: us-east-2a (case sensitive). Be sure to add the include Availability Zones parameter to your request.
-func (o LocationPtrOutput) AvailabilityZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Location) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AvailabilityZone
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Region Name in which to create your instance.
-func (o LocationPtrOutput) RegionName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Location) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RegionName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Definition of Location
-type LocationResponse struct {
-	// The Availability Zone in which to create your instance. Use the following format: us-east-2a (case sensitive). Be sure to add the include Availability Zones parameter to your request.
-	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// The Region Name in which to create your instance.
-	RegionName *string `pulumi:"regionName"`
-}
-
-// Definition of Location
-type LocationResponseOutput struct{ *pulumi.OutputState }
-
-func (LocationResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LocationResponse)(nil)).Elem()
-}
-
-func (o LocationResponseOutput) ToLocationResponseOutput() LocationResponseOutput {
-	return o
-}
-
-func (o LocationResponseOutput) ToLocationResponseOutputWithContext(ctx context.Context) LocationResponseOutput {
-	return o
-}
-
-// The Availability Zone in which to create your instance. Use the following format: us-east-2a (case sensitive). Be sure to add the include Availability Zones parameter to your request.
-func (o LocationResponseOutput) AvailabilityZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LocationResponse) *string { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
-}
-
-// The Region Name in which to create your instance.
-func (o LocationResponseOutput) RegionName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LocationResponse) *string { return v.RegionName }).(pulumi.StringPtrOutput)
-}
-
-type LocationResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (LocationResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LocationResponse)(nil)).Elem()
-}
-
-func (o LocationResponsePtrOutput) ToLocationResponsePtrOutput() LocationResponsePtrOutput {
-	return o
-}
-
-func (o LocationResponsePtrOutput) ToLocationResponsePtrOutputWithContext(ctx context.Context) LocationResponsePtrOutput {
-	return o
-}
-
-func (o LocationResponsePtrOutput) Elem() LocationResponseOutput {
-	return o.ApplyT(func(v *LocationResponse) LocationResponse {
-		if v != nil {
-			return *v
-		}
-		var ret LocationResponse
-		return ret
-	}).(LocationResponseOutput)
-}
-
-// The Availability Zone in which to create your instance. Use the following format: us-east-2a (case sensitive). Be sure to add the include Availability Zones parameter to your request.
-func (o LocationResponsePtrOutput) AvailabilityZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LocationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AvailabilityZone
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Region Name in which to create your instance.
-func (o LocationResponsePtrOutput) RegionName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LocationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RegionName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Definition of LogConfig
-type LogConfig struct {
-	// <p>The service role that AppSync assumes to publish to CloudWatch logs in your account.</p>
-	CloudWatchLogsRoleArn *string `pulumi:"cloudWatchLogsRoleArn"`
-	// <p>Set to TRUE to exclude sections that contain information such as headers, context, and evaluated mapping templates, regardless of logging level.</p>
-	ExcludeVerboseContent *bool `pulumi:"excludeVerboseContent"`
-	// <p>The field logging level. Values can be NONE, ERROR, or ALL.</p> <ul> <li> <p> <b>NONE</b>: No field-level logs are captured.</p> </li> <li> <p> <b>ERROR</b>: Logs the following information only for the fields that are in error:</p> <ul> <li> <p>The error section in the server response.</p> </li> <li> <p>Field-level errors.</p> </li> <li> <p>The generated request/response functions that got resolved for error fields.</p> </li> </ul> </li> <li> <p> <b>ALL</b>: The following information is logged for all fields in the query:</p> <ul> <li> <p>Field-level tracing information.</p> </li> <li> <p>The generated request/response functions that got resolved for each field.</p> </li> </ul> </li> </ul>
-	FieldLogLevel *FieldLogLevelEnumValue `pulumi:"fieldLogLevel"`
-}
-
-// LogConfigInput is an input type that accepts LogConfigArgs and LogConfigOutput values.
-// You can construct a concrete instance of `LogConfigInput` via:
-//
-//	LogConfigArgs{...}
-type LogConfigInput interface {
-	pulumi.Input
-
-	ToLogConfigOutput() LogConfigOutput
-	ToLogConfigOutputWithContext(context.Context) LogConfigOutput
-}
-
-// Definition of LogConfig
-type LogConfigArgs struct {
-	// <p>The service role that AppSync assumes to publish to CloudWatch logs in your account.</p>
-	CloudWatchLogsRoleArn pulumi.StringPtrInput `pulumi:"cloudWatchLogsRoleArn"`
-	// <p>Set to TRUE to exclude sections that contain information such as headers, context, and evaluated mapping templates, regardless of logging level.</p>
-	ExcludeVerboseContent pulumi.BoolPtrInput `pulumi:"excludeVerboseContent"`
-	// <p>The field logging level. Values can be NONE, ERROR, or ALL.</p> <ul> <li> <p> <b>NONE</b>: No field-level logs are captured.</p> </li> <li> <p> <b>ERROR</b>: Logs the following information only for the fields that are in error:</p> <ul> <li> <p>The error section in the server response.</p> </li> <li> <p>Field-level errors.</p> </li> <li> <p>The generated request/response functions that got resolved for error fields.</p> </li> </ul> </li> <li> <p> <b>ALL</b>: The following information is logged for all fields in the query:</p> <ul> <li> <p>Field-level tracing information.</p> </li> <li> <p>The generated request/response functions that got resolved for each field.</p> </li> </ul> </li> </ul>
-	FieldLogLevel FieldLogLevelEnumValuePtrInput `pulumi:"fieldLogLevel"`
-}
-
-func (LogConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LogConfig)(nil)).Elem()
-}
-
-func (i LogConfigArgs) ToLogConfigOutput() LogConfigOutput {
-	return i.ToLogConfigOutputWithContext(context.Background())
-}
-
-func (i LogConfigArgs) ToLogConfigOutputWithContext(ctx context.Context) LogConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LogConfigOutput)
-}
-
-func (i LogConfigArgs) ToLogConfigPtrOutput() LogConfigPtrOutput {
-	return i.ToLogConfigPtrOutputWithContext(context.Background())
-}
-
-func (i LogConfigArgs) ToLogConfigPtrOutputWithContext(ctx context.Context) LogConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LogConfigOutput).ToLogConfigPtrOutputWithContext(ctx)
-}
-
-// LogConfigPtrInput is an input type that accepts LogConfigArgs, LogConfigPtr and LogConfigPtrOutput values.
-// You can construct a concrete instance of `LogConfigPtrInput` via:
-//
-//	        LogConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type LogConfigPtrInput interface {
-	pulumi.Input
-
-	ToLogConfigPtrOutput() LogConfigPtrOutput
-	ToLogConfigPtrOutputWithContext(context.Context) LogConfigPtrOutput
-}
-
-type logConfigPtrType LogConfigArgs
-
-func LogConfigPtr(v *LogConfigArgs) LogConfigPtrInput {
-	return (*logConfigPtrType)(v)
-}
-
-func (*logConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**LogConfig)(nil)).Elem()
-}
-
-func (i *logConfigPtrType) ToLogConfigPtrOutput() LogConfigPtrOutput {
-	return i.ToLogConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *logConfigPtrType) ToLogConfigPtrOutputWithContext(ctx context.Context) LogConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LogConfigPtrOutput)
-}
-
-// Definition of LogConfig
-type LogConfigOutput struct{ *pulumi.OutputState }
-
-func (LogConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LogConfig)(nil)).Elem()
-}
-
-func (o LogConfigOutput) ToLogConfigOutput() LogConfigOutput {
-	return o
-}
-
-func (o LogConfigOutput) ToLogConfigOutputWithContext(ctx context.Context) LogConfigOutput {
-	return o
-}
-
-func (o LogConfigOutput) ToLogConfigPtrOutput() LogConfigPtrOutput {
-	return o.ToLogConfigPtrOutputWithContext(context.Background())
-}
-
-func (o LogConfigOutput) ToLogConfigPtrOutputWithContext(ctx context.Context) LogConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogConfig) *LogConfig {
-		return &v
-	}).(LogConfigPtrOutput)
-}
-
-// <p>The service role that AppSync assumes to publish to CloudWatch logs in your account.</p>
-func (o LogConfigOutput) CloudWatchLogsRoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LogConfig) *string { return v.CloudWatchLogsRoleArn }).(pulumi.StringPtrOutput)
-}
-
-// <p>Set to TRUE to exclude sections that contain information such as headers, context, and evaluated mapping templates, regardless of logging level.</p>
-func (o LogConfigOutput) ExcludeVerboseContent() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LogConfig) *bool { return v.ExcludeVerboseContent }).(pulumi.BoolPtrOutput)
-}
-
-// <p>The field logging level. Values can be NONE, ERROR, or ALL.</p> <ul> <li> <p> <b>NONE</b>: No field-level logs are captured.</p> </li> <li> <p> <b>ERROR</b>: Logs the following information only for the fields that are in error:</p> <ul> <li> <p>The error section in the server response.</p> </li> <li> <p>Field-level errors.</p> </li> <li> <p>The generated request/response functions that got resolved for error fields.</p> </li> </ul> </li> <li> <p> <b>ALL</b>: The following information is logged for all fields in the query:</p> <ul> <li> <p>Field-level tracing information.</p> </li> <li> <p>The generated request/response functions that got resolved for each field.</p> </li> </ul> </li> </ul>
-func (o LogConfigOutput) FieldLogLevel() FieldLogLevelEnumValuePtrOutput {
-	return o.ApplyT(func(v LogConfig) *FieldLogLevelEnumValue { return v.FieldLogLevel }).(FieldLogLevelEnumValuePtrOutput)
-}
-
-type LogConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (LogConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LogConfig)(nil)).Elem()
-}
-
-func (o LogConfigPtrOutput) ToLogConfigPtrOutput() LogConfigPtrOutput {
-	return o
-}
-
-func (o LogConfigPtrOutput) ToLogConfigPtrOutputWithContext(ctx context.Context) LogConfigPtrOutput {
-	return o
-}
-
-func (o LogConfigPtrOutput) Elem() LogConfigOutput {
-	return o.ApplyT(func(v *LogConfig) LogConfig {
-		if v != nil {
-			return *v
-		}
-		var ret LogConfig
-		return ret
-	}).(LogConfigOutput)
-}
-
-// <p>The service role that AppSync assumes to publish to CloudWatch logs in your account.</p>
-func (o LogConfigPtrOutput) CloudWatchLogsRoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LogConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CloudWatchLogsRoleArn
-	}).(pulumi.StringPtrOutput)
-}
-
-// <p>Set to TRUE to exclude sections that contain information such as headers, context, and evaluated mapping templates, regardless of logging level.</p>
-func (o LogConfigPtrOutput) ExcludeVerboseContent() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *LogConfig) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.ExcludeVerboseContent
-	}).(pulumi.BoolPtrOutput)
-}
-
-// <p>The field logging level. Values can be NONE, ERROR, or ALL.</p> <ul> <li> <p> <b>NONE</b>: No field-level logs are captured.</p> </li> <li> <p> <b>ERROR</b>: Logs the following information only for the fields that are in error:</p> <ul> <li> <p>The error section in the server response.</p> </li> <li> <p>Field-level errors.</p> </li> <li> <p>The generated request/response functions that got resolved for error fields.</p> </li> </ul> </li> <li> <p> <b>ALL</b>: The following information is logged for all fields in the query:</p> <ul> <li> <p>Field-level tracing information.</p> </li> <li> <p>The generated request/response functions that got resolved for each field.</p> </li> </ul> </li> </ul>
-func (o LogConfigPtrOutput) FieldLogLevel() FieldLogLevelEnumValuePtrOutput {
-	return o.ApplyT(func(v *LogConfig) *FieldLogLevelEnumValue {
-		if v == nil {
-			return nil
-		}
-		return v.FieldLogLevel
-	}).(FieldLogLevelEnumValuePtrOutput)
-}
-
-// Definition of LogConfig
-type LogConfigResponse struct {
-	// <p>The service role that AppSync assumes to publish to CloudWatch logs in your account.</p>
-	CloudWatchLogsRoleArn *string `pulumi:"cloudWatchLogsRoleArn"`
-	// <p>Set to TRUE to exclude sections that contain information such as headers, context, and evaluated mapping templates, regardless of logging level.</p>
-	ExcludeVerboseContent *bool `pulumi:"excludeVerboseContent"`
-	// <p>The field logging level. Values can be NONE, ERROR, or ALL.</p> <ul> <li> <p> <b>NONE</b>: No field-level logs are captured.</p> </li> <li> <p> <b>ERROR</b>: Logs the following information only for the fields that are in error:</p> <ul> <li> <p>The error section in the server response.</p> </li> <li> <p>Field-level errors.</p> </li> <li> <p>The generated request/response functions that got resolved for error fields.</p> </li> </ul> </li> <li> <p> <b>ALL</b>: The following information is logged for all fields in the query:</p> <ul> <li> <p>Field-level tracing information.</p> </li> <li> <p>The generated request/response functions that got resolved for each field.</p> </li> </ul> </li> </ul>
-	FieldLogLevel *FieldLogLevelEnumValueResponse `pulumi:"fieldLogLevel"`
-}
-
-// Definition of LogConfig
-type LogConfigResponseOutput struct{ *pulumi.OutputState }
-
-func (LogConfigResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LogConfigResponse)(nil)).Elem()
-}
-
-func (o LogConfigResponseOutput) ToLogConfigResponseOutput() LogConfigResponseOutput {
-	return o
-}
-
-func (o LogConfigResponseOutput) ToLogConfigResponseOutputWithContext(ctx context.Context) LogConfigResponseOutput {
-	return o
-}
-
-// <p>The service role that AppSync assumes to publish to CloudWatch logs in your account.</p>
-func (o LogConfigResponseOutput) CloudWatchLogsRoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LogConfigResponse) *string { return v.CloudWatchLogsRoleArn }).(pulumi.StringPtrOutput)
-}
-
-// <p>Set to TRUE to exclude sections that contain information such as headers, context, and evaluated mapping templates, regardless of logging level.</p>
-func (o LogConfigResponseOutput) ExcludeVerboseContent() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LogConfigResponse) *bool { return v.ExcludeVerboseContent }).(pulumi.BoolPtrOutput)
-}
-
-// <p>The field logging level. Values can be NONE, ERROR, or ALL.</p> <ul> <li> <p> <b>NONE</b>: No field-level logs are captured.</p> </li> <li> <p> <b>ERROR</b>: Logs the following information only for the fields that are in error:</p> <ul> <li> <p>The error section in the server response.</p> </li> <li> <p>Field-level errors.</p> </li> <li> <p>The generated request/response functions that got resolved for error fields.</p> </li> </ul> </li> <li> <p> <b>ALL</b>: The following information is logged for all fields in the query:</p> <ul> <li> <p>Field-level tracing information.</p> </li> <li> <p>The generated request/response functions that got resolved for each field.</p> </li> </ul> </li> </ul>
-func (o LogConfigResponseOutput) FieldLogLevel() FieldLogLevelEnumValueResponsePtrOutput {
-	return o.ApplyT(func(v LogConfigResponse) *FieldLogLevelEnumValueResponse { return v.FieldLogLevel }).(FieldLogLevelEnumValueResponsePtrOutput)
-}
-
-type LogConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (LogConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LogConfigResponse)(nil)).Elem()
-}
-
-func (o LogConfigResponsePtrOutput) ToLogConfigResponsePtrOutput() LogConfigResponsePtrOutput {
-	return o
-}
-
-func (o LogConfigResponsePtrOutput) ToLogConfigResponsePtrOutputWithContext(ctx context.Context) LogConfigResponsePtrOutput {
-	return o
-}
-
-func (o LogConfigResponsePtrOutput) Elem() LogConfigResponseOutput {
-	return o.ApplyT(func(v *LogConfigResponse) LogConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret LogConfigResponse
-		return ret
-	}).(LogConfigResponseOutput)
-}
-
-// <p>The service role that AppSync assumes to publish to CloudWatch logs in your account.</p>
-func (o LogConfigResponsePtrOutput) CloudWatchLogsRoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LogConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CloudWatchLogsRoleArn
-	}).(pulumi.StringPtrOutput)
-}
-
-// <p>Set to TRUE to exclude sections that contain information such as headers, context, and evaluated mapping templates, regardless of logging level.</p>
-func (o LogConfigResponsePtrOutput) ExcludeVerboseContent() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *LogConfigResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.ExcludeVerboseContent
-	}).(pulumi.BoolPtrOutput)
-}
-
-// <p>The field logging level. Values can be NONE, ERROR, or ALL.</p> <ul> <li> <p> <b>NONE</b>: No field-level logs are captured.</p> </li> <li> <p> <b>ERROR</b>: Logs the following information only for the fields that are in error:</p> <ul> <li> <p>The error section in the server response.</p> </li> <li> <p>Field-level errors.</p> </li> <li> <p>The generated request/response functions that got resolved for error fields.</p> </li> </ul> </li> <li> <p> <b>ALL</b>: The following information is logged for all fields in the query:</p> <ul> <li> <p>Field-level tracing information.</p> </li> <li> <p>The generated request/response functions that got resolved for each field.</p> </li> </ul> </li> </ul>
-func (o LogConfigResponsePtrOutput) FieldLogLevel() FieldLogLevelEnumValueResponsePtrOutput {
-	return o.ApplyT(func(v *LogConfigResponse) *FieldLogLevelEnumValueResponse {
-		if v == nil {
-			return nil
-		}
-		return v.FieldLogLevel
-	}).(FieldLogLevelEnumValueResponsePtrOutput)
-}
-
-// Definition of LogConfiguration
-type LogConfiguration struct {
-	// The log driver to use for the container. For tasks on FARGATElong, the supported log drivers are ``awslogs``, ``splunk``, and ``awsfirelens``. For tasks hosted on Amazon EC2 instances, the supported log drivers are ``awslogs``, ``fluentd``, ``gelf``, ``json-file``, ``journald``, ``logentries``,``syslog``, ``splunk``, and ``awsfirelens``. For more information about using the ``awslogs`` log driver, see [Using the awslogs log driver](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_awslogs.html) in the *Amazon Elastic Container Service Developer Guide*. For more information about using the ``awsfirelens`` log driver, see [Custom log routing](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html) in the *Amazon Elastic Container Service Developer Guide*.  If you have a custom driver that isn't listed, you can fork the Amazon ECS container agent project that's [available on GitHub](https://github.com/aws/amazon-ecs-agent) and customize it to work with that driver. We encourage you to submit pull requests for changes that you would like to have included. However, we don't currently provide support for running modified copies of this software.
-	LogDriver *string `pulumi:"logDriver"`
-	// The configuration options to send to the log driver. This parameter requires version 1.19 of the Docker Remote API or greater on your container instance. To check the Docker Remote API version on your container instance, log in to your container instance and run the following command: ``sudo docker version --format '{{.Server.APIVersion}}'``
-	Options interface{} `pulumi:"options"`
-	// The secrets to pass to the log configuration. For more information, see [Specifying sensitive data](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/specifying-sensitive-data.html) in the *Amazon Elastic Container Service Developer Guide*.
-	SecretOptions []Secret `pulumi:"secretOptions"`
-}
-
-// LogConfigurationInput is an input type that accepts LogConfigurationArgs and LogConfigurationOutput values.
-// You can construct a concrete instance of `LogConfigurationInput` via:
-//
-//	LogConfigurationArgs{...}
-type LogConfigurationInput interface {
-	pulumi.Input
-
-	ToLogConfigurationOutput() LogConfigurationOutput
-	ToLogConfigurationOutputWithContext(context.Context) LogConfigurationOutput
-}
-
-// Definition of LogConfiguration
-type LogConfigurationArgs struct {
-	// The log driver to use for the container. For tasks on FARGATElong, the supported log drivers are ``awslogs``, ``splunk``, and ``awsfirelens``. For tasks hosted on Amazon EC2 instances, the supported log drivers are ``awslogs``, ``fluentd``, ``gelf``, ``json-file``, ``journald``, ``logentries``,``syslog``, ``splunk``, and ``awsfirelens``. For more information about using the ``awslogs`` log driver, see [Using the awslogs log driver](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_awslogs.html) in the *Amazon Elastic Container Service Developer Guide*. For more information about using the ``awsfirelens`` log driver, see [Custom log routing](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html) in the *Amazon Elastic Container Service Developer Guide*.  If you have a custom driver that isn't listed, you can fork the Amazon ECS container agent project that's [available on GitHub](https://github.com/aws/amazon-ecs-agent) and customize it to work with that driver. We encourage you to submit pull requests for changes that you would like to have included. However, we don't currently provide support for running modified copies of this software.
-	LogDriver pulumi.StringPtrInput `pulumi:"logDriver"`
-	// The configuration options to send to the log driver. This parameter requires version 1.19 of the Docker Remote API or greater on your container instance. To check the Docker Remote API version on your container instance, log in to your container instance and run the following command: ``sudo docker version --format '{{.Server.APIVersion}}'``
-	Options pulumi.Input `pulumi:"options"`
-	// The secrets to pass to the log configuration. For more information, see [Specifying sensitive data](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/specifying-sensitive-data.html) in the *Amazon Elastic Container Service Developer Guide*.
-	SecretOptions SecretArrayInput `pulumi:"secretOptions"`
-}
-
-func (LogConfigurationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LogConfiguration)(nil)).Elem()
-}
-
-func (i LogConfigurationArgs) ToLogConfigurationOutput() LogConfigurationOutput {
-	return i.ToLogConfigurationOutputWithContext(context.Background())
-}
-
-func (i LogConfigurationArgs) ToLogConfigurationOutputWithContext(ctx context.Context) LogConfigurationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LogConfigurationOutput)
-}
-
-func (i LogConfigurationArgs) ToLogConfigurationPtrOutput() LogConfigurationPtrOutput {
-	return i.ToLogConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i LogConfigurationArgs) ToLogConfigurationPtrOutputWithContext(ctx context.Context) LogConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LogConfigurationOutput).ToLogConfigurationPtrOutputWithContext(ctx)
-}
-
-// LogConfigurationPtrInput is an input type that accepts LogConfigurationArgs, LogConfigurationPtr and LogConfigurationPtrOutput values.
-// You can construct a concrete instance of `LogConfigurationPtrInput` via:
-//
-//	        LogConfigurationArgs{...}
-//
-//	or:
-//
-//	        nil
-type LogConfigurationPtrInput interface {
-	pulumi.Input
-
-	ToLogConfigurationPtrOutput() LogConfigurationPtrOutput
-	ToLogConfigurationPtrOutputWithContext(context.Context) LogConfigurationPtrOutput
-}
-
-type logConfigurationPtrType LogConfigurationArgs
-
-func LogConfigurationPtr(v *LogConfigurationArgs) LogConfigurationPtrInput {
-	return (*logConfigurationPtrType)(v)
-}
-
-func (*logConfigurationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**LogConfiguration)(nil)).Elem()
-}
-
-func (i *logConfigurationPtrType) ToLogConfigurationPtrOutput() LogConfigurationPtrOutput {
-	return i.ToLogConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i *logConfigurationPtrType) ToLogConfigurationPtrOutputWithContext(ctx context.Context) LogConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LogConfigurationPtrOutput)
-}
-
-// Definition of LogConfiguration
-type LogConfigurationOutput struct{ *pulumi.OutputState }
-
-func (LogConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LogConfiguration)(nil)).Elem()
-}
-
-func (o LogConfigurationOutput) ToLogConfigurationOutput() LogConfigurationOutput {
-	return o
-}
-
-func (o LogConfigurationOutput) ToLogConfigurationOutputWithContext(ctx context.Context) LogConfigurationOutput {
-	return o
-}
-
-func (o LogConfigurationOutput) ToLogConfigurationPtrOutput() LogConfigurationPtrOutput {
-	return o.ToLogConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (o LogConfigurationOutput) ToLogConfigurationPtrOutputWithContext(ctx context.Context) LogConfigurationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogConfiguration) *LogConfiguration {
-		return &v
-	}).(LogConfigurationPtrOutput)
-}
-
-// The log driver to use for the container. For tasks on FARGATElong, the supported log drivers are “awslogs“, “splunk“, and “awsfirelens“. For tasks hosted on Amazon EC2 instances, the supported log drivers are “awslogs“, “fluentd“, “gelf“, “json-file“, “journald“, “logentries“,“syslog“, “splunk“, and “awsfirelens“. For more information about using the “awslogs“ log driver, see [Using the awslogs log driver](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_awslogs.html) in the *Amazon Elastic Container Service Developer Guide*. For more information about using the “awsfirelens“ log driver, see [Custom log routing](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html) in the *Amazon Elastic Container Service Developer Guide*.  If you have a custom driver that isn't listed, you can fork the Amazon ECS container agent project that's [available on GitHub](https://github.com/aws/amazon-ecs-agent) and customize it to work with that driver. We encourage you to submit pull requests for changes that you would like to have included. However, we don't currently provide support for running modified copies of this software.
-func (o LogConfigurationOutput) LogDriver() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LogConfiguration) *string { return v.LogDriver }).(pulumi.StringPtrOutput)
-}
-
-// The configuration options to send to the log driver. This parameter requires version 1.19 of the Docker Remote API or greater on your container instance. To check the Docker Remote API version on your container instance, log in to your container instance and run the following command: “sudo docker version --format '{{.Server.APIVersion}}'“
-func (o LogConfigurationOutput) Options() pulumi.AnyOutput {
-	return o.ApplyT(func(v LogConfiguration) interface{} { return v.Options }).(pulumi.AnyOutput)
-}
-
-// The secrets to pass to the log configuration. For more information, see [Specifying sensitive data](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/specifying-sensitive-data.html) in the *Amazon Elastic Container Service Developer Guide*.
-func (o LogConfigurationOutput) SecretOptions() SecretArrayOutput {
-	return o.ApplyT(func(v LogConfiguration) []Secret { return v.SecretOptions }).(SecretArrayOutput)
-}
-
-type LogConfigurationPtrOutput struct{ *pulumi.OutputState }
-
-func (LogConfigurationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LogConfiguration)(nil)).Elem()
-}
-
-func (o LogConfigurationPtrOutput) ToLogConfigurationPtrOutput() LogConfigurationPtrOutput {
-	return o
-}
-
-func (o LogConfigurationPtrOutput) ToLogConfigurationPtrOutputWithContext(ctx context.Context) LogConfigurationPtrOutput {
-	return o
-}
-
-func (o LogConfigurationPtrOutput) Elem() LogConfigurationOutput {
-	return o.ApplyT(func(v *LogConfiguration) LogConfiguration {
-		if v != nil {
-			return *v
-		}
-		var ret LogConfiguration
-		return ret
-	}).(LogConfigurationOutput)
-}
-
-// The log driver to use for the container. For tasks on FARGATElong, the supported log drivers are “awslogs“, “splunk“, and “awsfirelens“. For tasks hosted on Amazon EC2 instances, the supported log drivers are “awslogs“, “fluentd“, “gelf“, “json-file“, “journald“, “logentries“,“syslog“, “splunk“, and “awsfirelens“. For more information about using the “awslogs“ log driver, see [Using the awslogs log driver](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_awslogs.html) in the *Amazon Elastic Container Service Developer Guide*. For more information about using the “awsfirelens“ log driver, see [Custom log routing](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html) in the *Amazon Elastic Container Service Developer Guide*.  If you have a custom driver that isn't listed, you can fork the Amazon ECS container agent project that's [available on GitHub](https://github.com/aws/amazon-ecs-agent) and customize it to work with that driver. We encourage you to submit pull requests for changes that you would like to have included. However, we don't currently provide support for running modified copies of this software.
-func (o LogConfigurationPtrOutput) LogDriver() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LogConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LogDriver
-	}).(pulumi.StringPtrOutput)
-}
-
-// The configuration options to send to the log driver. This parameter requires version 1.19 of the Docker Remote API or greater on your container instance. To check the Docker Remote API version on your container instance, log in to your container instance and run the following command: “sudo docker version --format '{{.Server.APIVersion}}'“
-func (o LogConfigurationPtrOutput) Options() pulumi.AnyOutput {
-	return o.ApplyT(func(v *LogConfiguration) interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.Options
-	}).(pulumi.AnyOutput)
-}
-
-// The secrets to pass to the log configuration. For more information, see [Specifying sensitive data](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/specifying-sensitive-data.html) in the *Amazon Elastic Container Service Developer Guide*.
-func (o LogConfigurationPtrOutput) SecretOptions() SecretArrayOutput {
-	return o.ApplyT(func(v *LogConfiguration) []Secret {
-		if v == nil {
-			return nil
-		}
-		return v.SecretOptions
-	}).(SecretArrayOutput)
-}
-
-// Definition of LogConfiguration
-type LogConfigurationResponse struct {
-	// The log driver to use for the container. For tasks on FARGATElong, the supported log drivers are ``awslogs``, ``splunk``, and ``awsfirelens``. For tasks hosted on Amazon EC2 instances, the supported log drivers are ``awslogs``, ``fluentd``, ``gelf``, ``json-file``, ``journald``, ``logentries``,``syslog``, ``splunk``, and ``awsfirelens``. For more information about using the ``awslogs`` log driver, see [Using the awslogs log driver](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_awslogs.html) in the *Amazon Elastic Container Service Developer Guide*. For more information about using the ``awsfirelens`` log driver, see [Custom log routing](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html) in the *Amazon Elastic Container Service Developer Guide*.  If you have a custom driver that isn't listed, you can fork the Amazon ECS container agent project that's [available on GitHub](https://github.com/aws/amazon-ecs-agent) and customize it to work with that driver. We encourage you to submit pull requests for changes that you would like to have included. However, we don't currently provide support for running modified copies of this software.
-	LogDriver *string `pulumi:"logDriver"`
-	// The configuration options to send to the log driver. This parameter requires version 1.19 of the Docker Remote API or greater on your container instance. To check the Docker Remote API version on your container instance, log in to your container instance and run the following command: ``sudo docker version --format '{{.Server.APIVersion}}'``
-	Options interface{} `pulumi:"options"`
-	// The secrets to pass to the log configuration. For more information, see [Specifying sensitive data](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/specifying-sensitive-data.html) in the *Amazon Elastic Container Service Developer Guide*.
-	SecretOptions []SecretResponse `pulumi:"secretOptions"`
-}
-
-// Definition of LogConfiguration
-type LogConfigurationResponseOutput struct{ *pulumi.OutputState }
-
-func (LogConfigurationResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LogConfigurationResponse)(nil)).Elem()
-}
-
-func (o LogConfigurationResponseOutput) ToLogConfigurationResponseOutput() LogConfigurationResponseOutput {
-	return o
-}
-
-func (o LogConfigurationResponseOutput) ToLogConfigurationResponseOutputWithContext(ctx context.Context) LogConfigurationResponseOutput {
-	return o
-}
-
-// The log driver to use for the container. For tasks on FARGATElong, the supported log drivers are “awslogs“, “splunk“, and “awsfirelens“. For tasks hosted on Amazon EC2 instances, the supported log drivers are “awslogs“, “fluentd“, “gelf“, “json-file“, “journald“, “logentries“,“syslog“, “splunk“, and “awsfirelens“. For more information about using the “awslogs“ log driver, see [Using the awslogs log driver](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_awslogs.html) in the *Amazon Elastic Container Service Developer Guide*. For more information about using the “awsfirelens“ log driver, see [Custom log routing](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html) in the *Amazon Elastic Container Service Developer Guide*.  If you have a custom driver that isn't listed, you can fork the Amazon ECS container agent project that's [available on GitHub](https://github.com/aws/amazon-ecs-agent) and customize it to work with that driver. We encourage you to submit pull requests for changes that you would like to have included. However, we don't currently provide support for running modified copies of this software.
-func (o LogConfigurationResponseOutput) LogDriver() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LogConfigurationResponse) *string { return v.LogDriver }).(pulumi.StringPtrOutput)
-}
-
-// The configuration options to send to the log driver. This parameter requires version 1.19 of the Docker Remote API or greater on your container instance. To check the Docker Remote API version on your container instance, log in to your container instance and run the following command: “sudo docker version --format '{{.Server.APIVersion}}'“
-func (o LogConfigurationResponseOutput) Options() pulumi.AnyOutput {
-	return o.ApplyT(func(v LogConfigurationResponse) interface{} { return v.Options }).(pulumi.AnyOutput)
-}
-
-// The secrets to pass to the log configuration. For more information, see [Specifying sensitive data](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/specifying-sensitive-data.html) in the *Amazon Elastic Container Service Developer Guide*.
-func (o LogConfigurationResponseOutput) SecretOptions() SecretResponseArrayOutput {
-	return o.ApplyT(func(v LogConfigurationResponse) []SecretResponse { return v.SecretOptions }).(SecretResponseArrayOutput)
-}
-
-type LogConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (LogConfigurationResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LogConfigurationResponse)(nil)).Elem()
-}
-
-func (o LogConfigurationResponsePtrOutput) ToLogConfigurationResponsePtrOutput() LogConfigurationResponsePtrOutput {
-	return o
-}
-
-func (o LogConfigurationResponsePtrOutput) ToLogConfigurationResponsePtrOutputWithContext(ctx context.Context) LogConfigurationResponsePtrOutput {
-	return o
-}
-
-func (o LogConfigurationResponsePtrOutput) Elem() LogConfigurationResponseOutput {
-	return o.ApplyT(func(v *LogConfigurationResponse) LogConfigurationResponse {
-		if v != nil {
-			return *v
-		}
-		var ret LogConfigurationResponse
-		return ret
-	}).(LogConfigurationResponseOutput)
-}
-
-// The log driver to use for the container. For tasks on FARGATElong, the supported log drivers are “awslogs“, “splunk“, and “awsfirelens“. For tasks hosted on Amazon EC2 instances, the supported log drivers are “awslogs“, “fluentd“, “gelf“, “json-file“, “journald“, “logentries“,“syslog“, “splunk“, and “awsfirelens“. For more information about using the “awslogs“ log driver, see [Using the awslogs log driver](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_awslogs.html) in the *Amazon Elastic Container Service Developer Guide*. For more information about using the “awsfirelens“ log driver, see [Custom log routing](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html) in the *Amazon Elastic Container Service Developer Guide*.  If you have a custom driver that isn't listed, you can fork the Amazon ECS container agent project that's [available on GitHub](https://github.com/aws/amazon-ecs-agent) and customize it to work with that driver. We encourage you to submit pull requests for changes that you would like to have included. However, we don't currently provide support for running modified copies of this software.
-func (o LogConfigurationResponsePtrOutput) LogDriver() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LogConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LogDriver
-	}).(pulumi.StringPtrOutput)
-}
-
-// The configuration options to send to the log driver. This parameter requires version 1.19 of the Docker Remote API or greater on your container instance. To check the Docker Remote API version on your container instance, log in to your container instance and run the following command: “sudo docker version --format '{{.Server.APIVersion}}'“
-func (o LogConfigurationResponsePtrOutput) Options() pulumi.AnyOutput {
-	return o.ApplyT(func(v *LogConfigurationResponse) interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.Options
-	}).(pulumi.AnyOutput)
-}
-
-// The secrets to pass to the log configuration. For more information, see [Specifying sensitive data](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/specifying-sensitive-data.html) in the *Amazon Elastic Container Service Developer Guide*.
-func (o LogConfigurationResponsePtrOutput) SecretOptions() SecretResponseArrayOutput {
-	return o.ApplyT(func(v *LogConfigurationResponse) []SecretResponse {
-		if v == nil {
-			return nil
-		}
-		return v.SecretOptions
-	}).(SecretResponseArrayOutput)
-}
-
-// Definition of LogPublishingOption
-type LogPublishingOption struct {
-	// <p>The Amazon Resource Name (ARN) of the CloudWatch Logs group to publish logs to.</p>
-	CloudWatchLogsLogGroupArn *string `pulumi:"cloudWatchLogsLogGroupArn"`
-	// <p>Whether the log should be published.</p>
-	Enabled *bool `pulumi:"enabled"`
-}
-
-// LogPublishingOptionInput is an input type that accepts LogPublishingOptionArgs and LogPublishingOptionOutput values.
-// You can construct a concrete instance of `LogPublishingOptionInput` via:
-//
-//	LogPublishingOptionArgs{...}
-type LogPublishingOptionInput interface {
-	pulumi.Input
-
-	ToLogPublishingOptionOutput() LogPublishingOptionOutput
-	ToLogPublishingOptionOutputWithContext(context.Context) LogPublishingOptionOutput
-}
-
-// Definition of LogPublishingOption
-type LogPublishingOptionArgs struct {
-	// <p>The Amazon Resource Name (ARN) of the CloudWatch Logs group to publish logs to.</p>
-	CloudWatchLogsLogGroupArn pulumi.StringPtrInput `pulumi:"cloudWatchLogsLogGroupArn"`
-	// <p>Whether the log should be published.</p>
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-}
-
-func (LogPublishingOptionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LogPublishingOption)(nil)).Elem()
-}
-
-func (i LogPublishingOptionArgs) ToLogPublishingOptionOutput() LogPublishingOptionOutput {
-	return i.ToLogPublishingOptionOutputWithContext(context.Background())
-}
-
-func (i LogPublishingOptionArgs) ToLogPublishingOptionOutputWithContext(ctx context.Context) LogPublishingOptionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LogPublishingOptionOutput)
-}
-
-// LogPublishingOptionMapInput is an input type that accepts LogPublishingOptionMap and LogPublishingOptionMapOutput values.
-// You can construct a concrete instance of `LogPublishingOptionMapInput` via:
-//
-//	LogPublishingOptionMap{ "key": LogPublishingOptionArgs{...} }
-type LogPublishingOptionMapInput interface {
-	pulumi.Input
-
-	ToLogPublishingOptionMapOutput() LogPublishingOptionMapOutput
-	ToLogPublishingOptionMapOutputWithContext(context.Context) LogPublishingOptionMapOutput
-}
-
-type LogPublishingOptionMap map[string]LogPublishingOptionInput
-
-func (LogPublishingOptionMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]LogPublishingOption)(nil)).Elem()
-}
-
-func (i LogPublishingOptionMap) ToLogPublishingOptionMapOutput() LogPublishingOptionMapOutput {
-	return i.ToLogPublishingOptionMapOutputWithContext(context.Background())
-}
-
-func (i LogPublishingOptionMap) ToLogPublishingOptionMapOutputWithContext(ctx context.Context) LogPublishingOptionMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LogPublishingOptionMapOutput)
-}
-
-// Definition of LogPublishingOption
-type LogPublishingOptionOutput struct{ *pulumi.OutputState }
-
-func (LogPublishingOptionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LogPublishingOption)(nil)).Elem()
-}
-
-func (o LogPublishingOptionOutput) ToLogPublishingOptionOutput() LogPublishingOptionOutput {
-	return o
-}
-
-func (o LogPublishingOptionOutput) ToLogPublishingOptionOutputWithContext(ctx context.Context) LogPublishingOptionOutput {
-	return o
-}
-
-// <p>The Amazon Resource Name (ARN) of the CloudWatch Logs group to publish logs to.</p>
-func (o LogPublishingOptionOutput) CloudWatchLogsLogGroupArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LogPublishingOption) *string { return v.CloudWatchLogsLogGroupArn }).(pulumi.StringPtrOutput)
-}
-
-// <p>Whether the log should be published.</p>
-func (o LogPublishingOptionOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LogPublishingOption) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
-}
-
-type LogPublishingOptionMapOutput struct{ *pulumi.OutputState }
-
-func (LogPublishingOptionMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]LogPublishingOption)(nil)).Elem()
-}
-
-func (o LogPublishingOptionMapOutput) ToLogPublishingOptionMapOutput() LogPublishingOptionMapOutput {
-	return o
-}
-
-func (o LogPublishingOptionMapOutput) ToLogPublishingOptionMapOutputWithContext(ctx context.Context) LogPublishingOptionMapOutput {
-	return o
-}
-
-func (o LogPublishingOptionMapOutput) MapIndex(k pulumi.StringInput) LogPublishingOptionOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) LogPublishingOption {
-		return vs[0].(map[string]LogPublishingOption)[vs[1].(string)]
-	}).(LogPublishingOptionOutput)
-}
-
-// Definition of LogPublishingOption
-type LogPublishingOptionResponse struct {
-	// <p>The Amazon Resource Name (ARN) of the CloudWatch Logs group to publish logs to.</p>
-	CloudWatchLogsLogGroupArn *string `pulumi:"cloudWatchLogsLogGroupArn"`
-	// <p>Whether the log should be published.</p>
-	Enabled *bool `pulumi:"enabled"`
-}
-
-// Definition of LogPublishingOption
-type LogPublishingOptionResponseOutput struct{ *pulumi.OutputState }
-
-func (LogPublishingOptionResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LogPublishingOptionResponse)(nil)).Elem()
-}
-
-func (o LogPublishingOptionResponseOutput) ToLogPublishingOptionResponseOutput() LogPublishingOptionResponseOutput {
-	return o
-}
-
-func (o LogPublishingOptionResponseOutput) ToLogPublishingOptionResponseOutputWithContext(ctx context.Context) LogPublishingOptionResponseOutput {
-	return o
-}
-
-// <p>The Amazon Resource Name (ARN) of the CloudWatch Logs group to publish logs to.</p>
-func (o LogPublishingOptionResponseOutput) CloudWatchLogsLogGroupArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LogPublishingOptionResponse) *string { return v.CloudWatchLogsLogGroupArn }).(pulumi.StringPtrOutput)
-}
-
-// <p>Whether the log should be published.</p>
-func (o LogPublishingOptionResponseOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LogPublishingOptionResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
-}
-
-type LogPublishingOptionResponseMapOutput struct{ *pulumi.OutputState }
-
-func (LogPublishingOptionResponseMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]LogPublishingOptionResponse)(nil)).Elem()
-}
-
-func (o LogPublishingOptionResponseMapOutput) ToLogPublishingOptionResponseMapOutput() LogPublishingOptionResponseMapOutput {
-	return o
-}
-
-func (o LogPublishingOptionResponseMapOutput) ToLogPublishingOptionResponseMapOutputWithContext(ctx context.Context) LogPublishingOptionResponseMapOutput {
-	return o
-}
-
-func (o LogPublishingOptionResponseMapOutput) MapIndex(k pulumi.StringInput) LogPublishingOptionResponseOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) LogPublishingOptionResponse {
-		return vs[0].(map[string]LogPublishingOptionResponse)[vs[1].(string)]
-	}).(LogPublishingOptionResponseOutput)
-}
-
-// Definition of LogSetup
-type LogSetup struct {
-	// <p>If a log type is enabled, that log type exports its control plane logs to CloudWatch Logs. If a log type isn't enabled, that log type doesn't export its control plane logs. Each individual log type can be enabled or disabled independently.</p>
-	Enabled *bool `pulumi:"enabled"`
-	// <p>The available cluster control plane log types.</p>
-	Types []string `pulumi:"types"`
-}
-
-// LogSetupInput is an input type that accepts LogSetupArgs and LogSetupOutput values.
-// You can construct a concrete instance of `LogSetupInput` via:
-//
-//	LogSetupArgs{...}
-type LogSetupInput interface {
-	pulumi.Input
-
-	ToLogSetupOutput() LogSetupOutput
-	ToLogSetupOutputWithContext(context.Context) LogSetupOutput
-}
-
-// Definition of LogSetup
-type LogSetupArgs struct {
-	// <p>If a log type is enabled, that log type exports its control plane logs to CloudWatch Logs. If a log type isn't enabled, that log type doesn't export its control plane logs. Each individual log type can be enabled or disabled independently.</p>
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// <p>The available cluster control plane log types.</p>
-	Types pulumi.StringArrayInput `pulumi:"types"`
-}
-
-func (LogSetupArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LogSetup)(nil)).Elem()
-}
-
-func (i LogSetupArgs) ToLogSetupOutput() LogSetupOutput {
-	return i.ToLogSetupOutputWithContext(context.Background())
-}
-
-func (i LogSetupArgs) ToLogSetupOutputWithContext(ctx context.Context) LogSetupOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LogSetupOutput)
-}
-
-// LogSetupArrayInput is an input type that accepts LogSetupArray and LogSetupArrayOutput values.
-// You can construct a concrete instance of `LogSetupArrayInput` via:
-//
-//	LogSetupArray{ LogSetupArgs{...} }
-type LogSetupArrayInput interface {
-	pulumi.Input
-
-	ToLogSetupArrayOutput() LogSetupArrayOutput
-	ToLogSetupArrayOutputWithContext(context.Context) LogSetupArrayOutput
-}
-
-type LogSetupArray []LogSetupInput
-
-func (LogSetupArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]LogSetup)(nil)).Elem()
-}
-
-func (i LogSetupArray) ToLogSetupArrayOutput() LogSetupArrayOutput {
-	return i.ToLogSetupArrayOutputWithContext(context.Background())
-}
-
-func (i LogSetupArray) ToLogSetupArrayOutputWithContext(ctx context.Context) LogSetupArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LogSetupArrayOutput)
-}
-
-// Definition of LogSetup
-type LogSetupOutput struct{ *pulumi.OutputState }
-
-func (LogSetupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LogSetup)(nil)).Elem()
-}
-
-func (o LogSetupOutput) ToLogSetupOutput() LogSetupOutput {
-	return o
-}
-
-func (o LogSetupOutput) ToLogSetupOutputWithContext(ctx context.Context) LogSetupOutput {
-	return o
-}
-
-// <p>If a log type is enabled, that log type exports its control plane logs to CloudWatch Logs. If a log type isn't enabled, that log type doesn't export its control plane logs. Each individual log type can be enabled or disabled independently.</p>
-func (o LogSetupOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LogSetup) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
-}
-
-// <p>The available cluster control plane log types.</p>
-func (o LogSetupOutput) Types() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LogSetup) []string { return v.Types }).(pulumi.StringArrayOutput)
-}
-
-type LogSetupArrayOutput struct{ *pulumi.OutputState }
-
-func (LogSetupArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]LogSetup)(nil)).Elem()
-}
-
-func (o LogSetupArrayOutput) ToLogSetupArrayOutput() LogSetupArrayOutput {
-	return o
-}
-
-func (o LogSetupArrayOutput) ToLogSetupArrayOutputWithContext(ctx context.Context) LogSetupArrayOutput {
-	return o
-}
-
-func (o LogSetupArrayOutput) Index(i pulumi.IntInput) LogSetupOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LogSetup {
-		return vs[0].([]LogSetup)[vs[1].(int)]
-	}).(LogSetupOutput)
-}
-
-// Definition of LogSetup
-type LogSetupResponse struct {
-	// <p>If a log type is enabled, that log type exports its control plane logs to CloudWatch Logs. If a log type isn't enabled, that log type doesn't export its control plane logs. Each individual log type can be enabled or disabled independently.</p>
-	Enabled *bool `pulumi:"enabled"`
-	// <p>The available cluster control plane log types.</p>
-	Types []string `pulumi:"types"`
-}
-
-// Definition of LogSetup
-type LogSetupResponseOutput struct{ *pulumi.OutputState }
-
-func (LogSetupResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LogSetupResponse)(nil)).Elem()
-}
-
-func (o LogSetupResponseOutput) ToLogSetupResponseOutput() LogSetupResponseOutput {
-	return o
-}
-
-func (o LogSetupResponseOutput) ToLogSetupResponseOutputWithContext(ctx context.Context) LogSetupResponseOutput {
-	return o
-}
-
-// <p>If a log type is enabled, that log type exports its control plane logs to CloudWatch Logs. If a log type isn't enabled, that log type doesn't export its control plane logs. Each individual log type can be enabled or disabled independently.</p>
-func (o LogSetupResponseOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LogSetupResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
-}
-
-// <p>The available cluster control plane log types.</p>
-func (o LogSetupResponseOutput) Types() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LogSetupResponse) []string { return v.Types }).(pulumi.StringArrayOutput)
-}
-
-type LogSetupResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (LogSetupResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]LogSetupResponse)(nil)).Elem()
-}
-
-func (o LogSetupResponseArrayOutput) ToLogSetupResponseArrayOutput() LogSetupResponseArrayOutput {
-	return o
-}
-
-func (o LogSetupResponseArrayOutput) ToLogSetupResponseArrayOutputWithContext(ctx context.Context) LogSetupResponseArrayOutput {
-	return o
-}
-
-func (o LogSetupResponseArrayOutput) Index(i pulumi.IntInput) LogSetupResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LogSetupResponse {
-		return vs[0].([]LogSetupResponse)[vs[1].(int)]
-	}).(LogSetupResponseOutput)
-}
-
-// Definition of Logging
-type Logging struct {
-	// The Amazon S3 bucket to store the access logs in, for example, ``myawslogbucket.s3.amazonaws.com``.
-	Bucket *string `pulumi:"bucket"`
-	// <p>The cluster control plane logging configuration for your cluster.</p>
-	ClusterLogging []LogSetup `pulumi:"clusterLogging"`
-	// Specifies whether you want CloudFront to include cookies in access logs, specify ``true`` for ``IncludeCookies``. If you choose to include cookies in logs, CloudFront logs all cookies regardless of how you configure the cache behaviors for this distribution. If you don't want to include cookies when you create a distribution or if you want to disable include cookies for an existing distribution, specify ``false`` for ``IncludeCookies``.
-	IncludeCookies *bool `pulumi:"includeCookies"`
-	// An optional string that you want CloudFront to prefix to the access log ``filenames`` for this distribution, for example, ``myprefix/``. If you want to enable logging, but you don't want to specify a prefix, you still must include an empty ``Prefix`` element in the ``Logging`` element.
-	Prefix *string `pulumi:"prefix"`
-}
-
-// LoggingInput is an input type that accepts LoggingArgs and LoggingOutput values.
-// You can construct a concrete instance of `LoggingInput` via:
-//
-//	LoggingArgs{...}
-type LoggingInput interface {
-	pulumi.Input
-
-	ToLoggingOutput() LoggingOutput
-	ToLoggingOutputWithContext(context.Context) LoggingOutput
-}
-
-// Definition of Logging
-type LoggingArgs struct {
-	// The Amazon S3 bucket to store the access logs in, for example, ``myawslogbucket.s3.amazonaws.com``.
-	Bucket pulumi.StringPtrInput `pulumi:"bucket"`
-	// <p>The cluster control plane logging configuration for your cluster.</p>
-	ClusterLogging LogSetupArrayInput `pulumi:"clusterLogging"`
-	// Specifies whether you want CloudFront to include cookies in access logs, specify ``true`` for ``IncludeCookies``. If you choose to include cookies in logs, CloudFront logs all cookies regardless of how you configure the cache behaviors for this distribution. If you don't want to include cookies when you create a distribution or if you want to disable include cookies for an existing distribution, specify ``false`` for ``IncludeCookies``.
-	IncludeCookies pulumi.BoolPtrInput `pulumi:"includeCookies"`
-	// An optional string that you want CloudFront to prefix to the access log ``filenames`` for this distribution, for example, ``myprefix/``. If you want to enable logging, but you don't want to specify a prefix, you still must include an empty ``Prefix`` element in the ``Logging`` element.
-	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
-}
-
-func (LoggingArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Logging)(nil)).Elem()
-}
-
-func (i LoggingArgs) ToLoggingOutput() LoggingOutput {
-	return i.ToLoggingOutputWithContext(context.Background())
-}
-
-func (i LoggingArgs) ToLoggingOutputWithContext(ctx context.Context) LoggingOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoggingOutput)
-}
-
-func (i LoggingArgs) ToLoggingPtrOutput() LoggingPtrOutput {
-	return i.ToLoggingPtrOutputWithContext(context.Background())
-}
-
-func (i LoggingArgs) ToLoggingPtrOutputWithContext(ctx context.Context) LoggingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoggingOutput).ToLoggingPtrOutputWithContext(ctx)
-}
-
-// LoggingPtrInput is an input type that accepts LoggingArgs, LoggingPtr and LoggingPtrOutput values.
-// You can construct a concrete instance of `LoggingPtrInput` via:
-//
-//	        LoggingArgs{...}
-//
-//	or:
-//
-//	        nil
-type LoggingPtrInput interface {
-	pulumi.Input
-
-	ToLoggingPtrOutput() LoggingPtrOutput
-	ToLoggingPtrOutputWithContext(context.Context) LoggingPtrOutput
-}
-
-type loggingPtrType LoggingArgs
-
-func LoggingPtr(v *LoggingArgs) LoggingPtrInput {
-	return (*loggingPtrType)(v)
-}
-
-func (*loggingPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Logging)(nil)).Elem()
-}
-
-func (i *loggingPtrType) ToLoggingPtrOutput() LoggingPtrOutput {
-	return i.ToLoggingPtrOutputWithContext(context.Background())
-}
-
-func (i *loggingPtrType) ToLoggingPtrOutputWithContext(ctx context.Context) LoggingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoggingPtrOutput)
-}
-
-// Definition of Logging
-type LoggingOutput struct{ *pulumi.OutputState }
-
-func (LoggingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Logging)(nil)).Elem()
-}
-
-func (o LoggingOutput) ToLoggingOutput() LoggingOutput {
-	return o
-}
-
-func (o LoggingOutput) ToLoggingOutputWithContext(ctx context.Context) LoggingOutput {
-	return o
-}
-
-func (o LoggingOutput) ToLoggingPtrOutput() LoggingPtrOutput {
-	return o.ToLoggingPtrOutputWithContext(context.Background())
-}
-
-func (o LoggingOutput) ToLoggingPtrOutputWithContext(ctx context.Context) LoggingPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Logging) *Logging {
-		return &v
-	}).(LoggingPtrOutput)
-}
-
-// The Amazon S3 bucket to store the access logs in, for example, “myawslogbucket.s3.amazonaws.com“.
-func (o LoggingOutput) Bucket() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Logging) *string { return v.Bucket }).(pulumi.StringPtrOutput)
-}
-
-// <p>The cluster control plane logging configuration for your cluster.</p>
-func (o LoggingOutput) ClusterLogging() LogSetupArrayOutput {
-	return o.ApplyT(func(v Logging) []LogSetup { return v.ClusterLogging }).(LogSetupArrayOutput)
-}
-
-// Specifies whether you want CloudFront to include cookies in access logs, specify “true“ for “IncludeCookies“. If you choose to include cookies in logs, CloudFront logs all cookies regardless of how you configure the cache behaviors for this distribution. If you don't want to include cookies when you create a distribution or if you want to disable include cookies for an existing distribution, specify “false“ for “IncludeCookies“.
-func (o LoggingOutput) IncludeCookies() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v Logging) *bool { return v.IncludeCookies }).(pulumi.BoolPtrOutput)
-}
-
-// An optional string that you want CloudFront to prefix to the access log “filenames“ for this distribution, for example, “myprefix/“. If you want to enable logging, but you don't want to specify a prefix, you still must include an empty “Prefix“ element in the “Logging“ element.
-func (o LoggingOutput) Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Logging) *string { return v.Prefix }).(pulumi.StringPtrOutput)
-}
-
-type LoggingPtrOutput struct{ *pulumi.OutputState }
-
-func (LoggingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Logging)(nil)).Elem()
-}
-
-func (o LoggingPtrOutput) ToLoggingPtrOutput() LoggingPtrOutput {
-	return o
-}
-
-func (o LoggingPtrOutput) ToLoggingPtrOutputWithContext(ctx context.Context) LoggingPtrOutput {
-	return o
-}
-
-func (o LoggingPtrOutput) Elem() LoggingOutput {
-	return o.ApplyT(func(v *Logging) Logging {
-		if v != nil {
-			return *v
-		}
-		var ret Logging
-		return ret
-	}).(LoggingOutput)
-}
-
-// The Amazon S3 bucket to store the access logs in, for example, “myawslogbucket.s3.amazonaws.com“.
-func (o LoggingPtrOutput) Bucket() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Logging) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Bucket
-	}).(pulumi.StringPtrOutput)
-}
-
-// <p>The cluster control plane logging configuration for your cluster.</p>
-func (o LoggingPtrOutput) ClusterLogging() LogSetupArrayOutput {
-	return o.ApplyT(func(v *Logging) []LogSetup {
-		if v == nil {
-			return nil
-		}
-		return v.ClusterLogging
-	}).(LogSetupArrayOutput)
-}
-
-// Specifies whether you want CloudFront to include cookies in access logs, specify “true“ for “IncludeCookies“. If you choose to include cookies in logs, CloudFront logs all cookies regardless of how you configure the cache behaviors for this distribution. If you don't want to include cookies when you create a distribution or if you want to disable include cookies for an existing distribution, specify “false“ for “IncludeCookies“.
-func (o LoggingPtrOutput) IncludeCookies() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Logging) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.IncludeCookies
-	}).(pulumi.BoolPtrOutput)
-}
-
-// An optional string that you want CloudFront to prefix to the access log “filenames“ for this distribution, for example, “myprefix/“. If you want to enable logging, but you don't want to specify a prefix, you still must include an empty “Prefix“ element in the “Logging“ element.
-func (o LoggingPtrOutput) Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Logging) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Prefix
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
+	pulumi.RegisterOutputType(CustomActionResponseV1Output{})
+	pulumi.RegisterOutputType(CustomActionResponseV1ArrayOutput{})
+	pulumi.RegisterOutputType(CustomErrorResponseOutput{})
+	pulumi.RegisterOutputType(CustomErrorResponseArrayOutput{})
+	pulumi.RegisterOutputType(CustomErrorResponseResponseOutput{})
+	pulumi.RegisterOutputType(CustomErrorResponseResponseArrayOutput{})
 	pulumi.RegisterOutputType(CustomOriginConfigResponseOutput{})
 	pulumi.RegisterOutputType(CustomOriginConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(DBClusterRoleOutput{})
@@ -67457,6 +66744,12 @@ func init() {
 	pulumi.RegisterOutputType(DimensionArrayOutput{})
 	pulumi.RegisterOutputType(DimensionResponseOutput{})
 	pulumi.RegisterOutputType(DimensionResponseArrayOutput{})
+	pulumi.RegisterOutputType(DimensionResponseV1Output{})
+	pulumi.RegisterOutputType(DimensionResponseV1ArrayOutput{})
+	pulumi.RegisterOutputType(DimensionResponseV2Output{})
+	pulumi.RegisterOutputType(DimensionResponseV2ArrayOutput{})
+	pulumi.RegisterOutputType(DimensionResponseV3Output{})
+	pulumi.RegisterOutputType(DimensionResponseV3ArrayOutput{})
 	pulumi.RegisterOutputType(DiskOutput{})
 	pulumi.RegisterOutputType(DiskArrayOutput{})
 	pulumi.RegisterOutputType(DiskResponseOutput{})
@@ -67648,6 +66941,8 @@ func init() {
 	pulumi.RegisterOutputType(EncryptionConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(EncryptionConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(EncryptionConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(EncryptionConfigurationResponseV1Output{})
+	pulumi.RegisterOutputType(EncryptionConfigurationResponseV1PtrOutput{})
 	pulumi.RegisterOutputType(EndpointConfigurationOutput{})
 	pulumi.RegisterOutputType(EndpointConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(EndpointConfigurationResponseOutput{})
@@ -67680,6 +66975,8 @@ func init() {
 	pulumi.RegisterOutputType(EphemeralStoragePtrOutput{})
 	pulumi.RegisterOutputType(EphemeralStorageResponseOutput{})
 	pulumi.RegisterOutputType(EphemeralStorageResponsePtrOutput{})
+	pulumi.RegisterOutputType(EphemeralStorageResponseV1Output{})
+	pulumi.RegisterOutputType(EphemeralStorageResponseV1PtrOutput{})
 	pulumi.RegisterOutputType(ErrorDetailOutput{})
 	pulumi.RegisterOutputType(ErrorDetailArrayOutput{})
 	pulumi.RegisterOutputType(ErrorDetailResponseOutput{})
@@ -67752,6 +67049,8 @@ func init() {
 	pulumi.RegisterOutputType(FilterGroupResponseArrayOutput{})
 	pulumi.RegisterOutputType(FilterResponseOutput{})
 	pulumi.RegisterOutputType(FilterResponseArrayOutput{})
+	pulumi.RegisterOutputType(FilterResponseV1Output{})
+	pulumi.RegisterOutputType(FilterResponseV1ArrayOutput{})
 	pulumi.RegisterOutputType(FilterRuleOutput{})
 	pulumi.RegisterOutputType(FilterRuleArrayOutput{})
 	pulumi.RegisterOutputType(FilterRuleResponseOutput{})
@@ -68009,6 +67308,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceIpv6AddressArrayOutput{})
 	pulumi.RegisterOutputType(InstanceIpv6AddressResponseOutput{})
 	pulumi.RegisterOutputType(InstanceIpv6AddressResponseArrayOutput{})
+	pulumi.RegisterOutputType(InstanceIpv6AddressResponseV1Output{})
+	pulumi.RegisterOutputType(InstanceIpv6AddressResponseV1ArrayOutput{})
 	pulumi.RegisterOutputType(InstanceIpv6PrefixOutput{})
 	pulumi.RegisterOutputType(InstanceIpv6PrefixArrayOutput{})
 	pulumi.RegisterOutputType(InstanceIpv6PrefixResponseOutput{})
@@ -68229,6 +67530,8 @@ func init() {
 	pulumi.RegisterOutputType(LaunchTemplateSpecificationPtrOutput{})
 	pulumi.RegisterOutputType(LaunchTemplateSpecificationResponseOutput{})
 	pulumi.RegisterOutputType(LaunchTemplateSpecificationResponsePtrOutput{})
+	pulumi.RegisterOutputType(LaunchTemplateSpecificationResponseV1Output{})
+	pulumi.RegisterOutputType(LaunchTemplateSpecificationResponseV1PtrOutput{})
 	pulumi.RegisterOutputType(LegacyCustomOriginOutput{})
 	pulumi.RegisterOutputType(LegacyCustomOriginPtrOutput{})
 	pulumi.RegisterOutputType(LegacyCustomOriginResponseOutput{})
@@ -68254,7 +67557,8 @@ func init() {
 	pulumi.RegisterOutputType(LifecyclePolicyArrayOutput{})
 	pulumi.RegisterOutputType(LifecyclePolicyResponseOutput{})
 	pulumi.RegisterOutputType(LifecyclePolicyResponsePtrOutput{})
-	pulumi.RegisterOutputType(LifecyclePolicyResponseArrayOutput{})
+	pulumi.RegisterOutputType(LifecyclePolicyResponseV1Output{})
+	pulumi.RegisterOutputType(LifecyclePolicyResponseV1ArrayOutput{})
 	pulumi.RegisterOutputType(LightsailBucketPropertiesOutput{})
 	pulumi.RegisterOutputType(LightsailBucketPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(LightsailBucketPropertiesResponseOutput{})
@@ -68275,28 +67579,4 @@ func init() {
 	pulumi.RegisterOutputType(LoadBalancerResponseArrayOutput{})
 	pulumi.RegisterOutputType(LocalSecondaryIndexOutput{})
 	pulumi.RegisterOutputType(LocalSecondaryIndexArrayOutput{})
-	pulumi.RegisterOutputType(LocalSecondaryIndexResponseOutput{})
-	pulumi.RegisterOutputType(LocalSecondaryIndexResponseArrayOutput{})
-	pulumi.RegisterOutputType(LocationOutput{})
-	pulumi.RegisterOutputType(LocationPtrOutput{})
-	pulumi.RegisterOutputType(LocationResponseOutput{})
-	pulumi.RegisterOutputType(LocationResponsePtrOutput{})
-	pulumi.RegisterOutputType(LogConfigOutput{})
-	pulumi.RegisterOutputType(LogConfigPtrOutput{})
-	pulumi.RegisterOutputType(LogConfigResponseOutput{})
-	pulumi.RegisterOutputType(LogConfigResponsePtrOutput{})
-	pulumi.RegisterOutputType(LogConfigurationOutput{})
-	pulumi.RegisterOutputType(LogConfigurationPtrOutput{})
-	pulumi.RegisterOutputType(LogConfigurationResponseOutput{})
-	pulumi.RegisterOutputType(LogConfigurationResponsePtrOutput{})
-	pulumi.RegisterOutputType(LogPublishingOptionOutput{})
-	pulumi.RegisterOutputType(LogPublishingOptionMapOutput{})
-	pulumi.RegisterOutputType(LogPublishingOptionResponseOutput{})
-	pulumi.RegisterOutputType(LogPublishingOptionResponseMapOutput{})
-	pulumi.RegisterOutputType(LogSetupOutput{})
-	pulumi.RegisterOutputType(LogSetupArrayOutput{})
-	pulumi.RegisterOutputType(LogSetupResponseOutput{})
-	pulumi.RegisterOutputType(LogSetupResponseArrayOutput{})
-	pulumi.RegisterOutputType(LoggingOutput{})
-	pulumi.RegisterOutputType(LoggingPtrOutput{})
 }

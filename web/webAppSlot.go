@@ -14,9 +14,9 @@ import (
 
 // A web app, a mobile app backend, or an API app.
 //
-// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
+// Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
 //
-// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type WebAppSlot struct {
 	pulumi.CustomResourceState
 
@@ -28,6 +28,10 @@ type WebAppSlot struct {
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// <code>true</code> to enable client affinity; <code>false</code> to stop sending session affinity cookies, which route client requests in the same session to the same instance. Default is <code>true</code>.
 	ClientAffinityEnabled pulumi.BoolPtrOutput `pulumi:"clientAffinityEnabled"`
+	// <code>true</code> to enable client affinity partitioning using CHIPS cookies, this will add the <code>partitioned</code> property to the affinity cookies; <code>false</code> to stop sending partitioned affinity cookies. Default is <code>false</code>.
+	ClientAffinityPartitioningEnabled pulumi.BoolPtrOutput `pulumi:"clientAffinityPartitioningEnabled"`
+	// <code>true</code> to override client affinity cookie domain with X-Forwarded-Host request header. <code>false</code> to use default domain. Default is <code>false</code>.
+	ClientAffinityProxyEnabled pulumi.BoolPtrOutput `pulumi:"clientAffinityProxyEnabled"`
 	// <code>true</code> to enable client certificate authentication (TLS mutual authentication); otherwise, <code>false</code>. Default is <code>false</code>.
 	ClientCertEnabled pulumi.BoolPtrOutput `pulumi:"clientCertEnabled"`
 	// client certificate authentication comma-separated exclusion paths
@@ -101,6 +105,8 @@ type WebAppSlot struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// List of IP addresses that the app uses for outbound connections (e.g. database access). Includes VIPs from tenants that site can be hosted with current settings. Read-only.
 	OutboundIpAddresses pulumi.StringOutput `pulumi:"outboundIpAddresses"`
+	// Property to configure various outbound traffic routing options over virtual network for a site
+	OutboundVnetRouting OutboundVnetRoutingResponsePtrOutput `pulumi:"outboundVnetRouting"`
 	// List of IP addresses that the app uses for outbound connections (e.g. database access). Includes VIPs from all tenants except dataComponent. Read-only.
 	PossibleOutboundIpAddresses pulumi.StringOutput `pulumi:"possibleOutboundIpAddresses"`
 	// Property to allow or block all public traffic. Allowed Values: 'Enabled', 'Disabled' or an empty string.
@@ -119,12 +125,12 @@ type WebAppSlot struct {
 	ScmSiteAlsoStopped pulumi.BoolPtrOutput `pulumi:"scmSiteAlsoStopped"`
 	// Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
 	ServerFarmId pulumi.StringPtrOutput `pulumi:"serverFarmId"`
-	// Configuration of the app.
-	SiteConfig SiteConfigResponsePtrOutput `pulumi:"siteConfig"`
 	// Current SKU of application based on associated App Service Plan. Some valid SKU values are Free, Shared, Basic, Dynamic, FlexConsumption, Standard, Premium, PremiumV2, PremiumV3, Isolated, IsolatedV2
 	Sku pulumi.StringOutput `pulumi:"sku"`
 	// Status of the last deployment slot swap operation.
 	SlotSwapStatus SlotSwapStatusResponseOutput `pulumi:"slotSwapStatus"`
+	// Whether to enable ssh access.
+	SshEnabled pulumi.BoolPtrOutput `pulumi:"sshEnabled"`
 	// Current state of the app.
 	State pulumi.StringOutput `pulumi:"state"`
 	// Checks if Customer provided storage account is required
@@ -144,14 +150,6 @@ type WebAppSlot struct {
 	// Azure Resource Manager ID of the Virtual network and subnet to be joined by Regional VNET Integration.
 	// This must be of the form /subscriptions/{subscriptionName}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}
 	VirtualNetworkSubnetId pulumi.StringPtrOutput `pulumi:"virtualNetworkSubnetId"`
-	// To enable Backup and Restore operations over virtual network
-	VnetBackupRestoreEnabled pulumi.BoolPtrOutput `pulumi:"vnetBackupRestoreEnabled"`
-	// To enable accessing content over virtual network
-	VnetContentShareEnabled pulumi.BoolPtrOutput `pulumi:"vnetContentShareEnabled"`
-	// To enable pulling image over Virtual Network
-	VnetImagePullEnabled pulumi.BoolPtrOutput `pulumi:"vnetImagePullEnabled"`
-	// Virtual Network Route All enabled. This causes all outbound traffic to have Virtual Network Security Groups and User Defined Routes applied.
-	VnetRouteAllEnabled pulumi.BoolPtrOutput `pulumi:"vnetRouteAllEnabled"`
 	// Workload profile name for function app to execute on.
 	WorkloadProfileName pulumi.StringPtrOutput `pulumi:"workloadProfileName"`
 }
@@ -290,6 +288,10 @@ type webAppSlotArgs struct {
 	AutoGeneratedDomainNameLabelScope *AutoGeneratedDomainNameLabelScope `pulumi:"autoGeneratedDomainNameLabelScope"`
 	// <code>true</code> to enable client affinity; <code>false</code> to stop sending session affinity cookies, which route client requests in the same session to the same instance. Default is <code>true</code>.
 	ClientAffinityEnabled *bool `pulumi:"clientAffinityEnabled"`
+	// <code>true</code> to enable client affinity partitioning using CHIPS cookies, this will add the <code>partitioned</code> property to the affinity cookies; <code>false</code> to stop sending partitioned affinity cookies. Default is <code>false</code>.
+	ClientAffinityPartitioningEnabled *bool `pulumi:"clientAffinityPartitioningEnabled"`
+	// <code>true</code> to override client affinity cookie domain with X-Forwarded-Host request header. <code>false</code> to use default domain. Default is <code>false</code>.
+	ClientAffinityProxyEnabled *bool `pulumi:"clientAffinityProxyEnabled"`
 	// <code>true</code> to enable client certificate authentication (TLS mutual authentication); otherwise, <code>false</code>. Default is <code>false</code>.
 	ClientCertEnabled *bool `pulumi:"clientCertEnabled"`
 	// client certificate authentication comma-separated exclusion paths
@@ -347,6 +349,8 @@ type webAppSlotArgs struct {
 	ManagedEnvironmentId *string `pulumi:"managedEnvironmentId"`
 	// Unique name of the app to create or update. To create or update a deployment slot, use the {slot} parameter.
 	Name string `pulumi:"name"`
+	// Property to configure various outbound traffic routing options over virtual network for a site
+	OutboundVnetRouting *OutboundVnetRouting `pulumi:"outboundVnetRouting"`
 	// Property to allow or block all public traffic. Allowed Values: 'Enabled', 'Disabled' or an empty string.
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// Site redundancy mode
@@ -361,10 +365,12 @@ type webAppSlotArgs struct {
 	ScmSiteAlsoStopped *bool `pulumi:"scmSiteAlsoStopped"`
 	// Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
 	ServerFarmId *string `pulumi:"serverFarmId"`
-	// Configuration of the app.
+	// Configuration of an App Service app. This property is not returned in response to normal create and read requests since it may contain sensitive information.
 	SiteConfig *SiteConfig `pulumi:"siteConfig"`
 	// Name of the deployment slot to create or update. By default, this API attempts to create or modify the production slot.
 	Slot *string `pulumi:"slot"`
+	// Whether to enable ssh access.
+	SshEnabled *bool `pulumi:"sshEnabled"`
 	// Checks if Customer provided storage account is required
 	StorageAccountRequired *bool `pulumi:"storageAccountRequired"`
 	// Resource tags.
@@ -372,14 +378,6 @@ type webAppSlotArgs struct {
 	// Azure Resource Manager ID of the Virtual network and subnet to be joined by Regional VNET Integration.
 	// This must be of the form /subscriptions/{subscriptionName}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}
 	VirtualNetworkSubnetId *string `pulumi:"virtualNetworkSubnetId"`
-	// To enable Backup and Restore operations over virtual network
-	VnetBackupRestoreEnabled *bool `pulumi:"vnetBackupRestoreEnabled"`
-	// To enable accessing content over virtual network
-	VnetContentShareEnabled *bool `pulumi:"vnetContentShareEnabled"`
-	// To enable pulling image over Virtual Network
-	VnetImagePullEnabled *bool `pulumi:"vnetImagePullEnabled"`
-	// Virtual Network Route All enabled. This causes all outbound traffic to have Virtual Network Security Groups and User Defined Routes applied.
-	VnetRouteAllEnabled *bool `pulumi:"vnetRouteAllEnabled"`
 	// Workload profile name for function app to execute on.
 	WorkloadProfileName *string `pulumi:"workloadProfileName"`
 }
@@ -390,6 +388,10 @@ type WebAppSlotArgs struct {
 	AutoGeneratedDomainNameLabelScope AutoGeneratedDomainNameLabelScopePtrInput
 	// <code>true</code> to enable client affinity; <code>false</code> to stop sending session affinity cookies, which route client requests in the same session to the same instance. Default is <code>true</code>.
 	ClientAffinityEnabled pulumi.BoolPtrInput
+	// <code>true</code> to enable client affinity partitioning using CHIPS cookies, this will add the <code>partitioned</code> property to the affinity cookies; <code>false</code> to stop sending partitioned affinity cookies. Default is <code>false</code>.
+	ClientAffinityPartitioningEnabled pulumi.BoolPtrInput
+	// <code>true</code> to override client affinity cookie domain with X-Forwarded-Host request header. <code>false</code> to use default domain. Default is <code>false</code>.
+	ClientAffinityProxyEnabled pulumi.BoolPtrInput
 	// <code>true</code> to enable client certificate authentication (TLS mutual authentication); otherwise, <code>false</code>. Default is <code>false</code>.
 	ClientCertEnabled pulumi.BoolPtrInput
 	// client certificate authentication comma-separated exclusion paths
@@ -447,6 +449,8 @@ type WebAppSlotArgs struct {
 	ManagedEnvironmentId pulumi.StringPtrInput
 	// Unique name of the app to create or update. To create or update a deployment slot, use the {slot} parameter.
 	Name pulumi.StringInput
+	// Property to configure various outbound traffic routing options over virtual network for a site
+	OutboundVnetRouting OutboundVnetRoutingPtrInput
 	// Property to allow or block all public traffic. Allowed Values: 'Enabled', 'Disabled' or an empty string.
 	PublicNetworkAccess pulumi.StringPtrInput
 	// Site redundancy mode
@@ -461,10 +465,12 @@ type WebAppSlotArgs struct {
 	ScmSiteAlsoStopped pulumi.BoolPtrInput
 	// Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
 	ServerFarmId pulumi.StringPtrInput
-	// Configuration of the app.
+	// Configuration of an App Service app. This property is not returned in response to normal create and read requests since it may contain sensitive information.
 	SiteConfig SiteConfigPtrInput
 	// Name of the deployment slot to create or update. By default, this API attempts to create or modify the production slot.
 	Slot pulumi.StringPtrInput
+	// Whether to enable ssh access.
+	SshEnabled pulumi.BoolPtrInput
 	// Checks if Customer provided storage account is required
 	StorageAccountRequired pulumi.BoolPtrInput
 	// Resource tags.
@@ -472,14 +478,6 @@ type WebAppSlotArgs struct {
 	// Azure Resource Manager ID of the Virtual network and subnet to be joined by Regional VNET Integration.
 	// This must be of the form /subscriptions/{subscriptionName}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}
 	VirtualNetworkSubnetId pulumi.StringPtrInput
-	// To enable Backup and Restore operations over virtual network
-	VnetBackupRestoreEnabled pulumi.BoolPtrInput
-	// To enable accessing content over virtual network
-	VnetContentShareEnabled pulumi.BoolPtrInput
-	// To enable pulling image over Virtual Network
-	VnetImagePullEnabled pulumi.BoolPtrInput
-	// Virtual Network Route All enabled. This causes all outbound traffic to have Virtual Network Security Groups and User Defined Routes applied.
-	VnetRouteAllEnabled pulumi.BoolPtrInput
 	// Workload profile name for function app to execute on.
 	WorkloadProfileName pulumi.StringPtrInput
 }
@@ -539,6 +537,16 @@ func (o WebAppSlotOutput) AzureApiVersion() pulumi.StringOutput {
 // <code>true</code> to enable client affinity; <code>false</code> to stop sending session affinity cookies, which route client requests in the same session to the same instance. Default is <code>true</code>.
 func (o WebAppSlotOutput) ClientAffinityEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WebAppSlot) pulumi.BoolPtrOutput { return v.ClientAffinityEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// <code>true</code> to enable client affinity partitioning using CHIPS cookies, this will add the <code>partitioned</code> property to the affinity cookies; <code>false</code> to stop sending partitioned affinity cookies. Default is <code>false</code>.
+func (o WebAppSlotOutput) ClientAffinityPartitioningEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WebAppSlot) pulumi.BoolPtrOutput { return v.ClientAffinityPartitioningEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// <code>true</code> to override client affinity cookie domain with X-Forwarded-Host request header. <code>false</code> to use default domain. Default is <code>false</code>.
+func (o WebAppSlotOutput) ClientAffinityProxyEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WebAppSlot) pulumi.BoolPtrOutput { return v.ClientAffinityProxyEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // <code>true</code> to enable client certificate authentication (TLS mutual authentication); otherwise, <code>false</code>. Default is <code>false</code>.
@@ -714,6 +722,11 @@ func (o WebAppSlotOutput) OutboundIpAddresses() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebAppSlot) pulumi.StringOutput { return v.OutboundIpAddresses }).(pulumi.StringOutput)
 }
 
+// Property to configure various outbound traffic routing options over virtual network for a site
+func (o WebAppSlotOutput) OutboundVnetRouting() OutboundVnetRoutingResponsePtrOutput {
+	return o.ApplyT(func(v *WebAppSlot) OutboundVnetRoutingResponsePtrOutput { return v.OutboundVnetRouting }).(OutboundVnetRoutingResponsePtrOutput)
+}
+
 // List of IP addresses that the app uses for outbound connections (e.g. database access). Includes VIPs from all tenants except dataComponent. Read-only.
 func (o WebAppSlotOutput) PossibleOutboundIpAddresses() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebAppSlot) pulumi.StringOutput { return v.PossibleOutboundIpAddresses }).(pulumi.StringOutput)
@@ -759,11 +772,6 @@ func (o WebAppSlotOutput) ServerFarmId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebAppSlot) pulumi.StringPtrOutput { return v.ServerFarmId }).(pulumi.StringPtrOutput)
 }
 
-// Configuration of the app.
-func (o WebAppSlotOutput) SiteConfig() SiteConfigResponsePtrOutput {
-	return o.ApplyT(func(v *WebAppSlot) SiteConfigResponsePtrOutput { return v.SiteConfig }).(SiteConfigResponsePtrOutput)
-}
-
 // Current SKU of application based on associated App Service Plan. Some valid SKU values are Free, Shared, Basic, Dynamic, FlexConsumption, Standard, Premium, PremiumV2, PremiumV3, Isolated, IsolatedV2
 func (o WebAppSlotOutput) Sku() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebAppSlot) pulumi.StringOutput { return v.Sku }).(pulumi.StringOutput)
@@ -772,6 +780,11 @@ func (o WebAppSlotOutput) Sku() pulumi.StringOutput {
 // Status of the last deployment slot swap operation.
 func (o WebAppSlotOutput) SlotSwapStatus() SlotSwapStatusResponseOutput {
 	return o.ApplyT(func(v *WebAppSlot) SlotSwapStatusResponseOutput { return v.SlotSwapStatus }).(SlotSwapStatusResponseOutput)
+}
+
+// Whether to enable ssh access.
+func (o WebAppSlotOutput) SshEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WebAppSlot) pulumi.BoolPtrOutput { return v.SshEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // Current state of the app.
@@ -818,26 +831,6 @@ func (o WebAppSlotOutput) UsageState() pulumi.StringOutput {
 // This must be of the form /subscriptions/{subscriptionName}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}
 func (o WebAppSlotOutput) VirtualNetworkSubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebAppSlot) pulumi.StringPtrOutput { return v.VirtualNetworkSubnetId }).(pulumi.StringPtrOutput)
-}
-
-// To enable Backup and Restore operations over virtual network
-func (o WebAppSlotOutput) VnetBackupRestoreEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *WebAppSlot) pulumi.BoolPtrOutput { return v.VnetBackupRestoreEnabled }).(pulumi.BoolPtrOutput)
-}
-
-// To enable accessing content over virtual network
-func (o WebAppSlotOutput) VnetContentShareEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *WebAppSlot) pulumi.BoolPtrOutput { return v.VnetContentShareEnabled }).(pulumi.BoolPtrOutput)
-}
-
-// To enable pulling image over Virtual Network
-func (o WebAppSlotOutput) VnetImagePullEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *WebAppSlot) pulumi.BoolPtrOutput { return v.VnetImagePullEnabled }).(pulumi.BoolPtrOutput)
-}
-
-// Virtual Network Route All enabled. This causes all outbound traffic to have Virtual Network Security Groups and User Defined Routes applied.
-func (o WebAppSlotOutput) VnetRouteAllEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *WebAppSlot) pulumi.BoolPtrOutput { return v.VnetRouteAllEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // Workload profile name for function app to execute on.

@@ -13,9 +13,9 @@ import (
 
 // Description for Get an App Service plan.
 //
-// Uses Azure REST API version 2024-04-01.
+// Uses Azure REST API version 2024-11-01.
 //
-// Other available API versions: 2016-09-01, 2018-02-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2016-09-01, 2018-02-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupAppServicePlan(ctx *pulumi.Context, args *LookupAppServicePlanArgs, opts ...pulumi.InvokeOption) (*LookupAppServicePlanResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAppServicePlanResult
@@ -35,6 +35,9 @@ type LookupAppServicePlanArgs struct {
 
 // App Service plan.
 type LookupAppServicePlanResult struct {
+	// If <code>true</code>, this App Service Plan will attempt to scale asynchronously if there are insufficient workers to scale synchronously.
+	// If <code>false</code>, this App Service Plan will only attempt sync scaling.
+	AsyncScalingEnabled *bool `pulumi:"asyncScalingEnabled"`
 	// The Azure API version of the resource.
 	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// ServerFarm supports ElasticScale. Apps in this plan will scale as if the ServerFarm was ElasticPremium sku
@@ -164,6 +167,12 @@ func (o LookupAppServicePlanResultOutput) ToLookupAppServicePlanResultOutput() L
 
 func (o LookupAppServicePlanResultOutput) ToLookupAppServicePlanResultOutputWithContext(ctx context.Context) LookupAppServicePlanResultOutput {
 	return o
+}
+
+// If <code>true</code>, this App Service Plan will attempt to scale asynchronously if there are insufficient workers to scale synchronously.
+// If <code>false</code>, this App Service Plan will only attempt sync scaling.
+func (o LookupAppServicePlanResultOutput) AsyncScalingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupAppServicePlanResult) *bool { return v.AsyncScalingEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // The Azure API version of the resource.

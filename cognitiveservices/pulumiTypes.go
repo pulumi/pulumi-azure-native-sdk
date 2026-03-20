@@ -15032,8 +15032,6 @@ func (o RaiPolicyContentFilterArrayOutput) Index(i pulumi.IntInput) RaiPolicyCon
 
 // Azure OpenAI Content Filter.
 type RaiPolicyContentFilterResponse struct {
-	// The action types to apply to the content filters
-	Action *string `pulumi:"action"`
 	// If blocking would occur.
 	Blocking *bool `pulumi:"blocking"`
 	// If the ContentFilter is enabled.
@@ -15059,11 +15057,6 @@ func (o RaiPolicyContentFilterResponseOutput) ToRaiPolicyContentFilterResponseOu
 
 func (o RaiPolicyContentFilterResponseOutput) ToRaiPolicyContentFilterResponseOutputWithContext(ctx context.Context) RaiPolicyContentFilterResponseOutput {
 	return o
-}
-
-// The action types to apply to the content filters
-func (o RaiPolicyContentFilterResponseOutput) Action() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RaiPolicyContentFilterResponse) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
 
 // If blocking would occur.
@@ -15109,6 +15102,87 @@ func (o RaiPolicyContentFilterResponseArrayOutput) Index(i pulumi.IntInput) RaiP
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RaiPolicyContentFilterResponse {
 		return vs[0].([]RaiPolicyContentFilterResponse)[vs[1].(int)]
 	}).(RaiPolicyContentFilterResponseOutput)
+}
+
+// Azure OpenAI Content Filter.
+type RaiPolicyContentFilterResponseV1 struct {
+	// The action types to apply to the content filters
+	Action *string `pulumi:"action"`
+	// If blocking would occur.
+	Blocking *bool `pulumi:"blocking"`
+	// If the ContentFilter is enabled.
+	Enabled *bool `pulumi:"enabled"`
+	// Name of ContentFilter.
+	Name *string `pulumi:"name"`
+	// Level at which content is filtered.
+	SeverityThreshold *string `pulumi:"severityThreshold"`
+	// Content source to apply the Content Filters.
+	Source *string `pulumi:"source"`
+}
+
+// Azure OpenAI Content Filter.
+type RaiPolicyContentFilterResponseV1Output struct{ *pulumi.OutputState }
+
+func (RaiPolicyContentFilterResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiPolicyContentFilterResponseV1)(nil)).Elem()
+}
+
+func (o RaiPolicyContentFilterResponseV1Output) ToRaiPolicyContentFilterResponseV1Output() RaiPolicyContentFilterResponseV1Output {
+	return o
+}
+
+func (o RaiPolicyContentFilterResponseV1Output) ToRaiPolicyContentFilterResponseV1OutputWithContext(ctx context.Context) RaiPolicyContentFilterResponseV1Output {
+	return o
+}
+
+// The action types to apply to the content filters
+func (o RaiPolicyContentFilterResponseV1Output) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiPolicyContentFilterResponseV1) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
+// If blocking would occur.
+func (o RaiPolicyContentFilterResponseV1Output) Blocking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RaiPolicyContentFilterResponseV1) *bool { return v.Blocking }).(pulumi.BoolPtrOutput)
+}
+
+// If the ContentFilter is enabled.
+func (o RaiPolicyContentFilterResponseV1Output) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RaiPolicyContentFilterResponseV1) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Name of ContentFilter.
+func (o RaiPolicyContentFilterResponseV1Output) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiPolicyContentFilterResponseV1) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Level at which content is filtered.
+func (o RaiPolicyContentFilterResponseV1Output) SeverityThreshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiPolicyContentFilterResponseV1) *string { return v.SeverityThreshold }).(pulumi.StringPtrOutput)
+}
+
+// Content source to apply the Content Filters.
+func (o RaiPolicyContentFilterResponseV1Output) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiPolicyContentFilterResponseV1) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+type RaiPolicyContentFilterResponseV1ArrayOutput struct{ *pulumi.OutputState }
+
+func (RaiPolicyContentFilterResponseV1ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RaiPolicyContentFilterResponseV1)(nil)).Elem()
+}
+
+func (o RaiPolicyContentFilterResponseV1ArrayOutput) ToRaiPolicyContentFilterResponseV1ArrayOutput() RaiPolicyContentFilterResponseV1ArrayOutput {
+	return o
+}
+
+func (o RaiPolicyContentFilterResponseV1ArrayOutput) ToRaiPolicyContentFilterResponseV1ArrayOutputWithContext(ctx context.Context) RaiPolicyContentFilterResponseV1ArrayOutput {
+	return o
+}
+
+func (o RaiPolicyContentFilterResponseV1ArrayOutput) Index(i pulumi.IntInput) RaiPolicyContentFilterResponseV1Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RaiPolicyContentFilterResponseV1 {
+		return vs[0].([]RaiPolicyContentFilterResponseV1)[vs[1].(int)]
+	}).(RaiPolicyContentFilterResponseV1Output)
 }
 
 // Azure OpenAI Content Filters properties.
@@ -15354,12 +15428,8 @@ type RaiPolicyPropertiesResponse struct {
 	ContentFilters []RaiPolicyContentFilterResponse `pulumi:"contentFilters"`
 	// The list of custom Blocklist.
 	CustomBlocklists []CustomBlocklistConfigResponse `pulumi:"customBlocklists"`
-	// The list of custom rai topics.
-	CustomTopics []CustomTopicConfigResponse `pulumi:"customTopics"`
 	// Rai policy mode. The enum value mapping is as below: Default = 0, Deferred=1, Blocking=2, Asynchronous_filter =3. Please use 'Asynchronous_filter' after 2025-06-01. It is the same as 'Deferred' in previous version.
 	Mode *string `pulumi:"mode"`
-	// The list of Safety Providers.
-	SafetyProviders []SafetyProviderConfigResponse `pulumi:"safetyProviders"`
 	// Content Filters policy type.
 	Type string `pulumi:"type"`
 }
@@ -15394,24 +15464,82 @@ func (o RaiPolicyPropertiesResponseOutput) CustomBlocklists() CustomBlocklistCon
 	return o.ApplyT(func(v RaiPolicyPropertiesResponse) []CustomBlocklistConfigResponse { return v.CustomBlocklists }).(CustomBlocklistConfigResponseArrayOutput)
 }
 
-// The list of custom rai topics.
-func (o RaiPolicyPropertiesResponseOutput) CustomTopics() CustomTopicConfigResponseArrayOutput {
-	return o.ApplyT(func(v RaiPolicyPropertiesResponse) []CustomTopicConfigResponse { return v.CustomTopics }).(CustomTopicConfigResponseArrayOutput)
-}
-
 // Rai policy mode. The enum value mapping is as below: Default = 0, Deferred=1, Blocking=2, Asynchronous_filter =3. Please use 'Asynchronous_filter' after 2025-06-01. It is the same as 'Deferred' in previous version.
 func (o RaiPolicyPropertiesResponseOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RaiPolicyPropertiesResponse) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
 
-// The list of Safety Providers.
-func (o RaiPolicyPropertiesResponseOutput) SafetyProviders() SafetyProviderConfigResponseArrayOutput {
-	return o.ApplyT(func(v RaiPolicyPropertiesResponse) []SafetyProviderConfigResponse { return v.SafetyProviders }).(SafetyProviderConfigResponseArrayOutput)
-}
-
 // Content Filters policy type.
 func (o RaiPolicyPropertiesResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v RaiPolicyPropertiesResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Azure OpenAI Content Filters properties.
+type RaiPolicyPropertiesResponseV1 struct {
+	// Name of Rai policy.
+	BasePolicyName *string `pulumi:"basePolicyName"`
+	// The list of Content Filters.
+	ContentFilters []RaiPolicyContentFilterResponseV1 `pulumi:"contentFilters"`
+	// The list of custom Blocklist.
+	CustomBlocklists []CustomBlocklistConfigResponse `pulumi:"customBlocklists"`
+	// The list of custom rai topics.
+	CustomTopics []CustomTopicConfigResponse `pulumi:"customTopics"`
+	// Rai policy mode. The enum value mapping is as below: Default = 0, Deferred=1, Blocking=2, Asynchronous_filter =3. Please use 'Asynchronous_filter' after 2025-06-01. It is the same as 'Deferred' in previous version.
+	Mode *string `pulumi:"mode"`
+	// The list of Safety Providers.
+	SafetyProviders []SafetyProviderConfigResponse `pulumi:"safetyProviders"`
+	// Content Filters policy type.
+	Type string `pulumi:"type"`
+}
+
+// Azure OpenAI Content Filters properties.
+type RaiPolicyPropertiesResponseV1Output struct{ *pulumi.OutputState }
+
+func (RaiPolicyPropertiesResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiPolicyPropertiesResponseV1)(nil)).Elem()
+}
+
+func (o RaiPolicyPropertiesResponseV1Output) ToRaiPolicyPropertiesResponseV1Output() RaiPolicyPropertiesResponseV1Output {
+	return o
+}
+
+func (o RaiPolicyPropertiesResponseV1Output) ToRaiPolicyPropertiesResponseV1OutputWithContext(ctx context.Context) RaiPolicyPropertiesResponseV1Output {
+	return o
+}
+
+// Name of Rai policy.
+func (o RaiPolicyPropertiesResponseV1Output) BasePolicyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiPolicyPropertiesResponseV1) *string { return v.BasePolicyName }).(pulumi.StringPtrOutput)
+}
+
+// The list of Content Filters.
+func (o RaiPolicyPropertiesResponseV1Output) ContentFilters() RaiPolicyContentFilterResponseV1ArrayOutput {
+	return o.ApplyT(func(v RaiPolicyPropertiesResponseV1) []RaiPolicyContentFilterResponseV1 { return v.ContentFilters }).(RaiPolicyContentFilterResponseV1ArrayOutput)
+}
+
+// The list of custom Blocklist.
+func (o RaiPolicyPropertiesResponseV1Output) CustomBlocklists() CustomBlocklistConfigResponseArrayOutput {
+	return o.ApplyT(func(v RaiPolicyPropertiesResponseV1) []CustomBlocklistConfigResponse { return v.CustomBlocklists }).(CustomBlocklistConfigResponseArrayOutput)
+}
+
+// The list of custom rai topics.
+func (o RaiPolicyPropertiesResponseV1Output) CustomTopics() CustomTopicConfigResponseArrayOutput {
+	return o.ApplyT(func(v RaiPolicyPropertiesResponseV1) []CustomTopicConfigResponse { return v.CustomTopics }).(CustomTopicConfigResponseArrayOutput)
+}
+
+// Rai policy mode. The enum value mapping is as below: Default = 0, Deferred=1, Blocking=2, Asynchronous_filter =3. Please use 'Asynchronous_filter' after 2025-06-01. It is the same as 'Deferred' in previous version.
+func (o RaiPolicyPropertiesResponseV1Output) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiPolicyPropertiesResponseV1) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// The list of Safety Providers.
+func (o RaiPolicyPropertiesResponseV1Output) SafetyProviders() SafetyProviderConfigResponseArrayOutput {
+	return o.ApplyT(func(v RaiPolicyPropertiesResponseV1) []SafetyProviderConfigResponse { return v.SafetyProviders }).(SafetyProviderConfigResponseArrayOutput)
+}
+
+// Content Filters policy type.
+func (o RaiPolicyPropertiesResponseV1Output) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v RaiPolicyPropertiesResponseV1) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // RAI Tool Label properties.
@@ -19459,9 +19587,12 @@ func init() {
 	pulumi.RegisterOutputType(RaiPolicyContentFilterArrayOutput{})
 	pulumi.RegisterOutputType(RaiPolicyContentFilterResponseOutput{})
 	pulumi.RegisterOutputType(RaiPolicyContentFilterResponseArrayOutput{})
+	pulumi.RegisterOutputType(RaiPolicyContentFilterResponseV1Output{})
+	pulumi.RegisterOutputType(RaiPolicyContentFilterResponseV1ArrayOutput{})
 	pulumi.RegisterOutputType(RaiPolicyPropertiesOutput{})
 	pulumi.RegisterOutputType(RaiPolicyPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(RaiPolicyPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(RaiPolicyPropertiesResponseV1Output{})
 	pulumi.RegisterOutputType(RaiToolLabelPropertiesOutput{})
 	pulumi.RegisterOutputType(RaiToolLabelPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(RaiToolLabelPropertiesAccountScopeOutput{})
