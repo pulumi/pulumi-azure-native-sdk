@@ -14,9 +14,9 @@ import (
 
 // Container of a site
 //
-// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2023-12-01.
+// Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2023-12-01.
 //
-// Other available API versions: 2023-12-01, 2024-11-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type WebAppSiteContainerSlot struct {
 	pulumi.CustomResourceState
 
@@ -30,6 +30,8 @@ type WebAppSiteContainerSlot struct {
 	EnvironmentVariables EnvironmentVariableResponseArrayOutput `pulumi:"environmentVariables"`
 	// Image Name
 	Image pulumi.StringOutput `pulumi:"image"`
+	// <code>true</code> if all AppSettings and ConnectionStrings have to be passed to the container as environment variables; <code>false</code> otherwise.
+	InheritAppSettingsAndConnectionStrings pulumi.BoolPtrOutput `pulumi:"inheritAppSettingsAndConnectionStrings"`
 	// <code>true</code> if the container is the main site container; <code>false</code> otherwise.
 	IsMain pulumi.BoolOutput `pulumi:"isMain"`
 	// Kind of resource.
@@ -135,6 +137,8 @@ type webAppSiteContainerSlotArgs struct {
 	EnvironmentVariables []EnvironmentVariable `pulumi:"environmentVariables"`
 	// Image Name
 	Image string `pulumi:"image"`
+	// <code>true</code> if all AppSettings and ConnectionStrings have to be passed to the container as environment variables; <code>false</code> otherwise.
+	InheritAppSettingsAndConnectionStrings *bool `pulumi:"inheritAppSettingsAndConnectionStrings"`
 	// <code>true</code> if the container is the main site container; <code>false</code> otherwise.
 	IsMain bool `pulumi:"isMain"`
 	// Kind of resource.
@@ -169,6 +173,8 @@ type WebAppSiteContainerSlotArgs struct {
 	EnvironmentVariables EnvironmentVariableArrayInput
 	// Image Name
 	Image pulumi.StringInput
+	// <code>true</code> if all AppSettings and ConnectionStrings have to be passed to the container as environment variables; <code>false</code> otherwise.
+	InheritAppSettingsAndConnectionStrings pulumi.BoolPtrInput
 	// <code>true</code> if the container is the main site container; <code>false</code> otherwise.
 	IsMain pulumi.BoolInput
 	// Kind of resource.
@@ -253,6 +259,11 @@ func (o WebAppSiteContainerSlotOutput) EnvironmentVariables() EnvironmentVariabl
 // Image Name
 func (o WebAppSiteContainerSlotOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebAppSiteContainerSlot) pulumi.StringOutput { return v.Image }).(pulumi.StringOutput)
+}
+
+// <code>true</code> if all AppSettings and ConnectionStrings have to be passed to the container as environment variables; <code>false</code> otherwise.
+func (o WebAppSiteContainerSlotOutput) InheritAppSettingsAndConnectionStrings() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WebAppSiteContainerSlot) pulumi.BoolPtrOutput { return v.InheritAppSettingsAndConnectionStrings }).(pulumi.BoolPtrOutput)
 }
 
 // <code>true</code> if the container is the main site container; <code>false</code> otherwise.

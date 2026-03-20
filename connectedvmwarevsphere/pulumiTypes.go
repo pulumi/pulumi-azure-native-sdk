@@ -858,8 +858,6 @@ func (o GuestCredentialPtrOutput) Username() pulumi.StringPtrOutput {
 
 // Username / Password Credentials to connect to guest.
 type GuestCredentialResponse struct {
-	// Private key used to authenticate to a virtual machine through ssh.
-	PrivateKey *string `pulumi:"privateKey"`
 	// Gets or sets username to connect with the guest.
 	Username *string `pulumi:"username"`
 }
@@ -877,11 +875,6 @@ func (o GuestCredentialResponseOutput) ToGuestCredentialResponseOutput() GuestCr
 
 func (o GuestCredentialResponseOutput) ToGuestCredentialResponseOutputWithContext(ctx context.Context) GuestCredentialResponseOutput {
 	return o
-}
-
-// Private key used to authenticate to a virtual machine through ssh.
-func (o GuestCredentialResponseOutput) PrivateKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GuestCredentialResponse) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
 }
 
 // Gets or sets username to connect with the guest.
@@ -913,9 +906,76 @@ func (o GuestCredentialResponsePtrOutput) Elem() GuestCredentialResponseOutput {
 	}).(GuestCredentialResponseOutput)
 }
 
-// Private key used to authenticate to a virtual machine through ssh.
-func (o GuestCredentialResponsePtrOutput) PrivateKey() pulumi.StringPtrOutput {
+// Gets or sets username to connect with the guest.
+func (o GuestCredentialResponsePtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuestCredentialResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+// Username / Password Credentials to connect to guest.
+type GuestCredentialResponseV1 struct {
+	// Private key used to authenticate to a virtual machine through ssh.
+	PrivateKey *string `pulumi:"privateKey"`
+	// Gets or sets username to connect with the guest.
+	Username *string `pulumi:"username"`
+}
+
+// Username / Password Credentials to connect to guest.
+type GuestCredentialResponseV1Output struct{ *pulumi.OutputState }
+
+func (GuestCredentialResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestCredentialResponseV1)(nil)).Elem()
+}
+
+func (o GuestCredentialResponseV1Output) ToGuestCredentialResponseV1Output() GuestCredentialResponseV1Output {
+	return o
+}
+
+func (o GuestCredentialResponseV1Output) ToGuestCredentialResponseV1OutputWithContext(ctx context.Context) GuestCredentialResponseV1Output {
+	return o
+}
+
+// Private key used to authenticate to a virtual machine through ssh.
+func (o GuestCredentialResponseV1Output) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestCredentialResponseV1) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets username to connect with the guest.
+func (o GuestCredentialResponseV1Output) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestCredentialResponseV1) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type GuestCredentialResponseV1PtrOutput struct{ *pulumi.OutputState }
+
+func (GuestCredentialResponseV1PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestCredentialResponseV1)(nil)).Elem()
+}
+
+func (o GuestCredentialResponseV1PtrOutput) ToGuestCredentialResponseV1PtrOutput() GuestCredentialResponseV1PtrOutput {
+	return o
+}
+
+func (o GuestCredentialResponseV1PtrOutput) ToGuestCredentialResponseV1PtrOutputWithContext(ctx context.Context) GuestCredentialResponseV1PtrOutput {
+	return o
+}
+
+func (o GuestCredentialResponseV1PtrOutput) Elem() GuestCredentialResponseV1Output {
+	return o.ApplyT(func(v *GuestCredentialResponseV1) GuestCredentialResponseV1 {
+		if v != nil {
+			return *v
+		}
+		var ret GuestCredentialResponseV1
+		return ret
+	}).(GuestCredentialResponseV1Output)
+}
+
+// Private key used to authenticate to a virtual machine through ssh.
+func (o GuestCredentialResponseV1PtrOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestCredentialResponseV1) *string {
 		if v == nil {
 			return nil
 		}
@@ -924,8 +984,8 @@ func (o GuestCredentialResponsePtrOutput) PrivateKey() pulumi.StringPtrOutput {
 }
 
 // Gets or sets username to connect with the guest.
-func (o GuestCredentialResponsePtrOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GuestCredentialResponse) *string {
+func (o GuestCredentialResponseV1PtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestCredentialResponseV1) *string {
 		if v == nil {
 			return nil
 		}
@@ -6857,6 +6917,8 @@ func init() {
 	pulumi.RegisterOutputType(GuestCredentialPtrOutput{})
 	pulumi.RegisterOutputType(GuestCredentialResponseOutput{})
 	pulumi.RegisterOutputType(GuestCredentialResponsePtrOutput{})
+	pulumi.RegisterOutputType(GuestCredentialResponseV1Output{})
+	pulumi.RegisterOutputType(GuestCredentialResponseV1PtrOutput{})
 	pulumi.RegisterOutputType(HardwareProfileOutput{})
 	pulumi.RegisterOutputType(HardwareProfilePtrOutput{})
 	pulumi.RegisterOutputType(HardwareProfileResponseOutput{})

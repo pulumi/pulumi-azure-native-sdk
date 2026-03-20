@@ -5881,14 +5881,10 @@ func (o ContainerPartitionKeyPtrOutput) Version() pulumi.IntPtrOutput {
 
 // The configuration of the partition key to be used for partitioning data into multiple partitions
 type ContainerPartitionKeyResponse struct {
-	// Indicates the kind of algorithm used for partitioning. For MultiHash, multiple partition keys (upto three maximum) are supported for container create
+	// Indicates the kind of algorithm used for partitioning
 	Kind *string `pulumi:"kind"`
 	// List of paths using which data within the container can be partitioned
 	Paths []string `pulumi:"paths"`
-	// Indicates if the container is using a system generated partition key
-	SystemKey bool `pulumi:"systemKey"`
-	// Indicates the version of the partition key definition
-	Version *int `pulumi:"version"`
 }
 
 // Defaults sets the appropriate defaults for ContainerPartitionKeyResponse
@@ -5919,7 +5915,7 @@ func (o ContainerPartitionKeyResponseOutput) ToContainerPartitionKeyResponseOutp
 	return o
 }
 
-// Indicates the kind of algorithm used for partitioning. For MultiHash, multiple partition keys (upto three maximum) are supported for container create
+// Indicates the kind of algorithm used for partitioning
 func (o ContainerPartitionKeyResponseOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerPartitionKeyResponse) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
@@ -5927,16 +5923,6 @@ func (o ContainerPartitionKeyResponseOutput) Kind() pulumi.StringPtrOutput {
 // List of paths using which data within the container can be partitioned
 func (o ContainerPartitionKeyResponseOutput) Paths() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ContainerPartitionKeyResponse) []string { return v.Paths }).(pulumi.StringArrayOutput)
-}
-
-// Indicates if the container is using a system generated partition key
-func (o ContainerPartitionKeyResponseOutput) SystemKey() pulumi.BoolOutput {
-	return o.ApplyT(func(v ContainerPartitionKeyResponse) bool { return v.SystemKey }).(pulumi.BoolOutput)
-}
-
-// Indicates the version of the partition key definition
-func (o ContainerPartitionKeyResponseOutput) Version() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ContainerPartitionKeyResponse) *int { return v.Version }).(pulumi.IntPtrOutput)
 }
 
 type ContainerPartitionKeyResponsePtrOutput struct{ *pulumi.OutputState }
@@ -5963,7 +5949,7 @@ func (o ContainerPartitionKeyResponsePtrOutput) Elem() ContainerPartitionKeyResp
 	}).(ContainerPartitionKeyResponseOutput)
 }
 
-// Indicates the kind of algorithm used for partitioning. For MultiHash, multiple partition keys (upto three maximum) are supported for container create
+// Indicates the kind of algorithm used for partitioning
 func (o ContainerPartitionKeyResponsePtrOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContainerPartitionKeyResponse) *string {
 		if v == nil {
@@ -5983,9 +5969,113 @@ func (o ContainerPartitionKeyResponsePtrOutput) Paths() pulumi.StringArrayOutput
 	}).(pulumi.StringArrayOutput)
 }
 
+// The configuration of the partition key to be used for partitioning data into multiple partitions
+type ContainerPartitionKeyResponseV1 struct {
+	// Indicates the kind of algorithm used for partitioning. For MultiHash, multiple partition keys (upto three maximum) are supported for container create
+	Kind *string `pulumi:"kind"`
+	// List of paths using which data within the container can be partitioned
+	Paths []string `pulumi:"paths"`
+	// Indicates if the container is using a system generated partition key
+	SystemKey bool `pulumi:"systemKey"`
+	// Indicates the version of the partition key definition
+	Version *int `pulumi:"version"`
+}
+
+// Defaults sets the appropriate defaults for ContainerPartitionKeyResponseV1
+func (val *ContainerPartitionKeyResponseV1) Defaults() *ContainerPartitionKeyResponseV1 {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Kind == nil {
+		kind_ := "Hash"
+		tmp.Kind = &kind_
+	}
+	return &tmp
+}
+
+// The configuration of the partition key to be used for partitioning data into multiple partitions
+type ContainerPartitionKeyResponseV1Output struct{ *pulumi.OutputState }
+
+func (ContainerPartitionKeyResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerPartitionKeyResponseV1)(nil)).Elem()
+}
+
+func (o ContainerPartitionKeyResponseV1Output) ToContainerPartitionKeyResponseV1Output() ContainerPartitionKeyResponseV1Output {
+	return o
+}
+
+func (o ContainerPartitionKeyResponseV1Output) ToContainerPartitionKeyResponseV1OutputWithContext(ctx context.Context) ContainerPartitionKeyResponseV1Output {
+	return o
+}
+
+// Indicates the kind of algorithm used for partitioning. For MultiHash, multiple partition keys (upto three maximum) are supported for container create
+func (o ContainerPartitionKeyResponseV1Output) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContainerPartitionKeyResponseV1) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+// List of paths using which data within the container can be partitioned
+func (o ContainerPartitionKeyResponseV1Output) Paths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ContainerPartitionKeyResponseV1) []string { return v.Paths }).(pulumi.StringArrayOutput)
+}
+
 // Indicates if the container is using a system generated partition key
-func (o ContainerPartitionKeyResponsePtrOutput) SystemKey() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ContainerPartitionKeyResponse) *bool {
+func (o ContainerPartitionKeyResponseV1Output) SystemKey() pulumi.BoolOutput {
+	return o.ApplyT(func(v ContainerPartitionKeyResponseV1) bool { return v.SystemKey }).(pulumi.BoolOutput)
+}
+
+// Indicates the version of the partition key definition
+func (o ContainerPartitionKeyResponseV1Output) Version() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ContainerPartitionKeyResponseV1) *int { return v.Version }).(pulumi.IntPtrOutput)
+}
+
+type ContainerPartitionKeyResponseV1PtrOutput struct{ *pulumi.OutputState }
+
+func (ContainerPartitionKeyResponseV1PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerPartitionKeyResponseV1)(nil)).Elem()
+}
+
+func (o ContainerPartitionKeyResponseV1PtrOutput) ToContainerPartitionKeyResponseV1PtrOutput() ContainerPartitionKeyResponseV1PtrOutput {
+	return o
+}
+
+func (o ContainerPartitionKeyResponseV1PtrOutput) ToContainerPartitionKeyResponseV1PtrOutputWithContext(ctx context.Context) ContainerPartitionKeyResponseV1PtrOutput {
+	return o
+}
+
+func (o ContainerPartitionKeyResponseV1PtrOutput) Elem() ContainerPartitionKeyResponseV1Output {
+	return o.ApplyT(func(v *ContainerPartitionKeyResponseV1) ContainerPartitionKeyResponseV1 {
+		if v != nil {
+			return *v
+		}
+		var ret ContainerPartitionKeyResponseV1
+		return ret
+	}).(ContainerPartitionKeyResponseV1Output)
+}
+
+// Indicates the kind of algorithm used for partitioning. For MultiHash, multiple partition keys (upto three maximum) are supported for container create
+func (o ContainerPartitionKeyResponseV1PtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContainerPartitionKeyResponseV1) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of paths using which data within the container can be partitioned
+func (o ContainerPartitionKeyResponseV1PtrOutput) Paths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ContainerPartitionKeyResponseV1) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Paths
+	}).(pulumi.StringArrayOutput)
+}
+
+// Indicates if the container is using a system generated partition key
+func (o ContainerPartitionKeyResponseV1PtrOutput) SystemKey() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ContainerPartitionKeyResponseV1) *bool {
 		if v == nil {
 			return nil
 		}
@@ -5994,8 +6084,132 @@ func (o ContainerPartitionKeyResponsePtrOutput) SystemKey() pulumi.BoolPtrOutput
 }
 
 // Indicates the version of the partition key definition
-func (o ContainerPartitionKeyResponsePtrOutput) Version() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ContainerPartitionKeyResponse) *int {
+func (o ContainerPartitionKeyResponseV1PtrOutput) Version() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ContainerPartitionKeyResponseV1) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.IntPtrOutput)
+}
+
+// The configuration of the partition key to be used for partitioning data into multiple partitions
+type ContainerPartitionKeyResponseV2 struct {
+	// Indicates the kind of algorithm used for partitioning. For MultiHash, multiple partition keys (upto three maximum) are supported for container create
+	Kind *string `pulumi:"kind"`
+	// List of paths using which data within the container can be partitioned
+	Paths []string `pulumi:"paths"`
+	// Indicates if the container is using a system generated partition key
+	SystemKey bool `pulumi:"systemKey"`
+	// Indicates the version of the partition key definition
+	Version *int `pulumi:"version"`
+}
+
+// Defaults sets the appropriate defaults for ContainerPartitionKeyResponseV2
+func (val *ContainerPartitionKeyResponseV2) Defaults() *ContainerPartitionKeyResponseV2 {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Kind == nil {
+		kind_ := "Hash"
+		tmp.Kind = &kind_
+	}
+	return &tmp
+}
+
+// The configuration of the partition key to be used for partitioning data into multiple partitions
+type ContainerPartitionKeyResponseV2Output struct{ *pulumi.OutputState }
+
+func (ContainerPartitionKeyResponseV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerPartitionKeyResponseV2)(nil)).Elem()
+}
+
+func (o ContainerPartitionKeyResponseV2Output) ToContainerPartitionKeyResponseV2Output() ContainerPartitionKeyResponseV2Output {
+	return o
+}
+
+func (o ContainerPartitionKeyResponseV2Output) ToContainerPartitionKeyResponseV2OutputWithContext(ctx context.Context) ContainerPartitionKeyResponseV2Output {
+	return o
+}
+
+// Indicates the kind of algorithm used for partitioning. For MultiHash, multiple partition keys (upto three maximum) are supported for container create
+func (o ContainerPartitionKeyResponseV2Output) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContainerPartitionKeyResponseV2) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+// List of paths using which data within the container can be partitioned
+func (o ContainerPartitionKeyResponseV2Output) Paths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ContainerPartitionKeyResponseV2) []string { return v.Paths }).(pulumi.StringArrayOutput)
+}
+
+// Indicates if the container is using a system generated partition key
+func (o ContainerPartitionKeyResponseV2Output) SystemKey() pulumi.BoolOutput {
+	return o.ApplyT(func(v ContainerPartitionKeyResponseV2) bool { return v.SystemKey }).(pulumi.BoolOutput)
+}
+
+// Indicates the version of the partition key definition
+func (o ContainerPartitionKeyResponseV2Output) Version() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ContainerPartitionKeyResponseV2) *int { return v.Version }).(pulumi.IntPtrOutput)
+}
+
+type ContainerPartitionKeyResponseV2PtrOutput struct{ *pulumi.OutputState }
+
+func (ContainerPartitionKeyResponseV2PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerPartitionKeyResponseV2)(nil)).Elem()
+}
+
+func (o ContainerPartitionKeyResponseV2PtrOutput) ToContainerPartitionKeyResponseV2PtrOutput() ContainerPartitionKeyResponseV2PtrOutput {
+	return o
+}
+
+func (o ContainerPartitionKeyResponseV2PtrOutput) ToContainerPartitionKeyResponseV2PtrOutputWithContext(ctx context.Context) ContainerPartitionKeyResponseV2PtrOutput {
+	return o
+}
+
+func (o ContainerPartitionKeyResponseV2PtrOutput) Elem() ContainerPartitionKeyResponseV2Output {
+	return o.ApplyT(func(v *ContainerPartitionKeyResponseV2) ContainerPartitionKeyResponseV2 {
+		if v != nil {
+			return *v
+		}
+		var ret ContainerPartitionKeyResponseV2
+		return ret
+	}).(ContainerPartitionKeyResponseV2Output)
+}
+
+// Indicates the kind of algorithm used for partitioning. For MultiHash, multiple partition keys (upto three maximum) are supported for container create
+func (o ContainerPartitionKeyResponseV2PtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContainerPartitionKeyResponseV2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of paths using which data within the container can be partitioned
+func (o ContainerPartitionKeyResponseV2PtrOutput) Paths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ContainerPartitionKeyResponseV2) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Paths
+	}).(pulumi.StringArrayOutput)
+}
+
+// Indicates if the container is using a system generated partition key
+func (o ContainerPartitionKeyResponseV2PtrOutput) SystemKey() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ContainerPartitionKeyResponseV2) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.SystemKey
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates the version of the partition key definition
+func (o ContainerPartitionKeyResponseV2PtrOutput) Version() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ContainerPartitionKeyResponseV2) *int {
 		if v == nil {
 			return nil
 		}
@@ -10886,9 +11100,9 @@ type GremlinGraphGetPropertiesResponseResource struct {
 	// Name of the Cosmos DB Gremlin graph
 	Id string `pulumi:"id"`
 	// The configuration of the indexing policy. By default, the indexing is automatic for all document paths within the graph
-	IndexingPolicy *IndexingPolicyResponse `pulumi:"indexingPolicy"`
+	IndexingPolicy *IndexingPolicyResponseV1 `pulumi:"indexingPolicy"`
 	// The configuration of the partition key to be used for partitioning data into multiple partitions
-	PartitionKey *ContainerPartitionKeyResponse `pulumi:"partitionKey"`
+	PartitionKey *ContainerPartitionKeyResponseV1 `pulumi:"partitionKey"`
 	// Parameters to indicate the information about the restore
 	RestoreParameters *ResourceRestoreParametersResponse `pulumi:"restoreParameters"`
 	// A system generated property. A unique identifier.
@@ -10961,15 +11175,15 @@ func (o GremlinGraphGetPropertiesResponseResourceOutput) Id() pulumi.StringOutpu
 }
 
 // The configuration of the indexing policy. By default, the indexing is automatic for all document paths within the graph
-func (o GremlinGraphGetPropertiesResponseResourceOutput) IndexingPolicy() IndexingPolicyResponsePtrOutput {
-	return o.ApplyT(func(v GremlinGraphGetPropertiesResponseResource) *IndexingPolicyResponse { return v.IndexingPolicy }).(IndexingPolicyResponsePtrOutput)
+func (o GremlinGraphGetPropertiesResponseResourceOutput) IndexingPolicy() IndexingPolicyResponseV1PtrOutput {
+	return o.ApplyT(func(v GremlinGraphGetPropertiesResponseResource) *IndexingPolicyResponseV1 { return v.IndexingPolicy }).(IndexingPolicyResponseV1PtrOutput)
 }
 
 // The configuration of the partition key to be used for partitioning data into multiple partitions
-func (o GremlinGraphGetPropertiesResponseResourceOutput) PartitionKey() ContainerPartitionKeyResponsePtrOutput {
-	return o.ApplyT(func(v GremlinGraphGetPropertiesResponseResource) *ContainerPartitionKeyResponse {
+func (o GremlinGraphGetPropertiesResponseResourceOutput) PartitionKey() ContainerPartitionKeyResponseV1PtrOutput {
+	return o.ApplyT(func(v GremlinGraphGetPropertiesResponseResource) *ContainerPartitionKeyResponseV1 {
 		return v.PartitionKey
-	}).(ContainerPartitionKeyResponsePtrOutput)
+	}).(ContainerPartitionKeyResponseV1PtrOutput)
 }
 
 // Parameters to indicate the information about the restore
@@ -11079,23 +11293,23 @@ func (o GremlinGraphGetPropertiesResponseResourcePtrOutput) Id() pulumi.StringPt
 }
 
 // The configuration of the indexing policy. By default, the indexing is automatic for all document paths within the graph
-func (o GremlinGraphGetPropertiesResponseResourcePtrOutput) IndexingPolicy() IndexingPolicyResponsePtrOutput {
-	return o.ApplyT(func(v *GremlinGraphGetPropertiesResponseResource) *IndexingPolicyResponse {
+func (o GremlinGraphGetPropertiesResponseResourcePtrOutput) IndexingPolicy() IndexingPolicyResponseV1PtrOutput {
+	return o.ApplyT(func(v *GremlinGraphGetPropertiesResponseResource) *IndexingPolicyResponseV1 {
 		if v == nil {
 			return nil
 		}
 		return v.IndexingPolicy
-	}).(IndexingPolicyResponsePtrOutput)
+	}).(IndexingPolicyResponseV1PtrOutput)
 }
 
 // The configuration of the partition key to be used for partitioning data into multiple partitions
-func (o GremlinGraphGetPropertiesResponseResourcePtrOutput) PartitionKey() ContainerPartitionKeyResponsePtrOutput {
-	return o.ApplyT(func(v *GremlinGraphGetPropertiesResponseResource) *ContainerPartitionKeyResponse {
+func (o GremlinGraphGetPropertiesResponseResourcePtrOutput) PartitionKey() ContainerPartitionKeyResponseV1PtrOutput {
+	return o.ApplyT(func(v *GremlinGraphGetPropertiesResponseResource) *ContainerPartitionKeyResponseV1 {
 		if v == nil {
 			return nil
 		}
 		return v.PartitionKey
-	}).(ContainerPartitionKeyResponsePtrOutput)
+	}).(ContainerPartitionKeyResponseV1PtrOutput)
 }
 
 // Parameters to indicate the information about the restore
@@ -11978,20 +12192,12 @@ func (o IndexingPolicyPtrOutput) VectorIndexes() VectorIndexArrayOutput {
 type IndexingPolicyResponse struct {
 	// Indicates if the indexing policy is automatic
 	Automatic *bool `pulumi:"automatic"`
-	// List of composite path list
-	CompositeIndexes [][]CompositePathResponse `pulumi:"compositeIndexes"`
 	// List of paths to exclude from indexing
 	ExcludedPaths []ExcludedPathResponse `pulumi:"excludedPaths"`
-	// List of paths to include in the full text indexing
-	FullTextIndexes []FullTextIndexPathResponse `pulumi:"fullTextIndexes"`
 	// List of paths to include in the indexing
 	IncludedPaths []IncludedPathResponse `pulumi:"includedPaths"`
 	// Indicates the indexing mode.
 	IndexingMode *string `pulumi:"indexingMode"`
-	// List of spatial specifics
-	SpatialIndexes []SpatialSpecResponse `pulumi:"spatialIndexes"`
-	// List of paths to include in the vector indexing
-	VectorIndexes []VectorIndexResponse `pulumi:"vectorIndexes"`
 }
 
 // Defaults sets the appropriate defaults for IndexingPolicyResponse
@@ -12001,7 +12207,7 @@ func (val *IndexingPolicyResponse) Defaults() *IndexingPolicyResponse {
 	}
 	tmp := *val
 	if tmp.IndexingMode == nil {
-		indexingMode_ := "consistent"
+		indexingMode_ := "Consistent"
 		tmp.IndexingMode = &indexingMode_
 	}
 	return &tmp
@@ -12027,19 +12233,9 @@ func (o IndexingPolicyResponseOutput) Automatic() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v IndexingPolicyResponse) *bool { return v.Automatic }).(pulumi.BoolPtrOutput)
 }
 
-// List of composite path list
-func (o IndexingPolicyResponseOutput) CompositeIndexes() CompositePathResponseArrayArrayOutput {
-	return o.ApplyT(func(v IndexingPolicyResponse) [][]CompositePathResponse { return v.CompositeIndexes }).(CompositePathResponseArrayArrayOutput)
-}
-
 // List of paths to exclude from indexing
 func (o IndexingPolicyResponseOutput) ExcludedPaths() ExcludedPathResponseArrayOutput {
 	return o.ApplyT(func(v IndexingPolicyResponse) []ExcludedPathResponse { return v.ExcludedPaths }).(ExcludedPathResponseArrayOutput)
-}
-
-// List of paths to include in the full text indexing
-func (o IndexingPolicyResponseOutput) FullTextIndexes() FullTextIndexPathResponseArrayOutput {
-	return o.ApplyT(func(v IndexingPolicyResponse) []FullTextIndexPathResponse { return v.FullTextIndexes }).(FullTextIndexPathResponseArrayOutput)
 }
 
 // List of paths to include in the indexing
@@ -12050,16 +12246,6 @@ func (o IndexingPolicyResponseOutput) IncludedPaths() IncludedPathResponseArrayO
 // Indicates the indexing mode.
 func (o IndexingPolicyResponseOutput) IndexingMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IndexingPolicyResponse) *string { return v.IndexingMode }).(pulumi.StringPtrOutput)
-}
-
-// List of spatial specifics
-func (o IndexingPolicyResponseOutput) SpatialIndexes() SpatialSpecResponseArrayOutput {
-	return o.ApplyT(func(v IndexingPolicyResponse) []SpatialSpecResponse { return v.SpatialIndexes }).(SpatialSpecResponseArrayOutput)
-}
-
-// List of paths to include in the vector indexing
-func (o IndexingPolicyResponseOutput) VectorIndexes() VectorIndexResponseArrayOutput {
-	return o.ApplyT(func(v IndexingPolicyResponse) []VectorIndexResponse { return v.VectorIndexes }).(VectorIndexResponseArrayOutput)
 }
 
 type IndexingPolicyResponsePtrOutput struct{ *pulumi.OutputState }
@@ -12096,16 +12282,6 @@ func (o IndexingPolicyResponsePtrOutput) Automatic() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// List of composite path list
-func (o IndexingPolicyResponsePtrOutput) CompositeIndexes() CompositePathResponseArrayArrayOutput {
-	return o.ApplyT(func(v *IndexingPolicyResponse) [][]CompositePathResponse {
-		if v == nil {
-			return nil
-		}
-		return v.CompositeIndexes
-	}).(CompositePathResponseArrayArrayOutput)
-}
-
 // List of paths to exclude from indexing
 func (o IndexingPolicyResponsePtrOutput) ExcludedPaths() ExcludedPathResponseArrayOutput {
 	return o.ApplyT(func(v *IndexingPolicyResponse) []ExcludedPathResponse {
@@ -12114,16 +12290,6 @@ func (o IndexingPolicyResponsePtrOutput) ExcludedPaths() ExcludedPathResponseArr
 		}
 		return v.ExcludedPaths
 	}).(ExcludedPathResponseArrayOutput)
-}
-
-// List of paths to include in the full text indexing
-func (o IndexingPolicyResponsePtrOutput) FullTextIndexes() FullTextIndexPathResponseArrayOutput {
-	return o.ApplyT(func(v *IndexingPolicyResponse) []FullTextIndexPathResponse {
-		if v == nil {
-			return nil
-		}
-		return v.FullTextIndexes
-	}).(FullTextIndexPathResponseArrayOutput)
 }
 
 // List of paths to include in the indexing
@@ -12146,9 +12312,181 @@ func (o IndexingPolicyResponsePtrOutput) IndexingMode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Cosmos DB indexing policy
+type IndexingPolicyResponseV1 struct {
+	// Indicates if the indexing policy is automatic
+	Automatic *bool `pulumi:"automatic"`
+	// List of composite path list
+	CompositeIndexes [][]CompositePathResponse `pulumi:"compositeIndexes"`
+	// List of paths to exclude from indexing
+	ExcludedPaths []ExcludedPathResponse `pulumi:"excludedPaths"`
+	// List of paths to include in the full text indexing
+	FullTextIndexes []FullTextIndexPathResponse `pulumi:"fullTextIndexes"`
+	// List of paths to include in the indexing
+	IncludedPaths []IncludedPathResponse `pulumi:"includedPaths"`
+	// Indicates the indexing mode.
+	IndexingMode *string `pulumi:"indexingMode"`
+	// List of spatial specifics
+	SpatialIndexes []SpatialSpecResponse `pulumi:"spatialIndexes"`
+	// List of paths to include in the vector indexing
+	VectorIndexes []VectorIndexResponse `pulumi:"vectorIndexes"`
+}
+
+// Defaults sets the appropriate defaults for IndexingPolicyResponseV1
+func (val *IndexingPolicyResponseV1) Defaults() *IndexingPolicyResponseV1 {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.IndexingMode == nil {
+		indexingMode_ := "consistent"
+		tmp.IndexingMode = &indexingMode_
+	}
+	return &tmp
+}
+
+// Cosmos DB indexing policy
+type IndexingPolicyResponseV1Output struct{ *pulumi.OutputState }
+
+func (IndexingPolicyResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*IndexingPolicyResponseV1)(nil)).Elem()
+}
+
+func (o IndexingPolicyResponseV1Output) ToIndexingPolicyResponseV1Output() IndexingPolicyResponseV1Output {
+	return o
+}
+
+func (o IndexingPolicyResponseV1Output) ToIndexingPolicyResponseV1OutputWithContext(ctx context.Context) IndexingPolicyResponseV1Output {
+	return o
+}
+
+// Indicates if the indexing policy is automatic
+func (o IndexingPolicyResponseV1Output) Automatic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v IndexingPolicyResponseV1) *bool { return v.Automatic }).(pulumi.BoolPtrOutput)
+}
+
+// List of composite path list
+func (o IndexingPolicyResponseV1Output) CompositeIndexes() CompositePathResponseArrayArrayOutput {
+	return o.ApplyT(func(v IndexingPolicyResponseV1) [][]CompositePathResponse { return v.CompositeIndexes }).(CompositePathResponseArrayArrayOutput)
+}
+
+// List of paths to exclude from indexing
+func (o IndexingPolicyResponseV1Output) ExcludedPaths() ExcludedPathResponseArrayOutput {
+	return o.ApplyT(func(v IndexingPolicyResponseV1) []ExcludedPathResponse { return v.ExcludedPaths }).(ExcludedPathResponseArrayOutput)
+}
+
+// List of paths to include in the full text indexing
+func (o IndexingPolicyResponseV1Output) FullTextIndexes() FullTextIndexPathResponseArrayOutput {
+	return o.ApplyT(func(v IndexingPolicyResponseV1) []FullTextIndexPathResponse { return v.FullTextIndexes }).(FullTextIndexPathResponseArrayOutput)
+}
+
+// List of paths to include in the indexing
+func (o IndexingPolicyResponseV1Output) IncludedPaths() IncludedPathResponseArrayOutput {
+	return o.ApplyT(func(v IndexingPolicyResponseV1) []IncludedPathResponse { return v.IncludedPaths }).(IncludedPathResponseArrayOutput)
+}
+
+// Indicates the indexing mode.
+func (o IndexingPolicyResponseV1Output) IndexingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IndexingPolicyResponseV1) *string { return v.IndexingMode }).(pulumi.StringPtrOutput)
+}
+
 // List of spatial specifics
-func (o IndexingPolicyResponsePtrOutput) SpatialIndexes() SpatialSpecResponseArrayOutput {
-	return o.ApplyT(func(v *IndexingPolicyResponse) []SpatialSpecResponse {
+func (o IndexingPolicyResponseV1Output) SpatialIndexes() SpatialSpecResponseArrayOutput {
+	return o.ApplyT(func(v IndexingPolicyResponseV1) []SpatialSpecResponse { return v.SpatialIndexes }).(SpatialSpecResponseArrayOutput)
+}
+
+// List of paths to include in the vector indexing
+func (o IndexingPolicyResponseV1Output) VectorIndexes() VectorIndexResponseArrayOutput {
+	return o.ApplyT(func(v IndexingPolicyResponseV1) []VectorIndexResponse { return v.VectorIndexes }).(VectorIndexResponseArrayOutput)
+}
+
+type IndexingPolicyResponseV1PtrOutput struct{ *pulumi.OutputState }
+
+func (IndexingPolicyResponseV1PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IndexingPolicyResponseV1)(nil)).Elem()
+}
+
+func (o IndexingPolicyResponseV1PtrOutput) ToIndexingPolicyResponseV1PtrOutput() IndexingPolicyResponseV1PtrOutput {
+	return o
+}
+
+func (o IndexingPolicyResponseV1PtrOutput) ToIndexingPolicyResponseV1PtrOutputWithContext(ctx context.Context) IndexingPolicyResponseV1PtrOutput {
+	return o
+}
+
+func (o IndexingPolicyResponseV1PtrOutput) Elem() IndexingPolicyResponseV1Output {
+	return o.ApplyT(func(v *IndexingPolicyResponseV1) IndexingPolicyResponseV1 {
+		if v != nil {
+			return *v
+		}
+		var ret IndexingPolicyResponseV1
+		return ret
+	}).(IndexingPolicyResponseV1Output)
+}
+
+// Indicates if the indexing policy is automatic
+func (o IndexingPolicyResponseV1PtrOutput) Automatic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *IndexingPolicyResponseV1) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Automatic
+	}).(pulumi.BoolPtrOutput)
+}
+
+// List of composite path list
+func (o IndexingPolicyResponseV1PtrOutput) CompositeIndexes() CompositePathResponseArrayArrayOutput {
+	return o.ApplyT(func(v *IndexingPolicyResponseV1) [][]CompositePathResponse {
+		if v == nil {
+			return nil
+		}
+		return v.CompositeIndexes
+	}).(CompositePathResponseArrayArrayOutput)
+}
+
+// List of paths to exclude from indexing
+func (o IndexingPolicyResponseV1PtrOutput) ExcludedPaths() ExcludedPathResponseArrayOutput {
+	return o.ApplyT(func(v *IndexingPolicyResponseV1) []ExcludedPathResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedPaths
+	}).(ExcludedPathResponseArrayOutput)
+}
+
+// List of paths to include in the full text indexing
+func (o IndexingPolicyResponseV1PtrOutput) FullTextIndexes() FullTextIndexPathResponseArrayOutput {
+	return o.ApplyT(func(v *IndexingPolicyResponseV1) []FullTextIndexPathResponse {
+		if v == nil {
+			return nil
+		}
+		return v.FullTextIndexes
+	}).(FullTextIndexPathResponseArrayOutput)
+}
+
+// List of paths to include in the indexing
+func (o IndexingPolicyResponseV1PtrOutput) IncludedPaths() IncludedPathResponseArrayOutput {
+	return o.ApplyT(func(v *IndexingPolicyResponseV1) []IncludedPathResponse {
+		if v == nil {
+			return nil
+		}
+		return v.IncludedPaths
+	}).(IncludedPathResponseArrayOutput)
+}
+
+// Indicates the indexing mode.
+func (o IndexingPolicyResponseV1PtrOutput) IndexingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IndexingPolicyResponseV1) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IndexingMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of spatial specifics
+func (o IndexingPolicyResponseV1PtrOutput) SpatialIndexes() SpatialSpecResponseArrayOutput {
+	return o.ApplyT(func(v *IndexingPolicyResponseV1) []SpatialSpecResponse {
 		if v == nil {
 			return nil
 		}
@@ -12157,8 +12495,200 @@ func (o IndexingPolicyResponsePtrOutput) SpatialIndexes() SpatialSpecResponseArr
 }
 
 // List of paths to include in the vector indexing
-func (o IndexingPolicyResponsePtrOutput) VectorIndexes() VectorIndexResponseArrayOutput {
-	return o.ApplyT(func(v *IndexingPolicyResponse) []VectorIndexResponse {
+func (o IndexingPolicyResponseV1PtrOutput) VectorIndexes() VectorIndexResponseArrayOutput {
+	return o.ApplyT(func(v *IndexingPolicyResponseV1) []VectorIndexResponse {
+		if v == nil {
+			return nil
+		}
+		return v.VectorIndexes
+	}).(VectorIndexResponseArrayOutput)
+}
+
+// Cosmos DB indexing policy
+type IndexingPolicyResponseV2 struct {
+	// Indicates if the indexing policy is automatic
+	Automatic *bool `pulumi:"automatic"`
+	// List of composite path list
+	CompositeIndexes [][]CompositePathResponse `pulumi:"compositeIndexes"`
+	// List of paths to exclude from indexing
+	ExcludedPaths []ExcludedPathResponse `pulumi:"excludedPaths"`
+	// List of paths to include in the full text indexing
+	FullTextIndexes []FullTextIndexPathResponse `pulumi:"fullTextIndexes"`
+	// List of paths to include in the indexing
+	IncludedPaths []IncludedPathResponse `pulumi:"includedPaths"`
+	// Indicates the indexing mode.
+	IndexingMode *string `pulumi:"indexingMode"`
+	// List of spatial specifics
+	SpatialIndexes []SpatialSpecResponse `pulumi:"spatialIndexes"`
+	// List of paths to include in the vector indexing
+	VectorIndexes []VectorIndexResponse `pulumi:"vectorIndexes"`
+}
+
+// Defaults sets the appropriate defaults for IndexingPolicyResponseV2
+func (val *IndexingPolicyResponseV2) Defaults() *IndexingPolicyResponseV2 {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.IndexingMode == nil {
+		indexingMode_ := "consistent"
+		tmp.IndexingMode = &indexingMode_
+	}
+	return &tmp
+}
+
+// Cosmos DB indexing policy
+type IndexingPolicyResponseV2Output struct{ *pulumi.OutputState }
+
+func (IndexingPolicyResponseV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*IndexingPolicyResponseV2)(nil)).Elem()
+}
+
+func (o IndexingPolicyResponseV2Output) ToIndexingPolicyResponseV2Output() IndexingPolicyResponseV2Output {
+	return o
+}
+
+func (o IndexingPolicyResponseV2Output) ToIndexingPolicyResponseV2OutputWithContext(ctx context.Context) IndexingPolicyResponseV2Output {
+	return o
+}
+
+// Indicates if the indexing policy is automatic
+func (o IndexingPolicyResponseV2Output) Automatic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v IndexingPolicyResponseV2) *bool { return v.Automatic }).(pulumi.BoolPtrOutput)
+}
+
+// List of composite path list
+func (o IndexingPolicyResponseV2Output) CompositeIndexes() CompositePathResponseArrayArrayOutput {
+	return o.ApplyT(func(v IndexingPolicyResponseV2) [][]CompositePathResponse { return v.CompositeIndexes }).(CompositePathResponseArrayArrayOutput)
+}
+
+// List of paths to exclude from indexing
+func (o IndexingPolicyResponseV2Output) ExcludedPaths() ExcludedPathResponseArrayOutput {
+	return o.ApplyT(func(v IndexingPolicyResponseV2) []ExcludedPathResponse { return v.ExcludedPaths }).(ExcludedPathResponseArrayOutput)
+}
+
+// List of paths to include in the full text indexing
+func (o IndexingPolicyResponseV2Output) FullTextIndexes() FullTextIndexPathResponseArrayOutput {
+	return o.ApplyT(func(v IndexingPolicyResponseV2) []FullTextIndexPathResponse { return v.FullTextIndexes }).(FullTextIndexPathResponseArrayOutput)
+}
+
+// List of paths to include in the indexing
+func (o IndexingPolicyResponseV2Output) IncludedPaths() IncludedPathResponseArrayOutput {
+	return o.ApplyT(func(v IndexingPolicyResponseV2) []IncludedPathResponse { return v.IncludedPaths }).(IncludedPathResponseArrayOutput)
+}
+
+// Indicates the indexing mode.
+func (o IndexingPolicyResponseV2Output) IndexingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IndexingPolicyResponseV2) *string { return v.IndexingMode }).(pulumi.StringPtrOutput)
+}
+
+// List of spatial specifics
+func (o IndexingPolicyResponseV2Output) SpatialIndexes() SpatialSpecResponseArrayOutput {
+	return o.ApplyT(func(v IndexingPolicyResponseV2) []SpatialSpecResponse { return v.SpatialIndexes }).(SpatialSpecResponseArrayOutput)
+}
+
+// List of paths to include in the vector indexing
+func (o IndexingPolicyResponseV2Output) VectorIndexes() VectorIndexResponseArrayOutput {
+	return o.ApplyT(func(v IndexingPolicyResponseV2) []VectorIndexResponse { return v.VectorIndexes }).(VectorIndexResponseArrayOutput)
+}
+
+type IndexingPolicyResponseV2PtrOutput struct{ *pulumi.OutputState }
+
+func (IndexingPolicyResponseV2PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IndexingPolicyResponseV2)(nil)).Elem()
+}
+
+func (o IndexingPolicyResponseV2PtrOutput) ToIndexingPolicyResponseV2PtrOutput() IndexingPolicyResponseV2PtrOutput {
+	return o
+}
+
+func (o IndexingPolicyResponseV2PtrOutput) ToIndexingPolicyResponseV2PtrOutputWithContext(ctx context.Context) IndexingPolicyResponseV2PtrOutput {
+	return o
+}
+
+func (o IndexingPolicyResponseV2PtrOutput) Elem() IndexingPolicyResponseV2Output {
+	return o.ApplyT(func(v *IndexingPolicyResponseV2) IndexingPolicyResponseV2 {
+		if v != nil {
+			return *v
+		}
+		var ret IndexingPolicyResponseV2
+		return ret
+	}).(IndexingPolicyResponseV2Output)
+}
+
+// Indicates if the indexing policy is automatic
+func (o IndexingPolicyResponseV2PtrOutput) Automatic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *IndexingPolicyResponseV2) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Automatic
+	}).(pulumi.BoolPtrOutput)
+}
+
+// List of composite path list
+func (o IndexingPolicyResponseV2PtrOutput) CompositeIndexes() CompositePathResponseArrayArrayOutput {
+	return o.ApplyT(func(v *IndexingPolicyResponseV2) [][]CompositePathResponse {
+		if v == nil {
+			return nil
+		}
+		return v.CompositeIndexes
+	}).(CompositePathResponseArrayArrayOutput)
+}
+
+// List of paths to exclude from indexing
+func (o IndexingPolicyResponseV2PtrOutput) ExcludedPaths() ExcludedPathResponseArrayOutput {
+	return o.ApplyT(func(v *IndexingPolicyResponseV2) []ExcludedPathResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedPaths
+	}).(ExcludedPathResponseArrayOutput)
+}
+
+// List of paths to include in the full text indexing
+func (o IndexingPolicyResponseV2PtrOutput) FullTextIndexes() FullTextIndexPathResponseArrayOutput {
+	return o.ApplyT(func(v *IndexingPolicyResponseV2) []FullTextIndexPathResponse {
+		if v == nil {
+			return nil
+		}
+		return v.FullTextIndexes
+	}).(FullTextIndexPathResponseArrayOutput)
+}
+
+// List of paths to include in the indexing
+func (o IndexingPolicyResponseV2PtrOutput) IncludedPaths() IncludedPathResponseArrayOutput {
+	return o.ApplyT(func(v *IndexingPolicyResponseV2) []IncludedPathResponse {
+		if v == nil {
+			return nil
+		}
+		return v.IncludedPaths
+	}).(IncludedPathResponseArrayOutput)
+}
+
+// Indicates the indexing mode.
+func (o IndexingPolicyResponseV2PtrOutput) IndexingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IndexingPolicyResponseV2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IndexingMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of spatial specifics
+func (o IndexingPolicyResponseV2PtrOutput) SpatialIndexes() SpatialSpecResponseArrayOutput {
+	return o.ApplyT(func(v *IndexingPolicyResponseV2) []SpatialSpecResponse {
+		if v == nil {
+			return nil
+		}
+		return v.SpatialIndexes
+	}).(SpatialSpecResponseArrayOutput)
+}
+
+// List of paths to include in the vector indexing
+func (o IndexingPolicyResponseV2PtrOutput) VectorIndexes() VectorIndexResponseArrayOutput {
+	return o.ApplyT(func(v *IndexingPolicyResponseV2) []VectorIndexResponse {
 		if v == nil {
 			return nil
 		}
@@ -15741,6 +16271,59 @@ func (o PermissionResponseArrayOutput) Index(i pulumi.IntInput) PermissionRespon
 	}).(PermissionResponseOutput)
 }
 
+// The set of data plane operations permitted through this Role Definition.
+type PermissionResponseV1 struct {
+	// An array of data actions that are allowed.
+	DataActions []string `pulumi:"dataActions"`
+	// An array of data actions that are denied.
+	NotDataActions []string `pulumi:"notDataActions"`
+}
+
+// The set of data plane operations permitted through this Role Definition.
+type PermissionResponseV1Output struct{ *pulumi.OutputState }
+
+func (PermissionResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*PermissionResponseV1)(nil)).Elem()
+}
+
+func (o PermissionResponseV1Output) ToPermissionResponseV1Output() PermissionResponseV1Output {
+	return o
+}
+
+func (o PermissionResponseV1Output) ToPermissionResponseV1OutputWithContext(ctx context.Context) PermissionResponseV1Output {
+	return o
+}
+
+// An array of data actions that are allowed.
+func (o PermissionResponseV1Output) DataActions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PermissionResponseV1) []string { return v.DataActions }).(pulumi.StringArrayOutput)
+}
+
+// An array of data actions that are denied.
+func (o PermissionResponseV1Output) NotDataActions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PermissionResponseV1) []string { return v.NotDataActions }).(pulumi.StringArrayOutput)
+}
+
+type PermissionResponseV1ArrayOutput struct{ *pulumi.OutputState }
+
+func (PermissionResponseV1ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PermissionResponseV1)(nil)).Elem()
+}
+
+func (o PermissionResponseV1ArrayOutput) ToPermissionResponseV1ArrayOutput() PermissionResponseV1ArrayOutput {
+	return o
+}
+
+func (o PermissionResponseV1ArrayOutput) ToPermissionResponseV1ArrayOutputWithContext(ctx context.Context) PermissionResponseV1ArrayOutput {
+	return o
+}
+
+func (o PermissionResponseV1ArrayOutput) Index(i pulumi.IntInput) PermissionResponseV1Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PermissionResponseV1 {
+		return vs[0].([]PermissionResponseV1)[vs[1].(int)]
+	}).(PermissionResponseV1Output)
+}
+
 // A private endpoint connection
 type PrivateEndpointConnectionResponse struct {
 	// Group id of the private endpoint.
@@ -18084,9 +18667,9 @@ type SqlContainerGetPropertiesResponseResource struct {
 	// Name of the Cosmos DB SQL container
 	Id string `pulumi:"id"`
 	// The configuration of the indexing policy. By default, the indexing is automatic for all document paths within the container
-	IndexingPolicy *IndexingPolicyResponse `pulumi:"indexingPolicy"`
+	IndexingPolicy *IndexingPolicyResponseV2 `pulumi:"indexingPolicy"`
 	// The configuration of the partition key to be used for partitioning data into multiple partitions
-	PartitionKey *ContainerPartitionKeyResponse `pulumi:"partitionKey"`
+	PartitionKey *ContainerPartitionKeyResponseV2 `pulumi:"partitionKey"`
 	// Parameters to indicate the information about the restore
 	RestoreParameters *ResourceRestoreParametersResponse `pulumi:"restoreParameters"`
 	// A system generated property. A unique identifier.
@@ -18180,15 +18763,15 @@ func (o SqlContainerGetPropertiesResponseResourceOutput) Id() pulumi.StringOutpu
 }
 
 // The configuration of the indexing policy. By default, the indexing is automatic for all document paths within the container
-func (o SqlContainerGetPropertiesResponseResourceOutput) IndexingPolicy() IndexingPolicyResponsePtrOutput {
-	return o.ApplyT(func(v SqlContainerGetPropertiesResponseResource) *IndexingPolicyResponse { return v.IndexingPolicy }).(IndexingPolicyResponsePtrOutput)
+func (o SqlContainerGetPropertiesResponseResourceOutput) IndexingPolicy() IndexingPolicyResponseV2PtrOutput {
+	return o.ApplyT(func(v SqlContainerGetPropertiesResponseResource) *IndexingPolicyResponseV2 { return v.IndexingPolicy }).(IndexingPolicyResponseV2PtrOutput)
 }
 
 // The configuration of the partition key to be used for partitioning data into multiple partitions
-func (o SqlContainerGetPropertiesResponseResourceOutput) PartitionKey() ContainerPartitionKeyResponsePtrOutput {
-	return o.ApplyT(func(v SqlContainerGetPropertiesResponseResource) *ContainerPartitionKeyResponse {
+func (o SqlContainerGetPropertiesResponseResourceOutput) PartitionKey() ContainerPartitionKeyResponseV2PtrOutput {
+	return o.ApplyT(func(v SqlContainerGetPropertiesResponseResource) *ContainerPartitionKeyResponseV2 {
 		return v.PartitionKey
-	}).(ContainerPartitionKeyResponsePtrOutput)
+	}).(ContainerPartitionKeyResponseV2PtrOutput)
 }
 
 // Parameters to indicate the information about the restore
@@ -18335,23 +18918,23 @@ func (o SqlContainerGetPropertiesResponseResourcePtrOutput) Id() pulumi.StringPt
 }
 
 // The configuration of the indexing policy. By default, the indexing is automatic for all document paths within the container
-func (o SqlContainerGetPropertiesResponseResourcePtrOutput) IndexingPolicy() IndexingPolicyResponsePtrOutput {
-	return o.ApplyT(func(v *SqlContainerGetPropertiesResponseResource) *IndexingPolicyResponse {
+func (o SqlContainerGetPropertiesResponseResourcePtrOutput) IndexingPolicy() IndexingPolicyResponseV2PtrOutput {
+	return o.ApplyT(func(v *SqlContainerGetPropertiesResponseResource) *IndexingPolicyResponseV2 {
 		if v == nil {
 			return nil
 		}
 		return v.IndexingPolicy
-	}).(IndexingPolicyResponsePtrOutput)
+	}).(IndexingPolicyResponseV2PtrOutput)
 }
 
 // The configuration of the partition key to be used for partitioning data into multiple partitions
-func (o SqlContainerGetPropertiesResponseResourcePtrOutput) PartitionKey() ContainerPartitionKeyResponsePtrOutput {
-	return o.ApplyT(func(v *SqlContainerGetPropertiesResponseResource) *ContainerPartitionKeyResponse {
+func (o SqlContainerGetPropertiesResponseResourcePtrOutput) PartitionKey() ContainerPartitionKeyResponseV2PtrOutput {
+	return o.ApplyT(func(v *SqlContainerGetPropertiesResponseResource) *ContainerPartitionKeyResponseV2 {
 		if v == nil {
 			return nil
 		}
 		return v.PartitionKey
-	}).(ContainerPartitionKeyResponsePtrOutput)
+	}).(ContainerPartitionKeyResponseV2PtrOutput)
 }
 
 // Parameters to indicate the information about the restore
@@ -21558,6 +22141,10 @@ func init() {
 	pulumi.RegisterOutputType(ContainerPartitionKeyPtrOutput{})
 	pulumi.RegisterOutputType(ContainerPartitionKeyResponseOutput{})
 	pulumi.RegisterOutputType(ContainerPartitionKeyResponsePtrOutput{})
+	pulumi.RegisterOutputType(ContainerPartitionKeyResponseV1Output{})
+	pulumi.RegisterOutputType(ContainerPartitionKeyResponseV1PtrOutput{})
+	pulumi.RegisterOutputType(ContainerPartitionKeyResponseV2Output{})
+	pulumi.RegisterOutputType(ContainerPartitionKeyResponseV2PtrOutput{})
 	pulumi.RegisterOutputType(ContinuousModeBackupPolicyOutput{})
 	pulumi.RegisterOutputType(ContinuousModeBackupPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ContinuousModeBackupPolicyResponseOutput{})
@@ -21659,6 +22246,10 @@ func init() {
 	pulumi.RegisterOutputType(IndexingPolicyPtrOutput{})
 	pulumi.RegisterOutputType(IndexingPolicyResponseOutput{})
 	pulumi.RegisterOutputType(IndexingPolicyResponsePtrOutput{})
+	pulumi.RegisterOutputType(IndexingPolicyResponseV1Output{})
+	pulumi.RegisterOutputType(IndexingPolicyResponseV1PtrOutput{})
+	pulumi.RegisterOutputType(IndexingPolicyResponseV2Output{})
+	pulumi.RegisterOutputType(IndexingPolicyResponseV2PtrOutput{})
 	pulumi.RegisterOutputType(IpAddressOrRangeOutput{})
 	pulumi.RegisterOutputType(IpAddressOrRangeArrayOutput{})
 	pulumi.RegisterOutputType(IpAddressOrRangeResponseOutput{})
@@ -21722,6 +22313,8 @@ func init() {
 	pulumi.RegisterOutputType(PermissionArrayOutput{})
 	pulumi.RegisterOutputType(PermissionResponseOutput{})
 	pulumi.RegisterOutputType(PermissionResponseArrayOutput{})
+	pulumi.RegisterOutputType(PermissionResponseV1Output{})
+	pulumi.RegisterOutputType(PermissionResponseV1ArrayOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseArrayOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointPropertyOutput{})

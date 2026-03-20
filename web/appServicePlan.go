@@ -14,12 +14,15 @@ import (
 
 // App Service plan.
 //
-// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
+// Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
 //
-// Other available API versions: 2016-09-01, 2018-02-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2016-09-01, 2018-02-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type AppServicePlan struct {
 	pulumi.CustomResourceState
 
+	// If <code>true</code>, this App Service Plan will attempt to scale asynchronously if there are insufficient workers to scale synchronously.
+	// If <code>false</code>, this App Service Plan will only attempt sync scaling.
+	AsyncScalingEnabled pulumi.BoolPtrOutput `pulumi:"asyncScalingEnabled"`
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// ServerFarm supports ElasticScale. Apps in this plan will scale as if the ServerFarm was ElasticPremium sku
@@ -207,6 +210,9 @@ func (AppServicePlanState) ElementType() reflect.Type {
 }
 
 type appServicePlanArgs struct {
+	// If <code>true</code>, this App Service Plan will attempt to scale asynchronously if there are insufficient workers to scale synchronously.
+	// If <code>false</code>, this App Service Plan will only attempt sync scaling.
+	AsyncScalingEnabled *bool `pulumi:"asyncScalingEnabled"`
 	// ServerFarm supports ElasticScale. Apps in this plan will scale as if the ServerFarm was ElasticPremium sku
 	ElasticScaleEnabled *bool `pulumi:"elasticScaleEnabled"`
 	// Extended Location.
@@ -257,6 +263,9 @@ type appServicePlanArgs struct {
 
 // The set of arguments for constructing a AppServicePlan resource.
 type AppServicePlanArgs struct {
+	// If <code>true</code>, this App Service Plan will attempt to scale asynchronously if there are insufficient workers to scale synchronously.
+	// If <code>false</code>, this App Service Plan will only attempt sync scaling.
+	AsyncScalingEnabled pulumi.BoolPtrInput
 	// ServerFarm supports ElasticScale. Apps in this plan will scale as if the ServerFarm was ElasticPremium sku
 	ElasticScaleEnabled pulumi.BoolPtrInput
 	// Extended Location.
@@ -340,6 +349,12 @@ func (o AppServicePlanOutput) ToAppServicePlanOutput() AppServicePlanOutput {
 
 func (o AppServicePlanOutput) ToAppServicePlanOutputWithContext(ctx context.Context) AppServicePlanOutput {
 	return o
+}
+
+// If <code>true</code>, this App Service Plan will attempt to scale asynchronously if there are insufficient workers to scale synchronously.
+// If <code>false</code>, this App Service Plan will only attempt sync scaling.
+func (o AppServicePlanOutput) AsyncScalingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AppServicePlan) pulumi.BoolPtrOutput { return v.AsyncScalingEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // The Azure API version of the resource.
