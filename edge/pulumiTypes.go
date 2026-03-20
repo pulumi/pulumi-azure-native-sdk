@@ -3960,12 +3960,8 @@ type SitePropertiesResponse struct {
 	Description *string `pulumi:"description"`
 	// displayName of Site resource
 	DisplayName *string `pulumi:"displayName"`
-	// Key-value pairs for labeling the site resource.
-	Labels map[string]string `pulumi:"labels"`
 	// Provisioning state of last operation
 	ProvisioningState string `pulumi:"provisioningState"`
-	// Physical address of the site
-	SiteAddress *SiteAddressPropertiesResponse `pulumi:"siteAddress"`
 }
 
 // Site properties
@@ -3998,19 +3994,63 @@ func (o SitePropertiesResponseOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SitePropertiesResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// Key-value pairs for labeling the site resource.
-func (o SitePropertiesResponseOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v SitePropertiesResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
-}
-
 // Provisioning state of last operation
 func (o SitePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v SitePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Site properties
+type SitePropertiesResponseV1 struct {
+	// Description of Site resource
+	Description *string `pulumi:"description"`
+	// displayName of Site resource
+	DisplayName *string `pulumi:"displayName"`
+	// Key-value pairs for labeling the site resource.
+	Labels map[string]string `pulumi:"labels"`
+	// Provisioning state of last operation
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Physical address of the site
+	SiteAddress *SiteAddressPropertiesResponse `pulumi:"siteAddress"`
+}
+
+// Site properties
+type SitePropertiesResponseV1Output struct{ *pulumi.OutputState }
+
+func (SitePropertiesResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*SitePropertiesResponseV1)(nil)).Elem()
+}
+
+func (o SitePropertiesResponseV1Output) ToSitePropertiesResponseV1Output() SitePropertiesResponseV1Output {
+	return o
+}
+
+func (o SitePropertiesResponseV1Output) ToSitePropertiesResponseV1OutputWithContext(ctx context.Context) SitePropertiesResponseV1Output {
+	return o
+}
+
+// Description of Site resource
+func (o SitePropertiesResponseV1Output) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SitePropertiesResponseV1) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// displayName of Site resource
+func (o SitePropertiesResponseV1Output) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SitePropertiesResponseV1) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Key-value pairs for labeling the site resource.
+func (o SitePropertiesResponseV1Output) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SitePropertiesResponseV1) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Provisioning state of last operation
+func (o SitePropertiesResponseV1Output) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v SitePropertiesResponseV1) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
 // Physical address of the site
-func (o SitePropertiesResponseOutput) SiteAddress() SiteAddressPropertiesResponsePtrOutput {
-	return o.ApplyT(func(v SitePropertiesResponse) *SiteAddressPropertiesResponse { return v.SiteAddress }).(SiteAddressPropertiesResponsePtrOutput)
+func (o SitePropertiesResponseV1Output) SiteAddress() SiteAddressPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v SitePropertiesResponseV1) *SiteAddressPropertiesResponse { return v.SiteAddress }).(SiteAddressPropertiesResponsePtrOutput)
 }
 
 // Site Reference Properties
@@ -6419,6 +6459,7 @@ func init() {
 	pulumi.RegisterOutputType(SitePropertiesOutput{})
 	pulumi.RegisterOutputType(SitePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(SitePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(SitePropertiesResponseV1Output{})
 	pulumi.RegisterOutputType(SiteReferencePropertiesOutput{})
 	pulumi.RegisterOutputType(SiteReferencePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(SiteReferencePropertiesResponseOutput{})

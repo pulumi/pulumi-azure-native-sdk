@@ -27,7 +27,7 @@ type SqlResourceSqlRoleDefinition struct {
 	// The name of the database account.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The set of operations allowed through this Role Definition.
-	Permissions PermissionResponseArrayOutput `pulumi:"permissions"`
+	Permissions PermissionResponseV1ArrayOutput `pulumi:"permissions"`
 	// A user-friendly name for the Role Definition. Must be unique for the database account.
 	RoleName pulumi.StringPtrOutput `pulumi:"roleName"`
 	// The type of Azure resource.
@@ -317,8 +317,8 @@ func (o SqlResourceSqlRoleDefinitionOutput) Name() pulumi.StringOutput {
 }
 
 // The set of operations allowed through this Role Definition.
-func (o SqlResourceSqlRoleDefinitionOutput) Permissions() PermissionResponseArrayOutput {
-	return o.ApplyT(func(v *SqlResourceSqlRoleDefinition) PermissionResponseArrayOutput { return v.Permissions }).(PermissionResponseArrayOutput)
+func (o SqlResourceSqlRoleDefinitionOutput) Permissions() PermissionResponseV1ArrayOutput {
+	return o.ApplyT(func(v *SqlResourceSqlRoleDefinition) PermissionResponseV1ArrayOutput { return v.Permissions }).(PermissionResponseV1ArrayOutput)
 }
 
 // A user-friendly name for the Role Definition. Must be unique for the database account.
