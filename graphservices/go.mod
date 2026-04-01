@@ -1,11 +1,11 @@
 module github.com/pulumi/pulumi-azure-native-sdk/graphservices/v3
 
-go 1.25.6
+go 1.25.8
 
 require (
 	github.com/blang/semver v3.5.1+incompatible
-	github.com/pulumi/pulumi-azure-native-sdk/v3 v3.16.0
-	github.com/pulumi/pulumi/sdk/v3 v3.227.0
+	github.com/pulumi/pulumi-azure-native-sdk/v3 v3.17.0-alpha.1774908622
+	github.com/pulumi/pulumi/sdk/v3 v3.228.0
 )
 
 require (
