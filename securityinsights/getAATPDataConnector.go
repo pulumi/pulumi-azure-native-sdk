@@ -7,13 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a data connector.
 //
-// Uses Azure REST API version 2024-09-01.
+// Uses Azure REST API version 2023-02-01.
 func LookupAATPDataConnector(ctx *pulumi.Context, args *LookupAATPDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupAATPDataConnectorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAATPDataConnectorResult
@@ -35,8 +35,6 @@ type LookupAATPDataConnectorArgs struct {
 
 // Represents AATP (Azure Advanced Threat Protection) data connector.
 type LookupAATPDataConnectorResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The available data types for the connector.
 	DataTypes *AlertsDataTypeOfDataConnectorResponse `pulumi:"dataTypes"`
 	// Etag of the azure resource
@@ -51,7 +49,7 @@ type LookupAATPDataConnectorResult struct {
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The tenant id to connect to, and get the data from.
-	TenantId string `pulumi:"tenantId"`
+	TenantId *string `pulumi:"tenantId"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -93,11 +91,6 @@ func (o LookupAATPDataConnectorResultOutput) ToLookupAATPDataConnectorResultOutp
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupAATPDataConnectorResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAATPDataConnectorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // The available data types for the connector.
 func (o LookupAATPDataConnectorResultOutput) DataTypes() AlertsDataTypeOfDataConnectorResponsePtrOutput {
 	return o.ApplyT(func(v LookupAATPDataConnectorResult) *AlertsDataTypeOfDataConnectorResponse { return v.DataTypes }).(AlertsDataTypeOfDataConnectorResponsePtrOutput)
@@ -130,8 +123,8 @@ func (o LookupAATPDataConnectorResultOutput) SystemData() SystemDataResponseOutp
 }
 
 // The tenant id to connect to, and get the data from.
-func (o LookupAATPDataConnectorResultOutput) TenantId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAATPDataConnectorResult) string { return v.TenantId }).(pulumi.StringOutput)
+func (o LookupAATPDataConnectorResultOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAATPDataConnectorResult) *string { return v.TenantId }).(pulumi.StringPtrOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

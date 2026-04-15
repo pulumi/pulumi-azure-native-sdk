@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -682,8 +682,6 @@ func (o GuestAgentProfileResponsePtrOutput) VmUuid() pulumi.StringPtrOutput {
 type GuestCredential struct {
 	// Gets or sets the password to connect with the guest.
 	Password *string `pulumi:"password"`
-	// Private key used to authenticate to a virtual machine through ssh.
-	PrivateKey *string `pulumi:"privateKey"`
 	// Gets or sets username to connect with the guest.
 	Username *string `pulumi:"username"`
 }
@@ -703,8 +701,6 @@ type GuestCredentialInput interface {
 type GuestCredentialArgs struct {
 	// Gets or sets the password to connect with the guest.
 	Password pulumi.StringPtrInput `pulumi:"password"`
-	// Private key used to authenticate to a virtual machine through ssh.
-	PrivateKey pulumi.StringPtrInput `pulumi:"privateKey"`
 	// Gets or sets username to connect with the guest.
 	Username pulumi.StringPtrInput `pulumi:"username"`
 }
@@ -792,11 +788,6 @@ func (o GuestCredentialOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuestCredential) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-// Private key used to authenticate to a virtual machine through ssh.
-func (o GuestCredentialOutput) PrivateKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GuestCredential) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
-}
-
 // Gets or sets username to connect with the guest.
 func (o GuestCredentialOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuestCredential) *string { return v.Username }).(pulumi.StringPtrOutput)
@@ -833,16 +824,6 @@ func (o GuestCredentialPtrOutput) Password() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Password
-	}).(pulumi.StringPtrOutput)
-}
-
-// Private key used to authenticate to a virtual machine through ssh.
-func (o GuestCredentialPtrOutput) PrivateKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GuestCredential) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PrivateKey
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -909,83 +890,6 @@ func (o GuestCredentialResponsePtrOutput) Elem() GuestCredentialResponseOutput {
 // Gets or sets username to connect with the guest.
 func (o GuestCredentialResponsePtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuestCredentialResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Username
-	}).(pulumi.StringPtrOutput)
-}
-
-// Username / Password Credentials to connect to guest.
-type GuestCredentialResponseV1 struct {
-	// Private key used to authenticate to a virtual machine through ssh.
-	PrivateKey *string `pulumi:"privateKey"`
-	// Gets or sets username to connect with the guest.
-	Username *string `pulumi:"username"`
-}
-
-// Username / Password Credentials to connect to guest.
-type GuestCredentialResponseV1Output struct{ *pulumi.OutputState }
-
-func (GuestCredentialResponseV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*GuestCredentialResponseV1)(nil)).Elem()
-}
-
-func (o GuestCredentialResponseV1Output) ToGuestCredentialResponseV1Output() GuestCredentialResponseV1Output {
-	return o
-}
-
-func (o GuestCredentialResponseV1Output) ToGuestCredentialResponseV1OutputWithContext(ctx context.Context) GuestCredentialResponseV1Output {
-	return o
-}
-
-// Private key used to authenticate to a virtual machine through ssh.
-func (o GuestCredentialResponseV1Output) PrivateKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GuestCredentialResponseV1) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets username to connect with the guest.
-func (o GuestCredentialResponseV1Output) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GuestCredentialResponseV1) *string { return v.Username }).(pulumi.StringPtrOutput)
-}
-
-type GuestCredentialResponseV1PtrOutput struct{ *pulumi.OutputState }
-
-func (GuestCredentialResponseV1PtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GuestCredentialResponseV1)(nil)).Elem()
-}
-
-func (o GuestCredentialResponseV1PtrOutput) ToGuestCredentialResponseV1PtrOutput() GuestCredentialResponseV1PtrOutput {
-	return o
-}
-
-func (o GuestCredentialResponseV1PtrOutput) ToGuestCredentialResponseV1PtrOutputWithContext(ctx context.Context) GuestCredentialResponseV1PtrOutput {
-	return o
-}
-
-func (o GuestCredentialResponseV1PtrOutput) Elem() GuestCredentialResponseV1Output {
-	return o.ApplyT(func(v *GuestCredentialResponseV1) GuestCredentialResponseV1 {
-		if v != nil {
-			return *v
-		}
-		var ret GuestCredentialResponseV1
-		return ret
-	}).(GuestCredentialResponseV1Output)
-}
-
-// Private key used to authenticate to a virtual machine through ssh.
-func (o GuestCredentialResponseV1PtrOutput) PrivateKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GuestCredentialResponseV1) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PrivateKey
-	}).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets username to connect with the guest.
-func (o GuestCredentialResponseV1PtrOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GuestCredentialResponseV1) *string {
 		if v == nil {
 			return nil
 		}
@@ -3604,8 +3508,6 @@ type OsProfileForVMInstance struct {
 	GuestId *string `pulumi:"guestId"`
 	// Gets or sets the type of the os.
 	OsType *string `pulumi:"osType"`
-	// Windows Configuration.
-	WindowsConfiguration *WindowsConfiguration `pulumi:"windowsConfiguration"`
 }
 
 // OsProfileForVMInstanceInput is an input type that accepts OsProfileForVMInstanceArgs and OsProfileForVMInstanceOutput values.
@@ -3631,8 +3533,6 @@ type OsProfileForVMInstanceArgs struct {
 	GuestId pulumi.StringPtrInput `pulumi:"guestId"`
 	// Gets or sets the type of the os.
 	OsType pulumi.StringPtrInput `pulumi:"osType"`
-	// Windows Configuration.
-	WindowsConfiguration WindowsConfigurationPtrInput `pulumi:"windowsConfiguration"`
 }
 
 func (OsProfileForVMInstanceArgs) ElementType() reflect.Type {
@@ -3738,11 +3638,6 @@ func (o OsProfileForVMInstanceOutput) OsType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OsProfileForVMInstance) *string { return v.OsType }).(pulumi.StringPtrOutput)
 }
 
-// Windows Configuration.
-func (o OsProfileForVMInstanceOutput) WindowsConfiguration() WindowsConfigurationPtrOutput {
-	return o.ApplyT(func(v OsProfileForVMInstance) *WindowsConfiguration { return v.WindowsConfiguration }).(WindowsConfigurationPtrOutput)
-}
-
 type OsProfileForVMInstancePtrOutput struct{ *pulumi.OutputState }
 
 func (OsProfileForVMInstancePtrOutput) ElementType() reflect.Type {
@@ -3817,16 +3712,6 @@ func (o OsProfileForVMInstancePtrOutput) OsType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Windows Configuration.
-func (o OsProfileForVMInstancePtrOutput) WindowsConfiguration() WindowsConfigurationPtrOutput {
-	return o.ApplyT(func(v *OsProfileForVMInstance) *WindowsConfiguration {
-		if v == nil {
-			return nil
-		}
-		return v.WindowsConfiguration
-	}).(WindowsConfigurationPtrOutput)
-}
-
 // Specifies the operating system settings for the virtual machine.
 type OsProfileForVMInstanceResponse struct {
 	// Gets or sets administrator username.
@@ -3845,8 +3730,6 @@ type OsProfileForVMInstanceResponse struct {
 	ToolsVersion string `pulumi:"toolsVersion"`
 	// Gets or sets the current version status of VMware Tools installed in the guest operating system.
 	ToolsVersionStatus string `pulumi:"toolsVersionStatus"`
-	// Windows Configuration.
-	WindowsConfiguration *WindowsConfigurationResponse `pulumi:"windowsConfiguration"`
 }
 
 // Specifies the operating system settings for the virtual machine.
@@ -3902,11 +3785,6 @@ func (o OsProfileForVMInstanceResponseOutput) ToolsVersion() pulumi.StringOutput
 // Gets or sets the current version status of VMware Tools installed in the guest operating system.
 func (o OsProfileForVMInstanceResponseOutput) ToolsVersionStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v OsProfileForVMInstanceResponse) string { return v.ToolsVersionStatus }).(pulumi.StringOutput)
-}
-
-// Windows Configuration.
-func (o OsProfileForVMInstanceResponseOutput) WindowsConfiguration() WindowsConfigurationResponsePtrOutput {
-	return o.ApplyT(func(v OsProfileForVMInstanceResponse) *WindowsConfigurationResponse { return v.WindowsConfiguration }).(WindowsConfigurationResponsePtrOutput)
 }
 
 type OsProfileForVMInstanceResponsePtrOutput struct{ *pulumi.OutputState }
@@ -4011,16 +3889,6 @@ func (o OsProfileForVMInstanceResponsePtrOutput) ToolsVersionStatus() pulumi.Str
 		}
 		return &v.ToolsVersionStatus
 	}).(pulumi.StringPtrOutput)
-}
-
-// Windows Configuration.
-func (o OsProfileForVMInstanceResponsePtrOutput) WindowsConfiguration() WindowsConfigurationResponsePtrOutput {
-	return o.ApplyT(func(v *OsProfileForVMInstanceResponse) *WindowsConfigurationResponse {
-		if v == nil {
-			return nil
-		}
-		return v.WindowsConfiguration
-	}).(WindowsConfigurationResponsePtrOutput)
 }
 
 // Specifies the linux configuration for update management.
@@ -6357,549 +6225,6 @@ func (o VirtualSCSIControllerResponseArrayOutput) Index(i pulumi.IntInput) Virtu
 	}).(VirtualSCSIControllerResponseOutput)
 }
 
-// Specifies the Windows Configuration settings for the virtual machine.
-type WindowsConfiguration struct {
-	// Sets a value indicating whether auto logon is enabled.
-	AutoLogon *bool `pulumi:"autoLogon"`
-	// Sets auto logon count.
-	AutoLogonCount *int `pulumi:"autoLogonCount"`
-	// Sets domain name that vm should join.
-	DomainName *string `pulumi:"domainName"`
-	// Sets domain user password.
-	DomainUserPassword *string `pulumi:"domainUserPassword"`
-	// Sets domain username.
-	DomainUsername *string `pulumi:"domainUsername"`
-	// Sets first logon commands
-	FirstLogonCommands []string `pulumi:"firstLogonCommands"`
-	// Sets full name of the owner of the vm.
-	FullName *string `pulumi:"fullName"`
-	// Sets org name to which the owner of the vm belongs.
-	OrgName *string `pulumi:"orgName"`
-	// Sets product id of the vm.
-	ProductId *string `pulumi:"productId"`
-	// Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time". Time zone name correspond to time zones listed at Microsoft Time Zone name values(https://learn.microsoft.com/en-us/previous-versions/windows/embedded/ms912391(v=winembedded.11)).
-	TimeZone *string `pulumi:"timeZone"`
-	// Sets work group name that vm should join.
-	WorkGroupName *string `pulumi:"workGroupName"`
-}
-
-// WindowsConfigurationInput is an input type that accepts WindowsConfigurationArgs and WindowsConfigurationOutput values.
-// You can construct a concrete instance of `WindowsConfigurationInput` via:
-//
-//	WindowsConfigurationArgs{...}
-type WindowsConfigurationInput interface {
-	pulumi.Input
-
-	ToWindowsConfigurationOutput() WindowsConfigurationOutput
-	ToWindowsConfigurationOutputWithContext(context.Context) WindowsConfigurationOutput
-}
-
-// Specifies the Windows Configuration settings for the virtual machine.
-type WindowsConfigurationArgs struct {
-	// Sets a value indicating whether auto logon is enabled.
-	AutoLogon pulumi.BoolPtrInput `pulumi:"autoLogon"`
-	// Sets auto logon count.
-	AutoLogonCount pulumi.IntPtrInput `pulumi:"autoLogonCount"`
-	// Sets domain name that vm should join.
-	DomainName pulumi.StringPtrInput `pulumi:"domainName"`
-	// Sets domain user password.
-	DomainUserPassword pulumi.StringPtrInput `pulumi:"domainUserPassword"`
-	// Sets domain username.
-	DomainUsername pulumi.StringPtrInput `pulumi:"domainUsername"`
-	// Sets first logon commands
-	FirstLogonCommands pulumi.StringArrayInput `pulumi:"firstLogonCommands"`
-	// Sets full name of the owner of the vm.
-	FullName pulumi.StringPtrInput `pulumi:"fullName"`
-	// Sets org name to which the owner of the vm belongs.
-	OrgName pulumi.StringPtrInput `pulumi:"orgName"`
-	// Sets product id of the vm.
-	ProductId pulumi.StringPtrInput `pulumi:"productId"`
-	// Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time". Time zone name correspond to time zones listed at Microsoft Time Zone name values(https://learn.microsoft.com/en-us/previous-versions/windows/embedded/ms912391(v=winembedded.11)).
-	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
-	// Sets work group name that vm should join.
-	WorkGroupName pulumi.StringPtrInput `pulumi:"workGroupName"`
-}
-
-func (WindowsConfigurationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*WindowsConfiguration)(nil)).Elem()
-}
-
-func (i WindowsConfigurationArgs) ToWindowsConfigurationOutput() WindowsConfigurationOutput {
-	return i.ToWindowsConfigurationOutputWithContext(context.Background())
-}
-
-func (i WindowsConfigurationArgs) ToWindowsConfigurationOutputWithContext(ctx context.Context) WindowsConfigurationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WindowsConfigurationOutput)
-}
-
-func (i WindowsConfigurationArgs) ToWindowsConfigurationPtrOutput() WindowsConfigurationPtrOutput {
-	return i.ToWindowsConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i WindowsConfigurationArgs) ToWindowsConfigurationPtrOutputWithContext(ctx context.Context) WindowsConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WindowsConfigurationOutput).ToWindowsConfigurationPtrOutputWithContext(ctx)
-}
-
-// WindowsConfigurationPtrInput is an input type that accepts WindowsConfigurationArgs, WindowsConfigurationPtr and WindowsConfigurationPtrOutput values.
-// You can construct a concrete instance of `WindowsConfigurationPtrInput` via:
-//
-//	        WindowsConfigurationArgs{...}
-//
-//	or:
-//
-//	        nil
-type WindowsConfigurationPtrInput interface {
-	pulumi.Input
-
-	ToWindowsConfigurationPtrOutput() WindowsConfigurationPtrOutput
-	ToWindowsConfigurationPtrOutputWithContext(context.Context) WindowsConfigurationPtrOutput
-}
-
-type windowsConfigurationPtrType WindowsConfigurationArgs
-
-func WindowsConfigurationPtr(v *WindowsConfigurationArgs) WindowsConfigurationPtrInput {
-	return (*windowsConfigurationPtrType)(v)
-}
-
-func (*windowsConfigurationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WindowsConfiguration)(nil)).Elem()
-}
-
-func (i *windowsConfigurationPtrType) ToWindowsConfigurationPtrOutput() WindowsConfigurationPtrOutput {
-	return i.ToWindowsConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i *windowsConfigurationPtrType) ToWindowsConfigurationPtrOutputWithContext(ctx context.Context) WindowsConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WindowsConfigurationPtrOutput)
-}
-
-// Specifies the Windows Configuration settings for the virtual machine.
-type WindowsConfigurationOutput struct{ *pulumi.OutputState }
-
-func (WindowsConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WindowsConfiguration)(nil)).Elem()
-}
-
-func (o WindowsConfigurationOutput) ToWindowsConfigurationOutput() WindowsConfigurationOutput {
-	return o
-}
-
-func (o WindowsConfigurationOutput) ToWindowsConfigurationOutputWithContext(ctx context.Context) WindowsConfigurationOutput {
-	return o
-}
-
-func (o WindowsConfigurationOutput) ToWindowsConfigurationPtrOutput() WindowsConfigurationPtrOutput {
-	return o.ToWindowsConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (o WindowsConfigurationOutput) ToWindowsConfigurationPtrOutputWithContext(ctx context.Context) WindowsConfigurationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WindowsConfiguration) *WindowsConfiguration {
-		return &v
-	}).(WindowsConfigurationPtrOutput)
-}
-
-// Sets a value indicating whether auto logon is enabled.
-func (o WindowsConfigurationOutput) AutoLogon() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v WindowsConfiguration) *bool { return v.AutoLogon }).(pulumi.BoolPtrOutput)
-}
-
-// Sets auto logon count.
-func (o WindowsConfigurationOutput) AutoLogonCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v WindowsConfiguration) *int { return v.AutoLogonCount }).(pulumi.IntPtrOutput)
-}
-
-// Sets domain name that vm should join.
-func (o WindowsConfigurationOutput) DomainName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WindowsConfiguration) *string { return v.DomainName }).(pulumi.StringPtrOutput)
-}
-
-// Sets domain user password.
-func (o WindowsConfigurationOutput) DomainUserPassword() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WindowsConfiguration) *string { return v.DomainUserPassword }).(pulumi.StringPtrOutput)
-}
-
-// Sets domain username.
-func (o WindowsConfigurationOutput) DomainUsername() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WindowsConfiguration) *string { return v.DomainUsername }).(pulumi.StringPtrOutput)
-}
-
-// Sets first logon commands
-func (o WindowsConfigurationOutput) FirstLogonCommands() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v WindowsConfiguration) []string { return v.FirstLogonCommands }).(pulumi.StringArrayOutput)
-}
-
-// Sets full name of the owner of the vm.
-func (o WindowsConfigurationOutput) FullName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WindowsConfiguration) *string { return v.FullName }).(pulumi.StringPtrOutput)
-}
-
-// Sets org name to which the owner of the vm belongs.
-func (o WindowsConfigurationOutput) OrgName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WindowsConfiguration) *string { return v.OrgName }).(pulumi.StringPtrOutput)
-}
-
-// Sets product id of the vm.
-func (o WindowsConfigurationOutput) ProductId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WindowsConfiguration) *string { return v.ProductId }).(pulumi.StringPtrOutput)
-}
-
-// Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time". Time zone name correspond to time zones listed at Microsoft Time Zone name values(https://learn.microsoft.com/en-us/previous-versions/windows/embedded/ms912391(v=winembedded.11)).
-func (o WindowsConfigurationOutput) TimeZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WindowsConfiguration) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
-}
-
-// Sets work group name that vm should join.
-func (o WindowsConfigurationOutput) WorkGroupName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WindowsConfiguration) *string { return v.WorkGroupName }).(pulumi.StringPtrOutput)
-}
-
-type WindowsConfigurationPtrOutput struct{ *pulumi.OutputState }
-
-func (WindowsConfigurationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WindowsConfiguration)(nil)).Elem()
-}
-
-func (o WindowsConfigurationPtrOutput) ToWindowsConfigurationPtrOutput() WindowsConfigurationPtrOutput {
-	return o
-}
-
-func (o WindowsConfigurationPtrOutput) ToWindowsConfigurationPtrOutputWithContext(ctx context.Context) WindowsConfigurationPtrOutput {
-	return o
-}
-
-func (o WindowsConfigurationPtrOutput) Elem() WindowsConfigurationOutput {
-	return o.ApplyT(func(v *WindowsConfiguration) WindowsConfiguration {
-		if v != nil {
-			return *v
-		}
-		var ret WindowsConfiguration
-		return ret
-	}).(WindowsConfigurationOutput)
-}
-
-// Sets a value indicating whether auto logon is enabled.
-func (o WindowsConfigurationPtrOutput) AutoLogon() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *WindowsConfiguration) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.AutoLogon
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Sets auto logon count.
-func (o WindowsConfigurationPtrOutput) AutoLogonCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *WindowsConfiguration) *int {
-		if v == nil {
-			return nil
-		}
-		return v.AutoLogonCount
-	}).(pulumi.IntPtrOutput)
-}
-
-// Sets domain name that vm should join.
-func (o WindowsConfigurationPtrOutput) DomainName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WindowsConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DomainName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Sets domain user password.
-func (o WindowsConfigurationPtrOutput) DomainUserPassword() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WindowsConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DomainUserPassword
-	}).(pulumi.StringPtrOutput)
-}
-
-// Sets domain username.
-func (o WindowsConfigurationPtrOutput) DomainUsername() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WindowsConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DomainUsername
-	}).(pulumi.StringPtrOutput)
-}
-
-// Sets first logon commands
-func (o WindowsConfigurationPtrOutput) FirstLogonCommands() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *WindowsConfiguration) []string {
-		if v == nil {
-			return nil
-		}
-		return v.FirstLogonCommands
-	}).(pulumi.StringArrayOutput)
-}
-
-// Sets full name of the owner of the vm.
-func (o WindowsConfigurationPtrOutput) FullName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WindowsConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.FullName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Sets org name to which the owner of the vm belongs.
-func (o WindowsConfigurationPtrOutput) OrgName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WindowsConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.OrgName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Sets product id of the vm.
-func (o WindowsConfigurationPtrOutput) ProductId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WindowsConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ProductId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time". Time zone name correspond to time zones listed at Microsoft Time Zone name values(https://learn.microsoft.com/en-us/previous-versions/windows/embedded/ms912391(v=winembedded.11)).
-func (o WindowsConfigurationPtrOutput) TimeZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WindowsConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TimeZone
-	}).(pulumi.StringPtrOutput)
-}
-
-// Sets work group name that vm should join.
-func (o WindowsConfigurationPtrOutput) WorkGroupName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WindowsConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.WorkGroupName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Specifies the Windows Configuration settings for the virtual machine.
-type WindowsConfigurationResponse struct {
-	// Sets a value indicating whether auto logon is enabled.
-	AutoLogon *bool `pulumi:"autoLogon"`
-	// Sets auto logon count.
-	AutoLogonCount *int `pulumi:"autoLogonCount"`
-	// Sets domain name that vm should join.
-	DomainName *string `pulumi:"domainName"`
-	// Sets domain username.
-	DomainUsername *string `pulumi:"domainUsername"`
-	// Sets first logon commands
-	FirstLogonCommands []string `pulumi:"firstLogonCommands"`
-	// Sets full name of the owner of the vm.
-	FullName *string `pulumi:"fullName"`
-	// Sets org name to which the owner of the vm belongs.
-	OrgName *string `pulumi:"orgName"`
-	// Sets product id of the vm.
-	ProductId *string `pulumi:"productId"`
-	// Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time". Time zone name correspond to time zones listed at Microsoft Time Zone name values(https://learn.microsoft.com/en-us/previous-versions/windows/embedded/ms912391(v=winembedded.11)).
-	TimeZone *string `pulumi:"timeZone"`
-	// Sets work group name that vm should join.
-	WorkGroupName *string `pulumi:"workGroupName"`
-}
-
-// Specifies the Windows Configuration settings for the virtual machine.
-type WindowsConfigurationResponseOutput struct{ *pulumi.OutputState }
-
-func (WindowsConfigurationResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WindowsConfigurationResponse)(nil)).Elem()
-}
-
-func (o WindowsConfigurationResponseOutput) ToWindowsConfigurationResponseOutput() WindowsConfigurationResponseOutput {
-	return o
-}
-
-func (o WindowsConfigurationResponseOutput) ToWindowsConfigurationResponseOutputWithContext(ctx context.Context) WindowsConfigurationResponseOutput {
-	return o
-}
-
-// Sets a value indicating whether auto logon is enabled.
-func (o WindowsConfigurationResponseOutput) AutoLogon() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v WindowsConfigurationResponse) *bool { return v.AutoLogon }).(pulumi.BoolPtrOutput)
-}
-
-// Sets auto logon count.
-func (o WindowsConfigurationResponseOutput) AutoLogonCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v WindowsConfigurationResponse) *int { return v.AutoLogonCount }).(pulumi.IntPtrOutput)
-}
-
-// Sets domain name that vm should join.
-func (o WindowsConfigurationResponseOutput) DomainName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WindowsConfigurationResponse) *string { return v.DomainName }).(pulumi.StringPtrOutput)
-}
-
-// Sets domain username.
-func (o WindowsConfigurationResponseOutput) DomainUsername() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WindowsConfigurationResponse) *string { return v.DomainUsername }).(pulumi.StringPtrOutput)
-}
-
-// Sets first logon commands
-func (o WindowsConfigurationResponseOutput) FirstLogonCommands() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v WindowsConfigurationResponse) []string { return v.FirstLogonCommands }).(pulumi.StringArrayOutput)
-}
-
-// Sets full name of the owner of the vm.
-func (o WindowsConfigurationResponseOutput) FullName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WindowsConfigurationResponse) *string { return v.FullName }).(pulumi.StringPtrOutput)
-}
-
-// Sets org name to which the owner of the vm belongs.
-func (o WindowsConfigurationResponseOutput) OrgName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WindowsConfigurationResponse) *string { return v.OrgName }).(pulumi.StringPtrOutput)
-}
-
-// Sets product id of the vm.
-func (o WindowsConfigurationResponseOutput) ProductId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WindowsConfigurationResponse) *string { return v.ProductId }).(pulumi.StringPtrOutput)
-}
-
-// Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time". Time zone name correspond to time zones listed at Microsoft Time Zone name values(https://learn.microsoft.com/en-us/previous-versions/windows/embedded/ms912391(v=winembedded.11)).
-func (o WindowsConfigurationResponseOutput) TimeZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WindowsConfigurationResponse) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
-}
-
-// Sets work group name that vm should join.
-func (o WindowsConfigurationResponseOutput) WorkGroupName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WindowsConfigurationResponse) *string { return v.WorkGroupName }).(pulumi.StringPtrOutput)
-}
-
-type WindowsConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (WindowsConfigurationResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WindowsConfigurationResponse)(nil)).Elem()
-}
-
-func (o WindowsConfigurationResponsePtrOutput) ToWindowsConfigurationResponsePtrOutput() WindowsConfigurationResponsePtrOutput {
-	return o
-}
-
-func (o WindowsConfigurationResponsePtrOutput) ToWindowsConfigurationResponsePtrOutputWithContext(ctx context.Context) WindowsConfigurationResponsePtrOutput {
-	return o
-}
-
-func (o WindowsConfigurationResponsePtrOutput) Elem() WindowsConfigurationResponseOutput {
-	return o.ApplyT(func(v *WindowsConfigurationResponse) WindowsConfigurationResponse {
-		if v != nil {
-			return *v
-		}
-		var ret WindowsConfigurationResponse
-		return ret
-	}).(WindowsConfigurationResponseOutput)
-}
-
-// Sets a value indicating whether auto logon is enabled.
-func (o WindowsConfigurationResponsePtrOutput) AutoLogon() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *WindowsConfigurationResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.AutoLogon
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Sets auto logon count.
-func (o WindowsConfigurationResponsePtrOutput) AutoLogonCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *WindowsConfigurationResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.AutoLogonCount
-	}).(pulumi.IntPtrOutput)
-}
-
-// Sets domain name that vm should join.
-func (o WindowsConfigurationResponsePtrOutput) DomainName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WindowsConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DomainName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Sets domain username.
-func (o WindowsConfigurationResponsePtrOutput) DomainUsername() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WindowsConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DomainUsername
-	}).(pulumi.StringPtrOutput)
-}
-
-// Sets first logon commands
-func (o WindowsConfigurationResponsePtrOutput) FirstLogonCommands() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *WindowsConfigurationResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.FirstLogonCommands
-	}).(pulumi.StringArrayOutput)
-}
-
-// Sets full name of the owner of the vm.
-func (o WindowsConfigurationResponsePtrOutput) FullName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WindowsConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.FullName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Sets org name to which the owner of the vm belongs.
-func (o WindowsConfigurationResponsePtrOutput) OrgName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WindowsConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.OrgName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Sets product id of the vm.
-func (o WindowsConfigurationResponsePtrOutput) ProductId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WindowsConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ProductId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time". Time zone name correspond to time zones listed at Microsoft Time Zone name values(https://learn.microsoft.com/en-us/previous-versions/windows/embedded/ms912391(v=winembedded.11)).
-func (o WindowsConfigurationResponsePtrOutput) TimeZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WindowsConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TimeZone
-	}).(pulumi.StringPtrOutput)
-}
-
-// Sets work group name that vm should join.
-func (o WindowsConfigurationResponsePtrOutput) WorkGroupName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WindowsConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.WorkGroupName
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterOutputType(ErrorAdditionalInfoResponseOutput{})
 	pulumi.RegisterOutputType(ErrorAdditionalInfoResponseArrayOutput{})
@@ -6917,8 +6242,6 @@ func init() {
 	pulumi.RegisterOutputType(GuestCredentialPtrOutput{})
 	pulumi.RegisterOutputType(GuestCredentialResponseOutput{})
 	pulumi.RegisterOutputType(GuestCredentialResponsePtrOutput{})
-	pulumi.RegisterOutputType(GuestCredentialResponseV1Output{})
-	pulumi.RegisterOutputType(GuestCredentialResponseV1PtrOutput{})
 	pulumi.RegisterOutputType(HardwareProfileOutput{})
 	pulumi.RegisterOutputType(HardwareProfilePtrOutput{})
 	pulumi.RegisterOutputType(HardwareProfileResponseOutput{})
@@ -6998,8 +6321,4 @@ func init() {
 	pulumi.RegisterOutputType(VirtualDiskResponseArrayOutput{})
 	pulumi.RegisterOutputType(VirtualSCSIControllerResponseOutput{})
 	pulumi.RegisterOutputType(VirtualSCSIControllerResponseArrayOutput{})
-	pulumi.RegisterOutputType(WindowsConfigurationOutput{})
-	pulumi.RegisterOutputType(WindowsConfigurationPtrOutput{})
-	pulumi.RegisterOutputType(WindowsConfigurationResponseOutput{})
-	pulumi.RegisterOutputType(WindowsConfigurationResponsePtrOutput{})
 }

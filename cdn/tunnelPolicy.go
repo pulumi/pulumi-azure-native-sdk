@@ -8,18 +8,16 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Tunnel Policy maps domains to target endpoints to process traffic over the tunnelling protocol.
 //
-// Uses Azure REST API version 2024-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-06-01-preview.
+// Uses Azure REST API version 2024-06-01-preview.
 type TunnelPolicy struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion  pulumi.StringOutput `pulumi:"azureApiVersion"`
 	DeploymentStatus pulumi.StringOutput `pulumi:"deploymentStatus"`
 	// Domains referenced by this tunnel policy.
 	Domains ActivatedResourceReferenceResponseArrayOutput `pulumi:"domains"`
@@ -157,11 +155,6 @@ func (o TunnelPolicyOutput) ToTunnelPolicyOutput() TunnelPolicyOutput {
 
 func (o TunnelPolicyOutput) ToTunnelPolicyOutputWithContext(ctx context.Context) TunnelPolicyOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o TunnelPolicyOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *TunnelPolicy) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 func (o TunnelPolicyOutput) DeploymentStatus() pulumi.StringOutput {

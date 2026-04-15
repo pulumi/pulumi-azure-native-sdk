@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,12 +21,10 @@ import (
 //     Or Demo: https://databoxupdatepackages.blob.core.windows.net/documentation/Microsoft-Azure-Stack-Edge-K8S-Cloud-Management-20210323.mp4
 //     By using this feature, you agree to the preview legal terms. See the https://azure.microsoft.com/en-us/support/legal/preview-supplemental-terms/
 //
-// Uses Azure REST API version 2023-07-01. In version 2.x of the Azure Native provider, it used API version 2022-03-01.
+// Uses Azure REST API version 2022-03-01. In version 1.x of the Azure Native provider, it used API version 2020-12-01.
 type KubernetesRole struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Host OS supported by the Kubernetes role.
 	HostPlatform pulumi.StringOutput `pulumi:"hostPlatform"`
 	// Platform where the runtime is hosted.
@@ -123,49 +121,13 @@ func NewKubernetesRole(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:databoxedge/v20221201preview:KubernetesRole"),
 		},
 		{
-			Type: pulumi.String("azure-native:databoxedge/v20230101preview:CloudEdgeManagementRole"),
-		},
-		{
-			Type: pulumi.String("azure-native:databoxedge/v20230101preview:IoTRole"),
-		},
-		{
 			Type: pulumi.String("azure-native:databoxedge/v20230101preview:KubernetesRole"),
-		},
-		{
-			Type: pulumi.String("azure-native:databoxedge/v20230101preview:MECRole"),
-		},
-		{
-			Type: pulumi.String("azure-native:databoxedge/v20230701:CloudEdgeManagementRole"),
-		},
-		{
-			Type: pulumi.String("azure-native:databoxedge/v20230701:IoTRole"),
 		},
 		{
 			Type: pulumi.String("azure-native:databoxedge/v20230701:KubernetesRole"),
 		},
 		{
-			Type: pulumi.String("azure-native:databoxedge/v20230701:MECRole"),
-		},
-		{
-			Type: pulumi.String("azure-native:databoxedge/v20231201:CloudEdgeManagementRole"),
-		},
-		{
-			Type: pulumi.String("azure-native:databoxedge/v20231201:IoTRole"),
-		},
-		{
 			Type: pulumi.String("azure-native:databoxedge/v20231201:KubernetesRole"),
-		},
-		{
-			Type: pulumi.String("azure-native:databoxedge/v20231201:MECRole"),
-		},
-		{
-			Type: pulumi.String("azure-native:databoxedge:CloudEdgeManagementRole"),
-		},
-		{
-			Type: pulumi.String("azure-native:databoxedge:IoTRole"),
-		},
-		{
-			Type: pulumi.String("azure-native:databoxedge:MECRole"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -277,11 +239,6 @@ func (o KubernetesRoleOutput) ToKubernetesRoleOutput() KubernetesRoleOutput {
 
 func (o KubernetesRoleOutput) ToKubernetesRoleOutputWithContext(ctx context.Context) KubernetesRoleOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o KubernetesRoleOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *KubernetesRole) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Host OS supported by the Kubernetes role.

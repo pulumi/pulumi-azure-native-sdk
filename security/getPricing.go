@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,8 +33,6 @@ type LookupPricingArgs struct {
 
 // Microsoft Defender for Cloud is provided in two pricing tiers: free and standard. The standard tier offers advanced security capabilities, while the free tier offers basic security features.
 type LookupPricingResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Optional. True if the plan is deprecated. If there are replacing plans they will appear in `replacedBy` property
 	Deprecated bool `pulumi:"deprecated"`
 	// Optional. If `pricingTier` is `Standard` then this property holds the date of the last time the `pricingTier` was set to `Standard`, when available (e.g 2023-03-01T12:42:42.1921106Z).
@@ -98,11 +96,6 @@ func (o LookupPricingResultOutput) ToLookupPricingResultOutput() LookupPricingRe
 
 func (o LookupPricingResultOutput) ToLookupPricingResultOutputWithContext(ctx context.Context) LookupPricingResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupPricingResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupPricingResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Optional. True if the plan is deprecated. If there are replacing plans they will appear in `replacedBy` property

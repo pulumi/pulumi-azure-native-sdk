@@ -8,18 +8,16 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Solution REST Resource.
 //
-// Uses Azure REST API version 2018-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2018-09-01-preview.
+// Uses Azure REST API version 2018-09-01-preview. In version 1.x of the Azure Native provider, it used API version 2018-09-01-preview.
 type Solution struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets or sets the ETAG for optimistic concurrency control.
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// Gets the name of this REST resource.
@@ -49,12 +47,6 @@ func NewSolution(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:migrate/v20230101:Solution"),
-		},
-		{
-			Type: pulumi.String("azure-native:migrate/v20230101:SolutionsControllerSolution"),
-		},
-		{
-			Type: pulumi.String("azure-native:migrate:SolutionsControllerSolution"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -148,11 +140,6 @@ func (o SolutionOutput) ToSolutionOutput() SolutionOutput {
 
 func (o SolutionOutput) ToSolutionOutputWithContext(ctx context.Context) SolutionOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o SolutionOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Solution) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the ETAG for optimistic concurrency control.

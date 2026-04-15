@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents Fusion alert rule.
 //
-// Uses Azure REST API version 2024-09-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
+// Uses Azure REST API version 2023-02-01. In version 1.x of the Azure Native provider, it used API version 2020-01-01.
 type FusionAlertRule struct {
 	pulumi.CustomResourceState
 
 	// The Name of the alert rule template used to create this rule.
 	AlertRuleTemplateName pulumi.StringOutput `pulumi:"alertRuleTemplateName"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The description of the alert rule.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The display name for alerts created by this alert rule.
@@ -83,18 +81,6 @@ func NewFusionAlertRule(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20210301preview:FusionAlertRule"),
 		},
 		{
-			Type: pulumi.String("azure-native:securityinsights/v20210301preview:MLBehaviorAnalyticsAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20210301preview:MicrosoftSecurityIncidentCreationAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20210301preview:ScheduledAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20210301preview:ThreatIntelligenceAlertRule"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityinsights/v20210901preview:FusionAlertRule"),
 		},
 		{
@@ -102,9 +88,6 @@ func NewFusionAlertRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20211001preview:FusionAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20211001preview:NrtAlertRule"),
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20220101preview:FusionAlertRule"),
@@ -161,214 +144,43 @@ func NewFusionAlertRule(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20230601preview:FusionAlertRule"),
 		},
 		{
-			Type: pulumi.String("azure-native:securityinsights/v20230601preview:MLBehaviorAnalyticsAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20230601preview:MicrosoftSecurityIncidentCreationAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20230601preview:NrtAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20230601preview:ScheduledAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20230601preview:ThreatIntelligenceAlertRule"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityinsights/v20230701preview:FusionAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20230701preview:MLBehaviorAnalyticsAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20230701preview:MicrosoftSecurityIncidentCreationAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20230701preview:NrtAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20230701preview:ScheduledAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20230701preview:ThreatIntelligenceAlertRule"),
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230801preview:FusionAlertRule"),
 		},
 		{
-			Type: pulumi.String("azure-native:securityinsights/v20230801preview:MLBehaviorAnalyticsAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20230801preview:MicrosoftSecurityIncidentCreationAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20230801preview:NrtAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20230801preview:ScheduledAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20230801preview:ThreatIntelligenceAlertRule"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityinsights/v20230901preview:FusionAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20230901preview:MLBehaviorAnalyticsAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20230901preview:MicrosoftSecurityIncidentCreationAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20230901preview:NrtAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20230901preview:ScheduledAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20230901preview:ThreatIntelligenceAlertRule"),
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20231001preview:FusionAlertRule"),
 		},
 		{
-			Type: pulumi.String("azure-native:securityinsights/v20231001preview:MLBehaviorAnalyticsAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20231001preview:MicrosoftSecurityIncidentCreationAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20231001preview:NrtAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20231001preview:ScheduledAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20231001preview:ThreatIntelligenceAlertRule"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityinsights/v20231101:FusionAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20231101:MicrosoftSecurityIncidentCreationAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20231101:ScheduledAlertRule"),
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20231201preview:FusionAlertRule"),
 		},
 		{
-			Type: pulumi.String("azure-native:securityinsights/v20231201preview:MLBehaviorAnalyticsAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20231201preview:MicrosoftSecurityIncidentCreationAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20231201preview:NrtAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20231201preview:ScheduledAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20231201preview:ThreatIntelligenceAlertRule"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityinsights/v20240101preview:FusionAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20240101preview:MLBehaviorAnalyticsAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20240101preview:MicrosoftSecurityIncidentCreationAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20240101preview:NrtAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20240101preview:ScheduledAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20240101preview:ThreatIntelligenceAlertRule"),
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20240301:FusionAlertRule"),
 		},
 		{
-			Type: pulumi.String("azure-native:securityinsights/v20240301:MicrosoftSecurityIncidentCreationAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20240301:ScheduledAlertRule"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityinsights/v20240401preview:FusionAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20240401preview:MLBehaviorAnalyticsAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20240401preview:MicrosoftSecurityIncidentCreationAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20240401preview:NrtAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20240401preview:ScheduledAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20240401preview:ThreatIntelligenceAlertRule"),
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20240901:FusionAlertRule"),
 		},
 		{
-			Type: pulumi.String("azure-native:securityinsights/v20240901:MicrosoftSecurityIncidentCreationAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20240901:ScheduledAlertRule"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityinsights/v20241001preview:FusionAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20241001preview:MLBehaviorAnalyticsAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20241001preview:MicrosoftSecurityIncidentCreationAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20241001preview:NrtAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20241001preview:ScheduledAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20241001preview:ThreatIntelligenceAlertRule"),
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20250101preview:FusionAlertRule"),
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20250301:FusionAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20250401preview:FusionAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20250601:FusionAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20250701preview:FusionAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20250901:FusionAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights:MicrosoftSecurityIncidentCreationAlertRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights:ScheduledAlertRule"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -477,11 +289,6 @@ func (o FusionAlertRuleOutput) ToFusionAlertRuleOutputWithContext(ctx context.Co
 // The Name of the alert rule template used to create this rule.
 func (o FusionAlertRuleOutput) AlertRuleTemplateName() pulumi.StringOutput {
 	return o.ApplyT(func(v *FusionAlertRule) pulumi.StringOutput { return v.AlertRuleTemplateName }).(pulumi.StringOutput)
-}
-
-// The Azure API version of the resource.
-func (o FusionAlertRuleOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *FusionAlertRule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The description of the alert rule.

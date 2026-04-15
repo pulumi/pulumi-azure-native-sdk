@@ -10,174 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Type of address based on its usage context.
-type AddressClassification string
-
-const (
-	// Shipping address for the order.
-	AddressClassificationShipping = AddressClassification("Shipping")
-	// Site Address.
-	AddressClassificationSite = AddressClassification("Site")
-)
-
-func (AddressClassification) ElementType() reflect.Type {
-	return reflect.TypeOf((*AddressClassification)(nil)).Elem()
-}
-
-func (e AddressClassification) ToAddressClassificationOutput() AddressClassificationOutput {
-	return pulumi.ToOutput(e).(AddressClassificationOutput)
-}
-
-func (e AddressClassification) ToAddressClassificationOutputWithContext(ctx context.Context) AddressClassificationOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(AddressClassificationOutput)
-}
-
-func (e AddressClassification) ToAddressClassificationPtrOutput() AddressClassificationPtrOutput {
-	return e.ToAddressClassificationPtrOutputWithContext(context.Background())
-}
-
-func (e AddressClassification) ToAddressClassificationPtrOutputWithContext(ctx context.Context) AddressClassificationPtrOutput {
-	return AddressClassification(e).ToAddressClassificationOutputWithContext(ctx).ToAddressClassificationPtrOutputWithContext(ctx)
-}
-
-func (e AddressClassification) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e AddressClassification) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e AddressClassification) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e AddressClassification) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type AddressClassificationOutput struct{ *pulumi.OutputState }
-
-func (AddressClassificationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AddressClassification)(nil)).Elem()
-}
-
-func (o AddressClassificationOutput) ToAddressClassificationOutput() AddressClassificationOutput {
-	return o
-}
-
-func (o AddressClassificationOutput) ToAddressClassificationOutputWithContext(ctx context.Context) AddressClassificationOutput {
-	return o
-}
-
-func (o AddressClassificationOutput) ToAddressClassificationPtrOutput() AddressClassificationPtrOutput {
-	return o.ToAddressClassificationPtrOutputWithContext(context.Background())
-}
-
-func (o AddressClassificationOutput) ToAddressClassificationPtrOutputWithContext(ctx context.Context) AddressClassificationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AddressClassification) *AddressClassification {
-		return &v
-	}).(AddressClassificationPtrOutput)
-}
-
-func (o AddressClassificationOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o AddressClassificationOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e AddressClassification) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o AddressClassificationOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o AddressClassificationOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e AddressClassification) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type AddressClassificationPtrOutput struct{ *pulumi.OutputState }
-
-func (AddressClassificationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AddressClassification)(nil)).Elem()
-}
-
-func (o AddressClassificationPtrOutput) ToAddressClassificationPtrOutput() AddressClassificationPtrOutput {
-	return o
-}
-
-func (o AddressClassificationPtrOutput) ToAddressClassificationPtrOutputWithContext(ctx context.Context) AddressClassificationPtrOutput {
-	return o
-}
-
-func (o AddressClassificationPtrOutput) Elem() AddressClassificationOutput {
-	return o.ApplyT(func(v *AddressClassification) AddressClassification {
-		if v != nil {
-			return *v
-		}
-		var ret AddressClassification
-		return ret
-	}).(AddressClassificationOutput)
-}
-
-func (o AddressClassificationPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o AddressClassificationPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AddressClassification) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// AddressClassificationInput is an input type that accepts values of the AddressClassification enum
-// A concrete instance of `AddressClassificationInput` can be one of the following:
-//
-//	AddressClassificationShipping
-//	AddressClassificationSite
-type AddressClassificationInput interface {
-	pulumi.Input
-
-	ToAddressClassificationOutput() AddressClassificationOutput
-	ToAddressClassificationOutputWithContext(context.Context) AddressClassificationOutput
-}
-
-var addressClassificationPtrType = reflect.TypeOf((**AddressClassification)(nil)).Elem()
-
-type AddressClassificationPtrInput interface {
-	pulumi.Input
-
-	ToAddressClassificationPtrOutput() AddressClassificationPtrOutput
-	ToAddressClassificationPtrOutputWithContext(context.Context) AddressClassificationPtrOutput
-}
-
-type addressClassificationPtr string
-
-func AddressClassificationPtr(v string) AddressClassificationPtrInput {
-	return (*addressClassificationPtr)(&v)
-}
-
-func (*addressClassificationPtr) ElementType() reflect.Type {
-	return addressClassificationPtrType
-}
-
-func (in *addressClassificationPtr) ToAddressClassificationPtrOutput() AddressClassificationPtrOutput {
-	return pulumi.ToOutput(in).(AddressClassificationPtrOutput)
-}
-
-func (in *addressClassificationPtr) ToAddressClassificationPtrOutputWithContext(ctx context.Context) AddressClassificationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(AddressClassificationPtrOutput)
-}
-
 // Type of address.
 type AddressType string
 
@@ -347,174 +179,6 @@ func (in *addressTypePtr) ToAddressTypePtrOutput() AddressTypePtrOutput {
 
 func (in *addressTypePtr) ToAddressTypePtrOutputWithContext(ctx context.Context) AddressTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AddressTypePtrOutput)
-}
-
-// Auto Provisioning Details.
-type AutoProvisioningStatus string
-
-const (
-	// Provisioning Enabled. Will act as pre-approved, and arc extension will be enabled as soon as the device is verified to be at the right edge location.
-	AutoProvisioningStatusEnabled = AutoProvisioningStatus("Enabled")
-	// Provisioning Disabled.
-	AutoProvisioningStatusDisabled = AutoProvisioningStatus("Disabled")
-)
-
-func (AutoProvisioningStatus) ElementType() reflect.Type {
-	return reflect.TypeOf((*AutoProvisioningStatus)(nil)).Elem()
-}
-
-func (e AutoProvisioningStatus) ToAutoProvisioningStatusOutput() AutoProvisioningStatusOutput {
-	return pulumi.ToOutput(e).(AutoProvisioningStatusOutput)
-}
-
-func (e AutoProvisioningStatus) ToAutoProvisioningStatusOutputWithContext(ctx context.Context) AutoProvisioningStatusOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(AutoProvisioningStatusOutput)
-}
-
-func (e AutoProvisioningStatus) ToAutoProvisioningStatusPtrOutput() AutoProvisioningStatusPtrOutput {
-	return e.ToAutoProvisioningStatusPtrOutputWithContext(context.Background())
-}
-
-func (e AutoProvisioningStatus) ToAutoProvisioningStatusPtrOutputWithContext(ctx context.Context) AutoProvisioningStatusPtrOutput {
-	return AutoProvisioningStatus(e).ToAutoProvisioningStatusOutputWithContext(ctx).ToAutoProvisioningStatusPtrOutputWithContext(ctx)
-}
-
-func (e AutoProvisioningStatus) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e AutoProvisioningStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e AutoProvisioningStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e AutoProvisioningStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type AutoProvisioningStatusOutput struct{ *pulumi.OutputState }
-
-func (AutoProvisioningStatusOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AutoProvisioningStatus)(nil)).Elem()
-}
-
-func (o AutoProvisioningStatusOutput) ToAutoProvisioningStatusOutput() AutoProvisioningStatusOutput {
-	return o
-}
-
-func (o AutoProvisioningStatusOutput) ToAutoProvisioningStatusOutputWithContext(ctx context.Context) AutoProvisioningStatusOutput {
-	return o
-}
-
-func (o AutoProvisioningStatusOutput) ToAutoProvisioningStatusPtrOutput() AutoProvisioningStatusPtrOutput {
-	return o.ToAutoProvisioningStatusPtrOutputWithContext(context.Background())
-}
-
-func (o AutoProvisioningStatusOutput) ToAutoProvisioningStatusPtrOutputWithContext(ctx context.Context) AutoProvisioningStatusPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutoProvisioningStatus) *AutoProvisioningStatus {
-		return &v
-	}).(AutoProvisioningStatusPtrOutput)
-}
-
-func (o AutoProvisioningStatusOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o AutoProvisioningStatusOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e AutoProvisioningStatus) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o AutoProvisioningStatusOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o AutoProvisioningStatusOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e AutoProvisioningStatus) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type AutoProvisioningStatusPtrOutput struct{ *pulumi.OutputState }
-
-func (AutoProvisioningStatusPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AutoProvisioningStatus)(nil)).Elem()
-}
-
-func (o AutoProvisioningStatusPtrOutput) ToAutoProvisioningStatusPtrOutput() AutoProvisioningStatusPtrOutput {
-	return o
-}
-
-func (o AutoProvisioningStatusPtrOutput) ToAutoProvisioningStatusPtrOutputWithContext(ctx context.Context) AutoProvisioningStatusPtrOutput {
-	return o
-}
-
-func (o AutoProvisioningStatusPtrOutput) Elem() AutoProvisioningStatusOutput {
-	return o.ApplyT(func(v *AutoProvisioningStatus) AutoProvisioningStatus {
-		if v != nil {
-			return *v
-		}
-		var ret AutoProvisioningStatus
-		return ret
-	}).(AutoProvisioningStatusOutput)
-}
-
-func (o AutoProvisioningStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o AutoProvisioningStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AutoProvisioningStatus) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// AutoProvisioningStatusInput is an input type that accepts values of the AutoProvisioningStatus enum
-// A concrete instance of `AutoProvisioningStatusInput` can be one of the following:
-//
-//	AutoProvisioningStatusEnabled
-//	AutoProvisioningStatusDisabled
-type AutoProvisioningStatusInput interface {
-	pulumi.Input
-
-	ToAutoProvisioningStatusOutput() AutoProvisioningStatusOutput
-	ToAutoProvisioningStatusOutputWithContext(context.Context) AutoProvisioningStatusOutput
-}
-
-var autoProvisioningStatusPtrType = reflect.TypeOf((**AutoProvisioningStatus)(nil)).Elem()
-
-type AutoProvisioningStatusPtrInput interface {
-	pulumi.Input
-
-	ToAutoProvisioningStatusPtrOutput() AutoProvisioningStatusPtrOutput
-	ToAutoProvisioningStatusPtrOutputWithContext(context.Context) AutoProvisioningStatusPtrOutput
-}
-
-type autoProvisioningStatusPtr string
-
-func AutoProvisioningStatusPtr(v string) AutoProvisioningStatusPtrInput {
-	return (*autoProvisioningStatusPtr)(&v)
-}
-
-func (*autoProvisioningStatusPtr) ElementType() reflect.Type {
-	return autoProvisioningStatusPtrType
-}
-
-func (in *autoProvisioningStatusPtr) ToAutoProvisioningStatusPtrOutput() AutoProvisioningStatusPtrOutput {
-	return pulumi.ToOutput(in).(AutoProvisioningStatusPtrOutput)
-}
-
-func (in *autoProvisioningStatusPtr) ToAutoProvisioningStatusPtrOutputWithContext(ctx context.Context) AutoProvisioningStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(AutoProvisioningStatusPtrOutput)
 }
 
 type ChildConfigurationType string
@@ -688,9 +352,9 @@ func (in *childConfigurationTypePtr) ToChildConfigurationTypePtrOutputWithContex
 type DoubleEncryptionStatus string
 
 const (
-	// Double encryption is disabled.
+	// Double encryption is disabled
 	DoubleEncryptionStatusDisabled = DoubleEncryptionStatus("Disabled")
-	// Double encryption is enabled.
+	// Double encryption is enabled
 	DoubleEncryptionStatusEnabled = DoubleEncryptionStatus("Enabled")
 )
 
@@ -1028,8 +692,6 @@ const (
 	OrderItemTypePurchase = OrderItemType("Purchase")
 	// Rental OrderItem.
 	OrderItemTypeRental = OrderItemType("Rental")
-	// Orders placed outside of azure.
-	OrderItemTypeExternal = OrderItemType("External")
 )
 
 func (OrderItemType) ElementType() reflect.Type {
@@ -1156,7 +818,6 @@ func (o OrderItemTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context
 //
 //	OrderItemTypePurchase
 //	OrderItemTypeRental
-//	OrderItemTypeExternal
 type OrderItemTypeInput interface {
 	pulumi.Input
 
@@ -1527,177 +1188,6 @@ func (in *supportedFilterTypesPtr) ToSupportedFilterTypesPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(SupportedFilterTypesPtrOutput)
 }
 
-// Term Commitment Type
-type TermCommitmentType string
-
-const (
-	// Pay as you go Term Commitment Model.
-	TermCommitmentTypeNone = TermCommitmentType("None")
-	// Trial Term Commitment Model.
-	TermCommitmentTypeTrial = TermCommitmentType("Trial")
-	// Time based Term Commitment Model.
-	TermCommitmentTypeTimed = TermCommitmentType("Timed")
-)
-
-func (TermCommitmentType) ElementType() reflect.Type {
-	return reflect.TypeOf((*TermCommitmentType)(nil)).Elem()
-}
-
-func (e TermCommitmentType) ToTermCommitmentTypeOutput() TermCommitmentTypeOutput {
-	return pulumi.ToOutput(e).(TermCommitmentTypeOutput)
-}
-
-func (e TermCommitmentType) ToTermCommitmentTypeOutputWithContext(ctx context.Context) TermCommitmentTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(TermCommitmentTypeOutput)
-}
-
-func (e TermCommitmentType) ToTermCommitmentTypePtrOutput() TermCommitmentTypePtrOutput {
-	return e.ToTermCommitmentTypePtrOutputWithContext(context.Background())
-}
-
-func (e TermCommitmentType) ToTermCommitmentTypePtrOutputWithContext(ctx context.Context) TermCommitmentTypePtrOutput {
-	return TermCommitmentType(e).ToTermCommitmentTypeOutputWithContext(ctx).ToTermCommitmentTypePtrOutputWithContext(ctx)
-}
-
-func (e TermCommitmentType) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e TermCommitmentType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e TermCommitmentType) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e TermCommitmentType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type TermCommitmentTypeOutput struct{ *pulumi.OutputState }
-
-func (TermCommitmentTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TermCommitmentType)(nil)).Elem()
-}
-
-func (o TermCommitmentTypeOutput) ToTermCommitmentTypeOutput() TermCommitmentTypeOutput {
-	return o
-}
-
-func (o TermCommitmentTypeOutput) ToTermCommitmentTypeOutputWithContext(ctx context.Context) TermCommitmentTypeOutput {
-	return o
-}
-
-func (o TermCommitmentTypeOutput) ToTermCommitmentTypePtrOutput() TermCommitmentTypePtrOutput {
-	return o.ToTermCommitmentTypePtrOutputWithContext(context.Background())
-}
-
-func (o TermCommitmentTypeOutput) ToTermCommitmentTypePtrOutputWithContext(ctx context.Context) TermCommitmentTypePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TermCommitmentType) *TermCommitmentType {
-		return &v
-	}).(TermCommitmentTypePtrOutput)
-}
-
-func (o TermCommitmentTypeOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o TermCommitmentTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e TermCommitmentType) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o TermCommitmentTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o TermCommitmentTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e TermCommitmentType) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type TermCommitmentTypePtrOutput struct{ *pulumi.OutputState }
-
-func (TermCommitmentTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TermCommitmentType)(nil)).Elem()
-}
-
-func (o TermCommitmentTypePtrOutput) ToTermCommitmentTypePtrOutput() TermCommitmentTypePtrOutput {
-	return o
-}
-
-func (o TermCommitmentTypePtrOutput) ToTermCommitmentTypePtrOutputWithContext(ctx context.Context) TermCommitmentTypePtrOutput {
-	return o
-}
-
-func (o TermCommitmentTypePtrOutput) Elem() TermCommitmentTypeOutput {
-	return o.ApplyT(func(v *TermCommitmentType) TermCommitmentType {
-		if v != nil {
-			return *v
-		}
-		var ret TermCommitmentType
-		return ret
-	}).(TermCommitmentTypeOutput)
-}
-
-func (o TermCommitmentTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o TermCommitmentTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *TermCommitmentType) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// TermCommitmentTypeInput is an input type that accepts values of the TermCommitmentType enum
-// A concrete instance of `TermCommitmentTypeInput` can be one of the following:
-//
-//	TermCommitmentTypeNone
-//	TermCommitmentTypeTrial
-//	TermCommitmentTypeTimed
-type TermCommitmentTypeInput interface {
-	pulumi.Input
-
-	ToTermCommitmentTypeOutput() TermCommitmentTypeOutput
-	ToTermCommitmentTypeOutputWithContext(context.Context) TermCommitmentTypeOutput
-}
-
-var termCommitmentTypePtrType = reflect.TypeOf((**TermCommitmentType)(nil)).Elem()
-
-type TermCommitmentTypePtrInput interface {
-	pulumi.Input
-
-	ToTermCommitmentTypePtrOutput() TermCommitmentTypePtrOutput
-	ToTermCommitmentTypePtrOutputWithContext(context.Context) TermCommitmentTypePtrOutput
-}
-
-type termCommitmentTypePtr string
-
-func TermCommitmentTypePtr(v string) TermCommitmentTypePtrInput {
-	return (*termCommitmentTypePtr)(&v)
-}
-
-func (*termCommitmentTypePtr) ElementType() reflect.Type {
-	return termCommitmentTypePtrType
-}
-
-func (in *termCommitmentTypePtr) ToTermCommitmentTypePtrOutput() TermCommitmentTypePtrOutput {
-	return pulumi.ToOutput(in).(TermCommitmentTypePtrOutput)
-}
-
-func (in *termCommitmentTypePtr) ToTermCommitmentTypePtrOutputWithContext(ctx context.Context) TermCommitmentTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(TermCommitmentTypePtrOutput)
-}
-
 // Indicates Shipment Logistics type that the customer preferred.
 type TransportShipmentTypes string
 
@@ -1867,12 +1357,8 @@ func (in *transportShipmentTypesPtr) ToTransportShipmentTypesPtrOutputWithContex
 }
 
 func init() {
-	pulumi.RegisterOutputType(AddressClassificationOutput{})
-	pulumi.RegisterOutputType(AddressClassificationPtrOutput{})
 	pulumi.RegisterOutputType(AddressTypeOutput{})
 	pulumi.RegisterOutputType(AddressTypePtrOutput{})
-	pulumi.RegisterOutputType(AutoProvisioningStatusOutput{})
-	pulumi.RegisterOutputType(AutoProvisioningStatusPtrOutput{})
 	pulumi.RegisterOutputType(ChildConfigurationTypeOutput{})
 	pulumi.RegisterOutputType(ChildConfigurationTypePtrOutput{})
 	pulumi.RegisterOutputType(DoubleEncryptionStatusOutput{})
@@ -1885,8 +1371,6 @@ func init() {
 	pulumi.RegisterOutputType(OrderModePtrOutput{})
 	pulumi.RegisterOutputType(SupportedFilterTypesOutput{})
 	pulumi.RegisterOutputType(SupportedFilterTypesPtrOutput{})
-	pulumi.RegisterOutputType(TermCommitmentTypeOutput{})
-	pulumi.RegisterOutputType(TermCommitmentTypePtrOutput{})
 	pulumi.RegisterOutputType(TransportShipmentTypesOutput{})
 	pulumi.RegisterOutputType(TransportShipmentTypesPtrOutput{})
 }

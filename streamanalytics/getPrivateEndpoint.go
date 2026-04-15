@@ -7,13 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets information about the specified Private Endpoint.
 //
 // Uses Azure REST API version 2020-03-01.
+//
+// Other available API versions: 2020-03-01-preview.
 func LookupPrivateEndpoint(ctx *pulumi.Context, args *LookupPrivateEndpointArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateEndpointResult
@@ -35,8 +37,6 @@ type LookupPrivateEndpointArgs struct {
 
 // Complete information about the private endpoint.
 type LookupPrivateEndpointResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The date when this private endpoint was created.
 	CreatedDate string `pulumi:"createdDate"`
 	// Unique opaque string (generally a GUID) that represents the metadata state of the resource (private endpoint) and changes whenever the resource is updated. Required on PUT (CreateOrUpdate) requests.
@@ -86,11 +86,6 @@ func (o LookupPrivateEndpointResultOutput) ToLookupPrivateEndpointResultOutput()
 
 func (o LookupPrivateEndpointResultOutput) ToLookupPrivateEndpointResultOutputWithContext(ctx context.Context) LookupPrivateEndpointResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupPrivateEndpointResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupPrivateEndpointResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The date when this private endpoint was created.

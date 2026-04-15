@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -34,8 +34,6 @@ type LookupWorkflowAccessKeyArgs struct {
 }
 
 type LookupWorkflowAccessKeyResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets or sets the resource id.
 	Id *string `pulumi:"id"`
 	// Gets the workflow access key name.
@@ -82,11 +80,6 @@ func (o LookupWorkflowAccessKeyResultOutput) ToLookupWorkflowAccessKeyResultOutp
 
 func (o LookupWorkflowAccessKeyResultOutput) ToLookupWorkflowAccessKeyResultOutputWithContext(ctx context.Context) LookupWorkflowAccessKeyResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupWorkflowAccessKeyResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWorkflowAccessKeyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the resource id.

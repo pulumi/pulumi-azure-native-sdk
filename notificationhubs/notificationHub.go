@@ -8,43 +8,24 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Notification Hub Resource.
 //
-// Uses Azure REST API version 2023-10-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-01-01-preview.
+// Uses Azure REST API version 2023-01-01-preview. In version 1.x of the Azure Native provider, it used API version 2017-04-01.
 //
-// Other available API versions: 2023-01-01-preview, 2023-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native notificationhubs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2017-04-01, 2023-09-01, 2023-10-01-preview.
 type NotificationHub struct {
 	pulumi.CustomResourceState
 
-	// Description of a NotificationHub AdmCredential.
-	AdmCredential AdmCredentialResponsePtrOutput `pulumi:"admCredential"`
-	// Description of a NotificationHub ApnsCredential.
-	ApnsCredential ApnsCredentialResponsePtrOutput `pulumi:"apnsCredential"`
-	// Gets or sets the AuthorizationRules of the created NotificationHub
-	AuthorizationRules SharedAccessAuthorizationRulePropertiesResponseArrayOutput `pulumi:"authorizationRules"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
-	// Description of a NotificationHub BaiduCredential.
-	BaiduCredential BaiduCredentialResponsePtrOutput `pulumi:"baiduCredential"`
-	// Description of a NotificationHub BrowserCredential.
-	BrowserCredential     BrowserCredentialResponsePtrOutput `pulumi:"browserCredential"`
-	DailyMaxActiveDevices pulumi.Float64Output               `pulumi:"dailyMaxActiveDevices"`
-	// Description of a NotificationHub FcmV1Credential.
-	FcmV1Credential FcmV1CredentialResponsePtrOutput `pulumi:"fcmV1Credential"`
-	// Description of a NotificationHub GcmCredential.
-	GcmCredential GcmCredentialResponsePtrOutput `pulumi:"gcmCredential"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Description of a NotificationHub MpnsCredential.
-	MpnsCredential MpnsCredentialResponsePtrOutput `pulumi:"mpnsCredential"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Gets or sets the RegistrationTtl of the created NotificationHub
-	RegistrationTtl pulumi.StringPtrOutput `pulumi:"registrationTtl"`
+	// NotificationHub properties.
+	Properties NotificationHubPropertiesResponseOutput `pulumi:"properties"`
 	// The Sku description for a namespace
 	Sku SkuResponsePtrOutput `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -53,10 +34,6 @@ type NotificationHub struct {
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
-	// Description of a NotificationHub WnsCredential.
-	WnsCredential WnsCredentialResponsePtrOutput `pulumi:"wnsCredential"`
-	// Description of a NotificationHub XiaomiCredential.
-	XiaomiCredential XiaomiCredentialResponsePtrOutput `pulumi:"xiaomiCredential"`
 }
 
 // NewNotificationHub registers a new resource with the given unique name, arguments, and options.
@@ -126,78 +103,38 @@ func (NotificationHubState) ElementType() reflect.Type {
 }
 
 type notificationHubArgs struct {
-	// Description of a NotificationHub AdmCredential.
-	AdmCredential *AdmCredential `pulumi:"admCredential"`
-	// Description of a NotificationHub ApnsCredential.
-	ApnsCredential *ApnsCredential `pulumi:"apnsCredential"`
-	// Description of a NotificationHub BaiduCredential.
-	BaiduCredential *BaiduCredential `pulumi:"baiduCredential"`
-	// Description of a NotificationHub BrowserCredential.
-	BrowserCredential *BrowserCredential `pulumi:"browserCredential"`
-	// Description of a NotificationHub FcmV1Credential.
-	FcmV1Credential *FcmV1Credential `pulumi:"fcmV1Credential"`
-	// Description of a NotificationHub GcmCredential.
-	GcmCredential *GcmCredential `pulumi:"gcmCredential"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// Description of a NotificationHub MpnsCredential.
-	MpnsCredential *MpnsCredential `pulumi:"mpnsCredential"`
-	// Gets or sets the NotificationHub name.
-	Name *string `pulumi:"name"`
 	// Namespace name
 	NamespaceName string `pulumi:"namespaceName"`
 	// Notification Hub name
 	NotificationHubName *string `pulumi:"notificationHubName"`
-	// Gets or sets the RegistrationTtl of the created NotificationHub
-	RegistrationTtl *string `pulumi:"registrationTtl"`
+	// NotificationHub properties.
+	Properties *NotificationHubProperties `pulumi:"properties"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The Sku description for a namespace
 	Sku *Sku `pulumi:"sku"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// Description of a NotificationHub WnsCredential.
-	WnsCredential *WnsCredential `pulumi:"wnsCredential"`
-	// Description of a NotificationHub XiaomiCredential.
-	XiaomiCredential *XiaomiCredential `pulumi:"xiaomiCredential"`
 }
 
 // The set of arguments for constructing a NotificationHub resource.
 type NotificationHubArgs struct {
-	// Description of a NotificationHub AdmCredential.
-	AdmCredential AdmCredentialPtrInput
-	// Description of a NotificationHub ApnsCredential.
-	ApnsCredential ApnsCredentialPtrInput
-	// Description of a NotificationHub BaiduCredential.
-	BaiduCredential BaiduCredentialPtrInput
-	// Description of a NotificationHub BrowserCredential.
-	BrowserCredential BrowserCredentialPtrInput
-	// Description of a NotificationHub FcmV1Credential.
-	FcmV1Credential FcmV1CredentialPtrInput
-	// Description of a NotificationHub GcmCredential.
-	GcmCredential GcmCredentialPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
-	// Description of a NotificationHub MpnsCredential.
-	MpnsCredential MpnsCredentialPtrInput
-	// Gets or sets the NotificationHub name.
-	Name pulumi.StringPtrInput
 	// Namespace name
 	NamespaceName pulumi.StringInput
 	// Notification Hub name
 	NotificationHubName pulumi.StringPtrInput
-	// Gets or sets the RegistrationTtl of the created NotificationHub
-	RegistrationTtl pulumi.StringPtrInput
+	// NotificationHub properties.
+	Properties NotificationHubPropertiesPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The Sku description for a namespace
 	Sku SkuPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
-	// Description of a NotificationHub WnsCredential.
-	WnsCredential WnsCredentialPtrInput
-	// Description of a NotificationHub XiaomiCredential.
-	XiaomiCredential XiaomiCredentialPtrInput
 }
 
 func (NotificationHubArgs) ElementType() reflect.Type {
@@ -237,60 +174,9 @@ func (o NotificationHubOutput) ToNotificationHubOutputWithContext(ctx context.Co
 	return o
 }
 
-// Description of a NotificationHub AdmCredential.
-func (o NotificationHubOutput) AdmCredential() AdmCredentialResponsePtrOutput {
-	return o.ApplyT(func(v *NotificationHub) AdmCredentialResponsePtrOutput { return v.AdmCredential }).(AdmCredentialResponsePtrOutput)
-}
-
-// Description of a NotificationHub ApnsCredential.
-func (o NotificationHubOutput) ApnsCredential() ApnsCredentialResponsePtrOutput {
-	return o.ApplyT(func(v *NotificationHub) ApnsCredentialResponsePtrOutput { return v.ApnsCredential }).(ApnsCredentialResponsePtrOutput)
-}
-
-// Gets or sets the AuthorizationRules of the created NotificationHub
-func (o NotificationHubOutput) AuthorizationRules() SharedAccessAuthorizationRulePropertiesResponseArrayOutput {
-	return o.ApplyT(func(v *NotificationHub) SharedAccessAuthorizationRulePropertiesResponseArrayOutput {
-		return v.AuthorizationRules
-	}).(SharedAccessAuthorizationRulePropertiesResponseArrayOutput)
-}
-
-// The Azure API version of the resource.
-func (o NotificationHubOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *NotificationHub) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// Description of a NotificationHub BaiduCredential.
-func (o NotificationHubOutput) BaiduCredential() BaiduCredentialResponsePtrOutput {
-	return o.ApplyT(func(v *NotificationHub) BaiduCredentialResponsePtrOutput { return v.BaiduCredential }).(BaiduCredentialResponsePtrOutput)
-}
-
-// Description of a NotificationHub BrowserCredential.
-func (o NotificationHubOutput) BrowserCredential() BrowserCredentialResponsePtrOutput {
-	return o.ApplyT(func(v *NotificationHub) BrowserCredentialResponsePtrOutput { return v.BrowserCredential }).(BrowserCredentialResponsePtrOutput)
-}
-
-func (o NotificationHubOutput) DailyMaxActiveDevices() pulumi.Float64Output {
-	return o.ApplyT(func(v *NotificationHub) pulumi.Float64Output { return v.DailyMaxActiveDevices }).(pulumi.Float64Output)
-}
-
-// Description of a NotificationHub FcmV1Credential.
-func (o NotificationHubOutput) FcmV1Credential() FcmV1CredentialResponsePtrOutput {
-	return o.ApplyT(func(v *NotificationHub) FcmV1CredentialResponsePtrOutput { return v.FcmV1Credential }).(FcmV1CredentialResponsePtrOutput)
-}
-
-// Description of a NotificationHub GcmCredential.
-func (o NotificationHubOutput) GcmCredential() GcmCredentialResponsePtrOutput {
-	return o.ApplyT(func(v *NotificationHub) GcmCredentialResponsePtrOutput { return v.GcmCredential }).(GcmCredentialResponsePtrOutput)
-}
-
 // The geo-location where the resource lives
 func (o NotificationHubOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *NotificationHub) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
-}
-
-// Description of a NotificationHub MpnsCredential.
-func (o NotificationHubOutput) MpnsCredential() MpnsCredentialResponsePtrOutput {
-	return o.ApplyT(func(v *NotificationHub) MpnsCredentialResponsePtrOutput { return v.MpnsCredential }).(MpnsCredentialResponsePtrOutput)
 }
 
 // The name of the resource
@@ -298,9 +184,9 @@ func (o NotificationHubOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *NotificationHub) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Gets or sets the RegistrationTtl of the created NotificationHub
-func (o NotificationHubOutput) RegistrationTtl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NotificationHub) pulumi.StringPtrOutput { return v.RegistrationTtl }).(pulumi.StringPtrOutput)
+// NotificationHub properties.
+func (o NotificationHubOutput) Properties() NotificationHubPropertiesResponseOutput {
+	return o.ApplyT(func(v *NotificationHub) NotificationHubPropertiesResponseOutput { return v.Properties }).(NotificationHubPropertiesResponseOutput)
 }
 
 // The Sku description for a namespace
@@ -321,16 +207,6 @@ func (o NotificationHubOutput) Tags() pulumi.StringMapOutput {
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o NotificationHubOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *NotificationHub) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
-}
-
-// Description of a NotificationHub WnsCredential.
-func (o NotificationHubOutput) WnsCredential() WnsCredentialResponsePtrOutput {
-	return o.ApplyT(func(v *NotificationHub) WnsCredentialResponsePtrOutput { return v.WnsCredential }).(WnsCredentialResponsePtrOutput)
-}
-
-// Description of a NotificationHub XiaomiCredential.
-func (o NotificationHubOutput) XiaomiCredential() XiaomiCredentialResponsePtrOutput {
-	return o.ApplyT(func(v *NotificationHub) XiaomiCredentialResponsePtrOutput { return v.XiaomiCredential }).(XiaomiCredentialResponsePtrOutput)
 }
 
 func init() {

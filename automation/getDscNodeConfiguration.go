@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieve the Dsc node configurations by node configuration.
 //
-// Uses Azure REST API version 2024-10-23.
+// Uses Azure REST API version 2022-08-08.
 //
-// Other available API versions: 2015-10-31, 2018-01-15, 2019-06-01, 2020-01-13-preview, 2022-08-08, 2023-05-15-preview, 2023-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-05-15-preview, 2023-11-01, 2024-10-23.
 func LookupDscNodeConfiguration(ctx *pulumi.Context, args *LookupDscNodeConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupDscNodeConfigurationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDscNodeConfigurationResult
@@ -37,13 +37,11 @@ type LookupDscNodeConfigurationArgs struct {
 
 // Definition of the dsc node configuration.
 type LookupDscNodeConfigurationResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets or sets the configuration of the node.
 	Configuration *DscConfigurationAssociationPropertyResponse `pulumi:"configuration"`
 	// Gets or sets creation time.
 	CreationTime *string `pulumi:"creationTime"`
-	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	// Fully qualified resource Id for the resource
 	Id string `pulumi:"id"`
 	// If a new build version of NodeConfiguration is required.
 	IncrementNodeConfigurationBuild *bool `pulumi:"incrementNodeConfigurationBuild"`
@@ -55,9 +53,7 @@ type LookupDscNodeConfigurationResult struct {
 	NodeCount *float64 `pulumi:"nodeCount"`
 	// Source of node configuration.
 	Source *string `pulumi:"source"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// The type of the resource.
 	Type string `pulumi:"type"`
 }
 
@@ -98,11 +94,6 @@ func (o LookupDscNodeConfigurationResultOutput) ToLookupDscNodeConfigurationResu
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupDscNodeConfigurationResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDscNodeConfigurationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Gets or sets the configuration of the node.
 func (o LookupDscNodeConfigurationResultOutput) Configuration() DscConfigurationAssociationPropertyResponsePtrOutput {
 	return o.ApplyT(func(v LookupDscNodeConfigurationResult) *DscConfigurationAssociationPropertyResponse {
@@ -115,7 +106,7 @@ func (o LookupDscNodeConfigurationResultOutput) CreationTime() pulumi.StringPtrO
 	return o.ApplyT(func(v LookupDscNodeConfigurationResult) *string { return v.CreationTime }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+// Fully qualified resource Id for the resource
 func (o LookupDscNodeConfigurationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDscNodeConfigurationResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -145,12 +136,7 @@ func (o LookupDscNodeConfigurationResultOutput) Source() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v LookupDscNodeConfigurationResult) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupDscNodeConfigurationResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupDscNodeConfigurationResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
-}
-
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// The type of the resource.
 func (o LookupDscNodeConfigurationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDscNodeConfigurationResult) string { return v.Type }).(pulumi.StringOutput)
 }

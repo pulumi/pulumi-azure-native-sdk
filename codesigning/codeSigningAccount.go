@@ -8,29 +8,27 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Artifact signing account resource.
+// Trusted signing account resource.
 //
-// Uses Azure REST API version 2024-09-30-preview. In version 2.x of the Azure Native provider, it used API version 2024-02-05-preview.
+// Uses Azure REST API version 2024-02-05-preview.
 //
-// Other available API versions: 2024-02-05-preview, 2025-10-13. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native codesigning [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-09-30-preview.
 type CodeSigningAccount struct {
 	pulumi.CustomResourceState
 
-	// The URI of the artifact signing account which is used during signing files.
+	// The URI of the trusted signing account which is used during signing files.
 	AccountUri pulumi.StringOutput `pulumi:"accountUri"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Status of the current operation on artifact signing account.
+	// Status of the current operation on trusted signing account.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// SKU of the artifact signing account.
+	// SKU of the trusted signing account.
 	Sku AccountSkuResponsePtrOutput `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
@@ -56,9 +54,6 @@ func NewCodeSigningAccount(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:codesigning/v20240930preview:CodeSigningAccount"),
-		},
-		{
-			Type: pulumi.String("azure-native:codesigning/v20251013:CodeSigningAccount"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -95,13 +90,13 @@ func (CodeSigningAccountState) ElementType() reflect.Type {
 }
 
 type codeSigningAccountArgs struct {
-	// Artifact Signing account name.
+	// Trusted Signing account name.
 	AccountName *string `pulumi:"accountName"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// SKU of the artifact signing account.
+	// SKU of the trusted signing account.
 	Sku *AccountSku `pulumi:"sku"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
@@ -109,13 +104,13 @@ type codeSigningAccountArgs struct {
 
 // The set of arguments for constructing a CodeSigningAccount resource.
 type CodeSigningAccountArgs struct {
-	// Artifact Signing account name.
+	// Trusted Signing account name.
 	AccountName pulumi.StringPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// SKU of the artifact signing account.
+	// SKU of the trusted signing account.
 	Sku AccountSkuPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
@@ -158,14 +153,9 @@ func (o CodeSigningAccountOutput) ToCodeSigningAccountOutputWithContext(ctx cont
 	return o
 }
 
-// The URI of the artifact signing account which is used during signing files.
+// The URI of the trusted signing account which is used during signing files.
 func (o CodeSigningAccountOutput) AccountUri() pulumi.StringOutput {
 	return o.ApplyT(func(v *CodeSigningAccount) pulumi.StringOutput { return v.AccountUri }).(pulumi.StringOutput)
-}
-
-// The Azure API version of the resource.
-func (o CodeSigningAccountOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *CodeSigningAccount) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The geo-location where the resource lives
@@ -178,12 +168,12 @@ func (o CodeSigningAccountOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CodeSigningAccount) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Status of the current operation on artifact signing account.
+// Status of the current operation on trusted signing account.
 func (o CodeSigningAccountOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *CodeSigningAccount) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// SKU of the artifact signing account.
+// SKU of the trusted signing account.
 func (o CodeSigningAccountOutput) Sku() AccountSkuResponsePtrOutput {
 	return o.ApplyT(func(v *CodeSigningAccount) AccountSkuResponsePtrOutput { return v.Sku }).(AccountSkuResponsePtrOutput)
 }

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2024-03-01-preview.
 //
-// Other available API versions: 2024-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native orbital [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-03-01.
 func LookupGroundStation(ctx *pulumi.Context, args *LookupGroundStationArgs, opts ...pulumi.InvokeOption) (*LookupGroundStationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGroundStationResult
@@ -37,8 +37,6 @@ type LookupGroundStationArgs struct {
 type LookupGroundStationResult struct {
 	// Altitude of the ground station.
 	AltitudeMeters *float64 `pulumi:"altitudeMeters"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Ground station capabilities.
 	Capabilities []string `pulumi:"capabilities"`
 	// City of ground station.
@@ -105,11 +103,6 @@ func (o LookupGroundStationResultOutput) ToLookupGroundStationResultOutputWithCo
 // Altitude of the ground station.
 func (o LookupGroundStationResultOutput) AltitudeMeters() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v LookupGroundStationResult) *float64 { return v.AltitudeMeters }).(pulumi.Float64PtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o LookupGroundStationResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupGroundStationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Ground station capabilities.

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,8 +35,6 @@ type LookupPrivateEndpointConnectionProxyArgs struct {
 
 // Private endpoint connection proxy details.
 type LookupPrivateEndpointConnectionProxyResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// ETag from NRP.
 	ETag string `pulumi:"eTag"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -90,11 +88,6 @@ func (o LookupPrivateEndpointConnectionProxyResultOutput) ToLookupPrivateEndpoin
 
 func (o LookupPrivateEndpointConnectionProxyResultOutput) ToLookupPrivateEndpointConnectionProxyResultOutputWithContext(ctx context.Context) LookupPrivateEndpointConnectionProxyResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupPrivateEndpointConnectionProxyResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupPrivateEndpointConnectionProxyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // ETag from NRP.

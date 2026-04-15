@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Machine Learning datastore object wrapped into ARM resource envelope.
 //
-// Uses Azure REST API version 2020-05-01-preview. In version 2.x of the Azure Native provider, it used API version 2020-05-01-preview.
+// Uses Azure REST API version 2020-05-01-preview. In version 1.x of the Azure Native provider, it used API version 2020-05-01-preview.
 type MachineLearningDatastore struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The identity of the resource.
-	Identity IdentityResponseV2PtrOutput `pulumi:"identity"`
+	Identity IdentityResponsePtrOutput `pulumi:"identity"`
 	// Specifies the location of the resource.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Specifies the name of the resource.
@@ -29,7 +27,7 @@ type MachineLearningDatastore struct {
 	// Datastore properties
 	Properties DatastoreResponseOutput `pulumi:"properties"`
 	// The sku of the workspace.
-	Sku SkuResponseV2PtrOutput `pulumi:"sku"`
+	Sku SkuResponsePtrOutput `pulumi:"sku"`
 	// Contains resource tags defined as key/value pairs.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Specifies the type of the resource.
@@ -63,13 +61,7 @@ func NewMachineLearningDatastore(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:machinelearningservices/v20200501preview:MachineLearningDatastore"),
 		},
 		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20210301preview:Datastore"),
-		},
-		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20210301preview:MachineLearningDatastore"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20220201preview:Datastore"),
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20220201preview:MachineLearningDatastore"),
@@ -93,97 +85,40 @@ func NewMachineLearningDatastore(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:MachineLearningDatastore"),
 		},
 		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20230401:Datastore"),
-		},
-		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230401:MachineLearningDatastore"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20230401preview:Datastore"),
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230401preview:MachineLearningDatastore"),
 		},
 		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20230601preview:Datastore"),
-		},
-		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230601preview:MachineLearningDatastore"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20230801preview:Datastore"),
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230801preview:MachineLearningDatastore"),
 		},
 		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20231001:Datastore"),
-		},
-		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20231001:MachineLearningDatastore"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20240101preview:Datastore"),
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20240101preview:MachineLearningDatastore"),
 		},
 		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20240401:Datastore"),
-		},
-		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20240401:MachineLearningDatastore"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20240401preview:Datastore"),
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20240401preview:MachineLearningDatastore"),
 		},
 		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20240701preview:Datastore"),
-		},
-		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20240701preview:MachineLearningDatastore"),
 		},
 		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20241001:Datastore"),
-		},
-		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001:MachineLearningDatastore"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:Datastore"),
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:MachineLearningDatastore"),
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:MachineLearningDatastore"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250401:MachineLearningDatastore"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250401preview:MachineLearningDatastore"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250601:MachineLearningDatastore"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250701preview:MachineLearningDatastore"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250901:MachineLearningDatastore"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20251001preview:MachineLearningDatastore"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20251201:MachineLearningDatastore"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices:Datastore"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -399,14 +334,9 @@ func (o MachineLearningDatastoreOutput) ToMachineLearningDatastoreOutputWithCont
 	return o
 }
 
-// The Azure API version of the resource.
-func (o MachineLearningDatastoreOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *MachineLearningDatastore) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // The identity of the resource.
-func (o MachineLearningDatastoreOutput) Identity() IdentityResponseV2PtrOutput {
-	return o.ApplyT(func(v *MachineLearningDatastore) IdentityResponseV2PtrOutput { return v.Identity }).(IdentityResponseV2PtrOutput)
+func (o MachineLearningDatastoreOutput) Identity() IdentityResponsePtrOutput {
+	return o.ApplyT(func(v *MachineLearningDatastore) IdentityResponsePtrOutput { return v.Identity }).(IdentityResponsePtrOutput)
 }
 
 // Specifies the location of the resource.
@@ -425,8 +355,8 @@ func (o MachineLearningDatastoreOutput) Properties() DatastoreResponseOutput {
 }
 
 // The sku of the workspace.
-func (o MachineLearningDatastoreOutput) Sku() SkuResponseV2PtrOutput {
-	return o.ApplyT(func(v *MachineLearningDatastore) SkuResponseV2PtrOutput { return v.Sku }).(SkuResponseV2PtrOutput)
+func (o MachineLearningDatastoreOutput) Sku() SkuResponsePtrOutput {
+	return o.ApplyT(func(v *MachineLearningDatastore) SkuResponsePtrOutput { return v.Sku }).(SkuResponsePtrOutput)
 }
 
 // Contains resource tags defined as key/value pairs.

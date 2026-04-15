@@ -8,18 +8,16 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Solution Configuration
 //
-// Uses Azure REST API version 2024-12-01. In version 2.x of the Azure Native provider, it used API version 2024-12-01.
+// Uses Azure REST API version 2024-12-01.
 type SolutionConfiguration struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The last time resources were inventoried
 	LastSyncTime pulumi.StringOutput `pulumi:"lastSyncTime"`
 	// The name of the resource
@@ -149,11 +147,6 @@ func (o SolutionConfigurationOutput) ToSolutionConfigurationOutput() SolutionCon
 
 func (o SolutionConfigurationOutput) ToSolutionConfigurationOutputWithContext(ctx context.Context) SolutionConfigurationOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o SolutionConfigurationOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *SolutionConfiguration) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The last time resources were inventoried

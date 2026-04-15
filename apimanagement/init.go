@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,8 +29,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ApiGateway{}
 	case "azure-native:apimanagement:ApiGatewayConfigConnection":
 		r = &ApiGatewayConfigConnection{}
-	case "azure-native:apimanagement:ApiGatewayHostnameBinding":
-		r = &ApiGatewayHostnameBinding{}
 	case "azure-native:apimanagement:ApiIssue":
 		r = &ApiIssue{}
 	case "azure-native:apimanagement:ApiIssueAttachment":
@@ -51,8 +49,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ApiSchema{}
 	case "azure-native:apimanagement:ApiTagDescription":
 		r = &ApiTagDescription{}
-	case "azure-native:apimanagement:ApiTool":
-		r = &ApiTool{}
 	case "azure-native:apimanagement:ApiVersionSet":
 		r = &ApiVersionSet{}
 	case "azure-native:apimanagement:ApiWiki":
@@ -71,10 +67,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Cache{}
 	case "azure-native:apimanagement:Certificate":
 		r = &Certificate{}
-	case "azure-native:apimanagement:ClientApplication":
-		r = &ClientApplication{}
-	case "azure-native:apimanagement:ClientApplicationProductLink":
-		r = &ClientApplicationProductLink{}
 	case "azure-native:apimanagement:ContentItem":
 		r = &ContentItem{}
 	case "azure-native:apimanagement:ContentType":

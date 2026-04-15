@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // SyncIdentityProvider represents a SyncIdentityProvider
 //
-// Uses Azure REST API version 2023-11-22. In version 2.x of the Azure Native provider, it used API version 2022-09-04.
+// Uses Azure REST API version 2022-09-04.
 //
-// Other available API versions: 2022-09-04, 2023-04-01, 2023-07-01-preview, 2023-09-04. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native redhatopenshift [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-04-01, 2023-07-01-preview, 2023-09-04, 2023-11-22.
 type SyncIdentityProvider struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name      pulumi.StringOutput    `pulumi:"name"`
 	Resources pulumi.StringPtrOutput `pulumi:"resources"`
@@ -150,11 +148,6 @@ func (o SyncIdentityProviderOutput) ToSyncIdentityProviderOutput() SyncIdentityP
 
 func (o SyncIdentityProviderOutput) ToSyncIdentityProviderOutputWithContext(ctx context.Context) SyncIdentityProviderOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o SyncIdentityProviderOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *SyncIdentityProvider) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

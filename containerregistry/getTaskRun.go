@@ -7,15 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the detailed information for a given task run.
 //
 // Uses Azure REST API version 2019-06-01-preview.
-//
-// Other available API versions: 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupTaskRun(ctx *pulumi.Context, args *LookupTaskRunArgs, opts ...pulumi.InvokeOption) (*LookupTaskRunResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTaskRunResult
@@ -38,8 +36,6 @@ type LookupTaskRunArgs struct {
 // The task run that has the ARM resource and properties.
 // The task run will have the information of request and result of a run.
 type LookupTaskRunResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// How the run should be forced to rerun even if the run request configuration has not changed
 	ForceUpdateTag *string `pulumi:"forceUpdateTag"`
 	// The resource ID.
@@ -108,11 +104,6 @@ func (o LookupTaskRunResultOutput) ToLookupTaskRunResultOutput() LookupTaskRunRe
 
 func (o LookupTaskRunResultOutput) ToLookupTaskRunResultOutputWithContext(ctx context.Context) LookupTaskRunResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupTaskRunResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupTaskRunResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // How the run should be forced to rerun even if the run request configuration has not changed

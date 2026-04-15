@@ -513,174 +513,6 @@ func (in *allowTypePtr) ToAllowTypePtrOutputWithContext(ctx context.Context) All
 	return pulumi.ToOutputWithContext(ctx, in).(AllowTypePtrOutput)
 }
 
-// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
-type AuthMode string
-
-const (
-	// Default authentication configuration according to the authentication type.
-	AuthModeOptInAllAuth = AuthMode("optInAllAuth")
-	// Skip all authentication configuration such as enabling managed identity and granting RBAC roles
-	AuthModeOptOutAllAuth = AuthMode("optOutAllAuth")
-)
-
-func (AuthMode) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthMode)(nil)).Elem()
-}
-
-func (e AuthMode) ToAuthModeOutput() AuthModeOutput {
-	return pulumi.ToOutput(e).(AuthModeOutput)
-}
-
-func (e AuthMode) ToAuthModeOutputWithContext(ctx context.Context) AuthModeOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(AuthModeOutput)
-}
-
-func (e AuthMode) ToAuthModePtrOutput() AuthModePtrOutput {
-	return e.ToAuthModePtrOutputWithContext(context.Background())
-}
-
-func (e AuthMode) ToAuthModePtrOutputWithContext(ctx context.Context) AuthModePtrOutput {
-	return AuthMode(e).ToAuthModeOutputWithContext(ctx).ToAuthModePtrOutputWithContext(ctx)
-}
-
-func (e AuthMode) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e AuthMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e AuthMode) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e AuthMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type AuthModeOutput struct{ *pulumi.OutputState }
-
-func (AuthModeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthMode)(nil)).Elem()
-}
-
-func (o AuthModeOutput) ToAuthModeOutput() AuthModeOutput {
-	return o
-}
-
-func (o AuthModeOutput) ToAuthModeOutputWithContext(ctx context.Context) AuthModeOutput {
-	return o
-}
-
-func (o AuthModeOutput) ToAuthModePtrOutput() AuthModePtrOutput {
-	return o.ToAuthModePtrOutputWithContext(context.Background())
-}
-
-func (o AuthModeOutput) ToAuthModePtrOutputWithContext(ctx context.Context) AuthModePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthMode) *AuthMode {
-		return &v
-	}).(AuthModePtrOutput)
-}
-
-func (o AuthModeOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o AuthModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e AuthMode) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o AuthModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o AuthModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e AuthMode) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type AuthModePtrOutput struct{ *pulumi.OutputState }
-
-func (AuthModePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AuthMode)(nil)).Elem()
-}
-
-func (o AuthModePtrOutput) ToAuthModePtrOutput() AuthModePtrOutput {
-	return o
-}
-
-func (o AuthModePtrOutput) ToAuthModePtrOutputWithContext(ctx context.Context) AuthModePtrOutput {
-	return o
-}
-
-func (o AuthModePtrOutput) Elem() AuthModeOutput {
-	return o.ApplyT(func(v *AuthMode) AuthMode {
-		if v != nil {
-			return *v
-		}
-		var ret AuthMode
-		return ret
-	}).(AuthModeOutput)
-}
-
-func (o AuthModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o AuthModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AuthMode) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// AuthModeInput is an input type that accepts values of the AuthMode enum
-// A concrete instance of `AuthModeInput` can be one of the following:
-//
-//	AuthModeOptInAllAuth
-//	AuthModeOptOutAllAuth
-type AuthModeInput interface {
-	pulumi.Input
-
-	ToAuthModeOutput() AuthModeOutput
-	ToAuthModeOutputWithContext(context.Context) AuthModeOutput
-}
-
-var authModePtrType = reflect.TypeOf((**AuthMode)(nil)).Elem()
-
-type AuthModePtrInput interface {
-	pulumi.Input
-
-	ToAuthModePtrOutput() AuthModePtrOutput
-	ToAuthModePtrOutputWithContext(context.Context) AuthModePtrOutput
-}
-
-type authModePtr string
-
-func AuthModePtr(v string) AuthModePtrInput {
-	return (*authModePtr)(&v)
-}
-
-func (*authModePtr) ElementType() reflect.Type {
-	return authModePtrType
-}
-
-func (in *authModePtr) ToAuthModePtrOutput() AuthModePtrOutput {
-	return pulumi.ToOutput(in).(AuthModePtrOutput)
-}
-
-func (in *authModePtr) ToAuthModePtrOutputWithContext(ctx context.Context) AuthModePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(AuthModePtrOutput)
-}
-
 // The authentication type.
 type AuthType string
 
@@ -692,7 +524,6 @@ const (
 	AuthTypeSecret                      = AuthType("secret")
 	AuthTypeAccessKey                   = AuthType("accessKey")
 	AuthTypeUserAccount                 = AuthType("userAccount")
-	AuthTypeEasyAuthMicrosoftEntraID    = AuthType("easyAuthMicrosoftEntraID")
 )
 
 // The azure resource type.
@@ -717,7 +548,6 @@ const (
 	ClientTypeNodejs            = ClientType("nodejs")
 	ClientTypeSpringBoot        = ClientType("springBoot")
 	ClientType_Kafka_SpringBoot = ClientType("kafka-springBoot")
-	ClientType_Jms_SpringBoot   = ClientType("jms-springBoot")
 	ClientTypeDapr              = ClientType("dapr")
 )
 
@@ -854,7 +684,6 @@ func (o ClientTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) p
 //	ClientTypeNodejs
 //	ClientTypeSpringBoot
 //	ClientType_Kafka_SpringBoot
-//	ClientType_Jms_SpringBoot
 //	ClientTypeDapr
 type ClientTypeInput interface {
 	pulumi.Input
@@ -888,172 +717,6 @@ func (in *clientTypePtr) ToClientTypePtrOutput() ClientTypePtrOutput {
 
 func (in *clientTypePtr) ToClientTypePtrOutputWithContext(ctx context.Context) ClientTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ClientTypePtrOutput)
-}
-
-// The value indicating whether the metadata is required or not
-type DaprMetadataRequired string
-
-const (
-	DaprMetadataRequiredTrue  = DaprMetadataRequired("true")
-	DaprMetadataRequiredFalse = DaprMetadataRequired("false")
-)
-
-func (DaprMetadataRequired) ElementType() reflect.Type {
-	return reflect.TypeOf((*DaprMetadataRequired)(nil)).Elem()
-}
-
-func (e DaprMetadataRequired) ToDaprMetadataRequiredOutput() DaprMetadataRequiredOutput {
-	return pulumi.ToOutput(e).(DaprMetadataRequiredOutput)
-}
-
-func (e DaprMetadataRequired) ToDaprMetadataRequiredOutputWithContext(ctx context.Context) DaprMetadataRequiredOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(DaprMetadataRequiredOutput)
-}
-
-func (e DaprMetadataRequired) ToDaprMetadataRequiredPtrOutput() DaprMetadataRequiredPtrOutput {
-	return e.ToDaprMetadataRequiredPtrOutputWithContext(context.Background())
-}
-
-func (e DaprMetadataRequired) ToDaprMetadataRequiredPtrOutputWithContext(ctx context.Context) DaprMetadataRequiredPtrOutput {
-	return DaprMetadataRequired(e).ToDaprMetadataRequiredOutputWithContext(ctx).ToDaprMetadataRequiredPtrOutputWithContext(ctx)
-}
-
-func (e DaprMetadataRequired) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e DaprMetadataRequired) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e DaprMetadataRequired) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e DaprMetadataRequired) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type DaprMetadataRequiredOutput struct{ *pulumi.OutputState }
-
-func (DaprMetadataRequiredOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DaprMetadataRequired)(nil)).Elem()
-}
-
-func (o DaprMetadataRequiredOutput) ToDaprMetadataRequiredOutput() DaprMetadataRequiredOutput {
-	return o
-}
-
-func (o DaprMetadataRequiredOutput) ToDaprMetadataRequiredOutputWithContext(ctx context.Context) DaprMetadataRequiredOutput {
-	return o
-}
-
-func (o DaprMetadataRequiredOutput) ToDaprMetadataRequiredPtrOutput() DaprMetadataRequiredPtrOutput {
-	return o.ToDaprMetadataRequiredPtrOutputWithContext(context.Background())
-}
-
-func (o DaprMetadataRequiredOutput) ToDaprMetadataRequiredPtrOutputWithContext(ctx context.Context) DaprMetadataRequiredPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DaprMetadataRequired) *DaprMetadataRequired {
-		return &v
-	}).(DaprMetadataRequiredPtrOutput)
-}
-
-func (o DaprMetadataRequiredOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o DaprMetadataRequiredOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e DaprMetadataRequired) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o DaprMetadataRequiredOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o DaprMetadataRequiredOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e DaprMetadataRequired) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type DaprMetadataRequiredPtrOutput struct{ *pulumi.OutputState }
-
-func (DaprMetadataRequiredPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DaprMetadataRequired)(nil)).Elem()
-}
-
-func (o DaprMetadataRequiredPtrOutput) ToDaprMetadataRequiredPtrOutput() DaprMetadataRequiredPtrOutput {
-	return o
-}
-
-func (o DaprMetadataRequiredPtrOutput) ToDaprMetadataRequiredPtrOutputWithContext(ctx context.Context) DaprMetadataRequiredPtrOutput {
-	return o
-}
-
-func (o DaprMetadataRequiredPtrOutput) Elem() DaprMetadataRequiredOutput {
-	return o.ApplyT(func(v *DaprMetadataRequired) DaprMetadataRequired {
-		if v != nil {
-			return *v
-		}
-		var ret DaprMetadataRequired
-		return ret
-	}).(DaprMetadataRequiredOutput)
-}
-
-func (o DaprMetadataRequiredPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o DaprMetadataRequiredPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DaprMetadataRequired) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// DaprMetadataRequiredInput is an input type that accepts values of the DaprMetadataRequired enum
-// A concrete instance of `DaprMetadataRequiredInput` can be one of the following:
-//
-//	DaprMetadataRequiredTrue
-//	DaprMetadataRequiredFalse
-type DaprMetadataRequiredInput interface {
-	pulumi.Input
-
-	ToDaprMetadataRequiredOutput() DaprMetadataRequiredOutput
-	ToDaprMetadataRequiredOutputWithContext(context.Context) DaprMetadataRequiredOutput
-}
-
-var daprMetadataRequiredPtrType = reflect.TypeOf((**DaprMetadataRequired)(nil)).Elem()
-
-type DaprMetadataRequiredPtrInput interface {
-	pulumi.Input
-
-	ToDaprMetadataRequiredPtrOutput() DaprMetadataRequiredPtrOutput
-	ToDaprMetadataRequiredPtrOutputWithContext(context.Context) DaprMetadataRequiredPtrOutput
-}
-
-type daprMetadataRequiredPtr string
-
-func DaprMetadataRequiredPtr(v string) DaprMetadataRequiredPtrInput {
-	return (*daprMetadataRequiredPtr)(&v)
-}
-
-func (*daprMetadataRequiredPtr) ElementType() reflect.Type {
-	return daprMetadataRequiredPtrType
-}
-
-func (in *daprMetadataRequiredPtr) ToDaprMetadataRequiredPtrOutput() DaprMetadataRequiredPtrOutput {
-	return pulumi.ToOutput(in).(DaprMetadataRequiredPtrOutput)
-}
-
-func (in *daprMetadataRequiredPtr) ToDaprMetadataRequiredPtrOutputWithContext(ctx context.Context) DaprMetadataRequiredPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(DaprMetadataRequiredPtrOutput)
 }
 
 // Indicates whether to clean up previous operation when Linker is updating or deleting
@@ -1421,12 +1084,8 @@ func init() {
 	pulumi.RegisterOutputType(ActionTypePtrOutput{})
 	pulumi.RegisterOutputType(AllowTypeOutput{})
 	pulumi.RegisterOutputType(AllowTypePtrOutput{})
-	pulumi.RegisterOutputType(AuthModeOutput{})
-	pulumi.RegisterOutputType(AuthModePtrOutput{})
 	pulumi.RegisterOutputType(ClientTypeOutput{})
 	pulumi.RegisterOutputType(ClientTypePtrOutput{})
-	pulumi.RegisterOutputType(DaprMetadataRequiredOutput{})
-	pulumi.RegisterOutputType(DaprMetadataRequiredPtrOutput{})
 	pulumi.RegisterOutputType(DeleteOrUpdateBehaviorOutput{})
 	pulumi.RegisterOutputType(DeleteOrUpdateBehaviorPtrOutput{})
 	pulumi.RegisterOutputType(VNetSolutionTypeOutput{})

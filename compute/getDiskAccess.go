@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets information about a disk access resource.
 //
-// Uses Azure REST API version 2024-03-02.
+// Uses Azure REST API version 2022-07-02.
 //
-// Other available API versions: 2022-07-02, 2023-01-02, 2023-04-02, 2023-10-02, 2025-01-02. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-01-02, 2023-04-02, 2023-10-02, 2024-03-02.
 func LookupDiskAccess(ctx *pulumi.Context, args *LookupDiskAccessArgs, opts ...pulumi.InvokeOption) (*LookupDiskAccessResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDiskAccessResult
@@ -29,33 +29,29 @@ func LookupDiskAccess(ctx *pulumi.Context, args *LookupDiskAccessArgs, opts ...p
 type LookupDiskAccessArgs struct {
 	// The name of the disk access resource that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
 	DiskAccessName string `pulumi:"diskAccessName"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // disk access resource.
 type LookupDiskAccessResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The extended location where the disk access will be created. Extended location cannot be changed.
 	ExtendedLocation *ExtendedLocationResponse `pulumi:"extendedLocation"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Resource Id
 	Id string `pulumi:"id"`
-	// The geo-location where the resource lives
+	// Resource location
 	Location string `pulumi:"location"`
-	// The name of the resource
+	// Resource name
 	Name string `pulumi:"name"`
 	// A readonly collection of private endpoint connections created on the disk. Currently only one endpoint connection is supported.
 	PrivateEndpointConnections []PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
 	// The disk access resource provisioning state.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
-	// Resource tags.
+	// Resource tags
 	Tags map[string]string `pulumi:"tags"`
 	// The time when the disk access was created.
 	TimeCreated string `pulumi:"timeCreated"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// Resource type
 	Type string `pulumi:"type"`
 }
 
@@ -71,7 +67,7 @@ func LookupDiskAccessOutput(ctx *pulumi.Context, args LookupDiskAccessOutputArgs
 type LookupDiskAccessOutputArgs struct {
 	// The name of the disk access resource that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
 	DiskAccessName pulumi.StringInput `pulumi:"diskAccessName"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -94,27 +90,22 @@ func (o LookupDiskAccessResultOutput) ToLookupDiskAccessResultOutputWithContext(
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupDiskAccessResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDiskAccessResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // The extended location where the disk access will be created. Extended location cannot be changed.
 func (o LookupDiskAccessResultOutput) ExtendedLocation() ExtendedLocationResponsePtrOutput {
 	return o.ApplyT(func(v LookupDiskAccessResult) *ExtendedLocationResponse { return v.ExtendedLocation }).(ExtendedLocationResponsePtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Resource Id
 func (o LookupDiskAccessResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskAccessResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The geo-location where the resource lives
+// Resource location
 func (o LookupDiskAccessResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskAccessResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// The name of the resource
+// Resource name
 func (o LookupDiskAccessResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskAccessResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -131,12 +122,7 @@ func (o LookupDiskAccessResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskAccessResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupDiskAccessResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupDiskAccessResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
-}
-
-// Resource tags.
+// Resource tags
 func (o LookupDiskAccessResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupDiskAccessResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -146,7 +132,7 @@ func (o LookupDiskAccessResultOutput) TimeCreated() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskAccessResult) string { return v.TimeCreated }).(pulumi.StringOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// Resource type
 func (o LookupDiskAccessResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskAccessResult) string { return v.Type }).(pulumi.StringOutput)
 }

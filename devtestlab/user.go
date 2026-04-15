@@ -8,35 +8,31 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A user profile.
+// Profile of a lab user.
 //
-// Uses Azure REST API version 2018-09-15. In version 2.x of the Azure Native provider, it used API version 2018-09-15.
+// Uses Azure REST API version 2018-09-15. In version 1.x of the Azure Native provider, it used API version 2018-09-15.
 type User struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The creation date of the user profile.
 	CreatedDate pulumi.StringOutput `pulumi:"createdDate"`
 	// The identity of the user.
 	Identity UserIdentityResponsePtrOutput `pulumi:"identity"`
-	// The geo-location where the resource lives
+	// The location of the resource.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
-	// The name of the resource
+	// The name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning status of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The secret store of the user.
 	SecretStore UserSecretStoreResponsePtrOutput `pulumi:"secretStore"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// Resource tags.
+	// The tags of the resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// The type of the resource.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The unique immutable identifier of a resource (Guid).
 	UniqueIdentifier pulumi.StringOutput `pulumi:"uniqueIdentifier"`
@@ -101,15 +97,15 @@ type userArgs struct {
 	Identity *UserIdentity `pulumi:"identity"`
 	// The name of the lab.
 	LabName string `pulumi:"labName"`
-	// The geo-location where the resource lives
+	// The location of the resource.
 	Location *string `pulumi:"location"`
 	// The name of the user profile.
 	Name *string `pulumi:"name"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The secret store of the user.
 	SecretStore *UserSecretStore `pulumi:"secretStore"`
-	// Resource tags.
+	// The tags of the resource.
 	Tags map[string]string `pulumi:"tags"`
 }
 
@@ -119,15 +115,15 @@ type UserArgs struct {
 	Identity UserIdentityPtrInput
 	// The name of the lab.
 	LabName pulumi.StringInput
-	// The geo-location where the resource lives
+	// The location of the resource.
 	Location pulumi.StringPtrInput
 	// The name of the user profile.
 	Name pulumi.StringPtrInput
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
 	// The secret store of the user.
 	SecretStore UserSecretStorePtrInput
-	// Resource tags.
+	// The tags of the resource.
 	Tags pulumi.StringMapInput
 }
 
@@ -168,11 +164,6 @@ func (o UserOutput) ToUserOutputWithContext(ctx context.Context) UserOutput {
 	return o
 }
 
-// The Azure API version of the resource.
-func (o UserOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // The creation date of the user profile.
 func (o UserOutput) CreatedDate() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.CreatedDate }).(pulumi.StringOutput)
@@ -183,12 +174,12 @@ func (o UserOutput) Identity() UserIdentityResponsePtrOutput {
 	return o.ApplyT(func(v *User) UserIdentityResponsePtrOutput { return v.Identity }).(UserIdentityResponsePtrOutput)
 }
 
-// The geo-location where the resource lives
+// The location of the resource.
 func (o UserOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// The name of the resource
+// The name of the resource.
 func (o UserOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -203,17 +194,12 @@ func (o UserOutput) SecretStore() UserSecretStoreResponsePtrOutput {
 	return o.ApplyT(func(v *User) UserSecretStoreResponsePtrOutput { return v.SecretStore }).(UserSecretStoreResponsePtrOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o UserOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *User) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
-}
-
-// Resource tags.
+// The tags of the resource.
 func (o UserOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *User) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// The type of the resource.
 func (o UserOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

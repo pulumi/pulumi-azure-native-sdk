@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an elastic pool.
 //
-// Uses Azure REST API version 2023-08-01.
+// Uses Azure REST API version 2021-11-01.
 //
-// Other available API versions: 2014-04-01, 2017-10-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2014-04-01, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01, 2023-08-01-preview, 2024-05-01-preview.
 func LookupElasticPool(ctx *pulumi.Context, args *LookupElasticPoolArgs, opts ...pulumi.InvokeOption) (*LookupElasticPoolResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupElasticPoolResult
@@ -37,15 +37,9 @@ type LookupElasticPoolArgs struct {
 
 // An elastic pool.
 type LookupElasticPoolResult struct {
-	// Time in minutes after which elastic pool is automatically paused. A value of -1 means that automatic pause is disabled
-	AutoPauseDelay *int `pulumi:"autoPauseDelay"`
-	// Specifies the availability zone the pool's primary replica is pinned to.
-	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The creation date of the elastic pool (ISO8601 format).
 	CreationDate string `pulumi:"creationDate"`
-	// The number of secondary replicas associated with the Business Critical, Premium, or Hyperscale edition elastic pool that are used to provide high availability. Applicable only to Hyperscale elastic pools.
+	// The number of secondary replicas associated with the elastic pool that are used to provide high availability. Applicable only to Hyperscale elastic pools.
 	HighAvailabilityReplicaCount *int `pulumi:"highAvailabilityReplicaCount"`
 	// Resource ID.
 	Id string `pulumi:"id"`
@@ -65,8 +59,6 @@ type LookupElasticPoolResult struct {
 	Name string `pulumi:"name"`
 	// The per database settings for the elastic pool.
 	PerDatabaseSettings *ElasticPoolPerDatabaseSettingsResponse `pulumi:"perDatabaseSettings"`
-	// Type of enclave requested on the elastic pool.
-	PreferredEnclaveType *string `pulumi:"preferredEnclaveType"`
 	// The elastic pool SKU.
 	//
 	// The list of SKUs may vary by region and support offer. To determine the SKUs (including the SKU name, tier/edition, family, and capacity) that are available to your subscription in an Azure region, use the `Capabilities_ListByLocation` REST API or the following command:
@@ -118,27 +110,12 @@ func (o LookupElasticPoolResultOutput) ToLookupElasticPoolResultOutputWithContex
 	return o
 }
 
-// Time in minutes after which elastic pool is automatically paused. A value of -1 means that automatic pause is disabled
-func (o LookupElasticPoolResultOutput) AutoPauseDelay() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v LookupElasticPoolResult) *int { return v.AutoPauseDelay }).(pulumi.IntPtrOutput)
-}
-
-// Specifies the availability zone the pool's primary replica is pinned to.
-func (o LookupElasticPoolResultOutput) AvailabilityZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupElasticPoolResult) *string { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o LookupElasticPoolResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupElasticPoolResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // The creation date of the elastic pool (ISO8601 format).
 func (o LookupElasticPoolResultOutput) CreationDate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupElasticPoolResult) string { return v.CreationDate }).(pulumi.StringOutput)
 }
 
-// The number of secondary replicas associated with the Business Critical, Premium, or Hyperscale edition elastic pool that are used to provide high availability. Applicable only to Hyperscale elastic pools.
+// The number of secondary replicas associated with the elastic pool that are used to provide high availability. Applicable only to Hyperscale elastic pools.
 func (o LookupElasticPoolResultOutput) HighAvailabilityReplicaCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupElasticPoolResult) *int { return v.HighAvailabilityReplicaCount }).(pulumi.IntPtrOutput)
 }
@@ -186,11 +163,6 @@ func (o LookupElasticPoolResultOutput) Name() pulumi.StringOutput {
 // The per database settings for the elastic pool.
 func (o LookupElasticPoolResultOutput) PerDatabaseSettings() ElasticPoolPerDatabaseSettingsResponsePtrOutput {
 	return o.ApplyT(func(v LookupElasticPoolResult) *ElasticPoolPerDatabaseSettingsResponse { return v.PerDatabaseSettings }).(ElasticPoolPerDatabaseSettingsResponsePtrOutput)
-}
-
-// Type of enclave requested on the elastic pool.
-func (o LookupElasticPoolResultOutput) PreferredEnclaveType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupElasticPoolResult) *string { return v.PreferredEnclaveType }).(pulumi.StringPtrOutput)
 }
 
 // The elastic pool SKU.

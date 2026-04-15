@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the description for the specified WCF relay.
 //
-// Uses Azure REST API version 2024-01-01.
+// Uses Azure REST API version 2021-11-01.
 //
-// Other available API versions: 2021-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native relay [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-01-01.
 func LookupWCFRelay(ctx *pulumi.Context, args *LookupWCFRelayArgs, opts ...pulumi.InvokeOption) (*LookupWCFRelayResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWCFRelayResult
@@ -31,14 +31,12 @@ type LookupWCFRelayArgs struct {
 	NamespaceName string `pulumi:"namespaceName"`
 	// The relay name.
 	RelayName string `pulumi:"relayName"`
-	// The name of the resource group. The name is case insensitive.
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Description of the WCF relay resource.
 type LookupWCFRelayResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The time the WCF relay was created.
 	CreatedAt string `pulumi:"createdAt"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -57,9 +55,9 @@ type LookupWCFRelayResult struct {
 	RequiresClientAuthorization *bool `pulumi:"requiresClientAuthorization"`
 	// Returns true if transport security is needed for this relay; otherwise, false.
 	RequiresTransportSecurity *bool `pulumi:"requiresTransportSecurity"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	// The system meta data relating to this resource.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
 	Type string `pulumi:"type"`
 	// The time the namespace was updated.
 	UpdatedAt string `pulumi:"updatedAt"`
@@ -81,7 +79,7 @@ type LookupWCFRelayOutputArgs struct {
 	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
 	// The relay name.
 	RelayName pulumi.StringInput `pulumi:"relayName"`
-	// The name of the resource group. The name is case insensitive.
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -102,11 +100,6 @@ func (o LookupWCFRelayResultOutput) ToLookupWCFRelayResultOutput() LookupWCFRela
 
 func (o LookupWCFRelayResultOutput) ToLookupWCFRelayResultOutputWithContext(ctx context.Context) LookupWCFRelayResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupWCFRelayResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWCFRelayResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The time the WCF relay was created.
@@ -154,12 +147,12 @@ func (o LookupWCFRelayResultOutput) RequiresTransportSecurity() pulumi.BoolPtrOu
 	return o.ApplyT(func(v LookupWCFRelayResult) *bool { return v.RequiresTransportSecurity }).(pulumi.BoolPtrOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+// The system meta data relating to this resource.
 func (o LookupWCFRelayResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupWCFRelayResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
 func (o LookupWCFRelayResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWCFRelayResult) string { return v.Type }).(pulumi.StringOutput)
 }

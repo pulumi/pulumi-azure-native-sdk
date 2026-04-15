@@ -8,18 +8,16 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Data Lake Store trusted identity provider information.
 //
-// Uses Azure REST API version 2016-11-01. In version 2.x of the Azure Native provider, it used API version 2016-11-01.
+// Uses Azure REST API version 2016-11-01. In version 1.x of the Azure Native provider, it used API version 2016-11-01.
 type TrustedIdProvider struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The URL of this trusted identity provider.
 	IdProvider pulumi.StringOutput `pulumi:"idProvider"`
 	// The resource name.
@@ -140,11 +138,6 @@ func (o TrustedIdProviderOutput) ToTrustedIdProviderOutput() TrustedIdProviderOu
 
 func (o TrustedIdProviderOutput) ToTrustedIdProviderOutputWithContext(ctx context.Context) TrustedIdProviderOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o TrustedIdProviderOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *TrustedIdProvider) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The URL of this trusted identity provider.

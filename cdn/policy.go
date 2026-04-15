@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Defines web application firewall policy for Azure CDN.
 //
-// Uses Azure REST API version 2025-06-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
+// Uses Azure REST API version 2023-05-01. In version 1.x of the Azure Native provider, it used API version 2020-09-01.
 //
-// Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01.
 type Policy struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Describes custom rules inside the policy.
 	CustomRules CustomRuleListResponsePtrOutput `pulumi:"customRules"`
 	// Describes Azure CDN endpoints associated with this Web Application Firewall policy.
@@ -30,11 +28,11 @@ type Policy struct {
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// Key-Value pair representing additional properties for Web Application Firewall policy.
 	ExtendedProperties pulumi.StringMapOutput `pulumi:"extendedProperties"`
-	// The geo-location where the resource lives
+	// Resource location.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Describes managed rules inside the policy.
 	ManagedRules ManagedRuleSetListResponsePtrOutput `pulumi:"managedRules"`
-	// The name of the resource
+	// Resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Describes  policySettings for policy
 	PolicySettings PolicySettingsResponsePtrOutput `pulumi:"policySettings"`
@@ -42,15 +40,14 @@ type Policy struct {
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Describes rate limit rules inside the policy.
 	RateLimitRules RateLimitRuleListResponsePtrOutput `pulumi:"rateLimitRules"`
-	// Resource status of the policy.
-	ResourceState pulumi.StringOutput `pulumi:"resourceState"`
+	ResourceState  pulumi.StringOutput                `pulumi:"resourceState"`
 	// The pricing tier (defines a CDN provider, feature list and rate) of the CdnWebApplicationFirewallPolicy.
 	Sku SkuResponseOutput `pulumi:"sku"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	// Read only system data
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// Resource type.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -110,21 +107,6 @@ func NewPolicy(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:cdn/v20240901:Policy"),
 		},
-		{
-			Type: pulumi.String("azure-native:cdn/v20250101preview:Policy"),
-		},
-		{
-			Type: pulumi.String("azure-native:cdn/v20250415:Policy"),
-		},
-		{
-			Type: pulumi.String("azure-native:cdn/v20250601:Policy"),
-		},
-		{
-			Type: pulumi.String("azure-native:cdn/v20250701preview:Policy"),
-		},
-		{
-			Type: pulumi.String("azure-native:cdn/v20250901preview:Policy"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -164,7 +146,7 @@ type policyArgs struct {
 	CustomRules *CustomRuleList `pulumi:"customRules"`
 	// Key-Value pair representing additional properties for Web Application Firewall policy.
 	ExtendedProperties map[string]string `pulumi:"extendedProperties"`
-	// The geo-location where the resource lives
+	// Resource location.
 	Location *string `pulumi:"location"`
 	// Describes managed rules inside the policy.
 	ManagedRules *ManagedRuleSetList `pulumi:"managedRules"`
@@ -174,7 +156,7 @@ type policyArgs struct {
 	PolicySettings *PolicySettings `pulumi:"policySettings"`
 	// Describes rate limit rules inside the policy.
 	RateLimitRules *RateLimitRuleList `pulumi:"rateLimitRules"`
-	// The name of the resource group. The name is case insensitive.
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The pricing tier (defines a CDN provider, feature list and rate) of the CdnWebApplicationFirewallPolicy.
 	Sku Sku `pulumi:"sku"`
@@ -188,7 +170,7 @@ type PolicyArgs struct {
 	CustomRules CustomRuleListPtrInput
 	// Key-Value pair representing additional properties for Web Application Firewall policy.
 	ExtendedProperties pulumi.StringMapInput
-	// The geo-location where the resource lives
+	// Resource location.
 	Location pulumi.StringPtrInput
 	// Describes managed rules inside the policy.
 	ManagedRules ManagedRuleSetListPtrInput
@@ -198,7 +180,7 @@ type PolicyArgs struct {
 	PolicySettings PolicySettingsPtrInput
 	// Describes rate limit rules inside the policy.
 	RateLimitRules RateLimitRuleListPtrInput
-	// The name of the resource group. The name is case insensitive.
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput
 	// The pricing tier (defines a CDN provider, feature list and rate) of the CdnWebApplicationFirewallPolicy.
 	Sku SkuInput
@@ -243,11 +225,6 @@ func (o PolicyOutput) ToPolicyOutputWithContext(ctx context.Context) PolicyOutpu
 	return o
 }
 
-// The Azure API version of the resource.
-func (o PolicyOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Describes custom rules inside the policy.
 func (o PolicyOutput) CustomRules() CustomRuleListResponsePtrOutput {
 	return o.ApplyT(func(v *Policy) CustomRuleListResponsePtrOutput { return v.CustomRules }).(CustomRuleListResponsePtrOutput)
@@ -268,7 +245,7 @@ func (o PolicyOutput) ExtendedProperties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringMapOutput { return v.ExtendedProperties }).(pulumi.StringMapOutput)
 }
 
-// The geo-location where the resource lives
+// Resource location.
 func (o PolicyOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
@@ -278,7 +255,7 @@ func (o PolicyOutput) ManagedRules() ManagedRuleSetListResponsePtrOutput {
 	return o.ApplyT(func(v *Policy) ManagedRuleSetListResponsePtrOutput { return v.ManagedRules }).(ManagedRuleSetListResponsePtrOutput)
 }
 
-// The name of the resource
+// Resource name.
 func (o PolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -298,7 +275,6 @@ func (o PolicyOutput) RateLimitRules() RateLimitRuleListResponsePtrOutput {
 	return o.ApplyT(func(v *Policy) RateLimitRuleListResponsePtrOutput { return v.RateLimitRules }).(RateLimitRuleListResponsePtrOutput)
 }
 
-// Resource status of the policy.
 func (o PolicyOutput) ResourceState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.ResourceState }).(pulumi.StringOutput)
 }
@@ -308,7 +284,7 @@ func (o PolicyOutput) Sku() SkuResponseOutput {
 	return o.ApplyT(func(v *Policy) SkuResponseOutput { return v.Sku }).(SkuResponseOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+// Read only system data
 func (o PolicyOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Policy) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
@@ -318,7 +294,7 @@ func (o PolicyOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// Resource type.
 func (o PolicyOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

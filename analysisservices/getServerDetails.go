@@ -7,13 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details about the specified Analysis Services server.
 //
 // Uses Azure REST API version 2017-08-01.
+//
+// Other available API versions: 2017-08-01-beta.
 func LookupServerDetails(ctx *pulumi.Context, args *LookupServerDetailsArgs, opts ...pulumi.InvokeOption) (*LookupServerDetailsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupServerDetailsResult
@@ -35,8 +37,6 @@ type LookupServerDetailsArgs struct {
 type LookupServerDetailsResult struct {
 	// A collection of AS server administrators
 	AsAdministrators *ServerAdministratorsResponse `pulumi:"asAdministrators"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The SAS container URI to the backup container.
 	BackupBlobContainerUri *string `pulumi:"backupBlobContainerUri"`
 	// The gateway details configured for the AS server.
@@ -129,11 +129,6 @@ func (o LookupServerDetailsResultOutput) ToLookupServerDetailsResultOutputWithCo
 // A collection of AS server administrators
 func (o LookupServerDetailsResultOutput) AsAdministrators() ServerAdministratorsResponsePtrOutput {
 	return o.ApplyT(func(v LookupServerDetailsResult) *ServerAdministratorsResponse { return v.AsAdministrators }).(ServerAdministratorsResponsePtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o LookupServerDetailsResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupServerDetailsResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The SAS container URI to the backup container.

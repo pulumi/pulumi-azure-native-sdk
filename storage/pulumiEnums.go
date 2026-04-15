@@ -17,7 +17,6 @@ const (
 	AccessTierHot     = AccessTier("Hot")
 	AccessTierCool    = AccessTier("Cool")
 	AccessTierPremium = AccessTier("Premium")
-	AccessTierCold    = AccessTier("Cold")
 )
 
 func (AccessTier) ElementType() reflect.Type {
@@ -145,7 +144,6 @@ func (o AccessTierPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) p
 //	AccessTierHot
 //	AccessTierCool
 //	AccessTierPremium
-//	AccessTierCold
 type AccessTierInput interface {
 	pulumi.Input
 
@@ -855,8 +853,6 @@ const (
 	AllowedMethodsOPTIONS = AllowedMethods("OPTIONS")
 	AllowedMethodsPUT     = AllowedMethods("PUT")
 	AllowedMethodsPATCH   = AllowedMethods("PATCH")
-	AllowedMethodsCONNECT = AllowedMethods("CONNECT")
-	AllowedMethodsTRACE   = AllowedMethods("TRACE")
 )
 
 func (AllowedMethods) ElementType() reflect.Type {
@@ -989,8 +985,6 @@ func (o AllowedMethodsPtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 //	AllowedMethodsOPTIONS
 //	AllowedMethodsPUT
 //	AllowedMethodsPATCH
-//	AllowedMethodsCONNECT
-//	AllowedMethodsTRACE
 type AllowedMethodsInput interface {
 	pulumi.Input
 
@@ -2704,12 +2698,11 @@ func (in *encryptionScopeStateEnumPtr) ToEncryptionScopeStateEnumPtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(EncryptionScopeStateEnumPtrOutput)
 }
 
-// The SAS Expiration Action defines the action to be performed when sasPolicy.sasExpirationPeriod is violated. The 'Log' action can be used for audit purposes and the 'Block' action can be used to block and deny the usage of SAS tokens that do not adhere to the sas policy expiration period.
+// The SAS expiration action. Can only be Log.
 type ExpirationAction string
 
 const (
-	ExpirationActionLog   = ExpirationAction("Log")
-	ExpirationActionBlock = ExpirationAction("Block")
+	ExpirationActionLog = ExpirationAction("Log")
 )
 
 func (ExpirationAction) ElementType() reflect.Type {
@@ -2835,7 +2828,6 @@ func (o ExpirationActionPtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 // A concrete instance of `ExpirationActionInput` can be one of the following:
 //
 //	ExpirationActionLog
-//	ExpirationActionBlock
 type ExpirationActionInput interface {
 	pulumi.Input
 
@@ -4541,7 +4533,6 @@ const (
 	MinimumTlsVersion_TLS1_0 = MinimumTlsVersion("TLS1_0")
 	MinimumTlsVersion_TLS1_1 = MinimumTlsVersion("TLS1_1")
 	MinimumTlsVersion_TLS1_2 = MinimumTlsVersion("TLS1_2")
-	MinimumTlsVersion_TLS1_3 = MinimumTlsVersion("TLS1_3")
 )
 
 func (MinimumTlsVersion) ElementType() reflect.Type {
@@ -4669,7 +4660,6 @@ func (o MinimumTlsVersionPtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 //	MinimumTlsVersion_TLS1_0
 //	MinimumTlsVersion_TLS1_1
 //	MinimumTlsVersion_TLS1_2
-//	MinimumTlsVersion_TLS1_3
 type MinimumTlsVersionInput interface {
 	pulumi.Input
 
@@ -5548,13 +5538,12 @@ func (in *publicAccessPtr) ToPublicAccessPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(PublicAccessPtrOutput)
 }
 
-// Allow, disallow, or let Network Security Perimeter configuration to evaluate public network access to Storage Account. Value is optional but if passed in, must be 'Enabled', 'Disabled' or 'SecuredByPerimeter'.
+// Allow or disallow public network access to Storage Account. Value is optional but if passed in, must be 'Enabled' or 'Disabled'.
 type PublicNetworkAccess string
 
 const (
-	PublicNetworkAccessEnabled            = PublicNetworkAccess("Enabled")
-	PublicNetworkAccessDisabled           = PublicNetworkAccess("Disabled")
-	PublicNetworkAccessSecuredByPerimeter = PublicNetworkAccess("SecuredByPerimeter")
+	PublicNetworkAccessEnabled  = PublicNetworkAccess("Enabled")
+	PublicNetworkAccessDisabled = PublicNetworkAccess("Disabled")
 )
 
 func (PublicNetworkAccess) ElementType() reflect.Type {
@@ -5681,7 +5670,6 @@ func (o PublicNetworkAccessPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 //
 //	PublicNetworkAccessEnabled
 //	PublicNetworkAccessDisabled
-//	PublicNetworkAccessSecuredByPerimeter
 type PublicNetworkAccessInput interface {
 	pulumi.Input
 
@@ -7070,12 +7058,6 @@ const (
 	SkuName_Premium_ZRS     = SkuName("Premium_ZRS")
 	SkuName_Standard_GZRS   = SkuName("Standard_GZRS")
 	SkuName_Standard_RAGZRS = SkuName("Standard_RAGZRS")
-	SkuName_StandardV2_LRS  = SkuName("StandardV2_LRS")
-	SkuName_StandardV2_GRS  = SkuName("StandardV2_GRS")
-	SkuName_StandardV2_ZRS  = SkuName("StandardV2_ZRS")
-	SkuName_StandardV2_GZRS = SkuName("StandardV2_GZRS")
-	SkuName_PremiumV2_LRS   = SkuName("PremiumV2_LRS")
-	SkuName_PremiumV2_ZRS   = SkuName("PremiumV2_ZRS")
 )
 
 func (SkuName) ElementType() reflect.Type {
@@ -7208,12 +7190,6 @@ func (o SkuNamePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulu
 //	SkuName_Premium_ZRS
 //	SkuName_Standard_GZRS
 //	SkuName_Standard_RAGZRS
-//	SkuName_StandardV2_LRS
-//	SkuName_StandardV2_GRS
-//	SkuName_StandardV2_ZRS
-//	SkuName_StandardV2_GZRS
-//	SkuName_PremiumV2_LRS
-//	SkuName_PremiumV2_ZRS
 type SkuNameInput interface {
 	pulumi.Input
 

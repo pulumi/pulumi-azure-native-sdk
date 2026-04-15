@@ -8,25 +8,23 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Model that represents a Capability resource.
 //
-// Uses Azure REST API version 2024-03-22-preview. In version 2.x of the Azure Native provider, it used API version 2023-04-15-preview.
+// Uses Azure REST API version 2023-04-15-preview. In version 1.x of the Azure Native provider, it used API version 2021-09-15-preview.
 //
-// Other available API versions: 2023-04-15-preview, 2023-09-01-preview, 2023-10-27-preview, 2023-11-01, 2024-01-01, 2024-11-01-preview, 2025-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native chaos [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-09-01-preview, 2023-10-27-preview, 2023-11-01, 2024-01-01, 2024-03-22-preview, 2024-11-01-preview, 2025-01-01.
 type Capability struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The properties of a capability resource.
 	Properties CapabilityPropertiesResponseOutput `pulumi:"properties"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	// The standard system metadata of a resource type.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -193,11 +191,6 @@ func (o CapabilityOutput) ToCapabilityOutputWithContext(ctx context.Context) Cap
 	return o
 }
 
-// The Azure API version of the resource.
-func (o CapabilityOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Capability) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // The name of the resource
 func (o CapabilityOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Capability) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -208,7 +201,7 @@ func (o CapabilityOutput) Properties() CapabilityPropertiesResponseOutput {
 	return o.ApplyT(func(v *Capability) CapabilityPropertiesResponseOutput { return v.Properties }).(CapabilityPropertiesResponseOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+// The standard system metadata of a resource type.
 func (o CapabilityOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Capability) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

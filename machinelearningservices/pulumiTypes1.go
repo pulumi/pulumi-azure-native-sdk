@@ -7,11019 +7,17 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 var _ = utilities.GetEnvOrDefault
 
-// Settings for a personal compute instance.
-type PersonalComputeInstanceSettingsResponse struct {
-	// A user explicitly assigned to a personal compute instance.
-	AssignedUser *AssignedUserResponse `pulumi:"assignedUser"`
-}
-
-// Settings for a personal compute instance.
-type PersonalComputeInstanceSettingsResponseOutput struct{ *pulumi.OutputState }
-
-func (PersonalComputeInstanceSettingsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PersonalComputeInstanceSettingsResponse)(nil)).Elem()
-}
-
-func (o PersonalComputeInstanceSettingsResponseOutput) ToPersonalComputeInstanceSettingsResponseOutput() PersonalComputeInstanceSettingsResponseOutput {
-	return o
-}
-
-func (o PersonalComputeInstanceSettingsResponseOutput) ToPersonalComputeInstanceSettingsResponseOutputWithContext(ctx context.Context) PersonalComputeInstanceSettingsResponseOutput {
-	return o
-}
-
-// A user explicitly assigned to a personal compute instance.
-func (o PersonalComputeInstanceSettingsResponseOutput) AssignedUser() AssignedUserResponsePtrOutput {
-	return o.ApplyT(func(v PersonalComputeInstanceSettingsResponse) *AssignedUserResponse { return v.AssignedUser }).(AssignedUserResponsePtrOutput)
-}
-
-type PersonalComputeInstanceSettingsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PersonalComputeInstanceSettingsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PersonalComputeInstanceSettingsResponse)(nil)).Elem()
-}
-
-func (o PersonalComputeInstanceSettingsResponsePtrOutput) ToPersonalComputeInstanceSettingsResponsePtrOutput() PersonalComputeInstanceSettingsResponsePtrOutput {
-	return o
-}
-
-func (o PersonalComputeInstanceSettingsResponsePtrOutput) ToPersonalComputeInstanceSettingsResponsePtrOutputWithContext(ctx context.Context) PersonalComputeInstanceSettingsResponsePtrOutput {
-	return o
-}
-
-func (o PersonalComputeInstanceSettingsResponsePtrOutput) Elem() PersonalComputeInstanceSettingsResponseOutput {
-	return o.ApplyT(func(v *PersonalComputeInstanceSettingsResponse) PersonalComputeInstanceSettingsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PersonalComputeInstanceSettingsResponse
-		return ret
-	}).(PersonalComputeInstanceSettingsResponseOutput)
-}
-
-// A user explicitly assigned to a personal compute instance.
-func (o PersonalComputeInstanceSettingsResponsePtrOutput) AssignedUser() AssignedUserResponsePtrOutput {
-	return o.ApplyT(func(v *PersonalComputeInstanceSettingsResponse) *AssignedUserResponse {
-		if v == nil {
-			return nil
-		}
-		return v.AssignedUser
-	}).(AssignedUserResponsePtrOutput)
-}
-
-// Pipeline Job definition: defines generic to MFE attributes.
-type PipelineJob struct {
-	// ARM resource ID of the component resource.
-	ComponentId *string `pulumi:"componentId"`
-	// ARM resource ID of the compute resource.
-	ComputeId *string `pulumi:"computeId"`
-	// The asset description text.
-	Description *string `pulumi:"description"`
-	// Display name of job.
-	DisplayName *string `pulumi:"displayName"`
-	// The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
-	ExperimentName *string `pulumi:"experimentName"`
-	// Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
-	// Defaults to AmlToken if null.
-	Identity interface{} `pulumi:"identity"`
-	// Inputs for the pipeline job.
-	Inputs map[string]interface{} `pulumi:"inputs"`
-	// Is the asset archived?
-	IsArchived *bool `pulumi:"isArchived"`
-	// Enum to determine the type of job.
-	// Expected value is 'Pipeline'.
-	JobType string `pulumi:"jobType"`
-	// Jobs construct the Pipeline Job.
-	Jobs map[string]interface{} `pulumi:"jobs"`
-	// Notification setting for the job
-	NotificationSetting *NotificationSetting `pulumi:"notificationSetting"`
-	// Outputs for the pipeline job
-	Outputs map[string]interface{} `pulumi:"outputs"`
-	// The asset property dictionary.
-	Properties map[string]string `pulumi:"properties"`
-	// List of JobEndpoints.
-	// For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
-	Services map[string]JobService `pulumi:"services"`
-	// Pipeline settings, for things like ContinueRunOnStepFailure etc.
-	Settings interface{} `pulumi:"settings"`
-	// ARM resource ID of source job.
-	SourceJobId *string `pulumi:"sourceJobId"`
-	// Tag dictionary. Tags can be added, removed, and updated.
-	Tags map[string]string `pulumi:"tags"`
-}
-
-// Defaults sets the appropriate defaults for PipelineJob
-func (val *PipelineJob) Defaults() *PipelineJob {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.ExperimentName == nil {
-		experimentName_ := "Default"
-		tmp.ExperimentName = &experimentName_
-	}
-	if tmp.IsArchived == nil {
-		isArchived_ := false
-		tmp.IsArchived = &isArchived_
-	}
-	return &tmp
-}
-
-// PipelineJobInput is an input type that accepts PipelineJobArgs and PipelineJobOutput values.
-// You can construct a concrete instance of `PipelineJobInput` via:
-//
-//	PipelineJobArgs{...}
-type PipelineJobInput interface {
-	pulumi.Input
-
-	ToPipelineJobOutput() PipelineJobOutput
-	ToPipelineJobOutputWithContext(context.Context) PipelineJobOutput
-}
-
-// Pipeline Job definition: defines generic to MFE attributes.
-type PipelineJobArgs struct {
-	// ARM resource ID of the component resource.
-	ComponentId pulumi.StringPtrInput `pulumi:"componentId"`
-	// ARM resource ID of the compute resource.
-	ComputeId pulumi.StringPtrInput `pulumi:"computeId"`
-	// The asset description text.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Display name of job.
-	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	// The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
-	ExperimentName pulumi.StringPtrInput `pulumi:"experimentName"`
-	// Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
-	// Defaults to AmlToken if null.
-	Identity pulumi.Input `pulumi:"identity"`
-	// Inputs for the pipeline job.
-	Inputs pulumi.MapInput `pulumi:"inputs"`
-	// Is the asset archived?
-	IsArchived pulumi.BoolPtrInput `pulumi:"isArchived"`
-	// Enum to determine the type of job.
-	// Expected value is 'Pipeline'.
-	JobType pulumi.StringInput `pulumi:"jobType"`
-	// Jobs construct the Pipeline Job.
-	Jobs pulumi.MapInput `pulumi:"jobs"`
-	// Notification setting for the job
-	NotificationSetting NotificationSettingPtrInput `pulumi:"notificationSetting"`
-	// Outputs for the pipeline job
-	Outputs pulumi.MapInput `pulumi:"outputs"`
-	// The asset property dictionary.
-	Properties pulumi.StringMapInput `pulumi:"properties"`
-	// List of JobEndpoints.
-	// For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
-	Services JobServiceMapInput `pulumi:"services"`
-	// Pipeline settings, for things like ContinueRunOnStepFailure etc.
-	Settings pulumi.Input `pulumi:"settings"`
-	// ARM resource ID of source job.
-	SourceJobId pulumi.StringPtrInput `pulumi:"sourceJobId"`
-	// Tag dictionary. Tags can be added, removed, and updated.
-	Tags pulumi.StringMapInput `pulumi:"tags"`
-}
-
-// Defaults sets the appropriate defaults for PipelineJobArgs
-func (val *PipelineJobArgs) Defaults() *PipelineJobArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.ExperimentName == nil {
-		tmp.ExperimentName = pulumi.StringPtr("Default")
-	}
-	if tmp.IsArchived == nil {
-		tmp.IsArchived = pulumi.BoolPtr(false)
-	}
-	return &tmp
-}
-func (PipelineJobArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PipelineJob)(nil)).Elem()
-}
-
-func (i PipelineJobArgs) ToPipelineJobOutput() PipelineJobOutput {
-	return i.ToPipelineJobOutputWithContext(context.Background())
-}
-
-func (i PipelineJobArgs) ToPipelineJobOutputWithContext(ctx context.Context) PipelineJobOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PipelineJobOutput)
-}
-
-// Pipeline Job definition: defines generic to MFE attributes.
-type PipelineJobOutput struct{ *pulumi.OutputState }
-
-func (PipelineJobOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PipelineJob)(nil)).Elem()
-}
-
-func (o PipelineJobOutput) ToPipelineJobOutput() PipelineJobOutput {
-	return o
-}
-
-func (o PipelineJobOutput) ToPipelineJobOutputWithContext(ctx context.Context) PipelineJobOutput {
-	return o
-}
-
-// ARM resource ID of the component resource.
-func (o PipelineJobOutput) ComponentId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineJob) *string { return v.ComponentId }).(pulumi.StringPtrOutput)
-}
-
-// ARM resource ID of the compute resource.
-func (o PipelineJobOutput) ComputeId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineJob) *string { return v.ComputeId }).(pulumi.StringPtrOutput)
-}
-
-// The asset description text.
-func (o PipelineJobOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineJob) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Display name of job.
-func (o PipelineJobOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineJob) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
-}
-
-// The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
-func (o PipelineJobOutput) ExperimentName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineJob) *string { return v.ExperimentName }).(pulumi.StringPtrOutput)
-}
-
-// Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
-// Defaults to AmlToken if null.
-func (o PipelineJobOutput) Identity() pulumi.AnyOutput {
-	return o.ApplyT(func(v PipelineJob) interface{} { return v.Identity }).(pulumi.AnyOutput)
-}
-
-// Inputs for the pipeline job.
-func (o PipelineJobOutput) Inputs() pulumi.MapOutput {
-	return o.ApplyT(func(v PipelineJob) map[string]interface{} { return v.Inputs }).(pulumi.MapOutput)
-}
-
-// Is the asset archived?
-func (o PipelineJobOutput) IsArchived() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v PipelineJob) *bool { return v.IsArchived }).(pulumi.BoolPtrOutput)
-}
-
-// Enum to determine the type of job.
-// Expected value is 'Pipeline'.
-func (o PipelineJobOutput) JobType() pulumi.StringOutput {
-	return o.ApplyT(func(v PipelineJob) string { return v.JobType }).(pulumi.StringOutput)
-}
-
-// Jobs construct the Pipeline Job.
-func (o PipelineJobOutput) Jobs() pulumi.MapOutput {
-	return o.ApplyT(func(v PipelineJob) map[string]interface{} { return v.Jobs }).(pulumi.MapOutput)
-}
-
-// Notification setting for the job
-func (o PipelineJobOutput) NotificationSetting() NotificationSettingPtrOutput {
-	return o.ApplyT(func(v PipelineJob) *NotificationSetting { return v.NotificationSetting }).(NotificationSettingPtrOutput)
-}
-
-// Outputs for the pipeline job
-func (o PipelineJobOutput) Outputs() pulumi.MapOutput {
-	return o.ApplyT(func(v PipelineJob) map[string]interface{} { return v.Outputs }).(pulumi.MapOutput)
-}
-
-// The asset property dictionary.
-func (o PipelineJobOutput) Properties() pulumi.StringMapOutput {
-	return o.ApplyT(func(v PipelineJob) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
-}
-
-// List of JobEndpoints.
-// For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
-func (o PipelineJobOutput) Services() JobServiceMapOutput {
-	return o.ApplyT(func(v PipelineJob) map[string]JobService { return v.Services }).(JobServiceMapOutput)
-}
-
-// Pipeline settings, for things like ContinueRunOnStepFailure etc.
-func (o PipelineJobOutput) Settings() pulumi.AnyOutput {
-	return o.ApplyT(func(v PipelineJob) interface{} { return v.Settings }).(pulumi.AnyOutput)
-}
-
-// ARM resource ID of source job.
-func (o PipelineJobOutput) SourceJobId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineJob) *string { return v.SourceJobId }).(pulumi.StringPtrOutput)
-}
-
-// Tag dictionary. Tags can be added, removed, and updated.
-func (o PipelineJobOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v PipelineJob) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
-}
-
-// Pipeline Job definition: defines generic to MFE attributes.
-type PipelineJobResponse struct {
-	// ARM resource ID of the component resource.
-	ComponentId *string `pulumi:"componentId"`
-	// ARM resource ID of the compute resource.
-	ComputeId *string `pulumi:"computeId"`
-	// The asset description text.
-	Description *string `pulumi:"description"`
-	// Display name of job.
-	DisplayName *string `pulumi:"displayName"`
-	// The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
-	ExperimentName *string `pulumi:"experimentName"`
-	// Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
-	// Defaults to AmlToken if null.
-	Identity interface{} `pulumi:"identity"`
-	// Inputs for the pipeline job.
-	Inputs map[string]interface{} `pulumi:"inputs"`
-	// Is the asset archived?
-	IsArchived *bool `pulumi:"isArchived"`
-	// Enum to determine the type of job.
-	// Expected value is 'Pipeline'.
-	JobType string `pulumi:"jobType"`
-	// Jobs construct the Pipeline Job.
-	Jobs map[string]interface{} `pulumi:"jobs"`
-	// Notification setting for the job
-	NotificationSetting *NotificationSettingResponse `pulumi:"notificationSetting"`
-	// Outputs for the pipeline job
-	Outputs map[string]interface{} `pulumi:"outputs"`
-	// The asset property dictionary.
-	Properties map[string]string `pulumi:"properties"`
-	// List of JobEndpoints.
-	// For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
-	Services map[string]JobServiceResponse `pulumi:"services"`
-	// Pipeline settings, for things like ContinueRunOnStepFailure etc.
-	Settings interface{} `pulumi:"settings"`
-	// ARM resource ID of source job.
-	SourceJobId *string `pulumi:"sourceJobId"`
-	// Status of the job.
-	Status string `pulumi:"status"`
-	// Tag dictionary. Tags can be added, removed, and updated.
-	Tags map[string]string `pulumi:"tags"`
-}
-
-// Defaults sets the appropriate defaults for PipelineJobResponse
-func (val *PipelineJobResponse) Defaults() *PipelineJobResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.ExperimentName == nil {
-		experimentName_ := "Default"
-		tmp.ExperimentName = &experimentName_
-	}
-	if tmp.IsArchived == nil {
-		isArchived_ := false
-		tmp.IsArchived = &isArchived_
-	}
-	return &tmp
-}
-
-// Pipeline Job definition: defines generic to MFE attributes.
-type PipelineJobResponseOutput struct{ *pulumi.OutputState }
-
-func (PipelineJobResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PipelineJobResponse)(nil)).Elem()
-}
-
-func (o PipelineJobResponseOutput) ToPipelineJobResponseOutput() PipelineJobResponseOutput {
-	return o
-}
-
-func (o PipelineJobResponseOutput) ToPipelineJobResponseOutputWithContext(ctx context.Context) PipelineJobResponseOutput {
-	return o
-}
-
-// ARM resource ID of the component resource.
-func (o PipelineJobResponseOutput) ComponentId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineJobResponse) *string { return v.ComponentId }).(pulumi.StringPtrOutput)
-}
-
-// ARM resource ID of the compute resource.
-func (o PipelineJobResponseOutput) ComputeId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineJobResponse) *string { return v.ComputeId }).(pulumi.StringPtrOutput)
-}
-
-// The asset description text.
-func (o PipelineJobResponseOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineJobResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Display name of job.
-func (o PipelineJobResponseOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineJobResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
-}
-
-// The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
-func (o PipelineJobResponseOutput) ExperimentName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineJobResponse) *string { return v.ExperimentName }).(pulumi.StringPtrOutput)
-}
-
-// Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
-// Defaults to AmlToken if null.
-func (o PipelineJobResponseOutput) Identity() pulumi.AnyOutput {
-	return o.ApplyT(func(v PipelineJobResponse) interface{} { return v.Identity }).(pulumi.AnyOutput)
-}
-
-// Inputs for the pipeline job.
-func (o PipelineJobResponseOutput) Inputs() pulumi.MapOutput {
-	return o.ApplyT(func(v PipelineJobResponse) map[string]interface{} { return v.Inputs }).(pulumi.MapOutput)
-}
-
-// Is the asset archived?
-func (o PipelineJobResponseOutput) IsArchived() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v PipelineJobResponse) *bool { return v.IsArchived }).(pulumi.BoolPtrOutput)
-}
-
-// Enum to determine the type of job.
-// Expected value is 'Pipeline'.
-func (o PipelineJobResponseOutput) JobType() pulumi.StringOutput {
-	return o.ApplyT(func(v PipelineJobResponse) string { return v.JobType }).(pulumi.StringOutput)
-}
-
-// Jobs construct the Pipeline Job.
-func (o PipelineJobResponseOutput) Jobs() pulumi.MapOutput {
-	return o.ApplyT(func(v PipelineJobResponse) map[string]interface{} { return v.Jobs }).(pulumi.MapOutput)
-}
-
-// Notification setting for the job
-func (o PipelineJobResponseOutput) NotificationSetting() NotificationSettingResponsePtrOutput {
-	return o.ApplyT(func(v PipelineJobResponse) *NotificationSettingResponse { return v.NotificationSetting }).(NotificationSettingResponsePtrOutput)
-}
-
-// Outputs for the pipeline job
-func (o PipelineJobResponseOutput) Outputs() pulumi.MapOutput {
-	return o.ApplyT(func(v PipelineJobResponse) map[string]interface{} { return v.Outputs }).(pulumi.MapOutput)
-}
-
-// The asset property dictionary.
-func (o PipelineJobResponseOutput) Properties() pulumi.StringMapOutput {
-	return o.ApplyT(func(v PipelineJobResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
-}
-
-// List of JobEndpoints.
-// For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
-func (o PipelineJobResponseOutput) Services() JobServiceResponseMapOutput {
-	return o.ApplyT(func(v PipelineJobResponse) map[string]JobServiceResponse { return v.Services }).(JobServiceResponseMapOutput)
-}
-
-// Pipeline settings, for things like ContinueRunOnStepFailure etc.
-func (o PipelineJobResponseOutput) Settings() pulumi.AnyOutput {
-	return o.ApplyT(func(v PipelineJobResponse) interface{} { return v.Settings }).(pulumi.AnyOutput)
-}
-
-// ARM resource ID of source job.
-func (o PipelineJobResponseOutput) SourceJobId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineJobResponse) *string { return v.SourceJobId }).(pulumi.StringPtrOutput)
-}
-
-// Status of the job.
-func (o PipelineJobResponseOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v PipelineJobResponse) string { return v.Status }).(pulumi.StringOutput)
-}
-
-// Tag dictionary. Tags can be added, removed, and updated.
-func (o PipelineJobResponseOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v PipelineJobResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
-}
-
-type PredictionDriftMonitoringSignal struct {
-	// A dictionary that maps feature names to their respective data types.
-	FeatureDataTypeOverride map[string]string `pulumi:"featureDataTypeOverride"`
-	// [Required] A list of metrics to calculate and their associated thresholds.
-	MetricThresholds []interface{} `pulumi:"metricThresholds"`
-	// The current notification mode for this signal.
-	NotificationTypes []string `pulumi:"notificationTypes"`
-	// [Required] The data which drift will be calculated for.
-	ProductionData interface{} `pulumi:"productionData"`
-	// Property dictionary. Properties can be added, but not removed or altered.
-	Properties map[string]string `pulumi:"properties"`
-	// [Required] The data to calculate drift against.
-	ReferenceData interface{} `pulumi:"referenceData"`
-	// Expected value is 'PredictionDrift'.
-	SignalType string `pulumi:"signalType"`
-}
-
-// PredictionDriftMonitoringSignalInput is an input type that accepts PredictionDriftMonitoringSignalArgs and PredictionDriftMonitoringSignalOutput values.
-// You can construct a concrete instance of `PredictionDriftMonitoringSignalInput` via:
-//
-//	PredictionDriftMonitoringSignalArgs{...}
-type PredictionDriftMonitoringSignalInput interface {
-	pulumi.Input
-
-	ToPredictionDriftMonitoringSignalOutput() PredictionDriftMonitoringSignalOutput
-	ToPredictionDriftMonitoringSignalOutputWithContext(context.Context) PredictionDriftMonitoringSignalOutput
-}
-
-type PredictionDriftMonitoringSignalArgs struct {
-	// A dictionary that maps feature names to their respective data types.
-	FeatureDataTypeOverride pulumi.StringMapInput `pulumi:"featureDataTypeOverride"`
-	// [Required] A list of metrics to calculate and their associated thresholds.
-	MetricThresholds pulumi.ArrayInput `pulumi:"metricThresholds"`
-	// The current notification mode for this signal.
-	NotificationTypes pulumi.StringArrayInput `pulumi:"notificationTypes"`
-	// [Required] The data which drift will be calculated for.
-	ProductionData pulumi.Input `pulumi:"productionData"`
-	// Property dictionary. Properties can be added, but not removed or altered.
-	Properties pulumi.StringMapInput `pulumi:"properties"`
-	// [Required] The data to calculate drift against.
-	ReferenceData pulumi.Input `pulumi:"referenceData"`
-	// Expected value is 'PredictionDrift'.
-	SignalType pulumi.StringInput `pulumi:"signalType"`
-}
-
-func (PredictionDriftMonitoringSignalArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PredictionDriftMonitoringSignal)(nil)).Elem()
-}
-
-func (i PredictionDriftMonitoringSignalArgs) ToPredictionDriftMonitoringSignalOutput() PredictionDriftMonitoringSignalOutput {
-	return i.ToPredictionDriftMonitoringSignalOutputWithContext(context.Background())
-}
-
-func (i PredictionDriftMonitoringSignalArgs) ToPredictionDriftMonitoringSignalOutputWithContext(ctx context.Context) PredictionDriftMonitoringSignalOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PredictionDriftMonitoringSignalOutput)
-}
-
-type PredictionDriftMonitoringSignalOutput struct{ *pulumi.OutputState }
-
-func (PredictionDriftMonitoringSignalOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PredictionDriftMonitoringSignal)(nil)).Elem()
-}
-
-func (o PredictionDriftMonitoringSignalOutput) ToPredictionDriftMonitoringSignalOutput() PredictionDriftMonitoringSignalOutput {
-	return o
-}
-
-func (o PredictionDriftMonitoringSignalOutput) ToPredictionDriftMonitoringSignalOutputWithContext(ctx context.Context) PredictionDriftMonitoringSignalOutput {
-	return o
-}
-
-// A dictionary that maps feature names to their respective data types.
-func (o PredictionDriftMonitoringSignalOutput) FeatureDataTypeOverride() pulumi.StringMapOutput {
-	return o.ApplyT(func(v PredictionDriftMonitoringSignal) map[string]string { return v.FeatureDataTypeOverride }).(pulumi.StringMapOutput)
-}
-
-// [Required] A list of metrics to calculate and their associated thresholds.
-func (o PredictionDriftMonitoringSignalOutput) MetricThresholds() pulumi.ArrayOutput {
-	return o.ApplyT(func(v PredictionDriftMonitoringSignal) []interface{} { return v.MetricThresholds }).(pulumi.ArrayOutput)
-}
-
-// The current notification mode for this signal.
-func (o PredictionDriftMonitoringSignalOutput) NotificationTypes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v PredictionDriftMonitoringSignal) []string { return v.NotificationTypes }).(pulumi.StringArrayOutput)
-}
-
-// [Required] The data which drift will be calculated for.
-func (o PredictionDriftMonitoringSignalOutput) ProductionData() pulumi.AnyOutput {
-	return o.ApplyT(func(v PredictionDriftMonitoringSignal) interface{} { return v.ProductionData }).(pulumi.AnyOutput)
-}
-
-// Property dictionary. Properties can be added, but not removed or altered.
-func (o PredictionDriftMonitoringSignalOutput) Properties() pulumi.StringMapOutput {
-	return o.ApplyT(func(v PredictionDriftMonitoringSignal) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
-}
-
-// [Required] The data to calculate drift against.
-func (o PredictionDriftMonitoringSignalOutput) ReferenceData() pulumi.AnyOutput {
-	return o.ApplyT(func(v PredictionDriftMonitoringSignal) interface{} { return v.ReferenceData }).(pulumi.AnyOutput)
-}
-
-// Expected value is 'PredictionDrift'.
-func (o PredictionDriftMonitoringSignalOutput) SignalType() pulumi.StringOutput {
-	return o.ApplyT(func(v PredictionDriftMonitoringSignal) string { return v.SignalType }).(pulumi.StringOutput)
-}
-
-type PredictionDriftMonitoringSignalResponse struct {
-	// A dictionary that maps feature names to their respective data types.
-	FeatureDataTypeOverride map[string]string `pulumi:"featureDataTypeOverride"`
-	// [Required] A list of metrics to calculate and their associated thresholds.
-	MetricThresholds []interface{} `pulumi:"metricThresholds"`
-	// The current notification mode for this signal.
-	NotificationTypes []string `pulumi:"notificationTypes"`
-	// [Required] The data which drift will be calculated for.
-	ProductionData interface{} `pulumi:"productionData"`
-	// Property dictionary. Properties can be added, but not removed or altered.
-	Properties map[string]string `pulumi:"properties"`
-	// [Required] The data to calculate drift against.
-	ReferenceData interface{} `pulumi:"referenceData"`
-	// Expected value is 'PredictionDrift'.
-	SignalType string `pulumi:"signalType"`
-}
-
-type PredictionDriftMonitoringSignalResponseOutput struct{ *pulumi.OutputState }
-
-func (PredictionDriftMonitoringSignalResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PredictionDriftMonitoringSignalResponse)(nil)).Elem()
-}
-
-func (o PredictionDriftMonitoringSignalResponseOutput) ToPredictionDriftMonitoringSignalResponseOutput() PredictionDriftMonitoringSignalResponseOutput {
-	return o
-}
-
-func (o PredictionDriftMonitoringSignalResponseOutput) ToPredictionDriftMonitoringSignalResponseOutputWithContext(ctx context.Context) PredictionDriftMonitoringSignalResponseOutput {
-	return o
-}
-
-// A dictionary that maps feature names to their respective data types.
-func (o PredictionDriftMonitoringSignalResponseOutput) FeatureDataTypeOverride() pulumi.StringMapOutput {
-	return o.ApplyT(func(v PredictionDriftMonitoringSignalResponse) map[string]string { return v.FeatureDataTypeOverride }).(pulumi.StringMapOutput)
-}
-
-// [Required] A list of metrics to calculate and their associated thresholds.
-func (o PredictionDriftMonitoringSignalResponseOutput) MetricThresholds() pulumi.ArrayOutput {
-	return o.ApplyT(func(v PredictionDriftMonitoringSignalResponse) []interface{} { return v.MetricThresholds }).(pulumi.ArrayOutput)
-}
-
-// The current notification mode for this signal.
-func (o PredictionDriftMonitoringSignalResponseOutput) NotificationTypes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v PredictionDriftMonitoringSignalResponse) []string { return v.NotificationTypes }).(pulumi.StringArrayOutput)
-}
-
-// [Required] The data which drift will be calculated for.
-func (o PredictionDriftMonitoringSignalResponseOutput) ProductionData() pulumi.AnyOutput {
-	return o.ApplyT(func(v PredictionDriftMonitoringSignalResponse) interface{} { return v.ProductionData }).(pulumi.AnyOutput)
-}
-
-// Property dictionary. Properties can be added, but not removed or altered.
-func (o PredictionDriftMonitoringSignalResponseOutput) Properties() pulumi.StringMapOutput {
-	return o.ApplyT(func(v PredictionDriftMonitoringSignalResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
-}
-
-// [Required] The data to calculate drift against.
-func (o PredictionDriftMonitoringSignalResponseOutput) ReferenceData() pulumi.AnyOutput {
-	return o.ApplyT(func(v PredictionDriftMonitoringSignalResponse) interface{} { return v.ReferenceData }).(pulumi.AnyOutput)
-}
-
-// Expected value is 'PredictionDrift'.
-func (o PredictionDriftMonitoringSignalResponseOutput) SignalType() pulumi.StringOutput {
-	return o.ApplyT(func(v PredictionDriftMonitoringSignalResponse) string { return v.SignalType }).(pulumi.StringOutput)
-}
-
-// The Private Endpoint Connection resource.
-type PrivateEndpointConnectionResponse struct {
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-	Id string `pulumi:"id"`
-	// The managed service identities assigned to this resource.
-	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
-	// *Same as workspace location.
-	Location *string `pulumi:"location"`
-	// The name of the resource
-	Name string `pulumi:"name"`
-	// The Private Endpoint resource.
-	PrivateEndpoint *WorkspacePrivateEndpointResourceResponse `pulumi:"privateEndpoint"`
-	// The connection state.
-	PrivateLinkServiceConnectionState *PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
-	// The current provisioning state.
-	ProvisioningState string `pulumi:"provisioningState"`
-	// Optional. This field is required to be implemented by the RP because AML is supporting more than one tier
-	Sku *SkuResponse `pulumi:"sku"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
-	Tags       map[string]string  `pulumi:"tags"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-	Type string `pulumi:"type"`
-}
-
-// The Private Endpoint Connection resource.
-type PrivateEndpointConnectionResponseOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointConnectionResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointConnectionResponse)(nil)).Elem()
-}
-
-func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResponseOutput() PrivateEndpointConnectionResponseOutput {
-	return o
-}
-
-func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResponseOutputWithContext(ctx context.Context) PrivateEndpointConnectionResponseOutput {
-	return o
-}
-
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-func (o PrivateEndpointConnectionResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// The managed service identities assigned to this resource.
-func (o PrivateEndpointConnectionResponseOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
-}
-
-// *Same as workspace location.
-func (o PrivateEndpointConnectionResponseOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) *string { return v.Location }).(pulumi.StringPtrOutput)
-}
-
-// The name of the resource
-func (o PrivateEndpointConnectionResponseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// The Private Endpoint resource.
-func (o PrivateEndpointConnectionResponseOutput) PrivateEndpoint() WorkspacePrivateEndpointResourceResponsePtrOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) *WorkspacePrivateEndpointResourceResponse {
-		return v.PrivateEndpoint
-	}).(WorkspacePrivateEndpointResourceResponsePtrOutput)
-}
-
-// The connection state.
-func (o PrivateEndpointConnectionResponseOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStateResponsePtrOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) *PrivateLinkServiceConnectionStateResponse {
-		return v.PrivateLinkServiceConnectionState
-	}).(PrivateLinkServiceConnectionStateResponsePtrOutput)
-}
-
-// The current provisioning state.
-func (o PrivateEndpointConnectionResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// Optional. This field is required to be implemented by the RP because AML is supporting more than one tier
-func (o PrivateEndpointConnectionResponseOutput) Sku() SkuResponsePtrOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
-}
-
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o PrivateEndpointConnectionResponseOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
-}
-
-func (o PrivateEndpointConnectionResponseOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
-}
-
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-func (o PrivateEndpointConnectionResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type PrivateEndpointConnectionResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointConnectionResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PrivateEndpointConnectionResponse)(nil)).Elem()
-}
-
-func (o PrivateEndpointConnectionResponseArrayOutput) ToPrivateEndpointConnectionResponseArrayOutput() PrivateEndpointConnectionResponseArrayOutput {
-	return o
-}
-
-func (o PrivateEndpointConnectionResponseArrayOutput) ToPrivateEndpointConnectionResponseArrayOutputWithContext(ctx context.Context) PrivateEndpointConnectionResponseArrayOutput {
-	return o
-}
-
-func (o PrivateEndpointConnectionResponseArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnectionResponse {
-		return vs[0].([]PrivateEndpointConnectionResponse)[vs[1].(int)]
-	}).(PrivateEndpointConnectionResponseOutput)
-}
-
-// Private Endpoint destination for a Private Endpoint Outbound Rule for the managed network of a machine learning workspace.
-type PrivateEndpointDestination struct {
-	// A type definition that refers the id to an Azure Resource Manager resource.
-	ServiceResourceId *string `pulumi:"serviceResourceId"`
-	SparkEnabled      *bool   `pulumi:"sparkEnabled"`
-	// Type of a managed network Outbound Rule of a machine learning workspace.
-	SparkStatus       *string `pulumi:"sparkStatus"`
-	SubresourceTarget *string `pulumi:"subresourceTarget"`
-}
-
-// PrivateEndpointDestinationInput is an input type that accepts PrivateEndpointDestinationArgs and PrivateEndpointDestinationOutput values.
-// You can construct a concrete instance of `PrivateEndpointDestinationInput` via:
-//
-//	PrivateEndpointDestinationArgs{...}
-type PrivateEndpointDestinationInput interface {
-	pulumi.Input
-
-	ToPrivateEndpointDestinationOutput() PrivateEndpointDestinationOutput
-	ToPrivateEndpointDestinationOutputWithContext(context.Context) PrivateEndpointDestinationOutput
-}
-
-// Private Endpoint destination for a Private Endpoint Outbound Rule for the managed network of a machine learning workspace.
-type PrivateEndpointDestinationArgs struct {
-	// A type definition that refers the id to an Azure Resource Manager resource.
-	ServiceResourceId pulumi.StringPtrInput `pulumi:"serviceResourceId"`
-	SparkEnabled      pulumi.BoolPtrInput   `pulumi:"sparkEnabled"`
-	// Type of a managed network Outbound Rule of a machine learning workspace.
-	SparkStatus       pulumi.StringPtrInput `pulumi:"sparkStatus"`
-	SubresourceTarget pulumi.StringPtrInput `pulumi:"subresourceTarget"`
-}
-
-func (PrivateEndpointDestinationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointDestination)(nil)).Elem()
-}
-
-func (i PrivateEndpointDestinationArgs) ToPrivateEndpointDestinationOutput() PrivateEndpointDestinationOutput {
-	return i.ToPrivateEndpointDestinationOutputWithContext(context.Background())
-}
-
-func (i PrivateEndpointDestinationArgs) ToPrivateEndpointDestinationOutputWithContext(ctx context.Context) PrivateEndpointDestinationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointDestinationOutput)
-}
-
-func (i PrivateEndpointDestinationArgs) ToPrivateEndpointDestinationPtrOutput() PrivateEndpointDestinationPtrOutput {
-	return i.ToPrivateEndpointDestinationPtrOutputWithContext(context.Background())
-}
-
-func (i PrivateEndpointDestinationArgs) ToPrivateEndpointDestinationPtrOutputWithContext(ctx context.Context) PrivateEndpointDestinationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointDestinationOutput).ToPrivateEndpointDestinationPtrOutputWithContext(ctx)
-}
-
-// PrivateEndpointDestinationPtrInput is an input type that accepts PrivateEndpointDestinationArgs, PrivateEndpointDestinationPtr and PrivateEndpointDestinationPtrOutput values.
-// You can construct a concrete instance of `PrivateEndpointDestinationPtrInput` via:
-//
-//	        PrivateEndpointDestinationArgs{...}
-//
-//	or:
-//
-//	        nil
-type PrivateEndpointDestinationPtrInput interface {
-	pulumi.Input
-
-	ToPrivateEndpointDestinationPtrOutput() PrivateEndpointDestinationPtrOutput
-	ToPrivateEndpointDestinationPtrOutputWithContext(context.Context) PrivateEndpointDestinationPtrOutput
-}
-
-type privateEndpointDestinationPtrType PrivateEndpointDestinationArgs
-
-func PrivateEndpointDestinationPtr(v *PrivateEndpointDestinationArgs) PrivateEndpointDestinationPtrInput {
-	return (*privateEndpointDestinationPtrType)(v)
-}
-
-func (*privateEndpointDestinationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PrivateEndpointDestination)(nil)).Elem()
-}
-
-func (i *privateEndpointDestinationPtrType) ToPrivateEndpointDestinationPtrOutput() PrivateEndpointDestinationPtrOutput {
-	return i.ToPrivateEndpointDestinationPtrOutputWithContext(context.Background())
-}
-
-func (i *privateEndpointDestinationPtrType) ToPrivateEndpointDestinationPtrOutputWithContext(ctx context.Context) PrivateEndpointDestinationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointDestinationPtrOutput)
-}
-
-// Private Endpoint destination for a Private Endpoint Outbound Rule for the managed network of a machine learning workspace.
-type PrivateEndpointDestinationOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointDestinationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointDestination)(nil)).Elem()
-}
-
-func (o PrivateEndpointDestinationOutput) ToPrivateEndpointDestinationOutput() PrivateEndpointDestinationOutput {
-	return o
-}
-
-func (o PrivateEndpointDestinationOutput) ToPrivateEndpointDestinationOutputWithContext(ctx context.Context) PrivateEndpointDestinationOutput {
-	return o
-}
-
-func (o PrivateEndpointDestinationOutput) ToPrivateEndpointDestinationPtrOutput() PrivateEndpointDestinationPtrOutput {
-	return o.ToPrivateEndpointDestinationPtrOutputWithContext(context.Background())
-}
-
-func (o PrivateEndpointDestinationOutput) ToPrivateEndpointDestinationPtrOutputWithContext(ctx context.Context) PrivateEndpointDestinationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateEndpointDestination) *PrivateEndpointDestination {
-		return &v
-	}).(PrivateEndpointDestinationPtrOutput)
-}
-
-// A type definition that refers the id to an Azure Resource Manager resource.
-func (o PrivateEndpointDestinationOutput) ServiceResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateEndpointDestination) *string { return v.ServiceResourceId }).(pulumi.StringPtrOutput)
-}
-
-func (o PrivateEndpointDestinationOutput) SparkEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v PrivateEndpointDestination) *bool { return v.SparkEnabled }).(pulumi.BoolPtrOutput)
-}
-
-// Type of a managed network Outbound Rule of a machine learning workspace.
-func (o PrivateEndpointDestinationOutput) SparkStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateEndpointDestination) *string { return v.SparkStatus }).(pulumi.StringPtrOutput)
-}
-
-func (o PrivateEndpointDestinationOutput) SubresourceTarget() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateEndpointDestination) *string { return v.SubresourceTarget }).(pulumi.StringPtrOutput)
-}
-
-type PrivateEndpointDestinationPtrOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointDestinationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PrivateEndpointDestination)(nil)).Elem()
-}
-
-func (o PrivateEndpointDestinationPtrOutput) ToPrivateEndpointDestinationPtrOutput() PrivateEndpointDestinationPtrOutput {
-	return o
-}
-
-func (o PrivateEndpointDestinationPtrOutput) ToPrivateEndpointDestinationPtrOutputWithContext(ctx context.Context) PrivateEndpointDestinationPtrOutput {
-	return o
-}
-
-func (o PrivateEndpointDestinationPtrOutput) Elem() PrivateEndpointDestinationOutput {
-	return o.ApplyT(func(v *PrivateEndpointDestination) PrivateEndpointDestination {
-		if v != nil {
-			return *v
-		}
-		var ret PrivateEndpointDestination
-		return ret
-	}).(PrivateEndpointDestinationOutput)
-}
-
-// A type definition that refers the id to an Azure Resource Manager resource.
-func (o PrivateEndpointDestinationPtrOutput) ServiceResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateEndpointDestination) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ServiceResourceId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o PrivateEndpointDestinationPtrOutput) SparkEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PrivateEndpointDestination) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.SparkEnabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Type of a managed network Outbound Rule of a machine learning workspace.
-func (o PrivateEndpointDestinationPtrOutput) SparkStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateEndpointDestination) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SparkStatus
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o PrivateEndpointDestinationPtrOutput) SubresourceTarget() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateEndpointDestination) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SubresourceTarget
-	}).(pulumi.StringPtrOutput)
-}
-
-// Private Endpoint destination for a Private Endpoint Outbound Rule for the managed network of a machine learning workspace.
-type PrivateEndpointDestinationResponse struct {
-	// A type definition that refers the id to an Azure Resource Manager resource.
-	ServiceResourceId *string `pulumi:"serviceResourceId"`
-	SparkEnabled      *bool   `pulumi:"sparkEnabled"`
-	// Type of a managed network Outbound Rule of a machine learning workspace.
-	SparkStatus       *string `pulumi:"sparkStatus"`
-	SubresourceTarget *string `pulumi:"subresourceTarget"`
-}
-
-// Private Endpoint destination for a Private Endpoint Outbound Rule for the managed network of a machine learning workspace.
-type PrivateEndpointDestinationResponseOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointDestinationResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointDestinationResponse)(nil)).Elem()
-}
-
-func (o PrivateEndpointDestinationResponseOutput) ToPrivateEndpointDestinationResponseOutput() PrivateEndpointDestinationResponseOutput {
-	return o
-}
-
-func (o PrivateEndpointDestinationResponseOutput) ToPrivateEndpointDestinationResponseOutputWithContext(ctx context.Context) PrivateEndpointDestinationResponseOutput {
-	return o
-}
-
-// A type definition that refers the id to an Azure Resource Manager resource.
-func (o PrivateEndpointDestinationResponseOutput) ServiceResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateEndpointDestinationResponse) *string { return v.ServiceResourceId }).(pulumi.StringPtrOutput)
-}
-
-func (o PrivateEndpointDestinationResponseOutput) SparkEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v PrivateEndpointDestinationResponse) *bool { return v.SparkEnabled }).(pulumi.BoolPtrOutput)
-}
-
-// Type of a managed network Outbound Rule of a machine learning workspace.
-func (o PrivateEndpointDestinationResponseOutput) SparkStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateEndpointDestinationResponse) *string { return v.SparkStatus }).(pulumi.StringPtrOutput)
-}
-
-func (o PrivateEndpointDestinationResponseOutput) SubresourceTarget() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateEndpointDestinationResponse) *string { return v.SubresourceTarget }).(pulumi.StringPtrOutput)
-}
-
-type PrivateEndpointDestinationResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointDestinationResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PrivateEndpointDestinationResponse)(nil)).Elem()
-}
-
-func (o PrivateEndpointDestinationResponsePtrOutput) ToPrivateEndpointDestinationResponsePtrOutput() PrivateEndpointDestinationResponsePtrOutput {
-	return o
-}
-
-func (o PrivateEndpointDestinationResponsePtrOutput) ToPrivateEndpointDestinationResponsePtrOutputWithContext(ctx context.Context) PrivateEndpointDestinationResponsePtrOutput {
-	return o
-}
-
-func (o PrivateEndpointDestinationResponsePtrOutput) Elem() PrivateEndpointDestinationResponseOutput {
-	return o.ApplyT(func(v *PrivateEndpointDestinationResponse) PrivateEndpointDestinationResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PrivateEndpointDestinationResponse
-		return ret
-	}).(PrivateEndpointDestinationResponseOutput)
-}
-
-// A type definition that refers the id to an Azure Resource Manager resource.
-func (o PrivateEndpointDestinationResponsePtrOutput) ServiceResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateEndpointDestinationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ServiceResourceId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o PrivateEndpointDestinationResponsePtrOutput) SparkEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PrivateEndpointDestinationResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.SparkEnabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Type of a managed network Outbound Rule of a machine learning workspace.
-func (o PrivateEndpointDestinationResponsePtrOutput) SparkStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateEndpointDestinationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SparkStatus
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o PrivateEndpointDestinationResponsePtrOutput) SubresourceTarget() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateEndpointDestinationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SubresourceTarget
-	}).(pulumi.StringPtrOutput)
-}
-
-// Private Endpoint Outbound Rule for the managed network of a machine learning workspace.
-type PrivateEndpointOutboundRule struct {
-	// Category of a managed network Outbound Rule of a machine learning workspace.
-	Category *string `pulumi:"category"`
-	// Private Endpoint destination for a Private Endpoint Outbound Rule for the managed network of a machine learning workspace.
-	Destination *PrivateEndpointDestination `pulumi:"destination"`
-	Fqdns       []string                    `pulumi:"fqdns"`
-	// Type of a managed network Outbound Rule of a machine learning workspace.
-	Status *string `pulumi:"status"`
-	// Type of a managed network Outbound Rule of a machine learning workspace.
-	// Expected value is 'PrivateEndpoint'.
-	Type string `pulumi:"type"`
-}
-
-// PrivateEndpointOutboundRuleInput is an input type that accepts PrivateEndpointOutboundRuleArgs and PrivateEndpointOutboundRuleOutput values.
-// You can construct a concrete instance of `PrivateEndpointOutboundRuleInput` via:
-//
-//	PrivateEndpointOutboundRuleArgs{...}
-type PrivateEndpointOutboundRuleInput interface {
-	pulumi.Input
-
-	ToPrivateEndpointOutboundRuleOutput() PrivateEndpointOutboundRuleOutput
-	ToPrivateEndpointOutboundRuleOutputWithContext(context.Context) PrivateEndpointOutboundRuleOutput
-}
-
-// Private Endpoint Outbound Rule for the managed network of a machine learning workspace.
-type PrivateEndpointOutboundRuleArgs struct {
-	// Category of a managed network Outbound Rule of a machine learning workspace.
-	Category pulumi.StringPtrInput `pulumi:"category"`
-	// Private Endpoint destination for a Private Endpoint Outbound Rule for the managed network of a machine learning workspace.
-	Destination PrivateEndpointDestinationPtrInput `pulumi:"destination"`
-	Fqdns       pulumi.StringArrayInput            `pulumi:"fqdns"`
-	// Type of a managed network Outbound Rule of a machine learning workspace.
-	Status pulumi.StringPtrInput `pulumi:"status"`
-	// Type of a managed network Outbound Rule of a machine learning workspace.
-	// Expected value is 'PrivateEndpoint'.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (PrivateEndpointOutboundRuleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointOutboundRule)(nil)).Elem()
-}
-
-func (i PrivateEndpointOutboundRuleArgs) ToPrivateEndpointOutboundRuleOutput() PrivateEndpointOutboundRuleOutput {
-	return i.ToPrivateEndpointOutboundRuleOutputWithContext(context.Background())
-}
-
-func (i PrivateEndpointOutboundRuleArgs) ToPrivateEndpointOutboundRuleOutputWithContext(ctx context.Context) PrivateEndpointOutboundRuleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointOutboundRuleOutput)
-}
-
-// Private Endpoint Outbound Rule for the managed network of a machine learning workspace.
-type PrivateEndpointOutboundRuleOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointOutboundRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointOutboundRule)(nil)).Elem()
-}
-
-func (o PrivateEndpointOutboundRuleOutput) ToPrivateEndpointOutboundRuleOutput() PrivateEndpointOutboundRuleOutput {
-	return o
-}
-
-func (o PrivateEndpointOutboundRuleOutput) ToPrivateEndpointOutboundRuleOutputWithContext(ctx context.Context) PrivateEndpointOutboundRuleOutput {
-	return o
-}
-
-// Category of a managed network Outbound Rule of a machine learning workspace.
-func (o PrivateEndpointOutboundRuleOutput) Category() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateEndpointOutboundRule) *string { return v.Category }).(pulumi.StringPtrOutput)
-}
-
-// Private Endpoint destination for a Private Endpoint Outbound Rule for the managed network of a machine learning workspace.
-func (o PrivateEndpointOutboundRuleOutput) Destination() PrivateEndpointDestinationPtrOutput {
-	return o.ApplyT(func(v PrivateEndpointOutboundRule) *PrivateEndpointDestination { return v.Destination }).(PrivateEndpointDestinationPtrOutput)
-}
-
-func (o PrivateEndpointOutboundRuleOutput) Fqdns() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v PrivateEndpointOutboundRule) []string { return v.Fqdns }).(pulumi.StringArrayOutput)
-}
-
-// Type of a managed network Outbound Rule of a machine learning workspace.
-func (o PrivateEndpointOutboundRuleOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateEndpointOutboundRule) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
-// Type of a managed network Outbound Rule of a machine learning workspace.
-// Expected value is 'PrivateEndpoint'.
-func (o PrivateEndpointOutboundRuleOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointOutboundRule) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Private Endpoint Outbound Rule for the managed network of a machine learning workspace.
-type PrivateEndpointOutboundRuleResponse struct {
-	// Category of a managed network Outbound Rule of a machine learning workspace.
-	Category *string `pulumi:"category"`
-	// Private Endpoint destination for a Private Endpoint Outbound Rule for the managed network of a machine learning workspace.
-	Destination *PrivateEndpointDestinationResponse `pulumi:"destination"`
-	// Error information about an outbound rule of a machine learning workspace if RuleStatus is failed.
-	ErrorInformation string   `pulumi:"errorInformation"`
-	Fqdns            []string `pulumi:"fqdns"`
-	ParentRuleNames  []string `pulumi:"parentRuleNames"`
-	// Type of a managed network Outbound Rule of a machine learning workspace.
-	Status *string `pulumi:"status"`
-	// Type of a managed network Outbound Rule of a machine learning workspace.
-	// Expected value is 'PrivateEndpoint'.
-	Type string `pulumi:"type"`
-}
-
-// Private Endpoint Outbound Rule for the managed network of a machine learning workspace.
-type PrivateEndpointOutboundRuleResponseOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointOutboundRuleResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointOutboundRuleResponse)(nil)).Elem()
-}
-
-func (o PrivateEndpointOutboundRuleResponseOutput) ToPrivateEndpointOutboundRuleResponseOutput() PrivateEndpointOutboundRuleResponseOutput {
-	return o
-}
-
-func (o PrivateEndpointOutboundRuleResponseOutput) ToPrivateEndpointOutboundRuleResponseOutputWithContext(ctx context.Context) PrivateEndpointOutboundRuleResponseOutput {
-	return o
-}
-
-// Category of a managed network Outbound Rule of a machine learning workspace.
-func (o PrivateEndpointOutboundRuleResponseOutput) Category() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateEndpointOutboundRuleResponse) *string { return v.Category }).(pulumi.StringPtrOutput)
-}
-
-// Private Endpoint destination for a Private Endpoint Outbound Rule for the managed network of a machine learning workspace.
-func (o PrivateEndpointOutboundRuleResponseOutput) Destination() PrivateEndpointDestinationResponsePtrOutput {
-	return o.ApplyT(func(v PrivateEndpointOutboundRuleResponse) *PrivateEndpointDestinationResponse { return v.Destination }).(PrivateEndpointDestinationResponsePtrOutput)
-}
-
-// Error information about an outbound rule of a machine learning workspace if RuleStatus is failed.
-func (o PrivateEndpointOutboundRuleResponseOutput) ErrorInformation() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointOutboundRuleResponse) string { return v.ErrorInformation }).(pulumi.StringOutput)
-}
-
-func (o PrivateEndpointOutboundRuleResponseOutput) Fqdns() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v PrivateEndpointOutboundRuleResponse) []string { return v.Fqdns }).(pulumi.StringArrayOutput)
-}
-
-func (o PrivateEndpointOutboundRuleResponseOutput) ParentRuleNames() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v PrivateEndpointOutboundRuleResponse) []string { return v.ParentRuleNames }).(pulumi.StringArrayOutput)
-}
-
-// Type of a managed network Outbound Rule of a machine learning workspace.
-func (o PrivateEndpointOutboundRuleResponseOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateEndpointOutboundRuleResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
-// Type of a managed network Outbound Rule of a machine learning workspace.
-// Expected value is 'PrivateEndpoint'.
-func (o PrivateEndpointOutboundRuleResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointOutboundRuleResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// The PE network resource that is linked to this PE connection.
-type PrivateEndpointResource struct {
-	// The subnetId that the private endpoint is connected to.
-	SubnetArmId *string `pulumi:"subnetArmId"`
-}
-
-// PrivateEndpointResourceInput is an input type that accepts PrivateEndpointResourceArgs and PrivateEndpointResourceOutput values.
-// You can construct a concrete instance of `PrivateEndpointResourceInput` via:
-//
-//	PrivateEndpointResourceArgs{...}
-type PrivateEndpointResourceInput interface {
-	pulumi.Input
-
-	ToPrivateEndpointResourceOutput() PrivateEndpointResourceOutput
-	ToPrivateEndpointResourceOutputWithContext(context.Context) PrivateEndpointResourceOutput
-}
-
-// The PE network resource that is linked to this PE connection.
-type PrivateEndpointResourceArgs struct {
-	// The subnetId that the private endpoint is connected to.
-	SubnetArmId pulumi.StringPtrInput `pulumi:"subnetArmId"`
-}
-
-func (PrivateEndpointResourceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointResource)(nil)).Elem()
-}
-
-func (i PrivateEndpointResourceArgs) ToPrivateEndpointResourceOutput() PrivateEndpointResourceOutput {
-	return i.ToPrivateEndpointResourceOutputWithContext(context.Background())
-}
-
-func (i PrivateEndpointResourceArgs) ToPrivateEndpointResourceOutputWithContext(ctx context.Context) PrivateEndpointResourceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointResourceOutput)
-}
-
-func (i PrivateEndpointResourceArgs) ToPrivateEndpointResourcePtrOutput() PrivateEndpointResourcePtrOutput {
-	return i.ToPrivateEndpointResourcePtrOutputWithContext(context.Background())
-}
-
-func (i PrivateEndpointResourceArgs) ToPrivateEndpointResourcePtrOutputWithContext(ctx context.Context) PrivateEndpointResourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointResourceOutput).ToPrivateEndpointResourcePtrOutputWithContext(ctx)
-}
-
-// PrivateEndpointResourcePtrInput is an input type that accepts PrivateEndpointResourceArgs, PrivateEndpointResourcePtr and PrivateEndpointResourcePtrOutput values.
-// You can construct a concrete instance of `PrivateEndpointResourcePtrInput` via:
-//
-//	        PrivateEndpointResourceArgs{...}
-//
-//	or:
-//
-//	        nil
-type PrivateEndpointResourcePtrInput interface {
-	pulumi.Input
-
-	ToPrivateEndpointResourcePtrOutput() PrivateEndpointResourcePtrOutput
-	ToPrivateEndpointResourcePtrOutputWithContext(context.Context) PrivateEndpointResourcePtrOutput
-}
-
-type privateEndpointResourcePtrType PrivateEndpointResourceArgs
-
-func PrivateEndpointResourcePtr(v *PrivateEndpointResourceArgs) PrivateEndpointResourcePtrInput {
-	return (*privateEndpointResourcePtrType)(v)
-}
-
-func (*privateEndpointResourcePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PrivateEndpointResource)(nil)).Elem()
-}
-
-func (i *privateEndpointResourcePtrType) ToPrivateEndpointResourcePtrOutput() PrivateEndpointResourcePtrOutput {
-	return i.ToPrivateEndpointResourcePtrOutputWithContext(context.Background())
-}
-
-func (i *privateEndpointResourcePtrType) ToPrivateEndpointResourcePtrOutputWithContext(ctx context.Context) PrivateEndpointResourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointResourcePtrOutput)
-}
-
-// The PE network resource that is linked to this PE connection.
-type PrivateEndpointResourceOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointResourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointResource)(nil)).Elem()
-}
-
-func (o PrivateEndpointResourceOutput) ToPrivateEndpointResourceOutput() PrivateEndpointResourceOutput {
-	return o
-}
-
-func (o PrivateEndpointResourceOutput) ToPrivateEndpointResourceOutputWithContext(ctx context.Context) PrivateEndpointResourceOutput {
-	return o
-}
-
-func (o PrivateEndpointResourceOutput) ToPrivateEndpointResourcePtrOutput() PrivateEndpointResourcePtrOutput {
-	return o.ToPrivateEndpointResourcePtrOutputWithContext(context.Background())
-}
-
-func (o PrivateEndpointResourceOutput) ToPrivateEndpointResourcePtrOutputWithContext(ctx context.Context) PrivateEndpointResourcePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateEndpointResource) *PrivateEndpointResource {
-		return &v
-	}).(PrivateEndpointResourcePtrOutput)
-}
-
-// The subnetId that the private endpoint is connected to.
-func (o PrivateEndpointResourceOutput) SubnetArmId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateEndpointResource) *string { return v.SubnetArmId }).(pulumi.StringPtrOutput)
-}
-
-type PrivateEndpointResourcePtrOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointResourcePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PrivateEndpointResource)(nil)).Elem()
-}
-
-func (o PrivateEndpointResourcePtrOutput) ToPrivateEndpointResourcePtrOutput() PrivateEndpointResourcePtrOutput {
-	return o
-}
-
-func (o PrivateEndpointResourcePtrOutput) ToPrivateEndpointResourcePtrOutputWithContext(ctx context.Context) PrivateEndpointResourcePtrOutput {
-	return o
-}
-
-func (o PrivateEndpointResourcePtrOutput) Elem() PrivateEndpointResourceOutput {
-	return o.ApplyT(func(v *PrivateEndpointResource) PrivateEndpointResource {
-		if v != nil {
-			return *v
-		}
-		var ret PrivateEndpointResource
-		return ret
-	}).(PrivateEndpointResourceOutput)
-}
-
-// The subnetId that the private endpoint is connected to.
-func (o PrivateEndpointResourcePtrOutput) SubnetArmId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateEndpointResource) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SubnetArmId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The PE network resource that is linked to this PE connection.
-type PrivateEndpointResourceResponse struct {
-	// The ARM identifier for Private Endpoint
-	Id string `pulumi:"id"`
-	// The subnetId that the private endpoint is connected to.
-	SubnetArmId *string `pulumi:"subnetArmId"`
-}
-
-// The PE network resource that is linked to this PE connection.
-type PrivateEndpointResourceResponseOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointResourceResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointResourceResponse)(nil)).Elem()
-}
-
-func (o PrivateEndpointResourceResponseOutput) ToPrivateEndpointResourceResponseOutput() PrivateEndpointResourceResponseOutput {
-	return o
-}
-
-func (o PrivateEndpointResourceResponseOutput) ToPrivateEndpointResourceResponseOutputWithContext(ctx context.Context) PrivateEndpointResourceResponseOutput {
-	return o
-}
-
-// The ARM identifier for Private Endpoint
-func (o PrivateEndpointResourceResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointResourceResponse) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// The subnetId that the private endpoint is connected to.
-func (o PrivateEndpointResourceResponseOutput) SubnetArmId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateEndpointResourceResponse) *string { return v.SubnetArmId }).(pulumi.StringPtrOutput)
-}
-
-type PrivateEndpointResourceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointResourceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PrivateEndpointResourceResponse)(nil)).Elem()
-}
-
-func (o PrivateEndpointResourceResponsePtrOutput) ToPrivateEndpointResourceResponsePtrOutput() PrivateEndpointResourceResponsePtrOutput {
-	return o
-}
-
-func (o PrivateEndpointResourceResponsePtrOutput) ToPrivateEndpointResourceResponsePtrOutputWithContext(ctx context.Context) PrivateEndpointResourceResponsePtrOutput {
-	return o
-}
-
-func (o PrivateEndpointResourceResponsePtrOutput) Elem() PrivateEndpointResourceResponseOutput {
-	return o.ApplyT(func(v *PrivateEndpointResourceResponse) PrivateEndpointResourceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PrivateEndpointResourceResponse
-		return ret
-	}).(PrivateEndpointResourceResponseOutput)
-}
-
-// The ARM identifier for Private Endpoint
-func (o PrivateEndpointResourceResponsePtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateEndpointResourceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-// The subnetId that the private endpoint is connected to.
-func (o PrivateEndpointResourceResponsePtrOutput) SubnetArmId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateEndpointResourceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SubnetArmId
-	}).(pulumi.StringPtrOutput)
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-type PrivateLinkServiceConnectionState struct {
-	// Some RP chose "None". Other RPs use this for region expansion.
-	ActionsRequired *string `pulumi:"actionsRequired"`
-	// User-defined message that, per NRP doc, may be used for approval-related message.
-	Description *string `pulumi:"description"`
-	// Connection status of the service consumer with the service provider\r\nPossible state transitions\r\nPending -> Approved (Service provider approves the connection request)\r\nPending -> Rejected (Service provider rejects the connection request)\r\nPending -> Disconnected (Service provider deletes the connection)\r\nApproved -> Rejected (Service provider rejects the approved connection)\r\nApproved -> Disconnected (Service provider deletes the connection)\r\nRejected -> Pending (Service consumer re-initiates the connection request that was rejected)\r\nRejected -> Disconnected (Service provider deletes the connection)
-	Status *string `pulumi:"status"`
-}
-
-// PrivateLinkServiceConnectionStateInput is an input type that accepts PrivateLinkServiceConnectionStateArgs and PrivateLinkServiceConnectionStateOutput values.
-// You can construct a concrete instance of `PrivateLinkServiceConnectionStateInput` via:
-//
-//	PrivateLinkServiceConnectionStateArgs{...}
-type PrivateLinkServiceConnectionStateInput interface {
-	pulumi.Input
-
-	ToPrivateLinkServiceConnectionStateOutput() PrivateLinkServiceConnectionStateOutput
-	ToPrivateLinkServiceConnectionStateOutputWithContext(context.Context) PrivateLinkServiceConnectionStateOutput
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-type PrivateLinkServiceConnectionStateArgs struct {
-	// Some RP chose "None". Other RPs use this for region expansion.
-	ActionsRequired pulumi.StringPtrInput `pulumi:"actionsRequired"`
-	// User-defined message that, per NRP doc, may be used for approval-related message.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Connection status of the service consumer with the service provider\r\nPossible state transitions\r\nPending -> Approved (Service provider approves the connection request)\r\nPending -> Rejected (Service provider rejects the connection request)\r\nPending -> Disconnected (Service provider deletes the connection)\r\nApproved -> Rejected (Service provider rejects the approved connection)\r\nApproved -> Disconnected (Service provider deletes the connection)\r\nRejected -> Pending (Service consumer re-initiates the connection request that was rejected)\r\nRejected -> Disconnected (Service provider deletes the connection)
-	Status pulumi.StringPtrInput `pulumi:"status"`
-}
-
-func (PrivateLinkServiceConnectionStateArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateLinkServiceConnectionState)(nil)).Elem()
-}
-
-func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionStateOutput() PrivateLinkServiceConnectionStateOutput {
-	return i.ToPrivateLinkServiceConnectionStateOutputWithContext(context.Background())
-}
-
-func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionStateOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStateOutput)
-}
-
-func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionStatePtrOutput() PrivateLinkServiceConnectionStatePtrOutput {
-	return i.ToPrivateLinkServiceConnectionStatePtrOutputWithContext(context.Background())
-}
-
-func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionStatePtrOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStateOutput).ToPrivateLinkServiceConnectionStatePtrOutputWithContext(ctx)
-}
-
-// PrivateLinkServiceConnectionStatePtrInput is an input type that accepts PrivateLinkServiceConnectionStateArgs, PrivateLinkServiceConnectionStatePtr and PrivateLinkServiceConnectionStatePtrOutput values.
-// You can construct a concrete instance of `PrivateLinkServiceConnectionStatePtrInput` via:
-//
-//	        PrivateLinkServiceConnectionStateArgs{...}
-//
-//	or:
-//
-//	        nil
-type PrivateLinkServiceConnectionStatePtrInput interface {
-	pulumi.Input
-
-	ToPrivateLinkServiceConnectionStatePtrOutput() PrivateLinkServiceConnectionStatePtrOutput
-	ToPrivateLinkServiceConnectionStatePtrOutputWithContext(context.Context) PrivateLinkServiceConnectionStatePtrOutput
-}
-
-type privateLinkServiceConnectionStatePtrType PrivateLinkServiceConnectionStateArgs
-
-func PrivateLinkServiceConnectionStatePtr(v *PrivateLinkServiceConnectionStateArgs) PrivateLinkServiceConnectionStatePtrInput {
-	return (*privateLinkServiceConnectionStatePtrType)(v)
-}
-
-func (*privateLinkServiceConnectionStatePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PrivateLinkServiceConnectionState)(nil)).Elem()
-}
-
-func (i *privateLinkServiceConnectionStatePtrType) ToPrivateLinkServiceConnectionStatePtrOutput() PrivateLinkServiceConnectionStatePtrOutput {
-	return i.ToPrivateLinkServiceConnectionStatePtrOutputWithContext(context.Background())
-}
-
-func (i *privateLinkServiceConnectionStatePtrType) ToPrivateLinkServiceConnectionStatePtrOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStatePtrOutput)
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-type PrivateLinkServiceConnectionStateOutput struct{ *pulumi.OutputState }
-
-func (PrivateLinkServiceConnectionStateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateLinkServiceConnectionState)(nil)).Elem()
-}
-
-func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStateOutput() PrivateLinkServiceConnectionStateOutput {
-	return o
-}
-
-func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStateOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateOutput {
-	return o
-}
-
-func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStatePtrOutput() PrivateLinkServiceConnectionStatePtrOutput {
-	return o.ToPrivateLinkServiceConnectionStatePtrOutputWithContext(context.Background())
-}
-
-func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStatePtrOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStatePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateLinkServiceConnectionState) *PrivateLinkServiceConnectionState {
-		return &v
-	}).(PrivateLinkServiceConnectionStatePtrOutput)
-}
-
-// Some RP chose "None". Other RPs use this for region expansion.
-func (o PrivateLinkServiceConnectionStateOutput) ActionsRequired() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
-}
-
-// User-defined message that, per NRP doc, may be used for approval-related message.
-func (o PrivateLinkServiceConnectionStateOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Connection status of the service consumer with the service provider\r\nPossible state transitions\r\nPending -> Approved (Service provider approves the connection request)\r\nPending -> Rejected (Service provider rejects the connection request)\r\nPending -> Disconnected (Service provider deletes the connection)\r\nApproved -> Rejected (Service provider rejects the approved connection)\r\nApproved -> Disconnected (Service provider deletes the connection)\r\nRejected -> Pending (Service consumer re-initiates the connection request that was rejected)\r\nRejected -> Disconnected (Service provider deletes the connection)
-func (o PrivateLinkServiceConnectionStateOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
-type PrivateLinkServiceConnectionStatePtrOutput struct{ *pulumi.OutputState }
-
-func (PrivateLinkServiceConnectionStatePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PrivateLinkServiceConnectionState)(nil)).Elem()
-}
-
-func (o PrivateLinkServiceConnectionStatePtrOutput) ToPrivateLinkServiceConnectionStatePtrOutput() PrivateLinkServiceConnectionStatePtrOutput {
-	return o
-}
-
-func (o PrivateLinkServiceConnectionStatePtrOutput) ToPrivateLinkServiceConnectionStatePtrOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStatePtrOutput {
-	return o
-}
-
-func (o PrivateLinkServiceConnectionStatePtrOutput) Elem() PrivateLinkServiceConnectionStateOutput {
-	return o.ApplyT(func(v *PrivateLinkServiceConnectionState) PrivateLinkServiceConnectionState {
-		if v != nil {
-			return *v
-		}
-		var ret PrivateLinkServiceConnectionState
-		return ret
-	}).(PrivateLinkServiceConnectionStateOutput)
-}
-
-// Some RP chose "None". Other RPs use this for region expansion.
-func (o PrivateLinkServiceConnectionStatePtrOutput) ActionsRequired() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateLinkServiceConnectionState) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ActionsRequired
-	}).(pulumi.StringPtrOutput)
-}
-
-// User-defined message that, per NRP doc, may be used for approval-related message.
-func (o PrivateLinkServiceConnectionStatePtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateLinkServiceConnectionState) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Description
-	}).(pulumi.StringPtrOutput)
-}
-
-// Connection status of the service consumer with the service provider\r\nPossible state transitions\r\nPending -> Approved (Service provider approves the connection request)\r\nPending -> Rejected (Service provider rejects the connection request)\r\nPending -> Disconnected (Service provider deletes the connection)\r\nApproved -> Rejected (Service provider rejects the approved connection)\r\nApproved -> Disconnected (Service provider deletes the connection)\r\nRejected -> Pending (Service consumer re-initiates the connection request that was rejected)\r\nRejected -> Disconnected (Service provider deletes the connection)
-func (o PrivateLinkServiceConnectionStatePtrOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateLinkServiceConnectionState) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Status
-	}).(pulumi.StringPtrOutput)
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-type PrivateLinkServiceConnectionStateResponse struct {
-	// Some RP chose "None". Other RPs use this for region expansion.
-	ActionsRequired *string `pulumi:"actionsRequired"`
-	// User-defined message that, per NRP doc, may be used for approval-related message.
-	Description *string `pulumi:"description"`
-	// Connection status of the service consumer with the service provider\r\nPossible state transitions\r\nPending -> Approved (Service provider approves the connection request)\r\nPending -> Rejected (Service provider rejects the connection request)\r\nPending -> Disconnected (Service provider deletes the connection)\r\nApproved -> Rejected (Service provider rejects the approved connection)\r\nApproved -> Disconnected (Service provider deletes the connection)\r\nRejected -> Pending (Service consumer re-initiates the connection request that was rejected)\r\nRejected -> Disconnected (Service provider deletes the connection)
-	Status *string `pulumi:"status"`
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-type PrivateLinkServiceConnectionStateResponseOutput struct{ *pulumi.OutputState }
-
-func (PrivateLinkServiceConnectionStateResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateLinkServiceConnectionStateResponse)(nil)).Elem()
-}
-
-func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceConnectionStateResponseOutput() PrivateLinkServiceConnectionStateResponseOutput {
-	return o
-}
-
-func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceConnectionStateResponseOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateResponseOutput {
-	return o
-}
-
-// Some RP chose "None". Other RPs use this for region expansion.
-func (o PrivateLinkServiceConnectionStateResponseOutput) ActionsRequired() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
-}
-
-// User-defined message that, per NRP doc, may be used for approval-related message.
-func (o PrivateLinkServiceConnectionStateResponseOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Connection status of the service consumer with the service provider\r\nPossible state transitions\r\nPending -> Approved (Service provider approves the connection request)\r\nPending -> Rejected (Service provider rejects the connection request)\r\nPending -> Disconnected (Service provider deletes the connection)\r\nApproved -> Rejected (Service provider rejects the approved connection)\r\nApproved -> Disconnected (Service provider deletes the connection)\r\nRejected -> Pending (Service consumer re-initiates the connection request that was rejected)\r\nRejected -> Disconnected (Service provider deletes the connection)
-func (o PrivateLinkServiceConnectionStateResponseOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
-type PrivateLinkServiceConnectionStateResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PrivateLinkServiceConnectionStateResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PrivateLinkServiceConnectionStateResponse)(nil)).Elem()
-}
-
-func (o PrivateLinkServiceConnectionStateResponsePtrOutput) ToPrivateLinkServiceConnectionStateResponsePtrOutput() PrivateLinkServiceConnectionStateResponsePtrOutput {
-	return o
-}
-
-func (o PrivateLinkServiceConnectionStateResponsePtrOutput) ToPrivateLinkServiceConnectionStateResponsePtrOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateResponsePtrOutput {
-	return o
-}
-
-func (o PrivateLinkServiceConnectionStateResponsePtrOutput) Elem() PrivateLinkServiceConnectionStateResponseOutput {
-	return o.ApplyT(func(v *PrivateLinkServiceConnectionStateResponse) PrivateLinkServiceConnectionStateResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PrivateLinkServiceConnectionStateResponse
-		return ret
-	}).(PrivateLinkServiceConnectionStateResponseOutput)
-}
-
-// Some RP chose "None". Other RPs use this for region expansion.
-func (o PrivateLinkServiceConnectionStateResponsePtrOutput) ActionsRequired() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateLinkServiceConnectionStateResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ActionsRequired
-	}).(pulumi.StringPtrOutput)
-}
-
-// User-defined message that, per NRP doc, may be used for approval-related message.
-func (o PrivateLinkServiceConnectionStateResponsePtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateLinkServiceConnectionStateResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Description
-	}).(pulumi.StringPtrOutput)
-}
-
-// Connection status of the service consumer with the service provider\r\nPossible state transitions\r\nPending -> Approved (Service provider approves the connection request)\r\nPending -> Rejected (Service provider rejects the connection request)\r\nPending -> Disconnected (Service provider deletes the connection)\r\nApproved -> Rejected (Service provider rejects the approved connection)\r\nApproved -> Disconnected (Service provider deletes the connection)\r\nRejected -> Pending (Service consumer re-initiates the connection request that was rejected)\r\nRejected -> Disconnected (Service provider deletes the connection)
-func (o PrivateLinkServiceConnectionStateResponsePtrOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateLinkServiceConnectionStateResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Status
-	}).(pulumi.StringPtrOutput)
-}
-
-// Deployment container liveness/readiness probe configuration.
-type ProbeSettings struct {
-	// The number of failures to allow before returning an unhealthy status.
-	FailureThreshold *int `pulumi:"failureThreshold"`
-	// The delay before the first probe in ISO 8601 format.
-	InitialDelay *string `pulumi:"initialDelay"`
-	// The length of time between probes in ISO 8601 format.
-	Period *string `pulumi:"period"`
-	// The number of successful probes before returning a healthy status.
-	SuccessThreshold *int `pulumi:"successThreshold"`
-	// The probe timeout in ISO 8601 format.
-	Timeout *string `pulumi:"timeout"`
-}
-
-// Defaults sets the appropriate defaults for ProbeSettings
-func (val *ProbeSettings) Defaults() *ProbeSettings {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.FailureThreshold == nil {
-		failureThreshold_ := 30
-		tmp.FailureThreshold = &failureThreshold_
-	}
-	if tmp.Period == nil {
-		period_ := "PT10S"
-		tmp.Period = &period_
-	}
-	if tmp.SuccessThreshold == nil {
-		successThreshold_ := 1
-		tmp.SuccessThreshold = &successThreshold_
-	}
-	if tmp.Timeout == nil {
-		timeout_ := "PT2S"
-		tmp.Timeout = &timeout_
-	}
-	return &tmp
-}
-
-// ProbeSettingsInput is an input type that accepts ProbeSettingsArgs and ProbeSettingsOutput values.
-// You can construct a concrete instance of `ProbeSettingsInput` via:
-//
-//	ProbeSettingsArgs{...}
-type ProbeSettingsInput interface {
-	pulumi.Input
-
-	ToProbeSettingsOutput() ProbeSettingsOutput
-	ToProbeSettingsOutputWithContext(context.Context) ProbeSettingsOutput
-}
-
-// Deployment container liveness/readiness probe configuration.
-type ProbeSettingsArgs struct {
-	// The number of failures to allow before returning an unhealthy status.
-	FailureThreshold pulumi.IntPtrInput `pulumi:"failureThreshold"`
-	// The delay before the first probe in ISO 8601 format.
-	InitialDelay pulumi.StringPtrInput `pulumi:"initialDelay"`
-	// The length of time between probes in ISO 8601 format.
-	Period pulumi.StringPtrInput `pulumi:"period"`
-	// The number of successful probes before returning a healthy status.
-	SuccessThreshold pulumi.IntPtrInput `pulumi:"successThreshold"`
-	// The probe timeout in ISO 8601 format.
-	Timeout pulumi.StringPtrInput `pulumi:"timeout"`
-}
-
-// Defaults sets the appropriate defaults for ProbeSettingsArgs
-func (val *ProbeSettingsArgs) Defaults() *ProbeSettingsArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.FailureThreshold == nil {
-		tmp.FailureThreshold = pulumi.IntPtr(30)
-	}
-	if tmp.Period == nil {
-		tmp.Period = pulumi.StringPtr("PT10S")
-	}
-	if tmp.SuccessThreshold == nil {
-		tmp.SuccessThreshold = pulumi.IntPtr(1)
-	}
-	if tmp.Timeout == nil {
-		tmp.Timeout = pulumi.StringPtr("PT2S")
-	}
-	return &tmp
-}
-func (ProbeSettingsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProbeSettings)(nil)).Elem()
-}
-
-func (i ProbeSettingsArgs) ToProbeSettingsOutput() ProbeSettingsOutput {
-	return i.ToProbeSettingsOutputWithContext(context.Background())
-}
-
-func (i ProbeSettingsArgs) ToProbeSettingsOutputWithContext(ctx context.Context) ProbeSettingsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProbeSettingsOutput)
-}
-
-func (i ProbeSettingsArgs) ToProbeSettingsPtrOutput() ProbeSettingsPtrOutput {
-	return i.ToProbeSettingsPtrOutputWithContext(context.Background())
-}
-
-func (i ProbeSettingsArgs) ToProbeSettingsPtrOutputWithContext(ctx context.Context) ProbeSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProbeSettingsOutput).ToProbeSettingsPtrOutputWithContext(ctx)
-}
-
-// ProbeSettingsPtrInput is an input type that accepts ProbeSettingsArgs, ProbeSettingsPtr and ProbeSettingsPtrOutput values.
-// You can construct a concrete instance of `ProbeSettingsPtrInput` via:
-//
-//	        ProbeSettingsArgs{...}
-//
-//	or:
-//
-//	        nil
-type ProbeSettingsPtrInput interface {
-	pulumi.Input
-
-	ToProbeSettingsPtrOutput() ProbeSettingsPtrOutput
-	ToProbeSettingsPtrOutputWithContext(context.Context) ProbeSettingsPtrOutput
-}
-
-type probeSettingsPtrType ProbeSettingsArgs
-
-func ProbeSettingsPtr(v *ProbeSettingsArgs) ProbeSettingsPtrInput {
-	return (*probeSettingsPtrType)(v)
-}
-
-func (*probeSettingsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProbeSettings)(nil)).Elem()
-}
-
-func (i *probeSettingsPtrType) ToProbeSettingsPtrOutput() ProbeSettingsPtrOutput {
-	return i.ToProbeSettingsPtrOutputWithContext(context.Background())
-}
-
-func (i *probeSettingsPtrType) ToProbeSettingsPtrOutputWithContext(ctx context.Context) ProbeSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProbeSettingsPtrOutput)
-}
-
-// Deployment container liveness/readiness probe configuration.
-type ProbeSettingsOutput struct{ *pulumi.OutputState }
-
-func (ProbeSettingsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProbeSettings)(nil)).Elem()
-}
-
-func (o ProbeSettingsOutput) ToProbeSettingsOutput() ProbeSettingsOutput {
-	return o
-}
-
-func (o ProbeSettingsOutput) ToProbeSettingsOutputWithContext(ctx context.Context) ProbeSettingsOutput {
-	return o
-}
-
-func (o ProbeSettingsOutput) ToProbeSettingsPtrOutput() ProbeSettingsPtrOutput {
-	return o.ToProbeSettingsPtrOutputWithContext(context.Background())
-}
-
-func (o ProbeSettingsOutput) ToProbeSettingsPtrOutputWithContext(ctx context.Context) ProbeSettingsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProbeSettings) *ProbeSettings {
-		return &v
-	}).(ProbeSettingsPtrOutput)
-}
-
-// The number of failures to allow before returning an unhealthy status.
-func (o ProbeSettingsOutput) FailureThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ProbeSettings) *int { return v.FailureThreshold }).(pulumi.IntPtrOutput)
-}
-
-// The delay before the first probe in ISO 8601 format.
-func (o ProbeSettingsOutput) InitialDelay() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ProbeSettings) *string { return v.InitialDelay }).(pulumi.StringPtrOutput)
-}
-
-// The length of time between probes in ISO 8601 format.
-func (o ProbeSettingsOutput) Period() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ProbeSettings) *string { return v.Period }).(pulumi.StringPtrOutput)
-}
-
-// The number of successful probes before returning a healthy status.
-func (o ProbeSettingsOutput) SuccessThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ProbeSettings) *int { return v.SuccessThreshold }).(pulumi.IntPtrOutput)
-}
-
-// The probe timeout in ISO 8601 format.
-func (o ProbeSettingsOutput) Timeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ProbeSettings) *string { return v.Timeout }).(pulumi.StringPtrOutput)
-}
-
-type ProbeSettingsPtrOutput struct{ *pulumi.OutputState }
-
-func (ProbeSettingsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProbeSettings)(nil)).Elem()
-}
-
-func (o ProbeSettingsPtrOutput) ToProbeSettingsPtrOutput() ProbeSettingsPtrOutput {
-	return o
-}
-
-func (o ProbeSettingsPtrOutput) ToProbeSettingsPtrOutputWithContext(ctx context.Context) ProbeSettingsPtrOutput {
-	return o
-}
-
-func (o ProbeSettingsPtrOutput) Elem() ProbeSettingsOutput {
-	return o.ApplyT(func(v *ProbeSettings) ProbeSettings {
-		if v != nil {
-			return *v
-		}
-		var ret ProbeSettings
-		return ret
-	}).(ProbeSettingsOutput)
-}
-
-// The number of failures to allow before returning an unhealthy status.
-func (o ProbeSettingsPtrOutput) FailureThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ProbeSettings) *int {
-		if v == nil {
-			return nil
-		}
-		return v.FailureThreshold
-	}).(pulumi.IntPtrOutput)
-}
-
-// The delay before the first probe in ISO 8601 format.
-func (o ProbeSettingsPtrOutput) InitialDelay() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProbeSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.InitialDelay
-	}).(pulumi.StringPtrOutput)
-}
-
-// The length of time between probes in ISO 8601 format.
-func (o ProbeSettingsPtrOutput) Period() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProbeSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Period
-	}).(pulumi.StringPtrOutput)
-}
-
-// The number of successful probes before returning a healthy status.
-func (o ProbeSettingsPtrOutput) SuccessThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ProbeSettings) *int {
-		if v == nil {
-			return nil
-		}
-		return v.SuccessThreshold
-	}).(pulumi.IntPtrOutput)
-}
-
-// The probe timeout in ISO 8601 format.
-func (o ProbeSettingsPtrOutput) Timeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProbeSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Timeout
-	}).(pulumi.StringPtrOutput)
-}
-
-// Deployment container liveness/readiness probe configuration.
-type ProbeSettingsResponse struct {
-	// The number of failures to allow before returning an unhealthy status.
-	FailureThreshold *int `pulumi:"failureThreshold"`
-	// The delay before the first probe in ISO 8601 format.
-	InitialDelay *string `pulumi:"initialDelay"`
-	// The length of time between probes in ISO 8601 format.
-	Period *string `pulumi:"period"`
-	// The number of successful probes before returning a healthy status.
-	SuccessThreshold *int `pulumi:"successThreshold"`
-	// The probe timeout in ISO 8601 format.
-	Timeout *string `pulumi:"timeout"`
-}
-
-// Defaults sets the appropriate defaults for ProbeSettingsResponse
-func (val *ProbeSettingsResponse) Defaults() *ProbeSettingsResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.FailureThreshold == nil {
-		failureThreshold_ := 30
-		tmp.FailureThreshold = &failureThreshold_
-	}
-	if tmp.Period == nil {
-		period_ := "PT10S"
-		tmp.Period = &period_
-	}
-	if tmp.SuccessThreshold == nil {
-		successThreshold_ := 1
-		tmp.SuccessThreshold = &successThreshold_
-	}
-	if tmp.Timeout == nil {
-		timeout_ := "PT2S"
-		tmp.Timeout = &timeout_
-	}
-	return &tmp
-}
-
-// Deployment container liveness/readiness probe configuration.
-type ProbeSettingsResponseOutput struct{ *pulumi.OutputState }
-
-func (ProbeSettingsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProbeSettingsResponse)(nil)).Elem()
-}
-
-func (o ProbeSettingsResponseOutput) ToProbeSettingsResponseOutput() ProbeSettingsResponseOutput {
-	return o
-}
-
-func (o ProbeSettingsResponseOutput) ToProbeSettingsResponseOutputWithContext(ctx context.Context) ProbeSettingsResponseOutput {
-	return o
-}
-
-// The number of failures to allow before returning an unhealthy status.
-func (o ProbeSettingsResponseOutput) FailureThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ProbeSettingsResponse) *int { return v.FailureThreshold }).(pulumi.IntPtrOutput)
-}
-
-// The delay before the first probe in ISO 8601 format.
-func (o ProbeSettingsResponseOutput) InitialDelay() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ProbeSettingsResponse) *string { return v.InitialDelay }).(pulumi.StringPtrOutput)
-}
-
-// The length of time between probes in ISO 8601 format.
-func (o ProbeSettingsResponseOutput) Period() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ProbeSettingsResponse) *string { return v.Period }).(pulumi.StringPtrOutput)
-}
-
-// The number of successful probes before returning a healthy status.
-func (o ProbeSettingsResponseOutput) SuccessThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ProbeSettingsResponse) *int { return v.SuccessThreshold }).(pulumi.IntPtrOutput)
-}
-
-// The probe timeout in ISO 8601 format.
-func (o ProbeSettingsResponseOutput) Timeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ProbeSettingsResponse) *string { return v.Timeout }).(pulumi.StringPtrOutput)
-}
-
-type ProbeSettingsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ProbeSettingsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProbeSettingsResponse)(nil)).Elem()
-}
-
-func (o ProbeSettingsResponsePtrOutput) ToProbeSettingsResponsePtrOutput() ProbeSettingsResponsePtrOutput {
-	return o
-}
-
-func (o ProbeSettingsResponsePtrOutput) ToProbeSettingsResponsePtrOutputWithContext(ctx context.Context) ProbeSettingsResponsePtrOutput {
-	return o
-}
-
-func (o ProbeSettingsResponsePtrOutput) Elem() ProbeSettingsResponseOutput {
-	return o.ApplyT(func(v *ProbeSettingsResponse) ProbeSettingsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ProbeSettingsResponse
-		return ret
-	}).(ProbeSettingsResponseOutput)
-}
-
-// The number of failures to allow before returning an unhealthy status.
-func (o ProbeSettingsResponsePtrOutput) FailureThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ProbeSettingsResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.FailureThreshold
-	}).(pulumi.IntPtrOutput)
-}
-
-// The delay before the first probe in ISO 8601 format.
-func (o ProbeSettingsResponsePtrOutput) InitialDelay() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProbeSettingsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.InitialDelay
-	}).(pulumi.StringPtrOutput)
-}
-
-// The length of time between probes in ISO 8601 format.
-func (o ProbeSettingsResponsePtrOutput) Period() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProbeSettingsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Period
-	}).(pulumi.StringPtrOutput)
-}
-
-// The number of successful probes before returning a healthy status.
-func (o ProbeSettingsResponsePtrOutput) SuccessThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ProbeSettingsResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.SuccessThreshold
-	}).(pulumi.IntPtrOutput)
-}
-
-// The probe timeout in ISO 8601 format.
-func (o ProbeSettingsResponsePtrOutput) Timeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProbeSettingsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Timeout
-	}).(pulumi.StringPtrOutput)
-}
-
-// Progress metrics definition
-type ProgressMetricsResponse struct {
-	// The completed datapoint count.
-	CompletedDatapointCount float64 `pulumi:"completedDatapointCount"`
-	// The time of last successful incremental data refresh in UTC.
-	IncrementalDataLastRefreshDateTime string `pulumi:"incrementalDataLastRefreshDateTime"`
-	// The skipped datapoint count.
-	SkippedDatapointCount float64 `pulumi:"skippedDatapointCount"`
-	// The total datapoint count.
-	TotalDatapointCount float64 `pulumi:"totalDatapointCount"`
-}
-
-// Progress metrics definition
-type ProgressMetricsResponseOutput struct{ *pulumi.OutputState }
-
-func (ProgressMetricsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProgressMetricsResponse)(nil)).Elem()
-}
-
-func (o ProgressMetricsResponseOutput) ToProgressMetricsResponseOutput() ProgressMetricsResponseOutput {
-	return o
-}
-
-func (o ProgressMetricsResponseOutput) ToProgressMetricsResponseOutputWithContext(ctx context.Context) ProgressMetricsResponseOutput {
-	return o
-}
-
-// The completed datapoint count.
-func (o ProgressMetricsResponseOutput) CompletedDatapointCount() pulumi.Float64Output {
-	return o.ApplyT(func(v ProgressMetricsResponse) float64 { return v.CompletedDatapointCount }).(pulumi.Float64Output)
-}
-
-// The time of last successful incremental data refresh in UTC.
-func (o ProgressMetricsResponseOutput) IncrementalDataLastRefreshDateTime() pulumi.StringOutput {
-	return o.ApplyT(func(v ProgressMetricsResponse) string { return v.IncrementalDataLastRefreshDateTime }).(pulumi.StringOutput)
-}
-
-// The skipped datapoint count.
-func (o ProgressMetricsResponseOutput) SkippedDatapointCount() pulumi.Float64Output {
-	return o.ApplyT(func(v ProgressMetricsResponse) float64 { return v.SkippedDatapointCount }).(pulumi.Float64Output)
-}
-
-// The total datapoint count.
-func (o ProgressMetricsResponseOutput) TotalDatapointCount() pulumi.Float64Output {
-	return o.ApplyT(func(v ProgressMetricsResponse) float64 { return v.TotalDatapointCount }).(pulumi.Float64Output)
-}
-
-// PyTorch distribution configuration.
-type PyTorch struct {
-	// Enum to determine the job distribution type.
-	// Expected value is 'PyTorch'.
-	DistributionType string `pulumi:"distributionType"`
-	// Number of processes per node.
-	ProcessCountPerInstance *int `pulumi:"processCountPerInstance"`
-}
-
-// PyTorchInput is an input type that accepts PyTorchArgs and PyTorchOutput values.
-// You can construct a concrete instance of `PyTorchInput` via:
-//
-//	PyTorchArgs{...}
-type PyTorchInput interface {
-	pulumi.Input
-
-	ToPyTorchOutput() PyTorchOutput
-	ToPyTorchOutputWithContext(context.Context) PyTorchOutput
-}
-
-// PyTorch distribution configuration.
-type PyTorchArgs struct {
-	// Enum to determine the job distribution type.
-	// Expected value is 'PyTorch'.
-	DistributionType pulumi.StringInput `pulumi:"distributionType"`
-	// Number of processes per node.
-	ProcessCountPerInstance pulumi.IntPtrInput `pulumi:"processCountPerInstance"`
-}
-
-func (PyTorchArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PyTorch)(nil)).Elem()
-}
-
-func (i PyTorchArgs) ToPyTorchOutput() PyTorchOutput {
-	return i.ToPyTorchOutputWithContext(context.Background())
-}
-
-func (i PyTorchArgs) ToPyTorchOutputWithContext(ctx context.Context) PyTorchOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PyTorchOutput)
-}
-
-func (i PyTorchArgs) ToPyTorchPtrOutput() PyTorchPtrOutput {
-	return i.ToPyTorchPtrOutputWithContext(context.Background())
-}
-
-func (i PyTorchArgs) ToPyTorchPtrOutputWithContext(ctx context.Context) PyTorchPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PyTorchOutput).ToPyTorchPtrOutputWithContext(ctx)
-}
-
-// PyTorchPtrInput is an input type that accepts PyTorchArgs, PyTorchPtr and PyTorchPtrOutput values.
-// You can construct a concrete instance of `PyTorchPtrInput` via:
-//
-//	        PyTorchArgs{...}
-//
-//	or:
-//
-//	        nil
-type PyTorchPtrInput interface {
-	pulumi.Input
-
-	ToPyTorchPtrOutput() PyTorchPtrOutput
-	ToPyTorchPtrOutputWithContext(context.Context) PyTorchPtrOutput
-}
-
-type pyTorchPtrType PyTorchArgs
-
-func PyTorchPtr(v *PyTorchArgs) PyTorchPtrInput {
-	return (*pyTorchPtrType)(v)
-}
-
-func (*pyTorchPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PyTorch)(nil)).Elem()
-}
-
-func (i *pyTorchPtrType) ToPyTorchPtrOutput() PyTorchPtrOutput {
-	return i.ToPyTorchPtrOutputWithContext(context.Background())
-}
-
-func (i *pyTorchPtrType) ToPyTorchPtrOutputWithContext(ctx context.Context) PyTorchPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PyTorchPtrOutput)
-}
-
-// PyTorch distribution configuration.
-type PyTorchOutput struct{ *pulumi.OutputState }
-
-func (PyTorchOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PyTorch)(nil)).Elem()
-}
-
-func (o PyTorchOutput) ToPyTorchOutput() PyTorchOutput {
-	return o
-}
-
-func (o PyTorchOutput) ToPyTorchOutputWithContext(ctx context.Context) PyTorchOutput {
-	return o
-}
-
-func (o PyTorchOutput) ToPyTorchPtrOutput() PyTorchPtrOutput {
-	return o.ToPyTorchPtrOutputWithContext(context.Background())
-}
-
-func (o PyTorchOutput) ToPyTorchPtrOutputWithContext(ctx context.Context) PyTorchPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PyTorch) *PyTorch {
-		return &v
-	}).(PyTorchPtrOutput)
-}
-
-// Enum to determine the job distribution type.
-// Expected value is 'PyTorch'.
-func (o PyTorchOutput) DistributionType() pulumi.StringOutput {
-	return o.ApplyT(func(v PyTorch) string { return v.DistributionType }).(pulumi.StringOutput)
-}
-
-// Number of processes per node.
-func (o PyTorchOutput) ProcessCountPerInstance() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v PyTorch) *int { return v.ProcessCountPerInstance }).(pulumi.IntPtrOutput)
-}
-
-type PyTorchPtrOutput struct{ *pulumi.OutputState }
-
-func (PyTorchPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PyTorch)(nil)).Elem()
-}
-
-func (o PyTorchPtrOutput) ToPyTorchPtrOutput() PyTorchPtrOutput {
-	return o
-}
-
-func (o PyTorchPtrOutput) ToPyTorchPtrOutputWithContext(ctx context.Context) PyTorchPtrOutput {
-	return o
-}
-
-func (o PyTorchPtrOutput) Elem() PyTorchOutput {
-	return o.ApplyT(func(v *PyTorch) PyTorch {
-		if v != nil {
-			return *v
-		}
-		var ret PyTorch
-		return ret
-	}).(PyTorchOutput)
-}
-
-// Enum to determine the job distribution type.
-// Expected value is 'PyTorch'.
-func (o PyTorchPtrOutput) DistributionType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PyTorch) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DistributionType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Number of processes per node.
-func (o PyTorchPtrOutput) ProcessCountPerInstance() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *PyTorch) *int {
-		if v == nil {
-			return nil
-		}
-		return v.ProcessCountPerInstance
-	}).(pulumi.IntPtrOutput)
-}
-
-// PyTorch distribution configuration.
-type PyTorchResponse struct {
-	// Enum to determine the job distribution type.
-	// Expected value is 'PyTorch'.
-	DistributionType string `pulumi:"distributionType"`
-	// Number of processes per node.
-	ProcessCountPerInstance *int `pulumi:"processCountPerInstance"`
-}
-
-// PyTorch distribution configuration.
-type PyTorchResponseOutput struct{ *pulumi.OutputState }
-
-func (PyTorchResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PyTorchResponse)(nil)).Elem()
-}
-
-func (o PyTorchResponseOutput) ToPyTorchResponseOutput() PyTorchResponseOutput {
-	return o
-}
-
-func (o PyTorchResponseOutput) ToPyTorchResponseOutputWithContext(ctx context.Context) PyTorchResponseOutput {
-	return o
-}
-
-// Enum to determine the job distribution type.
-// Expected value is 'PyTorch'.
-func (o PyTorchResponseOutput) DistributionType() pulumi.StringOutput {
-	return o.ApplyT(func(v PyTorchResponse) string { return v.DistributionType }).(pulumi.StringOutput)
-}
-
-// Number of processes per node.
-func (o PyTorchResponseOutput) ProcessCountPerInstance() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v PyTorchResponse) *int { return v.ProcessCountPerInstance }).(pulumi.IntPtrOutput)
-}
-
-type PyTorchResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PyTorchResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PyTorchResponse)(nil)).Elem()
-}
-
-func (o PyTorchResponsePtrOutput) ToPyTorchResponsePtrOutput() PyTorchResponsePtrOutput {
-	return o
-}
-
-func (o PyTorchResponsePtrOutput) ToPyTorchResponsePtrOutputWithContext(ctx context.Context) PyTorchResponsePtrOutput {
-	return o
-}
-
-func (o PyTorchResponsePtrOutput) Elem() PyTorchResponseOutput {
-	return o.ApplyT(func(v *PyTorchResponse) PyTorchResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PyTorchResponse
-		return ret
-	}).(PyTorchResponseOutput)
-}
-
-// Enum to determine the job distribution type.
-// Expected value is 'PyTorch'.
-func (o PyTorchResponsePtrOutput) DistributionType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PyTorchResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DistributionType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Number of processes per node.
-func (o PyTorchResponsePtrOutput) ProcessCountPerInstance() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *PyTorchResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.ProcessCountPerInstance
-	}).(pulumi.IntPtrOutput)
-}
-
-type QueueSettings struct {
-	// Enum to determine the job tier.
-	JobTier *string `pulumi:"jobTier"`
-}
-
-// Defaults sets the appropriate defaults for QueueSettings
-func (val *QueueSettings) Defaults() *QueueSettings {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.JobTier == nil {
-		jobTier_ := "Null"
-		tmp.JobTier = &jobTier_
-	}
-	return &tmp
-}
-
-// QueueSettingsInput is an input type that accepts QueueSettingsArgs and QueueSettingsOutput values.
-// You can construct a concrete instance of `QueueSettingsInput` via:
-//
-//	QueueSettingsArgs{...}
-type QueueSettingsInput interface {
-	pulumi.Input
-
-	ToQueueSettingsOutput() QueueSettingsOutput
-	ToQueueSettingsOutputWithContext(context.Context) QueueSettingsOutput
-}
-
-type QueueSettingsArgs struct {
-	// Enum to determine the job tier.
-	JobTier pulumi.StringPtrInput `pulumi:"jobTier"`
-}
-
-// Defaults sets the appropriate defaults for QueueSettingsArgs
-func (val *QueueSettingsArgs) Defaults() *QueueSettingsArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.JobTier == nil {
-		tmp.JobTier = pulumi.StringPtr("Null")
-	}
-	return &tmp
-}
-func (QueueSettingsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*QueueSettings)(nil)).Elem()
-}
-
-func (i QueueSettingsArgs) ToQueueSettingsOutput() QueueSettingsOutput {
-	return i.ToQueueSettingsOutputWithContext(context.Background())
-}
-
-func (i QueueSettingsArgs) ToQueueSettingsOutputWithContext(ctx context.Context) QueueSettingsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(QueueSettingsOutput)
-}
-
-func (i QueueSettingsArgs) ToQueueSettingsPtrOutput() QueueSettingsPtrOutput {
-	return i.ToQueueSettingsPtrOutputWithContext(context.Background())
-}
-
-func (i QueueSettingsArgs) ToQueueSettingsPtrOutputWithContext(ctx context.Context) QueueSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(QueueSettingsOutput).ToQueueSettingsPtrOutputWithContext(ctx)
-}
-
-// QueueSettingsPtrInput is an input type that accepts QueueSettingsArgs, QueueSettingsPtr and QueueSettingsPtrOutput values.
-// You can construct a concrete instance of `QueueSettingsPtrInput` via:
-//
-//	        QueueSettingsArgs{...}
-//
-//	or:
-//
-//	        nil
-type QueueSettingsPtrInput interface {
-	pulumi.Input
-
-	ToQueueSettingsPtrOutput() QueueSettingsPtrOutput
-	ToQueueSettingsPtrOutputWithContext(context.Context) QueueSettingsPtrOutput
-}
-
-type queueSettingsPtrType QueueSettingsArgs
-
-func QueueSettingsPtr(v *QueueSettingsArgs) QueueSettingsPtrInput {
-	return (*queueSettingsPtrType)(v)
-}
-
-func (*queueSettingsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**QueueSettings)(nil)).Elem()
-}
-
-func (i *queueSettingsPtrType) ToQueueSettingsPtrOutput() QueueSettingsPtrOutput {
-	return i.ToQueueSettingsPtrOutputWithContext(context.Background())
-}
-
-func (i *queueSettingsPtrType) ToQueueSettingsPtrOutputWithContext(ctx context.Context) QueueSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(QueueSettingsPtrOutput)
-}
-
-type QueueSettingsOutput struct{ *pulumi.OutputState }
-
-func (QueueSettingsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*QueueSettings)(nil)).Elem()
-}
-
-func (o QueueSettingsOutput) ToQueueSettingsOutput() QueueSettingsOutput {
-	return o
-}
-
-func (o QueueSettingsOutput) ToQueueSettingsOutputWithContext(ctx context.Context) QueueSettingsOutput {
-	return o
-}
-
-func (o QueueSettingsOutput) ToQueueSettingsPtrOutput() QueueSettingsPtrOutput {
-	return o.ToQueueSettingsPtrOutputWithContext(context.Background())
-}
-
-func (o QueueSettingsOutput) ToQueueSettingsPtrOutputWithContext(ctx context.Context) QueueSettingsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v QueueSettings) *QueueSettings {
-		return &v
-	}).(QueueSettingsPtrOutput)
-}
-
-// Enum to determine the job tier.
-func (o QueueSettingsOutput) JobTier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v QueueSettings) *string { return v.JobTier }).(pulumi.StringPtrOutput)
-}
-
-type QueueSettingsPtrOutput struct{ *pulumi.OutputState }
-
-func (QueueSettingsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**QueueSettings)(nil)).Elem()
-}
-
-func (o QueueSettingsPtrOutput) ToQueueSettingsPtrOutput() QueueSettingsPtrOutput {
-	return o
-}
-
-func (o QueueSettingsPtrOutput) ToQueueSettingsPtrOutputWithContext(ctx context.Context) QueueSettingsPtrOutput {
-	return o
-}
-
-func (o QueueSettingsPtrOutput) Elem() QueueSettingsOutput {
-	return o.ApplyT(func(v *QueueSettings) QueueSettings {
-		if v != nil {
-			return *v
-		}
-		var ret QueueSettings
-		return ret
-	}).(QueueSettingsOutput)
-}
-
-// Enum to determine the job tier.
-func (o QueueSettingsPtrOutput) JobTier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *QueueSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.JobTier
-	}).(pulumi.StringPtrOutput)
-}
-
-type QueueSettingsResponse struct {
-	// Enum to determine the job tier.
-	JobTier *string `pulumi:"jobTier"`
-}
-
-// Defaults sets the appropriate defaults for QueueSettingsResponse
-func (val *QueueSettingsResponse) Defaults() *QueueSettingsResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.JobTier == nil {
-		jobTier_ := "Null"
-		tmp.JobTier = &jobTier_
-	}
-	return &tmp
-}
-
-type QueueSettingsResponseOutput struct{ *pulumi.OutputState }
-
-func (QueueSettingsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*QueueSettingsResponse)(nil)).Elem()
-}
-
-func (o QueueSettingsResponseOutput) ToQueueSettingsResponseOutput() QueueSettingsResponseOutput {
-	return o
-}
-
-func (o QueueSettingsResponseOutput) ToQueueSettingsResponseOutputWithContext(ctx context.Context) QueueSettingsResponseOutput {
-	return o
-}
-
-// Enum to determine the job tier.
-func (o QueueSettingsResponseOutput) JobTier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v QueueSettingsResponse) *string { return v.JobTier }).(pulumi.StringPtrOutput)
-}
-
-type QueueSettingsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (QueueSettingsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**QueueSettingsResponse)(nil)).Elem()
-}
-
-func (o QueueSettingsResponsePtrOutput) ToQueueSettingsResponsePtrOutput() QueueSettingsResponsePtrOutput {
-	return o
-}
-
-func (o QueueSettingsResponsePtrOutput) ToQueueSettingsResponsePtrOutputWithContext(ctx context.Context) QueueSettingsResponsePtrOutput {
-	return o
-}
-
-func (o QueueSettingsResponsePtrOutput) Elem() QueueSettingsResponseOutput {
-	return o.ApplyT(func(v *QueueSettingsResponse) QueueSettingsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret QueueSettingsResponse
-		return ret
-	}).(QueueSettingsResponseOutput)
-}
-
-// Enum to determine the job tier.
-func (o QueueSettingsResponsePtrOutput) JobTier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *QueueSettingsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.JobTier
-	}).(pulumi.StringPtrOutput)
-}
-
-// Azure OpenAI blocklist config.
-type RaiBlocklistConfig struct {
-	// If blocking would occur.
-	Blocking *bool `pulumi:"blocking"`
-	// Name of ContentFilter.
-	BlocklistName *string `pulumi:"blocklistName"`
-}
-
-// RaiBlocklistConfigInput is an input type that accepts RaiBlocklistConfigArgs and RaiBlocklistConfigOutput values.
-// You can construct a concrete instance of `RaiBlocklistConfigInput` via:
-//
-//	RaiBlocklistConfigArgs{...}
-type RaiBlocklistConfigInput interface {
-	pulumi.Input
-
-	ToRaiBlocklistConfigOutput() RaiBlocklistConfigOutput
-	ToRaiBlocklistConfigOutputWithContext(context.Context) RaiBlocklistConfigOutput
-}
-
-// Azure OpenAI blocklist config.
-type RaiBlocklistConfigArgs struct {
-	// If blocking would occur.
-	Blocking pulumi.BoolPtrInput `pulumi:"blocking"`
-	// Name of ContentFilter.
-	BlocklistName pulumi.StringPtrInput `pulumi:"blocklistName"`
-}
-
-func (RaiBlocklistConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RaiBlocklistConfig)(nil)).Elem()
-}
-
-func (i RaiBlocklistConfigArgs) ToRaiBlocklistConfigOutput() RaiBlocklistConfigOutput {
-	return i.ToRaiBlocklistConfigOutputWithContext(context.Background())
-}
-
-func (i RaiBlocklistConfigArgs) ToRaiBlocklistConfigOutputWithContext(ctx context.Context) RaiBlocklistConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RaiBlocklistConfigOutput)
-}
-
-// RaiBlocklistConfigArrayInput is an input type that accepts RaiBlocklistConfigArray and RaiBlocklistConfigArrayOutput values.
-// You can construct a concrete instance of `RaiBlocklistConfigArrayInput` via:
-//
-//	RaiBlocklistConfigArray{ RaiBlocklistConfigArgs{...} }
-type RaiBlocklistConfigArrayInput interface {
-	pulumi.Input
-
-	ToRaiBlocklistConfigArrayOutput() RaiBlocklistConfigArrayOutput
-	ToRaiBlocklistConfigArrayOutputWithContext(context.Context) RaiBlocklistConfigArrayOutput
-}
-
-type RaiBlocklistConfigArray []RaiBlocklistConfigInput
-
-func (RaiBlocklistConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RaiBlocklistConfig)(nil)).Elem()
-}
-
-func (i RaiBlocklistConfigArray) ToRaiBlocklistConfigArrayOutput() RaiBlocklistConfigArrayOutput {
-	return i.ToRaiBlocklistConfigArrayOutputWithContext(context.Background())
-}
-
-func (i RaiBlocklistConfigArray) ToRaiBlocklistConfigArrayOutputWithContext(ctx context.Context) RaiBlocklistConfigArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RaiBlocklistConfigArrayOutput)
-}
-
-// Azure OpenAI blocklist config.
-type RaiBlocklistConfigOutput struct{ *pulumi.OutputState }
-
-func (RaiBlocklistConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RaiBlocklistConfig)(nil)).Elem()
-}
-
-func (o RaiBlocklistConfigOutput) ToRaiBlocklistConfigOutput() RaiBlocklistConfigOutput {
-	return o
-}
-
-func (o RaiBlocklistConfigOutput) ToRaiBlocklistConfigOutputWithContext(ctx context.Context) RaiBlocklistConfigOutput {
-	return o
-}
-
-// If blocking would occur.
-func (o RaiBlocklistConfigOutput) Blocking() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RaiBlocklistConfig) *bool { return v.Blocking }).(pulumi.BoolPtrOutput)
-}
-
-// Name of ContentFilter.
-func (o RaiBlocklistConfigOutput) BlocklistName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RaiBlocklistConfig) *string { return v.BlocklistName }).(pulumi.StringPtrOutput)
-}
-
-type RaiBlocklistConfigArrayOutput struct{ *pulumi.OutputState }
-
-func (RaiBlocklistConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RaiBlocklistConfig)(nil)).Elem()
-}
-
-func (o RaiBlocklistConfigArrayOutput) ToRaiBlocklistConfigArrayOutput() RaiBlocklistConfigArrayOutput {
-	return o
-}
-
-func (o RaiBlocklistConfigArrayOutput) ToRaiBlocklistConfigArrayOutputWithContext(ctx context.Context) RaiBlocklistConfigArrayOutput {
-	return o
-}
-
-func (o RaiBlocklistConfigArrayOutput) Index(i pulumi.IntInput) RaiBlocklistConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RaiBlocklistConfig {
-		return vs[0].([]RaiBlocklistConfig)[vs[1].(int)]
-	}).(RaiBlocklistConfigOutput)
-}
-
-// Azure OpenAI blocklist config.
-type RaiBlocklistConfigResponse struct {
-	// If blocking would occur.
-	Blocking *bool `pulumi:"blocking"`
-	// Name of ContentFilter.
-	BlocklistName *string `pulumi:"blocklistName"`
-}
-
-// Azure OpenAI blocklist config.
-type RaiBlocklistConfigResponseOutput struct{ *pulumi.OutputState }
-
-func (RaiBlocklistConfigResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RaiBlocklistConfigResponse)(nil)).Elem()
-}
-
-func (o RaiBlocklistConfigResponseOutput) ToRaiBlocklistConfigResponseOutput() RaiBlocklistConfigResponseOutput {
-	return o
-}
-
-func (o RaiBlocklistConfigResponseOutput) ToRaiBlocklistConfigResponseOutputWithContext(ctx context.Context) RaiBlocklistConfigResponseOutput {
-	return o
-}
-
-// If blocking would occur.
-func (o RaiBlocklistConfigResponseOutput) Blocking() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RaiBlocklistConfigResponse) *bool { return v.Blocking }).(pulumi.BoolPtrOutput)
-}
-
-// Name of ContentFilter.
-func (o RaiBlocklistConfigResponseOutput) BlocklistName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RaiBlocklistConfigResponse) *string { return v.BlocklistName }).(pulumi.StringPtrOutput)
-}
-
-type RaiBlocklistConfigResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (RaiBlocklistConfigResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RaiBlocklistConfigResponse)(nil)).Elem()
-}
-
-func (o RaiBlocklistConfigResponseArrayOutput) ToRaiBlocklistConfigResponseArrayOutput() RaiBlocklistConfigResponseArrayOutput {
-	return o
-}
-
-func (o RaiBlocklistConfigResponseArrayOutput) ToRaiBlocklistConfigResponseArrayOutputWithContext(ctx context.Context) RaiBlocklistConfigResponseArrayOutput {
-	return o
-}
-
-func (o RaiBlocklistConfigResponseArrayOutput) Index(i pulumi.IntInput) RaiBlocklistConfigResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RaiBlocklistConfigResponse {
-		return vs[0].([]RaiBlocklistConfigResponse)[vs[1].(int)]
-	}).(RaiBlocklistConfigResponseOutput)
-}
-
-// RAI Custom Blocklist Item properties.
-type RaiBlocklistItemProperties struct {
-	// If the pattern is a regex pattern.
-	IsRegex *bool `pulumi:"isRegex"`
-	// Pattern to match against.
-	Pattern *string `pulumi:"pattern"`
-}
-
-// RaiBlocklistItemPropertiesInput is an input type that accepts RaiBlocklistItemPropertiesArgs and RaiBlocklistItemPropertiesOutput values.
-// You can construct a concrete instance of `RaiBlocklistItemPropertiesInput` via:
-//
-//	RaiBlocklistItemPropertiesArgs{...}
-type RaiBlocklistItemPropertiesInput interface {
-	pulumi.Input
-
-	ToRaiBlocklistItemPropertiesOutput() RaiBlocklistItemPropertiesOutput
-	ToRaiBlocklistItemPropertiesOutputWithContext(context.Context) RaiBlocklistItemPropertiesOutput
-}
-
-// RAI Custom Blocklist Item properties.
-type RaiBlocklistItemPropertiesArgs struct {
-	// If the pattern is a regex pattern.
-	IsRegex pulumi.BoolPtrInput `pulumi:"isRegex"`
-	// Pattern to match against.
-	Pattern pulumi.StringPtrInput `pulumi:"pattern"`
-}
-
-func (RaiBlocklistItemPropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RaiBlocklistItemProperties)(nil)).Elem()
-}
-
-func (i RaiBlocklistItemPropertiesArgs) ToRaiBlocklistItemPropertiesOutput() RaiBlocklistItemPropertiesOutput {
-	return i.ToRaiBlocklistItemPropertiesOutputWithContext(context.Background())
-}
-
-func (i RaiBlocklistItemPropertiesArgs) ToRaiBlocklistItemPropertiesOutputWithContext(ctx context.Context) RaiBlocklistItemPropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RaiBlocklistItemPropertiesOutput)
-}
-
-// RAI Custom Blocklist Item properties.
-type RaiBlocklistItemPropertiesOutput struct{ *pulumi.OutputState }
-
-func (RaiBlocklistItemPropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RaiBlocklistItemProperties)(nil)).Elem()
-}
-
-func (o RaiBlocklistItemPropertiesOutput) ToRaiBlocklistItemPropertiesOutput() RaiBlocklistItemPropertiesOutput {
-	return o
-}
-
-func (o RaiBlocklistItemPropertiesOutput) ToRaiBlocklistItemPropertiesOutputWithContext(ctx context.Context) RaiBlocklistItemPropertiesOutput {
-	return o
-}
-
-// If the pattern is a regex pattern.
-func (o RaiBlocklistItemPropertiesOutput) IsRegex() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RaiBlocklistItemProperties) *bool { return v.IsRegex }).(pulumi.BoolPtrOutput)
-}
-
-// Pattern to match against.
-func (o RaiBlocklistItemPropertiesOutput) Pattern() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RaiBlocklistItemProperties) *string { return v.Pattern }).(pulumi.StringPtrOutput)
-}
-
-// RAI Custom Blocklist Item properties.
-type RaiBlocklistItemPropertiesResponse struct {
-	// If the pattern is a regex pattern.
-	IsRegex *bool `pulumi:"isRegex"`
-	// Pattern to match against.
-	Pattern *string `pulumi:"pattern"`
-}
-
-// RAI Custom Blocklist Item properties.
-type RaiBlocklistItemPropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (RaiBlocklistItemPropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RaiBlocklistItemPropertiesResponse)(nil)).Elem()
-}
-
-func (o RaiBlocklistItemPropertiesResponseOutput) ToRaiBlocklistItemPropertiesResponseOutput() RaiBlocklistItemPropertiesResponseOutput {
-	return o
-}
-
-func (o RaiBlocklistItemPropertiesResponseOutput) ToRaiBlocklistItemPropertiesResponseOutputWithContext(ctx context.Context) RaiBlocklistItemPropertiesResponseOutput {
-	return o
-}
-
-// If the pattern is a regex pattern.
-func (o RaiBlocklistItemPropertiesResponseOutput) IsRegex() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RaiBlocklistItemPropertiesResponse) *bool { return v.IsRegex }).(pulumi.BoolPtrOutput)
-}
-
-// Pattern to match against.
-func (o RaiBlocklistItemPropertiesResponseOutput) Pattern() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RaiBlocklistItemPropertiesResponse) *string { return v.Pattern }).(pulumi.StringPtrOutput)
-}
-
-// RAI Custom Blocklist properties.
-type RaiBlocklistProperties struct {
-	// Description of the block list.
-	Description *string `pulumi:"description"`
-}
-
-// RaiBlocklistPropertiesInput is an input type that accepts RaiBlocklistPropertiesArgs and RaiBlocklistPropertiesOutput values.
-// You can construct a concrete instance of `RaiBlocklistPropertiesInput` via:
-//
-//	RaiBlocklistPropertiesArgs{...}
-type RaiBlocklistPropertiesInput interface {
-	pulumi.Input
-
-	ToRaiBlocklistPropertiesOutput() RaiBlocklistPropertiesOutput
-	ToRaiBlocklistPropertiesOutputWithContext(context.Context) RaiBlocklistPropertiesOutput
-}
-
-// RAI Custom Blocklist properties.
-type RaiBlocklistPropertiesArgs struct {
-	// Description of the block list.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-}
-
-func (RaiBlocklistPropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RaiBlocklistProperties)(nil)).Elem()
-}
-
-func (i RaiBlocklistPropertiesArgs) ToRaiBlocklistPropertiesOutput() RaiBlocklistPropertiesOutput {
-	return i.ToRaiBlocklistPropertiesOutputWithContext(context.Background())
-}
-
-func (i RaiBlocklistPropertiesArgs) ToRaiBlocklistPropertiesOutputWithContext(ctx context.Context) RaiBlocklistPropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RaiBlocklistPropertiesOutput)
-}
-
-// RAI Custom Blocklist properties.
-type RaiBlocklistPropertiesOutput struct{ *pulumi.OutputState }
-
-func (RaiBlocklistPropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RaiBlocklistProperties)(nil)).Elem()
-}
-
-func (o RaiBlocklistPropertiesOutput) ToRaiBlocklistPropertiesOutput() RaiBlocklistPropertiesOutput {
-	return o
-}
-
-func (o RaiBlocklistPropertiesOutput) ToRaiBlocklistPropertiesOutputWithContext(ctx context.Context) RaiBlocklistPropertiesOutput {
-	return o
-}
-
-// Description of the block list.
-func (o RaiBlocklistPropertiesOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RaiBlocklistProperties) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// RAI Custom Blocklist properties.
-type RaiBlocklistPropertiesResponse struct {
-	// Description of the block list.
-	Description *string `pulumi:"description"`
-}
-
-// RAI Custom Blocklist properties.
-type RaiBlocklistPropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (RaiBlocklistPropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RaiBlocklistPropertiesResponse)(nil)).Elem()
-}
-
-func (o RaiBlocklistPropertiesResponseOutput) ToRaiBlocklistPropertiesResponseOutput() RaiBlocklistPropertiesResponseOutput {
-	return o
-}
-
-func (o RaiBlocklistPropertiesResponseOutput) ToRaiBlocklistPropertiesResponseOutputWithContext(ctx context.Context) RaiBlocklistPropertiesResponseOutput {
-	return o
-}
-
-// Description of the block list.
-func (o RaiBlocklistPropertiesResponseOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RaiBlocklistPropertiesResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Azure OpenAI Content Filter.
-type RaiPolicyContentFilter struct {
-	// Level at which content is filtered.
-	AllowedContentLevel *string `pulumi:"allowedContentLevel"`
-	// If blocking would occur.
-	Blocking *bool `pulumi:"blocking"`
-	// If the ContentFilter is enabled.
-	Enabled *bool `pulumi:"enabled"`
-	// Name of ContentFilter.
-	Name *string `pulumi:"name"`
-	// Content source to apply the Content Filters.
-	Source *string `pulumi:"source"`
-}
-
-// RaiPolicyContentFilterInput is an input type that accepts RaiPolicyContentFilterArgs and RaiPolicyContentFilterOutput values.
-// You can construct a concrete instance of `RaiPolicyContentFilterInput` via:
-//
-//	RaiPolicyContentFilterArgs{...}
-type RaiPolicyContentFilterInput interface {
-	pulumi.Input
-
-	ToRaiPolicyContentFilterOutput() RaiPolicyContentFilterOutput
-	ToRaiPolicyContentFilterOutputWithContext(context.Context) RaiPolicyContentFilterOutput
-}
-
-// Azure OpenAI Content Filter.
-type RaiPolicyContentFilterArgs struct {
-	// Level at which content is filtered.
-	AllowedContentLevel pulumi.StringPtrInput `pulumi:"allowedContentLevel"`
-	// If blocking would occur.
-	Blocking pulumi.BoolPtrInput `pulumi:"blocking"`
-	// If the ContentFilter is enabled.
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// Name of ContentFilter.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Content source to apply the Content Filters.
-	Source pulumi.StringPtrInput `pulumi:"source"`
-}
-
-func (RaiPolicyContentFilterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RaiPolicyContentFilter)(nil)).Elem()
-}
-
-func (i RaiPolicyContentFilterArgs) ToRaiPolicyContentFilterOutput() RaiPolicyContentFilterOutput {
-	return i.ToRaiPolicyContentFilterOutputWithContext(context.Background())
-}
-
-func (i RaiPolicyContentFilterArgs) ToRaiPolicyContentFilterOutputWithContext(ctx context.Context) RaiPolicyContentFilterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RaiPolicyContentFilterOutput)
-}
-
-// RaiPolicyContentFilterArrayInput is an input type that accepts RaiPolicyContentFilterArray and RaiPolicyContentFilterArrayOutput values.
-// You can construct a concrete instance of `RaiPolicyContentFilterArrayInput` via:
-//
-//	RaiPolicyContentFilterArray{ RaiPolicyContentFilterArgs{...} }
-type RaiPolicyContentFilterArrayInput interface {
-	pulumi.Input
-
-	ToRaiPolicyContentFilterArrayOutput() RaiPolicyContentFilterArrayOutput
-	ToRaiPolicyContentFilterArrayOutputWithContext(context.Context) RaiPolicyContentFilterArrayOutput
-}
-
-type RaiPolicyContentFilterArray []RaiPolicyContentFilterInput
-
-func (RaiPolicyContentFilterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RaiPolicyContentFilter)(nil)).Elem()
-}
-
-func (i RaiPolicyContentFilterArray) ToRaiPolicyContentFilterArrayOutput() RaiPolicyContentFilterArrayOutput {
-	return i.ToRaiPolicyContentFilterArrayOutputWithContext(context.Background())
-}
-
-func (i RaiPolicyContentFilterArray) ToRaiPolicyContentFilterArrayOutputWithContext(ctx context.Context) RaiPolicyContentFilterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RaiPolicyContentFilterArrayOutput)
-}
-
-// Azure OpenAI Content Filter.
-type RaiPolicyContentFilterOutput struct{ *pulumi.OutputState }
-
-func (RaiPolicyContentFilterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RaiPolicyContentFilter)(nil)).Elem()
-}
-
-func (o RaiPolicyContentFilterOutput) ToRaiPolicyContentFilterOutput() RaiPolicyContentFilterOutput {
-	return o
-}
-
-func (o RaiPolicyContentFilterOutput) ToRaiPolicyContentFilterOutputWithContext(ctx context.Context) RaiPolicyContentFilterOutput {
-	return o
-}
-
-// Level at which content is filtered.
-func (o RaiPolicyContentFilterOutput) AllowedContentLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RaiPolicyContentFilter) *string { return v.AllowedContentLevel }).(pulumi.StringPtrOutput)
-}
-
-// If blocking would occur.
-func (o RaiPolicyContentFilterOutput) Blocking() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RaiPolicyContentFilter) *bool { return v.Blocking }).(pulumi.BoolPtrOutput)
-}
-
-// If the ContentFilter is enabled.
-func (o RaiPolicyContentFilterOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RaiPolicyContentFilter) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
-}
-
-// Name of ContentFilter.
-func (o RaiPolicyContentFilterOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RaiPolicyContentFilter) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// Content source to apply the Content Filters.
-func (o RaiPolicyContentFilterOutput) Source() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RaiPolicyContentFilter) *string { return v.Source }).(pulumi.StringPtrOutput)
-}
-
-type RaiPolicyContentFilterArrayOutput struct{ *pulumi.OutputState }
-
-func (RaiPolicyContentFilterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RaiPolicyContentFilter)(nil)).Elem()
-}
-
-func (o RaiPolicyContentFilterArrayOutput) ToRaiPolicyContentFilterArrayOutput() RaiPolicyContentFilterArrayOutput {
-	return o
-}
-
-func (o RaiPolicyContentFilterArrayOutput) ToRaiPolicyContentFilterArrayOutputWithContext(ctx context.Context) RaiPolicyContentFilterArrayOutput {
-	return o
-}
-
-func (o RaiPolicyContentFilterArrayOutput) Index(i pulumi.IntInput) RaiPolicyContentFilterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RaiPolicyContentFilter {
-		return vs[0].([]RaiPolicyContentFilter)[vs[1].(int)]
-	}).(RaiPolicyContentFilterOutput)
-}
-
-// Azure OpenAI Content Filter.
-type RaiPolicyContentFilterResponse struct {
-	// Level at which content is filtered.
-	AllowedContentLevel *string `pulumi:"allowedContentLevel"`
-	// If blocking would occur.
-	Blocking *bool `pulumi:"blocking"`
-	// If the ContentFilter is enabled.
-	Enabled *bool `pulumi:"enabled"`
-	// Name of ContentFilter.
-	Name *string `pulumi:"name"`
-	// Content source to apply the Content Filters.
-	Source *string `pulumi:"source"`
-}
-
-// Azure OpenAI Content Filter.
-type RaiPolicyContentFilterResponseOutput struct{ *pulumi.OutputState }
-
-func (RaiPolicyContentFilterResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RaiPolicyContentFilterResponse)(nil)).Elem()
-}
-
-func (o RaiPolicyContentFilterResponseOutput) ToRaiPolicyContentFilterResponseOutput() RaiPolicyContentFilterResponseOutput {
-	return o
-}
-
-func (o RaiPolicyContentFilterResponseOutput) ToRaiPolicyContentFilterResponseOutputWithContext(ctx context.Context) RaiPolicyContentFilterResponseOutput {
-	return o
-}
-
-// Level at which content is filtered.
-func (o RaiPolicyContentFilterResponseOutput) AllowedContentLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RaiPolicyContentFilterResponse) *string { return v.AllowedContentLevel }).(pulumi.StringPtrOutput)
-}
-
-// If blocking would occur.
-func (o RaiPolicyContentFilterResponseOutput) Blocking() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RaiPolicyContentFilterResponse) *bool { return v.Blocking }).(pulumi.BoolPtrOutput)
-}
-
-// If the ContentFilter is enabled.
-func (o RaiPolicyContentFilterResponseOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RaiPolicyContentFilterResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
-}
-
-// Name of ContentFilter.
-func (o RaiPolicyContentFilterResponseOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RaiPolicyContentFilterResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// Content source to apply the Content Filters.
-func (o RaiPolicyContentFilterResponseOutput) Source() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RaiPolicyContentFilterResponse) *string { return v.Source }).(pulumi.StringPtrOutput)
-}
-
-type RaiPolicyContentFilterResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (RaiPolicyContentFilterResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RaiPolicyContentFilterResponse)(nil)).Elem()
-}
-
-func (o RaiPolicyContentFilterResponseArrayOutput) ToRaiPolicyContentFilterResponseArrayOutput() RaiPolicyContentFilterResponseArrayOutput {
-	return o
-}
-
-func (o RaiPolicyContentFilterResponseArrayOutput) ToRaiPolicyContentFilterResponseArrayOutputWithContext(ctx context.Context) RaiPolicyContentFilterResponseArrayOutput {
-	return o
-}
-
-func (o RaiPolicyContentFilterResponseArrayOutput) Index(i pulumi.IntInput) RaiPolicyContentFilterResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RaiPolicyContentFilterResponse {
-		return vs[0].([]RaiPolicyContentFilterResponse)[vs[1].(int)]
-	}).(RaiPolicyContentFilterResponseOutput)
-}
-
-// Azure OpenAI Content Filters properties.
-type RaiPolicyProperties struct {
-	// Name of the base Content Filters.
-	BasePolicyName       *string                  `pulumi:"basePolicyName"`
-	CompletionBlocklists []RaiBlocklistConfig     `pulumi:"completionBlocklists"`
-	ContentFilters       []RaiPolicyContentFilter `pulumi:"contentFilters"`
-	// Content Filters mode.
-	Mode             *string              `pulumi:"mode"`
-	PromptBlocklists []RaiBlocklistConfig `pulumi:"promptBlocklists"`
-	// Content Filters policy type.
-	Type *string `pulumi:"type"`
-}
-
-// RaiPolicyPropertiesInput is an input type that accepts RaiPolicyPropertiesArgs and RaiPolicyPropertiesOutput values.
-// You can construct a concrete instance of `RaiPolicyPropertiesInput` via:
-//
-//	RaiPolicyPropertiesArgs{...}
-type RaiPolicyPropertiesInput interface {
-	pulumi.Input
-
-	ToRaiPolicyPropertiesOutput() RaiPolicyPropertiesOutput
-	ToRaiPolicyPropertiesOutputWithContext(context.Context) RaiPolicyPropertiesOutput
-}
-
-// Azure OpenAI Content Filters properties.
-type RaiPolicyPropertiesArgs struct {
-	// Name of the base Content Filters.
-	BasePolicyName       pulumi.StringPtrInput            `pulumi:"basePolicyName"`
-	CompletionBlocklists RaiBlocklistConfigArrayInput     `pulumi:"completionBlocklists"`
-	ContentFilters       RaiPolicyContentFilterArrayInput `pulumi:"contentFilters"`
-	// Content Filters mode.
-	Mode             pulumi.StringPtrInput        `pulumi:"mode"`
-	PromptBlocklists RaiBlocklistConfigArrayInput `pulumi:"promptBlocklists"`
-	// Content Filters policy type.
-	Type pulumi.StringPtrInput `pulumi:"type"`
-}
-
-func (RaiPolicyPropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RaiPolicyProperties)(nil)).Elem()
-}
-
-func (i RaiPolicyPropertiesArgs) ToRaiPolicyPropertiesOutput() RaiPolicyPropertiesOutput {
-	return i.ToRaiPolicyPropertiesOutputWithContext(context.Background())
-}
-
-func (i RaiPolicyPropertiesArgs) ToRaiPolicyPropertiesOutputWithContext(ctx context.Context) RaiPolicyPropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RaiPolicyPropertiesOutput)
-}
-
-// Azure OpenAI Content Filters properties.
-type RaiPolicyPropertiesOutput struct{ *pulumi.OutputState }
-
-func (RaiPolicyPropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RaiPolicyProperties)(nil)).Elem()
-}
-
-func (o RaiPolicyPropertiesOutput) ToRaiPolicyPropertiesOutput() RaiPolicyPropertiesOutput {
-	return o
-}
-
-func (o RaiPolicyPropertiesOutput) ToRaiPolicyPropertiesOutputWithContext(ctx context.Context) RaiPolicyPropertiesOutput {
-	return o
-}
-
-// Name of the base Content Filters.
-func (o RaiPolicyPropertiesOutput) BasePolicyName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RaiPolicyProperties) *string { return v.BasePolicyName }).(pulumi.StringPtrOutput)
-}
-
-func (o RaiPolicyPropertiesOutput) CompletionBlocklists() RaiBlocklistConfigArrayOutput {
-	return o.ApplyT(func(v RaiPolicyProperties) []RaiBlocklistConfig { return v.CompletionBlocklists }).(RaiBlocklistConfigArrayOutput)
-}
-
-func (o RaiPolicyPropertiesOutput) ContentFilters() RaiPolicyContentFilterArrayOutput {
-	return o.ApplyT(func(v RaiPolicyProperties) []RaiPolicyContentFilter { return v.ContentFilters }).(RaiPolicyContentFilterArrayOutput)
-}
-
-// Content Filters mode.
-func (o RaiPolicyPropertiesOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RaiPolicyProperties) *string { return v.Mode }).(pulumi.StringPtrOutput)
-}
-
-func (o RaiPolicyPropertiesOutput) PromptBlocklists() RaiBlocklistConfigArrayOutput {
-	return o.ApplyT(func(v RaiPolicyProperties) []RaiBlocklistConfig { return v.PromptBlocklists }).(RaiBlocklistConfigArrayOutput)
-}
-
-// Content Filters policy type.
-func (o RaiPolicyPropertiesOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RaiPolicyProperties) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-// Azure OpenAI Content Filters properties.
-type RaiPolicyPropertiesResponse struct {
-	// Name of the base Content Filters.
-	BasePolicyName       *string                          `pulumi:"basePolicyName"`
-	CompletionBlocklists []RaiBlocklistConfigResponse     `pulumi:"completionBlocklists"`
-	ContentFilters       []RaiPolicyContentFilterResponse `pulumi:"contentFilters"`
-	// Content Filters mode.
-	Mode             *string                      `pulumi:"mode"`
-	PromptBlocklists []RaiBlocklistConfigResponse `pulumi:"promptBlocklists"`
-	// Content Filters policy type.
-	Type *string `pulumi:"type"`
-}
-
-// Azure OpenAI Content Filters properties.
-type RaiPolicyPropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (RaiPolicyPropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RaiPolicyPropertiesResponse)(nil)).Elem()
-}
-
-func (o RaiPolicyPropertiesResponseOutput) ToRaiPolicyPropertiesResponseOutput() RaiPolicyPropertiesResponseOutput {
-	return o
-}
-
-func (o RaiPolicyPropertiesResponseOutput) ToRaiPolicyPropertiesResponseOutputWithContext(ctx context.Context) RaiPolicyPropertiesResponseOutput {
-	return o
-}
-
-// Name of the base Content Filters.
-func (o RaiPolicyPropertiesResponseOutput) BasePolicyName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RaiPolicyPropertiesResponse) *string { return v.BasePolicyName }).(pulumi.StringPtrOutput)
-}
-
-func (o RaiPolicyPropertiesResponseOutput) CompletionBlocklists() RaiBlocklistConfigResponseArrayOutput {
-	return o.ApplyT(func(v RaiPolicyPropertiesResponse) []RaiBlocklistConfigResponse { return v.CompletionBlocklists }).(RaiBlocklistConfigResponseArrayOutput)
-}
-
-func (o RaiPolicyPropertiesResponseOutput) ContentFilters() RaiPolicyContentFilterResponseArrayOutput {
-	return o.ApplyT(func(v RaiPolicyPropertiesResponse) []RaiPolicyContentFilterResponse { return v.ContentFilters }).(RaiPolicyContentFilterResponseArrayOutput)
-}
-
-// Content Filters mode.
-func (o RaiPolicyPropertiesResponseOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RaiPolicyPropertiesResponse) *string { return v.Mode }).(pulumi.StringPtrOutput)
-}
-
-func (o RaiPolicyPropertiesResponseOutput) PromptBlocklists() RaiBlocklistConfigResponseArrayOutput {
-	return o.ApplyT(func(v RaiPolicyPropertiesResponse) []RaiBlocklistConfigResponse { return v.PromptBlocklists }).(RaiBlocklistConfigResponseArrayOutput)
-}
-
-// Content Filters policy type.
-func (o RaiPolicyPropertiesResponseOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RaiPolicyPropertiesResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-// Defines a Sampling Algorithm that generates values randomly
-type RandomSamplingAlgorithm struct {
-	// The specific type of random algorithm
-	Rule *string `pulumi:"rule"`
-	// Expected value is 'Random'.
-	SamplingAlgorithmType string `pulumi:"samplingAlgorithmType"`
-	// An optional integer to use as the seed for random number generation
-	Seed *int `pulumi:"seed"`
-}
-
-// Defaults sets the appropriate defaults for RandomSamplingAlgorithm
-func (val *RandomSamplingAlgorithm) Defaults() *RandomSamplingAlgorithm {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.Rule == nil {
-		rule_ := "Random"
-		tmp.Rule = &rule_
-	}
-	return &tmp
-}
-
-// RandomSamplingAlgorithmInput is an input type that accepts RandomSamplingAlgorithmArgs and RandomSamplingAlgorithmOutput values.
-// You can construct a concrete instance of `RandomSamplingAlgorithmInput` via:
-//
-//	RandomSamplingAlgorithmArgs{...}
-type RandomSamplingAlgorithmInput interface {
-	pulumi.Input
-
-	ToRandomSamplingAlgorithmOutput() RandomSamplingAlgorithmOutput
-	ToRandomSamplingAlgorithmOutputWithContext(context.Context) RandomSamplingAlgorithmOutput
-}
-
-// Defines a Sampling Algorithm that generates values randomly
-type RandomSamplingAlgorithmArgs struct {
-	// The specific type of random algorithm
-	Rule pulumi.StringPtrInput `pulumi:"rule"`
-	// Expected value is 'Random'.
-	SamplingAlgorithmType pulumi.StringInput `pulumi:"samplingAlgorithmType"`
-	// An optional integer to use as the seed for random number generation
-	Seed pulumi.IntPtrInput `pulumi:"seed"`
-}
-
-// Defaults sets the appropriate defaults for RandomSamplingAlgorithmArgs
-func (val *RandomSamplingAlgorithmArgs) Defaults() *RandomSamplingAlgorithmArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.Rule == nil {
-		tmp.Rule = pulumi.StringPtr("Random")
-	}
-	return &tmp
-}
-func (RandomSamplingAlgorithmArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RandomSamplingAlgorithm)(nil)).Elem()
-}
-
-func (i RandomSamplingAlgorithmArgs) ToRandomSamplingAlgorithmOutput() RandomSamplingAlgorithmOutput {
-	return i.ToRandomSamplingAlgorithmOutputWithContext(context.Background())
-}
-
-func (i RandomSamplingAlgorithmArgs) ToRandomSamplingAlgorithmOutputWithContext(ctx context.Context) RandomSamplingAlgorithmOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RandomSamplingAlgorithmOutput)
-}
-
-// Defines a Sampling Algorithm that generates values randomly
-type RandomSamplingAlgorithmOutput struct{ *pulumi.OutputState }
-
-func (RandomSamplingAlgorithmOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RandomSamplingAlgorithm)(nil)).Elem()
-}
-
-func (o RandomSamplingAlgorithmOutput) ToRandomSamplingAlgorithmOutput() RandomSamplingAlgorithmOutput {
-	return o
-}
-
-func (o RandomSamplingAlgorithmOutput) ToRandomSamplingAlgorithmOutputWithContext(ctx context.Context) RandomSamplingAlgorithmOutput {
-	return o
-}
-
-// The specific type of random algorithm
-func (o RandomSamplingAlgorithmOutput) Rule() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RandomSamplingAlgorithm) *string { return v.Rule }).(pulumi.StringPtrOutput)
-}
-
-// Expected value is 'Random'.
-func (o RandomSamplingAlgorithmOutput) SamplingAlgorithmType() pulumi.StringOutput {
-	return o.ApplyT(func(v RandomSamplingAlgorithm) string { return v.SamplingAlgorithmType }).(pulumi.StringOutput)
-}
-
-// An optional integer to use as the seed for random number generation
-func (o RandomSamplingAlgorithmOutput) Seed() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RandomSamplingAlgorithm) *int { return v.Seed }).(pulumi.IntPtrOutput)
-}
-
-// Defines a Sampling Algorithm that generates values randomly
-type RandomSamplingAlgorithmResponse struct {
-	// The specific type of random algorithm
-	Rule *string `pulumi:"rule"`
-	// Expected value is 'Random'.
-	SamplingAlgorithmType string `pulumi:"samplingAlgorithmType"`
-	// An optional integer to use as the seed for random number generation
-	Seed *int `pulumi:"seed"`
-}
-
-// Defaults sets the appropriate defaults for RandomSamplingAlgorithmResponse
-func (val *RandomSamplingAlgorithmResponse) Defaults() *RandomSamplingAlgorithmResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.Rule == nil {
-		rule_ := "Random"
-		tmp.Rule = &rule_
-	}
-	return &tmp
-}
-
-// Defines a Sampling Algorithm that generates values randomly
-type RandomSamplingAlgorithmResponseOutput struct{ *pulumi.OutputState }
-
-func (RandomSamplingAlgorithmResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RandomSamplingAlgorithmResponse)(nil)).Elem()
-}
-
-func (o RandomSamplingAlgorithmResponseOutput) ToRandomSamplingAlgorithmResponseOutput() RandomSamplingAlgorithmResponseOutput {
-	return o
-}
-
-func (o RandomSamplingAlgorithmResponseOutput) ToRandomSamplingAlgorithmResponseOutputWithContext(ctx context.Context) RandomSamplingAlgorithmResponseOutput {
-	return o
-}
-
-// The specific type of random algorithm
-func (o RandomSamplingAlgorithmResponseOutput) Rule() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RandomSamplingAlgorithmResponse) *string { return v.Rule }).(pulumi.StringPtrOutput)
-}
-
-// Expected value is 'Random'.
-func (o RandomSamplingAlgorithmResponseOutput) SamplingAlgorithmType() pulumi.StringOutput {
-	return o.ApplyT(func(v RandomSamplingAlgorithmResponse) string { return v.SamplingAlgorithmType }).(pulumi.StringOutput)
-}
-
-// An optional integer to use as the seed for random number generation
-func (o RandomSamplingAlgorithmResponseOutput) Seed() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RandomSamplingAlgorithmResponse) *int { return v.Seed }).(pulumi.IntPtrOutput)
-}
-
-// The workflow trigger recurrence for ComputeStartStop schedule type.
-type Recurrence struct {
-	// [Required] The frequency to trigger schedule.
-	Frequency *string `pulumi:"frequency"`
-	// [Required] Specifies schedule interval in conjunction with frequency
-	Interval *int `pulumi:"interval"`
-	// [Required] The recurrence schedule.
-	Schedule *ComputeRecurrenceSchedule `pulumi:"schedule"`
-	// The start time in yyyy-MM-ddTHH:mm:ss format.
-	StartTime *string `pulumi:"startTime"`
-	// Specifies time zone in which the schedule runs.
-	// TimeZone should follow Windows time zone format. Refer: https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/default-time-zones?view=windows-11
-	TimeZone *string `pulumi:"timeZone"`
-}
-
-// Defaults sets the appropriate defaults for Recurrence
-func (val *Recurrence) Defaults() *Recurrence {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.TimeZone == nil {
-		timeZone_ := "UTC"
-		tmp.TimeZone = &timeZone_
-	}
-	return &tmp
-}
-
-// RecurrenceInput is an input type that accepts RecurrenceArgs and RecurrenceOutput values.
-// You can construct a concrete instance of `RecurrenceInput` via:
-//
-//	RecurrenceArgs{...}
-type RecurrenceInput interface {
-	pulumi.Input
-
-	ToRecurrenceOutput() RecurrenceOutput
-	ToRecurrenceOutputWithContext(context.Context) RecurrenceOutput
-}
-
-// The workflow trigger recurrence for ComputeStartStop schedule type.
-type RecurrenceArgs struct {
-	// [Required] The frequency to trigger schedule.
-	Frequency pulumi.StringPtrInput `pulumi:"frequency"`
-	// [Required] Specifies schedule interval in conjunction with frequency
-	Interval pulumi.IntPtrInput `pulumi:"interval"`
-	// [Required] The recurrence schedule.
-	Schedule ComputeRecurrenceSchedulePtrInput `pulumi:"schedule"`
-	// The start time in yyyy-MM-ddTHH:mm:ss format.
-	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
-	// Specifies time zone in which the schedule runs.
-	// TimeZone should follow Windows time zone format. Refer: https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/default-time-zones?view=windows-11
-	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
-}
-
-// Defaults sets the appropriate defaults for RecurrenceArgs
-func (val *RecurrenceArgs) Defaults() *RecurrenceArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.TimeZone == nil {
-		tmp.TimeZone = pulumi.StringPtr("UTC")
-	}
-	return &tmp
-}
-func (RecurrenceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Recurrence)(nil)).Elem()
-}
-
-func (i RecurrenceArgs) ToRecurrenceOutput() RecurrenceOutput {
-	return i.ToRecurrenceOutputWithContext(context.Background())
-}
-
-func (i RecurrenceArgs) ToRecurrenceOutputWithContext(ctx context.Context) RecurrenceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RecurrenceOutput)
-}
-
-func (i RecurrenceArgs) ToRecurrencePtrOutput() RecurrencePtrOutput {
-	return i.ToRecurrencePtrOutputWithContext(context.Background())
-}
-
-func (i RecurrenceArgs) ToRecurrencePtrOutputWithContext(ctx context.Context) RecurrencePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RecurrenceOutput).ToRecurrencePtrOutputWithContext(ctx)
-}
-
-// RecurrencePtrInput is an input type that accepts RecurrenceArgs, RecurrencePtr and RecurrencePtrOutput values.
-// You can construct a concrete instance of `RecurrencePtrInput` via:
-//
-//	        RecurrenceArgs{...}
-//
-//	or:
-//
-//	        nil
-type RecurrencePtrInput interface {
-	pulumi.Input
-
-	ToRecurrencePtrOutput() RecurrencePtrOutput
-	ToRecurrencePtrOutputWithContext(context.Context) RecurrencePtrOutput
-}
-
-type recurrencePtrType RecurrenceArgs
-
-func RecurrencePtr(v *RecurrenceArgs) RecurrencePtrInput {
-	return (*recurrencePtrType)(v)
-}
-
-func (*recurrencePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Recurrence)(nil)).Elem()
-}
-
-func (i *recurrencePtrType) ToRecurrencePtrOutput() RecurrencePtrOutput {
-	return i.ToRecurrencePtrOutputWithContext(context.Background())
-}
-
-func (i *recurrencePtrType) ToRecurrencePtrOutputWithContext(ctx context.Context) RecurrencePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RecurrencePtrOutput)
-}
-
-// The workflow trigger recurrence for ComputeStartStop schedule type.
-type RecurrenceOutput struct{ *pulumi.OutputState }
-
-func (RecurrenceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Recurrence)(nil)).Elem()
-}
-
-func (o RecurrenceOutput) ToRecurrenceOutput() RecurrenceOutput {
-	return o
-}
-
-func (o RecurrenceOutput) ToRecurrenceOutputWithContext(ctx context.Context) RecurrenceOutput {
-	return o
-}
-
-func (o RecurrenceOutput) ToRecurrencePtrOutput() RecurrencePtrOutput {
-	return o.ToRecurrencePtrOutputWithContext(context.Background())
-}
-
-func (o RecurrenceOutput) ToRecurrencePtrOutputWithContext(ctx context.Context) RecurrencePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Recurrence) *Recurrence {
-		return &v
-	}).(RecurrencePtrOutput)
-}
-
-// [Required] The frequency to trigger schedule.
-func (o RecurrenceOutput) Frequency() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Recurrence) *string { return v.Frequency }).(pulumi.StringPtrOutput)
-}
-
-// [Required] Specifies schedule interval in conjunction with frequency
-func (o RecurrenceOutput) Interval() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v Recurrence) *int { return v.Interval }).(pulumi.IntPtrOutput)
-}
-
-// [Required] The recurrence schedule.
-func (o RecurrenceOutput) Schedule() ComputeRecurrenceSchedulePtrOutput {
-	return o.ApplyT(func(v Recurrence) *ComputeRecurrenceSchedule { return v.Schedule }).(ComputeRecurrenceSchedulePtrOutput)
-}
-
-// The start time in yyyy-MM-ddTHH:mm:ss format.
-func (o RecurrenceOutput) StartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Recurrence) *string { return v.StartTime }).(pulumi.StringPtrOutput)
-}
-
-// Specifies time zone in which the schedule runs.
-// TimeZone should follow Windows time zone format. Refer: https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/default-time-zones?view=windows-11
-func (o RecurrenceOutput) TimeZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Recurrence) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
-}
-
-type RecurrencePtrOutput struct{ *pulumi.OutputState }
-
-func (RecurrencePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Recurrence)(nil)).Elem()
-}
-
-func (o RecurrencePtrOutput) ToRecurrencePtrOutput() RecurrencePtrOutput {
-	return o
-}
-
-func (o RecurrencePtrOutput) ToRecurrencePtrOutputWithContext(ctx context.Context) RecurrencePtrOutput {
-	return o
-}
-
-func (o RecurrencePtrOutput) Elem() RecurrenceOutput {
-	return o.ApplyT(func(v *Recurrence) Recurrence {
-		if v != nil {
-			return *v
-		}
-		var ret Recurrence
-		return ret
-	}).(RecurrenceOutput)
-}
-
-// [Required] The frequency to trigger schedule.
-func (o RecurrencePtrOutput) Frequency() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Recurrence) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Frequency
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Required] Specifies schedule interval in conjunction with frequency
-func (o RecurrencePtrOutput) Interval() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Recurrence) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Interval
-	}).(pulumi.IntPtrOutput)
-}
-
-// [Required] The recurrence schedule.
-func (o RecurrencePtrOutput) Schedule() ComputeRecurrenceSchedulePtrOutput {
-	return o.ApplyT(func(v *Recurrence) *ComputeRecurrenceSchedule {
-		if v == nil {
-			return nil
-		}
-		return v.Schedule
-	}).(ComputeRecurrenceSchedulePtrOutput)
-}
-
-// The start time in yyyy-MM-ddTHH:mm:ss format.
-func (o RecurrencePtrOutput) StartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Recurrence) *string {
-		if v == nil {
-			return nil
-		}
-		return v.StartTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Specifies time zone in which the schedule runs.
-// TimeZone should follow Windows time zone format. Refer: https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/default-time-zones?view=windows-11
-func (o RecurrencePtrOutput) TimeZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Recurrence) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TimeZone
-	}).(pulumi.StringPtrOutput)
-}
-
-// The workflow trigger recurrence for ComputeStartStop schedule type.
-type RecurrenceResponse struct {
-	// [Required] The frequency to trigger schedule.
-	Frequency *string `pulumi:"frequency"`
-	// [Required] Specifies schedule interval in conjunction with frequency
-	Interval *int `pulumi:"interval"`
-	// [Required] The recurrence schedule.
-	Schedule *ComputeRecurrenceScheduleResponse `pulumi:"schedule"`
-	// The start time in yyyy-MM-ddTHH:mm:ss format.
-	StartTime *string `pulumi:"startTime"`
-	// Specifies time zone in which the schedule runs.
-	// TimeZone should follow Windows time zone format. Refer: https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/default-time-zones?view=windows-11
-	TimeZone *string `pulumi:"timeZone"`
-}
-
-// Defaults sets the appropriate defaults for RecurrenceResponse
-func (val *RecurrenceResponse) Defaults() *RecurrenceResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.TimeZone == nil {
-		timeZone_ := "UTC"
-		tmp.TimeZone = &timeZone_
-	}
-	return &tmp
-}
-
-// The workflow trigger recurrence for ComputeStartStop schedule type.
-type RecurrenceResponseOutput struct{ *pulumi.OutputState }
-
-func (RecurrenceResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RecurrenceResponse)(nil)).Elem()
-}
-
-func (o RecurrenceResponseOutput) ToRecurrenceResponseOutput() RecurrenceResponseOutput {
-	return o
-}
-
-func (o RecurrenceResponseOutput) ToRecurrenceResponseOutputWithContext(ctx context.Context) RecurrenceResponseOutput {
-	return o
-}
-
-// [Required] The frequency to trigger schedule.
-func (o RecurrenceResponseOutput) Frequency() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RecurrenceResponse) *string { return v.Frequency }).(pulumi.StringPtrOutput)
-}
-
-// [Required] Specifies schedule interval in conjunction with frequency
-func (o RecurrenceResponseOutput) Interval() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RecurrenceResponse) *int { return v.Interval }).(pulumi.IntPtrOutput)
-}
-
-// [Required] The recurrence schedule.
-func (o RecurrenceResponseOutput) Schedule() ComputeRecurrenceScheduleResponsePtrOutput {
-	return o.ApplyT(func(v RecurrenceResponse) *ComputeRecurrenceScheduleResponse { return v.Schedule }).(ComputeRecurrenceScheduleResponsePtrOutput)
-}
-
-// The start time in yyyy-MM-ddTHH:mm:ss format.
-func (o RecurrenceResponseOutput) StartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RecurrenceResponse) *string { return v.StartTime }).(pulumi.StringPtrOutput)
-}
-
-// Specifies time zone in which the schedule runs.
-// TimeZone should follow Windows time zone format. Refer: https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/default-time-zones?view=windows-11
-func (o RecurrenceResponseOutput) TimeZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RecurrenceResponse) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
-}
-
-type RecurrenceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (RecurrenceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RecurrenceResponse)(nil)).Elem()
-}
-
-func (o RecurrenceResponsePtrOutput) ToRecurrenceResponsePtrOutput() RecurrenceResponsePtrOutput {
-	return o
-}
-
-func (o RecurrenceResponsePtrOutput) ToRecurrenceResponsePtrOutputWithContext(ctx context.Context) RecurrenceResponsePtrOutput {
-	return o
-}
-
-func (o RecurrenceResponsePtrOutput) Elem() RecurrenceResponseOutput {
-	return o.ApplyT(func(v *RecurrenceResponse) RecurrenceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret RecurrenceResponse
-		return ret
-	}).(RecurrenceResponseOutput)
-}
-
-// [Required] The frequency to trigger schedule.
-func (o RecurrenceResponsePtrOutput) Frequency() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RecurrenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Frequency
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Required] Specifies schedule interval in conjunction with frequency
-func (o RecurrenceResponsePtrOutput) Interval() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *RecurrenceResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Interval
-	}).(pulumi.IntPtrOutput)
-}
-
-// [Required] The recurrence schedule.
-func (o RecurrenceResponsePtrOutput) Schedule() ComputeRecurrenceScheduleResponsePtrOutput {
-	return o.ApplyT(func(v *RecurrenceResponse) *ComputeRecurrenceScheduleResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Schedule
-	}).(ComputeRecurrenceScheduleResponsePtrOutput)
-}
-
-// The start time in yyyy-MM-ddTHH:mm:ss format.
-func (o RecurrenceResponsePtrOutput) StartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RecurrenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.StartTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Specifies time zone in which the schedule runs.
-// TimeZone should follow Windows time zone format. Refer: https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/default-time-zones?view=windows-11
-func (o RecurrenceResponsePtrOutput) TimeZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RecurrenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TimeZone
-	}).(pulumi.StringPtrOutput)
-}
-
-type RecurrenceSchedule struct {
-	// [Required] List of hours for the schedule.
-	Hours []int `pulumi:"hours"`
-	// [Required] List of minutes for the schedule.
-	Minutes []int `pulumi:"minutes"`
-	// List of month days for the schedule
-	MonthDays []int `pulumi:"monthDays"`
-	// List of days for the schedule.
-	WeekDays []string `pulumi:"weekDays"`
-}
-
-// RecurrenceScheduleInput is an input type that accepts RecurrenceScheduleArgs and RecurrenceScheduleOutput values.
-// You can construct a concrete instance of `RecurrenceScheduleInput` via:
-//
-//	RecurrenceScheduleArgs{...}
-type RecurrenceScheduleInput interface {
-	pulumi.Input
-
-	ToRecurrenceScheduleOutput() RecurrenceScheduleOutput
-	ToRecurrenceScheduleOutputWithContext(context.Context) RecurrenceScheduleOutput
-}
-
-type RecurrenceScheduleArgs struct {
-	// [Required] List of hours for the schedule.
-	Hours pulumi.IntArrayInput `pulumi:"hours"`
-	// [Required] List of minutes for the schedule.
-	Minutes pulumi.IntArrayInput `pulumi:"minutes"`
-	// List of month days for the schedule
-	MonthDays pulumi.IntArrayInput `pulumi:"monthDays"`
-	// List of days for the schedule.
-	WeekDays pulumi.StringArrayInput `pulumi:"weekDays"`
-}
-
-func (RecurrenceScheduleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RecurrenceSchedule)(nil)).Elem()
-}
-
-func (i RecurrenceScheduleArgs) ToRecurrenceScheduleOutput() RecurrenceScheduleOutput {
-	return i.ToRecurrenceScheduleOutputWithContext(context.Background())
-}
-
-func (i RecurrenceScheduleArgs) ToRecurrenceScheduleOutputWithContext(ctx context.Context) RecurrenceScheduleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RecurrenceScheduleOutput)
-}
-
-func (i RecurrenceScheduleArgs) ToRecurrenceSchedulePtrOutput() RecurrenceSchedulePtrOutput {
-	return i.ToRecurrenceSchedulePtrOutputWithContext(context.Background())
-}
-
-func (i RecurrenceScheduleArgs) ToRecurrenceSchedulePtrOutputWithContext(ctx context.Context) RecurrenceSchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RecurrenceScheduleOutput).ToRecurrenceSchedulePtrOutputWithContext(ctx)
-}
-
-// RecurrenceSchedulePtrInput is an input type that accepts RecurrenceScheduleArgs, RecurrenceSchedulePtr and RecurrenceSchedulePtrOutput values.
-// You can construct a concrete instance of `RecurrenceSchedulePtrInput` via:
-//
-//	        RecurrenceScheduleArgs{...}
-//
-//	or:
-//
-//	        nil
-type RecurrenceSchedulePtrInput interface {
-	pulumi.Input
-
-	ToRecurrenceSchedulePtrOutput() RecurrenceSchedulePtrOutput
-	ToRecurrenceSchedulePtrOutputWithContext(context.Context) RecurrenceSchedulePtrOutput
-}
-
-type recurrenceSchedulePtrType RecurrenceScheduleArgs
-
-func RecurrenceSchedulePtr(v *RecurrenceScheduleArgs) RecurrenceSchedulePtrInput {
-	return (*recurrenceSchedulePtrType)(v)
-}
-
-func (*recurrenceSchedulePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RecurrenceSchedule)(nil)).Elem()
-}
-
-func (i *recurrenceSchedulePtrType) ToRecurrenceSchedulePtrOutput() RecurrenceSchedulePtrOutput {
-	return i.ToRecurrenceSchedulePtrOutputWithContext(context.Background())
-}
-
-func (i *recurrenceSchedulePtrType) ToRecurrenceSchedulePtrOutputWithContext(ctx context.Context) RecurrenceSchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RecurrenceSchedulePtrOutput)
-}
-
-type RecurrenceScheduleOutput struct{ *pulumi.OutputState }
-
-func (RecurrenceScheduleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RecurrenceSchedule)(nil)).Elem()
-}
-
-func (o RecurrenceScheduleOutput) ToRecurrenceScheduleOutput() RecurrenceScheduleOutput {
-	return o
-}
-
-func (o RecurrenceScheduleOutput) ToRecurrenceScheduleOutputWithContext(ctx context.Context) RecurrenceScheduleOutput {
-	return o
-}
-
-func (o RecurrenceScheduleOutput) ToRecurrenceSchedulePtrOutput() RecurrenceSchedulePtrOutput {
-	return o.ToRecurrenceSchedulePtrOutputWithContext(context.Background())
-}
-
-func (o RecurrenceScheduleOutput) ToRecurrenceSchedulePtrOutputWithContext(ctx context.Context) RecurrenceSchedulePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RecurrenceSchedule) *RecurrenceSchedule {
-		return &v
-	}).(RecurrenceSchedulePtrOutput)
-}
-
-// [Required] List of hours for the schedule.
-func (o RecurrenceScheduleOutput) Hours() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v RecurrenceSchedule) []int { return v.Hours }).(pulumi.IntArrayOutput)
-}
-
-// [Required] List of minutes for the schedule.
-func (o RecurrenceScheduleOutput) Minutes() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v RecurrenceSchedule) []int { return v.Minutes }).(pulumi.IntArrayOutput)
-}
-
-// List of month days for the schedule
-func (o RecurrenceScheduleOutput) MonthDays() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v RecurrenceSchedule) []int { return v.MonthDays }).(pulumi.IntArrayOutput)
-}
-
-// List of days for the schedule.
-func (o RecurrenceScheduleOutput) WeekDays() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v RecurrenceSchedule) []string { return v.WeekDays }).(pulumi.StringArrayOutput)
-}
-
-type RecurrenceSchedulePtrOutput struct{ *pulumi.OutputState }
-
-func (RecurrenceSchedulePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RecurrenceSchedule)(nil)).Elem()
-}
-
-func (o RecurrenceSchedulePtrOutput) ToRecurrenceSchedulePtrOutput() RecurrenceSchedulePtrOutput {
-	return o
-}
-
-func (o RecurrenceSchedulePtrOutput) ToRecurrenceSchedulePtrOutputWithContext(ctx context.Context) RecurrenceSchedulePtrOutput {
-	return o
-}
-
-func (o RecurrenceSchedulePtrOutput) Elem() RecurrenceScheduleOutput {
-	return o.ApplyT(func(v *RecurrenceSchedule) RecurrenceSchedule {
-		if v != nil {
-			return *v
-		}
-		var ret RecurrenceSchedule
-		return ret
-	}).(RecurrenceScheduleOutput)
-}
-
-// [Required] List of hours for the schedule.
-func (o RecurrenceSchedulePtrOutput) Hours() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v *RecurrenceSchedule) []int {
-		if v == nil {
-			return nil
-		}
-		return v.Hours
-	}).(pulumi.IntArrayOutput)
-}
-
-// [Required] List of minutes for the schedule.
-func (o RecurrenceSchedulePtrOutput) Minutes() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v *RecurrenceSchedule) []int {
-		if v == nil {
-			return nil
-		}
-		return v.Minutes
-	}).(pulumi.IntArrayOutput)
-}
-
-// List of month days for the schedule
-func (o RecurrenceSchedulePtrOutput) MonthDays() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v *RecurrenceSchedule) []int {
-		if v == nil {
-			return nil
-		}
-		return v.MonthDays
-	}).(pulumi.IntArrayOutput)
-}
-
-// List of days for the schedule.
-func (o RecurrenceSchedulePtrOutput) WeekDays() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *RecurrenceSchedule) []string {
-		if v == nil {
-			return nil
-		}
-		return v.WeekDays
-	}).(pulumi.StringArrayOutput)
-}
-
-type RecurrenceScheduleResponse struct {
-	// [Required] List of hours for the schedule.
-	Hours []int `pulumi:"hours"`
-	// [Required] List of minutes for the schedule.
-	Minutes []int `pulumi:"minutes"`
-	// List of month days for the schedule
-	MonthDays []int `pulumi:"monthDays"`
-	// List of days for the schedule.
-	WeekDays []string `pulumi:"weekDays"`
-}
-
-type RecurrenceScheduleResponseOutput struct{ *pulumi.OutputState }
-
-func (RecurrenceScheduleResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RecurrenceScheduleResponse)(nil)).Elem()
-}
-
-func (o RecurrenceScheduleResponseOutput) ToRecurrenceScheduleResponseOutput() RecurrenceScheduleResponseOutput {
-	return o
-}
-
-func (o RecurrenceScheduleResponseOutput) ToRecurrenceScheduleResponseOutputWithContext(ctx context.Context) RecurrenceScheduleResponseOutput {
-	return o
-}
-
-// [Required] List of hours for the schedule.
-func (o RecurrenceScheduleResponseOutput) Hours() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v RecurrenceScheduleResponse) []int { return v.Hours }).(pulumi.IntArrayOutput)
-}
-
-// [Required] List of minutes for the schedule.
-func (o RecurrenceScheduleResponseOutput) Minutes() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v RecurrenceScheduleResponse) []int { return v.Minutes }).(pulumi.IntArrayOutput)
-}
-
-// List of month days for the schedule
-func (o RecurrenceScheduleResponseOutput) MonthDays() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v RecurrenceScheduleResponse) []int { return v.MonthDays }).(pulumi.IntArrayOutput)
-}
-
-// List of days for the schedule.
-func (o RecurrenceScheduleResponseOutput) WeekDays() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v RecurrenceScheduleResponse) []string { return v.WeekDays }).(pulumi.StringArrayOutput)
-}
-
-type RecurrenceScheduleResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (RecurrenceScheduleResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RecurrenceScheduleResponse)(nil)).Elem()
-}
-
-func (o RecurrenceScheduleResponsePtrOutput) ToRecurrenceScheduleResponsePtrOutput() RecurrenceScheduleResponsePtrOutput {
-	return o
-}
-
-func (o RecurrenceScheduleResponsePtrOutput) ToRecurrenceScheduleResponsePtrOutputWithContext(ctx context.Context) RecurrenceScheduleResponsePtrOutput {
-	return o
-}
-
-func (o RecurrenceScheduleResponsePtrOutput) Elem() RecurrenceScheduleResponseOutput {
-	return o.ApplyT(func(v *RecurrenceScheduleResponse) RecurrenceScheduleResponse {
-		if v != nil {
-			return *v
-		}
-		var ret RecurrenceScheduleResponse
-		return ret
-	}).(RecurrenceScheduleResponseOutput)
-}
-
-// [Required] List of hours for the schedule.
-func (o RecurrenceScheduleResponsePtrOutput) Hours() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v *RecurrenceScheduleResponse) []int {
-		if v == nil {
-			return nil
-		}
-		return v.Hours
-	}).(pulumi.IntArrayOutput)
-}
-
-// [Required] List of minutes for the schedule.
-func (o RecurrenceScheduleResponsePtrOutput) Minutes() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v *RecurrenceScheduleResponse) []int {
-		if v == nil {
-			return nil
-		}
-		return v.Minutes
-	}).(pulumi.IntArrayOutput)
-}
-
-// List of month days for the schedule
-func (o RecurrenceScheduleResponsePtrOutput) MonthDays() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v *RecurrenceScheduleResponse) []int {
-		if v == nil {
-			return nil
-		}
-		return v.MonthDays
-	}).(pulumi.IntArrayOutput)
-}
-
-// List of days for the schedule.
-func (o RecurrenceScheduleResponsePtrOutput) WeekDays() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *RecurrenceScheduleResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.WeekDays
-	}).(pulumi.StringArrayOutput)
-}
-
-type RecurrenceTrigger struct {
-	// Specifies end time of schedule in ISO 8601, but without a UTC offset. Refer https://en.wikipedia.org/wiki/ISO_8601.
-	// Recommented format would be "2022-06-01T00:00:01"
-	// If not present, the schedule will run indefinitely
-	EndTime *string `pulumi:"endTime"`
-	// [Required] The frequency to trigger schedule.
-	Frequency string `pulumi:"frequency"`
-	// [Required] Specifies schedule interval in conjunction with frequency
-	Interval int `pulumi:"interval"`
-	// The recurrence schedule.
-	Schedule *RecurrenceSchedule `pulumi:"schedule"`
-	// Specifies start time of schedule in ISO 8601 format, but without a UTC offset.
-	StartTime *string `pulumi:"startTime"`
-	// Specifies time zone in which the schedule runs.
-	// TimeZone should follow Windows time zone format. Refer: https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/default-time-zones?view=windows-11
-	TimeZone *string `pulumi:"timeZone"`
-	// Expected value is 'Recurrence'.
-	TriggerType string `pulumi:"triggerType"`
-}
-
-// Defaults sets the appropriate defaults for RecurrenceTrigger
-func (val *RecurrenceTrigger) Defaults() *RecurrenceTrigger {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.TimeZone == nil {
-		timeZone_ := "UTC"
-		tmp.TimeZone = &timeZone_
-	}
-	return &tmp
-}
-
-// RecurrenceTriggerInput is an input type that accepts RecurrenceTriggerArgs and RecurrenceTriggerOutput values.
-// You can construct a concrete instance of `RecurrenceTriggerInput` via:
-//
-//	RecurrenceTriggerArgs{...}
-type RecurrenceTriggerInput interface {
-	pulumi.Input
-
-	ToRecurrenceTriggerOutput() RecurrenceTriggerOutput
-	ToRecurrenceTriggerOutputWithContext(context.Context) RecurrenceTriggerOutput
-}
-
-type RecurrenceTriggerArgs struct {
-	// Specifies end time of schedule in ISO 8601, but without a UTC offset. Refer https://en.wikipedia.org/wiki/ISO_8601.
-	// Recommented format would be "2022-06-01T00:00:01"
-	// If not present, the schedule will run indefinitely
-	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
-	// [Required] The frequency to trigger schedule.
-	Frequency pulumi.StringInput `pulumi:"frequency"`
-	// [Required] Specifies schedule interval in conjunction with frequency
-	Interval pulumi.IntInput `pulumi:"interval"`
-	// The recurrence schedule.
-	Schedule RecurrenceSchedulePtrInput `pulumi:"schedule"`
-	// Specifies start time of schedule in ISO 8601 format, but without a UTC offset.
-	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
-	// Specifies time zone in which the schedule runs.
-	// TimeZone should follow Windows time zone format. Refer: https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/default-time-zones?view=windows-11
-	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
-	// Expected value is 'Recurrence'.
-	TriggerType pulumi.StringInput `pulumi:"triggerType"`
-}
-
-// Defaults sets the appropriate defaults for RecurrenceTriggerArgs
-func (val *RecurrenceTriggerArgs) Defaults() *RecurrenceTriggerArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.TimeZone == nil {
-		tmp.TimeZone = pulumi.StringPtr("UTC")
-	}
-	return &tmp
-}
-func (RecurrenceTriggerArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RecurrenceTrigger)(nil)).Elem()
-}
-
-func (i RecurrenceTriggerArgs) ToRecurrenceTriggerOutput() RecurrenceTriggerOutput {
-	return i.ToRecurrenceTriggerOutputWithContext(context.Background())
-}
-
-func (i RecurrenceTriggerArgs) ToRecurrenceTriggerOutputWithContext(ctx context.Context) RecurrenceTriggerOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RecurrenceTriggerOutput)
-}
-
-func (i RecurrenceTriggerArgs) ToRecurrenceTriggerPtrOutput() RecurrenceTriggerPtrOutput {
-	return i.ToRecurrenceTriggerPtrOutputWithContext(context.Background())
-}
-
-func (i RecurrenceTriggerArgs) ToRecurrenceTriggerPtrOutputWithContext(ctx context.Context) RecurrenceTriggerPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RecurrenceTriggerOutput).ToRecurrenceTriggerPtrOutputWithContext(ctx)
-}
-
-// RecurrenceTriggerPtrInput is an input type that accepts RecurrenceTriggerArgs, RecurrenceTriggerPtr and RecurrenceTriggerPtrOutput values.
-// You can construct a concrete instance of `RecurrenceTriggerPtrInput` via:
-//
-//	        RecurrenceTriggerArgs{...}
-//
-//	or:
-//
-//	        nil
-type RecurrenceTriggerPtrInput interface {
-	pulumi.Input
-
-	ToRecurrenceTriggerPtrOutput() RecurrenceTriggerPtrOutput
-	ToRecurrenceTriggerPtrOutputWithContext(context.Context) RecurrenceTriggerPtrOutput
-}
-
-type recurrenceTriggerPtrType RecurrenceTriggerArgs
-
-func RecurrenceTriggerPtr(v *RecurrenceTriggerArgs) RecurrenceTriggerPtrInput {
-	return (*recurrenceTriggerPtrType)(v)
-}
-
-func (*recurrenceTriggerPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RecurrenceTrigger)(nil)).Elem()
-}
-
-func (i *recurrenceTriggerPtrType) ToRecurrenceTriggerPtrOutput() RecurrenceTriggerPtrOutput {
-	return i.ToRecurrenceTriggerPtrOutputWithContext(context.Background())
-}
-
-func (i *recurrenceTriggerPtrType) ToRecurrenceTriggerPtrOutputWithContext(ctx context.Context) RecurrenceTriggerPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RecurrenceTriggerPtrOutput)
-}
-
-type RecurrenceTriggerOutput struct{ *pulumi.OutputState }
-
-func (RecurrenceTriggerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RecurrenceTrigger)(nil)).Elem()
-}
-
-func (o RecurrenceTriggerOutput) ToRecurrenceTriggerOutput() RecurrenceTriggerOutput {
-	return o
-}
-
-func (o RecurrenceTriggerOutput) ToRecurrenceTriggerOutputWithContext(ctx context.Context) RecurrenceTriggerOutput {
-	return o
-}
-
-func (o RecurrenceTriggerOutput) ToRecurrenceTriggerPtrOutput() RecurrenceTriggerPtrOutput {
-	return o.ToRecurrenceTriggerPtrOutputWithContext(context.Background())
-}
-
-func (o RecurrenceTriggerOutput) ToRecurrenceTriggerPtrOutputWithContext(ctx context.Context) RecurrenceTriggerPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RecurrenceTrigger) *RecurrenceTrigger {
-		return &v
-	}).(RecurrenceTriggerPtrOutput)
-}
-
-// Specifies end time of schedule in ISO 8601, but without a UTC offset. Refer https://en.wikipedia.org/wiki/ISO_8601.
-// Recommented format would be "2022-06-01T00:00:01"
-// If not present, the schedule will run indefinitely
-func (o RecurrenceTriggerOutput) EndTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RecurrenceTrigger) *string { return v.EndTime }).(pulumi.StringPtrOutput)
-}
-
-// [Required] The frequency to trigger schedule.
-func (o RecurrenceTriggerOutput) Frequency() pulumi.StringOutput {
-	return o.ApplyT(func(v RecurrenceTrigger) string { return v.Frequency }).(pulumi.StringOutput)
-}
-
-// [Required] Specifies schedule interval in conjunction with frequency
-func (o RecurrenceTriggerOutput) Interval() pulumi.IntOutput {
-	return o.ApplyT(func(v RecurrenceTrigger) int { return v.Interval }).(pulumi.IntOutput)
-}
-
-// The recurrence schedule.
-func (o RecurrenceTriggerOutput) Schedule() RecurrenceSchedulePtrOutput {
-	return o.ApplyT(func(v RecurrenceTrigger) *RecurrenceSchedule { return v.Schedule }).(RecurrenceSchedulePtrOutput)
-}
-
-// Specifies start time of schedule in ISO 8601 format, but without a UTC offset.
-func (o RecurrenceTriggerOutput) StartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RecurrenceTrigger) *string { return v.StartTime }).(pulumi.StringPtrOutput)
-}
-
-// Specifies time zone in which the schedule runs.
-// TimeZone should follow Windows time zone format. Refer: https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/default-time-zones?view=windows-11
-func (o RecurrenceTriggerOutput) TimeZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RecurrenceTrigger) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
-}
-
-// Expected value is 'Recurrence'.
-func (o RecurrenceTriggerOutput) TriggerType() pulumi.StringOutput {
-	return o.ApplyT(func(v RecurrenceTrigger) string { return v.TriggerType }).(pulumi.StringOutput)
-}
-
-type RecurrenceTriggerPtrOutput struct{ *pulumi.OutputState }
-
-func (RecurrenceTriggerPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RecurrenceTrigger)(nil)).Elem()
-}
-
-func (o RecurrenceTriggerPtrOutput) ToRecurrenceTriggerPtrOutput() RecurrenceTriggerPtrOutput {
-	return o
-}
-
-func (o RecurrenceTriggerPtrOutput) ToRecurrenceTriggerPtrOutputWithContext(ctx context.Context) RecurrenceTriggerPtrOutput {
-	return o
-}
-
-func (o RecurrenceTriggerPtrOutput) Elem() RecurrenceTriggerOutput {
-	return o.ApplyT(func(v *RecurrenceTrigger) RecurrenceTrigger {
-		if v != nil {
-			return *v
-		}
-		var ret RecurrenceTrigger
-		return ret
-	}).(RecurrenceTriggerOutput)
-}
-
-// Specifies end time of schedule in ISO 8601, but without a UTC offset. Refer https://en.wikipedia.org/wiki/ISO_8601.
-// Recommented format would be "2022-06-01T00:00:01"
-// If not present, the schedule will run indefinitely
-func (o RecurrenceTriggerPtrOutput) EndTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RecurrenceTrigger) *string {
-		if v == nil {
-			return nil
-		}
-		return v.EndTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Required] The frequency to trigger schedule.
-func (o RecurrenceTriggerPtrOutput) Frequency() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RecurrenceTrigger) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Frequency
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Required] Specifies schedule interval in conjunction with frequency
-func (o RecurrenceTriggerPtrOutput) Interval() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *RecurrenceTrigger) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Interval
-	}).(pulumi.IntPtrOutput)
-}
-
-// The recurrence schedule.
-func (o RecurrenceTriggerPtrOutput) Schedule() RecurrenceSchedulePtrOutput {
-	return o.ApplyT(func(v *RecurrenceTrigger) *RecurrenceSchedule {
-		if v == nil {
-			return nil
-		}
-		return v.Schedule
-	}).(RecurrenceSchedulePtrOutput)
-}
-
-// Specifies start time of schedule in ISO 8601 format, but without a UTC offset.
-func (o RecurrenceTriggerPtrOutput) StartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RecurrenceTrigger) *string {
-		if v == nil {
-			return nil
-		}
-		return v.StartTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Specifies time zone in which the schedule runs.
-// TimeZone should follow Windows time zone format. Refer: https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/default-time-zones?view=windows-11
-func (o RecurrenceTriggerPtrOutput) TimeZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RecurrenceTrigger) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TimeZone
-	}).(pulumi.StringPtrOutput)
-}
-
-// Expected value is 'Recurrence'.
-func (o RecurrenceTriggerPtrOutput) TriggerType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RecurrenceTrigger) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TriggerType
-	}).(pulumi.StringPtrOutput)
-}
-
-type RecurrenceTriggerResponse struct {
-	// Specifies end time of schedule in ISO 8601, but without a UTC offset. Refer https://en.wikipedia.org/wiki/ISO_8601.
-	// Recommented format would be "2022-06-01T00:00:01"
-	// If not present, the schedule will run indefinitely
-	EndTime *string `pulumi:"endTime"`
-	// [Required] The frequency to trigger schedule.
-	Frequency string `pulumi:"frequency"`
-	// [Required] Specifies schedule interval in conjunction with frequency
-	Interval int `pulumi:"interval"`
-	// The recurrence schedule.
-	Schedule *RecurrenceScheduleResponse `pulumi:"schedule"`
-	// Specifies start time of schedule in ISO 8601 format, but without a UTC offset.
-	StartTime *string `pulumi:"startTime"`
-	// Specifies time zone in which the schedule runs.
-	// TimeZone should follow Windows time zone format. Refer: https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/default-time-zones?view=windows-11
-	TimeZone *string `pulumi:"timeZone"`
-	// Expected value is 'Recurrence'.
-	TriggerType string `pulumi:"triggerType"`
-}
-
-// Defaults sets the appropriate defaults for RecurrenceTriggerResponse
-func (val *RecurrenceTriggerResponse) Defaults() *RecurrenceTriggerResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.TimeZone == nil {
-		timeZone_ := "UTC"
-		tmp.TimeZone = &timeZone_
-	}
-	return &tmp
-}
-
-type RecurrenceTriggerResponseOutput struct{ *pulumi.OutputState }
-
-func (RecurrenceTriggerResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RecurrenceTriggerResponse)(nil)).Elem()
-}
-
-func (o RecurrenceTriggerResponseOutput) ToRecurrenceTriggerResponseOutput() RecurrenceTriggerResponseOutput {
-	return o
-}
-
-func (o RecurrenceTriggerResponseOutput) ToRecurrenceTriggerResponseOutputWithContext(ctx context.Context) RecurrenceTriggerResponseOutput {
-	return o
-}
-
-// Specifies end time of schedule in ISO 8601, but without a UTC offset. Refer https://en.wikipedia.org/wiki/ISO_8601.
-// Recommented format would be "2022-06-01T00:00:01"
-// If not present, the schedule will run indefinitely
-func (o RecurrenceTriggerResponseOutput) EndTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RecurrenceTriggerResponse) *string { return v.EndTime }).(pulumi.StringPtrOutput)
-}
-
-// [Required] The frequency to trigger schedule.
-func (o RecurrenceTriggerResponseOutput) Frequency() pulumi.StringOutput {
-	return o.ApplyT(func(v RecurrenceTriggerResponse) string { return v.Frequency }).(pulumi.StringOutput)
-}
-
-// [Required] Specifies schedule interval in conjunction with frequency
-func (o RecurrenceTriggerResponseOutput) Interval() pulumi.IntOutput {
-	return o.ApplyT(func(v RecurrenceTriggerResponse) int { return v.Interval }).(pulumi.IntOutput)
-}
-
-// The recurrence schedule.
-func (o RecurrenceTriggerResponseOutput) Schedule() RecurrenceScheduleResponsePtrOutput {
-	return o.ApplyT(func(v RecurrenceTriggerResponse) *RecurrenceScheduleResponse { return v.Schedule }).(RecurrenceScheduleResponsePtrOutput)
-}
-
-// Specifies start time of schedule in ISO 8601 format, but without a UTC offset.
-func (o RecurrenceTriggerResponseOutput) StartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RecurrenceTriggerResponse) *string { return v.StartTime }).(pulumi.StringPtrOutput)
-}
-
-// Specifies time zone in which the schedule runs.
-// TimeZone should follow Windows time zone format. Refer: https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/default-time-zones?view=windows-11
-func (o RecurrenceTriggerResponseOutput) TimeZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RecurrenceTriggerResponse) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
-}
-
-// Expected value is 'Recurrence'.
-func (o RecurrenceTriggerResponseOutput) TriggerType() pulumi.StringOutput {
-	return o.ApplyT(func(v RecurrenceTriggerResponse) string { return v.TriggerType }).(pulumi.StringOutput)
-}
-
-type RecurrenceTriggerResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (RecurrenceTriggerResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RecurrenceTriggerResponse)(nil)).Elem()
-}
-
-func (o RecurrenceTriggerResponsePtrOutput) ToRecurrenceTriggerResponsePtrOutput() RecurrenceTriggerResponsePtrOutput {
-	return o
-}
-
-func (o RecurrenceTriggerResponsePtrOutput) ToRecurrenceTriggerResponsePtrOutputWithContext(ctx context.Context) RecurrenceTriggerResponsePtrOutput {
-	return o
-}
-
-func (o RecurrenceTriggerResponsePtrOutput) Elem() RecurrenceTriggerResponseOutput {
-	return o.ApplyT(func(v *RecurrenceTriggerResponse) RecurrenceTriggerResponse {
-		if v != nil {
-			return *v
-		}
-		var ret RecurrenceTriggerResponse
-		return ret
-	}).(RecurrenceTriggerResponseOutput)
-}
-
-// Specifies end time of schedule in ISO 8601, but without a UTC offset. Refer https://en.wikipedia.org/wiki/ISO_8601.
-// Recommented format would be "2022-06-01T00:00:01"
-// If not present, the schedule will run indefinitely
-func (o RecurrenceTriggerResponsePtrOutput) EndTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RecurrenceTriggerResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.EndTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Required] The frequency to trigger schedule.
-func (o RecurrenceTriggerResponsePtrOutput) Frequency() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RecurrenceTriggerResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Frequency
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Required] Specifies schedule interval in conjunction with frequency
-func (o RecurrenceTriggerResponsePtrOutput) Interval() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *RecurrenceTriggerResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Interval
-	}).(pulumi.IntPtrOutput)
-}
-
-// The recurrence schedule.
-func (o RecurrenceTriggerResponsePtrOutput) Schedule() RecurrenceScheduleResponsePtrOutput {
-	return o.ApplyT(func(v *RecurrenceTriggerResponse) *RecurrenceScheduleResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Schedule
-	}).(RecurrenceScheduleResponsePtrOutput)
-}
-
-// Specifies start time of schedule in ISO 8601 format, but without a UTC offset.
-func (o RecurrenceTriggerResponsePtrOutput) StartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RecurrenceTriggerResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.StartTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Specifies time zone in which the schedule runs.
-// TimeZone should follow Windows time zone format. Refer: https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/default-time-zones?view=windows-11
-func (o RecurrenceTriggerResponsePtrOutput) TimeZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RecurrenceTriggerResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TimeZone
-	}).(pulumi.StringPtrOutput)
-}
-
-// Expected value is 'Recurrence'.
-func (o RecurrenceTriggerResponsePtrOutput) TriggerType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RecurrenceTriggerResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TriggerType
-	}).(pulumi.StringPtrOutput)
-}
-
-type RegistryListCredentialsResultResponse struct {
-	// The location of the workspace ACR
-	Location  string             `pulumi:"location"`
-	Passwords []PasswordResponse `pulumi:"passwords"`
-	// The username of the workspace ACR
-	Username string `pulumi:"username"`
-}
-
-type RegistryListCredentialsResultResponseOutput struct{ *pulumi.OutputState }
-
-func (RegistryListCredentialsResultResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegistryListCredentialsResultResponse)(nil)).Elem()
-}
-
-func (o RegistryListCredentialsResultResponseOutput) ToRegistryListCredentialsResultResponseOutput() RegistryListCredentialsResultResponseOutput {
-	return o
-}
-
-func (o RegistryListCredentialsResultResponseOutput) ToRegistryListCredentialsResultResponseOutputWithContext(ctx context.Context) RegistryListCredentialsResultResponseOutput {
-	return o
-}
-
-// The location of the workspace ACR
-func (o RegistryListCredentialsResultResponseOutput) Location() pulumi.StringOutput {
-	return o.ApplyT(func(v RegistryListCredentialsResultResponse) string { return v.Location }).(pulumi.StringOutput)
-}
-
-func (o RegistryListCredentialsResultResponseOutput) Passwords() PasswordResponseArrayOutput {
-	return o.ApplyT(func(v RegistryListCredentialsResultResponse) []PasswordResponse { return v.Passwords }).(PasswordResponseArrayOutput)
-}
-
-// The username of the workspace ACR
-func (o RegistryListCredentialsResultResponseOutput) Username() pulumi.StringOutput {
-	return o.ApplyT(func(v RegistryListCredentialsResultResponse) string { return v.Username }).(pulumi.StringOutput)
-}
-
-type RegistryListCredentialsResultResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (RegistryListCredentialsResultResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RegistryListCredentialsResultResponse)(nil)).Elem()
-}
-
-func (o RegistryListCredentialsResultResponsePtrOutput) ToRegistryListCredentialsResultResponsePtrOutput() RegistryListCredentialsResultResponsePtrOutput {
-	return o
-}
-
-func (o RegistryListCredentialsResultResponsePtrOutput) ToRegistryListCredentialsResultResponsePtrOutputWithContext(ctx context.Context) RegistryListCredentialsResultResponsePtrOutput {
-	return o
-}
-
-func (o RegistryListCredentialsResultResponsePtrOutput) Elem() RegistryListCredentialsResultResponseOutput {
-	return o.ApplyT(func(v *RegistryListCredentialsResultResponse) RegistryListCredentialsResultResponse {
-		if v != nil {
-			return *v
-		}
-		var ret RegistryListCredentialsResultResponse
-		return ret
-	}).(RegistryListCredentialsResultResponseOutput)
-}
-
-// The location of the workspace ACR
-func (o RegistryListCredentialsResultResponsePtrOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RegistryListCredentialsResultResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Location
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o RegistryListCredentialsResultResponsePtrOutput) Passwords() PasswordResponseArrayOutput {
-	return o.ApplyT(func(v *RegistryListCredentialsResultResponse) []PasswordResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Passwords
-	}).(PasswordResponseArrayOutput)
-}
-
-// The username of the workspace ACR
-func (o RegistryListCredentialsResultResponsePtrOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RegistryListCredentialsResultResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Username
-	}).(pulumi.StringPtrOutput)
-}
-
-// Private endpoint connection definition.
-type RegistryPrivateEndpointConnection struct {
-	// The group ids
-	GroupIds []string `pulumi:"groupIds"`
-	// This is the private endpoint connection name created on SRP
-	// Full resource id: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.MachineLearningServices/{resourceType}/{resourceName}/registryPrivateEndpointConnections/{peConnectionName}
-	Id *string `pulumi:"id"`
-	// Same as workspace location.
-	Location *string `pulumi:"location"`
-	// The PE network resource that is linked to this PE connection.
-	PrivateEndpoint *PrivateEndpointResource `pulumi:"privateEndpoint"`
-	// One of null, "Succeeded", "Provisioning", "Failed". While not approved, it's null.
-	ProvisioningState *string `pulumi:"provisioningState"`
-	// The connection state.
-	RegistryPrivateLinkServiceConnectionState *RegistryPrivateLinkServiceConnectionState `pulumi:"registryPrivateLinkServiceConnectionState"`
-}
-
-// RegistryPrivateEndpointConnectionInput is an input type that accepts RegistryPrivateEndpointConnectionArgs and RegistryPrivateEndpointConnectionOutput values.
-// You can construct a concrete instance of `RegistryPrivateEndpointConnectionInput` via:
-//
-//	RegistryPrivateEndpointConnectionArgs{...}
-type RegistryPrivateEndpointConnectionInput interface {
-	pulumi.Input
-
-	ToRegistryPrivateEndpointConnectionOutput() RegistryPrivateEndpointConnectionOutput
-	ToRegistryPrivateEndpointConnectionOutputWithContext(context.Context) RegistryPrivateEndpointConnectionOutput
-}
-
-// Private endpoint connection definition.
-type RegistryPrivateEndpointConnectionArgs struct {
-	// The group ids
-	GroupIds pulumi.StringArrayInput `pulumi:"groupIds"`
-	// This is the private endpoint connection name created on SRP
-	// Full resource id: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.MachineLearningServices/{resourceType}/{resourceName}/registryPrivateEndpointConnections/{peConnectionName}
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Same as workspace location.
-	Location pulumi.StringPtrInput `pulumi:"location"`
-	// The PE network resource that is linked to this PE connection.
-	PrivateEndpoint PrivateEndpointResourcePtrInput `pulumi:"privateEndpoint"`
-	// One of null, "Succeeded", "Provisioning", "Failed". While not approved, it's null.
-	ProvisioningState pulumi.StringPtrInput `pulumi:"provisioningState"`
-	// The connection state.
-	RegistryPrivateLinkServiceConnectionState RegistryPrivateLinkServiceConnectionStatePtrInput `pulumi:"registryPrivateLinkServiceConnectionState"`
-}
-
-func (RegistryPrivateEndpointConnectionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegistryPrivateEndpointConnection)(nil)).Elem()
-}
-
-func (i RegistryPrivateEndpointConnectionArgs) ToRegistryPrivateEndpointConnectionOutput() RegistryPrivateEndpointConnectionOutput {
-	return i.ToRegistryPrivateEndpointConnectionOutputWithContext(context.Background())
-}
-
-func (i RegistryPrivateEndpointConnectionArgs) ToRegistryPrivateEndpointConnectionOutputWithContext(ctx context.Context) RegistryPrivateEndpointConnectionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegistryPrivateEndpointConnectionOutput)
-}
-
-// RegistryPrivateEndpointConnectionArrayInput is an input type that accepts RegistryPrivateEndpointConnectionArray and RegistryPrivateEndpointConnectionArrayOutput values.
-// You can construct a concrete instance of `RegistryPrivateEndpointConnectionArrayInput` via:
-//
-//	RegistryPrivateEndpointConnectionArray{ RegistryPrivateEndpointConnectionArgs{...} }
-type RegistryPrivateEndpointConnectionArrayInput interface {
-	pulumi.Input
-
-	ToRegistryPrivateEndpointConnectionArrayOutput() RegistryPrivateEndpointConnectionArrayOutput
-	ToRegistryPrivateEndpointConnectionArrayOutputWithContext(context.Context) RegistryPrivateEndpointConnectionArrayOutput
-}
-
-type RegistryPrivateEndpointConnectionArray []RegistryPrivateEndpointConnectionInput
-
-func (RegistryPrivateEndpointConnectionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RegistryPrivateEndpointConnection)(nil)).Elem()
-}
-
-func (i RegistryPrivateEndpointConnectionArray) ToRegistryPrivateEndpointConnectionArrayOutput() RegistryPrivateEndpointConnectionArrayOutput {
-	return i.ToRegistryPrivateEndpointConnectionArrayOutputWithContext(context.Background())
-}
-
-func (i RegistryPrivateEndpointConnectionArray) ToRegistryPrivateEndpointConnectionArrayOutputWithContext(ctx context.Context) RegistryPrivateEndpointConnectionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegistryPrivateEndpointConnectionArrayOutput)
-}
-
-// Private endpoint connection definition.
-type RegistryPrivateEndpointConnectionOutput struct{ *pulumi.OutputState }
-
-func (RegistryPrivateEndpointConnectionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegistryPrivateEndpointConnection)(nil)).Elem()
-}
-
-func (o RegistryPrivateEndpointConnectionOutput) ToRegistryPrivateEndpointConnectionOutput() RegistryPrivateEndpointConnectionOutput {
-	return o
-}
-
-func (o RegistryPrivateEndpointConnectionOutput) ToRegistryPrivateEndpointConnectionOutputWithContext(ctx context.Context) RegistryPrivateEndpointConnectionOutput {
-	return o
-}
-
-// The group ids
-func (o RegistryPrivateEndpointConnectionOutput) GroupIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v RegistryPrivateEndpointConnection) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
-}
-
-// This is the private endpoint connection name created on SRP
-// Full resource id: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.MachineLearningServices/{resourceType}/{resourceName}/registryPrivateEndpointConnections/{peConnectionName}
-func (o RegistryPrivateEndpointConnectionOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegistryPrivateEndpointConnection) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// Same as workspace location.
-func (o RegistryPrivateEndpointConnectionOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegistryPrivateEndpointConnection) *string { return v.Location }).(pulumi.StringPtrOutput)
-}
-
-// The PE network resource that is linked to this PE connection.
-func (o RegistryPrivateEndpointConnectionOutput) PrivateEndpoint() PrivateEndpointResourcePtrOutput {
-	return o.ApplyT(func(v RegistryPrivateEndpointConnection) *PrivateEndpointResource { return v.PrivateEndpoint }).(PrivateEndpointResourcePtrOutput)
-}
-
-// One of null, "Succeeded", "Provisioning", "Failed". While not approved, it's null.
-func (o RegistryPrivateEndpointConnectionOutput) ProvisioningState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegistryPrivateEndpointConnection) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
-}
-
-// The connection state.
-func (o RegistryPrivateEndpointConnectionOutput) RegistryPrivateLinkServiceConnectionState() RegistryPrivateLinkServiceConnectionStatePtrOutput {
-	return o.ApplyT(func(v RegistryPrivateEndpointConnection) *RegistryPrivateLinkServiceConnectionState {
-		return v.RegistryPrivateLinkServiceConnectionState
-	}).(RegistryPrivateLinkServiceConnectionStatePtrOutput)
-}
-
-type RegistryPrivateEndpointConnectionArrayOutput struct{ *pulumi.OutputState }
-
-func (RegistryPrivateEndpointConnectionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RegistryPrivateEndpointConnection)(nil)).Elem()
-}
-
-func (o RegistryPrivateEndpointConnectionArrayOutput) ToRegistryPrivateEndpointConnectionArrayOutput() RegistryPrivateEndpointConnectionArrayOutput {
-	return o
-}
-
-func (o RegistryPrivateEndpointConnectionArrayOutput) ToRegistryPrivateEndpointConnectionArrayOutputWithContext(ctx context.Context) RegistryPrivateEndpointConnectionArrayOutput {
-	return o
-}
-
-func (o RegistryPrivateEndpointConnectionArrayOutput) Index(i pulumi.IntInput) RegistryPrivateEndpointConnectionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegistryPrivateEndpointConnection {
-		return vs[0].([]RegistryPrivateEndpointConnection)[vs[1].(int)]
-	}).(RegistryPrivateEndpointConnectionOutput)
-}
-
-// Private endpoint connection definition.
-type RegistryPrivateEndpointConnectionResponse struct {
-	// The group ids
-	GroupIds []string `pulumi:"groupIds"`
-	// This is the private endpoint connection name created on SRP
-	// Full resource id: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.MachineLearningServices/{resourceType}/{resourceName}/registryPrivateEndpointConnections/{peConnectionName}
-	Id *string `pulumi:"id"`
-	// Same as workspace location.
-	Location *string `pulumi:"location"`
-	// The PE network resource that is linked to this PE connection.
-	PrivateEndpoint *PrivateEndpointResourceResponse `pulumi:"privateEndpoint"`
-	// One of null, "Succeeded", "Provisioning", "Failed". While not approved, it's null.
-	ProvisioningState *string `pulumi:"provisioningState"`
-	// The connection state.
-	RegistryPrivateLinkServiceConnectionState *RegistryPrivateLinkServiceConnectionStateResponse `pulumi:"registryPrivateLinkServiceConnectionState"`
-}
-
-// Private endpoint connection definition.
-type RegistryPrivateEndpointConnectionResponseOutput struct{ *pulumi.OutputState }
-
-func (RegistryPrivateEndpointConnectionResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegistryPrivateEndpointConnectionResponse)(nil)).Elem()
-}
-
-func (o RegistryPrivateEndpointConnectionResponseOutput) ToRegistryPrivateEndpointConnectionResponseOutput() RegistryPrivateEndpointConnectionResponseOutput {
-	return o
-}
-
-func (o RegistryPrivateEndpointConnectionResponseOutput) ToRegistryPrivateEndpointConnectionResponseOutputWithContext(ctx context.Context) RegistryPrivateEndpointConnectionResponseOutput {
-	return o
-}
-
-// The group ids
-func (o RegistryPrivateEndpointConnectionResponseOutput) GroupIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v RegistryPrivateEndpointConnectionResponse) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
-}
-
-// This is the private endpoint connection name created on SRP
-// Full resource id: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.MachineLearningServices/{resourceType}/{resourceName}/registryPrivateEndpointConnections/{peConnectionName}
-func (o RegistryPrivateEndpointConnectionResponseOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegistryPrivateEndpointConnectionResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// Same as workspace location.
-func (o RegistryPrivateEndpointConnectionResponseOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegistryPrivateEndpointConnectionResponse) *string { return v.Location }).(pulumi.StringPtrOutput)
-}
-
-// The PE network resource that is linked to this PE connection.
-func (o RegistryPrivateEndpointConnectionResponseOutput) PrivateEndpoint() PrivateEndpointResourceResponsePtrOutput {
-	return o.ApplyT(func(v RegistryPrivateEndpointConnectionResponse) *PrivateEndpointResourceResponse {
-		return v.PrivateEndpoint
-	}).(PrivateEndpointResourceResponsePtrOutput)
-}
-
-// One of null, "Succeeded", "Provisioning", "Failed". While not approved, it's null.
-func (o RegistryPrivateEndpointConnectionResponseOutput) ProvisioningState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegistryPrivateEndpointConnectionResponse) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
-}
-
-// The connection state.
-func (o RegistryPrivateEndpointConnectionResponseOutput) RegistryPrivateLinkServiceConnectionState() RegistryPrivateLinkServiceConnectionStateResponsePtrOutput {
-	return o.ApplyT(func(v RegistryPrivateEndpointConnectionResponse) *RegistryPrivateLinkServiceConnectionStateResponse {
-		return v.RegistryPrivateLinkServiceConnectionState
-	}).(RegistryPrivateLinkServiceConnectionStateResponsePtrOutput)
-}
-
-type RegistryPrivateEndpointConnectionResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (RegistryPrivateEndpointConnectionResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RegistryPrivateEndpointConnectionResponse)(nil)).Elem()
-}
-
-func (o RegistryPrivateEndpointConnectionResponseArrayOutput) ToRegistryPrivateEndpointConnectionResponseArrayOutput() RegistryPrivateEndpointConnectionResponseArrayOutput {
-	return o
-}
-
-func (o RegistryPrivateEndpointConnectionResponseArrayOutput) ToRegistryPrivateEndpointConnectionResponseArrayOutputWithContext(ctx context.Context) RegistryPrivateEndpointConnectionResponseArrayOutput {
-	return o
-}
-
-func (o RegistryPrivateEndpointConnectionResponseArrayOutput) Index(i pulumi.IntInput) RegistryPrivateEndpointConnectionResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegistryPrivateEndpointConnectionResponse {
-		return vs[0].([]RegistryPrivateEndpointConnectionResponse)[vs[1].(int)]
-	}).(RegistryPrivateEndpointConnectionResponseOutput)
-}
-
-// The connection state.
-type RegistryPrivateLinkServiceConnectionState struct {
-	// Some RP chose "None". Other RPs use this for region expansion.
-	ActionsRequired *string `pulumi:"actionsRequired"`
-	// User-defined message that, per NRP doc, may be used for approval-related message.
-	Description *string `pulumi:"description"`
-	// Connection status of the service consumer with the service provider
-	Status *string `pulumi:"status"`
-}
-
-// RegistryPrivateLinkServiceConnectionStateInput is an input type that accepts RegistryPrivateLinkServiceConnectionStateArgs and RegistryPrivateLinkServiceConnectionStateOutput values.
-// You can construct a concrete instance of `RegistryPrivateLinkServiceConnectionStateInput` via:
-//
-//	RegistryPrivateLinkServiceConnectionStateArgs{...}
-type RegistryPrivateLinkServiceConnectionStateInput interface {
-	pulumi.Input
-
-	ToRegistryPrivateLinkServiceConnectionStateOutput() RegistryPrivateLinkServiceConnectionStateOutput
-	ToRegistryPrivateLinkServiceConnectionStateOutputWithContext(context.Context) RegistryPrivateLinkServiceConnectionStateOutput
-}
-
-// The connection state.
-type RegistryPrivateLinkServiceConnectionStateArgs struct {
-	// Some RP chose "None". Other RPs use this for region expansion.
-	ActionsRequired pulumi.StringPtrInput `pulumi:"actionsRequired"`
-	// User-defined message that, per NRP doc, may be used for approval-related message.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Connection status of the service consumer with the service provider
-	Status pulumi.StringPtrInput `pulumi:"status"`
-}
-
-func (RegistryPrivateLinkServiceConnectionStateArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegistryPrivateLinkServiceConnectionState)(nil)).Elem()
-}
-
-func (i RegistryPrivateLinkServiceConnectionStateArgs) ToRegistryPrivateLinkServiceConnectionStateOutput() RegistryPrivateLinkServiceConnectionStateOutput {
-	return i.ToRegistryPrivateLinkServiceConnectionStateOutputWithContext(context.Background())
-}
-
-func (i RegistryPrivateLinkServiceConnectionStateArgs) ToRegistryPrivateLinkServiceConnectionStateOutputWithContext(ctx context.Context) RegistryPrivateLinkServiceConnectionStateOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegistryPrivateLinkServiceConnectionStateOutput)
-}
-
-func (i RegistryPrivateLinkServiceConnectionStateArgs) ToRegistryPrivateLinkServiceConnectionStatePtrOutput() RegistryPrivateLinkServiceConnectionStatePtrOutput {
-	return i.ToRegistryPrivateLinkServiceConnectionStatePtrOutputWithContext(context.Background())
-}
-
-func (i RegistryPrivateLinkServiceConnectionStateArgs) ToRegistryPrivateLinkServiceConnectionStatePtrOutputWithContext(ctx context.Context) RegistryPrivateLinkServiceConnectionStatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegistryPrivateLinkServiceConnectionStateOutput).ToRegistryPrivateLinkServiceConnectionStatePtrOutputWithContext(ctx)
-}
-
-// RegistryPrivateLinkServiceConnectionStatePtrInput is an input type that accepts RegistryPrivateLinkServiceConnectionStateArgs, RegistryPrivateLinkServiceConnectionStatePtr and RegistryPrivateLinkServiceConnectionStatePtrOutput values.
-// You can construct a concrete instance of `RegistryPrivateLinkServiceConnectionStatePtrInput` via:
-//
-//	        RegistryPrivateLinkServiceConnectionStateArgs{...}
-//
-//	or:
-//
-//	        nil
-type RegistryPrivateLinkServiceConnectionStatePtrInput interface {
-	pulumi.Input
-
-	ToRegistryPrivateLinkServiceConnectionStatePtrOutput() RegistryPrivateLinkServiceConnectionStatePtrOutput
-	ToRegistryPrivateLinkServiceConnectionStatePtrOutputWithContext(context.Context) RegistryPrivateLinkServiceConnectionStatePtrOutput
-}
-
-type registryPrivateLinkServiceConnectionStatePtrType RegistryPrivateLinkServiceConnectionStateArgs
-
-func RegistryPrivateLinkServiceConnectionStatePtr(v *RegistryPrivateLinkServiceConnectionStateArgs) RegistryPrivateLinkServiceConnectionStatePtrInput {
-	return (*registryPrivateLinkServiceConnectionStatePtrType)(v)
-}
-
-func (*registryPrivateLinkServiceConnectionStatePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RegistryPrivateLinkServiceConnectionState)(nil)).Elem()
-}
-
-func (i *registryPrivateLinkServiceConnectionStatePtrType) ToRegistryPrivateLinkServiceConnectionStatePtrOutput() RegistryPrivateLinkServiceConnectionStatePtrOutput {
-	return i.ToRegistryPrivateLinkServiceConnectionStatePtrOutputWithContext(context.Background())
-}
-
-func (i *registryPrivateLinkServiceConnectionStatePtrType) ToRegistryPrivateLinkServiceConnectionStatePtrOutputWithContext(ctx context.Context) RegistryPrivateLinkServiceConnectionStatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegistryPrivateLinkServiceConnectionStatePtrOutput)
-}
-
-// The connection state.
-type RegistryPrivateLinkServiceConnectionStateOutput struct{ *pulumi.OutputState }
-
-func (RegistryPrivateLinkServiceConnectionStateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegistryPrivateLinkServiceConnectionState)(nil)).Elem()
-}
-
-func (o RegistryPrivateLinkServiceConnectionStateOutput) ToRegistryPrivateLinkServiceConnectionStateOutput() RegistryPrivateLinkServiceConnectionStateOutput {
-	return o
-}
-
-func (o RegistryPrivateLinkServiceConnectionStateOutput) ToRegistryPrivateLinkServiceConnectionStateOutputWithContext(ctx context.Context) RegistryPrivateLinkServiceConnectionStateOutput {
-	return o
-}
-
-func (o RegistryPrivateLinkServiceConnectionStateOutput) ToRegistryPrivateLinkServiceConnectionStatePtrOutput() RegistryPrivateLinkServiceConnectionStatePtrOutput {
-	return o.ToRegistryPrivateLinkServiceConnectionStatePtrOutputWithContext(context.Background())
-}
-
-func (o RegistryPrivateLinkServiceConnectionStateOutput) ToRegistryPrivateLinkServiceConnectionStatePtrOutputWithContext(ctx context.Context) RegistryPrivateLinkServiceConnectionStatePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegistryPrivateLinkServiceConnectionState) *RegistryPrivateLinkServiceConnectionState {
-		return &v
-	}).(RegistryPrivateLinkServiceConnectionStatePtrOutput)
-}
-
-// Some RP chose "None". Other RPs use this for region expansion.
-func (o RegistryPrivateLinkServiceConnectionStateOutput) ActionsRequired() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegistryPrivateLinkServiceConnectionState) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
-}
-
-// User-defined message that, per NRP doc, may be used for approval-related message.
-func (o RegistryPrivateLinkServiceConnectionStateOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegistryPrivateLinkServiceConnectionState) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Connection status of the service consumer with the service provider
-func (o RegistryPrivateLinkServiceConnectionStateOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegistryPrivateLinkServiceConnectionState) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
-type RegistryPrivateLinkServiceConnectionStatePtrOutput struct{ *pulumi.OutputState }
-
-func (RegistryPrivateLinkServiceConnectionStatePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RegistryPrivateLinkServiceConnectionState)(nil)).Elem()
-}
-
-func (o RegistryPrivateLinkServiceConnectionStatePtrOutput) ToRegistryPrivateLinkServiceConnectionStatePtrOutput() RegistryPrivateLinkServiceConnectionStatePtrOutput {
-	return o
-}
-
-func (o RegistryPrivateLinkServiceConnectionStatePtrOutput) ToRegistryPrivateLinkServiceConnectionStatePtrOutputWithContext(ctx context.Context) RegistryPrivateLinkServiceConnectionStatePtrOutput {
-	return o
-}
-
-func (o RegistryPrivateLinkServiceConnectionStatePtrOutput) Elem() RegistryPrivateLinkServiceConnectionStateOutput {
-	return o.ApplyT(func(v *RegistryPrivateLinkServiceConnectionState) RegistryPrivateLinkServiceConnectionState {
-		if v != nil {
-			return *v
-		}
-		var ret RegistryPrivateLinkServiceConnectionState
-		return ret
-	}).(RegistryPrivateLinkServiceConnectionStateOutput)
-}
-
-// Some RP chose "None". Other RPs use this for region expansion.
-func (o RegistryPrivateLinkServiceConnectionStatePtrOutput) ActionsRequired() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RegistryPrivateLinkServiceConnectionState) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ActionsRequired
-	}).(pulumi.StringPtrOutput)
-}
-
-// User-defined message that, per NRP doc, may be used for approval-related message.
-func (o RegistryPrivateLinkServiceConnectionStatePtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RegistryPrivateLinkServiceConnectionState) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Description
-	}).(pulumi.StringPtrOutput)
-}
-
-// Connection status of the service consumer with the service provider
-func (o RegistryPrivateLinkServiceConnectionStatePtrOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RegistryPrivateLinkServiceConnectionState) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Status
-	}).(pulumi.StringPtrOutput)
-}
-
-// The connection state.
-type RegistryPrivateLinkServiceConnectionStateResponse struct {
-	// Some RP chose "None". Other RPs use this for region expansion.
-	ActionsRequired *string `pulumi:"actionsRequired"`
-	// User-defined message that, per NRP doc, may be used for approval-related message.
-	Description *string `pulumi:"description"`
-	// Connection status of the service consumer with the service provider
-	Status *string `pulumi:"status"`
-}
-
-// The connection state.
-type RegistryPrivateLinkServiceConnectionStateResponseOutput struct{ *pulumi.OutputState }
-
-func (RegistryPrivateLinkServiceConnectionStateResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegistryPrivateLinkServiceConnectionStateResponse)(nil)).Elem()
-}
-
-func (o RegistryPrivateLinkServiceConnectionStateResponseOutput) ToRegistryPrivateLinkServiceConnectionStateResponseOutput() RegistryPrivateLinkServiceConnectionStateResponseOutput {
-	return o
-}
-
-func (o RegistryPrivateLinkServiceConnectionStateResponseOutput) ToRegistryPrivateLinkServiceConnectionStateResponseOutputWithContext(ctx context.Context) RegistryPrivateLinkServiceConnectionStateResponseOutput {
-	return o
-}
-
-// Some RP chose "None". Other RPs use this for region expansion.
-func (o RegistryPrivateLinkServiceConnectionStateResponseOutput) ActionsRequired() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegistryPrivateLinkServiceConnectionStateResponse) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
-}
-
-// User-defined message that, per NRP doc, may be used for approval-related message.
-func (o RegistryPrivateLinkServiceConnectionStateResponseOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegistryPrivateLinkServiceConnectionStateResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Connection status of the service consumer with the service provider
-func (o RegistryPrivateLinkServiceConnectionStateResponseOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegistryPrivateLinkServiceConnectionStateResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
-type RegistryPrivateLinkServiceConnectionStateResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (RegistryPrivateLinkServiceConnectionStateResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RegistryPrivateLinkServiceConnectionStateResponse)(nil)).Elem()
-}
-
-func (o RegistryPrivateLinkServiceConnectionStateResponsePtrOutput) ToRegistryPrivateLinkServiceConnectionStateResponsePtrOutput() RegistryPrivateLinkServiceConnectionStateResponsePtrOutput {
-	return o
-}
-
-func (o RegistryPrivateLinkServiceConnectionStateResponsePtrOutput) ToRegistryPrivateLinkServiceConnectionStateResponsePtrOutputWithContext(ctx context.Context) RegistryPrivateLinkServiceConnectionStateResponsePtrOutput {
-	return o
-}
-
-func (o RegistryPrivateLinkServiceConnectionStateResponsePtrOutput) Elem() RegistryPrivateLinkServiceConnectionStateResponseOutput {
-	return o.ApplyT(func(v *RegistryPrivateLinkServiceConnectionStateResponse) RegistryPrivateLinkServiceConnectionStateResponse {
-		if v != nil {
-			return *v
-		}
-		var ret RegistryPrivateLinkServiceConnectionStateResponse
-		return ret
-	}).(RegistryPrivateLinkServiceConnectionStateResponseOutput)
-}
-
-// Some RP chose "None". Other RPs use this for region expansion.
-func (o RegistryPrivateLinkServiceConnectionStateResponsePtrOutput) ActionsRequired() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RegistryPrivateLinkServiceConnectionStateResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ActionsRequired
-	}).(pulumi.StringPtrOutput)
-}
-
-// User-defined message that, per NRP doc, may be used for approval-related message.
-func (o RegistryPrivateLinkServiceConnectionStateResponsePtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RegistryPrivateLinkServiceConnectionStateResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Description
-	}).(pulumi.StringPtrOutput)
-}
-
-// Connection status of the service consumer with the service provider
-func (o RegistryPrivateLinkServiceConnectionStateResponsePtrOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RegistryPrivateLinkServiceConnectionStateResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Status
-	}).(pulumi.StringPtrOutput)
-}
-
-// Details for each region the registry is in
-type RegistryRegionArmDetails struct {
-	// List of ACR accounts
-	AcrDetails []AcrDetails `pulumi:"acrDetails"`
-	// The location where the registry exists
-	Location *string `pulumi:"location"`
-	// List of storage accounts
-	StorageAccountDetails []StorageAccountDetails `pulumi:"storageAccountDetails"`
-}
-
-// RegistryRegionArmDetailsInput is an input type that accepts RegistryRegionArmDetailsArgs and RegistryRegionArmDetailsOutput values.
-// You can construct a concrete instance of `RegistryRegionArmDetailsInput` via:
-//
-//	RegistryRegionArmDetailsArgs{...}
-type RegistryRegionArmDetailsInput interface {
-	pulumi.Input
-
-	ToRegistryRegionArmDetailsOutput() RegistryRegionArmDetailsOutput
-	ToRegistryRegionArmDetailsOutputWithContext(context.Context) RegistryRegionArmDetailsOutput
-}
-
-// Details for each region the registry is in
-type RegistryRegionArmDetailsArgs struct {
-	// List of ACR accounts
-	AcrDetails AcrDetailsArrayInput `pulumi:"acrDetails"`
-	// The location where the registry exists
-	Location pulumi.StringPtrInput `pulumi:"location"`
-	// List of storage accounts
-	StorageAccountDetails StorageAccountDetailsArrayInput `pulumi:"storageAccountDetails"`
-}
-
-func (RegistryRegionArmDetailsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegistryRegionArmDetails)(nil)).Elem()
-}
-
-func (i RegistryRegionArmDetailsArgs) ToRegistryRegionArmDetailsOutput() RegistryRegionArmDetailsOutput {
-	return i.ToRegistryRegionArmDetailsOutputWithContext(context.Background())
-}
-
-func (i RegistryRegionArmDetailsArgs) ToRegistryRegionArmDetailsOutputWithContext(ctx context.Context) RegistryRegionArmDetailsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegistryRegionArmDetailsOutput)
-}
-
-// RegistryRegionArmDetailsArrayInput is an input type that accepts RegistryRegionArmDetailsArray and RegistryRegionArmDetailsArrayOutput values.
-// You can construct a concrete instance of `RegistryRegionArmDetailsArrayInput` via:
-//
-//	RegistryRegionArmDetailsArray{ RegistryRegionArmDetailsArgs{...} }
-type RegistryRegionArmDetailsArrayInput interface {
-	pulumi.Input
-
-	ToRegistryRegionArmDetailsArrayOutput() RegistryRegionArmDetailsArrayOutput
-	ToRegistryRegionArmDetailsArrayOutputWithContext(context.Context) RegistryRegionArmDetailsArrayOutput
-}
-
-type RegistryRegionArmDetailsArray []RegistryRegionArmDetailsInput
-
-func (RegistryRegionArmDetailsArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RegistryRegionArmDetails)(nil)).Elem()
-}
-
-func (i RegistryRegionArmDetailsArray) ToRegistryRegionArmDetailsArrayOutput() RegistryRegionArmDetailsArrayOutput {
-	return i.ToRegistryRegionArmDetailsArrayOutputWithContext(context.Background())
-}
-
-func (i RegistryRegionArmDetailsArray) ToRegistryRegionArmDetailsArrayOutputWithContext(ctx context.Context) RegistryRegionArmDetailsArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegistryRegionArmDetailsArrayOutput)
-}
-
-// Details for each region the registry is in
-type RegistryRegionArmDetailsOutput struct{ *pulumi.OutputState }
-
-func (RegistryRegionArmDetailsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegistryRegionArmDetails)(nil)).Elem()
-}
-
-func (o RegistryRegionArmDetailsOutput) ToRegistryRegionArmDetailsOutput() RegistryRegionArmDetailsOutput {
-	return o
-}
-
-func (o RegistryRegionArmDetailsOutput) ToRegistryRegionArmDetailsOutputWithContext(ctx context.Context) RegistryRegionArmDetailsOutput {
-	return o
-}
-
-// List of ACR accounts
-func (o RegistryRegionArmDetailsOutput) AcrDetails() AcrDetailsArrayOutput {
-	return o.ApplyT(func(v RegistryRegionArmDetails) []AcrDetails { return v.AcrDetails }).(AcrDetailsArrayOutput)
-}
-
-// The location where the registry exists
-func (o RegistryRegionArmDetailsOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegistryRegionArmDetails) *string { return v.Location }).(pulumi.StringPtrOutput)
-}
-
-// List of storage accounts
-func (o RegistryRegionArmDetailsOutput) StorageAccountDetails() StorageAccountDetailsArrayOutput {
-	return o.ApplyT(func(v RegistryRegionArmDetails) []StorageAccountDetails { return v.StorageAccountDetails }).(StorageAccountDetailsArrayOutput)
-}
-
-type RegistryRegionArmDetailsArrayOutput struct{ *pulumi.OutputState }
-
-func (RegistryRegionArmDetailsArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RegistryRegionArmDetails)(nil)).Elem()
-}
-
-func (o RegistryRegionArmDetailsArrayOutput) ToRegistryRegionArmDetailsArrayOutput() RegistryRegionArmDetailsArrayOutput {
-	return o
-}
-
-func (o RegistryRegionArmDetailsArrayOutput) ToRegistryRegionArmDetailsArrayOutputWithContext(ctx context.Context) RegistryRegionArmDetailsArrayOutput {
-	return o
-}
-
-func (o RegistryRegionArmDetailsArrayOutput) Index(i pulumi.IntInput) RegistryRegionArmDetailsOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegistryRegionArmDetails {
-		return vs[0].([]RegistryRegionArmDetails)[vs[1].(int)]
-	}).(RegistryRegionArmDetailsOutput)
-}
-
-// Details for each region the registry is in
-type RegistryRegionArmDetailsResponse struct {
-	// List of ACR accounts
-	AcrDetails []AcrDetailsResponse `pulumi:"acrDetails"`
-	// The location where the registry exists
-	Location *string `pulumi:"location"`
-	// List of storage accounts
-	StorageAccountDetails []StorageAccountDetailsResponse `pulumi:"storageAccountDetails"`
-}
-
-// Details for each region the registry is in
-type RegistryRegionArmDetailsResponseOutput struct{ *pulumi.OutputState }
-
-func (RegistryRegionArmDetailsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegistryRegionArmDetailsResponse)(nil)).Elem()
-}
-
-func (o RegistryRegionArmDetailsResponseOutput) ToRegistryRegionArmDetailsResponseOutput() RegistryRegionArmDetailsResponseOutput {
-	return o
-}
-
-func (o RegistryRegionArmDetailsResponseOutput) ToRegistryRegionArmDetailsResponseOutputWithContext(ctx context.Context) RegistryRegionArmDetailsResponseOutput {
-	return o
-}
-
-// List of ACR accounts
-func (o RegistryRegionArmDetailsResponseOutput) AcrDetails() AcrDetailsResponseArrayOutput {
-	return o.ApplyT(func(v RegistryRegionArmDetailsResponse) []AcrDetailsResponse { return v.AcrDetails }).(AcrDetailsResponseArrayOutput)
-}
-
-// The location where the registry exists
-func (o RegistryRegionArmDetailsResponseOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegistryRegionArmDetailsResponse) *string { return v.Location }).(pulumi.StringPtrOutput)
-}
-
-// List of storage accounts
-func (o RegistryRegionArmDetailsResponseOutput) StorageAccountDetails() StorageAccountDetailsResponseArrayOutput {
-	return o.ApplyT(func(v RegistryRegionArmDetailsResponse) []StorageAccountDetailsResponse {
-		return v.StorageAccountDetails
-	}).(StorageAccountDetailsResponseArrayOutput)
-}
-
-type RegistryRegionArmDetailsResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (RegistryRegionArmDetailsResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RegistryRegionArmDetailsResponse)(nil)).Elem()
-}
-
-func (o RegistryRegionArmDetailsResponseArrayOutput) ToRegistryRegionArmDetailsResponseArrayOutput() RegistryRegionArmDetailsResponseArrayOutput {
-	return o
-}
-
-func (o RegistryRegionArmDetailsResponseArrayOutput) ToRegistryRegionArmDetailsResponseArrayOutputWithContext(ctx context.Context) RegistryRegionArmDetailsResponseArrayOutput {
-	return o
-}
-
-func (o RegistryRegionArmDetailsResponseArrayOutput) Index(i pulumi.IntInput) RegistryRegionArmDetailsResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegistryRegionArmDetailsResponse {
-		return vs[0].([]RegistryRegionArmDetailsResponse)[vs[1].(int)]
-	}).(RegistryRegionArmDetailsResponseOutput)
-}
-
-// Regression task in AutoML Table vertical.
-type Regression struct {
-	// Columns to use for CVSplit data.
-	CvSplitColumnNames []string `pulumi:"cvSplitColumnNames"`
-	// Featurization inputs needed for AutoML job.
-	FeaturizationSettings *TableVerticalFeaturizationSettings `pulumi:"featurizationSettings"`
-	// Execution constraints for AutoMLJob.
-	LimitSettings *TableVerticalLimitSettings `pulumi:"limitSettings"`
-	// Enum for setting log verbosity.
-	LogVerbosity *string `pulumi:"logVerbosity"`
-	// Number of cross validation folds to be applied on training dataset
-	// when validation dataset is not provided.
-	NCrossValidations interface{} `pulumi:"nCrossValidations"`
-	// Primary metrics for Regression task.
-	PrimaryMetric *string `pulumi:"primaryMetric"`
-	// Target column name: This is prediction values column.
-	// Also known as label column name in context of classification tasks.
-	TargetColumnName *string `pulumi:"targetColumnName"`
-	// AutoMLJob Task type.
-	// Expected value is 'Regression'.
-	TaskType string `pulumi:"taskType"`
-	// Test data input.
-	TestData *MLTableJobInput `pulumi:"testData"`
-	// The fraction of test dataset that needs to be set aside for validation purpose.
-	// Values between (0.0 , 1.0)
-	// Applied when validation dataset is not provided.
-	TestDataSize *float64 `pulumi:"testDataSize"`
-	// [Required] Training data input.
-	TrainingData MLTableJobInput `pulumi:"trainingData"`
-	// Inputs for training phase for an AutoML Job.
-	TrainingSettings *RegressionTrainingSettings `pulumi:"trainingSettings"`
-	// Validation data inputs.
-	ValidationData *MLTableJobInput `pulumi:"validationData"`
-	// The fraction of training dataset that needs to be set aside for validation purpose.
-	// Values between (0.0 , 1.0)
-	// Applied when validation dataset is not provided.
-	ValidationDataSize *float64 `pulumi:"validationDataSize"`
-	// The name of the sample weight column. Automated ML supports a weighted column as an input, causing rows in the data to be weighted up or down.
-	WeightColumnName *string `pulumi:"weightColumnName"`
-}
-
-// Defaults sets the appropriate defaults for Regression
-func (val *Regression) Defaults() *Regression {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	tmp.FeaturizationSettings = tmp.FeaturizationSettings.Defaults()
-
-	tmp.LimitSettings = tmp.LimitSettings.Defaults()
-
-	if tmp.LogVerbosity == nil {
-		logVerbosity_ := "Info"
-		tmp.LogVerbosity = &logVerbosity_
-	}
-	if tmp.PrimaryMetric == nil {
-		primaryMetric_ := "NormalizedRootMeanSquaredError"
-		tmp.PrimaryMetric = &primaryMetric_
-	}
-	tmp.TestData = tmp.TestData.Defaults()
-
-	tmp.TrainingData = *tmp.TrainingData.Defaults()
-
-	tmp.TrainingSettings = tmp.TrainingSettings.Defaults()
-
-	tmp.ValidationData = tmp.ValidationData.Defaults()
-
-	return &tmp
-}
-
-// RegressionInput is an input type that accepts RegressionArgs and RegressionOutput values.
-// You can construct a concrete instance of `RegressionInput` via:
-//
-//	RegressionArgs{...}
-type RegressionInput interface {
-	pulumi.Input
-
-	ToRegressionOutput() RegressionOutput
-	ToRegressionOutputWithContext(context.Context) RegressionOutput
-}
-
-// Regression task in AutoML Table vertical.
-type RegressionArgs struct {
-	// Columns to use for CVSplit data.
-	CvSplitColumnNames pulumi.StringArrayInput `pulumi:"cvSplitColumnNames"`
-	// Featurization inputs needed for AutoML job.
-	FeaturizationSettings TableVerticalFeaturizationSettingsPtrInput `pulumi:"featurizationSettings"`
-	// Execution constraints for AutoMLJob.
-	LimitSettings TableVerticalLimitSettingsPtrInput `pulumi:"limitSettings"`
-	// Enum for setting log verbosity.
-	LogVerbosity pulumi.StringPtrInput `pulumi:"logVerbosity"`
-	// Number of cross validation folds to be applied on training dataset
-	// when validation dataset is not provided.
-	NCrossValidations pulumi.Input `pulumi:"nCrossValidations"`
-	// Primary metrics for Regression task.
-	PrimaryMetric pulumi.StringPtrInput `pulumi:"primaryMetric"`
-	// Target column name: This is prediction values column.
-	// Also known as label column name in context of classification tasks.
-	TargetColumnName pulumi.StringPtrInput `pulumi:"targetColumnName"`
-	// AutoMLJob Task type.
-	// Expected value is 'Regression'.
-	TaskType pulumi.StringInput `pulumi:"taskType"`
-	// Test data input.
-	TestData MLTableJobInputPtrInput `pulumi:"testData"`
-	// The fraction of test dataset that needs to be set aside for validation purpose.
-	// Values between (0.0 , 1.0)
-	// Applied when validation dataset is not provided.
-	TestDataSize pulumi.Float64PtrInput `pulumi:"testDataSize"`
-	// [Required] Training data input.
-	TrainingData MLTableJobInputInput `pulumi:"trainingData"`
-	// Inputs for training phase for an AutoML Job.
-	TrainingSettings RegressionTrainingSettingsPtrInput `pulumi:"trainingSettings"`
-	// Validation data inputs.
-	ValidationData MLTableJobInputPtrInput `pulumi:"validationData"`
-	// The fraction of training dataset that needs to be set aside for validation purpose.
-	// Values between (0.0 , 1.0)
-	// Applied when validation dataset is not provided.
-	ValidationDataSize pulumi.Float64PtrInput `pulumi:"validationDataSize"`
-	// The name of the sample weight column. Automated ML supports a weighted column as an input, causing rows in the data to be weighted up or down.
-	WeightColumnName pulumi.StringPtrInput `pulumi:"weightColumnName"`
-}
-
-// Defaults sets the appropriate defaults for RegressionArgs
-func (val *RegressionArgs) Defaults() *RegressionArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-
-	if tmp.LogVerbosity == nil {
-		tmp.LogVerbosity = pulumi.StringPtr("Info")
-	}
-	if tmp.PrimaryMetric == nil {
-		tmp.PrimaryMetric = pulumi.StringPtr("NormalizedRootMeanSquaredError")
-	}
-
-	return &tmp
-}
-func (RegressionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Regression)(nil)).Elem()
-}
-
-func (i RegressionArgs) ToRegressionOutput() RegressionOutput {
-	return i.ToRegressionOutputWithContext(context.Background())
-}
-
-func (i RegressionArgs) ToRegressionOutputWithContext(ctx context.Context) RegressionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegressionOutput)
-}
-
-// Regression task in AutoML Table vertical.
-type RegressionOutput struct{ *pulumi.OutputState }
-
-func (RegressionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Regression)(nil)).Elem()
-}
-
-func (o RegressionOutput) ToRegressionOutput() RegressionOutput {
-	return o
-}
-
-func (o RegressionOutput) ToRegressionOutputWithContext(ctx context.Context) RegressionOutput {
-	return o
-}
-
-// Columns to use for CVSplit data.
-func (o RegressionOutput) CvSplitColumnNames() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v Regression) []string { return v.CvSplitColumnNames }).(pulumi.StringArrayOutput)
-}
-
-// Featurization inputs needed for AutoML job.
-func (o RegressionOutput) FeaturizationSettings() TableVerticalFeaturizationSettingsPtrOutput {
-	return o.ApplyT(func(v Regression) *TableVerticalFeaturizationSettings { return v.FeaturizationSettings }).(TableVerticalFeaturizationSettingsPtrOutput)
-}
-
-// Execution constraints for AutoMLJob.
-func (o RegressionOutput) LimitSettings() TableVerticalLimitSettingsPtrOutput {
-	return o.ApplyT(func(v Regression) *TableVerticalLimitSettings { return v.LimitSettings }).(TableVerticalLimitSettingsPtrOutput)
-}
-
-// Enum for setting log verbosity.
-func (o RegressionOutput) LogVerbosity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Regression) *string { return v.LogVerbosity }).(pulumi.StringPtrOutput)
-}
-
-// Number of cross validation folds to be applied on training dataset
-// when validation dataset is not provided.
-func (o RegressionOutput) NCrossValidations() pulumi.AnyOutput {
-	return o.ApplyT(func(v Regression) interface{} { return v.NCrossValidations }).(pulumi.AnyOutput)
-}
-
-// Primary metrics for Regression task.
-func (o RegressionOutput) PrimaryMetric() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Regression) *string { return v.PrimaryMetric }).(pulumi.StringPtrOutput)
-}
-
-// Target column name: This is prediction values column.
-// Also known as label column name in context of classification tasks.
-func (o RegressionOutput) TargetColumnName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Regression) *string { return v.TargetColumnName }).(pulumi.StringPtrOutput)
-}
-
-// AutoMLJob Task type.
-// Expected value is 'Regression'.
-func (o RegressionOutput) TaskType() pulumi.StringOutput {
-	return o.ApplyT(func(v Regression) string { return v.TaskType }).(pulumi.StringOutput)
-}
-
-// Test data input.
-func (o RegressionOutput) TestData() MLTableJobInputPtrOutput {
-	return o.ApplyT(func(v Regression) *MLTableJobInput { return v.TestData }).(MLTableJobInputPtrOutput)
-}
-
-// The fraction of test dataset that needs to be set aside for validation purpose.
-// Values between (0.0 , 1.0)
-// Applied when validation dataset is not provided.
-func (o RegressionOutput) TestDataSize() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v Regression) *float64 { return v.TestDataSize }).(pulumi.Float64PtrOutput)
-}
-
-// [Required] Training data input.
-func (o RegressionOutput) TrainingData() MLTableJobInputOutput {
-	return o.ApplyT(func(v Regression) MLTableJobInput { return v.TrainingData }).(MLTableJobInputOutput)
-}
-
-// Inputs for training phase for an AutoML Job.
-func (o RegressionOutput) TrainingSettings() RegressionTrainingSettingsPtrOutput {
-	return o.ApplyT(func(v Regression) *RegressionTrainingSettings { return v.TrainingSettings }).(RegressionTrainingSettingsPtrOutput)
-}
-
-// Validation data inputs.
-func (o RegressionOutput) ValidationData() MLTableJobInputPtrOutput {
-	return o.ApplyT(func(v Regression) *MLTableJobInput { return v.ValidationData }).(MLTableJobInputPtrOutput)
-}
-
-// The fraction of training dataset that needs to be set aside for validation purpose.
-// Values between (0.0 , 1.0)
-// Applied when validation dataset is not provided.
-func (o RegressionOutput) ValidationDataSize() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v Regression) *float64 { return v.ValidationDataSize }).(pulumi.Float64PtrOutput)
-}
-
-// The name of the sample weight column. Automated ML supports a weighted column as an input, causing rows in the data to be weighted up or down.
-func (o RegressionOutput) WeightColumnName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Regression) *string { return v.WeightColumnName }).(pulumi.StringPtrOutput)
-}
-
-// Regression task in AutoML Table vertical.
-type RegressionResponse struct {
-	// Columns to use for CVSplit data.
-	CvSplitColumnNames []string `pulumi:"cvSplitColumnNames"`
-	// Featurization inputs needed for AutoML job.
-	FeaturizationSettings *TableVerticalFeaturizationSettingsResponse `pulumi:"featurizationSettings"`
-	// Execution constraints for AutoMLJob.
-	LimitSettings *TableVerticalLimitSettingsResponse `pulumi:"limitSettings"`
-	// Enum for setting log verbosity.
-	LogVerbosity *string `pulumi:"logVerbosity"`
-	// Number of cross validation folds to be applied on training dataset
-	// when validation dataset is not provided.
-	NCrossValidations interface{} `pulumi:"nCrossValidations"`
-	// Primary metrics for Regression task.
-	PrimaryMetric *string `pulumi:"primaryMetric"`
-	// Target column name: This is prediction values column.
-	// Also known as label column name in context of classification tasks.
-	TargetColumnName *string `pulumi:"targetColumnName"`
-	// AutoMLJob Task type.
-	// Expected value is 'Regression'.
-	TaskType string `pulumi:"taskType"`
-	// Test data input.
-	TestData *MLTableJobInputResponse `pulumi:"testData"`
-	// The fraction of test dataset that needs to be set aside for validation purpose.
-	// Values between (0.0 , 1.0)
-	// Applied when validation dataset is not provided.
-	TestDataSize *float64 `pulumi:"testDataSize"`
-	// [Required] Training data input.
-	TrainingData MLTableJobInputResponse `pulumi:"trainingData"`
-	// Inputs for training phase for an AutoML Job.
-	TrainingSettings *RegressionTrainingSettingsResponse `pulumi:"trainingSettings"`
-	// Validation data inputs.
-	ValidationData *MLTableJobInputResponse `pulumi:"validationData"`
-	// The fraction of training dataset that needs to be set aside for validation purpose.
-	// Values between (0.0 , 1.0)
-	// Applied when validation dataset is not provided.
-	ValidationDataSize *float64 `pulumi:"validationDataSize"`
-	// The name of the sample weight column. Automated ML supports a weighted column as an input, causing rows in the data to be weighted up or down.
-	WeightColumnName *string `pulumi:"weightColumnName"`
-}
-
-// Defaults sets the appropriate defaults for RegressionResponse
-func (val *RegressionResponse) Defaults() *RegressionResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	tmp.FeaturizationSettings = tmp.FeaturizationSettings.Defaults()
-
-	tmp.LimitSettings = tmp.LimitSettings.Defaults()
-
-	if tmp.LogVerbosity == nil {
-		logVerbosity_ := "Info"
-		tmp.LogVerbosity = &logVerbosity_
-	}
-	if tmp.PrimaryMetric == nil {
-		primaryMetric_ := "NormalizedRootMeanSquaredError"
-		tmp.PrimaryMetric = &primaryMetric_
-	}
-	tmp.TestData = tmp.TestData.Defaults()
-
-	tmp.TrainingData = *tmp.TrainingData.Defaults()
-
-	tmp.TrainingSettings = tmp.TrainingSettings.Defaults()
-
-	tmp.ValidationData = tmp.ValidationData.Defaults()
-
-	return &tmp
-}
-
-// Regression task in AutoML Table vertical.
-type RegressionResponseOutput struct{ *pulumi.OutputState }
-
-func (RegressionResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegressionResponse)(nil)).Elem()
-}
-
-func (o RegressionResponseOutput) ToRegressionResponseOutput() RegressionResponseOutput {
-	return o
-}
-
-func (o RegressionResponseOutput) ToRegressionResponseOutputWithContext(ctx context.Context) RegressionResponseOutput {
-	return o
-}
-
-// Columns to use for CVSplit data.
-func (o RegressionResponseOutput) CvSplitColumnNames() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v RegressionResponse) []string { return v.CvSplitColumnNames }).(pulumi.StringArrayOutput)
-}
-
-// Featurization inputs needed for AutoML job.
-func (o RegressionResponseOutput) FeaturizationSettings() TableVerticalFeaturizationSettingsResponsePtrOutput {
-	return o.ApplyT(func(v RegressionResponse) *TableVerticalFeaturizationSettingsResponse { return v.FeaturizationSettings }).(TableVerticalFeaturizationSettingsResponsePtrOutput)
-}
-
-// Execution constraints for AutoMLJob.
-func (o RegressionResponseOutput) LimitSettings() TableVerticalLimitSettingsResponsePtrOutput {
-	return o.ApplyT(func(v RegressionResponse) *TableVerticalLimitSettingsResponse { return v.LimitSettings }).(TableVerticalLimitSettingsResponsePtrOutput)
-}
-
-// Enum for setting log verbosity.
-func (o RegressionResponseOutput) LogVerbosity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegressionResponse) *string { return v.LogVerbosity }).(pulumi.StringPtrOutput)
-}
-
-// Number of cross validation folds to be applied on training dataset
-// when validation dataset is not provided.
-func (o RegressionResponseOutput) NCrossValidations() pulumi.AnyOutput {
-	return o.ApplyT(func(v RegressionResponse) interface{} { return v.NCrossValidations }).(pulumi.AnyOutput)
-}
-
-// Primary metrics for Regression task.
-func (o RegressionResponseOutput) PrimaryMetric() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegressionResponse) *string { return v.PrimaryMetric }).(pulumi.StringPtrOutput)
-}
-
-// Target column name: This is prediction values column.
-// Also known as label column name in context of classification tasks.
-func (o RegressionResponseOutput) TargetColumnName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegressionResponse) *string { return v.TargetColumnName }).(pulumi.StringPtrOutput)
-}
-
-// AutoMLJob Task type.
-// Expected value is 'Regression'.
-func (o RegressionResponseOutput) TaskType() pulumi.StringOutput {
-	return o.ApplyT(func(v RegressionResponse) string { return v.TaskType }).(pulumi.StringOutput)
-}
-
-// Test data input.
-func (o RegressionResponseOutput) TestData() MLTableJobInputResponsePtrOutput {
-	return o.ApplyT(func(v RegressionResponse) *MLTableJobInputResponse { return v.TestData }).(MLTableJobInputResponsePtrOutput)
-}
-
-// The fraction of test dataset that needs to be set aside for validation purpose.
-// Values between (0.0 , 1.0)
-// Applied when validation dataset is not provided.
-func (o RegressionResponseOutput) TestDataSize() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v RegressionResponse) *float64 { return v.TestDataSize }).(pulumi.Float64PtrOutput)
-}
-
-// [Required] Training data input.
-func (o RegressionResponseOutput) TrainingData() MLTableJobInputResponseOutput {
-	return o.ApplyT(func(v RegressionResponse) MLTableJobInputResponse { return v.TrainingData }).(MLTableJobInputResponseOutput)
-}
-
-// Inputs for training phase for an AutoML Job.
-func (o RegressionResponseOutput) TrainingSettings() RegressionTrainingSettingsResponsePtrOutput {
-	return o.ApplyT(func(v RegressionResponse) *RegressionTrainingSettingsResponse { return v.TrainingSettings }).(RegressionTrainingSettingsResponsePtrOutput)
-}
-
-// Validation data inputs.
-func (o RegressionResponseOutput) ValidationData() MLTableJobInputResponsePtrOutput {
-	return o.ApplyT(func(v RegressionResponse) *MLTableJobInputResponse { return v.ValidationData }).(MLTableJobInputResponsePtrOutput)
-}
-
-// The fraction of training dataset that needs to be set aside for validation purpose.
-// Values between (0.0 , 1.0)
-// Applied when validation dataset is not provided.
-func (o RegressionResponseOutput) ValidationDataSize() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v RegressionResponse) *float64 { return v.ValidationDataSize }).(pulumi.Float64PtrOutput)
-}
-
-// The name of the sample weight column. Automated ML supports a weighted column as an input, causing rows in the data to be weighted up or down.
-func (o RegressionResponseOutput) WeightColumnName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegressionResponse) *string { return v.WeightColumnName }).(pulumi.StringPtrOutput)
-}
-
-// Regression Training related configuration.
-type RegressionTrainingSettings struct {
-	// Allowed models for regression task.
-	AllowedTrainingAlgorithms []string `pulumi:"allowedTrainingAlgorithms"`
-	// Blocked models for regression task.
-	BlockedTrainingAlgorithms []string `pulumi:"blockedTrainingAlgorithms"`
-	// Enable recommendation of DNN models.
-	EnableDnnTraining *bool `pulumi:"enableDnnTraining"`
-	// Flag to turn on explainability on best model.
-	EnableModelExplainability *bool `pulumi:"enableModelExplainability"`
-	// Flag for enabling onnx compatible models.
-	EnableOnnxCompatibleModels *bool `pulumi:"enableOnnxCompatibleModels"`
-	// Enable stack ensemble run.
-	EnableStackEnsemble *bool `pulumi:"enableStackEnsemble"`
-	// Enable voting ensemble run.
-	EnableVoteEnsemble *bool `pulumi:"enableVoteEnsemble"`
-	// During VotingEnsemble and StackEnsemble model generation, multiple fitted models from the previous child runs are downloaded.
-	// Configure this parameter with a higher value than 300 secs, if more time is needed.
-	EnsembleModelDownloadTimeout *string `pulumi:"ensembleModelDownloadTimeout"`
-	// Stack ensemble settings for stack ensemble run.
-	StackEnsembleSettings *StackEnsembleSettings `pulumi:"stackEnsembleSettings"`
-}
-
-// Defaults sets the appropriate defaults for RegressionTrainingSettings
-func (val *RegressionTrainingSettings) Defaults() *RegressionTrainingSettings {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.EnableDnnTraining == nil {
-		enableDnnTraining_ := false
-		tmp.EnableDnnTraining = &enableDnnTraining_
-	}
-	if tmp.EnableModelExplainability == nil {
-		enableModelExplainability_ := true
-		tmp.EnableModelExplainability = &enableModelExplainability_
-	}
-	if tmp.EnableOnnxCompatibleModels == nil {
-		enableOnnxCompatibleModels_ := false
-		tmp.EnableOnnxCompatibleModels = &enableOnnxCompatibleModels_
-	}
-	if tmp.EnableStackEnsemble == nil {
-		enableStackEnsemble_ := true
-		tmp.EnableStackEnsemble = &enableStackEnsemble_
-	}
-	if tmp.EnableVoteEnsemble == nil {
-		enableVoteEnsemble_ := true
-		tmp.EnableVoteEnsemble = &enableVoteEnsemble_
-	}
-	if tmp.EnsembleModelDownloadTimeout == nil {
-		ensembleModelDownloadTimeout_ := "PT5M"
-		tmp.EnsembleModelDownloadTimeout = &ensembleModelDownloadTimeout_
-	}
-	tmp.StackEnsembleSettings = tmp.StackEnsembleSettings.Defaults()
-
-	return &tmp
-}
-
-// RegressionTrainingSettingsInput is an input type that accepts RegressionTrainingSettingsArgs and RegressionTrainingSettingsOutput values.
-// You can construct a concrete instance of `RegressionTrainingSettingsInput` via:
-//
-//	RegressionTrainingSettingsArgs{...}
-type RegressionTrainingSettingsInput interface {
-	pulumi.Input
-
-	ToRegressionTrainingSettingsOutput() RegressionTrainingSettingsOutput
-	ToRegressionTrainingSettingsOutputWithContext(context.Context) RegressionTrainingSettingsOutput
-}
-
-// Regression Training related configuration.
-type RegressionTrainingSettingsArgs struct {
-	// Allowed models for regression task.
-	AllowedTrainingAlgorithms pulumi.StringArrayInput `pulumi:"allowedTrainingAlgorithms"`
-	// Blocked models for regression task.
-	BlockedTrainingAlgorithms pulumi.StringArrayInput `pulumi:"blockedTrainingAlgorithms"`
-	// Enable recommendation of DNN models.
-	EnableDnnTraining pulumi.BoolPtrInput `pulumi:"enableDnnTraining"`
-	// Flag to turn on explainability on best model.
-	EnableModelExplainability pulumi.BoolPtrInput `pulumi:"enableModelExplainability"`
-	// Flag for enabling onnx compatible models.
-	EnableOnnxCompatibleModels pulumi.BoolPtrInput `pulumi:"enableOnnxCompatibleModels"`
-	// Enable stack ensemble run.
-	EnableStackEnsemble pulumi.BoolPtrInput `pulumi:"enableStackEnsemble"`
-	// Enable voting ensemble run.
-	EnableVoteEnsemble pulumi.BoolPtrInput `pulumi:"enableVoteEnsemble"`
-	// During VotingEnsemble and StackEnsemble model generation, multiple fitted models from the previous child runs are downloaded.
-	// Configure this parameter with a higher value than 300 secs, if more time is needed.
-	EnsembleModelDownloadTimeout pulumi.StringPtrInput `pulumi:"ensembleModelDownloadTimeout"`
-	// Stack ensemble settings for stack ensemble run.
-	StackEnsembleSettings StackEnsembleSettingsPtrInput `pulumi:"stackEnsembleSettings"`
-}
-
-// Defaults sets the appropriate defaults for RegressionTrainingSettingsArgs
-func (val *RegressionTrainingSettingsArgs) Defaults() *RegressionTrainingSettingsArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.EnableDnnTraining == nil {
-		tmp.EnableDnnTraining = pulumi.BoolPtr(false)
-	}
-	if tmp.EnableModelExplainability == nil {
-		tmp.EnableModelExplainability = pulumi.BoolPtr(true)
-	}
-	if tmp.EnableOnnxCompatibleModels == nil {
-		tmp.EnableOnnxCompatibleModels = pulumi.BoolPtr(false)
-	}
-	if tmp.EnableStackEnsemble == nil {
-		tmp.EnableStackEnsemble = pulumi.BoolPtr(true)
-	}
-	if tmp.EnableVoteEnsemble == nil {
-		tmp.EnableVoteEnsemble = pulumi.BoolPtr(true)
-	}
-	if tmp.EnsembleModelDownloadTimeout == nil {
-		tmp.EnsembleModelDownloadTimeout = pulumi.StringPtr("PT5M")
-	}
-
-	return &tmp
-}
-func (RegressionTrainingSettingsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegressionTrainingSettings)(nil)).Elem()
-}
-
-func (i RegressionTrainingSettingsArgs) ToRegressionTrainingSettingsOutput() RegressionTrainingSettingsOutput {
-	return i.ToRegressionTrainingSettingsOutputWithContext(context.Background())
-}
-
-func (i RegressionTrainingSettingsArgs) ToRegressionTrainingSettingsOutputWithContext(ctx context.Context) RegressionTrainingSettingsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegressionTrainingSettingsOutput)
-}
-
-func (i RegressionTrainingSettingsArgs) ToRegressionTrainingSettingsPtrOutput() RegressionTrainingSettingsPtrOutput {
-	return i.ToRegressionTrainingSettingsPtrOutputWithContext(context.Background())
-}
-
-func (i RegressionTrainingSettingsArgs) ToRegressionTrainingSettingsPtrOutputWithContext(ctx context.Context) RegressionTrainingSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegressionTrainingSettingsOutput).ToRegressionTrainingSettingsPtrOutputWithContext(ctx)
-}
-
-// RegressionTrainingSettingsPtrInput is an input type that accepts RegressionTrainingSettingsArgs, RegressionTrainingSettingsPtr and RegressionTrainingSettingsPtrOutput values.
-// You can construct a concrete instance of `RegressionTrainingSettingsPtrInput` via:
-//
-//	        RegressionTrainingSettingsArgs{...}
-//
-//	or:
-//
-//	        nil
-type RegressionTrainingSettingsPtrInput interface {
-	pulumi.Input
-
-	ToRegressionTrainingSettingsPtrOutput() RegressionTrainingSettingsPtrOutput
-	ToRegressionTrainingSettingsPtrOutputWithContext(context.Context) RegressionTrainingSettingsPtrOutput
-}
-
-type regressionTrainingSettingsPtrType RegressionTrainingSettingsArgs
-
-func RegressionTrainingSettingsPtr(v *RegressionTrainingSettingsArgs) RegressionTrainingSettingsPtrInput {
-	return (*regressionTrainingSettingsPtrType)(v)
-}
-
-func (*regressionTrainingSettingsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RegressionTrainingSettings)(nil)).Elem()
-}
-
-func (i *regressionTrainingSettingsPtrType) ToRegressionTrainingSettingsPtrOutput() RegressionTrainingSettingsPtrOutput {
-	return i.ToRegressionTrainingSettingsPtrOutputWithContext(context.Background())
-}
-
-func (i *regressionTrainingSettingsPtrType) ToRegressionTrainingSettingsPtrOutputWithContext(ctx context.Context) RegressionTrainingSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegressionTrainingSettingsPtrOutput)
-}
-
-// Regression Training related configuration.
-type RegressionTrainingSettingsOutput struct{ *pulumi.OutputState }
-
-func (RegressionTrainingSettingsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegressionTrainingSettings)(nil)).Elem()
-}
-
-func (o RegressionTrainingSettingsOutput) ToRegressionTrainingSettingsOutput() RegressionTrainingSettingsOutput {
-	return o
-}
-
-func (o RegressionTrainingSettingsOutput) ToRegressionTrainingSettingsOutputWithContext(ctx context.Context) RegressionTrainingSettingsOutput {
-	return o
-}
-
-func (o RegressionTrainingSettingsOutput) ToRegressionTrainingSettingsPtrOutput() RegressionTrainingSettingsPtrOutput {
-	return o.ToRegressionTrainingSettingsPtrOutputWithContext(context.Background())
-}
-
-func (o RegressionTrainingSettingsOutput) ToRegressionTrainingSettingsPtrOutputWithContext(ctx context.Context) RegressionTrainingSettingsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegressionTrainingSettings) *RegressionTrainingSettings {
-		return &v
-	}).(RegressionTrainingSettingsPtrOutput)
-}
-
-// Allowed models for regression task.
-func (o RegressionTrainingSettingsOutput) AllowedTrainingAlgorithms() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v RegressionTrainingSettings) []string { return v.AllowedTrainingAlgorithms }).(pulumi.StringArrayOutput)
-}
-
-// Blocked models for regression task.
-func (o RegressionTrainingSettingsOutput) BlockedTrainingAlgorithms() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v RegressionTrainingSettings) []string { return v.BlockedTrainingAlgorithms }).(pulumi.StringArrayOutput)
-}
-
-// Enable recommendation of DNN models.
-func (o RegressionTrainingSettingsOutput) EnableDnnTraining() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RegressionTrainingSettings) *bool { return v.EnableDnnTraining }).(pulumi.BoolPtrOutput)
-}
-
-// Flag to turn on explainability on best model.
-func (o RegressionTrainingSettingsOutput) EnableModelExplainability() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RegressionTrainingSettings) *bool { return v.EnableModelExplainability }).(pulumi.BoolPtrOutput)
-}
-
-// Flag for enabling onnx compatible models.
-func (o RegressionTrainingSettingsOutput) EnableOnnxCompatibleModels() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RegressionTrainingSettings) *bool { return v.EnableOnnxCompatibleModels }).(pulumi.BoolPtrOutput)
-}
-
-// Enable stack ensemble run.
-func (o RegressionTrainingSettingsOutput) EnableStackEnsemble() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RegressionTrainingSettings) *bool { return v.EnableStackEnsemble }).(pulumi.BoolPtrOutput)
-}
-
-// Enable voting ensemble run.
-func (o RegressionTrainingSettingsOutput) EnableVoteEnsemble() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RegressionTrainingSettings) *bool { return v.EnableVoteEnsemble }).(pulumi.BoolPtrOutput)
-}
-
-// During VotingEnsemble and StackEnsemble model generation, multiple fitted models from the previous child runs are downloaded.
-// Configure this parameter with a higher value than 300 secs, if more time is needed.
-func (o RegressionTrainingSettingsOutput) EnsembleModelDownloadTimeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegressionTrainingSettings) *string { return v.EnsembleModelDownloadTimeout }).(pulumi.StringPtrOutput)
-}
-
-// Stack ensemble settings for stack ensemble run.
-func (o RegressionTrainingSettingsOutput) StackEnsembleSettings() StackEnsembleSettingsPtrOutput {
-	return o.ApplyT(func(v RegressionTrainingSettings) *StackEnsembleSettings { return v.StackEnsembleSettings }).(StackEnsembleSettingsPtrOutput)
-}
-
-type RegressionTrainingSettingsPtrOutput struct{ *pulumi.OutputState }
-
-func (RegressionTrainingSettingsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RegressionTrainingSettings)(nil)).Elem()
-}
-
-func (o RegressionTrainingSettingsPtrOutput) ToRegressionTrainingSettingsPtrOutput() RegressionTrainingSettingsPtrOutput {
-	return o
-}
-
-func (o RegressionTrainingSettingsPtrOutput) ToRegressionTrainingSettingsPtrOutputWithContext(ctx context.Context) RegressionTrainingSettingsPtrOutput {
-	return o
-}
-
-func (o RegressionTrainingSettingsPtrOutput) Elem() RegressionTrainingSettingsOutput {
-	return o.ApplyT(func(v *RegressionTrainingSettings) RegressionTrainingSettings {
-		if v != nil {
-			return *v
-		}
-		var ret RegressionTrainingSettings
-		return ret
-	}).(RegressionTrainingSettingsOutput)
-}
-
-// Allowed models for regression task.
-func (o RegressionTrainingSettingsPtrOutput) AllowedTrainingAlgorithms() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *RegressionTrainingSettings) []string {
-		if v == nil {
-			return nil
-		}
-		return v.AllowedTrainingAlgorithms
-	}).(pulumi.StringArrayOutput)
-}
-
-// Blocked models for regression task.
-func (o RegressionTrainingSettingsPtrOutput) BlockedTrainingAlgorithms() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *RegressionTrainingSettings) []string {
-		if v == nil {
-			return nil
-		}
-		return v.BlockedTrainingAlgorithms
-	}).(pulumi.StringArrayOutput)
-}
-
-// Enable recommendation of DNN models.
-func (o RegressionTrainingSettingsPtrOutput) EnableDnnTraining() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *RegressionTrainingSettings) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.EnableDnnTraining
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Flag to turn on explainability on best model.
-func (o RegressionTrainingSettingsPtrOutput) EnableModelExplainability() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *RegressionTrainingSettings) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.EnableModelExplainability
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Flag for enabling onnx compatible models.
-func (o RegressionTrainingSettingsPtrOutput) EnableOnnxCompatibleModels() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *RegressionTrainingSettings) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.EnableOnnxCompatibleModels
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Enable stack ensemble run.
-func (o RegressionTrainingSettingsPtrOutput) EnableStackEnsemble() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *RegressionTrainingSettings) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.EnableStackEnsemble
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Enable voting ensemble run.
-func (o RegressionTrainingSettingsPtrOutput) EnableVoteEnsemble() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *RegressionTrainingSettings) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.EnableVoteEnsemble
-	}).(pulumi.BoolPtrOutput)
-}
-
-// During VotingEnsemble and StackEnsemble model generation, multiple fitted models from the previous child runs are downloaded.
-// Configure this parameter with a higher value than 300 secs, if more time is needed.
-func (o RegressionTrainingSettingsPtrOutput) EnsembleModelDownloadTimeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RegressionTrainingSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.EnsembleModelDownloadTimeout
-	}).(pulumi.StringPtrOutput)
-}
-
-// Stack ensemble settings for stack ensemble run.
-func (o RegressionTrainingSettingsPtrOutput) StackEnsembleSettings() StackEnsembleSettingsPtrOutput {
-	return o.ApplyT(func(v *RegressionTrainingSettings) *StackEnsembleSettings {
-		if v == nil {
-			return nil
-		}
-		return v.StackEnsembleSettings
-	}).(StackEnsembleSettingsPtrOutput)
-}
-
-// Regression Training related configuration.
-type RegressionTrainingSettingsResponse struct {
-	// Allowed models for regression task.
-	AllowedTrainingAlgorithms []string `pulumi:"allowedTrainingAlgorithms"`
-	// Blocked models for regression task.
-	BlockedTrainingAlgorithms []string `pulumi:"blockedTrainingAlgorithms"`
-	// Enable recommendation of DNN models.
-	EnableDnnTraining *bool `pulumi:"enableDnnTraining"`
-	// Flag to turn on explainability on best model.
-	EnableModelExplainability *bool `pulumi:"enableModelExplainability"`
-	// Flag for enabling onnx compatible models.
-	EnableOnnxCompatibleModels *bool `pulumi:"enableOnnxCompatibleModels"`
-	// Enable stack ensemble run.
-	EnableStackEnsemble *bool `pulumi:"enableStackEnsemble"`
-	// Enable voting ensemble run.
-	EnableVoteEnsemble *bool `pulumi:"enableVoteEnsemble"`
-	// During VotingEnsemble and StackEnsemble model generation, multiple fitted models from the previous child runs are downloaded.
-	// Configure this parameter with a higher value than 300 secs, if more time is needed.
-	EnsembleModelDownloadTimeout *string `pulumi:"ensembleModelDownloadTimeout"`
-	// Stack ensemble settings for stack ensemble run.
-	StackEnsembleSettings *StackEnsembleSettingsResponse `pulumi:"stackEnsembleSettings"`
-}
-
-// Defaults sets the appropriate defaults for RegressionTrainingSettingsResponse
-func (val *RegressionTrainingSettingsResponse) Defaults() *RegressionTrainingSettingsResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.EnableDnnTraining == nil {
-		enableDnnTraining_ := false
-		tmp.EnableDnnTraining = &enableDnnTraining_
-	}
-	if tmp.EnableModelExplainability == nil {
-		enableModelExplainability_ := true
-		tmp.EnableModelExplainability = &enableModelExplainability_
-	}
-	if tmp.EnableOnnxCompatibleModels == nil {
-		enableOnnxCompatibleModels_ := false
-		tmp.EnableOnnxCompatibleModels = &enableOnnxCompatibleModels_
-	}
-	if tmp.EnableStackEnsemble == nil {
-		enableStackEnsemble_ := true
-		tmp.EnableStackEnsemble = &enableStackEnsemble_
-	}
-	if tmp.EnableVoteEnsemble == nil {
-		enableVoteEnsemble_ := true
-		tmp.EnableVoteEnsemble = &enableVoteEnsemble_
-	}
-	if tmp.EnsembleModelDownloadTimeout == nil {
-		ensembleModelDownloadTimeout_ := "PT5M"
-		tmp.EnsembleModelDownloadTimeout = &ensembleModelDownloadTimeout_
-	}
-	tmp.StackEnsembleSettings = tmp.StackEnsembleSettings.Defaults()
-
-	return &tmp
-}
-
-// Regression Training related configuration.
-type RegressionTrainingSettingsResponseOutput struct{ *pulumi.OutputState }
-
-func (RegressionTrainingSettingsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegressionTrainingSettingsResponse)(nil)).Elem()
-}
-
-func (o RegressionTrainingSettingsResponseOutput) ToRegressionTrainingSettingsResponseOutput() RegressionTrainingSettingsResponseOutput {
-	return o
-}
-
-func (o RegressionTrainingSettingsResponseOutput) ToRegressionTrainingSettingsResponseOutputWithContext(ctx context.Context) RegressionTrainingSettingsResponseOutput {
-	return o
-}
-
-// Allowed models for regression task.
-func (o RegressionTrainingSettingsResponseOutput) AllowedTrainingAlgorithms() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v RegressionTrainingSettingsResponse) []string { return v.AllowedTrainingAlgorithms }).(pulumi.StringArrayOutput)
-}
-
-// Blocked models for regression task.
-func (o RegressionTrainingSettingsResponseOutput) BlockedTrainingAlgorithms() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v RegressionTrainingSettingsResponse) []string { return v.BlockedTrainingAlgorithms }).(pulumi.StringArrayOutput)
-}
-
-// Enable recommendation of DNN models.
-func (o RegressionTrainingSettingsResponseOutput) EnableDnnTraining() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RegressionTrainingSettingsResponse) *bool { return v.EnableDnnTraining }).(pulumi.BoolPtrOutput)
-}
-
-// Flag to turn on explainability on best model.
-func (o RegressionTrainingSettingsResponseOutput) EnableModelExplainability() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RegressionTrainingSettingsResponse) *bool { return v.EnableModelExplainability }).(pulumi.BoolPtrOutput)
-}
-
-// Flag for enabling onnx compatible models.
-func (o RegressionTrainingSettingsResponseOutput) EnableOnnxCompatibleModels() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RegressionTrainingSettingsResponse) *bool { return v.EnableOnnxCompatibleModels }).(pulumi.BoolPtrOutput)
-}
-
-// Enable stack ensemble run.
-func (o RegressionTrainingSettingsResponseOutput) EnableStackEnsemble() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RegressionTrainingSettingsResponse) *bool { return v.EnableStackEnsemble }).(pulumi.BoolPtrOutput)
-}
-
-// Enable voting ensemble run.
-func (o RegressionTrainingSettingsResponseOutput) EnableVoteEnsemble() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RegressionTrainingSettingsResponse) *bool { return v.EnableVoteEnsemble }).(pulumi.BoolPtrOutput)
-}
-
-// During VotingEnsemble and StackEnsemble model generation, multiple fitted models from the previous child runs are downloaded.
-// Configure this parameter with a higher value than 300 secs, if more time is needed.
-func (o RegressionTrainingSettingsResponseOutput) EnsembleModelDownloadTimeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegressionTrainingSettingsResponse) *string { return v.EnsembleModelDownloadTimeout }).(pulumi.StringPtrOutput)
-}
-
-// Stack ensemble settings for stack ensemble run.
-func (o RegressionTrainingSettingsResponseOutput) StackEnsembleSettings() StackEnsembleSettingsResponsePtrOutput {
-	return o.ApplyT(func(v RegressionTrainingSettingsResponse) *StackEnsembleSettingsResponse {
-		return v.StackEnsembleSettings
-	}).(StackEnsembleSettingsResponsePtrOutput)
-}
-
-type RegressionTrainingSettingsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (RegressionTrainingSettingsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RegressionTrainingSettingsResponse)(nil)).Elem()
-}
-
-func (o RegressionTrainingSettingsResponsePtrOutput) ToRegressionTrainingSettingsResponsePtrOutput() RegressionTrainingSettingsResponsePtrOutput {
-	return o
-}
-
-func (o RegressionTrainingSettingsResponsePtrOutput) ToRegressionTrainingSettingsResponsePtrOutputWithContext(ctx context.Context) RegressionTrainingSettingsResponsePtrOutput {
-	return o
-}
-
-func (o RegressionTrainingSettingsResponsePtrOutput) Elem() RegressionTrainingSettingsResponseOutput {
-	return o.ApplyT(func(v *RegressionTrainingSettingsResponse) RegressionTrainingSettingsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret RegressionTrainingSettingsResponse
-		return ret
-	}).(RegressionTrainingSettingsResponseOutput)
-}
-
-// Allowed models for regression task.
-func (o RegressionTrainingSettingsResponsePtrOutput) AllowedTrainingAlgorithms() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *RegressionTrainingSettingsResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.AllowedTrainingAlgorithms
-	}).(pulumi.StringArrayOutput)
-}
-
-// Blocked models for regression task.
-func (o RegressionTrainingSettingsResponsePtrOutput) BlockedTrainingAlgorithms() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *RegressionTrainingSettingsResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.BlockedTrainingAlgorithms
-	}).(pulumi.StringArrayOutput)
-}
-
-// Enable recommendation of DNN models.
-func (o RegressionTrainingSettingsResponsePtrOutput) EnableDnnTraining() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *RegressionTrainingSettingsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.EnableDnnTraining
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Flag to turn on explainability on best model.
-func (o RegressionTrainingSettingsResponsePtrOutput) EnableModelExplainability() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *RegressionTrainingSettingsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.EnableModelExplainability
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Flag for enabling onnx compatible models.
-func (o RegressionTrainingSettingsResponsePtrOutput) EnableOnnxCompatibleModels() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *RegressionTrainingSettingsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.EnableOnnxCompatibleModels
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Enable stack ensemble run.
-func (o RegressionTrainingSettingsResponsePtrOutput) EnableStackEnsemble() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *RegressionTrainingSettingsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.EnableStackEnsemble
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Enable voting ensemble run.
-func (o RegressionTrainingSettingsResponsePtrOutput) EnableVoteEnsemble() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *RegressionTrainingSettingsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.EnableVoteEnsemble
-	}).(pulumi.BoolPtrOutput)
-}
-
-// During VotingEnsemble and StackEnsemble model generation, multiple fitted models from the previous child runs are downloaded.
-// Configure this parameter with a higher value than 300 secs, if more time is needed.
-func (o RegressionTrainingSettingsResponsePtrOutput) EnsembleModelDownloadTimeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RegressionTrainingSettingsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.EnsembleModelDownloadTimeout
-	}).(pulumi.StringPtrOutput)
-}
-
-// Stack ensemble settings for stack ensemble run.
-func (o RegressionTrainingSettingsResponsePtrOutput) StackEnsembleSettings() StackEnsembleSettingsResponsePtrOutput {
-	return o.ApplyT(func(v *RegressionTrainingSettingsResponse) *StackEnsembleSettingsResponse {
-		if v == nil {
-			return nil
-		}
-		return v.StackEnsembleSettings
-	}).(StackEnsembleSettingsResponsePtrOutput)
-}
-
-// Scoring requests configuration.
-type RequestConfiguration struct {
-	// The number of maximum concurrent requests per node allowed per deployment. Defaults to 1.
-	MaxConcurrentRequestsPerInstance *int `pulumi:"maxConcurrentRequestsPerInstance"`
-	// The scoring timeout in ISO 8601 format.
-	// Defaults to 5000ms.
-	RequestTimeout *string `pulumi:"requestTimeout"`
-}
-
-// Defaults sets the appropriate defaults for RequestConfiguration
-func (val *RequestConfiguration) Defaults() *RequestConfiguration {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.MaxConcurrentRequestsPerInstance == nil {
-		maxConcurrentRequestsPerInstance_ := 1
-		tmp.MaxConcurrentRequestsPerInstance = &maxConcurrentRequestsPerInstance_
-	}
-	if tmp.RequestTimeout == nil {
-		requestTimeout_ := "PT5S"
-		tmp.RequestTimeout = &requestTimeout_
-	}
-	return &tmp
-}
-
-// RequestConfigurationInput is an input type that accepts RequestConfigurationArgs and RequestConfigurationOutput values.
-// You can construct a concrete instance of `RequestConfigurationInput` via:
-//
-//	RequestConfigurationArgs{...}
-type RequestConfigurationInput interface {
-	pulumi.Input
-
-	ToRequestConfigurationOutput() RequestConfigurationOutput
-	ToRequestConfigurationOutputWithContext(context.Context) RequestConfigurationOutput
-}
-
-// Scoring requests configuration.
-type RequestConfigurationArgs struct {
-	// The number of maximum concurrent requests per node allowed per deployment. Defaults to 1.
-	MaxConcurrentRequestsPerInstance pulumi.IntPtrInput `pulumi:"maxConcurrentRequestsPerInstance"`
-	// The scoring timeout in ISO 8601 format.
-	// Defaults to 5000ms.
-	RequestTimeout pulumi.StringPtrInput `pulumi:"requestTimeout"`
-}
-
-// Defaults sets the appropriate defaults for RequestConfigurationArgs
-func (val *RequestConfigurationArgs) Defaults() *RequestConfigurationArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.MaxConcurrentRequestsPerInstance == nil {
-		tmp.MaxConcurrentRequestsPerInstance = pulumi.IntPtr(1)
-	}
-	if tmp.RequestTimeout == nil {
-		tmp.RequestTimeout = pulumi.StringPtr("PT5S")
-	}
-	return &tmp
-}
-func (RequestConfigurationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RequestConfiguration)(nil)).Elem()
-}
-
-func (i RequestConfigurationArgs) ToRequestConfigurationOutput() RequestConfigurationOutput {
-	return i.ToRequestConfigurationOutputWithContext(context.Background())
-}
-
-func (i RequestConfigurationArgs) ToRequestConfigurationOutputWithContext(ctx context.Context) RequestConfigurationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RequestConfigurationOutput)
-}
-
-func (i RequestConfigurationArgs) ToRequestConfigurationPtrOutput() RequestConfigurationPtrOutput {
-	return i.ToRequestConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i RequestConfigurationArgs) ToRequestConfigurationPtrOutputWithContext(ctx context.Context) RequestConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RequestConfigurationOutput).ToRequestConfigurationPtrOutputWithContext(ctx)
-}
-
-// RequestConfigurationPtrInput is an input type that accepts RequestConfigurationArgs, RequestConfigurationPtr and RequestConfigurationPtrOutput values.
-// You can construct a concrete instance of `RequestConfigurationPtrInput` via:
-//
-//	        RequestConfigurationArgs{...}
-//
-//	or:
-//
-//	        nil
-type RequestConfigurationPtrInput interface {
-	pulumi.Input
-
-	ToRequestConfigurationPtrOutput() RequestConfigurationPtrOutput
-	ToRequestConfigurationPtrOutputWithContext(context.Context) RequestConfigurationPtrOutput
-}
-
-type requestConfigurationPtrType RequestConfigurationArgs
-
-func RequestConfigurationPtr(v *RequestConfigurationArgs) RequestConfigurationPtrInput {
-	return (*requestConfigurationPtrType)(v)
-}
-
-func (*requestConfigurationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RequestConfiguration)(nil)).Elem()
-}
-
-func (i *requestConfigurationPtrType) ToRequestConfigurationPtrOutput() RequestConfigurationPtrOutput {
-	return i.ToRequestConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i *requestConfigurationPtrType) ToRequestConfigurationPtrOutputWithContext(ctx context.Context) RequestConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RequestConfigurationPtrOutput)
-}
-
-// Scoring requests configuration.
-type RequestConfigurationOutput struct{ *pulumi.OutputState }
-
-func (RequestConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RequestConfiguration)(nil)).Elem()
-}
-
-func (o RequestConfigurationOutput) ToRequestConfigurationOutput() RequestConfigurationOutput {
-	return o
-}
-
-func (o RequestConfigurationOutput) ToRequestConfigurationOutputWithContext(ctx context.Context) RequestConfigurationOutput {
-	return o
-}
-
-func (o RequestConfigurationOutput) ToRequestConfigurationPtrOutput() RequestConfigurationPtrOutput {
-	return o.ToRequestConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (o RequestConfigurationOutput) ToRequestConfigurationPtrOutputWithContext(ctx context.Context) RequestConfigurationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RequestConfiguration) *RequestConfiguration {
-		return &v
-	}).(RequestConfigurationPtrOutput)
-}
-
-// The number of maximum concurrent requests per node allowed per deployment. Defaults to 1.
-func (o RequestConfigurationOutput) MaxConcurrentRequestsPerInstance() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RequestConfiguration) *int { return v.MaxConcurrentRequestsPerInstance }).(pulumi.IntPtrOutput)
-}
-
-// The scoring timeout in ISO 8601 format.
-// Defaults to 5000ms.
-func (o RequestConfigurationOutput) RequestTimeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RequestConfiguration) *string { return v.RequestTimeout }).(pulumi.StringPtrOutput)
-}
-
-type RequestConfigurationPtrOutput struct{ *pulumi.OutputState }
-
-func (RequestConfigurationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RequestConfiguration)(nil)).Elem()
-}
-
-func (o RequestConfigurationPtrOutput) ToRequestConfigurationPtrOutput() RequestConfigurationPtrOutput {
-	return o
-}
-
-func (o RequestConfigurationPtrOutput) ToRequestConfigurationPtrOutputWithContext(ctx context.Context) RequestConfigurationPtrOutput {
-	return o
-}
-
-func (o RequestConfigurationPtrOutput) Elem() RequestConfigurationOutput {
-	return o.ApplyT(func(v *RequestConfiguration) RequestConfiguration {
-		if v != nil {
-			return *v
-		}
-		var ret RequestConfiguration
-		return ret
-	}).(RequestConfigurationOutput)
-}
-
-// The number of maximum concurrent requests per node allowed per deployment. Defaults to 1.
-func (o RequestConfigurationPtrOutput) MaxConcurrentRequestsPerInstance() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *RequestConfiguration) *int {
-		if v == nil {
-			return nil
-		}
-		return v.MaxConcurrentRequestsPerInstance
-	}).(pulumi.IntPtrOutput)
-}
-
-// The scoring timeout in ISO 8601 format.
-// Defaults to 5000ms.
-func (o RequestConfigurationPtrOutput) RequestTimeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RequestConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RequestTimeout
-	}).(pulumi.StringPtrOutput)
-}
-
-// Scoring requests configuration.
-type RequestConfigurationResponse struct {
-	// The number of maximum concurrent requests per node allowed per deployment. Defaults to 1.
-	MaxConcurrentRequestsPerInstance *int `pulumi:"maxConcurrentRequestsPerInstance"`
-	// The scoring timeout in ISO 8601 format.
-	// Defaults to 5000ms.
-	RequestTimeout *string `pulumi:"requestTimeout"`
-}
-
-// Defaults sets the appropriate defaults for RequestConfigurationResponse
-func (val *RequestConfigurationResponse) Defaults() *RequestConfigurationResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.MaxConcurrentRequestsPerInstance == nil {
-		maxConcurrentRequestsPerInstance_ := 1
-		tmp.MaxConcurrentRequestsPerInstance = &maxConcurrentRequestsPerInstance_
-	}
-	if tmp.RequestTimeout == nil {
-		requestTimeout_ := "PT5S"
-		tmp.RequestTimeout = &requestTimeout_
-	}
-	return &tmp
-}
-
-// Scoring requests configuration.
-type RequestConfigurationResponseOutput struct{ *pulumi.OutputState }
-
-func (RequestConfigurationResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RequestConfigurationResponse)(nil)).Elem()
-}
-
-func (o RequestConfigurationResponseOutput) ToRequestConfigurationResponseOutput() RequestConfigurationResponseOutput {
-	return o
-}
-
-func (o RequestConfigurationResponseOutput) ToRequestConfigurationResponseOutputWithContext(ctx context.Context) RequestConfigurationResponseOutput {
-	return o
-}
-
-// The number of maximum concurrent requests per node allowed per deployment. Defaults to 1.
-func (o RequestConfigurationResponseOutput) MaxConcurrentRequestsPerInstance() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RequestConfigurationResponse) *int { return v.MaxConcurrentRequestsPerInstance }).(pulumi.IntPtrOutput)
-}
-
-// The scoring timeout in ISO 8601 format.
-// Defaults to 5000ms.
-func (o RequestConfigurationResponseOutput) RequestTimeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RequestConfigurationResponse) *string { return v.RequestTimeout }).(pulumi.StringPtrOutput)
-}
-
-type RequestConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (RequestConfigurationResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RequestConfigurationResponse)(nil)).Elem()
-}
-
-func (o RequestConfigurationResponsePtrOutput) ToRequestConfigurationResponsePtrOutput() RequestConfigurationResponsePtrOutput {
-	return o
-}
-
-func (o RequestConfigurationResponsePtrOutput) ToRequestConfigurationResponsePtrOutputWithContext(ctx context.Context) RequestConfigurationResponsePtrOutput {
-	return o
-}
-
-func (o RequestConfigurationResponsePtrOutput) Elem() RequestConfigurationResponseOutput {
-	return o.ApplyT(func(v *RequestConfigurationResponse) RequestConfigurationResponse {
-		if v != nil {
-			return *v
-		}
-		var ret RequestConfigurationResponse
-		return ret
-	}).(RequestConfigurationResponseOutput)
-}
-
-// The number of maximum concurrent requests per node allowed per deployment. Defaults to 1.
-func (o RequestConfigurationResponsePtrOutput) MaxConcurrentRequestsPerInstance() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *RequestConfigurationResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.MaxConcurrentRequestsPerInstance
-	}).(pulumi.IntPtrOutput)
-}
-
-// The scoring timeout in ISO 8601 format.
-// Defaults to 5000ms.
-func (o RequestConfigurationResponsePtrOutput) RequestTimeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RequestConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RequestTimeout
-	}).(pulumi.StringPtrOutput)
-}
-
-type RequestLogging struct {
-	// For payload logging, we only collect payload by default. If customers also want to collect the specified headers, they can set them in captureHeaders so that backend will collect those headers along with payload.
-	CaptureHeaders []string `pulumi:"captureHeaders"`
-}
-
-// RequestLoggingInput is an input type that accepts RequestLoggingArgs and RequestLoggingOutput values.
-// You can construct a concrete instance of `RequestLoggingInput` via:
-//
-//	RequestLoggingArgs{...}
-type RequestLoggingInput interface {
-	pulumi.Input
-
-	ToRequestLoggingOutput() RequestLoggingOutput
-	ToRequestLoggingOutputWithContext(context.Context) RequestLoggingOutput
-}
-
-type RequestLoggingArgs struct {
-	// For payload logging, we only collect payload by default. If customers also want to collect the specified headers, they can set them in captureHeaders so that backend will collect those headers along with payload.
-	CaptureHeaders pulumi.StringArrayInput `pulumi:"captureHeaders"`
-}
-
-func (RequestLoggingArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RequestLogging)(nil)).Elem()
-}
-
-func (i RequestLoggingArgs) ToRequestLoggingOutput() RequestLoggingOutput {
-	return i.ToRequestLoggingOutputWithContext(context.Background())
-}
-
-func (i RequestLoggingArgs) ToRequestLoggingOutputWithContext(ctx context.Context) RequestLoggingOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RequestLoggingOutput)
-}
-
-func (i RequestLoggingArgs) ToRequestLoggingPtrOutput() RequestLoggingPtrOutput {
-	return i.ToRequestLoggingPtrOutputWithContext(context.Background())
-}
-
-func (i RequestLoggingArgs) ToRequestLoggingPtrOutputWithContext(ctx context.Context) RequestLoggingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RequestLoggingOutput).ToRequestLoggingPtrOutputWithContext(ctx)
-}
-
-// RequestLoggingPtrInput is an input type that accepts RequestLoggingArgs, RequestLoggingPtr and RequestLoggingPtrOutput values.
-// You can construct a concrete instance of `RequestLoggingPtrInput` via:
-//
-//	        RequestLoggingArgs{...}
-//
-//	or:
-//
-//	        nil
-type RequestLoggingPtrInput interface {
-	pulumi.Input
-
-	ToRequestLoggingPtrOutput() RequestLoggingPtrOutput
-	ToRequestLoggingPtrOutputWithContext(context.Context) RequestLoggingPtrOutput
-}
-
-type requestLoggingPtrType RequestLoggingArgs
-
-func RequestLoggingPtr(v *RequestLoggingArgs) RequestLoggingPtrInput {
-	return (*requestLoggingPtrType)(v)
-}
-
-func (*requestLoggingPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RequestLogging)(nil)).Elem()
-}
-
-func (i *requestLoggingPtrType) ToRequestLoggingPtrOutput() RequestLoggingPtrOutput {
-	return i.ToRequestLoggingPtrOutputWithContext(context.Background())
-}
-
-func (i *requestLoggingPtrType) ToRequestLoggingPtrOutputWithContext(ctx context.Context) RequestLoggingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RequestLoggingPtrOutput)
-}
-
-type RequestLoggingOutput struct{ *pulumi.OutputState }
-
-func (RequestLoggingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RequestLogging)(nil)).Elem()
-}
-
-func (o RequestLoggingOutput) ToRequestLoggingOutput() RequestLoggingOutput {
-	return o
-}
-
-func (o RequestLoggingOutput) ToRequestLoggingOutputWithContext(ctx context.Context) RequestLoggingOutput {
-	return o
-}
-
-func (o RequestLoggingOutput) ToRequestLoggingPtrOutput() RequestLoggingPtrOutput {
-	return o.ToRequestLoggingPtrOutputWithContext(context.Background())
-}
-
-func (o RequestLoggingOutput) ToRequestLoggingPtrOutputWithContext(ctx context.Context) RequestLoggingPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RequestLogging) *RequestLogging {
-		return &v
-	}).(RequestLoggingPtrOutput)
-}
-
-// For payload logging, we only collect payload by default. If customers also want to collect the specified headers, they can set them in captureHeaders so that backend will collect those headers along with payload.
-func (o RequestLoggingOutput) CaptureHeaders() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v RequestLogging) []string { return v.CaptureHeaders }).(pulumi.StringArrayOutput)
-}
-
-type RequestLoggingPtrOutput struct{ *pulumi.OutputState }
-
-func (RequestLoggingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RequestLogging)(nil)).Elem()
-}
-
-func (o RequestLoggingPtrOutput) ToRequestLoggingPtrOutput() RequestLoggingPtrOutput {
-	return o
-}
-
-func (o RequestLoggingPtrOutput) ToRequestLoggingPtrOutputWithContext(ctx context.Context) RequestLoggingPtrOutput {
-	return o
-}
-
-func (o RequestLoggingPtrOutput) Elem() RequestLoggingOutput {
-	return o.ApplyT(func(v *RequestLogging) RequestLogging {
-		if v != nil {
-			return *v
-		}
-		var ret RequestLogging
-		return ret
-	}).(RequestLoggingOutput)
-}
-
-// For payload logging, we only collect payload by default. If customers also want to collect the specified headers, they can set them in captureHeaders so that backend will collect those headers along with payload.
-func (o RequestLoggingPtrOutput) CaptureHeaders() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *RequestLogging) []string {
-		if v == nil {
-			return nil
-		}
-		return v.CaptureHeaders
-	}).(pulumi.StringArrayOutput)
-}
-
-type RequestLoggingResponse struct {
-	// For payload logging, we only collect payload by default. If customers also want to collect the specified headers, they can set them in captureHeaders so that backend will collect those headers along with payload.
-	CaptureHeaders []string `pulumi:"captureHeaders"`
-}
-
-type RequestLoggingResponseOutput struct{ *pulumi.OutputState }
-
-func (RequestLoggingResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RequestLoggingResponse)(nil)).Elem()
-}
-
-func (o RequestLoggingResponseOutput) ToRequestLoggingResponseOutput() RequestLoggingResponseOutput {
-	return o
-}
-
-func (o RequestLoggingResponseOutput) ToRequestLoggingResponseOutputWithContext(ctx context.Context) RequestLoggingResponseOutput {
-	return o
-}
-
-// For payload logging, we only collect payload by default. If customers also want to collect the specified headers, they can set them in captureHeaders so that backend will collect those headers along with payload.
-func (o RequestLoggingResponseOutput) CaptureHeaders() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v RequestLoggingResponse) []string { return v.CaptureHeaders }).(pulumi.StringArrayOutput)
-}
-
-type RequestLoggingResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (RequestLoggingResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RequestLoggingResponse)(nil)).Elem()
-}
-
-func (o RequestLoggingResponsePtrOutput) ToRequestLoggingResponsePtrOutput() RequestLoggingResponsePtrOutput {
-	return o
-}
-
-func (o RequestLoggingResponsePtrOutput) ToRequestLoggingResponsePtrOutputWithContext(ctx context.Context) RequestLoggingResponsePtrOutput {
-	return o
-}
-
-func (o RequestLoggingResponsePtrOutput) Elem() RequestLoggingResponseOutput {
-	return o.ApplyT(func(v *RequestLoggingResponse) RequestLoggingResponse {
-		if v != nil {
-			return *v
-		}
-		var ret RequestLoggingResponse
-		return ret
-	}).(RequestLoggingResponseOutput)
-}
-
-// For payload logging, we only collect payload by default. If customers also want to collect the specified headers, they can set them in captureHeaders so that backend will collect those headers along with payload.
-func (o RequestLoggingResponsePtrOutput) CaptureHeaders() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *RequestLoggingResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.CaptureHeaders
-	}).(pulumi.StringArrayOutput)
-}
-
-// Represents a resource ID. For example, for a subnet, it is the resource URL for the subnet.
-type ResourceId struct {
-	// The ID of the resource
-	Id string `pulumi:"id"`
-}
-
-// ResourceIdInput is an input type that accepts ResourceIdArgs and ResourceIdOutput values.
-// You can construct a concrete instance of `ResourceIdInput` via:
-//
-//	ResourceIdArgs{...}
-type ResourceIdInput interface {
-	pulumi.Input
-
-	ToResourceIdOutput() ResourceIdOutput
-	ToResourceIdOutputWithContext(context.Context) ResourceIdOutput
-}
-
-// Represents a resource ID. For example, for a subnet, it is the resource URL for the subnet.
-type ResourceIdArgs struct {
-	// The ID of the resource
-	Id pulumi.StringInput `pulumi:"id"`
-}
-
-func (ResourceIdArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourceId)(nil)).Elem()
-}
-
-func (i ResourceIdArgs) ToResourceIdOutput() ResourceIdOutput {
-	return i.ToResourceIdOutputWithContext(context.Background())
-}
-
-func (i ResourceIdArgs) ToResourceIdOutputWithContext(ctx context.Context) ResourceIdOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResourceIdOutput)
-}
-
-func (i ResourceIdArgs) ToResourceIdPtrOutput() ResourceIdPtrOutput {
-	return i.ToResourceIdPtrOutputWithContext(context.Background())
-}
-
-func (i ResourceIdArgs) ToResourceIdPtrOutputWithContext(ctx context.Context) ResourceIdPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResourceIdOutput).ToResourceIdPtrOutputWithContext(ctx)
-}
-
-// ResourceIdPtrInput is an input type that accepts ResourceIdArgs, ResourceIdPtr and ResourceIdPtrOutput values.
-// You can construct a concrete instance of `ResourceIdPtrInput` via:
-//
-//	        ResourceIdArgs{...}
-//
-//	or:
-//
-//	        nil
-type ResourceIdPtrInput interface {
-	pulumi.Input
-
-	ToResourceIdPtrOutput() ResourceIdPtrOutput
-	ToResourceIdPtrOutputWithContext(context.Context) ResourceIdPtrOutput
-}
-
-type resourceIdPtrType ResourceIdArgs
-
-func ResourceIdPtr(v *ResourceIdArgs) ResourceIdPtrInput {
-	return (*resourceIdPtrType)(v)
-}
-
-func (*resourceIdPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ResourceId)(nil)).Elem()
-}
-
-func (i *resourceIdPtrType) ToResourceIdPtrOutput() ResourceIdPtrOutput {
-	return i.ToResourceIdPtrOutputWithContext(context.Background())
-}
-
-func (i *resourceIdPtrType) ToResourceIdPtrOutputWithContext(ctx context.Context) ResourceIdPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResourceIdPtrOutput)
-}
-
-// Represents a resource ID. For example, for a subnet, it is the resource URL for the subnet.
-type ResourceIdOutput struct{ *pulumi.OutputState }
-
-func (ResourceIdOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourceId)(nil)).Elem()
-}
-
-func (o ResourceIdOutput) ToResourceIdOutput() ResourceIdOutput {
-	return o
-}
-
-func (o ResourceIdOutput) ToResourceIdOutputWithContext(ctx context.Context) ResourceIdOutput {
-	return o
-}
-
-func (o ResourceIdOutput) ToResourceIdPtrOutput() ResourceIdPtrOutput {
-	return o.ToResourceIdPtrOutputWithContext(context.Background())
-}
-
-func (o ResourceIdOutput) ToResourceIdPtrOutputWithContext(ctx context.Context) ResourceIdPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceId) *ResourceId {
-		return &v
-	}).(ResourceIdPtrOutput)
-}
-
-// The ID of the resource
-func (o ResourceIdOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v ResourceId) string { return v.Id }).(pulumi.StringOutput)
-}
-
-type ResourceIdPtrOutput struct{ *pulumi.OutputState }
-
-func (ResourceIdPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ResourceId)(nil)).Elem()
-}
-
-func (o ResourceIdPtrOutput) ToResourceIdPtrOutput() ResourceIdPtrOutput {
-	return o
-}
-
-func (o ResourceIdPtrOutput) ToResourceIdPtrOutputWithContext(ctx context.Context) ResourceIdPtrOutput {
-	return o
-}
-
-func (o ResourceIdPtrOutput) Elem() ResourceIdOutput {
-	return o.ApplyT(func(v *ResourceId) ResourceId {
-		if v != nil {
-			return *v
-		}
-		var ret ResourceId
-		return ret
-	}).(ResourceIdOutput)
-}
-
-// The ID of the resource
-func (o ResourceIdPtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceId) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-// Represents a resource ID. For example, for a subnet, it is the resource URL for the subnet.
-type ResourceIdResponse struct {
-	// The ID of the resource
-	Id string `pulumi:"id"`
-}
-
-// Represents a resource ID. For example, for a subnet, it is the resource URL for the subnet.
-type ResourceIdResponseOutput struct{ *pulumi.OutputState }
-
-func (ResourceIdResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourceIdResponse)(nil)).Elem()
-}
-
-func (o ResourceIdResponseOutput) ToResourceIdResponseOutput() ResourceIdResponseOutput {
-	return o
-}
-
-func (o ResourceIdResponseOutput) ToResourceIdResponseOutputWithContext(ctx context.Context) ResourceIdResponseOutput {
-	return o
-}
-
-// The ID of the resource
-func (o ResourceIdResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v ResourceIdResponse) string { return v.Id }).(pulumi.StringOutput)
-}
-
-type ResourceIdResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ResourceIdResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ResourceIdResponse)(nil)).Elem()
-}
-
-func (o ResourceIdResponsePtrOutput) ToResourceIdResponsePtrOutput() ResourceIdResponsePtrOutput {
-	return o
-}
-
-func (o ResourceIdResponsePtrOutput) ToResourceIdResponsePtrOutputWithContext(ctx context.Context) ResourceIdResponsePtrOutput {
-	return o
-}
-
-func (o ResourceIdResponsePtrOutput) Elem() ResourceIdResponseOutput {
-	return o.ApplyT(func(v *ResourceIdResponse) ResourceIdResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ResourceIdResponse
-		return ret
-	}).(ResourceIdResponseOutput)
-}
-
-// The ID of the resource
-func (o ResourceIdResponsePtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceIdResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-// Rolling input data definition.
-type RollingInputData struct {
-	// Mapping of column names to special uses.
-	Columns map[string]string `pulumi:"columns"`
-	// The context metadata of the data source.
-	DataContext *string `pulumi:"dataContext"`
-	// Monitoring input data type enum.
-	// Expected value is 'Rolling'.
-	InputDataType string `pulumi:"inputDataType"`
-	// [Required] Specifies the type of job.
-	JobInputType string `pulumi:"jobInputType"`
-	// Reference to the component asset used to preprocess the data.
-	PreprocessingComponentId *string `pulumi:"preprocessingComponentId"`
-	// [Required] Input Asset URI.
-	Uri string `pulumi:"uri"`
-	// [Required] The time offset between the end of the data window and the monitor's current run time.
-	WindowOffset string `pulumi:"windowOffset"`
-	// [Required] The size of the rolling data window.
-	WindowSize string `pulumi:"windowSize"`
-}
-
-// RollingInputDataInput is an input type that accepts RollingInputDataArgs and RollingInputDataOutput values.
-// You can construct a concrete instance of `RollingInputDataInput` via:
-//
-//	RollingInputDataArgs{...}
-type RollingInputDataInput interface {
-	pulumi.Input
-
-	ToRollingInputDataOutput() RollingInputDataOutput
-	ToRollingInputDataOutputWithContext(context.Context) RollingInputDataOutput
-}
-
-// Rolling input data definition.
-type RollingInputDataArgs struct {
-	// Mapping of column names to special uses.
-	Columns pulumi.StringMapInput `pulumi:"columns"`
-	// The context metadata of the data source.
-	DataContext pulumi.StringPtrInput `pulumi:"dataContext"`
-	// Monitoring input data type enum.
-	// Expected value is 'Rolling'.
-	InputDataType pulumi.StringInput `pulumi:"inputDataType"`
-	// [Required] Specifies the type of job.
-	JobInputType pulumi.StringInput `pulumi:"jobInputType"`
-	// Reference to the component asset used to preprocess the data.
-	PreprocessingComponentId pulumi.StringPtrInput `pulumi:"preprocessingComponentId"`
-	// [Required] Input Asset URI.
-	Uri pulumi.StringInput `pulumi:"uri"`
-	// [Required] The time offset between the end of the data window and the monitor's current run time.
-	WindowOffset pulumi.StringInput `pulumi:"windowOffset"`
-	// [Required] The size of the rolling data window.
-	WindowSize pulumi.StringInput `pulumi:"windowSize"`
-}
-
-func (RollingInputDataArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RollingInputData)(nil)).Elem()
-}
-
-func (i RollingInputDataArgs) ToRollingInputDataOutput() RollingInputDataOutput {
-	return i.ToRollingInputDataOutputWithContext(context.Background())
-}
-
-func (i RollingInputDataArgs) ToRollingInputDataOutputWithContext(ctx context.Context) RollingInputDataOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RollingInputDataOutput)
-}
-
-// Rolling input data definition.
-type RollingInputDataOutput struct{ *pulumi.OutputState }
-
-func (RollingInputDataOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RollingInputData)(nil)).Elem()
-}
-
-func (o RollingInputDataOutput) ToRollingInputDataOutput() RollingInputDataOutput {
-	return o
-}
-
-func (o RollingInputDataOutput) ToRollingInputDataOutputWithContext(ctx context.Context) RollingInputDataOutput {
-	return o
-}
-
-// Mapping of column names to special uses.
-func (o RollingInputDataOutput) Columns() pulumi.StringMapOutput {
-	return o.ApplyT(func(v RollingInputData) map[string]string { return v.Columns }).(pulumi.StringMapOutput)
-}
-
-// The context metadata of the data source.
-func (o RollingInputDataOutput) DataContext() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RollingInputData) *string { return v.DataContext }).(pulumi.StringPtrOutput)
-}
-
-// Monitoring input data type enum.
-// Expected value is 'Rolling'.
-func (o RollingInputDataOutput) InputDataType() pulumi.StringOutput {
-	return o.ApplyT(func(v RollingInputData) string { return v.InputDataType }).(pulumi.StringOutput)
-}
-
-// [Required] Specifies the type of job.
-func (o RollingInputDataOutput) JobInputType() pulumi.StringOutput {
-	return o.ApplyT(func(v RollingInputData) string { return v.JobInputType }).(pulumi.StringOutput)
-}
-
-// Reference to the component asset used to preprocess the data.
-func (o RollingInputDataOutput) PreprocessingComponentId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RollingInputData) *string { return v.PreprocessingComponentId }).(pulumi.StringPtrOutput)
-}
-
-// [Required] Input Asset URI.
-func (o RollingInputDataOutput) Uri() pulumi.StringOutput {
-	return o.ApplyT(func(v RollingInputData) string { return v.Uri }).(pulumi.StringOutput)
-}
-
-// [Required] The time offset between the end of the data window and the monitor's current run time.
-func (o RollingInputDataOutput) WindowOffset() pulumi.StringOutput {
-	return o.ApplyT(func(v RollingInputData) string { return v.WindowOffset }).(pulumi.StringOutput)
-}
-
-// [Required] The size of the rolling data window.
-func (o RollingInputDataOutput) WindowSize() pulumi.StringOutput {
-	return o.ApplyT(func(v RollingInputData) string { return v.WindowSize }).(pulumi.StringOutput)
-}
-
-// Rolling input data definition.
-type RollingInputDataResponse struct {
-	// Mapping of column names to special uses.
-	Columns map[string]string `pulumi:"columns"`
-	// The context metadata of the data source.
-	DataContext *string `pulumi:"dataContext"`
-	// Monitoring input data type enum.
-	// Expected value is 'Rolling'.
-	InputDataType string `pulumi:"inputDataType"`
-	// [Required] Specifies the type of job.
-	JobInputType string `pulumi:"jobInputType"`
-	// Reference to the component asset used to preprocess the data.
-	PreprocessingComponentId *string `pulumi:"preprocessingComponentId"`
-	// [Required] Input Asset URI.
-	Uri string `pulumi:"uri"`
-	// [Required] The time offset between the end of the data window and the monitor's current run time.
-	WindowOffset string `pulumi:"windowOffset"`
-	// [Required] The size of the rolling data window.
-	WindowSize string `pulumi:"windowSize"`
-}
-
-// Rolling input data definition.
-type RollingInputDataResponseOutput struct{ *pulumi.OutputState }
-
-func (RollingInputDataResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RollingInputDataResponse)(nil)).Elem()
-}
-
-func (o RollingInputDataResponseOutput) ToRollingInputDataResponseOutput() RollingInputDataResponseOutput {
-	return o
-}
-
-func (o RollingInputDataResponseOutput) ToRollingInputDataResponseOutputWithContext(ctx context.Context) RollingInputDataResponseOutput {
-	return o
-}
-
-// Mapping of column names to special uses.
-func (o RollingInputDataResponseOutput) Columns() pulumi.StringMapOutput {
-	return o.ApplyT(func(v RollingInputDataResponse) map[string]string { return v.Columns }).(pulumi.StringMapOutput)
-}
-
-// The context metadata of the data source.
-func (o RollingInputDataResponseOutput) DataContext() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RollingInputDataResponse) *string { return v.DataContext }).(pulumi.StringPtrOutput)
-}
-
-// Monitoring input data type enum.
-// Expected value is 'Rolling'.
-func (o RollingInputDataResponseOutput) InputDataType() pulumi.StringOutput {
-	return o.ApplyT(func(v RollingInputDataResponse) string { return v.InputDataType }).(pulumi.StringOutput)
-}
-
-// [Required] Specifies the type of job.
-func (o RollingInputDataResponseOutput) JobInputType() pulumi.StringOutput {
-	return o.ApplyT(func(v RollingInputDataResponse) string { return v.JobInputType }).(pulumi.StringOutput)
-}
-
-// Reference to the component asset used to preprocess the data.
-func (o RollingInputDataResponseOutput) PreprocessingComponentId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RollingInputDataResponse) *string { return v.PreprocessingComponentId }).(pulumi.StringPtrOutput)
-}
-
-// [Required] Input Asset URI.
-func (o RollingInputDataResponseOutput) Uri() pulumi.StringOutput {
-	return o.ApplyT(func(v RollingInputDataResponse) string { return v.Uri }).(pulumi.StringOutput)
-}
-
-// [Required] The time offset between the end of the data window and the monitor's current run time.
-func (o RollingInputDataResponseOutput) WindowOffset() pulumi.StringOutput {
-	return o.ApplyT(func(v RollingInputDataResponse) string { return v.WindowOffset }).(pulumi.StringOutput)
-}
-
-// [Required] The size of the rolling data window.
-func (o RollingInputDataResponseOutput) WindowSize() pulumi.StringOutput {
-	return o.ApplyT(func(v RollingInputDataResponse) string { return v.WindowSize }).(pulumi.StringOutput)
-}
-
-type Route struct {
-	// [Required] The path for the route.
-	Path string `pulumi:"path"`
-	// [Required] The port for the route.
-	Port int `pulumi:"port"`
-}
-
-// RouteInput is an input type that accepts RouteArgs and RouteOutput values.
-// You can construct a concrete instance of `RouteInput` via:
-//
-//	RouteArgs{...}
-type RouteInput interface {
-	pulumi.Input
-
-	ToRouteOutput() RouteOutput
-	ToRouteOutputWithContext(context.Context) RouteOutput
-}
-
-type RouteArgs struct {
-	// [Required] The path for the route.
-	Path pulumi.StringInput `pulumi:"path"`
-	// [Required] The port for the route.
-	Port pulumi.IntInput `pulumi:"port"`
-}
-
-func (RouteArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Route)(nil)).Elem()
-}
-
-func (i RouteArgs) ToRouteOutput() RouteOutput {
-	return i.ToRouteOutputWithContext(context.Background())
-}
-
-func (i RouteArgs) ToRouteOutputWithContext(ctx context.Context) RouteOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteOutput)
-}
-
-func (i RouteArgs) ToRoutePtrOutput() RoutePtrOutput {
-	return i.ToRoutePtrOutputWithContext(context.Background())
-}
-
-func (i RouteArgs) ToRoutePtrOutputWithContext(ctx context.Context) RoutePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteOutput).ToRoutePtrOutputWithContext(ctx)
-}
-
-// RoutePtrInput is an input type that accepts RouteArgs, RoutePtr and RoutePtrOutput values.
-// You can construct a concrete instance of `RoutePtrInput` via:
-//
-//	        RouteArgs{...}
-//
-//	or:
-//
-//	        nil
-type RoutePtrInput interface {
-	pulumi.Input
-
-	ToRoutePtrOutput() RoutePtrOutput
-	ToRoutePtrOutputWithContext(context.Context) RoutePtrOutput
-}
-
-type routePtrType RouteArgs
-
-func RoutePtr(v *RouteArgs) RoutePtrInput {
-	return (*routePtrType)(v)
-}
-
-func (*routePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Route)(nil)).Elem()
-}
-
-func (i *routePtrType) ToRoutePtrOutput() RoutePtrOutput {
-	return i.ToRoutePtrOutputWithContext(context.Background())
-}
-
-func (i *routePtrType) ToRoutePtrOutputWithContext(ctx context.Context) RoutePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RoutePtrOutput)
-}
-
-type RouteOutput struct{ *pulumi.OutputState }
-
-func (RouteOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Route)(nil)).Elem()
-}
-
-func (o RouteOutput) ToRouteOutput() RouteOutput {
-	return o
-}
-
-func (o RouteOutput) ToRouteOutputWithContext(ctx context.Context) RouteOutput {
-	return o
-}
-
-func (o RouteOutput) ToRoutePtrOutput() RoutePtrOutput {
-	return o.ToRoutePtrOutputWithContext(context.Background())
-}
-
-func (o RouteOutput) ToRoutePtrOutputWithContext(ctx context.Context) RoutePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Route) *Route {
-		return &v
-	}).(RoutePtrOutput)
-}
-
-// [Required] The path for the route.
-func (o RouteOutput) Path() pulumi.StringOutput {
-	return o.ApplyT(func(v Route) string { return v.Path }).(pulumi.StringOutput)
-}
-
-// [Required] The port for the route.
-func (o RouteOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func(v Route) int { return v.Port }).(pulumi.IntOutput)
-}
-
-type RoutePtrOutput struct{ *pulumi.OutputState }
-
-func (RoutePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Route)(nil)).Elem()
-}
-
-func (o RoutePtrOutput) ToRoutePtrOutput() RoutePtrOutput {
-	return o
-}
-
-func (o RoutePtrOutput) ToRoutePtrOutputWithContext(ctx context.Context) RoutePtrOutput {
-	return o
-}
-
-func (o RoutePtrOutput) Elem() RouteOutput {
-	return o.ApplyT(func(v *Route) Route {
-		if v != nil {
-			return *v
-		}
-		var ret Route
-		return ret
-	}).(RouteOutput)
-}
-
-// [Required] The path for the route.
-func (o RoutePtrOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Route) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Path
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Required] The port for the route.
-func (o RoutePtrOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Route) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Port
-	}).(pulumi.IntPtrOutput)
-}
-
-type RouteResponse struct {
-	// [Required] The path for the route.
-	Path string `pulumi:"path"`
-	// [Required] The port for the route.
-	Port int `pulumi:"port"`
-}
-
-type RouteResponseOutput struct{ *pulumi.OutputState }
-
-func (RouteResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RouteResponse)(nil)).Elem()
-}
-
-func (o RouteResponseOutput) ToRouteResponseOutput() RouteResponseOutput {
-	return o
-}
-
-func (o RouteResponseOutput) ToRouteResponseOutputWithContext(ctx context.Context) RouteResponseOutput {
-	return o
-}
-
-// [Required] The path for the route.
-func (o RouteResponseOutput) Path() pulumi.StringOutput {
-	return o.ApplyT(func(v RouteResponse) string { return v.Path }).(pulumi.StringOutput)
-}
-
-// [Required] The port for the route.
-func (o RouteResponseOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func(v RouteResponse) int { return v.Port }).(pulumi.IntOutput)
-}
-
-type RouteResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (RouteResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RouteResponse)(nil)).Elem()
-}
-
-func (o RouteResponsePtrOutput) ToRouteResponsePtrOutput() RouteResponsePtrOutput {
-	return o
-}
-
-func (o RouteResponsePtrOutput) ToRouteResponsePtrOutputWithContext(ctx context.Context) RouteResponsePtrOutput {
-	return o
-}
-
-func (o RouteResponsePtrOutput) Elem() RouteResponseOutput {
-	return o.ApplyT(func(v *RouteResponse) RouteResponse {
-		if v != nil {
-			return *v
-		}
-		var ret RouteResponse
-		return ret
-	}).(RouteResponseOutput)
-}
-
-// [Required] The path for the route.
-func (o RouteResponsePtrOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RouteResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Path
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Required] The port for the route.
-func (o RouteResponsePtrOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *RouteResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Port
-	}).(pulumi.IntPtrOutput)
-}
-
-type SASAuthTypeWorkspaceConnectionProperties struct {
-	// Authentication type of the connection target
-	// Expected value is 'SAS'.
-	AuthType string `pulumi:"authType"`
-	// Category of the connection
-	Category      *string                                   `pulumi:"category"`
-	Credentials   *WorkspaceConnectionSharedAccessSignature `pulumi:"credentials"`
-	Error         *string                                   `pulumi:"error"`
-	ExpiryTime    *string                                   `pulumi:"expiryTime"`
-	IsSharedToAll *bool                                     `pulumi:"isSharedToAll"`
-	// Store user metadata for this connection
-	Metadata                    map[string]string `pulumi:"metadata"`
-	PeRequirement               *string           `pulumi:"peRequirement"`
-	PeStatus                    *string           `pulumi:"peStatus"`
-	SharedUserList              []string          `pulumi:"sharedUserList"`
-	Target                      *string           `pulumi:"target"`
-	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
-}
-
-// SASAuthTypeWorkspaceConnectionPropertiesInput is an input type that accepts SASAuthTypeWorkspaceConnectionPropertiesArgs and SASAuthTypeWorkspaceConnectionPropertiesOutput values.
-// You can construct a concrete instance of `SASAuthTypeWorkspaceConnectionPropertiesInput` via:
-//
-//	SASAuthTypeWorkspaceConnectionPropertiesArgs{...}
-type SASAuthTypeWorkspaceConnectionPropertiesInput interface {
-	pulumi.Input
-
-	ToSASAuthTypeWorkspaceConnectionPropertiesOutput() SASAuthTypeWorkspaceConnectionPropertiesOutput
-	ToSASAuthTypeWorkspaceConnectionPropertiesOutputWithContext(context.Context) SASAuthTypeWorkspaceConnectionPropertiesOutput
-}
-
-type SASAuthTypeWorkspaceConnectionPropertiesArgs struct {
-	// Authentication type of the connection target
-	// Expected value is 'SAS'.
-	AuthType pulumi.StringInput `pulumi:"authType"`
-	// Category of the connection
-	Category      pulumi.StringPtrInput                            `pulumi:"category"`
-	Credentials   WorkspaceConnectionSharedAccessSignaturePtrInput `pulumi:"credentials"`
-	Error         pulumi.StringPtrInput                            `pulumi:"error"`
-	ExpiryTime    pulumi.StringPtrInput                            `pulumi:"expiryTime"`
-	IsSharedToAll pulumi.BoolPtrInput                              `pulumi:"isSharedToAll"`
-	// Store user metadata for this connection
-	Metadata                    pulumi.StringMapInput   `pulumi:"metadata"`
-	PeRequirement               pulumi.StringPtrInput   `pulumi:"peRequirement"`
-	PeStatus                    pulumi.StringPtrInput   `pulumi:"peStatus"`
-	SharedUserList              pulumi.StringArrayInput `pulumi:"sharedUserList"`
-	Target                      pulumi.StringPtrInput   `pulumi:"target"`
-	UseWorkspaceManagedIdentity pulumi.BoolPtrInput     `pulumi:"useWorkspaceManagedIdentity"`
-}
-
-func (SASAuthTypeWorkspaceConnectionPropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SASAuthTypeWorkspaceConnectionProperties)(nil)).Elem()
-}
-
-func (i SASAuthTypeWorkspaceConnectionPropertiesArgs) ToSASAuthTypeWorkspaceConnectionPropertiesOutput() SASAuthTypeWorkspaceConnectionPropertiesOutput {
-	return i.ToSASAuthTypeWorkspaceConnectionPropertiesOutputWithContext(context.Background())
-}
-
-func (i SASAuthTypeWorkspaceConnectionPropertiesArgs) ToSASAuthTypeWorkspaceConnectionPropertiesOutputWithContext(ctx context.Context) SASAuthTypeWorkspaceConnectionPropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SASAuthTypeWorkspaceConnectionPropertiesOutput)
-}
-
-type SASAuthTypeWorkspaceConnectionPropertiesOutput struct{ *pulumi.OutputState }
-
-func (SASAuthTypeWorkspaceConnectionPropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SASAuthTypeWorkspaceConnectionProperties)(nil)).Elem()
-}
-
-func (o SASAuthTypeWorkspaceConnectionPropertiesOutput) ToSASAuthTypeWorkspaceConnectionPropertiesOutput() SASAuthTypeWorkspaceConnectionPropertiesOutput {
-	return o
-}
-
-func (o SASAuthTypeWorkspaceConnectionPropertiesOutput) ToSASAuthTypeWorkspaceConnectionPropertiesOutputWithContext(ctx context.Context) SASAuthTypeWorkspaceConnectionPropertiesOutput {
-	return o
-}
-
-// Authentication type of the connection target
-// Expected value is 'SAS'.
-func (o SASAuthTypeWorkspaceConnectionPropertiesOutput) AuthType() pulumi.StringOutput {
-	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionProperties) string { return v.AuthType }).(pulumi.StringOutput)
-}
-
-// Category of the connection
-func (o SASAuthTypeWorkspaceConnectionPropertiesOutput) Category() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionProperties) *string { return v.Category }).(pulumi.StringPtrOutput)
-}
-
-func (o SASAuthTypeWorkspaceConnectionPropertiesOutput) Credentials() WorkspaceConnectionSharedAccessSignaturePtrOutput {
-	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionProperties) *WorkspaceConnectionSharedAccessSignature {
-		return v.Credentials
-	}).(WorkspaceConnectionSharedAccessSignaturePtrOutput)
-}
-
-func (o SASAuthTypeWorkspaceConnectionPropertiesOutput) Error() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionProperties) *string { return v.Error }).(pulumi.StringPtrOutput)
-}
-
-func (o SASAuthTypeWorkspaceConnectionPropertiesOutput) ExpiryTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionProperties) *string { return v.ExpiryTime }).(pulumi.StringPtrOutput)
-}
-
-func (o SASAuthTypeWorkspaceConnectionPropertiesOutput) IsSharedToAll() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionProperties) *bool { return v.IsSharedToAll }).(pulumi.BoolPtrOutput)
-}
-
-// Store user metadata for this connection
-func (o SASAuthTypeWorkspaceConnectionPropertiesOutput) Metadata() pulumi.StringMapOutput {
-	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionProperties) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
-}
-
-func (o SASAuthTypeWorkspaceConnectionPropertiesOutput) PeRequirement() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionProperties) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
-}
-
-func (o SASAuthTypeWorkspaceConnectionPropertiesOutput) PeStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionProperties) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
-}
-
-func (o SASAuthTypeWorkspaceConnectionPropertiesOutput) SharedUserList() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionProperties) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
-}
-
-func (o SASAuthTypeWorkspaceConnectionPropertiesOutput) Target() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionProperties) *string { return v.Target }).(pulumi.StringPtrOutput)
-}
-
-func (o SASAuthTypeWorkspaceConnectionPropertiesOutput) UseWorkspaceManagedIdentity() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionProperties) *bool { return v.UseWorkspaceManagedIdentity }).(pulumi.BoolPtrOutput)
-}
-
-type SASAuthTypeWorkspaceConnectionPropertiesResponse struct {
-	// Authentication type of the connection target
-	// Expected value is 'SAS'.
-	AuthType string `pulumi:"authType"`
-	// Category of the connection
-	Category *string `pulumi:"category"`
-	// A type definition that refers the id to an Azure Resource Manager resource.
-	CreatedByWorkspaceArmId string                                            `pulumi:"createdByWorkspaceArmId"`
-	Credentials             *WorkspaceConnectionSharedAccessSignatureResponse `pulumi:"credentials"`
-	Error                   *string                                           `pulumi:"error"`
-	ExpiryTime              *string                                           `pulumi:"expiryTime"`
-	// Group based on connection category
-	Group         string `pulumi:"group"`
-	IsSharedToAll *bool  `pulumi:"isSharedToAll"`
-	// Store user metadata for this connection
-	Metadata                    map[string]string `pulumi:"metadata"`
-	PeRequirement               *string           `pulumi:"peRequirement"`
-	PeStatus                    *string           `pulumi:"peStatus"`
-	SharedUserList              []string          `pulumi:"sharedUserList"`
-	Target                      *string           `pulumi:"target"`
-	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
-}
-
-type SASAuthTypeWorkspaceConnectionPropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (SASAuthTypeWorkspaceConnectionPropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SASAuthTypeWorkspaceConnectionPropertiesResponse)(nil)).Elem()
-}
-
-func (o SASAuthTypeWorkspaceConnectionPropertiesResponseOutput) ToSASAuthTypeWorkspaceConnectionPropertiesResponseOutput() SASAuthTypeWorkspaceConnectionPropertiesResponseOutput {
-	return o
-}
-
-func (o SASAuthTypeWorkspaceConnectionPropertiesResponseOutput) ToSASAuthTypeWorkspaceConnectionPropertiesResponseOutputWithContext(ctx context.Context) SASAuthTypeWorkspaceConnectionPropertiesResponseOutput {
-	return o
-}
-
-// Authentication type of the connection target
-// Expected value is 'SAS'.
-func (o SASAuthTypeWorkspaceConnectionPropertiesResponseOutput) AuthType() pulumi.StringOutput {
-	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionPropertiesResponse) string { return v.AuthType }).(pulumi.StringOutput)
-}
-
-// Category of the connection
-func (o SASAuthTypeWorkspaceConnectionPropertiesResponseOutput) Category() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionPropertiesResponse) *string { return v.Category }).(pulumi.StringPtrOutput)
-}
-
-// A type definition that refers the id to an Azure Resource Manager resource.
-func (o SASAuthTypeWorkspaceConnectionPropertiesResponseOutput) CreatedByWorkspaceArmId() pulumi.StringOutput {
-	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionPropertiesResponse) string { return v.CreatedByWorkspaceArmId }).(pulumi.StringOutput)
-}
-
-func (o SASAuthTypeWorkspaceConnectionPropertiesResponseOutput) Credentials() WorkspaceConnectionSharedAccessSignatureResponsePtrOutput {
-	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionPropertiesResponse) *WorkspaceConnectionSharedAccessSignatureResponse {
-		return v.Credentials
-	}).(WorkspaceConnectionSharedAccessSignatureResponsePtrOutput)
-}
-
-func (o SASAuthTypeWorkspaceConnectionPropertiesResponseOutput) Error() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionPropertiesResponse) *string { return v.Error }).(pulumi.StringPtrOutput)
-}
-
-func (o SASAuthTypeWorkspaceConnectionPropertiesResponseOutput) ExpiryTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionPropertiesResponse) *string { return v.ExpiryTime }).(pulumi.StringPtrOutput)
-}
-
-// Group based on connection category
-func (o SASAuthTypeWorkspaceConnectionPropertiesResponseOutput) Group() pulumi.StringOutput {
-	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionPropertiesResponse) string { return v.Group }).(pulumi.StringOutput)
-}
-
-func (o SASAuthTypeWorkspaceConnectionPropertiesResponseOutput) IsSharedToAll() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionPropertiesResponse) *bool { return v.IsSharedToAll }).(pulumi.BoolPtrOutput)
-}
-
-// Store user metadata for this connection
-func (o SASAuthTypeWorkspaceConnectionPropertiesResponseOutput) Metadata() pulumi.StringMapOutput {
-	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionPropertiesResponse) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
-}
-
-func (o SASAuthTypeWorkspaceConnectionPropertiesResponseOutput) PeRequirement() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionPropertiesResponse) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
-}
-
-func (o SASAuthTypeWorkspaceConnectionPropertiesResponseOutput) PeStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionPropertiesResponse) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
-}
-
-func (o SASAuthTypeWorkspaceConnectionPropertiesResponseOutput) SharedUserList() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionPropertiesResponse) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
-}
-
-func (o SASAuthTypeWorkspaceConnectionPropertiesResponseOutput) Target() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionPropertiesResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
-}
-
-func (o SASAuthTypeWorkspaceConnectionPropertiesResponseOutput) UseWorkspaceManagedIdentity() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionPropertiesResponse) *bool { return v.UseWorkspaceManagedIdentity }).(pulumi.BoolPtrOutput)
-}
-
-// SAS datastore credentials configuration.
-type SasDatastoreCredentials struct {
-	// Enum to determine the datastore credentials type.
-	// Expected value is 'Sas'.
-	CredentialsType string `pulumi:"credentialsType"`
-	// [Required] Storage container secrets.
-	Secrets SasDatastoreSecrets `pulumi:"secrets"`
-}
-
-// SasDatastoreCredentialsInput is an input type that accepts SasDatastoreCredentialsArgs and SasDatastoreCredentialsOutput values.
-// You can construct a concrete instance of `SasDatastoreCredentialsInput` via:
-//
-//	SasDatastoreCredentialsArgs{...}
-type SasDatastoreCredentialsInput interface {
-	pulumi.Input
-
-	ToSasDatastoreCredentialsOutput() SasDatastoreCredentialsOutput
-	ToSasDatastoreCredentialsOutputWithContext(context.Context) SasDatastoreCredentialsOutput
-}
-
-// SAS datastore credentials configuration.
-type SasDatastoreCredentialsArgs struct {
-	// Enum to determine the datastore credentials type.
-	// Expected value is 'Sas'.
-	CredentialsType pulumi.StringInput `pulumi:"credentialsType"`
-	// [Required] Storage container secrets.
-	Secrets SasDatastoreSecretsInput `pulumi:"secrets"`
-}
-
-func (SasDatastoreCredentialsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SasDatastoreCredentials)(nil)).Elem()
-}
-
-func (i SasDatastoreCredentialsArgs) ToSasDatastoreCredentialsOutput() SasDatastoreCredentialsOutput {
-	return i.ToSasDatastoreCredentialsOutputWithContext(context.Background())
-}
-
-func (i SasDatastoreCredentialsArgs) ToSasDatastoreCredentialsOutputWithContext(ctx context.Context) SasDatastoreCredentialsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SasDatastoreCredentialsOutput)
-}
-
-// SAS datastore credentials configuration.
-type SasDatastoreCredentialsOutput struct{ *pulumi.OutputState }
-
-func (SasDatastoreCredentialsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SasDatastoreCredentials)(nil)).Elem()
-}
-
-func (o SasDatastoreCredentialsOutput) ToSasDatastoreCredentialsOutput() SasDatastoreCredentialsOutput {
-	return o
-}
-
-func (o SasDatastoreCredentialsOutput) ToSasDatastoreCredentialsOutputWithContext(ctx context.Context) SasDatastoreCredentialsOutput {
-	return o
-}
-
-// Enum to determine the datastore credentials type.
-// Expected value is 'Sas'.
-func (o SasDatastoreCredentialsOutput) CredentialsType() pulumi.StringOutput {
-	return o.ApplyT(func(v SasDatastoreCredentials) string { return v.CredentialsType }).(pulumi.StringOutput)
-}
-
-// [Required] Storage container secrets.
-func (o SasDatastoreCredentialsOutput) Secrets() SasDatastoreSecretsOutput {
-	return o.ApplyT(func(v SasDatastoreCredentials) SasDatastoreSecrets { return v.Secrets }).(SasDatastoreSecretsOutput)
-}
-
-// SAS datastore credentials configuration.
-type SasDatastoreCredentialsResponse struct {
-	// Enum to determine the datastore credentials type.
-	// Expected value is 'Sas'.
-	CredentialsType string `pulumi:"credentialsType"`
-}
-
-// SAS datastore credentials configuration.
-type SasDatastoreCredentialsResponseOutput struct{ *pulumi.OutputState }
-
-func (SasDatastoreCredentialsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SasDatastoreCredentialsResponse)(nil)).Elem()
-}
-
-func (o SasDatastoreCredentialsResponseOutput) ToSasDatastoreCredentialsResponseOutput() SasDatastoreCredentialsResponseOutput {
-	return o
-}
-
-func (o SasDatastoreCredentialsResponseOutput) ToSasDatastoreCredentialsResponseOutputWithContext(ctx context.Context) SasDatastoreCredentialsResponseOutput {
-	return o
-}
-
-// Enum to determine the datastore credentials type.
-// Expected value is 'Sas'.
-func (o SasDatastoreCredentialsResponseOutput) CredentialsType() pulumi.StringOutput {
-	return o.ApplyT(func(v SasDatastoreCredentialsResponse) string { return v.CredentialsType }).(pulumi.StringOutput)
-}
-
-// Datastore SAS secrets.
-type SasDatastoreSecrets struct {
-	// Storage container SAS token.
-	SasToken *string `pulumi:"sasToken"`
-	// Enum to determine the datastore secrets type.
-	// Expected value is 'Sas'.
-	SecretsType string `pulumi:"secretsType"`
-}
-
-// SasDatastoreSecretsInput is an input type that accepts SasDatastoreSecretsArgs and SasDatastoreSecretsOutput values.
-// You can construct a concrete instance of `SasDatastoreSecretsInput` via:
-//
-//	SasDatastoreSecretsArgs{...}
-type SasDatastoreSecretsInput interface {
-	pulumi.Input
-
-	ToSasDatastoreSecretsOutput() SasDatastoreSecretsOutput
-	ToSasDatastoreSecretsOutputWithContext(context.Context) SasDatastoreSecretsOutput
-}
-
-// Datastore SAS secrets.
-type SasDatastoreSecretsArgs struct {
-	// Storage container SAS token.
-	SasToken pulumi.StringPtrInput `pulumi:"sasToken"`
-	// Enum to determine the datastore secrets type.
-	// Expected value is 'Sas'.
-	SecretsType pulumi.StringInput `pulumi:"secretsType"`
-}
-
-func (SasDatastoreSecretsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SasDatastoreSecrets)(nil)).Elem()
-}
-
-func (i SasDatastoreSecretsArgs) ToSasDatastoreSecretsOutput() SasDatastoreSecretsOutput {
-	return i.ToSasDatastoreSecretsOutputWithContext(context.Background())
-}
-
-func (i SasDatastoreSecretsArgs) ToSasDatastoreSecretsOutputWithContext(ctx context.Context) SasDatastoreSecretsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SasDatastoreSecretsOutput)
-}
-
-// Datastore SAS secrets.
-type SasDatastoreSecretsOutput struct{ *pulumi.OutputState }
-
-func (SasDatastoreSecretsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SasDatastoreSecrets)(nil)).Elem()
-}
-
-func (o SasDatastoreSecretsOutput) ToSasDatastoreSecretsOutput() SasDatastoreSecretsOutput {
-	return o
-}
-
-func (o SasDatastoreSecretsOutput) ToSasDatastoreSecretsOutputWithContext(ctx context.Context) SasDatastoreSecretsOutput {
-	return o
-}
-
-// Storage container SAS token.
-func (o SasDatastoreSecretsOutput) SasToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SasDatastoreSecrets) *string { return v.SasToken }).(pulumi.StringPtrOutput)
-}
-
-// Enum to determine the datastore secrets type.
-// Expected value is 'Sas'.
-func (o SasDatastoreSecretsOutput) SecretsType() pulumi.StringOutput {
-	return o.ApplyT(func(v SasDatastoreSecrets) string { return v.SecretsType }).(pulumi.StringOutput)
-}
-
-// scale settings for AML Compute
-type ScaleSettings struct {
-	// Max number of nodes to use
-	MaxNodeCount int `pulumi:"maxNodeCount"`
-	// Min number of nodes to use
-	MinNodeCount *int `pulumi:"minNodeCount"`
-	// Node Idle Time before scaling down amlCompute. This string needs to be in the RFC Format.
-	NodeIdleTimeBeforeScaleDown *string `pulumi:"nodeIdleTimeBeforeScaleDown"`
-}
-
-// Defaults sets the appropriate defaults for ScaleSettings
-func (val *ScaleSettings) Defaults() *ScaleSettings {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.MinNodeCount == nil {
-		minNodeCount_ := 0
-		tmp.MinNodeCount = &minNodeCount_
-	}
-	return &tmp
-}
-
-// ScaleSettingsInput is an input type that accepts ScaleSettingsArgs and ScaleSettingsOutput values.
-// You can construct a concrete instance of `ScaleSettingsInput` via:
-//
-//	ScaleSettingsArgs{...}
-type ScaleSettingsInput interface {
-	pulumi.Input
-
-	ToScaleSettingsOutput() ScaleSettingsOutput
-	ToScaleSettingsOutputWithContext(context.Context) ScaleSettingsOutput
-}
-
-// scale settings for AML Compute
-type ScaleSettingsArgs struct {
-	// Max number of nodes to use
-	MaxNodeCount pulumi.IntInput `pulumi:"maxNodeCount"`
-	// Min number of nodes to use
-	MinNodeCount pulumi.IntPtrInput `pulumi:"minNodeCount"`
-	// Node Idle Time before scaling down amlCompute. This string needs to be in the RFC Format.
-	NodeIdleTimeBeforeScaleDown pulumi.StringPtrInput `pulumi:"nodeIdleTimeBeforeScaleDown"`
-}
-
-// Defaults sets the appropriate defaults for ScaleSettingsArgs
-func (val *ScaleSettingsArgs) Defaults() *ScaleSettingsArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.MinNodeCount == nil {
-		tmp.MinNodeCount = pulumi.IntPtr(0)
-	}
-	return &tmp
-}
-func (ScaleSettingsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScaleSettings)(nil)).Elem()
-}
-
-func (i ScaleSettingsArgs) ToScaleSettingsOutput() ScaleSettingsOutput {
-	return i.ToScaleSettingsOutputWithContext(context.Background())
-}
-
-func (i ScaleSettingsArgs) ToScaleSettingsOutputWithContext(ctx context.Context) ScaleSettingsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScaleSettingsOutput)
-}
-
-func (i ScaleSettingsArgs) ToScaleSettingsPtrOutput() ScaleSettingsPtrOutput {
-	return i.ToScaleSettingsPtrOutputWithContext(context.Background())
-}
-
-func (i ScaleSettingsArgs) ToScaleSettingsPtrOutputWithContext(ctx context.Context) ScaleSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScaleSettingsOutput).ToScaleSettingsPtrOutputWithContext(ctx)
-}
-
-// ScaleSettingsPtrInput is an input type that accepts ScaleSettingsArgs, ScaleSettingsPtr and ScaleSettingsPtrOutput values.
-// You can construct a concrete instance of `ScaleSettingsPtrInput` via:
-//
-//	        ScaleSettingsArgs{...}
-//
-//	or:
-//
-//	        nil
-type ScaleSettingsPtrInput interface {
-	pulumi.Input
-
-	ToScaleSettingsPtrOutput() ScaleSettingsPtrOutput
-	ToScaleSettingsPtrOutputWithContext(context.Context) ScaleSettingsPtrOutput
-}
-
-type scaleSettingsPtrType ScaleSettingsArgs
-
-func ScaleSettingsPtr(v *ScaleSettingsArgs) ScaleSettingsPtrInput {
-	return (*scaleSettingsPtrType)(v)
-}
-
-func (*scaleSettingsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ScaleSettings)(nil)).Elem()
-}
-
-func (i *scaleSettingsPtrType) ToScaleSettingsPtrOutput() ScaleSettingsPtrOutput {
-	return i.ToScaleSettingsPtrOutputWithContext(context.Background())
-}
-
-func (i *scaleSettingsPtrType) ToScaleSettingsPtrOutputWithContext(ctx context.Context) ScaleSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScaleSettingsPtrOutput)
-}
-
-// scale settings for AML Compute
-type ScaleSettingsOutput struct{ *pulumi.OutputState }
-
-func (ScaleSettingsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScaleSettings)(nil)).Elem()
-}
-
-func (o ScaleSettingsOutput) ToScaleSettingsOutput() ScaleSettingsOutput {
-	return o
-}
-
-func (o ScaleSettingsOutput) ToScaleSettingsOutputWithContext(ctx context.Context) ScaleSettingsOutput {
-	return o
-}
-
-func (o ScaleSettingsOutput) ToScaleSettingsPtrOutput() ScaleSettingsPtrOutput {
-	return o.ToScaleSettingsPtrOutputWithContext(context.Background())
-}
-
-func (o ScaleSettingsOutput) ToScaleSettingsPtrOutputWithContext(ctx context.Context) ScaleSettingsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScaleSettings) *ScaleSettings {
-		return &v
-	}).(ScaleSettingsPtrOutput)
-}
-
-// Max number of nodes to use
-func (o ScaleSettingsOutput) MaxNodeCount() pulumi.IntOutput {
-	return o.ApplyT(func(v ScaleSettings) int { return v.MaxNodeCount }).(pulumi.IntOutput)
-}
-
-// Min number of nodes to use
-func (o ScaleSettingsOutput) MinNodeCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ScaleSettings) *int { return v.MinNodeCount }).(pulumi.IntPtrOutput)
-}
-
-// Node Idle Time before scaling down amlCompute. This string needs to be in the RFC Format.
-func (o ScaleSettingsOutput) NodeIdleTimeBeforeScaleDown() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScaleSettings) *string { return v.NodeIdleTimeBeforeScaleDown }).(pulumi.StringPtrOutput)
-}
-
-type ScaleSettingsPtrOutput struct{ *pulumi.OutputState }
-
-func (ScaleSettingsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ScaleSettings)(nil)).Elem()
-}
-
-func (o ScaleSettingsPtrOutput) ToScaleSettingsPtrOutput() ScaleSettingsPtrOutput {
-	return o
-}
-
-func (o ScaleSettingsPtrOutput) ToScaleSettingsPtrOutputWithContext(ctx context.Context) ScaleSettingsPtrOutput {
-	return o
-}
-
-func (o ScaleSettingsPtrOutput) Elem() ScaleSettingsOutput {
-	return o.ApplyT(func(v *ScaleSettings) ScaleSettings {
-		if v != nil {
-			return *v
-		}
-		var ret ScaleSettings
-		return ret
-	}).(ScaleSettingsOutput)
-}
-
-// Max number of nodes to use
-func (o ScaleSettingsPtrOutput) MaxNodeCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ScaleSettings) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.MaxNodeCount
-	}).(pulumi.IntPtrOutput)
-}
-
-// Min number of nodes to use
-func (o ScaleSettingsPtrOutput) MinNodeCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ScaleSettings) *int {
-		if v == nil {
-			return nil
-		}
-		return v.MinNodeCount
-	}).(pulumi.IntPtrOutput)
-}
-
-// Node Idle Time before scaling down amlCompute. This string needs to be in the RFC Format.
-func (o ScaleSettingsPtrOutput) NodeIdleTimeBeforeScaleDown() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ScaleSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.NodeIdleTimeBeforeScaleDown
-	}).(pulumi.StringPtrOutput)
-}
-
-// scale settings for AML Compute
-type ScaleSettingsResponse struct {
-	// Max number of nodes to use
-	MaxNodeCount int `pulumi:"maxNodeCount"`
-	// Min number of nodes to use
-	MinNodeCount *int `pulumi:"minNodeCount"`
-	// Node Idle Time before scaling down amlCompute. This string needs to be in the RFC Format.
-	NodeIdleTimeBeforeScaleDown *string `pulumi:"nodeIdleTimeBeforeScaleDown"`
-}
-
-// Defaults sets the appropriate defaults for ScaleSettingsResponse
-func (val *ScaleSettingsResponse) Defaults() *ScaleSettingsResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.MinNodeCount == nil {
-		minNodeCount_ := 0
-		tmp.MinNodeCount = &minNodeCount_
-	}
-	return &tmp
-}
-
-// scale settings for AML Compute
-type ScaleSettingsResponseOutput struct{ *pulumi.OutputState }
-
-func (ScaleSettingsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScaleSettingsResponse)(nil)).Elem()
-}
-
-func (o ScaleSettingsResponseOutput) ToScaleSettingsResponseOutput() ScaleSettingsResponseOutput {
-	return o
-}
-
-func (o ScaleSettingsResponseOutput) ToScaleSettingsResponseOutputWithContext(ctx context.Context) ScaleSettingsResponseOutput {
-	return o
-}
-
-// Max number of nodes to use
-func (o ScaleSettingsResponseOutput) MaxNodeCount() pulumi.IntOutput {
-	return o.ApplyT(func(v ScaleSettingsResponse) int { return v.MaxNodeCount }).(pulumi.IntOutput)
-}
-
-// Min number of nodes to use
-func (o ScaleSettingsResponseOutput) MinNodeCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ScaleSettingsResponse) *int { return v.MinNodeCount }).(pulumi.IntPtrOutput)
-}
-
-// Node Idle Time before scaling down amlCompute. This string needs to be in the RFC Format.
-func (o ScaleSettingsResponseOutput) NodeIdleTimeBeforeScaleDown() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScaleSettingsResponse) *string { return v.NodeIdleTimeBeforeScaleDown }).(pulumi.StringPtrOutput)
-}
-
-type ScaleSettingsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ScaleSettingsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ScaleSettingsResponse)(nil)).Elem()
-}
-
-func (o ScaleSettingsResponsePtrOutput) ToScaleSettingsResponsePtrOutput() ScaleSettingsResponsePtrOutput {
-	return o
-}
-
-func (o ScaleSettingsResponsePtrOutput) ToScaleSettingsResponsePtrOutputWithContext(ctx context.Context) ScaleSettingsResponsePtrOutput {
-	return o
-}
-
-func (o ScaleSettingsResponsePtrOutput) Elem() ScaleSettingsResponseOutput {
-	return o.ApplyT(func(v *ScaleSettingsResponse) ScaleSettingsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ScaleSettingsResponse
-		return ret
-	}).(ScaleSettingsResponseOutput)
-}
-
-// Max number of nodes to use
-func (o ScaleSettingsResponsePtrOutput) MaxNodeCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ScaleSettingsResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.MaxNodeCount
-	}).(pulumi.IntPtrOutput)
-}
-
-// Min number of nodes to use
-func (o ScaleSettingsResponsePtrOutput) MinNodeCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ScaleSettingsResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.MinNodeCount
-	}).(pulumi.IntPtrOutput)
-}
-
-// Node Idle Time before scaling down amlCompute. This string needs to be in the RFC Format.
-func (o ScaleSettingsResponsePtrOutput) NodeIdleTimeBeforeScaleDown() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ScaleSettingsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.NodeIdleTimeBeforeScaleDown
-	}).(pulumi.StringPtrOutput)
-}
-
-// Configuration for ScaleUnit pool.
-type ScaleUnitConfiguration struct {
-	// Gets or sets a value indicating whether PublicEgress is disabled.
-	DisablePublicEgress *bool `pulumi:"disablePublicEgress"`
-	// Gets or sets a list of Registry sources that will be used to confirm identity, storage, ACR.
-	Registries []string `pulumi:"registries"`
-}
-
-// Defaults sets the appropriate defaults for ScaleUnitConfiguration
-func (val *ScaleUnitConfiguration) Defaults() *ScaleUnitConfiguration {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.DisablePublicEgress == nil {
-		disablePublicEgress_ := false
-		tmp.DisablePublicEgress = &disablePublicEgress_
-	}
-	return &tmp
-}
-
-// ScaleUnitConfigurationInput is an input type that accepts ScaleUnitConfigurationArgs and ScaleUnitConfigurationOutput values.
-// You can construct a concrete instance of `ScaleUnitConfigurationInput` via:
-//
-//	ScaleUnitConfigurationArgs{...}
-type ScaleUnitConfigurationInput interface {
-	pulumi.Input
-
-	ToScaleUnitConfigurationOutput() ScaleUnitConfigurationOutput
-	ToScaleUnitConfigurationOutputWithContext(context.Context) ScaleUnitConfigurationOutput
-}
-
-// Configuration for ScaleUnit pool.
-type ScaleUnitConfigurationArgs struct {
-	// Gets or sets a value indicating whether PublicEgress is disabled.
-	DisablePublicEgress pulumi.BoolPtrInput `pulumi:"disablePublicEgress"`
-	// Gets or sets a list of Registry sources that will be used to confirm identity, storage, ACR.
-	Registries pulumi.StringArrayInput `pulumi:"registries"`
-}
-
-// Defaults sets the appropriate defaults for ScaleUnitConfigurationArgs
-func (val *ScaleUnitConfigurationArgs) Defaults() *ScaleUnitConfigurationArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.DisablePublicEgress == nil {
-		tmp.DisablePublicEgress = pulumi.BoolPtr(false)
-	}
-	return &tmp
-}
-func (ScaleUnitConfigurationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScaleUnitConfiguration)(nil)).Elem()
-}
-
-func (i ScaleUnitConfigurationArgs) ToScaleUnitConfigurationOutput() ScaleUnitConfigurationOutput {
-	return i.ToScaleUnitConfigurationOutputWithContext(context.Background())
-}
-
-func (i ScaleUnitConfigurationArgs) ToScaleUnitConfigurationOutputWithContext(ctx context.Context) ScaleUnitConfigurationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScaleUnitConfigurationOutput)
-}
-
-func (i ScaleUnitConfigurationArgs) ToScaleUnitConfigurationPtrOutput() ScaleUnitConfigurationPtrOutput {
-	return i.ToScaleUnitConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i ScaleUnitConfigurationArgs) ToScaleUnitConfigurationPtrOutputWithContext(ctx context.Context) ScaleUnitConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScaleUnitConfigurationOutput).ToScaleUnitConfigurationPtrOutputWithContext(ctx)
-}
-
-// ScaleUnitConfigurationPtrInput is an input type that accepts ScaleUnitConfigurationArgs, ScaleUnitConfigurationPtr and ScaleUnitConfigurationPtrOutput values.
-// You can construct a concrete instance of `ScaleUnitConfigurationPtrInput` via:
-//
-//	        ScaleUnitConfigurationArgs{...}
-//
-//	or:
-//
-//	        nil
-type ScaleUnitConfigurationPtrInput interface {
-	pulumi.Input
-
-	ToScaleUnitConfigurationPtrOutput() ScaleUnitConfigurationPtrOutput
-	ToScaleUnitConfigurationPtrOutputWithContext(context.Context) ScaleUnitConfigurationPtrOutput
-}
-
-type scaleUnitConfigurationPtrType ScaleUnitConfigurationArgs
-
-func ScaleUnitConfigurationPtr(v *ScaleUnitConfigurationArgs) ScaleUnitConfigurationPtrInput {
-	return (*scaleUnitConfigurationPtrType)(v)
-}
-
-func (*scaleUnitConfigurationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ScaleUnitConfiguration)(nil)).Elem()
-}
-
-func (i *scaleUnitConfigurationPtrType) ToScaleUnitConfigurationPtrOutput() ScaleUnitConfigurationPtrOutput {
-	return i.ToScaleUnitConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i *scaleUnitConfigurationPtrType) ToScaleUnitConfigurationPtrOutputWithContext(ctx context.Context) ScaleUnitConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScaleUnitConfigurationPtrOutput)
-}
-
-// Configuration for ScaleUnit pool.
-type ScaleUnitConfigurationOutput struct{ *pulumi.OutputState }
-
-func (ScaleUnitConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScaleUnitConfiguration)(nil)).Elem()
-}
-
-func (o ScaleUnitConfigurationOutput) ToScaleUnitConfigurationOutput() ScaleUnitConfigurationOutput {
-	return o
-}
-
-func (o ScaleUnitConfigurationOutput) ToScaleUnitConfigurationOutputWithContext(ctx context.Context) ScaleUnitConfigurationOutput {
-	return o
-}
-
-func (o ScaleUnitConfigurationOutput) ToScaleUnitConfigurationPtrOutput() ScaleUnitConfigurationPtrOutput {
-	return o.ToScaleUnitConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (o ScaleUnitConfigurationOutput) ToScaleUnitConfigurationPtrOutputWithContext(ctx context.Context) ScaleUnitConfigurationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScaleUnitConfiguration) *ScaleUnitConfiguration {
-		return &v
-	}).(ScaleUnitConfigurationPtrOutput)
-}
-
-// Gets or sets a value indicating whether PublicEgress is disabled.
-func (o ScaleUnitConfigurationOutput) DisablePublicEgress() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ScaleUnitConfiguration) *bool { return v.DisablePublicEgress }).(pulumi.BoolPtrOutput)
-}
-
-// Gets or sets a list of Registry sources that will be used to confirm identity, storage, ACR.
-func (o ScaleUnitConfigurationOutput) Registries() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ScaleUnitConfiguration) []string { return v.Registries }).(pulumi.StringArrayOutput)
-}
-
-type ScaleUnitConfigurationPtrOutput struct{ *pulumi.OutputState }
-
-func (ScaleUnitConfigurationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ScaleUnitConfiguration)(nil)).Elem()
-}
-
-func (o ScaleUnitConfigurationPtrOutput) ToScaleUnitConfigurationPtrOutput() ScaleUnitConfigurationPtrOutput {
-	return o
-}
-
-func (o ScaleUnitConfigurationPtrOutput) ToScaleUnitConfigurationPtrOutputWithContext(ctx context.Context) ScaleUnitConfigurationPtrOutput {
-	return o
-}
-
-func (o ScaleUnitConfigurationPtrOutput) Elem() ScaleUnitConfigurationOutput {
-	return o.ApplyT(func(v *ScaleUnitConfiguration) ScaleUnitConfiguration {
-		if v != nil {
-			return *v
-		}
-		var ret ScaleUnitConfiguration
-		return ret
-	}).(ScaleUnitConfigurationOutput)
-}
-
-// Gets or sets a value indicating whether PublicEgress is disabled.
-func (o ScaleUnitConfigurationPtrOutput) DisablePublicEgress() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ScaleUnitConfiguration) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.DisablePublicEgress
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Gets or sets a list of Registry sources that will be used to confirm identity, storage, ACR.
-func (o ScaleUnitConfigurationPtrOutput) Registries() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ScaleUnitConfiguration) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Registries
-	}).(pulumi.StringArrayOutput)
-}
-
-// Configuration for ScaleUnit pool.
-type ScaleUnitConfigurationResponse struct {
-	// Gets or sets a value indicating whether PublicEgress is disabled.
-	DisablePublicEgress *bool `pulumi:"disablePublicEgress"`
-	// Gets or sets a list of Registry sources that will be used to confirm identity, storage, ACR.
-	Registries []string `pulumi:"registries"`
-}
-
-// Defaults sets the appropriate defaults for ScaleUnitConfigurationResponse
-func (val *ScaleUnitConfigurationResponse) Defaults() *ScaleUnitConfigurationResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.DisablePublicEgress == nil {
-		disablePublicEgress_ := false
-		tmp.DisablePublicEgress = &disablePublicEgress_
-	}
-	return &tmp
-}
-
-// Configuration for ScaleUnit pool.
-type ScaleUnitConfigurationResponseOutput struct{ *pulumi.OutputState }
-
-func (ScaleUnitConfigurationResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScaleUnitConfigurationResponse)(nil)).Elem()
-}
-
-func (o ScaleUnitConfigurationResponseOutput) ToScaleUnitConfigurationResponseOutput() ScaleUnitConfigurationResponseOutput {
-	return o
-}
-
-func (o ScaleUnitConfigurationResponseOutput) ToScaleUnitConfigurationResponseOutputWithContext(ctx context.Context) ScaleUnitConfigurationResponseOutput {
-	return o
-}
-
-// Gets or sets a value indicating whether PublicEgress is disabled.
-func (o ScaleUnitConfigurationResponseOutput) DisablePublicEgress() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ScaleUnitConfigurationResponse) *bool { return v.DisablePublicEgress }).(pulumi.BoolPtrOutput)
-}
-
-// Gets or sets a list of Registry sources that will be used to confirm identity, storage, ACR.
-func (o ScaleUnitConfigurationResponseOutput) Registries() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ScaleUnitConfigurationResponse) []string { return v.Registries }).(pulumi.StringArrayOutput)
-}
-
-type ScaleUnitConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ScaleUnitConfigurationResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ScaleUnitConfigurationResponse)(nil)).Elem()
-}
-
-func (o ScaleUnitConfigurationResponsePtrOutput) ToScaleUnitConfigurationResponsePtrOutput() ScaleUnitConfigurationResponsePtrOutput {
-	return o
-}
-
-func (o ScaleUnitConfigurationResponsePtrOutput) ToScaleUnitConfigurationResponsePtrOutputWithContext(ctx context.Context) ScaleUnitConfigurationResponsePtrOutput {
-	return o
-}
-
-func (o ScaleUnitConfigurationResponsePtrOutput) Elem() ScaleUnitConfigurationResponseOutput {
-	return o.ApplyT(func(v *ScaleUnitConfigurationResponse) ScaleUnitConfigurationResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ScaleUnitConfigurationResponse
-		return ret
-	}).(ScaleUnitConfigurationResponseOutput)
-}
-
-// Gets or sets a value indicating whether PublicEgress is disabled.
-func (o ScaleUnitConfigurationResponsePtrOutput) DisablePublicEgress() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ScaleUnitConfigurationResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.DisablePublicEgress
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Gets or sets a list of Registry sources that will be used to confirm identity, storage, ACR.
-func (o ScaleUnitConfigurationResponsePtrOutput) Registries() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ScaleUnitConfigurationResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Registries
-	}).(pulumi.StringArrayOutput)
-}
-
-type ScheduleBase struct {
-	// A system assigned id for the schedule.
-	Id *string `pulumi:"id"`
-	// The current deployment state of schedule.
-	ProvisioningStatus *string `pulumi:"provisioningStatus"`
-	// Is the schedule enabled or disabled?
-	Status *string `pulumi:"status"`
-}
-
-// ScheduleBaseInput is an input type that accepts ScheduleBaseArgs and ScheduleBaseOutput values.
-// You can construct a concrete instance of `ScheduleBaseInput` via:
-//
-//	ScheduleBaseArgs{...}
-type ScheduleBaseInput interface {
-	pulumi.Input
-
-	ToScheduleBaseOutput() ScheduleBaseOutput
-	ToScheduleBaseOutputWithContext(context.Context) ScheduleBaseOutput
-}
-
-type ScheduleBaseArgs struct {
-	// A system assigned id for the schedule.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// The current deployment state of schedule.
-	ProvisioningStatus pulumi.StringPtrInput `pulumi:"provisioningStatus"`
-	// Is the schedule enabled or disabled?
-	Status pulumi.StringPtrInput `pulumi:"status"`
-}
-
-func (ScheduleBaseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScheduleBase)(nil)).Elem()
-}
-
-func (i ScheduleBaseArgs) ToScheduleBaseOutput() ScheduleBaseOutput {
-	return i.ToScheduleBaseOutputWithContext(context.Background())
-}
-
-func (i ScheduleBaseArgs) ToScheduleBaseOutputWithContext(ctx context.Context) ScheduleBaseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScheduleBaseOutput)
-}
-
-func (i ScheduleBaseArgs) ToScheduleBasePtrOutput() ScheduleBasePtrOutput {
-	return i.ToScheduleBasePtrOutputWithContext(context.Background())
-}
-
-func (i ScheduleBaseArgs) ToScheduleBasePtrOutputWithContext(ctx context.Context) ScheduleBasePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScheduleBaseOutput).ToScheduleBasePtrOutputWithContext(ctx)
-}
-
-// ScheduleBasePtrInput is an input type that accepts ScheduleBaseArgs, ScheduleBasePtr and ScheduleBasePtrOutput values.
-// You can construct a concrete instance of `ScheduleBasePtrInput` via:
-//
-//	        ScheduleBaseArgs{...}
-//
-//	or:
-//
-//	        nil
-type ScheduleBasePtrInput interface {
-	pulumi.Input
-
-	ToScheduleBasePtrOutput() ScheduleBasePtrOutput
-	ToScheduleBasePtrOutputWithContext(context.Context) ScheduleBasePtrOutput
-}
-
-type scheduleBasePtrType ScheduleBaseArgs
-
-func ScheduleBasePtr(v *ScheduleBaseArgs) ScheduleBasePtrInput {
-	return (*scheduleBasePtrType)(v)
-}
-
-func (*scheduleBasePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ScheduleBase)(nil)).Elem()
-}
-
-func (i *scheduleBasePtrType) ToScheduleBasePtrOutput() ScheduleBasePtrOutput {
-	return i.ToScheduleBasePtrOutputWithContext(context.Background())
-}
-
-func (i *scheduleBasePtrType) ToScheduleBasePtrOutputWithContext(ctx context.Context) ScheduleBasePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScheduleBasePtrOutput)
-}
-
-type ScheduleBaseOutput struct{ *pulumi.OutputState }
-
-func (ScheduleBaseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScheduleBase)(nil)).Elem()
-}
-
-func (o ScheduleBaseOutput) ToScheduleBaseOutput() ScheduleBaseOutput {
-	return o
-}
-
-func (o ScheduleBaseOutput) ToScheduleBaseOutputWithContext(ctx context.Context) ScheduleBaseOutput {
-	return o
-}
-
-func (o ScheduleBaseOutput) ToScheduleBasePtrOutput() ScheduleBasePtrOutput {
-	return o.ToScheduleBasePtrOutputWithContext(context.Background())
-}
-
-func (o ScheduleBaseOutput) ToScheduleBasePtrOutputWithContext(ctx context.Context) ScheduleBasePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScheduleBase) *ScheduleBase {
-		return &v
-	}).(ScheduleBasePtrOutput)
-}
-
-// A system assigned id for the schedule.
-func (o ScheduleBaseOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScheduleBase) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// The current deployment state of schedule.
-func (o ScheduleBaseOutput) ProvisioningStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScheduleBase) *string { return v.ProvisioningStatus }).(pulumi.StringPtrOutput)
-}
-
-// Is the schedule enabled or disabled?
-func (o ScheduleBaseOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScheduleBase) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
-type ScheduleBasePtrOutput struct{ *pulumi.OutputState }
-
-func (ScheduleBasePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ScheduleBase)(nil)).Elem()
-}
-
-func (o ScheduleBasePtrOutput) ToScheduleBasePtrOutput() ScheduleBasePtrOutput {
-	return o
-}
-
-func (o ScheduleBasePtrOutput) ToScheduleBasePtrOutputWithContext(ctx context.Context) ScheduleBasePtrOutput {
-	return o
-}
-
-func (o ScheduleBasePtrOutput) Elem() ScheduleBaseOutput {
-	return o.ApplyT(func(v *ScheduleBase) ScheduleBase {
-		if v != nil {
-			return *v
-		}
-		var ret ScheduleBase
-		return ret
-	}).(ScheduleBaseOutput)
-}
-
-// A system assigned id for the schedule.
-func (o ScheduleBasePtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ScheduleBase) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-// The current deployment state of schedule.
-func (o ScheduleBasePtrOutput) ProvisioningStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ScheduleBase) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ProvisioningStatus
-	}).(pulumi.StringPtrOutput)
-}
-
-// Is the schedule enabled or disabled?
-func (o ScheduleBasePtrOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ScheduleBase) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Status
-	}).(pulumi.StringPtrOutput)
-}
-
-type ScheduleBaseResponse struct {
-	// A system assigned id for the schedule.
-	Id *string `pulumi:"id"`
-	// The current deployment state of schedule.
-	ProvisioningStatus *string `pulumi:"provisioningStatus"`
-	// Is the schedule enabled or disabled?
-	Status *string `pulumi:"status"`
-}
-
-type ScheduleBaseResponseOutput struct{ *pulumi.OutputState }
-
-func (ScheduleBaseResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScheduleBaseResponse)(nil)).Elem()
-}
-
-func (o ScheduleBaseResponseOutput) ToScheduleBaseResponseOutput() ScheduleBaseResponseOutput {
-	return o
-}
-
-func (o ScheduleBaseResponseOutput) ToScheduleBaseResponseOutputWithContext(ctx context.Context) ScheduleBaseResponseOutput {
-	return o
-}
-
-// A system assigned id for the schedule.
-func (o ScheduleBaseResponseOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScheduleBaseResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// The current deployment state of schedule.
-func (o ScheduleBaseResponseOutput) ProvisioningStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScheduleBaseResponse) *string { return v.ProvisioningStatus }).(pulumi.StringPtrOutput)
-}
-
-// Is the schedule enabled or disabled?
-func (o ScheduleBaseResponseOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScheduleBaseResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
-type ScheduleBaseResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ScheduleBaseResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ScheduleBaseResponse)(nil)).Elem()
-}
-
-func (o ScheduleBaseResponsePtrOutput) ToScheduleBaseResponsePtrOutput() ScheduleBaseResponsePtrOutput {
-	return o
-}
-
-func (o ScheduleBaseResponsePtrOutput) ToScheduleBaseResponsePtrOutputWithContext(ctx context.Context) ScheduleBaseResponsePtrOutput {
-	return o
-}
-
-func (o ScheduleBaseResponsePtrOutput) Elem() ScheduleBaseResponseOutput {
-	return o.ApplyT(func(v *ScheduleBaseResponse) ScheduleBaseResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ScheduleBaseResponse
-		return ret
-	}).(ScheduleBaseResponseOutput)
-}
-
-// A system assigned id for the schedule.
-func (o ScheduleBaseResponsePtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ScheduleBaseResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-// The current deployment state of schedule.
-func (o ScheduleBaseResponsePtrOutput) ProvisioningStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ScheduleBaseResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ProvisioningStatus
-	}).(pulumi.StringPtrOutput)
-}
-
-// Is the schedule enabled or disabled?
-func (o ScheduleBaseResponsePtrOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ScheduleBaseResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Status
-	}).(pulumi.StringPtrOutput)
-}
-
-// Base definition of a schedule
-type ScheduleProperties struct {
-	// [Required] Specifies the action of the schedule
-	Action interface{} `pulumi:"action"`
-	// The asset description text.
-	Description *string `pulumi:"description"`
-	// Display name of schedule.
-	DisplayName *string `pulumi:"displayName"`
-	// Is the schedule enabled?
-	IsEnabled *bool `pulumi:"isEnabled"`
-	// The asset property dictionary.
-	Properties map[string]string `pulumi:"properties"`
-	// Tag dictionary. Tags can be added, removed, and updated.
-	Tags map[string]string `pulumi:"tags"`
-	// [Required] Specifies the trigger details
-	Trigger interface{} `pulumi:"trigger"`
-}
-
-// Defaults sets the appropriate defaults for ScheduleProperties
-func (val *ScheduleProperties) Defaults() *ScheduleProperties {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.IsEnabled == nil {
-		isEnabled_ := true
-		tmp.IsEnabled = &isEnabled_
-	}
-	return &tmp
-}
-
-// SchedulePropertiesInput is an input type that accepts SchedulePropertiesArgs and SchedulePropertiesOutput values.
-// You can construct a concrete instance of `SchedulePropertiesInput` via:
-//
-//	SchedulePropertiesArgs{...}
-type SchedulePropertiesInput interface {
-	pulumi.Input
-
-	ToSchedulePropertiesOutput() SchedulePropertiesOutput
-	ToSchedulePropertiesOutputWithContext(context.Context) SchedulePropertiesOutput
-}
-
-// Base definition of a schedule
-type SchedulePropertiesArgs struct {
-	// [Required] Specifies the action of the schedule
-	Action pulumi.Input `pulumi:"action"`
-	// The asset description text.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Display name of schedule.
-	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	// Is the schedule enabled?
-	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
-	// The asset property dictionary.
-	Properties pulumi.StringMapInput `pulumi:"properties"`
-	// Tag dictionary. Tags can be added, removed, and updated.
-	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// [Required] Specifies the trigger details
-	Trigger pulumi.Input `pulumi:"trigger"`
-}
-
-// Defaults sets the appropriate defaults for SchedulePropertiesArgs
-func (val *SchedulePropertiesArgs) Defaults() *SchedulePropertiesArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.IsEnabled == nil {
-		tmp.IsEnabled = pulumi.BoolPtr(true)
-	}
-	return &tmp
-}
-func (SchedulePropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScheduleProperties)(nil)).Elem()
-}
-
-func (i SchedulePropertiesArgs) ToSchedulePropertiesOutput() SchedulePropertiesOutput {
-	return i.ToSchedulePropertiesOutputWithContext(context.Background())
-}
-
-func (i SchedulePropertiesArgs) ToSchedulePropertiesOutputWithContext(ctx context.Context) SchedulePropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SchedulePropertiesOutput)
-}
-
-// Base definition of a schedule
-type SchedulePropertiesOutput struct{ *pulumi.OutputState }
-
-func (SchedulePropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScheduleProperties)(nil)).Elem()
-}
-
-func (o SchedulePropertiesOutput) ToSchedulePropertiesOutput() SchedulePropertiesOutput {
-	return o
-}
-
-func (o SchedulePropertiesOutput) ToSchedulePropertiesOutputWithContext(ctx context.Context) SchedulePropertiesOutput {
-	return o
-}
-
-// [Required] Specifies the action of the schedule
-func (o SchedulePropertiesOutput) Action() pulumi.AnyOutput {
-	return o.ApplyT(func(v ScheduleProperties) interface{} { return v.Action }).(pulumi.AnyOutput)
-}
-
-// The asset description text.
-func (o SchedulePropertiesOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScheduleProperties) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Display name of schedule.
-func (o SchedulePropertiesOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScheduleProperties) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
-}
-
-// Is the schedule enabled?
-func (o SchedulePropertiesOutput) IsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ScheduleProperties) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
-}
-
-// The asset property dictionary.
-func (o SchedulePropertiesOutput) Properties() pulumi.StringMapOutput {
-	return o.ApplyT(func(v ScheduleProperties) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
-}
-
-// Tag dictionary. Tags can be added, removed, and updated.
-func (o SchedulePropertiesOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v ScheduleProperties) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
-}
-
-// [Required] Specifies the trigger details
-func (o SchedulePropertiesOutput) Trigger() pulumi.AnyOutput {
-	return o.ApplyT(func(v ScheduleProperties) interface{} { return v.Trigger }).(pulumi.AnyOutput)
-}
-
-// Base definition of a schedule
-type SchedulePropertiesResponse struct {
-	// [Required] Specifies the action of the schedule
-	Action interface{} `pulumi:"action"`
-	// The asset description text.
-	Description *string `pulumi:"description"`
-	// Display name of schedule.
-	DisplayName *string `pulumi:"displayName"`
-	// Is the schedule enabled?
-	IsEnabled *bool `pulumi:"isEnabled"`
-	// The asset property dictionary.
-	Properties map[string]string `pulumi:"properties"`
-	// Provisioning state for the schedule.
-	ProvisioningState string `pulumi:"provisioningState"`
-	// Tag dictionary. Tags can be added, removed, and updated.
-	Tags map[string]string `pulumi:"tags"`
-	// [Required] Specifies the trigger details
-	Trigger interface{} `pulumi:"trigger"`
-}
-
-// Defaults sets the appropriate defaults for SchedulePropertiesResponse
-func (val *SchedulePropertiesResponse) Defaults() *SchedulePropertiesResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.IsEnabled == nil {
-		isEnabled_ := true
-		tmp.IsEnabled = &isEnabled_
-	}
-	return &tmp
-}
-
-// Base definition of a schedule
-type SchedulePropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (SchedulePropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SchedulePropertiesResponse)(nil)).Elem()
-}
-
-func (o SchedulePropertiesResponseOutput) ToSchedulePropertiesResponseOutput() SchedulePropertiesResponseOutput {
-	return o
-}
-
-func (o SchedulePropertiesResponseOutput) ToSchedulePropertiesResponseOutputWithContext(ctx context.Context) SchedulePropertiesResponseOutput {
-	return o
-}
-
-// [Required] Specifies the action of the schedule
-func (o SchedulePropertiesResponseOutput) Action() pulumi.AnyOutput {
-	return o.ApplyT(func(v SchedulePropertiesResponse) interface{} { return v.Action }).(pulumi.AnyOutput)
-}
-
-// The asset description text.
-func (o SchedulePropertiesResponseOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SchedulePropertiesResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Display name of schedule.
-func (o SchedulePropertiesResponseOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SchedulePropertiesResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
-}
-
-// Is the schedule enabled?
-func (o SchedulePropertiesResponseOutput) IsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SchedulePropertiesResponse) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
-}
-
-// The asset property dictionary.
-func (o SchedulePropertiesResponseOutput) Properties() pulumi.StringMapOutput {
-	return o.ApplyT(func(v SchedulePropertiesResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
-}
-
-// Provisioning state for the schedule.
-func (o SchedulePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v SchedulePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// Tag dictionary. Tags can be added, removed, and updated.
-func (o SchedulePropertiesResponseOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v SchedulePropertiesResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
-}
-
-// [Required] Specifies the trigger details
-func (o SchedulePropertiesResponseOutput) Trigger() pulumi.AnyOutput {
-	return o.ApplyT(func(v SchedulePropertiesResponse) interface{} { return v.Trigger }).(pulumi.AnyOutput)
-}
-
-// Script reference
-type ScriptReference struct {
-	// Optional command line arguments passed to the script to run.
-	ScriptArguments *string `pulumi:"scriptArguments"`
-	// The location of scripts in the mounted volume.
-	ScriptData *string `pulumi:"scriptData"`
-	// The storage source of the script: inline, workspace.
-	ScriptSource *string `pulumi:"scriptSource"`
-	// Optional time period passed to timeout command.
-	Timeout *string `pulumi:"timeout"`
-}
-
-// ScriptReferenceInput is an input type that accepts ScriptReferenceArgs and ScriptReferenceOutput values.
-// You can construct a concrete instance of `ScriptReferenceInput` via:
-//
-//	ScriptReferenceArgs{...}
-type ScriptReferenceInput interface {
-	pulumi.Input
-
-	ToScriptReferenceOutput() ScriptReferenceOutput
-	ToScriptReferenceOutputWithContext(context.Context) ScriptReferenceOutput
-}
-
-// Script reference
-type ScriptReferenceArgs struct {
-	// Optional command line arguments passed to the script to run.
-	ScriptArguments pulumi.StringPtrInput `pulumi:"scriptArguments"`
-	// The location of scripts in the mounted volume.
-	ScriptData pulumi.StringPtrInput `pulumi:"scriptData"`
-	// The storage source of the script: inline, workspace.
-	ScriptSource pulumi.StringPtrInput `pulumi:"scriptSource"`
-	// Optional time period passed to timeout command.
-	Timeout pulumi.StringPtrInput `pulumi:"timeout"`
-}
-
-func (ScriptReferenceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScriptReference)(nil)).Elem()
-}
-
-func (i ScriptReferenceArgs) ToScriptReferenceOutput() ScriptReferenceOutput {
-	return i.ToScriptReferenceOutputWithContext(context.Background())
-}
-
-func (i ScriptReferenceArgs) ToScriptReferenceOutputWithContext(ctx context.Context) ScriptReferenceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScriptReferenceOutput)
-}
-
-func (i ScriptReferenceArgs) ToScriptReferencePtrOutput() ScriptReferencePtrOutput {
-	return i.ToScriptReferencePtrOutputWithContext(context.Background())
-}
-
-func (i ScriptReferenceArgs) ToScriptReferencePtrOutputWithContext(ctx context.Context) ScriptReferencePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScriptReferenceOutput).ToScriptReferencePtrOutputWithContext(ctx)
-}
-
-// ScriptReferencePtrInput is an input type that accepts ScriptReferenceArgs, ScriptReferencePtr and ScriptReferencePtrOutput values.
-// You can construct a concrete instance of `ScriptReferencePtrInput` via:
-//
-//	        ScriptReferenceArgs{...}
-//
-//	or:
-//
-//	        nil
-type ScriptReferencePtrInput interface {
-	pulumi.Input
-
-	ToScriptReferencePtrOutput() ScriptReferencePtrOutput
-	ToScriptReferencePtrOutputWithContext(context.Context) ScriptReferencePtrOutput
-}
-
-type scriptReferencePtrType ScriptReferenceArgs
-
-func ScriptReferencePtr(v *ScriptReferenceArgs) ScriptReferencePtrInput {
-	return (*scriptReferencePtrType)(v)
-}
-
-func (*scriptReferencePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ScriptReference)(nil)).Elem()
-}
-
-func (i *scriptReferencePtrType) ToScriptReferencePtrOutput() ScriptReferencePtrOutput {
-	return i.ToScriptReferencePtrOutputWithContext(context.Background())
-}
-
-func (i *scriptReferencePtrType) ToScriptReferencePtrOutputWithContext(ctx context.Context) ScriptReferencePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScriptReferencePtrOutput)
-}
-
-// Script reference
-type ScriptReferenceOutput struct{ *pulumi.OutputState }
-
-func (ScriptReferenceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScriptReference)(nil)).Elem()
-}
-
-func (o ScriptReferenceOutput) ToScriptReferenceOutput() ScriptReferenceOutput {
-	return o
-}
-
-func (o ScriptReferenceOutput) ToScriptReferenceOutputWithContext(ctx context.Context) ScriptReferenceOutput {
-	return o
-}
-
-func (o ScriptReferenceOutput) ToScriptReferencePtrOutput() ScriptReferencePtrOutput {
-	return o.ToScriptReferencePtrOutputWithContext(context.Background())
-}
-
-func (o ScriptReferenceOutput) ToScriptReferencePtrOutputWithContext(ctx context.Context) ScriptReferencePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScriptReference) *ScriptReference {
-		return &v
-	}).(ScriptReferencePtrOutput)
-}
-
-// Optional command line arguments passed to the script to run.
-func (o ScriptReferenceOutput) ScriptArguments() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScriptReference) *string { return v.ScriptArguments }).(pulumi.StringPtrOutput)
-}
-
-// The location of scripts in the mounted volume.
-func (o ScriptReferenceOutput) ScriptData() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScriptReference) *string { return v.ScriptData }).(pulumi.StringPtrOutput)
-}
-
-// The storage source of the script: inline, workspace.
-func (o ScriptReferenceOutput) ScriptSource() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScriptReference) *string { return v.ScriptSource }).(pulumi.StringPtrOutput)
-}
-
-// Optional time period passed to timeout command.
-func (o ScriptReferenceOutput) Timeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScriptReference) *string { return v.Timeout }).(pulumi.StringPtrOutput)
-}
-
-type ScriptReferencePtrOutput struct{ *pulumi.OutputState }
-
-func (ScriptReferencePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ScriptReference)(nil)).Elem()
-}
-
-func (o ScriptReferencePtrOutput) ToScriptReferencePtrOutput() ScriptReferencePtrOutput {
-	return o
-}
-
-func (o ScriptReferencePtrOutput) ToScriptReferencePtrOutputWithContext(ctx context.Context) ScriptReferencePtrOutput {
-	return o
-}
-
-func (o ScriptReferencePtrOutput) Elem() ScriptReferenceOutput {
-	return o.ApplyT(func(v *ScriptReference) ScriptReference {
-		if v != nil {
-			return *v
-		}
-		var ret ScriptReference
-		return ret
-	}).(ScriptReferenceOutput)
-}
-
-// Optional command line arguments passed to the script to run.
-func (o ScriptReferencePtrOutput) ScriptArguments() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ScriptReference) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ScriptArguments
-	}).(pulumi.StringPtrOutput)
-}
-
-// The location of scripts in the mounted volume.
-func (o ScriptReferencePtrOutput) ScriptData() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ScriptReference) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ScriptData
-	}).(pulumi.StringPtrOutput)
-}
-
-// The storage source of the script: inline, workspace.
-func (o ScriptReferencePtrOutput) ScriptSource() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ScriptReference) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ScriptSource
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional time period passed to timeout command.
-func (o ScriptReferencePtrOutput) Timeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ScriptReference) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Timeout
-	}).(pulumi.StringPtrOutput)
-}
-
-// Script reference
-type ScriptReferenceResponse struct {
-	// Optional command line arguments passed to the script to run.
-	ScriptArguments *string `pulumi:"scriptArguments"`
-	// The location of scripts in the mounted volume.
-	ScriptData *string `pulumi:"scriptData"`
-	// The storage source of the script: inline, workspace.
-	ScriptSource *string `pulumi:"scriptSource"`
-	// Optional time period passed to timeout command.
-	Timeout *string `pulumi:"timeout"`
-}
-
-// Script reference
-type ScriptReferenceResponseOutput struct{ *pulumi.OutputState }
-
-func (ScriptReferenceResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScriptReferenceResponse)(nil)).Elem()
-}
-
-func (o ScriptReferenceResponseOutput) ToScriptReferenceResponseOutput() ScriptReferenceResponseOutput {
-	return o
-}
-
-func (o ScriptReferenceResponseOutput) ToScriptReferenceResponseOutputWithContext(ctx context.Context) ScriptReferenceResponseOutput {
-	return o
-}
-
-// Optional command line arguments passed to the script to run.
-func (o ScriptReferenceResponseOutput) ScriptArguments() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScriptReferenceResponse) *string { return v.ScriptArguments }).(pulumi.StringPtrOutput)
-}
-
-// The location of scripts in the mounted volume.
-func (o ScriptReferenceResponseOutput) ScriptData() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScriptReferenceResponse) *string { return v.ScriptData }).(pulumi.StringPtrOutput)
-}
-
-// The storage source of the script: inline, workspace.
-func (o ScriptReferenceResponseOutput) ScriptSource() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScriptReferenceResponse) *string { return v.ScriptSource }).(pulumi.StringPtrOutput)
-}
-
-// Optional time period passed to timeout command.
-func (o ScriptReferenceResponseOutput) Timeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScriptReferenceResponse) *string { return v.Timeout }).(pulumi.StringPtrOutput)
-}
-
-type ScriptReferenceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ScriptReferenceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ScriptReferenceResponse)(nil)).Elem()
-}
-
-func (o ScriptReferenceResponsePtrOutput) ToScriptReferenceResponsePtrOutput() ScriptReferenceResponsePtrOutput {
-	return o
-}
-
-func (o ScriptReferenceResponsePtrOutput) ToScriptReferenceResponsePtrOutputWithContext(ctx context.Context) ScriptReferenceResponsePtrOutput {
-	return o
-}
-
-func (o ScriptReferenceResponsePtrOutput) Elem() ScriptReferenceResponseOutput {
-	return o.ApplyT(func(v *ScriptReferenceResponse) ScriptReferenceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ScriptReferenceResponse
-		return ret
-	}).(ScriptReferenceResponseOutput)
-}
-
-// Optional command line arguments passed to the script to run.
-func (o ScriptReferenceResponsePtrOutput) ScriptArguments() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ScriptReferenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ScriptArguments
-	}).(pulumi.StringPtrOutput)
-}
-
-// The location of scripts in the mounted volume.
-func (o ScriptReferenceResponsePtrOutput) ScriptData() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ScriptReferenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ScriptData
-	}).(pulumi.StringPtrOutput)
-}
-
-// The storage source of the script: inline, workspace.
-func (o ScriptReferenceResponsePtrOutput) ScriptSource() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ScriptReferenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ScriptSource
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional time period passed to timeout command.
-func (o ScriptReferenceResponsePtrOutput) Timeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ScriptReferenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Timeout
-	}).(pulumi.StringPtrOutput)
-}
-
-// Customized setup scripts
-type ScriptsToExecute struct {
-	// Script that's run only once during provision of the compute.
-	CreationScript *ScriptReference `pulumi:"creationScript"`
-	// Script that's run every time the machine starts.
-	StartupScript *ScriptReference `pulumi:"startupScript"`
-}
-
-// ScriptsToExecuteInput is an input type that accepts ScriptsToExecuteArgs and ScriptsToExecuteOutput values.
-// You can construct a concrete instance of `ScriptsToExecuteInput` via:
-//
-//	ScriptsToExecuteArgs{...}
-type ScriptsToExecuteInput interface {
-	pulumi.Input
-
-	ToScriptsToExecuteOutput() ScriptsToExecuteOutput
-	ToScriptsToExecuteOutputWithContext(context.Context) ScriptsToExecuteOutput
-}
-
-// Customized setup scripts
-type ScriptsToExecuteArgs struct {
-	// Script that's run only once during provision of the compute.
-	CreationScript ScriptReferencePtrInput `pulumi:"creationScript"`
-	// Script that's run every time the machine starts.
-	StartupScript ScriptReferencePtrInput `pulumi:"startupScript"`
-}
-
-func (ScriptsToExecuteArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScriptsToExecute)(nil)).Elem()
-}
-
-func (i ScriptsToExecuteArgs) ToScriptsToExecuteOutput() ScriptsToExecuteOutput {
-	return i.ToScriptsToExecuteOutputWithContext(context.Background())
-}
-
-func (i ScriptsToExecuteArgs) ToScriptsToExecuteOutputWithContext(ctx context.Context) ScriptsToExecuteOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScriptsToExecuteOutput)
-}
-
-func (i ScriptsToExecuteArgs) ToScriptsToExecutePtrOutput() ScriptsToExecutePtrOutput {
-	return i.ToScriptsToExecutePtrOutputWithContext(context.Background())
-}
-
-func (i ScriptsToExecuteArgs) ToScriptsToExecutePtrOutputWithContext(ctx context.Context) ScriptsToExecutePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScriptsToExecuteOutput).ToScriptsToExecutePtrOutputWithContext(ctx)
-}
-
-// ScriptsToExecutePtrInput is an input type that accepts ScriptsToExecuteArgs, ScriptsToExecutePtr and ScriptsToExecutePtrOutput values.
-// You can construct a concrete instance of `ScriptsToExecutePtrInput` via:
-//
-//	        ScriptsToExecuteArgs{...}
-//
-//	or:
-//
-//	        nil
-type ScriptsToExecutePtrInput interface {
-	pulumi.Input
-
-	ToScriptsToExecutePtrOutput() ScriptsToExecutePtrOutput
-	ToScriptsToExecutePtrOutputWithContext(context.Context) ScriptsToExecutePtrOutput
-}
-
-type scriptsToExecutePtrType ScriptsToExecuteArgs
-
-func ScriptsToExecutePtr(v *ScriptsToExecuteArgs) ScriptsToExecutePtrInput {
-	return (*scriptsToExecutePtrType)(v)
-}
-
-func (*scriptsToExecutePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ScriptsToExecute)(nil)).Elem()
-}
-
-func (i *scriptsToExecutePtrType) ToScriptsToExecutePtrOutput() ScriptsToExecutePtrOutput {
-	return i.ToScriptsToExecutePtrOutputWithContext(context.Background())
-}
-
-func (i *scriptsToExecutePtrType) ToScriptsToExecutePtrOutputWithContext(ctx context.Context) ScriptsToExecutePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScriptsToExecutePtrOutput)
-}
-
-// Customized setup scripts
-type ScriptsToExecuteOutput struct{ *pulumi.OutputState }
-
-func (ScriptsToExecuteOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScriptsToExecute)(nil)).Elem()
-}
-
-func (o ScriptsToExecuteOutput) ToScriptsToExecuteOutput() ScriptsToExecuteOutput {
-	return o
-}
-
-func (o ScriptsToExecuteOutput) ToScriptsToExecuteOutputWithContext(ctx context.Context) ScriptsToExecuteOutput {
-	return o
-}
-
-func (o ScriptsToExecuteOutput) ToScriptsToExecutePtrOutput() ScriptsToExecutePtrOutput {
-	return o.ToScriptsToExecutePtrOutputWithContext(context.Background())
-}
-
-func (o ScriptsToExecuteOutput) ToScriptsToExecutePtrOutputWithContext(ctx context.Context) ScriptsToExecutePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScriptsToExecute) *ScriptsToExecute {
-		return &v
-	}).(ScriptsToExecutePtrOutput)
-}
-
-// Script that's run only once during provision of the compute.
-func (o ScriptsToExecuteOutput) CreationScript() ScriptReferencePtrOutput {
-	return o.ApplyT(func(v ScriptsToExecute) *ScriptReference { return v.CreationScript }).(ScriptReferencePtrOutput)
-}
-
-// Script that's run every time the machine starts.
-func (o ScriptsToExecuteOutput) StartupScript() ScriptReferencePtrOutput {
-	return o.ApplyT(func(v ScriptsToExecute) *ScriptReference { return v.StartupScript }).(ScriptReferencePtrOutput)
-}
-
-type ScriptsToExecutePtrOutput struct{ *pulumi.OutputState }
-
-func (ScriptsToExecutePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ScriptsToExecute)(nil)).Elem()
-}
-
-func (o ScriptsToExecutePtrOutput) ToScriptsToExecutePtrOutput() ScriptsToExecutePtrOutput {
-	return o
-}
-
-func (o ScriptsToExecutePtrOutput) ToScriptsToExecutePtrOutputWithContext(ctx context.Context) ScriptsToExecutePtrOutput {
-	return o
-}
-
-func (o ScriptsToExecutePtrOutput) Elem() ScriptsToExecuteOutput {
-	return o.ApplyT(func(v *ScriptsToExecute) ScriptsToExecute {
-		if v != nil {
-			return *v
-		}
-		var ret ScriptsToExecute
-		return ret
-	}).(ScriptsToExecuteOutput)
-}
-
-// Script that's run only once during provision of the compute.
-func (o ScriptsToExecutePtrOutput) CreationScript() ScriptReferencePtrOutput {
-	return o.ApplyT(func(v *ScriptsToExecute) *ScriptReference {
-		if v == nil {
-			return nil
-		}
-		return v.CreationScript
-	}).(ScriptReferencePtrOutput)
-}
-
-// Script that's run every time the machine starts.
-func (o ScriptsToExecutePtrOutput) StartupScript() ScriptReferencePtrOutput {
-	return o.ApplyT(func(v *ScriptsToExecute) *ScriptReference {
-		if v == nil {
-			return nil
-		}
-		return v.StartupScript
-	}).(ScriptReferencePtrOutput)
-}
-
-// Customized setup scripts
-type ScriptsToExecuteResponse struct {
-	// Script that's run only once during provision of the compute.
-	CreationScript *ScriptReferenceResponse `pulumi:"creationScript"`
-	// Script that's run every time the machine starts.
-	StartupScript *ScriptReferenceResponse `pulumi:"startupScript"`
-}
-
-// Customized setup scripts
-type ScriptsToExecuteResponseOutput struct{ *pulumi.OutputState }
-
-func (ScriptsToExecuteResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScriptsToExecuteResponse)(nil)).Elem()
-}
-
-func (o ScriptsToExecuteResponseOutput) ToScriptsToExecuteResponseOutput() ScriptsToExecuteResponseOutput {
-	return o
-}
-
-func (o ScriptsToExecuteResponseOutput) ToScriptsToExecuteResponseOutputWithContext(ctx context.Context) ScriptsToExecuteResponseOutput {
-	return o
-}
-
-// Script that's run only once during provision of the compute.
-func (o ScriptsToExecuteResponseOutput) CreationScript() ScriptReferenceResponsePtrOutput {
-	return o.ApplyT(func(v ScriptsToExecuteResponse) *ScriptReferenceResponse { return v.CreationScript }).(ScriptReferenceResponsePtrOutput)
-}
-
-// Script that's run every time the machine starts.
-func (o ScriptsToExecuteResponseOutput) StartupScript() ScriptReferenceResponsePtrOutput {
-	return o.ApplyT(func(v ScriptsToExecuteResponse) *ScriptReferenceResponse { return v.StartupScript }).(ScriptReferenceResponsePtrOutput)
-}
-
-type ScriptsToExecuteResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ScriptsToExecuteResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ScriptsToExecuteResponse)(nil)).Elem()
-}
-
-func (o ScriptsToExecuteResponsePtrOutput) ToScriptsToExecuteResponsePtrOutput() ScriptsToExecuteResponsePtrOutput {
-	return o
-}
-
-func (o ScriptsToExecuteResponsePtrOutput) ToScriptsToExecuteResponsePtrOutputWithContext(ctx context.Context) ScriptsToExecuteResponsePtrOutput {
-	return o
-}
-
-func (o ScriptsToExecuteResponsePtrOutput) Elem() ScriptsToExecuteResponseOutput {
-	return o.ApplyT(func(v *ScriptsToExecuteResponse) ScriptsToExecuteResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ScriptsToExecuteResponse
-		return ret
-	}).(ScriptsToExecuteResponseOutput)
-}
-
-// Script that's run only once during provision of the compute.
-func (o ScriptsToExecuteResponsePtrOutput) CreationScript() ScriptReferenceResponsePtrOutput {
-	return o.ApplyT(func(v *ScriptsToExecuteResponse) *ScriptReferenceResponse {
-		if v == nil {
-			return nil
-		}
-		return v.CreationScript
-	}).(ScriptReferenceResponsePtrOutput)
-}
-
-// Script that's run every time the machine starts.
-func (o ScriptsToExecuteResponsePtrOutput) StartupScript() ScriptReferenceResponsePtrOutput {
-	return o.ApplyT(func(v *ScriptsToExecuteResponse) *ScriptReferenceResponse {
-		if v == nil {
-			return nil
-		}
-		return v.StartupScript
-	}).(ScriptReferenceResponsePtrOutput)
-}
-
-// Secret Configuration definition.
-type SecretConfiguration struct {
-	// Secret Uri.
-	// Sample Uri : https://myvault.vault.azure.net/secrets/mysecretname/secretversion
-	Uri *string `pulumi:"uri"`
-	// Name of secret in workspace key vault.
-	WorkspaceSecretName *string `pulumi:"workspaceSecretName"`
-}
-
-// SecretConfigurationInput is an input type that accepts SecretConfigurationArgs and SecretConfigurationOutput values.
-// You can construct a concrete instance of `SecretConfigurationInput` via:
-//
-//	SecretConfigurationArgs{...}
-type SecretConfigurationInput interface {
-	pulumi.Input
-
-	ToSecretConfigurationOutput() SecretConfigurationOutput
-	ToSecretConfigurationOutputWithContext(context.Context) SecretConfigurationOutput
-}
-
-// Secret Configuration definition.
-type SecretConfigurationArgs struct {
-	// Secret Uri.
-	// Sample Uri : https://myvault.vault.azure.net/secrets/mysecretname/secretversion
-	Uri pulumi.StringPtrInput `pulumi:"uri"`
-	// Name of secret in workspace key vault.
-	WorkspaceSecretName pulumi.StringPtrInput `pulumi:"workspaceSecretName"`
-}
-
-func (SecretConfigurationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecretConfiguration)(nil)).Elem()
-}
-
-func (i SecretConfigurationArgs) ToSecretConfigurationOutput() SecretConfigurationOutput {
-	return i.ToSecretConfigurationOutputWithContext(context.Background())
-}
-
-func (i SecretConfigurationArgs) ToSecretConfigurationOutputWithContext(ctx context.Context) SecretConfigurationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecretConfigurationOutput)
-}
-
-// SecretConfigurationMapInput is an input type that accepts SecretConfigurationMap and SecretConfigurationMapOutput values.
-// You can construct a concrete instance of `SecretConfigurationMapInput` via:
-//
-//	SecretConfigurationMap{ "key": SecretConfigurationArgs{...} }
-type SecretConfigurationMapInput interface {
-	pulumi.Input
-
-	ToSecretConfigurationMapOutput() SecretConfigurationMapOutput
-	ToSecretConfigurationMapOutputWithContext(context.Context) SecretConfigurationMapOutput
-}
-
-type SecretConfigurationMap map[string]SecretConfigurationInput
-
-func (SecretConfigurationMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]SecretConfiguration)(nil)).Elem()
-}
-
-func (i SecretConfigurationMap) ToSecretConfigurationMapOutput() SecretConfigurationMapOutput {
-	return i.ToSecretConfigurationMapOutputWithContext(context.Background())
-}
-
-func (i SecretConfigurationMap) ToSecretConfigurationMapOutputWithContext(ctx context.Context) SecretConfigurationMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecretConfigurationMapOutput)
-}
-
-// Secret Configuration definition.
-type SecretConfigurationOutput struct{ *pulumi.OutputState }
-
-func (SecretConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecretConfiguration)(nil)).Elem()
-}
-
-func (o SecretConfigurationOutput) ToSecretConfigurationOutput() SecretConfigurationOutput {
-	return o
-}
-
-func (o SecretConfigurationOutput) ToSecretConfigurationOutputWithContext(ctx context.Context) SecretConfigurationOutput {
-	return o
-}
-
-// Secret Uri.
-// Sample Uri : https://myvault.vault.azure.net/secrets/mysecretname/secretversion
-func (o SecretConfigurationOutput) Uri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecretConfiguration) *string { return v.Uri }).(pulumi.StringPtrOutput)
-}
-
-// Name of secret in workspace key vault.
-func (o SecretConfigurationOutput) WorkspaceSecretName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecretConfiguration) *string { return v.WorkspaceSecretName }).(pulumi.StringPtrOutput)
-}
-
-type SecretConfigurationMapOutput struct{ *pulumi.OutputState }
-
-func (SecretConfigurationMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]SecretConfiguration)(nil)).Elem()
-}
-
-func (o SecretConfigurationMapOutput) ToSecretConfigurationMapOutput() SecretConfigurationMapOutput {
-	return o
-}
-
-func (o SecretConfigurationMapOutput) ToSecretConfigurationMapOutputWithContext(ctx context.Context) SecretConfigurationMapOutput {
-	return o
-}
-
-func (o SecretConfigurationMapOutput) MapIndex(k pulumi.StringInput) SecretConfigurationOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SecretConfiguration {
-		return vs[0].(map[string]SecretConfiguration)[vs[1].(string)]
-	}).(SecretConfigurationOutput)
-}
-
-// Secret Configuration definition.
-type SecretConfigurationResponse struct {
-	// Secret Uri.
-	// Sample Uri : https://myvault.vault.azure.net/secrets/mysecretname/secretversion
-	Uri *string `pulumi:"uri"`
-	// Name of secret in workspace key vault.
-	WorkspaceSecretName *string `pulumi:"workspaceSecretName"`
-}
-
-// Secret Configuration definition.
-type SecretConfigurationResponseOutput struct{ *pulumi.OutputState }
-
-func (SecretConfigurationResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecretConfigurationResponse)(nil)).Elem()
-}
-
-func (o SecretConfigurationResponseOutput) ToSecretConfigurationResponseOutput() SecretConfigurationResponseOutput {
-	return o
-}
-
-func (o SecretConfigurationResponseOutput) ToSecretConfigurationResponseOutputWithContext(ctx context.Context) SecretConfigurationResponseOutput {
-	return o
-}
-
-// Secret Uri.
-// Sample Uri : https://myvault.vault.azure.net/secrets/mysecretname/secretversion
-func (o SecretConfigurationResponseOutput) Uri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecretConfigurationResponse) *string { return v.Uri }).(pulumi.StringPtrOutput)
-}
-
-// Name of secret in workspace key vault.
-func (o SecretConfigurationResponseOutput) WorkspaceSecretName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecretConfigurationResponse) *string { return v.WorkspaceSecretName }).(pulumi.StringPtrOutput)
-}
-
-type SecretConfigurationResponseMapOutput struct{ *pulumi.OutputState }
-
-func (SecretConfigurationResponseMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]SecretConfigurationResponse)(nil)).Elem()
-}
-
-func (o SecretConfigurationResponseMapOutput) ToSecretConfigurationResponseMapOutput() SecretConfigurationResponseMapOutput {
-	return o
-}
-
-func (o SecretConfigurationResponseMapOutput) ToSecretConfigurationResponseMapOutputWithContext(ctx context.Context) SecretConfigurationResponseMapOutput {
-	return o
-}
-
-func (o SecretConfigurationResponseMapOutput) MapIndex(k pulumi.StringInput) SecretConfigurationResponseOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SecretConfigurationResponse {
-		return vs[0].(map[string]SecretConfigurationResponse)[vs[1].(string)]
-	}).(SecretConfigurationResponseOutput)
-}
-
-type ServerlessComputeSettings struct {
-	// The resource ID of an existing virtual network subnet in which serverless compute nodes should be deployed
-	ServerlessComputeCustomSubnet *string `pulumi:"serverlessComputeCustomSubnet"`
-	// The flag to signal if serverless compute nodes deployed in custom vNet would have no public IP addresses for a workspace with private endpoint
-	ServerlessComputeNoPublicIP *bool `pulumi:"serverlessComputeNoPublicIP"`
-}
-
-// ServerlessComputeSettingsInput is an input type that accepts ServerlessComputeSettingsArgs and ServerlessComputeSettingsOutput values.
-// You can construct a concrete instance of `ServerlessComputeSettingsInput` via:
-//
-//	ServerlessComputeSettingsArgs{...}
-type ServerlessComputeSettingsInput interface {
-	pulumi.Input
-
-	ToServerlessComputeSettingsOutput() ServerlessComputeSettingsOutput
-	ToServerlessComputeSettingsOutputWithContext(context.Context) ServerlessComputeSettingsOutput
-}
-
-type ServerlessComputeSettingsArgs struct {
-	// The resource ID of an existing virtual network subnet in which serverless compute nodes should be deployed
-	ServerlessComputeCustomSubnet pulumi.StringPtrInput `pulumi:"serverlessComputeCustomSubnet"`
-	// The flag to signal if serverless compute nodes deployed in custom vNet would have no public IP addresses for a workspace with private endpoint
-	ServerlessComputeNoPublicIP pulumi.BoolPtrInput `pulumi:"serverlessComputeNoPublicIP"`
-}
-
-func (ServerlessComputeSettingsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerlessComputeSettings)(nil)).Elem()
-}
-
-func (i ServerlessComputeSettingsArgs) ToServerlessComputeSettingsOutput() ServerlessComputeSettingsOutput {
-	return i.ToServerlessComputeSettingsOutputWithContext(context.Background())
-}
-
-func (i ServerlessComputeSettingsArgs) ToServerlessComputeSettingsOutputWithContext(ctx context.Context) ServerlessComputeSettingsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServerlessComputeSettingsOutput)
-}
-
-func (i ServerlessComputeSettingsArgs) ToServerlessComputeSettingsPtrOutput() ServerlessComputeSettingsPtrOutput {
-	return i.ToServerlessComputeSettingsPtrOutputWithContext(context.Background())
-}
-
-func (i ServerlessComputeSettingsArgs) ToServerlessComputeSettingsPtrOutputWithContext(ctx context.Context) ServerlessComputeSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServerlessComputeSettingsOutput).ToServerlessComputeSettingsPtrOutputWithContext(ctx)
-}
-
-// ServerlessComputeSettingsPtrInput is an input type that accepts ServerlessComputeSettingsArgs, ServerlessComputeSettingsPtr and ServerlessComputeSettingsPtrOutput values.
-// You can construct a concrete instance of `ServerlessComputeSettingsPtrInput` via:
-//
-//	        ServerlessComputeSettingsArgs{...}
-//
-//	or:
-//
-//	        nil
-type ServerlessComputeSettingsPtrInput interface {
-	pulumi.Input
-
-	ToServerlessComputeSettingsPtrOutput() ServerlessComputeSettingsPtrOutput
-	ToServerlessComputeSettingsPtrOutputWithContext(context.Context) ServerlessComputeSettingsPtrOutput
-}
-
-type serverlessComputeSettingsPtrType ServerlessComputeSettingsArgs
-
-func ServerlessComputeSettingsPtr(v *ServerlessComputeSettingsArgs) ServerlessComputeSettingsPtrInput {
-	return (*serverlessComputeSettingsPtrType)(v)
-}
-
-func (*serverlessComputeSettingsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServerlessComputeSettings)(nil)).Elem()
-}
-
-func (i *serverlessComputeSettingsPtrType) ToServerlessComputeSettingsPtrOutput() ServerlessComputeSettingsPtrOutput {
-	return i.ToServerlessComputeSettingsPtrOutputWithContext(context.Background())
-}
-
-func (i *serverlessComputeSettingsPtrType) ToServerlessComputeSettingsPtrOutputWithContext(ctx context.Context) ServerlessComputeSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServerlessComputeSettingsPtrOutput)
-}
-
-type ServerlessComputeSettingsOutput struct{ *pulumi.OutputState }
-
-func (ServerlessComputeSettingsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerlessComputeSettings)(nil)).Elem()
-}
-
-func (o ServerlessComputeSettingsOutput) ToServerlessComputeSettingsOutput() ServerlessComputeSettingsOutput {
-	return o
-}
-
-func (o ServerlessComputeSettingsOutput) ToServerlessComputeSettingsOutputWithContext(ctx context.Context) ServerlessComputeSettingsOutput {
-	return o
-}
-
-func (o ServerlessComputeSettingsOutput) ToServerlessComputeSettingsPtrOutput() ServerlessComputeSettingsPtrOutput {
-	return o.ToServerlessComputeSettingsPtrOutputWithContext(context.Background())
-}
-
-func (o ServerlessComputeSettingsOutput) ToServerlessComputeSettingsPtrOutputWithContext(ctx context.Context) ServerlessComputeSettingsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServerlessComputeSettings) *ServerlessComputeSettings {
-		return &v
-	}).(ServerlessComputeSettingsPtrOutput)
-}
-
-// The resource ID of an existing virtual network subnet in which serverless compute nodes should be deployed
-func (o ServerlessComputeSettingsOutput) ServerlessComputeCustomSubnet() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServerlessComputeSettings) *string { return v.ServerlessComputeCustomSubnet }).(pulumi.StringPtrOutput)
-}
-
-// The flag to signal if serverless compute nodes deployed in custom vNet would have no public IP addresses for a workspace with private endpoint
-func (o ServerlessComputeSettingsOutput) ServerlessComputeNoPublicIP() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ServerlessComputeSettings) *bool { return v.ServerlessComputeNoPublicIP }).(pulumi.BoolPtrOutput)
-}
-
-type ServerlessComputeSettingsPtrOutput struct{ *pulumi.OutputState }
-
-func (ServerlessComputeSettingsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServerlessComputeSettings)(nil)).Elem()
-}
-
-func (o ServerlessComputeSettingsPtrOutput) ToServerlessComputeSettingsPtrOutput() ServerlessComputeSettingsPtrOutput {
-	return o
-}
-
-func (o ServerlessComputeSettingsPtrOutput) ToServerlessComputeSettingsPtrOutputWithContext(ctx context.Context) ServerlessComputeSettingsPtrOutput {
-	return o
-}
-
-func (o ServerlessComputeSettingsPtrOutput) Elem() ServerlessComputeSettingsOutput {
-	return o.ApplyT(func(v *ServerlessComputeSettings) ServerlessComputeSettings {
-		if v != nil {
-			return *v
-		}
-		var ret ServerlessComputeSettings
-		return ret
-	}).(ServerlessComputeSettingsOutput)
-}
-
-// The resource ID of an existing virtual network subnet in which serverless compute nodes should be deployed
-func (o ServerlessComputeSettingsPtrOutput) ServerlessComputeCustomSubnet() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServerlessComputeSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ServerlessComputeCustomSubnet
-	}).(pulumi.StringPtrOutput)
-}
-
-// The flag to signal if serverless compute nodes deployed in custom vNet would have no public IP addresses for a workspace with private endpoint
-func (o ServerlessComputeSettingsPtrOutput) ServerlessComputeNoPublicIP() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ServerlessComputeSettings) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.ServerlessComputeNoPublicIP
-	}).(pulumi.BoolPtrOutput)
-}
-
-type ServerlessComputeSettingsResponse struct {
-	// The resource ID of an existing virtual network subnet in which serverless compute nodes should be deployed
-	ServerlessComputeCustomSubnet *string `pulumi:"serverlessComputeCustomSubnet"`
-	// The flag to signal if serverless compute nodes deployed in custom vNet would have no public IP addresses for a workspace with private endpoint
-	ServerlessComputeNoPublicIP *bool `pulumi:"serverlessComputeNoPublicIP"`
-}
-
-type ServerlessComputeSettingsResponseOutput struct{ *pulumi.OutputState }
-
-func (ServerlessComputeSettingsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerlessComputeSettingsResponse)(nil)).Elem()
-}
-
-func (o ServerlessComputeSettingsResponseOutput) ToServerlessComputeSettingsResponseOutput() ServerlessComputeSettingsResponseOutput {
-	return o
-}
-
-func (o ServerlessComputeSettingsResponseOutput) ToServerlessComputeSettingsResponseOutputWithContext(ctx context.Context) ServerlessComputeSettingsResponseOutput {
-	return o
-}
-
-// The resource ID of an existing virtual network subnet in which serverless compute nodes should be deployed
-func (o ServerlessComputeSettingsResponseOutput) ServerlessComputeCustomSubnet() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServerlessComputeSettingsResponse) *string { return v.ServerlessComputeCustomSubnet }).(pulumi.StringPtrOutput)
-}
-
-// The flag to signal if serverless compute nodes deployed in custom vNet would have no public IP addresses for a workspace with private endpoint
-func (o ServerlessComputeSettingsResponseOutput) ServerlessComputeNoPublicIP() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ServerlessComputeSettingsResponse) *bool { return v.ServerlessComputeNoPublicIP }).(pulumi.BoolPtrOutput)
-}
-
-type ServerlessComputeSettingsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ServerlessComputeSettingsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServerlessComputeSettingsResponse)(nil)).Elem()
-}
-
-func (o ServerlessComputeSettingsResponsePtrOutput) ToServerlessComputeSettingsResponsePtrOutput() ServerlessComputeSettingsResponsePtrOutput {
-	return o
-}
-
-func (o ServerlessComputeSettingsResponsePtrOutput) ToServerlessComputeSettingsResponsePtrOutputWithContext(ctx context.Context) ServerlessComputeSettingsResponsePtrOutput {
-	return o
-}
-
-func (o ServerlessComputeSettingsResponsePtrOutput) Elem() ServerlessComputeSettingsResponseOutput {
-	return o.ApplyT(func(v *ServerlessComputeSettingsResponse) ServerlessComputeSettingsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ServerlessComputeSettingsResponse
-		return ret
-	}).(ServerlessComputeSettingsResponseOutput)
-}
-
-// The resource ID of an existing virtual network subnet in which serverless compute nodes should be deployed
-func (o ServerlessComputeSettingsResponsePtrOutput) ServerlessComputeCustomSubnet() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServerlessComputeSettingsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ServerlessComputeCustomSubnet
-	}).(pulumi.StringPtrOutput)
-}
-
-// The flag to signal if serverless compute nodes deployed in custom vNet would have no public IP addresses for a workspace with private endpoint
-func (o ServerlessComputeSettingsResponsePtrOutput) ServerlessComputeNoPublicIP() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ServerlessComputeSettingsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.ServerlessComputeNoPublicIP
-	}).(pulumi.BoolPtrOutput)
-}
-
-type ServerlessEndpointProperties struct {
-	// [Required] Specifies the authentication mode for the Serverless endpoint.
-	AuthMode string `pulumi:"authMode"`
-	// Specifies the content safety options. If omitted, the default content safety settings will be configured
-	ContentSafety *ContentSafety `pulumi:"contentSafety"`
-	// The model settings (model id) for the model being serviced on the ServerlessEndpoint.
-	ModelSettings *ModelSettings `pulumi:"modelSettings"`
-}
-
-// ServerlessEndpointPropertiesInput is an input type that accepts ServerlessEndpointPropertiesArgs and ServerlessEndpointPropertiesOutput values.
-// You can construct a concrete instance of `ServerlessEndpointPropertiesInput` via:
-//
-//	ServerlessEndpointPropertiesArgs{...}
-type ServerlessEndpointPropertiesInput interface {
-	pulumi.Input
-
-	ToServerlessEndpointPropertiesOutput() ServerlessEndpointPropertiesOutput
-	ToServerlessEndpointPropertiesOutputWithContext(context.Context) ServerlessEndpointPropertiesOutput
-}
-
-type ServerlessEndpointPropertiesArgs struct {
-	// [Required] Specifies the authentication mode for the Serverless endpoint.
-	AuthMode pulumi.StringInput `pulumi:"authMode"`
-	// Specifies the content safety options. If omitted, the default content safety settings will be configured
-	ContentSafety ContentSafetyPtrInput `pulumi:"contentSafety"`
-	// The model settings (model id) for the model being serviced on the ServerlessEndpoint.
-	ModelSettings ModelSettingsPtrInput `pulumi:"modelSettings"`
-}
-
-func (ServerlessEndpointPropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerlessEndpointProperties)(nil)).Elem()
-}
-
-func (i ServerlessEndpointPropertiesArgs) ToServerlessEndpointPropertiesOutput() ServerlessEndpointPropertiesOutput {
-	return i.ToServerlessEndpointPropertiesOutputWithContext(context.Background())
-}
-
-func (i ServerlessEndpointPropertiesArgs) ToServerlessEndpointPropertiesOutputWithContext(ctx context.Context) ServerlessEndpointPropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServerlessEndpointPropertiesOutput)
-}
-
-type ServerlessEndpointPropertiesOutput struct{ *pulumi.OutputState }
-
-func (ServerlessEndpointPropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerlessEndpointProperties)(nil)).Elem()
-}
-
-func (o ServerlessEndpointPropertiesOutput) ToServerlessEndpointPropertiesOutput() ServerlessEndpointPropertiesOutput {
-	return o
-}
-
-func (o ServerlessEndpointPropertiesOutput) ToServerlessEndpointPropertiesOutputWithContext(ctx context.Context) ServerlessEndpointPropertiesOutput {
-	return o
-}
-
-// [Required] Specifies the authentication mode for the Serverless endpoint.
-func (o ServerlessEndpointPropertiesOutput) AuthMode() pulumi.StringOutput {
-	return o.ApplyT(func(v ServerlessEndpointProperties) string { return v.AuthMode }).(pulumi.StringOutput)
-}
-
-// Specifies the content safety options. If omitted, the default content safety settings will be configured
-func (o ServerlessEndpointPropertiesOutput) ContentSafety() ContentSafetyPtrOutput {
-	return o.ApplyT(func(v ServerlessEndpointProperties) *ContentSafety { return v.ContentSafety }).(ContentSafetyPtrOutput)
-}
-
-// The model settings (model id) for the model being serviced on the ServerlessEndpoint.
-func (o ServerlessEndpointPropertiesOutput) ModelSettings() ModelSettingsPtrOutput {
-	return o.ApplyT(func(v ServerlessEndpointProperties) *ModelSettings { return v.ModelSettings }).(ModelSettingsPtrOutput)
-}
-
-type ServerlessEndpointPropertiesResponse struct {
-	// [Required] Specifies the authentication mode for the Serverless endpoint.
-	AuthMode string `pulumi:"authMode"`
-	// Specifies the content safety options. If omitted, the default content safety settings will be configured
-	ContentSafety *ContentSafetyResponse `pulumi:"contentSafety"`
-	// The current state of the ServerlessEndpoint.
-	EndpointState string `pulumi:"endpointState"`
-	// The inference uri to target when making requests against the serverless endpoint
-	InferenceEndpoint ServerlessInferenceEndpointResponse `pulumi:"inferenceEndpoint"`
-	// The MarketplaceSubscription Azure ID associated to this ServerlessEndpoint.
-	MarketplaceSubscriptionId string `pulumi:"marketplaceSubscriptionId"`
-	// The model settings (model id) for the model being serviced on the ServerlessEndpoint.
-	ModelSettings *ModelSettingsResponse `pulumi:"modelSettings"`
-	// State of endpoint provisioning.
-	ProvisioningState string `pulumi:"provisioningState"`
-}
-
-type ServerlessEndpointPropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (ServerlessEndpointPropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerlessEndpointPropertiesResponse)(nil)).Elem()
-}
-
-func (o ServerlessEndpointPropertiesResponseOutput) ToServerlessEndpointPropertiesResponseOutput() ServerlessEndpointPropertiesResponseOutput {
-	return o
-}
-
-func (o ServerlessEndpointPropertiesResponseOutput) ToServerlessEndpointPropertiesResponseOutputWithContext(ctx context.Context) ServerlessEndpointPropertiesResponseOutput {
-	return o
-}
-
-// [Required] Specifies the authentication mode for the Serverless endpoint.
-func (o ServerlessEndpointPropertiesResponseOutput) AuthMode() pulumi.StringOutput {
-	return o.ApplyT(func(v ServerlessEndpointPropertiesResponse) string { return v.AuthMode }).(pulumi.StringOutput)
-}
-
-// Specifies the content safety options. If omitted, the default content safety settings will be configured
-func (o ServerlessEndpointPropertiesResponseOutput) ContentSafety() ContentSafetyResponsePtrOutput {
-	return o.ApplyT(func(v ServerlessEndpointPropertiesResponse) *ContentSafetyResponse { return v.ContentSafety }).(ContentSafetyResponsePtrOutput)
-}
-
-// The current state of the ServerlessEndpoint.
-func (o ServerlessEndpointPropertiesResponseOutput) EndpointState() pulumi.StringOutput {
-	return o.ApplyT(func(v ServerlessEndpointPropertiesResponse) string { return v.EndpointState }).(pulumi.StringOutput)
-}
-
-// The inference uri to target when making requests against the serverless endpoint
-func (o ServerlessEndpointPropertiesResponseOutput) InferenceEndpoint() ServerlessInferenceEndpointResponseOutput {
-	return o.ApplyT(func(v ServerlessEndpointPropertiesResponse) ServerlessInferenceEndpointResponse {
-		return v.InferenceEndpoint
-	}).(ServerlessInferenceEndpointResponseOutput)
-}
-
-// The MarketplaceSubscription Azure ID associated to this ServerlessEndpoint.
-func (o ServerlessEndpointPropertiesResponseOutput) MarketplaceSubscriptionId() pulumi.StringOutput {
-	return o.ApplyT(func(v ServerlessEndpointPropertiesResponse) string { return v.MarketplaceSubscriptionId }).(pulumi.StringOutput)
-}
-
-// The model settings (model id) for the model being serviced on the ServerlessEndpoint.
-func (o ServerlessEndpointPropertiesResponseOutput) ModelSettings() ModelSettingsResponsePtrOutput {
-	return o.ApplyT(func(v ServerlessEndpointPropertiesResponse) *ModelSettingsResponse { return v.ModelSettings }).(ModelSettingsResponsePtrOutput)
-}
-
-// State of endpoint provisioning.
-func (o ServerlessEndpointPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v ServerlessEndpointPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-type ServerlessInferenceEndpointResponse struct {
-	// Specifies any required headers to target this serverless endpoint.
-	Headers map[string]string `pulumi:"headers"`
-	// [Required] The inference uri to target when making requests against the Serverless Endpoint.
-	Uri string `pulumi:"uri"`
-}
-
-type ServerlessInferenceEndpointResponseOutput struct{ *pulumi.OutputState }
-
-func (ServerlessInferenceEndpointResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerlessInferenceEndpointResponse)(nil)).Elem()
-}
-
-func (o ServerlessInferenceEndpointResponseOutput) ToServerlessInferenceEndpointResponseOutput() ServerlessInferenceEndpointResponseOutput {
-	return o
-}
-
-func (o ServerlessInferenceEndpointResponseOutput) ToServerlessInferenceEndpointResponseOutputWithContext(ctx context.Context) ServerlessInferenceEndpointResponseOutput {
-	return o
-}
-
-// Specifies any required headers to target this serverless endpoint.
-func (o ServerlessInferenceEndpointResponseOutput) Headers() pulumi.StringMapOutput {
-	return o.ApplyT(func(v ServerlessInferenceEndpointResponse) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
-}
-
-// [Required] The inference uri to target when making requests against the Serverless Endpoint.
-func (o ServerlessInferenceEndpointResponseOutput) Uri() pulumi.StringOutput {
-	return o.ApplyT(func(v ServerlessInferenceEndpointResponse) string { return v.Uri }).(pulumi.StringOutput)
-}
-
-type ServerlessOffer struct {
-	// [Required] The name of the Serverless Offer
-	OfferName string `pulumi:"offerName"`
-	// [Required] Publisher name of the Serverless Offer
-	Publisher string `pulumi:"publisher"`
-}
-
-// ServerlessOfferInput is an input type that accepts ServerlessOfferArgs and ServerlessOfferOutput values.
-// You can construct a concrete instance of `ServerlessOfferInput` via:
-//
-//	ServerlessOfferArgs{...}
-type ServerlessOfferInput interface {
-	pulumi.Input
-
-	ToServerlessOfferOutput() ServerlessOfferOutput
-	ToServerlessOfferOutputWithContext(context.Context) ServerlessOfferOutput
-}
-
-type ServerlessOfferArgs struct {
-	// [Required] The name of the Serverless Offer
-	OfferName pulumi.StringInput `pulumi:"offerName"`
-	// [Required] Publisher name of the Serverless Offer
-	Publisher pulumi.StringInput `pulumi:"publisher"`
-}
-
-func (ServerlessOfferArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerlessOffer)(nil)).Elem()
-}
-
-func (i ServerlessOfferArgs) ToServerlessOfferOutput() ServerlessOfferOutput {
-	return i.ToServerlessOfferOutputWithContext(context.Background())
-}
-
-func (i ServerlessOfferArgs) ToServerlessOfferOutputWithContext(ctx context.Context) ServerlessOfferOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServerlessOfferOutput)
-}
-
-func (i ServerlessOfferArgs) ToServerlessOfferPtrOutput() ServerlessOfferPtrOutput {
-	return i.ToServerlessOfferPtrOutputWithContext(context.Background())
-}
-
-func (i ServerlessOfferArgs) ToServerlessOfferPtrOutputWithContext(ctx context.Context) ServerlessOfferPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServerlessOfferOutput).ToServerlessOfferPtrOutputWithContext(ctx)
-}
-
-// ServerlessOfferPtrInput is an input type that accepts ServerlessOfferArgs, ServerlessOfferPtr and ServerlessOfferPtrOutput values.
-// You can construct a concrete instance of `ServerlessOfferPtrInput` via:
-//
-//	        ServerlessOfferArgs{...}
-//
-//	or:
-//
-//	        nil
-type ServerlessOfferPtrInput interface {
-	pulumi.Input
-
-	ToServerlessOfferPtrOutput() ServerlessOfferPtrOutput
-	ToServerlessOfferPtrOutputWithContext(context.Context) ServerlessOfferPtrOutput
-}
-
-type serverlessOfferPtrType ServerlessOfferArgs
-
-func ServerlessOfferPtr(v *ServerlessOfferArgs) ServerlessOfferPtrInput {
-	return (*serverlessOfferPtrType)(v)
-}
-
-func (*serverlessOfferPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServerlessOffer)(nil)).Elem()
-}
-
-func (i *serverlessOfferPtrType) ToServerlessOfferPtrOutput() ServerlessOfferPtrOutput {
-	return i.ToServerlessOfferPtrOutputWithContext(context.Background())
-}
-
-func (i *serverlessOfferPtrType) ToServerlessOfferPtrOutputWithContext(ctx context.Context) ServerlessOfferPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServerlessOfferPtrOutput)
-}
-
-type ServerlessOfferOutput struct{ *pulumi.OutputState }
-
-func (ServerlessOfferOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerlessOffer)(nil)).Elem()
-}
-
-func (o ServerlessOfferOutput) ToServerlessOfferOutput() ServerlessOfferOutput {
-	return o
-}
-
-func (o ServerlessOfferOutput) ToServerlessOfferOutputWithContext(ctx context.Context) ServerlessOfferOutput {
-	return o
-}
-
-func (o ServerlessOfferOutput) ToServerlessOfferPtrOutput() ServerlessOfferPtrOutput {
-	return o.ToServerlessOfferPtrOutputWithContext(context.Background())
-}
-
-func (o ServerlessOfferOutput) ToServerlessOfferPtrOutputWithContext(ctx context.Context) ServerlessOfferPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServerlessOffer) *ServerlessOffer {
-		return &v
-	}).(ServerlessOfferPtrOutput)
-}
-
-// [Required] The name of the Serverless Offer
-func (o ServerlessOfferOutput) OfferName() pulumi.StringOutput {
-	return o.ApplyT(func(v ServerlessOffer) string { return v.OfferName }).(pulumi.StringOutput)
-}
-
-// [Required] Publisher name of the Serverless Offer
-func (o ServerlessOfferOutput) Publisher() pulumi.StringOutput {
-	return o.ApplyT(func(v ServerlessOffer) string { return v.Publisher }).(pulumi.StringOutput)
-}
-
-type ServerlessOfferPtrOutput struct{ *pulumi.OutputState }
-
-func (ServerlessOfferPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServerlessOffer)(nil)).Elem()
-}
-
-func (o ServerlessOfferPtrOutput) ToServerlessOfferPtrOutput() ServerlessOfferPtrOutput {
-	return o
-}
-
-func (o ServerlessOfferPtrOutput) ToServerlessOfferPtrOutputWithContext(ctx context.Context) ServerlessOfferPtrOutput {
-	return o
-}
-
-func (o ServerlessOfferPtrOutput) Elem() ServerlessOfferOutput {
-	return o.ApplyT(func(v *ServerlessOffer) ServerlessOffer {
-		if v != nil {
-			return *v
-		}
-		var ret ServerlessOffer
-		return ret
-	}).(ServerlessOfferOutput)
-}
-
-// [Required] The name of the Serverless Offer
-func (o ServerlessOfferPtrOutput) OfferName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServerlessOffer) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.OfferName
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Required] Publisher name of the Serverless Offer
-func (o ServerlessOfferPtrOutput) Publisher() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServerlessOffer) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Publisher
-	}).(pulumi.StringPtrOutput)
-}
-
-type ServerlessOfferResponse struct {
-	// [Required] The name of the Serverless Offer
-	OfferName string `pulumi:"offerName"`
-	// [Required] Publisher name of the Serverless Offer
-	Publisher string `pulumi:"publisher"`
-}
-
-type ServerlessOfferResponseOutput struct{ *pulumi.OutputState }
-
-func (ServerlessOfferResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerlessOfferResponse)(nil)).Elem()
-}
-
-func (o ServerlessOfferResponseOutput) ToServerlessOfferResponseOutput() ServerlessOfferResponseOutput {
-	return o
-}
-
-func (o ServerlessOfferResponseOutput) ToServerlessOfferResponseOutputWithContext(ctx context.Context) ServerlessOfferResponseOutput {
-	return o
-}
-
-// [Required] The name of the Serverless Offer
-func (o ServerlessOfferResponseOutput) OfferName() pulumi.StringOutput {
-	return o.ApplyT(func(v ServerlessOfferResponse) string { return v.OfferName }).(pulumi.StringOutput)
-}
-
-// [Required] Publisher name of the Serverless Offer
-func (o ServerlessOfferResponseOutput) Publisher() pulumi.StringOutput {
-	return o.ApplyT(func(v ServerlessOfferResponse) string { return v.Publisher }).(pulumi.StringOutput)
-}
-
-type ServerlessOfferResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ServerlessOfferResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServerlessOfferResponse)(nil)).Elem()
-}
-
-func (o ServerlessOfferResponsePtrOutput) ToServerlessOfferResponsePtrOutput() ServerlessOfferResponsePtrOutput {
-	return o
-}
-
-func (o ServerlessOfferResponsePtrOutput) ToServerlessOfferResponsePtrOutputWithContext(ctx context.Context) ServerlessOfferResponsePtrOutput {
-	return o
-}
-
-func (o ServerlessOfferResponsePtrOutput) Elem() ServerlessOfferResponseOutput {
-	return o.ApplyT(func(v *ServerlessOfferResponse) ServerlessOfferResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ServerlessOfferResponse
-		return ret
-	}).(ServerlessOfferResponseOutput)
-}
-
-// [Required] The name of the Serverless Offer
-func (o ServerlessOfferResponsePtrOutput) OfferName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServerlessOfferResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.OfferName
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Required] Publisher name of the Serverless Offer
-func (o ServerlessOfferResponsePtrOutput) Publisher() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServerlessOfferResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Publisher
-	}).(pulumi.StringPtrOutput)
-}
-
-type ServiceManagedResourcesSettings struct {
-	CosmosDb *CosmosDbSettings `pulumi:"cosmosDb"`
-}
-
-// ServiceManagedResourcesSettingsInput is an input type that accepts ServiceManagedResourcesSettingsArgs and ServiceManagedResourcesSettingsOutput values.
-// You can construct a concrete instance of `ServiceManagedResourcesSettingsInput` via:
-//
-//	ServiceManagedResourcesSettingsArgs{...}
-type ServiceManagedResourcesSettingsInput interface {
-	pulumi.Input
-
-	ToServiceManagedResourcesSettingsOutput() ServiceManagedResourcesSettingsOutput
-	ToServiceManagedResourcesSettingsOutputWithContext(context.Context) ServiceManagedResourcesSettingsOutput
-}
-
-type ServiceManagedResourcesSettingsArgs struct {
-	CosmosDb CosmosDbSettingsPtrInput `pulumi:"cosmosDb"`
-}
-
-func (ServiceManagedResourcesSettingsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceManagedResourcesSettings)(nil)).Elem()
-}
-
-func (i ServiceManagedResourcesSettingsArgs) ToServiceManagedResourcesSettingsOutput() ServiceManagedResourcesSettingsOutput {
-	return i.ToServiceManagedResourcesSettingsOutputWithContext(context.Background())
-}
-
-func (i ServiceManagedResourcesSettingsArgs) ToServiceManagedResourcesSettingsOutputWithContext(ctx context.Context) ServiceManagedResourcesSettingsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceManagedResourcesSettingsOutput)
-}
-
-func (i ServiceManagedResourcesSettingsArgs) ToServiceManagedResourcesSettingsPtrOutput() ServiceManagedResourcesSettingsPtrOutput {
-	return i.ToServiceManagedResourcesSettingsPtrOutputWithContext(context.Background())
-}
-
-func (i ServiceManagedResourcesSettingsArgs) ToServiceManagedResourcesSettingsPtrOutputWithContext(ctx context.Context) ServiceManagedResourcesSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceManagedResourcesSettingsOutput).ToServiceManagedResourcesSettingsPtrOutputWithContext(ctx)
-}
-
-// ServiceManagedResourcesSettingsPtrInput is an input type that accepts ServiceManagedResourcesSettingsArgs, ServiceManagedResourcesSettingsPtr and ServiceManagedResourcesSettingsPtrOutput values.
-// You can construct a concrete instance of `ServiceManagedResourcesSettingsPtrInput` via:
-//
-//	        ServiceManagedResourcesSettingsArgs{...}
-//
-//	or:
-//
-//	        nil
-type ServiceManagedResourcesSettingsPtrInput interface {
-	pulumi.Input
-
-	ToServiceManagedResourcesSettingsPtrOutput() ServiceManagedResourcesSettingsPtrOutput
-	ToServiceManagedResourcesSettingsPtrOutputWithContext(context.Context) ServiceManagedResourcesSettingsPtrOutput
-}
-
-type serviceManagedResourcesSettingsPtrType ServiceManagedResourcesSettingsArgs
-
-func ServiceManagedResourcesSettingsPtr(v *ServiceManagedResourcesSettingsArgs) ServiceManagedResourcesSettingsPtrInput {
-	return (*serviceManagedResourcesSettingsPtrType)(v)
-}
-
-func (*serviceManagedResourcesSettingsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServiceManagedResourcesSettings)(nil)).Elem()
-}
-
-func (i *serviceManagedResourcesSettingsPtrType) ToServiceManagedResourcesSettingsPtrOutput() ServiceManagedResourcesSettingsPtrOutput {
-	return i.ToServiceManagedResourcesSettingsPtrOutputWithContext(context.Background())
-}
-
-func (i *serviceManagedResourcesSettingsPtrType) ToServiceManagedResourcesSettingsPtrOutputWithContext(ctx context.Context) ServiceManagedResourcesSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceManagedResourcesSettingsPtrOutput)
-}
-
-type ServiceManagedResourcesSettingsOutput struct{ *pulumi.OutputState }
-
-func (ServiceManagedResourcesSettingsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceManagedResourcesSettings)(nil)).Elem()
-}
-
-func (o ServiceManagedResourcesSettingsOutput) ToServiceManagedResourcesSettingsOutput() ServiceManagedResourcesSettingsOutput {
-	return o
-}
-
-func (o ServiceManagedResourcesSettingsOutput) ToServiceManagedResourcesSettingsOutputWithContext(ctx context.Context) ServiceManagedResourcesSettingsOutput {
-	return o
-}
-
-func (o ServiceManagedResourcesSettingsOutput) ToServiceManagedResourcesSettingsPtrOutput() ServiceManagedResourcesSettingsPtrOutput {
-	return o.ToServiceManagedResourcesSettingsPtrOutputWithContext(context.Background())
-}
-
-func (o ServiceManagedResourcesSettingsOutput) ToServiceManagedResourcesSettingsPtrOutputWithContext(ctx context.Context) ServiceManagedResourcesSettingsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceManagedResourcesSettings) *ServiceManagedResourcesSettings {
-		return &v
-	}).(ServiceManagedResourcesSettingsPtrOutput)
-}
-
-func (o ServiceManagedResourcesSettingsOutput) CosmosDb() CosmosDbSettingsPtrOutput {
-	return o.ApplyT(func(v ServiceManagedResourcesSettings) *CosmosDbSettings { return v.CosmosDb }).(CosmosDbSettingsPtrOutput)
-}
-
-type ServiceManagedResourcesSettingsPtrOutput struct{ *pulumi.OutputState }
-
-func (ServiceManagedResourcesSettingsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServiceManagedResourcesSettings)(nil)).Elem()
-}
-
-func (o ServiceManagedResourcesSettingsPtrOutput) ToServiceManagedResourcesSettingsPtrOutput() ServiceManagedResourcesSettingsPtrOutput {
-	return o
-}
-
-func (o ServiceManagedResourcesSettingsPtrOutput) ToServiceManagedResourcesSettingsPtrOutputWithContext(ctx context.Context) ServiceManagedResourcesSettingsPtrOutput {
-	return o
-}
-
-func (o ServiceManagedResourcesSettingsPtrOutput) Elem() ServiceManagedResourcesSettingsOutput {
-	return o.ApplyT(func(v *ServiceManagedResourcesSettings) ServiceManagedResourcesSettings {
-		if v != nil {
-			return *v
-		}
-		var ret ServiceManagedResourcesSettings
-		return ret
-	}).(ServiceManagedResourcesSettingsOutput)
-}
-
-func (o ServiceManagedResourcesSettingsPtrOutput) CosmosDb() CosmosDbSettingsPtrOutput {
-	return o.ApplyT(func(v *ServiceManagedResourcesSettings) *CosmosDbSettings {
-		if v == nil {
-			return nil
-		}
-		return v.CosmosDb
-	}).(CosmosDbSettingsPtrOutput)
-}
-
-type ServiceManagedResourcesSettingsResponse struct {
-	CosmosDb *CosmosDbSettingsResponse `pulumi:"cosmosDb"`
-}
-
-type ServiceManagedResourcesSettingsResponseOutput struct{ *pulumi.OutputState }
-
-func (ServiceManagedResourcesSettingsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceManagedResourcesSettingsResponse)(nil)).Elem()
-}
-
-func (o ServiceManagedResourcesSettingsResponseOutput) ToServiceManagedResourcesSettingsResponseOutput() ServiceManagedResourcesSettingsResponseOutput {
-	return o
-}
-
-func (o ServiceManagedResourcesSettingsResponseOutput) ToServiceManagedResourcesSettingsResponseOutputWithContext(ctx context.Context) ServiceManagedResourcesSettingsResponseOutput {
-	return o
-}
-
-func (o ServiceManagedResourcesSettingsResponseOutput) CosmosDb() CosmosDbSettingsResponsePtrOutput {
-	return o.ApplyT(func(v ServiceManagedResourcesSettingsResponse) *CosmosDbSettingsResponse { return v.CosmosDb }).(CosmosDbSettingsResponsePtrOutput)
-}
-
-type ServiceManagedResourcesSettingsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ServiceManagedResourcesSettingsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServiceManagedResourcesSettingsResponse)(nil)).Elem()
-}
-
-func (o ServiceManagedResourcesSettingsResponsePtrOutput) ToServiceManagedResourcesSettingsResponsePtrOutput() ServiceManagedResourcesSettingsResponsePtrOutput {
-	return o
-}
-
-func (o ServiceManagedResourcesSettingsResponsePtrOutput) ToServiceManagedResourcesSettingsResponsePtrOutputWithContext(ctx context.Context) ServiceManagedResourcesSettingsResponsePtrOutput {
-	return o
-}
-
-func (o ServiceManagedResourcesSettingsResponsePtrOutput) Elem() ServiceManagedResourcesSettingsResponseOutput {
-	return o.ApplyT(func(v *ServiceManagedResourcesSettingsResponse) ServiceManagedResourcesSettingsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ServiceManagedResourcesSettingsResponse
-		return ret
-	}).(ServiceManagedResourcesSettingsResponseOutput)
-}
-
-func (o ServiceManagedResourcesSettingsResponsePtrOutput) CosmosDb() CosmosDbSettingsResponsePtrOutput {
-	return o.ApplyT(func(v *ServiceManagedResourcesSettingsResponse) *CosmosDbSettingsResponse {
-		if v == nil {
-			return nil
-		}
-		return v.CosmosDb
-	}).(CosmosDbSettingsResponsePtrOutput)
-}
-
-type ServicePrincipalAuthTypeWorkspaceConnectionProperties struct {
-	// Authentication type of the connection target
-	// Expected value is 'ServicePrincipal'.
-	AuthType string `pulumi:"authType"`
-	// Category of the connection
-	Category      *string                              `pulumi:"category"`
-	Credentials   *WorkspaceConnectionServicePrincipal `pulumi:"credentials"`
-	Error         *string                              `pulumi:"error"`
-	ExpiryTime    *string                              `pulumi:"expiryTime"`
-	IsSharedToAll *bool                                `pulumi:"isSharedToAll"`
-	// Store user metadata for this connection
-	Metadata                    map[string]string `pulumi:"metadata"`
-	PeRequirement               *string           `pulumi:"peRequirement"`
-	PeStatus                    *string           `pulumi:"peStatus"`
-	SharedUserList              []string          `pulumi:"sharedUserList"`
-	Target                      *string           `pulumi:"target"`
-	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
-}
-
-// ServicePrincipalAuthTypeWorkspaceConnectionPropertiesInput is an input type that accepts ServicePrincipalAuthTypeWorkspaceConnectionPropertiesArgs and ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput values.
-// You can construct a concrete instance of `ServicePrincipalAuthTypeWorkspaceConnectionPropertiesInput` via:
-//
-//	ServicePrincipalAuthTypeWorkspaceConnectionPropertiesArgs{...}
-type ServicePrincipalAuthTypeWorkspaceConnectionPropertiesInput interface {
-	pulumi.Input
-
-	ToServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput() ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput
-	ToServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutputWithContext(context.Context) ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput
-}
-
-type ServicePrincipalAuthTypeWorkspaceConnectionPropertiesArgs struct {
-	// Authentication type of the connection target
-	// Expected value is 'ServicePrincipal'.
-	AuthType pulumi.StringInput `pulumi:"authType"`
-	// Category of the connection
-	Category      pulumi.StringPtrInput                       `pulumi:"category"`
-	Credentials   WorkspaceConnectionServicePrincipalPtrInput `pulumi:"credentials"`
-	Error         pulumi.StringPtrInput                       `pulumi:"error"`
-	ExpiryTime    pulumi.StringPtrInput                       `pulumi:"expiryTime"`
-	IsSharedToAll pulumi.BoolPtrInput                         `pulumi:"isSharedToAll"`
-	// Store user metadata for this connection
-	Metadata                    pulumi.StringMapInput   `pulumi:"metadata"`
-	PeRequirement               pulumi.StringPtrInput   `pulumi:"peRequirement"`
-	PeStatus                    pulumi.StringPtrInput   `pulumi:"peStatus"`
-	SharedUserList              pulumi.StringArrayInput `pulumi:"sharedUserList"`
-	Target                      pulumi.StringPtrInput   `pulumi:"target"`
-	UseWorkspaceManagedIdentity pulumi.BoolPtrInput     `pulumi:"useWorkspaceManagedIdentity"`
-}
-
-func (ServicePrincipalAuthTypeWorkspaceConnectionPropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServicePrincipalAuthTypeWorkspaceConnectionProperties)(nil)).Elem()
-}
-
-func (i ServicePrincipalAuthTypeWorkspaceConnectionPropertiesArgs) ToServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput() ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput {
-	return i.ToServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutputWithContext(context.Background())
-}
-
-func (i ServicePrincipalAuthTypeWorkspaceConnectionPropertiesArgs) ToServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutputWithContext(ctx context.Context) ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput)
-}
-
-type ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput struct{ *pulumi.OutputState }
-
-func (ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServicePrincipalAuthTypeWorkspaceConnectionProperties)(nil)).Elem()
-}
-
-func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput) ToServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput() ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput {
-	return o
-}
-
-func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput) ToServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutputWithContext(ctx context.Context) ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput {
-	return o
-}
-
-// Authentication type of the connection target
-// Expected value is 'ServicePrincipal'.
-func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput) AuthType() pulumi.StringOutput {
-	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionProperties) string { return v.AuthType }).(pulumi.StringOutput)
-}
-
-// Category of the connection
-func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput) Category() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionProperties) *string { return v.Category }).(pulumi.StringPtrOutput)
-}
-
-func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput) Credentials() WorkspaceConnectionServicePrincipalPtrOutput {
-	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionProperties) *WorkspaceConnectionServicePrincipal {
-		return v.Credentials
-	}).(WorkspaceConnectionServicePrincipalPtrOutput)
-}
-
-func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput) Error() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionProperties) *string { return v.Error }).(pulumi.StringPtrOutput)
-}
-
-func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput) ExpiryTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionProperties) *string { return v.ExpiryTime }).(pulumi.StringPtrOutput)
-}
-
-func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput) IsSharedToAll() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionProperties) *bool { return v.IsSharedToAll }).(pulumi.BoolPtrOutput)
-}
-
-// Store user metadata for this connection
-func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput) Metadata() pulumi.StringMapOutput {
-	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionProperties) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
-}
-
-func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput) PeRequirement() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionProperties) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
-}
-
-func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput) PeStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionProperties) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
-}
-
-func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput) SharedUserList() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionProperties) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
-}
-
-func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput) Target() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionProperties) *string { return v.Target }).(pulumi.StringPtrOutput)
-}
-
-func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput) UseWorkspaceManagedIdentity() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionProperties) *bool {
-		return v.UseWorkspaceManagedIdentity
-	}).(pulumi.BoolPtrOutput)
-}
-
-type ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse struct {
-	// Authentication type of the connection target
-	// Expected value is 'ServicePrincipal'.
-	AuthType string `pulumi:"authType"`
-	// Category of the connection
-	Category *string `pulumi:"category"`
-	// A type definition that refers the id to an Azure Resource Manager resource.
-	CreatedByWorkspaceArmId string                                       `pulumi:"createdByWorkspaceArmId"`
-	Credentials             *WorkspaceConnectionServicePrincipalResponse `pulumi:"credentials"`
-	Error                   *string                                      `pulumi:"error"`
-	ExpiryTime              *string                                      `pulumi:"expiryTime"`
-	// Group based on connection category
-	Group         string `pulumi:"group"`
-	IsSharedToAll *bool  `pulumi:"isSharedToAll"`
-	// Store user metadata for this connection
-	Metadata                    map[string]string `pulumi:"metadata"`
-	PeRequirement               *string           `pulumi:"peRequirement"`
-	PeStatus                    *string           `pulumi:"peStatus"`
-	SharedUserList              []string          `pulumi:"sharedUserList"`
-	Target                      *string           `pulumi:"target"`
-	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
-}
-
-type ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse)(nil)).Elem()
-}
-
-func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutput) ToServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutput() ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutput {
-	return o
-}
-
-func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutput) ToServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutputWithContext(ctx context.Context) ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutput {
-	return o
-}
-
-// Authentication type of the connection target
-// Expected value is 'ServicePrincipal'.
-func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutput) AuthType() pulumi.StringOutput {
-	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse) string { return v.AuthType }).(pulumi.StringOutput)
-}
-
-// Category of the connection
-func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutput) Category() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse) *string { return v.Category }).(pulumi.StringPtrOutput)
-}
-
-// A type definition that refers the id to an Azure Resource Manager resource.
-func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutput) CreatedByWorkspaceArmId() pulumi.StringOutput {
-	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse) string {
-		return v.CreatedByWorkspaceArmId
-	}).(pulumi.StringOutput)
-}
-
-func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutput) Credentials() WorkspaceConnectionServicePrincipalResponsePtrOutput {
-	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse) *WorkspaceConnectionServicePrincipalResponse {
-		return v.Credentials
-	}).(WorkspaceConnectionServicePrincipalResponsePtrOutput)
-}
-
-func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutput) Error() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse) *string { return v.Error }).(pulumi.StringPtrOutput)
-}
-
-func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutput) ExpiryTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse) *string { return v.ExpiryTime }).(pulumi.StringPtrOutput)
-}
-
-// Group based on connection category
-func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutput) Group() pulumi.StringOutput {
-	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse) string { return v.Group }).(pulumi.StringOutput)
-}
-
-func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutput) IsSharedToAll() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse) *bool { return v.IsSharedToAll }).(pulumi.BoolPtrOutput)
-}
-
-// Store user metadata for this connection
-func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutput) Metadata() pulumi.StringMapOutput {
-	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse) map[string]string {
-		return v.Metadata
-	}).(pulumi.StringMapOutput)
-}
-
-func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutput) PeRequirement() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
-}
-
-func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutput) PeStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
-}
-
-func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutput) SharedUserList() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse) []string {
-		return v.SharedUserList
-	}).(pulumi.StringArrayOutput)
-}
-
-func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutput) Target() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
-}
-
-func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutput) UseWorkspaceManagedIdentity() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse) *bool {
-		return v.UseWorkspaceManagedIdentity
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Service Principal datastore credentials configuration.
-type ServicePrincipalDatastoreCredentials struct {
-	// Authority URL used for authentication.
-	AuthorityUrl *string `pulumi:"authorityUrl"`
-	// [Required] Service principal client ID.
-	ClientId string `pulumi:"clientId"`
-	// Enum to determine the datastore credentials type.
-	// Expected value is 'ServicePrincipal'.
-	CredentialsType string `pulumi:"credentialsType"`
-	// Resource the service principal has access to.
-	ResourceUrl *string `pulumi:"resourceUrl"`
-	// [Required] Service principal secrets.
-	Secrets ServicePrincipalDatastoreSecrets `pulumi:"secrets"`
-	// [Required] ID of the tenant to which the service principal belongs.
-	TenantId string `pulumi:"tenantId"`
-}
-
-// ServicePrincipalDatastoreCredentialsInput is an input type that accepts ServicePrincipalDatastoreCredentialsArgs and ServicePrincipalDatastoreCredentialsOutput values.
-// You can construct a concrete instance of `ServicePrincipalDatastoreCredentialsInput` via:
-//
-//	ServicePrincipalDatastoreCredentialsArgs{...}
-type ServicePrincipalDatastoreCredentialsInput interface {
-	pulumi.Input
-
-	ToServicePrincipalDatastoreCredentialsOutput() ServicePrincipalDatastoreCredentialsOutput
-	ToServicePrincipalDatastoreCredentialsOutputWithContext(context.Context) ServicePrincipalDatastoreCredentialsOutput
-}
-
-// Service Principal datastore credentials configuration.
-type ServicePrincipalDatastoreCredentialsArgs struct {
-	// Authority URL used for authentication.
-	AuthorityUrl pulumi.StringPtrInput `pulumi:"authorityUrl"`
-	// [Required] Service principal client ID.
-	ClientId pulumi.StringInput `pulumi:"clientId"`
-	// Enum to determine the datastore credentials type.
-	// Expected value is 'ServicePrincipal'.
-	CredentialsType pulumi.StringInput `pulumi:"credentialsType"`
-	// Resource the service principal has access to.
-	ResourceUrl pulumi.StringPtrInput `pulumi:"resourceUrl"`
-	// [Required] Service principal secrets.
-	Secrets ServicePrincipalDatastoreSecretsInput `pulumi:"secrets"`
-	// [Required] ID of the tenant to which the service principal belongs.
-	TenantId pulumi.StringInput `pulumi:"tenantId"`
-}
-
-func (ServicePrincipalDatastoreCredentialsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServicePrincipalDatastoreCredentials)(nil)).Elem()
-}
-
-func (i ServicePrincipalDatastoreCredentialsArgs) ToServicePrincipalDatastoreCredentialsOutput() ServicePrincipalDatastoreCredentialsOutput {
-	return i.ToServicePrincipalDatastoreCredentialsOutputWithContext(context.Background())
-}
-
-func (i ServicePrincipalDatastoreCredentialsArgs) ToServicePrincipalDatastoreCredentialsOutputWithContext(ctx context.Context) ServicePrincipalDatastoreCredentialsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalDatastoreCredentialsOutput)
-}
-
-// Service Principal datastore credentials configuration.
-type ServicePrincipalDatastoreCredentialsOutput struct{ *pulumi.OutputState }
-
-func (ServicePrincipalDatastoreCredentialsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServicePrincipalDatastoreCredentials)(nil)).Elem()
-}
-
-func (o ServicePrincipalDatastoreCredentialsOutput) ToServicePrincipalDatastoreCredentialsOutput() ServicePrincipalDatastoreCredentialsOutput {
-	return o
-}
-
-func (o ServicePrincipalDatastoreCredentialsOutput) ToServicePrincipalDatastoreCredentialsOutputWithContext(ctx context.Context) ServicePrincipalDatastoreCredentialsOutput {
-	return o
-}
-
-// Authority URL used for authentication.
-func (o ServicePrincipalDatastoreCredentialsOutput) AuthorityUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePrincipalDatastoreCredentials) *string { return v.AuthorityUrl }).(pulumi.StringPtrOutput)
-}
-
-// [Required] Service principal client ID.
-func (o ServicePrincipalDatastoreCredentialsOutput) ClientId() pulumi.StringOutput {
-	return o.ApplyT(func(v ServicePrincipalDatastoreCredentials) string { return v.ClientId }).(pulumi.StringOutput)
-}
-
-// Enum to determine the datastore credentials type.
-// Expected value is 'ServicePrincipal'.
-func (o ServicePrincipalDatastoreCredentialsOutput) CredentialsType() pulumi.StringOutput {
-	return o.ApplyT(func(v ServicePrincipalDatastoreCredentials) string { return v.CredentialsType }).(pulumi.StringOutput)
-}
-
-// Resource the service principal has access to.
-func (o ServicePrincipalDatastoreCredentialsOutput) ResourceUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePrincipalDatastoreCredentials) *string { return v.ResourceUrl }).(pulumi.StringPtrOutput)
-}
-
-// [Required] Service principal secrets.
-func (o ServicePrincipalDatastoreCredentialsOutput) Secrets() ServicePrincipalDatastoreSecretsOutput {
-	return o.ApplyT(func(v ServicePrincipalDatastoreCredentials) ServicePrincipalDatastoreSecrets { return v.Secrets }).(ServicePrincipalDatastoreSecretsOutput)
-}
-
-// [Required] ID of the tenant to which the service principal belongs.
-func (o ServicePrincipalDatastoreCredentialsOutput) TenantId() pulumi.StringOutput {
-	return o.ApplyT(func(v ServicePrincipalDatastoreCredentials) string { return v.TenantId }).(pulumi.StringOutput)
-}
-
-// Service Principal datastore credentials configuration.
-type ServicePrincipalDatastoreCredentialsResponse struct {
-	// Authority URL used for authentication.
-	AuthorityUrl *string `pulumi:"authorityUrl"`
-	// [Required] Service principal client ID.
-	ClientId string `pulumi:"clientId"`
-	// Enum to determine the datastore credentials type.
-	// Expected value is 'ServicePrincipal'.
-	CredentialsType string `pulumi:"credentialsType"`
-	// Resource the service principal has access to.
-	ResourceUrl *string `pulumi:"resourceUrl"`
-	// [Required] ID of the tenant to which the service principal belongs.
-	TenantId string `pulumi:"tenantId"`
-}
-
-// Service Principal datastore credentials configuration.
-type ServicePrincipalDatastoreCredentialsResponseOutput struct{ *pulumi.OutputState }
-
-func (ServicePrincipalDatastoreCredentialsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServicePrincipalDatastoreCredentialsResponse)(nil)).Elem()
-}
-
-func (o ServicePrincipalDatastoreCredentialsResponseOutput) ToServicePrincipalDatastoreCredentialsResponseOutput() ServicePrincipalDatastoreCredentialsResponseOutput {
-	return o
-}
-
-func (o ServicePrincipalDatastoreCredentialsResponseOutput) ToServicePrincipalDatastoreCredentialsResponseOutputWithContext(ctx context.Context) ServicePrincipalDatastoreCredentialsResponseOutput {
-	return o
-}
-
-// Authority URL used for authentication.
-func (o ServicePrincipalDatastoreCredentialsResponseOutput) AuthorityUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePrincipalDatastoreCredentialsResponse) *string { return v.AuthorityUrl }).(pulumi.StringPtrOutput)
-}
-
-// [Required] Service principal client ID.
-func (o ServicePrincipalDatastoreCredentialsResponseOutput) ClientId() pulumi.StringOutput {
-	return o.ApplyT(func(v ServicePrincipalDatastoreCredentialsResponse) string { return v.ClientId }).(pulumi.StringOutput)
-}
-
-// Enum to determine the datastore credentials type.
-// Expected value is 'ServicePrincipal'.
-func (o ServicePrincipalDatastoreCredentialsResponseOutput) CredentialsType() pulumi.StringOutput {
-	return o.ApplyT(func(v ServicePrincipalDatastoreCredentialsResponse) string { return v.CredentialsType }).(pulumi.StringOutput)
-}
-
-// Resource the service principal has access to.
-func (o ServicePrincipalDatastoreCredentialsResponseOutput) ResourceUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePrincipalDatastoreCredentialsResponse) *string { return v.ResourceUrl }).(pulumi.StringPtrOutput)
-}
-
-// [Required] ID of the tenant to which the service principal belongs.
-func (o ServicePrincipalDatastoreCredentialsResponseOutput) TenantId() pulumi.StringOutput {
-	return o.ApplyT(func(v ServicePrincipalDatastoreCredentialsResponse) string { return v.TenantId }).(pulumi.StringOutput)
-}
-
-// Datastore Service Principal secrets.
-type ServicePrincipalDatastoreSecrets struct {
-	// Service principal secret.
-	ClientSecret *string `pulumi:"clientSecret"`
-	// Enum to determine the datastore secrets type.
-	// Expected value is 'ServicePrincipal'.
-	SecretsType string `pulumi:"secretsType"`
-}
-
-// ServicePrincipalDatastoreSecretsInput is an input type that accepts ServicePrincipalDatastoreSecretsArgs and ServicePrincipalDatastoreSecretsOutput values.
-// You can construct a concrete instance of `ServicePrincipalDatastoreSecretsInput` via:
-//
-//	ServicePrincipalDatastoreSecretsArgs{...}
-type ServicePrincipalDatastoreSecretsInput interface {
-	pulumi.Input
-
-	ToServicePrincipalDatastoreSecretsOutput() ServicePrincipalDatastoreSecretsOutput
-	ToServicePrincipalDatastoreSecretsOutputWithContext(context.Context) ServicePrincipalDatastoreSecretsOutput
-}
-
-// Datastore Service Principal secrets.
-type ServicePrincipalDatastoreSecretsArgs struct {
-	// Service principal secret.
-	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
-	// Enum to determine the datastore secrets type.
-	// Expected value is 'ServicePrincipal'.
-	SecretsType pulumi.StringInput `pulumi:"secretsType"`
-}
-
-func (ServicePrincipalDatastoreSecretsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServicePrincipalDatastoreSecrets)(nil)).Elem()
-}
-
-func (i ServicePrincipalDatastoreSecretsArgs) ToServicePrincipalDatastoreSecretsOutput() ServicePrincipalDatastoreSecretsOutput {
-	return i.ToServicePrincipalDatastoreSecretsOutputWithContext(context.Background())
-}
-
-func (i ServicePrincipalDatastoreSecretsArgs) ToServicePrincipalDatastoreSecretsOutputWithContext(ctx context.Context) ServicePrincipalDatastoreSecretsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalDatastoreSecretsOutput)
-}
-
-// Datastore Service Principal secrets.
-type ServicePrincipalDatastoreSecretsOutput struct{ *pulumi.OutputState }
-
-func (ServicePrincipalDatastoreSecretsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServicePrincipalDatastoreSecrets)(nil)).Elem()
-}
-
-func (o ServicePrincipalDatastoreSecretsOutput) ToServicePrincipalDatastoreSecretsOutput() ServicePrincipalDatastoreSecretsOutput {
-	return o
-}
-
-func (o ServicePrincipalDatastoreSecretsOutput) ToServicePrincipalDatastoreSecretsOutputWithContext(ctx context.Context) ServicePrincipalDatastoreSecretsOutput {
-	return o
-}
-
-// Service principal secret.
-func (o ServicePrincipalDatastoreSecretsOutput) ClientSecret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePrincipalDatastoreSecrets) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
-}
-
-// Enum to determine the datastore secrets type.
-// Expected value is 'ServicePrincipal'.
-func (o ServicePrincipalDatastoreSecretsOutput) SecretsType() pulumi.StringOutput {
-	return o.ApplyT(func(v ServicePrincipalDatastoreSecrets) string { return v.SecretsType }).(pulumi.StringOutput)
-}
-
 // Service Tag destination for a Service Tag Outbound Rule for the managed network of a machine learning workspace.
 type ServiceTagDestination struct {
-	// The action enum for networking rule.
-	Action *string `pulumi:"action"`
-	// Optional, if provided, the ServiceTag property will be ignored.
-	AddressPrefixes []string `pulumi:"addressPrefixes"`
-	PortRanges      *string  `pulumi:"portRanges"`
-	Protocol        *string  `pulumi:"protocol"`
-	ServiceTag      *string  `pulumi:"serviceTag"`
+	PortRanges *string `pulumi:"portRanges"`
+	Protocol   *string `pulumi:"protocol"`
+	ServiceTag *string `pulumi:"serviceTag"`
 }
 
 // ServiceTagDestinationInput is an input type that accepts ServiceTagDestinationArgs and ServiceTagDestinationOutput values.
@@ -11035,13 +33,9 @@ type ServiceTagDestinationInput interface {
 
 // Service Tag destination for a Service Tag Outbound Rule for the managed network of a machine learning workspace.
 type ServiceTagDestinationArgs struct {
-	// The action enum for networking rule.
-	Action pulumi.StringPtrInput `pulumi:"action"`
-	// Optional, if provided, the ServiceTag property will be ignored.
-	AddressPrefixes pulumi.StringArrayInput `pulumi:"addressPrefixes"`
-	PortRanges      pulumi.StringPtrInput   `pulumi:"portRanges"`
-	Protocol        pulumi.StringPtrInput   `pulumi:"protocol"`
-	ServiceTag      pulumi.StringPtrInput   `pulumi:"serviceTag"`
+	PortRanges pulumi.StringPtrInput `pulumi:"portRanges"`
+	Protocol   pulumi.StringPtrInput `pulumi:"protocol"`
+	ServiceTag pulumi.StringPtrInput `pulumi:"serviceTag"`
 }
 
 func (ServiceTagDestinationArgs) ElementType() reflect.Type {
@@ -11122,16 +116,6 @@ func (o ServiceTagDestinationOutput) ToServiceTagDestinationPtrOutputWithContext
 	}).(ServiceTagDestinationPtrOutput)
 }
 
-// The action enum for networking rule.
-func (o ServiceTagDestinationOutput) Action() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceTagDestination) *string { return v.Action }).(pulumi.StringPtrOutput)
-}
-
-// Optional, if provided, the ServiceTag property will be ignored.
-func (o ServiceTagDestinationOutput) AddressPrefixes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ServiceTagDestination) []string { return v.AddressPrefixes }).(pulumi.StringArrayOutput)
-}
-
 func (o ServiceTagDestinationOutput) PortRanges() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTagDestination) *string { return v.PortRanges }).(pulumi.StringPtrOutput)
 }
@@ -11168,26 +152,6 @@ func (o ServiceTagDestinationPtrOutput) Elem() ServiceTagDestinationOutput {
 	}).(ServiceTagDestinationOutput)
 }
 
-// The action enum for networking rule.
-func (o ServiceTagDestinationPtrOutput) Action() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServiceTagDestination) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Action
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional, if provided, the ServiceTag property will be ignored.
-func (o ServiceTagDestinationPtrOutput) AddressPrefixes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ServiceTagDestination) []string {
-		if v == nil {
-			return nil
-		}
-		return v.AddressPrefixes
-	}).(pulumi.StringArrayOutput)
-}
-
 func (o ServiceTagDestinationPtrOutput) PortRanges() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceTagDestination) *string {
 		if v == nil {
@@ -11217,13 +181,9 @@ func (o ServiceTagDestinationPtrOutput) ServiceTag() pulumi.StringPtrOutput {
 
 // Service Tag destination for a Service Tag Outbound Rule for the managed network of a machine learning workspace.
 type ServiceTagDestinationResponse struct {
-	// The action enum for networking rule.
-	Action *string `pulumi:"action"`
-	// Optional, if provided, the ServiceTag property will be ignored.
-	AddressPrefixes []string `pulumi:"addressPrefixes"`
-	PortRanges      *string  `pulumi:"portRanges"`
-	Protocol        *string  `pulumi:"protocol"`
-	ServiceTag      *string  `pulumi:"serviceTag"`
+	PortRanges *string `pulumi:"portRanges"`
+	Protocol   *string `pulumi:"protocol"`
+	ServiceTag *string `pulumi:"serviceTag"`
 }
 
 // Service Tag destination for a Service Tag Outbound Rule for the managed network of a machine learning workspace.
@@ -11239,16 +199,6 @@ func (o ServiceTagDestinationResponseOutput) ToServiceTagDestinationResponseOutp
 
 func (o ServiceTagDestinationResponseOutput) ToServiceTagDestinationResponseOutputWithContext(ctx context.Context) ServiceTagDestinationResponseOutput {
 	return o
-}
-
-// The action enum for networking rule.
-func (o ServiceTagDestinationResponseOutput) Action() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceTagDestinationResponse) *string { return v.Action }).(pulumi.StringPtrOutput)
-}
-
-// Optional, if provided, the ServiceTag property will be ignored.
-func (o ServiceTagDestinationResponseOutput) AddressPrefixes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ServiceTagDestinationResponse) []string { return v.AddressPrefixes }).(pulumi.StringArrayOutput)
 }
 
 func (o ServiceTagDestinationResponseOutput) PortRanges() pulumi.StringPtrOutput {
@@ -11287,26 +237,6 @@ func (o ServiceTagDestinationResponsePtrOutput) Elem() ServiceTagDestinationResp
 	}).(ServiceTagDestinationResponseOutput)
 }
 
-// The action enum for networking rule.
-func (o ServiceTagDestinationResponsePtrOutput) Action() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServiceTagDestinationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Action
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional, if provided, the ServiceTag property will be ignored.
-func (o ServiceTagDestinationResponsePtrOutput) AddressPrefixes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ServiceTagDestinationResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.AddressPrefixes
-	}).(pulumi.StringArrayOutput)
-}
-
 func (o ServiceTagDestinationResponsePtrOutput) PortRanges() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceTagDestinationResponse) *string {
 		if v == nil {
@@ -11340,7 +270,7 @@ type ServiceTagOutboundRule struct {
 	Category *string `pulumi:"category"`
 	// Service Tag destination for a Service Tag Outbound Rule for the managed network of a machine learning workspace.
 	Destination *ServiceTagDestination `pulumi:"destination"`
-	// Type of a managed network Outbound Rule of a machine learning workspace.
+	// Status of a managed network Outbound Rule of a machine learning workspace.
 	Status *string `pulumi:"status"`
 	// Type of a managed network Outbound Rule of a machine learning workspace.
 	// Expected value is 'ServiceTag'.
@@ -11364,7 +294,7 @@ type ServiceTagOutboundRuleArgs struct {
 	Category pulumi.StringPtrInput `pulumi:"category"`
 	// Service Tag destination for a Service Tag Outbound Rule for the managed network of a machine learning workspace.
 	Destination ServiceTagDestinationPtrInput `pulumi:"destination"`
-	// Type of a managed network Outbound Rule of a machine learning workspace.
+	// Status of a managed network Outbound Rule of a machine learning workspace.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// Type of a managed network Outbound Rule of a machine learning workspace.
 	// Expected value is 'ServiceTag'.
@@ -11408,7 +338,7 @@ func (o ServiceTagOutboundRuleOutput) Destination() ServiceTagDestinationPtrOutp
 	return o.ApplyT(func(v ServiceTagOutboundRule) *ServiceTagDestination { return v.Destination }).(ServiceTagDestinationPtrOutput)
 }
 
-// Type of a managed network Outbound Rule of a machine learning workspace.
+// Status of a managed network Outbound Rule of a machine learning workspace.
 func (o ServiceTagOutboundRuleOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTagOutboundRule) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
@@ -11425,10 +355,7 @@ type ServiceTagOutboundRuleResponse struct {
 	Category *string `pulumi:"category"`
 	// Service Tag destination for a Service Tag Outbound Rule for the managed network of a machine learning workspace.
 	Destination *ServiceTagDestinationResponse `pulumi:"destination"`
-	// Error information about an outbound rule of a machine learning workspace if RuleStatus is failed.
-	ErrorInformation string   `pulumi:"errorInformation"`
-	ParentRuleNames  []string `pulumi:"parentRuleNames"`
-	// Type of a managed network Outbound Rule of a machine learning workspace.
+	// Status of a managed network Outbound Rule of a machine learning workspace.
 	Status *string `pulumi:"status"`
 	// Type of a managed network Outbound Rule of a machine learning workspace.
 	// Expected value is 'ServiceTag'.
@@ -11460,16 +387,7 @@ func (o ServiceTagOutboundRuleResponseOutput) Destination() ServiceTagDestinatio
 	return o.ApplyT(func(v ServiceTagOutboundRuleResponse) *ServiceTagDestinationResponse { return v.Destination }).(ServiceTagDestinationResponsePtrOutput)
 }
 
-// Error information about an outbound rule of a machine learning workspace if RuleStatus is failed.
-func (o ServiceTagOutboundRuleResponseOutput) ErrorInformation() pulumi.StringOutput {
-	return o.ApplyT(func(v ServiceTagOutboundRuleResponse) string { return v.ErrorInformation }).(pulumi.StringOutput)
-}
-
-func (o ServiceTagOutboundRuleResponseOutput) ParentRuleNames() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ServiceTagOutboundRuleResponse) []string { return v.ParentRuleNames }).(pulumi.StringArrayOutput)
-}
-
-// Type of a managed network Outbound Rule of a machine learning workspace.
+// Status of a managed network Outbound Rule of a machine learning workspace.
 func (o ServiceTagOutboundRuleResponseOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTagOutboundRuleResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
@@ -11681,15 +599,15 @@ func (o SetupScriptsResponsePtrOutput) Scripts() ScriptsToExecuteResponsePtrOutp
 }
 
 type SharedPrivateLinkResource struct {
-	// group id of the private link
+	// The private link resource group id.
 	GroupId *string `pulumi:"groupId"`
-	// Unique name of the private link
+	// Unique name of the private link.
 	Name *string `pulumi:"name"`
-	// the resource id that private link links to
+	// The resource id that private link links to.
 	PrivateLinkResourceId *string `pulumi:"privateLinkResourceId"`
-	// Request message
+	// Request message.
 	RequestMessage *string `pulumi:"requestMessage"`
-	// Connection status of the service consumer with the service provider\r\nPossible state transitions\r\nPending -> Approved (Service provider approves the connection request)\r\nPending -> Rejected (Service provider rejects the connection request)\r\nPending -> Disconnected (Service provider deletes the connection)\r\nApproved -> Rejected (Service provider rejects the approved connection)\r\nApproved -> Disconnected (Service provider deletes the connection)\r\nRejected -> Pending (Service consumer re-initiates the connection request that was rejected)\r\nRejected -> Disconnected (Service provider deletes the connection)
+	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
 	Status *string `pulumi:"status"`
 }
 
@@ -11705,15 +623,15 @@ type SharedPrivateLinkResourceInput interface {
 }
 
 type SharedPrivateLinkResourceArgs struct {
-	// group id of the private link
+	// The private link resource group id.
 	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
-	// Unique name of the private link
+	// Unique name of the private link.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// the resource id that private link links to
+	// The resource id that private link links to.
 	PrivateLinkResourceId pulumi.StringPtrInput `pulumi:"privateLinkResourceId"`
-	// Request message
+	// Request message.
 	RequestMessage pulumi.StringPtrInput `pulumi:"requestMessage"`
-	// Connection status of the service consumer with the service provider\r\nPossible state transitions\r\nPending -> Approved (Service provider approves the connection request)\r\nPending -> Rejected (Service provider rejects the connection request)\r\nPending -> Disconnected (Service provider deletes the connection)\r\nApproved -> Rejected (Service provider rejects the approved connection)\r\nApproved -> Disconnected (Service provider deletes the connection)\r\nRejected -> Pending (Service consumer re-initiates the connection request that was rejected)\r\nRejected -> Disconnected (Service provider deletes the connection)
+	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
@@ -11768,27 +686,27 @@ func (o SharedPrivateLinkResourceOutput) ToSharedPrivateLinkResourceOutputWithCo
 	return o
 }
 
-// group id of the private link
+// The private link resource group id.
 func (o SharedPrivateLinkResourceOutput) GroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SharedPrivateLinkResource) *string { return v.GroupId }).(pulumi.StringPtrOutput)
 }
 
-// Unique name of the private link
+// Unique name of the private link.
 func (o SharedPrivateLinkResourceOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SharedPrivateLinkResource) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// the resource id that private link links to
+// The resource id that private link links to.
 func (o SharedPrivateLinkResourceOutput) PrivateLinkResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SharedPrivateLinkResource) *string { return v.PrivateLinkResourceId }).(pulumi.StringPtrOutput)
 }
 
-// Request message
+// Request message.
 func (o SharedPrivateLinkResourceOutput) RequestMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SharedPrivateLinkResource) *string { return v.RequestMessage }).(pulumi.StringPtrOutput)
 }
 
-// Connection status of the service consumer with the service provider\r\nPossible state transitions\r\nPending -> Approved (Service provider approves the connection request)\r\nPending -> Rejected (Service provider rejects the connection request)\r\nPending -> Disconnected (Service provider deletes the connection)\r\nApproved -> Rejected (Service provider rejects the approved connection)\r\nApproved -> Disconnected (Service provider deletes the connection)\r\nRejected -> Pending (Service consumer re-initiates the connection request that was rejected)\r\nRejected -> Disconnected (Service provider deletes the connection)
+// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
 func (o SharedPrivateLinkResourceOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SharedPrivateLinkResource) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
@@ -11814,15 +732,15 @@ func (o SharedPrivateLinkResourceArrayOutput) Index(i pulumi.IntInput) SharedPri
 }
 
 type SharedPrivateLinkResourceResponse struct {
-	// group id of the private link
+	// The private link resource group id.
 	GroupId *string `pulumi:"groupId"`
-	// Unique name of the private link
+	// Unique name of the private link.
 	Name *string `pulumi:"name"`
-	// the resource id that private link links to
+	// The resource id that private link links to.
 	PrivateLinkResourceId *string `pulumi:"privateLinkResourceId"`
-	// Request message
+	// Request message.
 	RequestMessage *string `pulumi:"requestMessage"`
-	// Connection status of the service consumer with the service provider\r\nPossible state transitions\r\nPending -> Approved (Service provider approves the connection request)\r\nPending -> Rejected (Service provider rejects the connection request)\r\nPending -> Disconnected (Service provider deletes the connection)\r\nApproved -> Rejected (Service provider rejects the approved connection)\r\nApproved -> Disconnected (Service provider deletes the connection)\r\nRejected -> Pending (Service consumer re-initiates the connection request that was rejected)\r\nRejected -> Disconnected (Service provider deletes the connection)
+	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
 	Status *string `pulumi:"status"`
 }
 
@@ -11840,27 +758,27 @@ func (o SharedPrivateLinkResourceResponseOutput) ToSharedPrivateLinkResourceResp
 	return o
 }
 
-// group id of the private link
+// The private link resource group id.
 func (o SharedPrivateLinkResourceResponseOutput) GroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SharedPrivateLinkResourceResponse) *string { return v.GroupId }).(pulumi.StringPtrOutput)
 }
 
-// Unique name of the private link
+// Unique name of the private link.
 func (o SharedPrivateLinkResourceResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SharedPrivateLinkResourceResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// the resource id that private link links to
+// The resource id that private link links to.
 func (o SharedPrivateLinkResourceResponseOutput) PrivateLinkResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SharedPrivateLinkResourceResponse) *string { return v.PrivateLinkResourceId }).(pulumi.StringPtrOutput)
 }
 
-// Request message
+// Request message.
 func (o SharedPrivateLinkResourceResponseOutput) RequestMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SharedPrivateLinkResourceResponse) *string { return v.RequestMessage }).(pulumi.StringPtrOutput)
 }
 
-// Connection status of the service consumer with the service provider\r\nPossible state transitions\r\nPending -> Approved (Service provider approves the connection request)\r\nPending -> Rejected (Service provider rejects the connection request)\r\nPending -> Disconnected (Service provider deletes the connection)\r\nApproved -> Rejected (Service provider rejects the approved connection)\r\nApproved -> Disconnected (Service provider deletes the connection)\r\nRejected -> Pending (Service consumer re-initiates the connection request that was rejected)\r\nRejected -> Disconnected (Service provider deletes the connection)
+// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
 func (o SharedPrivateLinkResourceResponseOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SharedPrivateLinkResourceResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
@@ -12226,1172 +1144,6 @@ func (o SkuResponsePtrOutput) Tier() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Tier
-	}).(pulumi.StringPtrOutput)
-}
-
-// Sku of the resource
-type SkuResponseV1 struct {
-	// Name of the sku
-	Name *string `pulumi:"name"`
-	// Tier of the sku like Basic or Enterprise
-	Tier *string `pulumi:"tier"`
-}
-
-// Sku of the resource
-type SkuResponseV1Output struct{ *pulumi.OutputState }
-
-func (SkuResponseV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*SkuResponseV1)(nil)).Elem()
-}
-
-func (o SkuResponseV1Output) ToSkuResponseV1Output() SkuResponseV1Output {
-	return o
-}
-
-func (o SkuResponseV1Output) ToSkuResponseV1OutputWithContext(ctx context.Context) SkuResponseV1Output {
-	return o
-}
-
-// Name of the sku
-func (o SkuResponseV1Output) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SkuResponseV1) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// Tier of the sku like Basic or Enterprise
-func (o SkuResponseV1Output) Tier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SkuResponseV1) *string { return v.Tier }).(pulumi.StringPtrOutput)
-}
-
-type SkuResponseV1PtrOutput struct{ *pulumi.OutputState }
-
-func (SkuResponseV1PtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SkuResponseV1)(nil)).Elem()
-}
-
-func (o SkuResponseV1PtrOutput) ToSkuResponseV1PtrOutput() SkuResponseV1PtrOutput {
-	return o
-}
-
-func (o SkuResponseV1PtrOutput) ToSkuResponseV1PtrOutputWithContext(ctx context.Context) SkuResponseV1PtrOutput {
-	return o
-}
-
-func (o SkuResponseV1PtrOutput) Elem() SkuResponseV1Output {
-	return o.ApplyT(func(v *SkuResponseV1) SkuResponseV1 {
-		if v != nil {
-			return *v
-		}
-		var ret SkuResponseV1
-		return ret
-	}).(SkuResponseV1Output)
-}
-
-// Name of the sku
-func (o SkuResponseV1PtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SkuResponseV1) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// Tier of the sku like Basic or Enterprise
-func (o SkuResponseV1PtrOutput) Tier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SkuResponseV1) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Tier
-	}).(pulumi.StringPtrOutput)
-}
-
-// Sku of the resource
-type SkuResponseV2 struct {
-	// Name of the sku
-	Name *string `pulumi:"name"`
-	// Tier of the sku like Basic or Enterprise
-	Tier *string `pulumi:"tier"`
-}
-
-// Sku of the resource
-type SkuResponseV2Output struct{ *pulumi.OutputState }
-
-func (SkuResponseV2Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*SkuResponseV2)(nil)).Elem()
-}
-
-func (o SkuResponseV2Output) ToSkuResponseV2Output() SkuResponseV2Output {
-	return o
-}
-
-func (o SkuResponseV2Output) ToSkuResponseV2OutputWithContext(ctx context.Context) SkuResponseV2Output {
-	return o
-}
-
-// Name of the sku
-func (o SkuResponseV2Output) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SkuResponseV2) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// Tier of the sku like Basic or Enterprise
-func (o SkuResponseV2Output) Tier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SkuResponseV2) *string { return v.Tier }).(pulumi.StringPtrOutput)
-}
-
-type SkuResponseV2PtrOutput struct{ *pulumi.OutputState }
-
-func (SkuResponseV2PtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SkuResponseV2)(nil)).Elem()
-}
-
-func (o SkuResponseV2PtrOutput) ToSkuResponseV2PtrOutput() SkuResponseV2PtrOutput {
-	return o
-}
-
-func (o SkuResponseV2PtrOutput) ToSkuResponseV2PtrOutputWithContext(ctx context.Context) SkuResponseV2PtrOutput {
-	return o
-}
-
-func (o SkuResponseV2PtrOutput) Elem() SkuResponseV2Output {
-	return o.ApplyT(func(v *SkuResponseV2) SkuResponseV2 {
-		if v != nil {
-			return *v
-		}
-		var ret SkuResponseV2
-		return ret
-	}).(SkuResponseV2Output)
-}
-
-// Name of the sku
-func (o SkuResponseV2PtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SkuResponseV2) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// Tier of the sku like Basic or Enterprise
-func (o SkuResponseV2PtrOutput) Tier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SkuResponseV2) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Tier
-	}).(pulumi.StringPtrOutput)
-}
-
-// Spark job definition.
-type SparkJob struct {
-	// Archive files used in the job.
-	Archives []string `pulumi:"archives"`
-	// Arguments for the job.
-	Args *string `pulumi:"args"`
-	// [Required] arm-id of the code asset.
-	CodeId string `pulumi:"codeId"`
-	// ARM resource ID of the component resource.
-	ComponentId *string `pulumi:"componentId"`
-	// ARM resource ID of the compute resource.
-	ComputeId *string `pulumi:"computeId"`
-	// Spark configured properties.
-	Conf map[string]string `pulumi:"conf"`
-	// The asset description text.
-	Description *string `pulumi:"description"`
-	// Display name of job.
-	DisplayName *string `pulumi:"displayName"`
-	// [Required] The entry to execute on startup of the job.
-	Entry interface{} `pulumi:"entry"`
-	// The ARM resource ID of the Environment specification for the job.
-	EnvironmentId *string `pulumi:"environmentId"`
-	// Environment variables included in the job.
-	EnvironmentVariables map[string]string `pulumi:"environmentVariables"`
-	// The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
-	ExperimentName *string `pulumi:"experimentName"`
-	// Files used in the job.
-	Files []string `pulumi:"files"`
-	// Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
-	// Defaults to AmlToken if null.
-	Identity interface{} `pulumi:"identity"`
-	// Mapping of input data bindings used in the job.
-	Inputs map[string]interface{} `pulumi:"inputs"`
-	// Is the asset archived?
-	IsArchived *bool `pulumi:"isArchived"`
-	// Jar files used in the job.
-	Jars []string `pulumi:"jars"`
-	// Enum to determine the type of job.
-	// Expected value is 'Spark'.
-	JobType string `pulumi:"jobType"`
-	// Notification setting for the job
-	NotificationSetting *NotificationSetting `pulumi:"notificationSetting"`
-	// Mapping of output data bindings used in the job.
-	Outputs map[string]interface{} `pulumi:"outputs"`
-	// The asset property dictionary.
-	Properties map[string]string `pulumi:"properties"`
-	// Python files used in the job.
-	PyFiles []string `pulumi:"pyFiles"`
-	// Queue settings for the job
-	QueueSettings *QueueSettings `pulumi:"queueSettings"`
-	// Compute Resource configuration for the job.
-	Resources *SparkResourceConfiguration `pulumi:"resources"`
-	// List of JobEndpoints.
-	// For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
-	Services map[string]JobService `pulumi:"services"`
-	// Tag dictionary. Tags can be added, removed, and updated.
-	Tags map[string]string `pulumi:"tags"`
-}
-
-// Defaults sets the appropriate defaults for SparkJob
-func (val *SparkJob) Defaults() *SparkJob {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.ExperimentName == nil {
-		experimentName_ := "Default"
-		tmp.ExperimentName = &experimentName_
-	}
-	if tmp.IsArchived == nil {
-		isArchived_ := false
-		tmp.IsArchived = &isArchived_
-	}
-	tmp.QueueSettings = tmp.QueueSettings.Defaults()
-
-	tmp.Resources = tmp.Resources.Defaults()
-
-	return &tmp
-}
-
-// SparkJobInput is an input type that accepts SparkJobArgs and SparkJobOutput values.
-// You can construct a concrete instance of `SparkJobInput` via:
-//
-//	SparkJobArgs{...}
-type SparkJobInput interface {
-	pulumi.Input
-
-	ToSparkJobOutput() SparkJobOutput
-	ToSparkJobOutputWithContext(context.Context) SparkJobOutput
-}
-
-// Spark job definition.
-type SparkJobArgs struct {
-	// Archive files used in the job.
-	Archives pulumi.StringArrayInput `pulumi:"archives"`
-	// Arguments for the job.
-	Args pulumi.StringPtrInput `pulumi:"args"`
-	// [Required] arm-id of the code asset.
-	CodeId pulumi.StringInput `pulumi:"codeId"`
-	// ARM resource ID of the component resource.
-	ComponentId pulumi.StringPtrInput `pulumi:"componentId"`
-	// ARM resource ID of the compute resource.
-	ComputeId pulumi.StringPtrInput `pulumi:"computeId"`
-	// Spark configured properties.
-	Conf pulumi.StringMapInput `pulumi:"conf"`
-	// The asset description text.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Display name of job.
-	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	// [Required] The entry to execute on startup of the job.
-	Entry pulumi.Input `pulumi:"entry"`
-	// The ARM resource ID of the Environment specification for the job.
-	EnvironmentId pulumi.StringPtrInput `pulumi:"environmentId"`
-	// Environment variables included in the job.
-	EnvironmentVariables pulumi.StringMapInput `pulumi:"environmentVariables"`
-	// The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
-	ExperimentName pulumi.StringPtrInput `pulumi:"experimentName"`
-	// Files used in the job.
-	Files pulumi.StringArrayInput `pulumi:"files"`
-	// Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
-	// Defaults to AmlToken if null.
-	Identity pulumi.Input `pulumi:"identity"`
-	// Mapping of input data bindings used in the job.
-	Inputs pulumi.MapInput `pulumi:"inputs"`
-	// Is the asset archived?
-	IsArchived pulumi.BoolPtrInput `pulumi:"isArchived"`
-	// Jar files used in the job.
-	Jars pulumi.StringArrayInput `pulumi:"jars"`
-	// Enum to determine the type of job.
-	// Expected value is 'Spark'.
-	JobType pulumi.StringInput `pulumi:"jobType"`
-	// Notification setting for the job
-	NotificationSetting NotificationSettingPtrInput `pulumi:"notificationSetting"`
-	// Mapping of output data bindings used in the job.
-	Outputs pulumi.MapInput `pulumi:"outputs"`
-	// The asset property dictionary.
-	Properties pulumi.StringMapInput `pulumi:"properties"`
-	// Python files used in the job.
-	PyFiles pulumi.StringArrayInput `pulumi:"pyFiles"`
-	// Queue settings for the job
-	QueueSettings QueueSettingsPtrInput `pulumi:"queueSettings"`
-	// Compute Resource configuration for the job.
-	Resources SparkResourceConfigurationPtrInput `pulumi:"resources"`
-	// List of JobEndpoints.
-	// For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
-	Services JobServiceMapInput `pulumi:"services"`
-	// Tag dictionary. Tags can be added, removed, and updated.
-	Tags pulumi.StringMapInput `pulumi:"tags"`
-}
-
-// Defaults sets the appropriate defaults for SparkJobArgs
-func (val *SparkJobArgs) Defaults() *SparkJobArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.ExperimentName == nil {
-		tmp.ExperimentName = pulumi.StringPtr("Default")
-	}
-	if tmp.IsArchived == nil {
-		tmp.IsArchived = pulumi.BoolPtr(false)
-	}
-
-	return &tmp
-}
-func (SparkJobArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SparkJob)(nil)).Elem()
-}
-
-func (i SparkJobArgs) ToSparkJobOutput() SparkJobOutput {
-	return i.ToSparkJobOutputWithContext(context.Background())
-}
-
-func (i SparkJobArgs) ToSparkJobOutputWithContext(ctx context.Context) SparkJobOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SparkJobOutput)
-}
-
-// Spark job definition.
-type SparkJobOutput struct{ *pulumi.OutputState }
-
-func (SparkJobOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SparkJob)(nil)).Elem()
-}
-
-func (o SparkJobOutput) ToSparkJobOutput() SparkJobOutput {
-	return o
-}
-
-func (o SparkJobOutput) ToSparkJobOutputWithContext(ctx context.Context) SparkJobOutput {
-	return o
-}
-
-// Archive files used in the job.
-func (o SparkJobOutput) Archives() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SparkJob) []string { return v.Archives }).(pulumi.StringArrayOutput)
-}
-
-// Arguments for the job.
-func (o SparkJobOutput) Args() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SparkJob) *string { return v.Args }).(pulumi.StringPtrOutput)
-}
-
-// [Required] arm-id of the code asset.
-func (o SparkJobOutput) CodeId() pulumi.StringOutput {
-	return o.ApplyT(func(v SparkJob) string { return v.CodeId }).(pulumi.StringOutput)
-}
-
-// ARM resource ID of the component resource.
-func (o SparkJobOutput) ComponentId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SparkJob) *string { return v.ComponentId }).(pulumi.StringPtrOutput)
-}
-
-// ARM resource ID of the compute resource.
-func (o SparkJobOutput) ComputeId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SparkJob) *string { return v.ComputeId }).(pulumi.StringPtrOutput)
-}
-
-// Spark configured properties.
-func (o SparkJobOutput) Conf() pulumi.StringMapOutput {
-	return o.ApplyT(func(v SparkJob) map[string]string { return v.Conf }).(pulumi.StringMapOutput)
-}
-
-// The asset description text.
-func (o SparkJobOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SparkJob) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Display name of job.
-func (o SparkJobOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SparkJob) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
-}
-
-// [Required] The entry to execute on startup of the job.
-func (o SparkJobOutput) Entry() pulumi.AnyOutput {
-	return o.ApplyT(func(v SparkJob) interface{} { return v.Entry }).(pulumi.AnyOutput)
-}
-
-// The ARM resource ID of the Environment specification for the job.
-func (o SparkJobOutput) EnvironmentId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SparkJob) *string { return v.EnvironmentId }).(pulumi.StringPtrOutput)
-}
-
-// Environment variables included in the job.
-func (o SparkJobOutput) EnvironmentVariables() pulumi.StringMapOutput {
-	return o.ApplyT(func(v SparkJob) map[string]string { return v.EnvironmentVariables }).(pulumi.StringMapOutput)
-}
-
-// The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
-func (o SparkJobOutput) ExperimentName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SparkJob) *string { return v.ExperimentName }).(pulumi.StringPtrOutput)
-}
-
-// Files used in the job.
-func (o SparkJobOutput) Files() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SparkJob) []string { return v.Files }).(pulumi.StringArrayOutput)
-}
-
-// Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
-// Defaults to AmlToken if null.
-func (o SparkJobOutput) Identity() pulumi.AnyOutput {
-	return o.ApplyT(func(v SparkJob) interface{} { return v.Identity }).(pulumi.AnyOutput)
-}
-
-// Mapping of input data bindings used in the job.
-func (o SparkJobOutput) Inputs() pulumi.MapOutput {
-	return o.ApplyT(func(v SparkJob) map[string]interface{} { return v.Inputs }).(pulumi.MapOutput)
-}
-
-// Is the asset archived?
-func (o SparkJobOutput) IsArchived() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SparkJob) *bool { return v.IsArchived }).(pulumi.BoolPtrOutput)
-}
-
-// Jar files used in the job.
-func (o SparkJobOutput) Jars() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SparkJob) []string { return v.Jars }).(pulumi.StringArrayOutput)
-}
-
-// Enum to determine the type of job.
-// Expected value is 'Spark'.
-func (o SparkJobOutput) JobType() pulumi.StringOutput {
-	return o.ApplyT(func(v SparkJob) string { return v.JobType }).(pulumi.StringOutput)
-}
-
-// Notification setting for the job
-func (o SparkJobOutput) NotificationSetting() NotificationSettingPtrOutput {
-	return o.ApplyT(func(v SparkJob) *NotificationSetting { return v.NotificationSetting }).(NotificationSettingPtrOutput)
-}
-
-// Mapping of output data bindings used in the job.
-func (o SparkJobOutput) Outputs() pulumi.MapOutput {
-	return o.ApplyT(func(v SparkJob) map[string]interface{} { return v.Outputs }).(pulumi.MapOutput)
-}
-
-// The asset property dictionary.
-func (o SparkJobOutput) Properties() pulumi.StringMapOutput {
-	return o.ApplyT(func(v SparkJob) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
-}
-
-// Python files used in the job.
-func (o SparkJobOutput) PyFiles() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SparkJob) []string { return v.PyFiles }).(pulumi.StringArrayOutput)
-}
-
-// Queue settings for the job
-func (o SparkJobOutput) QueueSettings() QueueSettingsPtrOutput {
-	return o.ApplyT(func(v SparkJob) *QueueSettings { return v.QueueSettings }).(QueueSettingsPtrOutput)
-}
-
-// Compute Resource configuration for the job.
-func (o SparkJobOutput) Resources() SparkResourceConfigurationPtrOutput {
-	return o.ApplyT(func(v SparkJob) *SparkResourceConfiguration { return v.Resources }).(SparkResourceConfigurationPtrOutput)
-}
-
-// List of JobEndpoints.
-// For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
-func (o SparkJobOutput) Services() JobServiceMapOutput {
-	return o.ApplyT(func(v SparkJob) map[string]JobService { return v.Services }).(JobServiceMapOutput)
-}
-
-// Tag dictionary. Tags can be added, removed, and updated.
-func (o SparkJobOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v SparkJob) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
-}
-
-type SparkJobPythonEntry struct {
-	// [Required] Relative python file path for job entry point.
-	File string `pulumi:"file"`
-	// Expected value is 'SparkJobPythonEntry'.
-	SparkJobEntryType string `pulumi:"sparkJobEntryType"`
-}
-
-// SparkJobPythonEntryInput is an input type that accepts SparkJobPythonEntryArgs and SparkJobPythonEntryOutput values.
-// You can construct a concrete instance of `SparkJobPythonEntryInput` via:
-//
-//	SparkJobPythonEntryArgs{...}
-type SparkJobPythonEntryInput interface {
-	pulumi.Input
-
-	ToSparkJobPythonEntryOutput() SparkJobPythonEntryOutput
-	ToSparkJobPythonEntryOutputWithContext(context.Context) SparkJobPythonEntryOutput
-}
-
-type SparkJobPythonEntryArgs struct {
-	// [Required] Relative python file path for job entry point.
-	File pulumi.StringInput `pulumi:"file"`
-	// Expected value is 'SparkJobPythonEntry'.
-	SparkJobEntryType pulumi.StringInput `pulumi:"sparkJobEntryType"`
-}
-
-func (SparkJobPythonEntryArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SparkJobPythonEntry)(nil)).Elem()
-}
-
-func (i SparkJobPythonEntryArgs) ToSparkJobPythonEntryOutput() SparkJobPythonEntryOutput {
-	return i.ToSparkJobPythonEntryOutputWithContext(context.Background())
-}
-
-func (i SparkJobPythonEntryArgs) ToSparkJobPythonEntryOutputWithContext(ctx context.Context) SparkJobPythonEntryOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SparkJobPythonEntryOutput)
-}
-
-type SparkJobPythonEntryOutput struct{ *pulumi.OutputState }
-
-func (SparkJobPythonEntryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SparkJobPythonEntry)(nil)).Elem()
-}
-
-func (o SparkJobPythonEntryOutput) ToSparkJobPythonEntryOutput() SparkJobPythonEntryOutput {
-	return o
-}
-
-func (o SparkJobPythonEntryOutput) ToSparkJobPythonEntryOutputWithContext(ctx context.Context) SparkJobPythonEntryOutput {
-	return o
-}
-
-// [Required] Relative python file path for job entry point.
-func (o SparkJobPythonEntryOutput) File() pulumi.StringOutput {
-	return o.ApplyT(func(v SparkJobPythonEntry) string { return v.File }).(pulumi.StringOutput)
-}
-
-// Expected value is 'SparkJobPythonEntry'.
-func (o SparkJobPythonEntryOutput) SparkJobEntryType() pulumi.StringOutput {
-	return o.ApplyT(func(v SparkJobPythonEntry) string { return v.SparkJobEntryType }).(pulumi.StringOutput)
-}
-
-type SparkJobPythonEntryResponse struct {
-	// [Required] Relative python file path for job entry point.
-	File string `pulumi:"file"`
-	// Expected value is 'SparkJobPythonEntry'.
-	SparkJobEntryType string `pulumi:"sparkJobEntryType"`
-}
-
-type SparkJobPythonEntryResponseOutput struct{ *pulumi.OutputState }
-
-func (SparkJobPythonEntryResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SparkJobPythonEntryResponse)(nil)).Elem()
-}
-
-func (o SparkJobPythonEntryResponseOutput) ToSparkJobPythonEntryResponseOutput() SparkJobPythonEntryResponseOutput {
-	return o
-}
-
-func (o SparkJobPythonEntryResponseOutput) ToSparkJobPythonEntryResponseOutputWithContext(ctx context.Context) SparkJobPythonEntryResponseOutput {
-	return o
-}
-
-// [Required] Relative python file path for job entry point.
-func (o SparkJobPythonEntryResponseOutput) File() pulumi.StringOutput {
-	return o.ApplyT(func(v SparkJobPythonEntryResponse) string { return v.File }).(pulumi.StringOutput)
-}
-
-// Expected value is 'SparkJobPythonEntry'.
-func (o SparkJobPythonEntryResponseOutput) SparkJobEntryType() pulumi.StringOutput {
-	return o.ApplyT(func(v SparkJobPythonEntryResponse) string { return v.SparkJobEntryType }).(pulumi.StringOutput)
-}
-
-// Spark job definition.
-type SparkJobResponse struct {
-	// Archive files used in the job.
-	Archives []string `pulumi:"archives"`
-	// Arguments for the job.
-	Args *string `pulumi:"args"`
-	// [Required] arm-id of the code asset.
-	CodeId string `pulumi:"codeId"`
-	// ARM resource ID of the component resource.
-	ComponentId *string `pulumi:"componentId"`
-	// ARM resource ID of the compute resource.
-	ComputeId *string `pulumi:"computeId"`
-	// Spark configured properties.
-	Conf map[string]string `pulumi:"conf"`
-	// The asset description text.
-	Description *string `pulumi:"description"`
-	// Display name of job.
-	DisplayName *string `pulumi:"displayName"`
-	// [Required] The entry to execute on startup of the job.
-	Entry interface{} `pulumi:"entry"`
-	// The ARM resource ID of the Environment specification for the job.
-	EnvironmentId *string `pulumi:"environmentId"`
-	// Environment variables included in the job.
-	EnvironmentVariables map[string]string `pulumi:"environmentVariables"`
-	// The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
-	ExperimentName *string `pulumi:"experimentName"`
-	// Files used in the job.
-	Files []string `pulumi:"files"`
-	// Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
-	// Defaults to AmlToken if null.
-	Identity interface{} `pulumi:"identity"`
-	// Mapping of input data bindings used in the job.
-	Inputs map[string]interface{} `pulumi:"inputs"`
-	// Is the asset archived?
-	IsArchived *bool `pulumi:"isArchived"`
-	// Jar files used in the job.
-	Jars []string `pulumi:"jars"`
-	// Enum to determine the type of job.
-	// Expected value is 'Spark'.
-	JobType string `pulumi:"jobType"`
-	// Notification setting for the job
-	NotificationSetting *NotificationSettingResponse `pulumi:"notificationSetting"`
-	// Mapping of output data bindings used in the job.
-	Outputs map[string]interface{} `pulumi:"outputs"`
-	// The asset property dictionary.
-	Properties map[string]string `pulumi:"properties"`
-	// Python files used in the job.
-	PyFiles []string `pulumi:"pyFiles"`
-	// Queue settings for the job
-	QueueSettings *QueueSettingsResponse `pulumi:"queueSettings"`
-	// Compute Resource configuration for the job.
-	Resources *SparkResourceConfigurationResponse `pulumi:"resources"`
-	// List of JobEndpoints.
-	// For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
-	Services map[string]JobServiceResponse `pulumi:"services"`
-	// Status of the job.
-	Status string `pulumi:"status"`
-	// Tag dictionary. Tags can be added, removed, and updated.
-	Tags map[string]string `pulumi:"tags"`
-}
-
-// Defaults sets the appropriate defaults for SparkJobResponse
-func (val *SparkJobResponse) Defaults() *SparkJobResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.ExperimentName == nil {
-		experimentName_ := "Default"
-		tmp.ExperimentName = &experimentName_
-	}
-	if tmp.IsArchived == nil {
-		isArchived_ := false
-		tmp.IsArchived = &isArchived_
-	}
-	tmp.QueueSettings = tmp.QueueSettings.Defaults()
-
-	tmp.Resources = tmp.Resources.Defaults()
-
-	return &tmp
-}
-
-// Spark job definition.
-type SparkJobResponseOutput struct{ *pulumi.OutputState }
-
-func (SparkJobResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SparkJobResponse)(nil)).Elem()
-}
-
-func (o SparkJobResponseOutput) ToSparkJobResponseOutput() SparkJobResponseOutput {
-	return o
-}
-
-func (o SparkJobResponseOutput) ToSparkJobResponseOutputWithContext(ctx context.Context) SparkJobResponseOutput {
-	return o
-}
-
-// Archive files used in the job.
-func (o SparkJobResponseOutput) Archives() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SparkJobResponse) []string { return v.Archives }).(pulumi.StringArrayOutput)
-}
-
-// Arguments for the job.
-func (o SparkJobResponseOutput) Args() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SparkJobResponse) *string { return v.Args }).(pulumi.StringPtrOutput)
-}
-
-// [Required] arm-id of the code asset.
-func (o SparkJobResponseOutput) CodeId() pulumi.StringOutput {
-	return o.ApplyT(func(v SparkJobResponse) string { return v.CodeId }).(pulumi.StringOutput)
-}
-
-// ARM resource ID of the component resource.
-func (o SparkJobResponseOutput) ComponentId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SparkJobResponse) *string { return v.ComponentId }).(pulumi.StringPtrOutput)
-}
-
-// ARM resource ID of the compute resource.
-func (o SparkJobResponseOutput) ComputeId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SparkJobResponse) *string { return v.ComputeId }).(pulumi.StringPtrOutput)
-}
-
-// Spark configured properties.
-func (o SparkJobResponseOutput) Conf() pulumi.StringMapOutput {
-	return o.ApplyT(func(v SparkJobResponse) map[string]string { return v.Conf }).(pulumi.StringMapOutput)
-}
-
-// The asset description text.
-func (o SparkJobResponseOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SparkJobResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Display name of job.
-func (o SparkJobResponseOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SparkJobResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
-}
-
-// [Required] The entry to execute on startup of the job.
-func (o SparkJobResponseOutput) Entry() pulumi.AnyOutput {
-	return o.ApplyT(func(v SparkJobResponse) interface{} { return v.Entry }).(pulumi.AnyOutput)
-}
-
-// The ARM resource ID of the Environment specification for the job.
-func (o SparkJobResponseOutput) EnvironmentId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SparkJobResponse) *string { return v.EnvironmentId }).(pulumi.StringPtrOutput)
-}
-
-// Environment variables included in the job.
-func (o SparkJobResponseOutput) EnvironmentVariables() pulumi.StringMapOutput {
-	return o.ApplyT(func(v SparkJobResponse) map[string]string { return v.EnvironmentVariables }).(pulumi.StringMapOutput)
-}
-
-// The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
-func (o SparkJobResponseOutput) ExperimentName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SparkJobResponse) *string { return v.ExperimentName }).(pulumi.StringPtrOutput)
-}
-
-// Files used in the job.
-func (o SparkJobResponseOutput) Files() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SparkJobResponse) []string { return v.Files }).(pulumi.StringArrayOutput)
-}
-
-// Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
-// Defaults to AmlToken if null.
-func (o SparkJobResponseOutput) Identity() pulumi.AnyOutput {
-	return o.ApplyT(func(v SparkJobResponse) interface{} { return v.Identity }).(pulumi.AnyOutput)
-}
-
-// Mapping of input data bindings used in the job.
-func (o SparkJobResponseOutput) Inputs() pulumi.MapOutput {
-	return o.ApplyT(func(v SparkJobResponse) map[string]interface{} { return v.Inputs }).(pulumi.MapOutput)
-}
-
-// Is the asset archived?
-func (o SparkJobResponseOutput) IsArchived() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SparkJobResponse) *bool { return v.IsArchived }).(pulumi.BoolPtrOutput)
-}
-
-// Jar files used in the job.
-func (o SparkJobResponseOutput) Jars() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SparkJobResponse) []string { return v.Jars }).(pulumi.StringArrayOutput)
-}
-
-// Enum to determine the type of job.
-// Expected value is 'Spark'.
-func (o SparkJobResponseOutput) JobType() pulumi.StringOutput {
-	return o.ApplyT(func(v SparkJobResponse) string { return v.JobType }).(pulumi.StringOutput)
-}
-
-// Notification setting for the job
-func (o SparkJobResponseOutput) NotificationSetting() NotificationSettingResponsePtrOutput {
-	return o.ApplyT(func(v SparkJobResponse) *NotificationSettingResponse { return v.NotificationSetting }).(NotificationSettingResponsePtrOutput)
-}
-
-// Mapping of output data bindings used in the job.
-func (o SparkJobResponseOutput) Outputs() pulumi.MapOutput {
-	return o.ApplyT(func(v SparkJobResponse) map[string]interface{} { return v.Outputs }).(pulumi.MapOutput)
-}
-
-// The asset property dictionary.
-func (o SparkJobResponseOutput) Properties() pulumi.StringMapOutput {
-	return o.ApplyT(func(v SparkJobResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
-}
-
-// Python files used in the job.
-func (o SparkJobResponseOutput) PyFiles() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SparkJobResponse) []string { return v.PyFiles }).(pulumi.StringArrayOutput)
-}
-
-// Queue settings for the job
-func (o SparkJobResponseOutput) QueueSettings() QueueSettingsResponsePtrOutput {
-	return o.ApplyT(func(v SparkJobResponse) *QueueSettingsResponse { return v.QueueSettings }).(QueueSettingsResponsePtrOutput)
-}
-
-// Compute Resource configuration for the job.
-func (o SparkJobResponseOutput) Resources() SparkResourceConfigurationResponsePtrOutput {
-	return o.ApplyT(func(v SparkJobResponse) *SparkResourceConfigurationResponse { return v.Resources }).(SparkResourceConfigurationResponsePtrOutput)
-}
-
-// List of JobEndpoints.
-// For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
-func (o SparkJobResponseOutput) Services() JobServiceResponseMapOutput {
-	return o.ApplyT(func(v SparkJobResponse) map[string]JobServiceResponse { return v.Services }).(JobServiceResponseMapOutput)
-}
-
-// Status of the job.
-func (o SparkJobResponseOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v SparkJobResponse) string { return v.Status }).(pulumi.StringOutput)
-}
-
-// Tag dictionary. Tags can be added, removed, and updated.
-func (o SparkJobResponseOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v SparkJobResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
-}
-
-type SparkJobScalaEntry struct {
-	// [Required] Scala class name used as entry point.
-	ClassName string `pulumi:"className"`
-	// Expected value is 'SparkJobScalaEntry'.
-	SparkJobEntryType string `pulumi:"sparkJobEntryType"`
-}
-
-// SparkJobScalaEntryInput is an input type that accepts SparkJobScalaEntryArgs and SparkJobScalaEntryOutput values.
-// You can construct a concrete instance of `SparkJobScalaEntryInput` via:
-//
-//	SparkJobScalaEntryArgs{...}
-type SparkJobScalaEntryInput interface {
-	pulumi.Input
-
-	ToSparkJobScalaEntryOutput() SparkJobScalaEntryOutput
-	ToSparkJobScalaEntryOutputWithContext(context.Context) SparkJobScalaEntryOutput
-}
-
-type SparkJobScalaEntryArgs struct {
-	// [Required] Scala class name used as entry point.
-	ClassName pulumi.StringInput `pulumi:"className"`
-	// Expected value is 'SparkJobScalaEntry'.
-	SparkJobEntryType pulumi.StringInput `pulumi:"sparkJobEntryType"`
-}
-
-func (SparkJobScalaEntryArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SparkJobScalaEntry)(nil)).Elem()
-}
-
-func (i SparkJobScalaEntryArgs) ToSparkJobScalaEntryOutput() SparkJobScalaEntryOutput {
-	return i.ToSparkJobScalaEntryOutputWithContext(context.Background())
-}
-
-func (i SparkJobScalaEntryArgs) ToSparkJobScalaEntryOutputWithContext(ctx context.Context) SparkJobScalaEntryOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SparkJobScalaEntryOutput)
-}
-
-type SparkJobScalaEntryOutput struct{ *pulumi.OutputState }
-
-func (SparkJobScalaEntryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SparkJobScalaEntry)(nil)).Elem()
-}
-
-func (o SparkJobScalaEntryOutput) ToSparkJobScalaEntryOutput() SparkJobScalaEntryOutput {
-	return o
-}
-
-func (o SparkJobScalaEntryOutput) ToSparkJobScalaEntryOutputWithContext(ctx context.Context) SparkJobScalaEntryOutput {
-	return o
-}
-
-// [Required] Scala class name used as entry point.
-func (o SparkJobScalaEntryOutput) ClassName() pulumi.StringOutput {
-	return o.ApplyT(func(v SparkJobScalaEntry) string { return v.ClassName }).(pulumi.StringOutput)
-}
-
-// Expected value is 'SparkJobScalaEntry'.
-func (o SparkJobScalaEntryOutput) SparkJobEntryType() pulumi.StringOutput {
-	return o.ApplyT(func(v SparkJobScalaEntry) string { return v.SparkJobEntryType }).(pulumi.StringOutput)
-}
-
-type SparkJobScalaEntryResponse struct {
-	// [Required] Scala class name used as entry point.
-	ClassName string `pulumi:"className"`
-	// Expected value is 'SparkJobScalaEntry'.
-	SparkJobEntryType string `pulumi:"sparkJobEntryType"`
-}
-
-type SparkJobScalaEntryResponseOutput struct{ *pulumi.OutputState }
-
-func (SparkJobScalaEntryResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SparkJobScalaEntryResponse)(nil)).Elem()
-}
-
-func (o SparkJobScalaEntryResponseOutput) ToSparkJobScalaEntryResponseOutput() SparkJobScalaEntryResponseOutput {
-	return o
-}
-
-func (o SparkJobScalaEntryResponseOutput) ToSparkJobScalaEntryResponseOutputWithContext(ctx context.Context) SparkJobScalaEntryResponseOutput {
-	return o
-}
-
-// [Required] Scala class name used as entry point.
-func (o SparkJobScalaEntryResponseOutput) ClassName() pulumi.StringOutput {
-	return o.ApplyT(func(v SparkJobScalaEntryResponse) string { return v.ClassName }).(pulumi.StringOutput)
-}
-
-// Expected value is 'SparkJobScalaEntry'.
-func (o SparkJobScalaEntryResponseOutput) SparkJobEntryType() pulumi.StringOutput {
-	return o.ApplyT(func(v SparkJobScalaEntryResponse) string { return v.SparkJobEntryType }).(pulumi.StringOutput)
-}
-
-type SparkResourceConfiguration struct {
-	// Optional type of VM used as supported by the compute target.
-	InstanceType *string `pulumi:"instanceType"`
-	// Version of spark runtime used for the job.
-	RuntimeVersion *string `pulumi:"runtimeVersion"`
-}
-
-// Defaults sets the appropriate defaults for SparkResourceConfiguration
-func (val *SparkResourceConfiguration) Defaults() *SparkResourceConfiguration {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.RuntimeVersion == nil {
-		runtimeVersion_ := "3.1"
-		tmp.RuntimeVersion = &runtimeVersion_
-	}
-	return &tmp
-}
-
-// SparkResourceConfigurationInput is an input type that accepts SparkResourceConfigurationArgs and SparkResourceConfigurationOutput values.
-// You can construct a concrete instance of `SparkResourceConfigurationInput` via:
-//
-//	SparkResourceConfigurationArgs{...}
-type SparkResourceConfigurationInput interface {
-	pulumi.Input
-
-	ToSparkResourceConfigurationOutput() SparkResourceConfigurationOutput
-	ToSparkResourceConfigurationOutputWithContext(context.Context) SparkResourceConfigurationOutput
-}
-
-type SparkResourceConfigurationArgs struct {
-	// Optional type of VM used as supported by the compute target.
-	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
-	// Version of spark runtime used for the job.
-	RuntimeVersion pulumi.StringPtrInput `pulumi:"runtimeVersion"`
-}
-
-// Defaults sets the appropriate defaults for SparkResourceConfigurationArgs
-func (val *SparkResourceConfigurationArgs) Defaults() *SparkResourceConfigurationArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.RuntimeVersion == nil {
-		tmp.RuntimeVersion = pulumi.StringPtr("3.1")
-	}
-	return &tmp
-}
-func (SparkResourceConfigurationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SparkResourceConfiguration)(nil)).Elem()
-}
-
-func (i SparkResourceConfigurationArgs) ToSparkResourceConfigurationOutput() SparkResourceConfigurationOutput {
-	return i.ToSparkResourceConfigurationOutputWithContext(context.Background())
-}
-
-func (i SparkResourceConfigurationArgs) ToSparkResourceConfigurationOutputWithContext(ctx context.Context) SparkResourceConfigurationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SparkResourceConfigurationOutput)
-}
-
-func (i SparkResourceConfigurationArgs) ToSparkResourceConfigurationPtrOutput() SparkResourceConfigurationPtrOutput {
-	return i.ToSparkResourceConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i SparkResourceConfigurationArgs) ToSparkResourceConfigurationPtrOutputWithContext(ctx context.Context) SparkResourceConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SparkResourceConfigurationOutput).ToSparkResourceConfigurationPtrOutputWithContext(ctx)
-}
-
-// SparkResourceConfigurationPtrInput is an input type that accepts SparkResourceConfigurationArgs, SparkResourceConfigurationPtr and SparkResourceConfigurationPtrOutput values.
-// You can construct a concrete instance of `SparkResourceConfigurationPtrInput` via:
-//
-//	        SparkResourceConfigurationArgs{...}
-//
-//	or:
-//
-//	        nil
-type SparkResourceConfigurationPtrInput interface {
-	pulumi.Input
-
-	ToSparkResourceConfigurationPtrOutput() SparkResourceConfigurationPtrOutput
-	ToSparkResourceConfigurationPtrOutputWithContext(context.Context) SparkResourceConfigurationPtrOutput
-}
-
-type sparkResourceConfigurationPtrType SparkResourceConfigurationArgs
-
-func SparkResourceConfigurationPtr(v *SparkResourceConfigurationArgs) SparkResourceConfigurationPtrInput {
-	return (*sparkResourceConfigurationPtrType)(v)
-}
-
-func (*sparkResourceConfigurationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SparkResourceConfiguration)(nil)).Elem()
-}
-
-func (i *sparkResourceConfigurationPtrType) ToSparkResourceConfigurationPtrOutput() SparkResourceConfigurationPtrOutput {
-	return i.ToSparkResourceConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i *sparkResourceConfigurationPtrType) ToSparkResourceConfigurationPtrOutputWithContext(ctx context.Context) SparkResourceConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SparkResourceConfigurationPtrOutput)
-}
-
-type SparkResourceConfigurationOutput struct{ *pulumi.OutputState }
-
-func (SparkResourceConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SparkResourceConfiguration)(nil)).Elem()
-}
-
-func (o SparkResourceConfigurationOutput) ToSparkResourceConfigurationOutput() SparkResourceConfigurationOutput {
-	return o
-}
-
-func (o SparkResourceConfigurationOutput) ToSparkResourceConfigurationOutputWithContext(ctx context.Context) SparkResourceConfigurationOutput {
-	return o
-}
-
-func (o SparkResourceConfigurationOutput) ToSparkResourceConfigurationPtrOutput() SparkResourceConfigurationPtrOutput {
-	return o.ToSparkResourceConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (o SparkResourceConfigurationOutput) ToSparkResourceConfigurationPtrOutputWithContext(ctx context.Context) SparkResourceConfigurationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SparkResourceConfiguration) *SparkResourceConfiguration {
-		return &v
-	}).(SparkResourceConfigurationPtrOutput)
-}
-
-// Optional type of VM used as supported by the compute target.
-func (o SparkResourceConfigurationOutput) InstanceType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SparkResourceConfiguration) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
-}
-
-// Version of spark runtime used for the job.
-func (o SparkResourceConfigurationOutput) RuntimeVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SparkResourceConfiguration) *string { return v.RuntimeVersion }).(pulumi.StringPtrOutput)
-}
-
-type SparkResourceConfigurationPtrOutput struct{ *pulumi.OutputState }
-
-func (SparkResourceConfigurationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SparkResourceConfiguration)(nil)).Elem()
-}
-
-func (o SparkResourceConfigurationPtrOutput) ToSparkResourceConfigurationPtrOutput() SparkResourceConfigurationPtrOutput {
-	return o
-}
-
-func (o SparkResourceConfigurationPtrOutput) ToSparkResourceConfigurationPtrOutputWithContext(ctx context.Context) SparkResourceConfigurationPtrOutput {
-	return o
-}
-
-func (o SparkResourceConfigurationPtrOutput) Elem() SparkResourceConfigurationOutput {
-	return o.ApplyT(func(v *SparkResourceConfiguration) SparkResourceConfiguration {
-		if v != nil {
-			return *v
-		}
-		var ret SparkResourceConfiguration
-		return ret
-	}).(SparkResourceConfigurationOutput)
-}
-
-// Optional type of VM used as supported by the compute target.
-func (o SparkResourceConfigurationPtrOutput) InstanceType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SparkResourceConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.InstanceType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Version of spark runtime used for the job.
-func (o SparkResourceConfigurationPtrOutput) RuntimeVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SparkResourceConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RuntimeVersion
-	}).(pulumi.StringPtrOutput)
-}
-
-type SparkResourceConfigurationResponse struct {
-	// Optional type of VM used as supported by the compute target.
-	InstanceType *string `pulumi:"instanceType"`
-	// Version of spark runtime used for the job.
-	RuntimeVersion *string `pulumi:"runtimeVersion"`
-}
-
-// Defaults sets the appropriate defaults for SparkResourceConfigurationResponse
-func (val *SparkResourceConfigurationResponse) Defaults() *SparkResourceConfigurationResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.RuntimeVersion == nil {
-		runtimeVersion_ := "3.1"
-		tmp.RuntimeVersion = &runtimeVersion_
-	}
-	return &tmp
-}
-
-type SparkResourceConfigurationResponseOutput struct{ *pulumi.OutputState }
-
-func (SparkResourceConfigurationResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SparkResourceConfigurationResponse)(nil)).Elem()
-}
-
-func (o SparkResourceConfigurationResponseOutput) ToSparkResourceConfigurationResponseOutput() SparkResourceConfigurationResponseOutput {
-	return o
-}
-
-func (o SparkResourceConfigurationResponseOutput) ToSparkResourceConfigurationResponseOutputWithContext(ctx context.Context) SparkResourceConfigurationResponseOutput {
-	return o
-}
-
-// Optional type of VM used as supported by the compute target.
-func (o SparkResourceConfigurationResponseOutput) InstanceType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SparkResourceConfigurationResponse) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
-}
-
-// Version of spark runtime used for the job.
-func (o SparkResourceConfigurationResponseOutput) RuntimeVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SparkResourceConfigurationResponse) *string { return v.RuntimeVersion }).(pulumi.StringPtrOutput)
-}
-
-type SparkResourceConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SparkResourceConfigurationResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SparkResourceConfigurationResponse)(nil)).Elem()
-}
-
-func (o SparkResourceConfigurationResponsePtrOutput) ToSparkResourceConfigurationResponsePtrOutput() SparkResourceConfigurationResponsePtrOutput {
-	return o
-}
-
-func (o SparkResourceConfigurationResponsePtrOutput) ToSparkResourceConfigurationResponsePtrOutputWithContext(ctx context.Context) SparkResourceConfigurationResponsePtrOutput {
-	return o
-}
-
-func (o SparkResourceConfigurationResponsePtrOutput) Elem() SparkResourceConfigurationResponseOutput {
-	return o.ApplyT(func(v *SparkResourceConfigurationResponse) SparkResourceConfigurationResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SparkResourceConfigurationResponse
-		return ret
-	}).(SparkResourceConfigurationResponseOutput)
-}
-
-// Optional type of VM used as supported by the compute target.
-func (o SparkResourceConfigurationResponsePtrOutput) InstanceType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SparkResourceConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.InstanceType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Version of spark runtime used for the job.
-func (o SparkResourceConfigurationResponsePtrOutput) RuntimeVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SparkResourceConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RuntimeVersion
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -13946,7 +1698,7 @@ type StackEnsembleSettings struct {
 	StackMetaLearnerKWargs interface{} `pulumi:"stackMetaLearnerKWargs"`
 	// Specifies the proportion of the training set (when choosing train and validation type of training) to be reserved for training the meta-learner. Default value is 0.2.
 	StackMetaLearnerTrainPercentage *float64 `pulumi:"stackMetaLearnerTrainPercentage"`
-	// The meta-learner is a model trained on the output of the individual heterogeneous models.\r\nDefault meta-learners are LogisticRegression for classification tasks (or LogisticRegressionCV if cross-validation is enabled) and ElasticNet for regression/forecasting tasks (or ElasticNetCV if cross-validation is enabled).\r\nThis parameter can be one of the following strings: LogisticRegression, LogisticRegressionCV, LightGBMClassifier, ElasticNet, ElasticNetCV, LightGBMRegressor, or LinearRegression
+	// The meta-learner is a model trained on the output of the individual heterogeneous models.
 	StackMetaLearnerType *string `pulumi:"stackMetaLearnerType"`
 }
 
@@ -13984,7 +1736,7 @@ type StackEnsembleSettingsArgs struct {
 	StackMetaLearnerKWargs pulumi.Input `pulumi:"stackMetaLearnerKWargs"`
 	// Specifies the proportion of the training set (when choosing train and validation type of training) to be reserved for training the meta-learner. Default value is 0.2.
 	StackMetaLearnerTrainPercentage pulumi.Float64PtrInput `pulumi:"stackMetaLearnerTrainPercentage"`
-	// The meta-learner is a model trained on the output of the individual heterogeneous models.\r\nDefault meta-learners are LogisticRegression for classification tasks (or LogisticRegressionCV if cross-validation is enabled) and ElasticNet for regression/forecasting tasks (or ElasticNetCV if cross-validation is enabled).\r\nThis parameter can be one of the following strings: LogisticRegression, LogisticRegressionCV, LightGBMClassifier, ElasticNet, ElasticNetCV, LightGBMRegressor, or LinearRegression
+	// The meta-learner is a model trained on the output of the individual heterogeneous models.
 	StackMetaLearnerType pulumi.StringPtrInput `pulumi:"stackMetaLearnerType"`
 }
 
@@ -14090,7 +1842,7 @@ func (o StackEnsembleSettingsOutput) StackMetaLearnerTrainPercentage() pulumi.Fl
 	return o.ApplyT(func(v StackEnsembleSettings) *float64 { return v.StackMetaLearnerTrainPercentage }).(pulumi.Float64PtrOutput)
 }
 
-// The meta-learner is a model trained on the output of the individual heterogeneous models.\r\nDefault meta-learners are LogisticRegression for classification tasks (or LogisticRegressionCV if cross-validation is enabled) and ElasticNet for regression/forecasting tasks (or ElasticNetCV if cross-validation is enabled).\r\nThis parameter can be one of the following strings: LogisticRegression, LogisticRegressionCV, LightGBMClassifier, ElasticNet, ElasticNetCV, LightGBMRegressor, or LinearRegression
+// The meta-learner is a model trained on the output of the individual heterogeneous models.
 func (o StackEnsembleSettingsOutput) StackMetaLearnerType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StackEnsembleSettings) *string { return v.StackMetaLearnerType }).(pulumi.StringPtrOutput)
 }
@@ -14139,7 +1891,7 @@ func (o StackEnsembleSettingsPtrOutput) StackMetaLearnerTrainPercentage() pulumi
 	}).(pulumi.Float64PtrOutput)
 }
 
-// The meta-learner is a model trained on the output of the individual heterogeneous models.\r\nDefault meta-learners are LogisticRegression for classification tasks (or LogisticRegressionCV if cross-validation is enabled) and ElasticNet for regression/forecasting tasks (or ElasticNetCV if cross-validation is enabled).\r\nThis parameter can be one of the following strings: LogisticRegression, LogisticRegressionCV, LightGBMClassifier, ElasticNet, ElasticNetCV, LightGBMRegressor, or LinearRegression
+// The meta-learner is a model trained on the output of the individual heterogeneous models.
 func (o StackEnsembleSettingsPtrOutput) StackMetaLearnerType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StackEnsembleSettings) *string {
 		if v == nil {
@@ -14155,7 +1907,7 @@ type StackEnsembleSettingsResponse struct {
 	StackMetaLearnerKWargs interface{} `pulumi:"stackMetaLearnerKWargs"`
 	// Specifies the proportion of the training set (when choosing train and validation type of training) to be reserved for training the meta-learner. Default value is 0.2.
 	StackMetaLearnerTrainPercentage *float64 `pulumi:"stackMetaLearnerTrainPercentage"`
-	// The meta-learner is a model trained on the output of the individual heterogeneous models.\r\nDefault meta-learners are LogisticRegression for classification tasks (or LogisticRegressionCV if cross-validation is enabled) and ElasticNet for regression/forecasting tasks (or ElasticNetCV if cross-validation is enabled).\r\nThis parameter can be one of the following strings: LogisticRegression, LogisticRegressionCV, LightGBMClassifier, ElasticNet, ElasticNetCV, LightGBMRegressor, or LinearRegression
+	// The meta-learner is a model trained on the output of the individual heterogeneous models.
 	StackMetaLearnerType *string `pulumi:"stackMetaLearnerType"`
 }
 
@@ -14201,7 +1953,7 @@ func (o StackEnsembleSettingsResponseOutput) StackMetaLearnerTrainPercentage() p
 	return o.ApplyT(func(v StackEnsembleSettingsResponse) *float64 { return v.StackMetaLearnerTrainPercentage }).(pulumi.Float64PtrOutput)
 }
 
-// The meta-learner is a model trained on the output of the individual heterogeneous models.\r\nDefault meta-learners are LogisticRegression for classification tasks (or LogisticRegressionCV if cross-validation is enabled) and ElasticNet for regression/forecasting tasks (or ElasticNetCV if cross-validation is enabled).\r\nThis parameter can be one of the following strings: LogisticRegression, LogisticRegressionCV, LightGBMClassifier, ElasticNet, ElasticNetCV, LightGBMRegressor, or LinearRegression
+// The meta-learner is a model trained on the output of the individual heterogeneous models.
 func (o StackEnsembleSettingsResponseOutput) StackMetaLearnerType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StackEnsembleSettingsResponse) *string { return v.StackMetaLearnerType }).(pulumi.StringPtrOutput)
 }
@@ -14250,7 +2002,7 @@ func (o StackEnsembleSettingsResponsePtrOutput) StackMetaLearnerTrainPercentage(
 	}).(pulumi.Float64PtrOutput)
 }
 
-// The meta-learner is a model trained on the output of the individual heterogeneous models.\r\nDefault meta-learners are LogisticRegression for classification tasks (or LogisticRegressionCV if cross-validation is enabled) and ElasticNet for regression/forecasting tasks (or ElasticNetCV if cross-validation is enabled).\r\nThis parameter can be one of the following strings: LogisticRegression, LogisticRegressionCV, LightGBMClassifier, ElasticNet, ElasticNetCV, LightGBMRegressor, or LinearRegression
+// The meta-learner is a model trained on the output of the individual heterogeneous models.
 func (o StackEnsembleSettingsResponsePtrOutput) StackMetaLearnerType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StackEnsembleSettingsResponse) *string {
 		if v == nil {
@@ -14258,204 +2010,6 @@ func (o StackEnsembleSettingsResponsePtrOutput) StackMetaLearnerType() pulumi.St
 		}
 		return v.StackMetaLearnerType
 	}).(pulumi.StringPtrOutput)
-}
-
-// Static input data definition.
-type StaticInputData struct {
-	// Mapping of column names to special uses.
-	Columns map[string]string `pulumi:"columns"`
-	// The context metadata of the data source.
-	DataContext *string `pulumi:"dataContext"`
-	// Monitoring input data type enum.
-	// Expected value is 'Static'.
-	InputDataType string `pulumi:"inputDataType"`
-	// [Required] Specifies the type of job.
-	JobInputType string `pulumi:"jobInputType"`
-	// Reference to the component asset used to preprocess the data.
-	PreprocessingComponentId *string `pulumi:"preprocessingComponentId"`
-	// [Required] Input Asset URI.
-	Uri string `pulumi:"uri"`
-	// [Required] The end date of the data window.
-	WindowEnd string `pulumi:"windowEnd"`
-	// [Required] The start date of the data window.
-	WindowStart string `pulumi:"windowStart"`
-}
-
-// StaticInputDataInput is an input type that accepts StaticInputDataArgs and StaticInputDataOutput values.
-// You can construct a concrete instance of `StaticInputDataInput` via:
-//
-//	StaticInputDataArgs{...}
-type StaticInputDataInput interface {
-	pulumi.Input
-
-	ToStaticInputDataOutput() StaticInputDataOutput
-	ToStaticInputDataOutputWithContext(context.Context) StaticInputDataOutput
-}
-
-// Static input data definition.
-type StaticInputDataArgs struct {
-	// Mapping of column names to special uses.
-	Columns pulumi.StringMapInput `pulumi:"columns"`
-	// The context metadata of the data source.
-	DataContext pulumi.StringPtrInput `pulumi:"dataContext"`
-	// Monitoring input data type enum.
-	// Expected value is 'Static'.
-	InputDataType pulumi.StringInput `pulumi:"inputDataType"`
-	// [Required] Specifies the type of job.
-	JobInputType pulumi.StringInput `pulumi:"jobInputType"`
-	// Reference to the component asset used to preprocess the data.
-	PreprocessingComponentId pulumi.StringPtrInput `pulumi:"preprocessingComponentId"`
-	// [Required] Input Asset URI.
-	Uri pulumi.StringInput `pulumi:"uri"`
-	// [Required] The end date of the data window.
-	WindowEnd pulumi.StringInput `pulumi:"windowEnd"`
-	// [Required] The start date of the data window.
-	WindowStart pulumi.StringInput `pulumi:"windowStart"`
-}
-
-func (StaticInputDataArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*StaticInputData)(nil)).Elem()
-}
-
-func (i StaticInputDataArgs) ToStaticInputDataOutput() StaticInputDataOutput {
-	return i.ToStaticInputDataOutputWithContext(context.Background())
-}
-
-func (i StaticInputDataArgs) ToStaticInputDataOutputWithContext(ctx context.Context) StaticInputDataOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StaticInputDataOutput)
-}
-
-// Static input data definition.
-type StaticInputDataOutput struct{ *pulumi.OutputState }
-
-func (StaticInputDataOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StaticInputData)(nil)).Elem()
-}
-
-func (o StaticInputDataOutput) ToStaticInputDataOutput() StaticInputDataOutput {
-	return o
-}
-
-func (o StaticInputDataOutput) ToStaticInputDataOutputWithContext(ctx context.Context) StaticInputDataOutput {
-	return o
-}
-
-// Mapping of column names to special uses.
-func (o StaticInputDataOutput) Columns() pulumi.StringMapOutput {
-	return o.ApplyT(func(v StaticInputData) map[string]string { return v.Columns }).(pulumi.StringMapOutput)
-}
-
-// The context metadata of the data source.
-func (o StaticInputDataOutput) DataContext() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v StaticInputData) *string { return v.DataContext }).(pulumi.StringPtrOutput)
-}
-
-// Monitoring input data type enum.
-// Expected value is 'Static'.
-func (o StaticInputDataOutput) InputDataType() pulumi.StringOutput {
-	return o.ApplyT(func(v StaticInputData) string { return v.InputDataType }).(pulumi.StringOutput)
-}
-
-// [Required] Specifies the type of job.
-func (o StaticInputDataOutput) JobInputType() pulumi.StringOutput {
-	return o.ApplyT(func(v StaticInputData) string { return v.JobInputType }).(pulumi.StringOutput)
-}
-
-// Reference to the component asset used to preprocess the data.
-func (o StaticInputDataOutput) PreprocessingComponentId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v StaticInputData) *string { return v.PreprocessingComponentId }).(pulumi.StringPtrOutput)
-}
-
-// [Required] Input Asset URI.
-func (o StaticInputDataOutput) Uri() pulumi.StringOutput {
-	return o.ApplyT(func(v StaticInputData) string { return v.Uri }).(pulumi.StringOutput)
-}
-
-// [Required] The end date of the data window.
-func (o StaticInputDataOutput) WindowEnd() pulumi.StringOutput {
-	return o.ApplyT(func(v StaticInputData) string { return v.WindowEnd }).(pulumi.StringOutput)
-}
-
-// [Required] The start date of the data window.
-func (o StaticInputDataOutput) WindowStart() pulumi.StringOutput {
-	return o.ApplyT(func(v StaticInputData) string { return v.WindowStart }).(pulumi.StringOutput)
-}
-
-// Static input data definition.
-type StaticInputDataResponse struct {
-	// Mapping of column names to special uses.
-	Columns map[string]string `pulumi:"columns"`
-	// The context metadata of the data source.
-	DataContext *string `pulumi:"dataContext"`
-	// Monitoring input data type enum.
-	// Expected value is 'Static'.
-	InputDataType string `pulumi:"inputDataType"`
-	// [Required] Specifies the type of job.
-	JobInputType string `pulumi:"jobInputType"`
-	// Reference to the component asset used to preprocess the data.
-	PreprocessingComponentId *string `pulumi:"preprocessingComponentId"`
-	// [Required] Input Asset URI.
-	Uri string `pulumi:"uri"`
-	// [Required] The end date of the data window.
-	WindowEnd string `pulumi:"windowEnd"`
-	// [Required] The start date of the data window.
-	WindowStart string `pulumi:"windowStart"`
-}
-
-// Static input data definition.
-type StaticInputDataResponseOutput struct{ *pulumi.OutputState }
-
-func (StaticInputDataResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StaticInputDataResponse)(nil)).Elem()
-}
-
-func (o StaticInputDataResponseOutput) ToStaticInputDataResponseOutput() StaticInputDataResponseOutput {
-	return o
-}
-
-func (o StaticInputDataResponseOutput) ToStaticInputDataResponseOutputWithContext(ctx context.Context) StaticInputDataResponseOutput {
-	return o
-}
-
-// Mapping of column names to special uses.
-func (o StaticInputDataResponseOutput) Columns() pulumi.StringMapOutput {
-	return o.ApplyT(func(v StaticInputDataResponse) map[string]string { return v.Columns }).(pulumi.StringMapOutput)
-}
-
-// The context metadata of the data source.
-func (o StaticInputDataResponseOutput) DataContext() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v StaticInputDataResponse) *string { return v.DataContext }).(pulumi.StringPtrOutput)
-}
-
-// Monitoring input data type enum.
-// Expected value is 'Static'.
-func (o StaticInputDataResponseOutput) InputDataType() pulumi.StringOutput {
-	return o.ApplyT(func(v StaticInputDataResponse) string { return v.InputDataType }).(pulumi.StringOutput)
-}
-
-// [Required] Specifies the type of job.
-func (o StaticInputDataResponseOutput) JobInputType() pulumi.StringOutput {
-	return o.ApplyT(func(v StaticInputDataResponse) string { return v.JobInputType }).(pulumi.StringOutput)
-}
-
-// Reference to the component asset used to preprocess the data.
-func (o StaticInputDataResponseOutput) PreprocessingComponentId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v StaticInputDataResponse) *string { return v.PreprocessingComponentId }).(pulumi.StringPtrOutput)
-}
-
-// [Required] Input Asset URI.
-func (o StaticInputDataResponseOutput) Uri() pulumi.StringOutput {
-	return o.ApplyT(func(v StaticInputDataResponse) string { return v.Uri }).(pulumi.StringOutput)
-}
-
-// [Required] The end date of the data window.
-func (o StaticInputDataResponseOutput) WindowEnd() pulumi.StringOutput {
-	return o.ApplyT(func(v StaticInputDataResponse) string { return v.WindowEnd }).(pulumi.StringOutput)
-}
-
-// [Required] The start date of the data window.
-func (o StaticInputDataResponseOutput) WindowStart() pulumi.StringOutput {
-	return o.ApplyT(func(v StaticInputDataResponse) string { return v.WindowStart }).(pulumi.StringOutput)
 }
 
 // Active message associated with project
@@ -14673,153 +2227,6 @@ func (o StorageAccountDetailsResponseArrayOutput) Index(i pulumi.IntInput) Stora
 	}).(StorageAccountDetailsResponseOutput)
 }
 
-type StringStringKeyValuePair struct {
-	Key   *string `pulumi:"key"`
-	Value *string `pulumi:"value"`
-}
-
-// StringStringKeyValuePairInput is an input type that accepts StringStringKeyValuePairArgs and StringStringKeyValuePairOutput values.
-// You can construct a concrete instance of `StringStringKeyValuePairInput` via:
-//
-//	StringStringKeyValuePairArgs{...}
-type StringStringKeyValuePairInput interface {
-	pulumi.Input
-
-	ToStringStringKeyValuePairOutput() StringStringKeyValuePairOutput
-	ToStringStringKeyValuePairOutputWithContext(context.Context) StringStringKeyValuePairOutput
-}
-
-type StringStringKeyValuePairArgs struct {
-	Key   pulumi.StringPtrInput `pulumi:"key"`
-	Value pulumi.StringPtrInput `pulumi:"value"`
-}
-
-func (StringStringKeyValuePairArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*StringStringKeyValuePair)(nil)).Elem()
-}
-
-func (i StringStringKeyValuePairArgs) ToStringStringKeyValuePairOutput() StringStringKeyValuePairOutput {
-	return i.ToStringStringKeyValuePairOutputWithContext(context.Background())
-}
-
-func (i StringStringKeyValuePairArgs) ToStringStringKeyValuePairOutputWithContext(ctx context.Context) StringStringKeyValuePairOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StringStringKeyValuePairOutput)
-}
-
-// StringStringKeyValuePairArrayInput is an input type that accepts StringStringKeyValuePairArray and StringStringKeyValuePairArrayOutput values.
-// You can construct a concrete instance of `StringStringKeyValuePairArrayInput` via:
-//
-//	StringStringKeyValuePairArray{ StringStringKeyValuePairArgs{...} }
-type StringStringKeyValuePairArrayInput interface {
-	pulumi.Input
-
-	ToStringStringKeyValuePairArrayOutput() StringStringKeyValuePairArrayOutput
-	ToStringStringKeyValuePairArrayOutputWithContext(context.Context) StringStringKeyValuePairArrayOutput
-}
-
-type StringStringKeyValuePairArray []StringStringKeyValuePairInput
-
-func (StringStringKeyValuePairArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]StringStringKeyValuePair)(nil)).Elem()
-}
-
-func (i StringStringKeyValuePairArray) ToStringStringKeyValuePairArrayOutput() StringStringKeyValuePairArrayOutput {
-	return i.ToStringStringKeyValuePairArrayOutputWithContext(context.Background())
-}
-
-func (i StringStringKeyValuePairArray) ToStringStringKeyValuePairArrayOutputWithContext(ctx context.Context) StringStringKeyValuePairArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StringStringKeyValuePairArrayOutput)
-}
-
-type StringStringKeyValuePairOutput struct{ *pulumi.OutputState }
-
-func (StringStringKeyValuePairOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StringStringKeyValuePair)(nil)).Elem()
-}
-
-func (o StringStringKeyValuePairOutput) ToStringStringKeyValuePairOutput() StringStringKeyValuePairOutput {
-	return o
-}
-
-func (o StringStringKeyValuePairOutput) ToStringStringKeyValuePairOutputWithContext(ctx context.Context) StringStringKeyValuePairOutput {
-	return o
-}
-
-func (o StringStringKeyValuePairOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v StringStringKeyValuePair) *string { return v.Key }).(pulumi.StringPtrOutput)
-}
-
-func (o StringStringKeyValuePairOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v StringStringKeyValuePair) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-type StringStringKeyValuePairArrayOutput struct{ *pulumi.OutputState }
-
-func (StringStringKeyValuePairArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]StringStringKeyValuePair)(nil)).Elem()
-}
-
-func (o StringStringKeyValuePairArrayOutput) ToStringStringKeyValuePairArrayOutput() StringStringKeyValuePairArrayOutput {
-	return o
-}
-
-func (o StringStringKeyValuePairArrayOutput) ToStringStringKeyValuePairArrayOutputWithContext(ctx context.Context) StringStringKeyValuePairArrayOutput {
-	return o
-}
-
-func (o StringStringKeyValuePairArrayOutput) Index(i pulumi.IntInput) StringStringKeyValuePairOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StringStringKeyValuePair {
-		return vs[0].([]StringStringKeyValuePair)[vs[1].(int)]
-	}).(StringStringKeyValuePairOutput)
-}
-
-type StringStringKeyValuePairResponse struct {
-	Key   *string `pulumi:"key"`
-	Value *string `pulumi:"value"`
-}
-
-type StringStringKeyValuePairResponseOutput struct{ *pulumi.OutputState }
-
-func (StringStringKeyValuePairResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StringStringKeyValuePairResponse)(nil)).Elem()
-}
-
-func (o StringStringKeyValuePairResponseOutput) ToStringStringKeyValuePairResponseOutput() StringStringKeyValuePairResponseOutput {
-	return o
-}
-
-func (o StringStringKeyValuePairResponseOutput) ToStringStringKeyValuePairResponseOutputWithContext(ctx context.Context) StringStringKeyValuePairResponseOutput {
-	return o
-}
-
-func (o StringStringKeyValuePairResponseOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v StringStringKeyValuePairResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
-}
-
-func (o StringStringKeyValuePairResponseOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v StringStringKeyValuePairResponse) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-type StringStringKeyValuePairResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (StringStringKeyValuePairResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]StringStringKeyValuePairResponse)(nil)).Elem()
-}
-
-func (o StringStringKeyValuePairResponseArrayOutput) ToStringStringKeyValuePairResponseArrayOutput() StringStringKeyValuePairResponseArrayOutput {
-	return o
-}
-
-func (o StringStringKeyValuePairResponseArrayOutput) ToStringStringKeyValuePairResponseArrayOutputWithContext(ctx context.Context) StringStringKeyValuePairResponseArrayOutput {
-	return o
-}
-
-func (o StringStringKeyValuePairResponseArrayOutput) Index(i pulumi.IntInput) StringStringKeyValuePairResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StringStringKeyValuePairResponse {
-		return vs[0].([]StringStringKeyValuePairResponse)[vs[1].(int)]
-	}).(StringStringKeyValuePairResponseOutput)
-}
-
 // Sweep job definition.
 type SweepJob struct {
 	// ARM resource ID of the component resource.
@@ -14846,16 +2253,12 @@ type SweepJob struct {
 	JobType string `pulumi:"jobType"`
 	// Sweep Job limit.
 	Limits *SweepJobLimits `pulumi:"limits"`
-	// Notification setting for the job
-	NotificationSetting *NotificationSetting `pulumi:"notificationSetting"`
 	// [Required] Optimization objective.
 	Objective Objective `pulumi:"objective"`
 	// Mapping of output data bindings used in the job.
 	Outputs map[string]interface{} `pulumi:"outputs"`
 	// The asset property dictionary.
 	Properties map[string]string `pulumi:"properties"`
-	// Queue settings for the job
-	QueueSettings *QueueSettings `pulumi:"queueSettings"`
 	// [Required] The hyperparameter sampling algorithm
 	SamplingAlgorithm interface{} `pulumi:"samplingAlgorithm"`
 	// [Required] A dictionary containing each parameter and its distribution. The dictionary key is the name of the parameter
@@ -14883,8 +2286,6 @@ func (val *SweepJob) Defaults() *SweepJob {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
-	tmp.QueueSettings = tmp.QueueSettings.Defaults()
-
 	tmp.Trial = *tmp.Trial.Defaults()
 
 	return &tmp
@@ -14927,16 +2328,12 @@ type SweepJobArgs struct {
 	JobType pulumi.StringInput `pulumi:"jobType"`
 	// Sweep Job limit.
 	Limits SweepJobLimitsPtrInput `pulumi:"limits"`
-	// Notification setting for the job
-	NotificationSetting NotificationSettingPtrInput `pulumi:"notificationSetting"`
 	// [Required] Optimization objective.
 	Objective ObjectiveInput `pulumi:"objective"`
 	// Mapping of output data bindings used in the job.
 	Outputs pulumi.MapInput `pulumi:"outputs"`
 	// The asset property dictionary.
 	Properties pulumi.StringMapInput `pulumi:"properties"`
-	// Queue settings for the job
-	QueueSettings QueueSettingsPtrInput `pulumi:"queueSettings"`
 	// [Required] The hyperparameter sampling algorithm
 	SamplingAlgorithm pulumi.Input `pulumi:"samplingAlgorithm"`
 	// [Required] A dictionary containing each parameter and its distribution. The dictionary key is the name of the parameter
@@ -15049,11 +2446,6 @@ func (o SweepJobOutput) Limits() SweepJobLimitsPtrOutput {
 	return o.ApplyT(func(v SweepJob) *SweepJobLimits { return v.Limits }).(SweepJobLimitsPtrOutput)
 }
 
-// Notification setting for the job
-func (o SweepJobOutput) NotificationSetting() NotificationSettingPtrOutput {
-	return o.ApplyT(func(v SweepJob) *NotificationSetting { return v.NotificationSetting }).(NotificationSettingPtrOutput)
-}
-
 // [Required] Optimization objective.
 func (o SweepJobOutput) Objective() ObjectiveOutput {
 	return o.ApplyT(func(v SweepJob) Objective { return v.Objective }).(ObjectiveOutput)
@@ -15067,11 +2459,6 @@ func (o SweepJobOutput) Outputs() pulumi.MapOutput {
 // The asset property dictionary.
 func (o SweepJobOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v SweepJob) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
-}
-
-// Queue settings for the job
-func (o SweepJobOutput) QueueSettings() QueueSettingsPtrOutput {
-	return o.ApplyT(func(v SweepJob) *QueueSettings { return v.QueueSettings }).(QueueSettingsPtrOutput)
 }
 
 // [Required] The hyperparameter sampling algorithm
@@ -15470,16 +2857,12 @@ type SweepJobResponse struct {
 	JobType string `pulumi:"jobType"`
 	// Sweep Job limit.
 	Limits *SweepJobLimitsResponse `pulumi:"limits"`
-	// Notification setting for the job
-	NotificationSetting *NotificationSettingResponse `pulumi:"notificationSetting"`
 	// [Required] Optimization objective.
 	Objective ObjectiveResponse `pulumi:"objective"`
 	// Mapping of output data bindings used in the job.
 	Outputs map[string]interface{} `pulumi:"outputs"`
 	// The asset property dictionary.
 	Properties map[string]string `pulumi:"properties"`
-	// Queue settings for the job
-	QueueSettings *QueueSettingsResponse `pulumi:"queueSettings"`
 	// [Required] The hyperparameter sampling algorithm
 	SamplingAlgorithm interface{} `pulumi:"samplingAlgorithm"`
 	// [Required] A dictionary containing each parameter and its distribution. The dictionary key is the name of the parameter
@@ -15509,8 +2892,6 @@ func (val *SweepJobResponse) Defaults() *SweepJobResponse {
 		isArchived_ := false
 		tmp.IsArchived = &isArchived_
 	}
-	tmp.QueueSettings = tmp.QueueSettings.Defaults()
-
 	tmp.Trial = *tmp.Trial.Defaults()
 
 	return &tmp
@@ -15588,11 +2969,6 @@ func (o SweepJobResponseOutput) Limits() SweepJobLimitsResponsePtrOutput {
 	return o.ApplyT(func(v SweepJobResponse) *SweepJobLimitsResponse { return v.Limits }).(SweepJobLimitsResponsePtrOutput)
 }
 
-// Notification setting for the job
-func (o SweepJobResponseOutput) NotificationSetting() NotificationSettingResponsePtrOutput {
-	return o.ApplyT(func(v SweepJobResponse) *NotificationSettingResponse { return v.NotificationSetting }).(NotificationSettingResponsePtrOutput)
-}
-
 // [Required] Optimization objective.
 func (o SweepJobResponseOutput) Objective() ObjectiveResponseOutput {
 	return o.ApplyT(func(v SweepJobResponse) ObjectiveResponse { return v.Objective }).(ObjectiveResponseOutput)
@@ -15606,11 +2982,6 @@ func (o SweepJobResponseOutput) Outputs() pulumi.MapOutput {
 // The asset property dictionary.
 func (o SweepJobResponseOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v SweepJobResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
-}
-
-// Queue settings for the job
-func (o SweepJobResponseOutput) QueueSettings() QueueSettingsResponsePtrOutput {
-	return o.ApplyT(func(v SweepJobResponse) *QueueSettingsResponse { return v.QueueSettings }).(QueueSettingsResponsePtrOutput)
 }
 
 // [Required] The hyperparameter sampling algorithm
@@ -16187,217 +3558,6 @@ func (o SynapseSparkPropertiesPtrOutput) WorkspaceName() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-type SynapseSparkPropertiesResponse struct {
-	// Auto pause properties.
-	AutoPauseProperties *AutoPausePropertiesResponse `pulumi:"autoPauseProperties"`
-	// Auto scale properties.
-	AutoScaleProperties *AutoScalePropertiesResponse `pulumi:"autoScaleProperties"`
-	// The number of compute nodes currently assigned to the compute.
-	NodeCount *int `pulumi:"nodeCount"`
-	// Node size.
-	NodeSize *string `pulumi:"nodeSize"`
-	// Node size family.
-	NodeSizeFamily *string `pulumi:"nodeSizeFamily"`
-	// Pool name.
-	PoolName *string `pulumi:"poolName"`
-	// Name of the resource group in which workspace is located.
-	ResourceGroup *string `pulumi:"resourceGroup"`
-	// Spark version.
-	SparkVersion *string `pulumi:"sparkVersion"`
-	// Azure subscription identifier.
-	SubscriptionId *string `pulumi:"subscriptionId"`
-	// Name of Azure Machine Learning workspace.
-	WorkspaceName *string `pulumi:"workspaceName"`
-}
-
-type SynapseSparkPropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (SynapseSparkPropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SynapseSparkPropertiesResponse)(nil)).Elem()
-}
-
-func (o SynapseSparkPropertiesResponseOutput) ToSynapseSparkPropertiesResponseOutput() SynapseSparkPropertiesResponseOutput {
-	return o
-}
-
-func (o SynapseSparkPropertiesResponseOutput) ToSynapseSparkPropertiesResponseOutputWithContext(ctx context.Context) SynapseSparkPropertiesResponseOutput {
-	return o
-}
-
-// Auto pause properties.
-func (o SynapseSparkPropertiesResponseOutput) AutoPauseProperties() AutoPausePropertiesResponsePtrOutput {
-	return o.ApplyT(func(v SynapseSparkPropertiesResponse) *AutoPausePropertiesResponse { return v.AutoPauseProperties }).(AutoPausePropertiesResponsePtrOutput)
-}
-
-// Auto scale properties.
-func (o SynapseSparkPropertiesResponseOutput) AutoScaleProperties() AutoScalePropertiesResponsePtrOutput {
-	return o.ApplyT(func(v SynapseSparkPropertiesResponse) *AutoScalePropertiesResponse { return v.AutoScaleProperties }).(AutoScalePropertiesResponsePtrOutput)
-}
-
-// The number of compute nodes currently assigned to the compute.
-func (o SynapseSparkPropertiesResponseOutput) NodeCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SynapseSparkPropertiesResponse) *int { return v.NodeCount }).(pulumi.IntPtrOutput)
-}
-
-// Node size.
-func (o SynapseSparkPropertiesResponseOutput) NodeSize() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SynapseSparkPropertiesResponse) *string { return v.NodeSize }).(pulumi.StringPtrOutput)
-}
-
-// Node size family.
-func (o SynapseSparkPropertiesResponseOutput) NodeSizeFamily() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SynapseSparkPropertiesResponse) *string { return v.NodeSizeFamily }).(pulumi.StringPtrOutput)
-}
-
-// Pool name.
-func (o SynapseSparkPropertiesResponseOutput) PoolName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SynapseSparkPropertiesResponse) *string { return v.PoolName }).(pulumi.StringPtrOutput)
-}
-
-// Name of the resource group in which workspace is located.
-func (o SynapseSparkPropertiesResponseOutput) ResourceGroup() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SynapseSparkPropertiesResponse) *string { return v.ResourceGroup }).(pulumi.StringPtrOutput)
-}
-
-// Spark version.
-func (o SynapseSparkPropertiesResponseOutput) SparkVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SynapseSparkPropertiesResponse) *string { return v.SparkVersion }).(pulumi.StringPtrOutput)
-}
-
-// Azure subscription identifier.
-func (o SynapseSparkPropertiesResponseOutput) SubscriptionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SynapseSparkPropertiesResponse) *string { return v.SubscriptionId }).(pulumi.StringPtrOutput)
-}
-
-// Name of Azure Machine Learning workspace.
-func (o SynapseSparkPropertiesResponseOutput) WorkspaceName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SynapseSparkPropertiesResponse) *string { return v.WorkspaceName }).(pulumi.StringPtrOutput)
-}
-
-type SynapseSparkPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SynapseSparkPropertiesResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SynapseSparkPropertiesResponse)(nil)).Elem()
-}
-
-func (o SynapseSparkPropertiesResponsePtrOutput) ToSynapseSparkPropertiesResponsePtrOutput() SynapseSparkPropertiesResponsePtrOutput {
-	return o
-}
-
-func (o SynapseSparkPropertiesResponsePtrOutput) ToSynapseSparkPropertiesResponsePtrOutputWithContext(ctx context.Context) SynapseSparkPropertiesResponsePtrOutput {
-	return o
-}
-
-func (o SynapseSparkPropertiesResponsePtrOutput) Elem() SynapseSparkPropertiesResponseOutput {
-	return o.ApplyT(func(v *SynapseSparkPropertiesResponse) SynapseSparkPropertiesResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SynapseSparkPropertiesResponse
-		return ret
-	}).(SynapseSparkPropertiesResponseOutput)
-}
-
-// Auto pause properties.
-func (o SynapseSparkPropertiesResponsePtrOutput) AutoPauseProperties() AutoPausePropertiesResponsePtrOutput {
-	return o.ApplyT(func(v *SynapseSparkPropertiesResponse) *AutoPausePropertiesResponse {
-		if v == nil {
-			return nil
-		}
-		return v.AutoPauseProperties
-	}).(AutoPausePropertiesResponsePtrOutput)
-}
-
-// Auto scale properties.
-func (o SynapseSparkPropertiesResponsePtrOutput) AutoScaleProperties() AutoScalePropertiesResponsePtrOutput {
-	return o.ApplyT(func(v *SynapseSparkPropertiesResponse) *AutoScalePropertiesResponse {
-		if v == nil {
-			return nil
-		}
-		return v.AutoScaleProperties
-	}).(AutoScalePropertiesResponsePtrOutput)
-}
-
-// The number of compute nodes currently assigned to the compute.
-func (o SynapseSparkPropertiesResponsePtrOutput) NodeCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *SynapseSparkPropertiesResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.NodeCount
-	}).(pulumi.IntPtrOutput)
-}
-
-// Node size.
-func (o SynapseSparkPropertiesResponsePtrOutput) NodeSize() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SynapseSparkPropertiesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.NodeSize
-	}).(pulumi.StringPtrOutput)
-}
-
-// Node size family.
-func (o SynapseSparkPropertiesResponsePtrOutput) NodeSizeFamily() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SynapseSparkPropertiesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.NodeSizeFamily
-	}).(pulumi.StringPtrOutput)
-}
-
-// Pool name.
-func (o SynapseSparkPropertiesResponsePtrOutput) PoolName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SynapseSparkPropertiesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PoolName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Name of the resource group in which workspace is located.
-func (o SynapseSparkPropertiesResponsePtrOutput) ResourceGroup() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SynapseSparkPropertiesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ResourceGroup
-	}).(pulumi.StringPtrOutput)
-}
-
-// Spark version.
-func (o SynapseSparkPropertiesResponsePtrOutput) SparkVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SynapseSparkPropertiesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SparkVersion
-	}).(pulumi.StringPtrOutput)
-}
-
-// Azure subscription identifier.
-func (o SynapseSparkPropertiesResponsePtrOutput) SubscriptionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SynapseSparkPropertiesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SubscriptionId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Name of Azure Machine Learning workspace.
-func (o SynapseSparkPropertiesResponsePtrOutput) WorkspaceName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SynapseSparkPropertiesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.WorkspaceName
-	}).(pulumi.StringPtrOutput)
-}
-
 // A SynapseSpark compute.
 type SynapseSparkResponse struct {
 	// Location for the underlying compute
@@ -16415,7 +3575,7 @@ type SynapseSparkResponse struct {
 	IsAttachedCompute bool `pulumi:"isAttachedCompute"`
 	// The time at which the compute was last modified.
 	ModifiedOn string                          `pulumi:"modifiedOn"`
-	Properties *SynapseSparkPropertiesResponse `pulumi:"properties"`
+	Properties *SynapseSparkResponseProperties `pulumi:"properties"`
 	// Errors during provisioning
 	ProvisioningErrors []ErrorResponseResponse `pulumi:"provisioningErrors"`
 	// The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
@@ -16475,8 +3635,8 @@ func (o SynapseSparkResponseOutput) ModifiedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v SynapseSparkResponse) string { return v.ModifiedOn }).(pulumi.StringOutput)
 }
 
-func (o SynapseSparkResponseOutput) Properties() SynapseSparkPropertiesResponsePtrOutput {
-	return o.ApplyT(func(v SynapseSparkResponse) *SynapseSparkPropertiesResponse { return v.Properties }).(SynapseSparkPropertiesResponsePtrOutput)
+func (o SynapseSparkResponseOutput) Properties() SynapseSparkResponsePropertiesPtrOutput {
+	return o.ApplyT(func(v SynapseSparkResponse) *SynapseSparkResponseProperties { return v.Properties }).(SynapseSparkResponsePropertiesPtrOutput)
 }
 
 // Errors during provisioning
@@ -16492,6 +3652,217 @@ func (o SynapseSparkResponseOutput) ProvisioningState() pulumi.StringOutput {
 // ARM resource id of the underlying compute
 func (o SynapseSparkResponseOutput) ResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SynapseSparkResponse) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+type SynapseSparkResponseProperties struct {
+	// Auto pause properties.
+	AutoPauseProperties *AutoPausePropertiesResponse `pulumi:"autoPauseProperties"`
+	// Auto scale properties.
+	AutoScaleProperties *AutoScalePropertiesResponse `pulumi:"autoScaleProperties"`
+	// The number of compute nodes currently assigned to the compute.
+	NodeCount *int `pulumi:"nodeCount"`
+	// Node size.
+	NodeSize *string `pulumi:"nodeSize"`
+	// Node size family.
+	NodeSizeFamily *string `pulumi:"nodeSizeFamily"`
+	// Pool name.
+	PoolName *string `pulumi:"poolName"`
+	// Name of the resource group in which workspace is located.
+	ResourceGroup *string `pulumi:"resourceGroup"`
+	// Spark version.
+	SparkVersion *string `pulumi:"sparkVersion"`
+	// Azure subscription identifier.
+	SubscriptionId *string `pulumi:"subscriptionId"`
+	// Name of Azure Machine Learning workspace.
+	WorkspaceName *string `pulumi:"workspaceName"`
+}
+
+type SynapseSparkResponsePropertiesOutput struct{ *pulumi.OutputState }
+
+func (SynapseSparkResponsePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SynapseSparkResponseProperties)(nil)).Elem()
+}
+
+func (o SynapseSparkResponsePropertiesOutput) ToSynapseSparkResponsePropertiesOutput() SynapseSparkResponsePropertiesOutput {
+	return o
+}
+
+func (o SynapseSparkResponsePropertiesOutput) ToSynapseSparkResponsePropertiesOutputWithContext(ctx context.Context) SynapseSparkResponsePropertiesOutput {
+	return o
+}
+
+// Auto pause properties.
+func (o SynapseSparkResponsePropertiesOutput) AutoPauseProperties() AutoPausePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v SynapseSparkResponseProperties) *AutoPausePropertiesResponse { return v.AutoPauseProperties }).(AutoPausePropertiesResponsePtrOutput)
+}
+
+// Auto scale properties.
+func (o SynapseSparkResponsePropertiesOutput) AutoScaleProperties() AutoScalePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v SynapseSparkResponseProperties) *AutoScalePropertiesResponse { return v.AutoScaleProperties }).(AutoScalePropertiesResponsePtrOutput)
+}
+
+// The number of compute nodes currently assigned to the compute.
+func (o SynapseSparkResponsePropertiesOutput) NodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SynapseSparkResponseProperties) *int { return v.NodeCount }).(pulumi.IntPtrOutput)
+}
+
+// Node size.
+func (o SynapseSparkResponsePropertiesOutput) NodeSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSparkResponseProperties) *string { return v.NodeSize }).(pulumi.StringPtrOutput)
+}
+
+// Node size family.
+func (o SynapseSparkResponsePropertiesOutput) NodeSizeFamily() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSparkResponseProperties) *string { return v.NodeSizeFamily }).(pulumi.StringPtrOutput)
+}
+
+// Pool name.
+func (o SynapseSparkResponsePropertiesOutput) PoolName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSparkResponseProperties) *string { return v.PoolName }).(pulumi.StringPtrOutput)
+}
+
+// Name of the resource group in which workspace is located.
+func (o SynapseSparkResponsePropertiesOutput) ResourceGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSparkResponseProperties) *string { return v.ResourceGroup }).(pulumi.StringPtrOutput)
+}
+
+// Spark version.
+func (o SynapseSparkResponsePropertiesOutput) SparkVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSparkResponseProperties) *string { return v.SparkVersion }).(pulumi.StringPtrOutput)
+}
+
+// Azure subscription identifier.
+func (o SynapseSparkResponsePropertiesOutput) SubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSparkResponseProperties) *string { return v.SubscriptionId }).(pulumi.StringPtrOutput)
+}
+
+// Name of Azure Machine Learning workspace.
+func (o SynapseSparkResponsePropertiesOutput) WorkspaceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSparkResponseProperties) *string { return v.WorkspaceName }).(pulumi.StringPtrOutput)
+}
+
+type SynapseSparkResponsePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (SynapseSparkResponsePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SynapseSparkResponseProperties)(nil)).Elem()
+}
+
+func (o SynapseSparkResponsePropertiesPtrOutput) ToSynapseSparkResponsePropertiesPtrOutput() SynapseSparkResponsePropertiesPtrOutput {
+	return o
+}
+
+func (o SynapseSparkResponsePropertiesPtrOutput) ToSynapseSparkResponsePropertiesPtrOutputWithContext(ctx context.Context) SynapseSparkResponsePropertiesPtrOutput {
+	return o
+}
+
+func (o SynapseSparkResponsePropertiesPtrOutput) Elem() SynapseSparkResponsePropertiesOutput {
+	return o.ApplyT(func(v *SynapseSparkResponseProperties) SynapseSparkResponseProperties {
+		if v != nil {
+			return *v
+		}
+		var ret SynapseSparkResponseProperties
+		return ret
+	}).(SynapseSparkResponsePropertiesOutput)
+}
+
+// Auto pause properties.
+func (o SynapseSparkResponsePropertiesPtrOutput) AutoPauseProperties() AutoPausePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *SynapseSparkResponseProperties) *AutoPausePropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AutoPauseProperties
+	}).(AutoPausePropertiesResponsePtrOutput)
+}
+
+// Auto scale properties.
+func (o SynapseSparkResponsePropertiesPtrOutput) AutoScaleProperties() AutoScalePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *SynapseSparkResponseProperties) *AutoScalePropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AutoScaleProperties
+	}).(AutoScalePropertiesResponsePtrOutput)
+}
+
+// The number of compute nodes currently assigned to the compute.
+func (o SynapseSparkResponsePropertiesPtrOutput) NodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SynapseSparkResponseProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Node size.
+func (o SynapseSparkResponsePropertiesPtrOutput) NodeSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynapseSparkResponseProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NodeSize
+	}).(pulumi.StringPtrOutput)
+}
+
+// Node size family.
+func (o SynapseSparkResponsePropertiesPtrOutput) NodeSizeFamily() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynapseSparkResponseProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NodeSizeFamily
+	}).(pulumi.StringPtrOutput)
+}
+
+// Pool name.
+func (o SynapseSparkResponsePropertiesPtrOutput) PoolName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynapseSparkResponseProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PoolName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the resource group in which workspace is located.
+func (o SynapseSparkResponsePropertiesPtrOutput) ResourceGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynapseSparkResponseProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceGroup
+	}).(pulumi.StringPtrOutput)
+}
+
+// Spark version.
+func (o SynapseSparkResponsePropertiesPtrOutput) SparkVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynapseSparkResponseProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SparkVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure subscription identifier.
+func (o SynapseSparkResponsePropertiesPtrOutput) SubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynapseSparkResponseProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubscriptionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of Azure Machine Learning workspace.
+func (o SynapseSparkResponsePropertiesPtrOutput) WorkspaceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynapseSparkResponseProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkspaceName
+	}).(pulumi.StringPtrOutput)
 }
 
 type SystemCreatedAcrAccount struct {
@@ -18961,9 +6332,9 @@ type TextClassification struct {
 	FeaturizationSettings *NlpVerticalFeaturizationSettings `pulumi:"featurizationSettings"`
 	// Execution constraints for AutoMLJob.
 	LimitSettings *NlpVerticalLimitSettings `pulumi:"limitSettings"`
-	// Enum for setting log verbosity.
+	// Log verbosity for the job.
 	LogVerbosity *string `pulumi:"logVerbosity"`
-	// Primary metrics for classification tasks.
+	// Primary metric for Text-Classification task.
 	PrimaryMetric *string `pulumi:"primaryMetric"`
 	// Target column name: This is prediction values column.
 	// Also known as label column name in context of classification tasks.
@@ -19018,9 +6389,9 @@ type TextClassificationArgs struct {
 	FeaturizationSettings NlpVerticalFeaturizationSettingsPtrInput `pulumi:"featurizationSettings"`
 	// Execution constraints for AutoMLJob.
 	LimitSettings NlpVerticalLimitSettingsPtrInput `pulumi:"limitSettings"`
-	// Enum for setting log verbosity.
+	// Log verbosity for the job.
 	LogVerbosity pulumi.StringPtrInput `pulumi:"logVerbosity"`
-	// Primary metrics for classification tasks.
+	// Primary metric for Text-Classification task.
 	PrimaryMetric pulumi.StringPtrInput `pulumi:"primaryMetric"`
 	// Target column name: This is prediction values column.
 	// Also known as label column name in context of classification tasks.
@@ -19088,12 +6459,12 @@ func (o TextClassificationOutput) LimitSettings() NlpVerticalLimitSettingsPtrOut
 	return o.ApplyT(func(v TextClassification) *NlpVerticalLimitSettings { return v.LimitSettings }).(NlpVerticalLimitSettingsPtrOutput)
 }
 
-// Enum for setting log verbosity.
+// Log verbosity for the job.
 func (o TextClassificationOutput) LogVerbosity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TextClassification) *string { return v.LogVerbosity }).(pulumi.StringPtrOutput)
 }
 
-// Primary metrics for classification tasks.
+// Primary metric for Text-Classification task.
 func (o TextClassificationOutput) PrimaryMetric() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TextClassification) *string { return v.PrimaryMetric }).(pulumi.StringPtrOutput)
 }
@@ -19127,7 +6498,7 @@ type TextClassificationMultilabel struct {
 	FeaturizationSettings *NlpVerticalFeaturizationSettings `pulumi:"featurizationSettings"`
 	// Execution constraints for AutoMLJob.
 	LimitSettings *NlpVerticalLimitSettings `pulumi:"limitSettings"`
-	// Enum for setting log verbosity.
+	// Log verbosity for the job.
 	LogVerbosity *string `pulumi:"logVerbosity"`
 	// Target column name: This is prediction values column.
 	// Also known as label column name in context of classification tasks.
@@ -19178,7 +6549,7 @@ type TextClassificationMultilabelArgs struct {
 	FeaturizationSettings NlpVerticalFeaturizationSettingsPtrInput `pulumi:"featurizationSettings"`
 	// Execution constraints for AutoMLJob.
 	LimitSettings NlpVerticalLimitSettingsPtrInput `pulumi:"limitSettings"`
-	// Enum for setting log verbosity.
+	// Log verbosity for the job.
 	LogVerbosity pulumi.StringPtrInput `pulumi:"logVerbosity"`
 	// Target column name: This is prediction values column.
 	// Also known as label column name in context of classification tasks.
@@ -19243,7 +6614,7 @@ func (o TextClassificationMultilabelOutput) LimitSettings() NlpVerticalLimitSett
 	return o.ApplyT(func(v TextClassificationMultilabel) *NlpVerticalLimitSettings { return v.LimitSettings }).(NlpVerticalLimitSettingsPtrOutput)
 }
 
-// Enum for setting log verbosity.
+// Log verbosity for the job.
 func (o TextClassificationMultilabelOutput) LogVerbosity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TextClassificationMultilabel) *string { return v.LogVerbosity }).(pulumi.StringPtrOutput)
 }
@@ -19277,7 +6648,7 @@ type TextClassificationMultilabelResponse struct {
 	FeaturizationSettings *NlpVerticalFeaturizationSettingsResponse `pulumi:"featurizationSettings"`
 	// Execution constraints for AutoMLJob.
 	LimitSettings *NlpVerticalLimitSettingsResponse `pulumi:"limitSettings"`
-	// Enum for setting log verbosity.
+	// Log verbosity for the job.
 	LogVerbosity *string `pulumi:"logVerbosity"`
 	// Primary metric for Text-Classification-Multilabel task.
 	// Currently only Accuracy is supported as primary metric, hence user need not set it explicitly.
@@ -19341,7 +6712,7 @@ func (o TextClassificationMultilabelResponseOutput) LimitSettings() NlpVerticalL
 	return o.ApplyT(func(v TextClassificationMultilabelResponse) *NlpVerticalLimitSettingsResponse { return v.LimitSettings }).(NlpVerticalLimitSettingsResponsePtrOutput)
 }
 
-// Enum for setting log verbosity.
+// Log verbosity for the job.
 func (o TextClassificationMultilabelResponseOutput) LogVerbosity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TextClassificationMultilabelResponse) *string { return v.LogVerbosity }).(pulumi.StringPtrOutput)
 }
@@ -19381,9 +6752,9 @@ type TextClassificationResponse struct {
 	FeaturizationSettings *NlpVerticalFeaturizationSettingsResponse `pulumi:"featurizationSettings"`
 	// Execution constraints for AutoMLJob.
 	LimitSettings *NlpVerticalLimitSettingsResponse `pulumi:"limitSettings"`
-	// Enum for setting log verbosity.
+	// Log verbosity for the job.
 	LogVerbosity *string `pulumi:"logVerbosity"`
-	// Primary metrics for classification tasks.
+	// Primary metric for Text-Classification task.
 	PrimaryMetric *string `pulumi:"primaryMetric"`
 	// Target column name: This is prediction values column.
 	// Also known as label column name in context of classification tasks.
@@ -19448,12 +6819,12 @@ func (o TextClassificationResponseOutput) LimitSettings() NlpVerticalLimitSettin
 	return o.ApplyT(func(v TextClassificationResponse) *NlpVerticalLimitSettingsResponse { return v.LimitSettings }).(NlpVerticalLimitSettingsResponsePtrOutput)
 }
 
-// Enum for setting log verbosity.
+// Log verbosity for the job.
 func (o TextClassificationResponseOutput) LogVerbosity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TextClassificationResponse) *string { return v.LogVerbosity }).(pulumi.StringPtrOutput)
 }
 
-// Primary metrics for classification tasks.
+// Primary metric for Text-Classification task.
 func (o TextClassificationResponseOutput) PrimaryMetric() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TextClassificationResponse) *string { return v.PrimaryMetric }).(pulumi.StringPtrOutput)
 }
@@ -19488,7 +6859,7 @@ type TextNer struct {
 	FeaturizationSettings *NlpVerticalFeaturizationSettings `pulumi:"featurizationSettings"`
 	// Execution constraints for AutoMLJob.
 	LimitSettings *NlpVerticalLimitSettings `pulumi:"limitSettings"`
-	// Enum for setting log verbosity.
+	// Log verbosity for the job.
 	LogVerbosity *string `pulumi:"logVerbosity"`
 	// Target column name: This is prediction values column.
 	// Also known as label column name in context of classification tasks.
@@ -19540,7 +6911,7 @@ type TextNerArgs struct {
 	FeaturizationSettings NlpVerticalFeaturizationSettingsPtrInput `pulumi:"featurizationSettings"`
 	// Execution constraints for AutoMLJob.
 	LimitSettings NlpVerticalLimitSettingsPtrInput `pulumi:"limitSettings"`
-	// Enum for setting log verbosity.
+	// Log verbosity for the job.
 	LogVerbosity pulumi.StringPtrInput `pulumi:"logVerbosity"`
 	// Target column name: This is prediction values column.
 	// Also known as label column name in context of classification tasks.
@@ -19606,7 +6977,7 @@ func (o TextNerOutput) LimitSettings() NlpVerticalLimitSettingsPtrOutput {
 	return o.ApplyT(func(v TextNer) *NlpVerticalLimitSettings { return v.LimitSettings }).(NlpVerticalLimitSettingsPtrOutput)
 }
 
-// Enum for setting log verbosity.
+// Log verbosity for the job.
 func (o TextNerOutput) LogVerbosity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TextNer) *string { return v.LogVerbosity }).(pulumi.StringPtrOutput)
 }
@@ -19641,7 +7012,7 @@ type TextNerResponse struct {
 	FeaturizationSettings *NlpVerticalFeaturizationSettingsResponse `pulumi:"featurizationSettings"`
 	// Execution constraints for AutoMLJob.
 	LimitSettings *NlpVerticalLimitSettingsResponse `pulumi:"limitSettings"`
-	// Enum for setting log verbosity.
+	// Log verbosity for the job.
 	LogVerbosity *string `pulumi:"logVerbosity"`
 	// Primary metric for Text-NER task.
 	// Only 'Accuracy' is supported for Text-NER, so user need not set this explicitly.
@@ -19704,7 +7075,7 @@ func (o TextNerResponseOutput) LimitSettings() NlpVerticalLimitSettingsResponseP
 	return o.ApplyT(func(v TextNerResponse) *NlpVerticalLimitSettingsResponse { return v.LimitSettings }).(NlpVerticalLimitSettingsResponsePtrOutput)
 }
 
-// Enum for setting log verbosity.
+// Log verbosity for the job.
 func (o TextNerResponseOutput) LogVerbosity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TextNerResponse) *string { return v.LogVerbosity }).(pulumi.StringPtrOutput)
 }
@@ -19737,6 +7108,74 @@ func (o TextNerResponseOutput) ValidationData() MLTableJobInputResponsePtrOutput
 	return o.ApplyT(func(v TextNerResponse) *MLTableJobInputResponse { return v.ValidationData }).(MLTableJobInputResponsePtrOutput)
 }
 
+type ThrottlingRuleResponse struct {
+	Count                    *float64                      `pulumi:"count"`
+	DynamicThrottlingEnabled *bool                         `pulumi:"dynamicThrottlingEnabled"`
+	Key                      *string                       `pulumi:"key"`
+	MatchPatterns            []RequestMatchPatternResponse `pulumi:"matchPatterns"`
+	MinCount                 *float64                      `pulumi:"minCount"`
+	RenewalPeriod            *float64                      `pulumi:"renewalPeriod"`
+}
+
+type ThrottlingRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (ThrottlingRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ThrottlingRuleResponse)(nil)).Elem()
+}
+
+func (o ThrottlingRuleResponseOutput) ToThrottlingRuleResponseOutput() ThrottlingRuleResponseOutput {
+	return o
+}
+
+func (o ThrottlingRuleResponseOutput) ToThrottlingRuleResponseOutputWithContext(ctx context.Context) ThrottlingRuleResponseOutput {
+	return o
+}
+
+func (o ThrottlingRuleResponseOutput) Count() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ThrottlingRuleResponse) *float64 { return v.Count }).(pulumi.Float64PtrOutput)
+}
+
+func (o ThrottlingRuleResponseOutput) DynamicThrottlingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ThrottlingRuleResponse) *bool { return v.DynamicThrottlingEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o ThrottlingRuleResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ThrottlingRuleResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+func (o ThrottlingRuleResponseOutput) MatchPatterns() RequestMatchPatternResponseArrayOutput {
+	return o.ApplyT(func(v ThrottlingRuleResponse) []RequestMatchPatternResponse { return v.MatchPatterns }).(RequestMatchPatternResponseArrayOutput)
+}
+
+func (o ThrottlingRuleResponseOutput) MinCount() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ThrottlingRuleResponse) *float64 { return v.MinCount }).(pulumi.Float64PtrOutput)
+}
+
+func (o ThrottlingRuleResponseOutput) RenewalPeriod() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ThrottlingRuleResponse) *float64 { return v.RenewalPeriod }).(pulumi.Float64PtrOutput)
+}
+
+type ThrottlingRuleResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ThrottlingRuleResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ThrottlingRuleResponse)(nil)).Elem()
+}
+
+func (o ThrottlingRuleResponseArrayOutput) ToThrottlingRuleResponseArrayOutput() ThrottlingRuleResponseArrayOutput {
+	return o
+}
+
+func (o ThrottlingRuleResponseArrayOutput) ToThrottlingRuleResponseArrayOutputWithContext(ctx context.Context) ThrottlingRuleResponseArrayOutput {
+	return o
+}
+
+func (o ThrottlingRuleResponseArrayOutput) Index(i pulumi.IntInput) ThrottlingRuleResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ThrottlingRuleResponse {
+		return vs[0].([]ThrottlingRuleResponse)[vs[1].(int)]
+	}).(ThrottlingRuleResponseOutput)
+}
+
+// Describes the tmpfs options for the container
 type TmpfsOptions struct {
 	// Mention the Tmpfs size
 	Size *int `pulumi:"size"`
@@ -19753,6 +7192,7 @@ type TmpfsOptionsInput interface {
 	ToTmpfsOptionsOutputWithContext(context.Context) TmpfsOptionsOutput
 }
 
+// Describes the tmpfs options for the container
 type TmpfsOptionsArgs struct {
 	// Mention the Tmpfs size
 	Size pulumi.IntPtrInput `pulumi:"size"`
@@ -19811,6 +7251,7 @@ func (i *tmpfsOptionsPtrType) ToTmpfsOptionsPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(TmpfsOptionsPtrOutput)
 }
 
+// Describes the tmpfs options for the container
 type TmpfsOptionsOutput struct{ *pulumi.OutputState }
 
 func (TmpfsOptionsOutput) ElementType() reflect.Type {
@@ -19874,11 +7315,13 @@ func (o TmpfsOptionsPtrOutput) Size() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Describes the tmpfs options for the container
 type TmpfsOptionsResponse struct {
 	// Mention the Tmpfs size
 	Size *int `pulumi:"size"`
 }
 
+// Describes the tmpfs options for the container
 type TmpfsOptionsResponseOutput struct{ *pulumi.OutputState }
 
 func (TmpfsOptionsResponseOutput) ElementType() reflect.Type {
@@ -19929,274 +7372,6 @@ func (o TmpfsOptionsResponsePtrOutput) Size() pulumi.IntPtrOutput {
 			return nil
 		}
 		return v.Size
-	}).(pulumi.IntPtrOutput)
-}
-
-type TopNFeaturesByAttribution struct {
-	// Expected value is 'TopNByAttribution'.
-	FilterType string `pulumi:"filterType"`
-	// The number of top features to include.
-	Top *int `pulumi:"top"`
-}
-
-// Defaults sets the appropriate defaults for TopNFeaturesByAttribution
-func (val *TopNFeaturesByAttribution) Defaults() *TopNFeaturesByAttribution {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.Top == nil {
-		top_ := 10
-		tmp.Top = &top_
-	}
-	return &tmp
-}
-
-// TopNFeaturesByAttributionInput is an input type that accepts TopNFeaturesByAttributionArgs and TopNFeaturesByAttributionOutput values.
-// You can construct a concrete instance of `TopNFeaturesByAttributionInput` via:
-//
-//	TopNFeaturesByAttributionArgs{...}
-type TopNFeaturesByAttributionInput interface {
-	pulumi.Input
-
-	ToTopNFeaturesByAttributionOutput() TopNFeaturesByAttributionOutput
-	ToTopNFeaturesByAttributionOutputWithContext(context.Context) TopNFeaturesByAttributionOutput
-}
-
-type TopNFeaturesByAttributionArgs struct {
-	// Expected value is 'TopNByAttribution'.
-	FilterType pulumi.StringInput `pulumi:"filterType"`
-	// The number of top features to include.
-	Top pulumi.IntPtrInput `pulumi:"top"`
-}
-
-// Defaults sets the appropriate defaults for TopNFeaturesByAttributionArgs
-func (val *TopNFeaturesByAttributionArgs) Defaults() *TopNFeaturesByAttributionArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.Top == nil {
-		tmp.Top = pulumi.IntPtr(10)
-	}
-	return &tmp
-}
-func (TopNFeaturesByAttributionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TopNFeaturesByAttribution)(nil)).Elem()
-}
-
-func (i TopNFeaturesByAttributionArgs) ToTopNFeaturesByAttributionOutput() TopNFeaturesByAttributionOutput {
-	return i.ToTopNFeaturesByAttributionOutputWithContext(context.Background())
-}
-
-func (i TopNFeaturesByAttributionArgs) ToTopNFeaturesByAttributionOutputWithContext(ctx context.Context) TopNFeaturesByAttributionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopNFeaturesByAttributionOutput)
-}
-
-func (i TopNFeaturesByAttributionArgs) ToTopNFeaturesByAttributionPtrOutput() TopNFeaturesByAttributionPtrOutput {
-	return i.ToTopNFeaturesByAttributionPtrOutputWithContext(context.Background())
-}
-
-func (i TopNFeaturesByAttributionArgs) ToTopNFeaturesByAttributionPtrOutputWithContext(ctx context.Context) TopNFeaturesByAttributionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopNFeaturesByAttributionOutput).ToTopNFeaturesByAttributionPtrOutputWithContext(ctx)
-}
-
-// TopNFeaturesByAttributionPtrInput is an input type that accepts TopNFeaturesByAttributionArgs, TopNFeaturesByAttributionPtr and TopNFeaturesByAttributionPtrOutput values.
-// You can construct a concrete instance of `TopNFeaturesByAttributionPtrInput` via:
-//
-//	        TopNFeaturesByAttributionArgs{...}
-//
-//	or:
-//
-//	        nil
-type TopNFeaturesByAttributionPtrInput interface {
-	pulumi.Input
-
-	ToTopNFeaturesByAttributionPtrOutput() TopNFeaturesByAttributionPtrOutput
-	ToTopNFeaturesByAttributionPtrOutputWithContext(context.Context) TopNFeaturesByAttributionPtrOutput
-}
-
-type topNFeaturesByAttributionPtrType TopNFeaturesByAttributionArgs
-
-func TopNFeaturesByAttributionPtr(v *TopNFeaturesByAttributionArgs) TopNFeaturesByAttributionPtrInput {
-	return (*topNFeaturesByAttributionPtrType)(v)
-}
-
-func (*topNFeaturesByAttributionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TopNFeaturesByAttribution)(nil)).Elem()
-}
-
-func (i *topNFeaturesByAttributionPtrType) ToTopNFeaturesByAttributionPtrOutput() TopNFeaturesByAttributionPtrOutput {
-	return i.ToTopNFeaturesByAttributionPtrOutputWithContext(context.Background())
-}
-
-func (i *topNFeaturesByAttributionPtrType) ToTopNFeaturesByAttributionPtrOutputWithContext(ctx context.Context) TopNFeaturesByAttributionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopNFeaturesByAttributionPtrOutput)
-}
-
-type TopNFeaturesByAttributionOutput struct{ *pulumi.OutputState }
-
-func (TopNFeaturesByAttributionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TopNFeaturesByAttribution)(nil)).Elem()
-}
-
-func (o TopNFeaturesByAttributionOutput) ToTopNFeaturesByAttributionOutput() TopNFeaturesByAttributionOutput {
-	return o
-}
-
-func (o TopNFeaturesByAttributionOutput) ToTopNFeaturesByAttributionOutputWithContext(ctx context.Context) TopNFeaturesByAttributionOutput {
-	return o
-}
-
-func (o TopNFeaturesByAttributionOutput) ToTopNFeaturesByAttributionPtrOutput() TopNFeaturesByAttributionPtrOutput {
-	return o.ToTopNFeaturesByAttributionPtrOutputWithContext(context.Background())
-}
-
-func (o TopNFeaturesByAttributionOutput) ToTopNFeaturesByAttributionPtrOutputWithContext(ctx context.Context) TopNFeaturesByAttributionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TopNFeaturesByAttribution) *TopNFeaturesByAttribution {
-		return &v
-	}).(TopNFeaturesByAttributionPtrOutput)
-}
-
-// Expected value is 'TopNByAttribution'.
-func (o TopNFeaturesByAttributionOutput) FilterType() pulumi.StringOutput {
-	return o.ApplyT(func(v TopNFeaturesByAttribution) string { return v.FilterType }).(pulumi.StringOutput)
-}
-
-// The number of top features to include.
-func (o TopNFeaturesByAttributionOutput) Top() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v TopNFeaturesByAttribution) *int { return v.Top }).(pulumi.IntPtrOutput)
-}
-
-type TopNFeaturesByAttributionPtrOutput struct{ *pulumi.OutputState }
-
-func (TopNFeaturesByAttributionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TopNFeaturesByAttribution)(nil)).Elem()
-}
-
-func (o TopNFeaturesByAttributionPtrOutput) ToTopNFeaturesByAttributionPtrOutput() TopNFeaturesByAttributionPtrOutput {
-	return o
-}
-
-func (o TopNFeaturesByAttributionPtrOutput) ToTopNFeaturesByAttributionPtrOutputWithContext(ctx context.Context) TopNFeaturesByAttributionPtrOutput {
-	return o
-}
-
-func (o TopNFeaturesByAttributionPtrOutput) Elem() TopNFeaturesByAttributionOutput {
-	return o.ApplyT(func(v *TopNFeaturesByAttribution) TopNFeaturesByAttribution {
-		if v != nil {
-			return *v
-		}
-		var ret TopNFeaturesByAttribution
-		return ret
-	}).(TopNFeaturesByAttributionOutput)
-}
-
-// Expected value is 'TopNByAttribution'.
-func (o TopNFeaturesByAttributionPtrOutput) FilterType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TopNFeaturesByAttribution) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.FilterType
-	}).(pulumi.StringPtrOutput)
-}
-
-// The number of top features to include.
-func (o TopNFeaturesByAttributionPtrOutput) Top() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *TopNFeaturesByAttribution) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Top
-	}).(pulumi.IntPtrOutput)
-}
-
-type TopNFeaturesByAttributionResponse struct {
-	// Expected value is 'TopNByAttribution'.
-	FilterType string `pulumi:"filterType"`
-	// The number of top features to include.
-	Top *int `pulumi:"top"`
-}
-
-// Defaults sets the appropriate defaults for TopNFeaturesByAttributionResponse
-func (val *TopNFeaturesByAttributionResponse) Defaults() *TopNFeaturesByAttributionResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.Top == nil {
-		top_ := 10
-		tmp.Top = &top_
-	}
-	return &tmp
-}
-
-type TopNFeaturesByAttributionResponseOutput struct{ *pulumi.OutputState }
-
-func (TopNFeaturesByAttributionResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TopNFeaturesByAttributionResponse)(nil)).Elem()
-}
-
-func (o TopNFeaturesByAttributionResponseOutput) ToTopNFeaturesByAttributionResponseOutput() TopNFeaturesByAttributionResponseOutput {
-	return o
-}
-
-func (o TopNFeaturesByAttributionResponseOutput) ToTopNFeaturesByAttributionResponseOutputWithContext(ctx context.Context) TopNFeaturesByAttributionResponseOutput {
-	return o
-}
-
-// Expected value is 'TopNByAttribution'.
-func (o TopNFeaturesByAttributionResponseOutput) FilterType() pulumi.StringOutput {
-	return o.ApplyT(func(v TopNFeaturesByAttributionResponse) string { return v.FilterType }).(pulumi.StringOutput)
-}
-
-// The number of top features to include.
-func (o TopNFeaturesByAttributionResponseOutput) Top() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v TopNFeaturesByAttributionResponse) *int { return v.Top }).(pulumi.IntPtrOutput)
-}
-
-type TopNFeaturesByAttributionResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (TopNFeaturesByAttributionResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TopNFeaturesByAttributionResponse)(nil)).Elem()
-}
-
-func (o TopNFeaturesByAttributionResponsePtrOutput) ToTopNFeaturesByAttributionResponsePtrOutput() TopNFeaturesByAttributionResponsePtrOutput {
-	return o
-}
-
-func (o TopNFeaturesByAttributionResponsePtrOutput) ToTopNFeaturesByAttributionResponsePtrOutputWithContext(ctx context.Context) TopNFeaturesByAttributionResponsePtrOutput {
-	return o
-}
-
-func (o TopNFeaturesByAttributionResponsePtrOutput) Elem() TopNFeaturesByAttributionResponseOutput {
-	return o.ApplyT(func(v *TopNFeaturesByAttributionResponse) TopNFeaturesByAttributionResponse {
-		if v != nil {
-			return *v
-		}
-		var ret TopNFeaturesByAttributionResponse
-		return ret
-	}).(TopNFeaturesByAttributionResponseOutput)
-}
-
-// Expected value is 'TopNByAttribution'.
-func (o TopNFeaturesByAttributionResponsePtrOutput) FilterType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TopNFeaturesByAttributionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.FilterType
-	}).(pulumi.StringPtrOutput)
-}
-
-// The number of top features to include.
-func (o TopNFeaturesByAttributionResponsePtrOutput) Top() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *TopNFeaturesByAttributionResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Top
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -20398,7 +7573,7 @@ type TritonModelJobInput struct {
 	// Enum to determine the Job Input Type.
 	// Expected value is 'triton_model'.
 	JobInputType string `pulumi:"jobInputType"`
-	// Enum to determine the input data delivery mode.
+	// Input Asset Delivery Mode.
 	Mode *string `pulumi:"mode"`
 	// [Required] Input Asset URI.
 	Uri string `pulumi:"uri"`
@@ -20434,7 +7609,7 @@ type TritonModelJobInputArgs struct {
 	// Enum to determine the Job Input Type.
 	// Expected value is 'triton_model'.
 	JobInputType pulumi.StringInput `pulumi:"jobInputType"`
-	// Enum to determine the input data delivery mode.
+	// Input Asset Delivery Mode.
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
 	// [Required] Input Asset URI.
 	Uri pulumi.StringInput `pulumi:"uri"`
@@ -20488,7 +7663,7 @@ func (o TritonModelJobInputOutput) JobInputType() pulumi.StringOutput {
 	return o.ApplyT(func(v TritonModelJobInput) string { return v.JobInputType }).(pulumi.StringOutput)
 }
 
-// Enum to determine the input data delivery mode.
+// Input Asset Delivery Mode.
 func (o TritonModelJobInputOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TritonModelJobInput) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
@@ -20504,7 +7679,7 @@ type TritonModelJobInputResponse struct {
 	// Enum to determine the Job Input Type.
 	// Expected value is 'triton_model'.
 	JobInputType string `pulumi:"jobInputType"`
-	// Enum to determine the input data delivery mode.
+	// Input Asset Delivery Mode.
 	Mode *string `pulumi:"mode"`
 	// [Required] Input Asset URI.
 	Uri string `pulumi:"uri"`
@@ -20548,7 +7723,7 @@ func (o TritonModelJobInputResponseOutput) JobInputType() pulumi.StringOutput {
 	return o.ApplyT(func(v TritonModelJobInputResponse) string { return v.JobInputType }).(pulumi.StringOutput)
 }
 
-// Enum to determine the input data delivery mode.
+// Input Asset Delivery Mode.
 func (o TritonModelJobInputResponseOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TritonModelJobInputResponse) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
@@ -20559,14 +7734,12 @@ func (o TritonModelJobInputResponseOutput) Uri() pulumi.StringOutput {
 }
 
 type TritonModelJobOutput struct {
-	// Output Asset Name.
-	AssetName *string `pulumi:"assetName"`
 	// Description for the output.
 	Description *string `pulumi:"description"`
 	// Enum to determine the Job Output Type.
 	// Expected value is 'triton_model'.
 	JobOutputType string `pulumi:"jobOutputType"`
-	// Output data delivery mode enums.
+	// Output Asset Delivery Mode.
 	Mode *string `pulumi:"mode"`
 	// Output Asset URI.
 	Uri *string `pulumi:"uri"`
@@ -20597,14 +7770,12 @@ type TritonModelJobOutputInput interface {
 }
 
 type TritonModelJobOutputArgs struct {
-	// Output Asset Name.
-	AssetName pulumi.StringPtrInput `pulumi:"assetName"`
 	// Description for the output.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Enum to determine the Job Output Type.
 	// Expected value is 'triton_model'.
 	JobOutputType pulumi.StringInput `pulumi:"jobOutputType"`
-	// Output data delivery mode enums.
+	// Output Asset Delivery Mode.
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
 	// Output Asset URI.
 	Uri pulumi.StringPtrInput `pulumi:"uri"`
@@ -20647,11 +7818,6 @@ func (o TritonModelJobOutputOutput) ToTritonModelJobOutputOutputWithContext(ctx 
 	return o
 }
 
-// Output Asset Name.
-func (o TritonModelJobOutputOutput) AssetName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TritonModelJobOutput) *string { return v.AssetName }).(pulumi.StringPtrOutput)
-}
-
 // Description for the output.
 func (o TritonModelJobOutputOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TritonModelJobOutput) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -20663,7 +7829,7 @@ func (o TritonModelJobOutputOutput) JobOutputType() pulumi.StringOutput {
 	return o.ApplyT(func(v TritonModelJobOutput) string { return v.JobOutputType }).(pulumi.StringOutput)
 }
 
-// Output data delivery mode enums.
+// Output Asset Delivery Mode.
 func (o TritonModelJobOutputOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TritonModelJobOutput) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
@@ -20674,14 +7840,12 @@ func (o TritonModelJobOutputOutput) Uri() pulumi.StringPtrOutput {
 }
 
 type TritonModelJobOutputResponse struct {
-	// Output Asset Name.
-	AssetName *string `pulumi:"assetName"`
 	// Description for the output.
 	Description *string `pulumi:"description"`
 	// Enum to determine the Job Output Type.
 	// Expected value is 'triton_model'.
 	JobOutputType string `pulumi:"jobOutputType"`
-	// Output data delivery mode enums.
+	// Output Asset Delivery Mode.
 	Mode *string `pulumi:"mode"`
 	// Output Asset URI.
 	Uri *string `pulumi:"uri"`
@@ -20714,11 +7878,6 @@ func (o TritonModelJobOutputResponseOutput) ToTritonModelJobOutputResponseOutput
 	return o
 }
 
-// Output Asset Name.
-func (o TritonModelJobOutputResponseOutput) AssetName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TritonModelJobOutputResponse) *string { return v.AssetName }).(pulumi.StringPtrOutput)
-}
-
 // Description for the output.
 func (o TritonModelJobOutputResponseOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TritonModelJobOutputResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -20730,7 +7889,7 @@ func (o TritonModelJobOutputResponseOutput) JobOutputType() pulumi.StringOutput 
 	return o.ApplyT(func(v TritonModelJobOutputResponse) string { return v.JobOutputType }).(pulumi.StringOutput)
 }
 
-// Output data delivery mode enums.
+// Output Asset Delivery Mode.
 func (o TritonModelJobOutputResponseOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TritonModelJobOutputResponse) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
@@ -21343,7 +8502,7 @@ type UriFileJobInput struct {
 	// Enum to determine the Job Input Type.
 	// Expected value is 'uri_file'.
 	JobInputType string `pulumi:"jobInputType"`
-	// Enum to determine the input data delivery mode.
+	// Input Asset Delivery Mode.
 	Mode *string `pulumi:"mode"`
 	// [Required] Input Asset URI.
 	Uri string `pulumi:"uri"`
@@ -21379,7 +8538,7 @@ type UriFileJobInputArgs struct {
 	// Enum to determine the Job Input Type.
 	// Expected value is 'uri_file'.
 	JobInputType pulumi.StringInput `pulumi:"jobInputType"`
-	// Enum to determine the input data delivery mode.
+	// Input Asset Delivery Mode.
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
 	// [Required] Input Asset URI.
 	Uri pulumi.StringInput `pulumi:"uri"`
@@ -21433,7 +8592,7 @@ func (o UriFileJobInputOutput) JobInputType() pulumi.StringOutput {
 	return o.ApplyT(func(v UriFileJobInput) string { return v.JobInputType }).(pulumi.StringOutput)
 }
 
-// Enum to determine the input data delivery mode.
+// Input Asset Delivery Mode.
 func (o UriFileJobInputOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UriFileJobInput) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
@@ -21449,7 +8608,7 @@ type UriFileJobInputResponse struct {
 	// Enum to determine the Job Input Type.
 	// Expected value is 'uri_file'.
 	JobInputType string `pulumi:"jobInputType"`
-	// Enum to determine the input data delivery mode.
+	// Input Asset Delivery Mode.
 	Mode *string `pulumi:"mode"`
 	// [Required] Input Asset URI.
 	Uri string `pulumi:"uri"`
@@ -21493,7 +8652,7 @@ func (o UriFileJobInputResponseOutput) JobInputType() pulumi.StringOutput {
 	return o.ApplyT(func(v UriFileJobInputResponse) string { return v.JobInputType }).(pulumi.StringOutput)
 }
 
-// Enum to determine the input data delivery mode.
+// Input Asset Delivery Mode.
 func (o UriFileJobInputResponseOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UriFileJobInputResponse) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
@@ -21504,14 +8663,12 @@ func (o UriFileJobInputResponseOutput) Uri() pulumi.StringOutput {
 }
 
 type UriFileJobOutput struct {
-	// Output Asset Name.
-	AssetName *string `pulumi:"assetName"`
 	// Description for the output.
 	Description *string `pulumi:"description"`
 	// Enum to determine the Job Output Type.
 	// Expected value is 'uri_file'.
 	JobOutputType string `pulumi:"jobOutputType"`
-	// Output data delivery mode enums.
+	// Output Asset Delivery Mode.
 	Mode *string `pulumi:"mode"`
 	// Output Asset URI.
 	Uri *string `pulumi:"uri"`
@@ -21542,14 +8699,12 @@ type UriFileJobOutputInput interface {
 }
 
 type UriFileJobOutputArgs struct {
-	// Output Asset Name.
-	AssetName pulumi.StringPtrInput `pulumi:"assetName"`
 	// Description for the output.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Enum to determine the Job Output Type.
 	// Expected value is 'uri_file'.
 	JobOutputType pulumi.StringInput `pulumi:"jobOutputType"`
-	// Output data delivery mode enums.
+	// Output Asset Delivery Mode.
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
 	// Output Asset URI.
 	Uri pulumi.StringPtrInput `pulumi:"uri"`
@@ -21592,11 +8747,6 @@ func (o UriFileJobOutputOutput) ToUriFileJobOutputOutputWithContext(ctx context.
 	return o
 }
 
-// Output Asset Name.
-func (o UriFileJobOutputOutput) AssetName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v UriFileJobOutput) *string { return v.AssetName }).(pulumi.StringPtrOutput)
-}
-
 // Description for the output.
 func (o UriFileJobOutputOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UriFileJobOutput) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -21608,7 +8758,7 @@ func (o UriFileJobOutputOutput) JobOutputType() pulumi.StringOutput {
 	return o.ApplyT(func(v UriFileJobOutput) string { return v.JobOutputType }).(pulumi.StringOutput)
 }
 
-// Output data delivery mode enums.
+// Output Asset Delivery Mode.
 func (o UriFileJobOutputOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UriFileJobOutput) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
@@ -21619,14 +8769,12 @@ func (o UriFileJobOutputOutput) Uri() pulumi.StringPtrOutput {
 }
 
 type UriFileJobOutputResponse struct {
-	// Output Asset Name.
-	AssetName *string `pulumi:"assetName"`
 	// Description for the output.
 	Description *string `pulumi:"description"`
 	// Enum to determine the Job Output Type.
 	// Expected value is 'uri_file'.
 	JobOutputType string `pulumi:"jobOutputType"`
-	// Output data delivery mode enums.
+	// Output Asset Delivery Mode.
 	Mode *string `pulumi:"mode"`
 	// Output Asset URI.
 	Uri *string `pulumi:"uri"`
@@ -21659,11 +8807,6 @@ func (o UriFileJobOutputResponseOutput) ToUriFileJobOutputResponseOutputWithCont
 	return o
 }
 
-// Output Asset Name.
-func (o UriFileJobOutputResponseOutput) AssetName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v UriFileJobOutputResponse) *string { return v.AssetName }).(pulumi.StringPtrOutput)
-}
-
 // Description for the output.
 func (o UriFileJobOutputResponseOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UriFileJobOutputResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -21675,7 +8818,7 @@ func (o UriFileJobOutputResponseOutput) JobOutputType() pulumi.StringOutput {
 	return o.ApplyT(func(v UriFileJobOutputResponse) string { return v.JobOutputType }).(pulumi.StringOutput)
 }
 
-// Output data delivery mode enums.
+// Output Asset Delivery Mode.
 func (o UriFileJobOutputResponseOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UriFileJobOutputResponse) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
@@ -21921,7 +9064,7 @@ type UriFolderJobInput struct {
 	// Enum to determine the Job Input Type.
 	// Expected value is 'uri_folder'.
 	JobInputType string `pulumi:"jobInputType"`
-	// Enum to determine the input data delivery mode.
+	// Input Asset Delivery Mode.
 	Mode *string `pulumi:"mode"`
 	// [Required] Input Asset URI.
 	Uri string `pulumi:"uri"`
@@ -21957,7 +9100,7 @@ type UriFolderJobInputArgs struct {
 	// Enum to determine the Job Input Type.
 	// Expected value is 'uri_folder'.
 	JobInputType pulumi.StringInput `pulumi:"jobInputType"`
-	// Enum to determine the input data delivery mode.
+	// Input Asset Delivery Mode.
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
 	// [Required] Input Asset URI.
 	Uri pulumi.StringInput `pulumi:"uri"`
@@ -22011,7 +9154,7 @@ func (o UriFolderJobInputOutput) JobInputType() pulumi.StringOutput {
 	return o.ApplyT(func(v UriFolderJobInput) string { return v.JobInputType }).(pulumi.StringOutput)
 }
 
-// Enum to determine the input data delivery mode.
+// Input Asset Delivery Mode.
 func (o UriFolderJobInputOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UriFolderJobInput) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
@@ -22027,7 +9170,7 @@ type UriFolderJobInputResponse struct {
 	// Enum to determine the Job Input Type.
 	// Expected value is 'uri_folder'.
 	JobInputType string `pulumi:"jobInputType"`
-	// Enum to determine the input data delivery mode.
+	// Input Asset Delivery Mode.
 	Mode *string `pulumi:"mode"`
 	// [Required] Input Asset URI.
 	Uri string `pulumi:"uri"`
@@ -22071,7 +9214,7 @@ func (o UriFolderJobInputResponseOutput) JobInputType() pulumi.StringOutput {
 	return o.ApplyT(func(v UriFolderJobInputResponse) string { return v.JobInputType }).(pulumi.StringOutput)
 }
 
-// Enum to determine the input data delivery mode.
+// Input Asset Delivery Mode.
 func (o UriFolderJobInputResponseOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UriFolderJobInputResponse) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
@@ -22082,14 +9225,12 @@ func (o UriFolderJobInputResponseOutput) Uri() pulumi.StringOutput {
 }
 
 type UriFolderJobOutput struct {
-	// Output Asset Name.
-	AssetName *string `pulumi:"assetName"`
 	// Description for the output.
 	Description *string `pulumi:"description"`
 	// Enum to determine the Job Output Type.
 	// Expected value is 'uri_folder'.
 	JobOutputType string `pulumi:"jobOutputType"`
-	// Output data delivery mode enums.
+	// Output Asset Delivery Mode.
 	Mode *string `pulumi:"mode"`
 	// Output Asset URI.
 	Uri *string `pulumi:"uri"`
@@ -22120,14 +9261,12 @@ type UriFolderJobOutputInput interface {
 }
 
 type UriFolderJobOutputArgs struct {
-	// Output Asset Name.
-	AssetName pulumi.StringPtrInput `pulumi:"assetName"`
 	// Description for the output.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Enum to determine the Job Output Type.
 	// Expected value is 'uri_folder'.
 	JobOutputType pulumi.StringInput `pulumi:"jobOutputType"`
-	// Output data delivery mode enums.
+	// Output Asset Delivery Mode.
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
 	// Output Asset URI.
 	Uri pulumi.StringPtrInput `pulumi:"uri"`
@@ -22170,11 +9309,6 @@ func (o UriFolderJobOutputOutput) ToUriFolderJobOutputOutputWithContext(ctx cont
 	return o
 }
 
-// Output Asset Name.
-func (o UriFolderJobOutputOutput) AssetName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v UriFolderJobOutput) *string { return v.AssetName }).(pulumi.StringPtrOutput)
-}
-
 // Description for the output.
 func (o UriFolderJobOutputOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UriFolderJobOutput) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -22186,7 +9320,7 @@ func (o UriFolderJobOutputOutput) JobOutputType() pulumi.StringOutput {
 	return o.ApplyT(func(v UriFolderJobOutput) string { return v.JobOutputType }).(pulumi.StringOutput)
 }
 
-// Output data delivery mode enums.
+// Output Asset Delivery Mode.
 func (o UriFolderJobOutputOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UriFolderJobOutput) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
@@ -22197,14 +9331,12 @@ func (o UriFolderJobOutputOutput) Uri() pulumi.StringPtrOutput {
 }
 
 type UriFolderJobOutputResponse struct {
-	// Output Asset Name.
-	AssetName *string `pulumi:"assetName"`
 	// Description for the output.
 	Description *string `pulumi:"description"`
 	// Enum to determine the Job Output Type.
 	// Expected value is 'uri_folder'.
 	JobOutputType string `pulumi:"jobOutputType"`
-	// Output data delivery mode enums.
+	// Output Asset Delivery Mode.
 	Mode *string `pulumi:"mode"`
 	// Output Asset URI.
 	Uri *string `pulumi:"uri"`
@@ -22237,11 +9369,6 @@ func (o UriFolderJobOutputResponseOutput) ToUriFolderJobOutputResponseOutputWith
 	return o
 }
 
-// Output Asset Name.
-func (o UriFolderJobOutputResponseOutput) AssetName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v UriFolderJobOutputResponse) *string { return v.AssetName }).(pulumi.StringPtrOutput)
-}
-
 // Description for the output.
 func (o UriFolderJobOutputResponseOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UriFolderJobOutputResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -22253,7 +9380,7 @@ func (o UriFolderJobOutputResponseOutput) JobOutputType() pulumi.StringOutput {
 	return o.ApplyT(func(v UriFolderJobOutputResponse) string { return v.JobOutputType }).(pulumi.StringOutput)
 }
 
-// Output data delivery mode enums.
+// Output Asset Delivery Mode.
 func (o UriFolderJobOutputResponseOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UriFolderJobOutputResponse) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
@@ -22541,6 +9668,8 @@ type UserAssignedIdentityResponse struct {
 	ClientId string `pulumi:"clientId"`
 	// The principal ID of the assigned identity.
 	PrincipalId string `pulumi:"principalId"`
+	// The tenant ID of the user assigned identity.
+	TenantId *string `pulumi:"tenantId"`
 }
 
 // User assigned identity properties
@@ -22568,6 +9697,11 @@ func (o UserAssignedIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
 }
 
+// The tenant ID of the user assigned identity.
+func (o UserAssignedIdentityResponseOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserAssignedIdentityResponse) *string { return v.TenantId }).(pulumi.StringPtrOutput)
+}
+
 type UserAssignedIdentityResponseMapOutput struct{ *pulumi.OutputState }
 
 func (UserAssignedIdentityResponseMapOutput) ElementType() reflect.Type {
@@ -22586,186 +9720,6 @@ func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) Us
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) UserAssignedIdentityResponse {
 		return vs[0].(map[string]UserAssignedIdentityResponse)[vs[1].(string)]
 	}).(UserAssignedIdentityResponseOutput)
-}
-
-// User Assigned Identity
-type UserAssignedIdentityResponseV1 struct {
-	// The clientId(aka appId) of the user assigned identity.
-	ClientId string `pulumi:"clientId"`
-	// The principal ID of the user assigned identity.
-	PrincipalId string `pulumi:"principalId"`
-	// The tenant ID of the user assigned identity.
-	TenantId string `pulumi:"tenantId"`
-}
-
-// User Assigned Identity
-type UserAssignedIdentityResponseV1Output struct{ *pulumi.OutputState }
-
-func (UserAssignedIdentityResponseV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserAssignedIdentityResponseV1)(nil)).Elem()
-}
-
-func (o UserAssignedIdentityResponseV1Output) ToUserAssignedIdentityResponseV1Output() UserAssignedIdentityResponseV1Output {
-	return o
-}
-
-func (o UserAssignedIdentityResponseV1Output) ToUserAssignedIdentityResponseV1OutputWithContext(ctx context.Context) UserAssignedIdentityResponseV1Output {
-	return o
-}
-
-// The clientId(aka appId) of the user assigned identity.
-func (o UserAssignedIdentityResponseV1Output) ClientId() pulumi.StringOutput {
-	return o.ApplyT(func(v UserAssignedIdentityResponseV1) string { return v.ClientId }).(pulumi.StringOutput)
-}
-
-// The principal ID of the user assigned identity.
-func (o UserAssignedIdentityResponseV1Output) PrincipalId() pulumi.StringOutput {
-	return o.ApplyT(func(v UserAssignedIdentityResponseV1) string { return v.PrincipalId }).(pulumi.StringOutput)
-}
-
-// The tenant ID of the user assigned identity.
-func (o UserAssignedIdentityResponseV1Output) TenantId() pulumi.StringOutput {
-	return o.ApplyT(func(v UserAssignedIdentityResponseV1) string { return v.TenantId }).(pulumi.StringOutput)
-}
-
-type UserAssignedIdentityResponseV1MapOutput struct{ *pulumi.OutputState }
-
-func (UserAssignedIdentityResponseV1MapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]UserAssignedIdentityResponseV1)(nil)).Elem()
-}
-
-func (o UserAssignedIdentityResponseV1MapOutput) ToUserAssignedIdentityResponseV1MapOutput() UserAssignedIdentityResponseV1MapOutput {
-	return o
-}
-
-func (o UserAssignedIdentityResponseV1MapOutput) ToUserAssignedIdentityResponseV1MapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseV1MapOutput {
-	return o
-}
-
-func (o UserAssignedIdentityResponseV1MapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseV1Output {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) UserAssignedIdentityResponseV1 {
-		return vs[0].(map[string]UserAssignedIdentityResponseV1)[vs[1].(string)]
-	}).(UserAssignedIdentityResponseV1Output)
-}
-
-// User Assigned Identity
-type UserAssignedIdentityResponseV2 struct {
-	// The clientId(aka appId) of the user assigned identity.
-	ClientId string `pulumi:"clientId"`
-	// The principal ID of the user assigned identity.
-	PrincipalId string `pulumi:"principalId"`
-	// The tenant ID of the user assigned identity.
-	TenantId string `pulumi:"tenantId"`
-}
-
-// User Assigned Identity
-type UserAssignedIdentityResponseV2Output struct{ *pulumi.OutputState }
-
-func (UserAssignedIdentityResponseV2Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserAssignedIdentityResponseV2)(nil)).Elem()
-}
-
-func (o UserAssignedIdentityResponseV2Output) ToUserAssignedIdentityResponseV2Output() UserAssignedIdentityResponseV2Output {
-	return o
-}
-
-func (o UserAssignedIdentityResponseV2Output) ToUserAssignedIdentityResponseV2OutputWithContext(ctx context.Context) UserAssignedIdentityResponseV2Output {
-	return o
-}
-
-// The clientId(aka appId) of the user assigned identity.
-func (o UserAssignedIdentityResponseV2Output) ClientId() pulumi.StringOutput {
-	return o.ApplyT(func(v UserAssignedIdentityResponseV2) string { return v.ClientId }).(pulumi.StringOutput)
-}
-
-// The principal ID of the user assigned identity.
-func (o UserAssignedIdentityResponseV2Output) PrincipalId() pulumi.StringOutput {
-	return o.ApplyT(func(v UserAssignedIdentityResponseV2) string { return v.PrincipalId }).(pulumi.StringOutput)
-}
-
-// The tenant ID of the user assigned identity.
-func (o UserAssignedIdentityResponseV2Output) TenantId() pulumi.StringOutput {
-	return o.ApplyT(func(v UserAssignedIdentityResponseV2) string { return v.TenantId }).(pulumi.StringOutput)
-}
-
-type UserAssignedIdentityResponseV2MapOutput struct{ *pulumi.OutputState }
-
-func (UserAssignedIdentityResponseV2MapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]UserAssignedIdentityResponseV2)(nil)).Elem()
-}
-
-func (o UserAssignedIdentityResponseV2MapOutput) ToUserAssignedIdentityResponseV2MapOutput() UserAssignedIdentityResponseV2MapOutput {
-	return o
-}
-
-func (o UserAssignedIdentityResponseV2MapOutput) ToUserAssignedIdentityResponseV2MapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseV2MapOutput {
-	return o
-}
-
-func (o UserAssignedIdentityResponseV2MapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseV2Output {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) UserAssignedIdentityResponseV2 {
-		return vs[0].(map[string]UserAssignedIdentityResponseV2)[vs[1].(string)]
-	}).(UserAssignedIdentityResponseV2Output)
-}
-
-// User Assigned Identity
-type UserAssignedIdentityResponseV3 struct {
-	// The clientId(aka appId) of the user assigned identity.
-	ClientId string `pulumi:"clientId"`
-	// The principal ID of the user assigned identity.
-	PrincipalId string `pulumi:"principalId"`
-	// The tenant ID of the user assigned identity.
-	TenantId string `pulumi:"tenantId"`
-}
-
-// User Assigned Identity
-type UserAssignedIdentityResponseV3Output struct{ *pulumi.OutputState }
-
-func (UserAssignedIdentityResponseV3Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserAssignedIdentityResponseV3)(nil)).Elem()
-}
-
-func (o UserAssignedIdentityResponseV3Output) ToUserAssignedIdentityResponseV3Output() UserAssignedIdentityResponseV3Output {
-	return o
-}
-
-func (o UserAssignedIdentityResponseV3Output) ToUserAssignedIdentityResponseV3OutputWithContext(ctx context.Context) UserAssignedIdentityResponseV3Output {
-	return o
-}
-
-// The clientId(aka appId) of the user assigned identity.
-func (o UserAssignedIdentityResponseV3Output) ClientId() pulumi.StringOutput {
-	return o.ApplyT(func(v UserAssignedIdentityResponseV3) string { return v.ClientId }).(pulumi.StringOutput)
-}
-
-// The principal ID of the user assigned identity.
-func (o UserAssignedIdentityResponseV3Output) PrincipalId() pulumi.StringOutput {
-	return o.ApplyT(func(v UserAssignedIdentityResponseV3) string { return v.PrincipalId }).(pulumi.StringOutput)
-}
-
-// The tenant ID of the user assigned identity.
-func (o UserAssignedIdentityResponseV3Output) TenantId() pulumi.StringOutput {
-	return o.ApplyT(func(v UserAssignedIdentityResponseV3) string { return v.TenantId }).(pulumi.StringOutput)
-}
-
-type UserAssignedIdentityResponseV3MapOutput struct{ *pulumi.OutputState }
-
-func (UserAssignedIdentityResponseV3MapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]UserAssignedIdentityResponseV3)(nil)).Elem()
-}
-
-func (o UserAssignedIdentityResponseV3MapOutput) ToUserAssignedIdentityResponseV3MapOutput() UserAssignedIdentityResponseV3MapOutput {
-	return o
-}
-
-func (o UserAssignedIdentityResponseV3MapOutput) ToUserAssignedIdentityResponseV3MapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseV3MapOutput {
-	return o
-}
-
-func (o UserAssignedIdentityResponseV3MapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseV3Output {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) UserAssignedIdentityResponseV3 {
-		return vs[0].(map[string]UserAssignedIdentityResponseV3)[vs[1].(string)]
-	}).(UserAssignedIdentityResponseV3Output)
 }
 
 // User identity configuration.
@@ -23142,18 +10096,13 @@ type UsernamePasswordAuthTypeWorkspaceConnectionProperties struct {
 	// Expected value is 'UsernamePassword'.
 	AuthType string `pulumi:"authType"`
 	// Category of the connection
-	Category      *string                              `pulumi:"category"`
-	Credentials   *WorkspaceConnectionUsernamePassword `pulumi:"credentials"`
-	Error         *string                              `pulumi:"error"`
-	ExpiryTime    *string                              `pulumi:"expiryTime"`
-	IsSharedToAll *bool                                `pulumi:"isSharedToAll"`
-	// Store user metadata for this connection
-	Metadata                    map[string]string `pulumi:"metadata"`
-	PeRequirement               *string           `pulumi:"peRequirement"`
-	PeStatus                    *string           `pulumi:"peStatus"`
-	SharedUserList              []string          `pulumi:"sharedUserList"`
-	Target                      *string           `pulumi:"target"`
-	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
+	Category    *string                              `pulumi:"category"`
+	Credentials *WorkspaceConnectionUsernamePassword `pulumi:"credentials"`
+	Target      *string                              `pulumi:"target"`
+	// Value details of the workspace connection.
+	Value *string `pulumi:"value"`
+	// format for the workspace connection value
+	ValueFormat *string `pulumi:"valueFormat"`
 }
 
 // UsernamePasswordAuthTypeWorkspaceConnectionPropertiesInput is an input type that accepts UsernamePasswordAuthTypeWorkspaceConnectionPropertiesArgs and UsernamePasswordAuthTypeWorkspaceConnectionPropertiesOutput values.
@@ -23172,18 +10121,13 @@ type UsernamePasswordAuthTypeWorkspaceConnectionPropertiesArgs struct {
 	// Expected value is 'UsernamePassword'.
 	AuthType pulumi.StringInput `pulumi:"authType"`
 	// Category of the connection
-	Category      pulumi.StringPtrInput                       `pulumi:"category"`
-	Credentials   WorkspaceConnectionUsernamePasswordPtrInput `pulumi:"credentials"`
-	Error         pulumi.StringPtrInput                       `pulumi:"error"`
-	ExpiryTime    pulumi.StringPtrInput                       `pulumi:"expiryTime"`
-	IsSharedToAll pulumi.BoolPtrInput                         `pulumi:"isSharedToAll"`
-	// Store user metadata for this connection
-	Metadata                    pulumi.StringMapInput   `pulumi:"metadata"`
-	PeRequirement               pulumi.StringPtrInput   `pulumi:"peRequirement"`
-	PeStatus                    pulumi.StringPtrInput   `pulumi:"peStatus"`
-	SharedUserList              pulumi.StringArrayInput `pulumi:"sharedUserList"`
-	Target                      pulumi.StringPtrInput   `pulumi:"target"`
-	UseWorkspaceManagedIdentity pulumi.BoolPtrInput     `pulumi:"useWorkspaceManagedIdentity"`
+	Category    pulumi.StringPtrInput                       `pulumi:"category"`
+	Credentials WorkspaceConnectionUsernamePasswordPtrInput `pulumi:"credentials"`
+	Target      pulumi.StringPtrInput                       `pulumi:"target"`
+	// Value details of the workspace connection.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+	// format for the workspace connection value
+	ValueFormat pulumi.StringPtrInput `pulumi:"valueFormat"`
 }
 
 func (UsernamePasswordAuthTypeWorkspaceConnectionPropertiesArgs) ElementType() reflect.Type {
@@ -23229,43 +10173,18 @@ func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesOutput) Credentials
 	}).(WorkspaceConnectionUsernamePasswordPtrOutput)
 }
 
-func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesOutput) Error() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionProperties) *string { return v.Error }).(pulumi.StringPtrOutput)
-}
-
-func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesOutput) ExpiryTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionProperties) *string { return v.ExpiryTime }).(pulumi.StringPtrOutput)
-}
-
-func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesOutput) IsSharedToAll() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionProperties) *bool { return v.IsSharedToAll }).(pulumi.BoolPtrOutput)
-}
-
-// Store user metadata for this connection
-func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesOutput) Metadata() pulumi.StringMapOutput {
-	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionProperties) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
-}
-
-func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesOutput) PeRequirement() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionProperties) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
-}
-
-func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesOutput) PeStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionProperties) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
-}
-
-func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesOutput) SharedUserList() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionProperties) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
-}
-
 func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionProperties) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
 
-func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesOutput) UseWorkspaceManagedIdentity() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionProperties) *bool {
-		return v.UseWorkspaceManagedIdentity
-	}).(pulumi.BoolPtrOutput)
+// Value details of the workspace connection.
+func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionProperties) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+// format for the workspace connection value
+func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesOutput) ValueFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionProperties) *string { return v.ValueFormat }).(pulumi.StringPtrOutput)
 }
 
 type UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse struct {
@@ -23273,22 +10192,15 @@ type UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse struct {
 	// Expected value is 'UsernamePassword'.
 	AuthType string `pulumi:"authType"`
 	// Category of the connection
-	Category *string `pulumi:"category"`
-	// A type definition that refers the id to an Azure Resource Manager resource.
-	CreatedByWorkspaceArmId string                                       `pulumi:"createdByWorkspaceArmId"`
-	Credentials             *WorkspaceConnectionUsernamePasswordResponse `pulumi:"credentials"`
-	Error                   *string                                      `pulumi:"error"`
-	ExpiryTime              *string                                      `pulumi:"expiryTime"`
-	// Group based on connection category
-	Group         string `pulumi:"group"`
-	IsSharedToAll *bool  `pulumi:"isSharedToAll"`
-	// Store user metadata for this connection
-	Metadata                    map[string]string `pulumi:"metadata"`
-	PeRequirement               *string           `pulumi:"peRequirement"`
-	PeStatus                    *string           `pulumi:"peStatus"`
-	SharedUserList              []string          `pulumi:"sharedUserList"`
-	Target                      *string           `pulumi:"target"`
-	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
+	Category    *string                                      `pulumi:"category"`
+	Credentials *WorkspaceConnectionUsernamePasswordResponse `pulumi:"credentials"`
+	ExpiryTime  *string                                      `pulumi:"expiryTime"`
+	Metadata    interface{}                                  `pulumi:"metadata"`
+	Target      *string                                      `pulumi:"target"`
+	// Value details of the workspace connection.
+	Value *string `pulumi:"value"`
+	// format for the workspace connection value
+	ValueFormat *string `pulumi:"valueFormat"`
 }
 
 type UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponseOutput struct{ *pulumi.OutputState }
@@ -23316,65 +10228,32 @@ func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponseOutput) Cat
 	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
 
-// A type definition that refers the id to an Azure Resource Manager resource.
-func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponseOutput) CreatedByWorkspaceArmId() pulumi.StringOutput {
-	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse) string {
-		return v.CreatedByWorkspaceArmId
-	}).(pulumi.StringOutput)
-}
-
 func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponseOutput) Credentials() WorkspaceConnectionUsernamePasswordResponsePtrOutput {
 	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse) *WorkspaceConnectionUsernamePasswordResponse {
 		return v.Credentials
 	}).(WorkspaceConnectionUsernamePasswordResponsePtrOutput)
 }
 
-func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponseOutput) Error() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse) *string { return v.Error }).(pulumi.StringPtrOutput)
-}
-
 func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponseOutput) ExpiryTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse) *string { return v.ExpiryTime }).(pulumi.StringPtrOutput)
 }
 
-// Group based on connection category
-func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponseOutput) Group() pulumi.StringOutput {
-	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse) string { return v.Group }).(pulumi.StringOutput)
-}
-
-func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponseOutput) IsSharedToAll() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse) *bool { return v.IsSharedToAll }).(pulumi.BoolPtrOutput)
-}
-
-// Store user metadata for this connection
-func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponseOutput) Metadata() pulumi.StringMapOutput {
-	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse) map[string]string {
-		return v.Metadata
-	}).(pulumi.StringMapOutput)
-}
-
-func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponseOutput) PeRequirement() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
-}
-
-func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponseOutput) PeStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
-}
-
-func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponseOutput) SharedUserList() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse) []string {
-		return v.SharedUserList
-	}).(pulumi.StringArrayOutput)
+func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponseOutput) Metadata() pulumi.AnyOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse) interface{} { return v.Metadata }).(pulumi.AnyOutput)
 }
 
 func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponseOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
 
-func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponseOutput) UseWorkspaceManagedIdentity() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse) *bool {
-		return v.UseWorkspaceManagedIdentity
-	}).(pulumi.BoolPtrOutput)
+// Value details of the workspace connection.
+func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponseOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+// format for the workspace connection value
+func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponseOutput) ValueFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse) *string { return v.ValueFormat }).(pulumi.StringPtrOutput)
 }
 
 // A Machine Learning compute based on Azure Virtual Machines.
@@ -23829,7 +10708,7 @@ type VirtualMachineResponse struct {
 	IsAttachedCompute bool `pulumi:"isAttachedCompute"`
 	// The time at which the compute was last modified.
 	ModifiedOn string                                  `pulumi:"modifiedOn"`
-	Properties *VirtualMachineSchemaPropertiesResponse `pulumi:"properties"`
+	Properties *VirtualMachineSchemaResponseProperties `pulumi:"properties"`
 	// Errors during provisioning
 	ProvisioningErrors []ErrorResponseResponse `pulumi:"provisioningErrors"`
 	// The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
@@ -23889,8 +10768,8 @@ func (o VirtualMachineResponseOutput) ModifiedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v VirtualMachineResponse) string { return v.ModifiedOn }).(pulumi.StringOutput)
 }
 
-func (o VirtualMachineResponseOutput) Properties() VirtualMachineSchemaPropertiesResponsePtrOutput {
-	return o.ApplyT(func(v VirtualMachineResponse) *VirtualMachineSchemaPropertiesResponse { return v.Properties }).(VirtualMachineSchemaPropertiesResponsePtrOutput)
+func (o VirtualMachineResponseOutput) Properties() VirtualMachineSchemaResponsePropertiesPtrOutput {
+	return o.ApplyT(func(v VirtualMachineResponse) *VirtualMachineSchemaResponseProperties { return v.Properties }).(VirtualMachineSchemaResponsePropertiesPtrOutput)
 }
 
 // Errors during provisioning
@@ -24140,7 +11019,7 @@ func (o VirtualMachineSchemaPropertiesPtrOutput) VirtualMachineSize() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
-type VirtualMachineSchemaPropertiesResponse struct {
+type VirtualMachineSchemaResponseProperties struct {
 	// Public IP address of the virtual machine.
 	Address *string `pulumi:"address"`
 	// Admin credentials for virtual machine
@@ -24155,79 +11034,79 @@ type VirtualMachineSchemaPropertiesResponse struct {
 	VirtualMachineSize *string `pulumi:"virtualMachineSize"`
 }
 
-type VirtualMachineSchemaPropertiesResponseOutput struct{ *pulumi.OutputState }
+type VirtualMachineSchemaResponsePropertiesOutput struct{ *pulumi.OutputState }
 
-func (VirtualMachineSchemaPropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualMachineSchemaPropertiesResponse)(nil)).Elem()
+func (VirtualMachineSchemaResponsePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineSchemaResponseProperties)(nil)).Elem()
 }
 
-func (o VirtualMachineSchemaPropertiesResponseOutput) ToVirtualMachineSchemaPropertiesResponseOutput() VirtualMachineSchemaPropertiesResponseOutput {
+func (o VirtualMachineSchemaResponsePropertiesOutput) ToVirtualMachineSchemaResponsePropertiesOutput() VirtualMachineSchemaResponsePropertiesOutput {
 	return o
 }
 
-func (o VirtualMachineSchemaPropertiesResponseOutput) ToVirtualMachineSchemaPropertiesResponseOutputWithContext(ctx context.Context) VirtualMachineSchemaPropertiesResponseOutput {
+func (o VirtualMachineSchemaResponsePropertiesOutput) ToVirtualMachineSchemaResponsePropertiesOutputWithContext(ctx context.Context) VirtualMachineSchemaResponsePropertiesOutput {
 	return o
 }
 
 // Public IP address of the virtual machine.
-func (o VirtualMachineSchemaPropertiesResponseOutput) Address() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineSchemaPropertiesResponse) *string { return v.Address }).(pulumi.StringPtrOutput)
+func (o VirtualMachineSchemaResponsePropertiesOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineSchemaResponseProperties) *string { return v.Address }).(pulumi.StringPtrOutput)
 }
 
 // Admin credentials for virtual machine
-func (o VirtualMachineSchemaPropertiesResponseOutput) AdministratorAccount() VirtualMachineSshCredentialsResponsePtrOutput {
-	return o.ApplyT(func(v VirtualMachineSchemaPropertiesResponse) *VirtualMachineSshCredentialsResponse {
+func (o VirtualMachineSchemaResponsePropertiesOutput) AdministratorAccount() VirtualMachineSshCredentialsResponsePtrOutput {
+	return o.ApplyT(func(v VirtualMachineSchemaResponseProperties) *VirtualMachineSshCredentialsResponse {
 		return v.AdministratorAccount
 	}).(VirtualMachineSshCredentialsResponsePtrOutput)
 }
 
 // Indicates whether this compute will be used for running notebooks.
-func (o VirtualMachineSchemaPropertiesResponseOutput) IsNotebookInstanceCompute() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v VirtualMachineSchemaPropertiesResponse) *bool { return v.IsNotebookInstanceCompute }).(pulumi.BoolPtrOutput)
+func (o VirtualMachineSchemaResponsePropertiesOutput) IsNotebookInstanceCompute() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineSchemaResponseProperties) *bool { return v.IsNotebookInstanceCompute }).(pulumi.BoolPtrOutput)
 }
 
 // Notebook server port open for ssh connections.
-func (o VirtualMachineSchemaPropertiesResponseOutput) NotebookServerPort() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v VirtualMachineSchemaPropertiesResponse) *int { return v.NotebookServerPort }).(pulumi.IntPtrOutput)
+func (o VirtualMachineSchemaResponsePropertiesOutput) NotebookServerPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VirtualMachineSchemaResponseProperties) *int { return v.NotebookServerPort }).(pulumi.IntPtrOutput)
 }
 
 // Port open for ssh connections.
-func (o VirtualMachineSchemaPropertiesResponseOutput) SshPort() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v VirtualMachineSchemaPropertiesResponse) *int { return v.SshPort }).(pulumi.IntPtrOutput)
+func (o VirtualMachineSchemaResponsePropertiesOutput) SshPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VirtualMachineSchemaResponseProperties) *int { return v.SshPort }).(pulumi.IntPtrOutput)
 }
 
 // Virtual Machine size
-func (o VirtualMachineSchemaPropertiesResponseOutput) VirtualMachineSize() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineSchemaPropertiesResponse) *string { return v.VirtualMachineSize }).(pulumi.StringPtrOutput)
+func (o VirtualMachineSchemaResponsePropertiesOutput) VirtualMachineSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineSchemaResponseProperties) *string { return v.VirtualMachineSize }).(pulumi.StringPtrOutput)
 }
 
-type VirtualMachineSchemaPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+type VirtualMachineSchemaResponsePropertiesPtrOutput struct{ *pulumi.OutputState }
 
-func (VirtualMachineSchemaPropertiesResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**VirtualMachineSchemaPropertiesResponse)(nil)).Elem()
+func (VirtualMachineSchemaResponsePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineSchemaResponseProperties)(nil)).Elem()
 }
 
-func (o VirtualMachineSchemaPropertiesResponsePtrOutput) ToVirtualMachineSchemaPropertiesResponsePtrOutput() VirtualMachineSchemaPropertiesResponsePtrOutput {
+func (o VirtualMachineSchemaResponsePropertiesPtrOutput) ToVirtualMachineSchemaResponsePropertiesPtrOutput() VirtualMachineSchemaResponsePropertiesPtrOutput {
 	return o
 }
 
-func (o VirtualMachineSchemaPropertiesResponsePtrOutput) ToVirtualMachineSchemaPropertiesResponsePtrOutputWithContext(ctx context.Context) VirtualMachineSchemaPropertiesResponsePtrOutput {
+func (o VirtualMachineSchemaResponsePropertiesPtrOutput) ToVirtualMachineSchemaResponsePropertiesPtrOutputWithContext(ctx context.Context) VirtualMachineSchemaResponsePropertiesPtrOutput {
 	return o
 }
 
-func (o VirtualMachineSchemaPropertiesResponsePtrOutput) Elem() VirtualMachineSchemaPropertiesResponseOutput {
-	return o.ApplyT(func(v *VirtualMachineSchemaPropertiesResponse) VirtualMachineSchemaPropertiesResponse {
+func (o VirtualMachineSchemaResponsePropertiesPtrOutput) Elem() VirtualMachineSchemaResponsePropertiesOutput {
+	return o.ApplyT(func(v *VirtualMachineSchemaResponseProperties) VirtualMachineSchemaResponseProperties {
 		if v != nil {
 			return *v
 		}
-		var ret VirtualMachineSchemaPropertiesResponse
+		var ret VirtualMachineSchemaResponseProperties
 		return ret
-	}).(VirtualMachineSchemaPropertiesResponseOutput)
+	}).(VirtualMachineSchemaResponsePropertiesOutput)
 }
 
 // Public IP address of the virtual machine.
-func (o VirtualMachineSchemaPropertiesResponsePtrOutput) Address() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VirtualMachineSchemaPropertiesResponse) *string {
+func (o VirtualMachineSchemaResponsePropertiesPtrOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineSchemaResponseProperties) *string {
 		if v == nil {
 			return nil
 		}
@@ -24236,8 +11115,8 @@ func (o VirtualMachineSchemaPropertiesResponsePtrOutput) Address() pulumi.String
 }
 
 // Admin credentials for virtual machine
-func (o VirtualMachineSchemaPropertiesResponsePtrOutput) AdministratorAccount() VirtualMachineSshCredentialsResponsePtrOutput {
-	return o.ApplyT(func(v *VirtualMachineSchemaPropertiesResponse) *VirtualMachineSshCredentialsResponse {
+func (o VirtualMachineSchemaResponsePropertiesPtrOutput) AdministratorAccount() VirtualMachineSshCredentialsResponsePtrOutput {
+	return o.ApplyT(func(v *VirtualMachineSchemaResponseProperties) *VirtualMachineSshCredentialsResponse {
 		if v == nil {
 			return nil
 		}
@@ -24246,8 +11125,8 @@ func (o VirtualMachineSchemaPropertiesResponsePtrOutput) AdministratorAccount() 
 }
 
 // Indicates whether this compute will be used for running notebooks.
-func (o VirtualMachineSchemaPropertiesResponsePtrOutput) IsNotebookInstanceCompute() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *VirtualMachineSchemaPropertiesResponse) *bool {
+func (o VirtualMachineSchemaResponsePropertiesPtrOutput) IsNotebookInstanceCompute() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineSchemaResponseProperties) *bool {
 		if v == nil {
 			return nil
 		}
@@ -24256,8 +11135,8 @@ func (o VirtualMachineSchemaPropertiesResponsePtrOutput) IsNotebookInstanceCompu
 }
 
 // Notebook server port open for ssh connections.
-func (o VirtualMachineSchemaPropertiesResponsePtrOutput) NotebookServerPort() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *VirtualMachineSchemaPropertiesResponse) *int {
+func (o VirtualMachineSchemaResponsePropertiesPtrOutput) NotebookServerPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineSchemaResponseProperties) *int {
 		if v == nil {
 			return nil
 		}
@@ -24266,8 +11145,8 @@ func (o VirtualMachineSchemaPropertiesResponsePtrOutput) NotebookServerPort() pu
 }
 
 // Port open for ssh connections.
-func (o VirtualMachineSchemaPropertiesResponsePtrOutput) SshPort() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *VirtualMachineSchemaPropertiesResponse) *int {
+func (o VirtualMachineSchemaResponsePropertiesPtrOutput) SshPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineSchemaResponseProperties) *int {
 		if v == nil {
 			return nil
 		}
@@ -24276,8 +11155,8 @@ func (o VirtualMachineSchemaPropertiesResponsePtrOutput) SshPort() pulumi.IntPtr
 }
 
 // Virtual Machine size
-func (o VirtualMachineSchemaPropertiesResponsePtrOutput) VirtualMachineSize() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VirtualMachineSchemaPropertiesResponse) *string {
+func (o VirtualMachineSchemaResponsePropertiesPtrOutput) VirtualMachineSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineSchemaResponseProperties) *string {
 		if v == nil {
 			return nil
 		}
@@ -24709,6 +11588,7 @@ func (o VirtualMachineSshCredentialsResponsePtrOutput) Username() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+// Describes the volume configuration for the container
 type VolumeDefinition struct {
 	// Bind Options of the mount
 	Bind *BindOptions `pulumi:"bind"`
@@ -24752,6 +11632,7 @@ type VolumeDefinitionInput interface {
 	ToVolumeDefinitionOutputWithContext(context.Context) VolumeDefinitionOutput
 }
 
+// Describes the volume configuration for the container
 type VolumeDefinitionArgs struct {
 	// Bind Options of the mount
 	Bind BindOptionsPtrInput `pulumi:"bind"`
@@ -24819,6 +11700,7 @@ func (i VolumeDefinitionArray) ToVolumeDefinitionArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeDefinitionArrayOutput)
 }
 
+// Describes the volume configuration for the container
 type VolumeDefinitionOutput struct{ *pulumi.OutputState }
 
 func (VolumeDefinitionOutput) ElementType() reflect.Type {
@@ -24893,6 +11775,7 @@ func (o VolumeDefinitionArrayOutput) Index(i pulumi.IntInput) VolumeDefinitionOu
 	}).(VolumeDefinitionOutput)
 }
 
+// Describes the volume configuration for the container
 type VolumeDefinitionResponse struct {
 	// Bind Options of the mount
 	Bind *BindOptionsResponse `pulumi:"bind"`
@@ -24925,6 +11808,7 @@ func (val *VolumeDefinitionResponse) Defaults() *VolumeDefinitionResponse {
 	return &tmp
 }
 
+// Describes the volume configuration for the container
 type VolumeDefinitionResponseOutput struct{ *pulumi.OutputState }
 
 func (VolumeDefinitionResponseOutput) ElementType() reflect.Type {
@@ -24999,6 +11883,7 @@ func (o VolumeDefinitionResponseArrayOutput) Index(i pulumi.IntInput) VolumeDefi
 	}).(VolumeDefinitionResponseOutput)
 }
 
+// Describes the volume options for the container
 type VolumeOptions struct {
 	// Indicate whether volume is nocopy
 	Nocopy *bool `pulumi:"nocopy"`
@@ -25015,6 +11900,7 @@ type VolumeOptionsInput interface {
 	ToVolumeOptionsOutputWithContext(context.Context) VolumeOptionsOutput
 }
 
+// Describes the volume options for the container
 type VolumeOptionsArgs struct {
 	// Indicate whether volume is nocopy
 	Nocopy pulumi.BoolPtrInput `pulumi:"nocopy"`
@@ -25073,6 +11959,7 @@ func (i *volumeOptionsPtrType) ToVolumeOptionsPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeOptionsPtrOutput)
 }
 
+// Describes the volume options for the container
 type VolumeOptionsOutput struct{ *pulumi.OutputState }
 
 func (VolumeOptionsOutput) ElementType() reflect.Type {
@@ -25136,11 +12023,13 @@ func (o VolumeOptionsPtrOutput) Nocopy() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Describes the volume options for the container
 type VolumeOptionsResponse struct {
 	// Indicate whether volume is nocopy
 	Nocopy *bool `pulumi:"nocopy"`
 }
 
+// Describes the volume options for the container
 type VolumeOptionsResponseOutput struct{ *pulumi.OutputState }
 
 func (VolumeOptionsResponseOutput) ElementType() reflect.Type {
@@ -25192,154 +12081,6 @@ func (o VolumeOptionsResponsePtrOutput) Nocopy() pulumi.BoolPtrOutput {
 		}
 		return v.Nocopy
 	}).(pulumi.BoolPtrOutput)
-}
-
-type WorkspaceConnectionAccessKey struct {
-	AccessKeyId     *string `pulumi:"accessKeyId"`
-	SecretAccessKey *string `pulumi:"secretAccessKey"`
-}
-
-// WorkspaceConnectionAccessKeyInput is an input type that accepts WorkspaceConnectionAccessKeyArgs and WorkspaceConnectionAccessKeyOutput values.
-// You can construct a concrete instance of `WorkspaceConnectionAccessKeyInput` via:
-//
-//	WorkspaceConnectionAccessKeyArgs{...}
-type WorkspaceConnectionAccessKeyInput interface {
-	pulumi.Input
-
-	ToWorkspaceConnectionAccessKeyOutput() WorkspaceConnectionAccessKeyOutput
-	ToWorkspaceConnectionAccessKeyOutputWithContext(context.Context) WorkspaceConnectionAccessKeyOutput
-}
-
-type WorkspaceConnectionAccessKeyArgs struct {
-	AccessKeyId     pulumi.StringPtrInput `pulumi:"accessKeyId"`
-	SecretAccessKey pulumi.StringPtrInput `pulumi:"secretAccessKey"`
-}
-
-func (WorkspaceConnectionAccessKeyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkspaceConnectionAccessKey)(nil)).Elem()
-}
-
-func (i WorkspaceConnectionAccessKeyArgs) ToWorkspaceConnectionAccessKeyOutput() WorkspaceConnectionAccessKeyOutput {
-	return i.ToWorkspaceConnectionAccessKeyOutputWithContext(context.Background())
-}
-
-func (i WorkspaceConnectionAccessKeyArgs) ToWorkspaceConnectionAccessKeyOutputWithContext(ctx context.Context) WorkspaceConnectionAccessKeyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceConnectionAccessKeyOutput)
-}
-
-func (i WorkspaceConnectionAccessKeyArgs) ToWorkspaceConnectionAccessKeyPtrOutput() WorkspaceConnectionAccessKeyPtrOutput {
-	return i.ToWorkspaceConnectionAccessKeyPtrOutputWithContext(context.Background())
-}
-
-func (i WorkspaceConnectionAccessKeyArgs) ToWorkspaceConnectionAccessKeyPtrOutputWithContext(ctx context.Context) WorkspaceConnectionAccessKeyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceConnectionAccessKeyOutput).ToWorkspaceConnectionAccessKeyPtrOutputWithContext(ctx)
-}
-
-// WorkspaceConnectionAccessKeyPtrInput is an input type that accepts WorkspaceConnectionAccessKeyArgs, WorkspaceConnectionAccessKeyPtr and WorkspaceConnectionAccessKeyPtrOutput values.
-// You can construct a concrete instance of `WorkspaceConnectionAccessKeyPtrInput` via:
-//
-//	        WorkspaceConnectionAccessKeyArgs{...}
-//
-//	or:
-//
-//	        nil
-type WorkspaceConnectionAccessKeyPtrInput interface {
-	pulumi.Input
-
-	ToWorkspaceConnectionAccessKeyPtrOutput() WorkspaceConnectionAccessKeyPtrOutput
-	ToWorkspaceConnectionAccessKeyPtrOutputWithContext(context.Context) WorkspaceConnectionAccessKeyPtrOutput
-}
-
-type workspaceConnectionAccessKeyPtrType WorkspaceConnectionAccessKeyArgs
-
-func WorkspaceConnectionAccessKeyPtr(v *WorkspaceConnectionAccessKeyArgs) WorkspaceConnectionAccessKeyPtrInput {
-	return (*workspaceConnectionAccessKeyPtrType)(v)
-}
-
-func (*workspaceConnectionAccessKeyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkspaceConnectionAccessKey)(nil)).Elem()
-}
-
-func (i *workspaceConnectionAccessKeyPtrType) ToWorkspaceConnectionAccessKeyPtrOutput() WorkspaceConnectionAccessKeyPtrOutput {
-	return i.ToWorkspaceConnectionAccessKeyPtrOutputWithContext(context.Background())
-}
-
-func (i *workspaceConnectionAccessKeyPtrType) ToWorkspaceConnectionAccessKeyPtrOutputWithContext(ctx context.Context) WorkspaceConnectionAccessKeyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceConnectionAccessKeyPtrOutput)
-}
-
-type WorkspaceConnectionAccessKeyOutput struct{ *pulumi.OutputState }
-
-func (WorkspaceConnectionAccessKeyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkspaceConnectionAccessKey)(nil)).Elem()
-}
-
-func (o WorkspaceConnectionAccessKeyOutput) ToWorkspaceConnectionAccessKeyOutput() WorkspaceConnectionAccessKeyOutput {
-	return o
-}
-
-func (o WorkspaceConnectionAccessKeyOutput) ToWorkspaceConnectionAccessKeyOutputWithContext(ctx context.Context) WorkspaceConnectionAccessKeyOutput {
-	return o
-}
-
-func (o WorkspaceConnectionAccessKeyOutput) ToWorkspaceConnectionAccessKeyPtrOutput() WorkspaceConnectionAccessKeyPtrOutput {
-	return o.ToWorkspaceConnectionAccessKeyPtrOutputWithContext(context.Background())
-}
-
-func (o WorkspaceConnectionAccessKeyOutput) ToWorkspaceConnectionAccessKeyPtrOutputWithContext(ctx context.Context) WorkspaceConnectionAccessKeyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkspaceConnectionAccessKey) *WorkspaceConnectionAccessKey {
-		return &v
-	}).(WorkspaceConnectionAccessKeyPtrOutput)
-}
-
-func (o WorkspaceConnectionAccessKeyOutput) AccessKeyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkspaceConnectionAccessKey) *string { return v.AccessKeyId }).(pulumi.StringPtrOutput)
-}
-
-func (o WorkspaceConnectionAccessKeyOutput) SecretAccessKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkspaceConnectionAccessKey) *string { return v.SecretAccessKey }).(pulumi.StringPtrOutput)
-}
-
-type WorkspaceConnectionAccessKeyPtrOutput struct{ *pulumi.OutputState }
-
-func (WorkspaceConnectionAccessKeyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkspaceConnectionAccessKey)(nil)).Elem()
-}
-
-func (o WorkspaceConnectionAccessKeyPtrOutput) ToWorkspaceConnectionAccessKeyPtrOutput() WorkspaceConnectionAccessKeyPtrOutput {
-	return o
-}
-
-func (o WorkspaceConnectionAccessKeyPtrOutput) ToWorkspaceConnectionAccessKeyPtrOutputWithContext(ctx context.Context) WorkspaceConnectionAccessKeyPtrOutput {
-	return o
-}
-
-func (o WorkspaceConnectionAccessKeyPtrOutput) Elem() WorkspaceConnectionAccessKeyOutput {
-	return o.ApplyT(func(v *WorkspaceConnectionAccessKey) WorkspaceConnectionAccessKey {
-		if v != nil {
-			return *v
-		}
-		var ret WorkspaceConnectionAccessKey
-		return ret
-	}).(WorkspaceConnectionAccessKeyOutput)
-}
-
-func (o WorkspaceConnectionAccessKeyPtrOutput) AccessKeyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkspaceConnectionAccessKey) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AccessKeyId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o WorkspaceConnectionAccessKeyPtrOutput) SecretAccessKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkspaceConnectionAccessKey) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretAccessKey
-	}).(pulumi.StringPtrOutput)
 }
 
 type WorkspaceConnectionAccessKeyResponse struct {
@@ -25408,335 +12149,6 @@ func (o WorkspaceConnectionAccessKeyResponsePtrOutput) SecretAccessKey() pulumi.
 			return nil
 		}
 		return v.SecretAccessKey
-	}).(pulumi.StringPtrOutput)
-}
-
-// Account key object for workspace connection credential.
-type WorkspaceConnectionAccountKey struct {
-	Key *string `pulumi:"key"`
-}
-
-// WorkspaceConnectionAccountKeyInput is an input type that accepts WorkspaceConnectionAccountKeyArgs and WorkspaceConnectionAccountKeyOutput values.
-// You can construct a concrete instance of `WorkspaceConnectionAccountKeyInput` via:
-//
-//	WorkspaceConnectionAccountKeyArgs{...}
-type WorkspaceConnectionAccountKeyInput interface {
-	pulumi.Input
-
-	ToWorkspaceConnectionAccountKeyOutput() WorkspaceConnectionAccountKeyOutput
-	ToWorkspaceConnectionAccountKeyOutputWithContext(context.Context) WorkspaceConnectionAccountKeyOutput
-}
-
-// Account key object for workspace connection credential.
-type WorkspaceConnectionAccountKeyArgs struct {
-	Key pulumi.StringPtrInput `pulumi:"key"`
-}
-
-func (WorkspaceConnectionAccountKeyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkspaceConnectionAccountKey)(nil)).Elem()
-}
-
-func (i WorkspaceConnectionAccountKeyArgs) ToWorkspaceConnectionAccountKeyOutput() WorkspaceConnectionAccountKeyOutput {
-	return i.ToWorkspaceConnectionAccountKeyOutputWithContext(context.Background())
-}
-
-func (i WorkspaceConnectionAccountKeyArgs) ToWorkspaceConnectionAccountKeyOutputWithContext(ctx context.Context) WorkspaceConnectionAccountKeyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceConnectionAccountKeyOutput)
-}
-
-func (i WorkspaceConnectionAccountKeyArgs) ToWorkspaceConnectionAccountKeyPtrOutput() WorkspaceConnectionAccountKeyPtrOutput {
-	return i.ToWorkspaceConnectionAccountKeyPtrOutputWithContext(context.Background())
-}
-
-func (i WorkspaceConnectionAccountKeyArgs) ToWorkspaceConnectionAccountKeyPtrOutputWithContext(ctx context.Context) WorkspaceConnectionAccountKeyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceConnectionAccountKeyOutput).ToWorkspaceConnectionAccountKeyPtrOutputWithContext(ctx)
-}
-
-// WorkspaceConnectionAccountKeyPtrInput is an input type that accepts WorkspaceConnectionAccountKeyArgs, WorkspaceConnectionAccountKeyPtr and WorkspaceConnectionAccountKeyPtrOutput values.
-// You can construct a concrete instance of `WorkspaceConnectionAccountKeyPtrInput` via:
-//
-//	        WorkspaceConnectionAccountKeyArgs{...}
-//
-//	or:
-//
-//	        nil
-type WorkspaceConnectionAccountKeyPtrInput interface {
-	pulumi.Input
-
-	ToWorkspaceConnectionAccountKeyPtrOutput() WorkspaceConnectionAccountKeyPtrOutput
-	ToWorkspaceConnectionAccountKeyPtrOutputWithContext(context.Context) WorkspaceConnectionAccountKeyPtrOutput
-}
-
-type workspaceConnectionAccountKeyPtrType WorkspaceConnectionAccountKeyArgs
-
-func WorkspaceConnectionAccountKeyPtr(v *WorkspaceConnectionAccountKeyArgs) WorkspaceConnectionAccountKeyPtrInput {
-	return (*workspaceConnectionAccountKeyPtrType)(v)
-}
-
-func (*workspaceConnectionAccountKeyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkspaceConnectionAccountKey)(nil)).Elem()
-}
-
-func (i *workspaceConnectionAccountKeyPtrType) ToWorkspaceConnectionAccountKeyPtrOutput() WorkspaceConnectionAccountKeyPtrOutput {
-	return i.ToWorkspaceConnectionAccountKeyPtrOutputWithContext(context.Background())
-}
-
-func (i *workspaceConnectionAccountKeyPtrType) ToWorkspaceConnectionAccountKeyPtrOutputWithContext(ctx context.Context) WorkspaceConnectionAccountKeyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceConnectionAccountKeyPtrOutput)
-}
-
-// Account key object for workspace connection credential.
-type WorkspaceConnectionAccountKeyOutput struct{ *pulumi.OutputState }
-
-func (WorkspaceConnectionAccountKeyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkspaceConnectionAccountKey)(nil)).Elem()
-}
-
-func (o WorkspaceConnectionAccountKeyOutput) ToWorkspaceConnectionAccountKeyOutput() WorkspaceConnectionAccountKeyOutput {
-	return o
-}
-
-func (o WorkspaceConnectionAccountKeyOutput) ToWorkspaceConnectionAccountKeyOutputWithContext(ctx context.Context) WorkspaceConnectionAccountKeyOutput {
-	return o
-}
-
-func (o WorkspaceConnectionAccountKeyOutput) ToWorkspaceConnectionAccountKeyPtrOutput() WorkspaceConnectionAccountKeyPtrOutput {
-	return o.ToWorkspaceConnectionAccountKeyPtrOutputWithContext(context.Background())
-}
-
-func (o WorkspaceConnectionAccountKeyOutput) ToWorkspaceConnectionAccountKeyPtrOutputWithContext(ctx context.Context) WorkspaceConnectionAccountKeyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkspaceConnectionAccountKey) *WorkspaceConnectionAccountKey {
-		return &v
-	}).(WorkspaceConnectionAccountKeyPtrOutput)
-}
-
-func (o WorkspaceConnectionAccountKeyOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkspaceConnectionAccountKey) *string { return v.Key }).(pulumi.StringPtrOutput)
-}
-
-type WorkspaceConnectionAccountKeyPtrOutput struct{ *pulumi.OutputState }
-
-func (WorkspaceConnectionAccountKeyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkspaceConnectionAccountKey)(nil)).Elem()
-}
-
-func (o WorkspaceConnectionAccountKeyPtrOutput) ToWorkspaceConnectionAccountKeyPtrOutput() WorkspaceConnectionAccountKeyPtrOutput {
-	return o
-}
-
-func (o WorkspaceConnectionAccountKeyPtrOutput) ToWorkspaceConnectionAccountKeyPtrOutputWithContext(ctx context.Context) WorkspaceConnectionAccountKeyPtrOutput {
-	return o
-}
-
-func (o WorkspaceConnectionAccountKeyPtrOutput) Elem() WorkspaceConnectionAccountKeyOutput {
-	return o.ApplyT(func(v *WorkspaceConnectionAccountKey) WorkspaceConnectionAccountKey {
-		if v != nil {
-			return *v
-		}
-		var ret WorkspaceConnectionAccountKey
-		return ret
-	}).(WorkspaceConnectionAccountKeyOutput)
-}
-
-func (o WorkspaceConnectionAccountKeyPtrOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkspaceConnectionAccountKey) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Key
-	}).(pulumi.StringPtrOutput)
-}
-
-// Account key object for workspace connection credential.
-type WorkspaceConnectionAccountKeyResponse struct {
-	Key *string `pulumi:"key"`
-}
-
-// Account key object for workspace connection credential.
-type WorkspaceConnectionAccountKeyResponseOutput struct{ *pulumi.OutputState }
-
-func (WorkspaceConnectionAccountKeyResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkspaceConnectionAccountKeyResponse)(nil)).Elem()
-}
-
-func (o WorkspaceConnectionAccountKeyResponseOutput) ToWorkspaceConnectionAccountKeyResponseOutput() WorkspaceConnectionAccountKeyResponseOutput {
-	return o
-}
-
-func (o WorkspaceConnectionAccountKeyResponseOutput) ToWorkspaceConnectionAccountKeyResponseOutputWithContext(ctx context.Context) WorkspaceConnectionAccountKeyResponseOutput {
-	return o
-}
-
-func (o WorkspaceConnectionAccountKeyResponseOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkspaceConnectionAccountKeyResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
-}
-
-type WorkspaceConnectionAccountKeyResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (WorkspaceConnectionAccountKeyResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkspaceConnectionAccountKeyResponse)(nil)).Elem()
-}
-
-func (o WorkspaceConnectionAccountKeyResponsePtrOutput) ToWorkspaceConnectionAccountKeyResponsePtrOutput() WorkspaceConnectionAccountKeyResponsePtrOutput {
-	return o
-}
-
-func (o WorkspaceConnectionAccountKeyResponsePtrOutput) ToWorkspaceConnectionAccountKeyResponsePtrOutputWithContext(ctx context.Context) WorkspaceConnectionAccountKeyResponsePtrOutput {
-	return o
-}
-
-func (o WorkspaceConnectionAccountKeyResponsePtrOutput) Elem() WorkspaceConnectionAccountKeyResponseOutput {
-	return o.ApplyT(func(v *WorkspaceConnectionAccountKeyResponse) WorkspaceConnectionAccountKeyResponse {
-		if v != nil {
-			return *v
-		}
-		var ret WorkspaceConnectionAccountKeyResponse
-		return ret
-	}).(WorkspaceConnectionAccountKeyResponseOutput)
-}
-
-func (o WorkspaceConnectionAccountKeyResponsePtrOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkspaceConnectionAccountKeyResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Key
-	}).(pulumi.StringPtrOutput)
-}
-
-// Api key object for workspace connection credential.
-type WorkspaceConnectionApiKey struct {
-	Key *string `pulumi:"key"`
-}
-
-// WorkspaceConnectionApiKeyInput is an input type that accepts WorkspaceConnectionApiKeyArgs and WorkspaceConnectionApiKeyOutput values.
-// You can construct a concrete instance of `WorkspaceConnectionApiKeyInput` via:
-//
-//	WorkspaceConnectionApiKeyArgs{...}
-type WorkspaceConnectionApiKeyInput interface {
-	pulumi.Input
-
-	ToWorkspaceConnectionApiKeyOutput() WorkspaceConnectionApiKeyOutput
-	ToWorkspaceConnectionApiKeyOutputWithContext(context.Context) WorkspaceConnectionApiKeyOutput
-}
-
-// Api key object for workspace connection credential.
-type WorkspaceConnectionApiKeyArgs struct {
-	Key pulumi.StringPtrInput `pulumi:"key"`
-}
-
-func (WorkspaceConnectionApiKeyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkspaceConnectionApiKey)(nil)).Elem()
-}
-
-func (i WorkspaceConnectionApiKeyArgs) ToWorkspaceConnectionApiKeyOutput() WorkspaceConnectionApiKeyOutput {
-	return i.ToWorkspaceConnectionApiKeyOutputWithContext(context.Background())
-}
-
-func (i WorkspaceConnectionApiKeyArgs) ToWorkspaceConnectionApiKeyOutputWithContext(ctx context.Context) WorkspaceConnectionApiKeyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceConnectionApiKeyOutput)
-}
-
-func (i WorkspaceConnectionApiKeyArgs) ToWorkspaceConnectionApiKeyPtrOutput() WorkspaceConnectionApiKeyPtrOutput {
-	return i.ToWorkspaceConnectionApiKeyPtrOutputWithContext(context.Background())
-}
-
-func (i WorkspaceConnectionApiKeyArgs) ToWorkspaceConnectionApiKeyPtrOutputWithContext(ctx context.Context) WorkspaceConnectionApiKeyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceConnectionApiKeyOutput).ToWorkspaceConnectionApiKeyPtrOutputWithContext(ctx)
-}
-
-// WorkspaceConnectionApiKeyPtrInput is an input type that accepts WorkspaceConnectionApiKeyArgs, WorkspaceConnectionApiKeyPtr and WorkspaceConnectionApiKeyPtrOutput values.
-// You can construct a concrete instance of `WorkspaceConnectionApiKeyPtrInput` via:
-//
-//	        WorkspaceConnectionApiKeyArgs{...}
-//
-//	or:
-//
-//	        nil
-type WorkspaceConnectionApiKeyPtrInput interface {
-	pulumi.Input
-
-	ToWorkspaceConnectionApiKeyPtrOutput() WorkspaceConnectionApiKeyPtrOutput
-	ToWorkspaceConnectionApiKeyPtrOutputWithContext(context.Context) WorkspaceConnectionApiKeyPtrOutput
-}
-
-type workspaceConnectionApiKeyPtrType WorkspaceConnectionApiKeyArgs
-
-func WorkspaceConnectionApiKeyPtr(v *WorkspaceConnectionApiKeyArgs) WorkspaceConnectionApiKeyPtrInput {
-	return (*workspaceConnectionApiKeyPtrType)(v)
-}
-
-func (*workspaceConnectionApiKeyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkspaceConnectionApiKey)(nil)).Elem()
-}
-
-func (i *workspaceConnectionApiKeyPtrType) ToWorkspaceConnectionApiKeyPtrOutput() WorkspaceConnectionApiKeyPtrOutput {
-	return i.ToWorkspaceConnectionApiKeyPtrOutputWithContext(context.Background())
-}
-
-func (i *workspaceConnectionApiKeyPtrType) ToWorkspaceConnectionApiKeyPtrOutputWithContext(ctx context.Context) WorkspaceConnectionApiKeyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceConnectionApiKeyPtrOutput)
-}
-
-// Api key object for workspace connection credential.
-type WorkspaceConnectionApiKeyOutput struct{ *pulumi.OutputState }
-
-func (WorkspaceConnectionApiKeyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkspaceConnectionApiKey)(nil)).Elem()
-}
-
-func (o WorkspaceConnectionApiKeyOutput) ToWorkspaceConnectionApiKeyOutput() WorkspaceConnectionApiKeyOutput {
-	return o
-}
-
-func (o WorkspaceConnectionApiKeyOutput) ToWorkspaceConnectionApiKeyOutputWithContext(ctx context.Context) WorkspaceConnectionApiKeyOutput {
-	return o
-}
-
-func (o WorkspaceConnectionApiKeyOutput) ToWorkspaceConnectionApiKeyPtrOutput() WorkspaceConnectionApiKeyPtrOutput {
-	return o.ToWorkspaceConnectionApiKeyPtrOutputWithContext(context.Background())
-}
-
-func (o WorkspaceConnectionApiKeyOutput) ToWorkspaceConnectionApiKeyPtrOutputWithContext(ctx context.Context) WorkspaceConnectionApiKeyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkspaceConnectionApiKey) *WorkspaceConnectionApiKey {
-		return &v
-	}).(WorkspaceConnectionApiKeyPtrOutput)
-}
-
-func (o WorkspaceConnectionApiKeyOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkspaceConnectionApiKey) *string { return v.Key }).(pulumi.StringPtrOutput)
-}
-
-type WorkspaceConnectionApiKeyPtrOutput struct{ *pulumi.OutputState }
-
-func (WorkspaceConnectionApiKeyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkspaceConnectionApiKey)(nil)).Elem()
-}
-
-func (o WorkspaceConnectionApiKeyPtrOutput) ToWorkspaceConnectionApiKeyPtrOutput() WorkspaceConnectionApiKeyPtrOutput {
-	return o
-}
-
-func (o WorkspaceConnectionApiKeyPtrOutput) ToWorkspaceConnectionApiKeyPtrOutputWithContext(ctx context.Context) WorkspaceConnectionApiKeyPtrOutput {
-	return o
-}
-
-func (o WorkspaceConnectionApiKeyPtrOutput) Elem() WorkspaceConnectionApiKeyOutput {
-	return o.ApplyT(func(v *WorkspaceConnectionApiKey) WorkspaceConnectionApiKey {
-		if v != nil {
-			return *v
-		}
-		var ret WorkspaceConnectionApiKey
-		return ret
-	}).(WorkspaceConnectionApiKeyOutput)
-}
-
-func (o WorkspaceConnectionApiKeyPtrOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkspaceConnectionApiKey) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Key
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -26014,463 +12426,6 @@ func (o WorkspaceConnectionManagedIdentityResponsePtrOutput) ResourceId() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
-// ClientId and ClientSecret are required. Other properties are optional
-// depending on each OAuth2 provider's implementation.
-type WorkspaceConnectionOAuth2 struct {
-	// Required by Concur connection category
-	AuthUrl *string `pulumi:"authUrl"`
-	// Client id in the format of UUID
-	ClientId     *string `pulumi:"clientId"`
-	ClientSecret *string `pulumi:"clientSecret"`
-	// Required by GoogleAdWords connection category
-	DeveloperToken *string `pulumi:"developerToken"`
-	Password       *string `pulumi:"password"`
-	// Required by GoogleBigQuery, GoogleAdWords, Hubspot, QuickBooks, Square, Xero, Zoho
-	// where user needs to get RefreshToken offline
-	RefreshToken *string `pulumi:"refreshToken"`
-	// Required by QuickBooks and Xero connection categories
-	TenantId *string `pulumi:"tenantId"`
-	// Concur, ServiceNow auth server AccessToken grant type is 'Password'
-	// which requires UsernamePassword
-	Username *string `pulumi:"username"`
-}
-
-// WorkspaceConnectionOAuth2Input is an input type that accepts WorkspaceConnectionOAuth2Args and WorkspaceConnectionOAuth2Output values.
-// You can construct a concrete instance of `WorkspaceConnectionOAuth2Input` via:
-//
-//	WorkspaceConnectionOAuth2Args{...}
-type WorkspaceConnectionOAuth2Input interface {
-	pulumi.Input
-
-	ToWorkspaceConnectionOAuth2Output() WorkspaceConnectionOAuth2Output
-	ToWorkspaceConnectionOAuth2OutputWithContext(context.Context) WorkspaceConnectionOAuth2Output
-}
-
-// ClientId and ClientSecret are required. Other properties are optional
-// depending on each OAuth2 provider's implementation.
-type WorkspaceConnectionOAuth2Args struct {
-	// Required by Concur connection category
-	AuthUrl pulumi.StringPtrInput `pulumi:"authUrl"`
-	// Client id in the format of UUID
-	ClientId     pulumi.StringPtrInput `pulumi:"clientId"`
-	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
-	// Required by GoogleAdWords connection category
-	DeveloperToken pulumi.StringPtrInput `pulumi:"developerToken"`
-	Password       pulumi.StringPtrInput `pulumi:"password"`
-	// Required by GoogleBigQuery, GoogleAdWords, Hubspot, QuickBooks, Square, Xero, Zoho
-	// where user needs to get RefreshToken offline
-	RefreshToken pulumi.StringPtrInput `pulumi:"refreshToken"`
-	// Required by QuickBooks and Xero connection categories
-	TenantId pulumi.StringPtrInput `pulumi:"tenantId"`
-	// Concur, ServiceNow auth server AccessToken grant type is 'Password'
-	// which requires UsernamePassword
-	Username pulumi.StringPtrInput `pulumi:"username"`
-}
-
-func (WorkspaceConnectionOAuth2Args) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkspaceConnectionOAuth2)(nil)).Elem()
-}
-
-func (i WorkspaceConnectionOAuth2Args) ToWorkspaceConnectionOAuth2Output() WorkspaceConnectionOAuth2Output {
-	return i.ToWorkspaceConnectionOAuth2OutputWithContext(context.Background())
-}
-
-func (i WorkspaceConnectionOAuth2Args) ToWorkspaceConnectionOAuth2OutputWithContext(ctx context.Context) WorkspaceConnectionOAuth2Output {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceConnectionOAuth2Output)
-}
-
-func (i WorkspaceConnectionOAuth2Args) ToWorkspaceConnectionOAuth2PtrOutput() WorkspaceConnectionOAuth2PtrOutput {
-	return i.ToWorkspaceConnectionOAuth2PtrOutputWithContext(context.Background())
-}
-
-func (i WorkspaceConnectionOAuth2Args) ToWorkspaceConnectionOAuth2PtrOutputWithContext(ctx context.Context) WorkspaceConnectionOAuth2PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceConnectionOAuth2Output).ToWorkspaceConnectionOAuth2PtrOutputWithContext(ctx)
-}
-
-// WorkspaceConnectionOAuth2PtrInput is an input type that accepts WorkspaceConnectionOAuth2Args, WorkspaceConnectionOAuth2Ptr and WorkspaceConnectionOAuth2PtrOutput values.
-// You can construct a concrete instance of `WorkspaceConnectionOAuth2PtrInput` via:
-//
-//	        WorkspaceConnectionOAuth2Args{...}
-//
-//	or:
-//
-//	        nil
-type WorkspaceConnectionOAuth2PtrInput interface {
-	pulumi.Input
-
-	ToWorkspaceConnectionOAuth2PtrOutput() WorkspaceConnectionOAuth2PtrOutput
-	ToWorkspaceConnectionOAuth2PtrOutputWithContext(context.Context) WorkspaceConnectionOAuth2PtrOutput
-}
-
-type workspaceConnectionOAuth2PtrType WorkspaceConnectionOAuth2Args
-
-func WorkspaceConnectionOAuth2Ptr(v *WorkspaceConnectionOAuth2Args) WorkspaceConnectionOAuth2PtrInput {
-	return (*workspaceConnectionOAuth2PtrType)(v)
-}
-
-func (*workspaceConnectionOAuth2PtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkspaceConnectionOAuth2)(nil)).Elem()
-}
-
-func (i *workspaceConnectionOAuth2PtrType) ToWorkspaceConnectionOAuth2PtrOutput() WorkspaceConnectionOAuth2PtrOutput {
-	return i.ToWorkspaceConnectionOAuth2PtrOutputWithContext(context.Background())
-}
-
-func (i *workspaceConnectionOAuth2PtrType) ToWorkspaceConnectionOAuth2PtrOutputWithContext(ctx context.Context) WorkspaceConnectionOAuth2PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceConnectionOAuth2PtrOutput)
-}
-
-// ClientId and ClientSecret are required. Other properties are optional
-// depending on each OAuth2 provider's implementation.
-type WorkspaceConnectionOAuth2Output struct{ *pulumi.OutputState }
-
-func (WorkspaceConnectionOAuth2Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkspaceConnectionOAuth2)(nil)).Elem()
-}
-
-func (o WorkspaceConnectionOAuth2Output) ToWorkspaceConnectionOAuth2Output() WorkspaceConnectionOAuth2Output {
-	return o
-}
-
-func (o WorkspaceConnectionOAuth2Output) ToWorkspaceConnectionOAuth2OutputWithContext(ctx context.Context) WorkspaceConnectionOAuth2Output {
-	return o
-}
-
-func (o WorkspaceConnectionOAuth2Output) ToWorkspaceConnectionOAuth2PtrOutput() WorkspaceConnectionOAuth2PtrOutput {
-	return o.ToWorkspaceConnectionOAuth2PtrOutputWithContext(context.Background())
-}
-
-func (o WorkspaceConnectionOAuth2Output) ToWorkspaceConnectionOAuth2PtrOutputWithContext(ctx context.Context) WorkspaceConnectionOAuth2PtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkspaceConnectionOAuth2) *WorkspaceConnectionOAuth2 {
-		return &v
-	}).(WorkspaceConnectionOAuth2PtrOutput)
-}
-
-// Required by Concur connection category
-func (o WorkspaceConnectionOAuth2Output) AuthUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkspaceConnectionOAuth2) *string { return v.AuthUrl }).(pulumi.StringPtrOutput)
-}
-
-// Client id in the format of UUID
-func (o WorkspaceConnectionOAuth2Output) ClientId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkspaceConnectionOAuth2) *string { return v.ClientId }).(pulumi.StringPtrOutput)
-}
-
-func (o WorkspaceConnectionOAuth2Output) ClientSecret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkspaceConnectionOAuth2) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
-}
-
-// Required by GoogleAdWords connection category
-func (o WorkspaceConnectionOAuth2Output) DeveloperToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkspaceConnectionOAuth2) *string { return v.DeveloperToken }).(pulumi.StringPtrOutput)
-}
-
-func (o WorkspaceConnectionOAuth2Output) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkspaceConnectionOAuth2) *string { return v.Password }).(pulumi.StringPtrOutput)
-}
-
-// Required by GoogleBigQuery, GoogleAdWords, Hubspot, QuickBooks, Square, Xero, Zoho
-// where user needs to get RefreshToken offline
-func (o WorkspaceConnectionOAuth2Output) RefreshToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkspaceConnectionOAuth2) *string { return v.RefreshToken }).(pulumi.StringPtrOutput)
-}
-
-// Required by QuickBooks and Xero connection categories
-func (o WorkspaceConnectionOAuth2Output) TenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkspaceConnectionOAuth2) *string { return v.TenantId }).(pulumi.StringPtrOutput)
-}
-
-// Concur, ServiceNow auth server AccessToken grant type is 'Password'
-// which requires UsernamePassword
-func (o WorkspaceConnectionOAuth2Output) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkspaceConnectionOAuth2) *string { return v.Username }).(pulumi.StringPtrOutput)
-}
-
-type WorkspaceConnectionOAuth2PtrOutput struct{ *pulumi.OutputState }
-
-func (WorkspaceConnectionOAuth2PtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkspaceConnectionOAuth2)(nil)).Elem()
-}
-
-func (o WorkspaceConnectionOAuth2PtrOutput) ToWorkspaceConnectionOAuth2PtrOutput() WorkspaceConnectionOAuth2PtrOutput {
-	return o
-}
-
-func (o WorkspaceConnectionOAuth2PtrOutput) ToWorkspaceConnectionOAuth2PtrOutputWithContext(ctx context.Context) WorkspaceConnectionOAuth2PtrOutput {
-	return o
-}
-
-func (o WorkspaceConnectionOAuth2PtrOutput) Elem() WorkspaceConnectionOAuth2Output {
-	return o.ApplyT(func(v *WorkspaceConnectionOAuth2) WorkspaceConnectionOAuth2 {
-		if v != nil {
-			return *v
-		}
-		var ret WorkspaceConnectionOAuth2
-		return ret
-	}).(WorkspaceConnectionOAuth2Output)
-}
-
-// Required by Concur connection category
-func (o WorkspaceConnectionOAuth2PtrOutput) AuthUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkspaceConnectionOAuth2) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AuthUrl
-	}).(pulumi.StringPtrOutput)
-}
-
-// Client id in the format of UUID
-func (o WorkspaceConnectionOAuth2PtrOutput) ClientId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkspaceConnectionOAuth2) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ClientId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o WorkspaceConnectionOAuth2PtrOutput) ClientSecret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkspaceConnectionOAuth2) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ClientSecret
-	}).(pulumi.StringPtrOutput)
-}
-
-// Required by GoogleAdWords connection category
-func (o WorkspaceConnectionOAuth2PtrOutput) DeveloperToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkspaceConnectionOAuth2) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DeveloperToken
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o WorkspaceConnectionOAuth2PtrOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkspaceConnectionOAuth2) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Password
-	}).(pulumi.StringPtrOutput)
-}
-
-// Required by GoogleBigQuery, GoogleAdWords, Hubspot, QuickBooks, Square, Xero, Zoho
-// where user needs to get RefreshToken offline
-func (o WorkspaceConnectionOAuth2PtrOutput) RefreshToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkspaceConnectionOAuth2) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RefreshToken
-	}).(pulumi.StringPtrOutput)
-}
-
-// Required by QuickBooks and Xero connection categories
-func (o WorkspaceConnectionOAuth2PtrOutput) TenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkspaceConnectionOAuth2) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TenantId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Concur, ServiceNow auth server AccessToken grant type is 'Password'
-// which requires UsernamePassword
-func (o WorkspaceConnectionOAuth2PtrOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkspaceConnectionOAuth2) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Username
-	}).(pulumi.StringPtrOutput)
-}
-
-// ClientId and ClientSecret are required. Other properties are optional
-// depending on each OAuth2 provider's implementation.
-type WorkspaceConnectionOAuth2Response struct {
-	// Required by Concur connection category
-	AuthUrl *string `pulumi:"authUrl"`
-	// Client id in the format of UUID
-	ClientId     *string `pulumi:"clientId"`
-	ClientSecret *string `pulumi:"clientSecret"`
-	// Required by GoogleAdWords connection category
-	DeveloperToken *string `pulumi:"developerToken"`
-	Password       *string `pulumi:"password"`
-	// Required by GoogleBigQuery, GoogleAdWords, Hubspot, QuickBooks, Square, Xero, Zoho
-	// where user needs to get RefreshToken offline
-	RefreshToken *string `pulumi:"refreshToken"`
-	// Required by QuickBooks and Xero connection categories
-	TenantId *string `pulumi:"tenantId"`
-	// Concur, ServiceNow auth server AccessToken grant type is 'Password'
-	// which requires UsernamePassword
-	Username *string `pulumi:"username"`
-}
-
-// ClientId and ClientSecret are required. Other properties are optional
-// depending on each OAuth2 provider's implementation.
-type WorkspaceConnectionOAuth2ResponseOutput struct{ *pulumi.OutputState }
-
-func (WorkspaceConnectionOAuth2ResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkspaceConnectionOAuth2Response)(nil)).Elem()
-}
-
-func (o WorkspaceConnectionOAuth2ResponseOutput) ToWorkspaceConnectionOAuth2ResponseOutput() WorkspaceConnectionOAuth2ResponseOutput {
-	return o
-}
-
-func (o WorkspaceConnectionOAuth2ResponseOutput) ToWorkspaceConnectionOAuth2ResponseOutputWithContext(ctx context.Context) WorkspaceConnectionOAuth2ResponseOutput {
-	return o
-}
-
-// Required by Concur connection category
-func (o WorkspaceConnectionOAuth2ResponseOutput) AuthUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkspaceConnectionOAuth2Response) *string { return v.AuthUrl }).(pulumi.StringPtrOutput)
-}
-
-// Client id in the format of UUID
-func (o WorkspaceConnectionOAuth2ResponseOutput) ClientId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkspaceConnectionOAuth2Response) *string { return v.ClientId }).(pulumi.StringPtrOutput)
-}
-
-func (o WorkspaceConnectionOAuth2ResponseOutput) ClientSecret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkspaceConnectionOAuth2Response) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
-}
-
-// Required by GoogleAdWords connection category
-func (o WorkspaceConnectionOAuth2ResponseOutput) DeveloperToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkspaceConnectionOAuth2Response) *string { return v.DeveloperToken }).(pulumi.StringPtrOutput)
-}
-
-func (o WorkspaceConnectionOAuth2ResponseOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkspaceConnectionOAuth2Response) *string { return v.Password }).(pulumi.StringPtrOutput)
-}
-
-// Required by GoogleBigQuery, GoogleAdWords, Hubspot, QuickBooks, Square, Xero, Zoho
-// where user needs to get RefreshToken offline
-func (o WorkspaceConnectionOAuth2ResponseOutput) RefreshToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkspaceConnectionOAuth2Response) *string { return v.RefreshToken }).(pulumi.StringPtrOutput)
-}
-
-// Required by QuickBooks and Xero connection categories
-func (o WorkspaceConnectionOAuth2ResponseOutput) TenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkspaceConnectionOAuth2Response) *string { return v.TenantId }).(pulumi.StringPtrOutput)
-}
-
-// Concur, ServiceNow auth server AccessToken grant type is 'Password'
-// which requires UsernamePassword
-func (o WorkspaceConnectionOAuth2ResponseOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkspaceConnectionOAuth2Response) *string { return v.Username }).(pulumi.StringPtrOutput)
-}
-
-type WorkspaceConnectionOAuth2ResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (WorkspaceConnectionOAuth2ResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkspaceConnectionOAuth2Response)(nil)).Elem()
-}
-
-func (o WorkspaceConnectionOAuth2ResponsePtrOutput) ToWorkspaceConnectionOAuth2ResponsePtrOutput() WorkspaceConnectionOAuth2ResponsePtrOutput {
-	return o
-}
-
-func (o WorkspaceConnectionOAuth2ResponsePtrOutput) ToWorkspaceConnectionOAuth2ResponsePtrOutputWithContext(ctx context.Context) WorkspaceConnectionOAuth2ResponsePtrOutput {
-	return o
-}
-
-func (o WorkspaceConnectionOAuth2ResponsePtrOutput) Elem() WorkspaceConnectionOAuth2ResponseOutput {
-	return o.ApplyT(func(v *WorkspaceConnectionOAuth2Response) WorkspaceConnectionOAuth2Response {
-		if v != nil {
-			return *v
-		}
-		var ret WorkspaceConnectionOAuth2Response
-		return ret
-	}).(WorkspaceConnectionOAuth2ResponseOutput)
-}
-
-// Required by Concur connection category
-func (o WorkspaceConnectionOAuth2ResponsePtrOutput) AuthUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkspaceConnectionOAuth2Response) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AuthUrl
-	}).(pulumi.StringPtrOutput)
-}
-
-// Client id in the format of UUID
-func (o WorkspaceConnectionOAuth2ResponsePtrOutput) ClientId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkspaceConnectionOAuth2Response) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ClientId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o WorkspaceConnectionOAuth2ResponsePtrOutput) ClientSecret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkspaceConnectionOAuth2Response) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ClientSecret
-	}).(pulumi.StringPtrOutput)
-}
-
-// Required by GoogleAdWords connection category
-func (o WorkspaceConnectionOAuth2ResponsePtrOutput) DeveloperToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkspaceConnectionOAuth2Response) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DeveloperToken
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o WorkspaceConnectionOAuth2ResponsePtrOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkspaceConnectionOAuth2Response) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Password
-	}).(pulumi.StringPtrOutput)
-}
-
-// Required by GoogleBigQuery, GoogleAdWords, Hubspot, QuickBooks, Square, Xero, Zoho
-// where user needs to get RefreshToken offline
-func (o WorkspaceConnectionOAuth2ResponsePtrOutput) RefreshToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkspaceConnectionOAuth2Response) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RefreshToken
-	}).(pulumi.StringPtrOutput)
-}
-
-// Required by QuickBooks and Xero connection categories
-func (o WorkspaceConnectionOAuth2ResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkspaceConnectionOAuth2Response) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TenantId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Concur, ServiceNow auth server AccessToken grant type is 'Password'
-// which requires UsernamePassword
-func (o WorkspaceConnectionOAuth2ResponsePtrOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkspaceConnectionOAuth2Response) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Username
-	}).(pulumi.StringPtrOutput)
-}
-
 type WorkspaceConnectionPersonalAccessToken struct {
 	Pat *string `pulumi:"pat"`
 }
@@ -26656,169 +12611,6 @@ func (o WorkspaceConnectionPersonalAccessTokenResponsePtrOutput) Pat() pulumi.St
 			return nil
 		}
 		return v.Pat
-	}).(pulumi.StringPtrOutput)
-}
-
-type WorkspaceConnectionServicePrincipal struct {
-	ClientId     *string `pulumi:"clientId"`
-	ClientSecret *string `pulumi:"clientSecret"`
-	TenantId     *string `pulumi:"tenantId"`
-}
-
-// WorkspaceConnectionServicePrincipalInput is an input type that accepts WorkspaceConnectionServicePrincipalArgs and WorkspaceConnectionServicePrincipalOutput values.
-// You can construct a concrete instance of `WorkspaceConnectionServicePrincipalInput` via:
-//
-//	WorkspaceConnectionServicePrincipalArgs{...}
-type WorkspaceConnectionServicePrincipalInput interface {
-	pulumi.Input
-
-	ToWorkspaceConnectionServicePrincipalOutput() WorkspaceConnectionServicePrincipalOutput
-	ToWorkspaceConnectionServicePrincipalOutputWithContext(context.Context) WorkspaceConnectionServicePrincipalOutput
-}
-
-type WorkspaceConnectionServicePrincipalArgs struct {
-	ClientId     pulumi.StringPtrInput `pulumi:"clientId"`
-	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
-	TenantId     pulumi.StringPtrInput `pulumi:"tenantId"`
-}
-
-func (WorkspaceConnectionServicePrincipalArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkspaceConnectionServicePrincipal)(nil)).Elem()
-}
-
-func (i WorkspaceConnectionServicePrincipalArgs) ToWorkspaceConnectionServicePrincipalOutput() WorkspaceConnectionServicePrincipalOutput {
-	return i.ToWorkspaceConnectionServicePrincipalOutputWithContext(context.Background())
-}
-
-func (i WorkspaceConnectionServicePrincipalArgs) ToWorkspaceConnectionServicePrincipalOutputWithContext(ctx context.Context) WorkspaceConnectionServicePrincipalOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceConnectionServicePrincipalOutput)
-}
-
-func (i WorkspaceConnectionServicePrincipalArgs) ToWorkspaceConnectionServicePrincipalPtrOutput() WorkspaceConnectionServicePrincipalPtrOutput {
-	return i.ToWorkspaceConnectionServicePrincipalPtrOutputWithContext(context.Background())
-}
-
-func (i WorkspaceConnectionServicePrincipalArgs) ToWorkspaceConnectionServicePrincipalPtrOutputWithContext(ctx context.Context) WorkspaceConnectionServicePrincipalPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceConnectionServicePrincipalOutput).ToWorkspaceConnectionServicePrincipalPtrOutputWithContext(ctx)
-}
-
-// WorkspaceConnectionServicePrincipalPtrInput is an input type that accepts WorkspaceConnectionServicePrincipalArgs, WorkspaceConnectionServicePrincipalPtr and WorkspaceConnectionServicePrincipalPtrOutput values.
-// You can construct a concrete instance of `WorkspaceConnectionServicePrincipalPtrInput` via:
-//
-//	        WorkspaceConnectionServicePrincipalArgs{...}
-//
-//	or:
-//
-//	        nil
-type WorkspaceConnectionServicePrincipalPtrInput interface {
-	pulumi.Input
-
-	ToWorkspaceConnectionServicePrincipalPtrOutput() WorkspaceConnectionServicePrincipalPtrOutput
-	ToWorkspaceConnectionServicePrincipalPtrOutputWithContext(context.Context) WorkspaceConnectionServicePrincipalPtrOutput
-}
-
-type workspaceConnectionServicePrincipalPtrType WorkspaceConnectionServicePrincipalArgs
-
-func WorkspaceConnectionServicePrincipalPtr(v *WorkspaceConnectionServicePrincipalArgs) WorkspaceConnectionServicePrincipalPtrInput {
-	return (*workspaceConnectionServicePrincipalPtrType)(v)
-}
-
-func (*workspaceConnectionServicePrincipalPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkspaceConnectionServicePrincipal)(nil)).Elem()
-}
-
-func (i *workspaceConnectionServicePrincipalPtrType) ToWorkspaceConnectionServicePrincipalPtrOutput() WorkspaceConnectionServicePrincipalPtrOutput {
-	return i.ToWorkspaceConnectionServicePrincipalPtrOutputWithContext(context.Background())
-}
-
-func (i *workspaceConnectionServicePrincipalPtrType) ToWorkspaceConnectionServicePrincipalPtrOutputWithContext(ctx context.Context) WorkspaceConnectionServicePrincipalPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceConnectionServicePrincipalPtrOutput)
-}
-
-type WorkspaceConnectionServicePrincipalOutput struct{ *pulumi.OutputState }
-
-func (WorkspaceConnectionServicePrincipalOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkspaceConnectionServicePrincipal)(nil)).Elem()
-}
-
-func (o WorkspaceConnectionServicePrincipalOutput) ToWorkspaceConnectionServicePrincipalOutput() WorkspaceConnectionServicePrincipalOutput {
-	return o
-}
-
-func (o WorkspaceConnectionServicePrincipalOutput) ToWorkspaceConnectionServicePrincipalOutputWithContext(ctx context.Context) WorkspaceConnectionServicePrincipalOutput {
-	return o
-}
-
-func (o WorkspaceConnectionServicePrincipalOutput) ToWorkspaceConnectionServicePrincipalPtrOutput() WorkspaceConnectionServicePrincipalPtrOutput {
-	return o.ToWorkspaceConnectionServicePrincipalPtrOutputWithContext(context.Background())
-}
-
-func (o WorkspaceConnectionServicePrincipalOutput) ToWorkspaceConnectionServicePrincipalPtrOutputWithContext(ctx context.Context) WorkspaceConnectionServicePrincipalPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkspaceConnectionServicePrincipal) *WorkspaceConnectionServicePrincipal {
-		return &v
-	}).(WorkspaceConnectionServicePrincipalPtrOutput)
-}
-
-func (o WorkspaceConnectionServicePrincipalOutput) ClientId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkspaceConnectionServicePrincipal) *string { return v.ClientId }).(pulumi.StringPtrOutput)
-}
-
-func (o WorkspaceConnectionServicePrincipalOutput) ClientSecret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkspaceConnectionServicePrincipal) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
-}
-
-func (o WorkspaceConnectionServicePrincipalOutput) TenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkspaceConnectionServicePrincipal) *string { return v.TenantId }).(pulumi.StringPtrOutput)
-}
-
-type WorkspaceConnectionServicePrincipalPtrOutput struct{ *pulumi.OutputState }
-
-func (WorkspaceConnectionServicePrincipalPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkspaceConnectionServicePrincipal)(nil)).Elem()
-}
-
-func (o WorkspaceConnectionServicePrincipalPtrOutput) ToWorkspaceConnectionServicePrincipalPtrOutput() WorkspaceConnectionServicePrincipalPtrOutput {
-	return o
-}
-
-func (o WorkspaceConnectionServicePrincipalPtrOutput) ToWorkspaceConnectionServicePrincipalPtrOutputWithContext(ctx context.Context) WorkspaceConnectionServicePrincipalPtrOutput {
-	return o
-}
-
-func (o WorkspaceConnectionServicePrincipalPtrOutput) Elem() WorkspaceConnectionServicePrincipalOutput {
-	return o.ApplyT(func(v *WorkspaceConnectionServicePrincipal) WorkspaceConnectionServicePrincipal {
-		if v != nil {
-			return *v
-		}
-		var ret WorkspaceConnectionServicePrincipal
-		return ret
-	}).(WorkspaceConnectionServicePrincipalOutput)
-}
-
-func (o WorkspaceConnectionServicePrincipalPtrOutput) ClientId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkspaceConnectionServicePrincipal) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ClientId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o WorkspaceConnectionServicePrincipalPtrOutput) ClientSecret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkspaceConnectionServicePrincipal) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ClientSecret
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o WorkspaceConnectionServicePrincipalPtrOutput) TenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkspaceConnectionServicePrincipal) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TenantId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -27095,9 +12887,7 @@ func (o WorkspaceConnectionSharedAccessSignatureResponsePtrOutput) Sas() pulumi.
 
 type WorkspaceConnectionUsernamePassword struct {
 	Password *string `pulumi:"password"`
-	// Optional, required by connections like SalesForce for extra security in addition to UsernamePassword
-	SecurityToken *string `pulumi:"securityToken"`
-	Username      *string `pulumi:"username"`
+	Username *string `pulumi:"username"`
 }
 
 // WorkspaceConnectionUsernamePasswordInput is an input type that accepts WorkspaceConnectionUsernamePasswordArgs and WorkspaceConnectionUsernamePasswordOutput values.
@@ -27113,9 +12903,7 @@ type WorkspaceConnectionUsernamePasswordInput interface {
 
 type WorkspaceConnectionUsernamePasswordArgs struct {
 	Password pulumi.StringPtrInput `pulumi:"password"`
-	// Optional, required by connections like SalesForce for extra security in addition to UsernamePassword
-	SecurityToken pulumi.StringPtrInput `pulumi:"securityToken"`
-	Username      pulumi.StringPtrInput `pulumi:"username"`
+	Username pulumi.StringPtrInput `pulumi:"username"`
 }
 
 func (WorkspaceConnectionUsernamePasswordArgs) ElementType() reflect.Type {
@@ -27199,11 +12987,6 @@ func (o WorkspaceConnectionUsernamePasswordOutput) Password() pulumi.StringPtrOu
 	return o.ApplyT(func(v WorkspaceConnectionUsernamePassword) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-// Optional, required by connections like SalesForce for extra security in addition to UsernamePassword
-func (o WorkspaceConnectionUsernamePasswordOutput) SecurityToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkspaceConnectionUsernamePassword) *string { return v.SecurityToken }).(pulumi.StringPtrOutput)
-}
-
 func (o WorkspaceConnectionUsernamePasswordOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkspaceConnectionUsernamePassword) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
@@ -27241,16 +13024,6 @@ func (o WorkspaceConnectionUsernamePasswordPtrOutput) Password() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional, required by connections like SalesForce for extra security in addition to UsernamePassword
-func (o WorkspaceConnectionUsernamePasswordPtrOutput) SecurityToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkspaceConnectionUsernamePassword) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecurityToken
-	}).(pulumi.StringPtrOutput)
-}
-
 func (o WorkspaceConnectionUsernamePasswordPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkspaceConnectionUsernamePassword) *string {
 		if v == nil {
@@ -27262,9 +13035,7 @@ func (o WorkspaceConnectionUsernamePasswordPtrOutput) Username() pulumi.StringPt
 
 type WorkspaceConnectionUsernamePasswordResponse struct {
 	Password *string `pulumi:"password"`
-	// Optional, required by connections like SalesForce for extra security in addition to UsernamePassword
-	SecurityToken *string `pulumi:"securityToken"`
-	Username      *string `pulumi:"username"`
+	Username *string `pulumi:"username"`
 }
 
 type WorkspaceConnectionUsernamePasswordResponseOutput struct{ *pulumi.OutputState }
@@ -27283,11 +13054,6 @@ func (o WorkspaceConnectionUsernamePasswordResponseOutput) ToWorkspaceConnection
 
 func (o WorkspaceConnectionUsernamePasswordResponseOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkspaceConnectionUsernamePasswordResponse) *string { return v.Password }).(pulumi.StringPtrOutput)
-}
-
-// Optional, required by connections like SalesForce for extra security in addition to UsernamePassword
-func (o WorkspaceConnectionUsernamePasswordResponseOutput) SecurityToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkspaceConnectionUsernamePasswordResponse) *string { return v.SecurityToken }).(pulumi.StringPtrOutput)
 }
 
 func (o WorkspaceConnectionUsernamePasswordResponseOutput) Username() pulumi.StringPtrOutput {
@@ -27327,16 +13093,6 @@ func (o WorkspaceConnectionUsernamePasswordResponsePtrOutput) Password() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional, required by connections like SalesForce for extra security in addition to UsernamePassword
-func (o WorkspaceConnectionUsernamePasswordResponsePtrOutput) SecurityToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkspaceConnectionUsernamePasswordResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecurityToken
-	}).(pulumi.StringPtrOutput)
-}
-
 func (o WorkspaceConnectionUsernamePasswordResponsePtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkspaceConnectionUsernamePasswordResponse) *string {
 		if v == nil {
@@ -27346,458 +13102,7 @@ func (o WorkspaceConnectionUsernamePasswordResponsePtrOutput) Username() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
-// WorkspaceHub's configuration object.
-type WorkspaceHubConfig struct {
-	AdditionalWorkspaceStorageAccounts []string `pulumi:"additionalWorkspaceStorageAccounts"`
-	DefaultWorkspaceResourceGroup      *string  `pulumi:"defaultWorkspaceResourceGroup"`
-}
-
-// WorkspaceHubConfigInput is an input type that accepts WorkspaceHubConfigArgs and WorkspaceHubConfigOutput values.
-// You can construct a concrete instance of `WorkspaceHubConfigInput` via:
-//
-//	WorkspaceHubConfigArgs{...}
-type WorkspaceHubConfigInput interface {
-	pulumi.Input
-
-	ToWorkspaceHubConfigOutput() WorkspaceHubConfigOutput
-	ToWorkspaceHubConfigOutputWithContext(context.Context) WorkspaceHubConfigOutput
-}
-
-// WorkspaceHub's configuration object.
-type WorkspaceHubConfigArgs struct {
-	AdditionalWorkspaceStorageAccounts pulumi.StringArrayInput `pulumi:"additionalWorkspaceStorageAccounts"`
-	DefaultWorkspaceResourceGroup      pulumi.StringPtrInput   `pulumi:"defaultWorkspaceResourceGroup"`
-}
-
-func (WorkspaceHubConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkspaceHubConfig)(nil)).Elem()
-}
-
-func (i WorkspaceHubConfigArgs) ToWorkspaceHubConfigOutput() WorkspaceHubConfigOutput {
-	return i.ToWorkspaceHubConfigOutputWithContext(context.Background())
-}
-
-func (i WorkspaceHubConfigArgs) ToWorkspaceHubConfigOutputWithContext(ctx context.Context) WorkspaceHubConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceHubConfigOutput)
-}
-
-func (i WorkspaceHubConfigArgs) ToWorkspaceHubConfigPtrOutput() WorkspaceHubConfigPtrOutput {
-	return i.ToWorkspaceHubConfigPtrOutputWithContext(context.Background())
-}
-
-func (i WorkspaceHubConfigArgs) ToWorkspaceHubConfigPtrOutputWithContext(ctx context.Context) WorkspaceHubConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceHubConfigOutput).ToWorkspaceHubConfigPtrOutputWithContext(ctx)
-}
-
-// WorkspaceHubConfigPtrInput is an input type that accepts WorkspaceHubConfigArgs, WorkspaceHubConfigPtr and WorkspaceHubConfigPtrOutput values.
-// You can construct a concrete instance of `WorkspaceHubConfigPtrInput` via:
-//
-//	        WorkspaceHubConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type WorkspaceHubConfigPtrInput interface {
-	pulumi.Input
-
-	ToWorkspaceHubConfigPtrOutput() WorkspaceHubConfigPtrOutput
-	ToWorkspaceHubConfigPtrOutputWithContext(context.Context) WorkspaceHubConfigPtrOutput
-}
-
-type workspaceHubConfigPtrType WorkspaceHubConfigArgs
-
-func WorkspaceHubConfigPtr(v *WorkspaceHubConfigArgs) WorkspaceHubConfigPtrInput {
-	return (*workspaceHubConfigPtrType)(v)
-}
-
-func (*workspaceHubConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkspaceHubConfig)(nil)).Elem()
-}
-
-func (i *workspaceHubConfigPtrType) ToWorkspaceHubConfigPtrOutput() WorkspaceHubConfigPtrOutput {
-	return i.ToWorkspaceHubConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *workspaceHubConfigPtrType) ToWorkspaceHubConfigPtrOutputWithContext(ctx context.Context) WorkspaceHubConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceHubConfigPtrOutput)
-}
-
-// WorkspaceHub's configuration object.
-type WorkspaceHubConfigOutput struct{ *pulumi.OutputState }
-
-func (WorkspaceHubConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkspaceHubConfig)(nil)).Elem()
-}
-
-func (o WorkspaceHubConfigOutput) ToWorkspaceHubConfigOutput() WorkspaceHubConfigOutput {
-	return o
-}
-
-func (o WorkspaceHubConfigOutput) ToWorkspaceHubConfigOutputWithContext(ctx context.Context) WorkspaceHubConfigOutput {
-	return o
-}
-
-func (o WorkspaceHubConfigOutput) ToWorkspaceHubConfigPtrOutput() WorkspaceHubConfigPtrOutput {
-	return o.ToWorkspaceHubConfigPtrOutputWithContext(context.Background())
-}
-
-func (o WorkspaceHubConfigOutput) ToWorkspaceHubConfigPtrOutputWithContext(ctx context.Context) WorkspaceHubConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkspaceHubConfig) *WorkspaceHubConfig {
-		return &v
-	}).(WorkspaceHubConfigPtrOutput)
-}
-
-func (o WorkspaceHubConfigOutput) AdditionalWorkspaceStorageAccounts() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v WorkspaceHubConfig) []string { return v.AdditionalWorkspaceStorageAccounts }).(pulumi.StringArrayOutput)
-}
-
-func (o WorkspaceHubConfigOutput) DefaultWorkspaceResourceGroup() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkspaceHubConfig) *string { return v.DefaultWorkspaceResourceGroup }).(pulumi.StringPtrOutput)
-}
-
-type WorkspaceHubConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (WorkspaceHubConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkspaceHubConfig)(nil)).Elem()
-}
-
-func (o WorkspaceHubConfigPtrOutput) ToWorkspaceHubConfigPtrOutput() WorkspaceHubConfigPtrOutput {
-	return o
-}
-
-func (o WorkspaceHubConfigPtrOutput) ToWorkspaceHubConfigPtrOutputWithContext(ctx context.Context) WorkspaceHubConfigPtrOutput {
-	return o
-}
-
-func (o WorkspaceHubConfigPtrOutput) Elem() WorkspaceHubConfigOutput {
-	return o.ApplyT(func(v *WorkspaceHubConfig) WorkspaceHubConfig {
-		if v != nil {
-			return *v
-		}
-		var ret WorkspaceHubConfig
-		return ret
-	}).(WorkspaceHubConfigOutput)
-}
-
-func (o WorkspaceHubConfigPtrOutput) AdditionalWorkspaceStorageAccounts() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *WorkspaceHubConfig) []string {
-		if v == nil {
-			return nil
-		}
-		return v.AdditionalWorkspaceStorageAccounts
-	}).(pulumi.StringArrayOutput)
-}
-
-func (o WorkspaceHubConfigPtrOutput) DefaultWorkspaceResourceGroup() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkspaceHubConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DefaultWorkspaceResourceGroup
-	}).(pulumi.StringPtrOutput)
-}
-
-// WorkspaceHub's configuration object.
-type WorkspaceHubConfigResponse struct {
-	AdditionalWorkspaceStorageAccounts []string `pulumi:"additionalWorkspaceStorageAccounts"`
-	DefaultWorkspaceResourceGroup      *string  `pulumi:"defaultWorkspaceResourceGroup"`
-}
-
-// WorkspaceHub's configuration object.
-type WorkspaceHubConfigResponseOutput struct{ *pulumi.OutputState }
-
-func (WorkspaceHubConfigResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkspaceHubConfigResponse)(nil)).Elem()
-}
-
-func (o WorkspaceHubConfigResponseOutput) ToWorkspaceHubConfigResponseOutput() WorkspaceHubConfigResponseOutput {
-	return o
-}
-
-func (o WorkspaceHubConfigResponseOutput) ToWorkspaceHubConfigResponseOutputWithContext(ctx context.Context) WorkspaceHubConfigResponseOutput {
-	return o
-}
-
-func (o WorkspaceHubConfigResponseOutput) AdditionalWorkspaceStorageAccounts() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v WorkspaceHubConfigResponse) []string { return v.AdditionalWorkspaceStorageAccounts }).(pulumi.StringArrayOutput)
-}
-
-func (o WorkspaceHubConfigResponseOutput) DefaultWorkspaceResourceGroup() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkspaceHubConfigResponse) *string { return v.DefaultWorkspaceResourceGroup }).(pulumi.StringPtrOutput)
-}
-
-type WorkspaceHubConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (WorkspaceHubConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkspaceHubConfigResponse)(nil)).Elem()
-}
-
-func (o WorkspaceHubConfigResponsePtrOutput) ToWorkspaceHubConfigResponsePtrOutput() WorkspaceHubConfigResponsePtrOutput {
-	return o
-}
-
-func (o WorkspaceHubConfigResponsePtrOutput) ToWorkspaceHubConfigResponsePtrOutputWithContext(ctx context.Context) WorkspaceHubConfigResponsePtrOutput {
-	return o
-}
-
-func (o WorkspaceHubConfigResponsePtrOutput) Elem() WorkspaceHubConfigResponseOutput {
-	return o.ApplyT(func(v *WorkspaceHubConfigResponse) WorkspaceHubConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret WorkspaceHubConfigResponse
-		return ret
-	}).(WorkspaceHubConfigResponseOutput)
-}
-
-func (o WorkspaceHubConfigResponsePtrOutput) AdditionalWorkspaceStorageAccounts() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *WorkspaceHubConfigResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.AdditionalWorkspaceStorageAccounts
-	}).(pulumi.StringArrayOutput)
-}
-
-func (o WorkspaceHubConfigResponsePtrOutput) DefaultWorkspaceResourceGroup() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkspaceHubConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DefaultWorkspaceResourceGroup
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Private Endpoint resource.
-type WorkspacePrivateEndpointResourceResponse struct {
-	// e.g. /subscriptions/{networkSubscriptionId}/resourceGroups/{rgName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}
-	Id string `pulumi:"id"`
-	// The subnetId that the private endpoint is connected to.
-	SubnetArmId string `pulumi:"subnetArmId"`
-}
-
-// The Private Endpoint resource.
-type WorkspacePrivateEndpointResourceResponseOutput struct{ *pulumi.OutputState }
-
-func (WorkspacePrivateEndpointResourceResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkspacePrivateEndpointResourceResponse)(nil)).Elem()
-}
-
-func (o WorkspacePrivateEndpointResourceResponseOutput) ToWorkspacePrivateEndpointResourceResponseOutput() WorkspacePrivateEndpointResourceResponseOutput {
-	return o
-}
-
-func (o WorkspacePrivateEndpointResourceResponseOutput) ToWorkspacePrivateEndpointResourceResponseOutputWithContext(ctx context.Context) WorkspacePrivateEndpointResourceResponseOutput {
-	return o
-}
-
-// e.g. /subscriptions/{networkSubscriptionId}/resourceGroups/{rgName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}
-func (o WorkspacePrivateEndpointResourceResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v WorkspacePrivateEndpointResourceResponse) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// The subnetId that the private endpoint is connected to.
-func (o WorkspacePrivateEndpointResourceResponseOutput) SubnetArmId() pulumi.StringOutput {
-	return o.ApplyT(func(v WorkspacePrivateEndpointResourceResponse) string { return v.SubnetArmId }).(pulumi.StringOutput)
-}
-
-type WorkspacePrivateEndpointResourceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (WorkspacePrivateEndpointResourceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkspacePrivateEndpointResourceResponse)(nil)).Elem()
-}
-
-func (o WorkspacePrivateEndpointResourceResponsePtrOutput) ToWorkspacePrivateEndpointResourceResponsePtrOutput() WorkspacePrivateEndpointResourceResponsePtrOutput {
-	return o
-}
-
-func (o WorkspacePrivateEndpointResourceResponsePtrOutput) ToWorkspacePrivateEndpointResourceResponsePtrOutputWithContext(ctx context.Context) WorkspacePrivateEndpointResourceResponsePtrOutput {
-	return o
-}
-
-func (o WorkspacePrivateEndpointResourceResponsePtrOutput) Elem() WorkspacePrivateEndpointResourceResponseOutput {
-	return o.ApplyT(func(v *WorkspacePrivateEndpointResourceResponse) WorkspacePrivateEndpointResourceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret WorkspacePrivateEndpointResourceResponse
-		return ret
-	}).(WorkspacePrivateEndpointResourceResponseOutput)
-}
-
-// e.g. /subscriptions/{networkSubscriptionId}/resourceGroups/{rgName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}
-func (o WorkspacePrivateEndpointResourceResponsePtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkspacePrivateEndpointResourceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-// The subnetId that the private endpoint is connected to.
-func (o WorkspacePrivateEndpointResourceResponsePtrOutput) SubnetArmId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkspacePrivateEndpointResourceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SubnetArmId
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
-	pulumi.RegisterOutputType(PersonalComputeInstanceSettingsResponseOutput{})
-	pulumi.RegisterOutputType(PersonalComputeInstanceSettingsResponsePtrOutput{})
-	pulumi.RegisterOutputType(PipelineJobOutput{})
-	pulumi.RegisterOutputType(PipelineJobResponseOutput{})
-	pulumi.RegisterOutputType(PredictionDriftMonitoringSignalOutput{})
-	pulumi.RegisterOutputType(PredictionDriftMonitoringSignalResponseOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseArrayOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointDestinationOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointDestinationPtrOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointDestinationResponseOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointDestinationResponsePtrOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointOutboundRuleOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointOutboundRuleResponseOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointResourceOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointResourcePtrOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointResourceResponseOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointResourceResponsePtrOutput{})
-	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateOutput{})
-	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStatePtrOutput{})
-	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateResponseOutput{})
-	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateResponsePtrOutput{})
-	pulumi.RegisterOutputType(ProbeSettingsOutput{})
-	pulumi.RegisterOutputType(ProbeSettingsPtrOutput{})
-	pulumi.RegisterOutputType(ProbeSettingsResponseOutput{})
-	pulumi.RegisterOutputType(ProbeSettingsResponsePtrOutput{})
-	pulumi.RegisterOutputType(ProgressMetricsResponseOutput{})
-	pulumi.RegisterOutputType(PyTorchOutput{})
-	pulumi.RegisterOutputType(PyTorchPtrOutput{})
-	pulumi.RegisterOutputType(PyTorchResponseOutput{})
-	pulumi.RegisterOutputType(PyTorchResponsePtrOutput{})
-	pulumi.RegisterOutputType(QueueSettingsOutput{})
-	pulumi.RegisterOutputType(QueueSettingsPtrOutput{})
-	pulumi.RegisterOutputType(QueueSettingsResponseOutput{})
-	pulumi.RegisterOutputType(QueueSettingsResponsePtrOutput{})
-	pulumi.RegisterOutputType(RaiBlocklistConfigOutput{})
-	pulumi.RegisterOutputType(RaiBlocklistConfigArrayOutput{})
-	pulumi.RegisterOutputType(RaiBlocklistConfigResponseOutput{})
-	pulumi.RegisterOutputType(RaiBlocklistConfigResponseArrayOutput{})
-	pulumi.RegisterOutputType(RaiBlocklistItemPropertiesOutput{})
-	pulumi.RegisterOutputType(RaiBlocklistItemPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(RaiBlocklistPropertiesOutput{})
-	pulumi.RegisterOutputType(RaiBlocklistPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(RaiPolicyContentFilterOutput{})
-	pulumi.RegisterOutputType(RaiPolicyContentFilterArrayOutput{})
-	pulumi.RegisterOutputType(RaiPolicyContentFilterResponseOutput{})
-	pulumi.RegisterOutputType(RaiPolicyContentFilterResponseArrayOutput{})
-	pulumi.RegisterOutputType(RaiPolicyPropertiesOutput{})
-	pulumi.RegisterOutputType(RaiPolicyPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(RandomSamplingAlgorithmOutput{})
-	pulumi.RegisterOutputType(RandomSamplingAlgorithmResponseOutput{})
-	pulumi.RegisterOutputType(RecurrenceOutput{})
-	pulumi.RegisterOutputType(RecurrencePtrOutput{})
-	pulumi.RegisterOutputType(RecurrenceResponseOutput{})
-	pulumi.RegisterOutputType(RecurrenceResponsePtrOutput{})
-	pulumi.RegisterOutputType(RecurrenceScheduleOutput{})
-	pulumi.RegisterOutputType(RecurrenceSchedulePtrOutput{})
-	pulumi.RegisterOutputType(RecurrenceScheduleResponseOutput{})
-	pulumi.RegisterOutputType(RecurrenceScheduleResponsePtrOutput{})
-	pulumi.RegisterOutputType(RecurrenceTriggerOutput{})
-	pulumi.RegisterOutputType(RecurrenceTriggerPtrOutput{})
-	pulumi.RegisterOutputType(RecurrenceTriggerResponseOutput{})
-	pulumi.RegisterOutputType(RecurrenceTriggerResponsePtrOutput{})
-	pulumi.RegisterOutputType(RegistryListCredentialsResultResponseOutput{})
-	pulumi.RegisterOutputType(RegistryListCredentialsResultResponsePtrOutput{})
-	pulumi.RegisterOutputType(RegistryPrivateEndpointConnectionOutput{})
-	pulumi.RegisterOutputType(RegistryPrivateEndpointConnectionArrayOutput{})
-	pulumi.RegisterOutputType(RegistryPrivateEndpointConnectionResponseOutput{})
-	pulumi.RegisterOutputType(RegistryPrivateEndpointConnectionResponseArrayOutput{})
-	pulumi.RegisterOutputType(RegistryPrivateLinkServiceConnectionStateOutput{})
-	pulumi.RegisterOutputType(RegistryPrivateLinkServiceConnectionStatePtrOutput{})
-	pulumi.RegisterOutputType(RegistryPrivateLinkServiceConnectionStateResponseOutput{})
-	pulumi.RegisterOutputType(RegistryPrivateLinkServiceConnectionStateResponsePtrOutput{})
-	pulumi.RegisterOutputType(RegistryRegionArmDetailsOutput{})
-	pulumi.RegisterOutputType(RegistryRegionArmDetailsArrayOutput{})
-	pulumi.RegisterOutputType(RegistryRegionArmDetailsResponseOutput{})
-	pulumi.RegisterOutputType(RegistryRegionArmDetailsResponseArrayOutput{})
-	pulumi.RegisterOutputType(RegressionOutput{})
-	pulumi.RegisterOutputType(RegressionResponseOutput{})
-	pulumi.RegisterOutputType(RegressionTrainingSettingsOutput{})
-	pulumi.RegisterOutputType(RegressionTrainingSettingsPtrOutput{})
-	pulumi.RegisterOutputType(RegressionTrainingSettingsResponseOutput{})
-	pulumi.RegisterOutputType(RegressionTrainingSettingsResponsePtrOutput{})
-	pulumi.RegisterOutputType(RequestConfigurationOutput{})
-	pulumi.RegisterOutputType(RequestConfigurationPtrOutput{})
-	pulumi.RegisterOutputType(RequestConfigurationResponseOutput{})
-	pulumi.RegisterOutputType(RequestConfigurationResponsePtrOutput{})
-	pulumi.RegisterOutputType(RequestLoggingOutput{})
-	pulumi.RegisterOutputType(RequestLoggingPtrOutput{})
-	pulumi.RegisterOutputType(RequestLoggingResponseOutput{})
-	pulumi.RegisterOutputType(RequestLoggingResponsePtrOutput{})
-	pulumi.RegisterOutputType(ResourceIdOutput{})
-	pulumi.RegisterOutputType(ResourceIdPtrOutput{})
-	pulumi.RegisterOutputType(ResourceIdResponseOutput{})
-	pulumi.RegisterOutputType(ResourceIdResponsePtrOutput{})
-	pulumi.RegisterOutputType(RollingInputDataOutput{})
-	pulumi.RegisterOutputType(RollingInputDataResponseOutput{})
-	pulumi.RegisterOutputType(RouteOutput{})
-	pulumi.RegisterOutputType(RoutePtrOutput{})
-	pulumi.RegisterOutputType(RouteResponseOutput{})
-	pulumi.RegisterOutputType(RouteResponsePtrOutput{})
-	pulumi.RegisterOutputType(SASAuthTypeWorkspaceConnectionPropertiesOutput{})
-	pulumi.RegisterOutputType(SASAuthTypeWorkspaceConnectionPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(SasDatastoreCredentialsOutput{})
-	pulumi.RegisterOutputType(SasDatastoreCredentialsResponseOutput{})
-	pulumi.RegisterOutputType(SasDatastoreSecretsOutput{})
-	pulumi.RegisterOutputType(ScaleSettingsOutput{})
-	pulumi.RegisterOutputType(ScaleSettingsPtrOutput{})
-	pulumi.RegisterOutputType(ScaleSettingsResponseOutput{})
-	pulumi.RegisterOutputType(ScaleSettingsResponsePtrOutput{})
-	pulumi.RegisterOutputType(ScaleUnitConfigurationOutput{})
-	pulumi.RegisterOutputType(ScaleUnitConfigurationPtrOutput{})
-	pulumi.RegisterOutputType(ScaleUnitConfigurationResponseOutput{})
-	pulumi.RegisterOutputType(ScaleUnitConfigurationResponsePtrOutput{})
-	pulumi.RegisterOutputType(ScheduleBaseOutput{})
-	pulumi.RegisterOutputType(ScheduleBasePtrOutput{})
-	pulumi.RegisterOutputType(ScheduleBaseResponseOutput{})
-	pulumi.RegisterOutputType(ScheduleBaseResponsePtrOutput{})
-	pulumi.RegisterOutputType(SchedulePropertiesOutput{})
-	pulumi.RegisterOutputType(SchedulePropertiesResponseOutput{})
-	pulumi.RegisterOutputType(ScriptReferenceOutput{})
-	pulumi.RegisterOutputType(ScriptReferencePtrOutput{})
-	pulumi.RegisterOutputType(ScriptReferenceResponseOutput{})
-	pulumi.RegisterOutputType(ScriptReferenceResponsePtrOutput{})
-	pulumi.RegisterOutputType(ScriptsToExecuteOutput{})
-	pulumi.RegisterOutputType(ScriptsToExecutePtrOutput{})
-	pulumi.RegisterOutputType(ScriptsToExecuteResponseOutput{})
-	pulumi.RegisterOutputType(ScriptsToExecuteResponsePtrOutput{})
-	pulumi.RegisterOutputType(SecretConfigurationOutput{})
-	pulumi.RegisterOutputType(SecretConfigurationMapOutput{})
-	pulumi.RegisterOutputType(SecretConfigurationResponseOutput{})
-	pulumi.RegisterOutputType(SecretConfigurationResponseMapOutput{})
-	pulumi.RegisterOutputType(ServerlessComputeSettingsOutput{})
-	pulumi.RegisterOutputType(ServerlessComputeSettingsPtrOutput{})
-	pulumi.RegisterOutputType(ServerlessComputeSettingsResponseOutput{})
-	pulumi.RegisterOutputType(ServerlessComputeSettingsResponsePtrOutput{})
-	pulumi.RegisterOutputType(ServerlessEndpointPropertiesOutput{})
-	pulumi.RegisterOutputType(ServerlessEndpointPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(ServerlessInferenceEndpointResponseOutput{})
-	pulumi.RegisterOutputType(ServerlessOfferOutput{})
-	pulumi.RegisterOutputType(ServerlessOfferPtrOutput{})
-	pulumi.RegisterOutputType(ServerlessOfferResponseOutput{})
-	pulumi.RegisterOutputType(ServerlessOfferResponsePtrOutput{})
-	pulumi.RegisterOutputType(ServiceManagedResourcesSettingsOutput{})
-	pulumi.RegisterOutputType(ServiceManagedResourcesSettingsPtrOutput{})
-	pulumi.RegisterOutputType(ServiceManagedResourcesSettingsResponseOutput{})
-	pulumi.RegisterOutputType(ServiceManagedResourcesSettingsResponsePtrOutput{})
-	pulumi.RegisterOutputType(ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput{})
-	pulumi.RegisterOutputType(ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(ServicePrincipalDatastoreCredentialsOutput{})
-	pulumi.RegisterOutputType(ServicePrincipalDatastoreCredentialsResponseOutput{})
-	pulumi.RegisterOutputType(ServicePrincipalDatastoreSecretsOutput{})
 	pulumi.RegisterOutputType(ServiceTagDestinationOutput{})
 	pulumi.RegisterOutputType(ServiceTagDestinationPtrOutput{})
 	pulumi.RegisterOutputType(ServiceTagDestinationResponseOutput{})
@@ -27816,20 +13121,6 @@ func init() {
 	pulumi.RegisterOutputType(SkuPtrOutput{})
 	pulumi.RegisterOutputType(SkuResponseOutput{})
 	pulumi.RegisterOutputType(SkuResponsePtrOutput{})
-	pulumi.RegisterOutputType(SkuResponseV1Output{})
-	pulumi.RegisterOutputType(SkuResponseV1PtrOutput{})
-	pulumi.RegisterOutputType(SkuResponseV2Output{})
-	pulumi.RegisterOutputType(SkuResponseV2PtrOutput{})
-	pulumi.RegisterOutputType(SparkJobOutput{})
-	pulumi.RegisterOutputType(SparkJobPythonEntryOutput{})
-	pulumi.RegisterOutputType(SparkJobPythonEntryResponseOutput{})
-	pulumi.RegisterOutputType(SparkJobResponseOutput{})
-	pulumi.RegisterOutputType(SparkJobScalaEntryOutput{})
-	pulumi.RegisterOutputType(SparkJobScalaEntryResponseOutput{})
-	pulumi.RegisterOutputType(SparkResourceConfigurationOutput{})
-	pulumi.RegisterOutputType(SparkResourceConfigurationPtrOutput{})
-	pulumi.RegisterOutputType(SparkResourceConfigurationResponseOutput{})
-	pulumi.RegisterOutputType(SparkResourceConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(SpeechEndpointDeploymentResourcePropertiesOutput{})
 	pulumi.RegisterOutputType(SpeechEndpointDeploymentResourcePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(SslConfigurationOutput{})
@@ -27840,18 +13131,12 @@ func init() {
 	pulumi.RegisterOutputType(StackEnsembleSettingsPtrOutput{})
 	pulumi.RegisterOutputType(StackEnsembleSettingsResponseOutput{})
 	pulumi.RegisterOutputType(StackEnsembleSettingsResponsePtrOutput{})
-	pulumi.RegisterOutputType(StaticInputDataOutput{})
-	pulumi.RegisterOutputType(StaticInputDataResponseOutput{})
 	pulumi.RegisterOutputType(StatusMessageResponseOutput{})
 	pulumi.RegisterOutputType(StatusMessageResponseArrayOutput{})
 	pulumi.RegisterOutputType(StorageAccountDetailsOutput{})
 	pulumi.RegisterOutputType(StorageAccountDetailsArrayOutput{})
 	pulumi.RegisterOutputType(StorageAccountDetailsResponseOutput{})
 	pulumi.RegisterOutputType(StorageAccountDetailsResponseArrayOutput{})
-	pulumi.RegisterOutputType(StringStringKeyValuePairOutput{})
-	pulumi.RegisterOutputType(StringStringKeyValuePairArrayOutput{})
-	pulumi.RegisterOutputType(StringStringKeyValuePairResponseOutput{})
-	pulumi.RegisterOutputType(StringStringKeyValuePairResponseArrayOutput{})
 	pulumi.RegisterOutputType(SweepJobOutput{})
 	pulumi.RegisterOutputType(SweepJobLimitsOutput{})
 	pulumi.RegisterOutputType(SweepJobLimitsPtrOutput{})
@@ -27862,9 +13147,9 @@ func init() {
 	pulumi.RegisterOutputType(SynapseSparkPtrOutput{})
 	pulumi.RegisterOutputType(SynapseSparkPropertiesOutput{})
 	pulumi.RegisterOutputType(SynapseSparkPropertiesPtrOutput{})
-	pulumi.RegisterOutputType(SynapseSparkPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(SynapseSparkPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(SynapseSparkResponseOutput{})
+	pulumi.RegisterOutputType(SynapseSparkResponsePropertiesOutput{})
+	pulumi.RegisterOutputType(SynapseSparkResponsePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(SystemCreatedAcrAccountOutput{})
 	pulumi.RegisterOutputType(SystemCreatedAcrAccountPtrOutput{})
 	pulumi.RegisterOutputType(SystemCreatedAcrAccountResponseOutput{})
@@ -27898,14 +13183,12 @@ func init() {
 	pulumi.RegisterOutputType(TextClassificationResponseOutput{})
 	pulumi.RegisterOutputType(TextNerOutput{})
 	pulumi.RegisterOutputType(TextNerResponseOutput{})
+	pulumi.RegisterOutputType(ThrottlingRuleResponseOutput{})
+	pulumi.RegisterOutputType(ThrottlingRuleResponseArrayOutput{})
 	pulumi.RegisterOutputType(TmpfsOptionsOutput{})
 	pulumi.RegisterOutputType(TmpfsOptionsPtrOutput{})
 	pulumi.RegisterOutputType(TmpfsOptionsResponseOutput{})
 	pulumi.RegisterOutputType(TmpfsOptionsResponsePtrOutput{})
-	pulumi.RegisterOutputType(TopNFeaturesByAttributionOutput{})
-	pulumi.RegisterOutputType(TopNFeaturesByAttributionPtrOutput{})
-	pulumi.RegisterOutputType(TopNFeaturesByAttributionResponseOutput{})
-	pulumi.RegisterOutputType(TopNFeaturesByAttributionResponsePtrOutput{})
 	pulumi.RegisterOutputType(TrialComponentOutput{})
 	pulumi.RegisterOutputType(TrialComponentResponseOutput{})
 	pulumi.RegisterOutputType(TritonModelJobInputOutput{})
@@ -27934,12 +13217,6 @@ func init() {
 	pulumi.RegisterOutputType(UserAccountCredentialsResponsePtrOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})
-	pulumi.RegisterOutputType(UserAssignedIdentityResponseV1Output{})
-	pulumi.RegisterOutputType(UserAssignedIdentityResponseV1MapOutput{})
-	pulumi.RegisterOutputType(UserAssignedIdentityResponseV2Output{})
-	pulumi.RegisterOutputType(UserAssignedIdentityResponseV2MapOutput{})
-	pulumi.RegisterOutputType(UserAssignedIdentityResponseV3Output{})
-	pulumi.RegisterOutputType(UserAssignedIdentityResponseV3MapOutput{})
 	pulumi.RegisterOutputType(UserIdentityOutput{})
 	pulumi.RegisterOutputType(UserIdentityPtrOutput{})
 	pulumi.RegisterOutputType(UserIdentityResponseOutput{})
@@ -27957,8 +13234,8 @@ func init() {
 	pulumi.RegisterOutputType(VirtualMachineResponseOutput{})
 	pulumi.RegisterOutputType(VirtualMachineSchemaPropertiesOutput{})
 	pulumi.RegisterOutputType(VirtualMachineSchemaPropertiesPtrOutput{})
-	pulumi.RegisterOutputType(VirtualMachineSchemaPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(VirtualMachineSchemaPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineSchemaResponsePropertiesOutput{})
+	pulumi.RegisterOutputType(VirtualMachineSchemaResponsePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachineSizeResponseOutput{})
 	pulumi.RegisterOutputType(VirtualMachineSizeResponseArrayOutput{})
 	pulumi.RegisterOutputType(VirtualMachineSshCredentialsOutput{})
@@ -27973,32 +13250,18 @@ func init() {
 	pulumi.RegisterOutputType(VolumeOptionsPtrOutput{})
 	pulumi.RegisterOutputType(VolumeOptionsResponseOutput{})
 	pulumi.RegisterOutputType(VolumeOptionsResponsePtrOutput{})
-	pulumi.RegisterOutputType(WorkspaceConnectionAccessKeyOutput{})
-	pulumi.RegisterOutputType(WorkspaceConnectionAccessKeyPtrOutput{})
 	pulumi.RegisterOutputType(WorkspaceConnectionAccessKeyResponseOutput{})
 	pulumi.RegisterOutputType(WorkspaceConnectionAccessKeyResponsePtrOutput{})
-	pulumi.RegisterOutputType(WorkspaceConnectionAccountKeyOutput{})
-	pulumi.RegisterOutputType(WorkspaceConnectionAccountKeyPtrOutput{})
-	pulumi.RegisterOutputType(WorkspaceConnectionAccountKeyResponseOutput{})
-	pulumi.RegisterOutputType(WorkspaceConnectionAccountKeyResponsePtrOutput{})
-	pulumi.RegisterOutputType(WorkspaceConnectionApiKeyOutput{})
-	pulumi.RegisterOutputType(WorkspaceConnectionApiKeyPtrOutput{})
 	pulumi.RegisterOutputType(WorkspaceConnectionApiKeyResponseOutput{})
 	pulumi.RegisterOutputType(WorkspaceConnectionApiKeyResponsePtrOutput{})
 	pulumi.RegisterOutputType(WorkspaceConnectionManagedIdentityOutput{})
 	pulumi.RegisterOutputType(WorkspaceConnectionManagedIdentityPtrOutput{})
 	pulumi.RegisterOutputType(WorkspaceConnectionManagedIdentityResponseOutput{})
 	pulumi.RegisterOutputType(WorkspaceConnectionManagedIdentityResponsePtrOutput{})
-	pulumi.RegisterOutputType(WorkspaceConnectionOAuth2Output{})
-	pulumi.RegisterOutputType(WorkspaceConnectionOAuth2PtrOutput{})
-	pulumi.RegisterOutputType(WorkspaceConnectionOAuth2ResponseOutput{})
-	pulumi.RegisterOutputType(WorkspaceConnectionOAuth2ResponsePtrOutput{})
 	pulumi.RegisterOutputType(WorkspaceConnectionPersonalAccessTokenOutput{})
 	pulumi.RegisterOutputType(WorkspaceConnectionPersonalAccessTokenPtrOutput{})
 	pulumi.RegisterOutputType(WorkspaceConnectionPersonalAccessTokenResponseOutput{})
 	pulumi.RegisterOutputType(WorkspaceConnectionPersonalAccessTokenResponsePtrOutput{})
-	pulumi.RegisterOutputType(WorkspaceConnectionServicePrincipalOutput{})
-	pulumi.RegisterOutputType(WorkspaceConnectionServicePrincipalPtrOutput{})
 	pulumi.RegisterOutputType(WorkspaceConnectionServicePrincipalResponseOutput{})
 	pulumi.RegisterOutputType(WorkspaceConnectionServicePrincipalResponsePtrOutput{})
 	pulumi.RegisterOutputType(WorkspaceConnectionSharedAccessSignatureOutput{})
@@ -28009,10 +13272,4 @@ func init() {
 	pulumi.RegisterOutputType(WorkspaceConnectionUsernamePasswordPtrOutput{})
 	pulumi.RegisterOutputType(WorkspaceConnectionUsernamePasswordResponseOutput{})
 	pulumi.RegisterOutputType(WorkspaceConnectionUsernamePasswordResponsePtrOutput{})
-	pulumi.RegisterOutputType(WorkspaceHubConfigOutput{})
-	pulumi.RegisterOutputType(WorkspaceHubConfigPtrOutput{})
-	pulumi.RegisterOutputType(WorkspaceHubConfigResponseOutput{})
-	pulumi.RegisterOutputType(WorkspaceHubConfigResponsePtrOutput{})
-	pulumi.RegisterOutputType(WorkspacePrivateEndpointResourceResponseOutput{})
-	pulumi.RegisterOutputType(WorkspacePrivateEndpointResourceResponsePtrOutput{})
 }

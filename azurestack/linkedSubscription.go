@@ -8,18 +8,16 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Linked Subscription information.
 //
-// Uses Azure REST API version 2020-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2020-06-01-preview.
+// Uses Azure REST API version 2020-06-01-preview. In version 1.x of the Azure Native provider, it used API version 2020-06-01-preview.
 type LinkedSubscription struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The status of the remote management connection of the Azure Stack device.
 	DeviceConnectionStatus pulumi.StringOutput `pulumi:"deviceConnectionStatus"`
 	// The identifier of the Azure Stack device for remote management.
@@ -166,11 +164,6 @@ func (o LinkedSubscriptionOutput) ToLinkedSubscriptionOutput() LinkedSubscriptio
 
 func (o LinkedSubscriptionOutput) ToLinkedSubscriptionOutputWithContext(ctx context.Context) LinkedSubscriptionOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LinkedSubscriptionOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *LinkedSubscription) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The status of the remote management connection of the Azure Stack device.

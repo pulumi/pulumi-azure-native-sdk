@@ -8,18 +8,16 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // State of the myscope setting.
 //
-// Uses Azure REST API version 2019-11-01. In version 2.x of the Azure Native provider, it used API version 2019-11-01.
+// Uses Azure REST API version 2019-11-01. In version 1.x of the Azure Native provider, it used API version 2019-11-01.
 type Setting struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Array of scopes with additional details used by Cost Management in the Azure portal.
 	Cache SettingsPropertiesResponseCacheArrayOutput `pulumi:"cache"`
 	// Resource kind.
@@ -140,11 +138,6 @@ func (o SettingOutput) ToSettingOutput() SettingOutput {
 
 func (o SettingOutput) ToSettingOutputWithContext(ctx context.Context) SettingOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o SettingOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Setting) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Array of scopes with additional details used by Cost Management in the Azure portal.

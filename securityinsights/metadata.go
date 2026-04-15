@@ -8,22 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Metadata resource definition.
 //
-// Uses Azure REST API version 2024-09-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
+// Uses Azure REST API version 2023-02-01. In version 1.x of the Azure Native provider, it used API version 2021-03-01-preview.
 //
-// Other available API versions: 2023-02-01, 2023-03-01-preview, 2023-04-01-preview, 2023-05-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-03-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-03-01-preview, 2023-02-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-09-01, 2024-10-01-preview, 2025-01-01-preview, 2025-03-01.
 type Metadata struct {
 	pulumi.CustomResourceState
 
 	// The creator of the content item.
 	Author MetadataAuthorResponsePtrOutput `pulumi:"author"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Categories for the solution content item
 	Categories MetadataCategoriesResponsePtrOutput `pulumi:"categories"`
 	// Static ID for the content.  Used to identify dependencies and content from solutions or community.  Hard-coded/static for out of the box content and solutions. Dynamic for user-created.  This is the resource name
@@ -185,18 +183,6 @@ func NewMetadata(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20250301:Metadata"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20250401preview:Metadata"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20250601:Metadata"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20250701preview:Metadata"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20250901:Metadata"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -367,11 +353,6 @@ func (o MetadataOutput) ToMetadataOutputWithContext(ctx context.Context) Metadat
 // The creator of the content item.
 func (o MetadataOutput) Author() MetadataAuthorResponsePtrOutput {
 	return o.ApplyT(func(v *Metadata) MetadataAuthorResponsePtrOutput { return v.Author }).(MetadataAuthorResponsePtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o MetadataOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Metadata) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Categories for the solution content item

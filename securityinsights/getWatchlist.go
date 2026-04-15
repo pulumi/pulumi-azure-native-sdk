@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a watchlist, without its watchlist items.
 //
-// Uses Azure REST API version 2024-09-01.
+// Uses Azure REST API version 2023-02-01.
 //
-// Other available API versions: 2023-02-01, 2023-03-01-preview, 2023-04-01-preview, 2023-05-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-03-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2019-01-01-preview, 2021-03-01-preview, 2021-04-01, 2021-10-01-preview, 2022-01-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-09-01, 2024-10-01-preview, 2025-01-01-preview, 2025-03-01.
 func LookupWatchlist(ctx *pulumi.Context, args *LookupWatchlistArgs, opts ...pulumi.InvokeOption) (*LookupWatchlistResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWatchlistResult
@@ -37,9 +37,7 @@ type LookupWatchlistArgs struct {
 
 // Represents a Watchlist in Azure Security Insights.
 type LookupWatchlistResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// The content type of the raw content. Example : text/csv or text/tsv
+	// The content type of the raw content. For now, only text/csv is valid
 	ContentType *string `pulumi:"contentType"`
 	// The time the watchlist was created
 	Created *string `pulumi:"created"`
@@ -63,18 +61,16 @@ type LookupWatchlistResult struct {
 	Labels []string `pulumi:"labels"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// The number of lines in a csv/tsv content to skip before the header
+	// The number of lines in a csv content to skip before the header
 	NumberOfLinesToSkip *int `pulumi:"numberOfLinesToSkip"`
 	// The provider of the watchlist
 	Provider string `pulumi:"provider"`
-	// Describes provisioning state
-	ProvisioningState string `pulumi:"provisioningState"`
-	// The raw content that represents to watchlist items to create. In case of csv/tsv content type, it's the content of the file that will parsed by the endpoint
+	// The raw content that represents to watchlist items to create. Example : This line will be skipped
+	// header1,header2
+	// value1,value2
 	RawContent *string `pulumi:"rawContent"`
-	// The filename of the watchlist, called 'source'
-	Source *string `pulumi:"source"`
-	// The sourceType of the watchlist
-	SourceType *string `pulumi:"sourceType"`
+	// The source of the watchlist
+	Source string `pulumi:"source"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The tenantId where the watchlist belongs to
@@ -132,12 +128,7 @@ func (o LookupWatchlistResultOutput) ToLookupWatchlistResultOutputWithContext(ct
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupWatchlistResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWatchlistResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// The content type of the raw content. Example : text/csv or text/tsv
+// The content type of the raw content. For now, only text/csv is valid
 func (o LookupWatchlistResultOutput) ContentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWatchlistResult) *string { return v.ContentType }).(pulumi.StringPtrOutput)
 }
@@ -197,7 +188,7 @@ func (o LookupWatchlistResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWatchlistResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The number of lines in a csv/tsv content to skip before the header
+// The number of lines in a csv content to skip before the header
 func (o LookupWatchlistResultOutput) NumberOfLinesToSkip() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupWatchlistResult) *int { return v.NumberOfLinesToSkip }).(pulumi.IntPtrOutput)
 }
@@ -207,24 +198,16 @@ func (o LookupWatchlistResultOutput) Provider() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWatchlistResult) string { return v.Provider }).(pulumi.StringOutput)
 }
 
-// Describes provisioning state
-func (o LookupWatchlistResultOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWatchlistResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// The raw content that represents to watchlist items to create. In case of csv/tsv content type, it's the content of the file that will parsed by the endpoint
+// The raw content that represents to watchlist items to create. Example : This line will be skipped
+// header1,header2
+// value1,value2
 func (o LookupWatchlistResultOutput) RawContent() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWatchlistResult) *string { return v.RawContent }).(pulumi.StringPtrOutput)
 }
 
-// The filename of the watchlist, called 'source'
-func (o LookupWatchlistResultOutput) Source() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupWatchlistResult) *string { return v.Source }).(pulumi.StringPtrOutput)
-}
-
-// The sourceType of the watchlist
-func (o LookupWatchlistResultOutput) SourceType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupWatchlistResult) *string { return v.SourceType }).(pulumi.StringPtrOutput)
+// The source of the watchlist
+func (o LookupWatchlistResultOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWatchlistResult) string { return v.Source }).(pulumi.StringOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

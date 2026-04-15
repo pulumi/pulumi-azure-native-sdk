@@ -8,22 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Define the Server Instance resource.
 //
-// Uses Azure REST API version 2023-10-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-10-01-preview.
+// Uses Azure REST API version 2023-10-01-preview.
 type ServerInstance struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Configuration data for this server instance.
 	ConfigurationData ConfigurationDataResponseOutput `pulumi:"configurationData"`
 	// Defines the errors related to SAP Instance resource.
-	Errors SAPMigrateErrorResponseV2Output `pulumi:"errors"`
+	Errors SAPMigrateErrorResponseOutput `pulumi:"errors"`
 	// This is the Instance SID for ASCS/AP/DB instance.  An SAP system with HANA database for example could have a different SID for database Instance than that of ASCS instance.
 	InstanceSid pulumi.StringOutput `pulumi:"instanceSid"`
 	// The name of the resource
@@ -162,19 +160,14 @@ func (o ServerInstanceOutput) ToServerInstanceOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The Azure API version of the resource.
-func (o ServerInstanceOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *ServerInstance) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Configuration data for this server instance.
 func (o ServerInstanceOutput) ConfigurationData() ConfigurationDataResponseOutput {
 	return o.ApplyT(func(v *ServerInstance) ConfigurationDataResponseOutput { return v.ConfigurationData }).(ConfigurationDataResponseOutput)
 }
 
 // Defines the errors related to SAP Instance resource.
-func (o ServerInstanceOutput) Errors() SAPMigrateErrorResponseV2Output {
-	return o.ApplyT(func(v *ServerInstance) SAPMigrateErrorResponseV2Output { return v.Errors }).(SAPMigrateErrorResponseV2Output)
+func (o ServerInstanceOutput) Errors() SAPMigrateErrorResponseOutput {
+	return o.ApplyT(func(v *ServerInstance) SAPMigrateErrorResponseOutput { return v.Errors }).(SAPMigrateErrorResponseOutput)
 }
 
 // This is the Instance SID for ASCS/AP/DB instance.  An SAP system with HANA database for example could have a different SID for database Instance than that of ASCS instance.

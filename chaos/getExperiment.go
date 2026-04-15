@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a Experiment resource.
 //
-// Uses Azure REST API version 2024-03-22-preview.
+// Uses Azure REST API version 2023-04-15-preview.
 //
-// Other available API versions: 2023-04-15-preview, 2023-09-01-preview, 2023-10-27-preview, 2023-11-01, 2024-01-01, 2024-11-01-preview, 2025-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native chaos [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-09-01-preview, 2023-10-27-preview, 2023-11-01, 2024-01-01, 2024-03-22-preview, 2024-11-01-preview, 2025-01-01.
 func LookupExperiment(ctx *pulumi.Context, args *LookupExperimentArgs, opts ...pulumi.InvokeOption) (*LookupExperimentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupExperimentResult
@@ -35,19 +35,17 @@ type LookupExperimentArgs struct {
 
 // Model that represents a Experiment resource.
 type LookupExperimentResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The identity of the experiment resource.
-	Identity *ExperimentIdentityResponse `pulumi:"identity"`
+	Identity *ResourceIdentityResponse `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// The properties of the experiment resource.
 	Properties ExperimentPropertiesResponse `pulumi:"properties"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	// The system metadata of the experiment resource.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
@@ -90,19 +88,14 @@ func (o LookupExperimentResultOutput) ToLookupExperimentResultOutputWithContext(
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupExperimentResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupExperimentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupExperimentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExperimentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The identity of the experiment resource.
-func (o LookupExperimentResultOutput) Identity() ExperimentIdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupExperimentResult) *ExperimentIdentityResponse { return v.Identity }).(ExperimentIdentityResponsePtrOutput)
+func (o LookupExperimentResultOutput) Identity() ResourceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupExperimentResult) *ResourceIdentityResponse { return v.Identity }).(ResourceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -120,7 +113,7 @@ func (o LookupExperimentResultOutput) Properties() ExperimentPropertiesResponseO
 	return o.ApplyT(func(v LookupExperimentResult) ExperimentPropertiesResponse { return v.Properties }).(ExperimentPropertiesResponseOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+// The system metadata of the experiment resource.
 func (o LookupExperimentResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupExperimentResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }

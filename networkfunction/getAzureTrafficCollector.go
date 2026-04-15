@@ -7,13 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified Azure Traffic Collector in a specified resource group
 //
 // Uses Azure REST API version 2022-11-01.
+//
+// Other available API versions: 2022-08-01.
 func LookupAzureTrafficCollector(ctx *pulumi.Context, args *LookupAzureTrafficCollectorArgs, opts ...pulumi.InvokeOption) (*LookupAzureTrafficCollectorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAzureTrafficCollectorResult
@@ -27,31 +29,29 @@ func LookupAzureTrafficCollector(ctx *pulumi.Context, args *LookupAzureTrafficCo
 type LookupAzureTrafficCollectorArgs struct {
 	// Azure Traffic Collector name
 	AzureTrafficCollectorName string `pulumi:"azureTrafficCollectorName"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Azure Traffic Collector resource.
 type LookupAzureTrafficCollectorResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Collector Policies for Azure Traffic Collector.
 	CollectorPolicies []ResourceReferenceResponse `pulumi:"collectorPolicies"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag string `pulumi:"etag"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Resource ID.
 	Id string `pulumi:"id"`
 	// Resource location.
 	Location string `pulumi:"location"`
-	// The name of the resource
+	// Resource name.
 	Name string `pulumi:"name"`
 	// The provisioning state of the application rule collection resource.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData TrackedResourceResponseSystemData `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// Resource type.
 	Type string `pulumi:"type"`
 	// The virtualHub to which the Azure Traffic Collector belongs.
 	VirtualHub *ResourceReferenceResponse `pulumi:"virtualHub"`
@@ -69,7 +69,7 @@ func LookupAzureTrafficCollectorOutput(ctx *pulumi.Context, args LookupAzureTraf
 type LookupAzureTrafficCollectorOutputArgs struct {
 	// Azure Traffic Collector name
 	AzureTrafficCollectorName pulumi.StringInput `pulumi:"azureTrafficCollectorName"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -92,11 +92,6 @@ func (o LookupAzureTrafficCollectorResultOutput) ToLookupAzureTrafficCollectorRe
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupAzureTrafficCollectorResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAzureTrafficCollectorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Collector Policies for Azure Traffic Collector.
 func (o LookupAzureTrafficCollectorResultOutput) CollectorPolicies() ResourceReferenceResponseArrayOutput {
 	return o.ApplyT(func(v LookupAzureTrafficCollectorResult) []ResourceReferenceResponse { return v.CollectorPolicies }).(ResourceReferenceResponseArrayOutput)
@@ -107,7 +102,7 @@ func (o LookupAzureTrafficCollectorResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzureTrafficCollectorResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Resource ID.
 func (o LookupAzureTrafficCollectorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzureTrafficCollectorResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -117,7 +112,7 @@ func (o LookupAzureTrafficCollectorResultOutput) Location() pulumi.StringOutput 
 	return o.ApplyT(func(v LookupAzureTrafficCollectorResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// The name of the resource
+// Resource name.
 func (o LookupAzureTrafficCollectorResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzureTrafficCollectorResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -127,9 +122,9 @@ func (o LookupAzureTrafficCollectorResultOutput) ProvisioningState() pulumi.Stri
 	return o.ApplyT(func(v LookupAzureTrafficCollectorResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupAzureTrafficCollectorResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupAzureTrafficCollectorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+// Metadata pertaining to creation and last modification of the resource.
+func (o LookupAzureTrafficCollectorResultOutput) SystemData() TrackedResourceResponseSystemDataOutput {
+	return o.ApplyT(func(v LookupAzureTrafficCollectorResult) TrackedResourceResponseSystemData { return v.SystemData }).(TrackedResourceResponseSystemDataOutput)
 }
 
 // Resource tags.
@@ -137,7 +132,7 @@ func (o LookupAzureTrafficCollectorResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupAzureTrafficCollectorResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// Resource type.
 func (o LookupAzureTrafficCollectorResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzureTrafficCollectorResult) string { return v.Type }).(pulumi.StringOutput)
 }

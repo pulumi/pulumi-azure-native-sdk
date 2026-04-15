@@ -10,186 +10,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The activation state of the API Bridge for this Communications Gateway
-type ApiBridgeActivationState string
-
-const (
-	// API Bridge is enabled
-	ApiBridgeActivationStateEnabled = ApiBridgeActivationState("enabled")
-	// API Bridge is disabled
-	ApiBridgeActivationStateDisabled = ApiBridgeActivationState("disabled")
-)
-
-func (ApiBridgeActivationState) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApiBridgeActivationState)(nil)).Elem()
-}
-
-func (e ApiBridgeActivationState) ToApiBridgeActivationStateOutput() ApiBridgeActivationStateOutput {
-	return pulumi.ToOutput(e).(ApiBridgeActivationStateOutput)
-}
-
-func (e ApiBridgeActivationState) ToApiBridgeActivationStateOutputWithContext(ctx context.Context) ApiBridgeActivationStateOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(ApiBridgeActivationStateOutput)
-}
-
-func (e ApiBridgeActivationState) ToApiBridgeActivationStatePtrOutput() ApiBridgeActivationStatePtrOutput {
-	return e.ToApiBridgeActivationStatePtrOutputWithContext(context.Background())
-}
-
-func (e ApiBridgeActivationState) ToApiBridgeActivationStatePtrOutputWithContext(ctx context.Context) ApiBridgeActivationStatePtrOutput {
-	return ApiBridgeActivationState(e).ToApiBridgeActivationStateOutputWithContext(ctx).ToApiBridgeActivationStatePtrOutputWithContext(ctx)
-}
-
-func (e ApiBridgeActivationState) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e ApiBridgeActivationState) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e ApiBridgeActivationState) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e ApiBridgeActivationState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type ApiBridgeActivationStateOutput struct{ *pulumi.OutputState }
-
-func (ApiBridgeActivationStateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApiBridgeActivationState)(nil)).Elem()
-}
-
-func (o ApiBridgeActivationStateOutput) ToApiBridgeActivationStateOutput() ApiBridgeActivationStateOutput {
-	return o
-}
-
-func (o ApiBridgeActivationStateOutput) ToApiBridgeActivationStateOutputWithContext(ctx context.Context) ApiBridgeActivationStateOutput {
-	return o
-}
-
-func (o ApiBridgeActivationStateOutput) ToApiBridgeActivationStatePtrOutput() ApiBridgeActivationStatePtrOutput {
-	return o.ToApiBridgeActivationStatePtrOutputWithContext(context.Background())
-}
-
-func (o ApiBridgeActivationStateOutput) ToApiBridgeActivationStatePtrOutputWithContext(ctx context.Context) ApiBridgeActivationStatePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiBridgeActivationState) *ApiBridgeActivationState {
-		return &v
-	}).(ApiBridgeActivationStatePtrOutput)
-}
-
-func (o ApiBridgeActivationStateOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o ApiBridgeActivationStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e ApiBridgeActivationState) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o ApiBridgeActivationStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o ApiBridgeActivationStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e ApiBridgeActivationState) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type ApiBridgeActivationStatePtrOutput struct{ *pulumi.OutputState }
-
-func (ApiBridgeActivationStatePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ApiBridgeActivationState)(nil)).Elem()
-}
-
-func (o ApiBridgeActivationStatePtrOutput) ToApiBridgeActivationStatePtrOutput() ApiBridgeActivationStatePtrOutput {
-	return o
-}
-
-func (o ApiBridgeActivationStatePtrOutput) ToApiBridgeActivationStatePtrOutputWithContext(ctx context.Context) ApiBridgeActivationStatePtrOutput {
-	return o
-}
-
-func (o ApiBridgeActivationStatePtrOutput) Elem() ApiBridgeActivationStateOutput {
-	return o.ApplyT(func(v *ApiBridgeActivationState) ApiBridgeActivationState {
-		if v != nil {
-			return *v
-		}
-		var ret ApiBridgeActivationState
-		return ret
-	}).(ApiBridgeActivationStateOutput)
-}
-
-func (o ApiBridgeActivationStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o ApiBridgeActivationStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ApiBridgeActivationState) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// ApiBridgeActivationStateInput is an input type that accepts values of the ApiBridgeActivationState enum
-// A concrete instance of `ApiBridgeActivationStateInput` can be one of the following:
-//
-//	ApiBridgeActivationStateEnabled
-//	ApiBridgeActivationStateDisabled
-type ApiBridgeActivationStateInput interface {
-	pulumi.Input
-
-	ToApiBridgeActivationStateOutput() ApiBridgeActivationStateOutput
-	ToApiBridgeActivationStateOutputWithContext(context.Context) ApiBridgeActivationStateOutput
-}
-
-var apiBridgeActivationStatePtrType = reflect.TypeOf((**ApiBridgeActivationState)(nil)).Elem()
-
-type ApiBridgeActivationStatePtrInput interface {
-	pulumi.Input
-
-	ToApiBridgeActivationStatePtrOutput() ApiBridgeActivationStatePtrOutput
-	ToApiBridgeActivationStatePtrOutputWithContext(context.Context) ApiBridgeActivationStatePtrOutput
-}
-
-type apiBridgeActivationStatePtr string
-
-func ApiBridgeActivationStatePtr(v string) ApiBridgeActivationStatePtrInput {
-	return (*apiBridgeActivationStatePtr)(&v)
-}
-
-func (*apiBridgeActivationStatePtr) ElementType() reflect.Type {
-	return apiBridgeActivationStatePtrType
-}
-
-func (in *apiBridgeActivationStatePtr) ToApiBridgeActivationStatePtrOutput() ApiBridgeActivationStatePtrOutput {
-	return pulumi.ToOutput(in).(ApiBridgeActivationStatePtrOutput)
-}
-
-func (in *apiBridgeActivationStatePtr) ToApiBridgeActivationStatePtrOutputWithContext(ctx context.Context) ApiBridgeActivationStatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(ApiBridgeActivationStatePtrOutput)
-}
-
 // The scope at which the auto-generated domain name can be re-used
 type AutoGeneratedDomainNameLabelScope string
 
 const (
-	// Generated domain name label depends on resource name and tenant ID.
-	AutoGeneratedDomainNameLabelScopeTenantReuse = AutoGeneratedDomainNameLabelScope("TenantReuse")
-	// Generated domain name label depends on resource name, tenant ID and subscription ID.
-	AutoGeneratedDomainNameLabelScopeSubscriptionReuse = AutoGeneratedDomainNameLabelScope("SubscriptionReuse")
-	// Generated domain name label depends on resource name, tenant ID, subscription ID and resource group name.
+	AutoGeneratedDomainNameLabelScopeTenantReuse        = AutoGeneratedDomainNameLabelScope("TenantReuse")
+	AutoGeneratedDomainNameLabelScopeSubscriptionReuse  = AutoGeneratedDomainNameLabelScope("SubscriptionReuse")
 	AutoGeneratedDomainNameLabelScopeResourceGroupReuse = AutoGeneratedDomainNameLabelScope("ResourceGroupReuse")
-	// Generated domain name label is always unique.
-	AutoGeneratedDomainNameLabelScopeNoReuse = AutoGeneratedDomainNameLabelScope("NoReuse")
+	AutoGeneratedDomainNameLabelScopeNoReuse            = AutoGeneratedDomainNameLabelScope("NoReuse")
 )
 
 func (AutoGeneratedDomainNameLabelScope) ElementType() reflect.Type {
@@ -356,12 +184,8 @@ func (in *autoGeneratedDomainNameLabelScopePtr) ToAutoGeneratedDomainNameLabelSc
 type CommunicationsPlatform string
 
 const (
-	// Operator Connect
-	CommunicationsPlatformOperatorConnect = CommunicationsPlatform("OperatorConnect")
-	// Teams Phone Mobile
+	CommunicationsPlatformOperatorConnect  = CommunicationsPlatform("OperatorConnect")
 	CommunicationsPlatformTeamsPhoneMobile = CommunicationsPlatform("TeamsPhoneMobile")
-	// Teams Direct Routing
-	CommunicationsPlatformTeamsDirectRouting = CommunicationsPlatform("TeamsDirectRouting")
 )
 
 func (CommunicationsPlatform) ElementType() reflect.Type {
@@ -488,7 +312,6 @@ func (o CommunicationsPlatformPtrOutput) ToStringPtrOutputWithContext(ctx contex
 //
 //	CommunicationsPlatformOperatorConnect
 //	CommunicationsPlatformTeamsPhoneMobile
-//	CommunicationsPlatformTeamsDirectRouting
 type CommunicationsPlatformInput interface {
 	pulumi.Input
 
@@ -1026,191 +849,15 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
 }
 
-// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-type SkuTier string
-
-const (
-	SkuTierFree     = SkuTier("Free")
-	SkuTierBasic    = SkuTier("Basic")
-	SkuTierStandard = SkuTier("Standard")
-	SkuTierPremium  = SkuTier("Premium")
-)
-
-func (SkuTier) ElementType() reflect.Type {
-	return reflect.TypeOf((*SkuTier)(nil)).Elem()
-}
-
-func (e SkuTier) ToSkuTierOutput() SkuTierOutput {
-	return pulumi.ToOutput(e).(SkuTierOutput)
-}
-
-func (e SkuTier) ToSkuTierOutputWithContext(ctx context.Context) SkuTierOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(SkuTierOutput)
-}
-
-func (e SkuTier) ToSkuTierPtrOutput() SkuTierPtrOutput {
-	return e.ToSkuTierPtrOutputWithContext(context.Background())
-}
-
-func (e SkuTier) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTierPtrOutput {
-	return SkuTier(e).ToSkuTierOutputWithContext(ctx).ToSkuTierPtrOutputWithContext(ctx)
-}
-
-func (e SkuTier) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e SkuTier) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e SkuTier) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e SkuTier) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type SkuTierOutput struct{ *pulumi.OutputState }
-
-func (SkuTierOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SkuTier)(nil)).Elem()
-}
-
-func (o SkuTierOutput) ToSkuTierOutput() SkuTierOutput {
-	return o
-}
-
-func (o SkuTierOutput) ToSkuTierOutputWithContext(ctx context.Context) SkuTierOutput {
-	return o
-}
-
-func (o SkuTierOutput) ToSkuTierPtrOutput() SkuTierPtrOutput {
-	return o.ToSkuTierPtrOutputWithContext(context.Background())
-}
-
-func (o SkuTierOutput) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTierPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SkuTier) *SkuTier {
-		return &v
-	}).(SkuTierPtrOutput)
-}
-
-func (o SkuTierOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o SkuTierOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e SkuTier) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o SkuTierOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o SkuTierOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e SkuTier) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type SkuTierPtrOutput struct{ *pulumi.OutputState }
-
-func (SkuTierPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SkuTier)(nil)).Elem()
-}
-
-func (o SkuTierPtrOutput) ToSkuTierPtrOutput() SkuTierPtrOutput {
-	return o
-}
-
-func (o SkuTierPtrOutput) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTierPtrOutput {
-	return o
-}
-
-func (o SkuTierPtrOutput) Elem() SkuTierOutput {
-	return o.ApplyT(func(v *SkuTier) SkuTier {
-		if v != nil {
-			return *v
-		}
-		var ret SkuTier
-		return ret
-	}).(SkuTierOutput)
-}
-
-func (o SkuTierPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o SkuTierPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SkuTier) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// SkuTierInput is an input type that accepts values of the SkuTier enum
-// A concrete instance of `SkuTierInput` can be one of the following:
-//
-//	SkuTierFree
-//	SkuTierBasic
-//	SkuTierStandard
-//	SkuTierPremium
-type SkuTierInput interface {
-	pulumi.Input
-
-	ToSkuTierOutput() SkuTierOutput
-	ToSkuTierOutputWithContext(context.Context) SkuTierOutput
-}
-
-var skuTierPtrType = reflect.TypeOf((**SkuTier)(nil)).Elem()
-
-type SkuTierPtrInput interface {
-	pulumi.Input
-
-	ToSkuTierPtrOutput() SkuTierPtrOutput
-	ToSkuTierPtrOutputWithContext(context.Context) SkuTierPtrOutput
-}
-
-type skuTierPtr string
-
-func SkuTierPtr(v string) SkuTierPtrInput {
-	return (*skuTierPtr)(&v)
-}
-
-func (*skuTierPtr) ElementType() reflect.Type {
-	return skuTierPtrType
-}
-
-func (in *skuTierPtr) ToSkuTierPtrOutput() SkuTierPtrOutput {
-	return pulumi.ToOutput(in).(SkuTierPtrOutput)
-}
-
-func (in *skuTierPtr) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTierPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(SkuTierPtrOutput)
-}
-
 // The voice codecs expected for communication with Teams.
 type TeamsCodecs string
 
 const (
-	// Pulse code modulation(PCM) U-law narrowband audio codec(G.711u)
-	TeamsCodecsPCMA = TeamsCodecs("PCMA")
-	// Pulse code modulation(PCM) U-law narrowband audio codec(G.711u)
-	TeamsCodecsPCMU = TeamsCodecs("PCMU")
-	// G.722 wideband audio codec
-	TeamsCodecsG722 = TeamsCodecs("G722")
-	// G.722.2 wideband audio codec
-	TeamsCodecs_G722_2 = TeamsCodecs("G722_2")
-	// SILK/8000 narrowband audio codec
-	TeamsCodecs_SILK_8 = TeamsCodecs("SILK_8")
-	// SILK/16000 wideband audio codec
+	TeamsCodecsPCMA     = TeamsCodecs("PCMA")
+	TeamsCodecsPCMU     = TeamsCodecs("PCMU")
+	TeamsCodecsG722     = TeamsCodecs("G722")
+	TeamsCodecs_G722_2  = TeamsCodecs("G722_2")
+	TeamsCodecs_SILK_8  = TeamsCodecs("SILK_8")
 	TeamsCodecs_SILK_16 = TeamsCodecs("SILK_16")
 )
 
@@ -1380,9 +1027,7 @@ func (in *teamsCodecsPtr) ToTeamsCodecsPtrOutputWithContext(ctx context.Context)
 type TestLinePurpose string
 
 const (
-	// The test line is used for manual testing
-	TestLinePurposeManual = TestLinePurpose("Manual")
-	// The test line is used for automated testing
+	TestLinePurposeManual    = TestLinePurpose("Manual")
 	TestLinePurposeAutomated = TestLinePurpose("Automated")
 )
 
@@ -1545,8 +1190,6 @@ func (in *testLinePurposePtr) ToTestLinePurposePtrOutputWithContext(ctx context.
 }
 
 func init() {
-	pulumi.RegisterOutputType(ApiBridgeActivationStateOutput{})
-	pulumi.RegisterOutputType(ApiBridgeActivationStatePtrOutput{})
 	pulumi.RegisterOutputType(AutoGeneratedDomainNameLabelScopeOutput{})
 	pulumi.RegisterOutputType(AutoGeneratedDomainNameLabelScopePtrOutput{})
 	pulumi.RegisterOutputType(CommunicationsPlatformOutput{})
@@ -1557,8 +1200,6 @@ func init() {
 	pulumi.RegisterOutputType(E911TypePtrOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityTypeOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityTypePtrOutput{})
-	pulumi.RegisterOutputType(SkuTierOutput{})
-	pulumi.RegisterOutputType(SkuTierPtrOutput{})
 	pulumi.RegisterOutputType(TeamsCodecsOutput{})
 	pulumi.RegisterOutputType(TeamsCodecsPtrOutput{})
 	pulumi.RegisterOutputType(TestLinePurposeOutput{})

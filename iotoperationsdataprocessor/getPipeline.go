@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,8 +35,6 @@ type LookupPipelineArgs struct {
 
 // A Pipeline resource belonging to an Instance resource.
 type LookupPipelineResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Detailed description of the Pipeline.
 	Description *string `pulumi:"description"`
 	// Flag indicating whether the pipeline should be running or not.
@@ -98,11 +96,6 @@ func (o LookupPipelineResultOutput) ToLookupPipelineResultOutput() LookupPipelin
 
 func (o LookupPipelineResultOutput) ToLookupPipelineResultOutputWithContext(ctx context.Context) LookupPipelineResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupPipelineResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupPipelineResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Detailed description of the Pipeline.

@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Capture properties of Open AI resource Integration.
 //
-// Uses Azure REST API version 2024-03-01. In version 2.x of the Azure Native provider, it used API version 2024-03-01.
+// Uses Azure REST API version 2024-03-01.
 //
-// Other available API versions: 2024-01-01-preview, 2024-05-01-preview, 2024-06-15-preview, 2024-10-01-preview, 2025-01-15-preview, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native elastic [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-01-01-preview, 2024-05-01-preview, 2024-06-15-preview, 2024-10-01-preview, 2025-01-15-preview.
 type OpenAI struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Name of the integration.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Open AI Integration details.
@@ -61,9 +59,6 @@ func NewOpenAI(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:elastic/v20250115preview:OpenAI"),
-		},
-		{
-			Type: pulumi.String("azure-native:elastic/v20250601:OpenAI"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -157,11 +152,6 @@ func (o OpenAIOutput) ToOpenAIOutput() OpenAIOutput {
 
 func (o OpenAIOutput) ToOpenAIOutputWithContext(ctx context.Context) OpenAIOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o OpenAIOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *OpenAI) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Name of the integration.

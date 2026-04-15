@@ -7,15 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an existing registered ASN with the specified name under the given subscription, resource group and peering.
 //
 // Uses Azure REST API version 2022-10-01.
-//
-// Other available API versions: 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native peering [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupRegisteredAsn(ctx *pulumi.Context, args *LookupRegisteredAsnArgs, opts ...pulumi.InvokeOption) (*LookupRegisteredAsnResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRegisteredAsnResult
@@ -39,8 +37,6 @@ type LookupRegisteredAsnArgs struct {
 type LookupRegisteredAsnResult struct {
 	// The customer's ASN from which traffic originates.
 	Asn *int `pulumi:"asn"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The ID of the resource.
 	Id string `pulumi:"id"`
 	// The name of the resource.
@@ -93,11 +89,6 @@ func (o LookupRegisteredAsnResultOutput) ToLookupRegisteredAsnResultOutputWithCo
 // The customer's ASN from which traffic originates.
 func (o LookupRegisteredAsnResultOutput) Asn() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupRegisteredAsnResult) *int { return v.Asn }).(pulumi.IntPtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o LookupRegisteredAsnResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupRegisteredAsnResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The ID of the resource.

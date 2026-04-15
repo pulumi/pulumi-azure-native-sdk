@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an existing custom domain within an endpoint.
 //
-// Uses Azure REST API version 2025-06-01.
+// Uses Azure REST API version 2023-05-01.
 //
-// Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01.
 func LookupCustomDomain(ctx *pulumi.Context, args *LookupCustomDomainArgs, opts ...pulumi.InvokeOption) (*LookupCustomDomainResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCustomDomainResult
@@ -31,16 +31,14 @@ type LookupCustomDomainArgs struct {
 	CustomDomainName string `pulumi:"customDomainName"`
 	// Name of the endpoint under the profile which is unique globally.
 	EndpointName string `pulumi:"endpointName"`
-	// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+	// Name of the CDN profile which is unique within the resource group.
 	ProfileName string `pulumi:"profileName"`
-	// The name of the resource group. The name is case insensitive.
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Friendly domain name mapping to the endpoint hostname that the customer provides for branding purposes, e.g. www.contoso.com.
 type LookupCustomDomainResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Certificate parameters for securing custom HTTPS
 	CustomHttpsParameters interface{} `pulumi:"customHttpsParameters"`
 	// Provisioning status of the custom domain.
@@ -49,17 +47,17 @@ type LookupCustomDomainResult struct {
 	CustomHttpsProvisioningSubstate string `pulumi:"customHttpsProvisioningSubstate"`
 	// The host name of the custom domain. Must be a domain name.
 	HostName string `pulumi:"hostName"`
-	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	// Resource ID.
 	Id string `pulumi:"id"`
-	// The name of the resource
+	// Resource name.
 	Name string `pulumi:"name"`
 	// Provisioning status of Custom Https of the custom domain.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Resource status of the custom domain.
 	ResourceState string `pulumi:"resourceState"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	// Read only system data
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// Resource type.
 	Type string `pulumi:"type"`
 	// Special validation or data may be required when delivering CDN to some regions due to local compliance reasons. E.g. ICP license number of a custom domain is required to deliver content in China.
 	ValidationData *string `pulumi:"validationData"`
@@ -79,9 +77,9 @@ type LookupCustomDomainOutputArgs struct {
 	CustomDomainName pulumi.StringInput `pulumi:"customDomainName"`
 	// Name of the endpoint under the profile which is unique globally.
 	EndpointName pulumi.StringInput `pulumi:"endpointName"`
-	// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+	// Name of the CDN profile which is unique within the resource group.
 	ProfileName pulumi.StringInput `pulumi:"profileName"`
-	// The name of the resource group. The name is case insensitive.
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -104,11 +102,6 @@ func (o LookupCustomDomainResultOutput) ToLookupCustomDomainResultOutputWithCont
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupCustomDomainResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCustomDomainResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Certificate parameters for securing custom HTTPS
 func (o LookupCustomDomainResultOutput) CustomHttpsParameters() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupCustomDomainResult) interface{} { return v.CustomHttpsParameters }).(pulumi.AnyOutput)
@@ -129,12 +122,12 @@ func (o LookupCustomDomainResultOutput) HostName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomDomainResult) string { return v.HostName }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+// Resource ID.
 func (o LookupCustomDomainResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomDomainResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The name of the resource
+// Resource name.
 func (o LookupCustomDomainResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomDomainResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -149,12 +142,12 @@ func (o LookupCustomDomainResultOutput) ResourceState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomDomainResult) string { return v.ResourceState }).(pulumi.StringOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+// Read only system data
 func (o LookupCustomDomainResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupCustomDomainResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// Resource type.
 func (o LookupCustomDomainResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomDomainResult) string { return v.Type }).(pulumi.StringOutput)
 }

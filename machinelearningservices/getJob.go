@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets a Job by name/id.
+// Azure Resource Manager resource envelope.
 //
-// Uses Azure REST API version 2025-12-01.
+// Uses Azure REST API version 2023-04-01.
 //
-// Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview.
 func LookupJob(ctx *pulumi.Context, args *LookupJobArgs, opts ...pulumi.InvokeOption) (*LookupJobResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupJobResult
@@ -31,20 +31,18 @@ type LookupJobArgs struct {
 	Id string `pulumi:"id"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Azure Machine Learning Workspace Name
+	// Name of Azure Machine Learning workspace.
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Azure Resource Manager resource envelope.
 type LookupJobResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
+	// [Required] Additional attributes of the entity.
+	JobBaseProperties interface{} `pulumi:"jobBaseProperties"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// [Required] Additional attributes of the entity.
-	Properties interface{} `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -65,7 +63,7 @@ type LookupJobOutputArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	// Azure Machine Learning Workspace Name
+	// Name of Azure Machine Learning workspace.
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
@@ -88,24 +86,19 @@ func (o LookupJobResultOutput) ToLookupJobResultOutputWithContext(ctx context.Co
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupJobResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupJobResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupJobResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// [Required] Additional attributes of the entity.
+func (o LookupJobResultOutput) JobBaseProperties() pulumi.AnyOutput {
+	return o.ApplyT(func(v LookupJobResult) interface{} { return v.JobBaseProperties }).(pulumi.AnyOutput)
+}
+
 // The name of the resource
 func (o LookupJobResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobResult) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// [Required] Additional attributes of the entity.
-func (o LookupJobResultOutput) Properties() pulumi.AnyOutput {
-	return o.ApplyT(func(v LookupJobResult) interface{} { return v.Properties }).(pulumi.AnyOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

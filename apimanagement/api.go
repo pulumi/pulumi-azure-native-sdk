@@ -8,15 +8,15 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // API details.
 //
-// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
+// Uses Azure REST API version 2022-08-01. In version 1.x of the Azure Native provider, it used API version 2020-12-01.
 //
-// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2016-10-10, 2017-03-01, 2018-06-01-preview, 2020-12-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
 type Api struct {
 	pulumi.CustomResourceState
 
@@ -36,8 +36,6 @@ type Api struct {
 	ApiVersionSetId pulumi.StringPtrOutput `pulumi:"apiVersionSetId"`
 	// Collection of authentication settings included into this API.
 	AuthenticationSettings AuthenticationSettingsContractResponsePtrOutput `pulumi:"authenticationSettings"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Contact information for the API.
 	Contact ApiContactInformationResponsePtrOutput `pulumi:"contact"`
 	// Description of the API. May include HTML formatting tags.
@@ -56,8 +54,6 @@ type Api struct {
 	Path pulumi.StringOutput `pulumi:"path"`
 	// Describes on which protocols the operations in this API can be invoked.
 	Protocols pulumi.StringArrayOutput `pulumi:"protocols"`
-	// The provisioning state
-	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Absolute URL of the backend service implementing this API. Cannot be more than 2000 characters long.
 	ServiceUrl pulumi.StringPtrOutput `pulumi:"serviceUrl"`
 	// API identifier of the source API.
@@ -155,12 +151,6 @@ func NewApi(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240601preview:Api"),
 		},
-		{
-			Type: pulumi.String("azure-native:apimanagement/v20241001preview:Api"),
-		},
-		{
-			Type: pulumi.String("azure-native:apimanagement/v20250301preview:Api"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -220,7 +210,7 @@ type apiArgs struct {
 	Description *string `pulumi:"description"`
 	// API name. Must be 1 to 300 characters long.
 	DisplayName *string `pulumi:"displayName"`
-	// Format of the Content in which the API is getting imported. New formats can be added in the future
+	// Format of the Content in which the API is getting imported.
 	Format *string `pulumi:"format"`
 	// Indicates if API revision is current api revision.
 	IsCurrent *bool `pulumi:"isCurrent"`
@@ -241,7 +231,6 @@ type apiArgs struct {
 	//  * `soap` creates a SOAP pass-through API
 	//  * `websocket` creates websocket API
 	//  * `graphql` creates GraphQL API.
-	//     New types can be added in the future.
 	SoapApiType *string `pulumi:"soapApiType"`
 	// API identifier of the source API.
 	SourceApiId *string `pulumi:"sourceApiId"`
@@ -285,7 +274,7 @@ type ApiArgs struct {
 	Description pulumi.StringPtrInput
 	// API name. Must be 1 to 300 characters long.
 	DisplayName pulumi.StringPtrInput
-	// Format of the Content in which the API is getting imported. New formats can be added in the future
+	// Format of the Content in which the API is getting imported.
 	Format pulumi.StringPtrInput
 	// Indicates if API revision is current api revision.
 	IsCurrent pulumi.BoolPtrInput
@@ -306,7 +295,6 @@ type ApiArgs struct {
 	//  * `soap` creates a SOAP pass-through API
 	//  * `websocket` creates websocket API
 	//  * `graphql` creates GraphQL API.
-	//     New types can be added in the future.
 	SoapApiType pulumi.StringPtrInput
 	// API identifier of the source API.
 	SourceApiId pulumi.StringPtrInput
@@ -401,11 +389,6 @@ func (o ApiOutput) AuthenticationSettings() AuthenticationSettingsContractRespon
 	return o.ApplyT(func(v *Api) AuthenticationSettingsContractResponsePtrOutput { return v.AuthenticationSettings }).(AuthenticationSettingsContractResponsePtrOutput)
 }
 
-// The Azure API version of the resource.
-func (o ApiOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Contact information for the API.
 func (o ApiOutput) Contact() ApiContactInformationResponsePtrOutput {
 	return o.ApplyT(func(v *Api) ApiContactInformationResponsePtrOutput { return v.Contact }).(ApiContactInformationResponsePtrOutput)
@@ -449,11 +432,6 @@ func (o ApiOutput) Path() pulumi.StringOutput {
 // Describes on which protocols the operations in this API can be invoked.
 func (o ApiOutput) Protocols() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Api) pulumi.StringArrayOutput { return v.Protocols }).(pulumi.StringArrayOutput)
-}
-
-// The provisioning state
-func (o ApiOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // Absolute URL of the backend service implementing this API. Cannot be more than 2000 characters long.

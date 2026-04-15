@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets compute definition by its name. Any secrets (storage keys, service credentials, etc) are not returned - use 'keys' nested resource to get them.
 //
-// Uses Azure REST API version 2025-12-01.
+// Uses Azure REST API version 2023-04-01.
 //
-// Other available API versions: 2021-03-01-preview, 2021-07-01, 2022-01-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-01-01-preview, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview.
 func LookupCompute(ctx *pulumi.Context, args *LookupComputeArgs, opts ...pulumi.InvokeOption) (*LookupComputeResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupComputeResult
@@ -31,14 +31,12 @@ type LookupComputeArgs struct {
 	ComputeName string `pulumi:"computeName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Azure Machine Learning Workspace Name
+	// Name of Azure Machine Learning workspace.
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Machine Learning compute object wrapped into ARM resource envelope.
 type LookupComputeResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The identity of the resource.
@@ -47,7 +45,7 @@ type LookupComputeResult struct {
 	Location *string `pulumi:"location"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// The resource-specific properties for this resource.
+	// Compute properties
 	Properties interface{} `pulumi:"properties"`
 	// The sku of the workspace.
 	Sku *SkuResponse `pulumi:"sku"`
@@ -73,7 +71,7 @@ type LookupComputeOutputArgs struct {
 	ComputeName pulumi.StringInput `pulumi:"computeName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	// Azure Machine Learning Workspace Name
+	// Name of Azure Machine Learning workspace.
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
@@ -96,11 +94,6 @@ func (o LookupComputeResultOutput) ToLookupComputeResultOutputWithContext(ctx co
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupComputeResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupComputeResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupComputeResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupComputeResult) string { return v.Id }).(pulumi.StringOutput)
@@ -121,7 +114,7 @@ func (o LookupComputeResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupComputeResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The resource-specific properties for this resource.
+// Compute properties
 func (o LookupComputeResultOutput) Properties() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupComputeResult) interface{} { return v.Properties }).(pulumi.AnyOutput)
 }

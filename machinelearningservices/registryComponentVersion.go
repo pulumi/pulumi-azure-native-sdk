@@ -8,24 +8,22 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Azure Resource Manager resource envelope.
 //
-// Uses Azure REST API version 2025-12-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
+// Uses Azure REST API version 2023-04-01.
 //
-// Other available API versions: 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview.
 type RegistryComponentVersion struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// [Required] Additional attributes of the entity.
+	ComponentVersionProperties ComponentVersionResponseOutput `pulumi:"componentVersionProperties"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// [Required] Additional attributes of the entity.
-	Properties ComponentVersionPropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -42,8 +40,8 @@ func NewRegistryComponentVersion(ctx *pulumi.Context,
 	if args.ComponentName == nil {
 		return nil, errors.New("invalid value for required argument 'ComponentName'")
 	}
-	if args.Properties == nil {
-		return nil, errors.New("invalid value for required argument 'Properties'")
+	if args.ComponentVersionProperties == nil {
+		return nil, errors.New("invalid value for required argument 'ComponentVersionProperties'")
 	}
 	if args.RegistryName == nil {
 		return nil, errors.New("invalid value for required argument 'RegistryName'")
@@ -51,7 +49,7 @@ func NewRegistryComponentVersion(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	args.Properties = args.Properties.ToComponentVersionPropertiesOutput().ApplyT(func(v ComponentVersionProperties) ComponentVersionProperties { return *v.Defaults() }).(ComponentVersionPropertiesOutput)
+	args.ComponentVersionProperties = args.ComponentVersionProperties.ToComponentVersionTypeOutput().ApplyT(func(v ComponentVersionType) ComponentVersionType { return *v.Defaults() }).(ComponentVersionTypeOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20221001preview:RegistryComponentVersion"),
@@ -98,27 +96,6 @@ func NewRegistryComponentVersion(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:RegistryComponentVersion"),
 		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250401:RegistryComponentVersion"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250401preview:RegistryComponentVersion"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250601:RegistryComponentVersion"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250701preview:RegistryComponentVersion"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250901:RegistryComponentVersion"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20251001preview:RegistryComponentVersion"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20251201:RegistryComponentVersion"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -157,7 +134,7 @@ type registryComponentVersionArgs struct {
 	// Container name.
 	ComponentName string `pulumi:"componentName"`
 	// [Required] Additional attributes of the entity.
-	Properties ComponentVersionProperties `pulumi:"properties"`
+	ComponentVersionProperties ComponentVersionType `pulumi:"componentVersionProperties"`
 	// Name of Azure Machine Learning registry. This is case-insensitive
 	RegistryName string `pulumi:"registryName"`
 	// The name of the resource group. The name is case insensitive.
@@ -171,7 +148,7 @@ type RegistryComponentVersionArgs struct {
 	// Container name.
 	ComponentName pulumi.StringInput
 	// [Required] Additional attributes of the entity.
-	Properties ComponentVersionPropertiesInput
+	ComponentVersionProperties ComponentVersionTypeInput
 	// Name of Azure Machine Learning registry. This is case-insensitive
 	RegistryName pulumi.StringInput
 	// The name of the resource group. The name is case insensitive.
@@ -217,19 +194,14 @@ func (o RegistryComponentVersionOutput) ToRegistryComponentVersionOutputWithCont
 	return o
 }
 
-// The Azure API version of the resource.
-func (o RegistryComponentVersionOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *RegistryComponentVersion) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+// [Required] Additional attributes of the entity.
+func (o RegistryComponentVersionOutput) ComponentVersionProperties() ComponentVersionResponseOutput {
+	return o.ApplyT(func(v *RegistryComponentVersion) ComponentVersionResponseOutput { return v.ComponentVersionProperties }).(ComponentVersionResponseOutput)
 }
 
 // The name of the resource
 func (o RegistryComponentVersionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegistryComponentVersion) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
-}
-
-// [Required] Additional attributes of the entity.
-func (o RegistryComponentVersionOutput) Properties() ComponentVersionPropertiesResponseOutput {
-	return o.ApplyT(func(v *RegistryComponentVersion) ComponentVersionPropertiesResponseOutput { return v.Properties }).(ComponentVersionPropertiesResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

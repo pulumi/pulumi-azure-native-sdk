@@ -7,13 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a deployment script with a given name.
 //
-// Uses Azure REST API version 2023-08-01.
+// Uses Azure REST API version 2020-10-01.
 func LookupAzureCliScript(ctx *pulumi.Context, args *LookupAzureCliScriptArgs, opts ...pulumi.InvokeOption) (*LookupAzureCliScriptResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAzureCliScriptResult
@@ -37,8 +37,6 @@ type LookupAzureCliScriptResult struct {
 	Arguments *string `pulumi:"arguments"`
 	// Azure CLI module version to be used.
 	AzCliVersion string `pulumi:"azCliVersion"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The clean up preference when the script execution gets in a terminal state. Default setting is 'Always'.
 	CleanupPreference *string `pulumi:"cleanupPreference"`
 	// Container settings.
@@ -143,11 +141,6 @@ func (o LookupAzureCliScriptResultOutput) Arguments() pulumi.StringPtrOutput {
 // Azure CLI module version to be used.
 func (o LookupAzureCliScriptResultOutput) AzCliVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzureCliScriptResult) string { return v.AzCliVersion }).(pulumi.StringOutput)
-}
-
-// The Azure API version of the resource.
-func (o LookupAzureCliScriptResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAzureCliScriptResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The clean up preference when the script execution gets in a terminal state. Default setting is 'Always'.

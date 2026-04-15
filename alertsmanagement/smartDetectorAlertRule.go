@@ -8,22 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The alert rule information
 //
-// Uses Azure REST API version 2021-04-01. In version 2.x of the Azure Native provider, it used API version 2021-04-01.
-//
-// Other available API versions: 2019-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native alertsmanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Uses Azure REST API version 2021-04-01. In version 1.x of the Azure Native provider, it used API version 2019-06-01.
 type SmartDetectorAlertRule struct {
 	pulumi.CustomResourceState
 
 	// The alert rule actions.
 	ActionGroups ActionGroupsInformationResponseOutput `pulumi:"actionGroups"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The alert rule description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The alert rule's detector.
@@ -218,11 +214,6 @@ func (o SmartDetectorAlertRuleOutput) ToSmartDetectorAlertRuleOutputWithContext(
 // The alert rule actions.
 func (o SmartDetectorAlertRuleOutput) ActionGroups() ActionGroupsInformationResponseOutput {
 	return o.ApplyT(func(v *SmartDetectorAlertRule) ActionGroupsInformationResponseOutput { return v.ActionGroups }).(ActionGroupsInformationResponseOutput)
-}
-
-// The Azure API version of the resource.
-func (o SmartDetectorAlertRuleOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *SmartDetectorAlertRule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The alert rule description.

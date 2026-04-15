@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an existing origin within an endpoint.
 //
-// Uses Azure REST API version 2025-06-01.
+// Uses Azure REST API version 2023-05-01.
 //
-// Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01.
 func LookupOrigin(ctx *pulumi.Context, args *LookupOriginArgs, opts ...pulumi.InvokeOption) (*LookupOriginResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupOriginResult
@@ -31,16 +31,14 @@ type LookupOriginArgs struct {
 	EndpointName string `pulumi:"endpointName"`
 	// Name of the origin which is unique within the endpoint.
 	OriginName string `pulumi:"originName"`
-	// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+	// Name of the CDN profile which is unique within the resource group.
 	ProfileName string `pulumi:"profileName"`
-	// The name of the resource group. The name is case insensitive.
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // CDN origin is the source of the content being delivered via CDN. When the edge nodes represented by an endpoint do not have the requested content cached, they attempt to fetch it from one or more of the configured origins.
 type LookupOriginResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Origin is enabled for load balancing or not
 	Enabled *bool `pulumi:"enabled"`
 	// The address of the origin. Domain names, IPv4 addresses, and IPv6 addresses are supported.This should be unique across all origins in an endpoint.
@@ -49,9 +47,9 @@ type LookupOriginResult struct {
 	HttpPort *int `pulumi:"httpPort"`
 	// The value of the HTTPS port. Must be between 1 and 65535.
 	HttpsPort *int `pulumi:"httpsPort"`
-	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	// Resource ID.
 	Id string `pulumi:"id"`
-	// The name of the resource
+	// Resource name.
 	Name string `pulumi:"name"`
 	// The host header value sent to the origin with each request. If you leave this blank, the request hostname determines this value. Azure CDN origins, such as Web Apps, Blob Storage, and Cloud Services require this host header value to match the origin hostname by default. This overrides the host header defined at Endpoint
 	OriginHostHeader *string `pulumi:"originHostHeader"`
@@ -71,9 +69,9 @@ type LookupOriginResult struct {
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Resource status of the origin.
 	ResourceState string `pulumi:"resourceState"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	// Read only system data
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// Resource type.
 	Type string `pulumi:"type"`
 	// Weight of the origin in given origin group for load balancing. Must be between 1 and 1000
 	Weight *int `pulumi:"weight"`
@@ -93,9 +91,9 @@ type LookupOriginOutputArgs struct {
 	EndpointName pulumi.StringInput `pulumi:"endpointName"`
 	// Name of the origin which is unique within the endpoint.
 	OriginName pulumi.StringInput `pulumi:"originName"`
-	// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+	// Name of the CDN profile which is unique within the resource group.
 	ProfileName pulumi.StringInput `pulumi:"profileName"`
-	// The name of the resource group. The name is case insensitive.
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -118,11 +116,6 @@ func (o LookupOriginResultOutput) ToLookupOriginResultOutputWithContext(ctx cont
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupOriginResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupOriginResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Origin is enabled for load balancing or not
 func (o LookupOriginResultOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupOriginResult) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -143,12 +136,12 @@ func (o LookupOriginResultOutput) HttpsPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupOriginResult) *int { return v.HttpsPort }).(pulumi.IntPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+// Resource ID.
 func (o LookupOriginResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOriginResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The name of the resource
+// Resource name.
 func (o LookupOriginResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOriginResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -198,12 +191,12 @@ func (o LookupOriginResultOutput) ResourceState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOriginResult) string { return v.ResourceState }).(pulumi.StringOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+// Read only system data
 func (o LookupOriginResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupOriginResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// Resource type.
 func (o LookupOriginResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOriginResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -8,13 +8,13 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A lab.
 //
-// Uses Azure REST API version 2018-09-15. In version 2.x of the Azure Native provider, it used API version 2018-09-15.
+// Uses Azure REST API version 2018-09-15. In version 1.x of the Azure Native provider, it used API version 2018-09-15.
 type Lab struct {
 	pulumi.CustomResourceState
 
@@ -22,8 +22,6 @@ type Lab struct {
 	Announcement LabAnnouncementPropertiesResponsePtrOutput `pulumi:"announcement"`
 	// The lab's artifact storage account.
 	ArtifactsStorageAccount pulumi.StringOutput `pulumi:"artifactsStorageAccount"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The creation date of the lab.
 	CreatedDate pulumi.StringOutput `pulumi:"createdDate"`
 	// The lab's default premium storage account.
@@ -38,13 +36,13 @@ type Lab struct {
 	LabStorageType pulumi.StringPtrOutput `pulumi:"labStorageType"`
 	// The load balancer used to for lab VMs that use shared IP address.
 	LoadBalancerId pulumi.StringOutput `pulumi:"loadBalancerId"`
-	// The geo-location where the resource lives
+	// The location of the resource.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The ordered list of artifact resource IDs that should be applied on all Linux VM creations by default, prior to the artifacts specified by the user.
 	MandatoryArtifactsResourceIdsLinux pulumi.StringArrayOutput `pulumi:"mandatoryArtifactsResourceIdsLinux"`
 	// The ordered list of artifact resource IDs that should be applied on all Windows VM creations by default, prior to the artifacts specified by the user.
 	MandatoryArtifactsResourceIdsWindows pulumi.StringArrayOutput `pulumi:"mandatoryArtifactsResourceIdsWindows"`
-	// The name of the resource
+	// The name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The Network Security Group attached to the lab VMs Network interfaces to restrict open ports.
 	NetworkSecurityGroupId pulumi.StringOutput `pulumi:"networkSecurityGroupId"`
@@ -60,11 +58,9 @@ type Lab struct {
 	PublicIpId pulumi.StringOutput `pulumi:"publicIpId"`
 	// The properties of any lab support message associated with this lab
 	Support LabSupportPropertiesResponsePtrOutput `pulumi:"support"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// Resource tags.
+	// The tags of the resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// The type of the resource.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The unique immutable identifier of a resource (Guid).
 	UniqueIdentifier pulumi.StringOutput `pulumi:"uniqueIdentifier"`
@@ -140,7 +136,7 @@ type labArgs struct {
 	ExtendedProperties map[string]string `pulumi:"extendedProperties"`
 	// Type of storage used by the lab. It can be either Premium or Standard. Default is Premium.
 	LabStorageType *string `pulumi:"labStorageType"`
-	// The geo-location where the resource lives
+	// The location of the resource.
 	Location *string `pulumi:"location"`
 	// The ordered list of artifact resource IDs that should be applied on all Linux VM creations by default, prior to the artifacts specified by the user.
 	MandatoryArtifactsResourceIdsLinux []string `pulumi:"mandatoryArtifactsResourceIdsLinux"`
@@ -152,11 +148,11 @@ type labArgs struct {
 	// When its value is 'Enabled', creation of standard or premium data disks is allowed.
 	// When its value is 'Disabled', only creation of standard data disks is allowed.
 	PremiumDataDisks *string `pulumi:"premiumDataDisks"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The properties of any lab support message associated with this lab
 	Support *LabSupportProperties `pulumi:"support"`
-	// Resource tags.
+	// The tags of the resource.
 	Tags map[string]string `pulumi:"tags"`
 }
 
@@ -170,7 +166,7 @@ type LabArgs struct {
 	ExtendedProperties pulumi.StringMapInput
 	// Type of storage used by the lab. It can be either Premium or Standard. Default is Premium.
 	LabStorageType pulumi.StringPtrInput
-	// The geo-location where the resource lives
+	// The location of the resource.
 	Location pulumi.StringPtrInput
 	// The ordered list of artifact resource IDs that should be applied on all Linux VM creations by default, prior to the artifacts specified by the user.
 	MandatoryArtifactsResourceIdsLinux pulumi.StringArrayInput
@@ -182,11 +178,11 @@ type LabArgs struct {
 	// When its value is 'Enabled', creation of standard or premium data disks is allowed.
 	// When its value is 'Disabled', only creation of standard data disks is allowed.
 	PremiumDataDisks pulumi.StringPtrInput
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
 	// The properties of any lab support message associated with this lab
 	Support LabSupportPropertiesPtrInput
-	// Resource tags.
+	// The tags of the resource.
 	Tags pulumi.StringMapInput
 }
 
@@ -237,11 +233,6 @@ func (o LabOutput) ArtifactsStorageAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v *Lab) pulumi.StringOutput { return v.ArtifactsStorageAccount }).(pulumi.StringOutput)
 }
 
-// The Azure API version of the resource.
-func (o LabOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Lab) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // The creation date of the lab.
 func (o LabOutput) CreatedDate() pulumi.StringOutput {
 	return o.ApplyT(func(v *Lab) pulumi.StringOutput { return v.CreatedDate }).(pulumi.StringOutput)
@@ -277,7 +268,7 @@ func (o LabOutput) LoadBalancerId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Lab) pulumi.StringOutput { return v.LoadBalancerId }).(pulumi.StringOutput)
 }
 
-// The geo-location where the resource lives
+// The location of the resource.
 func (o LabOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Lab) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
@@ -292,7 +283,7 @@ func (o LabOutput) MandatoryArtifactsResourceIdsWindows() pulumi.StringArrayOutp
 	return o.ApplyT(func(v *Lab) pulumi.StringArrayOutput { return v.MandatoryArtifactsResourceIdsWindows }).(pulumi.StringArrayOutput)
 }
 
-// The name of the resource
+// The name of the resource.
 func (o LabOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Lab) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -329,17 +320,12 @@ func (o LabOutput) Support() LabSupportPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v *Lab) LabSupportPropertiesResponsePtrOutput { return v.Support }).(LabSupportPropertiesResponsePtrOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LabOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *Lab) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
-}
-
-// Resource tags.
+// The tags of the resource.
 func (o LabOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Lab) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// The type of the resource.
 func (o LabOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Lab) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

@@ -8,28 +8,25 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Contains information about an Azure Batch account.
 //
-// Uses Azure REST API version 2024-07-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
+// Uses Azure REST API version 2023-05-01. In version 1.x of the Azure Native provider, it used API version 2021-01-01.
 //
-// Other available API versions: 2023-05-01, 2023-11-01, 2024-02-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native batch [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-01-01, 2023-11-01, 2024-02-01, 2024-07-01.
 type BatchAccount struct {
 	pulumi.CustomResourceState
 
 	// The account endpoint used to interact with the Batch service.
-	AccountEndpoint pulumi.StringOutput `pulumi:"accountEndpoint"`
-	// The active job and job schedule quota for the Batch account.
-	ActiveJobAndJobScheduleQuota pulumi.IntOutput `pulumi:"activeJobAndJobScheduleQuota"`
+	AccountEndpoint              pulumi.StringOutput `pulumi:"accountEndpoint"`
+	ActiveJobAndJobScheduleQuota pulumi.IntOutput    `pulumi:"activeJobAndJobScheduleQuota"`
 	// List of allowed authentication modes for the Batch account that can be used to authenticate with the data plane. This does not affect authentication with the control plane.
 	AllowedAuthenticationModes pulumi.StringArrayOutput `pulumi:"allowedAuthenticationModes"`
 	// Contains information about the auto-storage account associated with a Batch account.
 	AutoStorage AutoStoragePropertiesResponseOutput `pulumi:"autoStorage"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// For accounts with PoolAllocationMode set to UserSubscription, quota is managed on the subscription so this value is not returned.
 	DedicatedCoreQuota pulumi.IntOutput `pulumi:"dedicatedCoreQuota"`
 	// A list of the dedicated core quota per Virtual Machine family for the Batch account. For accounts with PoolAllocationMode set to UserSubscription, quota is managed on the subscription so this value is not returned.
@@ -42,11 +39,11 @@ type BatchAccount struct {
 	Identity BatchAccountIdentityResponsePtrOutput `pulumi:"identity"`
 	// Identifies the Azure key vault associated with a Batch account.
 	KeyVaultReference KeyVaultReferenceResponseOutput `pulumi:"keyVaultReference"`
-	// The geo-location where the resource lives
+	// The location of the resource.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// For accounts with PoolAllocationMode set to UserSubscription, quota is managed on the subscription so this value is not returned.
 	LowPriorityCoreQuota pulumi.IntOutput `pulumi:"lowPriorityCoreQuota"`
-	// The name of the resource
+	// The name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The network profile only takes effect when publicNetworkAccess is enabled.
 	NetworkProfile NetworkProfileResponsePtrOutput `pulumi:"networkProfile"`
@@ -54,19 +51,16 @@ type BatchAccount struct {
 	NodeManagementEndpoint pulumi.StringOutput `pulumi:"nodeManagementEndpoint"`
 	// The allocation mode for creating pools in the Batch account.
 	PoolAllocationMode pulumi.StringOutput `pulumi:"poolAllocationMode"`
-	// The pool quota for the Batch account.
-	PoolQuota pulumi.IntOutput `pulumi:"poolQuota"`
+	PoolQuota          pulumi.IntOutput    `pulumi:"poolQuota"`
 	// List of private endpoint connections associated with the Batch account
 	PrivateEndpointConnections PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
 	// The provisioned state of the resource
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// The network access type for operating on the resources in the Batch account.
+	// If not specified, the default value is 'enabled'.
 	PublicNetworkAccess pulumi.StringPtrOutput `pulumi:"publicNetworkAccess"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// Resource tags.
+	// The tags of the resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// The type of the resource.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -82,9 +76,6 @@ func NewBatchAccount(ctx *pulumi.Context,
 	}
 	if args.AutoStorage != nil {
 		args.AutoStorage = args.AutoStorage.ToAutoStorageBasePropertiesPtrOutput().ApplyT(func(v *AutoStorageBaseProperties) *AutoStorageBaseProperties { return v.Defaults() }).(AutoStorageBasePropertiesPtrOutput)
-	}
-	if args.PublicNetworkAccess == nil {
-		args.PublicNetworkAccess = PublicNetworkAccessType("Enabled")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -144,9 +135,6 @@ func NewBatchAccount(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:batch/v20240701:BatchAccount"),
 		},
-		{
-			Type: pulumi.String("azure-native:batch/v20250601:BatchAccount"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -198,11 +186,11 @@ type batchAccountArgs struct {
 	Location *string `pulumi:"location"`
 	// The network profile only takes effect when publicNetworkAccess is enabled.
 	NetworkProfile *NetworkProfile `pulumi:"networkProfile"`
-	// The pool allocation mode also affects how clients may authenticate to the Batch Service API. If the mode is BatchService, clients may authenticate using access keys or Microsoft Entra ID. If the mode is UserSubscription, clients must use Microsoft Entra ID. The default is BatchService.
+	// The pool allocation mode also affects how clients may authenticate to the Batch Service API. If the mode is BatchService, clients may authenticate using access keys or Azure Active Directory. If the mode is UserSubscription, clients must use Azure Active Directory. The default is BatchService.
 	PoolAllocationMode *PoolAllocationMode `pulumi:"poolAllocationMode"`
-	// The network access type for operating on the resources in the Batch account.
+	// If not specified, the default value is 'enabled'.
 	PublicNetworkAccess *PublicNetworkAccessType `pulumi:"publicNetworkAccess"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group that contains the Batch account.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The user-specified tags associated with the account.
 	Tags map[string]string `pulumi:"tags"`
@@ -226,11 +214,11 @@ type BatchAccountArgs struct {
 	Location pulumi.StringPtrInput
 	// The network profile only takes effect when publicNetworkAccess is enabled.
 	NetworkProfile NetworkProfilePtrInput
-	// The pool allocation mode also affects how clients may authenticate to the Batch Service API. If the mode is BatchService, clients may authenticate using access keys or Microsoft Entra ID. If the mode is UserSubscription, clients must use Microsoft Entra ID. The default is BatchService.
+	// The pool allocation mode also affects how clients may authenticate to the Batch Service API. If the mode is BatchService, clients may authenticate using access keys or Azure Active Directory. If the mode is UserSubscription, clients must use Azure Active Directory. The default is BatchService.
 	PoolAllocationMode PoolAllocationModePtrInput
-	// The network access type for operating on the resources in the Batch account.
+	// If not specified, the default value is 'enabled'.
 	PublicNetworkAccess PublicNetworkAccessTypePtrInput
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group that contains the Batch account.
 	ResourceGroupName pulumi.StringInput
 	// The user-specified tags associated with the account.
 	Tags pulumi.StringMapInput
@@ -278,7 +266,6 @@ func (o BatchAccountOutput) AccountEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *BatchAccount) pulumi.StringOutput { return v.AccountEndpoint }).(pulumi.StringOutput)
 }
 
-// The active job and job schedule quota for the Batch account.
 func (o BatchAccountOutput) ActiveJobAndJobScheduleQuota() pulumi.IntOutput {
 	return o.ApplyT(func(v *BatchAccount) pulumi.IntOutput { return v.ActiveJobAndJobScheduleQuota }).(pulumi.IntOutput)
 }
@@ -291,11 +278,6 @@ func (o BatchAccountOutput) AllowedAuthenticationModes() pulumi.StringArrayOutpu
 // Contains information about the auto-storage account associated with a Batch account.
 func (o BatchAccountOutput) AutoStorage() AutoStoragePropertiesResponseOutput {
 	return o.ApplyT(func(v *BatchAccount) AutoStoragePropertiesResponseOutput { return v.AutoStorage }).(AutoStoragePropertiesResponseOutput)
-}
-
-// The Azure API version of the resource.
-func (o BatchAccountOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *BatchAccount) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // For accounts with PoolAllocationMode set to UserSubscription, quota is managed on the subscription so this value is not returned.
@@ -330,7 +312,7 @@ func (o BatchAccountOutput) KeyVaultReference() KeyVaultReferenceResponseOutput 
 	return o.ApplyT(func(v *BatchAccount) KeyVaultReferenceResponseOutput { return v.KeyVaultReference }).(KeyVaultReferenceResponseOutput)
 }
 
-// The geo-location where the resource lives
+// The location of the resource.
 func (o BatchAccountOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *BatchAccount) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
@@ -340,7 +322,7 @@ func (o BatchAccountOutput) LowPriorityCoreQuota() pulumi.IntOutput {
 	return o.ApplyT(func(v *BatchAccount) pulumi.IntOutput { return v.LowPriorityCoreQuota }).(pulumi.IntOutput)
 }
 
-// The name of the resource
+// The name of the resource.
 func (o BatchAccountOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *BatchAccount) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -360,7 +342,6 @@ func (o BatchAccountOutput) PoolAllocationMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *BatchAccount) pulumi.StringOutput { return v.PoolAllocationMode }).(pulumi.StringOutput)
 }
 
-// The pool quota for the Batch account.
 func (o BatchAccountOutput) PoolQuota() pulumi.IntOutput {
 	return o.ApplyT(func(v *BatchAccount) pulumi.IntOutput { return v.PoolQuota }).(pulumi.IntOutput)
 }
@@ -377,22 +358,17 @@ func (o BatchAccountOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *BatchAccount) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// The network access type for operating on the resources in the Batch account.
+// If not specified, the default value is 'enabled'.
 func (o BatchAccountOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BatchAccount) pulumi.StringPtrOutput { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o BatchAccountOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *BatchAccount) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
-}
-
-// Resource tags.
+// The tags of the resource.
 func (o BatchAccountOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *BatchAccount) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// The type of the resource.
 func (o BatchAccountOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *BatchAccount) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,8 +35,6 @@ type LookupSecretValueArgs struct {
 
 // This type describes a value of a secret resource. The name of this resource is the version identifier corresponding to this secret value.
 type LookupSecretValueResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified identifier for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -88,11 +86,6 @@ func (o LookupSecretValueResultOutput) ToLookupSecretValueResultOutput() LookupS
 
 func (o LookupSecretValueResultOutput) ToLookupSecretValueResultOutputWithContext(ctx context.Context) LookupSecretValueResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupSecretValueResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSecretValueResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified identifier for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

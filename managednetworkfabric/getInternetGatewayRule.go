@@ -7,15 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an Internet Gateway Rule resource.
 //
 // Uses Azure REST API version 2023-06-15.
-//
-// Other available API versions: 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupInternetGatewayRule(ctx *pulumi.Context, args *LookupInternetGatewayRuleArgs, opts ...pulumi.InvokeOption) (*LookupInternetGatewayRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupInternetGatewayRuleResult
@@ -37,8 +35,6 @@ type LookupInternetGatewayRuleArgs struct {
 type LookupInternetGatewayRuleResult struct {
 	// Switch configuration description.
 	Annotation *string `pulumi:"annotation"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// List of Internet Gateway resource Id.
@@ -97,11 +93,6 @@ func (o LookupInternetGatewayRuleResultOutput) ToLookupInternetGatewayRuleResult
 // Switch configuration description.
 func (o LookupInternetGatewayRuleResultOutput) Annotation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupInternetGatewayRuleResult) *string { return v.Annotation }).(pulumi.StringPtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o LookupInternetGatewayRuleResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupInternetGatewayRuleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

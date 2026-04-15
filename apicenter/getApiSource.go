@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,8 +39,6 @@ type LookupApiSourceArgs struct {
 type LookupApiSourceResult struct {
 	// API source configuration for Azure API Management.
 	AzureApiManagementSource *AzureApiManagementSourceResponse `pulumi:"azureApiManagementSource"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Indicates if the specification should be imported along with metadata.
@@ -113,11 +111,6 @@ func (o LookupApiSourceResultOutput) ToLookupApiSourceResultOutputWithContext(ct
 // API source configuration for Azure API Management.
 func (o LookupApiSourceResultOutput) AzureApiManagementSource() AzureApiManagementSourceResponsePtrOutput {
 	return o.ApplyT(func(v LookupApiSourceResult) *AzureApiManagementSourceResponse { return v.AzureApiManagementSource }).(AzureApiManagementSourceResponsePtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o LookupApiSourceResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupApiSourceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

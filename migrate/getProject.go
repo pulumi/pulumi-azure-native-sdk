@@ -7,13 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the project with the specified name.
 //
 // Uses Azure REST API version 2019-10-01.
+//
+// Other available API versions: 2018-02-02.
 func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.InvokeOption) (*LookupProjectResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProjectResult
@@ -33,8 +35,6 @@ type LookupProjectArgs struct {
 
 // Azure Migrate Project.
 type LookupProjectResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// For optimistic concurrency control.
 	ETag *string `pulumi:"eTag"`
 	// Path reference to this project /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}
@@ -84,11 +84,6 @@ func (o LookupProjectResultOutput) ToLookupProjectResultOutput() LookupProjectRe
 
 func (o LookupProjectResultOutput) ToLookupProjectResultOutputWithContext(ctx context.Context) LookupProjectResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupProjectResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupProjectResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // For optimistic concurrency control.

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -475,7 +475,7 @@ type SubscriptionAliasResponsePropertiesResponse struct {
 	// The Management Group Id.
 	ManagementGroupId *string `pulumi:"managementGroupId"`
 	// The provisioning state of the resource.
-	ProvisioningState string `pulumi:"provisioningState"`
+	ProvisioningState *string `pulumi:"provisioningState"`
 	// Reseller Id
 	ResellerId *string `pulumi:"resellerId"`
 	// Newly created subscription Id.
@@ -537,8 +537,8 @@ func (o SubscriptionAliasResponsePropertiesResponseOutput) ManagementGroupId() p
 }
 
 // The provisioning state of the resource.
-func (o SubscriptionAliasResponsePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v SubscriptionAliasResponsePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+func (o SubscriptionAliasResponsePropertiesResponseOutput) ProvisioningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubscriptionAliasResponsePropertiesResponse) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
 
 // Reseller Id

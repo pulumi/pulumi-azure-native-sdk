@@ -7,15 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a MapsResource
 //
 // Uses Azure REST API version 2025-01-31-preview.
-//
-// Other available API versions: 2025-05-01-preview, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dependencymap [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupMap(ctx *pulumi.Context, args *LookupMapArgs, opts ...pulumi.InvokeOption) (*LookupMapResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMapResult
@@ -35,8 +33,6 @@ type LookupMapArgs struct {
 
 // A Maps resource
 type LookupMapResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -86,11 +82,6 @@ func (o LookupMapResultOutput) ToLookupMapResultOutput() LookupMapResultOutput {
 
 func (o LookupMapResultOutput) ToLookupMapResultOutputWithContext(ctx context.Context) LookupMapResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupMapResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMapResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

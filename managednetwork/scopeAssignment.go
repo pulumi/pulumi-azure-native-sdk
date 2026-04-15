@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Managed Network resource
 //
-// Uses Azure REST API version 2019-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2019-06-01-preview.
+// Uses Azure REST API version 2019-06-01-preview. In version 1.x of the Azure Native provider, it used API version 2019-06-01-preview.
 type ScopeAssignment struct {
 	pulumi.CustomResourceState
 
 	// The managed network ID with scope will be assigned to.
 	AssignedManagedNetwork pulumi.StringPtrOutput `pulumi:"assignedManagedNetwork"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The geo-location where the resource lives
@@ -145,11 +143,6 @@ func (o ScopeAssignmentOutput) ToScopeAssignmentOutputWithContext(ctx context.Co
 // The managed network ID with scope will be assigned to.
 func (o ScopeAssignmentOutput) AssignedManagedNetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScopeAssignment) pulumi.StringPtrOutput { return v.AssignedManagedNetwork }).(pulumi.StringPtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o ScopeAssignmentOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *ScopeAssignment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.

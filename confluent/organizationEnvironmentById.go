@@ -8,32 +8,26 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Details about environment name, metadata and environment id of an environment
 //
-// Uses Azure REST API version 2024-07-01. In version 2.x of the Azure Native provider, it used API version 2024-07-01.
-//
-// Other available API versions: 2025-07-17-preview, 2025-08-18-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Uses Azure REST API version 2024-07-01.
 type OrganizationEnvironmentById struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Type of environment
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Metadata of the record
 	Metadata SCMetadataEntityResponsePtrOutput `pulumi:"metadata"`
-	// The name of the resource
-	Name pulumi.StringOutput `pulumi:"name"`
+	// Display name of the environment
+	Name pulumi.StringPtrOutput `pulumi:"name"`
 	// Stream governance configuration
 	StreamGovernanceConfig StreamGovernanceConfigResponsePtrOutput `pulumi:"streamGovernanceConfig"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-	Type pulumi.StringOutput `pulumi:"type"`
+	// Type of the resource
+	Type pulumi.StringPtrOutput `pulumi:"type"`
 }
 
 // NewOrganizationEnvironmentById registers a new resource with the given unique name, arguments, and options.
@@ -52,12 +46,6 @@ func NewOrganizationEnvironmentById(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:confluent/v20240701:OrganizationEnvironmentById"),
-		},
-		{
-			Type: pulumi.String("azure-native:confluent/v20250717preview:OrganizationEnvironmentById"),
-		},
-		{
-			Type: pulumi.String("azure-native:confluent/v20250818preview:OrganizationEnvironmentById"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -96,32 +84,44 @@ func (OrganizationEnvironmentByIdState) ElementType() reflect.Type {
 type organizationEnvironmentByIdArgs struct {
 	// Confluent environment id
 	EnvironmentId *string `pulumi:"environmentId"`
+	// Id of the environment
+	Id *string `pulumi:"id"`
 	// Type of environment
 	Kind *string `pulumi:"kind"`
 	// Metadata of the record
 	Metadata *SCMetadataEntity `pulumi:"metadata"`
+	// Display name of the environment
+	Name *string `pulumi:"name"`
 	// Organization resource name
 	OrganizationName string `pulumi:"organizationName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Stream governance configuration
 	StreamGovernanceConfig *StreamGovernanceConfig `pulumi:"streamGovernanceConfig"`
+	// Type of the resource
+	Type *string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a OrganizationEnvironmentById resource.
 type OrganizationEnvironmentByIdArgs struct {
 	// Confluent environment id
 	EnvironmentId pulumi.StringPtrInput
+	// Id of the environment
+	Id pulumi.StringPtrInput
 	// Type of environment
 	Kind pulumi.StringPtrInput
 	// Metadata of the record
 	Metadata SCMetadataEntityPtrInput
+	// Display name of the environment
+	Name pulumi.StringPtrInput
 	// Organization resource name
 	OrganizationName pulumi.StringInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Stream governance configuration
 	StreamGovernanceConfig StreamGovernanceConfigPtrInput
+	// Type of the resource
+	Type pulumi.StringPtrInput
 }
 
 func (OrganizationEnvironmentByIdArgs) ElementType() reflect.Type {
@@ -161,11 +161,6 @@ func (o OrganizationEnvironmentByIdOutput) ToOrganizationEnvironmentByIdOutputWi
 	return o
 }
 
-// The Azure API version of the resource.
-func (o OrganizationEnvironmentByIdOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *OrganizationEnvironmentById) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Type of environment
 func (o OrganizationEnvironmentByIdOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OrganizationEnvironmentById) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
@@ -176,9 +171,9 @@ func (o OrganizationEnvironmentByIdOutput) Metadata() SCMetadataEntityResponsePt
 	return o.ApplyT(func(v *OrganizationEnvironmentById) SCMetadataEntityResponsePtrOutput { return v.Metadata }).(SCMetadataEntityResponsePtrOutput)
 }
 
-// The name of the resource
-func (o OrganizationEnvironmentByIdOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v *OrganizationEnvironmentById) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+// Display name of the environment
+func (o OrganizationEnvironmentByIdOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OrganizationEnvironmentById) pulumi.StringPtrOutput { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // Stream governance configuration
@@ -188,14 +183,9 @@ func (o OrganizationEnvironmentByIdOutput) StreamGovernanceConfig() StreamGovern
 	}).(StreamGovernanceConfigResponsePtrOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o OrganizationEnvironmentByIdOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *OrganizationEnvironmentById) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
-}
-
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-func (o OrganizationEnvironmentByIdOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v *OrganizationEnvironmentById) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+// Type of the resource
+func (o OrganizationEnvironmentByIdOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OrganizationEnvironmentById) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }
 
 func init() {

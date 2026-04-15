@@ -8,22 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Describes a VMSS VM Extension.
 //
-// Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
+// Uses Azure REST API version 2023-03-01. In version 1.x of the Azure Native provider, it used API version 2021-03-01.
 //
-// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-11-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2024-11-01.
 type VirtualMachineScaleSetVMExtension struct {
 	pulumi.CustomResourceState
 
 	// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
 	AutoUpgradeMinorVersion pulumi.BoolPtrOutput `pulumi:"autoUpgradeMinorVersion"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version of the extension available.
 	EnableAutomaticUpgrade pulumi.BoolPtrOutput `pulumi:"enableAutomaticUpgrade"`
 	// How the extension handler should be forced to update even if the extension configuration has not changed.
@@ -32,7 +30,7 @@ type VirtualMachineScaleSetVMExtension struct {
 	InstanceView VirtualMachineExtensionInstanceViewResponsePtrOutput `pulumi:"instanceView"`
 	// The location of the extension.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
-	// Resource name
+	// The name of the extension.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
 	ProtectedSettings pulumi.AnyOutput `pulumi:"protectedSettings"`
@@ -122,9 +120,6 @@ func NewVirtualMachineScaleSetVMExtension(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:compute/v20241101:VirtualMachineScaleSetVMExtension"),
 		},
-		{
-			Type: pulumi.String("azure-native:compute/v20250401:VirtualMachineScaleSetVMExtension"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -180,7 +175,7 @@ type virtualMachineScaleSetVMExtensionArgs struct {
 	ProvisionAfterExtensions []string `pulumi:"provisionAfterExtensions"`
 	// The name of the extension handler publisher.
 	Publisher *string `pulumi:"publisher"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Json formatted public settings for the extension.
 	Settings interface{} `pulumi:"settings"`
@@ -218,7 +213,7 @@ type VirtualMachineScaleSetVMExtensionArgs struct {
 	ProvisionAfterExtensions pulumi.StringArrayInput
 	// The name of the extension handler publisher.
 	Publisher pulumi.StringPtrInput
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
 	// Json formatted public settings for the extension.
 	Settings pulumi.Input
@@ -276,11 +271,6 @@ func (o VirtualMachineScaleSetVMExtensionOutput) AutoUpgradeMinorVersion() pulum
 	return o.ApplyT(func(v *VirtualMachineScaleSetVMExtension) pulumi.BoolPtrOutput { return v.AutoUpgradeMinorVersion }).(pulumi.BoolPtrOutput)
 }
 
-// The Azure API version of the resource.
-func (o VirtualMachineScaleSetVMExtensionOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *VirtualMachineScaleSetVMExtension) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Indicates whether the extension should be automatically upgraded by the platform if there is a newer version of the extension available.
 func (o VirtualMachineScaleSetVMExtensionOutput) EnableAutomaticUpgrade() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetVMExtension) pulumi.BoolPtrOutput { return v.EnableAutomaticUpgrade }).(pulumi.BoolPtrOutput)
@@ -303,7 +293,7 @@ func (o VirtualMachineScaleSetVMExtensionOutput) Location() pulumi.StringPtrOutp
 	return o.ApplyT(func(v *VirtualMachineScaleSetVMExtension) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// Resource name
+// The name of the extension.
 func (o VirtualMachineScaleSetVMExtensionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetVMExtension) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

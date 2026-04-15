@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a Test Base Package.
 //
-// Uses Azure REST API version 2023-11-01-preview.
+// Uses Azure REST API version 2022-04-01-preview.
 //
-// Other available API versions: 2022-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native testbase [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-11-01-preview.
 func LookupPackage(ctx *pulumi.Context, args *LookupPackageArgs, opts ...pulumi.InvokeOption) (*LookupPackageResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPackageResult
@@ -29,7 +29,7 @@ func LookupPackage(ctx *pulumi.Context, args *LookupPackageArgs, opts ...pulumi.
 type LookupPackageArgs struct {
 	// The resource name of the Test Base Package.
 	PackageName string `pulumi:"packageName"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group that contains the resource.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The resource name of the Test Base Account.
 	TestBaseAccountName string `pulumi:"testBaseAccountName"`
@@ -39,47 +39,37 @@ type LookupPackageArgs struct {
 type LookupPackageResult struct {
 	// Application name
 	ApplicationName string `pulumi:"applicationName"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The file path of the package.
-	BlobPath *string `pulumi:"blobPath"`
-	// The id of draft package. Used to create or update this package from a draft package.
-	DraftPackageId *string `pulumi:"draftPackageId"`
-	// The list of first party applications to test along with user application.
-	FirstPartyApps []FirstPartyAppDefinitionResponse `pulumi:"firstPartyApps"`
+	BlobPath string `pulumi:"blobPath"`
+	// Resource Etag.
+	Etag string `pulumi:"etag"`
 	// The flighting ring for feature update.
-	FlightingRing *string `pulumi:"flightingRing"`
-	// The list of gallery apps to test along with user application.
-	GalleryApps []GalleryAppDefinitionResponse `pulumi:"galleryApps"`
-	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	FlightingRing string `pulumi:"flightingRing"`
+	// Resource ID.
 	Id string `pulumi:"id"`
-	// Specifies the baseline os and target os for inplace upgrade.
-	InplaceUpgradeOSPair *InplaceUpgradeOSInfoResponse `pulumi:"inplaceUpgradeOSPair"`
-	// The metadata of Intune enrollment.
-	IntuneEnrollmentMetadata *IntuneEnrollmentMetadataResponse `pulumi:"intuneEnrollmentMetadata"`
 	// Flag showing that whether the package is enabled. It doesn't schedule test for package which is not enabled.
 	IsEnabled bool `pulumi:"isEnabled"`
 	// The UTC timestamp when the package was last modified.
 	LastModifiedTime string `pulumi:"lastModifiedTime"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
-	// The name of the resource
+	// Resource name.
 	Name string `pulumi:"name"`
 	// The status of the package.
 	PackageStatus string `pulumi:"packageStatus"`
 	// The provisioning state of the resource.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	// The system metadata relating to this resource
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// Resource tags.
+	// The tags of the resource.
 	Tags map[string]string `pulumi:"tags"`
 	// Specifies the target OSs of specific OS Update types.
 	TargetOSList []TargetOSInfoResponse `pulumi:"targetOSList"`
-	// OOB, functional or flow driven. Mapped to the data in 'tests' property.
+	// OOB, functional or both. Mapped to the data in 'tests' property.
 	TestTypes []string `pulumi:"testTypes"`
 	// The detailed test information.
 	Tests []TestResponse `pulumi:"tests"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// Resource type.
 	Type string `pulumi:"type"`
 	// The validation results. There's validation on package when it's created or updated.
 	ValidationResults []PackageValidationResultResponse `pulumi:"validationResults"`
@@ -99,7 +89,7 @@ func LookupPackageOutput(ctx *pulumi.Context, args LookupPackageOutputArgs, opts
 type LookupPackageOutputArgs struct {
 	// The resource name of the Test Base Package.
 	PackageName pulumi.StringInput `pulumi:"packageName"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group that contains the resource.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The resource name of the Test Base Account.
 	TestBaseAccountName pulumi.StringInput `pulumi:"testBaseAccountName"`
@@ -129,49 +119,24 @@ func (o LookupPackageResultOutput) ApplicationName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPackageResult) string { return v.ApplicationName }).(pulumi.StringOutput)
 }
 
-// The Azure API version of the resource.
-func (o LookupPackageResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupPackageResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // The file path of the package.
-func (o LookupPackageResultOutput) BlobPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupPackageResult) *string { return v.BlobPath }).(pulumi.StringPtrOutput)
+func (o LookupPackageResultOutput) BlobPath() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPackageResult) string { return v.BlobPath }).(pulumi.StringOutput)
 }
 
-// The id of draft package. Used to create or update this package from a draft package.
-func (o LookupPackageResultOutput) DraftPackageId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupPackageResult) *string { return v.DraftPackageId }).(pulumi.StringPtrOutput)
-}
-
-// The list of first party applications to test along with user application.
-func (o LookupPackageResultOutput) FirstPartyApps() FirstPartyAppDefinitionResponseArrayOutput {
-	return o.ApplyT(func(v LookupPackageResult) []FirstPartyAppDefinitionResponse { return v.FirstPartyApps }).(FirstPartyAppDefinitionResponseArrayOutput)
+// Resource Etag.
+func (o LookupPackageResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPackageResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The flighting ring for feature update.
-func (o LookupPackageResultOutput) FlightingRing() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupPackageResult) *string { return v.FlightingRing }).(pulumi.StringPtrOutput)
+func (o LookupPackageResultOutput) FlightingRing() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPackageResult) string { return v.FlightingRing }).(pulumi.StringOutput)
 }
 
-// The list of gallery apps to test along with user application.
-func (o LookupPackageResultOutput) GalleryApps() GalleryAppDefinitionResponseArrayOutput {
-	return o.ApplyT(func(v LookupPackageResult) []GalleryAppDefinitionResponse { return v.GalleryApps }).(GalleryAppDefinitionResponseArrayOutput)
-}
-
-// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+// Resource ID.
 func (o LookupPackageResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPackageResult) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// Specifies the baseline os and target os for inplace upgrade.
-func (o LookupPackageResultOutput) InplaceUpgradeOSPair() InplaceUpgradeOSInfoResponsePtrOutput {
-	return o.ApplyT(func(v LookupPackageResult) *InplaceUpgradeOSInfoResponse { return v.InplaceUpgradeOSPair }).(InplaceUpgradeOSInfoResponsePtrOutput)
-}
-
-// The metadata of Intune enrollment.
-func (o LookupPackageResultOutput) IntuneEnrollmentMetadata() IntuneEnrollmentMetadataResponsePtrOutput {
-	return o.ApplyT(func(v LookupPackageResult) *IntuneEnrollmentMetadataResponse { return v.IntuneEnrollmentMetadata }).(IntuneEnrollmentMetadataResponsePtrOutput)
 }
 
 // Flag showing that whether the package is enabled. It doesn't schedule test for package which is not enabled.
@@ -189,7 +154,7 @@ func (o LookupPackageResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPackageResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// The name of the resource
+// Resource name.
 func (o LookupPackageResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPackageResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -204,12 +169,12 @@ func (o LookupPackageResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPackageResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+// The system metadata relating to this resource
 func (o LookupPackageResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupPackageResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Resource tags.
+// The tags of the resource.
 func (o LookupPackageResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupPackageResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -219,7 +184,7 @@ func (o LookupPackageResultOutput) TargetOSList() TargetOSInfoResponseArrayOutpu
 	return o.ApplyT(func(v LookupPackageResult) []TargetOSInfoResponse { return v.TargetOSList }).(TargetOSInfoResponseArrayOutput)
 }
 
-// OOB, functional or flow driven. Mapped to the data in 'tests' property.
+// OOB, functional or both. Mapped to the data in 'tests' property.
 func (o LookupPackageResultOutput) TestTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupPackageResult) []string { return v.TestTypes }).(pulumi.StringArrayOutput)
 }
@@ -229,7 +194,7 @@ func (o LookupPackageResultOutput) Tests() TestResponseArrayOutput {
 	return o.ApplyT(func(v LookupPackageResult) []TestResponse { return v.Tests }).(TestResponseArrayOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// Resource type.
 func (o LookupPackageResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPackageResult) string { return v.Type }).(pulumi.StringOutput)
 }

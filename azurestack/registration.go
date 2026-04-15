@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Registration information.
 //
-// Uses Azure REST API version 2022-06-01. In version 2.x of the Azure Native provider, it used API version 2022-06-01.
+// Uses Azure REST API version 2022-06-01. In version 1.x of the Azure Native provider, it used API version 2017-06-01.
 //
-// Other available API versions: 2020-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestack [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2020-06-01-preview.
 type Registration struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Specifies the billing mode for the Azure Stack registration.
 	BillingModel pulumi.StringPtrOutput `pulumi:"billingModel"`
 	// The identifier of the registered Azure Stack.
@@ -158,11 +156,6 @@ func (o RegistrationOutput) ToRegistrationOutput() RegistrationOutput {
 
 func (o RegistrationOutput) ToRegistrationOutputWithContext(ctx context.Context) RegistrationOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o RegistrationOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Registration) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Specifies the billing mode for the Azure Stack registration.

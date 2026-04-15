@@ -8,22 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Description of Rule Resource.
 //
-// Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2022-01-01-preview.
+// Uses Azure REST API version 2022-01-01-preview. In version 1.x of the Azure Native provider, it used API version 2017-04-01.
 //
-// Other available API versions: 2018-01-01-preview, 2021-01-01-preview, 2021-06-01-preview, 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2025-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicebus [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-10-01-preview, 2023-01-01-preview, 2024-01-01.
 type Rule struct {
 	pulumi.CustomResourceState
 
 	// Represents the filter actions which are allowed for the transformation of a message that have been matched by a filter expression.
 	Action ActionResponsePtrOutput `pulumi:"action"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Properties of correlationFilter
 	CorrelationFilter CorrelationFilterResponsePtrOutput `pulumi:"correlationFilter"`
 	// Filter type that is evaluated against a BrokeredMessage.
@@ -96,9 +94,6 @@ func NewRule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:servicebus/v20240101:Rule"),
 		},
-		{
-			Type: pulumi.String("azure-native:servicebus/v20250501preview:Rule"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -139,10 +134,10 @@ type ruleArgs struct {
 	// Properties of correlationFilter
 	CorrelationFilter *CorrelationFilter `pulumi:"correlationFilter"`
 	// Filter type that is evaluated against a BrokeredMessage.
-	FilterType *FilterType `pulumi:"filterType"`
+	FilterType *string `pulumi:"filterType"`
 	// The namespace name
 	NamespaceName string `pulumi:"namespaceName"`
-	// The name of the resource group. The name is case insensitive.
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The rule name.
 	RuleName *string `pulumi:"ruleName"`
@@ -161,10 +156,10 @@ type RuleArgs struct {
 	// Properties of correlationFilter
 	CorrelationFilter CorrelationFilterPtrInput
 	// Filter type that is evaluated against a BrokeredMessage.
-	FilterType FilterTypePtrInput
+	FilterType pulumi.StringPtrInput
 	// The namespace name
 	NamespaceName pulumi.StringInput
-	// The name of the resource group. The name is case insensitive.
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput
 	// The rule name.
 	RuleName pulumi.StringPtrInput
@@ -216,11 +211,6 @@ func (o RuleOutput) ToRuleOutputWithContext(ctx context.Context) RuleOutput {
 // Represents the filter actions which are allowed for the transformation of a message that have been matched by a filter expression.
 func (o RuleOutput) Action() ActionResponsePtrOutput {
 	return o.ApplyT(func(v *Rule) ActionResponsePtrOutput { return v.Action }).(ActionResponsePtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o RuleOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Properties of correlationFilter

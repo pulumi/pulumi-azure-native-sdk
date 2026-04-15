@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a managed database.
 //
-// Uses Azure REST API version 2023-08-01.
+// Uses Azure REST API version 2021-11-01.
 //
-// Other available API versions: 2017-03-01-preview, 2018-06-01-preview, 2019-06-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01, 2023-08-01-preview, 2024-05-01-preview.
 func LookupManagedDatabase(ctx *pulumi.Context, args *LookupManagedDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupManagedDatabaseResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagedDatabaseResult
@@ -37,8 +37,6 @@ type LookupManagedDatabaseArgs struct {
 
 // A managed database resource.
 type LookupManagedDatabaseResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Collation of the metadata catalog.
 	CatalogCollation *string `pulumi:"catalogCollation"`
 	// Collation of the managed database.
@@ -53,8 +51,6 @@ type LookupManagedDatabaseResult struct {
 	FailoverGroupId string `pulumi:"failoverGroupId"`
 	// Resource ID.
 	Id string `pulumi:"id"`
-	// Whether or not this database is a ledger database, which means all tables in the database are ledger tables. Note: the value of this property cannot be changed after the database has been created.
-	IsLedgerOn *bool `pulumi:"isLedgerOn"`
 	// Resource location.
 	Location string `pulumi:"location"`
 	// Resource name.
@@ -104,11 +100,6 @@ func (o LookupManagedDatabaseResultOutput) ToLookupManagedDatabaseResultOutputWi
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupManagedDatabaseResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupManagedDatabaseResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Collation of the metadata catalog.
 func (o LookupManagedDatabaseResultOutput) CatalogCollation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupManagedDatabaseResult) *string { return v.CatalogCollation }).(pulumi.StringPtrOutput)
@@ -142,11 +133,6 @@ func (o LookupManagedDatabaseResultOutput) FailoverGroupId() pulumi.StringOutput
 // Resource ID.
 func (o LookupManagedDatabaseResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedDatabaseResult) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// Whether or not this database is a ledger database, which means all tables in the database are ledger tables. Note: the value of this property cannot be changed after the database has been created.
-func (o LookupManagedDatabaseResultOutput) IsLedgerOn() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LookupManagedDatabaseResult) *bool { return v.IsLedgerOn }).(pulumi.BoolPtrOutput)
 }
 
 // Resource location.

@@ -7,13 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a virtual network rule.
 //
 // Uses Azure REST API version 2018-06-01.
+//
+// Other available API versions: 2018-06-01-preview.
 func LookupVirtualNetworkRule(ctx *pulumi.Context, args *LookupVirtualNetworkRuleArgs, opts ...pulumi.InvokeOption) (*LookupVirtualNetworkRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVirtualNetworkRuleResult
@@ -35,8 +37,6 @@ type LookupVirtualNetworkRuleArgs struct {
 
 // A virtual network rule.
 type LookupVirtualNetworkRuleResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Create firewall rule before the virtual network has vnet service endpoint enabled.
@@ -86,11 +86,6 @@ func (o LookupVirtualNetworkRuleResultOutput) ToLookupVirtualNetworkRuleResultOu
 
 func (o LookupVirtualNetworkRuleResultOutput) ToLookupVirtualNetworkRuleResultOutputWithContext(ctx context.Context) LookupVirtualNetworkRuleResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupVirtualNetworkRuleResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupVirtualNetworkRuleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

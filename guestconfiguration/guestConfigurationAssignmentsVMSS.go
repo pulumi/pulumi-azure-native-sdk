@@ -8,24 +8,22 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Guest configuration assignment is an association between a machine and guest configuration.
 //
-// Uses Azure REST API version 2024-04-05. In version 2.x of the Azure Native provider, it used API version 2022-01-25.
+// Uses Azure REST API version 2022-01-25.
 //
-// Other available API versions: 2022-01-25. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native guestconfiguration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-04-05.
 type GuestConfigurationAssignmentsVMSS struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Region where the VM is located.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
-	// The guest configuration assignment name.
-	Name pulumi.StringOutput `pulumi:"name"`
+	// Name of the guest configuration assignment.
+	Name pulumi.StringPtrOutput `pulumi:"name"`
 	// Properties of the Guest configuration assignment.
 	Properties GuestConfigurationAssignmentPropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -91,11 +89,11 @@ func (GuestConfigurationAssignmentsVMSSState) ElementType() reflect.Type {
 type guestConfigurationAssignmentsVMSSArgs struct {
 	// Region where the VM is located.
 	Location *string `pulumi:"location"`
-	// The guest configuration assignment name.
+	// Name of the guest configuration assignment.
 	Name *string `pulumi:"name"`
 	// Properties of the Guest configuration assignment.
 	Properties *GuestConfigurationAssignmentProperties `pulumi:"properties"`
-	// The name of the resource group. The name is case insensitive.
+	// The resource group name.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the virtual machine scale set.
 	VmssName string `pulumi:"vmssName"`
@@ -105,11 +103,11 @@ type guestConfigurationAssignmentsVMSSArgs struct {
 type GuestConfigurationAssignmentsVMSSArgs struct {
 	// Region where the VM is located.
 	Location pulumi.StringPtrInput
-	// The guest configuration assignment name.
+	// Name of the guest configuration assignment.
 	Name pulumi.StringPtrInput
 	// Properties of the Guest configuration assignment.
 	Properties GuestConfigurationAssignmentPropertiesPtrInput
-	// The name of the resource group. The name is case insensitive.
+	// The resource group name.
 	ResourceGroupName pulumi.StringInput
 	// The name of the virtual machine scale set.
 	VmssName pulumi.StringInput
@@ -152,19 +150,14 @@ func (o GuestConfigurationAssignmentsVMSSOutput) ToGuestConfigurationAssignments
 	return o
 }
 
-// The Azure API version of the resource.
-func (o GuestConfigurationAssignmentsVMSSOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *GuestConfigurationAssignmentsVMSS) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Region where the VM is located.
 func (o GuestConfigurationAssignmentsVMSSOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuestConfigurationAssignmentsVMSS) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// The guest configuration assignment name.
-func (o GuestConfigurationAssignmentsVMSSOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v *GuestConfigurationAssignmentsVMSS) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+// Name of the guest configuration assignment.
+func (o GuestConfigurationAssignmentsVMSSOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestConfigurationAssignmentsVMSS) pulumi.StringPtrOutput { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // Properties of the Guest configuration assignment.

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,8 +31,6 @@ type LookupUserSettingsArgs struct {
 
 // Response to get user settings
 type LookupUserSettingsResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The cloud shell user settings properties.
 	Properties UserPropertiesResponse `pulumi:"properties"`
 }
@@ -68,11 +66,6 @@ func (o LookupUserSettingsResultOutput) ToLookupUserSettingsResultOutput() Looku
 
 func (o LookupUserSettingsResultOutput) ToLookupUserSettingsResultOutputWithContext(ctx context.Context) LookupUserSettingsResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupUserSettingsResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupUserSettingsResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The cloud shell user settings properties.

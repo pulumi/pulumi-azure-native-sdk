@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the properties of the specified bandwidth schedule.
 //
-// Uses Azure REST API version 2023-07-01.
+// Uses Azure REST API version 2022-03-01.
 //
-// Other available API versions: 2022-03-01, 2022-04-01-preview, 2022-12-01-preview, 2023-01-01-preview, 2023-12-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native databoxedge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-01-01-preview, 2023-07-01, 2023-12-01.
 func LookupBandwidthSchedule(ctx *pulumi.Context, args *LookupBandwidthScheduleArgs, opts ...pulumi.InvokeOption) (*LookupBandwidthScheduleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBandwidthScheduleResult
@@ -37,8 +37,6 @@ type LookupBandwidthScheduleArgs struct {
 
 // The bandwidth schedule details.
 type LookupBandwidthScheduleResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The days of the week when this schedule is applicable.
 	Days []string `pulumi:"days"`
 	// The path ID that uniquely identifies the object.
@@ -92,11 +90,6 @@ func (o LookupBandwidthScheduleResultOutput) ToLookupBandwidthScheduleResultOutp
 
 func (o LookupBandwidthScheduleResultOutput) ToLookupBandwidthScheduleResultOutputWithContext(ctx context.Context) LookupBandwidthScheduleResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupBandwidthScheduleResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupBandwidthScheduleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The days of the week when this schedule is applicable.

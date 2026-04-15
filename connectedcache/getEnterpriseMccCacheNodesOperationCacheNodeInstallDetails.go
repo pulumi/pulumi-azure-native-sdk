@@ -7,15 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // This api gets secrets of the ispCacheNode resource install details
 //
 // Uses Azure REST API version 2023-05-01-preview.
-//
-// Other available API versions: 2024-11-30-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native connectedcache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func GetEnterpriseMccCacheNodesOperationCacheNodeInstallDetails(ctx *pulumi.Context, args *GetEnterpriseMccCacheNodesOperationCacheNodeInstallDetailsArgs, opts ...pulumi.InvokeOption) (*GetEnterpriseMccCacheNodesOperationCacheNodeInstallDetailsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetEnterpriseMccCacheNodesOperationCacheNodeInstallDetailsResult

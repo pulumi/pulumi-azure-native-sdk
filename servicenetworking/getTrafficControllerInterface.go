@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a TrafficController
 //
-// Uses Azure REST API version 2025-01-01.
+// Uses Azure REST API version 2023-05-01-preview.
 //
-// Other available API versions: 2023-05-01-preview, 2023-11-01, 2024-05-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicenetworking [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-10-01-preview, 2023-11-01, 2024-05-01-preview, 2025-01-01, 2025-03-01-preview.
 func LookupTrafficControllerInterface(ctx *pulumi.Context, args *LookupTrafficControllerInterfaceArgs, opts ...pulumi.InvokeOption) (*LookupTrafficControllerInterfaceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTrafficControllerInterfaceResult
@@ -37,8 +37,6 @@ type LookupTrafficControllerInterfaceArgs struct {
 type LookupTrafficControllerInterfaceResult struct {
 	// Associations References List
 	Associations []ResourceIdResponse `pulumi:"associations"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Configuration Endpoints.
 	ConfigurationEndpoints []string `pulumi:"configurationEndpoints"`
 	// Frontends References List
@@ -51,10 +49,6 @@ type LookupTrafficControllerInterfaceResult struct {
 	Name string `pulumi:"name"`
 	// The status of the last operation.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// Security Policies References List
-	SecurityPolicies []ResourceIdResponse `pulumi:"securityPolicies"`
-	// Security Policy Configuration
-	SecurityPolicyConfigurations *SecurityPolicyConfigurationsResponse `pulumi:"securityPolicyConfigurations"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
@@ -103,11 +97,6 @@ func (o LookupTrafficControllerInterfaceResultOutput) Associations() ResourceIdR
 	return o.ApplyT(func(v LookupTrafficControllerInterfaceResult) []ResourceIdResponse { return v.Associations }).(ResourceIdResponseArrayOutput)
 }
 
-// The Azure API version of the resource.
-func (o LookupTrafficControllerInterfaceResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupTrafficControllerInterfaceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Configuration Endpoints.
 func (o LookupTrafficControllerInterfaceResultOutput) ConfigurationEndpoints() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupTrafficControllerInterfaceResult) []string { return v.ConfigurationEndpoints }).(pulumi.StringArrayOutput)
@@ -136,18 +125,6 @@ func (o LookupTrafficControllerInterfaceResultOutput) Name() pulumi.StringOutput
 // The status of the last operation.
 func (o LookupTrafficControllerInterfaceResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTrafficControllerInterfaceResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// Security Policies References List
-func (o LookupTrafficControllerInterfaceResultOutput) SecurityPolicies() ResourceIdResponseArrayOutput {
-	return o.ApplyT(func(v LookupTrafficControllerInterfaceResult) []ResourceIdResponse { return v.SecurityPolicies }).(ResourceIdResponseArrayOutput)
-}
-
-// Security Policy Configuration
-func (o LookupTrafficControllerInterfaceResultOutput) SecurityPolicyConfigurations() SecurityPolicyConfigurationsResponsePtrOutput {
-	return o.ApplyT(func(v LookupTrafficControllerInterfaceResult) *SecurityPolicyConfigurationsResponse {
-		return v.SecurityPolicyConfigurations
-	}).(SecurityPolicyConfigurationsResponsePtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

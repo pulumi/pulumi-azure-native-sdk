@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the specified role management policy assignment for a resource scope
 //
-// Uses Azure REST API version 2024-09-01-preview.
+// Uses Azure REST API version 2020-10-01.
 //
-// Other available API versions: 2020-10-01, 2020-10-01-preview, 2024-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2020-10-01-preview, 2024-02-01-preview, 2024-09-01-preview.
 func LookupRoleManagementPolicyAssignment(ctx *pulumi.Context, args *LookupRoleManagementPolicyAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupRoleManagementPolicyAssignmentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRoleManagementPolicyAssignmentResult
@@ -35,8 +35,6 @@ type LookupRoleManagementPolicyAssignmentArgs struct {
 
 // Role management policy
 type LookupRoleManagementPolicyAssignmentResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The readonly computed rule applied to the policy.
 	EffectiveRules []interface{} `pulumi:"effectiveRules"`
 	// The role management policy Id.
@@ -88,11 +86,6 @@ func (o LookupRoleManagementPolicyAssignmentResultOutput) ToLookupRoleManagement
 
 func (o LookupRoleManagementPolicyAssignmentResultOutput) ToLookupRoleManagementPolicyAssignmentResultOutputWithContext(ctx context.Context) LookupRoleManagementPolicyAssignmentResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupRoleManagementPolicyAssignmentResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupRoleManagementPolicyAssignmentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The readonly computed rule applied to the policy.

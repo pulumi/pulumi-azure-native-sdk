@@ -8,15 +8,13 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A Programmable Connectivity Operator API Connection resource
 //
-// Uses Azure REST API version 2024-01-15-preview. In version 2.x of the Azure Native provider, it used API version 2024-01-15-preview.
-//
-// Other available API versions: 2025-03-30-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native programmableconnectivity [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Uses Azure REST API version 2024-01-15-preview.
 type OperatorApiConnection struct {
 	pulumi.CustomResourceState
 
@@ -24,8 +22,6 @@ type OperatorApiConnection struct {
 	AccountType pulumi.StringOutput `pulumi:"accountType"`
 	// Application ID of the App Developer that is registered with the Operator in a specific country/region.
 	AppId pulumi.StringPtrOutput `pulumi:"appId"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The Network API for the current operator in the country/region provided in the linked Operator API Plan.
 	CamaraApiName pulumi.StringOutput `pulumi:"camaraApiName"`
 	// Details about the Application that would use the Operator's Network APIs.
@@ -76,9 +72,6 @@ func NewOperatorApiConnection(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:programmableconnectivity/v20240115preview:OperatorApiConnection"),
-		},
-		{
-			Type: pulumi.String("azure-native:programmableconnectivity/v20250330preview:OperatorApiConnection"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -210,11 +203,6 @@ func (o OperatorApiConnectionOutput) AccountType() pulumi.StringOutput {
 // Application ID of the App Developer that is registered with the Operator in a specific country/region.
 func (o OperatorApiConnectionOutput) AppId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OperatorApiConnection) pulumi.StringPtrOutput { return v.AppId }).(pulumi.StringPtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o OperatorApiConnectionOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *OperatorApiConnection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The Network API for the current operator in the country/region provided in the linked Operator API Plan.

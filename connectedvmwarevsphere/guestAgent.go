@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Defines the GuestAgent.
 //
-// Uses Azure REST API version 2023-03-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-07-15-preview.
+// Uses Azure REST API version 2022-07-15-preview. In version 1.x of the Azure Native provider, it used API version 2020-10-01-preview.
 //
-// Other available API versions: 2022-07-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native connectedvmwarevsphere [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-03-01-preview.
 type GuestAgent struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Username / Password Credentials to provision guest agent.
 	Credentials GuestCredentialResponsePtrOutput `pulumi:"credentials"`
 	// Gets the name of the corresponding resource in Kubernetes.
@@ -30,17 +28,15 @@ type GuestAgent struct {
 	HttpProxyConfig HttpProxyConfigurationResponsePtrOutput `pulumi:"httpProxyConfig"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The resource id of the private link scope this machine is assigned to, if any.
-	PrivateLinkScopeResourceId pulumi.StringPtrOutput `pulumi:"privateLinkScopeResourceId"`
 	// Gets or sets the guest agent provisioning action.
 	ProvisioningAction pulumi.StringPtrOutput `pulumi:"provisioningAction"`
-	// Gets the provisioning state.
+	// Gets or sets the provisioning state.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Gets or sets the guest agent status.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The resource status information.
 	Statuses ResourceStatusResponseArrayOutput `pulumi:"statuses"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	// The system data.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -115,8 +111,6 @@ type guestAgentArgs struct {
 	HttpProxyConfig *HttpProxyConfiguration `pulumi:"httpProxyConfig"`
 	// Name of the guestAgents.
 	Name *string `pulumi:"name"`
-	// The resource id of the private link scope this machine is assigned to, if any.
-	PrivateLinkScopeResourceId *string `pulumi:"privateLinkScopeResourceId"`
 	// Gets or sets the guest agent provisioning action.
 	ProvisioningAction *string `pulumi:"provisioningAction"`
 	// The Resource Group Name.
@@ -133,8 +127,6 @@ type GuestAgentArgs struct {
 	HttpProxyConfig HttpProxyConfigurationPtrInput
 	// Name of the guestAgents.
 	Name pulumi.StringPtrInput
-	// The resource id of the private link scope this machine is assigned to, if any.
-	PrivateLinkScopeResourceId pulumi.StringPtrInput
 	// Gets or sets the guest agent provisioning action.
 	ProvisioningAction pulumi.StringPtrInput
 	// The Resource Group Name.
@@ -180,11 +172,6 @@ func (o GuestAgentOutput) ToGuestAgentOutputWithContext(ctx context.Context) Gue
 	return o
 }
 
-// The Azure API version of the resource.
-func (o GuestAgentOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *GuestAgent) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Username / Password Credentials to provision guest agent.
 func (o GuestAgentOutput) Credentials() GuestCredentialResponsePtrOutput {
 	return o.ApplyT(func(v *GuestAgent) GuestCredentialResponsePtrOutput { return v.Credentials }).(GuestCredentialResponsePtrOutput)
@@ -205,17 +192,12 @@ func (o GuestAgentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *GuestAgent) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The resource id of the private link scope this machine is assigned to, if any.
-func (o GuestAgentOutput) PrivateLinkScopeResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GuestAgent) pulumi.StringPtrOutput { return v.PrivateLinkScopeResourceId }).(pulumi.StringPtrOutput)
-}
-
 // Gets or sets the guest agent provisioning action.
 func (o GuestAgentOutput) ProvisioningAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuestAgent) pulumi.StringPtrOutput { return v.ProvisioningAction }).(pulumi.StringPtrOutput)
 }
 
-// Gets the provisioning state.
+// Gets or sets the provisioning state.
 func (o GuestAgentOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *GuestAgent) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
@@ -230,7 +212,7 @@ func (o GuestAgentOutput) Statuses() ResourceStatusResponseArrayOutput {
 	return o.ApplyT(func(v *GuestAgent) ResourceStatusResponseArrayOutput { return v.Statuses }).(ResourceStatusResponseArrayOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+// The system data.
 func (o GuestAgentOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *GuestAgent) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

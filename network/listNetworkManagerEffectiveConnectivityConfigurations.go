@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // List all effective connectivity configurations applied on a virtual network.
 //
-// Uses Azure REST API version 2024-05-01.
+// Uses Azure REST API version 2023-02-01.
 //
-// Other available API versions: 2022-01-01, 2022-02-01-preview, 2022-04-01-preview, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-05-01-preview, 2022-02-01-preview, 2022-04-01-preview, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
 func ListNetworkManagerEffectiveConnectivityConfigurations(ctx *pulumi.Context, args *ListNetworkManagerEffectiveConnectivityConfigurationsArgs, opts ...pulumi.InvokeOption) (*ListNetworkManagerEffectiveConnectivityConfigurationsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListNetworkManagerEffectiveConnectivityConfigurationsResult
@@ -42,7 +42,7 @@ type ListNetworkManagerEffectiveConnectivityConfigurationsResult struct {
 	// When present, the value can be passed to a subsequent query call (together with the same query and scopes used in the current request) to retrieve the next page of data.
 	SkipToken *string `pulumi:"skipToken"`
 	// Gets a page of NetworkManagerEffectiveConnectivityConfiguration
-	Value []EffectiveConnectivityConfigurationResponseV1 `pulumi:"value"`
+	Value []EffectiveConnectivityConfigurationResponse `pulumi:"value"`
 }
 
 func ListNetworkManagerEffectiveConnectivityConfigurationsOutput(ctx *pulumi.Context, args ListNetworkManagerEffectiveConnectivityConfigurationsOutputArgs, opts ...pulumi.InvokeOption) ListNetworkManagerEffectiveConnectivityConfigurationsResultOutput {
@@ -90,10 +90,10 @@ func (o ListNetworkManagerEffectiveConnectivityConfigurationsResultOutput) SkipT
 }
 
 // Gets a page of NetworkManagerEffectiveConnectivityConfiguration
-func (o ListNetworkManagerEffectiveConnectivityConfigurationsResultOutput) Value() EffectiveConnectivityConfigurationResponseV1ArrayOutput {
-	return o.ApplyT(func(v ListNetworkManagerEffectiveConnectivityConfigurationsResult) []EffectiveConnectivityConfigurationResponseV1 {
+func (o ListNetworkManagerEffectiveConnectivityConfigurationsResultOutput) Value() EffectiveConnectivityConfigurationResponseArrayOutput {
+	return o.ApplyT(func(v ListNetworkManagerEffectiveConnectivityConfigurationsResult) []EffectiveConnectivityConfigurationResponse {
 		return v.Value
-	}).(EffectiveConnectivityConfigurationResponseV1ArrayOutput)
+	}).(EffectiveConnectivityConfigurationResponseArrayOutput)
 }
 
 func init() {

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,20 +27,18 @@ func LookupPolicy(ctx *pulumi.Context, args *LookupPolicyArgs, opts ...pulumi.In
 type LookupPolicyArgs struct {
 	// Specify the $expand query. Example: 'properties($select=description)'
 	Expand *string `pulumi:"expand"`
-	// labs
+	// The name of the lab.
 	LabName string `pulumi:"labName"`
-	// The name of the Policy
+	// The name of the policy.
 	Name string `pulumi:"name"`
-	// policysets
+	// The name of the policy set.
 	PolicySetName string `pulumi:"policySetName"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // A Policy.
 type LookupPolicyResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The creation date of the policy.
 	CreatedDate string `pulumi:"createdDate"`
 	// The description of the policy.
@@ -51,23 +49,21 @@ type LookupPolicyResult struct {
 	FactData *string `pulumi:"factData"`
 	// The fact name of the policy (e.g. LabVmCount, LabVmSize, MaxVmsAllowedPerLab, etc.
 	FactName *string `pulumi:"factName"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// The identifier of the resource.
 	Id string `pulumi:"id"`
 	// The location of the resource.
 	Location *string `pulumi:"location"`
-	// The name of the resource
+	// The name of the resource.
 	Name string `pulumi:"name"`
 	// The provisioning status of the resource.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The status of the policy.
 	Status *string `pulumi:"status"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The tags of the resource.
 	Tags map[string]string `pulumi:"tags"`
 	// The threshold of the policy (i.e. a number for MaxValuePolicy, and a JSON array of values for AllowedValuesPolicy).
 	Threshold *string `pulumi:"threshold"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// The type of the resource.
 	Type string `pulumi:"type"`
 	// The unique immutable identifier of a resource (Guid).
 	UniqueIdentifier string `pulumi:"uniqueIdentifier"`
@@ -85,13 +81,13 @@ func LookupPolicyOutput(ctx *pulumi.Context, args LookupPolicyOutputArgs, opts .
 type LookupPolicyOutputArgs struct {
 	// Specify the $expand query. Example: 'properties($select=description)'
 	Expand pulumi.StringPtrInput `pulumi:"expand"`
-	// labs
+	// The name of the lab.
 	LabName pulumi.StringInput `pulumi:"labName"`
-	// The name of the Policy
+	// The name of the policy.
 	Name pulumi.StringInput `pulumi:"name"`
-	// policysets
+	// The name of the policy set.
 	PolicySetName pulumi.StringInput `pulumi:"policySetName"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -112,11 +108,6 @@ func (o LookupPolicyResultOutput) ToLookupPolicyResultOutput() LookupPolicyResul
 
 func (o LookupPolicyResultOutput) ToLookupPolicyResultOutputWithContext(ctx context.Context) LookupPolicyResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupPolicyResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupPolicyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of the policy.
@@ -144,7 +135,7 @@ func (o LookupPolicyResultOutput) FactName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPolicyResult) *string { return v.FactName }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// The identifier of the resource.
 func (o LookupPolicyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -154,7 +145,7 @@ func (o LookupPolicyResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPolicyResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// The name of the resource
+// The name of the resource.
 func (o LookupPolicyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPolicyResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -169,11 +160,6 @@ func (o LookupPolicyResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPolicyResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupPolicyResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupPolicyResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
-}
-
 // The tags of the resource.
 func (o LookupPolicyResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupPolicyResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
@@ -184,7 +170,7 @@ func (o LookupPolicyResultOutput) Threshold() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPolicyResult) *string { return v.Threshold }).(pulumi.StringPtrOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// The type of the resource.
 func (o LookupPolicyResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPolicyResult) string { return v.Type }).(pulumi.StringOutput)
 }

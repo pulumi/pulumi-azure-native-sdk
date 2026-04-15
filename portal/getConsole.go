@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,8 +31,6 @@ type LookupConsoleArgs struct {
 
 // Cloud shell console
 type LookupConsoleResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Cloud shell console properties.
 	Properties ConsolePropertiesResponse `pulumi:"properties"`
 }
@@ -68,11 +66,6 @@ func (o LookupConsoleResultOutput) ToLookupConsoleResultOutput() LookupConsoleRe
 
 func (o LookupConsoleResultOutput) ToLookupConsoleResultOutputWithContext(ctx context.Context) LookupConsoleResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupConsoleResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupConsoleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Cloud shell console properties.

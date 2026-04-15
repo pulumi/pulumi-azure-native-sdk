@@ -8,29 +8,27 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Customer Notification Event resource.
 //
-// Uses Azure REST API version 2023-11-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-04-01-preview.
+// Uses Azure REST API version 2022-04-01-preview. In version 1.x of the Azure Native provider, it used API version 2022-04-01-preview.
 //
-// Other available API versions: 2022-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native testbase [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-11-01-preview.
 type CustomerEvent struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the event subscribed to.
 	EventName pulumi.StringOutput `pulumi:"eventName"`
-	// The name of the resource
+	// Resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The notification event receivers.
 	Receivers NotificationEventReceiverResponseArrayOutput `pulumi:"receivers"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	// The system metadata relating to this resource
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// Resource type.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -104,7 +102,7 @@ type customerEventArgs struct {
 	EventName string `pulumi:"eventName"`
 	// The notification event receivers.
 	Receivers []NotificationEventReceiver `pulumi:"receivers"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group that contains the resource.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The resource name of the Test Base Account.
 	TestBaseAccountName string `pulumi:"testBaseAccountName"`
@@ -118,7 +116,7 @@ type CustomerEventArgs struct {
 	EventName pulumi.StringInput
 	// The notification event receivers.
 	Receivers NotificationEventReceiverArrayInput
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group that contains the resource.
 	ResourceGroupName pulumi.StringInput
 	// The resource name of the Test Base Account.
 	TestBaseAccountName pulumi.StringInput
@@ -161,17 +159,12 @@ func (o CustomerEventOutput) ToCustomerEventOutputWithContext(ctx context.Contex
 	return o
 }
 
-// The Azure API version of the resource.
-func (o CustomerEventOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *CustomerEvent) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // The name of the event subscribed to.
 func (o CustomerEventOutput) EventName() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomerEvent) pulumi.StringOutput { return v.EventName }).(pulumi.StringOutput)
 }
 
-// The name of the resource
+// Resource name.
 func (o CustomerEventOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomerEvent) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -181,12 +174,12 @@ func (o CustomerEventOutput) Receivers() NotificationEventReceiverResponseArrayO
 	return o.ApplyT(func(v *CustomerEvent) NotificationEventReceiverResponseArrayOutput { return v.Receivers }).(NotificationEventReceiverResponseArrayOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+// The system metadata relating to this resource
 func (o CustomerEventOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *CustomerEvent) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// Resource type.
 func (o CustomerEventOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomerEvent) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

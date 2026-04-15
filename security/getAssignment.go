@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,8 +39,6 @@ type LookupAssignmentResult struct {
 	AssignedComponent *AssignedComponentItemResponse `pulumi:"assignedComponent"`
 	// Standard item with key as applied to this standard assignment over the given scope
 	AssignedStandard *AssignedStandardItemResponse `pulumi:"assignedStandard"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// description of the standardAssignment
 	Description *string `pulumi:"description"`
 	// display name of the standardAssignment
@@ -119,11 +117,6 @@ func (o LookupAssignmentResultOutput) AssignedComponent() AssignedComponentItemR
 // Standard item with key as applied to this standard assignment over the given scope
 func (o LookupAssignmentResultOutput) AssignedStandard() AssignedStandardItemResponsePtrOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) *AssignedStandardItemResponse { return v.AssignedStandard }).(AssignedStandardItemResponsePtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o LookupAssignmentResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAssignmentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // description of the standardAssignment

@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Obtains the details of a suppression.
 //
-// Uses Azure REST API version 2023-09-01-preview.
+// Uses Azure REST API version 2023-01-01.
 //
-// Other available API versions: 2023-01-01, 2024-11-18-preview, 2025-01-01, 2025-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native advisor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-09-01-preview, 2025-01-01.
 func LookupSuppression(ctx *pulumi.Context, args *LookupSuppressionArgs, opts ...pulumi.InvokeOption) (*LookupSuppressionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSuppressionResult
@@ -37,8 +37,6 @@ type LookupSuppressionArgs struct {
 
 // The details of the snoozed or dismissed rule; for example, the duration, name, and GUID associated with the rule.
 type LookupSuppressionResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets or sets the expiration time stamp.
 	ExpirationTimeStamp string `pulumi:"expirationTimeStamp"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -90,11 +88,6 @@ func (o LookupSuppressionResultOutput) ToLookupSuppressionResultOutput() LookupS
 
 func (o LookupSuppressionResultOutput) ToLookupSuppressionResultOutputWithContext(ctx context.Context) LookupSuppressionResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupSuppressionResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSuppressionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the expiration time stamp.

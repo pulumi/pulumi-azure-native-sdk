@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Description for Get a certificate order.
 //
-// Uses Azure REST API version 2024-04-01.
+// Uses Azure REST API version 2022-09-01.
 //
-// Other available API versions: 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native certificateregistration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
 func LookupAppServiceCertificateOrder(ctx *pulumi.Context, args *LookupAppServiceCertificateOrderArgs, opts ...pulumi.InvokeOption) (*LookupAppServiceCertificateOrderResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAppServiceCertificateOrderResult
@@ -39,8 +39,6 @@ type LookupAppServiceCertificateOrderResult struct {
 	AppServiceCertificateNotRenewableReasons []string `pulumi:"appServiceCertificateNotRenewableReasons"`
 	// <code>true</code> if the certificate should be automatically renewed when it expires; otherwise, <code>false</code>.
 	AutoRenew *bool `pulumi:"autoRenew"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// State of the Key Vault secret.
 	Certificates map[string]AppServiceCertificateResponse `pulumi:"certificates"`
 	// Contact info
@@ -61,7 +59,7 @@ type LookupAppServiceCertificateOrderResult struct {
 	IsPrivateKeyExternal bool `pulumi:"isPrivateKeyExternal"`
 	// Certificate key size.
 	KeySize *int `pulumi:"keySize"`
-	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
+	// Kind of resource.
 	Kind *string `pulumi:"kind"`
 	// Certificate last issuance time.
 	LastCertificateIssuanceTime string `pulumi:"lastCertificateIssuanceTime"`
@@ -158,11 +156,6 @@ func (o LookupAppServiceCertificateOrderResultOutput) AutoRenew() pulumi.BoolPtr
 	return o.ApplyT(func(v LookupAppServiceCertificateOrderResult) *bool { return v.AutoRenew }).(pulumi.BoolPtrOutput)
 }
 
-// The Azure API version of the resource.
-func (o LookupAppServiceCertificateOrderResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAppServiceCertificateOrderResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // State of the Key Vault secret.
 func (o LookupAppServiceCertificateOrderResultOutput) Certificates() AppServiceCertificateResponseMapOutput {
 	return o.ApplyT(func(v LookupAppServiceCertificateOrderResult) map[string]AppServiceCertificateResponse {
@@ -215,7 +208,7 @@ func (o LookupAppServiceCertificateOrderResultOutput) KeySize() pulumi.IntPtrOut
 	return o.ApplyT(func(v LookupAppServiceCertificateOrderResult) *int { return v.KeySize }).(pulumi.IntPtrOutput)
 }
 
-// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
+// Kind of resource.
 func (o LookupAppServiceCertificateOrderResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAppServiceCertificateOrderResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }

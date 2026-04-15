@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a database's security alert policy.
 //
-// Uses Azure REST API version 2023-08-01.
+// Uses Azure REST API version 2021-11-01.
 //
-// Other available API versions: 2018-06-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2018-06-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01, 2023-08-01-preview, 2024-05-01-preview.
 func LookupDatabaseSecurityAlertPolicy(ctx *pulumi.Context, args *LookupDatabaseSecurityAlertPolicyArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseSecurityAlertPolicyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDatabaseSecurityAlertPolicyResult
@@ -39,8 +39,6 @@ type LookupDatabaseSecurityAlertPolicyArgs struct {
 
 // A database security alert policy.
 type LookupDatabaseSecurityAlertPolicyResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Specifies the UTC creation time of the policy.
 	CreationTime string `pulumi:"creationTime"`
 	// Specifies an array of alerts that are disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration, Unsafe_Action, Brute_Force
@@ -104,11 +102,6 @@ func (o LookupDatabaseSecurityAlertPolicyResultOutput) ToLookupDatabaseSecurityA
 
 func (o LookupDatabaseSecurityAlertPolicyResultOutput) ToLookupDatabaseSecurityAlertPolicyResultOutputWithContext(ctx context.Context) LookupDatabaseSecurityAlertPolicyResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupDatabaseSecurityAlertPolicyResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDatabaseSecurityAlertPolicyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Specifies the UTC creation time of the policy.

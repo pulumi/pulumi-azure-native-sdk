@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,8 +33,6 @@ type LookupLinkedSubscriptionArgs struct {
 
 // Linked Subscription information.
 type LookupLinkedSubscriptionResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The status of the remote management connection of the Azure Stack device.
 	DeviceConnectionStatus string `pulumi:"deviceConnectionStatus"`
 	// The identifier of the Azure Stack device for remote management.
@@ -100,11 +98,6 @@ func (o LookupLinkedSubscriptionResultOutput) ToLookupLinkedSubscriptionResultOu
 
 func (o LookupLinkedSubscriptionResultOutput) ToLookupLinkedSubscriptionResultOutputWithContext(ctx context.Context) LookupLinkedSubscriptionResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupLinkedSubscriptionResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupLinkedSubscriptionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The status of the remote management connection of the Azure Stack device.

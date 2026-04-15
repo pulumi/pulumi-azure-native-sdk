@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an existing attestation at resource group scope.
 //
-// Uses Azure REST API version 2024-10-01.
+// Uses Azure REST API version 2022-09-01.
 //
-// Other available API versions: 2022-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native policyinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-10-01.
 func LookupAttestationAtResourceGroup(ctx *pulumi.Context, args *LookupAttestationAtResourceGroupArgs, opts ...pulumi.InvokeOption) (*LookupAttestationAtResourceGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAttestationAtResourceGroupResult
@@ -37,8 +37,6 @@ type LookupAttestationAtResourceGroupArgs struct {
 type LookupAttestationAtResourceGroupResult struct {
 	// The time the evidence was assessed
 	AssessmentDate *string `pulumi:"assessmentDate"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Comments describing why this attestation was created.
 	Comments *string `pulumi:"comments"`
 	// The compliance state that should be set on the resource.
@@ -107,11 +105,6 @@ func (o LookupAttestationAtResourceGroupResultOutput) ToLookupAttestationAtResou
 // The time the evidence was assessed
 func (o LookupAttestationAtResourceGroupResultOutput) AssessmentDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAttestationAtResourceGroupResult) *string { return v.AssessmentDate }).(pulumi.StringPtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o LookupAttestationAtResourceGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAttestationAtResourceGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Comments describing why this attestation was created.

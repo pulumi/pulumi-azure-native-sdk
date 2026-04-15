@@ -7,15 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get an alert processing rule by name.
 //
 // Uses Azure REST API version 2021-08-08.
-//
-// Other available API versions: 2021-08-08-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native alertsmanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupAlertProcessingRuleByName(ctx *pulumi.Context, args *LookupAlertProcessingRuleByNameArgs, opts ...pulumi.InvokeOption) (*LookupAlertProcessingRuleByNameResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAlertProcessingRuleByNameResult
@@ -29,27 +27,25 @@ func LookupAlertProcessingRuleByName(ctx *pulumi.Context, args *LookupAlertProce
 type LookupAlertProcessingRuleByNameArgs struct {
 	// The name of the alert processing rule that needs to be fetched.
 	AlertProcessingRuleName string `pulumi:"alertProcessingRuleName"`
-	// The name of the resource group. The name is case insensitive.
+	// Resource group name where the resource is created.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Alert processing rule object containing target scopes, conditions and scheduling logic.
 type LookupAlertProcessingRuleByNameResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Azure resource Id
 	Id string `pulumi:"id"`
-	// The geo-location where the resource lives
+	// Resource location
 	Location string `pulumi:"location"`
-	// The name of the resource
+	// Azure resource name
 	Name string `pulumi:"name"`
 	// Alert processing rule properties.
 	Properties AlertProcessingRulePropertiesResponse `pulumi:"properties"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	// Alert processing rule system data.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// Resource tags.
+	// Resource tags
 	Tags map[string]string `pulumi:"tags"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// Azure resource type
 	Type string `pulumi:"type"`
 }
 
@@ -75,7 +71,7 @@ func LookupAlertProcessingRuleByNameOutput(ctx *pulumi.Context, args LookupAlert
 type LookupAlertProcessingRuleByNameOutputArgs struct {
 	// The name of the alert processing rule that needs to be fetched.
 	AlertProcessingRuleName pulumi.StringInput `pulumi:"alertProcessingRuleName"`
-	// The name of the resource group. The name is case insensitive.
+	// Resource group name where the resource is created.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -98,22 +94,17 @@ func (o LookupAlertProcessingRuleByNameResultOutput) ToLookupAlertProcessingRule
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupAlertProcessingRuleByNameResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAlertProcessingRuleByNameResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Azure resource Id
 func (o LookupAlertProcessingRuleByNameResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlertProcessingRuleByNameResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The geo-location where the resource lives
+// Resource location
 func (o LookupAlertProcessingRuleByNameResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlertProcessingRuleByNameResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// The name of the resource
+// Azure resource name
 func (o LookupAlertProcessingRuleByNameResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlertProcessingRuleByNameResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -125,17 +116,17 @@ func (o LookupAlertProcessingRuleByNameResultOutput) Properties() AlertProcessin
 	}).(AlertProcessingRulePropertiesResponseOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+// Alert processing rule system data.
 func (o LookupAlertProcessingRuleByNameResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupAlertProcessingRuleByNameResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Resource tags.
+// Resource tags
 func (o LookupAlertProcessingRuleByNameResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupAlertProcessingRuleByNameResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// Azure resource type
 func (o LookupAlertProcessingRuleByNameResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlertProcessingRuleByNameResult) string { return v.Type }).(pulumi.StringOutput)
 }

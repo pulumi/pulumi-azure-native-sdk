@@ -7,254 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 var _ = utilities.GetEnvOrDefault
-
-// The stand-by agent scheme is determined based on historical demand.
-type AutomaticResourcePredictionsProfile struct {
-	// Determines how the stand-by scheme should be provided.
-	// Expected value is 'Automatic'.
-	Kind string `pulumi:"kind"`
-	// Determines the balance between cost and performance.
-	PredictionPreference *string `pulumi:"predictionPreference"`
-}
-
-// AutomaticResourcePredictionsProfileInput is an input type that accepts AutomaticResourcePredictionsProfileArgs and AutomaticResourcePredictionsProfileOutput values.
-// You can construct a concrete instance of `AutomaticResourcePredictionsProfileInput` via:
-//
-//	AutomaticResourcePredictionsProfileArgs{...}
-type AutomaticResourcePredictionsProfileInput interface {
-	pulumi.Input
-
-	ToAutomaticResourcePredictionsProfileOutput() AutomaticResourcePredictionsProfileOutput
-	ToAutomaticResourcePredictionsProfileOutputWithContext(context.Context) AutomaticResourcePredictionsProfileOutput
-}
-
-// The stand-by agent scheme is determined based on historical demand.
-type AutomaticResourcePredictionsProfileArgs struct {
-	// Determines how the stand-by scheme should be provided.
-	// Expected value is 'Automatic'.
-	Kind pulumi.StringInput `pulumi:"kind"`
-	// Determines the balance between cost and performance.
-	PredictionPreference pulumi.StringPtrInput `pulumi:"predictionPreference"`
-}
-
-func (AutomaticResourcePredictionsProfileArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AutomaticResourcePredictionsProfile)(nil)).Elem()
-}
-
-func (i AutomaticResourcePredictionsProfileArgs) ToAutomaticResourcePredictionsProfileOutput() AutomaticResourcePredictionsProfileOutput {
-	return i.ToAutomaticResourcePredictionsProfileOutputWithContext(context.Background())
-}
-
-func (i AutomaticResourcePredictionsProfileArgs) ToAutomaticResourcePredictionsProfileOutputWithContext(ctx context.Context) AutomaticResourcePredictionsProfileOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AutomaticResourcePredictionsProfileOutput)
-}
-
-func (i AutomaticResourcePredictionsProfileArgs) ToAutomaticResourcePredictionsProfilePtrOutput() AutomaticResourcePredictionsProfilePtrOutput {
-	return i.ToAutomaticResourcePredictionsProfilePtrOutputWithContext(context.Background())
-}
-
-func (i AutomaticResourcePredictionsProfileArgs) ToAutomaticResourcePredictionsProfilePtrOutputWithContext(ctx context.Context) AutomaticResourcePredictionsProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AutomaticResourcePredictionsProfileOutput).ToAutomaticResourcePredictionsProfilePtrOutputWithContext(ctx)
-}
-
-// AutomaticResourcePredictionsProfilePtrInput is an input type that accepts AutomaticResourcePredictionsProfileArgs, AutomaticResourcePredictionsProfilePtr and AutomaticResourcePredictionsProfilePtrOutput values.
-// You can construct a concrete instance of `AutomaticResourcePredictionsProfilePtrInput` via:
-//
-//	        AutomaticResourcePredictionsProfileArgs{...}
-//
-//	or:
-//
-//	        nil
-type AutomaticResourcePredictionsProfilePtrInput interface {
-	pulumi.Input
-
-	ToAutomaticResourcePredictionsProfilePtrOutput() AutomaticResourcePredictionsProfilePtrOutput
-	ToAutomaticResourcePredictionsProfilePtrOutputWithContext(context.Context) AutomaticResourcePredictionsProfilePtrOutput
-}
-
-type automaticResourcePredictionsProfilePtrType AutomaticResourcePredictionsProfileArgs
-
-func AutomaticResourcePredictionsProfilePtr(v *AutomaticResourcePredictionsProfileArgs) AutomaticResourcePredictionsProfilePtrInput {
-	return (*automaticResourcePredictionsProfilePtrType)(v)
-}
-
-func (*automaticResourcePredictionsProfilePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AutomaticResourcePredictionsProfile)(nil)).Elem()
-}
-
-func (i *automaticResourcePredictionsProfilePtrType) ToAutomaticResourcePredictionsProfilePtrOutput() AutomaticResourcePredictionsProfilePtrOutput {
-	return i.ToAutomaticResourcePredictionsProfilePtrOutputWithContext(context.Background())
-}
-
-func (i *automaticResourcePredictionsProfilePtrType) ToAutomaticResourcePredictionsProfilePtrOutputWithContext(ctx context.Context) AutomaticResourcePredictionsProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AutomaticResourcePredictionsProfilePtrOutput)
-}
-
-// The stand-by agent scheme is determined based on historical demand.
-type AutomaticResourcePredictionsProfileOutput struct{ *pulumi.OutputState }
-
-func (AutomaticResourcePredictionsProfileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AutomaticResourcePredictionsProfile)(nil)).Elem()
-}
-
-func (o AutomaticResourcePredictionsProfileOutput) ToAutomaticResourcePredictionsProfileOutput() AutomaticResourcePredictionsProfileOutput {
-	return o
-}
-
-func (o AutomaticResourcePredictionsProfileOutput) ToAutomaticResourcePredictionsProfileOutputWithContext(ctx context.Context) AutomaticResourcePredictionsProfileOutput {
-	return o
-}
-
-func (o AutomaticResourcePredictionsProfileOutput) ToAutomaticResourcePredictionsProfilePtrOutput() AutomaticResourcePredictionsProfilePtrOutput {
-	return o.ToAutomaticResourcePredictionsProfilePtrOutputWithContext(context.Background())
-}
-
-func (o AutomaticResourcePredictionsProfileOutput) ToAutomaticResourcePredictionsProfilePtrOutputWithContext(ctx context.Context) AutomaticResourcePredictionsProfilePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutomaticResourcePredictionsProfile) *AutomaticResourcePredictionsProfile {
-		return &v
-	}).(AutomaticResourcePredictionsProfilePtrOutput)
-}
-
-// Determines how the stand-by scheme should be provided.
-// Expected value is 'Automatic'.
-func (o AutomaticResourcePredictionsProfileOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v AutomaticResourcePredictionsProfile) string { return v.Kind }).(pulumi.StringOutput)
-}
-
-// Determines the balance between cost and performance.
-func (o AutomaticResourcePredictionsProfileOutput) PredictionPreference() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AutomaticResourcePredictionsProfile) *string { return v.PredictionPreference }).(pulumi.StringPtrOutput)
-}
-
-type AutomaticResourcePredictionsProfilePtrOutput struct{ *pulumi.OutputState }
-
-func (AutomaticResourcePredictionsProfilePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AutomaticResourcePredictionsProfile)(nil)).Elem()
-}
-
-func (o AutomaticResourcePredictionsProfilePtrOutput) ToAutomaticResourcePredictionsProfilePtrOutput() AutomaticResourcePredictionsProfilePtrOutput {
-	return o
-}
-
-func (o AutomaticResourcePredictionsProfilePtrOutput) ToAutomaticResourcePredictionsProfilePtrOutputWithContext(ctx context.Context) AutomaticResourcePredictionsProfilePtrOutput {
-	return o
-}
-
-func (o AutomaticResourcePredictionsProfilePtrOutput) Elem() AutomaticResourcePredictionsProfileOutput {
-	return o.ApplyT(func(v *AutomaticResourcePredictionsProfile) AutomaticResourcePredictionsProfile {
-		if v != nil {
-			return *v
-		}
-		var ret AutomaticResourcePredictionsProfile
-		return ret
-	}).(AutomaticResourcePredictionsProfileOutput)
-}
-
-// Determines how the stand-by scheme should be provided.
-// Expected value is 'Automatic'.
-func (o AutomaticResourcePredictionsProfilePtrOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AutomaticResourcePredictionsProfile) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Kind
-	}).(pulumi.StringPtrOutput)
-}
-
-// Determines the balance between cost and performance.
-func (o AutomaticResourcePredictionsProfilePtrOutput) PredictionPreference() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AutomaticResourcePredictionsProfile) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PredictionPreference
-	}).(pulumi.StringPtrOutput)
-}
-
-// The stand-by agent scheme is determined based on historical demand.
-type AutomaticResourcePredictionsProfileResponse struct {
-	// Determines how the stand-by scheme should be provided.
-	// Expected value is 'Automatic'.
-	Kind string `pulumi:"kind"`
-	// Determines the balance between cost and performance.
-	PredictionPreference *string `pulumi:"predictionPreference"`
-}
-
-// The stand-by agent scheme is determined based on historical demand.
-type AutomaticResourcePredictionsProfileResponseOutput struct{ *pulumi.OutputState }
-
-func (AutomaticResourcePredictionsProfileResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AutomaticResourcePredictionsProfileResponse)(nil)).Elem()
-}
-
-func (o AutomaticResourcePredictionsProfileResponseOutput) ToAutomaticResourcePredictionsProfileResponseOutput() AutomaticResourcePredictionsProfileResponseOutput {
-	return o
-}
-
-func (o AutomaticResourcePredictionsProfileResponseOutput) ToAutomaticResourcePredictionsProfileResponseOutputWithContext(ctx context.Context) AutomaticResourcePredictionsProfileResponseOutput {
-	return o
-}
-
-// Determines how the stand-by scheme should be provided.
-// Expected value is 'Automatic'.
-func (o AutomaticResourcePredictionsProfileResponseOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v AutomaticResourcePredictionsProfileResponse) string { return v.Kind }).(pulumi.StringOutput)
-}
-
-// Determines the balance between cost and performance.
-func (o AutomaticResourcePredictionsProfileResponseOutput) PredictionPreference() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AutomaticResourcePredictionsProfileResponse) *string { return v.PredictionPreference }).(pulumi.StringPtrOutput)
-}
-
-type AutomaticResourcePredictionsProfileResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (AutomaticResourcePredictionsProfileResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AutomaticResourcePredictionsProfileResponse)(nil)).Elem()
-}
-
-func (o AutomaticResourcePredictionsProfileResponsePtrOutput) ToAutomaticResourcePredictionsProfileResponsePtrOutput() AutomaticResourcePredictionsProfileResponsePtrOutput {
-	return o
-}
-
-func (o AutomaticResourcePredictionsProfileResponsePtrOutput) ToAutomaticResourcePredictionsProfileResponsePtrOutputWithContext(ctx context.Context) AutomaticResourcePredictionsProfileResponsePtrOutput {
-	return o
-}
-
-func (o AutomaticResourcePredictionsProfileResponsePtrOutput) Elem() AutomaticResourcePredictionsProfileResponseOutput {
-	return o.ApplyT(func(v *AutomaticResourcePredictionsProfileResponse) AutomaticResourcePredictionsProfileResponse {
-		if v != nil {
-			return *v
-		}
-		var ret AutomaticResourcePredictionsProfileResponse
-		return ret
-	}).(AutomaticResourcePredictionsProfileResponseOutput)
-}
-
-// Determines how the stand-by scheme should be provided.
-// Expected value is 'Automatic'.
-func (o AutomaticResourcePredictionsProfileResponsePtrOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AutomaticResourcePredictionsProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Kind
-	}).(pulumi.StringPtrOutput)
-}
-
-// Determines the balance between cost and performance.
-func (o AutomaticResourcePredictionsProfileResponsePtrOutput) PredictionPreference() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AutomaticResourcePredictionsProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PredictionPreference
-	}).(pulumi.StringPtrOutput)
-}
 
 // Azure DevOps organization profile
 type AzureDevOpsOrganizationProfile struct {
@@ -263,8 +20,6 @@ type AzureDevOpsOrganizationProfile struct {
 	Kind string `pulumi:"kind"`
 	// The list of Azure DevOps organizations the pool should be present in.
 	Organizations []Organization `pulumi:"organizations"`
-	// The type of permission which determines which accounts are admins on the Azure DevOps pool.
-	PermissionProfile *AzureDevOpsPermissionProfile `pulumi:"permissionProfile"`
 }
 
 // AzureDevOpsOrganizationProfileInput is an input type that accepts AzureDevOpsOrganizationProfileArgs and AzureDevOpsOrganizationProfileOutput values.
@@ -285,8 +40,6 @@ type AzureDevOpsOrganizationProfileArgs struct {
 	Kind pulumi.StringInput `pulumi:"kind"`
 	// The list of Azure DevOps organizations the pool should be present in.
 	Organizations OrganizationArrayInput `pulumi:"organizations"`
-	// The type of permission which determines which accounts are admins on the Azure DevOps pool.
-	PermissionProfile AzureDevOpsPermissionProfilePtrInput `pulumi:"permissionProfile"`
 }
 
 func (AzureDevOpsOrganizationProfileArgs) ElementType() reflect.Type {
@@ -327,11 +80,6 @@ func (o AzureDevOpsOrganizationProfileOutput) Organizations() OrganizationArrayO
 	return o.ApplyT(func(v AzureDevOpsOrganizationProfile) []Organization { return v.Organizations }).(OrganizationArrayOutput)
 }
 
-// The type of permission which determines which accounts are admins on the Azure DevOps pool.
-func (o AzureDevOpsOrganizationProfileOutput) PermissionProfile() AzureDevOpsPermissionProfilePtrOutput {
-	return o.ApplyT(func(v AzureDevOpsOrganizationProfile) *AzureDevOpsPermissionProfile { return v.PermissionProfile }).(AzureDevOpsPermissionProfilePtrOutput)
-}
-
 // Azure DevOps organization profile
 type AzureDevOpsOrganizationProfileResponse struct {
 	// Discriminator property for OrganizationProfile.
@@ -339,8 +87,6 @@ type AzureDevOpsOrganizationProfileResponse struct {
 	Kind string `pulumi:"kind"`
 	// The list of Azure DevOps organizations the pool should be present in.
 	Organizations []OrganizationResponse `pulumi:"organizations"`
-	// The type of permission which determines which accounts are admins on the Azure DevOps pool.
-	PermissionProfile *AzureDevOpsPermissionProfileResponse `pulumi:"permissionProfile"`
 }
 
 // Azure DevOps organization profile
@@ -369,483 +115,25 @@ func (o AzureDevOpsOrganizationProfileResponseOutput) Organizations() Organizati
 	return o.ApplyT(func(v AzureDevOpsOrganizationProfileResponse) []OrganizationResponse { return v.Organizations }).(OrganizationResponseArrayOutput)
 }
 
-// The type of permission which determines which accounts are admins on the Azure DevOps pool.
-func (o AzureDevOpsOrganizationProfileResponseOutput) PermissionProfile() AzureDevOpsPermissionProfileResponsePtrOutput {
-	return o.ApplyT(func(v AzureDevOpsOrganizationProfileResponse) *AzureDevOpsPermissionProfileResponse {
-		return v.PermissionProfile
-	}).(AzureDevOpsPermissionProfileResponsePtrOutput)
-}
-
-// Defines the type of Azure DevOps pool permission.
-type AzureDevOpsPermissionProfile struct {
-	// Group email addresses
-	Groups []string `pulumi:"groups"`
-	// Determines who has admin permissions to the Azure DevOps pool.
-	Kind string `pulumi:"kind"`
-	// User email addresses
-	Users []string `pulumi:"users"`
-}
-
-// AzureDevOpsPermissionProfileInput is an input type that accepts AzureDevOpsPermissionProfileArgs and AzureDevOpsPermissionProfileOutput values.
-// You can construct a concrete instance of `AzureDevOpsPermissionProfileInput` via:
-//
-//	AzureDevOpsPermissionProfileArgs{...}
-type AzureDevOpsPermissionProfileInput interface {
-	pulumi.Input
-
-	ToAzureDevOpsPermissionProfileOutput() AzureDevOpsPermissionProfileOutput
-	ToAzureDevOpsPermissionProfileOutputWithContext(context.Context) AzureDevOpsPermissionProfileOutput
-}
-
-// Defines the type of Azure DevOps pool permission.
-type AzureDevOpsPermissionProfileArgs struct {
-	// Group email addresses
-	Groups pulumi.StringArrayInput `pulumi:"groups"`
-	// Determines who has admin permissions to the Azure DevOps pool.
-	Kind pulumi.StringInput `pulumi:"kind"`
-	// User email addresses
-	Users pulumi.StringArrayInput `pulumi:"users"`
-}
-
-func (AzureDevOpsPermissionProfileArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AzureDevOpsPermissionProfile)(nil)).Elem()
-}
-
-func (i AzureDevOpsPermissionProfileArgs) ToAzureDevOpsPermissionProfileOutput() AzureDevOpsPermissionProfileOutput {
-	return i.ToAzureDevOpsPermissionProfileOutputWithContext(context.Background())
-}
-
-func (i AzureDevOpsPermissionProfileArgs) ToAzureDevOpsPermissionProfileOutputWithContext(ctx context.Context) AzureDevOpsPermissionProfileOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AzureDevOpsPermissionProfileOutput)
-}
-
-func (i AzureDevOpsPermissionProfileArgs) ToAzureDevOpsPermissionProfilePtrOutput() AzureDevOpsPermissionProfilePtrOutput {
-	return i.ToAzureDevOpsPermissionProfilePtrOutputWithContext(context.Background())
-}
-
-func (i AzureDevOpsPermissionProfileArgs) ToAzureDevOpsPermissionProfilePtrOutputWithContext(ctx context.Context) AzureDevOpsPermissionProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AzureDevOpsPermissionProfileOutput).ToAzureDevOpsPermissionProfilePtrOutputWithContext(ctx)
-}
-
-// AzureDevOpsPermissionProfilePtrInput is an input type that accepts AzureDevOpsPermissionProfileArgs, AzureDevOpsPermissionProfilePtr and AzureDevOpsPermissionProfilePtrOutput values.
-// You can construct a concrete instance of `AzureDevOpsPermissionProfilePtrInput` via:
-//
-//	        AzureDevOpsPermissionProfileArgs{...}
-//
-//	or:
-//
-//	        nil
-type AzureDevOpsPermissionProfilePtrInput interface {
-	pulumi.Input
-
-	ToAzureDevOpsPermissionProfilePtrOutput() AzureDevOpsPermissionProfilePtrOutput
-	ToAzureDevOpsPermissionProfilePtrOutputWithContext(context.Context) AzureDevOpsPermissionProfilePtrOutput
-}
-
-type azureDevOpsPermissionProfilePtrType AzureDevOpsPermissionProfileArgs
-
-func AzureDevOpsPermissionProfilePtr(v *AzureDevOpsPermissionProfileArgs) AzureDevOpsPermissionProfilePtrInput {
-	return (*azureDevOpsPermissionProfilePtrType)(v)
-}
-
-func (*azureDevOpsPermissionProfilePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AzureDevOpsPermissionProfile)(nil)).Elem()
-}
-
-func (i *azureDevOpsPermissionProfilePtrType) ToAzureDevOpsPermissionProfilePtrOutput() AzureDevOpsPermissionProfilePtrOutput {
-	return i.ToAzureDevOpsPermissionProfilePtrOutputWithContext(context.Background())
-}
-
-func (i *azureDevOpsPermissionProfilePtrType) ToAzureDevOpsPermissionProfilePtrOutputWithContext(ctx context.Context) AzureDevOpsPermissionProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AzureDevOpsPermissionProfilePtrOutput)
-}
-
-// Defines the type of Azure DevOps pool permission.
-type AzureDevOpsPermissionProfileOutput struct{ *pulumi.OutputState }
-
-func (AzureDevOpsPermissionProfileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AzureDevOpsPermissionProfile)(nil)).Elem()
-}
-
-func (o AzureDevOpsPermissionProfileOutput) ToAzureDevOpsPermissionProfileOutput() AzureDevOpsPermissionProfileOutput {
-	return o
-}
-
-func (o AzureDevOpsPermissionProfileOutput) ToAzureDevOpsPermissionProfileOutputWithContext(ctx context.Context) AzureDevOpsPermissionProfileOutput {
-	return o
-}
-
-func (o AzureDevOpsPermissionProfileOutput) ToAzureDevOpsPermissionProfilePtrOutput() AzureDevOpsPermissionProfilePtrOutput {
-	return o.ToAzureDevOpsPermissionProfilePtrOutputWithContext(context.Background())
-}
-
-func (o AzureDevOpsPermissionProfileOutput) ToAzureDevOpsPermissionProfilePtrOutputWithContext(ctx context.Context) AzureDevOpsPermissionProfilePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureDevOpsPermissionProfile) *AzureDevOpsPermissionProfile {
-		return &v
-	}).(AzureDevOpsPermissionProfilePtrOutput)
-}
-
-// Group email addresses
-func (o AzureDevOpsPermissionProfileOutput) Groups() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v AzureDevOpsPermissionProfile) []string { return v.Groups }).(pulumi.StringArrayOutput)
-}
-
-// Determines who has admin permissions to the Azure DevOps pool.
-func (o AzureDevOpsPermissionProfileOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v AzureDevOpsPermissionProfile) string { return v.Kind }).(pulumi.StringOutput)
-}
-
-// User email addresses
-func (o AzureDevOpsPermissionProfileOutput) Users() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v AzureDevOpsPermissionProfile) []string { return v.Users }).(pulumi.StringArrayOutput)
-}
-
-type AzureDevOpsPermissionProfilePtrOutput struct{ *pulumi.OutputState }
-
-func (AzureDevOpsPermissionProfilePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AzureDevOpsPermissionProfile)(nil)).Elem()
-}
-
-func (o AzureDevOpsPermissionProfilePtrOutput) ToAzureDevOpsPermissionProfilePtrOutput() AzureDevOpsPermissionProfilePtrOutput {
-	return o
-}
-
-func (o AzureDevOpsPermissionProfilePtrOutput) ToAzureDevOpsPermissionProfilePtrOutputWithContext(ctx context.Context) AzureDevOpsPermissionProfilePtrOutput {
-	return o
-}
-
-func (o AzureDevOpsPermissionProfilePtrOutput) Elem() AzureDevOpsPermissionProfileOutput {
-	return o.ApplyT(func(v *AzureDevOpsPermissionProfile) AzureDevOpsPermissionProfile {
-		if v != nil {
-			return *v
-		}
-		var ret AzureDevOpsPermissionProfile
-		return ret
-	}).(AzureDevOpsPermissionProfileOutput)
-}
-
-// Group email addresses
-func (o AzureDevOpsPermissionProfilePtrOutput) Groups() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *AzureDevOpsPermissionProfile) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Groups
-	}).(pulumi.StringArrayOutput)
-}
-
-// Determines who has admin permissions to the Azure DevOps pool.
-func (o AzureDevOpsPermissionProfilePtrOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AzureDevOpsPermissionProfile) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Kind
-	}).(pulumi.StringPtrOutput)
-}
-
-// User email addresses
-func (o AzureDevOpsPermissionProfilePtrOutput) Users() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *AzureDevOpsPermissionProfile) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Users
-	}).(pulumi.StringArrayOutput)
-}
-
-// Defines the type of Azure DevOps pool permission.
-type AzureDevOpsPermissionProfileResponse struct {
-	// Group email addresses
-	Groups []string `pulumi:"groups"`
-	// Determines who has admin permissions to the Azure DevOps pool.
-	Kind string `pulumi:"kind"`
-	// User email addresses
-	Users []string `pulumi:"users"`
-}
-
-// Defines the type of Azure DevOps pool permission.
-type AzureDevOpsPermissionProfileResponseOutput struct{ *pulumi.OutputState }
-
-func (AzureDevOpsPermissionProfileResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AzureDevOpsPermissionProfileResponse)(nil)).Elem()
-}
-
-func (o AzureDevOpsPermissionProfileResponseOutput) ToAzureDevOpsPermissionProfileResponseOutput() AzureDevOpsPermissionProfileResponseOutput {
-	return o
-}
-
-func (o AzureDevOpsPermissionProfileResponseOutput) ToAzureDevOpsPermissionProfileResponseOutputWithContext(ctx context.Context) AzureDevOpsPermissionProfileResponseOutput {
-	return o
-}
-
-// Group email addresses
-func (o AzureDevOpsPermissionProfileResponseOutput) Groups() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v AzureDevOpsPermissionProfileResponse) []string { return v.Groups }).(pulumi.StringArrayOutput)
-}
-
-// Determines who has admin permissions to the Azure DevOps pool.
-func (o AzureDevOpsPermissionProfileResponseOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v AzureDevOpsPermissionProfileResponse) string { return v.Kind }).(pulumi.StringOutput)
-}
-
-// User email addresses
-func (o AzureDevOpsPermissionProfileResponseOutput) Users() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v AzureDevOpsPermissionProfileResponse) []string { return v.Users }).(pulumi.StringArrayOutput)
-}
-
-type AzureDevOpsPermissionProfileResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (AzureDevOpsPermissionProfileResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AzureDevOpsPermissionProfileResponse)(nil)).Elem()
-}
-
-func (o AzureDevOpsPermissionProfileResponsePtrOutput) ToAzureDevOpsPermissionProfileResponsePtrOutput() AzureDevOpsPermissionProfileResponsePtrOutput {
-	return o
-}
-
-func (o AzureDevOpsPermissionProfileResponsePtrOutput) ToAzureDevOpsPermissionProfileResponsePtrOutputWithContext(ctx context.Context) AzureDevOpsPermissionProfileResponsePtrOutput {
-	return o
-}
-
-func (o AzureDevOpsPermissionProfileResponsePtrOutput) Elem() AzureDevOpsPermissionProfileResponseOutput {
-	return o.ApplyT(func(v *AzureDevOpsPermissionProfileResponse) AzureDevOpsPermissionProfileResponse {
-		if v != nil {
-			return *v
-		}
-		var ret AzureDevOpsPermissionProfileResponse
-		return ret
-	}).(AzureDevOpsPermissionProfileResponseOutput)
-}
-
-// Group email addresses
-func (o AzureDevOpsPermissionProfileResponsePtrOutput) Groups() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *AzureDevOpsPermissionProfileResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Groups
-	}).(pulumi.StringArrayOutput)
-}
-
-// Determines who has admin permissions to the Azure DevOps pool.
-func (o AzureDevOpsPermissionProfileResponsePtrOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AzureDevOpsPermissionProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Kind
-	}).(pulumi.StringPtrOutput)
-}
-
-// User email addresses
-func (o AzureDevOpsPermissionProfileResponsePtrOutput) Users() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *AzureDevOpsPermissionProfileResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Users
-	}).(pulumi.StringArrayOutput)
-}
-
-// The data disk of the VMSS.
-type DataDisk struct {
-	// The type of caching to be enabled for the data disks. The default value for caching is readwrite. For information about the caching options see: https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
-	Caching *string `pulumi:"caching"`
-	// The initial disk size in gigabytes.
-	DiskSizeGiB *int `pulumi:"diskSizeGiB"`
-	// The drive letter for the empty data disk. If not specified, it will be the first available letter.
-	DriveLetter *string `pulumi:"driveLetter"`
-	// The storage Account type to be used for the data disk. If omitted, the default is "standard_lrs".
-	StorageAccountType *string `pulumi:"storageAccountType"`
-}
-
-// DataDiskInput is an input type that accepts DataDiskArgs and DataDiskOutput values.
-// You can construct a concrete instance of `DataDiskInput` via:
-//
-//	DataDiskArgs{...}
-type DataDiskInput interface {
-	pulumi.Input
-
-	ToDataDiskOutput() DataDiskOutput
-	ToDataDiskOutputWithContext(context.Context) DataDiskOutput
-}
-
-// The data disk of the VMSS.
-type DataDiskArgs struct {
-	// The type of caching to be enabled for the data disks. The default value for caching is readwrite. For information about the caching options see: https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
-	Caching pulumi.StringPtrInput `pulumi:"caching"`
-	// The initial disk size in gigabytes.
-	DiskSizeGiB pulumi.IntPtrInput `pulumi:"diskSizeGiB"`
-	// The drive letter for the empty data disk. If not specified, it will be the first available letter.
-	DriveLetter pulumi.StringPtrInput `pulumi:"driveLetter"`
-	// The storage Account type to be used for the data disk. If omitted, the default is "standard_lrs".
-	StorageAccountType pulumi.StringPtrInput `pulumi:"storageAccountType"`
-}
-
-func (DataDiskArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataDisk)(nil)).Elem()
-}
-
-func (i DataDiskArgs) ToDataDiskOutput() DataDiskOutput {
-	return i.ToDataDiskOutputWithContext(context.Background())
-}
-
-func (i DataDiskArgs) ToDataDiskOutputWithContext(ctx context.Context) DataDiskOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataDiskOutput)
-}
-
-// DataDiskArrayInput is an input type that accepts DataDiskArray and DataDiskArrayOutput values.
-// You can construct a concrete instance of `DataDiskArrayInput` via:
-//
-//	DataDiskArray{ DataDiskArgs{...} }
-type DataDiskArrayInput interface {
-	pulumi.Input
-
-	ToDataDiskArrayOutput() DataDiskArrayOutput
-	ToDataDiskArrayOutputWithContext(context.Context) DataDiskArrayOutput
-}
-
-type DataDiskArray []DataDiskInput
-
-func (DataDiskArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DataDisk)(nil)).Elem()
-}
-
-func (i DataDiskArray) ToDataDiskArrayOutput() DataDiskArrayOutput {
-	return i.ToDataDiskArrayOutputWithContext(context.Background())
-}
-
-func (i DataDiskArray) ToDataDiskArrayOutputWithContext(ctx context.Context) DataDiskArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataDiskArrayOutput)
-}
-
-// The data disk of the VMSS.
-type DataDiskOutput struct{ *pulumi.OutputState }
-
-func (DataDiskOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataDisk)(nil)).Elem()
-}
-
-func (o DataDiskOutput) ToDataDiskOutput() DataDiskOutput {
-	return o
-}
-
-func (o DataDiskOutput) ToDataDiskOutputWithContext(ctx context.Context) DataDiskOutput {
-	return o
-}
-
-// The type of caching to be enabled for the data disks. The default value for caching is readwrite. For information about the caching options see: https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
-func (o DataDiskOutput) Caching() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataDisk) *string { return v.Caching }).(pulumi.StringPtrOutput)
-}
-
-// The initial disk size in gigabytes.
-func (o DataDiskOutput) DiskSizeGiB() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DataDisk) *int { return v.DiskSizeGiB }).(pulumi.IntPtrOutput)
-}
-
-// The drive letter for the empty data disk. If not specified, it will be the first available letter.
-func (o DataDiskOutput) DriveLetter() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataDisk) *string { return v.DriveLetter }).(pulumi.StringPtrOutput)
-}
-
-// The storage Account type to be used for the data disk. If omitted, the default is "standard_lrs".
-func (o DataDiskOutput) StorageAccountType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataDisk) *string { return v.StorageAccountType }).(pulumi.StringPtrOutput)
-}
-
-type DataDiskArrayOutput struct{ *pulumi.OutputState }
-
-func (DataDiskArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DataDisk)(nil)).Elem()
-}
-
-func (o DataDiskArrayOutput) ToDataDiskArrayOutput() DataDiskArrayOutput {
-	return o
-}
-
-func (o DataDiskArrayOutput) ToDataDiskArrayOutputWithContext(ctx context.Context) DataDiskArrayOutput {
-	return o
-}
-
-func (o DataDiskArrayOutput) Index(i pulumi.IntInput) DataDiskOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataDisk {
-		return vs[0].([]DataDisk)[vs[1].(int)]
-	}).(DataDiskOutput)
-}
-
-// The data disk of the VMSS.
-type DataDiskResponse struct {
-	// The type of caching to be enabled for the data disks. The default value for caching is readwrite. For information about the caching options see: https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
-	Caching *string `pulumi:"caching"`
-	// The initial disk size in gigabytes.
-	DiskSizeGiB *int `pulumi:"diskSizeGiB"`
-	// The drive letter for the empty data disk. If not specified, it will be the first available letter.
-	DriveLetter *string `pulumi:"driveLetter"`
-	// The storage Account type to be used for the data disk. If omitted, the default is "standard_lrs".
-	StorageAccountType *string `pulumi:"storageAccountType"`
-}
-
-// The data disk of the VMSS.
-type DataDiskResponseOutput struct{ *pulumi.OutputState }
-
-func (DataDiskResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataDiskResponse)(nil)).Elem()
-}
-
-func (o DataDiskResponseOutput) ToDataDiskResponseOutput() DataDiskResponseOutput {
-	return o
-}
-
-func (o DataDiskResponseOutput) ToDataDiskResponseOutputWithContext(ctx context.Context) DataDiskResponseOutput {
-	return o
-}
-
-// The type of caching to be enabled for the data disks. The default value for caching is readwrite. For information about the caching options see: https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
-func (o DataDiskResponseOutput) Caching() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataDiskResponse) *string { return v.Caching }).(pulumi.StringPtrOutput)
-}
-
-// The initial disk size in gigabytes.
-func (o DataDiskResponseOutput) DiskSizeGiB() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DataDiskResponse) *int { return v.DiskSizeGiB }).(pulumi.IntPtrOutput)
-}
-
-// The drive letter for the empty data disk. If not specified, it will be the first available letter.
-func (o DataDiskResponseOutput) DriveLetter() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataDiskResponse) *string { return v.DriveLetter }).(pulumi.StringPtrOutput)
-}
-
-// The storage Account type to be used for the data disk. If omitted, the default is "standard_lrs".
-func (o DataDiskResponseOutput) StorageAccountType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataDiskResponse) *string { return v.StorageAccountType }).(pulumi.StringPtrOutput)
-}
-
-type DataDiskResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (DataDiskResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DataDiskResponse)(nil)).Elem()
-}
-
-func (o DataDiskResponseArrayOutput) ToDataDiskResponseArrayOutput() DataDiskResponseArrayOutput {
-	return o
-}
-
-func (o DataDiskResponseArrayOutput) ToDataDiskResponseArrayOutputWithContext(ctx context.Context) DataDiskResponseArrayOutput {
-	return o
-}
-
-func (o DataDiskResponseArrayOutput) Index(i pulumi.IntInput) DataDiskResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataDiskResponse {
-		return vs[0].([]DataDiskResponse)[vs[1].(int)]
-	}).(DataDiskResponseOutput)
-}
-
 // The Azure SKU of the machines in the pool.
 type DevOpsAzureSku struct {
 	// The Azure SKU name of the machines in the pool.
 	Name string `pulumi:"name"`
+	// The Azure SKU tier of the machines in the pool.
+	Tier *string `pulumi:"tier"`
+}
+
+// Defaults sets the appropriate defaults for DevOpsAzureSku
+func (val *DevOpsAzureSku) Defaults() *DevOpsAzureSku {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Tier == nil {
+		tier_ := "Standard"
+		tmp.Tier = &tier_
+	}
+	return &tmp
 }
 
 // DevOpsAzureSkuInput is an input type that accepts DevOpsAzureSkuArgs and DevOpsAzureSkuOutput values.
@@ -863,8 +151,21 @@ type DevOpsAzureSkuInput interface {
 type DevOpsAzureSkuArgs struct {
 	// The Azure SKU name of the machines in the pool.
 	Name pulumi.StringInput `pulumi:"name"`
+	// The Azure SKU tier of the machines in the pool.
+	Tier pulumi.StringPtrInput `pulumi:"tier"`
 }
 
+// Defaults sets the appropriate defaults for DevOpsAzureSkuArgs
+func (val *DevOpsAzureSkuArgs) Defaults() *DevOpsAzureSkuArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Tier == nil {
+		tmp.Tier = pulumi.StringPtr("Standard")
+	}
+	return &tmp
+}
 func (DevOpsAzureSkuArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*DevOpsAzureSku)(nil)).Elem()
 }
@@ -897,10 +198,30 @@ func (o DevOpsAzureSkuOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DevOpsAzureSku) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The Azure SKU tier of the machines in the pool.
+func (o DevOpsAzureSkuOutput) Tier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DevOpsAzureSku) *string { return v.Tier }).(pulumi.StringPtrOutput)
+}
+
 // The Azure SKU of the machines in the pool.
 type DevOpsAzureSkuResponse struct {
 	// The Azure SKU name of the machines in the pool.
 	Name string `pulumi:"name"`
+	// The Azure SKU tier of the machines in the pool.
+	Tier *string `pulumi:"tier"`
+}
+
+// Defaults sets the appropriate defaults for DevOpsAzureSkuResponse
+func (val *DevOpsAzureSkuResponse) Defaults() *DevOpsAzureSkuResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Tier == nil {
+		tier_ := "Standard"
+		tmp.Tier = &tier_
+	}
+	return &tmp
 }
 
 // The Azure SKU of the machines in the pool.
@@ -923,268 +244,9 @@ func (o DevOpsAzureSkuResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DevOpsAzureSkuResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Defines a GitHub organization
-type GitHubOrganization struct {
-	// Optional list of repositories in which the pool should be created.
-	Repositories []string `pulumi:"repositories"`
-	// The GitHub organization URL in which the pool should be created.
-	Url string `pulumi:"url"`
-}
-
-// GitHubOrganizationInput is an input type that accepts GitHubOrganizationArgs and GitHubOrganizationOutput values.
-// You can construct a concrete instance of `GitHubOrganizationInput` via:
-//
-//	GitHubOrganizationArgs{...}
-type GitHubOrganizationInput interface {
-	pulumi.Input
-
-	ToGitHubOrganizationOutput() GitHubOrganizationOutput
-	ToGitHubOrganizationOutputWithContext(context.Context) GitHubOrganizationOutput
-}
-
-// Defines a GitHub organization
-type GitHubOrganizationArgs struct {
-	// Optional list of repositories in which the pool should be created.
-	Repositories pulumi.StringArrayInput `pulumi:"repositories"`
-	// The GitHub organization URL in which the pool should be created.
-	Url pulumi.StringInput `pulumi:"url"`
-}
-
-func (GitHubOrganizationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitHubOrganization)(nil)).Elem()
-}
-
-func (i GitHubOrganizationArgs) ToGitHubOrganizationOutput() GitHubOrganizationOutput {
-	return i.ToGitHubOrganizationOutputWithContext(context.Background())
-}
-
-func (i GitHubOrganizationArgs) ToGitHubOrganizationOutputWithContext(ctx context.Context) GitHubOrganizationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitHubOrganizationOutput)
-}
-
-// GitHubOrganizationArrayInput is an input type that accepts GitHubOrganizationArray and GitHubOrganizationArrayOutput values.
-// You can construct a concrete instance of `GitHubOrganizationArrayInput` via:
-//
-//	GitHubOrganizationArray{ GitHubOrganizationArgs{...} }
-type GitHubOrganizationArrayInput interface {
-	pulumi.Input
-
-	ToGitHubOrganizationArrayOutput() GitHubOrganizationArrayOutput
-	ToGitHubOrganizationArrayOutputWithContext(context.Context) GitHubOrganizationArrayOutput
-}
-
-type GitHubOrganizationArray []GitHubOrganizationInput
-
-func (GitHubOrganizationArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GitHubOrganization)(nil)).Elem()
-}
-
-func (i GitHubOrganizationArray) ToGitHubOrganizationArrayOutput() GitHubOrganizationArrayOutput {
-	return i.ToGitHubOrganizationArrayOutputWithContext(context.Background())
-}
-
-func (i GitHubOrganizationArray) ToGitHubOrganizationArrayOutputWithContext(ctx context.Context) GitHubOrganizationArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitHubOrganizationArrayOutput)
-}
-
-// Defines a GitHub organization
-type GitHubOrganizationOutput struct{ *pulumi.OutputState }
-
-func (GitHubOrganizationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitHubOrganization)(nil)).Elem()
-}
-
-func (o GitHubOrganizationOutput) ToGitHubOrganizationOutput() GitHubOrganizationOutput {
-	return o
-}
-
-func (o GitHubOrganizationOutput) ToGitHubOrganizationOutputWithContext(ctx context.Context) GitHubOrganizationOutput {
-	return o
-}
-
-// Optional list of repositories in which the pool should be created.
-func (o GitHubOrganizationOutput) Repositories() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GitHubOrganization) []string { return v.Repositories }).(pulumi.StringArrayOutput)
-}
-
-// The GitHub organization URL in which the pool should be created.
-func (o GitHubOrganizationOutput) Url() pulumi.StringOutput {
-	return o.ApplyT(func(v GitHubOrganization) string { return v.Url }).(pulumi.StringOutput)
-}
-
-type GitHubOrganizationArrayOutput struct{ *pulumi.OutputState }
-
-func (GitHubOrganizationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GitHubOrganization)(nil)).Elem()
-}
-
-func (o GitHubOrganizationArrayOutput) ToGitHubOrganizationArrayOutput() GitHubOrganizationArrayOutput {
-	return o
-}
-
-func (o GitHubOrganizationArrayOutput) ToGitHubOrganizationArrayOutputWithContext(ctx context.Context) GitHubOrganizationArrayOutput {
-	return o
-}
-
-func (o GitHubOrganizationArrayOutput) Index(i pulumi.IntInput) GitHubOrganizationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitHubOrganization {
-		return vs[0].([]GitHubOrganization)[vs[1].(int)]
-	}).(GitHubOrganizationOutput)
-}
-
-// GitHub organization profile
-type GitHubOrganizationProfile struct {
-	// Discriminator property for OrganizationProfile.
-	// Expected value is 'GitHub'.
-	Kind string `pulumi:"kind"`
-	// The list of GitHub organizations/repositories the pool should be present in.
-	Organizations []GitHubOrganization `pulumi:"organizations"`
-}
-
-// GitHubOrganizationProfileInput is an input type that accepts GitHubOrganizationProfileArgs and GitHubOrganizationProfileOutput values.
-// You can construct a concrete instance of `GitHubOrganizationProfileInput` via:
-//
-//	GitHubOrganizationProfileArgs{...}
-type GitHubOrganizationProfileInput interface {
-	pulumi.Input
-
-	ToGitHubOrganizationProfileOutput() GitHubOrganizationProfileOutput
-	ToGitHubOrganizationProfileOutputWithContext(context.Context) GitHubOrganizationProfileOutput
-}
-
-// GitHub organization profile
-type GitHubOrganizationProfileArgs struct {
-	// Discriminator property for OrganizationProfile.
-	// Expected value is 'GitHub'.
-	Kind pulumi.StringInput `pulumi:"kind"`
-	// The list of GitHub organizations/repositories the pool should be present in.
-	Organizations GitHubOrganizationArrayInput `pulumi:"organizations"`
-}
-
-func (GitHubOrganizationProfileArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitHubOrganizationProfile)(nil)).Elem()
-}
-
-func (i GitHubOrganizationProfileArgs) ToGitHubOrganizationProfileOutput() GitHubOrganizationProfileOutput {
-	return i.ToGitHubOrganizationProfileOutputWithContext(context.Background())
-}
-
-func (i GitHubOrganizationProfileArgs) ToGitHubOrganizationProfileOutputWithContext(ctx context.Context) GitHubOrganizationProfileOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitHubOrganizationProfileOutput)
-}
-
-// GitHub organization profile
-type GitHubOrganizationProfileOutput struct{ *pulumi.OutputState }
-
-func (GitHubOrganizationProfileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitHubOrganizationProfile)(nil)).Elem()
-}
-
-func (o GitHubOrganizationProfileOutput) ToGitHubOrganizationProfileOutput() GitHubOrganizationProfileOutput {
-	return o
-}
-
-func (o GitHubOrganizationProfileOutput) ToGitHubOrganizationProfileOutputWithContext(ctx context.Context) GitHubOrganizationProfileOutput {
-	return o
-}
-
-// Discriminator property for OrganizationProfile.
-// Expected value is 'GitHub'.
-func (o GitHubOrganizationProfileOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v GitHubOrganizationProfile) string { return v.Kind }).(pulumi.StringOutput)
-}
-
-// The list of GitHub organizations/repositories the pool should be present in.
-func (o GitHubOrganizationProfileOutput) Organizations() GitHubOrganizationArrayOutput {
-	return o.ApplyT(func(v GitHubOrganizationProfile) []GitHubOrganization { return v.Organizations }).(GitHubOrganizationArrayOutput)
-}
-
-// GitHub organization profile
-type GitHubOrganizationProfileResponse struct {
-	// Discriminator property for OrganizationProfile.
-	// Expected value is 'GitHub'.
-	Kind string `pulumi:"kind"`
-	// The list of GitHub organizations/repositories the pool should be present in.
-	Organizations []GitHubOrganizationResponse `pulumi:"organizations"`
-}
-
-// GitHub organization profile
-type GitHubOrganizationProfileResponseOutput struct{ *pulumi.OutputState }
-
-func (GitHubOrganizationProfileResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitHubOrganizationProfileResponse)(nil)).Elem()
-}
-
-func (o GitHubOrganizationProfileResponseOutput) ToGitHubOrganizationProfileResponseOutput() GitHubOrganizationProfileResponseOutput {
-	return o
-}
-
-func (o GitHubOrganizationProfileResponseOutput) ToGitHubOrganizationProfileResponseOutputWithContext(ctx context.Context) GitHubOrganizationProfileResponseOutput {
-	return o
-}
-
-// Discriminator property for OrganizationProfile.
-// Expected value is 'GitHub'.
-func (o GitHubOrganizationProfileResponseOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v GitHubOrganizationProfileResponse) string { return v.Kind }).(pulumi.StringOutput)
-}
-
-// The list of GitHub organizations/repositories the pool should be present in.
-func (o GitHubOrganizationProfileResponseOutput) Organizations() GitHubOrganizationResponseArrayOutput {
-	return o.ApplyT(func(v GitHubOrganizationProfileResponse) []GitHubOrganizationResponse { return v.Organizations }).(GitHubOrganizationResponseArrayOutput)
-}
-
-// Defines a GitHub organization
-type GitHubOrganizationResponse struct {
-	// Optional list of repositories in which the pool should be created.
-	Repositories []string `pulumi:"repositories"`
-	// The GitHub organization URL in which the pool should be created.
-	Url string `pulumi:"url"`
-}
-
-// Defines a GitHub organization
-type GitHubOrganizationResponseOutput struct{ *pulumi.OutputState }
-
-func (GitHubOrganizationResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitHubOrganizationResponse)(nil)).Elem()
-}
-
-func (o GitHubOrganizationResponseOutput) ToGitHubOrganizationResponseOutput() GitHubOrganizationResponseOutput {
-	return o
-}
-
-func (o GitHubOrganizationResponseOutput) ToGitHubOrganizationResponseOutputWithContext(ctx context.Context) GitHubOrganizationResponseOutput {
-	return o
-}
-
-// Optional list of repositories in which the pool should be created.
-func (o GitHubOrganizationResponseOutput) Repositories() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GitHubOrganizationResponse) []string { return v.Repositories }).(pulumi.StringArrayOutput)
-}
-
-// The GitHub organization URL in which the pool should be created.
-func (o GitHubOrganizationResponseOutput) Url() pulumi.StringOutput {
-	return o.ApplyT(func(v GitHubOrganizationResponse) string { return v.Url }).(pulumi.StringOutput)
-}
-
-type GitHubOrganizationResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (GitHubOrganizationResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GitHubOrganizationResponse)(nil)).Elem()
-}
-
-func (o GitHubOrganizationResponseArrayOutput) ToGitHubOrganizationResponseArrayOutput() GitHubOrganizationResponseArrayOutput {
-	return o
-}
-
-func (o GitHubOrganizationResponseArrayOutput) ToGitHubOrganizationResponseArrayOutputWithContext(ctx context.Context) GitHubOrganizationResponseArrayOutput {
-	return o
-}
-
-func (o GitHubOrganizationResponseArrayOutput) Index(i pulumi.IntInput) GitHubOrganizationResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitHubOrganizationResponse {
-		return vs[0].([]GitHubOrganizationResponse)[vs[1].(int)]
-	}).(GitHubOrganizationResponseOutput)
+// The Azure SKU tier of the machines in the pool.
+func (o DevOpsAzureSkuResponseOutput) Tier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DevOpsAzureSkuResponse) *string { return v.Tier }).(pulumi.StringPtrOutput)
 }
 
 // Managed service identity (system assigned and/or user assigned identities)
@@ -1459,213 +521,6 @@ func (o ManagedServiceIdentityResponsePtrOutput) UserAssignedIdentities() UserAs
 	}).(UserAssignedIdentityResponseMapOutput)
 }
 
-// Customer provides the stand-by agent scheme.
-type ManualResourcePredictionsProfile struct {
-	// Determines how the stand-by scheme should be provided.
-	// Expected value is 'Manual'.
-	Kind string `pulumi:"kind"`
-}
-
-// ManualResourcePredictionsProfileInput is an input type that accepts ManualResourcePredictionsProfileArgs and ManualResourcePredictionsProfileOutput values.
-// You can construct a concrete instance of `ManualResourcePredictionsProfileInput` via:
-//
-//	ManualResourcePredictionsProfileArgs{...}
-type ManualResourcePredictionsProfileInput interface {
-	pulumi.Input
-
-	ToManualResourcePredictionsProfileOutput() ManualResourcePredictionsProfileOutput
-	ToManualResourcePredictionsProfileOutputWithContext(context.Context) ManualResourcePredictionsProfileOutput
-}
-
-// Customer provides the stand-by agent scheme.
-type ManualResourcePredictionsProfileArgs struct {
-	// Determines how the stand-by scheme should be provided.
-	// Expected value is 'Manual'.
-	Kind pulumi.StringInput `pulumi:"kind"`
-}
-
-func (ManualResourcePredictionsProfileArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManualResourcePredictionsProfile)(nil)).Elem()
-}
-
-func (i ManualResourcePredictionsProfileArgs) ToManualResourcePredictionsProfileOutput() ManualResourcePredictionsProfileOutput {
-	return i.ToManualResourcePredictionsProfileOutputWithContext(context.Background())
-}
-
-func (i ManualResourcePredictionsProfileArgs) ToManualResourcePredictionsProfileOutputWithContext(ctx context.Context) ManualResourcePredictionsProfileOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManualResourcePredictionsProfileOutput)
-}
-
-func (i ManualResourcePredictionsProfileArgs) ToManualResourcePredictionsProfilePtrOutput() ManualResourcePredictionsProfilePtrOutput {
-	return i.ToManualResourcePredictionsProfilePtrOutputWithContext(context.Background())
-}
-
-func (i ManualResourcePredictionsProfileArgs) ToManualResourcePredictionsProfilePtrOutputWithContext(ctx context.Context) ManualResourcePredictionsProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManualResourcePredictionsProfileOutput).ToManualResourcePredictionsProfilePtrOutputWithContext(ctx)
-}
-
-// ManualResourcePredictionsProfilePtrInput is an input type that accepts ManualResourcePredictionsProfileArgs, ManualResourcePredictionsProfilePtr and ManualResourcePredictionsProfilePtrOutput values.
-// You can construct a concrete instance of `ManualResourcePredictionsProfilePtrInput` via:
-//
-//	        ManualResourcePredictionsProfileArgs{...}
-//
-//	or:
-//
-//	        nil
-type ManualResourcePredictionsProfilePtrInput interface {
-	pulumi.Input
-
-	ToManualResourcePredictionsProfilePtrOutput() ManualResourcePredictionsProfilePtrOutput
-	ToManualResourcePredictionsProfilePtrOutputWithContext(context.Context) ManualResourcePredictionsProfilePtrOutput
-}
-
-type manualResourcePredictionsProfilePtrType ManualResourcePredictionsProfileArgs
-
-func ManualResourcePredictionsProfilePtr(v *ManualResourcePredictionsProfileArgs) ManualResourcePredictionsProfilePtrInput {
-	return (*manualResourcePredictionsProfilePtrType)(v)
-}
-
-func (*manualResourcePredictionsProfilePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManualResourcePredictionsProfile)(nil)).Elem()
-}
-
-func (i *manualResourcePredictionsProfilePtrType) ToManualResourcePredictionsProfilePtrOutput() ManualResourcePredictionsProfilePtrOutput {
-	return i.ToManualResourcePredictionsProfilePtrOutputWithContext(context.Background())
-}
-
-func (i *manualResourcePredictionsProfilePtrType) ToManualResourcePredictionsProfilePtrOutputWithContext(ctx context.Context) ManualResourcePredictionsProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManualResourcePredictionsProfilePtrOutput)
-}
-
-// Customer provides the stand-by agent scheme.
-type ManualResourcePredictionsProfileOutput struct{ *pulumi.OutputState }
-
-func (ManualResourcePredictionsProfileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManualResourcePredictionsProfile)(nil)).Elem()
-}
-
-func (o ManualResourcePredictionsProfileOutput) ToManualResourcePredictionsProfileOutput() ManualResourcePredictionsProfileOutput {
-	return o
-}
-
-func (o ManualResourcePredictionsProfileOutput) ToManualResourcePredictionsProfileOutputWithContext(ctx context.Context) ManualResourcePredictionsProfileOutput {
-	return o
-}
-
-func (o ManualResourcePredictionsProfileOutput) ToManualResourcePredictionsProfilePtrOutput() ManualResourcePredictionsProfilePtrOutput {
-	return o.ToManualResourcePredictionsProfilePtrOutputWithContext(context.Background())
-}
-
-func (o ManualResourcePredictionsProfileOutput) ToManualResourcePredictionsProfilePtrOutputWithContext(ctx context.Context) ManualResourcePredictionsProfilePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManualResourcePredictionsProfile) *ManualResourcePredictionsProfile {
-		return &v
-	}).(ManualResourcePredictionsProfilePtrOutput)
-}
-
-// Determines how the stand-by scheme should be provided.
-// Expected value is 'Manual'.
-func (o ManualResourcePredictionsProfileOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v ManualResourcePredictionsProfile) string { return v.Kind }).(pulumi.StringOutput)
-}
-
-type ManualResourcePredictionsProfilePtrOutput struct{ *pulumi.OutputState }
-
-func (ManualResourcePredictionsProfilePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManualResourcePredictionsProfile)(nil)).Elem()
-}
-
-func (o ManualResourcePredictionsProfilePtrOutput) ToManualResourcePredictionsProfilePtrOutput() ManualResourcePredictionsProfilePtrOutput {
-	return o
-}
-
-func (o ManualResourcePredictionsProfilePtrOutput) ToManualResourcePredictionsProfilePtrOutputWithContext(ctx context.Context) ManualResourcePredictionsProfilePtrOutput {
-	return o
-}
-
-func (o ManualResourcePredictionsProfilePtrOutput) Elem() ManualResourcePredictionsProfileOutput {
-	return o.ApplyT(func(v *ManualResourcePredictionsProfile) ManualResourcePredictionsProfile {
-		if v != nil {
-			return *v
-		}
-		var ret ManualResourcePredictionsProfile
-		return ret
-	}).(ManualResourcePredictionsProfileOutput)
-}
-
-// Determines how the stand-by scheme should be provided.
-// Expected value is 'Manual'.
-func (o ManualResourcePredictionsProfilePtrOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManualResourcePredictionsProfile) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Kind
-	}).(pulumi.StringPtrOutput)
-}
-
-// Customer provides the stand-by agent scheme.
-type ManualResourcePredictionsProfileResponse struct {
-	// Determines how the stand-by scheme should be provided.
-	// Expected value is 'Manual'.
-	Kind string `pulumi:"kind"`
-}
-
-// Customer provides the stand-by agent scheme.
-type ManualResourcePredictionsProfileResponseOutput struct{ *pulumi.OutputState }
-
-func (ManualResourcePredictionsProfileResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManualResourcePredictionsProfileResponse)(nil)).Elem()
-}
-
-func (o ManualResourcePredictionsProfileResponseOutput) ToManualResourcePredictionsProfileResponseOutput() ManualResourcePredictionsProfileResponseOutput {
-	return o
-}
-
-func (o ManualResourcePredictionsProfileResponseOutput) ToManualResourcePredictionsProfileResponseOutputWithContext(ctx context.Context) ManualResourcePredictionsProfileResponseOutput {
-	return o
-}
-
-// Determines how the stand-by scheme should be provided.
-// Expected value is 'Manual'.
-func (o ManualResourcePredictionsProfileResponseOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v ManualResourcePredictionsProfileResponse) string { return v.Kind }).(pulumi.StringOutput)
-}
-
-type ManualResourcePredictionsProfileResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ManualResourcePredictionsProfileResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManualResourcePredictionsProfileResponse)(nil)).Elem()
-}
-
-func (o ManualResourcePredictionsProfileResponsePtrOutput) ToManualResourcePredictionsProfileResponsePtrOutput() ManualResourcePredictionsProfileResponsePtrOutput {
-	return o
-}
-
-func (o ManualResourcePredictionsProfileResponsePtrOutput) ToManualResourcePredictionsProfileResponsePtrOutputWithContext(ctx context.Context) ManualResourcePredictionsProfileResponsePtrOutput {
-	return o
-}
-
-func (o ManualResourcePredictionsProfileResponsePtrOutput) Elem() ManualResourcePredictionsProfileResponseOutput {
-	return o.ApplyT(func(v *ManualResourcePredictionsProfileResponse) ManualResourcePredictionsProfileResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ManualResourcePredictionsProfileResponse
-		return ret
-	}).(ManualResourcePredictionsProfileResponseOutput)
-}
-
-// Determines how the stand-by scheme should be provided.
-// Expected value is 'Manual'.
-func (o ManualResourcePredictionsProfileResponsePtrOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManualResourcePredictionsProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Kind
-	}).(pulumi.StringPtrOutput)
-}
-
 // The network profile of the machines in the pool.
 type NetworkProfile struct {
 	// The subnet id on which to put all machines created in the pool.
@@ -1868,8 +723,6 @@ func (o NetworkProfileResponsePtrOutput) SubnetId() pulumi.StringPtrOutput {
 
 // Defines an Azure DevOps organization.
 type Organization struct {
-	// Determines if the pool should have open access to all projects in this organization.
-	OpenAccess *bool `pulumi:"openAccess"`
 	// How many machines can be created at maximum in this organization out of the maximumConcurrency of the pool.
 	Parallelism *int `pulumi:"parallelism"`
 	// Optional list of projects in which the pool should be created.
@@ -1891,8 +744,6 @@ type OrganizationInput interface {
 
 // Defines an Azure DevOps organization.
 type OrganizationArgs struct {
-	// Determines if the pool should have open access to all projects in this organization.
-	OpenAccess pulumi.BoolPtrInput `pulumi:"openAccess"`
 	// How many machines can be created at maximum in this organization out of the maximumConcurrency of the pool.
 	Parallelism pulumi.IntPtrInput `pulumi:"parallelism"`
 	// Optional list of projects in which the pool should be created.
@@ -1953,11 +804,6 @@ func (o OrganizationOutput) ToOrganizationOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Determines if the pool should have open access to all projects in this organization.
-func (o OrganizationOutput) OpenAccess() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v Organization) *bool { return v.OpenAccess }).(pulumi.BoolPtrOutput)
-}
-
 // How many machines can be created at maximum in this organization out of the maximumConcurrency of the pool.
 func (o OrganizationOutput) Parallelism() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Organization) *int { return v.Parallelism }).(pulumi.IntPtrOutput)
@@ -1995,8 +841,6 @@ func (o OrganizationArrayOutput) Index(i pulumi.IntInput) OrganizationOutput {
 
 // Defines an Azure DevOps organization.
 type OrganizationResponse struct {
-	// Determines if the pool should have open access to all projects in this organization.
-	OpenAccess *bool `pulumi:"openAccess"`
 	// How many machines can be created at maximum in this organization out of the maximumConcurrency of the pool.
 	Parallelism *int `pulumi:"parallelism"`
 	// Optional list of projects in which the pool should be created.
@@ -2018,11 +862,6 @@ func (o OrganizationResponseOutput) ToOrganizationResponseOutput() OrganizationR
 
 func (o OrganizationResponseOutput) ToOrganizationResponseOutputWithContext(ctx context.Context) OrganizationResponseOutput {
 	return o
-}
-
-// Determines if the pool should have open access to all projects in this organization.
-func (o OrganizationResponseOutput) OpenAccess() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v OrganizationResponse) *bool { return v.OpenAccess }).(pulumi.BoolPtrOutput)
 }
 
 // How many machines can be created at maximum in this organization out of the maximumConcurrency of the pool.
@@ -2062,10 +901,8 @@ func (o OrganizationResponseArrayOutput) Index(i pulumi.IntInput) OrganizationRe
 
 // The OS profile of the machines in the pool.
 type OsProfile struct {
-	// Determines how the service should be run. By default, this will be set to Service.
-	LogonType *string `pulumi:"logonType"`
 	// The secret management settings of the machines in the pool.
-	SecretsManagementSettings *SecretsManagementSettings `pulumi:"secretsManagementSettings"`
+	SecretsManagementSettings SecretsManagementSettings `pulumi:"secretsManagementSettings"`
 }
 
 // OsProfileInput is an input type that accepts OsProfileArgs and OsProfileOutput values.
@@ -2081,10 +918,8 @@ type OsProfileInput interface {
 
 // The OS profile of the machines in the pool.
 type OsProfileArgs struct {
-	// Determines how the service should be run. By default, this will be set to Service.
-	LogonType pulumi.StringPtrInput `pulumi:"logonType"`
 	// The secret management settings of the machines in the pool.
-	SecretsManagementSettings SecretsManagementSettingsPtrInput `pulumi:"secretsManagementSettings"`
+	SecretsManagementSettings SecretsManagementSettingsInput `pulumi:"secretsManagementSettings"`
 }
 
 func (OsProfileArgs) ElementType() reflect.Type {
@@ -2165,14 +1000,9 @@ func (o OsProfileOutput) ToOsProfilePtrOutputWithContext(ctx context.Context) Os
 	}).(OsProfilePtrOutput)
 }
 
-// Determines how the service should be run. By default, this will be set to Service.
-func (o OsProfileOutput) LogonType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OsProfile) *string { return v.LogonType }).(pulumi.StringPtrOutput)
-}
-
 // The secret management settings of the machines in the pool.
-func (o OsProfileOutput) SecretsManagementSettings() SecretsManagementSettingsPtrOutput {
-	return o.ApplyT(func(v OsProfile) *SecretsManagementSettings { return v.SecretsManagementSettings }).(SecretsManagementSettingsPtrOutput)
+func (o OsProfileOutput) SecretsManagementSettings() SecretsManagementSettingsOutput {
+	return o.ApplyT(func(v OsProfile) SecretsManagementSettings { return v.SecretsManagementSettings }).(SecretsManagementSettingsOutput)
 }
 
 type OsProfilePtrOutput struct{ *pulumi.OutputState }
@@ -2199,32 +1029,20 @@ func (o OsProfilePtrOutput) Elem() OsProfileOutput {
 	}).(OsProfileOutput)
 }
 
-// Determines how the service should be run. By default, this will be set to Service.
-func (o OsProfilePtrOutput) LogonType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OsProfile) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LogonType
-	}).(pulumi.StringPtrOutput)
-}
-
 // The secret management settings of the machines in the pool.
 func (o OsProfilePtrOutput) SecretsManagementSettings() SecretsManagementSettingsPtrOutput {
 	return o.ApplyT(func(v *OsProfile) *SecretsManagementSettings {
 		if v == nil {
 			return nil
 		}
-		return v.SecretsManagementSettings
+		return &v.SecretsManagementSettings
 	}).(SecretsManagementSettingsPtrOutput)
 }
 
 // The OS profile of the machines in the pool.
 type OsProfileResponse struct {
-	// Determines how the service should be run. By default, this will be set to Service.
-	LogonType *string `pulumi:"logonType"`
 	// The secret management settings of the machines in the pool.
-	SecretsManagementSettings *SecretsManagementSettingsResponse `pulumi:"secretsManagementSettings"`
+	SecretsManagementSettings SecretsManagementSettingsResponse `pulumi:"secretsManagementSettings"`
 }
 
 // The OS profile of the machines in the pool.
@@ -2242,14 +1060,9 @@ func (o OsProfileResponseOutput) ToOsProfileResponseOutputWithContext(ctx contex
 	return o
 }
 
-// Determines how the service should be run. By default, this will be set to Service.
-func (o OsProfileResponseOutput) LogonType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OsProfileResponse) *string { return v.LogonType }).(pulumi.StringPtrOutput)
-}
-
 // The secret management settings of the machines in the pool.
-func (o OsProfileResponseOutput) SecretsManagementSettings() SecretsManagementSettingsResponsePtrOutput {
-	return o.ApplyT(func(v OsProfileResponse) *SecretsManagementSettingsResponse { return v.SecretsManagementSettings }).(SecretsManagementSettingsResponsePtrOutput)
+func (o OsProfileResponseOutput) SecretsManagementSettings() SecretsManagementSettingsResponseOutput {
+	return o.ApplyT(func(v OsProfileResponse) SecretsManagementSettingsResponse { return v.SecretsManagementSettings }).(SecretsManagementSettingsResponseOutput)
 }
 
 type OsProfileResponsePtrOutput struct{ *pulumi.OutputState }
@@ -2276,23 +1089,13 @@ func (o OsProfileResponsePtrOutput) Elem() OsProfileResponseOutput {
 	}).(OsProfileResponseOutput)
 }
 
-// Determines how the service should be run. By default, this will be set to Service.
-func (o OsProfileResponsePtrOutput) LogonType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OsProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LogonType
-	}).(pulumi.StringPtrOutput)
-}
-
 // The secret management settings of the machines in the pool.
 func (o OsProfileResponsePtrOutput) SecretsManagementSettings() SecretsManagementSettingsResponsePtrOutput {
 	return o.ApplyT(func(v *OsProfileResponse) *SecretsManagementSettingsResponse {
 		if v == nil {
 			return nil
 		}
-		return v.SecretsManagementSettings
+		return &v.SecretsManagementSettings
 	}).(SecretsManagementSettingsResponsePtrOutput)
 }
 
@@ -2302,12 +1105,8 @@ type PoolImage struct {
 	Aliases []string `pulumi:"aliases"`
 	// The percentage of the buffer to be allocated to this image.
 	Buffer *string `pulumi:"buffer"`
-	// The ephemeral type of the image.
-	EphemeralType *string `pulumi:"ephemeralType"`
 	// The resource id of the image.
-	ResourceId *string `pulumi:"resourceId"`
-	// The image to use from a well-known set of images made available to customers.
-	WellKnownImageName *string `pulumi:"wellKnownImageName"`
+	ResourceId string `pulumi:"resourceId"`
 }
 
 // Defaults sets the appropriate defaults for PoolImage
@@ -2340,12 +1139,8 @@ type PoolImageArgs struct {
 	Aliases pulumi.StringArrayInput `pulumi:"aliases"`
 	// The percentage of the buffer to be allocated to this image.
 	Buffer pulumi.StringPtrInput `pulumi:"buffer"`
-	// The ephemeral type of the image.
-	EphemeralType pulumi.StringPtrInput `pulumi:"ephemeralType"`
 	// The resource id of the image.
-	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
-	// The image to use from a well-known set of images made available to customers.
-	WellKnownImageName pulumi.StringPtrInput `pulumi:"wellKnownImageName"`
+	ResourceId pulumi.StringInput `pulumi:"resourceId"`
 }
 
 // Defaults sets the appropriate defaults for PoolImageArgs
@@ -2421,19 +1216,9 @@ func (o PoolImageOutput) Buffer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PoolImage) *string { return v.Buffer }).(pulumi.StringPtrOutput)
 }
 
-// The ephemeral type of the image.
-func (o PoolImageOutput) EphemeralType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PoolImage) *string { return v.EphemeralType }).(pulumi.StringPtrOutput)
-}
-
 // The resource id of the image.
-func (o PoolImageOutput) ResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PoolImage) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
-}
-
-// The image to use from a well-known set of images made available to customers.
-func (o PoolImageOutput) WellKnownImageName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PoolImage) *string { return v.WellKnownImageName }).(pulumi.StringPtrOutput)
+func (o PoolImageOutput) ResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v PoolImage) string { return v.ResourceId }).(pulumi.StringOutput)
 }
 
 type PoolImageArrayOutput struct{ *pulumi.OutputState }
@@ -2462,12 +1247,8 @@ type PoolImageResponse struct {
 	Aliases []string `pulumi:"aliases"`
 	// The percentage of the buffer to be allocated to this image.
 	Buffer *string `pulumi:"buffer"`
-	// The ephemeral type of the image.
-	EphemeralType *string `pulumi:"ephemeralType"`
 	// The resource id of the image.
-	ResourceId *string `pulumi:"resourceId"`
-	// The image to use from a well-known set of images made available to customers.
-	WellKnownImageName *string `pulumi:"wellKnownImageName"`
+	ResourceId string `pulumi:"resourceId"`
 }
 
 // Defaults sets the appropriate defaults for PoolImageResponse
@@ -2508,19 +1289,9 @@ func (o PoolImageResponseOutput) Buffer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PoolImageResponse) *string { return v.Buffer }).(pulumi.StringPtrOutput)
 }
 
-// The ephemeral type of the image.
-func (o PoolImageResponseOutput) EphemeralType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PoolImageResponse) *string { return v.EphemeralType }).(pulumi.StringPtrOutput)
-}
-
 // The resource id of the image.
-func (o PoolImageResponseOutput) ResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PoolImageResponse) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
-}
-
-// The image to use from a well-known set of images made available to customers.
-func (o PoolImageResponseOutput) WellKnownImageName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PoolImageResponse) *string { return v.WellKnownImageName }).(pulumi.StringPtrOutput)
+func (o PoolImageResponseOutput) ResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v PoolImageResponse) string { return v.ResourceId }).(pulumi.StringOutput)
 }
 
 type PoolImageResponseArrayOutput struct{ *pulumi.OutputState }
@@ -2547,8 +1318,6 @@ func (o PoolImageResponseArrayOutput) Index(i pulumi.IntInput) PoolImageResponse
 type SecretsManagementSettings struct {
 	// Where to store certificates on the machine.
 	CertificateStoreLocation *string `pulumi:"certificateStoreLocation"`
-	// Name of the certificate store to use on the machine, currently 'My' and 'Root' are supported.
-	CertificateStoreName *string `pulumi:"certificateStoreName"`
 	// Defines if the key of the certificates should be exportable.
 	KeyExportable bool `pulumi:"keyExportable"`
 	// The list of certificates to install on all machines in the pool.
@@ -2570,8 +1339,6 @@ type SecretsManagementSettingsInput interface {
 type SecretsManagementSettingsArgs struct {
 	// Where to store certificates on the machine.
 	CertificateStoreLocation pulumi.StringPtrInput `pulumi:"certificateStoreLocation"`
-	// Name of the certificate store to use on the machine, currently 'My' and 'Root' are supported.
-	CertificateStoreName pulumi.StringPtrInput `pulumi:"certificateStoreName"`
 	// Defines if the key of the certificates should be exportable.
 	KeyExportable pulumi.BoolInput `pulumi:"keyExportable"`
 	// The list of certificates to install on all machines in the pool.
@@ -2661,11 +1428,6 @@ func (o SecretsManagementSettingsOutput) CertificateStoreLocation() pulumi.Strin
 	return o.ApplyT(func(v SecretsManagementSettings) *string { return v.CertificateStoreLocation }).(pulumi.StringPtrOutput)
 }
 
-// Name of the certificate store to use on the machine, currently 'My' and 'Root' are supported.
-func (o SecretsManagementSettingsOutput) CertificateStoreName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecretsManagementSettings) *string { return v.CertificateStoreName }).(pulumi.StringPtrOutput)
-}
-
 // Defines if the key of the certificates should be exportable.
 func (o SecretsManagementSettingsOutput) KeyExportable() pulumi.BoolOutput {
 	return o.ApplyT(func(v SecretsManagementSettings) bool { return v.KeyExportable }).(pulumi.BoolOutput)
@@ -2710,16 +1472,6 @@ func (o SecretsManagementSettingsPtrOutput) CertificateStoreLocation() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-// Name of the certificate store to use on the machine, currently 'My' and 'Root' are supported.
-func (o SecretsManagementSettingsPtrOutput) CertificateStoreName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SecretsManagementSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CertificateStoreName
-	}).(pulumi.StringPtrOutput)
-}
-
 // Defines if the key of the certificates should be exportable.
 func (o SecretsManagementSettingsPtrOutput) KeyExportable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SecretsManagementSettings) *bool {
@@ -2744,8 +1496,6 @@ func (o SecretsManagementSettingsPtrOutput) ObservedCertificates() pulumi.String
 type SecretsManagementSettingsResponse struct {
 	// Where to store certificates on the machine.
 	CertificateStoreLocation *string `pulumi:"certificateStoreLocation"`
-	// Name of the certificate store to use on the machine, currently 'My' and 'Root' are supported.
-	CertificateStoreName *string `pulumi:"certificateStoreName"`
 	// Defines if the key of the certificates should be exportable.
 	KeyExportable bool `pulumi:"keyExportable"`
 	// The list of certificates to install on all machines in the pool.
@@ -2770,11 +1520,6 @@ func (o SecretsManagementSettingsResponseOutput) ToSecretsManagementSettingsResp
 // Where to store certificates on the machine.
 func (o SecretsManagementSettingsResponseOutput) CertificateStoreLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretsManagementSettingsResponse) *string { return v.CertificateStoreLocation }).(pulumi.StringPtrOutput)
-}
-
-// Name of the certificate store to use on the machine, currently 'My' and 'Root' are supported.
-func (o SecretsManagementSettingsResponseOutput) CertificateStoreName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecretsManagementSettingsResponse) *string { return v.CertificateStoreName }).(pulumi.StringPtrOutput)
 }
 
 // Defines if the key of the certificates should be exportable.
@@ -2821,16 +1566,6 @@ func (o SecretsManagementSettingsResponsePtrOutput) CertificateStoreLocation() p
 	}).(pulumi.StringPtrOutput)
 }
 
-// Name of the certificate store to use on the machine, currently 'My' and 'Root' are supported.
-func (o SecretsManagementSettingsResponsePtrOutput) CertificateStoreName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SecretsManagementSettingsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CertificateStoreName
-	}).(pulumi.StringPtrOutput)
-}
-
 // Defines if the key of the certificates should be exportable.
 func (o SecretsManagementSettingsResponsePtrOutput) KeyExportable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SecretsManagementSettingsResponse) *bool {
@@ -2853,17 +1588,13 @@ func (o SecretsManagementSettingsResponsePtrOutput) ObservedCertificates() pulum
 
 // Stateful profile meaning that the machines will be returned to the pool after running a job.
 type Stateful struct {
-	// How long should the machine be kept around after it ran a workload when there are no stand-by agents. The maximum is one week.
-	GracePeriodTimeSpan *string `pulumi:"gracePeriodTimeSpan"`
 	// Discriminator property for AgentProfile.
 	// Expected value is 'Stateful'.
 	Kind string `pulumi:"kind"`
 	// How long should stateful machines be kept around. The maximum is one week.
-	MaxAgentLifetime *string `pulumi:"maxAgentLifetime"`
-	// Defines pool buffer/stand-by agents.
+	MaxAgentLifetime string `pulumi:"maxAgentLifetime"`
+	// Defines pool buffer.
 	ResourcePredictions interface{} `pulumi:"resourcePredictions"`
-	// Defines how the pool buffer/stand-by agents is provided.
-	ResourcePredictionsProfile interface{} `pulumi:"resourcePredictionsProfile"`
 }
 
 // StatefulInput is an input type that accepts StatefulArgs and StatefulOutput values.
@@ -2879,17 +1610,13 @@ type StatefulInput interface {
 
 // Stateful profile meaning that the machines will be returned to the pool after running a job.
 type StatefulArgs struct {
-	// How long should the machine be kept around after it ran a workload when there are no stand-by agents. The maximum is one week.
-	GracePeriodTimeSpan pulumi.StringPtrInput `pulumi:"gracePeriodTimeSpan"`
 	// Discriminator property for AgentProfile.
 	// Expected value is 'Stateful'.
 	Kind pulumi.StringInput `pulumi:"kind"`
 	// How long should stateful machines be kept around. The maximum is one week.
-	MaxAgentLifetime pulumi.StringPtrInput `pulumi:"maxAgentLifetime"`
-	// Defines pool buffer/stand-by agents.
+	MaxAgentLifetime pulumi.StringInput `pulumi:"maxAgentLifetime"`
+	// Defines pool buffer.
 	ResourcePredictions pulumi.Input `pulumi:"resourcePredictions"`
-	// Defines how the pool buffer/stand-by agents is provided.
-	ResourcePredictionsProfile pulumi.Input `pulumi:"resourcePredictionsProfile"`
 }
 
 func (StatefulArgs) ElementType() reflect.Type {
@@ -2919,11 +1646,6 @@ func (o StatefulOutput) ToStatefulOutputWithContext(ctx context.Context) Statefu
 	return o
 }
 
-// How long should the machine be kept around after it ran a workload when there are no stand-by agents. The maximum is one week.
-func (o StatefulOutput) GracePeriodTimeSpan() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Stateful) *string { return v.GracePeriodTimeSpan }).(pulumi.StringPtrOutput)
-}
-
 // Discriminator property for AgentProfile.
 // Expected value is 'Stateful'.
 func (o StatefulOutput) Kind() pulumi.StringOutput {
@@ -2931,33 +1653,24 @@ func (o StatefulOutput) Kind() pulumi.StringOutput {
 }
 
 // How long should stateful machines be kept around. The maximum is one week.
-func (o StatefulOutput) MaxAgentLifetime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Stateful) *string { return v.MaxAgentLifetime }).(pulumi.StringPtrOutput)
+func (o StatefulOutput) MaxAgentLifetime() pulumi.StringOutput {
+	return o.ApplyT(func(v Stateful) string { return v.MaxAgentLifetime }).(pulumi.StringOutput)
 }
 
-// Defines pool buffer/stand-by agents.
+// Defines pool buffer.
 func (o StatefulOutput) ResourcePredictions() pulumi.AnyOutput {
 	return o.ApplyT(func(v Stateful) interface{} { return v.ResourcePredictions }).(pulumi.AnyOutput)
 }
 
-// Defines how the pool buffer/stand-by agents is provided.
-func (o StatefulOutput) ResourcePredictionsProfile() pulumi.AnyOutput {
-	return o.ApplyT(func(v Stateful) interface{} { return v.ResourcePredictionsProfile }).(pulumi.AnyOutput)
-}
-
 // Stateful profile meaning that the machines will be returned to the pool after running a job.
 type StatefulResponse struct {
-	// How long should the machine be kept around after it ran a workload when there are no stand-by agents. The maximum is one week.
-	GracePeriodTimeSpan *string `pulumi:"gracePeriodTimeSpan"`
 	// Discriminator property for AgentProfile.
 	// Expected value is 'Stateful'.
 	Kind string `pulumi:"kind"`
 	// How long should stateful machines be kept around. The maximum is one week.
-	MaxAgentLifetime *string `pulumi:"maxAgentLifetime"`
-	// Defines pool buffer/stand-by agents.
+	MaxAgentLifetime string `pulumi:"maxAgentLifetime"`
+	// Defines pool buffer.
 	ResourcePredictions interface{} `pulumi:"resourcePredictions"`
-	// Defines how the pool buffer/stand-by agents is provided.
-	ResourcePredictionsProfile interface{} `pulumi:"resourcePredictionsProfile"`
 }
 
 // Stateful profile meaning that the machines will be returned to the pool after running a job.
@@ -2975,11 +1688,6 @@ func (o StatefulResponseOutput) ToStatefulResponseOutputWithContext(ctx context.
 	return o
 }
 
-// How long should the machine be kept around after it ran a workload when there are no stand-by agents. The maximum is one week.
-func (o StatefulResponseOutput) GracePeriodTimeSpan() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v StatefulResponse) *string { return v.GracePeriodTimeSpan }).(pulumi.StringPtrOutput)
-}
-
 // Discriminator property for AgentProfile.
 // Expected value is 'Stateful'.
 func (o StatefulResponseOutput) Kind() pulumi.StringOutput {
@@ -2987,18 +1695,13 @@ func (o StatefulResponseOutput) Kind() pulumi.StringOutput {
 }
 
 // How long should stateful machines be kept around. The maximum is one week.
-func (o StatefulResponseOutput) MaxAgentLifetime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v StatefulResponse) *string { return v.MaxAgentLifetime }).(pulumi.StringPtrOutput)
+func (o StatefulResponseOutput) MaxAgentLifetime() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulResponse) string { return v.MaxAgentLifetime }).(pulumi.StringOutput)
 }
 
-// Defines pool buffer/stand-by agents.
+// Defines pool buffer.
 func (o StatefulResponseOutput) ResourcePredictions() pulumi.AnyOutput {
 	return o.ApplyT(func(v StatefulResponse) interface{} { return v.ResourcePredictions }).(pulumi.AnyOutput)
-}
-
-// Defines how the pool buffer/stand-by agents is provided.
-func (o StatefulResponseOutput) ResourcePredictionsProfile() pulumi.AnyOutput {
-	return o.ApplyT(func(v StatefulResponse) interface{} { return v.ResourcePredictionsProfile }).(pulumi.AnyOutput)
 }
 
 // Stateless profile meaning that the machines will be cleaned up after running a job.
@@ -3006,10 +1709,8 @@ type StatelessAgentProfile struct {
 	// Discriminator property for AgentProfile.
 	// Expected value is 'Stateless'.
 	Kind string `pulumi:"kind"`
-	// Defines pool buffer/stand-by agents.
+	// Defines pool buffer.
 	ResourcePredictions interface{} `pulumi:"resourcePredictions"`
-	// Defines how the pool buffer/stand-by agents is provided.
-	ResourcePredictionsProfile interface{} `pulumi:"resourcePredictionsProfile"`
 }
 
 // StatelessAgentProfileInput is an input type that accepts StatelessAgentProfileArgs and StatelessAgentProfileOutput values.
@@ -3028,10 +1729,8 @@ type StatelessAgentProfileArgs struct {
 	// Discriminator property for AgentProfile.
 	// Expected value is 'Stateless'.
 	Kind pulumi.StringInput `pulumi:"kind"`
-	// Defines pool buffer/stand-by agents.
+	// Defines pool buffer.
 	ResourcePredictions pulumi.Input `pulumi:"resourcePredictions"`
-	// Defines how the pool buffer/stand-by agents is provided.
-	ResourcePredictionsProfile pulumi.Input `pulumi:"resourcePredictionsProfile"`
 }
 
 func (StatelessAgentProfileArgs) ElementType() reflect.Type {
@@ -3067,14 +1766,9 @@ func (o StatelessAgentProfileOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v StatelessAgentProfile) string { return v.Kind }).(pulumi.StringOutput)
 }
 
-// Defines pool buffer/stand-by agents.
+// Defines pool buffer.
 func (o StatelessAgentProfileOutput) ResourcePredictions() pulumi.AnyOutput {
 	return o.ApplyT(func(v StatelessAgentProfile) interface{} { return v.ResourcePredictions }).(pulumi.AnyOutput)
-}
-
-// Defines how the pool buffer/stand-by agents is provided.
-func (o StatelessAgentProfileOutput) ResourcePredictionsProfile() pulumi.AnyOutput {
-	return o.ApplyT(func(v StatelessAgentProfile) interface{} { return v.ResourcePredictionsProfile }).(pulumi.AnyOutput)
 }
 
 // Stateless profile meaning that the machines will be cleaned up after running a job.
@@ -3082,10 +1776,8 @@ type StatelessAgentProfileResponse struct {
 	// Discriminator property for AgentProfile.
 	// Expected value is 'Stateless'.
 	Kind string `pulumi:"kind"`
-	// Defines pool buffer/stand-by agents.
+	// Defines pool buffer.
 	ResourcePredictions interface{} `pulumi:"resourcePredictions"`
-	// Defines how the pool buffer/stand-by agents is provided.
-	ResourcePredictionsProfile interface{} `pulumi:"resourcePredictionsProfile"`
 }
 
 // Stateless profile meaning that the machines will be cleaned up after running a job.
@@ -3109,250 +1801,9 @@ func (o StatelessAgentProfileResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v StatelessAgentProfileResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
 
-// Defines pool buffer/stand-by agents.
+// Defines pool buffer.
 func (o StatelessAgentProfileResponseOutput) ResourcePredictions() pulumi.AnyOutput {
 	return o.ApplyT(func(v StatelessAgentProfileResponse) interface{} { return v.ResourcePredictions }).(pulumi.AnyOutput)
-}
-
-// Defines how the pool buffer/stand-by agents is provided.
-func (o StatelessAgentProfileResponseOutput) ResourcePredictionsProfile() pulumi.AnyOutput {
-	return o.ApplyT(func(v StatelessAgentProfileResponse) interface{} { return v.ResourcePredictionsProfile }).(pulumi.AnyOutput)
-}
-
-// The storage profile of the VMSS.
-type StorageProfile struct {
-	// A list of empty data disks to attach.
-	DataDisks []DataDisk `pulumi:"dataDisks"`
-	// The Azure SKU name of the machines in the pool.
-	OsDiskStorageAccountType *string `pulumi:"osDiskStorageAccountType"`
-}
-
-// StorageProfileInput is an input type that accepts StorageProfileArgs and StorageProfileOutput values.
-// You can construct a concrete instance of `StorageProfileInput` via:
-//
-//	StorageProfileArgs{...}
-type StorageProfileInput interface {
-	pulumi.Input
-
-	ToStorageProfileOutput() StorageProfileOutput
-	ToStorageProfileOutputWithContext(context.Context) StorageProfileOutput
-}
-
-// The storage profile of the VMSS.
-type StorageProfileArgs struct {
-	// A list of empty data disks to attach.
-	DataDisks DataDiskArrayInput `pulumi:"dataDisks"`
-	// The Azure SKU name of the machines in the pool.
-	OsDiskStorageAccountType pulumi.StringPtrInput `pulumi:"osDiskStorageAccountType"`
-}
-
-func (StorageProfileArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*StorageProfile)(nil)).Elem()
-}
-
-func (i StorageProfileArgs) ToStorageProfileOutput() StorageProfileOutput {
-	return i.ToStorageProfileOutputWithContext(context.Background())
-}
-
-func (i StorageProfileArgs) ToStorageProfileOutputWithContext(ctx context.Context) StorageProfileOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StorageProfileOutput)
-}
-
-func (i StorageProfileArgs) ToStorageProfilePtrOutput() StorageProfilePtrOutput {
-	return i.ToStorageProfilePtrOutputWithContext(context.Background())
-}
-
-func (i StorageProfileArgs) ToStorageProfilePtrOutputWithContext(ctx context.Context) StorageProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StorageProfileOutput).ToStorageProfilePtrOutputWithContext(ctx)
-}
-
-// StorageProfilePtrInput is an input type that accepts StorageProfileArgs, StorageProfilePtr and StorageProfilePtrOutput values.
-// You can construct a concrete instance of `StorageProfilePtrInput` via:
-//
-//	        StorageProfileArgs{...}
-//
-//	or:
-//
-//	        nil
-type StorageProfilePtrInput interface {
-	pulumi.Input
-
-	ToStorageProfilePtrOutput() StorageProfilePtrOutput
-	ToStorageProfilePtrOutputWithContext(context.Context) StorageProfilePtrOutput
-}
-
-type storageProfilePtrType StorageProfileArgs
-
-func StorageProfilePtr(v *StorageProfileArgs) StorageProfilePtrInput {
-	return (*storageProfilePtrType)(v)
-}
-
-func (*storageProfilePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**StorageProfile)(nil)).Elem()
-}
-
-func (i *storageProfilePtrType) ToStorageProfilePtrOutput() StorageProfilePtrOutput {
-	return i.ToStorageProfilePtrOutputWithContext(context.Background())
-}
-
-func (i *storageProfilePtrType) ToStorageProfilePtrOutputWithContext(ctx context.Context) StorageProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StorageProfilePtrOutput)
-}
-
-// The storage profile of the VMSS.
-type StorageProfileOutput struct{ *pulumi.OutputState }
-
-func (StorageProfileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StorageProfile)(nil)).Elem()
-}
-
-func (o StorageProfileOutput) ToStorageProfileOutput() StorageProfileOutput {
-	return o
-}
-
-func (o StorageProfileOutput) ToStorageProfileOutputWithContext(ctx context.Context) StorageProfileOutput {
-	return o
-}
-
-func (o StorageProfileOutput) ToStorageProfilePtrOutput() StorageProfilePtrOutput {
-	return o.ToStorageProfilePtrOutputWithContext(context.Background())
-}
-
-func (o StorageProfileOutput) ToStorageProfilePtrOutputWithContext(ctx context.Context) StorageProfilePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageProfile) *StorageProfile {
-		return &v
-	}).(StorageProfilePtrOutput)
-}
-
-// A list of empty data disks to attach.
-func (o StorageProfileOutput) DataDisks() DataDiskArrayOutput {
-	return o.ApplyT(func(v StorageProfile) []DataDisk { return v.DataDisks }).(DataDiskArrayOutput)
-}
-
-// The Azure SKU name of the machines in the pool.
-func (o StorageProfileOutput) OsDiskStorageAccountType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v StorageProfile) *string { return v.OsDiskStorageAccountType }).(pulumi.StringPtrOutput)
-}
-
-type StorageProfilePtrOutput struct{ *pulumi.OutputState }
-
-func (StorageProfilePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**StorageProfile)(nil)).Elem()
-}
-
-func (o StorageProfilePtrOutput) ToStorageProfilePtrOutput() StorageProfilePtrOutput {
-	return o
-}
-
-func (o StorageProfilePtrOutput) ToStorageProfilePtrOutputWithContext(ctx context.Context) StorageProfilePtrOutput {
-	return o
-}
-
-func (o StorageProfilePtrOutput) Elem() StorageProfileOutput {
-	return o.ApplyT(func(v *StorageProfile) StorageProfile {
-		if v != nil {
-			return *v
-		}
-		var ret StorageProfile
-		return ret
-	}).(StorageProfileOutput)
-}
-
-// A list of empty data disks to attach.
-func (o StorageProfilePtrOutput) DataDisks() DataDiskArrayOutput {
-	return o.ApplyT(func(v *StorageProfile) []DataDisk {
-		if v == nil {
-			return nil
-		}
-		return v.DataDisks
-	}).(DataDiskArrayOutput)
-}
-
-// The Azure SKU name of the machines in the pool.
-func (o StorageProfilePtrOutput) OsDiskStorageAccountType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StorageProfile) *string {
-		if v == nil {
-			return nil
-		}
-		return v.OsDiskStorageAccountType
-	}).(pulumi.StringPtrOutput)
-}
-
-// The storage profile of the VMSS.
-type StorageProfileResponse struct {
-	// A list of empty data disks to attach.
-	DataDisks []DataDiskResponse `pulumi:"dataDisks"`
-	// The Azure SKU name of the machines in the pool.
-	OsDiskStorageAccountType *string `pulumi:"osDiskStorageAccountType"`
-}
-
-// The storage profile of the VMSS.
-type StorageProfileResponseOutput struct{ *pulumi.OutputState }
-
-func (StorageProfileResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StorageProfileResponse)(nil)).Elem()
-}
-
-func (o StorageProfileResponseOutput) ToStorageProfileResponseOutput() StorageProfileResponseOutput {
-	return o
-}
-
-func (o StorageProfileResponseOutput) ToStorageProfileResponseOutputWithContext(ctx context.Context) StorageProfileResponseOutput {
-	return o
-}
-
-// A list of empty data disks to attach.
-func (o StorageProfileResponseOutput) DataDisks() DataDiskResponseArrayOutput {
-	return o.ApplyT(func(v StorageProfileResponse) []DataDiskResponse { return v.DataDisks }).(DataDiskResponseArrayOutput)
-}
-
-// The Azure SKU name of the machines in the pool.
-func (o StorageProfileResponseOutput) OsDiskStorageAccountType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v StorageProfileResponse) *string { return v.OsDiskStorageAccountType }).(pulumi.StringPtrOutput)
-}
-
-type StorageProfileResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (StorageProfileResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**StorageProfileResponse)(nil)).Elem()
-}
-
-func (o StorageProfileResponsePtrOutput) ToStorageProfileResponsePtrOutput() StorageProfileResponsePtrOutput {
-	return o
-}
-
-func (o StorageProfileResponsePtrOutput) ToStorageProfileResponsePtrOutputWithContext(ctx context.Context) StorageProfileResponsePtrOutput {
-	return o
-}
-
-func (o StorageProfileResponsePtrOutput) Elem() StorageProfileResponseOutput {
-	return o.ApplyT(func(v *StorageProfileResponse) StorageProfileResponse {
-		if v != nil {
-			return *v
-		}
-		var ret StorageProfileResponse
-		return ret
-	}).(StorageProfileResponseOutput)
-}
-
-// A list of empty data disks to attach.
-func (o StorageProfileResponsePtrOutput) DataDisks() DataDiskResponseArrayOutput {
-	return o.ApplyT(func(v *StorageProfileResponse) []DataDiskResponse {
-		if v == nil {
-			return nil
-		}
-		return v.DataDisks
-	}).(DataDiskResponseArrayOutput)
-}
-
-// The Azure SKU name of the machines in the pool.
-func (o StorageProfileResponsePtrOutput) OsDiskStorageAccountType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StorageProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.OsDiskStorageAccountType
-	}).(pulumi.StringPtrOutput)
 }
 
 // Metadata pertaining to creation and last modification of the resource.
@@ -3482,8 +1933,17 @@ type VmssFabricProfile struct {
 	OsProfile *OsProfile `pulumi:"osProfile"`
 	// The Azure SKU of the machines in the pool.
 	Sku DevOpsAzureSku `pulumi:"sku"`
-	// The storage profile of the machines in the pool.
-	StorageProfile *StorageProfile `pulumi:"storageProfile"`
+}
+
+// Defaults sets the appropriate defaults for VmssFabricProfile
+func (val *VmssFabricProfile) Defaults() *VmssFabricProfile {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Sku = *tmp.Sku.Defaults()
+
+	return &tmp
 }
 
 // VmssFabricProfileInput is an input type that accepts VmssFabricProfileArgs and VmssFabricProfileOutput values.
@@ -3510,10 +1970,17 @@ type VmssFabricProfileArgs struct {
 	OsProfile OsProfilePtrInput `pulumi:"osProfile"`
 	// The Azure SKU of the machines in the pool.
 	Sku DevOpsAzureSkuInput `pulumi:"sku"`
-	// The storage profile of the machines in the pool.
-	StorageProfile StorageProfilePtrInput `pulumi:"storageProfile"`
 }
 
+// Defaults sets the appropriate defaults for VmssFabricProfileArgs
+func (val *VmssFabricProfileArgs) Defaults() *VmssFabricProfileArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	return &tmp
+}
 func (VmssFabricProfileArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*VmssFabricProfile)(nil)).Elem()
 }
@@ -3567,11 +2034,6 @@ func (o VmssFabricProfileOutput) Sku() DevOpsAzureSkuOutput {
 	return o.ApplyT(func(v VmssFabricProfile) DevOpsAzureSku { return v.Sku }).(DevOpsAzureSkuOutput)
 }
 
-// The storage profile of the machines in the pool.
-func (o VmssFabricProfileOutput) StorageProfile() StorageProfilePtrOutput {
-	return o.ApplyT(func(v VmssFabricProfile) *StorageProfile { return v.StorageProfile }).(StorageProfilePtrOutput)
-}
-
 // The agents will run on Virtual Machine Scale Sets.
 type VmssFabricProfileResponse struct {
 	// The VM images of the machines in the pool.
@@ -3585,8 +2047,17 @@ type VmssFabricProfileResponse struct {
 	OsProfile *OsProfileResponse `pulumi:"osProfile"`
 	// The Azure SKU of the machines in the pool.
 	Sku DevOpsAzureSkuResponse `pulumi:"sku"`
-	// The storage profile of the machines in the pool.
-	StorageProfile *StorageProfileResponse `pulumi:"storageProfile"`
+}
+
+// Defaults sets the appropriate defaults for VmssFabricProfileResponse
+func (val *VmssFabricProfileResponse) Defaults() *VmssFabricProfileResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Sku = *tmp.Sku.Defaults()
+
+	return &tmp
 }
 
 // The agents will run on Virtual Machine Scale Sets.
@@ -3630,42 +2101,15 @@ func (o VmssFabricProfileResponseOutput) Sku() DevOpsAzureSkuResponseOutput {
 	return o.ApplyT(func(v VmssFabricProfileResponse) DevOpsAzureSkuResponse { return v.Sku }).(DevOpsAzureSkuResponseOutput)
 }
 
-// The storage profile of the machines in the pool.
-func (o VmssFabricProfileResponseOutput) StorageProfile() StorageProfileResponsePtrOutput {
-	return o.ApplyT(func(v VmssFabricProfileResponse) *StorageProfileResponse { return v.StorageProfile }).(StorageProfileResponsePtrOutput)
-}
-
 func init() {
-	pulumi.RegisterOutputType(AutomaticResourcePredictionsProfileOutput{})
-	pulumi.RegisterOutputType(AutomaticResourcePredictionsProfilePtrOutput{})
-	pulumi.RegisterOutputType(AutomaticResourcePredictionsProfileResponseOutput{})
-	pulumi.RegisterOutputType(AutomaticResourcePredictionsProfileResponsePtrOutput{})
 	pulumi.RegisterOutputType(AzureDevOpsOrganizationProfileOutput{})
 	pulumi.RegisterOutputType(AzureDevOpsOrganizationProfileResponseOutput{})
-	pulumi.RegisterOutputType(AzureDevOpsPermissionProfileOutput{})
-	pulumi.RegisterOutputType(AzureDevOpsPermissionProfilePtrOutput{})
-	pulumi.RegisterOutputType(AzureDevOpsPermissionProfileResponseOutput{})
-	pulumi.RegisterOutputType(AzureDevOpsPermissionProfileResponsePtrOutput{})
-	pulumi.RegisterOutputType(DataDiskOutput{})
-	pulumi.RegisterOutputType(DataDiskArrayOutput{})
-	pulumi.RegisterOutputType(DataDiskResponseOutput{})
-	pulumi.RegisterOutputType(DataDiskResponseArrayOutput{})
 	pulumi.RegisterOutputType(DevOpsAzureSkuOutput{})
 	pulumi.RegisterOutputType(DevOpsAzureSkuResponseOutput{})
-	pulumi.RegisterOutputType(GitHubOrganizationOutput{})
-	pulumi.RegisterOutputType(GitHubOrganizationArrayOutput{})
-	pulumi.RegisterOutputType(GitHubOrganizationProfileOutput{})
-	pulumi.RegisterOutputType(GitHubOrganizationProfileResponseOutput{})
-	pulumi.RegisterOutputType(GitHubOrganizationResponseOutput{})
-	pulumi.RegisterOutputType(GitHubOrganizationResponseArrayOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityPtrOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityResponseOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityResponsePtrOutput{})
-	pulumi.RegisterOutputType(ManualResourcePredictionsProfileOutput{})
-	pulumi.RegisterOutputType(ManualResourcePredictionsProfilePtrOutput{})
-	pulumi.RegisterOutputType(ManualResourcePredictionsProfileResponseOutput{})
-	pulumi.RegisterOutputType(ManualResourcePredictionsProfileResponsePtrOutput{})
 	pulumi.RegisterOutputType(NetworkProfileOutput{})
 	pulumi.RegisterOutputType(NetworkProfilePtrOutput{})
 	pulumi.RegisterOutputType(NetworkProfileResponseOutput{})
@@ -3690,10 +2134,6 @@ func init() {
 	pulumi.RegisterOutputType(StatefulResponseOutput{})
 	pulumi.RegisterOutputType(StatelessAgentProfileOutput{})
 	pulumi.RegisterOutputType(StatelessAgentProfileResponseOutput{})
-	pulumi.RegisterOutputType(StorageProfileOutput{})
-	pulumi.RegisterOutputType(StorageProfilePtrOutput{})
-	pulumi.RegisterOutputType(StorageProfileResponseOutput{})
-	pulumi.RegisterOutputType(StorageProfileResponsePtrOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})

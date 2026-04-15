@@ -7,15 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a Template Spec with a given name.
 //
 // Uses Azure REST API version 2022-02-01.
-//
-// Other available API versions: 2021-03-01-preview, 2021-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native resources [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupTemplateSpec(ctx *pulumi.Context, args *LookupTemplateSpecArgs, opts ...pulumi.InvokeOption) (*LookupTemplateSpecResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTemplateSpecResult
@@ -37,8 +35,6 @@ type LookupTemplateSpecArgs struct {
 
 // Template Spec object.
 type LookupTemplateSpecResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Template Spec description.
 	Description *string `pulumi:"description"`
 	// Template Spec display name.
@@ -96,11 +92,6 @@ func (o LookupTemplateSpecResultOutput) ToLookupTemplateSpecResultOutput() Looku
 
 func (o LookupTemplateSpecResultOutput) ToLookupTemplateSpecResultOutputWithContext(ctx context.Context) LookupTemplateSpecResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupTemplateSpecResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupTemplateSpecResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Template Spec description.

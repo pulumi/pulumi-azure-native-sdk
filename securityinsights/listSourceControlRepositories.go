@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a list of repositories metadata.
 //
-// Uses Azure REST API version 2025-01-01-preview.
+// Uses Azure REST API version 2023-06-01-preview.
 //
-// Other available API versions: 2023-03-01-preview, 2023-04-01-preview, 2023-05-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-12-01-preview, 2024-01-01-preview, 2024-04-01-preview, 2024-10-01-preview, 2025-03-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-03-01-preview, 2021-09-01-preview, 2021-10-01-preview, 2022-01-01-preview, 2022-04-01-preview, 2022-05-01-preview, 2022-06-01-preview, 2022-07-01-preview, 2022-08-01-preview, 2022-09-01-preview, 2022-10-01-preview, 2022-11-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-03-01-preview, 2023-04-01-preview, 2023-05-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-12-01-preview, 2024-01-01-preview, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-03-01.
 func ListSourceControlRepositories(ctx *pulumi.Context, args *ListSourceControlRepositoriesArgs, opts ...pulumi.InvokeOption) (*ListSourceControlRepositoriesResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListSourceControlRepositoriesResult
@@ -27,20 +27,8 @@ func ListSourceControlRepositories(ctx *pulumi.Context, args *ListSourceControlR
 }
 
 type ListSourceControlRepositoriesArgs struct {
-	// OAuth ClientId. Required when `kind` is `OAuth`
-	ClientId *string `pulumi:"clientId"`
-	// OAuth Code. Required when `kind` is `OAuth`
-	Code *string `pulumi:"code"`
-	// Application installation ID. Required when `kind` is `App`. Supported by `GitHub` only.
-	InstallationId *string `pulumi:"installationId"`
-	// The kind of repository access credentials
-	Kind string `pulumi:"kind"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// OAuth State. Required when `kind` is `OAuth`
-	State *string `pulumi:"state"`
-	// Personal Access Token. Required when `kind` is `PAT`
-	Token *string `pulumi:"token"`
 	// The name of the workspace.
 	WorkspaceName string `pulumi:"workspaceName"`
 }
@@ -63,20 +51,8 @@ func ListSourceControlRepositoriesOutput(ctx *pulumi.Context, args ListSourceCon
 }
 
 type ListSourceControlRepositoriesOutputArgs struct {
-	// OAuth ClientId. Required when `kind` is `OAuth`
-	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
-	// OAuth Code. Required when `kind` is `OAuth`
-	Code pulumi.StringPtrInput `pulumi:"code"`
-	// Application installation ID. Required when `kind` is `App`. Supported by `GitHub` only.
-	InstallationId pulumi.StringPtrInput `pulumi:"installationId"`
-	// The kind of repository access credentials
-	Kind pulumi.StringInput `pulumi:"kind"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	// OAuth State. Required when `kind` is `OAuth`
-	State pulumi.StringPtrInput `pulumi:"state"`
-	// Personal Access Token. Required when `kind` is `PAT`
-	Token pulumi.StringPtrInput `pulumi:"token"`
 	// The name of the workspace.
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2019-05-01.
 //
-// Other available API versions: 2015-08-01-preview, 2018-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native logic [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2015-08-01-preview.
 func LookupIntegrationAccountMap(ctx *pulumi.Context, args *LookupIntegrationAccountMapArgs, opts ...pulumi.InvokeOption) (*LookupIntegrationAccountMapResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIntegrationAccountMapResult
@@ -37,8 +37,6 @@ type LookupIntegrationAccountMapArgs struct {
 
 // The integration account map.
 type LookupIntegrationAccountMapResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The changed time.
 	ChangedTime string `pulumi:"changedTime"`
 	// The content.
@@ -102,11 +100,6 @@ func (o LookupIntegrationAccountMapResultOutput) ToLookupIntegrationAccountMapRe
 
 func (o LookupIntegrationAccountMapResultOutput) ToLookupIntegrationAccountMapResultOutputWithContext(ctx context.Context) LookupIntegrationAccountMapResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupIntegrationAccountMapResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupIntegrationAccountMapResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The changed time.

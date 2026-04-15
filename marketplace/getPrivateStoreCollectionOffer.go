@@ -7,15 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets information about a specific offer.
 //
 // Uses Azure REST API version 2023-01-01.
-//
-// Other available API versions: 2025-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native marketplace [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupPrivateStoreCollectionOffer(ctx *pulumi.Context, args *LookupPrivateStoreCollectionOfferArgs, opts ...pulumi.InvokeOption) (*LookupPrivateStoreCollectionOfferResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateStoreCollectionOfferResult
@@ -37,8 +35,6 @@ type LookupPrivateStoreCollectionOfferArgs struct {
 
 // The privateStore offer data structure.
 type LookupPrivateStoreCollectionOfferResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Private store offer creation date
 	CreatedAt string `pulumi:"createdAt"`
 	// Identifier for purposes of race condition
@@ -106,11 +102,6 @@ func (o LookupPrivateStoreCollectionOfferResultOutput) ToLookupPrivateStoreColle
 
 func (o LookupPrivateStoreCollectionOfferResultOutput) ToLookupPrivateStoreCollectionOfferResultOutputWithContext(ctx context.Context) LookupPrivateStoreCollectionOfferResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupPrivateStoreCollectionOfferResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupPrivateStoreCollectionOfferResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Private store offer creation date

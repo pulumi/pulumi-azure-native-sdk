@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets list of items that violate tenant's configuration.
 //
-// Uses Azure REST API version 2022-12-01-preview.
+// Uses Azure REST API version 2020-09-01-preview.
 //
-// Other available API versions: 2020-09-01-preview, 2025-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native portal [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-12-01-preview, 2025-04-01-preview.
 func ListListTenantConfigurationViolation(ctx *pulumi.Context, args *ListListTenantConfigurationViolationArgs, opts ...pulumi.InvokeOption) (*ListListTenantConfigurationViolationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListListTenantConfigurationViolationResult

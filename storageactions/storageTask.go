@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents Storage Task.
 //
-// Uses Azure REST API version 2023-01-01. In version 2.x of the Azure Native provider, it used API version 2023-01-01.
+// Uses Azure REST API version 2023-01-01.
 type StorageTask struct {
 	pulumi.CustomResourceState
 
 	// The storage task action that is executed
 	Action StorageTaskActionResponseOutput `pulumi:"action"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The creation date and time of the storage task in UTC.
 	CreationTimeInUtc pulumi.StringOutput `pulumi:"creationTimeInUtc"`
 	// Text that describes the purpose of the storage task
@@ -185,11 +183,6 @@ func (o StorageTaskOutput) ToStorageTaskOutputWithContext(ctx context.Context) S
 // The storage task action that is executed
 func (o StorageTaskOutput) Action() StorageTaskActionResponseOutput {
 	return o.ApplyT(func(v *StorageTask) StorageTaskActionResponseOutput { return v.Action }).(StorageTaskActionResponseOutput)
-}
-
-// The Azure API version of the resource.
-func (o StorageTaskOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *StorageTask) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date and time of the storage task in UTC.

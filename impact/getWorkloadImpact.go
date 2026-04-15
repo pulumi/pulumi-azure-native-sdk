@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,8 +31,6 @@ type LookupWorkloadImpactArgs struct {
 
 // Workload Impact properties
 type LookupWorkloadImpactResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -76,11 +74,6 @@ func (o LookupWorkloadImpactResultOutput) ToLookupWorkloadImpactResultOutput() L
 
 func (o LookupWorkloadImpactResultOutput) ToLookupWorkloadImpactResultOutputWithContext(ctx context.Context) LookupWorkloadImpactResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupWorkloadImpactResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWorkloadImpactResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

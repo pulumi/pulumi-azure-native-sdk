@@ -8,35 +8,29 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Address Resource.
 //
-// Uses Azure REST API version 2024-02-01. In version 2.x of the Azure Native provider, it used API version 2022-05-01-preview.
+// Uses Azure REST API version 2022-05-01-preview.
 //
-// Other available API versions: 2022-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edgeorder [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-02-01.
 type Address struct {
 	pulumi.CustomResourceState
 
-	// Type of address based on its usage context.
-	AddressClassification pulumi.StringPtrOutput `pulumi:"addressClassification"`
 	// Status of address validation.
 	AddressValidationStatus pulumi.StringOutput `pulumi:"addressValidationStatus"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Contact details for the address.
-	ContactDetails ContactDetailsResponsePtrOutput `pulumi:"contactDetails"`
+	ContactDetails ContactDetailsResponseOutput `pulumi:"contactDetails"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Provisioning state
-	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Shipping details for the address.
 	ShippingAddress ShippingAddressResponsePtrOutput `pulumi:"shippingAddress"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	// Represents resource creation and update time.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
@@ -51,6 +45,9 @@ func NewAddress(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.ContactDetails == nil {
+		return nil, errors.New("invalid value for required argument 'ContactDetails'")
+	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
@@ -62,16 +59,10 @@ func NewAddress(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:edgeorder/v20211201:Address"),
 		},
 		{
-			Type: pulumi.String("azure-native:edgeorder/v20211201:AddressByName"),
-		},
-		{
 			Type: pulumi.String("azure-native:edgeorder/v20220501preview:Address"),
 		},
 		{
 			Type: pulumi.String("azure-native:edgeorder/v20240201:Address"),
-		},
-		{
-			Type: pulumi.String("azure-native:edgeorder:AddressByName"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -108,12 +99,10 @@ func (AddressState) ElementType() reflect.Type {
 }
 
 type addressArgs struct {
-	// Type of address based on its usage context.
-	AddressClassification *string `pulumi:"addressClassification"`
 	// The name of the address Resource within the specified resource group. address names must be between 3 and 24 characters in length and use any alphanumeric and underscore only.
 	AddressName *string `pulumi:"addressName"`
 	// Contact details for the address.
-	ContactDetails *ContactDetails `pulumi:"contactDetails"`
+	ContactDetails ContactDetails `pulumi:"contactDetails"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The name of the resource group. The name is case insensitive.
@@ -126,12 +115,10 @@ type addressArgs struct {
 
 // The set of arguments for constructing a Address resource.
 type AddressArgs struct {
-	// Type of address based on its usage context.
-	AddressClassification pulumi.StringPtrInput
 	// The name of the address Resource within the specified resource group. address names must be between 3 and 24 characters in length and use any alphanumeric and underscore only.
 	AddressName pulumi.StringPtrInput
 	// Contact details for the address.
-	ContactDetails ContactDetailsPtrInput
+	ContactDetails ContactDetailsInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
@@ -179,24 +166,14 @@ func (o AddressOutput) ToAddressOutputWithContext(ctx context.Context) AddressOu
 	return o
 }
 
-// Type of address based on its usage context.
-func (o AddressOutput) AddressClassification() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Address) pulumi.StringPtrOutput { return v.AddressClassification }).(pulumi.StringPtrOutput)
-}
-
 // Status of address validation.
 func (o AddressOutput) AddressValidationStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *Address) pulumi.StringOutput { return v.AddressValidationStatus }).(pulumi.StringOutput)
 }
 
-// The Azure API version of the resource.
-func (o AddressOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Address) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Contact details for the address.
-func (o AddressOutput) ContactDetails() ContactDetailsResponsePtrOutput {
-	return o.ApplyT(func(v *Address) ContactDetailsResponsePtrOutput { return v.ContactDetails }).(ContactDetailsResponsePtrOutput)
+func (o AddressOutput) ContactDetails() ContactDetailsResponseOutput {
+	return o.ApplyT(func(v *Address) ContactDetailsResponseOutput { return v.ContactDetails }).(ContactDetailsResponseOutput)
 }
 
 // The geo-location where the resource lives
@@ -209,17 +186,12 @@ func (o AddressOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Address) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Provisioning state
-func (o AddressOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v *Address) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
 // Shipping details for the address.
 func (o AddressOutput) ShippingAddress() ShippingAddressResponsePtrOutput {
 	return o.ApplyT(func(v *Address) ShippingAddressResponsePtrOutput { return v.ShippingAddress }).(ShippingAddressResponsePtrOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+// Represents resource creation and update time.
 func (o AddressOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Address) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

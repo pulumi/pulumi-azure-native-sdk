@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A virtual network.
 //
-// Uses Azure REST API version 2018-09-15. In version 2.x of the Azure Native provider, it used API version 2018-09-15.
+// Uses Azure REST API version 2018-09-15. In version 1.x of the Azure Native provider, it used API version 2018-09-15.
 type VirtualNetwork struct {
 	pulumi.CustomResourceState
 
 	// The allowed subnets of the virtual network.
 	AllowedSubnets SubnetResponseArrayOutput `pulumi:"allowedSubnets"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The creation date of the virtual network.
 	CreatedDate pulumi.StringOutput `pulumi:"createdDate"`
 	// The description of the virtual network.
@@ -30,19 +28,17 @@ type VirtualNetwork struct {
 	ExternalProviderResourceId pulumi.StringPtrOutput `pulumi:"externalProviderResourceId"`
 	// The external subnet properties.
 	ExternalSubnets ExternalSubnetResponseArrayOutput `pulumi:"externalSubnets"`
-	// The geo-location where the resource lives
+	// The location of the resource.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
-	// The name of the resource
+	// The name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning status of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The subnet overrides of the virtual network.
 	SubnetOverrides SubnetOverrideResponseArrayOutput `pulumi:"subnetOverrides"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// Resource tags.
+	// The tags of the resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// The type of the resource.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The unique immutable identifier of a resource (Guid).
 	UniqueIdentifier pulumi.StringOutput `pulumi:"uniqueIdentifier"`
@@ -114,15 +110,15 @@ type virtualNetworkArgs struct {
 	ExternalProviderResourceId *string `pulumi:"externalProviderResourceId"`
 	// The name of the lab.
 	LabName string `pulumi:"labName"`
-	// The geo-location where the resource lives
+	// The location of the resource.
 	Location *string `pulumi:"location"`
 	// The name of the virtual network.
 	Name *string `pulumi:"name"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The subnet overrides of the virtual network.
 	SubnetOverrides []SubnetOverride `pulumi:"subnetOverrides"`
-	// Resource tags.
+	// The tags of the resource.
 	Tags map[string]string `pulumi:"tags"`
 }
 
@@ -136,15 +132,15 @@ type VirtualNetworkArgs struct {
 	ExternalProviderResourceId pulumi.StringPtrInput
 	// The name of the lab.
 	LabName pulumi.StringInput
-	// The geo-location where the resource lives
+	// The location of the resource.
 	Location pulumi.StringPtrInput
 	// The name of the virtual network.
 	Name pulumi.StringPtrInput
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
 	// The subnet overrides of the virtual network.
 	SubnetOverrides SubnetOverrideArrayInput
-	// Resource tags.
+	// The tags of the resource.
 	Tags pulumi.StringMapInput
 }
 
@@ -190,11 +186,6 @@ func (o VirtualNetworkOutput) AllowedSubnets() SubnetResponseArrayOutput {
 	return o.ApplyT(func(v *VirtualNetwork) SubnetResponseArrayOutput { return v.AllowedSubnets }).(SubnetResponseArrayOutput)
 }
 
-// The Azure API version of the resource.
-func (o VirtualNetworkOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *VirtualNetwork) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // The creation date of the virtual network.
 func (o VirtualNetworkOutput) CreatedDate() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualNetwork) pulumi.StringOutput { return v.CreatedDate }).(pulumi.StringOutput)
@@ -215,12 +206,12 @@ func (o VirtualNetworkOutput) ExternalSubnets() ExternalSubnetResponseArrayOutpu
 	return o.ApplyT(func(v *VirtualNetwork) ExternalSubnetResponseArrayOutput { return v.ExternalSubnets }).(ExternalSubnetResponseArrayOutput)
 }
 
-// The geo-location where the resource lives
+// The location of the resource.
 func (o VirtualNetworkOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualNetwork) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// The name of the resource
+// The name of the resource.
 func (o VirtualNetworkOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualNetwork) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -235,17 +226,12 @@ func (o VirtualNetworkOutput) SubnetOverrides() SubnetOverrideResponseArrayOutpu
 	return o.ApplyT(func(v *VirtualNetwork) SubnetOverrideResponseArrayOutput { return v.SubnetOverrides }).(SubnetOverrideResponseArrayOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o VirtualNetworkOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *VirtualNetwork) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
-}
-
-// Resource tags.
+// The tags of the resource.
 func (o VirtualNetworkOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *VirtualNetwork) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// The type of the resource.
 func (o VirtualNetworkOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualNetwork) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

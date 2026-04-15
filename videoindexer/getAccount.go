@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the properties of an Azure Video Indexer account.
 //
-// Uses Azure REST API version 2024-01-01.
+// Uses Azure REST API version 2022-08-01.
 //
-// Other available API versions: 2022-08-01, 2024-04-01-preview, 2024-06-01-preview, 2024-09-23-preview, 2025-01-01, 2025-03-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native videoindexer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-01-01, 2024-04-01-preview, 2024-06-01-preview, 2024-09-23-preview, 2025-01-01, 2025-03-01.
 func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.InvokeOption) (*LookupAccountResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccountResult
@@ -39,20 +39,18 @@ type LookupAccountResult struct {
 	AccountId *string `pulumi:"accountId"`
 	// The account's name
 	AccountName string `pulumi:"accountName"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Managed service identity (system assigned and/or user assigned identities)
 	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
+	// The media services details
+	MediaServices *MediaServicesForPutRequestResponse `pulumi:"mediaServices"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// Gets the status of the account at the time the operation was called.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// The storage services details
-	StorageServices *StorageServicesForPutRequestResponse `pulumi:"storageServices"`
 	// The system meta data relating to this resource.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
@@ -122,11 +120,6 @@ func (o LookupAccountResultOutput) AccountName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.AccountName }).(pulumi.StringOutput)
 }
 
-// The Azure API version of the resource.
-func (o LookupAccountResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAccountResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupAccountResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.Id }).(pulumi.StringOutput)
@@ -142,6 +135,11 @@ func (o LookupAccountResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The media services details
+func (o LookupAccountResultOutput) MediaServices() MediaServicesForPutRequestResponsePtrOutput {
+	return o.ApplyT(func(v LookupAccountResult) *MediaServicesForPutRequestResponse { return v.MediaServices }).(MediaServicesForPutRequestResponsePtrOutput)
+}
+
 // The name of the resource
 func (o LookupAccountResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.Name }).(pulumi.StringOutput)
@@ -150,11 +148,6 @@ func (o LookupAccountResultOutput) Name() pulumi.StringOutput {
 // Gets the status of the account at the time the operation was called.
 func (o LookupAccountResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// The storage services details
-func (o LookupAccountResultOutput) StorageServices() StorageServicesForPutRequestResponsePtrOutput {
-	return o.ApplyT(func(v LookupAccountResult) *StorageServicesForPutRequestResponse { return v.StorageServices }).(StorageServicesForPutRequestResponsePtrOutput)
 }
 
 // The system meta data relating to this resource.

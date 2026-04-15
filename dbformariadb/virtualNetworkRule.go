@@ -8,18 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A virtual network rule.
 //
-// Uses Azure REST API version 2018-06-01. In version 2.x of the Azure Native provider, it used API version 2018-06-01.
+// Uses Azure REST API version 2018-06-01. In version 1.x of the Azure Native provider, it used API version 2018-06-01.
+//
+// Other available API versions: 2018-06-01-preview.
 type VirtualNetworkRule struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Create firewall rule before the virtual network has vnet service endpoint enabled.
 	IgnoreMissingVnetServiceEndpoint pulumi.BoolPtrOutput `pulumi:"ignoreMissingVnetServiceEndpoint"`
 	// The name of the resource
@@ -151,11 +151,6 @@ func (o VirtualNetworkRuleOutput) ToVirtualNetworkRuleOutput() VirtualNetworkRul
 
 func (o VirtualNetworkRuleOutput) ToVirtualNetworkRuleOutputWithContext(ctx context.Context) VirtualNetworkRuleOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o VirtualNetworkRuleOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *VirtualNetworkRule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Create firewall rule before the virtual network has vnet service endpoint enabled.

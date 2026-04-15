@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,8 +35,6 @@ type LookupSecurityStandardArgs struct {
 type LookupSecurityStandardResult struct {
 	// List of assessment keys to apply to standard scope.
 	Assessments []PartialAssessmentPropertiesResponse `pulumi:"assessments"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// List of all standard supported clouds.
 	CloudProviders []string `pulumi:"cloudProviders"`
 	// Description of the standard
@@ -95,11 +93,6 @@ func (o LookupSecurityStandardResultOutput) ToLookupSecurityStandardResultOutput
 // List of assessment keys to apply to standard scope.
 func (o LookupSecurityStandardResultOutput) Assessments() PartialAssessmentPropertiesResponseArrayOutput {
 	return o.ApplyT(func(v LookupSecurityStandardResult) []PartialAssessmentPropertiesResponse { return v.Assessments }).(PartialAssessmentPropertiesResponseArrayOutput)
-}
-
-// The Azure API version of the resource.
-func (o LookupSecurityStandardResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSecurityStandardResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // List of all standard supported clouds.

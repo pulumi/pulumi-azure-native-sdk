@@ -8,22 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Concrete tracked resource types can be created by aliasing this type using a specific property type.
 //
-// Uses Azure REST API version 2025-01-21. In version 2.x of the Azure Native provider, it used API version 2023-10-30-preview.
+// Uses Azure REST API version 2023-10-30-preview.
 //
-// Other available API versions: 2023-10-30-preview, 2023-12-13-preview, 2024-03-26-preview, 2024-04-04-preview, 2024-10-19, 2025-09-20. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devopsinfrastructure [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-12-13-preview, 2024-03-26-preview, 2024-04-04-preview, 2024-10-19, 2025-01-21.
 type Pool struct {
 	pulumi.CustomResourceState
 
 	// Defines how the machine will be handled once it executed a job.
 	AgentProfile pulumi.AnyOutput `pulumi:"agentProfile"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The resource id of the DevCenter Project the pool belongs to.
 	DevCenterProjectResourceId pulumi.StringOutput `pulumi:"devCenterProjectResourceId"`
 	// Defines the type of fabric the agent will run on.
@@ -37,7 +35,7 @@ type Pool struct {
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Defines the organization in which the pool will be used.
-	OrganizationProfile pulumi.AnyOutput `pulumi:"organizationProfile"`
+	OrganizationProfile AzureDevOpsOrganizationProfileResponseOutput `pulumi:"organizationProfile"`
 	// The status of the current operation.
 	ProvisioningState pulumi.StringPtrOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -73,6 +71,7 @@ func NewPool(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
+	args.FabricProfile = args.FabricProfile.ToVmssFabricProfileOutput().ApplyT(func(v VmssFabricProfile) VmssFabricProfile { return *v.Defaults() }).(VmssFabricProfileOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:devopsinfrastructure/v20231030preview:Pool"),
@@ -91,9 +90,6 @@ func NewPool(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:devopsinfrastructure/v20250121:Pool"),
-		},
-		{
-			Type: pulumi.String("azure-native:devopsinfrastructure/v20250920:Pool"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -143,7 +139,7 @@ type poolArgs struct {
 	// Defines how many resources can there be created at any given time.
 	MaximumConcurrency int `pulumi:"maximumConcurrency"`
 	// Defines the organization in which the pool will be used.
-	OrganizationProfile interface{} `pulumi:"organizationProfile"`
+	OrganizationProfile AzureDevOpsOrganizationProfile `pulumi:"organizationProfile"`
 	// Name of the pool. It needs to be globally unique.
 	PoolName *string `pulumi:"poolName"`
 	// The status of the current operation.
@@ -169,7 +165,7 @@ type PoolArgs struct {
 	// Defines how many resources can there be created at any given time.
 	MaximumConcurrency pulumi.IntInput
 	// Defines the organization in which the pool will be used.
-	OrganizationProfile pulumi.Input
+	OrganizationProfile AzureDevOpsOrganizationProfileInput
 	// Name of the pool. It needs to be globally unique.
 	PoolName pulumi.StringPtrInput
 	// The status of the current operation.
@@ -222,11 +218,6 @@ func (o PoolOutput) AgentProfile() pulumi.AnyOutput {
 	return o.ApplyT(func(v *Pool) pulumi.AnyOutput { return v.AgentProfile }).(pulumi.AnyOutput)
 }
 
-// The Azure API version of the resource.
-func (o PoolOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Pool) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // The resource id of the DevCenter Project the pool belongs to.
 func (o PoolOutput) DevCenterProjectResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pool) pulumi.StringOutput { return v.DevCenterProjectResourceId }).(pulumi.StringOutput)
@@ -258,8 +249,8 @@ func (o PoolOutput) Name() pulumi.StringOutput {
 }
 
 // Defines the organization in which the pool will be used.
-func (o PoolOutput) OrganizationProfile() pulumi.AnyOutput {
-	return o.ApplyT(func(v *Pool) pulumi.AnyOutput { return v.OrganizationProfile }).(pulumi.AnyOutput)
+func (o PoolOutput) OrganizationProfile() AzureDevOpsOrganizationProfileResponseOutput {
+	return o.ApplyT(func(v *Pool) AzureDevOpsOrganizationProfileResponseOutput { return v.OrganizationProfile }).(AzureDevOpsOrganizationProfileResponseOutput)
 }
 
 // The status of the current operation.

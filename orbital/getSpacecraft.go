@@ -7,13 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified spacecraft in a specified resource group.
 //
 // Uses Azure REST API version 2022-11-01.
+//
+// Other available API versions: 2022-03-01.
 func LookupSpacecraft(ctx *pulumi.Context, args *LookupSpacecraftArgs, opts ...pulumi.InvokeOption) (*LookupSpacecraftResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSpacecraftResult
@@ -33,8 +35,6 @@ type LookupSpacecraftArgs struct {
 
 // Customer creates a spacecraft resource to schedule a contact.
 type LookupSpacecraftResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Immutable list of Spacecraft links.
@@ -92,11 +92,6 @@ func (o LookupSpacecraftResultOutput) ToLookupSpacecraftResultOutput() LookupSpa
 
 func (o LookupSpacecraftResultOutput) ToLookupSpacecraftResultOutputWithContext(ctx context.Context) LookupSpacecraftResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupSpacecraftResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSpacecraftResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

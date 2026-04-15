@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Export logs that show Api requests made by this subscription in the given time window to show throttling activities.
 //
-// Uses Azure REST API version 2024-11-01.
+// Uses Azure REST API version 2023-03-01.
 //
-// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2020-12-01, 2021-03-01, 2021-04-01, 2021-07-01, 2021-11-01, 2022-03-01, 2022-08-01, 2022-11-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2024-11-01.
 func GetLogAnalyticExportRequestRateByInterval(ctx *pulumi.Context, args *GetLogAnalyticExportRequestRateByIntervalArgs, opts ...pulumi.InvokeOption) (*GetLogAnalyticExportRequestRateByIntervalResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetLogAnalyticExportRequestRateByIntervalResult
@@ -43,7 +43,7 @@ type GetLogAnalyticExportRequestRateByIntervalArgs struct {
 	GroupByUserAgent *bool `pulumi:"groupByUserAgent"`
 	// Interval value in minutes used to create LogAnalytics call rate logs.
 	IntervalLength IntervalInMins `pulumi:"intervalLength"`
-	// The name of Azure region.
+	// The location upon which virtual-machine-sizes is queried.
 	Location string `pulumi:"location"`
 	// To time of the query
 	ToTime string `pulumi:"toTime"`
@@ -81,7 +81,7 @@ type GetLogAnalyticExportRequestRateByIntervalOutputArgs struct {
 	GroupByUserAgent pulumi.BoolPtrInput `pulumi:"groupByUserAgent"`
 	// Interval value in minutes used to create LogAnalytics call rate logs.
 	IntervalLength IntervalInMinsInput `pulumi:"intervalLength"`
-	// The name of Azure region.
+	// The location upon which virtual-machine-sizes is queried.
 	Location pulumi.StringInput `pulumi:"location"`
 	// To time of the query
 	ToTime pulumi.StringInput `pulumi:"toTime"`

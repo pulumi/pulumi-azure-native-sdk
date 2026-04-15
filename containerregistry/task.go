@@ -8,16 +8,16 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The task that has the ARM resource and task properties.
 // The task will have all information to schedule a run against it.
 //
-// Uses Azure REST API version 2019-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2019-06-01-preview.
+// Uses Azure REST API version 2019-06-01-preview. In version 1.x of the Azure Native provider, it used API version 2019-06-01-preview.
 //
-// Other available API versions: 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2018-09-01, 2019-04-01.
 type Task struct {
 	pulumi.CustomResourceState
 
@@ -25,8 +25,6 @@ type Task struct {
 	AgentConfiguration AgentPropertiesResponsePtrOutput `pulumi:"agentConfiguration"`
 	// The dedicated agent pool for the task.
 	AgentPoolName pulumi.StringPtrOutput `pulumi:"agentPoolName"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The creation date of task.
 	CreationDate pulumi.StringOutput `pulumi:"creationDate"`
 	// The properties that describes a set of credentials that will be used when this run is invoked.
@@ -92,9 +90,6 @@ func NewTask(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:containerregistry/v20190601preview:Task"),
-		},
-		{
-			Type: pulumi.String("azure-native:containerregistry/v20250301preview:Task"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -246,11 +241,6 @@ func (o TaskOutput) AgentConfiguration() AgentPropertiesResponsePtrOutput {
 // The dedicated agent pool for the task.
 func (o TaskOutput) AgentPoolName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Task) pulumi.StringPtrOutput { return v.AgentPoolName }).(pulumi.StringPtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o TaskOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Task) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of task.

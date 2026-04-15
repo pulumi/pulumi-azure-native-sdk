@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Get version.
+// Azure Resource Manager resource envelope.
 //
-// Uses Azure REST API version 2025-12-01.
+// Uses Azure REST API version 2023-04-01-preview.
 //
-// Other available API versions: 2023-02-01-preview, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview.
 func LookupFeaturesetVersion(ctx *pulumi.Context, args *LookupFeaturesetVersionArgs, opts ...pulumi.InvokeOption) (*LookupFeaturesetVersionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFeaturesetVersionResult
@@ -33,20 +33,18 @@ type LookupFeaturesetVersionArgs struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Version identifier. This is case-sensitive.
 	Version string `pulumi:"version"`
-	// Azure Machine Learning Workspace Name
+	// Name of Azure Machine Learning workspace.
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Azure Resource Manager resource envelope.
 type LookupFeaturesetVersionResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// [Required] Additional attributes of the entity.
+	FeaturesetVersionProperties FeaturesetVersionResponse `pulumi:"featuresetVersionProperties"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// [Required] Additional attributes of the entity.
-	Properties FeaturesetVersionPropertiesResponse `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -59,7 +57,7 @@ func (val *LookupFeaturesetVersionResult) Defaults() *LookupFeaturesetVersionRes
 		return nil
 	}
 	tmp := *val
-	tmp.Properties = *tmp.Properties.Defaults()
+	tmp.FeaturesetVersionProperties = *tmp.FeaturesetVersionProperties.Defaults()
 
 	return &tmp
 }
@@ -79,7 +77,7 @@ type LookupFeaturesetVersionOutputArgs struct {
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// Version identifier. This is case-sensitive.
 	Version pulumi.StringInput `pulumi:"version"`
-	// Azure Machine Learning Workspace Name
+	// Name of Azure Machine Learning workspace.
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
@@ -102,9 +100,9 @@ func (o LookupFeaturesetVersionResultOutput) ToLookupFeaturesetVersionResultOutp
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupFeaturesetVersionResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupFeaturesetVersionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+// [Required] Additional attributes of the entity.
+func (o LookupFeaturesetVersionResultOutput) FeaturesetVersionProperties() FeaturesetVersionResponseOutput {
+	return o.ApplyT(func(v LookupFeaturesetVersionResult) FeaturesetVersionResponse { return v.FeaturesetVersionProperties }).(FeaturesetVersionResponseOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -115,11 +113,6 @@ func (o LookupFeaturesetVersionResultOutput) Id() pulumi.StringOutput {
 // The name of the resource
 func (o LookupFeaturesetVersionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFeaturesetVersionResult) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// [Required] Additional attributes of the entity.
-func (o LookupFeaturesetVersionResultOutput) Properties() FeaturesetVersionPropertiesResponseOutput {
-	return o.ApplyT(func(v LookupFeaturesetVersionResult) FeaturesetVersionPropertiesResponse { return v.Properties }).(FeaturesetVersionPropertiesResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

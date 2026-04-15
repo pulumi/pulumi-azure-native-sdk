@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Vault model.
 //
-// Uses Azure REST API version 2021-02-16-preview. In version 2.x of the Azure Native provider, it used API version 2021-02-16-preview.
+// Uses Azure REST API version 2021-02-16-preview.
 //
-// Other available API versions: 2024-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datareplication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-09-01.
 type Vault struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets or sets the location of the vault.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Gets or sets the name of the resource.
@@ -148,11 +146,6 @@ func (o VaultOutput) ToVaultOutput() VaultOutput {
 
 func (o VaultOutput) ToVaultOutputWithContext(ctx context.Context) VaultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o VaultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Vault) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the location of the vault.

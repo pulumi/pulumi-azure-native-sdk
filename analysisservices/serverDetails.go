@@ -8,20 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents an instance of an Analysis Services resource.
 //
-// Uses Azure REST API version 2017-08-01. In version 2.x of the Azure Native provider, it used API version 2017-08-01.
+// Uses Azure REST API version 2017-08-01. In version 1.x of the Azure Native provider, it used API version 2017-08-01.
+//
+// Other available API versions: 2017-08-01-beta.
 type ServerDetails struct {
 	pulumi.CustomResourceState
 
 	// A collection of AS server administrators
 	AsAdministrators ServerAdministratorsResponsePtrOutput `pulumi:"asAdministrators"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The SAS container URI to the backup container.
 	BackupBlobContainerUri pulumi.StringPtrOutput `pulumi:"backupBlobContainerUri"`
 	// The gateway details configured for the AS server.
@@ -217,11 +217,6 @@ func (o ServerDetailsOutput) ToServerDetailsOutputWithContext(ctx context.Contex
 // A collection of AS server administrators
 func (o ServerDetailsOutput) AsAdministrators() ServerAdministratorsResponsePtrOutput {
 	return o.ApplyT(func(v *ServerDetails) ServerAdministratorsResponsePtrOutput { return v.AsAdministrators }).(ServerAdministratorsResponsePtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o ServerDetailsOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *ServerDetails) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The SAS container URI to the backup container.

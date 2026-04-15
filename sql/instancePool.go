@@ -8,28 +8,22 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An Azure SQL instance pool.
 //
-// Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2021-11-01.
+// Uses Azure REST API version 2021-11-01. In version 1.x of the Azure Native provider, it used API version 2020-11-01-preview.
 //
-// Other available API versions: 2018-06-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01, 2023-08-01-preview, 2024-05-01-preview.
 type InstancePool struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
-	// The Dns Zone that the managed instance pool is in.
-	DnsZone pulumi.StringOutput `pulumi:"dnsZone"`
 	// The license type. Possible values are 'LicenseIncluded' (price for SQL license is included) and 'BasePrice' (without SQL license price).
 	LicenseType pulumi.StringOutput `pulumi:"licenseType"`
 	// Resource location.
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Specifies maintenance configuration id to apply to this managed instance.
-	MaintenanceConfigurationId pulumi.StringPtrOutput `pulumi:"maintenanceConfigurationId"`
 	// Resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name and tier of the SKU.
@@ -118,9 +112,6 @@ func NewInstancePool(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:sql/v20240501preview:InstancePool"),
 		},
-		{
-			Type: pulumi.String("azure-native:sql/v20241101preview:InstancePool"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -162,8 +153,6 @@ type instancePoolArgs struct {
 	LicenseType string `pulumi:"licenseType"`
 	// Resource location.
 	Location *string `pulumi:"location"`
-	// Specifies maintenance configuration id to apply to this managed instance.
-	MaintenanceConfigurationId *string `pulumi:"maintenanceConfigurationId"`
 	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name and tier of the SKU.
@@ -184,8 +173,6 @@ type InstancePoolArgs struct {
 	LicenseType pulumi.StringInput
 	// Resource location.
 	Location pulumi.StringPtrInput
-	// Specifies maintenance configuration id to apply to this managed instance.
-	MaintenanceConfigurationId pulumi.StringPtrInput
 	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput
 	// The name and tier of the SKU.
@@ -235,16 +222,6 @@ func (o InstancePoolOutput) ToInstancePoolOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The Azure API version of the resource.
-func (o InstancePoolOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *InstancePool) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// The Dns Zone that the managed instance pool is in.
-func (o InstancePoolOutput) DnsZone() pulumi.StringOutput {
-	return o.ApplyT(func(v *InstancePool) pulumi.StringOutput { return v.DnsZone }).(pulumi.StringOutput)
-}
-
 // The license type. Possible values are 'LicenseIncluded' (price for SQL license is included) and 'BasePrice' (without SQL license price).
 func (o InstancePoolOutput) LicenseType() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstancePool) pulumi.StringOutput { return v.LicenseType }).(pulumi.StringOutput)
@@ -253,11 +230,6 @@ func (o InstancePoolOutput) LicenseType() pulumi.StringOutput {
 // Resource location.
 func (o InstancePoolOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstancePool) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
-}
-
-// Specifies maintenance configuration id to apply to this managed instance.
-func (o InstancePoolOutput) MaintenanceConfigurationId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InstancePool) pulumi.StringPtrOutput { return v.MaintenanceConfigurationId }).(pulumi.StringPtrOutput)
 }
 
 // Resource name.

@@ -8,24 +8,22 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Azure Resource Manager resource envelope.
 //
-// Uses Azure REST API version 2025-12-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
+// Uses Azure REST API version 2023-04-01.
 //
-// Other available API versions: 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview.
 type RegistryEnvironmentVersion struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// [Required] Additional attributes of the entity.
+	EnvironmentVersionProperties EnvironmentVersionResponseOutput `pulumi:"environmentVersionProperties"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// [Required] Additional attributes of the entity.
-	Properties EnvironmentVersionPropertiesResponseV1Output `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -42,8 +40,8 @@ func NewRegistryEnvironmentVersion(ctx *pulumi.Context,
 	if args.EnvironmentName == nil {
 		return nil, errors.New("invalid value for required argument 'EnvironmentName'")
 	}
-	if args.Properties == nil {
-		return nil, errors.New("invalid value for required argument 'Properties'")
+	if args.EnvironmentVersionProperties == nil {
+		return nil, errors.New("invalid value for required argument 'EnvironmentVersionProperties'")
 	}
 	if args.RegistryName == nil {
 		return nil, errors.New("invalid value for required argument 'RegistryName'")
@@ -51,7 +49,7 @@ func NewRegistryEnvironmentVersion(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	args.Properties = args.Properties.ToEnvironmentVersionPropertiesOutput().ApplyT(func(v EnvironmentVersionProperties) EnvironmentVersionProperties { return *v.Defaults() }).(EnvironmentVersionPropertiesOutput)
+	args.EnvironmentVersionProperties = args.EnvironmentVersionProperties.ToEnvironmentVersionTypeOutput().ApplyT(func(v EnvironmentVersionType) EnvironmentVersionType { return *v.Defaults() }).(EnvironmentVersionTypeOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20221001preview:RegistryEnvironmentVersion"),
@@ -98,27 +96,6 @@ func NewRegistryEnvironmentVersion(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:RegistryEnvironmentVersion"),
 		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250401:RegistryEnvironmentVersion"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250401preview:RegistryEnvironmentVersion"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250601:RegistryEnvironmentVersion"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250701preview:RegistryEnvironmentVersion"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250901:RegistryEnvironmentVersion"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20251001preview:RegistryEnvironmentVersion"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20251201:RegistryEnvironmentVersion"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -154,29 +131,29 @@ func (RegistryEnvironmentVersionState) ElementType() reflect.Type {
 }
 
 type registryEnvironmentVersionArgs struct {
-	// Container name. This is case-sensitive.
+	// Container name.
 	EnvironmentName string `pulumi:"environmentName"`
 	// [Required] Additional attributes of the entity.
-	Properties EnvironmentVersionProperties `pulumi:"properties"`
+	EnvironmentVersionProperties EnvironmentVersionType `pulumi:"environmentVersionProperties"`
 	// Name of Azure Machine Learning registry. This is case-insensitive
 	RegistryName string `pulumi:"registryName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Version identifier. This is case-sensitive.
+	// Version identifier.
 	Version *string `pulumi:"version"`
 }
 
 // The set of arguments for constructing a RegistryEnvironmentVersion resource.
 type RegistryEnvironmentVersionArgs struct {
-	// Container name. This is case-sensitive.
+	// Container name.
 	EnvironmentName pulumi.StringInput
 	// [Required] Additional attributes of the entity.
-	Properties EnvironmentVersionPropertiesInput
+	EnvironmentVersionProperties EnvironmentVersionTypeInput
 	// Name of Azure Machine Learning registry. This is case-insensitive
 	RegistryName pulumi.StringInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// Version identifier. This is case-sensitive.
+	// Version identifier.
 	Version pulumi.StringPtrInput
 }
 
@@ -217,19 +194,16 @@ func (o RegistryEnvironmentVersionOutput) ToRegistryEnvironmentVersionOutputWith
 	return o
 }
 
-// The Azure API version of the resource.
-func (o RegistryEnvironmentVersionOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *RegistryEnvironmentVersion) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+// [Required] Additional attributes of the entity.
+func (o RegistryEnvironmentVersionOutput) EnvironmentVersionProperties() EnvironmentVersionResponseOutput {
+	return o.ApplyT(func(v *RegistryEnvironmentVersion) EnvironmentVersionResponseOutput {
+		return v.EnvironmentVersionProperties
+	}).(EnvironmentVersionResponseOutput)
 }
 
 // The name of the resource
 func (o RegistryEnvironmentVersionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegistryEnvironmentVersion) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
-}
-
-// [Required] Additional attributes of the entity.
-func (o RegistryEnvironmentVersionOutput) Properties() EnvironmentVersionPropertiesResponseV1Output {
-	return o.ApplyT(func(v *RegistryEnvironmentVersion) EnvironmentVersionPropertiesResponseV1Output { return v.Properties }).(EnvironmentVersionPropertiesResponseV1Output)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

@@ -8,15 +8,13 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Network Tap resource definition.
 //
-// Uses Azure REST API version 2023-06-15. In version 2.x of the Azure Native provider, it used API version 2023-06-15.
-//
-// Other available API versions: 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Uses Azure REST API version 2023-06-15.
 type NetworkTap struct {
 	pulumi.CustomResourceState
 
@@ -24,8 +22,6 @@ type NetworkTap struct {
 	AdministrativeState pulumi.StringOutput `pulumi:"administrativeState"`
 	// Switch configuration description.
 	Annotation pulumi.StringPtrOutput `pulumi:"annotation"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets the configurations state of the resource.
 	ConfigurationState pulumi.StringOutput `pulumi:"configurationState"`
 	// List of destinations to send the filter traffic.
@@ -72,12 +68,6 @@ func NewNetworkTap(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:managednetworkfabric/v20230615:NetworkTap"),
-		},
-		{
-			Type: pulumi.String("azure-native:managednetworkfabric/v20240215preview:NetworkTap"),
-		},
-		{
-			Type: pulumi.String("azure-native:managednetworkfabric/v20240615preview:NetworkTap"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -197,11 +187,6 @@ func (o NetworkTapOutput) AdministrativeState() pulumi.StringOutput {
 // Switch configuration description.
 func (o NetworkTapOutput) Annotation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkTap) pulumi.StringPtrOutput { return v.Annotation }).(pulumi.StringPtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o NetworkTapOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *NetworkTap) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets the configurations state of the resource.

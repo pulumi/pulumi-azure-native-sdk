@@ -8,18 +8,16 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A Disk.
 //
-// Uses Azure REST API version 2018-09-15. In version 2.x of the Azure Native provider, it used API version 2018-09-15.
+// Uses Azure REST API version 2018-09-15. In version 1.x of the Azure Native provider, it used API version 2018-09-15.
 type Disk struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The creation date of the disk.
 	CreatedDate pulumi.StringOutput `pulumi:"createdDate"`
 	// When backed by a blob, the name of the VHD blob without extension.
@@ -34,21 +32,19 @@ type Disk struct {
 	HostCaching pulumi.StringPtrOutput `pulumi:"hostCaching"`
 	// The resource ID of the VM to which this disk is leased.
 	LeasedByLabVmId pulumi.StringPtrOutput `pulumi:"leasedByLabVmId"`
-	// The geo-location where the resource lives
+	// The location of the resource.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// When backed by managed disk, this is the ID of the compute disk resource.
 	ManagedDiskId pulumi.StringPtrOutput `pulumi:"managedDiskId"`
-	// The name of the resource
+	// The name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning status of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// When backed by a blob, the storage account where the blob is.
 	StorageAccountId pulumi.StringPtrOutput `pulumi:"storageAccountId"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// Resource tags.
+	// The tags of the resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// The type of the resource.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The unique immutable identifier of a resource (Guid).
 	UniqueIdentifier pulumi.StringOutput `pulumi:"uniqueIdentifier"`
@@ -126,17 +122,17 @@ type diskArgs struct {
 	LabName string `pulumi:"labName"`
 	// The resource ID of the VM to which this disk is leased.
 	LeasedByLabVmId *string `pulumi:"leasedByLabVmId"`
-	// The geo-location where the resource lives
+	// The location of the resource.
 	Location *string `pulumi:"location"`
 	// When backed by managed disk, this is the ID of the compute disk resource.
 	ManagedDiskId *string `pulumi:"managedDiskId"`
 	// The name of the disk.
 	Name *string `pulumi:"name"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// When backed by a blob, the storage account where the blob is.
 	StorageAccountId *string `pulumi:"storageAccountId"`
-	// Resource tags.
+	// The tags of the resource.
 	Tags map[string]string `pulumi:"tags"`
 	// The name of the user profile.
 	UserName string `pulumi:"userName"`
@@ -158,17 +154,17 @@ type DiskArgs struct {
 	LabName pulumi.StringInput
 	// The resource ID of the VM to which this disk is leased.
 	LeasedByLabVmId pulumi.StringPtrInput
-	// The geo-location where the resource lives
+	// The location of the resource.
 	Location pulumi.StringPtrInput
 	// When backed by managed disk, this is the ID of the compute disk resource.
 	ManagedDiskId pulumi.StringPtrInput
 	// The name of the disk.
 	Name pulumi.StringPtrInput
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
 	// When backed by a blob, the storage account where the blob is.
 	StorageAccountId pulumi.StringPtrInput
-	// Resource tags.
+	// The tags of the resource.
 	Tags pulumi.StringMapInput
 	// The name of the user profile.
 	UserName pulumi.StringInput
@@ -211,11 +207,6 @@ func (o DiskOutput) ToDiskOutputWithContext(ctx context.Context) DiskOutput {
 	return o
 }
 
-// The Azure API version of the resource.
-func (o DiskOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // The creation date of the disk.
 func (o DiskOutput) CreatedDate() pulumi.StringOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.CreatedDate }).(pulumi.StringOutput)
@@ -251,7 +242,7 @@ func (o DiskOutput) LeasedByLabVmId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringPtrOutput { return v.LeasedByLabVmId }).(pulumi.StringPtrOutput)
 }
 
-// The geo-location where the resource lives
+// The location of the resource.
 func (o DiskOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
@@ -261,7 +252,7 @@ func (o DiskOutput) ManagedDiskId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringPtrOutput { return v.ManagedDiskId }).(pulumi.StringPtrOutput)
 }
 
-// The name of the resource
+// The name of the resource.
 func (o DiskOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -276,17 +267,12 @@ func (o DiskOutput) StorageAccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringPtrOutput { return v.StorageAccountId }).(pulumi.StringPtrOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o DiskOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *Disk) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
-}
-
-// Resource tags.
+// The tags of the resource.
 func (o DiskOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// The type of the resource.
 func (o DiskOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

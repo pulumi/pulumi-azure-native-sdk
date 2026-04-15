@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Get container.
+// Azure Resource Manager resource envelope.
 //
-// Uses Azure REST API version 2025-12-01.
+// Uses Azure REST API version 2023-04-01-preview.
 //
-// Other available API versions: 2023-02-01-preview, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview.
 func LookupFeaturesetContainerEntity(ctx *pulumi.Context, args *LookupFeaturesetContainerEntityArgs, opts ...pulumi.InvokeOption) (*LookupFeaturesetContainerEntityResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFeaturesetContainerEntityResult
@@ -31,20 +31,18 @@ type LookupFeaturesetContainerEntityArgs struct {
 	Name string `pulumi:"name"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Azure Machine Learning Workspace Name
+	// Name of Azure Machine Learning workspace.
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Azure Resource Manager resource envelope.
 type LookupFeaturesetContainerEntityResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// [Required] Additional attributes of the entity.
+	FeaturesetContainerProperties FeaturesetContainerResponse `pulumi:"featuresetContainerProperties"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// [Required] Additional attributes of the entity.
-	Properties FeaturesetContainerPropertiesResponse `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -57,7 +55,7 @@ func (val *LookupFeaturesetContainerEntityResult) Defaults() *LookupFeaturesetCo
 		return nil
 	}
 	tmp := *val
-	tmp.Properties = *tmp.Properties.Defaults()
+	tmp.FeaturesetContainerProperties = *tmp.FeaturesetContainerProperties.Defaults()
 
 	return &tmp
 }
@@ -75,7 +73,7 @@ type LookupFeaturesetContainerEntityOutputArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	// Azure Machine Learning Workspace Name
+	// Name of Azure Machine Learning workspace.
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
@@ -98,9 +96,11 @@ func (o LookupFeaturesetContainerEntityResultOutput) ToLookupFeaturesetContainer
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupFeaturesetContainerEntityResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupFeaturesetContainerEntityResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+// [Required] Additional attributes of the entity.
+func (o LookupFeaturesetContainerEntityResultOutput) FeaturesetContainerProperties() FeaturesetContainerResponseOutput {
+	return o.ApplyT(func(v LookupFeaturesetContainerEntityResult) FeaturesetContainerResponse {
+		return v.FeaturesetContainerProperties
+	}).(FeaturesetContainerResponseOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -111,13 +111,6 @@ func (o LookupFeaturesetContainerEntityResultOutput) Id() pulumi.StringOutput {
 // The name of the resource
 func (o LookupFeaturesetContainerEntityResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFeaturesetContainerEntityResult) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// [Required] Additional attributes of the entity.
-func (o LookupFeaturesetContainerEntityResultOutput) Properties() FeaturesetContainerPropertiesResponseOutput {
-	return o.ApplyT(func(v LookupFeaturesetContainerEntityResult) FeaturesetContainerPropertiesResponse {
-		return v.Properties
-	}).(FeaturesetContainerPropertiesResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

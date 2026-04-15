@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Lists all the keys associated with this workspace. This includes keys for the storage account, app insights and password for container registry.
+// Lists all the keys associated with this workspace. This includes keys for the storage account, app insights and password for container registry
 //
-// Uses Azure REST API version 2025-12-01.
+// Uses Azure REST API version 2023-04-01.
 //
-// Other available API versions: 2020-05-01-preview, 2020-05-15-preview, 2020-06-01, 2020-08-01, 2020-09-01-preview, 2021-01-01, 2021-03-01-preview, 2021-04-01, 2021-07-01, 2022-01-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2020-08-01, 2020-09-01-preview, 2022-01-01-preview, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview.
 func ListWorkspaceKeys(ctx *pulumi.Context, args *ListWorkspaceKeysArgs, opts ...pulumi.InvokeOption) (*ListWorkspaceKeysResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListWorkspaceKeysResult
@@ -29,19 +29,16 @@ func ListWorkspaceKeys(ctx *pulumi.Context, args *ListWorkspaceKeysArgs, opts ..
 type ListWorkspaceKeysArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Azure Machine Learning Workspace Name
+	// Name of Azure Machine Learning workspace.
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 type ListWorkspaceKeysResult struct {
-	// The access key of the workspace app insights
-	AppInsightsInstrumentationKey string                                 `pulumi:"appInsightsInstrumentationKey"`
-	ContainerRegistryCredentials  *RegistryListCredentialsResultResponse `pulumi:"containerRegistryCredentials"`
-	NotebookAccessKeys            *ListNotebookKeysResultResponse        `pulumi:"notebookAccessKeys"`
-	// The arm Id key of the workspace storage
-	UserStorageArmId string `pulumi:"userStorageArmId"`
-	// The access key of the workspace storage
-	UserStorageKey string `pulumi:"userStorageKey"`
+	AppInsightsInstrumentationKey string                                `pulumi:"appInsightsInstrumentationKey"`
+	ContainerRegistryCredentials  RegistryListCredentialsResultResponse `pulumi:"containerRegistryCredentials"`
+	NotebookAccessKeys            ListNotebookKeysResultResponse        `pulumi:"notebookAccessKeys"`
+	UserStorageKey                string                                `pulumi:"userStorageKey"`
+	UserStorageResourceId         string                                `pulumi:"userStorageResourceId"`
 }
 
 func ListWorkspaceKeysOutput(ctx *pulumi.Context, args ListWorkspaceKeysOutputArgs, opts ...pulumi.InvokeOption) ListWorkspaceKeysResultOutput {
@@ -56,7 +53,7 @@ func ListWorkspaceKeysOutput(ctx *pulumi.Context, args ListWorkspaceKeysOutputAr
 type ListWorkspaceKeysOutputArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	// Azure Machine Learning Workspace Name
+	// Name of Azure Machine Learning workspace.
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
@@ -78,29 +75,26 @@ func (o ListWorkspaceKeysResultOutput) ToListWorkspaceKeysResultOutputWithContex
 	return o
 }
 
-// The access key of the workspace app insights
 func (o ListWorkspaceKeysResultOutput) AppInsightsInstrumentationKey() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWorkspaceKeysResult) string { return v.AppInsightsInstrumentationKey }).(pulumi.StringOutput)
 }
 
-func (o ListWorkspaceKeysResultOutput) ContainerRegistryCredentials() RegistryListCredentialsResultResponsePtrOutput {
-	return o.ApplyT(func(v ListWorkspaceKeysResult) *RegistryListCredentialsResultResponse {
+func (o ListWorkspaceKeysResultOutput) ContainerRegistryCredentials() RegistryListCredentialsResultResponseOutput {
+	return o.ApplyT(func(v ListWorkspaceKeysResult) RegistryListCredentialsResultResponse {
 		return v.ContainerRegistryCredentials
-	}).(RegistryListCredentialsResultResponsePtrOutput)
+	}).(RegistryListCredentialsResultResponseOutput)
 }
 
-func (o ListWorkspaceKeysResultOutput) NotebookAccessKeys() ListNotebookKeysResultResponsePtrOutput {
-	return o.ApplyT(func(v ListWorkspaceKeysResult) *ListNotebookKeysResultResponse { return v.NotebookAccessKeys }).(ListNotebookKeysResultResponsePtrOutput)
+func (o ListWorkspaceKeysResultOutput) NotebookAccessKeys() ListNotebookKeysResultResponseOutput {
+	return o.ApplyT(func(v ListWorkspaceKeysResult) ListNotebookKeysResultResponse { return v.NotebookAccessKeys }).(ListNotebookKeysResultResponseOutput)
 }
 
-// The arm Id key of the workspace storage
-func (o ListWorkspaceKeysResultOutput) UserStorageArmId() pulumi.StringOutput {
-	return o.ApplyT(func(v ListWorkspaceKeysResult) string { return v.UserStorageArmId }).(pulumi.StringOutput)
-}
-
-// The access key of the workspace storage
 func (o ListWorkspaceKeysResultOutput) UserStorageKey() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWorkspaceKeysResult) string { return v.UserStorageKey }).(pulumi.StringOutput)
+}
+
+func (o ListWorkspaceKeysResultOutput) UserStorageResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v ListWorkspaceKeysResult) string { return v.UserStorageResourceId }).(pulumi.StringOutput)
 }
 
 func init() {

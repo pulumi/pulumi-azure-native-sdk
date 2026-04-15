@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,8 +33,6 @@ type LookupEc2InstanceStatusArgs struct {
 
 // A Microsoft.AwsConnector resource
 type LookupEc2InstanceStatusResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -84,11 +82,6 @@ func (o LookupEc2InstanceStatusResultOutput) ToLookupEc2InstanceStatusResultOutp
 
 func (o LookupEc2InstanceStatusResultOutput) ToLookupEc2InstanceStatusResultOutputWithContext(ctx context.Context) LookupEc2InstanceStatusResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupEc2InstanceStatusResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupEc2InstanceStatusResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

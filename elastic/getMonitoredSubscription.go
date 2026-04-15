@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The request to update subscriptions needed to be monitored by the Elastic monitor resource.
 //
-// Uses Azure REST API version 2025-01-15-preview.
+// Uses Azure REST API version 2024-05-01-preview.
 //
-// Other available API versions: 2024-05-01-preview, 2024-06-15-preview, 2024-10-01-preview, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native elastic [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-06-15-preview, 2024-10-01-preview, 2025-01-15-preview.
 func LookupMonitoredSubscription(ctx *pulumi.Context, args *LookupMonitoredSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupMonitoredSubscriptionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMonitoredSubscriptionResult
@@ -37,8 +37,6 @@ type LookupMonitoredSubscriptionArgs struct {
 
 // The request to update subscriptions needed to be monitored by the Elastic monitor resource.
 type LookupMonitoredSubscriptionResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The id of the monitored subscription resource.
 	Id string `pulumi:"id"`
 	// Name of the monitored subscription resource.
@@ -84,11 +82,6 @@ func (o LookupMonitoredSubscriptionResultOutput) ToLookupMonitoredSubscriptionRe
 
 func (o LookupMonitoredSubscriptionResultOutput) ToLookupMonitoredSubscriptionResultOutputWithContext(ctx context.Context) LookupMonitoredSubscriptionResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupMonitoredSubscriptionResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMonitoredSubscriptionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The id of the monitored subscription resource.

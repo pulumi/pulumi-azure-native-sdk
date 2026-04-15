@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,8 +33,6 @@ type LookupCloudConnectionArgs struct {
 
 // Resource which represents the managed network connection between Azure Gateways and remote cloud gateways.
 type LookupCloudConnectionResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The cloud connector which discovered the remote resource.
 	CloudConnector *ResourceReferenceResponse `pulumi:"cloudConnector"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -94,11 +92,6 @@ func (o LookupCloudConnectionResultOutput) ToLookupCloudConnectionResultOutput()
 
 func (o LookupCloudConnectionResultOutput) ToLookupCloudConnectionResultOutputWithContext(ctx context.Context) LookupCloudConnectionResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupCloudConnectionResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCloudConnectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The cloud connector which discovered the remote resource.

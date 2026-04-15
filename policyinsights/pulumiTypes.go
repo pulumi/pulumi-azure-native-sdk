@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -381,8 +381,6 @@ func (o RemediationDeploymentSummaryResponseOutput) TotalDeployments() pulumi.In
 type RemediationFilters struct {
 	// The resource locations that will be remediated.
 	Locations []string `pulumi:"locations"`
-	// The IDs of the resources that will be remediated. Can specify at most 100 IDs. This filter cannot be used when ReEvaluateCompliance is set to ReEvaluateCompliance, and cannot be empty if provided.
-	ResourceIds []string `pulumi:"resourceIds"`
 }
 
 // RemediationFiltersInput is an input type that accepts RemediationFiltersArgs and RemediationFiltersOutput values.
@@ -400,8 +398,6 @@ type RemediationFiltersInput interface {
 type RemediationFiltersArgs struct {
 	// The resource locations that will be remediated.
 	Locations pulumi.StringArrayInput `pulumi:"locations"`
-	// The IDs of the resources that will be remediated. Can specify at most 100 IDs. This filter cannot be used when ReEvaluateCompliance is set to ReEvaluateCompliance, and cannot be empty if provided.
-	ResourceIds pulumi.StringArrayInput `pulumi:"resourceIds"`
 }
 
 func (RemediationFiltersArgs) ElementType() reflect.Type {
@@ -487,11 +483,6 @@ func (o RemediationFiltersOutput) Locations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RemediationFilters) []string { return v.Locations }).(pulumi.StringArrayOutput)
 }
 
-// The IDs of the resources that will be remediated. Can specify at most 100 IDs. This filter cannot be used when ReEvaluateCompliance is set to ReEvaluateCompliance, and cannot be empty if provided.
-func (o RemediationFiltersOutput) ResourceIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v RemediationFilters) []string { return v.ResourceIds }).(pulumi.StringArrayOutput)
-}
-
 type RemediationFiltersPtrOutput struct{ *pulumi.OutputState }
 
 func (RemediationFiltersPtrOutput) ElementType() reflect.Type {
@@ -526,22 +517,10 @@ func (o RemediationFiltersPtrOutput) Locations() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// The IDs of the resources that will be remediated. Can specify at most 100 IDs. This filter cannot be used when ReEvaluateCompliance is set to ReEvaluateCompliance, and cannot be empty if provided.
-func (o RemediationFiltersPtrOutput) ResourceIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *RemediationFilters) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ResourceIds
-	}).(pulumi.StringArrayOutput)
-}
-
 // The filters that will be applied to determine which resources to remediate.
 type RemediationFiltersResponse struct {
 	// The resource locations that will be remediated.
 	Locations []string `pulumi:"locations"`
-	// The IDs of the resources that will be remediated. Can specify at most 100 IDs. This filter cannot be used when ReEvaluateCompliance is set to ReEvaluateCompliance, and cannot be empty if provided.
-	ResourceIds []string `pulumi:"resourceIds"`
 }
 
 // The filters that will be applied to determine which resources to remediate.
@@ -562,11 +541,6 @@ func (o RemediationFiltersResponseOutput) ToRemediationFiltersResponseOutputWith
 // The resource locations that will be remediated.
 func (o RemediationFiltersResponseOutput) Locations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RemediationFiltersResponse) []string { return v.Locations }).(pulumi.StringArrayOutput)
-}
-
-// The IDs of the resources that will be remediated. Can specify at most 100 IDs. This filter cannot be used when ReEvaluateCompliance is set to ReEvaluateCompliance, and cannot be empty if provided.
-func (o RemediationFiltersResponseOutput) ResourceIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v RemediationFiltersResponse) []string { return v.ResourceIds }).(pulumi.StringArrayOutput)
 }
 
 type RemediationFiltersResponsePtrOutput struct{ *pulumi.OutputState }
@@ -600,16 +574,6 @@ func (o RemediationFiltersResponsePtrOutput) Locations() pulumi.StringArrayOutpu
 			return nil
 		}
 		return v.Locations
-	}).(pulumi.StringArrayOutput)
-}
-
-// The IDs of the resources that will be remediated. Can specify at most 100 IDs. This filter cannot be used when ReEvaluateCompliance is set to ReEvaluateCompliance, and cannot be empty if provided.
-func (o RemediationFiltersResponsePtrOutput) ResourceIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *RemediationFiltersResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ResourceIds
 	}).(pulumi.StringArrayOutput)
 }
 

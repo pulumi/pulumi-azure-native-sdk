@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,7 +31,7 @@ type LookupSecretArgs struct {
 	LabName string `pulumi:"labName"`
 	// The name of the secret.
 	Name string `pulumi:"name"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the user profile.
 	UserName string `pulumi:"userName"`
@@ -39,21 +39,17 @@ type LookupSecretArgs struct {
 
 // A secret.
 type LookupSecretResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// The identifier of the resource.
 	Id string `pulumi:"id"`
-	// The geo-location where the resource lives
+	// The location of the resource.
 	Location *string `pulumi:"location"`
-	// The name of the resource
+	// The name of the resource.
 	Name string `pulumi:"name"`
 	// The provisioning status of the resource.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
-	// Resource tags.
+	// The tags of the resource.
 	Tags map[string]string `pulumi:"tags"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// The type of the resource.
 	Type string `pulumi:"type"`
 	// The unique immutable identifier of a resource (Guid).
 	UniqueIdentifier string `pulumi:"uniqueIdentifier"`
@@ -77,7 +73,7 @@ type LookupSecretOutputArgs struct {
 	LabName pulumi.StringInput `pulumi:"labName"`
 	// The name of the secret.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the user profile.
 	UserName pulumi.StringInput `pulumi:"userName"`
@@ -102,22 +98,17 @@ func (o LookupSecretResultOutput) ToLookupSecretResultOutputWithContext(ctx cont
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupSecretResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSecretResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// The identifier of the resource.
 func (o LookupSecretResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecretResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The geo-location where the resource lives
+// The location of the resource.
 func (o LookupSecretResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecretResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// The name of the resource
+// The name of the resource.
 func (o LookupSecretResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecretResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -127,17 +118,12 @@ func (o LookupSecretResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecretResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupSecretResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupSecretResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
-}
-
-// Resource tags.
+// The tags of the resource.
 func (o LookupSecretResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupSecretResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// The type of the resource.
 func (o LookupSecretResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecretResult) string { return v.Type }).(pulumi.StringOutput)
 }

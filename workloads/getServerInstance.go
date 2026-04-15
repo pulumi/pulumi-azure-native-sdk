@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,8 +37,6 @@ type LookupServerInstanceArgs struct {
 
 // Define the Server Instance resource.
 type LookupServerInstanceResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Configuration data for this server instance.
 	ConfigurationData ConfigurationDataResponse `pulumi:"configurationData"`
 	// Defines the errors related to SAP Instance resource.
@@ -106,11 +104,6 @@ func (o LookupServerInstanceResultOutput) ToLookupServerInstanceResultOutput() L
 
 func (o LookupServerInstanceResultOutput) ToLookupServerInstanceResultOutputWithContext(ctx context.Context) LookupServerInstanceResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupServerInstanceResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupServerInstanceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Configuration data for this server instance.

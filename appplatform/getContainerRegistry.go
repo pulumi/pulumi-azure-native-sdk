@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the container registries resource.
 //
-// Uses Azure REST API version 2024-01-01-preview.
+// Uses Azure REST API version 2023-05-01-preview.
 //
-// Other available API versions: 2023-05-01-preview, 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01, 2024-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native appplatform [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01, 2024-01-01-preview, 2024-05-01-preview.
 func LookupContainerRegistry(ctx *pulumi.Context, args *LookupContainerRegistryArgs, opts ...pulumi.InvokeOption) (*LookupContainerRegistryResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupContainerRegistryResult
@@ -37,8 +37,6 @@ type LookupContainerRegistryArgs struct {
 
 // Container registry resource payload.
 type LookupContainerRegistryResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource Id for the resource.
 	Id string `pulumi:"id"`
 	// The name of the resource.
@@ -86,11 +84,6 @@ func (o LookupContainerRegistryResultOutput) ToLookupContainerRegistryResultOutp
 
 func (o LookupContainerRegistryResultOutput) ToLookupContainerRegistryResultOutputWithContext(ctx context.Context) LookupContainerRegistryResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupContainerRegistryResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupContainerRegistryResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource Id for the resource.

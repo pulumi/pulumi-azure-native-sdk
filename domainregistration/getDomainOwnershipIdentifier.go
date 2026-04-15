@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Description for Get ownership identifier for domain
 //
-// Uses Azure REST API version 2024-04-01.
+// Uses Azure REST API version 2022-09-01.
 //
-// Other available API versions: 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native domainregistration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
 func LookupDomainOwnershipIdentifier(ctx *pulumi.Context, args *LookupDomainOwnershipIdentifierArgs, opts ...pulumi.InvokeOption) (*LookupDomainOwnershipIdentifierResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDomainOwnershipIdentifierResult
@@ -37,8 +37,6 @@ type LookupDomainOwnershipIdentifierArgs struct {
 
 // Domain ownership Identifier.
 type LookupDomainOwnershipIdentifierResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource Id.
 	Id string `pulumi:"id"`
 	// Kind of resource.
@@ -86,11 +84,6 @@ func (o LookupDomainOwnershipIdentifierResultOutput) ToLookupDomainOwnershipIden
 
 func (o LookupDomainOwnershipIdentifierResultOutput) ToLookupDomainOwnershipIdentifierResultOutputWithContext(ctx context.Context) LookupDomainOwnershipIdentifierResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupDomainOwnershipIdentifierResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDomainOwnershipIdentifierResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource Id.

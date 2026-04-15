@@ -7,15 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Get Online Endpoint.
+// Uses Azure REST API version 2023-04-01.
 //
-// Uses Azure REST API version 2025-12-01.
-//
-// Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview.
 func LookupOnlineEndpoint(ctx *pulumi.Context, args *LookupOnlineEndpointArgs, opts ...pulumi.InvokeOption) (*LookupOnlineEndpointResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupOnlineEndpointResult
@@ -31,14 +29,11 @@ type LookupOnlineEndpointArgs struct {
 	EndpointName string `pulumi:"endpointName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Azure Machine Learning Workspace Name
+	// Name of Azure Machine Learning workspace.
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
-// Concrete tracked resource types can be created by aliasing this type using a specific property type.
 type LookupOnlineEndpointResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Managed service identity (system assigned and/or user assigned identities)
@@ -50,7 +45,7 @@ type LookupOnlineEndpointResult struct {
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// [Required] Additional attributes of the entity.
-	Properties OnlineEndpointPropertiesResponse `pulumi:"properties"`
+	OnlineEndpointProperties OnlineEndpointResponse `pulumi:"onlineEndpointProperties"`
 	// Sku details required for ARM contract for Autoscaling.
 	Sku *SkuResponse `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -67,7 +62,7 @@ func (val *LookupOnlineEndpointResult) Defaults() *LookupOnlineEndpointResult {
 		return nil
 	}
 	tmp := *val
-	tmp.Properties = *tmp.Properties.Defaults()
+	tmp.OnlineEndpointProperties = *tmp.OnlineEndpointProperties.Defaults()
 
 	return &tmp
 }
@@ -85,7 +80,7 @@ type LookupOnlineEndpointOutputArgs struct {
 	EndpointName pulumi.StringInput `pulumi:"endpointName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	// Azure Machine Learning Workspace Name
+	// Name of Azure Machine Learning workspace.
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
@@ -93,7 +88,6 @@ func (LookupOnlineEndpointOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupOnlineEndpointArgs)(nil)).Elem()
 }
 
-// Concrete tracked resource types can be created by aliasing this type using a specific property type.
 type LookupOnlineEndpointResultOutput struct{ *pulumi.OutputState }
 
 func (LookupOnlineEndpointResultOutput) ElementType() reflect.Type {
@@ -106,11 +100,6 @@ func (o LookupOnlineEndpointResultOutput) ToLookupOnlineEndpointResultOutput() L
 
 func (o LookupOnlineEndpointResultOutput) ToLookupOnlineEndpointResultOutputWithContext(ctx context.Context) LookupOnlineEndpointResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupOnlineEndpointResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupOnlineEndpointResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -139,8 +128,8 @@ func (o LookupOnlineEndpointResultOutput) Name() pulumi.StringOutput {
 }
 
 // [Required] Additional attributes of the entity.
-func (o LookupOnlineEndpointResultOutput) Properties() OnlineEndpointPropertiesResponseOutput {
-	return o.ApplyT(func(v LookupOnlineEndpointResult) OnlineEndpointPropertiesResponse { return v.Properties }).(OnlineEndpointPropertiesResponseOutput)
+func (o LookupOnlineEndpointResultOutput) OnlineEndpointProperties() OnlineEndpointResponseOutput {
+	return o.ApplyT(func(v LookupOnlineEndpointResult) OnlineEndpointResponse { return v.OnlineEndpointProperties }).(OnlineEndpointResponseOutput)
 }
 
 // Sku details required for ARM contract for Autoscaling.

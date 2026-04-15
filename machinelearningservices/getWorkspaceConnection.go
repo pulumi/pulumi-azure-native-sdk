@@ -7,15 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Lists machine learning workspaces connections by name.
+// Uses Azure REST API version 2023-04-01.
 //
-// Uses Azure REST API version 2025-12-01.
-//
-// Other available API versions: 2020-06-01, 2020-08-01, 2020-09-01-preview, 2021-01-01, 2021-03-01-preview, 2021-04-01, 2021-07-01, 2022-01-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-04-01, 2022-02-01-preview, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview.
 func LookupWorkspaceConnection(ctx *pulumi.Context, args *LookupWorkspaceConnectionArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceConnectionResult
@@ -31,14 +29,11 @@ type LookupWorkspaceConnectionArgs struct {
 	ConnectionName string `pulumi:"connectionName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Azure Machine Learning Workspace Name
+	// Name of Azure Machine Learning workspace.
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
-// Concrete proxy resource types can be created by aliasing this type using a specific property type.
 type LookupWorkspaceConnectionResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -64,7 +59,7 @@ type LookupWorkspaceConnectionOutputArgs struct {
 	ConnectionName pulumi.StringInput `pulumi:"connectionName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	// Azure Machine Learning Workspace Name
+	// Name of Azure Machine Learning workspace.
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
@@ -72,7 +67,6 @@ func (LookupWorkspaceConnectionOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupWorkspaceConnectionArgs)(nil)).Elem()
 }
 
-// Concrete proxy resource types can be created by aliasing this type using a specific property type.
 type LookupWorkspaceConnectionResultOutput struct{ *pulumi.OutputState }
 
 func (LookupWorkspaceConnectionResultOutput) ElementType() reflect.Type {
@@ -85,11 +79,6 @@ func (o LookupWorkspaceConnectionResultOutput) ToLookupWorkspaceConnectionResult
 
 func (o LookupWorkspaceConnectionResultOutput) ToLookupWorkspaceConnectionResultOutputWithContext(ctx context.Context) LookupWorkspaceConnectionResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupWorkspaceConnectionResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWorkspaceConnectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

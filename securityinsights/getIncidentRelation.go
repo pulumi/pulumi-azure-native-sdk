@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a relation for a given incident.
 //
-// Uses Azure REST API version 2024-09-01.
+// Uses Azure REST API version 2023-02-01.
 //
-// Other available API versions: 2023-02-01, 2023-03-01-preview, 2023-04-01-preview, 2023-05-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-03-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-03-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-09-01, 2024-10-01-preview, 2025-01-01-preview, 2025-03-01.
 func LookupIncidentRelation(ctx *pulumi.Context, args *LookupIncidentRelationArgs, opts ...pulumi.InvokeOption) (*LookupIncidentRelationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIncidentRelationResult
@@ -39,8 +39,6 @@ type LookupIncidentRelationArgs struct {
 
 // Represents a relation between two resources
 type LookupIncidentRelationResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Etag of the azure resource
 	Etag *string `pulumi:"etag"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -98,11 +96,6 @@ func (o LookupIncidentRelationResultOutput) ToLookupIncidentRelationResultOutput
 
 func (o LookupIncidentRelationResultOutput) ToLookupIncidentRelationResultOutputWithContext(ctx context.Context) LookupIncidentRelationResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupIncidentRelationResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupIncidentRelationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Etag of the azure resource

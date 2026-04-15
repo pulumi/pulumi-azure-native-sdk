@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Describes a Machine Extension.
 //
-// Uses Azure REST API version 2022-12-15-preview. In version 2.x of the Azure Native provider, it used API version 2022-12-15-preview.
+// Uses Azure REST API version 2022-12-15-preview.
 type MachineExtension struct {
 	pulumi.CustomResourceState
 
 	// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
 	AutoUpgradeMinorVersion pulumi.BoolPtrOutput `pulumi:"autoUpgradeMinorVersion"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// How the extension handler should be forced to update even if the extension configuration has not changed.
 	ForceUpdateTag pulumi.StringPtrOutput `pulumi:"forceUpdateTag"`
 	// The machine extension instance view.
@@ -197,11 +195,6 @@ func (o MachineExtensionOutput) ToMachineExtensionOutputWithContext(ctx context.
 // Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
 func (o MachineExtensionOutput) AutoUpgradeMinorVersion() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *MachineExtension) pulumi.BoolPtrOutput { return v.AutoUpgradeMinorVersion }).(pulumi.BoolPtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o MachineExtensionOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *MachineExtension) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // How the extension handler should be forced to update even if the extension configuration has not changed.

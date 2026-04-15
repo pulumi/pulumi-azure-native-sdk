@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "azure-native:automanage:Account":
+		r = &Account{}
 	case "azure-native:automanage:ConfigurationProfile":
 		r = &ConfigurationProfile{}
 	case "azure-native:automanage:ConfigurationProfileAssignment":
@@ -29,6 +31,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ConfigurationProfileHCIAssignment{}
 	case "azure-native:automanage:ConfigurationProfileHCRPAssignment":
 		r = &ConfigurationProfileHCRPAssignment{}
+	case "azure-native:automanage:ConfigurationProfilePreference":
+		r = &ConfigurationProfilePreference{}
 	case "azure-native:automanage:ConfigurationProfilesVersion":
 		r = &ConfigurationProfilesVersion{}
 	default:

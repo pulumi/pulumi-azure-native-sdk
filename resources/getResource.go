@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a resource.
 //
-// Uses Azure REST API version 2024-03-01.
+// Uses Azure REST API version 2022-09-01.
 //
-// Other available API versions: 2020-10-01, 2021-01-01, 2021-04-01, 2022-09-01, 2023-07-01, 2024-07-01, 2024-11-01, 2025-03-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native resources [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-07-01, 2024-03-01, 2024-07-01, 2024-11-01.
 func LookupResource(ctx *pulumi.Context, args *LookupResourceArgs, opts ...pulumi.InvokeOption) (*LookupResourceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupResourceResult
@@ -43,8 +43,6 @@ type LookupResourceArgs struct {
 
 // Resource information.
 type LookupResourceResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource extended location.
 	ExtendedLocation *ExtendedLocationResponse `pulumi:"extendedLocation"`
 	// Resource ID
@@ -112,11 +110,6 @@ func (o LookupResourceResultOutput) ToLookupResourceResultOutput() LookupResourc
 
 func (o LookupResourceResultOutput) ToLookupResourceResultOutputWithContext(ctx context.Context) LookupResourceResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupResourceResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupResourceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource extended location.

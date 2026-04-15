@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,8 +35,6 @@ type LookupMultipleActivationKeyArgs struct {
 type LookupMultipleActivationKeyResult struct {
 	// Agreement number under which the key is requested.
 	AgreementNumber *string `pulumi:"agreementNumber"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// End of support of security updates activated by the MAK key.
 	ExpirationDate string `pulumi:"expirationDate"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -112,11 +110,6 @@ func (o LookupMultipleActivationKeyResultOutput) ToLookupMultipleActivationKeyRe
 // Agreement number under which the key is requested.
 func (o LookupMultipleActivationKeyResultOutput) AgreementNumber() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupMultipleActivationKeyResult) *string { return v.AgreementNumber }).(pulumi.StringPtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o LookupMultipleActivationKeyResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMultipleActivationKeyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // End of support of security updates activated by the MAK key.

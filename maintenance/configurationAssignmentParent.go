@@ -8,33 +8,29 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Configuration Assignment
 //
-// Uses Azure REST API version 2023-10-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-11-01-preview.
+// Uses Azure REST API version 2022-11-01-preview. In version 1.x of the Azure Native provider, it used API version 2021-04-01-preview.
 //
-// Other available API versions: 2022-11-01-preview, 2023-04-01, 2023-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native maintenance [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-04-01, 2023-09-01-preview, 2023-10-01-preview.
 type ConfigurationAssignmentParent struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
-	// Properties of the configuration assignment
-	Filter ConfigurationAssignmentFilterPropertiesResponsePtrOutput `pulumi:"filter"`
 	// Location of the resource
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The maintenance configuration Id
 	MaintenanceConfigurationId pulumi.StringPtrOutput `pulumi:"maintenanceConfigurationId"`
-	// The name of the resource
+	// Name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The unique resourceId
 	ResourceId pulumi.StringPtrOutput `pulumi:"resourceId"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// Type of the resource
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -120,23 +116,21 @@ func (ConfigurationAssignmentParentState) ElementType() reflect.Type {
 }
 
 type configurationAssignmentParentArgs struct {
-	// The name of the ConfigurationAssignment
+	// Configuration assignment name
 	ConfigurationAssignmentName *string `pulumi:"configurationAssignmentName"`
-	// Properties of the configuration assignment
-	Filter *ConfigurationAssignmentFilterProperties `pulumi:"filter"`
 	// Location of the resource
 	Location *string `pulumi:"location"`
 	// The maintenance configuration Id
 	MaintenanceConfigurationId *string `pulumi:"maintenanceConfigurationId"`
 	// Resource provider name
 	ProviderName string `pulumi:"providerName"`
-	// The name of the resource group. The name is case insensitive.
+	// Resource group name
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The unique resourceId
 	ResourceId *string `pulumi:"resourceId"`
-	// Resource name
+	// Resource identifier
 	ResourceName string `pulumi:"resourceName"`
-	// Resource parent name
+	// Resource parent identifier
 	ResourceParentName string `pulumi:"resourceParentName"`
 	// Resource parent type
 	ResourceParentType string `pulumi:"resourceParentType"`
@@ -146,23 +140,21 @@ type configurationAssignmentParentArgs struct {
 
 // The set of arguments for constructing a ConfigurationAssignmentParent resource.
 type ConfigurationAssignmentParentArgs struct {
-	// The name of the ConfigurationAssignment
+	// Configuration assignment name
 	ConfigurationAssignmentName pulumi.StringPtrInput
-	// Properties of the configuration assignment
-	Filter ConfigurationAssignmentFilterPropertiesPtrInput
 	// Location of the resource
 	Location pulumi.StringPtrInput
 	// The maintenance configuration Id
 	MaintenanceConfigurationId pulumi.StringPtrInput
 	// Resource provider name
 	ProviderName pulumi.StringInput
-	// The name of the resource group. The name is case insensitive.
+	// Resource group name
 	ResourceGroupName pulumi.StringInput
 	// The unique resourceId
 	ResourceId pulumi.StringPtrInput
-	// Resource name
+	// Resource identifier
 	ResourceName pulumi.StringInput
-	// Resource parent name
+	// Resource parent identifier
 	ResourceParentName pulumi.StringInput
 	// Resource parent type
 	ResourceParentType pulumi.StringInput
@@ -207,18 +199,6 @@ func (o ConfigurationAssignmentParentOutput) ToConfigurationAssignmentParentOutp
 	return o
 }
 
-// The Azure API version of the resource.
-func (o ConfigurationAssignmentParentOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *ConfigurationAssignmentParent) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// Properties of the configuration assignment
-func (o ConfigurationAssignmentParentOutput) Filter() ConfigurationAssignmentFilterPropertiesResponsePtrOutput {
-	return o.ApplyT(func(v *ConfigurationAssignmentParent) ConfigurationAssignmentFilterPropertiesResponsePtrOutput {
-		return v.Filter
-	}).(ConfigurationAssignmentFilterPropertiesResponsePtrOutput)
-}
-
 // Location of the resource
 func (o ConfigurationAssignmentParentOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConfigurationAssignmentParent) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
@@ -229,7 +209,7 @@ func (o ConfigurationAssignmentParentOutput) MaintenanceConfigurationId() pulumi
 	return o.ApplyT(func(v *ConfigurationAssignmentParent) pulumi.StringPtrOutput { return v.MaintenanceConfigurationId }).(pulumi.StringPtrOutput)
 }
 
-// The name of the resource
+// Name of the resource
 func (o ConfigurationAssignmentParentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConfigurationAssignmentParent) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -244,7 +224,7 @@ func (o ConfigurationAssignmentParentOutput) SystemData() SystemDataResponseOutp
 	return o.ApplyT(func(v *ConfigurationAssignmentParent) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// Type of the resource
 func (o ConfigurationAssignmentParentOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConfigurationAssignmentParent) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

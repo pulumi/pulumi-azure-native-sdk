@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Implements virtual network GET method.
 //
-// Uses Azure REST API version 2023-12-01.
+// Uses Azure REST API version 2022-07-15-preview.
 //
-// Other available API versions: 2022-07-15-preview, 2023-03-01-preview, 2023-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native connectedvmwarevsphere [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-03-01-preview, 2023-10-01, 2023-12-01.
 func LookupVirtualNetwork(ctx *pulumi.Context, args *LookupVirtualNetworkArgs, opts ...pulumi.InvokeOption) (*LookupVirtualNetworkResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVirtualNetworkResult
@@ -35,8 +35,6 @@ type LookupVirtualNetworkArgs struct {
 
 // Define the virtualNetwork.
 type LookupVirtualNetworkResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets the name of the corresponding resource in Kubernetes.
 	CustomResourceName string `pulumi:"customResourceName"`
 	// Gets or sets the extended location.
@@ -55,7 +53,7 @@ type LookupVirtualNetworkResult struct {
 	MoRefId *string `pulumi:"moRefId"`
 	// Gets or sets the name.
 	Name string `pulumi:"name"`
-	// Gets the provisioning state.
+	// Gets or sets the provisioning state.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The resource status information.
 	Statuses []ResourceStatusResponse `pulumi:"statuses"`
@@ -106,11 +104,6 @@ func (o LookupVirtualNetworkResultOutput) ToLookupVirtualNetworkResultOutputWith
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupVirtualNetworkResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupVirtualNetworkResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Gets the name of the corresponding resource in Kubernetes.
 func (o LookupVirtualNetworkResultOutput) CustomResourceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkResult) string { return v.CustomResourceName }).(pulumi.StringOutput)
@@ -156,7 +149,7 @@ func (o LookupVirtualNetworkResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Gets the provisioning state.
+// Gets or sets the provisioning state.
 func (o LookupVirtualNetworkResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }

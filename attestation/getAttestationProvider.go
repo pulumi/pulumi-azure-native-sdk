@@ -7,13 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the status of Attestation Provider.
 //
 // Uses Azure REST API version 2021-06-01.
+//
+// Other available API versions: 2021-06-01-preview.
 func LookupAttestationProvider(ctx *pulumi.Context, args *LookupAttestationProviderArgs, opts ...pulumi.InvokeOption) (*LookupAttestationProviderResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAttestationProviderResult
@@ -21,7 +23,7 @@ func LookupAttestationProvider(ctx *pulumi.Context, args *LookupAttestationProvi
 	if err != nil {
 		return nil, err
 	}
-	return rv.Defaults(), nil
+	return &rv, nil
 }
 
 type LookupAttestationProviderArgs struct {
@@ -35,8 +37,6 @@ type LookupAttestationProviderArgs struct {
 type LookupAttestationProviderResult struct {
 	// Gets the uri of attestation service
 	AttestUri *string `pulumi:"attestUri"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -49,7 +49,7 @@ type LookupAttestationProviderResult struct {
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// Status of attestation service.
 	Status *string `pulumi:"status"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	// The system metadata relating to this resource
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
@@ -61,22 +61,6 @@ type LookupAttestationProviderResult struct {
 	Type string `pulumi:"type"`
 }
 
-// Defaults sets the appropriate defaults for LookupAttestationProviderResult
-func (val *LookupAttestationProviderResult) Defaults() *LookupAttestationProviderResult {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.PublicNetworkAccess == nil {
-		publicNetworkAccess_ := "Enabled"
-		tmp.PublicNetworkAccess = &publicNetworkAccess_
-	}
-	if tmp.TpmAttestationAuthentication == nil {
-		tpmAttestationAuthentication_ := "Enabled"
-		tmp.TpmAttestationAuthentication = &tpmAttestationAuthentication_
-	}
-	return &tmp
-}
 func LookupAttestationProviderOutput(ctx *pulumi.Context, args LookupAttestationProviderOutputArgs, opts ...pulumi.InvokeOption) LookupAttestationProviderResultOutput {
 	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAttestationProviderResultOutput, error) {
@@ -117,11 +101,6 @@ func (o LookupAttestationProviderResultOutput) AttestUri() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v LookupAttestationProviderResult) *string { return v.AttestUri }).(pulumi.StringPtrOutput)
 }
 
-// The Azure API version of the resource.
-func (o LookupAttestationProviderResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAttestationProviderResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupAttestationProviderResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAttestationProviderResult) string { return v.Id }).(pulumi.StringOutput)
@@ -154,7 +133,7 @@ func (o LookupAttestationProviderResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAttestationProviderResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+// The system metadata relating to this resource
 func (o LookupAttestationProviderResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupAttestationProviderResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }

@@ -860,8 +860,6 @@ const (
 	RunbookTypeEnumGraphPowerShell         = RunbookTypeEnum("GraphPowerShell")
 	RunbookTypeEnumPython2                 = RunbookTypeEnum("Python2")
 	RunbookTypeEnumPython3                 = RunbookTypeEnum("Python3")
-	RunbookTypeEnumPython                  = RunbookTypeEnum("Python")
-	RunbookTypeEnumPowerShell72            = RunbookTypeEnum("PowerShell72")
 )
 
 func (RunbookTypeEnum) ElementType() reflect.Type {
@@ -994,8 +992,6 @@ func (o RunbookTypeEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 //	RunbookTypeEnumGraphPowerShell
 //	RunbookTypeEnumPython2
 //	RunbookTypeEnumPython3
-//	RunbookTypeEnumPython
-//	RunbookTypeEnumPowerShell72
 type RunbookTypeEnumInput interface {
 	pulumi.Input
 

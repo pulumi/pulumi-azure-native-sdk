@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // SyncSet represents a SyncSet for an Azure Red Hat OpenShift Cluster.
 //
-// Uses Azure REST API version 2023-11-22. In version 2.x of the Azure Native provider, it used API version 2022-09-04.
+// Uses Azure REST API version 2022-09-04.
 //
-// Other available API versions: 2022-09-04, 2023-04-01, 2023-07-01-preview, 2023-09-04. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native redhatopenshift [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-04-01, 2023-07-01-preview, 2023-09-04, 2023-11-22.
 type SyncSet struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Resources represents the SyncSets configuration.
@@ -153,11 +151,6 @@ func (o SyncSetOutput) ToSyncSetOutput() SyncSetOutput {
 
 func (o SyncSetOutput) ToSyncSetOutputWithContext(ctx context.Context) SyncSetOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o SyncSetOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *SyncSet) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource
